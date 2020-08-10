@@ -1,0 +1,26 @@
+{
+  "id": "b373ebf5-cc43-414a-a537-9be7cbc311a4",
+  "name": "Zummo",
+  "publisher": "Business Intelligence Technology, S.L.",
+  "brief": "",
+  "description": "",
+  "version": "1.0.0.112",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "14.0.0.0",
+  "application": "14.0.0.0",
+  "idRange": {
+    "from": 50000,
+    "to": 50200
+  },
+  "runtime": "3.0",
+  "features": ["TranslationFile"],
+  "target": "Internal",
+  "showMyCode": true
+}

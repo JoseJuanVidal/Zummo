@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+             
+             
+
+           "name": "Local",
+            "type": "al",
+            "request": "launch",
+            "server": "http://localhost",
+            "serverInstance": "BC140",
+            "authentication": "Windows",// "UserPassword",
+            //"startupObjectId": 22,
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": true,
+            "schemaUpdateMode": "ForceSync"
+             
+        }
+    ]
+}
