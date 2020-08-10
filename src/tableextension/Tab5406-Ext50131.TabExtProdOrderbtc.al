@@ -1,4 +1,4 @@
-tableextension 50131 "TabExtProdOrder_btc" extends "Production Order" 
+tableextension 50131 "TabExtProdOrder_btc" extends "Production Order"   //5406
 {
     // Generado para poder enlazar RefOrderNo
     fields

@@ -1,7 +1,7 @@
-tableextension 50146 "Location" extends Location
+tableextension 50146 "Location" extends Location  //14
 {//14
 
- //Ordenación almacenes
+    //Ordenación almacenes
 
     fields
     {

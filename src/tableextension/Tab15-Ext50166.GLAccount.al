@@ -1,10 +1,10 @@
-tableextension 50166 "GLAccount" extends "G/L Account"
+tableextension 50166 "GLAccount" extends "G/L Account"  //15
 {//15
     fields
     {
         field(50001; SaldoApertura; Decimal)
         {
-             Caption = 'Saldo Apertura', comment = 'ESP="Saldo Apertura"';
+            Caption = 'Saldo Apertura', comment = 'ESP="Saldo Apertura"';
             Editable = false;
             FieldClass = FlowField;
             CalcFormula =

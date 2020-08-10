@@ -1,4 +1,4 @@
-tableextension 50101 "TabExtCustomer_btc" extends Customer
+tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
 {
     fields
     {
@@ -112,7 +112,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer
         {
             DataClassification = CustomerContent;
             Caption = 'Suplemento aseguradora', comment = 'ESP="Suplemento aseguradora';
-         }
+        }
         field(50013; CentralCompras_btc; Code[20])
         {
             DataClassification = CustomerContent;
@@ -189,7 +189,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(ClienteActividad), TipoRegistro = const(Tabla));
             Caption = 'Activity Customer', comment = 'ESP="Cliente Actividad"';
         }
- 
+
         field(50025; CondicionesEspeciales; Text[250])
         {
             DataClassification = CustomerContent;

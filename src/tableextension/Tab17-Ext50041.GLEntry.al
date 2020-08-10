@@ -1,4 +1,4 @@
-tableextension 50041 "GLEntry" extends "G/L Entry" 
+tableextension 50041 "GLEntry" extends "G/L Entry" //17
 {//17
     fields
     {

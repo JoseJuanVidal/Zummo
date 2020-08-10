@@ -8,7 +8,7 @@ tableextension 50167 "CustLedgerEntry" extends "Cust. Ledger Entry" //21
             DataClassification = CustomerContent;
             Caption = 'Saldo Acumulado', comment = 'ESP="Saldo Acumulado"';
             Editable = false;
-         }
+        }
 
         field(50102; AreaManager_btc; Code[20])
         {

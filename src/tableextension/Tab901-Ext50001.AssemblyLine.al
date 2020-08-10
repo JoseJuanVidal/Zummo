@@ -1,4 +1,4 @@
-tableextension 50001 "AssemblyLine" extends "Assembly Line"
+tableextension 50001 "AssemblyLine" extends "Assembly Line" //901
 {//14
     // Ordenación almacenes
 
@@ -45,7 +45,8 @@ tableextension 50001 "AssemblyLine" extends "Assembly Line"
                 PSalesLine: Page "Sales List";
             begin
                 SalesHeader.reset;
-                SalesHeader.SetRange("Document Type", rec."Document Type_btc");;
+                SalesHeader.SetRange("Document Type", rec."Document Type_btc");
+                ;
                 SalesHeader.SetRange("No.", Rec."Document No_btc");
                 PSalesLine.SetTableView(SalesHeader);
                 PSalesLine.Run();
