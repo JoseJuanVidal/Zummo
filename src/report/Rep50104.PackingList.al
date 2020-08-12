@@ -1,6 +1,6 @@
 report 50104 "PackingList"
 {
-     DefaultLayout = RDLC;
+    DefaultLayout = RDLC;
     RDLCLayout = './src/report/Rep50104.PackingList.rdl';
     Caption = 'Packing List', Comment = 'Packing List';
     PreviewMode = PrintLayout;
