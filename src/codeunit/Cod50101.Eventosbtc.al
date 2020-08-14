@@ -685,6 +685,9 @@ codeunit 50101 "Eventos_btc"
         DimensionValue.reset;
         DimensionValue.Init();
         DimensionValue."Dimension Code" := 'PROYECTO';
+        // JJV 14/08/20 ponemos la dimension global al numero indicado
+        DimensionValue."Global Dimension No." := 2;
+        // fin 
         DimensionValue.Code := REC."No.";
         DimensionValue.Name := rec.Name;
         DimensionValue."Dimension Value Type" := DimensionValue."Dimension Value Type"::Standard;
@@ -698,6 +701,10 @@ codeunit 50101 "Eventos_btc"
     begin
         DimensionValue.reset;
         DimensionValue.SetRange("Dimension Code", 'PROYECTO');
+        // JJV 14/08/20 ponemos la dimension global al numero indicado
+        DimensionValue."Global Dimension No." := 2;
+        // fin 
+
         DimensionValue.SetRange(code, Rec."No.");
         if DimensionValue.FindFirst() then begin
             DimensionValue.Name := rec.Name;
