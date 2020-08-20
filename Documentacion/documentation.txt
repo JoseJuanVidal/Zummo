@@ -1,0 +1,7 @@
+R001 - Maria borrallo, envia ticket  156942 - facturar pedidos que no esten albaranados de almacen MMPP
+        indica que deberia haber un desarrollo que no permitia que en el almacen MMPP, se puedea enviar y facturar 
+        desde un pedido de venta, que en ese almacen, solo se puede crear albaranes y luego facturar.
+    -   se propone tener un campo en el almacen, "No permitir Enviar y Facturar", en el evento de POSTSales 
+        se controla que si es un pedido, que si se va a facturar y si alguna linea esta en un almacen que no permite 
+        Enviar y Factura, da error.
+        Cod50106 - Sales Event

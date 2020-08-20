@@ -583,6 +583,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="No se encuentra tipo de cambio para divisa: %1 y fecha: %2 %3: %4"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method TestTipoCambioDocumentoCompra - NamedType lbErrorDivisaErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 1810807602 - NamedType 331638123" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse %1 is configured to not allow "Send and Invoice", it only allows "Send"</source>
+          <note from="Developer" annotates="general" priority="2">El Almacén %1, esta configurado para no permitir "Enviar y Facturar", solo permite "Enviar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method CU_80_OnBeforePostSalesDoc - NamedType ErrorMsg</note>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 2055665548 - NamedType 2016233549" size-unit="char" translate="yes" xml:space="preserve">
           <source>No exchange rate is found for currency: %1 and date: %2 %3: %4</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se encuentra tipo de cambio para divisa: %1 y fecha: %2 %3: %4"</note>
@@ -13157,6 +13162,11 @@
           <source>Ordination</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ordenación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Location - Field Ordenacion_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3891454143 - Field 3898047622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Not allow "Ship and Invoice"</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No permitir "Enviar y Facturar""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Location - Field RequiredShipinvoice - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1065034950 - Field 942837643 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4274826855">
           <source>Saldo Apertura</source>

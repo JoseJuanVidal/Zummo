@@ -10,6 +10,15 @@ pageextension 50013 "LocationCard" extends "Location Card"
             {
                 ApplicationArea = All;
             }
+
+        }
+        addafter("Use ADCS")
+        {
+            field(RequiredShipinvoice; RequiredShipinvoice)
+            {
+                ApplicationArea = all;
+
+            }
         }
     }
 }

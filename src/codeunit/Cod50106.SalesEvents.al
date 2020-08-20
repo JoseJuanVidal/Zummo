@@ -45,8 +45,14 @@ codeunit 50106 "SalesEvents"
     local procedure CU_80_OnBeforePostSalesDoc(VAR Sender: Codeunit "Sales-Post"; VAR SalesHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; PreviewMode: Boolean)
     var
         GeneralLedgerSetup: Record "General Ledger Setup";
-
+        Location: record Location;  // R001
+        SalesLine: Record "Sales Line";  //R001
+        ErrorMsg: Label 'Warehouse %1 is configured to not allow "Send and Invoice", it only allows "Send"', Comment = 'El Almacén %1, esta configurado para no permitir "Enviar y Facturar", solo permite "Enviar"';
     begin
+        // ====== SOTHIS , requrimiento de Maria Borrallo de no permitir registrar y facturar si 
+        //  R001 - el cliente solicita que si el almacen de alguna linea es alguno no configurado para permitir 
+        //        registrar , modo enviar y facturar, no permita FACTURAR
+        // ==========================
         TestCamposPedidos(SalesHeader);
         TestTipoCambioDocumentVenta(SalesHeader);
         //IF (SalesHeader.Invoice) or (SalesHeader."Document Type" = SalesHeader."Document Type"::Invoice) THEN begin
@@ -56,10 +62,25 @@ codeunit 50106 "SalesEvents"
                 Error('Período de facturación de ventas cerrada');
         END;
         //END;
+
+        // +R001
+        case SalesHeader."Document Type" of
+            SalesHeader."Document Type"::Order:
+                begin
+                    if SalesHeader.Invoice then begin
+                        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+                        SalesLine.SetRange("Document No.", SalesHeader."No.");
+                        if SalesLine.findset() then
+                            repeat
+                                if Location.Get(SalesLine."Location Code") then
+                                    if Location.RequiredShipinvoice then
+                                        Error(ErrorMsg, Location.Code);
+                            Until SalesLine.next() = 0;
+                    end;
+                end;
+        end;
+        // -R001
     end;
-
-
-
 
     //No borre Pedido al Facturarlo
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeDeleteAfterPosting', '', true, true)]
@@ -943,7 +964,7 @@ codeunit 50106 "SalesEvents"
         if FromSalesLine.FechaFinValOferta_btc <> 0D then
             ToSalesLine.FechaFinValOferta_btc := FromSalesLine.FechaFinValOferta_btc;
 
-         ToSalesLine.MotivoRetraso_btc := FromSalesLine.MotivoRetraso_btc;
+        ToSalesLine.MotivoRetraso_btc := FromSalesLine.MotivoRetraso_btc;
         ToSalesLine."Tariff No_btc" := FromSalesLine."Tariff No_btc";
         ToSalesLine.TextoMotivoRetraso_btc := FromSalesLine.TextoMotivoRetraso_btc;
     end;
