@@ -4111,8 +4111,9 @@ cstr(Fields!ImporteVencimiento5.Value)
               </Style>
             </Textbox>
             <Image Name="Image3">
-              <Source>Embedded</Source>
-              <Value>dos</Value>
+              <Source>Database</Source>
+              <Value>=First(Fields!logo.Value, "DataSet_Result")</Value>
+              <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
               <Top>8.52658cm</Top>
               <Left>0.46625cm</Left>
@@ -7309,6 +7310,9 @@ kQ0AAACYVumJ6NVO2kv0OBnLb8xjsxv6iQIAADCdwiB6sXOar962sHEnXwEAAMB0ik9EDzazti0TLVtW
         </Field>
         <Field Name="Sell_to_Customer_Name">
           <DataField>Sell_to_Customer_Name</DataField>
+        </Field>
+        <Field Name="logo">
+          <DataField>logo</DataField>
         </Field>
         <Field Name="CompanyInfo2Picture">
           <DataField>CompanyInfo2Picture</DataField>

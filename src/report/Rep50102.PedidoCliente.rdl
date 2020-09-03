@@ -4443,8 +4443,9 @@ Cstr(Sum(Fields!Portes.Value))
               </Style>
             </Textbox>
             <Image Name="Image3">
-              <Source>Embedded</Source>
-              <Value>dos</Value>
+              <Source>Database</Source>
+              <Value>=First(Fields!logo.Value, "DataSet_Result")</Value>
+              <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
               <Top>4.0174cm</Top>
               <Left>0.68068cm</Left>
@@ -6409,6 +6410,9 @@ UQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJ
         </Field>
         <Field Name="workDescription_lbl">
           <DataField>workDescription_lbl</DataField>
+        </Field>
+        <Field Name="logo">
+          <DataField>logo</DataField>
         </Field>
         <Field Name="CompanyInfo2Picture">
           <DataField>CompanyInfo2Picture</DataField>

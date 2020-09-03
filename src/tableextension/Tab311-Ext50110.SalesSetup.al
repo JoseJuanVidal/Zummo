@@ -2,7 +2,7 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
 {
     fields
     {
-        field(50100; PmtTermsRepuesto_btc; Code[10])
+        field(50100; "PmtTermsRepuesto_btc"; Code[10])
         {
             DataClassification = CustomerContent;
             Caption = 'Replacement payment term', comment = 'ESP="Término pago repuesto"';
@@ -10,7 +10,7 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             Description = 'Bitec';
         }
 
-        field(50101; PmtMethodRepuesto_btc; Code[10])
+        field(50101; "PmtMethodRepuesto_btc"; Code[10])
         {
             DataClassification = CustomerContent;
             Description = 'Bitec';
@@ -18,7 +18,7 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             TableRelation = "Payment Method";
         }
 
-        field(50102; ClasificacionRepuesto_btc; enum ClasVtas)
+        field(50102; "ClasificacionRepuesto_btc"; enum ClasVtas)
         {
             DataClassification = CustomerContent;
             Description = 'Bitec';
@@ -26,7 +26,7 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             ObsoleteState = Removed;
         }
 
-        field(50103; OptClasificacionRepuesto_btc; Option)
+        field(50103; "OptClasificacionRepuesto_btc"; Option)
         {
             DataClassification = CustomerContent;
             Description = 'Bitec';
@@ -35,35 +35,36 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             OptionCaption = ' ,Containers and packaging,Accessories,Machine block,Box,Machine set,Price of furniture,Spare parts,Others,Services', comment = 'ESP=" ,Envases y Embalajes,Accesorios,Bloque Máquina,Box,Conjunto Máquina,Mueble,Repuestos,Otros,Servicios"';
         }
 
-        field(50104; NumDiasAvisoVencimiento_btc; Integer)
+        field(50104; "NumDiasAvisoVencimiento_btc"; Integer)
         {
             DataClassification = CustomerContent;
             Caption = 'Nº días prox. vencimiento', comment = 'ESP="Nº días prox. vencimiento"';
         }
 
-        field(50105; RutaPdfPedidos_btc; Text[250])
+        field(50105; "RutaPdfPedidos_btc"; Text[250])
         {
             DataClassification = CustomerContent;
             Caption = 'Orders PDF path', comment = 'ESP="Ruta PDF Pedidos"';
         }
 
-        field(50107; CalendarioOfertas; Code[20])
+        field(50107; "CalendarioOfertas"; Code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Calendario Ofertas', comment = 'ESP="Calendario Ofertas"';
             TableRelation = "Base Calendar";
         }
 
-        field(50108; CodProvinciaDefecto_btc; Code[10])
+        field(50108; "CodProvinciaDefecto_btc"; Code[10])
         {
             DataClassification = CustomerContent;
             Caption = 'Default Area Code', comment = 'ESP="Cód. Provincia por defecto"';
             TableRelation = Area;
         }
-        field(50109; NumDiasAvisoVencido_btc; Integer)
+        field(50109; "NumDiasAvisoVencido_btc"; Integer)
         {
             DataClassification = CustomerContent;
             Caption = 'Nº días fact vencidas', comment = 'ESP="Nº días fact vencidas"';
         }
+
     }
 }

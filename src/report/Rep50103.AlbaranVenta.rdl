@@ -7,6 +7,7 @@
         <DataProvider>SQL</DataProvider>
         <ConnectString />
       </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>8d337ddc-36b3-41b9-8684-915a7e63de22</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -3548,10 +3549,11 @@ Cstr(Fields!TransportistaNombre_btc.Value) + Chr(177) + Cstr(Fields!Palets_Lbl.V
               </Style>
             </Textbox>
             <Image Name="Image3">
-              <Source>Embedded</Source>
-              <Value>dos</Value>
+              <Source>Database</Source>
+              <Value>=First(Fields!logo.Value, "DataSet_Result")</Value>
+              <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>9.92444cm</Top>
+              <Top>9.88915cm</Top>
               <Left>0.41599cm</Left>
               <Height>1.12183cm</Height>
               <Width>1.33314cm</Width>
@@ -3959,7 +3961,6 @@ Cstr(Fields!TransportistaNombre_btc.Value) + Chr(177) + Cstr(Fields!Palets_Lbl.V
         <InteractiveHeight>11in</InteractiveHeight>
         <InteractiveWidth>8.5in</InteractiveWidth>
         <LeftMargin>0.5cm</LeftMargin>
-        <RightMargin>0cm</RightMargin>
         <TopMargin>0.5cm</TopMargin>
         <BottomMargin>0.5cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
@@ -4237,6 +4238,9 @@ rOQo4GBxXQUUV8DOcpvmk7vzPqoxUVaKsFFFFSUFFFFAH//Z</ImageData>
         </Field>
         <Field Name="WorkDescprion">
           <DataField>WorkDescprion</DataField>
+        </Field>
+        <Field Name="logo">
+          <DataField>logo</DataField>
         </Field>
         <Field Name="TransportistaNombre">
           <DataField>TransportistaNombre</DataField>

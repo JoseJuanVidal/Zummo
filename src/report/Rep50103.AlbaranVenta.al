@@ -11,7 +11,7 @@ report 50103 "AlbaranVenta"
     {
         dataitem("Sales Shipment Header"; "Sales Shipment Header")
         {
-            DataItemTableView = SORTING("No.");
+            DataItemTableView = SORTING ("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Histórico albaranes venta', Comment = 'Posted Sales Shipment';
             column(No_SalesShptHeader; "No.")
@@ -128,14 +128,17 @@ report 50103 "AlbaranVenta"
             }
             column(WorkDescprion; WorkDescprion)
             { }
-
+            //SOTHIS EBR 010920 id 159231
+            column(logo; CompanyInfo1.LogoCertificacion)
+            { }
+            //fin SOTHIS EBR 010920 id 159231
             dataitem(CopyLoop; Integer)
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = SORTING (Number);
                 dataitem(PageLoop; Integer)
                 {
-                    DataItemTableView = SORTING(Number)
-                                        WHERE(Number = CONST(1));
+                    DataItemTableView = SORTING (Number)
+                                        WHERE (Number = CONST (1));
                     column(TransportistaNombre; TransportistaNombre_btc)
                     {
                     }
@@ -296,9 +299,9 @@ report 50103 "AlbaranVenta"
 
                     dataitem("Sales Shipment Line"; "Sales Shipment Line")
                     {
-                        DataItemLink = "Document No." = FIELD("No.");
+                        DataItemLink = "Document No." = FIELD ("No.");
                         DataItemLinkReference = "Sales Shipment Header";
-                        DataItemTableView = SORTING("Document No.", "Line No.");
+                        DataItemTableView = SORTING ("Document No.", "Line No.");
                         column(Description_SalesShptLine; Description)
                         {
                         }
@@ -354,7 +357,7 @@ report 50103 "AlbaranVenta"
 
                         dataitem(DisplayAsmInfo; Integer)
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = SORTING (Number);
                             column(PostedAsmLineItemNo; BlanksForIndent() + PostedAsmLine."No.")
                             {
                             }
@@ -407,14 +410,14 @@ report 50103 "AlbaranVenta"
                             }
                             dataitem("Posted Assembly Header"; "Posted Assembly Header")
                             {
-                                DataItemLink = "No." = field("Assembly Document No.");
+                                DataItemLink = "No." = field ("Assembly Document No.");
 
                                 column(AssHeader_No_; "No.")
                                 {
                                 }
                                 dataitem("Posted Assembly Line"; "Posted Assembly Line")
                                 {
-                                    DataItemLink = "Document No." = field("No.");
+                                    DataItemLink = "Document No." = field ("No.");
                                     //"Line No." = field ();
 
                                     column(Assembly_No; "Document No.")
@@ -431,7 +434,7 @@ report 50103 "AlbaranVenta"
 
                                     dataitem(SerieEnsamblado; "Item Ledger Entry")
                                     {
-                                        DataItemLink = "Document No." = field("Document No."), "Document Line No." = field("Line No.");
+                                        DataItemLink = "Document No." = field ("Document No."), "Document Line No." = field ("Line No.");
 
                                         column(Item_No_; "Item No.")
                                         {
@@ -460,7 +463,7 @@ report 50103 "AlbaranVenta"
 
                         dataitem(Lotes; Integer)
                         {
-                            DataItemTableView = sorting(number);
+                            DataItemTableView = sorting (number);
 
                             column(NoLote_RecMemLotes; RecMemLotes.NoLote)
                             {
@@ -523,13 +526,13 @@ report 50103 "AlbaranVenta"
                     }
                     dataitem(Total; Integer)
                     {
-                        DataItemTableView = SORTING(Number)
-                                            WHERE(Number = CONST(1));
+                        DataItemTableView = SORTING (Number)
+                                            WHERE (Number = CONST (1));
                     }
                     dataitem(Total2; Integer)
                     {
-                        DataItemTableView = SORTING(Number)
-                                            WHERE(Number = CONST(1));
+                        DataItemTableView = SORTING (Number)
+                                            WHERE (Number = CONST (1));
                         column(BilltoCustNo_SalesShptHeader; "Sales Shipment Header"."Bill-to Customer No.")
                         {
                         }
@@ -572,7 +575,7 @@ report 50103 "AlbaranVenta"
                     }
                     dataitem(ItemTrackingLine; Integer)
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = SORTING (Number);
                         column(TrackingSpecBufferNo; TrackingSpecBuffer."Item No.")
                         {
                         }
@@ -611,8 +614,8 @@ report 50103 "AlbaranVenta"
                         }
                         dataitem(TotalItemTracking; Integer)
                         {
-                            DataItemTableView = SORTING(Number)
-                                                WHERE(Number = CONST(1));
+                            DataItemTableView = SORTING (Number)
+                                                WHERE (Number = CONST (1));
                             column(Quantity1; TotalQty)
                             {
                             }
@@ -810,7 +813,7 @@ report 50103 "AlbaranVenta"
                         ApplicationArea = All;
                         Caption = 'Volume', comment = 'ESP="Volumen"';
                     }
- 
+
                 }
             }
         }
@@ -840,7 +843,9 @@ report 50103 "AlbaranVenta"
         CompanyInfo.GET();
         SalesSetup.GET();
         FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
-
+        //SOTHIS EBR 010920 id 15923
+        CompanyInfo1.CalcFields(LogoCertificacion);
+        //fin SOTHIS EBR 010920 id 15923
         OnAfterInitReport();
     end;
 

@@ -11,7 +11,7 @@ report 50102 "PedidoCliente"
     {
         dataitem("Sales Header"; "Sales Header")
         {
-           DataItemTableView = SORTING("Document Type", "No.");
+            DataItemTableView = SORTING ("Document Type", "No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Sales Order';
             column(Payment_Discount__; "Payment Discount %")
@@ -158,7 +158,7 @@ report 50102 "PedidoCliente"
             }
             column(PedidoNo_Caption; PedidoNo_Lbl)
             {
-    
+
             }
             column(FEntrega_Caption; FEntrega_Lbl)
             {
@@ -275,13 +275,17 @@ report 50102 "PedidoCliente"
             {
 
             }
+            //SOTHIS EBR 010920 id 159231
+            column(logo; CompanyInfo1.LogoCertificacion)
+            { }
+            //fin SOTHIS EBR 010920 id 159231
             dataitem(CopyLoop; Integer)
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = SORTING (Number);
                 dataitem(PageLoop; Integer)
                 {
-                    DataItemTableView = SORTING(Number)
-                                        WHERE(Number = CONST(1));
+                    DataItemTableView = SORTING (Number)
+                                        WHERE (Number = CONST (1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -435,8 +439,8 @@ report 50102 "PedidoCliente"
                     dataitem(DimensionLoop1; Integer)
                     {
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING(Number)
-                                            WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = SORTING (Number)
+                                            WHERE (Number = FILTER (1 ..));
                         column(DimText_DimLoop1; DimText)
                         {
                         }
@@ -483,10 +487,10 @@ report 50102 "PedidoCliente"
                     }
                     dataitem("Sales Line"; "Sales Line")
                     {
-                        DataItemLink = "Document Type" = FIELD("Document Type"),
-                                       "Document No." = FIELD("No.");
+                        DataItemLink = "Document Type" = FIELD ("Document Type"),
+                                       "Document No." = FIELD ("No.");
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = SORTING ("Document Type", "Document No.", "Line No.");
 
                         trigger OnPreDataItem()
                         begin
@@ -495,7 +499,7 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(RoundLoop; Integer)
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = SORTING (Number);
                         column(Descuento1_SalesLine; SalesLine."DecLine Discount1 %_btc")
                         {
 
@@ -679,8 +683,8 @@ report 50102 "PedidoCliente"
 
                         dataitem(DimensionLoop2; Integer)
                         {
-                            DataItemTableView = SORTING(Number)
-                                                WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = SORTING (Number)
+                                                WHERE (Number = FILTER (1 ..));
                             column(DimText_DimLoop2; DimText)
                             {
                             }
@@ -777,8 +781,8 @@ report 50102 "PedidoCliente"
                             }
                             dataitem("Assembly Header"; "Assembly Header")
                             {
-                                DataItemLink = "Document Type" = FIELD("Assembly Document Type"),
-                                    "No." = field("Assembly Document No.");
+                                DataItemLink = "Document Type" = FIELD ("Assembly Document Type"),
+                                    "No." = field ("Assembly Document No.");
 
                                 column(AssHeader_No_; "No.")
                                 {
@@ -788,8 +792,8 @@ report 50102 "PedidoCliente"
                                 }
                                 dataitem("Assembly Line"; "Assembly Line")
                                 {
-                                    DataItemLink = "Document No." = field("No."),
-                                        "Document Type" = field("Document Type");
+                                    DataItemLink = "Document No." = field ("No."),
+                                        "Document Type" = field ("Document Type");
 
                                     column(Assembly_No; "Document No.")
                                     {
@@ -806,8 +810,8 @@ report 50102 "PedidoCliente"
 
                                     dataitem("Reservation Entry"; "Reservation Entry")
                                     {
-                                        DataItemLink = "Source ID" = field("Document No."),
-                                       "Source Ref. No." = field("Line No.")
+                                        DataItemLink = "Source ID" = field ("Document No."),
+                                       "Source Ref. No." = field ("Line No.")
                                        ;
 
                                         //"Source Type"=const(901);
@@ -848,7 +852,7 @@ report 50102 "PedidoCliente"
 
                         dataitem(Lotes; Integer)
                         {
-                            DataItemTableView = sorting(number);
+                            DataItemTableView = sorting (number);
 
                             column(NoLote_RecMemLotes; RecMemLotes.NoLote)
                             {
@@ -1009,7 +1013,7 @@ report 50102 "PedidoCliente"
 
                     dataitem(VATCounter; Integer)
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = SORTING (Number);
                         column(VATAmountLineVATECBase; VATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -1183,7 +1187,7 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(VATCounterLCY; Integer)
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = SORTING (Number);
                         column(VALExchRate; VALExchRate)
                         {
                         }
@@ -1243,8 +1247,8 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(Total; Integer)
                     {
-                        DataItemTableView = SORTING(Number)
-                                            WHERE(Number = CONST(1));
+                        DataItemTableView = SORTING (Number)
+                                            WHERE (Number = CONST (1));
                         trigger OnPreDataItem()
                         begin
                             CurrReport.Break();
@@ -1252,8 +1256,8 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(Total2; Integer)
                     {
-                        DataItemTableView = SORTING(Number)
-                                            WHERE(Number = CONST(1));
+                        DataItemTableView = SORTING (Number)
+                                            WHERE (Number = CONST (1));
                         column(SelltoCustNo_SalesHeader; "Sales Header"."Sell-to Customer No.")
                         {
                         }
@@ -1271,8 +1275,8 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(PrepmtLoop; Integer)
                     {
-                        DataItemTableView = SORTING(Number)
-                                            WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = SORTING (Number)
+                                            WHERE (Number = FILTER (1 ..));
                         column(PrepmtLineAmount; PrepmtLineAmount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -1332,8 +1336,8 @@ report 50102 "PedidoCliente"
                         }
                         dataitem(PrepmtDimLoop; Integer)
                         {
-                            DataItemTableView = SORTING(Number)
-                                                WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = SORTING (Number)
+                                                WHERE (Number = FILTER (1 ..));
                             column(DimText2; DimText)
                             {
                             }
@@ -1398,7 +1402,7 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(PrepmtVATCounter; Integer)
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = SORTING (Number);
                         column(VATAmt_PrepmtVATAmtLine; PrepmtVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -1456,8 +1460,8 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(PrepmtTotal; Integer)
                     {
-                        DataItemTableView = SORTING(Number)
-                                            WHERE(Number = CONST(1));
+                        DataItemTableView = SORTING (Number)
+                                            WHERE (Number = CONST (1));
                         column(PrepmtPaymentTermsDesc; PrepmtPaymentTerms.Description)
                         {
                         }
@@ -1881,7 +1885,9 @@ report 50102 "PedidoCliente"
         CompanyInfo1.CalcFields(Picture);
         SalesSetup.GET();
         FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
-
+        //SOTHIS EBR 010920 id 15923
+        CompanyInfo1.CalcFields(LogoCertificacion);
+        //fin SOTHIS EBR 010920 id 15923
         OnAfterInitReport();
     end;
 

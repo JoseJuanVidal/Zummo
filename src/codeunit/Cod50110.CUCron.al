@@ -681,8 +681,8 @@ codeunit 50110 "CU_Cron"
 
                         recLogEnvio.NombreCliente_btc := recCustomer.Name;
 
-                       recLogEnvio.DireccionEmail_btc := recCustomer.CorreoFactElec_btc;
-       
+                        recLogEnvio.DireccionEmail_btc := recCustomer.CorreoFactElec_btc;
+
                         if recLogEnvio.DireccionEmail_btc = '' then begin
                             recLogEnvio.TieneError_btc := true;
                             recLogEnvio.DescError_btc := StrSubstNo('Cliente: %1 no tiene dirección de email configurada', recCustomer."No.");
@@ -721,11 +721,13 @@ codeunit 50110 "CU_Cron"
         if recLogEnvio.FindSet() then
             repeat
                 recCustomer.Get(recLogEnvio.CodCliente_btc);
+                //SOTHIS EBR 030920 id159644
                 if recCustomer."Language Code" <> 'ESP' then
-                    ingles := false
+                    //fin SOTHIS EBR 030920 id159644
+                    ingles := true
                 else
-                    ingles := true;
-
+                    ingles := false;
+                //fin SOTHIS EBR 030920 id159644
                 if not ingles then begin
                     txtAsunto := 'Recordatorio facturas vencidas';
                     txtCuerpo := 'Estimado cliente:';
@@ -736,7 +738,7 @@ codeunit 50110 "CU_Cron"
                     txtCuerpo += '<br><br>We would like to notify you that the following payments are still due.<br>';
                 end;
 
-  
+
                 txtCuerpo += GetCabeceraTabla(ingles);
 
                 recCarteraDoc.Reset();
@@ -885,7 +887,7 @@ codeunit 50110 "CU_Cron"
                     txtCuerpo += '<br><br>We would like to notify you of the upcoming invoice due dates so that you can plan your payments:<br>';
                 end;
 
-    
+
                 txtCuerpo += GetCabeceraTabla(ingles);
 
                 recCarteraDoc.Reset();
@@ -930,7 +932,7 @@ codeunit 50110 "CU_Cron"
         recCustomer: Record Customer;
         cduMailManagement: Codeunit "Mail Management";
     begin
-         exit;
+        exit;
 
         recLogEnvio.Reset();
         recLogEnvio.SetFilter(FechaDocumento_btc, '<%1', fechaVencimiento);

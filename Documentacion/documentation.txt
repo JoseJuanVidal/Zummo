@@ -5,3 +5,5 @@ R001 - Maria borrallo, envia ticket  156942 - facturar pedidos que no esten alba
         se controla que si es un pedido, que si se va a facturar y si alguna linea esta en un almacen que no permite 
         Enviar y Factura, da error.
         Cod50106 - Sales Event
+id159644 - EBR - Nos indica Isabel Perez que los correos de los avisos de vencimientos no estan llegando en el idioma correcto. 
+            Revisamos y vemos que la asignacion del idioma esta al reves. La corregimos.
