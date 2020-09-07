@@ -21,7 +21,7 @@ table 50134 "MultiRRHH Lineas_zum"
 
         field(30; "CodigoTipo"; Code[20])
         {
-            TableRelation =  Employee."No.";
+            TableRelation = Employee."No.";
         }
         field(40; Linea; integer)
         {
@@ -110,6 +110,8 @@ table 50134 "MultiRRHH Lineas_zum"
         key(Key1; tabla, tipo, CodigoTipo, Linea)
         {
         }
+        key(tabla_CodigoRRHH; tabla, CodigoRRHH)
+        { }
     }
 
 }

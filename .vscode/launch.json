@@ -2,12 +2,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Local",
+            "name": "BC140 Produccion",
             "type": "al",
             "request": "launch",
             "server": "http://192.168.1.153",
-            "serverInstance": "BC140",
-            "port": 7149,
+            "serverInstance": "desarrollo",
+            "port": 7549,
             "authentication": "UserPassword",
             //"startupObjectId": 22,
             "breakOnError": true,
