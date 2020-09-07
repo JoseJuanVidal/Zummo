@@ -7,3 +7,6 @@ R001 - Maria borrallo, envia ticket  156942 - facturar pedidos que no esten alba
         Cod50106 - Sales Event
 id159644 - EBR - Nos indica Isabel Perez que los correos de los avisos de vencimientos no estan llegando en el idioma correcto. 
             Revisamos y vemos que la asignacion del idioma esta al reves. La corregimos.
+id 159231 - EBR - Nos informa Ivan Luque que el logo de certificacion que se muestra en los informes esta obsoleto y se debe cambiar por otro. 
+            Creamos un campo en Company Info para almcenarlo y que puedan actualizarlo ellos mismo. 
+            Modificamos los informes para que usen el logo del campo creado en company Info.

@@ -7,6 +7,7 @@
         <DataProvider>SQL</DataProvider>
         <ConnectString />
       </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>10f45945-7138-43aa-a536-5751e9f796ae</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -2788,8 +2789,9 @@
               </Style>
             </Line>
             <Image Name="Image2">
-              <Source>Embedded</Source>
-              <Value>dos</Value>
+              <Source>Database</Source>
+              <Value>=First(Fields!logo.Value, "DataSet_Result")</Value>
+              <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
               <Top>5.51152cm</Top>
               <Left>0.97113cm</Left>
@@ -3630,6 +3632,9 @@ FAAAgFRCFAAAgFRCFAAAgFRCFAAAgFRCFAAAgFRCFAAAgFRCFAAAgFRCFAAAgFRCFAAAgFRCFAAAgFRC
         </Field>
         <Field Name="DescuentoCabPurchFormat">
           <DataField>DescuentoCabPurchFormat</DataField>
+        </Field>
+        <Field Name="logo">
+          <DataField>logo</DataField>
         </Field>
         <Field Name="AmountCaptionLbl">
           <DataField>AmountCaptionLbl</DataField>

@@ -1536,7 +1536,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>5</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -2984,8 +2983,9 @@ Cstr(Fields!MetodoDeTransporte.Value)
               </Style>
             </Textbox>
             <Image Name="Image3">
-              <Source>Embedded</Source>
-              <Value>dos</Value>
+              <Source>Database</Source>
+              <Value>=First(Fields!logo.Value, "DataSet_Result")</Value>
+              <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
               <Top>2.12097cm</Top>
               <Left>0.41474cm</Left>
@@ -3294,6 +3294,9 @@ rOQo4GBxXQUUV8DOcpvmk7vzPqoxUVaKsFFFFSUFFFFAH//Z</ImageData>
         </Field>
         <Field Name="ZummoInnovaciones_Lbl">
           <DataField>ZummoInnovaciones_Lbl</DataField>
+        </Field>
+        <Field Name="logo">
+          <DataField>logo</DataField>
         </Field>
         <Field Name="TransportistaNombre">
           <DataField>TransportistaNombre</DataField>

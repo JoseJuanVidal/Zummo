@@ -6,12 +6,12 @@ report 50118 "PedidoTransferenciaAlmacen"
     PreviewMode = PrintLayout;
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-   
+
     dataset
     {
         dataitem("Transfer Header"; "Transfer Header")
         {
-            DataItemTableView = SORTING("No.");
+            DataItemTableView = SORTING ("No.");
             RequestFilterFields = "No.", "Transfer-from Code", "Transfer-to Code";
             RequestFilterHeading = 'Transfer Order';
 
@@ -71,10 +71,10 @@ report 50118 "PedidoTransferenciaAlmacen"
 
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = SORTING (Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
                     column(CopyCaption; StrSubstNo(Text001, CopyText))
                     {
                     }
@@ -136,10 +136,14 @@ report 50118 "PedidoTransferenciaAlmacen"
                     column(ShptMethodDesc; ShipmentMethod.Description)
                     {
                     }
+                    //SOTHIS EBR 070920 id 159231
+                    column(logo; CompanyInfo1.LogoCertificacion)
+                    { }
+                    //fin SOTHIS EBR 070920 id 159231                    
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Transfer Header";
-                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -188,9 +192,9 @@ report 50118 "PedidoTransferenciaAlmacen"
                     }
                     dataitem("Transfer Line"; "Transfer Line")
                     {
-                        DataItemLink = "Document No." = FIELD("No.");
+                        DataItemLink = "Document No." = FIELD ("No.");
                         DataItemLinkReference = "Transfer Header";
-                        DataItemTableView = SORTING("Document No.", "Line No.") WHERE("Derived From Line No." = CONST(0));
+                        DataItemTableView = SORTING ("Document No.", "Line No.") WHERE ("Derived From Line No." = CONST (0));
                         column(ItemNo_TransLine; "Item No.")
                         {
                             IncludeCaption = true;
@@ -228,7 +232,7 @@ report 50118 "PedidoTransferenciaAlmacen"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
                             column(DimText2; DimText)
                             {
                             }
@@ -276,7 +280,7 @@ report 50118 "PedidoTransferenciaAlmacen"
 
                         dataitem(Lotes; Integer)
                         {
-                            DataItemTableView = sorting(number);
+                            DataItemTableView = sorting (number);
 
                             column(NoLote_RecMemLotes; RecMemLotes.NoLote)
                             {
@@ -445,9 +449,25 @@ report 50118 "PedidoTransferenciaAlmacen"
         PostingDateCaption = 'Fecha Registro';
         ShptMethodDescCaption = 'Método Envío';
     }
+    //SOTHIS EBR 070920 id 15923
+    trigger OnInitReport();
+    begin
+        CompanyInfo.GET();
+        SalesSetup.GET();
+        FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
+        CompanyInfo1.get();
+        CompanyInfo1.CalcFields(Picture);
 
+        CompanyInfo1.CalcFields(LogoCertificacion);
+
+
+    end;
+    //fin SOTHIS EBR 070920 id 15923
     var
         PedidosTransferencia: Codeunit Funciones;
+        //SOTHIS EBR 070920 id 159231        
+        FormatDocument: Codeunit "Format Document";
+        //fin SOTHIS EBR 070920 id 159231
         CuadroBultos_IncotermLbl: Label 'INCOTERM:', comment = 'ESP="INCOTERM:"';
         totalBultos: Decimal;
         optIdioma: Option " ","ENU","ESP","FRA";
@@ -459,6 +479,13 @@ report 50118 "PedidoTransferenciaAlmacen"
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         RecMemLotes: Record MemEstadistica_btc temporary;
+        //SOTHIS EBR 070920 id 159231
+        CompanyInfo: Record "Company Information";
+        CompanyInfo1: Record "Company Information";
+        CompanyInfo2: Record "Company Information";
+        CompanyInfo3: Record "Company Information";
+        SalesSetup: Record "Sales & Receivables Setup";
+        //fin  SOTHIS EBR 070920 id 159231
         FormatAddr: Codeunit "Format Address";
         TransferFromAddr: array[8] of Text[100];
         TransferToAddr: array[8] of Text[100];
