@@ -6,6 +6,20 @@
             "type": "al",
             "request": "launch",
             "server": "http://192.168.1.153",
+            "serverInstance": "BC140",
+            "port": 7149,
+            "authentication": "UserPassword",
+            //"startupObjectId": 22,
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": true,
+            "schemaUpdateMode": "Synchronize"
+        },
+        {
+            "name": "BC140 Desarrollo",
+            "type": "al",
+            "request": "launch",
+            "server": "http://192.168.1.153",
             "serverInstance": "desarrollo",
             "port": 7549,
             "authentication": "UserPassword",
@@ -13,6 +27,20 @@
             "breakOnError": true,
             "breakOnRecordWrite": false,
             "launchBrowser": true,
+            "schemaUpdateMode": "Synchronize"
+        },
+        {
+            "name": "Localhost",
+            "type": "al",
+            "request": "launch",
+            "server": "http://localhost",
+            "serverInstance": "BC140",
+            "port": 7149,
+            "authentication": "Windows",
+            //"startupObjectId": 22,
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": false,
             "schemaUpdateMode": "Synchronize"
         }
     ]
