@@ -7,3 +7,4 @@ R001 - Maria borrallo, envia ticket  156942 - facturar pedidos que no esten alba
         Cod50106 - Sales Event
 id159644 - EBR - Nos indica Isabel Perez que los correos de los avisos de vencimientos no estan llegando en el idioma correcto. 
             Revisamos y vemos que la asignacion del idioma esta al reves. La corregimos.
+R002 - Maria - tienen errores al intentar eliminar las reservas que se quedan pendientes de los pedidos de trasnferencia cuando se registran

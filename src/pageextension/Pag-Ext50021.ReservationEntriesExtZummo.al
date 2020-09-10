@@ -1,5 +1,6 @@
 pageextension 50021 "Reservation Entries Ext Zummo" extends "Reservation Entries"
 {
+    // R002
     layout
     {
         // Add changes to page layout here

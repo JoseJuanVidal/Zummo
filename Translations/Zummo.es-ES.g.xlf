@@ -14302,10 +14302,10 @@
           <target>Ordenación</target>
         </trans-unit>
         <trans-unit id="TableExtension 3891454143 - Field 3898047622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
-          <source>Not allow "Ship and Invoice"</source>
-          <note from="Developer" annotates="general" priority="2">ESP="No permitir "Enviar y Facturar""</note>
+          <source>Not allow "Ship and Invoice" without send complety</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No permitir "Enviar y Facturar" sin envio completo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Location - Field RequiredShipinvoice - Property Caption</note>
-          <target>No permitir "Enviar y Facturar"</target>
+          <target>No permitir "Enviar y Facturar" sin envio completo</target>
         </trans-unit>
         <trans-unit id="TableExtension 1065034950 - Field 942837643 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4274826855">
           <source>Saldo Apertura</source>
