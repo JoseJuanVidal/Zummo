@@ -10,3 +10,4 @@ id159644 - EBR - Nos indica Isabel Perez que los correos de los avisos de vencim
 id 159231 - EBR - Nos informa Ivan Luque que el logo de certificacion que se muestra en los informes esta obsoleto y se debe cambiar por otro. 
             Creamos un campo en Company Info para almcenarlo y que puedan actualizarlo ellos mismo. 
             Modificamos los informes para que usen el logo del campo creado en company Info.
+R002 - Maria - tienen errores al intentar eliminar las reservas que se quedan pendientes de los pedidos de trasnferencia cuando se registran

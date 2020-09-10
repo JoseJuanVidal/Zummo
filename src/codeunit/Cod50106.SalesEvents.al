@@ -47,7 +47,7 @@ codeunit 50106 "SalesEvents"
         GeneralLedgerSetup: Record "General Ledger Setup";
         Location: record Location;  // R001
         SalesLine: Record "Sales Line";  //R001
-        ErrorMsg: Label 'Warehouse %1 is configured to not allow "Send and Invoice", it only allows "Send"', Comment = 'El Almacén %1, esta configurado para no permitir "Enviar y Facturar", solo permite "Enviar"';
+        ErrorMsg: Label 'Warehouse %1 is configured to not allow "Send and Invoice completely", all lines are not sent completely.', Comment = 'El Almacén %1, esta configurado para no permitir "Enviar y Facturar completamente", todas las lineas no estan enviadas completamente.'; //R001
     begin
         // ====== SOTHIS , requrimiento de Maria Borrallo de no permitir registrar y facturar si 
         //  R001 - el cliente solicita que si el almacen de alguna linea es alguno no configurado para permitir 
@@ -74,7 +74,8 @@ codeunit 50106 "SalesEvents"
                             repeat
                                 if Location.Get(SalesLine."Location Code") then
                                     if Location.RequiredShipinvoice then
-                                        Error(ErrorMsg, Location.Code);
+                                        if SalesLine."Outstanding Quantity" > 0 then
+                                            Error(ErrorMsg, Location.Code);
                             Until SalesLine.next() = 0;
                     end;
                 end;

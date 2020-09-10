@@ -14,7 +14,7 @@ tableextension 50146 "Location" extends Location  //14
         field(50101; RequiredShipinvoice; Boolean)
         {
             DataClassification = CustomerContent;
-            Caption = 'Not allow "Ship and Invoice"', comment = 'ESP="No permitir "Enviar y Facturar""';
+            Caption = 'Not allow "Ship and Invoice" without send complety', comment = 'ESP="No permitir "Enviar y Facturar" sin envio completo"';
             BlankZero = true;
         }
     }
