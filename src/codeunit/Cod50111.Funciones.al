@@ -1,6 +1,6 @@
 codeunit 50111 "Funciones"
 {
-    Permissions = tabledata "Item Ledger Entry" = rm;
+    Permissions = tabledata "Item Ledger Entry" = rm, tabledata "Sales Invoice Header" = rm;
     TableNo = "Sales Header";
 
 
@@ -21,7 +21,7 @@ codeunit 50111 "Funciones"
         rep: Report PedidoCliente;
     begin
 
-         SalesHeader.Reset();
+        SalesHeader.Reset();
         SalesHeader.get(TipoDoc, numDoc);
 
         rSalesHead.Reset();
@@ -195,7 +195,7 @@ codeunit 50111 "Funciones"
     var
         ItemLedgerEntry: Record "Item Ledger Entry";
         ItemLedgerEntry2: Record "Item Ledger Entry";
-         NumMtoLiquidado: Integer;
+        NumMtoLiquidado: Integer;
         AssembleToOrderLink: Record "Posted Assemble-to-Order Link";
         Factura: record "Sales Invoice Header";
         Albaran: Record "Sales Shipment Header";
@@ -496,5 +496,21 @@ codeunit 50111 "Funciones"
         end;
     end;
 
+    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text)
+    var
+        SalesInvoiceHeader: Record "Sales Invoice Header";
+        TempBlob: Record TempBlob temporary;
+    begin
+        if SalesInvoiceHeader.Get(InvoiceNo) then begin
+            SalesInvoiceHeader."External Document No." := ExtDocNo;
+            CLEAR(SalesInvoiceHeader."Work Description");
+            if not (NewWorkDescription = '') then begin
+                TempBlob.Blob := SalesInvoiceHeader."Work Description";
+                TempBlob.WriteAsText(NewWorkDescription, TEXTENCODING::UTF8);
+                SalesInvoiceHeader."Work Description" := TempBlob.Blob;
+            end;
+            SalesInvoiceHeader.Modify();
+        end;
+    end;
 
 }

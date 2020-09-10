@@ -4994,10 +4994,10 @@
           <target>PR-COMPRAS</target>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 870948665" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PO.01.DCP/A1.11</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PO.01.DCP/A1.11"</note>
+          <source>FO.04_C4.01_V12</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.04_C4.01_V12"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType ISOLbl</note>
-          <target>PO.01.DCP/A1.11</target>
+          <target>FO.04_C4.01_V12</target>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 1542941690" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>

@@ -9,7 +9,7 @@ page 50006 "SalesOrderList"
     DeleteAllowed = false;
     ModifyAllowed = false;
     InsertAllowed = false;
-    
+
     layout
     {
         area(content)

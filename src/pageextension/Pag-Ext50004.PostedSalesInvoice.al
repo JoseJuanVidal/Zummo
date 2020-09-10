@@ -2,6 +2,7 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
 {
     //Guardar Nº asiento y Nº documento
 
+
     layout
     {
         addafter("Salesperson Code")
@@ -27,11 +28,43 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
         {
             Editable = true;
         }
+        modify("Work Description")
+        {
+            Editable = true;
+        }
     }
     actions
     {
         addfirst(Processing)
         {
+
+            action("Cambiar Doc. Externo")
+            {
+                ApplicationArea = all;
+                Caption = 'Cambiar Doc. Externo', comment = 'ESP="Cambiar Doc. Externo"';
+                ToolTip = 'Cambiar Doc. Externo',
+                    comment = 'ESP="Cambiar Doc. Externo"';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Balance;
+
+                trigger OnAction()
+                var
+                    PediDatos: Page "Posted Sales Invoice Change";
+                    Funciones: Codeunit Funciones;
+                    ExtDocNo: Text[35];
+                    WorkDescription: text;
+                begin
+                    PediDatos.LookupMode := true;
+                    PediDatos.SetDatos(rec);
+                    if PediDatos.RunModal() = Action::LookupOK then begin
+                        PediDatos.GetDatos(ExtDocNo, WorkDescription);
+                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription);
+                    end;
+                end;
+
+            }
 
 
             action("Pesos y Bultos")

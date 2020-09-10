@@ -1,9 +1,9 @@
 page 50134 "Historico Categorias_zum"
 {
     AutoSplitKey = true;
-    PageType = List;
+    PageType = Listpart;
     SourceTable = "MultiRRHH Lineas_zum";
-    SourceTableView = 
+    SourceTableView =
                       WHERE(tabla = CONST("Historico Categoria"));
     ApplicationArea = All;
     UsageCategory = Lists;

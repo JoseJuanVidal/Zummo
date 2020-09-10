@@ -12,7 +12,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             }
             field("Quote No."; "Quote No.") { }
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
-            field(FacturacionElec_btc; FacturacionElec_btc) { } 
+            field(FacturacionElec_btc; FacturacionElec_btc) { }
             field(AreaManager_btc; AreaManager_btc) { }
 
             field(NumAbono; NumAbono)
@@ -20,7 +20,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 ApplicationArea = All;
             }
         }
-  
+
     }
 
     actions

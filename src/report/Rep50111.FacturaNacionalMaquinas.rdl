@@ -5560,7 +5560,7 @@ cstr(Fields!ImporteVencimiento5.Value)
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=First(Fields!ImporteSubTotal.Value, "DataSet_Result")-First(Fields!Portes.Value, "DataSet_Result")+First(Fields!Desfactura.Value, "DataSet_Result")-First(Fields!ImportePP.Value, "DataSet_Result")</Value>
+                          <Value>=First(Fields!ImporteSubTotal.Value, "DataSet_Result")-First(Fields!Portes.Value, "DataSet_Result")+First(Fields!Desfactura.Value, "DataSet_Result")+First(Fields!ImportePP.Value, "DataSet_Result")</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
