@@ -12,7 +12,7 @@ report 50106 "Pedido Compra"
     {
         dataitem("Purchase Header"; "Purchase Header")
         {
-            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
+            DataItemTableView = SORTING ("Document Type", "No.") WHERE ("Document Type" = CONST (Order));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
             RequestFilterHeading = 'Standard Purchase - Order';
             column(PortesLbl; PortesLbl)
@@ -522,10 +522,14 @@ report 50106 "Pedido Compra"
             column(DescuentoCabPurch; "Purchase Header"."Payment Discount %")
             {
             }
+            //SOTHIS EBR 040920 id 159231
+            column(logo; CompanyInfo.LogoCertificacion)
+            { }
+            //fin SOTHIS EBR 040920 id 159231
             dataitem("Purchase Line"; "Purchase Line")
             {
-                DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
-                DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
+                DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No.");
+                DataItemTableView = SORTING ("Document Type", "Document No.", "Line No.");
                 column(AmountCaptionLbl; AmountCaptionLbl)
                 {
                 }
@@ -662,19 +666,19 @@ report 50106 "Pedido Compra"
             }
             dataitem(Totals; "Integer")
             {
-                DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
 
                 trigger OnAfterGetRecord()
                 var
                     TempPrepmtPurchLine: Record "Purchase Line" temporary;
                 begin
- 
+
 
                 end;
             }
             dataitem(VATCounter; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = SORTING (Number);
                 column(VATAmtLineVATBase; TempVATAmountLine."VAT Base")
                 {
                     AutoFormatExpression = "Purchase Header"."Currency Code";
@@ -722,7 +726,7 @@ report 50106 "Pedido Compra"
             }
             dataitem(VATCounterLCY; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = SORTING (Number);
                 column(VALExchRate; VALExchRate)
                 {
                 }
@@ -770,7 +774,7 @@ report 50106 "Pedido Compra"
             }
             dataitem(PrepmtLoop; "Integer")
             {
-                DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
                 column(PrepmtLineAmount; PrepmtLineAmount)
                 {
                     AutoFormatExpression = "Purchase Header"."Currency Code";
@@ -838,7 +842,7 @@ report 50106 "Pedido Compra"
             }
             dataitem(PrepmtVATCounter; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = SORTING (Number);
                 column(PrepmtVATAmtLineVATAmt; TempPrepmtVATAmountLine."VAT Amount")
                 {
                     AutoFormatExpression = "Purchase Header"."Currency Code";
@@ -877,7 +881,7 @@ report 50106 "Pedido Compra"
             }
             dataitem(LetterText; "Integer")
             {
-                DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
                 column(GreetingText; GreetingLbl)
                 {
                 }
@@ -1003,6 +1007,10 @@ report 50106 "Pedido Compra"
         CompanyInfo.Get;
         PurchSetup.Get;
         CompanyInfo.CalcFields(Picture);
+
+        //SOTHIS EBR 010920 id 15923
+        CompanyInfo.CalcFields(LogoCertificacion);
+        //fin SOTHIS EBR 010920 id 15923
     end;
 
     trigger OnPostReport()
@@ -1152,7 +1160,8 @@ report 50106 "Pedido Compra"
         DuedateLbl: Label 'Due Date', Comment = 'ESP="Fecha vencimiento"';
         PediProveeedorLbl: Label 'VENDOR ORDER', Comment = 'ESP="PEDIDO PROVEEDOR"';
         PRCOMPRASLbl: Label 'OR-PURCHASE', Comment = 'ESP="PR-COMPRAS"';
-        ISOLbl: Label 'PO.01.DCP/A1.11', Comment = 'ESP="PO.01.DCP/A1.11"';
+        //ISOLbl: Label 'PO.01.DCP/A1.11', Comment = 'ESP="PO.01.DCP/A1.11"';
+        ISOLbl: Label 'FO.04_C4.01_V12', Comment = 'ESP="FO.04_C4.01_V12"';
         DateLbl: Label 'Date', Comment = 'ESP="Fecha"';
         PhoneFaxLbl: Label 'Phone/Fax:', Comment = 'ESP="Telf/Fax:"';
         AgenciaTransporteLbl: Label 'Transport Agency', Comment = 'ESP="Agencia transporte"';

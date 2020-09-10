@@ -11,7 +11,7 @@ report 50129 "PedidoTransferenciaRegistrado"
     {
         dataitem("Transfer Receipt Header"; "Transfer Receipt Header")
         {
-            DataItemTableView = SORTING("No.");
+            DataItemTableView = SORTING ("No.");
             RequestFilterFields = "No.", "Transfer-from Code", "Transfer-to Code";
             RequestFilterHeading = 'Transfer Receipt';
 
@@ -66,10 +66,10 @@ report 50129 "PedidoTransferenciaRegistrado"
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = SORTING (Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
                     column(CopyCaption; StrSubstNo(Text001, CopyText))
                     {
                     }
@@ -122,7 +122,7 @@ report 50129 "PedidoTransferenciaRegistrado"
                     column(TransferToAddr8; TransferToAddr[8])
                     {
                     }
-                          column(PageCaption; StrSubstNo(Text002, ''))
+                    column(PageCaption; StrSubstNo(Text002, ''))
                     {
                     }
                     column(OutputNo; OutputNo)
@@ -131,10 +131,14 @@ report 50129 "PedidoTransferenciaRegistrado"
                     column(ShptMethodDesc; ShipmentMethod.Description)
                     {
                     }
+                    //SOTHIS EBR 070920 id 159231
+                    column(logo; CompanyInfo1.LogoCertificacion)
+                    { }
+                    //fin SOTHIS EBR 070920 id 159231
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Transfer Receipt Header";
-                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -181,9 +185,9 @@ report 50129 "PedidoTransferenciaRegistrado"
                     }
                     dataitem("Transfer Receipt Line"; "Transfer Receipt Line")
                     {
-                        DataItemLink = "Document No." = FIELD("No.");
+                        DataItemLink = "Document No." = FIELD ("No.");
                         DataItemLinkReference = "Transfer Receipt Header";
-                        DataItemTableView = SORTING("Document No.", "Line No.");
+                        DataItemTableView = SORTING ("Document No.", "Line No.");
                         column(ItemNo_TransLine; "Item No.")
                         {
                             IncludeCaption = true;
@@ -221,7 +225,7 @@ report 50129 "PedidoTransferenciaRegistrado"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
                             column(DimText2; DimText)
                             {
                             }
@@ -269,7 +273,7 @@ report 50129 "PedidoTransferenciaRegistrado"
 
                         dataitem(Lotes; Integer)
                         {
-                            DataItemTableView = sorting(number);
+                            DataItemTableView = sorting (number);
 
                             column(NoLote_RecMemLotes; RecMemLotes.NoLote)
                             {
@@ -420,7 +424,20 @@ report 50129 "PedidoTransferenciaRegistrado"
         PostingDateCaption = 'Fecha Registro';
         ShptMethodDescCaption = 'Método Envío';
     }
+    //SOTHIS EBR 070920 id 15923
+    trigger OnInitReport();
+    begin
+        CompanyInfo.GET();
+        SalesSetup.GET();
+        FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
+        CompanyInfo1.get();
+        CompanyInfo1.CalcFields(Picture);
 
+        CompanyInfo1.CalcFields(LogoCertificacion);
+
+
+    end;
+    //fin SOTHIS EBR 070920 id 15923
     var
         optIdioma: Option " ","ENU","ESP","FRA";
         Language: Record Language;
@@ -431,7 +448,17 @@ report 50129 "PedidoTransferenciaRegistrado"
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         RecMemLotes: Record MemEstadistica_btc temporary;
+        //SOTHIS EBR 070920 id 159231
+        CompanyInfo: Record "Company Information";
+        CompanyInfo1: Record "Company Information";
+        CompanyInfo2: Record "Company Information";
+        CompanyInfo3: Record "Company Information";
+        SalesSetup: Record "Sales & Receivables Setup";
+        //fin  SOTHIS EBR 070920 id 159231
         FormatAddr: Codeunit "Format Address";
+        //SOTHIS EBR 070920 id 159231        
+        FormatDocument: Codeunit "Format Document";
+        //fin SOTHIS EBR 070920 id 159231
         TransferFromAddr: array[8] of Text[100];
         TransferToAddr: array[8] of Text[100];
         NoOfCopies: Integer;
