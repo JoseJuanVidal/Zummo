@@ -1160,7 +1160,8 @@ report 50106 "Pedido Compra"
         DuedateLbl: Label 'Due Date', Comment = 'ESP="Fecha vencimiento"';
         PediProveeedorLbl: Label 'VENDOR ORDER', Comment = 'ESP="PEDIDO PROVEEDOR"';
         PRCOMPRASLbl: Label 'OR-PURCHASE', Comment = 'ESP="PR-COMPRAS"';
-        ISOLbl: Label 'PO.01.DCP/A1.11', Comment = 'ESP="PO.01.DCP/A1.11"';
+        //ISOLbl: Label 'PO.01.DCP/A1.11', Comment = 'ESP="PO.01.DCP/A1.11"';
+        ISOLbl: Label 'FO.04_C4.01_V12', Comment = 'ESP="FO.04_C4.01_V12"';
         DateLbl: Label 'Date', Comment = 'ESP="Fecha"';
         PhoneFaxLbl: Label 'Phone/Fax:', Comment = 'ESP="Telf/Fax:"';
         AgenciaTransporteLbl: Label 'Transport Agency', Comment = 'ESP="Agencia transporte"';
