@@ -3379,6 +3379,18 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control LogInteraction - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Report 3412186937 - Control 3416412534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Net Price</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precio Neto</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control PrecioNeto - Property Caption</note>
+          <target>"Precio Neto</target>
+        </trans-unit>
+        <trans-unit id="Report 3412186937 - Control 2256163934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Internal Comment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar comentarios interno"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control boolShowInterComment - Property Caption</note>
+          <target>Mostrar comentarios interno</target>
+        </trans-unit>
         <trans-unit id="Report 3412186937 - Control 932295800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Language</source>
           <note from="Developer" annotates="general" priority="2">ESP="Idioma"</note>
@@ -3447,15 +3459,15 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1928308579" size-unit="char" translate="yes" xml:space="preserve">
           <source>Phone No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Telef."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType PhoneNoCaptionLbl</note>
-          <target/>
+          <target>Telef.</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1306668226" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Registration No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="NIF"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType VATRegNoCaptionLbl</note>
-          <target/>
+          <target>NIF</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 13422290" size-unit="char" translate="yes" xml:space="preserve">
           <source>Giro No.</source>
@@ -3477,15 +3489,15 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 4217840372" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shipment Date</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha envío"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType ShipmentDateCaptionLbl</note>
-          <target/>
+          <target>Fecha envío</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2219219549" size-unit="char" translate="yes" xml:space="preserve">
           <source>Order No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType OrderNoCaptionLbl</note>
-          <target/>
+          <target>Nº Pedido</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 973567044" size-unit="char" translate="yes" xml:space="preserve">
           <source>Header Dimensions</source>
@@ -3495,9 +3507,9 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3659909257" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit Price</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Precio Unitario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType UnitPriceCaptionLbl</note>
-          <target/>
+          <target>Precio Unitario</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2165929531" size-unit="char" translate="yes" xml:space="preserve">
           <source>Discount %</source>
@@ -3507,9 +3519,9 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3285233284" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType AmountCaptionLbl</note>
-          <target/>
+          <target>Importe</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1650498060" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount Amount</source>
@@ -3543,21 +3555,21 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1051325464" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT %</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="%IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType VATPecrentCaptionLbl</note>
-          <target/>
+          <target>%IVA</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 171448200" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT+EC Base</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe IVA+RE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType VATECBaseCaptionLbl</note>
-          <target/>
+          <target>Importe IVA+RE</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3913295325" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType VATAmountCaptionLbl</note>
-          <target/>
+          <target>Importe IVA</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1396908878" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification</source>
@@ -3585,45 +3597,51 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2012124496" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Identifier</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Identifador IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType VATIdentifierCaptionLbl</note>
-          <target/>
+          <target>Identifador IVA</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3524079518" size-unit="char" translate="yes" xml:space="preserve">
           <source>EC Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe RE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType ECAmtCaptionLbl</note>
-          <target/>
+          <target>Importe RE</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 591694091" size-unit="char" translate="yes" xml:space="preserve">
           <source>EC %</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="%RE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType ECPercentCaptionLbl</note>
-          <target/>
+          <target>%RE</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1583171122" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType TotalCaptionLbl</note>
-          <target/>
+          <target>Total</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1303359398" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Base</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Base Imponible IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType VATBaseCaptionLbl</note>
-          <target/>
+          <target>Base Imponible IVA</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 232471621" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ship-to Address</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Envío a Dirección"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType ShiptoAddressCaptionLbl</note>
-          <target/>
+          <target>Envío a Dirección</target>
+        </trans-unit>
+        <trans-unit id="Report 3412186937 - NamedType 1919516899" size-unit="char" translate="yes" xml:space="preserve">
+          <source>internal comment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentario Intero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType CommentInterbCaptionLbl</note>
+          <target>Comentario Intero</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 817831222" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Descrición"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType DescriptionCaptionLbl</note>
-          <target/>
+          <target>Descrición</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 920404561" size-unit="char" translate="yes" xml:space="preserve">
           <source>G/L Account No.</source>
@@ -3657,15 +3675,15 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1877430892" size-unit="char" translate="yes" xml:space="preserve">
           <source>E-Mail</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="E-mail"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType EmailCaptionLbl</note>
-          <target/>
+          <target>E-mail</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2728513993" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Date</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType DocumentDateCaptionLbl</note>
-          <target/>
+          <target>Fecha Documento</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3288550091" size-unit="char" translate="yes" xml:space="preserve">
           <source>Allow Invoice Discount</source>
@@ -3675,9 +3693,9 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1816291155" size-unit="char" translate="yes" xml:space="preserve">
           <source>Régimen especial del criterio de caja</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Régimen especial del criterio de caja"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType CACTxt</note>
-          <target/>
+          <target>Régimen especial del criterio de caja</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1141023221" size-unit="char" translate="yes" xml:space="preserve">
           <source>SALES ORDER</source>
