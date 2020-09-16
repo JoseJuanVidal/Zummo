@@ -3589,7 +3589,7 @@ cstr(Fields!ImporteVencimiento5.Value)
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>=First(Fields!SalesPurchPersonName.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!Delegado.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -7565,6 +7565,9 @@ kQ0AAACYVumJ6NVO2kv0OBnLb8xjsxv6iQIAADCdwiB6sXOar962sHEnXwEAAMB0ik9EDzazti0TLVtW
         </Field>
         <Field Name="ImporteVencimiento5Format">
           <DataField>ImporteVencimiento5Format</DataField>
+        </Field>
+        <Field Name="Delegado">
+          <DataField>Delegado</DataField>
         </Field>
         <Field Name="DimText">
           <DataField>DimText</DataField>

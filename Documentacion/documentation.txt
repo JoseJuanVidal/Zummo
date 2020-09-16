@@ -13,3 +13,4 @@ id 159231 - EBR - Nos informa Ivan Luque que el logo de certificacion que se mue
 R002 - Maria - tienen errores al intentar eliminar las reservas que se quedan pendientes de los pedidos de transferencia cuando se registran, no eliminan las reservas 
         generadas por accion AUTORESERVAS y esas reservas con estos numeros de serie, se quedan a piñon
         mientras solucionamos el proceso, habilitamos un boton en pagina Reservation entry para poder eliminarlas
+id 163375- EBR Modificamos el campo que se muestra en Agente (Salesperson/Purchase.Name) por el campo Delegado de la tabla cliente.

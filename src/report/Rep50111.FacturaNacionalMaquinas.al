@@ -10,7 +10,7 @@ report 50111 "FacturaNacionalMaquinas"
     {
         dataitem("Sales Invoice Header"; "Sales Invoice Header")
         {
-            DataItemTableView = SORTING("No.");
+            DataItemTableView = SORTING ("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Invoice';
             column(BancoBicSwift_Lbl; BancoBicSwift_Lbl) { }
@@ -382,10 +382,10 @@ report 50111 "FacturaNacionalMaquinas"
             //fin SOTHIS EBR 010920 id 159231
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING(Number);
+                DataItemTableView = SORTING (Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -625,10 +625,15 @@ report 50111 "FacturaNacionalMaquinas"
                     column(ImporteVencimiento5; ImporteVencimiento[5])
                     {
                     }
+                    //SOTHIS EBR id 163375 160920
+                    column(Delegado; Customer.Delegado_btc)
+                    {
+                    }
+                    //fin SOTHIS EBR id 163375 160920
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Sales Invoice Header";
-                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -676,9 +681,9 @@ report 50111 "FacturaNacionalMaquinas"
 
                     dataitem("Sales Invoice Line"; "Sales Invoice Line")
                     {
-                        DataItemLink = "Document No." = FIELD("No.");
+                        DataItemLink = "Document No." = FIELD ("No.");
                         DataItemLinkReference = "Sales Invoice Header";
-                        DataItemTableView = SORTING("Document No.", "Line No.");
+                        DataItemTableView = SORTING ("Document No.", "Line No.");
                         column(NumAlbaran; codAlb)
                         {
 
@@ -878,7 +883,7 @@ report 50111 "FacturaNacionalMaquinas"
                         }
                         dataitem("Sales Shipment Buffer"; "Integer")
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = SORTING (Number);
                             column(PostingDate_SalesShipmentBuffer; Format(SalesShipmentBuffer."Posting Date"))
                             {
                             }
@@ -908,7 +913,7 @@ report 50111 "FacturaNacionalMaquinas"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
                             column(DimText1; DimText)
                             {
                             }
@@ -954,7 +959,7 @@ report 50111 "FacturaNacionalMaquinas"
                         }
                         dataitem(AsmLoop; "Integer")
                         {
-                            DataItemTableView = SORTING(Number);
+                            DataItemTableView = SORTING (Number);
                             column(TempPostedAsmLineUOMCode; GetUOMText(TempPostedAsmLine."Unit of Measure Code"))
                             {
                             }
@@ -1015,7 +1020,7 @@ report 50111 "FacturaNacionalMaquinas"
                             }
                             dataitem("Assembly Header"; "Posted Assembly Header")
                             {
-                                DataItemLink = "No." = field("Assembly Document No.");
+                                DataItemLink = "No." = field ("Assembly Document No.");
 
                                 column(AssHeader_No_; "No.")
                                 {
@@ -1023,7 +1028,7 @@ report 50111 "FacturaNacionalMaquinas"
 
                                 dataitem("Assembly Line"; "Posted Assembly Line")
                                 {
-                                    DataItemLink = "Document No." = field("No.");
+                                    DataItemLink = "Document No." = field ("No.");
 
                                     column(Assembly_No; "Document No.")
                                     {
@@ -1040,7 +1045,7 @@ report 50111 "FacturaNacionalMaquinas"
 
                                     dataitem(SerieEnsamblado; "Item Ledger Entry")
                                     {
-                                        DataItemLink = "Document No." = field("Document No."), "Document Line No." = field("Line No.");
+                                        DataItemLink = "Document No." = field ("Document No."), "Document Line No." = field ("Line No.");
 
                                         column(Item_No_; "Item No.")
                                         {
@@ -1080,7 +1085,7 @@ report 50111 "FacturaNacionalMaquinas"
 
                         dataitem(Lotes; Integer)
                         {
-                            DataItemTableView = sorting(number);
+                            DataItemTableView = sorting (number);
                             column(NoLote_RecMemLotes; RecMemLotes.NoLote) { }
                             column(NoSerie_RecMemLotes; RecMemLotes.NoSerie) { }
                             trigger OnPreDataItem()
@@ -1333,7 +1338,7 @@ report 50111 "FacturaNacionalMaquinas"
                     }
                     dataitem(VATCounter; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = SORTING (Number);
                         column(VATAmountLineVATBase; VATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Invoice Line".GetCurrencyCode();
@@ -1451,7 +1456,7 @@ report 50111 "FacturaNacionalMaquinas"
                     }
                     dataitem(VATClauseEntryCounter; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = SORTING (Number);
                         column(VATClauseVATIdentifier; VATAmountLine."VAT Identifier")
                         {
                         }
@@ -1495,7 +1500,7 @@ report 50111 "FacturaNacionalMaquinas"
                     }
                     dataitem(VatCounterLCY; "Integer")
                     {
-                        DataItemTableView = SORTING(Number);
+                        DataItemTableView = SORTING (Number);
                         column(VALSpecLCYHeader; VALSpecLCYHeader)
                         {
                         }
@@ -1549,7 +1554,7 @@ report 50111 "FacturaNacionalMaquinas"
                     }
                     dataitem(PaymentReportingArgument; "Payment Reporting Argument")
                     {
-                        DataItemTableView = SORTING(Key);
+                        DataItemTableView = SORTING (Key);
                         UseTemporary = true;
                         column(PaymentServiceLogo; Logo)
                         {
@@ -1572,11 +1577,11 @@ report 50111 "FacturaNacionalMaquinas"
                     }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
                         column(SelltoCustNo_SalesInvHdr; "Sales Invoice Header"."Sell-to Customer No.")
                         {
                         }
@@ -1594,7 +1599,7 @@ report 50111 "FacturaNacionalMaquinas"
                     }
                     dataitem(LineFee; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number = FILTER(1 ..));
+                        DataItemTableView = SORTING (Number) ORDER(Ascending) WHERE (Number = FILTER (1 ..));
                         column(LineFeeCaptionLbl; TempLineFeeNoteOnReportHist.ReportText)
                         {
                         }
@@ -1614,7 +1619,7 @@ report 50111 "FacturaNacionalMaquinas"
                     }
                     dataitem(DesglosesIVA; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number = const(1));
+                        DataItemTableView = SORTING (Number) ORDER(Ascending) WHERE (Number = const (1));
                         column(nBaseActual1; nBaseActual[1]) { }
                         column(nBaseActual2; nBaseActual[2]) { }
                         column(nBaseActual3; nBaseActual[3]) { }

@@ -6,7 +6,7 @@ pageextension 50020 "CompanyInformationExt" extends "Company Information"
         {
             group("LeyendasFormularios")
             {
-                Caption = 'Report Captions', comment = 'ESP = "Leyendas Formularios"';
+                Caption = 'Leyendas Formularios', comment = 'ESP = "Leyendas Formularios"';
 
                 field(LogoCertificacion; LogoCertificacion)
                 {
