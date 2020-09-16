@@ -2180,11 +2180,11 @@ Cstr(Fields!DocumentDateCaption.Value) + Chr(177) +
 Cstr(Fields!ShipmentMethodCaption.Value) + Chr(177) + 
 Cstr(Fields!PaymentTermsCaption.Value) + Chr(177) + 
 Cstr(Fields!PaymentMethodCaption.Value) + Chr(177) + 
-Cstr(Fields!CACCaption.Value)
- + Chr(177) + 
+Cstr(Fields!CACCaption.Value) + Chr(177) + 
 Cstr(Fields!txtOferta.Value) + Chr(177) + 
 Cstr(Fields!txtOfertaLbl.Value) + Chr(177) + 
-Cstr(Fields!telfCleiten.Value), 1)</Hidden>
+Cstr(Fields!telfCleiten.Value)+ Chr(177) + 
+Cstr(Fields!CommentInterbCaptionLbl.Value), 1)</Hidden>
                                             </Visibility>
                                             <Style>
                                               <VerticalAlign>Middle</VerticalAlign>
@@ -3750,19 +3750,19 @@ Cstr(Sum(Fields!Portes.Value))
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>9pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Left</TextAlign>
+                    <TextAlign>Right</TextAlign>
                   </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>6.63356cm</Top>
               <Left>11.51277cm</Left>
-              <Height>1.00569cm</Height>
+              <Height>0.84694cm</Height>
               <Width>3.82554cm</Width>
               <ZIndex>10</ZIndex>
               <Style>
@@ -3820,7 +3820,7 @@ Cstr(Sum(Fields!Portes.Value))
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>6.63356cm</Top>
               <Left>15.33831cm</Left>
-              <Height>1.00569cm</Height>
+              <Height>0.84694cm</Height>
               <Width>4.4172cm</Width>
               <ZIndex>11</ZIndex>
               <Style>
@@ -4363,6 +4363,65 @@ Cstr(Sum(Fields!Portes.Value))
               <ZIndex>24</ZIndex>
               <Visibility>
                 <Hidden>=iif(Fields!TipoDocumento.Value=2, false, true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Color>LightGrey</Color>
+                  <Style>Solid</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox69">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!CommentInterbCaptionLbl.Value</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>=First(Fields!TotalAmountInclVAT.Value, "DataSet_Result")</Format>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>=First(Fields!TotalAmountInclVAT.Value, "DataSet_Result")</Format>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Code.GetData(62,1)</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <Format>=First(Fields!TotalAmountInclVAT.Value, "DataSet_Result")</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>7.44874cm</Top>
+              <Left>0.7432cm</Left>
+              <Height>0.45421cm</Height>
+              <Width>19.00736cm</Width>
+              <ZIndex>25</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Fields!TipoDocumento.Value = 2, False, True)</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -6200,6 +6259,12 @@ UQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJ
         </Field>
         <Field Name="ShiptoAddressCaption">
           <DataField>ShiptoAddressCaption</DataField>
+        </Field>
+        <Field Name="CommentInterbCaptionLbl">
+          <DataField>CommentInterbCaptionLbl</DataField>
+        </Field>
+        <Field Name="ComentarioInterno_btc">
+          <DataField>ComentarioInterno_btc</DataField>
         </Field>
         <Field Name="PaymentTermsDescription">
           <DataField>PaymentTermsDescription</DataField>

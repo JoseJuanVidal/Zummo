@@ -11,7 +11,7 @@ report 50102 "PedidoCliente"
     {
         dataitem("Sales Header"; "Sales Header")
         {
-            DataItemTableView = SORTING ("Document Type", "No.");
+            DataItemTableView = SORTING("Document Type", "No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Sales Order';
             column(Payment_Discount__; "Payment Discount %")
@@ -71,6 +71,10 @@ report 50102 "PedidoCliente"
             column(ShiptoAddressCaption; ShiptoAddressCaptionLbl)
             {
             }
+            column(CommentInterbCaptionLbl; CommentInterbCaptionLbl)
+            { }
+            column(ComentarioInterno_btc; ComentarioInterno_btc)
+            { }
             column(PaymentTermsDescription; PaymentTerms.Description)
             {
             }
@@ -281,11 +285,11 @@ report 50102 "PedidoCliente"
             //fin SOTHIS EBR 010920 id 159231
             dataitem(CopyLoop; Integer)
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 dataitem(PageLoop; Integer)
                 {
-                    DataItemTableView = SORTING (Number)
-                                        WHERE (Number = CONST (1));
+                    DataItemTableView = SORTING(Number)
+                                        WHERE(Number = CONST(1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -439,8 +443,8 @@ report 50102 "PedidoCliente"
                     dataitem(DimensionLoop1; Integer)
                     {
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING (Number)
-                                            WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number)
+                                            WHERE(Number = FILTER(1 ..));
                         column(DimText_DimLoop1; DimText)
                         {
                         }
@@ -487,10 +491,10 @@ report 50102 "PedidoCliente"
                     }
                     dataitem("Sales Line"; "Sales Line")
                     {
-                        DataItemLink = "Document Type" = FIELD ("Document Type"),
-                                       "Document No." = FIELD ("No.");
+                        DataItemLink = "Document Type" = FIELD("Document Type"),
+                                       "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Header";
-                        DataItemTableView = SORTING ("Document Type", "Document No.", "Line No.");
+                        DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
 
                         trigger OnPreDataItem()
                         begin
@@ -499,7 +503,7 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(RoundLoop; Integer)
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(Descuento1_SalesLine; SalesLine."DecLine Discount1 %_btc")
                         {
 
@@ -683,8 +687,8 @@ report 50102 "PedidoCliente"
 
                         dataitem(DimensionLoop2; Integer)
                         {
-                            DataItemTableView = SORTING (Number)
-                                                WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number)
+                                                WHERE(Number = FILTER(1 ..));
                             column(DimText_DimLoop2; DimText)
                             {
                             }
@@ -730,6 +734,7 @@ report 50102 "PedidoCliente"
                         }
                         dataitem(AsmLoop; Integer)
                         {
+                            DataItemTableView = SORTING(Number);
                             column(AsmLineUnitOfMeasureText; GetUnitOfMeasureDescr(AsmLine."Unit of Measure Code"))
                             {
                             }
@@ -770,6 +775,7 @@ report 50102 "PedidoCliente"
                         //sacar lineas de ensamblado
                         dataitem("Assemble-to-Order Link"; "Assemble-to-Order Link")
                         {
+                            DataItemTableView = SORTING("Assembly Document Type", "Assembly Document No.");
                             column(AssLink_Document_No_; "Document No.")
                             {
                             }
@@ -781,8 +787,10 @@ report 50102 "PedidoCliente"
                             }
                             dataitem("Assembly Header"; "Assembly Header")
                             {
-                                DataItemLink = "Document Type" = FIELD ("Assembly Document Type"),
-                                    "No." = field ("Assembly Document No.");
+                                DataItemTableView = SORTING("Document Type", "No.");
+                                DataItemLink = "Document Type" = FIELD("Assembly Document Type"),
+                                    "No." = field("Assembly Document No.");
+
 
                                 column(AssHeader_No_; "No.")
                                 {
@@ -792,8 +800,9 @@ report 50102 "PedidoCliente"
                                 }
                                 dataitem("Assembly Line"; "Assembly Line")
                                 {
-                                    DataItemLink = "Document No." = field ("No."),
-                                        "Document Type" = field ("Document Type");
+                                    DataItemTableView = SORTING("Document Type", "Document No.");
+                                    DataItemLink = "Document No." = field("No."),
+                                        "Document Type" = field("Document Type");
 
                                     column(Assembly_No; "Document No.")
                                     {
@@ -810,9 +819,9 @@ report 50102 "PedidoCliente"
 
                                     dataitem("Reservation Entry"; "Reservation Entry")
                                     {
-                                        DataItemLink = "Source ID" = field ("Document No."),
-                                       "Source Ref. No." = field ("Line No.")
-                                       ;
+                                        DataItemTableView = SORTING("Source ID");
+                                        DataItemLink = "Source ID" = field("Document No."),
+                                                "Source Ref. No." = field("Line No.");
 
                                         //"Source Type"=const(901);
                                         column(Serial_No_; "Serial No.")
@@ -852,7 +861,7 @@ report 50102 "PedidoCliente"
 
                         dataitem(Lotes; Integer)
                         {
-                            DataItemTableView = sorting (number);
+                            DataItemTableView = sorting(number);
 
                             column(NoLote_RecMemLotes; RecMemLotes.NoLote)
                             {
@@ -1013,7 +1022,7 @@ report 50102 "PedidoCliente"
 
                     dataitem(VATCounter; Integer)
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VATAmountLineVATECBase; VATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -1187,7 +1196,7 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(VATCounterLCY; Integer)
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VALExchRate; VALExchRate)
                         {
                         }
@@ -1247,8 +1256,8 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(Total; Integer)
                     {
-                        DataItemTableView = SORTING (Number)
-                                            WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number)
+                                            WHERE(Number = CONST(1));
                         trigger OnPreDataItem()
                         begin
                             CurrReport.Break();
@@ -1256,8 +1265,8 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(Total2; Integer)
                     {
-                        DataItemTableView = SORTING (Number)
-                                            WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number)
+                                            WHERE(Number = CONST(1));
                         column(SelltoCustNo_SalesHeader; "Sales Header"."Sell-to Customer No.")
                         {
                         }
@@ -1275,8 +1284,8 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(PrepmtLoop; Integer)
                     {
-                        DataItemTableView = SORTING (Number)
-                                            WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number)
+                                            WHERE(Number = FILTER(1 ..));
                         column(PrepmtLineAmount; PrepmtLineAmount)
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -1336,8 +1345,8 @@ report 50102 "PedidoCliente"
                         }
                         dataitem(PrepmtDimLoop; Integer)
                         {
-                            DataItemTableView = SORTING (Number)
-                                                WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number)
+                                                WHERE(Number = FILTER(1 ..));
                             column(DimText2; DimText)
                             {
                             }
@@ -1402,7 +1411,7 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(PrepmtVATCounter; Integer)
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VATAmt_PrepmtVATAmtLine; PrepmtVATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Header"."Currency Code";
@@ -1460,8 +1469,8 @@ report 50102 "PedidoCliente"
                     }
                     dataitem(PrepmtTotal; Integer)
                     {
-                        DataItemTableView = SORTING (Number)
-                                            WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number)
+                                            WHERE(Number = CONST(1));
                         column(PrepmtPaymentTermsDesc; PrepmtPaymentTerms.Description)
                         {
                         }
@@ -1831,14 +1840,24 @@ report 50102 "PedidoCliente"
                                 ArchiveDocument := ArchiveDocumentEnable;
                         end;
                     }
-                    field(valorado; valorado)
+                    field(Valorado; valorado)
                     {
                         ApplicationArea = All;
                     }
-                    field(PrecioNeto; PrecioNeto) { }
+                    field(PrecioNeto; PrecioNeto)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Net Price', comment = 'ESP="Precio Neto';
+                    }
                     field(TipoDocumento; TipoDocumento)
                     {
-
+                        ApplicationArea = all;
+                        Caption = 'Document Type', comment = 'Tipo Documento';
+                    }
+                    field(boolShowInterComment; boolShowInterComment)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Show Internal Comment', comment = 'ESP="Mostrar comentarios interno"';
                     }
 
                     field(optIdioma; optIdioma)
@@ -2061,46 +2080,47 @@ report 50102 "PedidoCliente"
         PaymentTermsCaptionLbl: Label 'Payment Terms', comment = 'ESP=""';
         ShipmentMethodCaptionLbl: Label 'Shipment Method', comment = 'ESP=""';
         PaymentMethodCaptionLbl: Label 'Payment Method', comment = 'ESP=""';
-        PhoneNoCaptionLbl: Label 'Phone No.', comment = 'ESP=""';
-        VATRegNoCaptionLbl: Label 'VAT Registration No.', comment = 'ESP=""';
+        PhoneNoCaptionLbl: Label 'Phone No.', comment = 'ESP="Telef."';
+        VATRegNoCaptionLbl: Label 'VAT Registration No.', comment = 'ESP="NIF"';
         GiroNoCaptionLbl: Label 'Giro No.', comment = 'ESP=""';
         BankNameCaptionLbl: Label 'Bank', comment = 'ESP=""';
         BankAccountNoCaptionLbl: Label 'Account No.', comment = 'ESP=""';
-        ShipmentDateCaptionLbl: Label 'Shipment Date', comment = 'ESP=""';
-        OrderNoCaptionLbl: Label 'Order No.', comment = 'ESP=""';
+        ShipmentDateCaptionLbl: Label 'Shipment Date', comment = 'ESP="Fecha envío"';
+        OrderNoCaptionLbl: Label 'Order No.', comment = 'ESP="Nº Pedido"';
         HeaderDimensionsCaptionLbl: Label 'Header Dimensions', comment = 'ESP=""';
-        UnitPriceCaptionLbl: Label 'Unit Price', comment = 'ESP=""';
+        UnitPriceCaptionLbl: Label 'Unit Price', comment = 'ESP="Precio Unitario"';
         DiscountCaptionLbl: Label 'Discount %', comment = 'ESP=""';
-        AmountCaptionLbl: Label 'Amount', comment = 'ESP=""';
+        AmountCaptionLbl: Label 'Amount', comment = 'ESP="Importe"';
         InvDiscAmtCaptionLbl: Label 'Invoice Discount Amount', comment = 'ESP=""';
         SubtotalCaptionLbl: Label 'Base Imponible', comment = 'ESP=""';
         PmtDiscGivenAmtCaptionLbl: Label 'Pmt. Discount Given Amount', comment = 'ESP=""';
         PaymentDiscVATCaptionLbl: Label 'Payment Discount on VAT', comment = 'ESP=""';
         LineDimensionsCaptionLbl: Label 'Line Dimensions', comment = 'ESP=""';
-        VATPecrentCaptionLbl: Label 'VAT %', comment = 'ESP=""';
-        VATECBaseCaptionLbl: Label 'VAT+EC Base', comment = 'ESP=""';
-        VATAmountCaptionLbl: Label 'VAT Amount', comment = 'ESP=""';
+        VATPecrentCaptionLbl: Label 'VAT %', comment = 'ESP="%IVA"';
+        VATECBaseCaptionLbl: Label 'VAT+EC Base', comment = 'ESP="Importe IVA+RE"';
+        VATAmountCaptionLbl: Label 'VAT Amount', comment = 'ESP="Importe IVA"';
         VATAmtSpecCaptionLbl: Label 'VAT Amount Specification', comment = 'ESP=""';
         InvDiscBaseAmtCaptionLbl: Label 'Invoice Discount Base Amount', comment = 'ESP=""';
         LineAmountCaptionLbl: Label 'Line Amount', comment = 'ESP=""';
         InvPmtDiscountsCaptionLbl: Label 'Invoice and Pmt. Discounts', comment = 'ESP=""';
-        VATIdentifierCaptionLbl: Label 'VAT Identifier', comment = 'ESP=""';
-        ECAmtCaptionLbl: Label 'EC Amount', comment = 'ESP=""';
-        ECPercentCaptionLbl: Label 'EC %', comment = 'ESP=""';
-        TotalCaptionLbl: Label 'Total', comment = 'ESP=""';
-        VATBaseCaptionLbl: Label 'VAT Base', comment = 'ESP=""';
-        ShiptoAddressCaptionLbl: Label 'Ship-to Address', comment = 'ESP=""';
-        DescriptionCaptionLbl: Label 'Description', comment = 'ESP=""';
+        VATIdentifierCaptionLbl: Label 'VAT Identifier', comment = 'ESP="Identifador IVA"';
+        ECAmtCaptionLbl: Label 'EC Amount', comment = 'ESP="Importe RE"';
+        ECPercentCaptionLbl: Label 'EC %', comment = 'ESP="%RE"';
+        TotalCaptionLbl: Label 'Total', comment = 'ESP="Total"';
+        VATBaseCaptionLbl: Label 'VAT Base', comment = 'ESP="Base Imponible IVA"';
+        ShiptoAddressCaptionLbl: Label 'Ship-to Address', comment = 'ESP="Envío a Dirección"';
+        CommentInterbCaptionLbl: Label 'internal comment', comment = 'ESP="Comentario Intero"';
+        DescriptionCaptionLbl: Label 'Description', comment = 'ESP="Descrición"';
         GLAccountNoCaptionLbl: Label 'G/L Account No.', comment = 'ESP=""';
         PrepaymentSpecCaptionLbl: Label 'Prepayment Specification', comment = 'ESP=""';
         PrepaymentVATAmtSpecCaptionLbl: Label 'Prepayment VAT Amount Specification', comment = 'ESP=""';
         PrepmtPaymentTermsCaptionLbl: Label 'Prepmt. Payment Terms', comment = 'ESP=""';
         HomePageCaptionLbl: Label 'Home Page', comment = 'ESP=""';
-        EmailCaptionLbl: Label 'E-Mail', comment = 'ESP=""';
-        DocumentDateCaptionLbl: Label 'Document Date', comment = 'ESP=""';
+        EmailCaptionLbl: Label 'E-Mail', comment = 'ESP="E-mail"';
+        DocumentDateCaptionLbl: Label 'Document Date', comment = 'ESP="Fecha Documento"';
         AllowInvDiscCaptionLbl: Label 'Allow Invoice Discount', comment = 'ESP=""';
         CACCaptionLbl: Text;
-        CACTxt: Label 'Régimen especial del criterio de caja', comment = 'ESP=""';
+        CACTxt: Label 'Régimen especial del criterio de caja', comment = 'ESP="Régimen especial del criterio de caja"';
         //ZUMMO
 
         PedidoDeCliente_Lbl: Label 'SALES ORDER', comment = 'ESP="PEDIDO DE CLIENTE"';
@@ -2158,6 +2178,8 @@ report 50102 "PedidoCliente"
         txtDescLinea: text[100];
         boolLineasPendientes: Boolean;
         sumaPesoBruto: Decimal;
+
+        boolShowInterComment: Boolean;
         ConfPersonalizationMgt: codeunit "Conf./Personalization Mgt.";
 
     [Scope('Personalization')]
