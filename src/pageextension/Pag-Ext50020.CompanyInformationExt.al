@@ -11,6 +11,8 @@ pageextension 50020 "CompanyInformationExt" extends "Company Information"
                 field(LogoCertificacion; LogoCertificacion)
                 {
                     ApplicationArea = All;
+                    Caption = 'Certification Logo', comment = 'ESP="Logo Certificacion ISO';
+
                 }
             }
         }

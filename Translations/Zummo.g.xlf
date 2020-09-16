@@ -11194,9 +11194,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action Listado NºSerie - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 826446478 - Control 3139088584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
-          <source>Report Captions</source>
+          <source>Leyendas Formularios</source>
           <note from="Developer" annotates="general" priority="2">ESP = "Leyendas Formularios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CompanyInformationExt - Control LeyendasFormularios - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 826446478 - Control 323188024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>Certification Logo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Logo Certificacion ISO</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CompanyInformationExt - Control LogoCertificacion - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 826446478 - Field 323188024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
           <source>Logo Certificacion ISO</source>

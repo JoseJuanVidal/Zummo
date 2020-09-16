@@ -875,6 +875,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page PageMatricesComprasProovedor - Action NextSet - Property Caption</note>
           <target>Conjunto siguiente</target>
         </trans-unit>
+        <trans-unit id="Page 129743984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Order List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista Pedidos Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page SalesOrderList - Property Caption</note>
+          <target>Lista Pedidos Almacén</target>
+        </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº documento externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control Name - Property Caption</note>
+          <target>Nº documento externo</target>
+        </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 512684737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Work Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción del trabajo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control WorkDescription - Property Caption</note>
+          <target>Descripción del trabajo</target>
+        </trans-unit>
         <trans-unit id="Page 806151863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comments</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Comments"</note>
@@ -3304,12 +3322,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DividirLineas - Control globalCantidad - Property Caption</note>
           <target>Cantidad</target>
-        </trans-unit>
-        <trans-unit id="Page 129743984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sales Order List</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Lista Pedidos Almacén"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page SalesOrderList - Property Caption</note>
-          <target>Lista Pedidos Almacén</target>
         </trans-unit>
         <trans-unit id="Report 1045337665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create period invoices (process)</source>
@@ -11765,6 +11777,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field PermiteValidarProcutos_bc - Property Caption</note>
           <target>Permite validar productos</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1682009332 - Action 1545044866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Cambiar Doc. Externo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Doc. Externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - Action Cambiar Doc. Externo - Property Caption</note>
+          <target>Cambiar Doc. Externo</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1682009332 - Action 1545044866 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Cambiar Doc. Externo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Doc. Externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - Action Cambiar Doc. Externo - Property ToolTip</note>
+          <target>Cambiar Doc. Externo</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1682009332 - Action 2990382772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Pesos y Bultos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Pesos y Bultos"</note>
@@ -11970,9 +11994,15 @@
           <target>Listado NºSerie</target>
         </trans-unit>
         <trans-unit id="PageExtension 826446478 - Control 3139088584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
-          <source>Report Captions</source>
+          <source>Leyendas Formularios</source>
           <note from="Developer" annotates="general" priority="2">ESP = "Leyendas Formularios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CompanyInformationExt - Control LeyendasFormularios - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 826446478 - Control 323188024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>Certification Logo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Logo Certificacion ISO</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CompanyInformationExt - Control LogoCertificacion - Property Caption</note>
+          <target>"Logo Certificacion ISO</target>
         </trans-unit>
         <trans-unit id="TableExtension 826446478 - Field 323188024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
           <source>Logo Certificacion ISO</source>
