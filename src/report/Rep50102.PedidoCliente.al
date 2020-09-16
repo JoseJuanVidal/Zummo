@@ -87,6 +87,7 @@ report 50102 "PedidoCliente"
 
             }
             column(TipoDocumento; TipoDocumento) { }
+            column(boolShowInterComment; boolShowInterComment) { }
             column(ShipmentMethodDescription; ShipmentMethod.Description)
             {
             }
@@ -2109,7 +2110,7 @@ report 50102 "PedidoCliente"
         TotalCaptionLbl: Label 'Total', comment = 'ESP="Total"';
         VATBaseCaptionLbl: Label 'VAT Base', comment = 'ESP="Base Imponible IVA"';
         ShiptoAddressCaptionLbl: Label 'Ship-to Address', comment = 'ESP="Envío a Dirección"';
-        CommentInterbCaptionLbl: Label 'internal comment', comment = 'ESP="Comentario Intero"';
+        CommentInterbCaptionLbl: Label 'Comment', comment = 'ESP="Comentario"';
         DescriptionCaptionLbl: Label 'Description', comment = 'ESP="Descrición"';
         GLAccountNoCaptionLbl: Label 'G/L Account No.', comment = 'ESP=""';
         PrepaymentSpecCaptionLbl: Label 'Prepayment Specification', comment = 'ESP=""';

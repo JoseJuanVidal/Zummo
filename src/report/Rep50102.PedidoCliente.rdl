@@ -2184,7 +2184,8 @@ Cstr(Fields!CACCaption.Value) + Chr(177) +
 Cstr(Fields!txtOferta.Value) + Chr(177) + 
 Cstr(Fields!txtOfertaLbl.Value) + Chr(177) + 
 Cstr(Fields!telfCleiten.Value)+ Chr(177) + 
-Cstr(Fields!CommentInterbCaptionLbl.Value), 1)</Hidden>
+Cstr(Fields!CommentInterbCaptionLbl.Value)+ Chr(177) + 
+Cstr(Fields!ComentarioInterno_btc.Value), 1)</Hidden>
                                             </Visibility>
                                             <Style>
                                               <VerticalAlign>Middle</VerticalAlign>
@@ -3725,7 +3726,6 @@ Cstr(Sum(Fields!Portes.Value))
               </Style>
             </Textbox>
             <Textbox Name="Textbox23">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -3750,12 +3750,12 @@ Cstr(Sum(Fields!Portes.Value))
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>9pt</FontSize>
+                        <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <TextAlign>Left</TextAlign>
                   </Style>
                 </Paragraph>
               </Paragraphs>
@@ -3770,26 +3770,6 @@ Cstr(Sum(Fields!Portes.Value))
                   <Color>LightGrey</Color>
                   <Style>Solid</Style>
                 </Border>
-                <TopBorder>
-                  <Color>LightGrey</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </TopBorder>
-                <BottomBorder>
-                  <Color>LightGrey</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </BottomBorder>
-                <LeftBorder>
-                  <Color>LightGrey</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </LeftBorder>
-                <RightBorder>
-                  <Color>LightGrey</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </RightBorder>
                 <VerticalAlign>Top</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -3798,7 +3778,6 @@ Cstr(Sum(Fields!Portes.Value))
               </Style>
             </Textbox>
             <Textbox Name="Textbox24">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -3828,26 +3807,6 @@ Cstr(Sum(Fields!Portes.Value))
                   <Color>LightGrey</Color>
                   <Style>Solid</Style>
                 </Border>
-                <TopBorder>
-                  <Color>LightGrey</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </TopBorder>
-                <BottomBorder>
-                  <Color>LightGrey</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </BottomBorder>
-                <LeftBorder>
-                  <Color>LightGrey</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </LeftBorder>
-                <RightBorder>
-                  <Color>LightGrey</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </RightBorder>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -4400,7 +4359,7 @@ Cstr(Sum(Fields!Portes.Value))
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>=Code.GetData(62,1)</Value>
+                      <Value>=Code.GetData(64,1)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -4415,13 +4374,13 @@ Cstr(Sum(Fields!Portes.Value))
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>7.44874cm</Top>
+              <Top>7.51224cm</Top>
               <Left>0.7432cm</Left>
-              <Height>0.45421cm</Height>
+              <Height>0.48596cm</Height>
               <Width>19.00736cm</Width>
               <ZIndex>25</ZIndex>
               <Visibility>
-                <Hidden>=iif(Fields!TipoDocumento.Value = 2, False, True)</Hidden>
+                <Hidden>=iif(First(Fields!boolShowInterComment.Value, "DataSet_Result") , false, true)</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -6277,6 +6236,9 @@ UQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJUQAAAFIJ
         </Field>
         <Field Name="TipoDocumento">
           <DataField>TipoDocumento</DataField>
+        </Field>
+        <Field Name="boolShowInterComment">
+          <DataField>boolShowInterComment</DataField>
         </Field>
         <Field Name="ShipmentMethodDescription">
           <DataField>ShipmentMethodDescription</DataField>

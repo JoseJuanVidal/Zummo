@@ -3632,10 +3632,10 @@
           <target>Envío a Dirección</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1919516899" size-unit="char" translate="yes" xml:space="preserve">
-          <source>internal comment</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Comentario Intero"</note>
+          <source>Comment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType CommentInterbCaptionLbl</note>
-          <target>Comentario Intero</target>
+          <target>Comentario</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 817831222" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
