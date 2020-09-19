@@ -11220,7 +11220,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 826446478 - Control 323188024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Certification Logo</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Logo Certificacion ISO</note>
+          <note from="Developer" annotates="general" priority="2">ESP = "Logo Certificacion ISO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CompanyInformationExt - Control LogoCertificacion - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 826446478 - Field 323188024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
@@ -14452,6 +14452,16 @@
           <source>Due Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Pago"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ClosedPaymentOrder - Field DueDate_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 4072409575 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Vigente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Vigente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field STH Vigente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 995090288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Date Filter</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field Date Filter - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4014689059 - Field 1505881273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
           <source>Description 1</source>
