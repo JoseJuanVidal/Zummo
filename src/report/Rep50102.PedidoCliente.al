@@ -1794,7 +1794,7 @@ report 50102 "PedidoCliente"
 
     requestpage
     {
-        SaveValues = false;
+        SaveValues = true;
 
         layout
         {
