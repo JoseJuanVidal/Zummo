@@ -1,8 +1,8 @@
 page 50007 "Posted Sales Invoice Change"
 {
     PageType = Card;
-    ApplicationArea = All;
     UsageCategory = Administration;
+    Caption = 'Posted Sales Invoice Change', comment = 'Editar Hist. Fact. Venta ';
     //    SourceTable = TableName;
 
     layout
@@ -14,7 +14,7 @@ page 50007 "Posted Sales Invoice Change"
                 field(Name; ExternalDocumentNo)
                 {
                     ApplicationArea = All;
-                    Caption = 'External Document No.', comment = 'ESP="Nº documento externo"';
+                    Caption = 'External Document No.', comment = 'ESP="Nº Documento externo"';
                 }
                 field(WorkDescription; WorkDescription)
                 {

@@ -768,9 +768,14 @@
           <note from="Developer" annotates="general" priority="2">ESP="Lista Pedidos Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page SalesOrderList - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2287400882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Sales Invoice Change</source>
+          <note from="Developer" annotates="general" priority="2">Editar Hist. Fact. Venta </note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2287400882 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>External Document No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº documento externo"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documento externo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2287400882 - Control 512684737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
