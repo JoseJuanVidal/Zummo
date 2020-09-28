@@ -1,4 +1,3 @@
-
 codeunit 50106 "SalesEvents"
 {
     Permissions = tabledata "Sales Shipment Header" = rm, tabledata "G/L Entry" = m, tabledata "Sales Invoice Header" = m, tabledata "Sales Cr.Memo Header" = m,
@@ -142,11 +141,18 @@ codeunit 50106 "SalesEvents"
             PassedServHeader."Posting Description" := recServLine.Description;
     end;
 
+
     // Al registrar una factura de venta con líneas de tipo cuenta, modificamos descripción del movimiento contable
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforePostSalesDoc', '', true, true)]
     local procedure CU_89_OnBeforePostSalesDoc(var SalesHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; PreviewMode: Boolean)
     var
         recSalesLine: Record "Sales Line";
+        SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
+        AmountWithDiscountAllowed: Decimal;
+        DocumentTotals: Codeunit "Document Totals";
+        SalesLine: record "Sales Line";
+        InvoiceDiscountAmount: Decimal;
+        Currency: record Currency;
     begin
         recSalesLine.Reset();
         recSalesLine.SetRange("Document Type", SalesHeader."Document Type");
@@ -156,9 +162,20 @@ codeunit 50106 "SalesEvents"
         recSalesLine.SetFilter("No.", '<>%1&<>%2', '7591000', '6021000');
         if recSalesLine.FindFirst() and (SalesHeader."Posting Description" <> recSalesLine.Description) then
             SalesHeader."Posting Description" := recSalesLine.Description;
+        // 165118 - realizar el calculo de dto de factura, por si no estan las lineas correctas        
+        if SalesHeader.DescuentoFactura <> 0 then begin
+            Currency.InitRoundingPrecision;
+            recSalesLine.reset;
+            recSalesLine.SetRange("Document Type", SalesHeader."Document Type");
+            recSalesLine.SetRange("Document No.", SalesHeader."No.");
+            recSalesLine.FindFirst();
+            AmountWithDiscountAllowed := DocumentTotals.CalcTotalSalesAmountOnlyDiscountAllowed(recSalesLine);
+            InvoiceDiscountAmount := ROUND(AmountWithDiscountAllowed * SalesHeader.DescuentoFactura / 100, Currency."Amount Rounding Precision");
+            SalesCalcDiscByType.ApplyInvDiscBasedOnAmt(InvoiceDiscountAmount, SalesHeader);
+        end;
     end;
 
-    // Al registrar una factura de compra con líneas de tipo cuenta, modificamos la descripbión del movimiento contable
+    // Al registrar una factura de compra con líneas de tipo cuenta, modificamos la descripbión del movimiento contable  // ESTHER 165090
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', true, true)]
     local procedure CU_90_OnBeforePostPurchaseDoc(var PurchaseHeader: Record "Purchase Header"; PreviewMode: Boolean; CommitIsSupressed: Boolean)
     var
@@ -1014,5 +1031,41 @@ codeunit 50106 "SalesEvents"
 
         if Rec."Document Type" = rec."Document Type"::Order then
             rec.FechaAltaPedido := Today;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterUpdateAmountsDone', '', false, false)]
+    local procedure SalesLineOnAfterUpdateAmountsDone(VAR SalesLine: Record "Sales Line"; VAR xSalesLine: Record "Sales Line"; CurrentFieldNo: Integer)
+    var
+        SalesHeader: Record "Sales Header";
+        Currency: record Currency;
+        SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
+        AmountWithDiscountAllowed: Decimal;
+        DocumentTotals: Codeunit "Document Totals";
+        InvoiceDiscountAmount: Decimal;
+        LineAmountToInvoice: Decimal;
+    begin
+        // 165118 - Calcular a las lineas el dto de factura por importe aplicado en el campo Sales header 50199 % Dto Factura
+        if SalesHeader.GET(SalesLine."Document Type", SalesLine."Document No.") then begin
+            Currency.InitRoundingPrecision;
+            // Calcular en la linea el descuento de pronto pago
+            if SalesHeader.DescuentoProntoPago <> 0 then
+                SalesLine."Pmt. Discount Amount" := ROUND(((SalesLine."Line Amount" - SalesLine."Inv. Discount Amount") * SalesHeader.DescuentoProntoPago / 100)
+                            , Currency."Amount Rounding Precision");
+            if SalesHeader.DescuentoFactura <> 0 then begin
+                if SalesLine.Quantity <> 0 then begin
+                    IF SalesHeader."Invoice Discount Calculation" = SalesHeader."Invoice Discount Calculation"::Amount then begin
+                        SalesLine."Inv. Discount Amount" := ROUND((SalesLine."Line Amount" * SalesHeader.DescuentoFactura / 100)
+                                    , Currency."Amount Rounding Precision");
+                        LineAmountToInvoice := ROUND(SalesLine."Line Amount" * SalesLine."Qty. to Invoice" / SalesLine.Quantity, Currency."Amount Rounding Precision");
+                        SalesLine."Inv. Disc. Amount to Invoice" := ROUND((LineAmountToInvoice * SalesHeader.DescuentoFactura / 100)
+                                                    , Currency."Amount Rounding Precision");
+
+                    end else begin
+
+                    end;
+                end;
+
+            end;
+        end;
     end;
 }

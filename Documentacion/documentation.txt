@@ -5,7 +5,7 @@ R001 - Maria borrallo, envia ticket  156942 - facturar pedidos que no esten alba
         se controla que si es un pedido, que si se va a facturar y si alguna linea esta en un almacen que no permite 
         Enviar y Factura, da error.
         Cod50106 - Sales Event
-id159644 - EBR - Nos indica Isabel Perez que los correos de los avisos de vencimientos no estan llegando en el idioma correcto. 
+id 159644 - EBR - Nos indica Isabel Perez que los correos de los avisos de vencimientos no estan llegando en el idioma correcto. 
             Revisamos y vemos que la asignacion del idioma esta al reves. La corregimos.
 id 159231 - EBR - Nos informa Ivan Luque que el logo de certificacion que se muestra en los informes esta obsoleto y se debe cambiar por otro. 
             Creamos un campo en Company Info para almcenarlo y que puedan actualizarlo ellos mismo. 
@@ -14,3 +14,7 @@ R002 - Maria - tienen errores al intentar eliminar las reservas que se quedan pe
         generadas por accion AUTORESERVAS y esas reservas con estos numeros de serie, se quedan a piñon
         mientras solucionamos el proceso, habilitamos un boton en pagina Reservation entry para poder eliminarlas
 id 163375- EBR Modificamos el campo que se muestra en Agente (Salesperson/Purchase.Name) por el campo Delegado de la tabla cliente.
+id 165118 - JJV - Maria - DESCUENTO ERRONEO, calculo del dto de factura en las lineas no aplica correctamente. Accion NAVEGAR - DESCUENTOS
+        verificamos que cuando se indica un dto de factura, campos añadido % Dto. Factura (50199)
+id 165646 - JJV Natalia - en el informe historico de factura de venta, el caption de % Dto Factura, lo pone mal, 3%  pone 46%
+        equivocación a la hora de calcular el % de dto,  "Invoice Discount Value", se sustituye por "Invoice Discount Amount"

@@ -22,6 +22,12 @@ page 50007 "Posted Sales Invoice Change"
                     Caption = 'Work Description', comment = 'ESP="Descripción del trabajo"';
                     MultiLine = true;
                 }
+                field(AreaManager_btc; AreaManager_btc)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Area Manager', comment = 'Area Manager';
+                    TableRelation = TextosAuxiliares where(TipoRegistro = const(tabla), TipoTabla = const(AreaManager));
+                }
             }
         }
     }
@@ -45,12 +51,14 @@ page 50007 "Posted Sales Invoice Change"
     var
         ExternalDocumentNo: Text[35];
         WorkDescription: Text;
+        AreaManager_btc: code[20];
         TempBlob: Record TempBlob temporary;
 
-    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text)
+    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; AreaManager: code[20])
     begin
         ExtDocNo := ExternalDocumentNo;
         WorkDesc := WorkDescription;
+        AreaManager := AreaManager_btc;
     end;
 
     procedure SetDatos(SalesInvoiceHeader: Record "Sales Invoice Header")
@@ -67,6 +75,7 @@ page 50007 "Posted Sales Invoice Change"
         CR[1] := 10;
         TempBlob.Blob := SalesInvoiceHeader."Work Description";
         WorkDescription := TempBlob.ReadAsText(CR, TEXTENCODING::UTF8);
+        AreaManager_btc := SalesInvoiceHeader.AreaManager_btc;
     end;
 
 }

@@ -12315,9 +12315,10 @@
           <target>Texto e-mail pedido compra</target>
         </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 9807146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>StockPerAlmacen</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>Stock por Almacén</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Stock por Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control StockPerAlmacen - Property Caption</note>
+          <target>Stock por Almacén</target>
         </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1394728878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Classification</source>
@@ -14832,6 +14833,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tasa RAEE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field TasaRAEE - Property Caption</note>
           <target>Tasa RAEE</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2163727191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Desc. Sales Classification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Clasificación Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desClasVtas_btc - Property Caption</note>
+          <target>Desc. Clasificación Ventas</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 304493673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Desc. Familia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desFamilia_btc - Property Caption</note>
+          <target>Desc. Familia</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3555758206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Desc. Gamma</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Gama"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desGama_btc - Property Caption</note>
+          <target>Desc. Gama</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1382123467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Desc. Linea Economica</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desLineaEconomica_btc - Property Caption</note>
+          <target>Desc. Linea Economica</target>
         </trans-unit>
         <trans-unit id="TableExtension 494646383 - Field 1305804038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 494646383">
           <source>Cant. en ofertas de venta</source>

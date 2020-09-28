@@ -12,7 +12,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
 
             part(StockPerAlmacen; StockPerAlmacen)
             {
-                Caption = 'StockPerAlmacen';
+                Caption = 'Stock por Almacén', comment = 'ESP="Stock por Almacén"';
                 SubPageLink = "Item No." = field("No.");
             }
             group(Clasificacion)
@@ -24,7 +24,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
                     Caption = 'Sales Clas.', comment = 'ESP="Clasif.Ventas"';
                     ApplicationArea = All;
                 }
-                field(DescClasVtas_btc; DescClasVtas_btc)
+                field(DescClasVtas_btc; desClasVtas_btc)
                 {
                     Caption = 'Sales Clas.Desc', comment = 'ESP="Desc.Clasif.Ventas"';
                     ApplicationArea = All;
@@ -35,7 +35,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
                     Caption = 'Family', comment = 'ESP="Familia"';
                     ApplicationArea = All;
                 }
-                field(DescFamilia_btc; DescFamilia_btc)
+                field(DescFamilia_btc; desFamilia_btc)
                 {
                     Caption = 'Family Desc', comment = 'ESP="Desc.Familia"';
                     ApplicationArea = All;
@@ -47,7 +47,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
                     Caption = 'Gama', comment = 'ESP="Gama"';
                     ApplicationArea = All;
                 }
-                field(DescGama_btc; DescGama_btc)
+                field(DescGama_btc; desGama_btc)
                 {
                     Caption = 'Gama Desc', comment = 'ESP="Desc.Gama"';
                     ApplicationArea = All;
@@ -58,7 +58,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
                     Caption = 'Linea Economica', comment = 'ESP="Linea Economica"';
                     ApplicationArea = All;
                 }
-                field(DescLineaEconomica; DescLineaEconomica)
+                field(DescLineaEconomica; desLineaEconomica_btc)
                 {
                     Caption = 'Linea Economica Desc', comment = 'ESP="Desc.Linea Economica"';
                     ApplicationArea = All;
@@ -390,35 +390,35 @@ pageextension 50109 "ItemCard" extends "Item Card"
         CreatestockkepingUnit.Run();
     end;
 
-    trigger OnAfterGetCurrRecord()
-    var
-        TextosAuxiliares: Record TextosAuxiliares;
-    begin
-        DescClasVtas_btc := '';
-        TextosAuxiliares.Reset();
-        if TextosAuxiliares.Get(TextosAuxiliares.TipoTabla::ClasificacionVentas, TextosAuxiliares.TipoRegistro::Tabla, REc.selClasVtas_btc) then
-            DescClasVtas_btc := TextosAuxiliares.Descripcion;
+    /*  trigger OnAfterGetCurrRecord()
+      var
+          TextosAuxiliares: Record TextosAuxiliares;
+      begin
+          DescClasVtas_btc := '';
+          TextosAuxiliares.Reset();
+          if TextosAuxiliares.Get(TextosAuxiliares.TipoTabla::ClasificacionVentas, TextosAuxiliares.TipoRegistro::Tabla, REc.selClasVtas_btc) then
+              DescClasVtas_btc := TextosAuxiliares.Descripcion;
 
-        DescFamilia_btc := '';
-        TextosAuxiliares.Reset();
-        if TextosAuxiliares.Get(TextosAuxiliares.TipoTabla::ClasificacionVentas, TextosAuxiliares.TipoRegistro::Tabla, REc.selFamilia_btc) then
-            DescFamilia_btc := TextosAuxiliares.Descripcion;
+          DescFamilia_btc := '';
+          TextosAuxiliares.Reset();
+          if TextosAuxiliares.Get(TextosAuxiliares.TipoTabla::Familia, TextosAuxiliares.TipoRegistro::Tabla, REc.selFamilia_btc) then
+              DescFamilia_btc := TextosAuxiliares.Descripcion;
 
-        DescGama_btc := '';
-        TextosAuxiliares.Reset();
-        if TextosAuxiliares.Get(TextosAuxiliares.TipoTabla::ClasificacionVentas, TextosAuxiliares.TipoRegistro::Tabla, REc.selGama_btc) then
-            DescGama_btc := TextosAuxiliares.Descripcion;
+          DescGama_btc := '';
+          TextosAuxiliares.Reset();
+          if TextosAuxiliares.Get(TextosAuxiliares.TipoTabla::Gamma, TextosAuxiliares.TipoRegistro::Tabla, REc.selGama_btc) then
+              DescGama_btc := TextosAuxiliares.Descripcion;
 
-        DescLineaEconomica := '';
-        TextosAuxiliares.Reset();
-        if TextosAuxiliares.Get(TextosAuxiliares.TipoTabla::ClasificacionVentas, TextosAuxiliares.TipoRegistro::Tabla, REc.selLineaEconomica_btc) then
-            DescLineaEconomica := TextosAuxiliares.Descripcion;
-    end;
+          DescLineaEconomica := '';
+          TextosAuxiliares.Reset();
+          if TextosAuxiliares.Get(TextosAuxiliares.TipoTabla::LineaEconomica, TextosAuxiliares.TipoRegistro::Tabla, REc.selLineaEconomica_btc) then
+              DescLineaEconomica := TextosAuxiliares.Descripcion;
+      end;
 
-    var
-        DescClasVtas_btc: Text;
-        DescFamilia_btc: Text;
-        DescGama_btc: Text;
-        DescLineaEconomica: Text;
+      var
+          DescClasVtas_btc: Text;
+          DescFamilia_btc: Text;
+          DescGama_btc: Text;
+          DescLineaEconomica: Text;*/
 
 }

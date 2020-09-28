@@ -9,11 +9,6 @@ codeunit 50101 "Eventos_btc"
 
     end;
 
-
-
-
-
-
     [EventSubscriber(ObjectType::Page, Page::"Sales Quote", 'OnAfterActionEvent', 'Release', true, true)]
     local procedure P_SalesQuote_OnAfterActionEvent(VAR Rec: Record "Sales Header")
     var
@@ -711,4 +706,5 @@ codeunit 50101 "Eventos_btc"
             DimensionValue.Modify();
         end;
     end;
+
 }

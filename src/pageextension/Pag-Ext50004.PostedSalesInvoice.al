@@ -55,12 +55,13 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                     Funciones: Codeunit Funciones;
                     ExtDocNo: Text[35];
                     WorkDescription: text;
+                    AreaManager: Code[20];
                 begin
                     PediDatos.LookupMode := true;
                     PediDatos.SetDatos(rec);
                     if PediDatos.RunModal() = Action::LookupOK then begin
-                        PediDatos.GetDatos(ExtDocNo, WorkDescription);
-                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription);
+                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager);
+                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription, AreaManager);
                     end;
                 end;
 

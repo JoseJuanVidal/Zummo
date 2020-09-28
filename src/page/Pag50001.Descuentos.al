@@ -16,7 +16,7 @@ page 50001 Descuentos
             }
             field(DescuentoProntoPago; DescuentoProntoPago)
             {
-                ApplicationArea = All;    
+                ApplicationArea = All;
             }
         }
     }
@@ -43,8 +43,8 @@ page 50001 Descuentos
         SalesLine.SetFilter(Type, '%1|%2', SalesLine.Type::Item, SalesLine.Type::"G/L Account");
         if SalesLine.FindSet() then begin
             repeat
-                  SalesLine.validate("Pmt. Discount Amount",
-                (SalesLine."Line Amount" - SalesLine."Inv. Discount Amount") * DescuentoProntoPago / 100);
+                SalesLine.validate("Pmt. Discount Amount",
+              (SalesLine."Line Amount" - SalesLine."Inv. Discount Amount") * DescuentoProntoPago / 100);
                 SalesLine.Modify();
             until SalesLine.Next() = 0;
         end;

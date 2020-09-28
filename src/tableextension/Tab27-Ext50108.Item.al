@@ -209,6 +209,33 @@ tableextension 50108 "Item" extends Item  //27
             Editable = true;
             Caption = 'Tasa RAEE ', comment = 'ESP="Tasa RAEE"';
         }
-
+        field(50020; desClasVtas_btc; text[100])
+        {
+            Caption = 'Desc. Sales Classification', comment = 'ESP="Desc. Clasificación Ventas"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup (TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(ClasificacionVentas), NumReg = field(selClasVtas_btc)));
+        }
+        field(50021; desFamilia_btc; text[100])
+        {
+            Caption = 'Desc. Familia', comment = 'ESP="Desc. Familia"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup (TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(Familia), NumReg = field(selFamilia_btc)));
+        }
+        field(50022; desGama_btc; text[100])
+        {
+            Caption = 'Desc. Gamma', comment = 'ESP="Desc. Gama"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup (TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(Gamma), NumReg = field(selGama_btc)));
+        }
+        field(50023; desLineaEconomica_btc; text[100])
+        {
+            Caption = 'Desc. Linea Economica', comment = 'ESP="Desc. Linea Economica"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup (TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(LineaEconomica), NumReg = field(selLineaEconomica_btc)));
+        }
     }
 }
