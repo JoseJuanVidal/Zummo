@@ -2482,6 +2482,8 @@
         <PageWidth>21cm</PageWidth>
         <InteractiveHeight>11in</InteractiveHeight>
         <InteractiveWidth>8.5in</InteractiveWidth>
+        <LeftMargin>0.5cm</LeftMargin>
+        <TopMargin>0.5cm</TopMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
