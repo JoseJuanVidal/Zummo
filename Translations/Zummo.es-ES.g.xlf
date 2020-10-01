@@ -12219,6 +12219,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemReclassJournal - Action BinContentDestino - Property ToolTip</note>
           <target>Permite ver elementos en la ubicación si la línea seleccionada contiene un código de ubicación.</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2577929481 - Action 3242406439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
+          <source>Posted Purchase Receipt Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Accounting Manager Role Ext - Action PostedPurchaseReceiptLinesAction - Property Caption</note>
+          <target>Hist. líns. albs. compra</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2577929481 - Action 2865644526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
+          <source>Posted Sales Shipment Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. venta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Accounting Manager Role Ext - Action PostedSalesShipmentLinesAction - Property Caption</note>
+          <target>Hist. líns. albs. venta</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1994005900 - Control 3035610829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>It allows to indicate the reason for which it has been blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite indicar el motivo por el cual ha sido bloqueado"</note>
