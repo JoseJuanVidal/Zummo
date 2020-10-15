@@ -453,6 +453,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field Cod. Contrato Laboral - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3967757774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account Translation</source>
+          <note from="Developer" annotates="general" priority="2">Traducción Cuentas</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Account Translation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3967757774 - Field 3852983238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account No.</source>
+          <note from="Developer" annotates="general" priority="2">Nº cuenta</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Account Translation - Field G/L Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3967757774 - Field 2273653569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Language Code</source>
+          <note from="Developer" annotates="general" priority="2">Cód. idioma</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Account Translation - Field Language Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3967757774 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">Descripción</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Account Translation - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3967757774 - Field 47657272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description 2</source>
+          <note from="Developer" annotates="general" priority="2">Descripción 2</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Account Translation - Field Description 2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 671662900 - Field 2483678830 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source> , , , ,Categorías, , , ,Historico Puestos,Historico Contratos,Historico Categoria</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -787,6 +812,11 @@
           <source>Area Manager</source>
           <note from="Developer" annotates="general" priority="2">Area Manager</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control AreaManager_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3748485659 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account Translations</source>
+          <note from="Developer" annotates="general" priority="2">Traducción cuenta</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Account Translations - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 806151863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comments</source>
@@ -11137,6 +11167,16 @@
           <source>Account: %1 created successfully</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cuenta: %1 creada correctamente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GLAccountCard - Action Copiar - Method OnAction - NamedType lbCuentaCreadaMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2009136746 - Action 2653012956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4219821699">
+          <source>Translations</source>
+          <note from="Developer" annotates="general" priority="2">Traducciones</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GLAccountCard - Action Translations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2009136746 - Action 2653012956 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4219821699">
+          <source>View or edit translated G/L Account descriptions. Translated item descriptions are automatically inserted on documents according to the language code.</source>
+          <note from="Developer" annotates="general" priority="2">Permite ver o editar las descripciones de las cuentas traducidas. Tales descripciones se insertan automáticamente en los documentos según el código de idioma.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GLAccountCard - Action Translations - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2079742947 - Action 2041919970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
           <source>Expedition Labels</source>

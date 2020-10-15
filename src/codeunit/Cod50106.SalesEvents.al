@@ -1068,4 +1068,24 @@ codeunit 50106 "SalesEvents"
             end;
         end;
     end;
+
+    [EventSubscriber(ObjectType::Table, database::"Sales Line", 'OnAfterAssignGLAccountValues', '', false, false)]
+    local procedure SalesLineOnAfterAssignGLAccountValues(VAR SalesLine: Record "Sales Line"; GLAccount: Record "G/L Account")
+    var
+        SalesHeader: Record "Sales Header";
+        AccountTranslation: Record "Account Translation";
+    begin
+        //171241
+        case SalesLine.Type of
+            SalesLine.Type::"G/L Account":
+                begin
+                    if SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then
+                        if SalesHeader."Language Code" <> '' then
+                            if AccountTranslation.GET(SalesLine."No.", SalesHeader."Language Code") then begin
+                                SalesLine.Description := AccountTranslation.Description;
+                                SalesLine."Description 2" := AccountTranslation."Description 2";
+                            end;
+                end;
+        end;
+    end;
 }

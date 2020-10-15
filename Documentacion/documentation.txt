@@ -18,3 +18,4 @@ id 165118 - JJV - Maria - DESCUENTO ERRONEO, calculo del dto de factura en las l
         verificamos que cuando se indica un dto de factura, campos añadido % Dto. Factura (50199)
 id 165646 - JJV Natalia - en el informe historico de factura de venta, el caption de % Dto Factura, lo pone mal, 3%  pone 46%
         equivocación a la hora de calcular el % de dto,  "Invoice Discount Value", se sustituye por "Invoice Discount Amount"
+id 171241 - JJV Clara - poner en la cuentas contables traducciones para los pedidos de venta a idioma = ENU
