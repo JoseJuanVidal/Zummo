@@ -11038,6 +11038,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Permite validar productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field PermiteValidarProcutos_bc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 1285670092 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Imp. Ped. Venta mostrar comentarios</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imp. Ped. Venta mostrar comentarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field ImprimirPedVentaComentarios - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1682009332 - Action 1545044866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Cambiar Doc. Externo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Doc. Externo"</note>
@@ -11653,11 +11658,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Inserta como comentarios de pedido los comentarios que haya en la tabla de comentarios predefinidos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesInvoice - Action InsertarComentariosPredefinidos - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 927944371 - Action 4214745870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
-          <source>Descuentos Fact/PP</source>
-          <note from="Developer" annotates="general" priority="2">Descuentos Fact/PP</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesInvoice - Action DescuentosFacyPP - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 927944371 - Action 2890590632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>P&amp;ost</source>
           <note from="Developer" annotates="general" priority="2">ESP="R&amp;egistrar"</note>
@@ -11962,11 +11962,6 @@
           <source>Impimir Fact.Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action Impimir Pedido - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 4214745870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Descuentos Fact/PP</source>
-          <note from="Developer" annotates="general" priority="2">Descuentos Fact/PP</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action DescuentosFacyPP - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 647151006 - Action 4044259790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 280137910">
           <source>Insert predefined comments</source>

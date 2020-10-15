@@ -9,5 +9,10 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             DataClassification = CustomerContent;
             Caption = 'Allows to validate items', comment = 'ESP="Permite validar productos"';
         }
+        field(50101; ImprimirPedVentaComentarios; boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Imp. Ped. Venta mostrar comentarios', comment = 'ESP="Imp. Ped. Venta mostrar comentarios"';
+        }
     }
 }

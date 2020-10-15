@@ -4,6 +4,14 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
 
     layout
     {
+        modify("Order No.")
+        {
+            Visible = true;
+        }
+        modify("Order Line No.")
+        {
+            Visible = true;
+        }
         addafter("Document No.")
         {
             field("External Document No."; "External Document No.") { }

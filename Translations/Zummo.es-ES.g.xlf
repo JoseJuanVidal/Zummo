@@ -11795,6 +11795,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field PermiteValidarProcutos_bc - Property Caption</note>
           <target>Permite validar productos</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 1285670092 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Imp. Ped. Venta mostrar comentarios</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imp. Ped. Venta mostrar comentarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field ImprimirPedVentaComentarios - Property Caption</note>
+          <target>Imp. Ped. Venta mostrar comentarios</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1682009332 - Action 1545044866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Cambiar Doc. Externo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Doc. Externo"</note>

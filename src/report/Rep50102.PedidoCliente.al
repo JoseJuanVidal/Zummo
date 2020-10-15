@@ -1794,7 +1794,7 @@ report 50102 "PedidoCliente"
 
     requestpage
     {
-        SaveValues = true;
+        SaveValues = False;
 
         layout
         {
@@ -1891,6 +1891,10 @@ report 50102 "PedidoCliente"
             InitLogInteraction();
 
             LogInteractionEnable := LogInteraction;
+            // si es almacen ponemos la marca de mostrar comentarios internos
+            if UserSetup.Get(UserId) then
+                if UserSetup.ImprimirPedVentaComentarios then
+                    boolShowInterComment := true;
         end;
     }
 
@@ -1939,6 +1943,7 @@ report 50102 "PedidoCliente"
     end;
 
     var
+        UserSetup: Record "User Setup";
         txtOferta: Text;
         cantidadSalesLine: Decimal;
         txtOfertaLbl: Text;
