@@ -13,7 +13,7 @@
             "breakOnError": true,
             "breakOnRecordWrite": false,
             "launchBrowser": false,
-            "schemaUpdateMode": "ForceSync"
+            "schemaUpdateMode": "Synchronize"
         },
         {
             "name": "Localhost",
