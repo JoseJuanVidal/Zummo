@@ -11,7 +11,7 @@ table 50113 "Account Translation"
         {
             Caption = 'G/L Account No.', Comment = 'Nº cuenta';
             NotBlank = true;
-            TableRelation = Item;
+            TableRelation = "G/L Account";
         }
         field(2; "Language Code"; Code[10])
         {

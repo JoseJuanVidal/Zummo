@@ -67,7 +67,7 @@ pageextension 50012 "GLAccountCard" extends "G/L Account Card"
             {
                 //171241
                 ApplicationArea = all;
-                Caption = 'Translations', Comment = 'Traducciones';
+                Caption = 'Translations', Comment = 'ESP="Traducciones"';
                 Image = Translations;
                 Promoted = true;
                 PromotedCategory = Category4;
@@ -75,7 +75,7 @@ pageextension 50012 "GLAccountCard" extends "G/L Account Card"
                 RunObject = Page "Account Translations";
                 RunPageLink = "G/L Account No." = FIELD("No.");
                 ToolTip = 'View or edit translated G/L Account descriptions. Translated item descriptions are automatically inserted on documents according to the language code.'
-                     , Comment = 'Permite ver o editar las descripciones de las cuentas traducidas. Tales descripciones se insertan automáticamente en los documentos según el código de idioma.';
+                     , Comment = 'ESP="Permite ver o editar las descripciones de las cuentas traducidas. Tales descripciones se insertan automáticamente en los documentos según el código de idioma."';
             }
         }
     }

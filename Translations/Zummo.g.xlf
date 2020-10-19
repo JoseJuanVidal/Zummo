@@ -11170,12 +11170,12 @@
         </trans-unit>
         <trans-unit id="PageExtension 2009136746 - Action 2653012956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4219821699">
           <source>Translations</source>
-          <note from="Developer" annotates="general" priority="2">Traducciones</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GLAccountCard - Action Translations - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2009136746 - Action 2653012956 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4219821699">
           <source>View or edit translated G/L Account descriptions. Translated item descriptions are automatically inserted on documents according to the language code.</source>
-          <note from="Developer" annotates="general" priority="2">Permite ver o editar las descripciones de las cuentas traducidas. Tales descripciones se insertan automáticamente en los documentos según el código de idioma.</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Permite ver o editar las descripciones de las cuentas traducidas. Tales descripciones se insertan automáticamente en los documentos según el código de idioma."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GLAccountCard - Action Translations - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2079742947 - Action 2041919970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">

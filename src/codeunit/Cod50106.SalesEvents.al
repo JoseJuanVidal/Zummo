@@ -1033,41 +1033,64 @@ codeunit 50106 "SalesEvents"
             rec.FechaAltaPedido := Today;
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterUpdateAmountsDone', '', false, false)]
-    local procedure SalesLineOnAfterUpdateAmountsDone(VAR SalesLine: Record "Sales Line"; VAR xSalesLine: Record "Sales Line"; CurrentFieldNo: Integer)
-    var
-        SalesHeader: Record "Sales Header";
-        Currency: record Currency;
-        SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
-        AmountWithDiscountAllowed: Decimal;
-        DocumentTotals: Codeunit "Document Totals";
-        InvoiceDiscountAmount: Decimal;
-        LineAmountToInvoice: Decimal;
-    begin
-        // 165118 - Calcular a las lineas el dto de factura por importe aplicado en el campo Sales header 50199 % Dto Factura
-        if SalesHeader.GET(SalesLine."Document Type", SalesLine."Document No.") then begin
-            Currency.InitRoundingPrecision;
-            // Calcular en la linea el descuento de pronto pago
-            if SalesHeader.DescuentoProntoPago <> 0 then
-                SalesLine."Pmt. Discount Amount" := ROUND(((SalesLine."Line Amount" - SalesLine."Inv. Discount Amount") * SalesHeader.DescuentoProntoPago / 100)
-                            , Currency."Amount Rounding Precision");
-            if SalesHeader.DescuentoFactura <> 0 then begin
-                if SalesLine.Quantity <> 0 then begin
-                    IF SalesHeader."Invoice Discount Calculation" = SalesHeader."Invoice Discount Calculation"::Amount then begin
-                        SalesLine."Inv. Discount Amount" := ROUND((SalesLine."Line Amount" * SalesHeader.DescuentoFactura / 100)
-                                    , Currency."Amount Rounding Precision");
-                        LineAmountToInvoice := ROUND(SalesLine."Line Amount" * SalesLine."Qty. to Invoice" / SalesLine.Quantity, Currency."Amount Rounding Precision");
-                        SalesLine."Inv. Disc. Amount to Invoice" := ROUND((LineAmountToInvoice * SalesHeader.DescuentoFactura / 100)
-                                                    , Currency."Amount Rounding Precision");
+    /*  [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterUpdateAmountsDone', '', false, false)]
+      local procedure SalesLineOnAfterUpdateAmountsDone(VAR SalesLine: Record "Sales Line"; VAR xSalesLine: Record "Sales Line"; CurrentFieldNo: Integer)
+      var
+          SalesHeader: Record "Sales Header";
+          Item: Record Item;
+          GLAccount: Record "G/L Account";
+          Currency: record Currency;
+          SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
+          AmountWithDiscountAllowed: Decimal;
+          DocumentTotals: Codeunit "Document Totals";
+          InvoiceDiscountAmount: Decimal;
+          LineAmountToInvoice: Decimal;
+      begin
+          // 165118 - Calcular a las lineas el dto de factura por importe aplicado en el campo Sales header 50199 % Dto Factura
+          if SalesHeader.GET(SalesLine."Document Type", SalesLine."Document No.") then begin
+              Currency.InitRoundingPrecision;
+              // Calcular en la linea el descuento de pronto pago
+              if SalesHeader.DescuentoProntoPago <> 0 then
+                  SalesLine."Pmt. Discount Amount" := ROUND(((SalesLine."Line Amount" - SalesLine."Inv. Discount Amount") * SalesHeader.DescuentoProntoPago / 100)
+                              , Currency."Amount Rounding Precision");
+              if SalesHeader.DescuentoFactura <> 0 then begin
+                  if SalesLine.Quantity <> 0 then begin
+                      IF SalesHeader."Invoice Discount Calculation" = SalesHeader."Invoice Discount Calculation"::Amount then begin
+                          case SalesLine.Type of
+                              SalesLine.Type::Item:
+                                  begin
+                                      if item.get(SalesLine."No.") then begin
+                                          if item."Allow Invoice Disc." then begin
+                                              SalesLine."Inv. Discount Amount" := ROUND((SalesLine."Line Amount" * SalesHeader.DescuentoFactura / 100)
+                                                          , Currency."Amount Rounding Precision");
+                                              LineAmountToInvoice := ROUND(SalesLine."Line Amount" * SalesLine."Qty. to Invoice" / SalesLine.Quantity, Currency."Amount Rounding Precision");
+                                              SalesLine."Inv. Disc. Amount to Invoice" := ROUND((LineAmountToInvoice * SalesHeader.DescuentoFactura / 100)
+                                                                          , Currency."Amount Rounding Precision");
+                                          end;
+                                      end;
+                                  end;
+                                  SalesLine.Type::"G/L Account":
+                                  begin
+                                      if GLAccount.Get(SalesLine."No.")then begin 
+                                          if GLAccount.InvoiceDiscountAllowed() then begin 
+                                             SalesLine."Inv. Discount Amount" := ROUND((SalesLine."Line Amount" * SalesHeader.DescuentoFactura / 100)
+                                                          , Currency."Amount Rounding Precision");
+                                              LineAmountToInvoice := ROUND(SalesLine."Line Amount" * SalesLine."Qty. to Invoice" / SalesLine.Quantity, Currency."Amount Rounding Precision");
+                                              SalesLine."Inv. Disc. Amount to Invoice" := ROUND((LineAmountToInvoice * SalesHeader.DescuentoFactura / 100)
+                                                                          , Currency."Amount Rounding Precision");  
+                                          end;
+                                      end;
+                                  end;
+                          end;
 
-                    end else begin
+                      end else begin
 
-                    end;
-                end;
+                      end;
+                  end;
 
-            end;
-        end;
-    end;
+              end;
+          end;
+      end;*/
 
     [EventSubscriber(ObjectType::Table, database::"Sales Line", 'OnAfterAssignGLAccountValues', '', false, false)]
     local procedure SalesLineOnAfterAssignGLAccountValues(VAR SalesLine: Record "Sales Line"; GLAccount: Record "G/L Account")
