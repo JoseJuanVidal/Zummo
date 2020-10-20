@@ -1,7 +1,7 @@
 table 50113 "Account Translation"
 {
     //171241
-    Caption = 'Account Translation', Comment = 'Traducción Cuentas';
+    Caption = 'Account Translation', Comment = 'ESP="Traducción Cuentas"';
     DataCaptionFields = "G/L Account No.", "Language Code", Description;
     LookupPageID = "Account Translations";
 
@@ -9,23 +9,23 @@ table 50113 "Account Translation"
     {
         field(1; "G/L Account No."; Code[20])
         {
-            Caption = 'G/L Account No.', Comment = 'Nº cuenta';
+            Caption = 'G/L Account No.', Comment = 'ESP="Nº cuenta"';
             NotBlank = true;
             TableRelation = "G/L Account";
         }
         field(2; "Language Code"; Code[10])
         {
-            Caption = 'Language Code', Comment = 'Cód. idioma';
+            Caption = 'Language Code', Comment = 'ESP="Cód. idioma"';
             NotBlank = true;
             TableRelation = Language;
         }
         field(3; Description; Text[100])
         {
-            Caption = 'Description', Comment = 'Descripción';
+            Caption = 'Description', Comment = 'ESP="Descripción"';
         }
         field(4; "Description 2"; Text[50])
         {
-            Caption = 'Description 2', Comment = 'Descripción 2';
+            Caption = 'Description 2', Comment = 'ESP="Descripción 2"';
         }
     }
 

@@ -1,7 +1,7 @@
 page 50008 "Account Translations"
 {
     //171241
-    Caption = 'Account Translations', comment = 'Traducción cuenta';
+    Caption = 'Account Translations', comment = 'ESP="Traducción cuenta"';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Administration;
@@ -16,6 +16,7 @@ page 50008 "Account Translations"
                 field("G/L Account No."; "G/L Account No.")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("Language Code"; "Language Code")
                 {
