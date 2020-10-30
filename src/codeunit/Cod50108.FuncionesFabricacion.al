@@ -931,4 +931,71 @@ codeunit 50108 "FuncionesFabricacion"
             END;
         end;
     end;
+
+    procedure CalcDisponble(StockkeepingUnit: record "Stockkeeping Unit"; var BalanceConOfertas: Decimal; var BalanceSinOfertas: decimal)
+    var
+        InventorySetup: Record "Inventory Setup";
+    begin
+        InventorySetup.Get();
+        BalanceConOfertas := 0;
+        BalanceSinOfertas := 0;
+        //BalanceConOfertas := Inventory + "Qty. on Assembly Order" + "Qty. on Prod. Order" + "Qty. on Purch. Order" + "Trans. Ord. Receipt (Qty.)"
+        //    - "Qty. on Asm. Component" - "Qty. on Component Lines" - "Qty. on Job Order" - "Qty. on Sales Order" - "Qty. on Service Order"
+        //    - "Trans. Ord. Shipment (Qty.)" - QtyonQuotesOrder - "Cant_ componentes Oferta";
+        //BalanceSinOfertas := Inventory + "Qty. on Assembly Order" + "Qty. on Prod. Order" + "Qty. on Purch. Order" + "Trans. Ord. Receipt (Qty.)"
+        //    - "Qty. on Asm. Component" - "Qty. on Component Lines" - "Qt
+        if InventorySetup.Inventory then begin
+            BalanceConOfertas := StockkeepingUnit.Inventory;
+            BalanceSinOfertas := StockkeepingUnit.Inventory;
+        end;
+        if InventorySetup."Qty. on Assembly Order" then begin
+            BalanceConOfertas += StockkeepingUnit."Qty. on Assembly Order";
+            BalanceSinOfertas += StockkeepingUnit."Qty. on Assembly Order";
+        end;
+        if InventorySetup."Qty. on Prod. Order" then begin
+            BalanceConOfertas += StockkeepingUnit."Qty. on Prod. Order";
+            BalanceSinOfertas += StockkeepingUnit."Qty. on Prod. Order";
+        end;
+        if InventorySetup."Qty. on Purch. Order" then begin
+            BalanceConOfertas += StockkeepingUnit."Qty. on Purch. Order";
+            BalanceSinOfertas += StockkeepingUnit."Qty. on Purch. Order";
+        end;
+        if InventorySetup."Trans. Ord. Receipt (Qty.)" then begin
+            BalanceConOfertas += StockkeepingUnit."Trans. Ord. Receipt (Qty.)";
+            BalanceSinOfertas += StockkeepingUnit."Trans. Ord. Receipt (Qty.)";
+        end;
+        if InventorySetup."Qty. on Asm. Component" then begin
+            BalanceConOfertas -= StockkeepingUnit."Qty. on Asm. Component";
+            BalanceSinOfertas -= StockkeepingUnit."Qty. on Asm. Component";
+        end;
+        if InventorySetup."Qty. on Component Lines" then begin
+            BalanceConOfertas -= StockkeepingUnit."Qty. on Component Lines";
+            BalanceSinOfertas -= StockkeepingUnit."Qty. on Component Lines";
+        end;
+        if InventorySetup."Qty. on Job Order" then begin
+            BalanceConOfertas -= StockkeepingUnit."Qty. on Job Order";
+            BalanceSinOfertas -= StockkeepingUnit."Qty. on Job Order";
+        end;
+        if InventorySetup."Qty. on Sales Order" then begin
+            BalanceConOfertas -= StockkeepingUnit."Qty. on Sales Order";
+            BalanceSinOfertas -= StockkeepingUnit."Qty. on Sales Order";
+        end;
+        if InventorySetup."Qty. on Service Order" then begin
+            BalanceConOfertas -= StockkeepingUnit."Qty. on Service Order";
+            BalanceSinOfertas -= StockkeepingUnit."Qty. on Service Order";
+        end;
+        if InventorySetup."Trans. Ord. Shipment (Qty.)" then begin
+            BalanceConOfertas -= StockkeepingUnit."Trans. Ord. Shipment (Qty.)";
+            BalanceSinOfertas -= StockkeepingUnit."Trans. Ord. Shipment (Qty.)";
+        end;
+        if InventorySetup."Qty. on Sales Quote" then begin
+            BalanceConOfertas -= StockkeepingUnit.QtyonQuotesOrder;
+        end;
+        if InventorySetup."Qty. on Component Quote" then begin
+            BalanceConOfertas -= StockkeepingUnit."Cant_ componentes Oferta";
+        end;
+
+
+
+    end;
 }

@@ -3,7 +3,7 @@ page 50132 "StockPerAlmacen"
 
     PageType = ListPart;
     SourceTable = "Stockkeeping Unit";
-    Caption = 'Location Stock', comment = 'ESP="StockPorAlmacen"';
+    Caption = 'Location Stock', comment = 'ESP="Stock por Almacen"';
 
     layout
     {
@@ -80,8 +80,16 @@ page 50132 "StockPerAlmacen"
                 {
                     Caption = '(-)Cant. componentes Oferta';
                 }
-                field(BalanceConOfertas; BalanceConOfertas) { }
-                field(BalanceSinOfertas; BalanceSinOfertas) { }
+                field(BalanceConOfertas; BalanceConOfertas)
+                {
+                    Caption = 'Balance con Ofertas', comment = 'ESP="Balance con Ofertas"';
+                    Editable = false;
+                }
+                field(BalanceSinOfertas; BalanceSinOfertas)
+                {
+                    Caption = 'Balance sin Ofertas', comment = 'ESP="Balance sin Ofertas"';
+                    Editable = false;
+                }
                 field(Ordenacion; Ordenacion)
                 {
 
@@ -99,17 +107,19 @@ page 50132 "StockPerAlmacen"
 
     trigger OnAfterGetRecord()
     VAR
-
+        InventorySetup: Record "Inventory Setup";
+        FuncFabricacion: Codeunit FuncionesFabricacion;
     begin
+        InventorySetup.Get();
         BalanceConOfertas := 0;
-        BalanceConOfertas := Inventory + "Qty. on Assembly Order" + "Qty. on Prod. Order" + "Qty. on Purch. Order" + "Trans. Ord. Receipt (Qty.)"
-            - "Qty. on Asm. Component" - "Qty. on Component Lines" - "Qty. on Job Order" - "Qty. on Sales Order" - "Qty. on Service Order"
-            - "Trans. Ord. Shipment (Qty.)" - QtyonQuotesOrder - "Cant_ componentes Oferta";
         BalanceSinOfertas := 0;
-        BalanceSinOfertas := Inventory + "Qty. on Assembly Order" + "Qty. on Prod. Order" + "Qty. on Purch. Order" + "Trans. Ord. Receipt (Qty.)"
-            - "Qty. on Asm. Component" - "Qty. on Component Lines" - "Qty. on Job Order" - "Qty. on Sales Order" - "Qty. on Service Order"
-            - "Trans. Ord. Shipment (Qty.)";
-    END;
+        FuncFabricacion.CalcDisponble(rec, BalanceConOfertas, BalanceSinOfertas);
+        //BalanceConOfertas := Inventory + "Qty. on Assembly Order" + "Qty. on Prod. Order" + "Qty. on Purch. Order" + "Trans. Ord. Receipt (Qty.)"
+        //    - "Qty. on Asm. Component" - "Qty. on Component Lines" - "Qty. on Job Order" - "Qty. on Sales Order" - "Qty. on Service Order"
+        //    - "Trans. Ord. Shipment (Qty.)" - QtyonQuotesOrder - "Cant_ componentes Oferta";
+        //BalanceSinOfertas := Inventory + "Qty. on Assembly Order" + "Qty. on Prod. Order" + "Qty. on Purch. Order" + "Trans. Ord. Receipt (Qty.)"
+        //    - "Qty. on Asm. Component" - "Qty. on Component Lines" - "Qt        
+    end;
 
     var
         BalanceConOfertas: Decimal;

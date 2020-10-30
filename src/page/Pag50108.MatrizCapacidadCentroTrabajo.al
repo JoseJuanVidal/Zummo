@@ -87,6 +87,11 @@ page 50108 "MatrizCapacidadCentroTrabajo"
         END;
     end;
 
+    trigger OnAfterGetCurrRecord()
+    begin
+
+    end;
+
     local procedure GetColorCelda(MATRIX_CurrentColumnOrdinal: integer)
     var
     begin
@@ -590,7 +595,7 @@ page 50108 "MatrizCapacidadCentroTrabajo"
                 recProdOrdRutLine.SetRange("Prod. Order No.", recLinOp."Prod. Order No.");
                 if recProdOrdRutLine.FindFirst() then
                     if recProdOrdRutLine."Work Center No." = "No." then begin
-                              recTemp.Reset();
+                        recTemp.Reset();
                         recTemp.SetRange("Currency Code", recLinOp."Item No.");
                         if recTemp.FindFirst() then begin
                             recTemp."Column 1 Amt." += recLinOp."Remaining Quantity";
@@ -632,7 +637,7 @@ page 50108 "MatrizCapacidadCentroTrabajo"
         //La capacidad ya no se obtiene de la ficha del centro
         //recCapCentroTrabajo.SetRange(NumPersonas, Capacity);
         recCapCentroTrabajo.SetRange(NumPersonas, decCapCentroFecha);
-  
+
 
         //recCapCentroTrabajo.SetRange(CodProducto, codProductoFabricar);
         if not recCapCentroTrabajo.FindFirst() then begin
@@ -653,7 +658,7 @@ page 50108 "MatrizCapacidadCentroTrabajo"
             MATRIX_CellData[MATRIX_ColumnOrdinal] := decCantFabrPeriodo / recCapCentroTrabajo.NumOrdenesFab * 100 /// decCapCentroFecha
         else
             MATRIX_CellData[MATRIX_ColumnOrdinal] := 0;
-  
+
     end;
 
     procedure Load(MatrixColumns1: ARRAY[32] OF Text[1024]; VAR MatrixRecords1: ARRAY[32] OF Record Date; CurrentNoOfMatrixColumns: Integer)

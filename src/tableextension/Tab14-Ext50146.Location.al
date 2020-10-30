@@ -17,5 +17,10 @@ tableextension 50146 "Location" extends Location  //14
             Caption = 'Not allow "Ship and Invoice" without send complety', comment = 'ESP="No permitir "Enviar y Facturar" sin envio completo"';
             BlankZero = true;
         }
+        field(50102; CalculoPlanificaion; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Planned Calculation', comment = 'ESP="Calcular en Planificación"';
+        }
     }
 }

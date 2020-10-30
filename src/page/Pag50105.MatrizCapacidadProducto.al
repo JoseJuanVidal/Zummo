@@ -2,7 +2,7 @@ page 50105 "MatrizCapacidadProducto"
 {
     PageType = ListPart;
     SourceTable = Item;
-    SourceTableView = where ("Qty. on Prod. Order" = filter ('> 0'));
+    SourceTableView = where("Qty. on Prod. Order" = filter('> 0'));
     Caption = 'Capacity Item Matrix', comment = 'ESP="Matriz Capacidad productos"';
     Editable = false;
     DataCaptionExpression = '';
@@ -74,6 +74,7 @@ page 50105 "MatrizCapacidadProducto"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                //Visible = true;
 
                 trigger OnAction()
                 begin
@@ -400,6 +401,7 @@ page 50105 "MatrizCapacidadProducto"
         else
             recLinOp.SetFilter(FechaInicial_btc, '>=%1&<=%2', MatrixRecords[MATRIX_ColumnOrdinal]."Period Start", MatrixRecords[MATRIX_ColumnOrdinal]."Period End");
 
+        recLinOp.SetFilter("Starting Date", recLinOp.GetFilter(FechaInicial_btc));
         recLinOp.SetRange("Item No.", "No.");
 
         page.RunModal(50401, recLinOp);
@@ -446,12 +448,12 @@ page 50105 "MatrizCapacidadProducto"
         pageLista: Page "Work Center List";
         ProdOrderLine: Record "Prod. Order Line";
     begin
-        Rec.ClearMarks();
         clear(pageLista);
         CentroTrabajo.Reset();
         pageLista.LookupMode(true);
         if pageLista.RunModal() = Action::LookupOK then begin
             pageLista.GetRecord(CentroTrabajo);
+            Rec.ClearMarks();
             ProdOrderLine.reset;
             ProdOrderLine.SetFilter(Status, '<=3');
             ProdOrderLine.SetRange(CentroTrabajoCalculado_btc, CentroTrabajo."No.");
@@ -463,8 +465,24 @@ page 50105 "MatrizCapacidadProducto"
             end;
             rec.MarkedOnly;
         end
+    end;
 
-
+    procedure SetFiltrarCentro(CentroTrabajo: Record "Work Center")
+    var
+        ProdOrderLine: Record "Prod. Order Line";
+    begin
+        Rec.ClearMarks();
+        ProdOrderLine.reset;
+        ProdOrderLine.SetFilter(Status, '<=3');
+        ProdOrderLine.SetRange(CentroTrabajoCalculado_btc, CentroTrabajo."No.");
+        if ProdOrderLine.FindSet() then begin
+            repeat
+                rec.get(ProdOrderLine."Item No.");
+                rec.Mark(true);
+            until ProdOrderLine.Next() = 0;
+        end;
+        rec.MarkedOnly;
+        CurrPage.Update(false)
     end;
 
     var

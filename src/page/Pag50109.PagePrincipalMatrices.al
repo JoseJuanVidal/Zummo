@@ -141,6 +141,7 @@ page 50109 "PagePrincipalMatrices"
         RegeneraMatrices();
     end;
 
+
     local procedure RegeneraMatrices()
     begin
         MATRIX_CurrentSetLenght := ARRAYLEN(MATRIX_CaptionSet);
@@ -162,6 +163,13 @@ page 50109 "PagePrincipalMatrices"
             MATRIX_PrimKeyFirstCaptionInCu, MATRIX_CaptionSet, MATRIX_CaptionRange, MATRIX_CurrentSetLenght, MATRIX_MatrixRecords);
     end;
 
+    procedure SetCentro(CentroTrabajo: record "Work Center")
+    begin
+        CurrPage.MatrizProductos.Page.SetFiltrarCentro(CentroTrabajo);
+        CurrPage.MatrizProductos.Page.Update(true);
+
+    end;
+
     var
         PeriodType: Option Day,Week,Month,Quarter,Year,"Accounting Period";
         MATRIX_CaptionRange: Text;
@@ -173,4 +181,5 @@ page 50109 "PagePrincipalMatrices"
         MATRIX_CurrentSetLenght: Integer;
         MATRIX_MatrixRecords: array[32] of Record Date;
         MATRIX_CurrentNoOfColumns: Integer;
+        CentroNo: code[20];
 }

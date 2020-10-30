@@ -12,6 +12,13 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
         {
             Visible = true;
         }
+        addafter("Entry Type")
+        {
+            field(ItemType; ItemType)
+            {
+                Editable = false;
+            }
+        }
         addafter("Document No.")
         {
             field("External Document No."; "External Document No.") { }
@@ -99,8 +106,10 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
     begin
         CalcFields("Reserved Quantity");
         cantidadDisponible := "Remaining Quantity" - "Reserved Quantity";
+        if Item.Get("Item No.") then;
     end;
 
     var
+        Item: Record Item;
         cantidadDisponible: Decimal;
 }

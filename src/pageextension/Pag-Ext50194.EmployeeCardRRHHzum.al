@@ -2,12 +2,15 @@ pageextension 50194 "EmployeeCard_RRHH_zum" extends "Employee Card"
 {
     layout
     {
+        modify(Pager)
+        {
+            Caption = 'Skype Contact', comment = 'ESP="Contacto Skype"';
+            ToolTip = 'Addres Contact Skype', Comment = 'Direccion de contacto Skype';
+        }
         //Pestaña GENERAL
         addafter("Privacy Blocked")
         {
-            field("NIF"; "NIF_zum")
-            {
-            }
+
             field(Sucursal; Sucursal_zum)
             {
 
@@ -55,6 +58,9 @@ pageextension 50194 "EmployeeCard_RRHH_zum" extends "Employee Card"
             {
             }
             field("Nacionalidad"; "Nacionalidad_zum")
+            {
+            }
+            field("NIF"; "NIF_zum")
             {
             }
             field("Fecha caducidad DNI"; "Fecha caducidad DNI_zum")

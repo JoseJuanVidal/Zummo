@@ -10,6 +10,10 @@ pageextension 50013 "LocationCard" extends "Location Card"
             {
                 ApplicationArea = All;
             }
+            field(CalculoPlanificaion; CalculoPlanificaion)
+            {
+                ApplicationArea = all;
+            }
 
         }
         addafter("Use ADCS")
