@@ -514,4 +514,40 @@ codeunit 50111 "Funciones"
         end;
     end;
 
+    procedure CheckandSetFilterOneLocation(var Item: Record Item)
+    var
+        Location: Record Location;
+        LocFilter: Text;
+        Text000: label 'No se puede realizar planificaicón con Agrupación y multiples filtros de Almacén', Comment = 'ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"';
+    begin
+        Location.SetFilter(Code, item.GetFilter("Location Filter"));
+        if Location.count > 1 then
+            Error(text000);
+        Location.Reset();
+        Location.SetRange(CalculoPlanificaion, true);
+        if Location.findset() then
+            repeat
+                if LocFilter <> '' then
+                    LocFilter += '|';
+                LocFilter += Location.Code;
+            Until Location.next() = 0;
+        Item.STHFilterLocation := Item.GetFilter("Location Filter");
+        if LocFilter <> '' then
+            Item.SetFilter("Location Filter", LocFilter);
+    end;
+
+    procedure ChangeFilterOneLocation(var InventoryProfile: Record "Inventory Profile"; var Item: record Item)
+    begin
+        if item.STHUseLocationGroup then begin
+            if Item.STHFilterLocation <> '' then begin
+                InventoryProfile.Reset();
+                InventoryProfile.ModifyAll("Location Code", Item.STHFilterLocation);
+            end
+        end
+    end;
+
+    procedure ResetFilterOneLocation(var Item: record Item)
+    begin
+        Item.SetFilter("Location Filter", item.STHFilterLocation);
+    end;
 }

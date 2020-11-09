@@ -20,13 +20,24 @@ page 50001 Descuentos
             }
         }
     }
-
+    var
+        DocumentTotals: Codeunit "Document Totals";
+        SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
+        DtoPorc: Boolean;
 
     trigger OnClosePage()
     begin
-        CalcularDescuentoTotal();
+        if DtoPorc then
+            CalcularDescuentoFacTotal()
+        else
+            CalcularDescuentoTotal();
         CalcularProntoPago;
         commit;
+    end;
+
+    procedure SetDtoPorc()
+    begin
+        DtoPorc := true;
     end;
 
     procedure CalcularProntoPago()
@@ -70,5 +81,35 @@ page 50001 Descuentos
         AmountWithDiscountAllowed := DocumentTotals.CalcTotalSalesAmountOnlyDiscountAllowed(SalesLine);
         InvoiceDiscountAmount := ROUND(AmountWithDiscountAllowed * DescuentoFactura / 100, Currency."Amount Rounding Precision");
         SalesCalcDiscByType.ApplyInvDiscBasedOnAmt(InvoiceDiscountAmount, Rec);
+    end;
+
+    procedure CalcularDescuentoFacTotal()
+    var
+        AmountWithDiscountAllowed: Decimal;
+        SalesLine: record "Sales Line";
+        InvoiceDiscountAmount: Decimal;
+        Currency: record Currency;
+    begin
+        Currency.InitRoundingPrecision;
+        SalesLine.reset;
+        SalesLine.SetRange("Document Type", Rec."Document Type");
+        SalesLine.SetRange("Document No.", Rec."No.");
+        SalesLine.FindFirst();
+        Rec."Invoice Discount Calculation" := Rec."Invoice Discount Calculation"::Amount;
+        Rec.Modify();
+        DocumentTotals.SalesDocTotalsNotUpToDate;
+        AmountWithDiscountAllowed := DocumentTotals.CalcTotalSalesAmountOnlyDiscountAllowed(SalesLine);
+        InvoiceDiscountAmount := ROUND(AmountWithDiscountAllowed * DescuentoFactura / 100, Currency."Amount Rounding Precision");
+        ValidateInvoiceDiscountAmount;
+    end;
+
+    local procedure ValidateInvoiceDiscountAmount()
+    var
+        SalesHeader: record "Sales Header";
+        SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
+    begin
+        SalesCalcDiscByType.ApplyInvDiscBasedOnAmt(DescuentoFactura, Rec);
+        DocumentTotals.SalesDocTotalsNotUpToDate;
+        CurrPage.UPDATE(FALSE);
     end;
 }

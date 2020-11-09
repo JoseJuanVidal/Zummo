@@ -31,7 +31,7 @@ tableextension 50108 "Item" extends Item  //27
             Editable = false;
             Caption = 'Work Center', comment = 'ESP="Centro Trabajo"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Routing Line"."Work Center No." where("Routing No." = field("Routing No."), "Work Center No." = filter(<> '')));
+            CalcFormula = lookup("Routing Line"."Work Center No." where("Routing No." = field("Routing No."), "Work Center No." = filter(<> '')));
             TableRelation = "Work Center";
         }
 
@@ -97,7 +97,7 @@ tableextension 50108 "Item" extends Item  //27
             Editable = false;
             Caption = 'Cant. en ofertas de venta', comment = 'ESP="Cant. en ofertas de venta"';
             FieldClass = FlowField;
-            CalcFormula = sum ("Sales Line"."Outstanding Quantity" where("Document Type" = const(Quote), FechaFinValOferta_btc = filter('>T')
+            CalcFormula = sum("Sales Line"."Outstanding Quantity" where("Document Type" = const(Quote), FechaFinValOferta_btc = filter('>T')
             , Type = const(Item), "No." = field("No.")));
             TableRelation = "Sales Line";
             trigger OnLookup()
@@ -134,7 +134,7 @@ tableextension 50108 "Item" extends Item  //27
             Editable = false;
             Caption = 'ProveedorBloqueado', comment = 'ESP="ProveedorBloqueado"';
             FieldClass = FlowField;
-            CalcFormula = exist (Vendor where("No." = field("Vendor No."), Blocked = const(All)));
+            CalcFormula = exist(Vendor where("No." = field("Vendor No."), Blocked = const(All)));
 
         }
 
@@ -143,7 +143,7 @@ tableextension 50108 "Item" extends Item  //27
             Editable = false;
             Caption = 'Cant. componentes Oferta', comment = 'ESP="Cant. componentes Oferta"';
             FieldClass = FlowField;
-            CalcFormula = sum ("Assembly Line"."Remaining Quantity"
+            CalcFormula = sum("Assembly Line"."Remaining Quantity"
             where
             ("Document Type" = const(Quote), "Fecha Fin Oferta_btc" = filter('>T')
             , Type = const(Item), "No." = field("No.")));
@@ -214,28 +214,47 @@ tableextension 50108 "Item" extends Item  //27
             Caption = 'Desc. Sales Classification', comment = 'ESP="Desc. Clasificación Ventas"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup (TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(ClasificacionVentas), NumReg = field(selClasVtas_btc)));
+            CalcFormula = lookup(TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(ClasificacionVentas), NumReg = field(selClasVtas_btc)));
         }
         field(50021; desFamilia_btc; text[100])
         {
             Caption = 'Desc. Familia', comment = 'ESP="Desc. Familia"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup (TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(Familia), NumReg = field(selFamilia_btc)));
+            CalcFormula = lookup(TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(Familia), NumReg = field(selFamilia_btc)));
         }
         field(50022; desGama_btc; text[100])
         {
             Caption = 'Desc. Gamma', comment = 'ESP="Desc. Gama"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup (TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(Gamma), NumReg = field(selGama_btc)));
+            CalcFormula = lookup(TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(Gamma), NumReg = field(selGama_btc)));
         }
         field(50023; desLineaEconomica_btc; text[100])
         {
             Caption = 'Desc. Linea Economica', comment = 'ESP="Desc. Linea Economica"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup (TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(LineaEconomica), NumReg = field(selLineaEconomica_btc)));
+            CalcFormula = lookup(TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(LineaEconomica), NumReg = field(selLineaEconomica_btc)));
+        }
+        Field(50024; StockSeguridadBase; Decimal) // campo que guarda la politica BASE del stock de seguridad, para poder cambiar politicas segun necesidad
+        {
+            Caption = 'Safety Stock Quantity (Base)', comment = 'Stock de seguridad (Base)';
+        }
+        Field(50101; "STHUseLocationGroup"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Usar Agrup. Almacenes', comment = 'ESP="Usar Agrup. Almacenes"';
+        }
+        field(50102; STHNoEvaluarPurchase; boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'No Contemplar Ped. Compra', comment = 'ESP="No Contemplar Ped. Compra"';
+        }
+        field(50103; STHFilterLocation; Code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'No Contemplar Ped. Compra', comment = 'ESP="No Contemplar Ped. Compra"';
         }
     }
 }

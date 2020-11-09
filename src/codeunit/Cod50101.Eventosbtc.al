@@ -635,7 +635,6 @@ codeunit 50101 "Eventos_btc"
     end;
 
 
-
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Shipment", 'OnAfterTransferOrderPostShipment', '', true, true)]
     local procedure CDU_TansPostShip_OnAfterTransferOrderPostShipment(var TransferHeader: Record "Transfer Header"; CommitIsSuppressed: Boolean; var TransferShipmentHeader: Record "Transfer Shipment Header")
     begin
@@ -706,5 +705,69 @@ codeunit 50101 "Eventos_btc"
             DimensionValue.Modify();
         end;
     end;
+    // aqui empezamos a controlar que cuando lancen el MRP de la hoja de planificación, si tienen marcado en workshhet agrupar inventario, 
+    // sumar los inventarios y necesidades de esto
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnBeforeCalculatePlanFromWorksheet', '', true, true)]
+    local procedure InventoryProfileOffsettingOnBeforeCalculatePlanFromWorksheet(VAR Item: Record Item; ManufacturingSetup2: Record "Manufacturing Setup";
+                TemplateName: Code[10]; WorksheetName: Code[10]; OrderDate: Date; ToDate: Date; MRPPlanning: Boolean; RespectPlanningParm: Boolean)
+    var
+        RequisitionWkshName: Record "Requisition Wksh. Name";
+    begin
+        if RequisitionWkshName.Get(TemplateName, WorksheetName) then begin
+            Item.STHUseLocationGroup := RequisitionWkshName.STHUseLocationGroup;
+            Item.Modify();
+        end;
+    end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnAfterCalculatePlanFromWorksheet', '', true, true)]
+    local procedure InventoryProfileOffsettingOnAfterCalculatePlanFromWorksheet(VAR Item: Record Item)
+    var
+        RequisitionWkshName: Record "Requisition Wksh. Name";
+    begin
+        Item.STHUseLocationGroup := false;
+        Item.Modify();
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnBeforeDemandToInvProfile', '', true, true)]
+    local procedure InventoryProfileOffsettingOnBeforeDemandToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; VAR IsHandled: Boolean)
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        if Item.STHUseLocationGroup then begin
+            Funciones.CheckandSetFilterOneLocation(Item);
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnAfterDemandToInvProfile', '', true, true)]
+    local procedure InventoryProfileOffsettingOnAfterDemandToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; VAR ReservEntry: Record "Reservation Entry"; VAR NextLineNo: Integer)
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        if item.STHUseLocationGroup then begin
+            Funciones.ChangeFilterOneLocation(InventoryProfile, Item);
+            Funciones.ResetFilterOneLocation(Item);
+        end;
+    end;
+
+    /*[EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnBeforeSupplyToInvProfile', '', true, true)]
+    local procedure InventoryProfileOffsettingOnBeforeSupplyToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; VAR ToDate: Date; VAR ReservEntry: Record "Reservation Entry"; VAR NextLineNo: Integer)
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        if Item.STHUseLocationGroup then begin
+            Funciones.CheckandSetFilterOneLocation(Item);
+        end;
+    end;*/
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnAfterSupplyToInvProfile', '', true, true)]
+    local procedure InventoryProfileOffsettingOnAfterSupplyToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; VAR ToDate: Date; VAR ReservEntry: Record "Reservation Entry"; VAR NextLineNo: Integer)
+
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        if item.STHUseLocationGroup then begin
+
+            Funciones.ResetFilterOneLocation(Item);
+        end;
+    end;
 }

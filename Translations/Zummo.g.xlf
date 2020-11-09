@@ -688,6 +688,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Compruebe que se haya seleccionado al menos un documento abierto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method PagDocsPostedBGAction - NamedType Text1100001Txt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3906917530 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No se puede realizar planificaicón con Agrupación y multiples filtros de Almacén</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckandSetFilterOneLocation - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3997019009 - NamedType 4134082808" size-unit="char" translate="yes" xml:space="preserve">
           <source>The file export has one or more errors.\\For each line to be exported, resolve the errors displayed to the right and then try to export again.</source>
           <note from="Developer" annotates="general" priority="2">ESP="La exportación del archivo tiene uno o más errores. \\ Para cada línea que se va a exportar, resuelva los errores que se muestran a la derecha y luego intente exportar nuevamente."</note>
@@ -11510,7 +11515,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 687362182 - Control 2886634905 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
           <source>Calculate Balance Qty.</source>
-          <note from="Developer" annotates="general" priority="2">Calcular cantidad Balance</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular Cantidad Balance"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Control CalcNeed - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2709291762 - Action 2990382772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3061233890">
@@ -12012,6 +12017,11 @@
           <source>Impimir Fact.Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action Impimir Pedido - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3617415722 - Action 2547518363 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Dto. %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto. %"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action DescuentosPorc - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 647151006 - Action 4044259790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 280137910">
           <source>Insert predefined comments</source>
@@ -12532,6 +12542,21 @@
           <source>Histórico de sucursal</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard_RRHH_zum - Control Puesto Subform - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 412658605 - Field 2268021548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1112259294">
+          <source>Usar Calculo Balance</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usar Calculo Balance"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHRequisitionWkshName - Field STHUseCalcPersonalizado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 412658605 - Field 603541938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1112259294">
+          <source>Usar Agrup. Almacenes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usar Agrup. Almacenes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHRequisitionWkshName - Field STHUseLocationGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 412658605 - Field 1547180927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1112259294">
+          <source>No Contemplar Ped. Compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No Contemplar Ped. Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHRequisitionWkshName - Field STHNoEvaluarPurchase - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Fecha.Rec.Mail</source>
@@ -13572,6 +13597,26 @@
           <source>Desc. Linea Economica</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desLineaEconomica_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 628197397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Safety Stock Quantity (Base)</source>
+          <note from="Developer" annotates="general" priority="2">Stock de seguridad (Base)</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field StockSeguridadBase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 603541938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Usar Agrup. Almacenes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usar Agrup. Almacenes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHUseLocationGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1547180927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>No Contemplar Ped. Compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No Contemplar Ped. Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHNoEvaluarPurchase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 906017942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>No Contemplar Ped. Compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No Contemplar Ped. Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHFilterLocation - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 494646383 - Field 1305804038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 494646383">
           <source>Cant. en ofertas de venta</source>

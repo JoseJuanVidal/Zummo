@@ -101,6 +101,15 @@ pageextension 50109 "ItemCard" extends "Item Card"
             }
         }
 
+        addafter("Safety Stock Quantity")
+        {
+            field(StockSeguridadBase; StockSeguridadBase)
+            {
+                ApplicationArea = all;
+            }
+
+        }
+
         modify("Reordering Policy")
         {
             trigger OnAfterValidate()

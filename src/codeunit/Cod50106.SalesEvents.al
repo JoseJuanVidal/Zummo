@@ -1111,4 +1111,11 @@ codeunit 50106 "SalesEvents"
                 end;
         end;
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Totals", 'OnAfterCalculateSalesSubPageTotals', '', false, false)]
+    local procedure DocumentTotalsOnAfterCalculateSalesSubPageTotals(VAR TotalSalesHeader: Record "Sales Header"; VAR TotalSalesLine: Record "Sales Line"; VAR VATAmount: Decimal; VAR InvoiceDiscountAmount: Decimal; VAR InvoiceDiscountPct: Decimal; VAR TotalSalesLine2: record "Sales Line")
+    begin
+        // TODO aqui hay que poner lo de los descuentos
+
+    end;
 }

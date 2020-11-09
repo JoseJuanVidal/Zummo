@@ -6,7 +6,7 @@ pageextension 50102 "STHInventorySetup" extends "Inventory Setup"
         {
             group(CalcNeed)
             {
-                Caption = 'Calculate Balance Qty.', comment = 'Calcular cantidad Balance';
+                Caption = 'Calculate Balance Qty.', comment = 'ESP="Calcular Cantidad Balance"';
 
                 field(Inventory; Inventory)
                 {

@@ -350,7 +350,45 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
                     SalesCalcDiscByType.ResetRecalculateInvoiceDisc(Rec);
                 end;
             }
+            action(DescuentosPorc)
+            {
+                ApplicationArea = All;
+                Caption = 'Dto. %', comment = 'ESP="Dto. %"';
+                //RunObject = page Descuentos;
+                //RunPageLink = "No." = field ("No."), "Document Type" = field ("Document Type");
+                trigger OnAction()
+                var
+                    SalesLine: record "Sales Line";
+                    DocumentTotals: Codeunit "Document Totals";
+                    SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
+                    pDescuento: page Descuentos;
+                    AmountWithDiscountAllowed: Decimal;
+                    InvoiceDiscountAmount: Decimal;
+                    Currency: record Currency;
+                begin
+                    commit;
+                    Currency.InitRoundingPrecision;
+                    SalesLine.reset;
+                    SalesLine.SetRange("Document Type", Rec."Document Type");
+                    SalesLine.SetRange("Document No.", Rec."No.");
+                    SalesLine.FindFirst();
 
+                    //page.RunModal(50001, Rec);
+                    /*pDescuento.SetDtoPorc();
+                    pDescuento.SetTableView(Rec);
+                    pDescuento.RunModal();*/
+                    //OpenSalesOrderStatistics;
+                    DocumentTotals.SalesDocTotalsNotUpToDate;
+                    AmountWithDiscountAllowed := DocumentTotals.CalcTotalSalesAmountOnlyDiscountAllowed(SalesLine);
+                    InvoiceDiscountAmount := ROUND(AmountWithDiscountAllowed * rec.DescuentoFactura / 100, Currency."Amount Rounding Precision");
+                    SalesCalcDiscByType.ApplyInvDiscBasedOnAmt(InvoiceDiscountAmount, rec);
+                    DocumentTotals.SalesDocTotalsNotUpToDate;
+
+                    CurrPage.UPDATE(FALSE);
+
+
+                end;
+            }
         }
     }
 
