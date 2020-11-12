@@ -4,10 +4,16 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
     {
         addafter("Replenishment System")
         {
-            field(Stock_btc; Stock_btc)
+            field(GlobStock_btc; GlobStock_btc)
             {
+                Caption = 'Stock', comment = 'ESP="Stock"';
                 ApplicationArea = All;
                 Editable = false;
+
+                trigger OnDrillDown()
+                begin
+                    ShowglobalStock;
+                end;
             }
 
             field(CantDis; globDecCantDisponible)
@@ -15,6 +21,11 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
                 Caption = 'Qty Available', comment = 'ESP="Cantidad disponible"';
                 ApplicationArea = All;
                 Editable = false;
+
+                trigger OnDrillDown()
+                begin
+                    ShowglobalDecLotSize(4);
+                end;
             }
 
             field(StockSeguridad_btc; globalDecStockSeguridad)
@@ -22,6 +33,27 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
                 ApplicationArea = All;
                 Editable = false;
                 Caption = 'Safety Stock', comment = 'ESP="Stock Seguridad"';
+            }
+            field(globalCantidadEncurso; globalCantidadEncurso)
+            {
+                Caption = 'Recepciones programadas';
+                Editable = false;
+
+                trigger OnDrillDown()
+                begin
+                    ShowglobalDecLotSize(2);
+                end;
+            }
+            field(globalDecLotSize; globalDecLotSize)
+            {
+                ApplicationArea = All;
+                Editable = false;
+                Caption = 'Necesidades', comment = 'ESP="Cantidad Comprometida"';
+
+                trigger OnDrillDown()
+                begin
+                    ShowglobalDecLotSize(0);
+                end;
             }
 
             field(PlazoDias_btc; globalPlazoDias)
@@ -46,32 +78,28 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
             }
 
 
-            field(globalDecLotSize; globalDecLotSize)
-            {
-                ApplicationArea = All;
-                Editable = false;
-                Caption = 'Cantidad Comprometida', comment = 'ESP="Cantidad Comprometida"';
-            }
+
             field(globalOfertas; globalOfertas)
             {
                 Caption = 'Cantidad Ofertas';
+                Editable = false;
             }
 
-            field(globalCantidadEncurso; globalCantidadEncurso)
-            {
-                Caption = 'Cantidad En Curso';
-            }
+
             field(globalContraStock; globalContraStock)
             {
                 Caption = 'ContraStock/ BajoPedido';
+                Editable = false;
             }
             field(globalPedidoMaximo; globalPedidoMaximo)
             {
                 Caption = 'Pedido Maximo';
+                Editable = false;
             }
             field(Estado; Estado)
             {
                 ApplicationArea = all;
+                Editable = false;
             }
 
         }
@@ -166,6 +194,7 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
 
     trigger OnAfterGetRecord()
     begin
+        GlobStock_btc := GetCantidadStock();
         globDecCantDisponible := GetCantidadDisponible();
         globalDecLotSize := GetCantidadRestar();
         globalCantidadEncurso := GetCantidadSumar();
@@ -236,9 +265,11 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
             exit(false);
     end;
 
-    local procedure GetCantidadDisponible(): Decimal
+    local procedure GetCantidadStock(): Decimal
     var
         recItem: Record Item;
+        RequisitionWkshName: Record "Requisition Wksh. Name";
+        Funciones: Codeunit Funciones;
         decCant: Decimal;
     begin
         decCant := 0;
@@ -257,6 +288,55 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
         recItem.SetRange("Location Filter", "Location Code");
         recItem.SetRange("Variant Filter", "Variant Code");
         //recItem.SetRange("Date Filter", "Starting Date", "Ending Date");
+
+        // si es seccion de agrupar almacenes
+        if RequisitionWkshName.Get("Worksheet Template Name", "Journal Batch Name") then begin
+            if RequisitionWkshName.STHUseLocationGroup then begin
+                Funciones.SetFilterLocations(recItem);
+            end;
+        end;
+
+        if not recItem.FindFirst() then
+            exit(0);
+
+        recItem.CalcFields(Inventory);
+
+        decCant := recItem.Inventory;
+
+        exit(decCant);
+    end;
+
+    local procedure GetCantidadDisponible(): Decimal
+    var
+        recItem: Record Item;
+        RequisitionWkshName: Record "Requisition Wksh. Name";
+        Funciones: Codeunit Funciones;
+        decCant: Decimal;
+    begin
+        decCant := 0;
+
+        if not recItem.Get("No.") then
+            exit(0);
+
+        /*
+        "Location Code" = FIELD("Location Code"),
+        "Variant Code" = FIELD("Variant Code"),
+        "Shipment Date" = FIELD("Order Date")
+        */
+
+        recItem.Reset();
+        recItem.SetRange("No.", "No.");
+        recItem.SetRange("Location Filter", "Location Code");
+        recItem.SetRange("Variant Filter", "Variant Code");
+        //recItem.SetRange("Date Filter", "Starting Date", "Ending Date");
+
+        // si es seccion de agrupar almacenes
+        if RequisitionWkshName.Get("Worksheet Template Name", "Journal Batch Name") then begin
+            if RequisitionWkshName.STHUseLocationGroup then begin
+                Funciones.SetFilterLocations(recItem);
+            end;
+        end;
+
         if not recItem.FindFirst() then
             exit(0);
 
@@ -290,6 +370,8 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
     local procedure GetCantidadRestar(): Decimal
     var
         recItem: Record Item;
+        RequisitionWkshName: Record "Requisition Wksh. Name";
+        Funciones: Codeunit Funciones;
         decCant: Decimal;
     begin
         decCant := 0;
@@ -308,6 +390,14 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
         recItem.SetRange("Location Filter", "Location Code");
         recItem.SetRange("Variant Filter", "Variant Code");
         //recItem.SetRange("Date Filter", "Starting Date", "Ending Date");
+
+        // si es seccion de agrupar almacenes
+        if RequisitionWkshName.Get("Worksheet Template Name") then begin
+            if RequisitionWkshName.STHUseLocationGroup then begin
+                Funciones.SetFilterLocations(recItem);
+            end;
+        end;
+
         if not recItem.FindFirst() then
             exit(0);
 
@@ -330,6 +420,8 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
     local procedure GetCantidadSumar(): Decimal
     var
         recItem: Record Item;
+        RequisitionWkshName: Record "Requisition Wksh. Name";
+        Funciones: Codeunit Funciones;
         decCant: Decimal;
     begin
         decCant := 0;
@@ -343,10 +435,18 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
         "Shipment Date" = FIELD("Order Date")
         */
 
+
         recItem.Reset();
         recItem.SetRange("No.", "No.");
         recItem.SetRange("Location Filter", "Location Code");
         recItem.SetRange("Variant Filter", "Variant Code");
+
+        // si es seccion de agrupar almacenes
+        if RequisitionWkshName.Get("Worksheet Template Name") then begin
+            if RequisitionWkshName.STHUseLocationGroup then begin
+                Funciones.SetFilterLocations(recItem);
+            end;
+        end;
         //recItem.SetRange("Date Filter", "Starting Date", "Ending Date");
         if not recItem.FindFirst() then
             exit(0);
@@ -367,6 +467,7 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
 
     var
         globalPlazoDias: DateFormula;
+        GlobStock_btc: Decimal;
         globDecCantDisponible: Decimal;
         globalOfertas: Decimal;
         globalDecStockSeguridad: Decimal;
@@ -380,4 +481,54 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
 
         globalContraStock: Option " ",ContraStock,BajoPedido;
         globalPedidoMaximo: Decimal;
+
+    local procedure ShowglobalDecLotSize(Wath: Integer)
+    var
+        recItem: Record Item;
+        RequisitionWkshName: Record "Requisition Wksh. Name";
+        ItemAvailFormsMgt: Codeunit "Item Availability Forms Mgt";
+        Funciones: Codeunit Funciones;
+    begin
+        recItem.Reset();
+        recItem.SetRange("No.", "No.");
+        recItem.SetRange("Location Filter", "Location Code");
+        recItem.SetRange("Variant Filter", "Variant Code");
+
+        // si es seccion de agrupar almacenes
+        if RequisitionWkshName.Get("Worksheet Template Name", "Journal Batch Name") then begin
+            if RequisitionWkshName.STHUseLocationGroup then begin
+                Funciones.SetFilterLocations(recItem);
+            end;
+        end;
+        //recItem.SetRange("Date Filter", "Starting Date", "Ending Date");
+        if not recItem.FindFirst() then
+            exit;
+
+        ItemAvailFormsMgt.ShowItemAvailLineList(RecItem, wath);
+    end;
+
+    local procedure ShowglobalStock()
+    var
+        recItem: Record Item;
+        RequisitionWkshName: Record "Requisition Wksh. Name";
+        ItemAvailFormsMgt: Codeunit "Item Availability Forms Mgt";
+        Funciones: Codeunit Funciones;
+    begin
+        recItem.Reset();
+        recItem.SetRange("No.", "No.");
+        recItem.SetRange("Location Filter", "Location Code");
+        recItem.SetRange("Variant Filter", "Variant Code");
+
+        // si es seccion de agrupar almacenes
+        if RequisitionWkshName.Get("Worksheet Template Name", "Journal Batch Name") then begin
+            if RequisitionWkshName.STHUseLocationGroup then begin
+                Funciones.SetFilterLocations(recItem);
+            end;
+        end;
+        //recItem.SetRange("Date Filter", "Starting Date", "Ending Date");
+        if not recItem.FindFirst() then
+            exit;
+
+        ItemAvailFormsMgt.ShowItemLedgerEntries(RecItem, false);
+    end;
 }

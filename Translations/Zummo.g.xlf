@@ -11468,6 +11468,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Accounting Manager Role Ext - Action PostedSalesShipmentLinesAction - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 294168510 - Control 85990278 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3820934101">
+          <source>Ordenación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ordenación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH ItemAvailbyLocationLines - Control Ordenacion_btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1994005900 - Control 3035610829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>It allows to indicate the reason for which it has been blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite indicar el motivo por el cual ha sido bloqueado"</note>
@@ -11898,6 +11903,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Permite cambiar el estado a varias OP a la vez"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReleasedProductionOrders - Action StatusRange - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3909206013 - Control 1869661552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>Stock</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Stock"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control GlobStock_btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Control 4126119498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
           <source>Qty Available</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad disponible"</note>
@@ -11907,6 +11917,16 @@
           <source>Safety Stock</source>
           <note from="Developer" annotates="general" priority="2">ESP="Stock Seguridad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control StockSeguridad_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3909206013 - Control 1787636508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>Recepciones programadas</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control globalCantidadEncurso - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3909206013 - Control 4108515701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>Necesidades</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad Comprometida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control globalDecLotSize - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Control 3038764279 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
           <source>Lead Time Calculation</source>
@@ -11923,20 +11943,10 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad mínima pedido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control CantidadMinimaPedido_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3909206013 - Control 4108515701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
-          <source>Cantidad Comprometida</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cantidad Comprometida"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control globalDecLotSize - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Control 443443965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
           <source>Cantidad Ofertas</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control globalOfertas - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3909206013 - Control 1787636508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
-          <source>Cantidad En Curso</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control globalCantidadEncurso - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Control 3166647882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
           <source>ContraStock/ BajoPedido</source>
@@ -13617,6 +13627,11 @@
           <source>No Contemplar Ped. Compra</source>
           <note from="Developer" annotates="general" priority="2">ESP="No Contemplar Ped. Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHFilterLocation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 229551850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>WorksheetName</source>
+          <note from="Developer" annotates="general" priority="2">ESP="WorksheetName"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHWorksheetName - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 494646383 - Field 1305804038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 494646383">
           <source>Cant. en ofertas de venta</source>

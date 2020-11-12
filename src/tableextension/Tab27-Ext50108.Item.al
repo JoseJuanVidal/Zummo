@@ -256,5 +256,10 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'No Contemplar Ped. Compra', comment = 'ESP="No Contemplar Ped. Compra"';
         }
+        field(50104; STHWorksheetName; Code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'WorksheetName', comment = 'ESP="WorksheetName"';
+        }
     }
 }

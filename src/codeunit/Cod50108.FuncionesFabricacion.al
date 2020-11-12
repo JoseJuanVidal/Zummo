@@ -103,52 +103,58 @@ codeunit 50108 "FuncionesFabricacion"
         ReservationEntry: Record "Reservation Entry";
         ReservationEntry2: Record "Reservation Entry";
         Item: Record Item;
+        Transparency: Codeunit "Planning Transparency";
+        Warning: Integer;
     begin
         recReqLine.Reset();
         recReqLine.SetRange("Worksheet Template Name", Worksheettemplate);
         recReqLine.SetRange("Journal Batch Name", JournalBatchName);
         if recReqLine.FindSet() then begin
             repeat
-                recReqLine2.reset;
-                recReqLine2.SetRange("Worksheet Template Name", recReqLine."Worksheet Template Name");
-                recReqLine2.SetRange("Journal Batch Name", recReqLine."Journal Batch Name");
-                recReqLine2.SetRange("No.", recReqLine."No.");
-                recReqLine2.SetRange("Action Message", recReqLine."Action Message"::New);
-                recReqLine2.SetFilter("Line No.", '<>%1', recReqLine."Line No.");
-                recReqLine2.SetFilter("Location Code", recReqLine."Location Code");
-                if recReqLine2.FindSet() then begin
-                    repeat
-                        recReqLine.validate(Quantity, recReqLine.Quantity + recReqLine2.Quantity);
-                        ReservationEntry.reset;
-                        ReservationEntry.SetRange("Source ID", recReqLine2."Worksheet Template Name");
-                        ReservationEntry.SetRange("Source Ref. No.", recReqLine2."Line No.");
-                        if ReservationEntry.FindSet() then begin
-                            repeat
-                                ReservationEntry2.Get(ReservationEntry."Entry No.", ReservationEntry.Positive);
-                                ReservationEntry2."Source Ref. No." := recReqLine."Line No.";
-                                ReservationEntry2.Modify();
+                /*
+                                recReqLine2.reset;
+                                recReqLine2.SetRange("Worksheet Template Name", recReqLine."Worksheet Template Name");
+                                recReqLine2.SetRange("Journal Batch Name", recReqLine."Journal Batch Name");
+                                recReqLine2.SetRange("No.", recReqLine."No.");
+                                recReqLine2.SetRange("Action Message", recReqLine."Action Message"::New);
+                                recReqLine2.SetFilter("Line No.", '<>%1', recReqLine."Line No.");
+                                recReqLine2.SetFilter("Location Code", recReqLine."Location Code");
+                                if recReqLine2.FindSet() then begin
+                                    repeat
+                                        recReqLine.validate(Quantity, recReqLine.Quantity + recReqLine2.Quantity);
+                                        ReservationEntry.reset;
+                                        ReservationEntry.SetRange("Source ID", recReqLine2."Worksheet Template Name");
+                                        ReservationEntry.SetRange("Source Ref. No.", recReqLine2."Line No.");
+                                        if ReservationEntry.FindSet() then begin
+                                            repeat
+                                                ReservationEntry2.Get(ReservationEntry."Entry No.", ReservationEntry.Positive);
+                                                ReservationEntry2."Source Ref. No." := recReqLine."Line No.";
+                                                ReservationEntry2.Modify();
 
-                            until ReservationEntry.Next() = 0;
-                        end;
-                        recReqLine2.Delete(true);
-                    until recReqLine2.Next() = 0;
-                end;
-                Item.reset;
-                Item.SetRange("No.", recReqLine."No.");
-                if Item.FindFirst() then begin
+                                            until ReservationEntry.Next() = 0;
+                                        end;
+                                        recReqLine2.Delete(true);
+                                    until recReqLine2.Next() = 0;
+                                end;
+                                Item.reset;
+                                Item.SetRange("No.", recReqLine."No.");
+                                if Item.FindFirst() then begin
 
-                    if Item."Minimum Order Quantity" > recReqLine.Quantity then
-                        recReqLine.validate(Quantity, Item."Minimum Order Quantity");
+                                    if Item."Minimum Order Quantity" > recReqLine.Quantity then
+                                        recReqLine.validate(Quantity, Item."Minimum Order Quantity");
 
-                    if Item."Order Multiple" <> 0 then begin
-                        if recReqLine.Quantity mod Item."Order Multiple" <> 0 then begin
-                            recReqLine.validate(Quantity, (Round(recReqLine.Quantity / Item."Order Multiple", 1, '>')) * Item."Order Multiple");
-                        end;
-                    end;
-                end;
+                                    if Item."Order Multiple" <> 0 then begin
+                                        if recReqLine.Quantity mod Item."Order Multiple" <> 0 then begin
+                                            recReqLine.validate(Quantity, (Round(recReqLine.Quantity / Item."Order Multiple", 1, '>')) * Item."Order Multiple");
+                                        end;
+                                    end;
+                                end;*/
                 recReqLine.Validate("Starting Date", CalcDate('2S', Today));
                 recReqLine.Estado := HojaDemandaUrgente(recReqLine);
-                recReqLine."Accept Action Message" := true;
+                Warning := Transparency.ReqLineWarningLevel(recReqLine);
+                // " ",Emergency,Exception,Attention
+                if Warning in [0, 1, 3] then
+                    recReqLine."Accept Action Message" := true;
                 recReqLine."Planning Flexibility" := recReqLine."Planning Flexibility"::None;
                 recReqLine.Modify();
             until recReqLine.Next() = 0;

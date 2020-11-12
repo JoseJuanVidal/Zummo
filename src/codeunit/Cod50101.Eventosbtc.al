@@ -715,6 +715,7 @@ codeunit 50101 "Eventos_btc"
     begin
         if RequisitionWkshName.Get(TemplateName, WorksheetName) then begin
             Item.STHUseLocationGroup := RequisitionWkshName.STHUseLocationGroup;
+            Item.STHWorksheetName := WorksheetName;
             Item.Modify();
         end;
     end;
@@ -722,11 +723,16 @@ codeunit 50101 "Eventos_btc"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnAfterCalculatePlanFromWorksheet', '', true, true)]
     local procedure InventoryProfileOffsettingOnAfterCalculatePlanFromWorksheet(VAR Item: Record Item)
     var
-        RequisitionWkshName: Record "Requisition Wksh. Name";
+        Funciones: Codeunit Funciones;
     begin
-        Item.STHUseLocationGroup := false;
-        Item.Modify();
+        // aqui quitamos las lineas calculadas que no son del almacen General
+        if item.STHUseLocationGroup then begin
+            Funciones.DeleteFilterOneLocation(Item.STHWorksheetName, Item.STHFilterLocation);
+            Item.STHUseLocationGroup := false;
+            Item.Modify();
+        end;
     end;
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnBeforeDemandToInvProfile', '', true, true)]
     local procedure InventoryProfileOffsettingOnBeforeDemandToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; VAR IsHandled: Boolean)
@@ -749,16 +755,6 @@ codeunit 50101 "Eventos_btc"
         end;
     end;
 
-    /*[EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnBeforeSupplyToInvProfile', '', true, true)]
-    local procedure InventoryProfileOffsettingOnBeforeSupplyToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; VAR ToDate: Date; VAR ReservEntry: Record "Reservation Entry"; VAR NextLineNo: Integer)
-    var
-        Funciones: Codeunit Funciones;
-    begin
-        if Item.STHUseLocationGroup then begin
-            Funciones.CheckandSetFilterOneLocation(Item);
-        end;
-    end;*/
-
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnAfterSupplyToInvProfile', '', true, true)]
     local procedure InventoryProfileOffsettingOnAfterSupplyToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; VAR ToDate: Date; VAR ReservEntry: Record "Reservation Entry"; VAR NextLineNo: Integer)
 
@@ -766,7 +762,7 @@ codeunit 50101 "Eventos_btc"
         Funciones: Codeunit Funciones;
     begin
         if item.STHUseLocationGroup then begin
-
+            Funciones.ChangeFilterOneLocation(InventoryProfile, Item);
             Funciones.ResetFilterOneLocation(Item);
         end;
     end;

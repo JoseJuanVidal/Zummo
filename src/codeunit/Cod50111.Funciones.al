@@ -517,12 +517,20 @@ codeunit 50111 "Funciones"
     procedure CheckandSetFilterOneLocation(var Item: Record Item)
     var
         Location: Record Location;
-        LocFilter: Text;
         Text000: label 'No se puede realizar planificaicón con Agrupación y multiples filtros de Almacén', Comment = 'ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"';
     begin
         Location.SetFilter(Code, item.GetFilter("Location Filter"));
         if Location.count > 1 then
             Error(text000);
+        SetFilterLocations(Item);
+
+    end;
+
+    procedure SetFilterLocations(var Item: Record Item)
+    var
+        Location: Record Location;
+        LocFilter: Text;
+    begin
         Location.Reset();
         Location.SetRange(CalculoPlanificaion, true);
         if Location.findset() then
@@ -549,5 +557,15 @@ codeunit 50111 "Funciones"
     procedure ResetFilterOneLocation(var Item: record Item)
     begin
         Item.SetFilter("Location Filter", item.STHFilterLocation);
+    end;
+
+    procedure DeleteFilterOneLocation(var WorkSheetName: code[10]; FilterLocation: code[10])
+    var
+        ReqLine: Record "Requisition Line";
+    begin
+        ReqLine.SetRange("Journal Batch Name", WorkSheetName);
+        ReqLine.SetRange("Worksheet Template Name", 'PLANIF.');
+        ReqLine.SetFilter("Location Code", '<>%1', FilterLocation);
+        ReqLine.DeleteAll();
     end;
 }
