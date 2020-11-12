@@ -11968,10 +11968,25 @@
           <note from="Developer" annotates="general" priority="2">ESP="Quita la marca de Aceptar Mensaje de acción a las líneas seleccionadas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action DesmarcarAceptarMensaje - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3909206013 - Action 2169772221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
-          <source>Puntos de uso</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Puntos de uso"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action Puntosdeuso - Property Caption</note>
+        <trans-unit id="PageExtension 3909206013 - Action 2063793667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>Where-Used</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Puntos-de uso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action Action78 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3909206013 - Action 2063793667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>View a list of BOMs in which the item is used.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action Action78 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3909206013 - Action 1211261581 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>Production BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista Materiales</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action Production BOM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3909206013 - Action 1211261581 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>Open the item's production bill of material to view or edit its components.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action Production BOM - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3617415722 - Control 2878857292 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Fecha recepción email del cliente</source>
@@ -12103,10 +12118,35 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Control globalPedidoMaximo - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 919603500 - Action 2169772221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
-          <source>Puntos de uso</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Puntos de uso"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Puntosdeuso - Property Caption</note>
+        <trans-unit id="PageExtension 919603500 - Action 2063793667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Where-Used</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Puntos-de uso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Action78 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 2063793667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>View a list of BOMs in which the item is used.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Action78 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 1211261581 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Production BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista Materiales</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Production BOM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 1211261581 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Open the item's production bill of material to view or edit its components.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Production BOM - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3949660845 - Control 3860460388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1054896252">
+          <source>Hide Bocked</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ocultar Bloqueados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ProdBOMWhereUsed - Control HideBlocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3949660845 - Action 1137027125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1054896252">
+          <source>Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ProdBOMWhereUsed - Action Product - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1876379756 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
           <source>Blocked</source>

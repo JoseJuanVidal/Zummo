@@ -7,8 +7,8 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             Editable = false;
             Caption = 'Cant. en ofertas de venta', comment = 'ESP="Cant. en ofertas de venta"';
             FieldClass = FlowField;
-            CalcFormula = sum ("Sales Line"."Outstanding Quantity" where ("Document Type" = const (Quote), FechaFinValOferta_btc = filter ('>=T'),
-            "Location Code" = field ("Location Code"), Type = const (Item), "No." = field ("Item No.")));
+            CalcFormula = sum("Sales Line"."Outstanding Quantity" where("Document Type" = const(Quote), FechaFinValOferta_btc = filter('>=t'),
+            "Location Code" = field("Location Code"), Type = const(Item), "No." = field("Item No.")));
             TableRelation = "Sales Line";
             trigger OnLookup()
             var
@@ -29,7 +29,7 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             Editable = false;
             Caption = 'Ordenacion', comment = 'ESP="Ordenacion"';
             FieldClass = FlowField;
-            CalcFormula = lookup (Location.Ordenacion_btc where ("Code" = field ("Location Code")));
+            CalcFormula = lookup(Location.Ordenacion_btc where("Code" = field("Location Code")));
             TableRelation = "Sales Line";
         }
         field(50013; "Cant_ componentes Oferta"; Decimal)
@@ -37,10 +37,8 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             Editable = false;
             Caption = 'Cant. componentes Oferta', comment = 'ESP="Cant. componentes Oferta"';
             FieldClass = FlowField;
-            CalcFormula = sum ("Assembly Line"."Remaining Quantity"
-            where
-            ("Document Type" = const (Quote), "Location Code" = field ("Location Code"), "Fecha Fin Oferta_btc" = filter ('>=T')
-            , Type = const (Item), "No." = field ("Item No.")));
+            CalcFormula = sum("Assembly Line"."Remaining Quantity" where("Document Type" = const(Quote), "Location Code" = field("Location Code"), "Fecha Fin Oferta_btc" = filter('>=t')
+            , Type = const(Item), "No." = field("Item No.")));
             TableRelation = "Assembly Line";
             trigger OnLookup()
             var

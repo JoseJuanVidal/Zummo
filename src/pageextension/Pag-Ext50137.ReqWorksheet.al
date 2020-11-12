@@ -121,28 +121,41 @@ pageextension 50137 "ReqWorksheet" extends "Req. Worksheet"
                     RutinasFab.LanzarPlanificacionDesdeFabs();
                 end;
             }
-            action(Puntosdeuso)
+        }
+        addafter(Card)
+        {
+            action(Action78)
             {
-                ApplicationArea = All;
-                Caption = 'Puntos de uso', comment = 'ESP="Puntos de uso"';
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+                AccessByPermission = TableData "Production BOM Header" = R;
+                ApplicationArea = Manufacturing;
+                Caption = 'Where-Used', Comment = 'ESP="Puntos-de uso"';
                 Image = "Where-Used";
+                ToolTip = 'View a list of BOMs in which the item is used.';
+                Promoted = true;
+                PromotedCategory = Category6;
+
                 trigger OnAction()
                 var
-                    item: Record "Item";
+                    Item: Record Item;
                     ProdBOMWhereUsed: Page "Prod. BOM Where-Used";
                 begin
-                    item.reset;
-                    item.SetRange("No.", rec."No.");
-                    item.FindFirst();
-                    ProdBOMWhereUsed.SetItem(item, WORKDATE);
-                    ProdBOMWhereUsed.RUNMODAL;
+                    Item.Get("No.");
+                    ProdBOMWhereUsed.SetItem(Item, WorkDate);
+                    ProdBOMWhereUsed.RunModal;
                 end;
             }
+            action("Production BOM")
+            {
+                ApplicationArea = Manufacturing;
+                Caption = 'Production BOM', Comment = 'ESP="Lista Materiales';
+                Image = BOM;
+                Promoted = true;
+                PromotedCategory = Category6;
+                RunObject = Page "Production BOM";
+                RunPageLink = "No." = FIELD("Production BOM No.");
+                ToolTip = 'Open the item''s production bill of material to view or edit its components.';
+            }
         }
-
     }
 
     trigger OnAfterGetRecord()
