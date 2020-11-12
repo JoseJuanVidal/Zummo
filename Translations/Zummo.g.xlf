@@ -11969,8 +11969,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action DesmarcarAceptarMensaje - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Action 2063793667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
-          <source>Where-Used</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Puntos-de uso"</note>
+          <source>Puntos de uso</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Puntos de uso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action Action78 - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Action 2063793667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
@@ -11979,7 +11979,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action Action78 - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Action 1211261581 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
-          <source>Production BOM</source>
+          <source>Lista Materiales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Materiales</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action Production BOM - Property Caption</note>
         </trans-unit>
@@ -12119,8 +12119,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Control globalPedidoMaximo - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 919603500 - Action 2063793667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
-          <source>Where-Used</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Puntos-de uso"</note>
+          <source>Puntos de uso</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Puntos de uso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Action78 - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 919603500 - Action 2063793667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
@@ -12129,7 +12129,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Action78 - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 919603500 - Action 1211261581 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
-          <source>Production BOM</source>
+          <source>Lista Materiales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Materiales</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Production BOM - Property Caption</note>
         </trans-unit>

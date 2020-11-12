@@ -16,6 +16,7 @@ pageextension 50139 "ProdBOMWhereUsed" extends "Prod. BOM Where-Used"
                         SetRange(ProductoBloqueado_btc, false)
                     else
                         SetRange(ProductoBloqueado_btc);
+                    CurrPage.Update();
                 end;
             }
         }

@@ -175,7 +175,7 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
             {
                 AccessByPermission = TableData "Production BOM Header" = R;
                 ApplicationArea = Manufacturing;
-                Caption = 'Where-Used', Comment = 'ESP="Puntos-de uso"';
+                Caption = 'Puntos de uso', Comment = 'ESP="Puntos de uso"';
                 Image = "Where-Used";
                 ToolTip = 'View a list of BOMs in which the item is used.';
                 Promoted = true;
@@ -194,7 +194,7 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
             action("Production BOM")
             {
                 ApplicationArea = Manufacturing;
-                Caption = 'Production BOM', Comment = 'ESP="Lista Materiales';
+                Caption = 'Lista Materiales', Comment = 'ESP="Lista Materiales';
                 Image = BOM;
                 Promoted = true;
                 PromotedCategory = Category6;
