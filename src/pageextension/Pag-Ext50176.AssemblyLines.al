@@ -9,15 +9,22 @@ pageextension 50176 "AssemblyLines" extends "Assembly Lines"
             field("Document Line No_btc"; "Document Line No_btc") { }
             field("Fecha Fin Oferta_btc"; "Fecha Fin Oferta_btc") { }
             field(NombreCliente; NombreCliente) { }
+            field(SalesHeaderPromised; SalesHeader."Promised Delivery Date")
+            {
+                Caption = 'Fecha entrega prometida', comment = 'Fecha entrega prometida';
+            }
+            field(SalesHeaderRequested; SalesHeader."Requested Delivery Date")
+            {
+                Caption = 'Fecha entrega requerida', comment = 'Fecha entrega requerida';
+            }
         }
     }
 
     var
+        SalesHeader: Record "Sales Header";
         NombreCliente: Code[100];
 
     trigger OnAfterGetRecord()
-    var
-        SalesHeader: Record "Sales Header";
     begin
         NombreCliente := '';
         SalesHeader.reset;

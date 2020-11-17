@@ -20,6 +20,7 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
                 salesLine.SetFilter("Outstanding Quantity", '>0');
                 salesLine.SetRange("No.", Rec."Item No.");
                 salesLine.SetFilter(FechaFinValOferta_btc, '>=t');
+                salesLine.SetFilter("Outstanding Quantity", '<>0');
                 PSalesLine.SetTableView(salesLine);
                 PSalesLine.Run();
             end;
@@ -40,19 +41,21 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             CalcFormula = sum("Assembly Line"."Remaining Quantity" where("Document Type" = const(Quote), "Location Code" = field("Location Code"), "Fecha Fin Oferta_btc" = filter('>=t')
             , Type = const(Item), "No." = field("Item No.")));
             TableRelation = "Assembly Line";
+
             trigger OnLookup()
             var
-                salesLine: Record "Assembly Line";
-                PSalesLine: Page "Assembly Lines";
+                AssemblyLine: Record "Assembly Line";
+                PAssemblyLine: Page "Assembly Lines";
             begin
-                salesLine.reset;
-                salesLine.SetRange("Document Type", salesLine."Document Type"::Quote);
-                salesLine.SetFilter("Remaining Quantity", '>0');
-                salesLine.SetRange("No.", Rec."Item No.");
-                salesLine.SetRange("Location Code", Rec."Location Code");
-                salesLine.SetFilter("Fecha Fin Oferta_btc", '>=t');
-                PSalesLine.SetTableView(salesLine);
-                PSalesLine.Run();
+                AssemblyLine.reset;
+                AssemblyLine.SetRange("Document Type", AssemblyLine."Document Type"::Quote);
+                AssemblyLine.SetFilter("Remaining Quantity", '>0');
+                AssemblyLine.SetRange("No.", Rec."Item No.");
+                AssemblyLine.SetRange("Location Code", Rec."Location Code");
+                AssemblyLine.SetFilter("Remaining Quantity", '<>0');
+                AssemblyLine.SetFilter("Fecha Fin Oferta_btc", '>=t');
+                PAssemblyLine.SetTableView(AssemblyLine);
+                PAssemblyLine.Run();
             end;
         }
     }

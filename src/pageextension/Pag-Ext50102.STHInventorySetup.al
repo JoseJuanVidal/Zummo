@@ -61,6 +61,10 @@ pageextension 50102 "STHInventorySetup" extends "Inventory Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("MRP Bitec Activo"; "MRP Bitec Activo")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

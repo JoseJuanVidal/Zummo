@@ -69,5 +69,10 @@ tableextension 50127 "STHInventory Setup" extends "Inventory Setup" //313
             DataClassification = CustomerContent;
             Caption = 'Qty. on Component Quote', comment = 'ESP="Cant. en componentes ofertas"';
         }
+        field(50120; "MRP Bitec Activo"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'MRP Bitec Activo', comment = 'ESP="MRP Bitec Activo"';
+        }
     }
 }

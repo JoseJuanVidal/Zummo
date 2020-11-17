@@ -5,14 +5,14 @@ pageextension 50139 "ProdBOMWhereUsed" extends "Prod. BOM Where-Used"
     {
         addafter(ShowLevel)
         {
-            field(HideBlocked; HideBlocked)
+            field(ShowBlocked; ShowBlocked)
             {
                 ApplicationArea = all;
-                Caption = 'Hide Bocked', comment = 'ESP="Ocultar Bloqueados"';
+                Caption = 'Mostrar Bloqueados', comment = 'ESP="Mostrar Bloqueados"';
 
                 trigger OnValidate()
                 begin
-                    if HideBlocked then
+                    if ShowBlocked then
                         SetRange(ProductoBloqueado_btc, false)
                     else
                         SetRange(ProductoBloqueado_btc);
@@ -46,6 +46,11 @@ pageextension 50139 "ProdBOMWhereUsed" extends "Prod. BOM Where-Used"
             }
         }
     }
+    trigger OnOpenPage()
+    begin
+        SetRange(ProductoBloqueado_btc, false);
+    end;
+
     var
-        HideBlocked: Boolean;
+        ShowBlocked: Boolean;
 }
