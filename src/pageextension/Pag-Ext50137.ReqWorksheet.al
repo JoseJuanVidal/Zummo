@@ -1,15 +1,23 @@
 pageextension 50137 "ReqWorksheet" extends "Req. Worksheet"
 {
-
-
     layout
     {
+        addafter("Vendor No.")
+        {
+            field(VendorName; Vendor.Name)
+            {
+                ApplicationArea = All;
+                Editable = false;
+                Caption = 'Nombre proveedor', comment = 'ESP="Nombre proveedor"';
+            }
+        }
         addafter("Replenishment System")
         {
             field(Stock_btc; Stock_btc)
             {
                 ApplicationArea = All;
                 Editable = false;
+                Caption = 'Inventory', comment = 'ESP="Inventario"';
             }
 
             field(CantDis; globDecCantDisponible)
@@ -18,7 +26,12 @@ pageextension 50137 "ReqWorksheet" extends "Req. Worksheet"
                 ApplicationArea = All;
                 Editable = false;
             }
-
+            field(CantDisQuote; globDecCantDisponibleWithOfertas)
+            {
+                Caption = 'Qty Available (Quotes)', comment = 'ESP="Cantidad disponible (con ofertas)"';
+                ApplicationArea = All;
+                Editable = false;
+            }
             field(StockSeguridad_btc; globalDecStockSeguridad)
             {
                 ApplicationArea = All;
@@ -159,8 +172,17 @@ pageextension 50137 "ReqWorksheet" extends "Req. Worksheet"
     }
 
     trigger OnAfterGetRecord()
+    var
+        StockkeepingUnit: Record "Stockkeeping Unit";
+        Funciones: Codeunit FuncionesFabricacion;
     begin
-        globDecCantDisponible := GetCantidadDisponible();
+        //globDecCantDisponible := GetCantidadDisponible();
+        globDecCantDisponibleWithOfertas := 0;
+        globDecCantDisponible := 0;
+        StockkeepingUnit.SetRange("Item No.", "No.");
+        StockkeepingUnit.SetRange("Location Code", "Location Code");
+        if StockkeepingUnit.FindSet() then
+            Funciones.CalcDisponble(StockkeepingUnit, globDecCantDisponibleWithOfertas, globDecCantDisponible);
         globalDecLotSize := GetCantidadRestar();
         globalCantidadEncurso := GetCantidadSumar();
 
@@ -175,6 +197,7 @@ pageextension 50137 "ReqWorksheet" extends "Req. Worksheet"
             GetDatosUdAlmacenamiento()
         else
             GetDatosProducto();
+        if Vendor.get("Vendor No.") then;
     end;
 
     local procedure GetDatosUdAlmacenamiento()
@@ -361,8 +384,11 @@ pageextension 50137 "ReqWorksheet" extends "Req. Worksheet"
     end;
 
     var
+
+        Vendor: Record vendor;
         globalPlazoDias: DateFormula;
         globDecCantDisponible: Decimal;
+        globDecCantDisponibleWithOfertas: Decimal;
         globalOfertas: Decimal;
         globalDecStockSeguridad: Decimal;
         globalCantidadEncurso: Decimal;

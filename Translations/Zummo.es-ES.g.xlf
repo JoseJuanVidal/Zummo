@@ -12956,11 +12956,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuote - Action Impimir Pedido - Property ToolTip</note>
           <target>Imprimir Pedido Zummo</target>
         </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Control 2531938950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Inventory</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Control Stock_btc - Property Caption</note>
+          <target>Inventario</target>
+        </trans-unit>
         <trans-unit id="PageExtension 919603500 - Control 4126119498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
           <source>Qty Available</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad disponible"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Control CantDis - Property Caption</note>
           <target>Cantidad disponible</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Control 1054993808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Qty Available (Quotes)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad disponible (con ofertas)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Control CantDisQuote - Property Caption</note>
+          <target>Cantidad disponible (con ofertas)</target>
         </trans-unit>
         <trans-unit id="PageExtension 919603500 - Control 146676544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
           <source>Safety Stock</source>

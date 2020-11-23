@@ -108,6 +108,8 @@ report 50112 "Ventas CESCE - List"
                             CurrReport.Skip();
                     "Document Type"::"Credit Memo":
                         if SalesCrMemoHeader.Get("Document No.") then begin
+                            if not ShowCreditMemo then
+                                CurrReport.Skip();
                             if (NOT Customer.Get(SalesCrMemoHeader."Sell-to Customer No.")) OR
                                 (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> 'CESCE') OR
                                 (Customer."Credito Maximo Aseguradora_btc" <= 0) then
@@ -143,6 +145,10 @@ report 50112 "Ventas CESCE - List"
                             CurrReport.Skip();
                     "Document Type"::Payment:
                         begin
+                            // si no marcan opciones, no mostramos los pagos
+                            if not ShowPayments then
+                                CurrReport.Skip();
+
                             CustLedgerEntry.Reset();
                             CustLedgerEntry.SetRange("Document No.", "Document No.");
                             CustLedgerEntry.SetRange("Entry No.", "Entry No.");
@@ -222,6 +228,23 @@ report 50112 "Ventas CESCE - List"
 
         layout
         {
+            area(content)
+            {
+                group(Opciones)
+
+                {
+                    field(ShowPayments; ShowPayments)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Mostrar Pagos', comment = 'ESP="Mostrar Pagos"';
+                    }
+                    field(ShowCreditMemo; ShowCreditMemo)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Mostrar Abonos', comment = 'ESP="Mostrar Abonos"';
+                    }
+                }
+            }
         }
 
         actions
@@ -274,4 +297,6 @@ report 50112 "Ventas CESCE - List"
         CountryTxt: Text;
         estadoDocumentoTxt: Text;
         estadoDocCaption_Lbl: Label 'Document Status', Comment = 'ESP="Estado Documento"';
+        ShowPayments: Boolean;
+        ShowCreditMemo: Boolean;
 }

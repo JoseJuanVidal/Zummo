@@ -239,7 +239,7 @@ tableextension 50108 "Item" extends Item  //27
         }
         Field(50024; StockSeguridadBase; Decimal) // campo que guarda la politica BASE del stock de seguridad, para poder cambiar politicas segun necesidad
         {
-            Caption = 'Safety Stock Quantity (Base)', comment = 'Stock de seguridad (Base)';
+            Caption = 'Stock de seguridad (Base)"', comment = 'ESP="Stock de seguridad (Base)"';
         }
         Field(50101; "STHUseLocationGroup"; Boolean)
         {

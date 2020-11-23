@@ -38,7 +38,7 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             Editable = false;
             Caption = 'Cant. componentes Oferta', comment = 'ESP="Cant. componentes Oferta"';
             FieldClass = FlowField;
-            CalcFormula = sum("Assembly Line"."Remaining Quantity" where("Document Type" = const(Quote), "Location Code" = field("Location Code"), "Fecha Fin Oferta_btc" = filter('>=t')
+            CalcFormula = sum("Assembly Line"."Remaining Quantity" where("Document Type" = const(Quote), type = const(Item), "No." = field("Item No."), "Location Code" = field("Location Code"), "Fecha Fin Oferta_btc" = filter('>=t')
             , Type = const(Item), "No." = field("Item No.")));
             TableRelation = "Assembly Line";
 

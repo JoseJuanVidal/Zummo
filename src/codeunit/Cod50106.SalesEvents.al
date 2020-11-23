@@ -46,7 +46,8 @@ codeunit 50106 "SalesEvents"
         GeneralLedgerSetup: Record "General Ledger Setup";
         Location: record Location;  // R001
         SalesLine: Record "Sales Line";  //R001
-        ErrorMsg: Label 'Warehouse %1 is configured to not allow "Send and Invoice completely", all lines are not sent completely.', Comment = 'El Almacén %1, esta configurado para no permitir "Enviar y Facturar completamente", todas las lineas no estan enviadas completamente.'; //R001
+        ErrorMsg: Label 'Warehouse %1 is configured to not allow "Send and Invoice completely", all lines are not sent completely.',
+            Comment = 'ESP="El Almacén %1, esta configurado para no permitir "Enviar y Facturar completamente", todas las lineas no estan enviadas completamente."'; //R001
     begin
         // ====== SOTHIS , requrimiento de Maria Borrallo de no permitir registrar y facturar si 
         //  R001 - el cliente solicita que si el almacen de alguna linea es alguno no configurado para permitir 
