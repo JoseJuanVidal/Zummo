@@ -37,6 +37,14 @@ pageextension 50002 "SalesCreditMemo" extends "Sales Credit Memo"
             {
                 ApplicationArea = all;
             }
+            field("Return Receipt No."; "Return Receipt No.")
+            {
+                ApplicationArea = all;
+            }
+            field("Posting No."; "Posting No.")
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions
