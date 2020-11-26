@@ -4,14 +4,14 @@ tableextension 50128 "RequisitionLine" extends "Requisition Line" //246
     {
         field(50100; Stock_btc; Decimal)
         {
-            Caption = 'Stock', comment = 'ESP="Stock"';
+            Caption = 'Inventario', comment = 'ESP="Inventario"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = Sum ("Item Ledger Entry"."Remaining Quantity" WHERE (
-                "Item No." = FIELD ("No."),
-                  "Location Code" = FIELD ("Location Code"),
-                "Variant Code" = FIELD ("Variant Code"),
-                Open = const (true)
+            CalcFormula = Sum("Item Ledger Entry"."Remaining Quantity" WHERE(
+                "Item No." = FIELD("No."),
+                  "Location Code" = FIELD("Location Code"),
+                "Variant Code" = FIELD("Variant Code"),
+                Open = const(true)
             ));
         }
 
@@ -22,7 +22,7 @@ tableextension 50128 "RequisitionLine" extends "Requisition Line" //246
             Editable = false;
             Caption = 'Safety Stock', comment = 'ESP="Stock Seguridad"';
             FieldClass = FlowField;
-            CalcFormula = lookup (Item."Safety Stock Quantity" where ("No." = field ("No.")));
+            CalcFormula = lookup(Item."Safety Stock Quantity" where("No." = field("No.")));
         }
 
         field(50104; PlazoDias_btc; DateFormula)
@@ -31,7 +31,7 @@ tableextension 50128 "RequisitionLine" extends "Requisition Line" //246
             Editable = false;
             Caption = 'Lead Time Calculation', comment = 'ESP="Plazo entrega días"';
             FieldClass = FlowField;
-            CalcFormula = lookup (Item."Lead Time Calculation" where ("No." = field ("No.")));
+            CalcFormula = lookup(Item."Lead Time Calculation" where("No." = field("No.")));
         }
 
         field(50108; MultiplosPedido_btc; Decimal)
@@ -40,7 +40,7 @@ tableextension 50128 "RequisitionLine" extends "Requisition Line" //246
             Editable = false;
             Caption = 'Order Multiple', comment = 'ESP="Múltiplos de pedido"';
             FieldClass = FlowField;
-            CalcFormula = lookup (Item."Order Multiple" where ("No." = field ("No.")));
+            CalcFormula = lookup(Item."Order Multiple" where("No." = field("No.")));
         }
 
         field(50109; CantidadMinimaPedido_btc; Decimal)
@@ -49,7 +49,7 @@ tableextension 50128 "RequisitionLine" extends "Requisition Line" //246
             Editable = false;
             Caption = 'Minumun Order Quantity', comment = 'ESP="Cantidad mínima pedido"';
             FieldClass = FlowField;
-            CalcFormula = lookup (Item."Minimum Order Quantity" where ("No." = field ("No.")));
+            CalcFormula = lookup(Item."Minimum Order Quantity" where("No." = field("No.")));
         }
 
         field(50110; Urgente; Boolean)

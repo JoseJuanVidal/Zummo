@@ -6,7 +6,7 @@ pageextension 50131 "PlanningWorksheet" extends "Planning Worksheet"
         {
             field(GlobStock_btc; GlobStock_btc)
             {
-                Caption = 'Stock', comment = 'ESP="Stock"';
+                Caption = 'Inventario', comment = 'ESP="Inventario"';
                 ApplicationArea = All;
                 Editable = false;
 

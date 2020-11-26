@@ -12074,8 +12074,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReleasedProductionOrders - Action StatusRange - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Control 1869661552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
-          <source>Stock</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Stock"</note>
+          <source>Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control GlobStock_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Control 4126119498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
@@ -13064,8 +13064,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field NombreCliente_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 12731965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
-          <source>Stock</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Stock"</note>
+          <source>Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field StockAlmacen_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 2262522620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
@@ -13674,8 +13674,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field ClasProveedor_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1110143038 - Field 2531938950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
-          <source>Stock</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Stock"</note>
+          <source>Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RequisitionLine - Field Stock_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1110143038 - Field 2068661374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">

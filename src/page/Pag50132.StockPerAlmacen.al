@@ -40,7 +40,7 @@ page 50132 "StockPerAlmacen"
                     ApplicationArea = All;
                     Caption = '(+)Cant. en pedidos compra';
 
-                    trigger OnAssistEdit()
+                    trigger OnDrillDown()
                     begin
                         ShowPurchaseLine;
                     end;
@@ -164,7 +164,8 @@ page 50132 "StockPerAlmacen"
         SalesLine.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Filter");
         SalesLine.SetRange("Drop Shipment", "Drop Shipment Filter");
         SalesLine.SetRange("Variant Code", "Variant Code");
-        SalesLine.SetRange("Shipment Date", "Date Filter");
+        //if GetFilter("Date Filter") <> '' then
+        //SalesLine.SetRange("Shipment Date", "Date Filter");
         SalesLine.SetFilter("Outstanding Quantity", '<>0');
         page.RunModal(0, SalesLine);
     end;
@@ -181,7 +182,8 @@ page 50132 "StockPerAlmacen"
         PurchaseLine.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Filter");
         PurchaseLine.SetRange("Drop Shipment", "Drop Shipment Filter");
         PurchaseLine.SetRange("Variant Code", "Variant Code");
-        PurchaseLine.SetRange("Expected Receipt Date", "Date Filter");
+        //if GetFilter("Date Filter") <> '' then
+        //PurchaseLine.SetRange("Expected Receipt Date", "Date Filter");
         PurchaseLine.SetFilter("Outstanding Quantity", '<>0');
         page.RunModal(0, PurchaseLine);
     end;

@@ -3380,17 +3380,17 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Cant_ componentes Oferta - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 9807146 - Control 2932667896 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Balance con Ofertas</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Balance con Ofertas"</note>
+        <trans-unit id="Page 9807146 - Control 2932667896 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">          
+          <source>Cantidad disponible (con Ofertas)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad disponible (con Ofertas)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control BalanceConOfertas - Property Caption</note>
-          <target>Balance con Ofertas</target>
+          <target>Cantidad disponible (con Ofertas)</target>
         </trans-unit>
         <trans-unit id="Page 9807146 - Control 1697431934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Balance sin Ofertas</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Balance sin Ofertas"</note>
+          <source>Cantidad Disponible</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad Disponible"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control BalanceSinOfertas - Property Caption</note>
-          <target>Balance sin Ofertas</target>
+          <target>Cantidad Disponible</target>
         </trans-unit>
         <trans-unit id="Page 140254329 - Control 4092165491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Puesto</source>
@@ -12924,6 +12924,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReleasedProductionOrders - Action StatusRange - Property ToolTip</note>
           <target>Permite cambiar el estado a varias OP a la vez</target>
         </trans-unit>
+         <trans-unit id="PageExtension 3909206013 - Control 1869661552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control GlobStock_btc - Property Caption</note>
+          <target>Inventario</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Control 4126119498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
           <source>Qty Available</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad disponible"</note>
@@ -13952,10 +13958,10 @@
           <target>Nombre Cliente</target>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 12731965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
-          <source>Stock</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Stock"</note>
+          <source>Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field StockAlmacen_btc - Property Caption</note>
-          <target>Stock</target>
+          <target>Inventario</target>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 2262522620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>Delay Motive</source>
@@ -14680,10 +14686,10 @@
           <target>Clasificación proveedor</target>
         </trans-unit>
         <trans-unit id="TableExtension 1110143038 - Field 2531938950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
-          <source>Stock</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Stock"</note>
+          <source>Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension RequisitionLine - Field Stock_btc - Property Caption</note>
-          <target>Stock</target>
+          <target>Inventario</target>
         </trans-unit>
         <trans-unit id="TableExtension 1110143038 - Field 2068661374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
           <source>Urgente</source>

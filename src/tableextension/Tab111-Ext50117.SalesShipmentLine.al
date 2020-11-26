@@ -35,20 +35,17 @@ tableextension 50117 "SalesShipmentLine" extends "Sales Shipment Line" //111
             Caption = 'Customer Name', comment = 'ESP="Nombre Cliente"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup (Customer.Name where("No." = field("Sell-to Customer No.")));
+            CalcFormula = lookup(Customer.Name where("No." = field("Sell-to Customer No.")));
         }
 
         field(50005; StockAlmacen_btc; Decimal)
         {
             Description = 'Bitec';
-            Caption = 'Stock', comment = 'ESP="Stock"';
+            Caption = 'Inventario', comment = 'ESP="Inventario"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = Sum ("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("No."), "Location Code" = FIELD("Location Code")));
+            CalcFormula = Sum("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("No."), "Location Code" = FIELD("Location Code")));
         }
-
-
-
 
         field(50008; MotivoRetraso_btc; Code[20])
         {

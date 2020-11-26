@@ -81,7 +81,7 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             Caption = 'Customer Name', comment = 'ESP="Nombre Cliente"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup (Customer.Name where("No." = field("Sell-to Customer No.")));
+            CalcFormula = lookup(Customer.Name where("No." = field("Sell-to Customer No.")));
         }
 
         field(50005; StockAlmacen_btc; Decimal)
@@ -90,7 +90,7 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             Caption = 'Stock', comment = 'ESP="Stock"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = Sum ("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("No."), "Location Code" = FIELD("Location Code")));
+            CalcFormula = Sum("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("No."), "Location Code" = FIELD("Location Code")));
         }
 
         field(50006; TieneComentarios_btc; Boolean)
@@ -99,7 +99,7 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             Caption = 'Comments', comment = 'ESP="Comentarios"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = exist ("Sales Comment Line" where(
+            CalcFormula = exist("Sales Comment Line" where(
                 "Document Type" = field("Document Type"),
                 "No." = field("Document No."),
                 "Document Line No." = field("Line No.")
@@ -110,7 +110,7 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
         {
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("Sales Header"."Quote Valid Until Date" where(
+            CalcFormula = lookup("Sales Header"."Quote Valid Until Date" where(
                 "Document Type" = field("Document Type"),
                 "No." = field("Document No.")
             ));
@@ -180,7 +180,7 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
         {
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("Sales Header"."External Document No." where(
+            CalcFormula = lookup("Sales Header"."External Document No." where(
                 "Document Type" = field("Document Type"),
                 "No." = field("Document No.")
             ));
