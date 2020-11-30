@@ -13713,21 +13713,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="código clasificación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorLedgerEntry - Field código clasificación - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 3276313895 - Field 2665632553 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>Sales Classification</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ClasVtas_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3276313895 - Field 2890422471 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>Family</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Familia_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3276313895 - Field 2580886188 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>Gamma</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Gama"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Gama_btc - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 4057438583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Work Center</source>
           <note from="Developer" annotates="general" priority="2">ESP="Centro Trabajo"</note>
@@ -13862,6 +13847,31 @@
           <source>Desc. Linea Economica</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desLineaEconomica_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 628197397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Stock de seguridad (Base)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Stock de seguridad (Base)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field StockSeguridadBase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 603541938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Usar Agrup. Almacenes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usar Agrup. Almacenes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHUseLocationGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1547180927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>No Contemplar Ped. Compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No Contemplar Ped. Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHNoEvaluarPurchase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 906017942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>No Contemplar Ped. Compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No Contemplar Ped. Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHFilterLocation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 229551850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>WorksheetName</source>
+          <note from="Developer" annotates="general" priority="2">ESP="WorksheetName"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHWorksheetName - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 494646383 - Field 1305804038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 494646383">
           <source>Cant. en ofertas de venta</source>
