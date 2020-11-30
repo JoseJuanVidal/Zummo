@@ -12833,16 +12833,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Bultos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field NumBultos_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 4208835177 - Field 1639545913 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 3118382297">
-          <source>Service Order</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Pedido Servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field PedidoServicio_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 4208835177 - Field 872060129 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 3118382297">
-          <source>Service Quote</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Oferta Servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field OfertaServicio_btc - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 338312380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Central Compras</source>
           <note from="Developer" annotates="general" priority="2">ESP="Central Compras"</note>
@@ -12907,11 +12897,6 @@
           <source>PaisNacimiento</source>
           <note from="Developer" annotates="general" priority="2">ESP="Pais Nacimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee - Field PaisNacimiento_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1498446062 - Field 449472733 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 1498446062">
-          <source>EstadoCivil</source>
-          <note from="Developer" annotates="general" priority="2">ESP="EstadoCivil"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee - Field EstadoCivil_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1498446062 - Field 4085257856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Nacionalidad</source>
@@ -13073,16 +13058,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="PdtFacturar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field PdtFacturar - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 3333755618 - Field 1532092351 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 1114148978">
-          <source>% Descuento línea1</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Line Discount1 %"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field Line Discount1 %_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3333755618 - Field 2517105514 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 1114148978">
-          <source>% Descuento línea2</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Line Discount2 %"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field Line Discount2 %_btc - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 2352912535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>Cód. arancelario</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tariff No_"</note>
@@ -13094,8 +13069,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field NombreCliente_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 12731965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
-          <source>Stock</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Stock"</note>
+          <source>Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field StockAlmacen_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 2262522620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
@@ -13122,26 +13097,6 @@
           <source>Line Discount2 %</source>
           <note from="Developer" annotates="general" priority="2">ESP="% Descuento línea2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field DecLine Discount2 %_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3333755618 - Field 1639545913 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 1114148978">
-          <source>Service Order</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Pedido Servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field PedidoServicio_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3333755618 - Field 3887938664 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 1114148978">
-          <source>Service Order Line</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Lin.Pedido Servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field LinPedidoServicio_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3333755618 - Field 872060129 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 1114148978">
-          <source>Service Quote</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Oferta Servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field OfertaServicio_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3333755618 - Field 3418980112 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 1114148978">
-          <source>Service Quote Line</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Lin.Oferta Servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field LinOfertaServicio_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Fecha.Rec.Mail</source>
@@ -13177,16 +13132,6 @@
           <source>Number of packages</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Bultos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field NumBultos_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1335712434 - Field 1639545913 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 809936682">
-          <source>Service Order</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Pedido Servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field PedidoServicio_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1335712434 - Field 872060129 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 809936682">
-          <source>Service Quote</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Oferta Servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field OfertaServicio_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 4092106112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>ComSerieLoteCreados_btc</source>
@@ -13253,11 +13198,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Facturación electrónica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field FacturacionElec_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1335712434 - Field 1618395873 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 809936682">
-          <source>Not invoice</source>
-          <note from="Developer" annotates="general" priority="2">ESP="No facturar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field NoFacturar_btc - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Block Reason</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Bloqueo"</note>
@@ -13267,16 +13207,6 @@
           <source>Cr. Memo No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Abono"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field NumAbono - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2186963797 - Field 1532092351 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 2079186865">
-          <source>% Descuento línea1</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Line Discount1 %"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field Line Discount1 %_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2186963797 - Field 2517105514 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 2079186865">
-          <source>% Descuento línea2</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Line Discount2 %"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field Line Discount2 %_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 2352912535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Cód. arancelario</source>
