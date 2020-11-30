@@ -119,7 +119,8 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
         }
         field(50028; ImpresoAlmacen_btc; Boolean)
         {
-            Caption = 'Impreso Alm';
+            Caption = 'Impreso Almacén.';
+            ObsoleteState = Pending;
         }
 
         field(50029; GuardadoPdf_btc; Boolean)

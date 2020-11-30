@@ -1784,6 +1784,8 @@ report 50102 "PedidoCliente"
             trigger OnPreDataItem()
             begin
                 Print := Print OR NOT IsReportInPreviewMode();
+                // ponemos la marca impreso almacen si se ha impreso desde la codeunit 50111
+
                 AsmInfoExistsForLine := FALSE;
             end;
 
@@ -2187,6 +2189,7 @@ report 50102 "PedidoCliente"
 
         boolShowInterComment: Boolean;
         ConfPersonalizationMgt: codeunit "Conf./Personalization Mgt.";
+        impresoalmacen: Boolean;
 
     [Scope('Personalization')]
     procedure InitializeRequest(NoOfCopiesFrom: Integer; ShowInternalInfoFrom: Boolean; ArchiveDocumentFrom: Boolean; LogInteractionFrom: Boolean; PrintFrom: Boolean; DisplayAsmInfo: Boolean)
@@ -2331,6 +2334,12 @@ report 50102 "PedidoCliente"
                     end;
                 end;
             until recReservationEntry.Next() = 0;
+    end;
+
+    // procedimiento para indicar si se imprime desde las pantallas de almacen
+    procedure SetImpresoAlmacen()
+    begin
+        impresoalmacen := true;
     end;
 }
 

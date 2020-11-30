@@ -2998,11 +2998,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Control Telex No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Control 9807146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>StockPerAlmacen</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control StockPerAlmacen - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1158365185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Bajo pedido/Contra stock</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -3013,15 +3008,15 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderList - Control Motivo rechazo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3909206013 - Control 1787636508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>Recepciones programadas</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control globalCantidadEncurso - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Control 443443965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
           <source>Cantidad Ofertas</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control globalOfertas - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3909206013 - Control 1787636508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
-          <source>Cantidad En Curso</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control globalCantidadEncurso - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3909206013 - Control 3166647882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
           <source>ContraStock/ BajoPedido</source>
@@ -3032,6 +3027,16 @@
           <source>Pedido Maximo</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Control globalPedidoMaximo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3909206013 - Action 2063793667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>View a list of BOMs in which the item is used.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action Action78 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3909206013 - Action 1211261581 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3144460829">
+          <source>Open the item's production bill of material to view or edit its components.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlanningWorksheet - Action Production BOM - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 919603500 - Control 443443965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
           <source>Cantidad Ofertas</source>
@@ -3052,6 +3057,16 @@
           <source>Pedido Maximo</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Control globalPedidoMaximo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 2063793667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>View a list of BOMs in which the item is used.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Action78 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 1211261581 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Open the item's production bill of material to view or edit its components.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Production BOM - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 783370822 - Action 2890590632 - Method 1377591017 - NamedType 1946690851" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
           <source>La factura se registró con el número %1 y se movió a la ventana de facturas de compra registradas.\\¿Quiere abrir la factura registrada?</source>
@@ -3128,11 +3143,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Abono - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2156531793 - Field 547668726 - Property 62802879" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 1192395785">
-          <source> ,Facturado Completo,Albaranes Bloqueados,PdteFact Completo,PdteFact No Completo,En Preparacion Completo,En Preparacion Incompleto,En Picking Completo,En Picking No Completo,Reservado Completo,Reservado No Completo,Stock Completo,Stock No Completo</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Estado_btc - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 764765110 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>% Descuento Factura</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -3144,7 +3154,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field DescuentoProntoPago - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 4254956712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
-          <source>Impreso Alm</source>
+          <source>Impreso Almacén.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ImpresoAlmacen_btc - Property Caption</note>
         </trans-unit>
@@ -3157,11 +3167,6 @@
           <source>FechaFinValOferta_btc</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field FechaFinValOferta_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 727588710 - Field 547668726 - Property 62802879" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 2574427010">
-          <source> ,Facturado Completo,Albaranes Bloqueados,PdteFact Completo,PdteFact No Completo,En Preparacion Completo,En Preparacion Incompleto,En Picking Completo,En Picking No Completo,Reservado Completo,Reservado No Completo,Stock Completo,Stock No Completo</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field Estado_btc - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 1041044262 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>ExternalDocument</source>

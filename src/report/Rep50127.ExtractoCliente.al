@@ -356,7 +356,7 @@ report 50127 "Extracto Cliente"
                 begin
                     CustLedgEntryExists := false;
 
-                   StartCustDebitAmount := 0;
+                    StartCustDebitAmount := 0;
                     StartCustCreditAmount := 0;
                 end;
             }
@@ -576,21 +576,21 @@ report 50127 "Extracto Cliente"
         StartBalanceLCYTotal: Decimal;
         StartBalAdjLCYTotal: Decimal;
         CustBalanceLCYTotal: Decimal;
-        CustomerDetailTrialBalCaptionLbl: Label 'Customer - Detail Trial Bal.', Comment = 'ESP="Cliente - Movimientos"';//TextConst ENU = 'Customer - Detail Trial Bal.', ESP = '';
-        CurrReportPageNoCaptionLbl: Label 'Page', Comment = 'ESP="Pág."';//TextConst ENU = 'Page', ESP = 'Pág.';
-        AllamountsareinLCYCaptionLbl: Label 'All amounts are in LCY', Comment = 'ESP="Importes en divisa local"';//TextConst ENU = 'All amounts are in LCY', ESP = 'Importes en divisa local';
-        NotesLbl: Label 'This report also includes customers that only have balances.', Comment = 'ESP="Este informe también incluye clientes que solo tienen saldos."';//TextConst ENU = '', ESP = '';
-        CustLedgerEntryPostingDateCaptionLbl: Label 'Posting Date', Comment = 'ESP="Fecha registro"';//TextConst ENU = 'Posting Date', ESP = 'Fecha registro';
-        CustLedgerEntryDocumentTypeCaptionLbl: Label 'Document Type', Comment = 'ESP="Tipo documento"';//TextConst ENU = 'Document Type', ESP = 'Tipo documento';
-        DebitCaptionLbl: Label 'Debit', Comment = 'ESP="Debe"';//TextConst ENU = 'Debit', ESP = 'Debe';
-        CreditCaptionLbl: Label 'Credit', Comment = 'ESP="Haber"';//TextConst ENU = 'Credit', ESP = 'Haber';
-        CustBalanceLCYCaptionLbl: Label 'Balance (LCY)', Comment = 'ESP="Saldo (DL)"'; //TextConst ENU = 'Balance (LCY)', ESP = 'Saldo (DL)';
-        AdjofOpeningBalanceCaptionLbl: Label 'Adj. of Opening Balance', Comment = 'ESP="Ajuste saldo apertura"';// TextConst ENU = 'Adj. of Opening Balance', ESP = 'Ajuste saldo apertura';
-        TotalLCYBeforePeriodCaptionLbl: Label 'Total (LCY) Before Period', Comment = 'ESP="Total (DL) antes del periodo"'; //TextConst ENU = '', ESP = '';
-        TotalLCYCaptionLbl: Label 'Total (DL)', Comment = 'ESP="Total (LCY)"'; //TextConst ENU = 'Total (LCY)', ESP = '';
-        TotalAdjofOpeningBalanceCaptionLbl: Label 'Total Adj. of Opening Balance', Comment = 'ESP="Ajuste total saldo apertura"';//TextConst ENU = '', ESP = '';
+        CustomerDetailTrialBalCaptionLbl: Label 'Customer - Detail Trial Bal.', Comment = 'ESP="Cliente - Movimientos"';//TextConst ENU = 'Customer - Detail Trial Bal.', ESP='';
+        CurrReportPageNoCaptionLbl: Label 'Page', Comment = 'ESP="Pág."';//TextConst ENU = 'Page', ESP='Pág.';
+        AllamountsareinLCYCaptionLbl: Label 'All amounts are in LCY', Comment = 'ESP="Importes en divisa local"';//TextConst ENU = 'All amounts are in LCY', ESP='Importes en divisa local';
+        NotesLbl: Label 'This report also includes customers that only have balances.', Comment = 'ESP="Este informe también incluye clientes que solo tienen saldos."';//TextConst ENU = '', ESP='';
+        CustLedgerEntryPostingDateCaptionLbl: Label 'Posting Date', Comment = 'ESP="Fecha registro"';//TextConst ENU = 'Posting Date', ESP='Fecha registro';
+        CustLedgerEntryDocumentTypeCaptionLbl: Label 'Document Type', Comment = 'ESP="Tipo documento"';//TextConst ENU = 'Document Type', ESP='Tipo documento';
+        DebitCaptionLbl: Label 'Debit', Comment = 'ESP="Debe"';//TextConst ENU = 'Debit', ESP= Debe';
+        CreditCaptionLbl: Label 'Credit', Comment = 'ESP="Haber"';//TextConst ENU = 'Credit', ESP='Haber';
+        CustBalanceLCYCaptionLbl: Label 'Balance (LCY)', Comment = 'ESP="Saldo (DL)"'; //TextConst ENU = 'Balance (LCY)', ESP='Saldo (DL)';
+        AdjofOpeningBalanceCaptionLbl: Label 'Adj. of Opening Balance', Comment = 'ESP="Ajuste saldo apertura"';// TextConst ENU = 'Adj. of Opening Balance', ESP='Ajuste saldo apertura';
+        TotalLCYBeforePeriodCaptionLbl: Label 'Total (LCY) Before Period', Comment = 'ESP="Total (DL) antes del periodo"'; //TextConst ENU = '', ESP='';
+        TotalLCYCaptionLbl: Label 'Total (DL)', Comment = 'ESP="Total (LCY)"'; //TextConst ENU = 'Total (LCY)', ESP='';
+        TotalAdjofOpeningBalanceCaptionLbl: Label 'Total Adj. of Opening Balance', Comment = 'ESP="Ajuste total saldo apertura"';//TextConst ENU = '', ESP='';
         CompanyInformation: Record "Company Information";
-        FechaVencimientoCaptionLbl: Label 'Due date', Comment = 'ESP="Fecha vencimiento"';//TextConst ENU = 'Due date', ESP = '';
+        FechaVencimientoCaptionLbl: Label 'Due date', Comment = 'ESP="Fecha vencimiento"';//TextConst ENU = 'Due date', ESP='';
         lbDocumento: Label 'Document No.', comment = 'ESP="Nº documento"';
         lbDescription: Label 'Description', Comment = 'ESP="Descripción"';
         lbImportePendiente: Label 'Pending Amount', comment = 'ESP="Importe pendiente"';

@@ -11951,6 +11951,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control CantDisp - Property Caption</note>
           <target>Cantidad disponible</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Control 779730061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Vendor Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control VendorName - Property Caption</note>
+          <target>Nombre proveedor</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2185030199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Imprimir Etiqueta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Etiqueta"</note>
@@ -12103,13 +12109,15 @@
         </trans-unit>
         <trans-unit id="PageExtension 826446478 - Control 3139088584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Leyendas Formularios</source>
-          <note from="Developer" annotates="general" priority="2">ESP = "Leyendas Formularios"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Leyendas Formularios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CompanyInformationExt - Control LeyendasFormularios - Property Caption</note>
+          <target>Leyendas Formularios</target>
         </trans-unit>
         <trans-unit id="PageExtension 826446478 - Control 323188024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Certification Logo</source>
-          <note from="Developer" annotates="general" priority="2">ESP = "Logo Certificacion ISO"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Logo Certificacion ISO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CompanyInformationExt - Control LogoCertificacion - Property Caption</note>
+          <target>Logo Certificacion ISO</target>
         </trans-unit>
         <trans-unit id="TableExtension 826446478 - Field 323188024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
           <source>Logo Certificacion ISO</source>
@@ -14921,7 +14929,7 @@
           <target>Desc. Linea Economica</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 628197397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>Stock de seguridad (Base)"</source>
+          <source>Stock de seguridad (Base)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Stock de seguridad (Base)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field StockSeguridadBase - Property Caption</note>
           <target>Stock de seguridad (Base)</target>
@@ -15088,6 +15096,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field ItemType - Property Caption</note>
           <target>Tipo producto</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 2682699455 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Inventario,Servicio,Fuera de inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario,Servicio,Fuera de inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field ItemType - Property OptionCaption</note>
+          <target>Inventario,Servicio,Fuera de inventario</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 108480551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Abono</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -15170,7 +15184,7 @@
           <target>Cliente Reporting</target>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 4254956712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
-          <source>Impreso Alm</source>
+          <source>Impreso Almacén.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ImpresoAlmacen_btc - Property Caption</note>
         </trans-unit>

@@ -29,7 +29,7 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
             CalcFormula = lookup(Item.Type where("No." = field("Item No.")));
 
             OptionMembers = Inventory,Service,"Non-Inventory";
-            OptionCaption = 'Inventario,Servicio,Fuera de inventario', Comment = 'ESP="Inventario,Servicio,Fuera de inventario';
+            OptionCaption = 'Inventario,Servicio,Fuera de inventario', Comment = 'ESP="Inventario,Servicio,Fuera de inventario"';
 
         }
     }

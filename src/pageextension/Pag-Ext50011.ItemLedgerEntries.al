@@ -48,10 +48,23 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
             {
                 ApplicationArea = All;
             }
-
             field(NombreCliente_btc; NombreCliente_btc)
             {
                 ApplicationArea = All;
+            }
+            field("Source Type"; "Source Type")
+            {
+                ApplicationArea = all;
+            }
+            field("Source No."; "Source No.")
+            {
+                ApplicationArea = all;
+            }
+            field(VendorName; VendorName)
+            {
+                ApplicationArea = all;
+                Caption = 'Vendor Name', comment = 'ESP="Nombre proveedor"';
+                Editable = false;
             }
         }
     }
@@ -63,8 +76,7 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
             {
                 ApplicationArea = all;
                 Caption = 'Imprimir Etiqueta', comment = 'ESP="Imprimir Etiqueta"';
-                ToolTip = 'Imprimir etiqueta',
-                    comment = 'ESP="Imprimir etiqueta"';
+                ToolTip = 'Imprimir etiqueta', comment = 'ESP="Imprimir etiqueta"';
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedCategory = Report;
@@ -103,13 +115,26 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
     }
 
     trigger OnAfterGetRecord()
+    var
+        Vendor: Record Vendor;
     begin
         CalcFields("Reserved Quantity");
         cantidadDisponible := "Remaining Quantity" - "Reserved Quantity";
         if Item.Get("Item No.") then;
+        case "Entry Type" of
+            "Entry Type"::Purchase:
+                begin
+                    if Vendor.Get(Rec."Source No.") then
+                        VendorName := Vendor.Name;
+                end
+            else
+                VendorName := '';
+        end;
     end;
 
     var
         Item: Record Item;
         cantidadDisponible: Decimal;
+
+        VendorName: Text;
 }

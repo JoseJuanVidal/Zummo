@@ -5,11 +5,11 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
 
         addafter("Location Code")
         {
-
-            field(ImpresoAlmacen_btc; ImpresoAlmacen_btc)
+            // lo quitamos de la lista, porque BITEC lo paso a la extension SGA y ha duplicado el campo
+            /*field(ImpresoAlmacen_btc; ImpresoAlmacen_btc)
             {
                 ApplicationArea = All;
-            }
+            }*/
             field("Payment Method Code"; "Payment Method Code")
             {
                 ApplicationArea = All;
@@ -154,7 +154,7 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
 
                 end;
             }
-    
+
 
             action("Impimir Pedido")
             {
