@@ -13484,6 +13484,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos_zummo - Action Email_btc - Property Caption</note>
           <target>&amp;Correo electrónico</target>
         </trans-unit>
+        <trans-unit id="PageExtension 332205901 - Control 2726740135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3949561845">
+          <source>Customer Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension AssemblyLines - Control NombreCliente - Property Caption</note>
+          <target>Nombre Cliente</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 332205901 - Control 1508337928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3949561845">
+          <source>Fecha entrega prometida</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha entrega prometida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension AssemblyLines - Control SalesHeaderPromised - Property Caption</note>
+          <target>Fecha entrega prometida</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 332205901 - Control 100464545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3949561845">
+          <source>Fecha entrega requerida</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha entrega requerida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension AssemblyLines - Control SalesHeaderRequested - Property Caption</note>
+          <target>Fecha entrega requerida</target>
+        </trans-unit>
         <trans-unit id="PageExtension 400138034 - Action 2546550570 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
           <source>Matriz Productos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Matriz Productos"</note>
@@ -15294,6 +15312,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field FechaAlta_btc - Property Caption</note>
           <target>Fecha Alta</target>
         </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 2157584327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>Quote No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº de oferta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field QuoteNoSalesOrder - Property Caption</note>
+          <target>Nº de oferta</target>
+        </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 1041044262 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>ExternalDocument</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -15943,6 +15967,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin Oferta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension AssemblyLine - Field Fecha Fin Oferta_btc - Property Caption</note>
           <target>Fecha Fin Oferta</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2268077932 - Field 2157584327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
+          <source>Quote No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº de oferta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AssemblyLine - Field QuoteNoSalesOrder - Property Caption</note>
+          <target>Nº de oferta</target>
         </trans-unit>
         <trans-unit id="TableExtension 2160607272 - Field 2143411669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3637180376">
           <source>Exp. Purch. Orders Until Today</source>

@@ -12,7 +12,7 @@ tableextension 50001 "AssemblyLine" extends "Assembly Line" //901
             Editable = false;
             Caption = 'Tipo documento Ventas', comment = 'ESP="Tipo documento Ventas"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Assemble-to-Order Link"."Document Type" where
+            CalcFormula = lookup("Assemble-to-Order Link"."Document Type" where
                 (
                     "Assembly Document Type" = field("Document Type"),
                     "Assembly Document No." = field("Document No.")
@@ -34,7 +34,7 @@ tableextension 50001 "AssemblyLine" extends "Assembly Line" //901
             Editable = false;
             Caption = 'Documento Ventas', comment = 'ESP="Documento Ventas"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Assemble-to-Order Link"."Document No." where
+            CalcFormula = lookup("Assemble-to-Order Link"."Document No." where
                 (
                     "Assembly Document Type" = field("Document Type"),
                     "Assembly Document No." = field("Document No.")
@@ -57,7 +57,7 @@ tableextension 50001 "AssemblyLine" extends "Assembly Line" //901
             Editable = false;
             Caption = 'Linea Ventas', comment = 'ESP="Linea Ventas"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Assemble-to-Order Link"."Document Line No." where
+            CalcFormula = lookup("Assemble-to-Order Link"."Document Line No." where
                 (
                     "Assembly Document Type" = field("Document Type"),
                     "Assembly Document No." = field("Document No.")
@@ -79,11 +79,19 @@ tableextension 50001 "AssemblyLine" extends "Assembly Line" //901
             Editable = false;
             Caption = 'Fecha Fin Oferta', comment = 'ESP="Fecha Fin Oferta"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Sales Header"."Quote Valid Until Date" where
+            CalcFormula = lookup("Sales Header"."Quote Valid Until Date" where
                 (
                     "Document Type" = field("Document Type_btc"),
                     "No." = field("Document No_btc")
                 ));
+        }
+        field(50005; QuoteNoSalesOrder; code[20])
+        {
+            Caption = 'Quote No.', comment = 'ESP="Nº de oferta"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Header"."Quote No." where("Document Type" = field("Document Type_btc"),
+                    "No." = field("Document No_btc")));
+            Editable = false;
         }
     }
 }

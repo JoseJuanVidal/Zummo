@@ -37,7 +37,7 @@ tableextension 50119 "SalesLineArchive" extends "Sales Line Archive"  //5108
             Caption = 'Customer Name', comment = 'ESP="Nombre Cliente"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup (Customer.Name where("No." = field("Sell-to Customer No.")));
+            CalcFormula = lookup(Customer.Name where("No." = field("Sell-to Customer No.")));
         }
 
         field(50005; StockAlmacen_btc; Decimal)
@@ -46,7 +46,7 @@ tableextension 50119 "SalesLineArchive" extends "Sales Line Archive"  //5108
             Caption = 'Stock', comment = 'ESP="Stock"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = Sum ("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("No."), "Location Code" = FIELD("Location Code")));
+            CalcFormula = Sum("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("No."), "Location Code" = FIELD("Location Code")));
         }
 
         //Motivos retraso
@@ -108,7 +108,7 @@ tableextension 50119 "SalesLineArchive" extends "Sales Line Archive"  //5108
             Caption = 'Service Quote', comment = 'ESP="Oferta Servicio"';
             ObsoleteState = Removed;
             ObsoleteReason = 'Borrar';
-            
+
         }
         field(50016; LinOfertaServicio_btc; Integer)
         {

@@ -57,6 +57,11 @@ page 50132 "StockPerAlmacen"
                     ApplicationArea = All;
                     Caption = '(-)Cant. componentes';
                     ToolTip = 'Cantidad para pedidos ensamblado (conjuntos)', Comment = 'ESP="Cantidad para pedidos ensamblado (conjuntos)"';
+
+                    trigger OnDrillDown()
+                    begin
+                        ShowAsmmponent;
+                    end;
                 }
 
                 field("Qty. on Component Lines"; "Qty. on Component Lines")
@@ -191,5 +196,18 @@ page 50132 "StockPerAlmacen"
         //PurchaseLine.SetRange("Expected Receipt Date", "Date Filter");
         PurchaseLine.SetFilter("Outstanding Quantity", '<>0');
         page.RunModal(0, PurchaseLine);
+    end;
+
+    local procedure ShowAsmmponent()
+    var
+        AsmLine: Record "Assembly Line";
+    begin
+        AsmLine.SetRange("Document Type", AsmLine."Document Type"::Order);
+        AsmLine.SetRange(Type, AsmLine.Type::Item);
+        AsmLine.SetRange("No.", "Item No.");
+        AsmLine.SetRange("Location Code", "Location Code");
+        AsmLine.SetRange("Variant Code", "Variant Code");
+        AsmLine.SetFilter("Remaining Quantity", '<>0');
+        page.RunModal(0, AsmLine);
     end;
 }

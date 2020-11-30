@@ -24,7 +24,14 @@ pageextension 50103 "SalesLines" extends "Sales Lines"
             {
                 Visible = visiblebool;
             }
-            field(FechaAlbaran; FechaAlbaran) { }
+            field(FechaAlbaran; FechaAlbaran)
+            {
+                ApplicationArea = all;
+            }
+            field(QuoteNoSalesOrder; QuoteNoSalesOrder)
+            {
+                ApplicationArea = all;
+            }
 
         }
 

@@ -174,7 +174,14 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             OptionMembers = " ","Facturado Completo","Albaranes Bloqueados","PdteFact Completo","PdteFact No Completo","En Preparacion Completo","En Preparacion Incompleto","En Picking Completo","En Picking No Completo","Reservado Completo","Reservado No Completo","Stock Completo","Stock No Completo";
             ObsoleteState = Removed;
         }
+        field(50018; QuoteNoSalesOrder; code[20])
+        {
+            Caption = 'Quote No.', comment = 'ESP="Nº de oferta"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Header"."Quote No." where("Document Type" = field("Document Type"), "No." = field("Document No.")));
+            editable = false;
 
+        }
 
         field(50107; ExternalDocument; Code[50])
         {
@@ -186,7 +193,5 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             ));
         }
     }
-
-
 }
 

@@ -8,14 +8,22 @@ pageextension 50176 "AssemblyLines" extends "Assembly Lines"
             field("Document No_btc"; "Document No_btc") { }
             field("Document Line No_btc"; "Document Line No_btc") { }
             field("Fecha Fin Oferta_btc"; "Fecha Fin Oferta_btc") { }
-            field(NombreCliente; NombreCliente) { }
+            field(NombreCliente; NombreCliente)
+            {
+                ApplicationArea = all;
+                Caption = 'Customer Name', comment = 'ESP="Nombre Cliente"';
+            }
             field(SalesHeaderPromised; SalesHeader."Promised Delivery Date")
             {
-                Caption = 'Fecha entrega prometida', comment = 'Fecha entrega prometida';
+                Caption = 'Fecha entrega prometida', comment = 'ESP="Fecha entrega prometida"';
             }
             field(SalesHeaderRequested; SalesHeader."Requested Delivery Date")
             {
-                Caption = 'Fecha entrega requerida', comment = 'Fecha entrega requerida';
+                Caption = 'Fecha entrega requerida', comment = 'ESP="Fecha entrega requerida"';
+            }
+            field(QuoteNoSalesOrder; QuoteNoSalesOrder)
+            {
+                ApplicationArea = all;
             }
         }
     }
