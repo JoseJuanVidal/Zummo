@@ -12763,6 +12763,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension VatEntry - Control NombreClienteProv - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4089727960 - Change 2428847315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Skype Contact</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Contacto Skype"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard_RRHH_zum - Change Pager - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4089727960 - Change 2428847315 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Addres Contact Skype</source>
+          <note from="Developer" annotates="general" priority="2">Direccion de contacto Skype</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard_RRHH_zum - Change Pager - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4089727960 - Control 1118906203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>BITEC</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12783,10 +12793,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard_RRHH_zum - Control Puesto Subform - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 4208835177 - Field 1618395873 - Property 2879900210" size-unit="char" translate="no" xml:space="preserve" al-object-target="Table 3118382297">
-          <source>Not invoice</source>
-          <note from="Developer" annotates="general" priority="2">ESP="No facturar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field NoFacturar_btc - Property Caption</note>
+        <trans-unit id="TableExtension 412658605 - Field 2268021548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1112259294">
+          <source>Usar Calculo Balance</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usar Calculo Balance"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHRequisitionWkshName - Field STHUseCalcPersonalizado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 412658605 - Field 603541938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1112259294">
+          <source>Usar Agrup. Almacenes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usar Agrup. Almacenes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHRequisitionWkshName - Field STHUseLocationGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 412658605 - Field 1547180927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1112259294">
+          <source>No Contemplar Ped. Compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No Contemplar Ped. Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHRequisitionWkshName - Field STHNoEvaluarPurchase - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Fecha.Rec.Mail</source>
