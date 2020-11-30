@@ -29,16 +29,19 @@ page 50132 "StockPerAlmacen"
                 {
                     ApplicationArea = All;
                     Caption = '(+)Cant. en pedido de ensamblado';
+                    ToolTip = 'Cantidad en pedidos de ensamblado (Conjuntos)', Comment = 'ESP="Cantidad en pedidos de ensamblado (Conjuntos)"';
                 }
                 field("Qty. on Prod. Order"; "Qty. on Prod. Order")
                 {
                     ApplicationArea = All;
                     Caption = '(+)Cant. en orden producc.';
+                    ToolTip = 'Cantidad en orden de producciona productir', Comment = 'ESP="Cantidad en orden de producciona productir"';
                 }
                 field("Qty. on Purch. Order"; "Qty. on Purch. Order")
                 {
                     ApplicationArea = All;
                     Caption = '(+)Cant. en pedidos compra';
+                    ToolTip = 'Cantidad en pedidos de compra', Comment = 'ESP="Cantidad en pedidos de compra"';
 
                     trigger OnDrillDown()
                     begin
@@ -53,12 +56,14 @@ page 50132 "StockPerAlmacen"
                 {
                     ApplicationArea = All;
                     Caption = '(-)Cant. componentes';
+                    ToolTip = 'Cantidad para pedidos ensamblado (conjuntos)', Comment = 'ESP="Cantidad para pedidos ensamblado (conjuntos)"';
                 }
 
                 field("Qty. on Component Lines"; "Qty. on Component Lines")
                 {
                     ApplicationArea = All;
                     Caption = '(-)Cant. línea componentes';
+                    ToolTip = 'Consumo orden producción', Comment = 'ESP="Consumo orden producción"';
                 }
                 field("Qty. on Job Order"; "Qty. on Job Order")
                 {

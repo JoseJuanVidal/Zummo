@@ -2858,15 +2858,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Qty. on Assembly Order - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 9807146 - Control 2980377805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad en pedidos de ensamblado (Conjuntos)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad en pedidos de ensamblado (Conjuntos)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Qty. on Assembly Order - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 9807146 - Control 1706177334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>(+)Cant. en orden producc.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Qty. on Prod. Order - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 9807146 - Control 1706177334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad en orden de producciona productir</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad en orden de producciona productir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Qty. on Prod. Order - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 9807146 - Control 3420811913 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>(+)Cant. en pedidos compra</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Qty. on Purch. Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 9807146 - Control 3420811913 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad en pedidos de compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad en pedidos de compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Qty. on Purch. Order - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 9807146 - Control 3748375704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>(+)Recep. ped. transfer. (cant.)</source>
@@ -2878,10 +2893,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Qty. on Asm. Component - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 9807146 - Control 2564585975 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad para pedidos ensamblado (conjuntos)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad para pedidos ensamblado (conjuntos)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Qty. on Asm. Component - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 9807146 - Control 442573555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>(-)Cant. línea componentes</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Qty. on Component Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 9807146 - Control 442573555 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consumo orden producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Consumo orden producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Qty. on Component Lines - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 9807146 - Control 1309475966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>(-)Cant. en pedido de proyecto</source>
@@ -14327,6 +14352,31 @@
           <source>Nº orden ref.</source>
           <note from="Developer" annotates="general" priority="2">Ref. Order No.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtProdOrder_btc - Field RefOrderNo_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 381309945 - Field 2209391163 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3495052746">
+          <source>Item No. production</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº producto a producir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHProdOrderComponent - Field Item No. production - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 381309945 - Field 396071971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3495052746">
+          <source>Item Name production</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción producto a producir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHProdOrderComponent - Field Item Name production - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 381309945 - Field 1376882797 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3495052746">
+          <source>Starting Dateproduction</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha inicial producto a producir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHProdOrderComponent - Field Starting Datet production - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 381309945 - Field 143889652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3495052746">
+          <source>Quantity production</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad producto a producir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHProdOrderComponent - Field Quantity production - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 381309945 - Field 4235896424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3495052746">
+          <source>Remaining Quantity production</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad pendiente producto a producir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHProdOrderComponent - Field Remaining Quantity production - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 735070692 - Field 3570843907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 265035428">
           <source>Depreciation %</source>
