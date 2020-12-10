@@ -9,6 +9,12 @@ pageextension 50029 "DocsinPOSubform" extends "Docs. in PO Subform"
                 ApplicationArea = All;
                 Editable = false;
                 Caption = 'Name', comment = 'ESP="Nombre"';
+                Visible = false;
+            }
+            field("STH Vendor Name"; "STH Vendor Name")
+            {
+                ApplicationArea = all;
+                Editable = false;
             }
         }
         modify("Payment Method Code")

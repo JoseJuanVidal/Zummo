@@ -14638,6 +14638,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="% Descuento línea2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnReceiptLine - Field DecLine Discount2 %_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 301384659 - Field 2851413280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
+          <source>Vendor Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field STH Vendor Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3967834141 - Field 4182352612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 930347903">
           <source>Direct Debit Mandate ID</source>
           <note from="Developer" annotates="general" priority="2">ESP="Id. de orden de domiciliación de adeudo directo"</note>
