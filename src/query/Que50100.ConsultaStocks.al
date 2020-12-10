@@ -49,10 +49,28 @@ query 50100 "Consulta Stocks"
             }
             column(Cantidad; "Qty. (Base)")
             {
-                ColumnFilter = Cantidad = FILTER (<> 0);
+                ColumnFilter = Cantidad = FILTER(<> 0);
                 Method = Sum;
             }
-
+            column(Registering_Date; "Registering Date")
+            {
+            }
+            column(Fecha_Fin_Contrato; "Fecha Fin Contrato")
+            { }
+            column(Comentario; "Comentario")
+            { }
+            column(Source_Document; "Source Document")
+            { }
+            column(Source_No_; "Source No.")
+            { }
+            column(Source_Type; "Source Type")
+            { }
+            column(Source_Subtype; "Source Subtype")
+            { }
+            column(Source_Line_No_; "Source Line No.")
+            { }
+            column(Entry_No_; "Entry No.")
+            { }
         }
     }
 }

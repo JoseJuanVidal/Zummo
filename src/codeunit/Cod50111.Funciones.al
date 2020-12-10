@@ -569,4 +569,19 @@ codeunit 50111 "Funciones"
         ReqLine.SetFilter("Location Code", '<>%1', FilterLocation);
         ReqLine.DeleteAll();
     end;
+
+    procedure GetExtensionFieldValuetext(vRecordIf: RecordId; fieldNo: Integer; CalcField: boolean): text
+    var
+        vRecRef: RecordRef;
+        vFieldRef: FieldRef;
+    begin
+        if vRecRef.Get(vRecordIf) then begin
+            if vRecRef.FieldExist(fieldNo) then begin
+                vFieldRef := vRecRef.field(fieldNo);
+                if CalcField then
+                    vFieldRef.CalcField();
+                Exit(vFieldRef.Value);
+            end;
+        end;
+    end;
 }

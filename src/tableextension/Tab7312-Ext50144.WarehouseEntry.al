@@ -7,7 +7,7 @@ tableextension 50144 "WarehouseEntry" extends "Warehouse Entry"  //7312
             Editable = false;
             Caption = 'Description 1', comment = 'ESP="Descripción 1"';
             FieldClass = FlowField;
-            CalcFormula = lookup (Item.Description where("No." = field("Item No.")));
+            CalcFormula = lookup(Item.Description where("No." = field("Item No.")));
         }
 
         field(50101; ItemDesc2_btc; Text[50])
@@ -15,7 +15,15 @@ tableextension 50144 "WarehouseEntry" extends "Warehouse Entry"  //7312
             Editable = false;
             Caption = 'Description 2', comment = 'ESP="Descripción 2"';
             FieldClass = FlowField;
-            CalcFormula = lookup (Item."Description 2" where("No." = field("Item No.")));
+            CalcFormula = lookup(Item."Description 2" where("No." = field("Item No.")));
+        }
+        field(50105; "Fecha Fin Contrato"; date)
+        {
+            Caption = 'Fecha Fin Contrato', comment = 'ESP="Fecha Fin Contrato"';
+        }
+        field(50106; "Comentario"; text[100])
+        {
+            Caption = 'Comentario', comment = 'ESP="Comentario"';
         }
     }
 }

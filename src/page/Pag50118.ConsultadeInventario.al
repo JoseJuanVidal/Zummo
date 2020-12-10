@@ -8,8 +8,6 @@ page 50118 "Consulta de Inventario"
     ApplicationArea = all;
     InsertAllowed = false;
     DeleteAllowed = false;
-    ModifyAllowed = false;
-    Editable = false;
 
     Caption = 'Consulta Inventario';
     layout
@@ -21,41 +19,97 @@ page 50118 "Consulta de Inventario"
                 field("Item No."; "Item No.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
 
                 field(ItemDesc1_btc; ItemDesc1_btc)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
 
                 field(ItemDesc2_btc; ItemDesc2_btc)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
-
+                field(Familia; recItem.desFamilia_btc)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Familia', Comment = 'ESP="Familia"';
+                    Editable = false;
+                }
+                field(CodCliente; CodCliente)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    Caption = 'Cliente', comment = 'ESP="Cliente"';
+                }
                 field("Lot No."; "Lot No.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Serial No."; "Serial No.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Location Code"; "Location Code")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Bin Code"; "Bin Code")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Registering Date"; "Registering Date")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Quantity; Quantity)
                 {
                     ApplicationArea = All;
+                    Editable = false;
+                }
+                field(Unitcost; recItem."Unit Cost")
+                {
+                    Caption = 'Unit cost', comment = 'ESP="Coste unitario"';
+                    ApplicationArea = all;
+                    Editable = false;
+                    DecimalPlaces = 0 : 2;
+                }
+                field("Source Document"; "Source Document")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Source No."; "Source No.")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+                field(Fecha_Fin_Contrato; "Fecha Fin Contrato")
+                {
+                    ApplicationArea = all;
+
+                    trigger OnValidate()
+                    begin
+                        UpdateWhseEntry;
+                    end;
+
+                }
+                field("Comentarios"; "Comentario")
+                {
+                    ApplicationArea = all;
+
+                    trigger OnValidate()
+                    begin
+                        UpdateWhseEntry;
+                    end;
                 }
             }
         }
@@ -121,6 +175,22 @@ page 50118 "Consulta de Inventario"
     trigger OnAfterGetRecord()
     begin
         IF NOT recItem.GET("Item No.") THEN CLEAR(recItem);
+        recItem.CalcFields(desFamilia_btc);
+
+        // obtenemos campo de descripción familia
+        //familia := Funciones.GetExtensionFieldValuetext(recItem.RecordId, 50021, true);   // Desc Familia  021        
+
+        // Cod. Cliente que esta en la cabecera de recepcion
+        CodCliente := '';
+        case "Source Type" of
+            5741:
+                begin
+                    TransferReceiptHeader.SetRange("Transfer Order No.", "Source No.");
+                    if TransferReceiptHeader.FindSet() then
+                        CodCliente := Funciones.GetExtensionFieldValuetext(TransferReceiptHeader.RecordId, 50600, false
+                        );   // Desc Familia  021        
+                end;
+        end;
     end;
 
     trigger OnOpenPage()
@@ -129,22 +199,24 @@ page 50118 "Consulta de Inventario"
     end;
 
     var
-        LotInventory: Query "Consulta Stocks"; 
-
-
+        LotInventory: Query "Consulta Stocks";
+        Funciones: Codeunit Funciones;
+        TransferReceiptHeader: Record "Transfer Receipt Header";
         Cont: Integer;
         recItem: Record "Item";
         globalAlmacen: Code[20];
         globalUbicacion: Code[20];
-
         globalProducto: Code[20];
         globalSerie: Code[20];
+        CodCliente: code[20];
+        Ventana: Dialog;
+        msgVentana: Label 'Almacén:#1###########\Producto #2##############';
 
     local procedure SetPageData()
     begin
         if globalAlmacen <> '' then
             LotInventory.SetFilter(LotInventory.FiltroAlmacen, globalAlmacen);
-         if globalUbicacion <> '' then
+        if globalUbicacion <> '' then
             LotInventory.SetFilter(LotInventory.FiltroUbicacion, globalUbicacion);
         if globalProducto <> '' then
             LotInventory.SetFilter(LotInventory.FiltroItemNo, globalProducto);
@@ -154,7 +226,7 @@ page 50118 "Consulta de Inventario"
         LotInventory.OPEN;
         WHILE LotInventory.READ DO BEGIN
             Cont += 1;
-            "Entry No." := Cont;
+            "Entry No." := LotInventory.Entry_No_; // Cont;
             "Item No." := LotInventory.Item_No;
             "Serial No." := LotInventory.SerialNo;
             "Variant Code" := LotInventory.Variant_Code;
@@ -162,6 +234,14 @@ page 50118 "Consulta de Inventario"
             "Location Code" := LotInventory.Almacen;
             "Bin Code" := LotInventory.Ubicacion;
             Quantity := LotInventory.Cantidad;
+            "Registering Date" := LotInventory.Registering_Date;
+            "Fecha Fin Contrato" := LotInventory.Fecha_Fin_Contrato;
+            "Comentario" := LotInventory.Comentario;
+            "Source Document" := LotInventory.Source_Document;
+            "Source No." := LotInventory.Source_No_;
+            "Source Type" := LotInventory.Source_Type;
+            "Source Subtype" := LotInventory.Source_Subtype;
+            "Source Line No." := LotInventory.Source_Line_No_;
             IF Quantity <> 0 THEN
                 INSERT();
         END;
@@ -187,5 +267,16 @@ page 50118 "Consulta de Inventario"
     procedure SetSerie(pSerie: Code[20])
     begin
         globalSerie := pSerie;
+    end;
+
+    local procedure UpdateWhseEntry()
+    var
+        WhseEntry: Record "Warehouse Entry";
+    begin
+        if WhseEntry.Get("Entry No.") then begin
+            WhseEntry."Fecha Fin Contrato" := "Fecha Fin Contrato";
+            WhseEntry.Comentario := Comentario;
+            WhseEntry.Modify();
+        end
     end;
 }

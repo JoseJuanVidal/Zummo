@@ -371,6 +371,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2864266009 - NamedType 312743634" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Almacén:#1###########\Producto #2##############</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - NamedType msgVentana</note>
+        </trans-unit>
         <trans-unit id="Page 31964965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Clasificación pedido servicio</source>
           <note from="Developer" annotates="general" priority="2"/>

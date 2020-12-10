@@ -1463,6 +1463,18 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2864266009 - Control 852363289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Familia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Control Familia - Property Caption</note>
+          <target>Familia</target>
+        </trans-unit>
+        <trans-unit id="Page 2864266009 - Control 3175023199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit cost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste unitario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Control Unitcost - Property Caption</note>
+          <target>Coste unitario</target>
+        </trans-unit>
         <trans-unit id="Page 2864266009 - Action 993596263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Warehouse entry</source>
           <note from="Developer" annotates="general" priority="2">ESP="Movs. Almacén"</note>
@@ -1486,6 +1498,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Muestra la lista de movimientos de producto asociados a ese Producto, Nº serie, Nº Lote..."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Action MovProducto - Property ToolTip</note>
           <target>Muestra la lista de movimientos de producto asociados a ese Producto, Nº serie, Nº Lote...</target>
+        </trans-unit>
+        <trans-unit id="Page 2864266009 - NamedType 312743634" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Almacén:#1###########\Producto #2##############</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - NamedType msgVentana</note>
         </trans-unit>
         <trans-unit id="Page 4288107541 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Predefined comments tab</source>
@@ -15937,6 +15954,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field ItemDesc2_btc - Property Caption</note>
           <target>Descripción 2</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4014689059 - Field 1291639658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
+          <source>Fecha Fin Contrato</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin Contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field Fecha Fin Contrato - Property Caption</note>
+          <target>Fecha Fin Contrato</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4014689059 - Field 1240338501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
+          <source>Comentario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field Comentario - Property Caption</note>
+          <target>Comentario</target>
         </trans-unit>
         <trans-unit id="TableExtension 1595727278 - Field 1915458483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 346005766">
           <source>Description 2</source>
