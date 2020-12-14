@@ -23,7 +23,19 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                 ApplicationArea = All;
             }
         }
+        addafter("Succeeded VAT Registration No.")
+        {
+            field(FechaOperacion; FechaOperacion)
+            {
+                ApplicationArea = all;
+                Caption = 'Fecha operación', comment = 'ESP="Fecha operación"';
 
+                trigger OnValidate()
+                begin
+                    SetFechaOperacion();
+                end;
+            }
+        }
         modify("External Document No.")
         {
             Editable = true;
@@ -162,6 +174,17 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
         }
     }
 
+    trigger OnAfterGetRecord()
+    begin
+        FechaOperacion := Funciones.GetExtensionFieldValueDate(Rec.RecordId, 66600, false)  // Fecha operación SII
+    end;
+
+    var
+        FechaOperacion: date;
+        Funciones: Codeunit Funciones;
+        Text000: Label 'Se va a realizar el cambio de Fecha de operacion de la factura %1, en la Bandeja de SII.\ ¿Desea continuar?'
+            , comment = 'ESP="Se va a realizar el cambio de Fecha de operacion de la factura %1, en la Bandeja de SII.\¿Desea continuar?"';
+
     local procedure SetWorkDescription(NewWorkDescription: Text)
     var
         TempBlob: Record TempBlob temporary;
@@ -176,5 +199,17 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
         "Work Description" := TempBlob.Blob;
 
         MODIFY;
+    end;
+
+    local procedure SetFechaOperacion()
+    var
+
+    begin
+        if not Confirm(Text000, false, rec."No.") then
+            exit;
+        // actualizamos el campo de fecha operacion en la tabla de historico ventas, extension SII
+        Funciones.SetExtensionFieldValueDate(rec.RecordId, 66600, FechaOperacion);
+        // actualizamos el campo de fecha operacion en la tabla de Bandeja de salida (66600), extension SII, campo 30 Fecha operacion
+        Funciones.SetExtensionRecRefFieldValueDate(rec."No.", FechaOperacion);
     end;
 }

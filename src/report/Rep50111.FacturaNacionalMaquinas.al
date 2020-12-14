@@ -23,6 +23,9 @@ report 50111 "FacturaNacionalMaquinas"
 
             }
             column(codigoDivisa; codigoDivisa) { }
+            column(FechaOperacion; FechaOperacion) { }
+            column(MostrarFechaOperacion; MostrarFechaOperacion) { }
+            column(Text0010Txt; Text0010Txt) { }
             column(VATAmount2; importeiva) { }
             column(Ship_to_Address; "Ship-to Address") { }
             column(Importecab; TotalAmount2) { }
@@ -1695,6 +1698,7 @@ report 50111 "FacturaNacionalMaquinas"
                 currency: Record Currency;
                 recConfConta: record "General Ledger Setup";
                 recSalesInvLinePeso: Record "Sales Invoice Line";
+                cdaFunciones: Codeunit Funciones;
             begin
                 totalBultos := 0;
                 totalPeso := 0;
@@ -1878,6 +1882,9 @@ report 50111 "FacturaNacionalMaquinas"
                     else
                         codigoDivisa := 'EUR';
                 end;
+
+                // buscamos la fecha de operacion del SII en otra extension
+                FechaOperacion := cdaFunciones.GetExtensionFieldValueDate("Sales Invoice Header".RecordId, 66600, false);
             end;
 
             trigger OnPostDataItem()
@@ -1984,6 +1991,12 @@ report 50111 "FacturaNacionalMaquinas"
                                 //RequestOptionsPage.Update(false);
                             end;
                         end;
+                    }
+                    field(MostrarFechaOperacion; MostrarFechaOperacion)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Show Operation Date', comment = 'ESP="Mostrar Fecha Operacion"';
+                        ToolTip = 'If the invoice is national, it is possible to show the net amounts', comment = 'ESP="Si la factura es nacional, se da la posibilidad de mostrar los importes netos"';
                     }
                 }
             }
@@ -2358,6 +2371,9 @@ report 50111 "FacturaNacionalMaquinas"
         fechaAlbaran: date;
         optIdioma: Option " ","ENU","ESP","FRA";
         codAlb: code[20];
+        FechaOperacion: date;
+        Text0010Txt: Label 'Operation Date', Comment = 'ESP="Fecha Operación"';
+        MostrarFechaOperacion: Boolean;
 
     [Scope('Personalization')]
     procedure InitLogInteraction()

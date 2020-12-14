@@ -766,4 +766,95 @@ codeunit 50101 "Eventos_btc"
             Funciones.ResetFilterOneLocation(Item);
         end;
     end;
+
+    [EventSubscriber(ObjectType::table, Database::"Intrastat Jnl. Line", 'OnAfterInsertEvent', '', true, true)]
+    local procedure IntrastatJnlLineIntrastatJnlLineOnAfterInsertEvent(VAR Rec: Record "Intrastat Jnl. Line"; RunTrigger: Boolean)
+    begin
+        IntrastatJnlLineIntrastatJnlLineUpdate(rec, RunTrigger);
+    end;
+
+    /*[EventSubscriber(ObjectType::table, Database::"Intrastat Jnl. Line", 'OnAfterModifyEvent', '', true, true)]
+    local procedure IntrastatJnlLineIntrastatJnlLineOnAfterModifyEvent(VAR Rec: Record "Intrastat Jnl. Line"; VAR xRec: Record "Intrastat Jnl. Line"; RunTrigger: Boolean)
+    begin
+        IntrastatJnlLineIntrastatJnlLineUpdate(rec, RunTrigger);
+    end;*/
+
+    local procedure IntrastatJnlLineIntrastatJnlLineUpdate(VAR Rec: Record "Intrastat Jnl. Line"; RunTrigger: Boolean)
+    var
+        recSalesShptHead: Record "Sales Shipment Header";
+        recCustomer: Record Customer;
+        RecVendor: Record Vendor;
+        ReturnReceiptHeader: Record "Return Receipt Header";
+        ValueEntry: Record "Value Entry";
+        PurchRcptHeader: Record "Purch. Rcpt. Header";
+        codFactura: code[20];
+        codCliente: code[20];
+        nombreCliente: text;
+    begin
+        codFactura := '';
+        codCliente := '';
+        nombreCliente := '';
+
+        if recSalesShptHead.Get(Rec."Document No.") then begin
+            codCliente := recSalesShptHead."Bill-to Customer No.";
+
+            if recCustomer.get(codCliente) then
+                nombreCliente := recCustomer.Name;
+
+            ValueEntry.reset;
+            ValueEntry.SetRange("Item Ledger Entry No.", rec."Source Entry No.");
+            ValueEntry.SetRange("Document Type", ValueEntry."Document Type"::"Sales Invoice");
+            if ValueEntry.FindFirst() then
+                codFactura := ValueEntry."Document No.";
+        end else
+
+            if ReturnReceiptHeader.Get(rec."Document No.") then begin
+                codCliente := ReturnReceiptHeader."Bill-to Customer No.";
+
+                if recCustomer.get(codCliente) then
+                    nombreCliente := recCustomer.Name;
+
+                ValueEntry.reset;
+                ValueEntry.SetRange("Item Ledger Entry No.", rec."Source Entry No.");
+                ValueEntry.SetRange("Document Type", ValueEntry."Document Type"::"Sales Credit Memo");
+                if ValueEntry.FindFirst() then
+                    codFactura := ValueEntry."Document No.";
+
+                /*if ReturnReceiptHeader."Order No." <> '' then begin
+                    recSalesInvLine.Reset();
+                    recSalesInvLine.SetRange("Bill-to Customer No.", codCliente);
+                    recSalesInvLine.SetRange("Order No.", ReturnReceiptHeader."Order No.");
+                    if recSalesInvLine.FindFirst() then
+                        codFactura := recSalesInvLine."Document No.";
+                end;
+                */
+            end else
+
+                if PurchRcptHeader.Get(Rec."Document No.") then begin
+                    codCliente := PurchRcptHeader."Buy-from Vendor No.";
+
+                    if RecVendor.get(codCliente) then
+                        nombreCliente := RecVendor.Name;
+
+                    ValueEntry.reset;
+                    ValueEntry.SetRange("Item Ledger Entry No.", rec."Source Entry No.");
+                    ValueEntry.SetRange("Document Type", ValueEntry."Document Type"::"Purchase Invoice");
+                    if ValueEntry.FindFirst() then
+                        codFactura := ValueEntry."Document No.";
+
+                    /*if ReturnReceiptHeader."Order No." <> '' then begin
+                        recSalesInvLine.Reset();
+                        recSalesInvLine.SetRange("Bill-to Customer No.", codCliente);
+                        recSalesInvLine.SetRange("Order No.", ReturnReceiptHeader."Order No.");
+                        if recSalesInvLine.FindFirst() then
+                            codFactura := recSalesInvLine."Document No.";
+                    end;
+                    */
+                end;
+
+        rec."Customer No." := codCliente;
+        rec."Customer Name" := nombreCliente;
+        rec."Invoice No." := codFactura;
+        rec.Modify();
+    end;
 }

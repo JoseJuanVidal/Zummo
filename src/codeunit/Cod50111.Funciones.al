@@ -584,4 +584,50 @@ codeunit 50111 "Funciones"
             end;
         end;
     end;
+
+    procedure GetExtensionFieldValueDate(vRecordIf: RecordId; fieldNo: Integer; CalcField: boolean): Date
+    var
+        vRecRef: RecordRef;
+        vFieldRef: FieldRef;
+    begin
+        if vRecRef.Get(vRecordIf) then begin
+            if vRecRef.FieldExist(fieldNo) then begin
+                vFieldRef := vRecRef.field(fieldNo);
+                if CalcField then
+                    vFieldRef.CalcField();
+                Exit(vFieldRef.Value);
+            end;
+        end;
+    end;
+
+    procedure SetExtensionFieldValueDate(vRecordIf: RecordId; fieldNo: Integer; Valor: date)
+    var
+        vRecRef: RecordRef;
+        vFieldRef: FieldRef;
+    begin
+        if vRecRef.Get(vRecordIf) then begin
+            if vRecRef.FieldExist(fieldNo) then begin
+                vFieldRef := vRecRef.field(fieldNo);
+                vFieldRef.Value := valor;
+                vRecRef.modify;
+            end;
+        end;
+    end;
+
+    procedure SetExtensionRecRefFieldValueDate(DocNo: code[20]; Valor: date)
+    var
+        vRecRef: RecordRef;
+        vFieldRef: FieldRef;
+    begin
+        vRecRef.Open(66600);
+        //        vFieldRef := vRecRef.FIELD(2);   // Tipo Documento = factura
+        //      vFieldRef.SetRange(DocNo);
+        vFieldRef := vRecRef.FIELD(7);  // Documento No.
+        vFieldRef.SetRange(DocNo);
+        if vRecRef.FINDSET(FALSE, FALSE) then begin
+            vFieldRef := vRecRef.field(30);
+            vFieldRef.Value := valor;
+            vRecRef.modify;
+        end;
+    end;
 }

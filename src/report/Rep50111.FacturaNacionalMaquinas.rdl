@@ -2565,7 +2565,8 @@ Cstr(Fields!PmtTermsDescCaption.Value) + Chr(177) +
 Cstr(Fields!PmtMethodDescCaption.Value) + Chr(177) + 
 Cstr(Fields!HomePageCaption.Value) + Chr(177) + 
 Cstr(Fields!EmailCaption.Value) + Chr(177) + 
-Cstr(Fields!CACCaption.Value)
+Cstr(Fields!CACCaption.Value)+ Chr(177) + 
+Cstr(Fields!FechaOperacion.Value)
 , 1)</Hidden>
                                             </Visibility>
                                             <Style>
@@ -2699,7 +2700,8 @@ Cstr(Fields!Ship_to_Address.Value) + Chr(177) +
 cstr(Fields!FechaVencimiento4.Value) + Chr(177) + 
 cstr(Fields!FechaVencimiento5.Value) + Chr(177) + 
 cstr(Fields!ImporteVencimiento4.Value) + Chr(177) + 
-cstr(Fields!ImporteVencimiento5.Value) 
+cstr(Fields!ImporteVencimiento5.Value) + Chr(177) + 
+cstr(Fields!FechaOperacion.Value) 
 ,2)</Hidden>
                               </Visibility>
                               <Style>
@@ -3977,6 +3979,87 @@ cstr(Fields!ImporteVencimiento5.Value)
                   <Style>Solid</Style>
                   <Width>1pt</Width>
                 </RightBorder>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="FechaCaptionLbl5">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Text0010Txt.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>FechaCaptionLbl</rd:DefaultName>
+              <Top>4.29557cm</Top>
+              <Left>0.61413cm</Left>
+              <Height>0.5cm</Height>
+              <Width>2.75cm</Width>
+              <ZIndex>12</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!MostrarFechaOperacion.Value, "DataSet_Result"), false, true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Color>Silver</Color>
+                  <Style>Solid</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox16">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Code.GetData(83,2)</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>4.29557cm</Top>
+              <Left>3.36525cm</Left>
+              <Height>0.5cm</Height>
+              <Width>2.74887cm</Width>
+              <ZIndex>13</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!MostrarFechaOperacion.Value, "DataSet_Result"), false, true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Color>Silver</Color>
+                  <Style>Solid</Style>
+                </Border>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -6875,6 +6958,15 @@ kQ0AAACYVumJ6NVO2kv0OBnLb8xjsxv6iQIAADCdwiB6sXOar962sHEnXwEAAMB0ik9EDzazti0TLVtW
         </Field>
         <Field Name="codigoDivisa">
           <DataField>codigoDivisa</DataField>
+        </Field>
+        <Field Name="FechaOperacion">
+          <DataField>FechaOperacion</DataField>
+        </Field>
+        <Field Name="MostrarFechaOperacion">
+          <DataField>MostrarFechaOperacion</DataField>
+        </Field>
+        <Field Name="Text0010Txt">
+          <DataField>Text0010Txt</DataField>
         </Field>
         <Field Name="VATAmount2">
           <DataField>VATAmount2</DataField>

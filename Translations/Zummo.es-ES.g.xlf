@@ -1469,6 +1469,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Control Familia - Property Caption</note>
           <target>Familia</target>
         </trans-unit>
+        <trans-unit id="Page 2864266009 - Control 3083556976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Control Reference No. - Property Caption</note>
+          <target>Cliente</target>
+        </trans-unit>
+        <trans-unit id="Page 2864266009 - Control 4245741204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre Cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Control NomCliente - Property Caption</note>
+          <target>Nombre Cliente</target>
+        </trans-unit>
         <trans-unit id="Page 2864266009 - Control 3175023199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit cost</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste unitario"</note>
@@ -5533,6 +5545,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - Control mostrarNetos - Method OnValidate - NamedType lbErrorErr</note>
           <target>Opción solo disponible en factura nacional</target>
         </trans-unit>
+        <trans-unit id="Report 1112960350 - Control 839610921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Operation Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Fecha Operacion"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - Control MostrarFechaOperacion - Property Caption</note>
+          <target>Mostrar Fecha Operacion</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - Control 839610921 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If the invoice is national, it is possible to show the net amounts</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Si la factura es nacional, se da la posibilidad de mostrar los importes netos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - Control MostrarFechaOperacion - Property ToolTip</note>
+          <target>Si la factura es nacional, se da la posibilidad de mostrar los importes netos</target>
+        </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 1068094782" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
           <note from="Developer" annotates="general" priority="2">ESP="Especificación del importe del IVA en"</note>
@@ -6312,6 +6336,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº de Serie:"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType NSerie_Lbl</note>
           <target>Nº de Serie:</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 1565130912" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Operación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Text0010Txt</note>
+          <target>Fecha Operación</target>
         </trans-unit>
         <trans-unit id="Report 112853145 - Control 3244554030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Mostrar Pagos</source>
@@ -11920,6 +11950,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field ImprimirPedVentaComentarios - Property Caption</note>
           <target>Imp. Ped. Venta mostrar comentarios</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1682009332 - Control 1021604149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Fecha operación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha operación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - Control FechaOperacion - Property Caption</note>
+          <target>Fecha operación</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1682009332 - Action 1545044866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Cambiar Doc. Externo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Doc. Externo"</note>
@@ -11961,6 +11997,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="&amp;Correo electrónico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - Action Email_btc - Property Caption</note>
           <target>&amp;Correo electrónico</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1682009332 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Se va a realizar el cambio de Fecha de operacion de la factura %1, en la Bandeja de SII.\ ¿Desea continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a realizar el cambio de Fecha de operacion de la factura %1, en la Bandeja de SII.\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - NamedType Text000</note>
+          <target>Se va a realizar el cambio de Fecha de operacion de la factura %1, en la Bandeja de SII.\¿Desea continuar?</target>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 3024434233 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Comments</source>
@@ -13752,6 +13794,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="No Contemplar Ped. Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHRequisitionWkshName - Field STHNoEvaluarPurchase - Property Caption</note>
           <target>No Contemplar Ped. Compra</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 90629565 - Field 166038250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 311266198">
+          <source>Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Intrastat JnlLine - Field Invoice No. - Property Caption</note>
+          <target>Nº Factura</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 90629565 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 311266198">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Intrastat JnlLine - Field Customer No. - Property Caption</note>
+          <target>Cód. Cliente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 90629565 - Field 1171137197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 311266198">
+          <source>Customer Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Intrastat JnlLine - Field Customer Name - Property Caption</note>
+          <target>Nombre Cliente</target>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Fecha.Rec.Mail</source>

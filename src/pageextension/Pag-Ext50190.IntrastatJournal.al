@@ -1,6 +1,6 @@
 pageextension 50190 "IntrastatJournal" extends "Intrastat Journal"
 {
-      layout
+    layout
     {
         addafter("Document No.")
         {
@@ -22,6 +22,16 @@ pageextension 50190 "IntrastatJournal" extends "Intrastat Journal"
             {
                 Editable = false;
                 Caption = 'Customer Name', comment = 'ESP="Nombre Cliente"';
+                ApplicationArea = All;
+            }
+            field("Customer No."; "Customer No.")
+            {
+                Editable = false;
+                ApplicationArea = All;
+            }
+            field("Customer Name"; "Customer Name")
+            {
+                Editable = false;
                 ApplicationArea = All;
             }
         }

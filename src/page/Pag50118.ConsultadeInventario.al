@@ -9,6 +9,8 @@ page 50118 "Consulta de Inventario"
     InsertAllowed = false;
     DeleteAllowed = false;
 
+    Permissions = tabledata 7312 = rmid;
+
     Caption = 'Consulta Inventario';
     layout
     {
@@ -39,11 +41,17 @@ page 50118 "Consulta de Inventario"
                     Caption = 'Familia', Comment = 'ESP="Familia"';
                     Editable = false;
                 }
-                field(CodCliente; CodCliente)
+                field("Reference No."; "Reference No.")
                 {
                     ApplicationArea = all;
                     Editable = false;
                     Caption = 'Cliente', comment = 'ESP="Cliente"';
+                }
+                field(NomCliente; NomCliente)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    Caption = 'Nombre Cliente', comment = 'ESP="Nombre Cliente"';
                 }
                 field("Lot No."; "Lot No.")
                 {
@@ -180,17 +188,9 @@ page 50118 "Consulta de Inventario"
         // obtenemos campo de descripción familia
         //familia := Funciones.GetExtensionFieldValuetext(recItem.RecordId, 50021, true);   // Desc Familia  021        
 
-        // Cod. Cliente que esta en la cabecera de recepcion
-        CodCliente := '';
-        case "Source Type" of
-            5741:
-                begin
-                    TransferReceiptHeader.SetRange("Transfer Order No.", "Source No.");
-                    if TransferReceiptHeader.FindSet() then
-                        CodCliente := Funciones.GetExtensionFieldValuetext(TransferReceiptHeader.RecordId, 50600, false
-                        );   // Desc Familia  021        
-                end;
-        end;
+        NomCliente := '';
+        if Customer.Get("Reference No.") then
+            NomCliente := Customer.Name;
     end;
 
     trigger OnOpenPage()
@@ -199,6 +199,8 @@ page 50118 "Consulta de Inventario"
     end;
 
     var
+        WhseEntry: Record "Warehouse Entry";
+        Customer: Record Customer;
         LotInventory: Query "Consulta Stocks";
         Funciones: Codeunit Funciones;
         TransferReceiptHeader: Record "Transfer Receipt Header";
@@ -209,6 +211,7 @@ page 50118 "Consulta de Inventario"
         globalProducto: Code[20];
         globalSerie: Code[20];
         CodCliente: code[20];
+        NomCliente: text;
         Ventana: Dialog;
         msgVentana: Label 'Almacén:#1###########\Producto #2##############';
 
@@ -226,7 +229,7 @@ page 50118 "Consulta de Inventario"
         LotInventory.OPEN;
         WHILE LotInventory.READ DO BEGIN
             Cont += 1;
-            "Entry No." := LotInventory.Entry_No_; // Cont;
+            "Entry No." := Cont;  //LotInventory.Entry_No_;
             "Item No." := LotInventory.Item_No;
             "Serial No." := LotInventory.SerialNo;
             "Variant Code" := LotInventory.Variant_Code;
@@ -234,14 +237,34 @@ page 50118 "Consulta de Inventario"
             "Location Code" := LotInventory.Almacen;
             "Bin Code" := LotInventory.Ubicacion;
             Quantity := LotInventory.Cantidad;
-            "Registering Date" := LotInventory.Registering_Date;
-            "Fecha Fin Contrato" := LotInventory.Fecha_Fin_Contrato;
-            "Comentario" := LotInventory.Comentario;
-            "Source Document" := LotInventory.Source_Document;
-            "Source No." := LotInventory.Source_No_;
-            "Source Type" := LotInventory.Source_Type;
-            "Source Subtype" := LotInventory.Source_Subtype;
-            "Source Line No." := LotInventory.Source_Line_No_;
+            // buscamos el movimiento
+            WhseEntry.SetRange("Item No.", LotInventory.Item_No);
+            WhseEntry.SetRange("Serial No.", LotInventory.SerialNo);
+            WhseEntry.SetRange("Variant Code", LotInventory.Variant_Code);
+            WhseEntry.SetRange("Lot No.", LotInventory.Lote);
+            WhseEntry.SetRange("Location Code", LotInventory.Almacen);
+            WhseEntry.SetRange("Bin Code", LotInventory.Ubicacion);
+            if not WhseEntry.FindSet() then
+                clear(WhseEntry);
+            "Registering Date" := WhseEntry."Registering Date";
+            "Fecha Fin Contrato" := WhseEntry."Fecha Fin Contrato";
+            "Comentario" := WhseEntry.Comentario;
+            "Source Document" := WhseEntry."Source Document";
+            "Source No." := WhseEntry."Source No.";
+            "Source Type" := WhseEntry."Source Type";
+            "Source Subtype" := WhseEntry."Source Subtype";
+            "Source Line No." := WhseEntry."Source Line No.";
+            // Cod. Cliente que esta en la cabecera de recepcion  
+            CodCliente := '';
+            case "Source Type" of
+                5741:
+                    begin
+                        TransferReceiptHeader.SetRange("Transfer Order No.", "Source No.");
+                        if TransferReceiptHeader.FindSet() then
+                            CodCliente := Funciones.GetExtensionFieldValuetext(TransferReceiptHeader.RecordId, 50600, false);   // Desc Familia  021        
+                    end;
+            end;
+            "Reference No." := CodCliente;
             IF Quantity <> 0 THEN
                 INSERT();
         END;
@@ -270,10 +293,14 @@ page 50118 "Consulta de Inventario"
     end;
 
     local procedure UpdateWhseEntry()
-    var
-        WhseEntry: Record "Warehouse Entry";
     begin
-        if WhseEntry.Get("Entry No.") then begin
+        WhseEntry.SetRange("Item No.", "Item No.");
+        WhseEntry.SetRange("Serial No.", "Serial No.");
+        WhseEntry.SetRange("Variant Code", "Variant Code");
+        WhseEntry.SetRange("Lot No.", "Lot No.");
+        WhseEntry.SetRange("Location Code", "Location Code");
+        WhseEntry.SetRange("Bin Code", "Bin Code");
+        if WhseEntry.FindSet() then begin
             WhseEntry."Fecha Fin Contrato" := "Fecha Fin Contrato";
             WhseEntry.Comentario := Comentario;
             WhseEntry.Modify();
