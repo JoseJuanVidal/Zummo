@@ -12046,6 +12046,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control VendorName - Property Caption</note>
           <target>Nombre proveedor</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Control 681009761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Parent Order No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control OrderNo - Property Caption</note>
+          <target>Nº Pedido ensamblado</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Control 1125192252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Parent Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control ItemParentNo - Property Caption</note>
+          <target>Cód. producto ensamblado</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Control 4248105707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Parent Order Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Línea Pedido ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control OrderLineNo - Property Caption</note>
+          <target>Nº Línea Pedido ensamblado</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2185030199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Imprimir Etiqueta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Etiqueta"</note>

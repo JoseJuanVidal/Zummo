@@ -29,7 +29,21 @@ pageextension 50005 "CustomerList" extends "Customer List"
             {
                 ApplicationArea = all;
             }
-
+        }
+        addlast(Control1)
+        {
+            field("Credito Maximo Aseguradora_btc"; "Credito Maximo Aseguradora_btc")
+            {
+                ApplicationArea = all;
+            }
+            field(Suplemento_aseguradora; Suplemento_aseguradora)
+            {
+                ApplicationArea = all;
+            }
+            field("Credito Maximo Interno_btc"; "Credito Maximo Interno_btc")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

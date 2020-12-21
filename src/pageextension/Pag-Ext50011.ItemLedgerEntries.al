@@ -67,6 +67,27 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                 Editable = false;
             }
         }
+        addbefore("Entry No.")
+        {
+            field(OrderNo; OrderNo)
+            {
+                ApplicationArea = all;
+                Caption = 'Parent Order No.', comment = 'ESP="Nº Pedido ensamblado"';
+                Editable = false;
+            }
+            field(ItemParentNo; ItemParentNo)
+            {
+                ApplicationArea = all;
+                Caption = 'Parent Item No.', comment = 'ESP="Cód. producto ensamblado"';
+                Editable = false;
+            }
+            field(OrderLineNo; OrderLineNo)
+            {
+                ApplicationArea = all;
+                Caption = 'Parent Order Line No.', comment = 'ESP="Nº Línea Pedido ensamblado"';
+                Editable = false;
+            }
+        }
     }
     actions
     {
@@ -118,6 +139,11 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
     var
         Vendor: Record Vendor;
     begin
+        // inicializamos variables ensamblado
+        OrderNo := '';
+        OrderLineNo := 0;
+        ItemParentNo := '';
+
         CalcFields("Reserved Quantity");
         cantidadDisponible := "Remaining Quantity" - "Reserved Quantity";
         if Item.Get("Item No.") then;
@@ -126,15 +152,36 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                 begin
                     if Vendor.Get(Rec."Source No.") then
                         VendorName := Vendor.Name;
-                end
+                end;
+            "Entry Type"::"Assembly Output", "Entry Type"::"Assembly Consumption":
+                begin
+                    // buscamos si es salida de ensamblado el pedido original
+                    AssembleToOrderLink.reset;
+                    AssembleToOrderLink.SetRange("Document Type", AssembleToOrderLink."Document Type"::"Sales Shipment");
+                    AssembleToOrderLink.SetRange("Assembly Document No.", Rec."Document No.");
+                    IF AssembleToOrderLink.FindSet() THEN begin
+                        OrderNo := AssembleToOrderLink."Order No.";
+                        OrderLineNo := AssembleToOrderLink."Order Line No.";
+                        SalesShipmentLine.Reset();
+                        if SalesShipmentLine.Get(AssembleToOrderLink."Document No.", AssembleToOrderLink."Document Line No.") then begin
+                            ItemParentNo := SalesShipmentLine."No.";
+                        end;
+                    end;
+                end;
             else
                 VendorName := '';
+
         end;
+
     end;
 
     var
         Item: Record Item;
+        SalesShipmentLine: Record "Sales Shipment Line";
+        AssembleToOrderLink: Record "Posted Assemble-to-Order Link";
         cantidadDisponible: Decimal;
-
         VendorName: Text;
+        OrderNo: Code[20];
+        ItemParentNo: code[20];
+        OrderLineNo: Integer;
 }
