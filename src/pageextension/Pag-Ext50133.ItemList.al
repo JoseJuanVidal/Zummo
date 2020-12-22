@@ -9,7 +9,6 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = All;
                 BlankZero = true;
             }
-
             // Validar productos
             field(ValidadoContabiliad_btc; ValidadoContabiliad_btc)
             {
@@ -55,6 +54,14 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+        }
+    }
+    actions
+    {
+        modify("Co&mments")
+        {
+            Promoted = true;
+            PromotedCategory = Category4;
         }
     }
 }

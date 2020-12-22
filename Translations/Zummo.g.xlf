@@ -11373,6 +11373,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Línea Pedido ensamblado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control OrderLineNo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Control 170809565 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Cód. Empleado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control CodEmpleado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Control 2803432181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>User Id.</source>
+          <note from="Developer" annotates="general" priority="2">Id Uusario</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control IdUsuario - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2185030199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Imprimir Etiqueta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Etiqueta"</note>

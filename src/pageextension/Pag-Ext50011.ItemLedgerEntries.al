@@ -87,6 +87,16 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                 Caption = 'Parent Order Line No.', comment = 'ESP="Nº Línea Pedido ensamblado"';
                 Editable = false;
             }
+            field(CodEmpleado; CodEmpleado)
+            {
+                ApplicationArea = all;
+                Caption = 'Cód. Empleado', comment = 'ESP="Cód. Empleado"';
+            }
+            field(IdUsuario; IdUsuario)
+            {
+                ApplicationArea = all;
+                Caption = 'User Id.', comment = 'Id Uusario';
+            }
         }
     }
     actions
@@ -170,8 +180,15 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                 end;
             else
                 VendorName := '';
-
         end;
+
+        // obtener campo de la otra extension
+        CodEmpleado := Funciones.GetExtensionFieldValuetext(Rec.RecordId, 50500, false);  // 50500  Cód. empleado
+        ValueEntry.Reset();
+        ValueEntry.SetRange("Item Ledger Entry No.", rec."Entry No.");
+        if not ValueEntry.FindSet() then
+            clear(ValueEntry);
+        IdUsuario := ValueEntry."User ID";
 
     end;
 
@@ -179,9 +196,14 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
         Item: Record Item;
         SalesShipmentLine: Record "Sales Shipment Line";
         AssembleToOrderLink: Record "Posted Assemble-to-Order Link";
+        ValueEntry: Record "Value Entry";
+        Funciones: Codeunit Funciones;
         cantidadDisponible: Decimal;
         VendorName: Text;
         OrderNo: Code[20];
         ItemParentNo: code[20];
         OrderLineNo: Integer;
+        CodEmpleado: text;
+        IdUsuario: code[50];
+
 }
