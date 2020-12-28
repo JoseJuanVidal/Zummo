@@ -12,6 +12,8 @@ pageextension 50133 "ItemList" extends "Item List"
             field(STHQuantityWhse; STHQuantityWhse)
             {
                 ApplicationArea = all;
+                ToolTip = 'Qty. en Stockkeeping Unit', Comment = 'ESP="Cantidad en contenido de almacén"';
+                Visible = false;
             }
             // Validar productos
             field(ValidadoContabiliad_btc; ValidadoContabiliad_btc)

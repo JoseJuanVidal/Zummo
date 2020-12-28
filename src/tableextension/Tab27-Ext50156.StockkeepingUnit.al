@@ -63,6 +63,8 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             Caption = 'Quantity Warehouse', comment = 'ESP="Cantidad Almacén"';
             FieldClass = FlowField;
             CalcFormula = sum("Warehouse Entry"."Qty. (Base)" where("Item No." = field("Item No."), "Location Code" = field("Location Code")));
+
+            DecimalPlaces = 0 : 5;
         }
     }
 }

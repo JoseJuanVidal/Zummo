@@ -246,6 +246,7 @@ tableextension 50108 "Item" extends Item  //27
             Caption = 'Quantity Warehouse', comment = 'ESP="Cantidad Almacén"';
             FieldClass = FlowField;
             CalcFormula = sum("Warehouse Entry"."Qty. (Base)" where("Item No." = field("No."), "Location Code" = field("Location Filter")));
+            DecimalPlaces = 0 : 5;
         }
         Field(50101; "STHUseLocationGroup"; Boolean)
         {
