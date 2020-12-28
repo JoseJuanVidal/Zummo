@@ -12064,6 +12064,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control OrderLineNo - Property Caption</note>
           <target>Nº Línea Pedido ensamblado</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Control 170809565 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Cód. Empleado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control CodEmpleado - Property Caption</note>
+          <target>Cód. Empleado</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2185030199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Imprimir Etiqueta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Etiqueta"</note>
@@ -15077,6 +15083,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field StockSeguridadBase - Property Caption</note>
           <target>Stock de seguridad (Base)</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1624951095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Quantity Warehouse</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHQuantityWhse - Property Caption</note>
+          <target>Cantidad Almacén</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 603541938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Usar Agrup. Almacenes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Usar Agrup. Almacenes"</note>
@@ -15118,6 +15130,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cant. componentes Oferta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Stockkeeping Unit - Field Cant_ componentes Oferta - Property Caption</note>
           <target>Cant. componentes Oferta</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 494646383 - Field 1624951095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 494646383">
+          <source>Quantity Warehouse</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Stockkeeping Unit - Field STHQuantityWhse - Property Caption</note>
+          <target>Cantidad Almacén</target>
         </trans-unit>
         <trans-unit id="TableExtension 1267759397 - Field 2829717791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271291437">
           <source>Assoc. Vendor No.</source>

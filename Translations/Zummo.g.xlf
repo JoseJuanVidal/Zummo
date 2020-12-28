@@ -13973,6 +13973,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Stock de seguridad (Base)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field StockSeguridadBase - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1624951095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Quantity Warehouse</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHQuantityWhse - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 603541938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Usar Agrup. Almacenes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Usar Agrup. Almacenes"</note>
@@ -14007,6 +14012,11 @@
           <source>Cant. componentes Oferta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cant. componentes Oferta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Stockkeeping Unit - Field Cant_ componentes Oferta - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 494646383 - Field 1624951095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 494646383">
+          <source>Quantity Warehouse</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Stockkeeping Unit - Field STHQuantityWhse - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1267759397 - Field 2829717791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271291437">
           <source>Assoc. Vendor No.</source>

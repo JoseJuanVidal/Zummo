@@ -9,6 +9,10 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = All;
                 BlankZero = true;
             }
+            field(STHQuantityWhse; STHQuantityWhse)
+            {
+                ApplicationArea = all;
+            }
             // Validar productos
             field(ValidadoContabiliad_btc; ValidadoContabiliad_btc)
             {
@@ -64,4 +68,7 @@ pageextension 50133 "ItemList" extends "Item List"
             PromotedCategory = Category4;
         }
     }
+    var
+        WarehouseEntry: Record "Warehouse Entry";
+        ValueEntry: Record "Value Entry";
 }

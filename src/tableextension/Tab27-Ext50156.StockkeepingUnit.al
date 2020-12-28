@@ -58,5 +58,11 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
                 PAssemblyLine.Run();
             end;
         }
+        field(50100; "STHQuantityWhse"; Decimal)
+        {
+            Caption = 'Quantity Warehouse', comment = 'ESP="Cantidad Almacén"';
+            FieldClass = FlowField;
+            CalcFormula = sum("Warehouse Entry"."Qty. (Base)" where("Item No." = field("Item No."), "Location Code" = field("Location Code")));
+        }
     }
 }

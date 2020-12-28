@@ -182,6 +182,8 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                 VendorName := '';
         end;
 
+        // 
+
         // obtener campo de la otra extension
         CodEmpleado := Funciones.GetExtensionFieldValuetext(Rec.RecordId, 50500, false);  // 50500  Cód. empleado
         ValueEntry.Reset();
@@ -196,9 +198,11 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
         Item: Record Item;
         SalesShipmentLine: Record "Sales Shipment Line";
         AssembleToOrderLink: Record "Posted Assemble-to-Order Link";
+        WarehouseEntry: Record "Warehouse Entry";
         ValueEntry: Record "Value Entry";
         Funciones: Codeunit Funciones;
         cantidadDisponible: Decimal;
+        CantidadAlmacen: Decimal;
         VendorName: Text;
         OrderNo: Code[20];
         ItemParentNo: code[20];

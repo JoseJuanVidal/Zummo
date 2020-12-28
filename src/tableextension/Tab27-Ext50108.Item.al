@@ -241,6 +241,12 @@ tableextension 50108 "Item" extends Item  //27
         {
             Caption = 'Stock de seguridad (Base)', comment = 'ESP="Stock de seguridad (Base)"';
         }
+        field(50100; "STHQuantityWhse"; Decimal)
+        {
+            Caption = 'Quantity Warehouse', comment = 'ESP="Cantidad Almacén"';
+            FieldClass = FlowField;
+            CalcFormula = sum("Warehouse Entry"."Qty. (Base)" where("Item No." = field("No."), "Location Code" = field("Location Filter")));
+        }
         Field(50101; "STHUseLocationGroup"; Boolean)
         {
             DataClassification = CustomerContent;
