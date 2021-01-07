@@ -5,12 +5,12 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         addafter("Location Code")
         {
             field("VAT Registration No."; "VAT Registration No.") { }
-            field(credMaxAsegAut; credMaxAsegAut)
-            {
-                Editable = false;
-                ApplicationArea = All;
-                Caption = 'Crédito Maximo Aseguradora Autorizado Por', Comment = 'ESP="Crédito Maximo Aseguradora Autorizado Por"';
-            }
+            /*            field(credMaxAsegAut; credMaxAsegAut)
+                        {
+                            Editable = false;
+                            ApplicationArea = All;
+                            Caption = 'Crédito Maximo Aseguradora Autorizado Por', Comment = 'ESP="Crédito Maximo Aseguradora Autorizado Por"';
+                        }*/
             field("Quote No."; "Quote No.") { }
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
             field(FacturacionElec_btc; FacturacionElec_btc) { }
@@ -19,6 +19,37 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             field(NumAbono; NumAbono)
             {
                 ApplicationArea = All;
+            }
+        }
+        addlast(Control1)
+        {
+            field("Cred_ Max_ Aseg. AutorizadoPor"; "Cred_ Max_ Aseg. AutorizadoPor")
+            {
+                ApplicationArea = all;
+            }
+            field(Suplemento_aseguradora; Suplemento_aseguradora)
+            {
+                ApplicationArea = all;
+                StyleExpr = StyleExp;
+            }
+            field("Credito Maximo Aseguradora_btc"; "Credito Maximo Aseguradora_btc")
+            {
+                ApplicationArea = all;
+                StyleExpr = StyleExp;
+            }
+            field(Aseguradora_comunicacion; Aseguradora_comunicacion)
+            {
+                ApplicationArea = all;
+                StyleExpr = StyleExp;
+            }
+            field(Fecha_Aseguradora_comunicacion; Fecha_Aseguradora_comunicacion)
+            {
+                ApplicationArea = all;
+                StyleExpr = StyleExp;
+            }
+            field(fecha; CalcDate('+2M', rec."Posting Date"))
+            {
+                ApplicationArea = all;
             }
         }
 
@@ -113,6 +144,22 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             Visible = false;
         }
         //FIN S20/00375
+        addlast(Processing)
+        {
+            action(MarkAseguradora)
+            {
+                ApplicationArea = all;
+                Image = MakeOrder;
+                Promoted = true;
+                PromotedCategory = Category6;
+                Caption = 'Marcar comunicado Aaseguradora', comment = 'ESP="Marcar comunicado Aaseguradora"';
+
+                trigger OnAction()
+                begin
+                    MarkComunicate;
+                end;
+            }
+        }
     }
 
     trigger OnAfterGetRecord()
@@ -121,10 +168,42 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
     begin
         credMaxAsegAut := '';
 
-        if recCustomer.Get("Bill-to Customer No.") then
-            credMaxAsegAut := recCustomer."Cred_ Max_ Aseg. Autorizado Por_btc";
+        /*     if recCustomer.Get("Bill-to Customer No.") then
+                 credMaxAsegAut := recCustomer."Cred_ Max_ Aseg. Autorizado Por_btc";*/
+
+        ShowVtoAseguradora := false;
+        StyleExp := '';
+        if rec.Suplemento_aseguradora <> '' then
+            if not rec.Aseguradora_comunicacion then
+                if CalcDate('+2M', rec."Posting Date") <= WorkDate() then begin
+                    StyleExp := 'UnFavorable'
+                end else
+                    if CalcDate('+1M', rec."Posting Date") < WorkDate() then begin
+                        StyleExp := 'Ambiguous'
+                    end;
+
     end;
 
     var
         credMaxAsegAut: code[20];
+        StyleExp: text;
+        ShowVtoAseguradora: Boolean;
+        Text000: Label '¿Desea marcar %1 facturas como enviadas a Aseguradora?', comment = 'ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"';
+
+    local procedure MarkComunicate()
+    var
+        SalesInvHeader: Record "Sales Invoice Header";
+    begin
+        CurrPage.SetSelectionFilter(SalesInvHeader);
+        if not Confirm(Text000, false, SalesInvHeader.Count) then
+            exit;
+        if SalesInvHeader.findset() then
+            repeat
+                SalesInvHeader.Aseguradora_comunicacion := true;
+                if SalesInvHeader.Fecha_Aseguradora_comunicacion = 0D then
+                    SalesInvHeader.Fecha_Aseguradora_comunicacion := WorkDate();
+                SalesInvHeader.Modify();
+            Until SalesInvHeader.next() = 0;
+
+    end;
 }

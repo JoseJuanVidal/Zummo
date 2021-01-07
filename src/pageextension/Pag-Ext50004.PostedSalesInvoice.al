@@ -209,7 +209,11 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
             exit;
         // actualizamos el campo de fecha operacion en la tabla de historico ventas, extension SII
         Funciones.SetExtensionFieldValueDate(rec.RecordId, 66600, FechaOperacion);
+
         // actualizamos el campo de fecha operacion en la tabla de Bandeja de salida (66600), extension SII, campo 30 Fecha operacion
         Funciones.SetExtensionRecRefFieldValueDate(rec."No.", FechaOperacion);
+        // actualizamos el campo de fecha operacion en la tabla de SII GBS
+        Funciones.SIIGBS_SetExtensionRecRefFieldValueDate(rec."No.", FechaOperacion);
+
     end;
 }

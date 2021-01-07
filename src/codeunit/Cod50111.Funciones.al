@@ -630,4 +630,21 @@ codeunit 50111 "Funciones"
             vRecRef.modify;
         end;
     end;
+
+    procedure SIIGBS_SetExtensionRecRefFieldValueDate(DocNo: code[20]; Valor: date)
+    var
+        vRecRef: RecordRef;
+        vFieldRef: FieldRef;
+    begin
+        vRecRef.Open(88208);
+        //        vFieldRef := vRecRef.FIELD(2);   // Tipo Documento = factura
+        //      vFieldRef.SetRange(DocNo);
+        vFieldRef := vRecRef.FIELD(4);  // Documento No.
+        vFieldRef.SetRange(DocNo);
+        if vRecRef.FINDSET(FALSE, FALSE) then begin
+            vFieldRef := vRecRef.field(47);  // 47 Fecha operacion
+            vFieldRef.Value := valor;
+            vRecRef.modify;
+        end;
+    end;
 }

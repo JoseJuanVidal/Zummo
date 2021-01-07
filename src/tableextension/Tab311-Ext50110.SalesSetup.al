@@ -65,6 +65,10 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             DataClassification = CustomerContent;
             Caption = 'Nº días fact vencidas', comment = 'ESP="Nº días fact vencidas"';
         }
-
+        field(50110; DiasVtoAseguradora; DateFormula)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Días Vto. Aseguradora', comment = 'ESP="Días Vto. Aseguradora"';
+        }
     }
 }

@@ -58,6 +58,10 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 {
                     ApplicationArea = All;
                 }
+                field(DiasVtoAseguradora; DiasVtoAseguradora)
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

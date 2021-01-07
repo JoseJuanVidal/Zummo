@@ -111,7 +111,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         field(50012; Suplemento_aseguradora; Code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Suplemento aseguradora', comment = 'ESP="Suplemento aseguradora';
+            Caption = 'Suplemento aseguradora', comment = 'ESP="Suplemento aseguradora"';
         }
         field(50013; CentralCompras_btc; Code[20])
         {

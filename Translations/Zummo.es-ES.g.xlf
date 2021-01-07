@@ -14324,6 +14324,30 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field NumAbono - Property Caption</note>
           <target>Nº Abono</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 719008269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Suplemento aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Suplemento aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Suplemento_aseguradora - Property Caption</note>
+          <target>Suplemento aseguradora</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 3538960907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Crédito Maximo Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crédito Maximo Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Credito Maximo Aseguradora_btc - Property Caption</note>
+          <target>Crédito Maximo Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 3712843853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Comunicado Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comunicado Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Aseguradora_comunicacion - Property Caption</note>
+          <target>Comunicado Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 1424054903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Fecha Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Fecha_Aseguradora_comunicacion - Property Caption</note>
+          <target>Fecha Aseguradora</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 2352912535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Cód. arancelario</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tariff No_"</note>
@@ -14756,9 +14780,9 @@
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 719008269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Suplemento aseguradora</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Suplemento aseguradora</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Suplemento aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Suplemento_aseguradora - Property Caption</note>
-          <target>"Suplemento aseguradora</target>
+          <target>Suplemento aseguradora</target>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 338312380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Central Compras</source>

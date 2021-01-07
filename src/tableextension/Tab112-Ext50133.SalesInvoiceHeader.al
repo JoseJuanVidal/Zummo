@@ -164,7 +164,38 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
             Editable = false;
             Caption = 'Cr. Memo No.', comment = 'ESP="Nº Abono"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Sales Cr.Memo Header"."Corrected Invoice No." where("Corrected Invoice No." = field("No.")));
+            CalcFormula = lookup("Sales Cr.Memo Header"."Corrected Invoice No." where("Corrected Invoice No." = field("No.")));
+        }
+        field(50050; Suplemento_aseguradora; Code[20])
+        {
+            Caption = 'Suplemento aseguradora', comment = 'ESP="Suplemento aseguradora"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(customer.Suplemento_aseguradora where("No." = field("Sell-to Customer No.")));
+        }
+        field(50051; "Credito Maximo Aseguradora_btc"; Integer)
+        {
+            Caption = 'Crédito Maximo Aseguradora', Comment = 'ESP="Crédito Maximo Aseguradora"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(customer."Credito Maximo Aseguradora_btc" where("No." = field("Sell-to Customer No.")));
+        }
+        field(50052; Aseguradora_comunicacion; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Comunicado Aseguradora', comment = 'ESP="Comunicado Aseguradora"';
+
+        }
+        field(50053; Fecha_Aseguradora_comunicacion; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fecha Aseguradora', comment = 'ESP="Fecha Aseguradora"';
+
+        }
+        field(50054; "Cred_ Max_ Aseg. AutorizadoPor"; Code[20])
+        {
+            Caption = 'Crédito Maximo Aseguradora Autorizado Por', Comment = 'ESP="Crédito Maximo Aseguradora Autorizado Por"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(customer."Cred_ Max_ Aseg. Autorizado Por_btc" where("No." = field("Sell-to Customer No.")));
         }
     }
+
 }
