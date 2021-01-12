@@ -6202,9 +6202,9 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>PedidoClienteLbl</rd:DefaultName>
-                      <Top>0.52447cm</Top>
-                      <Left>0.03839cm</Left>
-                      <Height>0.44125cm</Height>
+                      <Top>0.52459cm</Top>
+                      <Left>0.01815cm</Left>
+                      <Height>0.33cm</Height>
                       <Width>4.10819cm</Width>
                       <ZIndex>2</ZIndex>
                       <Style>
@@ -6236,7 +6236,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                       <rd:DefaultName>PedidoClienteLbl</rd:DefaultName>
                       <Top>0.52447cm</Top>
                       <Left>4.32298cm</Left>
-                      <Height>0.44125cm</Height>
+                      <Height>0.33cm</Height>
                       <Width>5.06587cm</Width>
                       <ZIndex>3</ZIndex>
                       <Style>
@@ -6265,9 +6265,9 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>PedidoClienteLbl</rd:DefaultName>
-                      <Top>0.96572cm</Top>
+                      <Top>0.90222cm</Top>
                       <Left>0.03839cm</Left>
-                      <Height>0.44125cm</Height>
+                      <Height>0.33cm</Height>
                       <Width>4.10819cm</Width>
                       <ZIndex>4</ZIndex>
                       <Style>
@@ -6297,9 +6297,9 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>PedidoClienteLbl</rd:DefaultName>
-                      <Top>0.96572cm</Top>
+                      <Top>0.90222cm</Top>
                       <Left>4.32298cm</Left>
-                      <Height>0.44125cm</Height>
+                      <Height>0.33cm</Height>
                       <Width>5.10116cm</Width>
                       <ZIndex>5</ZIndex>
                       <Style>
@@ -6328,9 +6328,9 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>PedidoClienteLbl</rd:DefaultName>
-                      <Top>1.40697cm</Top>
+                      <Top>1.27296cm</Top>
                       <Left>0.03839cm</Left>
-                      <Height>0.44125cm</Height>
+                      <Height>0.33cm</Height>
                       <Width>4.10819cm</Width>
                       <ZIndex>6</ZIndex>
                       <Style>
@@ -6360,9 +6360,9 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>PedidoClienteLbl</rd:DefaultName>
-                      <Top>1.40697cm</Top>
+                      <Top>1.27296cm</Top>
                       <Left>4.32298cm</Left>
-                      <Height>0.44125cm</Height>
+                      <Height>0.33cm</Height>
                       <Width>5.10116cm</Width>
                       <ZIndex>7</ZIndex>
                       <Style>
@@ -6391,9 +6391,9 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>PedidoClienteLbl</rd:DefaultName>
-                      <Top>1.84822cm</Top>
+                      <Top>1.66033cm</Top>
                       <Left>0.03839cm</Left>
-                      <Height>0.44125cm</Height>
+                      <Height>0.33cm</Height>
                       <Width>4.10819cm</Width>
                       <ZIndex>8</ZIndex>
                       <Style>
@@ -6423,9 +6423,9 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>PedidoClienteLbl</rd:DefaultName>
-                      <Top>1.84822cm</Top>
+                      <Top>1.66033cm</Top>
                       <Left>4.32298cm</Left>
-                      <Height>0.44125cm</Height>
+                      <Height>0.33cm</Height>
                       <Width>5.10116cm</Width>
                       <ZIndex>9</ZIndex>
                       <Style>
@@ -6571,6 +6571,69 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                         </Border>
                       </Style>
                     </Rectangle>
+                    <Textbox Name="PedidoClienteLbl21">
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Code.GetData(79,2)</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>7pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>PedidoClienteLbl</rd:DefaultName>
+                      <Top>2.04006cm</Top>
+                      <Left>0.03839cm</Left>
+                      <Height>0.33cm</Height>
+                      <Width>4.10819cm</Width>
+                      <ZIndex>11</ZIndex>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="PedidoClienteLbl22">
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Code.BlankZero(Code.DevolverDec(Code.GetData(81,2)))</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <Format>#,0.00;(#,0.00)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>PedidoClienteLbl</rd:DefaultName>
+                      <Top>2.04006cm</Top>
+                      <Left>4.32298cm</Left>
+                      <Height>0.33cm</Height>
+                      <Width>5.10116cm</Width>
+                      <ZIndex>12</ZIndex>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                      </Style>
+                    </Textbox>
                   </ReportItems>
                   <KeepTogether>true</KeepTogether>
                   <Top>2.42378cm</Top>
