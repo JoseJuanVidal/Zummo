@@ -210,6 +210,5 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             DataClassification = CustomerContent;
             Caption = 'Alert Message', comment = 'ESP="Mensaje de Alerta"';
         }
-
     }
 }

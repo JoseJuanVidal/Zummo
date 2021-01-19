@@ -33,6 +33,27 @@ pageextension 50171 "CustomerLedgerEntries" extends "Customer Ledger Entries"
                 ApplicationArea = all;
             }
         }
+        addafter("Due Date")
+        {
+            field(FechaVtoAseguradora; FechaVtoAseguradora)
+            {
+                ApplicationArea = all;
+                Caption = 'Fecha Vto. Aseguradora', comment = 'ESP="Fecha Vto. Aseguradora"';
+                StyleExpr = StyleExp;
+            }
+            field("Cred_ Max_ Aseg. Autorizado Por_btc"; "Cred_ Max_ Aseg. Autorizado Por_btc")
+            {
+                ApplicationArea = all;
+            }
+            field(Suplemento_aseguradora; Suplemento_aseguradora)
+            {
+                ApplicationArea = all;
+            }
+            field("Credito Maximo Aseguradora_btc"; "Credito Maximo Aseguradora_btc")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     actions
@@ -76,10 +97,22 @@ pageextension 50171 "CustomerLedgerEntries" extends "Customer Ledger Entries"
 
 
     trigger OnOpenPage()
-
     begin
         PonerSaldoPeriodo()
     end;
+
+    trigger OnAfterGetRecord()
+    begin
+        FechaVtoAseguradora := CalcDate('+2M', "Due Date");
+        if CalcDate('+1M', "Due Date") < WorkDate() then
+            StyleExp := 'UnFavorable'
+        else
+            StyleExp := 'Ambiguous';
+    end;
+
+    var
+        StyleExp: text;
+        FechaVtoAseguradora: date;
 
     procedure PonerSaldoPeriodo()
     var

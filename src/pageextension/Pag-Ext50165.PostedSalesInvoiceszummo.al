@@ -30,27 +30,12 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             field(Suplemento_aseguradora; Suplemento_aseguradora)
             {
                 ApplicationArea = all;
-                StyleExpr = StyleExp;
             }
             field("Credito Maximo Aseguradora_btc"; "Credito Maximo Aseguradora_btc")
             {
                 ApplicationArea = all;
-                StyleExpr = StyleExp;
             }
-            field(Aseguradora_comunicacion; Aseguradora_comunicacion)
-            {
-                ApplicationArea = all;
-                StyleExpr = StyleExp;
-            }
-            field(Fecha_Aseguradora_comunicacion; Fecha_Aseguradora_comunicacion)
-            {
-                ApplicationArea = all;
-                StyleExpr = StyleExp;
-            }
-            field(fecha; CalcDate('+2M', rec."Posting Date"))
-            {
-                ApplicationArea = all;
-            }
+
         }
 
     }
