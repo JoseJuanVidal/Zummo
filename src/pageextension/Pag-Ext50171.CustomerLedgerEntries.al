@@ -103,8 +103,8 @@ pageextension 50171 "CustomerLedgerEntries" extends "Customer Ledger Entries"
 
     trigger OnAfterGetRecord()
     begin
-        FechaVtoAseguradora := CalcDate('+2M', "Due Date");
-        if CalcDate('+1M', "Due Date") < WorkDate() then
+        FechaVtoAseguradora := CalcDate('+60D', "Due Date");
+        if CalcDate('-15D', FechaVtoAseguradora) <= WorkDate() then
             StyleExp := 'UnFavorable'
         else
             StyleExp := 'Ambiguous';

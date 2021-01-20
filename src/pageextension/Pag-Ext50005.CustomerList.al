@@ -131,17 +131,19 @@ pageextension 50005 "CustomerList" extends "Customer List"
         CustLedgerEntry: Record "Cust. Ledger Entry";
     begin
         FechaVtoAsegurador := 0D;
+        if CustLedgerEntry."Due Date" <> 0D then
+            FechaVtoAsegurador := CalcDate('+60D', CustLedgerEntry."Due Date");
         StyleExp := '';
         if "Cred_ Max_ Aseg. Autorizado Por_btc" = '' then
             exit;
         CustLedgerEntry.SetCurrentKey("Due Date");
         CustLedgerEntry.SetRange("Customer No.", "No.");
         CustLedgerEntry.SetRange(Open, true);
-        CustLedgerEntry.SetFilter("Due Date", '..%1', CalcDate('+2M', WorkDate()));
+        CustLedgerEntry.SetFilter("Due Date", '..%1', CalcDate('+60D', WorkDate()));
         if CustLedgerEntry.FindSet() then begin
-            FechaVtoAsegurador := CalcDate('+2M', CustLedgerEntry."Due Date");
+            FechaVtoAsegurador := CalcDate('+60D', CustLedgerEntry."Due Date");
 
-            if CalcDate('+1M', CustLedgerEntry."Due Date") < WorkDate() then
+            if CalcDate('-15D', FechaVtoAsegurador) <= WorkDate() then
                 StyleExp := 'UnFavorable'
             else
                 StyleExp := 'Ambiguous';
