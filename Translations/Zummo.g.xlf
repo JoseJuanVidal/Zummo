@@ -689,7 +689,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method PagDocsPostedBGAction - NamedType Text1100001Txt</note>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3906917530 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No se puede realizar planificaicón con Agrupación y multiples filtros de Almacén</source>
+          <source>No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckandSetFilterOneLocation - NamedType Text000</note>
         </trans-unit>
@@ -11318,6 +11318,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Se va a realizar el cambio de Fecha de operacion de la factura %1, en la Bandeja de SII.\¿Desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Control 3809540912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Due Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Control FechaVto - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 363045002 - Control 3767568950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Fecha Vto. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto. Aseguradora"</note>
@@ -14377,6 +14382,11 @@
           <source>Nombre Proveedor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Nombre Proveedor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 1175835458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Primera fecha Recep.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Primera fecha Recep."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Primera Fecha Recep. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3993128796 - Field 2076676604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Send e-mail purchase order</source>

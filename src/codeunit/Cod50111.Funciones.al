@@ -518,7 +518,7 @@ codeunit 50111 "Funciones"
     procedure CheckandSetFilterOneLocation(var Item: Record Item)
     var
         Location: Record Location;
-        Text000: label 'No se puede realizar planificaicón con Agrupación y multiples filtros de Almacén', Comment = 'ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"';
+        Text000: label 'No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén', Comment = 'ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"';
     begin
         Location.SetFilter(Code, item.GetFilter("Location Filter"));
         if Location.count > 1 then

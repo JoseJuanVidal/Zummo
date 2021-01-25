@@ -47,6 +47,13 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 ApplicationArea = all;
                 StyleExpr = StyleExp;
             }
+            field(FechaVto; FechaVto)
+            {
+                ApplicationArea = all;
+                Caption = 'Due Date', comment = 'ESP="Fecha Vto."';
+                Editable = false;
+                StyleExpr = StyleExp;
+            }
             field(FechaVtoAseguradora; FechaVtoAsegurador)
             {
                 ApplicationArea = all;
@@ -122,6 +129,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
     end;
 
     var
+        FechaVto: Date;
         FechaVtoAsegurador: date;
         StyleExp: text;
 
@@ -130,6 +138,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
     var
         CustLedgerEntry: Record "Cust. Ledger Entry";
     begin
+        FechaVto := 0D;
         FechaVtoAsegurador := 0D;
         if CustLedgerEntry."Due Date" <> 0D then
             FechaVtoAsegurador := CalcDate('+60D', CustLedgerEntry."Due Date");
@@ -139,8 +148,10 @@ pageextension 50005 "CustomerList" extends "Customer List"
         CustLedgerEntry.SetCurrentKey("Due Date");
         CustLedgerEntry.SetRange("Customer No.", "No.");
         CustLedgerEntry.SetRange(Open, true);
+        CustLedgerEntry.SetRange(Positive, true);
         CustLedgerEntry.SetFilter("Due Date", '..%1', CalcDate('+60D', WorkDate()));
         if CustLedgerEntry.FindSet() then begin
+            FechaVto := CustLedgerEntry."Due Date";
             FechaVtoAsegurador := CalcDate('+60D', CustLedgerEntry."Due Date");
 
             if CalcDate('-15D', FechaVtoAsegurador) <= WorkDate() then

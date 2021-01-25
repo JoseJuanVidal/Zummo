@@ -792,7 +792,7 @@
           <target>Compruebe que se haya seleccionado al menos un documento abierto</target>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3906917530 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No se puede realizar planificaicón con Agrupación y multiples filtros de Almacén</source>
+          <source>No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckandSetFilterOneLocation - NamedType Text000</note>
           <target>No se puede realizar planificación con Agrupación y multiples filtros de Almacén</target>
@@ -12004,6 +12004,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - NamedType Text000</note>
           <target>Se va a realizar el cambio de Fecha de operacion de la factura %1, en la Bandeja de SII.\¿Desea continuar?</target>
         </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Control 3809540912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Due Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Control FechaVto - Property Caption</note>
+          <target>Fecha Vto.</target>
+        </trans-unit>
         <trans-unit id="PageExtension 363045002 - Control 3767568950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Fecha Vto. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto. Aseguradora"</note>
@@ -13585,6 +13591,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TransferOrder_btc - Action Imprimir Selec Etiquetas - Property ToolTip</note>
           <target>Imprimir etiquetas</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3335603717 - Control 3767568950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Fecha Vto. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerLedgerEntries - Control FechaVtoAseguradora - Property Caption</note>
+          <target>Fecha Vto. Aseguradora</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2764867601 - Control 2211685455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3105459369">
           <source>Saldo apertura</source>
           <note from="Developer" annotates="general" priority="2">ESP="Saldo apertura"</note>
@@ -14922,17 +14934,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field código clasificación - Property Caption</note>
           <target>código clasificación</target>
         </trans-unit>
-        <trans-unit id="TableExtension 1512487356 - Field 3936913016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
-          <source>Comunicado Aseguradora</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Comunicado Aseguradora"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field Comunicado Aseguradora - Property Caption</note>
-          <target>Comunicado Aseguradora</target>
+        <trans-unit id="TableExtension 1512487356 - Field 1643371427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source>Crédito Maximo Aseguradora Autorizado Por</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crédito Maximo Aseguradora Autorizado Por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field Cred_ Max_ Aseg. Autorizado Por_btc - Property Caption</note>
+          <target>Crédito Maximo Aseguradora Autorizado Por</target>
         </trans-unit>
-        <trans-unit id="TableExtension 1512487356 - Field 2471618705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
-          <source>Fecha com. Asegurador</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha com. Asegurador"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field Fecha_com_Asegurador - Property Caption</note>
-          <target>Fecha com. Asegurador</target>
+        <trans-unit id="TableExtension 1512487356 - Field 3538960907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source>Crédito Maximo Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crédito Maximo Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field Credito Maximo Aseguradora_btc - Property Caption</note>
+          <target>Crédito Maximo Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1512487356 - Field 719008269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source>Suplemento aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Suplemento aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field Suplemento_aseguradora - Property Caption</note>
+          <target>Suplemento aseguradora</target>
         </trans-unit>
         <trans-unit id="TableExtension 1936001480 - Field 3035610829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Blocking Motives</source>
@@ -15548,6 +15566,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Nombre Proveedor - Property Caption</note>
           <target>Nombre Proveedor</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 1175835458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Primera fecha Recep.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Primera fecha Recep."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Primera Fecha Recep. - Property Caption</note>
+          <target>Primera fecha Recep.</target>
         </trans-unit>
         <trans-unit id="TableExtension 3993128796 - Field 2076676604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Send e-mail purchase order</source>

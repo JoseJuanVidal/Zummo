@@ -1,18 +1,24 @@
 pageextension 50156 "PurchaseLines" extends "Purchase Lines"
 {
-
-
     layout
     {
         addafter("Outstanding Quantity")
         {
+            field("Quantity Received"; "Quantity Received")
+            {
+                ApplicationArea = all;
+            }
+            field("Primera Fecha Recep."; "Primera Fecha Recep.")
+            {
+                ApplicationArea = all;
+            }
             field(TextoRechazo; TextoRechazo)
             {
                 ApplicationArea = All;
             }
             field(FechaRechazo_btc; FechaRechazo_btc)
             {
-
+                ApplicationArea = all;
             }
         }
         addafter("Expected Receipt Date")

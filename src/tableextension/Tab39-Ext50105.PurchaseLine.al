@@ -26,10 +26,17 @@ tableextension 50105 "PurchaseLine" extends "Purchase Line"  //39
             Description = 'Bitec';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("Purchase Header"."Buy-from Vendor Name" WHERE
-            ("Document Type" = FIELD ("Document Type"),
-             "No." = FIELD ("Document No.")
+            CalcFormula = lookup("Purchase Header"."Buy-from Vendor Name" WHERE
+            ("Document Type" = FIELD("Document Type"),
+             "No." = FIELD("Document No.")
             ));
+        }
+        field(50004; "Primera Fecha Recep."; date)
+        {
+            Caption = 'Primera fecha Recep.', comment = 'ESP="Primera fecha Recep."';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Purch. Rcpt. Line"."Posting Date" where("Order No." = field("Document No."), "Order Line No." = field("Line No.")));
         }
     }
 }
