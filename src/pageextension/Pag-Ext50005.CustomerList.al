@@ -54,10 +54,16 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 Editable = false;
                 StyleExpr = StyleExp;
             }
+            field(FechaVtoAseg; FechaVtoAseg)
+            {
+                ApplicationArea = all;
+                StyleExpr = StyleExp;
+                Editable = false;
+            }
             field(FechaVtoAseguradora; FechaVtoAsegurador)
             {
                 ApplicationArea = all;
-                Caption = 'Fecha Vto. Aseguradora', comment = 'ESP="Fecha Vto. Aseguradora"';
+                Caption = 'Fecha Vto. Aseguradora (real)', comment = 'ESP="Fecha Vto. Aseguradora (real)"';
                 StyleExpr = StyleExp;
 
                 trigger OnDrillDown()
@@ -120,7 +126,26 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 RunPageLink = "Table Name" = CONST(Customer), "No." = FIELD("No.");
             }
         }
+        addafter("Sales Journal")
+        {
+            action(CalcFechaVto)
+            {
+                ApplicationArea = all;
+                Caption = 'Calcular Fecha Vto. Aseguradora', comment = 'ESP="Calcular Fecha Vto. Aseguradora"';
+                Image = Calculate;
+                PromotedCategory = Category8;
+                Promoted = true;
+
+                trigger OnAction()
+                begin
+                    if Confirm(Text000) then
+                        CalculateFechaVto;
+                end;
+            }
+        }
+
     }
+
 
 
     trigger OnAfterGetRecord()
@@ -132,7 +157,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
         FechaVto: Date;
         FechaVtoAsegurador: date;
         StyleExp: text;
-
+        Text000: Label '¿Desea calcular la fecha de vencimiento aseguradora?';
 
     local procedure CalcVtoAseguradora()
     var
@@ -140,8 +165,6 @@ pageextension 50005 "CustomerList" extends "Customer List"
     begin
         FechaVto := 0D;
         FechaVtoAsegurador := 0D;
-        if CustLedgerEntry."Due Date" <> 0D then
-            FechaVtoAsegurador := CalcDate('+60D', CustLedgerEntry."Due Date");
         StyleExp := '';
         if "Cred_ Max_ Aseg. Autorizado Por_btc" = '' then
             exit;
@@ -149,15 +172,23 @@ pageextension 50005 "CustomerList" extends "Customer List"
         CustLedgerEntry.SetRange("Customer No.", "No.");
         CustLedgerEntry.SetRange(Open, true);
         CustLedgerEntry.SetRange(Positive, true);
-        CustLedgerEntry.SetFilter("Due Date", '..%1', CalcDate('+60D', WorkDate()));
         if CustLedgerEntry.FindSet() then begin
             FechaVto := CustLedgerEntry."Due Date";
             FechaVtoAsegurador := CalcDate('+60D', CustLedgerEntry."Due Date");
-
+        end;
+        CustLedgerEntry.SetFilter("Due Date", '..%1', CalcDate('+60D', WorkDate()));
+        if CustLedgerEntry.FindSet() then begin
             if CalcDate('-15D', FechaVtoAsegurador) <= WorkDate() then
                 StyleExp := 'UnFavorable'
             else
                 StyleExp := 'Ambiguous';
         end;
+    end;
+
+    local procedure CalculateFechaVto()
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        Funciones.CustomerCalculateFechaVto();
     end;
 }

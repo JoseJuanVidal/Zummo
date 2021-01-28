@@ -20,6 +20,7 @@ pageextension 50198 "Production BOM Lines" extends "Production BOM Lines"
             field(Coste; Coste)
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
     }
@@ -34,7 +35,13 @@ pageextension 50198 "Production BOM Lines" extends "Production BOM Lines"
         Item.reset;
         Item.SetRange("No.", Rec."No.");
         if Item.FindFirst() then;
-        Coste := Item."Last Direct Cost";
+        case Item."Costing Method" of
+            Item."Costing Method"::Average, Item."Costing Method"::FIFO, Item."Costing Method"::LIFO, Item."Costing Method"::Specific:
+                Coste := Item."Last Direct Cost";
+            Item."Costing Method"::Standard:
+                coste := Item."Standard Cost";
+
+        end;
     end;
 
 }

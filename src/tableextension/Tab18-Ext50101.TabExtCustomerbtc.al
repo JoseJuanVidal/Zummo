@@ -210,5 +210,11 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             DataClassification = CustomerContent;
             Caption = 'Alert Message', comment = 'ESP="Mensaje de Alerta"';
         }
+        field(50029; FechaVtoAseg; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fecha Vto. Aseguradora', comment = 'ESP="Fecha Vto. Aseguradora"';
+            editable = false;
+        }
     }
 }

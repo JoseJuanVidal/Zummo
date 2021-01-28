@@ -6,7 +6,7 @@ page 50117 "Lista Textos Auxiliares"
     Caption = 'Auxiliary', Comment = 'ESP="Valores"';
     ApplicationArea = All;
     UsageCategory = Lists;
- 
+
     layout
     {
         area(content)
@@ -31,6 +31,12 @@ page 50117 "Lista Textos Auxiliares"
                     ApplicationArea = All;
                     Editable = emailVisible;
                     Visible = emailVisible;
+                }
+                field(Mercado; Mercado)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    Visible = false;
                 }
             }
         }

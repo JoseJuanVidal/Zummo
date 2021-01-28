@@ -179,6 +179,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method CreaComentariosLoteHistFaVenta - NamedType NSerie_Lbl</note>
           <target>Numéro de série:</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 1822228488 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Código #1###################</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerCalculateFechaVto - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Page 3847445537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Descuentos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descuentos",FRA="Descuentos"</note>
@@ -2997,6 +3002,11 @@
           <source>SEPA DD pain.008.001.02 REG</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort SEPA_Reg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>¿Desea calcular la fecha de vencimiento aseguradora?</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="PageExtension 1994005900 - Control 2018866145 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Telefono Movil</source>

@@ -28,8 +28,11 @@ codeunit 50110 "CU_Cron"
                     CambiaDimensionesAF();
                 'AvisosFrasVencidas':
                     AvisosFacturasVencidas();
+                'CalculateVtoAseguradora':
+                    CalculateVtoAseguradora();
                 else
                     error(lbNoParametroErr);
+
             end; //case
         end;
     end;
@@ -1063,6 +1066,13 @@ codeunit 50110 "CU_Cron"
     local procedure ResultadoEnvioMail(var SendResult: Text)
     begin
         ResultEnvioMailTxt := SendResult;
+    end;
+
+    local procedure CalculateVtoAseguradora()
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        Funciones.CustomerCalculateFechaVto();
     end;
 
 }

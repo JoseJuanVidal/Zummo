@@ -647,4 +647,28 @@ codeunit 50111 "Funciones"
             vRecRef.modify;
         end;
     end;
+
+    procedure CustomerCalculateFechaVto()
+    var
+        Customer: Record Customer;
+        CustLedgerEntry: Record "Cust. Ledger Entry";
+        Ventana: Dialog;
+        Text000: label 'Código #1###################';
+    begin
+        Ventana.Open(Text000);
+        Customer.SetFilter("Cred_ Max_ Aseg. Autorizado Por_btc", '<>%1', '');
+        if Customer.findset() then
+            repeat
+                Ventana.Update(1, Customer."No.");
+                CustLedgerEntry.SetCurrentKey("Due Date");
+                CustLedgerEntry.SetRange("Customer No.", Customer."No.");
+                CustLedgerEntry.SetRange(Open, true);
+                CustLedgerEntry.SetRange(Positive, true);
+                if CustLedgerEntry.FindSet() then begin
+                    Customer.FechaVtoAseg := CalcDate('+60D', CustLedgerEntry."Due Date");
+                    Customer.Modify();
+                end;
+            Until Customer.next() = 0;
+        Ventana.Close();
+    end;
 }

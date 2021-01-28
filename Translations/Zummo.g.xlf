@@ -693,6 +693,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckandSetFilterOneLocation - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 1822228488 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Código #1###################</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerCalculateFechaVto - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3997019009 - NamedType 4134082808" size-unit="char" translate="yes" xml:space="preserve">
           <source>The file export has one or more errors.\\For each line to be exported, resolve the errors displayed to the right and then try to export again.</source>
           <note from="Developer" annotates="general" priority="2">ESP="La exportación del archivo tiene uno o más errores. \\ Para cada línea que se va a exportar, resuelva los errores que se muestran a la derecha y luego intente exportar nuevamente."</note>
@@ -11324,8 +11329,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Control FechaVto - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - Control 3767568950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
-          <source>Fecha Vto. Aseguradora</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto. Aseguradora"</note>
+          <source>Fecha Vto. Aseguradora (real)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto. Aseguradora (real)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Control FechaVtoAseguradora - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 2232329325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
@@ -11342,6 +11347,16 @@
           <source>View or add comments for the record</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite ver o agregar comentarios para el registro."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action Coment1 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 432137163 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Calcular Fecha Vto. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular Fecha Vto. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action CalcFechaVto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>¿Desea calcular la fecha de vencimiento aseguradora?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="PageExtension 3448550954 - Action 2507320066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>&amp;Email</source>
@@ -12522,6 +12537,11 @@
           <source>Vendor Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WarehouseReceipt - Control NombreProveedor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1184478275 - Action 3471137671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2247137235">
+          <source>Services All</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Todos los servicios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrderSubform - Action Lines - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1793060472 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>Blocked</source>
@@ -13832,6 +13852,11 @@
           <source>Alert Message</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mensaje de Alerta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field AlertaMaquina - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 2420279056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Fecha Vto. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field FechaVtoAseg - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 1329123816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
           <source>Saldo Acumulado</source>

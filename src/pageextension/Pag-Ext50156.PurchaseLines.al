@@ -54,6 +54,7 @@ pageextension 50156 "PurchaseLines" extends "Purchase Lines"
         Purchrecep.reset;
         Purchrecep.SetRange("Order No.", Rec."Document No.");
         Purchrecep.SetRange("Order Line No.", Rec."Line No.");
+        Purchrecep.SetFilter(Quantity, '<>0');
         if Purchrecep.FindFirst() then begin
             FechaAlbaran := Purchrecep."Posting Date";
         end;
