@@ -938,6 +938,61 @@
           <note from="Developer" annotates="general" priority="2">Cód. Ubicación.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Item Inventory Bin Content - NamedType LabelBinCode</note>
         </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 1458141688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemDesc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 827840431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bloqueado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemBlocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 2283740631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bloqueado Ventas</source>
+          <note from="Developer" annotates="general" priority="2">Bloqueado Ventas</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemBlockedSales - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 3524371908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasificación Ventas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemClasVtas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 3282937166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Familia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemFamilia - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 1052342790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gama</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Gama"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemGamma - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 2175363341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Línea Económica</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Línea Económica"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemLineaEco - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 2140734087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Categoria producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Categoria producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemCategory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 526744387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valoración Existencias</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Valoración Existencias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemCostingMethod - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 3461254124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Coste Unitario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste Unitario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemUnitCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 16404887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Coste Estandar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste Estandar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemStandardCost - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 806151863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comments</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Comments"</note>

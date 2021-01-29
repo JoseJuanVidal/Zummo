@@ -36,7 +36,7 @@ tableextension 50105 "PurchaseLine" extends "Purchase Line"  //39
             Caption = 'Primera fecha Recep.', comment = 'ESP="Primera fecha Recep."';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup("Purch. Rcpt. Line"."Posting Date" where("Order No." = field("Document No."), "Order Line No." = field("Line No.")));
+            CalcFormula = lookup("Purch. Rcpt. Line"."Posting Date" where("Order No." = field("Document No."), "Order Line No." = field("Line No."), Quantity = filter(<> 0)));
         }
     }
 }

@@ -5582,7 +5582,9 @@ Cstr(Sum(Fields!Portes.Value))
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=iif(First(Fields!Portes.Value, "DataSet_Result") = 0, first(Fields!ImporteBruto.Value, "DataSet_Result"), first(Fields!ImporteBruto.Value, "DataSet_Result")-First(Fields!Portes.Value, "DataSet_Result")+First(Fields!InvoiceDiscountAmount.Value, "DataSet_Result") +( (first(Fields!ImporteBruto.Value, "DataSet_Result")-First(Fields!InvoiceDiscountAmount.Value, "DataSet_Result")-First(Fields!BaseImponible.Value, "DataSet_Result"))))</Value>
+                          <Value>=iif(First(Fields!Portes.Value, "DataSet_Result") = 0,
+    first(Fields!ImporteBruto.Value, "DataSet_Result"),
+    first(Fields!ImporteBruto.Value, "DataSet_Result")-First(Fields!Portes.Value, "DataSet_Result"))</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
