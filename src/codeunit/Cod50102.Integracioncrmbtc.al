@@ -102,8 +102,9 @@ codeunit 50102 "Integracion_crm_btc"
 
     local procedure GetSourceDestCode(SourceRecordRef: RecordRef; DestinationRecordRef: RecordRef): Text
     begin
-        IF (SourceRecordRef.NUMBER <> 0) AND (DestinationRecordRef.NUMBER <> 0) THEN
-            EXIT(STRSUBSTNO('%1-%2', SourceRecordRef.NAME, DestinationRecordRef.NAME));
+        IF (SourceRecordRef.
+        NUMBER <> 0) AND (DestinationRecordRef.NUMBER <> 0) THEN
+            EXIT(STRSUBSTNO('%1-%2', SourceRecordRef.Name(), DestinationRecordRef.Name()));
         EXIT('');
     end;
 

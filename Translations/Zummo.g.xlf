@@ -4633,7 +4633,6 @@
           <note from="Developer" annotates="general" priority="2">Cód. Ubicación.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Item Inventory Bin Content - NamedType LabelBinCode</note>
         </trans-unit>
-<<<<<<< HEAD
         <trans-unit id="Page 3113805797 - Control 1458141688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nombre producto</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre producto"</note>
@@ -4688,7 +4687,7 @@
           <source>Coste Estandar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste Estandar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemStandardCost - Property Caption</note>
-=======
+        </trans-unit>
         <trans-unit id="Page 2443984010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Activities</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actividades CRM"</note>
@@ -4728,7 +4727,6 @@
           <source>Generate the entity from the coupled Common Data Service data.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Generar la entidad desde el dato emparejado del Common Data Service"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Delegados_crm_btc - Action CreateFromCDS - Property ToolTip</note>
->>>>>>> CRM
         </trans-unit>
         <trans-unit id="Page 806151863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comments</source>
