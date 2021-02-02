@@ -16848,6 +16848,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="PDF Guardado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field GuardadoPdf_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field InsideSales_btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 440258838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Nº Factura</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Factura"</note>
@@ -17168,6 +17173,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Facturación electrónica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field FacturacionElec_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field InsideSales_btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Block Reason</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Bloqueo"</note>
@@ -17342,6 +17352,11 @@
           <source>Facturación electrónica</source>
           <note from="Developer" annotates="general" priority="2">ESP="Facturación electrónica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field FacturacionElec_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field InsideSales_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Block Reason</source>
@@ -18103,6 +18118,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="PDF Guardado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field GuardadoPdf_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field InsideSales_btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Block Reason</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Bloqueo"</note>
@@ -18277,6 +18297,11 @@
           <source>PDF Saved</source>
           <note from="Developer" annotates="general" priority="2">ESP="PDF Guardado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field GuardadoPdf_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 746889487 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field InsideSales_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 746889487 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
           <source>Block Reason</source>
@@ -18587,6 +18612,11 @@
           <source>PDF Saved</source>
           <note from="Developer" annotates="general" priority="2">ESP="PDF Guardado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field GuardadoPdf_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 175460751 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field InsideSales_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 175460751 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
           <source>Block Reason</source>

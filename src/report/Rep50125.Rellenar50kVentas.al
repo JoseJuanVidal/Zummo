@@ -25,6 +25,8 @@ report 50125 "Rellenar50kVentas"
                     ClienteCorporativo_btc := Customer.ClienteCorporativo_btc;
                     AreaManager_btc := Customer.AreaManager_btc;
                     Delegado_btc := Customer.Delegado_btc;
+                    InsideSales_btc := Customer.InsideSales_btc;
+                    InsideSales_btc := Customer.InsideSales_btc;
                     GrupoCliente_btc := Customer.GrupoCliente_btc;
                     Perfil_btc := Customer.Perfil_btc;
                     SubCliente_btc := Customer.SubCliente_btc;
@@ -46,6 +48,8 @@ report 50125 "Rellenar50kVentas"
                     ClienteCorporativo_btc := Customer.ClienteCorporativo_btc;
                     AreaManager_btc := Customer.AreaManager_btc;
                     Delegado_btc := Customer.Delegado_btc;
+                    InsideSales_btc := Customer.InsideSales_btc;
+                    InsideSales_btc := Customer.InsideSales_btc;
                     GrupoCliente_btc := Customer.GrupoCliente_btc;
                     Perfil_btc := Customer.Perfil_btc;
                     SubCliente_btc := Customer.SubCliente_btc;

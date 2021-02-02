@@ -2682,7 +2682,7 @@ codeunit 50102 "Integracion_crm_btc"
             Priority := 1000;
             Description := COPYSTR(StrSubstNo(JobQueueEntryNameTok, IntegrationTableMapping.Name), 1, MaxStrLen(Description));
             "Maximum No. of Attempts to Run" := 10;
-            "Rerun Delay (sec.)" := 30;
+            //"Rerun Delay (sec.)" := 30;
             IF ShouldRecreateJobQueueEntry THEN
                 CODEUNIT.RUN(CODEUNIT::"Job Queue - Enqueue", JobQueueEntry)
             ELSE

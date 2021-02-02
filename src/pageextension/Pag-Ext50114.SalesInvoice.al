@@ -17,6 +17,10 @@ pageextension 50114 "SalesInvoice" extends "Sales Invoice"
             {
                 ApplicationArea = all;
             }
+            field(InsideSales_btc; InsideSales_btc)
+            {
+                ApplicationArea = all;
+            }
             field(Delegado_btc; Delegado_btc)
             {
                 ApplicationArea = all;

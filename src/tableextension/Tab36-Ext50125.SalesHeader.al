@@ -128,7 +128,12 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             DataClassification = CustomerContent;
             Caption = 'PDF Saved', comment = 'ESP="PDF Guardado"';
         }
-
+        field(50032; InsideSales_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
+            Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
+        }
         field(50100; NoFacturar_btc; Boolean)
         {
             DataClassification = CustomerContent;

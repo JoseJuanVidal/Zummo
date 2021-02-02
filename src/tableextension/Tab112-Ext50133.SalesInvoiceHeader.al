@@ -143,7 +143,12 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
             DataClassification = CustomerContent;
             Caption = 'Facturación electrónica', comment = 'ESP="Facturación electrónica"';
         }
-
+        field(50032; InsideSales_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
+            Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
+        }
         field(50100; NoFacturar_btc; Boolean)
         {
             DataClassification = CustomerContent;

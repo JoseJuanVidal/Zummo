@@ -43,7 +43,7 @@ tableextension 50135 "SalesHeaderArchive" extends "Sales Header Archive"  //5107
             DataClassification = CustomerContent;
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Central Compras"), TipoRegistro = const(Tabla));
             Caption = 'Central Compras', comment = 'ESP="Central Compras"';
-            
+
         }
         field(50021; ClienteCorporativo_btc; Code[20])
         {
@@ -96,7 +96,12 @@ tableextension 50135 "SalesHeaderArchive" extends "Sales Header Archive"  //5107
             DataClassification = CustomerContent;
             Caption = 'PDF Saved', comment = 'ESP="PDF Guardado"';
         }
-
+        field(50032; InsideSales_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
+            Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
+        }
         field(50100; NoFacturar_btc; Boolean)
         {
             DataClassification = CustomerContent;

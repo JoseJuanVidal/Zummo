@@ -354,6 +354,7 @@ codeunit 50106 "SalesEvents"
             pSalesHeader.TestField(ClienteReporting_btc);
             pSalesHeader.TestField(AreaManager_btc);
             pSalesHeader.TestField(Delegado_btc);
+            //pSalesHeader.TestField(InsideSales_btc);
             pSalesHeader.TestField(GrupoCliente_btc);
             pSalesHeader.TestField(Perfil_btc);
             pSalesHeader.TestField("Promised Delivery Date");
@@ -756,6 +757,7 @@ codeunit 50106 "SalesEvents"
         psalesheader.CentralCompras_btc := reccustomer.CentralCompras_btc;
         psalesheader.ClienteCorporativo_btc := reccustomer.ClienteCorporativo_btc;
         psalesheader.AreaManager_btc := reccustomer.AreaManager_btc;
+        pSalesHeader.InsideSales_btc := recCustomer.InsideSales_btc;
         psalesheader.Delegado_btc := reccustomer.Delegado_btc;
         psalesheader.GrupoCliente_btc := reccustomer.GrupoCliente_btc;
         psalesheader.Perfil_btc := reccustomer.Perfil_btc;
@@ -1008,6 +1010,7 @@ codeunit 50106 "SalesEvents"
         ToSalesHeader.ClienteCorporativo_btc := OldSalesHeader.ClienteCorporativo_btc;
         ToSalesHeader.ClienteReporting_btc := OldSalesHeader.ClienteReporting_btc;
         ToSalesHeader.ComentarioInterno_btc := OldSalesHeader.ComentarioInterno_btc;
+        ToSalesHeader.InsideSales_btc := OldSalesHeader.InsideSales_btc;
         ToSalesHeader.Delegado_btc := OldSalesHeader.Delegado_btc;
         ToSalesHeader.GrupoCliente_btc := OldSalesHeader.GrupoCliente_btc;
         ToSalesHeader.ImpresoAlmacen_btc := OldSalesHeader.ImpresoAlmacen_btc;

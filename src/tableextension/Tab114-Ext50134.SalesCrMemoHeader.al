@@ -115,7 +115,12 @@ tableextension 50134 "SalesCrMemoHeader" extends "Sales Cr.Memo Header" //114
             DataClassification = CustomerContent;
             Caption = 'Facturación electrónica', comment = 'ESP="Facturación electrónica"';
         }
-
+        field(50032; InsideSales_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
+            Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
+        }
         field(50910; MotivoBloqueo_btc; Code[20])
         {
             DataClassification = CustomerContent;
