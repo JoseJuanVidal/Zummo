@@ -134,8 +134,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados"</note>
+          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 4292132811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -4687,6 +4687,11 @@
           <source>Coste Estandar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste Estandar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemStandardCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2201134017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CRM Sales Order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Sales Order btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2443984010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Activities</source>
@@ -17647,6 +17652,11 @@
           <source>Fecha Vto. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field FechaVtoAseg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field InsideSales_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 1329123816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
           <source>Saldo Acumulado</source>

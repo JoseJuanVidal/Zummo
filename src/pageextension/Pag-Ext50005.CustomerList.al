@@ -29,6 +29,11 @@ pageextension 50005 "CustomerList" extends "Customer List"
             {
                 ApplicationArea = all;
             }
+            field(InsideSales_btc; InsideSales_btc)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
         addlast(Control1)
         {

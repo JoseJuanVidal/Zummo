@@ -1,6 +1,6 @@
 table 50147 "CRM Salesorder_crm_btc"
 {
-      Caption = 'CRM Salesorder_btc';
+    Caption = 'CRM Salesorder_btc';
     DataCaptionFields = Name, OrderNumber;
     Description = 'Quote that has been accepted.';
     ExternalName = 'salesorder';
@@ -486,7 +486,7 @@ table 50147 "CRM Salesorder_crm_btc"
         }
         field(60; ContactIdName; Text[160])
         {
-            CalcFormula = Lookup ("CRM Contact".FullName WHERE(ContactId = FIELD(ContactId)));
+            CalcFormula = Lookup("CRM Contact".FullName WHERE(ContactId = FIELD(ContactId)));
             Caption = 'ContactIdName';
             ExternalAccess = Read;
             ExternalName = 'contactidname';
@@ -495,7 +495,7 @@ table 50147 "CRM Salesorder_crm_btc"
         }
         field(61; AccountIdName; Text[160])
         {
-            CalcFormula = Lookup ("CRM Account".Name WHERE(AccountId = FIELD(AccountId)));
+            CalcFormula = Lookup("CRM Account".Name WHERE(AccountId = FIELD(AccountId)));
             Caption = 'AccountIdName';
             ExternalAccess = Read;
             ExternalName = 'accountidname';
@@ -504,7 +504,7 @@ table 50147 "CRM Salesorder_crm_btc"
         }
         field(62; OpportunityIdName; Text[250])
         {
-            CalcFormula = Lookup ("CRM Opportunity".Name WHERE(OpportunityId = FIELD(OpportunityId)));
+            CalcFormula = Lookup("CRM Opportunity".Name WHERE(OpportunityId = FIELD(OpportunityId)));
             Caption = 'OpportunityIdName';
             ExternalAccess = Read;
             ExternalName = 'opportunityidname';
@@ -513,7 +513,7 @@ table 50147 "CRM Salesorder_crm_btc"
         }
         field(63; QuoteIdName; Text[250])
         {
-            CalcFormula = Lookup ("CRM Quote".Name WHERE(QuoteId = FIELD(QuoteId)));
+            CalcFormula = Lookup("CRM Quote".Name WHERE(QuoteId = FIELD(QuoteId)));
             Caption = 'QuoteIdName';
             ExternalAccess = Read;
             ExternalName = 'quoteidname';
@@ -522,7 +522,7 @@ table 50147 "CRM Salesorder_crm_btc"
         }
         field(64; PriceLevelIdName; Text[100])
         {
-            CalcFormula = Lookup ("CRM Pricelevel".Name WHERE(PriceLevelId = FIELD(PriceLevelId)));
+            CalcFormula = Lookup("CRM Pricelevel".Name WHERE(PriceLevelId = FIELD(PriceLevelId)));
             Caption = 'PriceLevelIdName';
             ExternalAccess = Read;
             ExternalName = 'pricelevelidname';
@@ -531,7 +531,7 @@ table 50147 "CRM Salesorder_crm_btc"
         }
         field(65; CreatedByName; Text[200])
         {
-            CalcFormula = Lookup ("CRM Systemuser".FullName WHERE(SystemUserId = FIELD(CreatedBy)));
+            CalcFormula = Lookup("CRM Systemuser".FullName WHERE(SystemUserId = FIELD(CreatedBy)));
             Caption = 'CreatedByName';
             ExternalAccess = Read;
             ExternalName = 'createdbyname';
@@ -540,7 +540,7 @@ table 50147 "CRM Salesorder_crm_btc"
         }
         field(66; ModifiedByName; Text[200])
         {
-            CalcFormula = Lookup ("CRM Systemuser".FullName WHERE(SystemUserId = FIELD(ModifiedBy)));
+            CalcFormula = Lookup("CRM Systemuser".FullName WHERE(SystemUserId = FIELD(ModifiedBy)));
             Caption = 'ModifiedByName';
             ExternalAccess = Read;
             ExternalName = 'modifiedbyname';
@@ -709,7 +709,7 @@ table 50147 "CRM Salesorder_crm_btc"
         }
         field(87; TransactionCurrencyIdName; Text[100])
         {
-            CalcFormula = Lookup ("CRM Transactioncurrency".CurrencyName WHERE(TransactionCurrencyId = FIELD(TransactionCurrencyId)));
+            CalcFormula = Lookup("CRM Transactioncurrency".CurrencyName WHERE(TransactionCurrencyId = FIELD(TransactionCurrencyId)));
             Caption = 'TransactionCurrencyIdName';
             ExternalAccess = Read;
             ExternalName = 'transactioncurrencyidname';
@@ -759,7 +759,7 @@ table 50147 "CRM Salesorder_crm_btc"
         }
         field(93; CreatedOnBehalfByName; Text[200])
         {
-            CalcFormula = Lookup ("CRM Systemuser".FullName WHERE(SystemUserId = FIELD(CreatedOnBehalfBy)));
+            CalcFormula = Lookup("CRM Systemuser".FullName WHERE(SystemUserId = FIELD(CreatedOnBehalfBy)));
             Caption = 'CreatedOnBehalfByName';
             ExternalAccess = Read;
             ExternalName = 'createdonbehalfbyname';
@@ -777,7 +777,7 @@ table 50147 "CRM Salesorder_crm_btc"
         }
         field(95; ModifiedOnBehalfByName; Text[200])
         {
-            CalcFormula = Lookup ("CRM Systemuser".FullName WHERE(SystemUserId = FIELD(ModifiedOnBehalfBy)));
+            CalcFormula = Lookup("CRM Systemuser".FullName WHERE(SystemUserId = FIELD(ModifiedOnBehalfBy)));
             Caption = 'ModifiedOnBehalfByName';
             ExternalAccess = Read;
             ExternalName = 'modifiedonbehalfbyname';

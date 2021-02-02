@@ -51,6 +51,10 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
+            field(InsideSales_btc; InsideSales_btc)
+            {
+                ApplicationArea = all;
+            }
             field(Delegado_btc; Delegado_btc)
             {
                 ApplicationArea = all;

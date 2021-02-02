@@ -30,6 +30,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             Editable = true;
             trigger OnValidate()
             begin
+                TestField("Cred_ Max_ Aseg. Autorizado Por_btc");
                 validate("Credit Limit (LCY)", "Credito Maximo Aseguradora_btc" + "Credito Maximo Interno_btc");
             end;
         }
@@ -215,6 +216,12 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             DataClassification = CustomerContent;
             Caption = 'Fecha Vto. Aseguradora', comment = 'ESP="Fecha Vto. Aseguradora"';
             editable = false;
+        }
+        field(50030; InsideSales_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
+            Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
         }
     }
 }

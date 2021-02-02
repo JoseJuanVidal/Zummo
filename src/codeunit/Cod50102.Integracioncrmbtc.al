@@ -275,13 +275,22 @@ codeunit 50102 "Integracion_crm_btc"
         OutOfMapFilter: boolean;
         CustomerHasChangedErr: Label 'No se puede crear un Pedido en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado.', comment = 'ESP="No se puede crear un Pedido en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado."';
         SalesLine: Record "Sales Line";
-
+        Salesperson: record "Salesperson/Purchaser";
+        SalespersonId: Guid;
         CRMIntegrationTableSynch: Codeunit "CRM Integration Table Synch.";
         SourceLinesRecordRef: RecordRef;
     begin
         SourceRecordRef.SETTABLE(Pedido);
         DestinationRecordRef.SETTABLE(CRMsalesOrder);
 
+        //******************* VENDEDOR DEFECTO ***************************************
+        //Si no viene relleno pongo el de defecto
+        if IsNullGuid(CRMsalesOrder.OwnerId) then begin
+            IF NOT CRMIntegrationRecord.FindIDFromRecordID(Salesperson.RECORDID, SalespersonId) THEN
+                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Salesperson/Purchaser", Salesperson.RECORDID, OutOfMapFilter) THEN
+                    ERROR('CRM Vendedor: ' + Customer."No." + ' Dato: ' + Salesperson.Code);
+            CRMsalesOrder.OwnerId := SalespersonId;
+        end;
 
 
         // Shipment Method Code -> go to table Shipment Method, and from there extract the description and add it to
