@@ -2665,7 +2665,7 @@ codeunit 50102 "Integracion_crm_btc"
     procedure RecreateJobQueueEntry(IntegrationTableMapping: record "Integration Table Mapping"; IntervalMinutes: Integer; ShouldRecreateJobQueueEntry: Boolean)
     var
         JobQueueEntry: Record "Job Queue Entry";
-        JobQueueEntryNameTok: Label '%1: trabajo de sincronización de Dynamics 365 fo Sales.';
+        JobQueueEntryNameTok: Label '%1: trabajo de sincronización de Dynamics 365 for Sales.';
     begin
         with JobQueueEntry do begin
             SetRange("Object Type to Run", "Object Type to Run"::Codeunit);
@@ -2691,7 +2691,6 @@ codeunit 50102 "Integracion_crm_btc"
     end;
 
     var
-
         CRMProductName: Codeunit "CRM Product Name";
         CRMSynchHelper: Codeunit "CRM Synch. Helper";
 }
