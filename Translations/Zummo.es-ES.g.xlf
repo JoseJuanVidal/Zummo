@@ -19749,6 +19749,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemCharge - Field OmiteDescuentos_btc - Property Caption</note>
           <target>Omite descuentos</target>
         </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 2751547137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source>Ultimo coste directo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ultimo coste directo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastUnitCost - Property Caption</note>
+          <target>Ultimo coste directo</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 597349203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Type order service level 2</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 2"</note>

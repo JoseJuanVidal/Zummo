@@ -2,7 +2,7 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
 {
     layout
     {
-        addlast(Content)
+        addlast(Control1)
         {
             field(LastUnitCost; LastUnitCost)
             {
