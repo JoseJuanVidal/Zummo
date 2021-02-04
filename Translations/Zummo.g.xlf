@@ -15573,6 +15573,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad en contenido de almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHStockkeepingUnitList - Control STHQuantityWhse - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Action 1467983106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
+          <source>Actualizar ultimo coste</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar ultimo coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action ActualizarUltimoCoste - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Method 680393218 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
+          <source>¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateLastUnitCost - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1994005900 - Control 3035610829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>It allows to indicate the reason for which it has been blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite indicar el motivo por el cual ha sido bloqueado"</note>
