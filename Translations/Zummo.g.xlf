@@ -4299,7 +4299,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method FindCRMProductIdForItem - NamedType CannotSynchProductErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2573646532 - Method 2692007755 - NamedType 3595491119" size-unit="char" translate="yes" xml:space="preserve">
-          <source>%1: trabajo de sincronización de Dynamics 365 fo Sales.</source>
+          <source>%1: trabajo de sincronización de Dynamics 365 for Sales.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method RecreateJobQueueEntry - NamedType JobQueueEntryNameTok</note>
         </trans-unit>
@@ -18487,6 +18487,11 @@
           <source>Skip discounts</source>
           <note from="Developer" annotates="general" priority="2">ESP="Omite descuentos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemCharge - Field OmiteDescuentos_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 2751547137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastUnitCost - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 597349203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Type order service level 2</source>

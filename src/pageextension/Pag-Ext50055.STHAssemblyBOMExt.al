@@ -1,4 +1,4 @@
-pageextension 50198 "Production BOM Lines" extends "Production BOM Lines"
+pageextension 50055 "STH AssemblyBOMExt" extends "Assembly BOM"
 {
     layout
     {
@@ -24,6 +24,12 @@ pageextension 50198 "Production BOM Lines" extends "Production BOM Lines"
             }
         }
     }
+
+    actions
+    {
+        // Add changes to page actions here
+    }
+
     var
         Coste: Decimal;
 

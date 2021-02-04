@@ -11,7 +11,7 @@ report 50129 "PedidoTransferenciaRegistrado"
     {
         dataitem("Transfer Receipt Header"; "Transfer Receipt Header")
         {
-            DataItemTableView = SORTING ("No.");
+            DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Transfer-from Code", "Transfer-to Code";
             RequestFilterHeading = 'Transfer Receipt';
 
@@ -66,10 +66,10 @@ report 50129 "PedidoTransferenciaRegistrado"
             }
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     column(CopyCaption; StrSubstNo(Text001, CopyText))
                     {
                     }
@@ -109,6 +109,12 @@ report 50129 "PedidoTransferenciaRegistrado"
                     column(TransferfromAddr6; "Transfer Receipt Header"."Trsf.-from Country/Region Code")
                     {
                     }
+                    column(TransferToAddr9; "Transfer Receipt Header"."Transfer-to Post Code")
+                    {
+                    }
+                    column(TransferfromAddr9; "Transfer Receipt Header"."Transfer-from Post Code")
+                    {
+                    }
                     column(InTransitCode_TransHdr; "Transfer Receipt Header"."In-Transit Code")
                     {
                         IncludeCaption = true;
@@ -138,7 +144,7 @@ report 50129 "PedidoTransferenciaRegistrado"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Transfer Receipt Header";
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -185,9 +191,9 @@ report 50129 "PedidoTransferenciaRegistrado"
                     }
                     dataitem("Transfer Receipt Line"; "Transfer Receipt Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No.");
+                        DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Transfer Receipt Header";
-                        DataItemTableView = SORTING ("Document No.", "Line No.");
+                        DataItemTableView = SORTING("Document No.", "Line No.");
                         column(ItemNo_TransLine; "Item No.")
                         {
                             IncludeCaption = true;
@@ -225,7 +231,7 @@ report 50129 "PedidoTransferenciaRegistrado"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                             column(DimText2; DimText)
                             {
                             }
@@ -273,7 +279,7 @@ report 50129 "PedidoTransferenciaRegistrado"
 
                         dataitem(Lotes; Integer)
                         {
-                            DataItemTableView = sorting (number);
+                            DataItemTableView = sorting(number);
 
                             column(NoLote_RecMemLotes; RecMemLotes.NoLote)
                             {
