@@ -3991,7 +3991,7 @@ Cstr(Fields!DirEnvioAbono_CountryRegion.Value)
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>9.80688cm</Height>
+          <Height>9.27122cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -4019,7 +4019,7 @@ Cstr(Fields!DirEnvioAbono_CountryRegion.Value)
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>8.59714cm</Top>
               <Left>2.06467cm</Left>
-              <Height>1.01224cm</Height>
+              <Height>0.59949cm</Height>
               <Width>13.95178cm</Width>
               <Style>
                 <Border>
@@ -4052,9 +4052,9 @@ Cstr(Fields!DirEnvioAbono_CountryRegion.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>8.70297cm</Top>
+              <Top>8.63947cm</Top>
               <Left>16.11232cm</Left>
-              <Height>0.6cm</Height>
+              <Height>0.50475cm</Height>
               <Width>3.02917cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
@@ -4111,7 +4111,7 @@ Cstr(Fields!DirEnvioAbono_CountryRegion.Value)
               <Sizing>FitProportional</Sizing>
               <Top>8.52658cm</Top>
               <Left>0.46625cm</Left>
-              <Height>1.12183cm</Height>
+              <Height>0.74464cm</Height>
               <Width>1.33314cm</Width>
               <ZIndex>3</ZIndex>
               <Style>

@@ -4080,7 +4080,7 @@ cstr(Fields!FechaOperacion.Value)
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>9.80688cm</Height>
+          <Height>9.30297cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -4108,7 +4108,7 @@ cstr(Fields!FechaOperacion.Value)
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>8.59714cm</Top>
               <Left>2.06467cm</Left>
-              <Height>1.01224cm</Height>
+              <Height>0.70583cm</Height>
               <Width>13.95178cm</Width>
               <Style>
                 <Border>
@@ -4200,8 +4200,8 @@ cstr(Fields!FechaOperacion.Value)
               <Sizing>FitProportional</Sizing>
               <Top>8.52658cm</Top>
               <Left>0.46625cm</Left>
-              <Height>1.12183cm</Height>
-              <Width>1.33314cm</Width>
+              <Height>0.77639cm</Height>
+              <Width>1.25376cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
