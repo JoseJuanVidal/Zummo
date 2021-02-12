@@ -22,4 +22,5 @@ pageextension 50046 "PostedPurchaseReceiptLines" extends "Posted Purchase Receip
             }
         }
     }
+
 }

@@ -21,7 +21,7 @@ tableextension 50112 "PurchRcptLine" extends "Purch. Rcpt. Line"  //121
             Editable = false;
             Caption = 'Vendor Shipment No.', comment = 'ESP="Nº Albarán Proveedor"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Purch. Rcpt. Header"."Vendor Shipment No." where("No." = field("Document No.")));
+            CalcFormula = lookup("Purch. Rcpt. Header"."Vendor Shipment No." where("No." = field("Document No.")));
         }
         field(50003; "Nombre Proveedor"; Text[100])
         {
@@ -29,7 +29,7 @@ tableextension 50112 "PurchRcptLine" extends "Purch. Rcpt. Line"  //121
             Description = 'Bitec';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("Purch. Rcpt. Header"."Buy-from Vendor Name" WHERE
+            CalcFormula = lookup("Purch. Rcpt. Header"."Buy-from Vendor Name" WHERE
             ("No." = FIELD("Document No.")
             ));
         }
@@ -39,9 +39,21 @@ tableextension 50112 "PurchRcptLine" extends "Purch. Rcpt. Line"  //121
             Description = 'Bitec';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("Purch. Rcpt. Header"."Due Date" WHERE
+            CalcFormula = lookup("Purch. Rcpt. Header"."Due Date" WHERE
             ("No." = FIELD("Document No.")
             ));
+        }
+        field(50157; BaseImponibleLinea; decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Base Amount Line', comment = 'ESP="Importe Base IVA"';
+            editable = false;
+        }
+        field(50158; TotalImponibleLinea; decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Total Amount Line', comment = 'ESP="Importe Total IVA"';
+            editable = false;
         }
     }
 }

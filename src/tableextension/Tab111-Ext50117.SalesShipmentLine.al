@@ -113,5 +113,17 @@ tableextension 50117 "SalesShipmentLine" extends "Sales Shipment Line" //111
             ObsoleteState = Removed;
             ObsoleteReason = 'Borrar';
         }
+        field(50157; BaseImponibleLinea; decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Base Amount Line', comment = 'ESP="Importe Base IVA"';
+            editable = false;
+        }
+        field(50158; TotalImponibleLinea; decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Total Amount Line', comment = 'ESP="Importe Total IVA"';
+            editable = false;
+        }
     }
 }

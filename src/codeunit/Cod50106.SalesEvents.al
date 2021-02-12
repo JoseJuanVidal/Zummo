@@ -950,6 +950,40 @@ codeunit 50106 "SalesEvents"
             recSalesShptHeader.Peso_btc += SalesShptLine."Gross Weight" * SalesShptLine.Quantity;
             recSalesShptHeader.Modify();
         end;
+        // JJV 12/2/2021 actualizamos los campos de la linea de total Base linea y Total importe linea
+        SalesShptLineInsertUpdateField(SalesShptLine, SalesLine)
+    end;
+
+
+    procedure SalesShptLineInsertUpdateField(var SalesShptLine: Record "Sales Shipment Line"; SalesLine: Record "Sales Line")
+    var
+        SalesHeader: Record "Sales Header";
+
+    begin
+        if not SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then
+            exit;
+        SalesShptLine.BaseImponibleLinea := (SalesShptLine.Quantity * SalesLine."Unit Price") -
+            ((SalesShptLine.Quantity * SalesLine."Unit Price") * SalesLine."Line Discount %" / 100);
+        if (SalesHeader.DescuentoFactura <> 0) and (SalesLine."Allow Invoice Disc.") then
+            SalesShptLine.BaseImponibleLinea -= (SalesShptLine.BaseImponibleLinea * SalesHeader.DescuentoFactura / 100);
+        SalesShptLine.TotalImponibleLinea := SalesShptLine.BaseImponibleLinea + (SalesShptLine.BaseImponibleLinea * SalesLine."VAT %" / 100);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchRcptLineInsert', '', true, true)]
+    local procedure CDU_90_OnBeforePurchRcptLineInsert(VAR PurchRcptLine: Record "Purch. Rcpt. Line"; VAR PurchRcptHeader: Record "Purch. Rcpt. Header"; VAR PurchLine: Record "Purchase Line"; CommitIsSupressed: Boolean)
+    var
+        recSalesShptHeader: Record "Sales Shipment Header";
+    begin
+
+        // JJV 12/2/2021 actualizamos los campos de la linea de total Base linea y Total importe linea
+        PurchRcptLineInsertUpdateField(PurchRcptLine, PurchLine)
+    end;
+
+    procedure PurchRcptLineInsertUpdateField(var PurchRcptLine: Record "Purch. Rcpt. Line"; PurchLine: Record "Purchase Line")
+    begin
+        PurchRcptLine.BaseImponibleLinea := (PurchRcptLine.Quantity * PurchLine."Direct Unit Cost") -
+            ((PurchLine.Quantity * PurchLine."Direct Unit Cost") * PurchLine."Line Discount %" / 100);
+        PurchRcptLine.TotalImponibleLinea := PurchRcptLine.BaseImponibleLinea + (PurchRcptLine.BaseImponibleLinea * PurchLine."VAT %" / 100);
     end;
 
     procedure GetTipoBloqueoProducto(pCodProducto: Code[20]): Text

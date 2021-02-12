@@ -138,7 +138,19 @@ tableextension 50123 "SalesShipmentHeader" extends "Sales Shipment Header"  //11
             FieldClass = FlowField;
             CalcFormula = sum("Sales Shipment Line"."Qty. Shipped Not Invoiced" where("Document No." = field("No.")));
         }
-
-
+        field(50157; BaseImponibleLinea; decimal)
+        {
+            Caption = 'Base Amount Line', comment = 'ESP="Importe Base IVA"';
+            editable = false;
+            FieldClass = FlowField;
+            CalcFormula = sum("Sales Shipment Line".BaseImponibleLinea where("Document No." = field("No.")));
+        }
+        field(50158; TotalImponibleLinea; decimal)
+        {
+            Caption = 'Total Amount Line', comment = 'ESP="Importe Total IVA"';
+            editable = false;
+            FieldClass = FlowField;
+            CalcFormula = sum("Sales Shipment Line".TotalImponibleLinea where("Document No." = field("No.")));
+        }
     }
 }

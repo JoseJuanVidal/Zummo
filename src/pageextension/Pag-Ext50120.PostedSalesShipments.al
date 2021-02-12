@@ -33,9 +33,14 @@ pageextension 50120 "PostedSalesShipments" extends "Posted Sales Shipments"
             {
                 ApplicationArea = all;
             }
-
-
-
+            field(BaseImponibleLinea; BaseImponibleLinea)
+            {
+                ApplicationArea = all;
+            }
+            field(TotalImponibleLinea; TotalImponibleLinea)
+            {
+                ApplicationArea = all;
+            }
         }
     }
 
@@ -121,7 +126,7 @@ pageextension 50120 "PostedSalesShipments" extends "Posted Sales Shipments"
                         NumPalets_btc := numPalets;
                         Peso_btc := peso;
 
-                      if Modify() then;
+                        if Modify() then;
 
                     end;
                 end;
@@ -154,8 +159,34 @@ pageextension 50120 "PostedSalesShipments" extends "Posted Sales Shipments"
                                 end;
                             end;
                         until Albaran.Next() = 0;
+                end;
+            }
+            action(calcularImportes)
+            {
+                ApplicationArea = all;
+                Caption = 'Calcular Importes', comment = 'ESP="Calcular importes"';
+                Image = Calculate;
 
-
+                trigger OnAction()
+                var
+                    SalesShipmentLine: Record "Sales Shipment Line";
+                    SalesLine: Record "Sales Line";
+                    Funciones: Codeunit SalesEvents;
+                    Ventana: Dialog;
+                begin
+                    if Not confirm('¿Desea recalcular los importe de los albaranes') then
+                        exit;
+                    ventana.Open('Albaran #1###############');
+                    if SalesShipmentLine.findset() then
+                        repeat
+                            Ventana.Update(1, SalesShipmentLine."Document No.");
+                            if SalesLine.Get(salesline."Document Type"::Order, SalesShipmentLine."Order No.", SalesShipmentLine."Order Line No.") then begin
+                                Funciones.SalesShptLineInsertUpdateField(SalesShipmentLine, SalesLine);
+                                SalesShipmentLine.Modify();
+                                Commit();
+                            end;
+                        Until SalesShipmentLine.next() = 0;
+                    Ventana.Close;
                 end;
             }
 

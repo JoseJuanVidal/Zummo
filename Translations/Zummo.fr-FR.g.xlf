@@ -3824,6 +3824,16 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerCalculateFechaVto - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3514522085 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Texto</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CargaFicheroNominas - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3514522085 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nominas %1 %2</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CargaFicheroNominas - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="Page 3847445537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Descuentos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descuentos",FRA="Descuentos"</note>
