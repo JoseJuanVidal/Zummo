@@ -4393,6 +4393,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerCalculateFechaVto - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3514522085 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Texto</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CargaFicheroNominas - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3514522085 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nominas %1 %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CargaFicheroNominas - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3997019009 - NamedType 4134082808" size-unit="char" translate="yes" xml:space="preserve">
           <source>The file export has one or more errors.\\For each line to be exported, resolve the errors displayed to the right and then try to export again.</source>
           <note from="Developer" annotates="general" priority="2">ESP="La exportación del archivo tiene uno o más errores. \\ Para cada línea que se va a exportar, resuelva los errores que se muestran a la derecha y luego intente exportar nuevamente."</note>
@@ -15573,6 +15583,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad en contenido de almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHStockkeepingUnitList - Control STHQuantityWhse - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Control 2105307182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
+          <source>Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Control Inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Control 1119874868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
+          <source>Ult. Coste producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. Coste producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Control CostProduction - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Action 1467983106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
           <source>Actualizar ultimo coste</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar ultimo coste"</note>
@@ -15582,6 +15602,11 @@
           <source>¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateLastUnitCost - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4701843 - Action 1033639056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Importar Nominas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Nominas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH General JournalExt - Action ImportNominas - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1994005900 - Control 3035610829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>It allows to indicate the reason for which it has been blocked</source>

@@ -671,4 +671,68 @@ codeunit 50111 "Funciones"
             Until Customer.next() = 0;
         Ventana.Close();
     end;
+
+    procedure CargaFicheroNominas(JournalBatchName: code[10]; JournalTemplateName: code[10])
+    var
+        GenJnlLine: record "Gen. Journal Line";
+        FileMngt: codeunit "File Management";
+        FileName: Text;
+        Fichero: File;
+        txtRecord: text;
+        tmpTexto: Text;
+        Cuenta: Text;
+        DebeHaber: Text;
+        Concepto: text;
+        Importe: Decimal;
+        Fecha: date;
+        Dia: Integer;
+        Mes: Integer;
+        Empleado: text;
+        Linea: Integer;
+        Text000: label 'Cargar Fichero de Texto';
+        Text001: Label 'Nominas %1 %2';
+    begin
+        filename := FileMngt.UploadFile(Text000, FileName);
+        if not FileMngt.ServerFileExists(FileName) then
+            exit;
+        GenJnlLine.SetRange("Journal Batch Name", JournalBatchName);
+        GenJnlLine.SetRange("Journal Template Name", JournalTemplateName);
+        if GenJnlLine.FindLast() then
+            Linea := GenJnlLine."Line No." + 10000
+        else
+            linea := 10000;
+
+
+        Fichero.Open(FileName);
+        Fichero.TextMode := true;
+        WHILE Fichero.READ(txtRecord) > 1 DO BEGIN
+            txtRecord := ConvertStr(txtRecord, ';', ',');
+
+            Cuenta := SelectStr(1, txtRecord);
+            DebeHaber := SelectStr(2, txtRecord);
+            Concepto := SelectStr(3, txtRecord);
+            tmpTexto := SelectStr(4, txtRecord);
+            Evaluate(Importe, tmpTexto);
+            Importe := Importe / 100;  // ponemos los decimales
+            tmpTexto := SelectStr(5, txtRecord);
+            evaluate(dia, copystr(tmpTexto, 1, 2));
+            evaluate(Mes, copystr(tmpTexto, 4, 2));
+            fecha := DMY2Date(dia, mes);
+            Empleado := SelectStr(6, txtRecord);
+            GenJnlLine.Init();
+            GenJnlLine."Journal Batch Name" := JournalBatchName;
+            GenJnlLine."Journal Template Name" := JournalTemplateName;
+            GenJnlLine."Line No." := Linea;
+            GenJnlLine."Posting Date" := Workdate;
+            GenJnlLine."Document No." := CopyStr(StrSubstNo(text001, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)), 1, MaxStrLen(GenJnlLine."Document No."));
+            GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
+            GenJnlLine.Validate("Account No.", Cuenta);
+            GenJnlLine.Description := Concepto;
+            GenJnlLine.Validate(Amount, Importe);
+
+            GenJnlLine.Insert();
+            Linea += 10000;
+        END;
+        Fichero.Close();
+    end;
 }
