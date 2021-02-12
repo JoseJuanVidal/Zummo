@@ -181,9 +181,7 @@ pageextension 50120 "PostedSalesShipments" extends "Posted Sales Shipments"
                         repeat
                             Ventana.Update(1, SalesShipmentLine."Document No.");
                             if SalesLine.Get(salesline."Document Type"::Order, SalesShipmentLine."Order No.", SalesShipmentLine."Order Line No.") then begin
-                                Funciones.SalesShptLineInsertUpdateField(SalesShipmentLine, SalesLine);
-                                SalesShipmentLine.Modify();
-                                Commit();
+                                Funciones.SalesShptLineInsertUpdateModifyField(SalesShipmentLine, SalesLine);
                             end;
                         Until SalesShipmentLine.next() = 0;
                     Ventana.Close;

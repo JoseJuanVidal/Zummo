@@ -1,7 +1,7 @@
 codeunit 50106 "SalesEvents"
 {
     Permissions = tabledata "Sales Shipment Header" = rm, tabledata "G/L Entry" = m, tabledata "Sales Invoice Header" = m, tabledata "Sales Cr.Memo Header" = m,
-        tabledata "Sales Invoice Line" = m, tabledata "Item Ledger Entry" = m;
+        tabledata "Sales Invoice Line" = m, tabledata "Item Ledger Entry" = m, tabledata "Sales Shipment Line" = rmid, tabledata "Purch. Rcpt. Line" = rmid;
 
     [EventSubscriber(ObjectType::Page, Page::"Posted Purchase Receipt", 'OnAfterValidateEvent', 'Vendor Shipment No.', true, true)]
     local procedure P_136_OnAfterValidateEvent(var Rec: Record "Purch. Rcpt. Header"; var xRec: Record "Purch. Rcpt. Header")
@@ -954,8 +954,14 @@ codeunit 50106 "SalesEvents"
         SalesShptLineInsertUpdateField(SalesShptLine, SalesLine)
     end;
 
+    procedure SalesShptLineInsertUpdateModifyField(var SalesShptLine: Record "Sales Shipment Line"; SalesLine: Record "Sales Line")
+    begin
+        SalesShptLineInsertUpdateField(SalesShptLine, SalesLine);
+        SalesShptLine.Modify();
+        Commit();
+    end;
 
-    procedure SalesShptLineInsertUpdateField(var SalesShptLine: Record "Sales Shipment Line"; SalesLine: Record "Sales Line")
+    Local procedure SalesShptLineInsertUpdateField(var SalesShptLine: Record "Sales Shipment Line"; SalesLine: Record "Sales Line")
     var
         SalesHeader: Record "Sales Header";
 
@@ -979,7 +985,14 @@ codeunit 50106 "SalesEvents"
         PurchRcptLineInsertUpdateField(PurchRcptLine, PurchLine)
     end;
 
-    procedure PurchRcptLineInsertUpdateField(var PurchRcptLine: Record "Purch. Rcpt. Line"; PurchLine: Record "Purchase Line")
+    procedure PurchRcptLineInsertUpdateModifyField(var PurchRcptLine: Record "Purch. Rcpt. Line"; PurchLine: Record "Purchase Line")
+    begin
+        PurchRcptLineInsertUpdateField(PurchRcptLine, PurchLine);
+        PurchRcptLine.Modify();
+        Commit();
+    end;
+
+    local procedure PurchRcptLineInsertUpdateField(var PurchRcptLine: Record "Purch. Rcpt. Line"; PurchLine: Record "Purchase Line")
     begin
         PurchRcptLine.BaseImponibleLinea := (PurchRcptLine.Quantity * PurchLine."Direct Unit Cost") -
             ((PurchLine.Quantity * PurchLine."Direct Unit Cost") * PurchLine."Line Discount %" / 100);

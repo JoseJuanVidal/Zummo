@@ -38,9 +38,7 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
                         repeat
                             Ventana.Update(1, PurchRcptLine."Document No.");
                             if PurchaseLine.Get(PurchaseLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.") then begin
-                                Funciones.PurchRcptLineInsertUpdateField(PurchRcptLine, PurchaseLine);
-                                PurchRcptLine.Modify();
-                                Commit();
+                                Funciones.PurchRcptLineInsertUpdateModifyField(PurchRcptLine, PurchaseLine);
                             end;
                         Until PurchRcptLine.next() = 0;
                     Ventana.Close;
