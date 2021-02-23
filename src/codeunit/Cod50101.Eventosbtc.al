@@ -223,9 +223,11 @@ codeunit 50101 "Eventos_btc"
                             SalesHeader.SETRANGE("Document Type", SalesHeader."Document Type"::Order);
                             SalesHeader.SETRANGE("No.", SalesShipmentLine."Order No.");
                             IF SalesHeader.FINDFIRST THEN BEGIN
-                                SalesHeader.Abono := rec."No.";
-                                SalesHeader.MODIFY;
-
+                                // 2/2/2021 JJV Ticket - Maria añadimos que si esta en blanco se actualice, si tiene valor no
+                                if SalesHeader.Abono = '' then begin
+                                    SalesHeader.Abono := rec."No.";
+                                    SalesHeader.MODIFY;
+                                end;
                             END;
                         END;
                     END;
