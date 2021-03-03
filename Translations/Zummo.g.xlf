@@ -18013,6 +18013,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cant. componentes Oferta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Stockkeeping Unit - Field Cant_ componentes Oferta - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 494646383 - Field 4088276401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 494646383">
+          <source>Filter Fin Oferta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Fin Oferta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Stockkeeping Unit - Field Filter_FinOferta_Btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 494646383 - Field 1624951095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 494646383">
           <source>Quantity Warehouse</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad Almacén"</note>

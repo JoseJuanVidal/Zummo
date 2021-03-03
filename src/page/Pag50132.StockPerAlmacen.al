@@ -125,6 +125,7 @@ page 50132 "StockPerAlmacen"
     trigger OnOpenPage()
     begin
         SetCurrentKey(Ordenacion);
+        SetFilter(Filter_FinOferta_Btc, '%1..', WorkDate());
     end;
 
     trigger OnAfterGetRecord()

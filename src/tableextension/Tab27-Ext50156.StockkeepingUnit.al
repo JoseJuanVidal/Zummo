@@ -38,8 +38,9 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             Editable = false;
             Caption = 'Cant. componentes Oferta', comment = 'ESP="Cant. componentes Oferta"';
             FieldClass = FlowField;
-            CalcFormula = sum("Assembly Line"."Remaining Quantity" where("Document Type" = const(Quote), type = const(Item), "No." = field("Item No."), "Location Code" = field("Location Code"), "Fecha Fin Oferta_btc" = filter('>=t')
-            , Type = const(Item), "No." = field("Item No.")));
+            CalcFormula = sum("Assembly Line"."Remaining Quantity" where("Document Type" = const(Quote), type = const(Item), "No." = field("Item No."),
+                "Location Code" = field("Location Code"), "Fecha Fin Oferta_btc" = field(Filter_FinOferta_Btc) // filter('>=t')
+                , Type = const(Item), "No." = field("Item No.")));
             TableRelation = "Assembly Line";
 
             trigger OnLookup()
@@ -53,10 +54,15 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
                 AssemblyLine.SetRange("No.", Rec."Item No.");
                 AssemblyLine.SetRange("Location Code", Rec."Location Code");
                 AssemblyLine.SetFilter("Remaining Quantity", '<>0');
-                AssemblyLine.SetFilter("Fecha Fin Oferta_btc", '>=t');
+                AssemblyLine.SetFilter("Fecha Fin Oferta_btc", '%1..', WorkDate());
                 PAssemblyLine.SetTableView(AssemblyLine);
                 PAssemblyLine.Run();
             end;
+        }
+        Field(50014; "Filter_FinOferta_Btc"; date)
+        {
+            Caption = 'Filter Fin Oferta', comment = 'ESP="Filtro Fin Oferta"';
+            FieldClass = FlowFilter;
         }
         field(50100; "STHQuantityWhse"; Decimal)
         {
