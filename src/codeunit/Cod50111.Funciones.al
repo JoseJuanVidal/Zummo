@@ -674,6 +674,9 @@ codeunit 50111 "Funciones"
 
     procedure CargaFicheroNominas(JournalBatchName: code[10]; JournalTemplateName: code[10])
     var
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        DimValue: Record "Dimension Value";
+        NVInStream: InStream;
         GenJnlLine: record "Gen. Journal Line";
         FileMngt: codeunit "File Management";
         FileName: Text;
@@ -683,18 +686,42 @@ codeunit 50111 "Funciones"
         Cuenta: Text;
         DebeHaber: Text;
         Concepto: text;
+        CECO: Text;
         Importe: Decimal;
+        ImporteDebe: Decimal;
+        ImporteHaber: Decimal;
         Fecha: date;
         Dia: Integer;
         Mes: Integer;
         Empleado: text;
+        Apunte: text;
+        NApunte: Integer;
         Linea: Integer;
-        Text000: label 'Cargar Fichero de Texto';
+        Rows: Integer;
+        I: Integer;
+        Sheetname: text;
+        UploadResult: Boolean;
+        Text000: label 'Cargar Fichero de Excel';
         Text001: Label 'Nominas %1 %2';
     begin
-        filename := FileMngt.UploadFile(Text000, FileName);
-        if not FileMngt.ServerFileExists(FileName) then
+        ExcelBuffer.DeleteAll();
+        UploadResult := UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream);
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
             exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 2);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
         GenJnlLine.SetRange("Journal Batch Name", JournalBatchName);
         GenJnlLine.SetRange("Journal Template Name", JournalTemplateName);
         if GenJnlLine.FindLast() then
@@ -702,37 +729,68 @@ codeunit 50111 "Funciones"
         else
             linea := 10000;
 
-
-        Fichero.Open(FileName);
-        Fichero.TextMode := true;
-        WHILE Fichero.READ(txtRecord) > 1 DO BEGIN
-            txtRecord := ConvertStr(txtRecord, ';', ',');
-
-            Cuenta := SelectStr(1, txtRecord);
-            DebeHaber := SelectStr(2, txtRecord);
-            Concepto := SelectStr(3, txtRecord);
-            tmpTexto := SelectStr(4, txtRecord);
-            Evaluate(Importe, tmpTexto);
-            Importe := Importe / 100;  // ponemos los decimales
-            tmpTexto := SelectStr(5, txtRecord);
-            evaluate(dia, copystr(tmpTexto, 1, 2));
-            evaluate(Mes, copystr(tmpTexto, 4, 2));
-            fecha := DMY2Date(dia, mes);
-            Empleado := SelectStr(6, txtRecord);
-            GenJnlLine.Init();
-            GenJnlLine."Journal Batch Name" := JournalBatchName;
-            GenJnlLine."Journal Template Name" := JournalTemplateName;
-            GenJnlLine."Line No." := Linea;
-            GenJnlLine."Posting Date" := Workdate;
-            GenJnlLine."Document No." := CopyStr(StrSubstNo(text001, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)), 1, MaxStrLen(GenJnlLine."Document No."));
-            GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
-            GenJnlLine.Validate("Account No.", Cuenta);
-            GenJnlLine.Description := Concepto;
-            GenJnlLine.Validate(Amount, Importe);
-
-            GenJnlLine.Insert();
-            Linea += 10000;
+        for i := 1 to Rows do begin
+            Concepto := '';
+            CECO := '';
+            DebeHaber := '';
+            tmpTexto := '';
+            ExcelBuffer.SetRange("Row No.", i);
+            ExcelBuffer.SetRange("Column No.", 2);
+            if ExcelBuffer.FindSet() then
+                Apunte := ExcelBuffer."Cell Value as Text";
+            if Evaluate(NApunte, apunte) then begin
+                ExcelBuffer.SetRange("Column No.", 3);
+                if ExcelBuffer.FindSet() then
+                    Concepto := ExcelBuffer."Cell Value as Text";
+                ExcelBuffer.SetRange("Column No.", 5);
+                if ExcelBuffer.FindSet() then
+                    CECO := ExcelBuffer."Cell Value as Text";
+                ExcelBuffer.SetRange("Column No.", 7);
+                if ExcelBuffer.FindSet() then
+                    DebeHaber := ExcelBuffer."Cell Value as Text";
+                ExcelBuffer.SetRange("Column No.", 8);
+                if ExcelBuffer.FindSet() then
+                    Cuenta := ExcelBuffer."Cell Value as Text";
+                ExcelBuffer.SetRange("Column No.", 11);
+                if ExcelBuffer.FindSet() then begin
+                    tmpTexto := ExcelBuffer."Cell Value as Text";
+                    Evaluate(ImporteDebe, tmpTexto)
+                end;
+                ExcelBuffer.SetRange("Column No.", 14);
+                if ExcelBuffer.FindSet() then begin
+                    tmpTexto := ExcelBuffer."Cell Value as Text";
+                    Evaluate(ImporteHaber, tmpTexto)
+                end;
+                if ImporteDebe > 0 then
+                    Importe := ImporteDebe
+                else
+                    Importe := -ImporteHaber;
+                fecha := DMY2Date(1);  // primer dia del mes
+                GenJnlLine.Init();
+                GenJnlLine."Journal Batch Name" := JournalBatchName;
+                GenJnlLine."Journal Template Name" := JournalTemplateName;
+                GenJnlLine."Line No." := Linea;
+                GenJnlLine."Posting Date" := Workdate;
+                GenJnlLine."Document No." := CopyStr(StrSubstNo(text001, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)), 1, MaxStrLen(GenJnlLine."Document No."));
+                GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
+                GenJnlLine.Validate("Account No.", Cuenta);
+                GenJnlLine.Description := Concepto;
+                GenJnlLine.Validate(Amount, Importe);
+                if CECO <> '' then begin
+                    DimValue.Reset();
+                    DimValue.SetRange("Global Dimension No.", 1);
+                    DimValue.SetRange(code, CECO);
+                    if not DimValue.FindSet() then begin
+                        DimValue.SetRange(code);
+                        DimValue.SetRange(Name, CECO);
+                        DimValue.FindSet();
+                    end;
+                    GenJnlLine.Validate("Shortcut Dimension 1 Code", DimValue.Code);
+                    //GenJnlLine.Validate("Shortcut Dimension 2 Code", 
+                end;
+                GenJnlLine.Insert();
+                Linea += 10000;
+            end;
         END;
-        Fichero.Close();
     end;
 }

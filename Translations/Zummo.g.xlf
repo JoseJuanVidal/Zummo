@@ -4394,7 +4394,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerCalculateFechaVto - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3514522085 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cargar Fichero de Texto</source>
+          <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CargaFicheroNominas - NamedType Text000</note>
         </trans-unit>
