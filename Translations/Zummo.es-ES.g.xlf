@@ -4509,7 +4509,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerCalculateFechaVto - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3514522085 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cargar Fichero de Texto</source>
+          <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CargaFicheroNominas - NamedType Text000</note>
         </trans-unit>
@@ -15832,7 +15832,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - Action Email_btc - Property Caption</note>
           <target>&amp;Correo electrónico</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1682009332 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+        <trans-unit id="PageExtension 1682009332 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1682009332">
           <source>Se va a realizar el cambio de Fecha de operacion de la factura %1, en la Bandeja de SII.\ ¿Desea continuar?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Se va a realizar el cambio de Fecha de operacion de la factura %1, en la Bandeja de SII.\¿Desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - NamedType Text000</note>
@@ -15868,7 +15868,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action CalcFechaVto - Property Caption</note>
           <target>Calcular Fecha Vto. Aseguradora</target>
         </trans-unit>
-        <trans-unit id="PageExtension 363045002 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+        <trans-unit id="PageExtension 363045002 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
           <source>¿Desea calcular la fecha de vencimiento aseguradora?</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - NamedType Text000</note>
@@ -15951,7 +15951,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GLAccountCard - Action Copiar - Property ToolTip</note>
           <target>Genera una nueva cuenta con los datos de esta</target>
         </trans-unit>
-        <trans-unit id="PageExtension 2009136746 - Action 4278313474 - Method 1377591017 - NamedType 1436881281" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4219821699">
+        <trans-unit id="PageExtension 2009136746 - Action 4278313474 - Method 1377591017 - NamedType 1436881281" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2009136746">
           <source>Account: %1 created successfully</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cuenta: %1 creada correctamente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GLAccountCard - Action Copiar - Method OnAction - NamedType lbCuentaCreadaMsg</note>
@@ -16101,7 +16101,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Reservation Entries Ext Zummo - Action QuitReservation - Property Caption</note>
           <target>Deshacer Reserva</target>
         </trans-unit>
-        <trans-unit id="PageExtension 3238287173 - Action 2194296723 - Method 1377591017 - NamedType 3967891709" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3868741142">
+        <trans-unit id="PageExtension 3238287173 - Action 2194296723 - Method 1377591017 - NamedType 3967891709" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3238287173">
           <source>Cancel reservation of %1 of item number %2, reserved for %3 from %4?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Eliminar la reserva de %1 del producto %2, reservado para %3 de %4?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Reservation Entries Ext Zummo - Action QuitReservation - Method OnAction - NamedType MsgConfirm</note>
@@ -16383,7 +16383,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action ActualizarUltimoCoste - Property Caption</note>
           <target>Actualizar ultimo coste</target>
         </trans-unit>
-        <trans-unit id="PageExtension 4092476146 - Method 680393218 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
+        <trans-unit id="PageExtension 4092476146 - Method 680393218 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
           <source>¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateLastUnitCost - NamedType Text000</note>
@@ -16442,7 +16442,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action Coment1 - Property ToolTip</note>
           <target>Permite ver o agregar comentarios para el registro.</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1994005900 - Method 1027696796 - NamedType 652137272" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+        <trans-unit id="PageExtension 1994005900 - Method 1027696796 - NamedType 652137272" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1994005900">
           <source>Customer: %1 has one or more of the required fields empty\Are you sure you want to exit?</source>
           <note from="Developer" annotates="general" priority="2">ESP="El cliente: %1 tiene vacíos uno o más de los campos obligatorios\¿Está seguro/a de que desea salir?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Method CheckMandatoryFields - NamedType lbConfirm</note>
@@ -16579,7 +16579,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action CopiarProducto - Property ToolTip</note>
           <target>Abre una ventana que permite crear un nuevo producto copiando los datos del producto actual</target>
         </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Action 2616719174 - Method 1377591017 - NamedType 1429326623" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+        <trans-unit id="PageExtension 2876958691 - Action 2616719174 - Method 1377591017 - NamedType 1429326623" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2876958691">
           <source>Item: %1 created successfully</source>
           <note from="Developer" annotates="general" priority="2">ESP="Producto: %1 creado correctamente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action CopiarProducto - Method OnAction - NamedType lbProductoCreadoMsg</note>
@@ -16597,7 +16597,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control Repuestos - Property Caption</note>
           <target>Repuestos</target>
         </trans-unit>
-        <trans-unit id="PageExtension 4090392497 - Control 1296414238 - Method 2699620902 - NamedType 2739276994" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+        <trans-unit id="PageExtension 4090392497 - Control 1296414238 - Method 2699620902 - NamedType 2739276994" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4090392497">
           <source>Select Path</source>
           <note from="Developer" annotates="general" priority="2">ESP="Seleccionar ruta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control RutaPdfPedidos_btc - Method OnAssistEdit - NamedType lbrutaLbl</note>
@@ -16806,7 +16806,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SimulatedProductionOrders - Action DeleteRange - Property ToolTip</note>
           <target>Permite borrar varias ordenes de producción a la vez seleccionando las que se deseen borrar</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1058035448 - Action 2159066594 - Method 1377591017 - NamedType 499806968" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2043225920">
+        <trans-unit id="PageExtension 1058035448 - Action 2159066594 - Method 1377591017 - NamedType 499806968" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1058035448">
           <source>Do you want to delete the selected orders?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea borrar las ordenes seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SimulatedProductionOrders - Action DeleteRange - Method OnAction - NamedType labelConfirm</note>
@@ -16836,7 +16836,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlannedProductionOrders - Action DeleteRange - Property ToolTip</note>
           <target>Permite borrar varias ordenes de producción a la vez seleccionando las que se deseen borrar</target>
         </trans-unit>
-        <trans-unit id="PageExtension 2124418342 - Action 2159066594 - Method 1377591017 - NamedType 499806968" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1548000686">
+        <trans-unit id="PageExtension 2124418342 - Action 2159066594 - Method 1377591017 - NamedType 499806968" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2124418342">
           <source>Do you want to delete the selected orders?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea borrar las ordenes seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlannedProductionOrders - Action DeleteRange - Method OnAction - NamedType labelConfirm</note>
@@ -16866,7 +16866,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension FirmPlannedProdOrders - Action DeleteRange - Property ToolTip</note>
           <target>Permite borrar varias ordenes de producción a la vez seleccionando las que se deseen borrar</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1525113772 - Action 2159066594 - Method 1377591017 - NamedType 499806968" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3830228482">
+        <trans-unit id="PageExtension 1525113772 - Action 2159066594 - Method 1377591017 - NamedType 499806968" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1525113772">
           <source>Do you want to delete the selected orders?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea borrar las ordenes seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension FirmPlannedProdOrders - Action DeleteRange - Method OnAction - NamedType labelConfirm</note>
@@ -16896,7 +16896,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReleasedProductionOrders - Action DeleteRange - Property ToolTip</note>
           <target>Permite borrar varias ordenes de producción a la vez seleccionando las que se deseen borrar</target>
         </trans-unit>
-        <trans-unit id="PageExtension 3196766109 - Action 2159066594 - Method 1377591017 - NamedType 499806968" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2972308613">
+        <trans-unit id="PageExtension 3196766109 - Action 2159066594 - Method 1377591017 - NamedType 499806968" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3196766109">
           <source>Do you want to delete the selected orders?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea borrar las ordenes seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReleasedProductionOrders - Action DeleteRange - Method OnAction - NamedType labelConfirm</note>
@@ -17209,10 +17209,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Production BOM - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3949660845 - Control 2130434325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1054896252">
-          <source>Mostrar Bloqueados</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Bloqueados"</note>
+          <source>Ocultar Bloqueados</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ocultar Bloqueados"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ProdBOMWhereUsed - Control ShowBlocked - Property Caption</note>
-          <target>Mostrar Bloqueados</target>
+          <target>Ocultar Bloqueados</target>
         </trans-unit>
         <trans-unit id="PageExtension 3949660845 - Action 1137027125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1054896252">
           <source>Item</source>
@@ -17442,7 +17442,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action MarkAseguradora - Property Caption</note>
           <target>Marcar comunicado Aaseguradora</target>
         </trans-unit>
-        <trans-unit id="PageExtension 549456760 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+        <trans-unit id="PageExtension 549456760 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 549456760">
           <source>¿Desea marcar %1 facturas como enviadas a Aseguradora?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - NamedType Text000</note>
@@ -17568,19 +17568,19 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedBillGroups - Action Export - Property ToolTip</note>
           <target>Exporta un archivo con la información de pago de las líneas.</target>
         </trans-unit>
-        <trans-unit id="PageExtension 978908506 - NamedType 1785804764" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 681896546">
+        <trans-unit id="PageExtension 978908506 - NamedType 1785804764" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 978908506">
           <source>Direct Debit</source>
           <note from="Developer" annotates="general" priority="2">ESP="Adeudo directo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedBillGroups - NamedType DirectDebitOptionTxt</note>
           <target>Adeudo directo</target>
         </trans-unit>
-        <trans-unit id="PageExtension 978908506 - NamedType 4048606681" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 681896546">
+        <trans-unit id="PageExtension 978908506 - NamedType 4048606681" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 978908506">
           <source>Invoice Discounting</source>
           <note from="Developer" annotates="general" priority="2">ESP="Operación de cesión de crédito"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedBillGroups - NamedType InvoiceDiscountingOptionTxt</note>
           <target>Operación de cesión de crédito</target>
         </trans-unit>
-        <trans-unit id="PageExtension 978908506 - NamedType 2927434612" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 681896546">
+        <trans-unit id="PageExtension 978908506 - NamedType 2927434612" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 978908506">
           <source>Select which format to use.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Seleccione el formato que quiere usar."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedBillGroups - NamedType InstructionTxt</note>
@@ -17604,19 +17604,19 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ClosedBillGroups - Action Export - Property ToolTip</note>
           <target>Exporta un archivo con la información de pago de las líneas.</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1020993119 - NamedType 1785804764" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3286564055">
+        <trans-unit id="PageExtension 1020993119 - NamedType 1785804764" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1020993119">
           <source>Direct Debit</source>
           <note from="Developer" annotates="general" priority="2">ESP="Adeudo directo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ClosedBillGroups - NamedType DirectDebitOptionTxt</note>
           <target>Adeudo directo</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1020993119 - NamedType 4048606681" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3286564055">
+        <trans-unit id="PageExtension 1020993119 - NamedType 4048606681" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1020993119">
           <source>Invoice Discounting</source>
           <note from="Developer" annotates="general" priority="2">ESP="Operación de cesión de crédito"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ClosedBillGroups - NamedType InvoiceDiscountingOptionTxt</note>
           <target>Operación de cesión de crédito</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1020993119 - NamedType 2927434612" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3286564055">
+        <trans-unit id="PageExtension 1020993119 - NamedType 2927434612" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1020993119">
           <source>Select which format to use.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Seleccione el formato que quiere usar."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ClosedBillGroups - NamedType InstructionTxt</note>
@@ -17634,7 +17634,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoice - Action RegistrarFran - Property ToolTip</note>
           <target>Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa.</target>
         </trans-unit>
-        <trans-unit id="PageExtension 783370822 - Action 2890590632 - Method 1377591017 - NamedType 1946690851" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+        <trans-unit id="PageExtension 783370822 - Action 2890590632 - Method 1377591017 - NamedType 1946690851" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 783370822">
           <source>La factura se registró con el número %1 y se movió a la ventana de facturas de compra registradas.\\¿Quiere abrir la factura registrada?</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoice - Action RegistrarFran - Method OnAction - NamedType OpenPostedPurchaseInvQst</note>
@@ -18683,19 +18683,19 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Property Caption</note>
           <target>Próxima fecha factura</target>
         </trans-unit>
-        <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 16872894" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 601784662">
+        <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 16872894" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 393003494">
           <source>The next invoice date cannot be less than the initial date</source>
           <note from="Developer" annotates="general" priority="2">ESP="La fecha de próxima factura no puede ser menor a la fecha inicial"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Method OnValidate - NamedType lbErrorFechaErr</note>
           <target>La fecha de próxima factura no puede ser menor a la fecha inicial</target>
         </trans-unit>
-        <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 1977867686" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 601784662">
+        <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 1977867686" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 393003494">
           <source>The next invoice date cannot be greater than the final date</source>
           <note from="Developer" annotates="general" priority="2">ESP="La fecha de próxima factura no puede ser mayor a la fecha final"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Method OnValidate - NamedType lbErrorFechaMayorErr</note>
           <target>La fecha de próxima factura no puede ser mayor a la fecha final</target>
         </trans-unit>
-        <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 2286421668" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 601784662">
+        <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 2286421668" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 393003494">
           <source>The next invoice date cannot be less than the last invoice date</source>
           <note from="Developer" annotates="general" priority="2">ESP="La fecha de próxima factura no puede ser menor a la fecha última factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Method OnValidate - NamedType lbErrorFechaMenorUltimaFechaErr</note>
@@ -18994,7 +18994,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ValidadoContabiliad_btc - Property Caption</note>
           <target>Validado contabilidad</target>
         </trans-unit>
-        <trans-unit id="TableExtension 3276313895 - Field 696192174 - Method 2126772001 - NamedType 1757721565" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+        <trans-unit id="TableExtension 3276313895 - Field 696192174 - Method 2126772001 - NamedType 1757721565" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3276313895">
           <source>User not has permission</source>
           <note from="Developer" annotates="general" priority="2">ESP="Usuario no permitido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ValidadoContabiliad_btc - Method OnValidate - NamedType lbNoConfUsuariosErr</note>
@@ -19191,6 +19191,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cant. componentes Oferta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Stockkeeping Unit - Field Cant_ componentes Oferta - Property Caption</note>
           <target>Cant. componentes Oferta</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 494646383 - Field 4088276401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 494646383">
+          <source>Filter Fin Oferta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Fin Oferta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Stockkeeping Unit - Field Filter_FinOferta_Btc - Property Caption</note>
+          <target>Filtro Fin Oferta</target>
         </trans-unit>
         <trans-unit id="TableExtension 494646383 - Field 1624951095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 494646383">
           <source>Quantity Warehouse</source>
@@ -20100,7 +20106,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PaymentOrder - Field DueDate_btc - Property Caption</note>
           <target>Fecha Pago</target>
         </trans-unit>
-        <trans-unit id="TableExtension 1037316744 - Field 1572460470 - Method 2126772001 - NamedType 2403037622" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 389462096">
+        <trans-unit id="TableExtension 1037316744 - Field 1572460470 - Method 2126772001 - NamedType 2403037622" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 1037316744">
           <source>¿Desea Cambiar la fecha de vencimiento de las lineas?.</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Cambiar la fecha de vencimiento de las lineas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PaymentOrder - Field DueDate_btc - Method OnValidate - NamedType AdvertenciaLbl</note>

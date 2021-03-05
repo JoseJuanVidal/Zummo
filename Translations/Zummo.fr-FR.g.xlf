@@ -3825,7 +3825,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerCalculateFechaVto - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3514522085 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cargar Fichero de Texto</source>
+          <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CargaFicheroNominas - NamedType Text000</note>
         </trans-unit>
@@ -6658,7 +6658,7 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort SEPA_Reg - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 363045002 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+        <trans-unit id="PageExtension 363045002 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
           <source>¿Desea calcular la fecha de vencimiento aseguradora?</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - NamedType Text000</note>
@@ -6738,7 +6738,7 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Production BOM - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 783370822 - Action 2890590632 - Method 1377591017 - NamedType 1946690851" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+        <trans-unit id="PageExtension 783370822 - Action 2890590632 - Method 1377591017 - NamedType 1946690851" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 783370822">
           <source>La factura se registró con el número %1 y se movió a la ventana de facturas de compra registradas.\\¿Quiere abrir la factura registrada?</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoice - Action RegistrarFran - Method OnAction - NamedType OpenPostedPurchaseInvQst</note>

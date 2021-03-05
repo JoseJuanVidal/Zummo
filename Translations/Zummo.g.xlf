@@ -16309,8 +16309,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Production BOM - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3949660845 - Control 2130434325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1054896252">
-          <source>Mostrar Bloqueados</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Bloqueados"</note>
+          <source>Ocultar Bloqueados</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ocultar Bloqueados"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ProdBOMWhereUsed - Control ShowBlocked - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3949660845 - Action 1137027125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1054896252">

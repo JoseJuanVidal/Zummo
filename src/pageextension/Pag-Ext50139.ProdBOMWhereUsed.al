@@ -8,7 +8,7 @@ pageextension 50139 "ProdBOMWhereUsed" extends "Prod. BOM Where-Used"
             field(ShowBlocked; ShowBlocked)
             {
                 ApplicationArea = all;
-                Caption = 'Mostrar Bloqueados', comment = 'ESP="Mostrar Bloqueados"';
+                Caption = 'Ocultar Bloqueados', comment = 'ESP="Ocultar Bloqueados"';
 
                 trigger OnValidate()
                 begin
@@ -16,6 +16,7 @@ pageextension 50139 "ProdBOMWhereUsed" extends "Prod. BOM Where-Used"
                         SetRange(ProductoBloqueado_btc, false)
                     else
                         SetRange(ProductoBloqueado_btc);
+
                     CurrPage.Update();
                 end;
             }
@@ -48,7 +49,7 @@ pageextension 50139 "ProdBOMWhereUsed" extends "Prod. BOM Where-Used"
     }
     trigger OnOpenPage()
     begin
-        SetRange(ProductoBloqueado_btc, false);
+
     end;
 
     var
