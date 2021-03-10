@@ -6889,7 +6889,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3412186937 - ReportDataItem 1192395785 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sales Order</source>
+          <source>Pedido de Venta</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - ReportDataItem Sales Header - Property RequestFilterHeading</note>
         </trans-unit>
@@ -12199,7 +12199,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3011595053 - ReportDataItem 552782286 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Posted Sales Cr. Memo</source>
+          <source>Histórico abonos venta</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - ReportDataItem Sales Cr.Memo Header - Property RequestFilterHeading</note>
         </trans-unit>

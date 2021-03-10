@@ -11,352 +11,6 @@
       <rd:DataSourceID>568a3748-e567-4020-b622-9447bb701725</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="lbFechaVto">
-          <DataField>lbFechaVto</DataField>
-        </Field>
-        <Field Name="lbDescription">
-          <DataField>lbDescription</DataField>
-        </Field>
-        <Field Name="lbImportePendiente">
-          <DataField>lbImportePendiente</DataField>
-        </Field>
-        <Field Name="FiltrosMovProveedor">
-          <DataField>FiltrosMovProveedor</DataField>
-        </Field>
-        <Field Name="DateFilter">
-          <DataField>DateFilter</DataField>
-        </Field>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="TableFilter">
-          <DataField>TableFilter</DataField>
-        </Field>
-        <Field Name="VendFilter">
-          <DataField>VendFilter</DataField>
-        </Field>
-        <Field Name="PageGroupNo">
-          <DataField>PageGroupNo</DataField>
-        </Field>
-        <Field Name="PrintAmountsInLCY">
-          <DataField>PrintAmountsInLCY</DataField>
-        </Field>
-        <Field Name="ExcludeBalanceOnly">
-          <DataField>ExcludeBalanceOnly</DataField>
-        </Field>
-        <Field Name="PrintOnlyOnePerPage">
-          <DataField>PrintOnlyOnePerPage</DataField>
-        </Field>
-        <Field Name="RemainingAmtCaption">
-          <DataField>RemainingAmtCaption</DataField>
-        </Field>
-        <Field Name="No_Vend">
-          <DataField>No_Vend</DataField>
-        </Field>
-        <Field Name="Name_Vend">
-          <DataField>Name_Vend</DataField>
-        </Field>
-        <Field Name="PhoneNo_Vend">
-          <DataField>PhoneNo_Vend</DataField>
-        </Field>
-        <Field Name="StartBalanceLCY">
-          <DataField>StartBalanceLCY</DataField>
-        </Field>
-        <Field Name="StartBalanceLCYFormat">
-          <DataField>StartBalanceLCYFormat</DataField>
-        </Field>
-        <Field Name="StartVendDebitAmtAdj">
-          <DataField>StartVendDebitAmtAdj</DataField>
-        </Field>
-        <Field Name="StartVendDebitAmtAdjFormat">
-          <DataField>StartVendDebitAmtAdjFormat</DataField>
-        </Field>
-        <Field Name="StartVendCreditAmtAdj">
-          <DataField>StartVendCreditAmtAdj</DataField>
-        </Field>
-        <Field Name="StartVendCreditAmtAdjFormat">
-          <DataField>StartVendCreditAmtAdjFormat</DataField>
-        </Field>
-        <Field Name="VendBalanceLCY">
-          <DataField>VendBalanceLCY</DataField>
-        </Field>
-        <Field Name="VendBalanceLCYFormat">
-          <DataField>VendBalanceLCYFormat</DataField>
-        </Field>
-        <Field Name="BalLBalAdjLVendLedgEntryAmtLCY">
-          <DataField>BalLBalAdjLVendLedgEntryAmtLCY</DataField>
-        </Field>
-        <Field Name="BalLBalAdjLVendLedgEntryAmtLCYFormat">
-          <DataField>BalLBalAdjLVendLedgEntryAmtLCYFormat</DataField>
-        </Field>
-        <Field Name="VendDebitAmtDebitCorrDebit">
-          <DataField>VendDebitAmtDebitCorrDebit</DataField>
-        </Field>
-        <Field Name="VendDebitAmtDebitCorrDebitFormat">
-          <DataField>VendDebitAmtDebitCorrDebitFormat</DataField>
-        </Field>
-        <Field Name="StartBalanceLCYStartBalAdjLCY">
-          <DataField>StartBalanceLCYStartBalAdjLCY</DataField>
-        </Field>
-        <Field Name="StartBalanceLCYStartBalAdjLCYFormat">
-          <DataField>StartBalanceLCYStartBalAdjLCYFormat</DataField>
-        </Field>
-        <Field Name="VendCreditAmtCreditCredit">
-          <DataField>VendCreditAmtCreditCredit</DataField>
-        </Field>
-        <Field Name="VendCreditAmtCreditCreditFormat">
-          <DataField>VendCreditAmtCreditCreditFormat</DataField>
-        </Field>
-        <Field Name="StartVendDebitAmtTotal">
-          <DataField>StartVendDebitAmtTotal</DataField>
-        </Field>
-        <Field Name="StartVendDebitAmtTotalFormat">
-          <DataField>StartVendDebitAmtTotalFormat</DataField>
-        </Field>
-        <Field Name="StartVendCreditAmtTotal">
-          <DataField>StartVendCreditAmtTotal</DataField>
-        </Field>
-        <Field Name="StartVendCreditAmtTotalFormat">
-          <DataField>StartVendCreditAmtTotalFormat</DataField>
-        </Field>
-        <Field Name="CreditAppRound">
-          <DataField>CreditAppRound</DataField>
-        </Field>
-        <Field Name="CreditAppRoundFormat">
-          <DataField>CreditAppRoundFormat</DataField>
-        </Field>
-        <Field Name="DebitAppRound">
-          <DataField>DebitAppRound</DataField>
-        </Field>
-        <Field Name="DebitAppRoundFormat">
-          <DataField>DebitAppRoundFormat</DataField>
-        </Field>
-        <Field Name="CreditCorrect">
-          <DataField>CreditCorrect</DataField>
-        </Field>
-        <Field Name="CreditCorrectFormat">
-          <DataField>CreditCorrectFormat</DataField>
-        </Field>
-        <Field Name="DebitCorrect">
-          <DataField>DebitCorrect</DataField>
-        </Field>
-        <Field Name="DebitCorrectFormat">
-          <DataField>DebitCorrectFormat</DataField>
-        </Field>
-        <Field Name="DateFilter1_Vend">
-          <DataField>DateFilter1_Vend</DataField>
-        </Field>
-        <Field Name="GlobalDim2Filter_Vend">
-          <DataField>GlobalDim2Filter_Vend</DataField>
-        </Field>
-        <Field Name="VendorDetailTrialBalCaption">
-          <DataField>VendorDetailTrialBalCaption</DataField>
-        </Field>
-        <Field Name="PageNoCaption">
-          <DataField>PageNoCaption</DataField>
-        </Field>
-        <Field Name="AllamountsareinLCYCaption">
-          <DataField>AllamountsareinLCYCaption</DataField>
-        </Field>
-        <Field Name="vendorsbalancesCaption">
-          <DataField>vendorsbalancesCaption</DataField>
-        </Field>
-        <Field Name="PostingDateCaption">
-          <DataField>PostingDateCaption</DataField>
-        </Field>
-        <Field Name="DocumentTypeCaption">
-          <DataField>DocumentTypeCaption</DataField>
-        </Field>
-        <Field Name="BalanceLCYCaption">
-          <DataField>BalanceLCYCaption</DataField>
-        </Field>
-        <Field Name="DueDateCaption">
-          <DataField>DueDateCaption</DataField>
-        </Field>
-        <Field Name="CreditCaption">
-          <DataField>CreditCaption</DataField>
-        </Field>
-        <Field Name="DebitCaption">
-          <DataField>DebitCaption</DataField>
-        </Field>
-        <Field Name="AdjofOpeningBalanceCaption">
-          <DataField>AdjofOpeningBalanceCaption</DataField>
-        </Field>
-        <Field Name="TotalLCYCaption">
-          <DataField>TotalLCYCaption</DataField>
-        </Field>
-        <Field Name="TotalAdjofOpeningBalCaption">
-          <DataField>TotalAdjofOpeningBalCaption</DataField>
-        </Field>
-        <Field Name="TotalLCYBeforePeriodCaption">
-          <DataField>TotalLCYBeforePeriodCaption</DataField>
-        </Field>
-        <Field Name="LiqTipoDocCaptionLbl">
-          <DataField>LiqTipoDocCaptionLbl</DataField>
-        </Field>
-        <Field Name="LiqNoDocCaptionLbl">
-          <DataField>LiqNoDocCaptionLbl</DataField>
-        </Field>
-        <Field Name="NoDocumentoCaptionLbl">
-          <DataField>NoDocumentoCaptionLbl</DataField>
-        </Field>
-        <Field Name="StartBalLCYAmtLCY">
-          <DataField>StartBalLCYAmtLCY</DataField>
-        </Field>
-        <Field Name="StartBalLCYAmtLCYFormat">
-          <DataField>StartBalLCYAmtLCYFormat</DataField>
-        </Field>
-        <Field Name="PostingDate_VendLedgEntry">
-          <DataField>PostingDate_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="DocType_VendLedgEntry">
-          <DataField>DocType_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="DocNo_VendLedgEntry">
-          <DataField>DocNo_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="VendLedgEntryDescp">
-          <DataField>VendLedgEntryDescp</DataField>
-        </Field>
-        <Field Name="VendCreditAmt">
-          <DataField>VendCreditAmt</DataField>
-        </Field>
-        <Field Name="VendCreditAmtFormat">
-          <DataField>VendCreditAmtFormat</DataField>
-        </Field>
-        <Field Name="VendDebitAmt">
-          <DataField>VendDebitAmt</DataField>
-        </Field>
-        <Field Name="VendDebitAmtFormat">
-          <DataField>VendDebitAmtFormat</DataField>
-        </Field>
-        <Field Name="VendBalLCY">
-          <DataField>VendBalLCY</DataField>
-        </Field>
-        <Field Name="VendBalLCYFormat">
-          <DataField>VendBalLCYFormat</DataField>
-        </Field>
-        <Field Name="VendRemainAmt">
-          <DataField>VendRemainAmt</DataField>
-        </Field>
-        <Field Name="VendRemainAmtFormat">
-          <DataField>VendRemainAmtFormat</DataField>
-        </Field>
-        <Field Name="VendEntryDueDate">
-          <DataField>VendEntryDueDate</DataField>
-        </Field>
-        <Field Name="EntryNo_VendLedgEntry">
-          <DataField>EntryNo_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="VendCurrencyCode">
-          <DataField>VendCurrencyCode</DataField>
-        </Field>
-        <Field Name="VendorNo_VendLedgEntry">
-          <DataField>VendorNo_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="GlbalDim1Code_VendLedgEntry">
-          <DataField>GlbalDim1Code_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="DateFilter_VendLedgEntry">
-          <DataField>DateFilter_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="VendorLedgerEntry_ExternalDocumentNo">
-          <DataField>VendorLedgerEntry_ExternalDocumentNo</DataField>
-        </Field>
-        <Field Name="AppliesToDocType_VendorLedgerEntry">
-          <DataField>AppliesToDocType_VendorLedgerEntry</DataField>
-        </Field>
-        <Field Name="AppliesToDocNo_VendorLedgerEntry">
-          <DataField>AppliesToDocNo_VendorLedgerEntry</DataField>
-        </Field>
-        <Field Name="DocNo1_VendLedgEntry">
-          <DataField>DocNo1_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="EntryType_DtdVendLedgEntry">
-          <DataField>EntryType_DtdVendLedgEntry</DataField>
-        </Field>
-        <Field Name="DebitCorrection">
-          <DataField>DebitCorrection</DataField>
-        </Field>
-        <Field Name="DebitCorrectionFormat">
-          <DataField>DebitCorrectionFormat</DataField>
-        </Field>
-        <Field Name="CreditCorrection">
-          <DataField>CreditCorrection</DataField>
-        </Field>
-        <Field Name="CreditCorrectionFormat">
-          <DataField>CreditCorrectionFormat</DataField>
-        </Field>
-        <Field Name="EntryType_DtdVendLedgEntry2">
-          <DataField>EntryType_DtdVendLedgEntry2</DataField>
-        </Field>
-        <Field Name="VendBalanceLCY1">
-          <DataField>VendBalanceLCY1</DataField>
-        </Field>
-        <Field Name="VendBalanceLCY1Format">
-          <DataField>VendBalanceLCY1Format</DataField>
-        </Field>
-        <Field Name="DebitAppRounding">
-          <DataField>DebitAppRounding</DataField>
-        </Field>
-        <Field Name="DebitAppRoundingFormat">
-          <DataField>DebitAppRoundingFormat</DataField>
-        </Field>
-        <Field Name="CreditApplicationRounding">
-          <DataField>CreditApplicationRounding</DataField>
-        </Field>
-        <Field Name="CreditApplicationRoundingFormat">
-          <DataField>CreditApplicationRoundingFormat</DataField>
-        </Field>
-        <Field Name="DocType_VendLedgEntry2">
-          <DataField>DocType_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="VendLEtrNo_DtdVendLedgEntry2">
-          <DataField>VendLEtrNo_DtdVendLedgEntry2</DataField>
-        </Field>
-        <Field Name="VendorName">
-          <DataField>VendorName</DataField>
-        </Field>
-        <Field Name="VendBalanceLCY2">
-          <DataField>VendBalanceLCY2</DataField>
-        </Field>
-        <Field Name="VendBalanceLCY2Format">
-          <DataField>VendBalanceLCY2Format</DataField>
-        </Field>
-        <Field Name="StartBalAdjLCY">
-          <DataField>StartBalAdjLCY</DataField>
-        </Field>
-        <Field Name="StartBalAdjLCYFormat">
-          <DataField>StartBalAdjLCYFormat</DataField>
-        </Field>
-        <Field Name="StartBalanceLCY1">
-          <DataField>StartBalanceLCY1</DataField>
-        </Field>
-        <Field Name="StartBalanceLCY1Format">
-          <DataField>StartBalanceLCY1Format</DataField>
-        </Field>
-        <Field Name="VendBalLCYDebitAmtDebitAmtAdj">
-          <DataField>VendBalLCYDebitAmtDebitAmtAdj</DataField>
-        </Field>
-        <Field Name="VendBalLCYDebitAmtDebitAmtAdjFormat">
-          <DataField>VendBalLCYDebitAmtDebitAmtAdjFormat</DataField>
-        </Field>
-        <Field Name="VendBalLCYCreditAmtCreditAmtAdj">
-          <DataField>VendBalLCYCreditAmtCreditAmtAdj</DataField>
-        </Field>
-        <Field Name="VendBalLCYCreditAmtCreditAmtAdjFormat">
-          <DataField>VendBalLCYCreditAmtCreditAmtAdjFormat</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -8529,4 +8183,350 @@ AABJCaIAAAAkJYgCAACQlCAKAABAUoIoAAAASQmiAAAAJCWIAgAAkJQgCgAAQFKCKAAAAEkJogAAACQl
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>c818643c-d6e6-42dc-8bec-d0ed6c4d6b22</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="lbFechaVto">
+          <DataField>lbFechaVto</DataField>
+        </Field>
+        <Field Name="lbDescription">
+          <DataField>lbDescription</DataField>
+        </Field>
+        <Field Name="lbImportePendiente">
+          <DataField>lbImportePendiente</DataField>
+        </Field>
+        <Field Name="FiltrosMovProveedor">
+          <DataField>FiltrosMovProveedor</DataField>
+        </Field>
+        <Field Name="DateFilter">
+          <DataField>DateFilter</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="TableFilter">
+          <DataField>TableFilter</DataField>
+        </Field>
+        <Field Name="VendFilter">
+          <DataField>VendFilter</DataField>
+        </Field>
+        <Field Name="PageGroupNo">
+          <DataField>PageGroupNo</DataField>
+        </Field>
+        <Field Name="PrintAmountsInLCY">
+          <DataField>PrintAmountsInLCY</DataField>
+        </Field>
+        <Field Name="ExcludeBalanceOnly">
+          <DataField>ExcludeBalanceOnly</DataField>
+        </Field>
+        <Field Name="PrintOnlyOnePerPage">
+          <DataField>PrintOnlyOnePerPage</DataField>
+        </Field>
+        <Field Name="RemainingAmtCaption">
+          <DataField>RemainingAmtCaption</DataField>
+        </Field>
+        <Field Name="No_Vend">
+          <DataField>No_Vend</DataField>
+        </Field>
+        <Field Name="Name_Vend">
+          <DataField>Name_Vend</DataField>
+        </Field>
+        <Field Name="PhoneNo_Vend">
+          <DataField>PhoneNo_Vend</DataField>
+        </Field>
+        <Field Name="StartBalanceLCY">
+          <DataField>StartBalanceLCY</DataField>
+        </Field>
+        <Field Name="StartBalanceLCYFormat">
+          <DataField>StartBalanceLCYFormat</DataField>
+        </Field>
+        <Field Name="StartVendDebitAmtAdj">
+          <DataField>StartVendDebitAmtAdj</DataField>
+        </Field>
+        <Field Name="StartVendDebitAmtAdjFormat">
+          <DataField>StartVendDebitAmtAdjFormat</DataField>
+        </Field>
+        <Field Name="StartVendCreditAmtAdj">
+          <DataField>StartVendCreditAmtAdj</DataField>
+        </Field>
+        <Field Name="StartVendCreditAmtAdjFormat">
+          <DataField>StartVendCreditAmtAdjFormat</DataField>
+        </Field>
+        <Field Name="VendBalanceLCY">
+          <DataField>VendBalanceLCY</DataField>
+        </Field>
+        <Field Name="VendBalanceLCYFormat">
+          <DataField>VendBalanceLCYFormat</DataField>
+        </Field>
+        <Field Name="BalLBalAdjLVendLedgEntryAmtLCY">
+          <DataField>BalLBalAdjLVendLedgEntryAmtLCY</DataField>
+        </Field>
+        <Field Name="BalLBalAdjLVendLedgEntryAmtLCYFormat">
+          <DataField>BalLBalAdjLVendLedgEntryAmtLCYFormat</DataField>
+        </Field>
+        <Field Name="VendDebitAmtDebitCorrDebit">
+          <DataField>VendDebitAmtDebitCorrDebit</DataField>
+        </Field>
+        <Field Name="VendDebitAmtDebitCorrDebitFormat">
+          <DataField>VendDebitAmtDebitCorrDebitFormat</DataField>
+        </Field>
+        <Field Name="StartBalanceLCYStartBalAdjLCY">
+          <DataField>StartBalanceLCYStartBalAdjLCY</DataField>
+        </Field>
+        <Field Name="StartBalanceLCYStartBalAdjLCYFormat">
+          <DataField>StartBalanceLCYStartBalAdjLCYFormat</DataField>
+        </Field>
+        <Field Name="VendCreditAmtCreditCredit">
+          <DataField>VendCreditAmtCreditCredit</DataField>
+        </Field>
+        <Field Name="VendCreditAmtCreditCreditFormat">
+          <DataField>VendCreditAmtCreditCreditFormat</DataField>
+        </Field>
+        <Field Name="StartVendDebitAmtTotal">
+          <DataField>StartVendDebitAmtTotal</DataField>
+        </Field>
+        <Field Name="StartVendDebitAmtTotalFormat">
+          <DataField>StartVendDebitAmtTotalFormat</DataField>
+        </Field>
+        <Field Name="StartVendCreditAmtTotal">
+          <DataField>StartVendCreditAmtTotal</DataField>
+        </Field>
+        <Field Name="StartVendCreditAmtTotalFormat">
+          <DataField>StartVendCreditAmtTotalFormat</DataField>
+        </Field>
+        <Field Name="CreditAppRound">
+          <DataField>CreditAppRound</DataField>
+        </Field>
+        <Field Name="CreditAppRoundFormat">
+          <DataField>CreditAppRoundFormat</DataField>
+        </Field>
+        <Field Name="DebitAppRound">
+          <DataField>DebitAppRound</DataField>
+        </Field>
+        <Field Name="DebitAppRoundFormat">
+          <DataField>DebitAppRoundFormat</DataField>
+        </Field>
+        <Field Name="CreditCorrect">
+          <DataField>CreditCorrect</DataField>
+        </Field>
+        <Field Name="CreditCorrectFormat">
+          <DataField>CreditCorrectFormat</DataField>
+        </Field>
+        <Field Name="DebitCorrect">
+          <DataField>DebitCorrect</DataField>
+        </Field>
+        <Field Name="DebitCorrectFormat">
+          <DataField>DebitCorrectFormat</DataField>
+        </Field>
+        <Field Name="DateFilter1_Vend">
+          <DataField>DateFilter1_Vend</DataField>
+        </Field>
+        <Field Name="GlobalDim2Filter_Vend">
+          <DataField>GlobalDim2Filter_Vend</DataField>
+        </Field>
+        <Field Name="VendorDetailTrialBalCaption">
+          <DataField>VendorDetailTrialBalCaption</DataField>
+        </Field>
+        <Field Name="PageNoCaption">
+          <DataField>PageNoCaption</DataField>
+        </Field>
+        <Field Name="AllamountsareinLCYCaption">
+          <DataField>AllamountsareinLCYCaption</DataField>
+        </Field>
+        <Field Name="vendorsbalancesCaption">
+          <DataField>vendorsbalancesCaption</DataField>
+        </Field>
+        <Field Name="PostingDateCaption">
+          <DataField>PostingDateCaption</DataField>
+        </Field>
+        <Field Name="DocumentTypeCaption">
+          <DataField>DocumentTypeCaption</DataField>
+        </Field>
+        <Field Name="BalanceLCYCaption">
+          <DataField>BalanceLCYCaption</DataField>
+        </Field>
+        <Field Name="DueDateCaption">
+          <DataField>DueDateCaption</DataField>
+        </Field>
+        <Field Name="CreditCaption">
+          <DataField>CreditCaption</DataField>
+        </Field>
+        <Field Name="DebitCaption">
+          <DataField>DebitCaption</DataField>
+        </Field>
+        <Field Name="AdjofOpeningBalanceCaption">
+          <DataField>AdjofOpeningBalanceCaption</DataField>
+        </Field>
+        <Field Name="TotalLCYCaption">
+          <DataField>TotalLCYCaption</DataField>
+        </Field>
+        <Field Name="TotalAdjofOpeningBalCaption">
+          <DataField>TotalAdjofOpeningBalCaption</DataField>
+        </Field>
+        <Field Name="TotalLCYBeforePeriodCaption">
+          <DataField>TotalLCYBeforePeriodCaption</DataField>
+        </Field>
+        <Field Name="LiqTipoDocCaptionLbl">
+          <DataField>LiqTipoDocCaptionLbl</DataField>
+        </Field>
+        <Field Name="LiqNoDocCaptionLbl">
+          <DataField>LiqNoDocCaptionLbl</DataField>
+        </Field>
+        <Field Name="NoDocumentoCaptionLbl">
+          <DataField>NoDocumentoCaptionLbl</DataField>
+        </Field>
+        <Field Name="StartBalLCYAmtLCY">
+          <DataField>StartBalLCYAmtLCY</DataField>
+        </Field>
+        <Field Name="StartBalLCYAmtLCYFormat">
+          <DataField>StartBalLCYAmtLCYFormat</DataField>
+        </Field>
+        <Field Name="PostingDate_VendLedgEntry">
+          <DataField>PostingDate_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="DocType_VendLedgEntry">
+          <DataField>DocType_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="DocNo_VendLedgEntry">
+          <DataField>DocNo_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="VendLedgEntryDescp">
+          <DataField>VendLedgEntryDescp</DataField>
+        </Field>
+        <Field Name="VendCreditAmt">
+          <DataField>VendCreditAmt</DataField>
+        </Field>
+        <Field Name="VendCreditAmtFormat">
+          <DataField>VendCreditAmtFormat</DataField>
+        </Field>
+        <Field Name="VendDebitAmt">
+          <DataField>VendDebitAmt</DataField>
+        </Field>
+        <Field Name="VendDebitAmtFormat">
+          <DataField>VendDebitAmtFormat</DataField>
+        </Field>
+        <Field Name="VendBalLCY">
+          <DataField>VendBalLCY</DataField>
+        </Field>
+        <Field Name="VendBalLCYFormat">
+          <DataField>VendBalLCYFormat</DataField>
+        </Field>
+        <Field Name="VendRemainAmt">
+          <DataField>VendRemainAmt</DataField>
+        </Field>
+        <Field Name="VendRemainAmtFormat">
+          <DataField>VendRemainAmtFormat</DataField>
+        </Field>
+        <Field Name="VendEntryDueDate">
+          <DataField>VendEntryDueDate</DataField>
+        </Field>
+        <Field Name="EntryNo_VendLedgEntry">
+          <DataField>EntryNo_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="VendCurrencyCode">
+          <DataField>VendCurrencyCode</DataField>
+        </Field>
+        <Field Name="VendorNo_VendLedgEntry">
+          <DataField>VendorNo_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="GlbalDim1Code_VendLedgEntry">
+          <DataField>GlbalDim1Code_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="DateFilter_VendLedgEntry">
+          <DataField>DateFilter_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="VendorLedgerEntry_ExternalDocumentNo">
+          <DataField>VendorLedgerEntry_ExternalDocumentNo</DataField>
+        </Field>
+        <Field Name="AppliesToDocType_VendorLedgerEntry">
+          <DataField>AppliesToDocType_VendorLedgerEntry</DataField>
+        </Field>
+        <Field Name="AppliesToDocNo_VendorLedgerEntry">
+          <DataField>AppliesToDocNo_VendorLedgerEntry</DataField>
+        </Field>
+        <Field Name="DocNo1_VendLedgEntry">
+          <DataField>DocNo1_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="EntryType_DtdVendLedgEntry">
+          <DataField>EntryType_DtdVendLedgEntry</DataField>
+        </Field>
+        <Field Name="DebitCorrection">
+          <DataField>DebitCorrection</DataField>
+        </Field>
+        <Field Name="DebitCorrectionFormat">
+          <DataField>DebitCorrectionFormat</DataField>
+        </Field>
+        <Field Name="CreditCorrection">
+          <DataField>CreditCorrection</DataField>
+        </Field>
+        <Field Name="CreditCorrectionFormat">
+          <DataField>CreditCorrectionFormat</DataField>
+        </Field>
+        <Field Name="EntryType_DtdVendLedgEntry2">
+          <DataField>EntryType_DtdVendLedgEntry2</DataField>
+        </Field>
+        <Field Name="VendBalanceLCY1">
+          <DataField>VendBalanceLCY1</DataField>
+        </Field>
+        <Field Name="VendBalanceLCY1Format">
+          <DataField>VendBalanceLCY1Format</DataField>
+        </Field>
+        <Field Name="DebitAppRounding">
+          <DataField>DebitAppRounding</DataField>
+        </Field>
+        <Field Name="DebitAppRoundingFormat">
+          <DataField>DebitAppRoundingFormat</DataField>
+        </Field>
+        <Field Name="CreditApplicationRounding">
+          <DataField>CreditApplicationRounding</DataField>
+        </Field>
+        <Field Name="CreditApplicationRoundingFormat">
+          <DataField>CreditApplicationRoundingFormat</DataField>
+        </Field>
+        <Field Name="DocType_VendLedgEntry2">
+          <DataField>DocType_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="VendLEtrNo_DtdVendLedgEntry2">
+          <DataField>VendLEtrNo_DtdVendLedgEntry2</DataField>
+        </Field>
+        <Field Name="VendorName">
+          <DataField>VendorName</DataField>
+        </Field>
+        <Field Name="VendBalanceLCY2">
+          <DataField>VendBalanceLCY2</DataField>
+        </Field>
+        <Field Name="VendBalanceLCY2Format">
+          <DataField>VendBalanceLCY2Format</DataField>
+        </Field>
+        <Field Name="StartBalAdjLCY">
+          <DataField>StartBalAdjLCY</DataField>
+        </Field>
+        <Field Name="StartBalAdjLCYFormat">
+          <DataField>StartBalAdjLCYFormat</DataField>
+        </Field>
+        <Field Name="StartBalanceLCY1">
+          <DataField>StartBalanceLCY1</DataField>
+        </Field>
+        <Field Name="StartBalanceLCY1Format">
+          <DataField>StartBalanceLCY1Format</DataField>
+        </Field>
+        <Field Name="VendBalLCYDebitAmtDebitAmtAdj">
+          <DataField>VendBalLCYDebitAmtDebitAmtAdj</DataField>
+        </Field>
+        <Field Name="VendBalLCYDebitAmtDebitAmtAdjFormat">
+          <DataField>VendBalLCYDebitAmtDebitAmtAdjFormat</DataField>
+        </Field>
+        <Field Name="VendBalLCYCreditAmtCreditAmtAdj">
+          <DataField>VendBalLCYCreditAmtCreditAmtAdj</DataField>
+        </Field>
+        <Field Name="VendBalLCYCreditAmtCreditAmtAdjFormat">
+          <DataField>VendBalLCYCreditAmtCreditAmtAdjFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

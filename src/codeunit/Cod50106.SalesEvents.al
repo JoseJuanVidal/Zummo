@@ -1162,4 +1162,30 @@ codeunit 50106 "SalesEvents"
                 end;
         end;
     end;
+
+    // Ticket INTRASTAT que se incluya los envios a paises union europea, en INTRASTAT, aunque direccion envio sea opción personalizada, no pone pais mov producto
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeGetCountryCode', '', True, True)]
+
+
+    local procedure SalesPostOnBeforeGetCountryCode(SalesHeader: Record "Sales Header"; SalesLine: Record "Sales Line"; VAR CountryRegionCode: Code[10]; VAR IsHandled: Boolean)
+    Var
+        SalesShipmentHeader: Record "Sales Shipment Header";
+    begin
+        if SalesLine."Shipment No." <> '' then begin
+            SalesShipmentHeader.GET(SalesLine."Shipment No.");
+            if SalesShipmentHeader."Ship-to Code" = '' then
+                if SalesHeader."Ship-to Country/Region Code" = SalesShipmentHeader."Ship-to Country/Region Code" then
+                    exit;
+            CountryRegionCode := SalesShipmentHeader."Ship-to Country/Region Code";
+        end else begin
+            if SalesHeader."Ship-to Code" = '' then
+                if SalesHeader."Ship-to Country/Region Code" = SalesShipmentHeader."Ship-to Country/Region Code" then
+                    exit;
+            CountryRegionCode := SalesHeader."Ship-to Country/Region Code";
+        end;
+        IsHandled := true;
+
+    end;
+
+
 }
