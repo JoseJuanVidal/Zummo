@@ -13,7 +13,7 @@ report 50102 "PedidoCliente"
         {
             DataItemTableView = SORTING("Document Type", "No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
-            RequestFilterHeading = 'Sales Order';
+            RequestFilterHeading = 'Pedido de Venta';
             column(Payment_Discount__; "Payment Discount %")
             {
 

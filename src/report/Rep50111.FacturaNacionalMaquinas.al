@@ -1012,6 +1012,7 @@ report 50111 "FacturaNacionalMaquinas"
                             ###############################################################################################*/
                         dataitem("Assemble-to-Order Link"; "Posted Assemble-to-Order Link")
                         {
+                            DataItemTableView = sorting("Assembly Document Type");
                             column(AssLink_Document_No_; "Document No.")
                             {
                             }
@@ -1024,15 +1025,16 @@ report 50111 "FacturaNacionalMaquinas"
                             dataitem("Assembly Header"; "Posted Assembly Header")
                             {
                                 DataItemLink = "No." = field("Assembly Document No.");
-
-                                column(AssHeader_No_; "No.")
+                                DataItemTableView = sorting("No.");
+                                column(AssHeader_No_;
+                                "No.")
                                 {
                                 }
 
                                 dataitem("Assembly Line"; "Posted Assembly Line")
                                 {
                                     DataItemLink = "Document No." = field("No.");
-
+                                    DataItemTableView = sorting("Document No.");
                                     column(Assembly_No; "Document No.")
                                     {
                                     }

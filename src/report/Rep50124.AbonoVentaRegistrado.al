@@ -10,9 +10,11 @@ report 50124 "AbonoVentaRegistrado"
     {
         dataitem("Sales Cr.Memo Header"; "Sales Cr.Memo Header")
         {
-            DataItemTableView = SORTING ("No.");
+
+
+            DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
-            RequestFilterHeading = 'Posted Sales Cr. Memo';
+            RequestFilterHeading = 'Histórico abonos venta';
             column(BancoBicSwift_Lbl; BancoBicSwift_Lbl) { }
             column(codigoDivisa; codigoDivisa) { }
             column(txtcomentaires; txtcomentaires)
@@ -376,10 +378,10 @@ report 50124 "AbonoVentaRegistrado"
             //fin SOTHIS EBR 070920 id 159231            
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -610,7 +612,7 @@ report 50124 "AbonoVentaRegistrado"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Sales Cr.Memo Header";
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -658,9 +660,9 @@ report 50124 "AbonoVentaRegistrado"
 
                     dataitem("Sales Cr.Memo Line"; "Sales Cr.Memo Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No.");
+                        DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Cr.Memo Header";
-                        DataItemTableView = SORTING ("Document No.", "Line No.");
+                        DataItemTableView = SORTING("Document No.", "Line No.");
                         column(NumAlbaran; "Return Receipt No.")
                         {
 
@@ -859,7 +861,7 @@ report 50124 "AbonoVentaRegistrado"
                         }
                         dataitem("Sales Shipment Buffer"; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(PostingDate_SalesShipmentBuffer; Format(SalesShipmentBuffer."Posting Date"))
                             {
                             }
@@ -889,7 +891,7 @@ report 50124 "AbonoVentaRegistrado"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                             column(DimText1; DimText)
                             {
                             }
@@ -935,7 +937,7 @@ report 50124 "AbonoVentaRegistrado"
                         }
                         dataitem(AsmLoop; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(TempPostedAsmLineUOMCode; GetUOMText(TempPostedAsmLine."Unit of Measure Code"))
                             {
                             }
@@ -985,6 +987,7 @@ report 50124 "AbonoVentaRegistrado"
                             ###############################################################################################*/
                         dataitem("Assemble-to-Order Link"; "Posted Assemble-to-Order Link")
                         {
+                            DataItemTableView = sorting("Assembly Document Type");
                             column(AssLink_Document_No_; "Document No.")
                             {
                             }
@@ -996,7 +999,8 @@ report 50124 "AbonoVentaRegistrado"
                             }
                             dataitem("Assembly Header"; "Posted Assembly Header")
                             {
-                                DataItemLink = "No." = field ("Assembly Document No.");
+                                DataItemLink = "No." = field("Assembly Document No.");
+                                DataItemTableView = sorting("No.");
 
                                 column(AssHeader_No_; "No.")
                                 {
@@ -1004,7 +1008,8 @@ report 50124 "AbonoVentaRegistrado"
 
                                 dataitem("Assembly Line"; "Posted Assembly Line")
                                 {
-                                    DataItemLink = "Document No." = field ("No.");
+                                    DataItemLink = "Document No." = field("No.");
+                                    DataItemTableView = Sorting("Document No.");
 
                                     column(Assembly_No; "Document No.")
                                     {
@@ -1021,8 +1026,9 @@ report 50124 "AbonoVentaRegistrado"
 
                                     dataitem(SerieEnsamblado; "Item Ledger Entry")
                                     {
-                                        DataItemLink = "Document No." = field ("Document No."), "Document Line No." = field ("Line No.");
+                                        DataItemLink = "Document No." = field("Document No."), "Document Line No." = field("Line No.");
 
+                                        DataItemTableView = sorting("Document No.");
                                         column(Item_No_; "Item No.")
                                         {
 
@@ -1057,7 +1063,7 @@ report 50124 "AbonoVentaRegistrado"
 
                         dataitem(Lotes; Integer)
                         {
-                            DataItemTableView = sorting (number);
+                            DataItemTableView = sorting(number);
                             column(NoLote_RecMemLotes; RecMemLotes.NoLote) { }
                             column(NoSerie_RecMemLotes; RecMemLotes.NoSerie) { }
                             trigger OnPreDataItem()
@@ -1223,7 +1229,7 @@ report 50124 "AbonoVentaRegistrado"
                     }
                     dataitem(VATCounter; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VATAmountLineVATBase; VATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Cr.Memo Line".GetCurrencyCode();
@@ -1340,7 +1346,7 @@ report 50124 "AbonoVentaRegistrado"
                     }
                     dataitem(VATClauseEntryCounter; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VATClauseVATIdentifier; VATAmountLine."VAT Identifier")
                         {
                         }
@@ -1384,7 +1390,7 @@ report 50124 "AbonoVentaRegistrado"
                     }
                     dataitem(VatCounterLCY; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VALSpecLCYHeader; VALSpecLCYHeader)
                         {
                         }
@@ -1439,11 +1445,11 @@ report 50124 "AbonoVentaRegistrado"
 
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(SelltoCustNo_SalesInvHdr; "Sales Cr.Memo Header"."Sell-to Customer No.")
                         {
                         }
@@ -1461,7 +1467,7 @@ report 50124 "AbonoVentaRegistrado"
                     }
                     dataitem(LineFee; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) ORDER(Ascending) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number = FILTER(1 ..));
                         column(LineFeeCaptionLbl; TempLineFeeNoteOnReportHist.ReportText)
                         {
                         }
@@ -1481,7 +1487,7 @@ report 50124 "AbonoVentaRegistrado"
                     }
                     dataitem(DesglosesIVA; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) ORDER(Ascending) WHERE (Number = const (1));
+                        DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number = const(1));
                         column(nBaseActual1; nBaseActual[1]) { }
                         column(nBaseActual2; nBaseActual[2]) { }
                         column(nBaseActual3; nBaseActual[3]) { }
