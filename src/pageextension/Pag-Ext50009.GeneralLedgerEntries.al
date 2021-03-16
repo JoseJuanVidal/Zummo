@@ -65,6 +65,42 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                         CurrPage.Update();
                 end;
             }
+            action("CambiarDelectDimensiones")
+            {
+                ApplicationArea = All;
+                Image = ChangeDimensions;
+                Caption = 'Change Dimensions Multiple', comment = 'ESP="Cambiar Dimensiones Multiple"';
+                ToolTip = 'Change the dimensions of the selected entries', comment = 'ESP="Permite cambiar la dimensione de los movimientos seleccionados"';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Category4;
+
+                trigger OnAction()
+                var
+                    pageDim: Page "Change Dim CECO";
+                    GLEntry: Record "G/L Entry";
+                    recDimTemp: Record "Dimension Set Entry" temporary;
+                    funciones: Codeunit Funciones;
+                    intDimSetId: Integer;
+                    dimGlobal1: Code[20];
+                    dimGlobal2: Code[20];
+                    Text000: Label '¿Desea cambiar los %1 movimientos a CECO %2?', comment = 'ESP="¿Desea cambiar los %1 movimientos a CECO %2?"';
+                begin
+                    CurrPage.SetSelectionFilter(GLEntry);
+                    if GLEntry.Count = 0 then
+                        exit;
+                    Clear(pageDim);
+                    pageDim.LookupMode(true);
+
+                    if pageDim.RunModal() = Action::LookupOK then begin
+                        dimGlobal1 := pageDim.GetCECOCOde();
+                        if Confirm(Text000, false, GLEntry.Count, dimGlobal1) then begin
+                            Funciones.ChangeDimensionCECOGLEntries(GLEntry, dimGlobal1);
+                            Message('Proceso finalizado');
+                        end;
+                    end;
+                end;
+            }
         }
     }
 

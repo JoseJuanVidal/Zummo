@@ -771,7 +771,9 @@ codeunit 50111 "Funciones"
                 GenJnlLine."Journal Template Name" := JournalTemplateName;
                 GenJnlLine."Line No." := Linea;
                 GenJnlLine."Posting Date" := Workdate;
-                GenJnlLine."Document No." := CopyStr(StrSubstNo(text001, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)), 1, MaxStrLen(GenJnlLine."Document No."));
+                GenJnlLine.Insert();
+                //GenJnlLine."Document No." := CopyStr(StrSubstNo(text001, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)), 1, MaxStrLen(GenJnlLine."Document No."));
+                GenJnlLine."External Document No." := CopyStr(StrSubstNo(text001, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)), 1, MaxStrLen(GenJnlLine."Document No."));
                 GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
                 GenJnlLine.Validate("Account No.", Cuenta);
                 GenJnlLine.Description := Concepto;
@@ -788,9 +790,75 @@ codeunit 50111 "Funciones"
                     GenJnlLine.Validate("Shortcut Dimension 1 Code", DimValue.Code);
                     //GenJnlLine.Validate("Shortcut Dimension 2 Code", 
                 end;
-                GenJnlLine.Insert();
+                GenJnlLine.Modify();
                 Linea += 10000;
             end;
         END;
+    end;
+
+    procedure ChangeDimensionCECOGLEntries(var GLEntry: Record "G/L Entry"; DimGlobal1: Code[20])
+    var
+        GLSetup: Record "General Ledger Setup";
+        recNewDimSetEntry: record "Dimension Set Entry" temporary;
+        cduDimMgt: Codeunit DimensionManagement;
+        cduCambioDim: Codeunit CambioDimensiones;
+        GlobalDim1: code[20];
+        intDimSetId: Integer;
+    begin
+        GLSetup.Get;
+        // recorremos los movimientos de contabilidad seleccionados
+        if GLEntry.findset() then
+            repeat
+                recNewDimSetEntry.Reset();
+                recNewDimSetEntry.DeleteAll();
+                // recogemos los valores del dimension SET y cambiamos el CECO por el nuevo CECO
+                GetDimSetEntry(recNewDimSetEntry, GLEntry."Dimension Set ID", DimGlobal1);
+
+                recNewDimSetEntry.Reset();
+                if not recNewDimSetEntry.IsEmpty() then begin
+                    Clear(cduDimMgt);
+                    intDimSetId := cduDimMgt.GetDimensionSetID(recNewDimSetEntry);
+
+                    // Obtengo dimensiones globales y actualizamos campo de Dimension global 1
+                    clear(cduCambioDim);
+                    GlobalDim1 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 1 Code", intDimSetId);
+
+                    GlEntry."Dimension Set ID" := intDimSetId;
+                    GlEntry."Global Dimension 1 Code" := DimGlobal1;
+                    GlEntry.Modify();
+                end;
+            Until GLEntry.next() = 0;
+    end;
+
+    local procedure GetDimSetEntry(var NewDimSetEntry: record "Dimension Set Entry"; pIntDimension: Integer; DimGlobal1: Code[20])
+    var
+        GLSetup: Record "General Ledger Setup";
+        recDimSetEntry: Record "Dimension Set Entry";
+        DimensionValue: record "Dimension Value";
+        AddedCECO: Boolean;
+    begin
+        GLSetup.Get;
+        DimensionValue.SetRange("Dimension Code", GLSetup."Global Dimension 1 Code");
+        DimensionValue.SetRange(Code, DimGlobal1);
+        DimensionValue.FindSet();
+        recDimSetEntry.Reset();
+        recDimSetEntry.SetRange("Dimension Set ID", pIntDimension);
+        if recDimSetEntry.FindSet() then
+            repeat
+                NewDimSetEntry := recDimSetEntry;
+                if NewDimSetEntry."Dimension Code" = GLSetup."Global Dimension 1 Code" then begin
+                    NewDimSetEntry."Dimension Value Code" := DimGlobal1;
+                    NewDimSetEntry."Dimension Value ID" := DimensionValue."Dimension Value ID";
+                    AddedCECO := true;
+                end;
+                NewDimSetEntry.Insert();
+            until recDimSetEntry.Next() = 0;
+        if not AddedCECO then begin
+            NewDimSetEntry."Dimension Set ID" := pIntDimension;
+            NewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
+            NewDimSetEntry."Dimension Value Code" := DimGlobal1;
+            NewDimSetEntry."Dimension Value ID" := DimensionValue."Dimension Value ID";
+            NewDimSetEntry.Insert();
+        end;
     end;
 }

@@ -4727,6 +4727,18 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Sales Order btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2736406672 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cambiar Dimensiones Multiple</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Dimensiones Multiple"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Change Dim CECO - Property Caption</note>
+          <target>Cambiar Dimensiones Multiple</target>
+        </trans-unit>
+        <trans-unit id="Page 2736406672 - Control 1157644979 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CECO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CECO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Change Dim CECO - Control CECOValue - Property Caption</note>
+          <target>CECO</target>
+        </trans-unit>
         <trans-unit id="Page 2443984010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Activities</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actividades CRM"</note>
@@ -15891,6 +15903,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDimensiones - Property ToolTip</note>
           <target>Permite cambiar las dimensiones del movimiento seleccionado</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Change Dimensions Multiple</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Dimensiones Multiple"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Property Caption</note>
+          <target>Cambiar Dimensiones Multiple</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Change the dimensions of the selected entries</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Permite cambiar la dimensione de los movimientos seleccionados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Property ToolTip</note>
+          <target>Permite cambiar la dimensione de los movimientos seleccionados</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Method 1377591017 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
+          <source>¿Desea cambiar los %1 movimientos a CECO %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar los %1 movimientos a CECO %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Method OnAction - NamedType Text000</note>
+          <target>¿Desea cambiar los %1 movimientos a CECO %2?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Control 4216503346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Available Quantity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad disponible"</note>
@@ -18664,6 +18694,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Liquidado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Liquidado_btc - Property Caption</note>
           <target>Liquidado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4220596153 - Field 2308462143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>Detalle</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Detalle"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Global Dimension 3 Code - Property Caption</note>
+          <target>Detalle</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4220596153 - Field 2453785066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>Partida</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Partida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Global Dimension 8 Code - Property Caption</note>
+          <target>Partida</target>
         </trans-unit>
         <trans-unit id="TableExtension 886905087 - Field 3243902948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 399911519">
           <source>Price</source>
