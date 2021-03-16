@@ -678,11 +678,15 @@ codeunit 50111 "Funciones"
         DimValue: Record "Dimension Value";
         NVInStream: InStream;
         GenJnlLine: record "Gen. Journal Line";
+        GenJournalBatch: record "Gen. Journal Batch";
+        SeriesNo: Record "No. Series";
         FileMngt: codeunit "File Management";
+        SeriesMGt: codeunit NoSeriesManagement;
         FileName: Text;
         Fichero: File;
         txtRecord: text;
         tmpTexto: Text;
+        DocNo: text;
         Cuenta: Text;
         DebeHaber: Text;
         Concepto: text;
@@ -710,6 +714,12 @@ codeunit 50111 "Funciones"
             Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
         else
             exit;
+
+        // miramos si hay serie y los ponemos
+        GenJournalBatch.SetRange("Journal Template Name", JournalTemplateName);
+        GenJournalBatch.SetRange(name, JournalBatchName);
+        GenJournalBatch.FindSet();
+        DocNo := SeriesMGt.GetNextNo(GenJournalBatch."No. Series", WorkDate(), false);
 
         ExcelBuffer.Reset();
         ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
@@ -772,7 +782,7 @@ codeunit 50111 "Funciones"
                 GenJnlLine."Line No." := Linea;
                 GenJnlLine."Posting Date" := Workdate;
                 GenJnlLine.Insert();
-                //GenJnlLine."Document No." := CopyStr(StrSubstNo(text001, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)), 1, MaxStrLen(GenJnlLine."Document No."));
+                GenJnlLine."Document No." := DocNo;
                 GenJnlLine."External Document No." := CopyStr(StrSubstNo(text001, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)), 1, MaxStrLen(GenJnlLine."Document No."));
                 GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
                 GenJnlLine.Validate("Account No.", Cuenta);
