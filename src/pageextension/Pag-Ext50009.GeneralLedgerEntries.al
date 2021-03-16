@@ -11,7 +11,7 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                 ApplicationArea = All;
             }
 
-            field(IdFactAbno_btc; IdFactAbno_btc)
+            field("IdFactAbno_btc"; IdFactAbno_btc)
             {
                 ApplicationArea = All;
             }
@@ -20,7 +20,15 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
             {
                 ApplicationArea = All;
             }
-            field(NombreClienteProv; NombreClienteProv)
+            field("NombreClienteProv"; NombreClienteProv)
+            {
+                ApplicationArea = ALL;
+            }
+            field("Detalle"; "Global Dimension 3 Code")
+            {
+                ApplicationArea = ALL;
+            }
+            field("Partida"; "Global Dimension 8 Code")
             {
                 ApplicationArea = ALL;
             }
@@ -31,7 +39,7 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
     {
         addafter(Dimensions)
         {
-            action(CambiarDimensiones)
+            action("CambiarDimensiones")
             {
                 ApplicationArea = All;
                 Image = ChangeDimensions;

@@ -17573,6 +17573,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Liquidado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Liquidado_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4220596153 - Field 2308462143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>Detalle</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Detalle"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Global Dimension 3 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4220596153 - Field 2453785066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>Partida</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Partida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Global Dimension 8 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 886905087 - Field 3243902948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 399911519">
           <source>Price</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precio"</note>
