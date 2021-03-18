@@ -82,6 +82,18 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 image = ViewComments;
                 RunObject = Page "Lista comentarios predefinidos";
             }
+            action(ponerClienteReporting)
+            {
+                ApplicationArea = all;
+                Image = Customer;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Funciones;
+                begin
+                    Funciones.ChangeSalesHeader;
+                end;
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 codeunit 50111 "Funciones"
 {
-    Permissions = tabledata "Item Ledger Entry" = rm, tabledata "Sales Invoice Header" = rm;
+    Permissions = tabledata "Item Ledger Entry" = rm, tabledata "Sales Invoice Header" = rm, tabledata "G/L Entry" = rmid;
     TableNo = "Sales Header";
 
 
@@ -870,5 +870,43 @@ codeunit 50111 "Funciones"
             NewDimSetEntry."Dimension Value ID" := DimensionValue."Dimension Value ID";
             NewDimSetEntry.Insert();
         end;
+    end;
+
+    procedure ChangeSalesHeader()
+    var
+        Customer: Record Customer;
+        SalesHeader: Record "Sales Header";
+        Shipment: record "Sales Shipment Header";
+        Invoice: record "Sales Invoice Header";
+        Abono: record "Sales Cr.Memo Header";
+        Archivo: record "Sales Header Archive";
+        Devo: record "Return Shipment Header";
+        ventana: Dialog;
+    begin
+        ventana.Open('Tipo #1####################\No #2#################');
+        SalesHeader.SetFilter("Document Type", '%1|%2', SalesHeader."Document Type"::Order, SalesHeader."Document Type"::"Return Order");
+        if SalesHeader.findset() then
+            repeat
+                IF Customer.Get(SalesHeader."Sell-to Customer No.") then begin
+                    if Customer.ClienteReporting_btc <> '' then begin
+                        ventana.Update(1, SalesHeader."Document Type");
+                        ventana.Update(2, SalesHeader."No.");
+                        SalesHeader.ClienteReporting_btc := Customer.ClienteReporting_btc;
+                        SalesHeader.Modify();
+                        Shipment.SetRange("Order No.", SalesHeader."No.");
+                        Shipment.ModifyAll(ClienteReporting_btc, Customer.ClienteReporting_btc);
+                        Invoice.SetRange("Order No.", SalesHeader."No.");
+                        Invoice.ModifyAll(ClienteReporting_btc, Customer.ClienteReporting_btc);
+                        Abono.SetRange("Return Order No.", SalesHeader."No.");
+                        Abono.ModifyAll(ClienteReporting_btc, Customer.ClienteReporting_btc);
+                        Devo.SetRange("Return Order No.", SalesHeader."No.");
+                        Devo.ModifyAll(ClienteReporting_btc, Customer.ClienteReporting_btc);
+                        Archivo.SetRange("Document Type", SalesHeader."Document Type");
+                        Archivo.SetRange("No.", SalesHeader."No.");
+                        Archivo.ModifyAll(ClienteReporting_btc, Customer.ClienteReporting_btc);
+                    end;
+                end;
+            Until SalesHeader.next() = 0;
+        Message('Fin proceso');
     end;
 }

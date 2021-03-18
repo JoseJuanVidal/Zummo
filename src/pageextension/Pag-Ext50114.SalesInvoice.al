@@ -5,6 +5,10 @@ pageextension 50114 "SalesInvoice" extends "Sales Invoice"
 
         addafter("Work Description")
         {
+            field("Posting No. Series"; "Posting No. Series")
+            {
+                ApplicationArea = all;
+            }
             field(CentralCompras_btc; CentralCompras_btc)
             {
                 ApplicationArea = all;
