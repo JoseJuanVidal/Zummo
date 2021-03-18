@@ -1,6 +1,8 @@
 codeunit 50111 "Funciones"
 {
-    Permissions = tabledata "Item Ledger Entry" = rm, tabledata "Sales Invoice Header" = rm, tabledata "G/L Entry" = rmid;
+    Permissions = tabledata "Item Ledger Entry" = rm, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
+        tabledata "Sales Shipment Header" = rmid, tabledata "Sales Cr.Memo Header" = rmid, tabledata "Sales Header Archive" = rmid,
+        tabledata "Return Shipment Header" = rmid;
     TableNo = "Sales Header";
 
 
