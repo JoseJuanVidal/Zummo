@@ -73,6 +73,26 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field Cod. Contrato Laboral - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 369657445 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 2272012708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Importe - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 4214473555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe Presupuesto</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Importe Presupuesto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 2398714342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Budget Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Budget Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 671662900 - Field 2483678830 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source> , , , ,Categorías, , , ,Historico Puestos,Historico Contratos,Historico Categoria</source>
           <note from="Developer" annotates="general" priority="2"/>

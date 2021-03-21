@@ -58,6 +58,10 @@ page 50013 "STH Movs Conta-Presup"
                 {
                     ApplicationArea = all;
                 }
+                field("Budget Name"; "Budget Name")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

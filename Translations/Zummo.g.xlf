@@ -484,23 +484,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Entry No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 369657445 - Field 3852983238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>G/L Account No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Nº cuenta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº cuenta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field G/L Account No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 369657445 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Posting Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Fecha registro</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Posting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 369657445 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Document No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Nº documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Document No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 369657445 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Descripción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 369657445 - Field 1303377601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -532,6 +532,11 @@
           <source>Importe Presupuesto</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Importe Presupuesto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 2398714342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Budget Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Budget Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 369657445 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Movs. Conta-Presup</source>
