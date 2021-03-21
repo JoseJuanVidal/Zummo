@@ -5,6 +5,7 @@ codeunit 50110 "CU_Cron"
     , tabledata "Email Item" = RIMD, tabledata "LogMailManagement" = RIMD, tabledata "LogEnvioEmailsClientes" = RIMD, tabledata "Service Password" = RIMD;
 
     var
+        MovsContaPresup: Record "STH Movs Conta-Presup";
         ResultEnvioMailTxt: Text;
 
     trigger OnRun()
@@ -30,6 +31,9 @@ codeunit 50110 "CU_Cron"
                     AvisosFacturasVencidas();
                 'CalculateVtoAseguradora':
                     CalculateVtoAseguradora();
+                'CargaMovsContaPresup':
+                    MovsContaPresup.CargarDatos();
+
                 else
                     error(lbNoParametroErr);
 

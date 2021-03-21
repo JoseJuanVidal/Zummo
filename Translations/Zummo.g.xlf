@@ -478,6 +478,66 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Account Translation - Field Description 2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 369657445 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 3852983238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field G/L Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 1303377601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CECO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CECO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Global Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 1337243520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PROYECTO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PROYECTO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Global Dimension 2 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 2308462143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DETALLE</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DETALLE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Global Dimension 3 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 2453785066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PARTIDA</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PARTIDA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Global Dimension 8 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 2272012708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Importe - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 4214473555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe Presupuesto</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Importe Presupuesto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 369657445 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Movs. Conta-Presup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. Conta-Presup"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Movs Conta-Presup - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 671662900 - Field 2483678830 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source> , , , ,Categorías, , , ,Historico Puestos,Historico Contratos,Historico Categoria</source>
           <note from="Developer" annotates="general" priority="2"></note>
