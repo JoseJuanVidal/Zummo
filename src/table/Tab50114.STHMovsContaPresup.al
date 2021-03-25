@@ -84,6 +84,7 @@ table 50114 "STH Movs Conta-Presup"
                 Contador += 1;
                 Rec.INIT;
                 Rec."Entry No." := Contador;
+                rec."Posting Date" := GLEntry."Posting Date";
                 Rec."G/L Account No." := GLEntry."G/L Account No.";
                 Rec."Document No." := GLEntry."Document No.";
                 Rec.Description := GLEntry.Description;
