@@ -26,7 +26,7 @@ page 50007 "Posted Sales Invoice Change"
                 {
                     ApplicationArea = all;
                     Caption = 'Area Manager', comment = 'Area Manager';
-                    TableRelation = TextosAuxiliares where(TipoRegistro = const(tabla), TipoTabla = const(AreaManager));
+                    TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(tabla), TipoTabla = const(AreaManager));
                 }
             }
         }
@@ -54,7 +54,7 @@ page 50007 "Posted Sales Invoice Change"
         AreaManager_btc: code[20];
         TempBlob: Record TempBlob temporary;
 
-    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; AreaManager: code[20])
+    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20])
     begin
         ExtDocNo := ExternalDocumentNo;
         WorkDesc := WorkDescription;
