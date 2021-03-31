@@ -16423,11 +16423,6 @@
           <note from="Developer" annotates="general" priority="2">Can't do this action.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlannedProdOrder_btc - Change Re&amp;fresh Production Order - Method OnBeforeAction - NamedType LimitaAccionErr</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3233289028 - Change 3876240180 - Method 1542331226 - NamedType 1295455468" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3233289028">
-          <source>No se puede realizar esta acción.</source>
-          <note from="Developer" annotates="general" priority="2">Can't do this action.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReleasedProdOrder_btc - Change RefreshProductionOrder - Method OnBeforeAction - NamedType LimitaAccionErr</note>
-        </trans-unit>
         <trans-unit id="PageExtension 40342365 - Action 3779340671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 561208485">
           <source>Create Period Invoices</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crear facturas periódicas"</note>
