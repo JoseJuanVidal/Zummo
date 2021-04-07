@@ -37,6 +37,33 @@ pageextension 50190 "IntrastatJournal" extends "Intrastat Journal"
         }
     }
 
+    actions
+    {
+        addafter(Item)
+        {
+            action(TariffNo)
+            {
+                ApplicationArea = all;
+                Caption = 'Asignar Cód. Arancelario', comment = 'ESP="Asignar Cód. Arancelario"';
+                Image = TransferReceipt;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    Item: Record Item;
+                begin
+                    if Item.get("Item No.") then begin
+                        "Tariff No." := item."Tariff No.";
+                        Modify();
+                        CurrPage.Update();
+                    end;
+                end;
+            }
+        }
+    }
+
     trigger OnAfterGetRecord()
     var
         recSalesShptHead: Record "Sales Shipment Header";
