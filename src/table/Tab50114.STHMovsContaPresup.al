@@ -109,8 +109,8 @@ table 50114 "STH Movs Conta-Presup"
                 Rec.Description := GLBudgetEntry.Description;
                 Rec."Global Dimension 1 Code" := GLBudgetEntry."Global Dimension 1 Code";
                 Rec."Global Dimension 2 Code" := GLBudgetEntry."Global Dimension 2 Code";
-                Rec."Global Dimension 3 Code" := GLBudgetEntry."Budget Dimension 2 Code";
-                Rec."Global Dimension 8 Code" := GLBudgetEntry."Budget Dimension 3 Code";
+                Rec."Global Dimension 3 Code" := GLBudgetEntry."Budget Dimension 3 Code";
+                Rec."Global Dimension 8 Code" := GLBudgetEntry."Budget Dimension 2 Code";
                 Rec."Importe Presupuesto" := GLBudgetEntry.Amount;
                 rec."Budget Name" := GLBudgetEntry."Budget Name";
                 Rec.INSERT;
