@@ -66,7 +66,7 @@ tableextension 50108 "Item" extends Item  //27
         {
             DataClassification = CustomerContent;
             Description = 'Bitec';
-            Caption = 'Sales Classification', comment = 'ESP="Clasificación Ventas"';
+            Caption = 'Sales Classification List', comment = 'ESP="Lista Clasificación Ventas"';
             OptionMembers = " ","Envases y Embalajes",Accesorios,"Bloque Máquina",Box,"Conjunto Máquina",Mueble,Repuestos,Otros,Servicios;
             OptionCaption = ' ,Containers and packaging,Accessories,Machine block,Box,Machine set,Price of furniture,Spare parts,Others,Services', comment = 'ESP=" ,Envases y Embalajes,Accesorios,Bloque Máquina,Box,Conjunto Máquina,Mueble,Repuestos,Otros,Servicios"';
             // ObsoleteState = Removed;
