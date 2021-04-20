@@ -153,6 +153,47 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Id - Property Caption</note>
           <target>Id</target>
         </trans-unit>
+        <trans-unit id="Table 3255603460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Various Comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios varios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Property Caption</note>
+          <target>Comentarios varios</target>
+        </trans-unit>
+        <trans-unit id="Table 3255603460 - Field 2182985667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field Comentario_btc - Property Caption</note>
+          <target>Comentario</target>
+        </trans-unit>
+        <trans-unit id="Table 3255603460 - Field 2494951677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field No_btc - Property Caption</note>
+          <target>No.</target>
+        </trans-unit>
+        <trans-unit id="Table 3255603460 - Field 2851919725 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comment Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº línea comentario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field NumLinea_btc - Property Caption</note>
+          <target>Nº línea comentario</target>
+        </trans-unit>
+        <trans-unit id="Table 3255603460 - Field 2574342748 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Origin</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Origen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field TablaOrigen_btc - Property Caption</note>
+          <target>Origen</target>
+        </trans-unit>
+        <trans-unit id="Table 3255603460 - Field 1702326117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TipoComentario_btc</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field TipoComentario_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3255603460 - Field 1702326117 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Lock Comment</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Comentario Bloqueo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field TipoComentario_btc - Property OptionCaption</note>
+          <target> ,Comentario Bloqueo</target>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -4241,6 +4282,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field DateIni - Property Caption</note>
           <target>Fecha Inicial</target>
         </trans-unit>
+        <trans-unit id="Table 10975779 - Field 3315408190 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Suplemento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Suplemento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field Suplemento - Property Caption</note>
+          <target>Suplemento</target>
+        </trans-unit>
         <trans-unit id="Table 369657445 - Field 2398714342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Budget Name</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -4376,10 +4423,10 @@
           <target>Tipo Registro</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora"</note>
+          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
-          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora</target>
+          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal</target>
         </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
@@ -16131,6 +16178,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action CalcFechaVto - Property Caption</note>
           <target>Calcular Fecha Vto. Aseguradora</target>
         </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 434109143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Asig. Credito Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asig. Credito Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action darCredito - Property Caption</note>
+          <target>Asig. Credito Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 434109143 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
+          <source>Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action darCredito - Method OnAction - NamedType lblConfirm</note>
+          <target>Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 2554152333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Finalizar Credito</source>
           <note from="Developer" annotates="general" priority="2">ESP="Finalizar Credito"</note>
@@ -20039,6 +20098,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field AreaManager_btc - Property Caption</note>
           <target>Area Manager</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 1081269253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Canal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Canal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Canal_btc - Property Caption</note>
+          <target>Canal</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 338312380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Central Compras</source>
           <note from="Developer" annotates="general" priority="2">ESP="Central Compras"</note>
@@ -20142,16 +20207,22 @@
           <target>Forma Pago CRM</target>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 3486487259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>GrupoCliente</source>
-          <note from="Developer" annotates="general" priority="2">ESP="GrupoCliente"</note>
+          <source>Tipo Cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field GrupoCliente_btc - Property Caption</note>
-          <target>GrupoCliente</target>
+          <target>Tipo Cliente</target>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Inside Sales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field InsideSales_btc - Property Caption</note>
           <target>Inside Sales</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 2885447315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Mercado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mercado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Mercado_btc - Property Caption</note>
+          <target>Mercado</target>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 4170685114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Perfil</source>

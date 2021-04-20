@@ -41,6 +41,12 @@ table 50404 "STH Hist. Aseguradora"
             DataClassification = CustomerContent;
             Caption = 'Fecha Final', comment = 'ESP="Fecha Final"';
         }
+        field(50; Suplemento; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Suplemento', comment = 'ESP="Suplemento"';
+
+        }
     }
 
     keys

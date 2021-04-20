@@ -18,12 +18,18 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
                 AutoFormatType = 1;
+                Editable = false;
             }
             field("Cred_ Max_ Aseg. Autorizado Por_btc"; "Cred_ Max_ Aseg. Autorizado Por_btc")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
-            field(Suplemento_aseguradora; Suplemento_aseguradora) { }
+            field(Suplemento_aseguradora; Suplemento_aseguradora)
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
         }
         addafter("Prices Including VAT")
         {
@@ -52,6 +58,14 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
                 ApplicationArea = all;
             }
             field(InsideSales_btc; InsideSales_btc)
+            {
+                ApplicationArea = all;
+            }
+            field(Canal_btc; Canal_btc)
+            {
+                ApplicationArea = all;
+            }
+            field(Mercado_btc; Mercado_btc)
             {
                 ApplicationArea = all;
             }
@@ -260,6 +274,52 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
         }
         addafter(MergeDuplicate)
         {
+            action(darCredito)
+            {
+                ApplicationArea = all;
+                Caption = 'Asig. Credito Aseguradora', comment = 'ESP="Asig. Credito Aseguradora"';
+                Image = Calculate;
+                PromotedCategory = Category8;
+                Promoted = true;
+
+                trigger OnAction()
+                var
+                    Customer: Record Customer;
+                    Input: page "STH Input Hist Aseguradora";
+                    Funciones: Codeunit Funciones;
+                    FechaIni: date;
+                    Aseguradora: code[20];
+                    Suplemento: code[20];
+                    Importe: Decimal;
+                    lblConfirm: Label 'Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?', Comment = 'ESP="Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?"';
+                begin
+                    // pedimos los datos de Fecha Ini
+                    Input.SetShowIni();
+                    //Input.SetDatos(Customer);
+                    Input.LookupMode := true;
+                    if Input.RunModal() = Action::LookupOK then begin
+
+                        // Confirmamos Cerrar el credito
+                        Input.GetDatos(Aseguradora, Importe, FechaIni, Suplemento);
+                        if Customer.Get(rec."No.") then begin
+                            // si tiene credito lo finalizamos
+                            if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '' then begin
+                                if not Confirm(lblConfirm, false, Customer."Cred_ Max_ Aseg. Autorizado Por_btc", customer."Credito Maximo Aseguradora_btc") then
+                                    Exit;
+                                Funciones.FinCustomerCredit(Customer, CalcDate('-1D', FechaIni));
+                                Customer.Get(rec."No.");
+                            end;
+                            Funciones.AsigCreditoAeguradora(Customer."No.", Customer.Name, Aseguradora, Importe, Suplemento, FechaIni);
+
+                            Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := Aseguradora;
+                            Customer."Credito Maximo Aseguradora_btc" := Importe;
+                            Customer.Suplemento_aseguradora := Suplemento;
+                            Customer.Modify();
+                            CurrPage.Update();
+                        end;
+                    end
+                end;
+            }
             action(FinCredito)
             {
                 ApplicationArea = all;

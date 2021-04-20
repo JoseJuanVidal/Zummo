@@ -912,8 +912,6 @@ codeunit 50111 "Funciones"
         Message('Fin proceso');
     end;
 
-
-
     procedure FinAseguradora(Customer: Record Customer)
     var
         Input: page "STH Input Hist Aseguradora";
@@ -943,14 +941,18 @@ codeunit 50111 "Funciones"
             HistAseguradora.CustomerNo := Customer."No.";
             HistAseguradora.Aseguradora := Customer."Cred_ Max_ Aseg. Autorizado Por_btc";
             HistAseguradora."Credito Maximo Aseguradora_btc" := Customer."Credito Maximo Aseguradora_btc";
+            HistAseguradora.Suplemento := Customer.Suplemento_aseguradora;
             HistAseguradora.Insert();
         end;
+        HistAseguradora.Name := Customer.Name;
+        HistAseguradora.Suplemento := Customer.Suplemento_aseguradora;
         HistAseguradora.DateFin := DateFin;
         HistAseguradora.Modify();
 
         // Actualizar datos de clientes, poner a blanco        
         Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := '';
         Customer."Credito Maximo Aseguradora_btc" := 0;
+        Customer.Suplemento_aseguradora := '';
         Customer.validate("Credit Limit (LCY)", Customer."Credito Maximo Aseguradora_btc" + Customer."Credito Maximo Interno_btc");
         Customer.Modify();
 
@@ -961,12 +963,33 @@ codeunit 50111 "Funciones"
         Customer: record Customer;
     begin
         Customer.Get(HistAse.CustomerNo);
+        Customer.TestField("Cred_ Max_ Aseg. Autorizado Por_btc", '');
         Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := HistAse.Aseguradora;
         Customer."Credito Maximo Aseguradora_btc" := HistAse."Credito Maximo Aseguradora_btc";
+        Customer.Suplemento_aseguradora := HistAse.Suplemento;
         Customer.validate("Credit Limit (LCY)", HistAse."Credito Maximo Aseguradora_btc" + Customer."Credito Maximo Interno_btc");
         Customer.Modify();
         HistAse.DateFin := 0D;
         HistAse.Modify();
+    end;
 
+    procedure AsigCreditoAeguradora(CustomerNo: Code[20]; Name: Text; Aseguradora: code[20]; Importe: Decimal; Suplemento: Code[20]; FechaIni: Date)
+    var
+        HistAseguradora: Record "STH Hist. Aseguradora";
+    begin
+        HistAseguradora.SetRange(CustomerNo, CustomerNo);
+        HistAseguradora.SetRange(Aseguradora, Aseguradora);
+        if not HistAseguradora.FindLast() then begin
+            HistAseguradora.Init();
+            HistAseguradora.CustomerNo := CustomerNo;
+            HistAseguradora.DateIni := FechaIni;
+            HistAseguradora.Aseguradora := Aseguradora;
+            HistAseguradora."Credito Maximo Aseguradora_btc" := Importe;
+            HistAseguradora.Suplemento := Suplemento;
+            HistAseguradora.Insert();
+        end;
+        HistAseguradora.Name := Name;
+        HistAseguradora.Suplemento := Suplemento;
+        HistAseguradora.Modify();
     end;
 }

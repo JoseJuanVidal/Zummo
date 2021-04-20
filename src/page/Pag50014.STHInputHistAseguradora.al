@@ -25,6 +25,12 @@ page 50014 "STH Input Hist Aseguradora"
                 {
                     ApplicationArea = all;
                     Editable = ShowIni;
+                    TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(Aseguradora));
+                }
+                field(Suplemento; Suplemento)
+                {
+                    ApplicationArea = all;
+                    Editable = ShowIni;
                 }
                 field(Importe; Importe)
                 {
@@ -40,6 +46,7 @@ page 50014 "STH Input Hist Aseguradora"
         FechaIni: Date;
         FechaFin: date;
         Aseguradora: code[20];
+        Suplemento: code[20];
         Importe: Decimal;
         ShowIni: Boolean;
         ShowFin: Boolean;
@@ -74,5 +81,13 @@ page 50014 "STH Input Hist Aseguradora"
     procedure GetDateFin(): Date
     begin
         exit(FechaFin);
+    end;
+
+    procedure GetDatos(var Aseg: code[20]; var Imp: Decimal; var Ini: Date; Suple: code[20])
+    begin
+        Aseg := Aseguradora;
+        Imp := Importe;
+        ini := FechaIni;
+        Suple := Suplemento;
     end;
 }

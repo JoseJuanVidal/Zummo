@@ -35,12 +35,18 @@ page 50117 "Lista Textos Auxiliares"
                 field(Mercado; Mercado)
                 {
                     ApplicationArea = all;
-                    Editable = false;
-                    Visible = false;
+                    Editable = mercadoVisible;
+                    Visible = mercadoVisible;
                 }
             }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        if UpperCase(GetFilter(TipoTabla)) = 'CANAL' then
+            mercadoVisible := true;
+    end;
 
     trigger OnAfterGetRecord()
     begin
@@ -52,4 +58,5 @@ page 50117 "Lista Textos Auxiliares"
 
     var
         emailVisible: Boolean;
+        mercadoVisible: Boolean;
 }

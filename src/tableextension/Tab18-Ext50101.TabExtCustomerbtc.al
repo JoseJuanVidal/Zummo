@@ -21,6 +21,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             DataClassification = ToBeClassified;
             Description = 'Bitec';
             Editable = true;
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(Aseguradora));
         }
         field(50003; "Credito Maximo Aseguradora_btc"; Integer)
         {
@@ -142,7 +143,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         {
             DataClassification = CustomerContent;
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("GrupoCliente"), TipoRegistro = const(Tabla));
-            Caption = 'GrupoCliente', comment = 'ESP="GrupoCliente"';
+            Caption = 'Tipo Cliente', comment = 'ESP="Tipo Cliente"';
         }
 
         field(50018; Perfil_btc; Code[20])
@@ -221,7 +222,30 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         {
             DataClassification = CustomerContent;
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
-            Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
+            Caption =
+             'Inside Sales', comment = 'ESP="Inside Sales"';
         }
+        field(50031; Canal_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Canal"), TipoRegistro = const(Tabla));
+            Caption = 'Canal', comment = 'ESP="Canal"';
+
+            trigger OnValidate()
+            var
+                TextosAux: Record TextosAuxiliares;
+            begin
+                if TextosAux.get(TextosAux.TipoTabla::Canal, TextosAux.TipoRegistro::Tabla, Canal_btc) then
+                    Mercado_btc := TextosAux.Mercado;
+            end;
+        }
+        field(50032; Mercado_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Cliente Corporativo"), TipoRegistro = const(Tabla));
+            Caption = 'Mercado', comment = 'ESP="Mercado"';
+            Editable = false;
+        }
+
     }
 }

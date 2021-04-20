@@ -3,6 +3,11 @@
   <file datatype="xml" source-language="en-US" target-language="fr-FR" original="Zummo">
     <body>
       <group id="body">
+        <trans-unit id="Table 3255603460 - Field 1702326117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TipoComentario_btc</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field TipoComentario_btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account</source>
           <note from="Developer" annotates="general" priority="2"/>

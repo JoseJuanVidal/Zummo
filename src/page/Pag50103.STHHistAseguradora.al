@@ -39,6 +39,10 @@ page 50103 "STH Hist. Aseguradora"
                 {
                     ApplicationArea = all;
                 }
+                field(Suplemento; Suplemento)
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }
