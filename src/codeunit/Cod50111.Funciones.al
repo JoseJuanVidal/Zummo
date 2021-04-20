@@ -911,4 +911,62 @@ codeunit 50111 "Funciones"
             Until SalesHeader.next() = 0;
         Message('Fin proceso');
     end;
+
+
+
+    procedure FinAseguradora(Customer: Record Customer)
+    var
+        Input: page "STH Input Hist Aseguradora";
+        lblConfirm: Label '¿Desea eliminar el credito a %1 de %2 por %3?', comment = 'ESP="¿Desea eliminar el credito a %1 de %2 por %3?"';
+    begin
+        // pedimos los datos de Fecha Fin
+        Input.SetShowFin();
+        Input.SetDatos(Customer);
+        Input.LookupMode := true;
+        if Input.RunModal() = Action::LookupOK then begin
+
+            // Confirmamos Cerrar el credito
+            if Confirm(lblConfirm, false, Customer.Name, Customer."Cred_ Max_ Aseg. Autorizado Por_btc", Customer."Credito Maximo Aseguradora_btc") then begin
+                FinCustomerCredit(Customer, Input.GetDateFin());
+            end;
+        end
+    end;
+
+    procedure FinCustomerCredit(Customer: Record Customer; DateFin: date)
+    var
+        HistAseguradora: Record "STH Hist. Aseguradora";
+    begin
+        HistAseguradora.SetRange(CustomerNo, Customer."No.");
+        HistAseguradora.SetRange(Aseguradora, Customer."Cred_ Max_ Aseg. Autorizado Por_btc");
+        if not HistAseguradora.FindLast() then begin
+            HistAseguradora.Init();
+            HistAseguradora.CustomerNo := Customer."No.";
+            HistAseguradora.Aseguradora := Customer."Cred_ Max_ Aseg. Autorizado Por_btc";
+            HistAseguradora."Credito Maximo Aseguradora_btc" := Customer."Credito Maximo Aseguradora_btc";
+            HistAseguradora.Insert();
+        end;
+        HistAseguradora.DateFin := DateFin;
+        HistAseguradora.Modify();
+
+        // Actualizar datos de clientes, poner a blanco        
+        Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := '';
+        Customer."Credito Maximo Aseguradora_btc" := 0;
+        Customer.validate("Credit Limit (LCY)", Customer."Credito Maximo Aseguradora_btc" + Customer."Credito Maximo Interno_btc");
+        Customer.Modify();
+
+    end;
+
+    procedure RevertFinAseguradora(var HistAse: Record "STH Hist. Aseguradora")
+    var
+        Customer: record Customer;
+    begin
+        Customer.Get(HistAse.CustomerNo);
+        Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := HistAse.Aseguradora;
+        Customer."Credito Maximo Aseguradora_btc" := HistAse."Credito Maximo Aseguradora_btc";
+        Customer.validate("Credit Limit (LCY)", HistAse."Credito Maximo Aseguradora_btc" + Customer."Credito Maximo Interno_btc");
+        Customer.Modify();
+        HistAse.DateFin := 0D;
+        HistAse.Modify();
+
+    end;
 }

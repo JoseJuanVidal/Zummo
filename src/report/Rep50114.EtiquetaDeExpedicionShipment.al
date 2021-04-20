@@ -1,8 +1,8 @@
-report 50107 "EtiquetaDeExpedicion"
+report 50114 "EtiquetaDeExpedicionShipment"
 {
     ApplicationArea = All;
     DefaultLayout = RDLC;
-    RDLCLayout = './src/report/Rep50114.EtiquetaDeExpedicionShipment.rdl';
+    RDLCLayout = './src/report/Rep50107.EtiquetaDeExpedicion.rdl';
     Caption = 'Etiqueta De Expedicion', Comment = 'Etiqueta De Expedicion';
     PreviewMode = PrintLayout;
     UsageCategory = ReportsAndAnalysis;
@@ -10,9 +10,9 @@ report 50107 "EtiquetaDeExpedicion"
 
     dataset
     {
-        dataitem("Item Ledger Entry"; "Item Ledger Entry")
+        dataitem("Sales Shipment Line"; "Sales Shipment Line")
         {
-            DataItemTableView = sorting("Entry No.") where("Entry Type" = const(Sale));
+            //DataItemTableView = sorting("Entry No.") where("Entry Type" = const(Sale));
             RequestFilterFields = "Document No.";
 
 
@@ -127,7 +127,7 @@ report 50107 "EtiquetaDeExpedicion"
                         trigger OnPreDataItem()
                         begin
                             RecTempBultos.Reset();
-                            RecTempBultos.SetRange(Noproducto, "Item Ledger Entry"."Document No.");
+                            RecTempBultos.SetRange(Noproducto, "Sales Shipment Line"."Document No.");
                             SetRange(Number, 1, RecTempBultos.Count());
                         end;
 

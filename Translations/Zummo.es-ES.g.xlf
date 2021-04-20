@@ -153,47 +153,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Id - Property Caption</note>
           <target>Id</target>
         </trans-unit>
-        <trans-unit id="Table 3255603460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Various Comments</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Comentarios varios"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Property Caption</note>
-          <target>Comentarios varios</target>
-        </trans-unit>
-        <trans-unit id="Table 3255603460 - Field 2182985667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Comment</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field Comentario_btc - Property Caption</note>
-          <target>Comentario</target>
-        </trans-unit>
-        <trans-unit id="Table 3255603460 - Field 2494951677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Code</source>
-          <note from="Developer" annotates="general" priority="2">ESP="No."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field No_btc - Property Caption</note>
-          <target>No.</target>
-        </trans-unit>
-        <trans-unit id="Table 3255603460 - Field 2851919725 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Comment Line No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº línea comentario"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field NumLinea_btc - Property Caption</note>
-          <target>Nº línea comentario</target>
-        </trans-unit>
-        <trans-unit id="Table 3255603460 - Field 2574342748 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Origin</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Origen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field TablaOrigen_btc - Property Caption</note>
-          <target>Origen</target>
-        </trans-unit>
-        <trans-unit id="Table 3255603460 - Field 1702326117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>TipoComentario_btc</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field TipoComentario_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3255603460 - Field 1702326117 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Lock Comment</source>
-          <note from="Developer" annotates="general" priority="2">ESP=" ,Comentario Bloqueo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field TipoComentario_btc - Property OptionCaption</note>
-          <target> ,Comentario Bloqueo</target>
-        </trans-unit>
         <trans-unit id="Table 3049429624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -4246,6 +4205,42 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 10975779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hist. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Property Caption</note>
+          <target>Hist. Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="Table 10975779 - Field 726138722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aseguradora Autorizado Por</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aseguradora Autorizado Por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field Aseguradora - Property Caption</note>
+          <target>Aseguradora Autorizado Por</target>
+        </trans-unit>
+        <trans-unit id="Table 10975779 - Field 3538960907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crédito Maximo Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crédito Maximo Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field Credito Maximo Aseguradora_btc - Property Caption</note>
+          <target>Crédito Maximo Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="Table 10975779 - Field 3689535207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cód. Cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field CustomerNo - Property Caption</note>
+          <target>Cód. Cliente</target>
+        </trans-unit>
+        <trans-unit id="Table 10975779 - Field 2475752935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Final</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Final"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field DateFin - Property Caption</note>
+          <target>Fecha Final</target>
+        </trans-unit>
+        <trans-unit id="Table 10975779 - Field 1271702134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Inicial</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Inicial"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field DateIni - Property Caption</note>
+          <target>Fecha Inicial</target>
+        </trans-unit>
         <trans-unit id="Table 369657445 - Field 2398714342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Budget Name</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -4381,10 +4376,10 @@
           <target>Tipo Registro</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales"</note>
+          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
-          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales</target>
+          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora</target>
         </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
@@ -4418,6 +4413,12 @@
           <source>Código #1###################</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerCalculateFechaVto - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 111645473 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea eliminar el credito a %1 de %2 por %3?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el credito a %1 de %2 por %3?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method FinAseguradora - NamedType lblConfirm</note>
+          <target>¿Desea eliminar el credito a %1 de %2 por %3?</target>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3924250185 - NamedType 899079631" size-unit="char" translate="yes" xml:space="preserve">
           <source>No documents have been found that can be settled. \</source>
@@ -7183,6 +7184,29 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Selección Etiquetas - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 10975779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hist. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Hist. Aseguradora - Property Caption</note>
+          <target>Hist. Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="Page 10975779 - Action 1556917387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Revertir Historico</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Revertir Historico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Hist. Aseguradora - Action Revertir - Property Caption</note>
+          <target>Revertir Historico</target>
+        </trans-unit>
+        <trans-unit id="Page 4198750035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Input Hist Aseguradora - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4198750035 - NamedType 69717365" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Finalizar Credito</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Finalizar Credito"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Input Hist Aseguradora - NamedType lblFin</note>
+          <target>Finalizar Credito</target>
+        </trans-unit>
         <trans-unit id="Page 369657445 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Movs. Conta-Presup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Movs. Conta-Presup"</note>
@@ -8795,6 +8819,101 @@
           <source>Nº de Copias</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion - Control RPNoOfCopies - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 248053610" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Albarán / Delivery note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Albarán / Delivery note:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType Albaran_Lbl</note>
+          <target>Albarán / Delivery note:</target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 3517632600" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consignatario / Consignee:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Consignatario / Consignee:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType Consignatario_Lbl</note>
+          <target>Consignatario / Consignee:</target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 1083092752" size-unit="char" translate="yes" xml:space="preserve">
+          <source> de </source>
+          <note from="Developer" annotates="general" priority="2">ESP=" de "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType de_Lbl</note>
+          <target> de </target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 4155350022" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Domicilio / Address:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Domicilio / Address:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType Domicilio_Lbl</note>
+          <target>Domicilio / Address:</target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 3629279096" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha / Date:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha / Date:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType Fecha_Lbl</note>
+          <target>Fecha / Date:</target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 1581257925" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mercancias / Goods:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mercancias / Goods:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType Mercancias_Lbl</note>
+          <target>Mercancias / Goods:</target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 2450936972" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Bultos / Bulks:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Bultos / Bulks:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType NBultos_Lbl</note>
+          <target>Nº Bultos / Bulks:</target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 3154177954" size-unit="char" translate="yes" xml:space="preserve">
+          <source>País / Country:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="País / Country:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType Pais_Lbl</note>
+          <target>País / Country:</target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 1099343050" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Población / City:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Población / City:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType Poblacion_Lbl</note>
+          <target>Población / City:</target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 9498102" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Provincia / State:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia / State:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType Provincia_Lbl</note>
+          <target>Provincia / State:</target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - Control 1971437519 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifique el número de Bultos</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - Control NumBultos - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - Control 1971437519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº de Bultos</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - Control NumBultos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - Control 1526680552 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifique la mercancia</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - Control RPMercancias - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - Control 1526680552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mercancias</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - Control RPMercancias - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - Control 1331080395 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies how many copies of the document to print.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - Control RPNoOfCopies - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - Control 1331080395 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº de Copias</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - Control RPNoOfCopies - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 213548215 - NamedType 1889045978" size-unit="char" translate="yes" xml:space="preserve">
           <source>Article: </source>
@@ -15936,18 +16055,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Method CheckMandatoryFields - NamedType lbConfirm</note>
           <target>El cliente: %1 tiene vacíos uno o más de los campos obligatorios\¿Está seguro/a de que desea salir?</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1994005900 - Action 66212977 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
-          <source>Show comments on blocking reason</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Musestra los comentarios del motivo de bloqueo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action ComentariosBloqueo - Property ToolTip</note>
-          <target>Musestra los comentarios del motivo de bloqueo</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 1994005900 - Action 66212977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
-          <source>Lock Comments</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Comentarios bloqueo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action ComentariosBloqueo - Property Caption</note>
-          <target>Comentarios bloqueo</target>
-        </trans-unit>
         <trans-unit id="PageExtension 1994005900 - Action 3024434233 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>View or add comments for the record</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite ver o agregar comentarios para el registro."</note>
@@ -15959,6 +16066,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action Coment1 - Property Caption</note>
           <target>Comentarios</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1994005900 - Action 906881740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Hist. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action HistAseguradora - Property Caption</note>
+          <target>Hist. Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1994005900 - Action 2554152333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Finalizar Credito</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Finalizar Credito"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action FinCredito - Property Caption</note>
+          <target>Finalizar Credito</target>
         </trans-unit>
         <trans-unit id="PageExtension 1994005900 - Control 3035610829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>It allows to indicate the reason for which it has been blocked</source>
@@ -15988,6 +16107,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Method 1727080154 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
+          <source>¿Desea eliminar el credito a %1 %2 seleccionados?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el credito a %1 %2 seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Method FinMultiSelectAseguradora - NamedType lblConfirm</note>
+          <target>¿Desea eliminar el credito a %1 %2 seleccionados?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 3024434233 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>View or add comments for the record</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite ver o agregar comentarios para el registro."</note>
@@ -16005,6 +16130,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Calcular Fecha Vto. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action CalcFechaVto - Property Caption</note>
           <target>Calcular Fecha Vto. Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 2554152333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Finalizar Credito</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Finalizar Credito"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action FinCredito - Property Caption</note>
+          <target>Finalizar Credito</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 2554152333 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
+          <source>¿desea eliminar el credito a %1 %2 seleccionados?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿desea eliminar el credito a %1 %2 seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action FinCredito - Method OnAction - NamedType lblConfirm</note>
+          <target>¿desea eliminar el credito a %1 %2 seleccionados?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 906881740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Hist. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action HistAseguradora - Property Caption</note>
+          <target>Hist. Aseguradora</target>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - Control 3809540912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Due Date</source>
@@ -17683,18 +17826,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Pais Envío"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension VatEntry - Control Paisenvio - Property Caption</note>
           <target>Pais Envío</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 1574261460 - Action 66212977 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
-          <source>Show comments on blocking reason</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Musestra los comentarios del motivo de bloqueo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VendorCard - Action ComentariosBloqueo - Property ToolTip</note>
-          <target>Musestra los comentarios del motivo de bloqueo</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 1574261460 - Action 66212977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
-          <source>Lock Comments</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Comentarios bloqueo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VendorCard - Action ComentariosBloqueo - Property Caption</note>
-          <target>Comentarios bloqueo</target>
         </trans-unit>
         <trans-unit id="PageExtension 1574261460 - Control 3035610829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>It allows to indicate the reason for which it has been blocked</source>

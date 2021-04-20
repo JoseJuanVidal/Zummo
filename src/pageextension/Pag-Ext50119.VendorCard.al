@@ -56,32 +56,32 @@ pageextension 50119 "VendorCard" extends "Vendor Card"
         }
 
 
-        addafter("Co&mments")
-        {
-            action(ComentariosBloqueo)
-            {
-                ApplicationArea = All;
-                Image = Compress;
-                Caption = 'Lock Comments', comment = 'ESP="Comentarios bloqueo"';
-                ToolTip = 'Show comments on blocking reason', comment = 'ESP="Musestra los comentarios del motivo de bloqueo"';
-                Visible = false;  //161219 S19/01177 Se usará la tabla estándar
+        /* addafter("Co&mments")
+         {
+             action(ComentariosBloqueo)
+             {
+                 ApplicationArea = All;
+                 Image = Compress;
+                 Caption = 'Lock Comments', comment = 'ESP="Comentarios bloqueo"';
+                 ToolTip = 'Show comments on blocking reason', comment = 'ESP="Musestra los comentarios del motivo de bloqueo"';
+                 Visible = false;  //161219 S19/01177 Se usará la tabla estándar
 
-                trigger OnAction()
-                var
-                    recComentVarios: Record ComentariosVarios;
-                    pageComentarios: page ComentariosVarios;
-                begin
-                    recComentVarios.Reset();
-                    recComentVarios.SetRange(TablaOrigen_btc, Database::Vendor);
-                    recComentVarios.SetRange(No_btc, "No.");
-                    recComentVarios.SetRange(TipoComentario_btc, recComentVarios.TipoComentario_btc::"Lock Comment");
+                 trigger OnAction()
+                 var
+                     recComentVarios: Record ComentariosVarios;
+                     pageComentarios: page ComentariosVarios;
+                 begin
+                     recComentVarios.Reset();
+                     recComentVarios.SetRange(TablaOrigen_btc, Database::Vendor);
+                     recComentVarios.SetRange(No_btc, "No.");
+                     recComentVarios.SetRange(TipoComentario_btc, recComentVarios.TipoComentario_btc::"Lock Comment");
 
-                    clear(pageComentarios);
-                    pageComentarios.SetTableView(recComentVarios);
-                    pageComentarios.RunModal();
-                end;
-            }
-        }
+                     clear(pageComentarios);
+                     pageComentarios.SetTableView(recComentVarios);
+                     pageComentarios.RunModal();
+                 end;
+             }
+         }*/
     }
 
     trigger OnAfterGetRecord()

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en-US" target-language="fr-FR" original="Zummo">
+  <file datatype="xml" source-language="en-US" target-language="nl-BE" original="Zummo">
     <body>
       <group id="body">
         <trans-unit id="Table 3049429624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -3803,12 +3803,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 10975779 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Name</source>
-          <note from="Developer" annotates="general" priority="2">ES^="Nombre"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field Name - Property Caption</note>
-          <target>Nombre</target>
-        </trans-unit>
         <trans-unit id="Table 369657445 - Field 2398714342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Budget Name</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -3848,6 +3842,12 @@
           <source>%1: trabajo de sincronización de Dynamics 365 for Sales.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method RecreateJobQueueEntry - NamedType JobQueueEntryNameTok</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 2780978930 - NamedType 2863123117" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Serial No.:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº de Serie:",FRA="Numéro de série:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method CreaComentariosLoteHistFaVenta - NamedType NSerie_Lbl</note>
+          <target>Numéro de série:</target>
         </trans-unit>
         <trans-unit id="Page 3802877209 - Action 4044637255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CDS</source>
@@ -3978,6 +3978,18 @@
           <source>Set Up Coupling</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Delegado List - Action ManageCDSCoupling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3847445537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descuentos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descuentos",FRA="Descuentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Descuentos - Property Caption</note>
+          <target>Descuentos</target>
+        </trans-unit>
+        <trans-unit id="Page 806151863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Comments"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page FactboxComments - Property Caption</note>
+          <target>Comments</target>
         </trans-unit>
         <trans-unit id="Page 2942327235 - Action 4044637255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CDS</source>
@@ -4134,10 +4146,220 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Trans. Ord. Shipment (Qty.) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 464165316" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agent:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Agente:",FRA="Agent:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType AgenteCaptionLbl</note>
+          <target>Agent:</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 694817936" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Montant"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType AmtCaptionLbl</note>
+          <target>Montant</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 1889045978" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Artículo",FRA="Article"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Articulo_Lbl</note>
+          <target>Article</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 2278799068" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base",FRA="Base"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Base_Lbl</note>
+          <target>Base</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 719671359" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Cantidad_Lbl</note>
+          <target>Quantité</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 1616056101" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="NIF:",FRA="Nº de Siret"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType CIFDNICaptionLbl</note>
+          <target>Nº de Siret</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 339718340" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente",FRA="Client"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType ClienteCaptionLbl</note>
+          <target>Client</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 3394917439" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remark</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Comentarios_Lbl</note>
+          <target>Commentaires</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 36964189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulks:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bultos:",FRA="Bulks:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType CuadroBultos_BultosLbl</note>
+          <target>Bulks:</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weight(kg):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType CuadroBultos_PesoNetoLbl</note>
+          <target>Gross Weight(kg):</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 2685853250" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume(m3):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3):",FRA="Volume(m3):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType CuadroBultos_VolumenLbl</note>
+          <target>Volume(m3):</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 465633065" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción",FRA="Description"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Decripcion_Lbl</note>
+          <target>Description</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 2387469503" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Address</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dirección de envío",FRA="Adresse d´expédition"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType DireccionDeEnvio_Lbl</note>
+          <target>Adresse d´expédition</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 2783645336" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Disc.Com</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.Com",FRA="Rem."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType DtoGeneral_Lbl</note>
+          <target>Rem.</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 2627770630" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.P.Disc</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.PP",FRA="Esc.P.C."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType DtoPP_Lbl</note>
+          <target>Esc.P.C.</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 3205478158" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CREDIT NOTE</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ABONO",FRA="NOTE DE CRÉDIT"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType FacturaCaptionLbl</note>
+          <target>NOTE DE CRÉDIT</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Forma de Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType FormadepagoCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 1400119597" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Bruto",FRA="Suos_Total"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType ImporteBruto_Lbl</note>
+          <target>Suos_Total</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 3666218128" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiration Amount (s)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Vencimiento(s)",FRA="Montant (s) d´expiration"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType ImporteVencimientosCaptionLbl</note>
+          <target>Montant (s) d´expiration</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 850441175" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Importe_Lbl</note>
+          <target>Quantité</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 938744765" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IVA",FRA="TVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType IVA_Lbl</note>
+          <target>TVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 1059489614" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType NoAlbaranLidl_Lbl</note>
+          <target>Bordereau d´expédition:</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 3686057625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType NoAlbaran_Lbl</note>
+          <target>Bordereau d´expédition:</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 1548886393" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order number:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido:",FRA="Nº commande:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType NoPedido_Lbl</note>
+          <target>Nº commande:</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 3568111613" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Método Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType PmtMethodDescCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 590686299" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Términos Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType PmtTermsDescCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 1488271414" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Freight</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Portes",FRA="Fret"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Portes_Lbl</note>
+          <target>Fret</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 1677718373" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubTotal",FRA="Bases H.T."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType SubTotal_Lbl</note>
+          <target>Bases H.T.</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 291546920" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone/Fax:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tel/Fax:",FRA="Tél/Fax:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType TelefonoCaptionLbl</note>
+          <target>Tél/Fax:</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 4005924812" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tel:",FRA="Tél:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Tel_Lbl</note>
+          <target>Tél:</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 4040219166" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType txtcomentaires</note>
+          <target>Commentaires</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 3659909257" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price/unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precio U.",FRA="Prix/un"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType UnitPriceCaptionLbl</note>
+          <target>Prix/un</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 1672841968" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Date Expiration (s)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Pago Vencimiento(s)",FRA="Expiration de la date de paiement(s)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType VencimientosCaptionLbl</note>
+          <target>Expiration de la date de paiement(s)</target>
+        </trans-unit>
         <trans-unit id="Report 3011595053 - ReportDataItem 552782286 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
           <source>Histórico abonos venta</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - ReportDataItem Sales Cr.Memo Header - Property RequestFilterHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weight(kg):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType CuadroBultos_PesoNetoLbl</note>
+          <target>Gross Weight(kg):</target>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 2685853250" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume(m3):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3):",FRA="Volume(m3):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType CuadroBultos_VolumenLbl</note>
+          <target>Volume(m3):</target>
         </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 2894269558" size-unit="char" translate="yes" xml:space="preserve">
           <source>PR-GESTION DE LOS PEDIDOS DE CLIENTE</source>
@@ -4524,20 +4746,788 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaBrasilMaquinas - NamedType VATRegNoCaptionLbl</note>
         </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 464165316" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agent:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Agente:",FRA="Agent:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType AgenteCaptionLbl</note>
+          <target>Agent:</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 694817936" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Montant"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType AmtCaptionLbl</note>
+          <target>Montant</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 1889045978" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Artículo",FRA="Article"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType Articulo_Lbl</note>
+          <target>Article</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 2278799068" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base",FRA="Base"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType Base_Lbl</note>
+          <target>Base</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 719671359" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType Cantidad_Lbl</note>
+          <target>Quantité</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 1616056101" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="NIF:",FRA="Nº de Siret"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType CIFDNICaptionLbl</note>
+          <target>Nº de Siret</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 339718340" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente",FRA="Client"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType ClienteCaptionLbl</note>
+          <target>Client</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 3394917439" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remark</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType Comentarios_Lbl</note>
+          <target>Commentaires</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 36964189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulks:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bultos:",FRA="Bulks:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType CuadroBultos_BultosLbl</note>
+          <target>Bulks:</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weight(kg):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType CuadroBultos_PesoNetoLbl</note>
+          <target>Gross Weight(kg):</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 2685853250" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume(m3):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3):",FRA="Volume(m3):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType CuadroBultos_VolumenLbl</note>
+          <target>Volume(m3):</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 465633065" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción",FRA="Description"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType Decripcion_Lbl</note>
+          <target>Description</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 2387469503" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Address</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dirección de envío",FRA="Adresse d´expédition"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType DireccionDeEnvio_Lbl</note>
+          <target>Adresse d´expédition</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 2783645336" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Disc.Com 0 %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.Com 0 %",FRA="Rem. 0 %"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType DtoGeneral_Lbl</note>
+          <target>Rem. 0 %</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 2627770630" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.P.Disc 0 %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.PP 0 %",FRA="Esc.P.C. 0 %"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType DtoPP_Lbl</note>
+          <target>Esc.P.C. 0 %</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 3205478158" size-unit="char" translate="yes" xml:space="preserve">
+          <source>INVOICE</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FACTURA",FRA="FACTURE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType FacturaCaptionLbl</note>
+          <target>FACTURE</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Forma de Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType FormadepagoCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 1400119597" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Bruto",FRA="Suos_Total"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType ImporteBruto_Lbl</note>
+          <target>Suos_Total</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 3666218128" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiration Amount (s)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Vencimiento(s)",FRA="Montant (s) d´expiration"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType ImporteVencimientosCaptionLbl</note>
+          <target>Montant (s) d´expiration</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 850441175" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType Importe_Lbl</note>
+          <target>Quantité</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 938744765" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IVA",FRA="TVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType IVA_Lbl</note>
+          <target>TVA</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 1059489614" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType NoAlbaranLidl_Lbl</note>
+          <target>Bordereau d´expédition:</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 3686057625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType NoAlbaran_Lbl</note>
+          <target>Bordereau d´expédition:</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 1548886393" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order number:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido:",FRA="Nº commande:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType NoPedido_Lbl</note>
+          <target>Nº commande:</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 3568111613" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Método Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType PmtMethodDescCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 590686299" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Términos Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType PmtTermsDescCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 1488271414" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Freight</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Portes",FRA="Fret"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType Portes_Lbl</note>
+          <target>Fret</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 1677718373" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubTotal",FRA="Bases H.T."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType SubTotal_Lbl</note>
+          <target>Bases H.T.</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 291546920" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone/Fax:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tel/Fax:",FRA="Tél/Fax:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType TelefonoCaptionLbl</note>
+          <target>Tél/Fax:</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 4005924812" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tel:",FRA="Tél:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType Tel_Lbl</note>
+          <target>Tél:</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 4040219166" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType txtcomentaires</note>
+          <target>Commentaires</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 3659909257" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price/unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precio U.",FRA="Prix/un"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType UnitPriceCaptionLbl</note>
+          <target>Prix/un</target>
+        </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 1672841968" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Date Expiration (s)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Pago Vencimiento(s)",FRA="Expiration de la date de paiement(s)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType VencimientosCaptionLbl</note>
+          <target>Expiration de la date de paiement(s)</target>
+        </trans-unit>
         <trans-unit id="Report 550184364 - ReportDataItem 809936682 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Invoice</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - ReportDataItem Sales Invoice Header - Property RequestFilterHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 464165316" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agent:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Agente:",FRA="Agent:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType AgenteCaptionLbl</note>
+          <target>Agent:</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 694817936" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Montant"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType AmtCaptionLbl</note>
+          <target>Montant</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 1889045978" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Artículo",FRA="Article"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Articulo_Lbl</note>
+          <target>Article</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 2278799068" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base",FRA="Base"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Base_Lbl</note>
+          <target>Base</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 719671359" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Cantidad_Lbl</note>
+          <target>Quantité</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 1616056101" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="NIF:",FRA="Nº de Siret"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType CIFDNICaptionLbl</note>
+          <target>Nº de Siret</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 339718340" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente",FRA="Client"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType ClienteCaptionLbl</note>
+          <target>Client</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3394917439" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remark</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Comentarios_Lbl</note>
+          <target>Commentaires</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 36964189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulks:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bultos:",FRA="Bulks:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType CuadroBultos_BultosLbl</note>
+          <target>Bulks:</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 598888425" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pallets:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Palets:",FRA="Palettes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType CuadroBultos_PaletsLbl</note>
+          <target>Palettes</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weight(kg):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType CuadroBultos_PesoNetoLbl</note>
+          <target>Gross Weight(kg):</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 2685853250" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume(m3):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3):",FRA="Volume(m3):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType CuadroBultos_VolumenLbl</note>
+          <target>Volume(m3):</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 465633065" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción",FRA="Description"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Decripcion_Lbl</note>
+          <target>Description</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 2387469503" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Address</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dirección de envío",FRA="Adresse d´expédition"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType DireccionDeEnvio_Lbl</note>
+          <target>Adresse d´expédition</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 2783645336" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Disc.Com</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.Com",FRA="Rem."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType DtoGeneral_Lbl</note>
+          <target>Rem.</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 2627770630" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.P.Disc</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.PP",FRA="Esc.P.C."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType DtoPP_Lbl</note>
+          <target>Esc.P.C.</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3205478158" size-unit="char" translate="yes" xml:space="preserve">
+          <source>INVOICE</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FACTURA",FRA="FACTURE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType FacturaCaptionLbl</note>
+          <target>FACTURE</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Forma de Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType FormadepagoCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 1400119597" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Bruto",FRA="Suos_Total"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType ImporteBruto_Lbl</note>
+          <target>Suos_Total</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3666218128" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiration Amount (s)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Vencimiento(s)",FRA="Montant (s) d´expiration"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType ImporteVencimientosCaptionLbl</note>
+          <target>Montant (s) d´expiration</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 850441175" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Importe_Lbl</note>
+          <target>Quantité</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 938744765" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IVA",FRA="TVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType IVA_Lbl</note>
+          <target>TVA</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 1059489614" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType NoAlbaranLidl_Lbl</note>
+          <target>Bordereau d´expédition:</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3686057625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType NoAlbaran_Lbl</note>
+          <target>Bordereau d´expédition:</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 1548886393" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order number:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido:",FRA="Nº commande:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType NoPedido_Lbl</note>
+          <target>Nº commande:</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3568111613" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Método Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType PmtMethodDescCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 590686299" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Términos Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType PmtTermsDescCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 1488271414" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Freight</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Portes",FRA="Fret"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Portes_Lbl</note>
+          <target>Fret</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 1677718373" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubTotal",FRA="Bases H.T."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType SubTotal_Lbl</note>
+          <target>Bases H.T.</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 291546920" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone/Fax:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tel/Fax:",FRA="Tél/Fax:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType TelefonoCaptionLbl</note>
+          <target>Tél/Fax:</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 4005924812" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tel:",FRA="Tél:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Tel_Lbl</note>
+          <target>Tél:</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 4040219166" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType txtcomentaires</note>
+          <target>Commentaires</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3659909257" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price/unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precio U.",FRA="Prix/un"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType UnitPriceCaptionLbl</note>
+          <target>Prix/un</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 1672841968" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Date Expiration (s)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Pago Vencimiento(s)",FRA="Expiration de la date de paiement(s)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType VencimientosCaptionLbl</note>
+          <target>Expiration de la date de paiement(s)</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - ReportDataItem 809936682 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Invoice</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - ReportDataItem Sales Invoice Header - Property RequestFilterHeading</note>
         </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 464165316" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agent:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Agente:",FRA="Agent:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType AgenteCaptionLbl</note>
+          <target>Agent:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 694817936" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Montant"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType AmtCaptionLbl</note>
+          <target>Montant</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 1889045978" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Artículo",FRA="Article"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType Articulo_Lbl</note>
+          <target>Article</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2775677983" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BANK:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BANCO:",FRA="BANQUE:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType BancoEtiqueta</note>
+          <target>BANQUE:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2278799068" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base",FRA="Base"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType Base_Lbl</note>
+          <target>Base</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2996935379" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BIC CODE:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BIC CODE:",FRA="BIC CODE:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType BICCodeEtiqueta</note>
+          <target>BIC CODE:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3598382119" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Packages</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bultos",FRA="Paquets"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType BultosEncabezado</note>
+          <target>Paquets</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 719671359" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType Cantidad_Lbl</note>
+          <target>Quantité</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 1616056101" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="NIF:",FRA="Nº de Siret"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType CIFDNICaptionLbl</note>
+          <target>Nº de Siret</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 339718340" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente",FRA="Client"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType ClienteCaptionLbl</note>
+          <target>Client</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3394917439" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remark</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType Comentarios_Lbl</note>
+          <target>Commentaires</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 391558350" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Terms of delivery</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Condición de entrega",FRA="État de livraison"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType condEntregaLbl</note>
+          <target>État de livraison</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 765970311" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Container:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Contenedor:",FRA="Récipient:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType ContenedorEtiqueta</note>
+          <target>Récipient:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 36964189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulks:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bultos:",FRA="Bulks:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType CuadroBultos_BultosLbl</note>
+          <target>Bulks:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weight(kg):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType CuadroBultos_PesoNetoLbl</note>
+          <target>Gross Weight(kg):</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2685853250" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume(m3):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3):",FRA="Volume(m3):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType CuadroBultos_VolumenLbl</note>
+          <target>Volume(m3):</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 465633065" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción",FRA="Description"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType Decripcion_Lbl</note>
+          <target>Description</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2003025284" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Final destination</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Destino Final",FRA="Destination finale"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType destinoFinalLbl</note>
+          <target>Destination finale</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 4259841369" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ADDRESS:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIRECCIÓN:",FRA="ADRESSE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType DireccionBancoEtiqueta</note>
+          <target>ADRESSE</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2387469503" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Address</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dirección de envío",FRA="Adresse d´expédition"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType DireccionDeEnvio_Lbl</note>
+          <target>Adresse d´expédition</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 513069622" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Divisa",FRA="Devise"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType divisaLbl</note>
+          <target>Devise</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2783645336" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Disc.Com 0 %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.Com 0 %",FRA="Rem. 0 %"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType DtoGeneral_Lbl</note>
+          <target>Rem. 0 %</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2627770630" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.P.Disc 0 %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.PP 0 %",FRA="Esc.P.C. 0 %"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType DtoPP_Lbl</note>
+          <target>Esc.P.C. 0 %</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3772761105" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment of the machines in 20 days</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Embarque de las máquinas em até 20 días",FRA="Expédition des machines en 20 jours"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType EmbarqueMaquinasTexto</note>
+          <target>Expédition des machines en 20 jours</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 61784167" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The undersigned companies are directly related to this business, without agents or representatives:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Las empresas abajo firmantes están relacionadas en este negocio, directamente, sin agentes o representantes:",FRA="Les sociétés soussignées sont directement liées à cette activité, sans agents ni représentants:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType EmpresasFirmantesEncabezado</note>
+          <target>Les sociétés soussignées sont directement liées à cette activité, sans agents ni représentants:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 4072949165" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exorter and manufacturer:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportador y fabricante:",FRA="Exorter et fabricant:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType ExportadorFabricanteEtiqueta</note>
+          <target>Exorter et fabricant:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3205478158" size-unit="char" translate="yes" xml:space="preserve">
+          <source>INVOICE</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FACTURA",FRA="FACTURE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType FacturaCaptionLbl</note>
+          <target>FACTURE</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Forma de Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType FormadepagoCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2504882608" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Method</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Forma de pago",FRA="Mode de paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType formaPagoLbl</note>
+          <target>Mode de paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 786201444" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IBAN</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IBAN",FRA="IBAN"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType IBANEtiqueta</note>
+          <target>IBAN</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 1446125487" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importer, Representative and Distributor:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importador, Representante y Distribuidor:",FRA="Importateur, représentant et distributeur:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType ImportadorRepresentanteDistribuidorEtiqueta</note>
+          <target>Importateur, représentant et distributeur:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 1400119597" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Bruto",FRA="Suos_Total"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType ImporteBruto_Lbl</note>
+          <target>Suos_Total</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3666218128" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiration Amount (s)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Vencimiento(s)",FRA="Montant (s) d´expiration"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType ImporteVencimientosCaptionLbl</note>
+          <target>Montant (s) d´expiration</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 850441175" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType Importe_Lbl</note>
+          <target>Quantité</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 761447140" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The exporter of the products included in this document (customs authorization nº ES / 46/0128/11) declares that, unless otherwise indicated, these products enjoy preferential origin European Union.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El exportador de los productos incluidos en el presente documento (autorización aduanera nº ES/46/0128/11) declara que, salvo indicación en contrario, estos productos gozan de origen preferencial Union Europea.",FRA="L´exportateur des produits repris dans ce document (autorisation douanière nº ES / 46/0128/11) déclare que, sauf indication contraire, ces produits bénéficient d´une origine préférentielle Union européenne."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType InfoExportadorTexto</note>
+          <target>L´exportateur des produits repris dans ce document (autorisation douanière nº ES / 46/0128/11) déclare que, sauf indication contraire, ces produits bénéficient d´une origine préférentielle Union européenne.</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 938744765" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IVA",FRA="TVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType IVA_Lbl</note>
+          <target>TVA</target>
+        </trans-unit>
         <trans-unit id="Report 2605446939 - NamedType 1514615946" size-unit="char" translate="yes" xml:space="preserve">
           <source>84.35.10.00</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType lbNCM</note>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3437311350" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SPAIN</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ESPAÑA",FRA="ESPAGNE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType lbPaisProcedencia</note>
+          <target>ESPAGNE</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2313638242" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transport Method</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Medio de Transporte",FRA="Moyen de transport"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType medioTransporteLbl</note>
+          <target>Moyen de transport</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3221101520" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NCM:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="NCM:",FRA="NCM:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType NCMEtiqueta</note>
+          <target>NCM:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 1059489614" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType NoAlbaranLidl_Lbl</note>
+          <target>Bordereau d´expédition:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3686057625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType NoAlbaran_Lbl</note>
+          <target>Bordereau d´expédition:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3067881580" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SPAIN</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ESPAÑA",FRA="ESPAGNE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType nombrePaisLbl</note>
+          <target>ESPAGNE</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 1548886393" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order number:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido:",FRA="Nº commande:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType NoPedido_Lbl</note>
+          <target>Nº commande:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3835348692" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sheet No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Hoja",FRA="Fiche nº"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType numHojaLbl</note>
+          <target>Fiche nº</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 866359771" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DESTINATION COUNTRY:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PAIS DE DESTINO:",FRA="PAYS DE DESTINATION:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType PaisDestinoEtiqueta</note>
+          <target>PAYS DE DESTINATION:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3677084266" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country of manufacture</source>
+          <note from="Developer" annotates="general" priority="2">ESP="País de Fabricación",FRA="Pays de fabrication"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType paisFabricacionLbl</note>
+          <target>Pays de fabrication</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3348135353" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SOURCE COUNTRY:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PAIS ORIGEN:",FRA="PAYS SOURCE:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType PaisOrigenEtiqueta</note>
+          <target>PAYS SOURCE:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 1624062828" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ORIGIN COUNTRY:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PAIS PROCEDENCIA:",FRA="PAYS D´ORIGINE:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType PaisProcedenciaEtiqueta</note>
+          <target>PAYS D´ORIGINE:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3679503931" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weight (kg.)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Bruto (kg.)",FRA="Poids brut (kg.)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType PesoBrutoEncabezado</note>
+          <target>Poids brut (kg.)</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3568111613" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Método Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType PmtMethodDescCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 590686299" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Términos Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType PmtTermsDescCaptionLbl</note>
+          <target>Conditions de Paiement</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 1488271414" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Freight</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Portes",FRA="Fret"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType Portes_Lbl</note>
+          <target>Fret</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 916697912" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Seal:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precinto:",FRA="Joint:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType PrecintoEtiqueta</note>
+          <target>Joint:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3239967119" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SHIPMENT PORT:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PUERTO DE EMBARQUE",FRA="PORT D´EXPÉDITION:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType PuertoEmbarqueEtiqueta</note>
+          <target>PORT D´EXPÉDITION:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 1677718373" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubTotal",FRA="Bases H.T."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType SubTotal_Lbl</note>
+          <target>Bases H.T.</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 291546920" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone/Fax:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tel/Fax:",FRA="Tél/Fax:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType TelefonoCaptionLbl</note>
+          <target>Tél/Fax:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 4005924812" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tel:",FRA="Tél:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType Tel_Lbl</note>
+          <target>Tél:</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 4040219166" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType txtcomentaires</note>
+          <target>Commentaires</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3659909257" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price/unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precio U.",FRA="Prix/un"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType UnitPriceCaptionLbl</note>
+          <target>Prix/un</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 1672841968" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Date Expiration (s)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Pago Vencimiento(s)",FRA="Expiration de la date de paiement(s)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType VencimientosCaptionLbl</note>
+          <target>Expiration de la date de paiement(s)</target>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 2376488124" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume (m3)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen (m3)",FRA="Volume (m3)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType VolumenEncabezado</note>
+          <target>Volume (m3)</target>
         </trans-unit>
         <trans-unit id="Report 2605446939 - ReportDataItem 809936682 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Invoice</source>
@@ -4959,6 +5949,282 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report Make 349 Declaration Zummo - NamedType Text1100017</note>
         </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 1889045978" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Article</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Artículo",FRA="Article"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType Articulo_Lbl</note>
+          <target>Article</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 4233096702" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº cuenta",FRA="N ° de compte."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType BankAccNoCaptionLbl</note>
+          <target>N ° de compte.</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 2728952663" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Banco",FRA="Banque"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType BankNameCaptionLbl</note>
+          <target>Banque</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 852687422" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill-to Address</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fact. a-Dirección",FRA="Facturer à l´adresse"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType BilltoAddressCaptionLbl</note>
+          <target>Facturer à l´adresse</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 1938518538" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BULKS</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BULTOS",FRA="VRAC"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType BULTOS_Lbl</note>
+          <target>VRAC</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 719671359" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType Cantidad_Lbl</note>
+          <target>Quantité</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 2205199427" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente",FRA="Client"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType Cliente_Lbl</note>
+          <target>Client</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 817831222" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción",FRA="La description"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType DescriptionCaptionLbl</note>
+          <target>La description</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 2387469503" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipping Address</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dirección de Envío",FRA="Adresse de livraison"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType DireccionDeEnvio_Lbl</note>
+          <target>Adresse de livraison</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 2728513993" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha emisión documento",FRA="Date du document"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType DocumentDateCaptionLbl</note>
+          <target>Date du document</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 1877430892" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Correo electrónico",FRA="Courrier électronique"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType EmailCaptionLbl</note>
+          <target>Courrier électronique</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 3629279096" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha",FRA="Date"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType Fecha_Lbl</note>
+          <target>Date</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 13422290" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Giro No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº giro postal",FRA="Giro No."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType GiroNoCaptionLbl</note>
+          <target>Giro No.</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 973567044" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Header Dimensions</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dimensiones cabecera",FRA="Dimensions de l´en-tête"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType HeaderDimensionsCaptionLbl</note>
+          <target>Dimensions de l´en-tête</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 2862688884" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Home Page</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Página Web",FRA="Page d´accueil"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType HomePageCaptionLbl</note>
+          <target>Page d´accueil</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 2984488518" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PORT OF SHIPMENT: VALENCIA</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PUERTO DE EMBARQUE: VALENCIA",FRA="PORT D´EXPÉDITION: VALENCE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType Icm_Lbl</note>
+          <target>PORT D´EXPÉDITION: VALENCE</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 3469170451" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Tracking - Appendix</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seguimiento productos - Apéndice",FRA="Suivi des produits - Annexe"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType ItemTrackingAppendixCaptionLbl</note>
+          <target>Suivi des produits - Annexe</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 3926274846" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº lote",FRA="N ° de lot"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType LotNoCaptionLbl</note>
+          <target>N ° de lot</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 1553690300" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transport Method</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Medio de Transporte",FRA="Méthode de transport"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType MedioDeTransporte_Lbl</note>
+          <target>Méthode de transport</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 1292293871" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº",FRA="Nº"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType NoCaptionLbl</note>
+          <target>Nº</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 4284100332" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Page</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Hoja",FRA="Nº page"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType NoHoja_Lbl</note>
+          <target>Nº page</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 1338829404" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº PALLET</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº PALET",FRA="Nº PALETTES"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType NoPalet_Lbl</note>
+          <target>Nº PALETTES</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 4107521336" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Serial No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº de Serie:",FRA="Numéro de série."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType NoSerie_Lbl</note>
+          <target>Numéro de série.</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 3289609329" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sheet No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Hoja",FRA="Fiche n°"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType NumHoja_Lbl</note>
+          <target>Fiche n°</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 170669629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Num</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Núm",FRA="Nom"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType Num_Lbl</note>
+          <target>Nom</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 332993758" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page %1 of %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Página %1 de %2",FRA="Page %1 sur %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PageCaptionCap_Lbl</note>
+          <target>Page %1 sur %2</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 588623347" size-unit="char" translate="yes" xml:space="preserve">
+          <source>COUNTRY OF DESTINATION: BRAZIL</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PAIS DE DESTINO: BRASIL",FRA="PAYS DE DESTINATION: BRÉSIL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PaisDeDestino_Lbl</note>
+          <target>PAYS DE DESTINATION: BRÉSIL</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 3256405154" size-unit="char" translate="yes" xml:space="preserve">
+          <source>COUNTRY PROVENANCE: SPAIN</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PAIS PROCEDENCIA: ESPAÑA",FRA="PROVENANCE PAYS: ESPAGNE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PaisOrigen_Lbl</note>
+          <target>PROVENANCE PAYS: ESPAGNE</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 794739971" size-unit="char" translate="yes" xml:space="preserve">
+          <source>COUNTRY PROVENANCE: SPAIN</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PAIS PROCEDENCIA: ESPAÑA",FRA="PROVENANCE PAYS: ESPAGNE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PaisProcedencia_Lbl</note>
+          <target>PROVENANCE PAYS: ESPAGNE</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 853766810" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GROSS WEIGHT KG</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PESO BRUTO KG",FRA="POIDS BRUT KG"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PesoBrutoKG_Lbl</note>
+          <target>POIDS BRUT KG</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 129683262" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross weight</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Bruto",FRA="Poids brut"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PesoBruto_Lbl</note>
+          <target>Poids brut</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 2751239584" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Net weight</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto",FRA="Poids net"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PesoNeto_Lbl</note>
+          <target>Poids net</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 1928308579" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº teléfono",FRA="Numéro de téléphone"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PhoneNoCaptionLbl</note>
+          <target>Numéro de téléphone</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 2777372655" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PORT UNEMARK: SANTOS-SSZ-BRAS</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PUERTO DESEMBARQUE: SANTOS-SSZ-BRAS",FRA="PORT UNEMARK: SANTOS-SSZ-BRAS"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PuertoDeEmbarque_Lbl</note>
+          <target>PORT UNEMARK: SANTOS-SSZ-BRAS</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 4086893218" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TRANS. ADVANCED</source>
+          <note from="Developer" annotates="general" priority="2">ESP="TRANS. ADELANTADA",FRA="TRANS. AVANCÉE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PuertoDesembarque_Lbl</note>
+          <target>TRANS. AVANCÉE</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 3246368361" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType QuantityCaptionLbl</note>
+          <target>Quantité</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 3900935110" size-unit="char" translate="yes" xml:space="preserve">
+          <source>As provided by Regulation (EU) 2016/769 of the European Parliament and of the Council of April 27, 2016 regarding the protection of natural persons, we inform you that your data will be incorporated into the treatment system owned by ZUMMO MECHANICAL INNOVATIONS, SA - in order to be able to send you the corresponding invoice. You may exercise the rights of access, rectification, limitation of treatment, deletion, portability and opposition / revocation, in the terms established by current regulations on data protection, by sending your request to the postal address indicated above, you can also address to the competent Control Authority to submit the claim it deems appropriate.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Según lo Dispuesto por el Reglamento (UE) 2016/769 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de ZUMMO INNOVACIONES MECÁNICAS, S.A. - con la finalidad de poder remitirle la correspondiente factura. Podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición/revocación, en los términos que establece la normativa vigente en materia de protección de datos, dirigiendo su petición a la dirección postal arriba indicada, asimismo, podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna.",FRA="Conformément au règlement (UE) 2016/769 du Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques, nous vous informons que vos données seront intégrées dans le système de traitement appartenant à ZUMMO MECHANICAL INNOVATIONS, SA - afin de pouvoir vous envoyer la facture correspondante. Vous pouvez exercer les droits d´accès, de rectification, de limitation de traitement, de suppression, de portabilité et d´opposition / révocation, dans les termes établis par la réglementation en vigueur sur la protection des données, en adressant votre demande à l´adresse postale indiquée ci-dessus, vous pouvez également vous adresser au l´autorité de contrôle compétente pour soumettre la réclamation qu´elle juge appropriée."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType SegunLoDispuesto_Lbl</note>
+          <target>Conformément au règlement (UE) 2016/769 du Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques, nous vous informons que vos données seront intégrées dans le système de traitement appartenant à ZUMMO MECHANICAL INNOVATIONS, SA - afin de pouvoir vous envoyer la facture correspondante. Vous pouvez exercer les droits d´accès, de rectification, de limitation de traitement, de suppression, de portabilité et d´opposition / révocation, dans les termes établis par la réglementation en vigueur sur la protection des données, en adressant votre demande à l´adresse postale indiquée ci-dessus, vous pouvez également vous adresser au l´autorité de contrôle compétente pour soumettre la réclamation qu´elle juge appropriée.</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 601422815" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Serial No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº serie",FRA="Numéro de série."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType SerialNoCaptionLbl</note>
+          <target>Numéro de série.</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 4217840372" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha envío",FRA="Date d´expédition"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType ShipmentDateCaptionLbl</note>
+          <target>Date d´expédition</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 2259602087" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº albarán",FRA="Numéro d´expédition"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType ShipmentNoCaptionLbl</note>
+          <target>Numéro d´expédition</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 303100513" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone./Fax:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Telf./Fax:",FRA="Téléphone / Fax:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType TelFax_Lbl</note>
+          <target>Téléphone / Fax:</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 992181672" size-unit="char" translate="yes" xml:space="preserve">
+          <source>COUNTRY ORIGIN: SPAIN</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PAIS ORIGEN: ESPAÑA",FRA="ORIGINE DU PAYS: ESPAGNE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType TransAdelantada_Lbl</note>
+          <target>ORIGINE DU PAYS: ESPAGNE</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 1306668226" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Reg. No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CIF/NIF",FRA="TVA Reg. Non."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType VATRegNoCaptionLbl</note>
+          <target>TVA Reg. Non.</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 1399830839" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VOLUME M3(PALLETS)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="VOLUMEN M3(PALETS)",FRA="VOLUME M3 (PALETTES)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType VolumenM3_Lbl</note>
+          <target>VOLUME M3 (PALETTES)</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - NamedType 2420091883" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on January 26, 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-96112024 Nº R.I. AEE producer 288</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia el 26 de enero de 1999, Tomo 4336, Libro 1648, Sección Gral., Folio 212, hoja Y-22381, Inscripción 1ª CIF A-96112024 Nº R.I. Productor AEE 288",FRA="Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on 26 janvier 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-96112024 Nº R.I. AEE producteur 288"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType ZummoInnovaciones_Lbl</note>
+          <target>Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on 26 janvier 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-96112024 Nº R.I. AEE producteur 288</target>
+        </trans-unit>
+        <trans-unit id="Report 1755290613 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opciones",FRA="Les options"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - Control Options - Property Caption</note>
+          <target>Les options</target>
+        </trans-unit>
         <trans-unit id="Report 2651873947 - ReportDataItem 2072992664 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
           <source>Standard Purchase - Order</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -5013,6 +6279,30 @@
           <source>Show Internal Information</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control ShowInternalInfo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4049458315 - NamedType 36964189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulks:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bultos:",FRA="Bulks:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType CuadroBultos_BultosLbl</note>
+          <target>Bulks:</target>
+        </trans-unit>
+        <trans-unit id="Report 4049458315 - NamedType 598888425" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pallets:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Palets:",FRA="Palettes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType CuadroBultos_PaletsLbl</note>
+          <target>Palettes</target>
+        </trans-unit>
+        <trans-unit id="Report 4049458315 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weight(kg):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType CuadroBultos_PesoNetoLbl</note>
+          <target>Gross Weight(kg):</target>
+        </trans-unit>
+        <trans-unit id="Report 4049458315 - NamedType 2685853250" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume(m3):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3):",FRA="Volume(m3):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType CuadroBultos_VolumenLbl</note>
+          <target>Volume(m3):</target>
         </trans-unit>
         <trans-unit id="Report 4049458315 - NamedType 937977099" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desde</source>
@@ -5108,6 +6398,30 @@
           <source>Show Internal Information</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control ShowInternalInfo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3170430146 - NamedType 36964189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulks:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bultos:",FRA="Bulks:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType CuadroBultos_BultosLbl</note>
+          <target>Bulks:</target>
+        </trans-unit>
+        <trans-unit id="Report 3170430146 - NamedType 598888425" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pallets:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Palets:",FRA="Palettes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType CuadroBultos_PaletsLbl</note>
+          <target>Palettes</target>
+        </trans-unit>
+        <trans-unit id="Report 3170430146 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weight(kg):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType CuadroBultos_PesoNetoLbl</note>
+          <target>Gross Weight(kg):</target>
+        </trans-unit>
+        <trans-unit id="Report 3170430146 - NamedType 2685853250" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume(m3):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3):",FRA="Volume(m3):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType CuadroBultos_VolumenLbl</note>
+          <target>Volume(m3):</target>
         </trans-unit>
         <trans-unit id="Report 3170430146 - NamedType 937977099" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desde</source>

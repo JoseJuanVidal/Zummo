@@ -178,7 +178,7 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
 
     actions
     {
-        addafter("Co&mments")
+        /*addafter("Co&mments")
         {
             action(ComentariosBloqueo)
             {
@@ -203,7 +203,7 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
                     pageComentarios.RunModal();
                 end;
             }
-        }
+        }*/
 
         modify("Co&mments")
         {
@@ -241,6 +241,38 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
                 Promoted = true;
                 RunObject = page "Comentarios Cliente";
                 RunPageLink = "Table Name" = CONST(Customer), "No." = FIELD("No.");
+            }
+        }
+        addafter(ApprovalEntries)
+        {
+            action(HistAseguradora)
+            {
+                ApplicationArea = all;
+                Caption = 'Hist. Aseguradora', comment = 'ESP="Hist. Aseguradora"';
+                Image = History;
+                PromotedCategory = Category7;
+                Promoted = true;
+
+                RunObject = page "STH Hist. Aseguradora";
+                RunPageLink = CustomerNo = field("No.");
+
+            }
+        }
+        addafter(MergeDuplicate)
+        {
+            action(FinCredito)
+            {
+                ApplicationArea = all;
+                Caption = 'Finalizar Credito', comment = 'ESP="Finalizar Credito"';
+                Image = EndingText;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Funciones;
+                begin
+                    Funciones.FinAseguradora(Rec);
+                end;
+
             }
         }
     }

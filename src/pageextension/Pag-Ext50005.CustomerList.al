@@ -147,8 +147,57 @@ pageextension 50005 "CustomerList" extends "Customer List"
                         CalculateFechaVto;
                 end;
             }
-        }
+            action(FinCredito)
+            {
+                ApplicationArea = all;
+                Caption = 'Finalizar Credito', comment = 'ESP="Finalizar Credito"';
+                Image = EndingText;
 
+                trigger OnAction()
+                var
+                    Customer: Record Customer;
+                    Input: page "STH Input Hist Aseguradora";
+                    Funciones: Codeunit Funciones;
+                    Fechafin: date;
+                    lblConfirm: Label '¿desea eliminar el credito a %1 %2 seleccionados?', comment = 'ESP="¿desea eliminar el credito a %1 %2 seleccionados?"';
+                begin
+                    CurrPage.SetSelectionFilter(Customer);
+
+                    // pedimos los datos de Fecha Fin
+                    Input.SetShowFin();
+                    //Input.SetDatos(Customer);
+                    Input.LookupMode := true;
+                    if Input.RunModal() = Action::LookupOK then begin
+
+                        // Confirmamos Cerrar el credito
+                        if Confirm(lblConfirm, false, Customer.TableCaption, Customer.Count) then begin
+                            FechaFin := Input.GetDateFin();
+                            if Customer.findset() then
+                                repeat
+                                    Funciones.FinCustomerCredit(Customer, FechaFin);
+                                Until Customer.next() = 0;
+
+                        end;
+                    end
+
+                end;
+
+            }
+        }
+        addafter(ApprovalEntries)
+        {
+            action(HistAseguradora)
+            {
+                ApplicationArea = all;
+                Caption = 'Hist. Aseguradora', comment = 'ESP="Hist. Aseguradora"';
+                Image = History;
+
+
+                RunObject = page "STH Hist. Aseguradora";
+                RunPageLink = CustomerNo = field("No.");
+
+            }
+        }
     }
 
 
@@ -195,5 +244,30 @@ pageextension 50005 "CustomerList" extends "Customer List"
         Funciones: Codeunit Funciones;
     begin
         Funciones.CustomerCalculateFechaVto();
+    end;
+
+    local procedure FinMultiSelectAseguradora(var Customer: Record Customer)
+    var
+        Input: page "STH Input Hist Aseguradora";
+        Funciones: Codeunit Funciones;
+        Fechafin: date;
+        lblConfirm: Label '¿Desea eliminar el credito a %1 %2 seleccionados?', comment = 'ESP="¿Desea eliminar el credito a %1 %2 seleccionados?"';
+    begin
+        // pedimos los datos de Fecha Fin
+        Input.SetShowFin();
+        //Input.SetDatos(Customer);
+        Input.LookupMode := true;
+        if Input.RunModal() = Action::LookupOK then begin
+
+            // Confirmamos Cerrar el credito
+            if Confirm(lblConfirm, false, Customer.TableCaption, Customer.Count) then begin
+                FechaFin := Input.GetDateFin();
+                if Customer.findset() then
+                    repeat
+                        Funciones.FinCustomerCredit(Customer, FechaFin);
+                    Until Customer.next() = 0;
+
+            end;
+        end
     end;
 }
