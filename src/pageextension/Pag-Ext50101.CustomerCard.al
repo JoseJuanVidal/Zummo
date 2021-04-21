@@ -314,6 +314,7 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
                             Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := Aseguradora;
                             Customer."Credito Maximo Aseguradora_btc" := Importe;
                             Customer.Suplemento_aseguradora := Suplemento;
+                            Customer.validate("Credit Limit (LCY)", Customer."Credito Maximo Aseguradora_btc" + Customer."Credito Maximo Interno_btc");
                             Customer.Modify();
                             CurrPage.Update();
                         end;

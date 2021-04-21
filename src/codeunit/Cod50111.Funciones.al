@@ -979,17 +979,18 @@ codeunit 50111 "Funciones"
     begin
         HistAseguradora.SetRange(CustomerNo, CustomerNo);
         HistAseguradora.SetRange(Aseguradora, Aseguradora);
+        HistAseguradora.SetRange(DateIni, FechaIni);
         if not HistAseguradora.FindLast() then begin
             HistAseguradora.Init();
             HistAseguradora.CustomerNo := CustomerNo;
             HistAseguradora.DateIni := FechaIni;
             HistAseguradora.Aseguradora := Aseguradora;
-            HistAseguradora."Credito Maximo Aseguradora_btc" := Importe;
-            HistAseguradora.Suplemento := Suplemento;
             HistAseguradora.Insert();
         end;
         HistAseguradora.Name := Name;
+        HistAseguradora."Credito Maximo Aseguradora_btc" := Importe;
         HistAseguradora.Suplemento := Suplemento;
+        HistAseguradora.DateFin := 0D;
         HistAseguradora.Modify();
     end;
 }

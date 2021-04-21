@@ -83,7 +83,7 @@ page 50014 "STH Input Hist Aseguradora"
         exit(FechaFin);
     end;
 
-    procedure GetDatos(var Aseg: code[20]; var Imp: Decimal; var Ini: Date; Suple: code[20])
+    procedure GetDatos(var Aseg: code[20]; var Imp: Decimal; var Ini: Date; var Suple: code[20])
     begin
         Aseg := Aseguradora;
         Imp := Importe;

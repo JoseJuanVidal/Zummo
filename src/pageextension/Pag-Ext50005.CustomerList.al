@@ -147,7 +147,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
                         CalculateFechaVto;
                 end;
             }
-            action(darCredito)
+            action(DarCredito)
             {
                 ApplicationArea = all;
                 Caption = 'Asig. Credito Aseguradora', comment = 'ESP="Asig. Credito Aseguradora"';
@@ -182,11 +182,13 @@ pageextension 50005 "CustomerList" extends "Customer List"
                                 Funciones.FinCustomerCredit(Customer, CalcDate('-1D', FechaIni));
                                 Customer.Get(rec."No.");
                             end;
+
                             Funciones.AsigCreditoAeguradora(Customer."No.", Customer.Name, Aseguradora, Importe, Suplemento, FechaIni);
 
                             Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := Aseguradora;
                             Customer."Credito Maximo Aseguradora_btc" := Importe;
                             Customer.Suplemento_aseguradora := Suplemento;
+                            Customer.validate("Credit Limit (LCY)", Customer."Credito Maximo Aseguradora_btc" + Customer."Credito Maximo Interno_btc");
                             Customer.Modify();
                             CurrPage.Update();
                         end;
