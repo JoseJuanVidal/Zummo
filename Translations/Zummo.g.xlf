@@ -15468,15 +15468,15 @@
           <note from="Developer" annotates="general" priority="2">ESP="Calcular Fecha Vto. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action CalcFechaVto - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 363045002 - Action 434109143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+        <trans-unit id="PageExtension 363045002 - Action 875530423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Asig. Credito Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Asig. Credito Aseguradora"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action darCredito - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action DarCredito - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 363045002 - Action 434109143 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
+        <trans-unit id="PageExtension 363045002 - Action 875530423 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
           <source>Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action darCredito - Method OnAction - NamedType lblConfirm</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action DarCredito - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 2554152333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Finalizar Credito</source>
