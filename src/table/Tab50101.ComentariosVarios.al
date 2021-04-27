@@ -1,9 +1,8 @@
-/*
-table 50101 "ComentariosVarios"
+/*table 50101 "ComentariosVarios"
 {
     DataClassification = CustomerContent;
     Caption = 'Various Comments', comment = 'ESP="Comentarios varios"';
-    
+
     //DrillDownPageId = ComentariosVarios;
     //LookupPageId = ComentariosVarios;
 
@@ -48,5 +47,4 @@ table 50101 "ComentariosVarios"
             Clustered = true;
         }
     }
-}
-*/
+}*/

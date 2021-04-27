@@ -15,7 +15,7 @@ codeunit 50102 "Integracion_crm_btc"
         //error('pp');
         txtTipo := GetSourceDestCode(SourceRecordRef, DestinationRecordRef);
         CASE txtTipo OF
-            'Customer-CRM Account_btc':
+            'Customer-CRM Account_btc', 'Customer-CRM Account_crm_btc':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposCliente(SourceRecordRef, DestinationRecordRef);
             'Item-CRM Productos_btc', 'Item-CRM Productos_crm_btc':
@@ -881,6 +881,7 @@ codeunit 50102 "Integracion_crm_btc"
         Salesperson: record "Salesperson/Purchaser";
         SalespersonId: Guid;
         CodigosPostales: Record "Post Code";
+        Update: Boolean;
     begin
 
         SourceRecordRef.SETTABLE(Customer);
@@ -905,13 +906,21 @@ codeunit 50102 "Integracion_crm_btc"
 
         //******************* VENDEDOR DEFECTO ***************************************
         //Si no viene relleno pongo el de defecto
-        if IsNullGuid(CRMAccount2.OwnerId) then begin
-            IF NOT CRMIntegrationRecord.FindIDFromRecordID(Salesperson.RECORDID, SalespersonId) THEN
-                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Salesperson/Purchaser", Salesperson.RECORDID, OutOfMapFilter) THEN
-                    ERROR('CRM Vendedor: ' + Customer."No." + ' Dato: ' + Salesperson.Code);
-            CRMAccount2.OwnerId := SalespersonId;
+        // JJV no esta posicionado el salesperson en un registro y si no existe lo pongo en ZUMMO
+        if Salesperson.GET(Customer."Salesperson Code") then begin
+            Update := false;
+            if IsNullGuid(CRMAccount2.OwnerId) then begin
+                IF CRMIntegrationRecord.FindIDFromRecordID(Salesperson.RECORDID, SalespersonId) THEN
+                    Update := true
+                ELSE
+                    IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Salesperson/Purchaser", Salesperson.RECORDID, OutOfMapFilter) THEN
+                        Update := true;
+                //ERROR('CRM Vendedor: ' + Customer."No." + ' Dato: ' + Salesperson.Code);
+                if Update then
+                    CRMAccount2.OwnerId := SalespersonId;
+            end;
         end;
-
+        // - JJV
 
         //******************** PROVINCIA ********************
 
@@ -956,12 +965,18 @@ codeunit 50102 "Integracion_crm_btc"
         TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
         TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::Delegado);
         TextosAuxiliares.SetRange(NumReg, Customer.Delegado_btc);
+        Update := false;
         if TextosAuxiliares.FindFirst() then begin
-            IF NOT CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
-                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
-                    ERROR('CRM Delegado: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
-            CRMAccount2.zum_bcdelegado := TextosAuxiliaresId;
-            AdditionalFieldsWereModified := TRUE;
+            IF CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
+                Update := true
+            ELSE
+                IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
+                    Update := true;
+            //ERROR('CRM Delegado: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
+            if Update then begin
+                CRMAccount2.zum_bcdelegado := TextosAuxiliaresId;
+                AdditionalFieldsWereModified := TRUE;
+            end;
         end;
         //******************** CLIENTE CORPORATIVO ********************
         TextosAuxiliares.Reset();

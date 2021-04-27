@@ -252,11 +252,13 @@ codeunit 50101 "Eventos_btc"
         Item.reset;
         Item.SetRange("No.", Rec."No.");
         Item.FindFirst();
-        Clear(CreatestockkepingUnit);
+        // JJV22/4/2021 que no cree todos los almacenes la unidad de almacenamiento
+        // animalada - 
+        /* Clear(CreatestockkepingUnit);
         CreatestockkepingUnit.SetTableView(Item);
         CreatestockkepingUnit.InitializeRequest(0, false, true);
         CreatestockkepingUnit.UseRequestPage(false);
-        CreatestockkepingUnit.Run();
+        CreatestockkepingUnit.Run();*/
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Mailing", 'OnBeforeSendEmail', '', true, true)]

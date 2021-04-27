@@ -143,7 +143,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         {
             DataClassification = CustomerContent;
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("GrupoCliente"), TipoRegistro = const(Tabla));
-            Caption = 'Tipo Cliente', comment = 'ESP="Tipo Cliente"';
+            Caption = 'Cliente Tipo', comment = 'ESP="Cliente Tipo"';
         }
 
         field(50018; Perfil_btc; Code[20])
@@ -242,9 +242,8 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         field(50032; Mercado_btc; Code[20])
         {
             DataClassification = CustomerContent;
-            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Cliente Corporativo"), TipoRegistro = const(Tabla));
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Mercados), TipoRegistro = const(Tabla));
             Caption = 'Mercado', comment = 'ESP="Mercado"';
-            Editable = false;
         }
 
     }

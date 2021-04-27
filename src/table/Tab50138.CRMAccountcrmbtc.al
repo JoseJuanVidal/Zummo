@@ -1,3 +1,4 @@
+
 table 50138 "CRM Account_crm_btc"
 {
     Caption = 'Account';
@@ -1459,9 +1460,35 @@ table 50138 "CRM Account_crm_btc"
             Description = '';
             ExternalName = 'zum_formadepagosolicitada';
             ExternalType = 'String';
-
         }
-
+        field(50050; bit_centraldecompras; Text[100])
+        {
+            Caption = 'Central compras';
+            Description = '';
+            ExternalName = 'bit_centraldecompras';
+            ExternalType = 'String';
+        }
+        field(50051; bit_grupodedescuento; Text[100])
+        {
+            Caption = 'Grupo dto. Cliente';
+            Description = '';
+            ExternalName = 'bit_grupodedescuento';
+            ExternalType = 'String';
+        }
+        field(50052; bit_subcliente; Text[100])
+        {
+            Caption = 'Forma Pago Solicitada';
+            Description = '';
+            ExternalName = 'bit_subcliente';
+            ExternalType = 'String';
+        }
+        field(50053; bit_idioma; Text[100])
+        {
+            Caption = 'Cód. Idioma';
+            Description = '';
+            ExternalName = 'bit_idioma';
+            ExternalType = 'String';
+        }
     }
 
     keys

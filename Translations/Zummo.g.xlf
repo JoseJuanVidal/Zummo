@@ -498,6 +498,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_bcterminosdepago - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 4140636605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forma Pago Solicitada</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_centraldecompras - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 2673545382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forma Pago Solicitada</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_grupodedescuento - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 3438483489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forma Pago Solicitada</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_idioma - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 2207558092 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forma Pago Solicitada</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subcliente - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Field 1790090149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Business Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6228,6 +6248,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Crear en Bussiness Central"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Canal_crm_btc - Action CreateFromCDS - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2655632291 - Action 1702811970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generate the entity from the coupled Common Data Service data.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Generar la entidad desde el dato emparejado del Common Data Service"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Cliente_crm_btc - Action CreateFromCDS - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2655632291 - Action 1702811970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create in Business Central</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear en Bussiness Central"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Cliente_crm_btc - Action CreateFromCDS - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1038716773 - Action 1702811970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generate the entity from the coupled Common Data Service data.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Generar la entidad desde el dato emparejado del Common Data Service"</note>
@@ -6757,6 +6787,11 @@
           <source>Area Manager</source>
           <note from="Developer" annotates="general" priority="2">Area Manager</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control AreaManager_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 782583580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cliente Reporting</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Reporting"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control ClienteReporting_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2287400882 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>External Document No.</source>
@@ -18984,8 +19019,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Formadepagosolicitada - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 3486487259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Tipo Cliente</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo Cliente"</note>
+          <source>Cliente Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field GrupoCliente_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">

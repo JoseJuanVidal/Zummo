@@ -1,7 +1,7 @@
-page 50025 "CRM Canal_crm_btc"
+page 50026 "CRM Cliente_crm_btc"
 {
     PageType = List;
-    SourceTable = "CRM Canal_crm_btc"; // "CRM FormasPago_btc";
+    SourceTable = "CRM Account_crm_btc"; // "CRM FormasPago_btc";
     Editable = false;
     ApplicationArea = All;
     UsageCategory = Lists;
@@ -33,12 +33,17 @@ page 50025 "CRM Canal_crm_btc"
                 field(OverriddenCreatedOn; OverriddenCreatedOn) { ApplicationArea = All; }
                 field(TimeZoneRuleVersionNumber; TimeZoneRuleVersionNumber) { ApplicationArea = All; }
                 field(UTCConversionTimeZoneCode; UTCConversionTimeZoneCode) { ApplicationArea = All; }
-                field(zum_bccanalId; zum_bccanalId) { ApplicationArea = All; }
-                field(zum_Name; zum_Name) { ApplicationArea = All; }
+                field(AccountId; AccountId) { ApplicationArea = All; }
+                field(AccountNumber; AccountNumber) { ApplicationArea = All; }
+                field(Name; Name) { ApplicationArea = All; }
+
+                field(zum_Formadepagosolicitada; zum_Formadepagosolicitada) { ApplicationArea = All; }
+                field(bit_centraldecompras; bit_centraldecompras) { ApplicationArea = All; }
+                field(bit_grupodedescuento; bit_grupodedescuento) { ApplicationArea = All; }
+                field(bit_subcliente; bit_subcliente) { ApplicationArea = All; }
+                field(bit_idioma; bit_idioma) { ApplicationArea = All; }
             }
         }
-
-
     }
 
     actions

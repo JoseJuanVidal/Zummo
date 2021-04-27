@@ -28,9 +28,16 @@ page 50007 "Posted Sales Invoice Change"
                     Caption = 'Area Manager', comment = 'Area Manager';
                     TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(tabla), TipoTabla = const(AreaManager));
                 }
+                field(ClienteReporting_btc; ClienteReporting_btc)
+                {
+                    ApplicationArea = all;
+                    tableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("ClienteReporting"), TipoRegistro = const(Tabla));
+                    Caption = 'Cliente Reporting', comment = 'ESP="Cliente Reporting"';
+                }
             }
         }
     }
+
 
     actions
     {
@@ -52,13 +59,15 @@ page 50007 "Posted Sales Invoice Change"
         ExternalDocumentNo: Text[35];
         WorkDescription: Text;
         AreaManager_btc: code[20];
+        ClienteReporting_btc: Code[20];
         TempBlob: Record TempBlob temporary;
 
-    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20])
+    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20])
     begin
         ExtDocNo := ExternalDocumentNo;
         WorkDesc := WorkDescription;
         AreaManager := AreaManager_btc;
+        ClienteReporting := ClienteReporting_btc;
     end;
 
     procedure SetDatos(SalesInvoiceHeader: Record "Sales Invoice Header")
