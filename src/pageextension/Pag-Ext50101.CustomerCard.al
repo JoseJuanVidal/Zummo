@@ -30,6 +30,10 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
                 ApplicationArea = all;
                 Editable = false;
             }
+            field(clasificacion_aseguradora; clasificacion_aseguradora)
+            {
+                ApplicationArea = all;
+            }
         }
         addafter("Prices Including VAT")
         {

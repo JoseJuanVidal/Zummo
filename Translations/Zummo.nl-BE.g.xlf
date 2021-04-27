@@ -3,11 +3,6 @@
   <file datatype="xml" source-language="en-US" target-language="nl-BE" original="Zummo">
     <body>
       <group id="body">
-        <trans-unit id="Table 3255603460 - Field 1702326117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>TipoComentario_btc</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosVarios - Field TipoComentario_btc - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 3049429624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -377,6 +372,26 @@
           <source>Términos de pago BC</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_bcterminosdepago - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 4140636605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Central compras</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_centraldecompras - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 2673545382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Grupo dto. Cliente</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_grupodedescuento - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 3438483489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cód. Idioma</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_idioma - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 2207558092 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forma Pago Solicitada</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subcliente - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3049429624 - Field 1790090149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Business Type</source>
@@ -1152,6 +1167,121 @@
           <source>Nombre</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM AreaManager_crm_btc - Field zum_Nombre - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Canal BC</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 3425251533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field CreatedBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 1302697051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field CreatedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 1782641658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By (Delegate)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field CreatedOnBehalfBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 2723275795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Sequence Number</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field ImportSequenceNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 1907234846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field ModifiedBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 2247197532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field ModifiedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 982954073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By (Delegate)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field ModifiedOnBehalfBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 1205302601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Record Created On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field OverriddenCreatedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 3223187400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field OwnerId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 4168057392 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OwnerIdType</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field OwnerIdType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 2129327850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owning Business Unit</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field OwningBusinessUnit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 2227878325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owning Team</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field OwningTeam - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 453295697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owning User</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field OwningUser - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 1765179598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field statecode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 1765179598 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Active,Inactive</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field statecode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 60896147 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status Reason</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field statuscode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 60896147 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Active,Inactive</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field statuscode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 1372750120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Time Zone Rule Version Number</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field TimeZoneRuleVersionNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 3651674112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UTC Conversion Time Zone Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field UTCConversionTimeZoneCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 2261456899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version Number</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field VersionNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 2360924540 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Canal BC</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field zum_bccanalId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029087944 - Field 3333738286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Canal_crm_btc - Field zum_Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2935214412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Actividad de cliente</source>

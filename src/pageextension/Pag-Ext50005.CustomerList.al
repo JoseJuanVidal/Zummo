@@ -52,6 +52,11 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 ApplicationArea = all;
                 StyleExpr = StyleExp;
             }
+            field(clasificacion_aseguradora; clasificacion_aseguradora)
+            {
+                ApplicationArea = all;
+                StyleExpr = StyleExp;
+            }
             field(FechaVto; FechaVto)
             {
                 ApplicationArea = all;

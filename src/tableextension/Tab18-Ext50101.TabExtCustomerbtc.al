@@ -245,6 +245,11 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Mercados), TipoRegistro = const(Tabla));
             Caption = 'Mercado', comment = 'ESP="Mercado"';
         }
-
+        field(50033; clasificacion_aseguradora; code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(ClasifAseguradora), TipoRegistro = const(Tabla));
+            Caption = 'Clasif. Aseguradora', comment = 'ESP="Clasif. Aseguradora"';
+        }
     }
 }
