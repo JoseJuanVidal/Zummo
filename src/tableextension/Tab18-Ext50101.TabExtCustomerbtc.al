@@ -14,7 +14,6 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             end;
 
         }
-
         field(50002; "Cred_ Max_ Int_ Autorizado Por_btc"; Code[20])
         {
             Caption = 'Crédito Maximo Interno Autorizado Por', Comment = 'ESP="Crédito Maximo Interno Autorizado Por"';
@@ -251,5 +250,42 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(ClasifAseguradora), TipoRegistro = const(Tabla));
             Caption = 'Clasif. Aseguradora', comment = 'ESP="Clasif. Aseguradora"';
         }
+        field(50034; FechaVtoAseguradora; Date)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Cust. Ledger Entry".FechaVtoAsegurador where("Customer No." = field("No."), Open = const(true),
+                    Positive = const(true), "Posting Date" = field(FiltroFechaAseg)));
+            Caption = 'Fecha Vto. Aseguradora', comment = 'ESP="Fecha Vto. Aseguradora"';
+            editable = false;
+        }
+        field(50035; "FiltroFechaAseg"; Date)
+        {
+            FieldClass = FlowFilter;
+            Caption = 'Filtro Fecha Aseguradora', comment = 'ESP="Filtro Fecha Aseguradora"';
+        }
+        field(50036; "Filtro Aseguradora"; code[20])
+        {
+            FieldClass = FlowFilter;
+            Caption = 'Filtro Aseguradora', Comment = 'ESP="Filtro Aseguradora"';
+            Editable = true;
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(Aseguradora));
+
+            trigger OnValidate()
+            begin
+                ActualizarFiltroFechasAseguradora;
+            end;
+        }
     }
+    local procedure ActualizarFiltroFechasAseguradora()
+    var
+        HistAseg: Record "STH Hist. Aseguradora";
+    begin
+        HistAseg.SetRange(CustomerNo, "No.");
+        HistAseg.SetRange(Aseguradora, "Filtro Aseguradora");
+        if HistAseg.FindLast() then begin
+            Rec.SetRange(FiltroFechaAseg, HistAseg.DateIni, HistAseg.DateFin);
+        end else begin
+            FiltroFechaAseg := 0D;
+        end;
+    end;
 }

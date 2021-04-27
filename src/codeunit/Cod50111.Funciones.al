@@ -672,6 +672,13 @@ codeunit 50111 "Funciones"
                     Customer.Modify();
                 end;
             Until Customer.next() = 0;
+        CustLedgerEntry.Reset();
+        CustLedgerEntry.SetRange(FechaVtoAsegurador, 0D);
+        if CustLedgerEntry.findset() then
+            repeat
+                CustLedgerEntry.FechaVtoAsegurador := CalcDate('+60D', CustLedgerEntry."Due Date");
+                CustLedgerEntry.Modify();
+            Until CustLedgerEntry.next() = 0;
         Ventana.Close();
     end;
 

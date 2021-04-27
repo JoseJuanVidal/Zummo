@@ -70,7 +70,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 StyleExpr = StyleExp;
                 Editable = false;
             }
-            field(FechaVtoAseguradora; FechaVtoAsegurador)
+            field(FechaVtoAsegurador; FechaVtoAsegurador)
             {
                 ApplicationArea = all;
                 Caption = 'Fecha Vto. Aseguradora (real)', comment = 'ESP="Fecha Vto. Aseguradora (real)"';
@@ -92,7 +92,11 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 ApplicationArea = all;
                 StyleExpr = StyleExp;
             }
-
+            field(FechaVtoAseguradora; FechaVtoAseguradora)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 
@@ -212,7 +216,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
                     Input: page "STH Input Hist Aseguradora";
                     Funciones: Codeunit Funciones;
                     Fechafin: date;
-                    lblConfirm: Label '¿desea eliminar el credito a %1 %2 seleccionados?', comment = 'ESP="¿desea eliminar el credito a %1 %2 seleccionados?"';
+                    lblConfirm: Label '¿Desea eliminar el credito a %1 %2 seleccionados?', comment = 'ESP="¿Desea eliminar el credito a %1 %2 seleccionados?"';
                 begin
                     CurrPage.SetSelectionFilter(Customer);
 
@@ -231,8 +235,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
                                 Until Customer.next() = 0;
 
                         end;
-                    end
-
+                    end;
                 end;
 
             }
@@ -275,6 +278,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
         StyleExp := '';
         if "Cred_ Max_ Aseg. Autorizado Por_btc" = '' then
             exit;
+
         CustLedgerEntry.SetCurrentKey("Due Date");
         CustLedgerEntry.SetRange("Customer No.", "No.");
         CustLedgerEntry.SetRange(Open, true);
