@@ -1099,6 +1099,8 @@ report 50140 "Make 349 Declaration Zummo"
         if CountryCode = '' then
             Error(Text1100004);
 
+        ActualizaPaisEnvio;
+
         FileName := RBMgt.ServerTempFileName('txt');
 
         Clear(OutFile);
@@ -1996,6 +1998,48 @@ report 50140 "Make 349 Declaration Zummo"
     [IntegrationEvent(false, false)]
     local procedure OnBeforeIncludeIn349(VATEntry: Record "VAT Entry"; var SkipEntry: Boolean)
     begin
+    end;
+
+    procedure ActualizaPaisEnvio()
+    var
+        VatEntry: Record "VAT Entry";
+        Pais: text;
+    begin
+        if VatEntry.findset() then
+            repeat
+                Pais := GetPaisEnvio(VatEntry);
+                if VATEntry."Country/Region Code" = 'ES' then
+                    if (Pais <> '') and (Pais <> VatEntry."Country/Region Code") then begin
+                        VatEntry."Country/Region Code" := Pais;
+                        VatEntry.Modify();
+                    end;
+            Until VatEntry.next() = 0;
+    end;
+
+    procedure GetPaisEnvio(VatEntry: Record "VAT Entry"): Text;
+    var
+        HistFacVenta: Record "Sales Invoice Header";
+        CRMemoSales: Record "Sales Cr.Memo Header";
+    begin
+        case VatEntry.Type of
+            VatEntry.Type::Sale:
+                Begin
+                    case VatEntry."Document Type" of
+                        VatEntry."Document Type"::Invoice:
+                            begin
+                                if HistFacVenta.Get(VatEntry."Document No.") then
+                                    Exit(HistFacVenta."Ship-to Country/Region Code");
+                            end;
+                        VatEntry."Document Type"::"Credit Memo":
+                            begin
+                                if CRMemoSales.Get(VatEntry."Document No.") then
+                                    Exit(CRMemoSales."Ship-to Country/Region Code");
+                            end;
+                        else
+                            Exit('');
+                    End;
+                end
+        end;
     end;
 }
 

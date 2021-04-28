@@ -17048,6 +17048,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Selección Etiquetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TransferOrder_btc - Action Imprimir Selec Etiquetas - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 568510665 - Action 2273767209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2248515987">
+          <source>Actualiza País</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza País"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VatEntry - Action actualizaPais - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 568510665 - Control 1723591618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2248515987">
           <source>Nombre Cliente Proverdor</source>
           <note from="Developer" annotates="general" priority="2"></note>

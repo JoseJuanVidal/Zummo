@@ -16333,10 +16333,10 @@
           <target>Finalizar Credito</target>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 2554152333 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
-          <source>¿desea eliminar el credito a %1 %2 seleccionados?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿desea eliminar el credito a %1 %2 seleccionados?"</note>
+          <source>¿Desea eliminar el credito a %1 %2 seleccionados?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el credito a %1 %2 seleccionados?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action FinCredito - Method OnAction - NamedType lblConfirm</note>
-          <target>¿desea eliminar el credito a %1 %2 seleccionados?</target>
+          <target>¿Desea eliminar el credito a %1 %2 seleccionados?</target>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 906881740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Hist. Aseguradora</source>

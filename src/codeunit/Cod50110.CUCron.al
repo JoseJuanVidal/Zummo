@@ -21,8 +21,9 @@ codeunit 50110 "CU_Cron"
                     CambiaFechasOferta();
                 'AvisoVenc':
                     AvisosVencimientos();
-                'LimpiaSeguimiento':
-                    LimpiarSeguimientos();
+                //JJV 28/4 quitamos que quite reservas
+                // 'LimpiaSeguimiento':
+                //  LimpiarSeguimientos();
                 'EnviarFacturacion':
                     EnvioMasivoMail();
                 'DimensAF':
