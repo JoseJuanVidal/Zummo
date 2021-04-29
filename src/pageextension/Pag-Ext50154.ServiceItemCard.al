@@ -16,6 +16,19 @@ pageextension 50154 "ServiceItemCard" extends "Service Item Card"
                 ApplicationArea = All;
             }
         }
+        addafter("Warranty % (Labor)")
+        {
+            field(PeriodoAmplacionGarantica_sth; PeriodoAmplacionGarantica_sth)
+            {
+                ApplicationArea = All;
+            }
+            field(FechaIniAmpliacion_sth; FechaIniAmpliacion_sth)
+            {
+                ApplicationArea = All;
+
+            }
+        }
+
 
     }
     actions
