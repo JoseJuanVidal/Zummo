@@ -15308,6 +15308,106 @@
           <note from="Developer" annotates="general" priority="2">Posting Date</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report SettleDocsinPostBillGrTSR_BTC - Control PostingDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3812649606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ventas Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ventas Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - NamedType 3520167845" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - NamedType estadoDocCaption_Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - NamedType 1256041953" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VENTAS ASEGURABLES</source>
+          <note from="Developer" annotates="general" priority="2">ESP="VENTAS ASEGURABLES"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - NamedType lblAsegurado</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - NamedType 243691426" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VENTAS NO ASEGURABLES</source>
+          <note from="Developer" annotates="general" priority="2">ESP="VENTAS NO ASEGURABLES"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - NamedType lblNoAsegurado</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 2751793024" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe</source>
+          <note from="Developer" annotates="general" priority="2">Amount</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel AmountHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 962150918" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Razón Social</source>
+          <note from="Developer" annotates="general" priority="2">Business Name</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel BusinesNameHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 1798402271" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ventas Periodo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ventas Periodo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel CESCESalesCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 2036988148" size-unit="char" translate="yes" xml:space="preserve">
+          <source>País</source>
+          <note from="Developer" annotates="general" priority="2">Country</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel CountryHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 3013938501" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Doc.</source>
+          <note from="Developer" annotates="general" priority="2">Document Date</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel DocumentDateHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 1271950690" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Factura/Abono</source>
+          <note from="Developer" annotates="general" priority="2">Document No.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel DocumentNoHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 4209843228" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vencimiento</source>
+          <note from="Developer" annotates="general" priority="2">Due Date</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel DueDateHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 3415442975" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forma de Pago</source>
+          <note from="Developer" annotates="general" priority="2">Payment Method</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel PaymentMethodHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 4217839632" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Contabilización</source>
+          <note from="Developer" annotates="general" priority="2">Posting Date</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel PostingDateHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 1783501919" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Suplemento</source>
+          <note from="Developer" annotates="general" priority="2">Supplemento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel SupplementHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 3151002202" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe Total</source>
+          <note from="Developer" annotates="general" priority="2">Total Amount</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel TotalAmountHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 1291987652" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo</source>
+          <note from="Developer" annotates="general" priority="2">Type</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel TypeHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - Control 726138722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtro Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">Filtro Aseguradora</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - Control Aseguradora - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - Control 1004584776 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Abonos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Abonos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - Control ShowCreditMemo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - Control 3461750827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Detalle</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Detalle"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - Control ShowDetails - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - Control 3244554030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Pagos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Pagos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - Control ShowPayments - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 112853145 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ventas CESCE</source>
           <note from="Developer" annotates="general" priority="2">CESCE Sales</note>
