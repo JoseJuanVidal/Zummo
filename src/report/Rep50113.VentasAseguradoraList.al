@@ -40,6 +40,9 @@ report 50113 "Ventas Aseguradora - List"
             column(PaymentMethod; PaymentMethodTxt)
             {
             }
+            column(PaymentTerms; PaymentTerms.Code)
+            {
+            }
             column(DueDate; DuedateTxt)
             {
             }
@@ -98,6 +101,7 @@ report 50113 "Ventas Aseguradora - List"
 
                             if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> Aseguradora then
                                 Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := '';
+
                             if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" = 'REHUSADO' then
                                 Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := '';
 
@@ -117,6 +121,7 @@ report 50113 "Ventas Aseguradora - List"
 
                             if PaymentMethod.Get(SalesInvHeader."Payment Method Code") then
                                 PaymentMethodTxt := PaymentMethod.Description;
+                            if PaymentTerms.get(SalesInvHeader."Payment Terms Code") then;
 
                             DueDateTxt := Format(SalesInvHeader."Due Date");
                             DocumentNoTxt := SalesInvHeader."No.";
@@ -131,9 +136,14 @@ report 50113 "Ventas Aseguradora - List"
                             if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '' then begin
                                 Clasif2Nivel := CountryRegion.Name;
                                 CaptionAsegurado := lblAsegurado;
+                                // control de REHUSADO
+                                if Customer.clasificacion_aseguradora = 'REHUSADO' then begin
+                                    CaptionAsegurado := lblNoAsegurado;
+                                    Clasif2Nivel := Customer.clasificacion_aseguradora;
+                                end;
                             end else begin
                                 if SalesInvHeader."Payment Method Code" = 'CONTADO' then
-                                    Clasif2Nivel := PaymentMethod.Description
+                                    Clasif2Nivel := PaymentMethod.Code
                                 else
                                     if Customer."No." = 'C04000' then
                                         Clasif2Nivel := 'EMPRESAS VINCULADAS'
@@ -173,6 +183,7 @@ report 50113 "Ventas Aseguradora - List"
 
                             if PaymentMethod.Get(SalesCrMemoHeader."Payment Method Code") then
                                 PaymentMethodTxt := PaymentMethod.Description;
+                            if PaymentTerms.get(SalesInvHeader."Payment Terms Code") then;
 
                             DueDateTxt := Format(SalesCrMemoHeader."Due Date");
                             DocumentNoTxt := SalesCrMemoHeader."No.";
@@ -189,6 +200,11 @@ report 50113 "Ventas Aseguradora - List"
                             if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '' then begin
                                 Clasif2Nivel := CountryRegion.Name;
                                 CaptionAsegurado := lblAsegurado;
+                                // control de REHUSADO
+                                if Customer.clasificacion_aseguradora = 'REHUSADO' then begin
+                                    CaptionAsegurado := lblNoAsegurado;
+                                    Clasif2Nivel := Customer.clasificacion_aseguradora;
+                                end;
                             end else begin
                                 if SalesCrMemoHeader."Payment Method Code" = 'CONTADO' then
                                     Clasif2Nivel := PaymentMethod.Description
@@ -362,6 +378,7 @@ report 50113 "Ventas Aseguradora - List"
         HistAsegurora: Record "STH Hist. Aseguradora";
         Customer: Record Customer;
         PaymentMethod: Record "Payment Method";
+        PaymentTerms: Record "Payment Terms";
         CountryRegion: Record "Country/Region";
         //Para guardar los Document no q ya se han mostrado en la factura
         TempAgingBandBuffer: Record "Aging Band Buffer" temporary;
