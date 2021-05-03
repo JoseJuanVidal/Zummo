@@ -21,6 +21,17 @@ pageextension 50150 "ServiceOrderSubform" extends "Service Order Subform"
                 ApplicationArea = All;
             }
         }
+        addafter(Warranty)
+        {
+            field(AmpliacionGarantia_sth; AmpliacionGarantia_sth)
+            {
+                ApplicationArea = All;
+            }
+            field(FechaFinGarantia_sth; FechaFinGarantia_sth)
+            {
+                ApplicationArea = All;
+            }
+        }
 
     }
     actions
