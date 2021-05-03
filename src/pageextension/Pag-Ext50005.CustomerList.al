@@ -40,37 +40,33 @@ pageextension 50005 "CustomerList" extends "Customer List"
             field("Cred_ Max_ Aseg. Autorizado Por_btc"; "Cred_ Max_ Aseg. Autorizado Por_btc")
             {
                 ApplicationArea = all;
-                StyleExpr = StyleExp;
             }
             field("Credito Maximo Aseguradora_btc"; "Credito Maximo Aseguradora_btc")
             {
                 ApplicationArea = all;
-                StyleExpr = StyleExp;
             }
             field(Suplemento_aseguradora; Suplemento_aseguradora)
             {
                 ApplicationArea = all;
-                StyleExpr = StyleExp;
             }
             field(clasificacion_aseguradora; clasificacion_aseguradora)
             {
                 ApplicationArea = all;
-                StyleExpr = StyleExp;
             }
-            field(FechaVto; FechaVto)
+            field(FechaVto; rec.FechaVto)
             {
                 ApplicationArea = all;
                 Caption = 'Due Date', comment = 'ESP="Fecha Vto."';
                 Editable = false;
                 StyleExpr = StyleExp;
             }
-            field(FechaVtoAseg; FechaVtoAseg)
+            /*field(FechaVtoAseg; FechaVtoAseg)
             {
                 ApplicationArea = all;
                 StyleExpr = StyleExp;
                 Editable = false;
-            }
-            field(FechaVtoAsegurador; FechaVtoAsegurador)
+            }*/
+            /*field(FechaVtoAsegurador; FechaVtoAsegurador)
             {
                 ApplicationArea = all;
                 Caption = 'Fecha Vto. Aseguradora (real)', comment = 'ESP="Fecha Vto. Aseguradora (real)"';
@@ -86,8 +82,18 @@ pageextension 50005 "CustomerList" extends "Customer List"
                     CustLedgerEntry.SetFilter("Due Date", '..%1', CalcDate('+2M', WorkDate()));
                     page.run(0, CustLedgerEntry);
                 end;
-            }
+            }*/
             field("Credito Maximo Interno_btc"; "Credito Maximo Interno_btc")
+            {
+                ApplicationArea = all;
+                StyleExpr = StyleExp;
+            }
+            field(AseguradoraenFiltro; AseguradoraenFiltro)
+            {
+                ApplicationArea = all;
+                StyleExpr = StyleExp;
+            }
+            field(ImpCreditoAsegaenFiltro; ImpCreditoAsegaenFiltro)
             {
                 ApplicationArea = all;
                 StyleExpr = StyleExp;
@@ -95,7 +101,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
             field(FechaVtoAseguradora; FechaVtoAseguradora)
             {
                 ApplicationArea = all;
-                Visible = false;
+                StyleExpr = StyleExp;
             }
         }
     }
@@ -264,8 +270,6 @@ pageextension 50005 "CustomerList" extends "Customer List"
     end;
 
     var
-        FechaVto: Date;
-        FechaVtoAsegurador: date;
         StyleExp: text;
         Text000: Label '¿Desea calcular la fecha de vencimiento aseguradora?';
 
@@ -273,27 +277,15 @@ pageextension 50005 "CustomerList" extends "Customer List"
     var
         CustLedgerEntry: Record "Cust. Ledger Entry";
     begin
-        FechaVto := 0D;
-        FechaVtoAsegurador := 0D;
         StyleExp := '';
         if "Cred_ Max_ Aseg. Autorizado Por_btc" = '' then
             exit;
-
-        CustLedgerEntry.SetCurrentKey("Due Date");
-        CustLedgerEntry.SetRange("Customer No.", "No.");
-        CustLedgerEntry.SetRange(Open, true);
-        CustLedgerEntry.SetRange(Positive, true);
-        if CustLedgerEntry.FindSet() then begin
-            FechaVto := CustLedgerEntry."Due Date";
-            FechaVtoAsegurador := CalcDate('+60D', CustLedgerEntry."Due Date");
-        end;
-        CustLedgerEntry.SetFilter("Due Date", '..%1', CalcDate('+60D', WorkDate()));
-        if CustLedgerEntry.FindSet() then begin
-            if CalcDate('-15D', FechaVtoAsegurador) <= WorkDate() then
+        rec.CalcFields(FechaVtoAseguradora);
+        if rec.FechaVtoAseguradora <> 0D then
+            if CalcDate('-15D', rec.FechaVtoAseguradora) <= WorkDate() then
                 StyleExp := 'UnFavorable'
             else
                 StyleExp := 'Ambiguous';
-        end;
     end;
 
     local procedure CalculateFechaVto()

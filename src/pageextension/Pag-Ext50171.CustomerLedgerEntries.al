@@ -35,7 +35,7 @@ pageextension 50171 "CustomerLedgerEntries" extends "Customer Ledger Entries"
         }
         addafter("Due Date")
         {
-            field(FechaVtoAseguradora; FechaVtoAseguradora)
+            field(FechaVtoAseguradora; FechaVtoAsegurador)
             {
                 ApplicationArea = all;
                 Caption = 'Fecha Vto. Aseguradora', comment = 'ESP="Fecha Vto. Aseguradora"';
@@ -103,16 +103,15 @@ pageextension 50171 "CustomerLedgerEntries" extends "Customer Ledger Entries"
 
     trigger OnAfterGetRecord()
     begin
-        FechaVtoAseguradora := CalcDate('+60D', "Due Date");
-        if CalcDate('-15D', FechaVtoAseguradora) <= WorkDate() then
-            StyleExp := 'UnFavorable'
-        else
-            StyleExp := 'Ambiguous';
+        if rec.FechaVtoAsegurador <> 0D then
+            if CalcDate('-15D', FechaVtoAsegurador) <= WorkDate() then
+                StyleExp := 'UnFavorable'
+            else
+                StyleExp := 'Ambiguous';
     end;
 
     var
         StyleExp: text;
-        FechaVtoAseguradora: date;
 
     procedure PonerSaldoPeriodo()
     var

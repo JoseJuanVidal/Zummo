@@ -262,6 +262,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         {
             FieldClass = FlowFilter;
             Caption = 'Filtro Fecha Aseguradora', comment = 'ESP="Filtro Fecha Aseguradora"';
+
         }
         field(50036; "Filtro Aseguradora"; code[20])
         {
@@ -269,14 +270,34 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             Caption = 'Filtro Aseguradora', Comment = 'ESP="Filtro Aseguradora"';
             Editable = true;
             TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(Aseguradora));
+            ObsoleteState = Removed;
 
-            trigger OnValidate()
-            begin
-                ActualizarFiltroFechasAseguradora;
-            end;
+        }
+        field(50037; "FechaVto"; Date)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Cust. Ledger Entry"."Due Date" where("Customer No." = field("No."), Open = const(true),
+                    Positive = const(true), "Posting Date" = field(FiltroFechaAseg)));
+
+            Caption = 'Fecha Vto.', comment = 'ESP="Fecha Vto."';
+            Editable = false;
+        }
+        field(50038; AseguradoraenFiltro; code[20])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Hist. Aseguradora".Aseguradora where(CustomerNo = field("No."), "DateFin" = field(FiltroFechaAseg)));
+            Caption = 'Aseguradora Vto.', comment = 'ESP="Aseguradora Vto."';
+            editable = false;
+        }
+        field(50039; ImpCreditoAsegaenFiltro; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Hist. Aseguradora"."Credito Maximo Aseguradora_btc" where(CustomerNo = field("No."), "DateFin" = field(FiltroFechaAseg)));
+            Caption = 'Importe Credito Vto.', comment = 'ESP="Importe Credito Vto."';
+            editable = false;
         }
     }
-    local procedure ActualizarFiltroFechasAseguradora()
+    /*local procedure ActualizarFiltroFechasAseguradora()
     var
         HistAseg: Record "STH Hist. Aseguradora";
     begin
@@ -287,5 +308,5 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         end else begin
             FiltroFechaAseg := 0D;
         end;
-    end;
+    end;*/
 }

@@ -16083,6 +16083,54 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report SettleDocsinPostBillGrTSR_BTC - Control Opciones - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3812649606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ventas Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ventas Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - Property Caption</note>
+          <target>Ventas Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - NamedType 3520167845" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - NamedType estadoDocCaption_Lbl</note>
+          <target>Estado Documento</target>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - NamedType 1256041953" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VENTAS ASEGURABLES</source>
+          <note from="Developer" annotates="general" priority="2">ESP="VENTAS ASEGURABLES"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - NamedType lblAsegurado</note>
+          <target>VENTAS ASEGURABLES</target>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - NamedType 243691426" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VENTAS NO ASEGURABLES</source>
+          <note from="Developer" annotates="general" priority="2">ESP="VENTAS NO ASEGURABLES"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - NamedType lblNoAsegurado</note>
+          <target>VENTAS NO ASEGURABLES</target>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - ReportLabel 1798402271" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ventas Periodo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ventas Periodo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - ReportLabel CESCESalesCaption</note>
+          <target>Ventas Periodo</target>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - Control 1004584776 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Abonos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Abonos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - Control ShowCreditMemo - Property Caption</note>
+          <target>Mostrar Abonos</target>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - Control 3461750827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Detalle</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Detalle"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - Control ShowDetails - Property Caption</note>
+          <target>Mostrar Detalle</target>
+        </trans-unit>
+        <trans-unit id="Report 3812649606 - Control 3244554030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Pagos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Pagos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Ventas Aseguradora - List - Control ShowPayments - Property Caption</note>
+          <target>Mostrar Pagos</target>
+        </trans-unit>
         <trans-unit id="Report 112853145 - NamedType 3520167845" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Status</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado Documento"</note>
@@ -16349,12 +16397,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Control FechaVto - Property Caption</note>
           <target>Fecha Vto.</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 363045002 - Control 4213443581 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
-          <source>Fecha Vto. Aseguradora (real)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto. Aseguradora (real)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Control FechaVtoAsegurador - Property Caption</note>
-          <target>Fecha Vto. Aseguradora (real)</target>
         </trans-unit>
         <trans-unit id="PageExtension 2032334557 - Control 749033378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2334291271">
           <source>Name</source>
@@ -18010,6 +18052,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Selección Etiquetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TransferOrder_btc - Action Imprimir Selec Etiquetas - Property Caption</note>
           <target>Selección Etiquetas</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 568510665 - Action 2273767209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2248515987">
+          <source>Actualiza País</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza País"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VatEntry - Action actualizaPais - Property Caption</note>
+          <target>Actualiza País</target>
         </trans-unit>
         <trans-unit id="PageExtension 568510665 - Control 1723591618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2248515987">
           <source>Nombre Cliente Proverdor</source>
@@ -19887,6 +19935,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field TotalImponibleLinea - Property Caption</note>
           <target>Importe Total IVA</target>
         </trans-unit>
+        <trans-unit id="TableExtension 521506452 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 521506452">
+          <source>¿Desea ampliar la garantia %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea ampliar la garantia %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - NamedType lblConfirm</note>
+          <target>¿Desea ampliar la garantia %1?</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 521506452 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 521506452">
+          <source>Primero debe anular la Garantia</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - NamedType lblError</note>
+        </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 960231526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Cod.Anterior</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cod.Anterior"</note>
@@ -19946,6 +20005,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field TipoPedidoNivel3_btc - Property Caption</note>
           <target>Tipo pedido servicio nivel 3</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 719596632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Ampliacion Garantia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ampliación Garantía"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field AmpliacionGarantia_sth - Property Caption</note>
+          <target>Ampliación Garantía</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 960231526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Cod.Anterior</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cod.Anterior"</note>
@@ -19957,6 +20022,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Prod. con fallo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field CodProdFallo_btc - Property Caption</note>
           <target>Prod. con fallo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 1479616465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Fecha final Garantia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha final Garantía"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field FechaFinGarantia_sth - Property Caption</note>
+          <target>Fecha final Garantía</target>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 1911659303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Num Ciclos</source>
@@ -20041,6 +20112,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Intrastat JnlLine - Field Invoice No. - Property Caption</note>
           <target>Nº Factura</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1568375965 - Field 1971769406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3566004263">
+          <source>Es Contado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Es Contado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment MethodExt - Field Es Contado - Property Caption</note>
+          <target>Es Contado</target>
         </trans-unit>
         <trans-unit id="TableExtension 2869752476 - Field 995090288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
           <source>Date Filter</source>
@@ -20240,6 +20317,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field AreaManager_btc - Property Caption</note>
           <target>Area Manager</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3280127249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Aseguradora Vto.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aseguradora Vto."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field AseguradoraenFiltro - Property Caption</note>
+          <target>Aseguradora Vto.</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 1081269253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Canal</source>
           <note from="Developer" annotates="general" priority="2">ESP="Canal"</note>
@@ -20341,6 +20424,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Puerto/Aerop. carga</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Exit Point - Property Caption</note>
           <target>"Puerto/Aerop. carga</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3809540912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Fecha Vto.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field FechaVto - Property Caption</note>
+          <target>Fecha Vto.</target>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 2420279056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Fecha Vto. Aseguradora</source>

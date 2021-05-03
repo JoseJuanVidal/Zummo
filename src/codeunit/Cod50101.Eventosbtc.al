@@ -245,7 +245,7 @@ codeunit 50101 "Eventos_btc"
         CreatestockkepingUnit: report "Create Stockkeeping Unit";
         Item: Record Item;
     begin
-        if Item.IsTemporary then
+        if Rec.IsTemporary then
             exit;
         commit;
         SelectLatestVersion();

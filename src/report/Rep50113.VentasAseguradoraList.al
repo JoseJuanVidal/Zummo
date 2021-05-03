@@ -142,7 +142,7 @@ report 50113 "Ventas Aseguradora - List"
                                     Clasif2Nivel := Customer.clasificacion_aseguradora;
                                 end;
                             end else begin
-                                if SalesInvHeader."Payment Method Code" = 'CONTADO' then
+                                if PaymentMethod."Es Contado" then
                                     Clasif2Nivel := PaymentMethod.Code
                                 else
                                     if Customer."No." = 'C04000' then
@@ -206,8 +206,8 @@ report 50113 "Ventas Aseguradora - List"
                                     Clasif2Nivel := Customer.clasificacion_aseguradora;
                                 end;
                             end else begin
-                                if SalesCrMemoHeader."Payment Method Code" = 'CONTADO' then
-                                    Clasif2Nivel := PaymentMethod.Description
+                                if PaymentMethod."Es Contado" then
+                                    Clasif2Nivel := PaymentMethod.Code
                                 else
                                     if Customer."No." = 'C04000' then
                                         Clasif2Nivel := 'EMPRESAS VINCULADAS'
