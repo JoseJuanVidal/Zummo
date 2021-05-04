@@ -62,9 +62,9 @@ codeunit 50101 "Eventos_btc"
     var
 
     begin
-        if (Rec."Document Date" < Today) or (rec."Posting Date" < Today) then begin
-            rec.Validate("Document Date", Today);
-            rec.Validate("Posting Date", today);
+        if (Rec."Document Date" < workdate) or (rec."Posting Date" < workdate) then begin
+            rec.Validate("Document Date", workdate);
+            rec.Validate("Posting Date", workdate);
             rec.Modify();
         end;
     end;
@@ -77,9 +77,9 @@ codeunit 50101 "Eventos_btc"
     begin
         if UserId = 'ADMIN' THEN
             EXIT;
-        if (Rec."Document Date" < Today) or (rec."Posting Date" < Today) then begin
-            rec.Validate("Document Date", Today);
-            rec.Validate("Posting Date", today);
+        if (Rec."Document Date" < workdate) or (rec."Posting Date" < workdate) then begin
+            rec.Validate("Document Date", workdate);
+            rec.Validate("Posting Date", workdate);
             rec.Modify();
         end;
     end;
@@ -91,9 +91,9 @@ codeunit 50101 "Eventos_btc"
     begin
         if UserId = 'ADMIN' THEN
             EXIT;
-        if (Rec."Document Date" < Today) or (rec."Posting Date" < Today) then begin
-            rec.Validate("Document Date", Today);
-            rec.Validate("Posting Date", today);
+        if (Rec."Document Date" < workdate) or (rec."Posting Date" < workdate) then begin
+            rec.Validate("Document Date", workdate);
+            rec.Validate("Posting Date", workdate);
             rec.Modify();
         end;
     end;
@@ -379,7 +379,7 @@ codeunit 50101 "Eventos_btc"
         TempSalesLineDisc.init();
         TempSalesLineDisc.Type := TempSalesLineDisc.Type::Item;
         TempSalesLineDisc.Code := SalesLine."No.";
-        TempSalesLineDisc."Starting Date" := Today() - 1;
+        TempSalesLineDisc."Starting Date" := workdate() - 1;
         TempSalesLineDisc."Line Discount %" := decDtoFinal;
         TempSalesLineDisc."Sales Type" := TempSalesLineDisc."Sales Type"::Customer;
         TempSalesLineDisc."Sales Code" := SalesHeader."Bill-to Customer No.";

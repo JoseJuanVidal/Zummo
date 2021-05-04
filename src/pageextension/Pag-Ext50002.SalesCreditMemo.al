@@ -113,9 +113,9 @@ pageextension 50002 "SalesCreditMemo" extends "Sales Credit Memo"
                     IsSuccess: Boolean;
                     codUltimoNumUsado: Code[20];
                 begin
-                    if (Rec."Document Date" < Today()) or (rec."Posting Date" < Today()) then begin
-                        rec.Validate("Document Date", Today());
-                        rec.Validate("Posting Date", today());
+                    if (Rec."Document Date" < workdate()) or (rec."Posting Date" < workdate()) then begin
+                        rec.Validate("Document Date", workdate());
+                        rec.Validate("Posting Date", workdate());
                         rec.Modify();
                     end;
 
