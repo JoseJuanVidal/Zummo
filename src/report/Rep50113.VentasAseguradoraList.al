@@ -76,6 +76,12 @@ report 50113 "Ventas Aseguradora - List"
 
             column(CaptionAsegurado; CaptionAsegurado) { }
 
+            trigger OnPreDataItem()
+            begin
+                if Aseguradora = '' then
+                    ERROR('Debe seleccionar una aseguradora para mostrar los datos');
+            end;
+
             trigger OnAfterGetRecord()
             var
                 recCarteraDoc: Record "Cartera Doc.";
@@ -86,8 +92,6 @@ report 50113 "Ventas Aseguradora - List"
                 recCustomer: Record "Customer";
                 txtNoCuenta: Code[20];
             begin
-                if Aseguradora = '' then
-                    ERROR('Debe seleccionar una aseguradora para mostrar los datos');
 
                 case "Document Type" of
                     "Document Type"::Invoice:
@@ -102,7 +106,7 @@ report 50113 "Ventas Aseguradora - List"
                             if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> Aseguradora then
                                 Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := '';
 
-                            if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" = 'REHUSADO' then
+                            if Customer.clasificacion_aseguradora = 'REHUSADO' then
                                 Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := '';
 
                             txtNoCuenta := '';
@@ -136,7 +140,7 @@ report 50113 "Ventas Aseguradora - List"
                             if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '' then begin
                                 Clasif2Nivel := CountryRegion.Name;
                                 CaptionAsegurado := lblAsegurado;
-                                // control de REHUSADO
+                                // control de REHUSADO-
                                 if Customer.clasificacion_aseguradora = 'REHUSADO' then begin
                                     CaptionAsegurado := lblNoAsegurado;
                                     Clasif2Nivel := Customer.clasificacion_aseguradora;
@@ -145,14 +149,10 @@ report 50113 "Ventas Aseguradora - List"
                                 if PaymentMethod."Es Contado" then
                                     Clasif2Nivel := PaymentMethod.Code
                                 else
-                                    if Customer."No." = 'C04000' then
-                                        Clasif2Nivel := 'EMPRESAS VINCULADAS'
+                                    if Customer.clasificacion_aseguradora <> '' then
+                                        Clasif2Nivel := Customer.clasificacion_aseguradora
                                     else
-                                        if Customer.clasificacion_aseguradora <> '' then
-                                            Clasif2Nivel := Customer.clasificacion_aseguradora
-                                        else
-                                            Clasif2Nivel := 'OTROS';
-
+                                        Clasif2Nivel := 'OTROS';
                             end;
 
                         end else
@@ -168,7 +168,7 @@ report 50113 "Ventas Aseguradora - List"
                                 CurrReport.Skip();
                             if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> Aseguradora then
                                 Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := '';
-                            if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" = 'REHUSADO' then
+                            if Customer.clasificacion_aseguradora = 'REHUSADO' then
                                 Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := '';
 
 
@@ -209,13 +209,10 @@ report 50113 "Ventas Aseguradora - List"
                                 if PaymentMethod."Es Contado" then
                                     Clasif2Nivel := PaymentMethod.Code
                                 else
-                                    if Customer."No." = 'C04000' then
-                                        Clasif2Nivel := 'EMPRESAS VINCULADAS'
+                                    if Customer.clasificacion_aseguradora <> '' then
+                                        Clasif2Nivel := Customer.clasificacion_aseguradora
                                     else
-                                        if Customer.clasificacion_aseguradora <> '' then
-                                            Clasif2Nivel := Customer.clasificacion_aseguradora
-                                        else
-                                            Clasif2Nivel := 'OTROS';
+                                        Clasif2Nivel := 'OTROS';
                             end;
 
                             //Guardamos nº abono para no repetir documento

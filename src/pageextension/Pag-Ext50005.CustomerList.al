@@ -98,6 +98,24 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 ApplicationArea = all;
                 StyleExpr = StyleExp;
             }
+            field("Saldo Vencido Aseguradora"; "Saldo Vencido Aseguradora")
+            {
+                ApplicationArea = all;
+                StyleExpr = StyleExp;
+
+                trigger OnDrillDown()
+                var
+                    CustLedgEntry: Record "Cust. Ledger Entry";
+                begin
+                    CustLedgEntry.RESET;
+                    CustLedgEntry.SETCURRENTKEY("Customer No.", "Posting Date");
+                    CustLedgEntry.SetRange("Customer No.", "No.");
+                    Rec.CopyFilter("Date Filter", CustLedgEntry."Due Date");
+                    Rec.CopyFilter(FiltroFechaAseg, CustLedgEntry."Posting Date");
+                    CustLedgEntry.SETRANGE(Open, TRUE);
+                    PAGE.RUN(0, CustLedgEntry);
+                end;
+            }
             field(FechaVtoAseguradora; FechaVtoAseguradora)
             {
                 ApplicationArea = all;
@@ -271,7 +289,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
 
     var
         StyleExp: text;
-        Text000: Label '¿Desea calcular la fecha de vencimiento aseguradora?';
+        Text000: Label '¿Desea calcular la fecha de vencimiento Aseguradora?';
 
     local procedure CalcVtoAseguradora()
     var
@@ -307,7 +325,6 @@ pageextension 50005 "CustomerList" extends "Customer List"
         //Input.SetDatos(Customer);
         Input.LookupMode := true;
         if Input.RunModal() = Action::LookupOK then begin
-
             // Confirmamos Cerrar el credito
             if Confirm(lblConfirm, false, Customer.TableCaption, Customer.Count) then begin
                 FechaFin := Input.GetDateFin();

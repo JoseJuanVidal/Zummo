@@ -296,6 +296,14 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             Caption = 'Importe Credito Vto.', comment = 'ESP="Importe Credito Vto."';
             editable = false;
         }
+        field(50040; "Saldo Vencido Aseguradora"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = sum("Detailed Cust. Ledg. Entry"."Amount (LCY)" WHERE("Customer No." = FIELD("No."), "Initial Entry Due Date" = FiELD(UPPERLIMIT("Date Filter")),
+                "Initial Entry Posting Date" = field(FiltroFechaAseg), "Excluded from calculation" = CONST(false)));
+
+
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var
