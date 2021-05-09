@@ -18923,6 +18923,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ultimo coste directo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastUnitCost - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1702829675 - Field 3992104214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2941967353">
+          <source>EU Cód. Pais</source>
+          <note from="Developer" annotates="general" priority="2">ESP="EU Cód. Pais"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Vat Entry Ext - Field EU Country/Region Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 301384659 - Field 2851413280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
           <source>Vendor Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Proveedor"</note>

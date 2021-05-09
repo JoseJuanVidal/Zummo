@@ -14,6 +14,10 @@ pageextension 50193 "VatEntry" extends "VAT Entries"
                 ApplicationArea = all;
                 Caption = 'Pais Envío', comment = 'ESP="Pais Envío"';
             }
+            field("EU Country / Region Code"; "EU Country/Region Code")
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions

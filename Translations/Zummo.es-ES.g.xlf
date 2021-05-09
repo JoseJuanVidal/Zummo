@@ -16334,7 +16334,7 @@
           <target>Fecha Vto. Aseguradora</target>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
-          <source>¿Desea calcular la fecha de vencimiento aseguradora?</source>
+          <source>¿Desea calcular la fecha de vencimiento Aseguradora?</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - NamedType Text000</note>
         </trans-unit>
@@ -20095,6 +20095,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardSalesLine - Field Precio_btc - Property Caption</note>
           <target>Precio</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3410546980 - Field 2642821746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 235946633">
+          <source>Initial Entry Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Detailed Cust. Ledg. Entry - Field Initial Entry Posting Date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 90629565 - Field 1171137197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 311266198">
           <source>Customer Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
@@ -20136,6 +20141,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ultimo coste directo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastUnitCost - Property Caption</note>
           <target>Ultimo coste directo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1702829675 - Field 3992104214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2941967353">
+          <source>EU Cód. Pais</source>
+          <note from="Developer" annotates="general" priority="2">ESP="EU Cód. Pais"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Vat Entry Ext - Field EU Country/Region Code - Property Caption</note>
+          <target>EU Cód. Pais</target>
         </trans-unit>
         <trans-unit id="TableExtension 301384659 - Field 2851413280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
           <source>Vendor Name</source>
@@ -20443,12 +20454,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field FechaVtoAseguradora - Property Caption</note>
           <target>Fecha Vto. Aseguradora</target>
         </trans-unit>
-        <trans-unit id="TableExtension 2853044828 - Field 1025708832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Filtro Aseguradora</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Filtro Aseguradora"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Filtro Aseguradora - Property Caption</note>
-          <target>Filtro Aseguradora</target>
-        </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 3984865821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Filtro Fecha Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Filtro Fecha Aseguradora"</note>
@@ -20466,6 +20471,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field GrupoCliente_btc - Property Caption</note>
           <target>Cliente Tipo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3773353802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Importe Credito Vto.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Credito Vto."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field ImpCreditoAsegaenFiltro - Property Caption</note>
+          <target>Importe Credito Vto.</target>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Inside Sales</source>
@@ -20496,6 +20507,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Rappel"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Rappel - Property Caption</note>
           <target>Rappel</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 1900612505 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Saldo Vencido Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Saldo Vencido Aseguradora - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 1475697198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>SubCliente</source>

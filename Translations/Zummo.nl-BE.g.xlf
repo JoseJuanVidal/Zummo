@@ -6854,7 +6854,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Control Telex No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
-          <source>¿Desea calcular la fecha de vencimiento aseguradora?</source>
+          <source>¿Desea calcular la fecha de vencimiento Aseguradora?</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - NamedType Text000</note>
         </trans-unit>
@@ -7032,6 +7032,16 @@
           <source>Cerrado en plataforma</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field Cerrado en plataforma - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3410546980 - Field 2642821746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 235946633">
+          <source>Initial Entry Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Detailed Cust. Ledg. Entry - Field Initial Entry Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 1900612505 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Saldo Vencido Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Saldo Vencido Aseguradora - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 138418667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>ComentarioAut_btc</source>
