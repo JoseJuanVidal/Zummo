@@ -99,9 +99,13 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
-
-
-
+        }
+        addafter("VAT Registration No.")
+        {
+            field(EORI; EORI)
+            {
+                ApplicationArea = all;
+            }
         }
         //S20/00375
         addafter("E-Mail")

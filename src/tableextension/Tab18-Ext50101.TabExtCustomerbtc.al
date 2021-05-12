@@ -304,6 +304,10 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
 
 
         }
+        field(50041; "EORI"; code[20])
+        {
+            Caption = 'EORI', comment = 'ESP="EORI"';
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var

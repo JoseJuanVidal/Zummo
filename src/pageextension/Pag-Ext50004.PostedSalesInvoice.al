@@ -174,6 +174,74 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
         {
             Visible = false;
         }
+
+        addfirst(Reporting)
+        {
+            action("Impimir Fact.Export")
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Print;
+                Caption = 'Impimir Fact.Export', comment = 'ESP="Impimir Fact.Export"';
+                ToolTip = 'Impimir Fact.Export',
+                    comment = 'ESP="Impimir Fact.Export"';
+
+                trigger OnAction()
+                var
+                    SalesInvoiceHeader: Record "Sales Invoice Header";
+                    recReqLine: Report FacturaExportacion;
+                    reportFactura: Report FacturaNacionalMaquinas;
+                    reportFacturaUK: Report FacturaNacionalUK;
+
+                    Selection: Integer;
+                begin
+                    Selection := STRMENU('1.-Exportacion,2.-Nacional,3.-Lidl,4.-Brasil,5.-Zummo UK', 1);
+                    // Message(Format(Selection));
+                    SalesInvoiceHeader.Reset();
+                    IF Selection > 0 THEN begin
+
+                        SalesInvoiceHeader.SetRange("No.", Rec."No.");
+                        if SalesInvoiceHeader.FindFirst() then
+                            case Selection of
+                                1:
+                                    begin
+                                        clear(reportFactura);
+                                        reportFactura.EsExportacion();
+                                        reportFactura.SetTableView(SalesInvoiceHeader);
+                                        reportFactura.Run();
+                                    end;
+                                2:
+                                    begin
+                                        clear(reportFactura);
+                                        reportFactura.EsNacional();
+                                        reportFactura.SetTableView(SalesInvoiceHeader);
+                                        reportFactura.Run();
+                                    end;
+                                3:
+                                    begin
+                                        clear(reportFactura);
+                                        reportFactura.EsLidl();
+                                        reportFactura.SetTableView(SalesInvoiceHeader);
+                                        reportFactura.Run();
+                                    end;
+                                4:
+                                    Report.Run(Report::FacturaRegBrasil, true, false, SalesInvoiceHeader);//50123
+                                5:
+                                    begin
+                                        clear(reportFactura);
+                                        reportFacturaUK.EsExportacion();
+                                        reportFacturaUK.SetTableView(SalesInvoiceHeader);
+                                        reportFacturaUK.Run();
+                                    end;
+                            end;
+                    end;
+                end;
+            }
+
+        }
+
     }
 
     trigger OnAfterGetRecord()

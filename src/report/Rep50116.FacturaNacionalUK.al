@@ -1,7 +1,7 @@
-report 50111 "FacturaNacionalMaquinas"
+report 50116 "FacturaNacionalUK"
 {
-    RDLCLayout = './src/report/Rep50111.FacturaNacionalMaquinas.rdl';
-    Caption = 'Factura Nacional Máquinas', comment = 'ESP="Factura Nacional Máquinas"';
+    RDLCLayout = './src/report/Rep50116.FacturaNacionalUK.rdl';
+    Caption = 'Factura Nacional UK', comment = 'ESP="Factura Nacional UK"';
     PreviewMode = PrintLayout;
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
@@ -13,6 +13,9 @@ report 50111 "FacturaNacionalMaquinas"
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Invoice';
+            column(CompanyInfoName; CompanyInfo.Name) { }
+            column(CompanyInfoVatRegGB; lblVat + CompanyInfo."Vat Reg. GB") { }
+            column(CompanyInfoEORI; lblEORI + CompanyInfo.EORI) { }
             column(BancoBicSwift_Lbl; BancoBicSwift_Lbl) { }
             column(txtcomentaires; txtcomentaires)
             {
@@ -1889,6 +1892,11 @@ report 50111 "FacturaNacionalMaquinas"
 
                 // buscamos la fecha de operacion del SII en otra extension
                 FechaOperacion := cdaFunciones.GetExtensionFieldValueDate("Sales Invoice Header".RecordId, 66600, false);
+
+                // ZUMMO UK  si tiene codigo EORI, es que es para venta en UK, ponemos el pais a ES  GETDATA(60
+                if cust.EORI <> '' then
+                    if NomPais.get(CompanyInfo."Country/Region Code") then
+                        nombrePais := NomPais.Name;
                 // ponemos con el IVA el EORI
                 if Cust.EORI = '' then begin
                     txtVatEORI := '';
@@ -2387,6 +2395,8 @@ report 50111 "FacturaNacionalMaquinas"
         Text0010Txt: Label 'Operation Date', Comment = 'ESP="Fecha Operación"';
         MostrarFechaOperacion: Boolean;
         lblEORI: Label 'EORI: ', comment = 'ESP="EORI: "';
+        lblVat: Label 'VAT: ', comment = 'ESP="VAT: "';
+
         txtVatEORI: Text;
         txtEORI: text;
 

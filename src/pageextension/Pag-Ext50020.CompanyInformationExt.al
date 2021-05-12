@@ -16,6 +16,17 @@ pageextension 50020 "CompanyInformationExt" extends "Company Information"
                 }
             }
         }
+        addafter("VAT Registration No.")
+        {
+            field("Vat Reg. GB"; "Vat Reg. GB")
+            {
+                ApplicationArea = all;
+            }
+            field(EORI; EORI)
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
 }

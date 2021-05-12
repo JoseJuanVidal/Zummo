@@ -20,7 +20,13 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
                 Editable = false;
             }
         }
-
+        addafter("Responsibility Center")
+        {
+            field("Posting No. Series"; "Posting No. Series")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter("Due Date")
         {
             field(FechaEnvio; "Shipment Date")

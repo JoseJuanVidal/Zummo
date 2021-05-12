@@ -60,9 +60,11 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                     SalesInvoiceHeader: Record "Sales Invoice Header";
                     recReqLine: Report FacturaExportacion;
                     reportFactura: Report FacturaNacionalMaquinas;
+                    reportFacturaUK: Report FacturaNacionalUK;
+
                     Selection: Integer;
                 begin
-                    Selection := STRMENU('1.-Exportacion,2.-Nacional,3.-Lidl,4.-Brasil', 1);
+                    Selection := STRMENU('1.-Exportacion,2.-Nacional,3.-Lidl,4.-Brasil,5.-Zummo UK', 1);
                     // Message(Format(Selection));
                     SalesInvoiceHeader.Reset();
                     IF Selection > 0 THEN begin
@@ -93,6 +95,13 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                                     end;
                                 4:
                                     Report.Run(Report::FacturaRegBrasil, true, false, SalesInvoiceHeader);//50123
+                                5:
+                                    begin
+                                        clear(reportFactura);
+                                        reportFacturaUK.EsExportacion();
+                                        reportFacturaUK.SetTableView(SalesInvoiceHeader);
+                                        reportFacturaUK.Run();
+                                    end;
                             end;
                     end;
                 end;

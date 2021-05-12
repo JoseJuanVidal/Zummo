@@ -2566,7 +2566,8 @@ Cstr(Fields!PmtMethodDescCaption.Value) + Chr(177) +
 Cstr(Fields!HomePageCaption.Value) + Chr(177) + 
 Cstr(Fields!EmailCaption.Value) + Chr(177) + 
 Cstr(Fields!CACCaption.Value)+ Chr(177) + 
-Cstr(Fields!FechaOperacion.Value)
+Cstr(Fields!FechaOperacion.Value) + Chr(177) + 
+Cstr(Fields!txtVatEORI.Value)
 , 1)</Hidden>
                                             </Visibility>
                                             <Style>
@@ -2702,8 +2703,7 @@ cstr(Fields!FechaVencimiento5.Value) + Chr(177) +
 cstr(Fields!ImporteVencimiento4.Value) + Chr(177) + 
 cstr(Fields!ImporteVencimiento5.Value) + Chr(177) + 
 cstr(Fields!FechaOperacion.Value) + Chr(177) + 
-cstr(Fields!txtEORI.Value) + Chr(177) + 
-cstr(Fields!txtVatEORI.Value) 
+Cstr(Fields!txtVatEORI.Value)
 ,2)</Hidden>
                               </Visibility>
                               <Style>
@@ -3172,11 +3172,6 @@ cstr(Fields!txtVatEORI.Value)
           <Border>
             <Style>None</Style>
           </Border>
-          <BackgroundImage>
-            <Source>Embedded</Source>
-            <Value>FacturaCuerpo</Value>
-            <BackgroundRepeat>Clip</BackgroundRepeat>
-          </BackgroundImage>
         </Style>
       </Body>
       <Width>19.75904cm</Width>
@@ -3536,10 +3531,11 @@ cstr(Fields!txtVatEORI.Value)
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>=Code.GetData(85,2)</Value>
+                      <Value>=Code.GetData(84,2)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -3692,7 +3688,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>2.79188cm</Top>
+              <Top>4.18888cm</Top>
               <Left>3.36412cm</Left>
               <Height>0.5cm</Height>
               <Width>2.75cm</Width>
@@ -3750,7 +3746,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>FechaCaptionLbl</rd:DefaultName>
-              <Top>2.79188cm</Top>
+              <Top>4.18888cm</Top>
               <Left>0.61413cm</Left>
               <Height>0.5cm</Height>
               <Width>2.75cm</Width>
@@ -3808,7 +3804,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>FechaCaptionLbl</rd:DefaultName>
-              <Top>3.29188cm</Top>
+              <Top>4.68888cm</Top>
               <Left>0.61413cm</Left>
               <Height>0.5cm</Height>
               <Width>2.75cm</Width>
@@ -3865,7 +3861,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>3.29188cm</Top>
+              <Top>4.68888cm</Top>
               <Left>3.36412cm</Left>
               <Height>0.5cm</Height>
               <Width>2.75cm</Width>
@@ -3922,7 +3918,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.79188cm</Top>
+              <Top>5.18888cm</Top>
               <Left>3.36525cm</Left>
               <Height>0.5cm</Height>
               <Width>2.74887cm</Width>
@@ -3980,7 +3976,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>FechaCaptionLbl</rd:DefaultName>
-              <Top>3.79188cm</Top>
+              <Top>5.18888cm</Top>
               <Left>0.61413cm</Left>
               <Height>0.5cm</Height>
               <Width>2.75cm</Width>
@@ -4038,7 +4034,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>FechaCaptionLbl</rd:DefaultName>
-              <Top>4.29557cm</Top>
+              <Top>5.69257cm</Top>
               <Left>0.61413cm</Left>
               <Height>0.5cm</Height>
               <Width>2.75cm</Width>
@@ -4078,7 +4074,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>4.29557cm</Top>
+              <Top>5.69257cm</Top>
               <Left>3.36525cm</Left>
               <Height>0.5cm</Height>
               <Width>2.74887cm</Width>
@@ -4098,16 +4094,207 @@ cstr(Fields!txtVatEORI.Value)
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="Textbox76">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>T +34 961 301 246| F +34 961 301 250| </Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#cd2a2a</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox3</rd:DefaultName>
+              <Top>3.59241cm</Top>
+              <Left>0.61413cm</Left>
+              <Height>0.42008cm</Height>
+              <Width>5.3905cm</Width>
+              <ZIndex>14</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox77">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>zummo@zummo.es|www.zummo.es</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#cd2a2a</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox3</rd:DefaultName>
+              <Top>3.1449cm</Top>
+              <Left>0.61413cm</Left>
+              <Height>0.45183cm</Height>
+              <Width>5.3235cm</Width>
+              <ZIndex>15</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox90">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Cádiz, 4.46113 Moncada.Valencia.Spain</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#cd2a2a</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox3</rd:DefaultName>
+              <Top>2.21682cm</Top>
+              <Left>0.61413cm</Left>
+              <Height>0.42008cm</Height>
+              <Width>5.3235cm</Width>
+              <ZIndex>16</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox91">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!CompanyInfoName.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#cd2a2a</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox3</rd:DefaultName>
+              <Top>1.76378cm</Top>
+              <Left>0.61413cm</Left>
+              <Height>0.42008cm</Height>
+              <Width>5.3235cm</Width>
+              <ZIndex>17</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox92">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!CompanyInfoVatRegGB.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#cd2a2a</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve">  </Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#cd2a2a</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!CompanyInfoEORI.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#cd2a2a</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox3</rd:DefaultName>
+              <Top>2.68453cm</Top>
+              <Left>0.61413cm</Left>
+              <Height>0.42008cm</Height>
+              <Width>5.3235cm</Width>
+              <ZIndex>18</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
               <Style>None</Style>
             </Border>
-            <BackgroundImage>
-              <Source>Embedded</Source>
-              <Value>super7</Value>
-              <BackgroundRepeat>Clip</BackgroundRepeat>
-            </BackgroundImage>
           </Style>
         </PageHeader>
         <PageFooter>
@@ -7057,6 +7244,15 @@ kJQgCgAAQFKCKAAAAEkJogAAACQliAIAAJCUIAoAAEBSgigAAABJCaIAAAAkJYgCAACQlCAKAABAUoIo
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
+        <Field Name="CompanyInfoName">
+          <DataField>CompanyInfoName</DataField>
+        </Field>
+        <Field Name="CompanyInfoVatRegGB">
+          <DataField>CompanyInfoVatRegGB</DataField>
+        </Field>
+        <Field Name="CompanyInfoEORI">
+          <DataField>CompanyInfoEORI</DataField>
+        </Field>
         <Field Name="BancoBicSwift_Lbl">
           <DataField>BancoBicSwift_Lbl</DataField>
         </Field>
