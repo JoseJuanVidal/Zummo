@@ -35,9 +35,11 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             {
                 ApplicationArea = all;
             }
-
+            field(clasificacion_aseguradora; clasificacion_aseguradora)
+            {
+                ApplicationArea = all;
+            }
         }
-
     }
 
     actions
