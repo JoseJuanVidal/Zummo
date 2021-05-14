@@ -1001,4 +1001,31 @@ codeunit 50111 "Funciones"
         HistAseguradora.DateFin := 0D;
         HistAseguradora.Modify();
     end;
+
+    procedure ChangeClienteReporting(Old: code[20]; New: code[20])
+    var
+        SalesHeader: Record "Sales Header";
+        SalesShipmentHeader: Record "Sales Shipment Header";
+        SalesInvoiceHeader: Record "Sales Invoice Header";
+        SalesCrMemoHeader: Record "Sales Cr.Memo Header";
+        SalesHeaderArchive: Record "Sales Header Archive";
+        ReturnShipmentHeader: Record "Return Shipment Header";
+    begin
+
+        SalesHeader.SetRange(ClienteReporting_btc, old);
+        SalesHeader.ModifyAll(ClienteReporting_btc, New);
+
+        SalesShipmentHeader.SetRange(ClienteReporting_btc, old);
+        SalesShipmentHeader.ModifyAll(ClienteReporting_btc, New);
+
+        SalesCrMemoHeader.SetRange(ClienteReporting_btc, old);
+        SalesCrMemoHeader.ModifyAll(ClienteReporting_btc, New);
+
+        SalesHeaderArchive.SetRange(ClienteReporting_btc, old);
+        SalesHeaderArchive.ModifyAll(ClienteReporting_btc, New);
+
+        ReturnShipmentHeader.SetRange(ClienteReporting_btc, old);
+        ReturnShipmentHeader.ModifyAll(ClienteReporting_btc, New);
+
+    end;
 }

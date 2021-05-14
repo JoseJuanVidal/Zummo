@@ -169,6 +169,19 @@ page 50009 "STH Item Inventory Bin Content"
                     LoadItemInventory();
                 end;
             }
+            action(Cambio)
+            {
+                ApplicationArea = all;
+
+
+                trigger OnAction()
+                var
+                    Functions: Codeunit Funciones;
+                begin
+                    Functions.ChangeClienteReporting('C1094', 'C10694');
+                    Message('Fin');
+                end;
+            }
         }
 
     }

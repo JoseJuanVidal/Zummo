@@ -11390,6 +11390,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType IVA_Lbl</note>
           <target>IVA</target>
         </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3341798477" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EORI: </source>
+          <note from="Developer" annotates="general" priority="2">ESP="EORI: "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType lblEORI</note>
+          <target>EORI: </target>
+        </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 4261622325" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line Amount</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe línea"</note>
@@ -11945,6 +11951,965 @@
           <source>Volume(m3)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - Control volumen - Property Caption</note>
+          <target>Volumen(m3)</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Factura Nacional UK</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura Nacional UK"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Property Caption</note>
+          <target>Factura Nacional UK</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 464165316" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agent:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Agente:",FRA="Agent:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType AgenteCaptionLbl</note>
+          <target>Agente:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 320314281" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipping No.:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Albarán:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType AlbaranCaptionLbl</note>
+          <target>Albarán:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 694817936" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Montant"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType AmtCaptionLbl</note>
+          <target>Importe</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1889045978" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Artículo",FRA="Article"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Articulo_Lbl</note>
+          <target>Artículo</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2973434469" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BIC/Swift:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BIC/Swift:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BancoBicSwift_Lbl</note>
+          <target>BIC/Swift:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3403838503" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Datos bancarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BancoCaptionLbl</note>
+          <target>Datos bancarios</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1754289296" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cuenta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BancoCuenta_Lbl</note>
+          <target>Cuenta</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3130185660" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IBAN:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IBAN"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BancoIBAN_Lbl</note>
+          <target>IBAN</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1425562607" size-unit="char" translate="yes" xml:space="preserve">
+          <source>, Bank:</source>
+          <note from="Developer" annotates="general" priority="2">ESP=", Banco:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BancoNombre_Lbl</note>
+          <target>, Banco:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4022601393" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="País:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BancoPais_Lbl</note>
+          <target>País:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2716802396" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Branch office:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sucursal:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BancoSucursal_Lbl</note>
+          <target>Sucursal:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4233096702" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Núm. Cuenta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BankAccNoCaptionLbl</note>
+          <target>Núm. Cuenta</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2728952663" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Banco"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BankNameCaptionLbl</note>
+          <target>Banco</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1102477994" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taxable Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base Imponible"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BaseImponibleCaptionLbl</note>
+          <target>Base Imponible</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 271843689" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base imponible"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType BaseImponible_Lbl</note>
+          <target>Base imponible</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2278799068" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base",FRA="Base"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Base_Lbl</note>
+          <target>Base</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1816291155" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Special scheme of the cash criteria</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Régimen especial del criterio de caja"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType CACTxt</note>
+          <target>Régimen especial del criterio de caja</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 719671359" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Cantidad_Lbl</note>
+          <target>Cantidad</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1616056101" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="NIF:",FRA="Nº de Siret"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType CIFDNICaptionLbl</note>
+          <target>NIF:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 339718340" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente",FRA="Client"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ClienteCaptionLbl</note>
+          <target>Cliente</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3394917439" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remark</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Comentarios_Lbl</note>
+          <target>Comentarios</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2894199236" size-unit="char" translate="yes" xml:space="preserve">
+          <source>COPY</source>
+          <note from="Developer" annotates="general" priority="2">ESP="COPIA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType CopiaCaptionLbl</note>
+          <target>COPIA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2091931849" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PC:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CP:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType CPCaptionLbl</note>
+          <target>CP:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2272837165" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit and caution</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crédito y Caución"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType CreditoycaucionCaptionLbl</note>
+          <target>Crédito y Caución</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 36964189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulks:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bultos:",FRA="Bulks:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType CuadroBultos_BultosLbl</note>
+          <target>Bultos:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 82431631" size-unit="char" translate="yes" xml:space="preserve">
+          <source>INCOTERM:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="INCOTERM:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType CuadroBultos_IncotermLbl</note>
+          <target>INCOTERM:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 598888425" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pallets:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Palets:",FRA="Palettes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType CuadroBultos_PaletsLbl</note>
+          <target>Palets:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weight(kg):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType CuadroBultos_PesoNetoLbl</note>
+          <target>Peso Neto(kg):</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2685853250" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume(m3):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3):",FRA="Volume(m3):"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType CuadroBultos_VolumenLbl</note>
+          <target>Volumen(m3):</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 465633065" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción",FRA="Description"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Decripcion_Lbl</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 382931266" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dirección:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType DireccioncaptionLbl</note>
+          <target>Dirección:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2387469503" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Address</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dirección de envío",FRA="Adresse d´expédition"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType DireccionDeEnvio_Lbl</note>
+          <target>Dirección de envío</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2630275421" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dto.2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Discount2CaptionLbl</note>
+          <target>Dto.2</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2165929531" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dto.1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType DiscountCaptionLbl</note>
+          <target>Dto.1</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 524032345" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DNI:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DNI:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType DNICaptionLbl</note>
+          <target>DNI:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3112881028" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha emisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType DocDateCaptionLbl</note>
+          <target>Fecha emisión</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2783645336" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Disc.Com</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.Com",FRA="Rem."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType DtoGeneral_Lbl</note>
+          <target>Dto.Com</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 909300517" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dt. P.P.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto. P.P."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType DtoPPCaptionLbl</note>
+          <target>Dto. P.P.</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2627770630" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P.P.Disc</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.PP",FRA="Esc.P.C."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType DtoPP_Lbl</note>
+          <target>Dto.PP</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4092352280" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Vencimiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType DueDateCaptionLbl</note>
+          <target>Fecha Vencimiento</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3524079518" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EC Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe EC"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ECAmtCaptionLbl</note>
+          <target>Importe EC</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 422172454" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EC %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="EC %"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ECCaptionLbl</note>
+          <target>EC %</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1900476253" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El subtotal incluye el coste de gestión de los RAEES según Real Decreto 110/2015, de 20 de febrero, sobre residuos de aparatos eléctricos y electrónicos (BOE de 21/02/2015)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El subtotal incluye el coste de gestión de los RAEES según Real Decreto 110/2015, de 20 de febrero, sobre residuos de aparatos eléctricos y electrónicos (BOE de 21/02/2015)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ElSubtotalIncluye_Lbl</note>
+          <target>El subtotal incluye el coste de gestión de los RAEES según Real Decreto 110/2015, de 20 de febrero, sobre residuos de aparatos eléctricos y electrónicos (BOE de 21/02/2015)</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1877430892" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Email"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType EmailCaptionLbl</note>
+          <target>Email</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3205478158" size-unit="char" translate="yes" xml:space="preserve">
+          <source>INVOICE</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FACTURA",FRA="FACTURE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType FacturaCaptionLbl</note>
+          <target>FACTURA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2475311197" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fax</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fax"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType FaxCaptionLbl</note>
+          <target>Fax</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4172600247" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType FechaCaptionLbl</note>
+          <target>Fecha</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2570386175" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO.01.DVN/A9.11</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.01.DVN/A9.11"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType FO01_Lbl</note>
+          <target>FO.01.DVN/A9.11</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Forma de Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType FormadepagoCaptionLbl</note>
+          <target>Forma de Pago</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 13422290" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Giro No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Núm. Giro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType GiroNoCaptionLbl</note>
+          <target>Núm. Giro</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2090169835" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Header Dimensions</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dimensión cabecera"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType HdrDimsCaptionLbl</note>
+          <target>Dimensión cabecera</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2862688884" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Home Page</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Página Web"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType HomePageCaptionLbl</note>
+          <target>Página Web</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1400119597" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Bruto",FRA="Suos_Total"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ImporteBruto_Lbl</note>
+          <target>Importe Bruto</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 767445994" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount Dto. bill</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Dto. Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ImporteDescuentoFacturaCaptionLbl</note>
+          <target>Importe Dto. Factura</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 941113342" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Amount.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ImporteIVA."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ImporteIVACaptionLbl</note>
+          <target>ImporteIVA.</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2347267304" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount P.P.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe P.P."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ImportePPCaptionLbl</note>
+          <target>Importe P.P.</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1347764269" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Surcharge Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Recargo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ImporteRecargoCaptionLbl</note>
+          <target>Importe Recargo</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3666218128" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiration Amount (s)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Vencimiento(s)",FRA="Montant (s) d´expiration"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ImporteVencimientosCaptionLbl</note>
+          <target>Importe Vencimiento(s)</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 850441175" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Quantité"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Importe_Lbl</note>
+          <target>Importe</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1650498060" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Discount Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe descuento factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType InvDiscAmtCaptionLbl</note>
+          <target>Importe descuento factura</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1378777375" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Discount Base Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base descuento factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType InvDiscBaseAmtCaptionLbl</note>
+          <target>Base descuento factura</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4241823392" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Núm. Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType InvoiceNoCaptionLbl</note>
+          <target>Núm. Factura</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 530619947" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice and Payment Discounts</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descuentos en facturas y pagos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType InvPmtDiscCaptionLbl</note>
+          <target>Descuentos en facturas y pagos</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 938744765" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IVA",FRA="TVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType IVA_Lbl</note>
+          <target>IVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3341798477" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EORI: </source>
+          <note from="Developer" annotates="general" priority="2">ESP="EORI: "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType lblEORI</note>
+          <target>EORI: </target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3439061955" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT: </source>
+          <note from="Developer" annotates="general" priority="2">ESP="VAT: "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType lblVat</note>
+          <target>VAT: </target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4261622325" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe línea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType LineAmtCaption1Lbl</note>
+          <target>Importe línea</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1264881203" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line Dimensions</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dimensiones Línea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType LineDimsCaptionLbl</note>
+          <target>Dimensiones Línea</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 272376379" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Localidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType LocalidadCaptionLbl</note>
+          <target>Localidad</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2999073321" size-unit="char" translate="yes" xml:space="preserve">
+          <source>License plates</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Matriculas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType MatriculasCaptionLbl</note>
+          <target>Matriculas</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1059489614" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType NoAlbaranLidl_Lbl</note>
+          <target>Nº Albarán:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3686057625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivery Note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType NoAlbaran_Lbl</note>
+          <target>Nº Albarán:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 748934591" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Internal vendor order No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido interno del proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType NoPedidoInternoProveedorLidl_Lbl</note>
+          <target>Nº Pedido interno del proveedor</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 424486254" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ProShop Order No.:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido ProShop:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType NoPedidoLidl_Lbl</note>
+          <target>Nº Pedido ProShop:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1548886393" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order number:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido:",FRA="Nº commande:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType NoPedido_Lbl</note>
+          <target>Nº Pedido:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2863123117" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Serial No.:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº de Serie:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType NSerie_Lbl</note>
+          <target>Nº de Serie:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 620298302" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Num.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Núm."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType NumeroCaptionLbl</note>
+          <target>Núm.</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4038458895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation secured in</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Operación asegurada en"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType OperacionaseguradaCaptionLbl</note>
+          <target>Operación asegurada en</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3087662615" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ORIGINAL</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ORIGINAL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType OriginalCaptionLbl</note>
+          <target>ORIGINAL</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2906319183" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page %1 of %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Página %1 de %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PageCaptionCapLbl</note>
+          <target>Página %1 de %2</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2403674832" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Página"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PaginaCaptionLbl</note>
+          <target>Página</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 530266458" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PELEMIX, S.L.U.-N.I.F.: B-73255622</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PELEMIX, S.L.U.-N.I.F.: B-73255622"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PelemixSLUCaptionLbl</note>
+          <target>PELEMIX, S.L.U.-N.I.F.: B-73255622</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1928308579" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Teléfono."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PhoneNoCaptionLbl</note>
+          <target>Teléfono.</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4141635941" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Disc Given Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descuento de pago Cantidad dada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PmtDiscGivenAmtCaptionLbl</note>
+          <target>Descuento de pago Cantidad dada</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 990604365" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Discount on VAT</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descuento de pago en IVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PmtDiscVATCaptionLbl</note>
+          <target>Descuento de pago en IVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1109780517" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The payment of this invoice, in order to be released from the debt, has to be paid to the Factoring Company.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El pago de esta factura, para ser liberado de la deuda, debe ser pagado a la Compañía de Factoring."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PmtinvfromdebtpaidtoFactCompCaptionLbl</note>
+          <target>El pago de esta factura, para ser liberado de la deuda, debe ser pagado a la Compañía de Factoring.</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3568111613" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Método Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PmtMethodDescCaptionLbl</note>
+          <target>Método Pago</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 590686299" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Términos Pago",FRA="Conditions de Paiement"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PmtTermsDescCaptionLbl</note>
+          <target>Términos Pago</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2495946294" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%</source>
+          <note from="Developer" annotates="general" priority="2">ESP="%"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Porcentaje_Lbl</note>
+          <target>%</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 172134264" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NATIONAL PORTES</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PORTES NACIONAL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PortesNacionalLbl</note>
+          <target>PORTES NACIONAL</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1488271414" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Freight</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Portes",FRA="Fret"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Portes_Lbl</note>
+          <target>Portes</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2633846126" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Shipment Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha de envío publicada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PostedShpDateCaptionLbl</note>
+          <target>Fecha de envío publicada</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 443421780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PostingDateCaptionLbl</note>
+          <target>Fecha registro</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 657009959" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Precio en Alhama de Murcia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precio en Alhama de Murcia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PrecioenAlhamadeMurciaCaptionLbl</note>
+          <target>Precio en Alhama de Murcia</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1425880810" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PR-MANAGEMENT OF CUSTOMER ORDERS</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PRGestionPedidosCliente_Lbl</note>
+          <target>PR-GESTION DE LOS PEDIDOS DEL CLIENTE</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1202215679" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PERSONAL DATA PROTECTION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PROTECCION DE DATOS DE CARÁCTER PERSONAL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ProteccionDatosCaptionLbl</note>
+          <target>PROTECCION DE DATOS DE CARÁCTER PERSONAL</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2963158645" size-unit="char" translate="yes" xml:space="preserve">
+          <source>State</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ProvinciaCaptionLbl</note>
+          <target>Provincia</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1373116316" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rec.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rec."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType RecCaptionLbl</note>
+          <target>Rec.</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 230885988" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inscrita en el registro mercantil de Murcia, tomo 2028,folio 11, hoja MU-43705 inscripcion 1ª</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inscrita en el registro mercantil de Murcia, tomo 2028,folio 11, hoja MU-43705 inscripcion 1ª"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType RegistroMercantilCaptionLbl</note>
+          <target>Inscrita en el registro mercantil de Murcia, tomo 2028,folio 11, hoja MU-43705 inscripcion 1ª</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2153723302" size-unit="char" translate="yes" xml:space="preserve">
+          <source>R.E.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="R.E."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType RE_Lbl</note>
+          <target>R.E.</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3900935110" size-unit="char" translate="yes" xml:space="preserve">
+          <source>As provided by Regulation (EU) 2016/769 of the European Parliament and of the Council of April 27, 2016 regarding the protection of natural persons, we inform you that your data will be incorporated into the treatment system owned by ZUMMO MECHANICAL INNOVATIONS, SA - in order to be able to send you the corresponding invoice. You may exercise the rights of access, rectification, limitation of treatment, deletion, portability and opposition / revocation, in the terms established by current regulations on data protection, by sending your request to the postal address indicated above, you can also address to the competent Control Authority to submit the claim it deems appropriate.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Según lo Dispuesto por el Reglamento (UE) 2016/769 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de ZUMMO INNOVACIONES MECÁNICAS, S.A. - con la finalidad de poder remitirle la correspondiente factura. Podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición/revocación, en los términos que establece la normativa vigente en materia de protección de datos, dirigiendo su petición a la dirección postal arriba indicada, asimismo, podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType SegunLoDispuesto_Lbl</note>
+          <target>Según lo Dispuesto por el Reglamento (UE) 2016/769 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de ZUMMO INNOVACIONES MECÁNICAS, S.A. - con la finalidad de poder remitirle la correspondiente factura. Podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición/revocación, en los términos que establece la normativa vigente en materia de protección de datos, dirigiendo su petición a la dirección postal arriba indicada, asimismo, podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna.</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 232471621" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship-to Address</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Envío a dirección"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ShiptoAddressCaptionLbl</note>
+          <target>Envío a dirección</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1135475553" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ShpCaptionLbl</note>
+          <target>Envío</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2248224435" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment Method</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Método Envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ShpMethodDescCaptionLbl</note>
+          <target>Método Envío</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3126303398" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taxable Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base Imponible"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType SubtotalCaptionLbl</note>
+          <target>Base Imponible</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1677718373" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubTotal",FRA="Bases H.T."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType SubTotal_Lbl</note>
+          <target>SubTotal</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 291546920" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone/Fax:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tel/Fax:",FRA="Tél/Fax:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType TelefonoCaptionLbl</note>
+          <target>Tel/Fax:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4005924812" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tel:",FRA="Tél:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Tel_Lbl</note>
+          <target>Tel:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1565130912" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Operación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Text0010Txt</note>
+          <target>Fecha Operación</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1068094782" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Amount Specification in </source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especificación del importe del IVA en"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Text007Txt</note>
+          <target>Especificación del importe del IVA en</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2621188527" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Local Currency</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Divisa Local"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Text008Txt</note>
+          <target>Divisa Local</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 884324592" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exchange rate: %1/%2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo de cambio: %1/%2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Text009Txt</note>
+          <target>Tipo de cambio: %1/%2</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1644702992" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales - Prepayment Invoice %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ventas - Factura Prepago %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType Text010Txt</note>
+          <target>Ventas - Factura Prepago %1</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2834040588" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Esta factura sólo debe pagarse utilizando los datos bancarios reflejados arriba. Cualquier cambio indicado por otros medios debe considerarse válido</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Esta factura sólo debe pagarse utilizando los datos bancarios reflejados arriba. Cualquier cambio indicado por otros medios debe considerarse válido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType TextoFacturaCaptionLbl</note>
+          <target>Esta factura sólo debe pagarse utilizando los datos bancarios reflejados arriba. Cualquier cambio indicado por otros medios debe considerarse válido</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2559710941" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Retira el cliente por sus propios medios a traves de </source>
+          <note from="Developer" annotates="general" priority="2">ESP="Retira el cliente por sus propios medios a traves de "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType TextoRetiraClienteCaptionLbl</note>
+          <target>Retira el cliente por sus propios medios a traves de </target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 733438481" size-unit="char" translate="yes" xml:space="preserve">
+          <source>T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es</source>
+          <note from="Developer" annotates="general" priority="2">ESP="T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType TFZummo_Lbl</note>
+          <target>T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 778531578" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType TipoCaptionLbl</note>
+          <target>Tipo</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1583171122" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType TotalCaptionLbl</note>
+          <target>Total</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3766881108" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipping Agent:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Transportista:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType TransportistaCaptionLbl</note>
+          <target>Transportista:</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4040219166" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType txtcomentaires</note>
+          <target>Comentarios</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3659909257" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price/unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precio U.",FRA="Prix/un"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType UnitPriceCaptionLbl</note>
+          <target>Precio U.</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1823946834" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base IVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VALVATBaseLCYCaption1Lbl</note>
+          <target>Base IVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 3913295325" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe IVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VATAmountCaptionLbl</note>
+          <target>Importe IVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 4049601073" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe IVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VATAmtCaptionLbl</note>
+          <target>Importe IVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1210262078" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="% IVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VATAmtLineVATCaptionLbl</note>
+          <target>% IVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1396908878" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Amount Specification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especificación importe IVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VATAmtSpecCaptionLbl</note>
+          <target>Especificación importe IVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1424416391" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Clause</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cláusula IVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VATClausesCapLbl</note>
+          <target>Cláusula IVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 171448200" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT+EC Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IVA+EC Base"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VATECBaseCaptionLbl</note>
+          <target>IVA+EC Base</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 494261423" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Identifier</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Identificador IVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VATIdentCaptionLbl</note>
+          <target>Identificador IVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2012124496" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Identifier</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Identificador IVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VATIdentifierCaptionLbl</note>
+          <target>Identificador IVA</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1306668226" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Registration No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CIF"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VATRegNoCaptionLbl</note>
+          <target>CIF</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 1672841968" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Date Expiration (s)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Pago Vencimiento(s)",FRA="Expiration de la date de paiement(s)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType VencimientosCaptionLbl</note>
+          <target>Fecha Pago Vencimiento(s)</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - NamedType 2420091883" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia el 26 de enero de 1999, Tomo 4336, Libro 1648, Sección Gral., Folio 212, hoja Y-22381, Inscripción 1ª CIF A-9Nº R.I. Productor AEE 288</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on January 26, 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-9Nº R.I. AEE producer 288"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType ZummoInnovaciones_Lbl</note>
+          <target>Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on January 26, 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-9Nº R.I. AEE producer 288</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - ReportDataItem 809936682 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - ReportDataItem Sales Invoice Header - Property RequestFilterHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control Options - Property Caption</note>
+          <target>Opciones</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 215716959 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that any notes about additional fees are included on the document.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica que cualquier nota sobre tarifas adicionales se incluye en el documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control DisplayAdditionalFeeNote - Property ToolTip</note>
+          <target>Especifica que cualquier nota sobre tarifas adicionales se incluye en el documento</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 215716959 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Additional Fee Note</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar nota de tarifa adicional"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control DisplayAdditionalFeeNote - Property Caption</note>
+          <target>Mostrar nota de tarifa adicional</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 1885540899 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want the report to include information about components that were used in linked assembly orders that supplied the item(s) being sold.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica si el informe incluirá información sobre los componentes de ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control DisplayAsmInformation - Property ToolTip</note>
+          <target>Especifica si el informe incluirá información sobre los componentes de ensamblado</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 1885540899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Assembly Components</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ver componentes de ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control DisplayAsmInformation - Property Caption</note>
+          <target>Ver componentes de ensamblado</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 2209383500 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate that is a exportation invoice</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indica que es una factura de exportación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control facturaExportacion - Property ToolTip</note>
+          <target>Indica que es una factura de exportación</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 2209383500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Invoice</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura Exportación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control facturaExportacion - Property Caption</note>
+          <target>Factura Exportación</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 3214539077 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate that is a Lidl invoice</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indica que es una factura Lidl"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control facturaLidl - Property ToolTip</note>
+          <target>Indica que es una factura Lidl</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 3214539077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lidl Invoice</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura Lidl"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control facturaLidl - Property Caption</note>
+          <target>Factura Lidl</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 816368762 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that interactions with the contact are logged.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica si se guardará interacción con el contacto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control LogInteraction - Property ToolTip</note>
+          <target>Especifica si se guardará interacción con el contacto</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Interaction</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Log Interacción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control LogInteraction - Property Caption</note>
+          <target>Log Interacción</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 839610921 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If the invoice is national, it is possible to show the net amounts</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Si la factura es nacional, se da la posibilidad de mostrar los importes netos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control MostrarFechaOperacion - Property ToolTip</note>
+          <target>Si la factura es nacional, se da la posibilidad de mostrar los importes netos</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 839610921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Operation Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Fecha Operacion"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control MostrarFechaOperacion - Property Caption</note>
+          <target>Mostrar Fecha Operacion</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 3307204489 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>If the invoice is national, it is possible to show the net amounts</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Si la factura es nacional, se da la posibilidad de mostrar los importes netos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control mostrarNetos - Property ToolTip</note>
+          <target>Si la factura es nacional, se da la posibilidad de mostrar los importes netos</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 3307204489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Net</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Netos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control mostrarNetos - Property Caption</note>
+          <target>Mostrar Netos</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 3307204489 - Method 2126772001 - NamedType 4172039253" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Option only available on national invoice</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opción solo disponible en factura nacional"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control mostrarNetos - Method OnValidate - NamedType lbErrorErr</note>
+          <target>Opción solo disponible en factura nacional</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 2578066365 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies how many copies of the document to print.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica cuántas copias del documento se imprimirán"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control NoOfCopies - Property ToolTip</note>
+          <target>Especifica cuántas copias del documento se imprimirán</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 2578066365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Copies</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Núm. Copias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control NoOfCopies - Property Caption</note>
+          <target>Núm. Copias</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 932295800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Language</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control optIdioma - Property Caption</note>
+          <target>Idioma</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 4235567209 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check the option to reprint a copy</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marca la opción de volver a imprimir una copia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control Reimpresion - Property ToolTip</note>
+          <target>Marca la opción de volver a imprimir una copia</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 4235567209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print again</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volver a Imprimir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control Reimpresion - Property Caption</note>
+          <target>Volver a Imprimir</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 316520822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want the printed report to show information that is only for internal use.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica si se desea ver información interna del informe"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control ShowInternalInfo - Property ToolTip</note>
+          <target>Especifica si se desea ver información interna del informe</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 316520822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Internal Information</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ver información interna"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control ShowInternalInfo - Property Caption</note>
+          <target>Ver información interna</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 2390380850 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicates the volume of products in m3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indica el volumen de los productos en m3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control volumen - Property ToolTip</note>
+          <target>Indica el volumen de los productos en m3</target>
+        </trans-unit>
+        <trans-unit id="Report 3517662283 - Control 2390380850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Volume(m3)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - Control volumen - Property Caption</note>
           <target>Volumen(m3)</target>
         </trans-unit>
         <trans-unit id="Report 2605446939 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -17113,6 +18078,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - Action Email_btc - Property Caption</note>
           <target>&amp;Correo electrónico</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1682009332 - Action 2182749579 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Impimir Fact.Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - Action Impimir Fact.Export - Property ToolTip</note>
+          <target>Impimir Fact.Export</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1682009332 - Action 2182749579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Impimir Fact.Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - Action Impimir Fact.Export - Property Caption</note>
+          <target>Impimir Fact.Export</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1682009332 - Control 1021604149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Fecha operación</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha operación"</note>
@@ -19510,6 +20487,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Central Compras"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field CentralCompras_btc - Property Caption</note>
           <target>Central Compras</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 2948319293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Clasif. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasif. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field clasificacion_aseguradora - Property Caption</note>
+          <target>Clasif. Aseguradora</target>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 854387372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Cliente Corporativo</source>

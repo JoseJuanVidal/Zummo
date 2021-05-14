@@ -201,6 +201,12 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
             FieldClass = FlowField;
             CalcFormula = lookup(customer."Cred_ Max_ Aseg. Autorizado Por_btc" where("No." = field("Sell-to Customer No.")));
         }
+        field(50055; clasificacion_aseguradora; Code[20])
+        {
+            Caption = 'Clasif. Aseguradora', comment = 'ESP="Clasif. Aseguradora"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(customer.clasificacion_aseguradora where("No." = field("Sell-to Customer No.")));
+        }
     }
 
 }

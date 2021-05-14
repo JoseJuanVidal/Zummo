@@ -19203,6 +19203,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Central Compras"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field CentralCompras_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 2948319293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Clasif. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasif. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field clasificacion_aseguradora - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 854387372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Cliente Corporativo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cliente Corporativo"</note>

@@ -4669,6 +4669,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - ReportDataItem Sales Invoice Header - Property RequestFilterHeading</note>
         </trans-unit>
+        <trans-unit id="Report 3517662283 - ReportDataItem 809936682 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - ReportDataItem Sales Invoice Header - Property RequestFilterHeading</note>
+        </trans-unit>
         <trans-unit id="Report 2605446939 - NamedType 1514615946" size-unit="char" translate="yes" xml:space="preserve">
           <source>84.35.10.00</source>
           <note from="Developer" annotates="general" priority="2"/>
