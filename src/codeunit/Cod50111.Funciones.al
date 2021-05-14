@@ -1027,5 +1027,7 @@ codeunit 50111 "Funciones"
         ReturnShipmentHeader.SetRange(ClienteReporting_btc, old);
         ReturnShipmentHeader.ModifyAll(ClienteReporting_btc, New);
 
+        SalesInvoiceHeader.SetRange(ClienteReporting_btc, old);
+        SalesInvoiceHeader.ModifyAll(ClienteReporting_btc, New);
     end;
 }
