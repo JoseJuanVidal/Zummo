@@ -1508,7 +1508,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -3303,7 +3302,6 @@
                         <TablixMember>
                           <Group Name="Table1_Details_Group">
                             <GroupExpressions>
-                              <GroupExpression>=Fields!Entry_No_.Value</GroupExpression>
                               <GroupExpression>=Fields!DocumentNo.Value</GroupExpression>
                               <GroupExpression>=Fields!Type.Value</GroupExpression>
                             </GroupExpressions>
@@ -3857,9 +3855,6 @@ End Function
         </Field>
         <Field Name="AmountFormat">
           <DataField>AmountFormat</DataField>
-        </Field>
-        <Field Name="Entry_No_">
-          <DataField>Entry_No_</DataField>
         </Field>
         <Field Name="PaymentMethod">
           <DataField>PaymentMethod</DataField>
