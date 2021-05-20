@@ -3,7 +3,7 @@ page 50014 "STH Input Hist Aseguradora"
     PageType = StandardDialog;
     ApplicationArea = none;
     UsageCategory = Administration;
-    Caption = '', comment = '';
+    Caption = 'Hist. Aseguradora', comment = 'ESP="Hist. Aseguradora"';
 
     layout
     {

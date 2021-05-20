@@ -1045,6 +1045,63 @@ codeunit 50102 "Integracion_crm_btc"
             CRMAccount2.DefaultPriceLevelId := CustomerPriceGroupId;
             AdditionalFieldsWereModified := TRUE;
         end;
+
+        //******************** CANAL ********************  TODO
+        TextosAuxiliares.Reset();
+        TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+        TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::Canal);
+        TextosAuxiliares.SetRange(NumReg, Customer.GrupoCliente_btc);
+        if TextosAuxiliares.FindFirst() then begin
+            IF NOT CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
+                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
+                    ERROR('CRM GrupoCliente: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
+            CRMAccount2.zum_grupodecliente := TextosAuxiliaresId;
+            AdditionalFieldsWereModified := TRUE;
+        end;
+
+        //******************** CENTRAL DE COMPRAS ********************  TODO
+        // Option
+        case Customer.CentralCompras_btc OF
+            'EUROMADI':
+                CRMAccount2.bit_centralcompras := 913610002;
+            'GRUPO IFA':
+                CRMAccount2.bit_centralcompras := 913610001;
+            else
+                CRMAccount2.bit_centralcompras := CRMAccount2.bit_centralcompras::" ";
+        end;
+
+        //******************** SUBCLIENTE ********************  TODO
+        // Option
+        case Customer.CentralCompras_btc OF
+            'AHOLD':
+                CRMAccount2.bit_subclientebc := 913610000;
+            'AREAS':
+                CRMAccount2.bit_subclientebc := 913610001;
+            'CASINO':
+                CRMAccount2.bit_subclientebc := 913610002;
+            'CATALONIA':
+                CRMAccount2.bit_subclientebc := 913610003;
+            'CHICK FIL A':
+                CRMAccount2.bit_subclientebc := 913610004;
+            'GUFRESCO':
+                CRMAccount2.bit_subclientebc := 913610005;
+            'INTERMARCHE':
+                CRMAccount2.bit_subclientebc := 913610006;
+            'LECLERC':
+                CRMAccount2.bit_subclientebc := 913610007;
+            'MENSSANA':
+                CRMAccount2.bit_subclientebc := 913610008;
+            'MONOPRIX':
+                CRMAccount2.bit_subclientebc := 913610009;
+            'RODILLA':
+                CRMAccount2.bit_subclientebc := 913610010;
+            'VIPS':
+                CRMAccount2.bit_subclientebc := 913610011;
+            'WALMART':
+                CRMAccount2.bit_subclientebc := 913610012;
+            else
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::" ";
+        end;
         //Si ha habido cambios obtengo registro
         IF AdditionalFieldsWereModified THEN
             DestinationRecordRef.GETTABLE(CRMAccount2);

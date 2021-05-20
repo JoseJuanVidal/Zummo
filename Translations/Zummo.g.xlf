@@ -498,6 +498,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_bcterminosdepago - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 1852284510 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Central de compras</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_centralcompras - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 1852284510 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,GRUPO IFA,EUROMADI</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_centralcompras - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Field 4140636605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Central compras</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -517,6 +527,16 @@
           <source>Forma Pago Solicitada</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subcliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 4200503619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Central de compras</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subclientebc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 4200503619 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,AHOLD,AREAS,CASINO,CATALONIA,CHICK FIL A,GUFRESCO,INTERMARCHE,LECLERC,MENSSANA,MONOPRIX,RODILLA,VIPS,WALMART</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subclientebc - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 3049429624 - Field 1790090149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Business Type</source>
@@ -6780,7 +6800,7 @@
         </trans-unit>
         <trans-unit id="Page 2287400882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Invoice Change</source>
-          <note from="Developer" annotates="general" priority="2">Editar Hist. Fact. Venta </note>
+          <note from="Developer" annotates="general" priority="2">ESP="Editar Hist. Venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2287400882 - Control 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -6864,8 +6884,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Hist. Aseguradora - Action Revertir - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Page 4198750035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Hist. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Input Hist Aseguradora - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4198750035 - NamedType 69717365" size-unit="char" translate="yes" xml:space="preserve">

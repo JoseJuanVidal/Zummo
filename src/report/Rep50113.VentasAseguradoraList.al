@@ -12,6 +12,7 @@ report 50113 "Ventas Aseguradora - List"
         dataitem(Clasif1; Integer)
         {
             DataItemTableView = where(number = filter(1 .. 2));
+            column(CaptionAsegurado; CaptionAsegurado) { }
 
             dataitem(Clasif2; Integer)
             {
@@ -79,7 +80,7 @@ report 50113 "Ventas Aseguradora - List"
 
                     column(estadoDocCaption_Lbl; estadoDocCaption_Lbl) { }
 
-                    column(CaptionAsegurado; CaptionAsegurado) { }
+
 
                     trigger OnPreDataItem()
                     begin
@@ -115,12 +116,36 @@ report 50113 "Ventas Aseguradora - List"
                             CurrReport.Skip();
 
                         case Clasif1.Number of
+                            1:
+                                begin
+                                    CaptionAsegurado := lblAsegurado;
+                                end;
                             2:
                                 begin
+                                    CaptionAsegurado := lblNoAsegurado;
                                     if (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" = Aseguradora) and (Customer.clasificacion_aseguradora <> 'REHUSADO') then
                                         CurrReport.Skip();
+                                    case Clasif2.Number of
+                                        1, 2, 3, 4, 5: // Clasificacion2 := 'XXXXXX';
+                                            if not PaymentMethod."Es Contado" then
+                                                CurrReport.Skip();
+                                        6: // Clasificacion2 := 'OTROS' - 'CONTADO O PREPAGO','EMPRESAS VINCULADAS','CLIENTES REHUSADOS','ORGANISMOS PUBLICOS','PARTICULARES'
+                                            begin
+                                                if PaymentMethod."Es Contado" then
+                                                    CurrReport.Skip();
+                                                if Customer.clasificacion_aseguradora in ['EMPRESAS VINCULADAS', 'CLIENTES REHUSADOS', 'ORGANISMOS PUBLICOS', 'PARTICULARES'] then
+                                                    CurrReport.Skip();
+                                            end;
+                                    end;
                                 end;
                         end;
+
+                        if PaymentMethod.Get("Payment Method Code") then
+                            PaymentMethodTxt := PaymentMethod.Description;
+                        if PaymentTerms.get("Payment Terms Code") then;
+
+
+
                         if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> Aseguradora then
                             Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := '';
 
@@ -131,9 +156,6 @@ report 50113 "Ventas Aseguradora - List"
                         BusinessNameTxt := StrSubstNo('%1 - %2', Customer."No.", Customer.Name);
                         DocumentDateTxt := Format("Document Date");
 
-                        if PaymentMethod.Get("Payment Method Code") then
-                            PaymentMethodTxt := PaymentMethod.Description;
-                        if PaymentTerms.get("Payment Terms Code") then;
 
                         DueDateTxt := Format("Due Date");
                         DocumentNoTxt := "No.";
@@ -144,15 +166,10 @@ report 50113 "Ventas Aseguradora - List"
                         if CountryRegion.Get("Sell-to Country/Region Code") then
                             CountryTxt := CountryRegion.Name;
 
-                        CaptionAsegurado := lblNoAsegurado;
+
                         if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '' then begin
                             Clasif2Nivel := CountryRegion.Name;
-                            CaptionAsegurado := lblAsegurado;
-                            // control de REHUSADO-
-                            if Customer.clasificacion_aseguradora = 'REHUSADO' then begin
-                                CaptionAsegurado := lblNoAsegurado;
-                                Clasif2Nivel := Customer.clasificacion_aseguradora;
-                            end;
+                            Clasificacion2 := CountryRegion.Name;
                         end else begin
                             if PaymentMethod."Es Contado" then
                                 Clasif2Nivel := PaymentMethod.Code
@@ -185,6 +202,15 @@ report 50113 "Ventas Aseguradora - List"
                         end;
                     end;
                 }
+
+                trigger OnPreDataItem()
+                begin
+                    if Clasif1.Number = 1 then
+                        SetRange(Number, 1)
+                    else
+                        SetRange(Number, 1, 6);
+                end;
+
                 trigger OnAfterGetRecord()
                 begin
                     case Clasif2.Number of
@@ -200,9 +226,19 @@ report 50113 "Ventas Aseguradora - List"
                             Clasificacion2 := 'PARTICULARES';
                         6:
                             Clasificacion2 := 'OTROS';
-                    end
+                    end;
                 end;
             }
+
+            trigger OnAfterGetRecord()
+            begin
+                case Clasif1.Number of
+                    1:
+                        CaptionAsegurado := lblAsegurado;
+                    2:
+                        CaptionAsegurado := lblNoAsegurado;
+                end;
+            end;
         }
     }
 

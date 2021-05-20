@@ -4199,11 +4199,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Selección Etiquetas - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 4198750035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source/>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Input Hist Aseguradora - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 9807146 - Control 1796535343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>(-)Cant. componentes Oferta</source>
           <note from="Developer" annotates="general" priority="2"/>

@@ -7285,6 +7285,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page PedirDatoZummo - Control varDato - Property Caption</note>
           <target>Dato</target>
         </trans-unit>
+        <trans-unit id="Page 2287400882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Sales Invoice Change</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Editar Hist. Venta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Property Caption</note>
+          <target>Editar Hist. Venta</target>
+        </trans-unit>
         <trans-unit id="Page 2287400882 - Control 782583580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cliente Reporting</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cliente Reporting"</note>
@@ -7368,9 +7374,10 @@
           <target>Revertir Historico</target>
         </trans-unit>
         <trans-unit id="Page 4198750035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source/>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>Hist. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Input Hist Aseguradora - Property Caption</note>
+          <target>Hist. Aseguradora</target>
         </trans-unit>
         <trans-unit id="Page 4198750035 - NamedType 69717365" size-unit="char" translate="yes" xml:space="preserve">
           <source>Finalizar Credito</source>

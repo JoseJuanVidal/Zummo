@@ -1489,6 +1489,28 @@ table 50138 "CRM Account_crm_btc"
             ExternalName = 'bit_idioma';
             ExternalType = 'String';
         }
+        field(50055; bit_centralcompras; Option)
+        {
+            Caption = 'Central de compras';
+            Description = '';
+            ExternalName = 'bit_centralcompras';
+            ExternalType = 'Picklist';
+            InitValue = " ";
+            OptionCaption = ' ,GRUPO IFA,EUROMADI';
+            OptionOrdinalValues = -1, 913610001, 913610002;  // 0->913.610002
+            OptionMembers = " ","GRUPO IFA",EUROMADI;
+        }
+        field(50056; bit_subclientebc; Option)
+        {
+            Caption = 'Central de compras';
+            Description = '';
+            ExternalName = 'bit_subclientebc';
+            ExternalType = 'Picklist';
+            InitValue = " ";
+            OptionCaption = ' ,AHOLD,AREAS,CASINO,CATALONIA,CHICK FIL A,GUFRESCO,INTERMARCHE,LECLERC,MENSSANA,MONOPRIX,RODILLA,VIPS,WALMART';
+            OptionOrdinalValues = -1, 913610000, 913610001, 913610002, 913610003, 913610004, 913610005, 913610006, 913610007, 913610008, 913610009, 913610010, 913610011, 913610012;  // 0->913.610002
+            OptionMembers = " ",AHOLD,AREAS,CASINO,CATALONIA,"CHICK FIL A",GUFRESCO,INTERMARCHE,LECLERC,MENSSANA,MONOPRIX,RODILLA,VIPS,WALMART;
+        }
     }
 
     keys
