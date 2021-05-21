@@ -679,6 +679,8 @@ codeunit 50102 "Integracion_crm_btc"
         UnitOfMeasureCode := FORMAT(UnitOfMeasureCodeFieldRef.VALUE);
 
         CRMProductos_btc.QuantityDecimal := 2; //2 decimales por defecto
+        if not Item.Blocked then
+            CRMProductos_btc.StatusCode := 1;//CRMProductos_btc.StatusCode::Active;
 
         // Get the unit of measure ID used in this product
         // On that unit of measure ID, get the UoMName, UomscheduleID, UomscheduleName and update them in the product if needed
@@ -908,7 +910,7 @@ codeunit 50102 "Integracion_crm_btc"
         //     // DestinationFieldRef.VALUE := Customer."Credito Maximo Interno_btc";
 
 
-        CRMAccount2.customertypecode := CRMAccount2.customertypecode::Customer;
+        //CRMAccount2.customertypecode := CRMAccount2.customertypecode::Customer;
 
         //******************* VENDEDOR DEFECTO ***************************************
         //Si no viene relleno pongo el de defecto
