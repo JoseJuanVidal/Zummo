@@ -27,7 +27,7 @@ codeunit 50102 "Integracion_crm_btc"
             'Sales Header-CRM Quote':
                 AdditionalFieldsWereModified :=
                     ActualizarCamposOferta(SourceRecordRef, DestinationRecordRef);
-            'Sales Header-CRM Salesorder_btc':
+            'Sales Header-CRM Salesorder_btc', 'Sales Header-CRM Salesorder_crm_btc':
                 ActualizarCamposPedido(SourceRecordRef, DestinationRecordRef);
             'Sales Line-CRM Salesorderdetail_btc':
                 ActualizarCamposLinPedido(SourceRecordRef, DestinationRecordRef);
@@ -136,7 +136,6 @@ codeunit 50102 "Integracion_crm_btc"
         CustomerPriceGroupId: Guid;
         CRMquote: record "CRM Quote";
         CRMTransactioncurrency: Record "CRM Transactioncurrency";
-
         TypeHelper: Codeunit "Type Helper";
         CRMSynchHelper: Codeunit "CRM Synch. Helper";
         DestinationFieldRef: FieldRef;
@@ -284,13 +283,20 @@ codeunit 50102 "Integracion_crm_btc"
         DestinationRecordRef.SETTABLE(CRMsalesOrder);
 
         //******************* VENDEDOR DEFECTO ***************************************
-        //Si no viene relleno pongo el de defecto
-        if IsNullGuid(CRMsalesOrder.OwnerId) then begin
-            IF NOT CRMIntegrationRecord.FindIDFromRecordID(Salesperson.RECORDID, SalespersonId) THEN
-                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Salesperson/Purchaser", Salesperson.RECORDID, OutOfMapFilter) THEN
-                    ERROR('CRM Vendedor: ' + Customer."No." + ' Dato: ' + Salesperson.Code);
-            CRMsalesOrder.OwnerId := SalespersonId;
-        end;
+        // Si no viene relleno pongo el de defecto
+        // JJV quitamos error y ponemos control de poner e
+        if Salesperson.GET(Pedido."Salesperson Code") then begin
+            if IsNullGuid(CRMsalesOrder.OwnerId) then begin
+                IF NOT CRMIntegrationRecord.FindIDFromRecordID(Salesperson.RECORDID, SalespersonId) THEN
+                    IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Salesperson/Purchaser", Salesperson.RECORDID, OutOfMapFilter) THEN BEGIN
+                        // si no encuentra owner ponemos el id del de setup
+                        SalespersonId := 'db0ee768-6b7a-ea11-a812-000d3a2c3eaa';
+                    END;
+            end;
+        end else
+            SalespersonId := 'db0ee768-6b7a-ea11-a812-000d3a2c3eaa';
+        //    ERROR('CRM Vendedor: ' + Customer."No." + ' Dato: ' + Salesperson.Code);
+        CRMsalesOrder.OwnerId := SalespersonId;
 
 
         // Shipment Method Code -> go to table Shipment Method, and from there extract the description and add it to
@@ -1058,6 +1064,7 @@ codeunit 50102 "Integracion_crm_btc"
             CRMAccount2.zum_grupodecliente := TextosAuxiliaresId;
             AdditionalFieldsWereModified := TRUE;
         end;
+
 
         //******************** CENTRAL DE COMPRAS ********************  TODO
         // Option
