@@ -42,6 +42,39 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
         {
             Visible = false;
         }
+
+        addfirst(Reporting)
+        {
+            action("Imprimir Fact UK")
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Print;
+                Caption = 'Imprimir Fact. UK', Comment = 'ESP="Imprimir Fact. UK"';
+                ToolTip = 'Imprimir Fact. UK', Comment = 'ESP="Imprimir Fact. UK"';
+
+                trigger OnAction()
+                var
+                    SalesCrMemoHeader: Record "Sales Cr.Memo Header";
+                    reportFacturaUK: Report AbonoVentaUKRegistrado;
+
+                    Selection: Integer;
+                begin
+                    // Message(Format(Selection));
+                    SalesCrMemoHeader.Reset();
+
+                    SalesCrMemoHeader.SetRange("No.", Rec."No.");
+                    if SalesCrMemoHeader.FindFirst() then begin
+                        clear(reportFacturaUK);
+                        reportFacturaUK.EsExportacion();
+                        reportFacturaUK.SetTableView(SalesCrMemoHeader);
+                        reportFacturaUK.Run();
+                    end;
+                end;
+            }
+        }
     }
 
 
