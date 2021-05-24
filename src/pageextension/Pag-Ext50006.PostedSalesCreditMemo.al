@@ -51,8 +51,8 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
                 PromotedCategory = Report;
                 PromotedIsBig = true;
                 Image = Print;
-                Caption = 'Imprimir Fact. UK', Comment = 'ESP="Imprimir Fact. UK"';
-                ToolTip = 'Imprimir Fact. UK', Comment = 'ESP="Imprimir Fact. UK"';
+                Caption = 'Imprimir Abono UK', Comment = 'ESP="Imprimir Abono UK"';
+                ToolTip = 'Imprimir Abono UK', Comment = 'ESP="Imprimir Abono UK"';
 
                 trigger OnAction()
                 var
