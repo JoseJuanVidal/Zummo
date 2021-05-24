@@ -4498,6 +4498,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Altas: %1\Bajas %2\Cambios %3\"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ImportExcelEmployee - NamedType lblResume</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2665306276 - NamedType 69717365" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se ha procedido a la actualización de los datos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se ha procedido a la actualización de los datos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ImportExcelEmployee - NamedType lblFin</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3924250185 - NamedType 899079631" size-unit="char" translate="yes" xml:space="preserve">
           <source>No documents have been found that can be settled. \</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se han encontrado documentos que puedan ser resueltos"</note>

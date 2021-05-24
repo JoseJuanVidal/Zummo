@@ -1035,6 +1035,8 @@ codeunit 50111 "Funciones"
     procedure ImportExcelEmployee()
     var
         Employee: record Employee;
+        TextoAuxiliares: record TextosAuxiliares;
+        MultiRRHH_zum: Record MultiRRHH_zum;
         ExcelBuffer: Record "Excel Buffer" temporary;
         FileStream: InStream;
         Fichero: text;
@@ -1048,6 +1050,7 @@ codeunit 50111 "Funciones"
         NEmpleado: Integer;
         Text000: Label '¿Desea actualizar los datos de Personal con los datos de la excel?', Comment = 'ESP="¿Desea actualizar los datos de Personal con los datos de la excel?"';
         lblResume: Label 'Altas: %1\Bajas %2\Cambios %3\', comment = 'ESP="Altas: %1\Bajas %2\Cambios %3\"';
+        lblFin: Label 'Se ha procedido a la actualización de los datos', comment = 'ESP="Se ha procedido a la actualización de los datos"';
     begin
         ExcelBuffer.DeleteAll();
         Commit();
@@ -1116,17 +1119,22 @@ codeunit 50111 "Funciones"
                     if ExcelBuffer.FindSet() then
                         Employee.NIF_zum := ExcelBuffer."Cell Value as Text";
                     ExcelBuffer.SetRange("Column No.", 6);  // Area
-                    if ExcelBuffer.FindSet() then
-                        Employee.Area_zum := ExcelBuffer."Cell Value as Text";
+                    if ExcelBuffer.FindSet() then begin
+                        MultiRRHH_zum.SetRange(Tabla, MultiRRHH_zum.tabla::"Area");
+                        MultiRRHH_zum.SetRange(Descripcion, ExcelBuffer."Cell Value as Text");
+                        MultiRRHH_zum.FindSet();
+                        Employee.Area_zum := MultiRRHH_zum.Codigo;
+                    end;
                     ExcelBuffer.SetRange("Column No.", 7);  // Departamento
-                    if ExcelBuffer.FindSet() then
-                        Employee.Departamento_zum := ExcelBuffer."Cell Value as Text";
+                    if ExcelBuffer.FindSet() then begin
+                        MultiRRHH_zum.SetRange(tabla, MultiRRHH_zum.tabla::Departamentos);
+                        MultiRRHH_zum.SetRange(Descripcion, ExcelBuffer."Cell Value as Text");
+                        MultiRRHH_zum.FindSet();
+                        Employee.Departamento_zum := MultiRRHH_zum.Codigo;
+                    end;
                     ExcelBuffer.SetRange("Column No.", 8);  // Cargo
                     if ExcelBuffer.FindSet() then
-                        Employee."Job Title" := ExcelBuffer."Cell Value as Text";
-                    if not Employee.Insert() then
-                        Employee.Modify();
-
+                        Employee."Job Title" := CopyStr(ExcelBuffer."Cell Value as Text", 1, 30);
                     ExcelBuffer.SetRange("Column No.", 11);  // SituacionActual
                     if ExcelBuffer.FindSet() then;
                     case ExcelBuffer."Cell Value as Text" of
@@ -1135,13 +1143,17 @@ codeunit 50111 "Funciones"
 
                             end;
                         else begin
-
+                                Employee.Status := Employee.Status::Terminated;
                             end;
                     end;
+                    if not Employee.Insert() then
+                        Employee.Modify();
                 end;
 
             end;
         end;
+
+        Message(lblFin);
     end;
 
 }

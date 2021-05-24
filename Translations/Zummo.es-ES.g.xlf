@@ -523,6 +523,16 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_bcterminosdepago - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 1852284510 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Central de compras</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_centralcompras - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 1852284510 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,GRUPO IFA,EUROMADI</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_centralcompras - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Field 4140636605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Central compras</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -542,6 +552,16 @@
           <source>Forma Pago Solicitada</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subcliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 4200503619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Central de compras</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subclientebc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 4200503619 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,AHOLD,AREAS,CASINO,CATALONIA,CHICK FIL A,GUFRESCO,INTERMARCHE,LECLERC,MENSSANA,MONOPRIX,RODILLA,VIPS,WALMART</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subclientebc - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 3049429624 - Field 1790090149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Business Type</source>
@@ -4560,6 +4580,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el credito a %1 de %2 por %3?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method FinAseguradora - NamedType lblConfirm</note>
           <target>¿Desea eliminar el credito a %1 de %2 por %3?</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2665306276 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los datos de Personal con los datos de la excel?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los datos de Personal con los datos de la excel?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ImportExcelEmployee - NamedType Text000</note>
+          <target>¿Desea actualizar los datos de Personal con los datos de la excel?</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2665306276 - NamedType 1152117021" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Altas: %1\Bajas %2\Cambios %3\</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Altas: %1\Bajas %2\Cambios %3\"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ImportExcelEmployee - NamedType lblResume</note>
+          <target>Altas: %1\Bajas %2\Cambios %3\</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2665306276 - NamedType 69717365" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se ha procedido a la actualización de los datos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se ha procedido a la actualización de los datos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ImportExcelEmployee - NamedType lblFin</note>
+          <target>Se ha procedido a la actualización de los datos</target>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3924250185 - NamedType 899079631" size-unit="char" translate="yes" xml:space="preserve">
           <source>No documents have been found that can be settled. \</source>
@@ -18892,6 +18930,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Contraseña Vencimientos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SMTPMailSetup - Control passVencimientosTxt - Property Caption</note>
           <target>Contraseña Vencimientos</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3260528537 - Action 1147532894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Importar Excel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Excel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Employee List - Action ImportExcel - Property Caption</note>
+          <target>Importar Excel</target>
         </trans-unit>
         <trans-unit id="PageExtension 4701843 - Action 1033639056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Importar Nominas</source>
