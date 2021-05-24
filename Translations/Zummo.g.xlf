@@ -4488,6 +4488,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el credito a %1 de %2 por %3?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method FinAseguradora - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2665306276 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los datos de Personal con los datos de la excel?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los datos de Personal con los datos de la excel?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ImportExcelEmployee - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2665306276 - NamedType 1152117021" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Altas: %1\Bajas %2\Cambios %3\</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Altas: %1\Bajas %2\Cambios %3\"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ImportExcelEmployee - NamedType lblResume</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3924250185 - NamedType 899079631" size-unit="char" translate="yes" xml:space="preserve">
           <source>No documents have been found that can be settled. \</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se han encontrado documentos que puedan ser resueltos"</note>
@@ -17747,6 +17757,11 @@
           <source>Statements Pass</source>
           <note from="Developer" annotates="general" priority="2">ESP="Contraseña Vencimientos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SMTPMailSetup - Control passVencimientosTxt - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3260528537 - Action 1147532894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Importar Excel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Excel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Employee List - Action ImportExcel - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4701843 - Action 1033639056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Importar Nominas</source>

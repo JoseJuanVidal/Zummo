@@ -61,6 +61,7 @@ codeunit 50110 "CU_Cron"
     begin
         recReservEntry.Reset();
         recReservEntry.SetFilter("Reservation Status", '<>%1', recReservEntry."Reservation Status"::Reservation);
+        recReservEntry.SetFilter("Source Type", '<>%1', 5741);
         if recReservEntry.FindFirst() then
             recReservEntry.DeleteAll();
     end;
