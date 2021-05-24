@@ -65,7 +65,7 @@ table 50138 "CRM Account_crm_btc"
             ExternalType = 'Picklist';
             InitValue = " ";
             OptionCaption = ' ,Competitor,Consultant,Customer,Investor,Partner,Influencer,Press,Prospect,Reseller,Supplier,Vendor,Other';
-            OptionOrdinalValues = -1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+            OptionOrdinalValues = -1, 1, 2, 3, 978740000, 5, 6, 7, 8, 9, 10, 11, 12;
             OptionMembers = " ",Competitor,Consultant,Customer,Investor,Partner,Influencer,Press,Prospect,Reseller,Supplier,Vendor,Other;
         }
         field(7; AccountRatingCode; Option)
@@ -518,42 +518,42 @@ table 50138 "CRM Account_crm_btc"
         {
             Caption = 'Address 1: Name';
             Description = 'Type a descriptive name for the primary address, such as Corporate Headquarters.';
-            ExternalName = 'address1_name';
+            ExternalName = 'address2_name';
             ExternalType = 'String';
         }
         field(64; Address1_PrimaryContactName; Text[100])
         {
             Caption = 'Address 1: Primary Contact Name';
             Description = 'Type the name of the main contact at the account''s primary address.';
-            ExternalName = 'address1_primarycontactname';
+            ExternalName = 'address2_primarycontactname';
             ExternalType = 'String';
         }
         field(65; Address1_Line1; Text[250])
         {
             Caption = 'Address 1: Street 1';
             Description = 'Type the first line of the primary address.';
-            ExternalName = 'address1_line1';
+            ExternalName = 'address2_line1';
             ExternalType = 'String';
         }
         field(66; Address1_Line2; Text[250])
         {
             Caption = 'Address 1: Street 2';
             Description = 'Type the second line of the primary address.';
-            ExternalName = 'address1_line2';
+            ExternalName = 'address2_line2';
             ExternalType = 'String';
         }
         field(67; Address1_Line3; Text[250])
         {
             Caption = 'Address 1: Street 3';
             Description = 'Type the third line of the primary address.';
-            ExternalName = 'address1_line3';
+            ExternalName = 'address2_line3';
             ExternalType = 'String';
         }
         field(68; Address1_City; Text[80])
         {
             Caption = 'Address 1: City';
             Description = 'Type the city for the primary address.';
-            ExternalName = 'address1_city';
+            ExternalName = 'address2_city';
             ExternalType = 'String';
         }
         field(69; Address1_StateOrProvince; Text[50])
@@ -588,7 +588,7 @@ table 50138 "CRM Account_crm_btc"
         {
             Caption = 'Address 1: ZIP/Postal Code';
             Description = 'Type the ZIP Code or postal code for the primary address.';
-            ExternalName = 'address1_postalcode';
+            ExternalName = 'address2_postalcode';
             ExternalType = 'String';
         }
         field(74; Address1_UTCOffset; Integer)
@@ -1489,13 +1489,13 @@ table 50138 "CRM Account_crm_btc"
             ExternalName = 'bit_idioma';
             ExternalType = 'String';
         }
-        field(50055; bit_centralcompras; Option)
+        field(50055; bit_centralcompras; option)
         {
             Caption = 'Central de compras';
             Description = '';
             ExternalName = 'bit_centralcompras';
             ExternalType = 'Picklist';
-            InitValue = " ";
+            InitValue = "GRUPO IFA";
             OptionCaption = ' ,GRUPO IFA,EUROMADI';
             OptionOrdinalValues = -1, 913610001, 913610002;  // 0->913.610002
             OptionMembers = " ","GRUPO IFA",EUROMADI;
