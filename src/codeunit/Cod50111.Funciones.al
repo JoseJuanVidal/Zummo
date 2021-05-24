@@ -1030,4 +1030,118 @@ codeunit 50111 "Funciones"
         SalesInvoiceHeader.SetRange(ClienteReporting_btc, old);
         SalesInvoiceHeader.ModifyAll(ClienteReporting_btc, New);
     end;
+
+
+    procedure ImportExcelEmployee()
+    var
+        Employee: record Employee;
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        FileStream: InStream;
+        Fichero: text;
+        Sheet: text;
+        MaxRow: Integer;
+        MaxCol: Integer;
+        i: integer;
+        New: Integer;
+        change: Integer;
+        Low: Integer;
+        NEmpleado: Integer;
+        Text000: Label '¿Desea actualizar los datos de Personal con los datos de la excel?', Comment = 'ESP="¿Desea actualizar los datos de Personal con los datos de la excel?"';
+        lblResume: Label 'Altas: %1\Bajas %2\Cambios %3\', comment = 'ESP="Altas: %1\Bajas %2\Cambios %3\"';
+    begin
+        ExcelBuffer.DeleteAll();
+        Commit();
+        UploadIntoStream('Abrir Excel', '', 'Excel Files (*.xlsx)|*.*', fichero, FileStream);
+        ExcelBuffer.LockTable();
+        Sheet := ExcelBuffer.SelectSheetsNameStream(FileStream);
+        ExcelBuffer.OpenBookStream(FileStream, Sheet);
+        ExcelBuffer.ReadSheet();
+        ExcelBuffer.SetRange("Column No.", 1);
+        if ExcelBuffer.FindLast() then;
+        MaxRow := ExcelBuffer."Row No.";
+        ExcelBuffer.Reset();
+        ExcelBuffer.SetRange("Row No.", 14); // donde estan las columnas titulo
+        if ExcelBuffer.FindLast() then;
+        MaxCol := ExcelBuffer."Column No.";
+
+        //if not Confirm(Text000, false) then
+        //  exit;
+
+        // cargamos el array de almacenes
+        ExcelBuffer.Reset();
+        for i := 1 to MaxRow do begin
+            ExcelBuffer.Reset();
+            ExcelBuffer.SetRange("Row No.", i);  // ponemos la línea
+            ExcelBuffer.SetRange("Column No.", 1);  // Cod. empleado
+            if ExcelBuffer.FindSet() then begin
+                if Evaluate(NEmpleado, ExcelBuffer."Cell Value as Text") then begin
+                    if Employee.Get(format(NEmpleado)) then begin
+                        ExcelBuffer.SetRange("Column No.", 11);  // SituacionActual
+                        if ExcelBuffer.FindSet() then;
+                        case ExcelBuffer."Cell Value as Text" of
+                            'Alta':
+                                change += 1;
+                            else
+                                Low += 1;
+                        end;
+                    end else begin
+                        new += 1;
+                    end;
+                end;
+
+            end;
+        end;
+        if not Confirm(lblResume + Text000, false, new, Low, change) then
+            exit;
+        for i := 1 to MaxRow do begin
+            ExcelBuffer.Reset();
+            ExcelBuffer.SetRange("Row No.", i);  // ponemos la línea
+            ExcelBuffer.SetRange("Column No.", 1);  // Cod. empleado
+            if ExcelBuffer.FindSet() then begin
+                if Evaluate(NEmpleado, ExcelBuffer."Cell Value as Text") then begin
+                    if not Employee.Get(format(NEmpleado)) then begin
+                        Employee.Init();
+                        Employee."No." := format(NEmpleado);
+                    end;
+                    ExcelBuffer.SetRange("Column No.", 3);  // Nombre
+                    if ExcelBuffer.FindSet() then
+                        Employee.Name := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 4);  // 1 apellido
+                    if ExcelBuffer.FindSet() then
+                        Employee."First Family Name" := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 5);  // 2 apellido
+                    if ExcelBuffer.FindSet() then
+                        Employee."Second Family Name" := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 2);  // NIF
+                    if ExcelBuffer.FindSet() then
+                        Employee.NIF_zum := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 6);  // Area
+                    if ExcelBuffer.FindSet() then
+                        Employee.Area_zum := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 7);  // Departamento
+                    if ExcelBuffer.FindSet() then
+                        Employee.Departamento_zum := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 8);  // Cargo
+                    if ExcelBuffer.FindSet() then
+                        Employee."Job Title" := ExcelBuffer."Cell Value as Text";
+                    if not Employee.Insert() then
+                        Employee.Modify();
+
+                    ExcelBuffer.SetRange("Column No.", 11);  // SituacionActual
+                    if ExcelBuffer.FindSet() then;
+                    case ExcelBuffer."Cell Value as Text" of
+                        'Alta':
+                            begin
+
+                            end;
+                        else begin
+
+                            end;
+                    end;
+                end;
+
+            end;
+        end;
+    end;
+
 }
