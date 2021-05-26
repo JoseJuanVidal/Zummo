@@ -21,7 +21,7 @@ codeunit 50102 "Integracion_crm_btc"
             'Item-CRM Productos_btc', 'Item-CRM Productos_crm_btc':
                 AdditionalFieldsWereModified :=
                       ActualizarCamposProducto(SourceRecordRef, DestinationRecordRef);
-            'Customer Price Group-CRM Pricelevel_btc':
+            'Customer Price Group-CRM Pricelevel_btc', 'Customer Price Group-CRM Pricelevel_crm_btc':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposTarifa(SourceRecordRef, DestinationRecordRef);
             'Sales Header-CRM Quote':
@@ -29,7 +29,7 @@ codeunit 50102 "Integracion_crm_btc"
                     ActualizarCamposOferta(SourceRecordRef, DestinationRecordRef);
             'Sales Header-CRM Salesorder_btc', 'Sales Header-CRM Salesorder_crm_btc':
                 ActualizarCamposPedido(SourceRecordRef, DestinationRecordRef);
-            'Sales Line-CRM Salesorderdetail_btc':
+            'Sales Line-CRM Salesorderdetail_btc', 'Sales Line-CRM Salesorderdetail_crm_btc':
                 ActualizarCamposLinPedido(SourceRecordRef, DestinationRecordRef);
             'Service Header-CRM Incident':
                 ActualizarCamposPedidoServicio(SourceRecordRef, DestinationRecordRef);
