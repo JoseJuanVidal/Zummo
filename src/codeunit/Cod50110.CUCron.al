@@ -64,6 +64,11 @@ codeunit 50110 "CU_Cron"
         recReservEntry.SetFilter("Source Type", '<>%1', 5741);
         if recReservEntry.FindFirst() then
             recReservEntry.DeleteAll();
+        recReservEntry.Reset();
+        recReservEntry.SetRange("Source Type", 5741);
+        recReservEntry.SetRange("Item Tracking", recReservEntry."Item Tracking"::None);
+        if recReservEntry.FindFirst() then
+            recReservEntry.DeleteAll();
     end;
 
     local procedure CambiaFechasOferta()
