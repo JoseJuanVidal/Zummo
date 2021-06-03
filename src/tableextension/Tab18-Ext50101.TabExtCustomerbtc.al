@@ -312,6 +312,11 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         {
             DataClassification = CustomerContent;
         }
+        field(50060; "ABC Cliente"; Option)
+        {
+            OptionMembers = " ","3A","A","B","C","Z";
+            OptionCaption = ' ,3A,A,B,C,Z', Comment = 'ESP=" ,3A,A,B,C,Z"';
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var

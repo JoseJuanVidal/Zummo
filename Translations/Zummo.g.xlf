@@ -20643,6 +20643,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Stockkeeping Unit - Field STHQuantityWhse - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field ABC Cliente - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 978621307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Alert Message</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mensaje de Alerta"</note>

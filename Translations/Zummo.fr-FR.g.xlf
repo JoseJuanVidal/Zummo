@@ -399,7 +399,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_idioma - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3049429624 - Field 2207558092 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Forma Pago Solicitada</source>
+          <source>subcliente</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subcliente - Property Caption</note>
         </trans-unit>
@@ -4289,6 +4289,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - ReportDataItem Sales Cr.Memo Header - Property RequestFilterHeading</note>
         </trans-unit>
+        <trans-unit id="Report 1166120471 - ReportDataItem 552782286 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Histórico abonos venta</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaUKRegistrado - ReportDataItem Sales Cr.Memo Header - Property RequestFilterHeading</note>
+        </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 2894269558" size-unit="char" translate="yes" xml:space="preserve">
           <source>PR-GESTION DE LOS PEDIDOS DE CLIENTE</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -5719,6 +5724,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ImpresoAlmacen_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 931623350 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source> ,Baja,Media,Alta</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ofertaprobabilidad - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2133753778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>ComEnsambladoCreados_btc</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -5743,6 +5753,16 @@
           <source>Initial Entry Posting Date</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Detailed Cust. Ledg. Entry - Field Initial Entry Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 1851087237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>EnviarCRM</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field EnviarCRM - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 1900612505 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Saldo Vencido Aseguradora</source>
