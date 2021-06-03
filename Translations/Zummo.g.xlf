@@ -524,7 +524,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_idioma - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3049429624 - Field 2207558092 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Forma Pago Solicitada</source>
+          <source>subcliente</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subcliente - Property Caption</note>
         </trans-unit>
@@ -19827,6 +19827,16 @@
           <source>Lead TIme</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº días"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field NumDias_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 931623350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Probabilidad</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Probabilidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ofertaprobabilidad - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 931623350 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source> ,Baja,Media,Alta</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ofertaprobabilidad - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 4170685114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Perfil</source>

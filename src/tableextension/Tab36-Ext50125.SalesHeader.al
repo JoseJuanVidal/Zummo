@@ -134,6 +134,13 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
             Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
         }
+        field(50050; ofertaprobabilidad; Option)
+        {
+            Caption = 'Probabilidad', comment = 'ESP="Probabilidad"';
+            Editable = false;
+            OptionCaption = ' ,Baja,Media,Alta';
+            OptionMembers = " ","Baja","Media","Alta";
+        }
         field(50100; NoFacturar_btc; Boolean)
         {
             DataClassification = CustomerContent;

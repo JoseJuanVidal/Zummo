@@ -1076,12 +1076,12 @@ codeunit 50102 "Integracion_crm_btc"
             'GRUPO IFA':
                 CRMAccount2.bit_centralcompras := 913610001;
             else
-                CRMAccount2.bit_centralcompras := CRMAccount2.bit_centralcompras::" ";
+                CRMAccount2.bit_centralcompras := 913610000;
         end;
 
         //******************** SUBCLIENTE ********************  TODO
         // Option
-        case Customer.CentralCompras_btc OF
+        case Customer.SubCliente_btc OF
             'AHOLD':
                 CRMAccount2.bit_subclientebc := 913610000;
             'AREAS':
@@ -1109,7 +1109,7 @@ codeunit 50102 "Integracion_crm_btc"
             'WALMART':
                 CRMAccount2.bit_subclientebc := 913610012;
             else
-                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::" ";
+                CRMAccount2.bit_subclientebc := 913610013;
         end;
         //Si ha habido cambios obtengo registro
         IF AdditionalFieldsWereModified THEN

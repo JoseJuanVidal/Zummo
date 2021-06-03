@@ -11,12 +11,12 @@ report 50113 "Ventas Aseguradora - List"
     {
         dataitem(Clasif1; Integer)
         {
-            DataItemTableView = where(number = filter(1 .. 2));
+            DataItemTableView = sorting(number) where(number = filter(1 .. 2));
             column(CaptionAsegurado; CaptionAsegurado) { }
 
             dataitem(Clasif2; Integer)
             {
-                DataItemTableView = where(number = filter(1 .. 6));
+                DataItemTableView = sorting(number) where(number = filter(1 .. 6));
 
                 column(Clasificacion2; Clasificacion2) { }
 
@@ -115,6 +115,9 @@ report 50113 "Ventas Aseguradora - List"
                         if (NOT Customer.Get("Sell-to Customer No.")) then
                             CurrReport.Skip();
 
+                        if PaymentMethod.Get("Payment Method Code") then
+                            PaymentMethodTxt := PaymentMethod.Description;
+
                         case Clasif1.Number of
                             1:
                                 begin
@@ -126,22 +129,33 @@ report 50113 "Ventas Aseguradora - List"
                                     if (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" = Aseguradora) and (Customer.clasificacion_aseguradora <> 'REHUSADO') then
                                         CurrReport.Skip();
                                     case Clasif2.Number of
-                                        1, 2, 3, 4, 5: // Clasificacion2 := 'XXXXXX';
+                                        1: // Clasificacion2 := 'XXXXXX';
                                             if not PaymentMethod."Es Contado" then
                                                 CurrReport.Skip();
+                                        2:
+                                            if not (Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA']) then
+                                                CurrReport.Skip();
+                                        3:
+                                            if not (Customer.clasificacion_aseguradora in ['REHUSADO']) then
+                                                CurrReport.Skip();
+                                        4:
+                                            if not (Customer.clasificacion_aseguradora in ['ORGANISMO PUBLICO']) then
+                                                CurrReport.Skip();
+                                        5:
+                                            if not (Customer.clasificacion_aseguradora in ['CLIENTE PARTICULAR']) then
+                                                CurrReport.Skip();
+
                                         6: // Clasificacion2 := 'OTROS' - 'CONTADO O PREPAGO','EMPRESAS VINCULADAS','CLIENTES REHUSADOS','ORGANISMOS PUBLICOS','PARTICULARES'
                                             begin
                                                 if PaymentMethod."Es Contado" then
                                                     CurrReport.Skip();
-                                                if Customer.clasificacion_aseguradora in ['EMPRESAS VINCULADAS', 'CLIENTES REHUSADOS', 'ORGANISMOS PUBLICOS', 'PARTICULARES'] then
+                                                if Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA', 'ORGANISMOS PUBLICO', 'REHUSADO', 'CLIENTE PARTICULAR'] then
                                                     CurrReport.Skip();
                                             end;
                                     end;
                                 end;
                         end;
 
-                        if PaymentMethod.Get("Payment Method Code") then
-                            PaymentMethodTxt := PaymentMethod.Description;
                         if PaymentTerms.get("Payment Terms Code") then;
 
 
@@ -269,11 +283,13 @@ report 50113 "Ventas Aseguradora - List"
                     {
                         ApplicationArea = all;
                         Caption = 'Mostrar Pagos', comment = 'ESP="Mostrar Pagos"';
+                        Visible = false;
                     }
                     field(ShowCreditMemo; ShowCreditMemo)
                     {
                         ApplicationArea = all;
                         Caption = 'Mostrar Abonos', comment = 'ESP="Mostrar Abonos"';
+                        Visible = false;
                     }
                 }
             }

@@ -518,42 +518,42 @@ table 50138 "CRM Account_crm_btc"
         {
             Caption = 'Address 1: Name';
             Description = 'Type a descriptive name for the primary address, such as Corporate Headquarters.';
-            ExternalName = 'address2_name';
+            ExternalName = 'address1_name';
             ExternalType = 'String';
         }
         field(64; Address1_PrimaryContactName; Text[100])
         {
             Caption = 'Address 1: Primary Contact Name';
             Description = 'Type the name of the main contact at the account''s primary address.';
-            ExternalName = 'address2_primarycontactname';
+            ExternalName = 'address1_primarycontactname';
             ExternalType = 'String';
         }
         field(65; Address1_Line1; Text[250])
         {
             Caption = 'Address 1: Street 1';
             Description = 'Type the first line of the primary address.';
-            ExternalName = 'address2_line1';
+            ExternalName = 'address1_line1';
             ExternalType = 'String';
         }
         field(66; Address1_Line2; Text[250])
         {
             Caption = 'Address 1: Street 2';
             Description = 'Type the second line of the primary address.';
-            ExternalName = 'address2_line2';
+            ExternalName = 'address1_line2';
             ExternalType = 'String';
         }
         field(67; Address1_Line3; Text[250])
         {
             Caption = 'Address 1: Street 3';
             Description = 'Type the third line of the primary address.';
-            ExternalName = 'address2_line3';
+            ExternalName = 'address1_line3';
             ExternalType = 'String';
         }
         field(68; Address1_City; Text[80])
         {
             Caption = 'Address 1: City';
             Description = 'Type the city for the primary address.';
-            ExternalName = 'address2_city';
+            ExternalName = 'address1_city';
             ExternalType = 'String';
         }
         field(69; Address1_StateOrProvince; Text[50])
@@ -588,7 +588,7 @@ table 50138 "CRM Account_crm_btc"
         {
             Caption = 'Address 1: ZIP/Postal Code';
             Description = 'Type the ZIP Code or postal code for the primary address.';
-            ExternalName = 'address2_postalcode';
+            ExternalName = 'address1_postalcode';
             ExternalType = 'String';
         }
         field(74; Address1_UTCOffset; Integer)
@@ -1336,7 +1336,7 @@ table 50138 "CRM Account_crm_btc"
             ExternalType = 'Lookup';
             TableRelation = "CRM Provincias_crm_btc".bit_bcprovinciaId; // "CRM Provincias_btc".bit_bcprovinciaId;
         }
-        field(50014; zum_Fidelidad; Option)
+        field(50014; zum_Fidelidad; Option) // no se usa
         {
             Caption = 'Fidelidad';
             Description = '';
@@ -1477,7 +1477,7 @@ table 50138 "CRM Account_crm_btc"
         }
         field(50052; bit_subcliente; Text[100])
         {
-            Caption = 'Forma Pago Solicitada';
+            Caption = 'subcliente';
             Description = '';
             ExternalName = 'bit_subcliente';
             ExternalType = 'String';
