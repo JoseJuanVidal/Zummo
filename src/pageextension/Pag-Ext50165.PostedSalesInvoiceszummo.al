@@ -21,6 +21,13 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 ApplicationArea = All;
             }
         }
+        addafter("Amount Including VAT")
+        {
+            field("Importe IVA Incl. (DL)"; ImpTotalDL)
+            {
+                ApplicationArea = all;
+            }
+        }
         addlast(Control1)
         {
             field("Cred_ Max_ Aseg. AutorizadoPor"; "Cred_ Max_ Aseg. AutorizadoPor")
@@ -161,6 +168,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
     trigger OnAfterGetRecord()
     var
         recCustomer: Record Customer;
+        CustLedgerEntry: Record "Cust. Ledger Entry";
     begin
         credMaxAsegAut := '';
 
@@ -178,12 +186,22 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                         StyleExp := 'Ambiguous'
                     end;
 
+        ImpTotalDL := 0;
+        CustLedgerEntry.SetRange("Document Type", CustLedgerEntry."Document Type"::Invoice);
+        CustLedgerEntry.SetRange("Document No.", "No.");
+        CustLedgerEntry.SetRange("Customer No.", "Sell-to Customer No.");
+        if CustLedgerEntry.FindSet() then begin
+            CustLedgerEntry.CalcFields("Amount (LCY)");
+            ImpTotalDL := CustLedgerEntry."Amount (LCY)";
+        end;
+
     end;
 
     var
         credMaxAsegAut: code[20];
         StyleExp: text;
         ShowVtoAseguradora: Boolean;
+        ImpTotalDL: Decimal;
         Text000: Label '¿Desea marcar %1 facturas como enviadas a Aseguradora?', comment = 'ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"';
 
     local procedure MarkComunicate()

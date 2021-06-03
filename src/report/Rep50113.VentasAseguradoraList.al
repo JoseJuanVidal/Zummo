@@ -43,6 +43,11 @@ report 50113 "Ventas Aseguradora - List"
                     column(Amount; Amount)
                     {
                     }
+                    column(Amount_Including_VAT; "Amount Including VAT")
+                    {
+
+                    }
+                    column(Amount_Including_VATDL; AmountIncludingVATDL) { }
                     column(PaymentMethod; PaymentMethodTxt)
                     {
                     }
@@ -214,6 +219,13 @@ report 50113 "Ventas Aseguradora - List"
                                     estadoDocumentoTxt := 'Pagada'
                             end;
                         end;
+
+                        // buscamos el importe DL del movimiento de cliente
+                        AmountIncludingVATDL := 0;
+                        if recMovsCliente.Get("Cust. Ledger Entry No.") then begin
+                            recMovsCliente.CalcFields("Amount (LCY)");
+                            AmountIncludingVATDL := recMovsCliente."Amount (LCY)";
+                        end;
                     end;
                 }
 
@@ -314,6 +326,8 @@ report 50113 "Ventas Aseguradora - List"
         TypeHeading = 'Tipo', Comment = 'Type';
         CountryHeading = 'País', Comment = 'Country';
         TotalAmountHeading = 'Importe Total', Comment = 'Total Amount';
+        AmountIncVAT = 'Importe Incl. IVA', Comment = 'Importe Incl. IVA';
+        AmountIncVATDL = 'Importe Incl. IVA (DL)', Comment = 'ESP="Importe Incl. IVA (DL)"';
     }
 
     trigger OnPreReport();
@@ -352,6 +366,7 @@ report 50113 "Ventas Aseguradora - List"
         ShowDetails: Boolean;
         Aseguradora: Text;
         CaptionAsegurado: text;
+        AmountIncludingVATDL: Decimal;
 
     local procedure CheckCustomerCESCE(CustomerNo: code[20]; var Suplemento: text): Boolean;
     begin
