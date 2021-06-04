@@ -40,7 +40,7 @@ report 50113 "Ventas Aseguradora - List"
                     column(DocumentDate; DocumentDateTxt)
                     {
                     }
-                    column(Amount; Amount)
+                    column(Amount; AmountDL)
                     {
                     }
                     column(Amount_Including_VAT; "Amount Including VAT")
@@ -127,11 +127,14 @@ report 50113 "Ventas Aseguradora - List"
                             1:
                                 begin
                                     CaptionAsegurado := lblAsegurado;
+                                    if PaymentMethod."Es Contado" then
+                                        CurrReport.Skip();
                                 end;
                             2:
                                 begin
                                     CaptionAsegurado := lblNoAsegurado;
-                                    if (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" = Aseguradora) and (Customer.clasificacion_aseguradora <> 'REHUSADO') then
+                                    if (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" = Aseguradora) and (Customer.clasificacion_aseguradora <> 'REHUSADO')
+                                        and (not PaymentMethod."Es Contado") then
                                         CurrReport.Skip();
                                     case Clasif2.Number of
                                         1: // Clasificacion2 := 'XXXXXX';
@@ -221,6 +224,10 @@ report 50113 "Ventas Aseguradora - List"
                         end;
 
                         // buscamos el importe DL del movimiento de cliente
+                        if "Currency Factor" <> 0 then
+                            AmountDL := Amount / "Currency Factor"
+                        else
+                            AmountDL := Amount;
                         AmountIncludingVATDL := 0;
                         if recMovsCliente.Get("Cust. Ledger Entry No.") then begin
                             recMovsCliente.CalcFields("Amount (LCY)");
@@ -366,6 +373,7 @@ report 50113 "Ventas Aseguradora - List"
         ShowDetails: Boolean;
         Aseguradora: Text;
         CaptionAsegurado: text;
+        AmountDL: Decimal;
         AmountIncludingVATDL: Decimal;
 
     local procedure CheckCustomerCESCE(CustomerNo: code[20]; var Suplemento: text): Boolean;
