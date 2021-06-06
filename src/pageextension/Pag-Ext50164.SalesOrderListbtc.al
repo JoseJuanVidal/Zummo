@@ -26,6 +26,11 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
             {
                 ApplicationArea = all;
             }
+            field("ABC Cliente"; "ABC Cliente")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
 
     }

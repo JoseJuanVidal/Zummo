@@ -10,6 +10,7 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
             {
                 ApplicationArea = All;
             }
+            field("ABC Cliente"; "ABC Cliente") { }
         }
     }
     actions

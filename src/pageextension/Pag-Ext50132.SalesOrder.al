@@ -81,6 +81,11 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
             {
                 ApplicationArea = All;
             }
+            field("ABC Cliente"; "ABC Cliente")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
 
         }
         //Comentario interno pedidos venta

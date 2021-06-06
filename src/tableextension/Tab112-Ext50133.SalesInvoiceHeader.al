@@ -207,6 +207,14 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
             FieldClass = FlowField;
             CalcFormula = lookup(customer.clasificacion_aseguradora where("No." = field("Sell-to Customer No.")));
         }
+        field(50056; "ABC Cliente"; option)
+        {
+            OptionMembers = " ","3A","A","B","C","Z";
+            OptionCaption = ' ,3A,A,B,C,Z', Comment = 'ESP=" ,3A,A,B,C,Z"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer."ABC Cliente" where("No." = field("Sell-to Customer No.")));
+        }
     }
 
 }

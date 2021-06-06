@@ -217,7 +217,7 @@ report 50103 "AlbaranVenta"
                     column(facturaA; "Sales Shipment Header"."Bill-to Name") { }
                     column(VATRegistrationNo; "Sales Shipment header"."VAT Registration No.") { }
 
-                    column(DocDate_SalesShptHeader; FORMAT("Sales Shipment Header"."Document Date"))//, 0, 4))
+                    column(DocDate_SalesShptHeader; FORMAT("Sales Shipment Header"."Document Date"))
                     {
                     }
                     column(SalesPersonText; SalesPersonText)

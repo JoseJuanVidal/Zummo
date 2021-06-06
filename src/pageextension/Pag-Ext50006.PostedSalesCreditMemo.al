@@ -8,6 +8,7 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
         {
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
             field(FacturacionElec_btc; FacturacionElec_btc) { }
+            field("ABC Cliente"; "ABC Cliente") { }
         }
 
     }

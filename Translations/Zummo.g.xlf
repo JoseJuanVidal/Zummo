@@ -529,7 +529,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subcliente - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3049429624 - Field 4200503619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Central de compras</source>
+          <source>SubCliente</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subclientebc - Property Caption</note>
         </trans-unit>
@@ -1073,6 +1073,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field zum_bcdelegado - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 2287493328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Canal</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field Zum_canal - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Field 4214373947 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Captación</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1133,6 +1138,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field zum_Descuento2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 2591420709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Distribuidor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field zum_distribuidor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Field 3733447729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fidelidad</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1162,6 +1172,11 @@
           <source>Marcas</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field zum_Marcas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 239270386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mercado</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field zum_mercado - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3049429624 - Field 2877481142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Potencial</source>
@@ -6317,6 +6332,16 @@
           <source>Mapeo Registros</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mapeo Registros"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mapeo Registros_crm_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 190259930 - Action 1702811970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generate the entity from the coupled Common Data Service data.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Generar la entidad desde el dato emparejado del Common Data Service"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mercado_crm_btc - Action CreateFromCDS - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 190259930 - Action 1702811970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create in Business Central</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear en Bussiness Central"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mercado_crm_btc - Action CreateFromCDS - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2201134017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Sales Order</source>
@@ -18863,6 +18888,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Vendedor defecto CRM"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CRM Connection Setup_btc - Field Vendedor Defecto CRM - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1512487356 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1512487356 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field ABC Cliente - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
           <source>Area Manager</source>
           <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
@@ -19628,6 +19663,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Rechazo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentLine - Field TextoRechazo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field ABC Cliente - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Area Manager</source>
           <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
@@ -19752,6 +19797,16 @@
           <source>Delay Motive Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Motivo Retraso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field TextoMotivoRetraso_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ABC Cliente - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 108480551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Abono</source>
@@ -19927,6 +19982,16 @@
           <source>SubCliente</source>
           <note from="Developer" annotates="general" priority="2">ESP="SubCliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field SubCliente_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field ABC Cliente - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Area Manager</source>
@@ -20162,6 +20227,16 @@
           <source>Orders PDF path</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ruta PDF Pedidos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field RutaPdfPedidos_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field ABC Cliente - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Area Manager</source>
