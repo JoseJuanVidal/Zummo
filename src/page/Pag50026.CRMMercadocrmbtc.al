@@ -55,7 +55,7 @@ page 50026 "CRM Mercado_crm_btc"
                 ToolTip = 'Generate the entity from the coupled Common Data Service data.', comment = 'ESP="Generar la entidad desde el dato emparejado del Common Data Service"';
                 trigger OnAction()
                 var
-                    CDS: Record "CRM FormasPago_crm_btc"; // "CRM FormasPago_btc";
+                    CDS: Record "CRM Mercados_crm_btc"; // "CRM FormasPago_btc";
                     CRMIntegrationManagement: Codeunit "CRM Integration Management";
                 begin
                     CurrPage.SetSelectionFilter(CDS);
@@ -66,14 +66,14 @@ page 50026 "CRM Mercado_crm_btc"
     }
 
     var
-        CurrentlyCoupledCDS: Record "CRM Delegado_crm_btc"; // "CRM Delegado_btc";
+        CurrentlyCoupledCDS: Record "CRM Mercados_crm_btc"; // "CRM Delegado_btc";
 
     trigger OnInit()
     begin
         Codeunit.Run(Codeunit::"CRM Integration Management");
     end;
 
-    procedure SetCurrentlyCoupledCDSWorker(CDS: Record "CRM Delegado_crm_btc") // "CRM Delegado_btc")
+    procedure SetCurrentlyCoupledCDSWorker(CDS: Record "CRM Mercados_crm_btc") // "CRM Delegado_btc")
     begin
         CurrentlyCoupledCDS := CDS;
     end;

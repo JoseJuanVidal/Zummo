@@ -931,16 +931,20 @@ codeunit 50102 "Integracion_crm_btc"
         // - JJV
 
         //******************** PROVINCIA ********************
-
-        // Provincia.Reset();
-        // Provincia.SetRange(Code, ); 
-        // if Provincia.FindFirst() then begin
-        //     IF NOT CRMIntegrationRecord.FindIDFromRecordID(Provincia.RECORDID, ProvinciaId) THEN
-        //         IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Area", Provincia.RECORDID, OutOfMapFilter) THEN
-        //             ERROR('CRM Provincia: ' + Customer."No." + ' Dato: ' + Provincia.Code);
-        //     CRMAccount2.bit_bcprovincia := ProvinciaId;
-        //     AdditionalFieldsWereModified := TRUE;
-        // end;
+        Provincia.Reset();
+        Provincia.SetRange(Code, copystr(Customer."Post Code", 1, 2));
+        if Provincia.FindFirst() then begin
+            IF CRMIntegrationRecord.FindIDFromRecordID(Provincia.RECORDID, ProvinciaId) THEN
+                Update := true
+            ELSE
+                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Area", Provincia.RECORDID, OutOfMapFilter) THEN
+                    Update := true;
+            if update then BEGIN
+                //      ERROR('CRM Provincia: ' + Customer."No." + ' Dato: ' + Provincia.Code);
+                CRMAccount2.bit_bcprovincia := ProvinciaId;
+                AdditionalFieldsWereModified := TRUE;
+            END;
+        end;
 
         //******************** PAIS ********************
         Paises.Reset();
@@ -964,7 +968,6 @@ codeunit 50102 "Integracion_crm_btc"
                 IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
                     ERROR('CRM AreaManager: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
             CRMAccount2.zum_bcareamanager := TextosAuxiliaresId;
-
 
             AdditionalFieldsWereModified := TRUE;
         end;
@@ -1056,7 +1059,6 @@ codeunit 50102 "Integracion_crm_btc"
         end;
 
         //******************** CANAL ********************  
-        /*
         TextosAuxiliares.Reset();
         TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
         TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::Canal);
@@ -1067,20 +1069,21 @@ codeunit 50102 "Integracion_crm_btc"
                     ERROR('CRM Canal: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
             CRMAccount2.zum_canal := TextosAuxiliaresId;
             AdditionalFieldsWereModified := TRUE;
-        end;*/
+        end;
 
         //******************** MERCADO ********************  
-        TextosAuxiliares.Reset();
-        TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
-        TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::Mercados);
-        TextosAuxiliares.SetRange(NumReg, Customer.Mercado_btc);
-        if TextosAuxiliares.FindFirst() then begin
-            IF NOT CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
-                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
-                    ERROR('CRM Mercado: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
-            CRMAccount2.zum_mercado := TextosAuxiliaresId;
-            AdditionalFieldsWereModified := TRUE;
-        end;
+        /* se quita porque segun el cliente tipo en SALES ya pone el dato segun clientetipo
+         TextosAuxiliares.Reset();
+         TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+         TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::Mercados);
+         TextosAuxiliares.SetRange(NumReg, Customer.Mercado_btc);
+         if TextosAuxiliares.FindFirst() then begin
+             IF NOT CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
+                 IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
+                     ERROR('CRM Mercado: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
+             CRMAccount2.zum_mercado := TextosAuxiliaresId;
+             AdditionalFieldsWereModified := TRUE;
+         end;*/
 
         //******************** DISTRIBUIDOR ********************  
         /* NO EXISTE EL CAMPO DISTRIBUIDOR EN BC
