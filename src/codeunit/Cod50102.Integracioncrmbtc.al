@@ -33,17 +33,18 @@ codeunit 50102 "Integracion_crm_btc"
                 ActualizarCamposLinPedido(SourceRecordRef, DestinationRecordRef);
             'Service Header-CRM Incident':
                 ActualizarCamposPedidoServicio(SourceRecordRef, DestinationRecordRef);
-            'Sales Line-CRM Quotedetail':
+            'Sales Line-CRM Quotedetail', 'Sales Header-STH CRM Quotedetail':
                 AdditionalFieldsWereModified :=
                     ActualizarCamposLinOferta(SourceRecordRef, DestinationRecordRef);
-
 
 
             // De CRM a BC
             'CRM Account_btc-Customer':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposClienteCRM(SourceRecordRef, DestinationRecordRef);
-
+            'STH CRM Quotedetail-Sales Header':
+                AdditionalFieldsWereModified :=
+                  ActualizarCamposLinOfertaCRM(SourceRecordRef, DestinationRecordRef);
 
         //    'Sales Invoice Header-CRM Invoice':
         //        UpdateCRMInvoiceBeforeInsertRecord(SourceRecordRef, DestinationRecordRef); //VEr si hae falta esta llamada al std.
@@ -98,6 +99,29 @@ codeunit 50102 "Integracion_crm_btc"
                 EXIT(TRUE);
             END;
         end;
+    end;
+
+    local procedure ActualizarCamposLinOfertaCRM(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
+    var
+        SalesHeader: Record "Sales Header";
+        CRMAccount: Record "STH CRM Quote";
+        DestinationFieldRef: FieldRef;
+        SourceFieldRef: FieldRef;
+        Probabilidad: Option;
+        NoSeriesMgt: codeunit NoSeriesManagement;
+        CRMConnectionSetup: record "CRM Connection Setup";// "CRM Connection Setup";  
+        bit_bcenviaralerp: Boolean;
+
+    begin
+
+        SourceFieldRef := SourceRecordRef.FIELD(CRMAccount.FIELDNO(Probabilidad));
+        Probabilidad := SourceFieldRef.VALUE;
+
+        DestinationFieldRef := DestinationRecordRef.FIELD(SalesHeader.ofertaprobabilidad);
+        DestinationFieldRef.VALUE := Probabilidad;
+
+        EXIT(TRUE);
+
     end;
 
     local procedure GetSourceDestCode(SourceRecordRef: RecordRef; DestinationRecordRef: RecordRef): Text
@@ -483,6 +507,8 @@ codeunit 50102 "Integracion_crm_btc"
 
         DestinationRecordRef.GETTABLE(CRMSalesorderdetail);
     end;
+
+
 
     local procedure FindCRMProductIdPedidos(SalesLine: Record "Sales Line") CRMID: GUID
     var
