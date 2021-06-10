@@ -101,10 +101,10 @@ codeunit 50102 "Integracion_crm_btc"
         end;
     end;
 
-    local procedure ActualizarCamposLinOfertaCRM(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
+    local procedure ActualizarCamposOfertaCRM(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
     var
         SalesHeader: Record "Sales Header";
-        CRMAccount: Record "STH CRM Quote";
+        CRMQuote: Record "STH CRM Quote";
         DestinationFieldRef: FieldRef;
         SourceFieldRef: FieldRef;
         Probabilidad: Option;
@@ -114,11 +114,21 @@ codeunit 50102 "Integracion_crm_btc"
 
     begin
 
-        SourceFieldRef := SourceRecordRef.FIELD(CRMAccount.FIELDNO(Probabilidad));
+        DestinationRecordRef.SETTABLE(SalesHeader);
+        SourceFieldRef := SourceRecordRef.FIELD(CRMQuote.FIELDNO(Probabilidad));
         Probabilidad := SourceFieldRef.VALUE;
 
-        DestinationFieldRef := DestinationRecordRef.FIELD(SalesHeader.ofertaprobabilidad);
-        DestinationFieldRef.VALUE := Probabilidad;
+        case Probabilidad of
+            CRMQuote.Probabilidad::" ":
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::" ";
+            CRMQuote.Probabilidad::Baja:
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Baja;
+            CRMQuote.Probabilidad::Media:
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Media;
+            CRMQuote.Probabilidad::Alta:
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Alta;
+        end;
+
 
         EXIT(TRUE);
 
