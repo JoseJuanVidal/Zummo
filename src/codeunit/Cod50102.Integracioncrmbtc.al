@@ -33,7 +33,7 @@ codeunit 50102 "Integracion_crm_btc"
                 ActualizarCamposLinPedido(SourceRecordRef, DestinationRecordRef);
             'Service Header-CRM Incident':
                 ActualizarCamposPedidoServicio(SourceRecordRef, DestinationRecordRef);
-            'Sales Line-CRM Quotedetail', 'Sales Header-STH CRM Quotedetail':
+            'Sales Line-CRM Quotedetail':
                 AdditionalFieldsWereModified :=
                     ActualizarCamposLinOferta(SourceRecordRef, DestinationRecordRef);
 
@@ -42,9 +42,9 @@ codeunit 50102 "Integracion_crm_btc"
             'CRM Account_btc-Customer':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposClienteCRM(SourceRecordRef, DestinationRecordRef);
-            'STH CRM Quotedetail-Sales Header':
+            'STH CRM Quote-Sales Header':
                 AdditionalFieldsWereModified :=
-                  ActualizarCamposLinOfertaCRM(SourceRecordRef, DestinationRecordRef);
+                  ActualizarCamposOfertaCRM(SourceRecordRef, DestinationRecordRef);
 
         //    'Sales Invoice Header-CRM Invoice':
         //        UpdateCRMInvoiceBeforeInsertRecord(SourceRecordRef, DestinationRecordRef); //VEr si hae falta esta llamada al std.
