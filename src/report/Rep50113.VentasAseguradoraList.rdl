@@ -740,14 +740,14 @@
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox15">
+                        <Textbox Name="Textbox4">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Amount Including VATDL</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>2pt</FontSize>
@@ -757,7 +757,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox15</rd:DefaultName>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>3pt</PaddingLeft>
@@ -1295,7 +1295,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Amount.Value, "Clasif2Nivel")</Value>
+                                  <Value>=Sum(Fields!Amount_Including_VAT.Value, "Clasif2Nivel")</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1309,6 +1309,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>86</ZIndex>
+                          <Visibility>
+                            <Hidden>=IIf(Fields!ShowDetails.Value, True,False)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1347,6 +1350,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>86</ZIndex>
+                          <Visibility>
+                            <Hidden>=IIf(Fields!ShowDetails.Value, True,False)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -2055,7 +2061,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Amount.Value</Value>
+                                  <Value>=Fields!Amount_Including_VAT.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2422,7 +2428,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(Fields!Amount.Value)</Value>
+                                  <Value>=sum(Fields!Amount_Including_VAT.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2784,7 +2790,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Amount.Value, "CustomerAsegurador")</Value>
+                                  <Value>=Sum(Fields!Amount_Including_VAT.Value, "CustomerAsegurador")</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -3707,7 +3713,7 @@
                       </Group>
                       <SortExpressions>
                         <SortExpression>
-                          <Value>=Fields!Clasif2Nivel.Value</Value>
+                          <Value>=Fields!Clasificacion2.Value</Value>
                         </SortExpression>
                       </SortExpressions>
                       <TablixMembers>
@@ -4295,6 +4301,9 @@ End Function
         </Field>
         <Field Name="Clasificacion2">
           <DataField>Clasificacion2</DataField>
+        </Field>
+        <Field Name="Clasificacion2Number">
+          <DataField>Clasificacion2Number</DataField>
         </Field>
         <Field Name="CompanyName">
           <DataField>CompanyName</DataField>

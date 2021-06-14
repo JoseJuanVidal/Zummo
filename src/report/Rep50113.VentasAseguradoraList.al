@@ -16,9 +16,10 @@ report 50113 "Ventas Aseguradora - List"
 
             dataitem(Clasif2; Integer)
             {
-                DataItemTableView = sorting(number) where(number = filter(1 .. 6));
+                DataItemTableView = sorting(number) where(number = filter(1 .. 7));
 
                 column(Clasificacion2; Clasificacion2) { }
+                column(Clasificacion2Number; number) { }
 
                 dataitem("Sales Invoice Header"; "Sales Invoice Header")
                 {
@@ -122,13 +123,19 @@ report 50113 "Ventas Aseguradora - List"
 
                         if PaymentMethod.Get("Payment Method Code") then
                             PaymentMethodTxt := PaymentMethod.Description;
-
+                        if CountryRegion.Get("Sell-to Country/Region Code") then
+                            CountryTxt := CountryRegion.Name;
                         case Clasif1.Number of
                             1:
                                 begin
                                     CaptionAsegurado := lblAsegurado;
+                                    if Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA', 'ORGANISMOS PUBLICO', 'REHUSADO', 'CLIENTE PARTICULAR'] then
+                                        CurrReport.Skip();
                                     if PaymentMethod."Es Contado" then
                                         CurrReport.Skip();
+                                    Clasif2Nivel := CountryRegion.Name;
+                                    Clasificacion2 := CountryRegion.Name;
+
                                 end;
                             2:
                                 begin
@@ -137,36 +144,55 @@ report 50113 "Ventas Aseguradora - List"
                                         and (not PaymentMethod."Es Contado") then
                                         CurrReport.Skip();
                                     case Clasif2.Number of
-                                        1: // Clasificacion2 := 'XXXXXX';
-                                            if not PaymentMethod."Es Contado" then
-                                                CurrReport.Skip();
+                                        1:
+                                            begin
+                                                if Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA', 'ORGANISMOS PUBLICO', 'REHUSADO', 'CLIENTE PARTICULAR'] then
+                                                    CurrReport.Skip();
+                                                if not PaymentMethod."Es Contado" then
+                                                    CurrReport.Skip();
+                                            end;
                                         2:
-                                            if not (Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA']) then
+                                            if not (Customer.clasificacion_aseguradora in ['INTERCOMPANY']) then
                                                 CurrReport.Skip();
                                         3:
+                                            begin
+                                                if not (Customer.clasificacion_aseguradora in ['AUTOFACTURA']) then
+                                                    CurrReport.Skip();
+                                            end;
+                                        4:
                                             if not (Customer.clasificacion_aseguradora in ['REHUSADO']) then
                                                 CurrReport.Skip();
-                                        4:
+                                        5:
                                             if not (Customer.clasificacion_aseguradora in ['ORGANISMO PUBLICO']) then
                                                 CurrReport.Skip();
-                                        5:
+                                        6:
                                             if not (Customer.clasificacion_aseguradora in ['CLIENTE PARTICULAR']) then
                                                 CurrReport.Skip();
-
-                                        6: // Clasificacion2 := 'OTROS' - 'CONTADO O PREPAGO','EMPRESAS VINCULADAS','CLIENTES REHUSADOS','ORGANISMOS PUBLICOS','PARTICULARES'
+                                        7: // Clasificacion2 := 'OTROS' - 'CONTADO O PREPAGO','EMPRESAS VINCULADAS','CLIENTES REHUSADOS','ORGANISMOS PUBLICOS','PARTICULARES'
                                             begin
                                                 if PaymentMethod."Es Contado" then
                                                     CurrReport.Skip();
                                                 if Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA', 'ORGANISMOS PUBLICO', 'REHUSADO', 'CLIENTE PARTICULAR'] then
                                                     CurrReport.Skip();
                                             end;
+
                                     end;
                                 end;
                         end;
 
+                        if (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '') and (PaymentMethod."Es Contado") then begin
+                            Clasif2Nivel := CountryRegion.Name;
+                        end else begin
+                            if PaymentMethod."Es Contado" then
+                                Clasif2Nivel := PaymentMethod.Code
+                            else
+                                if Customer.clasificacion_aseguradora <> '' then
+                                    Clasif2Nivel := Customer.clasificacion_aseguradora
+                                else
+                                    Clasif2Nivel := 'OTROS';
+                        end;
+
                         if PaymentTerms.get("Payment Terms Code") then;
-
-
 
                         if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> Aseguradora then
                             Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := '';
@@ -185,22 +211,10 @@ report 50113 "Ventas Aseguradora - List"
                         PostingDateTxt := Format("Posting Date");
                         TypeTxt := 'Factura';  // Format("Document Type");
 
-                        if CountryRegion.Get("Sell-to Country/Region Code") then
-                            CountryTxt := CountryRegion.Name;
 
 
-                        if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '' then begin
-                            Clasif2Nivel := CountryRegion.Name;
-                            Clasificacion2 := CountryRegion.Name;
-                        end else begin
-                            if PaymentMethod."Es Contado" then
-                                Clasif2Nivel := PaymentMethod.Code
-                            else
-                                if Customer.clasificacion_aseguradora <> '' then
-                                    Clasif2Nivel := Customer.clasificacion_aseguradora
-                                else
-                                    Clasif2Nivel := 'OTROS';
-                        end;
+
+
 
                         // Estado documento
                         //Pendiente = ''
@@ -241,7 +255,7 @@ report 50113 "Ventas Aseguradora - List"
                     if Clasif1.Number = 1 then
                         SetRange(Number, 1)
                     else
-                        SetRange(Number, 1, 6);
+                        SetRange(Number, 1, 7);
                 end;
 
                 trigger OnAfterGetRecord()
@@ -252,12 +266,14 @@ report 50113 "Ventas Aseguradora - List"
                         2:
                             Clasificacion2 := 'EMPRESAS VINCULADAS';
                         3:
-                            Clasificacion2 := 'CLIENTES REHUSADOS';
+                            Clasificacion2 := 'AUTOFACTURA';
                         4:
-                            Clasificacion2 := 'ORGANISMOS PUBLICOS';
+                            Clasificacion2 := 'CLIENTES REHUSADOS';
                         5:
-                            Clasificacion2 := 'PARTICULARES';
+                            Clasificacion2 := 'ORGANISMOS PUBLICOS';
                         6:
+                            Clasificacion2 := 'PARTICULARES';
+                        7:
                             Clasificacion2 := 'OTROS';
                     end;
                 end;
