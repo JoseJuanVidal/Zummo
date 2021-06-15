@@ -2,7 +2,7 @@ table 50135 "STH CRM Quote"
 {
     // Dynamics CRM Version: 7.1.0.2040
 
-    Caption = 'CRM Quote';
+    Caption = 'CRM Quote new';
     Description = 'Formal offer for products and/or services, proposed at specific prices and related payment terms, which is sent to a prospective customer.';
     ExternalName = 'quote';
     TableType = CRM;

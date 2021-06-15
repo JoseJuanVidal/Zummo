@@ -11,100 +11,6 @@
       <rd:DataSourceID>5d320e5f-a387-43a8-b0f9-dec65707dd5c</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="Clasif1Number">
-          <DataField>Clasif1Number</DataField>
-        </Field>
-        <Field Name="CaptionAsegurado">
-          <DataField>CaptionAsegurado</DataField>
-        </Field>
-        <Field Name="Clasificacion2">
-          <DataField>Clasificacion2</DataField>
-        </Field>
-        <Field Name="Clasificacion2Number">
-          <DataField>Clasificacion2Number</DataField>
-        </Field>
-        <Field Name="Clasif2Nivel">
-          <DataField>Clasif2Nivel</DataField>
-        </Field>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="ShowDetails">
-          <DataField>ShowDetails</DataField>
-        </Field>
-        <Field Name="GLEntryFilter">
-          <DataField>GLEntryFilter</DataField>
-        </Field>
-        <Field Name="Supplement">
-          <DataField>Supplement</DataField>
-        </Field>
-        <Field Name="DocumentDate">
-          <DataField>DocumentDate</DataField>
-        </Field>
-        <Field Name="Amount">
-          <DataField>Amount</DataField>
-        </Field>
-        <Field Name="AmountFormat">
-          <DataField>AmountFormat</DataField>
-        </Field>
-        <Field Name="Amount_Including_VAT">
-          <DataField>Amount_Including_VAT</DataField>
-        </Field>
-        <Field Name="Amount_Including_VATFormat">
-          <DataField>Amount_Including_VATFormat</DataField>
-        </Field>
-        <Field Name="Amount_Including_VATDL">
-          <DataField>Amount_Including_VATDL</DataField>
-        </Field>
-        <Field Name="Amount_Including_VATDLFormat">
-          <DataField>Amount_Including_VATDLFormat</DataField>
-        </Field>
-        <Field Name="PaymentMethod">
-          <DataField>PaymentMethod</DataField>
-        </Field>
-        <Field Name="PaymentTerms">
-          <DataField>PaymentTerms</DataField>
-        </Field>
-        <Field Name="DueDate">
-          <DataField>DueDate</DataField>
-        </Field>
-        <Field Name="DocumentNo">
-          <DataField>DocumentNo</DataField>
-        </Field>
-        <Field Name="BusinessName">
-          <DataField>BusinessName</DataField>
-        </Field>
-        <Field Name="PostingDate">
-          <DataField>PostingDate</DataField>
-        </Field>
-        <Field Name="Type">
-          <DataField>Type</DataField>
-        </Field>
-        <Field Name="Country">
-          <DataField>Country</DataField>
-        </Field>
-        <Field Name="CustomerAsegurador">
-          <DataField>CustomerAsegurador</DataField>
-        </Field>
-        <Field Name="CustomerClasifAseguradora">
-          <DataField>CustomerClasifAseguradora</DataField>
-        </Field>
-        <Field Name="estadoDocumentoTxt">
-          <DataField>estadoDocumentoTxt</DataField>
-        </Field>
-        <Field Name="estadoDocCaption_Lbl">
-          <DataField>estadoDocCaption_Lbl</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -2783,4 +2689,98 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>054ab7f6-e20c-424f-8372-5aeb4df5d104</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Clasif1Number">
+          <DataField>Clasif1Number</DataField>
+        </Field>
+        <Field Name="CaptionAsegurado">
+          <DataField>CaptionAsegurado</DataField>
+        </Field>
+        <Field Name="Clasificacion2">
+          <DataField>Clasificacion2</DataField>
+        </Field>
+        <Field Name="Clasificacion2Number">
+          <DataField>Clasificacion2Number</DataField>
+        </Field>
+        <Field Name="Clasif2Nivel">
+          <DataField>Clasif2Nivel</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="ShowDetails">
+          <DataField>ShowDetails</DataField>
+        </Field>
+        <Field Name="GLEntryFilter">
+          <DataField>GLEntryFilter</DataField>
+        </Field>
+        <Field Name="Supplement">
+          <DataField>Supplement</DataField>
+        </Field>
+        <Field Name="DocumentDate">
+          <DataField>DocumentDate</DataField>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+        </Field>
+        <Field Name="AmountFormat">
+          <DataField>AmountFormat</DataField>
+        </Field>
+        <Field Name="Amount_Including_VAT">
+          <DataField>Amount_Including_VAT</DataField>
+        </Field>
+        <Field Name="Amount_Including_VATFormat">
+          <DataField>Amount_Including_VATFormat</DataField>
+        </Field>
+        <Field Name="Amount_Including_VATDL">
+          <DataField>Amount_Including_VATDL</DataField>
+        </Field>
+        <Field Name="Amount_Including_VATDLFormat">
+          <DataField>Amount_Including_VATDLFormat</DataField>
+        </Field>
+        <Field Name="PaymentMethod">
+          <DataField>PaymentMethod</DataField>
+        </Field>
+        <Field Name="PaymentTerms">
+          <DataField>PaymentTerms</DataField>
+        </Field>
+        <Field Name="DueDate">
+          <DataField>DueDate</DataField>
+        </Field>
+        <Field Name="DocumentNo">
+          <DataField>DocumentNo</DataField>
+        </Field>
+        <Field Name="BusinessName">
+          <DataField>BusinessName</DataField>
+        </Field>
+        <Field Name="PostingDate">
+          <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="Type">
+          <DataField>Type</DataField>
+        </Field>
+        <Field Name="Country">
+          <DataField>Country</DataField>
+        </Field>
+        <Field Name="CustomerAsegurador">
+          <DataField>CustomerAsegurador</DataField>
+        </Field>
+        <Field Name="CustomerClasifAseguradora">
+          <DataField>CustomerClasifAseguradora</DataField>
+        </Field>
+        <Field Name="estadoDocumentoTxt">
+          <DataField>estadoDocumentoTxt</DataField>
+        </Field>
+        <Field Name="estadoDocCaption_Lbl">
+          <DataField>estadoDocCaption_Lbl</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

@@ -538,10 +538,10 @@ codeunit 50102 "Integracion_crm_btc"
                 BEGIN
                     Resource.GET(SalesLine."No.");
                     IF NOT CRMIntegrationRecord.FindIDFromRecordID(Resource.RECORDID, CRMID) THEN BEGIN
-                        IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::Resource, Resource.RECORDID, OutOfMapFilter) THEN
-                            ERROR(CannotSynchProductErr, Resource."No.");
-                        IF NOT CRMIntegrationRecord.FindIDFromRecordID(Resource.RECORDID, CRMID) THEN
-                            ERROR(CannotFindSyncedProductErr);
+                        IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::Resource, Resource.RECORDID, OutOfMapFilter) THEN
+                            //ERROR(CannotSynchProductErr, Resource."No.");
+                        IF NOT CRMIntegrationRecord.FindIDFromRecordID(Resource.RECORDID, CRMID) THEN;
+
                     END;
                 END;
         END;
@@ -561,10 +561,10 @@ codeunit 50102 "Integracion_crm_btc"
     begin
         Item.GET(ItemNo);
         IF NOT CRMIntegrationRecord.FindIDFromRecordID(Item.RECORDID, CRMID) THEN BEGIN
-            IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::Item, Item.RECORDID, OutOfMapFilter) THEN
-                ERROR(CannotSynchProductErr, Item."No.");
-            IF NOT CRMIntegrationRecord.FindIDFromRecordID(Item.RECORDID, CRMID) THEN
-                ERROR(CannotFindSyncedProductErr);
+            IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::Item, Item.RECORDID, OutOfMapFilter) THEN
+                //ERROR(CannotSynchProductErr, Item."No.");
+            IF NOT CRMIntegrationRecord.FindIDFromRecordID(Item.RECORDID, CRMID) THEN;
+            //ERROR(CannotFindSyncedProductErr);
         end;
     end;
 
