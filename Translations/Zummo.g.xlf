@@ -19213,10 +19213,25 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateLastUnitCost - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Method 1489276173 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
+          <source>¿Desea realizar el cálculo de coste estandar de los registros seleccionados?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea realizar el cálculo de coste estandar de los registros seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateMfgCoste - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Method 1489276173 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
+          <source>#1#############################################</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateMfgCoste - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Action 1467983106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
           <source>Actualizar ultimo coste</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar ultimo coste"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action ActualizarUltimoCoste - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Action 142764972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
+          <source>Calcular Coste Fabricación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular Coste Fabricación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action CalcularMfgCost - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Control 1119874868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
           <source>Ult. Coste producción</source>
@@ -19982,6 +19997,11 @@
           <source>Primera fecha Recep.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Primera fecha Recep."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Primera Fecha Recep. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 152683904 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Coste Estandar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste Estandar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field StandarCost - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1575465679 - Field 2972924318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Rejected Text</source>
@@ -21102,6 +21122,11 @@
           <source>Es Contado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Es Contado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment MethodExt - Field Es Contado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1625472420 - Field 1971769406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3197070065">
+          <source>Es contado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Es Contado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment Terms - Field Es Contado - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2869752476 - Field 995090288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
           <source>Date Filter</source>

@@ -45,6 +45,19 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                 end;
 
             }
+            action(CalcularMfgCost)
+            {
+                ApplicationArea = all;
+                Caption = 'Calcular Coste Fabricación', comment = 'ESP="Calcular Coste Fabricación"';
+                Image = CalculateCost;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    UpdateMfgCoste;
+                end;
+            }
         }
     }
 
@@ -113,5 +126,58 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                 Until StandardCostWorksheet.next() = 0;
             CurrPage.Update();
         end;
+    end;
+
+    local procedure UpdateMfgCoste()
+    var
+        StdaCostWhse: Record "Standard Cost Worksheet";
+        tmpItem: Record item temporary;
+        NewtmpItem: Record item temporary;
+        CalculateStandarCost: Codeunit "Calculate Standard Cost";
+        lblConfirm: Label '¿Desea realizar el cálculo de coste estandar de los registros seleccionados?'
+            , comment = 'ESP="¿Desea realizar el cálculo de coste estandar de los registros seleccionados?"';
+        Text000: Label '#1#############################################';
+        Ventana: Dialog;
+    begin
+        if not Confirm(lblConfirm) then
+            exit;
+        Ventana.open(Text000);
+        Ventana.Update(1, 'Cargando....');
+        LoadtmpItem(tmpItem);
+        Ventana.Update(1, 'Calculando....');
+        CalculateStandarCost.SetProperties(WORKDATE, FALSE, false, FALSE, '', FALSE);
+        CalculateStandarCost.CalcItems(tmpItem, NewtmpItem);
+        tmpItem.Reset();
+        if tmpItem.findset() then
+            repeat
+                if NewtmpItem.get(tmpItem."No.") then begin
+                    Ventana.Update(1, 'Actualizando: ' + NewtmpItem."No.");
+                    StdaCostWhse.SetRange("Standard Cost Worksheet Name", Rec."Standard Cost Worksheet Name");
+                    StdaCostWhse.SetRange(Type, StdaCostWhse.Type::Item);
+                    StdaCostWhse.SetRange("No.", NewtmpItem."No.");
+                    if StdaCostWhse.FindFirst() then begin
+                        StdaCostWhse."New Standard Cost" := Round(NewtmpItem."Standard Cost", 0.01);
+                        StdaCostWhse.Modify();
+                    end;
+                end;
+            Until tmpItem.next() = 0;
+        Commit();
+        CurrPage.Update();
+    end;
+
+    local procedure LoadtmpItem(var tmpItem: Record Item)
+    var
+        StdaCostWhse: Record "Standard Cost Worksheet";
+    begin
+        CurrPage.SetSelectionFilter(StdaCostWhse);
+        if StdaCostWhse.findset() then
+            repeat
+                if StdaCostWhse.Type in [StdaCostWhse.Type::Item] then
+                    if not tmpItem.get(StdaCostWhse."No.") then begin
+                        tmpItem.Init();
+                        tmpItem."No." := StdaCostWhse."No.";
+                        tmpItem.Insert();
+                    end;
+            Until StdaCostWhse.next() = 0;
     end;
 }

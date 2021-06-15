@@ -15,7 +15,6 @@ tableextension 50105 "PurchaseLine" extends "Purchase Line"  //39
             Caption = 'Rejected Text', Comment = 'ESP="Comentario"';
             Description = 'Bitec';
         }
-
         field(50002; PermitirMatarResto; Boolean)
         {
             DataClassification = CustomerContent;
@@ -37,6 +36,14 @@ tableextension 50105 "PurchaseLine" extends "Purchase Line"  //39
             Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup("Purch. Rcpt. Line"."Posting Date" where("Order No." = field("Document No."), "Order Line No." = field("Line No."), Quantity = filter(<> 0)));
+        }
+        field(50005; StandarCost; decimal)
+        {
+            Caption = 'Coste Estandar', Comment = 'ESP="Coste Estandar"';
+            Description = 'Bitec';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Standard Cost" where("No." = field("No.")));
+            Editable = false;
         }
     }
 }

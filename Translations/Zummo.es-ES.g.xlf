@@ -554,7 +554,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subcliente - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3049429624 - Field 4200503619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Central de compras</source>
+          <source>SubCliente</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field bit_subclientebc - Property Caption</note>
         </trans-unit>
@@ -1098,6 +1098,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field zum_bcdelegado - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 2287493328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Canal</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field Zum_canal - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Field 4214373947 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Captación</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -1158,6 +1163,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field zum_Descuento2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 2591420709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Distribuidor</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field zum_distribuidor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Field 3733447729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fidelidad</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -1187,6 +1197,11 @@
           <source>Marcas</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field zum_Marcas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 239270386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mercado</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field zum_mercado - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3049429624 - Field 2877481142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Potencial</source>
@@ -4360,6 +4375,551 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 3755578035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CRM Quote</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 739115720 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field AccountId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 162059661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AccountIdName</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field AccountIdName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3931125032 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To Address ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_AddressId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1695608876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To City</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3522987222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To Address</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_Composite - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 43742556 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To Contact Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_ContactName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3816219705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To Country/Region</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_Country - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2350905924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To Fax</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_Fax - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1622057740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To Street 1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_Line1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2259754357 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To Street 2</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_Line2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2897450974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To Street 3</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_Line3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1883467004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2050446009 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To ZIP/Postal Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_PostalCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2894739417 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To State/Province</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_StateOrProvince - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2314333341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill To Phone</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field BillTo_Telephone - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 4259566925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ClosedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1599246287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ContactId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2562566774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ContactIdName</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ContactIdName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3425251533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field CreatedBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1319492616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CreatedByName</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field CreatedByName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1302697051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field CreatedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1782641658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By (Delegate)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field CreatedOnBehalfBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 969246011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CreatedOnBehalfByName</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field CreatedOnBehalfByName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2619142763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Potential Customer</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field CustomerId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1422141763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Potential Customer Type</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field CustomerIdType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1422141763 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,account,contact</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field CustomerIdType - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3417937915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote Discount Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field DiscountAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3580397981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote Discount Amount (Base)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field DiscountAmount_Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2358052727 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote Discount (%)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field DiscountPercentage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1293057645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Effective From</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field EffectiveFrom - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2962506978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Effective To</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field EffectiveTo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3504513763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exchange Rate</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ExchangeRate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 406033035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ExpiresOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1564179345 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Freight Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field FreightAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2339531951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Freight Amount (Base)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field FreightAmount_Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2591159093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Freight Terms</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field FreightTermsCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2591159093 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,FOB,No Charge</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field FreightTermsCode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2723275795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Sequence Number</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ImportSequenceNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1907234846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ModifiedBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2510935639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ModifiedByName</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ModifiedByName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2247197532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ModifiedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 982954073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By (Delegate)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ModifiedOnBehalfBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1644277980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ModifiedOnBehalfByName</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ModifiedOnBehalfByName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 258960840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Opportunity</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field OpportunityId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 183279757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OpportunityIdName</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field OpportunityIdName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1205302601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Record Created On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field OverriddenCreatedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3223187400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field OwnerId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 4168057392 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OwnerIdType</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field OwnerIdType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 4168057392 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,systemuser,team</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field OwnerIdType - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2129327850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owning Business Unit</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field OwningBusinessUnit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2227878325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owning Team</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field OwningTeam - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 453295697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owning User</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field OwningUser - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 4230600534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field PaymentTermsCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 4230600534 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Net 30,2% 10; Net 30,Net 45,Net 60</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field PaymentTermsCode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2012767402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price List</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field PriceLevelId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 574829291 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PriceLevelIdName</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field PriceLevelIdName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 4220080791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pricing Error </source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field PricingErrorCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 4220080791 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>None,Detail Error,Missing Price Level,Inactive Price Level,Missing Quantity,Missing Unit Price,Missing Product,Invalid Product,Missing Pricing Code,Invalid Pricing Code,Missing UOM,Product Not In Price Level,Missing Price Level Amount,Missing Price Level Percentage,Missing Price,Missing Current Cost,Missing Standard Cost,Invalid Price Level Amount,Invalid Price Level Percentage,Invalid Price,Invalid Current Cost,Invalid Standard Cost,Invalid Rounding Policy,Invalid Rounding Option,Invalid Rounding Amount,Price Calculation Error,Invalid Discount Type,Discount Type Invalid State,Invalid Discount,Invalid Quantity,Invalid Pricing Precision,Missing Product Default UOM,Missing Product UOM Schedule ,Inactive Discount Type,Invalid Price Level Currency,Price Attribute Out Of Range,Base Currency Attribute Overflow,Base Currency Attribute Underflow</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field PricingErrorCode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 41334883 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Probabilidad</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field Probabilidad - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 41334883 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Baja,Media,Alta</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field Probabilidad - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3360532402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ProcessId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1166770529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field QuoteId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1403147955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field QuoteNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1007279378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requested Delivery Date</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field RequestDeliveryBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 91642292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Revision ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field RevisionNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2001012316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipping Method</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShippingMethodCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2001012316 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Airborne,DHL,FedEx,UPS,Postal Mail,Full Load,Will Call</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShippingMethodCode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 390656263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Address ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_AddressId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3825981907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To City</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1077175429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Address</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_Composite - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1278189483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Contact Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_ContactName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 4258986938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Country/Region</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_Country - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1832797619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Fax</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_Fax - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3310584527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Freight Terms</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_FreightTermsCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3310584527 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Default Value</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_FreightTermsCode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2216369291 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Street 1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_Line1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 4129459142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Street 2</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_Line2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3491762525 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Street 3</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_Line3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2523183427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 245991746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To ZIP/Postal Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_PostalCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3879634730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To State/Province</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_StateOrProvince - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1353965614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To Phone</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field ShipTo_Telephone - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1877540523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process Stage</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field StageId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3615681166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field StateCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3615681166 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Draft,Active,Won,Closed</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field StateCode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 355226323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status Reason</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field StatusCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 355226323 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,In Progress,Open,Won,Lost,Canceled,Revised,In Progress1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field StatusCode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1372750120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Time Zone Rule Version Number</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TimeZoneRuleVersionNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 588318770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1411376664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Pre-Freight Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalAmountLessFreight - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 4129600594 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Pre-Freight Amount (Base)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalAmountLessFreight_Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 758718504 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Amount (Base)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalAmount_Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 325267077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Discount Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalDiscountAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 719625219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Discount Amount (Base)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalDiscountAmount_Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3592942655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Detail Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalLineItemAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2270677521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Detail Amount (Base)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalLineItemAmount_Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2692254004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Line Item Discount Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalLineItemDiscountAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2477866688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Line Item Discount Amount (Base)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalLineItemDiscountAmount_Ba - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1548615561 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Tax</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalTax - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 186103063 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Tax (Base)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TotalTax_Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1819141602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TransactionCurrencyId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 1320832259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TransactionCurrencyIdName</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TransactionCurrencyIdName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2028118227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Traversed Path</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field TraversedPath - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 3651674112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UTC Conversion Time Zone Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field UTCConversionTimeZoneCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 2261456899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version Number</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field VersionNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755578035 - Field 323083016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship To</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field WillCall - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 10975779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hist. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
@@ -6751,6 +7311,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mapeo Registros"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mapeo Registros_crm_btc - Property Caption</note>
           <target>Mapeo Registros</target>
+        </trans-unit>
+        <trans-unit id="Page 190259930 - Action 1702811970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generate the entity from the coupled Common Data Service data.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Generar la entidad desde el dato emparejado del Common Data Service"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mercado_crm_btc - Action CreateFromCDS - Property ToolTip</note>
+          <target>Generar la entidad desde el dato emparejado del Common Data Service</target>
+        </trans-unit>
+        <trans-unit id="Page 190259930 - Action 1702811970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create in Business Central</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear en Bussiness Central"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mercado_crm_btc - Action CreateFromCDS - Property Caption</note>
+          <target>Crear en Bussiness Central</target>
         </trans-unit>
         <trans-unit id="Page 2201134017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Sales Order</source>
@@ -19968,11 +20540,28 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateLastUnitCost - NamedType Text000</note>
           <target>¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Method 1489276173 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
+          <source>¿Desea realizar el cálculo de coste estandar de los registros seleccionados?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea realizar el cálculo de coste estandar de los registros seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateMfgCoste - NamedType lblConfirm</note>
+          <target>¿Desea realizar el cálculo de coste estandar de los registros seleccionados?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Method 1489276173 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
+          <source>#1#############################################</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateMfgCoste - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Action 1467983106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
           <source>Actualizar ultimo coste</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar ultimo coste"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action ActualizarUltimoCoste - Property Caption</note>
           <target>Actualizar ultimo coste</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Action 142764972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
+          <source>Calcular Coste Fabricación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular Coste Fabricación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action CalcularMfgCost - Property Caption</note>
+          <target>Calcular Coste Fabricación</target>
         </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Control 1119874868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
           <source>Ult. Coste producción</source>
@@ -20212,6 +20801,17 @@
           <note from="Developer" annotates="general" priority="2">ESP="Vendedor defecto CRM"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CRM Connection Setup_btc - Field Vendedor Defecto CRM - Property Caption</note>
           <target>Vendedor defecto CRM</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1512487356 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1512487356 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field ABC Cliente - Property OptionCaption</note>
+          <target> ,3A,A,B,C,Z</target>
         </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
           <source>Area Manager</source>
@@ -20856,6 +21456,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Primera Fecha Recep. - Property Caption</note>
           <target>Primera fecha Recep.</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 152683904 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Coste Estandar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste Estandar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field StandarCost - Property Caption</note>
+          <target>Coste Estandar</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1575465679 - Field 2972924318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Rejected Text</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>
@@ -21125,6 +21731,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentLine - Field TextoRechazo - Property Caption</note>
           <target>Motivo Rechazo</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field ABC Cliente - Property OptionCaption</note>
+          <target> ,3A,A,B,C,Z</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Area Manager</source>
           <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
@@ -21274,6 +21891,17 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Motivo Retraso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field TextoMotivoRetraso_btc - Property Caption</note>
           <target>Desc. Motivo Retraso</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ABC Cliente - Property OptionCaption</note>
+          <target> ,3A,A,B,C,Z</target>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 108480551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Abono</source>
@@ -21478,6 +22106,17 @@
           <note from="Developer" annotates="general" priority="2">ESP="SubCliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field SubCliente_btc - Property Caption</note>
           <target>SubCliente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field ABC Cliente - Property OptionCaption</note>
+          <target> ,3A,A,B,C,Z</target>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Area Manager</source>
@@ -21758,6 +22397,17 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ruta PDF Pedidos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field RutaPdfPedidos_btc - Property Caption</note>
           <target>Ruta PDF Pedidos</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field ABC Cliente - Property OptionCaption</note>
+          <target> ,3A,A,B,C,Z</target>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Area Manager</source>
