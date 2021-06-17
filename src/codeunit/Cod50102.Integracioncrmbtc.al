@@ -103,6 +103,7 @@ codeunit 50102 "Integracion_crm_btc"
 
     local procedure ActualizarCamposOfertaCRM(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
     var
+        Customer: Record Customer;
         SalesHeader: Record "Sales Header";
         CRMQuote: Record "STH CRM Quote";
         DestinationFieldRef: FieldRef;
@@ -111,12 +112,16 @@ codeunit 50102 "Integracion_crm_btc"
         NoSeriesMgt: codeunit NoSeriesManagement;
         CRMConnectionSetup: record "CRM Connection Setup";// "CRM Connection Setup";  
         bit_bcenviaralerp: Boolean;
-
+        CRMIntegrationRecord: record "CRM Integration Record";
+        CustRecRef: RecordRef;
+        AccountId: RecordId;
+        CustNo: code[20];
     begin
-
+        SourceRecordRef.SETTABLE(CRMquote);
         DestinationRecordRef.SETTABLE(SalesHeader);
         SourceFieldRef := SourceRecordRef.FIELD(CRMQuote.FIELDNO(Probabilidad));
         Probabilidad := SourceFieldRef.VALUE;
+        CustRecRef.Open(18);
 
         case Probabilidad of
             CRMQuote.Probabilidad::" ":
@@ -129,9 +134,15 @@ codeunit 50102 "Integracion_crm_btc"
                 SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Alta;
         end;
 
+        // poner los ID de cliente
+        IF NOT CRMIntegrationRecord.FindRecordIDFromID(CRMquote.CustomerId, Database::"Customer", AccountId) then begin
+            if CustRecRef.get(AccountId) then begin
+                CustNo := format(CustRecRef.field(Customer.FieldNo("No.")));
+                SalesHeader.validate("Sell-to Customer No.", CustNo);
+            end;
+        end;
 
         EXIT(TRUE);
-
     end;
 
     local procedure GetSourceDestCode(SourceRecordRef: RecordRef; DestinationRecordRef: RecordRef): Text

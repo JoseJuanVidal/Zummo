@@ -17088,6 +17088,26 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los campos 50000?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Rellenar50kVentas - Method OnPreReport - NamedType LabelName_Qst</note>
         </trans-unit>
+        <trans-unit id="Report 995909859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generar servicios garantia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Generar servicios garantia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Service Mgt. Warranty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 995909859 - NamedType 2245286954" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Servicio Mantenimiento ampliacion garantia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Servicio Mantenimiento ampliacion garantia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Service Mgt. Warranty - NamedType lblWarranty</note>
+        </trans-unit>
+        <trans-unit id="Report 995909859 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Es incompatible poner un filtro en la fecha %1 y seleccionar un mes %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Service Mgt. Warranty - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 995909859 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Creados %1 pedidos de servicios de garantias</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Service Mgt. Warranty - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="Report 4279175161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Service Quote</source>
           <note from="Developer" annotates="general" priority="2">ESP="Oferta Servicio"</note>
@@ -19063,6 +19083,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceItemCard - Action Movimientos - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2379887800 - Action 723101086 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1399627168">
+          <source>Ped. Servicois de mantenimientos Ampliación de Garantias</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ped. Servicois de mantenimientos Ampliación de Garantias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceItemCard - Action MtoWarranty - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2379887800 - Action 723101086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1399627168">
+          <source>Mto. Ampl. Garantia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mto. Ampl. Garantia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceItemCard - Action MtoWarranty - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3040339742 - Action 4127921286 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2485541542">
           <source>Trazabilidad Serie</source>
           <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
@@ -19072,6 +19102,16 @@
           <source>Trazabilidad Serie</source>
           <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceItemList - Action Movimientos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3040339742 - Action 4218024702 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2485541542">
+          <source>Generar Ped. Servicio de Ampliación Garantia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Generar Ped. Servicio de Ampliación Garantia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceItemList - Action WarrantyMto - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3040339742 - Action 4218024702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2485541542">
+          <source>Generar Ped. Serv. Ampliación Garantia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Generar Ped. Serv. Ampliación Garantia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceItemList - Action WarrantyMto - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1476460220 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 997019036">
           <source>Blocked</source>
@@ -20978,6 +21018,11 @@
           <note from="Developer" annotates="general" priority="2">Fecha Inicio periodo de Ampliación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field FechaIniAmpliacion_sth - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 521506452 - Field 2049232620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
+          <source>Fecha próxima revision garantia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha próxima revision garantia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field FechaMantGarantia_sth - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 1629113632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Periodo de Ampliacion Garantia</source>
           <note from="Developer" annotates="general" priority="2">Periodo de Ampliación Garantía"</note>
@@ -21002,6 +21047,11 @@
           <source>Location comment</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentario almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field ComentarioAlmacen_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2479720606 - Field 2439223842 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
+          <source>Es Mto. Garantia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Es Mto. Garantia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field IsWarranty - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 3442832110 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Service Shelf No.</source>
@@ -21102,6 +21152,11 @@
           <source>Initial Entry Posting Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Detailed Cust. Ledg. Entry - Field Initial Entry Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1098484534 - Field 483984786 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 297536702">
+          <source>Periodo revisión Garantias</source>
+          <note from="Developer" annotates="general" priority="2">Periodo revisión Garantias</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Ext ServiceMgtSetup - Field PeriodoRevisionGarantia - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 90629565 - Field 1171137197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 311266198">
           <source>Customer Name</source>

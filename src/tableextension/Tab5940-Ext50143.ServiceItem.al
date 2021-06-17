@@ -15,7 +15,11 @@ tableextension 50143 "Service Item" extends "Service Item"
         {
             Caption = 'Periodo de Ampliacion Garantia', comment = 'Periodo de Ampliación Garantía"';
             trigger OnValidate()
+            var
+                ServiceSetup: Record "Service Mgt. Setup";
             begin
+                ServiceSetup.Get();
+                ServiceSetup.TestField(PeriodoRevisionGarantia);
                 if not Confirm(lblConfirm, false, PeriodoAmplacionGarantica_sth) then
                     exit;
 
@@ -23,6 +27,7 @@ tableextension 50143 "Service Item" extends "Service Item"
                     FechaIniAmpliacion_sth := 0D;
                     "Warranty Ending Date (Parts)" := CalcDate('-' + format(xRec.PeriodoAmplacionGarantica_sth), "Warranty Ending Date (Parts)");
                     "Warranty Ending Date (Labor)" := calcDate('-' + format(xRec.PeriodoAmplacionGarantica_sth), "Warranty Ending Date (Labor)");
+                    FechaMantGarantia_sth := 0D;
                     Modify();
                 end;
 
@@ -30,6 +35,7 @@ tableextension 50143 "Service Item" extends "Service Item"
                     FechaIniAmpliacion_sth := "Warranty Ending Date (Parts)";
                     "Warranty Ending Date (Parts)" := CalcDate(PeriodoAmplacionGarantica_sth, "Warranty Ending Date (Parts)");
                     "Warranty Ending Date (Labor)" := calcDate(PeriodoAmplacionGarantica_sth, "Warranty Ending Date (Labor)");
+                    FechaMantGarantia_sth := CalcDate(ServiceSetup.PeriodoRevisionGarantia, "Warranty Starting Date (Parts)");
                     Modify();
                 end;
             end;
@@ -38,6 +44,10 @@ tableextension 50143 "Service Item" extends "Service Item"
         {
             Caption = 'Fecha Inicio periodo de Ampliacion', comment = 'Fecha Inicio periodo de Ampliación"';
             Editable = false;
+        }
+        field(50220; FechaMantGarantia_sth; date)
+        {
+            Caption = 'Fecha próxima revision garantia', comment = 'ESP="Fecha próxima revision garantia"';
         }
     }
     var

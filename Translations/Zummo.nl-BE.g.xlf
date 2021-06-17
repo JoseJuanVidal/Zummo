@@ -3974,7 +3974,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 3755578035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CRM Quote</source>
+          <source>CRM Quote new</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Property Caption</note>
         </trans-unit>
@@ -7789,6 +7789,16 @@
           <source>Unit</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report Prod. Order Zummo - NamedType UnidadLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 995909859 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Es incompatible poner un filtro en la fecha %1 y seleccionar un mes %2</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Service Mgt. Warranty - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 995909859 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Creados %1 pedidos de servicios de garantias</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Service Mgt. Warranty - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Report 3454257459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Liq. docs. en orden regis.</source>
