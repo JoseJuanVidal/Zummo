@@ -19113,6 +19113,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Generar Ped. Serv. Ampliación Garantia"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceItemList - Action WarrantyMto - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3040339742 - Action 723101086 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2485541542">
+          <source>Ped. Servicois de mantenimientos Ampliación de Garantias</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ped. Servicois de mantenimientos Ampliación de Garantias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceItemList - Action MtoWarranty - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3040339742 - Action 723101086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2485541542">
+          <source>Mto. Ampl. Garantia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mto. Ampl. Garantia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceItemList - Action MtoWarranty - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1476460220 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 997019036">
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>

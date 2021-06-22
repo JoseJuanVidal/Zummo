@@ -114,13 +114,14 @@ codeunit 50102 "Integracion_crm_btc"
         bit_bcenviaralerp: Boolean;
         CRMIntegrationRecord: record "CRM Integration Record";
         CustRecRef: RecordRef;
+        DestinationAccountFieldRef: FieldRef;
         AccountId: RecordId;
         CustNo: code[20];
     begin
         SourceRecordRef.SETTABLE(CRMquote);
-        DestinationRecordRef.SETTABLE(SalesHeader);
         SourceFieldRef := SourceRecordRef.FIELD(CRMQuote.FIELDNO(Probabilidad));
         Probabilidad := SourceFieldRef.VALUE;
+        DestinationAccountFieldRef := DestinationRecordRef.Field(2);
         CustRecRef.Open(18);
 
         case Probabilidad of
@@ -135,10 +136,10 @@ codeunit 50102 "Integracion_crm_btc"
         end;
 
         // poner los ID de cliente
-        IF NOT CRMIntegrationRecord.FindRecordIDFromID(CRMquote.CustomerId, Database::"Customer", AccountId) then begin
+        IF CRMIntegrationRecord.FindRecordIDFromID(CRMquote.CustomerId, Database::"Customer", AccountId) then begin
             if CustRecRef.get(AccountId) then begin
                 CustNo := format(CustRecRef.field(Customer.FieldNo("No.")));
-                SalesHeader.validate("Sell-to Customer No.", CustNo);
+                DestinationAccountFieldRef.validate(CustNo);
             end;
         end;
 
@@ -812,8 +813,9 @@ codeunit 50102 "Integracion_crm_btc"
         CustomerPriceGroup.SetRange(Code, 'PVP');
         if CustomerPriceGroup.FindFirst() then begin
             IF NOT CRMIntegrationRecord.FindIDFromRecordID(CustomerPriceGroup.RECORDID, CustomerPriceGroupId) THEN
-                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Customer Price Group", CustomerPriceGroup.RECORDID, OutOfMapFilter) THEN
-                    ERROR('CRM CustomerPriceGroup: ' + Item."No." + ' Dato: ' + CustomerPriceGroup.Code);
+                IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Customer Price Group", CustomerPriceGroup.RECORDID, OutOfMapFilter) THEN;
+            // quitamos errores
+            //ERROR('CRM CustomerPriceGroup: ' + Item."No." + ' Dato: ' + CustomerPriceGroup.Code);
             CRMProductos_btc.PriceLevelId := CustomerPriceGroupId;
             AdditionalFieldsWereModified := TRUE;
         end;
