@@ -129,6 +129,11 @@ tableextension 50134 "SalesCrMemoHeader" extends "Sales Cr.Memo Header" //114
             FieldClass = FlowField;
             CalcFormula = lookup(Customer."ABC Cliente" where("No." = field("Sell-to Customer No.")));
         }
+        field(50070; CurrencyChange; decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Cambio divisa', comment = 'ESP="Cambio divisa"';
+        }
         field(50910; MotivoBloqueo_btc; Code[20])
         {
             DataClassification = CustomerContent;

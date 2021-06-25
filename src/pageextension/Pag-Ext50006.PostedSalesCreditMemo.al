@@ -6,6 +6,11 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
     {
         addafter("Corrected Invoice No.")
         {
+            field(CurrencyChange; CurrencyChange)
+            {
+                ApplicationArea = all;
+                ToolTip = 'Indicar el cambio para la impresión de los documentos.', comment = 'ESP="Indicar el cambio para la impresión de los documentos."';
+            }
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
             field(FacturacionElec_btc; FacturacionElec_btc) { }
             field("ABC Cliente"; "ABC Cliente") { }

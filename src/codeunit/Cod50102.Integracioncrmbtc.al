@@ -5,6 +5,21 @@ codeunit 50102 "Integracion_crm_btc"
 
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Integration Rec. Synch. Invoke", 'OnBeforeTransferRecordFields', '', true, true)]
+    local procedure OnBeforeTransferRecordFields(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef)
+    var
+        txtTipo: Text;
+    begin
+        //error('pp');
+        txtTipo := GetSourceDestCode(SourceRecordRef, DestinationRecordRef);
+        CASE txtTipo OF
+            'STH CRM Quote-Sales Header':
+                ActualizarCamposOfertaCRM(SourceRecordRef, DestinationRecordRef);
+            'STH CRM Quotedetail-Sales Line':
+                ActualizarCamposLineasOfertaCRM(SourceRecordRef, DestinationRecordRef);
+        end;
+    end;
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Integration Rec. Synch. Invoke", 'OnAfterTransferRecordFields', '', true, true)]
 
@@ -42,9 +57,14 @@ codeunit 50102 "Integracion_crm_btc"
             'CRM Account_btc-Customer':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposClienteCRM(SourceRecordRef, DestinationRecordRef);
-            'STH CRM Quote-Sales Header':
-                AdditionalFieldsWereModified :=
-                  ActualizarCamposOfertaCRM(SourceRecordRef, DestinationRecordRef);
+        /* ponemos el evento en on OnBeforeTransferRecordFields antes de que se sincronizen los campos
+  'STH CRM Quote-Sales Header':
+      AdditionalFieldsWereModified :=
+        ActualizarCamposOfertaCRM(SourceRecordRef, DestinationRecordRef);
+
+'STH CRM Quotedetail-Sales Line':
+   AdditionalFieldsWereModified :=
+     ActualizarCamposLineasOfertaCRM(SourceRecordRef, DestinationRecordRef);*/
 
         //    'Sales Invoice Header-CRM Invoice':
         //        UpdateCRMInvoiceBeforeInsertRecord(SourceRecordRef, DestinationRecordRef); //VEr si hae falta esta llamada al std.
@@ -142,6 +162,83 @@ codeunit 50102 "Integracion_crm_btc"
                 DestinationAccountFieldRef.validate(CustNo);
             end;
         end;
+
+        EXIT(TRUE);
+    end;
+
+    local procedure ActualizarCamposLineasOfertaCRM(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
+    var
+        Customer: Record Customer;
+        SalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+        Item: Record Item;
+        CRMQuoteDetail: Record "STH CRM Quotedetail";
+        DestinationFieldRef: FieldRef;
+        DestinationFieldRef2: FieldRef;
+        SourceFieldRef: FieldRef;
+        Probabilidad: Option;
+        NoSeriesMgt: codeunit NoSeriesManagement;
+        CRMConnectionSetup: record "CRM Connection Setup";// "CRM Connection Setup";  
+        bit_bcenviaralerp: Boolean;
+        CRMIntegrationRecord: record "CRM Integration Record";
+        CustRecRef: RecordRef;
+        SaleHeaderRecRef: RecordRef;
+        ItemRecRef: RecordRef;
+        DestinationAccountFieldRef: FieldRef;
+        AccountId: RecordId;
+        No: code[20];
+        Lineno: integer;
+    begin
+        SourceRecordRef.SETTABLE(CRMQuoteDetail);
+        DestinationRecordRef.SETTABLE(SalesLine);
+
+        // Document Type
+        DestinationFieldRef := DestinationRecordRef.Field(1);
+        DestinationFieldRef.Value := SalesLine."Document Type"::Quote;
+
+        // Document No.
+        SalesHeader.Reset();
+        SaleHeaderRecRef.Open(36);
+        DestinationFieldRef := DestinationRecordRef.Field(3);
+        IF CRMIntegrationRecord.FindRecordIDFromID(CRMQuoteDetail.QuoteId, Database::"Sales Header", AccountId) then begin
+            if SaleHeaderRecRef.get(AccountId) then begin
+                No := format(SaleHeaderRecRef.field(SalesHeader.fieldNo("No.")));
+                DestinationFieldRef.validate(No);
+            end;
+        end;
+
+        SalesHeader.GET(SalesHeader."Document Type"::Quote, No);
+        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+        SalesLine.SetRange("Document No.", SalesHeader."No.");
+        if SalesLine.FindLast() then
+            Lineno := SalesLine."Line No." + 10000
+        else
+            Lineno := 10000;
+
+        DestinationFieldRef := DestinationRecordRef.Field(4);   // Line No.
+        DestinationFieldRef.Value := Lineno;
+
+        // Sell-to Customer No.
+        CustRecRef.Open(18);
+        DestinationFieldRef := DestinationRecordRef.Field(2);
+        DestinationFieldRef.validate(SalesHeader."Sell-to Customer No.");
+
+        // Item No.
+        Item.Reset();
+        ItemRecRef.Open(27);
+        DestinationFieldRef := DestinationRecordRef.Field(6);  // No.
+        IF CRMIntegrationRecord.FindRecordIDFromID(CRMQuoteDetail.ProductId, Database::"Item", AccountId) then begin
+            if ItemRecRef.get(AccountId) then begin
+                No := format(ItemRecRef.field(Item.fieldNo("No.")));
+                if format(DestinationFieldRef.Value) <> No then begin
+                    DestinationFieldRef2 := DestinationRecordRef.Field(5);  // Type
+                    DestinationFieldRef2.Value := 2;
+
+                    DestinationFieldRef.validate(No);
+                end;
+            end;
+        end;
+
 
         EXIT(TRUE);
     end;

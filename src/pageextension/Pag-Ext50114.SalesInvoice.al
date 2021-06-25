@@ -5,6 +5,11 @@ pageextension 50114 "SalesInvoice" extends "Sales Invoice"
 
         addafter("Work Description")
         {
+            field(CurrencyChange; CurrencyChange)
+            {
+                ApplicationArea = all;
+                ToolTip = 'Indicar el cambio para la impresión de los documentos.', comment = 'ESP="Indicar el cambio para la impresión de los documentos."';
+            }
             field("Posting No. Series"; "Posting No. Series")
             {
                 ApplicationArea = all;
@@ -188,6 +193,25 @@ pageextension 50114 "SalesInvoice" extends "Sales Invoice"
                         ErrorMessageHandler.ShowErrors();
                     end;
                 end;
+            }
+
+            action(changePostinGroup)
+            {
+                ApplicationArea = all;
+                Caption = 'Cambiar Reg, Inventario', comment = 'ESP="Cambiar Reg, Inventario"';
+                ToolTip = 'Cambiar el grupo de registro de inventario de las lineas del documento', comment = 'ESP="Cambiar el grupo de registro de inventario de las lineas del documento"';
+                Image = Change;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Funciones;
+                begin
+                    Funciones.changePostinGroup(Rec);
+                end;
+
             }
         }
     }

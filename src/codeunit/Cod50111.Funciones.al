@@ -499,7 +499,7 @@ codeunit 50111 "Funciones"
         end;
     end;
 
-    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20])
+    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20]; CurrChange: Decimal)
     var
         SalesInvoiceHeader: Record "Sales Invoice Header";
         TempBlob: Record TempBlob temporary;
@@ -508,6 +508,7 @@ codeunit 50111 "Funciones"
             SalesInvoiceHeader."External Document No." := ExtDocNo;
             SalesInvoiceHeader.AreaManager_btc := AreaManager;
             SalesInvoiceHeader.ClienteReporting_btc := ClienteReporting;
+            SalesInvoiceHeader.CurrencyChange := CurrChange;
             CLEAR(SalesInvoiceHeader."Work Description");
             if not (NewWorkDescription = '') then begin
                 TempBlob.Blob := SalesInvoiceHeader."Work Description";
@@ -1154,6 +1155,28 @@ codeunit 50111 "Funciones"
         end;
 
         Message(lblFin);
+    end;
+
+    procedure changePostinGroup(SalesHeader: Record "Sales Header")
+    var
+        SalesLine: Record "Sales Line";
+        InvPostingGroup: record "Inventory Posting Group";
+        pPostingGroup: page "Inventory Posting Groups";
+
+        Text000: Label 'Desea Cambiar el Grupo de registro de las lineas a %1';
+    begin
+        SalesHeader.TestField(Status, SalesHeader.Status::Open);
+        pPostingGroup.LookupMode := true;
+        if pPostingGroup.RunModal() = Action::LookupOK then begin
+            pPostingGroup.GetRecord(InvPostingGroup);
+            if Confirm(Text000, false, InvPostingGroup.Code) then begin
+                SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+                SalesLine.SetRange("Document No.", SalesHeader."No.");
+                SalesLine.SetRange(Type, SalesLine.Type::Item);
+                SalesLine.SetFilter("Qty. to Invoice", '<>0');
+                SalesLine.ModifyAll("Posting Group", InvPostingGroup.Code);
+            end;
+        end;
     end;
 
 }

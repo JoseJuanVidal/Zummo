@@ -7,6 +7,11 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
     {
         addafter("Salesperson Code")
         {
+            field(CurrencyChange; CurrencyChange)
+            {
+                ApplicationArea = all;
+                ToolTip = 'Indicar el cambio para la impresión de los documentos.', comment = 'ESP="Indicar el cambio para la impresión de los documentos."';
+            }
             field(Peso_btc; Peso_btc) { }
             field(NumPalets_btc; NumPalets_btc) { }
             field(NumBultos_btc; NumBultos_btc) { }
@@ -71,12 +76,13 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                     WorkDescription: text;
                     AreaManager: Code[20];
                     ClienteReporting: Code[20];
+                    CurrChange: Decimal;
                 begin
                     PediDatos.LookupMode := true;
                     PediDatos.SetDatos(rec);
                     if PediDatos.RunModal() = Action::LookupOK then begin
-                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager, ClienteReporting);
-                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription, AreaManager, ClienteReporting);
+                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange);
+                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange);
                     end;
                 end;
 

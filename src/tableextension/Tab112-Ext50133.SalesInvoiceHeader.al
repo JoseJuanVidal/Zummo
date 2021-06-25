@@ -215,6 +215,11 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
             FieldClass = FlowField;
             CalcFormula = lookup(Customer."ABC Cliente" where("No." = field("Sell-to Customer No.")));
         }
+        field(50070; CurrencyChange; decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Cambio divisa', comment = 'ESP="Cambio divisa"';
+        }
     }
 
 }
