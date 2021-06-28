@@ -171,6 +171,7 @@ codeunit 50102 "Integracion_crm_btc"
         Customer: Record Customer;
         SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
+        SalesLine2: Record "Sales Line";
         Item: Record Item;
         CRMQuoteDetail: Record "STH CRM Quotedetail";
         DestinationFieldRef: FieldRef;
@@ -208,15 +209,18 @@ codeunit 50102 "Integracion_crm_btc"
         end;
 
         SalesHeader.GET(SalesHeader."Document Type"::Quote, No);
-        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
-        SalesLine.SetRange("Document No.", SalesHeader."No.");
-        if SalesLine.FindLast() then
-            Lineno := SalesLine."Line No." + 10000
-        else
-            Lineno := 10000;
 
-        DestinationFieldRef := DestinationRecordRef.Field(4);   // Line No.
-        DestinationFieldRef.Value := Lineno;
+        if SalesLine."Line No." = 0 then begin
+            SalesLine2.SetRange("Document Type", SalesHeader."Document Type");
+            SalesLine2.SetRange("Document No.", SalesHeader."No.");
+            if SalesLine2.FindLast() then
+                Lineno := SalesLine2."Line No." + 10000
+            else
+                Lineno := 10000;
+            DestinationFieldRef := DestinationRecordRef.Field(4);   // Line No.        
+            DestinationFieldRef.Value := Lineno;
+        end;
+
 
         // Sell-to Customer No.
         CustRecRef.Open(18);
@@ -238,6 +242,8 @@ codeunit 50102 "Integracion_crm_btc"
                 end;
             end;
         end;
+
+
 
 
         EXIT(TRUE);
