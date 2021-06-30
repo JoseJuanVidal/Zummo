@@ -69,7 +69,7 @@ page 50007 "Posted Sales Invoice Change"
         Currencychange: Decimal;
         TempBlob: Record TempBlob temporary;
 
-    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; CurChange: Decimal)
+    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; var CurChange: Decimal)
     begin
         ExtDocNo := ExternalDocumentNo;
         WorkDesc := WorkDescription;
