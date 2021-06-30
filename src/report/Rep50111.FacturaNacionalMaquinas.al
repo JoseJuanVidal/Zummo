@@ -401,6 +401,9 @@ report 50111 "FacturaNacionalMaquinas"
                     column(SalesInvoiceHeaderPaymentMethodCode; "Sales Invoice Header"."Payment Method Code")
                     {
                     }
+                    column(SalesInvoiceHeaderPaymentTermsCode; "Sales Invoice Header"."Payment Terms Code")
+                    {
+                    }
                     column(SalesInvoiceHeaderBillToCustomerNo; "Sales Invoice Header"."Bill-to Customer No.")
                     {
                     }
