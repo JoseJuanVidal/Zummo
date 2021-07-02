@@ -5498,6 +5498,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method ActualizarCamposOferta - NamedType CustomerHasChangedErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2573646532 - Method 3936007350 - NamedType 2587062699" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method ActualizarCamposOfertaNew - NamedType CustomerHasChangedErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2573646532 - Method 760668434 - NamedType 2587062699" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se puede crear un Pedido en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se puede crear un Pedido en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado."</note>

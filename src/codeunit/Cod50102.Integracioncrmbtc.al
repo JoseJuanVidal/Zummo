@@ -42,13 +42,16 @@ codeunit 50102 "Integracion_crm_btc"
             'Sales Header-CRM Quote':
                 AdditionalFieldsWereModified :=
                     ActualizarCamposOferta(SourceRecordRef, DestinationRecordRef);
+            'Sales Header-STH CRM Quote':
+                AdditionalFieldsWereModified :=
+                    ActualizarCamposOfertaNew(SourceRecordRef, DestinationRecordRef);
             'Sales Header-CRM Salesorder_btc', 'Sales Header-CRM Salesorder_crm_btc':
                 ActualizarCamposPedido(SourceRecordRef, DestinationRecordRef);
             'Sales Line-CRM Salesorderdetail_btc', 'Sales Line-CRM Salesorderdetail_crm_btc':
                 ActualizarCamposLinPedido(SourceRecordRef, DestinationRecordRef);
             'Service Header-CRM Incident':
                 ActualizarCamposPedidoServicio(SourceRecordRef, DestinationRecordRef);
-            'Sales Line-CRM Quotedetail':
+            'Sales Line-STH CRM Quotedetail':
                 AdditionalFieldsWereModified :=
                     ActualizarCamposLinOferta(SourceRecordRef, DestinationRecordRef);
 
@@ -369,6 +372,99 @@ codeunit 50102 "Integracion_crm_btc"
         //    DestinationRecordRef.GETTABLE(CRMPricelevel_btc);
     end;
 
+    local procedure ActualizarCamposOfertaNew(SourceRecordRef: RecordRef; DestinationRecordRef: RecordRef) AdditionalFieldsWereModified: Boolean;
+    var
+        Oferta: Record "Sales Header";
+        Customer: record Customer;
+        CustomerPriceGroup: Record "Customer Price Group";
+        CustomerPriceGroupId: Guid;
+        CRMquote: record "STH CRM Quote";
+        CRMTransactioncurrency: Record "CRM Transactioncurrency";
+        TypeHelper: Codeunit "Type Helper";
+        CRMSynchHelper: Codeunit "CRM Synch. Helper";
+        DestinationFieldRef: FieldRef;
+        TotalPortes: Decimal;
+        ShipmentMethod: Record "Shipment Method";
+        CRMPricelevel: Record "CRM Pricelevel";
+        CRMIntegrationRecord: record "CRM Integration Record";
+        AccountId: Guid;
+        OutOfMapFilter: boolean;
+        CustomerHasChangedErr: Label 'No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado.', comment = 'ESP="No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado."';
+    begin
+        SourceRecordRef.SETTABLE(Oferta);
+        DestinationRecordRef.SETTABLE(CRMquote);
+
+
+
+        // Shipment Method Code -> go to table Shipment Method, and from there extract the description and add it to
+        IF ShipmentMethod.GET(Oferta."Shipment Method Code") THEN BEGIN
+            DestinationFieldRef := DestinationRecordRef.FIELD(CRMquote.FIELDNO(Description));
+            TypeHelper.WriteTextToBlobIfChanged(DestinationFieldRef, ShipmentMethod.Description, TEXTENCODING::UTF16);
+        END;
+
+        DestinationRecordRef.SETTABLE(CRMquote);
+
+        //Calculo Portes
+        TotalPortes := ObtenerTotalPortes(Oferta);
+
+        CRMquote.FreightAmount := 0;
+        CRMquote.DiscountPercentage := 0;
+        CRMquote.TotalTax := CRMquote.TotalAmount - CRMquote.TotalAmountLessFreight;
+        CRMquote.TotalDiscountAmount := CRMquote.DiscountAmount + CRMquote.TotalLineItemDiscountAmount;
+        CRMquote.FreightAmount := TotalPortes;
+        //CRMquote.MODIFY;
+
+        CRMquote.Name := Oferta."No.";
+        Customer.GET(Oferta."Sell-to Customer No.");
+
+        IF NOT CRMIntegrationRecord.FindIDFromRecordID(Customer.RECORDID, AccountId) THEN
+            IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::Customer, Customer.RECORDID, OutOfMapFilter) THEN
+                ERROR(CustomerHasChangedErr, CRMquote.QuoteNumber, Customer."No.");
+        CRMquote.CustomerId := AccountId;
+        CRMquote.CustomerIdType := CRMquote.CustomerIdType::account;
+
+
+        // IF NOT CRMSynchHelper.FindCRMPriceListByCurrencyCode(CRMPricelevel, Oferta."Currency Code") THEN
+        //     CRMSynchHelper.CreateCRMPricelevelInCurrency(
+        //       CRMPricelevel, Oferta."Currency Code", Oferta."Currency Factor");
+        //CRMquote.PriceLevelId := CRMPricelevel.PriceLevelId;
+        //END;
+
+
+        CustomerPriceGroup.Reset();
+        CustomerPriceGroup.SetRange(Code, Customer."Customer Price Group");
+        if CustomerPriceGroup.FindFirst() then begin
+            IF NOT CRMIntegrationRecord.FindIDFromRecordID(CustomerPriceGroup.RECORDID, CustomerPriceGroupId) THEN
+                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Customer Price Group", CustomerPriceGroup.RECORDID, OutOfMapFilter) THEN
+                    ERROR('CRM CustomerPriceGroup: ' + Customer."No." + ' Dato: ' + CustomerPriceGroup.Code);
+            CRMquote.PriceLevelId := CustomerPriceGroupId;
+            AdditionalFieldsWereModified := TRUE;
+        end;
+
+
+
+        DestinationRecordRef.GETTABLE(CRMquote);
+
+
+
+
+
+        // DestinationFieldRef := DestinationRecordRef.FIELD(CRMquote.FIELDNO(TransactionCurrencyId));
+        // if CRMSynchHelper.UpdateCRMCurrencyIdIfChanged(CRMTransactioncurrency.ISOCurrencyCode, DestinationFieldRef) then
+        //     AdditionalFieldsWereModified := true;
+
+        // DestinationFieldRef := DestinationRecordRef.FIELD(CRMquote.FIELDNO(Description));
+        // if TypeHelper.WriteTextToBlobIfChanged(DestinationFieldRef, CRMquote.Description, TEXTENCODING::UTF16) then
+        //     AdditionalFieldsWereModified := true;
+
+
+
+        //Si ha habido cambios obtengo registro
+        //IF AdditionalFieldsWereModified THEN
+        //    DestinationRecordRef.GETTABLE(CRMPricelevel_btc);
+    end;
+
+
     local procedure ActualizarCamposPedidoServicio(SourceRecordRef: RecordRef; DestinationRecordRef: RecordRef) AdditionalFieldsWereModified: Boolean;
     var
 
@@ -572,7 +668,7 @@ codeunit 50102 "Integracion_crm_btc"
 
         CRMIntegrationRecord: Record "CRM Integration Record";
         CRMSalesHeaderId: GUID;
-        CRMSalesorderdetail: Record "CRM Quotedetail";
+        CRMSalesorderdetail: Record "STH CRM Quotedetail";
         CRMSalesOrder: Record "CRM Quote";
         SalesLine: Record "Sales Line";
         SalesHeader: Record "Sales Header";

@@ -65,13 +65,14 @@ codeunit 50110 "CU_Cron"
         recReservEntry.SetFilter("Source Type", '<>%1', 5741);
         if recReservEntry.FindFirst() then
             recReservEntry.DeleteAll();
+        Commit();
         recReservEntry.Reset();
         recReservEntry.SetFilter("Reservation Status", '<>%1', recReservEntry."Reservation Status"::Reservation);
         recReservEntry.SetRange("Source Type", 5741);
         recReservEntry.SetRange("Item Tracking", recReservEntry."Item Tracking"::None);
         if recReservEntry.FindFirst() then
             recReservEntry.DeleteAll();
-
+        Commit();
         recReservEntry.Reset();
         recReservEntry.SetRange("Reservation Status", recReservEntry."Reservation Status"::Reservation);
         recReservEntry.SetRange("Item Tracking", recReservEntry."Item Tracking"::None);
@@ -81,6 +82,7 @@ codeunit 50110 "CU_Cron"
             recReservEntry2.SetRange("Entry No.", recReservEntry."Entry No.");
             if not recReservEntry2.FindFirst() then begin
                 recReservEntry.Delete();
+                Commit();
             end;
         end;
     end;
