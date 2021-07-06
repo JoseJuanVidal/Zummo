@@ -18918,15 +18918,15 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - NamedType Text000</note>
         </trans-unit>
-        <trans-unit id="PageExtension 549456760 - Action 2182749579 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Impimir Fact.Export</source>
+        <trans-unit id="PageExtension 549456760 - Action 252035029 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Imprimir Fact.Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Impimir Fact.Export - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Imprimir Fact.Export - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 549456760 - Action 2182749579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Impimir Fact.Export</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Impimir Fact.Export - Property Caption</note>
+        <trans-unit id="PageExtension 549456760 - Action 252035029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Imprimir Fact.Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imprimir Fact.Export"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Imprimir Fact.Export - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 2507320066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>&amp;Email</source>

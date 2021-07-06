@@ -5514,6 +5514,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CargaFicheroNominas - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3524292210 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desea Cambiar el Grupo de registro de las lineas a %1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method changePostinGroup - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3906917530 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
@@ -5595,6 +5600,12 @@
           <source>No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method ActualizarCamposOferta - NamedType CustomerHasChangedErr</note>
+          <target>No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado.</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 2573646532 - Method 3936007350 - NamedType 2587062699" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method ActualizarCamposOfertaNew - NamedType CustomerHasChangedErr</note>
           <target>No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado.</target>
         </trans-unit>
         <trans-unit id="Codeunit 2573646532 - Method 760668434 - NamedType 2587062699" size-unit="char" translate="yes" xml:space="preserve">
@@ -20108,17 +20119,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - NamedType Text000</note>
           <target>¿Desea marcar %1 facturas como enviadas a Aseguradora?</target>
         </trans-unit>
-        <trans-unit id="PageExtension 549456760 - Action 2182749579 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Impimir Fact.Export</source>
+        <trans-unit id="PageExtension 549456760 - Action 252035029 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Imprimir Fact.Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Impimir Fact.Export - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Imprimir Fact.Export - Property ToolTip</note>
           <target>Impimir Fact.Export</target>
         </trans-unit>
-        <trans-unit id="PageExtension 549456760 - Action 2182749579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Impimir Fact.Export</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Impimir Fact.Export - Property Caption</note>
-          <target>Impimir Fact.Export</target>
+        <trans-unit id="PageExtension 549456760 - Action 252035029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Imprimir Fact.Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imprimir Fact.Export"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Imprimir Fact.Export - Property Caption</note>
+          <target>Imprimir Fact.Export</target>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 2507320066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>&amp;Email</source>
@@ -20550,6 +20561,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesInvoice - Action InsertarComentariosPredefinidos - Property Caption</note>
           <target>Insertar comentarios predefinidos</target>
         </trans-unit>
+        <trans-unit id="PageExtension 927944371 - Action 3524292210 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
+          <source>Cambiar el grupo de registro de inventario de las lineas del documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar el grupo de registro de inventario de las lineas del documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesInvoice - Action changePostinGroup - Property ToolTip</note>
+          <target>Cambiar el grupo de registro de inventario de las lineas del documento</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 927944371 - Action 3524292210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
+          <source>Cambiar Reg, Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Reg, Inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesInvoice - Action changePostinGroup - Property Caption</note>
+          <target>Cambiar Reg, Inventario</target>
+        </trans-unit>
         <trans-unit id="PageExtension 927944371 - Action 2890590632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa."</note>
@@ -20598,11 +20621,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesInvoiceSubform - Control txtBloqueado - Property Caption</note>
           <target>Bloqueado</target>
         </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 2547518363 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Dto. %</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Dto. %"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action DescuentosPorc - Property Caption</note>
-          <target>Dto. %</target>
+        <trans-unit id="PageExtension 3617415722 - Action 3524292210 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Cambiar el grupo de registro de inventario de las lineas del documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar el grupo de registro de inventario de las lineas del documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action changePostinGroup - Property ToolTip</note>
+          <target>Cambiar el grupo de registro de inventario de las lineas del documento</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3617415722 - Action 3524292210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Cambiar Reg, Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Reg, Inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action changePostinGroup - Property Caption</note>
+          <target>Cambiar Reg, Inventario</target>
         </trans-unit>
         <trans-unit id="PageExtension 3617415722 - Action 454322636 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Impimir Fact.Export</source>

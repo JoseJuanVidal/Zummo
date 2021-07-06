@@ -4944,6 +4944,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CargaFicheroNominas - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3524292210 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desea Cambiar el Grupo de registro de las lineas a %1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method changePostinGroup - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 1822228488 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Código #1###################</source>
           <note from="Developer" annotates="general" priority="2"/>

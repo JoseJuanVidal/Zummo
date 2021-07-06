@@ -47,6 +47,27 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             {
                 ApplicationArea = all;
             }
+            field("Ship-to Name"; "Ship-to Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Ship-to Address"; "Ship-to Address")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Ship-to City"; "Ship-to City")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Ship-to County"; "Ship-to County")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+
         }
     }
 
@@ -54,15 +75,15 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
     {
         addfirst(Reporting)
         {
-            action("Impimir Fact.Export")
+            action("Imprimir Fact.Export")
             {
                 ApplicationArea = All;
                 Promoted = true;
                 PromotedCategory = Report;
                 PromotedIsBig = true;
                 Image = Print;
-                Caption = 'Impimir Fact.Export', comment = 'ESP="Impimir Fact.Export"';
-                ToolTip = 'Impimir Fact.Export',
+                Caption = 'Imprimir Fact.Export', comment = 'ESP="Imprimir Fact.Export"';
+                ToolTip = 'Imprimir Fact.Export',
                     comment = 'ESP="Impimir Fact.Export"';
 
                 trigger OnAction()
