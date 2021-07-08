@@ -20,11 +20,7 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                 ApplicationArea = all;
                 Editable = false;
             }
-            field(CostProduction; CostProduction)
-            {
-                ApplicationArea = all;
-                Caption = 'Ult. Coste producción', comment = 'ESP="Ult. Coste producción"';
-            }
+
         }
     }
     actions
@@ -66,14 +62,14 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
         ItemLedgerEntry: Record "Item Ledger Entry";
         ValueEntry: Record "Value Entry";
         Inventory: Decimal;
-        CostProduction: Decimal;
+
         StyleExp: text;
 
     trigger OnAfterGetRecord()
     var
         Unitcost: Decimal;
     begin
-        CostProduction := 0;
+
         Inventory := 0;
         case Type of
             type::Item:
@@ -81,23 +77,6 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                     Item.Get("No.");
                     item.CalcFields(Inventory);
                     Inventory := Item.Inventory;
-                    case "Replenishment System" of
-                        "Replenishment System"::"Prod. Order":
-                            Begin
-                                ItemLedgerEntry.SetRange("Item No.", "No.");
-                                ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Output);
-                                if ItemLedgerEntry.FindLast() then begin
-                                    ValueEntry.SetRange("Item Ledger Entry No.", ItemLedgerEntry."Entry No.");
-                                    ValueEntry.SetRange("Entry Type", ValueEntry."Entry Type"::"Direct Cost");
-                                    ValueEntry.CalcSums("Invoiced Quantity", "Cost Amount (Actual)");
-                                    if ValueEntry."Invoiced Quantity" <> 0 then
-                                        CostProduction := ValueEntry."Cost Amount (Actual)" / ValueEntry."Invoiced Quantity";
-                                    Unitcost := CostProduction;
-                                end;
-                            End;
-                        else
-                            Unitcost := Rec.LastUnitCost;
-                    end;
                 end;
         end;
 
@@ -131,7 +110,8 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
     local procedure UpdateMfgCoste()
     var
         StdaCostWhse: Record "Standard Cost Worksheet";
-        tmpItem: Record item temporary;
+        Item: Record item;
+        tmpItem2: Record item temporary;
         NewtmpItem: Record item temporary;
         CalculateStandarCost: Codeunit "Calculate Standard Cost";
         lblConfirm: Label '¿Desea realizar el cálculo de coste estandar de los registros seleccionados?'
@@ -142,25 +122,29 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
         if not Confirm(lblConfirm) then
             exit;
         Ventana.open(Text000);
-        Ventana.Update(1, 'Cargando....');
-        LoadtmpItem(tmpItem);
+
+        CurrPage.SetSelectionFilter(StdaCostWhse);
+        //Ventana.Update(1, 'Cargando....');
+        //LoadtmpItem(tmpItem);
         Ventana.Update(1, 'Calculando....');
         CalculateStandarCost.SetProperties(WORKDATE, FALSE, false, FALSE, '', FALSE);
-        CalculateStandarCost.CalcItems(tmpItem, NewtmpItem);
-        tmpItem.Reset();
-        if tmpItem.findset() then
+        if StdaCostWhse.findset() then
             repeat
-                if NewtmpItem.get(tmpItem."No.") then begin
-                    Ventana.Update(1, 'Actualizando: ' + NewtmpItem."No.");
-                    StdaCostWhse.SetRange("Standard Cost Worksheet Name", Rec."Standard Cost Worksheet Name");
-                    StdaCostWhse.SetRange(Type, StdaCostWhse.Type::Item);
-                    StdaCostWhse.SetRange("No.", NewtmpItem."No.");
-                    if StdaCostWhse.FindFirst() then begin
-                        StdaCostWhse."New Standard Cost" := Round(NewtmpItem."Standard Cost", 0.01);
-                        StdaCostWhse.Modify();
-                    end;
+                Item.SetRange("No.", StdaCostWhse."No.");
+                CalculateStandarCost.CalcItems(Item, NewtmpItem);
+
+
+
+                Ventana.Update(1, 'Actualizando: ' + NewtmpItem."No.");
+                StdaCostWhse.SetRange("Standard Cost Worksheet Name", Rec."Standard Cost Worksheet Name");
+                StdaCostWhse.SetRange(Type, StdaCostWhse.Type::Item);
+                StdaCostWhse.SetRange("No.", NewtmpItem."No.");
+                if StdaCostWhse.FindFirst() then begin
+                    StdaCostWhse."New Standard Cost" := Round(NewtmpItem."Standard Cost", 0.01);
+                    StdaCostWhse.Modify();
                 end;
-            Until tmpItem.next() = 0;
+            Until StdaCostWhse.next() = 0;
+
         Commit();
         CurrPage.Update();
     end;

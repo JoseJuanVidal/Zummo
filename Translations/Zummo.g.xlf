@@ -19738,11 +19738,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Calcular Coste Fabricación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action CalcularMfgCost - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 4092476146 - Control 1119874868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
-          <source>Ult. Coste producción</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Ult. Coste producción"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Control CostProduction - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Control 2105307182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
           <source>Inventario</source>
           <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
