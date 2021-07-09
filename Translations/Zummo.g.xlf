@@ -19718,6 +19718,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Calcular Cantidad Balance"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Control CalcNeed - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Method 1523975222 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
+          <source>&amp;Nivel superior,&amp;Todos los niveles</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&amp;Nivel superior,&amp;Todos los niveles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method LoadWhereUsedLine - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Method 1523975222 - NamedType 1073881684" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
+          <source>Añadir la L.M. del producto %1 %2. Seleccione Todos los niveles para incluir L.M. de todos los semiterminados.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Añadir la L.M. del producto %1 %2. Seleccione Todos los niveles para incluir L.M. de todos los semiterminados."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method LoadWhereUsedLine - NamedType lblInstr</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Method 680393218 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
           <source>¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?"</note>
@@ -19739,8 +19749,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action ActualizarUltimoCoste - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Action 142764972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
-          <source>Calcular Coste Fabricación</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Calcular Coste Fabricación"</note>
+          <source>Calcular Coste estandar Fabricación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular Coste estandar Fabricación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action CalcularMfgCost - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Action 1523975222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">

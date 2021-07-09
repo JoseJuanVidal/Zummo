@@ -4908,6 +4908,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quotedetail - Field zum_dto - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2598332820 - Field 133004161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Numero Oferta</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quotedetail - Field zum_num_oferta - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 10975779 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
           <note from="Developer" annotates="general" priority="2">ES^="Nombre"</note>

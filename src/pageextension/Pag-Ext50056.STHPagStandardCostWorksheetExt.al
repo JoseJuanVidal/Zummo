@@ -44,7 +44,7 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
             action(CalcularMfgCost)
             {
                 ApplicationArea = all;
-                Caption = 'Calcular Coste Fabricación', comment = 'ESP="Calcular Coste Fabricación"';
+                Caption = 'Calcular Coste estandar Fabricación', comment = 'ESP="Calcular Coste estandar Fabricación"';
                 Image = CalculateCost;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -139,13 +139,13 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
         //Ventana.Update(1, 'Cargando....');
         //LoadtmpItem(tmpItem);
         Ventana.Update(1, 'Calculando....');
-        CalculateStandarCost.SetProperties(WORKDATE, FALSE, false, FALSE, '', FALSE);
         if StdaCostWhse.findset() then
             repeat
                 item.Reset();
                 Item.SetRange("No.", StdaCostWhse."No.");
                 item.FindFirst();
                 clear(CalculateStandarCost);
+                CalculateStandarCost.SetProperties(WORKDATE, FALSE, false, FALSE, '', FALSE);
                 CalculateStandarCost.CalcItems(Item, NewtmpItem);
 
                 Ventana.Update(1, 'Actualizando: ' + NewtmpItem."No.");
@@ -181,20 +181,34 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
     local procedure LoadWhereUsedLine(ItemNo: code[20])
     var
         Item: Record Item;
-        StadCostWhse: Record "Standard Cost Worksheet";
+        StdCostWhse: Record "Standard Cost Worksheet";
         WhereUsedLine: Record "Where-Used Line" temporary;
         WhereUsedMgt: Codeunit "Where-Used Management";
+        Instruction: Text;
+        NewCalcMultiLevel: Boolean;
+        Text001: Label '&Nivel superior,&Todos los niveles', comment = 'ESP="&Nivel superior,&Todos los niveles"';
+        lblInstr: Label 'Añadir la L.M. del producto %1 %2. Seleccione Todos los niveles para incluir L.M. de todos los semiterminados.'
+            , comment = 'ESP="Añadir la L.M. del producto %1 %2. Seleccione Todos los niveles para incluir L.M. de todos los semiterminados."';
     begin
         item.Get(ItemNo);
-        // indicamos el producto al que mirar la lista
-        WhereUsedMgt.WhereUsedFromItem(Item, WorkDate(), true);
+        Instruction := StrSubstNo(lblInstr, Item."No.", Item.Description);
+        CASE STRMENU(Text001, 1, Instruction) OF
+            0:
+                EXIT;
+            1:
+                NewCalcMultiLevel := FALSE;
+            2:
+                NewCalcMultiLevel := TRUE;
+        END;
+        // indicamos el producto al que mirar la lista        
+        WhereUsedMgt.WhereUsedFromItem(Item, WorkDate(), NewCalcMultiLevel);
         if WhereUsedMgt.FindRecord('-', WhereUsedLine) then
             repeat
-                StadCostWhse.Init();
-                StadCostWhse."Standard Cost Worksheet Name" := Rec."Standard Cost Worksheet Name";
-                StadCostWhse.Type := StadCostWhse.Type::Item;
-                StadCostWhse.Validate("No.", WhereUsedLine."Item No.");
-                StadCostWhse.Insert()
+                StdCostWhse.Init();
+                StdCostWhse."Standard Cost Worksheet Name" := Rec."Standard Cost Worksheet Name";
+                StdCostWhse.Type := StdCostWhse.Type::Item;
+                StdCostWhse.Validate("No.", WhereUsedLine."Item No.");
+                StdCostWhse.Insert()
             until WhereUsedMgt.NextRecord(1, WhereUsedLine) = 0;
 
     end;
