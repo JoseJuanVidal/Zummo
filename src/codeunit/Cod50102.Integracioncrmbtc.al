@@ -166,6 +166,8 @@ codeunit 50102 "Integracion_crm_btc"
             end;
         end;
 
+        Commit();
+
         EXIT(TRUE);
     end;
 

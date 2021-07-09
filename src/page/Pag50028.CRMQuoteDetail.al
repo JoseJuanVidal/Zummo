@@ -16,6 +16,8 @@ page 50028 "CRM Quote Detail"
                 field(QuoteDetailId; QuoteDetailId) { }
                 field(QuoteId; QuoteId)
                 { }
+                field(zum_num_oferta; zum_num_oferta)
+                { }
                 field(SalesRepId; SalesRepId) { }
                 field(LineItemNumber; LineItemNumber) { }
                 field(UoMId; UoMId) { }
