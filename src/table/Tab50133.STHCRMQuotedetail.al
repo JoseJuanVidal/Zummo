@@ -590,10 +590,10 @@ table 50133 "STH CRM Quotedetail"
             ExternalName = 'zum_dto';
             ExternalType = 'Decimal';
         }
-        field(50001; zum_num_oferta; Decimal)
+        field(50001; zum_num_oferta; Text[200])
         {
             Caption = 'Numero Oferta';
-            Description = 'Type the amount or Line Discount of the product requested by the customer.';
+            Description = 'Number of quote.';
             ExternalName = 'zum_num_oferta';
             ExternalType = 'String';
         }

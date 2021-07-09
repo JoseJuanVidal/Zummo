@@ -54,6 +54,17 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                     UpdateMfgCoste;
                 end;
             }
+            action(LoadWhereUsedLine)
+            {
+                ApplicationArea = all;
+                Caption = 'Añadir productos puntos de Uso', comment = 'ESP="Añadir productos puntos de Uso"';
+                Image = "Where-Used";
+
+                trigger OnAction()
+                begin
+                    LoadWhereUsedLine(Rec."No.");
+                end;
+            }
         }
     }
 
@@ -110,6 +121,7 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
     local procedure UpdateMfgCoste()
     var
         StdaCostWhse: Record "Standard Cost Worksheet";
+        StdaCostWhse2: Record "Standard Cost Worksheet";
         Item: Record item;
         tmpItem2: Record item temporary;
         NewtmpItem: Record item temporary;
@@ -130,18 +142,19 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
         CalculateStandarCost.SetProperties(WORKDATE, FALSE, false, FALSE, '', FALSE);
         if StdaCostWhse.findset() then
             repeat
+                item.Reset();
                 Item.SetRange("No.", StdaCostWhse."No.");
+                item.FindFirst();
+                clear(CalculateStandarCost);
                 CalculateStandarCost.CalcItems(Item, NewtmpItem);
 
-
-
                 Ventana.Update(1, 'Actualizando: ' + NewtmpItem."No.");
-                StdaCostWhse.SetRange("Standard Cost Worksheet Name", Rec."Standard Cost Worksheet Name");
-                StdaCostWhse.SetRange(Type, StdaCostWhse.Type::Item);
-                StdaCostWhse.SetRange("No.", NewtmpItem."No.");
-                if StdaCostWhse.FindFirst() then begin
-                    StdaCostWhse."New Standard Cost" := Round(NewtmpItem."Standard Cost", 0.01);
-                    StdaCostWhse.Modify();
+                StdaCostWhse2.SetRange("Standard Cost Worksheet Name", Rec."Standard Cost Worksheet Name");
+                StdaCostWhse2.SetRange(Type, StdaCostWhse.Type::Item);
+                StdaCostWhse2.SetRange("No.", NewtmpItem."No.");
+                if StdaCostWhse2.FindFirst() then begin
+                    StdaCostWhse2."New Standard Cost" := Round(NewtmpItem."Standard Cost", 0.0001);
+                    StdaCostWhse2.Modify();
                 end;
             Until StdaCostWhse.next() = 0;
 
@@ -163,5 +176,26 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                         tmpItem.Insert();
                     end;
             Until StdaCostWhse.next() = 0;
+    end;
+
+    local procedure LoadWhereUsedLine(ItemNo: code[20])
+    var
+        Item: Record Item;
+        StadCostWhse: Record "Standard Cost Worksheet";
+        WhereUsedLine: Record "Where-Used Line" temporary;
+        WhereUsedMgt: Codeunit "Where-Used Management";
+    begin
+        item.Get(ItemNo);
+        // indicamos el producto al que mirar la lista
+        WhereUsedMgt.WhereUsedFromItem(Item, WorkDate(), true);
+        if WhereUsedMgt.FindRecord('-', WhereUsedLine) then
+            repeat
+                StadCostWhse.Init();
+                StadCostWhse."Standard Cost Worksheet Name" := Rec."Standard Cost Worksheet Name";
+                StadCostWhse.Type := StadCostWhse.Type::Item;
+                StadCostWhse.Validate("No.", WhereUsedLine."Item No.");
+                StadCostWhse.Insert()
+            until WhereUsedMgt.NextRecord(1, WhereUsedLine) = 0;
+
     end;
 }
