@@ -121,6 +121,19 @@ tableextension 50134 "SalesCrMemoHeader" extends "Sales Cr.Memo Header" //114
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
             Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
         }
+        field(50056; "ABC Cliente"; option)
+        {
+            OptionMembers = " ","3A","A","B","C","Z";
+            OptionCaption = ' ,3A,A,B,C,Z', Comment = 'ESP=" ,3A,A,B,C,Z"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer."ABC Cliente" where("No." = field("Sell-to Customer No.")));
+        }
+        field(50070; CurrencyChange; decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Cambio divisa', comment = 'ESP="Cambio divisa"';
+        }
         field(50910; MotivoBloqueo_btc; Code[20])
         {
             DataClassification = CustomerContent;

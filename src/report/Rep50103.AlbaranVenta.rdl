@@ -2100,8 +2100,12 @@ Cstr(Fields!EmailCaption.Value) + Chr(177) +
 Cstr(Fields!DocumentDateCaption.Value) + Chr(177) +
 Cstr(Fields!PageCaption.Value) + Chr(177) +
 Cstr(Fields!CompanyInfoName.Value) + Chr(177) +
-Cstr(Fields!TransportistaNombre_btc.Value) + Chr(177) + Cstr(Fields!Palets_Lbl.Value)
- + Chr(177) + Cstr(Fields!NumBultos_btc.Value) + Chr(177) + Cstr(Fields!NumPalets_btc.Value) + Chr(177) + Cstr(Fields!facturaA.Value), 1)</Hidden>
+Cstr(Fields!TransportistaNombre_btc.Value) + Chr(177) + 
+Cstr(Fields!Palets_Lbl.Value) + Chr(177) + 
+Cstr(Fields!NumBultos_btc.Value) + Chr(177) + 
+Cstr(Fields!NumPalets_btc.Value) + Chr(177) + 
+Cstr(Fields!facturaA.Value)  + Chr(177) + 
+Cstr(Fields!VATRegistrationNo.Value), 1)</Hidden>
                                             </Visibility>
                                             <Style>
                                               <Border>
@@ -2787,7 +2791,7 @@ Cstr(Fields!TransportistaNombre_btc.Value) + Chr(177) + Cstr(Fields!Palets_Lbl.V
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=Code.GetData(22,1)</Value>
+                          <Value>=Code.GetData(51,1)</Value>
                           <Style>
                             <FontStyle>Normal</FontStyle>
                             <FontFamily>Segoe UI</FontFamily>
@@ -4363,6 +4367,9 @@ ACCNCAUAACCNCAUAACCNCAUAACCNCAUAACCNCAUAACCNCAUAACCNCAUAACCNCAUAACCNCAUAACCNCAUA
         </Field>
         <Field Name="facturaA">
           <DataField>facturaA</DataField>
+        </Field>
+        <Field Name="VATRegistrationNo">
+          <DataField>VATRegistrationNo</DataField>
         </Field>
         <Field Name="DocDate_SalesShptHeader">
           <DataField>DocDate_SalesShptHeader</DataField>

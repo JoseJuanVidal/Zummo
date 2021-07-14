@@ -2646,7 +2646,7 @@ chr(177) + cstr(Fields!ImporteVencimiento1.Value) +
 chr(177) + cstr(Fields!ImporteVencimiento2.Value) +
 chr(177) + cstr(Fields!ImporteVencimiento3.Value) +
 chr(177) + cstr(Fields!OutputNo.Value) +
-chr(177) + Cstr("") + Chr(177) +
+chr(177) + Cstr(Fields!SalesInvoiceHeaderPaymentTermsCode.Value) + Chr(177) +
 Cstr(Fields!SalesInvoiceHeaderPaymentMethodCode.Value) + Chr(177) +
 Cstr(Last(Fields!TotalSubTotal.Value)) + Chr(177) +
 Cstr(Last(Fields!TotalInvoiceDiscountAmount.Value)) + Chr(177) +
@@ -6184,7 +6184,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Code.GetData(15,2)</Value>
+                              <Value>=Code.GetData(15,2) &amp; " " &amp; Code.GetData(28,2)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -7527,6 +7527,9 @@ kJQgCgAAQFKCKAAAAEkJogAAACQliAIAAJCUIAoAAEBSgigAAABJCaIAAAAkJYgCAACQlCAKAABAUoIo
         </Field>
         <Field Name="SalesInvoiceHeaderPaymentMethodCode">
           <DataField>SalesInvoiceHeaderPaymentMethodCode</DataField>
+        </Field>
+        <Field Name="SalesInvoiceHeaderPaymentTermsCode">
+          <DataField>SalesInvoiceHeaderPaymentTermsCode</DataField>
         </Field>
         <Field Name="SalesInvoiceHeaderBillToCustomerNo">
           <DataField>SalesInvoiceHeaderBillToCustomerNo</DataField>

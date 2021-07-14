@@ -99,6 +99,10 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
+            field("ABC Cliente"; "ABC Cliente")
+            {
+                ApplicationArea = all;
+            }
         }
         addafter("VAT Registration No.")
         {

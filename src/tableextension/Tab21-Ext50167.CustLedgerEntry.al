@@ -53,6 +53,14 @@ tableextension 50167 "CustLedgerEntry" extends "Cust. Ledger Entry" //21
             Caption = 'Fecha Vto. Aseguradora', comment = 'ESP="Fecha Vto. Aseguradora"';
             Editable = false;
         }
+        field(50054; "ABC Cliente"; option)
+        {
+            OptionMembers = " ","3A","A","B","C","Z";
+            OptionCaption = ' ,3A,A,B,C,Z', Comment = 'ESP=" ,3A,A,B,C,Z"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer."ABC Cliente" where("No." = field("Customer No.")));
+        }
     }
 
 }

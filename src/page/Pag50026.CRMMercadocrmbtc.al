@@ -1,8 +1,8 @@
-page 50026 "CRM Cliente_crm_btc"
+page 50026 "CRM Mercado_crm_btc"
 {
     PageType = List;
-    SourceTable = "CRM Account_crm_btc"; // "CRM FormasPago_btc";
-    Editable = false;
+    SourceTable = "CRM Mercados_crm_btc"; // "CRM FormasPago_btc";
+    //Editable = false;
     ApplicationArea = All;
     UsageCategory = Lists;
 
@@ -33,17 +33,13 @@ page 50026 "CRM Cliente_crm_btc"
                 field(OverriddenCreatedOn; OverriddenCreatedOn) { ApplicationArea = All; }
                 field(TimeZoneRuleVersionNumber; TimeZoneRuleVersionNumber) { ApplicationArea = All; }
                 field(UTCConversionTimeZoneCode; UTCConversionTimeZoneCode) { ApplicationArea = All; }
-                field(AccountId; AccountId) { ApplicationArea = All; }
-                field(AccountNumber; AccountNumber) { ApplicationArea = All; }
-                field(Name; Name) { ApplicationArea = All; }
-
-                field(zum_Formadepagosolicitada; zum_Formadepagosolicitada) { ApplicationArea = All; }
-                field(bit_centraldecompras; bit_centraldecompras) { ApplicationArea = All; }
-                field(bit_grupodedescuento; bit_grupodedescuento) { ApplicationArea = All; }
-                field(bit_subcliente; bit_subcliente) { ApplicationArea = All; }
-                field(bit_idioma; bit_idioma) { ApplicationArea = All; }
+                field(zum_MercadoId; zum_MercadoId) { ApplicationArea = All; }
+                field(zum_Nombre; zum_Nombre) { ApplicationArea = All; }
+                field(zum_Descripcion; zum_Descripcion) { ApplicationArea = All; }
             }
         }
+
+
     }
 
     actions
@@ -59,7 +55,7 @@ page 50026 "CRM Cliente_crm_btc"
                 ToolTip = 'Generate the entity from the coupled Common Data Service data.', comment = 'ESP="Generar la entidad desde el dato emparejado del Common Data Service"';
                 trigger OnAction()
                 var
-                    CDS: Record "CRM FormasPago_crm_btc"; // "CRM FormasPago_btc";
+                    CDS: Record "CRM Mercados_crm_btc"; // "CRM FormasPago_btc";
                     CRMIntegrationManagement: Codeunit "CRM Integration Management";
                 begin
                     CurrPage.SetSelectionFilter(CDS);
@@ -70,14 +66,14 @@ page 50026 "CRM Cliente_crm_btc"
     }
 
     var
-        CurrentlyCoupledCDS: Record "CRM Delegado_crm_btc"; // "CRM Delegado_btc";
+        CurrentlyCoupledCDS: Record "CRM Mercados_crm_btc"; // "CRM Delegado_btc";
 
     trigger OnInit()
     begin
         Codeunit.Run(Codeunit::"CRM Integration Management");
     end;
 
-    procedure SetCurrentlyCoupledCDSWorker(CDS: Record "CRM Delegado_crm_btc") // "CRM Delegado_btc")
+    procedure SetCurrentlyCoupledCDSWorker(CDS: Record "CRM Mercados_crm_btc") // "CRM Delegado_btc")
     begin
         CurrentlyCoupledCDS := CDS;
     end;

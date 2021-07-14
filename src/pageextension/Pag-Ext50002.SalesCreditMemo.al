@@ -4,6 +4,11 @@ pageextension 50002 "SalesCreditMemo" extends "Sales Credit Memo"
     {
         addafter("Work Description")
         {
+            field(CurrencyChange; CurrencyChange)
+            {
+                ApplicationArea = all;
+                ToolTip = 'Indicar el cambio para la impresión de los documentos.', comment = 'ESP="Indicar el cambio para la impresión de los documentos."';
+            }
             field(CentralCompras_btc; CentralCompras_btc)
             {
                 ApplicationArea = all;

@@ -382,6 +382,8 @@ report 50116 "FacturaNacionalUK"
             {
 
             }
+            column(CurrencyChange; CurrencyChange) { }
+
             //SOTHIS EBR 010920 id 159231
             column(logo; CompanyInfo1.LogoCertificacion)
             { }

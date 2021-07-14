@@ -15,10 +15,18 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
             field(FacturacionElec_btc; FacturacionElec_btc) { }
             field(AreaManager_btc; AreaManager_btc) { }
+            field("ABC Cliente"; "ABC Cliente") { }
 
             field(NumAbono; NumAbono)
             {
                 ApplicationArea = All;
+            }
+        }
+        addafter("Amount Including VAT")
+        {
+            field("Importe IVA Incl. (DL)"; ImpTotalDL)
+            {
+                ApplicationArea = all;
             }
         }
         addlast(Control1)
@@ -39,6 +47,27 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             {
                 ApplicationArea = all;
             }
+            field("Ship-to Name"; "Ship-to Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Ship-to Address"; "Ship-to Address")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Ship-to City"; "Ship-to City")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Ship-to County"; "Ship-to County")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+
         }
     }
 
@@ -46,15 +75,15 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
     {
         addfirst(Reporting)
         {
-            action("Impimir Fact.Export")
+            action("Imprimir Fact.Export")
             {
                 ApplicationArea = All;
                 Promoted = true;
                 PromotedCategory = Report;
                 PromotedIsBig = true;
                 Image = Print;
-                Caption = 'Impimir Fact.Export', comment = 'ESP="Impimir Fact.Export"';
-                ToolTip = 'Impimir Fact.Export',
+                Caption = 'Imprimir Fact.Export', comment = 'ESP="Imprimir Fact.Export"';
+                ToolTip = 'Imprimir Fact.Export',
                     comment = 'ESP="Impimir Fact.Export"';
 
                 trigger OnAction()
@@ -161,6 +190,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
     trigger OnAfterGetRecord()
     var
         recCustomer: Record Customer;
+        CustLedgerEntry: Record "Cust. Ledger Entry";
     begin
         credMaxAsegAut := '';
 
@@ -178,12 +208,22 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                         StyleExp := 'Ambiguous'
                     end;
 
+        ImpTotalDL := 0;
+        CustLedgerEntry.SetRange("Document Type", CustLedgerEntry."Document Type"::Invoice);
+        CustLedgerEntry.SetRange("Document No.", "No.");
+        CustLedgerEntry.SetRange("Customer No.", "Sell-to Customer No.");
+        if CustLedgerEntry.FindSet() then begin
+            CustLedgerEntry.CalcFields("Amount (LCY)");
+            ImpTotalDL := CustLedgerEntry."Amount (LCY)";
+        end;
+
     end;
 
     var
         credMaxAsegAut: code[20];
         StyleExp: text;
         ShowVtoAseguradora: Boolean;
+        ImpTotalDL: Decimal;
         Text000: Label '¿Desea marcar %1 facturas como enviadas a Aseguradora?', comment = 'ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"';
 
     local procedure MarkComunicate()

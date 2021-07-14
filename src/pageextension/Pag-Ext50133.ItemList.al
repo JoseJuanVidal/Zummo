@@ -15,6 +15,10 @@ pageextension 50133 "ItemList" extends "Item List"
                 ToolTip = 'Qty. en Stockkeeping Unit', Comment = 'ESP="Cantidad en contenido de almacén"';
                 Visible = false;
             }
+            field("Safety Stock Quantity"; "Safety Stock Quantity")
+            {
+                ApplicationArea = all;
+            }
             // Validar productos
             field(ValidadoContabiliad_btc; ValidadoContabiliad_btc)
             {

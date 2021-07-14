@@ -34,6 +34,12 @@ page 50007 "Posted Sales Invoice Change"
                     tableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("ClienteReporting"), TipoRegistro = const(Tabla));
                     Caption = 'Cliente Reporting', comment = 'ESP="Cliente Reporting"';
                 }
+                field(Currencychange; Currencychange)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Cambio Divisa', comment = 'ESP="Cambio Divisa"';
+
+                }
             }
         }
     }
@@ -60,14 +66,16 @@ page 50007 "Posted Sales Invoice Change"
         WorkDescription: Text;
         AreaManager_btc: code[20];
         ClienteReporting_btc: Code[20];
+        Currencychange: Decimal;
         TempBlob: Record TempBlob temporary;
 
-    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20])
+    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; var CurChange: Decimal)
     begin
         ExtDocNo := ExternalDocumentNo;
         WorkDesc := WorkDescription;
         AreaManager := AreaManager_btc;
         ClienteReporting := ClienteReporting_btc;
+        Currencychange := CurChange;
     end;
 
     procedure SetDatos(SalesInvoiceHeader: Record "Sales Invoice Header")
@@ -85,6 +93,7 @@ page 50007 "Posted Sales Invoice Change"
         TempBlob.Blob := SalesInvoiceHeader."Work Description";
         WorkDescription := TempBlob.ReadAsText(CR, TEXTENCODING::UTF8);
         AreaManager_btc := SalesInvoiceHeader.AreaManager_btc;
+        Currencychange := SalesInvoiceHeader.CurrencyChange;
     end;
 
 }

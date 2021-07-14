@@ -6,8 +6,14 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
     {
         addafter("Corrected Invoice No.")
         {
+            field(CurrencyChange; CurrencyChange)
+            {
+                ApplicationArea = all;
+                ToolTip = 'Indicar el cambio para la impresión de los documentos.', comment = 'ESP="Indicar el cambio para la impresión de los documentos."';
+            }
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
             field(FacturacionElec_btc; FacturacionElec_btc) { }
+            field("ABC Cliente"; "ABC Cliente") { }
         }
 
     }
@@ -51,8 +57,8 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
                 PromotedCategory = Report;
                 PromotedIsBig = true;
                 Image = Print;
-                Caption = 'Imprimir Fact. UK', Comment = 'ESP="Imprimir Fact. UK"';
-                ToolTip = 'Imprimir Fact. UK', Comment = 'ESP="Imprimir Fact. UK"';
+                Caption = 'Imprimir Abono UK', Comment = 'ESP="Imprimir Abono UK"';
+                ToolTip = 'Imprimir Abono UK', Comment = 'ESP="Imprimir Abono UK"';
 
                 trigger OnAction()
                 var

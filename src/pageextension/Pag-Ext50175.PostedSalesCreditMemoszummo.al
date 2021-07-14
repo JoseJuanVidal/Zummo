@@ -10,6 +10,7 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
             {
                 ApplicationArea = All;
             }
+            field("ABC Cliente"; "ABC Cliente") { }
         }
     }
     actions
@@ -52,8 +53,8 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
                 PromotedCategory = Report;
                 PromotedIsBig = true;
                 Image = Print;
-                Caption = 'Imprimir Fact. UK', Comment = 'ESP="Imprimir Fact. UK"';
-                ToolTip = 'Imprimir Fact. UK', Comment = 'ESP="Imprimir Fact. UK"';
+                Caption = 'Imprimir Abono UK', Comment = 'ESP="Imprimir Abono UK"';
+                ToolTip = 'Imprimir Abono UK', Comment = 'ESP="Imprimir Abono UK"';
 
                 trigger OnAction()
                 var

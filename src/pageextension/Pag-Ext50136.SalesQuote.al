@@ -8,12 +8,14 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
             {
                 ApplicationArea = All;
             }
-
             field(NumDias_btc; NumDias_btc)
             {
                 ApplicationArea = All;
             }
-
+            field(ofertaprobabilidad; ofertaprobabilidad)
+            {
+                ApplicationArea = all;
+            }
         }
         addbefore("Work Description")
         {
@@ -121,7 +123,7 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
             action(Descuentos)
             {
                 ApplicationArea = All;
-                 trigger OnAction()
+                trigger OnAction()
                 var
                     SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
                 begin
