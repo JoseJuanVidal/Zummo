@@ -6820,7 +6820,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                       <TextRuns>
                         <TextRun>
                           <Value>=(First(Fields!ImporteSubTotal.Value, "DataSet_Result") - First(Fields!Portes.Value, "DataSet_Result") + First(Fields!Desfactura.Value, "DataSet_Result") + First(Fields!ImportePP.Value, "DataSet_Result"))
- * First(Fields!CurrencyChange.Value, "DataSet_Result")</Value>
+ / First(Fields!CurrencyChange.Value, "DataSet_Result")</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
@@ -6870,7 +6870,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=Code.BlankZero(First(Fields!Desfactura.Value, "DataSet_Result") * First(Fields!CurrencyChange.Value, "DataSet_Result"))</Value>
+                          <Value>=Code.BlankZero(First(Fields!Desfactura.Value, "DataSet_Result") / First(Fields!CurrencyChange.Value, "DataSet_Result"))</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
@@ -6920,7 +6920,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=Code.BlankZero(First(Fields!ImportePP.Value, "DataSet_Result") * First(Fields!CurrencyChange.Value, "DataSet_Result"))</Value>
+                          <Value>=Code.BlankZero(First(Fields!ImportePP.Value, "DataSet_Result") / First(Fields!CurrencyChange.Value, "DataSet_Result"))</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
@@ -6970,7 +6970,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=Code.BlankZero(First(Fields!Portes.Value, "DataSet_Result") * First(Fields!CurrencyChange.Value, "DataSet_Result"))</Value>
+                          <Value>=Code.BlankZero(First(Fields!Portes.Value, "DataSet_Result") / First(Fields!CurrencyChange.Value, "DataSet_Result"))</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
@@ -7020,7 +7020,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=First(Fields!bas.Value, "DataSet_Result") * First(Fields!CurrencyChange.Value, "DataSet_Result")</Value>
+                          <Value>=First(Fields!bas.Value, "DataSet_Result") / First(Fields!CurrencyChange.Value, "DataSet_Result")</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
@@ -7070,7 +7070,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=Code.BlankZero(First(Fields!Importeiva2.Value, "DataSet_Result") * First(Fields!CurrencyChange.Value, "DataSet_Result"))</Value>
+                          <Value>=Code.BlankZero(First(Fields!Importeiva2.Value, "DataSet_Result") / First(Fields!CurrencyChange.Value, "DataSet_Result"))</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
@@ -7123,7 +7123,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                           <Value>=Code.BlankZero((Code.DevolverDec(Code.GetData(48,2))+
 Code.DevolverDec(Code.GetData(49,2)) +
 Code.DevolverDec(Code.GetData(50,2)))
-* First(Fields!CurrencyChange.Value, "DataSet_Result"))</Value>
+/ First(Fields!CurrencyChange.Value, "DataSet_Result"))</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
@@ -7173,7 +7173,7 @@ Code.DevolverDec(Code.GetData(50,2)))
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=First(Fields!Importetotal.Value, "DataSet_Result") * First(Fields!CurrencyChange.Value, "DataSet_Result")</Value>
+                          <Value>=First(Fields!Importetotal.Value, "DataSet_Result") / First(Fields!CurrencyChange.Value, "DataSet_Result")</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
