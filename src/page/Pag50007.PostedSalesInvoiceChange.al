@@ -38,7 +38,7 @@ page 50007 "Posted Sales Invoice Change"
                 {
                     ApplicationArea = all;
                     Caption = 'Cambio Divisa', comment = 'ESP="Cambio Divisa"';
-
+                    DecimalPlaces = 0 : 4;
                 }
             }
         }
@@ -75,7 +75,7 @@ page 50007 "Posted Sales Invoice Change"
         WorkDesc := WorkDescription;
         AreaManager := AreaManager_btc;
         ClienteReporting := ClienteReporting_btc;
-        Currencychange := CurChange;
+        CurChange := Currencychange;
     end;
 
     procedure SetDatos(SalesInvoiceHeader: Record "Sales Invoice Header")

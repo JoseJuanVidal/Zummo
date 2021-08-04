@@ -153,6 +153,7 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
         {
             DataClassification = CustomerContent;
             Caption = 'Cambio divisa', comment = 'ESP="Cambio divisa"';
+            DecimalPlaces = 0 : 4;
         }
         field(50100; NoFacturar_btc; Boolean)
         {

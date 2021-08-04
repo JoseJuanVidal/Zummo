@@ -1136,12 +1136,22 @@ codeunit 50111 "Funciones"
                     ExcelBuffer.SetRange("Column No.", 8);  // Cargo
                     if ExcelBuffer.FindSet() then
                         Employee."Job Title" := CopyStr(ExcelBuffer."Cell Value as Text", 1, 30);
+                    ExcelBuffer.SetRange("Column No.", 8);  // Cargo
+                    if ExcelBuffer.FindSet() then
+                        Employee."Job Title" := CopyStr(ExcelBuffer."Cell Value as Text", 1, 30);
+                    ExcelBuffer.SetRange("Column No.", 9);  // Cargo
+                    if ExcelBuffer.FindSet() then
+                        Employee."Phone No." := CopyStr(ExcelBuffer."Cell Value as Text", 1, 30);
+                    ExcelBuffer.SetRange("Column No.", 10);  // Cargo
+                    if ExcelBuffer.FindSet() then
+                        Employee."E-Mail" := CopyStr(ExcelBuffer."Cell Value as Text", 1, 80);
+
                     ExcelBuffer.SetRange("Column No.", 11);  // SituacionActual
                     if ExcelBuffer.FindSet() then;
                     case ExcelBuffer."Cell Value as Text" of
                         'Alta':
                             begin
-
+                                Employee.Status := Employee.Status::Active;
                             end;
                         else begin
                                 Employee.Status := Employee.Status::Terminated;

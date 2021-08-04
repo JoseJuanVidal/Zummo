@@ -38,5 +38,9 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
             CalcFormula = lookup("Service Item"."Warranty Ending Date (Parts)" where("No." = field("Service Item No.")));
 
         }
+        field(50202; "Fallo localizado"; text[80])
+        {
+            Caption = 'Fallo localizado', comment = 'ESP="Fallo localizado"';
+        }
     }
 }

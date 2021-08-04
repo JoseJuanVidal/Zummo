@@ -21583,6 +21583,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Prod. con fallo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field CodProdFallo_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 2536320456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Fallo localizado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fallo localizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Fallo localizado - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 1479616465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Fecha final Garantia</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha final Garantía"</note>
