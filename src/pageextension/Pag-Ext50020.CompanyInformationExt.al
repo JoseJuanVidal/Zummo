@@ -12,7 +12,6 @@ pageextension 50020 "CompanyInformationExt" extends "Company Information"
                 {
                     ApplicationArea = All;
                     Caption = 'Certification Logo', comment = 'ESP="Logo Certificacion ISO"';
-
                 }
             }
         }
@@ -26,7 +25,18 @@ pageextension 50020 "CompanyInformationExt" extends "Company Information"
             {
                 ApplicationArea = all;
             }
+            field("Initial Work Hours"; "Initial Work Hour")
+            {
+                ApplicationArea = all;
+            }
+            field("Final Work Hours"; "Final Work Hour")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 
+    var
+        ConfigDays: Boolean;
+        ConfigHours: Time;
 }

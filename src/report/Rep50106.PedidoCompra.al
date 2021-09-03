@@ -12,7 +12,7 @@ report 50106 "Pedido Compra"
     {
         dataitem("Purchase Header"; "Purchase Header")
         {
-            DataItemTableView = SORTING ("Document Type", "No.") WHERE ("Document Type" = CONST (Order));
+            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
             RequestFilterHeading = 'Standard Purchase - Order';
             column(PortesLbl; PortesLbl)
@@ -526,10 +526,18 @@ report 50106 "Pedido Compra"
             column(logo; CompanyInfo.LogoCertificacion)
             { }
             //fin SOTHIS EBR 040920 id 159231
+            //JAA -  Ticket 261019 Añadir horario inicio y fin en el report
+            column(CompanyInfoName; CompanyInfo.Name)
+            {
+            }
+            column(WorkHours; WorkHours)
+            {
+            }
+            column(DireccionEntregaLbl; DireccionEntregaLbl) { }
             dataitem("Purchase Line"; "Purchase Line")
             {
-                DataItemLink = "Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No.");
-                DataItemTableView = SORTING ("Document Type", "Document No.", "Line No.");
+                DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
+                DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
                 column(AmountCaptionLbl; AmountCaptionLbl)
                 {
                 }
@@ -666,7 +674,7 @@ report 50106 "Pedido Compra"
             }
             dataitem(Totals; "Integer")
             {
-                DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
 
                 trigger OnAfterGetRecord()
                 var
@@ -678,7 +686,7 @@ report 50106 "Pedido Compra"
             }
             dataitem(VATCounter; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 column(VATAmtLineVATBase; TempVATAmountLine."VAT Base")
                 {
                     AutoFormatExpression = "Purchase Header"."Currency Code";
@@ -726,7 +734,7 @@ report 50106 "Pedido Compra"
             }
             dataitem(VATCounterLCY; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 column(VALExchRate; VALExchRate)
                 {
                 }
@@ -774,7 +782,7 @@ report 50106 "Pedido Compra"
             }
             dataitem(PrepmtLoop; "Integer")
             {
-                DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                 column(PrepmtLineAmount; PrepmtLineAmount)
                 {
                     AutoFormatExpression = "Purchase Header"."Currency Code";
@@ -842,7 +850,7 @@ report 50106 "Pedido Compra"
             }
             dataitem(PrepmtVATCounter; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 column(PrepmtVATAmtLineVATAmt; TempPrepmtVATAmountLine."VAT Amount")
                 {
                     AutoFormatExpression = "Purchase Header"."Currency Code";
@@ -881,7 +889,7 @@ report 50106 "Pedido Compra"
             }
             dataitem(LetterText; "Integer")
             {
-                DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                 column(GreetingText; GreetingLbl)
                 {
                 }
@@ -943,6 +951,9 @@ report 50106 "Pedido Compra"
                 PrepmtVATAmount := TempPrepmtVATAmountLine.GetTotalVATAmount;
                 PrepmtVATBaseAmount := TempPrepmtVATAmountLine.GetTotalVATBase;
                 PrepmtTotalAmountInclVAT := TempPrepmtVATAmountLine.GetTotalAmountInclVAT;
+
+                //JAA- ticket #261019 Concatenamos los horarios para mostrarlos en el report
+                WorkHours := 'Horario: ' + Format(CompanyInfo."Initial Work Hour") + ' - ' + Format(CompanyInfo."Final Work Hour");
             end;
         }
     }
@@ -1171,6 +1182,8 @@ report 50106 "Pedido Compra"
         ImporteBrutoLbl: Label 'Amount ', Comment = 'ESP="Importe"';
         Vendor: Record Vendor;
         PortesLbl: Label 'Freight', Comment = 'ESP="Portes"';
+        DireccionEntregaLbl: Label 'ADDRESS DELIVERY IN: ', Comment = 'ESP="DIRECCIÓN ENTREGA EN: "';
+        WorkHours: Text;
 
     [Scope('Personalization')]
     procedure InitializeRequest(LogInteractionParam: Boolean)
