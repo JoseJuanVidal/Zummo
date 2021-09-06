@@ -24,6 +24,10 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         }
         addafter("Amount Including VAT")
         {
+            field("Importe (DL)"; BaseImpDL)
+            {
+                ApplicationArea = all;
+            }
             field("Importe IVA Incl. (DL)"; ImpTotalDL)
             {
                 ApplicationArea = all;
@@ -217,13 +221,25 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             ImpTotalDL := CustLedgerEntry."Amount (LCY)";
         end;
 
+        BaseImpDL := 0;
+        SalesInvoiceLine.Reset();
+        SalesInvoiceLine.SetRange("Document No.", Rec."No.");
+        if SalesInvoiceLine.FindSet() then begin
+            SalesInvoiceLine.CalcSums(Amount);
+            if rec."Currency Factor" = 0 then
+                BaseImpDL := SalesInvoiceLine.Amount
+            else
+                BaseImpDL := SalesInvoiceLine.Amount / rec."Currency Factor";
+        end;
     end;
 
     var
+        SalesInvoiceLine: Record "Sales Invoice Line";
         credMaxAsegAut: code[20];
         StyleExp: text;
         ShowVtoAseguradora: Boolean;
         ImpTotalDL: Decimal;
+        BaseImpDL: Decimal;
         Text000: Label '¿Desea marcar %1 facturas como enviadas a Aseguradora?', comment = 'ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"';
 
     local procedure MarkComunicate()

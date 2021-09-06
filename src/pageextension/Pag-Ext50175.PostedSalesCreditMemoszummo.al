@@ -12,6 +12,17 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
             }
             field("ABC Cliente"; "ABC Cliente") { }
         }
+        addafter("Amount Including VAT")
+        {
+            field("Importe (DL)"; BaseImpDL)
+            {
+                ApplicationArea = all;
+            }
+            field("Importe IVA Incl. (DL)"; -ImpTotalDL)
+            {
+                ApplicationArea = all;
+            }
+        }
     }
     actions
     {
@@ -78,5 +89,32 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
         }
     }
 
+    trigger OnAfterGetRecord()
+    begin
+        ImpTotalDL := 0;
+        CustLedgerEntry.SetRange("Document Type", CustLedgerEntry."Document Type"::"Credit Memo");
+        CustLedgerEntry.SetRange("Document No.", "No.");
+        CustLedgerEntry.SetRange("Customer No.", "Sell-to Customer No.");
+        if CustLedgerEntry.FindSet() then begin
+            CustLedgerEntry.CalcFields("Amount (LCY)");
+            ImpTotalDL := CustLedgerEntry."Amount (LCY)";
+        end;
 
+        BaseImpDL := 0;
+        SalesCrMemoLine.Reset();
+        SalesCrMemoLine.SetRange("Document No.", Rec."No.");
+        if SalesCrMemoLine.FindSet() then begin
+            SalesCrMemoLine.CalcSums(Amount);
+            if rec."Currency Factor" = 0 then
+                BaseImpDL := SalesCrMemoLine.Amount
+            else
+                BaseImpDL := SalesCrMemoLine.Amount / rec."Currency Factor";
+        end;
+    end;
+
+    var
+        SalesCrMemoLine: Record "Sales Cr.Memo Line";
+        CustLedgerEntry: Record "Cust. Ledger Entry";
+        ImpTotalDL: Decimal;
+        BaseImpDL: Decimal;
 }

@@ -7903,86 +7903,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Movs. Conta-Presup"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Movs Conta-Presup - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 854578501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>STH Select Days wizard</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - NamedType 3697002909" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Friday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Viernes</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - NamedType FridayLbl</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - NamedType 1384384158" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Monday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Lunes</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - NamedType MondayLbl</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - NamedType 1716921729" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Saturday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Sábado</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - NamedType SaturdayLbl</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - NamedType 541596170" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sunday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Domingo</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - NamedType SundayLbl</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - NamedType 2260869394" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Thursday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Jueves</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - NamedType ThursdayLbl</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - NamedType 1364520259" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tuesday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Martes</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - NamedType TuesdayLbl</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - NamedType 845859916" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wednesday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Miércoles</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - NamedType WednesdayLbl</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - Control 2850047899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Friday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Viernes</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - Control Friday - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - Control 3612571044 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Monday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Lunes</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - Control Monday - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - Control 3693365919 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Saturday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Sábado</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - Control Saturday - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - Control 2643887984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sunday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Domingo</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - Control Sunday - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - Control 2259593336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Thursday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Jueves</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - Control Thursday - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - Control 4237472533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tuesday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Martes</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - Control Tuesday - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - Control 2039729766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wednesday</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Miércoles</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - Control Wednesday - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 854578501 - Action 3259912055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Finish</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Terminar</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH Select Days Wizard - Action ActionFinish - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 9807146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location Stock</source>
           <note from="Developer" annotates="general" priority="2">ESP="Stock por Almacen"</note>
@@ -16044,8 +15964,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DateLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 1486877514" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DIRECCIÓN ENTREGA EN: </source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>ADDRESS DELIVERY IN: </source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIRECCIÓN ENTREGA EN: "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DireccionEntregaLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 3801332884" size-unit="char" translate="yes" xml:space="preserve">
@@ -19914,8 +19834,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension VendorLedgerEntries - Action CalcularSaldoPeriodo - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4166035261 - Control 3643848063 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1567633909">
-          <source>Código país</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Country Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código país"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension VendorLedgerEntries - Control CountryCode - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 400138034 - Action 2232329325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
@@ -20034,13 +19954,13 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInformationExt - Field EORI - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 826446478 - Field 1511127359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
-          <source>Hora final de trabajo</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Final Work Hour</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hora final de trabajo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInformationExt - Field Final Work Hour - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 826446478 - Field 2572975273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
-          <source>Hora inicial de trabajo</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Initial Work Hour</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hora inicial de trabajo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInformationExt - Field Initial Work Hour - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 826446478 - Field 323188024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
