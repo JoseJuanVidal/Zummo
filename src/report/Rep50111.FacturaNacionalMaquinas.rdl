@@ -24,7 +24,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>8.32253cm</Height>
+                  <Height>9.258cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -576,11 +576,11 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.45cm</Height>
+                                    <Height>0.46393cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="txtPedido5">
+                                          <Textbox Name="txtPedido8">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -611,7 +611,7 @@
                                       <TablixCell />
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox237">
+                                          <Textbox Name="Textbox119">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -631,7 +631,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox237</rd:DefaultName>
+                                            <rd:DefaultName>Textbox119</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -645,7 +645,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox238">
+                                          <Textbox Name="Textbox120">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -665,7 +665,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox238</rd:DefaultName>
+                                            <rd:DefaultName>Textbox120</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -676,7 +676,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox239">
+                                          <Textbox Name="Textbox121">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -696,7 +696,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox239</rd:DefaultName>
+                                            <rd:DefaultName>Textbox121</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -707,7 +707,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox240">
+                                          <Textbox Name="Textbox122">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -727,8 +727,11 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox240</rd:DefaultName>
+                                            <rd:DefaultName>Textbox122</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -738,7 +741,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox241">
+                                          <Textbox Name="Textbox123">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -758,10 +761,11 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox241</rd:DefaultName>
+                                            <rd:DefaultName>Textbox123</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
                                         </CellContents>
@@ -769,11 +773,11 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.45cm</Height>
+                                    <Height>0.41857cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="txtAlbaran4">
+                                          <Textbox Name="txtAlbaran5">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -804,7 +808,7 @@
                                       <TablixCell />
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox245">
+                                          <Textbox Name="Textbox135">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -824,7 +828,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox245</rd:DefaultName>
+                                            <rd:DefaultName>Textbox135</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -838,7 +842,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox246">
+                                          <Textbox Name="Textbox136">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -858,7 +862,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox246</rd:DefaultName>
+                                            <rd:DefaultName>Textbox136</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -869,7 +873,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox247">
+                                          <Textbox Name="Textbox137">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -889,7 +893,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox247</rd:DefaultName>
+                                            <rd:DefaultName>Textbox137</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -900,7 +904,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox248">
+                                          <Textbox Name="Textbox138">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -920,8 +924,11 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox248</rd:DefaultName>
+                                            <rd:DefaultName>Textbox138</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -931,7 +938,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox249">
+                                          <Textbox Name="Textbox140">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -951,10 +958,11 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox249</rd:DefaultName>
+                                            <rd:DefaultName>Textbox140</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
                                         </CellContents>
@@ -962,11 +970,11 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.45cm</Height>
+                                    <Height>0.38833cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="txtPedido6">
+                                          <Textbox Name="txtPedido7">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -997,7 +1005,7 @@
                                       <TablixCell />
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox266">
+                                          <Textbox Name="Textbox128">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1017,7 +1025,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox266</rd:DefaultName>
+                                            <rd:DefaultName>Textbox128</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -1031,7 +1039,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox267">
+                                          <Textbox Name="Textbox129">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1051,7 +1059,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox267</rd:DefaultName>
+                                            <rd:DefaultName>Textbox129</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -1062,7 +1070,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox4">
+                                          <Textbox Name="Textbox130">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1082,7 +1090,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox4</rd:DefaultName>
+                                            <rd:DefaultName>Textbox130</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -1093,7 +1101,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox269">
+                                          <Textbox Name="Textbox131">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1113,8 +1121,11 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox269</rd:DefaultName>
+                                            <rd:DefaultName>Textbox131</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -1124,7 +1135,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox270">
+                                          <Textbox Name="Textbox132">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1144,10 +1155,11 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox270</rd:DefaultName>
+                                            <rd:DefaultName>Textbox132</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
                                         </CellContents>
@@ -1155,11 +1167,11 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.45cm</Height>
+                                    <Height>0.47905cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="txtAlbaran2">
+                                          <Textbox Name="txtAlbaran3">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1190,7 +1202,7 @@
                                       <TablixCell />
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox259">
+                                          <Textbox Name="Textbox110">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1210,7 +1222,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox259</rd:DefaultName>
+                                            <rd:DefaultName>Textbox110</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -1224,7 +1236,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox260">
+                                          <Textbox Name="Textbox111">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1244,7 +1256,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox260</rd:DefaultName>
+                                            <rd:DefaultName>Textbox111</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -1255,7 +1267,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox261">
+                                          <Textbox Name="Textbox113">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1275,7 +1287,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox261</rd:DefaultName>
+                                            <rd:DefaultName>Textbox113</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -1286,7 +1298,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox262">
+                                          <Textbox Name="Textbox115">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1306,8 +1318,11 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox262</rd:DefaultName>
+                                            <rd:DefaultName>Textbox115</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -1317,7 +1332,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox263">
+                                          <Textbox Name="Textbox116">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1337,10 +1352,11 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox263</rd:DefaultName>
+                                            <rd:DefaultName>Textbox116</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
                                         </CellContents>
@@ -1348,11 +1364,11 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.5cm</Height>
+                                    <Height>0.47905cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="txtPedido2">
+                                          <Textbox Name="txtPedido3">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1383,7 +1399,7 @@
                                       <TablixCell />
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox252">
+                                          <Textbox Name="Textbox53">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1403,7 +1419,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox252</rd:DefaultName>
+                                            <rd:DefaultName>Textbox53</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -1417,7 +1433,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox253">
+                                          <Textbox Name="Textbox76">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1437,7 +1453,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox253</rd:DefaultName>
+                                            <rd:DefaultName>Textbox76</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -1448,7 +1464,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox254">
+                                          <Textbox Name="Textbox77">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1468,7 +1484,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox254</rd:DefaultName>
+                                            <rd:DefaultName>Textbox77</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -1479,7 +1495,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox255">
+                                          <Textbox Name="Textbox90">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1499,8 +1515,11 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox255</rd:DefaultName>
+                                            <rd:DefaultName>Textbox90</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -1510,7 +1529,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox256">
+                                          <Textbox Name="Textbox91">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1530,10 +1549,11 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox256</rd:DefaultName>
+                                            <rd:DefaultName>Textbox91</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
                                         </CellContents>
@@ -2301,15 +2321,11 @@
                                     <Visibility>
                                       <Hidden>=iif(Fields!mostrarNetos.Value = false,true, false)</Hidden>
                                     </Visibility>
-                                    <KeepWithGroup>After</KeepWithGroup>
-                                    <RepeatOnNewPage>true</RepeatOnNewPage>
                                   </TablixMember>
                                   <TablixMember>
                                     <Visibility>
                                       <Hidden>=iif(Fields!mostrarNetos.Value = true, true, false)</Hidden>
                                     </Visibility>
-                                    <KeepWithGroup>After</KeepWithGroup>
-                                    <RepeatOnNewPage>true</RepeatOnNewPage>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
@@ -2335,120 +2351,125 @@
                                             <Visibility>
                                               <Hidden>=iif((Fields!numPedido.Value="") or (Fields!facturaLidl.Value = false) or (Fields!Type_SalesInvoiceLine.Value = " "),true,false)</Hidden>
                                             </Visibility>
+                                            <KeepWithGroup>After</KeepWithGroup>
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=iif((Fields!NumAlbaran.Value="") or (Fields!facturaLidl.Value = false) or (Fields!Type_SalesInvoiceLine.Value = " "),true,false)</Hidden>
                                             </Visibility>
+                                            <KeepWithGroup>After</KeepWithGroup>
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=iif((Fields!facturaLidl.Value = false) or (Fields!numPedido.Value="") or (Fields!Type_SalesInvoiceLine.Value = " "),true,false)</Hidden>
                                             </Visibility>
+                                            <KeepWithGroup>After</KeepWithGroup>
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=iif((Fields!NumAlbaran.Value="") or (Fields!facturaLidl.Value = true) or (Fields!Type_SalesInvoiceLine.Value = " "),true,false)</Hidden>
                                             </Visibility>
+                                            <KeepWithGroup>After</KeepWithGroup>
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
                                               <Hidden>=iif((Fields!numPedido.Value="") or (Fields!facturaLidl.Value = true) or (Fields!Type_SalesInvoiceLine.Value = " "),true,false)</Hidden>
                                             </Visibility>
+                                            <KeepWithGroup>After</KeepWithGroup>
                                           </TablixMember>
-                                        </TablixMembers>
-                                      </TablixMember>
-                                      <TablixMember>
-                                        <Group Name="Table_Lines_Group1">
-                                          <GroupExpressions>
-                                            <GroupExpression>=Fields!No_SalesInvHdr.Value</GroupExpression>
-                                            <GroupExpression>=Fields!OutputNo.Value</GroupExpression>
-                                            <GroupExpression>=Fields!LineNo_SalesInvoiceLine.Value</GroupExpression>
-                                          </GroupExpressions>
-                                        </Group>
-                                        <SortExpressions>
-                                          <SortExpression>
-                                            <Value>=Fields!No_SalesInvHdr.Value</Value>
-                                          </SortExpression>
-                                          <SortExpression>
-                                            <Value>=Fields!OutputNo.Value</Value>
-                                          </SortExpression>
-                                          <SortExpression>
-                                            <Value>=Fields!LineNo_SalesInvoiceLine.Value</Value>
-                                          </SortExpression>
-                                        </SortExpressions>
-                                        <TablixMembers>
                                           <TablixMember>
+                                            <Group Name="Table_Lines_Group1">
+                                              <GroupExpressions>
+                                                <GroupExpression>=Fields!No_SalesInvHdr.Value</GroupExpression>
+                                                <GroupExpression>=Fields!OutputNo.Value</GroupExpression>
+                                                <GroupExpression>=Fields!LineNo_SalesInvoiceLine.Value</GroupExpression>
+                                              </GroupExpressions>
+                                            </Group>
+                                            <SortExpressions>
+                                              <SortExpression>
+                                                <Value>=Fields!No_SalesInvHdr.Value</Value>
+                                              </SortExpression>
+                                              <SortExpression>
+                                                <Value>=Fields!OutputNo.Value</Value>
+                                              </SortExpression>
+                                              <SortExpression>
+                                                <Value>=Fields!LineNo_SalesInvoiceLine.Value</Value>
+                                              </SortExpression>
+                                            </SortExpressions>
                                             <TablixMembers>
                                               <TablixMember>
-                                                <Visibility>
-                                                  <Hidden>=Iif((Fields!Type_SalesInvoiceLine.Value = " ") OR (Fields!EsCargo.Value = true) OR (Fields!EsEmbalaje.Value = TRUE) or (Fields!mostrarNetos.Value = true),true, false)</Hidden>
-                                                </Visibility>
-                                              </TablixMember>
-                                              <TablixMember>
-                                                <Visibility>
-                                                  <Hidden>=Iif((Fields!Type_SalesInvoiceLine.Value = " ") OR (Fields!EsCargo.Value = true) OR (Fields!EsEmbalaje.Value = TRUE) or (Fields!mostrarNetos.Value = false),true, false)</Hidden>
-                                                </Visibility>
-                                              </TablixMember>
-                                              <TablixMember>
-                                                <Visibility>
-                                                  <Hidden>=Iif(Fields!Type_SalesInvoiceLine.Value = " ", false, true)</Hidden>
-                                                </Visibility>
-                                              </TablixMember>
-                                              <TablixMember>
-                                                <Group Name="NoSerie_RecMemLotes">
-                                                  <GroupExpressions>
-                                                    <GroupExpression>=Fields!NoSerie_RecMemLotes.Value</GroupExpression>
-                                                  </GroupExpressions>
-                                                </Group>
-                                                <SortExpressions>
-                                                  <SortExpression>
-                                                    <Value>=Fields!NoSerie_RecMemLotes.Value</Value>
-                                                  </SortExpression>
-                                                </SortExpressions>
-                                                <TablixMembers>
-                                                  <TablixMember />
-                                                </TablixMembers>
-                                                <Visibility>
-                                                  <Hidden>=IIF(Fields!NoSerie_RecMemLotes.Value &lt;&gt;"",false,true)</Hidden>
-                                                </Visibility>
-                                              </TablixMember>
-                                              <TablixMember>
-                                                <Group Name="AssHeader_No_">
-                                                  <GroupExpressions>
-                                                    <GroupExpression>=Fields!AssHeader_No_.Value</GroupExpression>
-                                                    <GroupExpression>=Fields!Assembly_Item_No.Value</GroupExpression>
-                                                  </GroupExpressions>
-                                                </Group>
-                                                <SortExpressions>
-                                                  <SortExpression>
-                                                    <Value>=Fields!AssHeader_No_.Value</Value>
-                                                  </SortExpression>
-                                                </SortExpressions>
                                                 <TablixMembers>
                                                   <TablixMember>
                                                     <Visibility>
-                                                      <Hidden>=IIf(Fields!Assembly_Item_No.Value = "", true, false)</Hidden>
+                                                      <Hidden>=Iif((Fields!Type_SalesInvoiceLine.Value = " ") OR (Fields!EsCargo.Value = true) OR (Fields!EsEmbalaje.Value = TRUE) or (Fields!mostrarNetos.Value = true),true, false)</Hidden>
                                                     </Visibility>
                                                   </TablixMember>
                                                   <TablixMember>
+                                                    <Visibility>
+                                                      <Hidden>=Iif((Fields!Type_SalesInvoiceLine.Value = " ") OR (Fields!EsCargo.Value = true) OR (Fields!EsEmbalaje.Value = TRUE) or (Fields!mostrarNetos.Value = false),true, false)</Hidden>
+                                                    </Visibility>
+                                                  </TablixMember>
+                                                  <TablixMember>
+                                                    <Visibility>
+                                                      <Hidden>=Iif(Fields!Type_SalesInvoiceLine.Value = " ", false, true)</Hidden>
+                                                    </Visibility>
+                                                  </TablixMember>
+                                                  <TablixMember>
+                                                    <Group Name="NoSerie_RecMemLotes">
+                                                      <GroupExpressions>
+                                                        <GroupExpression>=Fields!NoSerie_RecMemLotes.Value</GroupExpression>
+                                                      </GroupExpressions>
+                                                    </Group>
+                                                    <SortExpressions>
+                                                      <SortExpression>
+                                                        <Value>=Fields!NoSerie_RecMemLotes.Value</Value>
+                                                      </SortExpression>
+                                                    </SortExpressions>
                                                     <TablixMembers>
-                                                      <TablixMember>
-                                                        <Group Name="Serial_No_">
-                                                          <GroupExpressions>
-                                                            <GroupExpression>=Fields!Serial_No_.Value</GroupExpression>
-                                                          </GroupExpressions>
-                                                        </Group>
-                                                        <SortExpressions>
-                                                          <SortExpression>
-                                                            <Value>=Fields!Serial_No_.Value</Value>
-                                                          </SortExpression>
-                                                        </SortExpressions>
-                                                      </TablixMember>
+                                                      <TablixMember />
                                                     </TablixMembers>
                                                     <Visibility>
-                                                      <Hidden>=iif(Fields!Serial_No_.Value = "", true, false)</Hidden>
+                                                      <Hidden>=IIF(Fields!NoSerie_RecMemLotes.Value &lt;&gt;"",false,true)</Hidden>
                                                     </Visibility>
+                                                  </TablixMember>
+                                                  <TablixMember>
+                                                    <Group Name="AssHeader_No_">
+                                                      <GroupExpressions>
+                                                        <GroupExpression>=Fields!AssHeader_No_.Value</GroupExpression>
+                                                        <GroupExpression>=Fields!Assembly_Item_No.Value</GroupExpression>
+                                                      </GroupExpressions>
+                                                    </Group>
+                                                    <SortExpressions>
+                                                      <SortExpression>
+                                                        <Value>=Fields!AssHeader_No_.Value</Value>
+                                                      </SortExpression>
+                                                    </SortExpressions>
+                                                    <TablixMembers>
+                                                      <TablixMember>
+                                                        <Visibility>
+                                                          <Hidden>=IIf(Fields!Assembly_Item_No.Value = "", true, false)</Hidden>
+                                                        </Visibility>
+                                                      </TablixMember>
+                                                      <TablixMember>
+                                                        <TablixMembers>
+                                                          <TablixMember>
+                                                            <Group Name="Serial_No_">
+                                                              <GroupExpressions>
+                                                                <GroupExpression>=Fields!Serial_No_.Value</GroupExpression>
+                                                              </GroupExpressions>
+                                                            </Group>
+                                                            <SortExpressions>
+                                                              <SortExpression>
+                                                                <Value>=Fields!Serial_No_.Value</Value>
+                                                              </SortExpression>
+                                                            </SortExpressions>
+                                                          </TablixMember>
+                                                        </TablixMembers>
+                                                        <Visibility>
+                                                          <Hidden>=iif(Fields!Serial_No_.Value = "", true, false)</Hidden>
+                                                        </Visibility>
+                                                      </TablixMember>
+                                                    </TablixMembers>
                                                   </TablixMember>
                                                 </TablixMembers>
                                               </TablixMember>
@@ -2473,7 +2494,7 @@
                                 </Filter>
                               </Filters>
                               <Top>0.07938cm</Top>
-                              <Height>6.17862cm</Height>
+                              <Height>6.10755cm</Height>
                               <Width>19.24607cm</Width>
                               <Style />
                             </Tablix>
@@ -3160,14 +3181,14 @@ cstr(Fields!txtVatEORI.Value)
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.16933cm</Top>
             <Left>0.46122cm</Left>
-            <Height>8.32253cm</Height>
+            <Height>9.258cm</Height>
             <Width>19.24607cm</Width>
             <Style>
               <FontSize>9pt</FontSize>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>8.49186cm</Height>
+        <Height>9.42733cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3179,7 +3200,7 @@ cstr(Fields!txtVatEORI.Value)
           </BackgroundImage>
         </Style>
       </Body>
-      <Width>19.75904cm</Width>
+      <Width>19.71084cm</Width>
       <Page>
         <PageHeader>
           <Height>6.23364cm</Height>
