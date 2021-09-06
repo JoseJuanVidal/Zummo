@@ -1060,6 +1060,7 @@
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox13">
+                                            <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
@@ -1080,6 +1081,9 @@
                                             </Paragraphs>
                                             <ZIndex>32</ZIndex>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -1194,6 +1198,7 @@
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox14">
+                                            <CanShrink>true</CanShrink>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
@@ -1214,12 +1219,16 @@
                                             </Paragraphs>
                                             <ZIndex>32</ZIndex>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
                                           <ColSpan>2</ColSpan>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
