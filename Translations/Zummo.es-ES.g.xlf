@@ -17071,6 +17071,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DateLbl</note>
           <target>Fecha</target>
         </trans-unit>
+        <trans-unit id="Report 2651873947 - NamedType 1486877514" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ADDRESS DELIVERY IN: </source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIRECCIÓN ENTREGA EN: "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DireccionEntregaLbl</note>
+          <target>DIRECCIÓN ENTREGA EN: </target>
+        </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 3801332884" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit Price</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precio"</note>
@@ -21182,6 +21188,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension VendorCard - Control CodMotivoBloqueo_btc - Property ToolTip</note>
           <target>Permite indicar el motivo por el cual ha sido bloqueado</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4166035261 - Control 3643848063 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1567633909">
+          <source>Country Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código país"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VendorLedgerEntries - Control CountryCode - Property Caption</note>
+          <target>Código país</target>
+        </trans-unit>
         <trans-unit id="PageExtension 400138034 - Action 2546550570 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
           <source>Matriz Productos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Matriz Productos"</note>
@@ -21313,6 +21325,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="EORI"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInformationExt - Field EORI - Property Caption</note>
           <target>EORI</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 826446478 - Field 1511127359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+          <source>Final Work Hour</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hora final de trabajo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInformationExt - Field Final Work Hour - Property Caption</note>
+          <target>Hora final de trabajo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 826446478 - Field 2572975273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+          <source>Initial Work Hour</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hora inicial de trabajo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInformationExt - Field Initial Work Hour - Property Caption</note>
+          <target>Hora inicial de trabajo</target>
         </trans-unit>
         <trans-unit id="TableExtension 826446478 - Field 323188024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
           <source>Logo Certificacion ISO</source>
@@ -23248,6 +23272,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Prod. con fallo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field CodProdFallo_btc - Property Caption</note>
           <target>Prod. con fallo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 2536320456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Fallo localizado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fallo localizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Fallo localizado - Property Caption</note>
+          <target>Fallo localizado</target>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 1479616465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Fecha final Garantia</source>
