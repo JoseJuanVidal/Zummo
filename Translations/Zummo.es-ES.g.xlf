@@ -24075,6 +24075,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field ImprimirPedVentaComentarios - Property Caption</note>
           <target>Imp. Ped. Venta mostrar comentarios</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 1573176519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Permite cambiar MMPP</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Permite cambiar MMPP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Permite cambiar MMPP - Property Caption</note>
+          <target>Permite cambiar MMPP</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2852714242 - Field 2826826118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Allows to validate items</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite validar productos"</note>

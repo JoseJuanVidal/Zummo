@@ -64,6 +64,10 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Minimum Order Quantity"; Rec."Minimum Order Quantity")
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions

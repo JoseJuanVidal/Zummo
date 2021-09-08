@@ -14,5 +14,10 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             DataClassification = CustomerContent;
             Caption = 'Imp. Ped. Venta mostrar comentarios', comment = 'ESP="Imp. Ped. Venta mostrar comentarios"';
         }
+        field(50102; "Permite cambiar MMPP"; boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Permite cambiar MMPP', comment = 'ESP="Permite cambiar MMPP"';
+        }
     }
 }
