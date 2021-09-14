@@ -169,6 +169,26 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("MotivoBloqueo"), TipoRegistro = const(Tabla));
             Caption = 'Block Reason', comment = 'ESP="Motivo Bloqueo"';
         }
+        field(50911; OfertaSales; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Oferta Sales', comment = 'ESP="Oferta Sales"';
+            Editable = false;
+        }
+        field(50912; "No contemplar planificacion"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'No contemplar planificaciòn', comment = 'ESP="No contemplar planificación"';
+
+            trigger OnValidate()
+            var
+                Salesline: Record "Sales Line";
+            begin
+                Salesline.SetRange("Document Type", Rec."Document Type");
+                Salesline.SetRange("Document No.", Rec."No.");
+                Salesline.ModifyAll("No contemplar planificacion", Rec."No contemplar planificacion");
+            end;
+        }
 
         field(5068; FechaAltaPedido; Date)
         {

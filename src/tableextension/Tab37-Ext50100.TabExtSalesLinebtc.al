@@ -192,6 +192,11 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
                 "No." = field("Document No.")
             ));
         }
+        field(50912; "No contemplar planificacion"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'No contemplar planificaciòn', comment = 'ESP="No contemplar planificación"';
+        }
     }
 }
 

@@ -142,6 +142,7 @@ codeunit 50102 "Integracion_crm_btc"
         CustNo: code[20];
     begin
         SourceRecordRef.SETTABLE(CRMquote);
+        DestinationRecordRef.SETTABLE(SalesHeader);
         SourceFieldRef := SourceRecordRef.FIELD(CRMQuote.FIELDNO(Probabilidad));
         Probabilidad := SourceFieldRef.VALUE;
         DestinationAccountFieldRef := DestinationRecordRef.Field(2);
@@ -157,6 +158,9 @@ codeunit 50102 "Integracion_crm_btc"
             CRMQuote.Probabilidad::Alta:
                 SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Alta;
         end;
+
+        SalesHeader.OfertaSales := true;
+        SalesHeader.validate("No contemplar planificacion", true);
 
         // poner los ID de cliente
         IF CRMIntegrationRecord.FindRecordIDFromID(CRMquote.CustomerId, Database::"Customer", AccountId) then begin

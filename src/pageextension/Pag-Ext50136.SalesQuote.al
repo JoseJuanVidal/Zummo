@@ -16,6 +16,14 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
             {
                 ApplicationArea = all;
             }
+            field(OfertaSales; OfertaSales)
+            {
+                ApplicationArea = all;
+            }
+            field("No contemplar planificacion"; "No contemplar planificacion")
+            {
+                ApplicationArea = all;
+            }
         }
         addbefore("Work Description")
         {

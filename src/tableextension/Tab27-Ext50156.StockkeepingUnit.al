@@ -8,7 +8,7 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             Caption = 'Cant. en ofertas de venta', comment = 'ESP="Cant. en ofertas de venta"';
             FieldClass = FlowField;
             CalcFormula = sum("Sales Line"."Outstanding Quantity" where("Document Type" = const(Quote), FechaFinValOferta_btc = field(Filter_FinOferta_Btc),
-                    "Location Code" = field("Location Code"), Type = const(Item), "No." = field("Item No.")));
+                    "Location Code" = field("Location Code"), Type = const(Item), "No." = field("Item No."), "No contemplar planificacion" = const(false)));
             TableRelation = "Sales Line";
             trigger OnLookup()
             var
@@ -21,6 +21,7 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
                 salesLine.SetRange("No.", Rec."Item No.");
                 salesLine.SetFilter(FechaFinValOferta_btc, '>=t');
                 salesLine.SetFilter("Outstanding Quantity", '<>0');
+                salesLine.SetRange("No contemplar planificacion", false);
                 PSalesLine.SetTableView(salesLine);
                 PSalesLine.Run();
             end;
