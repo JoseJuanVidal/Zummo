@@ -22320,6 +22320,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field CentralCompras_btc - Property Caption</note>
           <target>Central Compras</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 2948319293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Clasif. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasif. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field clasificacion_aseguradora - Property Caption</note>
+          <target>Clasif. Aseguradora</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 854387372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Cliente Corporativo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cliente Corporativo"</note>
@@ -22343,6 +22349,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Correo Enviado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field CorreoEnviado_btc - Property Caption</note>
           <target>Correo Enviado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 3538960907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Crédito Maximo Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crédito Maximo Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Credito Maximo Aseguradora_btc - Property Caption</note>
+          <target>Crédito Maximo Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 2915805501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Crédito Maximo Aseguradora Autorizado Por</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crédito Maximo Aseguradora Autorizado Por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Cred_ Max_ Aseg. AutorizadoPor - Property Caption</note>
+          <target>Crédito Maximo Aseguradora Autorizado Por</target>
         </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 1320162667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Cambio divisa</source>
@@ -22415,6 +22433,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="SubCliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field SubCliente_btc - Property Caption</note>
           <target>SubCliente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 719008269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Suplemento aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Suplemento aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Suplemento_aseguradora - Property Caption</note>
+          <target>Suplemento aseguradora</target>
         </trans-unit>
         <trans-unit id="TableExtension 1670910335 - Field 462513985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>Line Discount1 %</source>

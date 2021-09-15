@@ -121,6 +121,31 @@ tableextension 50134 "SalesCrMemoHeader" extends "Sales Cr.Memo Header" //114
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
             Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
         }
+        field(50050; Suplemento_aseguradora; Code[20])
+        {
+            Caption = 'Suplemento aseguradora', comment = 'ESP="Suplemento aseguradora"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(customer.Suplemento_aseguradora where("No." = field("Sell-to Customer No.")));
+        }
+        field(50051; "Credito Maximo Aseguradora_btc"; Integer)
+        {
+            Caption = 'Crédito Maximo Aseguradora', Comment = 'ESP="Crédito Maximo Aseguradora"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(customer."Credito Maximo Aseguradora_btc" where("No." = field("Sell-to Customer No.")));
+        }
+        field(50054; "Cred_ Max_ Aseg. AutorizadoPor"; Code[20])
+        {
+            Caption = 'Crédito Maximo Aseguradora Autorizado Por', Comment = 'ESP="Crédito Maximo Aseguradora Autorizado Por"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(customer."Cred_ Max_ Aseg. Autorizado Por_btc" where("No." = field("Sell-to Customer No.")));
+        }
+        field(50055; clasificacion_aseguradora; Code[20])
+        {
+            Caption = 'Clasif. Aseguradora', comment = 'ESP="Clasif. Aseguradora"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(customer.clasificacion_aseguradora where("No." = field("Sell-to Customer No.")));
+        }
+
         field(50056; "ABC Cliente"; option)
         {
             OptionMembers = " ","3A","A","B","C","Z";

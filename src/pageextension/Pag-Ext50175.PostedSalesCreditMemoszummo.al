@@ -23,6 +23,25 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
                 ApplicationArea = all;
             }
         }
+        addlast(Control1)
+        {
+            field("Cred_ Max_ Aseg. AutorizadoPor"; "Cred_ Max_ Aseg. AutorizadoPor")
+            {
+                ApplicationArea = all;
+            }
+            field(Suplemento_aseguradora; Suplemento_aseguradora)
+            {
+                ApplicationArea = all;
+            }
+            field("Credito Maximo Aseguradora_btc"; "Credito Maximo Aseguradora_btc")
+            {
+                ApplicationArea = all;
+            }
+            field(clasificacion_aseguradora; clasificacion_aseguradora)
+            {
+                ApplicationArea = all;
+            }
+        }
     }
     actions
     {
