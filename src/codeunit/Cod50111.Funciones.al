@@ -1139,10 +1139,10 @@ codeunit 50111 "Funciones"
                     ExcelBuffer.SetRange("Column No.", 8);  // Cargo
                     if ExcelBuffer.FindSet() then
                         Employee."Job Title" := CopyStr(ExcelBuffer."Cell Value as Text", 1, 30);
-                    ExcelBuffer.SetRange("Column No.", 9);  // Cargo
+                    ExcelBuffer.SetRange("Column No.", 9);  // Telf
                     if ExcelBuffer.FindSet() then
                         Employee."Phone No." := CopyStr(ExcelBuffer."Cell Value as Text", 1, 30);
-                    ExcelBuffer.SetRange("Column No.", 10);  // Cargo
+                    ExcelBuffer.SetRange("Column No.", 10);  // email
                     if ExcelBuffer.FindSet() then
                         Employee."E-Mail" := CopyStr(ExcelBuffer."Cell Value as Text", 1, 80);
 

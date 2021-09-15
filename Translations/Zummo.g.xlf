@@ -18828,6 +18828,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Selección Etiquetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseReceipt - Action Imprimir Selec Etiquetas - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 934841205 - Control 1294881399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 461434549">
+          <source>Nº Albarán proveedor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseReceiptLines - Control VendorShipmentNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3448550954 - Action 2507320066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>&amp;Email</source>
           <note from="Developer" annotates="general" priority="2">ESP="&amp;Correo electrónico"</note>

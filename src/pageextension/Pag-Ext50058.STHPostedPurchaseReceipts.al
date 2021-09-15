@@ -12,6 +12,10 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
             {
                 ApplicationArea = all;
             }
+            field("Vendor Shipment No."; "Vendor Shipment No.")
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions
