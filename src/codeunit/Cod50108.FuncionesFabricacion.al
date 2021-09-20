@@ -949,6 +949,9 @@ codeunit 50108 "FuncionesFabricacion"
         InventorySetup.Get();
         BalanceConOfertas := 0;
         BalanceSinOfertas := 0;
+        StockkeepingUnit.CalcFields(Inventory, "Qty. on Assembly Order", "Qty. on Prod. Order", "Qty. on Purch. Order",
+            "Trans. Ord. Receipt (Qty.)", "Qty. on Asm. Component", "Qty. on Component Lines", "Qty. on Job Order", "Qty. on Sales Order",
+            "Qty. on Service Order", "Trans. Ord. Shipment (Qty.)", QtyonQuotesOrder, "Cant_ componentes Oferta");
         //BalanceConOfertas := Inventory + "Qty. on Assembly Order" + "Qty. on Prod. Order" + "Qty. on Purch. Order" + "Trans. Ord. Receipt (Qty.)"
         //    - "Qty. on Asm. Component" - "Qty. on Component Lines" - "Qty. on Job Order" - "Qty. on Sales Order" - "Qty. on Service Order"
         //    - "Trans. Ord. Shipment (Qty.)" - QtyonQuotesOrder - "Cant_ componentes Oferta";
