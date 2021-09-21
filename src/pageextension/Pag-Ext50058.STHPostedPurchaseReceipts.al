@@ -56,17 +56,10 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
 
                 trigger OnAction()
                 var
-                    PurchRcptLine: Record "Purch. Rcpt. Line";
-                    lblConfirm: Label 'Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?', comment = 'ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"';
+                    Funciones: Codeunit Funciones;
+
                 begin
-                    if not Confirm(lblConfirm, false) then
-                        exit;
-                    PurchRcptLine.SetRange("Document No.", Rec."No.");
-                    if PurchRcptLine.findset() then
-                        repeat
-                            PurchRcptLine."Qty. Rcd. Not Invoiced" := 0;
-                            PurchRcptLine.Modify();
-                        Until PurchRcptLine.next() = 0;
+                    Funciones.MarcarNoFacturar(Rec);
                 end;
 
             }

@@ -2,7 +2,7 @@ codeunit 50111 "Funciones"
 {
     Permissions = tabledata "Item Ledger Entry" = rm, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
         tabledata "Sales Shipment Header" = rmid, tabledata "Sales Cr.Memo Header" = rmid, tabledata "Sales Header Archive" = rmid,
-        tabledata "Return Shipment Header" = rmid;
+        tabledata "Return Shipment Header" = rmid, tabledata "Purch. Rcpt. Header" = rmid, tabledata "Purch. Rcpt. Line" = rmid;
     TableNo = "Sales Header";
 
 
@@ -1188,5 +1188,21 @@ codeunit 50111 "Funciones"
             end;
         end;
     end;
+
+    procedure MarcarNoFacturar(PurchRcptHeader: Record "Purch. Rcpt. Header")
+    var
+        PurchRcptLine: Record "Purch. Rcpt. Line";
+        lblConfirm: Label 'Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?', comment = 'ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"';
+    begin
+        if not Confirm(lblConfirm, false) then
+            exit;
+        PurchRcptLine.SetRange("Document No.", PurchRcptHeader."No.");
+        if PurchRcptLine.findset() then
+            repeat
+                PurchRcptLine."Qty. Rcd. Not Invoiced" := 0;
+                PurchRcptLine.Modify();
+            Until PurchRcptLine.next() = 0;
+    end;
+
 
 }

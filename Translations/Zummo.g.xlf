@@ -5463,6 +5463,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Se ha procedido a la actualización de los datos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ImportExcelEmployee - NamedType lblFin</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2605877933 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method MarcarNoFacturar - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3924250185 - NamedType 899079631" size-unit="char" translate="yes" xml:space="preserve">
           <source>No documents have been found that can be settled. \</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se han encontrado documentos que puedan ser resueltos"</note>
@@ -19687,11 +19692,6 @@
           <source>Marcar no facturar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Marcar no facturar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseReceipts - Action MarcaNoFacturar - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 811884982 - Action 2896958691 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 811884982">
-          <source>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseReceipts - Action MarcaNoFacturar - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 381533085 - Control 827840431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 888136877">
           <source>Bloqueado</source>
