@@ -21748,6 +21748,36 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Intrastat JnlLine - Field Invoice No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 1901646862 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Fecha fin real</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha fin real"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Fecha fin real - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 2778902740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Fecha inicio real</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha inicio real"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Fecha inicio real - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 3263963055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Nombre Responsable</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Responsable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Nombre Responsable - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 870350816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Responsable</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Responsable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Responsable - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 3781740971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Estado tarea</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado tarea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Status Task - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 3781740971 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>No iniciada,En Curso,Completada,Bloqueada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No iniciada,En Curso,Completada,Bloqueada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Status Task - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1568375965 - Field 1971769406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3566004263">
           <source>Es Contado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Es Contado"</note>

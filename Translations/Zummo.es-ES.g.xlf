@@ -5559,6 +5559,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ImportExcelEmployee - NamedType lblFin</note>
           <target>Se ha procedido a la actualización de los datos</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2605877933 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method MarcarNoFacturar - NamedType lblConfirm</note>
+          <target>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</target>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3924250185 - NamedType 899079631" size-unit="char" translate="yes" xml:space="preserve">
           <source>No documents have been found that can be settled. \</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se han encontrado documentos que puedan ser resueltos"</note>
@@ -21034,12 +21040,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseReceipts - Action MarcaNoFacturar - Property Caption</note>
           <target>Marcar no facturar</target>
         </trans-unit>
-        <trans-unit id="PageExtension 811884982 - Action 2896958691 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 811884982">
-          <source>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseReceipts - Action MarcaNoFacturar - Method OnAction - NamedType lblConfirm</note>
-          <target>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</target>
-        </trans-unit>
         <trans-unit id="PageExtension 381533085 - Control 827840431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 888136877">
           <source>Bloqueado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
@@ -23439,6 +23439,42 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Intrastat JnlLine - Field Invoice No. - Property Caption</note>
           <target>Nº Factura</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 1901646862 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Fecha fin real</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha fin real"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Fecha fin real - Property Caption</note>
+          <target>Fecha fin real</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 2778902740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Fecha inicio real</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha inicio real"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Fecha inicio real - Property Caption</note>
+          <target>Fecha inicio real</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 3263963055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Nombre Responsable</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Responsable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Nombre Responsable - Property Caption</note>
+          <target>Nombre Responsable</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 870350816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Responsable</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Responsable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Responsable - Property Caption</note>
+          <target>Responsable</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 3781740971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Estado tarea</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado tarea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Status Task - Property Caption</note>
+          <target>Estado tarea</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 3781740971 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>No iniciada,En Curso,Completada,Bloqueada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No iniciada,En Curso,Completada,Bloqueada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Status Task - Property OptionCaption</note>
+          <target>No iniciada,En Curso,Completada,Bloqueada</target>
         </trans-unit>
         <trans-unit id="TableExtension 1568375965 - Field 1971769406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3566004263">
           <source>Es Contado</source>
