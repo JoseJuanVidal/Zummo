@@ -18818,11 +18818,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Marcar no facturar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseReceipt - Action MarcaNoFacturar - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3809947402 - Action 2896958691 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3809947402">
-          <source>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseReceipt - Action MarcaNoFacturar - Method OnAction - NamedType lblConfirm</note>
-        </trans-unit>
         <trans-unit id="PageExtension 3809947402 - Action 1765398210 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2344297010">
           <source>Imprimir etiquetas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiquetas"</note>
