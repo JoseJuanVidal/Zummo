@@ -37,6 +37,10 @@ pageextension 50005 "CustomerList" extends "Customer List"
         }
         addlast(Control1)
         {
+            field(Delegado_btc; Delegado_btc)
+            {
+                ApplicationArea = all;
+            }
             field("Cred_ Max_ Aseg. Autorizado Por_btc"; "Cred_ Max_ Aseg. Autorizado Por_btc")
             {
                 ApplicationArea = all;
