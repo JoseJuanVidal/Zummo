@@ -5492,10 +5492,10 @@
           <target>Tipo Registro</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora"</note>
+          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
-          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora</target>
+          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado</target>
         </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
@@ -7735,6 +7735,476 @@
           <note from="Developer" annotates="general" priority="2">ESP="Crear en Bussiness Central"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mercado_crm_btc - Action CreateFromCDS - Property Caption</note>
           <target>Crear en Bussiness Central</target>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CRM Quote</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 739115720 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Account field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control AccountId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 162059661 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the AccountIdName field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control AccountIdName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3931125032 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To Address ID field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_AddressId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1695608876 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To City field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_City - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3522987222 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To Address field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_Composite - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 43742556 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To Contact Name field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_ContactName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3816219705 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To Country/Region field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_Country - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2350905924 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To Fax field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_Fax - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1622057740 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To Street 1 field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_Line1 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2259754357 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To Street 2 field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_Line2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2897450974 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To Street 3 field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_Line3 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1883467004 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To Name field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2050446009 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To ZIP/Postal Code field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_PostalCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2894739417 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To State/Province field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_StateOrProvince - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2314333341 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill To Phone field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control BillTo_Telephone - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 4259566925 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Closed On field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ClosedOn - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1599246287 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Contact field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ContactId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2562566774 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the ContactIdName field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ContactIdName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2619142763 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Potential Customer field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control CustomerId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1422141763 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Potential Customer Type field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control CustomerIdType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Description field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3417937915 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Quote Discount Amount field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control DiscountAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3580397981 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Quote Discount Amount (Base) field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control DiscountAmount_Base - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2358052727 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Quote Discount (%) field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control DiscountPercentage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1293057645 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Effective From field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control EffectiveFrom - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2962506978 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Effective To field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control EffectiveTo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3504513763 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Exchange Rate field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ExchangeRate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 406033035 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Due By field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ExpiresOn - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1564179345 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Freight Amount field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control FreightAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2339531951 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Freight Amount (Base) field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control FreightAmount_Base - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2591159093 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Freight Terms field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control FreightTermsCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2723275795 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Import Sequence Number field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ImportSequenceNumber - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1907234846 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Modified By field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ModifiedBy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2510935639 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the ModifiedByName field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ModifiedByName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2247197532 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Modified On field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ModifiedOn - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 982954073 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Modified By (Delegate) field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ModifiedOnBehalfBy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1644277980 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the ModifiedOnBehalfByName field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ModifiedOnBehalfByName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2961552353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Name field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 258960840 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Opportunity field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control OpportunityId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 183279757 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the OpportunityIdName field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control OpportunityIdName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1205302601 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Record Created On field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control OverriddenCreatedOn - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3223187400 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Owner field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control OwnerId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 4168057392 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the OwnerIdType field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control OwnerIdType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2129327850 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Owning Business Unit field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control OwningBusinessUnit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2227878325 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Owning Team field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control OwningTeam - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 453295697 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Owning User field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control OwningUser - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 4230600534 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Payment Terms field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control PaymentTermsCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2012767402 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Price List field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control PriceLevelId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 574829291 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the PriceLevelIdName field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control PriceLevelIdName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 4220080791 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Pricing Error  field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control PricingErrorCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 41334883 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Probabilidad field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control Probabilidad - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3360532402 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Process field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ProcessId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1166770529 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Quote field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control QuoteId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1403147955 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Quote ID field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control QuoteNumber - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1007279378 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requested Delivery Date field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control RequestDeliveryBy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 91642292 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Revision ID field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control RevisionNumber - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2001012316 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Shipping Method field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShippingMethodCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 390656263 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Address ID field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_AddressId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3825981907 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To City field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_City - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1077175429 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Address field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_Composite - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1278189483 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Contact Name field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_ContactName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 4258986938 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Country/Region field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_Country - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1832797619 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Fax field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_Fax - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3310584527 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Freight Terms field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_FreightTermsCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2216369291 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Street 1 field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_Line1 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 4129459142 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Street 2 field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_Line2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3491762525 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Street 3 field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_Line3 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2523183427 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Name field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 245991746 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To ZIP/Postal Code field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_PostalCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3879634730 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To State/Province field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_StateOrProvince - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1353965614 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To Phone field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control ShipTo_Telephone - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1877540523 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Process Stage field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control StageId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3615681166 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Status field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control StateCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 355226323 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Status Reason field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control StatusCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1372750120 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Time Zone Rule Version Number field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TimeZoneRuleVersionNumber - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 588318770 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Amount field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1411376664 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Pre-Freight Amount field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalAmountLessFreight - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 4129600594 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Pre-Freight Amount (Base) field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalAmountLessFreight_Base - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 758718504 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Amount (Base) field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalAmount_Base - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 325267077 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Discount Amount field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalDiscountAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 719625219 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Discount Amount (Base) field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalDiscountAmount_Base - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3592942655 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Detail Amount field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalLineItemAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2270677521 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Detail Amount (Base) field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalLineItemAmount_Base - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2692254004 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Line Item Discount Amount field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalLineItemDiscountAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2477866688 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Line Item Discount Amount (Base) field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalLineItemDiscountAmount_Ba - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1548615561 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Tax field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalTax - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 186103063 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total Tax (Base) field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TotalTax_Base - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1819141602 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Currency field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TransactionCurrencyId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 1320832259 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the TransactionCurrencyIdName field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TransactionCurrencyIdName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2028118227 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Traversed Path field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control TraversedPath - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 3651674112 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the UTC Conversion Time Zone Code field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control UTCConversionTimeZoneCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 2261456899 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Version Number field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control VersionNumber - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1841483506 - Control 323083016 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship To field</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Quote - Control WillCall - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 104374409 - Action 1702811970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generate the entity from the coupled Common Data Service data.</source>
@@ -19998,12 +20468,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseReceipt - Action MarcaNoFacturar - Property Caption</note>
           <target>Marcar no facturar</target>
         </trans-unit>
-        <trans-unit id="PageExtension 3809947402 - Action 2896958691 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3809947402">
-          <source>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseReceipt - Action MarcaNoFacturar - Method OnAction - NamedType lblConfirm</note>
-          <target>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</target>
-        </trans-unit>
         <trans-unit id="PageExtension 3809947402 - Action 1765398210 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2344297010">
           <source>Imprimir etiquetas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiquetas"</note>
@@ -23338,6 +23802,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Prod. con fallo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field CodProdFallo_btc - Property Caption</note>
           <target>Prod. con fallo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 2084089689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Desc. Fallo localizado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Fallo localizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Desc. Fallo - Property Caption</note>
+          <target>Desc. Fallo localizado</target>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 2536320456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Fallo localizado</source>
