@@ -21723,6 +21723,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="PDF Guardado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field GuardadoPdf_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 2775764098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>ImporteDLReport</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field ImporteDLReport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 2189094474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>ImporteReport</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field ImporteReport - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Inside Sales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>

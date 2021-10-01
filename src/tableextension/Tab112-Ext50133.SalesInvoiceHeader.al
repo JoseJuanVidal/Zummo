@@ -220,6 +220,16 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
             DataClassification = CustomerContent;
             Caption = 'Cambio divisa', comment = 'ESP="Cambio divisa"';
         }
+
+        field(51000; ImporteReport; Decimal)
+        {
+            DataClassification = CustomerContent;
+        }
+        field(51001; ImporteDLReport; Decimal)
+        {
+            DataClassification = CustomerContent;
+        }
+
     }
 
 }

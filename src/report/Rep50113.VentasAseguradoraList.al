@@ -21,11 +21,23 @@ report 50113 "Ventas Aseguradora - List"
 
                 column(Clasificacion2; Clasificacion2) { }
                 column(Clasificacion2Number; number) { }
-
-                dataitem("Sales Invoice Header"; "Sales Invoice Header")
+                dataitem("Sales Inv Header"; "Sales Invoice Header")
                 {
                     DataItemTableView = sorting("No.", "Posting Date");
                     RequestFilterFields = "Posting Date";
+
+                    trigger OnPreDataItem()
+                    begin
+
+
+                        SetRange("No.", '');
+                    end;
+
+                }
+                dataitem(Registros; integer) // "Sales Invoice Header")
+                {
+                    DataItemTableView = sorting(number);
+                    //RequestFilterFields = "Posting Date";
                     column(Clasif2Nivel; Clasif2Nivel)
                     {
                     }
@@ -47,11 +59,11 @@ report 50113 "Ventas Aseguradora - List"
                     column(Amount; AmountDL)
                     {
                     }
-                    column(Amount_Including_VAT; "Amount Including VAT")
+                    column(Amount_Including_VAT; SalesInvoiceHeader.ImporteReport)
                     {
 
                     }
-                    column(Amount_Including_VATDL; AmountIncludingVATDL)
+                    column(Amount_Including_VATDL; SalesInvoiceHeader.ImporteDLReport)  // AmountIncludingVATDL)
                     { }
                     column(PaymentMethod; PaymentMethodTxt)
                     {
@@ -92,21 +104,25 @@ report 50113 "Ventas Aseguradora - List"
 
                     trigger OnPreDataItem()
                     begin
+
+
                         if Aseguradora = '' then
                             ERROR('Debe seleccionar una aseguradora para mostrar los datos');
 
                         case Clasif1.Number of
                             1:
                                 begin
-                                    SetRange("Cred_ Max_ Aseg. AutorizadoPor", Aseguradora);
-                                    SetFilter(clasificacion_aseguradora, '<>%1', 'REHUSADO');
+                                    SalesInvoiceHeader.SetRange("Cred_ Max_ Aseg. AutorizadoPor", Aseguradora);
+                                    SalesInvoiceHeader.SetFilter(clasificacion_aseguradora, '<>%1', 'REHUSADO');
                                 end;
                             2:
                                 begin
-                                    SetRange("Cred_ Max_ Aseg. AutorizadoPor");
-                                    SetRange(clasificacion_aseguradora);
+                                    SalesInvoiceHeader.SetRange("Cred_ Max_ Aseg. AutorizadoPor");
+                                    SalesInvoiceHeader.SetRange(clasificacion_aseguradora);
                                 end;
                         end;
+                        // filtramos el registro a tantos registros como facturas haya
+                        Registros.SetRange(Number, 1, SalesInvoiceHeader.Count);
                     end;
 
                     trigger OnAfterGetRecord()
@@ -114,20 +130,23 @@ report 50113 "Ventas Aseguradora - List"
                         recCarteraDoc: Record "Cartera Doc.";
                         recPostedCarteraDoc: Record "Posted Cartera Doc.";
                         recClosedCarteraDoc: Record "Closed Cartera Doc.";
-                        recMovsCliente: Record "Cust. Ledger Entry";
                         recMovsClienteLiquidacion: Record "Cust. Ledger Entry";
                         recCustomer: Record "Customer";
                     begin
+                        // posicionamos el temporal 
+                        if Number = 1 then
+                            SalesInvoiceHeader.FindSet()
+                        else
+                            SalesInvoiceHeader.Next();
 
-
-                        if (NOT Customer.Get("Sell-to Customer No.")) then
+                        if (NOT Customer.Get(SalesInvoiceHeader."Sell-to Customer No.")) then
                             CurrReport.Skip();
 
-                        if PaymentMethod.Get("Payment Method Code") then
+                        if PaymentMethod.Get(SalesInvoiceHeader."Payment Method Code") then
                             PaymentMethodTxt := PaymentMethod.Description;
-                        if CountryRegion.Get("Sell-to Country/Region Code") then
+                        if CountryRegion.Get(SalesInvoiceHeader."Sell-to Country/Region Code") then
                             CountryTxt := CountryRegion.Name;
-                        if PaymentTerms.Get("Payment Terms Code") then;
+                        if PaymentTerms.Get(SalesInvoiceHeader."Payment Terms Code") then;
 
                         case Clasif1.Number of
                             1:
@@ -209,17 +228,14 @@ report 50113 "Ventas Aseguradora - List"
 
                         SupplementTxt := Customer.Suplemento_aseguradora;
                         BusinessNameTxt := StrSubstNo('%1 - %2', Customer."No.", Customer.Name);
-                        DocumentDateTxt := Format("Document Date");
+                        DocumentDateTxt := Format(SalesInvoiceHeader."Document Date");
 
 
-                        DueDateTxt := Format("Due Date");
-                        DocumentNoTxt := "No.";
+                        DueDateTxt := Format(SalesInvoiceHeader."Due Date");
+                        DocumentNoTxt := SalesInvoiceHeader."No.";
 
-                        PostingDateTxt := Format("Posting Date");
+                        PostingDateTxt := Format(SalesInvoiceHeader."Posting Date");
                         TypeTxt := 'Factura';  // Format("Document Type");
-
-
-
 
 
 
@@ -228,32 +244,32 @@ report 50113 "Ventas Aseguradora - List"
                         estadoDocumentoTxt := '';
 
                         recCarteraDoc.Reset();
-                        recCarteraDoc.SetRange("Document No.", "No.");
+                        recCarteraDoc.SetRange("Document No.", SalesInvoiceHeader."No.");
                         if recCarteraDoc.FindFirst() then
                             estadoDocumentoTxt := '' //estadoDocumentoTxt := 'Remesada'
                         else begin
                             recPostedCarteraDoc.Reset();
-                            recPostedCarteraDoc.SetRange("Document No.", "No.");
+                            recPostedCarteraDoc.SetRange("Document No.", SalesInvoiceHeader."No.");
                             if recPostedCarteraDoc.FindFirst() then
                                 estadoDocumentoTxt := '' //estadoDocumentoTxt := 'Pdte. Pago'
                             else begin
                                 recClosedCarteraDoc.Reset();
-                                recClosedCarteraDoc.SetRange("Document No.", "No.");
+                                recClosedCarteraDoc.SetRange("Document No.", SalesInvoiceHeader."No.");
                                 if recClosedCarteraDoc.FindFirst() then
                                     estadoDocumentoTxt := 'Pagada'
                             end;
                         end;
-
+                        /*SalesInvoiceHeader.CalcFields(Amount);
                         // buscamos el importe DL del movimiento de cliente
-                        if "Currency Factor" <> 0 then
-                            AmountDL := Amount / "Currency Factor"
+                        if SalesInvoiceHeader."Currency Factor" <> 0 then
+                            AmountDL := SalesInvoiceHeader.Amount / SalesInvoiceHeader."Currency Factor"
                         else
-                            AmountDL := Amount;
+                            AmountDL := SalesInvoiceHeader.Amount;
                         AmountIncludingVATDL := 0;
-                        if recMovsCliente.Get("Cust. Ledger Entry No.") then begin
+                        if recMovsCliente.Get(SalesInvoiceHeader."Cust. Ledger Entry No.") then begin
                             recMovsCliente.CalcFields("Amount (LCY)");
                             AmountIncludingVATDL := recMovsCliente."Amount (LCY)";
-                        end;
+                        end;*/
                     end;
                 }
 
@@ -263,6 +279,7 @@ report 50113 "Ventas Aseguradora - List"
                         SetRange(Number, 1)
                     else
                         SetRange(Number, 1, 7);
+
                 end;
 
                 trigger OnAfterGetRecord()
@@ -285,6 +302,12 @@ report 50113 "Ventas Aseguradora - List"
                     end;
                 end;
             }
+
+            trigger OnPreDataItem()
+            begin
+                // cargamos en la variable temporal las facturas y abonos
+                ChargeInvoice_return();
+            end;
 
             trigger OnAfterGetRecord()
             begin
@@ -364,11 +387,13 @@ report 50113 "Ventas Aseguradora - List"
     var
         FormatDocument: Codeunit "Format Document";
     begin
-        GLEntryFilterTxt := FormatDocument.GetRecordFiltersWithCaptions("Sales Invoice Header");
+        GLEntryFilterTxt := FormatDocument.GetRecordFiltersWithCaptions("Sales Inv Header");
 
     end;
 
     var
+        SalesInvoiceHeader: Record "Sales Invoice Header" temporary;
+        recMovsCliente: Record "Cust. Ledger Entry";
         HistAsegurora: Record "STH Hist. Aseguradora";
         Customer: Record Customer;
         PaymentMethod: Record "Payment Method";
@@ -408,4 +433,47 @@ report 50113 "Ventas Aseguradora - List"
             exit(true);
         end;
     end;
+
+    local procedure ChargeInvoice_return()
+    var
+        SalesInv: Record "Sales Invoice Header";
+        SalesCRMemo: Record "Sales Cr.Memo Header";
+    begin
+        SalesInvoiceHeader.DeleteAll();
+        SalesInv.CopyFilters("Sales Inv Header");
+        if SalesInv.findset() then
+            repeat
+                SalesInv.CalcFields(Amount, "Amount Including VAT");
+                SalesInvoiceHeader.Init();
+                SalesInvoiceHeader.TransferFields(SalesInv);
+                SalesInvoiceHeader.ImporteReport := SalesInv."Amount Including VAT";
+                if recMovsCliente.Get(SalesInvoiceHeader."Cust. Ledger Entry No.") then begin
+                    recMovsCliente.CalcFields("Amount (LCY)");
+                    AmountIncludingVATDL := recMovsCliente."Amount (LCY)";
+                end else
+                    AmountIncludingVATDL := SalesInv."Amount Including VAT";
+                SalesInvoiceHeader.ImporteDLReport := AmountIncludingVATDL;
+                SalesInvoiceHeader.Insert();
+
+
+            Until SalesInv.next() = 0;
+        // añadimos los abonos tambien
+        SalesCRMemo.SetFilter("Posting Date", "Sales Inv Header".GetFilter("Posting Date"));
+        if SalesCRMemo.findset() then
+            repeat
+                SalesCRMemo.CalcFields(Amount, "Amount Including VAT");
+                SalesInvoiceHeader.Init();
+                SalesInvoiceHeader.TransferFields(SalesCRMemo);
+                SalesInvoiceHeader.ImporteReport := -SalesCRMemo."Amount Including VAT";
+                if recMovsCliente.Get(SalesInvoiceHeader."Cust. Ledger Entry No.") then begin
+                    recMovsCliente.CalcFields("Amount (LCY)");
+                    AmountIncludingVATDL := recMovsCliente."Amount (LCY)";
+                end else
+                    AmountIncludingVATDL := -SalesCRMemo."Amount Including VAT";
+                SalesInvoiceHeader.ImporteDLReport := AmountIncludingVATDL;
+                SalesInvoiceHeader.Insert();
+
+            Until SalesCRMemo.next() = 0;
+    end;
+
 }
