@@ -41,14 +41,21 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
         field(50202; "Fallo localizado"; text[80])
         {
             Caption = 'Fallo localizado', comment = 'ESP="Fallo localizado"';
-            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(FalloLocalizado), TipoRegistro = const(Tabla));
+            TableRelation = "STH Fallo Localizado";
         }
         field(50203; "Desc. Fallo"; text[100])
         {
             Caption = 'Desc. Fallo localizado', comment = 'ESP="Desc. Fallo localizado"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup(TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(FalloLocalizado), NumReg = field("Fallo localizado")));
+            CalcFormula = lookup("STH Fallo Localizado"."Descripción" where(FalloLocalizado = field("Fallo localizado")));
+        }
+        field(50204; "Informe Mejora"; text[100])
+        {
+            Caption = 'Informe Mejora', comment = 'ESP="Informe Mejora"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Fallo Localizado".InformeMejora where(FalloLocalizado = field("Fallo localizado")));
         }
     }
 }

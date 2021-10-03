@@ -5248,6 +5248,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quotedetail - Field zum_num_oferta - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3961029829 - Field 2615446671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Fallo Localizado - Field Descripción - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3961029829 - Field 2363326400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fallo Localizado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fallo Localizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Fallo Localizado - Field FalloLocalizado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3961029829 - Field 15974798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Informe Mejora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Informe Mejora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Fallo Localizado - Field InformeMejora - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 10975779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hist. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
@@ -22147,6 +22162,11 @@
           <source>Fecha final Garantia</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha final Garantía"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field FechaFinGarantia_sth - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 1761136486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Informe Mejora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Informe Mejora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Informe Mejora - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 1911659303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Num Ciclos</source>
