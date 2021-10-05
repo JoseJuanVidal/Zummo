@@ -441,6 +441,7 @@ report 50113 "Ventas Aseguradora - List"
     begin
         SalesInvoiceHeader.DeleteAll();
         SalesInv.CopyFilters("Sales Inv Header");
+        SalesInv.SetRange("No. Series", 'V-FAC+');
         if SalesInv.findset() then
             repeat
                 SalesInv.CalcFields(Amount, "Amount Including VAT");
@@ -459,6 +460,7 @@ report 50113 "Ventas Aseguradora - List"
             Until SalesInv.next() = 0;
         // añadimos los abonos tambien
         SalesCRMemo.SetFilter("Posting Date", "Sales Inv Header".GetFilter("Posting Date"));
+        SalesCRMemo.SetRange("No. Series", 'V-AB+');
         if SalesCRMemo.findset() then
             repeat
                 SalesCRMemo.CalcFields(Amount, "Amount Including VAT");
