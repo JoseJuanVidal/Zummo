@@ -22,6 +22,14 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
             {
                 ApplicationArea = all;
             }
+            field("Payment Method Code"; "Payment Method Code")
+            {
+                ApplicationArea = all;
+            }
+            field("Payment Terms Code"; "Payment Terms Code")
+            {
+                ApplicationArea = all;
+            }
         }
         addlast(Control1)
         {
