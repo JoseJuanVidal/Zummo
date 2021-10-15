@@ -71,7 +71,10 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 ApplicationArea = all;
                 Visible = false;
             }
-
+            field("Payment Method Code"; "Payment Method Code")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

@@ -68,6 +68,22 @@ pageextension 50133 "ItemList" extends "Item List"
             {
                 ApplicationArea = all;
             }
+            field(STHCostEstandarOLD; STHCostEstandarOLD)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(CambiadoCoste; CambiadoCoste)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(RecalcularCosteEstandar; RecalcularCosteEstandar)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+
         }
     }
     actions

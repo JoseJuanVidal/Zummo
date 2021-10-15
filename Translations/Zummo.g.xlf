@@ -20758,6 +20758,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=" ,A,B,C,D"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ABC - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2721162252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Cambiado Coste</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiado Coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CambiadoCoste - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1796535343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Cant. componentes Oferta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cant. componentes Oferta"</note>
@@ -20848,6 +20853,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cant. en ofertas de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field QtyonQuotesOrder - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3877198888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Recalcular Coste Estandar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Recalcular Coste Estandar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field RecalcularCosteEstandar - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Sales Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
@@ -20867,6 +20877,11 @@
           <source>Linea Economica</source>
           <note from="Developer" annotates="general" priority="2">ESP="Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field selLineaEconomica_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2561412467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Costes Estandar Previo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Costes Estandar Previo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHCostEstandarOLD - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 906017942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>No Contemplar Ped. Compra</source>

@@ -268,5 +268,20 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'WorksheetName', comment = 'ESP="WorksheetName"';
         }
+        field(50120; STHCostEstandarOLD; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Costes Estandar Previo', comment = 'ESP="Costes Estandar Previo"';
+        }
+        field(50121; CambiadoCoste; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Cambiado Coste', comment = 'ESP="Cambiado Coste"';
+        }
+        field(50122; RecalcularCosteEstandar; boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Recalcular Coste Estandar', comment = 'ESP="Recalcular Coste Estandar"';
+        }
     }
 }
