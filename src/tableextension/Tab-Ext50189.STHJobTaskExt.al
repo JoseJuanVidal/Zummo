@@ -37,6 +37,43 @@ tableextension 50189 "STH JobTask Ext" extends "Job Task"
             DataClassification = CustomerContent;
             Caption = 'Fecha fin real', comment = 'ESP="Fecha fin real"';
         }
+        field(50005; "Fecha inicial planificada"; date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fecha inicial planificada', comment = 'ESP="Fecha inicial planificada"';
+        }
+        field(50010; "Presupuesto Coste Horas"; decimal)
+        {
+            Caption = 'Presupuesto Coste Horas', comment = 'ESP="Presupuesto Coste Horas"';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Job Planning Line"."Total Cost (LCY)" WHERE("Job No." = FIELD("Job No."), "Job Task No." = FIELD("Job Task No."),
+                "Job Task No." = FIELD(FILTER(Totaling)), "Es Material" = const(false), "Schedule Line" = CONST(true), "Planning Date" = FIELD("Planning Date Filter")));
+            Editable = false;
+        }
+        field(50011; "Presupuesto Coste Material"; decimal)
+        {
+            Caption = 'Presupuesto Coste Material', comment = 'ESP="Presupuesto Coste Material"';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Job Planning Line"."Total Cost (LCY)" WHERE("Job No." = FIELD("Job No."), "Job Task No." = FIELD("Job Task No."),
+            "Job Task No." = FIELD(FILTER(Totaling)), "Es Material" = const(true), "Schedule Line" = CONST(true), "Planning Date" = FIELD("Planning Date Filter")));
+            Editable = false;
+        }
+        field(50012; "Real Coste Horas"; decimal)
+        {
+            Caption = 'Real Coste Horas', comment = 'ESP="Real Coste Horas"';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Job Ledger Entry"."Line Amount (LCY)" WHERE("Job No." = FIELD("Job No."), "Job Task No." = FIELD("Job Task No."),
+                "Job Task No." = FIELD(FILTER(Totaling)), "Es Material" = const(false), "Entry Type" = CONST(Usage), "Posting Date" = FIELD("Posting Date Filter")));
+            Editable = false;
+        }
+        field(50013; "Real Coste Material"; decimal)
+        {
+            Caption = 'Real Coste Material', comment = 'ESP="Real Coste Material"';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Job Ledger Entry"."Line Amount (LCY)" WHERE("Job No." = FIELD("Job No."), "Job Task No." = FIELD("Job Task No."),
+                "Job Task No." = FIELD(FILTER(Totaling)), "Es Material" = const(false), "Entry Type" = CONST(Usage), "Posting Date" = FIELD("Posting Date Filter")));
+            Editable = false;
+        }
     }
 
     var
