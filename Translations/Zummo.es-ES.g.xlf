@@ -5315,6 +5315,24 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quotedetail - Field zum_num_oferta - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3961029829 - Field 2615446671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Fallo Localizado - Field Descripción - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 3961029829 - Field 2363326400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fallo Localizado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fallo Localizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Fallo Localizado - Field FalloLocalizado - Property Caption</note>
+          <target>Fallo Localizado</target>
+        </trans-unit>
+        <trans-unit id="Table 3961029829 - Field 15974798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Informe Mejora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Informe Mejora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Fallo Localizado - Field InformeMejora - Property Caption</note>
+          <target>Informe Mejora</target>
+        </trans-unit>
         <trans-unit id="Table 10975779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hist. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
@@ -21492,6 +21510,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH ItemAvailbyLocationLines - Control Ordenacion_btc - Property Caption</note>
           <target>Ordenación</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2575235786 - Control 1243715237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4148712691">
+          <source>   Hrs.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="   Hrs."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Job Cost Factbox - Control PresupCostHrs - Property Caption</note>
+          <target>   Hrs.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2575235786 - Control 1203344980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4148712691">
+          <source>   Hrs.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="   Hrs."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Job Cost Factbox - Control RealCostHrs - Property Caption</note>
+          <target>   Hrs.</target>
+        </trans-unit>
         <trans-unit id="PageExtension 811884982 - Action 144949968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1116965951">
           <source>Calcular Importes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Calcular importes"</note>
@@ -22176,6 +22206,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ABC - Property OptionCaption</note>
           <target> ,A,B,C,D</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2721162252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Cambiado Coste</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiado Coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CambiadoCoste - Property Caption</note>
+          <target>Cambiado Coste</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1796535343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Cant. componentes Oferta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cant. componentes Oferta"</note>
@@ -22284,6 +22320,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field QtyonQuotesOrder - Property Caption</note>
           <target>Cant. en ofertas de venta</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3877198888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Recalcular Coste Estandar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Recalcular Coste Estandar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field RecalcularCosteEstandar - Property Caption</note>
+          <target>Recalcular Coste Estandar</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Sales Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
@@ -22307,6 +22349,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field selLineaEconomica_btc - Property Caption</note>
           <target>Linea Economica</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2561412467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Costes Estandar Previo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Costes Estandar Previo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHCostEstandarOLD - Property Caption</note>
+          <target>Costes Estandar Previo</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 906017942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>No Contemplar Ped. Compra</source>
@@ -22403,6 +22451,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field NombreCliente_btc - Property Caption</note>
           <target>Nombre Cliente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 53801266 - Field 831439759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 53801266">
+          <source>Es Materal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Es Material"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Job Ledger Entry - Field Es Material - Property Caption</note>
+          <target>Es Material</target>
         </trans-unit>
         <trans-unit id="TableExtension 3891454143 - Field 3233522352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Planned Calculation</source>
@@ -23338,6 +23392,16 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field GuardadoPdf_btc - Property Caption</note>
           <target>PDF Guardado</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 2775764098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>ImporteDLReport</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field ImporteDLReport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 2189094474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>ImporteReport</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field ImporteReport - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Inside Sales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
@@ -23821,6 +23885,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field FechaFinGarantia_sth - Property Caption</note>
           <target>Fecha final Garantía</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 1761136486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Informe Mejora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Informe Mejora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Informe Mejora - Property Caption</note>
+          <target>Informe Mejora</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 1911659303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Num Ciclos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Num Ciclos"</note>
@@ -23910,11 +23980,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Intrastat JnlLine - Field Invoice No. - Property Caption</note>
           <target>Nº Factura</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2749141573 - Field 831439759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1537641792">
+          <source>Es Materal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Es Material"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Job Planning line - Field Es Material - Property Caption</note>
+          <target>Es Material</target>
+        </trans-unit>
         <trans-unit id="TableExtension 629365744 - Field 1901646862 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
           <source>Fecha fin real</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha fin real"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Fecha fin real - Property Caption</note>
           <target>Fecha fin real</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 76013966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Fecha inicial planificada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha inicial planificada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Fecha inicial planificada - Property Caption</note>
+          <target>Fecha inicial planificada</target>
         </trans-unit>
         <trans-unit id="TableExtension 629365744 - Field 2778902740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
           <source>Fecha inicio real</source>
@@ -23927,6 +24009,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Responsable"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Nombre Responsable - Property Caption</note>
           <target>Nombre Responsable</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 2986351572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Presupuesto Coste Horas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Presupuesto Coste Horas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Presupuesto Coste Horas - Property Caption</note>
+          <target>Presupuesto Coste Horas</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 3486874520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Presupuesto Coste Material</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Presupuesto Coste Material"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Presupuesto Coste Material - Property Caption</note>
+          <target>Presupuesto Coste Material</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 2338547885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Real Coste Horas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Real Coste Horas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Real Coste Horas - Property Caption</note>
+          <target>Real Coste Horas</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 1525307593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Real Coste Material</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Real Coste Material"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Real Coste Material - Property Caption</note>
+          <target>Real Coste Material</target>
         </trans-unit>
         <trans-unit id="TableExtension 629365744 - Field 870350816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
           <source>Responsable</source>
@@ -23987,6 +24093,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field STH Vendor Name - Property Caption</note>
           <target>Nombre Proveedor</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3274837681 - Field 831439759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 348912950">
+          <source>Es Material</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Es Material"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Zum Resource - Field Es Material - Property Caption</note>
+          <target>Es Material</target>
         </trans-unit>
         <trans-unit id="TableExtension 2681093606 - Field 2105307182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>Inventory Qty.</source>

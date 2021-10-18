@@ -20163,6 +20163,26 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ordenación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH ItemAvailbyLocationLines - Control Ordenacion_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2575235786 - Control 1243715237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4148712691">
+          <source>   Hrs.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="   Hrs."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Job Cost Factbox - Control PresupCostHrs - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2575235786 - Control 26243899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4148712691">
+          <source>   Material</source>
+          <note from="Developer" annotates="general" priority="2">   Material</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Job Cost Factbox - Control PresupCostMaterial - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2575235786 - Control 1203344980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4148712691">
+          <source>   Hrs.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="   Hrs."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Job Cost Factbox - Control RealCostHrs - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2575235786 - Control 16459478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4148712691">
+          <source>   Material</source>
+          <note from="Developer" annotates="general" priority="2">   Material</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Job Cost Factbox - Control RealCostMaterial - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 811884982 - Action 144949968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1116965951">
           <source>Calcular Importes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Calcular importes"</note>
