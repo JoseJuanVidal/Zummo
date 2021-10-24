@@ -15,7 +15,15 @@ page 50053 "WS Proyectos"
                 {
                     ApplicationArea = all;
                 }
+                field("Job Description"; JobDesc)
+                {
+                    ApplicationArea = all;
+                }
                 field("Job Task No."; "Job Task No.")
+                {
+                    ApplicationArea = all;
+                }
+                field(Description; Description)
                 {
                     ApplicationArea = all;
                 }
@@ -76,4 +84,15 @@ page 50053 "WS Proyectos"
             }
         }
     }
+    trigger OnAfterGetRecord()
+    begin
+        if job.Get(Rec."Job No.") then
+            JobDesc := Job.Description
+        else
+            JobDesc := '';
+    end;
+
+    var
+        Job: Record Job;
+        JobDesc: Text;
 }
