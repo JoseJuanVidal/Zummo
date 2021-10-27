@@ -1031,8 +1031,7 @@ report 50111 "FacturaNacionalMaquinas"
                             {
                                 DataItemLink = "No." = field("Assembly Document No.");
                                 DataItemTableView = sorting("No.");
-                                column(AssHeader_No_;
-                                "No.")
+                                column(AssHeader_No_; "No.")
                                 {
                                 }
 
@@ -1067,8 +1066,24 @@ report 50111 "FacturaNacionalMaquinas"
 
                                         }
                                     }
+
+                                    trigger OnAfterGetRecord()
+                                    var
+                                        SalesShipmentLine: Record "Sales Shipment Line";
+                                    begin
+                                        // JJV Corregir que cuando deshacen un albaran con el pedido de ensamblado y hacen otro, pone los dos numeros de serie
+                                        SalesShipmentLine.SetRange("Document No.", "Assemble-to-Order Link"."Document No.");
+                                        SalesShipmentLine.SetRange(Type, "Assembly Line".Type);
+                                        SalesShipmentLine.SetRange("No.", "Assembly Line"."No.");
+                                        SalesShipmentLine.SetRange(Quantity, -"Assembly Line".Quantity);
+                                        if SalesShipmentLine.FindSet() then
+                                            CurrReport.Skip();
+                                    end;
+
                                 }
                             }
+
+
                             trigger OnPreDataItem()
                             var
                                 recPostAssLink: Record "Posted Assemble-to-Order Link";
@@ -1803,7 +1818,9 @@ report 50111 "FacturaNacionalMaquinas"
                 END;
                 intContador := 1;
                 REPEAT
-                    FechaVencimiento[intContador] := MovsCliente."Due Date";
+                    PaymentMethod.Get("Payment Method Code");
+                    if not PaymentMethod."Ocultar fecha vto" then
+                        FechaVencimiento[intContador] := MovsCliente."Due Date";
                     MovsCliente.CALCFIELDS("Amount (LCY)");
                     ImporteVencimiento[intContador] := MovsCliente."Amount (LCY)";
                     intContador := intContador + 1;

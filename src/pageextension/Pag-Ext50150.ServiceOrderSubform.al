@@ -38,10 +38,6 @@ pageextension 50150 "ServiceOrderSubform" extends "Service Order Subform"
             {
                 ApplicationArea = all;
             }
-            field("Desc. Fallo"; "Desc. Fallo")
-            {
-                ApplicationArea = all;
-            }
             field("Informe Mejora"; "Informe Mejora")
             {
                 ApplicationArea = all;

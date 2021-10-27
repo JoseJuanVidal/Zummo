@@ -16,7 +16,7 @@ table 50151 "STH Fallo Localizado"
             DataClassification = CustomerContent;
             Caption = 'Informe Mejora', comment = 'ESP="Informe Mejora"';
         }
-        field(3; "Descripción"; text[100])
+        field(3; "Descripción"; text[500])
         {
             DataClassification = CustomerContent;
             Caption = 'Descripción', comment = 'ESP="Descripción"';

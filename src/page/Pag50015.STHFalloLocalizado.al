@@ -1,9 +1,11 @@
 page 50015 "STH Fallo Localizado"
 {
+    Caption = 'Fallo Localizado', comment = 'ESP="Fallo Localizado"';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "STH Fallo Localizado";
+    CardPageId = "STH Fallo Localizado Card";
 
     layout
     {

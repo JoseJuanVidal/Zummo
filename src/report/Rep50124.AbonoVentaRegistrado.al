@@ -204,7 +204,7 @@ report 50124 "AbonoVentaRegistrado"
             column(ShipmentMethodDescription; ShipmentMethod.Description)
             {
             }
-            column(PaymentMethodDescription; PaymentMethod.Description)
+            column(PaymentMethodDescription; PaymentMethod.Description + ' ' + PaymentTerms.Description)
             {
             }
             column(CodDivisa; CodDivisa)
