@@ -1073,9 +1073,9 @@ report 50111 "FacturaNacionalMaquinas"
                                     begin
                                         // JJV Corregir que cuando deshacen un albaran con el pedido de ensamblado y hacen otro, pone los dos numeros de serie
                                         SalesShipmentLine.SetRange("Document No.", "Assemble-to-Order Link"."Document No.");
-                                        SalesShipmentLine.SetRange(Type, "Assembly Line".Type);
-                                        SalesShipmentLine.SetRange("No.", "Assembly Line"."No.");
-                                        SalesShipmentLine.SetRange(Quantity, -"Assembly Line".Quantity);
+                                        SalesShipmentLine.SetRange(Type, SalesShipmentLine.Type::Item);
+                                        SalesShipmentLine.SetRange("No.", "Assembly Header"."Item No.");
+                                        SalesShipmentLine.SetFilter(Quantity, '<0');
                                         if SalesShipmentLine.FindSet() then
                                             CurrReport.Skip();
                                     end;

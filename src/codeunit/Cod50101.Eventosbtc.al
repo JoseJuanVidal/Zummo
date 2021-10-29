@@ -653,6 +653,7 @@ codeunit 50101 "Eventos_btc"
     local procedure T_32_OnAfterInserEvent(var Rec: Record "Item Ledger Entry"; RunTrigger: Boolean)
     var
         recSalesShptHeader: Record "Sales Shipment Header";
+        recReturnReceipHdr: Record "Return Receipt Header";
         recTransferHeader: Record "Transfer Header";
         Funciones: Codeunit Funciones;
         codCliente: Code[50];
@@ -673,6 +674,20 @@ codeunit 50101 "Eventos_btc"
                     end;
                 end;
             end;
+        case Rec."Entry Type" of
+            Rec."Entry Type"::Sale:
+                begin
+                    case Rec."Document Type" of
+                        Rec."Document Type"::"Sales Return Receipt":
+                            begin
+                                if recReturnReceipHdr.get(Rec."Document No.") then begin
+                                    rec.CodCliente_btc := recReturnReceipHdr."Bill-to Customer No.";
+                                    rec.Modify();
+                                end;
+                            end;
+                    end
+                end;
+        end;
     end;
 
     [EventSubscriber(ObjectType::Table, database::Customer, 'OnAfterInsertEvent', '', false, false)]
