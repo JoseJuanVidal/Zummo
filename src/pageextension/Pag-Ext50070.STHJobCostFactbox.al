@@ -56,7 +56,7 @@ pageextension 50070 "STH Job Cost Factbox" extends "Job Cost Factbox"
         JobLedgerEntry.SetRange("Job No.", Rec."No.");
         JobLedgerEntry.SetRange("Es Material", false);
         JobLedgerEntry.CalcSums("Total Cost");
-        RealCostMaterial := JobLedgerEntry."Total Cost";
+        RealCostHrs := JobLedgerEntry."Total Cost";
         JobLedgerEntry.SetRange("Es Material", true);
         JobLedgerEntry.CalcSums("Total Cost");
         RealCostMaterial := JobLedgerEntry."Total Cost";

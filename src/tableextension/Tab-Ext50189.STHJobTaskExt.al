@@ -47,7 +47,7 @@ tableextension 50189 "STH JobTask Ext" extends "Job Task"
             Caption = 'Presupuesto Coste Horas', comment = 'ESP="Presupuesto Coste Horas"';
             FieldClass = FlowField;
             CalcFormula = Sum("Job Planning Line"."Total Cost (LCY)" WHERE("Job No." = FIELD("Job No."), "Job Task No." = FIELD("Job Task No."),
-                "Job Task No." = FIELD(FILTER(Totaling)), "Es Material" = const(false), "Schedule Line" = CONST(true), "Planning Date" = FIELD("Planning Date Filter")));
+                "Es Material" = const(false), "Schedule Line" = CONST(true), "Planning Date" = FIELD("Planning Date Filter")));
             Editable = false;
         }
         field(50011; "Presupuesto Coste Material"; decimal)
@@ -55,7 +55,7 @@ tableextension 50189 "STH JobTask Ext" extends "Job Task"
             Caption = 'Presupuesto Coste Material', comment = 'ESP="Presupuesto Coste Material"';
             FieldClass = FlowField;
             CalcFormula = Sum("Job Planning Line"."Total Cost (LCY)" WHERE("Job No." = FIELD("Job No."), "Job Task No." = FIELD("Job Task No."),
-            "Job Task No." = FIELD(FILTER(Totaling)), "Es Material" = const(true), "Schedule Line" = CONST(true), "Planning Date" = FIELD("Planning Date Filter")));
+            "Es Material" = const(true), "Schedule Line" = CONST(true), "Planning Date" = FIELD("Planning Date Filter")));
             Editable = false;
         }
         field(50012; "Real Coste Horas"; decimal)
@@ -63,7 +63,7 @@ tableextension 50189 "STH JobTask Ext" extends "Job Task"
             Caption = 'Real Coste Horas', comment = 'ESP="Real Coste Horas"';
             FieldClass = FlowField;
             CalcFormula = Sum("Job Ledger Entry"."Line Amount (LCY)" WHERE("Job No." = FIELD("Job No."), "Job Task No." = FIELD("Job Task No."),
-                "Job Task No." = FIELD(FILTER(Totaling)), "Es Material" = const(false), "Entry Type" = CONST(Usage), "Posting Date" = FIELD("Posting Date Filter")));
+                "Es Material" = const(false), "Entry Type" = CONST(Usage), "Posting Date" = FIELD("Posting Date Filter")));
             Editable = false;
         }
         field(50013; "Real Coste Material"; decimal)
@@ -71,7 +71,7 @@ tableextension 50189 "STH JobTask Ext" extends "Job Task"
             Caption = 'Real Coste Material', comment = 'ESP="Real Coste Material"';
             FieldClass = FlowField;
             CalcFormula = Sum("Job Ledger Entry"."Line Amount (LCY)" WHERE("Job No." = FIELD("Job No."), "Job Task No." = FIELD("Job Task No."),
-                "Job Task No." = FIELD(FILTER(Totaling)), "Es Material" = const(false), "Entry Type" = CONST(Usage), "Posting Date" = FIELD("Posting Date Filter")));
+                 "Es Material" = const(true), "Entry Type" = CONST(Usage), "Posting Date" = FIELD("Posting Date Filter")));
             Editable = false;
         }
     }
