@@ -7518,6 +7518,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Change Dim CECO - Control CECOValue - Property Caption</note>
           <target>CECO</target>
         </trans-unit>
+        <trans-unit id="Page 2736406672 - Control 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Change Dim CECO - Control Proyecto - Property Caption</note>
+          <target>Proyecto</target>
+        </trans-unit>
         <trans-unit id="Page 31964965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Clasificación pedido servicio</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -8888,6 +8894,35 @@
           <source>Selección Etiquetas</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Selección Etiquetas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3961029829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fallo Localizado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fallo Localizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado - Property Caption</note>
+          <target>Fallo Localizado</target>
+        </trans-unit>
+        <trans-unit id="Page 3740083529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fallo Localizado Card</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3740083529 - Control 2615446671 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Descripción field.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado Card - Control Descripción - Property ToolTip</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Page 3740083529 - Control 2363326400 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Fallo Localizado field.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fallo Localizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado Card - Control FalloLocalizado - Property ToolTip</note>
+          <target>Fallo Localizado</target>
+        </trans-unit>
+        <trans-unit id="Page 3740083529 - Control 15974798 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Informe Mejora field.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Informe Mejora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado Card - Control InformeMejora - Property ToolTip</note>
+          <target>Informe Mejora</target>
         </trans-unit>
         <trans-unit id="Page 10975779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hist. Aseguradora</source>
@@ -20002,10 +20037,10 @@
           <target>Cambiar Dimensiones Multiple</target>
         </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Method 1377591017 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
-          <source>¿Desea cambiar los %1 movimientos a CECO %2?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar los %1 movimientos a CECO %2?"</note>
+          <source>¿Desea cambiar los %1 movimientos a CECO %2 y Proyecto %3?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar los %1 movimientos a CECO %2 y Proyecto %3?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Method OnAction - NamedType Text000</note>
-          <target>¿Desea cambiar los %1 movimientos a CECO %2?</target>
+          <target>¿Desea cambiar los %1 movimientos a CECO %2 y Proyecto %3?</target>
         </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 1779445611 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Change the dimensions of the selected entry</source>
@@ -23867,12 +23902,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field CodProdFallo_btc - Property Caption</note>
           <target>Prod. con fallo</target>
         </trans-unit>
-        <trans-unit id="TableExtension 4165706410 - Field 2084089689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
-          <source>Desc. Fallo localizado</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Desc. Fallo localizado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Desc. Fallo - Property Caption</note>
-          <target>Desc. Fallo localizado</target>
-        </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 2536320456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Fallo localizado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fallo localizado"</note>
@@ -24057,6 +24086,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Es Contado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment MethodExt - Field Es Contado - Property Caption</note>
           <target>Es Contado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1568375965 - Field 2907672306 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3566004263">
+          <source>Ocultar fecha vto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ocultar fecha vto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment MethodExt - Field Ocultar fecha vto - Property Caption</note>
+          <target>Ocultar fecha vto</target>
         </trans-unit>
         <trans-unit id="TableExtension 1625472420 - Field 1971769406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3197070065">
           <source>Es contado</source>

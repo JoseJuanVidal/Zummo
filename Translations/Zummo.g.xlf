@@ -7113,6 +7113,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="CECO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Change Dim CECO - Control CECOValue - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2736406672 - Control 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Change Dim CECO - Control Proyecto - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 31964965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Clasificación pedido servicio</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18909,8 +18914,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Method 1377591017 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
-          <source>¿Desea cambiar los %1 movimientos a CECO %2?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar los %1 movimientos a CECO %2?"</note>
+          <source>¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Method OnAction - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 1779445611 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">

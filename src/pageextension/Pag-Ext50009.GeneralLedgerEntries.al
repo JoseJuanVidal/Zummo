@@ -84,7 +84,7 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                     intDimSetId: Integer;
                     dimGlobal1: Code[20];
                     dimGlobal2: Code[20];
-                    Text000: Label '¿Desea cambiar los %1 movimientos a CECO %2?', comment = 'ESP="¿Desea cambiar los %1 movimientos a CECO %2?"';
+                    Text000: Label '¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?', comment = 'ESP="¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?"';
                 begin
                     CurrPage.SetSelectionFilter(GLEntry);
                     if GLEntry.Count = 0 then
@@ -94,8 +94,9 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
 
                     if pageDim.RunModal() = Action::LookupOK then begin
                         dimGlobal1 := pageDim.GetCECOCOde();
-                        if Confirm(Text000, false, GLEntry.Count, dimGlobal1) then begin
-                            Funciones.ChangeDimensionCECOGLEntries(GLEntry, dimGlobal1);
+                        dimGlobal2 := pageDim.GetDim2COde();
+                        if Confirm(Text000, false, GLEntry.Count, dimGlobal1, dimGlobal2) then begin
+                            Funciones.ChangeDimensionCECOGLEntries(GLEntry, dimGlobal1, dimGlobal2);
                             Message('Proceso finalizado');
                         end;
                     end;
