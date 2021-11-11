@@ -121,7 +121,7 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
         ImpTotalDL := 0;
         CustLedgerEntry.SetRange("Document Type", CustLedgerEntry."Document Type"::"Credit Memo");
         CustLedgerEntry.SetRange("Document No.", "No.");
-        CustLedgerEntry.SetRange("Customer No.", "Sell-to Customer No.");
+        CustLedgerEntry.SetRange("Customer No.", "Bill-to Customer No.");
         if CustLedgerEntry.FindSet() then begin
             CustLedgerEntry.CalcFields("Amount (LCY)");
             ImpTotalDL := CustLedgerEntry."Amount (LCY)";

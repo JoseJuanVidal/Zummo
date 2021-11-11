@@ -157,8 +157,13 @@ report 50113 "Ventas Aseguradora - List"
                                                 CaptionAsegurado := lblAsegurado;
                                                 if Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA', 'ORGANISMOS PUBLICO', 'REHUSADO', 'CLIENTE PARTICULAR'] then
                                                     CurrReport.Skip();
-                                                if PaymentMethod."Es Contado" or PaymentTerms."Es Contado" then
+                                                //if PaymentMethod."Es Contado" or PaymentTerms."Es Contado" then
+                                                // ahora no se contempla la forma de pago
+                                                if PaymentTerms."Es Contado" then
                                                     CurrReport.Skip();
+                                                if PaymentTerms."Es NO Asegurable (Otros)" then
+                                                    CurrReport.Skip();
+
                                                 Clasif2Nivel := CountryRegion.Name;
                                                 Clasificacion2 := CountryRegion.Name;
                                             end;
@@ -177,29 +182,53 @@ report 50113 "Ventas Aseguradora - List"
                                             begin
                                                 if Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA', 'ORGANISMOS PUBLICO', 'REHUSADO', 'CLIENTE PARTICULAR'] then
                                                     CurrReport.Skip();
-                                                if not (PaymentMethod."Es Contado" or PaymentTerms."Es Contado") then
+                                                // if not (PaymentMethod."Es Contado" or PaymentTerms."Es Contado") then
+                                                // ahora no se contempla la forma de pago
+                                                if not (PaymentTerms."Es Contado") then
+                                                    CurrReport.Skip();
+                                                if PaymentTerms."Es NO Asegurable (Otros)" then
                                                     CurrReport.Skip();
                                             end;
                                         2:
-                                            if not (Customer.clasificacion_aseguradora in ['INTERCOMPANY']) then
-                                                CurrReport.Skip();
+                                            begin
+                                                if not (Customer.clasificacion_aseguradora in ['INTERCOMPANY']) then
+                                                    CurrReport.Skip();
+                                                if PaymentTerms."Es NO Asegurable (Otros)" then
+                                                    CurrReport.Skip();
+                                            end;
                                         3:
                                             begin
                                                 if not (Customer.clasificacion_aseguradora in ['AUTOFACTURA']) then
                                                     CurrReport.Skip();
+                                                if PaymentTerms."Es NO Asegurable (Otros)" then
+                                                    CurrReport.Skip();
+
                                             end;
                                         4:
-                                            if not (Customer.clasificacion_aseguradora in ['REHUSADO']) then
-                                                CurrReport.Skip();
+                                            begin
+                                                if not (Customer.clasificacion_aseguradora in ['REHUSADO']) then
+                                                    CurrReport.Skip();
+                                                if PaymentTerms."Es NO Asegurable (Otros)" then
+                                                    CurrReport.Skip();
+                                            end;
                                         5:
-                                            if not (Customer.clasificacion_aseguradora in ['ORGANISMO PUBLICO']) then
-                                                CurrReport.Skip();
+                                            begin
+                                                if not (Customer.clasificacion_aseguradora in ['ORGANISMO PUBLICO']) then
+                                                    CurrReport.Skip();
+                                                if PaymentTerms."Es NO Asegurable (Otros)" then
+                                                    CurrReport.Skip();
+                                            end;
                                         6:
-                                            if not (Customer.clasificacion_aseguradora in ['CLIENTE PARTICULAR']) then
-                                                CurrReport.Skip();
+                                            begin
+                                                if not (Customer.clasificacion_aseguradora in ['CLIENTE PARTICULAR']) then
+                                                    CurrReport.Skip();
+                                                if PaymentTerms."Es NO Asegurable (Otros)" then
+                                                    CurrReport.Skip();
+                                            end;
                                         7: // Clasificacion2 := 'OTROS' - 'CONTADO O PREPAGO','EMPRESAS VINCULADAS','CLIENTES REHUSADOS','ORGANISMOS PUBLICOS','PARTICULARES'
                                             begin
-                                                if PaymentMethod."Es Contado" or PaymentTerms."Es Contado" then
+                                                //if PaymentMethod."Es Contado" or PaymentTerms."Es Contado" then
+                                                if PaymentTerms."Es Contado" then
                                                     CurrReport.Skip();
                                                 if Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA', 'ORGANISMOS PUBLICO', 'REHUSADO', 'CLIENTE PARTICULAR'] then
                                                     CurrReport.Skip();
