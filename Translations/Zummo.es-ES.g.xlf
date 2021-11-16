@@ -20037,10 +20037,10 @@
           <target>Cambiar Dimensiones Multiple</target>
         </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Method 1377591017 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
-          <source>¿Desea cambiar los %1 movimientos a CECO %2 y Proyecto %3?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar los %1 movimientos a CECO %2 y Proyecto %3?"</note>
+          <source>¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Method OnAction - NamedType Text000</note>
-          <target>¿Desea cambiar los %1 movimientos a CECO %2 y Proyecto %3?</target>
+          <target>¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?</target>
         </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 1779445611 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Change the dimensions of the selected entry</source>
@@ -24098,6 +24098,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Es Contado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment Terms - Field Es Contado - Property Caption</note>
           <target>Es Contado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1625472420 - Field 2038316490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3197070065">
+          <source>Es NO Asegurable (Otros)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Es NO Asegurable (Otros)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment Terms - Field Es NO Asegurable (Otros) - Property Caption</note>
+          <target>Es NO Asegurable (Otros)</target>
         </trans-unit>
         <trans-unit id="TableExtension 2869752476 - Field 995090288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
           <source>Date Filter</source>

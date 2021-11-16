@@ -8,6 +8,10 @@ pageextension 50060 "STH Payment Terms" extends "Payment Terms"
             {
                 ApplicationArea = all;
             }
+            field("Es NO Asegurable (Otros)"; "Es NO Asegurable (Otros)")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }

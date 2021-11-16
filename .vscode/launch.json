@@ -23,11 +23,11 @@
             "serverInstance": "BC140",
             "port": 7149,
             "authentication": "Windows",
-            //"startupObjectId": 22,
+            "startupObjectId": 22,
             "breakOnError": true,
             "breakOnRecordWrite": false,
-            "launchBrowser": false,
-            "schemaUpdateMode": "Synchronize"
+            "launchBrowser": true,
+            "schemaUpdateMode": "ForceSync"
         }
     ]
 }

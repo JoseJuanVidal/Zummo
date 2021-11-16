@@ -10,7 +10,7 @@ tableextension 50185 "STH Payment Terms" extends "Payment Terms"
         Field(50001; "Es NO Asegurable (Otros)"; Boolean)
         {
             DataClassification = CustomerContent;
-            Caption = 'Es Contado', comment = 'ESP="Es Contado"';
+            Caption = 'Es NO Asegurable (Otros)', comment = 'ESP="Es NO Asegurable (Otros)"';
         }
     }
 }
