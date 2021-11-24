@@ -175,7 +175,7 @@ report 50113 "Ventas Aseguradora - List"
                                 begin
                                     CaptionAsegurado := lblNoAsegurado;
                                     if (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" = Aseguradora) and (Customer.clasificacion_aseguradora <> 'REHUSADO')
-                                        and not (PaymentTerms."Es Contado") then
+                                        and not (PaymentTerms."Es Contado" or PaymentTerms."Es NO Asegurable (Otros)") then
                                         CurrReport.Skip();
                                     case Clasif2.Number of
                                         1:

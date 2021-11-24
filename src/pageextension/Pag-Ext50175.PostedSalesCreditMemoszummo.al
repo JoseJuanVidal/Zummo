@@ -130,7 +130,6 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
                 BaseImpDL := CustLedgerEntry."Amount (LCY)";
         end;
 
-        BaseImpDL := 0;
         SalesCrMemoLine.Reset();
         SalesCrMemoLine.SetRange("Document No.", Rec."No.");
         if SalesCrMemoLine.FindSet() then begin
