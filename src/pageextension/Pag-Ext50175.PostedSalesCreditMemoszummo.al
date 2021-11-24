@@ -119,12 +119,15 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
     trigger OnAfterGetRecord()
     begin
         ImpTotalDL := 0;
+        BaseImpDL := 0;
         CustLedgerEntry.SetRange("Document Type", CustLedgerEntry."Document Type"::"Credit Memo");
         CustLedgerEntry.SetRange("Document No.", "No.");
         CustLedgerEntry.SetRange("Customer No.", "Bill-to Customer No.");
         if CustLedgerEntry.FindSet() then begin
             CustLedgerEntry.CalcFields("Amount (LCY)");
             ImpTotalDL := CustLedgerEntry."Amount (LCY)";
+            if not (rec."Currency Factor" in [0, 1]) then
+                BaseImpDL := CustLedgerEntry."Amount (LCY)";
         end;
 
         BaseImpDL := 0;
@@ -132,10 +135,9 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
         SalesCrMemoLine.SetRange("Document No.", Rec."No.");
         if SalesCrMemoLine.FindSet() then begin
             SalesCrMemoLine.CalcSums(Amount);
-            if rec."Currency Factor" = 0 then
-                BaseImpDL := SalesCrMemoLine.Amount
-            else
-                BaseImpDL := SalesCrMemoLine.Amount / rec."Currency Factor";
+            if rec."Currency Factor" in [0, 1] then begin
+                BaseImpDL := SalesCrMemoLine.Amount;
+            end;
         end;
     end;
 
