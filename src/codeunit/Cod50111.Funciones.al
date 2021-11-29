@@ -847,8 +847,10 @@ codeunit 50111 "Funciones"
                     GlobalDim2 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 2 Code", intDimSetId);
 
                     GlEntry."Dimension Set ID" := intDimSetId;
-                    GlEntry."Global Dimension 1 Code" := DimGlobal1;
-                    GlEntry."Global Dimension 2 Code" := DimGlobal2;
+                    if DimGlobal1 <> '' then
+                        GlEntry."Global Dimension 1 Code" := DimGlobal1;
+                    if DimGlobal2 <> '' then
+                        GlEntry."Global Dimension 2 Code" := DimGlobal2;
                     GlEntry.Modify();
                 end;
             Until GLEntry.next() = 0;
@@ -865,48 +867,51 @@ codeunit 50111 "Funciones"
     begin
         GLSetup.Get;
         // CECO y Proyecto
-        IF DimGlobal1 <> '' then begin
+
+        if DimGlobal1 <> '' then begin
             DimensionValue.SetRange("Dimension Code", GLSetup."Global Dimension 1 Code");
             DimensionValue.SetRange(Code, DimGlobal1);
             DimensionValue.FindSet();
+        end;
+        if DimGlobal2 <> '' then begin
             DimensionValue2.SetRange("Dimension Code", GLSetup."Global Dimension 2 Code");
             DimensionValue2.SetRange(Code, DimGlobal2);
             DimensionValue2.FindSet();
-            recDimSetEntry.Reset();
-            recDimSetEntry.SetRange("Dimension Set ID", pIntDimension);
-            if recDimSetEntry.FindSet() then
-                repeat
-                    NewDimSetEntry := recDimSetEntry;
-                    if DimGlobal1 <> '' then begin
-                        if NewDimSetEntry."Dimension Code" = GLSetup."Global Dimension 1 Code" then begin
-                            NewDimSetEntry."Dimension Value Code" := DimGlobal1;
-                            NewDimSetEntry."Dimension Value ID" := DimensionValue."Dimension Value ID";
-                            AddedCECO := true;
-                        end;
+        end;
+        recDimSetEntry.Reset();
+        recDimSetEntry.SetRange("Dimension Set ID", pIntDimension);
+        if recDimSetEntry.FindSet() then
+            repeat
+                NewDimSetEntry := recDimSetEntry;
+                if DimGlobal1 <> '' then begin
+                    if NewDimSetEntry."Dimension Code" = GLSetup."Global Dimension 1 Code" then begin
+                        NewDimSetEntry."Dimension Value Code" := DimGlobal1;
+                        NewDimSetEntry."Dimension Value ID" := DimensionValue."Dimension Value ID";
+                        AddedCECO := true;
                     end;
-                    if DimGlobal2 <> '' then begin
-                        if NewDimSetEntry."Dimension Code" = GLSetup."Global Dimension 2 Code" then begin
-                            NewDimSetEntry."Dimension Value Code" := DimGlobal2;
-                            NewDimSetEntry."Dimension Value ID" := DimensionValue."Dimension Value ID";
-                            AddedProyecto := true;
-                        end;
+                end;
+                if DimGlobal2 <> '' then begin
+                    if NewDimSetEntry."Dimension Code" = GLSetup."Global Dimension 2 Code" then begin
+                        NewDimSetEntry."Dimension Value Code" := DimGlobal2;
+                        NewDimSetEntry."Dimension Value ID" := DimensionValue2."Dimension Value ID";
+                        AddedProyecto := true;
                     end;
-                    NewDimSetEntry.Insert();
-                until recDimSetEntry.Next() = 0;
-            if not AddedCECO then begin
-                NewDimSetEntry."Dimension Set ID" := pIntDimension;
-                NewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
-                NewDimSetEntry."Dimension Value Code" := DimGlobal1;
-                NewDimSetEntry."Dimension Value ID" := DimensionValue."Dimension Value ID";
+                end;
                 NewDimSetEntry.Insert();
-            end;
-            if not AddedProyecto then begin
-                NewDimSetEntry."Dimension Set ID" := pIntDimension;
-                NewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 2 Code";
-                NewDimSetEntry."Dimension Value Code" := DimGlobal2;
-                NewDimSetEntry."Dimension Value ID" := DimensionValue2."Dimension Value ID";
-                NewDimSetEntry.Insert();
-            end;
+            until recDimSetEntry.Next() = 0;
+        if (DimGlobal1 <> '') and not AddedCECO then begin
+            NewDimSetEntry."Dimension Set ID" := pIntDimension;
+            NewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
+            NewDimSetEntry."Dimension Value Code" := DimGlobal1;
+            NewDimSetEntry."Dimension Value ID" := DimensionValue."Dimension Value ID";
+            NewDimSetEntry.Insert();
+        end;
+        if (DimGlobal2 <> '') and not AddedProyecto then begin
+            NewDimSetEntry."Dimension Set ID" := pIntDimension;
+            NewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 2 Code";
+            NewDimSetEntry."Dimension Value Code" := DimGlobal2;
+            NewDimSetEntry."Dimension Value ID" := DimensionValue2."Dimension Value ID";
+            NewDimSetEntry.Insert();
         end;
 
     end;

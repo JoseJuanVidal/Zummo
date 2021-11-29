@@ -44,6 +44,8 @@ pageextension 50063 "STH PostedPurchaseInvoices" extends "Posted Purchase Invoic
             else
                 BaseImpDL := PurchInvLine.Amount / rec."Currency Factor";
         end;
+        BaseImpDL := -abs(BaseImpDL);
+        ImpTotalDL := -abs(ImpTotalDL);
     end;
 
 
