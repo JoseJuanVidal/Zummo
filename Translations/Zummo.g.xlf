@@ -23008,6 +23008,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Bloqueo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field CodMotivoBloqueo_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1936001480 - Field 1583414689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Transport Methods</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Método de transporte"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field Transport Methods - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4104438143 - Field 2906867365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 406314583">
           <source>código clasificación</source>
           <note from="Developer" annotates="general" priority="2">ESP="código clasificación"</note>

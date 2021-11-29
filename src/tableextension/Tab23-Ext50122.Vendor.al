@@ -15,5 +15,11 @@ tableextension 50122 "Vendor" extends Vendor //23
             DataClassification = CustomerContent;
             Caption = 'Vendor Classification', comment = 'ESP="Clasificación proveedor"';
         }
+        field(50102; "Transport Methods"; code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Transport Methods', comment = 'ESP="Método de transporte"';
+            TableRelation = "Transport Method";
+        }
     }
 }

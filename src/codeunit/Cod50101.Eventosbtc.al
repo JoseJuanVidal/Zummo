@@ -390,7 +390,17 @@ codeunit 50101 "Eventos_btc"
 
 
     end;
+    // #287117 
+    [EventSubscriber(ObjectType::Table, 38, 'OnValidateBuyFromVendorNoBeforeRecreateLines', '', false, false)]
+    local procedure T38_OnAfterUpdateBuyFromVend(VAR PurchaseHeader: Record "Purchase Header"; CallingFieldNo: Integer)
+    var
+        Vendor: record Vendor;
+    begin
+        if Vendor.Get(PurchaseHeader."Buy-from Vendor No.") then
+            PurchaseHeader."Transport Method" := Vendor."Transport Methods";
 
+    end;
+    //v - #287117 
 
     [EventSubscriber(ObjectType::Table, 337, 'OnAfterInsertEvent', '', false, false)]
 

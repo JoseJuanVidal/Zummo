@@ -11,6 +11,14 @@ pageextension 50119 "VendorCard" extends "Vendor Card"
                 Enabled = MotivoBloqueoEnabled;
             }
         }
+        addafter("Shipment Method Code")
+        {
+            field("Transport Methods"; "Transport Methods")
+            {
+                ApplicationArea = all;
+            }
+        }
+
 
         //101219 S19/01393 Clasificación proveedor
         addafter(Name)
