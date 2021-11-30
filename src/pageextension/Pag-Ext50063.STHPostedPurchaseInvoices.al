@@ -23,18 +23,19 @@ pageextension 50063 "STH PostedPurchaseInvoices" extends "Posted Purchase Invoic
     trigger OnAfterGetRecord()
     var
     begin
-
-
         ImpTotalDL := 0;
+        BaseImpDL := 0;
         VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::Invoice);
         VendorLedgerEntry.SetRange("Document No.", "No.");
         VendorLedgerEntry.SetRange("Vendor No.", Rec."Buy-from Vendor No.");
         if VendorLedgerEntry.FindSet() then begin
             VendorLedgerEntry.CalcFields("Amount (LCY)");
             ImpTotalDL := -VendorLedgerEntry."Amount (LCY)";
+            if not (rec."Currency Factor" in [0, 1]) then
+                BaseImpDL := VendorLedgerEntry."Amount (LCY)";
         end;
 
-        BaseImpDL := 0;
+
         PurchInvLine.Reset();
         PurchInvLine.SetRange("Document No.", Rec."No.");
         if PurchInvLine.FindSet() then begin
@@ -44,8 +45,6 @@ pageextension 50063 "STH PostedPurchaseInvoices" extends "Posted Purchase Invoic
             else
                 BaseImpDL := PurchInvLine.Amount / rec."Currency Factor";
         end;
-        BaseImpDL := -abs(BaseImpDL);
-        ImpTotalDL := -abs(ImpTotalDL);
     end;
 
 

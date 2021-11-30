@@ -18,7 +18,7 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
             {
                 ApplicationArea = all;
             }
-            field("Importe IVA Incl. (DL)"; -ImpTotalDL)
+            field("Importe IVA Incl. (DL)"; ImpTotalDL)
             {
                 ApplicationArea = all;
             }
@@ -138,6 +138,10 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
                 BaseImpDL := SalesCrMemoLine.Amount;
             end;
         end;
+
+        BaseImpDL := -abs(BaseImpDL);
+        ImpTotalDL := -abs(ImpTotalDL);
+
     end;
 
     var
