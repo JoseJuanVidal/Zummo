@@ -11,7 +11,7 @@ report 50118 "PedidoTransferenciaAlmacen"
     {
         dataitem("Transfer Header"; "Transfer Header")
         {
-            DataItemTableView = SORTING ("No.");
+            DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Transfer-from Code", "Transfer-to Code";
             RequestFilterHeading = 'Transfer Order';
 
@@ -71,10 +71,10 @@ report 50118 "PedidoTransferenciaAlmacen"
 
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     column(CopyCaption; StrSubstNo(Text001, CopyText))
                     {
                     }
@@ -143,7 +143,7 @@ report 50118 "PedidoTransferenciaAlmacen"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Transfer Header";
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -192,9 +192,9 @@ report 50118 "PedidoTransferenciaAlmacen"
                     }
                     dataitem("Transfer Line"; "Transfer Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No.");
+                        DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Transfer Header";
-                        DataItemTableView = SORTING ("Document No.", "Line No.") WHERE ("Derived From Line No." = CONST (0));
+                        DataItemTableView = SORTING("Document No.", "Line No.") WHERE("Derived From Line No." = CONST(0));
                         column(ItemNo_TransLine; "Item No.")
                         {
                             IncludeCaption = true;
@@ -232,7 +232,7 @@ report 50118 "PedidoTransferenciaAlmacen"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                             column(DimText2; DimText)
                             {
                             }
@@ -280,7 +280,7 @@ report 50118 "PedidoTransferenciaAlmacen"
 
                         dataitem(Lotes; Integer)
                         {
-                            DataItemTableView = sorting (number);
+                            DataItemTableView = sorting(number);
 
                             column(NoLote_RecMemLotes; RecMemLotes.NoLote)
                             {
@@ -501,7 +501,7 @@ report 50118 "PedidoTransferenciaAlmacen"
         LineDimensionsCaptionLbl: Label 'Dimensiones Línea';
         PurchOrderCaptionLbl: Label 'PEDIDO TRANSFERENCIA';
         PRCOMPRASLbl: Label 'PR-COMPRAS';
-        ISOLbl: Label 'PO.01.DCP/A1.11';
+        ISOLbl: Label 'FO.05_C3.02_V01';
         PediProveeedorLbl: Label 'Nota de Entrega';
         DesdeLbl: Label 'Desde';
         HastaLbl: Label 'Hasta';
