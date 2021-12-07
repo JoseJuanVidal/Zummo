@@ -2184,12 +2184,11 @@ Cstr(Fields!VATRegistrationNo.Value), 1)</Hidden>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Libro 1648,, Sección Gral, Folio 212, 
-hoja Y-22381,</Value>
+                    <Value EvaluationMode="Constant">Valencia el 26 de enero de 1999, Tomo 4336,Libro 1648, Sección Gra, Folio 212, hoja Y-22381,</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontSize>6pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Color>Gray</Color>
                     </Style>
@@ -2200,7 +2199,7 @@ hoja Y-22381,</Value>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Height>132.09847pt</Height>
+            <Height>296.76583pt</Height>
             <Width>0.6963cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -2209,11 +2208,12 @@ hoja Y-22381,</Value>
               </Border>
               <VerticalAlign>Top</VerticalAlign>
               <PaddingLeft>4pt</PaddingLeft>
+              <PaddingTop>10pt</PaddingTop>
               <WritingMode>Rotate270</WritingMode>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>4.66014cm</Height>
+        <Height>10.46924cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3301,7 +3301,7 @@ hoja Y-22381,</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>7pt</FontSize>
+                        <FontSize>6pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <Color>Gray</Color>
                       </Style>
@@ -3319,6 +3319,7 @@ hoja Y-22381,</Value>
                 </Border>
                 <VerticalAlign>Top</VerticalAlign>
                 <PaddingLeft>4pt</PaddingLeft>
+                <PaddingBottom>10pt</PaddingBottom>
                 <WritingMode>Rotate270</WritingMode>
               </Style>
             </Textbox>
@@ -4013,11 +4014,11 @@ hoja Y-22381,</Value>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Zummo Innovaciones Mecánicas, S.A.U. Ins.Reg.Merc.Valencia el</Value>
+                      <Value EvaluationMode="Constant">Zummo Innovaciones Mecánicas, S.A.U. Ins.Reg.Merc.</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>7pt</FontSize>
+                        <FontSize>6pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <Color>Gray</Color>
                       </Style>
@@ -4028,6 +4029,7 @@ hoja Y-22381,</Value>
                   </Style>
                 </Paragraph>
               </Paragraphs>
+              <Top>0.02001cm</Top>
               <Height>225.81581pt</Height>
               <Width>0.6963cm</Width>
               <ZIndex>10</ZIndex>

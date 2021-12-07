@@ -15,6 +15,7 @@ report 50114 "EtiquetaDeExpedicionShipment"
             //DataItemTableView = sorting("Entry No.") where("Entry Type" = const(Sale));
             RequestFilterFields = "Document No.";
 
+            column(CodDocumento; CodDocumento) { }
 
             column(RecSalesShipmentHeaderName; RecSalesShipmentHeader."Ship-to Name")
             {
@@ -246,6 +247,7 @@ report 50114 "EtiquetaDeExpedicionShipment"
         de_Lbl: Label ' de ', Comment = 'ESP=" de "';
         Fecha_Lbl: Label 'Fecha / Date:', Comment = 'ESP="Fecha / Date:"';
         Albaran_Lbl: Label 'Albarán / Delivery note:', Comment = 'ESP="Albarán / Delivery note:"';
+        CodDocumento: Label 'FO.04_C7.03_V04';
 
 
 }

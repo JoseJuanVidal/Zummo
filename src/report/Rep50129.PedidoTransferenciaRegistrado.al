@@ -14,7 +14,8 @@ report 50129 "PedidoTransferenciaRegistrado"
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Transfer-from Code", "Transfer-to Code";
             RequestFilterHeading = 'Transfer Receipt';
-
+            column(CompanyInfo1picture; CompanyInfo1.Picture)
+            { }
             column(NoSerie_Caption; NumSerieLbl) { }
             column(DesdeLbl; DesdeLbl)
             {

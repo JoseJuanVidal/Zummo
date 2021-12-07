@@ -10683,6 +10683,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Albarán / Delivery note:"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion - NamedType Albaran_Lbl</note>
         </trans-unit>
+        <trans-unit id="Report 399329885 - NamedType 2057872364" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO.04_C7.03_V04</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion - NamedType CodDocumento</note>
+        </trans-unit>
         <trans-unit id="Report 399329885 - NamedType 3517632600" size-unit="char" translate="yes" xml:space="preserve">
           <source>Consignatario / Consignee:</source>
           <note from="Developer" annotates="general" priority="2">ESP="Consignatario / Consignee:"</note>
@@ -10772,6 +10777,11 @@
           <source>Albarán / Delivery note:</source>
           <note from="Developer" annotates="general" priority="2">ESP="Albarán / Delivery note:"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType Albaran_Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 2057872364" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO.04_C7.03_V04</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType CodDocumento</note>
         </trans-unit>
         <trans-unit id="Report 501531045 - NamedType 3517632600" size-unit="char" translate="yes" xml:space="preserve">
           <source>Consignatario / Consignee:</source>
@@ -10898,6 +10908,11 @@
           <note from="Developer" annotates="general" priority="2">Etiqueta Materia Prima</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaMateriaPrima - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1993175928 - NamedType 2135894412" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO.01_C7.03_V04</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaMateriaPrima - NamedType codDocumento</note>
+        </trans-unit>
         <trans-unit id="Report 1993175928 - NamedType 1938831720" size-unit="char" translate="yes" xml:space="preserve">
           <source>CÓDIGO: </source>
           <note from="Developer" annotates="general" priority="2">ESP="´CÓDIGO: "</note>
@@ -10932,6 +10947,11 @@
           <source>Etiqueta Producto Terminado</source>
           <note from="Developer" annotates="general" priority="2">Etiqueta Producto Terminado</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaProductoTerminado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 460670709 - NamedType 2135894412" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO.01_C7.03_V04</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaProductoTerminado - NamedType codDocumento</note>
         </trans-unit>
         <trans-unit id="Report 460670709 - NamedType 1938831720" size-unit="char" translate="yes" xml:space="preserve">
           <source>CÓDIGO: </source>

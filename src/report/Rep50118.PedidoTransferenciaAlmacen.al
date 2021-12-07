@@ -15,6 +15,7 @@ report 50118 "PedidoTransferenciaAlmacen"
             RequestFilterFields = "No.", "Transfer-from Code", "Transfer-to Code";
             RequestFilterHeading = 'Transfer Order';
 
+            column(CompanyInfo1Picture; CompanyInfo1.Picture) { }
             column(CuadroBultos_BultosLbl; CuadroBultos_BultosLbl)
             {
 

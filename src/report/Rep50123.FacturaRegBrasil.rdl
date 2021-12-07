@@ -4610,17 +4610,46 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
               <FontSize>9pt</FontSize>
             </Style>
           </Tablix>
+          <Textbox Name="PurchHeaderBuyfromVendNoCptn8">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value EvaluationMode="Constant">Zummo Innovaciones Mecánicas, S.A.U. Ins.Reg.Merc. Valencia el 26 de enero de 1999, Tomo 4336, Libro 1648, Sección Gral, Folio 212, hoja Y-22381,</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>6pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>Gray</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Height>424.67358pt</Height>
+            <Width>0.5083cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Top</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingBottom>2pt</PaddingBottom>
+              <WritingMode>Rotate270</WritingMode>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>19.12099cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <BackgroundImage>
-            <Source>Embedded</Source>
-            <Value>Texto2</Value>
-            <BackgroundRepeat>Clip</BackgroundRepeat>
-          </BackgroundImage>
         </Style>
       </Body>
       <Width>19.95623cm</Width>
@@ -6316,16 +6345,46 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="PurchHeaderBuyfromVendNoCptn7">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value EvaluationMode="Constant">Inscripción 1ª CIF A-96112024 Nº R.I. Productos AEE 288</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>Gray</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.13036cm</Top>
+              <Height>169.87509pt</Height>
+              <Width>0.5083cm</Width>
+              <ZIndex>8</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Top</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingBottom>2pt</PaddingBottom>
+                <WritingMode>Rotate270</WritingMode>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
               <Style>None</Style>
             </Border>
-            <BackgroundImage>
-              <Source>Embedded</Source>
-              <Value>registrosuperior</Value>
-              <BackgroundRepeat>Clip</BackgroundRepeat>
-            </BackgroundImage>
           </Style>
         </PageHeader>
         <PageFooter>
@@ -6347,7 +6406,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                         <FontSize>7pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
-                        <Color>#cd2a2a</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>

@@ -14,7 +14,7 @@ report 50108 "EtiquetaMateriaPrima"
         {
             DataItemTableView = sorting("Entry No.");
             RequestFilterFields = "Document No.";
-
+            column(codDocumento; codDocumento) { }
             column(CodBarra; CodBarra)
             {
 
@@ -141,5 +141,6 @@ report 50108 "EtiquetaMateriaPrima"
         NPedido_Lbl: Label 'Nº PEDIDO:', Comment = 'ESP="Nº PEDIDO: "';
         Fecha_Lbl: Label 'FECHA: ', Comment = 'ESP="FECHA: "';
         codPedido: Code[20];
+        codDocumento: Label 'FO.01_C7.03_V04';
 
 }

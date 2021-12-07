@@ -10,8 +10,6 @@ report 50127 "Extracto Cliente"
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
 
-
-
     dataset
     {
         dataitem(Customer; Customer)
@@ -19,6 +17,9 @@ report 50127 "Extracto Cliente"
             DataItemTableView = SORTING("No.");
             PrintOnlyIfDetail = true;
             RequestFilterFields = "No.", "Search Name", "Customer Posting Group", "Date Filter";
+            column(CompanyInfo1Picture; companyInfo1.Picture) { }
+            column(logo; CompanyInfo1.LogoCertificacion)
+            { }
             column(TodayFormatted; FORMAT(TODAY, 0, 4))
             {
             }
@@ -521,6 +522,8 @@ report 50127 "Extracto Cliente"
     var
         CaptionManagement: Codeunit CaptionManagement;
     begin
+        CompanyInfo1.Get();
+        CompanyInfo1.CalcFields(Picture, LogoCertificacion);
         //CustFilter := CaptionManagement.GetRecordFiltersWithCaptions(Customer);
         CustDateFilter := Customer.GETFILTER("Date Filter");
         with "Cust. Ledger Entry" do
@@ -536,6 +539,8 @@ report 50127 "Extracto Cliente"
 
     var
         Text000: Label 'Period: %1', Comment = 'ESP="Periodo: %1';
+
+        companyInfo1: Record "Company Information";
 
         CustLedgEntry: Record "Cust. Ledger Entry";
         Language: Record Language;
