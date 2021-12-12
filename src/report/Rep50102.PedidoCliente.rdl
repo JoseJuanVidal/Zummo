@@ -4439,6 +4439,9 @@ Cstr(Sum(Fields!Portes.Value))
               <Height>8.43337cm</Height>
               <Width>0.65991cm</Width>
               <ZIndex>26</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Globals!PageNumber=1,false,true)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>

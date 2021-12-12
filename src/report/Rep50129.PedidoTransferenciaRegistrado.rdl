@@ -632,7 +632,7 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>0.29912pt</Top>
+            <Top>0.29898pt</Top>
             <Left>0.48492cm</Left>
             <Height>0.55811in</Height>
             <Width>7.40252in</Width>
@@ -2239,6 +2239,9 @@
               <Height>219.8751pt</Height>
               <Width>0.5083cm</Width>
               <ZIndex>23</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Globals!PageNumber=1,false,true)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>

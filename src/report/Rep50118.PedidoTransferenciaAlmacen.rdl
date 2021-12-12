@@ -2399,6 +2399,9 @@
               <Height>212.17509pt</Height>
               <Width>0.5083cm</Width>
               <ZIndex>28</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Globals!PageNumber=1,false,true)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>

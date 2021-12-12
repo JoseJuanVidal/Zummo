@@ -4160,6 +4160,9 @@ cstr(Fields!txtVatEORI.Value)
               <Height>169.87509pt</Height>
               <Width>0.5083cm</Width>
               <ZIndex>14</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Globals!PageNumber=1,false,true)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -6812,6 +6815,9 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
               <Height>156.37509pt</Height>
               <Width>0.5083cm</Width>
               <ZIndex>7</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Globals!PageNumber=1,false,true)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>

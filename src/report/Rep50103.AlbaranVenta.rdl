@@ -2199,6 +2199,7 @@ Cstr(Fields!VATRegistrationNo.Value), 1)</Hidden>
                 </Style>
               </Paragraph>
             </Paragraphs>
+            <Top>0cm</Top>
             <Height>296.76583pt</Height>
             <Width>0.6963cm</Width>
             <ZIndex>1</ZIndex>
@@ -3313,6 +3314,9 @@ Cstr(Fields!VATRegistrationNo.Value), 1)</Hidden>
               <Height>192.39847pt</Height>
               <Width>0.6328cm</Width>
               <ZIndex>15</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Globals!PageNumber=1,false,true)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -4033,6 +4037,9 @@ Cstr(Fields!VATRegistrationNo.Value), 1)</Hidden>
               <Height>225.81581pt</Height>
               <Width>0.6963cm</Width>
               <ZIndex>10</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Globals!PageNumber=1,false,true)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
