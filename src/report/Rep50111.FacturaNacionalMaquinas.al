@@ -1818,13 +1818,13 @@ report 50111 "FacturaNacionalMaquinas"
                 END;
                 intContador := 1;
                 REPEAT
-                    if ArrayLen(ImporteVencimiento) >= intContador then begin
-                        PaymentMethod.Get("Payment Method Code");
-                        if not PaymentMethod."Ocultar fecha vto" then
-                            FechaVencimiento[intContador] := MovsCliente."Due Date";
-                        MovsCliente.CALCFIELDS("Amount (LCY)");
+                    PaymentMethod.Get("Payment Method Code");
+                    if not PaymentMethod."Ocultar fecha vto" then
+                        FechaVencimiento[intContador] := MovsCliente."Due Date";
+                    MovsCliente.CALCFIELDS("Amount (LCY)");
+
+                    if ArrayLen(ImporteVencimiento) <= intContador then
                         ImporteVencimiento[intContador] := MovsCliente."Amount (LCY)";
-                    end;
                     intContador := intContador + 1;
                 UNTIL MovsCliente.NEXT() = 0;
 
@@ -2376,7 +2376,7 @@ report 50111 "FacturaNacionalMaquinas"
         Cantidad_Lbl: Label 'Quantity', comment = 'ESP="Cantidad",FRA="Quantité"';
         Decripcion_Lbl: Label 'Description', comment = 'ESP="Descripción",FRA="Description"';
         PRGestionPedidosCliente_Lbl: Label 'PR-MANAGEMENT OF CUSTOMER ORDERS', Comment = 'ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"';
-        FO01_Lbl: Label 'FO.01.DVN/A9.11', Comment = 'ESP="FO.01.DVN/A9.11"';
+        FO01_Lbl: Label 'FO.01_C8.01_V12', Comment = 'ESP="FO.01_C8.01_V12"';
         Comentarios_Lbl: Label 'Remark', Comment = 'ESP="Comentarios",FRA="Commentaires"';
         DireccionDeEnvio_Lbl: Label 'Delivery Address', Comment = 'ESP="Dirección de envío",FRA="Adresse d´expédition"';
         ElSubtotalIncluye_Lbl: Label 'El subtotal incluye el coste de gestión de los RAEES según Real Decreto 110/2015, de 20 de febrero, sobre residuos de aparatos eléctricos y electrónicos (BOE de 21/02/2015)',

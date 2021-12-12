@@ -149,7 +149,7 @@ report 50102 "PedidoCliente"
             column(PRGestionPedidosCliente_Caption; PRGestionPedidosCliente_Lbl)
             {
             }
-            column(FO01_Caption; FO01_Lbl)
+            column(FO01_Caption; FO01_txt)
             {
             }
             column(FO02_Caption; FO02_Lbl)
@@ -1589,6 +1589,13 @@ report 50102 "PedidoCliente"
                 txtRutaServidor: Text;
                 recConfConta: Record "General Ledger Setup";
             begin
+                case "Document Type" of
+                    "Document Type"::Quote:
+                        FO01_txt := FO02_Lbl;
+                    "Document Type"::Order:
+                        FO01_txt := FO01_Lbl;
+
+                end;
                 if not recC.get("Sell-to Customer No.") then
                     clear(recC);
 
@@ -1738,8 +1745,8 @@ report 50102 "PedidoCliente"
                 SalesPost.GetSalesLines("Sales Header", TempSalesLine, 0);
                 CLEAR(SalesPost);
                 SalesPost.SumSalesLinesTemp(
-                    "Sales Header", TempSalesLine, 0, TotalSalesLineF, TotalSalesLineLCYF,
-                    VATAmount, VATAmountText, ProfitLCY, ProfitPct, TotalAdjCostLCY);
+                "Sales Header", TempSalesLine, 0, TotalSalesLineF, TotalSalesLineLCYF,
+                VATAmount, VATAmountText, ProfitLCY, ProfitPct, TotalAdjCostLCY);
 
                 AdjProfitLCY := TotalSalesLineLCYF.Amount - TotalAdjCostLCY;
                 IF TotalSalesLineLCYF.Amount <> 0 THEN
@@ -2137,9 +2144,10 @@ report 50102 "PedidoCliente"
 
         PRGestionPedidosCliente_Lbl: Label 'PR-MANAGEMENT OF CUSTOMER ORDERS', comment = 'ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"';
 
-        FO01_Lbl: Label 'FO.01.DVN/A14.07', comment = 'ESP="FO.01.DVN/A14.07"';//PEDIDO
-        FO02_Lbl: Label '"FO.01.DVN/A3.14', comment = 'ESP=""FO.01.DVN/A3.14';//OFERTA
-        FO03_Lbl: Label 'FO.01.DVN/A3.14', comment = 'ESP="FO.01.DVN/A3.14"'; //PROFORMA
+        FO01_txt: Text;
+        FO01_Lbl: Label 'FO.04_C3.02_V15', comment = 'ESP="FO.04_C3.02_V15"';//PEDIDO
+        FO02_Lbl: Label 'FO.03_C3.02_V13', comment = 'ESP="FO.03_C3.02_V13"';//OFERTA
+        FO03_Lbl: Label 'FO.03_C3.02_V13', comment = 'ESP="FO.03_C3.02_V13"'; //PROFORMA
 
         Fecha_Lbl: Label 'Date', comment = 'ESP="Fecha"';
         PedidoNo_Lbl: Label 'ORDER Nº', Comment = 'ESP="PEDIDO Nº"';

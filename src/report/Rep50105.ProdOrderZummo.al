@@ -15,6 +15,12 @@ report 50105 "Prod. Order Zummo"
             column(TodayFormatted; Format(Today, 0, 4))
             {
             }
+            column(CompanyInfoPicture; CompanyInfo.Picture)
+            {
+
+            }
+            column(lblFO01; lblFO01)
+            { }
             column(CompanyName; COMPANYPROPERTY.DisplayName)
             {
             }
@@ -312,6 +318,7 @@ report 50105 "Prod. Order Zummo"
         }
     }
 
+
     requestpage
     {
 
@@ -328,7 +335,14 @@ report 50105 "Prod. Order Zummo"
     {
     }
 
+    trigger OnInitReport()
+    begin
+        CompanyInfo.Get();
+        CompanyInfo.Calcfields(Picture)
+    end;
+
     var
+        CompanyInfo: Record "Company Information";
         ProductionJrnlMgt: Codeunit "Production Journal Mgt";
         CurrReportPageNoCaptLbl: Label 'Page';
         PrdOdrCmptsandRtngLinsCptLbl: Label 'PROD. ORDER ZUMMO';
@@ -360,5 +374,6 @@ report 50105 "Prod. Order Zummo"
         CantidadLineLbl: Label 'Quantity';
         Barcode: Text[60];
         CantidadCab: Decimal;
+        lblFO01: Label 'FO.01_C6.03_V09', comment = 'ESP="FO.01_C6.03_V09"';
 }
 

@@ -57,7 +57,7 @@ report 50103 "AlbaranVenta"
             column(PRGestion_Lbl; PRGestion_Lbl)
             {
             }
-            column(FO01_Lbl; FO01_Lbl)
+            column(FO01_Lbl; FO01_Txt)
             {
             }
             column(Fecha_Lbl; Fecha_Lbl)
@@ -723,6 +723,10 @@ report 50103 "AlbaranVenta"
                 commit;
                 WorkDescprion := SalesHeader.GetWorkDescription();
 
+                if esPackingList then
+                    FO01_Txt := FO02_Lbl
+                else
+                    FO01_Txt := FO01_Lbl;
 
                 if recCustomer.Get("Bill-to Customer No.") then
                     CurrReport.LANGUAGE := Language.GetLanguageID(recCustomer."Language Code");
@@ -851,7 +855,7 @@ report 50103 "AlbaranVenta"
         SalesSetup.GET();
         FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
         //SOTHIS EBR 010920 id 15923
-        CompanyInfo1.CalcFields(LogoCertificacion);
+        CompanyInfo1.CalcFields(picture, LogoCertificacion);
         //fin SOTHIS EBR 010920 id 15923
         OnAfterInitReport();
     end;
@@ -929,6 +933,7 @@ report 50103 "AlbaranVenta"
         TotalQty: Decimal;
         [InDataSet]
 
+
         LogInteractionEnable: Boolean;
         DisplayAssemblyInformation: Boolean;
         AsmHeaderExists: Boolean;
@@ -962,7 +967,9 @@ report 50103 "AlbaranVenta"
         Albaran_Lbl: Label 'SHIPMENT', Comment = 'ESP="ALBARÁN"';
         Packing_Lbl: Label 'PACKING LIST', comment = 'ESP="PACKING LIST"';
         PRGestion_Lbl: Label 'PR-GESTION DE LOS PEDIDOS DE CLIENTE', Comment = '';
-        FO01_Lbl: Label 'FO.01.DVN/A2.12', Comment = 'FO.01.DVN/A2.12';
+        FO01_Txt: text;
+        FO01_Lbl: Label 'FO.03_C8.01_V13', Comment = 'ESP="FO.03_C8.01_V13"';  // ALBARAN
+        FO02_Lbl: Label 'FO.04_C8.01_V02', Comment = 'ESP="FO.04_C8.01_V02"';  // PACKING LIST
         pesoHeader: Label 'Weight(kg)', comment = 'ESP="Peso(kg)"';
         Fecha_Lbl: Label 'Date', Comment = 'ESP="Fecha"';
         Numero_Lbl: Label 'Number', Comment = 'ESP="Número"';
@@ -984,11 +991,11 @@ report 50103 "AlbaranVenta"
         Portes_Lbl: Label 'FREIGHT', Comment = 'ESP="PORTES"';
         RecibiConforme_Lbl: Label 'RECEIVED AS,', Comment = 'ESP="RECIBI CONFORME"';
         SegunLoDispuesto_Lbl: Label 'Según lo Dispuesto por el Reglamento (UE) 2016/769 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de ZUMMO INNOVACIONES MECÁNICAS, S.A. - con la finalidad de poder remitirle la correspondiente factura. Podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición/revocación, en los términos que establece la normativa vigente en materia de protección de datos, dirigiendo su petición a la dirección postal arriba indicada, asimismo, podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna.',
-      Comment = 'As provided by Regulation (EU) 2016/769 of the European Parliament and of the Council of April 27, 2016 regarding the protection of natural persons, we inform you that your data will be incorporated into the treatment system owned by ZUMMO MECHANICAL INNOVATIONS , SA - in order to be able to send you the corresponding invoice. You may exercise the rights of access, rectification, limitation of treatment, deletion, portability and opposition / revocation, in the terms established by current regulations on data protection, by sending your request to the postal address indicated above, you can also address to the competent Control Authority to submit the claim it deems appropriate.';
+  Comment = 'As provided by Regulation (EU) 2016/769 of the European Parliament and of the Council of April 27, 2016 regarding the protection of natural persons, we inform you that your data will be incorporated into the treatment system owned by ZUMMO MECHANICAL INNOVATIONS , SA - in order to be able to send you the corresponding invoice. You may exercise the rights of access, rectification, limitation of treatment, deletion, portability and opposition / revocation, in the terms established by current regulations on data protection, by sending your request to the postal address indicated above, you can also address to the competent Control Authority to submit the claim it deems appropriate.';
         TFZummo_Lbl: Label 'T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es',
-      Comment = 'T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es';
+  Comment = 'T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es';
         ZummoInnovaciones_Lbl: Label 'Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia el 26 de enero de 1999, Tomo 4336, Libro 1648, Sección Gral., Folio 212, hoja Y-22381, Inscripción 1ª CIF A-96112024 Nº R.I. Productor AEE 288',
-      Comment = 'Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on January 26, 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-96112024 Nº R.I. AEE producer 288';
+  Comment = 'Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on January 26, 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-96112024 Nº R.I. AEE producer 288';
         NoSerie_Lbl: Label 'Serial No. ', Comment = 'ESP="Nº de Serie:"';
         CuadroBultos_IncotermLbl: Label 'Incoterm:', comment = 'ESP="Incoterm:"';
         CuadroBultos_VolumenLbl: Label 'Volume(m3):', comment = 'ESP="Volumen(m3):",FRA="Volume(m3):"';

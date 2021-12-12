@@ -10,7 +10,7 @@ report 50123 "FacturaRegBrasil"
     {
         dataitem("Sales Invoice Header"; "Sales Invoice Header")
         {
-            DataItemTableView = SORTING ("No.");
+            DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Posted Sales Invoice';
             column(CuadroBultos_BultosLbl; CuadroBultos_BultosLbl) { }
@@ -374,10 +374,10 @@ report 50123 "FacturaRegBrasil"
 
             dataitem(CopyLoop; "Integer")
             {
-                DataItemTableView = SORTING (Number);
+                DataItemTableView = SORTING(Number);
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     column(CompanyInfo2Picture; CompanyInfo2.Picture)
                     {
                     }
@@ -636,7 +636,7 @@ report 50123 "FacturaRegBrasil"
                     dataitem(DimensionLoop1; "Integer")
                     {
                         DataItemLinkReference = "Sales Invoice Header";
-                        DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
                         {
                         }
@@ -684,9 +684,9 @@ report 50123 "FacturaRegBrasil"
 
                     dataitem("Sales Invoice Line"; "Sales Invoice Line")
                     {
-                        DataItemLink = "Document No." = FIELD ("No.");
+                        DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Invoice Header";
-                        DataItemTableView = SORTING ("Document No.", "Line No.");
+                        DataItemTableView = SORTING("Document No.", "Line No.");
                         column(NumAlbaran; "Shipment No.")
                         {
 
@@ -885,7 +885,7 @@ report 50123 "FacturaRegBrasil"
                         }
                         dataitem("Sales Shipment Buffer"; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(PostingDate_SalesShipmentBuffer; Format(SalesShipmentBuffer."Posting Date"))
                             {
                             }
@@ -915,7 +915,7 @@ report 50123 "FacturaRegBrasil"
                         }
                         dataitem(DimensionLoop2; "Integer")
                         {
-                            DataItemTableView = SORTING (Number) WHERE (Number = FILTER (1 ..));
+                            DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                             column(DimText1; DimText)
                             {
                             }
@@ -961,7 +961,7 @@ report 50123 "FacturaRegBrasil"
                         }
                         dataitem(AsmLoop; "Integer")
                         {
-                            DataItemTableView = SORTING (Number);
+                            DataItemTableView = SORTING(Number);
                             column(TempPostedAsmLineUOMCode; GetUOMText(TempPostedAsmLine."Unit of Measure Code"))
                             {
                             }
@@ -1022,7 +1022,7 @@ report 50123 "FacturaRegBrasil"
                             }
                             dataitem("Assembly Header"; "Posted Assembly Header")
                             {
-                                DataItemLink = "No." = field ("Assembly Document No.");
+                                DataItemLink = "No." = field("Assembly Document No.");
 
                                 column(AssHeader_No_; "No.")
                                 {
@@ -1030,7 +1030,7 @@ report 50123 "FacturaRegBrasil"
 
                                 dataitem("Assembly Line"; "Posted Assembly Line")
                                 {
-                                    DataItemLink = "Document No." = field ("No.");
+                                    DataItemLink = "Document No." = field("No.");
 
                                     column(Assembly_No; "Document No.")
                                     {
@@ -1047,7 +1047,7 @@ report 50123 "FacturaRegBrasil"
 
                                     dataitem(SerieEnsamblado; "Item Ledger Entry")
                                     {
-                                        DataItemLink = "Document No." = field ("Document No."), "Document Line No." = field ("Line No.");
+                                        DataItemLink = "Document No." = field("Document No."), "Document Line No." = field("Line No.");
 
                                         column(Item_No_; "Item No.")
                                         {
@@ -1091,7 +1091,7 @@ report 50123 "FacturaRegBrasil"
                         ###############################################################################################*/
                         dataitem(Lotes; Integer)
                         {
-                            DataItemTableView = sorting (number);
+                            DataItemTableView = sorting(number);
                             column(NoLote_RecMemLotes; RecMemLotes.NoLote) { }
                             column(NoSerie_RecMemLotes; RecMemLotes.NoSerie) { }
                             trigger OnPreDataItem()
@@ -1254,7 +1254,7 @@ report 50123 "FacturaRegBrasil"
                     }
                     dataitem(VATCounter; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VATAmountLineVATBase; VATAmountLine."VAT Base")
                         {
                             AutoFormatExpression = "Sales Invoice Line".GetCurrencyCode();
@@ -1372,7 +1372,7 @@ report 50123 "FacturaRegBrasil"
                     }
                     dataitem(VATClauseEntryCounter; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VATClauseVATIdentifier; VATAmountLine."VAT Identifier")
                         {
                         }
@@ -1416,7 +1416,7 @@ report 50123 "FacturaRegBrasil"
                     }
                     dataitem(VatCounterLCY; "Integer")
                     {
-                        DataItemTableView = SORTING (Number);
+                        DataItemTableView = SORTING(Number);
                         column(VALSpecLCYHeader; VALSpecLCYHeader)
                         {
                         }
@@ -1470,7 +1470,7 @@ report 50123 "FacturaRegBrasil"
                     }
                     dataitem(PaymentReportingArgument; "Payment Reporting Argument")
                     {
-                        DataItemTableView = SORTING (Key);
+                        DataItemTableView = SORTING(Key);
                         UseTemporary = true;
                         column(PaymentServiceLogo; Logo)
                         {
@@ -1493,11 +1493,11 @@ report 50123 "FacturaRegBrasil"
                     }
                     dataitem(Total; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                     }
                     dataitem(Total2; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) WHERE (Number = CONST (1));
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
                         column(SelltoCustNo_SalesInvHdr; "Sales Invoice Header"."Sell-to Customer No.")
                         {
                         }
@@ -1515,7 +1515,7 @@ report 50123 "FacturaRegBrasil"
                     }
                     dataitem(LineFee; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) ORDER(Ascending) WHERE (Number = FILTER (1 ..));
+                        DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number = FILTER(1 ..));
                         column(LineFeeCaptionLbl; TempLineFeeNoteOnReportHist.ReportText)
                         {
                         }
@@ -1535,7 +1535,7 @@ report 50123 "FacturaRegBrasil"
                     }
                     dataitem(DesglosesIVA; "Integer")
                     {
-                        DataItemTableView = SORTING (Number) ORDER(Ascending) WHERE (Number = const (1));
+                        DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number = const(1));
                         column(nBaseActual1; nBaseActual[1]) { }
                         column(nBaseActual2; nBaseActual[2]) { }
                         column(nBaseActual3; nBaseActual[3]) { }
@@ -2164,7 +2164,7 @@ report 50123 "FacturaRegBrasil"
         Cantidad_Lbl: Label 'Quantity', comment = 'ESP="Cantidad",FRA="Quantité"';
         Decripcion_Lbl: Label 'Description', comment = 'ESP="Descripción",FRA="Description"';
         PRGestionPedidosCliente_Lbl: Label 'PR-MANAGEMENT OF CUSTOMER ORDERS', Comment = 'ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"';
-        FO01_Lbl: Label 'FO.01.DVN/A9.11', Comment = 'ESP="FO.01.DVN/A9.11"';
+        FO01_Lbl: Label 'FO.01_C8.01_V12', Comment = 'ESP="FO.01_C8.01_V12"';
         Comentarios_Lbl: Label 'Remark', Comment = 'ESP="Comentarios",FRA="Commentaires"';
         DireccionDeEnvio_Lbl: Label 'Delivery Address', Comment = 'ESP="Dirección de envío",FRA="Adresse d´expédition"';
         ElSubtotalIncluye_Lbl: Label 'El subtotal incluye el coste de gestión de los RAEES según Real Decreto 110/2015, de 20 de febrero, sobre residuos de aparatos eléctricos y electrónicos (BOE de 21/02/2015)',
