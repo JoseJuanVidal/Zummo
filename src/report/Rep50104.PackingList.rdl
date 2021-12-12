@@ -71,7 +71,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -123,7 +122,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -167,7 +165,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -210,7 +207,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -252,7 +248,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -294,7 +289,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -2139,7 +2133,6 @@ Cstr(Fields!MetodoDeTransporte.Value)
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>#d5ccc2</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -2904,7 +2897,7 @@ Cstr(Fields!MetodoDeTransporte.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>6.07834cm</Top>
+              <Top>1.44284cm</Top>
               <Left>0.68362cm</Left>
               <Height>11pt</Height>
               <Width>8.59484cm</Width>
@@ -2930,7 +2923,7 @@ Cstr(Fields!MetodoDeTransporte.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>6.07834cm</Top>
+              <Top>1.44284cm</Top>
               <Left>10.19107cm</Left>
               <Height>11pt</Height>
               <Width>9.47963cm</Width>

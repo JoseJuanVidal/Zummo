@@ -1819,12 +1819,14 @@ report 50111 "FacturaNacionalMaquinas"
                 intContador := 1;
                 REPEAT
                     PaymentMethod.Get("Payment Method Code");
-                    if not PaymentMethod."Ocultar fecha vto" then
-                        FechaVencimiento[intContador] := MovsCliente."Due Date";
-                    MovsCliente.CALCFIELDS("Amount (LCY)");
+                    if ArrayLen(ImporteVencimiento) >= intContador then begin
+                        if not PaymentMethod."Ocultar fecha vto" then
+                            FechaVencimiento[intContador] := MovsCliente."Due Date";
+                        MovsCliente.CALCFIELDS("Amount (LCY)");
 
-                    if ArrayLen(ImporteVencimiento) <= intContador then
+
                         ImporteVencimiento[intContador] := MovsCliente."Amount (LCY)";
+                    end;
                     intContador := intContador + 1;
                 UNTIL MovsCliente.NEXT() = 0;
 

@@ -9410,10 +9410,10 @@
           <target>Fecha</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 2570386175" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.01.DVN/A9.11</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.01.DVN/A9.11"</note>
+          <source>FO.02_C8.01_V01</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.02_C8.01_V01"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType FO01_Lbl</note>
-          <target>FO.01.DVN/A9.11</target>
+          <target>FO.02_C8.01_V01</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms</source>
@@ -10315,10 +10315,10 @@
           <target>Fecha</target>
         </trans-unit>
         <trans-unit id="Report 1166120471 - NamedType 2570386175" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.01.DVN/A9.11</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.01.DVN/A9.11"</note>
+          <source>FO.02_C8.01_V01</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.02_C8.01_V01"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaUKRegistrado - NamedType FO01_Lbl</note>
-          <target>FO.01.DVN/A9.11</target>
+          <target>FO.02_C8.01_V01</target>
         </trans-unit>
         <trans-unit id="Report 1166120471 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms</source>
@@ -11401,6 +11401,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion - NamedType Albaran_Lbl</note>
           <target>Albarán / Delivery note:</target>
         </trans-unit>
+        <trans-unit id="Report 399329885 - NamedType 2057872364" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO.04_C7.03_V04</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion - NamedType CodDocumento</note>
+        </trans-unit>
         <trans-unit id="Report 399329885 - NamedType 3517632600" size-unit="char" translate="yes" xml:space="preserve">
           <source>Consignatario / Consignee:</source>
           <note from="Developer" annotates="general" priority="2">ESP="Consignatario / Consignee:"</note>
@@ -11495,6 +11500,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Albarán / Delivery note:"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType Albaran_Lbl</note>
           <target>Albarán / Delivery note:</target>
+        </trans-unit>
+        <trans-unit id="Report 501531045 - NamedType 2057872364" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO.04_C7.03_V04</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicionShipment - NamedType CodDocumento</note>
         </trans-unit>
         <trans-unit id="Report 501531045 - NamedType 3517632600" size-unit="char" translate="yes" xml:space="preserve">
           <source>Consignatario / Consignee:</source>
@@ -11624,6 +11634,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaEmbalaje - Control RPNoOfCopies - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1993175928 - NamedType 2135894412" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO.01_C7.03_V04</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaMateriaPrima - NamedType codDocumento</note>
+        </trans-unit>
         <trans-unit id="Report 1993175928 - NamedType 1938831720" size-unit="char" translate="yes" xml:space="preserve">
           <source>CÓDIGO: </source>
           <note from="Developer" annotates="general" priority="2">ESP="´CÓDIGO: "</note>
@@ -11656,6 +11671,11 @@
           <source>No. of Copies</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaMateriaPrima - Control RPNoOfCopies - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 460670709 - NamedType 2135894412" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO.01_C7.03_V04</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaProductoTerminado - NamedType codDocumento</note>
         </trans-unit>
         <trans-unit id="Report 460670709 - NamedType 1938831720" size-unit="char" translate="yes" xml:space="preserve">
           <source>CÓDIGO: </source>
@@ -18745,7 +18765,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType HdrDimensionsCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 4049458315 - NamedType 870948665" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PO.01.DCP/A1.11</source>
+          <source>FO.05_C3.02_V01</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType ISOLbl</note>
         </trans-unit>
@@ -18894,7 +18914,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType HdrDimensionsCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3170430146 - NamedType 870948665" size-unit="char" translate="yes" xml:space="preserve">
-          <source/>
+          <source>FO.05_C8.01_V01</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType ISOLbl</note>
         </trans-unit>

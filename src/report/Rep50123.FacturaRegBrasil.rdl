@@ -72,7 +72,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -120,7 +119,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -165,7 +163,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -211,7 +208,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -351,7 +347,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -403,7 +398,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -449,7 +443,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -492,7 +485,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -538,7 +530,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -590,7 +581,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -634,7 +624,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -679,7 +668,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -4671,7 +4659,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>#d5ccc2</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -6531,9 +6518,270 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
             <Rectangle Name="Rectangle2">
               <ReportItems>
                 <Rectangle Name="Rectangle4">
+                  <ReportItems>
+                    <Textbox Name="Textbox44">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!DtoGeneral_Caption.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Top>0.02646cm</Top>
+                      <Left>3.26601cm</Left>
+                      <Height>0.63444cm</Height>
+                      <Width>2.07526cm</Width>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.5pt</Width>
+                        </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="Textbox45">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!DtoPP_Lbl.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Top>0.02646cm</Top>
+                      <Left>5.34127cm</Left>
+                      <Height>0.63444cm</Height>
+                      <Width>1.88871cm</Width>
+                      <ZIndex>1</ZIndex>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.5pt</Width>
+                        </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="Textbox47">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Portes_Caption.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Top>0.02646cm</Top>
+                      <Left>7.22998cm</Left>
+                      <Height>0.63444cm</Height>
+                      <Width>1.863cm</Width>
+                      <ZIndex>2</ZIndex>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.5pt</Width>
+                        </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="Textbox48">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!SubTotal_Caption.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Top>0.02646cm</Top>
+                      <Left>9.09298cm</Left>
+                      <Height>0.63444cm</Height>
+                      <Width>2.56174cm</Width>
+                      <ZIndex>3</ZIndex>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.5pt</Width>
+                        </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="Textbox51">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!IVA_Caption.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Top>0.02646cm</Top>
+                      <Left>11.68897cm</Left>
+                      <Height>0.63444cm</Height>
+                      <Width>2.03939cm</Width>
+                      <ZIndex>4</ZIndex>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.5pt</Width>
+                        </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
                   <KeepTogether>true</KeepTogether>
-                  <Top>0.03528cm</Top>
-                  <Height>1.18152cm</Height>
+                  <Top>0.02646cm</Top>
+                  <Height>1.19034cm</Height>
                   <Width>19.51399cm</Width>
                   <Style>
                     <Border>
@@ -6593,266 +6841,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
-                <Textbox Name="Textbox44">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=Fields!DtoGeneral_Caption.Value</Value>
-                          <Style>
-                            <FontFamily>Segoe UI</FontFamily>
-                            <FontSize>8pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                      </Style>
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Left>3.23955cm</Left>
-                  <Height>0.63444cm</Height>
-                  <Width>2.07526cm</Width>
-                  <ZIndex>2</ZIndex>
-                  <Style>
-                    <Border>
-                      <Color>LightGrey</Color>
-                      <Style>Solid</Style>
-                      <Width>0.5pt</Width>
-                    </Border>
-                    <TopBorder>
-                      <Style>Solid</Style>
-                    </TopBorder>
-                    <BottomBorder>
-                      <Style>Solid</Style>
-                    </BottomBorder>
-                    <LeftBorder>
-                      <Style>Solid</Style>
-                    </LeftBorder>
-                    <RightBorder>
-                      <Style>Solid</Style>
-                    </RightBorder>
-                    <BackgroundColor>#d5ccc2</BackgroundColor>
-                    <VerticalAlign>Middle</VerticalAlign>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="Textbox45">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=Fields!DtoPP_Lbl.Value</Value>
-                          <Style>
-                            <FontFamily>Segoe UI</FontFamily>
-                            <FontSize>8pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                      </Style>
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Left>5.31481cm</Left>
-                  <Height>0.63444cm</Height>
-                  <Width>1.88871cm</Width>
-                  <ZIndex>3</ZIndex>
-                  <Style>
-                    <Border>
-                      <Color>LightGrey</Color>
-                      <Style>Solid</Style>
-                      <Width>0.5pt</Width>
-                    </Border>
-                    <TopBorder>
-                      <Style>Solid</Style>
-                    </TopBorder>
-                    <BottomBorder>
-                      <Style>Solid</Style>
-                    </BottomBorder>
-                    <LeftBorder>
-                      <Style>Solid</Style>
-                    </LeftBorder>
-                    <RightBorder>
-                      <Style>Solid</Style>
-                    </RightBorder>
-                    <BackgroundColor>#d5ccc2</BackgroundColor>
-                    <VerticalAlign>Middle</VerticalAlign>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="Textbox47">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=Fields!Portes_Caption.Value</Value>
-                          <Style>
-                            <FontFamily>Segoe UI</FontFamily>
-                            <FontSize>8pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                      </Style>
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Left>7.20352cm</Left>
-                  <Height>0.63444cm</Height>
-                  <Width>1.863cm</Width>
-                  <ZIndex>4</ZIndex>
-                  <Style>
-                    <Border>
-                      <Color>LightGrey</Color>
-                      <Style>Solid</Style>
-                      <Width>0.5pt</Width>
-                    </Border>
-                    <TopBorder>
-                      <Style>Solid</Style>
-                    </TopBorder>
-                    <BottomBorder>
-                      <Style>Solid</Style>
-                    </BottomBorder>
-                    <LeftBorder>
-                      <Style>Solid</Style>
-                    </LeftBorder>
-                    <RightBorder>
-                      <Style>Solid</Style>
-                    </RightBorder>
-                    <BackgroundColor>#d5ccc2</BackgroundColor>
-                    <VerticalAlign>Middle</VerticalAlign>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="Textbox48">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=Fields!SubTotal_Caption.Value</Value>
-                          <Style>
-                            <FontFamily>Segoe UI</FontFamily>
-                            <FontSize>8pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                      </Style>
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Left>9.06652cm</Left>
-                  <Height>0.63444cm</Height>
-                  <Width>2.56174cm</Width>
-                  <ZIndex>5</ZIndex>
-                  <Style>
-                    <Border>
-                      <Color>LightGrey</Color>
-                      <Style>Solid</Style>
-                      <Width>0.5pt</Width>
-                    </Border>
-                    <TopBorder>
-                      <Style>Solid</Style>
-                    </TopBorder>
-                    <BottomBorder>
-                      <Style>Solid</Style>
-                    </BottomBorder>
-                    <LeftBorder>
-                      <Style>Solid</Style>
-                    </LeftBorder>
-                    <RightBorder>
-                      <Style>Solid</Style>
-                    </RightBorder>
-                    <BackgroundColor>#d5ccc2</BackgroundColor>
-                    <VerticalAlign>Middle</VerticalAlign>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="Textbox51">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=Fields!IVA_Caption.Value</Value>
-                          <Style>
-                            <FontFamily>Segoe UI</FontFamily>
-                            <FontSize>8pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                      </Style>
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Left>11.66251cm</Left>
-                  <Height>0.63444cm</Height>
-                  <Width>2.03939cm</Width>
-                  <ZIndex>6</ZIndex>
-                  <Style>
-                    <Border>
-                      <Color>LightGrey</Color>
-                      <Style>Solid</Style>
-                      <Width>0.5pt</Width>
-                    </Border>
-                    <TopBorder>
-                      <Style>Solid</Style>
-                    </TopBorder>
-                    <BottomBorder>
-                      <Style>Solid</Style>
-                    </BottomBorder>
-                    <LeftBorder>
-                      <Style>Solid</Style>
-                    </LeftBorder>
-                    <RightBorder>
-                      <Style>Solid</Style>
-                    </RightBorder>
-                    <BackgroundColor>#d5ccc2</BackgroundColor>
-                    <VerticalAlign>Middle</VerticalAlign>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
                 <Textbox Name="Textbox54">
                   <CanGrow>true</CanGrow>
                   <KeepTogether>true</KeepTogether>
@@ -6865,7 +6853,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -6875,10 +6862,11 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
+                  <Top>0.02646cm</Top>
                   <Left>13.7019cm</Left>
                   <Height>0.63444cm</Height>
                   <Width>2.71951cm</Width>
-                  <ZIndex>7</ZIndex>
+                  <ZIndex>2</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>
@@ -6933,7 +6921,7 @@ Code.DevolverDec(Code.GetData(41,2)) + Code.DevolverDec(Code.GetData(56,2)))
                   <Left>0.49085cm</Left>
                   <Height>0.54708cm</Height>
                   <Width>2.75672cm</Width>
-                  <ZIndex>8</ZIndex>
+                  <ZIndex>3</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>
@@ -6983,7 +6971,7 @@ Code.DevolverDec(Code.GetData(41,2)) + Code.DevolverDec(Code.GetData(56,2)))
                   <Left>3.2312cm</Left>
                   <Height>0.54708cm</Height>
                   <Width>2.08361cm</Width>
-                  <ZIndex>9</ZIndex>
+                  <ZIndex>4</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>
@@ -7033,7 +7021,7 @@ Code.DevolverDec(Code.GetData(41,2)) + Code.DevolverDec(Code.GetData(56,2)))
                   <Left>5.31481cm</Left>
                   <Height>0.54708cm</Height>
                   <Width>1.88871cm</Width>
-                  <ZIndex>10</ZIndex>
+                  <ZIndex>5</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>
@@ -7083,7 +7071,7 @@ Code.DevolverDec(Code.GetData(41,2)) + Code.DevolverDec(Code.GetData(56,2)))
                   <Left>7.20352cm</Left>
                   <Height>0.54708cm</Height>
                   <Width>1.85466cm</Width>
-                  <ZIndex>11</ZIndex>
+                  <ZIndex>6</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>
@@ -7133,7 +7121,7 @@ Code.DevolverDec(Code.GetData(41,2)) + Code.DevolverDec(Code.GetData(56,2)))
                   <Left>9.05818cm</Left>
                   <Height>0.54708cm</Height>
                   <Width>2.61096cm</Width>
-                  <ZIndex>12</ZIndex>
+                  <ZIndex>7</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>
@@ -7183,7 +7171,7 @@ Code.DevolverDec(Code.GetData(41,2)) + Code.DevolverDec(Code.GetData(56,2)))
                   <Left>11.66914cm</Left>
                   <Height>0.54708cm</Height>
                   <Width>2.03939cm</Width>
-                  <ZIndex>13</ZIndex>
+                  <ZIndex>8</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>
@@ -7235,7 +7223,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                   <Left>13.67988cm</Left>
                   <Height>0.54708cm</Height>
                   <Width>2.71951cm</Width>
-                  <ZIndex>14</ZIndex>
+                  <ZIndex>9</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>
@@ -7272,7 +7260,6 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -7285,7 +7272,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                   <Left>16.42141cm</Left>
                   <Height>0.63444cm</Height>
                   <Width>2.80883cm</Width>
-                  <ZIndex>15</ZIndex>
+                  <ZIndex>10</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>
@@ -7337,7 +7324,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                   <Left>16.42141cm</Left>
                   <Height>0.54708cm</Height>
                   <Width>1.9758cm</Width>
-                  <ZIndex>16</ZIndex>
+                  <ZIndex>11</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>
@@ -7388,7 +7375,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                   <Left>18.39721cm</Left>
                   <Height>0.54708cm</Height>
                   <Width>0.83303cm</Width>
-                  <ZIndex>17</ZIndex>
+                  <ZIndex>12</ZIndex>
                   <Style>
                     <Border>
                       <Color>LightGrey</Color>

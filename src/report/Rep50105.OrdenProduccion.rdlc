@@ -54,7 +54,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -110,7 +109,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -166,7 +164,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -222,7 +219,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -278,7 +274,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -334,7 +329,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -675,7 +669,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>4.51124cm</Top>
+            <Top>4.51123cm</Top>
             <Left>0.66463cm</Left>
             <Height>1.87938cm</Height>
             <Width>18.4627cm</Width>
@@ -721,7 +715,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -777,7 +770,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -833,7 +825,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -889,7 +880,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -945,7 +935,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1202,7 +1191,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>2.66331cm</Top>
+            <Top>2.6633cm</Top>
             <Left>0.68223cm</Left>
             <Height>1.06771cm</Height>
             <Width>18.4451cm</Width>
@@ -1240,7 +1229,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1296,7 +1284,6 @@
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1436,7 +1423,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>0.78011cm</Top>
+            <Top>0.7801cm</Top>
             <Left>0.66509cm</Left>
             <Height>1.2cm</Height>
             <Width>9.43553cm</Width>
@@ -1464,7 +1451,7 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>0.13219cm</Top>
+            <Top>0.13218cm</Top>
             <Left>0.68093cm</Left>
             <Height>0.22731in</Height>
             <Width>541.41449pt</Width>
@@ -1498,7 +1485,7 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>2.05066cm</Top>
+            <Top>2.05065cm</Top>
             <Left>0.74289cm</Left>
             <Height>0.22731in</Height>
             <Width>539.65843pt</Width>
@@ -1537,7 +1524,7 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>3.89859cm</Top>
+            <Top>3.89858cm</Top>
             <Left>0.65344cm</Left>
             <Height>0.22731in</Height>
             <Width>542.19373pt</Width>
@@ -1578,6 +1565,7 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
+            <Top>-0.00001cm</Top>
             <Height>463.09847pt</Height>
             <Width>0.6328cm</Width>
             <ZIndex>6</ZIndex>
@@ -1601,7 +1589,7 @@
       <Width>19.96967cm</Width>
       <Page>
         <PageHeader>
-          <Height>5.53597cm</Height>
+          <Height>5.53598cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>

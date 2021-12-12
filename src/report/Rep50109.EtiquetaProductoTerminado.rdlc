@@ -11,52 +11,6 @@
       <rd:DataSourceID>c1ff4681-b39f-4322-9510-f6eb1bdc17a0</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="codDocumento">
-          <DataField>codDocumento</DataField>
-        </Field>
-        <Field Name="CodBarra">
-          <DataField>CodBarra</DataField>
-        </Field>
-        <Field Name="Item_No_">
-          <DataField>Item_No_</DataField>
-        </Field>
-        <Field Name="RecItemDescripcion">
-          <DataField>RecItemDescripcion</DataField>
-        </Field>
-        <Field Name="Order_No_">
-          <DataField>Order_No_</DataField>
-        </Field>
-        <Field Name="Posting_Date">
-          <DataField>Posting_Date</DataField>
-        </Field>
-        <Field Name="Document_No_">
-          <DataField>Document_No_</DataField>
-        </Field>
-        <Field Name="RecCompany">
-          <DataField>RecCompany</DataField>
-        </Field>
-        <Field Name="Codigo_Lbl">
-          <DataField>Codigo_Lbl</DataField>
-        </Field>
-        <Field Name="NPedido_Lbl">
-          <DataField>NPedido_Lbl</DataField>
-        </Field>
-        <Field Name="Fecha_Lbl">
-          <DataField>Fecha_Lbl</DataField>
-        </Field>
-        <Field Name="OutputNo">
-          <DataField>OutputNo</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -542,12 +496,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -587,4 +535,50 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="codDocumento">
+          <DataField>codDocumento</DataField>
+        </Field>
+        <Field Name="CodBarra">
+          <DataField>CodBarra</DataField>
+        </Field>
+        <Field Name="Item_No_">
+          <DataField>Item_No_</DataField>
+        </Field>
+        <Field Name="RecItemDescripcion">
+          <DataField>RecItemDescripcion</DataField>
+        </Field>
+        <Field Name="Order_No_">
+          <DataField>Order_No_</DataField>
+        </Field>
+        <Field Name="Posting_Date">
+          <DataField>Posting_Date</DataField>
+        </Field>
+        <Field Name="Document_No_">
+          <DataField>Document_No_</DataField>
+        </Field>
+        <Field Name="RecCompany">
+          <DataField>RecCompany</DataField>
+        </Field>
+        <Field Name="Codigo_Lbl">
+          <DataField>Codigo_Lbl</DataField>
+        </Field>
+        <Field Name="NPedido_Lbl">
+          <DataField>NPedido_Lbl</DataField>
+        </Field>
+        <Field Name="Fecha_Lbl">
+          <DataField>Fecha_Lbl</DataField>
+        </Field>
+        <Field Name="OutputNo">
+          <DataField>OutputNo</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

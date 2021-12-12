@@ -1746,7 +1746,6 @@
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1803,7 +1802,6 @@
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1813,8 +1811,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>6.55255cm</Top>
-              <Left>3.03945cm</Left>
+              <Top>6.57901cm</Top>
+              <Left>3.01299cm</Left>
               <Height>0.9cm</Height>
               <Width>5.79981cm</Width>
               <ZIndex>14</ZIndex>
@@ -1860,7 +1858,6 @@
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1870,8 +1867,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>6.55255cm</Top>
-              <Left>8.83926cm</Left>
+              <Top>6.57901cm</Top>
+              <Left>8.8128cm</Left>
               <Height>0.9cm</Height>
               <Width>1.49319cm</Width>
               <ZIndex>15</ZIndex>
@@ -1917,7 +1914,6 @@
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1927,8 +1923,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
-              <Top>6.55255cm</Top>
-              <Left>10.33245cm</Left>
+              <Top>6.57901cm</Top>
+              <Left>10.30599cm</Left>
               <Height>0.9cm</Height>
               <Width>1.69397cm</Width>
               <ZIndex>16</ZIndex>
@@ -1974,7 +1970,6 @@
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1984,8 +1979,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox11</rd:DefaultName>
-              <Top>6.55255cm</Top>
-              <Left>12.02642cm</Left>
+              <Top>6.57901cm</Top>
+              <Left>11.99996cm</Left>
               <Height>0.9cm</Height>
               <Width>2.39071cm</Width>
               <ZIndex>17</ZIndex>
@@ -2031,7 +2026,6 @@
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -2041,8 +2035,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox13</rd:DefaultName>
-              <Top>6.55255cm</Top>
-              <Left>14.41263cm</Left>
+              <Top>6.57901cm</Top>
+              <Left>14.38617cm</Left>
               <Height>0.9cm</Height>
               <Width>1.51916cm</Width>
               <ZIndex>18</ZIndex>
@@ -2088,7 +2082,6 @@
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -2098,8 +2091,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
-              <Top>6.55255cm</Top>
-              <Left>15.91916cm</Left>
+              <Top>6.57901cm</Top>
+              <Left>15.8927cm</Left>
               <Height>0.9cm</Height>
               <Width>2.07991cm</Width>
               <ZIndex>19</ZIndex>
@@ -2145,7 +2138,6 @@
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -2155,8 +2147,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox13</rd:DefaultName>
-              <Top>6.55255cm</Top>
-              <Left>17.99907cm</Left>
+              <Top>6.57901cm</Top>
+              <Left>17.97261cm</Left>
               <Height>0.9cm</Height>
               <Width>1.60575cm</Width>
               <ZIndex>20</ZIndex>

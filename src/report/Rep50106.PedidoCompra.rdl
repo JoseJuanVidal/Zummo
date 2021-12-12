@@ -55,7 +55,6 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -114,7 +113,6 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -173,7 +171,6 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -232,7 +229,6 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -291,7 +287,6 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -350,7 +345,6 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1743,7 +1737,6 @@
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>#d5ccc2</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -2144,7 +2137,6 @@
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -2202,7 +2194,6 @@
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -2261,7 +2252,6 @@
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -2320,7 +2310,6 @@
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -2379,7 +2368,6 @@
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -2438,7 +2426,6 @@
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>

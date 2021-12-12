@@ -74,7 +74,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>Gray</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -122,7 +121,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>Gray</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -163,7 +161,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>Gray</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -207,7 +204,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>Gray</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -251,7 +247,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>Gray</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -294,7 +289,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>Gray</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -337,7 +331,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>9pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>Gray</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -4062,7 +4055,6 @@ Cstr(Sum(Fields!Portes.Value))
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>Gray</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4100,7 +4092,6 @@ Cstr(Sum(Fields!Portes.Value))
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>Gray</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4138,7 +4129,6 @@ Cstr(Sum(Fields!Portes.Value))
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>Gray</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4176,7 +4166,6 @@ Cstr(Sum(Fields!Portes.Value))
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>Gray</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4214,7 +4203,6 @@ Cstr(Sum(Fields!Portes.Value))
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>Gray</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4249,7 +4237,6 @@ Cstr(Sum(Fields!Portes.Value))
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>Gray</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4285,7 +4272,6 @@ Cstr(Sum(Fields!Portes.Value))
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>Gray</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -5127,7 +5113,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5137,8 +5122,8 @@ Cstr(Sum(Fields!Portes.Value))
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>1.16472cm</Top>
-                  <Left>0.2147cm</Left>
+                  <Top>1.19118cm</Top>
+                  <Left>0.24116cm</Left>
                   <Height>0.6cm</Height>
                   <Width>2.75672cm</Width>
                   <ZIndex>13</ZIndex>
@@ -5168,7 +5153,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5178,8 +5162,8 @@ Cstr(Sum(Fields!Portes.Value))
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>1.16472cm</Top>
-                  <Left>7.74826cm</Left>
+                  <Top>1.19118cm</Top>
+                  <Left>7.77472cm</Left>
                   <Height>0.6cm</Height>
                   <Width>1.70866cm</Width>
                   <ZIndex>14</ZIndex>
@@ -5209,7 +5193,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5250,7 +5233,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5291,7 +5273,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5568,7 +5549,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5736,7 +5716,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5745,7 +5724,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5755,7 +5733,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
                             <Format>0;(0)</Format>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5764,7 +5741,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5774,8 +5750,8 @@ Cstr(Sum(Fields!Portes.Value))
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>1.16472cm</Top>
-                  <Left>2.97142cm</Left>
+                  <Top>1.19118cm</Top>
+                  <Left>2.99788cm</Left>
                   <Height>0.6cm</Height>
                   <Width>2.82004cm</Width>
                   <ZIndex>28</ZIndex>
@@ -5805,7 +5781,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5814,7 +5789,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5823,7 +5797,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5832,7 +5805,6 @@ Cstr(Sum(Fields!Portes.Value))
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>Gray</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5842,8 +5814,8 @@ Cstr(Sum(Fields!Portes.Value))
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>1.16472cm</Top>
-                  <Left>5.79146cm</Left>
+                  <Top>1.19118cm</Top>
+                  <Left>5.81792cm</Left>
                   <Height>0.6cm</Height>
                   <Width>1.9568cm</Width>
                   <ZIndex>29</ZIndex>

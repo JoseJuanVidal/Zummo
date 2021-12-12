@@ -72,7 +72,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -107,7 +106,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -142,7 +140,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -180,7 +177,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -290,7 +286,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -331,7 +326,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -366,7 +360,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -401,7 +394,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -439,7 +431,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -477,7 +468,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -513,7 +503,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -550,7 +539,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -3248,7 +3236,6 @@ cstr(Fields!txtVatEORI.Value)
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>16pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>#d5ccc2</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -5325,7 +5312,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5335,7 +5321,7 @@ cstr(Fields!txtVatEORI.Value)
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>1.13643cm</Top>
+                  <Top>1.16289cm</Top>
                   <Left>0.00833cm</Left>
                   <Height>0.63444cm</Height>
                   <Width>2.75672cm</Width>
@@ -5378,7 +5364,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5387,7 +5372,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5397,7 +5381,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
                             <Format>0</Format>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5407,7 +5390,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
                             <Format>0</Format>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5417,7 +5399,7 @@ cstr(Fields!txtVatEORI.Value)
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>1.13643cm</Top>
+                  <Top>1.16289cm</Top>
                   <Left>2.76506cm</Left>
                   <Height>0.63444cm</Height>
                   <Width>2.20708cm</Width>
@@ -5460,7 +5442,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5469,7 +5450,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5479,7 +5459,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
                             <Format>0</Format>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                         <TextRun>
@@ -5489,7 +5468,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
                             <Format>0</Format>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5499,7 +5477,7 @@ cstr(Fields!txtVatEORI.Value)
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>1.13643cm</Top>
+                  <Top>1.16289cm</Top>
                   <Left>4.97214cm</Left>
                   <Height>0.63444cm</Height>
                   <Width>1.75689cm</Width>
@@ -5542,7 +5520,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5595,7 +5572,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5648,7 +5624,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5701,7 +5676,6 @@ cstr(Fields!txtVatEORI.Value)
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -6106,7 +6080,6 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
                             <FontWeight>Bold</FontWeight>
-                            <Color>White</Color>
                           </Style>
                         </TextRun>
                       </TextRuns>
