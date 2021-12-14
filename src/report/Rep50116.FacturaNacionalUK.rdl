@@ -3287,7 +3287,7 @@ Cstr(Fields!txtVatEORI.Value)
             </Line>
             <Image Name="Image1">
               <Source>Database</Source>
-              <Value>=First(Fields!CompanyInfoPicture.Value, "DataSet_Result")</Value>
+              <Value>=First(Fields!CompanyInfo1Picture.Value, "DataSet_Result")</Value>
               <MIMEType>image/png</MIMEType>
               <Sizing>FitProportional</Sizing>
               <Top>0.47714cm</Top>
