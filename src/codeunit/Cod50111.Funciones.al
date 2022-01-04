@@ -524,6 +524,8 @@ codeunit 50111 "Funciones"
         Location: Record Location;
         Text000: label 'No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén', Comment = 'ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"';
     begin
+        if Item.GetFilter("Location Filter") = '' then
+            exit;
         Location.SetFilter(Code, item.GetFilter("Location Filter"));
         if Location.count > 1 then
             Error(text000);
@@ -1237,5 +1239,53 @@ codeunit 50111 "Funciones"
             Until PurchRcptLine.next() = 0;
     end;
 
+    procedure CheckEsBajoPedido(Rec: Record "Sales Header")
+    var
+        SalesLine: Record "Sales Line";
+        AssemblyLine: Record "Assembly Line";
+        Item: Record Item;
+        Mensaje: text;
+        recAssToOrdLink: Record "Assemble-to-Order Link";
+    begin
+        SalesLine.reset;
+        SalesLine.SetRange("Document Type", Rec."Document Type");
+        SalesLine.SetRange("Document No.", Rec."No.");
+        SalesLine.SetRange(Type, SalesLine.Type::Item);
+        if SalesLine.FindSet() then
+            repeat
+                if SalesLine."Qty. to Assemble to Order" > 0 then begin
+                    recAssToOrdLink.Reset();
+                    recAssToOrdLink.SetRange("Document Type", SalesLine."Document Type");
+                    recAssToOrdLink.SetRange("Document No.", SalesLine."Document No.");
+                    recAssToOrdLink.SetRange("Document Line No.", SalesLine."Line No.");
+                    if recAssToOrdLink.FindSet() then
+                        repeat
+                            AssemblyLine.Reset();
+                            AssemblyLine.SetRange("Document Type", recAssToOrdLink."Assembly Document Type");
+                            AssemblyLine.SetRange("Document No.", recAssToOrdLink."Assembly Document No.");
+                            if AssemblyLine.FindSet() then
+                                repeat
+                                    Item.Get(SalesLine."No.");
+                                    if Item."ContraStock/BajoPedido" = Item."ContraStock/BajoPedido"::BajoPedido then
+                                        Mensaje += 'El articulo ' + Item."No." + ' ; '
+                                    else
+                                        if SalesLine.Quantity > Item.PedidoMaximo then
+                                            Mensaje += 'El articulo ' + Item."No." + ' ; '
+                                until AssemblyLine.Next() = 0;
+                        until recAssToOrdLink.Next() = 0;
+                end;
+                Item.Get(SalesLine."No.");
+                if Item."ContraStock/BajoPedido" = Item."ContraStock/BajoPedido"::BajoPedido then
+                    Mensaje += 'El articulo ' + Item."No." + '; '
+                else
+                    if Item."ContraStock/BajoPedido" = Item."ContraStock/BajoPedido"::" " then
+                        Mensaje += 'El articulo ' + Item."No." + ' no se indica si es bajopedido/contrastock ; '
+                    else
+                        if SalesLine.Quantity > Item.PedidoMaximo then
+                            Mensaje += 'El articulo ' + Item."No." + ' ; ';
 
+            until SalesLine.Next() = 0;
+        if Mensaje <> '' then
+            if Confirm(Mensaje + ' Son bajo pedido', true, true) then;
+    end;
 }
