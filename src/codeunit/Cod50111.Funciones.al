@@ -525,7 +525,7 @@ codeunit 50111 "Funciones"
         Text000: label 'No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén', Comment = 'ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"';
     begin
         if Item.GetFilter("Location Filter") = '' then
-            exit;
+            Error('Debe Seleccionar el Almacén principal');
         Location.SetFilter(Code, item.GetFilter("Location Filter"));
         if Location.count > 1 then
             Error(text000);
@@ -571,9 +571,14 @@ codeunit 50111 "Funciones"
         ReqLine: Record "Requisition Line";
     begin
         ReqLine.SetRange("Journal Batch Name", WorkSheetName);
-        ReqLine.SetRange("Worksheet Template Name", 'PLANIF.');
+        //ReqLine.SetRange("Worksheet Template Name", 'PLANIF.');
         ReqLine.SetFilter("Location Code", '<>%1', FilterLocation);
-        ReqLine.DeleteAll();
+        //ReqLine.DeleteAll();
+        if ReqLine.findset() then
+            repeat
+                if ReqLine."Location Code" <> FilterLocation then
+                    ReqLine.Delete();
+            Until ReqLine.next() = 0;
     end;
 
     procedure GetExtensionFieldValuetext(vRecordIf: RecordId; fieldNo: Integer; CalcField: boolean): text
