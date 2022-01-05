@@ -143,4 +143,16 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
             }
         }
     }
+
+    trigger OnClosePage()
+    begin
+        if not Rec."Aviso Oferta bajo pedido" then begin
+            Rec."Aviso Oferta bajo pedido" := true;
+            Rec.Modify();
+            Funciones.CheckEsBajoPedido(Rec);
+        end;
+    end;
+
+    var
+        Funciones: Codeunit Funciones;
 }

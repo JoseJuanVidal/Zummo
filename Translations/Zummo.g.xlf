@@ -21563,6 +21563,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field AreaManager_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 843231600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Aviso Oferta bajo pedido</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso Oferta bajo pedido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Aviso Oferta bajo pedido - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 338312380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Central Compras</source>
           <note from="Developer" annotates="general" priority="2">ESP="Central Compras"</note>

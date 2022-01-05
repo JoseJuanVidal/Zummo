@@ -189,6 +189,11 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
                 Salesline.ModifyAll("No contemplar planificacion", Rec."No contemplar planificacion");
             end;
         }
+        field(50013; "Aviso Oferta bajo pedido"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Aviso Oferta bajo pedido', comment = 'ESP="Aviso Oferta bajo pedido"';
+        }
 
         field(5068; FechaAltaPedido; Date)
         {

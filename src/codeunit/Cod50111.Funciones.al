@@ -1291,6 +1291,6 @@ codeunit 50111 "Funciones"
 
             until SalesLine.Next() = 0;
         if Mensaje <> '' then
-            if Confirm(Mensaje + ' Son bajo pedido', true, true) then;
+            Message(Mensaje + ' Son bajo pedido');
     end;
 }
