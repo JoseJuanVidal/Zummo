@@ -54,6 +54,10 @@ pageextension 50002 "SalesCreditMemo" extends "Sales Credit Memo"
             {
                 ApplicationArea = all;
             }
+            field("Posting No. Series"; "Posting No. Series")
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions

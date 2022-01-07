@@ -63,9 +63,11 @@ codeunit 50101 "Eventos_btc"
 
     begin
         if (Rec."Document Date" < workdate) or (rec."Posting Date" < workdate) then begin
-            rec.Validate("Document Date", workdate);
-            rec.Validate("Posting Date", workdate);
-            rec.Modify();
+            if Confirm('¿Desea cambiar la fecha de registro %1, por %2?', false, Rec."Posting Date", WorkDate()) then begin
+                rec.Validate("Document Date", workdate);
+                rec.Validate("Posting Date", workdate);
+                rec.Modify();
+            end;
         end;
     end;
 
@@ -78,9 +80,11 @@ codeunit 50101 "Eventos_btc"
         if UserId = 'ADMIN' THEN
             EXIT;
         if (Rec."Document Date" < workdate) or (rec."Posting Date" < workdate) then begin
-            rec.Validate("Document Date", workdate);
-            rec.Validate("Posting Date", workdate);
-            rec.Modify();
+            if Confirm('¿Desea cambiar la fecha de registro %1, por %2?', false, Rec."Posting Date", WorkDate()) then begin
+                rec.Validate("Document Date", workdate);
+                rec.Validate("Posting Date", workdate);
+                rec.Modify();
+            end;
         end;
     end;
 
@@ -92,9 +96,11 @@ codeunit 50101 "Eventos_btc"
         if UserId = 'ADMIN' THEN
             EXIT;
         if (Rec."Document Date" < workdate) or (rec."Posting Date" < workdate) then begin
-            rec.Validate("Document Date", workdate);
-            rec.Validate("Posting Date", workdate);
-            rec.Modify();
+            if Confirm('¿Desea cambiar la fecha de registro %1, por %2?', false, Rec."Posting Date", WorkDate()) then begin
+                rec.Validate("Document Date", workdate);
+                rec.Validate("Posting Date", workdate);
+                rec.Modify();
+            end
         end;
     end;
 
