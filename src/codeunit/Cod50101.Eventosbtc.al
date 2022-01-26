@@ -776,6 +776,17 @@ codeunit 50101 "Eventos_btc"
         end;
     end;
 
+    [EventSubscriber(ObjectType::Report, Report::"Calculate Plan - Req. Wksh.", 'OnBeforeSkipPlanningForItemOnReqWksh', '', true, true)]
+    local procedure CalculatePlanReqWkshOnBeforeSkipPlanningForItemOnReqWksh(Item: Record Item; VAR SkipPlanning: Boolean; VAR IsHandled: Boolean)
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        if Item.STHUseLocationGroup then begin
+            Funciones.CheckFilterOneLocation(Item);
+        end;
+    end;
+
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnBeforeDemandToInvProfile', '', true, true)]
     local procedure InventoryProfileOffsettingOnBeforeDemandToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; VAR IsHandled: Boolean)
@@ -783,7 +794,7 @@ codeunit 50101 "Eventos_btc"
         Funciones: Codeunit Funciones;
     begin
         if Item.STHUseLocationGroup then begin
-            Funciones.CheckandSetFilterOneLocation(Item);
+            Funciones.SetFilterOneLocation(Item);
         end;
     end;
 

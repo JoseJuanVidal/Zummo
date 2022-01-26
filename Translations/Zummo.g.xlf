@@ -5448,10 +5448,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method changePostinGroup - NamedType Text000</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1986021836 - Method 3906917530 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 1986021836 - Method 2146014129 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckandSetFilterOneLocation - NamedType Text000</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckFilterOneLocation - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 1822228488 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Código #1###################</source>
@@ -5502,6 +5502,11 @@
           <source>Please check that at least one open bill was selected.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Verifique que se haya seleccionado al menos una factura abierta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method PagPostedBillsSettleAction - NamedType Text1100001Txt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 1902515253 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method SetFilterOneLocation - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Codeunit 1069980009 - Method 2322295925 - NamedType 466800574" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to change the status of the selected orders?</source>
@@ -20974,8 +20979,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHCostEstandarOLD - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 906017942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>No Contemplar Ped. Compra</source>
-          <note from="Developer" annotates="general" priority="2">ESP="No Contemplar Ped. Compra"</note>
+          <source>Filtro almacen hoja demanda Agrup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro almacen hoja demanda Agrup"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHFilterLocation - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1547180927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">

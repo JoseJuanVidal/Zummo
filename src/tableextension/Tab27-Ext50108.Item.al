@@ -258,10 +258,10 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'No Contemplar Ped. Compra', comment = 'ESP="No Contemplar Ped. Compra"';
         }
-        field(50103; STHFilterLocation; Code[10])
+        field(50103; STHFilterLocation; Code[100])
         {
             DataClassification = CustomerContent;
-            Caption = 'No Contemplar Ped. Compra', comment = 'ESP="No Contemplar Ped. Compra"';
+            Caption = 'Filtro almacen hoja demanda Agrup', comment = 'ESP="Filtro almacen hoja demanda Agrup"';
         }
         field(50104; STHWorksheetName; Code[10])
         {

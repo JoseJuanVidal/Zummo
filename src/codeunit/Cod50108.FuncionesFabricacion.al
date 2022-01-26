@@ -406,9 +406,6 @@ codeunit 50108 "FuncionesFabricacion"
 
         commit;
 
-
-
-
         ItemPedido.SetRange("No.");
         ItemPedido.SetRange("Location Filter", 'MMPP');
         ItemPedido.SetRange("Replenishment System", ItemCompra."Replenishment System"::"Prod. Order");

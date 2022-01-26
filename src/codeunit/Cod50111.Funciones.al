@@ -519,7 +519,8 @@ codeunit 50111 "Funciones"
         end;
     end;
 
-    procedure CheckandSetFilterOneLocation(var Item: Record Item)
+
+    procedure CheckFilterOneLocation(var Item: Record Item)
     var
         Location: Record Location;
         Text000: label 'No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén', Comment = 'ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"';
@@ -529,6 +530,19 @@ codeunit 50111 "Funciones"
         Location.SetFilter(Code, item.GetFilter("Location Filter"));
         if Location.count > 1 then
             Error(text000);
+
+    end;
+
+    procedure SetFilterOneLocation(var Item: Record Item)
+    var
+        Location: Record Location;
+        Text000: label 'No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén', Comment = 'ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"';
+    begin
+        //if Item.GetFilter("Location Filter") <> 'MMPP' then
+        //    Error('Debe Seleccionar el Almacén principal MMPP');
+        // Location.SetFilter(Code, item.GetFilter("Location Filter"));
+        // if Location.count > 1 then
+        //     Error(text000);
         SetFilterLocations(Item);
 
     end;
@@ -546,7 +560,8 @@ codeunit 50111 "Funciones"
                     LocFilter += '|';
                 LocFilter += Location.Code;
             Until Location.next() = 0;
-        Item.STHFilterLocation := Item.GetFilter("Location Filter");
+        if Item.STHFilterLocation = '' then
+            Item.STHFilterLocation := 'MMPP'; //Item.GetFilter("Location Filter");
         if LocFilter <> '' then
             Item.SetFilter("Location Filter", LocFilter);
     end;
@@ -566,7 +581,7 @@ codeunit 50111 "Funciones"
         Item.SetFilter("Location Filter", item.STHFilterLocation);
     end;
 
-    procedure DeleteFilterOneLocation(var WorkSheetName: code[10]; FilterLocation: code[10])
+    procedure DeleteFilterOneLocation(var WorkSheetName: code[10]; FilterLocation: code[100])
     var
         ReqLine: Record "Requisition Line";
     begin
