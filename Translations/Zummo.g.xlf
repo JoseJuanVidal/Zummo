@@ -20038,6 +20038,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Action Movimientos - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 696572482 - Control 2166884334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3332899200">
+          <source>Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Control AmountcostLines - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 696572482 - Control 2166884334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3332899200">
+          <source>Importe Coste</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Control AmountcostLines - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1793060472 - Action 10636857 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>Navigates to item card</source>
           <note from="Developer" annotates="general" priority="2">ESP="Navega a la ficha del producto"</note>

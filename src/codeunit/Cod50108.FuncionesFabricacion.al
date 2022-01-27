@@ -411,6 +411,7 @@ codeunit 50108 "FuncionesFabricacion"
         ItemPedido.SetRange("Replenishment System", ItemCompra."Replenishment System"::"Prod. Order");
         ItemPedido.SetRange(Ordenacion_btc, 1);
         ItemPedido.SetRange(Blocked, false);
+        clear(CalcPlan);
         CalcPlan.SetTableView(ItemPedido);
         CalcPlan.SetTemplAndWorksheet('PLANIF.', RequisitionWkshName."Name", TRUE);
         CalcPlan.UseRequestPage(false);
@@ -424,6 +425,7 @@ codeunit 50108 "FuncionesFabricacion"
         ItemCompra.SetRange("Replenishment System", ItemCompra."Replenishment System"::Purchase);
         ItemCompra.SetRange(Ordenacion_btc, 1);
         ItemCompra.SetRange(Blocked, false);
+        clear(CalcPlan);
         CalculatePlan.SetTableView(ItemCompra);
         CalculatePlan.SetTemplAndWorksheet('APROV.', RequisitionWkshName."Name");
         CalculatePlan.UseRequestPage(false);

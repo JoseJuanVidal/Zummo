@@ -10,6 +10,12 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
             {
                 ApplicationArea = All;
             }*/
+            field(AmountcostLines; AmountcostLines)
+            {
+                Caption = 'Importe Coste', comment = 'ESP="Importe Coste"';
+                ApplicationArea = all;
+                ToolTip = 'Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.';
+            }
             field("Payment Method Code"; "Payment Method Code")
             {
                 ApplicationArea = All;
@@ -241,9 +247,33 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
         }
 
     }
+
+    trigger OnAfterGetRecord()
+    begin
+        AmountcostLines := CalcAmountcostLines();
+    end;
+
+    Var
+        Saleslines: record "Sales Line";
+        AmountcostLines: Decimal;
+
     procedure GetResult(VAR SalesHeader: Record "Sales Header")
     begin
         CurrPage.SETSELECTIONFILTER(SalesHeader);
+    end;
+
+    procedure CalcAmountcostLines(): decimal
+    var
+        CostLines: Decimal;
+    begin
+        Saleslines.Reset();
+        Saleslines.SetRange("Document Type", Rec."Document Type");
+        Saleslines.SetRange("Document No.", Rec."No.");
+        if Saleslines.findset() then
+            repeat
+                CostLines += Saleslines."Unit Cost (LCY)" * Saleslines.Quantity;
+            Until Saleslines.next() = 0;
+        exit(round(CostLines, 0.01));
     end;
 
 }

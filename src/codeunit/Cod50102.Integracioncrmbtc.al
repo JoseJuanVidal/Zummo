@@ -252,8 +252,9 @@ codeunit 50102 "Integracion_crm_btc"
             end;
         end;
 
-
-
+        // poner validate para que recalcule las lineas
+        SalesLine.Validate(Quantity, SalesLine.Quantity);  // JJV control de validate
+        Salesline.UpdateAmounts();  // JJV control de validate
 
         EXIT(TRUE);
     end;
