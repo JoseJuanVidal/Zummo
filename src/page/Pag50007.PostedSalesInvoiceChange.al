@@ -41,6 +41,16 @@ page 50007 "Posted Sales Invoice Change"
                     DecimalPlaces = 0 : 4;
                 }
             }
+            Group(Facturacionyenvio)
+            {
+                Caption = 'Factuación y envío', comment = 'ESP="Factuación y envío"';
+
+                field(PackageTrackingNo; PackageTrackingNo)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Nº seguimiento bulto', comment = 'ESP="Nº seguimiento bulto"';
+                }
+            }
         }
     }
 
@@ -68,14 +78,17 @@ page 50007 "Posted Sales Invoice Change"
         ClienteReporting_btc: Code[20];
         Currencychange: Decimal;
         TempBlob: Record TempBlob temporary;
+        PackageTrackingNo: text[30];
 
-    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; var CurChange: Decimal)
+
+    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; var CurChange: Decimal; vPackageTrackingNo: text[30])
     begin
         ExtDocNo := ExternalDocumentNo;
         WorkDesc := WorkDescription;
         AreaManager := AreaManager_btc;
         ClienteReporting := ClienteReporting_btc;
         CurChange := Currencychange;
+        vPackageTrackingNo := PackageTrackingNo;
     end;
 
     procedure SetDatos(SalesInvoiceHeader: Record "Sales Invoice Header")
@@ -94,6 +107,7 @@ page 50007 "Posted Sales Invoice Change"
         WorkDescription := TempBlob.ReadAsText(CR, TEXTENCODING::UTF8);
         AreaManager_btc := SalesInvoiceHeader.AreaManager_btc;
         Currencychange := SalesInvoiceHeader.CurrencyChange;
+        PackageTrackingNo := SalesInvoiceHeader."Package Tracking No.";
     end;
 
 }

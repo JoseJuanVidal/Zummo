@@ -8303,6 +8303,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Editar Hist. Venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 3137358113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Factuación y envío</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factuación y envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control Facturacionyenvio - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 902657488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº seguimiento bulto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº seguimiento bulto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control PackageTrackingNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2287400882 - Control 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Area Manager</source>
           <note from="Developer" annotates="general" priority="2">Area Manager</note>

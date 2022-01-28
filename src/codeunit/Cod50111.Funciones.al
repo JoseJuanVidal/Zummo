@@ -499,7 +499,7 @@ codeunit 50111 "Funciones"
         end;
     end;
 
-    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20]; CurrChange: Decimal)
+    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20]; CurrChange: Decimal; PackageTrackingNo: text[30])
     var
         SalesInvoiceHeader: Record "Sales Invoice Header";
         TempBlob: Record TempBlob temporary;
@@ -515,6 +515,7 @@ codeunit 50111 "Funciones"
                 TempBlob.WriteAsText(NewWorkDescription, TEXTENCODING::UTF8);
                 SalesInvoiceHeader."Work Description" := TempBlob.Blob;
             end;
+            SalesInvoiceHeader."Package Tracking No." := PackageTrackingNo;
             SalesInvoiceHeader.Modify();
         end;
     end;

@@ -748,6 +748,49 @@ codeunit 50101 "Eventos_btc"
             DimensionValue.Modify();
         end;
     end;
+
+    [EventSubscriber(ObjectType::Table, database::Vendor, 'OnAfterInsertEvent', '', false, false)]
+    local procedure OnAfterInsertEventVendor(Rec: Record Vendor)
+    var
+        DimensionValue: Record "Dimension Value";
+    begin
+        if rec.IsTemporary then
+            exit;
+        DimensionValue.reset;
+        DimensionValue.SetRange("Dimension Code", 'PROYECTO');
+        DimensionValue.SetRange(Code, rec."No.");
+        if DimensionValue.FindSet() then
+            exit;
+        DimensionValue.Init();
+        DimensionValue."Dimension Code" := 'PROYECTO';
+        // JJV 14/08/20 ponemos la dimension global al numero indicado
+        DimensionValue."Global Dimension No." := 2;
+        // fin 
+        DimensionValue.Code := REC."No.";
+        DimensionValue.Name := copystr(rec.Name, 1, 50);
+        DimensionValue."Dimension Value Type" := DimensionValue."Dimension Value Type"::Standard;
+        IF DimensionValue.Insert() THEN;
+    end;
+
+    [EventSubscriber(ObjectType::Table, database::Vendor, 'OnAfterValidateEvent', 'Name', false, false)]
+    local procedure OnAfterModifyEventVendor(rec: Record Vendor)
+    var
+        DimensionValue: Record "Dimension Value";
+    begin
+        if rec.IsTemporary then
+            exit;
+        DimensionValue.reset;
+        DimensionValue.SetRange("Dimension Code", 'PROYECTO');
+        // JJV 14/08/20 ponemos la dimension global al numero indicado
+        DimensionValue."Global Dimension No." := 2;
+        // fin 
+
+        DimensionValue.SetRange(code, Rec."No.");
+        if DimensionValue.FindFirst() then begin
+            DimensionValue.Name := copystr(rec.Name, 1, 50);
+            DimensionValue.Modify();
+        end;
+    end;
     // aqui empezamos a controlar que cuando lancen el MRP de la hoja de planificación, si tienen marcado en workshhet agrupar inventario, 
     // sumar los inventarios y necesidades de esto
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnBeforeCalculatePlanFromWorksheet', '', true, true)]
