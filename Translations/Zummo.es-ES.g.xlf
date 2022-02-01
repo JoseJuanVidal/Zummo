@@ -5542,10 +5542,10 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method changePostinGroup - NamedType Text000</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1986021836 - Method 3906917530 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 1986021836 - Method 2146014129 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckandSetFilterOneLocation - NamedType Text000</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckFilterOneLocation - NamedType Text000</note>
           <target>No se puede realizar planificación con Agrupación y multiples filtros de Almacén</target>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 1822228488 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
@@ -5606,6 +5606,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Verifique que se haya seleccionado al menos una factura abierta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method PagPostedBillsSettleAction - NamedType Text1100001Txt</note>
           <target>Verifique que se haya seleccionado al menos una factura abierta</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 1902515253 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method SetFilterOneLocation - NamedType Text000</note>
+          <target>No se puede realizar planificación con Agrupación y multiples filtros de Almacén</target>
         </trans-unit>
         <trans-unit id="Codeunit 1069980009 - Method 2322295925 - NamedType 466800574" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to change the status of the selected orders?</source>
@@ -8818,6 +8824,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Editar Hist. Venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Property Caption</note>
           <target>Editar Hist. Venta</target>
+        </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 3137358113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Factuación y envío</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factuación y envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control Facturacionyenvio - Property Caption</note>
+          <target>Factuación y envío</target>
+        </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 902657488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº seguimiento bulto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº seguimiento bulto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control PackageTrackingNo - Property Caption</note>
+          <target>Nº seguimiento bulto</target>
         </trans-unit>
         <trans-unit id="Page 2287400882 - Control 782583580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cliente Reporting</source>
@@ -21355,6 +21373,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Action Movimientos - Property Caption</note>
           <target>Trazabilidad Serie</target>
         </trans-unit>
+        <trans-unit id="PageExtension 696572482 - Control 2166884334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3332899200">
+          <source>Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Control AmountcostLines - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 696572482 - Control 2166884334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3332899200">
+          <source>Importe Coste</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Control AmountcostLines - Property Caption</note>
+          <target>Importe Coste</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1793060472 - Action 10636857 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>Navigates to item card</source>
           <note from="Developer" annotates="general" priority="2">ESP="Navega a la ficha del producto"</note>
@@ -22442,10 +22471,10 @@
           <target>Costes Estandar Previo</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 906017942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>No Contemplar Ped. Compra</source>
-          <note from="Developer" annotates="general" priority="2">ESP="No Contemplar Ped. Compra"</note>
+          <source>Filtro almacen hoja demanda Agrup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro almacen hoja demanda Agrup"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STHFilterLocation - Property Caption</note>
-          <target>No Contemplar Ped. Compra</target>
+          <target>Filtro almacen hoja demanda Agrup</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1547180927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>No Contemplar Ped. Compra</source>
@@ -23142,6 +23171,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field AreaManager_btc - Property Caption</note>
           <target>Area Manager</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 843231600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Aviso Oferta bajo pedido</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso Oferta bajo pedido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Aviso Oferta bajo pedido - Property Caption</note>
+          <target>Aviso Oferta bajo pedido</target>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 338312380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Central Compras</source>
@@ -23963,6 +23998,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha final Garantía"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field FechaFinGarantia_sth - Property Caption</note>
           <target>Fecha final Garantía</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 385410918 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Fecha Recepción aviso</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha recepción aviso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Fecharecepaviso_sth - Property Caption</note>
+          <target>Fecha recepción aviso</target>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 1761136486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Informe Mejora</source>

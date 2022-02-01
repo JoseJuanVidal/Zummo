@@ -31,6 +31,14 @@ pageextension 50150 "ServiceOrderSubform" extends "Service Order Subform"
             {
                 ApplicationArea = All;
             }
+            field(Fecharecepaviso_sth; Fecharecepaviso_sth)
+            {
+                ApplicationArea = all;
+            }
+            field(Fechaemtregamaterial_sth; Fechaemtregamaterial_sth)
+            {
+                ApplicationArea = all;
+            }
         }
         addlast(Control1)
         {

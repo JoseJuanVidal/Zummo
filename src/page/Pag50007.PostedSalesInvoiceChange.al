@@ -81,7 +81,7 @@ page 50007 "Posted Sales Invoice Change"
         PackageTrackingNo: text[30];
 
 
-    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; var CurChange: Decimal; vPackageTrackingNo: text[30])
+    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; var CurChange: Decimal; var vPackageTrackingNo: text[30])
     begin
         ExtDocNo := ExternalDocumentNo;
         WorkDesc := WorkDescription;

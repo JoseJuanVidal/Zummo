@@ -8845,6 +8845,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Control globalPedidoMaximo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 696572482 - Control 2166884334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3332899200">
+          <source>Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Control AmountcostLines - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Method 1489276173 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
           <source>#1#############################################</source>
           <note from="Developer" annotates="general" priority="2"/>
