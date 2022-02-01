@@ -58,12 +58,12 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
             FieldClass = FlowField;
             CalcFormula = lookup("STH Fallo Localizado".InformeMejora where(FalloLocalizado = field("Fallo localizado")));
         }
-        field(50210; Fecharecepaviso_sth; Date)
+        field(50210; Fecharecepaviso_sth; DateTime)
         {
             Caption = 'Fecha Recepción aviso', comment = 'ESP="Fecha recepción aviso"';
             DataClassification = CustomerContent;
         }
-        field(50211; Fechaemtregamaterial_sth; Date)
+        field(50211; Fechaemtregamaterial_sth; DateTime)
         {
             Caption = 'Fecha entrega material', comment = 'ESP="Fecha entrega material"';
             DataClassification = CustomerContent;
