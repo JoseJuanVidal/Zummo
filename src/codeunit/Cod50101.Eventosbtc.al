@@ -801,6 +801,7 @@ codeunit 50101 "Eventos_btc"
     begin
         if RequisitionWkshName.Get(TemplateName, WorksheetName) then begin
             Item.STHUseLocationGroup := RequisitionWkshName.STHUseLocationGroup;
+            item.STHNoEvaluarPurchase := RequisitionWkshName.STHNoEvaluarPurchase;
             Item.STHWorksheetName := WorksheetName;
             Item.Modify();
         end;
@@ -849,6 +850,16 @@ codeunit 50101 "Eventos_btc"
         if item.STHUseLocationGroup then begin
             Funciones.ChangeFilterOneLocation(InventoryProfile, Item);
             Funciones.ResetFilterOneLocation(Item);
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnBeforeSupplyToInvProfile', '', true, true)]
+    local procedure InventoryProfileOffsettingOnBeforeSupplyToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; var ToDate: Date; VAR ReservEntry: Record "Reservation Entry"; VAR NextLineNo: Integer)
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        if Item.STHUseLocationGroup then begin
+            Funciones.SetFilterOneLocation(Item);
         end;
     end;
 

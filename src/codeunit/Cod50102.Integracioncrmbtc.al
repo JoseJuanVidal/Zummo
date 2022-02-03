@@ -60,6 +60,8 @@ codeunit 50102 "Integracion_crm_btc"
             'CRM Account_btc-Customer':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposClienteCRM(SourceRecordRef, DestinationRecordRef);
+            'STH CRM Quotedetail-Sales Line':
+                ActualizarCamposLineasOfertaCRMDespues(SourceRecordRef, DestinationRecordRef);
         /* ponemos el evento en on OnBeforeTransferRecordFields antes de que se sincronizen los campos
   'STH CRM Quote-Sales Header':
       AdditionalFieldsWereModified :=
@@ -175,6 +177,20 @@ codeunit 50102 "Integracion_crm_btc"
         EXIT(TRUE);
     end;
 
+    local procedure ActualizarCamposLineasOfertaCRMDespues(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
+    var
+        DestinationFieldRef: fieldref;
+        SalesLine: record "Sales Line";
+    begin
+
+        // Document Type
+        DestinationFieldRef := DestinationRecordRef.Field(15);  // Quantity
+        DestinationFieldRef.Validate(DestinationFieldRef.Value);
+        DestinationRecordRef.SetTable(SalesLine);
+        SalesLine.UpdateAmounts();  // JJV control de validate
+
+    end;
+
     local procedure ActualizarCamposLineasOfertaCRM(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
     var
         Customer: Record Customer;
@@ -216,6 +232,14 @@ codeunit 50102 "Integracion_crm_btc"
                 DestinationFieldRef.validate(No);
             end;
         end;
+        if No = '' then begin
+            // TODO buscar en la conexion el numero de cabecera
+            CRMIntegrationRecord.SetRange("Table ID", 36);
+            CRMIntegrationRecord.SetRange("CRM ID", CRMQuoteDetail.QuoteId);
+            if CRMIntegrationRecord.FindSet() then begin
+
+            end;
+        end;
 
         SalesHeader.GET(SalesHeader."Document Type"::Quote, No);
 
@@ -252,9 +276,6 @@ codeunit 50102 "Integracion_crm_btc"
             end;
         end;
 
-        // poner validate para que recalcule las lineas
-        SalesLine.Validate(Quantity, SalesLine.Quantity);  // JJV control de validate
-        Salesline.UpdateAmounts();  // JJV control de validate
 
         EXIT(TRUE);
     end;
