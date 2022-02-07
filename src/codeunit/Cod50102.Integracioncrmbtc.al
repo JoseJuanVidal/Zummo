@@ -161,6 +161,9 @@ codeunit 50102 "Integracion_crm_btc"
                 SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Alta;
         end;
 
+        DestinationFieldRef := DestinationRecordRef.Field(50911); // OfertaSales
+        DestinationFieldRef.Value := true;
+
         SalesHeader.OfertaSales := true;
         SalesHeader.validate("No contemplar planificacion", true);
 
