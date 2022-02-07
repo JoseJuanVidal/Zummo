@@ -60,6 +60,8 @@ codeunit 50102 "Integracion_crm_btc"
             'CRM Account_btc-Customer':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposClienteCRM(SourceRecordRef, DestinationRecordRef);
+            'STH CRM Quote-Sales Header':
+                ActualizarCamposOfertaCRMDespues(SourceRecordRef, DestinationRecordRef);
             'STH CRM Quotedetail-Sales Line':
                 ActualizarCamposLineasOfertaCRMDespues(SourceRecordRef, DestinationRecordRef);
         /* ponemos el evento en on OnBeforeTransferRecordFields antes de que se sincronizen los campos
@@ -163,9 +165,8 @@ codeunit 50102 "Integracion_crm_btc"
 
         DestinationFieldRef := DestinationRecordRef.Field(50911); // OfertaSales
         DestinationFieldRef.Value := true;
-
-        SalesHeader.OfertaSales := true;
-        SalesHeader.validate("No contemplar planificacion", true);
+        DestinationFieldRef := DestinationRecordRef.Field(50912); // 50912; "No contemplar planificacion"
+        DestinationFieldRef.Value := true;
 
         // poner los ID de cliente
         IF CRMIntegrationRecord.FindRecordIDFromID(CRMquote.CustomerId, Database::"Customer", AccountId) then begin
@@ -180,6 +181,14 @@ codeunit 50102 "Integracion_crm_btc"
         EXIT(TRUE);
     end;
 
+    local procedure ActualizarCamposOfertaCRMDespues(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
+    var
+        DestinationFieldRef: fieldref;
+    begin
+
+        exit(true);
+    end;
+
     local procedure ActualizarCamposLineasOfertaCRMDespues(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
     var
         DestinationFieldRef: fieldref;
@@ -191,7 +200,7 @@ codeunit 50102 "Integracion_crm_btc"
         DestinationFieldRef.Validate(DestinationFieldRef.Value);
         DestinationRecordRef.SetTable(SalesLine);
         SalesLine.UpdateAmounts();  // JJV control de validate
-
+        exit(true);
     end;
 
     local procedure ActualizarCamposLineasOfertaCRM(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
