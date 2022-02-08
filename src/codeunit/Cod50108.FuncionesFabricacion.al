@@ -466,7 +466,7 @@ codeunit 50108 "FuncionesFabricacion"
                                 if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
                                     ItemPedido.Ordenacion_btc := 1;
                                     ItemPedido.modify();
-                                    AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                                    //Quitado Recursivo  AddItemtempPlanifpedido(ItemPedido);  // recursivo
                                     ProductionBomLine2.reset;
                                     ProductionBomLine2.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
                                     if ProductionBomLine2.FindSet() then begin
@@ -476,13 +476,13 @@ codeunit 50108 "FuncionesFabricacion"
                                             if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
                                                 ItemPedido.Ordenacion_btc := 1;
                                                 ItemPedido.modify();
-                                                AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                                                //Quitado Recursivo AddItemtempPlanifpedido(ItemPedido);  // recursivo
                                             end else begin
                                                 ItemCompra.SetRange("No.", ProductionBomLine."No.");
                                                 ItemCompra.FindFirst();
                                                 ItemCompra.Ordenacion_btc := 1;
                                                 ItemCompra.Modify();
-                                                AddItemtempPlanifpedido(ItemCompra);  // recursivo
+                                                //Quitado Recursivo AddItemtempPlanifpedido(ItemCompra);  // recursivo
                                             end;
                                         until ProductionBomLine2.Next() = 0;
                                     end;
@@ -492,7 +492,7 @@ codeunit 50108 "FuncionesFabricacion"
                                     ItemCompra.FindFirst();
                                     ItemCompra.Ordenacion_btc := 1;
                                     ItemCompra.Modify();
-                                    AddItemtempPlanifpedido(ItemCompra);  // recursivo
+                                    //Quitado Recursivo AddItemtempPlanifpedido(ItemCompra);  // recursivo
                                 end;
                             until ProductionBomLine.Next() = 0;
 
@@ -503,7 +503,7 @@ codeunit 50108 "FuncionesFabricacion"
                         ItemCompra.FindFirst();
                         ItemCompra.Ordenacion_btc := 1;
                         ItemCompra.Modify();
-                        AddItemtempPlanifpedido(ItemCompra);  // recursivo
+                        //Quitado Recursivo AddItemtempPlanifpedido(ItemCompra);  // recursivo
                     end;
                 until BomComponent.Next() = 0;
             end;
@@ -524,7 +524,7 @@ codeunit 50108 "FuncionesFabricacion"
                         if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
                             ItemPedido.Ordenacion_btc := 1;
                             ItemPedido.modify();
-                            AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                            //Quitado Recursivo AddItemtempPlanifpedido(ItemPedido);  // recursivo
                             ProductionBomLine2.reset;
                             ProductionBomLine2.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
                             if ProductionBomLine2.FindSet() then begin
@@ -535,13 +535,13 @@ codeunit 50108 "FuncionesFabricacion"
                                     if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
                                         ItemPedido.Ordenacion_btc := 1;
                                         ItemPedido.modify();
-                                        AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                                        //Quitado Recursivo AddItemtempPlanifpedido(ItemPedido);  // recursivo
                                     end else begin
                                         ItemCompra.SetRange("No.", ProductionBomLine2."No.");
                                         ItemCompra.FindFirst();
                                         ItemCompra.Ordenacion_btc := 1;
                                         ItemCompra.modify();
-                                        AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                                        //Quitado Recursivo AddItemtempPlanifpedido(ItemPedido);  // recursivo
                                     end;
                                 until ProductionBomLine2.Next() = 0;
                             end;
@@ -550,7 +550,7 @@ codeunit 50108 "FuncionesFabricacion"
                             ItemCompra.FindFirst();
                             ItemCompra.Ordenacion_btc := 1;
                             ItemCompra.modify();
-                            AddItemtempPlanifpedido(ItemCompra);  // recursivo
+                            //Quitado Recursivo AddItemtempPlanifpedido(ItemCompra);  // recursivo
                         end;
                     until ProductionBomLine.Next() = 0;
 
@@ -561,7 +561,7 @@ codeunit 50108 "FuncionesFabricacion"
                 ItemCompra.FindFirst();
                 ItemCompra.Ordenacion_btc := 1;
                 ItemCompra.modify();
-                AddItemtempPlanifpedido(ItemCompra);  // recursivo
+                //Quitado Recursivo AddItemtempPlanifpedido(ItemCompra);  // recursivo
             end;
         end;
 
