@@ -202,6 +202,7 @@ codeunit 50102 "Integracion_crm_btc"
     local procedure ActualizarCamposLineasOfertaCRMDespues(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
     var
         DestinationFieldRef: fieldref;
+        SalesHeader: record "Sales Header";
         SalesLine: record "Sales Line";
     begin
 
@@ -210,6 +211,14 @@ codeunit 50102 "Integracion_crm_btc"
         DestinationFieldRef.Validate(DestinationFieldRef.Value);
         DestinationRecordRef.SetTable(SalesLine);
         SalesLine.UpdateAmounts();  // JJV control de validate
+
+        // aqui deberiamos calcular el dto de la nueva linea
+        if SalesHeader.get(SalesLine."Document Type", SalesLine."Document No.") then begin
+            if SalesHeader.DescuentoFactura <> 0 then begin
+                // TODO
+            end;
+        end;
+
         exit(true);
     end;
 
@@ -254,6 +263,7 @@ codeunit 50102 "Integracion_crm_btc"
                 DestinationFieldRef.validate(No);
             end;
         end;
+
         if No = '' then begin
             // TODO buscar en la conexion el numero de cabecera
             CRMIntegrationRecord.SetRange("Table ID", 36);
@@ -298,6 +308,9 @@ codeunit 50102 "Integracion_crm_btc"
             end;
         end;
 
+        // No contemplar planificacion
+        DestinationFieldRef := DestinationRecordRef.Field(50912); // 50912; "No contemplar planificacion"
+        DestinationFieldRef.Value := true;
 
         EXIT(TRUE);
     end;
