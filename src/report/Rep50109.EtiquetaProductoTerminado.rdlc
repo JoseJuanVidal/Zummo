@@ -11,6 +11,55 @@
       <rd:DataSourceID>c1ff4681-b39f-4322-9510-f6eb1bdc17a0</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="codDocumento">
+          <DataField>codDocumento</DataField>
+        </Field>
+        <Field Name="CodBarra">
+          <DataField>CodBarra</DataField>
+        </Field>
+        <Field Name="Item_No_">
+          <DataField>Item_No_</DataField>
+        </Field>
+        <Field Name="RecItemDescripcion">
+          <DataField>RecItemDescripcion</DataField>
+        </Field>
+        <Field Name="Order_No_">
+          <DataField>Order_No_</DataField>
+        </Field>
+        <Field Name="Posting_Date">
+          <DataField>Posting_Date</DataField>
+        </Field>
+        <Field Name="Document_No_">
+          <DataField>Document_No_</DataField>
+        </Field>
+        <Field Name="RecCompany">
+          <DataField>RecCompany</DataField>
+        </Field>
+        <Field Name="Codigo_Lbl">
+          <DataField>Codigo_Lbl</DataField>
+        </Field>
+        <Field Name="NPedido_Lbl">
+          <DataField>NPedido_Lbl</DataField>
+        </Field>
+        <Field Name="Fecha_Lbl">
+          <DataField>Fecha_Lbl</DataField>
+        </Field>
+        <Field Name="VendorName">
+          <DataField>VendorName</DataField>
+        </Field>
+        <Field Name="OutputNo">
+          <DataField>OutputNo</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -58,7 +107,7 @@
                                   <rd:DefaultName>Textbox1</rd:DefaultName>
                                   <Top>0.13528cm</Top>
                                   <Left>0.55787cm</Left>
-                                  <Height>1.15cm</Height>
+                                  <Height>0.8325cm</Height>
                                   <Width>7.45492cm</Width>
                                   <Style>
                                     <Border>
@@ -88,10 +137,10 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox1</rd:DefaultName>
-                                  <Top>1.28528cm</Top>
-                                  <Left>0.55787cm</Left>
+                                  <Top>1.03128cm</Top>
+                                  <Left>0.62137cm</Left>
                                   <Height>1.16239cm</Height>
-                                  <Width>7.45492cm</Width>
+                                  <Width>12.85242cm</Width>
                                   <ZIndex>1</ZIndex>
                                   <Style>
                                     <Border>
@@ -110,7 +159,7 @@
                                   <Sizing>FitProportional</Sizing>
                                   <Top>0.03528cm</Top>
                                   <Left>9.8cm</Left>
-                                  <Height>1.25cm</Height>
+                                  <Height>0.9325cm</Height>
                                   <Width>3.7cm</Width>
                                   <ZIndex>2</ZIndex>
                                   <Style>
@@ -119,43 +168,10 @@
                                     </Border>
                                   </Style>
                                 </Image>
-                                <Textbox Name="Textbox4">
-                                  <CanGrow>true</CanGrow>
-                                  <KeepTogether>true</KeepTogether>
-                                  <Paragraphs>
-                                    <Paragraph>
-                                      <TextRuns>
-                                        <TextRun>
-                                          <Value>=Fields!Item_No_.Value</Value>
-                                          <Style>
-                                            <FontSize>20pt</FontSize>
-                                            <FontWeight>Bold</FontWeight>
-                                          </Style>
-                                        </TextRun>
-                                      </TextRuns>
-                                      <Style />
-                                    </Paragraph>
-                                  </Paragraphs>
-                                  <rd:DefaultName>Textbox4</rd:DefaultName>
-                                  <Top>1.50371cm</Top>
-                                  <Left>8.83042cm</Left>
-                                  <Height>0.94396cm</Height>
-                                  <Width>4.66958cm</Width>
-                                  <ZIndex>3</ZIndex>
-                                  <Style>
-                                    <Border>
-                                      <Style>None</Style>
-                                    </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
-                                  </Style>
-                                </Textbox>
                               </ReportItems>
                               <KeepTogether>true</KeepTogether>
                               <Left>0.04748cm</Left>
-                              <Height>2.58878cm</Height>
+                              <Height>2.32067cm</Height>
                               <Width>13.5cm</Width>
                               <Style>
                                 <Border>
@@ -205,8 +221,42 @@
                                   <rd:DefaultName>Textbox1</rd:DefaultName>
                                   <Top>0.16528cm</Top>
                                   <Left>0.55787cm</Left>
-                                  <Height>1.84331cm</Height>
+                                  <Height>1.33531cm</Height>
                                   <Width>12.94213cm</Width>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="Textbox8">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!VendorName.Value</Value>
+                                          <Style>
+                                            <FontFamily>Segoe UI</FontFamily>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Left</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Textbox8</rd:DefaultName>
+                                  <Top>1.54998cm</Top>
+                                  <Left>0.62137cm</Left>
+                                  <Height>0.9175cm</Height>
+                                  <Width>7.39142cm</Width>
+                                  <ZIndex>1</ZIndex>
                                   <Style>
                                     <Border>
                                       <Style>None</Style>
@@ -219,9 +269,9 @@
                                 </Textbox>
                               </ReportItems>
                               <KeepTogether>true</KeepTogether>
-                              <Top>2.58878cm</Top>
+                              <Top>2.30303cm</Top>
                               <Left>0.04748cm</Left>
-                              <Height>2.5cm</Height>
+                              <Height>2.754cm</Height>
                               <Width>13.5cm</Width>
                               <ZIndex>1</ZIndex>
                               <Style>
@@ -496,6 +546,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -535,50 +591,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="codDocumento">
-          <DataField>codDocumento</DataField>
-        </Field>
-        <Field Name="CodBarra">
-          <DataField>CodBarra</DataField>
-        </Field>
-        <Field Name="Item_No_">
-          <DataField>Item_No_</DataField>
-        </Field>
-        <Field Name="RecItemDescripcion">
-          <DataField>RecItemDescripcion</DataField>
-        </Field>
-        <Field Name="Order_No_">
-          <DataField>Order_No_</DataField>
-        </Field>
-        <Field Name="Posting_Date">
-          <DataField>Posting_Date</DataField>
-        </Field>
-        <Field Name="Document_No_">
-          <DataField>Document_No_</DataField>
-        </Field>
-        <Field Name="RecCompany">
-          <DataField>RecCompany</DataField>
-        </Field>
-        <Field Name="Codigo_Lbl">
-          <DataField>Codigo_Lbl</DataField>
-        </Field>
-        <Field Name="NPedido_Lbl">
-          <DataField>NPedido_Lbl</DataField>
-        </Field>
-        <Field Name="Fecha_Lbl">
-          <DataField>Fecha_Lbl</DataField>
-        </Field>
-        <Field Name="OutputNo">
-          <DataField>OutputNo</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
