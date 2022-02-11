@@ -93,11 +93,8 @@ report 50138 "EtiquetasGenericas"
             var
                 recPurchRcptHeader: Record "Purch. Rcpt. Header";
                 Vendor: Record Vendor;
-                ItemLedgerEntry: Record "Item Ledger Entry";
             begin
-                ItemLedgerEntry.Get();
-                if Vendor.Get(ItemLedgerEntry."Source No.") then
-                    VendorName := Vendor.Name;
+
 
                 IF Number = 1 THEN
                     recTemp.FindSet()
@@ -109,6 +106,9 @@ report 50138 "EtiquetasGenericas"
 
                 if not RecItem.Get(recTemp.NumProducto) then
                     clear(RecItem);
+
+                if Vendor.Get(RecItem."Vendor No.") then
+                    VendorName := Vendor.Name;
 
                 CodBarra := '*' + recTemp.NumProducto + '*';
 
