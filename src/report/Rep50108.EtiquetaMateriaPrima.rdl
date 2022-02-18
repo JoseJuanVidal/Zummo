@@ -58,7 +58,7 @@
                                   <rd:DefaultName>Textbox1</rd:DefaultName>
                                   <Top>0.13528cm</Top>
                                   <Left>0.55787cm</Left>
-                                  <Height>1.15cm</Height>
+                                  <Height>0.80075cm</Height>
                                   <Width>7.45492cm</Width>
                                   <Style>
                                     <Border>
@@ -88,10 +88,10 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox1</rd:DefaultName>
-                                  <Top>1.28528cm</Top>
+                                  <Top>0.96778cm</Top>
                                   <Left>0.55787cm</Left>
                                   <Height>1.16239cm</Height>
-                                  <Width>7.45492cm</Width>
+                                  <Width>12.85242cm</Width>
                                   <ZIndex>1</ZIndex>
                                   <Style>
                                     <Border>
@@ -110,7 +110,7 @@
                                   <Sizing>FitProportional</Sizing>
                                   <Top>0.03528cm</Top>
                                   <Left>9.8cm</Left>
-                                  <Height>1.25cm</Height>
+                                  <Height>0.90075cm</Height>
                                   <Width>3.7cm</Width>
                                   <ZIndex>2</ZIndex>
                                   <Style>
@@ -122,7 +122,7 @@
                               </ReportItems>
                               <KeepTogether>true</KeepTogether>
                               <Left>0.04748cm</Left>
-                              <Height>2.58878cm</Height>
+                              <Height>2.22542cm</Height>
                               <Width>13.5cm</Width>
                               <Style>
                                 <Border>
@@ -172,8 +172,42 @@
                                   <rd:DefaultName>Textbox1</rd:DefaultName>
                                   <Top>0.16528cm</Top>
                                   <Left>0.55787cm</Left>
-                                  <Height>1.84331cm</Height>
+                                  <Height>1.52581cm</Height>
                                   <Width>12.94213cm</Width>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="Textbox5">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!VendorName.Value</Value>
+                                          <Style>
+                                            <FontFamily>Segoe UI</FontFamily>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Left</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Textbox5</rd:DefaultName>
+                                  <Top>1.76165cm</Top>
+                                  <Left>0.55787cm</Left>
+                                  <Height>0.78649cm</Height>
+                                  <Width>7.45492cm</Width>
+                                  <ZIndex>1</ZIndex>
                                   <Style>
                                     <Border>
                                       <Style>None</Style>
@@ -186,9 +220,9 @@
                                 </Textbox>
                               </ReportItems>
                               <KeepTogether>true</KeepTogether>
-                              <Top>2.58878cm</Top>
+                              <Top>2.20778cm</Top>
                               <Left>0.04748cm</Left>
-                              <Height>2.5cm</Height>
+                              <Height>2.8175cm</Height>
                               <Width>13.5cm</Width>
                               <ZIndex>1</ZIndex>
                               <Style>
@@ -537,6 +571,9 @@ End Function
         </Field>
         <Field Name="Fecha_Lbl">
           <DataField>Fecha_Lbl</DataField>
+        </Field>
+        <Field Name="VendorName">
+          <DataField>VendorName</DataField>
         </Field>
         <Field Name="OutputNo">
           <DataField>OutputNo</DataField>

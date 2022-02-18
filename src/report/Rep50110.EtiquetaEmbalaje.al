@@ -89,7 +89,7 @@ report 50110 "EtiquetaEmbalaje"
             }
             trigger OnPreDataItem()
             begin
-           end;
+            end;
 
             trigger OnAfterGetRecord()
             begin
@@ -100,7 +100,10 @@ report 50110 "EtiquetaEmbalaje"
                 if not RecItem.Get("Item No.") then
                     clear(RecItem);
 
-                CodBarra := '*' + "Serial No." + '*';
+                if "Serial No." = '' then
+                    CodBarra := '*' + "Item No." + '*'
+                else
+                    CodBarra := '*' + "Serial No." + '*';
             end;
 
         }

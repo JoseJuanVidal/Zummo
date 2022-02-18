@@ -152,16 +152,26 @@ codeunit 50102 "Integracion_crm_btc"
         DestinationAccountFieldRef := DestinationRecordRef.Field(2);
         CustRecRef.Open(18);
 
+        DestinationFieldRef := DestinationRecordRef.Field(50050); // 50050; ofertaprobabilidad; 
         case Probabilidad of
             CRMQuote.Probabilidad::" ":
-                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::" ";
+                DestinationFieldRef.Value := 0;
+            //SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::" ";
             CRMQuote.Probabilidad::Baja:
-                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Baja;
+                //SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Baja;
+                DestinationFieldRef.Value := 1;
             CRMQuote.Probabilidad::Media:
-                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Media;
+                //SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Media;
+                DestinationFieldRef.Value := 2;
             CRMQuote.Probabilidad::Alta:
-                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Alta;
+                // SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Alta;
+                DestinationFieldRef.Value := 3;
+            else
+                DestinationFieldRef.Value := 2;
         end;
+
+
+
 
         DestinationFieldRef := DestinationRecordRef.Field(50911); // OfertaSales
         DestinationFieldRef.Value := true;
@@ -192,6 +202,7 @@ codeunit 50102 "Integracion_crm_btc"
     local procedure ActualizarCamposLineasOfertaCRMDespues(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
     var
         DestinationFieldRef: fieldref;
+        SalesHeader: record "Sales Header";
         SalesLine: record "Sales Line";
     begin
 
@@ -200,6 +211,14 @@ codeunit 50102 "Integracion_crm_btc"
         DestinationFieldRef.Validate(DestinationFieldRef.Value);
         DestinationRecordRef.SetTable(SalesLine);
         SalesLine.UpdateAmounts();  // JJV control de validate
+
+        // aqui deberiamos calcular el dto de la nueva linea
+        if SalesHeader.get(SalesLine."Document Type", SalesLine."Document No.") then begin
+            if SalesHeader.DescuentoFactura <> 0 then begin
+                // TODO
+            end;
+        end;
+
         exit(true);
     end;
 
@@ -244,6 +263,7 @@ codeunit 50102 "Integracion_crm_btc"
                 DestinationFieldRef.validate(No);
             end;
         end;
+
         if No = '' then begin
             // TODO buscar en la conexion el numero de cabecera
             CRMIntegrationRecord.SetRange("Table ID", 36);
@@ -288,6 +308,9 @@ codeunit 50102 "Integracion_crm_btc"
             end;
         end;
 
+        // No contemplar planificacion
+        DestinationFieldRef := DestinationRecordRef.Field(50912); // 50912; "No contemplar planificacion"
+        DestinationFieldRef.Value := true;
 
         EXIT(TRUE);
     end;

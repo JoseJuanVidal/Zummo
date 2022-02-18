@@ -52,8 +52,9 @@ report 50138 "EtiquetasGenericas"
             {
 
             }
-
-
+            column(VendorName; VendorName)
+            {
+            }
             dataitem(CopyLoop; Integer)
             {
                 DataItemTableView = SORTING(Number);
@@ -91,7 +92,10 @@ report 50138 "EtiquetasGenericas"
             trigger OnAfterGetRecord()
             var
                 recPurchRcptHeader: Record "Purch. Rcpt. Header";
+                Vendor: Record Vendor;
             begin
+
+
                 IF Number = 1 THEN
                     recTemp.FindSet()
                 ELSE
@@ -102,6 +106,9 @@ report 50138 "EtiquetasGenericas"
 
                 if not RecItem.Get(recTemp.NumProducto) then
                     clear(RecItem);
+
+                if Vendor.Get(RecItem."Vendor No.") then
+                    VendorName := Vendor.Name;
 
                 CodBarra := '*' + recTemp.NumProducto + '*';
 
@@ -154,4 +161,5 @@ report 50138 "EtiquetasGenericas"
         Fecha_Lbl: Label 'FECHA: ', Comment = 'ESP="FECHA: "';
         codPedido: Code[20];
         recTemp: Record LinAlbCompraBuffer temporary;
+        VendorName: Text;
 }
