@@ -70,5 +70,47 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             DataClassification = CustomerContent;
             Caption = 'Días Vto. Aseguradora', comment = 'ESP="Días Vto. Aseguradora"';
         }
+        field(50111; "WS Base URL IC Zummo Innc."; Text[150])
+        {
+            Caption = 'WS Base URL IC Zummo Innc.', Comment = 'WS URL Base IC Zummo Innc.';
+            DataClassification = CustomerContent;
+            Description = 'Intercompany Zummo Innc.';
+        }
+        field(50112; "WS Name - Purch. Order Header"; Text[100])
+        {
+            Caption = 'WS Name - Purch. Order Header', Comment = 'Nombre WS - Cab. Ped. Compra';
+            DataClassification = CustomerContent;
+            Description = 'Intercompany Zummo Innc.';
+        }
+        field(50113; "WS Name - Purch. Order Line"; Text[100])
+        {
+            Caption = 'WS Name - Purch. Order Line', Comment = 'Nombre WS - Lin. Ped. Compra';
+            DataClassification = CustomerContent;
+            Description = 'Intercompany Zummo Innc.';
+        }
+        field(50114; "WS User Id"; Text[20])
+        {
+            Caption = 'WS User Id', Comment = 'Id Usuario';
+            DataClassification = CustomerContent;
+            Description = 'Intercompany Zummo Innc.';
+        }
+        field(50115; "WS Key"; Text[150])
+        {
+            Caption = 'WS Key', Comment = 'Clave del WS';
+            DataClassification = CustomerContent;
+            Description = 'Intercompany Zummo Innc.';
+        }
+        field(50116; "Send Mail Notifications"; Boolean)
+        {
+            Caption = 'Send Mail Notifications', Comment = 'Enviar notificaciones por email';
+            DataClassification = CustomerContent;
+            Description = 'Intercompany Zummo Innc.';
+        }
+        field(50117; "Recipient Mail Notifications"; Text[100])
+        {
+            Caption = 'Recipient Mail Notifications', Comment = 'Destinatario notificaciones por email';
+            DataClassification = CustomerContent;
+            Description = 'Intercompany Zummo Innc.';
+        }
     }
 }

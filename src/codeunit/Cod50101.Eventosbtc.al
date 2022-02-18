@@ -965,4 +965,51 @@ codeunit 50101 "Eventos_btc"
         rec."Invoice No." := codFactura;
         rec.Modify();
     end;
+
+    /*[EventSubscriber(ObjectType::table, Database::"Intrastat Jnl. Line", 'OnAfterModifyEvent', '', true, true)]
+      local procedure IntrastatJnlLineIntrastatJnlLineOnAfterModifyEvent(VAR Rec: Record "Intrastat Jnl. Line"; VAR xRec: Record "Intrastat Jnl. Line"; RunTrigger: Boolean)
+      begin
+          IntrastatJnlLineIntrastatJnlLineUpdate(rec, RunTrigger);
+      end;*/
+
+    //#region Intercompany 
+    //ACV - 16/02/22 - Evento para actualizar pedido de compra IC (Zummo INC) al crear PV desde OV
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnAfterOnRun', '', true, true)]
+    local procedure OnAfterOnRun(VAR SalesHeader: Record "Sales Header"; VAR SalesOrderHeader: Record "Sales Header")
+    var
+        ZummoInnICFunctions: Codeunit "Zummo Inn. IC Functions";
+    begin
+        if SalesHeader."Source Purch. Order No" <> '' then
+            ZummoInnICFunctions.UpdateOrderNoPurchaseOrderIC(SalesHeader, SalesOrderHeader);
+    end;
+
+    //ACV - 17/02/22 - Evento para actualizar pedido de compra IC (Zummo INC) al borrar PV 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeDeleteEvent', '', true, true)]
+    local procedure OnBeforeDeleteSalesHeader(VAR Rec: Record "Sales Header")
+    var
+        ZummoInnICFunctions: Codeunit "Zummo Inn. IC Functions";
+        EmptySalesHeader: Record "Sales Header";
+    begin
+        if Rec."Source Purch. Order No" <> '' then begin
+            if Rec."Document Type" = Rec."Document Type"::Order then
+                ZummoInnICFunctions.UpdateOrderNoPurchaseOrderIC(Rec, EmptySalesHeader); //Pasamos una record de Sales Header vacio para que deje el nº de pedido de venta en el pedido de compra origen vacio
+        end;
+    end;
+
+    //ACV - 18/02/22 - Evento para comprobar que el pedido de compra IC (Zummo INC) está actualizado
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post (Yes/No)", 'OnAfterConfirmPost', '', true, true)]
+    local procedure OnAfterConfirmPost(VAR SalesHeader: Record "Sales Header")
+    var
+        ErrorLbl: Label 'Debe actualizar el pedido de compra orgien, %1, antes de registrar';
+    begin
+        if SalesHeader."Source Purch. Order No" <> '' then
+            if SalesHeader."Document Type" = SalesHeader."Document Type"::Order then
+                if not SalesHeader."Source Purch. Order Updated" then
+                    Error(ErrorLbl, SalesHeader."Source Purch. Order No");
+
+    end;
+
+    //#endregion Intercompany 
+
+
 }

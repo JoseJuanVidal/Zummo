@@ -198,8 +198,23 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
         field(5068; FechaAltaPedido; Date)
         {
             DataClassification = CustomerContent;
-
         }
+
+        //#region Integracion Intercompany
+        field(50120; "Source Purch. Order No"; Code[20])
+        {
+            Caption = 'Source Purch. Order No', Comment = 'Nº Ped. Compra origen';
+            DataClassification = CustomerContent;
+        }
+        field(50121; "Source Purch. Order Updated"; Boolean)
+        {
+            Caption = 'Source Purch. Order Updated', Comment = 'Ped. Compra origen actualizado';
+            DataClassification = CustomerContent;
+        }
+
+
+        //#endregion Integracion Intercompany
+
 
     }
 }

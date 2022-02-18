@@ -15,11 +15,11 @@
             "launchBrowser": false,
             "schemaUpdateMode": "Synchronize"
         },
-        {
+        /*  {
             "name": "Localhost",
             "type": "al",
             "request": "launch",
-            "server": "http://localhost:8080/BC140",
+            "server": "http://localhost:8080/BC140", //Produccion
             "serverInstance": "BC140",
             "port": 7149,
             "authentication": "Windows",
@@ -28,7 +28,7 @@
             "breakOnError": true,
             "breakOnRecordWrite": false,
             "launchBrowser": true,
-            "schemaUpdateMode": "ForceSync"
-        }
+            "schemaUpdateMode": "Synchronize"
+        } */
     ]
 }
