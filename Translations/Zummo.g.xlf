@@ -5069,7 +5069,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quotedetail - Field Quantity - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2598332820 - Field 4278945586 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Quote Product</source>
+          <source>Quote Detail ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quotedetail - Field QuoteDetailId - Property Caption</note>
         </trans-unit>
@@ -19668,6 +19668,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ocultar Bloqueados"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ProdBOMWhereUsed - Control ShowBlocked - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2070474202 - Control 4093990710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2070474202">
+          <source>Language Filter</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Production BOM Lines - Control Language - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 783370822 - Action 2890590632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
           <source>Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa."</note>
@@ -20242,6 +20247,11 @@
           <source>Statements Pass</source>
           <note from="Developer" annotates="general" priority="2">ESP="Contraseña Vencimientos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SMTPMailSetup - Control passVencimientosTxt - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 818457389 - Control 12263198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1658838783">
+          <source>Language Filter</source>
+          <note from="Developer" annotates="general" priority="2">Filtro Idioma</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH BOM StructureExt - Control LanguageFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3260528537 - Action 1147532894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Importar Excel</source>
@@ -21998,6 +22008,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Días Vto. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field DiasVtoAseguradora - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 12263198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Language Filter</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Idioma L. M."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field LanguageFilter - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 584897431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Nº días fact vencidas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº días fact vencidas"</note>
@@ -22368,6 +22383,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Precio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardSalesLine - Field Precio_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 1842481456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Description Language</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Description Language - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 637297398 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Language Filter</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Language Filter - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3410546980 - Field 2642821746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 235946633">
           <source>Initial Entry Posting Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -22472,6 +22497,16 @@
           <source>Es NO Asegurable (Otros)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Es NO Asegurable (Otros)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment Terms - Field Es NO Asegurable (Otros) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1518785014 - Field 1842481456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2624288207">
+          <source>Description Language</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Production BOM Line - Field Description Language - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1518785014 - Field 637297398 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2624288207">
+          <source>Language Filter</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Production BOM Line - Field Language Filter - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2869752476 - Field 995090288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
           <source>Date Filter</source>

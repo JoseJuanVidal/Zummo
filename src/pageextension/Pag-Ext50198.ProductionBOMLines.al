@@ -2,6 +2,22 @@ pageextension 50198 "Production BOM Lines" extends "Production BOM Lines"
 {
     layout
     {
+        addlast(Content)
+        {
+            Field(Language; Language)
+            {
+                ApplicationArea = all;
+                Caption = 'Language Filter', comment = 'ESP="Filtro Idioma"';
+                TableRelation = Language;
+
+                trigger OnValidate()
+                begin
+                    Rec.SetRange("Language Filter", Language);
+                    CurrPage.Update();
+                end;
+            }
+
+        }
         modify("No.")
         {
             trigger OnDrillDown()
@@ -17,6 +33,10 @@ pageextension 50198 "Production BOM Lines" extends "Production BOM Lines"
         }
         addafter(Description)
         {
+            field("Description Language"; "Description Language")
+            {
+                ApplicationArea = all;
+            }
             field(Coste; Coste)
             {
                 ApplicationArea = all;
@@ -25,7 +45,16 @@ pageextension 50198 "Production BOM Lines" extends "Production BOM Lines"
         }
     }
     var
+        SalesRecivablesSetup: record "Sales & Receivables Setup";
+        Language: code[10];
         Coste: Decimal;
+
+    trigger OnOpenPage()
+    begin
+        SalesRecivablesSetup.get();
+        if SalesRecivablesSetup.LanguageFilter <> '' then
+            Rec.SetRange("Language Filter", SalesRecivablesSetup.LanguageFilter);
+    end;
 
     trigger OnAfterGetRecord()
     var

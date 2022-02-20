@@ -70,5 +70,11 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             DataClassification = CustomerContent;
             Caption = 'Días Vto. Aseguradora', comment = 'ESP="Días Vto. Aseguradora"';
         }
+        field(50111; LanguageFilter; Code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Language Filter', comment = 'ESP="Filtro Idioma L. M."';
+            TableRelation = Language;
+        }
     }
 }

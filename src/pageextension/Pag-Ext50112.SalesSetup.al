@@ -62,6 +62,10 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 {
                     ApplicationArea = all;
                 }
+                field(LanguageFilter; LanguageFilter)
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

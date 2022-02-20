@@ -11,7 +11,7 @@ table 50133 "STH CRM Quotedetail"
     {
         field(1; QuoteDetailId; Guid)
         {
-            Caption = 'Quote Product';
+            Caption = 'Quote Detail ID';
             Description = 'Unique identifier of the product line item in the quote.';
             ExternalAccess = Insert;
             ExternalName = 'quotedetailid';
