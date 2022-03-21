@@ -1,4 +1,4 @@
-tableextension 50004 "STH Purchase Price" extends "Purchase Price"
+tableextension 50006 "STH Purchase Price" extends "Purchase Price"
 {
     fields
     {
