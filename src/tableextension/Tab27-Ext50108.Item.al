@@ -283,5 +283,13 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Recalcular Coste Estandar', comment = 'ESP="Recalcular Coste Estandar"';
         }
+        field(50150; "To Update"; Boolean)
+        {
+            Caption = 'To update', comment = 'Act. itbid';
+        }
+        field(50151; "Last date updated"; Date)
+        {
+            Caption = 'Last date updated', comment = 'Ult. Fecha act. itbid';
+        }
     }
 }
