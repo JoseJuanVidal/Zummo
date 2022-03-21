@@ -25,7 +25,7 @@ table 50122 "STH Purchase SubCategory"
         field(4; Description; Text[100])
         {
             Caption = 'Description';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(10; "To Update"; Boolean)
         {

@@ -21058,11 +21058,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desLineaEconomica_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 3276313895 - Field 1185888005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>Last date updated</source>
-          <note from="Developer" annotates="general" priority="2">Ult. Fecha act. itbid</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Last date updated - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 966569728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Sales Classification List</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Clasificación Ventas"</note>
@@ -21177,11 +21172,6 @@
           <source>Tasa RAEE </source>
           <note from="Developer" annotates="general" priority="2">ESP="Tasa RAEE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field TasaRAEE - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3276313895 - Field 3649348102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>To update</source>
-          <note from="Developer" annotates="general" priority="2">Act. itbid</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field To Update - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 696192174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Validated Accounting</source>
