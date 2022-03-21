@@ -249,8 +249,11 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
             }
             action("STH Post")
             {
-                Caption = 'Update Purchase Order Zummo Inc.', Comment = '';
+                Caption = 'Update Purchase Order Zummo Inc.', Comment = 'Actualizar Ped. Compra Zummo Inc.';
                 ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                Image = MoveUp;
 
                 trigger OnAction()
                 var

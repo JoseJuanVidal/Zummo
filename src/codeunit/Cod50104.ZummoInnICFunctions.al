@@ -232,6 +232,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
         JsonResponse: JsonObject;
         JsonTokResponse: JsonToken;
         MsgLbl: Label 'Se ha actualizado el pedido de compra ';
+        SubjectLbl: Label 'Actualización Pedido Compra Zummo Inc.';
+        BodyLbl1: Label 'Se ha eliminado el pedido de venta %1';
+        BodyLbl2: Label 'Se ha creado el pedido de venta %1 desde la oferta %2';
     begin
         SalesReceivablesSetup.Get();
         SalesReceivablesSetup.TestField("WS Base URL IC Zummo Innc.");
@@ -252,9 +255,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
             DocumentNo := GetJSONItemFieldCode(JsonResponse.AsToken(), 'DocumentNo');
             Message(MsgLbl + DocumentNo);
             if SalesOrderHeader."No." = '' then
-                SendMailIC('Actualización Pedido Compra Zummo Inc.', 'Se ha eliminado el pedido de venta ' + SalesHeader."No.")
+                SendMailIC(SubjectLbl, StrSubstNo(BodyLbl1, SalesHeader."No."))
             else
-                SendMailIC('Actualización Pedido Compra Zummo Inc.', 'Se ha creado el pedido de venta ' + SalesOrderHeader."No." + ' desde la oferta ' + SalesHeader."No.");
+                SendMailIC(SubjectLbl, StrSubstNo(BodyLbl2, SalesOrderHeader."No.", SalesHeader."No."));
         end;
 
     end;
@@ -265,8 +268,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
         SalesLine: Record "Sales Line";
         Item: Record Item;
         ReservationEntry: Record "Reservation Entry";
-
         CreatedLbl: Label 'Proceso finalizado. Se han actualizado las lineas del pedido %1';
+        SubjectLbl: Label 'Actualización Pedido Compra Zummo Inc.';
+        BodyLbl: Label 'Se han actualizado las cantidades y el seguimiento del pedido de compra %1 desde el pedido de venta %2';
     begin
         SalesLine.Reset();
         SalesLine.SetRange("Document No.", Rec."No.");
@@ -290,7 +294,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
         Rec."Source Purch. Order Updated" := true;
         Rec.Modify();
-        SendMailIC('Actualización Pedido Compra Zummo Inc.', 'Se han actualizado las cantidades y el seguimiento del pedido de compra ' + Rec."Source Purch. Order No" + ' desde el pedido de venta ' + Rec."No.");
+        SendMailIC(SubjectLbl, StrSubstNo(BodyLbl, Rec."Source Purch. Order No", Rec."No."));
         Message(StrSubstNo(CreatedLbl, Rec."Source Purch. Order No"));
     end;
 
