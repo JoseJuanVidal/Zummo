@@ -5444,64 +5444,112 @@
           <target>Fecha registro</target>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>STH Purchase Category</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>Purchase Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Caegorias compras"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Property Caption</note>
+          <target>Caegorias compras</target>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Code - Property Caption</note>
+          <target>Código</target>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 2101784536 - Field 1185888005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last date updated</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. Fecha act. itbid"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Last date updated - Property Caption</note>
+          <target>Ult. Fecha act. itbid</target>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Field 3044167908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Familiy code</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Familia"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Purch. Familiy code - Property Caption</note>
+          <target>Cód. Familia</target>
+        </trans-unit>
+        <trans-unit id="Table 2101784536 - Field 3649348102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To update</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. itbid"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field To Update - Property Caption</note>
+          <target>Act. itbid</target>
         </trans-unit>
         <trans-unit id="Table 1017534486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>STH Purchase Family</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>Purchase Family</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familia de compras"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Property Caption</note>
+          <target>Familia de compras</target>
         </trans-unit>
         <trans-unit id="Table 1017534486 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field Code - Property Caption</note>
+          <target>Código</target>
         </trans-unit>
         <trans-unit id="Table 1017534486 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 1017534486 - Field 1185888005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last date updated</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. Fecha act. itbid"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field Last date updated - Property Caption</note>
+          <target>Ult. Fecha act. itbid</target>
+        </trans-unit>
+        <trans-unit id="Table 1017534486 - Field 3649348102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To update</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. itbid"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field To Update - Property Caption</note>
+          <target>Act. itbid</target>
         </trans-unit>
         <trans-unit id="Table 285631052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>STH Purchase Category</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>Purchase SubCategory</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sub Categoría compras"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Property Caption</note>
+          <target>Sub Categoría compras</target>
         </trans-unit>
         <trans-unit id="Table 285631052 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Code - Property Caption</note>
+          <target>Código</target>
         </trans-unit>
         <trans-unit id="Table 285631052 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 1185888005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last date updated</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. Fecha act. itbid"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Last date updated - Property Caption</note>
+          <target>Ult. Fecha act. itbid</target>
         </trans-unit>
         <trans-unit id="Table 285631052 - Field 3876712409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Purch. Familiy code</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>Purch. Category code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Category"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Purch. Category code - Property Caption</note>
+          <target>Cód. Category</target>
         </trans-unit>
         <trans-unit id="Table 285631052 - Field 3044167908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Familiy code</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Familía"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Purch. Familiy code - Property Caption</note>
+          <target>Cód. Familía</target>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 3649348102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To update</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. itbid"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field To Update - Property Caption</note>
+          <target>Act. itbid</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Auxiliary texts</source>
@@ -9031,6 +9079,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Movs. Conta-Presup"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Movs Conta-Presup - Property Caption</note>
           <target>Movs. Conta-Presup</target>
+        </trans-unit>
+        <trans-unit id="Page 90262036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Familys</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familias compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Purch, Familiy - Property Caption</note>
+          <target>Familias compra</target>
+        </trans-unit>
+        <trans-unit id="Page 2903052473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Categorys</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Categorias compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Purchase Categorys - Property Caption</note>
+          <target>Categorias compra</target>
+        </trans-unit>
+        <trans-unit id="Page 4276868973 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. SubCategorys</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubCategorias compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Purchase SubCategorys - Property Caption</note>
+          <target>SubCategorias compra</target>
         </trans-unit>
         <trans-unit id="Page 9807146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location Stock</source>
