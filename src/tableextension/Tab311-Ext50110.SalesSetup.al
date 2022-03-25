@@ -70,6 +70,7 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             DataClassification = CustomerContent;
             Caption = 'Días Vto. Aseguradora', comment = 'ESP="Días Vto. Aseguradora"';
         }
+<<<<<<< HEAD
         field(50111; "WS Base URL IC Zummo Innc."; Text[150])
         {
             Caption = 'WS Base URL IC Zummo Innc.', Comment = 'WS URL Base IC Zummo Innc.';
@@ -111,6 +112,13 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             Caption = 'Recipient Mail Notifications', Comment = 'Destinatario notificaciones por email';
             DataClassification = CustomerContent;
             Description = 'Intercompany Zummo Innc.';
+=======
+        field(50120; LanguageFilter; Code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Language Filter', comment = 'ESP="Filtro Idioma L. M."';
+            TableRelation = Language;
+>>>>>>> master
         }
     }
 }

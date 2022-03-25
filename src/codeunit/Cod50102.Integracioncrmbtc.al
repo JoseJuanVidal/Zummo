@@ -212,12 +212,6 @@ codeunit 50102 "Integracion_crm_btc"
         DestinationRecordRef.SetTable(SalesLine);
         SalesLine.UpdateAmounts();  // JJV control de validate
 
-        // aqui deberiamos calcular el dto de la nueva linea
-        if SalesHeader.get(SalesLine."Document Type", SalesLine."Document No.") then begin
-            if SalesHeader.DescuentoFactura <> 0 then begin
-                // TODO
-            end;
-        end;
 
         exit(true);
     end;
@@ -230,6 +224,7 @@ codeunit 50102 "Integracion_crm_btc"
         SalesLine2: Record "Sales Line";
         Item: Record Item;
         CRMQuoteDetail: Record "STH CRM Quotedetail";
+        DestinationRfSalesHeader: RecordRef;
         DestinationFieldRef: FieldRef;
         DestinationFieldRef2: FieldRef;
         SourceFieldRef: FieldRef;
@@ -265,11 +260,14 @@ codeunit 50102 "Integracion_crm_btc"
         end;
 
         if No = '' then begin
-            // TODO buscar en la conexion el numero de cabecera
+            // buscar en la conexion el numero de cabecera
             CRMIntegrationRecord.SetRange("Table ID", 36);
             CRMIntegrationRecord.SetRange("CRM ID", CRMQuoteDetail.QuoteId);
             if CRMIntegrationRecord.FindSet() then begin
-
+                if SaleHeaderRecRef.get(CRMIntegrationRecord.RecordId) then begin
+                    No := format(SaleHeaderRecRef.field(SalesHeader.fieldNo("No.")));
+                    DestinationFieldRef.validate(No);
+                end;
             end;
         end;
 

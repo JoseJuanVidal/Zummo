@@ -804,7 +804,7 @@ table 50135 "STH CRM Quote"
             ExternalType = 'Picklist';
             InitValue = " ";
             OptionCaption = ' ,Baja,Media,Alta';
-            OptionOrdinalValues = 978740003, 978740000, 978740001, 978740002;
+            OptionOrdinalValues = 978740003, 978740002, 978740001, 978740000;
             OptionMembers = " ",Baja,Media,Alta;
         }
     }

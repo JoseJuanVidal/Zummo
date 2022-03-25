@@ -283,14 +283,6 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Recalcular Coste Estandar', comment = 'ESP="Recalcular Coste Estandar"';
         }
-        // field(50125; ToUpdate; Boolean)
-        // {
-        //     Caption = 'To update', comment = 'Act. itbid';
-        // }
-        // field(50126; Lastdateupdated; Date)
-        // {
-        //     Caption = 'Last date updated', comment = 'Ult. Fecha act. itbid';
-        // }
         field(50130; "Purch. Family"; Code[20])
         {
             DataClassification = CustomerContent;
@@ -330,6 +322,5 @@ tableextension 50108 "Item" extends Item  //27
             CalcFormula = lookup("STH Purchase SubCategory".Description where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category")));
             Editable = false;
         }
-
     }
 }

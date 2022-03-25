@@ -4734,7 +4734,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quotedetail - Field Quantity - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2598332820 - Field 4278945586 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Quote Product</source>
+          <source>Quote Detail ID</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quotedetail - Field QuoteDetailId - Property Caption</note>
         </trans-unit>
