@@ -4939,6 +4939,66 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Importe Presupuesto - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2101784536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH Purchase Category</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2101784536 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2101784536 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2101784536 - Field 3044167908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Familiy code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Purch. Familiy code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1017534486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH Purchase Family</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1017534486 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1017534486 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH Purchase Category</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 3876712409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Familiy code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Purch. Category code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 3044167908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Familiy code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Purch. Familiy code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3514522085 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"/>

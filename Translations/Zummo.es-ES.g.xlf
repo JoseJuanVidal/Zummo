@@ -5443,6 +5443,66 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Posting Date - Property Caption</note>
           <target>Fecha registro</target>
         </trans-unit>
+        <trans-unit id="Table 2101784536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH Purchase Category</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2101784536 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2101784536 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2101784536 - Field 3044167908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Familiy code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Purch. Familiy code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1017534486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH Purchase Family</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1017534486 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1017534486 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH Purchase Category</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 3876712409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Familiy code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Purch. Category code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 3044167908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Familiy code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Purch. Familiy code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2244721376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Auxiliary texts</source>
           <note from="Developer" annotates="general" priority="2">ESP="Textos Auxiliares"</note>
@@ -20265,6 +20325,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Bajo pedido / Contra stock - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 4000935069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Purchase Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Categorías de Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control PurchaseCategory - Property Caption</note>
+          <target>Categorías de Compra</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2185030199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Imprimir etiqueta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiqueta"</note>
@@ -22356,6 +22422,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ContraStock/BajoPedido - Property OptionCaption</note>
           <target> ,ContraStock,BajoPedido</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3810656663 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Desc. Purch. Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Categoria compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Desc. Purch. Category - Property Caption</note>
+          <target>Nombre Categoria compra</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 4149251189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Desc. Purch. Family</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Familia compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Desc. Purch. Family - Property Caption</note>
+          <target>Nombre Familia compra</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3948819587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Desc. Purch. SubCategory</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre SubCategoria compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Desc. Purch. SubCategory - Property Caption</note>
+          <target>Nombre SubCategoria compra</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2163727191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Desc. Sales Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Clasificación Ventas"</note>
@@ -22433,6 +22517,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="ProveedorBloqueado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ProveedorBloqueado - Property Caption</note>
           <target>ProveedorBloqueado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2267820446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Purch. Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Categoria compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Purch. Category - Property Caption</note>
+          <target>Categoria compra</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3319401488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Purch. Family</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familia compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Purch. Family - Property Caption</note>
+          <target>Familia compra</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 4086937370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Purch. SubCategory</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubCategoria compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Purch. SubCategory - Property Caption</note>
+          <target>SubCategoria compra</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1305804038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Cant. en ofertas de venta</source>
