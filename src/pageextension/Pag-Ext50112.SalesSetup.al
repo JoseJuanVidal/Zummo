@@ -67,6 +67,42 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                     ApplicationArea = all;
                 }
             }
+            group("Zummo IC")
+            {
+                Caption = 'Zummo Intercompany', Comment = 'Zummo Intercompany';
+
+                field("WS User Id"; Rec."WS User Id")
+                {
+                    ApplicationArea = All;
+                }
+                field("WS Key"; Rec."WS Key")
+                {
+                    ApplicationArea = All;
+                    ExtendedDatatype = Masked;
+                }
+                field("Base URL IC Zummo Innc."; Rec."WS Base URL IC Zummo Innc.")
+                {
+                    ApplicationArea = All;
+                }
+                field("WS Name - Purch. Order Header"; Rec."WS Name - Purch. Order Header")
+                {
+                    ApplicationArea = All;
+                }
+                field("WS Name - Purch. Order Line"; Rec."WS Name - Purch. Order Line")
+                {
+                    ApplicationArea = All;
+                }
+                field("Send Mail Notifications"; Rec."Send Mail Notifications")
+                {
+                    ApplicationArea = All;
+                }
+                field("Rept. Mail Notifications"; Rec."Recipient Mail Notifications")
+                {
+                    ApplicationArea = All;
+                    ExtendedDatatype = EMail;
+                }
+
+            }
         }
     }
 

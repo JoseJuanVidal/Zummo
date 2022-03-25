@@ -5518,6 +5518,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CU_Cron - Method OnRun - NamedType lbNoParametroErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 4089462097 - NamedType 3941846598" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Debe actualizar el pedido de compra orgien, %1, antes de registrar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method OnAfterConfirmPost - NamedType ErrorLbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 1864777223 - NamedType 2016233549" size-unit="char" translate="yes" xml:space="preserve">
           <source>No exchange rate is found for currency: %1 and date: %2 %3: %4</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se encuentra tipo de cambio para divisa: %1 y fecha: %2 %3: %4"</note>
@@ -5712,6 +5717,41 @@
           <source>You have changed the requested delivey date\Do you want to change the registration date also on the lines?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ha cambiado la fecha de entrega requerida\¿Desea cambiar la fecha de entrega requerida también en las líneas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ValidaFechaRequeridaLinPedido - NamedType lbConfirmQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 407788085" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se ha actualizado el pedido de compra </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType MsgLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualización Pedido Compra Zummo Inc.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType SubjectLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3733562477" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se ha eliminado el pedido de venta %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType BodyLbl1</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3095865860" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se ha creado el pedido de venta %1 desde la oferta %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType BodyLbl2</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 291269830" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proceso finalizado. Se han actualizado las lineas del pedido %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType CreatedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualización Pedido Compra Zummo Inc.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType SubjectLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 1908025102" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se han actualizado las cantidades y el seguimiento del pedido de compra %1 desde el pedido de venta %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType BodyLbl</note>
         </trans-unit>
         <trans-unit id="Page 2965806569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Accounting Manager</source>
@@ -20103,6 +20143,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="R&amp;egistrar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action RegistrarFran - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3617415722 - Action 1681450121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Update Purchase Order Zummo Inc.</source>
+          <note from="Developer" annotates="general" priority="2">Actualizar Ped. Compra Zummo Inc.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action STH Post - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3617415722 - Control 1320162667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Indicar el cambio para la impresión de los documentos.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Indicar el cambio para la impresión de los documentos."</note>
@@ -20247,6 +20292,11 @@
           <source>Select Path</source>
           <note from="Developer" annotates="general" priority="2">ESP="Seleccionar ruta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control RutaPdfPedidos_btc - Method OnAssistEdit - NamedType lbrutaLbl</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4090392497 - Control 2514262806 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Zummo Intercompany</source>
+          <note from="Developer" annotates="general" priority="2">Zummo Intercompany</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control Zummo IC - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2379887800 - Action 4127921286 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1399627168">
           <source>Trazabilidad Serie</source>
@@ -21848,6 +21898,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Perfil"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Perfil_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 1916413140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Source Purch. Order No</source>
+          <note from="Developer" annotates="general" priority="2">Nº Ped. Compra origen</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Source Purch. Order No - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 4094232976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Source Purch. Order Updated</source>
+          <note from="Developer" annotates="general" priority="2">Ped. Compra origen actualizado</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Source Purch. Order Updated - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 1475697198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>SubCliente</source>
           <note from="Developer" annotates="general" priority="2">ESP="SubCliente"</note>
@@ -22183,10 +22243,45 @@
           <note from="Developer" annotates="general" priority="2">ESP="Término pago repuesto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field PmtTermsRepuesto_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2930230816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Recipient Mail Notifications</source>
+          <note from="Developer" annotates="general" priority="2">Destinatario notificaciones por email</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Recipient Mail Notifications - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 1296414238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Orders PDF path</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ruta PDF Pedidos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field RutaPdfPedidos_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 1039525661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Send Mail Notifications</source>
+          <note from="Developer" annotates="general" priority="2">Enviar notificaciones por email</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Send Mail Notifications - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2815599264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>WS Base URL IC Zummo Innc.</source>
+          <note from="Developer" annotates="general" priority="2">WS URL Base IC Zummo Innc.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field WS Base URL IC Zummo Innc. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3227195069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>WS Key</source>
+          <note from="Developer" annotates="general" priority="2">Clave del WS</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field WS Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 921930399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>WS Name - Purch. Order Header</source>
+          <note from="Developer" annotates="general" priority="2">Nombre WS - Cab. Ped. Compra</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field WS Name - Purch. Order Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 552298424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>WS Name - Purch. Order Line</source>
+          <note from="Developer" annotates="general" priority="2">Nombre WS - Lin. Ped. Compra</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field WS Name - Purch. Order Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 1069650500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>WS User Id</source>
+          <note from="Developer" annotates="general" priority="2">Id Usuario</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field WS User Id - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>ABC Cliente</source>
