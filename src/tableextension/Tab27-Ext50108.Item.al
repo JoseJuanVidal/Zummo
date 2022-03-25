@@ -283,45 +283,6 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Recalcular Coste Estandar', comment = 'ESP="Recalcular Coste Estandar"';
         }
-        field(50125; "Purch. Family"; Code[20])
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Purch. Family', comment = 'ESP="Familia compra"';
-            TableRelation = "STH Purchase Family".Code;
-        }
-        field(50126; "Desc. Purch. Family"; Text[100])
-        {
-            Caption = 'Desc. Purch. Family', comment = 'ESP="Nombre Familia compra"';
-            FieldClass = FlowField;
-            CalcFormula = lookup("STH Purchase Family".Description where(Code = field("Purch. Family")));
-            Editable = false;
-        }
-        field(50127; "Purch. Category"; Code[20])
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Purch. Category', comment = 'ESP="Categoria compra"';
-            TableRelation = "STH Purchase Category".Code where("Purch. Familiy code" = field("Purch. Family"));
-        }
-        field(50128; "Desc. Purch. Category"; Text[100])
-        {
-            Caption = 'Desc. Purch. Category', comment = 'ESP="Nombre Categoria compra"';
-            FieldClass = FlowField;
-            CalcFormula = lookup("STH Purchase Category".Description where("Purch. Familiy code" = field("Purch. Family"), Code = field("Purch. Family")));
-            Editable = false;
-        }
-        field(50129; "Purch. SubCategory"; Code[20])
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Purch. SubCategory', comment = 'ESP="SubCategoria compra"';
-            TableRelation = "STH Purchase SubCategory".Code where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category"));
-        }
-        field(50130; "Desc. Purch. SubCategory"; Text[100])
-        {
-            Caption = 'Desc. Purch. SubCategory', comment = 'ESP="Nombre SubCategoria compra"';
-            FieldClass = FlowField;
-            CalcFormula = lookup("STH Purchase SubCategory".Description where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category")));
-            Editable = false;
-        }
         // field(50125; ToUpdate; Boolean)
         // {
         //     Caption = 'To update', comment = 'Act. itbid';
@@ -330,5 +291,45 @@ tableextension 50108 "Item" extends Item  //27
         // {
         //     Caption = 'Last date updated', comment = 'Ult. Fecha act. itbid';
         // }
+        field(50130; "Purch. Family"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. Family', comment = 'ESP="Familia compra"';
+            TableRelation = "STH Purchase Family".Code;
+        }
+        field(50131; "Desc. Purch. Family"; Text[100])
+        {
+            Caption = 'Desc. Purch. Family', comment = 'ESP="Nombre Familia compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase Family".Description where(Code = field("Purch. Family")));
+            Editable = false;
+        }
+        field(50132; "Purch. Category"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. Category', comment = 'ESP="Categoria compra"';
+            TableRelation = "STH Purchase Category".Code where("Purch. Familiy code" = field("Purch. Family"));
+        }
+        field(50133; "Desc. Purch. Category"; Text[100])
+        {
+            Caption = 'Desc. Purch. Category', comment = 'ESP="Nombre Categoria compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase Category".Description where("Purch. Familiy code" = field("Purch. Family"), Code = field("Purch. Family")));
+            Editable = false;
+        }
+        field(50134; "Purch. SubCategory"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. SubCategory', comment = 'ESP="SubCategoria compra"';
+            TableRelation = "STH Purchase SubCategory".Code where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category"));
+        }
+        field(50135; "Desc. Purch. SubCategory"; Text[100])
+        {
+            Caption = 'Desc. Purch. SubCategory', comment = 'ESP="Nombre SubCategoria compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase SubCategory".Description where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category")));
+            Editable = false;
+        }
+
     }
 }
