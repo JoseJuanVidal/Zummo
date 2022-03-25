@@ -5364,169 +5364,93 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Posting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-<<<<<<< HEAD
-          <source>STH Purchase Category</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <source>Purchase Category</source>
           <note from="Developer" annotates="general" priority="2">ESP="Caegorias compras"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Field 1185888005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last date updated</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2">Ult. Fecha act. itbid</note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Ult. Fecha act. itbid"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Last date updated - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Field 3044167908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Familiy code</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Familia"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Purch. Familiy code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Field 3649348102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>To update</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2">Act. itbid</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field To Update - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1017534486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>STH Purchase Family</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Act. itbid"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field To Update - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1017534486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Family</source>
           <note from="Developer" annotates="general" priority="2">ESP="Familia de compras"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1017534486 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1017534486 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1017534486 - Field 1185888005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last date updated</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2">Ult. Fecha act. itbid</note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Ult. Fecha act. itbid"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field Last date updated - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1017534486 - Field 3649348102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>To update</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2">Act. itbid</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field To Update - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 285631052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>STH Purchase Category</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Act. itbid"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Family - Field To Update - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 285631052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase SubCategory</source>
           <note from="Developer" annotates="general" priority="2">ESP="Sub Categoría compras"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 285631052 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 285631052 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 285631052 - Field 1185888005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last date updated</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2">Ult. Fecha act. itbid</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Last date updated - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 285631052 - Field 3876712409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Purch. Familiy code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Ult. Fecha act. itbid"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Last date updated - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 285631052 - Field 3876712409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Category code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Category"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Purch. Category code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 285631052 - Field 3044167908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Familiy code</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2"></note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Familía"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Purch. Familiy code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 285631052 - Field 3649348102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>To update</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2">Act. itbid</note>
-=======
           <note from="Developer" annotates="general" priority="2">ESP="Act. itbid"</note>
->>>>>>> master
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field To Update - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -22809,8 +22733,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Es NO Asegurable (Otros)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment Terms - Field Es NO Asegurable (Otros) - Property Caption</note>
         </trans-unit>
-<<<<<<< HEAD
-=======
         <trans-unit id="TableExtension 1518785014 - Field 1842481456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2624288207">
           <source>Description Language</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción Idioma"</note>
@@ -22821,7 +22743,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Filtro Idioma"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Production BOM Line - Field Language Filter - Property Caption</note>
         </trans-unit>
->>>>>>> master
         <trans-unit id="TableExtension 1703201611 - Field 3454230391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3105979010">
           <source>Process Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descrip. proceso"</note>
