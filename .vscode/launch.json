@@ -15,7 +15,7 @@
             "launchBrowser": false,
             "schemaUpdateMode": "Synchronize"
         },
-        /*  {
+        {
             "name": "Localhost",
             "type": "al",
             "request": "launch",
@@ -29,6 +29,6 @@
             "breakOnRecordWrite": false,
             "launchBrowser": true,
             "schemaUpdateMode": "Synchronize"
-        } */
+        }
     ]
 }
