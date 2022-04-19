@@ -1,4 +1,4 @@
-page 50053 "WS Proyectos"
+page 50036 "WS Proyectos"
 {
     PageType = List;
     ApplicationArea = none;

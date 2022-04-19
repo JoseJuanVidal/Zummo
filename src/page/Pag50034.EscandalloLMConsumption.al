@@ -1,4 +1,4 @@
-page 50051 "Escandallo LM Consumption"
+page 50034 "Escandallo LM Consumption"
 {
     PageType = List;
     ApplicationArea = all;
