@@ -1309,4 +1309,88 @@ codeunit 50111 "Funciones"
         if Mensaje <> '' then
             Message(Mensaje + ' Son bajo pedido');
     end;
+
+    procedure CrearOferta(var SalesHeaderAux: Record "STH Sales Header Aux")
+    var
+        SalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+    begin
+        //COMPROBAR SI EXISTE YA UN REGISTRO DE ESTA OFERTA
+        CheckExisteOferta(SalesHeader, SalesHeaderAux);
+
+        //INSERTAR CABECERA
+        InsertarCabeceraOferta(SalesHeader, SalesHeaderAux);
+
+        //INSERTAR LINEAS
+        InsertarLineasOferta(SalesLine, SalesHeaderAux);
+    end;
+
+    local procedure CheckExisteOferta(var SalesHeader: Record "Sales Header"; SalesHeaderAux: Record "STH Sales Header Aux")
+    begin
+        if SalesHeader.Get(SalesHeader."Document Type"::Quote, SalesHeaderAux."No.") then
+            Error('El registro ya existe');
+    end;
+
+    local procedure InsertarCabeceraOferta(var SalesHeader: Record "Sales Header"; var SalesHeaderAux: Record "STH Sales Header Aux")
+    begin
+        SalesHeader.Init();
+        SalesHeader."Document Type" := SalesHeader."Document Type"::Quote;
+        SalesHeader.Validate("No.", SalesHeaderAux."No.");
+        SalesHeader.Validate("Sell-to Customer No.", SalesHeaderAux."Sell-to Customer No.");
+        SalesHeader.Validate(ofertaprobabilidad, SalesHeaderAux.Probability);
+        SalesHeader.Validate("Currency Code", SalesHeaderAux."Currency Code");
+        SalesHeader.Validate("Ship-to Name", SalesHeaderAux."Ship-to Name");
+        SalesHeader.Validate("Ship-to Name 2", SalesHeaderAux."Ship-to Name 2");
+        SalesHeader.Validate("Ship-to Address", SalesHeaderAux."Ship-to Address");
+        SalesHeader.Validate("Ship-to Address 2", SalesHeaderAux."Ship-to Address 2");
+        SalesHeader.Validate("Ship-to City", SalesHeaderAux."Ship-to City");
+        SalesHeader.Validate("Ship-to County", SalesHeaderAux."Bill-to County");
+        SalesHeader.Validate("Ship-to Country/Region Code", SalesHeaderAux."Ship-to Country/Region Code");
+        SalesHeader.Validate("Ship-to Post Code", SalesHeaderAux."Ship-to Post Code");
+        SalesHeader.Validate("Shipping Agent Code", SalesHeaderAux."Shipping Agent Code");
+        SalesHeader.Validate("Payment Terms Code", SalesHeaderAux."Payment Terms Code");
+        SalesHeader.Validate(Amount, SalesHeaderAux.Amount);
+        SalesHeader.Validate("Amount Including VAT", SalesHeaderAux."Amount Including VAT");
+        SalesHeader.Validate("Bill-to Name", SalesHeaderAux."Bill-to Name");
+        SalesHeader.Validate("Bill-to Address", SalesHeaderAux."Bill-to Address");
+        SalesHeader.Validate("Bill-to Address 2", SalesHeaderAux."Bill-to Address 2");
+        SalesHeader.Validate("Bill-to City", SalesHeaderAux."Bill-to City");
+        SalesHeader.Validate("Bill-to County", SalesHeaderAux."Bill-to County");
+        SalesHeader.Validate("Bill-to Country/Region Code", SalesHeaderAux."Bill-to Country/Region Code");
+        SalesHeader.Validate("Bill-to Post Code", SalesHeaderAux."Bill-to Post Code");
+        SalesHeader.Validate("Invoice Discount Amount", SalesHeaderAux."Invoice Discount Amount");
+        SalesHeader.Validate("Requested Delivery Date", SalesHeaderAux."Requested Delivery Date");
+        SalesHeader.Insert();
+    end;
+
+    local procedure InsertarLineasOferta(var SalesLine: Record "Sales Line"; var SalesHeaderAux: Record "STH Sales Header Aux")
+    var
+        SalesLinesAux: Record "STH Sales Line Aux";
+    begin
+        // SalesLinesAux.SetRange("Sell-to Customer No.", SalesHeaderAux."Sell-to Customer No.");
+        SalesLinesAux.SetRange("Document No.", SalesHeaderAux."No.");
+
+        // if SalesLinesAux.Get(SalesHeaderAux."Sell-to Customer No.", SalesHeaderAux."No.") then begin
+        if SalesLinesAux.FindFirst() then begin
+            repeat
+                SalesLine.Init();
+                SalesLine."Document Type" := SalesLine."Document Type"::Quote;
+                SalesLine.Type := SalesLine.Type::Item;
+                // SalesLine.Validate("Sell-to Customer No.", SalesLinesAux."Sell-to Customer No.");
+                SalesLine.Validate("Document No.", SalesLinesAux."Document No.");
+                SalesLine.Validate("Line No.", SalesLinesAux."Line No.");
+                SalesLine.Validate("No.", SalesLinesAux."No.");
+                SalesLine.Validate(Description, SalesLinesAux.Description);
+                SalesLine.Validate("Description 2", SalesLinesAux."Description 2");
+                SalesLine.Validate(Quantity, SalesLinesAux.Quantity);
+                SalesLine.Validate("Unit Price", SalesLinesAux."Unit Price");
+                SalesLine.Validate("Line Discount %", SalesLinesAux."Line Discount %");
+                SalesLine.Validate("Line Discount Amount", SalesLinesAux."Line Discount Amount");
+                SalesLine.Validate(Amount, SalesLinesAux.Amount);
+                SalesLine.Validate("Line Amount", SalesLinesAux."Line Amount");
+                SalesLine.Validate("Amount Including VAT", SalesLinesAux."Amount Including VAT");
+                SalesLine.Insert();
+            until SalesLinesAux.Next() = 0;
+        end;
+    end;
 }
