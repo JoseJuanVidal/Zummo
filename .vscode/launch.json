@@ -28,7 +28,7 @@
             "breakOnError": true,
             "breakOnRecordWrite": false,
             "launchBrowser": true,
-            "schemaUpdateMode": "Synchronize"
+            "schemaUpdateMode": "ForceSync"
         }
     ]
 }

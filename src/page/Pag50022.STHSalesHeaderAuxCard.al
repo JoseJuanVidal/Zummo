@@ -1,17 +1,14 @@
-page 50030 "STH Sales Header Aux"
+page 50022 "STH Sales Header Aux Card"
 {
-    ApplicationArea = All;
-    Caption = 'Sales Header Aux', Comment = 'ESP="Ofertas Sales Aux"';
-    PageType = List;
+    Caption = 'Sales Header Aux Card', Comment = 'ESP="Ficha Ofertas SALES"';
+    PageType = Card;
     SourceTable = "STH Sales Header Aux";
-    UsageCategory = Lists;
-    CardPageId = "STH Sales Header Aux Card";
 
     layout
     {
         area(content)
         {
-            repeater(General)
+            group(General)
             {
                 field("No."; Rec."No.")
                 {
@@ -133,6 +130,10 @@ page 50030 "STH Sales Header Aux"
                     ToolTip = 'Specifies the value of the Invoice Discount Amount field.';
                     ApplicationArea = All;
                 }
+                field("Invoice Discount"; "Invoice Discount")
+                {
+                    ApplicationArea = all;
+                }
                 field("Bill-to Name"; Rec."Bill-to Name")
                 {
                     ToolTip = 'Specifies the value of the Bill-to Name field.';
@@ -178,6 +179,12 @@ page 50030 "STH Sales Header Aux"
                     ToolTip = 'Specifies the value of the Shipping Agent Code field.';
                     ApplicationArea = All;
                 }
+            }
+            part(SalesLines; "STH Sales Line Aux")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Document No." = FIELD("No.");
+                UpdatePropagation = Both;
             }
         }
     }

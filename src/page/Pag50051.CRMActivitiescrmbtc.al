@@ -1,4 +1,4 @@
-page 50020 "CRM Activities_crm_btc"
+page 50051 "CRM Activities_crm_btc"
 {
     Caption = 'CRM Activities', comment = 'ESP="Actividades CRM"';
     PageType = CardPart;

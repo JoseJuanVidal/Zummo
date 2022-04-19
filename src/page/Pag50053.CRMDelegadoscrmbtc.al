@@ -1,7 +1,7 @@
-page 50022 "CRM Area Managers_crm_btc"
+page 50053 "CRM Delegados_crm_btc"
 {
     PageType = List;
-    SourceTable = "CRM AreaManager_crm_btc";// "CRM Area Manager_btc";
+    SourceTable = "CRM Delegado_crm_btc"; // "CRM Delegado_btc";
     Editable = false;
     ApplicationArea = All;
     UsageCategory = Lists;
@@ -14,7 +14,7 @@ page 50022 "CRM Area Managers_crm_btc"
             repeater(General)
             {
                 // add fields to display on the page
-                field(zum_bcareamanagerId; zum_bcareamanagerId) { ApplicationArea = All; }
+                field(zum_bcdelegadoId; zum_bcdelegadoId) { ApplicationArea = All; }
                 field(CreatedOn; CreatedOn) { ApplicationArea = All; }
 
                 field(CreatedBy; CreatedBy) { ApplicationArea = All; }
@@ -51,10 +51,9 @@ page 50022 "CRM Area Managers_crm_btc"
                 Promoted = true;
                 PromotedCategory = Process;
                 ToolTip = 'Generate the entity from the coupled Common Data Service data.', comment = 'ESP="Generar la entidad desde el dato emparejado del Common Data Service"';
-
                 trigger OnAction()
                 var
-                    CDS: Record "CRM AreaManager_crm_btc";
+                    CDS: Record "CRM Delegado_crm_btc"; // "CRM Delegado_btc";
                     CRMIntegrationManagement: Codeunit "CRM Integration Management";
                 begin
                     CurrPage.SetSelectionFilter(CDS);
@@ -65,15 +64,15 @@ page 50022 "CRM Area Managers_crm_btc"
     }
 
     var
-        CurrentlyCoupledCDSWorker: Record "CRM AreaManager_crm_btc";
+        CurrentlyCoupledCDS: Record "CRM Delegado_crm_btc"; // "CRM Delegado_btc";
 
     trigger OnInit()
     begin
         Codeunit.Run(Codeunit::"CRM Integration Management");
     end;
 
-    procedure SetCurrentlyCoupledCDSWorker(CDS: Record "CRM AreaManager_crm_btc")
+    procedure SetCurrentlyCoupledCDSWorker(CDS: Record "CRM Delegado_crm_btc") // "CRM Delegado_btc")
     begin
-        CurrentlyCoupledCDSWorker := CDS;
+        CurrentlyCoupledCDS := CDS;
     end;
 }

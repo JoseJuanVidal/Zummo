@@ -1,4 +1,4 @@
-page 50032 "STH Sales Line Aux"
+page 50023 "STH Sales Line Aux"
 {
     Caption = 'Sales Line Aux', Comment = 'ESP="Lineas Aux"';
     PageType = ListPart;

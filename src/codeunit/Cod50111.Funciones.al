@@ -1323,6 +1323,10 @@ codeunit 50111 "Funciones"
 
         //INSERTAR LINEAS
         InsertarLineasOferta(SalesLine, SalesHeaderAux);
+
+        // Calcular Dto de cabecera
+        CalcularDescuentoTotal(SalesHeader, SalesHeaderAux."Invoice Discount");
+
     end;
 
     local procedure CheckExisteOferta(var SalesHeader: Record "Sales Header"; SalesHeaderAux: Record "STH Sales Header Aux")
@@ -1349,8 +1353,8 @@ codeunit 50111 "Funciones"
         SalesHeader.Validate("Ship-to Post Code", SalesHeaderAux."Ship-to Post Code");
         SalesHeader.Validate("Shipping Agent Code", SalesHeaderAux."Shipping Agent Code");
         SalesHeader.Validate("Payment Terms Code", SalesHeaderAux."Payment Terms Code");
-        SalesHeader.Validate(Amount, SalesHeaderAux.Amount);
-        SalesHeader.Validate("Amount Including VAT", SalesHeaderAux."Amount Including VAT");
+        //SalesHeader.Validate(Amount, SalesHeaderAux.Amount);
+        //SalesHeader.Validate("Amount Including VAT", SalesHeaderAux."Amount Including VAT");
         SalesHeader.Validate("Bill-to Name", SalesHeaderAux."Bill-to Name");
         SalesHeader.Validate("Bill-to Address", SalesHeaderAux."Bill-to Address");
         SalesHeader.Validate("Bill-to Address 2", SalesHeaderAux."Bill-to Address 2");
@@ -1358,7 +1362,7 @@ codeunit 50111 "Funciones"
         SalesHeader.Validate("Bill-to County", SalesHeaderAux."Bill-to County");
         SalesHeader.Validate("Bill-to Country/Region Code", SalesHeaderAux."Bill-to Country/Region Code");
         SalesHeader.Validate("Bill-to Post Code", SalesHeaderAux."Bill-to Post Code");
-        SalesHeader.Validate("Invoice Discount Amount", SalesHeaderAux."Invoice Discount Amount");
+        //SalesHeader.Validate("Invoice Discount Amount", SalesHeaderAux."Invoice Discount Amount");
         SalesHeader.Validate("Requested Delivery Date", SalesHeaderAux."Requested Delivery Date");
         SalesHeader.Insert();
     end;
@@ -1392,5 +1396,24 @@ codeunit 50111 "Funciones"
                 SalesLine.Insert();
             until SalesLinesAux.Next() = 0;
         end;
+    end;
+
+    procedure CalcularDescuentoTotal(var SalesHeader: Record "Sales Header"; DescuentoFactura: Decimal)
+    var
+        SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
+        AmountWithDiscountAllowed: Decimal;
+        DocumentTotals: Codeunit "Document Totals";
+        SalesLine: record "Sales Line";
+        InvoiceDiscountAmount: Decimal;
+        Currency: record Currency;
+    begin
+        Currency.InitRoundingPrecision;
+        SalesLine.reset;
+        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+        SalesLine.SetRange("Document No.", SalesHeader."No.");
+        SalesLine.FindFirst();
+        AmountWithDiscountAllowed := DocumentTotals.CalcTotalSalesAmountOnlyDiscountAllowed(SalesLine);
+        InvoiceDiscountAmount := ROUND(AmountWithDiscountAllowed * DescuentoFactura / 100, Currency."Amount Rounding Precision");
+        SalesCalcDiscByType.ApplyInvDiscBasedOnAmt(InvoiceDiscountAmount, SalesHeader);
     end;
 }
