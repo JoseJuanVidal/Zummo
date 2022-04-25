@@ -6,6 +6,7 @@ page 50016 "STH Sales Header Aux"
     SourceTable = "STH Sales Header Aux";
     UsageCategory = Lists;
     CardPageId = "STH Sales Header Aux Card";
+    Editable = false;
 
     layout
     {
@@ -17,6 +18,14 @@ page 50016 "STH Sales Header Aux"
                 {
                     ToolTip = 'Specifies the value of the No. field.';
                     ApplicationArea = All;
+                }
+                field(Status; Status)
+                {
+                    ApplicationArea = all;
+                }
+                field(Created; Created)
+                {
+                    ApplicationArea = all;
                 }
                 field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                 {
@@ -207,6 +216,25 @@ page 50016 "STH Sales Header Aux"
                         zummoFunctions.CrearOferta(Rec);
                     end;
                 }
+            }
+        }
+        area(Navigation)
+        {
+            action(SalesQuote)
+            {
+                Caption = 'Sales Quote', comment = 'ESP="Oferta Venta"';
+                ApplicationArea = all;
+                Image = Quote;
+
+                trigger OnAction()
+                var
+                    SalesQuote: record "Sales Header";
+                begin
+                    SalesQuote.SetRange("Document Type", SalesQuote."Document Type"::Quote);
+                    SalesQuote.SetRange("No.", Rec."No.");
+                    page.Run(0, SalesQuote);
+                end;
+
             }
         }
     }

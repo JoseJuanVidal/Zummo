@@ -1327,6 +1327,14 @@ codeunit 50111 "Funciones"
         // Calcular Dto de cabecera
         CalcularDescuentoTotal(SalesHeader, SalesHeaderAux."Invoice Discount");
 
+        // poner estado AUX
+        SalesHeader.CalcFields(Amount);
+        if SalesHeaderAux.Amount = SalesHeader.Amount then
+            SalesHeaderAux.Status := SalesHeaderAux.Status::Finalizada
+        else
+            SalesHeaderAux.Status := SalesHeaderAux.Status::Error;
+        SalesHeaderAux.Created := true;
+        SalesHeaderAux.Modify();
     end;
 
     local procedure CheckExisteOferta(var SalesHeader: Record "Sales Header"; SalesHeaderAux: Record "STH Sales Header Aux")
@@ -1341,7 +1349,16 @@ codeunit 50111 "Funciones"
         SalesHeader."Document Type" := SalesHeader."Document Type"::Quote;
         SalesHeader.Validate("No.", SalesHeaderAux."No.");
         SalesHeader.Validate("Sell-to Customer No.", SalesHeaderAux."Sell-to Customer No.");
-        SalesHeader.Validate(ofertaprobabilidad, SalesHeaderAux.Probability);
+        case SalesHeaderAux.Probability of
+            '':
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::" ";
+            'Alta':
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Alta;
+            'Baja':
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Baja;
+            'Media':
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Media;
+        end;
         SalesHeader.Validate("Currency Code", SalesHeaderAux."Currency Code");
         SalesHeader.Validate("Ship-to Name", SalesHeaderAux."Ship-to Name");
         SalesHeader.Validate("Ship-to Name 2", SalesHeaderAux."Ship-to Name 2");

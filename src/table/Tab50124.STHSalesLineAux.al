@@ -69,6 +69,27 @@ table 50124 "STH Sales Line Aux"
             Caption = 'Unit Price', Comment = 'ESP="Precio Unitario"';
             DataClassification = CustomerContent;
         }
+        field(13; "Quote ID"; Guid)
+        {
+            Caption = 'Quote ID', Comment = 'ESP="Id Oferta"';
+            DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            begin
+                UpdateDocNoId;
+            end;
+        }
+        field(14; "Item ID"; Guid)
+        {
+            Caption = 'Item ID', Comment = 'ESP="Id Producto"';
+            DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            begin
+                UpdateItemId;
+            end;
+        }
+
         field(30; "Amount Including VAT"; Decimal)
         {
             Caption = 'Amount Including VAT', Comment = 'ESP="Importe IVA incl."';
@@ -77,9 +98,65 @@ table 50124 "STH Sales Line Aux"
     }
     keys
     {
-        key(PK; "Document No.", "Line No.")
+        key(PK; "Quote ID", "Line No.")
         {
             Clustered = true;
         }
     }
+    var
+        Item: Record Item;
+        CRMIntegrationRecord: record "CRM Integration Record";
+
+    local procedure UpdateItemId()
+    var
+        AccountId: RecordId;
+        ItemRecRef: RecordRef;
+        ItemNo: code[20];
+    begin
+        // poner los ID de cliente
+        IF CRMIntegrationRecord.FindRecordIDFromID("Item ID", Database::Item, AccountId) then begin
+            if ItemRecRef.get(AccountId) then begin
+                ItemNo := format(ItemRecRef.field(Item.FieldNo("No.")));
+                UpdateAccountIdItem(ItemNo);
+            end;
+        end;
+    end;
+
+    local procedure UpdateAccountIdItem(ItemNo: code[20])
+    begin
+        if Item.get(ItemNo) then begin
+            Rec."No." := item."No.";
+            Rec.Description := Item.Description;
+            Rec."Description 2" := Item."Description 2";
+        end;
+    end;
+
+    local procedure UpdateDocNoId()
+    var
+        SalesQuoteAux: Record "STH Sales Header Aux";
+        AccountId: RecordId;
+        QuoteRecRef: RecordRef;
+        QuoteNo: code[20];
+    begin
+        IF CRMIntegrationRecord.FindRecordIDFromID("Quote ID", Database::"STH Sales Header Aux", AccountId) then begin
+            if QuoteRecRef.get(AccountId) then begin
+                QuoteNo := format(QuoteRecRef.field(SalesQuoteAux.FieldNo("No.")));
+                Rec."Document No." := QuoteNo;
+                if Rec."Line No." = 0 then begin
+                    Rec."Line No." := GetLastLineQuoteAux(QuoteNo);
+                end;
+            end;
+        end;
+    end;
+
+    local procedure GetLastLineQuoteAux(QuoteNo: code[20]): Integer
+    var
+        SalesQuoteAuxLin: Record "STH Sales Line Aux";
+    begin
+        SalesQuoteAuxLin.SetRange("Document No.", QuoteNo);
+        if SalesQuoteAuxLin.FindLast() then
+            exit(SalesQuoteAuxLin."Line No." + 10000)
+        else
+            exit(10000);
+    end;
 }

@@ -55,12 +55,12 @@ table 50123 "STH Sales Header Aux"
             Caption = 'Sell-to County', Comment = 'ESP="Venta-a País"';
             DataClassification = CustomerContent;
         }
-        field(11; "Probability"; Option)
+        field(11; "Probability"; text[20])
         {
             Caption = 'Probability', Comment = 'ESP="Probabilidad"';
             // DataClassification = CustomerContent;
-            OptionCaption = ' ,Baja,Media,Alta';
-            OptionMembers = " ","Baja","Media","Alta";
+            // OptionCaption = ' ,Baja,Media,Alta';
+            // OptionMembers = " ","Baja","Media","Alta";
         }
         field(12; "Currency Code"; Code[10])
         {
@@ -174,15 +174,35 @@ table 50123 "STH Sales Header Aux"
         }
         field(34; "Invoice Discount"; Decimal)
         {
-            Caption = 'Invoice Discount', Comment = 'ESP="Importe descuento"';
+            Caption = 'Invoice Discount', Comment = 'ESP="Dto (%)"';
             DataClassification = CustomerContent;
         }
+        field(35; "Account ID"; Guid)
+        {
+            Caption = 'Account ID', Comment = 'ESP="Id Cliente"';
+            DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            begin
+                UpdateAccountId;
+            end;
+        }
+        field(36; "Currency ID"; Guid)
+        {
+            Caption = 'Account ID', Comment = 'ESP="Id Divisa"';
+            DataClassification = CustomerContent;
+        }
+
         field(50; "Status"; Option)
         {
             Caption = 'Status', Comment = 'ESP="Estado"';
             // DataClassification = CustomerContent;
-            OptionCaption = ' ,Finalizad,Error';
+            OptionCaption = ' ,Finalizada,Error';
             OptionMembers = " ","Finalizada","Error";
+        }
+        field(51; "Created"; Boolean)
+        {
+            Caption = 'Created', Comment = 'ESP="Creada"';
         }
     }
     keys
@@ -192,4 +212,45 @@ table 50123 "STH Sales Header Aux"
             Clustered = true;
         }
     }
+
+    var
+        Customer: Record Customer;
+        CRMIntegrationRecord: record "CRM Integration Record";
+
+    local procedure UpdateAccountId()
+    var
+        AccountId: RecordId;
+        CustRecRef: RecordRef;
+        CustNo: code[20];
+    begin
+        // poner los ID de cliente
+        IF CRMIntegrationRecord.FindRecordIDFromID("Account ID", Database::"Customer", AccountId) then begin
+            if CustRecRef.get(AccountId) then begin
+                CustNo := format(CustRecRef.field(Customer.FieldNo("No.")));
+                UpdateAccountIdCutsomer(CustNo);
+            end;
+        end;
+    end;
+
+    local procedure UpdateAccountIdCutsomer(CustNo: code[20])
+    begin
+        if Customer.get(CustNo) then begin
+            "Sell-to Customer No." := Customer."No.";
+            "Sell-to Customer Name" := Customer.Name;
+            "Sell-to Customer Name 2" := Customer."Name 2";
+            "Sell-to Address" := Customer.Address;
+            "Sell-to Address 2" := Customer."Address 2";
+            "Sell-to City" := Customer.City;
+            "Sell-to Contact" := Customer.Contact;
+            "Sell-to Post Code" := Customer."Post Code";
+            "Sell-to County" := Customer.County;
+            "Bill-to Post Code" := Customer."Post Code";
+            "Bill-to County" := Customer.County;
+            "Bill-to Country/Region Code" := Customer."Country/Region Code";
+            "Bill-to Name" := Customer.Name;
+            "Bill-to Address" := Customer.Address;
+            "Bill-to Address 2" := Customer."Address 2";
+            "Bill-to City" := Customer.City;
+        end;
+    end;
 }

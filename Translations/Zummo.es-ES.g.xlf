@@ -5556,6 +5556,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3424626784 - Field 629845928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Account ID - Property Caption</note>
+          <target>Id Cliente</target>
+        </trans-unit>
         <trans-unit id="Table 3424626784 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe"</note>
@@ -5610,17 +5616,29 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Bill-to Post Code - Property Caption</note>
           <target>Fact. a-C.P.</target>
         </trans-unit>
+        <trans-unit id="Table 3424626784 - Field 1249475212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Creada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Created - Property Caption</note>
+          <target>Creada</target>
+        </trans-unit>
         <trans-unit id="Table 3424626784 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Currency Code - Property Caption</note>
           <target>Cód. Divisa</target>
         </trans-unit>
+        <trans-unit id="Table 3424626784 - Field 1924882014 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Divisa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Currency ID - Property Caption</note>
+          <target>Id Divisa</target>
+        </trans-unit>
         <trans-unit id="Table 3424626784 - Field 2210851648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe descuento"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto (%)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Invoice Discount - Property Caption</note>
-          <target>Importe descuento</target>
+          <target>Dto (%)</target>
         </trans-unit>
         <trans-unit id="Table 3424626784 - Field 3104584724 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Discount Amount</source>
@@ -5645,11 +5663,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Probabilidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Probability - Property Caption</note>
           <target>Probabilidad</target>
-        </trans-unit>
-        <trans-unit id="Table 3424626784 - Field 4121941639 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Baja,Media,Alta</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Probability - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 3424626784 - Field 135600996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Requested Delivery Date</source>
@@ -5772,7 +5785,7 @@
           <target>Estado</target>
         </trans-unit>
         <trans-unit id="Table 3424626784 - Field 513339096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Finalizad,Error</source>
+          <source> ,Finalizada,Error</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Status - Property OptionCaption</note>
         </trans-unit>
@@ -5811,6 +5824,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Field Document No. - Property Caption</note>
           <target>Nº Documento</target>
         </trans-unit>
+        <trans-unit id="Table 398122263 - Field 808550004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Field Item ID - Property Caption</note>
+          <target>Id Producto</target>
+        </trans-unit>
         <trans-unit id="Table 398122263 - Field 3582421358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line Amount</source>
           <note from="Developer" annotates="general" priority="2">ESP="Total Linea"</note>
@@ -5846,6 +5865,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Field Quantity - Property Caption</note>
           <target>Cantidad</target>
+        </trans-unit>
+        <trans-unit id="Table 398122263 - Field 2228033225 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Oferta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Field Quote ID - Property Caption</note>
+          <target>Id Oferta</target>
         </trans-unit>
         <trans-unit id="Table 398122263 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit Price</source>
@@ -9611,6 +9636,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Shipping Agent Code - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3424626784 - Action 647151006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Quote</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Oferta Venta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action SalesQuote - Property Caption</note>
+          <target>Oferta Venta</target>
+        </trans-unit>
         <trans-unit id="Page 3424626784 - Action 2928710152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crear Oferta</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -9786,6 +9817,12 @@
           <source>Specifies the value of the Shipping Agent Code field.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Shipping Agent Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Action 647151006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Quote</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Oferta Venta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Action SalesQuote - Property Caption</note>
+          <target>Oferta Venta</target>
         </trans-unit>
         <trans-unit id="Page 622870132 - Action 2928710152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crear Oferta</source>

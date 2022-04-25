@@ -21,7 +21,7 @@
             "request": "launch",
             "server": "http://localhost:8080/BC140", //Produccion
             "serverInstance": "BC140",
-            "port": 7149,
+            "port": 7049,
             "authentication": "Windows",
             "startupObjectId": 9305,
             "startupObjectType": "Page",
