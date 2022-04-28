@@ -21803,6 +21803,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desLineaEconomica_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1880579903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Inventory to date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario a Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Inventory to date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 966569728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Sales Classification List</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Clasificación Ventas"</note>
