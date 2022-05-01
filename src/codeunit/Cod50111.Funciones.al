@@ -1381,6 +1381,8 @@ codeunit 50111 "Funciones"
         SalesHeader.Validate("Bill-to Post Code", SalesHeaderAux."Bill-to Post Code");
         //SalesHeader.Validate("Invoice Discount Amount", SalesHeaderAux."Invoice Discount Amount");
         SalesHeader.Validate("Requested Delivery Date", SalesHeaderAux."Requested Delivery Date");
+        SalesHeader.OfertaSales := true;
+        SalesHeader."No contemplar planificacion" := true;
         SalesHeader.Insert();
     end;
 
@@ -1405,11 +1407,11 @@ codeunit 50111 "Funciones"
                 SalesLine.Validate("Description 2", SalesLinesAux."Description 2");
                 SalesLine.Validate(Quantity, SalesLinesAux.Quantity);
                 SalesLine.Validate("Unit Price", SalesLinesAux."Unit Price");
-                SalesLine.Validate("Line Discount %", SalesLinesAux."Line Discount %");
-                SalesLine.Validate("Line Discount Amount", SalesLinesAux."Line Discount Amount");
-                SalesLine.Validate(Amount, SalesLinesAux.Amount);
-                SalesLine.Validate("Line Amount", SalesLinesAux."Line Amount");
-                SalesLine.Validate("Amount Including VAT", SalesLinesAux."Amount Including VAT");
+                // SalesLine.Validate("Line Discount %", SalesLinesAux."Line Discount %");
+                // SalesLine.Validate("Line Discount Amount", SalesLinesAux."Line Discount Amount");
+                // SalesLine.Validate(Amount, SalesLinesAux.Amount);
+                // SalesLine.Validate("Line Amount", SalesLinesAux."Line Amount");
+                // SalesLine.Validate("Amount Including VAT", SalesLinesAux."Amount Including VAT");
                 SalesLine.Insert();
             until SalesLinesAux.Next() = 0;
         end;
