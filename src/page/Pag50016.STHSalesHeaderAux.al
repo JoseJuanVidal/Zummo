@@ -6,7 +6,6 @@ page 50016 "STH Sales Header Aux"
     SourceTable = "STH Sales Header Aux";
     UsageCategory = Lists;
     CardPageId = "STH Sales Header Aux Card";
-    Editable = false;
 
     layout
     {
