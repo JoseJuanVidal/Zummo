@@ -9038,6 +9038,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Crear Oferta - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3424626784 - Action 252030719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crear Oferta Lotes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Crear Oferta Lotes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Action 252030719 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea crear las ofertas de los registros seleccionados %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear las ofertas de los registros seleccionados %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Crear Oferta Lotes - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 622870132 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Header Aux Card</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ficha Ofertas SALES"</note>

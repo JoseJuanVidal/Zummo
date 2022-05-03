@@ -5879,6 +5879,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Crear Oferta - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3424626784 - Action 252030719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crear Oferta Lotes</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Crear Oferta Lotes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 622870132 - Control 636392376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Amount field.</source>
           <note from="Developer" annotates="general" priority="2"/>

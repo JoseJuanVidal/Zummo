@@ -9,7 +9,6 @@ page 50023 "STH Sales Line Aux"
     LinksAllowed = false;
     MultipleNewLines = true;
     ApplicationArea = All;
-    Editable = false;
 
     layout
     {

@@ -89,6 +89,11 @@ table 50124 "STH Sales Line Aux"
                 UpdateItemId;
             end;
         }
+        // TODO REVISION 
+        // field(15; "Revision ID"; Integer)
+        // {
+        //     Caption = 'RevisionNumber', Comment = 'ESP="RevisionNumber"';
+        // }
 
         field(30; "Amount Including VAT"; Decimal)
         {
@@ -142,6 +147,7 @@ table 50124 "STH Sales Line Aux"
             if QuoteRecRef.get(AccountId) then begin
                 QuoteNo := format(QuoteRecRef.field(SalesQuoteAux.FieldNo("No.")));
                 Rec."Document No." := QuoteNo;
+                // TODO REVISION Rec."Revision ID" := QuoteRecRef.field(SalesQuoteAux.FieldNo("Revision ID");
                 if Rec."Line No." = 0 then begin
                     Rec."Line No." := GetLastLineQuoteAux(QuoteNo);
                 end;

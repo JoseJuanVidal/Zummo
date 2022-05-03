@@ -204,6 +204,11 @@ table 50123 "STH Sales Header Aux"
         {
             Caption = 'Created', Comment = 'ESP="Creada"';
         }
+        // TODO REVISION 
+        // field(53; "Revision ID"; Integer)
+        // {
+        //     Caption = 'RevisionNumber', Comment = 'ESP="RevisionNumber"';
+        // }
     }
     keys
     {
@@ -212,6 +217,14 @@ table 50123 "STH Sales Header Aux"
             Clustered = true;
         }
     }
+
+    trigger OnDelete()
+    var
+        SalesLineAux: Record "STH Sales Line Aux";
+    begin
+        SalesLineAux.SetRange("Document No.", Rec."No.");
+        SalesLineAux.DeleteAll();
+    end;
 
     var
         Customer: Record Customer;

@@ -3,8 +3,6 @@ page 50022 "STH Sales Header Aux Card"
     Caption = 'Sales Header Aux Card', Comment = 'ESP="Ficha Ofertas SALES"';
     PageType = Card;
     SourceTable = "STH Sales Header Aux";
-    Editable = false;
-
     layout
     {
         area(content)
@@ -219,6 +217,7 @@ page 50022 "STH Sales Header Aux Card"
                         zummoFunctions.CrearOferta(Rec);
                     end;
                 }
+
             }
         }
         area(Navigation)

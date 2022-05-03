@@ -6,7 +6,7 @@ page 50016 "STH Sales Header Aux"
     SourceTable = "STH Sales Header Aux";
     UsageCategory = Lists;
     CardPageId = "STH Sales Header Aux Card";
-
+    Editable = false;
     layout
     {
         area(content)
@@ -213,6 +213,31 @@ page 50016 "STH Sales Header Aux"
                         zummoFunctions: Codeunit Funciones;
                     begin
                         zummoFunctions.CrearOferta(Rec);
+                    end;
+                }
+                action("Crear Oferta Lotes")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Crear Oferta Lotes';
+                    Image = GetEntries;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+
+                    trigger OnAction()
+                    var
+                        SalesQuoteAux: Record "STH Sales Header Aux";
+                        zummoFunctions: Codeunit Funciones;
+                        lblConfirm: Label '¿Desea crear las ofertas de los registros seleccionados %1?', comment = 'ESP="¿Desea crear las ofertas de los registros seleccionados %1?"';
+                    begin
+                        CurrPage.SetSelectionFilter(SalesQuoteAux);
+                        if not Confirm(lblConfirm, false, SalesQuoteAux.Count) then
+                            exit;
+                        if SalesQuoteAux.findset() then
+                            repeat
+                                if SalesQuoteAux.Status in [SalesQuoteAux.Status::" "] then
+                                    zummoFunctions.CrearOferta(SalesQuoteAux);
+                            Until SalesQuoteAux.next() = 0;
                     end;
                 }
             }
