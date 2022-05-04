@@ -1314,27 +1314,42 @@ codeunit 50111 "Funciones"
     var
         SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
+        Error: Boolean;
+        ErrorDtos: Boolean;
     begin
         //COMPROBAR SI EXISTE YA UN REGISTRO DE ESTA OFERTA
         CheckExisteOferta(SalesHeader, SalesHeaderAux);
 
         //INSERTAR CABECERA
-        InsertarCabeceraOferta(SalesHeader, SalesHeaderAux);
+        if not InsertarCabeceraOferta(SalesHeader, SalesHeaderAux) then
+            Error := true;
 
         //INSERTAR LINEAS
-        InsertarLineasOferta(SalesLine, SalesHeaderAux);
-
+        if not InsertarLineasOferta(SalesLine, SalesHeaderAux, ErrorDtos) then
+            Error := true;
         // Calcular Dto de cabecera
         CalcularDescuentoTotal(SalesHeader, SalesHeaderAux."Invoice Discount");
 
         // poner estado AUX
         SalesHeader.CalcFields(Amount);
-        if SalesHeaderAux.Amount = SalesHeader.Amount then
-            SalesHeaderAux.Status := SalesHeaderAux.Status::Finalizada
-        else
-            SalesHeaderAux.Status := SalesHeaderAux.Status::Error;
+        case error of
+            true:
+                begin
+                    SalesHeaderAux.Status := SalesHeaderAux.Status::Error;
+                end;
+            else begin
+                    if ErrorDtos then
+                        SalesHeaderAux.Status := SalesHeaderAux.Status::"Dif. Dtos"
+                    else
+                        if SalesHeaderAux.Amount = SalesHeader.Amount then
+                            SalesHeaderAux.Status := SalesHeaderAux.Status::Finalizada
+                        else
+                            SalesHeaderAux.Status := SalesHeaderAux.Status::"Dif. Importe";
+                end;
+        end;
         SalesHeaderAux.Created := true;
         SalesHeaderAux.Modify();
+
     end;
 
     local procedure CheckExisteOferta(var SalesHeader: Record "Sales Header"; SalesHeaderAux: Record "STH Sales Header Aux")
@@ -1343,7 +1358,10 @@ codeunit 50111 "Funciones"
             Error('El registro ya existe');
     end;
 
+    [TryFunction]
     local procedure InsertarCabeceraOferta(var SalesHeader: Record "Sales Header"; var SalesHeaderAux: Record "STH Sales Header Aux")
+    var
+        ErrorDtos: Boolean;
     begin
         SalesHeader.Init();
         SalesHeader."Document Type" := SalesHeader."Document Type"::Quote;
@@ -1386,7 +1404,8 @@ codeunit 50111 "Funciones"
         SalesHeader.Insert();
     end;
 
-    local procedure InsertarLineasOferta(var SalesLine: Record "Sales Line"; var SalesHeaderAux: Record "STH Sales Header Aux")
+    [TryFunction]
+    local procedure InsertarLineasOferta(var SalesLine: Record "Sales Line"; var SalesHeaderAux: Record "STH Sales Header Aux"; var ErrorDtos: Boolean)
     var
         SalesLinesAux: Record "STH Sales Line Aux";
     begin
@@ -1399,7 +1418,7 @@ codeunit 50111 "Funciones"
                 SalesLine.Init();
                 SalesLine."Document Type" := SalesLine."Document Type"::Quote;
                 SalesLine.Type := SalesLine.Type::Item;
-                // SalesLine.Validate("Sell-to Customer No.", SalesLinesAux."Sell-to Customer No.");
+                SalesLine."Sell-to Customer No." := SalesHeaderAux."Sell-to Customer No.";
                 SalesLine.Validate("Document No.", SalesLinesAux."Document No.");
                 SalesLine.Validate("Line No.", SalesLinesAux."Line No.");
                 SalesLine.Validate("No.", SalesLinesAux."No.");
@@ -1407,14 +1426,37 @@ codeunit 50111 "Funciones"
                 SalesLine.Validate("Description 2", SalesLinesAux."Description 2");
                 SalesLine.Validate(Quantity, SalesLinesAux.Quantity);
                 SalesLine.Validate("Unit Price", SalesLinesAux."Unit Price");
-                // SalesLine.Validate("Line Discount %", SalesLinesAux."Line Discount %");
-                // SalesLine.Validate("Line Discount Amount", SalesLinesAux."Line Discount Amount");
-                // SalesLine.Validate(Amount, SalesLinesAux.Amount);
-                // SalesLine.Validate("Line Amount", SalesLinesAux."Line Amount");
-                // SalesLine.Validate("Amount Including VAT", SalesLinesAux."Amount Including VAT");
+                // controlamos el dtos segun las necesidades
+                SalesLineDtos(SalesLine, SalesLinesAux);
+                if SalesLine."Line Discount %" <> SalesLinesAux."Line Discount %" then
+                    ErrorDtos := true;
+
+                SalesLine."No contemplar planificacion" := true;
                 SalesLine.Insert();
             until SalesLinesAux.Next() = 0;
         end;
+    end;
+
+    local procedure SalesLineDtos(var SalesLine: Record "Sales Line"; SalesLinesAux: Record "STH Sales Line Aux")
+    var
+        Customer: Record customer;
+        CustomerDiscountGroup: Record "Customer Discount Group";
+        NoAplicarDto: Boolean;
+    begin
+        if Customer.get(SalesLine."Sell-to Customer No.") then
+            if CustomerDiscountGroup.get(Customer."Customer Disc. Group") then
+                if CustomerDiscountGroup."Oferta CRM aplicar Dto" then
+                    NoAplicarDto := true;
+
+
+        if not NoAplicarDto then begin
+            SalesLine.Validate("Line Discount %", SalesLinesAux."Line Discount %");
+            if (SalesLinesAux."Line Discount Amount" <> 0) and (SalesLinesAux."Line Discount %" = 0) then
+                SalesLine.Validate("Line Discount Amount", SalesLinesAux."Line Discount Amount");
+            // SalesLine.Validate(Amount, SalesLinesAux.Amount);
+            // SalesLine.Validate("Line Amount", SalesLinesAux."Line Amount");
+            // SalesLine.Validate("Amount Including VAT", SalesLinesAux."Amount Including VAT");
+        end
     end;
 
     procedure CalcularDescuentoTotal(var SalesHeader: Record "Sales Header"; DescuentoFactura: Decimal)

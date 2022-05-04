@@ -28,6 +28,13 @@ table 50124 "STH Sales Line Aux"
         {
             Caption = 'No.', Comment = 'ESP="Nº"';
             DataClassification = CustomerContent;
+
+            TableRelation = Item;
+
+            trigger OnValidate()
+            begin
+                UpdateAccountIdItem(Rec."No.")
+            end;
         }
         field(5; Description; Text[100])
         {

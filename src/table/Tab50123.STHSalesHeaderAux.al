@@ -9,6 +9,12 @@ table 50123 "STH Sales Header Aux"
         {
             Caption = 'Sell-to Customer No.', Comment = 'ESP="Venta-a Nº"';
             DataClassification = CustomerContent;
+            TableRelation = customer;
+
+            trigger OnValidate()
+            begin
+                UpdateAccountIdCutsomer(Rec."Sell-to Customer No.");
+            end;
         }
         field(2; "No."; Code[20])
         {
@@ -197,8 +203,8 @@ table 50123 "STH Sales Header Aux"
         {
             Caption = 'Status', Comment = 'ESP="Estado"';
             // DataClassification = CustomerContent;
-            OptionCaption = ' ,Finalizada,Error';
-            OptionMembers = " ","Finalizada","Error";
+            OptionCaption = ' ,Finalizada,Error,Dif. Importe,Dif. Dtos';
+            OptionMembers = " ","Finalizada","Error","Dif. Importe","Dif. Dtos";
         }
         field(51; "Created"; Boolean)
         {
