@@ -1317,17 +1317,21 @@ codeunit 50111 "Funciones"
         Error: Boolean;
         ErrorDtos: Boolean;
     begin
+        SalesHeaderAux.status := SalesHeaderAux.status::Error;
+        SalesHeaderAux.Modify();
+        commit();
+
         //COMPROBAR SI EXISTE YA UN REGISTRO DE ESTA OFERTA
         CheckExisteOferta(SalesHeader, SalesHeaderAux);
 
         //INSERTAR CABECERA
-        if not InsertarCabeceraOferta(SalesHeader, SalesHeaderAux) then
-            Error := true;
+        InsertarCabeceraOferta(SalesHeader, SalesHeaderAux);
 
         //INSERTAR LINEAS
-        if not InsertarLineasOferta(SalesLine, SalesHeaderAux, ErrorDtos) then
-            Error := true;
+        InsertarLineasOferta(SalesLine, SalesHeaderAux, ErrorDtos);
+
         // Calcular Dto de cabecera
+
         CalcularDescuentoTotal(SalesHeader, SalesHeaderAux."Invoice Discount");
 
         // poner estado AUX
@@ -1358,7 +1362,6 @@ codeunit 50111 "Funciones"
             Error('El registro ya existe');
     end;
 
-    [TryFunction]
     local procedure InsertarCabeceraOferta(var SalesHeader: Record "Sales Header"; var SalesHeaderAux: Record "STH Sales Header Aux")
     var
         ErrorDtos: Boolean;
@@ -1404,7 +1407,6 @@ codeunit 50111 "Funciones"
         SalesHeader.Insert();
     end;
 
-    [TryFunction]
     local procedure InsertarLineasOferta(var SalesLine: Record "Sales Line"; var SalesHeaderAux: Record "STH Sales Header Aux"; var ErrorDtos: Boolean)
     var
         SalesLinesAux: Record "STH Sales Line Aux";
