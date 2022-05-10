@@ -1405,6 +1405,8 @@ codeunit 50111 "Funciones"
         SalesHeader.OfertaSales := true;
         SalesHeader."No contemplar planificacion" := true;
         SalesHeader.Insert();
+
+        UpdateNoContemplarPlanificacion(SalesHeader);
     end;
 
     local procedure InsertarLineasOferta(var SalesLine: Record "Sales Line"; var SalesHeaderAux: Record "STH Sales Header Aux"; var ErrorDtos: Boolean)
@@ -1423,6 +1425,7 @@ codeunit 50111 "Funciones"
                 SalesLine."Sell-to Customer No." := SalesHeaderAux."Sell-to Customer No.";
                 SalesLine.Validate("Document No.", SalesLinesAux."Document No.");
                 SalesLine.Validate("Line No.", SalesLinesAux."Line No.");
+                SalesLine.Insert();
                 SalesLine.Validate("No.", SalesLinesAux."No.");
                 SalesLine.Validate(Description, SalesLinesAux.Description);
                 SalesLine.Validate("Description 2", SalesLinesAux."Description 2");
@@ -1434,7 +1437,7 @@ codeunit 50111 "Funciones"
                     ErrorDtos := true;
 
                 SalesLine."No contemplar planificacion" := true;
-                SalesLine.Insert();
+                SalesLine.Modify();
             until SalesLinesAux.Next() = 0;
         end;
     end;
@@ -1478,5 +1481,33 @@ codeunit 50111 "Funciones"
         AmountWithDiscountAllowed := DocumentTotals.CalcTotalSalesAmountOnlyDiscountAllowed(SalesLine);
         InvoiceDiscountAmount := ROUND(AmountWithDiscountAllowed * DescuentoFactura / 100, Currency."Amount Rounding Precision");
         SalesCalcDiscByType.ApplyInvDiscBasedOnAmt(InvoiceDiscountAmount, SalesHeader);
+    end;
+
+    procedure UpdateNoContemplarPlanificacion(SalesHeader: record "Sales Header")
+    var
+        Salesline: Record "Sales Line";
+        AsmLine: Record "Assembly Line";
+        Asmtoorderlink: Record "Assemble-to-Order Link";
+
+    begin
+        Salesline.SetRange("Document Type", SalesHeader."Document Type");
+        Salesline.SetRange("Document No.", SalesHeader."No.");
+        if SalesLine.findset() then
+            repeat
+                Salesline."No contemplar planificacion" := SalesHeader."No contemplar planificacion";
+                Salesline.Modify();
+                if Asmtoorderlink.AsmExistsForSalesLine(SalesLine) then begin
+                    AsmLine.FILTERGROUP := 2;
+                    AsmLine.SETRANGE("Document Type", Asmtoorderlink."Assembly Document Type");
+                    AsmLine.SETRANGE("Document No.", Asmtoorderlink."Assembly Document No.");
+                    if AsmLine.findset() then
+                        repeat
+                            // marcamos las lineas del pedido de ensamblado como no contemplar
+                            AsmLine."No contemplar planificacion" := SalesHeader."No contemplar planificacion";
+                            AsmLine.Modify();
+                        Until AsmLine.next() = 0;
+
+                end;
+            Until SalesLine.next() = 0;
     end;
 }

@@ -21418,6 +21418,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin Oferta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension AssemblyLine - Field Fecha Fin Oferta_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2268077932 - Field 725456936 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
+          <source>No contemplar planificacion</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AssemblyLine - Field No contemplar planificacion - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2268077932 - Field 2157584327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
           <source>Quote No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº de oferta"</note>

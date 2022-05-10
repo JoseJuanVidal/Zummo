@@ -181,12 +181,9 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             Caption = 'No contemplar planificaciòn', comment = 'ESP="No contemplar planificación"';
 
             trigger OnValidate()
-            var
-                Salesline: Record "Sales Line";
+
             begin
-                Salesline.SetRange("Document Type", Rec."Document Type");
-                Salesline.SetRange("Document No.", Rec."No.");
-                Salesline.ModifyAll("No contemplar planificacion", Rec."No contemplar planificacion");
+                UpdateNoComplarPlanificacion;
             end;
         }
         field(50013; "Aviso Oferta bajo pedido"; Boolean)
@@ -214,7 +211,11 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
 
 
         //#endregion Integracion Intercompany
-
-
     }
+    local procedure UpdateNoComplarPlanificacion()
+    var
+        funciones: Codeunit Funciones;
+    begin
+        funciones.UpdateNoContemplarPlanificacion(Rec);
+    end;
 }

@@ -23,6 +23,11 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
             field("No contemplar planificacion"; "No contemplar planificacion")
             {
                 ApplicationArea = all;
+
+                trigger OnValidate()
+                begin
+                    CurrPage.Update();
+                end;
             }
             field(InsideSales_btc; InsideSales_btc)
             {
