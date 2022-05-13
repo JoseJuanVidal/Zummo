@@ -20963,6 +20963,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Insertar comentarios predefinidos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuote - Action InsertarComentariosPredefinidos - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 647151006 - Action 2187223319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 280137910">
+          <source>Marcar/Desmarcar no planificar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuote - Action NoPlanificacion - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1149918667 - Action 454322636 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 734185571">
           <source>Impimir Fact.Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>

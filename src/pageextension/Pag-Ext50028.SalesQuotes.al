@@ -2,13 +2,17 @@ pageextension 50028 "SalesQuotes" extends "Sales Quotes"
 {
     layout
     {
-        addlast(Content)
+        addlast(Control1)
         {
             field(OfertaSales; OfertaSales)
             {
                 ApplicationArea = all;
             }
             field("No contemplar planificacion"; "No contemplar planificacion")
+            {
+                ApplicationArea = all;
+            }
+            field(ofertaprobabilidad; ofertaprobabilidad)
             {
                 ApplicationArea = all;
             }

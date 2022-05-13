@@ -92,6 +92,7 @@ tableextension 50001 "AssemblyLine" extends "Assembly Line" //901
             CalcFormula = lookup("Sales Header"."Quote No." where("Document Type" = field("Document Type_btc"),
                     "No." = field("Document No_btc")));
             Editable = false;
+
         }
         field(50006; "No contemplar planificacion"; Boolean)
         {

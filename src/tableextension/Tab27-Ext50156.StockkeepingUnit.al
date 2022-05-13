@@ -56,6 +56,7 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
                 AssemblyLine.SetRange("Location Code", Rec."Location Code");
                 AssemblyLine.SetFilter("Remaining Quantity", '<>0');
                 AssemblyLine.SetFilter("Fecha Fin Oferta_btc", '%1..', WorkDate());
+                AssemblyLine.SetRange("No contemplar planificacion", false);
                 PAssemblyLine.SetTableView(AssemblyLine);
                 PAssemblyLine.Run();
             end;

@@ -1488,7 +1488,6 @@ codeunit 50111 "Funciones"
         Salesline: Record "Sales Line";
         AsmLine: Record "Assembly Line";
         Asmtoorderlink: Record "Assemble-to-Order Link";
-
     begin
         Salesline.SetRange("Document Type", SalesHeader."Document Type");
         Salesline.SetRange("Document No.", SalesHeader."No.");
