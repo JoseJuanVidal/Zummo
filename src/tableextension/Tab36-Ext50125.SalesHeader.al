@@ -217,4 +217,20 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
     begin
         funciones.UpdateNoContemplarPlanificacion(Rec);
     end;
+
+
+    procedure CalcAmountcostLines(): decimal
+    var
+        SalesLines: Record "Sales Line";
+        CostLines: Decimal;
+    begin
+        Saleslines.Reset();
+        Saleslines.SetRange("Document Type", Rec."Document Type");
+        Saleslines.SetRange("Document No.", Rec."No.");
+        if Saleslines.findset() then
+            repeat
+                CostLines += Saleslines."Unit Cost (LCY)" * Saleslines.Quantity;
+            Until Saleslines.next() = 0;
+        exit(round(CostLines, 0.01));
+    end;
 }

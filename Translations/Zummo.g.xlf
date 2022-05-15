@@ -20978,6 +20978,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuotes - Action Impimir Pedido - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1149918667 - Control 2166884334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 734185571">
+          <source>Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuotes - Control AmountcostLines - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1149918667 - Control 2166884334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 734185571">
+          <source>Importe Coste</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuotes - Control AmountcostLines - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1876379756 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>

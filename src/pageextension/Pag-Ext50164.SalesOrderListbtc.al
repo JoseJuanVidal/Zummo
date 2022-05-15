@@ -261,19 +261,4 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
     begin
         CurrPage.SETSELECTIONFILTER(SalesHeader);
     end;
-
-    procedure CalcAmountcostLines(): decimal
-    var
-        CostLines: Decimal;
-    begin
-        Saleslines.Reset();
-        Saleslines.SetRange("Document Type", Rec."Document Type");
-        Saleslines.SetRange("Document No.", Rec."No.");
-        if Saleslines.findset() then
-            repeat
-                CostLines += Saleslines."Unit Cost (LCY)" * Saleslines.Quantity;
-            Until Saleslines.next() = 0;
-        exit(round(CostLines, 0.01));
-    end;
-
 }
