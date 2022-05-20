@@ -499,7 +499,7 @@ codeunit 50111 "Funciones"
         end;
     end;
 
-    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20]; CurrChange: Decimal; PackageTrackingNo: text[30])
+    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20]; CurrChange: Decimal; PackageTrackingNo: text[30]; InsideSales: code[20])
     var
         SalesInvoiceHeader: Record "Sales Invoice Header";
         TempBlob: Record TempBlob temporary;
@@ -507,6 +507,7 @@ codeunit 50111 "Funciones"
         if SalesInvoiceHeader.Get(InvoiceNo) then begin
             SalesInvoiceHeader."External Document No." := ExtDocNo;
             SalesInvoiceHeader.AreaManager_btc := AreaManager;
+            SalesInvoiceHeader.InsideSales_btc := InsideSales;
             SalesInvoiceHeader.ClienteReporting_btc := ClienteReporting;
             SalesInvoiceHeader.CurrencyChange := CurrChange;
             CLEAR(SalesInvoiceHeader."Work Description");

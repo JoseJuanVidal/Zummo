@@ -8720,7 +8720,7 @@
         </trans-unit>
         <trans-unit id="Page 2287400882 - Control 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Area Manager</source>
-          <note from="Developer" annotates="general" priority="2">Area Manager</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control AreaManager_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2287400882 - Control 782583580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -8732,6 +8732,11 @@
           <source>Cambio Divisa</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambio Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control Currencychange - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 635070280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control InsideSales - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2287400882 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>External Document No.</source>

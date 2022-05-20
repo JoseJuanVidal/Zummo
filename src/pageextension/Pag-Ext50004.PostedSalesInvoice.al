@@ -76,6 +76,7 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                     ExtDocNo: Text[35];
                     WorkDescription: text;
                     AreaManager: Code[20];
+                    InsideSales: Code[20];
                     ClienteReporting: Code[20];
                     CurrChange: Decimal;
                     PackageTrackingNo: text[30];
@@ -83,8 +84,8 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                     PediDatos.LookupMode := true;
                     PediDatos.SetDatos(rec);
                     if PediDatos.RunModal() = Action::LookupOK then begin
-                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo);
-                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo);
+                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo, InsideSales);
+                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo, InsideSales);
                     end;
                 end;
 

@@ -172,7 +172,6 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
         {
             DataClassification = CustomerContent;
             Caption = 'Oferta Sales', comment = 'ESP="Oferta Sales"';
-            Editable = false;
         }
         field(50912; "No contemplar planificacion"; Boolean)
         {
