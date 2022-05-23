@@ -5670,12 +5670,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Requested Delivery Date - Property Caption</note>
           <target>Fecha entrega requerida</target>
         </trans-unit>
-        <trans-unit id="Table 3424626784 - Field 2506387010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>RevisionNumber</source>
-          <note from="Developer" annotates="general" priority="2">ESP="RevisionNumber"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Revision ID - Property Caption</note>
-          <target>RevisionNumber</target>
-        </trans-unit>
         <trans-unit id="Table 3424626784 - Field 3606264650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sell-to Address</source>
           <note from="Developer" annotates="general" priority="2">ESP="Venta-a Dirección"</note>
@@ -5791,7 +5785,7 @@
           <target>Estado</target>
         </trans-unit>
         <trans-unit id="Table 3424626784 - Field 513339096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Finalizada,Error</source>
+          <source> ,Finalizada,Error,Dif. Importe,Dif. Dtos</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Status - Property OptionCaption</note>
         </trans-unit>
@@ -5902,6 +5896,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Descripcion - Property Caption</note>
           <target>Descripcion</target>
         </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripcion ENG</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripcion ENG"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Description - Property Caption</note>
+          <target>Descripcion ENG</target>
+        </trans-unit>
         <trans-unit id="Table 2244721376 - Field 680012757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Market</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mercado"</note>
@@ -5951,10 +5951,10 @@
           <target>Tipo Registro</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado"</note>
+          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
-          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado</target>
+          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA</target>
         </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
@@ -9318,6 +9318,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control PackageTrackingNo - Property Caption</note>
           <target>Nº seguimiento bulto</target>
         </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Area Manager</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control AreaManager_btc - Property Caption</note>
+          <target>Area Manager</target>
+        </trans-unit>
         <trans-unit id="Page 2287400882 - Control 782583580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cliente Reporting</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cliente Reporting"</note>
@@ -9329,6 +9335,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cambio Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control Currencychange - Property Caption</note>
           <target>Cambio Divisa</target>
+        </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 635070280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control InsideSales - Property Caption</note>
+          <target>Inside Sales</target>
         </trans-unit>
         <trans-unit id="Page 2287400882 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>External Document No.</source>
@@ -22378,6 +22390,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuote - Action InsertarComentariosPredefinidos - Property Caption</note>
           <target>Insertar comentarios predefinidos</target>
         </trans-unit>
+        <trans-unit id="PageExtension 647151006 - Action 2187223319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 280137910">
+          <source>Marcar/Desmarcar no planificar</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuote - Action NoPlanificacion - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1149918667 - Action 454322636 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 734185571">
           <source>Impimir Fact.Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>
@@ -22389,6 +22406,17 @@
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuotes - Action Impimir Pedido - Property Caption</note>
           <target>Imprimir Pedido Zummo</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1149918667 - Control 2166884334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 734185571">
+          <source>Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuotes - Control AmountcostLines - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1149918667 - Control 2166884334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 734185571">
+          <source>Importe Coste</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuotes - Control AmountcostLines - Property Caption</note>
+          <target>Importe Coste</target>
         </trans-unit>
         <trans-unit id="PageExtension 1876379756 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
           <source>Blocked</source>
@@ -22873,6 +22901,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin Oferta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension AssemblyLine - Field Fecha Fin Oferta_btc - Property Caption</note>
           <target>Fecha Fin Oferta</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2268077932 - Field 725456936 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
+          <source>No contemplar planificacion</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AssemblyLine - Field No contemplar planificacion - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2268077932 - Field 2157584327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
           <source>Quote No.</source>
@@ -25095,6 +25128,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Language Filter - Property Caption</note>
           <target>Filtro Idioma</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2580209347 - Field 3697457928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4094296290">
+          <source>Oferta CRM con Dto</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Customer Discount Group - Field Oferta CRM aplicar Dto - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3410546980 - Field 2642821746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 235946633">
           <source>Initial Entry Posting Date</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -25255,6 +25293,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ultimo coste directo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastUnitCost - Property Caption</note>
           <target>Ultimo coste directo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3520316455 - Field 3592576802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2430374758">
+          <source>Cód. Texto Factura</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH VAT Business Posting Group - Field Cód. Texto Factura - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1702829675 - Field 3992104214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2941967353">
           <source>EU Cód. Pais</source>

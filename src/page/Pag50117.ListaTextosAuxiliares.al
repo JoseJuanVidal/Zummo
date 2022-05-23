@@ -38,6 +38,11 @@ page 50117 "Lista Textos Auxiliares"
                     Editable = mercadoVisible;
                     Visible = mercadoVisible;
                 }
+                field(Description; Description)
+                {
+                    ApplicationArea = all;
+                    Visible = NotRegIVA;
+                }
             }
         }
     }
@@ -46,6 +51,9 @@ page 50117 "Lista Textos Auxiliares"
     begin
         if UpperCase(GetFilter(TipoTabla)) = 'CANAL' then
             mercadoVisible := true;
+        if UpperCase(GetFilter(TipoTabla)) = 'REGISTROIVA' then
+            NotRegIVA := true;
+
     end;
 
     trigger OnAfterGetRecord()
@@ -59,4 +67,5 @@ page 50117 "Lista Textos Auxiliares"
     var
         emailVisible: Boolean;
         mercadoVisible: Boolean;
+        NotRegIVA: Boolean;
 }

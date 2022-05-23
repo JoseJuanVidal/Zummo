@@ -12,9 +12,9 @@ table 50105 "TextosAuxiliares"
         {
             DataClassification = CustomerContent;
             Caption = 'Record Type', comment = 'ESP="Tipo Registro"';
-            OptionMembers = "Motivo Retraso","Central Compras","Cliente Corporativo",AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas,Familia,Gamma,MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado;
-            OptionCaption = 'Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado',
-                  Comment = 'ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado"';
+            OptionMembers = "Motivo Retraso","Central Compras","Cliente Corporativo",AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas,Familia,Gamma,MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA;
+            OptionCaption = 'Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA',
+                  Comment = 'ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA"';
         }
 
 
@@ -64,6 +64,11 @@ table 50105 "TextosAuxiliares"
             Caption = 'Market', comment = 'ESP="Mercado"';
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Mercados), TipoRegistro = const(Tabla));
 
+        }
+        field(10; Description; Text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Descripcion ENG', comment = 'ESP="Descripcion ENG"';
         }
     }
 

@@ -4939,7 +4939,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3424626784 - Field 513339096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Finalizada,Error</source>
+          <source> ,Finalizada,Error,Dif. Importe,Dif. Dtos</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Status - Property OptionCaption</note>
         </trans-unit>
@@ -9310,6 +9310,16 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Control AmountcostLines - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 647151006 - Action 2187223319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 280137910">
+          <source>Marcar/Desmarcar no planificar</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuote - Action NoPlanificacion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1149918667 - Control 2166884334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 734185571">
+          <source>Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuotes - Control AmountcostLines - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Method 1489276173 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
           <source>#1#############################################</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -9319,6 +9329,11 @@
           <source>Nombre Cliente Proverdor</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension VatEntry - Control NombreClienteProv - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2268077932 - Field 725456936 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
+          <source>No contemplar planificacion</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AssemblyLine - Field No contemplar planificacion - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
           <source>ABC Cliente</source>
@@ -9435,10 +9450,20 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field Cerrado en plataforma - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2580209347 - Field 3697457928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4094296290">
+          <source>Oferta CRM con Dto</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Customer Discount Group - Field Oferta CRM aplicar Dto - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3410546980 - Field 2642821746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 235946633">
           <source>Initial Entry Posting Date</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Detailed Cust. Ledg. Entry - Field Initial Entry Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3520316455 - Field 3592576802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2430374758">
+          <source>Cód. Texto Factura</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH VAT Business Posting Group - Field Cód. Texto Factura - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>ABC Cliente</source>

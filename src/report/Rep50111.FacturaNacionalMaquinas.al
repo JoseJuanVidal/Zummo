@@ -383,6 +383,7 @@ report 50111 "FacturaNacionalMaquinas"
             column(logo; CompanyInfo1.LogoCertificacion)
             { }
             //fin SOTHIS EBR 010920 id 159231
+            column(TextRegister; TextRegister) { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
@@ -1758,6 +1759,21 @@ report 50111 "FacturaNacionalMaquinas"
                 FormatDocumentFields("Sales Invoice Header");
                 DocumentTotals.CalculatePostedSalesInvoiceTotals(TotalSalesInvoiceHeader, VATAmount2, TotalSalesInvoiceline);
 
+                // ponemos el registro segun el grupo de iva
+                TextRegister := '';
+                if GrupoRegIva.get("Sales Invoice Header"."VAT Bus. Posting Group") then begin
+                    TextosAuxiliares.Reset();
+                    TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+                    TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::RegistroIVA);
+                    TextosAuxiliares.SetRange(NumReg, GrupoRegIva."Cód. Texto Factura");
+                    if TextosAuxiliares.FindSet() then begin
+                        if "Sales Invoice Header"."Language Code" in ['ENG', 'ENU'] then
+                            TextRegister := TextosAuxiliares.Description
+                        else
+                            TextRegister := TextosAuxiliares.Descripcion;
+                    end;
+                end;
+
                 workdescription := GetWorkDescription();
                 Portes := 0;
                 LineaVentaPortes.Reset();
@@ -2413,6 +2429,9 @@ report 50111 "FacturaNacionalMaquinas"
         lblEORI: Label 'EORI: ', comment = 'ESP="EORI: "';
         txtVatEORI: Text;
         txtEORI: text;
+        TextRegister: text;
+        GrupoRegIva: record "VAT Business Posting Group";
+        TextosAuxiliares: Record TextosAuxiliares;
 
     [Scope('Personalization')]
     procedure InitLogInteraction()
