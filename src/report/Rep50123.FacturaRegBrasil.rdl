@@ -6375,7 +6375,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>3.71355cm</Height>
+          <Height>4.13688cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -6400,7 +6400,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>2.66205cm</Top>
+              <Top>3.0748cm</Top>
               <Left>2.36571cm</Left>
               <Height>1.01224cm</Height>
               <Width>13.95178cm</Width>
@@ -6435,7 +6435,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>2.80288cm</Top>
+              <Top>3.21563cm</Top>
               <Left>16.69317cm</Left>
               <Height>0.6cm</Height>
               <Width>3.02917cm</Width>
@@ -6472,7 +6472,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>1.33134cm</Top>
+              <Top>1.74409cm</Top>
               <Left>0.85319cm</Left>
               <Height>1.28588cm</Height>
               <Width>19.05539cm</Width>
@@ -6492,7 +6492,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
               <Value>=First(Fields!logo.Value, "DataSet_Result")</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>2.59172cm</Top>
+              <Top>3.00447cm</Top>
               <Left>0.89146cm</Left>
               <Height>1.12183cm</Height>
               <Width>1.33314cm</Width>
@@ -6504,7 +6504,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
               </Style>
             </Image>
             <Line Name="Line6">
-              <Top>0.49189in</Top>
+              <Top>0.65439in</Top>
               <Left>0.29147in</Left>
               <Height>0in</Height>
               <Width>7.54656in</Width>
@@ -7402,6 +7402,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                 </Textbox>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
+              <Top>0.41275cm</Top>
               <Left>0.28787cm</Left>
               <Height>1.86971cm</Height>
               <Width>19.66836cm</Width>
@@ -7415,6 +7416,44 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                 </Border>
               </Style>
             </Rectangle>
+            <Textbox Name="Textbox46">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!TextRegister.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Left>0.77517cm</Left>
+              <Height>0.473cm</Height>
+              <Width>18.94564cm</Width>
+              <ZIndex>6</ZIndex>
+              <Visibility>
+                <Hidden>=IIF(Globals!PageNumber&lt;&gt;Globals!TotalPages,true,false)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Color>LightGrey</Color>
+                  <Style>None</Style>
+                  <Width>0.5pt</Width>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -8128,6 +8167,9 @@ zCrXx9dnAjNrE3moNHdwOS/Xz89nrqMLuMBXCMIAwASUjjMb5Z3O/ucwc8LwpfueQJx88e/H5Z+XpSDP
         </Field>
         <Field Name="logo">
           <DataField>logo</DataField>
+        </Field>
+        <Field Name="TextRegister">
+          <DataField>TextRegister</DataField>
         </Field>
         <Field Name="CompanyInfo2Picture">
           <DataField>CompanyInfo2Picture</DataField>

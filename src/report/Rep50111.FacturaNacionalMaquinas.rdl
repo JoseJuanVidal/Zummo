@@ -6753,6 +6753,9 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
               <Height>0.6cm</Height>
               <Width>19.04089cm</Width>
               <ZIndex>7</ZIndex>
+              <Visibility>
+                <Hidden>=IIF(Globals!PageNumber&lt;&gt;Globals!TotalPages,true,false)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Color>LightGrey</Color>

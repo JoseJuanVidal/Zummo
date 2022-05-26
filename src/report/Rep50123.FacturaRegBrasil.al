@@ -371,7 +371,7 @@ report 50123 "FacturaRegBrasil"
             column(logo; CompanyInfo1.LogoCertificacion)
             { }
             //fin SOTHIS EBR 010920 id 159231
-
+            column(TextRegister; TextRegister) { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
@@ -1668,6 +1668,20 @@ report 50123 "FacturaRegBrasil"
                     intContador := intContador + 1;
                 UNTIL MovsCliente.NEXT() = 0;
 
+                // ponemos el registro segun el grupo de iva
+                TextRegister := '';
+                if GrupoRegIva.get("Sales Invoice Header"."VAT Bus. Posting Group") then begin
+                    TextosAuxiliares.Reset();
+                    TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+                    TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::RegistroIVA);
+                    TextosAuxiliares.SetRange(NumReg, GrupoRegIva."Cód. Texto Factura");
+                    if TextosAuxiliares.FindSet() then begin
+                        if "Sales Invoice Header"."Language Code" in ['ENG', 'ENU'] then
+                            TextRegister := TextosAuxiliares.Description
+                        else
+                            TextRegister := TextosAuxiliares.Descripcion;
+                    end;
+                end;
 
                 /*#########################################################################################################################
                                                                 INICIO TOTALES
@@ -2234,6 +2248,9 @@ report 50123 "FacturaRegBrasil"
         fechaPedido: date;
         fechaAlbaran: date;
         txtNombreMetodoEnvio: Text;
+        TextRegister: text;
+        GrupoRegIva: record "VAT Business Posting Group";
+        TextosAuxiliares: Record TextosAuxiliares;
 
     [Scope('Personalization')]
     procedure InitLogInteraction()
