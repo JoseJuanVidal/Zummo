@@ -66,6 +66,10 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Ruta exportar pdf facturas"; "Ruta exportar pdf facturas")
+                {
+                    ApplicationArea = all;
+                }
             }
             group("Zummo IC")
             {

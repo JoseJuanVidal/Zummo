@@ -145,7 +145,22 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 end;
             }
 
+            action("Exportar PDF Facturas")
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Print;
+                Caption = 'Exportar PDF Facturas', comment = 'ESP="Exportar PDF Facturas"';
+                ToolTip = 'Imprimir Fact.Export',
+                    comment = 'ESP="Impimir Fact.Export"';
 
+                trigger OnAction()
+                begin
+                    ExportarPDF();
+                end;
+            }
         }
         // S20/00375
         addafter(Email)
@@ -238,6 +253,10 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
 
     var
         SalesInvoiceLine: Record "Sales Invoice Line";
+        FileMgt: Codeunit "File Management";
+        SalesSetup: Record "Sales & Receivables Setup";
+        NameValueBuffer: Record "Name/Value Buffer";
+        Ventana: Dialog;
         credMaxAsegAut: code[20];
         StyleExp: text;
         ShowVtoAseguradora: Boolean;
@@ -260,5 +279,107 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 SalesInvHeader.Modify();
             Until SalesInvHeader.next() = 0;
 
+    end;
+
+    local procedure ExportarPDF()
+    var
+        SalesInvoiceHeader: Record "Sales Invoice Header";
+        SalesInvoiceHeader2: Record "Sales Invoice Header";
+        recReqLine: Report FacturaExportacion;
+        reportFactura: Report FacturaNacionalMaquinas;
+        reportFacturaUK: Report FacturaNacionalUK;
+        FacturaRegBrasil: report FacturaRegBrasil;
+        Selection: Integer;
+        Path: text;
+        FileName: text;
+
+    begin
+        SalesSetup.get();
+        Selection := STRMENU('1.-Exportacion,2.-Nacional,3.-Lidl,4.-Brasil,5.-Zummo UK', 1);
+        FileMgt.GetServerDirectoryFilesList(NameValueBuffer, SalesSetup."Ruta exportar pdf facturas");
+        if NameValueBuffer.FINDFIRST THEN begin
+            if Confirm('Existen archivos anteriores.\¿desea eliminarlos?', false) then
+                REPEAT
+                    FileMgt.DeleteServerFile(NameValueBuffer.Name);
+                UNTIL NameValueBuffer.NEXT = 0;
+        end;
+        SalesInvoiceHeader.Reset();
+        CurrPage.SetSelectionFilter(SalesInvoiceHeader);
+        Ventana.Open('Nº Documento: #1####################');
+        if SalesInvoiceHeader.FindSet() then
+            repeat
+                IF Selection > 0 THEN begin
+                    Ventana.Update(1, SalesInvoiceHeader."No.");
+                    SalesInvoiceHeader2.SetRange("No.", SalesInvoiceHeader."No.");
+                    FileName := SalesSetup."Ruta exportar pdf facturas" + SalesInvoiceHeader."No." + '.pdf';
+                    case Selection of
+                        1:
+                            begin
+                                clear(reportFactura);
+                                reportFactura.EsExportacion();
+                                reportFactura.SetTableView(SalesInvoiceHeader2);
+                                reportFactura.SaveAsPdf(FileName);
+                            end;
+                        2:
+                            begin
+                                clear(reportFactura);
+                                reportFactura.EsNacional();
+                                reportFactura.SetTableView(SalesInvoiceHeader2);
+                                reportFactura.SaveAsPdf(FileName);
+                            end;
+                        3:
+                            begin
+                                clear(reportFactura);
+                                reportFactura.EsLidl();
+                                reportFactura.SetTableView(SalesInvoiceHeader2);
+                                reportFactura.SaveAsPdf(FileName);
+                            end;
+                        4:
+                            begin
+                                clear(FacturaRegBrasil);
+                                FacturaRegBrasil.SetTableView(SalesInvoiceHeader2);
+                                FacturaRegBrasil.SaveAsPdf(FileName);
+                            end;
+                        5:
+                            begin
+                                clear(reportFactura);
+                                reportFacturaUK.EsExportacion();
+                                reportFacturaUK.SetTableView(SalesInvoiceHeader2);
+                                reportFacturaUK.SaveAsPdf(FileName);
+                            end;
+                    end;
+                end;
+            until SalesInvoiceHeader.Next() = 0;
+        Ventana.Close();
+
+        MergePDF();
+
+        Message(StrSubstNo('Proceso finalizado, se han creado las facturas %1 seleccionadas', SalesInvoiceHeader.Count));
+    end;
+
+    local procedure MergePDF()
+    var
+        SothisPDF: DotNet MySothisPDF;
+        files: dotnet Myfiles;
+        FileName: Text;
+    begin
+        FileName := 'Facturas.pdf';
+        files := files.List();
+        SalesSetup.get();
+        FileMgt.GetServerDirectoryFilesList(NameValueBuffer, SalesSetup."Ruta exportar pdf facturas");
+        if NameValueBuffer.FINDFIRST THEN begin
+            if Confirm('¿Desea realizar Crear un PDF unificado?', false) then begin
+                Ventana.Open('ProcesandoNº Documento: #1#####################################################');
+                REPEAT
+                    Ventana.Update(1, NameValueBuffer.Name);
+                    files.Add(NameValueBuffer.Name);
+                UNTIL NameValueBuffer.NEXT = 0;
+
+                SothisPDF.Merge(files, SalesSetup."Ruta exportar pdf facturas" + FileName, FALSE);
+
+                Download(SalesSetup."Ruta exportar pdf facturas" + FileName, 'Fichero PDF Facturas', '', '', FileName);
+
+            end;
+        end;
     end;
 }

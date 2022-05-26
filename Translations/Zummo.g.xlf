@@ -20383,6 +20383,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 2913768236 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Imprimir Fact.Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Exportar PDF Facturas - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 2913768236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Exportar PDF Facturas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar PDF Facturas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Exportar PDF Facturas - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 252035029 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Imprimir Fact.Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
@@ -22992,6 +23002,11 @@
           <source>Recipient Mail Notifications</source>
           <note from="Developer" annotates="general" priority="2">Destinatario notificaciones por email</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Recipient Mail Notifications - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 347719766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Ruta exportar pdf facturas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ruta exportar pdf facturas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Ruta exportar pdf facturas - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 1296414238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Orders PDF path</source>

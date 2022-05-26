@@ -119,5 +119,11 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             TableRelation = Language;
 
         }
+        field(50130; "Ruta exportar pdf facturas"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Ruta exportar pdf facturas', comment = 'ESP="Ruta exportar pdf facturas"';
+
+        }
     }
 }
