@@ -292,17 +292,17 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         Selection: Integer;
         Path: text;
         FileName: text;
-
+        files: dotnet Myfiles;
     begin
         SalesSetup.get();
+        files := files.List();
         Selection := STRMENU('1.-Exportacion,2.-Nacional,3.-Lidl,4.-Brasil,5.-Zummo UK', 1);
         FileMgt.GetServerDirectoryFilesList(NameValueBuffer, SalesSetup."Ruta exportar pdf facturas");
-        if NameValueBuffer.FINDFIRST THEN begin
-            if Confirm('Existen archivos anteriores.\¿desea eliminarlos?', false) then
-                REPEAT
-                    FileMgt.DeleteServerFile(NameValueBuffer.Name);
-                UNTIL NameValueBuffer.NEXT = 0;
-        end;
+        if NameValueBuffer.FINDFIRST THEN
+            REPEAT
+                FileMgt.DeleteServerFile(NameValueBuffer.Name);
+            UNTIL NameValueBuffer.NEXT = 0;
+
         SalesInvoiceHeader.Reset();
         CurrPage.SetSelectionFilter(SalesInvoiceHeader);
         Ventana.Open('Nº Documento: #1####################');
@@ -348,38 +348,27 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                                 reportFacturaUK.SaveAsPdf(FileName);
                             end;
                     end;
+                    files.add(FileName);
                 end;
             until SalesInvoiceHeader.Next() = 0;
         Ventana.Close();
 
-        MergePDF();
+        MergePDF(files);
 
-        Message(StrSubstNo('Proceso finalizado, se han creado las facturas %1 seleccionadas', SalesInvoiceHeader.Count));
+        Message(StrSubstNo('Proceso finalizado, se ha creado PDF de las facturas %1 seleccionadas', SalesInvoiceHeader.Count));
     end;
 
-    local procedure MergePDF()
+    local procedure MergePDF(var files: dotnet Myfiles)
     var
         SothisPDF: DotNet MySothisPDF;
-        files: dotnet Myfiles;
         FileName: Text;
     begin
         FileName := 'Facturas.pdf';
-        files := files.List();
-        SalesSetup.get();
-        FileMgt.GetServerDirectoryFilesList(NameValueBuffer, SalesSetup."Ruta exportar pdf facturas");
-        if NameValueBuffer.FINDFIRST THEN begin
-            if Confirm('¿Desea realizar Crear un PDF unificado?', false) then begin
-                Ventana.Open('ProcesandoNº Documento: #1#####################################################');
-                REPEAT
-                    Ventana.Update(1, NameValueBuffer.Name);
-                    files.Add(NameValueBuffer.Name);
-                UNTIL NameValueBuffer.NEXT = 0;
 
-                SothisPDF.Merge(files, SalesSetup."Ruta exportar pdf facturas" + FileName, FALSE);
+        SothisPDF.Merge(files, SalesSetup."Ruta exportar pdf facturas" + FileName, FALSE);
 
-                Download(SalesSetup."Ruta exportar pdf facturas" + FileName, 'Fichero PDF Facturas', '', '', FileName);
+        Download(SalesSetup."Ruta exportar pdf facturas" + FileName, 'Fichero PDF Facturas', '', '', FileName);
 
-            end;
-        end;
+
     end;
 }
