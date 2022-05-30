@@ -20308,6 +20308,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="&amp;Correo electrónico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos_zummo - Action Email_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3744063830 - Action 272626109 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
+          <source>Imprimir Abonos Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Impimir Abonos Export"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos_zummo - Action Exportar PDF Abonos - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3744063830 - Action 272626109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
+          <source>Exportar PDF Abonos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar PDF Abonos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos_zummo - Action Exportar PDF Abonos - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3744063830 - Action 3889184753 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Imprimir Abono UK</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Abono UK"</note>

@@ -151,7 +151,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 Promoted = true;
                 PromotedCategory = Report;
                 PromotedIsBig = true;
-                Image = Print;
+                Image = Export;
                 Caption = 'Exportar PDF Facturas', comment = 'ESP="Exportar PDF Facturas"';
                 ToolTip = 'Imprimir Fact.Export',
                     comment = 'ESP="Impimir Fact.Export"';

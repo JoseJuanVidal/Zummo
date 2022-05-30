@@ -113,6 +113,22 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
                     end;
                 end;
             }
+            action("Exportar PDF Abonos")
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Export;
+                Caption = 'Exportar PDF Abonos', comment = 'ESP="Exportar PDF Abonos"';
+                ToolTip = 'Imprimir Abonos Export',
+                    comment = 'ESP="Impimir Abonos Export"';
+
+                trigger OnAction()
+                begin
+                    ExportarPDF();
+                end;
+            }
         }
     }
 
@@ -147,6 +163,62 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
     var
         SalesCrMemoLine: Record "Sales Cr.Memo Line";
         CustLedgerEntry: Record "Cust. Ledger Entry";
+        FileMgt: Codeunit "File Management";
+        SalesSetup: Record "Sales & Receivables Setup";
+        NameValueBuffer: Record "Name/Value Buffer";
+        Ventana: Dialog;
         ImpTotalDL: Decimal;
         BaseImpDL: Decimal;
+
+    local procedure ExportarPDF()
+    var
+        SalesInvoiceHeader: Record "Sales Invoice Header";
+        SalesInvoiceHeader2: Record "Sales Invoice Header";
+        reportFactura: Report AbonoVentaRegistrado;
+        Path: text;
+        FileName: text;
+        files: dotnet Myfiles;
+    begin
+        SalesSetup.get();
+        files := files.List();
+        FileMgt.GetServerDirectoryFilesList(NameValueBuffer, SalesSetup."Ruta exportar pdf facturas");
+        if NameValueBuffer.FINDFIRST THEN
+            REPEAT
+                FileMgt.DeleteServerFile(NameValueBuffer.Name);
+            UNTIL NameValueBuffer.NEXT = 0;
+
+        SalesInvoiceHeader.Reset();
+        CurrPage.SetSelectionFilter(SalesInvoiceHeader);
+        Ventana.Open('Nº Documento: #1####################');
+        if SalesInvoiceHeader.FindSet() then
+            repeat
+                clear(reportFactura);
+                reportFactura.EsExportacion();
+                reportFactura.SetTableView(SalesInvoiceHeader2);
+                reportFactura.SaveAsPdf(FileName);
+
+                files.add(FileName);
+
+            until SalesInvoiceHeader.Next() = 0;
+
+        Ventana.Close();
+
+        MergePDF(files);
+
+        Message(StrSubstNo('Proceso finalizado, se ha creado PDF de las facturas %1 seleccionadas', SalesInvoiceHeader.Count));
+    end;
+
+    local procedure MergePDF(var files: dotnet Myfiles)
+    var
+        SothisPDF: DotNet MySothisPDF;
+        FileName: Text;
+    begin
+        FileName := 'Facturas.pdf';
+
+        SothisPDF.Merge(files, SalesSetup."Ruta exportar pdf facturas" + FileName, FALSE);
+
+        Download(SalesSetup."Ruta exportar pdf facturas" + FileName, 'Fichero PDF Facturas', '', '', FileName);
+
+
+    end;
 }
