@@ -256,6 +256,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         FileMgt: Codeunit "File Management";
         SalesSetup: Record "Sales & Receivables Setup";
         NameValueBuffer: Record "Name/Value Buffer";
+        Funciones: Codeunit Funciones;
         Ventana: Dialog;
         credMaxAsegAut: code[20];
         StyleExp: text;
@@ -289,6 +290,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         reportFactura: Report FacturaNacionalMaquinas;
         reportFacturaUK: Report FacturaNacionalUK;
         FacturaRegBrasil: report FacturaRegBrasil;
+        CodEmpleado: text;
         Selection: Integer;
         Path: text;
         FileName: text;
@@ -297,12 +299,16 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         SalesSetup.get();
         files := files.List();
         Selection := STRMENU('1.-Exportacion,2.-Nacional,3.-Lidl,4.-Brasil,5.-Zummo UK', 1);
-        FileMgt.GetServerDirectoryFilesList(NameValueBuffer, SalesSetup."Ruta exportar pdf facturas");
-        if NameValueBuffer.FINDFIRST THEN
-            REPEAT
-                FileMgt.DeleteServerFile(NameValueBuffer.Name);
-            UNTIL NameValueBuffer.NEXT = 0;
+        // FileMgt.GetServerDirectoryFilesList(NameValueBuffer, SalesSetup."Ruta exportar pdf facturas");
+        // if NameValueBuffer.FINDFIRST THEN
+        //     REPEAT
+        //         FileMgt.DeleteServerFile(NameValueBuffer.Name);
+        //     UNTIL NameValueBuffer.NEXT = 0;
+        CodEmpleado := Funciones.GetExtensionFieldValuetext(Rec.RecordId, 50500, false);  // 50500  Cód. empleado
+        if not FileMgt.ServerDirectoryExists(SalesSetup."Ruta exportar pdf facturas" + CodEmpleado) then
+            FileMgt.ServerCreateDirectory(SalesSetup."Ruta exportar pdf facturas" + CodEmpleado);
 
+        Path := SalesSetup."Ruta exportar pdf facturas" + CodEmpleado + '\';
         SalesInvoiceHeader.Reset();
         CurrPage.SetSelectionFilter(SalesInvoiceHeader);
         Ventana.Open('Nº Documento: #1####################');
@@ -311,7 +317,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 IF Selection > 0 THEN begin
                     Ventana.Update(1, SalesInvoiceHeader."No.");
                     SalesInvoiceHeader2.SetRange("No.", SalesInvoiceHeader."No.");
-                    FileName := SalesSetup."Ruta exportar pdf facturas" + SalesInvoiceHeader."No." + '.pdf';
+                    FileName := Path + SalesInvoiceHeader."No." + '.pdf';
                     case Selection of
                         1:
                             begin
@@ -353,7 +359,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             until SalesInvoiceHeader.Next() = 0;
         Ventana.Close();
 
-        MergePDF(files);
+        // MergePDF(files);
 
         Message(StrSubstNo('Proceso finalizado, se ha creado PDF de las facturas %1 seleccionadas', SalesInvoiceHeader.Count));
     end;
