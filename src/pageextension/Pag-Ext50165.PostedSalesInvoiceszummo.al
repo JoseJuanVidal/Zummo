@@ -295,6 +295,11 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         Path: text;
         FileName: text;
         files: dotnet Myfiles;
+        XmlParameters: text;
+        Content: file;
+        OStream: OutStream;
+        IStream: InStream;
+        RecRef: RecordRef;
     begin
         SalesSetup.get();
         files := files.List();
@@ -311,6 +316,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         Path := SalesSetup."Ruta exportar pdf facturas" + CodEmpleado + '\';
         SalesInvoiceHeader.Reset();
         CurrPage.SetSelectionFilter(SalesInvoiceHeader);
+        XmlParameters := GetRequestPageReport(Selection);
         Ventana.Open('Nº Documento: #1####################');
         if SalesInvoiceHeader.FindSet() then
             repeat
@@ -323,35 +329,65 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                             begin
                                 clear(reportFactura);
                                 reportFactura.EsExportacion();
-                                reportFactura.SetTableView(SalesInvoiceHeader2);
-                                reportFactura.SaveAsPdf(FileName);
+                                // reportFactura.SetTableView(SalesInvoiceHeader2);
+                                // reportFactura.SaveAsPdf(FileName);
+                                RecRef.GetTable(SalesInvoiceHeader2);
+
+                                Content.Create(FileName);  // only supported in Business Central on-premises
+                                Content.CreateOutStream(OStream);  // only supported in Business Central on-premises
+                                report.SaveAs(report::FacturaNacionalMaquinas, XmlParameters, ReportFormat::Pdf, OStream, RecRef);
+                                Content.Close();
                             end;
                         2:
                             begin
                                 clear(reportFactura);
                                 reportFactura.EsNacional();
-                                reportFactura.SetTableView(SalesInvoiceHeader2);
-                                reportFactura.SaveAsPdf(FileName);
+                                // reportFactura.SetTableView(SalesInvoiceHeader2);
+                                // reportFactura.SaveAsPdf(FileName);                                
+                                RecRef.GetTable(SalesInvoiceHeader2);
+
+                                Content.Create(FileName);  // only supported in Business Central on-premises
+                                Content.CreateOutStream(OStream);  // only supported in Business Central on-premises
+                                reportFactura.SaveAs(XmlParameters, ReportFormat::Pdf, OStream, RecRef);
+                                Content.Close();
                             end;
                         3:
                             begin
                                 clear(reportFactura);
                                 reportFactura.EsLidl();
-                                reportFactura.SetTableView(SalesInvoiceHeader2);
-                                reportFactura.SaveAsPdf(FileName);
+                                // reportFactura.SetTableView(SalesInvoiceHeader2);
+                                // reportFactura.SaveAsPdf(FileName);
+                                RecRef.GetTable(SalesInvoiceHeader2);
+
+                                Content.Create(FileName);  // only supported in Business Central on-premises
+                                Content.CreateOutStream(OStream);  // only supported in Business Central on-premises
+                                reportFactura.SaveAs(XmlParameters, ReportFormat::Pdf, OStream, RecRef);
+                                Content.Close();
                             end;
                         4:
                             begin
                                 clear(FacturaRegBrasil);
-                                FacturaRegBrasil.SetTableView(SalesInvoiceHeader2);
-                                FacturaRegBrasil.SaveAsPdf(FileName);
+                                // FacturaRegBrasil.SetTableView(SalesInvoiceHeader2);
+                                // FacturaRegBrasil.SaveAsPdf(FileName);
+                                RecRef.GetTable(SalesInvoiceHeader2);
+
+                                Content.Create(FileName);  // only supported in Business Central on-premises
+                                Content.CreateOutStream(OStream);  // only supported in Business Central on-premises
+                                FacturaRegBrasil.SaveAs(XmlParameters, ReportFormat::Pdf, OStream, RecRef);
+                                Content.Close();
                             end;
                         5:
                             begin
                                 clear(reportFactura);
                                 reportFacturaUK.EsExportacion();
-                                reportFacturaUK.SetTableView(SalesInvoiceHeader2);
-                                reportFacturaUK.SaveAsPdf(FileName);
+                                // reportFacturaUK.SetTableView(SalesInvoiceHeader2);
+                                // reportFacturaUK.SaveAsPdf(FileName);
+                                RecRef.GetTable(SalesInvoiceHeader2);
+
+                                Content.Create(FileName);  // only supported in Business Central on-premises
+                                Content.CreateOutStream(OStream);  // only supported in Business Central on-premises
+                                reportFacturaUK.SaveAs(XmlParameters, ReportFormat::Pdf, OStream, RecRef);
+                                Content.Close();
                             end;
                     end;
                     files.add(FileName);
@@ -362,6 +398,41 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         // MergePDF(files);
 
         Message(StrSubstNo('Proceso finalizado, se ha creado PDF de las facturas %1 seleccionadas', SalesInvoiceHeader.Count));
+    end;
+
+    local procedure GetRequestPageReport(Selection: Integer) XmlParameters: text;
+    var
+
+        reportFactura: Report FacturaNacionalMaquinas;
+        reportFacturaUK: Report FacturaNacionalUK;
+        FacturaRegBrasil: report FacturaRegBrasil;
+    begin
+        case Selection of
+            1:
+                begin
+                    reportFactura.EsExportacion();
+                    XmlParameters := reportFactura.RunRequestPage();
+                end;
+            2:
+                begin
+                    reportFactura.EsNacional();
+                    XmlParameters := reportFactura.RunRequestPage();
+                end;
+            3:
+                begin
+                    reportFactura.EsLidl();
+                    XmlParameters := reportFactura.RunRequestPage();
+                end;
+            4:
+                begin
+                    XmlParameters := FacturaRegBrasil.RunRequestPage();
+                end;
+            5:
+                begin
+                    reportFacturaUK.EsExportacion();
+                    XmlParameters := reportFacturaUK.RunRequestPage();
+                end;
+        end;
     end;
 
     local procedure MergePDF(var files: dotnet Myfiles)

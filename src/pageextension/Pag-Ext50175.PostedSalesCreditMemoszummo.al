@@ -180,6 +180,11 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
         FileName: text;
         files: dotnet Myfiles;
         CodEmpleado: text;
+        XmlParameters: text;
+        Content: file;
+        OStream: OutStream;
+        IStream: InStream;
+        RecRef: RecordRef;
     begin
         SalesSetup.get();
 
@@ -199,16 +204,27 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
         CurrPage.SetSelectionFilter(SalesCRMemoHeader);
         if not Confirm('¿Desea exportar %1 Abonos de venta?', false, SalesCRMemoHeader.count) then
             exit;
+
+        XmlParameters := reportFactura.RunRequestPage();
+
         Ventana.Open('Nº Documento: #1####################');
+
         if SalesCRMemoHeader.FindSet() then
             repeat
                 Ventana.Update(1, SalesCRMemoHeader."No.");
                 SalesCRMemoHeader2.SetRange("No.", SalesCRMemoHeader."No.");
                 FileName := Path + SalesCRMemoHeader."No." + '.pdf';
                 clear(reportFactura);
-                reportFactura.EsExportacion();
-                reportFactura.SetTableView(SalesCRMemoHeader2);
-                reportFactura.SaveAsPdf(FileName);
+
+                // reportFactura.EsExportacion();
+                // reportFactura.SetTableView(SalesCRMemoHeader2);
+                RecRef.GetTable(SalesCRMemoHeader2);
+                //reportFactura.SaveAsPdf(FileName);
+
+                Content.Create(FileName);  // only supported in Business Central on-premises
+                Content.CreateOutStream(OStream);  // only supported in Business Central on-premises
+                report.SaveAs(report::AbonoVentaRegistrado, XmlParameters, ReportFormat::Pdf, OStream, RecRef);
+                Content.Close();
 
                 files.add(FileName);
 
