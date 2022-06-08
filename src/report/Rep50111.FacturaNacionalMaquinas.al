@@ -2069,10 +2069,12 @@ report 50111 "FacturaNacionalMaquinas"
             LogInteractionEnable := LogInteraction;
             NoOfCopies := 0;
 
-            if facturaLidl or facturaExportacion then
-                mostrarNetos := true
-            else
-                mostrarNetos := false;
+            if GuiAllowed then
+                if facturaLidl or facturaExportacion then
+                    mostrarNetos := true;
+            // comentamoes el ELSE para que cuando sea exportacion facturación, ponga los datos de xmlparameters
+            // else
+            //     mostrarNetos := false;
         end;
     }
 
