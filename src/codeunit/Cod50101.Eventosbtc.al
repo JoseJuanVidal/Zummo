@@ -966,6 +966,13 @@ codeunit 50101 "Eventos_btc"
         rec.Modify();
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Job Jnl.-Post Line", 'OnBeforeApplyUsageLink', '', true, true)]
+    local procedure JobJnlPostLine_OnBeforeApplyUsageLink(var JobLedgerEntry: Record "Job Ledger Entry")
+    begin
+        // ponemos esto para que cuando registren sales,no cree las lineas de tareas tambien
+        JobLedgerEntry."Entry Type" := JobLedgerEntry."Entry Type"::Sale;
+    end;
+
     /*[EventSubscriber(ObjectType::table, Database::"Intrastat Jnl. Line", 'OnAfterModifyEvent', '', true, true)]
       local procedure IntrastatJnlLineIntrastatJnlLineOnAfterModifyEvent(VAR Rec: Record "Intrastat Jnl. Line"; VAR xRec: Record "Intrastat Jnl. Line"; RunTrigger: Boolean)
       begin
