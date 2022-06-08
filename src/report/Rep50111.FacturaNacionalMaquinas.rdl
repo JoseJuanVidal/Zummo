@@ -4143,8 +4143,8 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>8.85114cm</Top>
-              <Left>2.05471cm</Left>
+              <Top>9.00989cm</Top>
+              <Left>2.01943cm</Left>
               <Height>0.51533cm</Height>
               <Width>13.95178cm</Width>
               <Style>
@@ -4178,7 +4178,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>8.89347cm</Top>
+              <Top>9.05222cm</Top>
               <Left>16.11232cm</Left>
               <Height>0.4095cm</Height>
               <Width>3.02917cm</Width>
@@ -4190,7 +4190,6 @@ cstr(Fields!txtVatEORI.Value)
               </Style>
             </Textbox>
             <Textbox Name="Textbox81">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -4211,8 +4210,8 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>7.4947cm</Top>
-              <Left>0.46625cm</Left>
+              <Top>7.46295cm</Top>
+              <Left>0.4345cm</Left>
               <Height>1.28588cm</Height>
               <Width>19.22784cm</Width>
               <ZIndex>2</ZIndex>
@@ -4222,8 +4221,6 @@ cstr(Fields!txtVatEORI.Value)
                 </Border>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
             <Image Name="Image3">
@@ -6123,9 +6120,10 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox56</rd:DefaultName>
-                  <Top>6.60652cm</Top>
+                  <Top>6.57477cm</Top>
+                  <Left>0cm</Left>
                   <Height>0.27138cm</Height>
-                  <Width>19.22783cm</Width>
+                  <Width>16.86087cm</Width>
                   <ZIndex>31</ZIndex>
                   <Visibility>
                     <Hidden>=iif(First(Fields!facturaExportacion.Value, "DataSet_Result") = true, true, false)</Hidden>

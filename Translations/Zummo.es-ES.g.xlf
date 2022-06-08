@@ -14658,8 +14658,8 @@
           <target>Palets:</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Gross Weight(kg):</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"</note>
+          <source>Net Weight(kg):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Net Weight(kg):"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType CuadroBultos_PesoNetoLbl</note>
           <target>Peso Neto(kg):</target>
         </trans-unit>
@@ -21607,6 +21607,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos_zummo - Action Email_btc - Property Caption</note>
           <target>&amp;Correo electrónico</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3744063830 - Action 272626109 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
+          <source>Imprimir Abonos Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Impimir Abonos Export"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos_zummo - Action Exportar PDF Abonos - Property ToolTip</note>
+          <target>Impimir Abonos Export</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3744063830 - Action 272626109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
+          <source>Exportar PDF Abonos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar PDF Abonos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos_zummo - Action Exportar PDF Abonos - Property Caption</note>
+          <target>Exportar PDF Abonos</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3744063830 - Action 3889184753 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Imprimir Abono UK</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Abono UK"</note>
@@ -21696,6 +21708,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - NamedType Text000</note>
           <target>¿Desea marcar %1 facturas como enviadas a Aseguradora?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 2913768236 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Imprimir Fact.Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Exportar PDF Facturas - Property ToolTip</note>
+          <target>Impimir Fact.Export</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 2913768236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Exportar PDF Facturas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar PDF Facturas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Exportar PDF Facturas - Property Caption</note>
+          <target>Exportar PDF Facturas</target>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 252035029 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Imprimir Fact.Export</source>
@@ -24722,6 +24746,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Término pago repuesto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field PmtTermsRepuesto_btc - Property Caption</note>
           <target>Término pago repuesto</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 347719766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Ruta exportar pdf facturas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ruta exportar pdf facturas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Ruta exportar pdf facturas - Property Caption</note>
+          <target>Ruta exportar pdf facturas</target>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 1296414238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Orders PDF path</source>
