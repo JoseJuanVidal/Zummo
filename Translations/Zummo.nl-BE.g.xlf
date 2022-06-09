@@ -7278,10 +7278,10 @@
           <target>Palettes</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Net Weight(kg):</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Net Weight(kg):"</note>
+          <source>Gross Weight(kg):</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Bruto(kg):",FRA="Gross Weight(kg):"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType CuadroBultos_PesoNetoLbl</note>
-          <target>Net Weight(kg):</target>
+          <target>Gross Weight(kg):</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 2685853250" size-unit="char" translate="yes" xml:space="preserve">
           <source>Volume(m3):</source>

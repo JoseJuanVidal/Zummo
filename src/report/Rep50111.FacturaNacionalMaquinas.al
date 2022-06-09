@@ -2352,7 +2352,7 @@ report 50111 "FacturaNacionalMaquinas"
         CuadroBultos_BultosLbl: Label 'Bulks:', comment = 'ESP="Bultos:",FRA="Bulks:"';
         CuadroBultos_IncotermLbl: Label 'INCOTERM:', comment = 'ESP="INCOTERM:"';
         CuadroBultos_VolumenLbl: Label 'Volume(m3):', comment = 'ESP="Volumen(m3):",FRA="Volume(m3):"';
-        CuadroBultos_PesoNetoLbl: Label 'Net Weight(kg):', comment = 'ESP="Peso Neto(kg):",FRA="Net Weight(kg):"';
+        CuadroBultos_PesoNetoLbl: Label 'Gross Weight(kg):', comment = 'ESP="Peso Bruto(kg):",FRA="Gross Weight(kg):"';
         CuadroBultos_PaletsLbl: Label 'Pallets:', comment = 'ESP="Palets:",FRA="Palettes"';
         Text004Txt: Label 'Sales - Invoice %1', Comment = 'Ventas - Factura %1';
         PageCaptionCapLbl: Label 'Page %1 of %2', Comment = 'ESP="Página %1 de %2"';
