@@ -23735,6 +23735,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Primera Fecha Recep. - Property Caption</note>
           <target>Primera fecha Recep.</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 1017370016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Process No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. proceso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Process No. - Property Caption</note>
+          <target>Cód. proceso</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1575465679 - Field 152683904 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Coste Estandar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste Estandar"</note>
@@ -23788,6 +23794,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Rechazo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field FechaRechazo_btc - Property Caption</note>
           <target>Fecha Rechazo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1592073549 - Field 1017370016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>Process No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. proceso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field Process No. - Property Caption</note>
+          <target>Cód. proceso</target>
         </trans-unit>
         <trans-unit id="TableExtension 1592073549 - Field 2972924318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
           <source>Rejected Text</source>

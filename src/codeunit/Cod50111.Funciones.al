@@ -1331,6 +1331,8 @@ codeunit 50111 "Funciones"
         //INSERTAR LINEAS
         InsertarLineasOferta(SalesLine, SalesHeaderAux, ErrorDtos);
 
+        UpdateNoContemplarPlanificacion(SalesHeader);
+
         // Calcular Dto de cabecera
 
         CalcularDescuentoTotal(SalesHeader, SalesHeaderAux."Invoice Discount");
@@ -1407,7 +1409,7 @@ codeunit 50111 "Funciones"
         SalesHeader."No contemplar planificacion" := true;
         SalesHeader.Insert();
 
-        UpdateNoContemplarPlanificacion(SalesHeader);
+
     end;
 
     local procedure InsertarLineasOferta(var SalesLine: Record "Sales Line"; var SalesHeaderAux: Record "STH Sales Header Aux"; var ErrorDtos: Boolean)
