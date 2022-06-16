@@ -4933,6 +4933,26 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Importe Presupuesto - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3424626784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH Sales Header Aux</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3424626784 - Field 513339096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Finalizada,Error,Dif. Importe,Dif. Dtos</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Header Aux - Field Status - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 398122263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH Sales Line Aux</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 4089462097 - NamedType 3941846598" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Debe actualizar el pedido de compra orgien, %1, antes de registrar</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method OnAfterConfirmPost - NamedType ErrorLbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3514522085 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -4963,6 +4983,41 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº de Serie:",FRA="Numéro de série:"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method CreaComentariosLoteHistFaVenta - NamedType NSerie_Lbl</note>
           <target>Numéro de série:</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 407788085" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se ha actualizado el pedido de compra </source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType MsgLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualización Pedido Compra Zummo Inc.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType SubjectLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3733562477" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se ha eliminado el pedido de venta %1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType BodyLbl1</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3095865860" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se ha creado el pedido de venta %1 desde la oferta %2</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType BodyLbl2</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 291269830" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proceso finalizado. Se han actualizado las lineas del pedido %1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType CreatedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualización Pedido Compra Zummo Inc.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType SubjectLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 1908025102" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se han actualizado las cantidades y el seguimiento del pedido de compra %1 desde el pedido de venta %2</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType BodyLbl</note>
         </trans-unit>
         <trans-unit id="Page 3802877209 - Action 4044637255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CDS</source>
@@ -5665,6 +5720,411 @@
           <source>Fallo Localizado Card</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 636392376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 1650118938 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Amount Including VAT field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Amount Including VAT - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 831017837 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to Address field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Bill-to Address - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 460968363 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to Address 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Bill-to Address 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 3869539606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to City field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Bill-to City - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 2096911897 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to Country/Region Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Bill-to Country/Region Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 3882955433 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to County field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Bill-to County - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 240204966 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to Name field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Bill-to Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 675862156 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to Post Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Bill-to Post Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 4198939294 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Currency Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Currency Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 3104584724 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Invoice Discount Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Invoice Discount Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the No. field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 966740350 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Payment Terms Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Payment Terms Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 4121941639 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Probability field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Probability - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 135600996 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requested Delivery Date field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Requested Delivery Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 3606264650 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Address field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Sell-to Address - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 469609400 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Address 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Sell-to Address 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 1281923305 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to City field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Sell-to City - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 1006519668 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Contact field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Sell-to Contact - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 2131962646 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to County field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Sell-to County - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 1474036805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Customer Name field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Sell-to Customer Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 2958825091 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Customer Name 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Sell-to Customer Name 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 1225278069 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Customer No. field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Sell-to Customer No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 709296807 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Post Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Sell-to Post Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 1187003046 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Address field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Ship-to Address - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 1417792948 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Address 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Ship-to Address 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 1981213637 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to City field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Ship-to City - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 3354576322 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Country/Region Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Ship-to Country/Region Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 187607738 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to County field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Ship-to County - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 2743501653 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Name field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Ship-to Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 3261344115 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Name 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Ship-to Name 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 3172878019 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Post Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Ship-to Post Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 4045368290 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Shipping Agent Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Shipping Agent Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Action 2928710152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crear Oferta</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Crear Oferta - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Action 252030719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crear Oferta Lotes</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Crear Oferta Lotes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 636392376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 1650118938 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Amount Including VAT field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Amount Including VAT - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 831017837 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to Address field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Bill-to Address - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 460968363 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to Address 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Bill-to Address 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 3869539606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to City field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Bill-to City - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 2096911897 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to Country/Region Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Bill-to Country/Region Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 3882955433 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to County field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Bill-to County - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 240204966 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to Name field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Bill-to Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 675862156 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill-to Post Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Bill-to Post Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 4198939294 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Currency Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Currency Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 3104584724 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Invoice Discount Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Invoice Discount Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the No. field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 966740350 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Payment Terms Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Payment Terms Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 4121941639 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Probability field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Probability - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 135600996 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requested Delivery Date field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Requested Delivery Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 3606264650 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Address field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Sell-to Address - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 469609400 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Address 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Sell-to Address 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 1281923305 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to City field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Sell-to City - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 1006519668 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Contact field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Sell-to Contact - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 2131962646 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to County field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Sell-to County - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 1474036805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Customer Name field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Sell-to Customer Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 2958825091 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Customer Name 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Sell-to Customer Name 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 1225278069 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Customer No. field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Sell-to Customer No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 709296807 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sell-to Post Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Sell-to Post Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 1187003046 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Address field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Ship-to Address - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 1417792948 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Address 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Ship-to Address 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 1981213637 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to City field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Ship-to City - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 3354576322 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Country/Region Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Ship-to Country/Region Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 187607738 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to County field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Ship-to County - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 2743501653 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Name field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Ship-to Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 3261344115 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Name 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Ship-to Name 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 3172878019 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Ship-to Post Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Ship-to Post Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Control 4045368290 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Shipping Agent Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Control Shipping Agent Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 622870132 - Action 2928710152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crear Oferta</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux Card - Action Crear Oferta - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 636392376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 1650118938 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Amount Including VAT field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Amount Including VAT - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Description field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 47657272 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Description 2 field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Description 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 486908828 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Document No. field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Document No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 3582421358 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Line Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Line Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 2702998682 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Line Discount % field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Line Discount % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 1206454073 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Line Discount Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Line Discount Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 3320823955 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Line No. field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Line No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the No. field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 2704404533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Quantity field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Quantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 398122263 - Control 2937233469 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Unit Price field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Unit Price - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 9807146 - Control 1796535343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>(-)Cant. componentes Oferta</source>
@@ -6819,7 +7279,7 @@
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 4252656739" size-unit="char" translate="yes" xml:space="preserve">
           <source>Gross Weight(kg):</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Bruto(kg):",FRA="Gross Weight(kg):"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType CuadroBultos_PesoNetoLbl</note>
           <target>Gross Weight(kg):</target>
         </trans-unit>
@@ -8850,6 +9310,16 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Control AmountcostLines - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 647151006 - Action 2187223319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 280137910">
+          <source>Marcar/Desmarcar no planificar</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuote - Action NoPlanificacion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1149918667 - Control 2166884334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 734185571">
+          <source>Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuotes - Control AmountcostLines - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Method 1489276173 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
           <source>#1#############################################</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -8859,6 +9329,11 @@
           <source>Nombre Cliente Proverdor</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension VatEntry - Control NombreClienteProv - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2268077932 - Field 725456936 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
+          <source>No contemplar planificacion</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AssemblyLine - Field No contemplar planificacion - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
           <source>ABC Cliente</source>
@@ -8975,10 +9450,20 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field Cerrado en plataforma - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2580209347 - Field 3697457928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4094296290">
+          <source>Oferta CRM con Dto</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Customer Discount Group - Field Oferta CRM aplicar Dto - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3410546980 - Field 2642821746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 235946633">
           <source>Initial Entry Posting Date</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Detailed Cust. Ledg. Entry - Field Initial Entry Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3520316455 - Field 3592576802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2430374758">
+          <source>Cód. Texto Factura</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH VAT Business Posting Group - Field Cód. Texto Factura - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>ABC Cliente</source>

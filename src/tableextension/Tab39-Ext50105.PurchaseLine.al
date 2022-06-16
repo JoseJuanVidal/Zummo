@@ -45,5 +45,10 @@ tableextension 50105 "PurchaseLine" extends "Purchase Line"  //39
             CalcFormula = lookup(Item."Standard Cost" where("No." = field("No.")));
             Editable = false;
         }
+        field(50100; "Process No."; Code[20])
+        {
+            Caption = 'Process No.', Comment = 'ESP="Cód. proceso"';
+            DataClassification = CustomerContent;
+        }
     }
 }

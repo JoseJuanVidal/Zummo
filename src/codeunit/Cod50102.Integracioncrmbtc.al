@@ -5,6 +5,41 @@ codeunit 50102 "Integracion_crm_btc"
 
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"CRM Integration Table Synch.", 'OnQueryPostFilterIgnoreRecord', '', true, true)]
+    local procedure OnQueryPostFilterIgnoreRecord(SourceRecordRef: RecordRef; var IgnoreRecord: Boolean)
+    var
+        SalesQuoteAux: Record "STH Sales Header Aux";
+        CRMQuoteDetail: Record "STH CRM Quotedetail";
+        CRMIntegrationRecord: record "CRM Integration Record";
+        SaleHeaderRecRef: RecordRef;
+        DestinationFieldRef: FieldRef;
+        AccountId: RecordId;
+        NoQuote: code[20];
+    begin
+        case SourceRecordRef.Number of
+            Database::"STH CRM Quotedetail":
+                begin
+                    // controlamos si el quote id está ya sincronizada, solo se actualizan los estado = activo
+                    // poner los ID de cliente
+                    SourceRecordRef.SETTABLE(CRMQuoteDetail);
+                    DestinationFieldRef := SourceRecordRef.Field(3);
+                    IF CRMIntegrationRecord.FindRecordIDFromID(CRMQuoteDetail.QuoteId, Database::"STH Sales Header Aux", AccountId) then begin
+                        if SaleHeaderRecRef.get(AccountId) then begin
+                            NoQuote := format(SaleHeaderRecRef.field(SalesQuoteAux.fieldNo("No.")));
+                            if SalesQuoteAux.get(NoQuote) then begin
+                                IgnoreRecord := false;
+                                exit;
+                            end;
+
+                        end;
+                    end;
+
+                    IgnoreRecord := true;
+                end;
+        end;
+    end;
+
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Integration Rec. Synch. Invoke", 'OnBeforeTransferRecordFields', '', true, true)]
     local procedure OnBeforeTransferRecordFields(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef)
     var
@@ -1487,7 +1522,10 @@ codeunit 50102 "Integracion_crm_btc"
             isIntegrationRecord := true;
         if TableID = DATABASE::"Sales Price" then
             isIntegrationRecord := true;
-
+        if TableID = DATABASE::"STH Sales Header Aux" then
+            isIntegrationRecord := true;
+        if TableID = DATABASE::"STH Sales Line Aux" then
+            isIntegrationRecord := true;
 
     end;
 

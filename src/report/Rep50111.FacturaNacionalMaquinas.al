@@ -383,6 +383,7 @@ report 50111 "FacturaNacionalMaquinas"
             column(logo; CompanyInfo1.LogoCertificacion)
             { }
             //fin SOTHIS EBR 010920 id 159231
+            column(TextRegister; TextRegister) { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
@@ -1758,6 +1759,21 @@ report 50111 "FacturaNacionalMaquinas"
                 FormatDocumentFields("Sales Invoice Header");
                 DocumentTotals.CalculatePostedSalesInvoiceTotals(TotalSalesInvoiceHeader, VATAmount2, TotalSalesInvoiceline);
 
+                // ponemos el registro segun el grupo de iva
+                TextRegister := '';
+                if GrupoRegIva.get("Sales Invoice Header"."VAT Bus. Posting Group") then begin
+                    TextosAuxiliares.Reset();
+                    TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+                    TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::RegistroIVA);
+                    TextosAuxiliares.SetRange(NumReg, GrupoRegIva."Cód. Texto Factura");
+                    if TextosAuxiliares.FindSet() then begin
+                        if "Sales Invoice Header"."Language Code" in ['ENG', 'ENU'] then
+                            TextRegister := TextosAuxiliares.Description
+                        else
+                            TextRegister := TextosAuxiliares.Descripcion;
+                    end;
+                end;
+
                 workdescription := GetWorkDescription();
                 Portes := 0;
                 LineaVentaPortes.Reset();
@@ -2053,10 +2069,12 @@ report 50111 "FacturaNacionalMaquinas"
             LogInteractionEnable := LogInteraction;
             NoOfCopies := 0;
 
-            if facturaLidl or facturaExportacion then
-                mostrarNetos := true
-            else
-                mostrarNetos := false;
+            if GuiAllowed then
+                if facturaLidl or facturaExportacion then
+                    mostrarNetos := true;
+            // comentamoes el ELSE para que cuando sea exportacion facturación, ponga los datos de xmlparameters
+            // else
+            //     mostrarNetos := false;
         end;
     }
 
@@ -2334,7 +2352,7 @@ report 50111 "FacturaNacionalMaquinas"
         CuadroBultos_BultosLbl: Label 'Bulks:', comment = 'ESP="Bultos:",FRA="Bulks:"';
         CuadroBultos_IncotermLbl: Label 'INCOTERM:', comment = 'ESP="INCOTERM:"';
         CuadroBultos_VolumenLbl: Label 'Volume(m3):', comment = 'ESP="Volumen(m3):",FRA="Volume(m3):"';
-        CuadroBultos_PesoNetoLbl: Label 'Gross Weight(kg):', comment = 'ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"';
+        CuadroBultos_PesoNetoLbl: Label 'Gross Weight(kg):', comment = 'ESP="Peso Bruto(kg):",FRA="Gross Weight(kg):"';
         CuadroBultos_PaletsLbl: Label 'Pallets:', comment = 'ESP="Palets:",FRA="Palettes"';
         Text004Txt: Label 'Sales - Invoice %1', Comment = 'Ventas - Factura %1';
         PageCaptionCapLbl: Label 'Page %1 of %2', Comment = 'ESP="Página %1 de %2"';
@@ -2413,6 +2431,9 @@ report 50111 "FacturaNacionalMaquinas"
         lblEORI: Label 'EORI: ', comment = 'ESP="EORI: "';
         txtVatEORI: Text;
         txtEORI: text;
+        TextRegister: text;
+        GrupoRegIva: record "VAT Business Posting Group";
+        TextosAuxiliares: Record TextosAuxiliares;
 
     [Scope('Personalization')]
     procedure InitLogInteraction()

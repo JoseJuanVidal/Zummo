@@ -1,4 +1,4 @@
-page 50052 "Escandallo MovsCapacidad"
+page 50056 "Escandallo MovsCapacidad"
 {
     PageType = List;
     ApplicationArea = all;

@@ -4118,7 +4118,7 @@ cstr(Fields!txtVatEORI.Value)
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>9.1795cm</Height>
+          <Height>9.8145cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -4143,8 +4143,8 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>8.43839cm</Top>
-              <Left>2.05471cm</Left>
+              <Top>9.26389cm</Top>
+              <Left>2.01943cm</Left>
               <Height>0.51533cm</Height>
               <Width>13.95178cm</Width>
               <Style>
@@ -4178,7 +4178,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>8.48072cm</Top>
+              <Top>9.36972cm</Top>
               <Left>16.11232cm</Left>
               <Height>0.4095cm</Height>
               <Width>3.02917cm</Width>
@@ -4190,7 +4190,6 @@ cstr(Fields!txtVatEORI.Value)
               </Style>
             </Textbox>
             <Textbox Name="Textbox81">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -4211,8 +4210,8 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>7.08195cm</Top>
-              <Left>0.46625cm</Left>
+              <Top>7.46295cm</Top>
+              <Left>0.4345cm</Left>
               <Height>1.28588cm</Height>
               <Width>19.22784cm</Width>
               <ZIndex>2</ZIndex>
@@ -4222,8 +4221,6 @@ cstr(Fields!txtVatEORI.Value)
                 </Border>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
             <Image Name="Image3">
@@ -4231,7 +4228,7 @@ cstr(Fields!txtVatEORI.Value)
               <Value>=First(Fields!logo.Value, "DataSet_Result")</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>8.40311cm</Top>
+              <Top>9.00283cm</Top>
               <Left>0.46625cm</Left>
               <Height>0.77639cm</Height>
               <Width>1.25376cm</Width>
@@ -4243,7 +4240,7 @@ cstr(Fields!txtVatEORI.Value)
               </Style>
             </Image>
             <Line Name="Line4">
-              <Top>2.76039in</Top>
+              <Top>2.92289in</Top>
               <Left>0.15621in</Left>
               <Height>0in</Height>
               <Width>7.60396in</Width>
@@ -6123,9 +6120,9 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox56</rd:DefaultName>
-                  <Top>6.60652cm</Top>
+                  <Top>6.57477cm</Top>
                   <Height>0.27138cm</Height>
-                  <Width>19.22783cm</Width>
+                  <Width>16.86087cm</Width>
                   <ZIndex>31</ZIndex>
                   <Visibility>
                     <Hidden>=iif(First(Fields!facturaExportacion.Value, "DataSet_Result") = true, true, false)</Hidden>
@@ -6689,7 +6686,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                 </Rectangle>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
-              <Top>0.09745cm</Top>
+              <Top>0.5102cm</Top>
               <Left>0.41806cm</Left>
               <Height>7.03665cm</Height>
               <Width>19.29278cm</Width>
@@ -6704,7 +6701,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
               </Style>
             </Rectangle>
             <Line Name="Line1">
-              <Top>0.13349cm</Top>
+              <Top>0.54624cm</Top>
               <Left>0.3175cm</Left>
               <Height>7.03665cm</Height>
               <Width>0cm</Width>
@@ -6728,6 +6725,46 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                 </RightBorder>
               </Style>
             </Line>
+            <Textbox Name="Textbox46">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!TextRegister.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Left>0.50511cm</Left>
+              <Height>0.6cm</Height>
+              <Width>19.04089cm</Width>
+              <ZIndex>7</ZIndex>
+              <Visibility>
+                <Hidden>=IIF(Globals!PageNumber&lt;&gt;Globals!TotalPages,true,false)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Color>LightGrey</Color>
+                  <Style>None</Style>
+                  <Width>0.5pt</Width>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -7369,6 +7406,9 @@ kBKRAAAAAEiJSAAAAACkRCQAAAAAUiISAAAAACkRCQAAAICUiAQAAABASkQCAAAAICUiAQAAAJASkQAA
         </Field>
         <Field Name="logo">
           <DataField>logo</DataField>
+        </Field>
+        <Field Name="TextRegister">
+          <DataField>TextRegister</DataField>
         </Field>
         <Field Name="CompanyInfo2Picture">
           <DataField>CompanyInfo2Picture</DataField>

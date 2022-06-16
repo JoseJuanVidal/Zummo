@@ -9,6 +9,10 @@ pageextension 50146 "SalesInvoiceList" extends "Sales Invoice List"
             {
                 ApplicationArea = all;
             }
+            field(InsideSales_btc; InsideSales_btc)
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions

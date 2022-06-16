@@ -137,7 +137,6 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
         field(50050; ofertaprobabilidad; Option)
         {
             Caption = 'Probabilidad', comment = 'ESP="Probabilidad"';
-            Editable = false;
             OptionCaption = ' ,Baja,Media,Alta';
             OptionMembers = " ","Baja","Media","Alta";
         }
@@ -173,7 +172,6 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
         {
             DataClassification = CustomerContent;
             Caption = 'Oferta Sales', comment = 'ESP="Oferta Sales"';
-            Editable = false;
         }
         field(50912; "No contemplar planificacion"; Boolean)
         {
@@ -181,12 +179,9 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             Caption = 'No contemplar planificaciòn', comment = 'ESP="No contemplar planificación"';
 
             trigger OnValidate()
-            var
-                Salesline: Record "Sales Line";
+
             begin
-                Salesline.SetRange("Document Type", Rec."Document Type");
-                Salesline.SetRange("Document No.", Rec."No.");
-                Salesline.ModifyAll("No contemplar planificacion", Rec."No contemplar planificacion");
+                UpdateNoComplarPlanificacion;
             end;
         }
         field(50013; "Aviso Oferta bajo pedido"; Boolean)
@@ -214,7 +209,27 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
 
 
         //#endregion Integracion Intercompany
-
-
     }
+    local procedure UpdateNoComplarPlanificacion()
+    var
+        funciones: Codeunit Funciones;
+    begin
+        funciones.UpdateNoContemplarPlanificacion(Rec);
+    end;
+
+
+    procedure CalcAmountcostLines(): decimal
+    var
+        SalesLines: Record "Sales Line";
+        CostLines: Decimal;
+    begin
+        Saleslines.Reset();
+        Saleslines.SetRange("Document Type", Rec."Document Type");
+        Saleslines.SetRange("Document No.", Rec."No.");
+        if Saleslines.findset() then
+            repeat
+                CostLines += Saleslines."Unit Cost (LCY)" * Saleslines.Quantity;
+            Until Saleslines.next() = 0;
+        exit(round(CostLines, 0.01));
+    end;
 }

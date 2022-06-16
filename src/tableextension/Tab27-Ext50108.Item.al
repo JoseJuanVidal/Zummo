@@ -322,5 +322,21 @@ tableextension 50108 "Item" extends Item  //27
             CalcFormula = lookup("STH Purchase SubCategory".Description where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category")));
             Editable = false;
         }
+        field(50136; "Inventory to date"; Decimal)
+        {
+            Caption = 'Inventory to date', comment = 'ESP="Inventario a Fecha"';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("No."), "Posting Date" = FIELD("Date Filter"),
+                                                                  "Global Dimension 1 Code" = FIELD("Global Dimension 1 Filter"),
+                                                                  "Global Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
+                                                                  "Location Code" = FIELD("Location Filter"),
+                                                                  "Drop Shipment" = FIELD("Drop Shipment Filter"),
+                                                                  "Variant Code" = FIELD("Variant Filter"),
+                                                                  "Lot No." = FIELD("Lot No. Filter"),
+                                                                  "Serial No." = FIELD("Serial No. Filter")));
+
+            DecimalPlaces = 0 : 5;
+            Editable = false;
+        }
     }
 }

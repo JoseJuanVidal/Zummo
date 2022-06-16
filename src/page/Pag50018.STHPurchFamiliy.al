@@ -1,9 +1,9 @@
-page 50018 "STH Purchase SubCategorys"
+page 50018 "STH Purch, Familiy"
 {
     ApplicationArea = All;
-    Caption = 'Purch. SubCategorys', comment = 'ESP="SubCategorias compra"';
+    Caption = 'Purch. Familys', comment = 'ESP="Familias compra"';
     PageType = List;
-    SourceTable = "STH Purchase SubCategory";
+    SourceTable = "STH Purchase Family";
     UsageCategory = Lists;
 
     layout
@@ -12,14 +12,6 @@ page 50018 "STH Purchase SubCategorys"
         {
             repeater(General)
             {
-                field("Purch. Familiy code"; Rec."Purch. Familiy code")
-                {
-                    ApplicationArea = All;
-                }
-                field("Purch. Category code"; Rec."Purch. Category code")
-                {
-                    ApplicationArea = All;
-                }
                 field("Code"; Rec."Code")
                 {
                     ApplicationArea = All;

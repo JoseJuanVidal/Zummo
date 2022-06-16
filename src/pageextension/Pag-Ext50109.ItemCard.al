@@ -330,6 +330,13 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 Stock.ModifyAll("Manufacturing Policy", "Manufacturing Policy");
             end;
         }
+        addafter(Inventory)
+        {
+            field("Inventory to date"; "Inventory to date")
+            {
+                ApplicationArea = all;
+            }
+        }
 
         addlast(Content)
         {

@@ -23,6 +23,7 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
             field("No contemplar planificacion"; "No contemplar planificacion")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
             field(InsideSales_btc; InsideSales_btc)
             {
@@ -145,6 +146,23 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
                     SalesCalcDiscByType.ResetRecalculateInvoiceDisc(Rec);
                 end;
             }
+            action(NoPlanificacion)
+            {
+                ApplicationArea = All;
+                Caption = 'Marcar/Desmarcar no planificar';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = Planning;
+
+                trigger OnAction()
+                begin
+                    UpdateNoComplarPlanificacion;
+                    CurrPage.Update();
+                end;
+
+
+            }
         }
     }
 
@@ -159,4 +177,13 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
 
     var
         Funciones: Codeunit Funciones;
+
+    local procedure UpdateNoComplarPlanificacion()
+    var
+        funciones: Codeunit Funciones;
+    begin
+        Rec."No contemplar planificacion" := not rec."No contemplar planificacion";
+        Rec.Modify();
+        funciones.UpdateNoContemplarPlanificacion(Rec);
+    end;
 }

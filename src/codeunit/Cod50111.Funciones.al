@@ -499,7 +499,7 @@ codeunit 50111 "Funciones"
         end;
     end;
 
-    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20]; CurrChange: Decimal; PackageTrackingNo: text[30])
+    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20]; CurrChange: Decimal; PackageTrackingNo: text[30]; InsideSales: code[20])
     var
         SalesInvoiceHeader: Record "Sales Invoice Header";
         TempBlob: Record TempBlob temporary;
@@ -507,6 +507,7 @@ codeunit 50111 "Funciones"
         if SalesInvoiceHeader.Get(InvoiceNo) then begin
             SalesInvoiceHeader."External Document No." := ExtDocNo;
             SalesInvoiceHeader.AreaManager_btc := AreaManager;
+            SalesInvoiceHeader.InsideSales_btc := InsideSales;
             SalesInvoiceHeader.ClienteReporting_btc := ClienteReporting;
             SalesInvoiceHeader.CurrencyChange := CurrChange;
             CLEAR(SalesInvoiceHeader."Work Description");
@@ -1308,5 +1309,207 @@ codeunit 50111 "Funciones"
             until SalesLine.Next() = 0;
         if Mensaje <> '' then
             Message(Mensaje + ' Son bajo pedido');
+    end;
+
+    procedure CrearOferta(var SalesHeaderAux: Record "STH Sales Header Aux")
+    var
+        SalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+        Error: Boolean;
+        ErrorDtos: Boolean;
+    begin
+        SalesHeaderAux.status := SalesHeaderAux.status::Error;
+        SalesHeaderAux.Modify();
+        commit();
+
+        //COMPROBAR SI EXISTE YA UN REGISTRO DE ESTA OFERTA
+        CheckExisteOferta(SalesHeader, SalesHeaderAux);
+
+        //INSERTAR CABECERA
+        InsertarCabeceraOferta(SalesHeader, SalesHeaderAux);
+
+        //INSERTAR LINEAS
+        InsertarLineasOferta(SalesLine, SalesHeaderAux, ErrorDtos);
+
+        UpdateNoContemplarPlanificacion(SalesHeader);
+
+        // Calcular Dto de cabecera
+
+        CalcularDescuentoTotal(SalesHeader, SalesHeaderAux."Invoice Discount");
+
+        // poner estado AUX
+        SalesHeader.CalcFields(Amount);
+        case error of
+            true:
+                begin
+                    SalesHeaderAux.Status := SalesHeaderAux.Status::Error;
+                end;
+            else begin
+                    if ErrorDtos then
+                        SalesHeaderAux.Status := SalesHeaderAux.Status::"Dif. Dtos"
+                    else
+                        if SalesHeaderAux.Amount = SalesHeader.Amount then
+                            SalesHeaderAux.Status := SalesHeaderAux.Status::Finalizada
+                        else
+                            SalesHeaderAux.Status := SalesHeaderAux.Status::"Dif. Importe";
+                end;
+        end;
+        SalesHeaderAux.Created := true;
+        SalesHeaderAux.Modify();
+
+    end;
+
+    local procedure CheckExisteOferta(var SalesHeader: Record "Sales Header"; SalesHeaderAux: Record "STH Sales Header Aux")
+    begin
+        if SalesHeader.Get(SalesHeader."Document Type"::Quote, SalesHeaderAux."No.") then
+            Error('El registro ya existe');
+    end;
+
+    local procedure InsertarCabeceraOferta(var SalesHeader: Record "Sales Header"; var SalesHeaderAux: Record "STH Sales Header Aux")
+    var
+        ErrorDtos: Boolean;
+    begin
+        SalesHeader.Init();
+        SalesHeader."Document Type" := SalesHeader."Document Type"::Quote;
+        SalesHeader.Validate("No.", SalesHeaderAux."No.");
+        SalesHeader.Validate("Sell-to Customer No.", SalesHeaderAux."Sell-to Customer No.");
+        case SalesHeaderAux.Probability of
+            '':
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::" ";
+            'Alta':
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Alta;
+            'Baja':
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Baja;
+            'Media':
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Media;
+        end;
+        SalesHeader.Validate("Currency Code", SalesHeaderAux."Currency Code");
+        SalesHeader.Validate("Ship-to Name", SalesHeaderAux."Ship-to Name");
+        SalesHeader.Validate("Ship-to Name 2", SalesHeaderAux."Ship-to Name 2");
+        SalesHeader.Validate("Ship-to Address", SalesHeaderAux."Ship-to Address");
+        SalesHeader.Validate("Ship-to Address 2", SalesHeaderAux."Ship-to Address 2");
+        SalesHeader.Validate("Ship-to City", SalesHeaderAux."Ship-to City");
+        SalesHeader.Validate("Ship-to County", SalesHeaderAux."Bill-to County");
+        SalesHeader.Validate("Ship-to Country/Region Code", SalesHeaderAux."Ship-to Country/Region Code");
+        SalesHeader.Validate("Ship-to Post Code", SalesHeaderAux."Ship-to Post Code");
+        SalesHeader.Validate("Shipping Agent Code", SalesHeaderAux."Shipping Agent Code");
+        SalesHeader.Validate("Payment Terms Code", SalesHeaderAux."Payment Terms Code");
+        //SalesHeader.Validate(Amount, SalesHeaderAux.Amount);
+        //SalesHeader.Validate("Amount Including VAT", SalesHeaderAux."Amount Including VAT");
+        SalesHeader.Validate("Bill-to Name", SalesHeaderAux."Bill-to Name");
+        SalesHeader.Validate("Bill-to Address", SalesHeaderAux."Bill-to Address");
+        SalesHeader.Validate("Bill-to Address 2", SalesHeaderAux."Bill-to Address 2");
+        SalesHeader.Validate("Bill-to City", SalesHeaderAux."Bill-to City");
+        SalesHeader.Validate("Bill-to County", SalesHeaderAux."Bill-to County");
+        SalesHeader.Validate("Bill-to Country/Region Code", SalesHeaderAux."Bill-to Country/Region Code");
+        SalesHeader.Validate("Bill-to Post Code", SalesHeaderAux."Bill-to Post Code");
+        //SalesHeader.Validate("Invoice Discount Amount", SalesHeaderAux."Invoice Discount Amount");
+        SalesHeader.Validate("Requested Delivery Date", SalesHeaderAux."Requested Delivery Date");
+        SalesHeader.OfertaSales := true;
+        SalesHeader."No contemplar planificacion" := true;
+        SalesHeader.Insert();
+
+
+    end;
+
+    local procedure InsertarLineasOferta(var SalesLine: Record "Sales Line"; var SalesHeaderAux: Record "STH Sales Header Aux"; var ErrorDtos: Boolean)
+    var
+        SalesLinesAux: Record "STH Sales Line Aux";
+    begin
+        // SalesLinesAux.SetRange("Sell-to Customer No.", SalesHeaderAux."Sell-to Customer No.");
+        SalesLinesAux.SetRange("Document No.", SalesHeaderAux."No.");
+
+        // if SalesLinesAux.Get(SalesHeaderAux."Sell-to Customer No.", SalesHeaderAux."No.") then begin
+        if SalesLinesAux.FindFirst() then begin
+            repeat
+                SalesLine.Init();
+                SalesLine."Document Type" := SalesLine."Document Type"::Quote;
+                SalesLine.Type := SalesLine.Type::Item;
+                SalesLine."Sell-to Customer No." := SalesHeaderAux."Sell-to Customer No.";
+                SalesLine.Validate("Document No.", SalesLinesAux."Document No.");
+                SalesLine.Validate("Line No.", SalesLinesAux."Line No.");
+                SalesLine.Insert();
+                SalesLine.Validate("No.", SalesLinesAux."No.");
+                SalesLine.Validate(Description, SalesLinesAux.Description);
+                SalesLine.Validate("Description 2", SalesLinesAux."Description 2");
+                SalesLine.Validate(Quantity, SalesLinesAux.Quantity);
+                SalesLine.Validate("Unit Price", SalesLinesAux."Unit Price");
+                // controlamos el dtos segun las necesidades
+                SalesLineDtos(SalesLine, SalesLinesAux);
+                if SalesLine."Line Discount %" <> SalesLinesAux."Line Discount %" then
+                    ErrorDtos := true;
+
+                SalesLine."No contemplar planificacion" := true;
+                SalesLine.Modify();
+            until SalesLinesAux.Next() = 0;
+        end;
+    end;
+
+    local procedure SalesLineDtos(var SalesLine: Record "Sales Line"; SalesLinesAux: Record "STH Sales Line Aux")
+    var
+        Customer: Record customer;
+        CustomerDiscountGroup: Record "Customer Discount Group";
+        NoAplicarDto: Boolean;
+    begin
+        if Customer.get(SalesLine."Sell-to Customer No.") then
+            if CustomerDiscountGroup.get(Customer."Customer Disc. Group") then
+                if CustomerDiscountGroup."Oferta CRM aplicar Dto" then
+                    NoAplicarDto := true;
+
+
+        if not NoAplicarDto then begin
+            SalesLine.Validate("Line Discount %", SalesLinesAux."Line Discount %");
+            if (SalesLinesAux."Line Discount Amount" <> 0) and (SalesLinesAux."Line Discount %" = 0) then
+                SalesLine.Validate("Line Discount Amount", SalesLinesAux."Line Discount Amount");
+            // SalesLine.Validate(Amount, SalesLinesAux.Amount);
+            // SalesLine.Validate("Line Amount", SalesLinesAux."Line Amount");
+            // SalesLine.Validate("Amount Including VAT", SalesLinesAux."Amount Including VAT");
+        end
+    end;
+
+    procedure CalcularDescuentoTotal(var SalesHeader: Record "Sales Header"; DescuentoFactura: Decimal)
+    var
+        SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
+        AmountWithDiscountAllowed: Decimal;
+        DocumentTotals: Codeunit "Document Totals";
+        SalesLine: record "Sales Line";
+        InvoiceDiscountAmount: Decimal;
+        Currency: record Currency;
+    begin
+        Currency.InitRoundingPrecision;
+        SalesLine.reset;
+        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+        SalesLine.SetRange("Document No.", SalesHeader."No.");
+        SalesLine.FindFirst();
+        AmountWithDiscountAllowed := DocumentTotals.CalcTotalSalesAmountOnlyDiscountAllowed(SalesLine);
+        InvoiceDiscountAmount := ROUND(AmountWithDiscountAllowed * DescuentoFactura / 100, Currency."Amount Rounding Precision");
+        SalesCalcDiscByType.ApplyInvDiscBasedOnAmt(InvoiceDiscountAmount, SalesHeader);
+    end;
+
+    procedure UpdateNoContemplarPlanificacion(SalesHeader: record "Sales Header")
+    var
+        Salesline: Record "Sales Line";
+        AsmLine: Record "Assembly Line";
+        Asmtoorderlink: Record "Assemble-to-Order Link";
+    begin
+        Salesline.SetRange("Document Type", SalesHeader."Document Type");
+        Salesline.SetRange("Document No.", SalesHeader."No.");
+        if SalesLine.findset() then
+            repeat
+                Salesline."No contemplar planificacion" := SalesHeader."No contemplar planificacion";
+                Salesline.Modify();
+                if Asmtoorderlink.AsmExistsForSalesLine(SalesLine) then begin
+                    AsmLine.FILTERGROUP := 2;
+                    AsmLine.SETRANGE("Document Type", Asmtoorderlink."Assembly Document Type");
+                    AsmLine.SETRANGE("Document No.", Asmtoorderlink."Assembly Document No.");
+                    if AsmLine.findset() then
+                        repeat
+                            // marcamos las lineas del pedido de ensamblado como no contemplar
+                            AsmLine."No contemplar planificacion" := SalesHeader."No contemplar planificacion";
+                            AsmLine.Modify();
+                        Until AsmLine.next() = 0;
+
+                end;
+            Until SalesLine.next() = 0;
     end;
 }

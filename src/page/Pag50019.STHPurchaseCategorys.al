@@ -1,4 +1,4 @@
-page 50017 "STH Purchase Categorys"
+page 50019 "STH Purchase Categorys"
 {
     ApplicationArea = All;
     Caption = 'Purch. Categorys', comment = 'ESP="Categorias compra"';
