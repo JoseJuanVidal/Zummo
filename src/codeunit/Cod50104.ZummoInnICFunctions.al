@@ -288,6 +288,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
                             repeat
                                 SendReservationEntryUpdateIC(ReservationEntry);
                             until ReservationEntry.Next() = 0;
+                    end else begin
+                        SendUpdateQtyIC(SalesLine);
                     end;
                 end;
             until SalesLine.Next() = 0;
@@ -319,8 +321,40 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Clear(Body);
         JsonBody.Add('DocumentNo', SalesHeader."Source Purch. Order No");
         JsonBody.Add('ItemNo', ReservationEntry."Item No.");
-        JsonBody.Add('Quantity', ReservationEntry.Quantity);
+        JsonBody.Add('Quantity', Abs(ReservationEntry.Quantity));
         JsonBody.Add('SerialNo', ReservationEntry."Serial No.");
+        JsonBody.WriteTo(Body);
+        SW_REST(SalesReceivablesSetup."WS Base URL IC Zummo Innc.", SalesReceivablesSetup."WS Name - Purch. Order Line", 'POST', Body, true, StatusCode, JsonResponse, false);
+
+        if JsonResponse.Get('error', JsonTokResponse) then begin
+            JsonTokResponse.WriteTo(ErrorText);
+            Error(ErrorText);
+        end;
+    end;
+
+    local procedure SendUpdateQtyIC(SalesLine: Record "Sales Line")
+    var
+        SalesHeader: Record "Sales Header";
+        Response: HttpResponseMessage;
+        JsonBody: JsonObject;
+        ResponseText: Text;
+        Body: Text;
+        ErrorText: Text;
+        DocumentNo: Code[20];
+        StatusCode: Integer;
+        JsonResponse: JsonObject;
+        JsonTokResponse: JsonToken;
+    begin
+        SalesReceivablesSetup.Get;
+        SalesReceivablesSetup.TestField("WS Base URL IC Zummo Innc.");
+        SalesReceivablesSetup.TestField("WS Name - Purch. Order Line");
+        SalesHeader.Get(SalesHeader."Document Type"::Order, SalesLine."Document No.");
+        Clear(JsonBody);
+        Clear(Body);
+        JsonBody.Add('DocumentNo', SalesHeader."Source Purch. Order No");
+        JsonBody.Add('ItemNo', SalesLine."No.");
+        JsonBody.Add('Quantity', SalesLine.Quantity);
+        JsonBody.Add('SerialNo', '');
         JsonBody.WriteTo(Body);
         SW_REST(SalesReceivablesSetup."WS Base URL IC Zummo Innc.", SalesReceivablesSetup."WS Name - Purch. Order Line", 'POST', Body, true, StatusCode, JsonResponse, false);
 
