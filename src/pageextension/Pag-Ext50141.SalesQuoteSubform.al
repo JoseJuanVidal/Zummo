@@ -22,7 +22,7 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
 
         addafter("Line Discount %")
         {
-           
+
             field("DecLine Discount1 %_btc"; "DecLine Discount1 %_btc")
             {
                 ApplicationArea = All;
@@ -45,7 +45,10 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
             {
                 ApplicationArea = All;
             }
-
+            field("No contemplar planificacion"; "No contemplar planificacion")
+            {
+                ApplicationArea = all;
+            }
 
         }
 
