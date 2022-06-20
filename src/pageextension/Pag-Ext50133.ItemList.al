@@ -15,6 +15,10 @@ pageextension 50133 "ItemList" extends "Item List"
                 ToolTip = 'Qty. en Stockkeeping Unit', Comment = 'ESP="Cantidad en contenido de almacén"';
                 Visible = false;
             }
+            field("Safety Stock Quantity"; "Safety Stock Quantity")
+            {
+                ApplicationArea = all;
+            }
             // Validar productos
             field(ValidadoContabiliad_btc; ValidadoContabiliad_btc)
             {
@@ -60,6 +64,26 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Minimum Order Quantity"; Rec."Minimum Order Quantity")
+            {
+                ApplicationArea = all;
+            }
+            field(STHCostEstandarOLD; STHCostEstandarOLD)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(CambiadoCoste; CambiadoCoste)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(RecalcularCosteEstandar; RecalcularCosteEstandar)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+
         }
     }
     actions

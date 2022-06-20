@@ -14,7 +14,7 @@ report 50108 "EtiquetaMateriaPrima"
         {
             DataItemTableView = sorting("Entry No.");
             RequestFilterFields = "Document No.";
-
+            column(codDocumento; codDocumento) { }
             column(CodBarra; CodBarra)
             {
 
@@ -57,7 +57,9 @@ report 50108 "EtiquetaMateriaPrima"
             {
 
             }
-
+            column(VendorName; VendorName)
+            {
+            }
 
             dataitem(CopyLoop; Integer)
             {
@@ -90,7 +92,10 @@ report 50108 "EtiquetaMateriaPrima"
             trigger OnAfterGetRecord()
             var
                 recPurchRcptHeader: Record "Purch. Rcpt. Header";
+                Vendor: Record Vendor;
             begin
+                if Vendor.Get("Item Ledger Entry"."Source No.") then
+                    VendorName := Vendor.Name;
 
                 if not RecCompany.Get() then
                     clear(RecCompany);
@@ -141,5 +146,7 @@ report 50108 "EtiquetaMateriaPrima"
         NPedido_Lbl: Label 'Nº PEDIDO:', Comment = 'ESP="Nº PEDIDO: "';
         Fecha_Lbl: Label 'FECHA: ', Comment = 'ESP="FECHA: "';
         codPedido: Code[20];
+        codDocumento: Label 'FO.01_C7.03_V04';
+        VendorName: Text;
 
 }

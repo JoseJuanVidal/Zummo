@@ -5,6 +5,7 @@ codeunit 50110 "CU_Cron"
     , tabledata "Email Item" = RIMD, tabledata "LogMailManagement" = RIMD, tabledata "LogEnvioEmailsClientes" = RIMD, tabledata "Service Password" = RIMD;
 
     var
+        MovsContaPresup: Record "STH Movs Conta-Presup";
         ResultEnvioMailTxt: Text;
 
     trigger OnRun()
@@ -20,6 +21,7 @@ codeunit 50110 "CU_Cron"
                     CambiaFechasOferta();
                 'AvisoVenc':
                     AvisosVencimientos();
+                //JJV 28/4 quitamos que quite reservas
                 'LimpiaSeguimiento':
                     LimpiarSeguimientos();
                 'EnviarFacturacion':
@@ -30,6 +32,9 @@ codeunit 50110 "CU_Cron"
                     AvisosFacturasVencidas();
                 'CalculateVtoAseguradora':
                     CalculateVtoAseguradora();
+                'CargaMovsContaPresup':
+                    MovsContaPresup.CargarDatos();
+
                 else
                     error(lbNoParametroErr);
 
@@ -53,11 +58,47 @@ codeunit 50110 "CU_Cron"
     local procedure LimpiarSeguimientos()
     var
         recReservEntry: Record "Reservation Entry";
+        recReservEntry2: Record "Reservation Entry";
     begin
         recReservEntry.Reset();
         recReservEntry.SetFilter("Reservation Status", '<>%1', recReservEntry."Reservation Status"::Reservation);
+        recReservEntry.SetFilter("Source Type", '<>%1', 5741);
         if recReservEntry.FindFirst() then
             recReservEntry.DeleteAll();
+        Commit();
+        recReservEntry.Reset();
+        recReservEntry.SetFilter("Reservation Status", '<>%1', recReservEntry."Reservation Status"::Reservation);
+        recReservEntry.SetRange("Source Type", 5741);
+        recReservEntry.SetRange("Item Tracking", recReservEntry."Item Tracking"::None);
+        if recReservEntry.FindFirst() then
+            recReservEntry.DeleteAll();
+        Commit();
+        recReservEntry.Reset();
+        recReservEntry.SetRange("Reservation Status", recReservEntry."Reservation Status"::Reservation);
+        //recReservEntry.SetRange("Item Tracking", recReservEntry."Item Tracking"::None);
+        recReservEntry.SetRange(Positive, false);
+        if recReservEntry.FindSet() then
+            repeat
+                recReservEntry2.SetRange(Positive, true);
+                recReservEntry2.SetRange("Entry No.", recReservEntry."Entry No.");
+                if not recReservEntry2.FindFirst() then begin
+                    recReservEntry.Delete();
+                    Commit();
+                end;
+            until recReservEntry.Next() = 0;
+        recReservEntry.Reset();
+        recReservEntry.SetRange("Reservation Status", recReservEntry."Reservation Status"::Reservation);
+        //recReservEntry.SetRange("Item Tracking", recReservEntry."Item Tracking"::None);
+        recReservEntry.SetRange(Positive, true);
+        if recReservEntry.FindSet() then
+            repeat
+                recReservEntry2.SetRange(Positive, false);
+                recReservEntry2.SetRange("Entry No.", recReservEntry."Entry No.");
+                if not recReservEntry2.FindFirst() then begin
+                    recReservEntry.Delete();
+                    Commit();
+                end;
+            until recReservEntry.Next() = 0;
     end;
 
     local procedure CambiaFechasOferta()

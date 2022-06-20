@@ -506,6 +506,9 @@ End Function
         <Field Name="Fecha_Lbl">
           <DataField>Fecha_Lbl</DataField>
         </Field>
+        <Field Name="VendorName">
+          <DataField>VendorName</DataField>
+        </Field>
         <Field Name="OutputNo">
           <DataField>OutputNo</DataField>
         </Field>

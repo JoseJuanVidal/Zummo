@@ -383,6 +383,7 @@ report 50111 "FacturaNacionalMaquinas"
             column(logo; CompanyInfo1.LogoCertificacion)
             { }
             //fin SOTHIS EBR 010920 id 159231
+            column(TextRegister; TextRegister) { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
@@ -399,6 +400,9 @@ report 50111 "FacturaNacionalMaquinas"
                     {
                     }
                     column(SalesInvoiceHeaderPaymentMethodCode; "Sales Invoice Header"."Payment Method Code")
+                    {
+                    }
+                    column(SalesInvoiceHeaderPaymentTermsCode; "Sales Invoice Header"."Payment Terms Code")
                     {
                     }
                     column(SalesInvoiceHeaderBillToCustomerNo; "Sales Invoice Header"."Bill-to Customer No.")
@@ -590,6 +594,8 @@ report 50111 "FacturaNacionalMaquinas"
                     column(CustomerCIFDNI; Customer."VAT Registration No.")
                     {
                     }
+                    column(txtEORI; txtEORI) { }
+                    column(txtVatEORI; txtVatEORI) { }
                     column(TransportistaRecordNombre; TransportistaRecord.Name)
                     {
                     }
@@ -1026,8 +1032,7 @@ report 50111 "FacturaNacionalMaquinas"
                             {
                                 DataItemLink = "No." = field("Assembly Document No.");
                                 DataItemTableView = sorting("No.");
-                                column(AssHeader_No_;
-                                "No.")
+                                column(AssHeader_No_; "No.")
                                 {
                                 }
 
@@ -1062,8 +1067,24 @@ report 50111 "FacturaNacionalMaquinas"
 
                                         }
                                     }
+
+                                    trigger OnAfterGetRecord()
+                                    var
+                                        SalesShipmentLine: Record "Sales Shipment Line";
+                                    begin
+                                        // JJV Corregir que cuando deshacen un albaran con el pedido de ensamblado y hacen otro, pone los dos numeros de serie
+                                        SalesShipmentLine.SetRange("Document No.", "Assemble-to-Order Link"."Document No.");
+                                        SalesShipmentLine.SetRange(Type, SalesShipmentLine.Type::Item);
+                                        SalesShipmentLine.SetRange("No.", "Assembly Header"."Item No.");
+                                        SalesShipmentLine.SetFilter(Quantity, '<0');
+                                        if SalesShipmentLine.FindSet() then
+                                            CurrReport.Skip();
+                                    end;
+
                                 }
                             }
+
+
                             trigger OnPreDataItem()
                             var
                                 recPostAssLink: Record "Posted Assemble-to-Order Link";
@@ -1738,6 +1759,21 @@ report 50111 "FacturaNacionalMaquinas"
                 FormatDocumentFields("Sales Invoice Header");
                 DocumentTotals.CalculatePostedSalesInvoiceTotals(TotalSalesInvoiceHeader, VATAmount2, TotalSalesInvoiceline);
 
+                // ponemos el registro segun el grupo de iva
+                TextRegister := '';
+                if GrupoRegIva.get("Sales Invoice Header"."VAT Bus. Posting Group") then begin
+                    TextosAuxiliares.Reset();
+                    TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+                    TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::RegistroIVA);
+                    TextosAuxiliares.SetRange(NumReg, GrupoRegIva."Cód. Texto Factura");
+                    if TextosAuxiliares.FindSet() then begin
+                        if "Sales Invoice Header"."Language Code" in ['ENG', 'ENU'] then
+                            TextRegister := TextosAuxiliares.Description
+                        else
+                            TextRegister := TextosAuxiliares.Descripcion;
+                    end;
+                end;
+
                 workdescription := GetWorkDescription();
                 Portes := 0;
                 LineaVentaPortes.Reset();
@@ -1798,9 +1834,15 @@ report 50111 "FacturaNacionalMaquinas"
                 END;
                 intContador := 1;
                 REPEAT
-                    FechaVencimiento[intContador] := MovsCliente."Due Date";
-                    MovsCliente.CALCFIELDS("Amount (LCY)");
-                    ImporteVencimiento[intContador] := MovsCliente."Amount (LCY)";
+                    PaymentMethod.Get("Payment Method Code");
+                    if ArrayLen(ImporteVencimiento) >= intContador then begin
+                        if not PaymentMethod."Ocultar fecha vto" then
+                            FechaVencimiento[intContador] := MovsCliente."Due Date";
+                        MovsCliente.CALCFIELDS("Amount (LCY)");
+
+
+                        ImporteVencimiento[intContador] := MovsCliente."Amount (LCY)";
+                    end;
                     intContador := intContador + 1;
                 UNTIL MovsCliente.NEXT() = 0;
 
@@ -1887,6 +1929,14 @@ report 50111 "FacturaNacionalMaquinas"
 
                 // buscamos la fecha de operacion del SII en otra extension
                 FechaOperacion := cdaFunciones.GetExtensionFieldValueDate("Sales Invoice Header".RecordId, 66600, false);
+                // ponemos con el IVA el EORI
+                if Cust.EORI = '' then begin
+                    txtVatEORI := '';
+                    txtEORI := '';
+                end else begin
+                    txtVatEORI := Cust.EORI;
+                    txtEORI := lblEORI;
+                end;
             end;
 
             trigger OnPostDataItem()
@@ -2019,10 +2069,12 @@ report 50111 "FacturaNacionalMaquinas"
             LogInteractionEnable := LogInteraction;
             NoOfCopies := 0;
 
-            if facturaLidl or facturaExportacion then
-                mostrarNetos := true
-            else
-                mostrarNetos := false;
+            if GuiAllowed then
+                if facturaLidl or facturaExportacion then
+                    mostrarNetos := true;
+            // comentamoes el ELSE para que cuando sea exportacion facturación, ponga los datos de xmlparameters
+            // else
+            //     mostrarNetos := false;
         end;
     }
 
@@ -2300,7 +2352,7 @@ report 50111 "FacturaNacionalMaquinas"
         CuadroBultos_BultosLbl: Label 'Bulks:', comment = 'ESP="Bultos:",FRA="Bulks:"';
         CuadroBultos_IncotermLbl: Label 'INCOTERM:', comment = 'ESP="INCOTERM:"';
         CuadroBultos_VolumenLbl: Label 'Volume(m3):', comment = 'ESP="Volumen(m3):",FRA="Volume(m3):"';
-        CuadroBultos_PesoNetoLbl: Label 'Gross Weight(kg):', comment = 'ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"';
+        CuadroBultos_PesoNetoLbl: Label 'Gross Weight(kg):', comment = 'ESP="Peso Bruto(kg):",FRA="Gross Weight(kg):"';
         CuadroBultos_PaletsLbl: Label 'Pallets:', comment = 'ESP="Palets:",FRA="Palettes"';
         Text004Txt: Label 'Sales - Invoice %1', Comment = 'Ventas - Factura %1';
         PageCaptionCapLbl: Label 'Page %1 of %2', Comment = 'ESP="Página %1 de %2"';
@@ -2344,7 +2396,7 @@ report 50111 "FacturaNacionalMaquinas"
         Cantidad_Lbl: Label 'Quantity', comment = 'ESP="Cantidad",FRA="Quantité"';
         Decripcion_Lbl: Label 'Description', comment = 'ESP="Descripción",FRA="Description"';
         PRGestionPedidosCliente_Lbl: Label 'PR-MANAGEMENT OF CUSTOMER ORDERS', Comment = 'ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"';
-        FO01_Lbl: Label 'FO.01.DVN/A9.11', Comment = 'ESP="FO.01.DVN/A9.11"';
+        FO01_Lbl: Label 'FO.01_C8.01_V12', Comment = 'ESP="FO.01_C8.01_V12"';
         Comentarios_Lbl: Label 'Remark', Comment = 'ESP="Comentarios",FRA="Commentaires"';
         DireccionDeEnvio_Lbl: Label 'Delivery Address', Comment = 'ESP="Dirección de envío",FRA="Adresse d´expédition"';
         ElSubtotalIncluye_Lbl: Label 'El subtotal incluye el coste de gestión de los RAEES según Real Decreto 110/2015, de 20 de febrero, sobre residuos de aparatos eléctricos y electrónicos (BOE de 21/02/2015)',
@@ -2376,6 +2428,12 @@ report 50111 "FacturaNacionalMaquinas"
         FechaOperacion: date;
         Text0010Txt: Label 'Operation Date', Comment = 'ESP="Fecha Operación"';
         MostrarFechaOperacion: Boolean;
+        lblEORI: Label 'EORI: ', comment = 'ESP="EORI: "';
+        txtVatEORI: Text;
+        txtEORI: text;
+        TextRegister: text;
+        GrupoRegIva: record "VAT Business Posting Group";
+        TextosAuxiliares: Record TextosAuxiliares;
 
     [Scope('Personalization')]
     procedure InitLogInteraction()

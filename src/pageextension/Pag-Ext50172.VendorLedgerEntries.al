@@ -39,6 +39,15 @@ pageextension 50172 "VendorLedgerEntries" extends "Vendor Ledger Entries"
                 Visible = false;
             }
         }
+        //JAA 30-09-2021 - Ticket #262857- Se añade el código de pais
+        addafter("Currency Code")
+        {
+            field(CountryCode; CountryCode)
+            {
+                ApplicationArea = All;
+                Caption = 'Country Code', Comment = 'ESP="Código país"';
+            }
+        }
     }
 
     actions
@@ -65,6 +74,7 @@ pageextension 50172 "VendorLedgerEntries" extends "Vendor Ledger Entries"
     trigger OnAfterGetRecord()
     var
         PurchaseInvoiceHeader: Record "Purch. Inv. Header";
+        Vendor: Record Vendor;
     begin
         FechaEmision := 0D;
         PurchaseInvoiceHeader.reset;
@@ -72,6 +82,15 @@ pageextension 50172 "VendorLedgerEntries" extends "Vendor Ledger Entries"
         IF PurchaseInvoiceHeader.FindFirst() THEN begin
             FechaEmision := PurchaseInvoiceHeader."Document Date";
         END;
+
+        //JAA 03/09/2021- Ticket #262857 SE relacionan las tablas para obtener el codigo de país del proveedor 
+        CountryCode := '';
+        Vendor.Reset();
+        Vendor.SetRange("No.", Rec."Vendor No.");
+        if Vendor.FindSet() then
+            CountryCode := Vendor."Country/Region Code";
+
+
     end;
 
     trigger OnOpenPage()
@@ -105,4 +124,5 @@ pageextension 50172 "VendorLedgerEntries" extends "Vendor Ledger Entries"
 
     var
         FechaEmision: Date;
+        CountryCode: Code[10];
 }

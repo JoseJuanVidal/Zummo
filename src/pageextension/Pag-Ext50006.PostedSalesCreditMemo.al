@@ -6,9 +6,14 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
     {
         addafter("Corrected Invoice No.")
         {
-
-            field(CorreoEnviado_btc; CorreoEnviado_btc) { } 
-            field(FacturacionElec_btc; FacturacionElec_btc) { }           
+            field(CurrencyChange; CurrencyChange)
+            {
+                ApplicationArea = all;
+                ToolTip = 'Indicar el cambio para la impresión de los documentos.', comment = 'ESP="Indicar el cambio para la impresión de los documentos."';
+            }
+            field(CorreoEnviado_btc; CorreoEnviado_btc) { }
+            field(FacturacionElec_btc; FacturacionElec_btc) { }
+            field("ABC Cliente"; "ABC Cliente") { }
         }
 
     }
@@ -41,6 +46,39 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
         modify(SendCustom)
         {
             Visible = false;
+        }
+
+        addfirst(Reporting)
+        {
+            action("Imprimir Fact UK")
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Print;
+                Caption = 'Imprimir Abono UK', Comment = 'ESP="Imprimir Abono UK"';
+                ToolTip = 'Imprimir Abono UK', Comment = 'ESP="Imprimir Abono UK"';
+
+                trigger OnAction()
+                var
+                    SalesCrMemoHeader: Record "Sales Cr.Memo Header";
+                    reportFacturaUK: Report AbonoVentaUKRegistrado;
+
+                    Selection: Integer;
+                begin
+                    // Message(Format(Selection));
+                    SalesCrMemoHeader.Reset();
+
+                    SalesCrMemoHeader.SetRange("No.", Rec."No.");
+                    if SalesCrMemoHeader.FindFirst() then begin
+                        clear(reportFacturaUK);
+                        reportFacturaUK.EsExportacion();
+                        reportFacturaUK.SetTableView(SalesCrMemoHeader);
+                        reportFacturaUK.Run();
+                    end;
+                end;
+            }
         }
     }
 }

@@ -23,4 +23,13 @@ tableextension 50146 "Location" extends Location  //14
             Caption = 'Planned Calculation', comment = 'ESP="Calcular en Planificación"';
         }
     }
+
+    trigger OnModify()
+    var
+        UserSetup: Record "User Setup";
+    begin
+        if UserSetup.Get(UserId) then;
+        IF (Code = 'MMPP') and not (UserSetup."Permite cambiar MMPP") then
+            Error('User %1 no le esta permitido cambiar los datos de configuración de este almacen, hable con administrador de sistema', UserId);
+    end;
 }

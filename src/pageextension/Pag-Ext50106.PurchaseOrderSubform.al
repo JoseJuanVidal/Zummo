@@ -26,6 +26,14 @@ pageextension 50106 "PurchaseOrderSubform" extends "Purchase Order Subform"
                 ApplicationArea = All;
             }
         }
+        addafter("Direct Unit Cost")
+        {
+            field(StandarCost; StandarCost)
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+        }
     }
 
     // 161219 S19/01406 Abrir ficha producto 

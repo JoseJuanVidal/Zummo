@@ -14,7 +14,7 @@ report 50109 "EtiquetaProductoTerminado"
         {
             DataItemTableView = sorting("Entry No.");
             RequestFilterFields = "Document No.";
-
+            column(codDocumento; codDocumento) { }
             column(CodBarra; CodBarra)
             {
 
@@ -57,8 +57,9 @@ report 50109 "EtiquetaProductoTerminado"
             {
 
             }
-
-
+            column(VendorName; VendorName)
+            {
+            }
             dataitem(CopyLoop; Integer)
             {
                 DataItemTableView = SORTING(Number);
@@ -88,7 +89,11 @@ report 50109 "EtiquetaProductoTerminado"
             end;
 
             trigger OnAfterGetRecord()
+            var
+                Vendor: Record Vendor;
             begin
+                if Vendor.Get("Item Ledger Entry"."Source No.") then
+                    VendorName := Vendor.Name;
 
                 if not RecCompany.Get() then
                     clear(RecCompany);
@@ -133,6 +138,7 @@ report 50109 "EtiquetaProductoTerminado"
         Codigo_Lbl: Label 'CÓDIGO: ', Comment = 'ESP="´CÓDIGO: "';
         NPedido_Lbl: Label 'Nº PEDIDO:', Comment = 'ESP="Nº PEDIDO: "';
         Fecha_Lbl: Label 'FECHA: ', Comment = 'ESP="FECHA: "';
-
+        codDocumento: Label 'FO.01_C7.03_V04';
+        VendorName: Text;
 
 }

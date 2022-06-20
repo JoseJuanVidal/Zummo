@@ -10,6 +10,24 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
 
     actions
     {
+        addfirst(Processing)
+        {
+            action(MarcaNoFacturar)
+            {
+                ApplicationArea = all;
+                Caption = 'Marcar no facturar', comment = 'ESP="Marcar no facturar"';
+                Image = Check;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Funciones;
+
+                begin
+                    Funciones.MarcarNoFacturar(Rec);
+                end;
+
+            }
+        }
         addfirst(Reporting)
         {
 
@@ -47,6 +65,7 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
                     ImprimeSelecionEtiquetas();
                 end;
             }
+
         }
     }
 

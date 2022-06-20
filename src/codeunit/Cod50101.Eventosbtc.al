@@ -62,10 +62,12 @@ codeunit 50101 "Eventos_btc"
     var
 
     begin
-        if (Rec."Document Date" < Today) or (rec."Posting Date" < Today) then begin
-            rec.Validate("Document Date", Today);
-            rec.Validate("Posting Date", today);
-            rec.Modify();
+        if (Rec."Document Date" < workdate) or (rec."Posting Date" < workdate) then begin
+            if Confirm('¿Desea cambiar la fecha de registro %1, por %2?', false, Rec."Posting Date", WorkDate()) then begin
+                rec.Validate("Document Date", workdate);
+                rec.Validate("Posting Date", workdate);
+                rec.Modify();
+            end;
         end;
     end;
 
@@ -77,10 +79,12 @@ codeunit 50101 "Eventos_btc"
     begin
         if UserId = 'ADMIN' THEN
             EXIT;
-        if (Rec."Document Date" < Today) or (rec."Posting Date" < Today) then begin
-            rec.Validate("Document Date", Today);
-            rec.Validate("Posting Date", today);
-            rec.Modify();
+        if (Rec."Document Date" < workdate) or (rec."Posting Date" < workdate) then begin
+            if Confirm('¿Desea cambiar la fecha de registro %1, por %2?', false, Rec."Posting Date", WorkDate()) then begin
+                rec.Validate("Document Date", workdate);
+                rec.Validate("Posting Date", workdate);
+                rec.Modify();
+            end;
         end;
     end;
 
@@ -91,10 +95,12 @@ codeunit 50101 "Eventos_btc"
     begin
         if UserId = 'ADMIN' THEN
             EXIT;
-        if (Rec."Document Date" < Today) or (rec."Posting Date" < Today) then begin
-            rec.Validate("Document Date", Today);
-            rec.Validate("Posting Date", today);
-            rec.Modify();
+        if (Rec."Document Date" < workdate) or (rec."Posting Date" < workdate) then begin
+            if Confirm('¿Desea cambiar la fecha de registro %1, por %2?', false, Rec."Posting Date", WorkDate()) then begin
+                rec.Validate("Document Date", workdate);
+                rec.Validate("Posting Date", workdate);
+                rec.Modify();
+            end
         end;
     end;
 
@@ -245,18 +251,20 @@ codeunit 50101 "Eventos_btc"
         CreatestockkepingUnit: report "Create Stockkeeping Unit";
         Item: Record Item;
     begin
-        if Item.IsTemporary then
+        if Rec.IsTemporary then
             exit;
         commit;
         SelectLatestVersion();
         Item.reset;
         Item.SetRange("No.", Rec."No.");
         Item.FindFirst();
-        Clear(CreatestockkepingUnit);
+        // JJV22/4/2021 que no cree todos los almacenes la unidad de almacenamiento
+        // animalada - 
+        /* Clear(CreatestockkepingUnit);
         CreatestockkepingUnit.SetTableView(Item);
         CreatestockkepingUnit.InitializeRequest(0, false, true);
         CreatestockkepingUnit.UseRequestPage(false);
-        CreatestockkepingUnit.Run();
+        CreatestockkepingUnit.Run();*/
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Mailing", 'OnBeforeSendEmail', '', true, true)]
@@ -377,7 +385,7 @@ codeunit 50101 "Eventos_btc"
         TempSalesLineDisc.init();
         TempSalesLineDisc.Type := TempSalesLineDisc.Type::Item;
         TempSalesLineDisc.Code := SalesLine."No.";
-        TempSalesLineDisc."Starting Date" := Today() - 1;
+        TempSalesLineDisc."Starting Date" := workdate() - 1;
         TempSalesLineDisc."Line Discount %" := decDtoFinal;
         TempSalesLineDisc."Sales Type" := TempSalesLineDisc."Sales Type"::Customer;
         TempSalesLineDisc."Sales Code" := SalesHeader."Bill-to Customer No.";
@@ -388,7 +396,17 @@ codeunit 50101 "Eventos_btc"
 
 
     end;
+    // #287117 
+    [EventSubscriber(ObjectType::Table, 38, 'OnValidateBuyFromVendorNoBeforeRecreateLines', '', false, false)]
+    local procedure T38_OnAfterUpdateBuyFromVend(VAR PurchaseHeader: Record "Purchase Header"; CallingFieldNo: Integer)
+    var
+        Vendor: record Vendor;
+    begin
+        if Vendor.Get(PurchaseHeader."Buy-from Vendor No.") then
+            PurchaseHeader."Transport Method" := Vendor."Transport Methods";
 
+    end;
+    //v - #287117 
 
     [EventSubscriber(ObjectType::Table, 337, 'OnAfterInsertEvent', '', false, false)]
 
@@ -651,6 +669,7 @@ codeunit 50101 "Eventos_btc"
     local procedure T_32_OnAfterInserEvent(var Rec: Record "Item Ledger Entry"; RunTrigger: Boolean)
     var
         recSalesShptHeader: Record "Sales Shipment Header";
+        recReturnReceipHdr: Record "Return Receipt Header";
         recTransferHeader: Record "Transfer Header";
         Funciones: Codeunit Funciones;
         codCliente: Code[50];
@@ -671,6 +690,20 @@ codeunit 50101 "Eventos_btc"
                     end;
                 end;
             end;
+        case Rec."Entry Type" of
+            Rec."Entry Type"::Sale:
+                begin
+                    case Rec."Document Type" of
+                        Rec."Document Type"::"Sales Return Receipt":
+                            begin
+                                if recReturnReceipHdr.get(Rec."Document No.") then begin
+                                    rec.CodCliente_btc := recReturnReceipHdr."Bill-to Customer No.";
+                                    rec.Modify();
+                                end;
+                            end;
+                    end
+                end;
+        end;
     end;
 
     [EventSubscriber(ObjectType::Table, database::Customer, 'OnAfterInsertEvent', '', false, false)]
@@ -678,14 +711,20 @@ codeunit 50101 "Eventos_btc"
     var
         DimensionValue: Record "Dimension Value";
     begin
+        if rec.IsTemporary then
+            exit;
         DimensionValue.reset;
+        DimensionValue.SetRange("Dimension Code", 'PROYECTO');
+        DimensionValue.SetRange(Code, rec."No.");
+        if DimensionValue.FindSet() then
+            exit;
         DimensionValue.Init();
         DimensionValue."Dimension Code" := 'PROYECTO';
         // JJV 14/08/20 ponemos la dimension global al numero indicado
         DimensionValue."Global Dimension No." := 2;
         // fin 
         DimensionValue.Code := REC."No.";
-        DimensionValue.Name := rec.Name;
+        DimensionValue.Name := copystr(rec.Name, 1, 50);
         DimensionValue."Dimension Value Type" := DimensionValue."Dimension Value Type"::Standard;
         IF DimensionValue.Insert() THEN;
     end;
@@ -695,6 +734,8 @@ codeunit 50101 "Eventos_btc"
     var
         DimensionValue: Record "Dimension Value";
     begin
+        if rec.IsTemporary then
+            exit;
         DimensionValue.reset;
         DimensionValue.SetRange("Dimension Code", 'PROYECTO');
         // JJV 14/08/20 ponemos la dimension global al numero indicado
@@ -703,7 +744,50 @@ codeunit 50101 "Eventos_btc"
 
         DimensionValue.SetRange(code, Rec."No.");
         if DimensionValue.FindFirst() then begin
-            DimensionValue.Name := rec.Name;
+            DimensionValue.Name := copystr(rec.Name, 1, 50);
+            DimensionValue.Modify();
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, database::Vendor, 'OnAfterInsertEvent', '', false, false)]
+    local procedure OnAfterInsertEventVendor(Rec: Record Vendor)
+    var
+        DimensionValue: Record "Dimension Value";
+    begin
+        if rec.IsTemporary then
+            exit;
+        DimensionValue.reset;
+        DimensionValue.SetRange("Dimension Code", 'PROYECTO');
+        DimensionValue.SetRange(Code, rec."No.");
+        if DimensionValue.FindSet() then
+            exit;
+        DimensionValue.Init();
+        DimensionValue."Dimension Code" := 'PROYECTO';
+        // JJV 14/08/20 ponemos la dimension global al numero indicado
+        DimensionValue."Global Dimension No." := 2;
+        // fin 
+        DimensionValue.Code := REC."No.";
+        DimensionValue.Name := copystr(rec.Name, 1, 50);
+        DimensionValue."Dimension Value Type" := DimensionValue."Dimension Value Type"::Standard;
+        IF DimensionValue.Insert() THEN;
+    end;
+
+    [EventSubscriber(ObjectType::Table, database::Vendor, 'OnAfterValidateEvent', 'Name', false, false)]
+    local procedure OnAfterModifyEventVendor(rec: Record Vendor)
+    var
+        DimensionValue: Record "Dimension Value";
+    begin
+        if rec.IsTemporary then
+            exit;
+        DimensionValue.reset;
+        DimensionValue.SetRange("Dimension Code", 'PROYECTO');
+        // JJV 14/08/20 ponemos la dimension global al numero indicado
+        DimensionValue."Global Dimension No." := 2;
+        // fin 
+
+        DimensionValue.SetRange(code, Rec."No.");
+        if DimensionValue.FindFirst() then begin
+            DimensionValue.Name := copystr(rec.Name, 1, 50);
             DimensionValue.Modify();
         end;
     end;
@@ -717,6 +801,7 @@ codeunit 50101 "Eventos_btc"
     begin
         if RequisitionWkshName.Get(TemplateName, WorksheetName) then begin
             Item.STHUseLocationGroup := RequisitionWkshName.STHUseLocationGroup;
+            item.STHNoEvaluarPurchase := RequisitionWkshName.STHNoEvaluarPurchase;
             Item.STHWorksheetName := WorksheetName;
             Item.Modify();
         end;
@@ -735,6 +820,17 @@ codeunit 50101 "Eventos_btc"
         end;
     end;
 
+    [EventSubscriber(ObjectType::Report, Report::"Calculate Plan - Req. Wksh.", 'OnBeforeSkipPlanningForItemOnReqWksh', '', true, true)]
+    local procedure CalculatePlanReqWkshOnBeforeSkipPlanningForItemOnReqWksh(Item: Record Item; VAR SkipPlanning: Boolean; VAR IsHandled: Boolean)
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        if Item.STHUseLocationGroup then begin
+            Funciones.CheckFilterOneLocation(Item);
+        end;
+    end;
+
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnBeforeDemandToInvProfile', '', true, true)]
     local procedure InventoryProfileOffsettingOnBeforeDemandToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; VAR IsHandled: Boolean)
@@ -742,7 +838,7 @@ codeunit 50101 "Eventos_btc"
         Funciones: Codeunit Funciones;
     begin
         if Item.STHUseLocationGroup then begin
-            Funciones.CheckandSetFilterOneLocation(Item);
+            Funciones.SetFilterOneLocation(Item);
         end;
     end;
 
@@ -754,6 +850,16 @@ codeunit 50101 "Eventos_btc"
         if item.STHUseLocationGroup then begin
             Funciones.ChangeFilterOneLocation(InventoryProfile, Item);
             Funciones.ResetFilterOneLocation(Item);
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnBeforeSupplyToInvProfile', '', true, true)]
+    local procedure InventoryProfileOffsettingOnBeforeSupplyToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; var ToDate: Date; VAR ReservEntry: Record "Reservation Entry"; VAR NextLineNo: Integer)
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        if Item.STHUseLocationGroup then begin
+            Funciones.SetFilterOneLocation(Item);
         end;
     end;
 
@@ -859,4 +965,82 @@ codeunit 50101 "Eventos_btc"
         rec."Invoice No." := codFactura;
         rec.Modify();
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Job Jnl.-Post Line", 'OnBeforeApplyUsageLink', '', true, true)]
+    local procedure JobJnlPostLine_OnBeforeApplyUsageLink(var JobLedgerEntry: Record "Job Ledger Entry")
+    begin
+        // ponemos esto para que cuando registren sales,no cree las lineas de tareas tambien
+        JobLedgerEntry."Entry Type" := JobLedgerEntry."Entry Type"::Sale;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch. Price Calc. Mgt.", 'OnAfterFindPurchLinePrice', '', true, true)]
+    local procedure PurchPriceCalcMgt_OnAfterFindPurchLinePrice(VAR PurchaseLine: Record "Purchase Line"; VAR PurchaseHeader: Record "Purchase Header"; VAR PurchasePrice: Record "Purchase Price"; CalledByFieldNo: Integer)
+    var
+        PurchasePrice2: Record "Purchase Price";
+    begin
+        if PurchasePrice2.get(PurchasePrice."Item No.", PurchasePrice."Vendor No.", PurchasePrice."Starting Date", PurchasePrice."Currency Code", PurchasePrice."Variant Code", PurchasePrice."Unit of Measure Code", PurchasePrice."Minimum Quantity") then begin
+            PurchaseLine."Process No." := PurchasePrice2."Process No.";
+
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch. Price Calc. Mgt.", 'OnAfterFindPurchLineLineDisc', '', true, true)]
+    local procedure PurchPriceCalcMgt_OnAfterFindPurchLineLineDisce(VAR PurchaseLine: Record "Purchase Line"; VAR PurchaseHeader: Record "Purchase Header"; VAR TempPurchLineDisc: Record "Purchase Line Discount" temporary)
+    var
+        PurchaseLineDiscount2: Record "Purchase Line Discount";
+    begin
+
+        if PurchaseLineDiscount2.get(TempPurchLineDisc."Item No.", TempPurchLineDisc."Vendor No.", TempPurchLineDisc."Starting Date", TempPurchLineDisc."Currency Code",
+                TempPurchLineDisc."Variant Code", TempPurchLineDisc."Unit of Measure Code", TempPurchLineDisc."Minimum Quantity") then begin
+            PurchaseLine."Process No." := TempPurchLineDisc."Process No.";
+
+        end;
+    end;
+
+    /*[EventSubscriber(ObjectType::table, Database::"Intrastat Jnl. Line", 'OnAfterModifyEvent', '', true, true)]
+      local procedure IntrastatJnlLineIntrastatJnlLineOnAfterModifyEvent(VAR Rec: Record "Intrastat Jnl. Line"; VAR xRec: Record "Intrastat Jnl. Line"; RunTrigger: Boolean)
+      begin
+          IntrastatJnlLineIntrastatJnlLineUpdate(rec, RunTrigger);
+      end;*/
+
+    //#region Intercompany 
+    //ACV - 16/02/22 - Evento para actualizar pedido de compra IC (Zummo INC) al crear PV desde OV
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnAfterOnRun', '', true, true)]
+    local procedure OnAfterOnRun(VAR SalesHeader: Record "Sales Header"; VAR SalesOrderHeader: Record "Sales Header")
+    var
+        ZummoInnICFunctions: Codeunit "Zummo Inn. IC Functions";
+    begin
+        if SalesHeader."Source Purch. Order No" <> '' then
+            ZummoInnICFunctions.UpdateOrderNoPurchaseOrderIC(SalesHeader, SalesOrderHeader);
+    end;
+
+    //ACV - 17/02/22 - Evento para actualizar pedido de compra IC (Zummo INC) al borrar PV 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeDeleteEvent', '', true, true)]
+    local procedure OnBeforeDeleteSalesHeader(VAR Rec: Record "Sales Header")
+    var
+        ZummoInnICFunctions: Codeunit "Zummo Inn. IC Functions";
+        EmptySalesHeader: Record "Sales Header";
+    begin
+        if Rec."Source Purch. Order No" <> '' then begin
+            if Rec."Document Type" = Rec."Document Type"::Order then
+                ZummoInnICFunctions.UpdateOrderNoPurchaseOrderIC(Rec, EmptySalesHeader); //Pasamos una record de Sales Header vacio para que deje el nº de pedido de venta en el pedido de compra origen vacio
+        end;
+    end;
+
+    //ACV - 18/02/22 - Evento para comprobar que el pedido de compra IC (Zummo INC) está actualizado
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post (Yes/No)", 'OnAfterConfirmPost', '', true, true)]
+    local procedure OnAfterConfirmPost(VAR SalesHeader: Record "Sales Header")
+    var
+        ErrorLbl: Label 'Debe actualizar el pedido de compra orgien, %1, antes de registrar';
+    begin
+        if SalesHeader."Source Purch. Order No" <> '' then
+            if SalesHeader."Document Type" = SalesHeader."Document Type"::Order then
+                if not SalesHeader."Source Purch. Order Updated" then
+                    Error(ErrorLbl, SalesHeader."Source Purch. Order No");
+
+    end;
+
+    //#endregion Intercompany 
+
+
 }

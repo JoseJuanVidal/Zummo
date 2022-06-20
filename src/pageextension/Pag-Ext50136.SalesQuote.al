@@ -8,12 +8,27 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
             {
                 ApplicationArea = All;
             }
-
             field(NumDias_btc; NumDias_btc)
             {
                 ApplicationArea = All;
             }
-
+            field(ofertaprobabilidad; ofertaprobabilidad)
+            {
+                ApplicationArea = all;
+            }
+            field(OfertaSales; OfertaSales)
+            {
+                ApplicationArea = all;
+            }
+            field("No contemplar planificacion"; "No contemplar planificacion")
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+            field(InsideSales_btc; InsideSales_btc)
+            {
+                ApplicationArea = all;
+            }
         }
         addbefore("Work Description")
         {
@@ -121,7 +136,7 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
             action(Descuentos)
             {
                 ApplicationArea = All;
-                 trigger OnAction()
+                trigger OnAction()
                 var
                     SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
                 begin
@@ -131,6 +146,44 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
                     SalesCalcDiscByType.ResetRecalculateInvoiceDisc(Rec);
                 end;
             }
+            action(NoPlanificacion)
+            {
+                ApplicationArea = All;
+                Caption = 'Marcar/Desmarcar no planificar';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = Planning;
+
+                trigger OnAction()
+                begin
+                    UpdateNoComplarPlanificacion;
+                    CurrPage.Update();
+                end;
+
+
+            }
         }
     }
+
+    trigger OnClosePage()
+    begin
+        if not Rec."Aviso Oferta bajo pedido" then begin
+            Rec."Aviso Oferta bajo pedido" := true;
+            Rec.Modify();
+            Funciones.CheckEsBajoPedido(Rec);
+        end;
+    end;
+
+    var
+        Funciones: Codeunit Funciones;
+
+    local procedure UpdateNoComplarPlanificacion()
+    var
+        funciones: Codeunit Funciones;
+    begin
+        Rec."No contemplar planificacion" := not rec."No contemplar planificacion";
+        Rec.Modify();
+        funciones.UpdateNoContemplarPlanificacion(Rec);
+    end;
 }

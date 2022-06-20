@@ -201,6 +201,35 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
             FieldClass = FlowField;
             CalcFormula = lookup(customer."Cred_ Max_ Aseg. Autorizado Por_btc" where("No." = field("Sell-to Customer No.")));
         }
+        field(50055; clasificacion_aseguradora; Code[20])
+        {
+            Caption = 'Clasif. Aseguradora', comment = 'ESP="Clasif. Aseguradora"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(customer.clasificacion_aseguradora where("No." = field("Sell-to Customer No.")));
+        }
+        field(50056; "ABC Cliente"; option)
+        {
+            OptionMembers = " ","3A","A","B","C","Z";
+            OptionCaption = ' ,3A,A,B,C,Z', Comment = 'ESP=" ,3A,A,B,C,Z"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer."ABC Cliente" where("No." = field("Sell-to Customer No.")));
+        }
+        field(50070; CurrencyChange; decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Cambio divisa', comment = 'ESP="Cambio divisa"';
+        }
+
+        field(51000; ImporteReport; Decimal)
+        {
+            DataClassification = CustomerContent;
+        }
+        field(51001; ImporteDLReport; Decimal)
+        {
+            DataClassification = CustomerContent;
+        }
+
     }
 
 }

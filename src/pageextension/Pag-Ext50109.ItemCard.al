@@ -330,6 +330,46 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 Stock.ModifyAll("Manufacturing Policy", "Manufacturing Policy");
             end;
         }
+        addafter(Inventory)
+        {
+            field("Inventory to date"; "Inventory to date")
+            {
+                ApplicationArea = all;
+            }
+        }
+
+        addlast(Content)
+        {
+            group(PurchaseCategory)
+            {
+                Caption = 'Purchase Category', comment = 'ESP="Categorías de Compra"';
+
+                field("Purch. Family"; "Purch. Family")
+                {
+                    ApplicationArea = all;
+                }
+                field("Desc. Purch. Family"; "Desc. Purch. Family")
+                {
+                    ApplicationArea = all;
+                }
+                field("Purch. Category"; "Purch. Category")
+                {
+                    ApplicationArea = all;
+                }
+                field("Desc. Purch. Category"; "Desc. Purch. Category")
+                {
+                    ApplicationArea = all;
+                }
+                field("Purch. SubCategory"; "Purch. SubCategory")
+                {
+                    ApplicationArea = all;
+                }
+                field("Desc. Purch. SubCategory"; "Desc. Purch. SubCategory")
+                {
+                    ApplicationArea = all;
+                }
+            }
+        }
     }
 
     actions

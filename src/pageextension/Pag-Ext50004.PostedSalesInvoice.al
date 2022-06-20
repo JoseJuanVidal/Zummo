@@ -7,12 +7,20 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
     {
         addafter("Salesperson Code")
         {
+            field(CurrencyChange; CurrencyChange)
+            {
+                ApplicationArea = all;
+                ToolTip = 'Indicar el cambio para la impresión de los documentos.', comment = 'ESP="Indicar el cambio para la impresión de los documentos."';
+            }
             field(Peso_btc; Peso_btc) { }
             field(NumPalets_btc; NumPalets_btc) { }
             field(NumBultos_btc; NumBultos_btc) { }
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
             field(FacturacionElec_btc; FacturacionElec_btc) { }
             field(AreaManager_btc; AreaManager_btc) { }
+            field(InsideSales_btc; InsideSales_btc) { }
+            field(ClienteReporting_btc; ClienteReporting_btc) { }
+            field("ABC Cliente"; "ABC Cliente") { }
 
 
         }
@@ -68,12 +76,16 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                     ExtDocNo: Text[35];
                     WorkDescription: text;
                     AreaManager: Code[20];
+                    InsideSales: Code[20];
+                    ClienteReporting: Code[20];
+                    CurrChange: Decimal;
+                    PackageTrackingNo: text[30];
                 begin
                     PediDatos.LookupMode := true;
                     PediDatos.SetDatos(rec);
                     if PediDatos.RunModal() = Action::LookupOK then begin
-                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager);
-                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription, AreaManager);
+                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo, InsideSales);
+                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo, InsideSales);
                     end;
                 end;
 
@@ -172,6 +184,74 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
         {
             Visible = false;
         }
+
+        addfirst(Reporting)
+        {
+            action("Impimir Fact.Export")
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Print;
+                Caption = 'Impimir Fact.Export', comment = 'ESP="Impimir Fact.Export"';
+                ToolTip = 'Impimir Fact.Export',
+                    comment = 'ESP="Impimir Fact.Export"';
+
+                trigger OnAction()
+                var
+                    SalesInvoiceHeader: Record "Sales Invoice Header";
+                    recReqLine: Report FacturaExportacion;
+                    reportFactura: Report FacturaNacionalMaquinas;
+                    reportFacturaUK: Report FacturaNacionalUK;
+
+                    Selection: Integer;
+                begin
+                    Selection := STRMENU('1.-Exportacion,2.-Nacional,3.-Lidl,4.-Brasil,5.-Zummo UK', 1);
+                    // Message(Format(Selection));
+                    SalesInvoiceHeader.Reset();
+                    IF Selection > 0 THEN begin
+
+                        SalesInvoiceHeader.SetRange("No.", Rec."No.");
+                        if SalesInvoiceHeader.FindFirst() then
+                            case Selection of
+                                1:
+                                    begin
+                                        clear(reportFactura);
+                                        reportFactura.EsExportacion();
+                                        reportFactura.SetTableView(SalesInvoiceHeader);
+                                        reportFactura.Run();
+                                    end;
+                                2:
+                                    begin
+                                        clear(reportFactura);
+                                        reportFactura.EsNacional();
+                                        reportFactura.SetTableView(SalesInvoiceHeader);
+                                        reportFactura.Run();
+                                    end;
+                                3:
+                                    begin
+                                        clear(reportFactura);
+                                        reportFactura.EsLidl();
+                                        reportFactura.SetTableView(SalesInvoiceHeader);
+                                        reportFactura.Run();
+                                    end;
+                                4:
+                                    Report.Run(Report::FacturaRegBrasil, true, false, SalesInvoiceHeader);//50123
+                                5:
+                                    begin
+                                        clear(reportFactura);
+                                        reportFacturaUK.EsExportacion();
+                                        reportFacturaUK.SetTableView(SalesInvoiceHeader);
+                                        reportFacturaUK.Run();
+                                    end;
+                            end;
+                    end;
+                end;
+            }
+
+        }
+
     }
 
     trigger OnAfterGetRecord()

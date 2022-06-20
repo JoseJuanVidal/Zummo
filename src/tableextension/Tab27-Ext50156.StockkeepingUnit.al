@@ -7,8 +7,8 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             Editable = false;
             Caption = 'Cant. en ofertas de venta', comment = 'ESP="Cant. en ofertas de venta"';
             FieldClass = FlowField;
-            CalcFormula = sum("Sales Line"."Outstanding Quantity" where("Document Type" = const(Quote), FechaFinValOferta_btc = filter('>=t'),
-            "Location Code" = field("Location Code"), Type = const(Item), "No." = field("Item No.")));
+            CalcFormula = sum("Sales Line"."Outstanding Quantity" where("Document Type" = const(Quote), FechaFinValOferta_btc = field(Filter_FinOferta_Btc),
+                    "Location Code" = field("Location Code"), Type = const(Item), "No." = field("Item No."), "No contemplar planificacion" = const(false)));
             TableRelation = "Sales Line";
             trigger OnLookup()
             var
@@ -17,10 +17,11 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             begin
                 salesLine.reset;
                 salesLine.SetRange("Document Type", salesLine."Document Type"::Quote);
-                salesLine.SetFilter("Outstanding Quantity", '>0');
+                salesline.SetRange("Location Code", "Location Code");
                 salesLine.SetRange("No.", Rec."Item No.");
                 salesLine.SetFilter(FechaFinValOferta_btc, '>=t');
                 salesLine.SetFilter("Outstanding Quantity", '<>0');
+                salesLine.SetRange("No contemplar planificacion", false);
                 PSalesLine.SetTableView(salesLine);
                 PSalesLine.Run();
             end;
@@ -40,7 +41,7 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
             FieldClass = FlowField;
             CalcFormula = sum("Assembly Line"."Remaining Quantity" where("Document Type" = const(Quote), type = const(Item), "No." = field("Item No."),
                 "Location Code" = field("Location Code"), "Fecha Fin Oferta_btc" = field(Filter_FinOferta_Btc) // filter('>=t')
-                , Type = const(Item), "No." = field("Item No.")));
+                , Type = const(Item), "No." = field("Item No."), "No contemplar planificacion" = const(false)));
             TableRelation = "Assembly Line";
 
             trigger OnLookup()
@@ -55,6 +56,7 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
                 AssemblyLine.SetRange("Location Code", Rec."Location Code");
                 AssemblyLine.SetFilter("Remaining Quantity", '<>0');
                 AssemblyLine.SetFilter("Fecha Fin Oferta_btc", '%1..', WorkDate());
+                AssemblyLine.SetRange("No contemplar planificacion", false);
                 PAssemblyLine.SetTableView(AssemblyLine);
                 PAssemblyLine.Run();
             end;

@@ -7,6 +7,7 @@
         <DataProvider>SQL</DataProvider>
         <ConnectString />
       </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>8a468d3b-c480-4411-94c6-261dc7040a5b</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -94,7 +95,7 @@
                                                 <Style>Solid</Style>
                                                 <Width>1pt</Width>
                                               </LeftBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -143,7 +144,7 @@
                                                 <Style>Solid</Style>
                                                 <Width>1pt</Width>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -190,7 +191,7 @@
                                                 <Style>Solid</Style>
                                                 <Width>1pt</Width>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -234,7 +235,7 @@
                                                 <Style>Solid</Style>
                                                 <Width>1pt</Width>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -288,7 +289,7 @@
                                                 <Style>Solid</Style>
                                                 <Width>1pt</Width>
                                               </RightBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -2582,7 +2583,7 @@ CStr(Fields!CompanyAddr6.Value), 1)</Hidden>
                       <Value>=Parameters!FacturaTitulo.Value</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
-                        <Color>#f9741c</Color>
+                        <Color>#d5ccc2</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4205,7 +4206,7 @@ CStr(Fields!CompanyAddr6.Value), 1)</Hidden>
                           <Color>Silver</Color>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <BackgroundColor>#f9741c</BackgroundColor>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
                         <VerticalAlign>Bottom</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4303,7 +4304,7 @@ Code.DevolverDec(Code.GetData(31, 1))</Value>
                           <Color>Silver</Color>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <BackgroundColor>#f9741c</BackgroundColor>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
                         <VerticalAlign>Bottom</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4397,7 +4398,7 @@ Code.DevolverDec(Code.GetData(31, 1))</Value>
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
-                        <BackgroundColor>#f9741c</BackgroundColor>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
                         <VerticalAlign>Bottom</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4490,7 +4491,7 @@ Code.DevolverDec(Code.GetData(31, 1))</Value>
                           <Color>Silver</Color>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <BackgroundColor>#f9741c</BackgroundColor>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
                         <VerticalAlign>Bottom</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4583,7 +4584,7 @@ Code.DevolverDec(Code.GetData(31, 1))</Value>
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
-                        <BackgroundColor>#f9741c</BackgroundColor>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
                         <VerticalAlign>Bottom</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4683,7 +4684,7 @@ Code.DevolverDec(Code.GetData(30, 1))</Value>
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
-                        <BackgroundColor>#f9741c</BackgroundColor>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
                         <VerticalAlign>Bottom</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4776,7 +4777,7 @@ Code.DevolverDec(Code.GetData(30, 1))</Value>
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
-                        <BackgroundColor>#f9741c</BackgroundColor>
+                        <BackgroundColor>#d5ccc2</BackgroundColor>
                         <VerticalAlign>Bottom</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4885,7 +4886,7 @@ Code.DevolverDec(Code.GetData(24, 1)), "#,0.00") &amp; " " &amp; Code.GetData(4,
                       <Color>Silver</Color>
                       <Style>Solid</Style>
                     </BottomBorder>
-                    <BackgroundColor>#f9741c</BackgroundColor>
+                    <BackgroundColor>#d5ccc2</BackgroundColor>
                     <VerticalAlign>Bottom</VerticalAlign>
                     <PaddingLeft>2pt</PaddingLeft>
                     <PaddingRight>2pt</PaddingRight>

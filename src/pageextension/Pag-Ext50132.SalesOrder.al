@@ -2,6 +2,14 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
 {
     layout
     {
+        addafter("External Document No.")
+        {
+            field(CurrencyChange; CurrencyChange)
+            {
+                ApplicationArea = all;
+                ToolTip = 'Indicar el cambio para la impresión de los documentos.', comment = 'ESP="Indicar el cambio para la impresión de los documentos."';
+            }
+        }
         addbefore("Posting Date")
         {
             field(FechaRecepcionMail_btc; FechaRecepcionMail_btc)
@@ -20,7 +28,13 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
                 Editable = false;
             }
         }
-
+        addafter("Responsibility Center")
+        {
+            field("Posting No. Series"; "Posting No. Series")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter("Due Date")
         {
             field(FechaEnvio; "Shipment Date")
@@ -74,6 +88,11 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
             field(MotivoBloqueo_btc; MotivoBloqueo_btc)
             {
                 ApplicationArea = All;
+            }
+            field("ABC Cliente"; "ABC Cliente")
+            {
+                ApplicationArea = all;
+                Visible = false;
             }
 
         }
@@ -179,9 +198,9 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
                     IsSuccess: Boolean;
                     codUltimoNumUsado: Code[20];
                 begin
-                    if (Rec."Document Date" < Today()) or (rec."Posting Date" < Today()) then begin
-                        rec.Validate("Document Date", Today());
-                        rec.Validate("Posting Date", today());
+                    if (Rec."Document Date" < workdate()) or (rec."Posting Date" < workdate()) then begin
+                        rec.Validate("Document Date", workdate());
+                        rec.Validate("Posting Date", workdate());
                         rec.Modify();
                     end;
 
@@ -226,6 +245,21 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
 
                         ErrorMessageHandler.ShowErrors();
                     end;
+                end;
+            }
+            action("STH Post")
+            {
+                Caption = 'Update Purchase Order Zummo Inc.', Comment = 'Actualizar Ped. Compra Zummo Inc.';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                Image = MoveUp;
+
+                trigger OnAction()
+                var
+                    ZummoIncICFunctions: Codeunit "Zummo Inn. IC Functions";
+                begin
+                    ZummoIncICFunctions.UpdateReservationPurchaseOrderIC(Rec);
                 end;
             }
         }
@@ -354,44 +388,24 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
                     SalesCalcDiscByType.ResetRecalculateInvoiceDisc(Rec);
                 end;
             }
-            action(DescuentosPorc)
+
+            action(changePostinGroup)
             {
-                ApplicationArea = All;
-                Caption = 'Dto. %', comment = 'ESP="Dto. %"';
-                //RunObject = page Descuentos;
-                //RunPageLink = "No." = field ("No."), "Document Type" = field ("Document Type");
+                ApplicationArea = all;
+                Caption = 'Cambiar Reg, Inventario', comment = 'ESP="Cambiar Reg, Inventario"';
+                ToolTip = 'Cambiar el grupo de registro de inventario de las lineas del documento', comment = 'ESP="Cambiar el grupo de registro de inventario de las lineas del documento"';
+                Image = Change;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
                 trigger OnAction()
                 var
-                    SalesLine: record "Sales Line";
-                    DocumentTotals: Codeunit "Document Totals";
-                    SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
-                    pDescuento: page Descuentos;
-                    AmountWithDiscountAllowed: Decimal;
-                    InvoiceDiscountAmount: Decimal;
-                    Currency: record Currency;
+                    Funciones: Codeunit Funciones;
                 begin
-                    commit;
-                    Currency.InitRoundingPrecision;
-                    SalesLine.reset;
-                    SalesLine.SetRange("Document Type", Rec."Document Type");
-                    SalesLine.SetRange("Document No.", Rec."No.");
-                    SalesLine.FindFirst();
-
-                    //page.RunModal(50001, Rec);
-                    /*pDescuento.SetDtoPorc();
-                    pDescuento.SetTableView(Rec);
-                    pDescuento.RunModal();*/
-                    //OpenSalesOrderStatistics;
-                    DocumentTotals.SalesDocTotalsNotUpToDate;
-                    AmountWithDiscountAllowed := DocumentTotals.CalcTotalSalesAmountOnlyDiscountAllowed(SalesLine);
-                    InvoiceDiscountAmount := ROUND(AmountWithDiscountAllowed * rec.DescuentoFactura / 100, Currency."Amount Rounding Precision");
-                    SalesCalcDiscByType.ApplyInvDiscBasedOnAmt(InvoiceDiscountAmount, rec);
-                    DocumentTotals.SalesDocTotalsNotUpToDate;
-
-                    CurrPage.UPDATE(FALSE);
-
-
+                    Funciones.changePostinGroup(Rec);
                 end;
+
             }
         }
     }

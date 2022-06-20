@@ -5,6 +5,15 @@ pageextension 50114 "SalesInvoice" extends "Sales Invoice"
 
         addafter("Work Description")
         {
+            field(CurrencyChange; CurrencyChange)
+            {
+                ApplicationArea = all;
+                ToolTip = 'Indicar el cambio para la impresión de los documentos.', comment = 'ESP="Indicar el cambio para la impresión de los documentos."';
+            }
+            field("Posting No. Series"; "Posting No. Series")
+            {
+                ApplicationArea = all;
+            }
             field(CentralCompras_btc; CentralCompras_btc)
             {
                 ApplicationArea = all;
@@ -136,9 +145,9 @@ pageextension 50114 "SalesInvoice" extends "Sales Invoice"
                     IsSuccess: Boolean;
                     codUltimoNumUsado: Code[20];
                 begin
-                    if (Rec."Document Date" < Today()) or (rec."Posting Date" < Today()) then begin
-                        rec.Validate("Document Date", Today());
-                        rec.Validate("Posting Date", today());
+                    if (Rec."Document Date" < workdate()) or (rec."Posting Date" < workdate()) then begin
+                        rec.Validate("Document Date", workdate());
+                        rec.Validate("Posting Date", workdate());
                         rec.Modify();
                     end;
 
@@ -184,6 +193,25 @@ pageextension 50114 "SalesInvoice" extends "Sales Invoice"
                         ErrorMessageHandler.ShowErrors();
                     end;
                 end;
+            }
+
+            action(changePostinGroup)
+            {
+                ApplicationArea = all;
+                Caption = 'Cambiar Reg, Inventario', comment = 'ESP="Cambiar Reg, Inventario"';
+                ToolTip = 'Cambiar el grupo de registro de inventario de las lineas del documento', comment = 'ESP="Cambiar el grupo de registro de inventario de las lineas del documento"';
+                Image = Change;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Funciones;
+                begin
+                    Funciones.changePostinGroup(Rec);
+                end;
+
             }
         }
     }

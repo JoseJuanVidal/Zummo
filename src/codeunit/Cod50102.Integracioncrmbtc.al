@@ -5,6 +5,56 @@ codeunit 50102 "Integracion_crm_btc"
 
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"CRM Integration Table Synch.", 'OnQueryPostFilterIgnoreRecord', '', true, true)]
+    local procedure OnQueryPostFilterIgnoreRecord(SourceRecordRef: RecordRef; var IgnoreRecord: Boolean)
+    var
+        SalesQuoteAux: Record "STH Sales Header Aux";
+        CRMQuoteDetail: Record "STH CRM Quotedetail";
+        CRMIntegrationRecord: record "CRM Integration Record";
+        SaleHeaderRecRef: RecordRef;
+        DestinationFieldRef: FieldRef;
+        AccountId: RecordId;
+        NoQuote: code[20];
+    begin
+        case SourceRecordRef.Number of
+            Database::"STH CRM Quotedetail":
+                begin
+                    // controlamos si el quote id está ya sincronizada, solo se actualizan los estado = activo
+                    // poner los ID de cliente
+                    SourceRecordRef.SETTABLE(CRMQuoteDetail);
+                    DestinationFieldRef := SourceRecordRef.Field(3);
+                    IF CRMIntegrationRecord.FindRecordIDFromID(CRMQuoteDetail.QuoteId, Database::"STH Sales Header Aux", AccountId) then begin
+                        if SaleHeaderRecRef.get(AccountId) then begin
+                            NoQuote := format(SaleHeaderRecRef.field(SalesQuoteAux.fieldNo("No.")));
+                            if SalesQuoteAux.get(NoQuote) then begin
+                                IgnoreRecord := false;
+                                exit;
+                            end;
+
+                        end;
+                    end;
+
+                    IgnoreRecord := true;
+                end;
+        end;
+    end;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Integration Rec. Synch. Invoke", 'OnBeforeTransferRecordFields', '', true, true)]
+    local procedure OnBeforeTransferRecordFields(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef)
+    var
+        txtTipo: Text;
+    begin
+        //error('pp');
+        txtTipo := GetSourceDestCode(SourceRecordRef, DestinationRecordRef);
+        CASE txtTipo OF
+            'STH CRM Quote-Sales Header':
+                ActualizarCamposOfertaCRM(SourceRecordRef, DestinationRecordRef);
+            'STH CRM Quotedetail-Sales Line':
+                ActualizarCamposLineasOfertaCRM(SourceRecordRef, DestinationRecordRef);
+        end;
+    end;
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Integration Rec. Synch. Invoke", 'OnAfterTransferRecordFields', '', true, true)]
 
@@ -15,35 +65,48 @@ codeunit 50102 "Integracion_crm_btc"
         //error('pp');
         txtTipo := GetSourceDestCode(SourceRecordRef, DestinationRecordRef);
         CASE txtTipo OF
-            'Customer-CRM Account_btc':
+            'Customer-CRM Account_btc', 'Customer-CRM Account_crm_btc':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposCliente(SourceRecordRef, DestinationRecordRef);
-            'Item-CRM Productos_btc':
+            'Item-CRM Productos_btc', 'Item-CRM Productos_crm_btc':
                 AdditionalFieldsWereModified :=
                       ActualizarCamposProducto(SourceRecordRef, DestinationRecordRef);
-            'Customer Price Group-CRM Pricelevel_btc':
+            'Customer Price Group-CRM Pricelevel_btc', 'Customer Price Group-CRM Pricelevel_crm_btc':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposTarifa(SourceRecordRef, DestinationRecordRef);
             'Sales Header-CRM Quote':
                 AdditionalFieldsWereModified :=
                     ActualizarCamposOferta(SourceRecordRef, DestinationRecordRef);
-            'Sales Header-CRM Salesorder_btc':
+            'Sales Header-STH CRM Quote':
+                AdditionalFieldsWereModified :=
+                    ActualizarCamposOfertaNew(SourceRecordRef, DestinationRecordRef);
+            'Sales Header-CRM Salesorder_btc', 'Sales Header-CRM Salesorder_crm_btc':
                 ActualizarCamposPedido(SourceRecordRef, DestinationRecordRef);
-            'Sales Line-CRM Salesorderdetail_btc':
+            'Sales Line-CRM Salesorderdetail_btc', 'Sales Line-CRM Salesorderdetail_crm_btc':
                 ActualizarCamposLinPedido(SourceRecordRef, DestinationRecordRef);
             'Service Header-CRM Incident':
                 ActualizarCamposPedidoServicio(SourceRecordRef, DestinationRecordRef);
-            'Sales Line-CRM Quotedetail':
+            'Sales Line-STH CRM Quotedetail':
                 AdditionalFieldsWereModified :=
                     ActualizarCamposLinOferta(SourceRecordRef, DestinationRecordRef);
-
 
 
             // De CRM a BC
             'CRM Account_btc-Customer':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposClienteCRM(SourceRecordRef, DestinationRecordRef);
+            'STH CRM Quote-Sales Header':
+                ActualizarCamposOfertaCRMDespues(SourceRecordRef, DestinationRecordRef);
+            'STH CRM Quotedetail-Sales Line':
+                ActualizarCamposLineasOfertaCRMDespues(SourceRecordRef, DestinationRecordRef);
+        /* ponemos el evento en on OnBeforeTransferRecordFields antes de que se sincronizen los campos
+  'STH CRM Quote-Sales Header':
+      AdditionalFieldsWereModified :=
+        ActualizarCamposOfertaCRM(SourceRecordRef, DestinationRecordRef);
 
+'STH CRM Quotedetail-Sales Line':
+   AdditionalFieldsWereModified :=
+     ActualizarCamposLineasOfertaCRM(SourceRecordRef, DestinationRecordRef);*/
 
         //    'Sales Invoice Header-CRM Invoice':
         //        UpdateCRMInvoiceBeforeInsertRecord(SourceRecordRef, DestinationRecordRef); //VEr si hae falta esta llamada al std.
@@ -100,6 +163,191 @@ codeunit 50102 "Integracion_crm_btc"
         end;
     end;
 
+    local procedure ActualizarCamposOfertaCRM(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
+    var
+        Customer: Record Customer;
+        SalesHeader: Record "Sales Header";
+        CRMQuote: Record "STH CRM Quote";
+        DestinationFieldRef: FieldRef;
+        SourceFieldRef: FieldRef;
+        Probabilidad: Option;
+        NoSeriesMgt: codeunit NoSeriesManagement;
+        CRMConnectionSetup: record "CRM Connection Setup";// "CRM Connection Setup";  
+        bit_bcenviaralerp: Boolean;
+        CRMIntegrationRecord: record "CRM Integration Record";
+        CustRecRef: RecordRef;
+        DestinationAccountFieldRef: FieldRef;
+        AccountId: RecordId;
+        CustNo: code[20];
+    begin
+        SourceRecordRef.SETTABLE(CRMquote);
+        DestinationRecordRef.SETTABLE(SalesHeader);
+        SourceFieldRef := SourceRecordRef.FIELD(CRMQuote.FIELDNO(Probabilidad));
+        Probabilidad := SourceFieldRef.VALUE;
+        DestinationAccountFieldRef := DestinationRecordRef.Field(2);
+        CustRecRef.Open(18);
+
+        DestinationFieldRef := DestinationRecordRef.Field(50050); // 50050; ofertaprobabilidad; 
+        case Probabilidad of
+            CRMQuote.Probabilidad::" ":
+                DestinationFieldRef.Value := 0;
+            //SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::" ";
+            CRMQuote.Probabilidad::Baja:
+                //SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Baja;
+                DestinationFieldRef.Value := 1;
+            CRMQuote.Probabilidad::Media:
+                //SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Media;
+                DestinationFieldRef.Value := 2;
+            CRMQuote.Probabilidad::Alta:
+                // SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Alta;
+                DestinationFieldRef.Value := 3;
+            else
+                DestinationFieldRef.Value := 2;
+        end;
+
+
+
+
+        DestinationFieldRef := DestinationRecordRef.Field(50911); // OfertaSales
+        DestinationFieldRef.Value := true;
+        DestinationFieldRef := DestinationRecordRef.Field(50912); // 50912; "No contemplar planificacion"
+        DestinationFieldRef.Value := true;
+
+        // poner los ID de cliente
+        IF CRMIntegrationRecord.FindRecordIDFromID(CRMquote.CustomerId, Database::"Customer", AccountId) then begin
+            if CustRecRef.get(AccountId) then begin
+                CustNo := format(CustRecRef.field(Customer.FieldNo("No.")));
+                DestinationAccountFieldRef.validate(CustNo);
+            end;
+        end;
+
+        Commit();
+
+        EXIT(TRUE);
+    end;
+
+    local procedure ActualizarCamposOfertaCRMDespues(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
+    var
+        DestinationFieldRef: fieldref;
+    begin
+
+        exit(true);
+    end;
+
+    local procedure ActualizarCamposLineasOfertaCRMDespues(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
+    var
+        DestinationFieldRef: fieldref;
+        SalesHeader: record "Sales Header";
+        SalesLine: record "Sales Line";
+    begin
+
+        // Document Type
+        DestinationFieldRef := DestinationRecordRef.Field(15);  // Quantity
+        DestinationFieldRef.Validate(DestinationFieldRef.Value);
+        DestinationRecordRef.SetTable(SalesLine);
+        SalesLine.UpdateAmounts();  // JJV control de validate
+
+
+        exit(true);
+    end;
+
+    local procedure ActualizarCamposLineasOfertaCRM(SourceRecordRef: RecordRef; VAR DestinationRecordRef: RecordRef): Boolean
+    var
+        Customer: Record Customer;
+        SalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+        SalesLine2: Record "Sales Line";
+        Item: Record Item;
+        CRMQuoteDetail: Record "STH CRM Quotedetail";
+        DestinationRfSalesHeader: RecordRef;
+        DestinationFieldRef: FieldRef;
+        DestinationFieldRef2: FieldRef;
+        SourceFieldRef: FieldRef;
+        Probabilidad: Option;
+        NoSeriesMgt: codeunit NoSeriesManagement;
+        CRMConnectionSetup: record "CRM Connection Setup";// "CRM Connection Setup";  
+        bit_bcenviaralerp: Boolean;
+        CRMIntegrationRecord: record "CRM Integration Record";
+        CustRecRef: RecordRef;
+        SaleHeaderRecRef: RecordRef;
+        ItemRecRef: RecordRef;
+        DestinationAccountFieldRef: FieldRef;
+        AccountId: RecordId;
+        No: code[20];
+        Lineno: integer;
+    begin
+        SourceRecordRef.SETTABLE(CRMQuoteDetail);
+        DestinationRecordRef.SETTABLE(SalesLine);
+
+        // Document Type
+        DestinationFieldRef := DestinationRecordRef.Field(1);
+        DestinationFieldRef.Value := SalesLine."Document Type"::Quote;
+
+        // Document No.
+        SalesHeader.Reset();
+        SaleHeaderRecRef.Open(36);
+        DestinationFieldRef := DestinationRecordRef.Field(3);
+        IF CRMIntegrationRecord.FindRecordIDFromID(CRMQuoteDetail.QuoteId, Database::"Sales Header", AccountId) then begin
+            if SaleHeaderRecRef.get(AccountId) then begin
+                No := format(SaleHeaderRecRef.field(SalesHeader.fieldNo("No.")));
+                DestinationFieldRef.validate(No);
+            end;
+        end;
+
+        if No = '' then begin
+            // buscar en la conexion el numero de cabecera
+            CRMIntegrationRecord.SetRange("Table ID", 36);
+            CRMIntegrationRecord.SetRange("CRM ID", CRMQuoteDetail.QuoteId);
+            if CRMIntegrationRecord.FindSet() then begin
+                if SaleHeaderRecRef.get(CRMIntegrationRecord.RecordId) then begin
+                    No := format(SaleHeaderRecRef.field(SalesHeader.fieldNo("No.")));
+                    DestinationFieldRef.validate(No);
+                end;
+            end;
+        end;
+
+        SalesHeader.GET(SalesHeader."Document Type"::Quote, No);
+
+        if SalesLine."Line No." = 0 then begin
+            SalesLine2.SetRange("Document Type", SalesHeader."Document Type");
+            SalesLine2.SetRange("Document No.", SalesHeader."No.");
+            if SalesLine2.FindLast() then
+                Lineno := SalesLine2."Line No." + 10000
+            else
+                Lineno := 10000;
+            DestinationFieldRef := DestinationRecordRef.Field(4);   // Line No.        
+            DestinationFieldRef.Value := Lineno;
+        end;
+
+
+        // Sell-to Customer No.
+        CustRecRef.Open(18);
+        DestinationFieldRef := DestinationRecordRef.Field(2);
+        DestinationFieldRef.validate(SalesHeader."Sell-to Customer No.");
+
+        // Item No.
+        Item.Reset();
+        ItemRecRef.Open(27);
+        DestinationFieldRef := DestinationRecordRef.Field(6);  // No.
+        IF CRMIntegrationRecord.FindRecordIDFromID(CRMQuoteDetail.ProductId, Database::"Item", AccountId) then begin
+            if ItemRecRef.get(AccountId) then begin
+                No := format(ItemRecRef.field(Item.fieldNo("No.")));
+                if format(DestinationFieldRef.Value) <> No then begin
+                    DestinationFieldRef2 := DestinationRecordRef.Field(5);  // Type
+                    DestinationFieldRef2.Value := 2;
+
+                    DestinationFieldRef.validate(No);
+                end;
+            end;
+        end;
+
+        // No contemplar planificacion
+        DestinationFieldRef := DestinationRecordRef.Field(50912); // 50912; "No contemplar planificacion"
+        DestinationFieldRef.Value := true;
+
+        EXIT(TRUE);
+    end;
+
     local procedure GetSourceDestCode(SourceRecordRef: RecordRef; DestinationRecordRef: RecordRef): Text
     begin
         IF (SourceRecordRef.
@@ -136,7 +384,6 @@ codeunit 50102 "Integracion_crm_btc"
         CustomerPriceGroupId: Guid;
         CRMquote: record "CRM Quote";
         CRMTransactioncurrency: Record "CRM Transactioncurrency";
-
         TypeHelper: Codeunit "Type Helper";
         CRMSynchHelper: Codeunit "CRM Synch. Helper";
         DestinationFieldRef: FieldRef;
@@ -221,6 +468,99 @@ codeunit 50102 "Integracion_crm_btc"
         //    DestinationRecordRef.GETTABLE(CRMPricelevel_btc);
     end;
 
+    local procedure ActualizarCamposOfertaNew(SourceRecordRef: RecordRef; DestinationRecordRef: RecordRef) AdditionalFieldsWereModified: Boolean;
+    var
+        Oferta: Record "Sales Header";
+        Customer: record Customer;
+        CustomerPriceGroup: Record "Customer Price Group";
+        CustomerPriceGroupId: Guid;
+        CRMquote: record "STH CRM Quote";
+        CRMTransactioncurrency: Record "CRM Transactioncurrency";
+        TypeHelper: Codeunit "Type Helper";
+        CRMSynchHelper: Codeunit "CRM Synch. Helper";
+        DestinationFieldRef: FieldRef;
+        TotalPortes: Decimal;
+        ShipmentMethod: Record "Shipment Method";
+        CRMPricelevel: Record "CRM Pricelevel";
+        CRMIntegrationRecord: record "CRM Integration Record";
+        AccountId: Guid;
+        OutOfMapFilter: boolean;
+        CustomerHasChangedErr: Label 'No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado.', comment = 'ESP="No se puede crear una oferta en %2. El cliente del pedido de venta de %2 original %1 se cambió o ya no está emparejado."';
+    begin
+        SourceRecordRef.SETTABLE(Oferta);
+        DestinationRecordRef.SETTABLE(CRMquote);
+
+
+
+        // Shipment Method Code -> go to table Shipment Method, and from there extract the description and add it to
+        IF ShipmentMethod.GET(Oferta."Shipment Method Code") THEN BEGIN
+            DestinationFieldRef := DestinationRecordRef.FIELD(CRMquote.FIELDNO(Description));
+            TypeHelper.WriteTextToBlobIfChanged(DestinationFieldRef, ShipmentMethod.Description, TEXTENCODING::UTF16);
+        END;
+
+        DestinationRecordRef.SETTABLE(CRMquote);
+
+        //Calculo Portes
+        TotalPortes := ObtenerTotalPortes(Oferta);
+
+        CRMquote.FreightAmount := 0;
+        CRMquote.DiscountPercentage := 0;
+        CRMquote.TotalTax := CRMquote.TotalAmount - CRMquote.TotalAmountLessFreight;
+        CRMquote.TotalDiscountAmount := CRMquote.DiscountAmount + CRMquote.TotalLineItemDiscountAmount;
+        CRMquote.FreightAmount := TotalPortes;
+        //CRMquote.MODIFY;
+
+        CRMquote.Name := Oferta."No.";
+        Customer.GET(Oferta."Sell-to Customer No.");
+
+        IF NOT CRMIntegrationRecord.FindIDFromRecordID(Customer.RECORDID, AccountId) THEN
+            IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::Customer, Customer.RECORDID, OutOfMapFilter) THEN
+                ERROR(CustomerHasChangedErr, CRMquote.QuoteNumber, Customer."No.");
+        CRMquote.CustomerId := AccountId;
+        CRMquote.CustomerIdType := CRMquote.CustomerIdType::account;
+
+
+        // IF NOT CRMSynchHelper.FindCRMPriceListByCurrencyCode(CRMPricelevel, Oferta."Currency Code") THEN
+        //     CRMSynchHelper.CreateCRMPricelevelInCurrency(
+        //       CRMPricelevel, Oferta."Currency Code", Oferta."Currency Factor");
+        //CRMquote.PriceLevelId := CRMPricelevel.PriceLevelId;
+        //END;
+
+
+        CustomerPriceGroup.Reset();
+        CustomerPriceGroup.SetRange(Code, Customer."Customer Price Group");
+        if CustomerPriceGroup.FindFirst() then begin
+            IF NOT CRMIntegrationRecord.FindIDFromRecordID(CustomerPriceGroup.RECORDID, CustomerPriceGroupId) THEN
+                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Customer Price Group", CustomerPriceGroup.RECORDID, OutOfMapFilter) THEN
+                    ERROR('CRM CustomerPriceGroup: ' + Customer."No." + ' Dato: ' + CustomerPriceGroup.Code);
+            CRMquote.PriceLevelId := CustomerPriceGroupId;
+            AdditionalFieldsWereModified := TRUE;
+        end;
+
+
+
+        DestinationRecordRef.GETTABLE(CRMquote);
+
+
+
+
+
+        // DestinationFieldRef := DestinationRecordRef.FIELD(CRMquote.FIELDNO(TransactionCurrencyId));
+        // if CRMSynchHelper.UpdateCRMCurrencyIdIfChanged(CRMTransactioncurrency.ISOCurrencyCode, DestinationFieldRef) then
+        //     AdditionalFieldsWereModified := true;
+
+        // DestinationFieldRef := DestinationRecordRef.FIELD(CRMquote.FIELDNO(Description));
+        // if TypeHelper.WriteTextToBlobIfChanged(DestinationFieldRef, CRMquote.Description, TEXTENCODING::UTF16) then
+        //     AdditionalFieldsWereModified := true;
+
+
+
+        //Si ha habido cambios obtengo registro
+        //IF AdditionalFieldsWereModified THEN
+        //    DestinationRecordRef.GETTABLE(CRMPricelevel_btc);
+    end;
+
+
     local procedure ActualizarCamposPedidoServicio(SourceRecordRef: RecordRef; DestinationRecordRef: RecordRef) AdditionalFieldsWereModified: Boolean;
     var
 
@@ -284,13 +624,20 @@ codeunit 50102 "Integracion_crm_btc"
         DestinationRecordRef.SETTABLE(CRMsalesOrder);
 
         //******************* VENDEDOR DEFECTO ***************************************
-        //Si no viene relleno pongo el de defecto
-        if IsNullGuid(CRMsalesOrder.OwnerId) then begin
-            IF NOT CRMIntegrationRecord.FindIDFromRecordID(Salesperson.RECORDID, SalespersonId) THEN
-                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Salesperson/Purchaser", Salesperson.RECORDID, OutOfMapFilter) THEN
-                    ERROR('CRM Vendedor: ' + Customer."No." + ' Dato: ' + Salesperson.Code);
-            CRMsalesOrder.OwnerId := SalespersonId;
-        end;
+        // Si no viene relleno pongo el de defecto
+        // JJV quitamos error y ponemos control de poner e
+        if Salesperson.GET(Pedido."Salesperson Code") then begin
+            if IsNullGuid(CRMsalesOrder.OwnerId) then begin
+                IF NOT CRMIntegrationRecord.FindIDFromRecordID(Salesperson.RECORDID, SalespersonId) THEN
+                    IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Salesperson/Purchaser", Salesperson.RECORDID, OutOfMapFilter) THEN BEGIN
+                        // si no encuentra owner ponemos el id del de setup
+                        SalespersonId := 'db0ee768-6b7a-ea11-a812-000d3a2c3eaa';
+                    END;
+            end;
+        end else
+            SalespersonId := 'db0ee768-6b7a-ea11-a812-000d3a2c3eaa';
+        //    ERROR('CRM Vendedor: ' + Customer."No." + ' Dato: ' + Salesperson.Code);
+        CRMsalesOrder.OwnerId := SalespersonId;
 
 
         // Shipment Method Code -> go to table Shipment Method, and from there extract the description and add it to
@@ -417,7 +764,7 @@ codeunit 50102 "Integracion_crm_btc"
 
         CRMIntegrationRecord: Record "CRM Integration Record";
         CRMSalesHeaderId: GUID;
-        CRMSalesorderdetail: Record "CRM Quotedetail";
+        CRMSalesorderdetail: Record "STH CRM Quotedetail";
         CRMSalesOrder: Record "CRM Quote";
         SalesLine: Record "Sales Line";
         SalesHeader: Record "Sales Header";
@@ -478,6 +825,8 @@ codeunit 50102 "Integracion_crm_btc"
         DestinationRecordRef.GETTABLE(CRMSalesorderdetail);
     end;
 
+
+
     local procedure FindCRMProductIdPedidos(SalesLine: Record "Sales Line") CRMID: GUID
     var
 
@@ -496,10 +845,10 @@ codeunit 50102 "Integracion_crm_btc"
                 BEGIN
                     Resource.GET(SalesLine."No.");
                     IF NOT CRMIntegrationRecord.FindIDFromRecordID(Resource.RECORDID, CRMID) THEN BEGIN
-                        IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::Resource, Resource.RECORDID, OutOfMapFilter) THEN
-                            ERROR(CannotSynchProductErr, Resource."No.");
-                        IF NOT CRMIntegrationRecord.FindIDFromRecordID(Resource.RECORDID, CRMID) THEN
-                            ERROR(CannotFindSyncedProductErr);
+                        IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::Resource, Resource.RECORDID, OutOfMapFilter) THEN
+                            //ERROR(CannotSynchProductErr, Resource."No.");
+                        IF NOT CRMIntegrationRecord.FindIDFromRecordID(Resource.RECORDID, CRMID) THEN;
+
                     END;
                 END;
         END;
@@ -519,10 +868,10 @@ codeunit 50102 "Integracion_crm_btc"
     begin
         Item.GET(ItemNo);
         IF NOT CRMIntegrationRecord.FindIDFromRecordID(Item.RECORDID, CRMID) THEN BEGIN
-            IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::Item, Item.RECORDID, OutOfMapFilter) THEN
-                ERROR(CannotSynchProductErr, Item."No.");
-            IF NOT CRMIntegrationRecord.FindIDFromRecordID(Item.RECORDID, CRMID) THEN
-                ERROR(CannotFindSyncedProductErr);
+            IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::Item, Item.RECORDID, OutOfMapFilter) THEN
+                //ERROR(CannotSynchProductErr, Item."No.");
+            IF NOT CRMIntegrationRecord.FindIDFromRecordID(Item.RECORDID, CRMID) THEN;
+            //ERROR(CannotFindSyncedProductErr);
         end;
     end;
 
@@ -673,6 +1022,8 @@ codeunit 50102 "Integracion_crm_btc"
         UnitOfMeasureCode := FORMAT(UnitOfMeasureCodeFieldRef.VALUE);
 
         CRMProductos_btc.QuantityDecimal := 2; //2 decimales por defecto
+        if not Item.Blocked then
+            CRMProductos_btc.StatusCode := 1;//CRMProductos_btc.StatusCode::Active;
 
         // Get the unit of measure ID used in this product
         // On that unit of measure ID, get the UoMName, UomscheduleID, UomscheduleName and update them in the product if needed
@@ -757,8 +1108,9 @@ codeunit 50102 "Integracion_crm_btc"
         CustomerPriceGroup.SetRange(Code, 'PVP');
         if CustomerPriceGroup.FindFirst() then begin
             IF NOT CRMIntegrationRecord.FindIDFromRecordID(CustomerPriceGroup.RECORDID, CustomerPriceGroupId) THEN
-                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Customer Price Group", CustomerPriceGroup.RECORDID, OutOfMapFilter) THEN
-                    ERROR('CRM CustomerPriceGroup: ' + Item."No." + ' Dato: ' + CustomerPriceGroup.Code);
+                IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Customer Price Group", CustomerPriceGroup.RECORDID, OutOfMapFilter) THEN;
+            // quitamos errores
+            //ERROR('CRM CustomerPriceGroup: ' + Item."No." + ' Dato: ' + CustomerPriceGroup.Code);
             CRMProductos_btc.PriceLevelId := CustomerPriceGroupId;
             AdditionalFieldsWereModified := TRUE;
         end;
@@ -881,6 +1233,7 @@ codeunit 50102 "Integracion_crm_btc"
         Salesperson: record "Salesperson/Purchaser";
         SalespersonId: Guid;
         CodigosPostales: Record "Post Code";
+        Update: Boolean;
     begin
 
         SourceRecordRef.SETTABLE(Customer);
@@ -901,29 +1254,41 @@ codeunit 50102 "Integracion_crm_btc"
         //     // DestinationFieldRef.VALUE := Customer."Credito Maximo Interno_btc";
 
 
-        CRMAccount2.customertypecode := CRMAccount2.customertypecode::Customer;
+        //CRMAccount2.customertypecode := CRMAccount2.customertypecode::Customer;
 
         //******************* VENDEDOR DEFECTO ***************************************
         //Si no viene relleno pongo el de defecto
-        if IsNullGuid(CRMAccount2.OwnerId) then begin
-            IF NOT CRMIntegrationRecord.FindIDFromRecordID(Salesperson.RECORDID, SalespersonId) THEN
-                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Salesperson/Purchaser", Salesperson.RECORDID, OutOfMapFilter) THEN
-                    ERROR('CRM Vendedor: ' + Customer."No." + ' Dato: ' + Salesperson.Code);
-            CRMAccount2.OwnerId := SalespersonId;
+        // JJV no esta posicionado el salesperson en un registro y si no existe lo pongo en ZUMMO
+        if Salesperson.GET(Customer."Salesperson Code") then begin
+            Update := false;
+            if IsNullGuid(CRMAccount2.OwnerId) then begin
+                IF CRMIntegrationRecord.FindIDFromRecordID(Salesperson.RECORDID, SalespersonId) THEN
+                    Update := true
+                ELSE
+                    IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Salesperson/Purchaser", Salesperson.RECORDID, OutOfMapFilter) THEN
+                        Update := true;
+                //ERROR('CRM Vendedor: ' + Customer."No." + ' Dato: ' + Salesperson.Code);
+                if Update then
+                    CRMAccount2.OwnerId := SalespersonId;
+            end;
         end;
-
+        // - JJV
 
         //******************** PROVINCIA ********************
-
-        // Provincia.Reset();
-        // Provincia.SetRange(Code, ); 
-        // if Provincia.FindFirst() then begin
-        //     IF NOT CRMIntegrationRecord.FindIDFromRecordID(Provincia.RECORDID, ProvinciaId) THEN
-        //         IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Area", Provincia.RECORDID, OutOfMapFilter) THEN
-        //             ERROR('CRM Provincia: ' + Customer."No." + ' Dato: ' + Provincia.Code);
-        //     CRMAccount2.bit_bcprovincia := ProvinciaId;
-        //     AdditionalFieldsWereModified := TRUE;
-        // end;
+        Provincia.Reset();
+        Provincia.SetRange(Code, copystr(Customer."Post Code", 1, 2));
+        if Provincia.FindFirst() then begin
+            IF CRMIntegrationRecord.FindIDFromRecordID(Provincia.RECORDID, ProvinciaId) THEN
+                Update := true
+            ELSE
+                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Area", Provincia.RECORDID, OutOfMapFilter) THEN
+                    Update := true;
+            if update then BEGIN
+                //      ERROR('CRM Provincia: ' + Customer."No." + ' Dato: ' + Provincia.Code);
+                CRMAccount2.bit_bcprovincia := ProvinciaId;
+                AdditionalFieldsWereModified := TRUE;
+            END;
+        end;
 
         //******************** PAIS ********************
         Paises.Reset();
@@ -948,7 +1313,6 @@ codeunit 50102 "Integracion_crm_btc"
                     ERROR('CRM AreaManager: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
             CRMAccount2.zum_bcareamanager := TextosAuxiliaresId;
 
-
             AdditionalFieldsWereModified := TRUE;
         end;
         //******************** DELEGADO ********************
@@ -956,12 +1320,18 @@ codeunit 50102 "Integracion_crm_btc"
         TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
         TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::Delegado);
         TextosAuxiliares.SetRange(NumReg, Customer.Delegado_btc);
+        Update := false;
         if TextosAuxiliares.FindFirst() then begin
-            IF NOT CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
-                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
-                    ERROR('CRM Delegado: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
-            CRMAccount2.zum_bcdelegado := TextosAuxiliaresId;
-            AdditionalFieldsWereModified := TRUE;
+            IF CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
+                Update := true
+            ELSE
+                IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
+                    Update := true;
+            //ERROR('CRM Delegado: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
+            if Update then begin
+                CRMAccount2.zum_bcdelegado := TextosAuxiliaresId;
+                AdditionalFieldsWereModified := TRUE;
+            end;
         end;
         //******************** CLIENTE CORPORATIVO ********************
         TextosAuxiliares.Reset();
@@ -1017,6 +1387,7 @@ codeunit 50102 "Integracion_crm_btc"
             IF NOT CRMIntegrationRecord.FindIDFromRecordID(PaymentTerms.RECORDID, PaymentTermsId) THEN
                 IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Payment Terms", PaymentTerms.RECORDID, OutOfMapFilter) THEN
                     ERROR('CRM PaymentTerms: ' + Customer."No." + ' Dato: ' + PaymentMethod.Code);
+
             CRMAccount2.bit_bcterminosdepago := PaymentTermsId;
             AdditionalFieldsWereModified := TRUE;
         end;
@@ -1030,6 +1401,93 @@ codeunit 50102 "Integracion_crm_btc"
             CRMAccount2.DefaultPriceLevelId := CustomerPriceGroupId;
             AdditionalFieldsWereModified := TRUE;
         end;
+
+        //******************** CANAL ********************  
+        TextosAuxiliares.Reset();
+        TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+        TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::Canal);
+        TextosAuxiliares.SetRange(NumReg, Customer.Canal_btc);
+        if TextosAuxiliares.FindFirst() then begin
+            IF NOT CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
+                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
+                    ERROR('CRM Canal: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
+            CRMAccount2.zum_canal := TextosAuxiliaresId;
+            AdditionalFieldsWereModified := TRUE;
+        end;
+
+        //******************** MERCADO ********************  
+        /* se quita porque segun el cliente tipo en SALES ya pone el dato segun clientetipo
+         TextosAuxiliares.Reset();
+         TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+         TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::Mercados);
+         TextosAuxiliares.SetRange(NumReg, Customer.Mercado_btc);
+         if TextosAuxiliares.FindFirst() then begin
+             IF NOT CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
+                 IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
+                     ERROR('CRM Mercado: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
+             CRMAccount2.zum_mercado := TextosAuxiliaresId;
+             AdditionalFieldsWereModified := TRUE;
+         end;*/
+
+        //******************** DISTRIBUIDOR ********************  
+        /* NO EXISTE EL CAMPO DISTRIBUIDOR EN BC
+        TextosAuxiliares.Reset();
+        TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+        TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::);
+        TextosAuxiliares.SetRange(NumReg, Customer.GrupoCliente_btc);
+        if TextosAuxiliares.FindFirst() then begin
+            IF NOT CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
+                IF NOT CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN
+                    ERROR('CRM DISTRIBUIDOR: ' + Customer."No." + ' Dato: ' + TextosAuxiliares.NumReg);
+            CRMAccount2.zum_canal := TextosAuxiliaresId;
+            AdditionalFieldsWereModified := TRUE;
+        end;*/
+
+        //******************** CENTRAL DE COMPRAS ********************  
+        // Option
+        case Customer.CentralCompras_btc OF
+            'EUROMADI':
+                CRMAccount2.bit_centralcompras := CRMAccount2.bit_centralcompras::EUROMADI;
+            'GRUPO IFA':
+                CRMAccount2.bit_centralcompras := CRMAccount2.bit_centralcompras::"GRUPO IFA";
+            else
+                CRMAccount2.bit_centralcompras := CRMAccount2.bit_centralcompras::" ";
+        end;
+
+        //******************** SUBCLIENTE ********************  TODO
+        // Option
+        case Customer.SubCliente_btc OF
+            'AHOLD':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::AHOLD;
+            'AREAS':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::AREAS;
+            'CASINO':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::CASINO;
+            'CATALONIA':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::CATALONIA;
+            'CHICK FIL A':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::"CHICK FIL A";
+            'GUFRESCO':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::GUFRESCO;
+            'INTERMARCHE':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::INTERMARCHE;
+            'LECLERC':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::LECLERC;
+            'MENSSANA':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::MENSSANA;
+            'MONOPRIX':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::MONOPRIX;
+            'RODILLA':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::RODILLA;
+            'VIPS':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::VIPS;
+            'WALMART':
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::WALMART;
+            else
+                CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::" ";
+        end;
+
+
         //Si ha habido cambios obtengo registro
         IF AdditionalFieldsWereModified THEN
             DestinationRecordRef.GETTABLE(CRMAccount2);
@@ -1064,7 +1522,10 @@ codeunit 50102 "Integracion_crm_btc"
             isIntegrationRecord := true;
         if TableID = DATABASE::"Sales Price" then
             isIntegrationRecord := true;
-
+        if TableID = DATABASE::"STH Sales Header Aux" then
+            isIntegrationRecord := true;
+        if TableID = DATABASE::"STH Sales Line Aux" then
+            isIntegrationRecord := true;
 
     end;
 

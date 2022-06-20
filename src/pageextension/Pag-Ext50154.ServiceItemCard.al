@@ -16,6 +16,23 @@ pageextension 50154 "ServiceItemCard" extends "Service Item Card"
                 ApplicationArea = All;
             }
         }
+        addafter("Warranty % (Labor)")
+        {
+            field(PeriodoAmplacionGarantica_sth; PeriodoAmplacionGarantica_sth)
+            {
+                ApplicationArea = All;
+            }
+            field(FechaIniAmpliacion_sth; FechaIniAmpliacion_sth)
+            {
+                ApplicationArea = All;
+
+            }
+            field(FechaMantGarantia_sth; FechaMantGarantia_sth)
+            {
+                ApplicationArea = all;
+            }
+        }
+
 
     }
     actions
@@ -51,5 +68,23 @@ pageextension 50154 "ServiceItemCard" extends "Service Item Card"
             }
 
         }
+        addlast(Navigation)
+        {
+            action(MtoWarranty)
+            {
+                ApplicationArea = all;
+                Caption = 'Mto. Ampl. Garantia', comment = 'ESP="Mto. Ampl. Garantia"';
+                ToolTip = 'Ped. Servicois de mantenimientos Ampliación de Garantias', Comment = 'ESP="Ped. Servicois de mantenimientos Ampliación de Garantias"';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = WarrantyLedger;
+
+                RunObject = page "Service Orders";
+                RunPageLink = "Customer No." = field("Customer No."), NumSerie_btc = field("Serial No.");
+                RunPageView = where(IsWarranty = const(true));
+            }
+        }
+
     }
 }

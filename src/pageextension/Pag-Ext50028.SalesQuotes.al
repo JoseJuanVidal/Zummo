@@ -1,5 +1,29 @@
 pageextension 50028 "SalesQuotes" extends "Sales Quotes"
 {
+    layout
+    {
+        addlast(Control1)
+        {
+            field(AmountcostLines; AmountcostLines)
+            {
+                Caption = 'Importe Coste', comment = 'ESP="Importe Coste"';
+                ApplicationArea = all;
+                ToolTip = 'Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.';
+            }
+            field(OfertaSales; OfertaSales)
+            {
+                ApplicationArea = all;
+            }
+            field("No contemplar planificacion"; "No contemplar planificacion")
+            {
+                ApplicationArea = all;
+            }
+            field(ofertaprobabilidad; ofertaprobabilidad)
+            {
+                ApplicationArea = all;
+            }
+        }
+    }
     actions
     {
         modify(Print)
@@ -64,4 +88,12 @@ pageextension 50028 "SalesQuotes" extends "Sales Quotes"
             }
         }
     }
+
+    trigger OnAfterGetRecord()
+    begin
+        AmountcostLines := CalcAmountcostLines();
+    end;
+
+    var
+        AmountcostLines: Decimal;
 }

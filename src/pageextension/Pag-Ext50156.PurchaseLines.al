@@ -39,7 +39,14 @@ pageextension 50156 "PurchaseLines" extends "Purchase Lines"
             }
             field(FechaEmisionPedido; FechaEmisionPedido) { }
         }
-
+        addafter("Direct Unit Cost")
+        {
+            field(StandarCost; StandarCost)
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+        }
     }
     var
         FechaAlbaran: Date;

@@ -18,12 +18,22 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
                 AutoFormatType = 1;
+                Editable = false;
             }
             field("Cred_ Max_ Aseg. Autorizado Por_btc"; "Cred_ Max_ Aseg. Autorizado Por_btc")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
-            field(Suplemento_aseguradora; Suplemento_aseguradora) { }
+            field(Suplemento_aseguradora; Suplemento_aseguradora)
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+            field(clasificacion_aseguradora; clasificacion_aseguradora)
+            {
+                ApplicationArea = all;
+            }
         }
         addafter("Prices Including VAT")
         {
@@ -55,6 +65,14 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
+            field(Canal_btc; Canal_btc)
+            {
+                ApplicationArea = all;
+            }
+            field(Mercado_btc; Mercado_btc)
+            {
+                ApplicationArea = all;
+            }
             field(Delegado_btc; Delegado_btc)
             {
                 ApplicationArea = all;
@@ -81,9 +99,17 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
-
-
-
+            field("ABC Cliente"; "ABC Cliente")
+            {
+                ApplicationArea = all;
+            }
+        }
+        addafter("VAT Registration No.")
+        {
+            field(EORI; EORI)
+            {
+                ApplicationArea = all;
+            }
         }
         //S20/00375
         addafter("E-Mail")
@@ -178,7 +204,7 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
 
     actions
     {
-        addafter("Co&mments")
+        /*addafter("Co&mments")
         {
             action(ComentariosBloqueo)
             {
@@ -203,7 +229,7 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
                     pageComentarios.RunModal();
                 end;
             }
-        }
+        }*/
 
         modify("Co&mments")
         {
@@ -241,6 +267,85 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
                 Promoted = true;
                 RunObject = page "Comentarios Cliente";
                 RunPageLink = "Table Name" = CONST(Customer), "No." = FIELD("No.");
+            }
+        }
+        addafter(ApprovalEntries)
+        {
+            action(HistAseguradora)
+            {
+                ApplicationArea = all;
+                Caption = 'Hist. Aseguradora', comment = 'ESP="Hist. Aseguradora"';
+                Image = History;
+                PromotedCategory = Category7;
+                Promoted = true;
+
+                RunObject = page "STH Hist. Aseguradora";
+                RunPageLink = CustomerNo = field("No.");
+
+            }
+        }
+        addafter(MergeDuplicate)
+        {
+            action(darCredito)
+            {
+                ApplicationArea = all;
+                Caption = 'Asig. Credito Aseguradora', comment = 'ESP="Asig. Credito Aseguradora"';
+                Image = Calculate;
+                PromotedCategory = Category8;
+                Promoted = true;
+
+                trigger OnAction()
+                var
+                    Customer: Record Customer;
+                    Input: page "STH Input Hist Aseguradora";
+                    Funciones: Codeunit Funciones;
+                    FechaIni: date;
+                    Aseguradora: code[20];
+                    Suplemento: code[20];
+                    Importe: Decimal;
+                    lblConfirm: Label 'Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?', Comment = 'ESP="Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?"';
+                begin
+                    // pedimos los datos de Fecha Ini
+                    Input.SetShowIni();
+                    //Input.SetDatos(Customer);
+                    Input.LookupMode := true;
+                    if Input.RunModal() = Action::LookupOK then begin
+
+                        // Confirmamos Cerrar el credito
+                        Input.GetDatos(Aseguradora, Importe, FechaIni, Suplemento);
+                        if Customer.Get(rec."No.") then begin
+                            // si tiene credito lo finalizamos
+                            if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '' then begin
+                                if not Confirm(lblConfirm, false, Customer."Cred_ Max_ Aseg. Autorizado Por_btc", customer."Credito Maximo Aseguradora_btc") then
+                                    Exit;
+                                Funciones.FinCustomerCredit(Customer, CalcDate('-1D', FechaIni));
+                                Customer.Get(rec."No.");
+                            end;
+                            Funciones.AsigCreditoAeguradora(Customer."No.", Customer.Name, Aseguradora, Importe, Suplemento, FechaIni);
+
+                            Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := Aseguradora;
+                            Customer."Credito Maximo Aseguradora_btc" := Importe;
+                            Customer.Suplemento_aseguradora := Suplemento;
+                            Customer.validate("Credit Limit (LCY)", Customer."Credito Maximo Aseguradora_btc" + Customer."Credito Maximo Interno_btc");
+                            Customer.Modify();
+                            CurrPage.Update();
+                        end;
+                    end
+                end;
+            }
+            action(FinCredito)
+            {
+                ApplicationArea = all;
+                Caption = 'Finalizar Credito', comment = 'ESP="Finalizar Credito"';
+                Image = EndingText;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Funciones;
+                begin
+                    Funciones.FinAseguradora(Rec);
+                end;
+
             }
         }
     }

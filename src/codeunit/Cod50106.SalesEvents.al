@@ -1070,6 +1070,28 @@ codeunit 50106 "SalesEvents"
 
     end;
 
+    // cuando modifican una linea de la oferta/Pedido, cambiamos en la cabecera el campo de Aviso al salir del form
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterModifyEvent', '', true, true)]
+    local procedure T_36_OnAfterModifyEvent(var Rec: Record "Sales Line"; RunTrigger: Boolean)
+    var
+        SalesHeader: Record "Sales Header";
+    begin
+        if Rec.IsTemporary then
+            exit;
+        case Rec."Document Type" of
+            Rec."Document Type"::Quote, Rec."Document Type"::Order:
+                begin
+                    if SalesHeader.Get(Rec."Document Type", Rec."Document No.") then begin
+                        if SalesHeader."Aviso Oferta bajo pedido" then begin
+                            SalesHeader."Aviso Oferta bajo pedido" := false;
+                            SalesHeader.Modify();
+                        end;
+                    end;
+                end;
+        end
+
+    end;
+
     // Al crear cabecera ventas autorrellenar campo area
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeInsertEvent', '', true, true)]
     local procedure T_36_OnBeforeInsertEvent(var Rec: Record "Sales Header"; RunTrigger: Boolean)
@@ -1165,8 +1187,6 @@ codeunit 50106 "SalesEvents"
 
     // Ticket INTRASTAT que se incluya los envios a paises union europea, en INTRASTAT, aunque direccion envio sea opción personalizada, no pone pais mov producto
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeGetCountryCode', '', True, True)]
-
-
     local procedure SalesPostOnBeforeGetCountryCode(SalesHeader: Record "Sales Header"; SalesLine: Record "Sales Line"; VAR CountryRegionCode: Code[10]; VAR IsHandled: Boolean)
     Var
         SalesShipmentHeader: Record "Sales Shipment Header";
@@ -1185,6 +1205,13 @@ codeunit 50106 "SalesEvents"
         end;
         IsHandled := true;
 
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Cust. Ledger Entry", 'OnAfterInsertEvent', '', true, true)]
+    local procedure T_32_OnAfterInsertEvent(var Rec: Record "Cust. Ledger Entry"; RunTrigger: Boolean)
+    begin
+        Rec.FechaVtoAsegurador := CalcDate('+60D', Rec."Due Date");
+        rec.Modify();
     end;
 
 

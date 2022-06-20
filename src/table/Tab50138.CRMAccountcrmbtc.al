@@ -1,3 +1,4 @@
+
 table 50138 "CRM Account_crm_btc"
 {
     Caption = 'Account';
@@ -64,7 +65,7 @@ table 50138 "CRM Account_crm_btc"
             ExternalType = 'Picklist';
             InitValue = " ";
             OptionCaption = ' ,Competitor,Consultant,Customer,Investor,Partner,Influencer,Press,Prospect,Reseller,Supplier,Vendor,Other';
-            OptionOrdinalValues = -1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+            OptionOrdinalValues = -1, 1, 2, 3, 978740000, 5, 6, 7, 8, 9, 10, 11, 12;
             OptionMembers = " ",Competitor,Consultant,Customer,Investor,Partner,Influencer,Press,Prospect,Reseller,Supplier,Vendor,Other;
         }
         field(7; AccountRatingCode; Option)
@@ -1335,7 +1336,7 @@ table 50138 "CRM Account_crm_btc"
             ExternalType = 'Lookup';
             TableRelation = "CRM Provincias_crm_btc".bit_bcprovinciaId; // "CRM Provincias_btc".bit_bcprovinciaId;
         }
-        field(50014; zum_Fidelidad; Option)
+        field(50014; zum_Fidelidad; Option) // no se usa
         {
             Caption = 'Fidelidad';
             Description = '';
@@ -1459,9 +1460,81 @@ table 50138 "CRM Account_crm_btc"
             Description = '';
             ExternalName = 'zum_formadepagosolicitada';
             ExternalType = 'String';
-
         }
-
+        field(50029; zum_distribuidor; Guid)
+        {
+            Caption = 'Distribuidor';
+            Description = '';
+            ExternalName = 'zum_distribuidor';
+            ExternalType = 'Lookup';
+            //TableRelation = "CRM Cliente Actividad_crm_btc".zum_bcactividadclienteId; // "CRM Cliente Actividad_btc".zum_bcactividadclienteId;
+        }
+        field(50030; zum_mercado; Guid)
+        {
+            Caption = 'Mercado';
+            Description = '';
+            ExternalName = 'zum_mercado';
+            ExternalType = 'Lookup';
+            TableRelation = "CRM Mercados_crm_btc".zum_MercadoId;
+        }
+        field(50050; bit_centraldecompras; Text[100])
+        {
+            Caption = 'Central compras';
+            Description = '';
+            ExternalName = 'bit_centraldecompras';
+            ExternalType = 'String';
+        }
+        field(50051; bit_grupodedescuento; Text[100])
+        {
+            Caption = 'Grupo dto. Cliente';
+            Description = '';
+            ExternalName = 'bit_grupodedescuento';
+            ExternalType = 'String';
+        }
+        field(50052; bit_subcliente; Text[100])
+        {
+            Caption = 'subcliente';
+            Description = '';
+            ExternalName = 'bit_subcliente';
+            ExternalType = 'String';
+        }
+        field(50053; bit_idioma; Text[100])
+        {
+            Caption = 'Cód. Idioma';
+            Description = '';
+            ExternalName = 'bit_idioma';
+            ExternalType = 'String';
+        }
+        field(50054; Zum_canal; Guid)
+        {
+            Caption = 'Canal';
+            Description = '';
+            ExternalName = 'zum_canal';
+            ExternalType = 'Lookup';
+            TableRelation = "CRM Canal_crm_btc".zum_bccanalId;
+        }
+        field(50055; bit_centralcompras; option)
+        {
+            Caption = 'Central de compras';
+            Description = '';
+            ExternalName = 'bit_centralcompras';
+            ExternalType = 'Picklist';
+            InitValue = "GRUPO IFA";
+            OptionCaption = ' ,GRUPO IFA,EUROMADI';
+            OptionOrdinalValues = 913610000, 913610001, 913610002;  // 0->913.610002
+            OptionMembers = " ","GRUPO IFA",EUROMADI;
+        }
+        field(50056; bit_subclientebc; Option)
+        {
+            Caption = 'SubCliente';
+            Description = '';
+            ExternalName = 'bit_subclientebc';
+            ExternalType = 'Picklist';
+            InitValue = " ";
+            OptionCaption = ' ,AHOLD,AREAS,CASINO,CATALONIA,CHICK FIL A,GUFRESCO,INTERMARCHE,LECLERC,MENSSANA,MONOPRIX,RODILLA,VIPS,WALMART';
+            OptionOrdinalValues = 913610013, 913610000, 913610001, 913610002, 913610003, 913610004, 913610005, 913610006, 913610007, 913610008, 913610009, 913610010, 913610011, 913610012;  // 0->913.610002
+            OptionMembers = " ",AHOLD,AREAS,CASINO,CATALONIA,"CHICK FIL A",GUFRESCO,INTERMARCHE,LECLERC,MENSSANA,MONOPRIX,RODILLA,VIPS,WALMART;
+        }
     }
 
     keys

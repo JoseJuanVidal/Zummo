@@ -16,7 +16,9 @@ report 50128 "Extracto Proveedor"
             DataItemTableView = SORTING("No.");
             PrintOnlyIfDetail = true;
             RequestFilterFields = "No.", "Search Name", "Vendor Posting Group";
-
+            column(CompanyInfo1Picture; CompanyInfo1.Picture) { }
+            column(logo; CompanyInfo1.LogoCertificacion)
+            { }
             column(lbFechaVto; lbFechaVto) { }
             column(lbDescription; lbDescription) { }
             column(lbImportePendiente; lbImportePendiente) { }
@@ -505,6 +507,8 @@ report 50128 "Extracto Proveedor"
     var
         CaptionManagement: Codeunit CaptionManagement;
     begin
+        CompanyInfo1.Get();
+        CompanyInfo1.CalcFields(Picture, LogoCertificacion);
         // VendFilter := CaptionManagement.GetRecordFiltersWithCaptions(Vendor);
         VendDateFilter := Vendor.GETFILTER("Date Filter");
         //VendDateFilter := "Vendor Ledger Entry".GetFilter("Posting Date");
@@ -522,6 +526,7 @@ report 50128 "Extracto Proveedor"
     end;
 
     var
+        CompanyInfo1: Record "Company Information";
         Text000: Label 'Period: %1', Comment = 'ESP="Periodo: %1"';
         VendorLedgerEntry: Record "Vendor Ledger Entry";
         VendFilter: Text;

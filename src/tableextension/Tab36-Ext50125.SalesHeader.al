@@ -134,6 +134,26 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
             Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
         }
+        field(50050; ofertaprobabilidad; Option)
+        {
+            Caption = 'Probabilidad', comment = 'ESP="Probabilidad"';
+            OptionCaption = ' ,Baja,Media,Alta';
+            OptionMembers = " ","Baja","Media","Alta";
+        }
+        field(50056; "ABC Cliente"; option)
+        {
+            OptionMembers = " ","3A","A","B","C","Z";
+            OptionCaption = ' ,3A,A,B,C,Z', Comment = 'ESP=" ,3A,A,B,C,Z"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer."ABC Cliente" where("No." = field("Sell-to Customer No.")));
+        }
+        field(50070; CurrencyChange; decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Cambio divisa', comment = 'ESP="Cambio divisa"';
+            DecimalPlaces = 0 : 4;
+        }
         field(50100; NoFacturar_btc; Boolean)
         {
             DataClassification = CustomerContent;
@@ -148,12 +168,68 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("MotivoBloqueo"), TipoRegistro = const(Tabla));
             Caption = 'Block Reason', comment = 'ESP="Motivo Bloqueo"';
         }
+        field(50911; OfertaSales; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Oferta Sales', comment = 'ESP="Oferta Sales"';
+        }
+        field(50912; "No contemplar planificacion"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'No contemplar planificaciòn', comment = 'ESP="No contemplar planificación"';
+
+            trigger OnValidate()
+
+            begin
+                UpdateNoComplarPlanificacion;
+            end;
+        }
+        field(50013; "Aviso Oferta bajo pedido"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Aviso Oferta bajo pedido', comment = 'ESP="Aviso Oferta bajo pedido"';
+        }
 
         field(5068; FechaAltaPedido; Date)
         {
             DataClassification = CustomerContent;
-
         }
 
+        //#region Integracion Intercompany
+        field(50120; "Source Purch. Order No"; Code[20])
+        {
+            Caption = 'Source Purch. Order No', Comment = 'Nº Ped. Compra origen';
+            DataClassification = CustomerContent;
+        }
+        field(50121; "Source Purch. Order Updated"; Boolean)
+        {
+            Caption = 'Source Purch. Order Updated', Comment = 'Ped. Compra origen actualizado';
+            DataClassification = CustomerContent;
+        }
+
+
+        //#endregion Integracion Intercompany
     }
+    local procedure UpdateNoComplarPlanificacion()
+    var
+        funciones: Codeunit Funciones;
+    begin
+        funciones.UpdateNoContemplarPlanificacion(Rec);
+    end;
+
+
+    procedure CalcAmountcostLines(): decimal
+    var
+        SalesLines: Record "Sales Line";
+        CostLines: Decimal;
+    begin
+        Saleslines.Reset();
+        Saleslines.SetRange("Document Type", Rec."Document Type");
+        Saleslines.SetRange("Document No.", Rec."No.");
+        if Saleslines.findset() then
+            repeat
+                CostLines += Saleslines."Unit Cost (LCY)" * Saleslines.Quantity;
+            Until Saleslines.next() = 0;
+        exit(round(CostLines, 0.01));
+    end;
 }

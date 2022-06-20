@@ -10,6 +10,12 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
             {
                 ApplicationArea = All;
             }*/
+            field(AmountcostLines; AmountcostLines)
+            {
+                Caption = 'Importe Coste', comment = 'ESP="Importe Coste"';
+                ApplicationArea = all;
+                ToolTip = 'Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.';
+            }
             field("Payment Method Code"; "Payment Method Code")
             {
                 ApplicationArea = All;
@@ -25,6 +31,11 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
             field(ComentarioInterno_btc; ComentarioInterno_btc)
             {
                 ApplicationArea = all;
+            }
+            field("ABC Cliente"; "ABC Cliente")
+            {
+                ApplicationArea = all;
+                Visible = false;
             }
         }
 
@@ -81,9 +92,9 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
                     IsSuccess: Boolean;
                     codUltimoNumUsado: Code[20];
                 begin
-                    if (Rec."Document Date" < Today()) or (rec."Posting Date" < Today()) then begin
-                        rec.Validate("Document Date", Today());
-                        rec.Validate("Posting Date", today());
+                    if (Rec."Document Date" < workdate()) or (rec."Posting Date" < workdate()) then begin
+                        rec.Validate("Document Date", workdate());
+                        rec.Validate("Posting Date", workdate());
                         rec.Modify();
                     end;
 
@@ -236,9 +247,18 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
         }
 
     }
+
+    trigger OnAfterGetRecord()
+    begin
+        AmountcostLines := CalcAmountcostLines();
+    end;
+
+    Var
+        Saleslines: record "Sales Line";
+        AmountcostLines: Decimal;
+
     procedure GetResult(VAR SalesHeader: Record "Sales Header")
     begin
         CurrPage.SETSELECTIONFILTER(SalesHeader);
     end;
-
 }

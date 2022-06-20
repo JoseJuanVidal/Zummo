@@ -74,8 +74,11 @@ report 50112 "Ventas CESCE - List"
                     "Document Type"::Invoice:
                         if SalesInvHeader.Get("Document No.") then begin
                             if (NOT Customer.Get(SalesInvHeader."Sell-to Customer No.")) OR
-                                (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> 'CESCE') OR
-                                (Customer."Credito Maximo Aseguradora_btc" <= 0) then
+                                 // comprobar si tiene CESCE en el historico
+                                 // (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> 'CESCE') OR
+                                 // (Customer."Credito Maximo Aseguradora_btc" <= 0) then
+                                 NOT CheckCustomerCESCE(Customer."No.", SupplementTxt) then
+                                // -comprobar
                                 CurrReport.Skip();
                             // Para evitar el desglose mostramos solo la primera linea que tenga importe positivo y q venga de las cuentas 43*
                             // Si encontramos una registro es q ya hemos pintado una linea con ese No Documento, por tanto la saltamos
@@ -89,7 +92,7 @@ report 50112 "Ventas CESCE - List"
                             TempAgingBandBuffer."Currency Code" := "Document No.";
                             TempAgingBandBuffer.Insert();
 
-                            SupplementTxt := Customer.Suplemento_aseguradora;
+                            //SupplementTxt := Customer.Suplemento_aseguradora;
                             BusinessNameTxt := StrSubstNo('%1 - %2', Customer."No.", Customer.Name);
                             DocumentDateTxt := Format(SalesInvHeader."Document Date");
 
@@ -111,14 +114,16 @@ report 50112 "Ventas CESCE - List"
                             if not ShowCreditMemo then
                                 CurrReport.Skip();
                             if (NOT Customer.Get(SalesCrMemoHeader."Sell-to Customer No.")) OR
-                                (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> 'CESCE') OR
-                                (Customer."Credito Maximo Aseguradora_btc" <= 0) then
+                                // comprobar si tiene CESCE en el historico
+                                // (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> 'CESCE') OR
+                                // (Customer."Credito Maximo Aseguradora_btc" <= 0) then
+                                NOT CheckCustomerCESCE(Customer."No.", SupplementTxt) then
                                 CurrReport.Skip();
                             //Tenemos en cuenta solo los abonos negativos (evitamos el desglose de los positivos) y no repetir abono
                             If (Amount >= 0) OR (TempAgingBandBuffer.Get("Document No.")) then
                                 CurrReport.Skip();
 
-                            SupplementTxt := Customer.Suplemento_aseguradora;
+                            //SupplementTxt := Customer.Suplemento_aseguradora;
                             BusinessNameTxt := StrSubstNo('%1 - %2', Customer."No.", Customer.Name);
 
                             DocumentDateTxt := Format(SalesCrMemoHeader."Document Date");
@@ -155,11 +160,13 @@ report 50112 "Ventas CESCE - List"
                             //CustLedgerEntry.SetRange("Transaction No.", "Transaction No.");
                             if (CustLedgerEntry.FindFirst()) then begin
                                 if (NOT Customer.Get(CustLedgerEntry."Sell-to Customer No.")) OR
-                                        (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> 'CESCE') OR
-                                        (Customer."Credito Maximo Aseguradora_btc" <= 0) then
+                                // comprobar si tiene CESCE en el historico
+                                // (Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> 'CESCE') OR
+                                // (Customer."Credito Maximo Aseguradora_btc" <= 0) then
+                                NOT CheckCustomerCESCE(Customer."No.", SupplementTxt) then
                                     CurrReport.Skip();
 
-                                SupplementTxt := Customer.Suplemento_aseguradora;
+                                //SupplementTxt := Customer.Suplemento_aseguradora;
                                 BusinessNameTxt := StrSubstNo('%1 - %2', Customer."No.", Customer.Name);
 
                                 DocumentDateTxt := Format(CustLedgerEntry."Document Date");
@@ -280,6 +287,7 @@ report 50112 "Ventas CESCE - List"
         SalesInvHeader: Record "Sales Invoice Header";
         SalesCrMemoHeader: Record "Sales Cr.Memo Header";
         CustLedgerEntry: Record "Cust. Ledger Entry";
+        HistAsegurora: Record "STH Hist. Aseguradora";
         Customer: Record Customer;
         PaymentMethod: Record "Payment Method";
         CountryRegion: Record "Country/Region";
@@ -299,4 +307,14 @@ report 50112 "Ventas CESCE - List"
         estadoDocCaption_Lbl: Label 'Document Status', Comment = 'ESP="Estado Documento"';
         ShowPayments: Boolean;
         ShowCreditMemo: Boolean;
+
+    local procedure CheckCustomerCESCE(CustomerNo: code[20]; var Suplemento: text): Boolean;
+    begin
+        HistAsegurora.SetRange(CustomerNo, CustomerNo);
+        HistAsegurora.SetRange(Aseguradora, 'CESCE');
+        if HistAsegurora.FindLast() then begin
+            Suplemento := HistAsegurora.Suplemento;
+            exit(true);
+        end;
+    end;
 }

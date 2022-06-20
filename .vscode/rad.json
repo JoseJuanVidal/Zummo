@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50141,"Kind":16,"Name":"SalesQuoteSubform","PackagePath":"/src/src/pageextension/Pag-Ext50141.SalesQuoteSubform.al"}],"Removed":[{"Id":50072,"Kind":16,"Name":"STH Assemble-to-Order Lines ","PackagePath":"/src/src/codeunit/Pag-Ext50072.STHAssembletoOrderLines.al"}]}

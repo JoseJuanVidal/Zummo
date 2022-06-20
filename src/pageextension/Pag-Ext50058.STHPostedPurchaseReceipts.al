@@ -12,6 +12,10 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
             {
                 ApplicationArea = all;
             }
+            field("Vendor Shipment No."; "Vendor Shipment No.")
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions
@@ -43,6 +47,21 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
                         Until PurchRcptLine.next() = 0;
                     Ventana.Close;
                 end;
+            }
+            action(MarcaNoFacturar)
+            {
+                ApplicationArea = all;
+                Caption = 'Marcar no facturar', comment = 'ESP="Marcar no facturar"';
+                Image = Check;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Funciones;
+
+                begin
+                    Funciones.MarcarNoFacturar(Rec);
+                end;
+
             }
         }
     }

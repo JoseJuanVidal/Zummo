@@ -154,8 +154,8 @@ page 50132 "StockPerAlmacen"
     begin
         ItemLedgerEntry.SetRange("Item No.", "Item No.");
         ItemLedgerEntry.SetRange("Location Code", "Location Code");
-        ItemLedgerEntry.SetRange("Global Dimension 1 Code", "Global Dimension 1 Filter");
-        ItemLedgerEntry.SetRange("Global Dimension 2 Code", "Global Dimension 2 Filter");
+        //ItemLedgerEntry.SetRange("Global Dimension 1 Code", "Global Dimension 1 Filter");
+        //ItemLedgerEntry.SetRange("Global Dimension 2 Code", "Global Dimension 2 Filter");
         ItemLedgerEntry.SetRange("Drop Shipment", "Drop Shipment Filter");
         ItemLedgerEntry.SetRange("Variant Code", "Variant Code");
         ItemLedgerEntry.SetRange(Open, true);
@@ -171,8 +171,8 @@ page 50132 "StockPerAlmacen"
         SalesLine.SetRange(Type, SalesLine.type::Item);
         SalesLine.SetRange("No.", "Item No.");
         SalesLine.SetRange("Location Code", "Location Code");
-        SalesLine.SetRange("Shortcut Dimension 1 Code", "Global Dimension 1 Filter");
-        SalesLine.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Filter");
+        //SalesLine.SetRange("Shortcut Dimension 1 Code", "Global Dimension 1 Filter");
+        //SalesLine.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Filter");
         SalesLine.SetRange("Drop Shipment", "Drop Shipment Filter");
         SalesLine.SetRange("Variant Code", "Variant Code");
         //if GetFilter("Date Filter") <> '' then
@@ -189,8 +189,8 @@ page 50132 "StockPerAlmacen"
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
         PurchaseLine.SetRange("No.", "Item No.");
         PurchaseLine.SetRange("Location Code", "Location Code");
-        PurchaseLine.SetRange("Shortcut Dimension 1 Code", "Global Dimension 1 Filter");
-        PurchaseLine.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Filter");
+        //PurchaseLine.SetRange("Shortcut Dimension 1 Code", "Global Dimension 1 Filter");
+        //PurchaseLine.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Filter");
         PurchaseLine.SetRange("Drop Shipment", "Drop Shipment Filter");
         PurchaseLine.SetRange("Variant Code", "Variant Code");
         //if GetFilter("Date Filter") <> '' then

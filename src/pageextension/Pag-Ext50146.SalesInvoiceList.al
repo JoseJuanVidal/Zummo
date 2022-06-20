@@ -9,6 +9,10 @@ pageextension 50146 "SalesInvoiceList" extends "Sales Invoice List"
             {
                 ApplicationArea = all;
             }
+            field(InsideSales_btc; InsideSales_btc)
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions
@@ -59,9 +63,9 @@ pageextension 50146 "SalesInvoiceList" extends "Sales Invoice List"
                     IsSuccess: Boolean;
                     codUltimoNumUsado: Code[20];
                 begin
-                    if (Rec."Document Date" < Today()) or (rec."Posting Date" < Today()) then begin
-                        rec.Validate("Document Date", Today());
-                        rec.Validate("Posting Date", today());
+                    if (Rec."Document Date" < workdate()) or (rec."Posting Date" < workdate()) then begin
+                        rec.Validate("Document Date", workdate());
+                        rec.Validate("Posting Date", workdate());
                         rec.Modify();
                     end;
 

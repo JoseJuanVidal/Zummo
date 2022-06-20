@@ -16,5 +16,12 @@ pageextension 50023 "PurchInvoiceSubform" extends "Purch. Invoice Subform"
                 ApplicationArea = All;
             }
         }
+        addafter("Direct Unit Cost")
+        {
+            field(StandarCost; StandarCost)
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 }

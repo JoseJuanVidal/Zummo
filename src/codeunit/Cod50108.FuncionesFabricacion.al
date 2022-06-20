@@ -288,115 +288,116 @@ codeunit 50108 "FuncionesFabricacion"
                             Item.reset;
                             Item.SetRange("No.", SalesLine."No.");
                             item.FindFirst();
-                            if Item."Assembly BOM" then begin
-                                BomComponent.reset;
-                                BomComponent.SetRange("Parent Item No.", Item."No.");
-                                if BomComponent.FindSet() then begin
+                            AddItemtempPlanifpedido(Item);
+                        /*if Item."Assembly BOM" then begin
+                            BomComponent.reset;
+                            BomComponent.SetRange("Parent Item No.", Item."No.");
+                            if BomComponent.FindSet() then begin
+                                repeat
+                                    ItemPedido.SetRange("No.", BomComponent."No.");
+                                    ItemPedido.FindFirst();
+                                    if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
+                                        ItemPedido.Ordenacion_btc := 1;
+                                        ItemPedido.Modify();
+                                        ProductionBomLine.reset;
+                                        ProductionBomLine.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
+                                        if ProductionBomLine.FindSet() then begin
+                                            repeat
+                                                ItemPedido.SetRange("No.", ProductionBomLine."No.");
+                                                ItemPedido.FindFirst();
+                                                if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
+                                                    ItemPedido.Ordenacion_btc := 1;
+                                                    ItemPedido.modify();
+                                                    ProductionBomLine2.reset;
+                                                    ProductionBomLine2.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
+                                                    if ProductionBomLine2.FindSet() then begin
+                                                        repeat
+                                                            ItemPedido.SetRange("No.", ProductionBomLine."No.");
+                                                            ItemPedido.FindFirst();
+                                                            if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
+                                                                ItemPedido.Ordenacion_btc := 1;
+                                                                ItemPedido.modify();
+
+                                                            end else begin
+                                                                ItemCompra.SetRange("No.", ProductionBomLine."No.");
+                                                                ItemCompra.FindFirst();
+                                                                ItemCompra.Ordenacion_btc := 1;
+                                                                ItemCompra.Modify();
+
+                                                            end;
+                                                        until ProductionBomLine2.Next() = 0;
+                                                    end;
+                                                end else begin
+
+                                                    ItemCompra.SetRange("No.", ProductionBomLine."No.");
+                                                    ItemCompra.FindFirst();
+                                                    ItemCompra.Ordenacion_btc := 1;
+                                                    ItemCompra.Modify();
+                                                end;
+                                            until ProductionBomLine.Next() = 0;
+
+                                        end;
+
+                                    end else begin
+                                        ItemCompra.SetRange("No.", BomComponent."No.");
+                                        ItemCompra.FindFirst();
+                                        ItemCompra.Ordenacion_btc := 1;
+                                        ItemCompra.Modify();
+                                    end;
+                                until BomComponent.Next() = 0;
+                            end;
+                        end else begin
+                            //ItemPedido.reset;
+                            ItemPedido.SetRange("No.", SalesLine."No.");
+                            ItemPedido.FindFirst();
+                            if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
+                                ItemPedido.Ordenacion_btc := 1;
+                                ItemPedido.modify();
+                                ProductionBomLine.reset;
+                                ProductionBomLine.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
+                                if ProductionBomLine.FindSet() then begin
                                     repeat
-                                        ItemPedido.SetRange("No.", BomComponent."No.");
+                                        ItemPedido.reset;
+                                        ItemPedido.SetRange("No.", ProductionBomLine."No.");
                                         ItemPedido.FindFirst();
                                         if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
                                             ItemPedido.Ordenacion_btc := 1;
-                                            ItemPedido.Modify();
-                                            ProductionBomLine.reset;
-                                            ProductionBomLine.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
-                                            if ProductionBomLine.FindSet() then begin
+                                            ItemPedido.modify();
+                                            ProductionBomLine2.reset;
+                                            ProductionBomLine2.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
+                                            if ProductionBomLine2.FindSet() then begin
                                                 repeat
+                                                    //item4.reset;
                                                     ItemPedido.SetRange("No.", ProductionBomLine."No.");
                                                     ItemPedido.FindFirst();
                                                     if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
                                                         ItemPedido.Ordenacion_btc := 1;
                                                         ItemPedido.modify();
-                                                        ProductionBomLine2.reset;
-                                                        ProductionBomLine2.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
-                                                        if ProductionBomLine2.FindSet() then begin
-                                                            repeat
-                                                                ItemPedido.SetRange("No.", ProductionBomLine."No.");
-                                                                ItemPedido.FindFirst();
-                                                                if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
-                                                                    ItemPedido.Ordenacion_btc := 1;
-                                                                    ItemPedido.modify();
-
-                                                                end else begin
-                                                                    ItemCompra.SetRange("No.", ProductionBomLine."No.");
-                                                                    ItemCompra.FindFirst();
-                                                                    ItemCompra.Ordenacion_btc := 1;
-                                                                    ItemCompra.Modify();
-
-                                                                end;
-                                                            until ProductionBomLine2.Next() = 0;
-                                                        end;
                                                     end else begin
-
-                                                        ItemCompra.SetRange("No.", ProductionBomLine."No.");
+                                                        ItemCompra.SetRange("No.", ProductionBomLine2."No.");
                                                         ItemCompra.FindFirst();
                                                         ItemCompra.Ordenacion_btc := 1;
-                                                        ItemCompra.Modify();
+                                                        ItemCompra.modify();
                                                     end;
-                                                until ProductionBomLine.Next() = 0;
-
+                                                until ProductionBomLine2.Next() = 0;
                                             end;
-
                                         end else begin
-                                            ItemCompra.SetRange("No.", BomComponent."No.");
+                                            ItemCompra.SetRange("No.", ProductionBomLine."No.");
                                             ItemCompra.FindFirst();
                                             ItemCompra.Ordenacion_btc := 1;
-                                            ItemCompra.Modify();
+                                            ItemCompra.modify();
                                         end;
-                                    until BomComponent.Next() = 0;
+                                    until ProductionBomLine.Next() = 0;
+
                                 end;
+
                             end else begin
-                                //ItemPedido.reset;
-                                ItemPedido.SetRange("No.", SalesLine."No.");
-                                ItemPedido.FindFirst();
-                                if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
-                                    ItemPedido.Ordenacion_btc := 1;
-                                    ItemPedido.modify();
-                                    ProductionBomLine.reset;
-                                    ProductionBomLine.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
-                                    if ProductionBomLine.FindSet() then begin
-                                        repeat
-                                            ItemPedido.reset;
-                                            ItemPedido.SetRange("No.", ProductionBomLine."No.");
-                                            ItemPedido.FindFirst();
-                                            if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
-                                                ItemPedido.Ordenacion_btc := 1;
-                                                ItemPedido.modify();
-                                                ProductionBomLine2.reset;
-                                                ProductionBomLine2.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
-                                                if ProductionBomLine2.FindSet() then begin
-                                                    repeat
-                                                        //item4.reset;
-                                                        ItemPedido.SetRange("No.", ProductionBomLine."No.");
-                                                        ItemPedido.FindFirst();
-                                                        if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
-                                                            ItemPedido.Ordenacion_btc := 1;
-                                                            ItemPedido.modify();
-                                                        end else begin
-                                                            ItemCompra.SetRange("No.", ProductionBomLine2."No.");
-                                                            ItemCompra.FindFirst();
-                                                            ItemCompra.Ordenacion_btc := 1;
-                                                            ItemCompra.modify();
-                                                        end;
-                                                    until ProductionBomLine2.Next() = 0;
-                                                end;
-                                            end else begin
-                                                ItemCompra.SetRange("No.", ProductionBomLine."No.");
-                                                ItemCompra.FindFirst();
-                                                ItemCompra.Ordenacion_btc := 1;
-                                                ItemCompra.modify();
-                                            end;
-                                        until ProductionBomLine.Next() = 0;
-
-                                    end;
-
-                                end else begin
-                                    ItemCompra.SetRange("No.", SalesLine."No.");
-                                    ItemCompra.FindFirst();
-                                    ItemCompra.Ordenacion_btc := 1;
-                                    ItemCompra.modify();
-                                end;
+                                ItemCompra.SetRange("No.", SalesLine."No.");
+                                ItemCompra.FindFirst();
+                                ItemCompra.Ordenacion_btc := 1;
+                                ItemCompra.modify();
                             end;
+                        end;*/
                         until SalesLine.Next() = 0;
                     end;
                 until SalesHeader.Next() = 0;
@@ -406,14 +407,12 @@ codeunit 50108 "FuncionesFabricacion"
 
         commit;
 
-
-
-
         ItemPedido.SetRange("No.");
         ItemPedido.SetRange("Location Filter", 'MMPP');
         ItemPedido.SetRange("Replenishment System", ItemCompra."Replenishment System"::"Prod. Order");
         ItemPedido.SetRange(Ordenacion_btc, 1);
         ItemPedido.SetRange(Blocked, false);
+        clear(CalcPlan);
         CalcPlan.SetTableView(ItemPedido);
         CalcPlan.SetTemplAndWorksheet('PLANIF.', RequisitionWkshName."Name", TRUE);
         CalcPlan.UseRequestPage(false);
@@ -427,6 +426,7 @@ codeunit 50108 "FuncionesFabricacion"
         ItemCompra.SetRange("Replenishment System", ItemCompra."Replenishment System"::Purchase);
         ItemCompra.SetRange(Ordenacion_btc, 1);
         ItemCompra.SetRange(Blocked, false);
+        clear(CalcPlan);
         CalculatePlan.SetTableView(ItemCompra);
         CalculatePlan.SetTemplAndWorksheet('APROV.', RequisitionWkshName."Name");
         CalculatePlan.UseRequestPage(false);
@@ -436,6 +436,135 @@ codeunit 50108 "FuncionesFabricacion"
 
         RefrescarHoja('PLANIF.', RequisitionWkshName."Name");
         RefrescarHoja('APROV.', RequisitionWkshName."Name");
+    end;
+
+    local procedure AddItemtempPlanifpedido(Item: record Item)
+    var
+        ItemCompra: Record item;
+        ItemPedido: Record item;
+        BomComponent: Record "BOM Component";
+        ProductionBomLine: Record "Production BOM Line";
+        ProductionBomLine2: record "Production BOM Line";
+    begin
+        if Item."Assembly BOM" then begin
+            BomComponent.reset;
+            BomComponent.SetRange("Parent Item No.", Item."No.");
+            if BomComponent.FindSet() then begin
+                repeat
+                    ItemPedido.SetRange("No.", BomComponent."No.");
+                    ItemPedido.FindFirst();
+                    if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
+                        ItemPedido.Ordenacion_btc := 1;
+                        ItemPedido.Modify();
+                        AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                        ProductionBomLine.reset;
+                        ProductionBomLine.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
+                        if ProductionBomLine.FindSet() then begin
+                            repeat
+                                ItemPedido.SetRange("No.", ProductionBomLine."No.");
+                                ItemPedido.FindFirst();
+                                if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
+                                    ItemPedido.Ordenacion_btc := 1;
+                                    ItemPedido.modify();
+                                    //Quitado Recursivo  AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                                    ProductionBomLine2.reset;
+                                    ProductionBomLine2.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
+                                    if ProductionBomLine2.FindSet() then begin
+                                        repeat
+                                            ItemPedido.SetRange("No.", ProductionBomLine."No.");
+                                            ItemPedido.FindFirst();
+                                            if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
+                                                ItemPedido.Ordenacion_btc := 1;
+                                                ItemPedido.modify();
+                                                //Quitado Recursivo AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                                            end else begin
+                                                ItemCompra.SetRange("No.", ProductionBomLine."No.");
+                                                ItemCompra.FindFirst();
+                                                ItemCompra.Ordenacion_btc := 1;
+                                                ItemCompra.Modify();
+                                                //Quitado Recursivo AddItemtempPlanifpedido(ItemCompra);  // recursivo
+                                            end;
+                                        until ProductionBomLine2.Next() = 0;
+                                    end;
+                                end else begin
+
+                                    ItemCompra.SetRange("No.", ProductionBomLine."No.");
+                                    ItemCompra.FindFirst();
+                                    ItemCompra.Ordenacion_btc := 1;
+                                    ItemCompra.Modify();
+                                    //Quitado Recursivo AddItemtempPlanifpedido(ItemCompra);  // recursivo
+                                end;
+                            until ProductionBomLine.Next() = 0;
+
+                        end;
+
+                    end else begin
+                        ItemCompra.SetRange("No.", BomComponent."No.");
+                        ItemCompra.FindFirst();
+                        ItemCompra.Ordenacion_btc := 1;
+                        ItemCompra.Modify();
+                        //Quitado Recursivo AddItemtempPlanifpedido(ItemCompra);  // recursivo
+                    end;
+                until BomComponent.Next() = 0;
+            end;
+        end else begin
+            //ItemPedido.reset;
+            ItemPedido.SetRange("No.", Item."No.");
+            ItemPedido.FindFirst();
+            if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
+                ItemPedido.Ordenacion_btc := 1;
+                ItemPedido.modify();
+                ProductionBomLine.reset;
+                ProductionBomLine.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
+                if ProductionBomLine.FindSet() then begin
+                    repeat
+                        ItemPedido.reset;
+                        ItemPedido.SetRange("No.", ProductionBomLine."No.");
+                        ItemPedido.FindFirst();
+                        if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
+                            ItemPedido.Ordenacion_btc := 1;
+                            ItemPedido.modify();
+                            //Quitado Recursivo AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                            ProductionBomLine2.reset;
+                            ProductionBomLine2.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
+                            if ProductionBomLine2.FindSet() then begin
+                                repeat
+                                    //item4.reset;
+                                    ItemPedido.SetRange("No.", ProductionBomLine."No.");
+                                    ItemPedido.FindFirst();
+                                    if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
+                                        ItemPedido.Ordenacion_btc := 1;
+                                        ItemPedido.modify();
+                                        //Quitado Recursivo AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                                    end else begin
+                                        ItemCompra.SetRange("No.", ProductionBomLine2."No.");
+                                        ItemCompra.FindFirst();
+                                        ItemCompra.Ordenacion_btc := 1;
+                                        ItemCompra.modify();
+                                        //Quitado Recursivo AddItemtempPlanifpedido(ItemPedido);  // recursivo
+                                    end;
+                                until ProductionBomLine2.Next() = 0;
+                            end;
+                        end else begin
+                            ItemCompra.SetRange("No.", ProductionBomLine."No.");
+                            ItemCompra.FindFirst();
+                            ItemCompra.Ordenacion_btc := 1;
+                            ItemCompra.modify();
+                            //Quitado Recursivo AddItemtempPlanifpedido(ItemCompra);  // recursivo
+                        end;
+                    until ProductionBomLine.Next() = 0;
+
+                end;
+
+            end else begin
+                ItemCompra.SetRange("No.", Item."No.");
+                ItemCompra.FindFirst();
+                ItemCompra.Ordenacion_btc := 1;
+                ItemCompra.modify();
+                //Quitado Recursivo AddItemtempPlanifpedido(ItemCompra);  // recursivo
+            end;
+        end;
+
     end;
 
     procedure LanzarPlanificacionDesdeTrans()
@@ -949,6 +1078,10 @@ codeunit 50108 "FuncionesFabricacion"
         InventorySetup.Get();
         BalanceConOfertas := 0;
         BalanceSinOfertas := 0;
+        StockkeepingUnit.SetFilter(Filter_FinOferta_Btc, '%1..', WorkDate());
+        StockkeepingUnit.CalcFields(Inventory, "Qty. on Assembly Order", "Qty. on Prod. Order", "Qty. on Purch. Order",
+            "Trans. Ord. Receipt (Qty.)", "Qty. on Asm. Component", "Qty. on Component Lines", "Qty. on Job Order", "Qty. on Sales Order",
+            "Qty. on Service Order", "Trans. Ord. Shipment (Qty.)", QtyonQuotesOrder, "Cant_ componentes Oferta");
         //BalanceConOfertas := Inventory + "Qty. on Assembly Order" + "Qty. on Prod. Order" + "Qty. on Purch. Order" + "Trans. Ord. Receipt (Qty.)"
         //    - "Qty. on Asm. Component" - "Qty. on Component Lines" - "Qty. on Job Order" - "Qty. on Sales Order" - "Qty. on Service Order"
         //    - "Trans. Ord. Shipment (Qty.)" - QtyonQuotesOrder - "Cant_ componentes Oferta";
@@ -1002,6 +1135,7 @@ codeunit 50108 "FuncionesFabricacion"
             BalanceConOfertas -= StockkeepingUnit.QtyonQuotesOrder;
         end;
         if InventorySetup."Qty. on Component Quote" then begin
+
             BalanceConOfertas -= StockkeepingUnit."Cant_ componentes Oferta";
         end;
 

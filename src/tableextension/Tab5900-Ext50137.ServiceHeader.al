@@ -45,7 +45,7 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
             Editable = false;
             Caption = 'Service Shelf No.', comment = 'ESP="Nº estantería"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Service Item Line"."Service Shelf No." where("Document Type" = field("Document Type"), "Document No." = field("No.")));
+            CalcFormula = lookup("Service Item Line"."Service Shelf No." where("Document Type" = field("Document Type"), "Document No." = field("No.")));
         }
 
         field(50103; ComentarioAlmacen_btc; Text[250])
@@ -64,7 +64,7 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
             Editable = false;
             Caption = 'Serial No.', comment = 'ESP="Nº Serie"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Service Item Line"."Serial No." where("Document Type" = field("Document Type"), "Document No." = field("No.")));
+            CalcFormula = lookup("Service Item Line"."Serial No." where("Document Type" = field("Document Type"), "Document No." = field("No.")));
         }
 
         field(50108; PedidoArchivado_btc; Code[20])
@@ -82,9 +82,13 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
             Editable = false;
             Caption = 'Resolution Code', comment = 'ESP="Cod.Resolucion"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Service Item Line"."Resolution Code" where("Document Type" = field("Document Type"), "Document No." = field("No.")));
+            CalcFormula = lookup("Service Item Line"."Resolution Code" where("Document Type" = field("Document Type"), "Document No." = field("No.")));
         }
-
+        field(50110; IsWarranty; Boolean)
+        {
+            Caption = 'Es Mto. Garantia', comment = 'ESP="Es Mto. Garantia"';
+            Editable = false;
+        }
 
     }
 }

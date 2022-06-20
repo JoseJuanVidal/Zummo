@@ -66,7 +66,7 @@ tableextension 50108 "Item" extends Item  //27
         {
             DataClassification = CustomerContent;
             Description = 'Bitec';
-            Caption = 'Sales Classification', comment = 'ESP="Clasificación Ventas"';
+            Caption = 'Sales Classification List', comment = 'ESP="Lista Clasificación Ventas"';
             OptionMembers = " ","Envases y Embalajes",Accesorios,"Bloque Máquina",Box,"Conjunto Máquina",Mueble,Repuestos,Otros,Servicios;
             OptionCaption = ' ,Containers and packaging,Accessories,Machine block,Box,Machine set,Price of furniture,Spare parts,Others,Services', comment = 'ESP=" ,Envases y Embalajes,Accesorios,Bloque Máquina,Box,Conjunto Máquina,Mueble,Repuestos,Otros,Servicios"';
             // ObsoleteState = Removed;
@@ -258,15 +258,85 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'No Contemplar Ped. Compra', comment = 'ESP="No Contemplar Ped. Compra"';
         }
-        field(50103; STHFilterLocation; Code[10])
+        field(50103; STHFilterLocation; Code[100])
         {
             DataClassification = CustomerContent;
-            Caption = 'No Contemplar Ped. Compra', comment = 'ESP="No Contemplar Ped. Compra"';
+            Caption = 'Filtro almacen hoja demanda Agrup', comment = 'ESP="Filtro almacen hoja demanda Agrup"';
         }
         field(50104; STHWorksheetName; Code[10])
         {
             DataClassification = CustomerContent;
             Caption = 'WorksheetName', comment = 'ESP="WorksheetName"';
+        }
+        field(50120; STHCostEstandarOLD; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Costes Estandar Previo', comment = 'ESP="Costes Estandar Previo"';
+        }
+        field(50121; CambiadoCoste; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Cambiado Coste', comment = 'ESP="Cambiado Coste"';
+        }
+        field(50122; RecalcularCosteEstandar; boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Recalcular Coste Estandar', comment = 'ESP="Recalcular Coste Estandar"';
+        }
+        field(50130; "Purch. Family"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. Family', comment = 'ESP="Familia compra"';
+            TableRelation = "STH Purchase Family".Code;
+        }
+        field(50131; "Desc. Purch. Family"; Text[100])
+        {
+            Caption = 'Desc. Purch. Family', comment = 'ESP="Nombre Familia compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase Family".Description where(Code = field("Purch. Family")));
+            Editable = false;
+        }
+        field(50132; "Purch. Category"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. Category', comment = 'ESP="Categoria compra"';
+            TableRelation = "STH Purchase Category".Code where("Purch. Familiy code" = field("Purch. Family"));
+        }
+        field(50133; "Desc. Purch. Category"; Text[100])
+        {
+            Caption = 'Desc. Purch. Category', comment = 'ESP="Nombre Categoria compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase Category".Description where("Purch. Familiy code" = field("Purch. Family"), Code = field("Purch. Family")));
+            Editable = false;
+        }
+        field(50134; "Purch. SubCategory"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. SubCategory', comment = 'ESP="SubCategoria compra"';
+            TableRelation = "STH Purchase SubCategory".Code where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category"));
+        }
+        field(50135; "Desc. Purch. SubCategory"; Text[100])
+        {
+            Caption = 'Desc. Purch. SubCategory', comment = 'ESP="Nombre SubCategoria compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase SubCategory".Description where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category")));
+            Editable = false;
+        }
+        field(50136; "Inventory to date"; Decimal)
+        {
+            Caption = 'Inventory to date', comment = 'ESP="Inventario a Fecha"';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("No."), "Posting Date" = FIELD("Date Filter"),
+                                                                  "Global Dimension 1 Code" = FIELD("Global Dimension 1 Filter"),
+                                                                  "Global Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
+                                                                  "Location Code" = FIELD("Location Filter"),
+                                                                  "Drop Shipment" = FIELD("Drop Shipment Filter"),
+                                                                  "Variant Code" = FIELD("Variant Filter"),
+                                                                  "Lot No." = FIELD("Lot No. Filter"),
+                                                                  "Serial No." = FIELD("Serial No. Filter")));
+
+            DecimalPlaces = 0 : 5;
+            Editable = false;
         }
     }
 }
