@@ -5951,10 +5951,10 @@
           <target>Tipo Registro</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA"</note>
+          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
-          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA</target>
+          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen</target>
         </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
@@ -23635,6 +23635,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Job Ledger Entry - Field Es Material - Property Caption</note>
           <target>Es Material</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3891454143 - Field 832272023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Almacén IE</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Almacén IE"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Location - Field Almacen IE - Property Caption</note>
+          <target>Almacén IE</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3891454143 - Field 3667042813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Almacén Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Almacén Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Location - Field Almacen Tipo - Property Caption</note>
+          <target>Almacén Tipo</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3891454143 - Field 3233522352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Planned Calculation</source>
           <note from="Developer" annotates="general" priority="2">ESP="Calcular en Planificación"</note>
@@ -26352,6 +26364,24 @@
           <source> </source>
           <note from="Developer" annotates="general" priority="2">ESP=" "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Gama - EnumValue Ninguno - Property Caption</note>
+          <target> </target>
+        </trans-unit>
+        <trans-unit id="Enum 2480605013 - EnumValue 1538977025 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Externo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Tipo Almacen - EnumValue Externo - Property Caption</note>
+          <target>Externo</target>
+        </trans-unit>
+        <trans-unit id="Enum 2480605013 - EnumValue 3520278439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interno</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Interno"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Tipo Almacen - EnumValue Interno - Property Caption</note>
+          <target>Interno</target>
+        </trans-unit>
+        <trans-unit id="Enum 2480605013 - EnumValue 1222368710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2">ESP=" "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Tipo Almacen - EnumValue Ninguno - Property Caption</note>
           <target> </target>
         </trans-unit>
       </group>

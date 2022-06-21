@@ -21,7 +21,14 @@ pageextension 50013 "LocationCard" extends "Location Card"
             field(RequiredShipinvoice; RequiredShipinvoice)
             {
                 ApplicationArea = all;
-
+            }
+            field("Almacen IE"; "Almacen IE")
+            {
+                ApplicationArea = all;
+            }
+            field("Almacen Tipo"; "Almacen Tipo")
+            {
+                ApplicationArea = all;
             }
         }
     }
