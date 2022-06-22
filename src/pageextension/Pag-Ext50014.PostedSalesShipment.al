@@ -199,6 +199,7 @@ pageextension 50014 "PostedSalesShipment" extends "Posted Sales Shipment"
                     Clear(pageAbrir);
                     pageAbrir.LookupMode(true);
                     pageAbrir.SetEnvioOrigen('', Rec."No.", '');
+                    pageAbrir.SetEnviosDatos(Rec);
 
                     if pageAbrir.RunModal() = Action::LookupOK then begin
                         pageAbrir.GetDatos(peso, numPalets, numBultos);
