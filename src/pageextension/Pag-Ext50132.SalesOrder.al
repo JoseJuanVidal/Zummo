@@ -96,6 +96,13 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
             }
 
         }
+        addafter("Promised Delivery Date")
+        {
+            field("Fecha Entrega en destino"; "Fecha Entrega en destino")
+            {
+                ApplicationArea = all;
+            }
+        }
         //Comentario interno pedidos venta
         addbefore("Work Description")
         {

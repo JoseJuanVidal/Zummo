@@ -42,6 +42,13 @@ pageextension 50120 "PostedSalesShipments" extends "Posted Sales Shipments"
                 ApplicationArea = all;
             }
         }
+        addafter("Posting Date")
+        {
+            field("Fecha Entrega en destino"; "Fecha Entrega en destino")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     actions

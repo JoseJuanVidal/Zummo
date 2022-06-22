@@ -1,4 +1,4 @@
-enum 50104 "Tipo Almacen"
+enum 50104 "IE Almacen"
 {
     Extensible = true;
 
