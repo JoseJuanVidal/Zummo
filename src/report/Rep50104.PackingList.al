@@ -189,6 +189,9 @@ report 50104 "PackingList"
                     column(ShipToAddr6; ShipToAddr[6])
                     {
                     }
+                    column(CustPhoneNo; Cust."Phone No.")
+                    {
+                    }
                     column(CompanyInfoHomePage; CompanyInfo."Home Page")
                     {
                     }
@@ -794,7 +797,6 @@ report 50104 "PackingList"
             trigger OnAfterGetRecord();
             var
                 RecShippingAgent: Record "Shipping Agent";
-                Cust: Record Customer;
             begin
                 CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
 
@@ -948,6 +950,7 @@ report 50104 "PackingList"
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
+        Cust: record customer;
         SalesSetup: Record "Sales & Receivables Setup";
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
