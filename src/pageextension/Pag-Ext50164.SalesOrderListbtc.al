@@ -38,7 +38,13 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
                 Visible = false;
             }
         }
-
+        addafter("Posting Date")
+        {
+            field("Fecha Entrega en destino"; "Fecha Entrega en destino")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
     actions
     {
