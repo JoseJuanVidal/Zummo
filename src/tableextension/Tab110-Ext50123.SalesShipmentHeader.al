@@ -127,6 +127,11 @@ tableextension 50123 "SalesShipmentHeader" extends "Sales Shipment Header"  //11
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
             Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
         }
+        field(50130; "Fecha Entrega en destino"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fecha Entrega en destino', comment = 'ESP="Fecha Entrega en destino"';
+        }
         field(50900; NumFactura_btc; Code[20])
         {
             DataClassification = CustomerContent;

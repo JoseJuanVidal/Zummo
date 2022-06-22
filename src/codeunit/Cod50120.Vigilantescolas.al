@@ -42,6 +42,8 @@ codeunit 50120 "Vigilantes colas"
     trigger OnRun()
     begin
         CheckJobQueueEntry;
+
+        testCRMConnection;
     end;
 
     var
@@ -97,6 +99,18 @@ codeunit 50120 "Vigilantes colas"
 
             Until JobQueueEntry.next() = 0;
     end;
+
+    local procedure testCRMConnection()
+    var
+        CRMConnectionSetup: record "CRM Connection Setup";
+    begin
+        CRMConnectionSetup.get();
+        if not CRMConnectionSetup.IsEnabled() then
+            CRMConnectionSetup.Validate("Is Enabled", true);
+    end;
+
+
+
 }
 
 

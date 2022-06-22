@@ -22064,8 +22064,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Location - Field Almacen IE - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3891454143 - Field 3667042813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
-          <source>Almacén Tipo</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Almacén Tipo"</note>
+          <source>Almacén tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Almacén tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Location - Field Almacen Tipo - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3891454143 - Field 3233522352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
@@ -22628,6 +22628,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field DescuentoProntoPago - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 2583480142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Fecha Entrega en destino</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Entrega en destino"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Fecha Entrega en destino - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 3618645406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>FechaAltaPedido</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -23127,6 +23132,11 @@
           <source>Delegado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Delegado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field Delegado_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 2583480142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Fecha Entrega en destino</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Entrega en destino"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field Fecha Entrega en destino - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Fecha.Rec.Mail</source>
@@ -24423,20 +24433,20 @@
           <note from="Developer" annotates="general" priority="2">ESP=" "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Gama - EnumValue Ninguno - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2480605013 - EnumValue 1538977025 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Enum 2679804991 - EnumValue 1538977025 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Externo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Externo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Tipo Almacen - EnumValue Externo - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IE Almacen - EnumValue Externo - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2480605013 - EnumValue 3520278439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Enum 2679804991 - EnumValue 3520278439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Interno</source>
           <note from="Developer" annotates="general" priority="2">ESP="Interno"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Tipo Almacen - EnumValue Interno - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IE Almacen - EnumValue Interno - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2480605013 - EnumValue 1222368710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Enum 2679804991 - EnumValue 1222368710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source> </source>
           <note from="Developer" annotates="general" priority="2">ESP=" "</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Tipo Almacen - EnumValue Ninguno - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IE Almacen - EnumValue Ninguno - Property Caption</note>
         </trans-unit>
       </group>
     </body>
