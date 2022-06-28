@@ -1020,10 +1020,16 @@ codeunit 50101 "Eventos_btc"
     var
         ZummoInnICFunctions: Codeunit "Zummo Inn. IC Functions";
         EmptySalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
     begin
         if Rec."Source Purch. Order No" <> '' then begin
-            if Rec."Document Type" = Rec."Document Type"::Order then
-                ZummoInnICFunctions.UpdateOrderNoPurchaseOrderIC(Rec, EmptySalesHeader); //Pasamos una record de Sales Header vacio para que deje el nº de pedido de venta en el pedido de compra origen vacio
+            if Rec."Document Type" = Rec."Document Type"::Order then begin
+                SalesLine.Reset();
+                SalesLine.SetRange("Document No.", Rec."No.");
+                SalesLine.SetFilter("Quantity Shipped", '>%1', 0);
+                if not SalesLine.FindFirst() then
+                    ZummoInnICFunctions.UpdateOrderNoPurchaseOrderIC(Rec, EmptySalesHeader); //Pasamos una record de Sales Header vacio para que deje el nº de pedido de venta en el pedido de compra origen vacio
+            end;
         end;
     end;
 

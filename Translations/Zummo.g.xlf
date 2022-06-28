@@ -5998,23 +5998,33 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ha cambiado la fecha de entrega requerida\¿Desea cambiar la fecha de entrega requerida también en las líneas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ValidaFechaRequeridaLinPedido - NamedType lbConfirmQst</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3536218840 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Sales Shipment in Zummo Inc.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailOnPostShipment - NamedType SubjectLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3536218840 - NamedType 1908025102" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales shipment %1 generated from sales order %2, from purchase order %3 in Zummo INC.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailOnPostShipment - NamedType BodyLbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 407788085" size-unit="char" translate="yes" xml:space="preserve">
           <source>Se ha actualizado el pedido de compra </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType MsgLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Actualización Pedido Compra Zummo Inc.</source>
+          <source>Update Purchase Order Zummo Inc.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType SubjectLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3733562477" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Se ha eliminado el pedido de venta %1</source>
+          <source>Sales order %1 has been deleted</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType BodyLbl1</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3095865860" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Se ha creado el pedido de venta %1 desde la oferta %2</source>
+          <source>Sales order %1 has been created from offer %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType BodyLbl2</note>
         </trans-unit>
@@ -6024,12 +6034,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType CreatedLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Actualización Pedido Compra Zummo Inc.</source>
+          <source>Update Purchase Order Zummo Inc.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType SubjectLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 1908025102" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Se han actualizado las cantidades y el seguimiento del pedido de compra %1 desde el pedido de venta %2</source>
+          <source>Quantities and tracking for purchase order %1 have been updated from sales order %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType BodyLbl</note>
         </trans-unit>
@@ -20883,10 +20893,10 @@
           <note from="Developer" annotates="general" priority="2">ESP="R&amp;egistrar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action RegistrarFran - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 1681450121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+        <trans-unit id="PageExtension 3617415722 - Action 3871771545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Update Purchase Order Zummo Inc.</source>
           <note from="Developer" annotates="general" priority="2">Actualizar Ped. Compra Zummo Inc.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action STH Post - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action STH Update Purchase Order Zummo Inc - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3617415722 - Control 1320162667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Indicar el cambio para la impresión de los documentos.</source>
@@ -23002,6 +23012,11 @@
           <source>Default Area Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Provincia por defecto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field CodProvinciaDefecto_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2862620744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Customer Quote Zummo Inc.</source>
+          <note from="Developer" annotates="general" priority="2">Cliente oferta Zummo Inc.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Customer Quote IC - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 3348994424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Días Vto. Aseguradora</source>

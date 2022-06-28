@@ -112,6 +112,8 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             DataClassification = CustomerContent;
             Description = 'Intercompany Zummo Innc.';
         }
+
+
         field(50120; LanguageFilter; Code[10])
         {
             DataClassification = CustomerContent;
@@ -124,6 +126,12 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             DataClassification = CustomerContent;
             Caption = 'Ruta exportar pdf facturas', comment = 'ESP="Ruta exportar pdf facturas"';
 
+        }
+        field(50140; "Customer Quote IC"; Code[20])
+        {
+            Caption = 'Customer Quote Zummo Inc.', Comment = 'Cliente oferta Zummo Inc.';
+            DataClassification = CustomerContent;
+            TableRelation = Customer;
         }
     }
 }
