@@ -1,4 +1,4 @@
-codeunit 50120 "Vigilantes colas"
+codeunit 50105 "Vigilantes colas"
 {
     // clientes
     // ofertas aux
@@ -56,7 +56,7 @@ codeunit 50120 "Vigilantes colas"
     begin
         if JobQueueEntry.findset() then
             repeat
-                isactive := false;
+                    isactive := false;
                 // Limpiamos los trabajos de ERROR del CRM - customer - Contact link
                 // id 5351 - CRM Customer-Contact Link - ERROR
                 if (JobQueueEntry."Object ID to Run" = 5351) and (JobQueueEntry.Description = 'Enlace de contacto con el cliente.') and
