@@ -232,9 +232,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
         JsonResponse: JsonObject;
         JsonTokResponse: JsonToken;
         MsgLbl: Label 'Se ha actualizado el pedido de compra ';
-        SubjectLbl: Label 'Actualización Pedido Compra Zummo Inc.';
-        BodyLbl1: Label 'Se ha eliminado el pedido de venta %1';
-        BodyLbl2: Label 'Se ha creado el pedido de venta %1 desde la oferta %2';
+        SubjectLbl: Label 'Update Purchase Order Zummo Inc.';
+        BodyLbl1: Label 'Sales order %1 has been deleted';
+        BodyLbl2: Label 'Sales order %1 has been created from offer %2';
     begin
         SalesReceivablesSetup.Get();
         SalesReceivablesSetup.TestField("WS Base URL IC Zummo Innc.");
@@ -269,29 +269,29 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Item: Record Item;
         ReservationEntry: Record "Reservation Entry";
         CreatedLbl: Label 'Proceso finalizado. Se han actualizado las lineas del pedido %1';
-        SubjectLbl: Label 'Actualización Pedido Compra Zummo Inc.';
-        BodyLbl: Label 'Se han actualizado las cantidades y el seguimiento del pedido de compra %1 desde el pedido de venta %2';
+        SubjectLbl: Label 'Update Purchase Order Zummo Inc.';
+        BodyLbl: Label 'Quantities and tracking for purchase order %1 have been updated from sales order %2';//'Se han actualizado las cantidades y el seguimiento del pedido de compra %1 desde el pedido de venta %2';
     begin
         SalesLine.Reset();
         SalesLine.SetRange("Document No.", Rec."No.");
         SalesLine.SetRange("Document Type", Rec."Document Type");
         if SalesLine.FindSet() then
             repeat
-                if Item.Get(SalesLine."No.") then begin
-                    if Item."Item Tracking Code" <> '' then begin
-                        ReservationEntry.Reset();
-                        ReservationEntry.SetRange("Source ID", SalesLine."Document No.");
-                        ReservationEntry.SetRange("Source Type", Database::"Sales Line");
-                        ReservationEntry.SetRange("Source Subtype", 1);
-                        ReservationEntry.SetRange("Source Ref. No.", SalesLine."Line No.");
-                        if ReservationEntry.FindSet() then
-                            repeat
-                                SendReservationEntryUpdateIC(ReservationEntry);
-                            until ReservationEntry.Next() = 0;
-                    end else begin
-                        SendUpdateQtyIC(SalesLine);
+                    if Item.Get(SalesLine."No.") then begin
+                        if Item."Item Tracking Code" <> '' then begin
+                            ReservationEntry.Reset();
+                            ReservationEntry.SetRange("Source ID", SalesLine."Document No.");
+                            ReservationEntry.SetRange("Source Type", Database::"Sales Line");
+                            ReservationEntry.SetRange("Source Subtype", 1);
+                            ReservationEntry.SetRange("Source Ref. No.", SalesLine."Line No.");
+                            if ReservationEntry.FindSet() then
+                                    repeat
+                                        SendReservationEntryUpdateIC(ReservationEntry);
+                                    until ReservationEntry.Next() = 0;
+                        end else begin
+                            SendUpdateQtyIC(SalesLine);
+                        end;
                     end;
-                end;
             until SalesLine.Next() = 0;
 
         Rec."Source Purch. Order Updated" := true;
@@ -353,7 +353,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Clear(Body);
         JsonBody.Add('DocumentNo', SalesHeader."Source Purch. Order No");
         JsonBody.Add('ItemNo', SalesLine."No.");
-        JsonBody.Add('Quantity', SalesLine.Quantity);
+        JsonBody.Add('Quantity', SalesLine."Qty. to Ship");
         JsonBody.Add('SerialNo', '');
         JsonBody.WriteTo(Body);
         SW_REST(SalesReceivablesSetup."WS Base URL IC Zummo Innc.", SalesReceivablesSetup."WS Name - Purch. Order Line", 'POST', Body, true, StatusCode, JsonResponse, false);
@@ -362,6 +362,14 @@ codeunit 50104 "Zummo Inn. IC Functions"
             JsonTokResponse.WriteTo(ErrorText);
             Error(ErrorText);
         end;
+    end;
+
+    procedure SendMailOnPostShipment(var SalesHeader: Record "Sales Header"; SalesShptHdrNo: Code[20])
+    var
+        SubjectLbl: Label 'Posted Sales Shipment in Zummo Inc.';
+        BodyLbl: Label 'Sales shipment %1 generated from sales order %2, from purchase order %3 in Zummo INC.';
+    begin
+        SendMailIC(SubjectLbl, StrSubstNo(BodyLbl, SalesShptHdrNo, SalesHeader."No.", SalesHeader."Source Purch. Order No"));
     end;
 
     procedure SendMailIC(Subject: Text; Body: Text)

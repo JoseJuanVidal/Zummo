@@ -84,6 +84,11 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                     ApplicationArea = All;
                     ExtendedDatatype = Masked;
                 }
+                field("Customer Quote IC"; Rec."Customer Quote IC")
+                {
+                    ApplicationArea = All;
+                }
+
                 field("Base URL IC Zummo Innc."; Rec."WS Base URL IC Zummo Innc.")
                 {
                     ApplicationArea = All;
