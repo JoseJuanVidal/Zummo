@@ -15,7 +15,7 @@
         {
             "label": "Traducir",
             "type": "shell",
-            "command": "C:\\Bin\\TranslateXLIFF.exe",
+            "command": "C:\\EXT\\TranslateXLIFF.exe",
             "args": [
                 "${workspaceFolder}"
             ],

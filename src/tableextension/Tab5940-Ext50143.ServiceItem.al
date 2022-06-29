@@ -49,6 +49,11 @@ tableextension 50143 "Service Item" extends "Service Item"
         {
             Caption = 'Fecha próxima revision garantia', comment = 'ESP="Fecha próxima revision garantia"';
         }
+        field(50230; "Estado CS"; Code[20])
+        {
+            Caption = 'Estado', Comment = 'ESP="Estado"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(ServiceItem));
+        }
     }
     var
         lblConfirm: Label '¿Desea ampliar la garantia %1?', comment = 'ESP="¿Desea ampliar la garantia %1?"';
