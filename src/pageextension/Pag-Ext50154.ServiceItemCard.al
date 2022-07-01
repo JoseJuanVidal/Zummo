@@ -43,6 +43,17 @@ pageextension 50154 "ServiceItemCard" extends "Service Item Card"
         {
             Visible = false;
         }
+        addlast(General)
+        {
+            field("Mostrar aviso pedido servicio"; "Mostrar aviso pedido servicio")
+            {
+                ApplicationArea = All;
+            }
+            field("Aviso pedido servicio"; "Aviso pedido servicio")
+            {
+                ApplicationArea = All;
+            }
+        }
 
     }
     actions

@@ -20023,16 +20023,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido ensamblado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control OrderNo - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2768240657 - Action 2381546085 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
-          <source>Mostrar Garantía</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Garantía"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action mostrarGarantia - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2768240657 - Action 2381546085 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
-          <source>Mostrar Garantía</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Garantía"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action mostrarGarantia - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Qty. en Stockkeeping Unit</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad en contenido de almacén"</note>
@@ -23238,6 +23228,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - NamedType lblError</note>
         </trans-unit>
+        <trans-unit id="TableExtension 521506452 - Field 3186518881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
+          <source>Aviso pedido servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso pedido servicio</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field Aviso pedido servicio - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 960231526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Cod.Anterior</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cod.Anterior"</note>
@@ -23262,6 +23257,11 @@
           <source>Fecha próxima revision garantia</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha próxima revision garantia"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field FechaMantGarantia_sth - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 521506452 - Field 2271658677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
+          <source>Mostrar aviso pedido servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar aviso pedido servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field Mostrar aviso pedido servicio - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 1629113632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Periodo de Ampliacion Garantia</source>
@@ -23312,6 +23312,11 @@
           <source>Type order service level 3</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 3"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field TipoPedidoNivel3_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - NamedType 2557798742" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4165706410">
+          <source>Aviso Pedido Servicio</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - NamedType Lbl_AvisoPedidoServicio</note>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 719596632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Ampliacion Garantia</source>

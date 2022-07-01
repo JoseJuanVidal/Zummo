@@ -54,6 +54,16 @@ tableextension 50143 "Service Item" extends "Service Item"
             Caption = 'Estado', Comment = 'ESP="Estado"';
             TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(ServiceItem));
         }
+        field(50240; "Mostrar aviso pedido servicio"; Boolean)
+        {
+            Caption = 'Mostrar aviso pedido servicio', Comment = 'ESP="Mostrar aviso pedido servicio"';
+            DataClassification = CustomerContent;
+        }
+        field(50250; "Aviso pedido servicio"; Text[150])
+        {
+            Caption = 'Aviso pedido servicio', Comment = 'ESP="Aviso pedido servicio';
+            DataClassification = CustomerContent;
+        }
     }
     var
         lblConfirm: Label '¿Desea ampliar la garantia %1?', comment = 'ESP="¿Desea ampliar la garantia %1?"';
