@@ -93,6 +93,26 @@ pageextension 50133 "ItemList" extends "Item List"
             Promoted = true;
             PromotedCategory = Category4;
         }
+        addafter(Dimensions)
+        {
+            action(importarComentarios)
+            {
+                ApplicationArea = all;
+                Caption = 'Importar Comentarios', comment = 'ESP="Importar Comentarios"';
+                ToolTip = 'Importar Comentarios', comment = 'ESP="Importar Comentarios"';
+                // Promoted = true;
+                // PromotedIsBig = true;
+                // PromotedCategory = Process;
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                // rimportarComentarios: Report "Importar Comentarios Excel";
+                begin
+                    Message('Importar Comentarios');
+                end;
+            }
+        }
     }
     var
         WarehouseEntry: Record "Warehouse Entry";
