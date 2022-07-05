@@ -5789,8 +5789,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen"</note>
+          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 1397213012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -11568,10 +11568,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3412412437 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea importar el fichero %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea importar el fichero %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="Report 3412412437 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
           <source>Seleccione fichero</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text50000</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - Control 989751795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre del ficharo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre del fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - Control FileName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1045337665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create period invoices (process)</source>
