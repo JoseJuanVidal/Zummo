@@ -5789,9 +5789,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen"</note>
+          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 1397213012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warranty Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Años de Garantía</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field WarrantyDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
@@ -11557,6 +11562,36 @@
           <source>This process will update the dimensions of all tables related to the client\Do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Este proceso actualizará las dimensiones de todas las tablas relacionadas con el cliente\¿Desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report CambioDimensionesVentas - Method OnPreReport - NamedType lbQst</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Comentarios Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea importar el fichero Excel?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea importar el fichero Excel?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Seleccione fichero</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text50000</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - Control 989751795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre del ficharo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre del fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - Control FileName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1045337665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create period invoices (process)</source>
@@ -20028,6 +20063,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido ensamblado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control OrderNo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 4240148002 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Importar Comentarios</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Comentarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action importarComentarios - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 4240148002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Importar Comentarios</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Comentarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action importarComentarios - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Qty. en Stockkeeping Unit</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad en contenido de almacén"</note>
@@ -23278,6 +23323,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - NamedType lblError</note>
         </trans-unit>
+        <trans-unit id="TableExtension 521506452 - Field 3186518881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
+          <source>Aviso pedido servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso pedido servicio</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field Aviso pedido servicio - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 960231526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Cod.Anterior</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cod.Anterior"</note>
@@ -23288,6 +23338,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº.Serie.Histórico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field CodSerieHistorico_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 521506452 - Field 2555433972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
+          <source>Estado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field Estado CS - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 973509208 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Fecha Inicio periodo de Ampliacion</source>
           <note from="Developer" annotates="general" priority="2">Fecha Inicio periodo de Ampliación"</note>
@@ -23297,6 +23352,11 @@
           <source>Fecha próxima revision garantia</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha próxima revision garantia"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field FechaMantGarantia_sth - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 521506452 - Field 2271658677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
+          <source>Mostrar aviso pedido servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar aviso pedido servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field Mostrar aviso pedido servicio - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 1629113632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Periodo de Ampliacion Garantia</source>

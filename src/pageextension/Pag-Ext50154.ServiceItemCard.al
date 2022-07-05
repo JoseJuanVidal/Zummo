@@ -32,7 +32,28 @@ pageextension 50154 "ServiceItemCard" extends "Service Item Card"
                 ApplicationArea = all;
             }
         }
-
+        addafter(Status)
+        {
+            field("Estado CS"; "Estado CS")
+            {
+                ApplicationArea = All;
+            }
+        }
+        modify(Status)
+        {
+            Visible = false;
+        }
+        addlast(General)
+        {
+            field("Mostrar aviso pedido servicio"; "Mostrar aviso pedido servicio")
+            {
+                ApplicationArea = All;
+            }
+            field("Aviso pedido servicio"; "Aviso pedido servicio")
+            {
+                ApplicationArea = All;
+            }
+        }
 
     }
     actions

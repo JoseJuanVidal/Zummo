@@ -21,6 +21,17 @@ pageextension 50155 "ServiceItemList" extends "Service Item List"
                 ApplicationArea = all;
             }
         }
+        addafter(Status)
+        {
+            field("Estado CS"; "Estado CS")
+            {
+                ApplicationArea = All;
+            }
+        }
+        modify(Status)
+        {
+            Visible = false;
+        }
     }
     actions
     {

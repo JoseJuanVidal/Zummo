@@ -43,6 +43,11 @@ page 50117 "Lista Textos Auxiliares"
                     ApplicationArea = all;
                     Visible = NotRegIVA;
                 }
+                field(WarrantyDate; WarrantyDate)
+                {
+                    ApplicationArea = All;
+                    Visible = mostrarGarantia;
+                }
             }
         }
     }
@@ -53,7 +58,8 @@ page 50117 "Lista Textos Auxiliares"
             mercadoVisible := true;
         if UpperCase(GetFilter(TipoTabla)) = 'REGISTROIVA' then
             NotRegIVA := true;
-
+        if GetFilter(TipoTabla) = FORMAT(Rec.TipoTabla::Familia) then
+            mostrarGarantia := true;
     end;
 
     trigger OnAfterGetRecord()
@@ -68,4 +74,5 @@ page 50117 "Lista Textos Auxiliares"
         emailVisible: Boolean;
         mercadoVisible: Boolean;
         NotRegIVA: Boolean;
+        mostrarGarantia: Boolean;
 }

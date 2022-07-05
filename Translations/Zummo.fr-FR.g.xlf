@@ -6219,6 +6219,21 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report CambiarNoDocFacturaCompra - Control Opciones - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3412412437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Comentarios Excel</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Seleccione fichero</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text50000</note>
+        </trans-unit>
         <trans-unit id="Report 399329885 - NamedType 2057872364" size-unit="char" translate="yes" xml:space="preserve">
           <source>FO.04_C7.03_V04</source>
           <note from="Developer" annotates="general" priority="2"/>
