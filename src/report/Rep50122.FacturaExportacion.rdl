@@ -72,7 +72,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -98,7 +97,7 @@
                                               <LeftBorder>
                                                 <Style>Solid</Style>
                                               </LeftBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                             </Style>
@@ -120,7 +119,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -142,7 +140,7 @@
                                               <BottomBorder>
                                                 <Style>Solid</Style>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -165,7 +163,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -188,7 +185,7 @@
                                               <BottomBorder>
                                                 <Style>Solid</Style>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -211,7 +208,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -240,7 +236,7 @@
                                               <RightBorder>
                                                 <Style>None</Style>
                                               </RightBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -263,7 +259,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -285,7 +280,7 @@
                                               <BottomBorder>
                                                 <Style>Solid</Style>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -306,7 +301,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -328,7 +322,7 @@
                                               <BottomBorder>
                                                 <Style>Solid</Style>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -351,7 +345,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -377,7 +370,7 @@
                                               <RightBorder>
                                                 <Style>Solid</Style>
                                               </RightBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -403,7 +396,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -427,7 +419,7 @@
                                               <LeftBorder>
                                                 <Style>Solid</Style>
                                               </LeftBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                             </Style>
@@ -449,7 +441,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -469,7 +460,7 @@
                                               <BottomBorder>
                                                 <Style>Solid</Style>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -492,7 +483,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -515,7 +505,7 @@
                                               <BottomBorder>
                                                 <Style>Solid</Style>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -538,7 +528,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -567,7 +556,7 @@
                                               <RightBorder>
                                                 <Style>None</Style>
                                               </RightBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -590,7 +579,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -613,7 +601,7 @@
                                               <BottomBorder>
                                                 <Style>Solid</Style>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -634,7 +622,6 @@
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -656,7 +643,7 @@
                                               <BottomBorder>
                                                 <Style>Solid</Style>
                                               </BottomBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -679,7 +666,6 @@
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
-                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -705,7 +691,7 @@
                                               <RightBorder>
                                                 <Style>Solid</Style>
                                               </RightBorder>
-                                              <BackgroundColor>#f9741c</BackgroundColor>
+                                              <BackgroundColor>#d5ccc2</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3238,7 +3224,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>#f9741c</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -3343,8 +3328,9 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
               </Style>
             </Line>
             <Image Name="Image1">
-              <Source>Embedded</Source>
-              <Value>logozummo</Value>
+              <Source>Database</Source>
+              <Value>=First(Fields!CompanyInfo1Picture.Value, "DataSet_Result")</Value>
+              <MIMEType>image/png</MIMEType>
               <Sizing>FitProportional</Sizing>
               <Top>0.51243cm</Top>
               <Left>16.09893cm</Left>
@@ -4671,7 +4657,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4704,7 +4689,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 <RightBorder>
                   <Style>Solid</Style>
                 </RightBorder>
-                <BackgroundColor>#f9741c</BackgroundColor>
+                <BackgroundColor>#d5ccc2</BackgroundColor>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -4724,7 +4709,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4757,7 +4741,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 <RightBorder>
                   <Style>Solid</Style>
                 </RightBorder>
-                <BackgroundColor>#f9741c</BackgroundColor>
+                <BackgroundColor>#d5ccc2</BackgroundColor>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -4777,7 +4761,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4810,7 +4793,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 <RightBorder>
                   <Style>Solid</Style>
                 </RightBorder>
-                <BackgroundColor>#f9741c</BackgroundColor>
+                <BackgroundColor>#d5ccc2</BackgroundColor>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -4830,7 +4813,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4863,7 +4845,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 <RightBorder>
                   <Style>Solid</Style>
                 </RightBorder>
-                <BackgroundColor>#f9741c</BackgroundColor>
+                <BackgroundColor>#d5ccc2</BackgroundColor>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -4883,7 +4865,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4916,7 +4897,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 <RightBorder>
                   <Style>Solid</Style>
                 </RightBorder>
-                <BackgroundColor>#f9741c</BackgroundColor>
+                <BackgroundColor>#d5ccc2</BackgroundColor>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -4936,7 +4917,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -4969,7 +4949,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 <RightBorder>
                   <Style>Solid</Style>
                 </RightBorder>
-                <BackgroundColor>#f9741c</BackgroundColor>
+                <BackgroundColor>#d5ccc2</BackgroundColor>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -4989,7 +4969,6 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -5022,7 +5001,7 @@ Cstr(Last(Fields!LineDisc_SalesInvoiceLine.Value)) + Chr(177) + Cstr(Last(Fields
                 <RightBorder>
                   <Style>Solid</Style>
                 </RightBorder>
-                <BackgroundColor>#f9741c</BackgroundColor>
+                <BackgroundColor>#d5ccc2</BackgroundColor>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
@@ -5402,7 +5381,6 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -5435,7 +5413,7 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                 <RightBorder>
                   <Style>Solid</Style>
                 </RightBorder>
-                <BackgroundColor>#f9741c</BackgroundColor>
+                <BackgroundColor>#d5ccc2</BackgroundColor>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>

@@ -22,6 +22,19 @@ tableextension 50146 "Location" extends Location  //14
             DataClassification = CustomerContent;
             Caption = 'Planned Calculation', comment = 'ESP="Calcular en Planificación"';
         }
+        field(50103; "Almacen IE"; enum "IE Almacen")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Almacén IE', comment = 'ESP="Almacén IE"';
+            Description = 'se cambia el caption a IE porque estaba mal el nombre del campo';
+        }
+        field(50104; "Almacen Tipo"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Almacén tipo', comment = 'ESP="Almacén tipo"';
+            Description = 'se cambia el caption a Tipo porque estaba mal el nombre del campo';
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(Almacen));
+        }
     }
 
     trigger OnModify()

@@ -96,6 +96,13 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
             }
 
         }
+        addafter("Promised Delivery Date")
+        {
+            field("Fecha Entrega en destino"; "Fecha Entrega en destino")
+            {
+                ApplicationArea = all;
+            }
+        }
         //Comentario interno pedidos venta
         addbefore("Work Description")
         {
@@ -247,7 +254,7 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
                     end;
                 end;
             }
-            action("STH Post")
+            action("STH Update Purchase Order Zummo Inc")
             {
                 Caption = 'Update Purchase Order Zummo Inc.', Comment = 'Actualizar Ped. Compra Zummo Inc.';
                 ApplicationArea = All;

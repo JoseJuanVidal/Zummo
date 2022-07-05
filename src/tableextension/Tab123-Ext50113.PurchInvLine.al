@@ -15,5 +15,10 @@ tableextension 50113 "PurchInvLine" extends "Purch. Inv. Line"  //123
             Caption = 'Rejected Text', Comment = 'ESP="Motivo Rechazo"';
             Description = 'Bitec';
         }
+        field(50100; "Process No."; Code[20])
+        {
+            Caption = 'Process No.', Comment = 'ESP="Cód. proceso"';
+            DataClassification = CustomerContent;
+        }
     }
 }

@@ -12,11 +12,6 @@ enum 50100 "ClasVtas"
     {
         Caption = 'Containers and packaging', comment = 'ESP="Envases y Embalajes"';
     }
-
-
-
-
-
     value(2; Accesorios)
     {
         Caption = 'Accessories', comment = 'ESP="Accesorios"';

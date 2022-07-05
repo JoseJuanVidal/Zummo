@@ -43,6 +43,13 @@ page 50128 "RegistrarEnvio"
         facturaRegOrigen := pFacturaRegOrigen;
     end;
 
+    procedure SetEnviosDatos(SalesShipmentHeader: record "Sales Shipment Header")
+    begin
+        peso := SalesShipmentHeader.Peso_btc;
+        numPalets := SalesShipmentHeader.NumPalets_btc;
+        numBultos := SalesShipmentHeader.NumBultos_btc;
+    end;
+
 
     procedure GetDatos(var pPeso: Decimal; var pNumPalets: Integer; var pNumBultos: Integer)
     begin
@@ -93,7 +100,7 @@ page 50128 "RegistrarEnvio"
         Fc: Codeunit Funciones;
 
     begin
-        peso := 0;
+        //peso := 0;
         if facturaRegOrigen <> '' then begin
             recFacturaReg.Get(facturaRegOrigen);
             peso := recFacturaReg.Peso_btc;

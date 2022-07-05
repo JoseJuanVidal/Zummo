@@ -206,7 +206,11 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             Caption = 'Source Purch. Order Updated', Comment = 'Ped. Compra origen actualizado';
             DataClassification = CustomerContent;
         }
-
+        field(50130; "Fecha Entrega en destino"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fecha Entrega en destino', comment = 'ESP="Fecha Entrega en destino"';
+        }
 
         //#endregion Integracion Intercompany
     }

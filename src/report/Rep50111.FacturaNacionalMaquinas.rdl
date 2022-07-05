@@ -4143,7 +4143,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>9.00989cm</Top>
+              <Top>9.26389cm</Top>
               <Left>2.01943cm</Left>
               <Height>0.51533cm</Height>
               <Width>13.95178cm</Width>
@@ -4178,7 +4178,7 @@ cstr(Fields!txtVatEORI.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>9.05222cm</Top>
+              <Top>9.36972cm</Top>
               <Left>16.11232cm</Left>
               <Height>0.4095cm</Height>
               <Width>3.02917cm</Width>
@@ -4228,7 +4228,7 @@ cstr(Fields!txtVatEORI.Value)
               <Value>=First(Fields!logo.Value, "DataSet_Result")</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>8.81586cm</Top>
+              <Top>9.00283cm</Top>
               <Left>0.46625cm</Left>
               <Height>0.77639cm</Height>
               <Width>1.25376cm</Width>
@@ -6121,7 +6121,6 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                   </Paragraphs>
                   <rd:DefaultName>Textbox56</rd:DefaultName>
                   <Top>6.57477cm</Top>
-                  <Left>0cm</Left>
                   <Height>0.27138cm</Height>
                   <Width>16.86087cm</Width>
                   <ZIndex>31</ZIndex>

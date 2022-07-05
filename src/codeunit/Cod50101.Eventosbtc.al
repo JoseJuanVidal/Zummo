@@ -973,6 +973,30 @@ codeunit 50101 "Eventos_btc"
         JobLedgerEntry."Entry Type" := JobLedgerEntry."Entry Type"::Sale;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch. Price Calc. Mgt.", 'OnAfterFindPurchLinePrice', '', true, true)]
+    local procedure PurchPriceCalcMgt_OnAfterFindPurchLinePrice(VAR PurchaseLine: Record "Purchase Line"; VAR PurchaseHeader: Record "Purchase Header"; VAR PurchasePrice: Record "Purchase Price"; CalledByFieldNo: Integer)
+    var
+        PurchasePrice2: Record "Purchase Price";
+    begin
+        if PurchasePrice2.get(PurchasePrice."Item No.", PurchasePrice."Vendor No.", PurchasePrice."Starting Date", PurchasePrice."Currency Code", PurchasePrice."Variant Code", PurchasePrice."Unit of Measure Code", PurchasePrice."Minimum Quantity") then begin
+            PurchaseLine."Process No." := PurchasePrice2."Process No.";
+
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch. Price Calc. Mgt.", 'OnAfterFindPurchLineLineDisc', '', true, true)]
+    local procedure PurchPriceCalcMgt_OnAfterFindPurchLineLineDisce(VAR PurchaseLine: Record "Purchase Line"; VAR PurchaseHeader: Record "Purchase Header"; VAR TempPurchLineDisc: Record "Purchase Line Discount" temporary)
+    var
+        PurchaseLineDiscount2: Record "Purchase Line Discount";
+    begin
+
+        if PurchaseLineDiscount2.get(TempPurchLineDisc."Item No.", TempPurchLineDisc."Vendor No.", TempPurchLineDisc."Starting Date", TempPurchLineDisc."Currency Code",
+                TempPurchLineDisc."Variant Code", TempPurchLineDisc."Unit of Measure Code", TempPurchLineDisc."Minimum Quantity") then begin
+            PurchaseLine."Process No." := TempPurchLineDisc."Process No.";
+
+        end;
+    end;
+
     /*[EventSubscriber(ObjectType::table, Database::"Intrastat Jnl. Line", 'OnAfterModifyEvent', '', true, true)]
       local procedure IntrastatJnlLineIntrastatJnlLineOnAfterModifyEvent(VAR Rec: Record "Intrastat Jnl. Line"; VAR xRec: Record "Intrastat Jnl. Line"; RunTrigger: Boolean)
       begin
@@ -996,10 +1020,16 @@ codeunit 50101 "Eventos_btc"
     var
         ZummoInnICFunctions: Codeunit "Zummo Inn. IC Functions";
         EmptySalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
     begin
         if Rec."Source Purch. Order No" <> '' then begin
-            if Rec."Document Type" = Rec."Document Type"::Order then
-                ZummoInnICFunctions.UpdateOrderNoPurchaseOrderIC(Rec, EmptySalesHeader); //Pasamos una record de Sales Header vacio para que deje el nº de pedido de venta en el pedido de compra origen vacio
+            if Rec."Document Type" = Rec."Document Type"::Order then begin
+                SalesLine.Reset();
+                SalesLine.SetRange("Document No.", Rec."No.");
+                SalesLine.SetFilter("Quantity Shipped", '>%1', 0);
+                if not SalesLine.FindFirst() then
+                    ZummoInnICFunctions.UpdateOrderNoPurchaseOrderIC(Rec, EmptySalesHeader); //Pasamos una record de Sales Header vacio para que deje el nº de pedido de venta en el pedido de compra origen vacio
+            end;
         end;
     end;
 
