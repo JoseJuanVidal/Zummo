@@ -107,9 +107,10 @@ pageextension 50133 "ItemList" extends "Item List"
 
                 trigger OnAction()
                 var
-                // rimportarComentarios: Report "Importar Comentarios Excel";
+                    rimportarComentarios: Report "Cargar Comentarios Excel";
                 begin
-                    Message('Importar Comentarios');
+                    // Message('Importar Comentarios');
+                    rimportarComentarios.Run();
                 end;
             }
         }

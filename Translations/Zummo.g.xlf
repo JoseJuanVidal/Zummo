@@ -11553,6 +11553,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Este proceso actualizará las dimensiones de todas las tablas relacionadas con el cliente\¿Desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report CambioDimensionesVentas - Method OnPreReport - NamedType lbQst</note>
         </trans-unit>
+        <trans-unit id="Report 3412412437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Comentarios Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3412412437 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Seleccione fichero</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text50000</note>
+        </trans-unit>
         <trans-unit id="Report 1045337665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create period invoices (process)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crear facturas periódicas (proceso)"</note>
