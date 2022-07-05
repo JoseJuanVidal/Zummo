@@ -45,7 +45,7 @@ report 50144 "Cargar Comentarios Excel"
         NVInStream: InStream;
         RecordAdd: Integer;
         Text000: label 'Cargar Fichero de Excel';
-        Text001: Label '¿Desea importar el fichero %1?', comment = 'ESP="¿Desea importar el fichero %1?"';
+        Text001: Label '¿Desea importar el fichero Excel?', comment = 'ESP="¿Desea importar el fichero Excel?"';
 
     trigger OnPreReport()
     begin
@@ -64,7 +64,7 @@ report 50144 "Cargar Comentarios Excel"
         ExcelBuffer.ReadSheet();
         Commit();
         ExcelBuffer.Reset();
-        if Confirm(Text001, false, FileName) then
+        if Confirm(Text001, false) then
             CargarComentarioProducto();
     end;
 

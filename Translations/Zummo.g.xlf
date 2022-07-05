@@ -11574,8 +11574,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Report 3412412437 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Desea importar el fichero %1?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea importar el fichero %1?"</note>
+          <source>¿Desea importar el fichero Excel?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea importar el fichero Excel?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Report 3412412437 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
