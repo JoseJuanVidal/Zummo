@@ -72,10 +72,10 @@ codeunit 50106 "SalesEvents"
                         SalesLine.SetRange("Document No.", SalesHeader."No.");
                         if SalesLine.findset() then
                             repeat
-                                    if Location.Get(SalesLine."Location Code") then
-                                        if Location.RequiredShipinvoice then
-                                            if SalesLine."Outstanding Quantity" > 0 then
-                                                Error(ErrorMsg, Location.Code);
+                                if Location.Get(SalesLine."Location Code") then
+                                    if Location.RequiredShipinvoice then
+                                        if SalesLine."Outstanding Quantity" > 0 then
+                                            Error(ErrorMsg, Location.Code);
                             Until SalesLine.next() = 0;
                     end;
                 end;
@@ -311,13 +311,13 @@ codeunit 50106 "SalesEvents"
         recDate.SetRange("Period Type", recDate."Period Type"::Date);
         recDate.SetFilter("Period Start", '%1..', pFecha + 1);
         if recDate.FindSet() then
-                repeat
-                    //if (recDate."Period No." <> 6) and (recDate."Period No." <> 7) then begin
-                    if not CalendarManegment.CheckDateStatus(SalesSetup.CalendarioOfertas, recDate."Period Start", textovacio) then begin
-                        fechaResult := recDate."Period Start";
-                        i += 1;
-                    end;
-                until (recDate.Next() = 0) or (i >= pNumDias);
+            repeat
+                //if (recDate."Period No." <> 6) and (recDate."Period No." <> 7) then begin
+                if not CalendarManegment.CheckDateStatus(SalesSetup.CalendarioOfertas, recDate."Period Start", textovacio) then begin
+                    fechaResult := recDate."Period Start";
+                    i += 1;
+                end;
+            until (recDate.Next() = 0) or (i >= pNumDias);
 
         exit(fechaResult);
     end;
@@ -614,7 +614,23 @@ codeunit 50106 "SalesEvents"
         end;
     end;
 
-
+    [EventSubscriber(ObjectType::Table, database::"Service Item Line", 'OnAfterValidateEvent', 'Item No.', true, true)]
+    local procedure ServiceItemLine_OnAfterValidateEvent_ItemNo(var Rec: Record "Service Item Line"; var xRec: Record "Service Item Line"; CurrFieldNo: Integer)
+    var
+        ServiceItem: Record "Service Item";
+    begin
+        if Rec.IsTemporary then
+            exit;
+        case CurrFieldNo of
+            Rec.FieldNo("Service Item No."):
+                begin
+                    if ServiceItem.Get(Rec."Service Item No.") then begin
+                        if ServiceItem."Mostrar aviso pedido servicio" then
+                            Message(ServiceItem."Aviso pedido servicio");
+                    end;
+                end;
+        end;
+    end;
 
 
     //Comentarios lotes hist factura venta
@@ -634,7 +650,7 @@ codeunit 50106 "SalesEvents"
         recSalesInvoiceLine.SetRange(Type, recSalesInvoiceLine.Type::Item);
         if recSalesInvoiceLine.FindSet() then
             repeat
-                    intNumLinea := recSalesInvoiceLine."Line No.";
+                intNumLinea := recSalesInvoiceLine."Line No.";
 
                 RecMemLotes.Reset();
                 RecMemLotes.DeleteAll();
@@ -643,7 +659,7 @@ codeunit 50106 "SalesEvents"
                 RecMemLotes.Reset();
                 if RecMemLotes.FindSet() then
                     repeat
-                            intNumLinea += 1;
+                        intNumLinea += 1;
 
                         recSalesInvLineAux.Init();
                         recSalesInvLineAux."Document No." := recSalesInvoiceLine."Document No.";
@@ -672,22 +688,22 @@ codeunit 50106 "SalesEvents"
         ValueEntryRelation.SETCURRENTKEY("Source RowId");
         ValueEntryRelation.SETRANGE("Source RowId", InvoiceRowID);
         IF ValueEntryRelation.FINDFIRST() THEN
-                REPEAT
-                    ValueEntry.GET(ValueEntryRelation."Value Entry No.");
-                    ItemLedgEntry.GET(ValueEntry."Item Ledger Entry No.");
-                    ItemLedgEntry.CALCFIELDS("Sales Amount (Actual)");
-                    RecMemEstadisticas.RESET();
-                    RecMemEstadisticas.SETRANGE(NoLote, ItemLedgEntry."Serial No.");
-                    IF NOT RecMemEstadisticas.FINDFIRST() THEN BEGIN
-                        RecMemEstadisticas.INIT();
-                        RecMemEstadisticas.NoMov := NumMov;
-                        NumMov += 1;
-                        RecMemEstadisticas.NoLote := ItemLedgEntry."Lot No.";
-                        RecMemEstadisticas.NoSerie := ItemLedgEntry."Serial No.";
-                        RecMemEstadisticas.Noproducto := ItemLedgEntry."Item No.";
-                        RecMemEstadisticas.INSERT();
-                    END;
-                UNTIL ValueEntryRelation.NEXT() = 0;
+            REPEAT
+                ValueEntry.GET(ValueEntryRelation."Value Entry No.");
+                ItemLedgEntry.GET(ValueEntry."Item Ledger Entry No.");
+                ItemLedgEntry.CALCFIELDS("Sales Amount (Actual)");
+                RecMemEstadisticas.RESET();
+                RecMemEstadisticas.SETRANGE(NoLote, ItemLedgEntry."Serial No.");
+                IF NOT RecMemEstadisticas.FINDFIRST() THEN BEGIN
+                    RecMemEstadisticas.INIT();
+                    RecMemEstadisticas.NoMov := NumMov;
+                    NumMov += 1;
+                    RecMemEstadisticas.NoLote := ItemLedgEntry."Lot No.";
+                    RecMemEstadisticas.NoSerie := ItemLedgEntry."Serial No.";
+                    RecMemEstadisticas.Noproducto := ItemLedgEntry."Item No.";
+                    RecMemEstadisticas.INSERT();
+                END;
+            UNTIL ValueEntryRelation.NEXT() = 0;
     end;
 
     //Cambiar fechas cartera doc al validar la de la cabecera
@@ -806,11 +822,11 @@ codeunit 50106 "SalesEvents"
         recSalesInvLine.SetFilter("Shipment No.", '<>%1', '');
         if recSalesInvLine.FindSet() then
             repeat
-                    if not recTemp.Get(recSalesInvLine."Shipment No.") then begin
-                        recTemp.Init();
-                        recTemp."Currency Code" := recSalesInvLine."Shipment No.";
-                        recTemp.Insert();
-                    end;
+                if not recTemp.Get(recSalesInvLine."Shipment No.") then begin
+                    recTemp.Init();
+                    recTemp."Currency Code" := recSalesInvLine."Shipment No.";
+                    recTemp.Insert();
+                end;
             until recSalesInvLine.Next() = 0;
 
 
@@ -819,7 +835,7 @@ codeunit 50106 "SalesEvents"
         recSalesInvLine.SetFilter("Order No.", '<>%1', '');
         if recSalesInvLine.FindSet() then
             repeat
-                    codAlb := '';
+                codAlb := '';
 
                 recCabPedido.Reset();
                 recCabPedido.SetRange("Document Type", recCabPedido."Document Type"::Order);
@@ -848,13 +864,13 @@ codeunit 50106 "SalesEvents"
 
         recTemp.Reset();
         if recTemp.FindSet() then
-                repeat
-                    if recSalesShptHeader.Get(recTemp."Currency Code") then begin
-                        decBultos += recSalesShptHeader.NumBultos_btc;
-                        decPeso += recSalesShptHeader.Peso_btc;
-                        decPalets += recSalesShptHeader.NumPalets_btc;
-                    end;
-                until recTemp.Next() = 0;
+            repeat
+                if recSalesShptHeader.Get(recTemp."Currency Code") then begin
+                    decBultos += recSalesShptHeader.NumBultos_btc;
+                    decPeso += recSalesShptHeader.Peso_btc;
+                    decPalets += recSalesShptHeader.NumPalets_btc;
+                end;
+            until recTemp.Next() = 0;
 
         if (decBultos <> 0) or (decPalets <> 0) or (decPeso <> 0) then begin
             recSalesInvHeader.Reset();
@@ -894,54 +910,54 @@ codeunit 50106 "SalesEvents"
         recSalesLine.SetFilter("No.", '<>%1', '');
         if recSalesLine.FindSet() then
             repeat
-                    if recItemLedgEntry.Get(recSalesLine."Appl.-from Item Entry") and (recItemLedgEntry."Document Type" = recItemLedgEntry."Document Type"::"Sales Shipment") then begin
-                        recPostAss.Reset();
-                        recPostAss.SetRange("Document Type", recPostAss."Document Type"::"Sales Shipment");
-                        recPostAss.SetRange("Document No.", recItemLedgEntry."Document No.");
-                        recPostAss.SetRange("Document Line No.", recItemLedgEntry."Document Line No.");
-                        if recPostAss.FindSet() then
-                            repeat
-                                    if not recTempEnsambladosDeshacer.Get(recPostAss."Assembly Document No.") then begin
-                                        // Me quedo con los ensamblados afectados
-                                        recTempEnsambladosDeshacer.Init();
-                                        recTempEnsambladosDeshacer."Currency Code" := recPostAss."Assembly Document No.";
-                                        recTempEnsambladosDeshacer.Insert();
+                if recItemLedgEntry.Get(recSalesLine."Appl.-from Item Entry") and (recItemLedgEntry."Document Type" = recItemLedgEntry."Document Type"::"Sales Shipment") then begin
+                    recPostAss.Reset();
+                    recPostAss.SetRange("Document Type", recPostAss."Document Type"::"Sales Shipment");
+                    recPostAss.SetRange("Document No.", recItemLedgEntry."Document No.");
+                    recPostAss.SetRange("Document Line No.", recItemLedgEntry."Document Line No.");
+                    if recPostAss.FindSet() then
+                        repeat
+                            if not recTempEnsambladosDeshacer.Get(recPostAss."Assembly Document No.") then begin
+                                // Me quedo con los ensamblados afectados
+                                recTempEnsambladosDeshacer.Init();
+                                recTempEnsambladosDeshacer."Currency Code" := recPostAss."Assembly Document No.";
+                                recTempEnsambladosDeshacer.Insert();
 
-                                        // Ajuste negativo al resultado del ensamblado
-                                        recItemJnlLine.Reset();
-                                        if recItemJnlLine.FindLast() then
-                                            intNumLinea := recItemJnlLine."Line No." + 1000
-                                        else
-                                            intNumLinea := 10000;
+                                // Ajuste negativo al resultado del ensamblado
+                                recItemJnlLine.Reset();
+                                if recItemJnlLine.FindLast() then
+                                    intNumLinea := recItemJnlLine."Line No." + 1000
+                                else
+                                    intNumLinea := 10000;
 
-                                        recItemJnlLine.Init();
+                                recItemJnlLine.Init();
 
-                                        recItemJnlLine."Line No." := intNumLinea;
-                                        recItemJnlLine.Validate("Posting Date", Today);
-                                        recItemJnlLine."Entry Type" := recItemJnlLine."Entry Type"::"Negative Adjmt.";
-                                        recItemJnlLine."Document No." := recPostAss."Assembly Document No.";
-                                        recItemJnlLine.Validate("Item No.", recSalesLine."No.");
-                                        recItemJnlLine.Validate("Location Code", recSalesLine."Location Code");
+                                recItemJnlLine."Line No." := intNumLinea;
+                                recItemJnlLine.Validate("Posting Date", Today);
+                                recItemJnlLine."Entry Type" := recItemJnlLine."Entry Type"::"Negative Adjmt.";
+                                recItemJnlLine."Document No." := recPostAss."Assembly Document No.";
+                                recItemJnlLine.Validate("Item No.", recSalesLine."No.");
+                                recItemJnlLine.Validate("Location Code", recSalesLine."Location Code");
 
-                                        if recSalesLine."Bin Code" <> '' then
-                                            recItemJnlLine.Validate("Bin Code", recSalesLine."Bin Code");
+                                if recSalesLine."Bin Code" <> '' then
+                                    recItemJnlLine.Validate("Bin Code", recSalesLine."Bin Code");
 
-                                        recItemJnlLine.Validate(Quantity, recSalesLine.Quantity);
-                                        recItemJnlLine.validate("Unit of Measure Code", recSalesLine."Unit of Measure Code");
+                                recItemJnlLine.Validate(Quantity, recSalesLine.Quantity);
+                                recItemJnlLine.validate("Unit of Measure Code", recSalesLine."Unit of Measure Code");
 
-                                        recItLedgEntPostitivo.Reset();
-                                        recItLedgEntPostitivo.SetRange("Entry Type", recItLedgEntPostitivo."Entry Type"::Sale);
-                                        recItLedgEntPostitivo.SetRange("Item No.", recSalesLine."No.");
-                                        recItLedgEntPostitivo.SetRange("Document Type", recItLedgEntPostitivo."Document Type"::"Sales Return Receipt");
-                                        recItLedgEntPostitivo.SetRange("Document No.", ReturnReceiptHeader."No.");
-                                        recItLedgEntPostitivo.SetRange(Open, true);
-                                        if recItLedgEntPostitivo.FindFirst() then
-                                            recItemJnlLine.Validate("Applies-to Entry", recItLedgEntPostitivo."Entry No.");
+                                recItLedgEntPostitivo.Reset();
+                                recItLedgEntPostitivo.SetRange("Entry Type", recItLedgEntPostitivo."Entry Type"::Sale);
+                                recItLedgEntPostitivo.SetRange("Item No.", recSalesLine."No.");
+                                recItLedgEntPostitivo.SetRange("Document Type", recItLedgEntPostitivo."Document Type"::"Sales Return Receipt");
+                                recItLedgEntPostitivo.SetRange("Document No.", ReturnReceiptHeader."No.");
+                                recItLedgEntPostitivo.SetRange(Open, true);
+                                if recItLedgEntPostitivo.FindFirst() then
+                                    recItemJnlLine.Validate("Applies-to Entry", recItLedgEntPostitivo."Entry No.");
 
-                                        codeunit.Run(codeunit::"Item Jnl.-Post Line", recItemJnlLine);
-                                    end;
-                            until recPostAss.Next() = 0;
-                    end;
+                                codeunit.Run(codeunit::"Item Jnl.-Post Line", recItemJnlLine);
+                            end;
+                        until recPostAss.Next() = 0;
+                end;
             until recSalesLine.next() = 0;
     end;
 

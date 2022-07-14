@@ -24273,6 +24273,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Método de transporte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field Transport Methods - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3194161445 - Field 624876957 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3194161445">
+          <source>Gen. Business Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro negocio gen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor Posting Group - Field Gen. Business Posting Group - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4104438143 - Field 2906867365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 406314583">
           <source>código clasificación</source>
           <note from="Developer" annotates="general" priority="2">ESP="código clasificación"</note>
