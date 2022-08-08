@@ -614,8 +614,8 @@ codeunit 50106 "SalesEvents"
         end;
     end;
 
-    [EventSubscriber(ObjectType::Table, database::"Service Item Line", 'OnAfterValidateEvent', 'Item No.', true, true)]
-    local procedure ServiceItemLine_OnAfterValidateEvent_ItemNo(var Rec: Record "Service Item Line"; var xRec: Record "Service Item Line"; CurrFieldNo: Integer)
+    [EventSubscriber(ObjectType::Table, database::"Service Item Line", 'OnAfterValidateEvent', 'Service Item No.', true, true)]
+    local procedure ServiceItemLine_OnAfterValidateEvent_ServiceItemLineNo(var Rec: Record "Service Item Line"; var xRec: Record "Service Item Line"; CurrFieldNo: Integer)
     var
         ServiceItem: Record "Service Item";
     begin
