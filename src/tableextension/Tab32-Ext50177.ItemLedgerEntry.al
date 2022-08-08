@@ -31,6 +31,12 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
             OptionMembers = Inventory,Service,"Non-Inventory";
             OptionCaption = 'Inventario,Servicio,Fuera de inventario', Comment = 'ESP="Inventario,Servicio,Fuera de inventario"';
         }
-
+        field(50107; "Posted Service Item"; Boolean)
+        {
+            Caption = 'Posted  Item Service', comment = 'ESP="Hist. Productos de servicio"';
+            FieldClass = FlowField;
+            CalcFormula = exist("Service Item" where("Item No." = field("Item No."), CodSerieHistorico_btc = field("Serial No.")));
+            Editable = false;
+        }
     }
 }

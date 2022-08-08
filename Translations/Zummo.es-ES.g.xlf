@@ -23690,6 +23690,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field NombreCliente_btc - Property Caption</note>
           <target>Nombre Cliente</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 3833964963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Posted  Item Service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Productos de servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Posted Service Item - Property Caption</note>
+          <target>Hist. Productos de servicio</target>
+        </trans-unit>
         <trans-unit id="TableExtension 53801266 - Field 831439759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 53801266">
           <source>Es Materal</source>
           <note from="Developer" annotates="general" priority="2">ESP="Es Material"</note>
@@ -26168,6 +26174,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Método de transporte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field Transport Methods - Property Caption</note>
           <target>Método de transporte</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3194161445 - Field 624876957 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3194161445">
+          <source>Gen. Business Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro negocio gen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor Posting Group - Field Gen. Business Posting Group - Property Caption</note>
+          <target>Grupo registro negocio gen.</target>
         </trans-unit>
         <trans-unit id="TableExtension 4104438143 - Field 2906867365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 406314583">
           <source>código clasificación</source>

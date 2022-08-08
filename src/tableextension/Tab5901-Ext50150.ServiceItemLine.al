@@ -70,12 +70,5 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
         }
     }
 
-    trigger OnInsert()
-    var
-        ServiceItem: Record "Service Item";
-    begin
-        ServiceItem.Get("Service Item No.");
-        if ServiceItem."Mostrar aviso pedido servicio" then
-            Message(ServiceItem."Aviso pedido servicio");
-    end;
+
 }

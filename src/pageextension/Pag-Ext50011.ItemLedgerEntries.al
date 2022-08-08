@@ -67,6 +67,13 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                 Editable = false;
             }
         }
+        addbefore(Quantity)
+        {
+            field("Posted Service Item"; "Posted Service Item")
+            {
+                ApplicationArea = all;
+            }
+        }
         addbefore("Entry No.")
         {
             field(OrderNo; OrderNo)
