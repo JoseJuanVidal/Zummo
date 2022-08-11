@@ -1116,4 +1116,64 @@ codeunit 50110 "CU_Cron"
         Funciones.CustomerCalculateFechaVto();
     end;
 
+    local procedure AvisosFacturasVencidasClientes()
+    var
+        TextosAux: Record TextosAuxiliares;
+        Salesperson: Record "Salesperson/Purchaser";
+        Customer: Record Customer;
+        MovsCustomer: Record "Cust. Ledger Entry";
+        ExcelBuffer: Record "Excel Buffer";
+    begin
+        TextosAux.SetRange(TipoTabla, TextosAux.TipoTabla::AreaManager);
+        if TextosAux.FindSet() then begin
+            if Salesperson.Get(TextosAux.NumReg) then begin
+                if Salesperson."E-Mail" <> '' then begin
+                    Customer.SetRange(AreaManager_btc, Salesperson.Code);
+
+                    //Exportacion Excel
+                    ExportarFacturasVencidasClientesExcel(Customer, MovsCustomer, ExcelBuffer);
+
+                    //Enviar Correo
+                    EnvioCorreoFacturasVencidasClientes(Salesperson, ExcelBuffer);
+                end;
+            end;
+        end;
+    end;
+
+    local procedure ExportarFacturasVencidasClientesExcel(var Customer: Record Customer; var MovsCustomer: Record "Cust. Ledger Entry"; var ExcelBuffer: Record "Excel Buffer")
+    begin
+        //Exportacion a Excel
+        if Customer.FindSet() then begin
+            repeat
+                //1- Crear libro
+                ExportarFacturasVencidasClienteExcel(Customer, MovsCustomer, ExcelBuffer);
+            until Customer.Next() = 0;
+        end;
+    end;
+
+    local procedure ExportarFacturasVencidasClienteExcel(var Customer: Record Customer; var MovsCustomer: Record "Cust. Ledger Entry"; var ExcelBuffer: Record "Excel Buffer")
+    begin
+        MovsCustomer.SetRange("Customer No.", Customer."No.");
+        MovsCustomer.SetRange("Document Status", MovsCustomer."Document Status"::Open);
+        MovsCustomer.SetRange("Document Type", MovsCustomer."Document Type"::Invoice, MovsCustomer."Document Type"::Bill);
+        if MovsCustomer.FindSet() then begin
+            repeat
+                if MovsCustomer."Due Date" < WorkDate() then
+                    //2- Añadir datos al libro
+                    Message('EXCEL');
+            until MovsCustomer.Next() = 0;
+        end;
+    end;
+
+    local procedure EnvioCorreoFacturasVencidasClientes(Salesperson: Record "Salesperson/Purchaser"; ExcelBuffer: Record "Excel Buffer")
+    var
+        recSMTPSetup: Record "SMTP Mail Setup";
+        cduMailManagement: Codeunit "Mail Management";
+        cduSmtp: Codeunit "SMTP Mail";
+        txtAsunto: Text;
+        txtCuerpo: Text;
+        cduTrampa: Codeunit SMTP_Trampa;
+    begin
+        //Envio Email a SalesPerson con Excel
+    end;
 }
