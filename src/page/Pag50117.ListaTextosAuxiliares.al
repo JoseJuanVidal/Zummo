@@ -52,6 +52,30 @@ page 50117 "Lista Textos Auxiliares"
         }
     }
 
+    actions
+    {
+        area(Reporting)
+        {
+            action(FacturasVencidasExcel)
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = New;
+                Image = Excel;
+                Caption = 'Excel Facturas Vencidas', comment = 'ESP="Excel Facturas Vencidas"';
+                ToolTip = 'Excel Facturas Vencidas', comment = 'ESP="Excel Facturas Vencidas"';
+
+                trigger OnAction()
+                var
+                    CUCron: Codeunit CU_Cron;
+                begin
+                    CUCron.AvisosFacturasVencidasClientes();
+                end;
+            }
+        }
+    }
+
     trigger OnOpenPage()
     begin
         if UpperCase(GetFilter(TipoTabla)) = 'CANAL' then

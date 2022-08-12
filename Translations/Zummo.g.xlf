@@ -5798,6 +5798,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=Años de Garantía</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field WarrantyDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Codeunit 4289582467 - Method 722358005 - NamedType 2499179930" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Facturas Vencidas Clientes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CU_Cron - Method ExportarFacturasVencidasClientesExcel - NamedType ExcelFileName</note>
+        </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
@@ -8407,6 +8412,16 @@
           <source>Auxiliary</source>
           <note from="Developer" annotates="general" priority="2">ESP="Valores"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2207170913 - Action 159847125 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Excel Facturas Vencidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Excel Facturas Vencidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Action FacturasVencidasExcel - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2207170913 - Action 159847125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Excel Facturas Vencidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Excel Facturas Vencidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Action FacturasVencidasExcel - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4246998658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log Sending client emails</source>

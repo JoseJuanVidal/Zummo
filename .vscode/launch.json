@@ -15,20 +15,20 @@
             "launchBrowser": false,
             "schemaUpdateMode": "ForceSync"
         },
-        // {
-        //     "name": "Localhost",
-        //     "type": "al",
-        //     "request": "launch",
-        //     "server": "http://localhost:8080/BC140", //Produccion
-        //     "serverInstance": "BC140",
-        //     "port": 7249,
-        //     "authentication": "Windows",
-        //     "startupObjectId": 9305,
-        //     "startupObjectType": "Page",
-        //     "breakOnError": true,
-        //     "breakOnRecordWrite": false,
-        //     "launchBrowser": true,
-        //     "schemaUpdateMode": "ForceSync"
-        // }
+        {
+            "name": "Localhost",
+            "type": "al",
+            "request": "launch",
+            "server": "http://localhost:8080/BC140", //Produccion
+            "serverInstance": "BC140",
+            "port": 7149,
+            "authentication": "Windows",
+            "startupObjectId": 9305,
+            "startupObjectType": "Page",
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": true,
+            "schemaUpdateMode": "ForceSync"
+        }
     ]
 }
