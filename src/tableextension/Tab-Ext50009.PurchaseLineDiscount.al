@@ -1,4 +1,4 @@
-tableextension 50009 "" extends "Purchase Line Discount"
+tableextension 50009 "Purchase Line Discount" extends "Purchase Line Discount"
 {
     fields
     {
