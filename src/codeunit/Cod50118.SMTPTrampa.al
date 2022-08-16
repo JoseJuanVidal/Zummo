@@ -17,7 +17,7 @@ codeunit 50118 "SMTP_Trampa"
         ReplyAddress: DotNet MyMailAddress;
     begin
         // create from address
-         FromAddress := FromAddress.MailAddress(ReplyToAddress, ReplyToName);
+        FromAddress := FromAddress.MailAddress(ReplyToAddress, ReplyToName);
 
         // create mail message
         IF NOT ISNULL(MailMessage) THEN
@@ -42,7 +42,7 @@ codeunit 50118 "SMTP_Trampa"
         SMTPMailSetup: Record "SMTP Mail Setup";
         NetworkCredential: DotNet MyNetworkCredential;
         userAux: text[250];
-        passAux: text[250];
+        passAux: text;
     begin
         SMTPMailSetup.FindFirst();
 

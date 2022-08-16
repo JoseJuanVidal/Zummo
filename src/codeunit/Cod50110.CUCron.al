@@ -1128,17 +1128,15 @@ codeunit 50110 "CU_Cron"
         TextosAux.SetRange(NumReg, 'IRENE NAVARRO');
         if TextosAux.FindSet() then begin
             // repeat
-            Message('TEXTOS AUXILIARES: %1 %2', TextosAux.NumReg, TextosAux.Descripcion);
             if Salesperson.Get(TextosAux.NumReg) then begin
                 if Salesperson."E-Mail" <> '' then begin
-                    Message('SALES PERSON: %1 %2 %3', Salesperson.Code, Salesperson.Name, Salesperson."E-Mail");
                     Customer.SetRange(AreaManager_btc, Salesperson.Code);
 
                     //Exportacion Excel
                     ExportarFacturasVencidasClientesExcel(Customer, MovsCustomer, ExcelBuffer);
 
                     //Enviar Correo
-                    // EnvioCorreoFacturasVencidasClientes(Salesperson, ExcelBuffer);
+                    EnvioCorreoFacturasVencidasClientes(Salesperson, Customer, 'Facturas Vencidas', ExcelBuffer);
                 end;
             end;
             // until TextosAux.Next() = 0;
@@ -1151,93 +1149,144 @@ codeunit 50110 "CU_Cron"
         ExcelFileName: Label 'Facturas Vencidas Clientes';
         BookName: Text;
         contador: Integer;
+        importeTotalPendiente: Decimal;
+        CurrentRow: Integer;
     begin
         contador := 0;
+        CurrentRow := 2;
+
         //Exportacion a Excel
         CompanyInfo.Get();
         ExcelBuffer.Reset();
-        // ExcelBuffer.DeleteAll();
+        ExcelBuffer.CreateNewBook('Facturas Vencidas');
+        ExcelBuffer.AddColumn('Cliente', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Nombre', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Total Importe Pendiente', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+        ExcelBuffer.WriteSheet('Facturas Vencidas', CompanyInfo.Name, Customer."No.");
 
         if Customer.FindSet() then begin
             repeat
-                Message('CUSTOMER: %1 %2 %3', Customer."No.", Customer.Name, Customer.AreaManager_btc);
+                importeTotalPendiente := 0;
                 //1- Crear libro
+                ExcelBuffer.DeleteAll();
+                ExcelBuffer.SetCurrent(0, 0);
                 ExcelBuffer.NewRow();
-                ExcelBuffer.AddColumn('Cliente', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn('Cliente', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
                 ExcelBuffer.AddColumn(Customer."No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
                 ExcelBuffer.NewRow();
-                ExcelBuffer.AddColumn('Nombre', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn('Nombre', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
                 ExcelBuffer.AddColumn(Customer.Name, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
                 ExcelBuffer.NewRow();
                 ExcelBuffer.NewRow();
                 ExcelBuffer.NewRow();
                 ExcelBuffer.NewRow();
 
-                ExcelBuffer.AddColumn('Tipo', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
-                ExcelBuffer.AddColumn('Nº Documento', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
-                ExcelBuffer.AddColumn('Fecha', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
-                ExcelBuffer.AddColumn('Fecha Vto.', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
-                ExcelBuffer.AddColumn('Importe', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
-                ExcelBuffer.AddColumn('Importe Pendiente', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn('Tipo', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn('Nº Documento', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn('Fecha', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn('Fecha Vto.', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn('Importe', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn('Importe Pendiente', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.NewRow();
 
-                ExportarFacturasVencidasClienteExcel(Customer, MovsCustomer, ExcelBuffer, CompanyInfo);
-
-                // BookName := 'Facturas Vencidas Clientes';
-                BookName := Customer."No." + ' - ' + Customer.Name;
-                // ExcelBuffer.SelectOrAddSheet(Customer."No." + ' - ' + Customer.Name);
-                // ExcelBuffer.WriteSheet(BookName, CompanyInfo.Name, Customer."No.");
-                // BookName := CopyStr(Customer."No." + ' - ' + Customer.Name, 0, 100);
-                ExcelBuffer.CreateNewBook(BookName);
-                ExcelBuffer.WriteSheet(BookName, CompanyInfo.Name, Customer."No.");
-                ExcelBuffer.CloseBook();
-                ExcelBuffer.SetFriendlyFilename(StrSubstNo(ExcelFileName, CurrentDateTime, Customer.AreaManager_btc));
+                if ExportarFacturasVencidasClienteExcel(Customer, MovsCustomer, importeTotalPendiente, ExcelBuffer, CompanyInfo) then begin
+                    BookName := CopyStr(Customer."No." + ' - ' + Customer.Name, 1, 50);
+                    ExcelBuffer.SelectOrAddSheet(BookName);
+                    ExcelBuffer.WriteSheet(BookName, CompanyInfo.Name, Customer."No.");
+                    añadirResumenFacturasVencidasClientes(Customer, importeTotalPendiente, CurrentRow, ExcelBuffer, CompanyInfo);
+                    CurrentRow += 1;
+                end;
 
                 contador += 1;
-            until (Customer.Next() = 0) OR (contador >= 3);
+            until (Customer.Next() = 0) OR (contador >= 10);
         end;
 
-        // ExcelBuffer.SetFriendlyFilename(StrSubstNo(ExcelFileName, CurrentDateTime, Customer.AreaManager_btc));
-
-
+        ExcelBuffer.CloseBook();
+        ExcelBuffer.SetFriendlyFilename(StrSubstNo(ExcelFileName, CurrentDateTime, Customer.AreaManager_btc));
         ExcelBuffer.OpenExcel();
-        // ExcelBuffer.CreateBookAndOpenExcel(StrSubstNo(ExcelFileName, CurrentDateTime, Customer.AreaManager_btc), BookName, '', CompanyInfo.Name, Customer.AreaManager_btc);
     end;
 
-    local procedure ExportarFacturasVencidasClienteExcel(var Customer: Record Customer; var MovsCustomer: Record "Cust. Ledger Entry"; var ExcelBuffer: Record "Excel Buffer"; CompanyInfo: Record "Company Information")
-    begin
-        // ExcelBuffer.DeleteAll();
-        // ExcelBuffer.SetCurrentKey(0,0);
-        // ExcelBuffer.SelectOrAddSheet(Customer."No." + ' - ' + Customer.Name);
-
-        MovsCustomer.SetRange("Customer No.", Customer."No.");
-        MovsCustomer.SetRange("Document Status", MovsCustomer."Document Status"::Open);
-        MovsCustomer.SetRange("Document Type", MovsCustomer."Document Type"::Invoice, MovsCustomer."Document Type"::Bill);
-        if MovsCustomer.FindSet() then begin
-            repeat
-                if MovsCustomer."Due Date" < WorkDate() then begin
-                    //2- Añadir datos al libro
-                    ExcelBuffer.NewRow();
-                    ExcelBuffer.AddColumn(MovsCustomer."Document Type", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
-                    ExcelBuffer.AddColumn(MovsCustomer."Document No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
-                    ExcelBuffer.AddColumn(MovsCustomer."Document Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);
-                    ExcelBuffer.AddColumn(MovsCustomer."Due Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);
-                    ExcelBuffer.AddColumn(MovsCustomer.Amount, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
-                    ExcelBuffer.AddColumn(MovsCustomer."Remaining Amount", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
-                end;
-            until MovsCustomer.Next() = 0;
-            // ExcelBuffer.WriteSheet(Customer."No." + ' - ' + Customer.Name, CompanyInfo.Name, Customer."No.");
-        end;
-    end;
-
-    local procedure EnvioCorreoFacturasVencidasClientes(Salesperson: Record "Salesperson/Purchaser"; ExcelBuffer: Record "Excel Buffer")
+    local procedure ExportarFacturasVencidasClienteExcel(var Customer: Record Customer; var MovsCustomer: Record "Cust. Ledger Entry"; var importeTotalPendiente: Decimal; var ExcelBuffer: Record "Excel Buffer"; CompanyInfo: Record "Company Information"): Boolean
     var
+        BookName: Text;
+        existenFacturas: Boolean;
+    begin
+        MovsCustomer.SetRange("Customer No.", Customer."No.");
+        // MovsCustomer.SetRange("Document Status", MovsCustomer."Document Status"::Open);
+        MovsCustomer.SetRange("Document Type", MovsCustomer."Document Type"::Invoice, MovsCustomer."Document Type"::Bill);
+
+        if MovsCustomer.FindSet() then begin
+            existenFacturas := true;
+            repeat
+                MovsCustomer.CalcFields(Amount);
+                MovsCustomer.CalcFields("Remaining Amount");
+
+                // if (MovsCustomer."Due Date" < WorkDate()) AND (MovsCustomer."Remaining Amount" > 0) then begin
+                //2- Añadir datos al libro
+                ExcelBuffer.AddColumn(MovsCustomer."Document Type", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(MovsCustomer."Document No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(MovsCustomer."Document Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);
+                ExcelBuffer.AddColumn(MovsCustomer."Due Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);
+                ExcelBuffer.AddColumn(MovsCustomer.Amount, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(MovsCustomer."Remaining Amount", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.NewRow();
+
+                importeTotalPendiente += MovsCustomer."Remaining Amount";
+            // end;
+            until MovsCustomer.Next() = 0;
+        end;
+
+        exit(existenFacturas);
+    end;
+
+    local procedure añadirResumenFacturasVencidasClientes(Customer: Record Customer; var importeTotalPendiente: Decimal; CurrentRow: Integer; var ExcelBuffer: Record "Excel Buffer"; CompanyInfo: Record "Company Information")
+    begin
+        ExcelBuffer.DeleteAll();
+        ExcelBuffer.SetCurrent(CurrentRow, 0);
+
+        ExcelBuffer.AddColumn(Customer."No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Customer.Name, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(importeTotalPendiente, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+
+        ExcelBuffer.SelectOrAddSheet('Facturas Vencidas');
+        ExcelBuffer.WriteSheet('Facturas Vencidas', CompanyInfo.Name, Customer."No.");
+
+    end;
+
+    local procedure EnvioCorreoFacturasVencidasClientes(Salesperson: Record "Salesperson/Purchaser"; Customer: Record Customer; BookName: Text; ExcelBuffer: Record "Excel Buffer")
+    var
+        recCompanyInfo: Record "Company Information";
         recSMTPSetup: Record "SMTP Mail Setup";
         cduMailManagement: Codeunit "Mail Management";
         cduSmtp: Codeunit "SMTP Mail";
         txtAsunto: Text;
         txtCuerpo: Text;
         cduTrampa: Codeunit SMTP_Trampa;
+        TempBlob: Record TempBlob;
+        InStr: InStream;
+        OutStr: OutStream;
     begin
+        TempBlob.Blob.CreateOutStream(OutStr);
+        ExcelBuffer.SaveToStream(OutStr, true);
+        TempBlob.Blob.CreateInStream(InStr);
+        cduSmtp.AddAttachmentStream(InStr, BookName);
+
         //Envio Email a SalesPerson con Excel
+        recCompanyInfo.Get();
+        recSMTPSetup.Get();
+        recSMTPSetup.TestField("SMTP Server");
+        recSMTPSetup.TestField("User ID");
+
+        txtAsunto := 'Recordatorio facturas vencidas';
+        txtCuerpo := 'Estimado ' + Salesperson.Name;
+        txtCuerpo += '<br><br>Adjuntamos relación de facturas que, salvo error, figuran como pendientes de cobro.<br>';
+
+        clear(cduSmtp);
+        cduSmtp.CreateMessage(recCompanyInfo.Name, recSMTPSetup."User ID", Salesperson."E-Mail", txtAsunto, txtCuerpo, TRUE);
+        cduSmtp.Send();
+        // clear(cduTrampa);
+        // cduTrampa.CreateMessage(recCompanyInfo.Name, recSMTPSetup."User ID", Salesperson."E-Mail", txtAsunto, txtCuerpo, recCompanyInfo.Name, recSMTPSetup.UsuarioVencimientos);
+        // cduTrampa.SendSmtpMail();
     end;
 }
