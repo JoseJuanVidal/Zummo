@@ -61,7 +61,7 @@ tableextension 50143 "Service Item" extends "Service Item"
         }
         field(50250; "Aviso pedido servicio"; Text[150])
         {
-            Caption = 'Aviso pedido servicio', Comment = 'ESP="Aviso pedido servicio';
+            Caption = 'Aviso pedido servicio', Comment = 'ESP="Aviso pedido servicio"';
             DataClassification = CustomerContent;
         }
     }

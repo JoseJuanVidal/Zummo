@@ -25078,9 +25078,9 @@
         </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 3186518881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Aviso pedido servicio</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Aviso pedido servicio</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso pedido servicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field Aviso pedido servicio - Property Caption</note>
-          <target>"Aviso pedido servicio</target>
+          <target>Aviso pedido servicio</target>
         </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 960231526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Cod.Anterior</source>
