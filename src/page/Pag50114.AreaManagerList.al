@@ -120,15 +120,19 @@ page 50114 "Area Manager List"
                 // Promoted = true;
                 // PromotedIsBig = true;
                 // PromotedCategory = New;
-                Image = Excel;
-                Caption = 'Export all the Overdue Invoices', comment = 'ESP="Exportar todas las Facturas Vencidas"';
+                Image = Email;
+                Caption = 'Send email Overdue Invoices', comment = 'ESP="Facturas Vencidas por Correo electronico"';
                 ToolTip = 'Export and send an Excel by mail to each Area Manager with the Overdue Invoices of their clients', comment = 'ESP="Exporta y envia un Excel por correo a cada Area Manager con las Facturas Vencidas de sus clientes"';
 
                 trigger OnAction()
                 var
                     CUCron: Codeunit CU_Cron;
+                    TextosAux: Record TextosAuxiliares;
+                    lblConfirm: Label '¿Desea enviar email a los Area Manager seleccionados %1 ?', comment = 'ESP="¿Desea enviar email a los Area Manager seleccionados %1 ?"';
                 begin
-                    CUCron.AvisosFacturasVencidasClientesTODAS();
+                    CurrPage.SetSelectionFilter(TextosAux);
+                    if Confirm(lblConfirm, false, TextosAux.Count) then
+                        CUCron.AvisosFacturasVencidasTodosAreaManager(TextosAux);
                 end;
             }
             action(FacturasVencidasExcelUNICA)
@@ -145,7 +149,7 @@ page 50114 "Area Manager List"
                 var
                     CUCron: Codeunit CU_Cron;
                 begin
-                    CUCron.AvisosFacturasVencidasClientesUNICA(Rec.NumReg);
+                    CUCron.AvisosFacturasVencidasAreaManager(Rec.NumReg);
                 end;
             }
         }

@@ -7529,9 +7529,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 232174250 - Action 2101741778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export all the Overdue Invoices</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Exportar todas las Facturas Vencidas"</note>
+          <source>Send email Overdue Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Facturas Vencidas por Correo electronico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2101741778 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea enviar email a los Area Manager seleccionados %1 ?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar email a los Area Manager seleccionados %1 ?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Page 232174250 - Action 2524634589 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export and send an Excel by mail to the current Area Manager with the Overdue Invoices of his clients</source>

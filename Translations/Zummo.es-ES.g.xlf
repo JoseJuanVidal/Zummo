@@ -5962,11 +5962,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field WarrantyDate - Property Caption</note>
           <target>Años de Garantía</target>
         </trans-unit>
-        <trans-unit id="Codeunit 4289582467 - Method 722358005 - NamedType 2499179930" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Facturas Vencidas Clientes</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CU_Cron - Method ExportarFacturasVencidasClientesExcel - NamedType ExcelFileName</note>
-        </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
@@ -8009,10 +8004,16 @@
           <target>Exporta y envia un Excel por correo a cada Area Manager con las Facturas Vencidas de sus clientes</target>
         </trans-unit>
         <trans-unit id="Page 232174250 - Action 2101741778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export all the Overdue Invoices</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Exportar todas las Facturas Vencidas"</note>
+          <source>Send email Overdue Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Facturas Vencidas por Correo electronico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Property Caption</note>
-          <target>Exportar todas las Facturas Vencidas</target>
+          <target>Facturas Vencidas por Correo electronico</target>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2101741778 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea enviar email a los Area Manager seleccionados %1 ?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar email a los Area Manager seleccionados %1 ?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea enviar email a los Area Manager seleccionados %1 ?</target>
         </trans-unit>
         <trans-unit id="Page 232174250 - Action 2524634589 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export and send an Excel by mail to the current Area Manager with the Overdue Invoices of his clients</source>

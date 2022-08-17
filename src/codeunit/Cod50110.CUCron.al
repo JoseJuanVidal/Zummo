@@ -1116,13 +1116,14 @@ codeunit 50110 "CU_Cron"
         Funciones.CustomerCalculateFechaVto();
     end;
 
-    procedure AvisosFacturasVencidasClientesTODAS()
+    procedure AvisosFacturasVencidasTodosAreaManager(var TextosAux: Record TextosAuxiliares)
     var
-        TextosAux: Record TextosAuxiliares;
+
         Salesperson: Record "Salesperson/Purchaser";
         Customer: Record Customer;
         MovsCustomer: Record "Cust. Ledger Entry";
         ExcelBuffer: Record "Excel Buffer" temporary;
+        TempBlob: Record TempBlob;
     begin
         TextosAux.SetRange(TipoTabla, TextosAux.TipoTabla::AreaManager);
         if TextosAux.FindSet() then begin
@@ -1132,23 +1133,23 @@ codeunit 50110 "CU_Cron"
                         Customer.SetRange(AreaManager_btc, Salesperson.Code);
 
                         //Exportacion Excel
-                        ExportarFacturasVencidasClientesExcel(Customer, MovsCustomer, ExcelBuffer, Salesperson, false);
-
-                        //Enviar Correo
-                        // EnvioCorreoFacturasVencidasClientes(Salesperson, Customer, 'Facturas Vencidas', ExcelBuffer);
+                        if ExportarFacturasVencidasClientesExcel(Customer, MovsCustomer, ExcelBuffer, Salesperson, false, TempBlob) then
+                            //Enviar Correo
+                            EnvioCorreoFacturasVencidasClientes(Salesperson, Customer, 'Facturas Vencidas.xlsx', ExcelBuffer, TempBlob);
                     end;
                 end;
             until TextosAux.Next() = 0;
         end;
     end;
 
-    procedure AvisosFacturasVencidasClientesUNICA(CodigoAreaManager: Code[20])
+    procedure AvisosFacturasVencidasAreaManager(CodigoAreaManager: Code[20])
     var
         TextosAux: Record TextosAuxiliares;
         Salesperson: Record "Salesperson/Purchaser";
         Customer: Record Customer;
         MovsCustomer: Record "Cust. Ledger Entry";
         ExcelBuffer: Record "Excel Buffer" temporary;
+        TempBlob: Record TempBlob;
     begin
         TextosAux.SetRange(TipoTabla, TextosAux.TipoTabla::AreaManager);
         TextosAux.SetRange(NumReg, CodigoAreaManager);
@@ -1158,16 +1159,14 @@ codeunit 50110 "CU_Cron"
                     Customer.SetRange(AreaManager_btc, Salesperson.Code);
 
                     //Exportacion Excel
-                    ExportarFacturasVencidasClientesExcel(Customer, MovsCustomer, ExcelBuffer, Salesperson, true);
+                    ExportarFacturasVencidasClientesExcel(Customer, MovsCustomer, ExcelBuffer, Salesperson, true, TempBlob);
 
-                    //Enviar Correo
-                    //EnvioCorreoFacturasVencidasClientes(Salesperson, Customer, 'Facturas Vencidas', ExcelBuffer);
                 end;
             end;
         end;
     end;
 
-    local procedure ExportarFacturasVencidasClientesExcel(var Customer: Record Customer; var MovsCustomer: Record "Cust. Ledger Entry"; var ExcelBuffer: Record "Excel Buffer"; Salesperson: Record "Salesperson/Purchaser"; GuardarExcel: Boolean)
+    local procedure ExportarFacturasVencidasClientesExcel(var Customer: Record Customer; var MovsCustomer: Record "Cust. Ledger Entry"; var ExcelBuffer: Record "Excel Buffer"; Salesperson: Record "Salesperson/Purchaser"; GuardarExcel: Boolean; var TempBlob: Record TempBlob) ExistenClientes: Boolean;
     var
         CompanyInfo: Record "Company Information";
         // ExcelFileName: Label 'Facturas Vencidas Clientes';
@@ -1175,9 +1174,8 @@ codeunit 50110 "CU_Cron"
         BookName: Text;
         importeTotalPendiente: Decimal;
         CurrentRow: Integer;
-        ExistenClientes: Boolean;
+
         FileMngt: Codeunit "File Management";
-        TempBlob: Record TempBlob;
         OutStr: OutStream;
         InStr: InStream;
     begin
@@ -1242,18 +1240,21 @@ codeunit 50110 "CU_Cron"
             until (Customer.Next() = 0);
         end;
 
+        // ponemos la formula del total en el Resumen
+        añadirTotalResumenFacturasVencidasClientes(Customer, importeTotalPendiente, CurrentRow, ExcelBuffer, CompanyInfo);
+
         if ExistenClientes then begin
             ExcelBuffer.CloseBook();
             ExcelFileName := 'Facturas Vencidas Clientes ' + Salesperson.Code;
             ExcelBuffer.SetFriendlyFilename(StrSubstNo(ExcelFileName, CurrentDateTime, Customer.AreaManager_btc));
             if GuardarExcel then begin
                 ExcelBuffer.OpenExcel();
-                // TempBlob.Blob.CreateOutStream(OutStr);
-                // ExcelBuffer.SaveToStream(OutStr, true);
-                // TempBlob.Blob.CreateInStream(InStr);
-                // ExcelFileName += '.xlsx';
-                // File.DownloadFromStream(InStr, '', '', '', ExcelFileName);
-                // FileMngt.BLOBExport(TempBlob, StrSubstNo(ExcelFileName), false);
+            end else begin
+                TempBlob.blob.CreateOutStream(OutStr);
+                ExcelBuffer.SaveToStream(OutStr, true);
+                ExcelFileName := FileMngt.ServerTempFileName('xlsx');
+                TempBlob.Blob.Export('facturas Vencidas.xlsx');
+
             end;
         end;
     end;
@@ -1307,7 +1308,22 @@ codeunit 50110 "CU_Cron"
 
     end;
 
-    local procedure EnvioCorreoFacturasVencidasClientes(Salesperson: Record "Salesperson/Purchaser"; Customer: Record Customer; BookName: Text; ExcelBuffer: Record "Excel Buffer")
+    local procedure añadirTotalResumenFacturasVencidasClientes(Customer: Record Customer; var importeTotalPendiente: Decimal; CurrentRow: Integer; var ExcelBuffer: Record "Excel Buffer"; CompanyInfo: Record "Company Information")
+    var
+        Formula: text;
+    begin
+        ExcelBuffer.DeleteAll();
+        ExcelBuffer.SetCurrent(CurrentRow, 2);
+        Formula := '=suma(C6:C' + format(CurrentRow) + ')';
+        Message(Formula);
+        ExcelBuffer.AddColumn(Formula, true, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+
+        ExcelBuffer.SelectOrAddSheet('Facturas Vencidas');
+        ExcelBuffer.WriteSheet('Facturas Vencidas', CompanyInfo.Name, Customer."No.");
+
+    end;
+
+    local procedure EnvioCorreoFacturasVencidasClientes(Salesperson: Record "Salesperson/Purchaser"; Customer: Record Customer; BookName: Text; var ExcelBuffer: Record "Excel Buffer"; var TempBlob: Record TempBlob)
     var
         recCompanyInfo: Record "Company Information";
         recSMTPSetup: Record "SMTP Mail Setup";
@@ -1316,14 +1332,12 @@ codeunit 50110 "CU_Cron"
         txtAsunto: Text;
         txtCuerpo: Text;
         cduTrampa: Codeunit SMTP_Trampa;
-        TempBlob: Record TempBlob;
         InStr: InStream;
         OutStr: OutStream;
     begin
-        TempBlob.Blob.CreateOutStream(OutStr);
-        ExcelBuffer.SaveToStream(OutStr, true);
+        // TempBlob.Blob.CreateOutStream(OutStr);
+        // ExcelBuffer.SaveToStream(OutStr, true);
         TempBlob.Blob.CreateInStream(InStr);
-        cduSmtp.AddAttachmentStream(InStr, BookName);
 
         //Envio Email a SalesPerson con Excel
         recCompanyInfo.Get();
@@ -1337,7 +1351,9 @@ codeunit 50110 "CU_Cron"
 
         clear(cduSmtp);
         cduSmtp.CreateMessage(recCompanyInfo.Name, recSMTPSetup."User ID", Salesperson."E-Mail", txtAsunto, txtCuerpo, TRUE);
+        cduSmtp.AddAttachmentStream(InStr, BookName);
         cduSmtp.Send();
+
         // clear(cduTrampa);
         // cduTrampa.CreateMessage(recCompanyInfo.Name, recSMTPSetup."User ID", Salesperson."E-Mail", txtAsunto, txtCuerpo, recCompanyInfo.Name, recSMTPSetup.UsuarioVencimientos);
         // cduTrampa.SendSmtpMail();

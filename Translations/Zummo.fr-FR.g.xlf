@@ -4954,11 +4954,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Codeunit 4289582467 - Method 722358005 - NamedType 2499179930" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Facturas Vencidas Clientes</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CU_Cron - Method ExportarFacturasVencidasClientesExcel - NamedType ExcelFileName</note>
-        </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 4089462097 - NamedType 3941846598" size-unit="char" translate="yes" xml:space="preserve">
           <source>Debe actualizar el pedido de compra orgien, %1, antes de registrar</source>
           <note from="Developer" annotates="general" priority="2"/>
