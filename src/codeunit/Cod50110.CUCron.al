@@ -1170,14 +1170,17 @@ codeunit 50110 "CU_Cron"
     local procedure ExportarFacturasVencidasClientesExcel(var Customer: Record Customer; var MovsCustomer: Record "Cust. Ledger Entry"; var ExcelBuffer: Record "Excel Buffer"; Salesperson: Record "Salesperson/Purchaser"; GuardarExcel: Boolean)
     var
         CompanyInfo: Record "Company Information";
-        ExcelFileName: Label 'Facturas Vencidas Clientes';
+        // ExcelFileName: Label 'Facturas Vencidas Clientes';
+        ExcelFileName: Text;
         BookName: Text;
-        // contador: Integer;
         importeTotalPendiente: Decimal;
         CurrentRow: Integer;
         ExistenClientes: Boolean;
+        FileMngt: Codeunit "File Management";
+        TempBlob: Record TempBlob;
+        OutStr: OutStream;
+        InStr: InStream;
     begin
-        // contador := 0;
         CurrentRow := 6;
 
         //Exportacion a Excel
@@ -1236,16 +1239,22 @@ codeunit 50110 "CU_Cron"
                     CurrentRow += 1;
                     ExistenClientes := true;
                 end;
-
-            // contador += 1;
             until (Customer.Next() = 0);
         end;
 
         if ExistenClientes then begin
             ExcelBuffer.CloseBook();
-            ExcelBuffer.SetFriendlyFilename(StrSubstNo(ExcelFileName + ' ' + Salesperson.Code, CurrentDateTime, Customer.AreaManager_btc));
-            if GuardarExcel then
+            ExcelFileName := 'Facturas Vencidas Clientes ' + Salesperson.Code;
+            ExcelBuffer.SetFriendlyFilename(StrSubstNo(ExcelFileName, CurrentDateTime, Customer.AreaManager_btc));
+            if GuardarExcel then begin
                 ExcelBuffer.OpenExcel();
+                // TempBlob.Blob.CreateOutStream(OutStr);
+                // ExcelBuffer.SaveToStream(OutStr, true);
+                // TempBlob.Blob.CreateInStream(InStr);
+                // ExcelFileName += '.xlsx';
+                // File.DownloadFromStream(InStr, '', '', '', ExcelFileName);
+                // FileMngt.BLOBExport(TempBlob, StrSubstNo(ExcelFileName), false);
+            end;
         end;
     end;
 

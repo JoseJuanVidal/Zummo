@@ -5798,11 +5798,6 @@
           <note from="Developer" annotates="general" priority="2">ESP=Años de Garantía</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field WarrantyDate - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Codeunit 4289582467 - Method 722358005 - NamedType 2499179930" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Facturas Vencidas Clientes</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CU_Cron - Method ExportarFacturasVencidasClientesExcel - NamedType ExcelFileName</note>
-        </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
