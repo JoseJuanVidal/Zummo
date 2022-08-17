@@ -7528,6 +7528,26 @@
           <note from="Developer" annotates="general" priority="2">ESP="Log de Sincronización"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action ShowLog - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2101741778 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export and send an Excel by mail to each Area Manager with the Overdue Invoices of their clients</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exporta y envia un Excel por correo a cada Area Manager con las Facturas Vencidas de sus clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2101741778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export all the Overdue Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar todas las Facturas Vencidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2524634589 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export and send an Excel by mail to the current Area Manager with the Overdue Invoices of his clients</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exporta y envia un Excel por correo al Area Manager seleccionado con las Facturas Vencidas de sus clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelUNICA - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2524634589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Area Manager Overdue Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar Facturas Vencidas Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelUNICA - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1106291258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Change Dimensions</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar dimensiones"</note>
@@ -8412,16 +8432,6 @@
           <source>Auxiliary</source>
           <note from="Developer" annotates="general" priority="2">ESP="Valores"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2207170913 - Action 159847125 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Excel Facturas Vencidas</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Excel Facturas Vencidas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Action FacturasVencidasExcel - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2207170913 - Action 159847125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Excel Facturas Vencidas</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Excel Facturas Vencidas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Action FacturasVencidasExcel - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4246998658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log Sending client emails</source>

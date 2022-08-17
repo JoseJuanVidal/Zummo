@@ -111,6 +111,44 @@ page 50114 "Area Manager List"
                 }
             }
         }
+
+        area(Reporting)
+        {
+            action(FacturasVencidasExcelTODAS)
+            {
+                ApplicationArea = All;
+                // Promoted = true;
+                // PromotedIsBig = true;
+                // PromotedCategory = New;
+                Image = Excel;
+                Caption = 'Export all the Overdue Invoices', comment = 'ESP="Exportar todas las Facturas Vencidas"';
+                ToolTip = 'Export and send an Excel by mail to each Area Manager with the Overdue Invoices of their clients', comment = 'ESP="Exporta y envia un Excel por correo a cada Area Manager con las Facturas Vencidas de sus clientes"';
+
+                trigger OnAction()
+                var
+                    CUCron: Codeunit CU_Cron;
+                begin
+                    CUCron.AvisosFacturasVencidasClientesTODAS();
+                end;
+            }
+            action(FacturasVencidasExcelUNICA)
+            {
+                ApplicationArea = All;
+                // Promoted = true;
+                // PromotedIsBig = true;
+                // PromotedCategory = New;
+                Image = Excel;
+                Caption = 'Export Area Manager Overdue Invoices', comment = 'ESP="Exportar Facturas Vencidas Area Manager"';
+                ToolTip = 'Export and send an Excel by mail to the current Area Manager with the Overdue Invoices of his clients', comment = 'ESP="Exporta y envia un Excel por correo al Area Manager seleccionado con las Facturas Vencidas de sus clientes"';
+
+                trigger OnAction()
+                var
+                    CUCron: Codeunit CU_Cron;
+                begin
+                    CUCron.AvisosFacturasVencidasClientesUNICA(Rec.NumReg);
+                end;
+            }
+        }
     }
 
 
