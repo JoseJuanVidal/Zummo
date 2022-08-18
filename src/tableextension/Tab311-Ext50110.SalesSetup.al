@@ -137,13 +137,11 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
         {
             Caption = 'Envío email Fact. Vencidas', Comment = 'ESP="Envío email Fact. Vencidas"';
             DataClassification = CustomerContent;
-            TableRelation = Customer;
         }
         field(50160; "Ult. Envío Fact. Vencidas"; Date)
         {
             Caption = 'Ult. email Fact. Vencidas', Comment = 'ESP="Ult. email Fact. Vencidas"';
             DataClassification = CustomerContent;
-            TableRelation = Customer;
             Editable = false;
         }
     }

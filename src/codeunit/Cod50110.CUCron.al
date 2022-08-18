@@ -10,6 +10,8 @@ codeunit 50110 "CU_Cron"
 
     trigger OnRun()
     var
+        SalesSetup: Record "Sales & Receivables Setup";
+        TextosAuxiliares: Record TextosAuxiliares;
         Param: Text;
         lbNoParametroErr: Label 'Unknown parameter', comment = 'ESP="Parámetro Desconocido"';
     begin
@@ -34,6 +36,15 @@ codeunit 50110 "CU_Cron"
                     CalculateVtoAseguradora();
                 'CargaMovsContaPresup':
                     MovsContaPresup.CargarDatos();
+                'AvisosFrasVencidasAreaManager':
+                    begin
+                        SalesSetup.Get();
+                        if CalcDate(SalesSetup."Envío email Fact. Vencidas", SalesSetup."Ult. Envío Fact. Vencidas") < TODAY then begin
+                            AvisosFacturasVencidasTodosAreaManager(TextosAuxiliares);
+                            SalesSetup."Ult. Envío Fact. Vencidas" := Today;
+                            SalesSetup.Modify();
+                        end;
+                    end;
 
                 else
                     error(lbNoParametroErr);
@@ -1125,6 +1136,7 @@ codeunit 50110 "CU_Cron"
         ExcelBuffer: Record "Excel Buffer" temporary;
         TempBlob: Record TempBlob;
     begin
+
         TextosAux.SetRange(TipoTabla, TextosAux.TipoTabla::AreaManager);
         if TextosAux.FindSet() then begin
             repeat
