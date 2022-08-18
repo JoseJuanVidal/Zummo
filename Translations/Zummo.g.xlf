@@ -23090,13 +23090,18 @@
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 2862620744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Customer Quote Zummo Inc.</source>
-          <note from="Developer" annotates="general" priority="2">Cliente oferta Zummo Inc.</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente oferta Zummo Inc."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Customer Quote IC - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 3348994424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Días Vto. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Días Vto. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field DiasVtoAseguradora - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3135379712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Envío email Fact. Vencidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Envío email Fact. Vencidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Envío email Fact. Vencidas - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 12263198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Language Filter</source>
@@ -23152,6 +23157,11 @@
           <source>Send Mail Notifications</source>
           <note from="Developer" annotates="general" priority="2">Enviar notificaciones por email</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Send Mail Notifications - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 248859325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Ult. email Fact. Vencidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. email Fact. Vencidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Ult. Envío Fact. Vencidas - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 2815599264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>WS Base URL IC Zummo Innc.</source>

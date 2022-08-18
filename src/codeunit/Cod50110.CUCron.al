@@ -1252,9 +1252,6 @@ codeunit 50110 "CU_Cron"
             end else begin
                 TempBlob.blob.CreateOutStream(OutStr);
                 ExcelBuffer.SaveToStream(OutStr, true);
-                ExcelFileName := FileMngt.ServerTempFileName('xlsx');
-                TempBlob.Blob.Export('facturas Vencidas.xlsx');
-
             end;
         end;
     end;
@@ -1314,8 +1311,7 @@ codeunit 50110 "CU_Cron"
     begin
         ExcelBuffer.DeleteAll();
         ExcelBuffer.SetCurrent(CurrentRow, 2);
-        Formula := '=suma(C6:C' + format(CurrentRow) + ')';
-        Message(Formula);
+        Formula := 'suma(C6:C' + format(CurrentRow - 1) + ')';
         ExcelBuffer.AddColumn(Formula, true, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
 
         ExcelBuffer.SelectOrAddSheet('Facturas Vencidas');
@@ -1333,7 +1329,6 @@ codeunit 50110 "CU_Cron"
         txtCuerpo: Text;
         cduTrampa: Codeunit SMTP_Trampa;
         InStr: InStream;
-        OutStr: OutStream;
     begin
         // TempBlob.Blob.CreateOutStream(OutStr);
         // ExcelBuffer.SaveToStream(OutStr, true);

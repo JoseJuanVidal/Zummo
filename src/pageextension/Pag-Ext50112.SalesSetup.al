@@ -36,6 +36,10 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Envío email Fact. Vencidas"; "Envío email Fact. Vencidas")
+                {
+                    ApplicationArea = all;
+                }
 
                 field(RutaPdfPedidos_btc; RutaPdfPedidos_btc)
                 {
