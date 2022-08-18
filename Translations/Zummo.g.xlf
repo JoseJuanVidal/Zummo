@@ -7523,6 +7523,31 @@
           <note from="Developer" annotates="general" priority="2">ESP="Log de Sincronización"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action ShowLog - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2101741778 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export and send an Excel by mail to each Area Manager with the Overdue Invoices of their clients</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exporta y envia un Excel por correo a cada Area Manager con las Facturas Vencidas de sus clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2101741778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send email Overdue Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Facturas Vencidas por Correo electronico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2101741778 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea enviar email a los Area Manager seleccionados %1 ?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar email a los Area Manager seleccionados %1 ?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2524634589 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export and send an Excel by mail to the current Area Manager with the Overdue Invoices of his clients</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exporta y envia un Excel por correo al Area Manager seleccionado con las Facturas Vencidas de sus clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelUNICA - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2524634589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Area Manager Overdue Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar Facturas Vencidas Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelUNICA - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1106291258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Change Dimensions</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar dimensiones"</note>
@@ -23065,13 +23090,18 @@
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 2862620744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Customer Quote Zummo Inc.</source>
-          <note from="Developer" annotates="general" priority="2">Cliente oferta Zummo Inc.</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente oferta Zummo Inc."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Customer Quote IC - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 3348994424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Días Vto. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Días Vto. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field DiasVtoAseguradora - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3135379712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Envío email Fact. Vencidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Envío email Fact. Vencidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Envío email Fact. Vencidas - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 12263198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Language Filter</source>
@@ -23127,6 +23157,11 @@
           <source>Send Mail Notifications</source>
           <note from="Developer" annotates="general" priority="2">Enviar notificaciones por email</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Send Mail Notifications - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 248859325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Ult. email Fact. Vencidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. email Fact. Vencidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Ult. Envío Fact. Vencidas - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 2815599264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>WS Base URL IC Zummo Innc.</source>

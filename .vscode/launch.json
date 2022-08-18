@@ -2,6 +2,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "BC140 Desarrollo",
+            "type": "al",
+            "request": "launch",
+            "server": "http://192.168.1.153",
+            "serverInstance": "desarrollo",
+            "port": 7549,
+            "authentication": "UserPassword",
+            //"startupObjectId": 22,
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": false,
+            "schemaUpdateMode": "ForceSync"
+        },
+        {
             "name": "Localhost",
             "type": "al",
             "request": "launch",

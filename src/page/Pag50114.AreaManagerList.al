@@ -111,6 +111,48 @@ page 50114 "Area Manager List"
                 }
             }
         }
+
+        area(Reporting)
+        {
+            action(FacturasVencidasExcelTODAS)
+            {
+                ApplicationArea = All;
+                // Promoted = true;
+                // PromotedIsBig = true;
+                // PromotedCategory = New;
+                Image = Email;
+                Caption = 'Send email Overdue Invoices', comment = 'ESP="Facturas Vencidas por Correo electronico"';
+                ToolTip = 'Export and send an Excel by mail to each Area Manager with the Overdue Invoices of their clients', comment = 'ESP="Exporta y envia un Excel por correo a cada Area Manager con las Facturas Vencidas de sus clientes"';
+
+                trigger OnAction()
+                var
+                    CUCron: Codeunit CU_Cron;
+                    TextosAux: Record TextosAuxiliares;
+                    lblConfirm: Label '¿Desea enviar email a los Area Manager seleccionados %1 ?', comment = 'ESP="¿Desea enviar email a los Area Manager seleccionados %1 ?"';
+                begin
+                    CurrPage.SetSelectionFilter(TextosAux);
+                    if Confirm(lblConfirm, false, TextosAux.Count) then
+                        CUCron.AvisosFacturasVencidasTodosAreaManager(TextosAux);
+                end;
+            }
+            action(FacturasVencidasExcelUNICA)
+            {
+                ApplicationArea = All;
+                // Promoted = true;
+                // PromotedIsBig = true;
+                // PromotedCategory = New;
+                Image = Excel;
+                Caption = 'Export Area Manager Overdue Invoices', comment = 'ESP="Exportar Facturas Vencidas Area Manager"';
+                ToolTip = 'Export and send an Excel by mail to the current Area Manager with the Overdue Invoices of his clients', comment = 'ESP="Exporta y envia un Excel por correo al Area Manager seleccionado con las Facturas Vencidas de sus clientes"';
+
+                trigger OnAction()
+                var
+                    CUCron: Codeunit CU_Cron;
+                begin
+                    CUCron.AvisosFacturasVencidasAreaManager(Rec.NumReg);
+                end;
+            }
+        }
     }
 
 

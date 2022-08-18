@@ -7997,6 +7997,36 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action ShowLog - Property Caption</note>
           <target>Log de Sincronización</target>
         </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2101741778 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export and send an Excel by mail to each Area Manager with the Overdue Invoices of their clients</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exporta y envia un Excel por correo a cada Area Manager con las Facturas Vencidas de sus clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Property ToolTip</note>
+          <target>Exporta y envia un Excel por correo a cada Area Manager con las Facturas Vencidas de sus clientes</target>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2101741778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send email Overdue Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Facturas Vencidas por Correo electronico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Property Caption</note>
+          <target>Facturas Vencidas por Correo electronico</target>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2101741778 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea enviar email a los Area Manager seleccionados %1 ?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar email a los Area Manager seleccionados %1 ?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelTODAS - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea enviar email a los Area Manager seleccionados %1 ?</target>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2524634589 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export and send an Excel by mail to the current Area Manager with the Overdue Invoices of his clients</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exporta y envia un Excel por correo al Area Manager seleccionado con las Facturas Vencidas de sus clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelUNICA - Property ToolTip</note>
+          <target>Exporta y envia un Excel por correo al Area Manager seleccionado con las Facturas Vencidas de sus clientes</target>
+        </trans-unit>
+        <trans-unit id="Page 232174250 - Action 2524634589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Area Manager Overdue Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar Facturas Vencidas Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action FacturasVencidasExcelUNICA - Property Caption</note>
+          <target>Exportar Facturas Vencidas Area Manager</target>
+        </trans-unit>
         <trans-unit id="Page 1106291258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Change Dimensions</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar dimensiones"</note>
@@ -22957,18 +22987,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WorkCenterList - Action WorkCenterCalendar - Property Caption</note>
           <target>Cap. Producto y Centro Trabajo</target>
         </trans-unit>
-        <trans-unit id="TableExtension 18652612 - Field 3454230391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4049269796">
-          <source>Process Description</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Descrip. proceso"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension  - Field Process Description - Property Caption</note>
-          <target>Descrip. proceso</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 18652612 - Field 1017370016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4049269796">
-          <source>Process No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cód. proceso"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension  - Field Process No. - Property Caption</note>
-          <target>Cód. proceso</target>
-        </trans-unit>
         <trans-unit id="TableExtension 2268077932 - Field 2152971446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
           <source>Linea Ventas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Linea Ventas"</note>
@@ -23802,6 +23820,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importe Total IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field TotalImponibleLinea - Property Caption</note>
           <target>Importe Total IVA</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4049269796 - Field 3454230391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4049269796">
+          <source>Process Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descrip. proceso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Discount - Field Process Description - Property Caption</note>
+          <target>Descrip. proceso</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4049269796 - Field 1017370016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4049269796">
+          <source>Process No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. proceso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Discount - Field Process No. - Property Caption</note>
+          <target>Cód. proceso</target>
         </trans-unit>
         <trans-unit id="TableExtension 1575465679 - Field 631869557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Rejected Date</source>
