@@ -24838,11 +24838,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field CodProvinciaDefecto_btc - Property Caption</note>
           <target>Cód. Provincia por defecto</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2862620744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Customer Quote Zummo Inc.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente oferta Zummo Inc."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Customer Quote IC - Property Caption</note>
+          <target>Cliente oferta Zummo Inc.</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 3348994424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Días Vto. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Días Vto. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field DiasVtoAseguradora - Property Caption</note>
           <target>Días Vto. Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3135379712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Envío email Fact. Vencidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Envío email Fact. Vencidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Envío email Fact. Vencidas - Property Caption</note>
+          <target>Envío email Fact. Vencidas</target>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 12263198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Language Filter</source>
@@ -24897,6 +24909,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ruta PDF Pedidos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field RutaPdfPedidos_btc - Property Caption</note>
           <target>Ruta PDF Pedidos</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 248859325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Ult. email Fact. Vencidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. email Fact. Vencidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Ult. Envío Fact. Vencidas - Property Caption</note>
+          <target>Ult. email Fact. Vencidas</target>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>ABC Cliente</source>
@@ -25480,6 +25498,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Vigente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field STH Vigente - Property Caption</note>
           <target>Vigente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 838479394 - Field 1740071730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3399585325">
+          <source>Envío email Resumens Fact. Vencidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Envío email Resumens Fact. Vencidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Salesperson/Purchase - Field Send email due invocies - Property Caption</note>
+          <target>Envío email Resumens Fact. Vencidas</target>
         </trans-unit>
         <trans-unit id="TableExtension 429385547 - Field 2751547137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
           <source>Ultimo coste directo</source>

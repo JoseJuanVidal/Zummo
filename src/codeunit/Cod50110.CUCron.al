@@ -1254,6 +1254,8 @@ codeunit 50110 "CU_Cron"
                 ExcelBuffer.AddColumn('Nombre', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
                 ExcelBuffer.AddColumn(Customer.Name, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
                 ExcelBuffer.NewRow();
+                ExcelBuffer.AddColumn('Cód. Forma Pago', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(Customer."Payment Method Code", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
                 ExcelBuffer.NewRow();
                 ExcelBuffer.NewRow();
                 ExcelBuffer.NewRow();
@@ -1305,10 +1307,9 @@ codeunit 50110 "CU_Cron"
     begin
         MovsCustomer.SetRange("Customer No.", Customer."No.");
         MovsCustomer.SetRange("Document Status", MovsCustomer."Document Status"::Open);
-        MovsCustomer.SetRange("Document Type", MovsCustomer."Document Type"::Invoice, MovsCustomer."Document Type"::Bill);
+        MovsCustomer.SetFilter("Document Type", '%1|%2', MovsCustomer."Document Type"::Invoice, MovsCustomer."Document Type"::Bill);
 
-        if MovsCustomer.FindSet() then begin
-            existenFacturas := true;
+        if MovsCustomer.FindSet() then
             repeat
                 MovsCustomer.CalcFields(Amount);
                 MovsCustomer.CalcFields("Remaining Amount");
@@ -1329,7 +1330,6 @@ codeunit 50110 "CU_Cron"
                     existenFacturas := true;
                 end;
             until MovsCustomer.Next() = 0;
-        end;
 
         exit(existenFacturas);
     end;
