@@ -16,6 +16,7 @@ codeunit 50110 "CU_Cron"
         TextosAuxiliares: Record TextosAuxiliares;
         Param: Text;
         lbNoParametroErr: Label 'Unknown parameter', comment = 'ESP="Parámetro Desconocido"';
+        Fecha: date;
     begin
         if (StrPos("Parameter String", ';')) > 0 then begin
             Param := CopyStr("Parameter String", 1, (StrPos("Parameter String", ';') - 1));
@@ -41,7 +42,9 @@ codeunit 50110 "CU_Cron"
                 'AvisosFrasVencidasAreaManager':
                     begin
                         SalesSetup.Get();
-                        if CalcDate(SalesSetup."Envío email Fact. Vencidas", SalesSetup."Ult. Envío Fact. Vencidas") < TODAY then begin
+                        if SalesSetup."Ult. Envío Fact. Vencidas" <> 0D then
+                            Fecha := CalcDate(SalesSetup."Envío email Fact. Vencidas", SalesSetup."Ult. Envío Fact. Vencidas");
+                        if Fecha < TODAY then begin
                             Ejecucioncola := true;
                             AvisosFacturasVencidasTodosAreaManager(TextosAuxiliares);
                             SalesSetup."Ult. Envío Fact. Vencidas" := Today;
