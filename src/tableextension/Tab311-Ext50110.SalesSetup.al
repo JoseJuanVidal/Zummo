@@ -142,7 +142,6 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
         {
             Caption = 'Ult. email Fact. Vencidas', Comment = 'ESP="Ult. email Fact. Vencidas"';
             DataClassification = CustomerContent;
-            Editable = false;
         }
     }
 }
