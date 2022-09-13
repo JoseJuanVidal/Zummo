@@ -2,7 +2,8 @@ codeunit 50111 "Funciones"
 {
     Permissions = tabledata "Item Ledger Entry" = rm, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
         tabledata "Sales Shipment Header" = rmid, tabledata "Sales Cr.Memo Header" = rmid, tabledata "Sales Header Archive" = rmid,
-        tabledata "Return Shipment Header" = rmid, tabledata "Purch. Rcpt. Header" = rmid, tabledata "Purch. Rcpt. Line" = rmid;
+        tabledata "Return Shipment Header" = rmid, tabledata "Purch. Rcpt. Header" = rmid, tabledata "Purch. Rcpt. Line" = rmid,
+        tabledata "Sales Cr.Memo Line" = rmid, tabledata "Sales Invoice Line" = rmid;
     TableNo = "Sales Header";
 
 
@@ -1211,8 +1212,8 @@ codeunit 50111 "Funciones"
                                 Employee.Status := Employee.Status::Active;
                             end;
                         else begin
-                                Employee.Status := Employee.Status::Terminated;
-                            end;
+                            Employee.Status := Employee.Status::Terminated;
+                        end;
                     end;
                     if not Employee.Insert() then
                         Employee.Modify();
@@ -1345,14 +1346,14 @@ codeunit 50111 "Funciones"
                     SalesHeaderAux.Status := SalesHeaderAux.Status::Error;
                 end;
             else begin
-                    if ErrorDtos then
-                        SalesHeaderAux.Status := SalesHeaderAux.Status::"Dif. Dtos"
+                if ErrorDtos then
+                    SalesHeaderAux.Status := SalesHeaderAux.Status::"Dif. Dtos"
+                else
+                    if SalesHeaderAux.Amount = SalesHeader.Amount then
+                        SalesHeaderAux.Status := SalesHeaderAux.Status::Finalizada
                     else
-                        if SalesHeaderAux.Amount = SalesHeader.Amount then
-                            SalesHeaderAux.Status := SalesHeaderAux.Status::Finalizada
-                        else
-                            SalesHeaderAux.Status := SalesHeaderAux.Status::"Dif. Importe";
-                end;
+                        SalesHeaderAux.Status := SalesHeaderAux.Status::"Dif. Importe";
+            end;
         end;
         SalesHeaderAux.Created := true;
         SalesHeaderAux.Modify();
@@ -1511,5 +1512,64 @@ codeunit 50111 "Funciones"
 
                 end;
             Until SalesLine.next() = 0;
+    end;
+
+
+    procedure SalesInvoiceLineUpdatecost(var SalesInvLine: Record "Sales Invoice Line")
+    var
+        Item: record Item;
+        SKU: Record "Stockkeeping Unit";
+        UOMMgt: Codeunit "Unit of Measure Management";
+        lblConfirm: Label '¿Desea actualizar el Coste unitario de %1 %2?', comment = 'ESP="¿Desea actualizar el Coste unitario de %1 %2?"';
+    begin
+        SalesInvLine.TESTFIELD(Type, SalesInvLine.Type::Item);
+        SalesInvLine.TESTFIELD("No.");
+        Item.Get(SalesInvLine."No.");
+
+        if not Confirm(lblConfirm, true, SalesInvLine)
+
+        SalesInvLine."Qty. per Unit of Measure" := UOMMgt.GetQtyPerUnitOfMeasure(Item, SalesInvLine."Unit of Measure Code");
+        IF GetSKU(SKU, SalesInvLine."Location Code", SalesInvLine."No.", SalesInvLine."Variant Code") THEN
+            SalesInvLine."Unit Cost" := SKU."Unit Cost" * SalesInvLine."Qty. per Unit of Measure"
+        ELSE
+            SalesInvLine.VALIDATE("Unit Cost (LCY)", Item."Unit Cost" * SalesInvLine."Qty. per Unit of Measure");
+
+        SalesInvLine."Unit Cost (LCY)" := SalesInvLine."Unit Cost";
+        SalesInvLine.Modify();
+    end;
+
+    procedure SalesCRMemoLineUpdatecost(var SalesCRMemoLine: Record "Sales Cr.Memo Line")
+    var
+        Item: record Item;
+        SKU: Record "Stockkeeping Unit";
+        UOMMgt: Codeunit "Unit of Measure Management";
+    begin
+        SalesCRMemoLine.TESTFIELD(Type, SalesCRMemoLine.Type::Item);
+        SalesCRMemoLine.TESTFIELD("No.");
+        Item.Get(SalesCRMemoLine."No.");
+
+
+        SalesCRMemoLine."Qty. per Unit of Measure" := UOMMgt.GetQtyPerUnitOfMeasure(Item, SalesCRMemoLine."Unit of Measure Code");
+        IF GetSKU(SKU, SalesCRMemoLine."Location Code", SalesCRMemoLine."No.", SalesCRMemoLine."Variant Code") THEN
+            SalesCRMemoLine."Unit Cost" := SKU."Unit Cost" * SalesCRMemoLine."Qty. per Unit of Measure"
+        ELSE
+            SalesCRMemoLine.VALIDATE("Unit Cost (LCY)", Item."Unit Cost" * SalesCRMemoLine."Qty. per Unit of Measure");
+
+        SalesCRMemoLine."Unit Cost (LCY)" := SalesCRMemoLine."Unit Cost";
+        SalesCRMemoLine.Modify();
+    end;
+
+    local procedure GetSKU(var SKU: Record "Stockkeeping Unit"; LocationCode: code[10]; ItemNo: code[20]; VariantCode: code[20]): Boolean
+    begin
+        IF (SKU."Location Code" = LocationCode) AND
+           (SKU."Item No." = ItemNo) AND
+           (SKU."Variant Code" = VariantCode)
+        THEN
+            EXIT(TRUE);
+        IF SKU.GET(LocationCode, ItemNo, VariantCode) THEN
+            EXIT(TRUE);
+
+        EXIT(FALSE);
+
     end;
 }
