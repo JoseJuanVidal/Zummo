@@ -15,5 +15,24 @@ pageextension 50041 "PostedSalesInvoiceSubform" extends "Posted Sales Invoice Su
             }
         }
     }
+    actions
+    {
+        addafter(DocAttach)
+        {
+            action(CalcItemCost)
+            {
+                Caption = 'Act. Coste Unitario', comment = 'ESP="Act. Coste Unitario"';
+                ApplicationArea = all;
+                Image = Cost;
 
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Funciones;
+                begin
+                    funciones.SalesInvoiceLineUpdatecost(Rec);
+                    CurrPage.Update();
+                end;
+            }
+        }
+    }
 }

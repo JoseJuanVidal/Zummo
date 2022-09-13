@@ -1520,13 +1520,14 @@ codeunit 50111 "Funciones"
         Item: record Item;
         SKU: Record "Stockkeeping Unit";
         UOMMgt: Codeunit "Unit of Measure Management";
-        lblConfirm: Label '¿Desea actualizar el Coste unitario de %1 %2?', comment = 'ESP="¿Desea actualizar el Coste unitario de %1 %2?"';
+        lblConfirm: Label '¿Desea actualizar el Coste unitario\%1 - %2?', comment = 'ESP="¿Desea actualizar el Coste unitario\%1 - %2?"';
     begin
         SalesInvLine.TESTFIELD(Type, SalesInvLine.Type::Item);
         SalesInvLine.TESTFIELD("No.");
         Item.Get(SalesInvLine."No.");
 
-        if not Confirm(lblConfirm, true, SalesInvLine)
+        if not Confirm(lblConfirm, true, SalesInvLine."No.", SalesInvLine.Description) then
+            exit;
 
         SalesInvLine."Qty. per Unit of Measure" := UOMMgt.GetQtyPerUnitOfMeasure(Item, SalesInvLine."Unit of Measure Code");
         IF GetSKU(SKU, SalesInvLine."Location Code", SalesInvLine."No.", SalesInvLine."Variant Code") THEN
@@ -1543,11 +1544,14 @@ codeunit 50111 "Funciones"
         Item: record Item;
         SKU: Record "Stockkeeping Unit";
         UOMMgt: Codeunit "Unit of Measure Management";
+        lblConfirm: Label '¿Desea actualizar el Coste unitario\%1 - %2?', comment = 'ESP="¿Desea actualizar el Coste unitario\%1 - %2?"';
     begin
         SalesCRMemoLine.TESTFIELD(Type, SalesCRMemoLine.Type::Item);
         SalesCRMemoLine.TESTFIELD("No.");
         Item.Get(SalesCRMemoLine."No.");
 
+        if not Confirm(lblConfirm, true, SalesCRMemoLine."No.", SalesCRMemoLine.Description) then
+            exit;
 
         SalesCRMemoLine."Qty. per Unit of Measure" := UOMMgt.GetQtyPerUnitOfMeasure(Item, SalesCRMemoLine."Unit of Measure Code");
         IF GetSKU(SKU, SalesCRMemoLine."Location Code", SalesCRMemoLine."No.", SalesCRMemoLine."Variant Code") THEN

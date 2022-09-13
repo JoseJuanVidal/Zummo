@@ -134,6 +134,20 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
                 RunPageLink = "No." = FIELD("No.");
             }
         }
+        addafter(Reserve)
+        {
+            action(CalcItemCost)
+            {
+                Caption = 'Act. Coste Unitario', comment = 'ESP="Act. Coste Unitario"';
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+                    Rec.GetUnitCost();
+                    Rec.Modify();
+                end;
+            }
+        }
     }
 
     var

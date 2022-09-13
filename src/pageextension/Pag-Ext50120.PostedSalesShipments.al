@@ -2,8 +2,13 @@ pageextension 50120 "PostedSalesShipments" extends "Posted Sales Shipments"
 {
     layout
     {
+        modify("Shipping Agent Code")
+        {
+            Caption = 'Agente', comment = 'ESP="Agente"';
+        }
         addafter("No. Printed")
         {
+
             field("Order No."; "Order No.")
             {
                 ApplicationArea = All;

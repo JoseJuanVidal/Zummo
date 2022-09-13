@@ -5883,6 +5883,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Verifique que se haya seleccionado al menos una factura abierta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method PagPostedBillsSettleAction - NamedType Text1100001Txt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 1735652657 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar el Coste unitario\%1 - %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar el Coste unitario\%1 - %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method SalesCRMemoLineUpdatecost - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3240100023 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar el Coste unitario\%1 - %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar el Coste unitario\%1 - %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method SalesInvoiceLineUpdatecost - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 1902515253 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
@@ -20468,6 +20478,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha operación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoice - Control FechaOperacion - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1080404694 - Action 1591721157 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1379883806">
+          <source>Act. Coste Unitario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. Coste Unitario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoiceSubform - Action CalcItemCost - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 549456760 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 549456760">
           <source>¿Desea marcar %1 facturas como enviadas a Aseguradora?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"</note>
@@ -20617,6 +20632,11 @@
           <source>Rellenar NºFactura</source>
           <note from="Developer" annotates="general" priority="2">ESP="Rellenar NºFactura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesShipments - Action Rellenar NºFactura - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1625261806 - Change 4045368290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
+          <source>Agente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Agente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesShipments - Change Shipping Agent Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 944561194 - Action 2990382772 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1037826143">
           <source>Pesos y Bultos</source>
@@ -21048,6 +21068,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ficha producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderSubform - Action GoToFichaProd - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1793060472 - Action 1591721157 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
+          <source>Act. Coste Unitario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. Coste Unitario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderSubform - Action CalcItemCost - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1793060472 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
@@ -21282,6 +21307,11 @@
           <source>   Material</source>
           <note from="Developer" annotates="general" priority="2">   Material</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Job Cost Factbox - Control RealCostMaterial - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1947924803 - Action 1591721157 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1257057922">
+          <source>Act. Coste Unitario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. Coste Unitario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Posted Sales Cr. Memo Subf - Action CalcItemCost - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 811884982 - Action 144949968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1116965951">
           <source>Calcular Importes</source>
