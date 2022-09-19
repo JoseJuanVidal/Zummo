@@ -53,6 +53,12 @@ page 50118 "Consulta de Inventario"
                     Editable = false;
                     Caption = 'Nombre Cliente', comment = 'ESP="Nombre Cliente"';
                 }
+                field(NomAreaManager; NomAreaManager)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    Caption = 'Area Manager', comment = 'ESP="Area Manager"';
+                }
                 field("Lot No."; "Lot No.")
                 {
                     ApplicationArea = All;
@@ -189,8 +195,11 @@ page 50118 "Consulta de Inventario"
         //familia := Funciones.GetExtensionFieldValuetext(recItem.RecordId, 50021, true);   // Desc Familia  021        
 
         NomCliente := '';
-        if Customer.Get("Reference No.") then
+        NomAreaManager := '';
+        if Customer.Get("Reference No.") then begin
             NomCliente := Customer.Name;
+            NomAreaManager := Customer.AreaManager_btc;
+        end;
     end;
 
     trigger OnOpenPage()
@@ -212,6 +221,7 @@ page 50118 "Consulta de Inventario"
         globalSerie: Code[20];
         CodCliente: code[20];
         NomCliente: text;
+        NomAreaManager: text;
         Ventana: Dialog;
         msgVentana: Label 'Almacén:#1###########\Producto #2##############';
 

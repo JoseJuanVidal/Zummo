@@ -7633,6 +7633,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Control Familia - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2864266009 - Control 795225908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Area Manager</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Control NomAreaManager - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2864266009 - Control 4245741204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nombre Cliente</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
