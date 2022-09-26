@@ -1649,7 +1649,7 @@ report 50111 "FacturaNacionalMaquinas"
                         column(nBaseActual1; nBaseActual[1]) { }
                         column(nBaseActual2; nBaseActual[2]) { }
                         column(nBaseActual3; nBaseActual[3]) { }
-                        column(nImporteIVA1; nImporteIVA[1]) { }
+                        column(nImporteIVA1; nImporteIVA[1] + nImporteIVA[2]) { }
                         column(nImporteIVA2; nImporteIVA[2]) { }
                         column(nImporteIVA3; nImporteIVA[3]) { }
                         column(nPorcentajeIVA1; nPorcentajeIVA[1]) { }
