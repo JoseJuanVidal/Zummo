@@ -6013,6 +6013,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ha cambiado la fecha de entrega requerida\¿Desea cambiar la fecha de entrega requerida también en las líneas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ValidaFechaRequeridaLinPedido - NamedType lbConfirmQst</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1408414175 - Method 3968558706 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1408414175 - Method 3968558706 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nominas %1 %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3536218840 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Shipment in Zummo Inc.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -21283,6 +21293,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importar Excel"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Employee List - Action ImportExcel - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4701843 - Action 3044042001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Importar Recuperación IVA</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Recuperación IVA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH General JournalExt - Action ImportIvaRecuperacion - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4701843 - Action 1033639056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Importar Nominas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importar Nominas"</note>
@@ -21877,6 +21892,16 @@
           <source>BloqueoVentas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueo Ventas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field BloqueoVentas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 24856906 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Cta. Contable IVA Recuperación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cta. Contable IVA Recuperación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Cta. Contable IVA Recuperacion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 2624616620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Proveedor varios IVA Recuperación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proveedor varios IVA Recuperación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Proveedor IVA Recuperacion - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 1699745519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Calculate the exchange rate by document date</source>

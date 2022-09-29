@@ -12,6 +12,14 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                 {
                     ApplicationArea = All;
                 }
+                field("Cta. Contable IVA Recupeacion"; "Cta. Contable IVA Recuperacion")
+                {
+                    ApplicationArea = all;
+                }
+                field("Proveedor IVA Recuperacion"; "Proveedor IVA Recuperacion")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
         addafter("Allow Posting To")

@@ -4984,6 +4984,16 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method RecreateJobQueueEntry - NamedType JobQueueEntryNameTok</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1408414175 - Method 3968558706 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1408414175 - Method 3968558706 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nominas %1 %2</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3536218840 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Shipment in Zummo Inc.</source>
           <note from="Developer" annotates="general" priority="2"/>

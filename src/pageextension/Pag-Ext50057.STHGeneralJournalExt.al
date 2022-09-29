@@ -24,6 +24,27 @@ pageextension 50057 "STH General JournalExt" extends "General Journal"
                     Funciones.CargaFicheroNominas(rec."Journal Batch Name", rec."Journal Template Name");
                 end;
             }
+            action(ImportIvaRecuperacion)
+            {
+                ApplicationArea = all;
+                Caption = 'Importar Recuperación IVA', comment = 'ESP="Importar Recuperación IVA"';
+                Image = Import;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    GenJournalBatch: Record "Gen. Journal Batch";
+                    Funciones: Codeunit "STH Funciones IVA Recuperacion";
+                begin
+                    GenJournalBatch.Reset();
+                    GenJournalBatch.SetRange("Journal Template Name", Rec."Journal Template Name");
+                    GenJournalBatch.SetRange(Name, Rec."Journal Batch Name");
+                    GenJournalBatch.FindSet();
+                    Funciones.CreateJnlIVARecuperacion(GenJournalBatch);
+                    CurrPage.Update();
+                end;
+            }
         }
     }
 

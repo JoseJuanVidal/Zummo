@@ -17,5 +17,17 @@ tableextension 50121 "GenLedgerSetup" extends "General Ledger Setup"  //98
             DataClassification = CustomerContent;
             Caption = 'BloqueoVentas', comment = 'ESP="Bloqueo Ventas"';
         }
+        field(50103; "Cta. Contable IVA Recuperacion"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Cta. Contable IVA Recuperación', comment = 'ESP="Cta. Contable IVA Recuperación"';
+            TableRelation = "G/L Account";
+        }
+        field(50104; "Proveedor IVA Recuperacion"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Proveedor varios IVA Recuperación', comment = 'ESP="Proveedor varios IVA Recuperación"';
+            TableRelation = Vendor;
+        }
     }
 }
