@@ -32,6 +32,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         IDFra: text;
         txtFechaFra: text;
         FechaFra: date;
+        IVA: text;
         CuentaContable: text;
         txtImporte: text;
         Importe: decimal;
@@ -77,7 +78,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
 
         for i := 2 to Rows do begin
 
-            InitValues(IDFra, txtFechaFra, FechaFra, CuentaContable, txtImporte, Importe, CIFProveedor, CuentaProveedor, NombreFiscal, Pais, Divisa, Direccion, Localidad, Provincia, CPProveeor, id60dias);
+            InitValues(IDFra, txtFechaFra, FechaFra, IVA, CuentaContable, txtImporte, Importe, CIFProveedor, CuentaProveedor, NombreFiscal, Pais, Divisa, Direccion, Localidad, Provincia, CPProveeor, id60dias);
 
             ExcelBuffer.SetRange("Row No.", i);
             ExcelBuffer.SetRange("Column No.", 1);
@@ -89,7 +90,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
             Evaluate(FechaFra, txtFechaFra);
             ExcelBuffer.SetRange("Column No.", 3);
             if ExcelBuffer.FindSet() then
-                CuentaContable := ExcelBuffer."Cell Value as Text";
+                IVA := ExcelBuffer."Cell Value as Text";
             ExcelBuffer.SetRange("Column No.", 4);
             if ExcelBuffer.FindSet() then
                 CuentaContable := ExcelBuffer."Cell Value as Text";
@@ -128,7 +129,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
             if ExcelBuffer.FindSet() then
                 Id60dias := ExcelBuffer."Cell Value as Text";
 
-            CrearJnlLine(GenJournalBatch, IDFra, txtFechaFra, FechaFra, CuentaContable, txtImporte, Importe, CIFProveedor, CuentaProveedor,
+            CrearJnlLine(GenJournalBatch, IDFra, txtFechaFra, FechaFra, IVA, CuentaContable, txtImporte, Importe, CIFProveedor, CuentaProveedor,
                     NombreFiscal, Pais, Divisa, Direccion, Localidad, Provincia, CPProveeor, id60dias, LastLine);
 
         end;
@@ -136,7 +137,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
     end;
 
 
-    local procedure CrearJnlLine(GenJournalBatch: Record "Gen. Journal Batch"; IDFra: text; txtFechaFra: Text; FechaFra: date; CuentaContable: text; txtImporte: Text; Importe: decimal; CIFProveedor: text; CuentaProveedor: text;
+    local procedure CrearJnlLine(GenJournalBatch: Record "Gen. Journal Batch"; IDFra: text; txtFechaFra: Text; FechaFra: date; IVA: text; CuentaContable: text; txtImporte: Text; Importe: decimal; CIFProveedor: text; CuentaProveedor: text;
             NombreFiscal: text; Pais: text; Divisa: text; Direccion: text; Localidad: text; Provincia: text; CPProveeor: text; id60dias: text; var LastLine: Integer)
     var
         GLSetup: Record "General Ledger Setup";
@@ -162,15 +163,20 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
             GenJnlLine.Validate("Bal. Account No.", CuentaContable)
         else
             GenJnlLine.Validate("Bal. Account No.", GLSetup."Cta. Contable IVA Recuperacion");
+        GenJnlLine.validate("Bal. VAT Prod. Posting Group", IVA);
         GenJnlLine.Modify();
         LastLine += 10000;
 
         // ahora hacemos el pago para que quede todo correcto
         GenJnlLine."Line No." := LastLine;
+        GenJnlLine."Bal. Gen. Posting Type" := GenJnlLine."Bal. Gen. Posting Type"::" ";
+        GenJnlLine."Bal. Gen. Bus. Posting Group" := '';
+        GenJnlLine."Bal. Gen. Prod. Posting Group" := '';
         GenJnlLine."Document Type" := GenJnlLine."Document Type"::Payment;
         GenJnlLine.Validate(Amount, -GenJnlLine.Amount);
         GenJnlLine."Applies-to Doc. Type" := GenJnlLine."Applies-to Doc. Type"::Invoice;
         GenJnlLine."Applies-to Doc. No." := GenJnlLine."Document No.";
+
         GenJnlLine.Insert();
         LastLine += 10000;
 
@@ -193,7 +199,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
 
     end;
 
-    local procedure InitValues(var IDFra: text; var txtFechaFra: Text; var FechaFra: date; var CuentaContable: text; var txtImporte: Text; var Importe: decimal; var CIFProveedor: text; var CuentaProveedor: text;
+    local procedure InitValues(var IDFra: text; var txtFechaFra: Text; var FechaFra: date; IVA: text; var CuentaContable: text; var txtImporte: Text; var Importe: decimal; var CIFProveedor: text; var CuentaProveedor: text;
             var NombreFiscal: text; var Pais: text; var Divisa: text; var Direccion: text; var Localidad: text; var Provincia: text; var CPProveeor: text; var id60dias: text)
     var
         myInt: Integer;
@@ -201,6 +207,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         Clear(IDFra);
         clear(txtFechaFra);
         Clear(FechaFra);
+        Clear(IVA);
         Clear(CuentaContable);
         Clear(txtImporte);
         Clear(Importe);
