@@ -172,6 +172,8 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         GenJnlLine."Bal. Gen. Posting Type" := GenJnlLine."Bal. Gen. Posting Type"::" ";
         GenJnlLine."Bal. Gen. Bus. Posting Group" := '';
         GenJnlLine."Bal. Gen. Prod. Posting Group" := '';
+        GenJnlLine."Bal. VAT Bus. Posting Group" := '';
+        GenJnlLine."Bal. VAT Prod. Posting Group" := '';
         GenJnlLine."Document Type" := GenJnlLine."Document Type"::Payment;
         GenJnlLine.Validate(Amount, -GenJnlLine.Amount);
         GenJnlLine."Applies-to Doc. Type" := GenJnlLine."Applies-to Doc. Type"::Invoice;
