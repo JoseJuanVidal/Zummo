@@ -1039,10 +1039,12 @@ codeunit 50101 "Eventos_btc"
     var
         ErrorLbl: Label 'Debe actualizar el pedido de compra orgien, %1, antes de registrar';
     begin
-        if SalesHeader."Source Purch. Order No" <> '' then
-            if SalesHeader."Document Type" = SalesHeader."Document Type"::Order then
-                if not SalesHeader."Source Purch. Order Updated" then
-                    Error(ErrorLbl, SalesHeader."Source Purch. Order No");
+        // JJV Añadimos el control de que si facturamos el pedido directamente, no muestre el error de que el pedido compra INC, no este actualizado
+        if SalesHeader.Ship and not SalesHeader.Invoice then
+            if SalesHeader."Source Purch. Order No" <> '' then
+                if SalesHeader."Document Type" = SalesHeader."Document Type"::Order then
+                    if not SalesHeader."Source Purch. Order Updated" then
+                        Error(ErrorLbl, SalesHeader."Source Purch. Order No");
 
     end;
 
