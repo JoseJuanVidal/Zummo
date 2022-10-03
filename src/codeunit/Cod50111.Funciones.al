@@ -1515,13 +1515,16 @@ codeunit 50111 "Funciones"
     end;
 
 
-    procedure SalesInvoiceLineUpdatecost(var SalesInvLine: Record "Sales Invoice Line")
+    procedure SalesInvoiceLineUpdatecost(var Rec: Record "Sales Invoice Line")
     var
         Item: record Item;
+        SalesInvLine: Record "Sales Invoice Line";
         SKU: Record "Stockkeeping Unit";
         UOMMgt: Codeunit "Unit of Measure Management";
         lblConfirm: Label '¿Desea actualizar el Coste unitario\%1 - %2?', comment = 'ESP="¿Desea actualizar el Coste unitario\%1 - %2?"';
     begin
+        SalesInvLine.Reset();
+        SalesInvLine.Get(Rec."Document No.", Rec."Line No.");
         SalesInvLine.TESTFIELD(Type, SalesInvLine.Type::Item);
         SalesInvLine.TESTFIELD("No.");
         Item.Get(SalesInvLine."No.");
@@ -1533,7 +1536,7 @@ codeunit 50111 "Funciones"
         IF GetSKU(SKU, SalesInvLine."Location Code", SalesInvLine."No.", SalesInvLine."Variant Code") THEN
             SalesInvLine."Unit Cost" := SKU."Unit Cost" * SalesInvLine."Qty. per Unit of Measure"
         ELSE
-            SalesInvLine.VALIDATE("Unit Cost (LCY)", Item."Unit Cost" * SalesInvLine."Qty. per Unit of Measure");
+            SalesInvLine.VALIDATE("Unit Cost", Item."Unit Cost" * SalesInvLine."Qty. per Unit of Measure");
 
         SalesInvLine."Unit Cost (LCY)" := SalesInvLine."Unit Cost";
         SalesInvLine.Modify();

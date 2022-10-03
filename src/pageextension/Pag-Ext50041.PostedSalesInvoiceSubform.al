@@ -30,7 +30,6 @@ pageextension 50041 "PostedSalesInvoiceSubform" extends "Posted Sales Invoice Su
                     Funciones: Codeunit Funciones;
                 begin
                     funciones.SalesInvoiceLineUpdatecost(Rec);
-                    CurrPage.Update();
                 end;
             }
         }
