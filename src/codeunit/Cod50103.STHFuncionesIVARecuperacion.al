@@ -156,6 +156,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         GenJnlLine."Account Type" := GenJnlLine."Account Type"::Vendor;
         GenJnlLine.validate("Account No.", GetVendorNo(CuentaProveedor, CIFProveedor));
         GenJnlLine.Description := CopyStr(StrSubstNo('%1 %2', NombreFiscal, IDFra), 1, MaxStrLen(GenJnlLine.Description));
+        GenJnlLine."Succeeded Company Name" := CopyStr(NombreFiscal, 1, MaxStrLen(GenJnlLine."Succeeded Company Name"));
         GenJnlLine."VAT Registration No." := CIFProveedor;
         GenJnlLine.Validate(Amount, -Importe);
         GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
