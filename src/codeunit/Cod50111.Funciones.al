@@ -1579,4 +1579,92 @@ codeunit 50111 "Funciones"
         EXIT(FALSE);
 
     end;
+
+    procedure RetrieveLotAndExpFromPostedInv(InvoiceRowID: Text[250]; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary)
+    var
+        ValueEntryRelation: Record "Value Entry Relation";
+        ValueEntry: Record "Value Entry";
+        ItemLedgEntry: Record "Item Ledger Entry";
+        NumMov: Integer;
+    begin
+        // retrieves a data set of Item Ledger Entries (Posted Invoices)
+        //Calculo lotes
+        RecMemEstadisticas.RESET();
+        RecMemEstadisticas.DELETEALL();
+        NumMov := 1;
+
+        ValueEntryRelation.SETCURRENTKEY("Source RowId");
+        ValueEntryRelation.SETRANGE("Source RowId", InvoiceRowID);
+        IF ValueEntryRelation.FINDFIRST() THEN
+            REPEAT
+                ValueEntry.GET(ValueEntryRelation."Value Entry No.");
+                ItemLedgEntry.GET(ValueEntry."Item Ledger Entry No.");
+                ItemLedgEntry.CALCFIELDS("Sales Amount (Actual)");
+                RecMemEstadisticas.RESET();
+                RecMemEstadisticas.SETRANGE(NoLote, ItemLedgEntry."Serial No.");
+                IF NOT RecMemEstadisticas.FINDFIRST() THEN BEGIN
+                    RecMemEstadisticas.INIT();
+                    RecMemEstadisticas.NoMov := NumMov;
+                    NumMov += 1;
+                    RecMemEstadisticas.NoLote := ItemLedgEntry."Lot No.";
+                    RecMemEstadisticas.NoSerie := ItemLedgEntry."Serial No.";
+                    RecMemEstadisticas.Noproducto := ItemLedgEntry."Item No.";
+                    RecMemEstadisticas.INSERT();
+                END;
+
+            UNTIL ValueEntryRelation.NEXT() = 0;
+    end;
+
+    procedure SalesInvoiceLineAssemblyTracking(SalesInvoiceLine: Record "Sales Invoice Line"; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary)
+    var
+        recPostAssLink: Record "Posted Assemble-to-Order Link";
+        PostedAssembletoOrderLink: record "Posted Assemble-to-Order Link";
+        AssemblyHeader: record "Posted Assembly Header";
+        AssemblyLine: record "Posted Assembly Line";
+        ItemLedgerEntry: record "Item Ledger Entry";
+        NumMov: Integer;
+    begin
+        recPostAssLink.Reset();
+        recPostAssLink.SetRange("Document Type", recPostAssLink."Document Type"::"Sales Shipment");
+        recPostAssLink.SetRange("Document No.", SalesInvoiceLine."Shipment No.");
+        recPostAssLink.SETRANGE("Document Line No.", SalesInvoiceLine."Shipment Line No.");
+        if recPostAssLink.FindFirst() then begin
+            PostedAssembletoOrderLink.SetRange("Document Type", PostedAssembletoOrderLink."Document Type"::"Sales Shipment");
+            PostedAssembletoOrderLink.SetRange("Document No.", SalesInvoiceLine."Shipment No.");
+            PostedAssembletoOrderLink.SETRANGE("Document Line No.", SalesInvoiceLine."Shipment Line No.");
+        end else begin
+            PostedAssembletoOrderLink.SetRange("Document Type", PostedAssembletoOrderLink."Document Type"::"Sales Shipment");
+            PostedAssembletoOrderLink.SetRange("Order No.", SalesInvoiceLine."Order No.");
+            PostedAssembletoOrderLink.SetRange("Order Line No.", SalesInvoiceLine."Order Line No.");
+        end;
+        if PostedAssembletoOrderLink.findset() then
+            repeat
+                AssemblyHeader.SetRange("No.", PostedAssembletoOrderLink."Assembly Document No.");
+                if AssemblyHeader.findset() then
+                    repeat
+                        AssemblyLine.SetRange("Document No.", AssemblyHeader."No.");
+                        if AssemblyLine.findset() then
+                            repeat
+                                ItemLedgerEntry.SetRange("Document No.", AssemblyLine."Document No.");
+                                ItemLedgerEntry.SetRange("Document Line No.", AssemblyLine."Line No.");
+                                if ItemLedgerEntry.findset() then
+                                    repeat
+                                        RecMemEstadisticas.RESET();
+                                        RecMemEstadisticas.SETRANGE(NoSerie, ItemLedgerEntry."Serial No.");
+                                        IF NOT RecMemEstadisticas.FINDFIRST() THEN BEGIN
+                                            RecMemEstadisticas.INIT();
+                                            NumMov += 1;
+                                            RecMemEstadisticas.NoMov := NumMov;
+                                            RecMemEstadisticas.NoLote := ItemLedgerEntry."Lot No.";
+                                            RecMemEstadisticas.NoSerie := ItemLedgerEntry."Serial No.";
+                                            RecMemEstadisticas.Noproducto := ItemLedgerEntry."Item No.";
+                                            RecMemEstadisticas.INSERT();
+                                        END;
+                                    Until ItemLedgerEntry.next() = 0;
+                            Until AssemblyLine.next() = 0;
+
+                    Until AssemblyHeader.next() = 0;
+
+            Until PostedAssembletoOrderLink.next() = 0;
+    end;
 }

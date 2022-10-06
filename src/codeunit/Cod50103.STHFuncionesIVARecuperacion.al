@@ -46,6 +46,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         Provincia: text;
         CPProveeor: text;
         Id60dias: text;    //60 dias es el nombre de la empresa de recuperación de IVA
+        LastDocumentNo: code[20];
         Text000: label 'Cargar Fichero de Excel';
         Text001: Label 'Nominas %1 %2';
     begin
@@ -76,7 +77,11 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         else
             LastLine := 10000;
 
+        LastDocumentNo := GetNextSerialNo(GenJournalBatch);
+
         for i := 2 to Rows do begin
+
+            LastDocumentNo := IncStr(LastDocumentNo);
 
             InitValues(IDFra, txtFechaFra, FechaFra, IVA, CuentaContable, txtImporte, Importe, CIFProveedor, CuentaProveedor, NombreFiscal, Pais, Divisa, Direccion, Localidad, Provincia, CPProveeor, id60dias);
 
@@ -129,7 +134,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
             if ExcelBuffer.FindSet() then
                 Id60dias := ExcelBuffer."Cell Value as Text";
 
-            CrearJnlLine(GenJournalBatch, IDFra, txtFechaFra, FechaFra, IVA, CuentaContable, txtImporte, Importe, CIFProveedor, CuentaProveedor,
+            CrearJnlLine(GenJournalBatch, LastDocumentNo, IDFra, txtFechaFra, FechaFra, IVA, CuentaContable, txtImporte, Importe, CIFProveedor, CuentaProveedor,
                     NombreFiscal, Pais, Divisa, Direccion, Localidad, Provincia, CPProveeor, id60dias, LastLine);
 
         end;
@@ -137,11 +142,12 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
     end;
 
 
-    local procedure CrearJnlLine(GenJournalBatch: Record "Gen. Journal Batch"; IDFra: text; txtFechaFra: Text; FechaFra: date; IVA: text; CuentaContable: text; txtImporte: Text; Importe: decimal; CIFProveedor: text; CuentaProveedor: text;
+    local procedure CrearJnlLine(GenJournalBatch: Record "Gen. Journal Batch"; LastDocumentNo: Code[20]; IDFra: text; txtFechaFra: Text; FechaFra: date; IVA: text; CuentaContable: text; txtImporte: Text; Importe: decimal; CIFProveedor: text; CuentaProveedor: text;
             NombreFiscal: text; Pais: text; Divisa: text; Direccion: text; Localidad: text; Provincia: text; CPProveeor: text; id60dias: text; var LastLine: Integer)
     var
         GLSetup: Record "General Ledger Setup";
         GenJnlLine: Record "Gen. Journal Line";
+        VendorName: text;
     begin
         GLSetup.get();
         GenJnlLine.Init();
@@ -150,13 +156,15 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         GenJnlLine."Line No." := LastLine;
         GenJnlLine."Posting Date" := Workdate;
         GenJnlLine."Document Type" := GenJnlLine."Document Type"::Invoice;
+        GenJnlLine."Document Date" := FechaFra;
         GenJnlLine.Insert();
-        GenJnlLine."Document No." := IDFra;
-        GenJnlLine."External Document No." := CopyStr(id60dias, 1, MaxStrLen(GenJnlLine."External Document No."));
+        GenJnlLine."Document No." := LastDocumentNo;
+        GenJnlLine."External Document No." := CopyStr(IDFra, 1, MaxStrLen(GenJnlLine."External Document No."));
         GenJnlLine."Account Type" := GenJnlLine."Account Type"::Vendor;
-        GenJnlLine.validate("Account No.", GetVendorNo(CuentaProveedor, CIFProveedor));
+        VendorName := CopyStr(NombreFiscal, 1, MaxStrLen(GenJnlLine."Succeeded Company Name"));
+        GenJnlLine.validate("Account No.", GetVendorNo(CuentaProveedor, CIFProveedor, VendorName));
         GenJnlLine.Description := CopyStr(StrSubstNo('%1 %2', NombreFiscal, IDFra), 1, MaxStrLen(GenJnlLine.Description));
-        GenJnlLine."Succeeded Company Name" := CopyStr(NombreFiscal, 1, MaxStrLen(GenJnlLine."Succeeded Company Name"));
+        GenJnlLine."Succeeded Company Name" := VendorName;
         GenJnlLine."VAT Registration No." := CIFProveedor;
         GenJnlLine.Validate(Amount, -Importe);
         GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
@@ -170,6 +178,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
 
         // ahora hacemos el pago para que quede todo correcto
         GenJnlLine."Line No." := LastLine;
+        GenJnlLine."Pmt. Discount Date" := 0D;
         GenJnlLine."Bal. Gen. Posting Type" := GenJnlLine."Bal. Gen. Posting Type"::" ";
         GenJnlLine."Bal. Gen. Bus. Posting Group" := '';
         GenJnlLine."Bal. Gen. Prod. Posting Group" := '';
@@ -185,18 +194,31 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
 
     end;
 
-    local procedure GetVendorNo(CuentaProveedor: text; CIFProveedor: Text): code[20]
+    local procedure GetNextSerialNo(GenJournalBatch: Record "Gen. Journal Batch"): code[20]
+    var
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+    begin
+        exit(NoSeriesMgt.GetNextNo(GenJournalBatch."No. Series", WorkDate(), false));
+    end;
+
+    local procedure GetVendorNo(CuentaProveedor: text; var CIFProveedor: Text; var VendorName: text): code[20]
     var
         GLSetup: Record "General Ledger Setup";
         Vendor: Record Vendor;
     begin
         GLSetup.Get();
-        if Vendor.Get(CuentaProveedor) then
+        if Vendor.Get(CuentaProveedor) then begin
+            VendorName := Vendor.Name;
+            CIFProveedor := Vendor."VAT Registration No.";
             exit(Vendor."No.");
+        end;
         Vendor.Reset();
         Vendor.SetRange("VAT Registration No.", CIFProveedor);
-        if Vendor.FindSet() then
+        if Vendor.FindSet() then begin
+            VendorName := Vendor.Name;
+            CIFProveedor := Vendor."VAT Registration No.";
             exit(Vendor."No.");
+        end;
 
         exit(GLSetup."Proveedor IVA Recuperacion");
 
