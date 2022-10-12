@@ -81,8 +81,6 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
 
         for i := 2 to Rows do begin
 
-            LastDocumentNo := IncStr(LastDocumentNo);
-
             InitValues(IDFra, txtFechaFra, FechaFra, IVA, CuentaContable, txtImporte, Importe, CIFProveedor, CuentaProveedor, NombreFiscal, Pais, Divisa, Direccion, Localidad, Provincia, CPProveeor, id60dias);
 
             ExcelBuffer.SetRange("Row No.", i);
@@ -136,6 +134,8 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
 
             CrearJnlLine(GenJournalBatch, LastDocumentNo, IDFra, txtFechaFra, FechaFra, IVA, CuentaContable, txtImporte, Importe, CIFProveedor, CuentaProveedor,
                     NombreFiscal, Pais, Divisa, Direccion, Localidad, Provincia, CPProveeor, id60dias, LastLine);
+
+            LastDocumentNo := IncStr(LastDocumentNo);
 
         end;
 

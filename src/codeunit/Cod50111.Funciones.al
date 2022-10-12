@@ -1580,18 +1580,17 @@ codeunit 50111 "Funciones"
 
     end;
 
-    procedure RetrieveLotAndExpFromPostedInv(InvoiceRowID: Text[250]; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary)
+    procedure RetrieveLotAndExpFromPostedInv(InvoiceRowID: Text[250]; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary; var NumMov: Integer)
     var
         ValueEntryRelation: Record "Value Entry Relation";
         ValueEntry: Record "Value Entry";
         ItemLedgEntry: Record "Item Ledger Entry";
-        NumMov: Integer;
+
     begin
         // retrieves a data set of Item Ledger Entries (Posted Invoices)
         //Calculo lotes
         RecMemEstadisticas.RESET();
         RecMemEstadisticas.DELETEALL();
-        NumMov := 1;
 
         ValueEntryRelation.SETCURRENTKEY("Source RowId");
         ValueEntryRelation.SETRANGE("Source RowId", InvoiceRowID);
@@ -1615,14 +1614,13 @@ codeunit 50111 "Funciones"
             UNTIL ValueEntryRelation.NEXT() = 0;
     end;
 
-    procedure SalesInvoiceLineAssemblyTracking(SalesInvoiceLine: Record "Sales Invoice Line"; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary)
+    procedure SalesInvoiceLineAssemblyTracking(SalesInvoiceLine: Record "Sales Invoice Line"; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary; var NumMov: Integer)
     var
         recPostAssLink: Record "Posted Assemble-to-Order Link";
         PostedAssembletoOrderLink: record "Posted Assemble-to-Order Link";
         AssemblyHeader: record "Posted Assembly Header";
         AssemblyLine: record "Posted Assembly Line";
         ItemLedgerEntry: record "Item Ledger Entry";
-        NumMov: Integer;
     begin
         recPostAssLink.Reset();
         recPostAssLink.SetRange("Document Type", recPostAssLink."Document Type"::"Sales Shipment");
@@ -1667,4 +1665,90 @@ codeunit 50111 "Funciones"
 
             Until PostedAssembletoOrderLink.next() = 0;
     end;
+
+    procedure ExportTrazabilidadFacturas(var SalesInvoiceLine: Record "Sales Invoice Line"; TextoFiltro: text)
+    var
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        Ventana: Dialog;
+    begin
+        Ventana.Open('Nº Factura #1###############\Nº Linea #2###############\Producto #3#############');
+        ExcelBuffer.DELETEALL;
+        ExcelBuffer.CreateNewBook('Trazabilidad Facturas');
+        // creamos la cabecera de la excel
+        HeaderExcelBuffer(ExcelBuffer, TextoFiltro);
+
+        // añadimos las líneas
+        if SalesInvoiceLine.findset() then
+            repeat
+                Ventana.Update(1, SalesInvoiceLine."Document No.");
+                Ventana.Update(2, SalesInvoiceLine."Line No.");
+                Ventana.Update(3, SalesInvoiceLine."No.");
+                LinesExcelBuffer(ExcelBuffer, SalesInvoiceLine);
+            Until SalesInvoiceLine.next() = 0;
+
+        Ventana.Close();
+
+        ExcelBuffer.WriteSheet('Trazabilidad Facturas', COMPANYNAME, USERID);
+        ExcelBuffer.CloseBook();
+        ExcelBuffer.DownloadAndOpenExcel;
+    end;
+
+    local procedure HeaderExcelBuffer(var ExcelBuffer: Record "Excel Buffer"; TextoFiltro: text)
+    var
+        SalesInvoiceLine: Record "Sales Invoice Line";
+    begin
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn('Trazabilidad Facturas', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn('Filtro:', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn(TextoFiltro, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
+        ExcelBuffer.NewRow();
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption("Sell-to Customer No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Nombre Cliente', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption("Document No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption("Posting Date"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption(Type), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption("No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption(Description), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption("Location Code"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption(Quantity), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption("Posting Group"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption("Unit Cost"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption("Unit Price"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.FieldCaption("Line Amount"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+    end;
+
+    local procedure LinesExcelBuffer(var ExcelBuffer: Record "Excel Buffer"; SalesInvoiceLine: Record "Sales Invoice Line")
+    var
+        SalesInvoiceHeader: Record "Sales Invoice Header";
+        IsBold: Boolean;
+    begin
+        // Buscar clientes y poner nombre        
+        if SalesInvoiceHeader.Get(SalesInvoiceLine."Document No.") then;
+        case SalesInvoiceLine."Attached to Line No." of
+            0, 1:
+                IsBold := true;
+        end;
+
+
+        ExcelBuffer.AddColumn(SalesInvoiceLine."Sell-to Customer No.", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceHeader."Sell-to Customer Name", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine."Document No.", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine."Posting Date", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.Type, FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine."No.", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.Description, FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine."Location Code", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine.Quantity, FALSE, '', FALSE, IsBold, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine."Posting Group", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine."Unit Cost", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine."Unit Price", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvoiceLine."Line Amount", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+    end;
+
 }

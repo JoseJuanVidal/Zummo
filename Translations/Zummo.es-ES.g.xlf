@@ -10171,6 +10171,60 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemUnitCost - Property Caption</note>
           <target>Coste Unitario</target>
         </trans-unit>
+        <trans-unit id="Page 4085494530 - Method 656745096 - NamedType 3808962480" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CONJUNTO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONJUNTO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Method ObtenerSerialNo - NamedType lblCojunto</note>
+          <target>CONJUNTO</target>
+        </trans-unit>
+        <trans-unit id="Page 4085494530 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2">ESP="General"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control General - Property Caption</note>
+          <target>General</target>
+        </trans-unit>
+        <trans-unit id="Page 4085494530 - Control 3855107400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtro Cód. Clientes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Cód. ClientesFiltro Cód. Clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control FilterCustomer - Property Caption</note>
+          <target>Filtro Cód. ClientesFiltro Cód. Clientes</target>
+        </trans-unit>
+        <trans-unit id="Page 4085494530 - Control 267243202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtro Nº Documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Nº Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control FilterDocumentNo - Property Caption</note>
+          <target>Filtro Nº Documento</target>
+        </trans-unit>
+        <trans-unit id="Page 4085494530 - Control 2946561083 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtro Fecha</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control FilterFecha - Property Caption</note>
+          <target>Filtro Fecha</target>
+        </trans-unit>
+        <trans-unit id="Page 4085494530 - Control 2074897193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Todos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Todos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control MostrarTodos - Property Caption</note>
+          <target>Mostrar Todos</target>
+        </trans-unit>
+        <trans-unit id="Page 4085494530 - Control 3471137671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Líneas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control Lines - Property Caption</note>
+          <target>Líneas</target>
+        </trans-unit>
+        <trans-unit id="Page 4085494530 - Control 1881986821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre Cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control CustomerName - Property Caption</note>
+          <target>Nombre Cliente</target>
+        </trans-unit>
+        <trans-unit id="Page 4085494530 - Control 1915851633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Serie</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control Posting Group - Property Caption</note>
+          <target>Nº Serie</target>
+        </trans-unit>
         <trans-unit id="Report 3011595053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Credit Memo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Abono ventas registrado"</note>

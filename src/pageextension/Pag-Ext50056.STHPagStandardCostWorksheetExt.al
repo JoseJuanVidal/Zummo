@@ -20,7 +20,10 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                 ApplicationArea = all;
                 Editable = false;
             }
-
+            field(Blocked; Blocked)
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions

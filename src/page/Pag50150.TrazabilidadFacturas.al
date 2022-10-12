@@ -1,6 +1,6 @@
 page 50150 "Trazabilidad Facturas"
 {
-    PageType = List;
+    PageType = Worksheet;
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Sales Invoice Line";
@@ -33,11 +33,31 @@ page 50150 "Trazabilidad Facturas"
                     ApplicationArea = all;
                     Caption = 'Filtro Fecha', comment = 'ESP="Filtro Fecha"';
                 }
+                field(MostrarTodos; MostrarTodos)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Mostrar Todos', comment = 'ESP="Mostrar Todos"';
+                }
             }
             repeater(Lines)
             {
                 Caption = 'Líneas', comment = 'ESP="Líneas"';
                 Editable = false;
+
+                field("Sell-to Customer No."; "Sell-to Customer No.")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    StyleExpr = StyleExr;
+                }
+                field(CustomerName; CustomerName)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Nombre Cliente', comment = 'ESP="Nombre Cliente"';
+                    Editable = false;
+                    StyleExpr = StyleExr;
+                }
+
                 field("Document No."; "Document No.")
                 {
                     ApplicationArea = all;
@@ -128,6 +148,20 @@ page 50150 "Trazabilidad Facturas"
                     CurrPage.Update();
                 end;
             }
+            action(ExportExcel)
+            {
+                ApplicationArea = All;
+                Image = Excel;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    ExportTrazabilidadFacturas;
+                end;
+            }
+
         }
     }
 
@@ -139,25 +173,36 @@ page 50150 "Trazabilidad Facturas"
             0, 1:
                 StyleExr := 'Strong'
         end;
+
+        // Buscar clientes y poner nombre        
+        CustomerName := '';
+        if SalesInvoiceHeader.Get(Rec."Document No.") then
+            CustomerName := SalesInvoiceHeader."Sell-to Customer Name";
     end;
 
     var
         SalesInvoiceHeader: Record "Sales Invoice Header";
+        Customer: Record Customer;
+        CustomerName: text;
         FilterDocumentNo: text;
         FilterCustomer: text;
         FilterFecha: Text;
         StyleExr: text;
-
+        TextoFiltro: text;
+        MostrarTodos: Boolean;
 
 
     local procedure ActualizarLineas(var tmpSalesInvoiceLine: Record "Sales Invoice Line")
     var
+        Item: record item;
         SalesInvoiceLine: Record "Sales Invoice Line";
+        Mostrar: Boolean;
     begin
         // if tmpSalesInvoiceLine.IsTemporary then
         //     error('La tabla %1 deber ser temporal', tmpSalesInvoiceLine.TableCaption);
         Rec.Reset();
         Rec.DeleteAll();
+        TextoFiltro := '';
         SalesInvoiceHeader.Reset();
         if FilterDocumentNo <> '' then
             SalesInvoiceHeader.SetFilter("No.", FilterDocumentNo);
@@ -165,7 +210,7 @@ page 50150 "Trazabilidad Facturas"
             SalesInvoiceHeader.SetFilter("Posting Date", FilterFecha);
         if FilterCustomer <> '' then
             SalesInvoiceHeader.SetFilter("Sell-to Customer No.", FilterCustomer);
-
+        TextoFiltro := SalesInvoiceHeader.GetFilters();
         if SalesInvoiceHeader.findset() then
             repeat
                 SalesInvoiceLine.Reset();
@@ -173,13 +218,24 @@ page 50150 "Trazabilidad Facturas"
                 SalesInvoiceLine.SetRange(Type, SalesInvoiceLine.Type::Item);
                 if SalesInvoiceLine.findset() then
                     repeat
-                        tmpSalesInvoiceLine.Init();
-                        tmpSalesInvoiceLine.TransferFields(SalesInvoiceLine);
-                        tmpSalesInvoiceLine."Posting Group" := '';
-                        tmpSalesInvoiceLine."Attached to Line No." := 1;
-                        tmpSalesInvoiceLine.Insert();
-                        ObtenerSerialNo(SalesInvoiceLine, tmpSalesInvoiceLine);
+                        // comprobamos si tiene seguimiento de producto o es conjunto
+                        Mostrar := false;
+                        if item.get(SalesInvoiceLine."No.") then begin
+                            if Item."Item Tracking Code" <> '' then
+                                Mostrar := true;
+                            Item.CalcFields("Assembly BOM");
+                            if Item."Assembly BOM" then
+                                Mostrar := true;
+                        end;
 
+                        if Mostrar or MostrarTodos then begin
+                            tmpSalesInvoiceLine.Init();
+                            tmpSalesInvoiceLine.TransferFields(SalesInvoiceLine);
+                            tmpSalesInvoiceLine."Posting Group" := '';
+                            tmpSalesInvoiceLine."Attached to Line No." := 1;
+                            tmpSalesInvoiceLine.Insert();
+                            ObtenerSerialNo(SalesInvoiceLine, tmpSalesInvoiceLine);
+                        end
                     Until SalesInvoiceLine.next() = 0;
 
             Until SalesInvoiceHeader.next() = 0;
@@ -192,11 +248,13 @@ page 50150 "Trazabilidad Facturas"
         Funciones: Codeunit Funciones;
         RecMemLotes: Record MemEstadistica_btc temporary;
         lblCojunto: Label 'CONJUNTO', comment = 'ESP="CONJUNTO"';
+        NumMov: Integer;
     begin
+        NumMov := 1;
         // aqui obtenemos numeros de serie de la linea
-        Funciones.RetrieveLotAndExpFromPostedInv(SalesInvoiceLine.RowID1(), RecMemLotes);
+        Funciones.RetrieveLotAndExpFromPostedInv(SalesInvoiceLine.RowID1(), RecMemLotes, NumMov);
         // aqui obtenemos numeros de serie de pedidos de ensamblado
-        Funciones.SalesInvoiceLineAssemblyTracking(SalesInvoiceLine, RecMemLotes);
+        Funciones.SalesInvoiceLineAssemblyTracking(SalesInvoiceLine, RecMemLotes, NumMov);
 
         RecMemLotes.Reset();
         if RecMemLotes.Count <= 1 then begin
@@ -222,5 +280,13 @@ page 50150 "Trazabilidad Facturas"
 
                 Until RecMemLotes.next() = 0;
             end;
+    end;
+
+    local procedure ExportTrazabilidadFacturas()
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        Funciones.ExportTrazabilidadFacturas(Rec, TextoFiltro);
+        if Rec.FindFirst() then;
     end;
 }
