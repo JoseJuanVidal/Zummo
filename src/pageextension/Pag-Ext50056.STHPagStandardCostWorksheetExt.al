@@ -207,11 +207,14 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
         WhereUsedMgt.WhereUsedFromItem(Item, WorkDate(), NewCalcMultiLevel);
         if WhereUsedMgt.FindRecord('-', WhereUsedLine) then
             repeat
-                StdCostWhse.Init();
-                StdCostWhse."Standard Cost Worksheet Name" := Rec."Standard Cost Worksheet Name";
-                StdCostWhse.Type := StdCostWhse.Type::Item;
-                StdCostWhse.Validate("No.", WhereUsedLine."Item No.");
-                StdCostWhse.Insert()
+                StdCostWhse.Reset();
+                if not StdCostWhse.Get(Rec."Standard Cost Worksheet Name", StdCostWhse.Type::Item, WhereUsedLine."Item No.") then begin
+                    StdCostWhse.Init();
+                    StdCostWhse."Standard Cost Worksheet Name" := Rec."Standard Cost Worksheet Name";
+                    StdCostWhse.Type := StdCostWhse.Type::Item;
+                    StdCostWhse.Validate("No.", WhereUsedLine."Item No.");
+                    StdCostWhse.Insert()
+                end;
             until WhereUsedMgt.NextRecord(1, WhereUsedLine) = 0;
 
     end;
