@@ -14687,10 +14687,10 @@
           <target>BIC/Swift:</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 3403838503" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Bank data</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Datos bancarios"</note>
+          <source>Customer Bank data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Datos bancarios del cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType BancoCaptionLbl</note>
-          <target>Datos bancarios</target>
+          <target>Datos bancarios del cliente</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 1754289296" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account:</source>
@@ -25629,6 +25629,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Salesperson/Purchase - Field Send email due invocies - Property Caption</note>
           <target>Envío email Resumens Fact. Vencidas</target>
         </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source>Bloqueado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field Blocked - Property Caption</note>
+          <target>Bloqueado</target>
+        </trans-unit>
         <trans-unit id="TableExtension 429385547 - Field 2751547137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
           <source>Ultimo coste directo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ultimo coste directo"</note>
@@ -25699,6 +25705,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cant. en pedido de proyecto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Qty. on Job Order - Property Caption</note>
           <target>Cant. en pedido de proyecto</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2681093606 - Field 2570092097 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>Qty. on Planning MPS Component</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cant. en componentes Hoja planificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Qty. on Planning MPS Component - Property Caption</note>
+          <target>Cant. en componentes Hoja planificación</target>
         </trans-unit>
         <trans-unit id="TableExtension 2681093606 - Field 1706177334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>Qty. on Prod. Order</source>

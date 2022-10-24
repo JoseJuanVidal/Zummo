@@ -797,8 +797,13 @@ codeunit 50101 "Eventos_btc"
     local procedure InventoryProfileOffsettingOnBeforeCalculatePlanFromWorksheet(VAR Item: Record Item; ManufacturingSetup2: Record "Manufacturing Setup";
                 TemplateName: Code[10]; WorksheetName: Code[10]; OrderDate: Date; ToDate: Date; MRPPlanning: Boolean; RespectPlanningParm: Boolean)
     var
+        InventorySetup: Record "Inventory Setup";
         RequisitionWkshName: Record "Requisition Wksh. Name";
     begin
+        // ponemos el control de si no queremos que se contemple las lineas de componentes en otras hojas demanda de MPS (planificacion ordenes de produccion)
+        if InventorySetup.Get() then
+            MRPPlanning := InventorySetup."Qty. on Planning MPS Component";
+
         if RequisitionWkshName.Get(TemplateName, WorksheetName) then begin
             Item.STHUseLocationGroup := RequisitionWkshName.STHUseLocationGroup;
             item.STHNoEvaluarPurchase := RequisitionWkshName.STHNoEvaluarPurchase;

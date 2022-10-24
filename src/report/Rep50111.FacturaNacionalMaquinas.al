@@ -2285,7 +2285,7 @@ report 50111 "FacturaNacionalMaquinas"
         DiscountCaptionLbl: Label 'Dto.1', Comment = 'ESP="Dto.1"';
         Discount2CaptionLbl: Label 'Dto.2', Comment = 'ESP="Dto.2"';
         AmtCaptionLbl: Label 'Amount', Comment = 'ESP="Importe",FRA="Montant"';
-        BancoCaptionLbl: Label 'Bank data', Comment = 'ESP="Datos bancarios"';
+        BancoCaptionLbl: Label 'Customer Bank data', Comment = 'ESP="Datos bancarios del cliente"';
         VATClausesCapLbl: Label 'VAT Clause', Comment = 'ESP="Cláusula IVA"';
         ProvinciaCaptionLbl: Label 'State', Comment = 'ESP="Provincia"';
         PrecioenAlhamadeMurciaCaptionLbl: Label 'Precio en Alhama de Murcia', Comment = 'ESP="Precio en Alhama de Murcia"';
