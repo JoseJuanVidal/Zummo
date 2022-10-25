@@ -49,6 +49,11 @@ codeunit 50106 "SalesEvents"
         ErrorMsg: Label 'Warehouse %1 is configured to not allow "Send and Invoice completely", all lines are not sent completely.',
             Comment = 'ESP="El Almacén %1, esta configurado para no permitir "Enviar y Facturar completamente", todas las lineas no estan enviadas completamente."'; //R001
     begin
+        // ZUMMO-JJV Cuando se registra una factura (Invoice=true), comprobar la numeración de el siguiente número con el historico de facturas
+        // estan moviendose el siguiente numero de factura a una anterior.
+        if not SalesHeader.IsTemporary and SalesHeader.Invoice then
+            CheckSeriesNoInvovice(SalesHeader);
+
         // ====== SOTHIS , requrimiento de Maria Borrallo de no permitir registrar y facturar si 
         //  R001 - el cliente solicita que si el almacen de alguna linea es alguno no configurado para permitir 
         //        registrar , modo enviar y facturar, no permita FACTURAR
@@ -81,6 +86,30 @@ codeunit 50106 "SalesEvents"
                 end;
         end;
         // -R001
+    end;
+
+    local procedure CheckSeriesNoInvovice(SalesHeader: Record "Sales Header")
+    var
+        SalesInvHeader: Record "Sales Invoice Header";
+        NoSeriesManagement: Codeunit NoSeriesManagement;
+        InvoiceNoSerie: code[20];
+        Encontrado: Boolean;
+        CountInc: Integer;
+    begin
+        // pedimos el nuevo numero de serie, sin grabar que lo actualice
+        InvoiceNoSerie := NoSeriesManagement.GetNextNo(SalesHeader."Posting No. Series", SalesHeader."Posting Date", false);
+        repeat
+            Encontrado := false;
+            if SalesInvHeader.Get(InvoiceNoSerie) then begin
+                Encontrado := true;
+                // si la encontramos en historico, grabamos ese numero y seguimos con el bucle
+                InvoiceNoSerie := NoSeriesManagement.GetNextNo(SalesHeader."Posting No. Series", SalesHeader."Posting Date", true);
+                // obtenemos la siguiente
+                InvoiceNoSerie := NoSeriesManagement.GetNextNo(SalesHeader."Posting No. Series", SalesHeader."Posting Date", false);
+                CountInc += 1;
+            end
+        until (Encontrado = false) or (CountInc > 3);
+
     end;
 
     //No borre Pedido al Facturarlo

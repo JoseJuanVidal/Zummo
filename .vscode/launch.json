@@ -27,7 +27,7 @@
             "startupObjectType": "Page",
             "breakOnError": true,
             "breakOnRecordWrite": false,
-            "launchBrowser": true,
+            "launchBrowser": false,
             "schemaUpdateMode": "Synchronize"
         }
     ]
