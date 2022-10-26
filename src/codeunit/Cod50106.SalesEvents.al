@@ -96,6 +96,9 @@ codeunit 50106 "SalesEvents"
         Encontrado: Boolean;
         CountInc: Integer;
     begin
+        // si ya tiene numero por un registro anterior
+        if SalesHeader."Posting No." <> '' then
+            exit;
         // pedimos el nuevo numero de serie, sin grabar que lo actualice
         InvoiceNoSerie := NoSeriesManagement.GetNextNo(SalesHeader."Posting No. Series", SalesHeader."Posting Date", false);
         repeat
