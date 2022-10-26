@@ -559,9 +559,14 @@ codeunit 50101 "Eventos_btc"
 
     local procedure TestCamposPedidos(var pPurchaseHeader: Record "Purchase Header")
     begin
-        pPurchaseHeader.TESTFIELD("Payment Method Code");
-        pPurchaseHeader.TESTFIELD("Payment Terms Code");
-        pPurchaseHeader.TestField("Due Date");
+        case pPurchaseHeader."Document Type" of
+            pPurchaseHeader."Document Type"::Order, pPurchaseHeader."Document Type"::Invoice:
+                begin
+                    pPurchaseHeader.TESTFIELD("Payment Method Code");
+                    pPurchaseHeader.TESTFIELD("Payment Terms Code");
+                    pPurchaseHeader.TestField("Due Date");
+                end;
+        end;
     end;
 
     [EventSubscriber(ObjectType::Page, Page::"Purchase Order", 'OnAfterActionEvent', 'Create &Whse. Receipt', true, true)]
