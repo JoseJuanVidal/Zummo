@@ -22,10 +22,11 @@ pageextension 50157 "PurchaseLineFactBox" extends "Purchase Line FactBox"
         PedidoMinimo := 0;
         MultiplosDePedido := 0;
         if Rec.Type = Rec.Type::Item then begin
-            item.Get(Rec."No.");
-            PedidoMinimo := item."Minimum Order Quantity";
-            MultiplosDePedido := item."Order Multiple";
-            StockSeguridad := item."Safety Stock Quantity";
+            if Item.Get(Rec."No.") then begin
+                PedidoMinimo := item."Minimum Order Quantity";
+                MultiplosDePedido := item."Order Multiple";
+                StockSeguridad := item."Safety Stock Quantity";
+            end;
         end;
     end;
 }
