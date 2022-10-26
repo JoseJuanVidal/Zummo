@@ -903,27 +903,29 @@ codeunit 50101 "Eventos_btc"
 
     local procedure ItemJnlPostBatch_TestPostingDate(var ItemJournalLine: Record "Item Journal Line")
     var
+        InventorySetup: Record "Inventory Setup";
         ItemJnlLine: Record "Item Journal Line";
         BoolConfirm: Boolean;
         lblConfirm: Label 'La fecha de registro es %1, no está dentro del periodo.\¿Desea cambiar por la fecha de hoy y continuar?',
             comment = 'ESP="La fecha de registro es %1, no está dentro del periodo.\¿Desea cambiar por la fecha de hoy y continuar?"';
         lblError: Label 'Fechas fuera del periodo contable mensual', comment = 'ESP="Fechas fuera del periodo contable mensual"';
     begin
-        ItemJnlLine.Reset();
-        ItemJnlLine.SetRange("Journal Template Name", ItemJournalLine."Journal Template Name");
-        ItemJnlLine.SetRange("Journal Batch Name", ItemJournalLine."Journal Batch Name");
-        if ItemJnlLine.findset() then
-            repeat
-                if (Date2DMY(ItemJnlLine."Posting Date", 2) <> Date2DMY(WorkDate, 2)) or (Date2DMY(ItemJnlLine."Posting Date", 3) <> Date2DMY(WorkDate, 3)) then begin
-                    if Confirm(lblConfirm, false, ItemJnlLine."Posting Date") then begin
-                        ItemJnlLine."Posting Date" := WorkDate();
-                        ItemJnlLine.Modify();
-                    end else
-                        Error(lblError);
+        if InventorySetup.Get() and InventorySetup."Fecha Diario dentro periodo" then begin
+            ItemJnlLine.Reset();
+            ItemJnlLine.SetRange("Journal Template Name", ItemJournalLine."Journal Template Name");
+            ItemJnlLine.SetRange("Journal Batch Name", ItemJournalLine."Journal Batch Name");
+            if ItemJnlLine.findset() then
+                repeat
+                    if (Date2DMY(ItemJnlLine."Posting Date", 2) <> Date2DMY(WorkDate, 2)) or (Date2DMY(ItemJnlLine."Posting Date", 3) <> Date2DMY(WorkDate, 3)) then begin
+                        if Confirm(lblConfirm, false, ItemJnlLine."Posting Date") then begin
+                            ItemJnlLine."Posting Date" := WorkDate();
+                            ItemJnlLine.Modify();
+                        end else
+                            Error(lblError);
 
-                end;
-            Until ItemJnlLine.next() = 0;
-
+                    end;
+                Until ItemJnlLine.next() = 0;
+        end;
     end;
 
 

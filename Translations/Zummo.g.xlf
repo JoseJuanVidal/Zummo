@@ -23843,6 +23843,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Es Material"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Zum Resource - Field Es Material - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2681093606 - Field 1613777343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>Fecha Diario dentro periodo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Diario dentro periodo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Fecha Diario dentro periodo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2681093606 - Field 2105307182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>Inventory Qty.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cant. Inventario"</note>

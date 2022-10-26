@@ -2,6 +2,13 @@ pageextension 50102 "STHInventorySetup" extends "Inventory Setup"
 {
     layout
     {
+        addafter("Copy Item Descr. to Entries")
+        {
+            field("Fecha Diario dentro periodo"; "Fecha Diario dentro periodo")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter(Numbering)
         {
             group(CalcNeed)

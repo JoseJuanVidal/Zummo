@@ -79,5 +79,11 @@ tableextension 50127 "STHInventory Setup" extends "Inventory Setup" //313
             DataClassification = CustomerContent;
             Caption = 'MRP Bitec Activo', comment = 'ESP="MRP Bitec Activo"';
         }
+
+        field(50125; "Fecha Diario dentro periodo"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fecha Diario dentro periodo', comment = 'ESP="Fecha Diario dentro periodo"';
+        }
     }
 }
