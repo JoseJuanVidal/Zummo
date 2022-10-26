@@ -3,5 +3,4 @@
 .alpackages/*
 .gitignore
 Zummo.code-workspace
-*.app
 .vscode/launch.json
