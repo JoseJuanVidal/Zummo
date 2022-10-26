@@ -101,6 +101,8 @@ codeunit 50106 "SalesEvents"
             exit;
         // pedimos el nuevo numero de serie, sin grabar que lo actualice
         InvoiceNoSerie := NoSeriesManagement.GetNextNo(SalesHeader."Posting No. Series", SalesHeader."Posting Date", false);
+        if InvoiceNoSerie = '' then
+            exit;
         repeat
             Encontrado := false;
             if SalesInvHeader.Get(InvoiceNoSerie) then begin

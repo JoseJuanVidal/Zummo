@@ -5803,6 +5803,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CU_Cron - Method OnRun - NamedType lbNoParametroErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 1298797416 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>La fecha de registro es %1, no está dentro del periodo.\¿Desea cambiar por la fecha de hoy y continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La fecha de registro es %1, no está dentro del periodo.\¿Desea cambiar por la fecha de hoy y continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method ItemJnlPostBatch_TestPostingDate - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 1298797416 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fechas fuera del periodo contable mensual</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fechas fuera del periodo contable mensual"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method ItemJnlPostBatch_TestPostingDate - NamedType lblError</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 4089462097 - NamedType 3941846598" size-unit="char" translate="yes" xml:space="preserve">
           <source>Debe actualizar el pedido de compra orgien, %1, antes de registrar</source>
           <note from="Developer" annotates="general" priority="2"></note>
