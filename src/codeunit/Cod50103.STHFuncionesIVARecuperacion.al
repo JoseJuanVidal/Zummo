@@ -148,6 +148,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         GLSetup: Record "General Ledger Setup";
         GenJnlLine: Record "Gen. Journal Line";
         VendorName: text;
+        Pos: Integer;
     begin
         GLSetup.get();
         GenJnlLine.Init();
@@ -159,7 +160,10 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         GenJnlLine."Document Date" := FechaFra;
         GenJnlLine.Insert();
         GenJnlLine."Document No." := LastDocumentNo;
-        GenJnlLine."External Document No." := CopyStr(IDFra, 1, MaxStrLen(GenJnlLine."External Document No."));
+        Pos := strlen(IDFra) - 36;
+        if Pos < 1 then
+            pos := 1;
+        GenJnlLine."External Document No." := CopyStr(IDFra, Pos, MaxStrLen(GenJnlLine."External Document No."));
         GenJnlLine."Account Type" := GenJnlLine."Account Type"::Vendor;
         VendorName := CopyStr(NombreFiscal, 1, MaxStrLen(GenJnlLine."Succeeded Company Name"));
         GenJnlLine.validate("Account No.", GetVendorNo(CuentaProveedor, CIFProveedor, VendorName));
