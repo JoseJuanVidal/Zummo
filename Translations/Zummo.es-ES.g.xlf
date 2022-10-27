@@ -5962,22 +5962,147 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field WarrantyDate - Property Caption</note>
           <target>Años de Garantía</target>
         </trans-unit>
+        <trans-unit id="Table 1889839597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZM Productión Tools</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 3011597373 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brand</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marca"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Brand - Property Caption</note>
+          <target>Marca</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Code - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 503024588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Commments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Comments - Property Caption</note>
+          <target>Comentarios</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 2809478090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direct unit cost.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste Directo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Direct unit cost. - Property Caption</note>
+          <target>Coste Directo</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 1803560855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last date revision</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. fecha revisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Last date revision - Property Caption</note>
+          <target>Ult. fecha revisión</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 423926106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Machine Center</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Centro maquina"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Machine Center - Property Caption</note>
+          <target>Centro maquina</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 1695122201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Model</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modelo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Model - Property Caption</note>
+          <target>Modelo</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 1764241412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next date revision</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha siguiente revisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Next date revision - Property Caption</note>
+          <target>Fecha siguiente revisión</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 995423621 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Periodicity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Periodicidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Periodicity - Property Caption</note>
+          <target>Periodicidad</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Posting Date - Property Caption</note>
+          <target>Fecha registro</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 1477336402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Precision</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Precision - Property Caption</note>
+          <target>Precisión</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 3920280169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Purchase Date - Property Caption</note>
+          <target>Fecha compra</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 2521221354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Resolution</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Resolución"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Resolution - Property Caption</note>
+          <target>Resolución</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 47037625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Serial No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Serial No. - Property Caption</note>
+          <target>Nº Serie</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Status - Property Caption</note>
+          <target>Estado</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 3813820683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value max.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Valor max."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Value max. - Property Caption</note>
+          <target>Valor max.</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 3202940849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value min.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Valor min."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Value min. - Property Caption</note>
+          <target>Valor min.</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Vendor No. - Property Caption</note>
+          <target>Cód. proveedor</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 3433205814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Work Center</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Centro trabajo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Work Center - Property Caption</note>
+          <target>Centro trabajo</target>
+        </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CU_Cron - Method OnRun - NamedType lbNoParametroErr</note>
           <target>Parámetro Desconocido</target>
         </trans-unit>
-        <trans-unit id="Codeunit 1358165814 - Method 2836025941 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 1358165814 - Method 1298797416 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>La fecha de registro es %1, no está dentro del periodo.\¿Desea cambiar por la fecha de hoy y continuar?</source>
           <note from="Developer" annotates="general" priority="2">ESP="La fecha de registro es %1, no está dentro del periodo.\¿Desea cambiar por la fecha de hoy y continuar?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method ItemJnlPostBatch_OnBeforeCode - NamedType lblConfirm</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method ItemJnlPostBatch_TestPostingDate - NamedType lblConfirm</note>
           <target>La fecha de registro es %1, no está dentro del periodo.\¿Desea cambiar por la fecha de hoy y continuar?</target>
         </trans-unit>
-        <trans-unit id="Codeunit 1358165814 - Method 2836025941 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 1358165814 - Method 1298797416 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fechas fuera del periodo contable mensual</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fechas fuera del periodo contable mensual"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method ItemJnlPostBatch_OnBeforeCode - NamedType lblError</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method ItemJnlPostBatch_TestPostingDate - NamedType lblError</note>
           <target>Fechas fuera del periodo contable mensual</target>
         </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 4089462097 - NamedType 3941846598" size-unit="char" translate="yes" xml:space="preserve">
@@ -9439,6 +9564,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción del trabajo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control WorkDescription - Property Caption</note>
           <target>Descripción del trabajo</target>
+        </trans-unit>
+        <trans-unit id="Page 1405574436 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Productions tool</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Utiles producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Productions tool - Property Caption</note>
+          <target>Utiles producción</target>
+        </trans-unit>
+        <trans-unit id="Page 1405574436 - Control 2710318747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Observations</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Observaciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Productions tool - Control Observations - Property Caption</note>
+          <target>Observaciones</target>
+        </trans-unit>
+        <trans-unit id="Page 3723248709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Productions tool</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista Utiles producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Productions tools - Property Caption</note>
+          <target>Lista Utiles producción</target>
         </trans-unit>
         <trans-unit id="Page 140254329 - Control 4092165491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Puesto</source>
@@ -25676,6 +25819,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Zum Resource - Field Es Material - Property Caption</note>
           <target>Es Material</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2681093606 - Field 1613777343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>Fecha Diario dentro periodo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Diario dentro periodo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Fecha Diario dentro periodo - Property Caption</note>
+          <target>Fecha Diario dentro periodo</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2681093606 - Field 2105307182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>Inventory Qty.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cant. Inventario"</note>
@@ -26688,6 +26837,30 @@
           <note from="Developer" annotates="general" priority="2">ESP=" "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum IE Almacen - EnumValue Ninguno - Property Caption</note>
           <target> </target>
+        </trans-unit>
+        <trans-unit id="Enum 1474600459 - EnumValue 346708723 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Accepted</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aceptado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ZM Production tools resolution - EnumValue Accepted - Property Caption</note>
+          <target>Aceptado</target>
+        </trans-unit>
+        <trans-unit id="Enum 1474600459 - EnumValue 3844911025 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Canceled</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cancelado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ZM Production tools resolution - EnumValue Canceled - Property Caption</note>
+          <target>Cancelado</target>
+        </trans-unit>
+        <trans-unit id="Enum 166845172 - EnumValue 1090351696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Active</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Habilitado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ZM State production tools - EnumValue Active - Property Caption</note>
+          <target>Habilitado</target>
+        </trans-unit>
+        <trans-unit id="Enum 166845172 - EnumValue 4145499734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inactive</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Deshabilitado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ZM State production tools - EnumValue Inctive - Property Caption</note>
+          <target>Deshabilitado</target>
         </trans-unit>
       </group>
     </body>

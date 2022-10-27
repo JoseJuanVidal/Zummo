@@ -6,6 +6,7 @@ page 50129 "Productions tools"
     SourceTable = "ZM Productión Tools";
     UsageCategory = Lists;
     CardPageId = "Productions tool";
+    Editable = false;
 
     layout
     {
