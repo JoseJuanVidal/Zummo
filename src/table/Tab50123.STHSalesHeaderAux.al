@@ -210,11 +210,6 @@ table 50123 "STH Sales Header Aux"
         {
             Caption = 'Created', Comment = 'ESP="Creada"';
         }
-        // TODO REVISION 
-        // field(53; "Revision ID"; Integer)
-        // {
-        //     Caption = 'RevisionNumber', Comment = 'ESP="RevisionNumber"';
-        // }
     }
     keys
     {
