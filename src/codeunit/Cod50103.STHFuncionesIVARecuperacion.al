@@ -168,7 +168,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         VendorName := CopyStr(NombreFiscal, 1, MaxStrLen(GenJnlLine."Succeeded Company Name"));
         GenJnlLine.validate("Account No.", GetVendorNo(CuentaProveedor, CIFProveedor, VendorName));
         GenJnlLine.Description := CopyStr(StrSubstNo('%1 %2', NombreFiscal, IDFra), 1, MaxStrLen(GenJnlLine.Description));
-        GenJnlLine."Succeeded Company Name" := VendorName;
+        GenJnlLine."Succeeded Company Name" := NombreFiscal;
         GenJnlLine."VAT Registration No." := CIFProveedor;
         GenJnlLine.Validate(Amount, -Importe);
         GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
@@ -211,16 +211,17 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         Vendor: Record Vendor;
     begin
         GLSetup.Get();
-        if Vendor.Get(CuentaProveedor) then begin
-            VendorName := Vendor.Name;
-            CIFProveedor := Vendor."VAT Registration No.";
-            exit(Vendor."No.");
-        end;
+
         Vendor.Reset();
         Vendor.SetRange("VAT Registration No.", CIFProveedor);
         if Vendor.FindSet() then begin
             VendorName := Vendor.Name;
-            CIFProveedor := Vendor."VAT Registration No.";
+            //CIFProveedor := Vendor."VAT Registration No.";
+            exit(Vendor."No.");
+        end;
+        if Vendor.Get(CuentaProveedor) then begin
+            VendorName := Vendor.Name;
+            //CIFProveedor := Vendor."VAT Registration No.";
             exit(Vendor."No.");
         end;
 

@@ -3,6 +3,13 @@ pageextension 50057 "STH General JournalExt" extends "General Journal"
     layout
     {
         // Add changes to page layout here
+        addafter(Description)
+        {
+            field("VAT Registration No."; "VAT Registration No.")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     actions
