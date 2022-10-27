@@ -58,20 +58,21 @@ page 50130 "Productions tool"
                 {
                     ApplicationArea = All;
                 }
-            }
-            group(Observations)
-            {
-                Caption = 'Observations', comment = 'ESP="Observaciones"';
 
-                field(Comments; vComments)
+                group(Observations)
                 {
-                    ShowCaption = false;
-                    MultiLine = true;
+                    Caption = 'Observations', comment = 'ESP="Observaciones"';
 
-                    trigger OnValidate()
-                    begin
-                        SetComments(vComments);
-                    end;
+                    field(Comments; vComments)
+                    {
+                        ShowCaption = false;
+                        MultiLine = true;
+
+                        trigger OnValidate()
+                        begin
+                            SetComments(vComments);
+                        end;
+                    }
                 }
             }
         }
