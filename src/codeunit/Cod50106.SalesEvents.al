@@ -490,8 +490,9 @@ codeunit 50106 "SalesEvents"
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeValidateEvent', 'Requested Delivery Date', true, true)]
     local procedure T_36_OnBefreValidateRequestedDate(VAR Rec: Record "Sales Header"; VAR xRec: Record "Sales Header"; CurrFieldNo: Integer)
     begin
-        if (rec."Requested Delivery Date" <> xRec."Requested Delivery Date") and (rec."Document Type" = rec."Document Type"::Order) then
-            ValidaFechaRequeridaLinPedido(Rec);
+        // TODO error ventas al cambiar la fecha de request
+        // if (rec."Requested Delivery Date" <> xRec."Requested Delivery Date") and (rec."Document Type" = rec."Document Type"::Order) then
+        //     ValidaFechaRequeridaLinPedido(Rec);
     end;
 
     //Fechas pedido venta
@@ -519,8 +520,9 @@ codeunit 50106 "SalesEvents"
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeValidateEvent', 'Promised Delivery Date', true, true)]
     local procedure T_36_OnBefreValidatePromisedDate(VAR Rec: Record "Sales Header"; VAR xRec: Record "Sales Header"; CurrFieldNo: Integer)
     begin
-        if (rec."Promised Delivery Date" <> xRec."Promised Delivery Date") and (rec."Document Type" = rec."Document Type"::Order) then
-            ValidaFechaPrometidaLinPedido(Rec);
+        // TODO error ventas al cambiar la fecha prometida
+        // if (rec."Promised Delivery Date" <> xRec."Promised Delivery Date") and (rec."Document Type" = rec."Document Type"::Order) then
+        //     ValidaFechaPrometidaLinPedido(Rec);
     end;
 
     //Fechas pedido venta

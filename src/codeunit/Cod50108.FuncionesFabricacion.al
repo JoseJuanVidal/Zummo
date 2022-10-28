@@ -416,7 +416,8 @@ codeunit 50108 "FuncionesFabricacion"
         CalcPlan.SetTableView(ItemPedido);
         CalcPlan.SetTemplAndWorksheet('PLANIF.', RequisitionWkshName."Name", TRUE);
         CalcPlan.UseRequestPage(false);
-        CalcPlan.InitializeRequest(today - 60, TODAY + 60, TRUE);
+        // antes CalcPlan.InitializeRequest(today - 60, TODAY + 60, TRUE);
+        CalcPlan.InitializeRequest(today, TODAY + 90, TRUE);
         CalcPlan.RunModal();
         clear(CalcPlan);
 
@@ -430,7 +431,8 @@ codeunit 50108 "FuncionesFabricacion"
         CalculatePlan.SetTableView(ItemCompra);
         CalculatePlan.SetTemplAndWorksheet('APROV.', RequisitionWkshName."Name");
         CalculatePlan.UseRequestPage(false);
-        CalculatePlan.InitializeRequest(today - 60, TODAY + 60);
+        CalculatePlan.InitializeRequest(today, TODAY + 90);
+        //CalculatePlan.InitializeRequest(today - 60, TODAY + 60);
         CalculatePlan.RUNMODAL;
         CLEAR(CalculatePlan);
 
