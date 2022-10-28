@@ -4948,6 +4948,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1889839597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZM Productión Tools</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 4089462097 - NamedType 3941846598" size-unit="char" translate="yes" xml:space="preserve">
           <source>Debe actualizar el pedido de compra orgien, %1, antes de registrar</source>
           <note from="Developer" annotates="general" priority="2"/>

@@ -49,6 +49,15 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
             {
                 ApplicationArea = all;
             }
+            field("Requested Delivery Date"; "Requested Delivery Date")
+            {
+                ApplicationArea = all;
+            }
+            field("Promised Delivery Date"; "Promised Delivery Date")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
 
         }
 
