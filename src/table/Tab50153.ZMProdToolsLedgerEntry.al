@@ -16,6 +16,7 @@ table 50153 "ZM Prod. Tools Ledger Entry"
             DataClassification = CustomerContent;
             Caption = 'Prod. Tools code', comment = 'ESP="Cód. Utiles producción"';
             TableRelation = "ZM Productión Tools";
+            Editable = false;
         }
         field(3; "Prod. Tools Name"; text[100])
         {

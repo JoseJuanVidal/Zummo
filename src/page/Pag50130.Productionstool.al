@@ -85,7 +85,16 @@ page 50130 "Productions tool"
             action(CreateRevision)
             {
                 ApplicationArea = all;
-                Caption = '', comment = 'ESP="Crear Revisión proveedor"';
+                Caption = 'New Calibration', comment = 'ESP="Nueva Calibración"';
+                Image = CreateForm;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    CreateRevisions;
+                end;
 
 
             }

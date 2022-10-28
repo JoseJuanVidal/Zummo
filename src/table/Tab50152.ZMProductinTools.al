@@ -129,4 +129,20 @@ table 50152 "ZM Productión Tools"
         ProdToolsLedgerEntrys.Editable := false;
         ProdToolsLedgerEntrys.RunModal();
     end;
+
+    procedure CreateRevisions()
+    var
+        ProdToolsLdgEntry: Record "ZM Prod. Tools Ledger Entry" temporary;
+        ProdToolsLedgerEntrys: page "ZM Prod. Tools Ledger Entry";
+    begin
+        ProdToolsLdgEntry.Init();
+        ProdToolsLdgEntry."Prod. Tools code" := Rec.Code;
+        ProdToolsLdgEntry."Posting Date" := WorkDate();
+        ProdToolsLdgEntry.Insert();
+        if Page.RunModal(page::"ZM Prod. Tools Ldg. Entry Card", ProdToolsLdgEntry) = Action::OK then begin
+            // TODO crear el registro real y no en temporal, comprobar datos lookup de ficha
+        end;
+
+    end;
+
 }
