@@ -1,7 +1,8 @@
 table 50152 "ZM Productión Tools"
 {
-    Caption = 'ZM Productión Tools';
-    DataClassification = ToBeClassified;
+    Caption = 'ZM Productión Tools', Comment = 'ESP="Utiles producción"';
+
+    DataClassification = CustomerContent;
 
     fields
     {
@@ -107,6 +108,7 @@ table 50152 "ZM Productión Tools"
             Caption = 'Direct unit cost.', Comment = 'ESP="Coste Directo"';
             DataClassification = CustomerContent;
         }
+
     }
     keys
     {
