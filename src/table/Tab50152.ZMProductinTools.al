@@ -117,4 +117,16 @@ table 50152 "ZM Productión Tools"
             Clustered = true;
         }
     }
+
+    procedure ShowProdToolLdgEntrys()
+    var
+        ProdToolsLdgEntry: Record "ZM Prod. Tools Ledger Entry";
+        ProdToolsLedgerEntrys: page "ZM Prod. Tools Ledger Entry";
+    begin
+        ProdToolsLdgEntry.Reset();
+        ProdToolsLdgEntry.SetRange("Prod. Tools code", Rec.Code);
+        ProdToolsLedgerEntrys.SetTableView(ProdToolsLdgEntry);
+        ProdToolsLedgerEntrys.Editable := false;
+        ProdToolsLedgerEntrys.RunModal();
+    end;
 }

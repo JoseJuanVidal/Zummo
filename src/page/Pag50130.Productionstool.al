@@ -78,7 +78,38 @@ page 50130 "Productions tool"
         }
 
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(CreateRevision)
+            {
+                ApplicationArea = all;
+                Caption = '', comment = 'ESP="Crear Revisión proveedor"';
 
+
+            }
+        }
+        area(Navigation)
+        {
+            action(ShowProdToolLdgEntry)
+            {
+                ApplicationArea = all;
+                Caption = 'Prod. Tools Ledger Entrys', comment = 'ESP="Movs. Utiles Prod."';
+                Image = Ledger;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    ShowProdToolLdgEntrys;
+                end;
+
+
+            }
+        }
+    }
 
     trigger OnAfterGetRecord()
     begin

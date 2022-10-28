@@ -1,6 +1,9 @@
 table 50153 "ZM Prod. Tools Ledger Entry"
 {
     DataClassification = ToBeClassified;
+    Caption = '', comment = 'ESP=""';
+    LookupPageId = "ZM Prod. Tools Ledger Entry";
+    DrillDownPageId = "ZM Prod. Tools Ledger Entry";
 
     fields
     {
@@ -11,8 +14,15 @@ table 50153 "ZM Prod. Tools Ledger Entry"
         field(2; "Prod. Tools code"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Prod. Tools code', comment = 'ESP="Cód. utiles producción"';
+            Caption = 'Prod. Tools code', comment = 'ESP="Cód. Utiles producción"';
             TableRelation = "ZM Productión Tools";
+        }
+        field(3; "Prod. Tools Name"; text[100])
+        {
+            Caption = 'Prod. Tools Name', comment = 'ESP="Nombre Utiles producción"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Vendor.Name where("No." = field("Vendor No.")));
+            Editable = false;
         }
         field(10; "Vendor No."; code[20])
         {
@@ -92,5 +102,6 @@ table 50153 "ZM Prod. Tools Ledger Entry"
     begin
 
     end;
+
 
 }
