@@ -6291,6 +6291,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method CambiaEstadoVariasOrdenesProduccion - NamedType labelConfirmQst</note>
           <target>¿Desea cambiar el estado de las ordenes seleccionadas?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1069980009 - Method 2246169831 - NamedType 3472070881" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea exportar los resultado en Excel?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea exportar los resultado en Excel?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method LanzarPlanificacionDesdePedidos - NamedType lblConfirmExcel</note>
+          <target>¿Desea exportar los resultado en Excel?</target>
+        </trans-unit>
         <trans-unit id="Codeunit 2573646532 - Method 2223176127 - NamedType 596828306" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se encuentra la Oferta %1 emparejado.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se encuentra la Oferta %1 emparejada."</note>
@@ -9648,6 +9654,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Productions tool - Control Observations - Property Caption</note>
           <target>Observaciones</target>
         </trans-unit>
+        <trans-unit id="Page 1405574436 - Action 1701118507 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prod. Tools Ledger Entrys</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. Utiles Prod."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Productions tool - Action ShowProdToolLdgEntry - Property Caption</note>
+          <target>Movs. Utiles Prod.</target>
+        </trans-unit>
+        <trans-unit id="Page 1405574436 - Action 3130929609 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Calibration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nueva Calibración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Productions tool - Action CreateRevision - Property Caption</note>
+          <target>Nueva Calibración</target>
+        </trans-unit>
         <trans-unit id="Page 3723248709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Productions tool</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Utiles producción"</note>
@@ -10456,6 +10474,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control Posting Group - Property Caption</note>
           <target>Nº Serie</target>
+        </trans-unit>
+        <trans-unit id="Page 3525881470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prod. Tools Ledger Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. Utiles producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Prod. Tools Ldg. Entry Card - Property Caption</note>
+          <target>Movs. Utiles producción</target>
         </trans-unit>
         <trans-unit id="Page 1490353142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ZM Prod. Tools Ledger Entry</source>
@@ -25900,6 +25924,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Es Material"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Zum Resource - Field Es Material - Property Caption</note>
           <target>Es Material</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2681093606 - Field 3065517585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>Export Excel Requisition</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Export Excel Requisition - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2681093606 - Field 1613777343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>Fecha Diario dentro periodo</source>

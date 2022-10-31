@@ -805,10 +805,6 @@ codeunit 50101 "Eventos_btc"
         InventorySetup: Record "Inventory Setup";
         RequisitionWkshName: Record "Requisition Wksh. Name";
     begin
-        // ponemos el control de si no queremos que se contemple las lineas de componentes en otras hojas demanda de MPS (planificacion ordenes de produccion)
-        if InventorySetup.Get() then
-            MRPPlanning := InventorySetup."Qty. on Planning MPS Component";
-
         if RequisitionWkshName.Get(TemplateName, WorksheetName) then begin
             Item.STHUseLocationGroup := RequisitionWkshName.STHUseLocationGroup;
             item.STHNoEvaluarPurchase := RequisitionWkshName.STHNoEvaluarPurchase;

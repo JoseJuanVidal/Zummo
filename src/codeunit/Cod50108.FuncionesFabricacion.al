@@ -1,5 +1,9 @@
 codeunit 50108 "FuncionesFabricacion"
 {
+
+    var
+        ReqExcelBuffer: Record "Excel Buffer";
+
     procedure CambiaEstadoVariasOrdenesProduccion(var pOrdenProd: Record "Production Order")
     var
         cduProdorderStatus: Codeunit "Prod. Order Status Management";
@@ -230,6 +234,121 @@ codeunit 50108 "FuncionesFabricacion"
 
     end;
 
+    // ZM JJV 21/10/22 para poder exportar excel enla planficacion desde pedido
+    // es el final de la ultima carga de demand/supply antes de calcular, 
+    // [EventSubscriber(ObjectType::Codeunit, codeunit::"Inventory Profile Offsetting", 'OnAfterSupplyToInvProfile', '', true, true)]
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Inventory Profile Offsetting", 'OnBeforePrePlanDateDemandProc', '', true, true)]
+    local procedure codeunitInventoryProfileOffsetting_OnBeforePrePlanDateDemandProc(var SupplyInventoryProfile: Record "Inventory Profile"; var DemandInventoryProfile: Record "Inventory Profile";
+            var SupplyExists: Boolean; var DemandExists: Boolean)
+    var
+        InventorySetup: Record "Inventory Setup";
+    begin
+        if InventorySetup.Get() then
+            if InventorySetup."Export Excel Requisition" then
+                AddLastReqExcelBuffer(SupplyInventoryProfile, DemandInventoryProfile, SupplyExists, DemandExists);
+    end;
+
+    local procedure AddLastReqExcelBuffer(var SupplyInventoryProfile: Record "Inventory Profile"; var DemandInventoryProfile: Record "Inventory Profile";
+            var SupplyExists: Boolean; var DemandExists: Boolean)
+    var
+        Item: Record Item;
+        SKU: Record "Stockkeeping Unit";
+        Quantity: Decimal;
+        nLinea: Integer;
+        i: Integer;
+    begin
+        // obtenemos la ultima posicion
+        ReqExcelBuffer.Reset();
+        ReqExcelBuffer.SetRange("Column No.", 1);
+        if ReqExcelBuffer.FindLast() then
+            nLinea := ReqExcelBuffer."Row No." + 1
+        else
+            nLinea := 1;
+        ReqExcelBuffer.SetCurrent(nLinea, 0);
+        ReqExcelBuffer.AddColumn(SupplyInventoryProfile."Item No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        if Item.Get(SupplyInventoryProfile."Item No.") then;
+        ReqExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        SKU.Reset();
+        SKU.SetRange("Item No.", SupplyInventoryProfile."Item No.");
+        SKU.SetRange("Location Code", SupplyInventoryProfile."Location Code");
+        SKU.CalcFields(Inventory);
+        if SKU.FindFirst() then begin
+            ReqExcelBuffer.AddColumn(SKU."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+            ReqExcelBuffer.AddColumn(SKU."Minimum Order Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+        end else begin
+            ReqExcelBuffer.AddColumn(Item."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+            ReqExcelBuffer.AddColumn(Item."Order Multiple", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+
+        end;
+        for i := 1 to 8 do begin
+            Quantity := 0;
+            if DemandInventoryProfile.findset() then
+                repeat
+                    case i of
+                        // DEMAND
+                        1:  // Sales Line (37)
+                            if DemandInventoryProfile."Source Type" = Database::"Sales Line" then
+                                Quantity += DemandInventoryProfile."Remaining Quantity";
+                        2:  // Service Line (5902)
+                            if DemandInventoryProfile."Source Type" = Database::"Service Line" then
+                                Quantity += SupplyInventoryProfile."Remaining Quantity";
+                        3:  // Job Planning line (1003)
+                            if DemandInventoryProfile."Source Type" = Database::"Job Planning Line" then
+                                Quantity += DemandInventoryProfile."Remaining Quantity";
+                        4:  // Prod Order Component (5407)
+                            if DemandInventoryProfile."Source Type" = Database::"Prod. Order Component" then
+                                Quantity += DemandInventoryProfile."Remaining Quantity";
+                        5:  // Asembly  Line (901)                            
+                            if DemandInventoryProfile."Source Type" = Database::"Assembly Line" then
+                                Quantity += DemandInventoryProfile."Remaining Quantity";
+                        6:  // Planning Component Line (99000829)                            
+                            if DemandInventoryProfile."Source Type" = Database::"Planning Component" then
+                                Quantity += DemandInventoryProfile."Remaining Quantity";
+                        7:  // Trans Requisition Line (246)                            
+                            if DemandInventoryProfile."Source Type" = Database::"Requisition Line" then
+                                Quantity += DemandInventoryProfile."Remaining Quantity";
+                        8:  // shipment Transfer Line (5741)                            
+                            if DemandInventoryProfile."Source Type" = Database::"Transfer Line" then
+                                Quantity += DemandInventoryProfile."Remaining Quantity";
+                    end;
+                Until DemandInventoryProfile.next() = 0;
+            ReqExcelBuffer.AddColumn(Quantity, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+        end;
+        for i := 1 to 8 do begin
+            Quantity := 0;
+            if SupplyInventoryProfile.findset() then
+                repeat
+                    // SUPPLY
+                    case i of
+                        1:  // Item Ledger Entry (32)
+                            if SupplyInventoryProfile."Source Type" = Database::"Item Ledger Entry" then
+                                Quantity += SupplyInventoryProfile."Remaining Quantity";
+                        2:  // Requisition line (246)
+                            if SupplyInventoryProfile."Source Type" = Database::"Requisition Line" then
+                                Quantity += SupplyInventoryProfile."Remaining Quantity";
+                        3:  // Purchase line (39)
+                            if SupplyInventoryProfile."Source Type" = Database::"Purchase Line" then
+                                Quantity += SupplyInventoryProfile."Remaining Quantity";
+                        4:  // Prod Order line (39)
+                            if SupplyInventoryProfile."Source Type" = Database::"Prod. Order Line" then
+                                Quantity += SupplyInventoryProfile."Remaining Quantity";
+                        5:  // Assembly line (901)
+                            if SupplyInventoryProfile."Source Type" = Database::"Assembly Line" then
+                                Quantity += SupplyInventoryProfile."Remaining Quantity";
+                        14:  // receipt Transfer line (5741)
+                            if SupplyInventoryProfile."Source Type" = Database::"Transfer Line" then
+                                Quantity += SupplyInventoryProfile."Remaining Quantity";
+                        15:  //safety Stock                            
+                            if SupplyInventoryProfile."Source Type" = 0 then
+                                Quantity += SupplyInventoryProfile."Remaining Quantity";
+                    end;
+                Until SupplyInventoryProfile.next() = 0;
+            ReqExcelBuffer.AddColumn(Quantity, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+
+        end;
+        ReqExcelBuffer.NewRow();
+
+    end;
 
     procedure LanzarPlanificacionDesdePedidos()
     var
@@ -246,7 +365,11 @@ codeunit 50108 "FuncionesFabricacion"
         ProductionBomLine2: Record "Production BOM Line";
         ReqWkshNames: Page "ReqWkshNames";
         RequisitionWkshName: Record "Requisition Wksh. Name";
+        InventorySetup: Record "Inventory Setup";
+        SalesHeaderDocNo: text;
+        lblConfirmExcel: Label '¿Desea exportar los resultado en Excel?', comment = 'ESP="¿Desea exportar los resultado en Excel?"';
     begin
+
         Item.reset;
         if Item.FindSet() then begin
             repeat
@@ -273,136 +396,41 @@ codeunit 50108 "FuncionesFabricacion"
         SalesHeader.SetFilter("Document Type", '%1|%2', SalesHeader."Document Type"::Order, SalesHeader."Document Type"::Quote);
         PSalesHeader.LOOKUPMODE(TRUE);
         PSalesHeader.SetTableView(SalesHeader);
-        if PSalesHeader.RunModal() = Action::LookupOK then begin
-            SalesHeader.reset;
-            PSalesHeader.GetResult(SalesHeader);
-            if SalesHeader.FindSet() then begin
-                repeat
-                    SalesLine.reset;
-                    SalesLine.SetRange("Document Type", SalesHeader."Document Type");
-                    SalesLine.SetRange("Document No.", SalesHeader."No.");
-                    SalesLine.SetFilter("Outstanding Quantity", '>0');
-                    SalesLine.SetRange(Type, SalesLine.Type::Item);
-                    if SalesLine.FindSet() then begin
-                        repeat
-                            Item.reset;
-                            Item.SetRange("No.", SalesLine."No.");
-                            item.FindFirst();
-                            AddItemtempPlanifpedido(Item);
-                        /*if Item."Assembly BOM" then begin
-                            BomComponent.reset;
-                            BomComponent.SetRange("Parent Item No.", Item."No.");
-                            if BomComponent.FindSet() then begin
-                                repeat
-                                    ItemPedido.SetRange("No.", BomComponent."No.");
-                                    ItemPedido.FindFirst();
-                                    if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
-                                        ItemPedido.Ordenacion_btc := 1;
-                                        ItemPedido.Modify();
-                                        ProductionBomLine.reset;
-                                        ProductionBomLine.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
-                                        if ProductionBomLine.FindSet() then begin
-                                            repeat
-                                                ItemPedido.SetRange("No.", ProductionBomLine."No.");
-                                                ItemPedido.FindFirst();
-                                                if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
-                                                    ItemPedido.Ordenacion_btc := 1;
-                                                    ItemPedido.modify();
-                                                    ProductionBomLine2.reset;
-                                                    ProductionBomLine2.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
-                                                    if ProductionBomLine2.FindSet() then begin
-                                                        repeat
-                                                            ItemPedido.SetRange("No.", ProductionBomLine."No.");
-                                                            ItemPedido.FindFirst();
-                                                            if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
-                                                                ItemPedido.Ordenacion_btc := 1;
-                                                                ItemPedido.modify();
+        if PSalesHeader.RunModal() <> Action::LookupOK then
+            exit;
 
-                                                            end else begin
-                                                                ItemCompra.SetRange("No.", ProductionBomLine."No.");
-                                                                ItemCompra.FindFirst();
-                                                                ItemCompra.Ordenacion_btc := 1;
-                                                                ItemCompra.Modify();
+        SalesHeader.reset;
+        PSalesHeader.GetResult(SalesHeader);
+        if SalesHeader.FindSet() then begin
+            repeat
+                if SalesHeaderDocNo <> '' then
+                    SalesHeaderDocNo += '|';
+                SalesHeaderDocNo += SalesHeader."No.";
+                SalesLine.reset;
+                SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+                SalesLine.SetRange("Document No.", SalesHeader."No.");
+                SalesLine.SetFilter("Outstanding Quantity", '>0');
+                SalesLine.SetRange(Type, SalesLine.Type::Item);
+                if SalesLine.FindSet() then begin
+                    repeat
+                        Item.reset;
+                        Item.SetRange("No.", SalesLine."No.");
+                        item.FindFirst();
+                        AddItemtempPlanifpedido(Item);
 
-                                                            end;
-                                                        until ProductionBomLine2.Next() = 0;
-                                                    end;
-                                                end else begin
+                    until SalesLine.Next() = 0;
+                end;
+            until SalesHeader.Next() = 0;
 
-                                                    ItemCompra.SetRange("No.", ProductionBomLine."No.");
-                                                    ItemCompra.FindFirst();
-                                                    ItemCompra.Ordenacion_btc := 1;
-                                                    ItemCompra.Modify();
-                                                end;
-                                            until ProductionBomLine.Next() = 0;
+        end;
 
-                                        end;
-
-                                    end else begin
-                                        ItemCompra.SetRange("No.", BomComponent."No.");
-                                        ItemCompra.FindFirst();
-                                        ItemCompra.Ordenacion_btc := 1;
-                                        ItemCompra.Modify();
-                                    end;
-                                until BomComponent.Next() = 0;
-                            end;
-                        end else begin
-                            //ItemPedido.reset;
-                            ItemPedido.SetRange("No.", SalesLine."No.");
-                            ItemPedido.FindFirst();
-                            if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
-                                ItemPedido.Ordenacion_btc := 1;
-                                ItemPedido.modify();
-                                ProductionBomLine.reset;
-                                ProductionBomLine.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
-                                if ProductionBomLine.FindSet() then begin
-                                    repeat
-                                        ItemPedido.reset;
-                                        ItemPedido.SetRange("No.", ProductionBomLine."No.");
-                                        ItemPedido.FindFirst();
-                                        if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
-                                            ItemPedido.Ordenacion_btc := 1;
-                                            ItemPedido.modify();
-                                            ProductionBomLine2.reset;
-                                            ProductionBomLine2.SetRange("Production BOM No.", ItemPedido."Production BOM No.");
-                                            if ProductionBomLine2.FindSet() then begin
-                                                repeat
-                                                    //item4.reset;
-                                                    ItemPedido.SetRange("No.", ProductionBomLine."No.");
-                                                    ItemPedido.FindFirst();
-                                                    if ItemPedido."Replenishment System" = ItemPedido."Replenishment System"::"Prod. Order" then begin
-                                                        ItemPedido.Ordenacion_btc := 1;
-                                                        ItemPedido.modify();
-                                                    end else begin
-                                                        ItemCompra.SetRange("No.", ProductionBomLine2."No.");
-                                                        ItemCompra.FindFirst();
-                                                        ItemCompra.Ordenacion_btc := 1;
-                                                        ItemCompra.modify();
-                                                    end;
-                                                until ProductionBomLine2.Next() = 0;
-                                            end;
-                                        end else begin
-                                            ItemCompra.SetRange("No.", ProductionBomLine."No.");
-                                            ItemCompra.FindFirst();
-                                            ItemCompra.Ordenacion_btc := 1;
-                                            ItemCompra.modify();
-                                        end;
-                                    until ProductionBomLine.Next() = 0;
-
-                                end;
-
-                            end else begin
-                                ItemCompra.SetRange("No.", SalesLine."No.");
-                                ItemCompra.FindFirst();
-                                ItemCompra.Ordenacion_btc := 1;
-                                ItemCompra.modify();
-                            end;
-                        end;*/
-                        until SalesLine.Next() = 0;
-                    end;
-                until SalesHeader.Next() = 0;
-
+        if InventorySetup.Get() then begin
+            InventorySetup."Export Excel Requisition" := false;
+            if Confirm(lblConfirmExcel) then begin
+                InventorySetup."Export Excel Requisition" := true;
+                InitReqExcelBuffer(SalesHeaderDocNo);
             end;
+            InventorySetup.Modify();
         end;
 
         commit;
@@ -416,8 +444,7 @@ codeunit 50108 "FuncionesFabricacion"
         CalcPlan.SetTableView(ItemPedido);
         CalcPlan.SetTemplAndWorksheet('PLANIF.', RequisitionWkshName."Name", TRUE);
         CalcPlan.UseRequestPage(false);
-        // antes CalcPlan.InitializeRequest(today - 60, TODAY + 60, TRUE);
-        CalcPlan.InitializeRequest(today, TODAY + 90, TRUE);
+        CalcPlan.InitializeRequest(today - 60, TODAY + 60, TRUE);
         CalcPlan.RunModal();
         clear(CalcPlan);
 
@@ -427,17 +454,96 @@ codeunit 50108 "FuncionesFabricacion"
         ItemCompra.SetRange("Replenishment System", ItemCompra."Replenishment System"::Purchase);
         ItemCompra.SetRange(Ordenacion_btc, 1);
         ItemCompra.SetRange(Blocked, false);
+        //ItemCompra.SetRange("No.", 'SM40CN');
         clear(CalcPlan);
         CalculatePlan.SetTableView(ItemCompra);
         CalculatePlan.SetTemplAndWorksheet('APROV.', RequisitionWkshName."Name");
         CalculatePlan.UseRequestPage(false);
-        CalculatePlan.InitializeRequest(today, TODAY + 90);
-        //CalculatePlan.InitializeRequest(today - 60, TODAY + 60);
+        CalculatePlan.InitializeRequest(today - 60, TODAY + 60);
         CalculatePlan.RUNMODAL;
         CLEAR(CalculatePlan);
 
         RefrescarHoja('PLANIF.', RequisitionWkshName."Name");
         RefrescarHoja('APROV.', RequisitionWkshName."Name");
+
+        if InventorySetup."Export Excel Requisition" then begin
+            reqExcelBuffer.WriteSheet('Planif. ' + SalesHeader."No.", COMPANYNAME, USERID);
+            reqExcelBuffer.CloseBook();
+            reqExcelBuffer.DownloadAndOpenExcel;
+        end;
+
+        InventorySetup."Export Excel Requisition" := false;
+        InventorySetup.Modify();
+    end;
+
+    local procedure InitReqExcelBuffer(SalesHeaderDocNo: text)
+    var
+        Item: Record Item;
+        InvProfile: Record "Inventory Profile";
+        RecRef: RecordRef;
+    begin
+
+        ReqExcelBuffer.DeleteAll();
+        reqExcelBuffer.CreateNewBook('Planificacion');
+        ReqExcelBuffer.AddColumn(CompanyName, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.NewRow();
+        ReqExcelBuffer.AddColumn('Pedidos:', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.AddColumn(SalesHeaderDocNo, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.NewRow();
+        ReqExcelBuffer.NewRow();
+
+        ReqExcelBuffer.AddColumn(Item.FieldCaption("No."), false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.AddColumn(Item.FieldCaption(Description), false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.AddColumn(Item.FieldCaption("Safety Stock Quantity"), false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.AddColumn(Item.FieldCaption("Minimum Order Quantity"), false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        // DEMAND
+        RecRef.Open(Database::"Sales Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Service Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Job Planning Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Prod. Order Component");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Assembly Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Planning Component");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Requisition Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Transfer Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        // SUPPLY
+        RecRef.Open(Database::"Item ledger Entry");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Requisition Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Purchase Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Prod. Order Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Assembly Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Transfer Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        ReqExcelBuffer.AddColumn('Cantidad para stock', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+
+        ReqExcelBuffer.NewRow();
+
     end;
 
     local procedure AddItemtempPlanifpedido(Item: record Item)
