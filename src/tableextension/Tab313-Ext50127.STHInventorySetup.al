@@ -85,5 +85,11 @@ tableextension 50127 "STHInventory Setup" extends "Inventory Setup" //313
             DataClassification = CustomerContent;
             Caption = 'Fecha Diario dentro periodo', comment = 'ESP="Fecha Diario dentro periodo"';
         }
+        // Campo para el proceso de planificacion sobre pedido, para indicar que se desea exportar excel
+        field(50200; "Export Excel Requisition"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Export Excel Requisition';
+        }
     }
 }

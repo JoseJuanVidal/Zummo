@@ -1,7 +1,8 @@
 table 50152 "ZM Productión Tools"
 {
-    Caption = 'ZM Productión Tools';
-    DataClassification = ToBeClassified;
+    Caption = 'ZM Productión Tools', Comment = 'ESP="Utiles producción"';
+
+    DataClassification = CustomerContent;
 
     fields
     {
@@ -107,6 +108,7 @@ table 50152 "ZM Productión Tools"
             Caption = 'Direct unit cost.', Comment = 'ESP="Coste Directo"';
             DataClassification = CustomerContent;
         }
+
     }
     keys
     {
@@ -115,4 +117,32 @@ table 50152 "ZM Productión Tools"
             Clustered = true;
         }
     }
+
+    procedure ShowProdToolLdgEntrys()
+    var
+        ProdToolsLdgEntry: Record "ZM Prod. Tools Ledger Entry";
+        ProdToolsLedgerEntrys: page "ZM Prod. Tools Ledger Entry";
+    begin
+        ProdToolsLdgEntry.Reset();
+        ProdToolsLdgEntry.SetRange("Prod. Tools code", Rec.Code);
+        ProdToolsLedgerEntrys.SetTableView(ProdToolsLdgEntry);
+        ProdToolsLedgerEntrys.Editable := false;
+        ProdToolsLedgerEntrys.RunModal();
+    end;
+
+    procedure CreateRevisions()
+    var
+        ProdToolsLdgEntry: Record "ZM Prod. Tools Ledger Entry" temporary;
+        ProdToolsLedgerEntrys: page "ZM Prod. Tools Ledger Entry";
+    begin
+        ProdToolsLdgEntry.Init();
+        ProdToolsLdgEntry."Prod. Tools code" := Rec.Code;
+        ProdToolsLdgEntry."Posting Date" := WorkDate();
+        ProdToolsLdgEntry.Insert();
+        if Page.RunModal(page::"ZM Prod. Tools Ldg. Entry Card", ProdToolsLdgEntry) = Action::OK then begin
+            // TODO crear el registro real y no en temporal, comprobar datos lookup de ficha
+        end;
+
+    end;
+
 }

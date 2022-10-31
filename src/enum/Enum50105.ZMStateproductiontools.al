@@ -2,11 +2,15 @@ enum 50105 "ZM State production tools"
 {
     Extensible = true;
 
-    value(0; Active)
+    value(0; " ")
+    {
+    }
+
+    value(1; Active)
     {
         Caption = 'Active', comment = 'ESP="Habilitado"';
     }
-    value(1; Inctive)
+    value(2; Inctive)
     {
         Caption = 'Inactive', comment = 'ESP="Deshabilitado"';
     }

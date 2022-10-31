@@ -78,7 +78,47 @@ page 50130 "Productions tool"
         }
 
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(CreateRevision)
+            {
+                ApplicationArea = all;
+                Caption = 'New Calibration', comment = 'ESP="Nueva Calibración"';
+                Image = CreateForm;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
+                trigger OnAction()
+                begin
+                    CreateRevisions;
+                end;
+
+
+            }
+        }
+        area(Navigation)
+        {
+            action(ShowProdToolLdgEntry)
+            {
+                ApplicationArea = all;
+                Caption = 'Prod. Tools Ledger Entrys', comment = 'ESP="Movs. Utiles Prod."';
+                Image = Ledger;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    ShowProdToolLdgEntrys;
+                end;
+
+
+            }
+        }
+    }
 
     trigger OnAfterGetRecord()
     begin

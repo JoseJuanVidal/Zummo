@@ -4954,10 +4954,15 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1889839597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ZM Productión Tools</source>
+        <trans-unit id="Table 1490353142 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1490353142 - Field 2521221354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Resolution</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Resolution - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 4089462097 - NamedType 3941846598" size-unit="char" translate="yes" xml:space="preserve">
           <source>Debe actualizar el pedido de compra orgien, %1, antes de registrar</source>
@@ -6203,6 +6208,11 @@
           <source>(-)Envío ped. transfer. (cant.)</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Trans. Ord. Shipment (Qty.) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1490353142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZM Prod. Tools Ledger Entry</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Prod. Tools Ledger Entry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3011595053 - ReportDataItem 552782286 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
           <source>Histórico abonos venta</source>
@@ -7788,6 +7798,11 @@
           <source>Cód. Texto Factura</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH VAT Business Posting Group - Field Cód. Texto Factura - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2681093606 - Field 3065517585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>Export Excel Requisition</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Export Excel Requisition - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>ABC Cliente</source>
