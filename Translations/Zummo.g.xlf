@@ -5810,8 +5810,13 @@
         </trans-unit>
         <trans-unit id="Table 1490353142 - Field 1803560855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last date revision</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Ult. fecha revisión"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. Revisión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Last date revision - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1490353142 - Field 1764241412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next date revision</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Próxima Revisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Next date revision - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1490353142 - Field 995423621 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Periodicity</source>
@@ -5862,6 +5867,16 @@
           <source>ZM Productión Tools</source>
           <note from="Developer" annotates="general" priority="2">ESP="Utiles producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - NamedType 553645563" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Se van a eliminar todos los movimientos de revisión.\¿Esta seguro?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Se van a eliminar todos los movimientos de revisión.\¿Esta seguro?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - NamedType lblConfirmDelete</note>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - NamedType 4269048165" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cancelado por el usuario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cancelado por el usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - NamedType lblErrorDelete</note>
         </trans-unit>
         <trans-unit id="Table 1889839597 - Field 3011597373 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Brand</source>

@@ -118,9 +118,19 @@ table 50152 "ZM Productión Tools"
         }
     }
 
-    procedure ShowProdToolLdgEntrys()
+    trigger OnModify()
+    begin
+        DeleteProductionTools;
+    end;
+
     var
         ProdToolsLdgEntry: Record "ZM Prod. Tools Ledger Entry";
+        lblConfirmDelete: Label '¿Se van a eliminar todos los movimientos de revisión.\¿Esta seguro?', comment = 'ESP="¿Se van a eliminar todos los movimientos de revisión.\¿Esta seguro?"';
+        lblErrorDelete: Label 'Cancelado por el usuario', Comment = 'ESP="Cancelado por el usuario"';
+
+    procedure ShowProdToolLdgEntrys()
+    var
+
         ProdToolsLedgerEntrys: page "ZM Prod. Tools Ledger Entry";
     begin
         ProdToolsLdgEntry.Reset();
@@ -137,12 +147,23 @@ table 50152 "ZM Productión Tools"
     begin
         ProdToolsLdgEntry.Init();
         ProdToolsLdgEntry."Prod. Tools code" := Rec.Code;
-        ProdToolsLdgEntry."Posting Date" := WorkDate();
         ProdToolsLdgEntry.Insert();
-        if Page.RunModal(page::"ZM Prod. Tools Ldg. Entry Card", ProdToolsLdgEntry) = Action::OK then begin
+        if Page.RunModal(page::"ZM Prod. Tools Ldg. Entry Card", ProdToolsLdgEntry) = Action::LookupOK then begin
             // TODO crear el registro real y no en temporal, comprobar datos lookup de ficha
+            ProdToolsLdgEntry.AddRevisionProdTools(ProdToolsLdgEntry);
         end;
 
     end;
 
+    local procedure DeleteProductionTools()
+    begin
+        ProdToolsLdgEntry.Reset();
+        ProdToolsLdgEntry.SetRange("Prod. Tools code", Rec.Code);
+        if ProdToolsLdgEntry.Count > 0 then
+            if not Confirm(lblConfirmDelete, false) then
+                Error(lblErrorDelete);
+
+        ProdToolsLdgEntry.DeleteAll();
+
+    end;
 }

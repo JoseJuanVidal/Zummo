@@ -59,6 +59,10 @@ page 50137 "ZM Prod. Tools Ldg. Entry Card"
                 {
                     ApplicationArea = All;
                 }
+                field("Next date revision"; "Next date revision")
+                {
+                    ApplicationArea = all;
+                }
                 field("Last date revision"; Rec."Last date revision")
                 {
                     ApplicationArea = All;

@@ -237,26 +237,25 @@ codeunit 50108 "FuncionesFabricacion"
     // ZM JJV 21/10/22 para poder exportar excel enla planficacion desde pedido
     // es el final de la ultima carga de demand/supply antes de calcular, 
     // [EventSubscriber(ObjectType::Codeunit, codeunit::"Inventory Profile Offsetting", 'OnAfterSupplyToInvProfile', '', true, true)]
-    [EventSubscriber(ObjectType::Codeunit, codeunit::"Inventory Profile Offsetting", 'OnBeforePrePlanDateDemandProc', '', true, true)]
-    local procedure codeunitInventoryProfileOffsetting_OnBeforePrePlanDateDemandProc(var SupplyInventoryProfile: Record "Inventory Profile"; var DemandInventoryProfile: Record "Inventory Profile";
-            var SupplyExists: Boolean; var DemandExists: Boolean)
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Inventory Profile Offsetting", 'OnBeforeCommonBalancing', '', true, true)]
+    local procedure codeunitInventoryProfileOffsetting_OnBeforeCommonBalancing(var TempSKU: Record "Stockkeeping Unit"; var SupplyInvtProfile: Record "Inventory Profile"; var DemandInvtProfile: Record "Inventory Profile"; ToDate: Date)
     var
         InventorySetup: Record "Inventory Setup";
     begin
+        // el evento esta MAL, los nombres los han cambiado
         if InventorySetup.Get() then
             if InventorySetup."Export Excel Requisition" then
-                AddLastReqExcelBuffer(SupplyInventoryProfile, DemandInventoryProfile, SupplyExists, DemandExists);
+                AddLastReqExcelBuffer(TempSKU, DemandInvtProfile, SupplyInvtProfile);  // CUIDADO, estan cambiado
     end;
 
-    local procedure AddLastReqExcelBuffer(var SupplyInventoryProfile: Record "Inventory Profile"; var DemandInventoryProfile: Record "Inventory Profile";
-            var SupplyExists: Boolean; var DemandExists: Boolean)
+    local procedure AddLastReqExcelBuffer(var TempSKU: Record "Stockkeeping Unit"; var SupplyInventoryProfile: Record "Inventory Profile"; var DemandInventoryProfile: Record "Inventory Profile")
     var
         Item: Record Item;
-        SKU: Record "Stockkeeping Unit";
         Quantity: Decimal;
         nLinea: Integer;
         i: Integer;
     begin
+        DemandInventoryProfile.SetRange("Due Date");
         // obtenemos la ultima posicion
         ReqExcelBuffer.Reset();
         ReqExcelBuffer.SetRange("Column No.", 1);
@@ -264,17 +263,15 @@ codeunit 50108 "FuncionesFabricacion"
             nLinea := ReqExcelBuffer."Row No." + 1
         else
             nLinea := 1;
+
+        Item.Get(TempSKU."Item No.");
         ReqExcelBuffer.SetCurrent(nLinea, 0);
-        ReqExcelBuffer.AddColumn(SupplyInventoryProfile."Item No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-        if Item.Get(SupplyInventoryProfile."Item No.") then;
+        ReqExcelBuffer.AddColumn(Item."No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         ReqExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-        SKU.Reset();
-        SKU.SetRange("Item No.", SupplyInventoryProfile."Item No.");
-        SKU.SetRange("Location Code", SupplyInventoryProfile."Location Code");
-        SKU.CalcFields(Inventory);
-        if SKU.FindFirst() then begin
-            ReqExcelBuffer.AddColumn(SKU."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-            ReqExcelBuffer.AddColumn(SKU."Minimum Order Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+        TempSKU.CalcFields(Inventory);
+        if TempSKU.FindFirst() then begin
+            ReqExcelBuffer.AddColumn(TempSKU."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+            ReqExcelBuffer.AddColumn(TempSKU."Minimum Order Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
         end else begin
             ReqExcelBuffer.AddColumn(Item."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
             ReqExcelBuffer.AddColumn(Item."Order Multiple", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
@@ -343,7 +340,8 @@ codeunit 50108 "FuncionesFabricacion"
                                 Quantity += SupplyInventoryProfile."Remaining Quantity";
                     end;
                 Until SupplyInventoryProfile.next() = 0;
-            ReqExcelBuffer.AddColumn(Quantity, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+
+            ReqExcelBuffer.AddColumn(Quantity, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number)
 
         end;
         ReqExcelBuffer.NewRow();
@@ -367,6 +365,7 @@ codeunit 50108 "FuncionesFabricacion"
         RequisitionWkshName: Record "Requisition Wksh. Name";
         InventorySetup: Record "Inventory Setup";
         SalesHeaderDocNo: text;
+        LastLine: Integer;
         lblConfirmExcel: Label '¿Desea exportar los resultado en Excel?', comment = 'ESP="¿Desea exportar los resultado en Excel?"';
     begin
 
@@ -467,8 +466,22 @@ codeunit 50108 "FuncionesFabricacion"
         RefrescarHoja('APROV.', RequisitionWkshName."Name");
 
         if InventorySetup."Export Excel Requisition" then begin
+            reqExcelBuffer.SetRange("Column No.", 1);
+            if reqExcelBuffer.FindLast() then
+                LastLine := reqExcelBuffer."Row No.";
+            reqExcelBuffer.Reset();
+
+            reqExcelBuffer.CreateNewBook('Planificacion');
+            // Rango Tabla
+            reqExcelBuffer.SetCurrent(4, 1);
+            reqExcelBuffer.StartRange();
+            reqExcelBuffer.SetCurrent(4, 1);
+            reqExcelBuffer.EndRange();
+            reqExcelBuffer.CreateRange('Tabla');
+
             reqExcelBuffer.WriteSheet('Planif. ' + SalesHeader."No.", COMPANYNAME, USERID);
             reqExcelBuffer.CloseBook();
+            ReqExcelBuffer.SetFriendlyFilename('Planificación ' + RequisitionWkshName.Name);
             reqExcelBuffer.DownloadAndOpenExcel;
         end;
 
@@ -484,7 +497,7 @@ codeunit 50108 "FuncionesFabricacion"
     begin
 
         ReqExcelBuffer.DeleteAll();
-        reqExcelBuffer.CreateNewBook('Planificacion');
+
         ReqExcelBuffer.AddColumn(CompanyName, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         ReqExcelBuffer.NewRow();
         ReqExcelBuffer.AddColumn('Pedidos:', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
