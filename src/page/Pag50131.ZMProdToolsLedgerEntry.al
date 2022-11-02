@@ -50,6 +50,10 @@ page 50131 "ZM Prod. Tools Ledger Entry"
                 {
                     ApplicationArea = All;
                 }
+                field("Next date revision"; "Next date revision")
+                {
+                    ApplicationArea = all;
+                }
                 field("Last date revision"; Rec."Last date revision")
                 {
                     ApplicationArea = All;

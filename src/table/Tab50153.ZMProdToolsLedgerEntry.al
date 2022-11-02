@@ -47,6 +47,11 @@ table 50153 "ZM Prod. Tools Ledger Entry"
         {
             DataClassification = CustomerContent;
             Caption = 'Posting Date', comment = 'ESP="Fecha registro"';
+
+            trigger OnValidate()
+            begin
+                ValidatePostingDate;
+            end;
         }
         field(22; Periodicity; DateFormula)
         {
@@ -57,12 +62,19 @@ table 50153 "ZM Prod. Tools Ledger Entry"
         }
         field(23; "Last date revision"; Date)
         {
-            Caption = 'Last date revision', Comment = 'ESP="Ult. fecha revisión"';
+            Caption = 'Last date revision', Comment = 'ESP="Ult. Revisión"';
             DataClassification = CustomerContent;
+            Editable = false;
         }
         field(24; "Resolution"; enum "ZM Production tools resolution")
         {
             DataClassification = CustomerContent;
+        }
+        field(25; "Next date revision"; Date)
+        {
+            Caption = 'Next date revision', Comment = 'ESP="Próxima Revisión"';
+            DataClassification = CustomerContent;
+            Editable = false;
         }
         field(50; "Reason"; code[20])
         {
@@ -86,7 +98,8 @@ table 50153 "ZM Prod. Tools Ledger Entry"
 
     trigger OnInsert()
     begin
-
+        if Rec."Entry No." = 0 then
+            Rec."Entry No." := GetNewEntryNo();
     end;
 
     trigger OnModify()
@@ -102,6 +115,35 @@ table 50153 "ZM Prod. Tools Ledger Entry"
     trigger OnRename()
     begin
 
+    end;
+
+    local procedure ValidatePostingDate()
+    var
+
+    begin
+        Rec.CalcFields(Periodicity);
+        Rec."Next date revision" := CalcDate(rec.Periodicity, Rec."Posting Date");
+
+    end;
+
+    procedure AddRevisionProdTools(tmpProdToolsLdgEntry: Record "ZM Prod. Tools Ledger Entry" temporary)
+    var
+        ProdToolsLdgEntry: Record "ZM Prod. Tools Ledger Entry";
+    begin
+        ProdToolsLdgEntry.Init();
+        ProdToolsLdgEntry.TransferFields(tmpProdToolsLdgEntry);
+        ProdToolsLdgEntry.Insert(true);
+    end;
+
+    local procedure GetNewEntryNo() EntryNo: Integer;
+    var
+        ProdToolsLdgEntry: Record "ZM Prod. Tools Ledger Entry";
+    begin
+        ProdToolsLdgEntry.Reset();
+        if ProdToolsLdgEntry.FindLast() then
+            EntryNo := ProdToolsLdgEntry."Entry No." + 1
+        else
+            EntryNo := 1;
     end;
 
 

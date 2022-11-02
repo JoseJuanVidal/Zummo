@@ -5975,9 +5975,15 @@
         </trans-unit>
         <trans-unit id="Table 1490353142 - Field 1803560855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last date revision</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Ult. fecha revisión"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. Revisión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Last date revision - Property Caption</note>
-          <target>Ult. fecha revisión</target>
+          <target>Ult. Revisión</target>
+        </trans-unit>
+        <trans-unit id="Table 1490353142 - Field 1764241412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next date revision</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Próxima Revisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Next date revision - Property Caption</note>
+          <target>Próxima Revisión</target>
         </trans-unit>
         <trans-unit id="Table 1490353142 - Field 995423621 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Periodicity</source>
