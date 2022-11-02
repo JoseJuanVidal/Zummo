@@ -311,7 +311,7 @@ codeunit 50108 "FuncionesFabricacion"
                 Until DemandInventoryProfile.next() = 0;
             ReqExcelBuffer.AddColumn(Quantity, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
         end;
-        for i := 1 to 8 do begin
+        for i := 1 to 7 do begin
             Quantity := 0;
             if SupplyInventoryProfile.findset() then
                 repeat
@@ -332,10 +332,10 @@ codeunit 50108 "FuncionesFabricacion"
                         5:  // Assembly line (901)
                             if SupplyInventoryProfile."Source Type" = Database::"Assembly Line" then
                                 Quantity += SupplyInventoryProfile."Remaining Quantity";
-                        14:  // receipt Transfer line (5741)
+                        6:  // receipt Transfer line (5741)
                             if SupplyInventoryProfile."Source Type" = Database::"Transfer Line" then
                                 Quantity += SupplyInventoryProfile."Remaining Quantity";
-                        15:  //safety Stock                            
+                        7:  //safety Stock                            
                             if SupplyInventoryProfile."Source Type" = 0 then
                                 Quantity += SupplyInventoryProfile."Remaining Quantity";
                     end;
@@ -536,7 +536,7 @@ codeunit 50108 "FuncionesFabricacion"
         RecRef.Close();
         // SUPPLY
         RecRef.Open(Database::"Item ledger Entry");
-        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.AddColumn('Inventario', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         RecRef.Close();
         RecRef.Open(Database::"Requisition Line");
         ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
