@@ -6044,6 +6044,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Property Caption</note>
           <target>Utiles producción</target>
         </trans-unit>
+        <trans-unit id="Table 1889839597 - NamedType 553645563" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Se van a eliminar todos los movimientos de revisión.\¿Esta seguro?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Se van a eliminar todos los movimientos de revisión.\¿Esta seguro?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - NamedType lblConfirmDelete</note>
+          <target>¿Se van a eliminar todos los movimientos de revisión.\¿Esta seguro?</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - NamedType 4269048165" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cancelado por el usuario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cancelado por el usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - NamedType lblErrorDelete</note>
+          <target>Cancelado por el usuario</target>
+        </trans-unit>
         <trans-unit id="Table 1889839597 - Field 3011597373 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Brand</source>
           <note from="Developer" annotates="general" priority="2">ESP="Marca"</note>
@@ -21770,6 +21782,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Exportar por Fecha Pago"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PaymentOrders - Action ExportZummo - Property Caption</note>
           <target>Exportar por Fecha Pago</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4058835923 - Change 3104978458 - Method 1542331226 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4058835923">
+          <source>Las ordenes de fabricación se realizan con el modulo AddonCDP.¿Desea continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Las ordenes de fabricación se realizan con el modulo AddonCDP.¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlannedProdOrder_btc - Change Re&amp;fresh Production Order - Method OnBeforeAction - NamedType lblConfirm</note>
+          <target>Las ordenes de fabricación se realizan con el modulo AddonCDP.¿Desea continuar?</target>
         </trans-unit>
         <trans-unit id="PageExtension 2124418342 - Action 2159066594 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1548000686">
           <source>It allows you to delete several production orders at once by selecting the ones you wish to delete</source>
