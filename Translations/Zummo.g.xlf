@@ -20453,6 +20453,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Exportar por Fecha Pago"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PaymentOrders - Action ExportZummo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4058835923 - Change 3104978458 - Method 1542331226 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4058835923">
+          <source>Las ordenes de fabricación se realizan con el modulo AddonCDP.¿Desea continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Las ordenes de fabricación se realizan con el modulo AddonCDP.¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PlannedProdOrder_btc - Change Re&amp;fresh Production Order - Method OnBeforeAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4058835923 - Change 3104978458 - Method 1542331226 - NamedType 1295455468" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4058835923">
           <source>No se puede realizar esta acción.</source>
           <note from="Developer" annotates="general" priority="2">Can't do this action.</note>

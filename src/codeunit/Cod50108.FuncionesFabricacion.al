@@ -268,14 +268,13 @@ codeunit 50108 "FuncionesFabricacion"
         ReqExcelBuffer.SetCurrent(nLinea, 0);
         ReqExcelBuffer.AddColumn(Item."No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         ReqExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-        TempSKU.CalcFields(Inventory);
+        ReqExcelBuffer.AddColumn(0, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
         if TempSKU.FindFirst() then begin
             ReqExcelBuffer.AddColumn(TempSKU."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
             ReqExcelBuffer.AddColumn(TempSKU."Minimum Order Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
         end else begin
             ReqExcelBuffer.AddColumn(Item."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
             ReqExcelBuffer.AddColumn(Item."Order Multiple", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-
         end;
         for i := 1 to 8 do begin
             Quantity := 0;
@@ -345,6 +344,41 @@ codeunit 50108 "FuncionesFabricacion"
 
         end;
         ReqExcelBuffer.NewRow();
+
+    end;
+
+
+    [EventSubscriber(ObjectType::Table, database::"Requisition Line", 'OnAfterInsertEvent', '', true, true)]
+    local procedure RequisitionLine_OnAfterInsertEvent(var Rec: Record "Requisition Line"; RunTrigger: Boolean)
+    begin
+        RequisitionLine_UpdateQuantity(Rec);
+    end;
+
+    [EventSubscriber(ObjectType::Table, database::"Requisition Line", 'OnAfterModifyEvent', '', true, true)]
+    local procedure RequisitionLine_OnAfterModifyEvent(var Rec: Record "Requisition Line"; RunTrigger: Boolean)
+    begin
+        RequisitionLine_UpdateQuantity(Rec);
+    end;
+
+    local procedure RequisitionLine_UpdateQuantity(var Rec: Record "Requisition Line")
+    var
+        InventorySetup: Record "Inventory Setup";
+    begin
+        if InventorySetup.Get() then
+            if InventorySetup."Export Excel Requisition" then begin
+                ReqExcelBuffer.Reset();
+                ReqExcelBuffer.SetRange("Cell Value as Text", Rec."No.");
+                if ReqExcelBuffer.FindFirst() then begin
+                    ReqExcelBuffer.SetRange("Cell Value as Text");
+                    ReqExcelBuffer.SetRange("Row No.", ReqExcelBuffer."Row No.");
+                    ReqExcelBuffer.SetRange("Column No.", 3);
+                    if ReqExcelBuffer.FindFirst() then begin
+                        ReqExcelBuffer."Cell Value as Text" := format(Rec.Quantity);
+                        ReqExcelBuffer.Modify();
+                    end;
+
+                end
+            end;
 
     end;
 
@@ -504,9 +538,13 @@ codeunit 50108 "FuncionesFabricacion"
         ReqExcelBuffer.AddColumn(SalesHeaderDocNo, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         ReqExcelBuffer.NewRow();
         ReqExcelBuffer.NewRow();
+        ReqExcelBuffer.EnterCell(ReqExcelBuffer, 4, 6, 'Demandas', true, true, false);
+        ReqExcelBuffer.EnterCell(ReqExcelBuffer, 4, 14, 'Aprovisionamientos', true, true, false);
+        ReqExcelBuffer.NewRow();
 
         ReqExcelBuffer.AddColumn(Item.FieldCaption("No."), false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         ReqExcelBuffer.AddColumn(Item.FieldCaption(Description), false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.AddColumn('Cantidad Pedir', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         ReqExcelBuffer.AddColumn(Item.FieldCaption("Safety Stock Quantity"), false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         ReqExcelBuffer.AddColumn(Item.FieldCaption("Minimum Order Quantity"), false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         // DEMAND
