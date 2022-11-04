@@ -64,7 +64,6 @@ table 50153 "ZM Prod. Tools Ledger Entry"
         {
             Caption = 'Last date revision', Comment = 'ESP="Ult. Revisión"';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(24; "Resolution"; enum "ZM Production tools resolution")
         {
@@ -90,6 +89,14 @@ table 50153 "ZM Prod. Tools Ledger Entry"
         key(Key1; "Entry No.")
         {
             Clustered = true;
+        }
+        key(Key2; "Prod. Tools code", "Last date revision")
+        {
+
+        }
+        key(Key3; "Prod. Tools code", "Next date revision")
+        {
+
         }
     }
 

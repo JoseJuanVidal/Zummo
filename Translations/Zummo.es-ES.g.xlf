@@ -6044,6 +6044,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Property Caption</note>
           <target>Utiles producción</target>
         </trans-unit>
+        <trans-unit id="Table 1889839597 - NamedType 553645563" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Se van a eliminar todos los movimientos de revisión.\¿Esta seguro?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Se van a eliminar todos los movimientos de revisión.\¿Esta seguro?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - NamedType lblConfirmDelete</note>
+          <target>¿Se van a eliminar todos los movimientos de revisión.\¿Esta seguro?</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - NamedType 4269048165" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cancelado por el usuario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cancelado por el usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - NamedType lblErrorDelete</note>
+          <target>Cancelado por el usuario</target>
+        </trans-unit>
         <trans-unit id="Table 1889839597 - Field 3011597373 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Brand</source>
           <note from="Developer" annotates="general" priority="2">ESP="Marca"</note>
@@ -9660,6 +9672,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Productions tool - Control Observations - Property Caption</note>
           <target>Observaciones</target>
         </trans-unit>
+        <trans-unit id="Page 1405574436 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Doc. Adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Productions tool - Control Attached Documents - Property Caption</note>
+          <target>Doc. Adjuntos</target>
+        </trans-unit>
         <trans-unit id="Page 1405574436 - Action 1701118507 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prod. Tools Ledger Entrys</source>
           <note from="Developer" annotates="general" priority="2">ESP="Movs. Utiles Prod."</note>
@@ -9677,6 +9695,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Lista Utiles producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Productions tools - Property Caption</note>
           <target>Lista Utiles producción</target>
+        </trans-unit>
+        <trans-unit id="Page 3723248709 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Doc. Adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Productions tools - Control Attached Documents - Property Caption</note>
+          <target>Doc. Adjuntos</target>
         </trans-unit>
         <trans-unit id="Page 3723248709 - Action 1701118507 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prod. Tools Ledger Entrys</source>

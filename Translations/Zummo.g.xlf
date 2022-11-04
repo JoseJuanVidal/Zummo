@@ -9023,6 +9023,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Observaciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Productions tool - Control Observations - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1405574436 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Doc. Adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Productions tool - Control Attached Documents - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1405574436 - Action 1701118507 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prod. Tools Ledger Entrys</source>
           <note from="Developer" annotates="general" priority="2">ESP="Movs. Utiles Prod."</note>
@@ -9037,6 +9042,11 @@
           <source>Productions tool</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Utiles producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Productions tools - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3723248709 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Doc. Adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Productions tools - Control Attached Documents - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3723248709 - Action 1701118507 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prod. Tools Ledger Entrys</source>
@@ -9798,6 +9808,21 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control Posting Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 489504416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents Attached</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 489504416 - Control 3324780168 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of attachments.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 489504416 - Control 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3525881470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prod. Tools Ledger Entry</source>
           <note from="Developer" annotates="general" priority="2">ESP="Movs. Utiles producción"</note>
@@ -9807,6 +9832,11 @@
           <source>ZM Prod. Tools Ledger Entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Prod. Tools Ledger Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1490353142 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Doc. Adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Prod. Tools Ledger Entry - Control Attached Documents - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3011595053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Credit Memo</source>
