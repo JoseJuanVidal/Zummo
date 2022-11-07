@@ -5839,7 +5839,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Prod. Tools Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1490353142 - Field 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
+          <source>Reason</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Reason - Property Caption</note>
         </trans-unit>
@@ -5907,6 +5907,11 @@
           <source>Last date revision</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ult. fecha revisión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Last date revision - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 3845766699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next date revision</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha siguiente revisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Last Vendor No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1889839597 - Field 423926106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Machine Center</source>

@@ -78,7 +78,7 @@ table 50153 "ZM Prod. Tools Ledger Entry"
         field(50; "Reason"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = '', comment = 'ESP="Motivo"';
+            Caption = 'Reason', comment = 'ESP="Motivo"';
             TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(motivoCalibracion));
         }
 
@@ -90,13 +90,14 @@ table 50153 "ZM Prod. Tools Ledger Entry"
         {
             Clustered = true;
         }
-        key(Key2; "Prod. Tools code", "Last date revision")
+        key(Key2; "Prod. Tools code", "Posting Date")
         {
-
         }
-        key(Key3; "Prod. Tools code", "Next date revision")
+        key(Key3; "Prod. Tools code", "Last date revision")
         {
-
+        }
+        key(Key4; "Prod. Tools code", "Next date revision")
+        {
         }
     }
 

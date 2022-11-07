@@ -1058,6 +1058,60 @@ codeunit 50101 "Eventos_btc"
           IntrastatJnlLineIntrastatJnlLineUpdate(rec, RunTrigger);
       end;*/
 
+    // =============     Evento de Tabla Production Tools Ledger Entry          ====================
+    // ==  
+    // ==  Comment: sirver para que se actualize de la tabla Production Tools, los campos de la ultima revision.
+    // ==
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Table, Database::"ZM Prod. Tools Ledger Entry", 'OnAfterInsertEvent', '', true, true)]
+    local procedure ZMProdToolsLedgerEntry_OnAfterInsertEvent(var Rec: Record "ZM Prod. Tools Ledger Entry"; RunTrigger: Boolean)
+    begin
+        ProductionToolsUpdate(Rec."Prod. Tools code");
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"ZM Prod. Tools Ledger Entry", 'OnAfterModifyEvent', '', true, true)]
+    local procedure ZMProdToolsLedgerEntry_OnAfterModifyEvent(var Rec: Record "ZM Prod. Tools Ledger Entry"; var xRec: Record "ZM Prod. Tools Ledger Entry"; RunTrigger: Boolean)
+    begin
+        ProductionToolsUpdate(Rec."Prod. Tools code");
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"ZM Prod. Tools Ledger Entry", 'OnAfterDeleteEvent', '', true, true)]
+    local procedure ZMProdToolsLedgerEntry_OnAfterDeleteEvent(var Rec: Record "ZM Prod. Tools Ledger Entry"; RunTrigger: Boolean)
+    begin
+        ProductionToolsUpdate(Rec."Prod. Tools code");
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"ZM Prod. Tools Ledger Entry", 'OnAfterRenameEvent', '', true, true)]
+    local procedure ZMProdToolsLedgerEntry_OnAfterRenameEvent(var Rec: Record "ZM Prod. Tools Ledger Entry"; var xRec: Record "ZM Prod. Tools Ledger Entry"; RunTrigger: Boolean)
+    begin
+        ProductionToolsUpdate(Rec."Prod. Tools code");
+    end;
+
+    local procedure ProductionToolsUpdate(ProductiónToolsCode: code[20])
+    var
+        ProductiónTools: Record "ZM Productión Tools";
+        ProdToolsLedgerEntry: Record "ZM Prod. Tools Ledger Entry";
+    begin
+        // actualizar las fechas de ultima revision, proxima y proveedor 
+        // ordenamos, revisamos y actualizamos los datos si es necesario
+        if ProductiónTools.get("ProductiónToolsCode") then begin
+            ProdToolsLedgerEntry.Reset();
+            ProdToolsLedgerEntry.SetCurrentKey("Prod. Tools code", "Posting Date");
+            ProdToolsLedgerEntry.SetRange("Prod. Tools code", ProductiónTools.Code);
+            if ProdToolsLedgerEntry.FindLast() then begin
+                if (ProductiónTools."Last date revision" < ProdToolsLedgerEntry."Posting Date") or
+                  (ProductiónTools."Next date revision" < ProdToolsLedgerEntry."Next date revision") or
+                  (ProductiónTools."Vendor No." <> ProdToolsLedgerEntry."Vendor No.") then begin
+
+                    ProductiónTools."Last date revision" := ProdToolsLedgerEntry."Posting Date";
+                    ProductiónTools."Next date revision" := ProdToolsLedgerEntry."Next date revision";
+                    ProductiónTools."Vendor No." := ProdToolsLedgerEntry."Vendor No.";
+                    ProductiónTools.Modify();
+                end;
+            end;
+        end;
+    end;
+
     //#region Intercompany 
     //ACV - 16/02/22 - Evento para actualizar pedido de compra IC (Zummo INC) al crear PV desde OV
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnAfterOnRun', '', true, true)]

@@ -81,15 +81,17 @@ table 50152 "ZM Productión Tools"
         field(15; "Last date revision"; Date)
         {
             Caption = 'Last date revision', Comment = 'ESP="Ult. fecha revisión"';
-            FieldClass = FlowField;
-            CalcFormula = max("ZM Prod. Tools Ledger Entry"."Last date revision" where("Prod. Tools code" = field(Code)));
+            DataClassification = CustomerContent;
+            // FieldClass = FlowField;
+            // CalcFormula = max("ZM Prod. Tools Ledger Entry"."Last date revision" where("Prod. Tools code" = field(Code)));
             Editable = false;
         }
         field(16; "Next date revision"; Date)
         {
             Caption = 'Next date revision', Comment = 'ESP="Fecha siguiente revisión"';
-            FieldClass = FlowField;
-            CalcFormula = max("ZM Prod. Tools Ledger Entry"."Next date revision" where("Prod. Tools code" = field(Code)));
+            DataClassification = CustomerContent;
+            // FieldClass = FlowField;
+            // CalcFormula = max("ZM Prod. Tools Ledger Entry"."Next date revision" where("Prod. Tools code" = field(Code)));
             Editable = false;
         }
         field(17; Comments; Blob)
@@ -97,18 +99,18 @@ table 50152 "ZM Productión Tools"
             Caption = 'Commments', Comment = 'ESP="Comentarios"';
             DataClassification = CustomerContent;
         }
+        field(18; "Last Vendor No."; code[20])
+        {
+            Caption = 'Next date revision', Comment = 'ESP="Fecha siguiente revisión"';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
         field(20; Status; Enum "ZM State production tools")
         {
             Caption = 'Status', Comment = 'ESP="Estado"';
             DataClassification = CustomerContent;
         }
-        field(18; "Last Vendor No."; code[20])
-        {
-            Caption = 'Next date revision', Comment = 'ESP="Fecha siguiente revisión"';
-            FieldClass = FlowField;
-            CalcFormula = max("ZM Prod. Tools Ledger Entry"."Vendor No." where("Prod. Tools code" = field(Code)));
-            Editable = false;
-        }
+
         field(21; Resolution; Enum "ZM Production tools resolution")
         {
             Caption = 'Resolution', Comment = 'ESP="Resolución"';

@@ -59,6 +59,10 @@ page 50130 "Productions tool"
                 {
                     ApplicationArea = All;
                 }
+                field("Vendor No."; "Vendor No.")
+                {
+                    ApplicationArea = all;
+                }
                 field("Next date revision"; "Next date revision")
                 {
                     ApplicationArea = all;
