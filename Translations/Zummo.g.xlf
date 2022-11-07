@@ -9858,6 +9858,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control Posting Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3853294818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Items Pending</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Productos pendientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 489504416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents Attached</source>
           <note from="Developer" annotates="general" priority="2"></note>

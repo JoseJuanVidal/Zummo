@@ -1,8 +1,8 @@
 page 50056 "ZM CimWorks Item"
 {
     PageType = List;
-    ApplicationArea = All;
-    UsageCategory = Administration;
+    // ApplicationArea = none;
+    UsageCategory = None;
     SourceTable = "ZM CIM Items temporary";
 
     layout
