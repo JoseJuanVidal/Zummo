@@ -28,17 +28,17 @@ table 50103 "ZM CIM Items temporary"
         field(59001; Largo; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Material', comment = 'ESP="Material"';
+            Caption = 'Largo', comment = 'ESP="Largo"';
         }
         field(59002; Ancho; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Material', comment = 'ESP="Material"';
+            Caption = 'Ancho', comment = 'ESP="Ancho"';
         }
         field(59003; Alto; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Material', comment = 'ESP="Material"';
+            Caption = 'Alto', comment = 'ESP="Alto"';
         }
         field(50005; EnglishDescription; text[100])
         {

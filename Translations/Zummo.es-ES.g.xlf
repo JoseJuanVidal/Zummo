@@ -5963,16 +5963,16 @@
           <target>Años de Garantía</target>
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 535175658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Material</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
+          <source>Alto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Alto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Alto - Property Caption</note>
-          <target>Material</target>
+          <target>Alto</target>
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 3127722509 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Material</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
+          <source>Ancho</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ancho"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Ancho - Property Caption</note>
-          <target>Material</target>
+          <target>Ancho</target>
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -5987,10 +5987,10 @@
           <target>Descripción Ingles</target>
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 1989324353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Material</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
+          <source>Largo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Largo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Largo - Property Caption</note>
-          <target>Material</target>
+          <target>Largo</target>
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 3965678037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Material</source>
