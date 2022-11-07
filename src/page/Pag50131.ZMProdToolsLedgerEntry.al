@@ -64,7 +64,22 @@ page 50131 "ZM Prod. Tools Ledger Entry"
                 }
             }
         }
+
+        area(FactBoxes)
+        {
+            part("Attached Documents"; "ZM Document Attachment Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Attachments', Comment = 'ESP="Doc. Adjuntos"';
+                SubPageLink = "Table ID" = CONST(50153), "No." = FIELD("Prod. Tools code"), "Line No." = field("Entry No.");
+            }
+
+        }
     }
 
-
+    trigger OnAfterGetRecord()
+    begin
+        CurrPage."Attached Documents".Page.SetTableNo(50153, Rec."Prod. Tools code", rec."Entry No.");
+        CurrPage."Attached Documents".Page.SetProdToolsLdgEntry_RecordRef(Rec);
+    end;
 }

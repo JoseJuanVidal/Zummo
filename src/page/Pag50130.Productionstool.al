@@ -50,15 +50,23 @@ page 50130 "Productions tool"
                 {
                     ApplicationArea = All;
                 }
-                field("Last date revision"; Rec."Last date revision")
-                {
-                    ApplicationArea = All;
-                }
+
                 field(Periodicity; Rec.Periodicity)
                 {
                     ApplicationArea = All;
                 }
-
+                field("Last date revision"; Rec."Last date revision")
+                {
+                    ApplicationArea = All;
+                }
+                field("Vendor No."; "Vendor No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Next date revision"; "Next date revision")
+                {
+                    ApplicationArea = all;
+                }
                 group(Observations)
                 {
                     Caption = 'Observations', comment = 'ESP="Observaciones"';
@@ -76,7 +84,16 @@ page 50130 "Productions tool"
                 }
             }
         }
+        area(FactBoxes)
+        {
+            part("Attached Documents"; "ZM Document Attachment Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Attachments', Comment = 'ESP="Doc. Adjuntos"';
+                SubPageLink = "Table ID" = CONST(50152), "No." = FIELD(Code), "Line No." = const(0);
+            }
 
+        }
     }
     actions
     {
@@ -123,6 +140,9 @@ page 50130 "Productions tool"
     trigger OnAfterGetRecord()
     begin
         vComments := GetComments;
+
+        CurrPage."Attached Documents".Page.SetTableNo(50152, Rec.Code, 0);
+        CurrPage."Attached Documents".Page.SetProdTools_RecordRef(Rec);
     end;
 
     var

@@ -6221,6 +6221,21 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Trans. Ord. Shipment (Qty.) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 489504416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents Attached</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 489504416 - Control 3324780168 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of attachments.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 489504416 - Control 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1490353142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ZM Prod. Tools Ledger Entry</source>
           <note from="Developer" annotates="general" priority="2"/>
