@@ -5798,6 +5798,51 @@
           <note from="Developer" annotates="general" priority="2">ESP=Años de Garantía</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field WarrantyDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 535175658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Material</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Alto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 3127722509 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Material</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Ancho - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 1295952376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>English Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción Ingles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field EnglishDescription - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 1989324353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Material</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Largo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 3965678037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Material</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Material - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 3088522385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Net Weight</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Net Weight - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 4034345114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Volume</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Volumen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Unit Volume - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1490353142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
           <note from="Developer" annotates="general" priority="2">ESP=""</note>
@@ -20373,15 +20418,15 @@
           <note from="Developer" annotates="general" priority="2">ESP="Stock por Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control StockPerAlmacen - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Control 1158365185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Bajo pedido/Contra stock</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Bajo pedido / Contra stock - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 4000935069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Purchase Category</source>
           <note from="Developer" annotates="general" priority="2">ESP="Categorías de Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control PurchaseCategory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 1158365185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Bajo pedido/Contra stock</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Bajo pedido / Contra stock - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2185030199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Imprimir etiqueta</source>
@@ -22322,6 +22367,11 @@
           <source>Inventory to date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Inventario a Fecha"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Inventory to date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3965678037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Material</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Material - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 966569728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Sales Classification List</source>

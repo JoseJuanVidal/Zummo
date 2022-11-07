@@ -283,6 +283,11 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Recalcular Coste Estandar', comment = 'ESP="Recalcular Coste Estandar"';
         }
+        field(50125; Material; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Material', comment = 'ESP="Material"';
+        }
         field(50130; "Purch. Family"; Code[20])
         {
             DataClassification = CustomerContent;

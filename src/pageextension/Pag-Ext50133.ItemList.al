@@ -19,6 +19,11 @@ pageextension 50133 "ItemList" extends "Item List"
             {
                 ApplicationArea = all;
             }
+            field(Material; Material)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             // Validar productos
             field(ValidadoContabiliad_btc; ValidadoContabiliad_btc)
             {

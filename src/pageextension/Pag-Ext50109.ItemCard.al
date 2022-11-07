@@ -81,6 +81,13 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 }
             }
         }
+        addbefore("Routing No.")
+        {
+            field(Material; Material)
+            {
+                ApplicationArea = all;
+            }
+        }
 
         addlast(Planning)
         {

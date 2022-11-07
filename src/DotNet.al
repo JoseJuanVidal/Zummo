@@ -11,6 +11,20 @@ dotnet
         type("System.Net.Mail.MailAddress"; MyMailAddress) { }
         type("System.Net.NetworkCredential"; MyNetworkCredential) { }
     }
+    // assembly(System.Xml)
+    // {
+    //     //Version='4.0.0.0';
+    //     //Culture='neutral';
+    //     //PublicKeyToken='b77a5c561934e089';
+    //     type(System.Xml.XmlNode; System_Xml_System_Xml_XmlNode) { }
+    //     type(System.Xml.XmlAttribute; System_Xml_System_Xml_XmlAttribute) { } //"'System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Xml.XmlAttribute"
+    //     type(System.Xml.XmlDocument; System_Xml_System_Xml_XmlDocument) { } //"'System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Xml.XmlDocument"
+    //     type(System.Xml.XmlNamedNodeMap; System_Xml_System_Xml_XmlNamedNodeMap) { } //"'System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Xml.XmlNamedNodeMap"
+    //     //type(System.Xml.XmlNode;System_Xml_System_Xml_XmlNode){} //"'System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Xml.XmlNode"
+    //     type(System.Xml.XmlNodeChangedEventArgs; System_Xml_System_Xml_XmlNodeChangedEventArgs) { } //"'System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Xml.XmlNodeChangedEventArgs"
+    //     type(System.Xml.XmlNodeList; System_Xml_System_Xml_XmlNodeList) { } //"'System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Xml.XmlNodeList"
+    //     type(System.Xml.Xsl.XslCompiledTransform; System_Xml_System_Xml_Xsl_XslCompiledTransform) { } //"'System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Xml.Xsl.XslCompiledTransform"
+    // }
     assembly("Sothis.PDF")
     {
 
