@@ -12,6 +12,14 @@ table 50103 "ZM CIM Items temporary"
         {
             Caption = 'Description', Comment = 'ESP="Descripción"';
         }
+        field(6; "Assembly BOM"; Boolean)
+        {
+            Caption = 'Assembly BOM', Comment = 'ESP="L.M. de ensamblado"';
+        }
+        field(8; "Base Unit of Measure"; Code[10])
+        {
+            Caption = 'Base Unit of Measure', Comment = 'ESP="Unidad medida base"';
+        }
         field(42; "Net Weight"; Decimal)
         {
             Caption = 'Net Weight', Comment = 'ESP="Peso Neto"';
@@ -20,7 +28,11 @@ table 50103 "ZM CIM Items temporary"
         {
             Caption = 'Unit Volume', Comment = 'ESP="Volumen"';
         }
-        field(50125; Material; text[100])
+        field(68; Inventory; Decimal)
+        {
+            Caption = 'Inventory', Comment = 'ESP="Inventario"';
+        }
+        Field(50125; Material; text[100])
         {
             DataClassification = CustomerContent;
             Caption = 'Material', comment = 'ESP="Material"';
@@ -44,6 +56,19 @@ table 50103 "ZM CIM Items temporary"
         {
             DataClassification = CustomerContent;
             Caption = 'English Description', comment = 'ESP="Descripción Ingles"';
+        }
+        field(50006; Packaging; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Packaging', comment = 'ESP="Embalaje"';
+        }
+        field(99000750; "Routing No."; Code[20])
+        {
+            Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';
+        }
+        field(99000751; "Production BOM No."; Code[20])
+        {
+            Caption = 'Production BOM No.', Comment = 'ESP="Nº L.M. producción"';
         }
     }
 

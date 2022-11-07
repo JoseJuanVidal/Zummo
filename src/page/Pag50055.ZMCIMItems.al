@@ -13,43 +13,66 @@ page 50055 "ZM CIM Items"
         {
             repeater(General)
             {
-                field("No."; Rec."No.")
+                field(No; "No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Rec.Description)
+                field(Description; Description)
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
                 }
-                field(EnglishDescription; Rec.EnglishDescription)
+                field(EnglishDescription; EnglishDescription)
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
                 }
-                field(Material; Rec.Material)
+                field(Material; Material)
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
                 }
-                field("Unit Volume"; Rec."Unit Volume")
+                field("Assembly BOM"; "Assembly BOM")
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
                 }
-                field("Net Weight"; Rec."Net Weight")
+                field("Production BOM No."; "Production BOM No.")
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
                 }
-                field(Largo; Rec.Largo)
+                field("Routing No."; "Routing No.")
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
                 }
-                field(Alto; Rec.Alto)
+                field("Base Unit of Measure"; "Base Unit of Measure")
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
                 }
-                field(Ancho; Rec.Ancho)
+                field(Packaging; packaging)
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
                 }
-
+                field(Inventory; Inventory)
+                {
+                    ApplicationArea = all;
+                }
+                field("Net Weight"; "Net Weight")
+                {
+                    ApplicationArea = all;
+                }
+                field("Unit Volume"; "Unit Volume")
+                {
+                    ApplicationArea = all;
+                }
+                field(largo; largo)
+                {
+                    ApplicationArea = all;
+                }
+                field(Ancho; Ancho)
+                {
+                    ApplicationArea = all;
+                }
+                field(Alto; Alto)
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

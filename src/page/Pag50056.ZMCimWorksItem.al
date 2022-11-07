@@ -1,15 +1,15 @@
 page 50056 "ZM CimWorks Item"
 {
     PageType = List;
-    // ApplicationArea = none;
-    UsageCategory = None;
+    ApplicationArea = none;
+    UsageCategory = Lists;
     SourceTable = "ZM CIM Items temporary";
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            group(General)
             {
                 field(No; "No.")
                 {
@@ -27,6 +27,34 @@ page 50056 "ZM CimWorks Item"
                 {
                     ApplicationArea = all;
                 }
+                field("Assembly BOM"; "Assembly BOM")
+                {
+                    ApplicationArea = all;
+                }
+                field("Production BOM No."; "Production BOM No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Routing No."; "Routing No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Base Unit of Measure"; "Base Unit of Measure")
+                {
+                    ApplicationArea = all;
+                }
+                field(Packaging; packaging)
+                {
+                    ApplicationArea = all;
+                }
+                field(Inventory; Inventory)
+                {
+                    ApplicationArea = all;
+                }
+                field("Net Weight"; "Net Weight")
+                {
+                    ApplicationArea = all;
+                }
                 field("Unit Volume"; "Unit Volume")
                 {
                     ApplicationArea = all;
@@ -40,10 +68,6 @@ page 50056 "ZM CimWorks Item"
                     ApplicationArea = all;
                 }
                 field(Alto; Alto)
-                {
-                    ApplicationArea = all;
-                }
-                field("Net Weight"; "Net Weight")
                 {
                     ApplicationArea = all;
                 }
