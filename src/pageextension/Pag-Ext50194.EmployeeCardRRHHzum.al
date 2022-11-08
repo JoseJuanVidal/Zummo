@@ -130,28 +130,28 @@ pageextension 50194 "EmployeeCard_RRHH_zum" extends "Employee Card"
                 {
                 }
             }
-            part("Histórico Contrato"; "Historico Contratos_zum")
-            {
-                Caption = 'Histórico Contrato';
-                SubPageLink = tabla = CONST("Historico Contratos"),
-                tipo = const(Empleado),
-                 CodigoRRHH = FIELD("No.");
-            }
-            part("Histórico Categoría"; "Historico Categorias_zum")
-            {
-                Caption = 'Histórico Categoría';
-                SubPageLink = tabla = CONST("Historico Categoria"),
-                tipo = const(Empleado),
-                 CodigoRRHH = FIELD("No.");
-            }
-            part("Puesto Subform"; "Puesto Subform_zum")
-            {
-                Caption = 'Histórico de sucursal';
-                SubPageLink = tabla = CONST("Historico Puestos"),
-                tipo = const(Empleado),
-                 CodigoTipo = FIELD("No.");
+            // part("Histórico Contrato"; "Historico Contratos_zum")
+            // {
+            //     Caption = 'Histórico Contrato';
+            //     SubPageLink = tabla = CONST("Historico Contratos"),
+            //     tipo = const(Empleado),
+            //      CodigoRRHH = FIELD("No.");
+            // }
+            // part("Histórico Categoría"; "Historico Categorias_zum")
+            // {
+            //     Caption = 'Histórico Categoría';
+            //     SubPageLink = tabla = CONST("Historico Categoria"),
+            //     tipo = const(Empleado),
+            //      CodigoRRHH = FIELD("No.");
+            // }
+            // part("Puesto Subform"; "Puesto Subform_zum")
+            // {
+            //     Caption = 'Histórico de sucursal';
+            //     SubPageLink = tabla = CONST("Historico Puestos"),
+            //     tipo = const(Empleado),
+            //      CodigoTipo = FIELD("No.");
 
-            }
+            // }
         }
     }
 }
