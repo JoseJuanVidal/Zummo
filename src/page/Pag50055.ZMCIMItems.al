@@ -2,7 +2,6 @@ page 50055 "ZM CIM Items"
 {
     ApplicationArea = All;
     Caption = 'Items Pending', comment = 'ESP="Productos pendientes"';
-    ;
     PageType = List;
     SourceTable = "ZM CIM Items temporary";
     UsageCategory = Lists;

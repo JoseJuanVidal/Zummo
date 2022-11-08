@@ -1,15 +1,18 @@
 page 50056 "ZM CimWorks Item"
 {
+    // pagina que se publica como Servicio WEB para CIMWORKS - Productos
+
+    Caption = 'Cimworks Item list', comment = 'ESP="Cimworks Lista productos"';
     PageType = List;
-    ApplicationArea = none;
-    UsageCategory = Lists;
+    UsageCategory = None;
     SourceTable = "ZM CIM Items temporary";
+
 
     layout
     {
         area(Content)
         {
-            group(General)
+            repeater(General)
             {
                 field(No; "No.")
                 {

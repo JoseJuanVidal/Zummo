@@ -3858,91 +3858,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table MemEstadistica_btc - Field NoSerie - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 671662900 - Field 2362020657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cod. Categoria</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Cod. Categoria - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 1070846729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cod. Contrato Laboral</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Cod. Contrato Laboral - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 3096455305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cod. motivo terminación</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Cod. motivo terminación - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 1849673187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CodigoRRHH</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field CodigoRRHH - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 3273378293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CodigoTipo</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field CodigoTipo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 2225006971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contrato Laboral</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Contrato Laboral - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 1475260075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Descripcion</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Descripcion - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 1116050679 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Empresa</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Empresa - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 4061115875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fecha Alta</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Fecha Alta - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 3305996971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fecha Baja</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Fecha Baja - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 2064774889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Linea</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Linea - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 3166073658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Motivo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 224924827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo terminación</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field Motivo terminación - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 2483678830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>tabla</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field tabla - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 2483678830 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> , , , ,Categorías, , , ,Historico Puestos,Historico Contratos,Historico Categoria</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field tabla - Property OptionCaption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 4180984966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>tipo</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field tipo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 671662900 - Field 4180984966 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>,Puesto,Empleado</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH Lineas_zum - Field tipo - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 2252767808 - Field 1070846729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cod. Contrato Laboral</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -5723,11 +5638,6 @@
           <source>Opciones</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Opciones_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 140254329 - Control 4092165491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Puesto</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Puesto Subform_zum - Control Codigo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3018944416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Selección Etiquetas</source>
@@ -7563,21 +7473,6 @@
           <source>BITEC</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard_RRHH_zum - Control BITEC - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 4089727960 - Control 1591621713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
-          <source>Histórico Categoría</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard_RRHH_zum - Control Histórico Categoría - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 4089727960 - Control 2887917344 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
-          <source>Histórico Contrato</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard_RRHH_zum - Control Histórico Contrato - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 4089727960 - Control 2538636334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
-          <source>Histórico de sucursal</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard_RRHH_zum - Control Puesto Subform - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1158365185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Bajo pedido/Contra stock</source>

@@ -1,14 +1,17 @@
 table 50134 "ZM CIM Prod. BOM Header"
 {
+    Caption = 'CIM Production BOM List', comment = 'ESP="CIM L.M. de producción"';
+    LookupPageId = "ZM CIM Production BOM List";
+    DrillDownPageId = "ZM CIM Production BOM List";
     fields
     {
         field(1; "No."; Code[20])
         {
-            Caption = 'No.';
+            Caption = 'No.', Comment = 'ESP="Nº"';
         }
         field(10; Description; Text[100])
         {
-            Caption = 'Description';
+            Caption = 'Description', Comment = 'ESP="Descripción"';
 
             trigger OnValidate()
             begin
@@ -17,38 +20,38 @@ table 50134 "ZM CIM Prod. BOM Header"
         }
         field(11; "Description 2"; Text[50])
         {
-            Caption = 'Description 2';
+            Caption = 'Description 2', Comment = 'ESP="Descripción 2"';
         }
         field(12; "Search Name"; Code[100])
         {
-            Caption = 'Search Name';
+            Caption = 'Search Name', Comment = 'ESP="Alias"';
         }
         field(21; "Unit of Measure Code"; Code[10])
         {
-            Caption = 'Unit of Measure Code';
+            Caption = 'Unit of Measure Code', Comment = 'ESP="Cód. unidad medida"';
         }
         field(22; "Low-Level Code"; Integer)
         {
-            Caption = 'Low-Level Code';
+            Caption = 'Low-Level Code', Comment = 'ESP="Cód. nivel más bajo"';
         }
         field(40; "Creation Date"; Date)
         {
-            Caption = 'Creation Date';
+            Caption = 'Creation Date', Comment = 'ESP="Fecha creación"';
         }
         field(43; "Last Date Modified"; Date)
         {
-            Caption = 'Last Date Modified';
+            Caption = 'Last Date Modified', Comment = 'ESP="Fecha últ. modificación"';
         }
         field(45; Status; Option)
         {
-            Caption = 'Status';
-            OptionCaption = 'New,Certified,Under Development,Closed';
+            Caption = 'Status', Comment = 'ESP="Estado"';
+            OptionCaption = 'New,Certified,Under Development,Closed', Comment = 'ESP="Nueva,Certificada,En desarrollo,Cerrada"';
             OptionMembers = New,Certified,"Under Development",Closed;
 
         }
         field(50; "Version Nos."; Code[20])
         {
-            Caption = 'Version Nos.';
+            Caption = 'Version Nos.', Comment = 'ESP="Nos. versión"';
         }
 
     }

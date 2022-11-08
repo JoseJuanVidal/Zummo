@@ -69,6 +69,8 @@ table 50103 "ZM CIM Items temporary"
         field(99000751; "Production BOM No."; Code[20])
         {
             Caption = 'Production BOM No.', Comment = 'ESP="Nº L.M. producción"';
+            TableRelation = "ZM CIM Prod. BOM Header";
+            ValidateTableRelation = false;
         }
     }
 
