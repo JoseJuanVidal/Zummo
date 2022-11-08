@@ -251,6 +251,7 @@ codeunit 50108 "FuncionesFabricacion"
     local procedure AddLastReqExcelBuffer(var TempSKU: Record "Stockkeeping Unit"; var SupplyInventoryProfile: Record "Inventory Profile"; var DemandInventoryProfile: Record "Inventory Profile")
     var
         Item: Record Item;
+        Vendor: Record Vendor;
         Quantity: Decimal;
         nLinea: Integer;
         i: Integer;
@@ -340,7 +341,13 @@ codeunit 50108 "FuncionesFabricacion"
                     end;
                 Until SupplyInventoryProfile.next() = 0;
 
-            ReqExcelBuffer.AddColumn(Quantity, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number)
+            ReqExcelBuffer.AddColumn(Quantity, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+
+            ReqExcelBuffer.AddColumn(Item."Vendor No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+            if vendor.get(Item."Vendor No.") then;
+            ReqExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+            ReqExcelBuffer.AddColumn(Item."Lead Time Calculation", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+
 
         end;
         ReqExcelBuffer.NewRow();
@@ -592,6 +599,10 @@ codeunit 50108 "FuncionesFabricacion"
         ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         RecRef.Close();
         ReqExcelBuffer.AddColumn('Cantidad para stock', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+
+        ReqExcelBuffer.AddColumn('Cód. proveedor', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.AddColumn('Nombre proveedor', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.AddColumn('Plazo de entrega', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
 
         ReqExcelBuffer.NewRow();
 
