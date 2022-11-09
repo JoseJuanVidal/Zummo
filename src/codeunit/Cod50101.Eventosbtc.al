@@ -1092,8 +1092,10 @@ codeunit 50101 "Eventos_btc"
     begin
         if AllPurchaseLine.FindFirst() then
             repeat
-                TotalQty += AllPurchaseLine.Quantity * AllPurchaseLine."Qty. per Unit of Measure";
+                if AllPurchaseLine."Line No." <> PurchaseLine."Line No." then
+                    TotalQty += AllPurchaseLine.Quantity * AllPurchaseLine."Qty. per Unit of Measure";
             Until AllPurchaseLine.next() = 0;
+        TotalQty += PurchaseLine.Quantity * PurchaseLine."Qty. per Unit of Measure";
         // ahora buscamos los precios de ese proveedor y producto, controlando la cantidad y unidad de medida
         PurchasePrice.Reset();
         PurchasePrice.SetRange("Vendor No.", PurchaseLine."Buy-from Vendor No.");
@@ -1113,17 +1115,17 @@ codeunit 50101 "Eventos_btc"
                 end;
             Until PurchasePrice.next() = 0;
         // ahora comparamos con el precio y actualizamos los datos en todas las lineas
-        if UnitPrice < PurchaseLine."Direct Unit Cost" then begin
-            PurchaseLine.Validate("Direct Unit Cost", UnitPrice);
-            if AllPurchaseLine.FindFirst() then
-                repeat
-                    if AllPurchaseLine."Line No." <> PurchaseLine."Line No." then begin
-                        AllPurchaseLine.Validate("Direct Unit Cost", UnitPrice);
-                        AllPurchaseLine.Modify();
-                    end;
-                Until AllPurchaseLine.next() = 0;
+        PurchaseLine.Validate("Direct Unit Cost", UnitPrice);
+        if AllPurchaseLine.FindFirst() then
+            repeat
+                if AllPurchaseLine."Line No." <> PurchaseLine."Line No." then begin
 
-        end;
+                    AllPurchaseLine.Validate("Direct Unit Cost", UnitPrice);
+                    AllPurchaseLine.Modify();
+
+                end;
+            Until AllPurchaseLine.next() = 0;
+
     end;
 
 
