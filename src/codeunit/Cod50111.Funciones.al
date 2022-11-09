@@ -3,7 +3,7 @@ codeunit 50111 "Funciones"
     Permissions = tabledata "Item Ledger Entry" = rm, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
         tabledata "Sales Shipment Header" = rmid, tabledata "Sales Cr.Memo Header" = rmid, tabledata "Sales Header Archive" = rmid,
         tabledata "Return Shipment Header" = rmid, tabledata "Purch. Rcpt. Header" = rmid, tabledata "Purch. Rcpt. Line" = rmid,
-        tabledata "Sales Cr.Memo Line" = rmid, tabledata "Sales Invoice Line" = rmid;
+        tabledata "Sales Cr.Memo Line" = rmid, tabledata "Sales Invoice Line" = rmid, tabledata "Job Ledger Entry" = rmid;
     TableNo = "Sales Header";
 
 
@@ -1749,6 +1749,24 @@ codeunit 50111 "Funciones"
         ExcelBuffer.AddColumn(SalesInvoiceLine."Unit Price", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(SalesInvoiceLine."Line Amount", FALSE, '', IsBold, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.NewRow();
+    end;
+
+    // =============     Funcion para poder cambiar la descripción de los movimientos de proyectos          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+
+    // TODO para Susana, hacer guardar las descripcion
+
+    procedure SetJOBBledgerEntryDescription(var JobLdgEntry: Record "Job Ledger Entry"; Desc: text)
+    var
+        myInt: Integer;
+    begin
+        if JobLdgEntry.Description <> Copystr(Desc, 1, MaxStrLen(JobLdgEntry.Description)) then begin
+            JobLdgEntry.Description := Copystr(Desc, 1, MaxStrLen(JobLdgEntry.Description));
+            JobLdgEntry.Modify();
+        end;
     end;
 
 }

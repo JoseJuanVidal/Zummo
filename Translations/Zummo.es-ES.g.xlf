@@ -10740,10 +10740,16 @@
           <target>CIM Líneas Prod. BOM Lines </target>
         </trans-unit>
         <trans-unit id="Page 2427138035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ZM CIM Prod. BOM list</source>
-          <note from="Developer" annotates="general" priority="2">ESP="CIM L.M. de producción"</note>
+          <source>CIM Prod. BOM list</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. de producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Production BOM List - Property Caption</note>
-          <target>CIM L.M. de producción</target>
+          <target>L.M. de producción</target>
+        </trans-unit>
+        <trans-unit id="Page 4114449377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cimworks Item list</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cimworks Lista productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CimWorks Item - Property Caption</note>
+          <target>Cimworks Lista productos</target>
         </trans-unit>
         <trans-unit id="Page 489504416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents Attached</source>
@@ -10759,6 +10765,77 @@
           <source>Documents</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Entry</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Property PromotedActionCategories</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Ledger Entries</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. Proyectos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Property Caption</note>
+          <target>Movs. Proyectos</target>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 2256583518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ent&amp;ry</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action Ent&amp;ry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 3639139730 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the planning lines that are associated with job journal entries that have been posted to the job ledger. This requires that the Apply Usage Link check box has been selected for the job, or is the default setting for all jobs in your organization.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action &lt;Action28&gt; - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 3639139730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Linked Job Planning Lines</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action &lt;Action28&gt; - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 2173385693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or edit dimensions, such as area, project, or department, that you can assign to sales and purchase documents to distribute costs and analyze transaction history.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action Dimensions - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 2173385693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensions</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action Dimensions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 4062682134 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Limit the entries according to the dimension filters that you specify. NOTE: If you use a high number of dimension combinations, this function may not work and can result in a message that the SQL server only supports a maximum of 2100 parameters.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action SetDimensionFilter - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 4062682134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set Dimension Filter</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action SetDimensionFilter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 1405007275 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Find all entries and documents that exist for the document number and posting date on the selected entry or document.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action &amp;Navigate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 1405007275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Navigate</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action &amp;Navigate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 3106002577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>F&amp;unctions</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action F&amp;unctions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 557225356 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create planning lines from posted job ledger entries. This is useful if you forgot to specify the planning lines that should be created when you posted the job journal lines.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action Transfer To Planning Lines - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 373396473 - Action 557225356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transfer To Planning Lines</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action Transfer To Planning Lines - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3525881470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prod. Tools Ledger Entry</source>
@@ -23641,6 +23718,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cap. Producto y Centro Trabajo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WorkCenterList - Action WorkCenterCalendar - Property Caption</note>
           <target>Cap. Producto y Centro Trabajo</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 514898145 - Action 1178531242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 225828172">
+          <source>Editar Descripción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Editar Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Job Ledger Entries - Action EditarDescripcion - Property Caption</note>
+          <target>Editar Descripción</target>
         </trans-unit>
         <trans-unit id="TableExtension 2268077932 - Field 2152971446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
           <source>Linea Ventas</source>
