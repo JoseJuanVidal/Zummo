@@ -1,4 +1,4 @@
-page 50057 "ZM Document Attachment Factbox"
+page 50030 "ZM Document Attachment Factbox"
 {
     Caption = 'Documents Attached';
     PageType = CardPart;
