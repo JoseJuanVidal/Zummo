@@ -160,14 +160,11 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         GenJnlLine."Document Date" := FechaFra;
         GenJnlLine.Insert();
         GenJnlLine."Document No." := LastDocumentNo;
-        Pos := strlen(IDFra) - 36;
-        if Pos < 1 then
-            pos := 1;
-        GenJnlLine."External Document No." := CopyStr(IDFra, Pos, MaxStrLen(GenJnlLine."External Document No."));
-        GenJnlLine."Account Type" := GenJnlLine."Account Type"::Vendor;
         VendorName := CopyStr(NombreFiscal, 1, MaxStrLen(GenJnlLine."Succeeded Company Name"));
+        GenJnlLine."Account Type" := GenJnlLine."Account Type"::Vendor;
         GenJnlLine.validate("Account No.", GetVendorNo(CuentaProveedor, CIFProveedor, VendorName));
         GenJnlLine.Description := CopyStr(StrSubstNo('%1 %2', NombreFiscal, IDFra), 1, MaxStrLen(GenJnlLine.Description));
+        GenJnlLine."External Document No." := GetVendorLdgExternalDocumentNo(GenJnlLine, IDFra);
         GenJnlLine."Succeeded Company Name" := NombreFiscal;
         GenJnlLine."VAT Registration No." := CIFProveedor;
         GenJnlLine.Validate(Amount, -Importe);
@@ -251,5 +248,64 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         clear(Provincia);
         Clear(CPProveeor);
         clear(id60dias);
+    end;
+
+    local procedure GetJnlLineExternalDocumentNo(GenJnlLine: Record "Gen. Journal Line"; ExtDocumentNo: code[35]): code[35]
+    var
+        GenJournalLine: Record "Gen. Journal Line";
+        NoFind: Boolean;
+        Pos: Integer;
+    begin
+        Pos := strlen(ExtDocumentNo) - MaxStrLen(GenJournalLine."External Document No.") - 1;
+        if Pos < 1 then
+            pos := 1;
+        ExtDocumentNo := CopyStr(ExtDocumentNo, Pos, MaxStrLen(GenJournalLine."External Document No."));
+        GenJournalLine.Reset();
+        GenJournalLine.SetRange("Journal Batch Name", GenJnlLine."Journal Batch Name");
+        GenJournalLine.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");
+        GenJournalLine.SetRange("Account No.", GenJnlLine."Account No.");
+        GenJournalLine.SetRange("External Document No.", ExtDocumentNo);
+        repeat
+            if GenJournalLine.FindFirst() then begin
+                if CopyStr(ExtDocumentNo, StrLen(ExtDocumentNo) - 1, 1) <> '/' then
+                    ExtDocumentNo := CopyStr(ExtDocumentNo, 1, MaxStrLen(GenJournalLine."External Document No.") - 2) + '/0';
+
+                ExtDocumentNo := IncStr(ExtDocumentNo);
+            end else
+                NoFind := true;
+            GenJournalLine.SetRange("External Document No.", ExtDocumentNo);
+        until NoFind;
+
+        exit(ExtDocumentNo);
+    end;
+
+    local procedure GetVendorLdgExternalDocumentNo(GenJnlLine: Record "Gen. Journal Line"; ExtDocumentNo: text): code[35]
+    var
+        VendorledgerEntry: Record "Vendor Ledger Entry";
+        NoFind: Boolean;
+        Pos: Integer;
+    begin
+        Pos := strlen(ExtDocumentNo) - MaxStrLen(VendorledgerEntry."External Document No.") - 1;
+        if Pos < 1 then
+            pos := 1;
+        ExtDocumentNo := CopyStr(ExtDocumentNo, Pos, MaxStrLen(VendorledgerEntry."External Document No."));
+        VendorledgerEntry.Reset();
+        VendorledgerEntry.SetRange("Vendor No.", GenJnlLine."Account No.");
+        VendorledgerEntry.SetRange("External Document No.", ExtDocumentNo);
+        repeat
+            if VendorledgerEntry.FindFirst() then begin
+
+                if CopyStr(ExtDocumentNo, StrLen(ExtDocumentNo) - 1, 1) <> '/' then
+                    ExtDocumentNo := CopyStr(ExtDocumentNo, 1, MaxStrLen(VendorledgerEntry."External Document No.") - 2) + '/0';
+
+                ExtDocumentNo := IncStr(ExtDocumentNo);
+            end else
+                NoFind := true;
+            VendorledgerEntry.SetRange("External Document No.", ExtDocumentNo);
+        until NoFind;
+
+        ExtDocumentNo := GetJnlLineExternalDocumentNo(GenJnlLine, ExtDocumentNo);
+
+        exit(ExtDocumentNo);
     end;
 }
