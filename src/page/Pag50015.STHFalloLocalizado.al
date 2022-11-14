@@ -13,6 +13,10 @@ page 50015 "STH Fallo Localizado"
         {
             repeater(General)
             {
+                field(Fallo; Fallo)
+                {
+                    ApplicationArea = all;
+                }
                 field(FalloLocalizado; FalloLocalizado)
                 {
                     ApplicationArea = All;

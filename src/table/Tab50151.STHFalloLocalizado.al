@@ -21,11 +21,16 @@ table 50151 "STH Fallo Localizado"
             DataClassification = CustomerContent;
             Caption = 'Descripción', comment = 'ESP="Descripción"';
         }
+        field(10; Fallo; code[20])
+        {
+            Caption = 'Fallo', comment = 'ESP="Fallo"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(motivoCalibracion));
+        }
     }
 
     keys
     {
-        key(PK; FalloLocalizado)
+        key(PK; fallo, FalloLocalizado)
         {
             Clustered = true;
         }
