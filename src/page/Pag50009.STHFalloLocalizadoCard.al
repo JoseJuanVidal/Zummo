@@ -11,6 +11,10 @@ page 50009 "STH Fallo Localizado Card"
         {
             group(General)
             {
+                field(Fallo; Fallo)
+                {
+                    ApplicationArea = all;
+                }
                 field(FalloLocalizado; Rec.FalloLocalizado)
                 {
                     ToolTip = 'Specifies the value of the Fallo Localizado field.', Comment = 'ESP="Fallo Localizado"';

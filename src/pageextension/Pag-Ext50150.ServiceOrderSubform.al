@@ -42,6 +42,10 @@ pageextension 50150 "ServiceOrderSubform" extends "Service Order Subform"
         }
         addlast(Control1)
         {
+            field(Fallo; Fallo)
+            {
+                ApplicationArea = all;
+            }
             field("Fallo localizado"; "Fallo localizado")
             {
                 ApplicationArea = all;
