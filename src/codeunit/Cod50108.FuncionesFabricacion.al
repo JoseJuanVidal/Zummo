@@ -3,6 +3,7 @@ codeunit 50108 "FuncionesFabricacion"
 
     var
         ReqExcelBuffer: Record "Excel Buffer";
+        lblConfirmExcel: Label '¿Desea exportar los resultado en Excel?', comment = 'ESP="¿Desea exportar los resultado en Excel?"';
 
     procedure CambiaEstadoVariasOrdenesProduccion(var pOrdenProd: Record "Production Order")
     var
@@ -342,14 +343,12 @@ codeunit 50108 "FuncionesFabricacion"
                 Until SupplyInventoryProfile.next() = 0;
 
             ReqExcelBuffer.AddColumn(Quantity, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-
-            ReqExcelBuffer.AddColumn(Item."Vendor No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-            if vendor.get(Item."Vendor No.") then;
-            ReqExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-            ReqExcelBuffer.AddColumn(Item."Lead Time Calculation", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-
-
         end;
+        ReqExcelBuffer.AddColumn(Item."Vendor No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        if vendor.get(Item."Vendor No.") then;
+        ReqExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        ReqExcelBuffer.AddColumn(Item."Lead Time Calculation", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+
         ReqExcelBuffer.NewRow();
 
     end;
@@ -389,6 +388,88 @@ codeunit 50108 "FuncionesFabricacion"
 
     end;
 
+
+    [EventSubscriber(ObjectType::Report, Report::"Calculate Plan - Req. Wksh.", 'OnAfterSkipPlanningForItemOnReqWksh', '', true, true)]
+    local procedure CalculatePlanReqWksh_OnAfterSkipPlanningForItemOnReqWksh(Item: Record Item; var SkipPlanning: Boolean)
+    var
+        nLinea: Integer;
+    begin
+        if SkipPlanning then begin
+            ReqExcelBuffer.Reset();
+            ReqExcelBuffer.SetRange("Column No.", 1);
+            if ReqExcelBuffer.FindLast() then
+                nLinea := ReqExcelBuffer."Row No." + 1
+            else
+                nLinea := 1;
+
+            ReqExcelBuffer.SetCurrent(nLinea, 0);
+            ReqExcelBuffer.AddColumn(Item."No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+            ReqExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+            ReqExcelBuffer.AddColumn('No planificar', false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+            ReqExcelBuffer.NewRow();
+        end;
+    end;
+
+    // =============     ReqWorksheet OnBeforeActionEvent_CalculatePlan          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Page, Page::"Req. Worksheet", 'OnBeforeActionEvent', 'CalculatePlan', true, true)]
+    local procedure ReqWorksheet_OnBeforeActionEvent_CalculatePlan(var Rec: Record "Requisition Line")
+    var
+        InventorySetup: Record "Inventory Setup";
+    begin
+        if InventorySetup.Get() then begin
+            InventorySetup."Export Excel Requisition" := false;
+            if Confirm(lblConfirmExcel) then begin
+                InventorySetup."Export Excel Requisition" := true;
+                InitReqExcelBuffer(rec."Journal Batch Name");
+            end;
+            InventorySetup.Modify();
+        end;
+
+        commit;
+    end;
+
+    [EventSubscriber(ObjectType::Page, Page::"Req. Worksheet", 'OnAfterActionEvent', 'CalculatePlan', true, true)]
+    local procedure ReqWorksheet_OnAfterActionEvent_CalculatePlan(var Rec: Record "Requisition Line")
+    var
+        InventorySetup: Record "Inventory Setup";
+    begin
+        if InventorySetup.Get() then begin
+            if InventorySetup."Export Excel Requisition" then begin
+                InventorySetup."Export Excel Requisition" := true;
+                InventorySetup.Modify();
+                ReqWorksheet_CalculatePlanFinish(Rec);
+            end;
+
+        end;
+    end;
+
+    local procedure ReqWorksheet_CalculatePlanFinish(Rec: Record "Requisition Line")
+    begin
+        reqExcelBuffer.Reset();
+
+        reqExcelBuffer.CreateNewBook('Planificacion');
+        // Rango Tabla
+        reqExcelBuffer.SetCurrent(4, 1);
+        reqExcelBuffer.StartRange();
+        reqExcelBuffer.SetCurrent(4, 1);
+        reqExcelBuffer.EndRange();
+        reqExcelBuffer.CreateRange('Tabla');
+
+        reqExcelBuffer.WriteSheet('Planif. ' + Rec."Journal Batch Name", COMPANYNAME, USERID);
+        reqExcelBuffer.CloseBook();
+        ReqExcelBuffer.SetFriendlyFilename('Planificación ' + Rec."Journal Batch Name");
+        reqExcelBuffer.DownloadAndOpenExcel;
+    end;
+
+    // =============     LanzarPlanificacionDesdePedidos          ====================
+    // ==  
+    // ==  lanza los procesos de MRP sobre las lineas de un pedido de venta y sus subconjuntos 
+    // ==  
+    // ======================================================================================================
     procedure LanzarPlanificacionDesdePedidos()
     var
         SalesHeader: Record "Sales Header";
@@ -407,7 +488,7 @@ codeunit 50108 "FuncionesFabricacion"
         InventorySetup: Record "Inventory Setup";
         SalesHeaderDocNo: text;
         LastLine: Integer;
-        lblConfirmExcel: Label '¿Desea exportar los resultado en Excel?', comment = 'ESP="¿Desea exportar los resultado en Excel?"';
+
     begin
 
         Item.reset;
