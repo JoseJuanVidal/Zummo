@@ -41,8 +41,8 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
         field(50202; "Fallo localizado"; text[80])
         {
             Caption = 'Fallo localizado', comment = 'ESP="Fallo localizado"';
-            TableRelation = if (Fallo = const('')) "STH Fallo Localizado" else
-            "STH Fallo Localizado" where(Fallo = field(Fallo));
+            TableRelation = if (Fallo = const('')) "STH Fallo Localizado".FalloLocalizado else
+            "STH Fallo Localizado".FalloLocalizado where(Fallo = field(Fallo));
         }
         field(50203; Fallo; code[20])
         {
