@@ -6268,15 +6268,15 @@
           <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method SetFilterOneLocation - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1069980009 - NamedType 3472070881" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea exportar los resultado en Excel?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea exportar los resultado en Excel?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - NamedType lblConfirmExcel</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1069980009 - Method 2322295925 - NamedType 466800574" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to change the status of the selected orders?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar el estado de las ordenes seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method CambiaEstadoVariasOrdenesProduccion - NamedType labelConfirmQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1069980009 - Method 2246169831 - NamedType 3472070881" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Desea exportar los resultado en Excel?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea exportar los resultado en Excel?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method LanzarPlanificacionDesdePedidos - NamedType lblConfirmExcel</note>
         </trans-unit>
         <trans-unit id="Codeunit 2573646532 - Method 2223176127 - NamedType 596828306" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se encuentra la Oferta %1 emparejado.</source>
