@@ -32,4 +32,24 @@ page 50015 "STH Fallo Localizado"
             }
         }
     }
+    actions
+    {
+        area(Navigation)
+        {
+            action(ServiceItemLine)
+            {
+                ApplicationArea = all;
+                Caption = 'Líneas pedido servicio', comment = 'ESP="Líneas pedido servicio"';
+                Image = ServiceLines;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    Rec.NavigateServiceItemLine;
+                end;
+            }
+        }
+    }
 }

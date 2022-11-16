@@ -35,4 +35,24 @@ page 50009 "STH Fallo Localizado Card"
         }
     }
 
+    actions
+    {
+        area(Navigation)
+        {
+            action(ServiceItemLine)
+            {
+                ApplicationArea = all;
+                Caption = 'Líneas pedido servicio', comment = 'ESP="Líneas pedido servicio"';
+                Image = ServiceLines;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    Rec.NavigateServiceItemLine;
+                end;
+            }
+        }
+    }
 }

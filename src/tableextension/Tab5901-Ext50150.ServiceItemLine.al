@@ -43,6 +43,11 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
             Caption = 'Fallo localizado', comment = 'ESP="Fallo localizado"';
             TableRelation = if (Fallo = const('')) "STH Fallo Localizado".FalloLocalizado else
             "STH Fallo Localizado".FalloLocalizado where(Fallo = field(Fallo));
+
+            trigger OnValidate()
+            begin
+                FallolocalizadoValidate;
+            end;
         }
         field(50203; Fallo; code[20])
         {
@@ -70,4 +75,19 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
     }
 
 
+    local procedure FalloLocalizadoValidate()
+    var
+        FalloLoc: Record "STH Fallo Localizado";
+    begin
+        if Rec.Fallo = '' then begin
+            FalloLoc.Reset();
+            FalloLoc.SetRange(FalloLocalizado, Rec."Fallo localizado");
+            if FalloLoc.FindFirst() then begin
+                if FalloLoc.Count = 1 then begin
+                    Rec.Fallo := FalloLoc.Fallo;
+                end;
+            end;
+
+        end;
+    end;
 }
