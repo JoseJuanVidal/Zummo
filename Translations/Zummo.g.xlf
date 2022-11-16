@@ -9278,6 +9278,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fallo Localizado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3961029829 - Action 4165706410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Líneas pedido servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas pedido servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado - Action ServiceItemLine - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3740083529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fallo Localizado Card</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9297,6 +9302,11 @@
           <source>Specifies the value of the Informe Mejora field.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Informe Mejora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado Card - Control InformeMejora - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3740083529 - Action 4165706410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Líneas pedido servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas pedido servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado Card - Action ServiceItemLine - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 10975779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hist. Aseguradora</source>
@@ -22137,6 +22147,11 @@
           <source>Editar Descripción</source>
           <note from="Developer" annotates="general" priority="2">ESP="Editar Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Job Ledger Entries - Action EditarDescripcion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2946467438 - Action 127686680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3342712847">
+          <source>Mostrar Documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Service Item Lines - Action ShowDocument - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2268077932 - Field 2152971446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
           <source>Linea Ventas</source>

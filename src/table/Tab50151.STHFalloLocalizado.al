@@ -69,4 +69,15 @@ table 50151 "STH Fallo Localizado"
 
     end;
 
+    procedure NavigateServiceItemLine()
+    var
+        ServiceItemLine: Record "Service Item Line";
+    begin
+        ServiceItemLine.Reset();
+        ServiceItemLine.SetRange(Fallo, Rec.Fallo);
+        ServiceItemLine.SetRange("Fallo localizado", Rec.FalloLocalizado);
+        Page.RunModal(0, ServiceItemLine);
+
+    end;
+
 }
