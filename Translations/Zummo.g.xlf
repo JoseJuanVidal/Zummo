@@ -21868,6 +21868,21 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importar Excel"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Employee List - Action ImportExcel - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4701843 - Method 3860884854 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4701843">
+          <source>¿Desea registrar por lotes el diario?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea registrar por lotes el diario?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH General JournalExt - Method PostLotItemJnl - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4701843 - Method 3860884854 - NamedType 2654048973" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4701843">
+          <source>Registro de líneas realizado.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro de líneas realizado."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH General JournalExt - Method PostLotItemJnl - NamedType lblMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4701843 - Action 94725657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Registrar por lotes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registrar por lotes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH General JournalExt - Action PostLot - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4701843 - Action 3044042001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Importar Recuperación IVA</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importar Recuperación IVA"</note>

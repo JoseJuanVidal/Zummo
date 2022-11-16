@@ -6536,17 +6536,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method SetFilterOneLocation - NamedType Text000</note>
           <target>No se puede realizar planificación con Agrupación y multiples filtros de Almacén</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1069980009 - NamedType 3472070881" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea exportar los resultado en Excel?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea exportar los resultado en Excel?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - NamedType lblConfirmExcel</note>
+          <target>¿Desea exportar los resultado en Excel?</target>
+        </trans-unit>
         <trans-unit id="Codeunit 1069980009 - Method 2322295925 - NamedType 466800574" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to change the status of the selected orders?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar el estado de las ordenes seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method CambiaEstadoVariasOrdenesProduccion - NamedType labelConfirmQst</note>
           <target>¿Desea cambiar el estado de las ordenes seleccionadas?</target>
-        </trans-unit>
-        <trans-unit id="Codeunit 1069980009 - Method 2246169831 - NamedType 3472070881" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Desea exportar los resultado en Excel?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea exportar los resultado en Excel?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method LanzarPlanificacionDesdePedidos - NamedType lblConfirmExcel</note>
-          <target>¿Desea exportar los resultado en Excel?</target>
         </trans-unit>
         <trans-unit id="Codeunit 2573646532 - Method 2223176127 - NamedType 596828306" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se encuentra la Oferta %1 emparejado.</source>
@@ -9994,6 +9994,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado - Property Caption</note>
           <target>Fallo Localizado</target>
         </trans-unit>
+        <trans-unit id="Page 3961029829 - Action 4165706410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Líneas pedido servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas pedido servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado - Action ServiceItemLine - Property Caption</note>
+          <target>Líneas pedido servicio</target>
+        </trans-unit>
         <trans-unit id="Page 3740083529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fallo Localizado Card</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -10016,6 +10022,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Informe Mejora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado Card - Control InformeMejora - Property ToolTip</note>
           <target>Informe Mejora</target>
+        </trans-unit>
+        <trans-unit id="Page 3740083529 - Action 4165706410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Líneas pedido servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas pedido servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Fallo Localizado Card - Action ServiceItemLine - Property Caption</note>
+          <target>Líneas pedido servicio</target>
         </trans-unit>
         <trans-unit id="Page 10975779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hist. Aseguradora</source>
@@ -23433,6 +23445,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Employee List - Action ImportExcel - Property Caption</note>
           <target>Importar Excel</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4701843 - Method 3860884854 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4701843">
+          <source>¿Desea registrar por lotes el diario?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea registrar por lotes el diario?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH General JournalExt - Method PostLotItemJnl - NamedType lblConfirm</note>
+          <target>¿Desea registrar por lotes el diario?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4701843 - Method 3860884854 - NamedType 2654048973" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4701843">
+          <source>Registro de líneas realizado.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro de líneas realizado."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH General JournalExt - Method PostLotItemJnl - NamedType lblMsg</note>
+          <target>Registro de líneas realizado.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4701843 - Action 94725657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Registrar por lotes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registrar por lotes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH General JournalExt - Action PostLot - Property Caption</note>
+          <target>Registrar por lotes</target>
+        </trans-unit>
         <trans-unit id="PageExtension 4701843 - Action 3044042001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Importar Recuperación IVA</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importar Recuperación IVA"</note>
@@ -23730,6 +23760,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Editar Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Job Ledger Entries - Action EditarDescripcion - Property Caption</note>
           <target>Editar Descripción</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2946467438 - Action 127686680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3342712847">
+          <source>Mostrar Documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Service Item Lines - Action ShowDocument - Property Caption</note>
+          <target>Mostrar Documento</target>
         </trans-unit>
         <trans-unit id="TableExtension 2268077932 - Field 2152971446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
           <source>Linea Ventas</source>
