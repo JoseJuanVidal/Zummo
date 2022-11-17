@@ -16954,18 +16954,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report LanzaEnvioMailsVencimientos - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Purchases Invoice Book</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Libro facturas recibidas"</note>
+          <source>Purchases Invoice Book (VAT Rec.)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Libro facturas recibidas (Iva Rec.)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 3285233284" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType AmountCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1933578523" size-unit="char" translate="yes" xml:space="preserve">
           <source>Base</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Base"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType BaseCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 4036938315" size-unit="char" translate="yes" xml:space="preserve">
@@ -16975,197 +16975,197 @@
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 3597976173" size-unit="char" translate="yes" xml:space="preserve">
           <source>Continued</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Continuación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType ContinuedCaption_Control103Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1368354476" size-unit="char" translate="yes" xml:space="preserve">
           <source>Continued</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Continuación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType ContinuedCaption_Control119Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1898556117" size-unit="char" translate="yes" xml:space="preserve">
           <source>Continued</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Continuación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType ContinuedCaption_Control130Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 44401681" size-unit="char" translate="yes" xml:space="preserve">
           <source>Continued</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Continuación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType ContinuedCaption_Control134Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1343482668" size-unit="char" translate="yes" xml:space="preserve">
           <source>Continued</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Continuación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType ContinuedCaption_Control18Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1534401541" size-unit="char" translate="yes" xml:space="preserve">
           <source>Continued</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Continuación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType ContinuedCaption_Control28Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2883432116" size-unit="char" translate="yes" xml:space="preserve">
           <source>Continued</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Continuación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType ContinuedCaption_Control32Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2806851215" size-unit="char" translate="yes" xml:space="preserve">
           <source>Continued</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Continuación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType ContinuedCaption_Control48Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1954197552" size-unit="char" translate="yes" xml:space="preserve">
           <source>Continued</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Continuación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType ContinuedCaption_Control49Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1987762555" size-unit="char" translate="yes" xml:space="preserve">
           <source>Page</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Pág."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType CurrReport_PAGENOCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1085409740" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Document_DateCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2124006630" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Document_No_CaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 4088074391" size-unit="char" translate="yes" xml:space="preserve">
           <source>EC%</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="%RE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType EC_CaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 313134354" size-unit="char" translate="yes" xml:space="preserve">
           <source>Expedition Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha expedición"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Epedition_DateCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 44615812" size-unit="char" translate="yes" xml:space="preserve">
           <source>External Document No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº documento externo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType External_Document_No_CaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2336407152" size-unit="char" translate="yes" xml:space="preserve">
-          <source>grupo registro IVA neg </source>
+          <source>Grupo registro IVA neg </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType gruporegistroIVAnegLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2581869659" size-unit="char" translate="yes" xml:space="preserve">
-          <source>grupo registro IVA Producto </source>
+          <source>Grupo registro IVA Producto </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType gruporegistroIVAProdLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2763383773" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType NameCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 4265219503" size-unit="char" translate="yes" xml:space="preserve">
           <source>No Taxable VAT</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Ningún IVA sujeto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType NoTaxableVATTxt</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 3251579414" size-unit="char" translate="yes" xml:space="preserve">
           <source>No. Series</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nos. serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType No_SerieCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 4089700976" size-unit="char" translate="yes" xml:space="preserve">
           <source>No. Series</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nos. serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType No_SerieCaption_Control97Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 638740601" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Posting_DateCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 3988653272" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchases Invoice Book</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Libro facturas recibidas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Purchases_Invoice_BookCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 570984647" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Registration No.: </source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="CIF/NIF "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Text1100000</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1208681264" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specify the VAT registration number of your company in the Company information window.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP=""Especifique el CIF/NIF de su empresa en la ventana Información empresa.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Text1100001</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1846377881" size-unit="char" translate="yes" xml:space="preserve">
           <source>All amounts are in %1.</source>
-          <note from="Developer" annotates="general" priority="2">%1 - currency code</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Todos los importes se expresan en %1."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Text1100002</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2484074498" size-unit="char" translate="yes" xml:space="preserve">
           <source>UNKNOWN</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="DESCONOCIDO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Text1100003</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 3121771115" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice|Credit Memo</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura|Abono"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Text1100004</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 3759467732" size-unit="char" translate="yes" xml:space="preserve">
           <source>Corrective Invoice</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura rectificativa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType Text1100005</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1583171122" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType TotalCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1053594654" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType TotalCaption_Control127Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 4004511215" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType TotalCaption_Control21Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1686101590" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType TotalCaption_Control26Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 3796234329" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType TotalCaption_Control54Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2779405866" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType TotalCaption_Control77Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1866292099" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType TotalCaption_Control78Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2768808243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType TotalCaption_Control96Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1189334612" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT%</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="% IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType VAT_CaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 1765955155" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Registration</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="CIF/NIF"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType VAT_RegistrationCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
