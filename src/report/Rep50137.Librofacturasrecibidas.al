@@ -3,7 +3,7 @@ report 50137 "Libro facturas recibidas"
     DefaultLayout = RDLC;
     RDLCLayout = './src/report/Rep50137.Librofacturasrecibidas.rdl';
     ApplicationArea = Basic, Suite;
-    Caption = 'Purchases Invoice Book', Comment = 'ESP="Libro facturas recibidas"';
+    Caption = 'Purchases Invoice Book (VAT Rec.)', Comment = 'ESP="Libro facturas recibidas (Iva Rec.)"';
     UsageCategory = ReportsAndAnalysis;
 
     dataset
@@ -627,6 +627,16 @@ report 50137 "Libro facturas recibidas"
 
                         if not Vendor.Get(VATEntry."Bill-to/Pay-to No.") then
                             Vendor.Name := Text1100003;
+
+                        VendLedgEntry.SetCurrentKey("Document No.", "Document Type", "Vendor No.");
+                        VendLedgEntry.SetRange("Document Type", VATEntry."Document Type");
+                        VendLedgEntry.SetRange("Document No.", VATEntry."Document No.");
+                        VendLedgEntry.SetFilter("Document Type", Text1100004);
+                        if VendLedgEntry.FindFirst then begin
+                            if VendLedgEntry."Succeeded Company Name" <> '' then
+                                Vendor.Name := VendLedgEntry."Succeeded Company Name";
+                            Vendor."VAT Registration No." := VATEntry."VAT Registration No.";
+                        end
                     end;
                 }
                 dataitem("Integer"; "Integer")
@@ -916,10 +926,17 @@ report 50137 "Libro facturas recibidas"
 
                         if not Vendor.Get(VATEntry3."Bill-to/Pay-to No.") then
                             Vendor.Name := Text1100003;
+                        //ZM aqui para Iva Recuperación, cargamos el nombre del proveedor correctamente
+                        if VendLedgEntry."Succeeded Company Name" <> '' then begin
+                            vendor.Name := VendLedgEntry."Succeeded Company Name";
+                        end;
+
                         VendLedgEntry.SetCurrentKey("Document No.", "Document Type", "Vendor No.");
                         VendLedgEntry.SetRange("Document No.", VATEntry3."Document No.");
                         VendLedgEntry.SetFilter("Document Type", Text1100004);
                         if VendLedgEntry.FindFirst then;
+
+
                     end;
                 }
                 dataitem("<Integer2>"; "Integer")
@@ -1202,11 +1219,12 @@ report 50137 "Libro facturas recibidas"
 
     var
         noMostrarNoTaxable: Boolean;
-        Text1100000: Label 'VAT Registration No.: ';
-        Text1100001: Label 'Specify the VAT registration number of your company in the Company information window.';
-        Text1100002: Label 'All amounts are in %1.', Comment = '%1 - currency code';
-        Text1100003: Label 'UNKNOWN';
-        Text1100004: Label 'Invoice|Credit Memo';
+        Text1100000: Label 'VAT Registration No.: ', Comment = 'ESP="CIF/NIF "';
+        Text1100001: Label 'Specify the VAT registration number of your company in the Company information window.'
+            , Comment = 'ESP=""Especifique el CIF/NIF de su empresa en la ventana Información empresa.';
+        Text1100002: Label 'All amounts are in %1.', Comment = 'ESP="Todos los importes se expresan en %1."';
+        Text1100003: Label 'UNKNOWN', Comment = 'ESP="DESCONOCIDO"';
+        Text1100004: Label 'Invoice|Credit Memo', Comment = 'ESP="Factura|Abono"';
         PurchInvHeader: Record "Purch. Inv. Header";
         PurchCrMemoHeader: Record "Purch. Cr. Memo Hdr.";
         Vendor: Record Vendor;
@@ -1246,47 +1264,47 @@ report 50137 "Libro facturas recibidas"
         BaseImport: Decimal;
         TotalBaseImport: Decimal;
         MaxLines: Integer;
-        Text1100005: Label 'Corrective Invoice';
+        Text1100005: Label 'Corrective Invoice', Comment = 'ESP="Factura rectificativa"';
         DocType: Text[30];
-        CurrReport_PAGENOCaptionLbl: Label 'Page';
-        Purchases_Invoice_BookCaptionLbl: Label 'Purchases Invoice Book';
-        TotalCaptionLbl: Label 'Total';
-        AmountCaptionLbl: Label 'Amount';
-        EC_CaptionLbl: Label 'EC%';
-        VAT_CaptionLbl: Label 'VAT%';
-        BaseCaptionLbl: Label 'Base';
-        VAT_RegistrationCaptionLbl: Label 'VAT Registration';
-        NameCaptionLbl: Label 'Name';
-        External_Document_No_CaptionLbl: Label 'External Document No.';
-        Posting_DateCaptionLbl: Label 'Posting Date';
-        Document_DateCaptionLbl: Label 'Document Date';
-        Document_No_CaptionLbl: Label 'Document No.';
-        Epedition_DateCaptionLbl: Label 'Expedition Date';
+        CurrReport_PAGENOCaptionLbl: Label 'Page', Comment = 'ESP="Pág."';
+        Purchases_Invoice_BookCaptionLbl: Label 'Purchases Invoice Book', Comment = 'ESP="Libro facturas recibidas"';
+        TotalCaptionLbl: Label 'Total', Comment = 'ESP="Total"';
+        AmountCaptionLbl: Label 'Amount', Comment = 'ESP="Importe"';
+        EC_CaptionLbl: Label 'EC%', Comment = 'ESP="%RE"';
+        VAT_CaptionLbl: Label 'VAT%', Comment = 'ESP="% IVA"';
+        BaseCaptionLbl: Label 'Base', Comment = 'ESP="Base"';
+        VAT_RegistrationCaptionLbl: Label 'VAT Registration', Comment = 'ESP="CIF/NIF"';
+        NameCaptionLbl: Label 'Name', Comment = 'ESP="Nombre"';
+        External_Document_No_CaptionLbl: Label 'External Document No.', Comment = 'ESP="Nº documento externo"';
+        Posting_DateCaptionLbl: Label 'Posting Date', Comment = 'ESP="Fecha registro"';
+        Document_DateCaptionLbl: Label 'Document Date', Comment = 'ESP="Fecha de documento"';
+        Document_No_CaptionLbl: Label 'Document No.', Comment = 'ESP="Nº documento"';
+        Epedition_DateCaptionLbl: Label 'Expedition Date', Comment = 'ESP="Fecha expedición"';
         ContinuedCaptionLbl: Label 'Continued';
-        ContinuedCaption_Control28Lbl: Label 'Continued';
-        ContinuedCaption_Control48Lbl: Label 'Continued';
-        ContinuedCaption_Control49Lbl: Label 'Continued';
-        TotalCaption_Control77Lbl: Label 'Total';
-        TotalCaption_Control78Lbl: Label 'Total';
-        ContinuedCaption_Control18Lbl: Label 'Continued';
-        ContinuedCaption_Control32Lbl: Label 'Continued';
-        ContinuedCaption_Control130Lbl: Label 'Continued';
-        ContinuedCaption_Control134Lbl: Label 'Continued';
-        TotalCaption_Control54Lbl: Label 'Total';
-        TotalCaption_Control127Lbl: Label 'Total';
-        TotalCaption_Control26Lbl: Label 'Total';
-        ContinuedCaption_Control103Lbl: Label 'Continued';
-        No_SerieCaptionLbl: Label 'No. Series';
-        TotalCaption_Control96Lbl: Label 'Total';
-        No_SerieCaption_Control97Lbl: Label 'No. Series';
-        ContinuedCaption_Control119Lbl: Label 'Continued';
-        TotalCaption_Control21Lbl: Label 'Total';
+        ContinuedCaption_Control28Lbl: Label 'Continued', Comment = 'ESP="Continuación"';
+        ContinuedCaption_Control48Lbl: Label 'Continued', Comment = 'ESP="Continuación"';
+        ContinuedCaption_Control49Lbl: Label 'Continued', Comment = 'ESP="Continuación"';
+        TotalCaption_Control77Lbl: Label 'Total', Comment = 'ESP="Total"';
+        TotalCaption_Control78Lbl: Label 'Total', Comment = 'ESP="Total"';
+        ContinuedCaption_Control18Lbl: Label 'Continued', Comment = 'ESP="Continuación"';
+        ContinuedCaption_Control32Lbl: Label 'Continued', Comment = 'ESP="Continuación"';
+        ContinuedCaption_Control130Lbl: Label 'Continued', Comment = 'ESP="Continuación"';
+        ContinuedCaption_Control134Lbl: Label 'Continued', Comment = 'ESP="Continuación"';
+        TotalCaption_Control54Lbl: Label 'Total', Comment = 'ESP="Total"';
+        TotalCaption_Control127Lbl: Label 'Total', Comment = 'ESP="Total"';
+        TotalCaption_Control26Lbl: Label 'Total', Comment = 'ESP="Total"';
+        ContinuedCaption_Control103Lbl: Label 'Continued', Comment = 'ESP="Continuación"';
+        No_SerieCaptionLbl: Label 'No. Series', Comment = 'ESP="Nos. serie"';
+        TotalCaption_Control96Lbl: Label 'Total', Comment = 'ESP="Total"';
+        No_SerieCaption_Control97Lbl: Label 'No. Series', Comment = 'ESP="Nos. serie"';
+        ContinuedCaption_Control119Lbl: Label 'Continued', Comment = 'ESP="Continuación"';
+        TotalCaption_Control21Lbl: Label 'Total', Comment = 'ESP="Total"';
         TempVATEntry: Record "VAT Entry" temporary;
         NoTaxableAmount: Decimal;
-        NoTaxableVATTxt: Label 'No Taxable VAT';
+        NoTaxableVATTxt: Label 'No Taxable VAT', Comment = 'ESP="Ningún IVA sujeto"';
         NoTaxableText: Text;
         NoTaxablePrinted: Boolean;
-        gruporegistroIVAnegLbl: Label 'grupo registro IVA neg ';
-        gruporegistroIVAProdLbl: Label 'grupo registro IVA Producto ';
+        gruporegistroIVAnegLbl: Label 'Grupo registro IVA neg ';
+        gruporegistroIVAProdLbl: Label 'Grupo registro IVA Producto ';
 }
 
