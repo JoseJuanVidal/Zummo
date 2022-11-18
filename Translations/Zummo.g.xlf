@@ -20933,6 +20933,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Etiquetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseRcptSubform - Action Imprimir Etiquetas - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3317830519 - Action 2189364675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2406989597">
+          <source>Líneas Facturas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas Facturas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseRcptSubform - Action LineasFacturas - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3809947402 - Action 2896958691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2344297010">
           <source>Marcar no facturar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Marcar no facturar"</note>
