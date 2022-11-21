@@ -19,5 +19,11 @@
             <ObjectID>50106</ObjectID>
             <Published>1</Published>
         </TenantWebService>
+          <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>itemwhereused</ServiceName>
+            <ObjectID>50134</ObjectID>
+            <Published>1</Published>
+        </TenantWebService>
     </TenantWebServiceCollection>
 </ExportedData>

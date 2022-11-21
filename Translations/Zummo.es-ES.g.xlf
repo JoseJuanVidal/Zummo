@@ -10784,6 +10784,29 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 411716643 - Control 1200201054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Description Parent - Property Caption</note>
+          <target>Descripción"</target>
+        </trans-unit>
+        <trans-unit id="Page 411716643 - Control 3509143008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bloqueado</source>
+          <note from="Developer" annotates="general" priority="2">"ESP="Bloqueado""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Parent Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 411716643 - Control 3016667202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cód. Producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Producto""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Parent Item No. - Property Caption</note>
+          <target>Cód. Producto"</target>
+        </trans-unit>
+        <trans-unit id="Page 411716643 - Control 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>L.M. Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Production BOM No. - Property Caption</note>
+          <target>L.M. Producción</target>
+        </trans-unit>
         <trans-unit id="Page 373396473 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Entry</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -27159,6 +27182,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field ItemDesc2_btc - Property Caption</note>
           <target>Descripción 2</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4139431944 - Field 1200201054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 896269915">
+          <source>Description Parent</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción padre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WhereUsedLine - Field Description Parent - Property Caption</note>
+          <target>Descripción padre</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4139431944 - Field 3509143008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 896269915">
+          <source>Parent Item Blocked</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto padre bloqueado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WhereUsedLine - Field Parent Blocked - Property Caption</note>
+          <target>Producto padre bloqueado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4139431944 - Field 3016667202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 896269915">
+          <source>Parent No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto padre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WhereUsedLine - Field Parent Item No. - Property Caption</note>
+          <target>Producto padre</target>
         </trans-unit>
         <trans-unit id="TableExtension 4139431944 - Field 3074479968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 896269915">
           <source>Item Blocked</source>
