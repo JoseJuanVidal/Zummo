@@ -73,6 +73,56 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
             {
                 ApplicationArea = all;
             }
+            field("Customer No. Item Service"; "Customer No. Item Service")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Cust. Ship-to Code Item Serv."; "Cust. Ship-to Code Item Serv.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Customer Name Item Service"; "Customer Name Item Service")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Cust. Ship-to Name Item Serv."; "Cust. Ship-to Name Item Serv.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Cust. Ship-to Address Item Serv."; "Cust. Ship-to Address Item Serv.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Cust. Ship-to Addres2 Item Serv."; "Cust. Ship-to Addres2 Item Serv.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Cust. Ship-to PC Item Serv."; "Cust. Ship-to PC Item Serv.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Cust. Ship-to City Item Serv."; "Cust. Ship-to City Item Serv.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Cust. Ship-to County Item Serv."; "Cust. Ship-to County Item Serv.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Cust. Ship-to Country Item Serv."; "Cust. Ship-to Country Item Serv.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
         addbefore("Entry No.")
         {

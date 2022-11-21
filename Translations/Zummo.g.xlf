@@ -22798,6 +22798,56 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field CodCliente_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 3202460639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to Address 2 Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Direccion 2 Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to Addres2 Item Serv. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 2211470624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to Address Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Direccion Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to Address Item Serv. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 2391367535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to Name Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Población Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to City Item Serv. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 1623793625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to Code Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Cod. envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to Code Item Serv. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 109551358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to Country Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Páis Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to Country Item Serv. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 1122366164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to County Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to County Item Serv. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 467415327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-toName Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to Name Item Serv. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 1475664539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to P.C. Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. postal Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to PC Item Serv. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 1918865477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Name Item Service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Customer Name Item Service - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 3337477061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer No. Item Service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Customer No. Item Service - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1719057576 - Field 1915458483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
           <source>Description 2</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción 2"</note>

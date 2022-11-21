@@ -1,8 +1,8 @@
 page 50135 "ZM Item Where Used detail"
 {
     PageType = List;
-    ApplicationArea = All;
-    UsageCategory = Lists;
+    // ApplicationArea = All;
+    UsageCategory = None;
     SourceTable = "Where-Used Line";
     SourceTableTemporary = true;
 
@@ -45,6 +45,10 @@ page 50135 "ZM Item Where Used detail"
                     ApplicationArea = all;
                 }
                 field(ProductoBloqueado_btc; ProductoBloqueado_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field("Level Code"; "Level Code")
                 {
                     ApplicationArea = all;
                 }
