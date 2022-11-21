@@ -1389,8 +1389,90 @@ codeunit 50108 "FuncionesFabricacion"
 
             BalanceConOfertas -= StockkeepingUnit."Cant_ componentes Oferta";
         end;
-
-
-
     end;
+
+    // =============     Crear lista Materiales Producción de filtro de productos (BI)          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    procedure BuildWhereUsedFromItem(var Item: record Item; var WhereUsedList: record "Where-Used Line"; Init: Boolean)
+    var
+        BOMComponentHeader: Record "Production BOM Header";
+        Window: Dialog;
+        Level: Integer;
+        NextEntryNo: Integer;
+        lblWindows: Label 'Item: #1################', comment = 'Producto: #1################';
+    begin
+        if Init then
+            WhereUsedList.DeleteAll();
+
+        WhereUsedList.Reset();
+        if WhereUsedList.FindLast() then
+            NextEntryNo := WhereUsedList."Entry No."
+        else
+            NextEntryNo := 1;
+        Window.Open(lblWindows);
+
+        if Item.findset() then
+            repeat
+                if Item."Replenishment System" in [Item."Replenishment System"::"Prod. Order"] then begin
+                    Window.Update(1, item."No.");
+                    if BOMComponentHeader.Get(Item."Production BOM No.") and (BOMComponentHeader.Status in [BOMComponentHeader.Status::Certified]) then begin
+                        BuildWhereUsedListBom(WhereUsedList, Item, BOMComponentHeader, Level, NextEntryNo);
+
+                    end;
+                end;
+            until Item.next() = 0;
+
+
+        Window.Close();
+        WhereUsedList.Reset();
+        if WhereUsedList.FindSet() then;
+    end;
+
+    local procedure BuildWhereUsedListBom(var WhereUsedList: record "Where-Used Line"; ParentItem: record Item; BOMComponentHeader: Record "Production BOM Header"; Level: Integer; var NextEntryNo: Integer)
+    var
+        Item: Record Item;
+        BomItem: Record Item;
+        BOMComponentHeader2: Record "Production BOM Header";
+        BOMComponentLine: Record "Production BOM Line";
+        NotAddItem: Boolean;
+    begin
+        Level += 1;
+        BOMComponentLine.Reset();
+        BOMComponentLine.SetRange("Production BOM No.", BOMComponentHeader."No.");
+        // BOMComponentLine.SetRange("Version Code", '');
+        BOMComponentLine.SetRange(Type, BOMComponentLine.Type::Item);
+        if BOMComponentLine.findset() then
+            repeat
+                NotAddItem := false;
+                if BomItem.Get(BOMComponentLine."No.") then begin
+                    if BomItem."Replenishment System" in [BomItem."Replenishment System"::"Prod. Order"] then begin
+                        if BOMComponentHeader2.Get(BomItem."Production BOM No.") and (BOMComponentHeader.Status in [BOMComponentHeader.Status::Certified]) then begin
+                            BuildWhereUsedListBom(WhereUsedList, ParentItem, BOMComponentHeader2, Level, NextEntryNo);
+                            NotAddItem := true;
+                        end;
+                    end;
+                    if not NotAddItem then begin
+                        WhereUsedList.Init();
+                        NextEntryNo += 1;
+                        WhereUsedList."Entry No." := NextEntryNo;
+                        WhereUsedList."Production BOM No." := BOMComponentLine."Production BOM No.";
+                        WhereUsedList."Item No." := BOMComponentLine."No.";
+                        WhereUsedList.Description := BOMComponentLine.Description;
+                        WhereUsedList."Level Code" := Level;
+                        WhereUsedList."Quantity Needed" := BOMComponentLine."Quantity per";
+                        // Parent 
+                        WhereUsedList."Parent Item No." := ParentItem."No.";
+                        WhereUsedList."Description Parent" := ParentItem.Description;
+                        WhereUsedList."Parent Blocked" := ParentItem.Blocked;
+                        WhereUsedList.Insert()
+                    end;
+
+                end;
+
+            until BOMComponentLine.next() = 0;
+    end;
+
 }

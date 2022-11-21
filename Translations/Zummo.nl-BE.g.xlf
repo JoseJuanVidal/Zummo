@@ -8057,12 +8057,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType ContinuedCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2336407152" size-unit="char" translate="yes" xml:space="preserve">
-          <source>grupo registro IVA neg </source>
+          <source>Grupo registro IVA neg </source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType gruporegistroIVAnegLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2581869659" size-unit="char" translate="yes" xml:space="preserve">
-          <source>grupo registro IVA Producto </source>
+          <source>Grupo registro IVA Producto </source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType gruporegistroIVAProdLbl</note>
         </trans-unit>

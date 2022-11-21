@@ -10784,6 +10784,29 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 411716643 - Control 1200201054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Description Parent - Property Caption</note>
+          <target>Descripción"</target>
+        </trans-unit>
+        <trans-unit id="Page 411716643 - Control 3509143008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bloqueado</source>
+          <note from="Developer" annotates="general" priority="2">"ESP="Bloqueado""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Parent Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 411716643 - Control 3016667202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cód. Producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Producto""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Parent Item No. - Property Caption</note>
+          <target>Cód. Producto"</target>
+        </trans-unit>
+        <trans-unit id="Page 411716643 - Control 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>L.M. Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Production BOM No. - Property Caption</note>
+          <target>L.M. Producción</target>
+        </trans-unit>
         <trans-unit id="Page 373396473 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Entry</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -18401,12 +18424,12 @@
           <target>Nº documento externo</target>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2336407152" size-unit="char" translate="yes" xml:space="preserve">
-          <source>grupo registro IVA neg </source>
+          <source>Grupo registro IVA neg </source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType gruporegistroIVAnegLbl</note>
         </trans-unit>
         <trans-unit id="Report 3609285921 - NamedType 2581869659" size-unit="char" translate="yes" xml:space="preserve">
-          <source>grupo registro IVA Producto </source>
+          <source>Grupo registro IVA Producto </source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report Libro facturas recibidas - NamedType gruporegistroIVAProdLbl</note>
         </trans-unit>
@@ -22396,6 +22419,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseRcptSubform - Action Imprimir Etiquetas - Property Caption</note>
           <target>Etiquetas</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3317830519 - Action 2189364675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2406989597">
+          <source>Líneas Facturas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas Facturas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseRcptSubform - Action LineasFacturas - Property Caption</note>
+          <target>Líneas Facturas</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3809947402 - Action 2896958691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2344297010">
           <source>Marcar no facturar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Marcar no facturar"</note>
@@ -24525,6 +24554,66 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field CodCliente_btc - Property Caption</note>
           <target>Cód. Cliente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 3202460639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to Address 2 Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Direccion 2 Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to Addres2 Item Serv. - Property Caption</note>
+          <target>Direccion 2 Cliente envío Prod. servicio</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 2211470624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to Address Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Direccion Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to Address Item Serv. - Property Caption</note>
+          <target>Direccion Cliente envío Prod. servicio</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 2391367535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to Name Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Población Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to City Item Serv. - Property Caption</note>
+          <target>Población Cliente envío Prod. servicio</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 1623793625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to Code Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Cod. envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to Code Item Serv. - Property Caption</note>
+          <target>Cliente Cod. envío Prod. servicio</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 109551358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to Country Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Páis Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to Country Item Serv. - Property Caption</note>
+          <target>Páis Cliente envío Prod. servicio</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 1122366164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to County Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to County Item Serv. - Property Caption</note>
+          <target>Provincia Cliente envío Prod. servicio</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 467415327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-toName Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to Name Item Serv. - Property Caption</note>
+          <target>Nombre Cliente envío Prod. servicio</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 1475664539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Ship-to P.C. Item service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. postal Cliente envío Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Cust. Ship-to PC Item Serv. - Property Caption</note>
+          <target>Cód. postal Cliente envío Prod. servicio</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 1918865477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer Name Item Service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Customer Name Item Service - Property Caption</note>
+          <target>Nombre Cliente Prod. servicio</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 3337477061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Customer No. Item Service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente Prod. servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Customer No. Item Service - Property Caption</note>
+          <target>Cód. Cliente Prod. servicio</target>
         </trans-unit>
         <trans-unit id="TableExtension 1719057576 - Field 1915458483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
           <source>Description 2</source>
@@ -27153,6 +27242,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field ItemDesc2_btc - Property Caption</note>
           <target>Descripción 2</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4139431944 - Field 1200201054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 896269915">
+          <source>Description Parent</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción padre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WhereUsedLine - Field Description Parent - Property Caption</note>
+          <target>Descripción padre</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4139431944 - Field 3509143008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 896269915">
+          <source>Parent Item Blocked</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto padre bloqueado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WhereUsedLine - Field Parent Blocked - Property Caption</note>
+          <target>Producto padre bloqueado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4139431944 - Field 3016667202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 896269915">
+          <source>Parent No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto padre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WhereUsedLine - Field Parent Item No. - Property Caption</note>
+          <target>Producto padre</target>
         </trans-unit>
         <trans-unit id="TableExtension 4139431944 - Field 3074479968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 896269915">
           <source>Item Blocked</source>

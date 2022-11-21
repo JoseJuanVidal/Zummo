@@ -24,6 +24,21 @@ pageextension 50163 "PostedPurchaseRcptSubform" extends "Posted Purchase Rcpt. S
                 end;
             }
         }
+        addafter(DocumentLineTracking)
+        {
+            action(LineasFacturas)
+            {
+                ApplicationArea = all;
+                Caption = 'Líneas Facturas', comment = 'ESP="Líneas Facturas"';
+                Image = PurchaseInvoice;
+
+                trigger OnAction()
+                begin
+                    ShowPurchaseInvoiceLine;
+                end;
+
+            }
+        }
     }
     procedure ImprimirEtiqueta()
 
@@ -47,5 +62,12 @@ pageextension 50163 "PostedPurchaseRcptSubform" extends "Posted Purchase Rcpt. S
 
     end;
 
+
+    local procedure ShowPurchaseInvoiceLine()
+    var
+        PurchaseInvoiceLine: Record "Purch. Inv. Line";
+    begin
+        Rec.ShowItemPurchInvLines;
+    end;
 
 }

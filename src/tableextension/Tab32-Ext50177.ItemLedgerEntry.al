@@ -38,5 +38,75 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
             CalcFormula = exist("Service Item" where("Item No." = field("Item No."), CodSerieHistorico_btc = field("Serial No.")));
             Editable = false;
         }
+        field(50110; "Customer No. Item Service"; code[20])
+        {
+            Caption = 'Customer No. Item Service', comment = 'ESP="Cód. Cliente Prod. servicio"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Service Item"."Customer No." where("Item No." = field("Item No."), "Serial No." = field("Serial No.")));
+            Editable = false;
+        }
+        field(50111; "Customer Name Item Service"; text[100])
+        {
+            Caption = 'Customer Name Item Service', comment = 'ESP="Nombre Cliente Prod. servicio"';
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Customer.Name WHERE("No." = FIELD(CodCliente_btc)));
+            Editable = false;
+        }
+        field(50112; "Cust. Ship-to Code Item Serv."; text[100])
+        {
+            Caption = 'Customer Ship-to Code Item service', comment = 'ESP="Cliente Cod. envío Prod. servicio"';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Service Item"."Ship-to Code" where("Item No." = field("Item No."), "Serial No." = field("Serial No.")));
+            Editable = false;
+        }
+        field(50113; "Cust. Ship-to Name Item Serv."; text[100])
+        {
+            Caption = 'Customer Ship-toName Item service', comment = 'ESP="Nombre Cliente envío Prod. servicio"';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Ship-to Address".Name WHERE("Customer No." = FIELD("Customer No. Item Service"), Code = FIELD("Cust. Ship-to Code Item Serv.")));
+            Editable = false;
+        }
+        field(50114; "Cust. Ship-to Address Item Serv."; text[100])
+        {
+            Caption = 'Customer Ship-to Address Item service', comment = 'ESP="Direccion Cliente envío Prod. servicio"';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Ship-to Address".Address WHERE("Customer No." = FIELD("Customer No. Item Service"), Code = FIELD("Cust. Ship-to Code Item Serv.")));
+            Editable = false;
+        }
+        field(50115; "Cust. Ship-to Addres2 Item Serv."; text[50])
+        {
+            Caption = 'Customer Ship-to Address 2 Item service', comment = 'ESP="Direccion 2 Cliente envío Prod. servicio"';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Ship-to Address"."Address 2" WHERE("Customer No." = FIELD("Customer No. Item Service"), Code = FIELD("Cust. Ship-to Code Item Serv.")));
+            Editable = false;
+        }
+        field(50116; "Cust. Ship-to PC Item Serv."; text[100])
+        {
+            Caption = 'Customer Ship-to P.C. Item service', comment = 'ESP="Cód. postal Cliente envío Prod. servicio"';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Ship-to Address"."Post Code" WHERE("Customer No." = FIELD("Customer No. Item Service"), Code = FIELD("Cust. Ship-to Code Item Serv.")));
+            Editable = false;
+        }
+        field(50117; "Cust. Ship-to City Item Serv."; text[30])
+        {
+            Caption = 'Customer Ship-to Name Item service', comment = 'ESP="Población Cliente envío Prod. servicio"';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Ship-to Address".City WHERE("Customer No." = FIELD("Customer No. Item Service"), Code = FIELD("Cust. Ship-to Code Item Serv.")));
+            Editable = false;
+        }
+        field(50118; "Cust. Ship-to County Item Serv."; text[30])
+        {
+            Caption = 'Customer Ship-to County Item service', comment = 'ESP="Provincia Cliente envío Prod. servicio"';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Ship-to Address".County WHERE("Customer No." = FIELD("Customer No. Item Service"), Code = FIELD("Cust. Ship-to Code Item Serv.")));
+            Editable = false;
+        }
+        field(50119; "Cust. Ship-to Country Item Serv."; code[10])
+        {
+            Caption = 'Customer Ship-to Country Item service', comment = 'ESP="Páis Cliente envío Prod. servicio"';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Ship-to Address"."Country/Region Code" WHERE("Customer No." = FIELD("Customer No. Item Service"), Code = FIELD("Cust. Ship-to Code Item Serv.")));
+            Editable = false;
+        }
     }
 }
