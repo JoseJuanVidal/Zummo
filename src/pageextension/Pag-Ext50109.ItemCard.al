@@ -117,6 +117,39 @@ pageextension 50109 "ItemCard" extends "Item Card"
 
         }
 
+        addlast(Content)
+        {
+            group(NormativaPlastico)
+            {
+                Caption = 'Plastic Regulations', comment = 'ESP="Normativa Plastico"';
+
+                field("Plastic Qty. (kg)"; "Plastic Qty. (kg)")
+                {
+                    ApplicationArea = all;
+                }
+                field("Recycled plastic Qty. (kg)"; "Recycled plastic Qty. (kg)")
+                {
+                    ApplicationArea = all;
+                }
+                field("Recycled plastic %"; "Recycled plastic %")
+                {
+                    ApplicationArea = all;
+                }
+                field("Packing Plastic Qty. (kg)"; "Packing Plastic Qty. (kg)")
+                {
+                    ApplicationArea = all;
+                }
+                field("Packing Recycled plastic (kg)"; "Packing Recycled plastic (kg)")
+                {
+                    ApplicationArea = all;
+                }
+                field("Packing Recycled plastic %"; "Packing Recycled plastic %")
+                {
+                    ApplicationArea = all;
+                }
+            }
+        }
+
         modify("Reordering Policy")
         {
             trigger OnAfterValidate()

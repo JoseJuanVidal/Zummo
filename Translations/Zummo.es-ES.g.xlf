@@ -22083,6 +22083,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Bajo pedido / Contra stock - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 1285666006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Plastic Regulations</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Normativa Plastico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control NormativaPlastico - Property Caption</note>
+          <target>Normativa Plastico</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2185030199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Imprimir etiqueta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiqueta"</note>
@@ -23834,6 +23840,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Job Ledger Entries - Action EditarDescripcion - Property Caption</note>
           <target>Editar Descripción</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1118725128 - Action 3242406439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Posted Purchase Receipt Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PostedPurchaseReceiptLinesAction - Property Caption</note>
+          <target>Hist. líns. albs. compra</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1118725128 - Action 2865644526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Posted Sales Shipment Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. venta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PostedSalesShipmentLinesAction - Property Caption</note>
+          <target>Hist. líns. albs. venta</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2946467438 - Action 127686680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3342712847">
           <source>Mostrar Documento</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mostrar Documento"</note>
@@ -24411,11 +24429,35 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Ordenacion_btc - Property Caption</note>
           <target>Ordenación</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2055232018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Packing Plastic Qty. (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cdad. plástico embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Packing Plastic Qty. (kg) - Property Caption</note>
+          <target>Cdad. plástico embalaje (kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2491103169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Packing Plastic %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="% Plástico reciclado embalaje"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Packing Recycled plastic % - Property Caption</note>
+          <target>% Plástico reciclado embalaje</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 167378473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Packing Recycled Plastic Qty (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cdad. plástico reciclado embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Packing Recycled plastic (kg) - Property Caption</note>
+          <target>Cdad. plástico reciclado embalaje (kg)</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 3981802280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Pedido Maximo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Pedido Maximo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field PedidoMaximo - Property Caption</note>
           <target>Pedido Maximo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Plastic Qty. (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cdad. plástico (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Plastic Qty. (kg) - Property Caption</note>
+          <target>Cdad. plástico (kg)</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1339870956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>ProveedorBloqueado</source>
@@ -24452,6 +24494,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Recalcular Coste Estandar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field RecalcularCosteEstandar - Property Caption</note>
           <target>Recalcular Coste Estandar</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 898817722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Plastic %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="% Plástico reciclado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Recycled plastic % - Property Caption</note>
+          <target>% Plástico reciclado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Plastic Qty (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cdad. plástico reciclado (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Recycled plastic Qty. (kg) - Property Caption</note>
+          <target>Cdad. plástico reciclado (kg)</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Sales Classification</source>
