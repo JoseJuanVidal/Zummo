@@ -343,5 +343,45 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Material', comment = 'ESP="Material"';
         }
+
+        //+ 22/11/2022 NORMATIVA MEDIO AMBIENTAL
+        Field(50200; "Plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Plastic Qty. (kg)', comment = 'ESP="Cdad. plástico (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 5 : 5;
+        }
+        Field(50201; "Recycled plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Plastic Qty (kg)', comment = 'ESP="Cdad. plástico reciclado (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 5 : 5;
+        }
+        Field(50202; "Recycled plastic %"; decimal)
+        {
+            Caption = 'Plastic %', comment = 'ESP="% Plástico reciclado"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 2 : 2;
+        }
+        Field(50203; "Packing Plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Packing Plastic Qty. (kg)', comment = 'ESP="Cdad. plástico embalaje (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 5 : 5;
+        }
+        Field(50204; "Packing Recycled plastic (kg)"; decimal)
+        {
+            Caption = 'Packing Recycled Plastic Qty (kg)', comment = 'ESP="Cdad. plástico reciclado embalaje (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 5 : 5;
+        }
+        Field(50205; "Packing Recycled plastic %"; decimal)
+        {
+            Caption = 'Packing Plastic %', comment = 'ESP="% Plástico reciclado embalaje"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 2 : 2;
+        }
+        //-  NORMATIVA MEDIO AMBIENTAL
+
     }
 }
