@@ -2,10 +2,15 @@ pageextension 50187 "PurchaseInvoice" extends "Purchase Invoice"
 {
     layout
     {
+
         movebefore("Document Date"; "Posting Date")
         addafter("Vendor Invoice No.")
         {
             field("Posting No. Series"; "Posting No. Series")
+            {
+                ApplicationArea = all;
+            }
+            field("Posting No."; "Posting No.")
             {
                 ApplicationArea = all;
             }

@@ -928,7 +928,7 @@ report 50137 "Libro facturas recibidas"
                             Vendor.Name := Text1100003;
                         //ZM aqui para Iva Recuperación, cargamos el nombre del proveedor correctamente
                         if VendLedgEntry."Succeeded Company Name" <> '' then begin
-                            vendor.Name := VendLedgEntry."Succeeded Company Name";
+                            vendor.Name := copystr(VendLedgEntry."Succeeded Company Name", 1, MaxStrLen(Vendor.Name));
                         end;
 
                         VendLedgEntry.SetCurrentKey("Document No.", "Document Type", "Vendor No.");
