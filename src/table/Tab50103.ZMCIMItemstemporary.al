@@ -52,12 +52,12 @@ table 50103 "ZM CIM Items temporary"
             DataClassification = CustomerContent;
             Caption = 'Alto', comment = 'ESP="Alto"';
         }
-        field(50005; EnglishDescription; text[100])
+        field(50805; EnglishDescription; text[100])
         {
             DataClassification = CustomerContent;
             Caption = 'English Description', comment = 'ESP="Descripción Ingles"';
         }
-        field(50006; Packaging; Boolean)
+        field(50806; Packaging; Boolean)
         {
             DataClassification = CustomerContent;
             Caption = 'Packaging', comment = 'ESP="Embalaje"';
@@ -83,7 +83,12 @@ table 50103 "ZM CIM Items temporary"
     }
 
     var
-        myInt: Integer;
+        Item: Record Item;
+        ProdBOMHeader: Record "Production BOM Header";
+        ProdBOMLine: Record "Production BOM Line";
+        ZMCIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";
+        ZMCIMProdBOMLine: Record "ZM CIM Prod. BOM Line";
+        lblConfirmBOM: Label 'El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?', comment = 'ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"';
 
     trigger OnInsert()
     begin
@@ -97,6 +102,13 @@ table 50103 "ZM CIM Items temporary"
 
     trigger OnDelete()
     begin
+        // eliminamos todos los dependientes
+        ZMCIMProdBOMHeader.Reset();
+        ZMCIMProdBOMHeader.SetRange("No.", Rec."Production BOM No.");
+        ZMCIMProdBOMHeader.DeleteAll();
+        ZMCIMProdBOMLine.Reset();
+        ZMCIMProdBOMLine.SetRange("Production BOM No.", Rec."Production BOM No.");
+        ZMCIMProdBOMLine.DeleteAll();
 
     end;
 
@@ -105,4 +117,56 @@ table 50103 "ZM CIM Items temporary"
 
     end;
 
+    procedure CopyItem()
+    var
+        ItemLookups: page "Item Lookup";
+        InsertBOM: Boolean;
+    begin
+        ItemLookups.Caption := 'Seleccione el producto a copiar';
+        ItemLookups.LookupMode := true;
+        if ItemLookups.RunModal() = Action::LookupOK then begin
+            ItemLookups.GetRecord(Item);
+            if Item."Replenishment System" in [item."Replenishment System"::Assembly, item."Replenishment System"::"Prod. Order"] then begin
+                InsertBOM := Confirm(lblConfirmBOM, false, item."No.", Item.Description);
+            end;
+            InsertItem(InsertBOM);
+        end;
+    end;
+
+    local procedure InsertItem(InsertBom: Boolean)
+    var
+        OldItemNo: code[20];
+    begin
+        // actualizamos los datos 
+        OldItemNo := Rec."No.";
+        Rec.TransferFields(Item);
+        Rec."No." := OldItemNo;
+        Rec.Modify();
+
+        if InsertBom then begin
+            case Item."Replenishment System" of
+                Item."Replenishment System"::Assembly:
+                    begin
+
+                    end;
+                Item."Replenishment System"::"Prod. Order":
+                    begin
+                        ProdBOMHeader.get(Item."Production BOM No.");
+                        ZMCIMProdBOMHeader.Init();
+                        ZMCIMProdBOMHeader.TransferFields(ProdBOMHeader);
+                        ZMCIMProdBOMHeader."No." := Rec."No.";
+                        ZMCIMProdBOMHeader.Insert();
+                        ProdBOMLine.Reset();
+                        ProdBOMLine.SetRange("Production BOM No.", ProdBOMHeader."No.");
+                        if ProdBOMLine.FindFirst() then
+                            repeat
+                                ZMCIMProdBOMLine.Init();
+                                ZMCIMProdBOMLine.TransferFields(ProdBOMLine);
+                                ZMCIMProdBOMLine."Production BOM No." := ZMCIMProdBOMHeader."No.";
+                                ZMCIMProdBOMLine.Insert();
+                            Until ProdBOMLine.next() = 0;
+                    end;
+            end;
+        end;
+    end;
 }

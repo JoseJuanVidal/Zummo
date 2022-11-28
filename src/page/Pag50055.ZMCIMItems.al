@@ -76,13 +76,40 @@ page 50055 "ZM CIM Items"
             part(Header; "ZM CIM Production BOM List")
             {
                 ApplicationArea = all;
-                SubPageLink = "No." = field("Production BOM No.");
+                // SubPageLink = "No." = field("Production BOM No.");
             }
             part(BomLines; "ZM CIM Production BOM Lines")
             {
+                Caption = 'Components Lines', comment = 'ESP="Lista componentes"';
                 ApplicationArea = all;
-                SubPageLink = "No." = field("Production BOM No.");
+                //  SubPageLink = "No." = field("Production BOM No.");
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(CopyItem)
+            {
+                ApplicationArea = all;
+                Caption = 'Copiar producto', comment = 'ESP="Copiar producto"';
+                Image = CopyItem;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    actionCopyItem;
+                end;
+            }
+        }
+    }
+
+    local procedure actionCopyItem()
+    begin
+        Rec.CopyItem;
+    end;
 }
