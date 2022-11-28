@@ -10746,10 +10746,10 @@
           <target>Nº Serie</target>
         </trans-unit>
         <trans-unit id="Page 3853294818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Items Pending</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Productos pendientes"</note>
+          <source>CIM Items Pending</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CIM Productos pendientes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Property Caption</note>
-          <target>Productos pendientes</target>
+          <target>CIM Productos pendientes</target>
         </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CIM Production BOM Lines</source>

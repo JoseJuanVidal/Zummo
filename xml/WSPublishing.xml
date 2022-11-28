@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExportedData>
+    <TenantWebServiceCollection>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>cimworksitem</ServiceName>
+            <ObjectID>50056</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>cimworksproductionheader</ServiceName>
+            <ObjectID>50120</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>cimworksproductionline</ServiceName>
+            <ObjectID>50106</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>itemwhereused</ServiceName>
+            <ObjectID>50134</ObjectID>
+            <Published>true</Published>
+        </TenantWebService> 
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>WSProyectos</ServiceName>
+            <ObjectID>50057</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+              <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>MovContaPresup</ServiceName>
+            <ObjectID>50013</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>               
+    </TenantWebServiceCollection>
+</ExportedData>
+
+

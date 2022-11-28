@@ -1,7 +1,7 @@
 page 50055 "ZM CIM Items"
 {
     ApplicationArea = All;
-    Caption = 'Items Pending', comment = 'ESP="Productos pendientes"';
+    Caption = 'CIM Items Pending', comment = 'ESP="CIM Productos pendientes"';
     PageType = List;
     SourceTable = "ZM CIM Items temporary";
     UsageCategory = Lists;
@@ -72,6 +72,16 @@ page 50055 "ZM CIM Items"
                 {
                     ApplicationArea = all;
                 }
+            }
+            part(Header; "ZM CIM Production BOM List")
+            {
+                ApplicationArea = all;
+                SubPageLink = "No." = field("Production BOM No.");
+            }
+            part(BomLines; "ZM CIM Production BOM Lines")
+            {
+                ApplicationArea = all;
+                SubPageLink = "No." = field("Production BOM No.");
             }
         }
     }
