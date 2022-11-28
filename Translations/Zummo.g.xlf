@@ -5718,6 +5718,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=Años de Garantía</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field WarrantyDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1666975959 - NamedType 3804247692" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - NamedType lblConfirmBOM</note>
+        </trans-unit>
         <trans-unit id="Table 1666975959 - Field 535175658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Alto</source>
           <note from="Developer" annotates="general" priority="2">ESP="Alto"</note>
@@ -9999,9 +10004,19 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control Posting Group - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3853294818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Items Pending</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Productos pendientes"</note>
+          <source>CIM Items Pending</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CIM Productos pendientes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3853294818 - Control 3448041191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Components Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista componentes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Control BomLines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3853294818 - Action 2394472684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copiar producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Copiar producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action CopyItem - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CIM Production BOM Lines</source>
@@ -22207,6 +22222,16 @@
           <source>Posted Sales Shipment Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PostedSalesShipmentLinesAction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3747018531 - Action 3646494304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
+          <source>Bloqueos Basedatos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueos Basedatos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action Bloqueos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3747018531 - Action 1821335367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
+          <source>Sesiones</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sesiones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action Sessions - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2946467438 - Action 127686680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3342712847">
           <source>Mostrar Documento</source>

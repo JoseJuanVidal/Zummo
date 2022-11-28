@@ -410,7 +410,7 @@ codeunit 50108 "FuncionesFabricacion"
         end;
     end;
 
-    // =============     ReqWorksheet OnBeforeActionEvent_CalculatePlan          ====================
+    // =============     ReqWorksheet OnBeforeActionEvent_CalculatePlan MRP  HOJa demanda       ====================
     // ==  
     // ==  comment 
     // ==  
@@ -434,6 +434,43 @@ codeunit 50108 "FuncionesFabricacion"
 
     [EventSubscriber(ObjectType::Page, Page::"Req. Worksheet", 'OnAfterActionEvent', 'CalculatePlan', true, true)]
     local procedure ReqWorksheet_OnAfterActionEvent_CalculatePlan(var Rec: Record "Requisition Line")
+    var
+        InventorySetup: Record "Inventory Setup";
+    begin
+        if InventorySetup.Get() then begin
+            if InventorySetup."Export Excel Requisition" then begin
+                InventorySetup."Export Excel Requisition" := true;
+                InventorySetup.Modify();
+                ReqWorksheet_CalculatePlanFinish(Rec);
+            end;
+
+        end;
+    end;
+
+    // =============     ReqWorksheet OnBeforeActionEvent_CalculatePlan MPS Hoja planificacion         ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Page, Page::"Planning Worksheet", 'OnBeforeActionEvent', 'CalculateRegenerativePlan', true, true)]
+    local procedure ReqWorksheet_OnBeforeActionEvent_CalculateRegenerativePlan(var Rec: Record "Requisition Line")
+    var
+        InventorySetup: Record "Inventory Setup";
+    begin
+        if InventorySetup.Get() then begin
+            InventorySetup."Export Excel Requisition" := false;
+            if Confirm(lblConfirmExcel) then begin
+                InventorySetup."Export Excel Requisition" := true;
+                InitReqExcelBuffer(rec."Journal Batch Name");
+            end;
+            InventorySetup.Modify();
+        end;
+
+        commit;
+    end;
+
+    [EventSubscriber(ObjectType::Page, Page::"Planning Worksheet", 'OnAfterActionEvent', 'CalculateRegenerativePlan', true, true)]
+    local procedure ReqWorksheet_OnAfterActionEvent_CalculateRegenerativePlan(var Rec: Record "Requisition Line")
     var
         InventorySetup: Record "Inventory Setup";
     begin
