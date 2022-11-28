@@ -634,7 +634,7 @@ report 50137 "Libro facturas recibidas"
                         VendLedgEntry.SetFilter("Document Type", Text1100004);
                         if VendLedgEntry.FindFirst then begin
                             if VendLedgEntry."Succeeded Company Name" <> '' then
-                                Vendor.Name := VendLedgEntry."Succeeded Company Name";
+                                vendor.Name := copystr(VendLedgEntry."Succeeded Company Name", 1, MaxStrLen(Vendor.Name));
                             Vendor."VAT Registration No." := VATEntry."VAT Registration No.";
                         end
                     end;
