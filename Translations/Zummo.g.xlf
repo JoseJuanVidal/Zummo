@@ -4534,7 +4534,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field Probabilidad - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3755578035 - Field 41334883 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Baja,Media,Alta</source>
+          <source> ,Baja,Media,Alta,MuyBaja</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field Probabilidad - Property OptionCaption</note>
         </trans-unit>
@@ -20603,6 +20603,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension IntrastatJournal - Control factura - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Method 1508348912 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2876958691">
+          <source>¿Desea calcular la cantidad del plastico de la L.M. del producto %1?</source>
+          <note from="Developer" annotates="general" priority="2">¿Desea calcular la cantidad del plastico de la L.M. del producto %1?</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Method CalculatePlastic - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Action 2616719174 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Open a window that allows you to create a new item by copying the data of the current item</source>
           <note from="Developer" annotates="general" priority="2">ESP="Abre una ventana que permite crear un nuevo producto copiando los datos del producto actual"</note>
@@ -20617,6 +20622,11 @@
           <source>Item: %1 created successfully</source>
           <note from="Developer" annotates="general" priority="2">ESP="Producto: %1 creado correctamente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action CopiarProducto - Method OnAction - NamedType lbProductoCreadoMsg</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Action 1508348912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate Plastic BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular peso plastico L.M."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action CalculatePlastic - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1394728878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Classification</source>
@@ -20728,6 +20738,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido ensamblado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control OrderNo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Method 1508348912 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
+          <source>¿Desea calcular la cantidad del plastico de la L.M. de %1 producto/s?</source>
+          <note from="Developer" annotates="general" priority="2">¿Desea calcular la cantidad del plastico de la L.M. de %1 producto/s?</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Method CalculatePlastic - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Action 4240148002 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Importar Comentarios</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importar Comentarios"</note>
@@ -20737,6 +20752,11 @@
           <source>Importar Comentarios</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importar Comentarios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action importarComentarios - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 1508348912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Calculate Plastic BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular peso plastico L.M."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action CalculatePlastic - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Qty. en Stockkeeping Unit</source>
@@ -22637,6 +22657,11 @@
           <source> ,ContraStock,BajoPedido</source>
           <note from="Developer" annotates="general" priority="2">ESP=" ,ContraStock,BajoPedido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ContraStock/BajoPedido - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 779691355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>CRM Updated</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar CRM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CRM Updated - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 3810656663 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Desc. Purch. Category</source>
