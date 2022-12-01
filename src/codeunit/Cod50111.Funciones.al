@@ -1790,31 +1790,36 @@ codeunit 50111 "Funciones"
     var
         BomComponent: Record "BOM Component";
     begin
-        PlasticItemInitValues(Item);
         case Item."Replenishment System" of
             Item."Replenishment System"::Assembly:
                 begin
                     BomComponent.Reset();
                     BomComponent.SetRange("Parent Item No.", Item."No.");
                     BomComponent.SetRange(Type, BomComponent.Type::Item);
-                    if BomComponent.FindFirst() then
+                    if BomComponent.FindFirst() then begin
+                        PlasticItemInitValues(Item);
                         PlasticCalculateAssemblyBOMItem(Item, BomComponent);
+                        Item.Modify();
+                    end;
                 end;
             Item."Replenishment System"::"Prod. Order":
                 begin
-                    if Item."Production BOM No." <> '' then
+                    if Item."Production BOM No." <> '' then begin
+                        PlasticItemInitValues(Item);
                         PlasticCalculateProductionBOMItem(Item);
-
-
+                        Item.Modify();
+                    end;
                 end;
             item."Replenishment System"::Purchase:
                 begin
                     // estos productos los ponemos para las subcontrataciones, son productos de compras alguno, pero que se llevan a ensamblar al proveedor 
-                    if Item."Production BOM No." <> '' then
+                    if Item."Production BOM No." <> '' then begin
+                        PlasticItemInitValues(Item);
                         PlasticCalculateProductionBOMItem(Item);
+                        Item.Modify();
+                    end;
                 end;
         end;
-        Item.Modify();
     end;
 
     local procedure PlasticCalculateProductionBOMItem(var Item: Record Item);
@@ -1832,6 +1837,8 @@ codeunit 50111 "Funciones"
         if ProductionBomLine.FindFirst() then
             repeat
                 BomItem.Get(ProductionBomLine."No.");
+                // lanzamos el proceso ciclico de calculo de BOM Component
+                PlasticCalculateProductionBOMItem(BomItem);
                 QtyPlastic += BomItem."Plastic Qty. (kg)";
                 if BomItem."Recycled plastic Qty. (kg)" <> 0 then
                     QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)"
@@ -1862,6 +1869,9 @@ codeunit 50111 "Funciones"
         if BomComponent.FindFirst() then
             repeat
                 BomItem.Get(BomComponent."No.");
+                // lanzamos el proceso ciclico de calculo de BOM Component
+                PlasticCalculateProductionBOMItem(BomItem);
+
                 QtyPlastic += BomItem."Plastic Qty. (kg)";
                 if BomItem."Recycled plastic Qty. (kg)" <> 0 then
                     QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)"
