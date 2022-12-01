@@ -3160,12 +3160,44 @@ codeunit 50102 "Integracion_crm_btc"
     procedure UpdateItemsForCRM(NotExistOnly: Boolean)
     var
         CRMProductos_btc: Record "CRM Productos_crm_btc"; // "CRM Productos_btc";
-        // CRMProduct: Record "CRM Product";
-        CRMIntegrationRecord: Record "CRM Integration Record";
-        TextosAuxiliares: Record TextosAuxiliares;
         Item: Record Item;
+        Updated: Boolean;
     begin
+        if Item.FindFirst() then
+            repeat
+                case NotExistOnly of
+                    true:  // solo añadir productos
+                        begin
+                            Item."CRM Updated" := CRMProductos_btc.Get(Item."No.");
+                            Item.Modify();
+                        end;
+                    false:  // aqui hacemos que se añadan y actualizen
+                        begin
+                            Updated := false;
+                            if CRMProductos_btc.Get(Item."No.") then begin
+                                if Item.Description <> CRMProductos_btc.Name then
+                                    Updated := true;
+                                if Item."Unit Price" <> CRMProductos_btc.Price then
+                                    Updated := true;
+                                if Item."Unit Cost" <> CRMProductos_btc.StandardCost then
+                                    Updated := true;
+                                if Item."Unit Cost" <> CRMProductos_btc.CurrentCost then
+                                    Updated := true;
+                                if Item."Unit Volume" <> CRMProductos_btc.StockVolume then
+                                    Updated := true;
+                                if Item."Gross Weight" <> CRMProductos_btc.StockWeight then
+                                    Updated := true;
+                                if Item."Vendor Item No." <> CRMProductos_btc.VendorName then
+                                    Updated := true;
+                                if Item."Base Unit of Measure" <> CRMProductos_btc.DefaultUoMScheduleId then
+                                    Updated := true;
+                                Item."CRM Updated" := Updated;
+                                Item.Modify();
+                            end;
+                        end;
+                end;
 
+            Until Item.next() = 0;
     end;
 
     var

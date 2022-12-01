@@ -343,7 +343,11 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Material', comment = 'ESP="Material"';
         }
-
+        field(50155; "CRM Updated"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CRM Updated', comment = 'ESP="Actualizar CRM"';
+        }
         //+ 22/11/2022 NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {
