@@ -3151,6 +3151,23 @@ codeunit 50102 "Integracion_crm_btc"
         end;
     end;
 
+    // =============     Marcar Productos para la actualización en CRM Sales          ====================
+    // ==  
+    // == 
+    // ==  
+    // ======================================================================================================
+
+    procedure UpdateItemsForCRM(NotExistOnly: Boolean)
+    var
+        CRMProductos_btc: Record "CRM Productos_crm_btc"; // "CRM Productos_btc";
+        // CRMProduct: Record "CRM Product";
+        CRMIntegrationRecord: Record "CRM Integration Record";
+        TextosAuxiliares: Record TextosAuxiliares;
+        Item: Record Item;
+    begin
+
+    end;
+
     var
         CRMProductName: Codeunit "CRM Product Name";
         CRMSynchHelper: Codeunit "CRM Synch. Helper";

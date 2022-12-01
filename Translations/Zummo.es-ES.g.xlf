@@ -25488,7 +25488,7 @@
           <target>Probabilidad</target>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 931623350 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
-          <source> ,Baja,Media,Alta</source>
+          <source> ,Baja,Media,Alta,Muy Baja</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ofertaprobabilidad - Property OptionCaption</note>
         </trans-unit>

@@ -1383,6 +1383,8 @@ codeunit 50111 "Funciones"
                 SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Baja;
             'Media':
                 SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Media;
+            'Muy Baja':
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::"Muy Baja";
         end;
         SalesHeader.Validate("Currency Code", SalesHeaderAux."Currency Code");
         SalesHeader.Validate("Ship-to Name", SalesHeaderAux."Ship-to Name");
