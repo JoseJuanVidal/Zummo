@@ -1838,7 +1838,7 @@ codeunit 50111 "Funciones"
             repeat
                 BomItem.Get(ProductionBomLine."No.");
                 // lanzamos el proceso ciclico de calculo de BOM Component
-                PlasticCalculateProductionBOMItem(BomItem);
+                PlasticCalculateItem(BomItem);
                 QtyPlastic += BomItem."Plastic Qty. (kg)";
                 if BomItem."Recycled plastic Qty. (kg)" <> 0 then
                     QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)"
@@ -1870,7 +1870,7 @@ codeunit 50111 "Funciones"
             repeat
                 BomItem.Get(BomComponent."No.");
                 // lanzamos el proceso ciclico de calculo de BOM Component
-                PlasticCalculateProductionBOMItem(BomItem);
+                PlasticCalculateItem(BomItem);
 
                 QtyPlastic += BomItem."Plastic Qty. (kg)";
                 if BomItem."Recycled plastic Qty. (kg)" <> 0 then

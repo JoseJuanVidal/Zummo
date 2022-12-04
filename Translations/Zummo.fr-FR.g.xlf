@@ -6119,6 +6119,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Trans. Ord. Shipment (Qty.) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3345661731 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>WS Purchase Line</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WS Purchase Line - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 489504416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents Attached</source>
           <note from="Developer" annotates="general" priority="2"/>

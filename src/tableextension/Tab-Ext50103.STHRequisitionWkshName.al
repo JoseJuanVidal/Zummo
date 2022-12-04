@@ -17,5 +17,10 @@ tableextension 50103 "STHRequisitionWkshName" extends "Requisition Wksh. Name"
             DataClassification = CustomerContent;
             Caption = 'No Contemplar Ped. Compra', comment = 'ESP="No Contemplar Ped. Compra"';
         }
+        field(50104; ZMQuoteAssemblyLine; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Contemplar lineas emsamblado ofertas', comment = 'ESP="Contemplar lineas emsamblado ofertas"';
+        }
     }
 }

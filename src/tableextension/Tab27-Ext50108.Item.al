@@ -268,6 +268,11 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'WorksheetName', comment = 'ESP="WorksheetName"';
         }
+        field(50105; ZMQuoteAssemblyLine; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'ZMQuoteAssemblyLine', comment = 'ESP="ZMQuoteAssemblyLine"';
+        }
         field(50120; STHCostEstandarOLD; Decimal)
         {
             DataClassification = CustomerContent;
