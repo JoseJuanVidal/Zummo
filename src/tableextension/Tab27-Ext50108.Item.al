@@ -390,6 +390,21 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             DecimalPlaces = 2 : 2;
         }
+        field(50206; Steel; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Steel', comment = 'ESP="Acero"';
+        }
+        field(50207; Carton; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Carton', comment = 'ESP="Cartón"';
+        }
+        field(50208; Wood; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Wood', comment = 'ESP="Madera"';
+        }
         //-  NORMATIVA MEDIO AMBIENTAL
 
     }

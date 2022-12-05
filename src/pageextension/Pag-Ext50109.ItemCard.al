@@ -122,7 +122,18 @@ pageextension 50109 "ItemCard" extends "Item Card"
             group(NormativaPlastico)
             {
                 Caption = 'Plastic Regulations', comment = 'ESP="Normativa Plastico"';
-
+                field(Steel; Steel)
+                {
+                    ApplicationArea = all;
+                }
+                field(Carton; Carton)
+                {
+                    ApplicationArea = all;
+                }
+                field(Wood; Wood)
+                {
+                    ApplicationArea = all;
+                }
                 field("Plastic Qty. (kg)"; "Plastic Qty. (kg)")
                 {
                     ApplicationArea = all;

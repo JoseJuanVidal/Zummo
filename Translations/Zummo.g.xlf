@@ -22648,6 +22648,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cant. componentes Oferta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Cant_ componentes Oferta - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1321055271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Carton</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cartón"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Carton - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 4057438583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Work Center</source>
           <note from="Developer" annotates="general" priority="2">ESP="Centro Trabajo"</note>
@@ -22833,6 +22838,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field selLineaEconomica_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3459458485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Steel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Steel - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2561412467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Costes Estandar Previo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Costes Estandar Previo"</note>
@@ -22882,6 +22892,11 @@
           <source>User not has permission</source>
           <note from="Developer" annotates="general" priority="2">ESP="Usuario no permitido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ValidadoContabiliad_btc - Method OnValidate - NamedType lbNoConfUsuariosErr</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 469769693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Wood</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Madera"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Wood - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2212885391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>ZMQuoteAssemblyLine</source>
