@@ -24413,6 +24413,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Precio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardSalesLine - Field Precio_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 1321055271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Carton</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cartón"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Carton - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4172986522 - Field 1842481456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
           <source>Description Language</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción Idioma"</note>
@@ -24422,6 +24427,46 @@
           <source>Language Filter</source>
           <note from="Developer" annotates="general" priority="2">ESP="Filtro Idioma"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Language Filter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 2055232018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Packing Plastic Qty. (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cdad. plástico embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Packing Plastic Qty. (kg) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 2491103169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Packing Plastic %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="% Plástico reciclado embalaje"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Packing Recycled plastic % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 167378473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Packing Recycled Plastic Qty (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cdad. plástico reciclado embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Packing Recycled plastic (kg) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Plastic Qty. (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cdad. plástico (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Plastic Qty. (kg) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 898817722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Plastic %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="% Plástico reciclado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Recycled plastic % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Plastic Qty (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cdad. plástico reciclado (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Recycled plastic Qty. (kg) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 3459458485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Steel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Steel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 469769693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Wood</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Madera"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Wood - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2580209347 - Field 3697457928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4094296290">
           <source>Oferta CRM con Dto</source>
