@@ -933,6 +933,7 @@ codeunit 50106 "SalesEvents"
         recPostAss: Record "Posted Assemble-to-Order Link";
         intNumLinea: integer;
     begin
+        // btc control de abonos y deshacer entradas de conjuntos
         if (SalesHeader."Document Type" <> SalesHeader."Document Type"::"Return Order") and (SalesHeader."Document Type" <> SalesHeader."Document Type"::"Credit Memo") then
             exit;
 
@@ -1032,6 +1033,51 @@ codeunit 50106 "SalesEvents"
         if (SalesHeader.DescuentoFactura <> 0) and (SalesLine."Allow Invoice Disc.") then
             SalesShptLine.BaseImponibleLinea -= (SalesShptLine.BaseImponibleLinea * SalesHeader.DescuentoFactura / 100);
         SalesShptLine.TotalImponibleLinea := SalesShptLine.BaseImponibleLinea + (SalesShptLine.BaseImponibleLinea * SalesLine."VAT %" / 100);
+    end;
+
+    // =============     Añadimos en el historico de lineas de facturas los datos de clasificación para BI'S          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesInvLineInsert', '', true, true)]
+    local procedure SalesPost_OnBeforeSalesInvLineInsert(SalesInvHeader: Record "Sales Invoice Header"; var SalesInvLine: Record "Sales Invoice Line"; SalesLine: Record "Sales Line"; CommitIsSuppressed: Boolean)
+    begin
+        if not SalesInvLine.IsTemporary then
+            UpdateSalesInvoiceLine_ClasifItem(SalesInvLine);
+    end;
+
+    Local procedure UpdateSalesInvoiceLine_ClasifItem(var Rec: Record "Sales Invoice Line")
+    var
+        Item: Record Item;
+    begin
+        if item.Get(Rec."No.") then begin
+            Item.CalcFields(desClasVtas_btc, desFamilia_btc, desGama_btc);
+            Rec.selClasVtas_btc := Item.selClasVtas_btc;
+            Rec.selFamilia_btc := Item.selFamilia_btc;
+            Rec.selGama_btc := Item.selGama_btc;
+            Rec.desClasVtas_btc := Item.desClasVtas_btc;
+            Rec.desFamilia_btc := Item.desFamilia_btc;
+            Rec.desGama_btc := Item.desGama_btc;
+        end;
+    end;
+
+    procedure UpdateSalesInvoiceLine_ClasifItems()
+    var
+        SalesInvoiceLine: Record "Sales Invoice Line";
+        Window: Dialog;
+        lblWindow: Label 'Invoice no.: #1############################', comment = 'ESP="Factura Nº: #1############################"';
+    begin
+        Window.Open(lblWindow);
+        if SalesInvoiceLine.FindFirst() then
+            repeat
+                Window.Update(1, SalesInvoiceLine."Document No.");
+                UpdateSalesInvoiceLine_ClasifItem(SalesInvoiceLine);
+                SalesInvoiceLine.Modify();
+            Until SalesInvoiceLine.next() = 0;
+        Window.Close();
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchRcptLineInsert', '', true, true)]

@@ -6378,6 +6378,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="El grupo registro tiene configurado un porcentaje de amortización\¿Desea autocompletar el porcentaje en el activo fijo?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method T_5612_OnAfterValidatePostingGroup - NamedType confQst</note>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 431435007 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice no.: #1############################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura Nº: #1############################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method UpdateSalesInvoiceLine_ClasifItems - NamedType lblWindow</note>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 592216218 - NamedType 3466624638" size-unit="char" translate="yes" xml:space="preserve">
           <source>You have changed the registration date\Do you want to change the registration date also on the lines?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ha cambiado la fecha de alta\¿Desea cambiar la fecha de alta también en las líneas?"</note>
@@ -22238,6 +22243,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Editar Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Job Ledger Entries - Action EditarDescripcion - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3439501502 - Action 1065590994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1298119151">
+          <source>Actualizar Clasif. producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Clasif. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Posted Sales Invoice Lines - Action updateClasifItem - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3439501502 - Action 1065590994 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3439501502">
+          <source>¿Desea actualizar los datos de todas las lineas de venta?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los datos de todas las lineas de venta?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Posted Sales Invoice Lines - Action updateClasifItem - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1118725128 - Action 3242406439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Posted Purchase Receipt Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. compra"</note>
@@ -25053,6 +25068,21 @@
           <note from="Developer" annotates="general" priority="2">ESP="% Descuento línea2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field DecLine Discount2 %_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 2163727191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>Desc. Sales Classification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Clasificación Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field desClasVtas_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 304493673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>Desc. Familia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field desFamilia_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 3555758206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>Desc. Gamma</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Gama"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field desGama_btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 1817093349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Order Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Alta"</note>
@@ -25087,6 +25117,21 @@
           <source>Weight</source>
           <note from="Developer" annotates="general" priority="2">ESP="Peso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field Peso_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>Sales Classification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field selClasVtas_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 2448458993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>Family</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field selFamilia_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 1300314486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>Gamma</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Gama"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field selGama_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 12731965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Stock</source>
