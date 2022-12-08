@@ -37,7 +37,7 @@ tableextension 50118 "SalesCrMemoLine" extends "Sales Cr.Memo Line"  //115
             Caption = 'Customer Name', comment = 'ESP="Nombre Cliente"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup (Customer.Name where("No." = field("Sell-to Customer No.")));
+            CalcFormula = lookup(Customer.Name where("No." = field("Sell-to Customer No.")));
         }
 
         field(50005; StockAlmacen_btc; Decimal)
@@ -46,7 +46,7 @@ tableextension 50118 "SalesCrMemoLine" extends "Sales Cr.Memo Line"  //115
             Caption = 'Stock', comment = 'ESP="Stock"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = Sum ("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("No."), "Location Code" = FIELD("Location Code")));
+            CalcFormula = Sum("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("No."), "Location Code" = FIELD("Location Code")));
         }
 
         //Motivos retraso
@@ -116,6 +116,40 @@ tableextension 50118 "SalesCrMemoLine" extends "Sales Cr.Memo Line"  //115
             Caption = 'Service Quote Line', comment = 'ESP="Lin.Oferta Servicio"';
             ObsoleteState = Removed;
             ObsoleteReason = 'Borrar';
+        }
+        field(50114; selClasVtas_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sales Classification', comment = 'ESP="Clasificación Ventas"';
+            //TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("ClasificacionVentas"), TipoRegistro = const(Tabla));
+        }
+        field(50115; selFamilia_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Family', comment = 'ESP="Familia"';
+        }
+        field(50116; selGama_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Gamma', comment = 'ESP="Gama"';
+        }
+        field(50120; desClasVtas_btc; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Desc. Sales Classification', comment = 'ESP="Desc. Clasificación Ventas"';
+            Editable = false;
+        }
+        field(50121; desFamilia_btc; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Desc. Familia', comment = 'ESP="Desc. Familia"';
+            Editable = false;
+        }
+        field(50122; desGama_btc; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Desc. Gamma', comment = 'ESP="Desc. Gama"';
+            Editable = false;
         }
     }
 }

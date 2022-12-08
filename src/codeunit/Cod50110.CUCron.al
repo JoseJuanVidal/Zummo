@@ -8,6 +8,7 @@ codeunit 50110 "CU_Cron"
         MovsContaPresup: Record "STH Movs Conta-Presup";
         ResultEnvioMailTxt: Text;
         TotalExcelBuffer: Record "Excel Buffer" temporary;
+        IntegracionCRM: codeunit Integracion_crm_btc;
         Ejecucioncola: Boolean;
 
     trigger OnRun()
@@ -51,7 +52,10 @@ codeunit 50110 "CU_Cron"
                             SalesSetup.Modify();
                         end;
                     end;
-
+                'CRMUpdatedItems':
+                    begin   // actualizamos todos los productos que son diferentes en CRM SALES
+                        IntegracionCRM.UpdateItemsForCRM(true);
+                    end;
                 else
                     error(lbNoParametroErr);
 
@@ -279,11 +283,11 @@ codeunit 50110 "CU_Cron"
                                 reportFactura.SaveAsPdf(RutaServidor);
                             end;
                         else begin
-                                clear(reportFactura);
-                                reportFactura.EsNacional();
-                                reportFactura.SetTableView(SalesInvoiceHeader);
-                                reportFactura.SaveAsPdf(RutaServidor);
-                            end;
+                            clear(reportFactura);
+                            reportFactura.EsNacional();
+                            reportFactura.SetTableView(SalesInvoiceHeader);
+                            reportFactura.SaveAsPdf(RutaServidor);
+                        end;
                     end;
                 end;
         end;

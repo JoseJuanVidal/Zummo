@@ -1,7 +1,7 @@
 codeunit 50106 "SalesEvents"
 {
     Permissions = tabledata "Sales Shipment Header" = rm, tabledata "G/L Entry" = m, tabledata "Sales Invoice Header" = m, tabledata "Sales Cr.Memo Header" = m,
-        tabledata "Sales Invoice Line" = m, tabledata "Item Ledger Entry" = m, tabledata "Sales Shipment Line" = rmid, tabledata "Purch. Rcpt. Line" = rmid;
+        tabledata "Sales Invoice Line" = m, tabledata "Sales Cr.Memo Line" = m, tabledata "Item Ledger Entry" = m, tabledata "Sales Shipment Line" = rmid, tabledata "Purch. Rcpt. Line" = rmid;
 
     [EventSubscriber(ObjectType::Page, Page::"Posted Purchase Receipt", 'OnAfterValidateEvent', 'Vendor Shipment No.', true, true)]
     local procedure P_136_OnAfterValidateEvent(var Rec: Record "Purch. Rcpt. Header"; var xRec: Record "Purch. Rcpt. Header")
@@ -933,6 +933,7 @@ codeunit 50106 "SalesEvents"
         recPostAss: Record "Posted Assemble-to-Order Link";
         intNumLinea: integer;
     begin
+        // btc control de abonos y deshacer entradas de conjuntos
         if (SalesHeader."Document Type" <> SalesHeader."Document Type"::"Return Order") and (SalesHeader."Document Type" <> SalesHeader."Document Type"::"Credit Memo") then
             exit;
 
@@ -1032,6 +1033,89 @@ codeunit 50106 "SalesEvents"
         if (SalesHeader.DescuentoFactura <> 0) and (SalesLine."Allow Invoice Disc.") then
             SalesShptLine.BaseImponibleLinea -= (SalesShptLine.BaseImponibleLinea * SalesHeader.DescuentoFactura / 100);
         SalesShptLine.TotalImponibleLinea := SalesShptLine.BaseImponibleLinea + (SalesShptLine.BaseImponibleLinea * SalesLine."VAT %" / 100);
+    end;
+
+    // =============     Añadimos en el historico de lineas de facturas los datos de clasificación para BI'S          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesInvLineInsert', '', true, true)]
+    local procedure SalesPost_OnBeforeSalesInvLineInsert(var SalesInvLine: Record "Sales Invoice Line"; SalesInvHeader: Record "Sales Invoice Header"; SalesLine: Record "Sales Line"; CommitIsSuppressed: Boolean)
+    begin
+        if not SalesInvLine.IsTemporary then
+            UpdateSalesInvoiceLine_ClasifItem(SalesInvLine);
+    end;
+
+    Local procedure UpdateSalesInvoiceLine_ClasifItem(var Rec: Record "Sales Invoice Line")
+    var
+        Item: Record Item;
+    begin
+        if item.Get(Rec."No.") then begin
+            Item.CalcFields(desClasVtas_btc, desFamilia_btc, desGama_btc);
+            Rec.selClasVtas_btc := Item.selClasVtas_btc;
+            Rec.selFamilia_btc := Item.selFamilia_btc;
+            Rec.selGama_btc := Item.selGama_btc;
+            Rec.desClasVtas_btc := Item.desClasVtas_btc;
+            Rec.desFamilia_btc := Item.desFamilia_btc;
+            Rec.desGama_btc := Item.desGama_btc;
+        end;
+    end;
+
+    procedure UpdateSalesInvoiceLine_ClasifItems()
+    var
+        SalesInvoiceLine: Record "Sales Invoice Line";
+        Window: Dialog;
+        lblWindow: Label 'Invoice no.: #1############################', comment = 'ESP="Factura Nº: #1############################"';
+    begin
+        Window.Open(lblWindow);
+        if SalesInvoiceLine.FindFirst() then
+            repeat
+                Window.Update(1, SalesInvoiceLine."Document No.");
+                UpdateSalesInvoiceLine_ClasifItem(SalesInvoiceLine);
+                SalesInvoiceLine.Modify();
+            Until SalesInvoiceLine.next() = 0;
+        Window.Close();
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforeSalesCrMemoLineInsert', '', true, true)]
+    local procedure SalesPost_OnBeforeSalesCrMemoLineInsert(var SalesCrMemoLine: Record "Sales Cr.Memo Line"; SalesCrMemoHeader: Record "Sales Cr.Memo Header"; SalesLine: Record "Sales Line"; CommitIsSuppressed: Boolean)
+    begin
+        if not SalesCrMemoLine.IsTemporary then
+            UpdateSalesCRMemoLine_ClasifItem(SalesCrMemoLine);
+    end;
+
+    Local procedure UpdateSalesCRMemoLine_ClasifItem(var Rec: Record "Sales Cr.Memo Line")
+    var
+        Item: Record Item;
+    begin
+        if item.Get(Rec."No.") then begin
+            Item.CalcFields(desClasVtas_btc, desFamilia_btc, desGama_btc);
+            Rec.selClasVtas_btc := Item.selClasVtas_btc;
+            Rec.selFamilia_btc := Item.selFamilia_btc;
+            Rec.selGama_btc := Item.selGama_btc;
+            Rec.desClasVtas_btc := Item.desClasVtas_btc;
+            Rec.desFamilia_btc := Item.desFamilia_btc;
+            Rec.desGama_btc := Item.desGama_btc;
+        end;
+    end;
+
+    procedure UpdateSalesCRMemoLine_ClasifItems()
+    var
+        SalesCrMemoLine: Record "Sales Cr.Memo Line";
+        Window: Dialog;
+        lblWindow: Label 'Invoice no.: #1############################', comment = 'ESP="Factura Nº: #1############################"';
+    begin
+        Window.Open(lblWindow);
+        if SalesCrMemoLine.FindFirst() then
+            repeat
+                Window.Update(1, SalesCrMemoLine."Document No.");
+                UpdateSalesCRMemoLine_ClasifItem(SalesCrMemoLine);
+                SalesCrMemoLine.Modify();
+            Until SalesCrMemoLine.next() = 0;
+        Window.Close();
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchRcptLineInsert', '', true, true)]

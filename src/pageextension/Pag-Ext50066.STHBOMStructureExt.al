@@ -22,6 +22,52 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
             {
                 ApplicationArea = all;
             }
+            field("Plastic Qty. (kg)"; "Plastic Qty. (kg)")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Recycled plastic Qty. (kg)"; "Recycled plastic Qty. (kg)")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Recycled plastic %"; "Recycled plastic %")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Packing Plastic Qty. (kg)"; "Packing Plastic Qty. (kg)")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Packing Recycled plastic (kg)"; "Packing Recycled plastic (kg)")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Packing Recycled plastic %"; "Packing Recycled plastic %")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+
+            field(Steel; Steel)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(Carton; Carton)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(Wood; Wood)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 

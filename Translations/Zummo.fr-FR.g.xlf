@@ -4199,7 +4199,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field Probabilidad - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3755578035 - Field 41334883 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Baja,Media,Alta</source>
+          <source> ,Baja,Media,Alta,MuyBaja</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH CRM Quote - Field Probabilidad - Property OptionCaption</note>
         </trans-unit>
@@ -6119,6 +6119,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Trans. Ord. Shipment (Qty.) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3345661731 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>WS Purchase Line</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WS Purchase Line - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 489504416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents Attached</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -7525,7 +7530,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ImpresoAlmacen_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 931623350 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
-          <source> ,Baja,Media,Alta</source>
+          <source> ,Baja,Media,Alta,Muy Baja</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field ofertaprobabilidad - Property OptionCaption</note>
         </trans-unit>

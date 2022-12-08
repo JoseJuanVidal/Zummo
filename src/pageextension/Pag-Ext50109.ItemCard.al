@@ -122,7 +122,18 @@ pageextension 50109 "ItemCard" extends "Item Card"
             group(NormativaPlastico)
             {
                 Caption = 'Plastic Regulations', comment = 'ESP="Normativa Plastico"';
-
+                field(Steel; Steel)
+                {
+                    ApplicationArea = all;
+                }
+                field(Carton; Carton)
+                {
+                    ApplicationArea = all;
+                }
+                field(Wood; Wood)
+                {
+                    ApplicationArea = all;
+                }
                 field("Plastic Qty. (kg)"; "Plastic Qty. (kg)")
                 {
                     ApplicationArea = all;
@@ -460,6 +471,23 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 end;
             }
         }
+        addafter(CalculateCountingPeriod)
+        {
+            action(CalculatePlastic)
+            {
+                ApplicationArea = all;
+                Caption = 'Calculate Plastic BOM', comment = 'ESP="Calcular peso plastico L.M."';
+                Image = CalculateHierarchy;
+                // Promoted = true;
+                // PromotedCategory = New;
+
+                trigger OnAction()
+                begin
+                    CalculatePlastic;
+                end;
+
+            }
+        }
     }
 
     procedure CalcularUA()
@@ -479,6 +507,16 @@ pageextension 50109 "ItemCard" extends "Item Card"
         CreatestockkepingUnit.Run();
     end;
 
+
+    local procedure CalculatePlastic()
+    var
+        Item: Record Item;
+        Funciones: Codeunit Funciones;
+        lblConfirm: Label '¿Desea calcular la cantidad del plastico de la L.M. del producto %1?', comment = '¿Desea calcular la cantidad del plastico de la L.M. del producto %1?';
+    begin
+        if Confirm(lblConfirm, false, Rec."No.") then
+            Funciones.PlasticCalculateItem(Rec);
+    end;
     /*  trigger OnAfterGetCurrRecord()
       var
           TextosAuxiliares: Record TextosAuxiliares;
@@ -509,5 +547,6 @@ pageextension 50109 "ItemCard" extends "Item Card"
           DescFamilia_btc: Text;
           DescGama_btc: Text;
           DescLineaEconomica: Text;*/
+
 
 }

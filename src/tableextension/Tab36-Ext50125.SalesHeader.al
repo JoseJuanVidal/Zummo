@@ -137,8 +137,8 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
         field(50050; ofertaprobabilidad; Option)
         {
             Caption = 'Probabilidad', comment = 'ESP="Probabilidad"';
-            OptionCaption = ' ,Baja,Media,Alta';
-            OptionMembers = " ","Baja","Media","Alta";
+            OptionCaption = ' ,Baja,Media,Alta,Muy Baja';
+            OptionMembers = " ","Baja","Media","Alta","Muy Baja";
         }
         field(50056; "ABC Cliente"; option)
         {

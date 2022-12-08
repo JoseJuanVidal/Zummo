@@ -1383,6 +1383,8 @@ codeunit 50111 "Funciones"
                 SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Baja;
             'Media':
                 SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::Media;
+            'MuyBaja':
+                SalesHeader.ofertaprobabilidad := SalesHeader.ofertaprobabilidad::"Muy Baja";
         end;
         SalesHeader.Validate("Currency Code", SalesHeaderAux."Currency Code");
         SalesHeader.Validate("Ship-to Name", SalesHeaderAux."Ship-to Name");
@@ -1757,7 +1759,7 @@ codeunit 50111 "Funciones"
     // ==  
     // ======================================================================================================
 
-    // TODO para Susana, hacer guardar las descripcion
+    // Para Susana, hacer guardar las descripcion
 
     procedure SetJOBBledgerEntryDescription(var JobLdgEntry: Record "Job Ledger Entry"; Desc: text)
     var
@@ -1769,4 +1771,157 @@ codeunit 50111 "Funciones"
         end;
     end;
 
+    // =============     Normativa del PLASTICO - impuesto          ====================
+    // ==  
+    // ==  Funciones para el calulo de los datos de plastico de un solo uso, respecto a la lista de produccion o de ensamblado 
+    // ==  
+    // ======================================================================================================
+
+
+    procedure PlasticCalculateItems(var Item: Record Item)
+    begin
+        if Item.FindFirst() then
+            repeat
+                PlasticCalculateItem(Item);
+            Until Item.next() = 0;
+    end;
+
+    procedure PlasticCalculateItem(Item: Record Item)
+    var
+        BomComponent: Record "BOM Component";
+    begin
+        case Item."Replenishment System" of
+            Item."Replenishment System"::Assembly:
+                begin
+                    BomComponent.Reset();
+                    BomComponent.SetRange("Parent Item No.", Item."No.");
+                    BomComponent.SetRange(Type, BomComponent.Type::Item);
+                    if BomComponent.FindFirst() then begin
+                        PlasticItemInitValues(Item);
+                        PlasticCalculateAssemblyBOMItem(Item, BomComponent);
+                        Item.Modify();
+                    end;
+                end;
+            Item."Replenishment System"::"Prod. Order":
+                begin
+                    if Item."Production BOM No." <> '' then begin
+                        PlasticItemInitValues(Item);
+                        PlasticCalculateProductionBOMItem(Item);
+                        Item.Modify();
+                    end;
+                end;
+            item."Replenishment System"::Purchase:
+                begin
+                    // estos productos los ponemos para las subcontrataciones, son productos de compras alguno, pero que se llevan a ensamblar al proveedor 
+                    if Item."Production BOM No." <> '' then begin
+                        PlasticItemInitValues(Item);
+                        PlasticCalculateProductionBOMItem(Item);
+                        Item.Modify();
+                    end;
+                end;
+        end;
+    end;
+
+    local procedure PlasticCalculateProductionBOMItem(var Item: Record Item);
+    var
+        ProductionBomLine: Record "Production BOM Line";
+        BomItem: Record Item;
+        QtyPlastic: Decimal;
+        QtyPlasticRecycled: Decimal;
+        QtyPlasticPacking: Decimal;
+        QtyPlasticRecycledPacking: Decimal;
+        Steel: decimal;
+        Wood: Decimal;
+        Carton: Decimal;
+    begin
+        ProductionBomLine.Reset();
+        ProductionBomLine.SetRange("Production BOM No.", Item."Production BOM No.");
+        ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+        if ProductionBomLine.FindFirst() then
+            repeat
+                BomItem.Get(ProductionBomLine."No.");
+                // lanzamos el proceso ciclico de calculo de BOM Component
+                PlasticCalculateItem(BomItem);
+
+                Steel += BomItem.Steel;
+                Carton += BomItem.Carton;
+                Wood += BomItem.Wood;
+                QtyPlastic += BomItem."Plastic Qty. (kg)";
+                if BomItem."Recycled plastic Qty. (kg)" <> 0 then
+                    QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)"
+                else
+                    QtyPlasticRecycled += (BomItem."Recycled plastic %" * BomItem."Plastic Qty. (kg)") / 100;
+                QtyPlasticPacking += BomItem."Packing Plastic Qty. (kg)";
+                if BomItem."Packing Recycled plastic (kg)" <> 0 then
+                    QtyPlasticRecycledPacking += BomItem."Packing Recycled plastic (kg)"
+                else
+                    QtyPlasticRecycledPacking += (BomItem."Packing Recycled plastic %" * BomItem."Packing Plastic Qty. (kg)") / 100;
+            Until ProductionBomLine.next() = 0;
+        Item."Plastic Qty. (kg)" := QtyPlastic;
+        Item."Recycled plastic Qty. (kg)" := QtyPlasticRecycled;
+        Item."Recycled plastic %" := 0;
+        Item."Packing Plastic Qty. (kg)" := QtyPlasticPacking;
+        Item."Packing Recycled plastic (kg)" := QtyPlasticRecycledPacking;
+        Item."Packing Recycled plastic %" := 0;
+        Item.Steel := Steel;
+        Item.Carton := Carton;
+        Item.Wood := Wood;
+    end;
+
+    local procedure PlasticCalculateAssemblyBOMItem(var Item: Record Item; var BomComponent: Record "BOM Component")
+    var
+        BomItem: Record Item;
+        QtyPlastic: Decimal;
+        QtyPlasticRecycled: Decimal;
+        QtyPlasticPacking: Decimal;
+        QtyPlasticRecycledPacking: Decimal;
+        Steel: decimal;
+        Wood: Decimal;
+        Carton: Decimal;
+    begin
+        if BomComponent.FindFirst() then
+            repeat
+                BomItem.Get(BomComponent."No.");
+                // lanzamos el proceso ciclico de calculo de BOM Component
+                PlasticCalculateItem(BomItem);
+
+                Steel += BomItem.Steel;
+                Carton += BomItem.Carton;
+                Wood += BomItem.Wood;
+                QtyPlastic += BomItem."Plastic Qty. (kg)";
+                if BomItem."Recycled plastic Qty. (kg)" <> 0 then
+                    QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)"
+                else
+                    QtyPlasticRecycled += (BomItem."Recycled plastic %" * BomItem."Plastic Qty. (kg)") / 100;
+                QtyPlasticPacking += BomItem."Packing Plastic Qty. (kg)";
+                if BomItem."Packing Recycled plastic (kg)" <> 0 then
+                    QtyPlasticRecycledPacking += BomItem."Packing Recycled plastic (kg)"
+                else
+                    QtyPlasticRecycledPacking += (BomItem."Packing Recycled plastic %" * BomItem."Packing Plastic Qty. (kg)") / 100;
+            Until BomComponent.next() = 0;
+        Item."Plastic Qty. (kg)" := QtyPlastic;
+        Item."Recycled plastic Qty. (kg)" := QtyPlasticRecycled;
+        Item."Recycled plastic %" := 0;
+        Item."Packing Plastic Qty. (kg)" := QtyPlasticPacking;
+        Item."Packing Recycled plastic (kg)" := QtyPlasticRecycledPacking;
+        Item."Packing Recycled plastic %" := 0;
+        Item.Steel := Steel;
+        Item.Carton := Carton;
+        Item.Wood := Wood;
+    end;
+
+    local procedure PlasticItemInitValues(var Item: Record Item)
+    begin
+        Item."Plastic Qty. (kg)" := 0;
+        Item."Recycled plastic Qty. (kg)" := 0;
+        Item."Recycled plastic %" := 0;
+        Item."Packing Plastic Qty. (kg)" := 0;
+        Item."Packing Recycled plastic (kg)" := 0;
+        Item."Packing Recycled plastic %" := 0;
+        Item.Steel := 0;
+        Item.Carton := 0;
+        Item.Wood := 0;
+    end;
+
 }
+

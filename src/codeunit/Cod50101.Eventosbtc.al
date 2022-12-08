@@ -807,7 +807,8 @@ codeunit 50101 "Eventos_btc"
     begin
         if RequisitionWkshName.Get(TemplateName, WorksheetName) then begin
             Item.STHUseLocationGroup := RequisitionWkshName.STHUseLocationGroup;
-            item.STHNoEvaluarPurchase := RequisitionWkshName.STHNoEvaluarPurchase;
+            Item.STHNoEvaluarPurchase := RequisitionWkshName.STHNoEvaluarPurchase;
+            Item.ZMQuoteAssemblyLine := RequisitionWkshName.ZMQuoteAssemblyLine;
             Item.STHWorksheetName := WorksheetName;
             Item.Modify();
         end;
@@ -851,6 +852,7 @@ codeunit 50101 "Eventos_btc"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Inventory Profile Offsetting", 'OnAfterDemandToInvProfile', '', true, true)]
     local procedure InventoryProfileOffsettingOnAfterDemandToInvProfile(VAR InventoryProfile: Record "Inventory Profile"; VAR Item: Record Item; VAR ReservEntry: Record "Reservation Entry"; VAR NextLineNo: Integer)
     var
+        RequisitionWkshName: Record "Requisition Wksh. Name";
         Funciones: Codeunit Funciones;
     begin
         if item.STHUseLocationGroup then begin

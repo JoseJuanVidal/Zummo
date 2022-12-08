@@ -16,6 +16,10 @@ pageextension 50050 "STHReqWkshNames" extends "Req. Wksh. Names"
             {
                 ApplicationArea = all;
             }
+            field(ZMQuoteAssemblyLine; ZMQuoteAssemblyLine)
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }

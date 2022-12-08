@@ -268,6 +268,11 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'WorksheetName', comment = 'ESP="WorksheetName"';
         }
+        field(50105; ZMQuoteAssemblyLine; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'ZMQuoteAssemblyLine', comment = 'ESP="ZMQuoteAssemblyLine"';
+        }
         field(50120; STHCostEstandarOLD; Decimal)
         {
             DataClassification = CustomerContent;
@@ -343,7 +348,11 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Material', comment = 'ESP="Material"';
         }
-
+        field(50155; "CRM Updated"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CRM Updated', comment = 'ESP="Actualizar CRM"';
+        }
         //+ 22/11/2022 NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {
@@ -380,6 +389,21 @@ tableextension 50108 "Item" extends Item  //27
             Caption = 'Packing Plastic %', comment = 'ESP="% Plástico reciclado embalaje"';
             DataClassification = CustomerContent;
             DecimalPlaces = 2 : 2;
+        }
+        field(50206; Steel; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Steel', comment = 'ESP="Acero"';
+        }
+        field(50207; Carton; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Carton', comment = 'ESP="Cartón"';
+        }
+        field(50208; Wood; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Wood', comment = 'ESP="Madera"';
         }
         //-  NORMATIVA MEDIO AMBIENTAL
 

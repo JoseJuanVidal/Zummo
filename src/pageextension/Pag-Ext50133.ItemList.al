@@ -119,8 +119,36 @@ pageextension 50133 "ItemList" extends "Item List"
                 end;
             }
         }
+        addafter("C&alculate Counting Period")
+        {
+            action(CalculatePlastic)
+            {
+                ApplicationArea = all;
+                Caption = 'Calculate Plastic BOM', comment = 'ESP="Calcular peso plastico L.M."';
+                Image = CalculateHierarchy;
+                // Promoted = true;
+                // PromotedCategory = New;
+
+                trigger OnAction()
+                begin
+                    CalculatePlastic;
+                end;
+
+            }
+        }
     }
     var
         WarehouseEntry: Record "Warehouse Entry";
         ValueEntry: Record "Value Entry";
+
+    local procedure CalculatePlastic()
+    var
+        Item: Record Item;
+        Funciones: Codeunit Funciones;
+        lblConfirm: Label '¿Desea calcular la cantidad del plastico de la L.M. de %1 producto/s?', comment = '¿Desea calcular la cantidad del plastico de la L.M. de %1 producto/s?';
+    begin
+        CurrPage.SetSelectionFilter(Item);
+        if Confirm(lblConfirm, false, Rec.Count) then
+            Funciones.PlasticCalculateItem(Rec);
+    end;
 }
