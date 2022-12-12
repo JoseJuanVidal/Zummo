@@ -1779,11 +1779,17 @@ codeunit 50111 "Funciones"
 
 
     procedure PlasticCalculateItems(var Item: Record Item)
+    var
+        Window: Dialog;
+        lblWindow: Label 'Item No.: #1########################', comment = 'ESP="Cód. producto: #1########################"';
     begin
+        Window.Open(lblWindow);
         if Item.FindFirst() then
             repeat
+                Window.Update(1, Item."No.");
                 PlasticCalculateItem(Item);
             Until Item.next() = 0;
+        Window.Close();
     end;
 
     procedure PlasticCalculateItem(Item: Record Item)

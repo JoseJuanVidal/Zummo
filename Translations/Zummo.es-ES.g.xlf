@@ -6530,6 +6530,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method PagPostedBillsSettleAction - NamedType Text1100001Txt</note>
           <target>Verifique que se haya seleccionado al menos una factura abierta</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2792672614 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.: #1########################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto: #1########################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method PlasticCalculateItems - NamedType lblWindow</note>
+          <target>Cód. producto: #1########################</target>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 1735652657 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea actualizar el Coste unitario\%1 - %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar el Coste unitario\%1 - %2?"</note>
