@@ -149,6 +149,6 @@ pageextension 50133 "ItemList" extends "Item List"
     begin
         CurrPage.SetSelectionFilter(Item);
         if Confirm(lblConfirm, false, Rec.Count) then
-            Funciones.PlasticCalculateItem(Rec);
+            Funciones.PlasticCalculateItems(Rec);
     end;
 }

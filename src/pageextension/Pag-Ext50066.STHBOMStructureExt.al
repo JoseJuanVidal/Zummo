@@ -71,6 +71,38 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
         }
     }
 
+    actions
+    {
+        addafter("Show Warnings")
+        {
+            action(CalculatePlastic)
+            {
+                ApplicationArea = all;
+                Caption = 'Calculate Plastic BOM', comment = 'ESP="Calcular peso plastico L.M."';
+                Image = CalculateHierarchy;
+                // Promoted = true;
+                // PromotedCategory = New;
+
+                trigger OnAction()
+                begin
+                    CalculatePlastic;
+                end;
+
+            }
+        }
+    }
     var
         LanguageFilter: code[10];
+
+    local procedure CalculatePlastic()
+    var
+        Item: Record Item;
+        Funciones: Codeunit Funciones;
+        lblConfirm: Label '¿Desea calcular la cantidad del plastico de la L.M. del producto %1?', comment = '¿Desea calcular la cantidad del plastico de la L.M. del producto %1?';
+    begin
+        if Rec.Type in [Rec.Type::Item] then
+            if Item.Get(Rec."No.") then
+                if Confirm(lblConfirm, false, Rec."No.") then
+                    Funciones.PlasticCalculateItem(Item);
+    end;
 }

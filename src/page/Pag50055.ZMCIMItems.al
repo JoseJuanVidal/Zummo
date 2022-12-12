@@ -48,6 +48,10 @@ page 50055 "ZM CIM Items"
                 {
                     ApplicationArea = all;
                 }
+                field(Color; Color)
+                {
+                    ApplicationArea = all;
+                }
                 field(Inventory; Inventory)
                 {
                     ApplicationArea = all;

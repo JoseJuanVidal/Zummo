@@ -62,6 +62,11 @@ table 50103 "ZM CIM Items temporary"
             DataClassification = CustomerContent;
             Caption = 'Packaging', comment = 'ESP="Embalaje"';
         }
+        field(50807; Color; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Color', comment = 'ESP="Color"';
+        }
         field(99000750; "Routing No."; Code[20])
         {
             Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';

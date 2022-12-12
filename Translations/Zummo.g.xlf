@@ -5743,6 +5743,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Unidad medida base"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Base Unit of Measure - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 2827249175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Color</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Color"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Color - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1666975959 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
@@ -21942,6 +21947,16 @@
           <source>Statements Pass</source>
           <note from="Developer" annotates="general" priority="2">ESP="Contraseña Vencimientos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SMTPMailSetup - Control passVencimientosTxt - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 818457389 - Method 1508348912 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 818457389">
+          <source>¿Desea calcular la cantidad del plastico de la L.M. del producto %1?</source>
+          <note from="Developer" annotates="general" priority="2">¿Desea calcular la cantidad del plastico de la L.M. del producto %1?</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH BOM StructureExt - Method CalculatePlastic - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 818457389 - Action 1508348912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1658838783">
+          <source>Calculate Plastic BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular peso plastico L.M."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH BOM StructureExt - Action CalculatePlastic - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 818457389 - Control 12263198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1658838783">
           <source>Language Filter</source>
