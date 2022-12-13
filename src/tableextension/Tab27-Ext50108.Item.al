@@ -69,7 +69,7 @@ tableextension 50108 "Item" extends Item  //27
             Caption = 'Sales Classification List', comment = 'ESP="Lista Clasificación Ventas"';
             OptionMembers = " ","Envases y Embalajes",Accesorios,"Bloque Máquina",Box,"Conjunto Máquina",Mueble,Repuestos,Otros,Servicios;
             OptionCaption = ' ,Containers and packaging,Accessories,Machine block,Box,Machine set,Price of furniture,Spare parts,Others,Services', comment = 'ESP=" ,Envases y Embalajes,Accesorios,Bloque Máquina,Box,Conjunto Máquina,Mueble,Repuestos,Otros,Servicios"';
-            // ObsoleteState = Removed;
+            ObsoleteState = Removed;
         }
 
         field(50007; OptFamilia_btc; Option)
@@ -79,7 +79,7 @@ tableextension 50108 "Item" extends Item  //27
             Caption = 'Family', comment = 'ESP="Familia"';
             OptionMembers = " ",Z40,Z14,Z06,Z1,Z22,ZV25,Z10,KIOSKO;
             OptionCaption = ' ,Z40,Z14,Z06,Z1,Z22,ZV25,Z10,KIOSKO', comment = 'ESP=" ,Z40,Z14,Z06,Z1,Z22,ZV25,Z10,KIOSKO"';
-            //  ObsoleteState = Removed;
+            ObsoleteState = Removed;
         }
 
         field(50008; OptGama_btc; Option)
@@ -89,7 +89,7 @@ tableextension 50108 "Item" extends Item  //27
             Caption = 'Gamma', comment = 'ESP="Gama"';
             OptionMembers = " ",NATURE,CLASSIC;
             OptionCaption = ' ,NATURE,CLASSIC', comment = 'ESP=" ,NATURE,CLASSIC"';
-            //  ObsoleteState = Removed;
+            ObsoleteState = Removed;
         }
 
         field(50009; "QtyonQuotesOrder"; Decimal)
