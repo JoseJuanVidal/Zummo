@@ -63,7 +63,6 @@ page 50135 "ZM Item Where Used detail"
     trigger OnOpenPage()
     begin
         Item.Reset();
-        // item.SetRange("No.", '010963/18-3');
         Item.SetRange(Blocked, false);
         Item.SetFilter("Production BOM No.", '<>%1', '');
         FuncionesFabricacion.BuildWhereUsedFromItem(Item, Rec, true);
