@@ -6218,6 +6218,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerCalculateFechaVto - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 4204012904 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea duplicar el pedido de servico %1 del cliente %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea duplicar el pedido de servico %1 del cliente %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method DuplicateServiceOrder - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 111645473 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea eliminar el credito a %1 de %2 por %3?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el credito a %1 de %2 por %3?"</note>
@@ -21897,6 +21902,11 @@
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceLines - Control txtBloqueado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4258502013 - Action 3862320497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Duplicar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Duplicar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrder - Action Duplicate - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 149574740 - Action 3260459248 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3297607540">
           <source>Listado NºSerie</source>

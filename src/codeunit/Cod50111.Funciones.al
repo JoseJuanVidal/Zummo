@@ -1927,5 +1927,85 @@ codeunit 50111 "Funciones"
         Item.Wood := 0;
     end;
 
+    // ============= DuplicateServiceOrder              ====================
+    // ==  
+    // ==  funciona que de un pedido de servicio, se duplican todos los datos, para crear varios servicios al mismo cliente, dirección
+    // ==  
+    // ======================================================================================================
+
+    procedure DuplicateServiceOrder(ServiceHeader: Record "Service Header")
+    var
+        Customer: Record Customer;
+        ServiceItem: Record "Service Item";
+        ServiceItemList: page "Service Item List";
+        ServiceHeader2: Record "Service Header";
+        ServiceLine2: Record "Service Line";
+        lblConfirm: Label '¿Desea duplicar el pedido de servico %1 del cliente %2?', comment = 'ESP="¿Desea duplicar el pedido de servico %1 del cliente %2?"';
+    begin
+        Customer.Get(ServiceHeader."Customer No.");
+        if Confirm(lblConfirm, false, ServiceHeader."No.", Customer.Name) then begin
+            // seleccionamos el producto de servicio para duplicar
+            ServiceItem.Reset();
+            ServiceItem.SetRange("Customer No.", ServiceHeader."Customer No.");
+            ServiceItemList.LookupMode := true;
+            ServiceItemList.SetTableView(ServiceItem);
+            if ServiceItemList.RunModal() = Action::LookupOK then begin
+                ServiceItemList.GetRecord(ServiceItem);
+
+                // duplicamos la cabecera
+                ServiceHeader2.Init();
+                ServiceHeader2.TransferFields(ServiceHeader);
+                ServiceHeader2."No." := '';
+                ServiceHeader2.Insert(true);
+
+                DuplicateServiceItemLineOrder(ServiceHeader, ServiceHeader2, ServiceItem)
+
+            end;
+        end;
+    end;
+
+    local procedure DuplicateServiceItemLineOrder(ServiceHeader: Record "Service Header"; NewServiceHeader: Record "Service Header"; ServiceItem: Record "Service Item")
+    var
+        ServiceItemLine: Record "Service Item Line";
+        ServiceItemLine2: Record "Service Item Line";
+    begin
+
+        ServiceItemLine.Reset();
+        ServiceItemLine.SetRange("Document Type", ServiceHeader."Document Type");
+        ServiceItemLine.SetRange("Document No.", ServiceHeader."No.");
+        if ServiceItemLine.FindFirst() then
+            repeat
+                ServiceItemLine2.Init();
+                ServiceItemLine2.TransferFields(ServiceItemLine);
+                ServiceItemLine2."Document No." := NewServiceHeader."No.";
+                ServiceItemLine2.Validate("Service Item No.", ServiceItem."No.");
+                ServiceItemLine2.Insert();
+
+                DuplicateServiceLineOrder(ServiceHeader, NewServiceHeader, ServiceItemLine, ServiceItemLine2);
+
+            Until ServiceItemLine.next() = 0;
+    end;
+
+    local procedure DuplicateServiceLineOrder(ServiceHeader: Record "Service Header"; NewServiceHeader: Record "Service Header"; ServiceItemLine: Record "Service Item Line"; NewServiceItemLine: Record "Service Item Line")
+    var
+        ServiceLine: Record "Service Line";
+        ServiceLine2: Record "Service Line";
+    begin
+        ServiceLine.Reset();
+        ServiceLine.SetRange("Document Type", ServiceHeader."Document Type");
+        ServiceLine.SetRange("Document No.", ServiceHeader."No.");
+        ServiceLine.SetRange("Service Item Line No.", ServiceItemLine."Line No.");
+        if ServiceLine.FindFirst() then
+            repeat
+                ServiceLine2.Init();
+                ServiceLine2.TransferFields(ServiceLine);
+                ServiceLine2."Document No." := NewServiceHeader."No.";
+                ServiceLine2."Service Item No." := NewServiceItemLine."Service Item No.";
+
+                ServiceLine2.Insert()
+            Until ServiceLine.next() = 0;
+    end;
+
+
 }
 

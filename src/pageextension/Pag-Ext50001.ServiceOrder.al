@@ -1,7 +1,5 @@
 pageextension 50001 "ServiceOrder" extends "Service Order"
 {
-
-
     layout
     {
         addafter("Service Order Type")
@@ -48,5 +46,32 @@ pageextension 50001 "ServiceOrder" extends "Service Order"
             }
         }
     }
+
+    actions
+    {
+        addlast(Processing)
+        {
+            action(Duplicate)
+            {
+                Caption = 'Duplicar', comment = 'ESP="Duplicar"';
+                ApplicationArea = all;
+                Image = CopyDocument;
+
+                trigger OnAction()
+                begin
+                    DuplicateServiceOrder;
+                end;
+            }
+        }
+
+
+    }
+
+    local procedure DuplicateServiceOrder()
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        Funciones.DuplicateServiceOrder(Rec);
+    end;
 
 }
