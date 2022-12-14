@@ -103,17 +103,17 @@ codeunit 50106 "SalesEvents"
         InvoiceNoSerie := NoSeriesManagement.GetNextNo(SalesHeader."Posting No. Series", SalesHeader."Posting Date", false);
         if InvoiceNoSerie = '' then
             exit;
-        repeat
-            Encontrado := false;
-            if SalesInvHeader.Get(InvoiceNoSerie) then begin
-                Encontrado := true;
-                // si la encontramos en historico, grabamos ese numero y seguimos con el bucle
-                InvoiceNoSerie := NoSeriesManagement.GetNextNo(SalesHeader."Posting No. Series", SalesHeader."Posting Date", true);
-                // obtenemos la siguiente
-                InvoiceNoSerie := NoSeriesManagement.GetNextNo(SalesHeader."Posting No. Series", SalesHeader."Posting Date", false);
-                CountInc += 1;
-            end
-        until (Encontrado = false) or (CountInc > 3);
+        //repeat
+        Encontrado := false;
+        if SalesInvHeader.Get(InvoiceNoSerie) then begin
+            Encontrado := true;
+            // si la encontramos en historico, grabamos ese numero y seguimos con el bucle
+            InvoiceNoSerie := NoSeriesManagement.GetNextNo(SalesHeader."Posting No. Series", SalesHeader."Posting Date", true);
+            // obtenemos la siguiente
+            InvoiceNoSerie := NoSeriesManagement.GetNextNo(SalesHeader."Posting No. Series", SalesHeader."Posting Date", false);
+            CountInc += 1;
+        end
+        //until (Encontrado = false) or (CountInc > 3);
 
     end;
 
