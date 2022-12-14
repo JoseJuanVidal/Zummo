@@ -487,6 +487,20 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 end;
 
             }
+            action(CalculatePlasticLevels)
+            {
+                ApplicationArea = all;
+                Caption = 'Calculate Plastic Level', comment = 'ESP="Calcular peso plastico Nivel superior"';
+                Image = CalculateRegenerativePlan;
+                // Promoted = true;
+                // PromotedCategory = New;
+
+                trigger OnAction()
+                begin
+                    CalculatePlasticFrom();
+                end;
+
+            }
         }
     }
 
@@ -517,6 +531,17 @@ pageextension 50109 "ItemCard" extends "Item Card"
         if Confirm(lblConfirm, false, Rec."No.") then
             Funciones.PlasticCalculateItem(Rec);
     end;
+
+    local procedure CalculatePlasticFrom()
+    var
+        Item: Record Item;
+        Funciones: Codeunit Funciones;
+        lblConfirm: Label '¿Desea calcular la cantidad del plastico de los niveles superiores del producto %1?', comment = '¿Desea calcular la cantidad del plastico de los niveles superiores del producto %1?';
+    begin
+        if Confirm(lblConfirm, false, Rec."No.") then
+            Funciones.PlasticCalculateFromItem(Rec);
+    end;
+
     /*  trigger OnAfterGetCurrRecord()
       var
           TextosAuxiliares: Record TextosAuxiliares;

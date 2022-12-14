@@ -22071,6 +22071,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action CalculatePlastic - Property Caption</note>
           <target>Calcular peso plastico L.M.</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Action 996138011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Calculate Plastic Level</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular peso plastico Nivel superior"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action CalculatePlasticLevels - Property Caption</note>
+          <target>Calcular peso plastico Nivel superior</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1394728878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>

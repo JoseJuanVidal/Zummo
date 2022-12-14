@@ -1803,26 +1803,26 @@ codeunit 50111 "Funciones"
                     BomComponent.SetRange("Parent Item No.", Item."No.");
                     BomComponent.SetRange(Type, BomComponent.Type::Item);
                     if BomComponent.FindFirst() then begin
-                        PlasticCalculateAssemblyBOMItem(Item, BomComponent);
+                        PlasticCalculateAssemblyBOMItem(Item, BomComponent, true);
                     end;
                 end;
             Item."Replenishment System"::"Prod. Order":
                 begin
                     if Item."Production BOM No." <> '' then begin
-                        PlasticCalculateProductionBOMItem(Item);
+                        PlasticCalculateProductionBOMItem(Item, true);
                     end;
                 end;
             item."Replenishment System"::Purchase:
                 begin
                     // estos productos los ponemos para las subcontrataciones, son productos de compras alguno, pero que se llevan a ensamblar al proveedor 
                     if Item."Production BOM No." <> '' then begin
-                        PlasticCalculateProductionBOMItem(Item);
+                        PlasticCalculateProductionBOMItem(Item, true);
                     end;
                 end;
         end;
     end;
 
-    local procedure PlasticCalculateProductionBOMItem(var Item: Record Item);
+    local procedure PlasticCalculateProductionBOMItem(var Item: Record Item; NivelesInferior: Boolean);
     var
         ProductionBomLine: Record "Production BOM Line";
         BomItem: Record Item;
@@ -1842,7 +1842,8 @@ codeunit 50111 "Funciones"
             repeat
                 BomItem.Get(ProductionBomLine."No.");
                 // lanzamos el proceso ciclico de calculo de BOM Component
-                PlasticCalculateItem(BomItem);
+                if NivelesInferior then
+                    PlasticCalculateItem(BomItem);
 
                 Steel += BomItem.Steel;
                 Carton += BomItem.Carton;
@@ -1870,7 +1871,7 @@ codeunit 50111 "Funciones"
         Item.Modify();
     end;
 
-    local procedure PlasticCalculateAssemblyBOMItem(var Item: Record Item; var BomComponent: Record "BOM Component")
+    local procedure PlasticCalculateAssemblyBOMItem(var Item: Record Item; var BomComponent: Record "BOM Component"; NivelesInferior: Boolean)
     var
         BomItem: Record Item;
         QtyPlastic: Decimal;
@@ -1886,7 +1887,8 @@ codeunit 50111 "Funciones"
             repeat
                 BomItem.Get(BomComponent."No.");
                 // lanzamos el proceso ciclico de calculo de BOM Component
-                PlasticCalculateItem(BomItem);
+                if NivelesInferior then
+                    PlasticCalculateItem(BomItem);
 
                 Steel += BomItem.Steel;
                 Carton += BomItem.Carton;
@@ -1925,6 +1927,66 @@ codeunit 50111 "Funciones"
         Item.Steel := 0;
         Item.Carton := 0;
         Item.Wood := 0;
+    end;
+
+    procedure PlasticCalculateFromItem(Item: Record Item)
+    var
+        ItemParent: Record Item;
+        tmpItem: Record Item temporary;
+        BomComponent: Record "BOM Component";
+        BomComponentParent: Record "BOM Component";
+        ProductionBomLine: Record "Production BOM Line";
+    begin
+        // primero miramos los BOM Components (Ensamblado)
+        BomComponent.Reset();
+        BomComponent.SetRange(Type, BomComponent.Type::Item);
+        BomComponent.SetRange("No.", Item."No.");
+        if BomComponent.FindFirst() then begin
+            BomComponentParent.Reset();
+            BomComponentParent.SetRange("Parent Item No.", BomComponent."Parent Item No.");
+            BomComponentParent.SetRange(Type, BomComponentParent.Type::Item);
+            ItemParent.Get(BomComponent."Parent Item No.");
+            // calculamos el producto padre
+            PlasticCalculateAssemblyBOMItem(ItemParent, BomComponentParent, false);
+            // Añadimos el padre para buscar NivelSuperior
+            PlasticAddtmpItem(tmpItem, BomComponent."Parent Item No.");
+        end;
+
+        // Miramos los componentes de producción de L M Produccion
+        ProductionBomLine.Reset();
+        ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+        ProductionBomLine.SetRange("No.", Item."No.");
+        if ProductionBomLine.FindFirst() then
+            repeat
+                ItemParent.Reset();
+                ItemParent.SetRange("Production BOM No.", ProductionBomLine."Production BOM No.");
+                if ItemParent.FindFirst() then
+                    repeat
+                        // calculamos el producto padre
+                        PlasticCalculateProductionBOMItem(ItemParent, false);
+                        // Añadimos el padre para buscar NivelSuperior
+                        PlasticAddtmpItem(tmpItem, ItemParent."No.");
+                    Until ItemParent.next() = 0;
+            until ProductionBomLine.Next() = 0;
+
+        // ahora revisamos los padres de nivelees superiores
+        tmpItem.Reset();
+        if tmpItem.FindFirst() then
+            repeat
+                // llamamos a la misma función para revisar niveles superiores
+                PlasticCalculateFromItem(tmpItem);
+            Until tmpItem.next() = 0;
+    end;
+
+    local procedure PlasticAddtmpItem(var tmpItem: Record Item; ParentItemNo: code[20])
+    var
+        myInt: Integer;
+    begin
+        if not tmpItem.Get(ParentItemNo) then begin
+            tmpItem.Init();
+            tmpItem."No." := ParentItemNo;
+            tmpItem.Insert();
+        end;
     end;
 
     // ============= DuplicateServiceOrder              ====================
@@ -2005,6 +2067,8 @@ codeunit 50111 "Funciones"
                 ServiceLine2.Insert()
             Until ServiceLine.next() = 0;
     end;
+
+
 
 
 }
