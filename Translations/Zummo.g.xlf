@@ -22908,6 +22908,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field selLineaEconomica_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 4172308441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Show detailed documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar en detalle documentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Show detailed documents - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 3459458485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Steel</source>
           <note from="Developer" annotates="general" priority="2">ESP="Acero"</note>

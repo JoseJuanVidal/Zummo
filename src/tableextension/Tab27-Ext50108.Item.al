@@ -405,6 +405,11 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Wood', comment = 'ESP="Madera"';
         }
+        field(50210; "Show detailed documents"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Show detailed documents', comment = 'ESP="Mostrar en detalle documentos"';
+        }
         //-  NORMATIVA MEDIO AMBIENTAL
 
     }

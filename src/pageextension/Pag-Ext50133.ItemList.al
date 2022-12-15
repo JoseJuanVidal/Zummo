@@ -148,7 +148,7 @@ pageextension 50133 "ItemList" extends "Item List"
         lblConfirm: Label '¿Desea calcular la cantidad del plastico de la L.M. de %1 producto/s?', comment = '¿Desea calcular la cantidad del plastico de la L.M. de %1 producto/s?';
     begin
         CurrPage.SetSelectionFilter(Item);
-        if Confirm(lblConfirm, false, Rec.Count) then
+        if Confirm(lblConfirm, false, Item.Count) then
             Funciones.PlasticCalculateItems(Rec);
     end;
 }
