@@ -1362,5 +1362,25 @@ codeunit 50106 "SalesEvents"
         rec.Modify();
     end;
 
+    // ============= 15/12/2022     Control de Creación pedidos de Servicio         ====================
+    // ==  
+    // ==  cuando se crea un pedido de servicio, poner en dirección de envío la misma dirección de envio que la ficha de cliente
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Table, Database::"Service Header", 'OnAfterValidateEvent', 'Customer No.', true, true)]
+    local procedure ServiceHeader_OnAfterValidateEvent_CustomerNo(var Rec: Record "Service Header"; var xRec: Record "Service Header"; CurrFieldNo: Integer)
+    var
+        Customer: Record Customer;
+    begin
+        if Rec.IsTemporary then
+            exit;
+        // buscamos el clientes y hacemos validate del campos "Ship-to Code"
+        if Customer.Get(Rec."Customer No.") then
+            if Customer."Ship-to Code" <> '' then
+                if Rec."Ship-to Code" <> Customer."Ship-to Code" then
+                    Rec.Validate("Ship-to Code", Customer."Ship-to Code");
+
+    end;
+
 
 }
