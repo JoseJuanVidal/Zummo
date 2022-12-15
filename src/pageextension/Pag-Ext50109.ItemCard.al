@@ -150,14 +150,6 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 {
                     ApplicationArea = all;
                 }
-                field("Packing Recycled plastic (kg)"; "Packing Recycled plastic (kg)")
-                {
-                    ApplicationArea = all;
-                }
-                field("Packing Recycled plastic %"; "Packing Recycled plastic %")
-                {
-                    ApplicationArea = all;
-                }
                 field("Show detailed documents"; "Show detailed documents")
                 {
                     ApplicationArea = all;

@@ -356,54 +356,55 @@ tableextension 50108 "Item" extends Item  //27
         //+ 22/11/2022 NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {
-            Caption = 'Plastic Qty. (kg)', comment = 'ESP="Cdad. plástico (kg)"';
+            Caption = 'Plastic packing (kg)', comment = 'ESP="Plástico embalaje (kg)"';
             DataClassification = CustomerContent;
             DecimalPlaces = 5 : 5;
         }
         Field(50201; "Recycled plastic Qty. (kg)"; decimal)
         {
-            Caption = 'Plastic Qty (kg)', comment = 'ESP="Cdad. plástico reciclado (kg)"';
+            Caption = 'Plastic Recycled packing (kg)', comment = 'ESP="Plástico reciclado embalaje(kg)"';
             DataClassification = CustomerContent;
             DecimalPlaces = 5 : 5;
         }
         Field(50202; "Recycled plastic %"; decimal)
         {
-            Caption = 'Plastic %', comment = 'ESP="% Plástico reciclado"';
+            Caption = 'Plastic Recycled packing %', comment = 'ESP="% Plástico reciclado embalaje"';
             DataClassification = CustomerContent;
             DecimalPlaces = 2 : 2;
         }
         Field(50203; "Packing Plastic Qty. (kg)"; decimal)
         {
-            Caption = 'Packing Plastic Qty. (kg)', comment = 'ESP="Cdad. plástico embalaje (kg)"';
+            Caption = 'Package Plastic (kg)', comment = 'ESP="Plástico Bulto (kg)"';
             DataClassification = CustomerContent;
             DecimalPlaces = 5 : 5;
         }
         Field(50204; "Packing Recycled plastic (kg)"; decimal)
         {
-            Caption = 'Packing Recycled Plastic Qty (kg)', comment = 'ESP="Cdad. plástico reciclado embalaje (kg)"';
+            Caption = 'Package Recycled Plastic (kg)', comment = 'ESP="Plástico reciclado Bulto (kg)"';
             DataClassification = CustomerContent;
             DecimalPlaces = 5 : 5;
         }
         Field(50205; "Packing Recycled plastic %"; decimal)
         {
-            Caption = 'Packing Plastic %', comment = 'ESP="% Plástico reciclado embalaje"';
+            Caption = 'Package Plastic %', comment = 'ESP="% Plástico reciclado Bulto"';
             DataClassification = CustomerContent;
             DecimalPlaces = 2 : 2;
         }
         field(50206; Steel; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Steel', comment = 'ESP="Acero"';
+            Caption = 'Steel Packing (kg)', comment = 'ESP="Acero Embalaje (kg)"';
+            Description = 'Acero que se utiliza para el envío del producto';
         }
         field(50207; Carton; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Carton', comment = 'ESP="Cartón"';
+            Caption = 'Carton Packing (kg)', comment = 'ESP="Cartón Embalaje (kg)"';
         }
         field(50208; Wood; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Wood', comment = 'ESP="Madera"';
+            Caption = 'Wood Packing (kg)', comment = 'ESP="Madera Embalaje (kg)"';
         }
         field(50210; "Show detailed documents"; Boolean)
         {

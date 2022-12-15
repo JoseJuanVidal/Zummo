@@ -925,6 +925,7 @@ codeunit 50106 "SalesEvents"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterPostSalesLines', '', true, true)]
     local procedure CDU_80_OnAfterPostLines(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header"; var SalesInvoiceHeader: Record "Sales Invoice Header"; var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; var ReturnReceiptHeader: Record "Return Receipt Header"; WhseShip: Boolean; WhseReceive: Boolean; var SalesLinesProcessed: Boolean; CommitIsSuppressed: Boolean)
     var
+        Item: Record Item;
         recItemJnlLine: Record "Item Journal Line";
         recSalesLine: Record "Sales Line";
         recTempEnsambladosDeshacer: Record "Aging Band Buffer" temporary;
@@ -947,53 +948,57 @@ codeunit 50106 "SalesEvents"
         recSalesLine.SetFilter("No.", '<>%1', '');
         if recSalesLine.FindSet() then
             repeat
-                if recItemLedgEntry.Get(recSalesLine."Appl.-from Item Entry") and (recItemLedgEntry."Document Type" = recItemLedgEntry."Document Type"::"Sales Shipment") then begin
-                    recPostAss.Reset();
-                    recPostAss.SetRange("Document Type", recPostAss."Document Type"::"Sales Shipment");
-                    recPostAss.SetRange("Document No.", recItemLedgEntry."Document No.");
-                    recPostAss.SetRange("Document Line No.", recItemLedgEntry."Document Line No.");
-                    if recPostAss.FindSet() then
-                        repeat
-                            if not recTempEnsambladosDeshacer.Get(recPostAss."Assembly Document No.") then begin
-                                // Me quedo con los ensamblados afectados
-                                recTempEnsambladosDeshacer.Init();
-                                recTempEnsambladosDeshacer."Currency Code" := recPostAss."Assembly Document No.";
-                                recTempEnsambladosDeshacer.Insert();
+                // controlar que el producto es de ensamblado, sino no hace nada
+                // Email de abono FVA2209090, que hace un ajuste positivo de la lineas de ensamblado de otra línea
+                if Item.Get(recSalesLine."No.") and (Item."Replenishment System" in [Item."Replenishment System"::Assembly]) then begin
+                    if recItemLedgEntry.Get(recSalesLine."Appl.-from Item Entry") and (recItemLedgEntry."Document Type" = recItemLedgEntry."Document Type"::"Sales Shipment") then begin
+                        recPostAss.Reset();
+                        recPostAss.SetRange("Document Type", recPostAss."Document Type"::"Sales Shipment");
+                        recPostAss.SetRange("Document No.", recItemLedgEntry."Document No.");
+                        recPostAss.SetRange("Document Line No.", recItemLedgEntry."Document Line No.");
+                        if recPostAss.FindSet() then
+                            repeat
+                                if not recTempEnsambladosDeshacer.Get(recPostAss."Assembly Document No.") then begin
+                                    // Me quedo con los ensamblados afectados
+                                    recTempEnsambladosDeshacer.Init();
+                                    recTempEnsambladosDeshacer."Currency Code" := recPostAss."Assembly Document No.";
+                                    recTempEnsambladosDeshacer.Insert();
 
-                                // Ajuste negativo al resultado del ensamblado
-                                recItemJnlLine.Reset();
-                                if recItemJnlLine.FindLast() then
-                                    intNumLinea := recItemJnlLine."Line No." + 1000
-                                else
-                                    intNumLinea := 10000;
+                                    // Ajuste negativo al resultado del ensamblado
+                                    recItemJnlLine.Reset();
+                                    if recItemJnlLine.FindLast() then
+                                        intNumLinea := recItemJnlLine."Line No." + 1000
+                                    else
+                                        intNumLinea := 10000;
 
-                                recItemJnlLine.Init();
+                                    recItemJnlLine.Init();
 
-                                recItemJnlLine."Line No." := intNumLinea;
-                                recItemJnlLine.Validate("Posting Date", Today);
-                                recItemJnlLine."Entry Type" := recItemJnlLine."Entry Type"::"Negative Adjmt.";
-                                recItemJnlLine."Document No." := recPostAss."Assembly Document No.";
-                                recItemJnlLine.Validate("Item No.", recSalesLine."No.");
-                                recItemJnlLine.Validate("Location Code", recSalesLine."Location Code");
+                                    recItemJnlLine."Line No." := intNumLinea;
+                                    recItemJnlLine.Validate("Posting Date", Today);
+                                    recItemJnlLine."Entry Type" := recItemJnlLine."Entry Type"::"Negative Adjmt.";
+                                    recItemJnlLine."Document No." := recPostAss."Assembly Document No.";
+                                    recItemJnlLine.Validate("Item No.", recSalesLine."No.");
+                                    recItemJnlLine.Validate("Location Code", recSalesLine."Location Code");
 
-                                if recSalesLine."Bin Code" <> '' then
-                                    recItemJnlLine.Validate("Bin Code", recSalesLine."Bin Code");
+                                    if recSalesLine."Bin Code" <> '' then
+                                        recItemJnlLine.Validate("Bin Code", recSalesLine."Bin Code");
 
-                                recItemJnlLine.Validate(Quantity, recSalesLine.Quantity);
-                                recItemJnlLine.validate("Unit of Measure Code", recSalesLine."Unit of Measure Code");
+                                    recItemJnlLine.Validate(Quantity, recSalesLine.Quantity);
+                                    recItemJnlLine.validate("Unit of Measure Code", recSalesLine."Unit of Measure Code");
 
-                                recItLedgEntPostitivo.Reset();
-                                recItLedgEntPostitivo.SetRange("Entry Type", recItLedgEntPostitivo."Entry Type"::Sale);
-                                recItLedgEntPostitivo.SetRange("Item No.", recSalesLine."No.");
-                                recItLedgEntPostitivo.SetRange("Document Type", recItLedgEntPostitivo."Document Type"::"Sales Return Receipt");
-                                recItLedgEntPostitivo.SetRange("Document No.", ReturnReceiptHeader."No.");
-                                recItLedgEntPostitivo.SetRange(Open, true);
-                                if recItLedgEntPostitivo.FindFirst() then
-                                    recItemJnlLine.Validate("Applies-to Entry", recItLedgEntPostitivo."Entry No.");
+                                    recItLedgEntPostitivo.Reset();
+                                    recItLedgEntPostitivo.SetRange("Entry Type", recItLedgEntPostitivo."Entry Type"::Sale);
+                                    recItLedgEntPostitivo.SetRange("Item No.", recSalesLine."No.");
+                                    recItLedgEntPostitivo.SetRange("Document Type", recItLedgEntPostitivo."Document Type"::"Sales Return Receipt");
+                                    recItLedgEntPostitivo.SetRange("Document No.", ReturnReceiptHeader."No.");
+                                    recItLedgEntPostitivo.SetRange(Open, true);
+                                    if recItLedgEntPostitivo.FindFirst() then
+                                        recItemJnlLine.Validate("Applies-to Entry", recItLedgEntPostitivo."Entry No.");
 
-                                codeunit.Run(codeunit::"Item Jnl.-Post Line", recItemJnlLine);
-                            end;
-                        until recPostAss.Next() = 0;
+                                    codeunit.Run(codeunit::"Item Jnl.-Post Line", recItemJnlLine);
+                                end;
+                            until recPostAss.Next() = 0;
+                    end;
                 end;
             until recSalesLine.next() = 0;
     end;
