@@ -235,7 +235,7 @@ codeunit 50106 "SalesEvents"
     begin
 
         BlanketSalesLine.SetFilter("Document Type", '%1|%2', BlanketSalesLine."Document Type"::"Blanket Order", BlanketSalesLine."Document Type"::Quote);
-        BlanketSalesLine.SetFilter(FechaFinValOferta_btc, '=%1|>%2', 0D, today);
+        BlanketSalesLine.SetFilter(FechaFinValOferta_btc, '=%1|>=%2', 0D, WorkDate());
     end;
 
     // Si no tiene prioridad y es una oferta, establecemos la prioridad nosotros
