@@ -21393,6 +21393,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderList - Control Motivo rechazo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3099940785 - Method 3517220897 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3099940785">
+          <source>¿Would you like to duplicate the Line %1 quantity %2 ?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea duplicar la Línea %1 Cantidad %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderSubform - Method DuplicateLineAction - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3099940785 - Action 1837906779 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
+          <source>Navigate to product lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Navega a las líneas de producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderSubform - Action DuplicateLine - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3099940785 - Action 1837906779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
+          <source>Duplicate line</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Duplicar línea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderSubform - Action DuplicateLine - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3099940785 - Action 10636857 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
           <source>Navigates to item card</source>
           <note from="Developer" annotates="general" priority="2">ESP="Navega a la ficha del producto"</note>
@@ -21417,6 +21432,11 @@
           <source>Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReceivablesCarteraDocs - Control txtNomb - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2206030441 - Action 3056440922 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 319452331">
+          <source>Seguimiento pedido compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seguimiento pedido compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReleasedProdOrderLines - Action ShowPurchaseLine - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3196766109 - Action 2159066594 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2972308613">
           <source>It allows you to delete several production orders at once by selecting the ones you wish to delete</source>

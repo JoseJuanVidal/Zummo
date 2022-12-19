@@ -50,6 +50,19 @@ pageextension 50106 "PurchaseOrderSubform" extends "Purchase Order Subform"
                 RunObject = Page "Item Card";
                 RunPageLink = "No." = FIELD("No.");
             }
+
+            action(DuplicateLine)
+            {
+                ApplicationArea = All;
+                Caption = 'Duplicate line', comment = 'ESP="Duplicar línea"';
+                ToolTip = 'Navigate to product lines', comment = 'ESP="Navega a las líneas de producto"';
+                Image = CheckDuplicates;
+
+                trigger OnAction()
+                begin
+                    DuplicateLineAction;
+                end;
+            }
         }
 
         addafter(SelectMultiItems)
@@ -99,4 +112,23 @@ pageextension 50106 "PurchaseOrderSubform" extends "Purchase Order Subform"
             }
         }
     }
+
+    local procedure DuplicateLineAction()
+    var
+        PurchaseLine: Record "Purchase Line";
+        lblConfirm: Label '¿Would you like to duplicate the Line %1 quantity %2 ?', comment = 'ESP="¿Desea duplicar la Línea %1 Cantidad %2?"';
+
+    begin
+        if not Confirm(lblConfirm, false, Rec.Description, Rec.Quantity) then
+            exit;
+        PurchaseLine.Init();
+        PurchaseLine.TransferFields(Rec);
+        PurchaseLine."Line No." := Rec."Line No." + 10;
+        PurchaseLine."Quantity Received" := 0;
+        PurchaseLine."Quantity Invoiced" := 0;
+        PurchaseLine."Qty. Invoiced (Base)" := 0;
+        PurchaseLine."Qty. Received (Base)" := 0;
+        PurchaseLine.Validate(Quantity, Rec.Quantity);
+        PurchaseLine.Insert()
+    end;
 }
