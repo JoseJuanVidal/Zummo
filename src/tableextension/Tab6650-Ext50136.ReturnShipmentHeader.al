@@ -115,5 +115,19 @@ tableextension 50136 "ReturnShipmentHeader" extends "Return Shipment Header"  //
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("MotivoBloqueo"), TipoRegistro = const(Tabla));
             Caption = 'Block Reason', comment = 'ESP="Motivo Bloqueo"';
         }
+        //+  NORMATIVA MEDIO AMBIENTAL
+        Field(50200; "Plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Plastic (kg)', comment = 'ESP="Plástico (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 5 : 5;
+        }
+        Field(50201; "Recycled plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Plastic Recycled (kg)', comment = 'ESP="Plástico reciclado (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 5 : 5;
+        }
+        //-  NORMATIVA MEDIO AMBIENTAL
     }
 }

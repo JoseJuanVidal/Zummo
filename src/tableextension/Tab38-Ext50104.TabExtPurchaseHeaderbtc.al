@@ -8,7 +8,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             Description = 'Bitec';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = Exist ("Purchase Line" WHERE ("Document Type" = FIELD ("Document Type"), "Document No." = FIELD ("No."), "Outstanding Quantity" = FILTER (<> 0)));
+            CalcFormula = Exist("Purchase Line" WHERE("Document Type" = FIELD("Document Type"), "Document No." = FIELD("No."), "Outstanding Quantity" = FILTER(<> 0)));
         }
         field(50001; "Motivo rechazo"; Text[100])
         {
@@ -16,11 +16,11 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             Description = 'Bitec';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("Purchase Line".TextoRechazo WHERE
-            ("Document Type" = FIELD ("Document Type"),
-             "Document No." = FIELD ("No."),
-            "Outstanding Quantity" = FILTER (> 0),
-            TextoRechazo = filter (<> '')
+            CalcFormula = lookup("Purchase Line".TextoRechazo WHERE
+            ("Document Type" = FIELD("Document Type"),
+             "Document No." = FIELD("No."),
+            "Outstanding Quantity" = FILTER(> 0),
+            TextoRechazo = filter(<> '')
             ));
         }
         field(50002; "Fecha Mas Temprana"; Date)
@@ -29,9 +29,23 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             Description = 'Bitec';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = min ("Purchase Line"."Expected Receipt Date" where ("Document Type" = FIELD ("Document Type"),
-             "Document No." = FIELD ("No."),
-            "Outstanding Quantity" = FILTER (> 0)));
+            CalcFormula = min("Purchase Line"."Expected Receipt Date" where("Document Type" = FIELD("Document Type"),
+             "Document No." = FIELD("No."),
+            "Outstanding Quantity" = FILTER(> 0)));
         }
+        //+  NORMATIVA MEDIO AMBIENTAL
+        Field(50200; "Plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Plastic (kg)', comment = 'ESP="Plástico (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 5 : 5;
+        }
+        Field(50201; "Recycled plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Plastic Recycled (kg)', comment = 'ESP="Plástico reciclado (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 5 : 5;
+        }
+        //-  NORMATIVA MEDIO AMBIENTAL
     }
 }
