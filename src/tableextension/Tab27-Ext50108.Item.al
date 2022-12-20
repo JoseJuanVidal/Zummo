@@ -14,7 +14,7 @@ tableextension 50108 "Item" extends Item  //27
         {
             DataClassification = CustomerContent;
             Description = 'Bitec';
-            Caption = 'Family', comment = 'ESP="Familia"';
+            Caption = 'Family old', comment = 'ESP="Familia anterior"';
             ObsoleteState = Removed;
         }
 
@@ -76,7 +76,7 @@ tableextension 50108 "Item" extends Item  //27
         {
             DataClassification = CustomerContent;
             Description = 'Bitec';
-            Caption = 'Family', comment = 'ESP="Familia"';
+            Caption = 'Family old', comment = 'ESP="Familia anterior"';
             OptionMembers = " ",Z40,Z14,Z06,Z1,Z22,ZV25,Z10,KIOSKO;
             OptionCaption = ' ,Z40,Z14,Z06,Z1,Z22,ZV25,Z10,KIOSKO', comment = 'ESP=" ,Z40,Z14,Z06,Z1,Z22,ZV25,Z10,KIOSKO"';
             //ObsoleteState = Removed;
