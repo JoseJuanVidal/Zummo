@@ -21,6 +21,12 @@ tableextension 50140 "PurchCrMemoHdr" extends "Purch. Cr. Memo Hdr."  //124
             DataClassification = CustomerContent;
             DecimalPlaces = 5 : 5;
         }
+        Field(50202; "Plastic Date Declaration"; Date)
+        {
+            Caption = 'Plastic Date Declaration', comment = 'ESP="Fecha Declaración plástico"';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
         //-  NORMATIVA MEDIO AMBIENTAL
     }
 }

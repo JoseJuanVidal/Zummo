@@ -35,6 +35,12 @@ tableextension 50199 "Purch. Rcpt. Header" extends "Purch. Rcpt. Header"  //110
             DataClassification = CustomerContent;
             DecimalPlaces = 5 : 5;
         }
+        Field(50202; "Plastic Date Declaration"; Date)
+        {
+            Caption = 'Plastic Date Declaration', comment = 'ESP="Fecha Declaración plástico"';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
         //-  NORMATIVA MEDIO AMBIENTAL
     }
 }

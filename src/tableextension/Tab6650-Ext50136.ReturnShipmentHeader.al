@@ -128,6 +128,12 @@ tableextension 50136 "ReturnShipmentHeader" extends "Return Shipment Header"  //
             DataClassification = CustomerContent;
             DecimalPlaces = 5 : 5;
         }
+        Field(50202; "Plastic Date Declaration"; Date)
+        {
+            Caption = 'Plastic Date Declaration', comment = 'ESP="Fecha Declaración Plástico"';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
         //-  NORMATIVA MEDIO AMBIENTAL
     }
 }

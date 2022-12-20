@@ -21378,6 +21378,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoice - Action RegistrarFran - Method OnAction - NamedType OpenPostedPurchaseInvQst</note>
         </trans-unit>
+        <trans-unit id="PageExtension 783370822 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>Normativa Plástico</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoice - Control Plastic - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4034672467 - Action 2890590632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4037192291">
           <source>Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa."</note>
@@ -21427,6 +21432,11 @@
           <source>SeleccionarArticulosProveedor</source>
           <note from="Developer" annotates="general" priority="2">ESP="SeleccionarArticulosProveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderSubform - Action SeleccionarArticulosProveedor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 10447370 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
+          <source>Normativa Plástico</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchCrMemoext - Control Plastic - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 718509610 - Control 749033378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 165741626">
           <source>Name</source>
@@ -23173,6 +23183,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Pdt. Facturar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field PdtFacturar - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1052755578 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
+          <source>Plastic Date Declaration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Declaración plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field Plastic Date Declaration - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1052755578 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
           <source>Plastic (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
@@ -23248,6 +23263,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº asiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchCrMemoHdr - Field NumAsiento_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2490879107 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271228953">
+          <source>Plastic Date Declaration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Declaración plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchCrMemoHdr - Field Plastic Date Declaration - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2490879107 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271228953">
           <source>Plastic (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
@@ -23272,6 +23292,11 @@
           <source>Transaction No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº asiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field NumAsiento_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3135574534 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Plastic Date Declaration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Declaración plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field Plastic Date Declaration - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3135574534 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
           <source>Plastic (kg)</source>
@@ -23462,6 +23487,11 @@
           <source>Perfil</source>
           <note from="Developer" annotates="general" priority="2">ESP="Perfil"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field Perfil_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 175460751 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
+          <source>Plastic Date Declaration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Declaración Plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field Plastic Date Declaration - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 175460751 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
           <source>Plastic (kg)</source>
@@ -25202,6 +25232,11 @@
           <source>Has pending amount</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tiene cantidad pendiente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Pendiente_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Plastic Date Declaration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Declaración plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Plastic Date Declaration - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Plastic (kg)</source>
