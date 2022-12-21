@@ -121,6 +121,11 @@ table 50152 "ZM Productión Tools"
             Caption = 'Direct unit cost.', Comment = 'ESP="Coste Directo"';
             DataClassification = CustomerContent;
         }
+        field(50; "Use"; text[100])
+        {
+            Caption = 'USe', comment = 'ESP="Uso"';
+            DataClassification = CustomerContent;
+        }
 
 
     }

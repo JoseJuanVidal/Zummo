@@ -19,6 +19,10 @@ page 50130 "Productions tool"
                 {
                     ApplicationArea = All;
                 }
+                field(Use; Use)
+                {
+                    ApplicationArea = all;
+                }
                 field(Brand; Rec.Brand)
                 {
                     ApplicationArea = All;

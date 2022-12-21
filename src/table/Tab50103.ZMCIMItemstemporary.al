@@ -14,7 +14,7 @@ table 50103 "ZM CIM Items temporary"
         }
         field(6; "Assembly BOM"; Boolean)
         {
-            Caption = 'Assembly BOM', Comment = 'ESP="L.M. de ensamblado"';
+            Caption = 'Assembly BOM', Comment = 'ESP="L.M. de Ensamblado"';
         }
         field(8; "Base Unit of Measure"; Code[10])
         {

@@ -5735,7 +5735,7 @@
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 3967890522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assembly BOM</source>
-          <note from="Developer" annotates="general" priority="2">ESP="L.M. de ensamblado"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. de Ensamblado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Assembly BOM - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 411531942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -6147,6 +6147,11 @@
           <source>Status</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 1928919597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>USe</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Uso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Use - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1889839597 - Field 3813820683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Value max.</source>

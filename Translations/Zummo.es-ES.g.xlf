@@ -6397,6 +6397,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Status - Property Caption</note>
           <target>Estado</target>
         </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 1928919597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>USe</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Uso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Use - Property Caption</note>
+          <target>Uso</target>
+        </trans-unit>
         <trans-unit id="Table 1889839597 - Field 3813820683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Value max.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Valor max."</note>
