@@ -336,6 +336,7 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
                 var
                     SalesHeader: Record "Sales Header";
                     rSalesHead: Record "Sales Header";
+                    Customer: Record Customer;
                     Selection: Integer;
                     rep: Report PedidoCliente;
                 begin
@@ -355,7 +356,11 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
                                 1:
                                     begin
                                         rep.Pvalorado(true);
-                                        rep.Pneto(false);
+                                        // buscamos el campo de customer, de si el cliente se obliga a NETO
+                                        if Customer.Get(Rec."Sell-to Customer No.") then
+                                            rep.Pneto(Customer."Mostrar Documentos Netos")
+                                        else
+                                            rep.Pneto(false);
                                         //if (SalesHeader."Document Type" = SalesHeader."Document Type"::Quote) then
                                         rep.PTipoDocumento(1);//1 pedido 2 proforma
 
