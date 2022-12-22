@@ -2924,5 +2924,10 @@ report 50111 "FacturaNacionalMaquinas"
         facturaLidl := false;
         facturaExportacion := false;
     end;
+
+    procedure Pneto(P_precioNeto: Boolean)
+    begin
+        mostrarNetos := P_precioNeto;
+    end;
 }
 

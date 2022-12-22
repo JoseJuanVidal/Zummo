@@ -96,6 +96,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 trigger OnAction()
                 var
                     SalesInvoiceHeader: Record "Sales Invoice Header";
+                    Customer: Record Customer;
                     recReqLine: Report FacturaExportacion;
                     reportFactura: Report FacturaNacionalMaquinas;
                     reportFacturaUK: Report FacturaNacionalUK;
@@ -121,6 +122,8 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                                     begin
                                         clear(reportFactura);
                                         reportFactura.EsNacional();
+                                        if Customer.Get(Rec."Sell-to Customer No.") then
+                                            reportFactura.Pneto(Customer."Mostrar Documentos Netos");
                                         reportFactura.SetTableView(SalesInvoiceHeader);
                                         reportFactura.Run();
                                     end;

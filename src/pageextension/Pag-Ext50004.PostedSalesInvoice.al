@@ -201,6 +201,7 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                 trigger OnAction()
                 var
                     SalesInvoiceHeader: Record "Sales Invoice Header";
+                    Customer: Record Customer;
                     recReqLine: Report FacturaExportacion;
                     reportFactura: Report FacturaNacionalMaquinas;
                     reportFacturaUK: Report FacturaNacionalUK;
@@ -226,6 +227,8 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                                     begin
                                         clear(reportFactura);
                                         reportFactura.EsNacional();
+                                        if Customer.Get(Rec."Sell-to Customer No.") then
+                                            reportFactura.Pneto(Customer."Mostrar Documentos Netos");
                                         reportFactura.SetTableView(SalesInvoiceHeader);
                                         reportFactura.Run();
                                     end;
