@@ -103,6 +103,10 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
+            field("Mostrar Documentos Netos"; "Mostrar Documentos Netos")
+            {
+                ApplicationArea = all;
+            }
         }
         addafter("VAT Registration No.")
         {

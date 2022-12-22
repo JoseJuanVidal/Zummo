@@ -317,6 +317,11 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             OptionMembers = " ","3A","A","B","C","Z";
             OptionCaption = ' ,3A,A,B,C,Z', Comment = 'ESP=" ,3A,A,B,C,Z"';
         }
+        field(50061; "Mostrar Documentos Netos"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Mostrar Documentos Netos', comment = 'ESP="Mostrar Documentos Netos"';
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var

@@ -25193,6 +25193,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mercado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Mercado_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3671009832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Mostrar Documentos Netos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Documentos Netos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Mostrar Documentos Netos - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 4170685114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Perfil</source>
           <note from="Developer" annotates="general" priority="2">ESP="Perfil"</note>

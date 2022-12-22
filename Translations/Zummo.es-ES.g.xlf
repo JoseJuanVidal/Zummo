@@ -5903,9 +5903,9 @@
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 3967890522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assembly BOM</source>
-          <note from="Developer" annotates="general" priority="2">ESP="L.M. de ensamblado"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. de Ensamblado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Assembly BOM - Property Caption</note>
-          <target>L.M. de ensamblado</target>
+          <target>L.M. de Ensamblado</target>
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 411531942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Base Unit of Measure</source>
@@ -27306,6 +27306,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mercado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Mercado_btc - Property Caption</note>
           <target>Mercado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3671009832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Mostrar Documentos Netos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Documentos Netos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Mostrar Documentos Netos - Property Caption</note>
+          <target>Mostrar Documentos Netos</target>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 4170685114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Perfil</source>
