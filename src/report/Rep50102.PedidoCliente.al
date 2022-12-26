@@ -2096,16 +2096,16 @@ report 50102 "PedidoCliente"
         ShipmentMethodCaptionLbl: Label 'Shipment Method', comment = 'ESP=""';
         PaymentMethodCaptionLbl: Label 'Payment Method', comment = 'ESP=""';
         PhoneNoCaptionLbl: Label 'Phone No.', comment = 'ESP="Telef."';
-        VATRegNoCaptionLbl: Label 'VAT Registration No.', comment = 'ESP="NIF"';
+        VATRegNoCaptionLbl: Label 'VAT Registration No.', comment = 'ESP="NIF",FRA="Nº TVA INTRA."';
         GiroNoCaptionLbl: Label 'Giro No.', comment = 'ESP=""';
         BankNameCaptionLbl: Label 'Bank', comment = 'ESP=""';
         BankAccountNoCaptionLbl: Label 'Account No.', comment = 'ESP=""';
         ShipmentDateCaptionLbl: Label 'Shipment Date', comment = 'ESP="Fecha envío"';
-        OrderNoCaptionLbl: Label 'Order No.', comment = 'ESP="Nº Pedido"';
+        OrderNoCaptionLbl: Label 'Order No.', comment = 'ESP="Nº Pedido",FRA="NUMÉRO D''ORDRE"';
         HeaderDimensionsCaptionLbl: Label 'Header Dimensions', comment = 'ESP=""';
-        UnitPriceCaptionLbl: Label 'Unit Price', comment = 'ESP="Precio Unitario"';
+        UnitPriceCaptionLbl: Label 'Unit Price', comment = 'ESP="Precio Unitario",FRA="Prix unitaire"';
         DiscountCaptionLbl: Label 'Discount %', comment = 'ESP=""';
-        AmountCaptionLbl: Label 'Amount', comment = 'ESP="Importe"';
+        AmountCaptionLbl: Label 'Amount', comment = 'ESP="Importe",FRA="Montant total';
         InvDiscAmtCaptionLbl: Label 'Invoice Discount Amount', comment = 'ESP=""';
         SubtotalCaptionLbl: Label 'Base Imponible', comment = 'ESP=""';
         PmtDiscGivenAmtCaptionLbl: Label 'Pmt. Discount Given Amount', comment = 'ESP=""';
@@ -2123,9 +2123,9 @@ report 50102 "PedidoCliente"
         ECPercentCaptionLbl: Label 'EC %', comment = 'ESP="%RE"';
         TotalCaptionLbl: Label 'Total', comment = 'ESP="Total"';
         VATBaseCaptionLbl: Label 'VAT Base', comment = 'ESP="Base Imponible IVA"';
-        ShiptoAddressCaptionLbl: Label 'Ship-to Address', comment = 'ESP="Envío a Dirección"';
+        ShiptoAddressCaptionLbl: Label 'Ship-to Address', comment = 'ESP="Envío a Dirección",FRA="Adresse de livraison"';
         CommentInterbCaptionLbl: Label 'Comment', comment = 'ESP="Comentario"';
-        DescriptionCaptionLbl: Label 'Description', comment = 'ESP="Descrición"';
+        DescriptionCaptionLbl: Label 'Description', comment = 'ESP="Descrición",FRA="Désignation"';
         GLAccountNoCaptionLbl: Label 'G/L Account No.', comment = 'ESP=""';
         PrepaymentSpecCaptionLbl: Label 'Prepayment Specification', comment = 'ESP=""';
         PrepaymentVATAmtSpecCaptionLbl: Label 'Prepayment VAT Amount Specification', comment = 'ESP=""';
@@ -2138,9 +2138,9 @@ report 50102 "PedidoCliente"
         CACTxt: Label 'Régimen especial del criterio de caja', comment = 'ESP="Régimen especial del criterio de caja"';
         //ZUMMO
 
-        PedidoDeCliente_Lbl: Label 'SALES ORDER', comment = 'ESP="PEDIDO DE CLIENTE"';
-        OfertaCliente_Lbl: Label 'PROFORMA INVOICE', comment = 'ESP="FACTURA PROFORMA"';
-        ProformaCliente_Lbl: Label 'PROFORMA INVOICE', comment = 'ESP="FACTURA PROFORMA"';
+        PedidoDeCliente_Lbl: Label 'SALES ORDER', comment = 'ESP="PEDIDO DE CLIENTE",Fra="COMMANDE DU CLIENT"';
+        OfertaCliente_Lbl: Label 'PROFORMA INVOICE', comment = 'ESP="FACTURA PROFORMA",FRA="FACTURE PROFORMA"';
+        ProformaCliente_Lbl: Label 'PROFORMA INVOICE', comment = 'ESP="FACTURA PROFORMA",FRA="FACTURE PROFORMA"';
 
         PRGestionPedidosCliente_Lbl: Label 'PR-MANAGEMENT OF CUSTOMER ORDERS', comment = 'ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"';
 
@@ -2149,40 +2149,40 @@ report 50102 "PedidoCliente"
         FO02_Lbl: Label 'FO.03_C3.02_V13', comment = 'ESP="FO.03_C3.02_V13"';//OFERTA
         FO03_Lbl: Label 'FO.03_C3.02_V13', comment = 'ESP="FO.03_C3.02_V13"'; //PROFORMA
 
-        Fecha_Lbl: Label 'Date', comment = 'ESP="Fecha"';
-        PedidoNo_Lbl: Label 'ORDER Nº', Comment = 'ESP="PEDIDO Nº"';
+        Fecha_Lbl: Label 'Date', comment = 'ESP="Fecha",FRA="Date"';
+        PedidoNo_Lbl: Label 'ORDER Nº', Comment = 'ESP="PEDIDO Nº",FRA="NUMÉRO D''ORDRE"';
         FEntrega_Lbl: Label 'Deliver Date', Comment = 'ESP="F.Entrega"';
-        CondicionDePago_Lbl: Label 'Payment Terms/Payment Method', Comment = 'ESP="Condición de Pago/Método de Pago"';
-        DestinoFinal_Lbl: Label 'Final Destination', Comment = 'ESP="Destino Final"';
-        PaisFabricacion_Lbl: Label 'Country Manufacturing', Comment = 'ESP="País Fabricación"';
-        Transportista_Lbl: Label 'Carrier', Comment = 'ESP="Transportista"';
+        CondicionDePago_Lbl: Label 'Payment Terms/Payment Method', Comment = 'ESP="Condición de Pago/Método de Pago",FRA="Conditions et mode de règlemenent"';
+        DestinoFinal_Lbl: Label 'Final Destination', Comment = 'ESP="Destino Final",FRA="Pays de destination"';
+        PaisFabricacion_Lbl: Label 'Country Manufacturing', Comment = 'ESP="País Fabricación",FRA="Pays de fabrication"';
+        Transportista_Lbl: Label 'Carrier', Comment = 'ESP="Transportista",FRA="Transporteur"';
         EmitidoPor_Lbl: Label 'Issued by:', Comment = 'ESP="Emitido por:"';
-        NIF_Lbl: Label 'VAT:', Comment = 'ESP="NIF:"';
-        TelFax_Lbl: Label 'Tel/Fax:', Comment = 'ESP="Tel/Fax:"';
-        Agente_Lbl: Label 'Agent:', Comment = 'ESP="Agente:"';
+        NIF_Lbl: Label 'VAT:', Comment = 'ESP="NIF:",FRA="Nº TVA Intra."';
+        TelFax_Lbl: Label 'Tel/Fax:', Comment = 'ESP="Tel/Fax:",FRA="Tel/Fax:"';
+        Agente_Lbl: Label 'Agent:', Comment = 'ESP="Agente:",FRA="Vendeur"';
         Cajas_Lbl: Label 'Boxes', Comment = 'ESP="Cajas"';
-        PesoBruto_Lbl: Label 'Gross Weight(Kg)', Comment = 'ESP="Peso Bruto(Kg)"';
-        Volumen_Lbl: Label 'Volume(m3)', Comment = 'ESP="Volumen(m3)"';
-        Articulo_Lbl: Label 'Items', Comment = 'ESP="Artículos"';
-        Descripcion_Lbl: Label 'Description', Comment = 'ESP="Descripción"';
-        Cantidad_Lbl: Label 'Quantity', Comment = 'ESP="Cantidad"';
-        PrecioU_Lbl: Label 'Price/unit', Comment = 'ESP="Precio U."';
-        Dto_Lbl: Label 'Dto. 1', Comment = 'ESP="Dto. 1"';
-        Dto2_Lbl: Label 'Dto. 2', comment = 'ESP="Dto. 2"';
-        Importe_Lbl: Label 'Amount', Comment = 'ESP="Importe"';
-        NoSerie_Lbl: Label 'Serial No. ', Comment = 'ESP="Nº de Serie:"';
-        Observaciones_Lbl: Label 'Remarks:', Comment = 'ESP="Observaciones:"';
-        BaseImponible_Lbl: Label 'Tax base', Comment = 'ESP="Base Imponible"';
-        Base_Lbl: Label 'Tax Base', Comment = 'ESP="Base"';
-        IVA_Lbl: Label 'VAT', Comment = 'ESP="IVA"';
-        Porcentaje_Lbl: Label '%', Comment = 'ESP="%"';
-        PPdisc_Lbl: Label 'Pp.Disc', Comment = 'ESP="Dto.PP"';
-        RE_Lbl: Label 'R.E.', Comment = 'ESP="R.E."';
-        Comentarios_Lbl: Label 'Comments', Comment = 'ESP="Comentarios"';
-        ImporteBruto_Lbl: Label 'Gross Amount', Comment = 'ESP="Importe Bruto"';
-        DtoGeneral_Lbl: Label 'Disc.Com', Comment = 'ESP="Dpt.Gen."';
-        Portes_Lbl: Label 'Freight', Comment = 'ESP="Portes"';
-        SubTotal_Lbl: Label 'Tax Base', Comment = 'ESP="Base Imponible"';
+        PesoBruto_Lbl: Label 'Gross Weight(Kg)', Comment = 'ESP="Peso Bruto(Kg)",FRA="Poids Brut (kg)"';
+        Volumen_Lbl: Label 'Volume(m3)', Comment = 'ESP="Volumen(m3)",FRA="Volume (m3)"';
+        Articulo_Lbl: Label 'Items', Comment = 'ESP="Artículos",FRA="Ref. Article"';
+        Descripcion_Lbl: Label 'Description', Comment = 'ESP="Descripción",FRA="Designation"';
+        Cantidad_Lbl: Label 'Quantity', Comment = 'ESP="Cantidad",FRA="Quantité"';
+        PrecioU_Lbl: Label 'Price/unit', Comment = 'ESP="Precio U.",FRA="Prix Unitaire"';
+        Dto_Lbl: Label 'Dto. 1', Comment = 'ESP="Dto. 1",FRA="Remise 1"';
+        Dto2_Lbl: Label 'Dto. 2', comment = 'ESP="Dto. 2",FRA="Remise 2"';
+        Importe_Lbl: Label 'Amount', Comment = 'ESP="Importe",FRA=Montant';
+        NoSerie_Lbl: Label 'Serial No. ', Comment = 'ESP="Nº de Serie:",FRA="N° de série"';
+        Observaciones_Lbl: Label 'Remarks:', Comment = 'ESP="Observaciones:",FRA="Observations"';
+        BaseImponible_Lbl: Label 'Tax base', Comment = 'ESP="Base Imponible",FRA="Montant HT"';
+        Base_Lbl: Label 'Tax Base', Comment = 'ESP="Base",FRA="Montant HT"';
+        IVA_Lbl: Label 'VAT', Comment = 'ESP="IVA",FRA="Montant TVA"';
+        Porcentaje_Lbl: Label '%', Comment = 'ESP="%",FRA="Taux TVA"';
+        PPdisc_Lbl: Label 'Pp.Disc', Comment = 'ESP="Dto.PP",FRA="Escompte"';
+        RE_Lbl: Label 'R.E.', Comment = 'ESP="R.E.",FRA="Retenue"';
+        Comentarios_Lbl: Label 'Comments', Comment = 'ESP="Comentarios",FRA="Observations"';
+        ImporteBruto_Lbl: Label 'Gross Amount', Comment = 'ESP="Importe Bruto",FRA="Montant avant remise"';
+        DtoGeneral_Lbl: Label 'Disc.Com', Comment = 'ESP="Dpt.Gen.",FRA="Remise Commerciale"';
+        Portes_Lbl: Label 'Freight', Comment = 'ESP="Portes",FRA="Transport"';
+        SubTotal_Lbl: Label 'Tax Base', Comment = 'ESP="Base Imponible",FRA="Montant avant remise"';
         SegunLoDispuesto_Lbl: Label 'As provided by Regulation (EU) 2016/769 of the European Parliament and of the Council of April 27, 2016 regarding the protection of natural persons, we inform you that your data will be incorporated into the treatment system owned by ZUMMO MECHANICAL INNOVATIONS, SA - in order to be able to send you the corresponding invoice. You may exercise the rights of access, rectification, limitation of treatment, deletion, portability and opposition / revocation, in the terms established by current regulations on data protection, by sending your request to the postal address indicated above, you can also address to the competent Control Authority to submit the claim it deems appropriate.'
         , comment = 'ESP="Según lo Dispuesto por el Reglamento (UE) 2016/769 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de ZUMMO INNOVACIONES MECÁNICAS, S.A. - con la finalidad de poder remitirle la correspondiente factura. Podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición/revocación, en los términos que establece la normativa vigente en materia de protección de datos, dirigiendo su petición a la dirección postal arriba indicada, asimismo, podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna."';
 
@@ -2190,7 +2190,7 @@ report 50102 "PedidoCliente"
         , comment = 'ESP="Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia el 26 de enero de 1999, Tomo 4336, Libro 1648, Sección Gral., Folio 212, hoja Y-22381, Inscripción 1ª CIF A-9Nº R.I. Productor AEE 288"';
         TFZummo_Lbl: Label 'T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es'
         , comment = 'ESP="T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es"';
-        workDescription_lbl: Label 'Description', comment = 'ESP="Descripción"';
+        workDescription_lbl: Label 'Description', comment = 'ESP="Descripción".FRA="Désignation"';
         txtDescLinea: text[100];
         boolLineasPendientes: Boolean;
         sumaPesoBruto: Decimal;

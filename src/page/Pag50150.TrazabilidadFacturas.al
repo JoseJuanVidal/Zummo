@@ -24,7 +24,7 @@ page 50150 "Trazabilidad Facturas"
                 field(FilterCustomer; FilterCustomer)
                 {
                     ApplicationArea = all;
-                    Caption = 'Filtro Cód. Clientes', comment = 'ESP="Filtro Cód. ClientesFiltro Cód. Clientes"';
+                    Caption = 'Filtro Cód. Clientes', comment = 'ESP="Filtro Cód. Clientes",FRA="Filtrer Code Client"';
 
                     TableRelation = Customer;
                 }
@@ -197,6 +197,7 @@ page 50150 "Trazabilidad Facturas"
         Item: record item;
         SalesInvoiceLine: Record "Sales Invoice Line";
         Mostrar: Boolean;
+        lblError: Label 'No puede se puede trazar si no indica un filtro', comment = 'ESP="No puede se puede trazar si no indica un filtro"';
     begin
         // if tmpSalesInvoiceLine.IsTemporary then
         //     error('La tabla %1 deber ser temporal', tmpSalesInvoiceLine.TableCaption);
@@ -204,6 +205,8 @@ page 50150 "Trazabilidad Facturas"
         Rec.DeleteAll();
         TextoFiltro := '';
         SalesInvoiceHeader.Reset();
+        if (FilterDocumentNo = '') and (FilterFecha = '') and (FilterCustomer = '') then
+            error(lblError);
         if FilterDocumentNo <> '' then
             SalesInvoiceHeader.SetFilter("No.", FilterDocumentNo);
         if FilterFecha <> '' then
