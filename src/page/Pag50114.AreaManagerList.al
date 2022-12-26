@@ -26,7 +26,10 @@ page 50114 "Area Manager List"
                 {
                     ApplicationArea = All;
                 }
-
+                field("CRM ID"; "CRM ID")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }
@@ -39,7 +42,36 @@ page 50114 "Area Manager List"
             {
                 Caption = 'CDS';
                 Visible = CDSIntegrationEnabled;
-
+                action(CRMOwnerID)
+                {
+                    Caption = 'Sync. Owner CRM', comment = 'ESP="Sincronizar Propietario CRM"';
+                    ApplicationArea = All;
+                    Visible = true;
+                    Image = RefreshText;
+                    Enabled = CDSIsCoupledToRecord;
+                    ToolTip = 'Update owner of CRM clients assigned to Integration to their Area Manager.', comment = 'ESP="Actualiza propietario de los clientes CRM asignados a Integracion a su Area Manager"';
+                    trigger OnAction()
+                    var
+                        CRMIntegrationManagement: Codeunit Integracion_crm_btc;
+                    begin
+                        CRMIntegrationManagement.UpdateOwneridAreaManager;
+                    end;
+                }
+                action(AreaManagerCustomerUpdate)
+                {
+                    Caption = 'Update Account CRM', comment = 'ESP="Actualiza Propietario Cuentas CRM"';
+                    ApplicationArea = All;
+                    Visible = true;
+                    Image = RefreshText;
+                    Enabled = CDSIsCoupledToRecord;
+                    ToolTip = 'Update owner of CRM clients assigned to Integration to their Area Manager.', comment = 'ESP="Actualiza propietario de los clientes del Area Manager"';
+                    trigger OnAction()
+                    var
+                        CRMIntegrationManagement: Codeunit Integracion_crm_btc;
+                    begin
+                        CRMIntegrationManagement.UpdateAccountAreaManager(Rec);
+                    end;
+                }
                 action(CDSSynchronizeNow)
                 {
                     Caption = 'Synchronize', comment = 'ESP="Sincronizar"';

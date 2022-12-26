@@ -352,6 +352,23 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
 
             }
         }
+        addafter(ShowLog)
+        {
+            action(UpdateOWnerID)
+            {
+                ApplicationArea = all;
+                Caption = 'Update Owner ID CRM', comment = 'ESP="Actualiza Propietario Cuentas CRM"';
+                Image = Refresh;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Integracion_crm_btc;
+                begin
+                    Funciones.UpdateCustomerAccountAreaManager(Rec);
+                end;
+
+            }
+        }
     }
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean

@@ -1022,8 +1022,10 @@ codeunit 50102 "Integracion_crm_btc"
         UnitOfMeasureCode := FORMAT(UnitOfMeasureCodeFieldRef.VALUE);
 
         CRMProductos_btc.QuantityDecimal := 2; //2 decimales por defecto
-        if not Item.Blocked then
-            CRMProductos_btc.StatusCode := 1;//CRMProductos_btc.StatusCode::Active;
+        if Item.Blocked or item."Sales Blocked" then
+            CRMProductos_btc.StatusCode := CRMProductos_btc.StatusCode::Retired //CRMProductos_btc.StatusCode::Retired;
+        else
+            CRMProductos_btc.StatusCode := CRMProductos_btc.StatusCode::Active;//CRMProductos_btc.StatusCode::Active;
 
         // Get the unit of measure ID used in this product
         // On that unit of measure ID, get the UoMName, UomscheduleID, UomscheduleName and update them in the product if needed
@@ -3203,4 +3205,101 @@ codeunit 50102 "Integracion_crm_btc"
     var
         CRMProductName: Codeunit "CRM Product Name";
         CRMSynchHelper: Codeunit "CRM Synch. Helper";
+
+    procedure UpdateOwneridAreaManager()
+    var
+        Customer: Record Customer;
+        CRMAccount: Record "CRM Account";
+        CRMAreaManager: Record "CRM AreaManager_crm_btc";
+        NewUserId: text;
+    begin
+        if not Confirm('¿desea actualizar el Owner de los clientes de integracion BC en CRM?', false) then
+            exit;
+        CRMAccount.SetRange(OwnerId, 'a4e5e921-6e7a-ea11-a811-000d3a2c3f51');
+        if CRMAccount.FindFirst() then
+            repeat
+                if Customer.Get(CRMAccount.AccountNumber) then begin
+                    // buscamos el AreaManager y le ponemos el ID de Systemuser
+                    if Customer.AreaManager_btc <> '' then begin
+                        NewUserId := DevuelveUserId(Customer.AreaManager_btc);
+                        if NewUserId <> '' then begin
+                            CRMAccount.OwnerId := NewUserId;
+                            CRMAccount.Modify();
+                        end;
+                    end;
+
+                end;
+
+            until CRMAccount.next() = 0;
+
+    end;
+
+    procedure UpdateAccountAreaManager(AreaManager: Record TextosAuxiliares)
+    var
+        Customer: Record Customer;
+        CRMAccount: Record "CRM Account";
+        CRMAreaManager: Record "CRM AreaManager_crm_btc";
+        NewUserId: text;
+    begin
+        if not Confirm('¿Desea actualizar el Owner de los clientes de %1 en CRM?\%2', false, AreaManager.NumReg, AreaManager."CRM ID") then
+            exit;
+        Customer.Reset();
+        Customer.SetRange(AreaManager_btc, AreaManager.NumReg);
+        if Customer.FindFirst() then
+            repeat
+                NewUserId := AreaManager."CRM ID";
+                if NewUserId <> '' then begin
+                    CRMAccount.Reset();
+                    CRMAccount.SetRange(AccountNumber, Customer."No.");
+                    IF CRMAccount.FindFirst() then begin
+                        if CRMAccount.OwnerId <> NewUserId then begin
+                            CRMAccount.OwnerId := NewUserId;
+                            CRMAccount.Modify();
+                        end;
+                    end;
+                end;
+            until Customer.next() = 0;
+
+    end;
+
+
+    procedure UpdateCustomerAccountAreaManager(Customer: Record Customer)
+    var
+        AreaManager: Record TextosAuxiliares;
+        CRMAccount: Record "CRM Account";
+        CRMAreaManager: Record "CRM AreaManager_crm_btc";
+        NewUserId: text;
+    begin
+        AreaManager.reset;
+        AreaManager.SetRange(TipoTabla, AreaManager.TipoTabla::AreaManager);
+        AreaManager.SetRange(NumReg, Customer.AreaManager_btc);
+        if AreaManager.FindFirst() then begin
+            if not Confirm('¿Desea actualizar el Owner del cliente %1 en CRM?\%2', false, AreaManager.NumReg, AreaManager."CRM ID") then
+                exit;
+            NewUserId := AreaManager."CRM ID";
+            if NewUserId <> '' then begin
+                CRMAccount.Reset();
+                CRMAccount.SetRange(AccountNumber, Customer."No.");
+                IF CRMAccount.FindFirst() then begin
+                    if CRMAccount.OwnerId <> NewUserId then begin
+                        CRMAccount.OwnerId := NewUserId;
+                        CRMAccount.Modify();
+                    end;
+                end;
+            end;
+
+        end;
+    end;
+
+    local procedure DevuelveUserId(AreaManagerID: Text): Text
+    var
+        AreaManager: Record TextosAuxiliares;
+    begin
+        AreaManager.Reset();
+        AreaManager.SetRange(TipoTabla, AreaManager.TipoTabla::AreaManager);
+        AreaManager.SetRange(NumReg, AreaManagerID);
+        if AreaManager.FindFirst() then
+            exit(AreaManager."CRM ID");
+
+    end;
 }

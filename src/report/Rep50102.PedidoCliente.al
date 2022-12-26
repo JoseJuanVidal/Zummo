@@ -2172,19 +2172,19 @@ report 50102 "PedidoCliente"
         Importe_Lbl: Label 'Amount', Comment = 'ESP="Importe",FRA=Montant';
         NoSerie_Lbl: Label 'Serial No. ', Comment = 'ESP="Nº de Serie:",FRA="N° de série"';
         Observaciones_Lbl: Label 'Remarks:', Comment = 'ESP="Observaciones:",FRA="Observations"';
-        BaseImponible_Lbl: Label 'Tax base', Comment = 'ESP="Base Imponible",FRA="Montant HT"';
-        Base_Lbl: Label 'Tax Base', Comment = 'ESP="Base",FRA="Montant HT"';
+        BaseImponible_Lbl: Label 'Tax base', Comment = 'ESP="Base Imponible",FRA="Montant Fiscale"';
+        Base_Lbl: Label 'Tax Base', Comment = 'ESP="Base",FRA="Base"';
         IVA_Lbl: Label 'VAT', Comment = 'ESP="IVA",FRA="Montant TVA"';
         Porcentaje_Lbl: Label '%', Comment = 'ESP="%",FRA="Taux TVA"';
-        PPdisc_Lbl: Label 'Pp.Disc', Comment = 'ESP="Dto.PP",FRA="Escompte"';
+        PPdisc_Lbl: Label 'Pp.Disc', Comment = 'ESP="Dto.PP",FRA="E. Caisse"';
         RE_Lbl: Label 'R.E.', Comment = 'ESP="R.E.",FRA="Retenue"';
         Comentarios_Lbl: Label 'Comments', Comment = 'ESP="Comentarios",FRA="Observations"';
-        ImporteBruto_Lbl: Label 'Gross Amount', Comment = 'ESP="Importe Bruto",FRA="Montant avant remise"';
-        DtoGeneral_Lbl: Label 'Disc.Com', Comment = 'ESP="Dpt.Gen.",FRA="Remise Commerciale"';
+        ImporteBruto_Lbl: Label 'Gross Amount', Comment = 'ESP="Importe Bruto",FRA="Montant brut"';
+        DtoGeneral_Lbl: Label 'Disc.Com', Comment = 'ESP="Dpt.Gen.",FRA="E. Commerc."';
         Portes_Lbl: Label 'Freight', Comment = 'ESP="Portes",FRA="Transport"';
-        SubTotal_Lbl: Label 'Tax Base', Comment = 'ESP="Base Imponible",FRA="Montant avant remise"';
+        SubTotal_Lbl: Label 'Tax Base', Comment = 'ESP="Base Imponible",FRA="Base Fiscale"';
         SegunLoDispuesto_Lbl: Label 'As provided by Regulation (EU) 2016/769 of the European Parliament and of the Council of April 27, 2016 regarding the protection of natural persons, we inform you that your data will be incorporated into the treatment system owned by ZUMMO MECHANICAL INNOVATIONS, SA - in order to be able to send you the corresponding invoice. You may exercise the rights of access, rectification, limitation of treatment, deletion, portability and opposition / revocation, in the terms established by current regulations on data protection, by sending your request to the postal address indicated above, you can also address to the competent Control Authority to submit the claim it deems appropriate.'
-        , comment = 'ESP="Según lo Dispuesto por el Reglamento (UE) 2016/769 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de ZUMMO INNOVACIONES MECÁNICAS, S.A. - con la finalidad de poder remitirle la correspondiente factura. Podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición/revocación, en los términos que establece la normativa vigente en materia de protección de datos, dirigiendo su petición a la dirección postal arriba indicada, asimismo, podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna."';
+        , comment = 'ESP="Según lo Dispuesto por el Reglamento (UE) 2016/769 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de ZUMMO INNOVACIONES MECÁNICAS, S.A. - con la finalidad de poder remitirle la correspondiente factura. Podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición/revocación, en los términos que establece la normativa vigente en materia de protección de datos, dirigiendo su petición a la dirección postal arriba indicada, asimismo, podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna.",FRA="Conformément aux dispositions du règlement (UE) 2016/769 du Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques, nous vous informons que vos données seront intégrées au système de traitement appartenant à ZUMMO INNOVACIONES MECÁNICAS, S.A. - afin de pouvoir vous envoyer la facture correspondante. Vous pouvez exercer vos droits d''accès, de rectification, de limitation du traitement, d''effacement, de portabilité et d''opposition/révocation, dans les termes établis par la législation en vigueur sur la protection des données, en envoyant votre demande à l''adresse postale indiquée ci-dessus, et vous pouvez également vous adresser à l''Autorité de contrôle compétente pour présenter réclamation jugez appropriée."';
 
         ZummoInnovaciones_Lbl: Label 'Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on January 26, 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-9Nº R.I. AEE producer 288'
         , comment = 'ESP="Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia el 26 de enero de 1999, Tomo 4336, Libro 1648, Sección Gral., Folio 212, hoja Y-22381, Inscripción 1ª CIF A-9Nº R.I. Productor AEE 288"';

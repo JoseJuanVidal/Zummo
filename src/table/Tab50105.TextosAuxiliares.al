@@ -75,6 +75,13 @@ table 50105 "TextosAuxiliares"
             DataClassification = CustomerContent;
             Caption = 'Warranty Date', comment = 'ESP=Años de Garantía';
         }
+        field(50; "CRM ID"; guid)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CRM ID', comment = 'ESP="CRM ID"';
+            TableRelation = "CRM Systemuser";
+            ValidateTableRelation = false;
+        }
     }
 
     keys
