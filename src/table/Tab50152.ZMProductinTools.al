@@ -101,7 +101,7 @@ table 50152 "ZM Productión Tools"
         }
         field(18; "Last Vendor No."; code[20])
         {
-            Caption = 'Next date revision', Comment = 'ESP="Fecha siguiente revisión"';
+            Caption = 'Last Vendor No.', Comment = 'ESP="Ult. Cód. proveedor"';
             DataClassification = CustomerContent;
             Editable = false;
         }
@@ -123,10 +123,24 @@ table 50152 "ZM Productión Tools"
         }
         field(50; "Use"; text[100])
         {
-            Caption = 'USe', comment = 'ESP="Uso"';
+            Caption = 'Use', comment = 'ESP="Uso"';
             DataClassification = CustomerContent;
         }
-
+        field(51; "Bin"; text[100])
+        {
+            Caption = 'Bin', comment = 'ESP="Ubicación"';
+            DataClassification = CustomerContent;
+        }
+        field(53; Type; Enum "ZM Prod. Tools Type")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Type', comment = 'ESP="Tipo"';
+        }
+        field(54; Units; Integer)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Units', comment = 'ESP="Unidades"';
+        }
 
     }
     keys

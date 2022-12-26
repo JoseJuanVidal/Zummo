@@ -6,7 +6,7 @@ page 50129 "Productions tools"
     SourceTable = "ZM Productión Tools";
     UsageCategory = Lists;
     CardPageId = "Productions tool";
-    Editable = false;
+    //Editable = false;
 
     layout
     {
@@ -26,6 +26,14 @@ page 50129 "Productions tools"
                 {
                     ApplicationArea = all;
                 }
+                field(Bin; Bin)
+                {
+                    ApplicationArea = all;
+                }
+                field(Type; Type)
+                {
+                    ApplicationArea = all;
+                }
                 field(Brand; Rec.Brand)
                 {
                     ApplicationArea = All;
@@ -39,6 +47,10 @@ page 50129 "Productions tools"
                 {
                     ApplicationArea = All;
                 }
+                field(Units; Units)
+                {
+                    ApplicationArea = all;
+                }
                 field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = All;
@@ -46,6 +58,10 @@ page 50129 "Productions tools"
                 field("Purchase Date"; Rec."Purchase Date")
                 {
                     ApplicationArea = All;
+                }
+                field("Vendor No."; "Vendor No.")
+                {
+                    ApplicationArea = all;
                 }
                 field("Last date revision"; Rec."Last date revision")
                 {

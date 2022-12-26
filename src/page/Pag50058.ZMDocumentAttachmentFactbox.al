@@ -62,7 +62,7 @@ page 50058 "ZM Document Attachment Factbox"
         DocumentAttachmentDetails.RUNMODAL;
     end;
 
-    procedure SetTableNo(ptableId: Integer; pNo: code[10]; vLineNo: Integer)
+    procedure SetTableNo(ptableId: Integer; pNo: code[20]; vLineNo: Integer)
     begin
         iTableID := ptableId;
         cNo := pNo;

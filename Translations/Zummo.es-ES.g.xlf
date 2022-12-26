@@ -6295,6 +6295,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - NamedType lblErrorDelete</note>
           <target>Cancelado por el usuario</target>
         </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 400793991 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bin</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ubicación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Bin - Property Caption</note>
+          <target>Ubicación</target>
+        </trans-unit>
         <trans-unit id="Table 1889839597 - Field 3011597373 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Brand</source>
           <note from="Developer" annotates="general" priority="2">ESP="Marca"</note>
@@ -6332,10 +6338,10 @@
           <target>Ult. fecha revisión</target>
         </trans-unit>
         <trans-unit id="Table 1889839597 - Field 3845766699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Next date revision</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha siguiente revisión"</note>
+          <source>Last Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. Cód. proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Last Vendor No. - Property Caption</note>
-          <target>Fecha siguiente revisión</target>
+          <target>Ult. Cód. proveedor</target>
         </trans-unit>
         <trans-unit id="Table 1889839597 - Field 423926106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Machine Center</source>
@@ -6397,8 +6403,20 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Status - Property Caption</note>
           <target>Estado</target>
         </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Type - Property Caption</note>
+          <target>Tipo</target>
+        </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 2864861839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Units</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Unidades"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Units - Property Caption</note>
+          <target>Unidades</target>
+        </trans-unit>
         <trans-unit id="Table 1889839597 - Field 1928919597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>USe</source>
+          <source>Use</source>
           <note from="Developer" annotates="general" priority="2">ESP="Uso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Use - Property Caption</note>
           <target>Uso</target>
