@@ -1082,6 +1082,23 @@ codeunit 50101 "Eventos_btc"
         end;
     end;
 
+    // =============      Report_GetSourceDocuments_OnAfterCreateRcptHeader         ====================
+    // ==  
+    // ==  Al registrar una recepción de almacen, que en los albaranes tambien se actualice la cantidad de plastico, se lo lleve 
+    // ==  
+    // ======================================================================================================
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Whse.-Post Receipt", 'OnInitSourceDocumentHeaderOnBeforePurchHeaderModify', '', true, true)]
+    local procedure Report_GetSourceDocuments_OnAfterCreateRcptHeader(var PurchaseHeader: Record "Purchase Header"; var WarehouseReceiptHeader: Record "Warehouse Receipt Header"; var ModifyHeader: Boolean)
+    begin
+        // actualizamos los datos de Plastic
+        if PurchaseHeader.IsTemporary then
+            exit;
+        PurchaseHeader."Plastic Qty. (kg)" := WarehouseReceiptHeader."Plastic Qty. (kg)";
+        PurchaseHeader."Recycled plastic Qty. (kg)" := WarehouseReceiptHeader."Recycled plastic Qty. (kg)";
+        PurchaseHeader."Plastic Date Declaration" := WarehouseReceiptHeader."Plastic Date Declaration";
+    end;
+
 
     // =============     Purchase Price - Evvento de           ====================
     // ==  
