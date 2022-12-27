@@ -29,6 +29,7 @@ page 50114 "Area Manager List"
                 field("CRM ID"; "CRM ID")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }

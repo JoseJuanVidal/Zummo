@@ -50,6 +50,10 @@ page 50056 "ZM CimWorks Item"
                 {
                     ApplicationArea = all;
                 }
+                field(Color; Color)
+                {
+                    ApplicationArea = all;
+                }
                 field(Inventory; Inventory)
                 {
                     ApplicationArea = all;

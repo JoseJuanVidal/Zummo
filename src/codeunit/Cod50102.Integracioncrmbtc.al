@@ -1275,6 +1275,7 @@ codeunit 50102 "Integracion_crm_btc"
             end;
         end;
         // - JJV
+        // TODO 27/12/2022 esto igual deberia estar por AREA MANAGER () nueva funcionalidad para permisos SALES
 
         //******************** PROVINCIA ********************
         Provincia.Reset();
@@ -3212,30 +3213,38 @@ codeunit 50102 "Integracion_crm_btc"
         CRMAccount: Record "CRM Account";
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
         NewUserId: text;
+        Window: Dialog;
     begin
         if not Confirm('¿desea actualizar el Owner de los clientes de integracion BC en CRM?', false) then
             exit;
+        Window.Open('#1###############\#2##########################################\#3####################################');
         CRMAccount.SetRange(OwnerId, 'a4e5e921-6e7a-ea11-a811-000d3a2c3f51');
         if CRMAccount.FindFirst() then
             repeat
                 if Customer.Get(CRMAccount.AccountNumber) then begin
+                    Window.Update(1, Customer."No.");
+                    Window.Update(2, Customer."Name");
                     // buscamos el AreaManager y le ponemos el ID de Systemuser
-                    if Customer.AreaManager_btc <> '' then begin
-                        NewUserId := DevuelveUserId(Customer.AreaManager_btc);
-                        if NewUserId <> '' then begin
-                            CRMAccount.OwnerId := NewUserId;
-                            CRMAccount.Modify();
+                    if GetUpdateOwnerSales(Customer, NewUserId) then begin
+                        if (NewUserId <> '') and (NewUserId <> '{00000000-0000-0000-0000-000000000000}') then begin
+                            if NewUserId <> CRMAccount.OwnerId then begin
+                                CRMAccount.OwnerId := NewUserId;
+                                CRMAccount.Modify();
+                            end;
                         end;
                     end;
 
                 end;
 
             until CRMAccount.next() = 0;
+        Window.Close();
 
     end;
 
     procedure UpdateAccountAreaManager(AreaManager: Record TextosAuxiliares)
     var
+        SalesPerson: Record "Salesperson/Purchaser";
+        AreaManagerSalesPerson: Record TextosAuxiliares;
         Customer: Record Customer;
         CRMAccount: Record "CRM Account";
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
@@ -3247,21 +3256,20 @@ codeunit 50102 "Integracion_crm_btc"
         Customer.SetRange(AreaManager_btc, AreaManager.NumReg);
         if Customer.FindFirst() then
             repeat
-                NewUserId := AreaManager."CRM ID";
-                if NewUserId <> '' then begin
-                    CRMAccount.Reset();
-                    CRMAccount.SetRange(AccountNumber, Customer."No.");
-                    IF CRMAccount.FindFirst() then begin
-                        if CRMAccount.OwnerId <> NewUserId then begin
-                            CRMAccount.OwnerId := NewUserId;
-                            CRMAccount.Modify();
+                if GetUpdateOwnerSales(Customer, NewUserId) then begin
+                    if (NewUserId <> '') and (NewUserId <> '{00000000-0000-0000-0000-000000000000}') then begin
+                        CRMAccount.Reset();
+                        CRMAccount.SetRange(AccountNumber, Customer."No.");
+                        IF CRMAccount.FindFirst() then begin
+                            if CRMAccount.OwnerId <> NewUserId then begin
+                                CRMAccount.OwnerId := NewUserId;
+                                CRMAccount.Modify();
+                            end;
                         end;
                     end;
                 end;
             until Customer.next() = 0;
-
     end;
-
 
     procedure UpdateCustomerAccountAreaManager(Customer: Record Customer)
     var
@@ -3270,14 +3278,11 @@ codeunit 50102 "Integracion_crm_btc"
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
         NewUserId: text;
     begin
-        AreaManager.reset;
-        AreaManager.SetRange(TipoTabla, AreaManager.TipoTabla::AreaManager);
-        AreaManager.SetRange(NumReg, Customer.AreaManager_btc);
-        if AreaManager.FindFirst() then begin
-            if not Confirm('¿Desea actualizar el Owner del cliente %1 en CRM?\%2', false, AreaManager.NumReg, AreaManager."CRM ID") then
-                exit;
-            NewUserId := AreaManager."CRM ID";
-            if NewUserId <> '' then begin
+        if GetUpdateOwnerSales(Customer, NewUserId) then begin
+            if (NewUserId = '') or (NewUserId = '{00000000-0000-0000-0000-000000000000}') then begin
+                if not Confirm('¿Desea actualizar el Owner %1 del cliente %2 en CRM?\%3', false, AreaManager.NumReg, Customer.Name, AreaManager."CRM ID") then
+                    exit;
+
                 CRMAccount.Reset();
                 CRMAccount.SetRange(AccountNumber, Customer."No.");
                 IF CRMAccount.FindFirst() then begin
@@ -3286,8 +3291,38 @@ codeunit 50102 "Integracion_crm_btc"
                         CRMAccount.Modify();
                     end;
                 end;
-            end;
 
+            end;
+        end;
+    end;
+
+    local procedure GetUpdateOwnerSales(Customer: Record Customer; var NewUserId: text) Encontrado: Boolean
+    var
+        SalesPerson: Record "Salesperson/Purchaser";
+        AreaManager: Record TextosAuxiliares;
+
+    begin
+        // si tienen un area manager, pero el propietario es otro, caso de Inside Sales 
+        // se rellena el owner seria el area manager = sales person
+        if Customer."Salesperson Code" <> '' then begin
+            if SalesPerson.Get(Customer."Salesperson Code") then begin
+                AreaManager.Reset();
+                AreaManager.SetRange(TipoTabla, AreaManager.TipoTabla::AreaManager);
+                AreaManager.SetRange(NumReg, SalesPerson.AreaManager_btc);
+                if AreaManager.FindFirst() then begin
+                    NewUserId := AreaManager."CRM ID";
+                    Encontrado := true;
+                end;
+            end;
+        end;
+        if (NewUserId = '') or (NewUserId = '{00000000-0000-0000-0000-000000000000}') then begin
+            AreaManager.Reset();
+            AreaManager.SetRange(TipoTabla, AreaManager.TipoTabla::AreaManager);
+            AreaManager.SetRange(NumReg, Customer.AreaManager_btc);
+            if AreaManager.FindFirst() then begin
+                NewUserId := AreaManager."CRM ID";
+                Encontrado := true;
+            end;
         end;
     end;
 

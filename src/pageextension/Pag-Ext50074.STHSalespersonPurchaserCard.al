@@ -8,6 +8,10 @@ pageextension 50074 "STH Salesperson/Purchaser Card" extends "Salesperson/Purcha
             {
                 ApplicationArea = all;
             }
+            field(AreaManager_btc; AreaManager_btc)
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }
