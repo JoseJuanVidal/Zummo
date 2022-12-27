@@ -296,7 +296,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
                     lblConfirm: Label '¿Do you want to upgrade Dyn 365 Sales accounts?', comment = 'ESP="¿Desea actualizar las cuentas de Dyn 365 Sales?"';
                 begin
                     if Confirm(lblConfirm) then
-                        IntegracionCRM.CRMUpdateCustomer();
+                        IntegracionCRM.CRMUpdateCustomers();
                 end;
 
             }

@@ -3223,6 +3223,9 @@ codeunit 50102 "Integracion_crm_btc"
         CRMAccount.SetRange(OwnerId, 'a4e5e921-6e7a-ea11-a811-000d3a2c3f51');
         if CRMAccount.FindFirst() then
             repeat
+                // actualizamos el estado tambien
+                CRMUpdateCustomerState(CRMAccount);
+
                 if Customer.Get(CRMAccount.AccountNumber) then begin
                     Window.Update(1, Customer."No.");
                     Window.Update(2, Customer."Name");
@@ -3263,6 +3266,8 @@ codeunit 50102 "Integracion_crm_btc"
                         CRMAccount.Reset();
                         CRMAccount.SetRange(AccountNumber, Customer."No.");
                         IF CRMAccount.FindFirst() then begin
+                            // actualizamos el estado tambien
+                            CRMUpdateCustomerState(CRMAccount);
                             if CRMAccount.OwnerId <> NewUserId then begin
                                 CRMAccount.OwnerId := NewUserId;
                                 CRMAccount.Modify();
@@ -3280,6 +3285,7 @@ codeunit 50102 "Integracion_crm_btc"
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
         NewUserId: Guid;
     begin
+        // asiganamos el propietario
         if GetUpdateOwnerSales(Customer, NewUserId) then begin
             if (NewUserId = '') or (NewUserId = '{00000000-0000-0000-0000-000000000000}') then begin
                 if not Confirm('¿Desea actualizar el Owner %1 del cliente %2 en CRM?\%3', false, AreaManager.NumReg, Customer.Name, AreaManager."CRM ID") then
@@ -3288,6 +3294,9 @@ codeunit 50102 "Integracion_crm_btc"
                 CRMAccount.Reset();
                 CRMAccount.SetRange(AccountNumber, Customer."No.");
                 IF CRMAccount.FindFirst() then begin
+                    // actualizamos el estado tambien
+                    CRMUpdateCustomerState(CRMAccount);
+
                     if CRMAccount.OwnerId <> NewUserId then begin
                         CRMAccount.OwnerId := NewUserId;
                         CRMAccount.Modify();
@@ -3347,7 +3356,7 @@ codeunit 50102 "Integracion_crm_btc"
     // ==  
     // ======================================================================================================
 
-    procedure CRMUpdateItem()
+    procedure CRMUpdateItems()
     var
         Item: Record Item;
         CRMProduct: record "CRM Product";
@@ -3372,28 +3381,35 @@ codeunit 50102 "Integracion_crm_btc"
             UNTIL CRMProduct.NEXT = 0;
     end;
 
-    procedure CRMUpdateCustomer()
+    procedure CRMUpdateCustomers()
     var
-        Customer: Record Customer;
         CRMAccount: record "CRM Account";
     begin
         CRMAccount.SETCURRENTKEY(AccountNumber);
         IF CRMAccount.FINDFIRST THEN
             REPEAT
-                IF Customer.GET(CRMAccount.AccountNumber) THEN BEGIN
-                    IF Customer.Blocked in [Customer.Blocked::All, Customer.Blocked::Invoice] THEN BEGIN
-                        IF CRMAccount.StateCode <> CRMAccount.StateCode::Inactive THEN BEGIN
-                            CRMAccount.StateCode := CRMAccount.StateCode::Inactive;
-                            CRMAccount.MODIFY;
-                        END;
-                    END ELSE BEGIN
-                        IF CRMAccount.StateCode <> CRMAccount.StateCode::Active THEN BEGIN
-                            CRMAccount.StateCode := CRMAccount.StateCode::Active;
-                            CRMAccount.MODIFY;
-                        END;
-                    END;
-                END;
+
+                CRMUpdateCustomerState(CRMAccount);
 
             UNTIL CRMAccount.NEXT = 0;
+    end;
+
+    procedure CRMUpdateCustomerState(var CRMAccount: record "CRM Account")
+    var
+        Customer: Record Customer;
+    begin
+        IF Customer.GET(CRMAccount.AccountNumber) THEN BEGIN
+            IF Customer.Blocked in [Customer.Blocked::All, Customer.Blocked::Invoice] THEN BEGIN
+                IF CRMAccount.StateCode <> CRMAccount.StateCode::Inactive THEN BEGIN
+                    CRMAccount.StateCode := CRMAccount.StateCode::Inactive;
+                    CRMAccount.MODIFY;
+                END;
+            END ELSE BEGIN
+                IF CRMAccount.StateCode <> CRMAccount.StateCode::Active THEN BEGIN
+                    CRMAccount.StateCode := CRMAccount.StateCode::Active;
+                    CRMAccount.MODIFY;
+                END;
+            END;
+        END;
     end;
 }

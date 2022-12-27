@@ -58,11 +58,11 @@ codeunit 50110 "CU_Cron"
                     end;
                 'CRMUpdateCustomerStatus':
                     begin
-                        IntegracionCRM.CRMUpdateCustomer();
+                        IntegracionCRM.CRMUpdateCustomers();
                     end;
                 'CRMUpdateItemStatus':
                     begin
-                        IntegracionCRM.CRMUpdateItem();
+                        IntegracionCRM.CRMUpdateItems();
                     end;
                 else
                     error(lbNoParametroErr);

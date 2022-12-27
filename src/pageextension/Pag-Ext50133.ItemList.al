@@ -150,7 +150,7 @@ pageextension 50133 "ItemList" extends "Item List"
                     lblConfirm: Label '¿Do you want to upgrade the State Dyn 365 Sales Items State?', comment = 'ESP="¿Desea actualizar el estado de los productos de Dyn 365 Sales?"';
                 begin
                     if Confirm(lblConfirm) then
-                        IntegracionCRM.CRMUpdateCustomer();
+                        IntegracionCRM.CRMUpdateItems();
                 end;
 
             }
