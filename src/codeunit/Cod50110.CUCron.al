@@ -52,9 +52,17 @@ codeunit 50110 "CU_Cron"
                             SalesSetup.Modify();
                         end;
                     end;
-                'CRMUpdatedItems':
+                'CRMUpdatedCRMForItems':
                     begin   // actualizamos todos los productos que son diferentes en CRM SALES
                         IntegracionCRM.UpdateItemsForCRM(true);
+                    end;
+                'CRMUpdateCustomerStatus':
+                    begin
+                        IntegracionCRM.CRMUpdateCustomer();
+                    end;
+                'CRMUpdateItemStatus':
+                    begin
+                        IntegracionCRM.CRMUpdateItem();
                     end;
                 else
                     error(lbNoParametroErr);

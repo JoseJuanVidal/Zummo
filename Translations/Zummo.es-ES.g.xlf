@@ -21892,6 +21892,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action HistAseguradora - Property Caption</note>
           <target>Hist. Aseguradora</target>
         </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 2678150292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Dyn 365 Sales Sync Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dyn 365 Sales Sync. Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action UpdateBloqueados - Property Caption</note>
+          <target>Dyn 365 Sales Sync. Estado</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 2678150292 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
+          <source>¿Do you want to upgrade Dyn 365 Sales accounts?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las cuentas de Dyn 365 Sales?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action UpdateBloqueados - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea actualizar las cuentas de Dyn 365 Sales?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 363045002 - Control 3809540912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Due Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto."</note>
@@ -22285,6 +22297,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Calcular peso plastico L.M."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action CalculatePlastic - Property Caption</note>
           <target>Calcular peso plastico L.M.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 2678150292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Dyn 365 Sales Sync State</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dyn 365 Sales Sync. Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action UpdateBloqueados - Property Caption</note>
+          <target>Dyn 365 Sales Sync. Estado</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 2678150292 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
+          <source>¿Do you want to upgrade the State Dyn 365 Sales Items State?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar el estado de los productos de Dyn 365 Sales?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action UpdateBloqueados - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea actualizar el estado de los productos de Dyn 365 Sales?</target>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Qty. en Stockkeeping Unit</source>

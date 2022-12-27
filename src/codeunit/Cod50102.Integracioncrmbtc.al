@@ -3339,4 +3339,61 @@ codeunit 50102 "Integracion_crm_btc"
             exit(AreaManager."CRM ID");
 
     end;
+
+    // =============     Funciones que actualizan en el Dyn 365 SALES - del Business Central          ====================
+    // ==  
+    // ==  Datos de productos bloqueados, se actualizan  (CRMUpdateItem)
+    // ==  Datos de clientes bloqueados (CRMUpdateCustomer)
+    // ==  
+    // ======================================================================================================
+
+    procedure CRMUpdateItem()
+    var
+        Item: Record Item;
+        CRMProduct: record "CRM Product";
+    begin
+        CRMProduct.SETCURRENTKEY(ProductNumber);
+        IF CRMProduct.FINDFIRST THEN
+            REPEAT
+                IF Item.GET(CRMProduct.ProductNumber) THEN BEGIN
+                    IF Item."Sales Blocked" OR Item.Blocked THEN BEGIN
+                        IF CRMProduct.StateCode <> CRMProduct.StateCode::Retired THEN BEGIN
+                            CRMProduct.StateCode := CRMProduct.StateCode::Retired;
+                            CRMProduct.MODIFY;
+                        END;
+                    END ELSE BEGIN
+                        IF CRMProduct.StateCode <> CRMProduct.StateCode::Active THEN BEGIN
+                            CRMProduct.StateCode := CRMProduct.StateCode::Active;
+                            CRMProduct.MODIFY;
+                        END;
+                    END;
+                END;
+
+            UNTIL CRMProduct.NEXT = 0;
+    end;
+
+    procedure CRMUpdateCustomer()
+    var
+        Customer: Record Customer;
+        CRMAccount: record "CRM Account";
+    begin
+        CRMAccount.SETCURRENTKEY(AccountNumber);
+        IF CRMAccount.FINDFIRST THEN
+            REPEAT
+                IF Customer.GET(CRMAccount.AccountNumber) THEN BEGIN
+                    IF Customer.Blocked in [Customer.Blocked::All, Customer.Blocked::Invoice] THEN BEGIN
+                        IF CRMAccount.StateCode <> CRMAccount.StateCode::Inactive THEN BEGIN
+                            CRMAccount.StateCode := CRMAccount.StateCode::Inactive;
+                            CRMAccount.MODIFY;
+                        END;
+                    END ELSE BEGIN
+                        IF CRMAccount.StateCode <> CRMAccount.StateCode::Active THEN BEGIN
+                            CRMAccount.StateCode := CRMAccount.StateCode::Active;
+                            CRMAccount.MODIFY;
+                        END;
+                    END;
+                END;
+
+            UNTIL CRMAccount.NEXT = 0;
+    end;
 }
