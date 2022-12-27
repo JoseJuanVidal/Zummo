@@ -1189,11 +1189,11 @@ report 50111 "FacturaNacionalMaquinas"
                                 // acumulamos para el total
                                 PlasticKgTotal += recIt."Plastic Qty. (kg)";
                                 PlasticRecycledKgTotal += recit."Recycled plastic Qty. (kg)";
+                                PlasticItem := recIt."Plastic Qty. (kg)";
+                                PlasticRecycledItem := recIt."Recycled plastic Qty. (kg)";
 
                                 if recIt."Show detailed documents" then begin
                                     ShowPlasticItem := true;
-                                    PlasticItem := recIt."Plastic Qty. (kg)";
-                                    PlasticRecycledItem := recIt."Recycled plastic Qty. (kg)";
                                 end;
                             end;
 
@@ -2207,7 +2207,7 @@ report 50111 "FacturaNacionalMaquinas"
         lblPlasticRecycled: Label 'Plastic Recycled packing (kg)', comment = 'ESP="Plástico reciclado embalaje (kg)"';
         lblPlasticBulto: Label 'Plastic package (kg)', comment = 'ESP="Plástico Bulto (kg)"';
         lblPlasticRecycledBulto: Label 'Plastic Recycled package (kg)', comment = 'ESP="Plástico reciclado Bulto (kg)"';
-        lblTotPlastic: Label 'total Plastics (kg)', comment = 'ESP="Total Plástico (kg)"';
+        lblTotPlastic: Label 'Total Plastics (kg)', comment = 'ESP="Total Plástico (kg)"';
         lblTotPlasticRecycled: Label 'Total Plast. Recycled (kg)', comment = 'ESP="Total Plás. reciclado (kg)"';
         codigoDivisa: code[20];
         AmountInclVAT: decimal;

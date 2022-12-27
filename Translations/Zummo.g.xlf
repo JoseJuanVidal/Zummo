@@ -14914,7 +14914,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType lblPlasticRecycledBulto</note>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 2733662679" size-unit="char" translate="yes" xml:space="preserve">
-          <source>total Plastics (kg)</source>
+          <source>Total Plastics (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Total Plástico (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType lblTotPlastic</note>
         </trans-unit>
