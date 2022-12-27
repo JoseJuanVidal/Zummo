@@ -1,6 +1,6 @@
-tableextension 50126 "Employee" extends Employee  //110
+tableextension 50126 "Employee" extends Employee  //5200
 {
-  
+
     fields
     {
         field(50101; PaisNacimiento_btc; code[2])
@@ -10,7 +10,7 @@ tableextension 50126 "Employee" extends Employee  //110
             Caption = 'PaisNacimiento', comment = 'ESP="Pais Nacimiento"';
             TableRelation = "Country/Region".Code;
         }
-   
+
         field(50102; EstadoCivil_btc; code[2])
         {
             DataClassification = CustomerContent;

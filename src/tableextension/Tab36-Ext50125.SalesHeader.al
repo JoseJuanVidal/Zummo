@@ -211,8 +211,28 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             DataClassification = CustomerContent;
             Caption = 'Fecha Entrega en destino', comment = 'ESP="Fecha Entrega en destino"';
         }
-
         //#endregion Integracion Intercompany
+
+        //+  NORMATIVA MEDIO AMBIENTAL
+        Field(50250; "Plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Plastic (kg)', comment = 'ESP="Plástico (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 5 : 5;
+        }
+        Field(50251; "Recycled plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Plastic Recycled (kg)', comment = 'ESP="Plástico reciclado (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 5 : 5;
+        }
+        Field(50252; "Plastic Date Declaration"; Date)
+        {
+            Caption = 'Plastic Date Declaration', comment = 'ESP="Fecha Declaración plástico"';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
+        //-  NORMATIVA MEDIO AMBIENTAL
     }
     local procedure UpdateNoComplarPlanificacion()
     var
