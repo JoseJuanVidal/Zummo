@@ -1275,7 +1275,9 @@ codeunit 50102 "Integracion_crm_btc"
             end;
         end;
         // - JJV
-        // TODO 27/12/2022 esto igual deberia estar por AREA MANAGER () nueva funcionalidad para permisos SALES
+        // 27/12/2022 esto igual deberia estar por AREA MANAGER () nueva funcionalidad para permisos SALES
+        if GetUpdateOwnerSales(Customer, SalespersonId) then begin
+        end;
 
         //******************** PROVINCIA ********************
         Provincia.Reset();
@@ -3212,7 +3214,7 @@ codeunit 50102 "Integracion_crm_btc"
         Customer: Record Customer;
         CRMAccount: Record "CRM Account";
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
-        NewUserId: text;
+        NewUserId: Guid;
         Window: Dialog;
     begin
         if not Confirm('¿desea actualizar el Owner de los clientes de integracion BC en CRM?', false) then
@@ -3248,7 +3250,7 @@ codeunit 50102 "Integracion_crm_btc"
         Customer: Record Customer;
         CRMAccount: Record "CRM Account";
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
-        NewUserId: text;
+        NewUserId: Guid;
     begin
         if not Confirm('¿Desea actualizar el Owner de los clientes de %1 en CRM?\%2', false, AreaManager.NumReg, AreaManager."CRM ID") then
             exit;
@@ -3276,7 +3278,7 @@ codeunit 50102 "Integracion_crm_btc"
         AreaManager: Record TextosAuxiliares;
         CRMAccount: Record "CRM Account";
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
-        NewUserId: text;
+        NewUserId: Guid;
     begin
         if GetUpdateOwnerSales(Customer, NewUserId) then begin
             if (NewUserId = '') or (NewUserId = '{00000000-0000-0000-0000-000000000000}') then begin
@@ -3296,7 +3298,7 @@ codeunit 50102 "Integracion_crm_btc"
         end;
     end;
 
-    local procedure GetUpdateOwnerSales(Customer: Record Customer; var NewUserId: text) Encontrado: Boolean
+    local procedure GetUpdateOwnerSales(Customer: Record Customer; var NewUserId: Guid) Encontrado: Boolean
     var
         SalesPerson: Record "Salesperson/Purchaser";
         AreaManager: Record TextosAuxiliares;
