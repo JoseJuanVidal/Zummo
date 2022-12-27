@@ -2,6 +2,13 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
 {
     layout
     {
+        addafter("Quote Validity Calculation")
+        {
+            field("Show Doc. Plastic Regulations"; "Show Doc. Plastic Regulations")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter("Dynamics 365 for Sales")
         {
             group(Bitec)

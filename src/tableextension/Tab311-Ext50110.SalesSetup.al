@@ -143,5 +143,10 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             Caption = 'Ult. email Fact. Vencidas', Comment = 'ESP="Ult. email Fact. Vencidas"';
             DataClassification = CustomerContent;
         }
+        field(50170; "Show Doc. Plastic Regulations"; Boolean)
+        {
+            Caption = 'show Documents Plastic Regulations', Comment = 'ESP="Documentos mostrar Normativa Plástico"';
+            DataClassification = CustomerContent;
+        }
     }
 }

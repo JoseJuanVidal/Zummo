@@ -14893,6 +14893,36 @@
           <note from="Developer" annotates="general" priority="2">ESP="EORI: "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType lblEORI</note>
         </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 2763633958" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plastic packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType lblPlastic</note>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 2421308902" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plastic package (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico Bulto (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType lblPlasticBulto</note>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3923394035" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plastic Recycled packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType lblPlasticRecycled</note>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 2876171787" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plastic Recycled package (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado Bulto (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType lblPlasticRecycledBulto</note>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 2733662679" size-unit="char" translate="yes" xml:space="preserve">
+          <source>total Plastics (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Total Plástico (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType lblTotPlastic</note>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 1491888074" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Plast. Recycled (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Total Plás. reciclado (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType lblTotPlasticRecycled</note>
+        </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 4261622325" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line Amount</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe línea"</note>
@@ -24362,6 +24392,11 @@
           <source>Send Mail Notifications</source>
           <note from="Developer" annotates="general" priority="2">Enviar notificaciones por email</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Send Mail Notifications - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2564261630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>show Documents Plastic Regulations</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos mostrar Normativa Plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Show Doc. Plastic Regulations - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 248859325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Ult. email Fact. Vencidas</source>

@@ -159,6 +159,12 @@ report 50111 "FacturaNacionalMaquinas"
             column(DtoPP_Lbl; DtoPP_Lbl)
             {
             }
+            column(lblPlastic; lblPlastic)
+            {
+            }
+            column(lblPlasticRecycled; lblPlasticRecycled)
+            {
+            }
             column(Portes_Caption; Portes_Lbl)
             {
             }
@@ -890,6 +896,15 @@ report 50111 "FacturaNacionalMaquinas"
                         column(TipoLinea; FORMAT("Sales Invoice Line".Type, 0, 2))
                         {
                         }
+                        column(ShowPlasticItem; ShowPlasticItem)
+                        {
+                        }
+                        column(PlasticItem; PlasticItem)
+                        {
+                        }
+                        column(PlasticRecycledItem; PlasticRecycledItem)
+                        {
+                        }
                         dataitem("Sales Shipment Buffer"; "Integer")
                         {
                             DataItemTableView = SORTING(Number);
@@ -1165,6 +1180,22 @@ report 50111 "FacturaNacionalMaquinas"
                                 CurrReport.Skip();
 
                             txtDescLinea := Description;
+
+                            // Normativa Plastico - mostramos el detalle de plastico del producto configurado show
+                            ShowPlasticItem := False;
+                            PlasticItem := 0;
+                            PlasticRecycledItem := 0;
+                            if (Type = Type::Item) and (recit.Get("No.")) then begin
+                                // acumulamos para el total
+                                PlasticKgTotal += recIt."Plastic Qty. (kg)";
+                                PlasticRecycledKgTotal += recit."Recycled plastic Qty. (kg)";
+
+                                if recIt."Show detailed documents" then begin
+                                    ShowPlasticItem := true;
+                                    PlasticItem := recIt."Plastic Qty. (kg)";
+                                    PlasticRecycledItem := recIt."Recycled plastic Qty. (kg)";
+                                end;
+                            end;
 
                             if (idiomaReport <> '') and (Type = Type::"G/L Account") then begin
                                 if idiomaReport <> 'ESP' then begin
@@ -1601,6 +1632,41 @@ report 50111 "FacturaNacionalMaquinas"
                                 CurrReport.Break();
                         end;
                     }
+                    dataitem(Plastic; integer)
+                    {
+                        DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
+
+
+                        column(lblItemPlastic; lblPlastic)
+                        { }
+                        column(lblItemPlasticRecycled; lblPlasticRecycled)
+                        { }
+                        column(lblTotPlastic; lblTotPlastic)
+                        { }
+                        column(lblTotPlasticRecycled; lblTotPlasticRecycled)
+                        { }
+
+                        column(lblPlasticBulto; lblPlasticBulto)
+                        { }
+                        column(lblPlasticRecycledBulto; lblPlasticRecycledBulto)
+                        { }
+                        column(SalesSetupShowDocPlastic; SalesSetup."Show Doc. Plastic Regulations")
+                        { }
+                        column(PlasticKgTotal; PlasticKgTotal)
+                        { }
+                        column(PlasticRecycledKgTotal; PlasticRecycledKgTotal)
+                        { }
+                        column(PlasticBultoKgTotal; 0)
+                        { }
+                        column(PlasticRecycledBultoKgTotal; 0)
+                        { }
+
+                        trigger OnAfterGetRecord()
+                        begin
+                            // TODO aqui buscamos en los albaranes, de la factura, los packing list de la preparación de los envíos
+
+                        end;
+                    }
                     dataitem(Total; "Integer")
                     {
                         DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
@@ -1730,6 +1796,12 @@ report 50111 "FacturaNacionalMaquinas"
                 totalBultos := NumBultos_btc;
                 totalPeso := Peso_btc;
                 totalPalets := NumPalets_btc;
+
+                // aqui ponemos a cero las cantidades de normativa plastic
+                // acumulamos para el total
+                PlasticKgTotal := 0;
+                PlasticRecycledKgTotal := 0;
+
 
                 if totalPeso = 0 then begin
                     recSalesInvLinePeso.Reset();
@@ -2126,6 +2198,17 @@ report 50111 "FacturaNacionalMaquinas"
         CustAmount: decimal;
         porcentDescuento: Decimal;
         mostrarNetos: Boolean;
+        ShowPlasticItem: Boolean;
+        PlasticItem: Decimal;
+        PlasticRecycledItem: Decimal;
+        PlasticKgTotal: Decimal;
+        PlasticRecycledKgTotal: Decimal;
+        lblPlastic: Label 'Plastic packing (kg)', comment = 'ESP="Plástico embalaje (kg)"';
+        lblPlasticRecycled: Label 'Plastic Recycled packing (kg)', comment = 'ESP="Plástico reciclado embalaje (kg)"';
+        lblPlasticBulto: Label 'Plastic package (kg)', comment = 'ESP="Plástico Bulto (kg)"';
+        lblPlasticRecycledBulto: Label 'Plastic Recycled package (kg)', comment = 'ESP="Plástico reciclado Bulto (kg)"';
+        lblTotPlastic: Label 'total Plastics (kg)', comment = 'ESP="Total Plástico (kg)"';
+        lblTotPlasticRecycled: Label 'Total Plast. Recycled (kg)', comment = 'ESP="Total Plás. reciclado (kg)"';
         codigoDivisa: code[20];
         AmountInclVAT: decimal;
         InvDiscAmount: decimal;
