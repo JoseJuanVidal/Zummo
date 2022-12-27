@@ -1054,6 +1054,35 @@ codeunit 50101 "Eventos_btc"
 
         end;
     end;
+
+    // =============      WhseCreateSourceDocument_OnBeforeWhseReceiptLineInsert         ====================
+    // ==  
+    // ==  objetivo: cuando se cree una recepcion de almacen que la cantidad a recibir este a cero en princiop
+    // ==            para evitar errores de no revision de las líneas
+    // ==  
+    // ==  
+    // ==  escogemos del report de crear recepciones, llamada a la codeunit, el evento antes de insert de la linea de recepcion
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Whse.-Create Source Document", 'OnBeforeWhseReceiptLineInsert', '', true, true)]
+    local procedure WhseCreateSourceDocument_OnAfterCreateShptLineFromPurchLine(var WarehouseReceiptLine: Record "Warehouse Receipt Line")
+    var
+        WarehouseSetup: record "Warehouse Setup";
+    begin
+        if WarehouseReceiptLine.IsTemporary then
+            exit;
+        // cuando se crear una recepcion que se ponga la cantidad a CERO por defecto
+        case WarehouseReceiptLine."Source Type" of
+            database::"Purchase Line":
+                begin
+                    if WarehouseSetup.Get() then
+                        if WarehouseSetup."Recep. alm. cantidad a cero" then
+                            WarehouseReceiptLine.Validate("Qty. to Receive", 0);
+                end;
+        end;
+    end;
+
+
     // =============     Purchase Price - Evvento de           ====================
     // ==  
     // ==  se recoge el evento de obtener precio de compra y cuando se realizan pedido de compra 
