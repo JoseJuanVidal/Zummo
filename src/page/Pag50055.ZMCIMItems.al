@@ -77,7 +77,7 @@ page 50055 "ZM CIM Items"
                     ApplicationArea = all;
                 }
             }
-            part(Header; "ZM CIM Production BOM List")
+            part(Header; "ZM Production BOM List")
             {
                 ApplicationArea = all;
                 // SubPageLink = "No." = field("Production BOM No.");
