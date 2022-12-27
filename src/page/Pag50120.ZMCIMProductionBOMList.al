@@ -1,7 +1,7 @@
 page 50120 "ZM CIM Production BOM List"
 {
     Caption = 'CIM Prod. BOM list', Comment = 'ESP="L.M. de producción"';
-    PageType = ListPart;
+    PageType = List;
     SourceTable = "ZM CIM Prod. BOM Header";
     UsageCategory = None;
 
@@ -54,12 +54,12 @@ page 50120 "ZM CIM Production BOM List"
                     ApplicationArea = all;
                 }
             }
-            // part(Lines; "ZM CIM Production BOM Lines")
-            // {
-            //     ApplicationArea = All;
-            //     SubPageLink = "Production BOM No." = field("No.");
-            //     UpdatePropagation = Both;
-            // }
+            part(Lines; "ZM CIM Production BOM Lines")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Production BOM No." = field("No.");
+                UpdatePropagation = Both;
+            }
         }
     }
 }
