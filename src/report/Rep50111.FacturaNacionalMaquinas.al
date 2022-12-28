@@ -1656,14 +1656,16 @@ report 50111 "FacturaNacionalMaquinas"
                         { }
                         column(PlasticRecycledKgTotal; PlasticRecycledKgTotal)
                         { }
-                        column(PlasticBultoKgTotal; 0)
+                        column(PlasticBultoKgTotal; PlasticBultoKgTotal)
                         { }
-                        column(PlasticRecycledBultoKgTotal; 0)
+                        column(PlasticRecycledBultoKgTotal; PlasticRecycledBultoKgTotal)
                         { }
 
                         trigger OnAfterGetRecord()
                         begin
-                            // TODO aqui buscamos en los albaranes, de la factura, los packing list de la preparación de los envíos
+                            // buscamos en los albaranes, de la factura, los packing list de la preparación de los envíos
+
+                            CalculatePlasticInvoice();
 
                         end;
                     }
@@ -2203,6 +2205,8 @@ report 50111 "FacturaNacionalMaquinas"
         PlasticRecycledItem: Decimal;
         PlasticKgTotal: Decimal;
         PlasticRecycledKgTotal: Decimal;
+        PlasticBultoKgTotal: Decimal;
+        PlasticRecycledBultoKgTotal: Decimal;
         lblPlastic: Label 'Plastic packing (kg)', comment = 'ESP="Plástico embalaje (kg)"';
         lblPlasticRecycled: Label 'Plastic Recycled packing (kg)', comment = 'ESP="Plástico reciclado embalaje (kg)"';
         lblPlasticBulto: Label 'Plastic package (kg)', comment = 'ESP="Plástico Bulto (kg)"';
@@ -2988,6 +2992,62 @@ report 50111 "FacturaNacionalMaquinas"
                 END;
 
             UNTIL ValueEntryRelation.NEXT() = 0;
+    end;
+
+    local procedure CalculatePlasticInvoice()
+    var
+        SalesInvoiceLine: Record "Sales Invoice Line";
+        SalesShipmentHeader: Record "Sales Shipment Header";
+        tmpSalesShipmentHeader: Record "Sales Shipment Header" temporary;
+    begin
+        PlasticBultoKgTotal := 0;
+        PlasticRecycledBultoKgTotal := 0;
+        // recorremos las líneas de la factura, obtenemos el albaran y sumamos los kg de los plastico
+        SalesInvoiceLine.Reset();
+        SalesInvoiceLine.SetRange("Document No.", "Sales Invoice Header"."No.");
+        if SalesInvoiceLine.FindFirst() then
+            repeat
+                if SalesInvoiceLine."Shipment No." <> '' then begin
+                    if not tmpSalesShipmentHeader.Get(SalesInvoiceLine."Shipment No.") then begin
+
+                        AddPackingShipment(SalesInvoiceLine."Shipment No.");
+
+                        tmpSalesShipmentHeader.Init();
+                        tmpSalesShipmentHeader."No." := SalesInvoiceLine."Shipment No.";
+                        tmpSalesShipmentHeader.Insert()
+                    end;
+                end else begin
+                    if SalesInvoiceLine."Order No." <> '' then begin
+                        SalesShipmentHeader.reset;
+                        SalesShipmentHeader.SetRange("Order No.", "Sales Invoice Line"."Order No.");
+                        if SalesShipmentHeader.FindFirst() then
+                            repeat
+                                if not tmpSalesShipmentHeader.Get(SalesShipmentHeader."No.") then begin
+
+                                    AddPackingShipment(SalesShipmentHeader."No.");
+
+                                    tmpSalesShipmentHeader.Init();
+                                    tmpSalesShipmentHeader."No." := SalesShipmentHeader."No.";
+                                    tmpSalesShipmentHeader.Insert()
+                                end;
+                            Until SalesShipmentHeader.next() = 0;
+                    end;
+                end;
+            Until SalesInvoiceLine.next() = 0;
+    end;
+
+    local procedure AddPackingShipment(ShipmentNo: code[20])
+    var
+        SalesShipmentPacking: Record "ZM Sales Order Packing";
+    begin
+        SalesShipmentPacking.Reset();
+        SalesShipmentPacking.SetRange("Document type", SalesShipmentPacking."Document type"::"Sales Shipment");
+        SalesShipmentPacking.SetRange("Document No.", ShipmentNo);
+        if SalesShipmentPacking.FindFirst() then
+            repeat
+                PlasticBultoKgTotal += SalesShipmentPacking.Quantity * SalesShipmentPacking."Package Plastic Qty. (kg)";
+                PlasticRecycledBultoKgTotal += SalesShipmentPacking.Quantity * SalesShipmentPacking."Package Recycled plastic (kg)";
+            Until SalesShipmentPacking.next() = 0;
     end;
 
     procedure EsExportacion()

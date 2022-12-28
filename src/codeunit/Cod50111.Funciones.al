@@ -2085,7 +2085,7 @@ codeunit 50111 "Funciones"
     procedure SalesOrderShowPackginListShipment(Rec: Record "Sales Header")
     var
         SalesHeader: Record "Sales Header";
-        PackingList: Page "ZM Sales Order Packing";
+        PackingList: Page "ZM ZM Sales Order Packing";
     begin
         SalesHeader.Reset();
         SalesHeader.SetRange("Document Type", Rec."Document Type");

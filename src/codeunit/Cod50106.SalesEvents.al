@@ -1404,8 +1404,8 @@ codeunit 50106 "SalesEvents"
 
     local procedure UpdatePackingListOrdertoShipment(SalesShipmentHeader: Record "Sales Shipment Header"; SalesHeader: Record "Sales Header")
     var
-        SalesOrderPacking: Record "Sales Order Packing";
-        SalesShipmentPacking: Record "Sales Order Packing";
+        SalesOrderPacking: Record "ZM Sales Order Packing";
+        SalesShipmentPacking: Record "ZM Sales Order Packing";
     begin
         SalesShipmentPacking.Reset();
         SalesShipmentPacking.SetRange("Document type", SalesShipmentPacking."Document type"::"Sales Shipment");

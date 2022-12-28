@@ -1,4 +1,4 @@
-table 50606 "Sales Order Packing"
+table 50606 "ZM Sales Order Packing"
 {
     DataClassification = CustomerContent;
     Caption = 'Sales Order Packing', comment = 'ESP="Ped. Venta Packing"';
@@ -124,7 +124,7 @@ table 50606 "Sales Order Packing"
 
     local procedure AssingLineNo()
     var
-        SalesOrderPacking: record "Sales Order Packing";
+        SalesOrderPacking: record "ZM Sales Order Packing";
     begin
         if "Line No." <> 0 then
             exit;

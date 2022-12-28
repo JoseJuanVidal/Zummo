@@ -1,9 +1,9 @@
-page 50152 "ZM Sales Order Packing Line"
+page 50152 "ZM ZM Sales Order Packing Line"
 {
     //ApplicationArea = none;
-    Caption = 'Sales Order Packing Line', Comment = 'ESP="Líneas Ped. Venta Packing"';
+    Caption = 'ZM Sales Order Packing Line', Comment = 'ESP="Líneas Ped. Venta Packing"';
     PageType = ListPart;
-    SourceTable = "Sales Order Packing";
+    SourceTable = "ZM Sales Order Packing";
     UsageCategory = None;
 
     layout

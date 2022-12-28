@@ -9061,8 +9061,14 @@ kBKRAAAAAEiJSAAAAACkRCQAAAAAUiISAAAAACkRCQAAAICUiAQAAABASkQCAAAAICUiAQAAAJASkQAA
         <Field Name="PlasticBultoKgTotal">
           <DataField>PlasticBultoKgTotal</DataField>
         </Field>
+        <Field Name="PlasticBultoKgTotalFormat">
+          <DataField>PlasticBultoKgTotalFormat</DataField>
+        </Field>
         <Field Name="PlasticRecycledBultoKgTotal">
           <DataField>PlasticRecycledBultoKgTotal</DataField>
+        </Field>
+        <Field Name="PlasticRecycledBultoKgTotalFormat">
+          <DataField>PlasticRecycledBultoKgTotalFormat</DataField>
         </Field>
         <Field Name="SelltoCustNo_SalesInvHdr">
           <DataField>SelltoCustNo_SalesInvHdr</DataField>
