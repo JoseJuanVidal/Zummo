@@ -1,4 +1,4 @@
-page 50158 "ZM Sales Order Packing"
+page 50153 "ZM Sales Order Packing"
 {
     Caption = 'Sales Order Packing', comment = 'ESP="Packing Pedido Venta"';
     PageType = Card;
@@ -6,6 +6,8 @@ page 50158 "ZM Sales Order Packing"
     UsageCategory = Administration;
     SourceTable = "Sales Header";
     SourceTableView = where("Document Type" = const(Order));
+    DeleteAllowed = false;
+    InsertAllowed = false;
 
     layout
     {
@@ -50,23 +52,6 @@ page 50158 "ZM Sales Order Packing"
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
     var
         myInt: Integer;
 }

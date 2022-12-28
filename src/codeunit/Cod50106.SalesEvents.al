@@ -1382,5 +1382,49 @@ codeunit 50106 "SalesEvents"
 
     end;
 
+    // =============     NORMATIVA PLASTICO          ====================
+    // ==  
+    // ==  Eventos respecto a la normativa de plastico
+    // ==   Packing list - al registrar un pedido de venta y crear un albaran, si existe packing list creado lo pasamos al albaran y 
+    // ==   y se elimina del pedido de venta
+    // ==          SalesPost_OnAfterSalesShptHeaderInsert
+    // ==  
+    // ==  
+    // ======================================================================================================
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterSalesShptHeaderInsert', '', true, true)]
+    local procedure SalesPost_OnAfterSalesShptHeaderInsert(var SalesShipmentHeader: Record "Sales Shipment Header"; SalesHeader: Record "Sales Header"; SuppressCommit: Boolean)
+    begin
+        if SalesShipmentHeader.IsTemporary then
+            exit;
+        // cambiamos el packing list del pedido de venta al albaran        
+        UpdatePackingListOrdertoShipment(SalesShipmentHeader, SalesHeader);
+
+    end;
+
+    local procedure UpdatePackingListOrdertoShipment(SalesShipmentHeader: Record "Sales Shipment Header"; SalesHeader: Record "Sales Header")
+    var
+        SalesOrderPacking: Record "Sales Order Packing";
+        SalesShipmentPacking: Record "Sales Order Packing";
+    begin
+        SalesShipmentPacking.Reset();
+        SalesShipmentPacking.SetRange("Document type", SalesShipmentPacking."Document type"::"Sales Shipment");
+        SalesShipmentPacking.SetRange("Document No.", SalesShipmentHeader."No.");
+        SalesShipmentPacking.DeleteAll();
+
+        SalesOrderPacking.Reset();
+        SalesOrderPacking.SetRange("Document type", SalesOrderPacking."Document type"::Order);
+        SalesOrderPacking.SetRange("Document No.", SalesHeader."No.");
+        if SalesOrderPacking.FindFirst() then
+            repeat
+                SalesShipmentPacking.Init();
+                SalesShipmentPacking.TransferFields(SalesOrderPacking);
+                SalesShipmentPacking."Document type" := SalesShipmentPacking."Document type"::"Sales Shipment";
+                SalesShipmentPacking."Document No." := SalesShipmentHeader."No.";
+                SalesShipmentPacking.Insert();
+
+            Until SalesOrderPacking.next() = 0;
+        SalesOrderPacking.DeleteAll();
+    end;
 
 }

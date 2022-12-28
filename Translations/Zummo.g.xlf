@@ -21543,6 +21543,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Rellenar NºFactura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesShipments - Action Rellenar NºFactura - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1625261806 - Action 1385873845 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
+          <source>Packing List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista de bultos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesShipments - Action PackginListShipment - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1625261806 - Change 4045368290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
           <source>Agente</source>
           <note from="Developer" annotates="general" priority="2">ESP="Agente"</note>
@@ -21997,6 +22002,11 @@
           <source>Trazabilidad Serie</source>
           <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Action Movimientos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 696572482 - Action 1385873845 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3332899200">
+          <source>Packing List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista de bultos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderList_btc - Action PackginListShipment - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 696572482 - Control 2166884334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3332899200">
           <source>Especifica la suma de los importes del campo Coste unitario por unidades de las líneas de pedido de venta.</source>

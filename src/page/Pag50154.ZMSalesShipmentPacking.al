@@ -1,10 +1,12 @@
-page 50159 "ZM Sales Shipment Packing"
+page 50154 "ZM Sales Shipment Packing"
 {
     Caption = 'Sales Shipment Packing', comment = 'ESP="Packing Albarán Venta"';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Sales Shipment Header";
+    DeleteAllowed = false;
+    InsertAllowed = false;
 
 
     layout
@@ -42,22 +44,6 @@ page 50159 "ZM Sales Shipment Packing"
                 UpdatePropagation = Both;
                 SubPageLink = "Document No." = FIELD("No."), "Document type" = const("Sales Shipment");
 
-            }
-        }
-    }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-
-                end;
             }
         }
     }

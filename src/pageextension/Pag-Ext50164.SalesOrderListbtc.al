@@ -253,10 +253,22 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
 
                 end;
             }
-
-
         }
+        addafter("Delete Invoiced")
+        {
+            action(PackginListShipment)
+            {
+                Caption = 'Packing List', comment = 'ESP="Lista de bultos"';
+                ApplicationArea = all;
+                Image = NewShipment;
 
+                trigger OnAction()
+                begin
+                    ActionPackginListOrder();
+                end;
+
+            }
+        }
     }
 
     trigger OnAfterGetRecord()
@@ -271,5 +283,12 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
     procedure GetResult(VAR SalesHeader: Record "Sales Header")
     begin
         CurrPage.SETSELECTIONFILTER(SalesHeader);
+    end;
+
+    local procedure ActionPackginListOrder()
+    var
+        Funtions: Codeunit Funciones;
+    begin
+        Funtions.SalesOrderShowPackginListShipment(Rec);
     end;
 }
