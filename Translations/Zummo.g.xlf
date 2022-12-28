@@ -10233,6 +10233,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Doc. Adjuntos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Prod. Tools Ledger Entry - Control Attached Documents - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2976538946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prod. BOM list</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. de producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production BOM List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3011595053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Credit Memo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Abono ventas registrado"</note>
