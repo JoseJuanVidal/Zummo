@@ -39,6 +39,21 @@ pageextension 50014 "PostedSalesShipment" extends "Posted Sales Shipment"
     }
     actions
     {
+        addafter(PrintCertificateofSupply)
+        {
+            action(PackginListShipment)
+            {
+                Caption = 'Packing List', comment = 'ESP="Lista de bultos"';
+                ApplicationArea = all;
+                Image = NewShipment;
+
+                trigger OnAction()
+                begin
+                    ActionPackginListShipment();
+                end;
+
+            }
+        }
         addfirst(Processing)
         {
 
@@ -264,5 +279,12 @@ pageextension 50014 "PostedSalesShipment" extends "Posted Sales Shipment"
                     Report.Run(Report::EtiquetaEmbalaje, false, false, ItemLedgerEntry2);
             end;
         end;
+    end;
+
+    local procedure ActionPackginListShipment()
+    var
+        Funtions: Codeunit Funciones;
+    begin
+        Funtions.SalesShipmentShowPackginListShipment(Rec);
     end;
 }

@@ -179,6 +179,21 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
             Visible = false;
         }
 
+        addafter(IncomingDocument)
+        {
+            action(PackginListShipment)
+            {
+                Caption = 'Packing List', comment = 'ESP="Lista de bultos"';
+                ApplicationArea = all;
+                Image = NewShipment;
+
+                trigger OnAction()
+                begin
+                    ActionPackginListShipment();
+                end;
+
+            }
+        }
 
         addbefore(Post)
         {
@@ -421,5 +436,10 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
             }
         }
     }
-
+    local procedure ActionPackginListShipment()
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        funciones.SalesOrderShowPackginListShipment(Rec);
+    end;
 }

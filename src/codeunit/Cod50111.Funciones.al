@@ -2069,7 +2069,40 @@ codeunit 50111 "Funciones"
     end;
 
 
+    // =============      ShowPackginList         ====================
+    // ==
+    // ==  NUEVA NORMATIVA PLASTICO
+    // ==  muestra sobre un pedido de venta las líneas de packing list 
+    // ==  
+    // ==  Se realizan funciones para cada documento:
+    // ==       SalesOrderShowPackginListShipment  mostrar packing de pedido de venta
+    // ==  
+    // ==       SalesShipmentShowPackginListShipment  mostrar packing sobre albaran de venta
+    // ==  
+    // ==  
+    // ======================================================================================================
 
+    procedure SalesOrderShowPackginListShipment(Rec: Record "Sales Header")
+    var
+        SalesHeader: Record "Sales Header";
+        PackingList: Page "ZM Sales Order Packing";
+    begin
+        SalesHeader.Reset();
+        SalesHeader.SetRange("Document Type", Rec."Document Type");
+        SalesHeader.SetRange("No.", Rec."No.");
+        PackingList.SetTableView(SalesHeader);
+        PackingList.RunModal();
+    end;
 
+    procedure SalesShipmentShowPackginListShipment(Rec: Record "Sales Shipment Header")
+    var
+        SalesShipmentHeader: Record "Sales Shipment Header";
+        PackingList: Page "ZM Sales Shipment Packing";
+    begin
+        SalesShipmentHeader.Reset();
+        SalesShipmentHeader.SetRange("No.", Rec."No.");
+        PackingList.SetTableView(SalesShipmentHeader);
+        PackingList.RunModal();
+    end;
 }
 

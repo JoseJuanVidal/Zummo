@@ -154,6 +154,10 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 {
                     ApplicationArea = all;
                 }
+                field("Packaging product"; "Packaging product")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
 
