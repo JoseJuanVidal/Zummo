@@ -8,6 +8,12 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             Caption = 'Text e-mail purchase order', Comment = 'ESP="Texto e-mail pedido compra"';
             Description = 'Bitec';
         }
+        field(50010; WarningPlasticReceiptIntra; Blob)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Warning Intra-Communitary plastics', Comment = 'ESP="Aviso Norm. plastico intracomunitario"';
+            Description = 'Bitec';
+        }
     }
 
     procedure SetTextoEmail(NewTextoEmail: Text)

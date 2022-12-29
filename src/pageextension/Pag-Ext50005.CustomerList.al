@@ -301,6 +301,23 @@ pageextension 50005 "CustomerList" extends "Customer List"
 
             }
         }
+        addafter(ApplyTemplate)
+        {
+            action(ChangeClasification)
+            {
+                ApplicationArea = all;
+                Caption = 'Change Clasification', comment = 'ESP="Cambiar datos clasificación"';
+                Image = ChangeTo;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    ActionChangeClasification();
+                end;
+            }
+
+        }
     }
 
 
@@ -358,5 +375,17 @@ pageextension 50005 "CustomerList" extends "Customer List"
 
             end;
         end
+    end;
+
+    local procedure ActionChangeClasification()
+    var
+        Customer: Record Customer;
+        Functions: Codeunit Funciones;
+    begin
+        // llamamos a función de cambiar datos, con la selección de clientes de la PAGE
+        Customer.Reset();
+        CurrPage.SetSelectionFilter(Customer);
+        Functions.CustomerChangeClasification(Customer);
+
     end;
 }

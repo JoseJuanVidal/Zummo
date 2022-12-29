@@ -2104,5 +2104,67 @@ codeunit 50111 "Funciones"
         PackingList.SetTableView(SalesShipmentHeader);
         PackingList.RunModal();
     end;
+
+    // =============      CustomerChangeClasification         ====================
+    // ==  
+    // ==  funcion para cambiar los datos de clasificaion de CLIENTES masivamente a la seleccion realizada
+    // ==  
+    // ==  Area Manager, Delegado, Canal, etc.
+    // ==  
+    // ======================================================================================================
+    procedure CustomerChangeClasification(var Customer: Record Customer)
+    var
+        CustomerClasification: page "ZM Customer Change clasif.";
+        CentralCompras_btc: Code[20];
+        ClienteCorporativo_btc: Code[20];
+        AreaManager_btc: Code[20];
+        Delegado_btc: Code[20];
+        GrupoCliente_btc: Code[20];
+        Perfil_btc: Code[20];
+        SubCliente_btc: Code[20];
+        ClienteReporting_btc: Code[20];
+        ClienteActividad_btc: Code[20];
+        InsideSales_btc: Code[20];
+        Canal_btc: Code[20];
+        Mercado_btc: Code[20];
+        lblConfirm: Label '¿You want to update the classification data of %1 selected customers?', comment = 'ESP="¿Desea actualizar los datos de clasificación de %1 clientes seleccionado?"';
+    begin
+        CustomerClasification.SetNumCustomer(Customer.Count);
+        CustomerClasification.LookupMode := true;
+        if CustomerClasification.RunModal() = Action::LookupOK then begin
+            CustomerClasification.GetDatos(CentralCompras_btc, ClienteCorporativo_btc, AreaManager_btc, Delegado_btc, GrupoCliente_btc, Perfil_btc,
+                SubCliente_btc, ClienteReporting_btc, ClienteActividad_btc, InsideSales_btc, Canal_btc, Mercado_btc);
+
+            if Confirm(lblConfirm, false, Customer.Count) then
+                if Customer.FindFirst() then
+                    repeat
+                        if CentralCompras_btc <> '' then
+                            Customer.CentralCompras_btc := CentralCompras_btc;
+                        if ClienteCorporativo_btc <> '' then
+                            Customer.ClienteCorporativo_btc := ClienteCorporativo_btc;
+                        if AreaManager_btc <> '' then
+                            Customer.AreaManager_btc := AreaManager_btc;
+                        if Delegado_btc <> '' then
+                            Customer.Delegado_btc := Delegado_btc;
+                        if GrupoCliente_btc <> '' then
+                            Customer.GrupoCliente_btc := GrupoCliente_btc;
+                        if Perfil_btc <> '' then
+                            Customer.Perfil_btc := Perfil_btc;
+                        if SubCliente_btc <> '' then
+                            Customer.SubCliente_btc := SubCliente_btc;
+                        if ClienteReporting_btc <> '' then
+                            Customer.ClienteReporting_btc := ClienteReporting_btc;
+                        if ClienteActividad_btc <> '' then
+                            Customer.ClienteActividad_btc := ClienteActividad_btc;
+                        if InsideSales_btc <> '' then
+                            Customer.InsideSales_btc := InsideSales_btc;
+                        if Canal_btc <> '' then
+                            Customer.Canal_btc := Canal_btc;
+                        if Mercado_btc <> '' then
+                            Customer.Mercado_btc := Mercado_btc;
+                        Customer.Modify();
+                    Until Customer.next() = 0;
+        end;
+    end;
 }
 

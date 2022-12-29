@@ -23,6 +23,10 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                             SetTextoEmail(textoEmail);
                         end;
                     }
+                    field(WarningPlasticReceiptIntra; WarningPlasticReceiptIntra)
+                    {
+                        ApplicationArea = all;
+                    }
                 }
             }
         }

@@ -6313,6 +6313,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerCalculateFechaVto - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3044325777 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿You want to update the classification data of %1 selected customers?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los datos de clasificación de %1 clientes seleccionado?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CustomerChangeClasification - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 4204012904 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea duplicar el pedido de servico %1 del cliente %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea duplicar el pedido de servico %1 del cliente %2?"</note>
@@ -10182,6 +10187,76 @@
           <source>Cimworks Item list</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cimworks Lista productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CimWorks Item - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Change clasification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clientes cambiar datos clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - NamedType 1542600156" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 customers have been selected</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se han seleccionado %1 clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - NamedType lblTitol</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Area Manager</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control AreaManager_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 1081269253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Canal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Canal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control Canal_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 338312380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Central Compras</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Central Compras"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control CentralCompras_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 1424530041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activity Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Actividad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control ClienteActividad_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 854387372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cliente Corporativo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Corporativo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control ClienteCorporativo_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 782583580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cliente Reporting</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Reporting"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control ClienteReporting_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 3483029697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delegado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Delegado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control Delegado_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 3486487259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cliente Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control GrupoCliente_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control InsideSales_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 2885447315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mercado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mercado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control Mercado_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 4170685114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Perfil</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Perfil"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control Perfil_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 528300531 - Control 1475697198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SubCliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubCliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control SubCliente_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 489504416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents Attached</source>
@@ -20633,6 +20708,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las cuentas de Dyn 365 Sales?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action UpdateBloqueados - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 3648746709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Change Clasification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar datos clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action ChangeClasification - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 363045002 - Control 3809540912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Due Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto."</note>
@@ -23617,6 +23697,11 @@
           <source>Text e-mail purchase order</source>
           <note from="Developer" annotates="general" priority="2">ESP="Texto e-mail pedido compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field TextoEmailPedCompra_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 3548879018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Warning Intra-Communitary plastics</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso Norm. plastico intracomunitario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field WarningPlasticReceiptIntra - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1110143038 - Field 2950845476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
           <source>Estado</source>
