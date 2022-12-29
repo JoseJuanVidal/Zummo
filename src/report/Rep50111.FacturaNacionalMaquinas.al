@@ -1192,7 +1192,7 @@ report 50111 "FacturaNacionalMaquinas"
                                 PlasticItem := recIt."Plastic Qty. (kg)";
                                 PlasticRecycledItem := recIt."Recycled plastic Qty. (kg)";
 
-                                if recIt."Show detailed documents" then begin
+                                if recIt."Show detailed documents" and SalesSetup."Show Doc. Plastic Regulations" then begin
                                     ShowPlasticItem := true;
                                 end;
                             end;

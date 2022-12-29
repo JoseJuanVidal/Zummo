@@ -414,7 +414,7 @@ tableextension 50108 "Item" extends Item  //27
         field(50211; "Packaging product"; Boolean)
         {
             DataClassification = CustomerContent;
-            Caption = 'Packaging product', comment = 'ESP="Producto de embalaje"';
+            Caption = 'Packaging product', comment = 'ESP="Producto de bulto"';
         }
         //-  NORMATIVA MEDIO AMBIENTAL
 

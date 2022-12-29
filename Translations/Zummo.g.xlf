@@ -23090,7 +23090,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2021783656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Packaging product</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Producto de embalaje"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto de bulto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Packaging product - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2055232018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
