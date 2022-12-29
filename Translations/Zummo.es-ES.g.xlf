@@ -26657,7 +26657,7 @@
           <target>Ruta PDF Pedidos</target>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 2564261630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
-          <source>show Documents Plastic Regulations</source>
+          <source>Show Documents Plastic Regulations</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos mostrar Normativa Plástico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Show Doc. Plastic Regulations - Property Caption</note>
           <target>Documentos mostrar Normativa Plástico</target>

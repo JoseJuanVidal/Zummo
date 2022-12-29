@@ -145,7 +145,7 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
         }
         field(50170; "Show Doc. Plastic Regulations"; Boolean)
         {
-            Caption = 'show Documents Plastic Regulations', Comment = 'ESP="Documentos mostrar Normativa Plástico"';
+            Caption = 'Show Documents Plastic Regulations', Comment = 'ESP="Documentos mostrar Normativa Plástico"';
             DataClassification = CustomerContent;
         }
     }
