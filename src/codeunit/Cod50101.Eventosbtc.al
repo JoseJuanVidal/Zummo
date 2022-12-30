@@ -513,6 +513,9 @@ codeunit 50101 "Eventos_btc"
     var
         GeneralLedgerSetup: Record "General Ledger Setup";
     begin
+        if PurchaseHeader.IsTemporary then
+            exit;
+
         TestTipoCambioDocumentoCompra(PurchaseHeader);
         //IF (PurchaseHeader.Invoice) or (PurchaseHeader."Document Type" = PurchaseHeader."Document Type"::Invoice) THEN begin
         GeneralLedgerSetup.FindFirst();
@@ -521,6 +524,34 @@ codeunit 50101 "Eventos_btc"
                 Error('Período de facturación de compras cerrada');
         END;
         //end;
+
+        // controlamos si existe un Warning por la normativa del plastico, y si es intracomunitario mostramos mensaje
+        case PurchaseHeader."Document Type" of
+            PurchaseHeader."Document Type"::Order:
+                begin
+                    if PurchaseHeader.Receive then
+                        PlasticWarningReceiveIntracomunitaire(PurchaseHeader);
+                end;
+
+        end;
+    end;
+
+    local procedure PlasticWarningReceiveIntracomunitaire(PurchaseHeader: Record "Purchase Header")
+    var
+        PurchSetup: Record "Purchases & Payables Setup";
+        Country: Record "Country/Region";
+        lblConfirm: Label 'The purchase order is %1 of the European Union, no quantity of plastic has been indicated at reception.\¿Do you wish to continue?',
+            comment = 'ESP="El Pedido de compra es de %1 de la Union Europea, no se ha indicado cantidad de plastico en la recepción.\¿Desea continuar?"';
+        lblError: Label 'Registration cancelled by the user', comment = 'ESP="Registro anulado por el usuario"';
+    begin
+        // controlamos si existe un Warning por la normativa del plastico, y si es intracomunitario mostramos mensaje
+        PurchSetup.Get();
+        if Country.Get(PurchaseHeader."Buy-from Country/Region Code") then
+            if Country.EUCountryFound(PurchaseHeader."Buy-from Country/Region Code") then
+                if PurchSetup.WarningPlasticReceiptIntra then
+                    if (PurchaseHeader."Plastic Qty. (kg)" = 0) and (PurchaseHeader."Recycled plastic Qty. (kg)" = 0) then
+                        if not Confirm(lblConfirm, false, Country.Name) then
+                            Error(lblError);
     end;
 
 

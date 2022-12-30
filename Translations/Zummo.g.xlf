@@ -6283,6 +6283,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method OnAfterConfirmPost - NamedType ErrorLbl</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 3392907651 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The purchase order is %1 of the European Union, no quantity of plastic has been indicated at reception.\¿Do you wish to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El Pedido de compra es de %1 de la Union Europea, no se ha indicado cantidad de plastico en la recepción.\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method PlasticWarningReceiveIntracomunitaire - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 3392907651 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Registration cancelled by the user</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro anulado por el usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method PlasticWarningReceiveIntracomunitaire - NamedType lblError</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 1864777223 - NamedType 2016233549" size-unit="char" translate="yes" xml:space="preserve">
           <source>No exchange rate is found for currency: %1 and date: %2 %3: %4</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se encuentra tipo de cambio para divisa: %1 y fecha: %2 %3: %4"</note>
