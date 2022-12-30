@@ -8,6 +8,14 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
             {
                 ApplicationArea = all;
             }
+            field("Legend Regulations Plastic"; "Legend Regulations Plastic")
+            {
+                ApplicationArea = all;
+            }
+            field("Legend Regulations Plastic 2"; "Legend Regulations Plastic 2")
+            {
+                ApplicationArea = all;
+            }
         }
         addafter("Dynamics 365 for Sales")
         {

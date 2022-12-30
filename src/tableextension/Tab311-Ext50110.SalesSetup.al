@@ -148,5 +148,17 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             Caption = 'Show Documents Plastic Regulations', Comment = 'ESP="Documentos mostrar Normativa Plástico"';
             DataClassification = CustomerContent;
         }
+        field(50180; "Legend Regulations Plastic"; Text[100])
+        {
+            Caption = 'Legend Regulations Plastic', Comment = 'ESP="Leyenda Normativa Plástico"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Account Translation".Description where("G/L Account No." = Const('LegendReg')));
+        }
+        field(50190; "Legend Regulations Plastic 2"; Text[100])
+        {
+            Caption = 'Legend Regulations Plastic 2', Comment = 'ESP="Leyenda Normativa Plástico 2"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Account Translation"."Description" where("G/L Account No." = Const('LegendReg2')));
+        }
     }
 }

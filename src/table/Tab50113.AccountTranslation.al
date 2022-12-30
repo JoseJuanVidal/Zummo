@@ -4,6 +4,7 @@ table 50113 "Account Translation"
     Caption = 'Account Translation', Comment = 'ESP="Traducción Cuentas"';
     DataCaptionFields = "G/L Account No.", "Language Code", Description;
     LookupPageID = "Account Translations";
+    DrillDownPageId = "Account Translations";
 
     fields
     {
@@ -12,6 +13,7 @@ table 50113 "Account Translation"
             Caption = 'G/L Account No.', Comment = 'ESP="Nº cuenta"';
             NotBlank = true;
             TableRelation = "G/L Account";
+            ValidateTableRelation = false;  //  se utiliza en otras traducciones
         }
         field(2; "Language Code"; Code[10])
         {

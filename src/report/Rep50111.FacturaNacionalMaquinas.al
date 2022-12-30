@@ -385,6 +385,10 @@ report 50111 "FacturaNacionalMaquinas"
             {
 
             }
+            column(lblLeyendPlastic; lblLeyendPlastic)
+            { }
+            column(lblLeyendPlastic2; lblLeyendPlastic2)
+            { }
             //SOTHIS EBR 010920 id 159231
             column(logo; CompanyInfo1.LogoCertificacion)
             { }
@@ -1636,7 +1640,6 @@ report 50111 "FacturaNacionalMaquinas"
                     {
                         DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
 
-
                         column(lblItemPlastic; lblPlastic)
                         { }
                         column(lblItemPlasticRecycled; lblPlasticRecycled)
@@ -1645,7 +1648,6 @@ report 50111 "FacturaNacionalMaquinas"
                         { }
                         column(lblTotPlasticRecycled; lblTotPlasticRecycled)
                         { }
-
                         column(lblPlasticBulto; lblPlasticBulto)
                         { }
                         column(lblPlasticRecycledBulto; lblPlasticRecycledBulto)
@@ -1664,7 +1666,6 @@ report 50111 "FacturaNacionalMaquinas"
                         trigger OnAfterGetRecord()
                         begin
                             // buscamos en los albaranes, de la factura, los packing list de la preparación de los envíos
-
                             CalculatePlasticInvoice();
 
                         end;
@@ -1791,6 +1792,23 @@ report 50111 "FacturaNacionalMaquinas"
                 recSalesInvLinePeso: Record "Sales Invoice Line";
                 cdaFunciones: Codeunit Funciones;
             begin
+
+                CurrReport.Language := Language.GetLanguageID("Language Code");
+                if not Cust.Get("Bill-to Customer No.") then
+                    Clear(Cust)
+                else begin
+                    CurrReport.Language := Language.GetLanguageID(Cust."Language Code");
+                    idiomaReport := Cust."Language Code";
+                end;
+
+                if optIdioma <> optIdioma::" " then begin
+                    CurrReport.LANGUAGE := Language.GetLanguageID(format(optIdioma));
+                    idiomaReport := format(optIdioma);
+                end;
+                FormatAddressFields("Sales Invoice Header");
+                FormatDocumentFields("Sales Invoice Header");
+                DocumentTotals.CalculatePostedSalesInvoiceTotals(TotalSalesInvoiceHeader, VATAmount2, TotalSalesInvoiceline);
+
                 totalBultos := 0;
                 totalPeso := 0;
                 totalPalets := 0;
@@ -1803,6 +1821,11 @@ report 50111 "FacturaNacionalMaquinas"
                 // acumulamos para el total
                 PlasticKgTotal := 0;
                 PlasticRecycledKgTotal := 0;
+                // obtenemos la leyenda de la normatica plástico
+                lblLeyendPlastic := '';
+                lblLeyendPlastic2 := '';
+                if SalesSetup."Show Doc. Plastic Regulations" then
+                    GetlblLeyendPlastic;
 
 
                 if totalPeso = 0 then begin
@@ -1828,10 +1851,6 @@ report 50111 "FacturaNacionalMaquinas"
                 TotalSalesInvoiceline.SetRange("Document No.", "No.");
                 TotalSalesInvoiceline.FindFirst();
 
-                CurrReport.Language := Language.GetLanguageID("Language Code");
-                FormatAddressFields("Sales Invoice Header");
-                FormatDocumentFields("Sales Invoice Header");
-                DocumentTotals.CalculatePostedSalesInvoiceTotals(TotalSalesInvoiceHeader, VATAmount2, TotalSalesInvoiceline);
 
                 // ponemos el registro segun el grupo de iva
                 TextRegister := '';
@@ -1874,17 +1893,7 @@ report 50111 "FacturaNacionalMaquinas"
                     porcentDescuento := (TotalSalesInvoiceHeader."Invoice Discount Amount" * 100) / (TotalSalesInvoiceHeader."Invoice Discount Amount" - Portes + TotalSalesInvoiceHeader.Amount);
                 // 165646 JJV antes Value -> Amount porcentDescuento := (TotalSalesInvoiceHeader."Invoice Discount Value" * 100) / (TotalSalesInvoiceHeader."Invoice Discount Value" - Portes + TotalSalesInvoiceHeader.Amount);
 
-                if not Cust.Get("Bill-to Customer No.") then
-                    Clear(Cust)
-                else begin
-                    CurrReport.Language := Language.GetLanguageID(Cust."Language Code");
-                    idiomaReport := Cust."Language Code";
-                end;
 
-                if optIdioma <> optIdioma::" " then begin
-                    CurrReport.LANGUAGE := Language.GetLanguageID(format(optIdioma));
-                    idiomaReport := format(optIdioma);
-                end;
 
                 DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
                 Customer.Get("Sell-to Customer No.");
@@ -2207,6 +2216,8 @@ report 50111 "FacturaNacionalMaquinas"
         PlasticRecycledKgTotal: Decimal;
         PlasticBultoKgTotal: Decimal;
         PlasticRecycledBultoKgTotal: Decimal;
+        lblLeyendPlastic: text;
+        lblLeyendPlastic2: text;
         lblPlastic: Label 'Plastic packing (kg)', comment = 'ESP="Plástico embalaje (kg)"';
         lblPlasticRecycled: Label 'Plastic Recycled packing (kg)', comment = 'ESP="Plástico reciclado embalaje (kg)"';
         lblPlasticBulto: Label 'Plastic package (kg)', comment = 'ESP="Plástico Bulto (kg)"';
@@ -2992,6 +3003,33 @@ report 50111 "FacturaNacionalMaquinas"
                 END;
 
             UNTIL ValueEntryRelation.NEXT() = 0;
+    end;
+
+    local procedure GetlblLeyendPlastic()
+    var
+        TranslationText: Record "Account Translation";
+    begin
+        TranslationText.Reset();
+        Language.Reset();
+        Language.SetRange("Windows Language ID", CurrReport.Language);
+        if Language.FindFirst() then
+            TranslationText.SetRange("Language Code", Language.Code);
+        TranslationText.SetRange("G/L Account No.", 'LegendReg');
+        if TranslationText.FindSet() then begin
+            lblLeyendPlastic := TranslationText.Description + TranslationText."Description 2";
+        end else begin
+            TranslationText.SetRange("Language Code", 'ESP');
+            if TranslationText.FindSet() then
+                lblLeyendPlastic := TranslationText.Description + TranslationText."Description 2";
+        end;
+        TranslationText.SetRange("G/L Account No.", 'LegendReg2');
+        if TranslationText.FindSet() then begin
+            lblLeyendPlastic2 := TranslationText.Description + TranslationText."Description 2";
+        end else begin
+            TranslationText.SetRange("Language Code", 'ESP');
+            if TranslationText.FindSet() then
+                lblLeyendPlastic2 := TranslationText.Description + TranslationText."Description 2";
+        end;
     end;
 
     local procedure CalculatePlasticInvoice()

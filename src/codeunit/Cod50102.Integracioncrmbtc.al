@@ -3231,7 +3231,7 @@ codeunit 50102 "Integracion_crm_btc"
                     Window.Update(2, Customer."Name");
                     // buscamos el AreaManager y le ponemos el ID de Systemuser
                     if GetUpdateOwnerSales(Customer, NewUserId) then begin
-                        if (NewUserId <> '') and (NewUserId <> '{00000000-0000-0000-0000-000000000000}') then begin
+                        if (NewUserId <> '') and (NewUserId <> '00000000-0000-0000-0000-000000000000') then begin
                             if NewUserId <> CRMAccount.OwnerId then begin
                                 CRMAccount.OwnerId := NewUserId;
                                 CRMAccount.Modify();
@@ -3262,7 +3262,7 @@ codeunit 50102 "Integracion_crm_btc"
         if Customer.FindFirst() then
             repeat
                 if GetUpdateOwnerSales(Customer, NewUserId) then begin
-                    if (NewUserId <> '') and (NewUserId <> '{00000000-0000-0000-0000-000000000000}') then begin
+                    if (NewUserId <> '') and (NewUserId <> '00000000-0000-0000-0000-000000000000') then begin
                         CRMAccount.Reset();
                         CRMAccount.SetRange(AccountNumber, Customer."No.");
                         IF CRMAccount.FindFirst() then begin
@@ -3287,7 +3287,7 @@ codeunit 50102 "Integracion_crm_btc"
     begin
         // asiganamos el propietario
         if GetUpdateOwnerSales(Customer, NewUserId) then begin
-            if (NewUserId = '') or (NewUserId = '{00000000-0000-0000-0000-000000000000}') then begin
+            if (NewUserId = '') or (NewUserId = '00000000-0000-0000-0000-000000000000') then begin
                 if not Confirm('¿Desea actualizar el Owner %1 del cliente %2 en CRM?\%3', false, AreaManager.NumReg, Customer.Name, AreaManager."CRM ID") then
                     exit;
 
@@ -3326,7 +3326,7 @@ codeunit 50102 "Integracion_crm_btc"
                 end;
             end;
         end;
-        if (NewUserId = '') or (NewUserId = '{00000000-0000-0000-0000-000000000000}') then begin
+        if (NewUserId = '') or (NewUserId = '00000000-0000-0000-0000-000000000000') then begin
             AreaManager.Reset();
             AreaManager.SetRange(TipoTabla, AreaManager.TipoTabla::AreaManager);
             AreaManager.SetRange(NumReg, Customer.AreaManager_btc);

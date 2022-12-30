@@ -24563,6 +24563,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Filtro Idioma L. M."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field LanguageFilter - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3885273610 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Legend Regulations Plastic</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Leyenda Normativa Plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Legend Regulations Plastic - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3557666424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Legend Regulations Plastic 2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Leyenda Normativa Plástico 2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Legend Regulations Plastic 2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 584897431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Nº días fact vencidas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº días fact vencidas"</note>
