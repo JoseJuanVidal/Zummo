@@ -1805,6 +1805,20 @@ report 50111 "FacturaNacionalMaquinas"
                     CurrReport.LANGUAGE := Language.GetLanguageID(format(optIdioma));
                     idiomaReport := format(optIdioma);
                 end;
+
+                recSalesShptLineTmp.Reset();
+                recSalesShptLineTmp.DeleteAll();
+
+                TotalSalesInvoiceHeader.Reset();
+                TotalSalesInvoiceHeader.SetRange("No.", "No.");
+                TotalSalesInvoiceHeader.FindFirst();
+                if NomPais.get("Sell-to Country/Region Code") then
+                    nombrePais := NomPais.Name;
+
+                TotalSalesInvoiceline.Reset();
+                TotalSalesInvoiceline.SetRange("Document No.", "No.");
+                TotalSalesInvoiceline.FindFirst();
+
                 FormatAddressFields("Sales Invoice Header");
                 FormatDocumentFields("Sales Invoice Header");
                 DocumentTotals.CalculatePostedSalesInvoiceTotals(TotalSalesInvoiceHeader, VATAmount2, TotalSalesInvoiceline);
@@ -1838,18 +1852,6 @@ report 50111 "FacturaNacionalMaquinas"
                         until recSalesInvLinePeso.Next() = 0;
                 end;
 
-                recSalesShptLineTmp.Reset();
-                recSalesShptLineTmp.DeleteAll();
-
-                TotalSalesInvoiceHeader.Reset();
-                TotalSalesInvoiceHeader.SetRange("No.", "No.");
-                TotalSalesInvoiceHeader.FindFirst();
-                if NomPais.get("Sell-to Country/Region Code") then
-                    nombrePais := NomPais.Name;
-
-                TotalSalesInvoiceline.Reset();
-                TotalSalesInvoiceline.SetRange("Document No.", "No.");
-                TotalSalesInvoiceline.FindFirst();
 
 
                 // ponemos el registro segun el grupo de iva
