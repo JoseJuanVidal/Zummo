@@ -5988,6 +5988,51 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ancho"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Prod. BOM Line - Field Width - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1482243775 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZM Packing List Detail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1482243775 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1482243775 - Field 2480638018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Línea documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Field Document Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1482243775 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1482243775 - Field 2176682057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Field Document type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1482243775 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1482243775 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Linea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1482243775 - Field 2175713548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Packing Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Linea Packing"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Field Packing Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1482243775 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Field Quantity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1490353142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
           <note from="Developer" annotates="general" priority="2">ESP=""</note>
@@ -6020,12 +6065,12 @@
         </trans-unit>
         <trans-unit id="Table 1490353142 - Field 3861578107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prod. Tools code</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cód. Utiles producción"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Utiles calidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Prod. Tools code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1490353142 - Field 19454069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prod. Tools Name</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nombre Utiles producción"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Utiles calidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Prod. Tools Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1490353142 - Field 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -6227,6 +6272,11 @@
           <source>Item No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Sales Order Packing - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2182538116 - Field 3467429962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Sales Order Packing - Field Item Quantity - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2182538116 - Field 1881551368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Length</source>
@@ -9385,7 +9435,7 @@
         </trans-unit>
         <trans-unit id="Page 3723248709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Productions tool</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Lista Utiles producción"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista Utiles calidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Productions tools - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3723248709 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10373,9 +10423,14 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action Transfer To Planning Lines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3554805098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Packing List Details</source>
+          <note from="Developer" annotates="general" priority="2">ESP="lista detalle línea Packing"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Packing List Details - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3525881470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prod. Tools Ledger Entry</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Movs. Utiles producción"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. Utiles calidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Prod. Tools Ldg. Entry Card - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1490353142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10392,6 +10447,16 @@
           <source>ERPLink Prod. BOM list</source>
           <note from="Developer" annotates="general" priority="2">ESP="ERPLink L.M. de producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production BOM List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2721571730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZM Sales Order Packing Line</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas Ped. Venta Packing"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Sales Order Packing Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2721571730 - Action 2309762067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear Líneas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Sales Order Packing Line - Action CreateingLines - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2819474442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Shipment Packing</source>
@@ -10412,11 +10477,6 @@
           <source>General</source>
           <note from="Developer" annotates="general" priority="2">ESP="General"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM ZM Sales Order Packing - Control GroupName - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 487287411 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ZM Sales Order Packing Line</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Líneas Ped. Venta Packing"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ZM Sales Order Packing Line - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3011595053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Credit Memo</source>
@@ -21322,6 +21382,11 @@
           <source>File Export Errors</source>
           <note from="Developer" annotates="general" priority="2">ESP="Errores de exportación de archivo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedBillGroups - Control Errors - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 356349885 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>Normativa Plástico</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseInvoice - Control Plastic - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3317830519 - Action 1765398210 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2406989597">
           <source>Imprimir etiquetas</source>

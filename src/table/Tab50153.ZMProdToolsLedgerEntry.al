@@ -14,13 +14,13 @@ table 50153 "ZM Prod. Tools Ledger Entry"
         field(2; "Prod. Tools code"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Prod. Tools code', comment = 'ESP="Cód. Utiles producción"';
+            Caption = 'Prod. Tools code', comment = 'ESP="Cód. Utiles calidad"';
             TableRelation = "ZM Productión Tools";
             Editable = false;
         }
         field(3; "Prod. Tools Name"; text[100])
         {
-            Caption = 'Prod. Tools Name', comment = 'ESP="Nombre Utiles producción"';
+            Caption = 'Prod. Tools Name', comment = 'ESP="Nombre Utiles calidad"';
             FieldClass = FlowField;
             CalcFormula = lookup(Vendor.Name where("No." = field("Vendor No.")));
             Editable = false;

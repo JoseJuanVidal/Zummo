@@ -42,7 +42,7 @@ page 50153 "ZM ZM Sales Order Packing"
                     ApplicationArea = All;
                 }
             }
-            part(Lines; "ZM ZM Sales Order Packing Line")
+            part(Lines; "ZM Sales Order Packing Line")
             {
                 ApplicationArea = All;
                 UpdatePropagation = Both;

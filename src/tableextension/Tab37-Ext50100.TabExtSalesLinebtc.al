@@ -198,5 +198,13 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             Caption = 'No contemplar planificaciòn', comment = 'ESP="No contemplar planificación"';
         }
     }
+
+    fieldgroups
+    {
+        addlast(Brick; "No.")
+        {
+
+        }
+    }
 }
 

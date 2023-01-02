@@ -1,4 +1,4 @@
-page 50152 "ZM ZM Sales Order Packing Line"
+page 17372 "ZM Sales Order Packing Line"
 {
     //ApplicationArea = none;
     Caption = 'ZM Sales Order Packing Line', Comment = 'ESP="Líneas Ped. Venta Packing"';
@@ -38,6 +38,10 @@ page 50152 "ZM ZM Sales Order Packing Line"
                 {
                     ApplicationArea = all;
                 }
+                field("Item Quantity"; "Item Quantity")
+                {
+                    ApplicationArea = all;
+                }
                 field("Package Plastic Qty. (kg)"; "Package Plastic Qty. (kg)")
                 {
                     ApplicationArea = all;
@@ -69,4 +73,37 @@ page 50152 "ZM ZM Sales Order Packing Line"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(CreateingLines)
+            {
+                ApplicationArea = all;
+                Caption = 'Create Lines', comment = 'ESP="Crear Líneas"';
+                Image = CreatePutawayPick;
+
+                trigger OnAction()
+                begin
+                    ActionCreateingLines();
+                end;
+
+
+            }
+        }
+    }
+
+    local procedure ActionCreateingLines()
+    var
+        PackingListDetail: Record "ZM Packing List Detail";
+        PackingListDetails: page "ZM Packing List Details";
+    begin
+        PackingListDetail.Reset();
+        PackingListDetail.SetRange("Document type", Rec."Document type");
+        PackingListDetail.SetRange("Document No.", Rec."Document No.");
+        PackingListDetail.SetRange("Packing Line No.", Rec."Line No.");
+        PackingListDetails.SetTableView(PackingListDetail);
+        PackingListDetails.RunModal();
+
+    end;
 }

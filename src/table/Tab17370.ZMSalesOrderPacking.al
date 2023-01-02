@@ -1,4 +1,4 @@
-table 50606 "ZM Sales Order Packing"
+table 17370 "ZM Sales Order Packing"
 {
     DataClassification = CustomerContent;
     Caption = 'Sales Order Packing', comment = 'ESP="Ped. Venta Packing"';
@@ -83,6 +83,13 @@ table 50606 "ZM Sales Order Packing"
             Caption = 'Package Recycled Plastic (kg)', comment = 'ESP="Plástico reciclado Bulto (kg)"';
             DataClassification = CustomerContent;
             DecimalPlaces = 5 : 5;
+        }
+        field(50; "Item Quantity"; decimal)
+        {
+            FieldClass = FlowField;
+            Caption = 'Item Quantity', comment = 'ESP="Cantidad productos"';
+            CalcFormula = sum("ZM Packing List Detail".Quantity where("Document type" = field("Document type"), "Document No." = field("Document No."), "Packing Line No." = field("Line No.")));
+            Editable = false;
         }
 
     }

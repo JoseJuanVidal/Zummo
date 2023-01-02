@@ -1,7 +1,7 @@
 page 50129 "Productions tools"
 {
     ApplicationArea = All;
-    Caption = 'Productions tool', Comment = 'ESP="Lista Utiles producción"';
+    Caption = 'Productions tool', Comment = 'ESP="Lista Utiles calidad"';
     PageType = List;
     SourceTable = "ZM Productión Tools";
     UsageCategory = Lists;

@@ -4869,6 +4869,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1482243775 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZM Packing List Detail</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1490353142 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2"/>

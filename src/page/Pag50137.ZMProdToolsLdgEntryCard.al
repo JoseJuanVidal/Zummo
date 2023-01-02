@@ -1,6 +1,6 @@
 page 50137 "ZM Prod. Tools Ldg. Entry Card"
 {
-    Caption = 'Prod. Tools Ledger Entry', Comment = 'ESP="Movs. Utiles producción"';
+    Caption = 'Prod. Tools Ledger Entry', Comment = 'ESP="Movs. Utiles calidad"';
     PageType = Card;
     SourceTable = "ZM Prod. Tools Ledger Entry";
     UsageCategory = None;
