@@ -10949,10 +10949,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page WS Purchase Line - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3853294818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CIM Items Pending</source>
-          <note from="Developer" annotates="general" priority="2">ESP="CIM Productos pendientes"</note>
+          <source>ERPLink Items Pending</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ERPLink Productos pendientes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Property Caption</note>
-          <target>CIM Productos pendientes</target>
+          <target>ERPLink Productos pendientes</target>
         </trans-unit>
         <trans-unit id="Page 3853294818 - Control 3448041191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Components Lines</source>
@@ -10967,10 +10967,10 @@
           <target>Copiar producto</target>
         </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CIM Production BOM Lines</source>
-          <note from="Developer" annotates="general" priority="2">ESP="CIM Líneas Prod. BOM Lines "</note>
+          <source>ERPLink Production BOM Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ERPLink Líneas Prod. BOM Lines "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Production BOM Lines - Property Caption</note>
-          <target>CIM Líneas Prod. BOM Lines </target>
+          <target>ERPLink Líneas Prod. BOM Lines </target>
         </trans-unit>
         <trans-unit id="Page 2427138035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CIM Prod. BOM list</source>
@@ -11195,10 +11195,10 @@
           <target>Doc. Adjuntos</target>
         </trans-unit>
         <trans-unit id="Page 2976538946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Prod. BOM list</source>
-          <note from="Developer" annotates="general" priority="2">ESP="L.M. de producción"</note>
+          <source>ERPLink Prod. BOM list</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ERPLink L.M. de producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production BOM List - Property Caption</note>
-          <target>L.M. de producción</target>
+          <target>ERPLink L.M. de producción</target>
         </trans-unit>
         <trans-unit id="Page 2819474442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Shipment Packing</source>

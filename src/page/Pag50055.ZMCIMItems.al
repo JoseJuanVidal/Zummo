@@ -1,7 +1,7 @@
 page 50055 "ZM CIM Items"
 {
     ApplicationArea = All;
-    Caption = 'CIM Items Pending', comment = 'ESP="CIM Productos pendientes"';
+    Caption = 'ERPLink Items Pending', comment = 'ESP="ERPLink Productos pendientes"';
     PageType = List;
     SourceTable = "ZM CIM Items temporary";
     UsageCategory = Lists;
