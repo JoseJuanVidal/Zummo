@@ -478,6 +478,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 ApplicationArea = all;
                 Caption = 'Calculate Plastic BOM', comment = 'ESP="Calcular peso plastico L.M."';
                 Image = CalculateHierarchy;
+                ToolTip = 'Review the entire structure and update data at all levels.', comment = 'ESP="Revisa toda la estructura y actualiza los datos a todos los niveles"';
                 // Promoted = true;
                 // PromotedCategory = New;
 
@@ -490,8 +491,10 @@ pageextension 50109 "ItemCard" extends "Item Card"
             action(CalculatePlasticLevels)
             {
                 ApplicationArea = all;
-                Caption = 'Calculate Plastic Level', comment = 'ESP="Calcular peso plastico Nivel superior"';
+                Caption = 'Calculate Plastic Level', comment = 'ESP="Calcular peso plastico Niveles superior"';
                 Image = CalculateRegenerativePlan;
+                ToolTip = 'Will update all BOM containing this product, recalculate all higher levels',
+                            comment = 'ESP="Actualizará todos las listas de materiales que contienen este producto, volvera a calcular todos los niveles superiores"';
                 // Promoted = true;
                 // PromotedCategory = New;
 
