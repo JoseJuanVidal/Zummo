@@ -182,7 +182,11 @@ page 50156 "ZM Production Bom Maintenance"
         Tasks: Enum "ZM Task Production Bom change";
         notShowChangeDate: Boolean;
         ShowChangeItem: Boolean;
-        lblConfirmChanges: Label 'The data in the BOM list will be updated.\¿Do you want to continue?', comment = 'ESP="Se van a actualizar los datos indicado en la lista de materiales.\¿Desea continuar?"';
+        lblConfirmChanges: Label 'The data in the BOM list will be updated.\%1 %2\%3 %4\¿Do you want to continue?',
+            comment = 'ESP="Se van a actualizar los datos en la lista de materiales.\%1 %2\%3 %4\¿Desea continuar?"';
+        lblConfirmChangesQtyper: Label 'Quantity per', comment = 'ESP="Cantidad por"';
+        lblConfirmChangesQtyadd: Label 'Quantity add', comment = 'ESP="Cantidad añadir"';
+        lblConfirmChangesUnit: Label 'Unit of measure', comment = 'ESP="Unidad de medida"';
 
     local procedure ChangeTask()
     begin
@@ -265,9 +269,19 @@ page 50156 "ZM Production Bom Maintenance"
     procedure UpdateBomDades()
     var
         ProductionBomLine: Record "Production BOM Line";
+        Confirmparam: text;
+        Qty: Decimal;
         LineNo: Integer;
     begin
-        if not Confirm(lblConfirmChanges) then
+        if Rec."Remaining Amount" <> 0 then begin
+            Confirmparam := lblConfirmChangesQtyper;
+            Qty := Rec."Remaining Amount"
+        end else begin
+            Confirmparam := lblConfirmChangesQtyadd;
+            Qty := Rec."Remaining Amt. Incl. Discount";
+        end;
+
+        if not Confirm(lblConfirmChanges, false, Confirmparam, Qty, lblConfirmChangesUnit, Rec."Document No.") then
             exit;
 
         ProductionBomLine.Reset();
@@ -287,7 +301,7 @@ page 50156 "ZM Production Bom Maintenance"
 
             Until ProductionBomLine.next() = 0;
 
-        CurrPage.Lines.Page.UpdateBom('');
+        CurrPage.Lines.Page.UpdateBom(Rec."Account No.");
 
     end;
 

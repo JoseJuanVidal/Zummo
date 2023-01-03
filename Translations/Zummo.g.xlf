@@ -10479,9 +10479,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - NamedType 2880736111" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The data in the BOM list will be updated.\¿Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Se van a actualizar los datos indicado en la lista de materiales.\¿Desea continuar?"</note>
+          <source>The data in the BOM list will be updated.\%1 %2\%3 %4\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se van a actualizar los datos en la lista de materiales.\%1 %2\%3 %4\¿Desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmChanges</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 669054772" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity add</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad añadir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmChangesQtyadd</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 149810906" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity per</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmChangesQtyper</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 3496920325" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of measure</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Unidad de medida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmChangesUnit</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - Control 1552074139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Change dades</source>

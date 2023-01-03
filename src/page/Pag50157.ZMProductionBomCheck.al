@@ -32,6 +32,7 @@ page 50157 "ZM Production Bom Check"
                 {
                     ApplicationArea = all;
                     Caption = 'Quantity per', comment = 'ESP="Cantidad por"';
+                    DecimalPlaces = 5 : 5;
                 }
                 field("Source No."; "Source No.")
                 {
