@@ -5,6 +5,7 @@ page 50157 "ZM Production Bom Check"
     UsageCategory = None;
     SourceTable = "Item Tracing Buffer";
     SourceTableTemporary = true;
+    InsertAllowed = false;
 
     layout
     {
@@ -12,6 +13,8 @@ page 50157 "ZM Production Bom Check"
         {
             repeater(Lines)
             {
+                Editable = false;
+
                 Caption = 'Lines', comment = 'ESP="Líneas"';
                 field("Item No."; "Item No.")
                 {
@@ -34,10 +37,15 @@ page 50157 "ZM Production Bom Check"
                     Caption = 'Quantity per', comment = 'ESP="Cantidad por"';
                     DecimalPlaces = 5 : 5;
                 }
-                field("Source No."; "Source No.")
+                field("Location Code"; "Location Code")
                 {
                     ApplicationArea = all;
                     Caption = 'Unit of Measure Code', comment = 'ESP="Cód. Unidad medida"';
+                }
+                field("Variant Code"; "Variant Code")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Routing link code', comment = 'ESP="Cód. conexión ruta"';
                 }
             }
         }
@@ -64,11 +72,15 @@ page 50157 "ZM Production Bom Check"
                 Rec."Item No." := ProductionBomLine."Production BOM No.";
                 Rec."Item Description" := ProductionBomHeader.Description;
                 Rec.Quantity := ProductionBomLine."Quantity per";
-                Rec."Source No." := ProductionBomLine."Unit of Measure Code";
+                Rec."Location Code" := ProductionBomLine."Unit of Measure Code";
+                Rec."Source No." := ProductionBomLine."Version Code";
+                Rec.Level := ProductionBomLine."Line No.";
+                Rec."Variant Code" := ProductionBomLine."Routing Link Code";
                 Rec.Insert();
             Until ProductionBomLine.next() = 0;
 
         Rec.FindFirst();
+        // CurrPage.Update(false);
     end;
 
     local procedure LookupDownBom()
@@ -80,5 +92,24 @@ page 50157 "ZM Production Bom Check"
         ProductionBOMHeader.SetRange("No.", Rec."Item No.");
         ProductionBOM.SetTableView(ProductionBOMHeader);
         ProductionBOM.RunModal();
+    end;
+
+    procedure GetSelectionRecord(var ItemTracingBuffer: record "Item Tracing Buffer")
+    var
+        SelectionItemTracingBuffer: record "Item Tracing Buffer" temporary;
+    begin
+        if Rec.FindFirst() then
+            repeat
+                SelectionItemTracingBuffer.Init();
+                SelectionItemTracingBuffer.TransferFields(Rec);
+                SelectionItemTracingBuffer.Insert();
+            Until Rec.next() = 0;
+        CurrPage.SetSelectionFilter(SelectionItemTracingBuffer);
+        if SelectionItemTracingBuffer.FindFirst() then
+            repeat
+                ItemTracingBuffer.Init();
+                ItemTracingBuffer.TransferFields(SelectionItemTracingBuffer);
+                ItemTracingBuffer.Insert();
+            until SelectionItemTracingBuffer.Next() = 0;
     end;
 }

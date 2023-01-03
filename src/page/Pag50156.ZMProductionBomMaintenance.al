@@ -15,7 +15,7 @@ page 50156 "ZM Production Bom Maintenance"
         {
             group(Options)
             {
-                Caption = 'Options', comment = 'ESP="Opciones"';
+                Caption = 'Exchange options', comment = 'ESP="Opciones de cambio"';
                 field("Account No."; "Account No.")
                 {
                     ApplicationArea = All;
@@ -74,11 +74,11 @@ page 50156 "ZM Production Bom Maintenance"
                     ToolTip = 'Indicate the new "Unit of measure" to be updated in the BOM', comment = 'ESP="Indicar la nueva "Unidad de medida" a actualizar en las listas de materiales"';
                     TableRelation = "Item Unit of Measure" where("Item No." = field("Account No."));
                 }
-                // field()
-                // {
-                //     ApplicationArea = all;
-                //     Caption = '', comment = 'ESP=""';
-                // }
+                field(RoutingLinkCode; RoutingLinkCode)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Routing Link Code', comment = 'ESP="Cód. conexión ruta"';
+                }
             }
             group(LMChange)
             {
@@ -120,7 +120,6 @@ page 50156 "ZM Production Bom Maintenance"
             {
                 ApplicationArea = All;
                 Caption = 'BOM list', comment = 'ESP="Lista de materiales"';
-                Editable = false;
             }
 
         }
@@ -177,13 +176,14 @@ page 50156 "ZM Production Bom Maintenance"
     var
         Item: Record Item;
         ItemNoChange: code[20];
+        RoutingLinkCode: code[20];
         ItemDescription: Text[100];
         NewItemDescription: Text[100];
         Tasks: Enum "ZM Task Production Bom change";
         notShowChangeDate: Boolean;
         ShowChangeItem: Boolean;
-        lblConfirmChanges: Label 'The data in the BOM list will be updated.\%1 %2\%3 %4\¿Do you want to continue?',
-            comment = 'ESP="Se van a actualizar los datos en la lista de materiales.\%1 %2\%3 %4\¿Desea continuar?"';
+        lblConfirmChanges: Label 'The data in the %1 BOM list will be updated.\%2 %3\%4 %5\¿Do you want to continue?',
+            comment = 'ESP="Se van a actualizar %1 registros con los datos en la lista de materiales.\%2 %3\%4 %5\¿Desea continuar?"';
         lblConfirmChangesQtyper: Label 'Quantity per', comment = 'ESP="Cantidad por"';
         lblConfirmChangesQtyadd: Label 'Quantity add', comment = 'ESP="Cantidad añadir"';
         lblConfirmChangesUnit: Label 'Unit of measure', comment = 'ESP="Unidad de medida"';
@@ -219,7 +219,6 @@ page 50156 "ZM Production Bom Maintenance"
         item.Reset();
         if Item.Get(Rec."Account No.") then begin
             ItemDescription := Item.Description;
-            Rec."Document No." := Item."Base Unit of Measure";
         end;
     end;
 
@@ -229,7 +228,6 @@ page 50156 "ZM Production Bom Maintenance"
         item.Reset();
         if Item.Get(Rec."Bal. Account No.") then begin
             NewItemDescription := Item.Description;
-            Rec."External Document No." := Item."Base Unit of Measure";
         end;
 
     end;
@@ -269,6 +267,7 @@ page 50156 "ZM Production Bom Maintenance"
     procedure UpdateBomDades()
     var
         ProductionBomLine: Record "Production BOM Line";
+        ItemTracingBuffer: record "Item Tracing Buffer" temporary;
         Confirmparam: text;
         Qty: Decimal;
         LineNo: Integer;
@@ -281,25 +280,31 @@ page 50156 "ZM Production Bom Maintenance"
             Qty := Rec."Remaining Amt. Incl. Discount";
         end;
 
-        if not Confirm(lblConfirmChanges, false, Confirmparam, Qty, lblConfirmChangesUnit, Rec."Document No.") then
+        CurrPage.Lines.Page.GetSelectionRecord(ItemTracingBuffer);
+        if not Confirm(lblConfirmChanges, false, ItemTracingBuffer.Count, Confirmparam, Qty, lblConfirmChangesUnit, Rec."Document No.") then
             exit;
 
-        ProductionBomLine.Reset();
-        ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
-        ProductionBomLine.SetRange("No.", Rec."Account No.");
-        if ProductionBomLine.FindFirst() then
+        if ItemTracingBuffer.FindFirst() then
             repeat
-                // actualizamos los datos con los cambios
-                if Rec."Remaining Amount" <> 0 then
-                    ProductionBomLine."Quantity per" := Rec."Remaining Amount";
-                if Rec."Remaining Amt. Incl. Discount" <> 0 then
-                    if (ProductionBomLine."Quantity per" + Rec."Remaining Amt. Incl. Discount") > 0 then
-                        ProductionBomLine."Quantity per" += Rec."Remaining Amt. Incl. Discount";
-                if Rec."Document No." <> '' then
-                    ProductionBomLine."Unit of Measure Code" := Rec."Document No.";
+                ProductionBomLine.Reset();
+                ProductionBomLine.SetRange("Production BOM No.", ItemTracingBuffer."Item No.");
+                ProductionBomLine.SetRange("Version Code", ItemTracingBuffer."Source No.");
+                ProductionBomLine.SetRange("Line No.", ItemTracingBuffer.Level);
+                if ProductionBomLine.FindFirst() then begin
+                    // actualizamos los datos con los cambios
+                    if Rec."Remaining Amount" <> 0 then
+                        ProductionBomLine."Quantity per" := Rec."Remaining Amount";
+                    if Rec."Remaining Amt. Incl. Discount" <> 0 then
+                        if (ProductionBomLine."Quantity per" + Rec."Remaining Amt. Incl. Discount") > 0 then
+                            ProductionBomLine."Quantity per" += Rec."Remaining Amt. Incl. Discount";
+                    if Rec."Document No." <> '' then
+                        ProductionBomLine."Unit of Measure Code" := Rec."Document No.";
+                    if RoutingLinkCode <> '' then
+                        ProductionBomLine."Routing Link Code" := RoutingLinkCode;
+                end;
                 ProductionBomLine.Modify();
 
-            Until ProductionBomLine.next() = 0;
+            Until ItemTracingBuffer.next() = 0;
 
         CurrPage.Lines.Page.UpdateBom(Rec."Account No.");
 

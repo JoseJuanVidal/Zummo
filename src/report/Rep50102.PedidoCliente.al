@@ -2,7 +2,7 @@ report 50102 "PedidoCliente"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/report/Rep50102.PedidoCliente.rdl';
-    Caption = 'Pedido Cliente', Comment = 'Customer Order';
+    Caption = 'Pedido Cliente', Comment = 'ESP="Pedido Cliente"';
     PreviewMode = PrintLayout;
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
@@ -1857,12 +1857,12 @@ report 50102 "PedidoCliente"
                     field(PrecioNeto; PrecioNeto)
                     {
                         ApplicationArea = all;
-                        Caption = 'Net Price', comment = 'ESP="Precio Neto';
+                        Caption = 'Net Price', comment = 'ESP="Precio Neto"';
                     }
                     field(TipoDocumento; TipoDocumento)
                     {
                         ApplicationArea = all;
-                        Caption = 'Document Type', comment = 'Tipo Documento';
+                        Caption = 'Document Type', comment = 'ESP="Tipo Documento"';
                     }
                     field(boolShowInterComment; boolShowInterComment)
                     {
@@ -2101,7 +2101,7 @@ report 50102 "PedidoCliente"
         BankNameCaptionLbl: Label 'Bank', comment = 'ESP=""';
         BankAccountNoCaptionLbl: Label 'Account No.', comment = 'ESP=""';
         ShipmentDateCaptionLbl: Label 'Shipment Date', comment = 'ESP="Fecha envío"';
-        OrderNoCaptionLbl: Label 'Order No.', comment = 'ESP="Nº Pedido",FRA="NUMÉRO D''ORDRE"';
+        OrderNoCaptionLbl: Label 'Order No.', comment = 'ESP="Nº Pedido",FRA="NUMÉRO D ORDRE"';
         HeaderDimensionsCaptionLbl: Label 'Header Dimensions', comment = 'ESP=""';
         UnitPriceCaptionLbl: Label 'Unit Price', comment = 'ESP="Precio Unitario",FRA="Prix unitaire"';
         DiscountCaptionLbl: Label 'Discount %', comment = 'ESP=""';
@@ -2132,13 +2132,13 @@ report 50102 "PedidoCliente"
         PrepmtPaymentTermsCaptionLbl: Label 'Prepmt. Payment Terms', comment = 'ESP=""';
         HomePageCaptionLbl: Label 'Home Page', comment = 'ESP=""';
         EmailCaptionLbl: Label 'E-Mail', comment = 'ESP="E-mail"';
-        DocumentDateCaptionLbl: Label 'Document Date', comment = 'ESP="Fecha Documento"';
+        DocumentDateCaptionLbl: Label 'Document Date', comment = 'ESP="Fecha Documento",FRA="Date Document"';
         AllowInvDiscCaptionLbl: Label 'Allow Invoice Discount', comment = 'ESP=""';
         CACCaptionLbl: Text;
         CACTxt: Label 'Régimen especial del criterio de caja', comment = 'ESP="Régimen especial del criterio de caja"';
         //ZUMMO
 
-        PedidoDeCliente_Lbl: Label 'SALES ORDER', comment = 'ESP="PEDIDO DE CLIENTE",Fra="COMMANDE DU CLIENT"';
+        PedidoDeCliente_Lbl: Label 'SALES ORDER', comment = 'ESP="PEDIDO DE CLIENTE",FRA="COMMANDE DU CLIENT"';
         OfertaCliente_Lbl: Label 'PROFORMA INVOICE', comment = 'ESP="FACTURA PROFORMA",FRA="FACTURE PROFORMA"';
         ProformaCliente_Lbl: Label 'PROFORMA INVOICE', comment = 'ESP="FACTURA PROFORMA",FRA="FACTURE PROFORMA"';
 
@@ -2150,7 +2150,7 @@ report 50102 "PedidoCliente"
         FO03_Lbl: Label 'FO.03_C3.02_V13', comment = 'ESP="FO.03_C3.02_V13"'; //PROFORMA
 
         Fecha_Lbl: Label 'Date', comment = 'ESP="Fecha",FRA="Date"';
-        PedidoNo_Lbl: Label 'ORDER Nº', Comment = 'ESP="PEDIDO Nº",FRA="NUMÉRO D''ORDRE"';
+        PedidoNo_Lbl: Label 'ORDER Nº', Comment = 'ESP="PEDIDO Nº",FRA="NUMÉRO D ORDRE"';
         FEntrega_Lbl: Label 'Deliver Date', Comment = 'ESP="F.Entrega"';
         CondicionDePago_Lbl: Label 'Payment Terms/Payment Method', Comment = 'ESP="Condición de Pago/Método de Pago",FRA="Conditions et mode de règlemenent"';
         DestinoFinal_Lbl: Label 'Final Destination', Comment = 'ESP="Destino Final",FRA="Pays de destination"';

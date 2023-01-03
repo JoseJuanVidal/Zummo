@@ -10458,15 +10458,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Lista materiales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Check - Control Item No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3298862078 - Control 2161572060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Unidad medida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Check - Control Location Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3298862078 - Control 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity per</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad por"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Check - Control Quantity - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3298862078 - Control 1882905478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unit of Measure Code</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cód. Unidad medida"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Check - Control Source No. - Property Caption</note>
+        <trans-unit id="Page 3298862078 - Control 3450651614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Routing link code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. conexión ruta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Check - Control Variant Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2976538946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ERPLink Prod. BOM list</source>
@@ -10479,8 +10484,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - NamedType 2880736111" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The data in the BOM list will be updated.\%1 %2\%3 %4\¿Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Se van a actualizar los datos en la lista de materiales.\%1 %2\%3 %4\¿Desea continuar?"</note>
+          <source>The data in the %1 BOM list will be updated.\%2 %3\%4 %5\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se van a actualizar %1 registros con los datos en la lista de materiales.\%2 %3\%4 %5\¿Desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmChanges</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - NamedType 669054772" size-unit="char" translate="yes" xml:space="preserve">
@@ -10533,6 +10538,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad añadir"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Remaining Amt. Incl. Discount - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 1445185107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Routing Link Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. conexión ruta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control RoutingLinkCode - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1493879539 - Control 3471137671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BOM list</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista de materiales"</note>
@@ -10574,8 +10584,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control NewItemDescription - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Options</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Opciones"</note>
+          <source>Exchange options</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opciones de cambio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Options - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - Control 1622979514 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -19015,7 +19025,7 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pedido Cliente</source>
-          <note from="Developer" annotates="general" priority="2">Customer Order</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Pedido Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3235964227" size-unit="char" translate="yes" xml:space="preserve">
@@ -19110,7 +19120,7 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2728513993" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha Documento"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Documento",FRA="Date Document"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType DocumentDateCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 470585076" size-unit="char" translate="yes" xml:space="preserve">
@@ -19260,7 +19270,7 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2219219549" size-unit="char" translate="yes" xml:space="preserve">
           <source>Order No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido",FRA="NUMÉRO D'ORDRE"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido",FRA="NUMÉRO D ORDRE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType OrderNoCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 332993758" size-unit="char" translate="yes" xml:space="preserve">
@@ -19290,12 +19300,12 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1141023221" size-unit="char" translate="yes" xml:space="preserve">
           <source>SALES ORDER</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PEDIDO DE CLIENTE",Fra="COMMANDE DU CLIENT"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="PEDIDO DE CLIENTE",FRA="COMMANDE DU CLIENT"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType PedidoDeCliente_Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 496469577" size-unit="char" translate="yes" xml:space="preserve">
           <source>ORDER Nº</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PEDIDO Nº",FRA="NUMÉRO D'ORDRE"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="PEDIDO Nº",FRA="NUMÉRO D ORDRE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType PedidoNo_Lbl</note>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 129683262" size-unit="char" translate="yes" xml:space="preserve">
@@ -19545,7 +19555,7 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - Control 3416412534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Net Price</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Precio Neto</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Precio Neto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control PrecioNeto - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3412186937 - Control 316520822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -19560,7 +19570,7 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - Control 2788153238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Type</source>
-          <note from="Developer" annotates="general" priority="2">Tipo Documento</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control TipoDocumento - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4049458315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
