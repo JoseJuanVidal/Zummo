@@ -1439,7 +1439,7 @@ codeunit 50108 "FuncionesFabricacion"
         Window: Dialog;
         Level: Integer;
         NextEntryNo: Integer;
-        lblWindows: Label 'Item: #1################', comment = 'Producto: #1################';
+        lblWindows: Label 'Item: #1################', comment = 'ESP="Producto: #1################"';
     begin
         if Init then
             WhereUsedList.DeleteAll();

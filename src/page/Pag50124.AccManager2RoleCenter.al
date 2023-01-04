@@ -1,7 +1,7 @@
 page 50124 "Acc Manager 2 Role Center"
 {
-    
-    Caption = 'Accounting Manager', Comment = 'Administrador de contabilidad';
+
+    Caption = 'Accounting Manager', Comment = 'ESP="Administrador de contabilidad"';
     PageType = RoleCenter;
 
     layout

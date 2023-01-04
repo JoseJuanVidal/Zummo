@@ -17,7 +17,7 @@ table 50404 "STH Hist. Aseguradora"
         field(9; Name; text[100])
         {
             DataClassification = CustomerContent;
-            Caption = 'Name', comment = 'ES^="Nombre"';
+            Caption = 'Name', comment = 'ESP="Nombre"';
         }
         field(10; DateIni; date)
         {

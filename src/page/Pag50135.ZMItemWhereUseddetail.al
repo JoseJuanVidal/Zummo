@@ -25,7 +25,7 @@ page 50135 "ZM Item Where Used detail"
                 field("Parent Blocked"; "Parent Blocked")
                 {
                     ApplicationArea = all;
-                    Caption = 'Bloqueado', comment = '"ESP="Bloqueado""';
+                    Caption = 'Bloqueado', comment = 'ESP="Bloqueado""';
                 }
                 field("Production BOM No."; "Production BOM No.")
                 {

@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50043,"Kind":16,"Name":"SMTPMailSetup","PackagePath":"/src/src/pageextension/Pag-Ext50043.SMTPMailSetup.al"},{"Id":50059,"Kind":16,"Name":"PurchCrMemoext","PackagePath":"/src/src/pageextension/Pag-Ext50059.PurchCrMemoext.al"},{"Id":50102,"Kind":13,"Name":"PedidoCliente","PackagePath":"/src/src/report/Rep50102.PedidoCliente.al"},{"Id":50111,"Kind":11,"Name":"Funciones","PackagePath":"/src/src/codeunit/Cod50111.Funciones.al"}],"Removed":[]}

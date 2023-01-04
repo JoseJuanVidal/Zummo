@@ -17,16 +17,19 @@ pageextension 50043 "SMTPMailSetup" extends "SMTP Mail Setup"
 
                 trigger OnValidate()
                 var
+                    Funciones: Codeunit Funciones;
                     ServicePassword: Record "Service Password";
                 begin
-                    IF ISNULLGUID(PassVencimientos) OR NOT ServicePassword.GET(PassVencimientos) THEN BEGIN
-                        ServicePassword.SavePassword(passVencimientosTxt);
-                        ServicePassword.INSERT(TRUE);
-                        PassVencimientos := ServicePassword.Key;
-                    END ELSE BEGIN
-                        ServicePassword.SavePassword(passVencimientosTxt);
-                        ServicePassword.MODIFY;
-                    END;
+                    Funciones.SaveServicePassword(PassVencimientos, passVencimientosTxt);
+
+                    // IF ISNULLGUID(PassVencimientos) OR NOT ServicePassword.GET(PassVencimientos) THEN BEGIN
+                    //     ServicePassword.SavePassword(passVencimientosTxt);
+                    //     ServicePassword.INSERT(TRUE);
+                    //     PassVencimientos := ServicePassword.Key;
+                    // END ELSE BEGIN
+                    //     ServicePassword.SavePassword(passVencimientosTxt);
+                    //     ServicePassword.MODIFY;
+                    // END;
 
                     Commit();
                 end;

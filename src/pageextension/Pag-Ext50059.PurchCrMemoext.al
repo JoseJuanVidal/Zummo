@@ -8,6 +8,10 @@ pageextension 50059 "PurchCrMemoext" extends "Purchase Credit Memo"
             {
                 ApplicationArea = All;
             }
+            field("Posting No."; "Posting No.")
+            {
+                ApplicationArea = all;
+            }
         }
         addlast(Content)
         {

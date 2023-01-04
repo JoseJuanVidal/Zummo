@@ -2,7 +2,7 @@ report 50102 "PedidoCliente"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/report/Rep50102.PedidoCliente.rdl';
-    Caption = 'Pedido Cliente', Comment = 'ESP="Pedido Cliente"';
+    Caption = 'Pedido Cliente', Comment = 'ESP="Pedido Cliente",FRA="Customer Ordre"';
     PreviewMode = PrintLayout;
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;

@@ -84,7 +84,7 @@ page 50010 "Tarifas Precios"
                 field(ItemBlockedSales; Item."Sales Blocked")
                 {
                     ApplicationArea = all;
-                    Caption = 'Bloqueado Ventas', comment = 'Bloqueado Ventas';
+                    Caption = 'Bloqueado Ventas', comment = 'ESP="Bloqueado Ventas"';
                     Editable = false;
                 }
                 field(ItemClasVtas; Item.desClasVtas_btc)

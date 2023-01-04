@@ -2102,7 +2102,7 @@ report 50124 "AbonoVentaRegistrado"
         CuadroBultos_IncotermLbl: Label 'INCOTERM:', comment = 'ESP="INCOTERM:"';
         CuadroBultos_VolumenLbl: Label 'Volume(m3):', comment = 'ESP="Volumen(m3):",FRA="Volume(m3):"';
         CuadroBultos_PesoNetoLbl: Label 'Gross Weight(kg):', comment = 'ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"';
-        Text004Txt: Label 'Sales - Credit Memo %1', Comment = 'Ventas - Abono %1';
+        Text004Txt: Label 'Sales - Credit Memo %1', Comment = 'ESP="Ventas - Abono %1"';
         PageCaptionCapLbl: Label 'Page %1 of %2', Comment = 'ESP="Página %1 de %2"';
         TotalCaptionLbl: Label 'Total', Comment = 'ESP="Total"';
         ImporteRecargoCaptionLbl: Label 'Surcharge Amount', Comment = 'ESP="Importe Recargo"';

@@ -2,7 +2,7 @@ report 50103 "AlbaranVenta"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './src/report/Rep50103.AlbaranVenta.rdl';
-    Caption = 'Albaran Venta', Comment = 'Sales Shipment';
+    Caption = 'Albaran Venta', Comment = 'ESP="Sales Shipment"';
     PreviewMode = PrintLayout;
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
@@ -13,7 +13,7 @@ report 50103 "AlbaranVenta"
         {
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
-            RequestFilterHeading = 'Histórico albaranes venta', Comment = 'Posted Sales Shipment';
+            RequestFilterHeading = 'Histórico albaranes venta', Comment = 'ESP="Posted Sales Shipment"';
             column(No_SalesShptHeader; "No.")
             {
 
@@ -944,18 +944,18 @@ report 50103 "AlbaranVenta"
         VATRegNoCaptionLbl: Label 'CIF/NIF', Comment = 'VAT Reg. No.';
         GiroNoCaptionLbl: Label 'Nº giro postal', Comment = 'Giro No.';
         BankNameCaptionLbl: Label 'Banco', Comment = 'Bank';
-        BankAccNoCaptionLbl: Label 'Nº cuenta', Comment = 'Account No.';
-        ShipmentNoCaptionLbl: Label 'Nº albarán', Comment = 'Shipment No.';
-        ShipmentDateCaptionLbl: Label 'Fecha envío', Comment = 'Shipment Date';
-        HomePageCaptionLbl: Label 'Página Web', Comment = 'Home Page';
-        EmailCaptionLbl: Label 'Correo electrónico', Comment = 'Email';
-        DocumentDateCaptionLbl: Label 'Fecha emisión documento', Comment = 'Document Date';
-        HeaderDimensionsCaptionLbl: Label 'Dimensiones cabecera', Comment = 'Header Dimensions';
-        LineDimensionsCaptionLbl: Label 'Dimensiones línea', Comment = 'Line Dimensions';
-        BilltoAddressCaptionLbl: Label 'Fact. a-Dirección', Comment = 'Bill-to Address';
-        QuantityCaptionLbl: Label 'Cantidad', Comment = 'Quantity';
+        BankAccNoCaptionLbl: Label 'Nº cuenta', Comment = 'ESP="Account No."';
+        ShipmentNoCaptionLbl: Label 'Nº albarán', Comment = 'ESP="Shipment No."';
+        ShipmentDateCaptionLbl: Label 'Fecha envío', Comment = 'ESP="Shipment Date"';
+        HomePageCaptionLbl: Label 'Página Web', Comment = 'ESP="Home Page"';
+        EmailCaptionLbl: Label 'Correo electrónico', Comment = 'ESP="Email"';
+        DocumentDateCaptionLbl: Label 'Fecha emisión documento', Comment = 'ESP="Document Date"';
+        HeaderDimensionsCaptionLbl: Label 'Dimensiones cabecera', Comment = 'ESP="Header Dimensions"';
+        LineDimensionsCaptionLbl: Label 'Dimensiones línea', Comment = 'ESP="Line Dimensions"';
+        BilltoAddressCaptionLbl: Label 'Fact. a-Dirección', Comment = 'ESP="Bill-to Address"';
+        QuantityCaptionLbl: Label 'Cantidad', Comment = 'ESP="Quantity"';
         SerialNoCaptionLbl: Label 'Serial No.', Comment = 'ESP="Nº serie"';
-        LotNoCaptionLbl: Label 'Nº lote', Comment = 'Lot No.';
+        LotNoCaptionLbl: Label 'Nº lote', Comment = 'ESP="Lot No."';
         DescriptionCaptionLbl: Label 'Description', Comment = 'ESP="Description"';
         NoCaptionLbl: Label 'Nº', Comment = 'No.';
         PageCaptionCap_Lbl: Label 'Página %1 de %2', Comment = 'Page %1 of %2';

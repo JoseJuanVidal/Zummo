@@ -63,7 +63,7 @@ page 50103 "STH Hist. Aseguradora"
                 var
                     HistAseguradora: Record "STH Hist. Aseguradora";
                     Funciones: Codeunit Funciones;
-                    lblConfirm: Label '¿desea revertir la asegudara de %1 %2?', comment = '¿desea revertir la asegudara de %1 %2?';
+                    lblConfirm: Label '¿desea revertir la asegurada de %1 %2?', comment = 'ESP="¿desea revertir la asegurada de %1 %2?"';
                 begin
                     CurrPage.SetSelectionFilter(HistAseguradora);
                     if not Confirm(lblConfirm, false, HistAseguradora.count, HistAseguradora.TableCaption) then

@@ -3,7 +3,7 @@ codeunit 50111 "Funciones"
     Permissions = tabledata "Item Ledger Entry" = rm, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
         tabledata "Sales Shipment Header" = rmid, tabledata "Sales Cr.Memo Header" = rmid, tabledata "Sales Header Archive" = rmid,
         tabledata "Return Shipment Header" = rmid, tabledata "Purch. Rcpt. Header" = rmid, tabledata "Purch. Rcpt. Line" = rmid,
-        tabledata "Sales Cr.Memo Line" = rmid, tabledata "Sales Invoice Line" = rmid, tabledata "Job Ledger Entry" = rmid;
+        tabledata "Sales Cr.Memo Line" = rmid, tabledata "Sales Invoice Line" = rmid, tabledata "Job Ledger Entry" = rmid, tabledata "Service Password" = rmid;
     TableNo = "Sales Header";
 
 
@@ -2165,6 +2165,23 @@ codeunit 50111 "Funciones"
                         Customer.Modify();
                     Until Customer.next() = 0;
         end;
+    end;
+
+
+    procedure SaveServicePassword(PassVencimientos: guid; passVencimientosTxt: Text[250]): guid
+    var
+        ServicePassword: Record "Service Password";
+    begin
+        IF ISNULLGUID(PassVencimientos) OR NOT ServicePassword.GET(PassVencimientos) THEN BEGIN
+            ServicePassword.SavePassword(passVencimientosTxt);
+            ServicePassword.INSERT(TRUE);
+            PassVencimientos := ServicePassword.Key;
+        END ELSE BEGIN
+            ServicePassword.SavePassword(passVencimientosTxt);
+            ServicePassword.MODIFY;
+        END;
+
+        Commit();
     end;
 }
 

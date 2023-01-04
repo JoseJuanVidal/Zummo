@@ -158,6 +158,17 @@ page 50156 "ZM Production Bom Maintenance"
                     RunAction;
                 end;
             }
+            action(translate)
+            {
+                ApplicationArea = all;
+
+                trigger OnAction()
+                var
+                    translateCode: Codeunit "ZM Visual code utilities";
+                begin
+                    translateCode.CheckLanguageTranslation();
+                end;
+            }
         }
     }
 
