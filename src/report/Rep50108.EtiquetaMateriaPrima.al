@@ -107,8 +107,9 @@ report 50108 "EtiquetaMateriaPrima"
 
                 codPedido := '';
 
-                if recPurchRcptHeader.get("Document No.") then
-                    codPedido := recPurchRcptHeader."Order No.";
+                if codPedido = '' then
+                    // si no imprimimos el numero de albaran porque es subcontratación
+                    codPedido := GetPedidoPartida("Item Ledger Entry");
             end;
 
         }
@@ -148,5 +149,17 @@ report 50108 "EtiquetaMateriaPrima"
         codPedido: Code[20];
         codDocumento: Label 'FO.01_C7.03_V04';
         VendorName: Text;
+
+    local procedure GetPedidoPartida(ItemLedgerEntry: Record "Item Ledger Entry"): code[20]  // 50604
+    var
+        RecRef: RecordRef;
+        FRef: FieldRef;
+    begin
+        RecRef.GetTable(ItemLedgerEntry);
+        if RecRef.FieldExist(50604) then begin  // partida
+            FRef := RecRef.Field(50604);
+            Exit(FRef.Value);
+        end
+    end;
 
 }

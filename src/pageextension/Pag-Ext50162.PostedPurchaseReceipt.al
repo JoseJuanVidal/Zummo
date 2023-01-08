@@ -119,6 +119,8 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
     var
         ItemLedgerEntry: Record "Item Ledger Entry";
         ItemLedgerEntry2: Record "Item Ledger Entry";
+        PurchShipmentLine: Record "Purch. Rcpt. Line";
+        PurchaseLine: Record "Purchase Line";
     begin
         ItemLedgerEntry.Reset();
         ItemLedgerEntry.SetRange(ItemLedgerEntry."Entry Type", ItemLedgerEntry."Entry Type"::Purchase);
@@ -131,6 +133,34 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
                 ItemLedgerEntry2.FindFirst();
                 Report.Run(Report::EtiquetaMateriaPrima, false, false, ItemLedgerEntry2);
             until ItemLedgerEntry.Next() = 0;
+        end else begin
+            // aqui buscamos los movimientos de producto por subcontratación
+            PurchShipmentLine.Reset();
+            PurchShipmentLine.SetRange("Document No.", Rec."No.");
+            PurchShipmentLine.SetRange(Type, PurchShipmentLine.Type::Item);
+            PurchShipmentLine.SetFilter(Quantity, '>0');
+            if PurchShipmentLine.FindFirst() then
+                repeat
+                    PurchaseLine.SetRange(PurchaseLine."Document Type", PurchaseLine."Document Type"::Order);
+                    PurchaseLine.SetRange("Document No.", PurchShipmentLine."Order No.");
+                    PurchaseLine.SetRange("line No.", PurchShipmentLine."Line No.");
+                    if PurchaseLine.FindFirst() then begin
+                        ItemLedgerEntry.Reset();
+                        ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Output);
+                        ItemLedgerEntry.SetRange("Posting Date", Rec."Posting Date");
+                        ItemLedgerEntry.SetRange("Order No.", PurchaseLine."Prod. Order No.");
+                        ItemLedgerEntry.SetRange("Order Line No.", PurchaseLine."Prod. Order Line No.");
+                        if ItemLedgerEntry.FindFirst() then
+                            repeat
+                                ItemLedgerEntry2.reset;
+                                ItemLedgerEntry2.SetRange("Entry No.", ItemLedgerEntry."Entry No.");
+                                ItemLedgerEntry2.FindFirst();
+                                ItemLedgerEntry2."Item Category Code" := PurchaseLine."Document No.";
+                                Report.Run(Report::EtiquetaMateriaPrima, false, false, ItemLedgerEntry2);
+                            Until ItemLedgerEntry.next() = 0;
+                    end;
+                Until PurchShipmentLine.next() = 0;
         end;
     end;
+
 }
