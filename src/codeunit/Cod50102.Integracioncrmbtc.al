@@ -3326,7 +3326,7 @@ codeunit 50102 "Integracion_crm_btc"
                 end;
             end;
         end;
-        if not IsNullGuid(NewUserId) then begin
+        if IsNullGuid(NewUserId) then begin
             AreaManager.Reset();
             AreaManager.SetRange(TipoTabla, AreaManager.TipoTabla::AreaManager);
             AreaManager.SetRange(NumReg, Customer.AreaManager_btc);
