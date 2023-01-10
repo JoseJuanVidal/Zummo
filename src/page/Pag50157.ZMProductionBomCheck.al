@@ -59,6 +59,7 @@ page 50157 "ZM Production Bom Check"
     var
         LineNo: Integer;
     begin
+        Rec.Reset();
         Rec.DeleteAll();
         ProductionBomLine.Reset();
         ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
