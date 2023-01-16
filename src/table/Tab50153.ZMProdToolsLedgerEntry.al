@@ -79,7 +79,7 @@ table 50153 "ZM Prod. Tools Ledger Entry"
         {
             DataClassification = CustomerContent;
             Caption = 'Reason', comment = 'ESP="Motivo"';
-            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(motivoCalibracion));
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(Calibracion));
         }
 
     }
