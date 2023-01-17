@@ -1290,8 +1290,10 @@ codeunit 50102 "Integracion_crm_btc"
                     Update := true;
             if update then BEGIN
                 //      ERROR('CRM Provincia: ' + Customer."No." + ' Dato: ' + Provincia.Code);
-                CRMAccount2.bit_bcprovincia := ProvinciaId;
-                AdditionalFieldsWereModified := TRUE;
+                if not IsNullGuid(ProvinciaId) then begin
+                    CRMAccount2.bit_bcprovincia := ProvinciaId;
+                    AdditionalFieldsWereModified := TRUE;
+                end;
             END;
         end;
 
