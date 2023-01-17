@@ -3226,21 +3226,21 @@ codeunit 50102 "Integracion_crm_btc"
                 // actualizamos el estado tambien
                 CRMUpdateCustomerState(CRMAccount);
 
-                if Customer.Get(CRMAccount.AccountNumber) then
-                    repeat
-                        Window.Update(1, Customer."No.");
-                        Window.Update(2, Customer."Name");
-                        // buscamos el AreaManager y le ponemos el ID de Systemuser
-                        if GetUpdateOwnerSales(Customer, NewUserId) then begin
-                            if not IsNullGuid(NewUserId) then begin
-                                if NewUserId <> CRMAccount.OwnerId then begin
-                                    CRMAccount.OwnerId := NewUserId;
-                                    CRMAccount.Modify();
-                                end;
+                if Customer.Get(CRMAccount.AccountNumber) then begin
+
+                    Window.Update(1, Customer."No.");
+                    Window.Update(2, Customer."Name");
+                    // buscamos el AreaManager y le ponemos el ID de Systemuser
+                    if GetUpdateOwnerSales(Customer, NewUserId) then begin
+                        if not IsNullGuid(NewUserId) then begin
+                            if NewUserId <> CRMAccount.OwnerId then begin
+                                CRMAccount.OwnerId := NewUserId;
+                                CRMAccount.Modify();
                             end;
                         end;
+                    end;
 
-                    until Customer.Next() = 0;
+                end;
 
             until CRMAccount.next() = 0;
         Window.Close();
@@ -3266,15 +3266,14 @@ codeunit 50102 "Integracion_crm_btc"
                     if not IsNullGuid(NewUserId) then begin
                         CRMAccount.Reset();
                         CRMAccount.SetRange(AccountNumber, Customer."No.");
-                        IF CRMAccount.FindFirst() then
-                            repeat
-                                // actualizamos el estado tambien
-                                CRMUpdateCustomerState(CRMAccount);
-                                if CRMAccount.OwnerId <> NewUserId then begin
-                                    CRMAccount.OwnerId := NewUserId;
-                                    CRMAccount.Modify();
-                                end;
-                            until CRMAccount.Next() = 0;
+                        IF CRMAccount.FindFirst() then begin
+                            // actualizamos el estado tambien
+                            CRMUpdateCustomerState(CRMAccount);
+                            if CRMAccount.OwnerId <> NewUserId then begin
+                                CRMAccount.OwnerId := NewUserId;
+                                CRMAccount.Modify();
+                            end;
+                        end;
                     end;
                 end;
             until Customer.next() = 0;
@@ -3315,6 +3314,7 @@ codeunit 50102 "Integracion_crm_btc"
         AreaManager: Record TextosAuxiliares;
 
     begin
+        clear(NewUserId);
         // si tienen un area manager, pero el propietario es otro, caso de Inside Sales 
         // se rellena el owner seria el area manager = sales person
         if Customer."Salesperson Code" <> '' then begin

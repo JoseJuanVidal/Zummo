@@ -531,8 +531,9 @@ codeunit 50108 "FuncionesFabricacion"
         Item.reset;
         if Item.FindSet() then begin
             repeat
-                if Item.Ordenacion_btc <> 0 then begin
+                if (Item.Ordenacion_btc <> 0) OR (item.STHUseLocationGroup) then begin
                     Item.Ordenacion_btc := 0;
+                    item.STHUseLocationGroup := false;
                     Item.Modify;
                 end;
             until Item.Next() = 0;
