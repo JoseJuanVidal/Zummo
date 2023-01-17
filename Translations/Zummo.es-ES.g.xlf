@@ -5290,6 +5290,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field DateIni - Property Caption</note>
           <target>Fecha Inicial</target>
         </trans-unit>
+        <trans-unit id="Table 10975779 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field Name - Property Caption</note>
+          <target>Nombre</target>
+        </trans-unit>
         <trans-unit id="Table 10975779 - Field 3315408190 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Suplemento</source>
           <note from="Developer" annotates="general" priority="2">ESP="Suplemento"</note>
@@ -5878,14 +5884,14 @@
           <target>Tipo Registro</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo"</note>
+          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
-          <target>Motivo,CentralComras, ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo</target>
+          <target>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 1397213012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Warranty Date</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Años de Garantía</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Años de Garantía"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field WarrantyDate - Property Caption</note>
           <target>Años de Garantía</target>
         </trans-unit>
@@ -6757,6 +6763,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - NamedType lblConfirmExcel</note>
           <target>¿Desea exportar los resultado en Excel?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1069980009 - Method 3057903153 - NamedType 1884598543" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item: #1################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto: #1################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method BuildWhereUsedFromItem - NamedType lblWindows</note>
+          <target>Producto: #1################</target>
+        </trans-unit>
         <trans-unit id="Codeunit 1069980009 - Method 2322295925 - NamedType 466800574" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to change the status of the selected orders?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar el estado de las ordenes seleccionadas?"</note>
@@ -6960,6 +6972,12 @@
           <source>Quantities and tracking for purchase order %1 have been updated from sales order %2</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType BodyLbl</note>
+        </trans-unit>
+        <trans-unit id="Page 2965806569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Accounting Manager</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Administrador de contabilidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Acc Manager 2 Role Center - Property Caption</note>
+          <target>Administrador de contabilidad</target>
         </trans-unit>
         <trans-unit id="Page 2965806569 - Action 704062206 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create a new purchase credit memo so you can manage returned items to a vendor.</source>
@@ -8712,10 +8730,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action ManageCDSCoupling - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 232174250 - Action 1232513660 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Update owner of CRM clients assigned to Integration to their Area Manager.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualiza propietario de los clientes CRM asignados a Integracion a su Area Manager"</note>
+          <source>Update owner of ALL CRM customers by assigning them to their Area Manager.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action CRMOwnerID - Property ToolTip</note>
-          <target>Actualiza propietario de los clientes CRM asignados a Integracion a su Area Manager</target>
+          <target>Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager</target>
         </trans-unit>
         <trans-unit id="Page 232174250 - Action 1232513660 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sync. Owner CRM</source>
@@ -10292,6 +10310,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Hist. Aseguradora - Action Revertir - Property Caption</note>
           <target>Revertir Historico</target>
         </trans-unit>
+        <trans-unit id="Page 10975779 - Action 1556917387 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿desea revertir la asegurada de %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿desea revertir la asegurada de %1 %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Hist. Aseguradora - Action Revertir - Method OnAction - NamedType lblConfirm</note>
+          <target>¿desea revertir la asegurada de %1 %2?</target>
+        </trans-unit>
         <trans-unit id="Page 4198750035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hist. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
@@ -10888,6 +10912,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemBlocked - Property Caption</note>
           <target>Bloqueado</target>
         </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 2283740631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bloqueado Ventas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueado Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemBlockedSales - Property Caption</note>
+          <target>Bloqueado Ventas</target>
+        </trans-unit>
         <trans-unit id="Page 3113805797 - Control 2140734087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Categoria producto</source>
           <note from="Developer" annotates="general" priority="2">ESP="Categoria producto"</note>
@@ -11150,8 +11180,9 @@
         </trans-unit>
         <trans-unit id="Page 411716643 - Control 3509143008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bloqueado</source>
-          <note from="Developer" annotates="general" priority="2">"ESP="Bloqueado""</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueado""</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Parent Blocked - Property Caption</note>
+          <target>Bloqueado"</target>
         </trans-unit>
         <trans-unit id="Page 411716643 - Control 3016667202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cód. Producto</source>
@@ -12147,6 +12178,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Tel_Lbl</note>
           <target>Tel:</target>
         </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 4131395451" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales - Credit Memo %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ventas - Abono %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Text004Txt</note>
+          <target>Ventas - Abono %1</target>
+        </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 1068094782" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
           <note from="Developer" annotates="general" priority="2">ESP="Especificación del importe del IVA en"</note>
@@ -13064,6 +13101,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaUKRegistrado - NamedType Tel_Lbl</note>
           <target>Tel:</target>
         </trans-unit>
+        <trans-unit id="Report 1166120471 - NamedType 4131395451" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales - Credit Memo %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ventas - Abono %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaUKRegistrado - NamedType Text004Txt</note>
+          <target>Ventas - Abono %1</target>
+        </trans-unit>
         <trans-unit id="Report 1166120471 - NamedType 1068094782" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Amount Specification in </source>
           <note from="Developer" annotates="general" priority="2">ESP="Especificación del importe del IVA en"</note>
@@ -13555,6 +13598,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Adjust Exchange Rates Zummo - Control PostingDescription - Property Caption</note>
           <target>Texto de registro</target>
         </trans-unit>
+        <trans-unit id="Report 1882765205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Albaran Venta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sales Shipment"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - Property Caption</note>
+          <target>Sales Shipment</target>
+        </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 3235964227" size-unit="char" translate="yes" xml:space="preserve">
           <source>Agent:</source>
           <note from="Developer" annotates="general" priority="2">ESP="Agente:"</note>
@@ -13572,6 +13621,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Artículo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType Articulo_Lbl</note>
           <target>Artículo</target>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 4233096702" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº cuenta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Account No."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType BankAccNoCaptionLbl</note>
+          <target>Account No.</target>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 852687422" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fact. a-Dirección</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bill-to Address"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType BilltoAddressCaptionLbl</note>
+          <target>Bill-to Address</target>
         </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 90973866" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bulks</source>
@@ -13621,6 +13682,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType DescriptionCaptionLbl</note>
           <target>Description</target>
         </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 2728513993" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha emisión documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Document Date"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType DocumentDateCaptionLbl</note>
+          <target>Document Date</target>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 1877430892" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correo electrónico</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Email"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType EmailCaptionLbl</note>
+          <target>Email</target>
+        </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 4044920649" size-unit="char" translate="yes" xml:space="preserve">
           <source>Issued by:</source>
           <note from="Developer" annotates="general" priority="2">ESP="Emitido por:"</note>
@@ -13650,6 +13723,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="FO.04_C8.01_V02"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType FO02_Lbl</note>
           <target>FO.04_C8.01_V02</target>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 973567044" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensiones cabecera</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Header Dimensions"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType HeaderDimensionsCaptionLbl</note>
+          <target>Header Dimensions</target>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 2862688884" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Página Web</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Home Page"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType HomePageCaptionLbl</note>
+          <target>Home Page</target>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 3701122699" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensiones línea</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Line Dimensions"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType LineDimensionsCaptionLbl</note>
+          <target>Line Dimensions</target>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 3926274846" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº lote</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lot No."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType LotNoCaptionLbl</note>
+          <target>Lot No.</target>
         </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 2403527776" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT:</source>
@@ -13710,6 +13807,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType PRGestion_Lbl</note>
         </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 3246368361" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Quantity"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType QuantityCaptionLbl</note>
+          <target>Quantity</target>
+        </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 1133394310" size-unit="char" translate="yes" xml:space="preserve">
           <source>RECEIVED AS,</source>
           <note from="Developer" annotates="general" priority="2">ESP="RECIBI CONFORME"</note>
@@ -13722,11 +13825,29 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType SerialNoCaptionLbl</note>
           <target>Nº serie</target>
         </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 4217840372" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha envío</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Shipment Date"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType ShipmentDateCaptionLbl</note>
+          <target>Shipment Date</target>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 2259602087" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº albarán</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Shipment No."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType ShipmentNoCaptionLbl</note>
+          <target>Shipment No.</target>
+        </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 1155083635" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shipping agent</source>
           <note from="Developer" annotates="general" priority="2">ESP="Transportista"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType Transportista_Lbl</note>
           <target>Transportista</target>
+        </trans-unit>
+        <trans-unit id="Report 1882765205 - ReportDataItem 3118382297 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Histórico albaranes venta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Posted Sales Shipment"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - ReportDataItem Sales Shipment Header - Property RequestFilterHeading</note>
+          <target>Posted Sales Shipment</target>
         </trans-unit>
         <trans-unit id="Report 1882765205 - Control 1131638071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packing List</source>
@@ -20580,7 +20701,7 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pedido Cliente</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Pedido Cliente"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Pedido Cliente",FRA="Customer Ordre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Property Caption</note>
           <target>Pedido Cliente</target>
         </trans-unit>

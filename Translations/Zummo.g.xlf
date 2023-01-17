@@ -8114,8 +8114,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action ManageCDSCoupling - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 232174250 - Action 1232513660 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Update owner of CRM clients assigned to Integration to their Area Manager.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualiza propietario de los clientes CRM asignados a Integracion a su Area Manager"</note>
+          <source>Update owner of ALL CRM customers by assigning them to their Area Manager.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Area Manager List - Action CRMOwnerID - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 232174250 - Action 1232513660 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

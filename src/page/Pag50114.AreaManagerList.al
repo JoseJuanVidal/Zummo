@@ -50,7 +50,7 @@ page 50114 "Area Manager List"
                     Visible = true;
                     Image = RefreshText;
                     Enabled = CDSIsCoupledToRecord;
-                    ToolTip = 'Update owner of CRM clients assigned to Integration to their Area Manager.', comment = 'ESP="Actualiza propietario de los clientes CRM asignados a Integracion a su Area Manager"';
+                    ToolTip = 'Update owner of ALL CRM customers by assigning them to their Area Manager.', comment = 'ESP="Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager"';
                     trigger OnAction()
                     var
                         CRMIntegrationManagement: Codeunit Integracion_crm_btc;

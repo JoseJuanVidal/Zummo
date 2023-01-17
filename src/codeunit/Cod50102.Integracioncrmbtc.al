@@ -3222,7 +3222,7 @@ codeunit 50102 "Integracion_crm_btc"
         if not Confirm('¿desea actualizar el Owner de los clientes de integracion BC en CRM?', false) then
             exit;
         Window.Open('#1###############\#2##########################################\#3####################################');
-        CRMAccount.SetRange(OwnerId, 'a4e5e921-6e7a-ea11-a811-000d3a2c3f51');
+        //CRMAccount.SetRange(OwnerId, 'a4e5e921-6e7a-ea11-a811-000d3a2c3f51');
         if CRMAccount.FindFirst() then
             repeat
                 // actualizamos el estado tambien
