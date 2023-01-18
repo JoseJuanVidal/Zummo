@@ -1,6 +1,6 @@
 page 50151 "ZM Production BOM List"
 {
-    Caption = 'ERPLink Prod. BOM list', Comment = 'ESP="ERPLink L.M. de producción"';
+    Caption = 'ERPLINK Prod. BOM list', Comment = 'ESP="ERPLINK L.M. de producción"';
     PageType = ListPart;
     SourceTable = "ZM CIM Prod. BOM Header";
     UsageCategory = None;

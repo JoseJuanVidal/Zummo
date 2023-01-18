@@ -78,6 +78,12 @@ page 50056 "ZM CimWorks Item"
                 {
                     ApplicationArea = all;
                 }
+                part(Lines; "ZM Item Documents")
+                {
+                    ApplicationArea = All;
+                    SubPageLink = CodComentario = field("No.");
+                    UpdatePropagation = Both;
+                }
             }
         }
     }

@@ -128,6 +128,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Id"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Id - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4166419010 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Línea</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Línea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4166419010 - Field 2883740582 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Tipo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10219,8 +10229,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page WS Purchase Line - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3853294818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ERPLink Items Pending</source>
-          <note from="Developer" annotates="general" priority="2">ESP="ERPLink Productos pendientes"</note>
+          <source>ERPLINK Items Pending</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Productos pendientes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3853294818 - Control 3448041191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10234,8 +10244,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action CopyItem - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ERPLink Production BOM Lines</source>
-          <note from="Developer" annotates="general" priority="2">ESP="ERPLink Líneas Prod. BOM Lines "</note>
+          <source>ERPLINK Production BOM Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Líneas Prod. BOM Lines "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Production BOM Lines - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2427138035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10332,6 +10342,11 @@
           <source>Documents</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 474319202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ERPLINK Documentos productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Documentos productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 411716643 - Control 1200201054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Descripción</source>
@@ -10474,8 +10489,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Check - Control Variant Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2976538946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ERPLink Prod. BOM list</source>
-          <note from="Developer" annotates="general" priority="2">ESP="ERPLink L.M. de producción"</note>
+          <source>ERPLINK Prod. BOM list</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ERPLINK L.M. de producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production BOM List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
