@@ -35,6 +35,7 @@ page 50148 "API Sales Quote Header"
         Rec.InitRecord();
         Rec.Validate("Sell-to Customer No.", SalesReceivablesSetup."Customer Quote IC");
         Rec."Source Purch. Order No" := SourcePurchOrder;
+        Rec."Quote Valid Until Date" := CalcDate('+3M', WorkDate());
         Rec.Modify()
     end;
 
