@@ -80,13 +80,13 @@ page 50055 "ZM CIM Items"
             part(Header; "ZM Production BOM List")
             {
                 ApplicationArea = all;
-                // SubPageLink = "No." = field("Production BOM No.");
+                SubPageLink = "No." = field("Production BOM No.");
             }
             part(BomLines; "ZM CIM Production BOM Lines")
             {
                 Caption = 'Components Lines', comment = 'ESP="Lista componentes"';
                 ApplicationArea = all;
-                //  SubPageLink = "No." = field("Production BOM No.");
+                SubPageLink = "No." = field("Production BOM No.");
             }
         }
     }
