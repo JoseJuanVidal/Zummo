@@ -23,6 +23,19 @@ pageextension 50023 "PurchInvoiceSubform" extends "Purch. Invoice Subform"
                 ApplicationArea = all;
             }
         }
+        addafter("VAT Prod. Posting Group")
+        {
+            field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
     }
 
     // actions

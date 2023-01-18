@@ -94,7 +94,8 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
                 recAlbTemp.NumProducto := recLinAlbaran."No.";
                 recAlbTemp.DescProducto := recLinAlbaran.Description;
                 recAlbTemp.Cantidad := recLinAlbaran.Quantity;
-                recAlbTemp.NumMovimiento := recLinAlbaran."Item Rcpt. Entry No.";
+                recAlbTemp.NumMovimiento := GetEntryNo(recLinAlbaran);
+
                 recAlbTemp.Insert();
             until recLinAlbaran.Next() = 0;
 
@@ -115,11 +116,35 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
         end;
     end;
 
+    local procedure GetEntryNo(recLinAlbaran: Record "Purch. Rcpt. Line"): Integer
+    var
+        ItemLedgerEntry: Record "Item Ledger Entry";
+        PurchaseLine: Record "Purchase Line";
+    begin
+        if ItemLedgerEntry.Get(recLinAlbaran."Item Rcpt. Entry No.") then
+            if ItemLedgerEntry."Document No." = recLinAlbaran."Document No." then
+                exit(recLinAlbaran."Item Rcpt. Entry No.");
+
+        // si es una subcontratación, que es tipo Salida de Fabrica la buscamos
+        PurchaseLine.SetRange(PurchaseLine."Document Type", PurchaseLine."Document Type"::Order);
+        PurchaseLine.SetRange("Document No.", recLinAlbaran."Order No.");
+        PurchaseLine.SetRange("line No.", recLinAlbaran."Line No.");
+        if PurchaseLine.FindFirst() then begin
+            ItemLedgerEntry.Reset();
+            ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Output);
+            ItemLedgerEntry.SetRange("Posting Date", Rec."Posting Date");
+            ItemLedgerEntry.SetRange("Order No.", PurchaseLine."Prod. Order No.");
+            ItemLedgerEntry.SetRange("Order Line No.", PurchaseLine."Prod. Order Line No.");
+            if ItemLedgerEntry.FindFirst() then
+                exit(ItemLedgerEntry."Entry No.");
+        end;
+    end;
+
     procedure ImprimirEtiqueta()
     var
         ItemLedgerEntry: Record "Item Ledger Entry";
         ItemLedgerEntry2: Record "Item Ledger Entry";
-        PurchShipmentLine: Record "Purch. Rcpt. Line";
+        PurchReceiptLine: Record "Purch. Rcpt. Line";
         PurchaseLine: Record "Purchase Line";
     begin
         ItemLedgerEntry.Reset();
@@ -135,15 +160,15 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
             until ItemLedgerEntry.Next() = 0;
         end else begin
             // aqui buscamos los movimientos de producto por subcontratación
-            PurchShipmentLine.Reset();
-            PurchShipmentLine.SetRange("Document No.", Rec."No.");
-            PurchShipmentLine.SetRange(Type, PurchShipmentLine.Type::Item);
-            PurchShipmentLine.SetFilter(Quantity, '>0');
-            if PurchShipmentLine.FindFirst() then
+            PurchReceiptLine.Reset();
+            PurchReceiptLine.SetRange("Document No.", Rec."No.");
+            PurchReceiptLine.SetRange(Type, PurchReceiptLine.Type::Item);
+            PurchReceiptLine.SetFilter(Quantity, '>0');
+            if PurchReceiptLine.FindFirst() then
                 repeat
                     PurchaseLine.SetRange(PurchaseLine."Document Type", PurchaseLine."Document Type"::Order);
-                    PurchaseLine.SetRange("Document No.", PurchShipmentLine."Order No.");
-                    PurchaseLine.SetRange("line No.", PurchShipmentLine."Line No.");
+                    PurchaseLine.SetRange("Document No.", PurchReceiptLine."Order No.");
+                    PurchaseLine.SetRange("line No.", PurchReceiptLine."Line No.");
                     if PurchaseLine.FindFirst() then begin
                         ItemLedgerEntry.Reset();
                         ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Output);
@@ -159,7 +184,7 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
                                 Report.Run(Report::EtiquetaMateriaPrima, false, false, ItemLedgerEntry2);
                             Until ItemLedgerEntry.next() = 0;
                     end;
-                Until PurchShipmentLine.next() = 0;
+                Until PurchReceiptLine.next() = 0;
         end;
     end;
 
