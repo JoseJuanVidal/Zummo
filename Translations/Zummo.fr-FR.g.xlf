@@ -2588,6 +2588,116 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Productos_crm_btc - Field VersionNumber - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2629295020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product relationships</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 3425251533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field CreatedBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 1302697051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field CreatedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 1782641658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By (Delegate)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field CreatedOnBehalfBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 39585143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status Reason</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field Direction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 39585143 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Uni-Directional,Bi-Directional</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field Direction - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 2523834787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>exchangerate</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field exchangerate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 2723275795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Sequence Number</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field ImportSequenceNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 1907234846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field ModifiedBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 2247197532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field ModifiedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 982954073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By (Delegate)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field ModifiedOnBehalfBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 4089057898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>productid</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field productid - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 3414032840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>productsubstituteid</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field productsubstituteid - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 2116452528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>salesrelationshiptype</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field salesrelationshiptype - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 2116452528 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Up-sell,Cross-sell,Accessory,Substitute</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field salesrelationshiptype - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 1765179598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field statecode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 1765179598 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Active,Inactive</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field statecode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 1944096804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>substitutedproductid</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field substitutedproductid - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 1372750120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Time Zone Rule Version Number</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field TimeZoneRuleVersionNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 3651674112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UTC Conversion Time Zone Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field UTCConversionTimeZoneCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2629295020 - Field 2261456899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version Number</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field VersionNumber - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1934678507 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Provincia BC</source>
           <note from="Developer" annotates="general" priority="2"/>

@@ -154,6 +154,38 @@ pageextension 50133 "ItemList" extends "Item List"
                 end;
 
             }
+            action(UpdateBomComponents)
+            {
+                ApplicationArea = all;
+                Caption = 'Dyn 365 Sales Bom Components', comment = 'ESP="Dyn 365 Sales Sync. Ensamblado"';
+                Image = RefreshText;
+
+                trigger OnAction()
+                var
+                    IntegracionCRM: codeunit Integracion_crm_btc;
+                    lblConfirm: Label '¿Do you want to upgrade the State Dyn 365 Sales Items Assembly?', comment = 'ESP="¿Desea actualizar ensamblados de los productos de Dyn 365 Sales?"';
+                begin
+                    if Confirm(lblConfirm) then
+                        IntegracionCRM.UpdateCRMSalesbyBCItemsRelations();
+                end;
+
+            }
+            action(UpdateBomComponent)
+            {
+                ApplicationArea = all;
+                Caption = 'Dyn 365 Sales Item Bom Component', comment = 'ESP="Dyn 365 Sales Sync. Ensamblado Prod."';
+                Image = RefreshText;
+
+                trigger OnAction()
+                var
+                    IntegracionCRM: codeunit Integracion_crm_btc;
+                    lblConfirm: Label '¿Do you want to upgrade the State Dyn 365 Sales Items Assembly?', comment = 'ESP="¿Desea actualizar ensamblados de los productos de Dyn 365 Sales?"';
+                begin
+                    if Confirm(lblConfirm) then
+                        IntegracionCRM.UpdateCRMSalesbyBCItemRelations(Rec);
+                end;
+
+            }
         }
 
     }
