@@ -43,19 +43,21 @@ page 50158 "ZM Item Documents"
     begin
         if Id = 0 then
             Rec.Id := GetLastID + 1;
+        if "Line No." = 0 then
+            Rec."Line No." := GetLastLineNo();
         txtComentario := '';
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        if Id = 0 then begin
+        if Id = 0 then
             Rec.Id := GetLastID + 1;
-        end;
+        if "Line No." = 0 then
+            Rec."Line No." := GetLastLineNo();
         if txtComentario <> '' then
             Rec.SetComentario(txtComentario);
         Rec.Tipo := Rec.Tipo::ERPLINKDocs;
     end;
-
 
     trigger OnModifyRecord(): Boolean
     begin
@@ -66,6 +68,5 @@ page 50158 "ZM Item Documents"
 
     var
         txtComentario: Text;
-
 
 }
