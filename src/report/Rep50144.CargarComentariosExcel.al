@@ -22,7 +22,7 @@ report 50144 "Cargar Comentarios Excel"
                     field(FileName; FileName)
                     {
                         ApplicationArea = Basic, Suite;
-                        Caption = 'Nombre del ficharo', Comment = 'ESP="Nombre del fichero"';
+                        Caption = 'Nombre del fichero', Comment = 'ESP="Nombre del fichero"';
                         Editable = false;
                     }
                 }

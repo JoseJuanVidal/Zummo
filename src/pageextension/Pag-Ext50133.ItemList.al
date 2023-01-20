@@ -180,9 +180,9 @@ pageextension 50133 "ItemList" extends "Item List"
                 var
                     IntegracionCRM: codeunit Integracion_crm_btc;
                     Ventana: Dialog;
-                    lblConfirm: Label '¿Do you want to upgrade the State Dyn 365 Sales Items Assembly?', comment = 'ESP="¿Desea actualizar ensamblados de los productos de Dyn 365 Sales?"';
+                    lblConfirm: Label '¿Do you want to upgrade the State Dyn 365 Sales Item Assembly %1?', comment = 'ESP="¿Desea actualizar ensamblados del producto %1 a Dyn 365 Sales?"';
                 begin
-                    if Confirm(lblConfirm) then begin
+                    if Confirm(lblConfirm, false, Rec."No.") then begin
                         Ventana.Open('Producto #1###################\L.M.: #2###########################');
                         IntegracionCRM.UpdateCRMSalesbyBCItemRelations(Rec, Ventana);
                         Ventana.Close();

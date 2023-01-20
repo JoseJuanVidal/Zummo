@@ -3430,11 +3430,10 @@ codeunit 50102 "Integracion_crm_btc"
         Ventana.Open('Producto #1###################\L.M.: #2###########################');
         Item.Reset();
         Item.SetRange(Blocked, false);
-        Item.SetRange("Replenishment System", Item."Replenishment System"::Assembly);
+        Item.SetFilter("Replenishment System", '%1|%2', Item."Replenishment System"::Assembly, Item."Replenishment System"::"Prod. Order");
         Item.SetRange("Assembly BOM", true);
         if Item.FindFirst() then
             repeat
-                Ventana.Update(1, Item."No.");
                 UpdateCRMSalesbyBCItemRelations(Item, Ventana);
 
             until Item.Next() = 0;
@@ -3444,55 +3443,97 @@ codeunit 50102 "Integracion_crm_btc"
     procedure UpdateCRMSalesbyBCItemRelations(Item: Record Item; var Ventana: Dialog)
     var
         BomComponent: Record "BOM Component";
+        ProductionBOMLine: Record "Production BOM Line";
         CRMProduct: Record "CRM Product";
         CRMProductRelationShip: Record "CRM productrelationships";
         Productid: Guid;
         BomProductid: Guid;
     begin
         Item.TestField(Blocked, false);
-        Item.TestField("Replenishment System", Item."Replenishment System"::Assembly);
-
+        if not (Item."Replenishment System" in [Item."Replenishment System"::Assembly, Item."Replenishment System"::"Prod. Order"]) then
+            exit;
+        Ventana.Update(1, Item."No.");
         // buscamos la lista de productos y conseguimos los id de cada uno
         CRMProduct.Reset();
         CRMProduct.SetRange(ProductNumber, Item."No.");
         if CRMProduct.FindSet() then begin
             if CRMProduct.StateCode in [CRMProduct.StateCode::Active] then begin
                 Productid := CRMProduct.ProductId;
-                BomComponent.Reset();
-                BomComponent.SetRange("Parent Item No.", Item."No.");
-                BomComponent.SetRange(Type, BomComponent.Type::Item);
-                if BomComponent.FindFirst() then begin
-                    Ventana.Update(2, BomComponent."No.");
-                    // primero eliminamos todas las relaciones, lo hacemos en la misma funciona para no abrir mas conexiones con CRM
-                    CRMProductRelationShip.Reset();
-                    CRMProductRelationShip.SetRange(productid, Productid);
-                    CRMProductRelationShip.DeleteAll();
-                    repeat
-                        // obtenemos y creamos cada relacion de cada productoç
-                        CRMProduct.Reset();
-                        CRMProduct.SetRange(ProductNumber, BomComponent."No.");
-                        if CRMProduct.FindSet() then begin
-                            if CRMProduct.StateCode in [CRMProduct.StateCode::Active] then begin
-                                BomProductid := CRMProduct.ProductId;
-
-                                // creamos la nueva relación o modificar
-                                clear(CRMProductRelationShip);
-                                CRMProductRelationShip.Init();
-                                CRMProductRelationShip.productid := Productid;
-                                CRMProductRelationShip.substitutedproductid := BomProductid;
-                                CRMProductRelationShip.Direction := CRMProductRelationShip.Direction::"Uni-Directional";
-                                CRMProductRelationShip.salesrelationshiptype := CRMProductRelationShip.salesrelationshiptype::Accessory;
-                                CRMProductRelationShip.Insert();
-                            end else begin
+                case Item."Replenishment System" of
+                    Item."Replenishment System"::Assembly:
+                        Begin
+                            BomComponent.Reset();
+                            BomComponent.SetRange("Parent Item No.", Item."No.");
+                            BomComponent.SetRange(Type, BomComponent.Type::Item);
+                            if BomComponent.FindFirst() then begin
+                                Ventana.Update(2, BomComponent."No.");
+                                // primero eliminamos todas las relaciones, lo hacemos en la misma funciona para no abrir mas conexiones con CRM
                                 CRMProductRelationShip.Reset();
                                 CRMProductRelationShip.SetRange(productid, Productid);
                                 CRMProductRelationShip.DeleteAll();
+                                repeat
+                                    // obtenemos y creamos cada relacion de cada productoç
+                                    CRMProduct.Reset();
+                                    CRMProduct.SetRange(ProductNumber, BomComponent."No.");
+                                    if CRMProduct.FindSet() then begin
+                                        if CRMProduct.StateCode in [CRMProduct.StateCode::Active] then begin
+                                            BomProductid := CRMProduct.ProductId;
+
+                                            // creamos la nueva relación o modificar
+                                            clear(CRMProductRelationShip);
+                                            CRMProductRelationShip.Init();
+                                            CRMProductRelationShip.productid := Productid;
+                                            CRMProductRelationShip.substitutedproductid := BomProductid;
+                                            CRMProductRelationShip.Direction := CRMProductRelationShip.Direction::"Uni-Directional";
+                                            CRMProductRelationShip.salesrelationshiptype := CRMProductRelationShip.salesrelationshiptype::Accessory;
+                                            CRMProductRelationShip.Insert();
+                                        end else begin
+                                            CRMProductRelationShip.Reset();
+                                            CRMProductRelationShip.SetRange(productid, Productid);
+                                            CRMProductRelationShip.DeleteAll();
+                                        end;
+                                    end;
+                                Until (BomComponent.next() = 0) or (CRMProduct.StateCode <> CRMProduct.StateCode::Active);
                             end;
                         end;
-                    Until (BomComponent.next() = 0) or (CRMProduct.StateCode <> CRMProduct.StateCode::Active);
+                    Item."Replenishment System"::"Prod. Order":
+                        Begin
+                            ProductionBOMLine.Reset();
+                            ProductionBOMLine.SetRange("Production BOM No.", Item."Production BOM No.");
+                            ProductionBOMLine.SetRange(Type, ProductionBOMLine.Type::Item);
+                            if ProductionBOMLine.FindFirst() then begin
+                                Ventana.Update(2, ProductionBOMLine."No.");
+                                // primero eliminamos todas las relaciones, lo hacemos en la misma funciona para no abrir mas conexiones con CRM
+                                CRMProductRelationShip.Reset();
+                                CRMProductRelationShip.SetRange(productid, Productid);
+                                CRMProductRelationShip.DeleteAll();
+                                repeat
+                                    // obtenemos y creamos cada relacion de cada productoç
+                                    CRMProduct.Reset();
+                                    CRMProduct.SetRange(ProductNumber, ProductionBOMLine."No.");
+                                    if CRMProduct.FindSet() then begin
+                                        if CRMProduct.StateCode in [CRMProduct.StateCode::Active] then begin
+                                            BomProductid := CRMProduct.ProductId;
+
+                                            // creamos la nueva relación o modificar
+                                            clear(CRMProductRelationShip);
+                                            CRMProductRelationShip.Init();
+                                            CRMProductRelationShip.productid := Productid;
+                                            CRMProductRelationShip.substitutedproductid := BomProductid;
+                                            CRMProductRelationShip.Direction := CRMProductRelationShip.Direction::"Uni-Directional";
+                                            CRMProductRelationShip.salesrelationshiptype := CRMProductRelationShip.salesrelationshiptype::Accessory;
+                                            CRMProductRelationShip.Insert();
+                                        end else begin
+                                            CRMProductRelationShip.Reset();
+                                            CRMProductRelationShip.SetRange(productid, Productid);
+                                            CRMProductRelationShip.DeleteAll();
+                                        end;
+                                    end;
+                                Until (ProductionBOMLine.next() = 0);
+                            end;
+                        end;
                 end;
             end
-
         end;
     end;
 

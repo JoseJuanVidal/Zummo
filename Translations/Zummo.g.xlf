@@ -12889,7 +12889,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - Control Options - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3412412437 - Control 989751795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nombre del ficharo</source>
+          <source>Nombre del fichero</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre del fichero"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cargar Comentarios Excel - Control FileName - Property Caption</note>
         </trans-unit>
@@ -21469,8 +21469,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action UpdateBomComponent - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Action 100929938 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
-          <source>¿Do you want to upgrade the State Dyn 365 Sales Items Assembly?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar ensamblados de los productos de Dyn 365 Sales?"</note>
+          <source>¿Do you want to upgrade the State Dyn 365 Sales Item Assembly %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar ensamblados del producto %1 a Dyn 365 Sales?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action UpdateBomComponent - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Action 3421508831 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
