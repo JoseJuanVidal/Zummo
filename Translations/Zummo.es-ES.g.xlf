@@ -20847,9 +20847,9 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3285233284" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Montant total</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Montant total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType AmountCaptionLbl</note>
-          <target>"Importe",FRA</target>
+          <target>Importe</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1889045978" size-unit="char" translate="yes" xml:space="preserve">
           <source>Items</source>
@@ -20907,7 +20907,7 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1919516899" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comment</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentario",FRA="Observations"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType CommentInterbCaptionLbl</note>
           <target>Comentario</target>
         </trans-unit>
@@ -21051,7 +21051,7 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 850441175" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA=Montant</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Montant"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType Importe_Lbl</note>
           <target>Importe</target>
         </trans-unit>

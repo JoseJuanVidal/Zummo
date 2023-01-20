@@ -2105,7 +2105,7 @@ report 50102 "PedidoCliente"
         HeaderDimensionsCaptionLbl: Label 'Header Dimensions', comment = 'ESP=""';
         UnitPriceCaptionLbl: Label 'Unit Price', comment = 'ESP="Precio Unitario",FRA="Prix unitaire"';
         DiscountCaptionLbl: Label 'Discount %', comment = 'ESP=""';
-        AmountCaptionLbl: Label 'Amount', comment = 'ESP="Importe",FRA="Montant total';
+        AmountCaptionLbl: Label 'Amount', comment = 'ESP="Importe",FRA="Montant total"';
         InvDiscAmtCaptionLbl: Label 'Invoice Discount Amount', comment = 'ESP=""';
         SubtotalCaptionLbl: Label 'Base Imponible', comment = 'ESP=""';
         PmtDiscGivenAmtCaptionLbl: Label 'Pmt. Discount Given Amount', comment = 'ESP=""';
@@ -2124,7 +2124,7 @@ report 50102 "PedidoCliente"
         TotalCaptionLbl: Label 'Total', comment = 'ESP="Total"';
         VATBaseCaptionLbl: Label 'VAT Base', comment = 'ESP="Base Imponible IVA"';
         ShiptoAddressCaptionLbl: Label 'Ship-to Address', comment = 'ESP="Envío a Dirección",FRA="Adresse de livraison"';
-        CommentInterbCaptionLbl: Label 'Comment', comment = 'ESP="Comentario"';
+        CommentInterbCaptionLbl: Label 'Comment', comment = 'ESP="Comentario",FRA="Observations"';
         DescriptionCaptionLbl: Label 'Description', comment = 'ESP="Descrición",FRA="Désignation"';
         GLAccountNoCaptionLbl: Label 'G/L Account No.', comment = 'ESP=""';
         PrepaymentSpecCaptionLbl: Label 'Prepayment Specification', comment = 'ESP=""';
@@ -2169,7 +2169,7 @@ report 50102 "PedidoCliente"
         PrecioU_Lbl: Label 'Price/unit', Comment = 'ESP="Precio U.",FRA="Prix Unitaire"';
         Dto_Lbl: Label 'Dto. 1', Comment = 'ESP="Dto. 1",FRA="Remise 1"';
         Dto2_Lbl: Label 'Dto. 2', comment = 'ESP="Dto. 2",FRA="Remise 2"';
-        Importe_Lbl: Label 'Amount', Comment = 'ESP="Importe",FRA=Montant';
+        Importe_Lbl: Label 'Amount', Comment = 'ESP="Importe",FRA="Montant"';
         NoSerie_Lbl: Label 'Serial No. ', Comment = 'ESP="Nº de Serie:",FRA="N° de série"';
         Observaciones_Lbl: Label 'Remarks:', Comment = 'ESP="Observaciones:",FRA="Observations"';
         BaseImponible_Lbl: Label 'Tax base', Comment = 'ESP="Base Imponible",FRA="Montant Fiscale"';
