@@ -21479,8 +21479,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action UpdateBomComponents - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Action 3421508831 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
-          <source>¿Do you want to upgrade the State Dyn 365 Sales Items Assembly?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar ensamblados de los productos de Dyn 365 Sales?"</note>
+          <source>¿Do you want to upgrade the State Dyn 365 Sales All Items Assembly?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar ensamblados de todos los productos de Dyn 365 Sales?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action UpdateBomComponents - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">

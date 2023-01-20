@@ -158,12 +158,12 @@ pageextension 50133 "ItemList" extends "Item List"
             {
                 ApplicationArea = all;
                 Caption = 'Dyn 365 Sales Bom Components', comment = 'ESP="Dyn 365 Sales Sync. Ensamblado"';
-                Image = RefreshText;
+                Image = AssemblyOrder;
 
                 trigger OnAction()
                 var
                     IntegracionCRM: codeunit Integracion_crm_btc;
-                    lblConfirm: Label '¿Do you want to upgrade the State Dyn 365 Sales Items Assembly?', comment = 'ESP="¿Desea actualizar ensamblados de los productos de Dyn 365 Sales?"';
+                    lblConfirm: Label '¿Do you want to upgrade the State Dyn 365 Sales All Items Assembly?', comment = 'ESP="¿Desea actualizar ensamblados de todos los productos de Dyn 365 Sales?"';
                 begin
                     if Confirm(lblConfirm) then
                         IntegracionCRM.UpdateCRMSalesbyBCItemsRelations();
@@ -174,15 +174,19 @@ pageextension 50133 "ItemList" extends "Item List"
             {
                 ApplicationArea = all;
                 Caption = 'Dyn 365 Sales Item Bom Component', comment = 'ESP="Dyn 365 Sales Sync. Ensamblado Prod."';
-                Image = RefreshText;
+                Image = AssemblyBOM;
 
                 trigger OnAction()
                 var
                     IntegracionCRM: codeunit Integracion_crm_btc;
+                    Ventana: Dialog;
                     lblConfirm: Label '¿Do you want to upgrade the State Dyn 365 Sales Items Assembly?', comment = 'ESP="¿Desea actualizar ensamblados de los productos de Dyn 365 Sales?"';
                 begin
-                    if Confirm(lblConfirm) then
-                        IntegracionCRM.UpdateCRMSalesbyBCItemRelations(Rec);
+                    if Confirm(lblConfirm) then begin
+                        Ventana.Open('Producto #1###################\L.M.: #2###########################');
+                        IntegracionCRM.UpdateCRMSalesbyBCItemRelations(Rec, Ventana);
+                        Ventana.Close();
+                    end;
                 end;
 
             }

@@ -2609,7 +2609,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field CreatedOnBehalfBy - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2629295020 - Field 39585143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Status Reason</source>
+          <source>Direction</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field Direction - Property Caption</note>
         </trans-unit>
@@ -2648,10 +2648,10 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2629295020 - Field 4089057898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>productid</source>
+        <trans-unit id="Table 2629295020 - Field 1934585642 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Existing Product</source>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field productid - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field ProductId - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2629295020 - Field 3414032840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>productsubstituteid</source>
@@ -2679,7 +2679,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field statecode - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 2629295020 - Field 1944096804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>substitutedproductid</source>
+          <source>Existing Product</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM productrelationships - Field substitutedproductid - Property Caption</note>
         </trans-unit>
