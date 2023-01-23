@@ -6360,11 +6360,29 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Articulo_Lbl</note>
           <target>Article</target>
         </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 3403838503" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Datos bancarios",FRA="Coordonnées bancaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType BancoCaptionLbl</note>
+          <target>Coordonnées bancaires</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 1102477994" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taxable Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base Imponible",FRA="Base imposable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType BaseImponibleCaptionLbl</note>
+          <target>Base imposable</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 271843689" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base imponible",FRA="Base imposable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType BaseImponible_Lbl</note>
+          <target>Base imposable</target>
+        </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 2278799068" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tax Base</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Base",FRA="Base"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Base",FRA="Montant HT"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Base_Lbl</note>
-          <target>Base</target>
+          <target>Montant HT</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 719671359" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
@@ -6374,9 +6392,9 @@
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 1616056101" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT:</source>
-          <note from="Developer" annotates="general" priority="2">ESP="NIF:",FRA="Nº de Siret"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="NIF:",FRA="Nº Tva Intra.:"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType CIFDNICaptionLbl</note>
-          <target>Nº de Siret</target>
+          <target>Nº Tva Intra.:</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 339718340" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer</source>
@@ -6386,9 +6404,9 @@
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 3394917439" size-unit="char" translate="yes" xml:space="preserve">
           <source>Remark</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Observations"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Comentarios_Lbl</note>
-          <target>Commentaires</target>
+          <target>Observations</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 36964189" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bulks:</source>
@@ -6416,15 +6434,27 @@
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 2387469503" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delivery Address</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Dirección de envío",FRA="Adresse d´expédition"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Dirección de envío",FRA="Adresse de livraison"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType DireccionDeEnvio_Lbl</note>
-          <target>Adresse d´expédition</target>
+          <target>Adresse de livraison</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 2630275421" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dto.2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.2",FRA="Rem.2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Discount2CaptionLbl</note>
+          <target>Rem.2</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 2165929531" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dto.1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.1",FRA="Rem.1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType DiscountCaptionLbl</note>
+          <target>Rem.1</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 2783645336" size-unit="char" translate="yes" xml:space="preserve">
           <source>Disc.Com</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Dto.Com",FRA="Rem."</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto.Com",FRA="Rem.Com."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType DtoGeneral_Lbl</note>
-          <target>Rem.</target>
+          <target>Rem.Com.</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 2627770630" size-unit="char" translate="yes" xml:space="preserve">
           <source>P.P.Disc</source>
@@ -6438,6 +6468,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType FacturaCaptionLbl</note>
           <target>NOTE DE CRÉDIT</target>
         </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 4172600247" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha",FRA="Date"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType FechaCaptionLbl</note>
+          <target>Date</target>
+        </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms</source>
           <note from="Developer" annotates="general" priority="2">ESP="Forma de Pago",FRA="Conditions de Paiement"</note>
@@ -6446,21 +6482,21 @@
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 1400119597" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe Bruto",FRA="Suos_Total"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Bruto",FRA="Montant Brute"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType ImporteBruto_Lbl</note>
-          <target>Suos_Total</target>
+          <target>Montant Brute</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 3666218128" size-unit="char" translate="yes" xml:space="preserve">
           <source>Expiration Amount (s)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe Vencimiento(s)",FRA="Montant (s) d´expiration"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Vencimiento(s)",FRA="Montant du à échéance"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType ImporteVencimientosCaptionLbl</note>
-          <target>Montant (s) d´expiration</target>
+          <target>Montant du à échéance</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 850441175" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Quantité"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe",FRA="Montant"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Importe_Lbl</note>
-          <target>Quantité</target>
+          <target>Montant</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 938744765" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT</source>
@@ -6486,6 +6522,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType NoPedido_Lbl</note>
           <target>Nº commande:</target>
         </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 2403674832" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Página",FRA="Pág."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType PaginaCaptionLbl</note>
+          <target>Pág.</target>
+        </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 3568111613" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms</source>
           <note from="Developer" annotates="general" priority="2">ESP="Método Pago",FRA="Conditions de Paiement"</note>
@@ -6500,15 +6542,27 @@
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 1488271414" size-unit="char" translate="yes" xml:space="preserve">
           <source>Freight</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Portes",FRA="Fret"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Portes",FRA="Transport"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType Portes_Lbl</note>
-          <target>Fret</target>
+          <target>Transport</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 2153723302" size-unit="char" translate="yes" xml:space="preserve">
+          <source>R.E.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="R.E.",FRA="Reteneu"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType RE_Lbl</note>
+          <target>Reteneu</target>
+        </trans-unit>
+        <trans-unit id="Report 3011595053 - NamedType 3126303398" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taxable Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base Imponible",FRA="Base imposable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType SubtotalCaptionLbl</note>
+          <target>Base imposable</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 1677718373" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tax Base</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SubTotal",FRA="Bases H.T."</note>
+          <note from="Developer" annotates="general" priority="2">ESP="SubTotal",FRA="Montant H.T."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType SubTotal_Lbl</note>
-          <target>Bases H.T.</target>
+          <target>Montant H.T.</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 291546920" size-unit="char" translate="yes" xml:space="preserve">
           <source>Phone/Fax:</source>
@@ -6524,9 +6578,9 @@
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 4040219166" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comments</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Observations"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType txtcomentaires</note>
-          <target>Commentaires</target>
+          <target>Observations</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 3659909257" size-unit="char" translate="yes" xml:space="preserve">
           <source>Price/unit</source>
