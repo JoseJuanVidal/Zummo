@@ -17,6 +17,13 @@ pageextension 50029 "DocsinPOSubform" extends "Docs. in PO Subform"
                 Editable = false;
             }
         }
+        addafter("Document No.")
+        {
+            field("ZM Vendor Ext Doc No."; "ZM Vendor Ext Doc No.")
+            {
+                ApplicationArea = all;
+            }
+        }
         modify("Payment Method Code")
         {
             Editable = true;

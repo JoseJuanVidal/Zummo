@@ -21,6 +21,13 @@ pageextension 50031 "DocsinPostedBGSubform" extends "Docs. in Posted BG Subform"
                 end;
             }
         }
+        addafter("Document No.")
+        {
+            field("ZM Ext Doc No."; "ZM Ext Doc No.")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
     actions
     {

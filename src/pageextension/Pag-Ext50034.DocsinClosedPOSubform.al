@@ -11,6 +11,13 @@ pageextension 50034 "DocsinClosedPOSubform" extends "Docs. in Closed PO Subform"
                 Caption = 'Name', comment = 'ESP="Nombre"';
             }
         }
+        addafter("Document No.")
+        {
+            field("ZM Vendor Ext Doc No."; "ZM Vendor Ext Doc No.")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     trigger OnAfterGetRecord()

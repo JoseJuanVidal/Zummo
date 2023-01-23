@@ -34,4 +34,5 @@ pageextension 50030 "DocsinBGSubform" extends "Docs. in BG Subform"
 
     var
         txtNombre: Text[100];
+
 }

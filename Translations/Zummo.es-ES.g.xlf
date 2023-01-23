@@ -22484,6 +22484,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CarteraDocuments - Control txtNomb - Property Caption</note>
           <target>Nombre</target>
         </trans-unit>
+        <trans-unit id="PageExtension 184078026 - Control 283280167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1177774930">
+          <source>Vendor Ext. Doc No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Doc externo proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CarteraDocuments - Control ZM Vendor Ext Doc No. - Property Caption</note>
+          <target>Nº Doc externo proveedor</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2764867601 - Control 2211685455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3105459369">
           <source>Saldo apertura</source>
           <note from="Developer" annotates="general" priority="2">ESP="Saldo apertura"</note>
@@ -25034,6 +25040,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ClosedCarteraDoc - Field Direct Debit Mandate ID - Property Caption</note>
           <target>Id. de orden de domiciliación de adeudo directo</target>
         </trans-unit>
+        <trans-unit id="TableExtension 368762340 - Field 2426135459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1631311266">
+          <source>Ext. Doc No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documento externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ClosedCarteraDoc - Field ZM Ext Doc No. - Property Caption</note>
+          <target>Nº Documento externo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 368762340 - Field 283280167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1631311266">
+          <source>Ext. Doc No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documento externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ClosedCarteraDoc - Field ZM Vendor Ext Doc No. - Property Caption</note>
+          <target>Nº Documento externo</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3207250306 - Field 1572460470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2834401554">
           <source>Due Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Pago"</note>
@@ -25941,6 +25959,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Id. de orden de domiciliación de adeudo directo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PostedCarteraDoc - Field Direct Debit Mandate ID - Property Caption</note>
           <target>Id. de orden de domiciliación de adeudo directo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3967834141 - Field 2426135459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 930347903">
+          <source>Ext. Doc No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documento externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PostedCarteraDoc - Field ZM Ext Doc No. - Property Caption</note>
+          <target>Nº Documento externo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3967834141 - Field 283280167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 930347903">
+          <source>Ext. Doc No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documento externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PostedCarteraDoc - Field ZM Vendor Ext Doc No. - Property Caption</note>
+          <target>Nº Documento externo</target>
         </trans-unit>
         <trans-unit id="TableExtension 332051799 - Field 1572460470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4061249831">
           <source>Due Date</source>
@@ -27983,6 +28013,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field STH Vendor Name - Property Caption</note>
           <target>Nombre Proveedor</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 301384659 - Field 2426135459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
+          <source>Ext. Doc No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documento externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field ZM Ext Doc No. - Property Caption</note>
+          <target>Nº Documento externo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 301384659 - Field 283280167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
+          <source>Ext. Doc No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documento externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field ZM Vendor Ext Doc No. - Property Caption</note>
+          <target>Nº Documento externo</target>
         </trans-unit>
         <trans-unit id="TableExtension 3274837681 - Field 831439759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 348912950">
           <source>Es Material</source>

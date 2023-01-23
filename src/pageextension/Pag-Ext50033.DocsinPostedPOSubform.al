@@ -11,6 +11,13 @@ pageextension 50033 "DocsinPostedPOSubform" extends "Docs. in Posted PO Subform"
                 Caption = 'Name', comment = 'ESP="Nombre"';
             }
         }
+        addafter("Document No.")
+        {
+            field("ZM Vendor Ext Doc No."; "ZM Vendor Ext Doc No.")
+            {
+                ApplicationArea = all;
+            }
+        }
 
     }
     actions

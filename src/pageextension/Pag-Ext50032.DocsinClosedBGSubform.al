@@ -16,6 +16,13 @@ pageextension 50032 "DocsinClosedBGSubform" extends "Docs. in Closed BG Subform"
                 ApplicationArea = All;
             }
         }
+        addafter("Document No.")
+        {
+            field("ZM Ext Doc No."; "ZM Ext Doc No.")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     trigger OnAfterGetRecord()

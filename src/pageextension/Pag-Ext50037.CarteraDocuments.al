@@ -15,6 +15,14 @@ pageextension 50037 "CarteraDocuments" extends "Cartera Documents"
                 ApplicationArea = all;
             }
         }
+        addafter("Document No.")
+        {
+            field("ZM Vendor Ext Doc No."; "ZM Vendor Ext Doc No.")
+            {
+                ApplicationArea = all;
+                Caption = 'Vendor Ext. Doc No.', comment = 'ESP="Nº Doc externo proveedor"';
+            }
+        }
         modify("Payment Method Code")
         {
             Editable = true;
