@@ -2250,8 +2250,8 @@ report 50116 "FacturaNacionalUK"
         PmtinvfromdebtpaidtoFactCompCaptionLbl: Label 'The payment of this invoice, in order to be released from the debt, has to be paid to the Factoring Company.',
             Comment = 'ESP="El pago de esta factura, para ser liberado de la deuda, debe ser pagado a la Compañía de Factoring."';
         UnitPriceCaptionLbl: Label 'Price/unit', Comment = 'ESP="Precio U.",FRA="Prix/un"';
-        DiscountCaptionLbl: Label 'Dto.1', Comment = 'ESP="Dto.1"';
-        Discount2CaptionLbl: Label 'Dto.2', Comment = 'ESP="Dto.2"';
+        DiscountCaptionLbl: Label 'Dto.1', Comment = 'ESP="Dto.1",FRA="Remise 1"';
+        Discount2CaptionLbl: Label 'Dto.2', Comment = 'ESP="Dto.2",FRA="Remise 2"';
         AmtCaptionLbl: Label 'Amount', Comment = 'ESP="Importe",FRA="Montant"';
         BancoCaptionLbl: Label 'Bank data', Comment = 'ESP="Datos bancarios"';
         VATClausesCapLbl: Label 'VAT Clause', Comment = 'ESP="Cláusula IVA"';
@@ -2288,13 +2288,13 @@ report 50116 "FacturaNacionalUK"
         FacturaCaptionLbl: Label 'INVOICE', Comment = 'ESP="FACTURA",FRA="FACTURE"';
         FormadepagoCaptionLbl: Label 'Payment Terms', Comment = 'ESP="Forma de Pago",FRA="Conditions de Paiement"';
         ClienteCaptionLbl: Label 'Customer', Comment = 'ESP="Cliente",FRA="Client"';
-        FechaCaptionLbl: Label 'Date', Comment = 'ESP="Fecha"';
-        NumeroCaptionLbl: Label 'Num.', Comment = 'ESP="Núm."';
+        FechaCaptionLbl: Label 'Date', Comment = 'ESP="Fecha",FRA="Date"';
+        NumeroCaptionLbl: Label 'Num.', Comment = 'ESP="Núm.",FRA="Nº Facture"';
         PaginaCaptionLbl: Label 'Page', Comment = 'ESP="Página"';
         ImporteDescuentoFacturaCaptionLbl: Label 'Amount Dto. bill', Comment = 'ESP="Importe Dto. Factura"';
         VencimientosCaptionLbl: Label 'Payment Date Expiration (s)', Comment = 'ESP="Fecha Pago Vencimiento(s)",FRA="Expiration de la date de paiement(s)"';
         ImporteVencimientosCaptionLbl: Label 'Expiration Amount (s)', Comment = 'ESP="Importe Vencimiento(s)",FRA="Montant (s) d´expiration"';
-        CIFDNICaptionLbl: Label 'VAT:', Comment = 'ESP="NIF:",FRA="Nº de Siret"';
+        CIFDNICaptionLbl: Label 'VAT:', Comment = 'ESP="NIF:",FRA="Nº Tva Intra:"';
         CPCaptionLbl: Label 'PC:', Comment = 'ESP="CP:"';
         OperacionaseguradaCaptionLbl: Label 'Operation secured in', Comment = 'ESP="Operación asegurada en"';
         CreditoycaucionCaptionLbl: Label 'Credit and caution', Comment = 'ESP="Crédito y Caución"';
@@ -2310,7 +2310,7 @@ report 50116 "FacturaNacionalUK"
         TransportistaCaptionLbl: Label 'Shipping Agent:', Comment = 'ESP="Transportista:"';
         DNICaptionLbl: Label 'DNI:', Comment = 'ESP="DNI:"';
         MatriculasCaptionLbl: Label 'License plates', Comment = 'ESP="Matriculas"';
-        AgenteCaptionLbl: Label 'Agent:', Comment = 'ESP="Agente:",FRA="Agent:"';
+        AgenteCaptionLbl: Label 'Agent:', Comment = 'ESP="Agente:",FRA="Vendeur:"';
         RegistroMercantilCaptionLbl: Label 'Inscrita en el registro mercantil de Murcia, tomo 2028,folio 11, hoja MU-43705 inscripcion 1ª',
             Comment = 'ESP="Inscrita en el registro mercantil de Murcia, tomo 2028,folio 11, hoja MU-43705 inscripcion 1ª"';
         TextoFacturaCaptionLbl: Label 'Esta factura sólo debe pagarse utilizando los datos bancarios reflejados arriba. Cualquier cambio indicado por otros medios debe considerarse válido',
@@ -2323,11 +2323,11 @@ report 50116 "FacturaNacionalUK"
         CuadroBultos_PesoNetoLbl: Label 'Gross Weight(kg):', comment = 'ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"';
         CuadroBultos_PaletsLbl: Label 'Pallets:', comment = 'ESP="Palets:",FRA="Palettes"';
         Text004Txt: Label 'Sales - Invoice %1', Comment = 'Ventas - Factura %1';
-        PageCaptionCapLbl: Label 'Page %1 of %2', Comment = 'ESP="Página %1 de %2"';
+        PageCaptionCapLbl: Label 'Page %1 of %2', Comment = 'ESP="Página %1 de %2",FRA="Pag. %1 de %2"';
         TotalCaptionLbl: Label 'Total', Comment = 'ESP="Total"';
         ImporteRecargoCaptionLbl: Label 'Surcharge Amount', Comment = 'ESP="Importe Recargo"';
         //PorIvaCaptionLbl: Label '%IVA';
-        DtoPPCaptionLbl: Label 'Dt. P.P.', Comment = 'ESP="Dto. P.P."';
+        DtoPPCaptionLbl: Label 'Dt. P.P.', Comment = 'ESP="Dto. P.P.",FRA="Excompte"';
         ImportePPCaptionLbl: Label 'Amount P.P.', Comment = 'ESP="Importe P.P."';
         BaseImponibleCaptionLbl: Label 'Taxable Base', Comment = 'ESP="Base Imponible"';
         RecCaptionLbl: Label 'Rec.', Comment = 'ESP="Rec."';
@@ -2349,23 +2349,23 @@ report 50116 "FacturaNacionalUK"
         NoPedidoInternoProveedorLidl_Lbl: label 'Internal vendor order No.', comment = 'ESP="Nº Pedido interno del proveedor"';
         Tel_Lbl: Label 'Phone:', Comment = 'ESP="Tel:",FRA="Tél:"';
         BaseImponible_Lbl: Label 'Tax base', Comment = 'ESP="Base imponible"';
-        txtcomentaires: label 'Comments', comment = 'ESP="Comentarios",FRA="Commentaires"';
-        Base_Lbl: Label 'Tax Base', Comment = 'ESP="Base",FRA="Base"';
+        txtcomentaires: label 'Comments', comment = 'ESP="Comentarios",FRA="Observations"';
+        Base_Lbl: Label 'Tax Base', Comment = 'ESP="Base",FRA="Montant HT"';
         IVA_Lbl: Label 'VAT', Comment = 'ESP="IVA",FRA="TVA"';
-        Porcentaje_Lbl: Label '%', Comment = 'ESP="%"';
-        RE_Lbl: Label 'R.E.', Comment = 'ESP="R.E."';
-        Importe_Lbl: Label 'Amount', Comment = 'ESP="Importe",FRA="Quantité"';
-        ImporteBruto_Lbl: Label 'Amount', Comment = 'ESP="Importe Bruto",FRA="Suos_Total"';
-        DtoGeneral_Lbl: Label 'Disc.Com', Comment = 'ESP="Dto.Com",FRA="Rem."';
-        DtoPP_Lbl: Label 'P.P.Disc', Comment = 'ESP="Dto.PP",FRA="Esc.P.C."';
-        Portes_Lbl: Label 'Freight', Comment = 'ESP="Portes",FRA="Fret"';
-        SubTotal_Lbl: Label 'Tax Base', Comment = 'ESP="SubTotal",FRA="Bases H.T."';
+        Porcentaje_Lbl: Label '%', Comment = 'ESP="%",FRA="% TVA"';
+        RE_Lbl: Label 'R.E.', Comment = 'ESP="R.E.",FRA="Reteneu"';
+        Importe_Lbl: Label 'Amount', Comment = 'ESP="Importe",FRA="Montant"';
+        ImporteBruto_Lbl: Label 'Amount', Comment = 'ESP="Importe Bruto",FRA="Montant avant remise"';
+        DtoGeneral_Lbl: Label 'Disc.Com', Comment = 'ESP="Dto.Com",FRA="Rem. Commerc."';
+        DtoPP_Lbl: Label 'P.P.Disc', Comment = 'ESP="Dto.PP",FRA="Escompte"';
+        Portes_Lbl: Label 'Freight', Comment = 'ESP="Portes",FRA="Transport"';
+        SubTotal_Lbl: Label 'Tax Base', Comment = 'ESP="SubTotal",FRA="Montant H.T."';
         Articulo_Lbl: Label 'Item', Comment = 'ESP="Artículo",FRA="Article"';
         Cantidad_Lbl: Label 'Quantity', comment = 'ESP="Cantidad",FRA="Quantité"';
-        Decripcion_Lbl: Label 'Description', comment = 'ESP="Descripción",FRA="Description"';
+        Decripcion_Lbl: Label 'Description', comment = 'ESP="Descripción",FRA="Désignation"';
         PRGestionPedidosCliente_Lbl: Label 'PR-MANAGEMENT OF CUSTOMER ORDERS', Comment = 'ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"';
         FO01_Lbl: Label 'FO.01_C8.01_V12', Comment = 'ESP="FO.01_C8.01_V12"';
-        Comentarios_Lbl: Label 'Remark', Comment = 'ESP="Comentarios",FRA="Commentaires"';
+        Comentarios_Lbl: Label 'Remark', Comment = 'ESP="Comentarios",FRA="Observations"';
         DireccionDeEnvio_Lbl: Label 'Delivery Address', Comment = 'ESP="Dirección de envío",FRA="Adresse d´expédition"';
         ElSubtotalIncluye_Lbl: Label 'El subtotal incluye el coste de gestión de los RAEES según Real Decreto 110/2015, de 20 de febrero, sobre residuos de aparatos eléctricos y electrónicos (BOE de 21/02/2015)',
             Comment = 'ESP="El subtotal incluye el coste de gestión de los RAEES según Real Decreto 110/2015, de 20 de febrero, sobre residuos de aparatos eléctricos y electrónicos (BOE de 21/02/2015)"';
