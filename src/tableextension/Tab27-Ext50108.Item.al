@@ -416,6 +416,11 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Packaging product', comment = 'ESP="Producto de bulto"';
         }
+        field(50212; "Vendor Packaging product"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Plastic packing (kg)', comment = 'ESP="Plástico embalaje proveedor (kg)"';
+        }
         //-  NORMATIVA MEDIO AMBIENTAL
 
     }
