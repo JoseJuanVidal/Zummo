@@ -15140,7 +15140,7 @@
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 3403838503" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Bank data</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Datos bancarios del cliente"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Datos bancarios del cliente",FRA="Coordonnées bancaires"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType BancoCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 1754289296" size-unit="char" translate="yes" xml:space="preserve">

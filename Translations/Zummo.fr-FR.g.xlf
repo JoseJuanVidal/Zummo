@@ -7455,6 +7455,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Articulo_Lbl</note>
           <target>Article</target>
         </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3403838503" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Bank data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Datos bancarios del cliente",FRA="Coordonnées bancaires"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType BancoCaptionLbl</note>
+          <target>Coordonnées bancaires</target>
+        </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 1102477994" size-unit="char" translate="yes" xml:space="preserve">
           <source>Taxable Base</source>
           <note from="Developer" annotates="general" priority="2">ESP="Base Imponible",FRA="Montant Fiscale"</note>
