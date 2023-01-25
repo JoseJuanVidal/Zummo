@@ -31,12 +31,18 @@
             <ObjectID>50057</ObjectID>
             <Published>true</Published>
         </TenantWebService>
-              <TenantWebService>
+        <TenantWebService>
             <ObjectType>Page</ObjectType>
             <ServiceName>MovContaPresup</ServiceName>
             <ObjectID>50013</ObjectID>
             <Published>true</Published>
-        </TenantWebService>               
+        </TenantWebService> 
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>SalesLineService</ServiceName>
+            <ObjectID>17500</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
     </TenantWebServiceCollection>
 </ExportedData>
 
