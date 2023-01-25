@@ -150,7 +150,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 {
                     ApplicationArea = all;
                 }
-                field("Vendor Packaging product"; "Vendor Packaging product")
+                field("Vendor Packaging product KG"; "Vendor Packaging product KG")
                 {
                     ApplicationArea = all;
                 }
