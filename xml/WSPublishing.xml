@@ -40,7 +40,7 @@
         <TenantWebService>
             <ObjectType>Page</ObjectType>
             <ServiceName>SalesLineService</ServiceName>
-            <ObjectID>17500</ObjectID>
+            <ObjectID>17450</ObjectID>
             <Published>true</Published>
         </TenantWebService>
     </TenantWebServiceCollection>
