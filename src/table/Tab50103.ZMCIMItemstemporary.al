@@ -93,6 +93,7 @@ table 50103 "ZM CIM Items temporary"
         ProdBOMLine: Record "Production BOM Line";
         ZMCIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";
         ZMCIMProdBOMLine: Record "ZM CIM Prod. BOM Line";
+        ZMCIMProdDocuments: Record "ComentariosPredefinidos";
         lblConfirmBOM: Label 'El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?', comment = 'ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"';
 
     trigger OnInsert()
@@ -114,8 +115,16 @@ table 50103 "ZM CIM Items temporary"
         ZMCIMProdBOMLine.Reset();
         ZMCIMProdBOMLine.SetRange("Production BOM No.", Rec."Production BOM No.");
         ZMCIMProdBOMLine.DeleteAll();
-
+        ZMCIMProdDocuments.Reset();
+        ZMCIMProdDocuments.SetRange(CodComentario, Rec."No.");
+        ZMCIMProdDocuments.SetRange(Tipo, ZMCIMProdDocuments.Tipo::ERPLINKDocs);
+        //ZMCIMProdDocuments.DeleteAll();
+        if ZMCIMProdDocuments.FindFirst() then
+            repeat
+                ZMCIMProdDocuments.Delete();
+            Until ZMCIMProdDocuments.next() = 0;
     end;
+
 
     trigger OnRename()
     begin

@@ -89,6 +89,15 @@ page 50055 "ZM CIM Items"
                 SubPageLink = "No." = field("Production BOM No.");
             }
         }
+        area(FactBoxes)
+        {
+            part(Documents; "ZM Item Documents")
+            {
+                ApplicationArea = all;
+                SubPageLink = CodComentario = field("No.");
+
+            }
+        }
     }
 
     actions

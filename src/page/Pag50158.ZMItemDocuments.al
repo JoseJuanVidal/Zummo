@@ -21,14 +21,21 @@ page 50158 "ZM Item Documents"
                 field(itemno; CodComentario)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field(lineno; "Line No.")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(url; txtComentario)
                 {
                     ApplicationArea = All;
+
+                    trigger OnDrillDown()
+                    begin
+                        Hyperlink(txtComentario);
+                    end;
                 }
             }
         }
