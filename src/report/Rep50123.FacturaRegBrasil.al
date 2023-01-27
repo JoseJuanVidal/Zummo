@@ -1662,10 +1662,13 @@ report 50123 "FacturaRegBrasil"
                 END;
                 intContador := 1;
                 REPEAT
-                    FechaVencimiento[intContador] := MovsCliente."Due Date";
-                    MovsCliente.CALCFIELDS("Amount (LCY)");
-                    ImporteVencimiento[intContador] := MovsCliente."Amount (LCY)";
+                    if ArrayLen(ImporteVencimiento) >= intContador then begin
+                        FechaVencimiento[intContador] := MovsCliente."Due Date";
+                        MovsCliente.CALCFIELDS("Amount (LCY)");
+                        ImporteVencimiento[intContador] := MovsCliente."Amount (LCY)";
+                    end;
                     intContador := intContador + 1;
+
                 UNTIL MovsCliente.NEXT() = 0;
 
                 // ponemos el registro segun el grupo de iva
