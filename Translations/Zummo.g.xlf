@@ -6713,6 +6713,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3118965969 - NamedType 2270621111" size-unit="char" translate="yes" xml:space="preserve">
+          <source>sharepoint</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - NamedType lbloAut</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3536218840 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Shipment in Zummo Inc.</source>
           <note from="Developer" annotates="general" priority="2"></note>

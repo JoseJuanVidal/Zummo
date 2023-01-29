@@ -118,6 +118,17 @@ page 50055 "ZM CIM Items"
                     actionCopyItem;
                 end;
             }
+            action(Sharepoint)
+            {
+                ApplicationArea = all;
+
+                trigger OnAction()
+                var
+                    Sharepoint: Codeunit "ZM Sharepoint Functions";
+                begin
+                    message(Sharepoint.GetAccessToken('sharepoint'));
+                end;
+            }
         }
     }
 
