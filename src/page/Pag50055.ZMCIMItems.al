@@ -125,8 +125,12 @@ page 50055 "ZM CIM Items"
                 trigger OnAction()
                 var
                     Sharepoint: Codeunit "ZM Sharepoint Functions";
+                    statuscode: Integer;
+                    texto: Text;
                 begin
-                    message(Sharepoint.GetAccessToken('sharepoint'));
+                    //Sharepoint.RESTToken(statuscode, texto);
+                    texto := Sharepoint.CallGetResponseToken;
+                    message(format(statuscode) + ': ' + texto);
                 end;
             }
         }

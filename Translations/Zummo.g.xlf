@@ -6718,6 +6718,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - NamedType lbloAut</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3118965969 - Method 3483058520 - NamedType 1677243864" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status code: %1\ Description: %2 \%3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Status code: %1\ Description: %2 \%3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method CallGetResponseToken - NamedType StatusCodeErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3536218840 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Shipment in Zummo Inc.</source>
           <note from="Developer" annotates="general" priority="2"></note>

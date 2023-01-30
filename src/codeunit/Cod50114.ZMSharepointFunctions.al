@@ -142,6 +142,154 @@ codeunit 50114 "ZM Sharepoint Functions"
         statusCode := ResponseMessage.HttpStatusCode;
 
     end;
+
+    procedure RESTToken(var statusCode: Integer; var respuestaToken: Text): Boolean
+    var
+        Client: HttpClient;
+        ContentHeaders: HttpHeaders;
+        ClientHeaders: HttpHeaders;
+        RequestMessage: HttpRequestMessage;
+        ResponseMessage: HttpResponseMessage;
+        RequestContent: HttpContent;
+        ResultJsonToken: JsonToken;
+        Jparametros: JsonObject;
+        respuestaJSONToken: JsonObject;
+        TypeHelper: Codeunit "Type Helper";
+
+        TempBlob: Record TempBlob;
+        Url: Text;
+        parametros: text;
+        client_secret: text;
+        client_id: Text;
+        scope: text;
+        grant_type: text;
+
+        ClientIdTxt: Label 'bbaebd13-7b64-4a79-806f-1c928c9f41c9', Locked = true;
+        ClientSecret: Label 'Ar48Q~CqI~dJmbkBliS2dQNY2juzHa1yNcvo3bKa', Locked = true;
+        //ResourceUrlTxt: Label 'https://graph.microsoft.com', Locked = true;
+        ResourceUrlTxt: Label 'https://login.microsoftonline.com/', Locked = true;
+        OAuthAuthorityUrlTxt: Label 'https://graph.microsoft.com/.default', Locked = true;
+        RedirectURLTxt: Label 'http://localhost:8080/BC160/OAuthLanding.htm', Locked = true;
+        AccessTokenURLTxt: Label 'acacbbb6-3305-4b91-a580-c523b448d612/oauth2/v2.0/token', Locked = true;
+        OneDriveRootQueryUri: Label 'https://graph.microsoft.com/v1.0/me/drive/root/children', Locked = true;
+        //client_id=1_1serxem86lj48swco0go0k0koccs8gkko8kg4wwwoc8sgowgc&
+        //client_secret=3oeurqfgnvuogcgkcskowcswoskoogccc00sk4o0wwcsoc0s8k&
+        //grant_type=password&redirect_uri=zummo.itbid.org&username=USER&password=PASSWORD
+        fichero: file;
+    begin
+        //Creamos una url
+        Url := ResourceUrlTxt + AccessTokenURLTxt;
+        //Añadimos los headers de petición
+        RequestContent.GetHeaders(ContentHeaders);
+
+        //Obtenemos los headers por defecto
+        ClientHeaders := Client.DefaultRequestHeaders();
+        // --data-urlencode 'client_id=bbaebd13-7b64-4a79-806f-1c928c9f41c9' \
+        // --data-urlencode 'scope=https://graph.microsoft.com/.default' \
+        // --data-urlencode 'client_secret=Ar48Q~CqI~dJmbkBliS2dQNY2juzHa1yNcvo3bKa' \
+        // --data-urlencode 'grant_type=client_credentials'
+        client_id := ClientIdTxt;
+        client_secret := ClientSecret;
+        scope := OAuthAuthorityUrlTxt;
+        grant_type := 'client_credentials';
+
+        ContentHeaders.Remove('Content-Type');
+        //ContentHeaders.Add('Content-Type', 'application/json');
+        ContentHeaders.Add('Content-Type', 'application/x-www-form-urlencoded');
+        Jparametros.Add('grant_type', TypeHelper.UrlEncode(grant_type));
+        Jparametros.Add('client_id', TypeHelper.UrlEncode(client_id));
+        Jparametros.Add('client_secret', TypeHelper.UrlEncode(client_secret));
+        Jparametros.Add('scope', TypeHelper.UrlEncode(scope));
+        Jparametros.WriteTo(parametros);
+        RequestContent.WriteFrom(parametros);
+
+        //ClientHeaders.Add('Accept', 'application/json');
+        ClientHeaders.Add('Accept', 'application/x-www-form-urlencoded');
+
+        //Asignamos el metodo rest para la petición http
+        RequestMessage.Method('POST');
+        //Asignamos la url para la peticion http 
+        RequestMessage.SetRequestUri(Url);
+        RequestMessage.Content := RequestContent;
+
+        //Si se puede enviar los datos
+        if Client.Send(RequestMessage, ResponseMessage) then begin
+            //si esun codigo exitoso(200, 201)
+            if (ResponseMessage.IsSuccessStatusCode()) then begin
+                ResponseMessage.Content.ReadAs(respuestaToken); //Leemos el contenido de la respuesta http
+            end
+            else begin
+                ResponseMessage.Content.ReadAs(respuestaToken);
+                //Message('%1', ResponseText);
+            end;
+        end
+        else begin
+            ResponseMessage.Content.ReadAs(respuestaToken);
+        end;
+
+        //Procesamos el json de la peticion y su status code para posteriormente pasarla por el valor de referencia
+        //respuestaJSONToken.ReadFrom(respuestaToken);
+        statusCode := ResponseMessage.HttpStatusCode;
+        fichero.Create('C:\Zummo\respuesta.txt');
+        fichero.TextMode := true;
+        fichero.Write(respuestaToken);
+        fichero.Close();
+
+    end;
+
+    procedure CallGetResponseToken(): Text
+    var
+        HttpClient: HttpClient;
+        HttpContent: HttpContent;
+        HttpResponseMessage: HttpResponseMessage;
+        HttpHeaders: HttpHeaders;
+        Url: Text;
+        formdata: Text;
+        ResponseText: Text;
+        StatusCodeErr: Label 'Status code: %1\ Description: %2 \%3', comment = 'ESP="Status code: %1\ Description: %2 \%3"';
+        ResourceUrlTxt: Label 'https://login.microsoftonline.com/', Locked = true;
+        RedirectURLTxt: Label 'http://localhost:8080/BC160/OAuthLanding.htm', Locked = true;
+        AccessTokenURLTxt: Label 'acacbbb6-3305-4b91-a580-c523b448d612/oauth2/v2.0/token', Locked = true;
+
+    begin
+        Url := ResourceUrlTxt + AccessTokenURLTxt;
+        formdata := FormData_Oauth2Token();
+        HttpContent.WriteFrom(formdata);
+        HttpContent.GetHeaders(HttpHeaders);
+        HttpHeaders.Clear();
+        HttpHeaders.Add('Content-Type', 'application/x-www-form-urlencoded');
+        HttpClient.Post(Url, HttpContent, HttpResponseMessage);
+        If not HttpResponseMessage.IsSuccessStatusCode() then begin
+            HttpResponseMessage.Content.ReadAs(formdata);
+            Error(StatusCodeErr, HttpResponseMessage.HttpStatusCode(), HttpResponseMessage.ReasonPhrase(), formdata);
+        end;
+        HttpResponseMessage.Content().ReadAs(ResponseText);
+        exit(ResponseText);
+
+    end;
+
+    local procedure FormData_Oauth2Token() FormDataOauth2Token: Text
+    var
+        OAuthAuthorityUrlTxt: Label 'https://graph.microsoft.com/.default', Locked = true;
+        ClientID: Text;
+        ClientSecret: Text;
+        scope: Text;
+        grant_type: Text;
+        tb: TextBuilder;
+        ClientIdTxt: Label 'bbaebd13-7b64-4a79-806f-1c928c9f41c9', Locked = true;
+        ClientSecrettxt: Label 'Ar48Q~CqI~dJmbkBliS2dQNY2juzHa1yNcvo3bKa', Locked = true;
+
+    begin
+        scope := OAuthAuthorityUrlTxt;
+        grant_type := 'client_credentials';
+        ClientID := ClientIdTxt;
+        ClientSecret := ClientSecrettxt;
+        tb.AppendLine('grant_type=' + grant_type);
+        tb.AppendLine('&' + 'client_id=' + ClientID);
+        tb.AppendLine('&' + 'client_secret=' + ClientSecret);
+        tb.Append('&' + 'scope=' + scope);
+        FormDataOauth2Token := tb.ToText();
+    end;
     /*
       TESTFIELD("Service URL");
   TESTFIELD("Access Token URL Path");
