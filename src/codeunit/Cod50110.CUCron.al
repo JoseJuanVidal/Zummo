@@ -64,6 +64,11 @@ codeunit 50110 "CU_Cron"
                     begin
                         IntegracionCRM.CRMUpdateItems();
                     end;
+                'CRMTextosAuxiliares':
+                    begin
+                        IntegracionCRM.TextosAuxiliaresControl();
+                    end;
+
                 else
                     error(lbNoParametroErr);
 

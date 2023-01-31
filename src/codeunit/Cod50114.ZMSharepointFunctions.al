@@ -6,406 +6,232 @@ codeunit 50114 "ZM Sharepoint Functions"
     end;
 
     var
+        ZummoIncFunctions: Codeunit "Zummo Inn. IC Functions";
         lbloAut: Label 'sharepoint';
+        SitesUrl: Label 'https://graph.microsoft.com/v1.0/sites', Locked = true;
+        DrivesUrl: Label 'https://graph.microsoft.com/v1.0//%1/drives', Locked = true;
+        DrivesItemsUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/root/children', Comment = '%1 = Drive ID', Locked = true;
+        DrivesChildItemsUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/items/%2/children', Comment = '%1 = Drive ID, %2 = Item ID', Locked = true;
+        UploadUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/items/root:/%2:/content', Comment = '%1 = Drive ID, %2 = File Name', Locked = true;
 
-    procedure GetAccessToken(AppCode: Code[20]): Text
+    procedure UploadFileOne(var OnlineDriveItem: Record "ZM Online Drive")
     var
-        OAuth20Application: Record "OAuth 2.0 Setup";//"OAuth 2.0 Application";
-        OAuth20AppHelper: Codeunit "OAuth 2.0 Mgt."; // "OAuth 2.0 App. Helper";
-        MessageText: Text;  // var
-        AuthorizationCode: Text;
-        ClientID: Text;
-        ClientSecret: Text;
-        AccessToken: Text; // var
-        RefreshToken: Text;  // var
+        DriveId: Label 'b!Cu8nOuEVwkeC04vs82WUBO-FdIVavSVEj1wihPBO4qgAm_JGdqzGQIlTwVXIUMpK/items/012ST4ANJPBBRNWHNSIRFYOZWZBDYRYPWT';
+        ParentId: Label '';
+        FileinStr: InStream;
+        FileName: text;
     begin
-        GetOautSetup(OAuth20Application);
-
-        if not OAuth20AppHelper.RequestAccessToken(OAuth20Application, MessageText, AuthorizationCode, ClientID, ClientSecret, AccessToken, RefreshToken) then
-            Error(MessageText);
-
-        exit(AccessToken);
+        UploadIntoStream('Dialog', '', '', FileName, FileinStr);
+        UploadFile(DriveId, ParentId, 'C.\Zummo\', FileName, FileinStr, OnlineDriveItem);
     end;
 
-    local procedure GetOautSetup(var OAuth20Application: Record "OAuth 2.0 Setup")
+    procedure FetchSite(var Site: Record File): Boolean
     var
-        ClientIdTxt: Label 'bbaebd13-7b64-4a79-806f-1c928c9f41c9', Locked = true;
-        ClientSecret: Label 'acacbbb6-3305-4b91-a580-c523b448d612', Locked = true;
-        //ResourceUrlTxt: Label 'https://graph.microsoft.com', Locked = true;
-        ResourceUrlTxt: Label 'https://login.microsoftonline.com/', Locked = true;
-        //https://login.microsoftonline.com/
-        OAuthAuthorityUrlTxt: Label 'https://login.microsoftonline.com/acacbbb6-3305-4b91-a580-c523b448d612/oauth2/v2.0/authorize', Locked = true;
-        RedirectURLTxt: Label 'http://localhost:8080/BC160/OAuthLanding.htm', Locked = true;
-        //https://login.microsoftonline.com/
-        AccessTokenURLTxt: Label 'acacbbb6-3305-4b91-a580-c523b448d612/oauth2/v2.0/token', Locked = true;
-        OneDriveRootQueryUri: Label 'https://graph.microsoft.com/v1.0/me/drive/root/children', Locked = true;
+        JsonResponse: JsonObject;
+        JToken: JsonToken;
+        AccessToken: Text;
     begin
-        if OAuth20Application.Get(lbloAut) then
-            OAuth20Application.Delete();
-        if not OAuth20Application.Get(lbloAut) then begin
-            OAuth20Application.Init();
-            OAuth20Application.Code := lbloAut;
-            OAuth20Application."Service URL" := ResourceUrlTxt;
-            OAuth20Application."Client ID" := ClientIdTxt;
-            OAuth20Application."Client Secret" := ClientSecret;
-            OAuth20Application."Redirect URL" := RedirectURLTxt;
-            OAuth20Application."Authorization URL Path" := OAuthAuthorityUrlTxt;
-            OAuth20Application."Access Token URL Path" := AccessTokenURLTxt;
-            OAuth20Application.Insert();
-        end;
-    end;
+        if GetAccessToken(AccessToken) then begin
+            if HttpGet(AccessToken, SitesUrl, JsonResponse) then begin
+                if JsonResponse.Get('value', JToken) then
+                    readSites(JToken.AsArray(), Site);
 
-    procedure SW_REST(urlBase: Text; metodo: Text; metodoREST: Text; parametros: Text; requiereAutenticacion: Boolean; var statusCode: Integer; var respuestaJSON: JsonObject; indicarEmpresa: Boolean)
-    var
-        Client: HttpClient;
-        ContentHeaders: HttpHeaders;
-        ClientHeaders: HttpHeaders;
-        RequestMessage: HttpRequestMessage;
-        ResponseMessage: HttpResponseMessage;
-        RequestContent: HttpContent;
-        ResultJsonToken: JsonToken;
-
-        TempBlob: Record TempBlob;
-        Url: Text;
-        StringAuthorization: Text;
-        ResponseText: Text;
-        Texto: Text;
-        User: text;
-        PassWebServKey: Text;
-        StringAuth: Text;
-
-    begin
-        //Obtenemos los datos de configuración web
-        // regCon.GET();
-
-        //Creamos una url
-        Url := urlBase + metodo;
-        //Añadimos los headers de petición
-
-        RequestContent.GetHeaders(ContentHeaders);
-
-        //Obtenemos los headers por defecto
-        ClientHeaders := Client.DefaultRequestHeaders();
-
-        //Si la variable indicar empresa es true entonces entra y un header tendrá company y su id
-        /*   if indicarEmpresa then begin
-              ClientHeaders.Add('company', Format('ZUMMO'));
-          end;
-   */
-
-        TempBlob.WriteTextLine(User + ':' + PassWebServKey);
-        StringAuth := TempBlob.ToBase64String();
-
-        //Si se requiere autenticacion(menos para pedir token de acceso siempre será true) entra
-        if requiereAutenticacion then begin
-
-            StringAuthorization := 'Basic ' + StringAuth;
-            //Creamos la cabecera de athorization
-            ClientHeaders.Add('Authorization', StringAuthorization);
-        end;
-
-        //Si el metodo es de tipo Post o Patch entra para configurar los contentheaders
-        if metodoREST in ['POST', 'PATCH'] then begin
-
-            RequestContent.WriteFrom(parametros);
-            ContentHeaders.Remove('Content-Type');
-            ContentHeaders.Add('Content-Type', 'application/json');
-
-        end;
-
-        ClientHeaders.Add('Accept', 'application/json');
-
-        //Asignamos el metodo rest para la petición http
-        RequestMessage.Method(metodoREST);
-        //Asignamos la url para la peticion http 
-        RequestMessage.SetRequestUri(Url);
-        if metodoREST <> 'GET' then
-            RequestMessage.Content := RequestContent;
-
-        //Si se puede enviar los datos
-        if Client.Send(RequestMessage, ResponseMessage) then begin
-            //si esun codigo exitoso(200, 201)
-            if (ResponseMessage.IsSuccessStatusCode()) then begin
-                ResponseMessage.Content.ReadAs(ResponseText);//Leemos el contenido de la respuesta http
-            end
-            else begin
-                ResponseMessage.Content.ReadAs(ResponseText);
-                //Message('%1', ResponseText);
+                exit(true);
             end;
-        end
-        else begin
-            ResponseMessage.Content.ReadAs(ResponseText);
         end;
-
-        //Procesamos el json de la peticion y su status code para posteriormente pasarla por el valor de referencia
-        respuestaJSON.ReadFrom(ResponseText);
-        statusCode := ResponseMessage.HttpStatusCode;
-
     end;
 
-    procedure RESTToken(var statusCode: Integer; var respuestaToken: Text): Boolean
+    procedure FetchDrives(var Drive: Record "ZM Online Drive"): Boolean
     var
-        Client: HttpClient;
-        ContentHeaders: HttpHeaders;
-        ClientHeaders: HttpHeaders;
-        RequestMessage: HttpRequestMessage;
-        ResponseMessage: HttpResponseMessage;
-        RequestContent: HttpContent;
-        ResultJsonToken: JsonToken;
-        Jparametros: JsonObject;
-        respuestaJSONToken: JsonObject;
-        TypeHelper: Codeunit "Type Helper";
-
-        TempBlob: Record TempBlob;
-        Url: Text;
-        parametros: text;
-        client_secret: text;
-        client_id: Text;
-        scope: text;
-        grant_type: text;
-
-        ClientIdTxt: Label 'bbaebd13-7b64-4a79-806f-1c928c9f41c9', Locked = true;
-        ClientSecret: Label 'Ar48Q~CqI~dJmbkBliS2dQNY2juzHa1yNcvo3bKa', Locked = true;
-        //ResourceUrlTxt: Label 'https://graph.microsoft.com', Locked = true;
-        ResourceUrlTxt: Label 'https://login.microsoftonline.com/', Locked = true;
-        OAuthAuthorityUrlTxt: Label 'https://graph.microsoft.com/.default', Locked = true;
-        RedirectURLTxt: Label 'http://localhost:8080/BC160/OAuthLanding.htm', Locked = true;
-        AccessTokenURLTxt: Label 'acacbbb6-3305-4b91-a580-c523b448d612/oauth2/v2.0/token', Locked = true;
-        OneDriveRootQueryUri: Label 'https://graph.microsoft.com/v1.0/me/drive/root/children', Locked = true;
-        //client_id=1_1serxem86lj48swco0go0k0koccs8gkko8kg4wwwoc8sgowgc&
-        //client_secret=3oeurqfgnvuogcgkcskowcswoskoogccc00sk4o0wwcsoc0s8k&
-        //grant_type=password&redirect_uri=zummo.itbid.org&username=USER&password=PASSWORD
-        fichero: file;
+        JsonResponse: JsonObject;
+        JToken: JsonToken;
+        AccessToken: Text;
+    //https://zummoinnovaciones.sharepoint.com/sites/ERPLiNK/_api/site obtener id sharepoint
     begin
-        //Creamos una url
-        Url := ResourceUrlTxt + AccessTokenURLTxt;
-        //Añadimos los headers de petición
-        RequestContent.GetHeaders(ContentHeaders);
-
-        //Obtenemos los headers por defecto
-        ClientHeaders := Client.DefaultRequestHeaders();
-        // --data-urlencode 'client_id=bbaebd13-7b64-4a79-806f-1c928c9f41c9' \
-        // --data-urlencode 'scope=https://graph.microsoft.com/.default' \
-        // --data-urlencode 'client_secret=Ar48Q~CqI~dJmbkBliS2dQNY2juzHa1yNcvo3bKa' \
-        // --data-urlencode 'grant_type=client_credentials'
-        client_id := ClientIdTxt;
-        client_secret := ClientSecret;
-        scope := OAuthAuthorityUrlTxt;
-        grant_type := 'client_credentials';
-
-        ContentHeaders.Remove('Content-Type');
-        //ContentHeaders.Add('Content-Type', 'application/json');
-        ContentHeaders.Add('Content-Type', 'application/x-www-form-urlencoded');
-        Jparametros.Add('grant_type', TypeHelper.UrlEncode(grant_type));
-        Jparametros.Add('client_id', TypeHelper.UrlEncode(client_id));
-        Jparametros.Add('client_secret', TypeHelper.UrlEncode(client_secret));
-        Jparametros.Add('scope', TypeHelper.UrlEncode(scope));
-        Jparametros.WriteTo(parametros);
-        RequestContent.WriteFrom(parametros);
-
-        //ClientHeaders.Add('Accept', 'application/json');
-        ClientHeaders.Add('Accept', 'application/x-www-form-urlencoded');
-
-        //Asignamos el metodo rest para la petición http
-        RequestMessage.Method('POST');
-        //Asignamos la url para la peticion http 
-        RequestMessage.SetRequestUri(Url);
-        RequestMessage.Content := RequestContent;
-
-        //Si se puede enviar los datos
-        if Client.Send(RequestMessage, ResponseMessage) then begin
-            //si esun codigo exitoso(200, 201)
-            if (ResponseMessage.IsSuccessStatusCode()) then begin
-                ResponseMessage.Content.ReadAs(respuestaToken); //Leemos el contenido de la respuesta http
-            end
-            else begin
-                ResponseMessage.Content.ReadAs(respuestaToken);
-                //Message('%1', ResponseText);
-            end;
-        end
-        else begin
-            ResponseMessage.Content.ReadAs(respuestaToken);
-        end;
-
-        //Procesamos el json de la peticion y su status code para posteriormente pasarla por el valor de referencia
-        //respuestaJSONToken.ReadFrom(respuestaToken);
-        statusCode := ResponseMessage.HttpStatusCode;
-        fichero.Create('C:\Zummo\respuesta.txt');
-        fichero.TextMode := true;
-        fichero.Write(respuestaToken);
-        fichero.Close();
-
-    end;
-
-    procedure CallGetResponseToken(): Text
-    var
-        HttpClient: HttpClient;
-        HttpContent: HttpContent;
-        HttpResponseMessage: HttpResponseMessage;
-        HttpHeaders: HttpHeaders;
-        Url: Text;
-        formdata: Text;
-        ResponseText: Text;
-        StatusCodeErr: Label 'Status code: %1\ Description: %2 \%3', comment = 'ESP="Status code: %1\ Description: %2 \%3"';
-        ResourceUrlTxt: Label 'https://login.microsoftonline.com/', Locked = true;
-        RedirectURLTxt: Label 'http://localhost:8080/BC160/OAuthLanding.htm', Locked = true;
-        AccessTokenURLTxt: Label 'acacbbb6-3305-4b91-a580-c523b448d612/oauth2/v2.0/token', Locked = true;
-
-    begin
-        Url := ResourceUrlTxt + AccessTokenURLTxt;
-        formdata := FormData_Oauth2Token();
-        HttpContent.WriteFrom(formdata);
-        HttpContent.GetHeaders(HttpHeaders);
-        HttpHeaders.Clear();
-        HttpHeaders.Add('Content-Type', 'application/x-www-form-urlencoded');
-        HttpClient.Post(Url, HttpContent, HttpResponseMessage);
-        If not HttpResponseMessage.IsSuccessStatusCode() then begin
-            HttpResponseMessage.Content.ReadAs(formdata);
-            Error(StatusCodeErr, HttpResponseMessage.HttpStatusCode(), HttpResponseMessage.ReasonPhrase(), formdata);
-        end;
-        HttpResponseMessage.Content().ReadAs(ResponseText);
-        exit(ResponseText);
-
-    end;
-
-    local procedure FormData_Oauth2Token() FormDataOauth2Token: Text
-    var
-        OAuthAuthorityUrlTxt: Label 'https://graph.microsoft.com/.default', Locked = true;
-        ClientID: Text;
-        ClientSecret: Text;
-        scope: Text;
-        grant_type: Text;
-        tb: TextBuilder;
-        ClientIdTxt: Label 'bbaebd13-7b64-4a79-806f-1c928c9f41c9', Locked = true;
-        ClientSecrettxt: Label 'Ar48Q~CqI~dJmbkBliS2dQNY2juzHa1yNcvo3bKa', Locked = true;
-
-    begin
-        scope := OAuthAuthorityUrlTxt;
-        grant_type := 'client_credentials';
-        ClientID := ClientIdTxt;
-        ClientSecret := ClientSecrettxt;
-        tb.AppendLine('grant_type=' + grant_type);
-        tb.AppendLine('&' + 'client_id=' + ClientID);
-        tb.AppendLine('&' + 'client_secret=' + ClientSecret);
-        tb.Append('&' + 'scope=' + scope);
-        FormDataOauth2Token := tb.ToText();
-    end;
-    /*
-      TESTFIELD("Service URL");
-  TESTFIELD("Access Token URL Path");
-  TESTFIELD("Client ID");
-  TESTFIELD("Client Secret");
-  TESTFIELD("Redirect URL");
-        procedure CreateRequest(RequestUrl: Text; AccessToken: Text): Text
-        var
-            TempBlob: Record TempBlob;
-            Client: HttpClient;
-            RequestHeaders: HttpHeaders;
-            MailContentHeaders: HttpHeaders;
-            MailContent: HttpContent;
-            ResponseMessage: HttpResponseMessage;
-            RequestMessage: HttpRequestMessage;
-            JObject: JsonObject;
-            ResponseStream: InStream;
-            APICallResponseMessage: Text;
-            StatusCode: Integer;
-            IsSuccessful: Boolean;
-        begin
-
-            RequestMessage.GetHeaders(RequestHeaders);
-            RequestHeaders.Add('Authorization', 'Bearer ' + AccessToken);
-            RequestMessage.SetRequestUri(RequestUrl);
-            RequestMessage.Method('GET');
-
-            Clear(TempBlob);
-            TempBlob.Blob.CreateInStream(ResponseStream);
-
-            IsSuccessful := Client.Send(RequestMessage, ResponseMessage);
-
-            if not IsSuccessful then
-                exit('An API call with the provided header has failed.');
-
-            if not ResponseMessage.IsSuccessStatusCode() then begin
-                StatusCode := ResponseMessage.HttpStatusCode();
-                exit('The request has failed with status code ' + Format(StatusCode));
-            end;
-
-            if not ResponseMessage.Content().ReadAs(ResponseStream) then
-                exit('The response message cannot be processed.');
-
-
-            if not JObject.ReadFrom(ResponseStream) then
-                exit('Cannot read JSON response.');
-
-            JObject.WriteTo(APICallResponseMessage);
-            APICallResponseMessage := APICallResponseMessage.Replace(',', '\');
-            exit(APICallResponseMessage);
-        end;
-
-        var
-            DrivesUrl: Label 'https://graph.microsoft.com/v1.0/drives', Locked = true;
-
-        procedure FetchDrives(AccessToken: Text; var Drive: Record "Online Drive"): Boolean
-        var
-            JsonResponse: JsonObject;
-            JToken: JsonToken;
-        begin
-            if HttpGet(AccessToken, DrivesUrl, JsonResponse) then begin
+        if GetAccessToken(AccessToken) then begin
+            if HttpGet(AccessToken, StrSubstNo(DrivesUrl, '3a27ef0a-15e1-47c2-82d3-8becf3659404'), JsonResponse) then begin
                 if JsonResponse.Get('value', JToken) then
                     ReadDrives(JToken.AsArray(), Drive);
 
                 exit(true);
             end;
         end;
+    end;
 
-    Online Drive (table 50115)
-    table 50115 "Online Drive"
-    {
-        DataClassification = CustomerContent;
+    procedure FetchDrivesItems(var DriveItem: Record "ZM Online Drive"): Boolean
+    var
+        JsonResponse: JsonObject;
+        JToken: JsonToken;
+        IsSucces: Boolean;
+        AccessToken: Text;
+        DriveId: Label '424ef0a3-de4f-45e9-b562-a3792abc71ad';
+    begin
+        if GetAccessToken(AccessToken) then begin
+            if HttpGet(AccessToken, StrSubstNo(DrivesItemsUrl, DriveId), JsonResponse) then begin
+                if JsonResponse.Get('value', JToken) then
+                    ReadDriveItems(JToken.AsArray(), DriveId, '', DriveItem);
 
-        fields
-        {
-            field(1; id; Text[250])
-            {
-                DataClassification = CustomerContent;
-            }
-            field(2; name; Text[250])
-            {
-                DataClassification = CustomerContent;
-            }
-            field(3; description; Text[250])
-            {
-                DataClassification = CustomerContent;
-            }
-            field(4; driveType; Text[80])
-            {
-                DataClassification = CustomerContent;
-            }
-            field(5; createdDateTime; DateTime)
-            {
-                DataClassification = CustomerContent;
-            }
-            field(6; lastModifiedDateTime; DateTime)
-            {
-                DataClassification = CustomerContent;
-            }
-            field(7; webUrl; Text[250])
-            {
-                DataClassification = CustomerContent;
-            }
-        }
+                exit(true);
+            end;
+        end;
+    end;
 
-        keys
-        {
-            key(PK; id)
-            {
-                Clustered = true;
-            }
-        }
-    }
+    local procedure ReadDriveItems(JDriveItems: JsonArray; DriveID: Text; ParentID: Text; var DriveItem: Record "ZM Online Drive")
+    var
+        JToken: JsonToken;
+    begin
+        foreach JToken in JDriveItems do
+            ReadDriveItem(JToken.AsObject(), DriveID, ParentID, DriveItem);
+    end;
 
-    HttpGet method
-    Following is a helper function to get json object response from the given Url using AccessToken.
+    local procedure ReadDriveItem(JDriveItem: JsonObject; DriveID: Text; ParentID: Text; var DriveItem: Record "ZM Online Drive")
+    var
+        JFile: JsonObject;
+        JToken: JsonToken;
+    begin
+
+        DriveItem.Init();
+        DriveItem.driveId := DriveID;
+        DriveItem.parentId := ParentID;
+        if JDriveItem.Get('name', JToken) then
+            DriveItem.Name := JToken.AsValue().AsText();
+
+        if JDriveItem.Get('size', JToken) then
+            DriveItem.size := JToken.AsValue().AsBigInteger();
+
+        if JDriveItem.Get('file', JToken) then begin
+            DriveItem.isFile := true;
+        end;
+
+        if JDriveItem.Get('createdDateTime', JToken) then begin
+            DriveItem.createdDateTime := JToken.AsValue().AsDateTime();
+        end;
+        if JDriveItem.Get('webUrl', JToken) then
+            DriveItem.webUrl := JToken.AsValue().AsText();
+        DriveItem.Insert();
+    end;
+
+    procedure FetchDrivesChildItems(DriveID: Text; ItemID: Text; var DriveItem: record "ZM Online Drive"): Boolean
+    var
+        JsonResponse: JsonObject;
+        JToken: JsonToken;
+        AccessToken: Text;
+        IsSucces: Boolean;
+    begin
+        if GetAccessToken(AccessToken) then begin
+            if HttpGet(AccessToken, StrSubstNo(DrivesChildItemsUrl, DriveID, ItemID), JsonResponse) then begin
+                if JsonResponse.Get('value', JToken) then
+                    ReadDriveItems(JToken.AsArray(), DriveID, ItemID, DriveItem);
+
+                exit(true);
+            end;
+        end;
+    end;
+
+    local procedure ReadSites(JSites: JsonArray; var Sites: Record File)
+    var
+        JDriveItem: JsonToken;
+        JDrive: JsonObject;
+        JToken: JsonToken;
+    begin
+        foreach JDriveItem in JSites do begin
+            JDrive := JDriveItem.AsObject();
+
+            Sites.Init();
+            if JDrive.Get('displayName', JToken) then
+                Sites.Name := JToken.AsValue().AsText();
+            if JDrive.Get('webUrl', JToken) then
+                Sites.Path := JToken.AsValue().AsText();
+            Sites.Insert();
+        end;
+    end;
+
+    local procedure ReadDrives(JDrives: JsonArray; var Drive: Record "ZM Online Drive")
+    var
+        JDriveItem: JsonToken;
+        JDrive: JsonObject;
+        JToken: JsonToken;
+    begin
+        foreach JDriveItem in JDrives do begin
+            JDrive := JDriveItem.AsObject();
+
+            Drive.Init();
+            if JDrive.Get('id', JToken) then
+                Drive.Id := JToken.AsValue().AsText();
+            if JDrive.Get('name', JToken) then
+                Drive.Name := JToken.AsValue().AsText();
+            if JDrive.Get('description', JToken) then
+                Drive.description := JToken.AsValue().AsText();
+            if JDrive.Get('driveType', JToken) then
+                Drive.driveType := JToken.AsValue().AsText();
+            if JDrive.Get('createdDateTime', JToken) then
+                Drive.createdDateTime := JToken.AsValue().AsDateTime();
+            if JDrive.Get('lastModifiedDateTime', JToken) then
+                Drive.lastModifiedDateTime := JToken.AsValue().AsDateTime();
+            if JDrive.Get('webUrl', JToken) then
+                Drive.webUrl := JToken.AsValue().AsText();
+            Drive.Insert();
+        end;
+    end;
+
+    procedure UploadFile(DriveID: Text; ParentID: Text; FolderPath: Text; FileName: Text; var Stream: InStream; var OnlineDriveItem: Record "ZM Online Drive"): Boolean
+    var
+        HttpClient: HttpClient;
+        Headers: HttpHeaders;
+        ContentHeaders: HttpHeaders;
+        RequestMessage: HttpRequestMessage;
+        RequestContent: HttpContent;
+        ResponseMessage: HttpResponseMessage;
+        JsonResponse: JsonObject;
+        IsSucces: Boolean;
+        AccessToken: Text;
+        ResponseText: Text;
+        parametros: text;
+    begin
+        if GetAccessToken(AccessToken) then begin
+            Headers := HttpClient.DefaultRequestHeaders();
+            Headers.Add('Authorization', StrSubstNo('Bearer %1', AccessToken));
+
+            RequestContent.GetHeaders(ContentHeaders);
+
+            RequestMessage.SetRequestUri(StrSubstNo(UploadUrl, DriveID, StrSubstNo('%1/%2', FolderPath, FileName)));
+            RequestMessage.Method := 'PUT';
+
+            RequestContent.WriteFrom(Stream);
+            RequestMessage.Content := RequestContent;
+
+            RequestContent.WriteFrom(parametros);
+            ContentHeaders.Remove('Content-Type');
+            ContentHeaders.Add('Content-Type', 'application/json');
+
+
+            if HttpClient.Send(RequestMessage, ResponseMessage) then
+                if ResponseMessage.IsSuccessStatusCode() then begin
+                    if ResponseMessage.Content.ReadAs(ResponseText) then begin
+                        IsSucces := true;
+                        if JsonResponse.ReadFrom(ResponseText) then
+                            ReadDriveItem(JsonResponse, DriveID, ParentID, OnlineDriveItem);
+                    end;
+                end else
+                    if ResponseMessage.Content.ReadAs(ResponseText) then
+                        JsonResponse.ReadFrom(ResponseText);
+
+            exit(IsSucces);
+        end;
+    end;
+
+    // procedure DownloadFile(AccessToken: Text; DriveID: Text; ItemID: Text; var Stream: InStream): Boolean
+    // var
+    //     TempBlob: Codeunit "Temp Blob";
+    //     OStream: OutStream;
+    //     JsonResponse: JsonObject;
+    //     Content: Text;
+    //     NewDownloadUrl: Text;
+    // begin
+    //     NewDownloadUrl := StrSubstNo(DownloadUrl, DriveID, ItemID);
+    //     if GetResponse(AccessToken, NewDownloadUrl, Stream) then
+    //         exit(true);
+    // end;
 
     local procedure HttpGet(AccessToken: Text; Url: Text; var JResponse: JsonObject): Boolean
     var
@@ -434,6 +260,70 @@ codeunit 50114 "ZM Sharepoint Functions"
         exit(IsSucces);
     end;
 
+
+    procedure GetAccessToken(var AccesToekn: Text): Boolean
+    var
+        HttpClient: HttpClient;
+        HttpContent: HttpContent;
+        HttpResponseMessage: HttpResponseMessage;
+        HttpHeaders: HttpHeaders;
+        respuestaJSON: JsonObject;
+        Url: Text;
+        formdata: Text;
+        ResponseText: Text;
+        StatusCodeErr: Label 'Status code: %1\ Description: %2 \%3', comment = 'ESP="Status code: %1\ Description: %2 \%3"';
+        ResourceUrlTxt: Label 'https://login.microsoftonline.com/', Locked = true;
+        RedirectURLTxt: Label 'http://localhost:8080/BC160/OAuthLanding.htm', Locked = true;
+        AccessTokenURLTxt: Label 'acacbbb6-3305-4b91-a580-c523b448d612/oauth2/v2.0/token', Locked = true;
+
+    begin
+        Url := ResourceUrlTxt + AccessTokenURLTxt;
+        formdata := FormData_Oauth2Token();
+        HttpContent.WriteFrom(formdata);
+        HttpContent.GetHeaders(HttpHeaders);
+        HttpHeaders.Clear();
+        HttpHeaders.Add('Content-Type', 'application/x-www-form-urlencoded');
+        HttpClient.Post(Url, HttpContent, HttpResponseMessage);
+        If not HttpResponseMessage.IsSuccessStatusCode() then begin
+            HttpResponseMessage.Content.ReadAs(formdata);
+            Error(StatusCodeErr, HttpResponseMessage.HttpStatusCode(), HttpResponseMessage.ReasonPhrase(), formdata);
+            exit(false);
+        end;
+        HttpResponseMessage.Content().ReadAs(ResponseText);
+
+        respuestaJSON.ReadFrom(ResponseText);
+
+        AccesToekn := ZummoIncFunctions.GetJSONItemFieldText(respuestaJSON.AsToken(), 'access_token');
+        exit(true);
+
+    end;
+
+    local procedure FormData_Oauth2Token() FormDataOauth2Token: Text
+    var
+        OAuthAuthorityUrlTxt: Label 'https://graph.microsoft.com/.default', Locked = true;
+        ClientID: Text;
+        ClientSecret: Text;
+        scope: Text;
+        grant_type: Text;
+        tb: TextBuilder;
+        ClientIdTxt: Label 'bbaebd13-7b64-4a79-806f-1c928c9f41c9', Locked = true;
+        ClientSecrettxt: Label 'Ar48Q~CqI~dJmbkBliS2dQNY2juzHa1yNcvo3bKa', Locked = true;
+
+    begin
+        scope := OAuthAuthorityUrlTxt;
+        grant_type := 'client_credentials';
+        ClientID := ClientIdTxt;
+        ClientSecret := ClientSecrettxt;
+        tb.AppendLine('grant_type=' + grant_type);
+        tb.AppendLine('&' + 'client_id=' + ClientID);
+        tb.AppendLine('&' + 'client_secret=' + ClientSecret);
+        tb.Append('&' + 'scope=' + scope);
+        FormDataOauth2Token := tb.ToText();
+    end;
+    /*
+     
+     
+ 
 
     ReadDrives method
     This function reads JsonArray and inserts data into "Online Drive" table.

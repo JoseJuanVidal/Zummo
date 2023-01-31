@@ -124,13 +124,22 @@ page 50055 "ZM CIM Items"
 
                 trigger OnAction()
                 var
+                    Sites: Record File temporary;
+                    ZMOnlineDrive: Record "ZM Online Drive" temporary;
                     Sharepoint: Codeunit "ZM Sharepoint Functions";
                     statuscode: Integer;
                     texto: Text;
                 begin
-                    //Sharepoint.RESTToken(statuscode, texto);
-                    texto := Sharepoint.CallGetResponseToken;
-                    message(format(statuscode) + ': ' + texto);
+                    Commit();
+                    //Sharepoint.FetchSite(Sites);
+                    //Sharepoint.FetchDrives(ZMOnlineDrive);
+                    //Sharepoint.FetchDrivesItems()
+                    Sharepoint.UploadFileOne(ZMOnlineDrive);
+                    if ZMOnlineDrive.FindFirst() then
+                        repeat
+                            message(ZMOnlineDrive.name + ': ' + ZMOnlineDrive.name + '\' + ZMOnlineDrive.id);
+                        until ZMOnlineDrive.Next() = 0;
+
                 end;
             }
         }

@@ -60,6 +60,19 @@ codeunit 50104 "Zummo Inn. IC Functions"
         exit('');
     end;
 
+    procedure GetJSONItemFieldText(Token: JsonToken; keyname: Text): Text
+    var
+        JObject: JsonObject;
+        jToken: JsonToken;
+    begin
+        JObject := Token.AsObject();
+
+        if JObject.Get(keyname, jToken) then exit(jToken.AsValue().AsText());
+
+        exit('');
+    end;
+
+
     procedure GetJSONItemFieldObject(Token: JsonToken; keyname: Text): JsonObject
     var
         JObject: JsonObject;
@@ -277,21 +290,21 @@ codeunit 50104 "Zummo Inn. IC Functions"
         SalesLine.SetRange("Document Type", Rec."Document Type");
         if SalesLine.FindSet() then
             repeat
-                    if Item.Get(SalesLine."No.") then begin
-                        if Item."Item Tracking Code" <> '' then begin
-                            ReservationEntry.Reset();
-                            ReservationEntry.SetRange("Source ID", SalesLine."Document No.");
-                            ReservationEntry.SetRange("Source Type", Database::"Sales Line");
-                            ReservationEntry.SetRange("Source Subtype", 1);
-                            ReservationEntry.SetRange("Source Ref. No.", SalesLine."Line No.");
-                            if ReservationEntry.FindSet() then
-                                    repeat
-                                        SendReservationEntryUpdateIC(ReservationEntry);
-                                    until ReservationEntry.Next() = 0;
-                        end else begin
-                            SendUpdateQtyIC(SalesLine);
-                        end;
+                if Item.Get(SalesLine."No.") then begin
+                    if Item."Item Tracking Code" <> '' then begin
+                        ReservationEntry.Reset();
+                        ReservationEntry.SetRange("Source ID", SalesLine."Document No.");
+                        ReservationEntry.SetRange("Source Type", Database::"Sales Line");
+                        ReservationEntry.SetRange("Source Subtype", 1);
+                        ReservationEntry.SetRange("Source Ref. No.", SalesLine."Line No.");
+                        if ReservationEntry.FindSet() then
+                            repeat
+                                SendReservationEntryUpdateIC(ReservationEntry);
+                            until ReservationEntry.Next() = 0;
+                    end else begin
+                        SendUpdateQtyIC(SalesLine);
                     end;
+                end;
             until SalesLine.Next() = 0;
 
         Rec."Source Purch. Order Updated" := true;

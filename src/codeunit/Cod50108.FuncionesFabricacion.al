@@ -379,7 +379,7 @@ codeunit 50108 "FuncionesFabricacion"
                     ReqExcelBuffer.SetRange("Row No.", ReqExcelBuffer."Row No.");
                     ReqExcelBuffer.SetRange("Column No.", 3);
                     if ReqExcelBuffer.FindFirst() then begin
-                        ReqExcelBuffer."Cell Value as Text" := format(Rec.Quantity);
+                        ReqExcelBuffer."Cell Value as Text" += format(Rec.Quantity);
                         ReqExcelBuffer.Modify();
                     end;
 

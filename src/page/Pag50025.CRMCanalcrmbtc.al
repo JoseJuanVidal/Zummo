@@ -61,6 +61,22 @@ page 50025 "CRM Canal_crm_btc"
                     CRMIntegrationManagement.CreateNewRecordsFromCRM(CDS);
                 end;
             }
+            action(CheckCanal)
+            {
+                ApplicationArea = all;
+                Caption = 'Check Textos auxiliares', comment = 'ESP="Comprobar Textos auxiliare"';
+                Promoted = true;
+                PromotedCategory = Process;
+                Image = CheckDuplicates;
+
+                trigger OnAction()
+                var
+                    CRMIntegrationManagement: Codeunit Integracion_crm_btc;
+                begin
+                    CRMIntegrationManagement.TextosAuxiliaresControl;
+                end;
+
+            }
         }
     }
 

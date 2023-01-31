@@ -6108,6 +6108,66 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ancho"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Prod. BOM Line - Field Width - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>createdDateTime</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field createdDateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 2589406539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>driveId</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field driveId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 1729515928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>driveType</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field driveType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 3719980320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>isFile</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field isFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 2245436958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>lastModifiedDateTime</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field lastModifiedDateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 369313232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>mimeType</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field mimeType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 2178989011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>parentId</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field parentId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 3777826559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>size</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field size - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 264396141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>webUrl</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field webUrl - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1482243775 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ZM Packing List Detail</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6718,10 +6778,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - NamedType lbloAut</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - Method 3483058520 - NamedType 1677243864" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 3118965969 - Method 3052905367 - NamedType 4081362667" size-unit="char" translate="yes" xml:space="preserve">
+          <source>424ef0a3-de4f-45e9-b562-a3792abc71ad</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method FetchDrivesItems - NamedType DriveId</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3118965969 - Method 790627987 - NamedType 1677243864" size-unit="char" translate="yes" xml:space="preserve">
           <source>Status code: %1\ Description: %2 \%3</source>
           <note from="Developer" annotates="general" priority="2">ESP="Status code: %1\ Description: %2 \%3"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method CallGetResponseToken - NamedType StatusCodeErr</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method GetAccessToken - NamedType StatusCodeErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3118965969 - Method 736698251 - NamedType 4081362667" size-unit="char" translate="yes" xml:space="preserve">
+          <source>b!Cu8nOuEVwkeC04vs82WUBO-FdIVavSVEj1wihPBO4qgAm_JGdqzGQIlTwVXIUMpK/items/012ST4ANJPBBRNWHNSIRFYOZWZBDYRYPWT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method UploadFileOne - NamedType DriveId</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3118965969 - Method 736698251 - NamedType 2393058227" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method UploadFileOne - NamedType ParentId</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3536218840 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Shipment in Zummo Inc.</source>
@@ -8462,6 +8537,11 @@
           <source>Create in Business Central</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crear en Bussiness Central"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Area Managers_crm_btc - Action CreateFromCDS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4029087944 - Action 3395221457 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check Textos auxiliares</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comprobar Textos auxiliare"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Canal_crm_btc - Action CheckCanal - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4029087944 - Action 1702811970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generate the entity from the coupled Common Data Service data.</source>

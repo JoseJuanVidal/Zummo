@@ -3537,4 +3537,60 @@ codeunit 50102 "Integracion_crm_btc"
         end;
     end;
 
+    // =============   TextosAuxiliaresControl            ====================
+    // ==  
+    // ==  Funcion para controlar los registros que se crean en CANAL, Actividad de cliente y Grupos de Clientes
+    // ==  
+    // ======================================================================================================
+
+    procedure TextosAuxiliaresControl()
+    var
+        TextosAuxiliares: Record TextosAuxiliares;
+        CRMCanal: Record "CRM Canal_crm_btc";
+        CRMActividad: Record "CRM Cliente Actividad_crm_btc";
+        CRMGrupoClientes: Record "CRM Grupo Cliente_crm_btc";
+    begin
+        // abrimos la conexión con el CRM SALES
+        Codeunit.Run(Codeunit::"CRM Integration Management");
+        // chequeamos que no se ha creado en CRM ningun registro que no este en BC
+        // CANAL
+        CRMCanal.Reset();
+        if CRMCanal.FindFirst() then
+            repeat
+                TextosAuxiliares.Reset();
+                TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+                TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::Canal);
+                if not TextosAuxiliares.FindFirst() then begin
+                    Message(CRMCanal.zum_Name);
+                    //TODO CRMCanal.Delete();
+                end;
+
+            Until CRMCanal.next() = 0;
+        // ACTIVIDAD
+        CRMActividad.Reset();
+        if CRMActividad.FindFirst() then
+            repeat
+                TextosAuxiliares.Reset();
+                TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+                TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::ClienteActividad);
+                if not TextosAuxiliares.FindFirst() then begin
+                    Message(CRMActividad.zum_Nombre);
+                    //TODO CRMActividad.Delete();
+                end;
+
+            Until CRMActividad.next() = 0;
+        // GRUPO CLIENTES
+        CRMGrupoClientes.Reset();
+        if CRMGrupoClientes.FindFirst() then
+            repeat
+                TextosAuxiliares.Reset();
+                TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+                TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::GrupoCliente);
+                if not TextosAuxiliares.FindFirst() then begin
+                    Message(CRMGrupoClientes.zum_Nombre);
+                    //TODO CRMGrupoClientes.Delete();
+                end;
+
+            Until CRMGrupoClientes.next() = 0;
+    end;
 }
