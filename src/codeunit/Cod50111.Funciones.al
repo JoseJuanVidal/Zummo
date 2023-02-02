@@ -1522,6 +1522,7 @@ codeunit 50111 "Funciones"
 
                 end;
             Until SalesLine.next() = 0;
+        SalesHeader.validate("No contemplar planificacion", true);
     end;
 
 
