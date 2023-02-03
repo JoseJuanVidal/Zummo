@@ -1340,6 +1340,7 @@ codeunit 50111 "Funciones"
         //INSERTAR LINEAS
         InsertarLineasOferta(SalesLine, SalesHeaderAux, ErrorDtos);
 
+        SalesHeader."No contemplar planificacion" := true;
         UpdateNoContemplarPlanificacion(SalesHeader);
 
         // Calcular Dto de cabecera
@@ -1522,7 +1523,6 @@ codeunit 50111 "Funciones"
 
                 end;
             Until SalesLine.next() = 0;
-        SalesHeader.validate("No contemplar planificacion", true);
     end;
 
 
