@@ -377,6 +377,70 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
     end;
 
+    procedure SendMailOnCreateQuote(var SalesHeader: Record "Sales Header")
+    var
+        SubjectLbl: Label 'Create Quote in Zummo Innovaciones';
+        BodyLbl: Label 'Sales Quote %1 generated, from purchase order %2 in Zummo INC.';
+    begin
+        SendMailIC(SubjectLbl, GetSalesHeaderBodyMail(SalesHeader));
+    end;
+
+    local procedure GetSalesHeaderBodyMail(SalesHeader: Record "Sales Header") BodyMail: text
+    var
+        Item: Record Item;
+        SalesLine: Record "Sales Line";
+
+        lblHdr1: Label '<h3 style="text-align: left; color: #3f7320;"><span style="border-bottom: 4px solid #c82828;">Oferta No.:&nbsp;</span>%1</h3>';
+        lblHdr2: Label '<p><strong>Nº %1: </strong>%2</p>';
+        lblHdr3: Label '<p><strong>Fecha: </strong>%1</p>';
+        lblBlank: Label '<p></p>';
+        lblTableHdrIni: Label '<table class="header" style="height: 54px;"><thead><tr>';
+        lblTableHdr: Label '<td><span style="color: #c82828;text-align: left;">%1</span></td>';
+        lblTableHdrFin: Label '</tr></thead>';
+        lblTableBodyIni: Label '<tbody><tr>';
+        lblTableBody: Label '<td>%1</td>';
+        lblTableBodyFin: Label '</tr></tbody>';
+        lblTableFin: Label '</table>';
+        lblTableComment: Label '<p><strong>%1</strong>%2</p>';
+    begin
+        BodyMail := '';
+        BodyMail += StrSubstNo(lblHdr1, SalesHeader."No.");
+        BodyMail += lblBlank;
+        BodyMail += StrSubstNo(lblHdr2, SalesHeader."Document Type", SalesHeader."No.");
+        BodyMail += StrSubstNo(lblHdr3, SalesHeader."Document Date");
+        BodyMail += lblBlank;
+        BodyMail += lblBlank;
+        BodyMail += lblTableHdrIni;
+        BodyMail += StrSubstNo(lblTableHdr, SalesLine.FieldCaption("No."));
+        BodyMail += StrSubstNo(lblTableHdr, SalesLine.FieldCaption(Description));
+        BodyMail += StrSubstNo(lblTableHdr, SalesLine.FieldCaption(Quantity));
+        BodyMail += StrSubstNo(lblTableHdr, SalesLine.FieldCaption("Unit Price"));
+        BodyMail += StrSubstNo(lblTableHdr, SalesLine.FieldCaption("Line Amount"));
+        BodyMail += StrSubstNo(lblTableHdr, 'Bloqueado');
+        BodyMail += lblTableHdrFin;
+
+        SalesLine.Reset();
+        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+        SalesLine.SetRange("Document No.", SalesHeader."No.");
+        if SalesLine.FindFirst() then
+            repeat
+                if Item.Get(SalesLine."No.") then;
+                BodyMail += StrSubstNo(lblTableBodyIni, SalesLine."No.");
+                BodyMail += StrSubstNo(lblTableBodyIni, SalesLine.Description);
+                BodyMail += StrSubstNo(lblTableBodyIni, SalesLine.Quantity);
+                BodyMail += StrSubstNo(lblTableBodyIni, SalesLine."Unit Price");
+                BodyMail += StrSubstNo(lblTableBodyIni, SalesLine."Line Amount");
+                BodyMail += StrSubstNo(lblTableBodyIni, Item.Blocked);
+            Until SalesLine.next() = 0;
+        BodyMail += lblTableBody;
+        BodyMail += lblTableBodyFin;
+        BodyMail += lblTableFin;
+        BodyMail += StrSubstNo(lblTableComment, 'comentario:', '');
+
+
+        exit(BodyMail);
+    end;
+
     procedure SendMailOnPostShipment(var SalesHeader: Record "Sales Header"; SalesShptHdrNo: Code[20])
     var
         SubjectLbl: Label 'Posted Sales Shipment in Zummo Inc.';
@@ -398,7 +462,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
             Clear(SMTPMail);
             SMTPMailSetup.Get();
             Recipients := SalesReceivablesSetup."Recipient Mail Notifications";
-            SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, false);
+            SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
             SMTPMail.Send();
         end;
     end;

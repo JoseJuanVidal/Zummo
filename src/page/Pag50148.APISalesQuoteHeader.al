@@ -34,11 +34,14 @@ page 50148 "API Sales Quote Header"
         Rec.Validate("Document Type", Rec."Document Type"::Quote);
         Rec.InitRecord();
         Rec.Validate("Sell-to Customer No.", SalesReceivablesSetup."Customer Quote IC");
-        Rec."Source Purch. Order No" := SourcePurchOrder;
+        Rec."External Document No." := copystr(SourcePurchOrder, 1, MaxStrLen(Rec."External Document No."));
+        Rec."Source Purch. Order No" := copystr(SourcePurchOrder, 1, MaxStrLen(Rec."Source Purch. Order No"));
         Rec."Quote Valid Until Date" := CalcDate('+3M', WorkDate());
-        Rec.Modify()
+        Rec.Modify();
+
     end;
 
     var
         SourcePurchOrder: Code[20];
+        ZummoINCFunctions: Codeunit "Zummo Inn. IC Functions";
 }
