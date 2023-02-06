@@ -4973,6 +4973,66 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>createdDateTime</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field createdDateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 2589406539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>driveId</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field driveId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 1729515928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>driveType</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field driveType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 3719980320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>isFile</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field isFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 2245436958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>lastModifiedDateTime</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field lastModifiedDateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 369313232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>mimeType</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field mimeType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 2178989011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>parentId</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field parentId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 3777826559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>size</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field size - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2958124392 - Field 264396141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>webUrl</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field webUrl - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1482243775 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ZM Packing List Detail</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -5033,6 +5093,96 @@
           <source>Nominas %1 %2</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3118965969 - NamedType 2270621111" size-unit="char" translate="yes" xml:space="preserve">
+          <source>sharepoint</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - NamedType lbloAut</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3118965969 - Method 3052905367 - NamedType 4081362667" size-unit="char" translate="yes" xml:space="preserve">
+          <source>424ef0a3-de4f-45e9-b562-a3792abc71ad</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method FetchDrivesItems - NamedType DriveId</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3118965969 - Method 736698251 - NamedType 4081362667" size-unit="char" translate="yes" xml:space="preserve">
+          <source>b!Cu8nOuEVwkeC04vs82WUBO-FdIVavSVEj1wihPBO4qgAm_JGdqzGQIlTwVXIUMpK/items/012ST4ANJPBBRNWHNSIRFYOZWZBDYRYPWT</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method UploadFileOne - NamedType DriveId</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3118965969 - Method 736698251 - NamedType 2393058227" size-unit="char" translate="yes" xml:space="preserve">
+          <source/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method UploadFileOne - NamedType ParentId</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 2169472807" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;h3 style="text-align: left; color: #3f7320;"&gt;&lt;span style="border-bottom: 4px solid #c82828;"&gt;Oferta No.:&amp;nbsp;&lt;/span&gt;%1&lt;/h3&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblHdr1</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 4082562658" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Nº %1: &lt;/strong&gt;%2&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblHdr2</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 3444866041" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Fecha: &lt;/strong&gt;%1&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblHdr3</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 558961548" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblBlank</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 3647648576" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;table class="header" style="height: 54px;"&gt;&lt;thead&gt;&lt;tr&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableHdrIni</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 41554086" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;td&gt;&lt;span style="color: #c82828;text-align: left;"&gt;%1&lt;/span&gt;&lt;/td&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableHdr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 1125410557" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;/tr&gt;&lt;/thead&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableHdrFin</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 2922468422" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;tbody&gt;&lt;tr&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableBodyIni</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 188681008" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;td&gt;%1&lt;/td&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableBody</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 1824635447" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;/tr&gt;&lt;/tbody&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableBodyFin</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 3443878247" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;/table&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableFin</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 3103272241" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;%1&lt;/strong&gt;%2&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableComment</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 833899790 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Quote in Zummo Innovaciones</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailOnCreateQuote - NamedType SubjectLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 833899790 - NamedType 1908025102" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Quote %1 generated, from purchase order %2 in Zummo INC.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailOnCreateQuote - NamedType BodyLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3536218840 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Shipment in Zummo Inc.</source>

@@ -2,7 +2,6 @@ page 50148 "API Sales Quote Header"
 {
     PageType = Card;
     SourceTable = "Sales Header";
-
     layout
     {
         area(Content)
@@ -38,7 +37,6 @@ page 50148 "API Sales Quote Header"
         Rec."Source Purch. Order No" := copystr(SourcePurchOrder, 1, MaxStrLen(Rec."Source Purch. Order No"));
         Rec."Quote Valid Until Date" := CalcDate('+3M', WorkDate());
         Rec.Modify();
-
     end;
 
     var
