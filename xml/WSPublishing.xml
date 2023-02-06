@@ -61,6 +61,12 @@
             <ObjectID>17202</ObjectID>
             <Published>true</Published>
         </TenantWebService>
+          <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>ItemList</ServiceName>
+            <ObjectID>17203</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
     </TenantWebServiceCollection>
 </ExportedData>
 
