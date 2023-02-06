@@ -1,4 +1,3 @@
-
 page 17200 "API FinSales Quote Header"
 {
     PageType = Card;
