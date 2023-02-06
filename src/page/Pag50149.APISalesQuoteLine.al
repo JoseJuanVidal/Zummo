@@ -31,13 +31,7 @@ page 50149 "API Sales Quote Line"
                     var
                         Item: Record Item;
                     begin
-                        if not Item.Get(ItemNo) then begin
-                            Rec.Validate(Type, Rec.Type::" ");
-                            Rec.Validate(Description, ItemDescription);
-                        end else begin
-                            Rec.Validate(Type, Rec.Type::Item);
-                            Rec.Validate("No.", ItemNo);
-                        end;
+                        ITEMOnValidate;
                     end;
                 }
 
@@ -71,6 +65,26 @@ page 50149 "API Sales Quote Line"
         Rec.Validate("Document Type", Rec."Document Type"::Quote);
         Rec.Validate("Line No.", LineNo);
         Rec.Validate(Type, SalesLine.Type::Item);
+    end;
+
+    local procedure ITEMOnValidate()
+    var
+        Item: Record Item;
+    begin
+        if not Item.Get(ItemNo) then begin
+            Rec.Validate(Type, Rec.Type::" ");
+            Rec.Validate(Description, ItemDescription);
+        end else begin
+            // Aqui controlamos si el producto está bloqueado
+            if Item.Blocked then begin
+                Rec.Validate(Type, Rec.Type::Item);
+                Rec."No." := ItemNo;
+                Rec.Description := Item.Description;
+            end else begin
+                Rec.Validate(Type, Rec.Type::Item);
+                Rec.Validate("No.", ItemNo);
+            end;
+        end;
     end;
 
     var

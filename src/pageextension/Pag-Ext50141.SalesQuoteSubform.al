@@ -2,6 +2,14 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
 {
     layout
     {
+        modify("No.")
+        {
+            StyleExpr = StyleExpBloqueado;
+        }
+        modify(Description)
+        {
+            StyleExpr = StyleExpBloqueado;
+        }
 
         addafter("Line Amount")
         {
@@ -68,6 +76,7 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
                 ApplicationArea = All;
                 Editable = false;
                 Caption = 'Blocked', comment = 'ESP="Bloqueado"';
+                StyleExpr = StyleExpBloqueado;
             }
         }
     }
@@ -76,6 +85,7 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
         Comprometido: Decimal;
         Disponible: Decimal;
         txtBloqueado: Text;
+        StyleExpBloqueado: text;
 
     trigger OnAfterGetRecord()
     var
@@ -83,10 +93,11 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
         cduSalesEvents: Codeunit SalesEvents;
     begin
         txtBloqueado := '';
+        StyleExpBloqueado := '';
 
         if type = Type::Item then begin
             clear(cduSalesEvents);
-            txtBloqueado := cduSalesEvents.GetTipoBloqueoProducto("No.");
+            txtBloqueado := cduSalesEvents.GetTipoBloqueoProducto("No.", StyleExpBloqueado);
         end;
 
         EnStock := 0;

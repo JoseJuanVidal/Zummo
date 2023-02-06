@@ -6819,12 +6819,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblBlank</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 3647648576" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;table class="header" style="height: 54px;width: 1000px;"&gt;&lt;thead&gt;&lt;tr&gt;</source>
+          <source>&lt;table class="header" style="height: 54px;width: 1000px;"&gt;&lt;thead&gt;&lt;tr style="background-color: #999999;"&gt;</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableHdrIni</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 41554086" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;td&gt;&lt;span style="width: %1px;"color: #c82828;text-align: left;"&gt;%2&lt;strong&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;</source>
+          <source>&lt;td&gt;&lt;strong&gt;&lt;span style="width: %1px;"color: #c82828;text-align: left;"&gt;%2&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableHdr</note>
         </trans-unit>
@@ -6839,17 +6839,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableBodyIni</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 3523420305" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;td&gt;&lt;span style="text-align: left;"&gt;%1&lt;/span&gt;&lt;/td&gt;</source>
+          <source>&lt;td style="text-align: left;"&gt;%2%1%3&lt;/td&gt;</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableBodyLeft</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 3853003328" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;td&gt;&lt;span style="text-right: left;"&gt;%1&lt;/span&gt;&lt;/td&gt;</source>
+          <source>&lt;td style="text-align: right;"&gt;%2%1%3&lt;/td&gt;</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableBodyright</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 1681637937" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;td&gt;&lt;span style="text-center: left;"&gt;%1&lt;/span&gt;&lt;/td&gt;</source>
+          <source>&lt;td style="text-align: center;"&gt;%2%1%3&lt;/td&gt;</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableBodycenter</note>
         </trans-unit>
@@ -6867,6 +6867,16 @@
           <source>&lt;p&gt;&lt;strong&gt;%1&lt;/strong&gt;%2&lt;/p&gt;</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType lblTableComment</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 510895644" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;span style="color: #ff0000;"&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType Rojo</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 2340767555" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;/span&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType RojoFin</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 833899790 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create Quote in Zummo Innovaciones</source>

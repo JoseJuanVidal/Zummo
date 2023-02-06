@@ -2,6 +2,14 @@ pageextension 50113 "SalesInvoiceSubform" extends "Sales Invoice Subform"
 {
     layout
     {
+        modify("No.")
+        {
+            StyleExpr = StyleExpBloqueado;
+        }
+        modify(Description)
+        {
+            StyleExpr = StyleExpBloqueado;
+        }
         addafter("Line Amount")
         {
             //231219 S19/01434 Mostar iva en compras y ventas
@@ -32,6 +40,7 @@ pageextension 50113 "SalesInvoiceSubform" extends "Sales Invoice Subform"
                 ApplicationArea = All;
                 Editable = false;
                 Caption = 'Blocked', comment = 'ESP="Bloqueado"';
+                StyleExpr = StyleExpBloqueado;
             }
         }
     }
@@ -50,15 +59,17 @@ pageextension 50113 "SalesInvoiceSubform" extends "Sales Invoice Subform"
     trigger OnAfterGetRecord()
     var
         cduSalesEvents: Codeunit SalesEvents;
+
     begin
         txtBloqueado := '';
 
         if type = Type::Item then begin
             clear(cduSalesEvents);
-            txtBloqueado := cduSalesEvents.GetTipoBloqueoProducto("No.");
+            txtBloqueado := cduSalesEvents.GetTipoBloqueoProducto("No.", StyleExpBloqueado);
         end;
     end;
 
     var
         txtBloqueado: Text;
+        StyleExpBloqueado: Text;
 }

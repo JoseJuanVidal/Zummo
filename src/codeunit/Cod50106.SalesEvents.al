@@ -1147,13 +1147,15 @@ codeunit 50106 "SalesEvents"
         PurchRcptLine.TotalImponibleLinea := PurchRcptLine.BaseImponibleLinea + (PurchRcptLine.BaseImponibleLinea * PurchLine."VAT %" / 100);
     end;
 
-    procedure GetTipoBloqueoProducto(pCodProducto: Code[20]): Text
+    procedure GetTipoBloqueoProducto(pCodProducto: Code[20]; var StyleExpBloqueado: Text): Text
     var
         recItem: Record Item;
     begin
         if not recItem.get(pCodProducto) then
             exit('');
 
+        if recItem.Blocked or recItem."Sales Blocked" then
+            StyleExpBloqueado := 'Unfavorable';
         if recItem.Blocked then
             Exit('Bloqueado');
 

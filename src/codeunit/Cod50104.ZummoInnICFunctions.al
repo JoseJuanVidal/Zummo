@@ -425,16 +425,20 @@ codeunit 50104 "Zummo Inn. IC Functions"
         lblHdr2: Label '<p><strong>Nº %1: </strong>%2</p>';
         lblHdr3: Label '<p><strong>Fecha: </strong>%1</p>';
         lblBlank: Label '<p></p>';
-        lblTableHdrIni: Label '<table class="header" style="height: 54px;width: 1000px;"><thead><tr>';
-        lblTableHdr: Label '<td><span style="width: %1px;"color: #c82828;text-align: left;">%2<strong></span></strong></td>';
+        lblTableHdrIni: Label '<table class="header" style="height: 54px;width: 1000px;"><thead><tr style="background-color: #999999;">';
+        lblTableHdr: Label '<td><strong><span style="width: %1px;"color: #c82828;text-align: left;">%2</span></strong></td>';
         lblTableHdrFin: Label '</tr></thead>';
         lblTableBodyIni: Label '<tbody><tr>';
-        lblTableBodyLeft: Label '<td><span style="text-align: left;">%1</span></td>';
-        lblTableBodyright: Label '<td><span style="text-right: left;">%1</span></td>';
-        lblTableBodycenter: Label '<td><span style="text-center: left;">%1</span></td>';
+        lblTableBodyLeft: Label '<td style="text-align: left;">%2%1%3</td>';
+        lblTableBodyright: Label '<td style="text-align: right;">%2%1%3</td>';
+        lblTableBodycenter: Label '<td style="text-align: center;">%2%1%3</td>';
         lblTableBodyFin: Label '</tr></tbody>';
         lblTableFin: Label '</table>';
         lblTableComment: Label '<p><strong>%1</strong>%2</p>';
+        Rojo: Label '<span style="color: #ff0000;">';
+        RojoFin: Label '</span>';
+        color: text;
+        Colorfin: text;
     begin
         BodyMail := '';
         BodyMail += StrSubstNo(lblHdr1, SalesHeader."Document Type", SalesHeader."No.");
@@ -457,14 +461,20 @@ codeunit 50104 "Zummo Inn. IC Functions"
         SalesLine.SetRange("Document No.", SalesHeader."No.");
         if SalesLine.FindFirst() then
             repeat
+                color := '';
+                Colorfin := '';
                 if Item.Get(SalesLine."No.") then;
+                if item.Blocked or Item."Sales Blocked" then begin
+                    color := Rojo;
+                    Colorfin := RojoFin;
+                end;
                 BodyMail += lblTableBodyIni;
-                BodyMail += StrSubstNo(lblTableBodyLeft, SalesLine."No.");
-                BodyMail += StrSubstNo(lblTableBodyleft, SalesLine.Description);
-                BodyMail += StrSubstNo(lblTableBodyright, SalesLine.Quantity);
-                BodyMail += StrSubstNo(lblTableBodyright, SalesLine."Unit Price");
-                BodyMail += StrSubstNo(lblTableBodyright, SalesLine."Line Amount");
-                BodyMail += StrSubstNo(lblTableBodycenter, Item.Blocked);
+                BodyMail += StrSubstNo(lblTableBodyLeft, SalesLine."No.", color, Colorfin);
+                BodyMail += StrSubstNo(lblTableBodyleft, SalesLine.Description, color, Colorfin);
+                BodyMail += StrSubstNo(lblTableBodyright, SalesLine.Quantity, color, Colorfin);
+                BodyMail += StrSubstNo(lblTableBodyright, SalesLine."Unit Price", color, Colorfin);
+                BodyMail += StrSubstNo(lblTableBodyright, SalesLine."Line Amount", color, Colorfin);
+                BodyMail += StrSubstNo(lblTableBodycenter, Item.Blocked or Item."Sales Blocked", color, Colorfin);
                 BodyMail += lblTableBodyFin;
             Until SalesLine.next() = 0;
         BodyMail += lblTableFin;

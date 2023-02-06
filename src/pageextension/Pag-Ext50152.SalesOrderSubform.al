@@ -45,6 +45,7 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
                 ApplicationArea = All;
                 Editable = false;
                 Caption = 'Blocked', comment = 'ESP="Bloqueado"';
+                StyleExpr = StyleExpBloqueado;
             }
         }
 
@@ -155,6 +156,7 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
         Comprometido: Decimal;
         Disponible: Decimal;
         txtBloqueado: Text;
+        StyleExpBloqueado: Text;
 
     trigger OnAfterGetRecord()
     var
@@ -165,7 +167,7 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
 
         if type = Type::Item then begin
             clear(cduSalesEvents);
-            txtBloqueado := cduSalesEvents.GetTipoBloqueoProducto("No.");
+            txtBloqueado := cduSalesEvents.GetTipoBloqueoProducto("No.", StyleExpBloqueado);
         end;
 
         EnStock := 0;

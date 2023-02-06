@@ -2,6 +2,14 @@ pageextension 50181 "ServiceLines" extends "Service Lines"
 {
     layout
     {
+        modify("No.")
+        {
+            StyleExpr = StyleExpBloqueado;
+        }
+        modify(Description)
+        {
+            StyleExpr = StyleExpBloqueado;
+        }
         addbefore("Service Item No.")
 
         {
@@ -20,6 +28,7 @@ pageextension 50181 "ServiceLines" extends "Service Lines"
                 ApplicationArea = All;
                 Editable = false;
                 Caption = 'Blocked', comment = 'ESP="Bloqueado"';
+                StyleExpr = StyleExpBloqueado;
             }
         }
     }
@@ -32,10 +41,11 @@ pageextension 50181 "ServiceLines" extends "Service Lines"
 
         if type = Type::Item then begin
             clear(cduSalesEvents);
-            txtBloqueado := cduSalesEvents.GetTipoBloqueoProducto("No.");
+            txtBloqueado := cduSalesEvents.GetTipoBloqueoProducto("No.", StyleExpBloqueado);
         end;
     end;
 
     var
         txtBloqueado: Text;
+        StyleExpBloqueado: Text;
 }
