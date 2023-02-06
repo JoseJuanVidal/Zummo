@@ -43,6 +43,24 @@
             <ObjectID>17450</ObjectID>
             <Published>true</Published>
         </TenantWebService>
+          <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>FinSalesQuoteHeader</ServiceName>
+            <ObjectID>17200</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+          <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>SalesOrderShipment</ServiceName>
+            <ObjectID>17201</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+          <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>SalesOrderShipmentLine</ServiceName>
+            <ObjectID>17202</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
     </TenantWebServiceCollection>
 </ExportedData>
 
