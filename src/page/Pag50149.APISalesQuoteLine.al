@@ -39,6 +39,22 @@ page 50149 "API Sales Quote Line"
                 {
                     ApplicationArea = All;
                 }
+                field("Unit Price"; "Unit Price")
+                {
+                    ApplicationArea = all;
+                }
+                field("Source Purch. Order No"; "Source Purch. Order No")
+                {
+                    ApplicationArea = all;
+                }
+                field("Source Purch Order Line"; "Source Purch Order Line")
+                {
+                    ApplicationArea = all;
+                }
+                field("Source Purch Order Price"; "Source Purch Order Price")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

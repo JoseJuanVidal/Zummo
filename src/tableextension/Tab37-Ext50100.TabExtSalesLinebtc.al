@@ -192,6 +192,23 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
                 "No." = field("Document No.")
             ));
         }
+        //#region Integracion Intercompany
+        field(50300; "Source Purch. Order No"; Code[20])
+        {
+            Caption = 'Source Purch. Order No', Comment = 'Nº Ped. Compra origen';
+            DataClassification = CustomerContent;
+        }
+        field(50301; "Source Purch Order Line"; Integer)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Source Purch. Order Line', Comment = 'Nº Linea Ped. Compra origen';
+        }
+        field(50305; "Source Purch Order Price"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Source Purch. Order Price', Comment = 'Precio Ped. Compra origen';
+        }
+        //-region Integracion Intercompany
         field(50912; "No contemplar planificacion"; Boolean)
         {
             DataClassification = CustomerContent;
