@@ -28,7 +28,7 @@ page 50158 "ZM Item Documents"
                     ApplicationArea = all;
                     Visible = false;
                 }
-                field(Description; Description)
+                field(Description; txtDescription)
                 {
                     ApplicationArea = all;
 
@@ -54,6 +54,7 @@ page 50158 "ZM Item Documents"
     trigger OnAfterGetRecord()
     begin
         txtComentario := Rec.GetComentario();
+        txtDescription := ExtractFileNameFromPath(txtComentario);
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
@@ -85,5 +86,13 @@ page 50158 "ZM Item Documents"
 
     var
         txtComentario: Text;
+        txtDescription: text;
+
+    local procedure ExtractFileNameFromPath(PathAndFileTxt: Text) FileTxt: Text
+    begin
+        FileTxt := PathAndFileTxt;
+        WHILE STRPOS(FileTxt, '\') <> 0 DO
+            FileTxt := COPYSTR(FileTxt, 1 + STRPOS(FileTxt, '\'));
+    end;
 
 }
