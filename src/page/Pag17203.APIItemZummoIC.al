@@ -16,36 +16,15 @@ page 17203 "API Item Zummo IC"
                 field("Sales Blocked"; "Sales Blocked") { ApplicationArea = all; }
                 field("Block Reason"; "Block Reason") { ApplicationArea = all; }
                 field("Item Category Code"; "Item Category Code") { ApplicationArea = all; }
+                field(Familia; selFamilia_btc) { ApplicationArea = all; }
+                field(desFamilia_btc; desFamilia_btc) { ApplicationArea = all; }
+                field(ClasVtas_btc; selClasVtas_btc) { ApplicationArea = all; }
+                field(desClasVtas_btc; desClasVtas_btc) { ApplicationArea = all; }
+                field(selGama_btc; selGama_btc) { ApplicationArea = all; }
+                field(desGama_btc; desGama_btc) { ApplicationArea = all; }
+                field(selLineaEconomica_btc; selLineaEconomica_btc) { ApplicationArea = all; }
+                field(desLineaEconomica_btc; desLineaEconomica_btc) { ApplicationArea = all; }
             }
         }
-
     }
-
-    local procedure InsertData()
-    var
-        SalesReceivablesSetup: Record "Sales & Receivables Setup";
-    begin
-        SalesHeader.Reset();
-        SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Quote);
-        if SourcePurchOrder = '' then
-            SalesHeader.SetRange("No.", DocumentNo)
-        else
-            SalesHeader.SetRange("Source Purch. Order No", SourcePurchOrder);
-        if SalesHeader.FindFirst() then begin
-            DocumentNo := SalesHeader."No.";
-            SourcePurchOrder := SalesHeader."Source Purch. Order No";
-
-            // ZummoINCFunctions.SendMailOnCreateQuote(SalesHeader);
-
-            ZummoINCFunctions.TaskSendMailOnCreateQuote(SalesHeader);
-
-        end;
-
-    end;
-
-    var
-        SalesHeader: Record "Sales Header";
-        SourcePurchOrder: Code[20];
-        DocumentNo: Code[20];
-        ZummoINCFunctions: Codeunit "Zummo Inn. IC Functions";
 }

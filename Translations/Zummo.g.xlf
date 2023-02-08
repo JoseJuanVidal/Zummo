@@ -123,6 +123,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Comentario - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4166419010 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4166419010 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Id</source>
           <note from="Developer" annotates="general" priority="2">ESP="Id"</note>
