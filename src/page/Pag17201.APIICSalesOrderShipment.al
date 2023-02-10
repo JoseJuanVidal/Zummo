@@ -1,20 +1,20 @@
-page 17202 "API Sales Order Shipment Line"
+page 17201 "API IC Sales Order Shipment"
 {
     PageType = List;
-    SourceTable = "Sales Shipment Line";
+    SourceTable = "Sales Shipment Header";
     Editable = false;
 
     layout
     {
         area(Content)
         {
-            repeater(GroupName)
+            repeater(General)
             {
-                field("Document No."; "Document No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = all;
                 }
-                field("External Document No."; ExternalDocumentNo)
+                field("External Document No."; "External Document No.")
                 {
                     ApplicationArea = all;
                 }
@@ -26,42 +26,47 @@ page 17202 "API Sales Order Shipment Line"
                 {
                     ApplicationArea = all;
                 }
+                field("Sell-to Customer Name"; "Sell-to Customer Name")
+                {
+                    ApplicationArea = all;
+                }
                 field("Order No."; "Order No.")
                 {
                     ApplicationArea = all;
                 }
-                field("Order Line No."; "Order Line No.")
+                field("Currency Code"; "Currency Code")
                 {
                     ApplicationArea = all;
                 }
-                field(Type; Type)
+                field("Location Code"; "Location Code")
                 {
                     ApplicationArea = all;
                 }
-                field("No."; "No.")
+                field("Document Date"; "Document Date")
                 {
                     ApplicationArea = all;
                 }
-                field(Description; Description)
+                field("Ship-to Code"; "Ship-to Code")
                 {
                     ApplicationArea = all;
                 }
-                field(Quantity; Quantity)
+                field("Requested Delivery Date"; "Requested Delivery Date")
                 {
                     ApplicationArea = all;
                 }
-                field("Unit Price"; "Unit Price")
+                field("Shipment Date"; "Shipment Date")
                 {
                     ApplicationArea = all;
                 }
-                field("VAT Base Amount"; "VAT Base Amount")
+                field("Salesperson Code"; "Salesperson Code")
+                {
+                    ApplicationArea = all;
+                }
+                field("Sell-to Contact"; "Sell-to Contact")
                 {
                     ApplicationArea = all;
                 }
             }
         }
     }
-
-    var
-        ExternalDocumentNo: text;
 }
