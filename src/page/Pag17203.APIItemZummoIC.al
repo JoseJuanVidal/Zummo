@@ -3,7 +3,7 @@ page 17203 "API Item Zummo IC"
     PageType = List;
     SourceTable = Item;
     Editable = false;
-
+    SourceTableView = where(Type = Filter(Inventory | "Non-Inventory"), "Item Category Code" = filter(<> ''));
     layout
     {
         area(Content)
@@ -24,14 +24,25 @@ page 17203 "API Item Zummo IC"
                 field(desGama_btc; desGama_btc) { ApplicationArea = all; }
                 field(selLineaEconomica_btc; selLineaEconomica_btc) { ApplicationArea = all; }
                 field(desLineaEconomica_btc; desLineaEconomica_btc) { ApplicationArea = all; }
-                field(UnitPrice; UnitPrice) { ApplicationArea = all; }
+                field(UnitCost; UnitCost)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Unit Cost', comment = 'ESP="Coste unitario"';
+                }
+                field(EndDate; EndDate)
+                {
+                    ApplicationArea = all;
+                    Caption = 'End Date', comment = 'ESP="Fecha Fin"';
+                }
             }
         }
     }
 
     trigger OnAfterGetRecord()
     begin
-        UnitPrice := 0;
+        UnitCost := 0;
+        EndDate := 0D;
+
         CalcSalesPrice();
     end;
 
@@ -40,7 +51,8 @@ page 17203 "API Item Zummo IC"
         Customer: Record Customer;
         SalesPrice: Record "Sales Price" temporary;
         PriceCalcMgt: Codeunit "Sales Price Calc. Mgt.";
-        UnitPrice: Decimal;
+        UnitCost: Decimal;
+        EndDate: Date;
 
     local procedure CalcSalesPrice()
     begin
@@ -52,8 +64,8 @@ page 17203 "API Item Zummo IC"
 
             IF SalesPrice.FindSet() THEN
                 REPEAT
-                    IF (UnitPrice = 0) OR (UnitPrice > SalesPrice."Unit Price") then
-                        UnitPrice := SalesPrice."Unit Price";
+                    IF (UnitCost = 0) OR (UnitCost > SalesPrice."Unit Price") then
+                        UnitCost := SalesPrice."Unit Price";
                 UNTIL SalesPrice.NEXT = 0;
 
         end;

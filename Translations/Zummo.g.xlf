@@ -8353,6 +8353,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Log de Sincronización"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Actividad Cliente List - Action ShowLog - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3357187777 - Control 845401037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page API Item Zummo IC - Control EndDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357187777 - Control 2988376383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Cost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste unitario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page API Item Zummo IC - Control UnitCost - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 232174250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Area Managers</source>
           <note from="Developer" annotates="general" priority="2">ESP="Area Managers"</note>

@@ -58,6 +58,14 @@ page 17202 "API IC Sales Order Ship Line"
                 {
                     ApplicationArea = all;
                 }
+                field("Location Code"; "Location Code")
+                {
+                    ApplicationArea = all;
+                }
+                field("Unit of Measure Code"; "Unit of Measure Code")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }
