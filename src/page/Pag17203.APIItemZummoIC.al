@@ -24,7 +24,38 @@ page 17203 "API Item Zummo IC"
                 field(desGama_btc; desGama_btc) { ApplicationArea = all; }
                 field(selLineaEconomica_btc; selLineaEconomica_btc) { ApplicationArea = all; }
                 field(desLineaEconomica_btc; desLineaEconomica_btc) { ApplicationArea = all; }
+                field(UnitPrice; UnitPrice) { ApplicationArea = all; }
             }
         }
     }
+
+    trigger OnAfterGetRecord()
+    begin
+        UnitPrice := 0;
+        CalcSalesPrice();
+    end;
+
+    var
+        SalesReceivablesSetup: Record "Sales & Receivables Setup";
+        Customer: Record Customer;
+        SalesPrice: Record "Sales Price" temporary;
+        PriceCalcMgt: Codeunit "Sales Price Calc. Mgt.";
+        UnitPrice: Decimal;
+
+    local procedure CalcSalesPrice()
+    begin
+        SalesReceivablesSetup.Get;
+        if Customer.Get(SalesReceivablesSetup."Customer Quote IC") then begin
+
+            PriceCalcMgt.FindSalesPrice(SalesPrice, SalesReceivablesSetup."Customer Quote IC", '', Customer."Customer Price Group", '', Rec."No.", '',
+                    Rec."Base Unit of Measure", Customer."Currency Code", WorkDate(), false);
+
+            IF SalesPrice.FindSet() THEN
+                REPEAT
+                    IF (UnitPrice = 0) OR (UnitPrice > SalesPrice."Unit Price") then
+                        UnitPrice := SalesPrice."Unit Price";
+                UNTIL SalesPrice.NEXT = 0;
+
+        end;
+    end;
 }
