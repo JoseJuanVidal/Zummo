@@ -1,4 +1,4 @@
-page 17201 "API Sales Order Shipment"
+page 17201 "API IC Sales Order Shipment"
 {
     PageType = List;
     SourceTable = "Sales Shipment Header";
