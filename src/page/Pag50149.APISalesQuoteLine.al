@@ -26,6 +26,11 @@ page 50149 "API Sales Quote Line"
                 field(ItemDescription; ItemDescription)
                 {
                     ApplicationArea = All;
+                }
+
+                field(Quantity; dQuantity)
+                {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     var
@@ -33,11 +38,6 @@ page 50149 "API Sales Quote Line"
                     begin
                         ITEMOnValidate;
                     end;
-                }
-
-                field(Quantity; Rec.Quantity)
-                {
-                    ApplicationArea = All;
                 }
                 field("Unit Price"; "Unit Price")
                 {
@@ -96,16 +96,21 @@ page 50149 "API Sales Quote Line"
                 Rec.Validate(Type, Rec.Type::Item);
                 Rec."No." := ItemNo;
                 Rec.Description := Item.Description;
+                Rec.Quantity := dQuantity;
+                Rec."Quantity (Base)" := dQuantity;
+                Rec."Outstanding Quantity" := dQuantity;
+                Rec."Outstanding Qty. (Base)" := dQuantity;
             end else begin
                 Rec.Validate(Type, Rec.Type::Item);
                 Rec.Validate("No.", ItemNo);
+                Rec.Validate(Quantity, dQuantity);
             end;
         end;
     end;
 
     var
         ItemNo: Code[20];
-        Quantity: Decimal;
+        dQuantity: Decimal;
         DocumentNo: Code[20];
         ItemDescription: Text;
 }
