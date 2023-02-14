@@ -236,6 +236,8 @@ page 50156 "ZM Production Bom Maintenance"
             comment = 'ESP="Se van a actualizar %1 registros con los datos en la lista de materiales.\%2 %3\%4 %5\¿Desea continuar?"';
         lblConfirmReplace: Label 'We will replace %1 records with \%2 %3 for \%4 %5\¿Do you want to continue?',
             comment = 'ESP="Se van a reemplazar %1 registros con \%2 %3 por %4 %5\¿Desea continuar?"';
+        lblConfirmDelete: Label 'We will delete Item %2 %3 of %1 records\¿Do you want to continue?',
+            comment = 'ESP="Se van a eliminar el producto %2 %3 de %1 registros\¿Desea continuar?"';
         lblConfirmChangesQtyper: Label 'Quantity per', comment = 'ESP="Cantidad por"';
         lblConfirmChangesQtyadd: Label 'Quantity add', comment = 'ESP="Cantidad añadir"';
         lblConfirmChangesUnit: Label 'Unit of measure', comment = 'ESP="Unidad de medida"';
@@ -304,12 +306,11 @@ page 50156 "ZM Production Bom Maintenance"
                 end;
             Task::Replace:
                 begin
-                    ShowChangeItem := true;
                     ReplaceItemLMProd();
                 end;
             Task::Delete:
                 begin
-                    ShowChangeItem := true;
+                    DeleteItemLMProd();
                 end;
 
         end;
@@ -353,6 +354,17 @@ page 50156 "ZM Production Bom Maintenance"
             exit;
 
         Funciones.ReplaceLMProdItem(ItemTracingBuffer, REc."Item No. to be replaced");
+    end;
+
+    local procedure DeleteItemLMProd()
+    var
+        ItemTracingBuffer: record "Item Tracing Buffer" temporary;
+    begin
+        clear(Funciones);
+        CurrPage.Lines.Page.GetSelectionRecord(ItemTracingBuffer);
+        if not Confirm(lblConfirmDelete, false, ItemTracingBuffer.Count, Rec."New Item No.", Rec."New Item Description") then
+            exit;
+
     end;
 
 }

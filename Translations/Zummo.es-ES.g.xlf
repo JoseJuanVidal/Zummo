@@ -11761,6 +11761,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmChangesUnit</note>
           <target>Unidad de medida</target>
         </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 553645563" size-unit="char" translate="yes" xml:space="preserve">
+          <source>We will delete Item %2 %3 of %1 records\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se van a eliminar el producto %2 %3 de %1 registros\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmDelete</note>
+          <target>Se van a eliminar el producto %2 %3 de %1 registros\¿Desea continuar?</target>
+        </trans-unit>
         <trans-unit id="Page 1493879539 - NamedType 1533938200" size-unit="char" translate="yes" xml:space="preserve">
           <source>We will replace %1 records with \%2 %3 for \%4 %5\¿Do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Se van a reemplazar %1 registros con \%2 %3 por %4 %5\¿Desea continuar?"</note>
