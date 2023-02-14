@@ -2236,5 +2236,53 @@ codeunit 50111 "Funciones"
 
         Commit();
     end;
+
+    // =============     CAMBIO DE PRODUCTOS EN LISTA DE MATERIALES          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+
+    procedure UpdateBomDades(VAR ItemTracingBuffer: record "Item Tracing Buffer" temporary; QtyPer: Decimal; QtyPerAdded: Decimal; UnitofMeasure: Code[10]; RoutingLinkCode: code[10])
+    var
+        ProductionBomLine: Record "Production BOM Line";
+        Confirmparam: text;
+        Qty: Decimal;
+        LineNo: Integer;
+    begin
+
+        if ItemTracingBuffer.FindFirst() then
+            repeat
+                ProductionBomLine.Reset();
+                ProductionBomLine.SetRange("Production BOM No.", ItemTracingBuffer."Item No.");
+                ProductionBomLine.SetRange("Version Code", ItemTracingBuffer."Source No.");
+                ProductionBomLine.SetRange("Line No.", ItemTracingBuffer.Level);
+                if ProductionBomLine.FindFirst() then begin
+                    // actualizamos los datos con los cambios
+                    if QtyPer <> 0 then
+                        ProductionBomLine."Quantity per" := QtyPer;
+                    if QtyPerAdded <> 0 then
+                        if (ProductionBomLine."Quantity per" + QtyPerAdded) > 0 then
+                            ProductionBomLine."Quantity per" += QtyPerAdded;
+                    if UnitofMeasure <> '' then
+                        ProductionBomLine."Unit of Measure Code" := UnitofMeasure;
+                    if RoutingLinkCode <> '' then
+                        ProductionBomLine."Routing Link Code" := RoutingLinkCode;
+                end;
+                ProductionBomLine.Modify();
+
+            Until ItemTracingBuffer.next() = 0;
+
+    end;
+
+    // Cambiar un producto por otro, se pasa la lista de registros seleccionados
+    // el producto viejo y el nuevo prducto        
+    procedure ReplaceLMProdItem(var ItemTracingBuffer: record "Item Tracing Buffer"; ItemNoChange: code[20])
+    var
+        myInt: Integer;
+    begin
+
+    end;
+
 }
 

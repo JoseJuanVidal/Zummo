@@ -1315,5 +1315,13 @@ codeunit 50101 "Eventos_btc"
 
     //#endregion Intercompany 
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Whse.-Create Source Document", 'OnBeforeCheckIfPurchLine2ReceiptLine', '', true, true)]
+    local procedure WhseCreateSourceDocument_OnBeforeCheckIfPurchLine2ReceiptLine(PurchaseLine: Record "Purchase Line"; var ReturnValue: Boolean; var IsHandled: Boolean)
+    begin
+        if (PurchaseLine."Whse. Outstanding Qty. (Base)" = 0) and (PurchaseLine."Outstanding Quantity" <> PurchaseLine."Outstanding Qty. (Base)") then begin
+            IsHandled := true;
+            ReturnValue := true;
+        end;
+    end;
 
 }

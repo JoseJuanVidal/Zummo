@@ -4,7 +4,7 @@ page 50156 "ZM Production Bom Maintenance"
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Tasks;
-    SourceTable = "Ledger Entry Matching Buffer";
+    SourceTable = "Item Changes L.M. production"; //"Ledger Entry Matching Buffer";
     SourceTableTemporary = true;
     InsertAllowed = false;
     DeleteAllowed = false;
@@ -16,29 +16,25 @@ page 50156 "ZM Production Bom Maintenance"
             group(Options)
             {
                 Caption = 'Exchange options', comment = 'ESP="Opciones de cambio"';
-                field("Account No."; "Account No.")
+                field("Item No."; "Item No.")
                 {
                     ApplicationArea = All;
-                    Caption = 'Item No. change', comment = 'ESP="Cód. producto"';
                     ToolTip = 'Select L.M. containing', comment = 'ESP="Seleccionar L.M. que contengan"';
-
-                    TableRelation = Item;
 
                     trigger OnValidate()
                     begin
                         ValidateItemNo();
                     end;
                 }
-                field(ItemDescription; ItemDescription)
+                field("Item Description"; "Item Description")
                 {
                     ApplicationArea = all;
                     Caption = 'Description', comment = 'ESP="Descripción"';
                     Editable = false;
                 }
-                field(Tasks; Tasks)
+                field(Task; Task)
                 {
                     ApplicationArea = all;
-                    Caption = 'Tasks', comment = 'ESP="Tareas"';
                     ToolTip = 'Indicate the action to be taken in the BOM components', comment = 'ESP="Indique la acción a realizar en los componentes de la listas de materiales"';
 
                     trigger OnValidate()
@@ -52,68 +48,113 @@ page 50156 "ZM Production Bom Maintenance"
                 Caption = 'Change dades', comment = 'ESP="Cambiar datos"';
                 Visible = not notShowChangeDate;
 
-                field("Remaining Amount"; "Remaining Amount")
+                field("Quantity per"; "Quantity per") // "Remaining Amount")
                 {
                     ApplicationArea = all;
-                    Caption = 'Quantity per', comment = 'ESP="Cantidad por"';
                     ToolTip = 'Indicate the new "Quantity per" to be updated in the BOM', comment = 'ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"';
                     DecimalPlaces = 5 : 5;
 
                 }
-                field("Remaining Amt. Incl. Discount"; "Remaining Amt. Incl. Discount")
+                field("Quantity add"; "Quantity add") // "VAT Amount") 
                 {
                     ApplicationArea = all;
-                    Caption = 'Quantity añadir', comment = 'ESP="Cantidad añadir"';
+
                     ToolTip = 'Indicate the add Quantity to be updated in the BOM', comment = 'ESP="Indicar la cantidad añadir para actualizar en las listas de materiales"';
                     DecimalPlaces = 5 : 5;
                 }
-                field("Document No."; "Document No.")
+                field("Unit of measure"; "Unit of measure") // "Insurance No.") 
                 {
                     ApplicationArea = all;
-                    Caption = 'Unit of measure', comment = 'ESP="Unidad de medida"';
                     ToolTip = 'Indicate the new "Unit of measure" to be updated in the BOM', comment = 'ESP="Indicar la nueva "Unidad de medida" a actualizar en las listas de materiales"';
-                    TableRelation = "Item Unit of Measure" where("Item No." = field("Account No."));
+                    TableRelation = "Item Unit of Measure" where("Item No." = field("Item No."));
                 }
-                field(RoutingLinkCode; RoutingLinkCode)
+                field("Routing Link Code"; "Routing Link Code")
                 {
                     ApplicationArea = all;
-                    Caption = 'Routing Link Code', comment = 'ESP="Cód. conexión ruta"';
                 }
             }
+            group(ItemRepalced)
+            {
+                Caption = 'Item to be replaced', comment = 'ESP="Producto a reemplazar"';
+                Visible = ShowReplacedItem;
+                field("Item No. to be replaced"; "Item No. to be replaced")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Indicate the new "Quantity per" to be updated in the BOM', comment = 'ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"';
+                    Visible = ShowReplacedItem;
+
+                    trigger OnValidate()
+                    begin
+                        ValidateReplaceItemNo();
+                    end;
+                }
+                field("Replaced Item Description"; "Replaced Item Description")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Description', comment = 'ESP="Descripción"';
+                    Visible = ShowReplacedItem;
+                    Editable = false;
+                    //ShowCaption = false;
+                }
+            }
+
             group(LMChange)
             {
                 Caption = 'Changes in Estructure', comment = 'ESP="Cambios en Estructura"';
                 Visible = ShowChangeItem;
-                field("Bal. Account No."; "Bal. Account No.")
+
+
+                field("New Item No."; "New Item No.") // "Budgeted FA No.") 
                 {
                     ApplicationArea = all;
-                    Caption = 'New Product Code', comment = 'ESP="Nuevo Cód. Producto"';
-                    TableRelation = Item;
 
                     trigger OnValidate()
                     begin
                         ValidateNewItemNo();
                     end;
                 }
-                field(NewItemDescription; NewItemDescription)
+
+                field("New Remaining Amount"; "Quantity per") // "Remaining Amount")
                 {
                     ApplicationArea = all;
-                    Caption = 'Description', comment = 'ESP="Descripción"';
-                    Editable = false;
-                }
-                field("New Remaining Amount"; "Remaining Amount")
-                {
-                    ApplicationArea = all;
-                    Caption = 'Quantity per', comment = 'ESP="Cantidad por"';
                     ToolTip = 'Indicate the new "Quantity per" to be updated in the BOM', comment = 'ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"';
                     DecimalPlaces = 5 : 5;
                 }
-                field("External Document No."; "External Document No.")
+                field("New Item Description"; "New Item Description")
                 {
                     ApplicationArea = all;
-                    Caption = 'Unit of measure', comment = 'ESP="Unidad de medida"';
+                    Editable = false;
+                    //ShowCaption = false;
+                }
+                field("New Unit of measure"; "New Unit of measure") // "External Document No.")
+                {
+                    ApplicationArea = all;
                     ToolTip = 'Indicate the new "Unit of measure" to be updated in the BOM', comment = 'ESP="Indicar la nueva "Unidad de medida" a actualizar en las listas de materiales"';
-                    TableRelation = "Item Unit of Measure" where("Item No." = field("Bal. Account No."));
+                }
+            }
+            group(DeleteItem)
+            {
+                Caption = 'Delete Item', comment = 'ESP="Eliminar Producto"';
+                Visible = ShowDeleteItem;
+
+
+                field("Del New Item No."; "New Item No.") // "Budgeted FA No.") 
+                {
+                    ApplicationArea = all;
+                    Caption = 'Item No.', comment = 'ESP="Cód. producto"';
+
+                    trigger OnValidate()
+                    begin
+                        ValidateNewItemNo();
+                    end;
+                }
+
+                field("Del New Item Description"; "New Item Description")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    Caption = 'Description', comment = 'ESP="Descripción"';
+                    //ShowCaption = false;
                 }
             }
             part(Lines; "ZM Production Bom Check")
@@ -186,15 +227,15 @@ page 50156 "ZM Production Bom Maintenance"
 
     var
         Item: Record Item;
-        ItemNoChange: code[20];
-        RoutingLinkCode: code[20];
-        ItemDescription: Text[100];
-        NewItemDescription: Text[100];
-        Tasks: Enum "ZM Task Production Bom change";
+        Funciones: Codeunit Funciones;
         notShowChangeDate: Boolean;
         ShowChangeItem: Boolean;
+        ShowReplacedItem: Boolean;
+        ShowDeleteItem: Boolean;
         lblConfirmChanges: Label 'The data in the %1 BOM list will be updated.\%2 %3\%4 %5\¿Do you want to continue?',
             comment = 'ESP="Se van a actualizar %1 registros con los datos en la lista de materiales.\%2 %3\%4 %5\¿Desea continuar?"';
+        lblConfirmReplace: Label 'We will replace %1 records with \%2 %3 for \%4 %5\¿Do you want to continue?',
+            comment = 'ESP="Se van a reemplazar %1 registros con \%2 %3 por %4 %5\¿Desea continuar?"';
         lblConfirmChangesQtyper: Label 'Quantity per', comment = 'ESP="Cantidad por"';
         lblConfirmChangesQtyadd: Label 'Quantity add', comment = 'ESP="Cantidad añadir"';
         lblConfirmChangesUnit: Label 'Unit of measure', comment = 'ESP="Unidad de medida"';
@@ -203,22 +244,25 @@ page 50156 "ZM Production Bom Maintenance"
     begin
         notShowChangeDate := true;
         ShowChangeItem := false;
-        case tasks of
-            Tasks::Change:
+        ShowReplacedItem := false;
+        ShowDeleteItem := false;
+        case Rec.Task of
+            Task::Change:
                 begin
                     notShowChangeDate := false;
                 end;
-            Tasks::Add:
-                begin
-
-                end;
-            Tasks::Replace:
+            Task::Add:
                 begin
                     ShowChangeItem := true;
                 end;
-            Tasks::Delete:
+            Task::Replace:
                 begin
                     ShowChangeItem := true;
+                    ShowReplacedItem := true;
+                end;
+            Task::Delete:
+                begin
+                    ShowDeleteItem := true;
                 end;
 
         end;
@@ -226,47 +270,44 @@ page 50156 "ZM Production Bom Maintenance"
 
     local procedure ValidateItemNo()
     begin
-        ItemDescription := '';
-        item.Reset();
-        if Item.Get(Rec."Account No.") then begin
-            ItemDescription := Item.Description;
-        end;
+        CurrPage.Update();
     end;
 
     local procedure ValidateNewItemNo()
     begin
-        NewItemDescription := '';
-        item.Reset();
-        if Item.Get(Rec."Bal. Account No.") then begin
-            NewItemDescription := Item.Description;
-        end;
+        CurrPage.Update();
+    end;
 
+    local procedure ValidateReplaceItemNo()
+    begin
+        CurrPage.Update();
     end;
 
     local procedure CheckAction()
     begin
         // actualizamos la lista de materiales, cuales entran en filtro
-        CurrPage.Lines.Page.UpdateBom(Rec."Account No.");
+        CurrPage.Lines.Page.UpdateBom(Rec."Item No.");
     end;
 
     local procedure RunAction()
     var
         myInt: Integer;
     begin
-        case tasks of
-            Tasks::Change:
+        case task of
+            Task::Change:
                 begin
                     UpdateBomDades();
                 end;
-            Tasks::Add:
+            Task::Add:
                 begin
 
                 end;
-            Tasks::Replace:
+            Task::Replace:
                 begin
                     ShowChangeItem := true;
+                    ReplaceItemLMProd();
                 end;
-            Tasks::Delete:
+            Task::Delete:
                 begin
                     ShowChangeItem := true;
                 end;
@@ -283,42 +324,35 @@ page 50156 "ZM Production Bom Maintenance"
         Qty: Decimal;
         LineNo: Integer;
     begin
-        if Rec."Remaining Amount" <> 0 then begin
+        clear(Funciones);
+        if Rec."Quantity per" <> 0 then begin
             Confirmparam := lblConfirmChangesQtyper;
-            Qty := Rec."Remaining Amount"
+            Qty := Rec."Quantity per"
         end else begin
             Confirmparam := lblConfirmChangesQtyadd;
-            Qty := Rec."Remaining Amt. Incl. Discount";
+            Qty := Rec."Quantity add";
         end;
 
         CurrPage.Lines.Page.GetSelectionRecord(ItemTracingBuffer);
-        if not Confirm(lblConfirmChanges, false, ItemTracingBuffer.Count, Confirmparam, Qty, lblConfirmChangesUnit, Rec."Document No.") then
+        if not Confirm(lblConfirmChanges, false, ItemTracingBuffer.Count, Confirmparam, Qty, lblConfirmChangesUnit, Rec."Unit of measure") then
             exit;
 
-        if ItemTracingBuffer.FindFirst() then
-            repeat
-                ProductionBomLine.Reset();
-                ProductionBomLine.SetRange("Production BOM No.", ItemTracingBuffer."Item No.");
-                ProductionBomLine.SetRange("Version Code", ItemTracingBuffer."Source No.");
-                ProductionBomLine.SetRange("Line No.", ItemTracingBuffer.Level);
-                if ProductionBomLine.FindFirst() then begin
-                    // actualizamos los datos con los cambios
-                    if Rec."Remaining Amount" <> 0 then
-                        ProductionBomLine."Quantity per" := Rec."Remaining Amount";
-                    if Rec."Remaining Amt. Incl. Discount" <> 0 then
-                        if (ProductionBomLine."Quantity per" + Rec."Remaining Amt. Incl. Discount") > 0 then
-                            ProductionBomLine."Quantity per" += Rec."Remaining Amt. Incl. Discount";
-                    if Rec."Document No." <> '' then
-                        ProductionBomLine."Unit of Measure Code" := Rec."Document No.";
-                    if RoutingLinkCode <> '' then
-                        ProductionBomLine."Routing Link Code" := RoutingLinkCode;
-                end;
-                ProductionBomLine.Modify();
+        Funciones.UpdateBomDades(ItemTracingBuffer, Rec."Quantity per", Rec."Quantity add", Rec."Unit of measure", Rec."Routing Link Code");
 
-            Until ItemTracingBuffer.next() = 0;
+        CurrPage.Lines.Page.UpdateBom(Rec."Item No.");
 
-        CurrPage.Lines.Page.UpdateBom(Rec."Account No.");
+    end;
 
+    local procedure ReplaceItemLMProd()
+    var
+        ItemTracingBuffer: record "Item Tracing Buffer" temporary;
+    begin
+        clear(Funciones);
+        CurrPage.Lines.Page.GetSelectionRecord(ItemTracingBuffer);
+        if not Confirm(lblConfirmReplace, false, ItemTracingBuffer.Count, Rec."Item No. to be replaced") then
+            exit;
+
+        Funciones.ReplaceLMProdItem(ItemTracingBuffer, REc."Item No. to be replaced");
     end;
 
 }

@@ -3918,6 +3918,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM TerminosPago_crm_btc - Field VersionNumber - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1774834486 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field Entry No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1480604122 - Field 1160587902 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>FechaRegistro</source>
           <note from="Developer" annotates="general" priority="2"/>
