@@ -1,27 +1,14 @@
-pageextension 50116 "PurchaseOrderList" extends "Purchase Order List"
+pageextension 17201 "ZM Ext Purchase Order Statist" extends "Purchase Order Statistics"
 {
     layout
     {
-        addafter(Status)
-        {
-            field(Pendiente_btc; Pendiente_btc)
-            {
-                ApplicationArea = All;
-            }
-            field("Motivo rechazo"; "Motivo rechazo")
-            {
-                Caption = 'Comentario';
-            }
-            field("Fecha Mas Temprana"; "Fecha Mas Temprana") { }
-        }
-        addlast(Control1)
+        addlast(General)
         {
             field(KgVendorPackagingproduct; KgVendorPackagingproduct)
             {
                 ApplicationArea = all;
                 Caption = 'Vendor Plastic packing (kg)', comment = 'ESP="Plástico embalaje proveedor (kg)"';
                 Editable = false;
-                Visible = false;
 
                 trigger OnDrillDown()
                 begin
@@ -46,4 +33,6 @@ pageextension 50116 "PurchaseOrderList" extends "Purchase Order List"
         Clear(Funciones);
         Funciones.PurchaseOrderShowPlasticVendor(Rec);
     end;
+
+
 }

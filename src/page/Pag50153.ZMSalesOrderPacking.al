@@ -1,4 +1,4 @@
-page 50153 "ZM ZM Sales Order Packing"
+page 50153 "ZM Sales Order Packing"
 {
     Caption = 'ZM Sales Order Packing', comment = 'ESP="Packing Pedido Venta"';
     PageType = Card;

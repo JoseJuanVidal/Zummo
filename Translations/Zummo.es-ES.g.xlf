@@ -11828,6 +11828,42 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Action Run - Property Caption</note>
           <target>Realizar</target>
         </trans-unit>
+        <trans-unit id="Page 4006105909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Line Plastic</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas Ped. Compra (Plastico)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Purch. Line Plastic - Property Caption</note>
+          <target>Líneas Ped. Compra (Plastico)</target>
+        </trans-unit>
+        <trans-unit id="Page 4006105909 - Control 2905017712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Total"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Purch. Line Plastic - Control LineTotal - Property Caption</note>
+          <target>Total</target>
+        </trans-unit>
+        <trans-unit id="Page 4006105909 - Control 567541820 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Plastic packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Purch. Line Plastic - Control Salvage Value - Property Caption</note>
+          <target>Plástico embalaje proveedor (kg)</target>
+        </trans-unit>
+        <trans-unit id="Page 4006105909 - Control 245426702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Plastic KG</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Total KG Plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Purch. Line Plastic - Control Total - Property Caption</note>
+          <target>Total KG Plástico</target>
+        </trans-unit>
+        <trans-unit id="Page 2182538116 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZM Sales Order Packing</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Packing Pedido Venta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Sales Order Packing - Property Caption</note>
+          <target>Packing Pedido Venta</target>
+        </trans-unit>
+        <trans-unit id="Page 2182538116 - Control 4105281732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2">ESP="General"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Sales Order Packing - Control GroupName - Property Caption</note>
+          <target>General</target>
+        </trans-unit>
         <trans-unit id="Page 2721571730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ZM Sales Order Packing Line</source>
           <note from="Developer" annotates="general" priority="2">ESP="Líneas Ped. Venta Packing"</note>
@@ -11850,18 +11886,6 @@
           <source>General</source>
           <note from="Developer" annotates="general" priority="2">ESP="General"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Sales Shipment Packing - Control GroupName - Property Caption</note>
-          <target>General</target>
-        </trans-unit>
-        <trans-unit id="Page 3182404553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ZM Sales Order Packing</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Packing Pedido Venta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ZM Sales Order Packing - Property Caption</note>
-          <target>Packing Pedido Venta</target>
-        </trans-unit>
-        <trans-unit id="Page 3182404553 - Control 4105281732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>General</source>
-          <note from="Developer" annotates="general" priority="2">ESP="General"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ZM Sales Order Packing - Control GroupName - Property Caption</note>
           <target>General</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -24082,6 +24106,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderList - Control Motivo rechazo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 487435905 - Control 4063961376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
+          <source>Vendor Plastic packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderList - Control KgVendorPackagingproduct - Property Caption</note>
+          <target>Plástico embalaje proveedor (kg)</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3099940785 - Method 3517220897 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3099940785">
           <source>¿Would you like to duplicate the Line %1 quantity %2 ?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea duplicar la Línea %1 Cantidad %2?"</note>
@@ -25127,6 +25157,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WorkCenterList - Action WorkCenterCalendar - Property Caption</note>
           <target>Cap. Producto y Centro Trabajo</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2491007321 - Control 4063961376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1614820132">
+          <source>Vendor Plastic packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Purchase Order Statist - Control KgVendorPackagingproduct - Property Caption</note>
+          <target>Plástico embalaje proveedor (kg)</target>
+        </trans-unit>
         <trans-unit id="PageExtension 514898145 - Action 1178531242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 225828172">
           <source>Editar Descripción</source>
           <note from="Developer" annotates="general" priority="2">ESP="Editar Descripción"</note>
@@ -25963,10 +25999,10 @@
           <target>Usuario no permitido</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1075816576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>Vendor Plastic packing (kg)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
+          <source>Vendor Plastic packing (kg/ud)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg/ud)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Vendor Packaging product KG - Property Caption</note>
-          <target>Plástico embalaje proveedor (kg)</target>
+          <target>Plástico embalaje proveedor (kg/ud)</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 469769693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Wood Packing (kg)</source>

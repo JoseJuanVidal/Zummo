@@ -1997,6 +1997,50 @@ codeunit 50111 "Funciones"
             tmpItem.Insert();
         end;
     end;
+    // Calculamos el campo del producto de Vendor Packaging product KG x cantidad a comprar
+    procedure PurchaseOrderCalcPlasticVendor(PurchaseHeader: Record "Purchase Header") QtyKg: Decimal
+    var
+        Item: Record Item;
+        PurchaseLine: Record "Purchase Line";
+    begin
+        PurchaseLine.Reset();
+        PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
+        PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
+        if PurchaseLine.FindFirst() then
+            repeat
+                if PurchaseLine.Type in [PurchaseLine.Type::Item] then begin
+                    if Item.Get(PurchaseLine."No.") then begin
+                        QtyKg += Item."Vendor Packaging product KG" * PurchaseLine."Quantity (Base)";
+                    end
+                end;
+            Until PurchaseLine.next() = 0;
+    end;
+
+    // Mostramos la línea de pedidos de compra con Vendor Packaging product KG x cantidad a comprar
+    procedure PurchaseOrderShowPlasticVendor(PurchaseHeader: Record "Purchase Header")
+    var
+        Item: Record Item;
+        PurchaseLine: Record "Purchase Line";
+        tmpPurchaseLine: Record "Purchase Line" temporary;
+        QtyKg: Decimal;
+    begin
+        PurchaseLine.Reset();
+        PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
+        PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
+        if PurchaseLine.FindFirst() then
+            repeat
+                tmpPurchaseLine.Init();
+                tmpPurchaseLine := PurchaseLine;
+                if PurchaseLine.Type in [PurchaseLine.Type::Item] then begin
+                    if Item.Get(PurchaseLine."No.") then begin
+                        QtyKg := Item."Vendor Packaging product KG";
+                    end
+                end;
+                tmpPurchaseLine."Salvage Value" := QtyKg;
+                tmpPurchaseLine.Insert()
+            Until PurchaseLine.next() = 0;
+        Page.RunModal(Page::"ZM Purch. Line Plastic", tmpPurchaseLine)
+    end;
 
     // ============= DuplicateServiceOrder              ====================
     // ==  
@@ -2094,7 +2138,7 @@ codeunit 50111 "Funciones"
     procedure SalesOrderShowPackginListShipment(Rec: Record "Sales Header")
     var
         SalesHeader: Record "Sales Header";
-        PackingList: Page "ZM ZM Sales Order Packing";
+        PackingList: Page "ZM Sales Order Packing";
     begin
         SalesHeader.Reset();
         SalesHeader.SetRange("Document Type", Rec."Document Type");

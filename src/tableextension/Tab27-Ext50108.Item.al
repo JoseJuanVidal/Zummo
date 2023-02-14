@@ -426,7 +426,7 @@ tableextension 50108 "Item" extends Item  //27
         field(50215; "Vendor Packaging product KG"; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Vendor Plastic packing (kg)', comment = 'ESP="Plástico embalaje proveedor (kg)"';
+            Caption = 'Vendor Plastic packing (kg/ud)', comment = 'ESP="Plástico embalaje proveedor (kg/ud)"';
             DecimalPlaces = 5 : 5;
         }
         //-  NORMATIVA MEDIO AMBIENTAL
