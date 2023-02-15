@@ -5235,7 +5235,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType BodyLbl1</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3095865860" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sales order %1 has been created from offer %2</source>
+          <source>Sales order %1 has been created from offer %2. Purchase Order %3</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType BodyLbl2</note>
         </trans-unit>

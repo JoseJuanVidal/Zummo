@@ -255,7 +255,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         MsgLbl: Label 'Se ha actualizado el pedido de compra ';
         SubjectLbl: Label 'Update Purchase Order Zummo Inc.';
         BodyLbl1: Label 'Sales order %1 has been deleted';
-        BodyLbl2: Label 'Sales order %1 has been created from offer %2';
+        BodyLbl2: Label 'Sales order %1 has been created from offer %2. Purchase Order %3';
     begin
         SalesReceivablesSetup.Get();
         SalesReceivablesSetup.TestField("WS Base URL IC Zummo Innc.");
@@ -278,7 +278,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
             if SalesOrderHeader."No." = '' then
                 SendMailIC(SubjectLbl, StrSubstNo(BodyLbl1, SalesHeader."No."), '', '')
             else
-                SendMailIC(SubjectLbl, StrSubstNo(BodyLbl2, SalesOrderHeader."No.", SalesHeader."No."), '', '');
+                SendMailIC(SubjectLbl, StrSubstNo(BodyLbl2, SalesOrderHeader."No.", SalesHeader."No.", SalesHeader."Source Purch. Order No"), '', '');
         end;
 
     end;
