@@ -28,9 +28,19 @@ page 50158 "ZM Item Documents"
                     ApplicationArea = all;
                     Visible = false;
                 }
-                field(Description; txtDescription)
+                field(Description; Description)
                 {
                     ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        Hyperlink(txtComentario);
+                    end;
+                }
+                field(txtDescription; txtDescription)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
 
                     trigger OnDrillDown()
                     begin

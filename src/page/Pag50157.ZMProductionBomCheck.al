@@ -63,24 +63,32 @@ page 50157 "ZM Production Bom Check"
         Rec.DeleteAll();
         ProductionBomLine.Reset();
         ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
-        ProductionBomLine.SetRange("No.", ItemNo);
+        if ItemNo <> '' then
+            ProductionBomLine.SetRange("No.", ItemNo);
         if ProductionBomLine.FindFirst() then
             repeat
-                LineNo += 1;
                 ProductionBomHeader.Get(ProductionBomLine."Production BOM No.");
-                Rec.Init();
-                Rec."Line No." := LineNo;
-                Rec."Item No." := ProductionBomLine."Production BOM No.";
-                Rec."Item Description" := ProductionBomHeader.Description;
-                Rec.Quantity := ProductionBomLine."Quantity per";
-                Rec."Location Code" := ProductionBomLine."Unit of Measure Code";
-                Rec."Source No." := ProductionBomLine."Version Code";
-                Rec.Level := ProductionBomLine."Line No.";
-                Rec."Variant Code" := ProductionBomLine."Routing Link Code";
-                Rec.Insert();
+                Rec.Reset();
+                Rec.SetRange("Item No.", ProductionBomLine."Production BOM No.");
+                if not Rec.FindFirst() then begin
+                    LineNo += 1;
+                    Rec.Reset();
+                    Rec.Init();
+                    Rec."Line No." := LineNo;
+                    Rec."Item No." := ProductionBomLine."Production BOM No.";
+                    Rec."Item Description" := ProductionBomHeader.Description;
+                    Rec.Quantity := ProductionBomLine."Quantity per";
+                    Rec."Location Code" := ProductionBomLine."Unit of Measure Code";
+                    Rec."Source No." := ProductionBomLine."Version Code";
+                    Rec."Document No." := ProductionBomLine."No.";
+                    Rec.Level := ProductionBomLine."Line No.";
+                    Rec."Variant Code" := ProductionBomLine."Routing Link Code";
+                    Rec.Insert();
+                end;
+
             Until ProductionBomLine.next() = 0;
 
-        Rec.FindFirst();
+        if Rec.FindFirst() then;
         // CurrPage.Update(false);
     end;
 

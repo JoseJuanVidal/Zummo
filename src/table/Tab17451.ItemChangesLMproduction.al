@@ -1,6 +1,8 @@
 table 17451 "Item Changes L.M. production"
 {
     DataClassification = CustomerContent;
+    LookupPageId = "ZM Item Changes L.M. prod.";
+    DrillDownPageId = "ZM Item Changes L.M. prod.";
 
     fields
     {
@@ -23,7 +25,7 @@ table 17451 "Item Changes L.M. production"
         {
             Caption = 'Description', comment = 'ESP="Descripción"';
             FieldClass = FlowField;
-            CalcFormula = lookup(Item.Description where("No." = field("New Item No.")));
+            CalcFormula = lookup(Item.Description where("No." = field("Item No.")));
         }
         field(30; Task; Enum "ZM Task Production Bom change")
         {
@@ -59,7 +61,7 @@ table 17451 "Item Changes L.M. production"
         }
         field(90; "Replaced Item Description"; text[100])
         {
-            Caption = 'Description', comment = 'ESP="Descripción"';
+            Caption = 'Description to be replaced', comment = 'ESP="Descripción a reemplazar"';
             Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup(Item.Description where("No." = field("Item No. to be replaced")));
@@ -72,7 +74,7 @@ table 17451 "Item Changes L.M. production"
         }
         field(110; "New Item Description"; text[100])
         {
-            Caption = 'Description', comment = 'ESP="Descripción"';
+            Caption = 'New Item Description', comment = 'ESP="Descripción nuevo"';
             Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup(Item.Description where("No." = field("New Item No.")));
@@ -81,7 +83,37 @@ table 17451 "Item Changes L.M. production"
         {
             DataClassification = CustomerContent;
             Caption = 'Unit of measure', comment = 'ESP="Unidad de medida"';
-            TableRelation = "Item Unit of Measure" where("Item No." = field("New Item No."));
+            TableRelation = "Item Unit of Measure".Code where("Item No." = field("New Item No."));
+        }
+        field(1000; "Production BOM No."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Production BOM No.', Comment = 'ESP="Nº L.M. producción"';
+        }
+        field(1002; "Action"; Enum "ZM Action Changes Items")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Action', comment = 'ESP="Acción"';
+        }
+        field(1003; "Original Quantity"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Original Quantity', comment = 'ESP="Cantidad original"';
+        }
+        field(1004; "Quantity"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Action Quantity', comment = 'ESP="Cantidad acción"';
+        }
+        field(1007; "New Action"; Enum "ZM Action Changes Items")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'New Action', comment = 'ESP="Acción nuevo"';
+        }
+        field(1008; "New Quantity"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'New Quantity', comment = 'ESP="Cantidad nuevo"';
         }
     }
 

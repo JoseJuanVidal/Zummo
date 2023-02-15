@@ -2246,9 +2246,6 @@ codeunit 50111 "Funciones"
     procedure UpdateBomDades(VAR ItemTracingBuffer: record "Item Tracing Buffer" temporary; QtyPer: Decimal; QtyPerAdded: Decimal; UnitofMeasure: Code[10]; RoutingLinkCode: code[10])
     var
         ProductionBomLine: Record "Production BOM Line";
-        Confirmparam: text;
-        Qty: Decimal;
-        LineNo: Integer;
     begin
 
         if ItemTracingBuffer.FindFirst() then
@@ -2277,11 +2274,143 @@ codeunit 50111 "Funciones"
 
     // Cambiar un producto por otro, se pasa la lista de registros seleccionados
     // el producto viejo y el nuevo prducto        
-    procedure ReplaceLMProdItem(var ItemTracingBuffer: record "Item Tracing Buffer"; ItemNoChange: code[20])
+    procedure TaskMProdItem(var ItemTracingBuffer: record "Item Tracing Buffer"; var ItemChangesLMproduction: record "Item Changes L.M. production")
     var
-        myInt: Integer;
+        ProductionBomLine: Record "Production BOM Line";
     begin
+        if not TempTaskMProdItem(ItemTracingBuffer, ItemChangesLMproduction) then
+            exit;
+        if ItemTracingBuffer.FindFirst() then
+            repeat
+                ProductionBomLine.Reset();
+                ProductionBomLine.SetRange("Production BOM No.", ItemTracingBuffer."Item No.");
+                ProductionBomLine.SetRange("Version Code", ItemTracingBuffer."Source No.");
+                // actualizamos los datos con los cambios
+                case ItemChangesLMproduction.Task of
+                    ItemChangesLMproduction.Task::Add:
+                        begin
 
+                        end;
+                    ItemChangesLMproduction.Task::Delete:
+                        begin
+                            ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+                            ProductionBomLine.SetRange("No.", ItemChangesLMproduction."Item No. to be replaced");
+                            if ProductionBomLine.FindFirst() then begin
+                                ProductionBomLine.Delete();
+                            end;
+                        end;
+                    ItemChangesLMproduction.Task::Replace:
+                        begin
+
+                        end;
+                end;
+            Until ItemTracingBuffer.next() = 0;
+        Message('Fin');
+    end;
+
+    local procedure TempTaskMProdItem(var ItemTracingBuffer: record "Item Tracing Buffer"; var ItemChangesLMproduction: record "Item Changes L.M. production"): Boolean
+    var
+        ProductionBomLine: Record "Production BOM Line";
+        tmpItemChangesLMprod: record "Item Changes L.M. production" temporary;
+        EntryNo: Integer;
+        ReplaceAdd: Boolean;
+        ReplaceDelete: Boolean;
+    begin
+        if ItemTracingBuffer.FindFirst() then
+            repeat
+                ReplaceAdd := false;
+                ReplaceDelete := false;
+
+                ProductionBomLine.Reset();
+                ProductionBomLine.SetRange("Production BOM No.", ItemTracingBuffer."Item No.");
+                ProductionBomLine.SetRange("Version Code", ItemTracingBuffer."Source No.");
+                ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+                // actualizamos los datos con los cambios
+                case ItemChangesLMproduction.Task of
+                    ItemChangesLMproduction.Task::Add:
+                        begin
+                            ProductionBomLine.SetRange("No.", ItemChangesLMproduction."New Item No.");
+                            if ProductionBomLine.FindFirst() then begin
+                                // existe y  añadimos la cantidad a la actual
+                                tmpItemChangesLMprod.Init();
+                                EntryNo += 1;
+                                tmpItemChangesLMprod."Entry No." := EntryNo;
+                                tmpItemChangesLMprod."Production BOM No." := ProductionBomLine."Production BOM No.";
+                                tmpItemChangesLMprod."Item No." := ProductionBomLine."No.";
+                                tmpItemChangesLMprod.Action := tmpItemChangesLMprod.Action::Add;
+                                tmpItemChangesLMprod."Original Quantity" := ProductionBomLine."Quantity per";
+                                tmpItemChangesLMprod."Quantity per" := ItemChangesLMproduction."Quantity per";
+                                tmpItemChangesLMprod.Insert();
+                            end else begin
+                                // no existe y creamos con cantidad
+                                tmpItemChangesLMprod.Init();
+                                EntryNo += 1;
+                                tmpItemChangesLMprod."Entry No." := EntryNo;
+                                tmpItemChangesLMprod."Production BOM No." := ItemTracingBuffer."Item No.";
+                                tmpItemChangesLMprod."Item No." := ItemChangesLMproduction."New Item No.";
+                                tmpItemChangesLMprod.Action := tmpItemChangesLMprod.Action::Insert;
+                                tmpItemChangesLMprod."Original Quantity" := 0;
+                                tmpItemChangesLMprod."Quantity per" := ItemChangesLMproduction."Quantity per";
+                                tmpItemChangesLMprod.Insert();
+                            end;
+                        end;
+                    ItemChangesLMproduction.Task::Delete:
+                        begin
+                            ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+                            ProductionBomLine.SetRange("No.", ItemChangesLMproduction."Item No. to be replaced");
+                            if ProductionBomLine.FindFirst() then begin
+                                tmpItemChangesLMprod.Init();
+                                EntryNo += 1;
+                                tmpItemChangesLMprod."Entry No." := EntryNo;
+                                tmpItemChangesLMprod."Production BOM No." := ProductionBomLine."Production BOM No.";
+                                tmpItemChangesLMprod."Item No." := ProductionBomLine."No.";
+                                tmpItemChangesLMprod.Action := tmpItemChangesLMprod.Action::Delete;
+                                tmpItemChangesLMprod."Original Quantity" := ProductionBomLine."Quantity per";
+                                tmpItemChangesLMprod."Quantity per" := 0;
+                                tmpItemChangesLMprod.Insert();
+                            end;
+                        end;
+                    ItemChangesLMproduction.Task::Replace:
+                        begin
+                            ProductionBomLine.SetRange("No.", ItemChangesLMproduction."Item No. to be replaced");
+                            if ProductionBomLine.FindFirst() then begin
+                                if ProductionBomLine."Quantity per" > ItemChangesLMproduction."Quantity per" then
+                                    ReplaceAdd := true;
+                            end;
+                            tmpItemChangesLMprod.Init();
+                            EntryNo += 1;
+                            tmpItemChangesLMprod."Entry No." := EntryNo;
+                            tmpItemChangesLMprod."Production BOM No." := ItemTracingBuffer."Item No.";
+                            tmpItemChangesLMprod."Item No." := ItemChangesLMproduction."Item No. to be replaced";
+                            if ReplaceAdd then
+                                tmpItemChangesLMprod.Action := tmpItemChangesLMprod.Action::Subtract
+                            else
+                                tmpItemChangesLMprod.Action := tmpItemChangesLMprod.Action::Delete;
+                            tmpItemChangesLMprod."Original Quantity" := ProductionBomLine."Quantity per";
+                            tmpItemChangesLMprod."Quantity per" := ItemChangesLMproduction."Quantity per";
+
+                            // NEW ITEM
+                            ProductionBomLine.SetRange("No.", ItemChangesLMproduction."New Item No.");
+                            if ProductionBomLine.FindFirst() then begin
+                                ReplaceDelete := true;
+                            end;
+                            if ReplaceDelete then
+                                tmpItemChangesLMprod."New Action" := tmpItemChangesLMprod."New Action"::Add
+                            else
+                                tmpItemChangesLMprod."New Action" := tmpItemChangesLMprod."New Action"::Insert;
+                            tmpItemChangesLMprod."New Item No." := ItemChangesLMproduction."New Item No.";
+                            tmpItemChangesLMprod."New Quantity" := ItemChangesLMproduction."New Quantity";
+                            tmpItemChangesLMprod."New Unit of measure" := ItemChangesLMproduction."New Unit of measure";
+                            tmpItemChangesLMprod.Insert();
+
+                        end;
+                end;
+            Until ItemTracingBuffer.next() = 0;
+
+        if tmpItemChangesLMprod.FindFirst() then begin
+            if page.RunModal(page::"ZM Item Changes L.M. prod.", tmpItemChangesLMprod) = Action::LookupOK then
+                exit(True);
+        end;
     end;
 
 }

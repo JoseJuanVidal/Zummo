@@ -34,11 +34,11 @@ table 50104 "ComentariosPredefinidos"
             Caption = 'Nº Línea', comment = 'ESP="Nº Línea"';
             DataClassification = CustomerContent;
         }
-        // field(20; Description; Text[100])
-        // {
-        //     Caption = 'Description', comment = 'ESP="Descripción"';
-        //     DataClassification = CustomerContent;
-        // }
+        field(20; Description; Text[100])
+        {
+            Caption = 'Description', comment = 'ESP="Descripción"';
+            DataClassification = CustomerContent;
+        }
         //#region ERPLINK
     }
 

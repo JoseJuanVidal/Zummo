@@ -1,6 +1,7 @@
 page 50156 "ZM Production Bom Maintenance"
 {
     Caption = 'Production BOM Maintenance', comment = 'ESP="Gestión de cambios - L. M. Productos"';
+    DataCaptionFields = "Item Description";
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Tasks;
@@ -88,6 +89,12 @@ page 50156 "ZM Production Bom Maintenance"
                         ValidateReplaceItemNo();
                     end;
                 }
+                field("Replace Quantity per"; "Quantity per") // "Remaining Amount")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Indicate the new "Quantity per" to be updated in the BOM', comment = 'ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"';
+                    DecimalPlaces = 5 : 5;
+                }
                 field("Replaced Item Description"; "Replaced Item Description")
                 {
                     ApplicationArea = all;
@@ -114,7 +121,7 @@ page 50156 "ZM Production Bom Maintenance"
                     end;
                 }
 
-                field("New Remaining Amount"; "Quantity per") // "Remaining Amount")
+                field("New Quantity"; "New Quantity") // "Remaining Amount")
                 {
                     ApplicationArea = all;
                     ToolTip = 'Indicate the new "Quantity per" to be updated in the BOM', comment = 'ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"';
@@ -137,8 +144,7 @@ page 50156 "ZM Production Bom Maintenance"
                 Caption = 'Delete Item', comment = 'ESP="Eliminar Producto"';
                 Visible = ShowDeleteItem;
 
-
-                field("Del New Item No."; "New Item No.") // "Budgeted FA No.") 
+                field("Del Item No. to be replaced"; "Item No. to be replaced") // "Budgeted FA No.") 
                 {
                     ApplicationArea = all;
                     Caption = 'Item No.', comment = 'ESP="Cód. producto"';
@@ -148,14 +154,20 @@ page 50156 "ZM Production Bom Maintenance"
                         ValidateNewItemNo();
                     end;
                 }
-
-                field("Del New Item Description"; "New Item Description")
+                field("Del Replaced Item Description"; "Replaced Item Description")
                 {
                     ApplicationArea = all;
                     Editable = false;
                     Caption = 'Description', comment = 'ESP="Descripción"';
                     //ShowCaption = false;
                 }
+                field("Delete Quantity per"; "Quantity per") // "Remaining Amount")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Indicate the new "Quantity per" to be updated in the BOM', comment = 'ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"';
+                    DecimalPlaces = 5 : 5;
+                }
+
             }
             part(Lines; "ZM Production Bom Check")
             {
@@ -220,9 +232,9 @@ page 50156 "ZM Production Bom Maintenance"
 
     trigger OnOpenPage()
     begin
-
         if not Rec.Get() then
             Rec.Insert();
+        rec.Modify();
     end;
 
     var
@@ -234,10 +246,13 @@ page 50156 "ZM Production Bom Maintenance"
         ShowDeleteItem: Boolean;
         lblConfirmChanges: Label 'The data in the %1 BOM list will be updated.\%2 %3\%4 %5\¿Do you want to continue?',
             comment = 'ESP="Se van a actualizar %1 registros con los datos en la lista de materiales.\%2 %3\%4 %5\¿Desea continuar?"';
-        lblConfirmReplace: Label 'We will replace %1 records with \%2 %3 for \%4 %5\¿Do you want to continue?',
-            comment = 'ESP="Se van a reemplazar %1 registros con \%2 %3 por %4 %5\¿Desea continuar?"';
+        lblConfirmAdd: Label 'We will add %1 records with \%2 %3\¿Do you want to continue?',
+            comment = 'ESP="Se va a añadir %1 registros con \%2 %3 \¿Desea continuar?"';
+        lblConfirmReplace: Label 'We will replace %1 records with \%2 %3\for %4 %5\¿Do you want to continue?',
+            comment = 'ESP="Se va a reemplazar %1 registros con \%2 %3\por %4 %5\¿Desea continuar?"';
         lblConfirmDelete: Label 'We will delete Item %2 %3 of %1 records\¿Do you want to continue?',
-            comment = 'ESP="Se van a eliminar el producto %2 %3 de %1 registros\¿Desea continuar?"';
+            comment = 'ESP="Se va a eliminar el producto %2 %3 de %1 registros\¿Desea continuar?"';
+
         lblConfirmChangesQtyper: Label 'Quantity per', comment = 'ESP="Cantidad por"';
         lblConfirmChangesQtyadd: Label 'Quantity add', comment = 'ESP="Cantidad añadir"';
         lblConfirmChangesUnit: Label 'Unit of measure', comment = 'ESP="Unidad de medida"';
@@ -302,19 +317,17 @@ page 50156 "ZM Production Bom Maintenance"
                 end;
             Task::Add:
                 begin
-
+                    TaskItemLMProd();
                 end;
             Task::Replace:
                 begin
-                    ReplaceItemLMProd();
+                    TaskItemLMProd();
                 end;
             Task::Delete:
                 begin
-                    DeleteItemLMProd();
+                    TaskItemLMProd();
                 end;
-
         end;
-
     end;
 
     procedure UpdateBomDades()
@@ -344,27 +357,34 @@ page 50156 "ZM Production Bom Maintenance"
 
     end;
 
-    local procedure ReplaceItemLMProd()
+    local procedure TaskItemLMProd()
     var
         ItemTracingBuffer: record "Item Tracing Buffer" temporary;
     begin
+        //   comment = 'ESP="Se van a reemplazar %1 registros con \%2 %3 por %4 %5\¿Desea continuar?"';
+        //     comment = 'ESP="Se van a eliminar el producto %2 %3 de %1 registros\¿Desea continuar?"';
+
         clear(Funciones);
         CurrPage.Lines.Page.GetSelectionRecord(ItemTracingBuffer);
-        if not Confirm(lblConfirmReplace, false, ItemTracingBuffer.Count, Rec."Item No. to be replaced") then
-            exit;
+        case Rec.Task of
+            Rec.Task::Add:
+                begin
+                    if not Confirm(lblConfirmAdd, false, ItemTracingBuffer.Count, Rec."New Item No.", Rec."New Item Description") then
+                        exit;
+                end;
+            Rec.Task::Replace:
+                begin
+                    if not Confirm(lblConfirmReplace, false, ItemTracingBuffer.Count, Rec."Item No. to be replaced", Rec."Replaced Item Description",
+                                    Rec."New Item No.", Rec."New Item Description") then
+                        exit;
+                end;
+            Rec.Task::Delete:
+                begin
+                    if not Confirm(lblConfirmDelete, false, ItemTracingBuffer.Count, Rec."Item No. to be replaced", Rec."Replaced Item Description") then
+                        exit;
+                end;
 
-        Funciones.ReplaceLMProdItem(ItemTracingBuffer, REc."Item No. to be replaced");
+        end;
+        Funciones.TaskMProdItem(ItemTracingBuffer, Rec);
     end;
-
-    local procedure DeleteItemLMProd()
-    var
-        ItemTracingBuffer: record "Item Tracing Buffer" temporary;
-    begin
-        clear(Funciones);
-        CurrPage.Lines.Page.GetSelectionRecord(ItemTracingBuffer);
-        if not Confirm(lblConfirmDelete, false, ItemTracingBuffer.Count, Rec."New Item No.", Rec."New Item Description") then
-            exit;
-
-    end;
-
 }

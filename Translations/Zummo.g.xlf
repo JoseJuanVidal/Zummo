@@ -123,6 +123,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Comentario - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4166419010 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4166419010 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Id</source>
           <note from="Developer" annotates="general" priority="2">ESP="Id"</note>
@@ -4088,6 +4093,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Valor Dimensión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table DimAFRagoFecha - Field ValorDimension - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1774834486 - Field 2279323338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Action</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field Action - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1774834486 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4108,9 +4118,14 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. producto a reemplazar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field Item No. to be replaced - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1774834486 - Field 4162591550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Action</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acción nuevo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field New Action - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1774834486 - Field 1558935433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <source>New Item Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción nuevo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field New Item Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1774834486 - Field 2865284978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -4118,10 +4133,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nuevo Cód. producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field New Item No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1774834486 - Field 3657185825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad nuevo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field New Quantity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1774834486 - Field 2339238765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit of measure</source>
           <note from="Developer" annotates="general" priority="2">ESP="Unidad de medida"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field New Unit of measure - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1774834486 - Field 3831489878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Original Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad original"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field Original Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1774834486 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº L.M. producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field Production BOM No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1774834486 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Action Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad acción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field Quantity - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1774834486 - Field 2130875534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity add</source>
@@ -4134,8 +4169,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field Quantity per - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1774834486 - Field 2750157965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <source>Description to be replaced</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción a reemplazar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Changes L.M. production - Field Replaced Item Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1774834486 - Field 463590211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10708,6 +10743,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1671082619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Confirm Changes in L.M. Production</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Confirmar Cambios en L.M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Changes L.M. prod. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 474319202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ERPLINK Documentos productos</source>
           <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Documentos productos"</note>
@@ -10863,6 +10903,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Gestión de cambios - L. M. Productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 3280453163" size-unit="char" translate="yes" xml:space="preserve">
+          <source>We will add %1 records with \%2 %3\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a añadir %1 registros con \%2 %3 \¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmAdd</note>
+        </trans-unit>
         <trans-unit id="Page 1493879539 - NamedType 2880736111" size-unit="char" translate="yes" xml:space="preserve">
           <source>The data in the %1 BOM list will be updated.\%2 %3\%4 %5\¿Do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Se van a actualizar %1 registros con los datos en la lista de materiales.\%2 %3\%4 %5\¿Desea continuar?"</note>
@@ -10885,12 +10930,12 @@
         </trans-unit>
         <trans-unit id="Page 1493879539 - NamedType 553645563" size-unit="char" translate="yes" xml:space="preserve">
           <source>We will delete Item %2 %3 of %1 records\¿Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Se van a eliminar el producto %2 %3 de %1 registros\¿Desea continuar?"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a eliminar el producto %2 %3 de %1 registros\¿Desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmDelete</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - NamedType 1533938200" size-unit="char" translate="yes" xml:space="preserve">
-          <source>We will replace %1 records with \%2 %3 for \%4 %5\¿Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Se van a reemplazar %1 registros con \%2 %3 por %4 %5\¿Desea continuar?"</note>
+          <source>We will replace %1 records with \%2 %3\for %4 %5\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a reemplazar %1 registros con \%2 %3\por %4 %5\¿Desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmReplace</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - Control 1552074139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10918,15 +10963,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="Eliminar Producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control DeleteItem - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1493879539 - Control 3725345886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Del New Item Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1493879539 - Control 2361105669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1493879539 - Control 2431294077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Del New Item No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Del Item No. to be replaced - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 3532928370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Del Replaced Item Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 2227291247 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the new "Quantity per" to be updated in the BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Delete Quantity per - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - Control 271913511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item to be replaced</source>
@@ -10937,6 +10987,11 @@
           <source>Indicate the new "Quantity per" to be updated in the BOM</source>
           <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Item No. to be replaced - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 902945260 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the new "Quantity per" to be updated in the BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Replace Quantity per - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - Control 2750157965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -10953,10 +11008,10 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cambios en Estructura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control LMChange - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1493879539 - Control 1598164032 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1493879539 - Control 3657185825 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Indicate the new "Quantity per" to be updated in the BOM</source>
           <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control New Remaining Amount - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control New Quantity - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1493879539 - Control 2339238765 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Indicate the new "Unit of measure" to be updated in the BOM</source>
@@ -26982,6 +27037,26 @@
           <source> </source>
           <note from="Developer" annotates="general" priority="2">ESP=" "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum IE Almacen - EnumValue Ninguno - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 266063982 - EnumValue 2318734275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Añadir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ZM Action Changes Items - EnumValue Add - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 266063982 - EnumValue 2477294019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Eliminar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ZM Action Changes Items - EnumValue Delete - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 266063982 - EnumValue 2049086889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insert</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Insertar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ZM Action Changes Items - EnumValue Insert - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 266063982 - EnumValue 3363251360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>subtract amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Restar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ZM Action Changes Items - EnumValue Subtract - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 224424811 - EnumValue 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Order</source>
