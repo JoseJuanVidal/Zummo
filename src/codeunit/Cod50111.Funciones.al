@@ -2277,35 +2277,90 @@ codeunit 50111 "Funciones"
     procedure TaskMProdItem(var ItemTracingBuffer: record "Item Tracing Buffer"; var ItemChangesLMproduction: record "Item Changes L.M. production")
     var
         ProductionBomLine: Record "Production BOM Line";
+        EntryNo: Integer;
+        ReplaceAdd: Boolean;
+        ReplaceDelete: Boolean;
     begin
         if not TempTaskMProdItem(ItemTracingBuffer, ItemChangesLMproduction) then
             exit;
+
         if ItemTracingBuffer.FindFirst() then
             repeat
+                ReplaceAdd := false;
+                ReplaceDelete := false;
+
                 ProductionBomLine.Reset();
                 ProductionBomLine.SetRange("Production BOM No.", ItemTracingBuffer."Item No.");
                 ProductionBomLine.SetRange("Version Code", ItemTracingBuffer."Source No.");
+                ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
                 // actualizamos los datos con los cambios
                 case ItemChangesLMproduction.Task of
                     ItemChangesLMproduction.Task::Add:
                         begin
-
+                            ProductionBomLine.SetRange("No.", ItemChangesLMproduction."New Item No.");
+                            if ProductionBomLine.FindFirst() then begin
+                                // existe y  añadimos la cantidad a la actual
+                                ProductionBomLine."Quantity per" += ItemChangesLMproduction."New Quantity";
+                                ProductionBomLine.Modify();
+                            end else begin
+                                // no existe y creamos con cantidad
+                                ProductionBomLine.Init();
+                                ProductionBomLine."Production BOM No." := ItemTracingBuffer."Item No.";
+                                ProductionBomLine."Version Code" := ItemTracingBuffer."Source No.";
+                                ProductionBomLine."Line No." := GetLastProdBomLine(ProductionBomLine);
+                                ProductionBomLine.Type := ProductionBomLine.Type::Item;
+                                ProductionBomLine.Validate("No.", ItemChangesLMproduction."New Item No.");
+                                ProductionBomLine.validate("Quantity per", ProductionBomLine."Quantity per" + ItemChangesLMproduction."New Quantity");
+                                if ItemChangesLMproduction."New Unit of measure" <> '' then
+                                    ProductionBomLine.Validate("Unit of Measure Code", ItemChangesLMproduction."New Unit of measure");
+                                ProductionBomLine.Insert();
+                            end;
                         end;
                     ItemChangesLMproduction.Task::Delete:
                         begin
                             ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
                             ProductionBomLine.SetRange("No.", ItemChangesLMproduction."Item No. to be replaced");
                             if ProductionBomLine.FindFirst() then begin
-                                ProductionBomLine.Delete();
+                                if ProductionBomLine."Quantity per" > ItemChangesLMproduction."Quantity per" then begin
+                                    // restamos la cantidad
+                                    ProductionBomLine."Quantity per" -= ItemChangesLMproduction."Quantity per";
+                                    ProductionBomLine.Modify();
+                                end else
+                                    ProductionBomLine.Delete();
                             end;
                         end;
                     ItemChangesLMproduction.Task::Replace:
                         begin
+                            ProductionBomLine.SetRange("No.", ItemChangesLMproduction."Item No. to be replaced");
+                            if ProductionBomLine.FindFirst() then begin
+                                if ProductionBomLine."Quantity per" > ItemChangesLMproduction."Quantity per" then begin
 
+                                end else
+                                    ProductionBomLine.Delete();
+                            end;
+
+                            // NEW ITEM
+                            ProductionBomLine.SetRange("No.", ItemChangesLMproduction."New Item No.");
+                            if ProductionBomLine.FindFirst() then begin
+                                ProductionBomLine.validate("Quantity per", ProductionBomLine."Quantity per" + ItemChangesLMproduction."New Quantity");
+                                ProductionBomLine.Modify();
+                            end else begin
+                                ProductionBomLine.Init();
+                                ProductionBomLine."Production BOM No." := ItemTracingBuffer."Item No.";
+                                ProductionBomLine."Version Code" := ItemTracingBuffer."Source No.";
+                                ProductionBomLine."Line No." := GetLastProdBomLine(ProductionBomLine);
+                                ProductionBomLine.Type := ProductionBomLine.Type::Item;
+                                ProductionBomLine.Validate("No.", ItemChangesLMproduction."New Item No.");
+                                ProductionBomLine.validate("Quantity per", ProductionBomLine."Quantity per" + ItemChangesLMproduction."New Quantity");
+                                if ItemChangesLMproduction."New Unit of measure" <> '' then
+                                    ProductionBomLine.Validate("Unit of Measure Code", ItemChangesLMproduction."New Unit of measure");
+                                ProductionBomLine.Insert();
+                            end;
                         end;
                 end;
             Until ItemTracingBuffer.next() = 0;
-        Message('Fin');
+
+        Message('Fin Acciones');
     end;
 
     local procedure TempTaskMProdItem(var ItemTracingBuffer: record "Item Tracing Buffer"; var ItemChangesLMproduction: record "Item Changes L.M. production"): Boolean
@@ -2339,7 +2394,7 @@ codeunit 50111 "Funciones"
                                 tmpItemChangesLMprod."Item No." := ProductionBomLine."No.";
                                 tmpItemChangesLMprod.Action := tmpItemChangesLMprod.Action::Add;
                                 tmpItemChangesLMprod."Original Quantity" := ProductionBomLine."Quantity per";
-                                tmpItemChangesLMprod."Quantity per" := ItemChangesLMproduction."Quantity per";
+                                tmpItemChangesLMprod."Quantity per" := ItemChangesLMproduction."New Quantity";
                                 tmpItemChangesLMprod.Insert();
                             end else begin
                                 // no existe y creamos con cantidad
@@ -2350,7 +2405,7 @@ codeunit 50111 "Funciones"
                                 tmpItemChangesLMprod."Item No." := ItemChangesLMproduction."New Item No.";
                                 tmpItemChangesLMprod.Action := tmpItemChangesLMprod.Action::Insert;
                                 tmpItemChangesLMprod."Original Quantity" := 0;
-                                tmpItemChangesLMprod."Quantity per" := ItemChangesLMproduction."Quantity per";
+                                tmpItemChangesLMprod."Quantity per" := ItemChangesLMproduction."New Quantity";
                                 tmpItemChangesLMprod.Insert();
                             end;
                         end;
@@ -2364,9 +2419,12 @@ codeunit 50111 "Funciones"
                                 tmpItemChangesLMprod."Entry No." := EntryNo;
                                 tmpItemChangesLMprod."Production BOM No." := ProductionBomLine."Production BOM No.";
                                 tmpItemChangesLMprod."Item No." := ProductionBomLine."No.";
-                                tmpItemChangesLMprod.Action := tmpItemChangesLMprod.Action::Delete;
+                                if ProductionBomLine."Quantity per" > ItemChangesLMproduction."Quantity per" then
+                                    tmpItemChangesLMprod.Action := tmpItemChangesLMprod.Action::Subtract
+                                else
+                                    tmpItemChangesLMprod.Action := tmpItemChangesLMprod.Action::Delete;
                                 tmpItemChangesLMprod."Original Quantity" := ProductionBomLine."Quantity per";
-                                tmpItemChangesLMprod."Quantity per" := 0;
+                                tmpItemChangesLMprod."Quantity per" := ItemChangesLMproduction."Quantity per";
                                 tmpItemChangesLMprod.Insert();
                             end;
                         end;
@@ -2411,6 +2469,19 @@ codeunit 50111 "Funciones"
             if page.RunModal(page::"ZM Item Changes L.M. prod.", tmpItemChangesLMprod) = Action::LookupOK then
                 exit(True);
         end;
+    end;
+
+    local procedure GetLastProdBomLine(ProductionBomLine: Record "Production BOM Line"): Integer
+    var
+        ProductionBomLine2: Record "Production BOM Line";
+    begin
+        ProductionBomLine2.Reset();
+        ProductionBomLine2.SetRange("Production BOM No.", ProductionBomLine."Production BOM No.");
+        ProductionBomLine2.SetRange("Version Code", ProductionBomLine."Version Code");
+        if ProductionBomLine2.FindLast() then
+            exit(ProductionBomLine2."Line No." + 10000)
+        else
+            exit(10000);
     end;
 
 }
