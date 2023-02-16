@@ -11619,6 +11619,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Property Caption</note>
           <target>ERPLINK Documentos productos</target>
         </trans-unit>
+        <trans-unit id="Page 474319202 - Control 3259638410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Control txtDescription - Property Caption</note>
+          <target>Nombre</target>
+        </trans-unit>
         <trans-unit id="Page 411716643 - Control 1200201054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Descripción</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción""</note>

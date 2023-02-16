@@ -41,6 +41,7 @@ page 50158 "ZM Item Documents"
                 field(txtDescription; txtDescription)
                 {
                     ApplicationArea = all;
+                    Caption = 'Name', comment = 'ESP="Nombre"';
 
                     trigger OnDrillDown()
                     begin
