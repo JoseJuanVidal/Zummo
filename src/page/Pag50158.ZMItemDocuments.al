@@ -38,16 +38,6 @@ page 50158 "ZM Item Documents"
                         Hyperlink(txtComentario);
                     end;
                 }
-                field(txtDescription; txtDescription)
-                {
-                    ApplicationArea = all;
-                    Caption = 'Name', comment = 'ESP="Nombre"';
-
-                    trigger OnDrillDown()
-                    begin
-                        Hyperlink(txtComentario);
-                    end;
-                }
                 field(url; txtComentario)
                 {
                     ApplicationArea = All;
@@ -65,9 +55,10 @@ page 50158 "ZM Item Documents"
     trigger OnAfterGetRecord()
     begin
         txtComentario := Rec.GetComentario();
-        txtDescription := ExtractFileNameFromPath(txtComentario);
-        if txtDescription = '' then
-            txtDescription := txtComentario;
+        if Description = '' then
+            Description := ExtractFileNameFromPath(txtComentario);
+        if Description = '' then
+            Description := txtComentario;
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
@@ -99,7 +90,6 @@ page 50158 "ZM Item Documents"
 
     var
         txtComentario: Text;
-        txtDescription: text;
 
     local procedure ExtractFileNameFromPath(PathAndFileTxt: Text) FileTxt: Text
     begin
