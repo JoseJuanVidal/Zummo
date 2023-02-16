@@ -31,6 +31,7 @@ page 50158 "ZM Item Documents"
                 field(Description; Description)
                 {
                     ApplicationArea = all;
+                    Visible = false;
 
                     trigger OnDrillDown()
                     begin
@@ -40,7 +41,6 @@ page 50158 "ZM Item Documents"
                 field(txtDescription; txtDescription)
                 {
                     ApplicationArea = all;
-                    Visible = false;
 
                     trigger OnDrillDown()
                     begin
@@ -65,6 +65,8 @@ page 50158 "ZM Item Documents"
     begin
         txtComentario := Rec.GetComentario();
         txtDescription := ExtractFileNameFromPath(txtComentario);
+        if txtDescription = '' then
+            txtDescription := txtComentario;
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)

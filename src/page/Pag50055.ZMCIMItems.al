@@ -86,7 +86,7 @@ page 50055 "ZM CIM Items"
             {
                 Caption = 'Components Lines', comment = 'ESP="Lista componentes"';
                 ApplicationArea = all;
-                SubPageLink = "No." = field("Production BOM No.");
+                SubPageLink = "Production BOM No." = field("Production BOM No.");
             }
         }
         area(FactBoxes)
