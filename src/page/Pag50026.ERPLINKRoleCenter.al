@@ -1,4 +1,4 @@
-page 17453 "ERP LINK Role Center"
+page 50026 "ERP LINK Role Center"
 {
     Caption = 'ERPLINK Role Center', Comment = 'ESP="ERPLINK Role Center"';
     PageType = RoleCenter;

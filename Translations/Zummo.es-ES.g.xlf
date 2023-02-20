@@ -10066,6 +10066,30 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page DividirLineas - Control globalCantidad - Property Caption</note>
           <target>Cantidad</target>
         </trans-unit>
+        <trans-unit id="Page 1061375300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ERPLINK Role Center</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Role Center"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ERP LINK Role Center - Property Caption</note>
+          <target>ERPLINK Role Center</target>
+        </trans-unit>
+        <trans-unit id="Page 1061375300 - Action 2973329650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tasks</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tareas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ERP LINK Role Center - Action Tasks - Property Caption</note>
+          <target>Tareas</target>
+        </trans-unit>
+        <trans-unit id="Page 1061375300 - Action 1736359675 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or edit ERP LINK Items</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ver o editar los producto de ERPLINK"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ERP LINK Role Center - Action ERPLink Items - Property ToolTip</note>
+          <target>Ver o editar los producto de ERPLINK</target>
+        </trans-unit>
+        <trans-unit id="Page 1061375300 - Action 1736359675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ERPLINK Items</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ERP LINK Role Center - Action ERPLink Items - Property Caption</note>
+          <target>ERPLINK Productos</target>
+        </trans-unit>
         <trans-unit id="Page 806151863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comments</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Comments"</note>

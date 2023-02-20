@@ -8788,16 +8788,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mapeo Registros"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mapeo Registros_crm_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 190259930 - Action 1702811970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Generate the entity from the coupled Common Data Service data.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Generar la entidad desde el dato emparejado del Common Data Service"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mercado_crm_btc - Action CreateFromCDS - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 190259930 - Action 1702811970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create in Business Central</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Crear en Bussiness Central"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mercado_crm_btc - Action CreateFromCDS - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 1841483506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Quote</source>
           <note from="Developer" annotates="general" priority="2"></note>
