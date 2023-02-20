@@ -2301,6 +2301,8 @@ codeunit 50111 "Funciones"
                             if ProductionBomLine.FindFirst() then begin
                                 // existe y  añadimos la cantidad a la actual
                                 ProductionBomLine."Quantity per" += ItemChangesLMproduction."New Quantity";
+                                if ProductionBomLine."Routing Link Code" <> ItemChangesLMproduction."Routing Link Code" then
+                                    ProductionBomLine."Routing Link Code" := ItemChangesLMproduction."Routing Link Code";
                                 ProductionBomLine.Modify();
                             end else begin
                                 // no existe y creamos con cantidad
@@ -2309,10 +2311,12 @@ codeunit 50111 "Funciones"
                                 ProductionBomLine."Version Code" := ItemTracingBuffer."Source No.";
                                 ProductionBomLine."Line No." := GetLastProdBomLine(ProductionBomLine);
                                 ProductionBomLine.Type := ProductionBomLine.Type::Item;
-                                ProductionBomLine.Validate("No.", ItemChangesLMproduction."New Item No.");
-                                ProductionBomLine.validate("Quantity per", ProductionBomLine."Quantity per" + ItemChangesLMproduction."New Quantity");
+                                ProductionBomLine."No." := ItemChangesLMproduction."New Item No.";
+                                ProductionBomLine."Quantity per" := ItemChangesLMproduction."New Quantity";
                                 if ItemChangesLMproduction."New Unit of measure" <> '' then
-                                    ProductionBomLine.Validate("Unit of Measure Code", ItemChangesLMproduction."New Unit of measure");
+                                    ProductionBomLine."Unit of Measure Code" := ItemChangesLMproduction."New Unit of measure";
+                                if ProductionBomLine."Routing Link Code" <> ItemChangesLMproduction."Routing Link Code" then
+                                    ProductionBomLine."Routing Link Code" := ItemChangesLMproduction."Routing Link Code";
                                 ProductionBomLine.Insert();
                             end;
                         end;
@@ -2334,7 +2338,9 @@ codeunit 50111 "Funciones"
                             ProductionBomLine.SetRange("No.", ItemChangesLMproduction."Item No. to be replaced");
                             if ProductionBomLine.FindFirst() then begin
                                 if ProductionBomLine."Quantity per" > ItemChangesLMproduction."Quantity per" then begin
-
+                                    // restamos la cantidad
+                                    ProductionBomLine."Quantity per" -= ItemChangesLMproduction."Quantity per";
+                                    ProductionBomLine.Modify();
                                 end else
                                     ProductionBomLine.Delete();
                             end;
@@ -2342,7 +2348,7 @@ codeunit 50111 "Funciones"
                             // NEW ITEM
                             ProductionBomLine.SetRange("No.", ItemChangesLMproduction."New Item No.");
                             if ProductionBomLine.FindFirst() then begin
-                                ProductionBomLine.validate("Quantity per", ProductionBomLine."Quantity per" + ItemChangesLMproduction."New Quantity");
+                                ProductionBomLine."Quantity per" := ProductionBomLine."Quantity per" + ItemChangesLMproduction."New Quantity";
                                 ProductionBomLine.Modify();
                             end else begin
                                 ProductionBomLine.Init();
@@ -2350,10 +2356,12 @@ codeunit 50111 "Funciones"
                                 ProductionBomLine."Version Code" := ItemTracingBuffer."Source No.";
                                 ProductionBomLine."Line No." := GetLastProdBomLine(ProductionBomLine);
                                 ProductionBomLine.Type := ProductionBomLine.Type::Item;
-                                ProductionBomLine.Validate("No.", ItemChangesLMproduction."New Item No.");
-                                ProductionBomLine.validate("Quantity per", ProductionBomLine."Quantity per" + ItemChangesLMproduction."New Quantity");
+                                ProductionBomLine."No." := ItemChangesLMproduction."New Item No.";
+                                ProductionBomLine."Quantity per" := ProductionBomLine."Quantity per" + ItemChangesLMproduction."New Quantity";
                                 if ItemChangesLMproduction."New Unit of measure" <> '' then
-                                    ProductionBomLine.Validate("Unit of Measure Code", ItemChangesLMproduction."New Unit of measure");
+                                    ProductionBomLine."Unit of Measure Code" := ItemChangesLMproduction."New Unit of measure";
+                                if ProductionBomLine."Routing Link Code" <> ItemChangesLMproduction."Routing Link Code" then
+                                    ProductionBomLine."Routing Link Code" := ItemChangesLMproduction."Routing Link Code";
                                 ProductionBomLine.Insert();
                             end;
                         end;

@@ -138,6 +138,10 @@ page 50156 "ZM Production Bom Maintenance"
                     ApplicationArea = all;
                     ToolTip = 'Indicate the new "Unit of measure" to be updated in the BOM', comment = 'ESP="Indicar la nueva "Unidad de medida" a actualizar en las listas de materiales"';
                 }
+                field("New Routing Link Code"; "Routing Link Code")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(DeleteItem)
             {
