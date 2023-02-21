@@ -2091,6 +2091,91 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Grupo Cliente_crm_btc - Field zum_Nombre - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1597900397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CRM Leads</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 1964431276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field companyname - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 3425251533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field CreatedBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 1302697051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field CreatedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 1782641658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By (Delegate)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field CreatedOnBehalfBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 2300879071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>First Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field firstname - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 294027423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field lastname - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 2218961067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>productsubstituteid</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field LeadId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 1907234846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field ModifiedBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 2247197532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field ModifiedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 982954073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By (Delegate)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field ModifiedOnBehalfBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 3223187400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field OwnerId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 1765179598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field statecode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 1765179598 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Active,Inactive</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field statecode - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 3582892456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>zum ac areamanager</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field zum_ac_areamanager - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 4186650963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>zum ac enlacemail</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field zum_ac_enlacemail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 3128099835 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Área Manager BC</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field zum_areamanager - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3643146559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Mercado</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -9477,18 +9562,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mapeo Registros"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mapeo Registros_crm_btc - Property Caption</note>
           <target>Mapeo Registros</target>
-        </trans-unit>
-        <trans-unit id="Page 190259930 - Action 1702811970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Generate the entity from the coupled Common Data Service data.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Generar la entidad desde el dato emparejado del Common Data Service"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mercado_crm_btc - Action CreateFromCDS - Property ToolTip</note>
-          <target>Generar la entidad desde el dato emparejado del Common Data Service</target>
-        </trans-unit>
-        <trans-unit id="Page 190259930 - Action 1702811970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create in Business Central</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Crear en Bussiness Central"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Mercado_crm_btc - Action CreateFromCDS - Property Caption</note>
-          <target>Crear en Bussiness Central</target>
         </trans-unit>
         <trans-unit id="Page 1841483506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Quote</source>

@@ -56,9 +56,9 @@ page 50158 "ZM Item Documents"
     begin
         txtComentario := Rec.GetComentario();
         if Description = '' then
-            Description := ExtractFileNameFromPath(txtComentario);
+            Description := copystr(ExtractFileNameFromPath(txtComentario), 1, 100);
         if Description = '' then
-            Description := txtComentario;
+            Description := copystr(txtComentario, 1, 100);
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
