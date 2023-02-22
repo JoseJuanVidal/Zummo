@@ -4426,9 +4426,9 @@ Cstr(Sum(Fields!Portes.Value))
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>4.19379cm</Top>
+              <Top>4.32079cm</Top>
               <Left>2.11965cm</Left>
-              <Height>0.58208cm</Height>
+              <Height>0.45508cm</Height>
               <Width>14.46857cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
@@ -4481,7 +4481,7 @@ Cstr(Sum(Fields!Portes.Value))
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>2.7cm</Top>
               <Left>0.60713cm</Left>
-              <Height>1.3174cm</Height>
+              <Height>1.14477cm</Height>
               <Width>18.82709cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
@@ -5798,6 +5798,53 @@ Cstr(Sum(Fields!Portes.Value))
                 </RightBorder>
               </Style>
             </Line>
+            <Textbox Name="Textbox89">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!ProductordeproductoCaption.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Fields!Productordeproducto.Value</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>3.89063cm</Top>
+              <Left>1.99636cm</Left>
+              <Height>0.36011cm</Height>
+              <Width>8.32686cm</Width>
+              <ZIndex>7</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -6352,6 +6399,12 @@ AAAASAISAAAAAElAAgAAACAJSAAAAAAkAQkAAACAJCABAAAAkAQkAAAAAJKABAAAAEASkAAAAABIAhIA
         </Field>
         <Field Name="logo">
           <DataField>logo</DataField>
+        </Field>
+        <Field Name="Productordeproducto">
+          <DataField>Productordeproducto</DataField>
+        </Field>
+        <Field Name="ProductordeproductoCaption">
+          <DataField>ProductordeproductoCaption</DataField>
         </Field>
         <Field Name="CompanyInfo2Picture">
           <DataField>CompanyInfo2Picture</DataField>

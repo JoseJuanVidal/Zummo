@@ -376,6 +376,8 @@ report 50124 "AbonoVentaRegistrado"
             column(logo; CompanyInfo1.LogoCertificacion)
             { }
             //fin SOTHIS EBR 070920 id 159231            
+            column(Productordeproducto; CompanyInfo1."Productor de producto") { }
+            column(ProductordeproductoCaption; CompanyInfo1.FieldCaption("Productor de producto")) { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);

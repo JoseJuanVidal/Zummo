@@ -4002,9 +4002,9 @@ Cstr(Fields!DirEnvioAbono_CountryRegion.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>8.59714cm</Top>
+              <Top>8.85114cm</Top>
               <Left>2.06467cm</Left>
-              <Height>0.59949cm</Height>
+              <Height>0.37724cm</Height>
               <Width>13.95178cm</Width>
               <Style>
                 <Border>
@@ -4014,7 +4014,6 @@ Cstr(Fields!DirEnvioAbono_CountryRegion.Value)
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
             <Textbox Name="Textbox78">
@@ -6515,6 +6514,53 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
                 </RightBorder>
               </Style>
             </Line>
+            <Textbox Name="Textbox90">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!ProductordeproductoCaption.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve">  </Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Fields!Productordeproducto.Value</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>8.55131cm</Top>
+              <Left>2.06467cm</Left>
+              <Height>0.36011cm</Height>
+              <Width>8.32686cm</Width>
+              <ZIndex>7</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -7143,6 +7189,12 @@ SAAAAABEIhIAAAAAkYgEAAAAQCQiAQAAABCJSAAAAABEIhIAAAAAkYgEAAAAQCQiAQAAABCJSAAAAABE
         </Field>
         <Field Name="logo">
           <DataField>logo</DataField>
+        </Field>
+        <Field Name="Productordeproducto">
+          <DataField>Productordeproducto</DataField>
+        </Field>
+        <Field Name="ProductordeproductoCaption">
+          <DataField>ProductordeproductoCaption</DataField>
         </Field>
         <Field Name="CompanyInfo2Picture">
           <DataField>CompanyInfo2Picture</DataField>

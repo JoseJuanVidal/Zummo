@@ -388,6 +388,8 @@ report 50116 "FacturaNacionalUK"
             column(logo; CompanyInfo1.LogoCertificacion)
             { }
             //fin SOTHIS EBR 010920 id 159231
+            column(Productordeproducto; CompanyInfo."Productor de producto") { }
+            column(ProductordeproductoCaption; CompanyInfo.FieldCaption("Productor de producto")) { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);

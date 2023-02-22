@@ -3587,9 +3587,9 @@ Cstr(Fields!VATRegistrationNo.Value), 1)</Hidden>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>8.85245cm</Top>
+              <Top>9.48745cm</Top>
               <Left>1.89024cm</Left>
-              <Height>1.01224cm</Height>
+              <Height>0.47249cm</Height>
               <Width>14.46857cm</Width>
               <ZIndex>7</ZIndex>
               <Style>
@@ -3950,6 +3950,54 @@ Cstr(Fields!VATRegistrationNo.Value), 1)</Hidden>
                 </Border>
               </Style>
             </Rectangle>
+            <Textbox Name="Textbox91">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!ProductordeproductoCaption.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve">  </Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Fields!Productordeproducto.Value</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>8.95552cm</Top>
+              <Left>1.89024cm</Left>
+              <Height>0.36011cm</Height>
+              <Width>8.32686cm</Width>
+              <ZIndex>10</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -4221,6 +4269,12 @@ RAIAAAAgEpEAAAAAiEQkAAAAACIRCQAAAIBIRAIAAAAgEpEAAAAAiEQkAAAAACIRCQAAAIBIRAIAAAAg
         </Field>
         <Field Name="logo">
           <DataField>logo</DataField>
+        </Field>
+        <Field Name="Productordeproducto">
+          <DataField>Productordeproducto</DataField>
+        </Field>
+        <Field Name="ProductordeproductoCaption">
+          <DataField>ProductordeproductoCaption</DataField>
         </Field>
         <Field Name="TransportistaNombre">
           <DataField>TransportistaNombre</DataField>

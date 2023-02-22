@@ -39,6 +39,11 @@ table 50104 "ComentariosPredefinidos"
             Caption = 'Description', comment = 'ESP="Descripción"';
             DataClassification = CustomerContent;
         }
+        field(30; Extension; Text[100])
+        {
+            Caption = 'Extension', comment = 'ESP="Extension"';
+            DataClassification = CustomerContent;
+        }
         //#region ERPLINK
     }
 
@@ -47,6 +52,9 @@ table 50104 "ComentariosPredefinidos"
         key(PK; Id)
         {
             Clustered = true;
+        }
+        key(Extension; Tipo, Extension, Description)
+        {
         }
     }
 

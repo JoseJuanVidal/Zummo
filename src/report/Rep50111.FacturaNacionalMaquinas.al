@@ -393,6 +393,8 @@ report 50111 "FacturaNacionalMaquinas"
             column(logo; CompanyInfo1.LogoCertificacion)
             { }
             //fin SOTHIS EBR 010920 id 159231
+            column(Productordeproducto; CompanyInfo1."Productor de producto") { }
+            column(ProductordeproductoCaption; CompanyInfo1.FieldCaption("Productor de producto")) { }
             column(TextRegister; TextRegister) { }
             dataitem(CopyLoop; "Integer")
             {

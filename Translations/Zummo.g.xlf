@@ -128,6 +128,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4166419010 - Field 3979136067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Extension</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Extension"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ComentariosPredefinidos - Field Extension - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4166419010 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Id</source>
           <note from="Developer" annotates="general" priority="2">ESP="Id"</note>
@@ -10852,6 +10857,11 @@
           <source>ERPLINK Documentos productos</source>
           <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Documentos productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 474319202 - Action 504837461 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crear Extensión</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear Extensión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Action SetExtension - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 411716643 - Control 1200201054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Descripción</source>

@@ -5,7 +5,7 @@ page 50158 "ZM Item Documents"
     UsageCategory = None;
     //ApplicationArea = all;
     SourceTable = ComentariosPredefinidos;
-    SourceTableView = where(Tipo = const(ERPLINKDocs));
+    SourceTableView = sorting(Tipo, Extension, Description) where(Tipo = const(ERPLINKDocs));
 
     // pagina para Servicio WEB de ERPLINK para cimworks
 
@@ -48,6 +48,32 @@ page 50158 "ZM Item Documents"
                         Hyperlink(txtComentario);
                     end;
                 }
+                field(Extension; Extension)
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+            }
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(SetExtension)
+            {
+                ApplicationArea = all;
+                Caption = 'Crear Extensión', comment = 'ESP="Crear Extensión"';
+                Image = FileContract;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    Rec.Extension := copystr(ExtractFileExtFromPath(Rec.Description), 1, MaxStrLen(Rec.Extension));
+                    REc.Modify();
+                end;
             }
         }
     }
@@ -68,6 +94,8 @@ page 50158 "ZM Item Documents"
         if "Line No." = 0 then
             Rec."Line No." := GetLastLineNo();
         txtComentario := '';
+        if Extension = '' then
+            Rec.Extension := copystr(ExtractFileExtFromPath(Rec.Description), 1, MaxStrLen(Rec.Extension));
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
@@ -78,6 +106,8 @@ page 50158 "ZM Item Documents"
             Rec."Line No." := GetLastLineNo();
         if txtComentario <> '' then
             Rec.SetComentario(txtComentario);
+        if Rec.Extension = '' then
+            Rec.Extension := copystr(ExtractFileExtFromPath(Rec.Description), 1, MaxStrLen(Rec.Extension));
         Rec.Tipo := Rec.Tipo::ERPLINKDocs;
     end;
 
@@ -96,6 +126,13 @@ page 50158 "ZM Item Documents"
         FileTxt := PathAndFileTxt;
         WHILE STRPOS(FileTxt, '\') <> 0 DO
             FileTxt := COPYSTR(FileTxt, 1 + STRPOS(FileTxt, '\'));
+    end;
+
+    local procedure ExtractFileExtFromPath(PathAndFileTxt: Text) FileTxt: Text
+    begin
+        FileTxt := PathAndFileTxt;
+        WHILE STRPOS(FileTxt, '.') <> 0 DO
+            FileTxt := COPYSTR(FileTxt, 1 + STRPOS(FileTxt, '.'));
     end;
 
 }
