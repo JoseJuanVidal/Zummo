@@ -2301,6 +2301,7 @@ codeunit 50111 "Funciones"
                             if ProductionBomLine.FindFirst() then begin
                                 // existe y  añadimos la cantidad a la actual
                                 ProductionBomLine."Quantity per" += ItemChangesLMproduction."New Quantity";
+                                ProductionBomLine.Quantity := ProductionBomLine."Quantity per";
                                 if ProductionBomLine."Routing Link Code" <> ItemChangesLMproduction."Routing Link Code" then
                                     ProductionBomLine."Routing Link Code" := ItemChangesLMproduction."Routing Link Code";
                                 ProductionBomLine.Modify();
@@ -2312,7 +2313,9 @@ codeunit 50111 "Funciones"
                                 ProductionBomLine."Line No." := GetLastProdBomLine(ProductionBomLine);
                                 ProductionBomLine.Type := ProductionBomLine.Type::Item;
                                 ProductionBomLine."No." := ItemChangesLMproduction."New Item No.";
+                                ProductionBomLine.Description := ItemChangesLMproduction."New Item Description";
                                 ProductionBomLine."Quantity per" := ItemChangesLMproduction."New Quantity";
+                                ProductionBomLine.Quantity := ProductionBomLine."Quantity per";
                                 if ItemChangesLMproduction."New Unit of measure" <> '' then
                                     ProductionBomLine."Unit of Measure Code" := ItemChangesLMproduction."New Unit of measure";
                                 if ProductionBomLine."Routing Link Code" <> ItemChangesLMproduction."Routing Link Code" then
@@ -2328,6 +2331,7 @@ codeunit 50111 "Funciones"
                                 if ProductionBomLine."Quantity per" > ItemChangesLMproduction."Quantity per" then begin
                                     // restamos la cantidad
                                     ProductionBomLine."Quantity per" -= ItemChangesLMproduction."Quantity per";
+                                    ProductionBomLine.Quantity := ProductionBomLine."Quantity per";
                                     ProductionBomLine.Modify();
                                 end else
                                     ProductionBomLine.Delete();
@@ -2340,6 +2344,7 @@ codeunit 50111 "Funciones"
                                 if ProductionBomLine."Quantity per" > ItemChangesLMproduction."Quantity per" then begin
                                     // restamos la cantidad
                                     ProductionBomLine."Quantity per" -= ItemChangesLMproduction."Quantity per";
+                                    ProductionBomLine.Quantity := ProductionBomLine."Quantity per";
                                     ProductionBomLine.Modify();
                                 end else
                                     ProductionBomLine.Delete();
@@ -2358,6 +2363,8 @@ codeunit 50111 "Funciones"
                                 ProductionBomLine.Type := ProductionBomLine.Type::Item;
                                 ProductionBomLine."No." := ItemChangesLMproduction."New Item No.";
                                 ProductionBomLine."Quantity per" := ProductionBomLine."Quantity per" + ItemChangesLMproduction."New Quantity";
+                                ProductionBomLine.Description := ItemChangesLMproduction."New Item Description";
+                                ProductionBomLine.Quantity := ProductionBomLine."Quantity per";
                                 if ItemChangesLMproduction."New Unit of measure" <> '' then
                                     ProductionBomLine."Unit of Measure Code" := ItemChangesLMproduction."New Unit of measure";
                                 if ProductionBomLine."Routing Link Code" <> ItemChangesLMproduction."Routing Link Code" then
