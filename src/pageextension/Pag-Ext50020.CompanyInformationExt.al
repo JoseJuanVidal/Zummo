@@ -25,6 +25,10 @@ pageextension 50020 "CompanyInformationExt" extends "Company Information"
             {
                 ApplicationArea = all;
             }
+            field("Productor de producto"; "Productor de producto")
+            {
+                ApplicationArea = all;
+            }
             field("Initial Work Hours"; "Initial Work Hour")
             {
                 ApplicationArea = all;

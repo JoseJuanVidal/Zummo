@@ -19,6 +19,12 @@
             <ObjectID>50106</ObjectID>
             <Published>true</Published>
         </TenantWebService>
+                <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>cimworksitemdocuments</ServiceName>
+            <ObjectID>50158</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
         <TenantWebService>
             <ObjectType>Page</ObjectType>
             <ServiceName>itemwhereused</ServiceName>

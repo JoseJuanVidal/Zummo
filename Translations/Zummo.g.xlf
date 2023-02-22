@@ -10733,10 +10733,15 @@
           <note from="Developer" annotates="general" priority="2">ESP="Lista componentes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Control BomLines - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3853294818 - Action 2394472684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copiar producto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Copiar producto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action CopyItem - Property Caption</note>
+        <trans-unit id="Page 3853294818 - Control 3937403654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documentos Lista componentes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos Lista componentes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Control BomLineDocuments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3853294818 - Control 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documentos Producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Control Documents - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ERPLINK Production BOM Lines</source>
@@ -23602,6 +23607,11 @@
           <source>Logo Certificacion ISO</source>
           <note from="Developer" annotates="general" priority="2">ESP="Logo Certificacion ISO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInformationExt - Field LogoCertificacion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 826446478 - Field 2685579021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+          <source>Product producer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Productor de producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInformationExt - Field Productor de producto - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 826446478 - Field 2940339836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
           <source>Vat Reg. GB</source>

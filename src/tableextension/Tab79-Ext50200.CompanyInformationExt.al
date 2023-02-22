@@ -36,6 +36,10 @@ tableextension 50200 "CompanyInformationExt" extends "Company Information" //79
                     Error('Error. La hora final no puede ser inferior a la hora inicial.');
             end;
         }
+        field(50005; "Productor de producto"; code[50])
+        {
+            Caption = 'Product producer', comment = 'ESP="Productor de producto"';
+        }
     }
 
 }

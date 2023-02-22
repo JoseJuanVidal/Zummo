@@ -3,6 +3,7 @@ page 50158 "ZM Item Documents"
     Caption = 'ERPLINK Documentos productos', comment = 'ESP="ERPLINK Documentos productos"';
     PageType = ListPart;
     UsageCategory = None;
+    //ApplicationArea = all;
     SourceTable = ComentariosPredefinidos;
     SourceTableView = where(Tipo = const(ERPLINKDocs));
 
@@ -31,7 +32,6 @@ page 50158 "ZM Item Documents"
                 field(Description; Description)
                 {
                     ApplicationArea = all;
-                    Visible = false;
 
                     trigger OnDrillDown()
                     begin

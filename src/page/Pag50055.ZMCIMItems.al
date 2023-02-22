@@ -87,6 +87,7 @@ page 50055 "ZM CIM Items"
                 Caption = 'Components Lines', comment = 'ESP="Lista componentes"';
                 ApplicationArea = all;
                 SubPageLink = "Production BOM No." = field("Production BOM No.");
+                UpdatePropagation = Both;
             }
         }
         area(FactBoxes)
@@ -94,8 +95,15 @@ page 50055 "ZM CIM Items"
             part(Documents; "ZM Item Documents")
             {
                 ApplicationArea = all;
+                Caption = 'Documentos Producto', comment = 'ESP="Documentos Producto"';
                 SubPageLink = CodComentario = field("No.");
-
+            }
+            part(BomLineDocuments; "ZM Item Documents")
+            {
+                ApplicationArea = all;
+                Caption = 'Documentos Lista componentes', comment = 'ESP="Documentos Lista componentes"';
+                SubPageLink = CodComentario = field("No.");
+                Provider = BomLines;
             }
         }
     }
@@ -104,44 +112,44 @@ page 50055 "ZM CIM Items"
     {
         area(Processing)
         {
-            action(CopyItem)
-            {
-                ApplicationArea = all;
-                Caption = 'Copiar producto', comment = 'ESP="Copiar producto"';
-                Image = CopyItem;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
+            // action(CopyItem)
+            // {
+            //     ApplicationArea = all;
+            //     Caption = 'Copiar producto', comment = 'ESP="Copiar producto"';
+            //     Image = CopyItem;
+            //     Promoted = true;
+            //     PromotedIsBig = true;
+            //     PromotedCategory = Process;
 
-                trigger OnAction()
-                begin
-                    actionCopyItem;
-                end;
-            }
-            action(Sharepoint)
-            {
-                ApplicationArea = all;
+            //     trigger OnAction()
+            //     begin
+            //         actionCopyItem;
+            //     end;
+            // }
+            // action(Sharepoint)
+            // {
+            //     ApplicationArea = all;
 
-                trigger OnAction()
-                var
-                    Sites: Record File temporary;
-                    ZMOnlineDrive: Record "ZM Online Drive" temporary;
-                    Sharepoint: Codeunit "ZM Sharepoint Functions";
-                    statuscode: Integer;
-                    texto: Text;
-                begin
-                    Commit();
-                    //Sharepoint.FetchSite(Sites);
-                    //Sharepoint.FetchDrives(ZMOnlineDrive);
-                    //Sharepoint.FetchDrivesItems()
-                    Sharepoint.UploadFileOne(ZMOnlineDrive);
-                    if ZMOnlineDrive.FindFirst() then
-                        repeat
-                            message(ZMOnlineDrive.name + ': ' + ZMOnlineDrive.name + '\' + ZMOnlineDrive.id);
-                        until ZMOnlineDrive.Next() = 0;
+            //     trigger OnAction()
+            //     var
+            //         Sites: Record File temporary;
+            //         ZMOnlineDrive: Record "ZM Online Drive" temporary;
+            //         Sharepoint: Codeunit "ZM Sharepoint Functions";
+            //         statuscode: Integer;
+            //         texto: Text;
+            //     begin
+            //         Commit();
+            //         //Sharepoint.FetchSite(Sites);
+            //         //Sharepoint.FetchDrives(ZMOnlineDrive);
+            //         //Sharepoint.FetchDrivesItems()
+            //         Sharepoint.UploadFileOne(ZMOnlineDrive);
+            //         if ZMOnlineDrive.FindFirst() then
+            //             repeat
+            //                 message(ZMOnlineDrive.name + ': ' + ZMOnlineDrive.name + '\' + ZMOnlineDrive.id);
+            //             until ZMOnlineDrive.Next() = 0;
 
-                end;
-            }
+            //     end;
+            // }
         }
     }
 
