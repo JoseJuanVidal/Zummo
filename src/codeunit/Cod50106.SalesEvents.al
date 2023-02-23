@@ -657,16 +657,17 @@ codeunit 50106 "SalesEvents"
     begin
         if Rec.IsTemporary then
             exit;
-        case CurrFieldNo of
-            Rec.FieldNo("Service Item No."):
-                begin
-                    if ServiceItem.Get(Rec."Service Item No.") then begin
-                        if ServiceItem."Mostrar aviso pedido servicio" then
-                            Message(ServiceItem."Aviso pedido servicio");
-                    end;
-                end;
+        // case CurrFieldNo of
+        //     Rec.FieldNo("Service Item No."):
+        //         begin
+        if ServiceItem.Get(Rec."Service Item No.") then begin
+            if ServiceItem."Mostrar aviso pedido servicio" then
+                Message(ServiceItem."Aviso pedido servicio");
         end;
+        //         end;
+        // end;
     end;
+
 
 
     //Comentarios lotes hist factura venta
