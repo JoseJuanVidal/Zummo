@@ -35,8 +35,7 @@ page 50158 "ZM Item Documents"
 
                     trigger OnValidate()
                     begin
-                        if Rec.Extension = '' then
-                            Rec.Extension := copystr(ExtractFileExtFromPath(Rec.Description), 1, MaxStrLen(Rec.Extension));
+                        Rec.Extension := copystr(ExtractFileExtFromPath(Rec.Description), 1, MaxStrLen(Rec.Extension));
                     end;
 
                     trigger OnDrillDown()
