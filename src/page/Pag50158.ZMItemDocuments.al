@@ -33,6 +33,12 @@ page 50158 "ZM Item Documents"
                 {
                     ApplicationArea = all;
 
+                    trigger OnValidate()
+                    begin
+                        if Rec.Extension = '' then
+                            Rec.Extension := copystr(ExtractFileExtFromPath(Rec.Description), 1, MaxStrLen(Rec.Extension));
+                    end;
+
                     trigger OnDrillDown()
                     begin
                         Hyperlink(txtComentario);
@@ -52,6 +58,7 @@ page 50158 "ZM Item Documents"
                 {
                     ApplicationArea = All;
                     Visible = false;
+
                 }
             }
         }
