@@ -5184,25 +5184,15 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - NamedType 2270621111" size-unit="char" translate="yes" xml:space="preserve">
-          <source>sharepoint</source>
+        <trans-unit id="Codeunit 3118965969 - Method 278911245 - NamedType 275499162" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDF Files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - NamedType lbloAut</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method DownloadPDFfromURL - NamedType SaveFileDialogFilterMsg</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - Method 3052905367 - NamedType 4081362667" size-unit="char" translate="yes" xml:space="preserve">
-          <source>424ef0a3-de4f-45e9-b562-a3792abc71ad</source>
+        <trans-unit id="Codeunit 3118965969 - Method 278911245 - NamedType 34040586" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Save PDF file</source>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method FetchDrivesItems - NamedType DriveId</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - Method 736698251 - NamedType 4081362667" size-unit="char" translate="yes" xml:space="preserve">
-          <source>b!Cu8nOuEVwkeC04vs82WUBO-FdIVavSVEj1wihPBO4qgAm_JGdqzGQIlTwVXIUMpK/items/012ST4ANJPBBRNWHNSIRFYOZWZBDYRYPWT</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method UploadFileOne - NamedType DriveId</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - Method 736698251 - NamedType 2393058227" size-unit="char" translate="yes" xml:space="preserve">
-          <source/>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method UploadFileOne - NamedType ParentId</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method DownloadPDFfromURL - NamedType SaveFileDialogTitleMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 2169472807" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;h3 style="text-align: left; color: #3f7320;"&gt;&lt;span style="border-bottom: 4px solid #c82828;"&gt;%1 No.:&amp;nbsp;&lt;/span&gt;%2&lt;/h3&gt;</source>

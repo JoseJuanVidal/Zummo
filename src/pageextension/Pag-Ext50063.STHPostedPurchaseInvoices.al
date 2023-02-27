@@ -36,6 +36,28 @@ pageextension 50063 "STH PostedPurchaseInvoices" extends "Posted Purchase Invoic
     actions
     {
         // Add changes to page actions here
+        addafter("Co&mments")
+        {
+            action(PaymentsDays)
+            {
+                ApplicationArea = all;
+                Caption = 'Payments Days', comment = 'ESP="Plazos de pago"';
+                Image = PaymentDays;
+                Promoted = true;
+                PromotedCategory = Category5;
+
+                trigger OnAction()
+                var
+                    PurchInvoiceHeader: Record "Purch. Inv. Header";
+                    Funciones: Codeunit "ZM Visual code utilities";
+                begin
+                    CurrPage.SetSelectionFilter(PurchInvoiceHeader);
+                    Funciones.CreateSalesInvoicePaymentTerms(PurchInvoiceHeader);
+                end;
+
+
+            }
+        }
     }
 
     trigger OnAfterGetRecord()

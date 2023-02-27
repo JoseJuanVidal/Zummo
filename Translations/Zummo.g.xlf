@@ -23298,6 +23298,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Act. Coste Unitario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Posted Sales Cr. Memo Subf - Action CalcItemCost - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3206344153 - Action 417321194 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 407220332">
+          <source>Payments Days</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plazos de pago"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseInvoices - Action PaymentsDays - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 811884982 - Action 144949968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1116965951">
           <source>Calcular Importes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Calcular importes"</note>
