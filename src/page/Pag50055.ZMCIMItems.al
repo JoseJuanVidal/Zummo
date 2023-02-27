@@ -92,6 +92,12 @@ page 50055 "ZM CIM Items"
         }
         area(FactBoxes)
         {
+            part(ItemPicture; "ZM ERPLINK Item Picture")
+            {
+                ApplicationArea = all;
+                Caption = 'Imagen', comment = 'ESP="Imagen"';
+                SubPageLink = "No." = field("No.");
+            }
             part(Documents; "ZM Item Documents")
             {
                 ApplicationArea = all;
@@ -112,6 +118,19 @@ page 50055 "ZM CIM Items"
     {
         area(Processing)
         {
+            action(download)
+            {
+                ApplicationArea = all;
+                Promoted = true;
+
+                trigger OnAction()
+                var
+                    Sharepoint: Codeunit "ZM Sharepoint Functions";
+                begin
+                    Sharepoint.DownloadPDFfromURL;
+                end;
+            }
+
             // action(CopyItem)
             // {
             //     ApplicationArea = all;

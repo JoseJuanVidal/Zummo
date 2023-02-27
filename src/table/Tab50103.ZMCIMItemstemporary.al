@@ -32,6 +32,10 @@ table 50103 "ZM CIM Items temporary"
         {
             Caption = 'Inventory', Comment = 'ESP="Inventario"';
         }
+        field(92; Picture; MediaSet)
+        {
+            Caption = 'Picture', Comment = 'ESP="Picture"';
+        }
         Field(50125; Material; text[100])
         {
             DataClassification = CustomerContent;

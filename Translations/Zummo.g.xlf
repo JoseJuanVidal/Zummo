@@ -6103,6 +6103,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Embalaje"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Packaging - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Picture</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Picture"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Picture - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1666975959 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Production BOM No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº L.M. producción"</note>
@@ -6963,30 +6968,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - NamedType 2270621111" size-unit="char" translate="yes" xml:space="preserve">
-          <source>sharepoint</source>
+        <trans-unit id="Codeunit 3118965969 - Method 278911245 - NamedType 275499162" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDF Files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - NamedType lbloAut</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method DownloadPDFfromURL - NamedType SaveFileDialogFilterMsg</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - Method 3052905367 - NamedType 4081362667" size-unit="char" translate="yes" xml:space="preserve">
-          <source>424ef0a3-de4f-45e9-b562-a3792abc71ad</source>
+        <trans-unit id="Codeunit 3118965969 - Method 278911245 - NamedType 34040586" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Save PDF file</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method FetchDrivesItems - NamedType DriveId</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - Method 790627987 - NamedType 1677243864" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Status code: %1\ Description: %2 \%3</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Status code: %1\ Description: %2 \%3"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method GetAccessToken - NamedType StatusCodeErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - Method 736698251 - NamedType 4081362667" size-unit="char" translate="yes" xml:space="preserve">
-          <source>b!Cu8nOuEVwkeC04vs82WUBO-FdIVavSVEj1wihPBO4qgAm_JGdqzGQIlTwVXIUMpK/items/012ST4ANJPBBRNWHNSIRFYOZWZBDYRYPWT</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method UploadFileOne - NamedType DriveId</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - Method 736698251 - NamedType 2393058227" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method UploadFileOne - NamedType ParentId</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method DownloadPDFfromURL - NamedType SaveFileDialogTitleMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 2169472807" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;h3 style="text-align: left; color: #3f7320;"&gt;&lt;span style="border-bottom: 4px solid #c82828;"&gt;%1 No.:&amp;nbsp;&lt;/span&gt;%2&lt;/h3&gt;</source>
@@ -10748,6 +10738,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Documentos Producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Control Documents - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3853294818 - Control 1368373035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imagen</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imagen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Control ItemPicture - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ERPLINK Production BOM Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Líneas Prod. BOM Lines "</note>
@@ -10847,6 +10842,76 @@
           <source>Documents</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Picture</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imagen producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - NamedType 2865259996" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Are you sure you want to delete the picture?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - NamedType DeleteImageQst</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - NamedType 992573177" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must add a description to the item before you can import a picture.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - NamedType MustSpecifyDescriptionErr</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The existing picture will be replaced. Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - NamedType OverrideImageQst</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - NamedType 464428880" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select a picture to upload</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - NamedType SelectPictureTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - Control 1594621544 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the picture that has been inserted for the item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Control Picture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - Action 3119204463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete the record.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Elimina el registro."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action DeletePicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - Action 3119204463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Eliminar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action DeletePicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - Action 2665042526 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export the picture to a file.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exporta la imagen a un archivo."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action ExportFile - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - Action 2665042526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action ExportFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - Action 2864777531 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import a picture file.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importa un archivo de imagen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action ImportPicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - Action 2864777531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action ImportPicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - Action 3051446377 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activate the camera on the device.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Activa la cámara en el dispositivo."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action TakePicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1466677331 - Action 3051446377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Take</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hacer"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action TakePicture - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1671082619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Confirm Changes in L.M. Production</source>
