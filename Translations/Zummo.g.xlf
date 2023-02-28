@@ -23308,6 +23308,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Calcular importes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseReceipts - Action calcularImportes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 811884982 - Action 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1116965951">
+          <source>Excel Normativa</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Excel Normativa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseReceipts - Action ExportExcel - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 811884982 - Action 2896958691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1116965951">
           <source>Marcar no facturar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Marcar no facturar"</note>

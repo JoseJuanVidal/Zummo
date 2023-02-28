@@ -79,6 +79,21 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
                 end;
 
             }
+            action(ExportExcel)
+            {
+                ApplicationArea = all;
+                Caption = 'Excel Normativa', comment = 'ESP="Excel Normativa"';
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit SMTP_Trampa;
+
+                begin
+                    Funciones.CreatePurchaseReceiptPlastic();
+                end;
+
+            }
         }
     }
 
