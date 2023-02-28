@@ -49,7 +49,7 @@ pageextension 50063 "STH PostedPurchaseInvoices" extends "Posted Purchase Invoic
                 trigger OnAction()
                 var
                     PurchInvoiceHeader: Record "Purch. Inv. Header";
-                    Funciones: Codeunit "ZM Visual code utilities";
+                    Funciones: Codeunit SMTP_Trampa;
                 begin
                     CurrPage.SetSelectionFilter(PurchInvoiceHeader);
                     Funciones.CreateSalesInvoicePaymentTerms(PurchInvoiceHeader);
