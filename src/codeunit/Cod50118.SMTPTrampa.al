@@ -293,6 +293,7 @@ codeunit 50118 "SMTP_Trampa"
 
                 PurchRcptLine.Reset();
                 PurchRcptLine.SetRange("Document No.", PurchRcptHeader."No.");
+                PurchRcptLine.SetFilter(Quantity, '>0');
                 if PurchRcptLine.FindFirst() then
                     repeat
                         if PurchRcptLine.Type in [PurchRcptLine.Type::"Fixed Asset", PurchRcptLine.Type::"G/L Account", PurchRcptLine.Type::Item] then
@@ -326,7 +327,7 @@ codeunit 50118 "SMTP_Trampa"
         PurchInvoiceLine.SetRange("Receipt Line No.", PurchRcptLine."Line No.");
         if PurchInvoiceLine.FindFirst() then;
         ExcelBuffer.AddColumn(PurchRcptHeader."No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(PurchRcptLine.FieldCaption("Line No."), false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchRcptLine."Line No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
         ExcelBuffer.AddColumn(PurchInvoiceLine."Document No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(PurchInvoiceLine."Line No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
         ExcelBuffer.AddColumn(PurchRcptLine."Order No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
@@ -345,7 +346,7 @@ codeunit 50118 "SMTP_Trampa"
         ExcelBuffer.AddColumn(Item."Net Weight", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
         ExcelBuffer.AddColumn(item."Packing Plastic Qty. (kg)", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
         ExcelBuffer.AddColumn(item."Packing Recycled plastic (kg)", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
-        ExcelBuffer.AddColumn('Sin dato', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(item."Vendor Packaging product KG", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.NewRow();
     end;
 
