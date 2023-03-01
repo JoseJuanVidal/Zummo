@@ -253,7 +253,7 @@ codeunit 50118 "SMTP_Trampa"
         PurchRcptLine: Record "Purch. Rcpt. Line";
         Window: Dialog;
     begin
-        PurchRcptHeader.SetFilter("Posting Date", '%1..', 20221201D);
+        PurchRcptHeader.SetFilter("Posting Date", '%1..', 20230101D);
         Window.Open('Nº Recepción #1###########################\Fecha #2##########');
         ExcelBuffer.DeleteAll();
         ExcelBuffer.NewRow();
