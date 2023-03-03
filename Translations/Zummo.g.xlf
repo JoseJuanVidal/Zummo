@@ -11258,15 +11258,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Documentos productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 474319202 - Method 2787516006 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to download the file?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea descargar el fichero?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Method DownloadFile - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 474319202 - Method 3317724022 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you want to update the images?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar la imagen?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Method UpdateFileJpg - NamedType lblConfirm</note>
         </trans-unit>
-        <trans-unit id="Page 474319202 - Action 504837461 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Crear Extensión</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Crear Extensión"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Action SetExtension - Property Caption</note>
+        <trans-unit id="Page 474319202 - Action 2550237599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>URL</source>
+          <note from="Developer" annotates="general" priority="2">ESP="URL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Action HyperlinkURL - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 474319202 - Action 2427213647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update picture</source>

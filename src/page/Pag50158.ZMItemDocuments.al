@@ -6,6 +6,8 @@ page 50158 "ZM Item Documents"
     //ApplicationArea = all;
     SourceTable = ComentariosPredefinidos;
     SourceTableView = sorting(Tipo, Extension, Description) where(Tipo = const(ERPLINKDocs));
+    InsertAllowed = false;
+    ModifyAllowed = false;
 
     // pagina para Servicio WEB de ERPLINK para cimworks
 
@@ -38,9 +40,9 @@ page 50158 "ZM Item Documents"
                         Rec.Extension := copystr(ExtractFileExtFromPath(Rec.Description), 1, MaxStrLen(Rec.Extension));
                     end;
 
-                    trigger OnDrillDown()
+                    trigger OnAssistEdit()
                     begin
-                        Hyperlink(txtComentario);
+                        DownloadFile;
                     end;
                 }
                 field(url; txtComentario)
@@ -67,16 +69,27 @@ page 50158 "ZM Item Documents"
     {
         area(Processing)
         {
-            action(SetExtension)
+            // action(SetExtension)
+            // {
+            //     ApplicationArea = all;
+            //     Caption = 'Crear Extensión', comment = 'ESP="Crear Extensión"';
+            //     Image = FileContract;
+
+            //     trigger OnAction()
+            //     begin
+            //         Rec.Extension := copystr(ExtractFileExtFromPath(Rec.Description), 1, MaxStrLen(Rec.Extension));
+            //         REc.Modify();
+            //     end;
+            // }
+            action(HyperlinkURL)
             {
                 ApplicationArea = all;
-                Caption = 'Crear Extensión', comment = 'ESP="Crear Extensión"';
+                Caption = 'URL', comment = 'ESP="URL"';
                 Image = FileContract;
 
                 trigger OnAction()
                 begin
-                    Rec.Extension := copystr(ExtractFileExtFromPath(Rec.Description), 1, MaxStrLen(Rec.Extension));
-                    REc.Modify();
+                    Hyperlink(txtComentario);
                 end;
             }
             action(UpdatePicture)
@@ -180,4 +193,22 @@ page 50158 "ZM Item Documents"
         Message('Fin');
     end;
 
+
+    local procedure DownloadFile()
+    var
+        CIMItemstemporary: Record "ZM CIM Items temporary";
+        Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
+        Stream: InStream;
+        lblConfirm: Label '¿Do you want to download the file?', comment = 'ESP="¿Desea descargar el fichero?"';
+    begin
+        if not Confirm(lblConfirm) then
+            exit;
+
+        if Sharepoint.DownloadFileName(Rec.Description, Stream, 'jpg') then begin
+            if CIMItemstemporary.Get(Rec.CodComentario) then begin
+                DownloadFromStream(Stream, '', '', '', Rec.Description);
+            end;
+        end;
+
+    end;
 }
