@@ -72,13 +72,24 @@ page 50158 "ZM Item Documents"
                 ApplicationArea = all;
                 Caption = 'Crear Extensión', comment = 'ESP="Crear Extensión"';
                 Image = FileContract;
-                Promoted = true;
-                PromotedCategory = Process;
 
                 trigger OnAction()
                 begin
                     Rec.Extension := copystr(ExtractFileExtFromPath(Rec.Description), 1, MaxStrLen(Rec.Extension));
                     REc.Modify();
+                end;
+            }
+            action(UpdatePicture)
+            {
+                ApplicationArea = all;
+                Caption = 'Update picture', comment = 'ESP="Actualzizar imagen"';
+                Image = Picture;
+
+                trigger OnAction()
+                begin
+
+                    UpdateFileJpg();
+
                 end;
             }
         }
@@ -139,6 +150,34 @@ page 50158 "ZM Item Documents"
         FileTxt := PathAndFileTxt;
         WHILE STRPOS(FileTxt, '.') <> 0 DO
             FileTxt := COPYSTR(FileTxt, 1 + STRPOS(FileTxt, '.'));
+    end;
+
+    local procedure UpdateFileJpg()
+    var
+        CIMItemstemporary: Record "ZM CIM Items temporary";
+        Docs: Record ComentariosPredefinidos;
+        Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
+        Stream: InStream;
+        lblConfirm: Label '¿Do you want to update the images?', comment = 'ESP="¿Desea actualizar la imagen?"';
+    begin
+        if not (Rec.Extension in ['jpg']) then
+            exit;
+        if not Confirm(lblConfirm) then
+            exit;
+
+        Docs.Reset();
+        Docs.SetRange(CodComentario, Rec.CodComentario);
+        Docs.SetRange(Extension, 'jpg');
+        if Docs.FindFirst() then begin
+            if Sharepoint.DownloadFileName(Docs.Description, Stream, 'jpg') then begin
+                if CIMItemstemporary.Get(Rec.CodComentario) then begin
+                    CIMItemstemporary.Picture.ImportStream(Stream, Docs.Description);
+                    CIMItemstemporary.Modify();
+                    //DownloadFromStream(Stream, '', '', '', Docs.Description);
+                end;
+            end;
+        end;
+        Message('Fin');
     end;
 
 }

@@ -116,18 +116,29 @@ page 50055 "ZM CIM Items"
 
     actions
     {
-        area(Processing)
+        area(Navigation)
         {
-            action(download)
+            action(SharepointSetup)
             {
                 ApplicationArea = all;
+                Image = ValidateEmailLoggingSetup;
+                RunObject = page "OAuth 2.0 Applications";
+            }
+        }
+        area(Processing)
+        {
+            action(UpdatePicture)
+            {
+                ApplicationArea = all;
+                Caption = 'Update picture', comment = 'ESP="Actualzizar imagen"';
+                Image = Picture;
                 Promoted = true;
 
                 trigger OnAction()
-                var
-                    Sharepoint: Codeunit "ZM Sharepoint Functions";
                 begin
-                    Sharepoint.DownloadPDFfromURL;
+
+                    UpdateFileJpg();
+
                 end;
             }
 
@@ -176,4 +187,36 @@ page 50055 "ZM CIM Items"
     begin
         Rec.CopyItem;
     end;
+
+    local procedure UpdateFileJpg()
+    var
+        CIMItemstemporary: Record "ZM CIM Items temporary";
+        Docs: Record ComentariosPredefinidos;
+        Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
+        Stream: InStream;
+        lblConfirm: Label '¿Do you want to update the images of %1 selected records?', comment = 'ESP="¿Desea actualizar las imagenes de %1 registros seleccionados?"';
+    begin
+        CurrPage.SetSelectionFilter(CIMItemstemporary);
+        if not Confirm(lblConfirm, false, CIMItemstemporary.Count) then
+            exit;
+
+        if CIMItemstemporary.FindFirst() then
+            repeat
+
+                Docs.Reset();
+                Docs.SetRange(CodComentario, CIMItemstemporary."No.");
+                Docs.SetRange(Extension, 'jpg');
+                if Docs.FindFirst() then begin
+                    if Sharepoint.DownloadFileName(Docs.Description, Stream, 'jpg') then begin
+                        CIMItemstemporary.Picture.ImportStream(Stream, Docs.Description);
+                        CIMItemstemporary.Modify();
+                        //DownloadFromStream(Stream, '', '', '', Docs.Description);
+                    end;
+                end;
+            Until CIMItemstemporary.next() = 0;
+        Message('Fin');
+        CurrPage.Update();
+    end;
 }
+
+

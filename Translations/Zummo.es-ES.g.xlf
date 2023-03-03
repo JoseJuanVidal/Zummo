@@ -4622,6 +4622,51 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 2046936986 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>createdDateTime</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field createdDateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2046936986 - Field 2589406539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>driveId</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field driveId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2046936986 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2046936986 - Field 3719980320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>isFile</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field isFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2046936986 - Field 369313232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>mimeType</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field mimeType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2046936986 - Field 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2046936986 - Field 2178989011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>parentId</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field parentId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2046936986 - Field 3777826559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>size</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field size - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2046936986 - Field 264396141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>webUrl</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field webUrl - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3755578035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Quote new</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -7325,16 +7370,6 @@
           <source>Nominas %1 %2</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - Method 278911245 - NamedType 275499162" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PDF Files (*.pdf)|*.pdf</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method DownloadPDFfromURL - NamedType SaveFileDialogFilterMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3118965969 - Method 278911245 - NamedType 34040586" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Save PDF file</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Sharepoint Functions - Method DownloadPDFfromURL - NamedType SaveFileDialogTitleMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 2169472807" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;h3 style="text-align: left; color: #3f7320;"&gt;&lt;span style="border-bottom: 4px solid #c82828;"&gt;%1 No.:&amp;nbsp;&lt;/span&gt;%2&lt;/h3&gt;</source>
@@ -10445,6 +10480,122 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page MotivosBloqueo - Property Caption</note>
           <target>Lista Motivos Bloqueo</target>
         </trans-unit>
+        <trans-unit id="Page 2169462155 - NamedType 557032142" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Refresh Token avaiable</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - NamedType NoRefreshTokenErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - NamedType 2514761279" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Access Token updated successfully.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - NamedType SuccessfulMsg</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 1799079160 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the access token url.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Access Token URL - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 198601236 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the resource url.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Auth. URL Parms - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 2338191276 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the authorization url.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Authorization URL - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 278527571 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Sharepoint ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control dxfFolderID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 2884336403 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Sharepoint ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control IDDrive - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 4242924986 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Sharepoint ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control jpgFolderID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 3168660491 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Sharepoint ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control pdfFolderID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 3728819735 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Sharepoint ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control RootFolderID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 3075304067 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Sharepoint ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control StepFolderID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 652819368 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the client id.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Client ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 2529110793 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the client secret.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Client Secret - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 3004954119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the description.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the description.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 199260834 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the grant type.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Grant Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 618784563 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the redirect url.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Redirect URL - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 593885934 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the scope.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Scope - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 2575460289 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the password.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Password - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 129688762 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the user name.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control User Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Action 2000147809 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Drives</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Drives"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action Drives - Property Caption</note>
+          <target>Drives</target>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Action 2619586918 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh the access and refresh tokens.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action RefreshAccessToken - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Action 1754655794 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the service authorization web page. Login credentials will be prompted. The authorization code must be copied into the Enter Authorization Code field.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action RequestAccessToken - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3903387604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Opciones</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -11571,6 +11722,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Property Caption</note>
           <target>ERPLINK Productos pendientes</target>
         </trans-unit>
+        <trans-unit id="Page 3853294818 - Method 3317724022 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to update the images of %1 selected records?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las imagenes de %1 registros seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Method UpdateFileJpg - NamedType lblConfirm</note>
+          <target>¿Desea actualizar las imagenes de %1 registros seleccionados?</target>
+        </trans-unit>
         <trans-unit id="Page 3853294818 - Control 3448041191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Components Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista componentes"</note>
@@ -11594,6 +11751,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Imagen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Control ItemPicture - Property Caption</note>
           <target>Imagen</target>
+        </trans-unit>
+        <trans-unit id="Page 3853294818 - Action 2427213647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update picture</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualzizar imagen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action UpdatePicture - Property Caption</note>
+          <target>Actualzizar imagen</target>
         </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ERPLINK Production BOM Lines</source>
@@ -11803,11 +11966,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Property Caption</note>
           <target>ERPLINK Documentos productos</target>
         </trans-unit>
+        <trans-unit id="Page 474319202 - Method 3317724022 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to update the images?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar la imagen?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Method UpdateFileJpg - NamedType lblConfirm</note>
+          <target>¿Desea actualizar la imagen?</target>
+        </trans-unit>
         <trans-unit id="Page 474319202 - Action 504837461 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crear Extensión</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crear Extensión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Action SetExtension - Property Caption</note>
           <target>Crear Extensión</target>
+        </trans-unit>
+        <trans-unit id="Page 474319202 - Action 2427213647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update picture</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualzizar imagen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Action UpdatePicture - Property Caption</note>
+          <target>Actualzizar imagen</target>
         </trans-unit>
         <trans-unit id="Page 411716643 - Control 1200201054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Descripción</source>
@@ -25227,6 +25402,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Calcular importes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseReceipts - Action calcularImportes - Property Caption</note>
           <target>Calcular importes</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 811884982 - Action 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1116965951">
+          <source>Excel Normativa</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Excel Normativa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseReceipts - Action ExportExcel - Property Caption</note>
+          <target>Excel Normativa</target>
         </trans-unit>
         <trans-unit id="PageExtension 811884982 - Action 2896958691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1116965951">
           <source>Marcar no facturar</source>
