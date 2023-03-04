@@ -25,50 +25,83 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         exit(OAuth20AppHelper.GetAccessToken(OAuth20Application));
     end;
 
-    // procedure UploadFile(
-    //     AccessToken: Text;
-    //     DriveID: Text;
-    //     ParentID: Text;
-    //     FolderPath: Text;
-    //     FileName: Text;
-    //     var Stream: InStream;
-    //     var OnlineDriveItem: Record "Online Drive Item"): Boolean
-    // var
-    //     HttpClient: HttpClient;
-    //     Headers: HttpHeaders;
-    //     RequestMessage: HttpRequestMessage;
-    //     RequestContent: HttpContent;
-    //     ResponseMessage: HttpResponseMessage;
-    //     JsonResponse: JsonObject;
-    //     IsSucces: Boolean;
-    //     ResponseText: Text;
-    // begin
-    //     Headers := HttpClient.DefaultRequestHeaders();
-    //     Headers.Add('Authorization', StrSubstNo('Bearer %1', AccessToken));
+    procedure UploadFilePicture(FileName: text; var Stream: InStream; MimeType: text): Boolean
+    var
+        OAuth20Application: Record "ZM OAuth 2.0 Application";
+        TempOnlineDriveItem: Record "Online Drive Item" temporary;
+        AccessToken: Text;
+        FolderID: text;
+        FolderPath: text;
+        MessageText: Text;
+    begin
+        OAuth20Application.Get('ERPLINK');
+        AccessToken := GetAccessToken(OAuth20Application.Code);
 
-    //     RequestMessage.SetRequestUri(
-    //         StrSubstNo(
-    //             UploadUrl,
-    //             DriveID,
-    //             StrSubstNo('%1/%2', FolderPath, FileName)));
-    //     RequestMessage.Method := 'PUT';
+        //obtenemos el id del fichero
+        FolderID := OAuth20Application.jpgFolderID;
+        FolderPath := 'Documentos/jpg';
+        case MimeType of
+            'image/png':
+                FileName := FileName + '.png';
+            'image/jpeg':
+                FileName := FileName + '.jpg';
+            'dxf':
+                FolderID := OAuth20Application.dxfFolderID;
+            'step':
+                FolderID := OAuth20Application.StepFolderID;
+        end;
 
-    //     RequestContent.WriteFrom(Stream);
-    //     RequestMessage.Content := RequestContent;
+        // if FetchDrivesChildItemsName(AccessToken, OAuth20Application.RootFolderID, FolderID, TempOnlineDriveItem, name) then begin
 
-    //     if HttpClient.Send(RequestMessage, ResponseMessage) then
-    //         if ResponseMessage.IsSuccessStatusCode() then begin
-    //             if ResponseMessage.Content.ReadAs(ResponseText) then begin
-    //                 IsSucces := true;
-    //                 if JsonResponse.ReadFrom(ResponseText) then
-    //                     ReadDriveItem(JsonResponse, DriveID, ParentID, OnlineDriveItem);
-    //             end;
-    //         end else
-    //             if ResponseMessage.Content.ReadAs(ResponseText) then
-    //                 JsonResponse.ReadFrom(ResponseText);
+        if UploadFile(AccessToken, OAuth20Application.RootFolderID, FolderID, FolderPath, FileName, Stream, TempOnlineDriveItem) then
+            exit(true);
+        //DownloadFromStream(Stream, '', '', '', name);   
+    end;
 
-    //     exit(IsSucces);
-    // end;
+    procedure UploadFile(
+        AccessToken: Text;
+        DriveID: Text;
+        ParentID: Text;
+        FolderPath: Text;
+        FileName: Text;
+        var Stream: InStream;
+        var OnlineDriveItem: Record "Online Drive Item"): Boolean
+    var
+        HttpClient: HttpClient;
+        Headers: HttpHeaders;
+        RequestMessage: HttpRequestMessage;
+        RequestContent: HttpContent;
+        ResponseMessage: HttpResponseMessage;
+        JsonResponse: JsonObject;
+        IsSucces: Boolean;
+        ResponseText: Text;
+    begin
+        Headers := HttpClient.DefaultRequestHeaders();
+        Headers.Add('Authorization', StrSubstNo('Bearer %1', AccessToken));
+
+        RequestMessage.SetRequestUri(
+            StrSubstNo(
+                UploadUrl,
+                DriveID,
+                StrSubstNo('%1/%2', FolderPath, FileName)));
+        RequestMessage.Method := 'PUT';
+
+        RequestContent.WriteFrom(Stream);
+        RequestMessage.Content := RequestContent;
+
+        if HttpClient.Send(RequestMessage, ResponseMessage) then
+            if ResponseMessage.IsSuccessStatusCode() then begin
+                if ResponseMessage.Content.ReadAs(ResponseText) then begin
+                    IsSucces := true;
+                    if JsonResponse.ReadFrom(ResponseText) then
+                        ReadDriveItem(JsonResponse, DriveID, ParentID, OnlineDriveItem);
+                end;
+            end else
+                if ResponseMessage.Content.ReadAs(ResponseText) then
+                    JsonResponse.ReadFrom(ResponseText);
+
+        exit(IsSucces);
+    end;
 
 
     procedure DownloadFileName(name: text; var Stream: InStream; FileExt: text): Boolean

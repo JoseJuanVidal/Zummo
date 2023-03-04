@@ -204,7 +204,7 @@ page 50158 "ZM Item Documents"
         if not Confirm(lblConfirm) then
             exit;
 
-        if Sharepoint.DownloadFileName(Rec.Description, Stream, 'jpg') then begin
+        if Sharepoint.DownloadFileName(Rec.Description, Stream, Rec.Extension) then begin
             if CIMItemstemporary.Get(Rec.CodComentario) then begin
                 DownloadFromStream(Stream, '', '', '', Rec.Description);
             end;

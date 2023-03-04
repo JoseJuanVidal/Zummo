@@ -163,6 +163,9 @@ page 17456 "ZM ERPLINK Item Picture"
             MODIFY(TRUE);
 
         IF FileManagement.DeleteServerFile(FileName) THEN;
+
+        if Confirm('Desea subir el archivo a Sharepoint') then
+            UpdateSharepoint;
     end;
 
     local procedure SetEditableOnPictureActions()
@@ -215,6 +218,29 @@ page 17456 "ZM ERPLINK Item Picture"
 
         File.CLOSE;
         IF ERASE(PictureFilePath) THEN;
+    end;
+
+    local procedure UpdateSharepoint()
+    var
+        TenantMedia: Record "Tenant Media";
+        Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
+        InStreamPic: InStream;
+        Index: Integer;
+    begin
+        if Rec.Picture.Count = 0 then
+            exit;
+
+        for index := 1 to Rec.Picture.Count do begin
+            if TenantMedia.Get(Rec.Picture.Item(Index)) then begin
+                TenantMedia.CalcFields(Content);
+                if TenantMedia.Content.HasValue then begin
+                    TenantMedia.Content.CreateInStream(InStreamPic);
+
+                    Sharepoint.UploadFilePicture(Rec."No.", InStreamPic, TenantMedia."Mime Type");
+
+                end;
+            end;
+        end;
     end;
 }
 
