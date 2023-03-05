@@ -236,7 +236,7 @@ page 17456 "ZM ERPLINK Item Picture"
                 if TenantMedia.Content.HasValue then begin
                     TenantMedia.Content.CreateInStream(InStreamPic);
 
-                    Sharepoint.UploadFilePicture(Rec."No.", InStreamPic, TenantMedia."Mime Type");
+                    Sharepoint.UploadFileStreeam(Rec."No.", InStreamPic, TenantMedia."Mime Type");
 
                 end;
             end;

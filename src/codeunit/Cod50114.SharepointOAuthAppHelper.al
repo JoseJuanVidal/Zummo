@@ -25,7 +25,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         exit(OAuth20AppHelper.GetAccessToken(OAuth20Application));
     end;
 
-    procedure UploadFilePicture(FileName: text; var Stream: InStream; MimeType: text): Boolean
+    procedure UploadFileStreeam(FileName: text; var Stream: InStream; MimeType: text): Boolean
     var
         OAuth20Application: Record "ZM OAuth 2.0 Application";
         TempOnlineDriveItem: Record "Online Drive Item" temporary;
@@ -45,10 +45,28 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
                 FileName := FileName + '.png';
             'image/jpeg':
                 FileName := FileName + '.jpg';
-            'dxf':
-                FolderID := OAuth20Application.dxfFolderID;
-            'step':
-                FolderID := OAuth20Application.StepFolderID;
+            'image/gif':
+                FileName := FileName + '.gif';
+            'application/pdf':
+                FileName := FileName + '.pdf';
+            'application/xml':
+                FileName := FileName + '.pdf';
+            'audio/mpeg':
+                FileName := FileName + '.mp3';
+            'audio/x-wav':
+                FileName := FileName + '.wav';
+            'video/mp4':
+                FileName := FileName + '.mp4';
+            'video/x-msvideo':
+                FileName := FileName + '.avi';
+            'text/html':
+                FileName := FileName + '.html';
+            'text/plain':
+                FileName := FileName + '.txt';
+            'dxf', 'application/dxf':
+                FileName := FileName + '.dxf';
+            'step', 'application/step':
+                FileName := FileName + '.step';
         end;
 
         // if FetchDrivesChildItemsName(AccessToken, OAuth20Application.RootFolderID, FolderID, TempOnlineDriveItem, name) then begin
