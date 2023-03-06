@@ -98,6 +98,11 @@ page 17376 "OAuth 2.0 Application"
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the Sharepoint ID';
                 }
+                field(RootFolderName; RootFolderName)
+                {
+                    ApplicationArea = Basic, Suite;
+                    ToolTip = 'Specifies the Sharepoint Name (Documentos)';
+                }
                 field(jpgFolderID; jpgFolderID)
                 {
                     ApplicationArea = Basic, Suite;
@@ -118,6 +123,8 @@ page 17376 "OAuth 2.0 Application"
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the Sharepoint ID';
                 }
+
+
             }
         }
     }

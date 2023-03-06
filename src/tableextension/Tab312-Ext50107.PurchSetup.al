@@ -14,6 +14,12 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             Caption = 'Warning Intra-Communitary plastics', Comment = 'ESP="Aviso Norm. plastico intracomunitario"';
             Description = 'Zummo';
         }
+        field(50020; "Sharepoint Connection"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sharepoint Connection', comment = 'ESP="Conexión Sharepoint"';
+            TableRelation = "ZM OAuth 2.0 Application".Code;
+        }
     }
 
     procedure SetTextoEmail(NewTextoEmail: Text)

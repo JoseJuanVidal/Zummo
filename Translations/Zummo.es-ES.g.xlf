@@ -2102,6 +2102,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 2789233792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>campaignidname</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field campaignidname - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1597900397 - Field 1964431276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Company Name</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -4666,6 +4671,64 @@
           <source>webUrl</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field webUrl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1285996843 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SharePoint Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sharepoint Documentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sharepont Drive Item - Property Caption</note>
+          <target>Sharepoint Documentos</target>
+        </trans-unit>
+        <trans-unit id="Table 1285996843 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Creation DateTime</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha/Hora Creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sharepont Drive Item - Field createdDateTime - Property Caption</note>
+          <target>Fecha/Hora Creación</target>
+        </trans-unit>
+        <trans-unit id="Table 1285996843 - Field 2589406539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Drive Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Carpeta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sharepont Drive Item - Field driveId - Property Caption</note>
+          <target>ID Carpeta</target>
+        </trans-unit>
+        <trans-unit id="Table 1285996843 - Field 2638467979 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Folder Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Carpeta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sharepont Drive Item - Field FolderName - Property Caption</note>
+          <target>Nombre Carpeta</target>
+        </trans-unit>
+        <trans-unit id="Table 1285996843 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sharepont Drive Item - Field id - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 1285996843 - Field 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sharepont Drive Item - Field name - Property Caption</note>
+          <target>Nombre</target>
+        </trans-unit>
+        <trans-unit id="Table 1285996843 - Field 2178989011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parent ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Parent"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sharepont Drive Item - Field parentId - Property Caption</note>
+          <target>ID Parent</target>
+        </trans-unit>
+        <trans-unit id="Table 1285996843 - Field 3894202260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Record id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sharepont Drive Item - Field Record id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1285996843 - Field 1703245 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sharepont Drive Item - Field Table id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1285996843 - Field 4170335149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>URL</source>
+          <note from="Developer" annotates="general" priority="2">ESP="URL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sharepont Drive Item - Field url - Property Caption</note>
+          <target>URL</target>
         </trans-unit>
         <trans-unit id="Table 3755578035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Quote new</source>
@@ -10530,6 +10593,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control RootFolderID - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 2221138897 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Sharepoint Name (Documentos)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control RootFolderName - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2169462155 - Control 3075304067 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Sharepoint ID</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -10935,6 +11003,24 @@
           <source>Selección Etiquetas</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Selección Etiquetas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2236257782 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sharepont Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sharepoint Documentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - Property Caption</note>
+          <target>Sharepoint Documentos</target>
+        </trans-unit>
+        <trans-unit id="Page 2236257782 - NamedType 2294662597" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to delete the selected item?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el elemento seleccionado?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - NamedType ConfirmMsg</note>
+          <target>¿Desea eliminar el elemento seleccionado?</target>
+        </trans-unit>
+        <trans-unit id="Page 2236257782 - Action 2550237599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>URL</source>
+          <note from="Developer" annotates="general" priority="2">ESP="URL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - Action HyperlinkURL - Property Caption</note>
+          <target>URL</target>
         </trans-unit>
         <trans-unit id="Page 3961029829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fallo Localizado</source>
@@ -26983,6 +27069,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importe Total IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchRcptLine - Field TotalImponibleLinea - Property Caption</note>
           <target>Importe Total IVA</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 28783585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Sharepoint Connection</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conexión Sharepoint"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Sharepoint Connection - Property Caption</note>
+          <target>Conexión Sharepoint</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 943801273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Text e-mail purchase order</source>
