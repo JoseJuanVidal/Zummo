@@ -62,6 +62,11 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Ship-to Address 2"; "Ship-to Address 2")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("Ship-to City"; "Ship-to City")
             {
                 ApplicationArea = all;
@@ -72,6 +77,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 ApplicationArea = all;
                 Visible = false;
             }
+
             field("Payment Method Code"; "Payment Method Code")
             {
                 ApplicationArea = all;
