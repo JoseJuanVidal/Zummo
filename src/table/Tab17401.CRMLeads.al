@@ -130,7 +130,13 @@ table 17401 "CRM Leads"
             ExternalName = 'zum_ac_areamanager';
             ExternalType = 'String';
         }
-
+        field(50006; campaignidname; Text[100])
+        {
+            Caption = 'campaignidname';
+            Description = '';
+            ExternalName = 'campaignidname';
+            ExternalType = 'String';
+        }
     }
 
     keys

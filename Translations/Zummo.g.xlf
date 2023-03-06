@@ -2073,6 +2073,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1597900397 - Field 2789233792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>campaignidname</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Leads - Field campaignidname - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1597900397 - Field 1964431276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Company Name</source>
           <note from="Developer" annotates="general" priority="2"></note>

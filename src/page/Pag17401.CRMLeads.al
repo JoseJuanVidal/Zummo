@@ -27,6 +27,7 @@ page 17401 "CRM Leads"
                 field(ModifiedBy; ModifiedBy) { ApplicationArea = All; }
                 field(CreatedOnBehalfBy; CreatedOnBehalfBy) { ApplicationArea = All; }
                 field(ModifiedOnBehalfBy; ModifiedOnBehalfBy) { ApplicationArea = All; }
+                field(campaignidname; campaignidname) { ApplicationArea = All; }
 
                 // field(statecode; statecode) { ApplicationArea = All; }
             }
@@ -46,11 +47,19 @@ page 17401 "CRM Leads"
 
                 trigger OnAction()
                 var
+                    AreaManager: Record TextosAuxiliares;
                     NwwGuide: Guid;
                 begin
-                    NwwGuide := 'aaa83cad-9172-ea11-a811-000d3a2c338a';
-                    Rec.OwnerId := NwwGuide;
-                    Rec.Modify();
+                    AreaManager.SetRange(TipoRegistro, AreaManager.TipoRegistro::Tabla);
+                    AreaManager.SetRange(TipoTabla, AreaManager.TipoTabla::AreaManager);
+                    AreaManager.SetRange(NumReg, Rec.zum_ac_areamanager);
+                    if AreaManager.FindFirst() then begin
+                        if IsNullGuid(AreaManager."CRM ID") then
+                            exit;
+                        Rec.OwnerId := AreaManager."CRM ID";
+                        Rec.Modify();
+                        Message('Fin');
+                    end;
                 end;
             }
         }
