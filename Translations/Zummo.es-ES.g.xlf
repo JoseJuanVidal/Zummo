@@ -22891,7 +22891,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Service Mgt. Warranty - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Report 995909859 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Creados %1 pedidos de servicios de garantias</source>
+          <source>Creados %1 pedidos de servicios de garantias, desde %2</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report Service Mgt. Warranty - NamedType Text001</note>
         </trans-unit>

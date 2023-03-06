@@ -59,6 +59,7 @@ report 50119 "Service Mgt. Warranty"
 
     requestpage
     {
+        SaveValues = false;
         layout
         {
             area(Content)
@@ -95,15 +96,16 @@ report 50119 "Service Mgt. Warranty"
     trigger OnPostReport()
     begin
         if NoService > 0 then
-            Message(Text001, NoService);
+            Message(Text001, NoService, ServiceNo);
     end;
 
     var
         ServiceSetup: record "Service Mgt. Setup";
         NoService: Integer;
+        ServiceNo: code[20];
         Mes: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre;
         Text000: Label 'Es incompatible poner un filtro en la fecha %1 y seleccionar un mes %2';
-        Text001: Label 'Creados %1 pedidos de servicios de garantias';
+        Text001: Label 'Creados %1 pedidos de servicios de garantias, desde %2';
         lblWarranty: Label 'Servicio Mantenimiento ampliacion garantia', comment = 'ESP="Servicio Mantenimiento ampliacion garantia"';
 
     local procedure CreateServiceOrder(var ServiceItem: Record "Service Item")
@@ -128,5 +130,7 @@ report 50119 "Service Mgt. Warranty"
         ServiceItem.FechaMantGarantia_sth := CalcDate(ServiceSetup.PeriodoRevisionGarantia, ServiceItem.FechaMantGarantia_sth);
         ServiceItem.Modify();
         NoService += 1;
+        if ServiceNo = '' then
+            ServiceNo := ServiceHeader."No.";
     end;
 }
