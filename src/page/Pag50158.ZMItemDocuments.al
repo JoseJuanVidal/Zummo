@@ -198,6 +198,7 @@ page 50158 "ZM Item Documents"
     var
         CIMItemstemporary: Record "ZM CIM Items temporary";
         Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
+        FileName: text;
         Stream: InStream;
         lblConfirm: Label '¿Do you want to download the file?', comment = 'ESP="¿Desea descargar el fichero?"';
     begin
@@ -206,7 +207,8 @@ page 50158 "ZM Item Documents"
 
         if Sharepoint.DownloadFileName(Rec.Description, Stream, Rec.Extension) then begin
             if CIMItemstemporary.Get(Rec.CodComentario) then begin
-                DownloadFromStream(Stream, '', '', '', Rec.Description);
+                FileName := Rec.Description;
+                DownloadFromStream(Stream, '', '', '', FileName);
             end;
         end;
 
