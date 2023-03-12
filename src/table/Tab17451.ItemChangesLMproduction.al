@@ -46,7 +46,7 @@ table 17451 "Item Changes L.M. production"
         {
             DataClassification = CustomerContent;
             Caption = 'Unit of measure', comment = 'ESP="Unidad de medida"';
-            TableRelation = "Item Unit of Measure" where("Item No." = field("Item No."));
+            TableRelation = "Item Unit of Measure".Code where("Item No." = field("Item No."));
         }
         field(70; "Routing Link Code"; code[10])
         {

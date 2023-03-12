@@ -1577,6 +1577,135 @@ codeunit 50111 "Funciones"
         SalesCRMemoLine.Modify();
     end;
 
+
+    procedure UpdateCostSales()
+    var
+        Item: Record Item;
+        SalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+        Window: Dialog;
+        FilterPostingDate: Text;
+        NumReg: Integer;
+    begin
+        SalesHeader.SetFilter("Posting Date", '%1..', DMY2Date(01, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)));
+        if not Confirm('Filtros: %1', false, SalesHeader.GetFilters) then
+            exit;
+        Window.Open('#3############ #1#########################\Actualizados #2##################');
+        SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Quote);
+        if SalesHeader.FindFirst() then
+            repeat
+                Window.Update(1, SalesHeader."No.");
+                Window.Update(1, SalesHeader."Document Type");
+                SalesLine.Reset();
+                SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+                SalesLine.SetRange("Document No.", SalesHeader."No.");
+                SalesLine.SetRange(Type, SalesLine.Type::Item);
+                if SalesLine.FindFirst() then
+                    repeat
+                        if Item.Get(SalesLine."No.") then begin
+                            if abs(Item."Unit Cost" - SalesLine."Unit Cost") > 1 then begin
+                                if ProcessSalesLineUpdatecost(SalesLine) then
+                                    NumReg += 1;
+                                Window.Update(2, NumReg);
+                            end;
+                        end
+                    Until SalesLine.next() = 0;
+
+            Until SalesHeader.next() = 0;
+        SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
+        if SalesHeader.FindFirst() then
+            repeat
+                Window.Update(1, SalesHeader."No.");
+                Window.Update(1, SalesHeader."Document Type");
+                SalesLine.Reset();
+                SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+                SalesLine.SetRange("Document No.", SalesHeader."No.");
+                SalesLine.SetRange(Type, SalesLine.Type::Item);
+                if SalesLine.FindFirst() then
+                    repeat
+                        if Item.Get(SalesLine."No.") then begin
+                            if abs(Item."Unit Cost" - SalesLine."Unit Cost") > 1 then begin
+                                if ProcessSalesLineUpdatecost(SalesLine) then
+                                    NumReg += 1;
+                                Window.Update(2, NumReg);
+                            end;
+                        end
+                    Until SalesLine.next() = 0;
+
+            Until SalesHeader.next() = 0;
+        Window.Close();
+        Message(format(NumReg));
+    end;
+
+    procedure ProcessSalesLineUpdatecost(Rec: Record "Sales Line") Actualizado: Boolean
+    var
+        Item: record Item;
+        SalesLine: Record "Sales Line";
+        SKU: Record "Stockkeeping Unit";
+        UOMMgt: Codeunit "Unit of Measure Management";
+        OldCost: Decimal;
+    begin
+        SalesLine.Reset();
+        SalesLine.Get(Rec."Document Type", Rec."Document No.", Rec."Line No.");
+        if not (SalesLine.Type in [SalesLine.Type::Item]) then
+            exit;
+        if not Item.Get(SalesLine."No.") then
+            exit;
+
+        OldCost := SalesLine."Unit Cost";
+        IF GetSKU(SKU, SalesLine."Location Code", SalesLine."No.", SalesLine."Variant Code") THEN
+            SalesLine."Unit Cost" := SKU."Unit Cost" * SalesLine."Qty. per Unit of Measure"
+        ELSE
+            SalesLine.VALIDATE("Unit Cost", Item."Unit Cost" * SalesLine."Qty. per Unit of Measure");
+
+        SalesLine."Unit Cost (LCY)" := SalesLine."Unit Cost";
+        //SalesLine.Modify();
+        Actualizado := true;
+    end;
+
+    procedure ProcessSalesInvLineUpdatecost(Rec: Record "Sales Invoice Line")
+    var
+        Item: record Item;
+        SalesInvLine: Record "Sales Invoice Line";
+        SKU: Record "Stockkeeping Unit";
+        UOMMgt: Codeunit "Unit of Measure Management";
+    begin
+        SalesInvLine.Reset();
+        SalesInvLine.Get(Rec."Document No.", Rec."Line No.");
+        if not (SalesInvLine.Type in [SalesInvLine.Type::Item]) then
+            exit;
+        if not Item.Get(SalesInvLine."No.") then
+            exit;
+
+        IF GetSKU(SKU, SalesInvLine."Location Code", SalesInvLine."No.", SalesInvLine."Variant Code") THEN
+            SalesInvLine."Unit Cost" := SKU."Unit Cost" * SalesInvLine."Qty. per Unit of Measure"
+        ELSE
+            SalesInvLine.VALIDATE("Unit Cost", Item."Unit Cost" * SalesInvLine."Qty. per Unit of Measure");
+
+        SalesInvLine."Unit Cost (LCY)" := SalesInvLine."Unit Cost";
+        SalesInvLine.Modify();
+    end;
+
+    procedure ProcessSalesCRMemoLineUpdatecost(SalesCRMemoLine: Record "Sales Cr.Memo Line")
+    var
+        Item: record Item;
+        SKU: Record "Stockkeeping Unit";
+        UOMMgt: Codeunit "Unit of Measure Management";
+    begin
+        SalesCRMemoLine.TESTFIELD(Type, SalesCRMemoLine.Type::Item);
+        SalesCRMemoLine.TESTFIELD("No.");
+        Item.Get(SalesCRMemoLine."No.");
+
+        SalesCRMemoLine."Qty. per Unit of Measure" := UOMMgt.GetQtyPerUnitOfMeasure(Item, SalesCRMemoLine."Unit of Measure Code");
+        IF GetSKU(SKU, SalesCRMemoLine."Location Code", SalesCRMemoLine."No.", SalesCRMemoLine."Variant Code") THEN
+            SalesCRMemoLine."Unit Cost" := SKU."Unit Cost" * SalesCRMemoLine."Qty. per Unit of Measure"
+        ELSE
+            SalesCRMemoLine.VALIDATE("Unit Cost (LCY)", Item."Unit Cost" * SalesCRMemoLine."Qty. per Unit of Measure");
+
+        SalesCRMemoLine."Unit Cost (LCY)" := SalesCRMemoLine."Unit Cost";
+        SalesCRMemoLine.Modify();
+    end;
+
     local procedure GetSKU(var SKU: Record "Stockkeeping Unit"; LocationCode: code[10]; ItemNo: code[20]; VariantCode: code[20]): Boolean
     begin
         IF (SKU."Location Code" = LocationCode) AND

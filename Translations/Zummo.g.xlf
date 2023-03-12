@@ -22858,6 +22858,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="&amp;Correo electrónico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Email_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 3810131670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Act. Coste Documentos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. Coste Documentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action UppdateCost - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 3638857405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Marcar comunicado Aaseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Marcar comunicado Aaseguradora"</note>

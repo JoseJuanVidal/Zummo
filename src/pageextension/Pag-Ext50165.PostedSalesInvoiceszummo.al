@@ -189,7 +189,19 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                     cduCron.EnvioPersonalizado(Rec);
                 end;
             }
+            action(UppdateCost)
+            {
+                ApplicationArea = All;
+                Image = UpdateUnitCost;
+                Caption = 'Act. Coste Documentos', comment = 'ESP="Act. Coste Documentos"';
 
+                trigger onAction()
+                var
+                    Funciones: Codeunit Funciones;
+                begin
+                    Funciones.UpdateCostSales;
+                end;
+            }
         }
         modify(Email)
         {
