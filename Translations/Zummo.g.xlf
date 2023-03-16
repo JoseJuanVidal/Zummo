@@ -11513,6 +11513,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Unidad medida"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Check - Control Location Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3298862078 - Control 629037869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Check - Control Positive - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3298862078 - Control 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity per</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad por"</note>

@@ -11802,6 +11802,36 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page WS Purchase Line - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 711771818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ERPLINK Documentos productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Documentos productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Item Documents - Property Caption</note>
+          <target>ERPLINK Documentos productos</target>
+        </trans-unit>
+        <trans-unit id="Page 711771818 - Method 2787516006 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to download the file?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea descargar el fichero?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Item Documents - Method DownloadFile - NamedType lblConfirm</note>
+          <target>¿Desea descargar el fichero?</target>
+        </trans-unit>
+        <trans-unit id="Page 711771818 - Method 3317724022 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to update the images?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar la imagen?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Item Documents - Method UpdateFileJpg - NamedType lblConfirm</note>
+          <target>¿Desea actualizar la imagen?</target>
+        </trans-unit>
+        <trans-unit id="Page 711771818 - Action 2550237599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>URL</source>
+          <note from="Developer" annotates="general" priority="2">ESP="URL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Item Documents - Action HyperlinkURL - Property Caption</note>
+          <target>URL</target>
+        </trans-unit>
+        <trans-unit id="Page 711771818 - Action 2427213647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update picture</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualzizar imagen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Item Documents - Action UpdatePicture - Property Caption</note>
+          <target>Actualzizar imagen</target>
+        </trans-unit>
         <trans-unit id="Page 3853294818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ERPLINK Items Pending</source>
           <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Productos pendientes"</note>
@@ -12217,6 +12247,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Unidad medida"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Check - Control Location Code - Property Caption</note>
           <target>Cód. Unidad medida</target>
+        </trans-unit>
+        <trans-unit id="Page 3298862078 - Control 629037869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Check - Control Positive - Property Caption</note>
+          <target>Bloqueado</target>
         </trans-unit>
         <trans-unit id="Page 3298862078 - Control 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity per</source>
@@ -24455,6 +24491,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="&amp;Correo electrónico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Email_btc - Property Caption</note>
           <target>&amp;Correo electrónico</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 3810131670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Act. Coste Documentos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. Coste Documentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action UppdateCost - Property Caption</note>
+          <target>Act. Coste Documentos</target>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 3638857405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Marcar comunicado Aaseguradora</source>

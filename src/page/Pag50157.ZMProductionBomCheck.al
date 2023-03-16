@@ -47,11 +47,17 @@ page 50157 "ZM Production Bom Check"
                     ApplicationArea = all;
                     Caption = 'Routing link code', comment = 'ESP="Cód. conexión ruta"';
                 }
+                field(Positive; Positive)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Blocked', comment = 'ESP="Bloqueado"';
+                }
             }
         }
     }
 
     var
+        Item: Record Item;
         ProductionBomHeader: Record "Production BOM Header";
         ProductionBomLine: Record "Production BOM Line";
 
@@ -83,6 +89,8 @@ page 50157 "ZM Production Bom Check"
                     Rec."Document No." := ProductionBomLine."No.";
                     Rec.Level := ProductionBomLine."Line No.";
                     Rec."Variant Code" := ProductionBomLine."Routing Link Code";
+                    if Item.Get(Rec."Item No.") then
+                        Rec.Positive := Item.Blocked;
                     Rec.Insert();
                 end;
 
