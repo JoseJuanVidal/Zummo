@@ -21,6 +21,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         OAuth20Application.Get(AppCode);
         if not OAuth20AppHelper.RequestAccessToken(OAuth20Application, MessageText) then
             Error(MessageText);
+        Commit();
 
         exit(OAuth20AppHelper.GetAccessToken(OAuth20Application));
     end;

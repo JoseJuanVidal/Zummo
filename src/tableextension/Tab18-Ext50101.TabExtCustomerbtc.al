@@ -322,6 +322,26 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             DataClassification = CustomerContent;
             Caption = 'Mostrar Documentos Netos', comment = 'ESP="Mostrar Documentos Netos"';
         }
+        field(50070; "Dto. Exprimidores"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Dto. Exprimidores', comment = 'ESP="Dto. Exprimidores"';
+        }
+        field(50071; "Dto. Isla"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Dto. Isla', comment = 'ESP="Dto. Isla"';
+        }
+        field(50072; "Dto. Viva"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Dto. Viva', comment = 'ESP="Dto. Viva"';
+        }
+        field(50073; "Dto. Repuestos"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Dto. Repuestos', comment = 'ESP="Dto. Repuestos"';
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var

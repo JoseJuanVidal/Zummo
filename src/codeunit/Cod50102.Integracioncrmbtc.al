@@ -1494,6 +1494,9 @@ codeunit 50102 "Integracion_crm_btc"
                 CRMAccount2.bit_subclientebc := CRMAccount2.bit_subclientebc::" ";
         end;
 
+        if UpdateBCCRMDtoAccounts(Customer, CRMAccount2) then
+            Customer.Modify();
+
 
         //Si ha habido cambios obtengo registro
         IF AdditionalFieldsWereModified THEN
@@ -3592,5 +3595,99 @@ codeunit 50102 "Integracion_crm_btc"
                 end;
 
             Until CRMGrupoClientes.next() = 0;
+    end;
+
+
+    // =============   PROCEDIMIENTO SINCRONIZACION ACCOUNT-CUSTOMER            ====================
+    // ==  
+    // ==  Funciones para actualizar datos de manera bi-direccional de los clientes de BC y clientes de SALES 
+    // ==  
+    // ==  UpdateAccountCRM - Actualizamos los datos del cliente de Sales desde BC
+    // ==  
+    // ==           Dtos de familias
+    // ==  
+    // ======================================================================================================
+    procedure UpdateDtoAccountCRM(CustomerNo: code[20])
+    var
+        Customer: Record Customer;
+        CRMAccount: Record "CRM Account_crm_btc";
+    begin
+        if not Customer.Get(CustomerNo) then
+            exit;
+        CRMAccount.SetRange(AccountNumber, Customer."No.");
+        if CRMAccount.FindFirst() then begin
+            // comprobamos si no tiene valores y cual ponemos
+            if UpdateBCCRMDtoAccounts(Customer, CRMAccount) then
+                Customer.Modify();
+
+            CRMAccount.Modify();
+        end
+    end;
+
+    local procedure UpdateBCCRMDtoAccounts(var Customer: Record Customer; var CRMAccount: Record "CRM Account_crm_btc") UpdateCustomer: Boolean
+    begin
+        case Customer."Dto. Exprimidores" of
+            0:
+                begin
+                    if CRMAccount.Dto_exprimidores > 0 then begin
+                        Customer."Dto. Exprimidores" := CRMAccount.Dto_exprimidores;
+                        UpdateCustomer := true;
+                    end;
+                end;
+            else begin
+                CRMAccount.Dto_exprimidores := Customer."Dto. Exprimidores";
+            end;
+        end;
+        case Customer."Dto. Isla" of
+            0:
+                begin
+                    if CRMAccount.Dto_Isla > 0 then begin
+                        Customer."Dto. Isla" := CRMAccount.Dto_Isla;
+                        UpdateCustomer := true;
+                    end;
+                end;
+            else begin
+                CRMAccount.Dto_Isla := Customer."Dto. Isla";
+            end;
+        end;
+        case Customer."Dto. Viva" of
+            0:
+                begin
+                    if CRMAccount.Dto_Viva > 0 then begin
+                        Customer."Dto. Viva" := CRMAccount.Dto_Viva;
+                        UpdateCustomer := true;
+                    end;
+                end;
+            else begin
+                CRMAccount.Dto_Viva := Customer."Dto. Viva";
+            end;
+        end;
+        case Customer."Dto. Repuestos" of
+            0:
+                begin
+                    if CRMAccount.Dto_Repuestos > 0 then begin
+                        Customer."Dto. Repuestos" := CRMAccount.Dto_Repuestos;
+                        UpdateCustomer := true;
+                    end;
+                end;
+            else begin
+                CRMAccount.Dto_Repuestos := Customer."Dto. Repuestos";
+            end;
+        end;
+    end;
+
+    procedure UpdateDtoAccountsCRM(var Customer: Record Customer)
+    var
+        Window: Dialog;
+        lblDialog: Label 'Cliente #1#### - #2########################################', comment = 'ESP="Cliente #1#### - #2########################################"';
+    begin
+        Window.Open(lblDialog);
+        if Customer.FindFirst() then
+            repeat
+                Window.Update(1, Customer."No.");
+                Window.Update(1, Customer.Name);
+                UpdateDtoAccountCRM(Customer."No.");
+            Until Customer.next() = 0;
+        Window.Close();
     end;
 }

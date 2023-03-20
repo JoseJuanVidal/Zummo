@@ -1535,6 +1535,34 @@ table 50138 "CRM Account_crm_btc"
             OptionOrdinalValues = 913610013, 913610000, 913610001, 913610002, 913610003, 913610004, 913610005, 913610006, 913610007, 913610008, 913610009, 913610010, 913610011, 913610012;  // 0->913.610002
             OptionMembers = " ",AHOLD,AREAS,CASINO,CATALONIA,"CHICK FIL A",GUFRESCO,INTERMARCHE,LECLERC,MENSSANA,MONOPRIX,RODILLA,VIPS,WALMART;
         }
+        field(50060; Dto_exprimidores; Decimal)
+        {
+            Caption = 'Dto. Exprimidores';
+            Description = '';
+            ExternalName = 'zum_exprimidores';
+            ExternalType = 'Decimal';
+        }
+        field(50061; Dto_Isla; Decimal)
+        {
+            Caption = 'Dto. Isla';
+            Description = '';
+            ExternalName = 'zum_isla';
+            ExternalType = 'Decimal';
+        }
+        field(50062; Dto_Viva; Decimal)
+        {
+            Caption = 'Dto. Viva';
+            Description = '';
+            ExternalName = 'zum_viva';
+            ExternalType = 'Decimal';
+        }
+        field(50063; Dto_Repuestos; Decimal)
+        {
+            Caption = 'Dto. Repuestos';
+            Description = '';
+            ExternalName = 'zum_repuestos';
+            ExternalType = 'Decimal';
+        }
     }
 
     keys

@@ -76,6 +76,10 @@ page 50027 "CRM Cliente_crm_btc"
                 field(bit_grupodedescuento; bit_grupodedescuento) { ApplicationArea = All; }
                 field(bit_idioma; bit_idioma) { ApplicationArea = All; }
                 field(zum_mercado; zum_mercado) { ApplicationArea = all; }
+                field(Dto_exprimidores; Dto_exprimidores) { ApplicationArea = all; }
+                field(Dto_Isla; Dto_Isla) { ApplicationArea = all; }
+                field(Dto_Viva; Dto_Viva) { ApplicationArea = all; }
+                field(Dto_Repuestos; Dto_Repuestos) { ApplicationArea = all; }
             }
         }
     }

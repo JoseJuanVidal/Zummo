@@ -12,6 +12,14 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
             {
                 ApplicationArea = all;
             }
+            field("Amount Subcontractor"; "Amount Subcontractor")
+            {
+                ApplicationArea = all;
+            }
+            field("Amount Inc. VAT Subcontractor"; "Amount Inc. VAT Subcontractor")
+            {
+                ApplicationArea = all;
+            }
             field("Vendor Shipment No."; "Vendor Shipment No.")
             {
                 ApplicationArea = all;

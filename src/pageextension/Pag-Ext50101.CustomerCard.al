@@ -45,67 +45,97 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
-            field(CentralCompras_btc; CentralCompras_btc)
+        }
+        addlast(Invoicing)
+        {
+            group("Clasificación Ventas")
             {
-                ApplicationArea = all;
-            }
-            field(ClienteCorporativo_btc; ClienteCorporativo_btc)
-            {
-                ApplicationArea = all;
-            }
-            field(Perfil_btc; Perfil_btc)
-            {
-                ApplicationArea = all;
-            }
-            field(AreaManager_btc; AreaManager_btc)
-            {
-                ApplicationArea = all;
-            }
-            field(InsideSales_btc; InsideSales_btc)
-            {
-                ApplicationArea = all;
-            }
-            field(Canal_btc; Canal_btc)
-            {
-                ApplicationArea = all;
-            }
-            field(Mercado_btc; Mercado_btc)
-            {
-                ApplicationArea = all;
-            }
-            field(Delegado_btc; Delegado_btc)
-            {
-                ApplicationArea = all;
-            }
+                field(CentralCompras_btc; CentralCompras_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field(ClienteCorporativo_btc; ClienteCorporativo_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field(Perfil_btc; Perfil_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field(AreaManager_btc; AreaManager_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field(InsideSales_btc; InsideSales_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field(Canal_btc; Canal_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field(Mercado_btc; Mercado_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field(Delegado_btc; Delegado_btc)
+                {
+                    ApplicationArea = all;
+                }
 
-            field(GrupoCliente_btc; GrupoCliente_btc)
-            {
-                ApplicationArea = all;
-            }
-            field(ClienteActividad_btc; ClienteActividad_btc)
-            {
-                ApplicationArea = All;
-            }
+                field(GrupoCliente_btc; GrupoCliente_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field(ClienteActividad_btc; ClienteActividad_btc)
+                {
+                    ApplicationArea = All;
+                }
 
-            field(SubCliente_btc; SubCliente_btc)
-            {
-                ApplicationArea = all;
+                field(SubCliente_btc; SubCliente_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field(ClienteReporting_btc; ClienteReporting_btc)
+                {
+                    ApplicationArea = all;
+                }
+                field(Formadepagosolicitada; Formadepagosolicitada)
+                {
+                    ApplicationArea = all;
+                }
+                field("ABC Cliente"; "ABC Cliente")
+                {
+                    ApplicationArea = all;
+                }
+                field("Mostrar Documentos Netos"; "Mostrar Documentos Netos")
+                {
+                    ApplicationArea = all;
+                }
             }
-            field(ClienteReporting_btc; ClienteReporting_btc)
+        }
+        addlast(Invoicing)
+        {
+            Group(DtosFamilia)
             {
-                ApplicationArea = all;
-            }
-            field(Formadepagosolicitada; Formadepagosolicitada)
-            {
-                ApplicationArea = all;
-            }
-            field("ABC Cliente"; "ABC Cliente")
-            {
-                ApplicationArea = all;
-            }
-            field("Mostrar Documentos Netos"; "Mostrar Documentos Netos")
-            {
-                ApplicationArea = all;
+                Caption = 'Descuentos', comment = 'ESP="Descuentos"';
+
+                field("Dto. Exprimidores"; "Dto. Exprimidores")
+                {
+                    ApplicationArea = All;
+                }
+                field("Dto. Isla"; "Dto. Isla")
+                {
+                    ApplicationArea = All;
+                }
+                field("Dto. Viva"; "Dto. Viva")
+                {
+                    ApplicationArea = All;
+                }
+                field("Dto. Repuestos"; "Dto. Repuestos")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
         addafter("VAT Registration No.")
@@ -365,6 +395,22 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
                     Funciones: Codeunit Integracion_crm_btc;
                 begin
                     Funciones.UpdateCustomerAccountAreaManager(Rec);
+                end;
+
+            }
+            action(SincronizeDto)
+            {
+                ApplicationArea = all;
+                Caption = 'Sincronize Dto SALES', comment = 'ESP="Actualiza Dtos. familia"';
+                Image = Discount;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Integracion_crm_btc;
+                    lblconfirm: Label '¿Desea actualizar los descuentos de Familia BC-CRM?', comment = 'ESP="¿Desea actualizar los descuentos de Familia BC-CRM?"';
+                begin
+                    if Confirm(lblconfirm) then
+                        Funciones.UpdateDtoAccountCRM(Rec."No.");
                 end;
 
             }

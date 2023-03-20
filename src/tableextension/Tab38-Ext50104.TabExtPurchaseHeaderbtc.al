@@ -33,6 +33,20 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
              "Document No." = FIELD("No."),
             "Outstanding Quantity" = FILTER(> 0)));
         }
+        field(50023; "Amount Subcontractor"; Decimal)
+        {
+            Caption = 'Amount Subcontractor', Comment = 'ESP="Importe subcontratación"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = Sum("Purchase Line".Amount WHERE("Document Type" = FIELD("Document Type"), "Document No." = FIELD("No."), "Order No." = filter(<> '')));
+        }
+        field(50024; "Amount Inc. VAT Subcontractor"; Decimal)
+        {
+            Caption = 'Amount Inc. VAT Subcontractor', Comment = 'ESP="Importe con IVA subcontr."';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = Sum("Purchase Line".Amount WHERE("Document Type" = FIELD("Document Type"), "Document No." = FIELD("No."), "Order No." = filter(<> '')));
+        }
         //+  NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {

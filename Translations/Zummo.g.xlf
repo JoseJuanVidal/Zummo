@@ -663,6 +663,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field DoNotSendMM - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 2125922959 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dto. Exprimidores</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field Dto_exprimidores - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 3952902569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dto. Isla</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field Dto_Isla - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 1901947976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dto. Repuestos</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field Dto_Repuestos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3049429624 - Field 3451200388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dto. Viva</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Account_crm_btc - Field Dto_Viva - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3049429624 - Field 2484874853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Email</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7127,6 +7147,11 @@
           <source>%1: trabajo de sincronización de Dynamics 365 for Sales.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method RecreateJobQueueEntry - NamedType JobQueueEntryNameTok</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2573646532 - Method 2484025516 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cliente #1#### - #2########################################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente #1#### - #2########################################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method UpdateDtoAccountsCRM - NamedType lblDialog</note>
         </trans-unit>
         <trans-unit id="Codeunit 3997019009 - NamedType 4134082808" size-unit="char" translate="yes" xml:space="preserve">
           <source>The file export has one or more errors.\\For each line to be exported, resolve the errors displayed to the right and then try to export again.</source>
@@ -21938,10 +21963,25 @@
           <note from="Developer" annotates="general" priority="2">ESP="Finalizar Credito"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action FinCredito - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1994005900 - Action 2962692815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Sincronize Dto SALES</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza Dtos. familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action SincronizeDto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1994005900 - Action 2962692815 - Method 1377591017 - NamedType 3147694092" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1994005900">
+          <source>¿Desea actualizar los descuentos de Familia BC-CRM?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los descuentos de Familia BC-CRM?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action SincronizeDto - Method OnAction - NamedType lblconfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1994005900 - Action 3270783951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Update Owner ID CRM</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualiza Propietario Cuentas CRM"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action UpdateOWnerID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1994005900 - Control 1747988429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Descuentos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descuentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Control DtosFamilia - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1994005900 - Control 3035610829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>It allows to indicate the reason for which it has been blocked</source>
@@ -22027,6 +22067,16 @@
           <source>Hist. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action HistAseguradora - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 2962692815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Sincronize Dto SALES</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza Dtos. familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action SincronizeDto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 2962692815 - Method 1377591017 - NamedType 3147694092" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
+          <source>¿Desea actualizar los descuentos de Familia BC-CRM a los registros seleccionados?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los descuentos de Familia BC-CRM a los registros seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action SincronizeDto - Method OnAction - NamedType lblconfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 2678150292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Dyn 365 Sales Sync Status</source>
@@ -24928,6 +24978,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Producto bloqueado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ProductionBOMHeader - Field ProductoBloqueado_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1052755578 - Field 2557569786 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
+          <source>Amount Inc. VAT Subcontractor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe con IVA subcontr."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field Amount Inc. VAT Subcontractor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1052755578 - Field 2902605817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
+          <source>Amount Subcontractor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe subcontratación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field Amount Subcontractor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1052755578 - Field 1162430823 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
           <source>Base Amount Line</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe Base IVA"</note>
@@ -26953,6 +27013,26 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descuento2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Descuento2_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 4235483272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Dto. Exprimidores</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto. Exprimidores"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Dto. Exprimidores - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3657691346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Dto. Isla</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto. Isla"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Dto. Isla - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 981552391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Dto. Repuestos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto. Repuestos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Dto. Repuestos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3120208075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Dto. Viva</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dto. Viva"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Dto. Viva - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 1851087237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>EnviarCRM</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -27072,6 +27152,16 @@
           <source>Nº orden ref.</source>
           <note from="Developer" annotates="general" priority="2">Ref. Order No.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtProdOrder_btc - Field RefOrderNo_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 2557569786 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Amount Inc. VAT Subcontractor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe con IVA subcontr."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Amount Inc. VAT Subcontractor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 2902605817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Amount Subcontractor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe subcontratación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Amount Subcontractor - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 348912602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Fecha Mas Temprana</source>

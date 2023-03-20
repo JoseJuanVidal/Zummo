@@ -300,6 +300,25 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 end;
 
             }
+            action(SincronizeDto)
+            {
+                ApplicationArea = all;
+                Caption = 'Sincronize Dto SALES', comment = 'ESP="Actualiza Dtos. familia"';
+                Image = Discount;
+
+                trigger OnAction()
+                var
+                    Customer: Record Customer;
+                    Funciones: Codeunit Integracion_crm_btc;
+                    lblconfirm: Label '¿Desea actualizar los descuentos de Familia BC-CRM a los registros seleccionados?', comment = 'ESP="¿Desea actualizar los descuentos de Familia BC-CRM a los registros seleccionados?"';
+                begin
+                    if Confirm(lblconfirm) then begin
+                        CurrPage.SetSelectionFilter(Customer);
+                        Funciones.UpdateDtoAccountsCRM(Customer);
+                    end;
+                end;
+
+            }
         }
         addafter(ApplyTemplate)
         {
