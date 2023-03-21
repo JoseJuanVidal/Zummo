@@ -11363,6 +11363,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar la imagen?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Method UpdateFileJpg - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="Page 474319202 - Method 2358692240 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Upload File</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Method UploadFileAttachment - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Page 474319202 - Action 2550237599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>URL</source>
           <note from="Developer" annotates="general" priority="2">ESP="URL"</note>
@@ -11370,8 +11375,13 @@
         </trans-unit>
         <trans-unit id="Page 474319202 - Action 2427213647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update picture</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualzizar imagen"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar imagen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Action UpdatePicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 474319202 - Action 3349572119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update picture</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Action uploadFile - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 411716643 - Control 1200201054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Descripción</source>

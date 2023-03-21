@@ -224,6 +224,7 @@ page 17456 "ZM ERPLINK Item Picture"
     var
         TenantMedia: Record "Tenant Media";
         Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
+        WebUrl: text;
         InStreamPic: InStream;
         Index: Integer;
     begin
@@ -236,7 +237,7 @@ page 17456 "ZM ERPLINK Item Picture"
                 if TenantMedia.Content.HasValue then begin
                     TenantMedia.Content.CreateInStream(InStreamPic);
 
-                    Sharepoint.UploadFileStreeam(Rec."No.", InStreamPic, TenantMedia."Mime Type");
+                    Sharepoint.UploadFileStreeam(Rec."No.", InStreamPic, TenantMedia."Mime Type", WebUrl);
 
                 end;
             end;

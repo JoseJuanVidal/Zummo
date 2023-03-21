@@ -102,7 +102,7 @@ page 50055 "ZM CIM Items"
             {
                 ApplicationArea = all;
                 Caption = 'Documentos Producto', comment = 'ESP="Documentos Producto"';
-                SubPageLink = CodComentario = field("No.");
+                //SubPageLink = CodComentario = field("No.");
             }
             part(BomLineDocuments; "ZM Item Documents")
             {

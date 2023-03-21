@@ -26,7 +26,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         exit(OAuth20AppHelper.GetAccessToken(OAuth20Application));
     end;
 
-    procedure UploadFileStreeam(FileName: text; var Stream: InStream; MimeType: text): Boolean
+    procedure UploadFileStreeam(FileName: text; var Stream: InStream; MimeType: text; var WebUrl: text): Boolean
     var
         OAuth20Application: Record "ZM OAuth 2.0 Application";
         TempOnlineDriveItem: Record "Online Drive Item" temporary;
@@ -38,42 +38,83 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         OAuth20Application.Get('ERPLINK');
         AccessToken := GetAccessToken(OAuth20Application.Code);
 
-        //obtenemos el id del fichero
-        FolderID := OAuth20Application.jpgFolderID;
+        //obtenemos el id del fichero        
         FolderPath := 'Documentos/jpg';
+        FolderID := OAuth20Application.jpgFolderID;
         case MimeType of
-            'image/png':
-                FileName := FileName + '.png';
-            'image/jpeg':
-                FileName := FileName + '.jpg';
-            'image/gif':
-                FileName := FileName + '.gif';
-            'application/pdf':
-                FileName := FileName + '.pdf';
-            'application/xml':
-                FileName := FileName + '.pdf';
-            'audio/mpeg':
-                FileName := FileName + '.mp3';
-            'audio/x-wav':
-                FileName := FileName + '.wav';
-            'video/mp4':
-                FileName := FileName + '.mp4';
-            'video/x-msvideo':
-                FileName := FileName + '.avi';
-            'text/html':
-                FileName := FileName + '.html';
-            'text/plain':
-                FileName := FileName + '.txt';
+            'jpg', 'image/png':
+                begin
+                    FileName := FileName + '.png';
+                    FolderPath := 'Documentos/jpg';
+                    FolderID := OAuth20Application.jpgFolderID;
+                end;
+            'jpeg', 'image/jpeg':
+                begin
+                    FileName := FileName + '.jpg';
+                    FolderPath := 'Documentos/jpg';
+                end;
+            'gif', 'image/gif':
+                begin
+                    FileName := FileName + '.gif';
+                    FolderPath := 'Documentos/jpg';
+                end;
+            'pdf', 'application/pdf':
+                begin
+                    FileName := FileName + '.pdf';
+                    FolderPath := 'Documentos/pdf';
+                    FolderID := OAuth20Application.pdfFolderID;
+                end;
+            'xml', 'application/xml':
+                begin
+                    FileName := FileName + '.xml';
+                end;
+            'mpg', 'audio/mpeg':
+                begin
+                    FileName := FileName + '.mp3';
+                end;
+            'x-wav', 'audio/x-wav':
+                begin
+                    FileName := FileName + '.wav';
+                end;
+            'mp4', 'video/mp4':
+                begin
+                    FileName := FileName + '.mp4';
+                end;
+            'msvideo', 'video/x-msvideo':
+                begin
+                    FileName := FileName + '.avi';
+                end;
+            'html', 'text/html':
+                begin
+                    FileName := FileName + '.html';
+                end;
+            'txt', 'text/plain':
+                begin
+                    FileName := FileName + '.txt';
+                end;
             'dxf', 'application/dxf':
-                FileName := FileName + '.dxf';
+                begin
+                    FileName := FileName + '.dxf';
+                    FolderPath := 'Documentos/dxf';
+                    FolderID := OAuth20Application.dxfFolderID;
+                end;
             'step', 'application/step':
-                FileName := FileName + '.step';
+                begin
+                    FileName := FileName + '.step';
+                    FolderPath := 'Documentos/step';
+                    FolderID := OAuth20Application.StepFolderID;
+                end;
+            else begin
+                FileName := FileName;
+            end;
         end;
 
         // if FetchDrivesChildItemsName(AccessToken, OAuth20Application.RootFolderID, FolderID, TempOnlineDriveItem, name) then begin
 
-        if UploadFile(AccessToken, OAuth20Application.RootFolderID, FolderID, FolderPath, FileName, Stream, TempOnlineDriveItem) then
+        if UploadFile(AccessToken, OAuth20Application.RootFolderID, FolderID, FolderPath, FileName, Stream, TempOnlineDriveItem) then begin
+            WebUrl := TempOnlineDriveItem.webUrl;
             exit(true);
+        end;
         //DownloadFromStream(Stream, '', '', '', name);   
     end;
 

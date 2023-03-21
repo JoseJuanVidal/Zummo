@@ -95,14 +95,24 @@ page 50158 "ZM Item Documents"
             action(UpdatePicture)
             {
                 ApplicationArea = all;
-                Caption = 'Update picture', comment = 'ESP="Actualzizar imagen"';
+                Caption = 'Update picture', comment = 'ESP="Actualizar imagen"';
                 Image = Picture;
 
                 trigger OnAction()
                 begin
-
                     UpdateFileJpg();
 
+                end;
+            }
+            action(uploadFile)
+            {
+                ApplicationArea = all;
+                Caption = 'Update picture', comment = 'ESP="Importar fichero"';
+                Image = Picture;
+
+                trigger OnAction()
+                begin
+                    UploadFileAttachment()
                 end;
             }
         }
@@ -155,6 +165,7 @@ page 50158 "ZM Item Documents"
     end;
 
     var
+        Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
         txtComentario: Text;
         lblDelete: Label '¿Do you want to delete the file attachment?', comment = 'ESP="¿Desea Eliminar el archivo adjunto?"';
 
@@ -171,6 +182,13 @@ page 50158 "ZM Item Documents"
         FileTxt := PathAndFileTxt;
         WHILE STRPOS(FileTxt, '.') <> 0 DO
             FileTxt := COPYSTR(FileTxt, 1 + STRPOS(FileTxt, '.'));
+    end;
+
+    local procedure ExtractFileName(FileNameTxt: Text) FileTxt: Text
+    begin
+        FileTxt := FileNameTxt;
+        WHILE STRPOS(FileTxt, '.') <> 0 DO
+            FileTxt := COPYSTR(FileTxt, 1, STRPOS(FileTxt, '.') - 1);
     end;
 
     local procedure UpdateFileJpg()
@@ -205,7 +223,6 @@ page 50158 "ZM Item Documents"
     local procedure DownloadFile()
     var
         CIMItemstemporary: Record "ZM CIM Items temporary";
-        Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
         FileName: text;
         Stream: InStream;
         lblConfirm: Label '¿Do you want to download the file?', comment = 'ESP="¿Desea descargar el fichero?"';
@@ -220,5 +237,38 @@ page 50158 "ZM Item Documents"
             end;
         end;
 
+    end;
+
+    local procedure UploadFileAttachment()
+    var
+        ComentariosPredefinidos: Record ComentariosPredefinidos;
+        NVInStream: InStream;
+        filterCode: text;
+        FileName: text;
+        OnlyFileName: text;
+        FileExtension: text;
+        WebUrl: text;
+        Text000: Label 'Upload File', comment = 'ESP="Seleccionar fichero"';
+    begin
+        Rec.FilterGroup(4);
+        filterCode := rec.GetFilter(CodComentario);
+        Rec.FilterGroup(0);
+        if UploadIntoStream(Text000, '', '', FileName, NVInStream) then begin
+            FileExtension := ExtractFileExtFromPath(FileName);
+            FileName := ExtractFileNameFromPath(FileName);
+            OnlyFileName := ExtractFileName(FileName);
+            if not Confirm('Subir fichero %1', true, FileName) then
+                exit;
+            ComentariosPredefinidos.Init();
+            ComentariosPredefinidos.CodComentario := filterCode;
+            ComentariosPredefinidos.Description := FileName;
+            ComentariosPredefinidos.Extension := FileExtension;
+            ComentariosPredefinidos.Tipo := ComentariosPredefinidos.Tipo::ERPLINKDocs;
+            ComentariosPredefinidos.Insert(true);
+            if Sharepoint.UploadFileStreeam(OnlyFileName, NVInStream, FileExtension, WebUrl) then begin
+                ComentariosPredefinidos.SetComentario(WebUrl);
+                ComentariosPredefinidos.Modify();
+            end;
+        end;
     end;
 }
