@@ -125,6 +125,7 @@ table 50103 "ZM CIM Items temporary"
         //ZMCIMProdDocuments.DeleteAll();
         if ZMCIMProdDocuments.FindFirst() then
             repeat
+                ZMCIMProdDocuments.DeleteFileAttachment(false);
                 ZMCIMProdDocuments.Delete();
             Until ZMCIMProdDocuments.next() = 0;
     end;

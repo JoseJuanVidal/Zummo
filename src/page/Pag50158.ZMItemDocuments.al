@@ -148,8 +148,16 @@ page 50158 "ZM Item Documents"
         Rec.Tipo := Rec.Tipo::ERPLINKDocs;
     end;
 
+    trigger OnDeleteRecord(): Boolean
+    begin
+        if Confirm(lblDelete) then
+            Rec.DeleteFileAttachment(true);
+    end;
+
     var
         txtComentario: Text;
+        lblDelete: Label '¿Do you want to delete the file attachment?', comment = 'ESP="¿Desea Eliminar el archivo adjunto?"';
+
 
     local procedure ExtractFileNameFromPath(PathAndFileTxt: Text) FileTxt: Text
     begin

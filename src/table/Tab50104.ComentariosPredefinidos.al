@@ -44,6 +44,11 @@ table 50104 "ComentariosPredefinidos"
             Caption = 'Extension', comment = 'ESP="Extension"';
             DataClassification = CustomerContent;
         }
+        field(40; "Not Sharepoint"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sharepoint', comment = 'ESP="Sharepoint"';
+        }
         //#region ERPLINK
     }
 
@@ -65,6 +70,9 @@ table 50104 "ComentariosPredefinidos"
         if "Line No." = 0 then
             "Line No." := GetLastLineNo();
     end;
+
+    var
+        Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
 
     procedure SetComentario(NewText: Text)
     var
@@ -117,5 +125,18 @@ table 50104 "ComentariosPredefinidos"
         ComentariosPredefinidos.SetRange(CodComentario, Rec.CodComentario);
         if ComentariosPredefinidos.FindLast() then
             exit(ComentariosPredefinidos.id);
+    end;
+
+    procedure DeleteFileAttachment(ShowMessage: Boolean)
+    var
+        CIMItemstemporary: Record "ZM CIM Items temporary";
+        FileName: text;
+        Stream: InStream;
+        lblMsg: Label 'The attached file has been deleted', comment = 'ESP="Se ha eliminado el fichero adjunto"';
+    begin
+        if Sharepoint.DeleteDriveItemName(Rec.Description, Rec.Extension) then
+            if ShowMessage then
+                Message(lblMsg);
+
     end;
 }

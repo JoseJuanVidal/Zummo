@@ -59,6 +59,10 @@ page 17457 "ZM API Item Documents"
                     Visible = false;
 
                 }
+                field(NotSharepoint; "Not Sharepoint")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

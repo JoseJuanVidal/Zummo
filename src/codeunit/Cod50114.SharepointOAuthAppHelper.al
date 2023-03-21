@@ -223,6 +223,37 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
     //             exit(false);
     //         end;
     // end;
+    procedure DeleteDriveItemName(Name: text; FileExt: Text): Boolean
+    var
+        OAuth20Application: Record "ZM OAuth 2.0 Application";
+        TempOnlineDriveItem: Record "Online Drive Item" temporary;
+        AccessToken: Text;
+        FolderID: text;
+    begin
+        OAuth20Application.Get('ERPLINK');
+        AccessToken := GetAccessToken(OAuth20Application.Code);
+
+
+        //obtenemos el id del fichero
+        case FileExt of
+            'pdf':
+                FolderID := OAuth20Application.pdfFolderID;
+            'jpg':
+                FolderID := OAuth20Application.jpgFolderID;
+            'dxf':
+                FolderID := OAuth20Application.dxfFolderID;
+            'step':
+                FolderID := OAuth20Application.StepFolderID;
+        end;
+
+        if FetchDrivesChildItemsName(AccessToken, OAuth20Application.RootFolderID, FolderID, TempOnlineDriveItem, name) then begin
+
+            // borramos el fichero
+            if DeleteDriveItem(AccessToken, OAuth20Application.RootFolderID, TempOnlineDriveItem.id) then
+                exit(true);
+            //DownloadFromStream(Stream, '', '', '', name);
+        end;
+    end;
 
     procedure DeleteDriveItem(AccessToken: Text; DriveID: Text; ItemID: Text): Boolean
     var
@@ -261,19 +292,19 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
     //     end;
     // end;
 
-    // procedure FetchDrivesItems(AccessToken: Text; DriveID: Text; var DriveItem: Record "Online Drive Item"): Boolean
-    // var
-    //     JsonResponse: JsonObject;
-    //     JToken: JsonToken;
-    //     IsSucces: Boolean;
-    // begin
-    //     if HttpGet(AccessToken, StrSubstNo(DrivesItemsUrl, DriveID), JsonResponse) then begin
-    //         if JsonResponse.Get('value', JToken) then
-    //             ReadDriveItems(JToken.AsArray(), DriveID, '', DriveItem);
+    procedure FetchDrivesItems(AccessToken: Text; DriveID: Text; var DriveItem: Record "Online Drive Item"): Boolean
+    var
+        JsonResponse: JsonObject;
+        JToken: JsonToken;
+        IsSucces: Boolean;
+    begin
+        if HttpGet(AccessToken, StrSubstNo(DrivesItemsUrl, DriveID), JsonResponse) then begin
+            if JsonResponse.Get('value', JToken) then
+                ReadDriveItems(JToken.AsArray(), DriveID, '', DriveItem);
 
-    //         exit(true);
-    //     end;
-    // end;
+            exit(true);
+        end;
+    end;
 
     procedure FetchDrivesChildItems(
         AccessToken: Text;

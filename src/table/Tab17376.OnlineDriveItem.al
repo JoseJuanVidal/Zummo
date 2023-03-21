@@ -40,6 +40,11 @@ table 17376 "Online Drive Item"
         {
             DataClassification = CustomerContent;
         }
+        field(10; FolderName; Text[250])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Folder Name', comment = 'ESP="Nombre Carpeta"';
+        }
     }
 
     keys

@@ -1,8 +1,9 @@
 page 17379 "Sharepont Drive Items"
 {
     Caption = 'Sharepont Documents', Comment = 'ESP="Sharepoint Documentos"';
-    PageType = ListPart;
-    SourceTable = "Sharepont Drive Item";
+    PageType = List;
+    SourceTable = "Online Drive Item";
+    SourceTableTemporary = true;
     UsageCategory = None;
     Editable = false;
 
@@ -27,29 +28,29 @@ page 17379 "Sharepont Drive Items"
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(FolderName; Rec.FolderName)
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
+                // field(FolderName; Rec.FolderName)
+                // {
+                //     ApplicationArea = All;
+                //     Visible = false;
+                // }
                 field(name; Rec.name)
                 {
                     ApplicationArea = All;
                 }
-                field(url; url)
+                field(webUrl; webUrl)
                 {
                     ApplicationArea = all;
                 }
-                field("Table id"; Rec."Table id")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Record id"; Rec."Record id")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
+                // field("Table id"; Rec."Table id")
+                // {
+                //     ApplicationArea = All;
+                //     Visible = false;
+                // }
+                // field("Record id"; Rec."Record id")
+                // {
+                //     ApplicationArea = All;
+                //     Visible = false;
+                // }
                 field(createdDateTime; Rec.createdDateTime)
                 {
                     ApplicationArea = All;
@@ -70,7 +71,7 @@ page 17379 "Sharepont Drive Items"
 
                 trigger OnAction()
                 begin
-                    Hyperlink(url);
+                    Hyperlink(Weburl);
                 end;
             }
             action("Delete the selected item")
@@ -108,7 +109,37 @@ page 17379 "Sharepont Drive Items"
         PurchaseSetup: Record "Purchases & Payables Setup";
         SharepointAppHelper: Codeunit "Sharepoint OAuth App. Helper";
         AccessToken: Text;
+        FolderPath: Text;
         ConfirmMsg: Label '¿Do you want to delete the selected item?', Comment = 'ESP="¿Desea eliminar el elemento seleccionado?"';
+
+    procedure SetProperties(NewAccessToken: Text; NewFolderPath: Text; DriveID: Text; ParentID: Text)
+    var
+        TempOnlineDriveItem: Record "Online Drive Item" temporary;
+    begin
+        AccessToken := NewAccessToken;
+        FolderPath := NewFolderPath;
+
+        if ParentID = '' then
+            SharepointAppHelper.FetchDrivesItems(AccessToken, DriveID, TempOnlineDriveItem)
+        else
+            SharepointAppHelper.FetchDrivesChildItems(AccessToken, ParentID, DriveID, TempOnlineDriveItem);
+
+        Rec.Copy(TempOnlineDriveItem, true);
+    end;
+
+    // local procedure OpenDriveItems()
+    // var
+    //     OnlineDriveItems: Page "Sharepont Drive Items";
+    //     Stream: InStream;
+    // begin
+    //     if not isFile then begin
+    //         OnlineDriveItems.SetProperties(AccessToken, StrSubstNo('%1/%2', FolderPath, name), driveId, Id);
+    //         OnlineDriveItems.Run();
+    //     end else begin
+    //         if OnlineDriveAPI.DownloadFile(AccessToken, driveId, id, Stream) then
+    //             DownloadFromStream(Stream, '', '', '', name);
+    //     end;
+    // end;
 
     local procedure DeleteItem()
     begin

@@ -107,21 +107,38 @@ page 17376 "OAuth 2.0 Application"
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the Sharepoint ID';
+                    trigger OnDrillDown()
+                    begin
+                        OpenDriveItems(Rec.jpgFolderID)
+                    end;
                 }
                 field(pdfFolderID; pdfFolderID)
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the Sharepoint ID';
+                    trigger OnDrillDown()
+                    begin
+                        OpenDriveItems(Rec.pdfFolderID)
+                    end;
                 }
                 field(dxfFolderID; dxfFolderID)
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the Sharepoint ID';
+                    trigger OnDrillDown()
+                    begin
+                        OpenDriveItems(Rec.dxfFolderID)
+                    end;
                 }
                 field(StepFolderID; StepFolderID)
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the Sharepoint ID';
+
+                    trigger OnDrillDown()
+                    begin
+                        OpenDriveItems(Rec.StepFolderID)
+                    end;
                 }
 
 
@@ -178,20 +195,6 @@ page 17376 "OAuth 2.0 Application"
                         Message(SuccessfulMsg);
                 end;
             }
-            action(Drives)
-            {
-                ApplicationArea = all;
-                Caption = 'Drives', comment = 'ESP="Drives"';
-
-
-                trigger OnAction()
-                var
-                    Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
-                begin
-                    //Sharepoint.DownloadFileName('250118 EMBELLECEDOR EJE BANDEJA.jpg', 'jpg');
-                end;
-
-            }
         }
     }
 
@@ -200,5 +203,16 @@ page 17376 "OAuth 2.0 Application"
         SuccessfulMsg: Label 'Access Token updated successfully.';
         NoRefreshTokenErr: Label 'No Refresh Token avaiable';
 
+
+    local procedure OpenDriveItems(FolderID: Text)
+    var
+        OnlineDriveItems: page "Sharepont Drive Items";
+        AccessToken: text;
+    begin
+        AccessToken := OAuth20AppHelper.GetAccessToken(Rec.Code);
+
+        OnlineDriveItems.SetProperties(AccessToken, '', FolderID, RootFolderID);
+        OnlineDriveItems.RunModal();
+    end;
 }
 
