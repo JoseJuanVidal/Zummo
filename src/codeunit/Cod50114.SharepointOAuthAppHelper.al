@@ -212,60 +212,56 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
             exit(true);
     end;
 
-    // procedure CreateDriveFolder(
-    //     AccessToken: Text;
-    //     DriveID: Text;
-    //     ItemID: Text;
-    //     FolderName: Text;
-    //     var OnlineDriveItem: Record "Online Drive Item"): Boolean
-    // var
-    //     HttpClient: HttpClient;
-    //     Headers: HttpHeaders;
-    //     ContentHeaders: HttpHeaders;
-    //     RequestMessage: HttpRequestMessage;
-    //     RequestContent: HttpContent;
-    //     ResponseMessage: HttpResponseMessage;
-    //     ResponseText: Text;
-    //     JsonBody: JsonObject;
-    //     RequestText: Text;
-    //     EmptyObject: JsonObject;
-    //     JsonResponse: JsonObject;
-    // begin
-    //     Headers := HttpClient.DefaultRequestHeaders();
-    //     Headers.Add('Authorization', StrSubstNo('Bearer %1', AccessToken));
-    //     if ItemID = '' then
-    //         RequestMessage.SetRequestUri(StrSubstNo(CreateRootFolderUrl, DriveID))
-    //     else
-    //         RequestMessage.SetRequestUri(StrSubstNo(CreateFolderUrl, DriveID, ItemID));
-    //     RequestMessage.Method := 'POST';
+    procedure CreateDriveFolder(ApplicationCode: code[20]; AccessToken: Text; DriveID: Text; ItemID: Text; FolderName: Text; var OnlineDriveItem: Record "Online Drive Item"): Boolean
+    var
+        HttpClient: HttpClient;
+        Headers: HttpHeaders;
+        ContentHeaders: HttpHeaders;
+        RequestMessage: HttpRequestMessage;
+        RequestContent: HttpContent;
+        ResponseMessage: HttpResponseMessage;
+        ResponseText: Text;
+        JsonBody: JsonObject;
+        RequestText: Text;
+        EmptyObject: JsonObject;
+        JsonResponse: JsonObject;
+    begin
+        Headers := HttpClient.DefaultRequestHeaders();
+        Headers.Add('Authorization', StrSubstNo('Bearer %1', AccessToken));
+        if ItemID = '' then
+            RequestMessage.SetRequestUri(StrSubstNo(CreateRootFolderUrl, DriveID))
+        else
+            RequestMessage.SetRequestUri(StrSubstNo(CreateFolderUrl, DriveID, ItemID));
+        RequestMessage.Method := 'POST';
 
-    //     // Body
-    //     JsonBody.Add('name', FolderName);
-    //     JsonBody.Add('folder', EmptyObject);
-    //     JsonBody.WriteTo(RequestText);
-    //     RequestContent.WriteFrom(RequestText);
+        // Body
+        JsonBody.Add('name', FolderName);
+        JsonBody.Add('folder', EmptyObject);
+        JsonBody.WriteTo(RequestText);
+        RequestContent.WriteFrom(RequestText);
 
-    //     // Content Headers
-    //     RequestContent.GetHeaders(ContentHeaders);
-    //     ContentHeaders.Remove('Content-Type');
-    //     ContentHeaders.Add('Content-Type', 'application/json');
+        // Content Headers
+        RequestContent.GetHeaders(ContentHeaders);
+        ContentHeaders.Remove('Content-Type');
+        ContentHeaders.Add('Content-Type', 'application/json');
 
-    //     RequestMessage.Content := RequestContent;
+        RequestMessage.Content := RequestContent;
 
-    //     if HttpClient.Send(RequestMessage, ResponseMessage) then
-    //         if ResponseMessage.IsSuccessStatusCode() then begin
-    //             if ResponseMessage.Content.ReadAs(ResponseText) then begin
-    //                 if JsonResponse.ReadFrom(ResponseText) then
-    //                     ReadDriveItem(JsonResponse, DriveID, ItemID, OnlineDriveItem);
+        if HttpClient.Send(RequestMessage, ResponseMessage) then
+            if ResponseMessage.IsSuccessStatusCode() then begin
+                if ResponseMessage.Content.ReadAs(ResponseText) then begin
+                    if JsonResponse.ReadFrom(ResponseText) then
+                        ReadDriveItem(ApplicationCode, JsonResponse, DriveID, ItemID, OnlineDriveItem);
 
-    //                 exit(true);
-    //             end;
-    //         end
-    //         else begin
-    //             ResponseMessage.Content.ReadAs(ResponseText);
-    //             exit(false);
-    //         end;
-    // end;
+                    exit(true);
+                end;
+            end
+            else begin
+                ResponseMessage.Content.ReadAs(ResponseText);
+                exit(false);
+            end;
+    end;
+
     procedure DeleteDriveItemName(Name: text; FileExt: Text): Boolean
     var
         OAuth20Application: Record "ZM OAuth 2.0 Application";

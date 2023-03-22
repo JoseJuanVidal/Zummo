@@ -5,14 +5,26 @@ page 17379 "Sharepont Drive Items"
     SourceTable = "Online Drive Item";
     SourceTableTemporary = true;
     UsageCategory = None;
-    Editable = false;
+    InsertAllowed = false;
+    DeleteAllowed = false;
 
     layout
     {
         area(content)
         {
+            group(Creation)
+            {
+                Caption = 'Creation', comment = 'ESP="Datos Crear"';
+                field(FolderName; FolderName)
+                {
+                    ApplicationArea = all;
+                    Caption = 'New Folder Name', comment = 'ESP="Nuevo Nombre carpeta"';
+                }
+
+            }
             repeater(General)
             {
+                Editable = false;
                 field(id; Rec.id)
                 {
                     ApplicationArea = All;
@@ -40,6 +52,11 @@ page 17379 "Sharepont Drive Items"
                 field(webUrl; webUrl)
                 {
                     ApplicationArea = all;
+
+                    trigger OnAssistEdit()
+                    begin
+                        Hyperlink(Weburl);
+                    end;
                 }
                 // field("Table id"; Rec."Table id")
                 // {
@@ -78,6 +95,7 @@ page 17379 "Sharepont Drive Items"
             {
                 ApplicationArea = All;
                 ShortcutKey = 'shift + f4';
+                Image = Delete;
 
                 trigger OnAction()
                 begin
@@ -87,6 +105,7 @@ page 17379 "Sharepont Drive Items"
             action("Upload a File")
             {
                 ApplicationArea = All;
+                Image = MachineCenterLoad;
 
                 trigger OnAction()
                 begin
@@ -96,10 +115,21 @@ page 17379 "Sharepont Drive Items"
             action("Download a File")
             {
                 ApplicationArea = All;
+                Image = Download;
 
                 trigger OnAction()
                 begin
                     DownloadFile();
+                end;
+            }
+            action("Create Folder")
+            {
+                ApplicationArea = All;
+                Image = CreateMovement;
+
+                trigger OnAction()
+                begin
+                    CreateFolder();
                 end;
             }
         }
@@ -108,7 +138,7 @@ page 17379 "Sharepont Drive Items"
             action(Folders)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Folders', Comment = 'ES="Carpetas"';
+                Caption = 'Folders', Comment = 'ESP="Carpetas"';
                 Image = SelectField;
                 Promoted = true;
                 PromotedCategory = Category4;
@@ -117,25 +147,28 @@ page 17379 "Sharepont Drive Items"
 
                 trigger OnAction()
                 begin
-                    REc.TestField(isFile, false);
+                    Rec.TestField(isFile, false);
                     Rec.OpenDriveItems();
                 end;
             }
         }
     }
     var
-        PurchaseSetup: Record "Purchases & Payables Setup";
         SharepointAppHelper: Codeunit "Sharepoint OAuth App. Helper";
+        ApplicationCode: code[20];
+        FolderName: Text;
         AccessToken: Text;
         FolderPath: Text;
         ConfirmMsg: Label '¿Do you want to delete the selected item?', Comment = 'ESP="¿Desea eliminar el elemento seleccionado?"';
+        lblError: Label 'You must specify a Folder name.', comment = 'ESP="Debe indicar un nombre de Carpeta."';
 
-    procedure SetProperties(ApplicationCode: code[20]; NewAccessToken: Text; NewFolderPath: Text; DriveID: Text; ParentID: Text)
+    procedure SetProperties(NewApplicationCode: code[20]; NewAccessToken: Text; NewFolderPath: Text; DriveID: Text; ParentID: Text)
     var
         TempOnlineDriveItem: Record "Online Drive Item" temporary;
     begin
         AccessToken := NewAccessToken;
         FolderPath := NewFolderPath;
+        ApplicationCode := NewApplicationCode;
 
         if ParentID = '' then
             SharepointAppHelper.FetchDrivesItems(ApplicationCode, AccessToken, DriveID, TempOnlineDriveItem)
@@ -151,8 +184,8 @@ page 17379 "Sharepont Drive Items"
     begin
         if not Confirm(ConfirmMsg, false) then
             exit;
-        PurchaseSetup.Get();
-        AccessToken := SharepointAppHelper.GetAccessToken(PurchaseSetup."Sharepoint Connection");
+
+        AccessToken := SharepointAppHelper.GetAccessToken(Rec."Application Code");
         if SharepointAppHelper.DeleteDriveItem(AccessToken, driveId, id) then
             Delete();
     end;
@@ -163,8 +196,8 @@ page 17379 "Sharepont Drive Items"
         FromFile: Text;
         Stream: InStream;
     begin
-        PurchaseSetup.Get();
-        AccessToken := SharepointAppHelper.GetAccessToken(PurchaseSetup."Sharepoint Connection");
+
+        AccessToken := SharepointAppHelper.GetAccessToken(Rec."Application Code");
         if UploadIntoStream('Select a File', '', '', FromFile, Stream) then begin
             SharepointAppHelper.UploadFile(AccessToken, driveId, parentId, FolderName, FromFile, Stream, OnlineDriveItem);
         end;
@@ -176,9 +209,22 @@ page 17379 "Sharepont Drive Items"
         FromFile: Text;
         Stream: InStream;
     begin
-        PurchaseSetup.Get();
-        AccessToken := SharepointAppHelper.GetAccessToken(PurchaseSetup."Sharepoint Connection");
+
+        AccessToken := SharepointAppHelper.GetAccessToken(Rec."Application Code");
         if SharepointAppHelper.DownloadFile(AccessToken, driveId, id, Stream) then
             DownloadFromStream(Stream, '', '', '', name);
+    end;
+
+    local procedure CreateFolder()
+    var
+        lblConfirFolder: Label '¿Do you want to create the %1 folder?', comment = 'ESP="¿Desea crear la carpeta %1?"';
+    begin
+        if FolderName = '' then
+            Error(lblError);
+        AccessToken := SharepointAppHelper.GetAccessToken(Rec."Application Code");
+        if Confirm(ConfirmMsg, true, FolderName) then
+            if SharepointAppHelper.CreateDriveFolder(ApplicationCode, AccessToken, driveId, parentId, FolderName, Rec) then
+                Message(StrSubstNo('Folder %1 created.', FolderName));
+
     end;
 }

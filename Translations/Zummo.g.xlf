@@ -6395,147 +6395,147 @@
         </trans-unit>
         <trans-unit id="Table 3916393050 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>OAuth 2.0 Application</source>
-          <note from="Developer" annotates="general" priority="2">ES="Aplicación OAuth 2.0"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Aplicación OAuth 2.0"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 3174535945 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Access Token</source>
-          <note from="Developer" annotates="general" priority="2">ES="Token de acceso"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Token de acceso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Access Token - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 1799079160 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Access Token URL</source>
-          <note from="Developer" annotates="general" priority="2">ES="URL de token de acceso"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="URL de token de acceso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Access Token URL - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 198601236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Auth. URL Parms</source>
-          <note from="Developer" annotates="general" priority="2">ES="Auth. Url parms"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Auth. Url parms"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Auth. URL Parms - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 210959450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Authorization Time</source>
-          <note from="Developer" annotates="general" priority="2">ES="Tiempo de autorización"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Tiempo de autorización"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Authorization Time - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 2338191276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Authorization URL</source>
-          <note from="Developer" annotates="general" priority="2">ES="URL de autorización"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="URL de autorización"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Authorization URL - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 652819368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Client ID</source>
-          <note from="Developer" annotates="general" priority="2">ES="Identificación del cliente"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Identificación del cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Client ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 2529110793 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Client Secret</source>
-          <note from="Developer" annotates="general" priority="2">ES="Secreto del cliente"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Secreto del cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Client Secret - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
-          <note from="Developer" annotates="general" priority="2">ES="Código"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <note from="Developer" annotates="general" priority="2">ES="Descripción"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 278527571 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>dxf Folder Id</source>
-          <note from="Developer" annotates="general" priority="2">ES="Id Carpeta dxf"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Carpeta dxf"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field dxfFolderID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 1951595953 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Expires In</source>
-          <note from="Developer" annotates="general" priority="2">ES="Expira en"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Expira en"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Expires In - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 3853887604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ext. Expires In</source>
-          <note from="Developer" annotates="general" priority="2">ES="Ext. Expira en"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Ext. Expira en"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Ext. Expires In - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 199260834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Grant Type</source>
-          <note from="Developer" annotates="general" priority="2">ES="Tipo de subvención"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo de subvención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Grant Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 2884336403 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Drive Id</source>
-          <note from="Developer" annotates="general" priority="2">ES="Id Sharepoint"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Sharepoint"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field IDDrive - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 4242924986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>jpg Folder Id</source>
-          <note from="Developer" annotates="general" priority="2">ES="Id Carpeta jpg"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Carpeta jpg"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field jpgFolderID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 4035850072 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Oters Folder Id</source>
-          <note from="Developer" annotates="general" priority="2">ES="Id Carpeta otros"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Carpeta otros"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field OtersFolderID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 2575460289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Password</source>
-          <note from="Developer" annotates="general" priority="2">ES="Clave"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Clave"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Password - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 3168660491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>pdf Folder Id</source>
-          <note from="Developer" annotates="general" priority="2">ES="Id Carpeta pdf"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Carpeta pdf"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field pdfFolderID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 618784563 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Redirect URL</source>
-          <note from="Developer" annotates="general" priority="2">ES="Redireccionar URL"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Redireccionar URL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Redirect URL - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 1513319962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh Token</source>
-          <note from="Developer" annotates="general" priority="2">ES="Actualización"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualización"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Refresh Token - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 3728819735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Root Folder Id</source>
-          <note from="Developer" annotates="general" priority="2">ES="Id Carpeta root"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Carpeta root"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field RootFolderID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 2221138897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Root Folder Name</source>
-          <note from="Developer" annotates="general" priority="2">ES="Nombre Carpeta root"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Carpeta root"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field RootFolderName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 593885934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Scope</source>
-          <note from="Developer" annotates="general" priority="2">ES="Alcance"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Alcance"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Scope - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Status</source>
-          <note from="Developer" annotates="general" priority="2">ES="Estado"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Status - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 513339096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source> ,Enabled,Disabled,Connected,Error</source>
-          <note from="Developer" annotates="general" priority="2">ES=",Habilitado,Deshabilitado,Conectado,Error"</note>
+          <note from="Developer" annotates="general" priority="2">ESP=",Habilitado,Deshabilitado,Conectado,Error"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field Status - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 3075304067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>step Folder Id</source>
-          <note from="Developer" annotates="general" priority="2">ES="Id Carpeta step"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Carpeta step"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field StepFolderID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Field 129688762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>User Name</source>
-          <note from="Developer" annotates="general" priority="2">ES="Nombre de usuario"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre de usuario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field User Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3911723591 - Field 266801057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Application Code</source>
-          <note from="Developer" annotates="general" priority="2">ES="Código Application"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Código Application"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth20Application Folders - Field Application Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3911723591 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -6545,12 +6545,12 @@
         </trans-unit>
         <trans-unit id="Table 3911723591 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <note from="Developer" annotates="general" priority="2">ES="Descripción"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth20Application Folders - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3911723591 - Field 1595447877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Folder Id</source>
-          <note from="Developer" annotates="general" priority="2">ES="Id Carpeta"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Id Carpeta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth20Application Folders - Field FolderID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2958124392 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9955,7 +9955,7 @@
         </trans-unit>
         <trans-unit id="Page 2169462155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>OAuth 2.0 Application</source>
-          <note from="Developer" annotates="general" priority="2">ES="Aplicación OAuth 2.0"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Aplicación OAuth 2.0"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - NamedType 557032142" size-unit="char" translate="yes" xml:space="preserve">
@@ -9970,7 +9970,7 @@
         </trans-unit>
         <trans-unit id="Page 2169462155 - Control 1650268148 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Endpoints</source>
-          <note from="Developer" annotates="general" priority="2">ES="Puntos finales"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Puntos finales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Endpoints - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - Control 1799079160 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -10030,7 +10030,7 @@
         </trans-unit>
         <trans-unit id="Page 2169462155 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General</source>
-          <note from="Developer" annotates="general" priority="2">ES="General"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="General"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - Control 652819368 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -10040,7 +10040,7 @@
         </trans-unit>
         <trans-unit id="Page 2169462155 - Control 652819368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Application / Client ID</source>
-          <note from="Developer" annotates="general" priority="2">ES="Aplicación / ID de cliente"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Aplicación / ID de cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Client ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - Control 2529110793 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -10075,7 +10075,7 @@
         </trans-unit>
         <trans-unit id="Page 2169462155 - Control 767193361 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Password Credentials</source>
-          <note from="Developer" annotates="general" priority="2">ES="Credenciales de contraseña"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Credenciales de contraseña"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control Password Credentials - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - Control 2575460289 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -10090,7 +10090,7 @@
         </trans-unit>
         <trans-unit id="Page 2169462155 - Control 129688762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>User Name</source>
-          <note from="Developer" annotates="general" priority="2">ES="Nombre de usuario"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre de usuario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control User Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - Action 196089143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -10099,8 +10099,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action Folders - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - Action 196089143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Folders</source>
-          <note from="Developer" annotates="general" priority="2">ES="Carpetas"</note>
+          <source>Folders Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Config. Carpetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action Folders - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - Action 2619586918 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -10110,7 +10110,7 @@
         </trans-unit>
         <trans-unit id="Page 2169462155 - Action 2619586918 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh Access Token</source>
-          <note from="Developer" annotates="general" priority="2">ES="Actualizar el token de acceso"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar el token de acceso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action RefreshAccessToken - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - Action 1754655794 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -10120,12 +10120,12 @@
         </trans-unit>
         <trans-unit id="Page 2169462155 - Action 1754655794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Request Access Token</source>
-          <note from="Developer" annotates="general" priority="2">ES="Solicitar el token de acceso"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitar el token de acceso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action RequestAccessToken - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1918309270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>OAuth 2.0 Applications</source>
-          <note from="Developer" annotates="general" priority="2">ES="Aplicaciones OAuth 2.0"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Aplicaciones OAuth 2.0"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Applications - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1918309270 - Action 196089143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -10134,8 +10134,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Applications - Action Folders - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1918309270 - Action 196089143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Folders</source>
-          <note from="Developer" annotates="general" priority="2">ES="Carpetas"</note>
+          <source>Folders Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Config. Carpetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Applications - Action Folders - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3903387604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10433,6 +10433,26 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el elemento seleccionado?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - NamedType ConfirmMsg</note>
         </trans-unit>
+        <trans-unit id="Page 2236257782 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must specify a Folder name.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe indicar un nombre de Carpeta."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - NamedType lblError</note>
+        </trans-unit>
+        <trans-unit id="Page 2236257782 - Method 2795442286 - NamedType 629135877" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to create the %1 folder?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear la carpeta %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - Method CreateFolder - NamedType lblConfirFolder</note>
+        </trans-unit>
+        <trans-unit id="Page 2236257782 - Control 32276907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Creation</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Datos Crear"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - Control Creation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2236257782 - Control 2638467979 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Folder Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo Nombre carpeta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - Control FolderName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2236257782 - Action 196089143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh the access and refresh tokens.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10440,7 +10460,7 @@
         </trans-unit>
         <trans-unit id="Page 2236257782 - Action 196089143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Folders</source>
-          <note from="Developer" annotates="general" priority="2">ES="Carpetas"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Carpetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - Action Folders - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2236257782 - Action 2550237599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -11555,7 +11575,7 @@
         </trans-unit>
         <trans-unit id="Page 3911723591 - Action 196089143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Folders</source>
-          <note from="Developer" annotates="general" priority="2">ES="Carpetas"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Carpetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Action Folders - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3911723591 - Action 3003898253 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -11565,7 +11585,7 @@
         </trans-unit>
         <trans-unit id="Page 3911723591 - Action 3003898253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>URL</source>
-          <note from="Developer" annotates="general" priority="2">ES="URL"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="URL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Action URL - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3554805098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

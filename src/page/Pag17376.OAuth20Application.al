@@ -1,6 +1,6 @@
 page 17376 "OAuth 2.0 Application"
 {
-    Caption = 'OAuth 2.0 Application', Comment = 'ES="Aplicación OAuth 2.0"';
+    Caption = 'OAuth 2.0 Application', Comment = 'ESP="Aplicación OAuth 2.0"';
     LinksAllowed = false;
     ShowFilter = false;
     SourceTable = "ZM OAuth 2.0 Application";
@@ -12,7 +12,7 @@ page 17376 "OAuth 2.0 Application"
         {
             group(General)
             {
-                Caption = 'General', Comment = 'ES="General"';
+                Caption = 'General', Comment = 'ESP="General"';
                 field(Code; Code)
                 {
                     ApplicationArea = Basic, Suite;
@@ -25,7 +25,7 @@ page 17376 "OAuth 2.0 Application"
                 }
                 field("Client ID"; "Client ID")
                 {
-                    Caption = 'Application / Client ID', Comment = 'ES="Aplicación / ID de cliente"';
+                    Caption = 'Application / Client ID', Comment = 'ESP="Aplicación / ID de cliente"';
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the client id.';
                 }
@@ -54,12 +54,12 @@ page 17376 "OAuth 2.0 Application"
             }
             group("Password Credentials")
             {
-                Caption = 'Password Credentials', Comment = 'ES="Credenciales de contraseña"';
+                Caption = 'Password Credentials', Comment = 'ESP="Credenciales de contraseña"';
                 Visible = "Grant Type" = "Grant Type"::"Password Credentials";
 
                 field("User Name"; "User Name")
                 {
-                    Caption = 'User Name', Comment = 'ES="Nombre de usuario"';
+                    Caption = 'User Name', Comment = 'ESP="Nombre de usuario"';
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the user name.';
                 }
@@ -72,7 +72,7 @@ page 17376 "OAuth 2.0 Application"
             }
             group("Endpoints")
             {
-                Caption = 'Endpoints', Comment = 'ES="Puntos finales"';
+                Caption = 'Endpoints', Comment = 'ESP="Puntos finales"';
 
                 field("Authorization URL"; "Authorization URL")
                 {
@@ -163,7 +163,7 @@ page 17376 "OAuth 2.0 Application"
             action(RequestAccessToken)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Request Access Token', Comment = 'ES="Solicitar el token de acceso"';
+                Caption = 'Request Access Token', Comment = 'ESP="Solicitar el token de acceso"';
                 Image = EncryptionKeys;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -184,7 +184,7 @@ page 17376 "OAuth 2.0 Application"
             action(RefreshAccessToken)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Refresh Access Token', Comment = 'ES="Actualizar el token de acceso"';
+                Caption = 'Refresh Access Token', Comment = 'ESP="Actualizar el token de acceso"';
                 Image = Refresh;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -211,7 +211,7 @@ page 17376 "OAuth 2.0 Application"
             action(Folders)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Folders', Comment = 'ES="Carpetas"';
+                Caption = 'Folders Setup', Comment = 'ESP="Config. Carpetas"';
                 Image = SelectField;
                 Promoted = true;
                 PromotedCategory = Category4;

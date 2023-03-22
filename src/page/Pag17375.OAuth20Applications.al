@@ -1,7 +1,7 @@
 page 17375 "OAuth 2.0 Applications"
 {
     ApplicationArea = Basic, Suite, Service;
-    Caption = 'OAuth 2.0 Applications', Comment = 'ES="Aplicaciones OAuth 2.0"';
+    Caption = 'OAuth 2.0 Applications', Comment = 'ESP="Aplicaciones OAuth 2.0"';
     CardPageID = "OAuth 2.0 Application";
     Editable = false;
     PageType = List;
@@ -41,7 +41,7 @@ page 17375 "OAuth 2.0 Applications"
             action(Folders)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Folders', Comment = 'ES="Carpetas"';
+                Caption = 'Folders Setup', Comment = 'ESP="Config. Carpetas"';
                 Image = SelectField;
                 Promoted = true;
                 PromotedCategory = Category4;

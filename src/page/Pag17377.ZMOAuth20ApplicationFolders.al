@@ -43,7 +43,7 @@ page 17377 "ZM OAuth20Application Folders"
             action(Folders)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Folders', Comment = 'ES="Carpetas"';
+                Caption = 'Folders', Comment = 'ESP="Carpetas"';
                 Image = SelectField;
                 Promoted = true;
                 PromotedCategory = Category4;
@@ -58,7 +58,7 @@ page 17377 "ZM OAuth20Application Folders"
             action(URL)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'URL', Comment = 'ES="URL"';
+                Caption = 'URL', Comment = 'ESP="URL"';
                 Image = LinkWeb;
                 Promoted = true;
                 PromotedCategory = Category4;
