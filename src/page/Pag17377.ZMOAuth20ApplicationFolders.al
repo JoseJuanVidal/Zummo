@@ -70,6 +70,18 @@ page 17377 "ZM OAuth20Application Folders"
                     Rec.OpenDriveItems(REc.FolderID);
                 end;
             }
+            action(crearfichero)
+            {
+                ApplicationArea = all;
+
+                trigger OnAction()
+                var
+                    Sharepoint: Codeunit "Sharepoint OAuth App. Helper";
+                    InStr: InStream;
+                begin
+                    Sharepoint.SaveFileStream('c:\Zummo\otros\pdf\', 'S00034 ABxxx 33434311', InStr);
+                end;
+            }
         }
     }
 }

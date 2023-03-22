@@ -7213,6 +7213,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ha cambiado la fecha de entrega requerida\¿Desea cambiar la fecha de entrega requerida también en las líneas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ValidaFechaRequeridaLinPedido - NamedType lbConfirmQst</note>
         </trans-unit>
+        <trans-unit id="Codeunit 267050289 - Method 3222099277 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select file</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccione fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Sharepoint OAuth App. Helper - Method SaveFileStream - NamedType lblDialog</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1408414175 - Method 3968558706 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"></note>

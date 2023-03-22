@@ -885,4 +885,29 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
 
         exit(CopyStr(CodeTxt, PosValue, PosEnd - PosValue - 1));
     end;
+
+    procedure SaveFileStream(Path: text; FileName: Text; var InStr: InStream)
+    var
+        TempFile: File;
+        OutStr: OutStream;
+        ToFileName: Variant;
+        FileExtension: Text;
+        FromFilter: text;
+        fileMgt: Codeunit "File Management";
+        lblDialog: Label 'Select file', comment = 'ESP="Seleccione fichero"';
+    begin
+        FromFilter := 'All Files (*.*)|*.*';
+
+        if UploadIntoStream(lblDialog, '', 'Excel Files (*.xlsx)|*.*', ToFileName, InStr) then begin
+            FileExtension := fileMgt.GetExtension(ToFileName);
+
+            ToFileName := Path + StrSubstNo('%1.%2', FileName, FileExtension);
+            if not fileMgt.ServerDirectoryExists(path) then
+                fileMgt.ServerCreateDirectory(Path);
+            TempFile.Create(ToFileName);
+            TempFile.CreateOutStream(OutStr);
+            CopyStream(OutStr, InStr);
+            TempFile.Close();
+        end;
+    end;
 }
