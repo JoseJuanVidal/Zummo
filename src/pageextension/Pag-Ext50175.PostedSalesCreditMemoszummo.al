@@ -11,6 +11,7 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
                 ApplicationArea = All;
             }
             field("ABC Cliente"; "ABC Cliente") { }
+            field("Shipment Method Code"; "Shipment Method Code") { }
         }
         addafter("Amount Including VAT")
         {
