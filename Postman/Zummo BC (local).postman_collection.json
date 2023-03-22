@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "f546d218-8b6a-4690-9b48-4b5fb0e63e05",
+		"name": "Zummo BC (local)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24517058"
+	},
+	"item": [
+		{
+			"name": "Item Where Used",
+			"request": {
+				"auth": {
+					"type": "ntlm",
+					"ntlm": [
+						{
+							"key": "password",
+							"value": "5JzDvIuW6NITdXUxUbcFlRxQf0eAGCr3A+yOAsejLwE=",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "BC",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7048/BC140/ODataV4/Company('ZUMMO')/itemwhereused",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7048",
+					"path": [
+						"BC140",
+						"ODataV4",
+						"Company('ZUMMO')",
+						"itemwhereused"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "ntlm",
+		"ntlm": [
+			{
+				"key": "password",
+				"value": "iwWG6INIkXM+gQ1E4hw+YhvNbfY5oNC//nWZPymQGcY=",
+				"type": "string"
+			},
+			{
+				"key": "domain",
+				"value": "JVIDAL-PORT",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "BC",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -132,6 +132,10 @@ table 17375 "ZM OAuth 2.0 Application"
         {
             Caption = 'step Folder Id', Comment = 'ES==Id Carpeta step';
         }
+        field(30; OtersFolderID; Text[250])
+        {
+            Caption = 'Oters Folder Id', Comment = 'ES==Id Carpeta otros';
+        }
         field(50; RootFolderName; Text[250])
         {
             Caption = 'Root Folder Name', Comment = 'ES==Nombre Carpeta root';

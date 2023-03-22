@@ -6468,6 +6468,11 @@
           <note from="Developer" annotates="general" priority="2">ES==Id Carpeta jpg</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field jpgFolderID - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3916393050 - Field 4035850072 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Oters Folder Id</source>
+          <note from="Developer" annotates="general" priority="2">ES==Id Carpeta otros</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field OtersFolderID - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3916393050 - Field 2575460289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Password</source>
           <note from="Developer" annotates="general" priority="2">ES==Clave</note>
@@ -6522,6 +6527,26 @@
           <source>User Name</source>
           <note from="Developer" annotates="general" priority="2">ES==Nombre de usuario</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth 2.0 Application - Field User Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3911723591 - Field 266801057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Application Code</source>
+          <note from="Developer" annotates="general" priority="2">ES==Código Application</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth20Application Folders - Field Application Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3911723591 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth20Application Folders - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3911723591 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ES==Descripción</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth20Application Folders - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3911723591 - Field 1595447877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Folder Id</source>
+          <note from="Developer" annotates="general" priority="2">ES==Id Carpeta</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth20Application Folders - Field FolderID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2958124392 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>createdDateTime</source>
@@ -9918,6 +9943,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Lista Motivos Bloqueo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page MotivosBloqueo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2169462155 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Property PromotedActionCategories</note>
+        </trans-unit>
         <trans-unit id="Page 2169462155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>OAuth 2.0 Application</source>
           <note from="Developer" annotates="general" priority="2">ES==Aplicación OAuth 2.0</note>
@@ -9967,6 +9997,11 @@
           <source>Specifies the Sharepoint ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control jpgFolderID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 4035850072 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Sharepoint ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control OtersFolderID - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - Control 3168660491 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Sharepoint ID</source>
@@ -10052,6 +10087,16 @@
           <source>User Name</source>
           <note from="Developer" annotates="general" priority="2">ES==Nombre de usuario</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control User Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Action 196089143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh the access and refresh tokens.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action Folders - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Action 196089143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Folders</source>
+          <note from="Developer" annotates="general" priority="2">ES==Carpetas</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action Folders - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2169462155 - Action 2619586918 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh the access and refresh tokens.</source>
@@ -11472,6 +11517,11 @@
           <source>Transfer To Planning Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action Transfer To Planning Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3911723591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OAuth20 Application Folders</source>
+          <note from="Developer" annotates="general" priority="2">ESP="OAuth20 Application Folders"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3554805098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packing List Details</source>

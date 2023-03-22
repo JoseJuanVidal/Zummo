@@ -10569,6 +10569,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control jpgFolderID - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 2169462155 - Control 4035850072 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Sharepoint ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control OtersFolderID - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2169462155 - Control 3168660491 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Sharepoint ID</source>
           <note from="Developer" annotates="general" priority="2"/>

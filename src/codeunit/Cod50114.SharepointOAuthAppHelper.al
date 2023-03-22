@@ -39,8 +39,8 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         AccessToken := GetAccessToken(OAuth20Application.Code);
 
         //obtenemos el id del fichero        
-        FolderPath := 'Documentos/jpg';
-        FolderID := OAuth20Application.jpgFolderID;
+        FolderPath := 'Documentos/Otros';
+        FolderID := OAuth20Application.OtersFolderID;
         case MimeType of
             'jpg', 'image/png':
                 begin
@@ -106,6 +106,8 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
                 end;
             else begin
                 FileName := FileName;
+                FolderPath := 'Documentos/Otros';
+                FolderID := OAuth20Application.OtersFolderID;
             end;
         end;
 

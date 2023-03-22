@@ -1,0 +1,422 @@
+{
+	"info": {
+		"_postman_id": "0f0530a5-062d-4c59-a10d-1904f8a1dd7a",
+		"name": "Zummo Intercompany INC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24517058"
+	},
+	"item": [
+		{
+			"name": "Spain",
+			"item": [
+				{
+					"name": "SPAIN GET SalesQuoteHeader",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBaseSPAIN}}SalesQuoteHeader",
+							"host": [
+								"{{URLBaseSPAIN}}SalesQuoteHeader"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SPAIN POST SalesQuoteHeader",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SourcePurchOrder\":'OV454545'\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBaseSPAIN}}SalesQuoteHeader",
+							"host": [
+								"{{URLBaseSPAIN}}SalesQuoteHeader"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SPAIN POST SalesQuoteLine",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DocumentNo\":\"OV2300072\",\r\n    \"ItemNo\":\"Z14C-NGP\",\r\n    \"ItemDescription\":\"ZUMMOINC Z14C-N NATURE GP 110V-60HZ\",\r\n    \"Quantity\":1.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBaseSPAIN}}SalesQuoteLine",
+							"host": [
+								"{{URLBaseSPAIN}}SalesQuoteLine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SPAIN POST FinSalesQuoteHeader",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DocumentNo\": \"OV2300729\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBaseSPAIN}}FinSalesQuoteHeader",
+							"host": [
+								"{{URLBaseSPAIN}}FinSalesQuoteHeader"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SPAIN POST SalesOrderShipment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SourcePurchOrder\":'OV454545'\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBaseSPAIN}}SalesOrderShipment?$filter=contains(External_Document_No, 'PO000669')",
+							"host": [
+								"{{URLBaseSPAIN}}SalesOrderShipment"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "contains(External_Document_No, 'PO')",
+									"disabled": true
+								},
+								{
+									"key": "$filter",
+									"value": "Sell_to_Customer_No eq 'C04000' and Order_No eq 'PV2000190'",
+									"disabled": true
+								},
+								{
+									"key": "$filter",
+									"value": "contains(External_Document_No, 'PO000669')"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SPAIN POST SalesOrderShipmentLine",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SourcePurchOrder\":'OV454545'\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBaseSPAIN}}SalesOrderShipmentLine?$filter=Document_No eq 'AV2209862'",
+							"host": [
+								"{{URLBaseSPAIN}}SalesOrderShipmentLine"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "Document_No eq 'AV2209862'"
+								},
+								{
+									"key": "$filter",
+									"value": "Order_No eq 'AV2209820'",
+									"disabled": true
+								},
+								{
+									"key": "$filter",
+									"value": "contains(",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SPAIN GET ItemList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBaseSPAIN}}ItemList?$filter=contains(No, 'Z1C-NBE')",
+							"host": [
+								"{{URLBaseSPAIN}}ItemList"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "No eq 'MSP40%202.0'",
+									"disabled": true
+								},
+								{
+									"key": "$filter",
+									"value": "contains(No, 'Z1C-NBE')"
+								},
+								{
+									"key": "$apply",
+									"value": "groupby(familia), aggregate(Familia with distinc)",
+									"disabled": true
+								},
+								{
+									"key": "$select",
+									"value": "Familia,desFamilia_btc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SPAIN GET Shipments list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBaseSPAIN}}ShipmentList?$filter=Order_No eq 'PV2205440'",
+							"host": [
+								"{{URLBaseSPAIN}}ShipmentList"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "No eq 'MSP40%202.0'",
+									"disabled": true
+								},
+								{
+									"key": "$filter",
+									"value": "Order_No eq 'PV2205440'"
+								},
+								{
+									"key": "$apply",
+									"value": "groupby(familia), aggregate(Familia with distinc)",
+									"disabled": true
+								},
+								{
+									"key": "$select",
+									"value": "Familia,desFamilia_btc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SPAIN GET Shipments Line list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBaseSPAIN}}ShipmentLineList?$filter=Document_No eq 'AV2206367'",
+							"host": [
+								"{{URLBaseSPAIN}}ShipmentLineList"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "Document_No eq 'AV2206367'"
+								},
+								{
+									"key": "$filter",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "$apply",
+									"value": "groupby(familia), aggregate(Familia with distinc)",
+									"disabled": true
+								},
+								{
+									"key": "$select",
+									"value": "Familia,desFamilia_btc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "LAenJ1guOs2iT5njo7oLE/HWtjH20g0KKnA96ai92j0=",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "ILUQUE",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "INC",
+			"item": [
+				{
+					"name": "Puchase Order Header",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBaseINC}}PurchaseOrderHeader",
+							"host": [
+								"{{URLBaseINC}}PurchaseOrderHeader"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "GT0CXK13ng7Jrf2GisEIybwgnV3vKPCtF0x1JCSdTKk=",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "ic",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Purchase Order Line",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URLBaseINC}}PurchaseOrderHeader",
+					"host": [
+						"{{URLBaseINC}}PurchaseOrderHeader"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URLBaseINC",
+			"value": "http://10.8.1.15:8148/BC140UP/ODataV4/Company('Zummo%2C%20Inc')/",
+			"type": "string"
+		},
+		{
+			"key": "URLBaseSPAIN",
+			"value": "http://localhost:7048/BC140/ODataV4/Company('ZUMMO')/",
+			"type": "string"
+		}
+	]
+}

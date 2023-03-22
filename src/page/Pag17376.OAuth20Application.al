@@ -4,6 +4,7 @@ page 17376 "OAuth 2.0 Application"
     LinksAllowed = false;
     ShowFilter = false;
     SourceTable = "ZM OAuth 2.0 Application";
+    PromotedActionCategories = 'New,Process,Report,Navigate', Comment = 'ESP="Nuevo,Procesar,Informe,Información"';
 
     layout
     {
@@ -140,7 +141,16 @@ page 17376 "OAuth 2.0 Application"
                         OpenDriveItems(Rec.StepFolderID)
                     end;
                 }
+                field(OtersFolderID; OtersFolderID)
+                {
+                    ApplicationArea = Basic, Suite;
+                    ToolTip = 'Specifies the Sharepoint ID';
 
+                    trigger OnDrillDown()
+                    begin
+                        OpenDriveItems(Rec.OtersFolderID)
+                    end;
+                }
 
             }
         }
@@ -194,6 +204,23 @@ page 17376 "OAuth 2.0 Application"
                     end else
                         Message(SuccessfulMsg);
                 end;
+            }
+        }
+        area(Navigation)
+        {
+            action(Folders)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Folders', Comment = 'ES==Carpetas';
+                Image = SelectField;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedOnly = true;
+                ToolTip = 'Refresh the access and refresh tokens.';
+
+                RunObject = page "ZM OAuth20Application Folders";
+                RunPageLink = "Application Code" = field(Code);
+
             }
         }
     }
