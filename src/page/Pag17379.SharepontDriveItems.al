@@ -102,7 +102,25 @@ page 17379 "Sharepont Drive Items"
                     DownloadFile();
                 end;
             }
+        }
+        area(Navigation)
+        {
+            action(Folders)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Folders', Comment = 'ES==Carpetas';
+                Image = SelectField;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedOnly = true;
+                ToolTip = 'Refresh the access and refresh tokens.';
 
+                trigger OnAction()
+                begin
+                    REc.TestField(isFile, false);
+                    Rec.OpenDriveItems();
+                end;
+            }
         }
     }
     var
@@ -112,7 +130,7 @@ page 17379 "Sharepont Drive Items"
         FolderPath: Text;
         ConfirmMsg: Label '¿Do you want to delete the selected item?', Comment = 'ESP="¿Desea eliminar el elemento seleccionado?"';
 
-    procedure SetProperties(NewAccessToken: Text; NewFolderPath: Text; DriveID: Text; ParentID: Text)
+    procedure SetProperties(ApplicationCode: code[20]; NewAccessToken: Text; NewFolderPath: Text; DriveID: Text; ParentID: Text)
     var
         TempOnlineDriveItem: Record "Online Drive Item" temporary;
     begin
@@ -120,26 +138,14 @@ page 17379 "Sharepont Drive Items"
         FolderPath := NewFolderPath;
 
         if ParentID = '' then
-            SharepointAppHelper.FetchDrivesItems(AccessToken, DriveID, TempOnlineDriveItem)
+            SharepointAppHelper.FetchDrivesItems(ApplicationCode, AccessToken, DriveID, TempOnlineDriveItem)
         else
-            SharepointAppHelper.FetchDrivesChildItems(AccessToken, ParentID, DriveID, TempOnlineDriveItem);
+            SharepointAppHelper.FetchDrivesChildItems(ApplicationCode, AccessToken, ParentID, DriveID, TempOnlineDriveItem);
 
         Rec.Copy(TempOnlineDriveItem, true);
     end;
 
-    // local procedure OpenDriveItems()
-    // var
-    //     OnlineDriveItems: Page "Sharepont Drive Items";
-    //     Stream: InStream;
-    // begin
-    //     if not isFile then begin
-    //         OnlineDriveItems.SetProperties(AccessToken, StrSubstNo('%1/%2', FolderPath, name), driveId, Id);
-    //         OnlineDriveItems.Run();
-    //     end else begin
-    //         if OnlineDriveAPI.DownloadFile(AccessToken, driveId, id, Stream) then
-    //             DownloadFromStream(Stream, '', '', '', name);
-    //     end;
-    // end;
+
 
     local procedure DeleteItem()
     begin
@@ -161,9 +167,6 @@ page 17379 "Sharepont Drive Items"
         AccessToken := SharepointAppHelper.GetAccessToken(PurchaseSetup."Sharepoint Connection");
         if UploadIntoStream('Select a File', '', '', FromFile, Stream) then begin
             SharepointAppHelper.UploadFile(AccessToken, driveId, parentId, FolderName, FromFile, Stream, OnlineDriveItem);
-
-
-
         end;
 
     end;

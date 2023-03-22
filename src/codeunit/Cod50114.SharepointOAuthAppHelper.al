@@ -156,7 +156,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
                 if ResponseMessage.Content.ReadAs(ResponseText) then begin
                     IsSucces := true;
                     if JsonResponse.ReadFrom(ResponseText) then
-                        ReadDriveItem(JsonResponse, DriveID, ParentID, OnlineDriveItem);
+                        ReadDriveItem('', JsonResponse, DriveID, ParentID, OnlineDriveItem);
                 end;
             end else
                 if ResponseMessage.Content.ReadAs(ResponseText) then
@@ -190,7 +190,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
                 FolderID := OAuth20Application.StepFolderID;
         end;
 
-        if FetchDrivesChildItemsName(AccessToken, OAuth20Application.RootFolderID, FolderID, TempOnlineDriveItem, name) then begin
+        if FetchDrivesChildItemsName(OAuth20Application.Code, AccessToken, OAuth20Application.RootFolderID, FolderID, TempOnlineDriveItem, name) then begin
 
             // bajamos el fichero
             if DownloadFile(AccessToken, OAuth20Application.RootFolderID, TempOnlineDriveItem.id, Stream) then
@@ -289,7 +289,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
                 FolderID := OAuth20Application.StepFolderID;
         end;
 
-        if FetchDrivesChildItemsName(AccessToken, OAuth20Application.RootFolderID, FolderID, TempOnlineDriveItem, name) then begin
+        if FetchDrivesChildItemsName(OAuth20Application.Code, AccessToken, OAuth20Application.RootFolderID, FolderID, TempOnlineDriveItem, name) then begin
 
             // borramos el fichero
             if DeleteDriveItem(AccessToken, OAuth20Application.RootFolderID, TempOnlineDriveItem.id) then
@@ -335,7 +335,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
     //     end;
     // end;
 
-    procedure FetchDrivesItems(AccessToken: Text; DriveID: Text; var DriveItem: Record "Online Drive Item"): Boolean
+    procedure FetchDrivesItems(ApplicationCode: code[20]; AccessToken: Text; DriveID: Text; var DriveItem: Record "Online Drive Item"): Boolean
     var
         JsonResponse: JsonObject;
         JToken: JsonToken;
@@ -343,17 +343,13 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
     begin
         if HttpGet(AccessToken, StrSubstNo(DrivesItemsUrl, DriveID), JsonResponse) then begin
             if JsonResponse.Get('value', JToken) then
-                ReadDriveItems(JToken.AsArray(), DriveID, '', DriveItem);
+                ReadDriveItems(ApplicationCode, JToken.AsArray(), DriveID, '', DriveItem);
 
             exit(true);
         end;
     end;
 
-    procedure FetchDrivesChildItems(
-        AccessToken: Text;
-        DriveID: Text;
-        ItemID: Text;
-        var DriveItem: Record "Online Drive Item"): Boolean
+    procedure FetchDrivesChildItems(ApplicationCode: code[20]; AccessToken: Text; DriveID: Text; ItemID: Text; var DriveItem: Record "Online Drive Item"): Boolean
     var
         JsonResponse: JsonObject;
         JToken: JsonToken;
@@ -361,18 +357,13 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
     begin
         if HttpGet(AccessToken, StrSubstNo(DrivesChildItemsUrl, DriveID, ItemID), JsonResponse) then begin
             if JsonResponse.Get('value', JToken) then
-                ReadDriveItems(JToken.AsArray(), DriveID, ItemID, DriveItem);
+                ReadDriveItems(ApplicationCode, JToken.AsArray(), DriveID, ItemID, DriveItem);
 
             exit(true);
         end;
     end;
 
-    procedure FetchDrivesChildItemsName(
-         AccessToken: Text;
-         DriveID: Text;
-         ItemID: Text;
-         var DriveItem: Record "Online Drive Item";
-         Name: text): Boolean
+    procedure FetchDrivesChildItemsName(ApplicationCode: code[20]; AccessToken: Text; DriveID: Text; ItemID: Text; var DriveItem: Record "Online Drive Item"; Name: text): Boolean
     var
         JsonResponse: JsonObject;
         JToken: JsonToken;
@@ -380,7 +371,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
     begin
         if HttpGet(AccessToken, StrSubstNo(DrivesChildItemsUrl + StrSubstNo(DrivesChildItemsNameUrl, Name), DriveID, ItemID), JsonResponse) then begin
             if JsonResponse.Get('value', JToken) then
-                ReadDriveItems(JToken.AsArray(), DriveID, ItemID, DriveItem);
+                ReadDriveItems(ApplicationCode, JToken.AsArray(), DriveID, ItemID, DriveItem);
 
             if DriveItem.FindFirst() then
                 exit(true);
@@ -439,19 +430,15 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
     //     end;
     // end;
 
-    local procedure ReadDriveItems(
-        JDriveItems: JsonArray;
-        DriveID: Text;
-        ParentID: Text;
-        var DriveItem: Record "Online Drive Item")
+    local procedure ReadDriveItems(ApplicationCode: code[20]; JDriveItems: JsonArray; DriveID: Text; ParentID: Text; var DriveItem: Record "Online Drive Item")
     var
         JToken: JsonToken;
     begin
         foreach JToken in JDriveItems do
-            ReadDriveItem(JToken.AsObject(), DriveID, ParentID, DriveItem);
+            ReadDriveItem(ApplicationCode, JToken.AsObject(), DriveID, ParentID, DriveItem);
     end;
 
-    local procedure ReadDriveItem(JDriveItem: JsonObject; DriveID: Text; ParentID: Text; var DriveItem: Record "Online Drive Item")
+    local procedure ReadDriveItem(ApplicationCode: code[20]; JDriveItem: JsonObject; DriveID: Text; ParentID: Text; var DriveItem: Record "Online Drive Item")
     var
         JFile: JsonObject;
         JToken: JsonToken;
@@ -460,6 +447,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         DriveItem.Init();
         DriveItem.driveId := DriveID;
         DriveItem.parentId := ParentID;
+        DriveItem."Application Code" := ApplicationCode;
 
         if JDriveItem.Get('id', JToken) then
             DriveItem.Id := JToken.AsValue().AsText();

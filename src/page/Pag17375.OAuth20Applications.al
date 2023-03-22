@@ -36,8 +36,22 @@ page 17375 "OAuth 2.0 Applications"
 
     actions
     {
-        area(processing)
+        area(Navigation)
         {
+            action(Folders)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Folders', Comment = 'ES==Carpetas';
+                Image = SelectField;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedOnly = true;
+                ToolTip = 'Refresh the access and refresh tokens.';
+
+                RunObject = page "ZM OAuth20Application Folders";
+                RunPageLink = "Application Code" = field(Code);
+
+            }
         }
     }
 }

@@ -45,6 +45,11 @@ table 17376 "Online Drive Item"
             DataClassification = CustomerContent;
             Caption = 'Folder Name', comment = 'ESP="Nombre Carpeta"';
         }
+        field(20; "Application Code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Application Code', comment = 'ESP="Cód. Aplicación"';
+        }
     }
 
     keys
@@ -54,4 +59,26 @@ table 17376 "Online Drive Item"
             Clustered = true;
         }
     }
+    var
+        OAuth20AppHelper: Codeunit "Sharepoint OAuth App. Helper";
+
+    procedure OpenDriveItems()
+    var
+        OAuthApplication: Record "ZM OAuth 2.0 Application";
+        OnlineDriveItems: Page "Sharepont Drive Items";
+        AccessToken: text;
+        Stream: InStream;
+    begin
+        OAuthApplication.Get(Rec."Application Code");
+
+        AccessToken := OAuth20AppHelper.GetAccessToken(OAuthApplication.Code);
+
+        if not isFile then begin
+            OnlineDriveItems.SetProperties(Rec."Application Code", AccessToken, '', driveId, Id);
+            OnlineDriveItems.Run();
+        end else begin
+            if OAuth20AppHelper.DownloadFile(AccessToken, driveId, id, Stream) then
+                DownloadFromStream(Stream, '', '', '', name);
+        end;
+    end;
 }

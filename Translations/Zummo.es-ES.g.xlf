@@ -4659,6 +4659,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 2046936986 - Field 266801057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Application Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Aplicación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field Application Code - Property Caption</note>
+          <target>Cód. Aplicación</target>
+        </trans-unit>
         <trans-unit id="Table 2046936986 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>createdDateTime</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -6638,6 +6644,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ancho"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Prod. BOM Line - Field Width - Property Caption</note>
           <target>Ancho</target>
+        </trans-unit>
+        <trans-unit id="Table 3911723591 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth20Application Folders - Field Code - Property Caption</note>
+          <target>Código</target>
         </trans-unit>
         <trans-unit id="Table 2958124392 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>createdDateTime</source>
@@ -10529,6 +10541,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page MotivosBloqueo - Property Caption</note>
           <target>Lista Motivos Bloqueo</target>
         </trans-unit>
+        <trans-unit id="Page 2169462155 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Property PromotedActionCategories</note>
+          <target>Nuevo,Procesar,Informe,Información</target>
+        </trans-unit>
         <trans-unit id="Page 2169462155 - NamedType 557032142" size-unit="char" translate="yes" xml:space="preserve">
           <source>No Refresh Token avaiable</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -10639,6 +10657,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Control User Name - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 2169462155 - Action 196089143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh the access and refresh tokens.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action Folders - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2169462155 - Action 2619586918 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh the access and refresh tokens.</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -10648,6 +10671,11 @@
           <source>Open the service authorization web page. Login credentials will be prompted. The authorization code must be copied into the Enter Authorization Code field.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action RequestAccessToken - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1918309270 - Action 196089143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh the access and refresh tokens.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Applications - Action Folders - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3903387604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Opciones</source>
@@ -11000,6 +11028,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el elemento seleccionado?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - NamedType ConfirmMsg</note>
           <target>¿Desea eliminar el elemento seleccionado?</target>
+        </trans-unit>
+        <trans-unit id="Page 2236257782 - Action 196089143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh the access and refresh tokens.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - Action Folders - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2236257782 - Action 2550237599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>URL</source>
@@ -12203,6 +12236,17 @@
           <source>Transfer To Planning Lines</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action Transfer To Planning Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3911723591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OAuth20 Application Folders</source>
+          <note from="Developer" annotates="general" priority="2">ESP="OAuth20 Application Folders"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Property Caption</note>
+          <target>OAuth20 Application Folders</target>
+        </trans-unit>
+        <trans-unit id="Page 3911723591 - Action 196089143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh the access and refresh tokens.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Action Folders - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3554805098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packing List Details</source>

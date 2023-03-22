@@ -68,7 +68,7 @@ table 17377 "ZM OAuth20Application Folders"
 
         AccessToken := OAuth20AppHelper.GetAccessToken(OAuthApplication.Code);
 
-        OnlineDriveItems.SetProperties(AccessToken, '', FolderID, OAuthApplication.RootFolderID);
+        OnlineDriveItems.SetProperties(rec."Application Code", AccessToken, '', FolderID, OAuthApplication.RootFolderID);
         OnlineDriveItems.RunModal();
     end;
 }

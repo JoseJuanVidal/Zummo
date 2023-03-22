@@ -23,17 +23,37 @@ page 17377 "ZM OAuth20Application Folders"
                 field(Description; Description)
                 {
                     ApplicationArea = All;
-                }
-                field(FolderID; FolderID)
-                {
-                    ApplicationArea = All;
-
 
                     trigger OnDrillDown()
                     begin
                         Rec.OpenDriveItems(Rec.FolderID)
                     end;
                 }
+                field(FolderID; FolderID)
+                {
+                    ApplicationArea = All;
+                }
+            }
+        }
+    }
+    actions
+    {
+        area(Navigation)
+        {
+            action(Folders)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Folders', Comment = 'ES==Carpetas';
+                Image = SelectField;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedOnly = true;
+                ToolTip = 'Refresh the access and refresh tokens.';
+
+                trigger OnAction()
+                begin
+                    Rec.OpenDriveItems(REc.FolderID);
+                end;
             }
         }
     }

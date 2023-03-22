@@ -238,7 +238,7 @@ page 17376 "OAuth 2.0 Application"
     begin
         AccessToken := OAuth20AppHelper.GetAccessToken(Rec.Code);
 
-        OnlineDriveItems.SetProperties(AccessToken, '', FolderID, RootFolderID);
+        OnlineDriveItems.SetProperties(Rec.Code, AccessToken, '', FolderID, RootFolderID);
         OnlineDriveItems.RunModal();
     end;
 }
