@@ -1,7 +1,7 @@
 page 17375 "OAuth 2.0 Applications"
 {
     ApplicationArea = Basic, Suite, Service;
-    Caption = 'OAuth 2.0 Applications', Comment = 'ES==Aplicaciones OAuth 2.0';
+    Caption = 'OAuth 2.0 Applications', Comment = 'ES="Aplicaciones OAuth 2.0"';
     CardPageID = "OAuth 2.0 Application";
     Editable = false;
     PageType = List;
@@ -41,12 +41,12 @@ page 17375 "OAuth 2.0 Applications"
             action(Folders)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Folders', Comment = 'ES==Carpetas';
+                Caption = 'Folders', Comment = 'ES="Carpetas"';
                 Image = SelectField;
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedOnly = true;
-                ToolTip = 'Refresh the access and refresh tokens.';
+                ToolTip = 'Opem Folder', Comment = 'ESP="Abrir carpetas"';
 
                 RunObject = page "ZM OAuth20Application Folders";
                 RunPageLink = "Application Code" = field(Code);

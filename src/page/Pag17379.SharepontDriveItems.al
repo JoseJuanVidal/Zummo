@@ -108,7 +108,7 @@ page 17379 "Sharepont Drive Items"
             action(Folders)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Folders', Comment = 'ES==Carpetas';
+                Caption = 'Folders', Comment = 'ES="Carpetas"';
                 Image = SelectField;
                 Promoted = true;
                 PromotedCategory = Category4;

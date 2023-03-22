@@ -8,7 +8,7 @@ table 17377 "ZM OAuth20Application Folders"
     {
         field(1; "Application Code"; Code[20])
         {
-            Caption = 'Application Code', Comment = 'ES==Código Application';
+            Caption = 'Application Code', Comment = 'ES="Código Application"';
             NotBlank = true;
             TableRelation = "ZM OAuth 2.0 Application".Code;
         }
@@ -19,11 +19,11 @@ table 17377 "ZM OAuth20Application Folders"
         }
         field(5; Description; Text[250])
         {
-            Caption = 'Description', Comment = 'ES==Descripción';
+            Caption = 'Description', Comment = 'ES="Descripción"';
         }
         field(10; FolderID; Text[250])
         {
-            Caption = 'Folder Id', Comment = 'ES==Id Carpeta';
+            Caption = 'Folder Id', Comment = 'ES="Id Carpeta"';
         }
     }
 

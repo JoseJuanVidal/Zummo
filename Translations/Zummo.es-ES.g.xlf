@@ -10673,9 +10673,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action RequestAccessToken - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1918309270 - Action 196089143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Refresh the access and refresh tokens.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>Opem Folder</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Abrir carpetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Applications - Action Folders - Property ToolTip</note>
+          <target>Abrir carpetas</target>
         </trans-unit>
         <trans-unit id="Page 3903387604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Opciones</source>
@@ -12247,6 +12248,12 @@
           <source>Refresh the access and refresh tokens.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Action Folders - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3911723591 - Action 3003898253 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the URL</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Abrir URL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Action URL - Property ToolTip</note>
+          <target>Abrir URL</target>
         </trans-unit>
         <trans-unit id="Page 3554805098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packing List Details</source>

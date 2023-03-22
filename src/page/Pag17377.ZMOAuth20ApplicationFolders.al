@@ -43,12 +43,27 @@ page 17377 "ZM OAuth20Application Folders"
             action(Folders)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Folders', Comment = 'ES==Carpetas';
+                Caption = 'Folders', Comment = 'ES="Carpetas"';
                 Image = SelectField;
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedOnly = true;
                 ToolTip = 'Refresh the access and refresh tokens.';
+
+                trigger OnAction()
+                begin
+                    Rec.OpenDriveItems(REc.FolderID);
+                end;
+            }
+            action(URL)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'URL', Comment = 'ES="URL"';
+                Image = LinkWeb;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedOnly = true;
+                ToolTip = 'Open the URL', Comment = 'ESP="Abrir URL"';
 
                 trigger OnAction()
                 begin
