@@ -199,6 +199,7 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Caption = 'Exportar Excel de costes', comment = 'ESP="Exportar Excel de costes"';
                 Image = Excel;
+                Visible = ShowExcelCostes;
 
                 trigger OnAction()
                 var
@@ -208,13 +209,20 @@ pageextension 50133 "ItemList" extends "Item List"
                 end;
 
             }
-
         }
-
     }
+
+    trigger OnOpenPage()
+    begin
+        if UserSetup.Get(UserId) then
+            ShowExcelCostes := UserSetup."Permite exportacion costes BOM";
+    end;
+
     var
+        UserSetup: Record "User Setup";
         WarehouseEntry: Record "Warehouse Entry";
         ValueEntry: Record "Value Entry";
+        ShowExcelCostes: Boolean;
 
     local procedure CalculatePlastic()
     var

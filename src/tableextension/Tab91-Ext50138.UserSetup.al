@@ -19,5 +19,10 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             DataClassification = CustomerContent;
             Caption = 'Permite cambiar MMPP', comment = 'ESP="Permite cambiar MMPP"';
         }
+        field(50103; "Permite exportacion costes BOM"; boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Permite exportacion costes BOM', comment = 'ESP="Permite exportacion costes BOM"';
+        }
     }
 }

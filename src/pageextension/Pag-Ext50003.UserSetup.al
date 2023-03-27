@@ -17,6 +17,10 @@ pageextension 50003 "UserSetup" extends "User Setup"
             {
                 ApplicationArea = all;
             }
+            field("Permite exportacion costes BOM"; "Permite exportacion costes BOM")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }
