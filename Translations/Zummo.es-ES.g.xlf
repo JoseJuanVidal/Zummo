@@ -7608,6 +7608,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ValidaFechaRequeridaLinPedido - NamedType lbConfirmQst</note>
           <target>Ha cambiado la fecha de entrega requerida\¿Desea cambiar la fecha de entrega requerida también en las líneas?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 267050289 - Method 3222099277 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select file</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccione fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Sharepoint OAuth App. Helper - Method SaveFileStream - NamedType lblDialog</note>
+          <target>Seleccione fichero</target>
+        </trans-unit>
         <trans-unit id="Codeunit 1408414175 - Method 3968558706 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -7617,6 +7623,12 @@
           <source>Nominas %1 %2</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4004740892 - Method 812727818 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to export the BOM of material costs of %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea exportas la lista de costes de materiales de %1 %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Visual code utilities - Method CreateExcelBufferItemBom - NamedType lblConfirm</note>
+          <target>¿Desea exportas la lista de costes de materiales de %1 %2?</target>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 2169472807" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;h3 style="text-align: left; color: #3f7320;"&gt;&lt;span style="border-bottom: 4px solid #c82828;"&gt;%1 No.:&amp;nbsp;&lt;/span&gt;%2&lt;/h3&gt;</source>
@@ -24377,6 +24389,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar ensamblados de todos los productos de Dyn 365 Sales?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action UpdateBomComponents - Method OnAction - NamedType lblConfirm</note>
           <target>¿Desea actualizar ensamblados de todos los productos de Dyn 365 Sales?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 2274388292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Exportar Excel de costes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar Excel de costes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action ExportExcelCost - Property Caption</note>
+          <target>Exportar Excel de costes</target>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Qty. en Stockkeeping Unit</source>

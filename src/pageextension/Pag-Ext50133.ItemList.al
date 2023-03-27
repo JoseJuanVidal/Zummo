@@ -192,6 +192,25 @@ pageextension 50133 "ItemList" extends "Item List"
             }
         }
 
+        addafter(Action24)
+        {
+            action(ExportExcelCost)
+            {
+                ApplicationArea = all;
+                Caption = 'Exportar Excel de costes', comment = 'ESP="Exportar Excel de costes"';
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit "ZM Visual code utilities";
+                begin
+                    Funciones.CreateExcelBufferItemBom(Rec."No.");
+                end;
+
+            }
+
+        }
+
     }
     var
         WarehouseEntry: Record "Warehouse Entry";
