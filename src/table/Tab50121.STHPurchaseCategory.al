@@ -1,7 +1,9 @@
 table 50121 "STH Purchase Category"
 {
-    Caption = 'Purchase Category', Comment = 'ESP="Caegorias compras"';
+    Caption = 'Purchase Category', Comment = 'ESP="Categorias compras"';
     DataClassification = CustomerContent;
+    LookupPageId = "STH Purchase Categorys";
+    DrillDownPageId = "STH Purchase Categorys";
 
     fields
     {

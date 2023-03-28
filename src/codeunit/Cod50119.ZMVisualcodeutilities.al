@@ -343,6 +343,7 @@ codeunit 50119 "ZM Visual code utilities"
         ItemBOMLine: Record Item;
         ProductionBomLine: Record "Production BOM Line";
     begin
+        ItemBomtoBufferExcel(BomNo, ItemBOM, 0, ProductionBomLine."Production BOM No.");
         ProductionBomLine.Reset();
         ProductionBomLine.SetRange("Production BOM No.", ItemBom."Production BOM No.");
         ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
@@ -401,12 +402,17 @@ codeunit 50119 "ZM Visual code utilities"
                     AddNEW := true;
                 end;
             end;
-            ExcelBuffer.SetRange("Column No.");
+            ExcelBuffer.SetRange("Column No.", 1);
             ExcelBuffer.SetRange("Row No.");
             ExcelBuffer.SetRange("Cell Value as Text");
-            ExcelBuffer.SetCurrent(OldRow + 1, 1);
-            ExcelBuffer."Row No." := OldRow + 1;
+            if ExcelBuffer.FindLast() then
+                ExcelBuffer.SetCurrent(ExcelBuffer."Row No.", 1)
+            else begin
+                ExcelBuffer.SetCurrent(OldRow + 1, 1);
+                ExcelBuffer."Row No." := OldRow + 1;
+            end;
             ExcelBuffer."Column No." := 1;
+            ExcelBuffer.SetRange("Column No.");
             ExcelBuffer.NewRow();
         end;
         if not AddNEW then begin
@@ -466,9 +472,10 @@ codeunit 50119 "ZM Visual code utilities"
             ExcelBuffer.AddColumn('', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number)
         else
             ExcelBuffer.AddColumn(Round(ItemLedgerEntry."Cost Amount (Actual)" / ItemLedgerEntry.Quantity, 0.01), false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
-        ExcelBuffer.AddColumn(ItemBom."Purch. Family", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(ItemBom."Purch. Category", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(ItemBom."Purch. SubCategory", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ItemBom.CalcFields("Desc. Purch. Family", "Desc. Purch. Category", "Desc. Purch. SubCategory");
+        ExcelBuffer.AddColumn(ItemBom."Desc. Purch. Family", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemBom."Desc. Purch. Category", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemBom."Desc. Purch. SubCategory", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         RowNo := ExcelBuffer."Row No.";
         ExcelBuffer.NewRow();
     end;

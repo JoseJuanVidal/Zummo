@@ -2,6 +2,8 @@ table 50120 "STH Purchase Family"
 {
     Caption = 'Purchase Family', Comment = 'ESP="Familia de compras"';
     DataClassification = CustomerContent;
+    LookupPageId = "STH Purch, Familiy";
+    DrillDownPageId = "STH Purch, Familiy";
 
     fields
     {

@@ -15,6 +15,7 @@ page 50019 "STH Purchase Categorys"
                 field("Purch. Familiy code"; Rec."Purch. Familiy code")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("Code"; Rec."Code")
                 {

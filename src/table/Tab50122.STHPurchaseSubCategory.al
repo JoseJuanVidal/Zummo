@@ -2,6 +2,8 @@ table 50122 "STH Purchase SubCategory"
 {
     Caption = 'Purchase SubCategory', Comment = 'ESP="Sub Categoría compras"';
     DataClassification = CustomerContent;
+    LookupPageId = "STH Purchase SubCategorys";
+    DrillDownPageId = "STH Purchase SubCategorys";
 
     fields
     {
@@ -15,7 +17,7 @@ table 50122 "STH Purchase SubCategory"
         {
             Caption = 'Purch. Category code', Comment = 'ESP="Cód. Category"';
             DataClassification = CustomerContent;
-            TableRelation = "STH Purchase Category" where("Purch. Familiy code" = field("Purch. Category code"));
+            TableRelation = "STH Purchase Category".Code where("Purch. Familiy code" = field("Purch. Familiy code"));
         }
         field(3; Code; Code[20])
         {
@@ -38,7 +40,7 @@ table 50122 "STH Purchase SubCategory"
     }
     keys
     {
-        key(PK; "Purch. Familiy code", Code)
+        key(PK; "Purch. Familiy code", "Purch. Category code", Code)
         {
             Clustered = true;
         }

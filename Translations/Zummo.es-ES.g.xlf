@@ -5798,9 +5798,9 @@
         </trans-unit>
         <trans-unit id="Table 2101784536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Category</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Caegorias compras"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Categorias compras"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Property Caption</note>
-          <target>Caegorias compras</target>
+          <target>Categorias compras</target>
         </trans-unit>
         <trans-unit id="Table 2101784536 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
