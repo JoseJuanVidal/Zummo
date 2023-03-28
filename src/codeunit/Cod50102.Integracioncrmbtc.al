@@ -3217,7 +3217,7 @@ codeunit 50102 "Integracion_crm_btc"
     procedure UpdateOwneridAreaManager()
     var
         Customer: Record Customer;
-        CRMAccount: Record "CRM Account";
+        CRMAccount: Record "CRM Account_crm_btc";
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
         NewUserId: Guid;
         Window: Dialog;
@@ -3244,12 +3244,30 @@ codeunit 50102 "Integracion_crm_btc"
                             end;
                         end;
                     end;
-
+                    UpdateAccountAreaManager(Customer, CRMAccount);
                 end;
-
             until CRMAccount.next() = 0;
         Window.Close();
+    end;
 
+    local procedure UpdateAccountAreaManager(var Customer: Record customer; CRMAccount2: Record "CRM Account_crm_btc")
+    var
+        TextosAuxiliares: Record TextosAuxiliares;
+        CRMIntegrationRecord: Record "CRM Integration Record";
+        TextosAuxiliaresId: Guid;
+        OutOfMapFilter: boolean;
+    begin
+        TextosAuxiliares.Reset();
+        TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+        TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::AreaManager);
+        TextosAuxiliares.SetRange(NumReg, Customer.AreaManager_btc);
+        if TextosAuxiliares.FindFirst() then begin
+            IF NOT CRMIntegrationRecord.FindIDFromRecordID(TextosAuxiliares.RECORDID, TextosAuxiliaresId) THEN
+                IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::TextosAuxiliares, TextosAuxiliares.RECORDID, OutOfMapFilter) THEN BEGIN
+                    CRMAccount2.zum_bcareamanager := TextosAuxiliaresId;
+                    CRMAccount2.Modify();
+                END;
+        end;
     end;
 
     procedure UpdateAccountAreaManager(AreaManager: Record TextosAuxiliares)
@@ -3257,7 +3275,7 @@ codeunit 50102 "Integracion_crm_btc"
         SalesPerson: Record "Salesperson/Purchaser";
         AreaManagerSalesPerson: Record TextosAuxiliares;
         Customer: Record Customer;
-        CRMAccount: Record "CRM Account";
+        CRMAccount: Record "CRM Account_crm_btc";
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
         NewUserId: Guid;
     begin
@@ -3278,6 +3296,7 @@ codeunit 50102 "Integracion_crm_btc"
                                 CRMAccount.OwnerId := NewUserId;
                                 CRMAccount.Modify();
                             end;
+                            UpdateAccountAreaManager(Customer, CRMAccount);
                         end;
                     end;
                 end;
@@ -3287,7 +3306,7 @@ codeunit 50102 "Integracion_crm_btc"
     procedure UpdateCustomerAccountAreaManager(Customer: Record Customer)
     var
         AreaManager: Record TextosAuxiliares;
-        CRMAccount: Record "CRM Account";
+        CRMAccount: Record "CRM Account_crm_btc";
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
         NewUserId: Guid;
     begin
@@ -3302,7 +3321,7 @@ codeunit 50102 "Integracion_crm_btc"
                 IF CRMAccount.FindFirst() then begin
                     // actualizamos el estado tambien
                     CRMUpdateCustomerState(CRMAccount);
-
+                    UpdateAccountAreaManager(Customer, CRMAccount);
                     if CRMAccount.OwnerId <> NewUserId then begin
                         CRMAccount.OwnerId := NewUserId;
                         CRMAccount.Modify();
@@ -3390,7 +3409,7 @@ codeunit 50102 "Integracion_crm_btc"
 
     procedure CRMUpdateCustomers()
     var
-        CRMAccount: record "CRM Account";
+        CRMAccount: record "CRM Account_crm_btc";
     begin
         CRMAccount.SETCURRENTKEY(AccountNumber);
         IF CRMAccount.FINDFIRST THEN
@@ -3401,7 +3420,7 @@ codeunit 50102 "Integracion_crm_btc"
             UNTIL CRMAccount.NEXT = 0;
     end;
 
-    procedure CRMUpdateCustomerState(var CRMAccount: record "CRM Account")
+    procedure CRMUpdateCustomerState(var CRMAccount: record "CRM Account_crm_btc")
     var
         Customer: Record Customer;
     begin
