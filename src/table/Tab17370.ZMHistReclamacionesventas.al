@@ -2,89 +2,99 @@ table 17370 "ZM Hist. Reclamaciones ventas"
 {
     DataClassification = CustomerContent;
     Caption = 'Sales Order Packing', comment = 'ESP="Ped. Venta Packing"';
+    DrillDownPageId = "Hist. Reclamaciones ventas";
+    LookupPageId = "Hist. Reclamaciones ventas";
 
     fields
     {
-        field(1; "Document type"; Enum "ZM Pakcing Document Type")
+        field(1; "Entry No."; Integer)
         {
             DataClassification = CustomerContent;
-            Caption = 'Document type', comment = 'ESP="Tipo Documento"';
+            Caption = 'Entry No.', comment = 'ESP=Nº Movimiento"';
+            AutoIncrement = true;
         }
-        field(2; "Document No."; Code[20])
+        field(2; Type; Option)
+        {
+            Caption = 'Type', comment = 'ESP="Tipo"';
+            OptionMembers = Ventas,"Pedidos Servicio";
+        }
+        field(3; "Document No."; Code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Document No.', comment = 'ESP="Nº Documento"';
-            TableRelation = if ("Document type" = const(Order)) "Sales Header"."No." where("Document Type" = const(Order)) else
-            if ("Document type" = const("Sales Shipment")) "Sales Shipment Header"."No." else
-            if ("Document type" = const("Return Receipt")) "Return Receipt Header"."No.";
         }
-        field(3; "Line No."; Integer)
+        field(4; "Line No."; Integer)
         {
             DataClassification = CustomerContent;
             Caption = 'Line No.', comment = 'ESP="Nº Linea"';
             Editable = false;
         }
-        field(5; "Item No."; Text[100])
+        field(5; "Serial No."; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Serial No.', comment = 'ESP="Nº serie"';
+        }
+        field(6; "Posting Date"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Posting Date', comment = 'ESP="Fecha Registro"';
+        }
+        field(7; "Item No."; Text[100])
         {
             DataClassification = CustomerContent;
             Caption = 'Item No.', comment = 'ESP="Cód. producto"';
-            TableRelation = Item where("Packaging product" = const(true));
 
         }
-
-        field(6; "Description"; Text[100])
+        field(8; "Cod. Categoria"; code[50])
         {
             DataClassification = CustomerContent;
-            Caption = 'Description', comment = 'ESP="Descripción"';
+            Caption = 'Cod. Categoria', comment = 'ESP="Cód. Categoria"';
         }
-        field(7; Quantity; Decimal)
+        field(9; "Familia"; Text[50])
         {
             DataClassification = CustomerContent;
-            Caption = 'Quantity', comment = 'ESP="Cantidad"';
-            DecimalPlaces = 0 : 0;
+            Caption = 'Familia', comment = 'ESP="Familia"';
         }
-        field(10; "Length"; Decimal)
+        field(10; "Customer No."; Text[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Length', comment = 'ESP="Longitud"';
+            Caption = 'Customer No.', comment = 'ESP="Cód. Cliente"';
         }
-        field(11; "Width"; Decimal)
+        field(11; "Country"; Text[10])
         {
             DataClassification = CustomerContent;
-            Caption = 'Width', comment = 'ESP="Ancho"';
+            Caption = 'Country', comment = 'ESP="País"';
         }
-        field(12; "Height"; Decimal)
+        field(12; "Grupo Clientes"; Text[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Height', comment = 'ESP="Alto"';
+            Caption = 'Grupo Clientes', comment = 'ESP="Grupo Clientes"';
         }
-        field(13; "Cubage"; Decimal)
+        field(20; "Fallo localizado"; code[50])
         {
             DataClassification = CustomerContent;
-            Caption = 'Cubage', comment = 'ESP="Cubicaje"';
+            Caption = 'Fallo localizado', comment = 'ESP="Fallo localizado"';
         }
-        field(14; "Weight"; Decimal)
+        field(21; "Incidencia"; Boolean)
         {
             DataClassification = CustomerContent;
-            Caption = 'Weight', comment = 'ESP="Peso"';
+            Caption = 'Incidencia', comment = 'ESP="Incidencia"';
         }
-        Field(20; "Package Plastic Qty. (kg)"; decimal)
+        field(22; "Cantidad Ventas"; Decimal)
         {
-            Caption = 'Package Plastic (kg)', comment = 'ESP="Plástico Bulto (kg)"';
             DataClassification = CustomerContent;
-            DecimalPlaces = 5 : 5;
+            Caption = 'Cantidad Ventas', comment = 'ESP="Cantidad Ventas"';
         }
-        Field(21; "Package Recycled plastic (kg)"; decimal)
+        field(23; "Tipo Reclamaciones"; code[10])
         {
-            Caption = 'Package Recycled Plastic (kg)', comment = 'ESP="Plástico reciclado Bulto (kg)"';
             DataClassification = CustomerContent;
-            DecimalPlaces = 5 : 5;
+            Caption = 'Tipo Reclamaciones', comment = 'ESP="Tipo Reclamaciones"';
         }
     }
 
     keys
     {
-        key(PK; "Document type", "Document No.", "Line No.")
+        key(PK; "Document No.", "Line No.", "Serial No.")
         {
             Clustered = true;
         }
@@ -114,4 +124,130 @@ table 17370 "ZM Hist. Reclamaciones ventas"
 
     var
         Item: Record Item;
+
+    procedure CreateHistReclamaciones(InitDate: Date)
+    var
+        Item: Record Item;
+        Customer: Record Customer;
+        ItemLedgerEntry: Record "Item Ledger Entry";
+        SalesInvoiceLine: Record "Sales Invoice Line";
+        ServiceHeader: Record "Service Header";
+        ServiceItemLine: Record "Service Item Line";
+        ServiceOrderType: Record "Service Order Type";
+        Window: Dialog;
+    begin
+        // buscamos los movimientos de ventas y abonos de tipo productos y ensamblados
+        Window.Open('Nº Mov: #1###############\Tipo: #2#####################\Producto: #3#############################\Fecha: #4##############');
+        ItemLedgerEntry.Reset();
+        if InitDate <> 0D then
+            ItemLedgerEntry.SetFilter("Posting Date", '%1..', InitDate);
+        ItemLedgerEntry.SetFilter("Entry Type", '%1|%2', ItemLedgerEntry."Entry Type"::Sale, ItemLedgerEntry."Entry Type"::"Assembly Consumption");
+        if ItemLedgerEntry.FindFirst() then
+            repeat
+                Window.Update(1, ItemLedgerEntry."Entry No.");
+                Window.Update(2, ItemLedgerEntry."Entry Type");
+                Window.Update(3, ItemLedgerEntry."Item No.");
+                Window.Update(4, ItemLedgerEntry."Posting Date");
+                if Item.Get(ItemLedgerEntry."Item No.") and not item.IsAssemblyItem() then begin
+                    item.CalcFields(desFamilia_btc);
+                    if Customer.Get(ItemLedgerEntry."Source No.") then;
+
+                    AddHistReclamacionesventas(ItemLedgerEntry, Item, Customer)
+
+                end;
+            Until ItemLedgerEntry.next() = 0;
+        // ahora buscamos los abonos de ensamblado que son tipo ajustes positivos
+        ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::"Positive Adjmt.");
+        if ItemLedgerEntry.FindFirst() then
+            repeat
+                Window.Update(1, ItemLedgerEntry."Entry No.");
+                Window.Update(2, ItemLedgerEntry."Entry Type");
+                Window.Update(3, ItemLedgerEntry."Item No.");
+                Window.Update(4, ItemLedgerEntry."Posting Date");
+                if Item.Get(ItemLedgerEntry."Item No.") and not item.IsAssemblyItem() then begin
+                    item.CalcFields(desFamilia_btc);
+                    if Customer.Get(ItemLedgerEntry."Source No.") then;
+
+                    if copystr(ItemLedgerEntry."Document No.", 1, 4) = 'PENS' then
+                        AddHistReclamacionesventas(ItemLedgerEntry, Item, Customer)
+
+                end;
+            Until ItemLedgerEntry.next() = 0;
+        // recorremos las lineas de servicio para añadir los fallos o reclamaciones
+        ServiceHeader.Reset();
+        ServiceHeader.SetRange("Document Type", ServiceHeader."Document Type"::Order);
+        ServiceHeader.SetFilter("Posting Date", '%1..', InitDate);
+        if ServiceHeader.FindFirst() then
+            repeat
+                if ServiceOrderType.Get(ServiceHeader."Service Order Type") and (ServiceOrderType."Exportar BI Reclamaciones") then begin
+                    ServiceItemLine.Reset();
+                    ServiceItemLine.SetRange("Document Type", ServiceHeader."Document Type");
+                    ServiceItemLine.SetRange("Document No.", ServiceHeader."No.");
+                    if ServiceItemLine.FindFirst() then
+                        repeat
+                            if Item.Get(ServiceItemLine."Item No.") and not item.IsAssemblyItem() then begin
+                                AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceHeader.NumSerie_btc);
+                            end;
+                        Until ServiceItemLine.next() = 0;
+                end;
+            Until ServiceHeader.next() = 0;
+
+    end;
+
+    local procedure AddHistReclamacionesventas(ItemLedgerEntry: Record "Item Ledger Entry"; Item: Record Item; Customer: Record Customer)
+    var
+        HistReclamacionesventas: Record "ZM Hist. Reclamaciones ventas";
+    begin
+        HistReclamacionesventas.Reset();
+        HistReclamacionesventas.SetRange("Document No.", ItemLedgerEntry."Document No.");
+        HistReclamacionesventas.SetRange("Line No.", ItemLedgerEntry."Document Line No.");
+        if ItemLedgerEntry."Serial No." <> '' then
+            HistReclamacionesventas.SetRange("Serial No.", ItemLedgerEntry."Serial No.");
+        if not HistReclamacionesventas.FindFirst() then begin
+            HistReclamacionesventas.Init();
+            HistReclamacionesventas.Type := HistReclamacionesventas.Type::Ventas;
+            HistReclamacionesventas."Document No." := ItemLedgerEntry."Document No.";
+            HistReclamacionesventas."Line No." := ItemLedgerEntry."Document Line No.";
+            HistReclamacionesventas."Serial No." := ItemLedgerEntry."Serial No.";
+            HistReclamacionesventas."Posting Date" := ItemLedgerEntry."Posting Date";
+            HistReclamacionesventas."Item No." := ItemLedgerEntry."Item No.";
+            HistReclamacionesventas."Cod. Categoria" := Item."Item Category Code";
+            HistReclamacionesventas.Familia := Item.desFamilia_btc;
+            HistReclamacionesventas."Customer No." := ItemLedgerEntry."Source No.";
+            HistReclamacionesventas.Country := ItemLedgerEntry."Country/Region Code";
+            HistReclamacionesventas."Grupo Clientes" := Customer.GrupoCliente_btc;
+            HistReclamacionesventas."Cantidad Ventas" := -ItemLedgerEntry.Quantity;
+            HistReclamacionesventas.Insert(true)
+        end;
+    end;
+
+    local procedure AddHistReclamacionesventasService(ServiceHeader: Record "Service Header"; ServiceItemLine: Record "Service Item Line"; Item: Record Item; SerialNo: code[50])
+    var
+        Customer: Record Customer;
+        HistReclamacionesventas: Record "ZM Hist. Reclamaciones ventas";
+    begin
+        HistReclamacionesventas.Reset();
+        HistReclamacionesventas.SetRange("Document No.", ServiceItemLine."Document No.");
+        HistReclamacionesventas.SetRange("Line No.", ServiceItemLine."Line No.");
+        if SerialNo <> '' then
+            HistReclamacionesventas.SetRange("Serial No.", SerialNo);
+        if not HistReclamacionesventas.FindFirst() then begin
+            if Customer.Get(ServiceHeader."Customer No.") then;
+            HistReclamacionesventas.Init();
+            HistReclamacionesventas.Type := HistReclamacionesventas.Type::"Pedidos Servicio";
+            HistReclamacionesventas."Document No." := ServiceItemLine."Document No.";
+            HistReclamacionesventas."Line No." := ServiceItemLine."Line No.";
+            HistReclamacionesventas."Serial No." := SerialNo;
+            HistReclamacionesventas."Posting Date" := ServiceHeader."Posting Date";
+            HistReclamacionesventas."Item No." := ServiceItemLine."Item No.";
+            HistReclamacionesventas."Cod. Categoria" := Item."Item Category Code";
+            HistReclamacionesventas.Familia := Item.desFamilia_btc;
+            HistReclamacionesventas."Customer No." := ServiceHeader."Customer No.";
+            HistReclamacionesventas.Country := ServiceHeader."Ship-to Country/Region Code";
+            HistReclamacionesventas."Grupo Clientes" := Customer.GrupoCliente_btc;
+            HistReclamacionesventas."Fallo localizado" := ServiceItemLine."Fallo localizado";
+            HistReclamacionesventas."Tipo Reclamaciones" := ServiceHeader."Service Order Type";
+            HistReclamacionesventas.Insert(true)
+        end;
+    end;
 }

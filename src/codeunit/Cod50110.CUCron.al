@@ -68,13 +68,17 @@ codeunit 50110 "CU_Cron"
                     begin
                         IntegracionCRM.TextosAuxiliaresControl();
                     end;
-
+                'UpdateHistReclamacionesBI':
+                    begin
+                        UpdateHistReclamacionesBI();
+                    end;
                 else
                     error(lbNoParametroErr);
 
             end; //case
         end;
     end;
+
 
     local procedure CambiaDimensionesAF()
     var
@@ -1444,5 +1448,12 @@ codeunit 50110 "CU_Cron"
         cduSmtp.AddAttachmentStream(InStr, BookName);
         cduSmtp.Send();
 
+    end;
+
+    local procedure UpdateHistReclamacionesBI()
+    var
+        HistFallos: Record "ZM Hist. Reclamaciones ventas";
+    begin
+        HistFallos.CreateHistReclamaciones(0D);
     end;
 }

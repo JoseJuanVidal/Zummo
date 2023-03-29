@@ -5193,11 +5193,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field webUrl - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1482243775 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ZM Packing List Detail</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Packing List Detail - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1490353142 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -6035,6 +6030,11 @@
           <source>Set Up Coupling</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page GrupoCliente List - Action ManageCDSCoupling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 78285597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hist. Reclamaciones ventas</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Hist. Reclamaciones ventas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4122372286 - Action 4044637255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CDS</source>
@@ -10384,6 +10384,11 @@
           <source>FechaFinValOferta_btc</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field FechaFinValOferta_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2240314328 - Field 3398170104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2583759525">
+          <source>Exportar BI Reclamaciones</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Service Order Type - Field Exportar BI Reclamaciones - Property Caption</note>
         </trans-unit>
       </group>
     </body>

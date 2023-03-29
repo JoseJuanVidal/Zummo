@@ -14,4 +14,25 @@ pageextension 50061 "STH Ext Service MgtSetup" extends "Service Mgt. Setup"
             }
         }
     }
+    actions
+    {
+        addlast(Processing)
+        {
+            action(cargarhojafallos)
+            {
+                ApplicationArea = all;
+                Caption = 'Actualizar Reclamacion BT', comment = 'ESP="Actualizar Reclamacion BT"';
+                Promoted = true;
+                PromotedCategory = Process;
+                Image = Process;
+
+                trigger OnAction()
+                var
+                    HistFallos: Record "ZM Hist. Reclamaciones ventas";
+                begin
+                    HistFallos.CreateHistReclamaciones(0D);
+                end;
+            }
+        }
+    }
 }
