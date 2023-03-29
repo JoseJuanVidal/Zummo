@@ -1390,39 +1390,39 @@ codeunit 50106 "SalesEvents"
     // ==  
     // ======================================================================================================
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterSalesShptHeaderInsert', '', true, true)]
-    local procedure SalesPost_OnAfterSalesShptHeaderInsert(var SalesShipmentHeader: Record "Sales Shipment Header"; SalesHeader: Record "Sales Header"; SuppressCommit: Boolean)
-    begin
-        if SalesShipmentHeader.IsTemporary then
-            exit;
-        // cambiamos el packing list del pedido de venta al albaran        
-        UpdatePackingListOrdertoShipment(SalesShipmentHeader, SalesHeader);
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterSalesShptHeaderInsert', '', true, true)]
+    // local procedure SalesPost_OnAfterSalesShptHeaderInsert(var SalesShipmentHeader: Record "Sales Shipment Header"; SalesHeader: Record "Sales Header"; SuppressCommit: Boolean)
+    // begin
+    //     if SalesShipmentHeader.IsTemporary then
+    //         exit;
+    //     // cambiamos el packing list del pedido de venta al albaran        
+    //     UpdatePackingListOrdertoShipment(SalesShipmentHeader, SalesHeader);
 
-    end;
+    // end;
 
-    local procedure UpdatePackingListOrdertoShipment(SalesShipmentHeader: Record "Sales Shipment Header"; SalesHeader: Record "Sales Header")
-    var
-        SalesOrderPacking: Record "ZM Sales Order Packing";
-        SalesShipmentPacking: Record "ZM Sales Order Packing";
-    begin
-        SalesShipmentPacking.Reset();
-        SalesShipmentPacking.SetRange("Document type", SalesShipmentPacking."Document type"::"Sales Shipment");
-        SalesShipmentPacking.SetRange("Document No.", SalesShipmentHeader."No.");
-        SalesShipmentPacking.DeleteAll();
+    // local procedure UpdatePackingListOrdertoShipment(SalesShipmentHeader: Record "Sales Shipment Header"; SalesHeader: Record "Sales Header")
+    // var
+    //     SalesOrderPacking: Record "ZM Sales Order Packing";
+    //     SalesShipmentPacking: Record "ZM Sales Order Packing";
+    // begin
+    //     SalesShipmentPacking.Reset();
+    //     SalesShipmentPacking.SetRange("Document type", SalesShipmentPacking."Document type"::"Sales Shipment");
+    //     SalesShipmentPacking.SetRange("Document No.", SalesShipmentHeader."No.");
+    //     SalesShipmentPacking.DeleteAll();
 
-        SalesOrderPacking.Reset();
-        SalesOrderPacking.SetRange("Document type", SalesOrderPacking."Document type"::Order);
-        SalesOrderPacking.SetRange("Document No.", SalesHeader."No.");
-        if SalesOrderPacking.FindFirst() then
-            repeat
-                SalesShipmentPacking.Init();
-                SalesShipmentPacking.TransferFields(SalesOrderPacking);
-                SalesShipmentPacking."Document type" := SalesShipmentPacking."Document type"::"Sales Shipment";
-                SalesShipmentPacking."Document No." := SalesShipmentHeader."No.";
-                SalesShipmentPacking.Insert();
+    //     SalesOrderPacking.Reset();
+    //     SalesOrderPacking.SetRange("Document type", SalesOrderPacking."Document type"::Order);
+    //     SalesOrderPacking.SetRange("Document No.", SalesHeader."No.");
+    //     if SalesOrderPacking.FindFirst() then
+    //         repeat
+    //             SalesShipmentPacking.Init();
+    //             SalesShipmentPacking.TransferFields(SalesOrderPacking);
+    //             SalesShipmentPacking."Document type" := SalesShipmentPacking."Document type"::"Sales Shipment";
+    //             SalesShipmentPacking."Document No." := SalesShipmentHeader."No.";
+    //             SalesShipmentPacking.Insert();
 
-            Until SalesOrderPacking.next() = 0;
-        SalesOrderPacking.DeleteAll();
-    end;
+    //         Until SalesOrderPacking.next() = 0;
+    //     SalesOrderPacking.DeleteAll();
+    // end;
 
 }

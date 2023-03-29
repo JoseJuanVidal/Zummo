@@ -1,4 +1,4 @@
-table 17370 "ZM Sales Order Packing"
+table 17370 "ZM Hist. Reclamaciones ventas"
 {
     DataClassification = CustomerContent;
     Caption = 'Sales Order Packing', comment = 'ESP="Ped. Venta Packing"';
@@ -30,10 +30,6 @@ table 17370 "ZM Sales Order Packing"
             Caption = 'Item No.', comment = 'ESP="Cód. producto"';
             TableRelation = Item where("Packaging product" = const(true));
 
-            trigger OnValidate()
-            begin
-                ValidateItemNo();
-            end;
         }
 
         field(6; "Description"; Text[100])
@@ -84,14 +80,6 @@ table 17370 "ZM Sales Order Packing"
             DataClassification = CustomerContent;
             DecimalPlaces = 5 : 5;
         }
-        field(50; "Item Quantity"; decimal)
-        {
-            FieldClass = FlowField;
-            Caption = 'Item Quantity', comment = 'ESP="Cantidad productos"';
-            CalcFormula = sum("ZM Packing List Detail".Quantity where("Document type" = field("Document type"), "Document No." = field("Document No."), "Packing Line No." = field("Line No.")));
-            Editable = false;
-        }
-
     }
 
     keys
@@ -107,8 +95,6 @@ table 17370 "ZM Sales Order Packing"
 
     trigger OnInsert()
     begin
-        if "Line No." = 0 then
-            AssingLineNo;
     end;
 
     trigger OnModify()
@@ -128,66 +114,4 @@ table 17370 "ZM Sales Order Packing"
 
     var
         Item: Record Item;
-
-    local procedure AssingLineNo()
-    var
-        SalesOrderPacking: record "ZM Sales Order Packing";
-    begin
-        if "Line No." <> 0 then
-            exit;
-        SalesOrderPacking.Reset();
-        SalesOrderPacking.SetRange("Document type", Rec."Document type");
-        SalesOrderPacking.SetRange("Document No.", Rec."Document No.");
-        if SalesOrderPacking.FindLast() then
-            Rec."Line No." := SalesOrderPacking."Line No." + 1
-        else
-            Rec."Line No." := 1;
-    end;
-
-    local procedure ValidateItemNo()
-    var
-        myInt: Integer;
-    begin
-        Item.Reset();
-        initPlastic;
-        IF Item.Get(Rec."Item No.") then begin
-            Rec.Description := Item.Description;
-            Rec.Quantity := 1;
-            Rec.Weight := Item."Net Weight";
-            Rec."Package Plastic Qty. (kg)" := Item."Packing Plastic Qty. (kg)";
-            Rec."Package Recycled plastic (kg)" := Item."Packing Recycled plastic (kg)";
-
-            UpdateBaseUnit();
-        end;
-    end;
-
-    local procedure UpdateBaseUnit()
-    var
-        ItemUnitofMeasure: Record "Item Unit of Measure";
-    begin
-        ItemUnitofMeasure.Reset();
-        if ItemUnitofMeasure.Get(Item."No.", Item."Base Unit of Measure") then begin
-            Rec.Length := ItemUnitofMeasure.Length;
-            Rec.Width := ItemUnitofMeasure.Width;
-            Rec.Height := ItemUnitofMeasure.Height;
-            if Rec.Weight = 0 then
-                Rec.Weight := ItemUnitofMeasure.Weight;
-            Rec.Cubage := ItemUnitofMeasure.Cubage;
-        end;
-    end;
-
-    local procedure initPlastic()
-    begin
-        Rec.Description := '';
-        Rec.Weight := 0;
-        Rec."Package Plastic Qty. (kg)" := 0;
-        Rec."Package Recycled plastic (kg)" := 0;
-        Rec.Length := 0;
-        Rec.Width := 0;
-        Rec.Height := 0;
-        Rec.Weight := 0;
-        Rec.Cubage := 0;
-
-    end;
-
 }

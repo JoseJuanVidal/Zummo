@@ -3052,7 +3052,7 @@ report 50111 "FacturaNacionalMaquinas"
                 if SalesInvoiceLine."Shipment No." <> '' then begin
                     if not tmpSalesShipmentHeader.Get(SalesInvoiceLine."Shipment No.") then begin
 
-                        AddPackingShipment(SalesInvoiceLine."Shipment No.");
+                        //AddPackingShipment(SalesInvoiceLine."Shipment No.");
 
                         tmpSalesShipmentHeader.Init();
                         tmpSalesShipmentHeader."No." := SalesInvoiceLine."Shipment No.";
@@ -3066,7 +3066,7 @@ report 50111 "FacturaNacionalMaquinas"
                             repeat
                                 if not tmpSalesShipmentHeader.Get(SalesShipmentHeader."No.") then begin
 
-                                    AddPackingShipment(SalesShipmentHeader."No.");
+                                    // AddPackingShipment(SalesShipmentHeader."No.");
 
                                     tmpSalesShipmentHeader.Init();
                                     tmpSalesShipmentHeader."No." := SalesShipmentHeader."No.";
@@ -3078,19 +3078,19 @@ report 50111 "FacturaNacionalMaquinas"
             Until SalesInvoiceLine.next() = 0;
     end;
 
-    local procedure AddPackingShipment(ShipmentNo: code[20])
-    var
-        SalesShipmentPacking: Record "ZM Sales Order Packing";
-    begin
-        SalesShipmentPacking.Reset();
-        SalesShipmentPacking.SetRange("Document type", SalesShipmentPacking."Document type"::"Sales Shipment");
-        SalesShipmentPacking.SetRange("Document No.", ShipmentNo);
-        if SalesShipmentPacking.FindFirst() then
-            repeat
-                PlasticBultoKgTotal += SalesShipmentPacking.Quantity * SalesShipmentPacking."Package Plastic Qty. (kg)";
-                PlasticRecycledBultoKgTotal += SalesShipmentPacking.Quantity * SalesShipmentPacking."Package Recycled plastic (kg)";
-            Until SalesShipmentPacking.next() = 0;
-    end;
+    // local procedure AddPackingShipment(ShipmentNo: code[20])
+    // var
+    //     SalesShipmentPacking: Record "ZM Sales Order Packing";
+    // begin
+    //     SalesShipmentPacking.Reset();
+    //     SalesShipmentPacking.SetRange("Document type", SalesShipmentPacking."Document type"::"Sales Shipment");
+    //     SalesShipmentPacking.SetRange("Document No.", ShipmentNo);
+    //     if SalesShipmentPacking.FindFirst() then
+    //         repeat
+    //             PlasticBultoKgTotal += SalesShipmentPacking.Quantity * SalesShipmentPacking."Package Plastic Qty. (kg)";
+    //             PlasticRecycledBultoKgTotal += SalesShipmentPacking.Quantity * SalesShipmentPacking."Package Recycled plastic (kg)";
+    //         Until SalesShipmentPacking.next() = 0;
+    // end;
 
     procedure EsExportacion()
     begin
