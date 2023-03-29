@@ -6,7 +6,8 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
     end;
 
     var
-        myInt: Integer;
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        tmpItem: Record Item temporary;
 
     // ================ Funciones para la importacion de excel de Recuperación de IVA  ======================
     // Tipo 
@@ -308,4 +309,222 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
 
         exit(ExtDocumentNo);
     end;
+
+    procedure CreateExcelBufferItemBom(ItemNo: code[20])
+    var
+        Item: Record Item;
+        Window: Dialog;
+        lblConfirm: Label '¿Do you want to export the BOM of material costs of %1 %2?', comment = 'ESP="¿Desea exportas la lista de costes de materiales de %1 %2?"';
+    begin
+        if not Item.Get(ItemNo) or (Item."Production BOM No." = '') then
+            exit;
+        if not Confirm(lblConfirm, false, Item."No.", Item.Description) then
+            exit;
+
+        Window.Open('Cód. producto #1###########################\Fecha #2##########');
+        tmpItem.DeleteAll();
+        ExcelBuffer.DeleteAll();
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn(CompanyName, false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn('Listado de Costes Materiales BOM', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn('BOM Producto', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Nº', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Descripción', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Cantidad en BOM', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Coste', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Importe por maquina', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Método coste', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Coste estandar', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Coste unitario', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Proveedor', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Nombre Proveedor', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Ultimo proveedor', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Nombre Ult. Proveedor', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Ultimo pedido', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Ultima Fecha de compra', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Ultimo precio de compra', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Familia', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Categoria', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('SubCategoria', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+
+        AddProductionBomLine(Item."Production BOM No.");
+
+        ExcelBuffer.CreateNewBook('BOM Costes Materiales');
+
+        ExcelBuffer.WriteSheet('BOM producto', COMPANYNAME, USERID);
+        ExcelBuffer.CloseBook();
+        ExcelBuffer.SetFriendlyFilename('BOM Productos');
+        ExcelBuffer.DownloadAndOpenExcel;
+        Window.Close();
+
+
+
+    end;
+
+    local procedure AddProductionBomLine(ProductionBOMNo: code[20])
+    var
+        ItemBOM: Record Item;
+        ProductionBomLine: Record "Production BOM Line";
+    begin
+        ProductionBomLine.Reset();
+        ProductionBomLine.SetRange("Production BOM No.", ProductionBOMNo);
+        ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+        if ProductionBomLine.FindFirst() then
+            repeat
+                if ItemBOM.Get(ProductionBomLine."No.") then begin
+                    if ItemBOM."Production BOM No." = '' then
+                        ItemBomtoBufferExcel(ProductionBOMNo, ItemBOM, ProductionBomLine."Quantity per", ProductionBomLine."Production BOM No.")
+                    else
+                        GetBOMProduction(ProductionBOMNo, ItemBOM, ProductionBomLine."Quantity per");
+                end;
+            Until ProductionBomLine.next() = 0;
+    end;
+
+
+    local procedure GetBOMProduction(BomNo: code[20]; ItemBom: Record Item; QTQPer: Decimal)
+    var
+        ItemBOMLine: Record Item;
+        ProductionBomLine: Record "Production BOM Line";
+    begin
+        ItemBomtoBufferExcel(BomNo, ItemBOM, 0, ProductionBomLine."Production BOM No.");
+        ProductionBomLine.Reset();
+        ProductionBomLine.SetRange("Production BOM No.", ItemBom."Production BOM No.");
+        ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+        if ProductionBomLine.FindFirst() then
+            repeat
+                if ItemBOM.Get(ProductionBomLine."No.") then begin
+                    if ItemBOM."Production BOM No." = '' then
+                        ItemBomtoBufferExcel(BomNo, ItemBOM, ProductionBomLine."Quantity per", ProductionBomLine."Production BOM No.")
+                    else
+                        GetBOMProduction(BomNo, ItemBOM, ProductionBomLine."Quantity per");
+                end;
+            Until ProductionBomLine.next() = 0;
+
+    end;
+
+    local procedure ItemBomtoBufferExcel(BomNo: code[20]; ItemBom: Record Item; QTQPer: Decimal; ParentItemNo: code[20])
+    var
+        ExcelBufferRow: Integer;
+        OldRow: Integer;
+        AddNEW: Boolean;
+        OldQty: Decimal;
+    begin
+        tmpItem.Reset();
+        if tmpItem.Get(ItemBOM."No.") then begin
+            OldRow := ExcelBuffer."Row No.";
+            // aqui acumulamos datos 4=> qty per  6=> importe total
+            ExcelBuffer.SetRange("Column No.", 2);
+            ExcelBuffer.SetRange("Cell Value as Text", ItemBom."No.");
+            if ExcelBuffer.FindFirst() then begin
+                ExcelBuffer.SetRange("Cell Value as Text");
+                ExcelBuffer.SetRange("Row No.", ExcelBuffer."Row No.");
+                ExcelBuffer.SetRange("Column No.", 4);  // QTY Per unit
+                if ExcelBuffer.FindFirst() then begin
+                    if Evaluate(OldQty, ExcelBuffer."Cell Value as Text") then;
+                    ExcelBuffer."Cell Value as Text" := format(OldQty + QTQPer);
+                    ExcelBuffer.Modify();
+                    ExcelBuffer.SetRange("Column No.", 6);  // Precio x producto
+                    if ExcelBuffer.FindFirst() then begin
+                        case ItemBom."Costing Method" of
+                            ItemBom."Costing Method"::Average, ItemBom."Costing Method"::FIFO, ItemBom."Costing Method"::LIFO:
+                                ExcelBuffer."Cell Value as Text" := format((QTQPer + OldQty) * ItemBom."Unit Cost")
+                            else
+                                ExcelBuffer."Cell Value as Text" := format((QTQPer + OldQty) * ItemBom."Standard Cost");
+                        end;
+                        ExcelBuffer.Modify();
+                    end;
+                    ExcelBuffer.SetRange("Row No.", ExcelBuffer."Row No.");
+                    ExcelBuffer.SetRange("Column No.");
+                    if ExcelBuffer.FindLast() then
+                        ExcelBuffer.SetCurrent(ExcelBuffer."Row No.", ExcelBuffer."Column No.")
+                    else
+                        ExcelBuffer.SetCurrent(ExcelBuffer."Row No.", 23);
+                    ExcelBuffer.AddColumn(ParentItemNo, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+                    ExcelBuffer.AddColumn(QTQPer, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+
+                    AddNEW := true;
+                end;
+            end;
+            ExcelBuffer.SetRange("Column No.", 1);
+            ExcelBuffer.SetRange("Row No.");
+            ExcelBuffer.SetRange("Cell Value as Text");
+            if ExcelBuffer.FindLast() then
+                ExcelBuffer.SetCurrent(ExcelBuffer."Row No.", 1)
+            else begin
+                ExcelBuffer.SetCurrent(OldRow + 1, 1);
+                ExcelBuffer."Row No." := OldRow + 1;
+            end;
+            ExcelBuffer."Column No." := 1;
+            ExcelBuffer.SetRange("Column No.");
+            ExcelBuffer.NewRow();
+        end;
+        if not AddNEW then begin
+            ExcelBufferRow := AddItemBomtoBufferExcel(BomNo, ItemBOM, QTQPer);
+            if not tmpItem.Get(ItemBom."No.") then begin
+                tmpItem.Init();
+                tmpItem."No." := ItemBom."No.";
+                tmpItem.Description := ItemBom.Description;
+                tmpItem.Carton := ExcelBufferRow;
+                tmpItem.Insert();
+            end;
+        end;
+    end;
+
+    local procedure AddItemBomtoBufferExcel(BomNo: code[20]; ItemBom: Record Item; QTQPer: Decimal) RowNo: Integer
+    var
+        Vendor: Record Vendor;
+        ItemLedgerEntry: Record "Item Ledger Entry";
+        PurchReceiptHeader: Record "Purch. Rcpt. Header";
+    begin
+        ItemLedgerEntry.Reset();
+        ItemLedgerEntry.SetCurrentKey("Item No.", "Posting Date");
+        ItemLedgerEntry.SetRange("Item No.", ItemBom."No.");
+        ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Purchase);
+        ItemLedgerEntry.SetRange("Document Type", ItemLedgerEntry."Document Type"::"Purchase Receipt");
+        if ItemLedgerEntry.FindLast() then;
+        ItemLedgerEntry.CalcFields("Cost Amount (Actual)");
+        if PurchReceiptHeader.get(ItemLedgerEntry."Document No.") then;
+
+        ExcelBuffer.AddColumn(BomNo, false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemBom."No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemBom.Description, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(QTQPer, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        case ItemBom."Costing Method" of
+            ItemBom."Costing Method"::Average, ItemBom."Costing Method"::FIFO, ItemBom."Costing Method"::LIFO:
+                begin
+                    ExcelBuffer.AddColumn(ItemBom."Unit Cost", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+                    ExcelBuffer.AddColumn(QTQPer * ItemBom."Unit Cost", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+                end;
+            else begin
+                ExcelBuffer.AddColumn(ItemBom."Standard Cost", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(QTQPer * ItemBom."Standard Cost", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+            end;
+        end;
+        ExcelBuffer.AddColumn(ItemBom."Costing Method", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemBom."Standard Cost", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemBom."Unit Cost", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        if Vendor.Get(ItemBom."Vendor No.") then;
+        ExcelBuffer.AddColumn(ItemBom."Vendor No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemLedgerEntry."Source No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        if Vendor.Get(ItemLedgerEntry."Source No.") then;
+        ExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchReceiptHeader."Order No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemLedgerEntry."Posting Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);
+        if ItemLedgerEntry.Quantity = 0 then
+            ExcelBuffer.AddColumn('', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number)
+        else
+            ExcelBuffer.AddColumn(Round(ItemLedgerEntry."Cost Amount (Actual)" / ItemLedgerEntry.Quantity, 0.01), false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        ItemBom.CalcFields("Desc. Purch. Family", "Desc. Purch. Category", "Desc. Purch. SubCategory");
+        ExcelBuffer.AddColumn(ItemBom."Desc. Purch. Family", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemBom."Desc. Purch. Category", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemBom."Desc. Purch. SubCategory", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        RowNo := ExcelBuffer."Row No.";
+        ExcelBuffer.NewRow();
+    end;
+
 }

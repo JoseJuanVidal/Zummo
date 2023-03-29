@@ -8,7 +8,7 @@
             "server": "http://localhost:8080/BC140",
             "serverInstance": "BC140PROD",
             "port": 7549,
-            "authentication": "UserPassword",
+            "authentication": "Windows",
             //"startupObjectId": 22,
             "breakOnError": true,
             "breakOnRecordWrite": false,

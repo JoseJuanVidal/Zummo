@@ -203,7 +203,7 @@ pageextension 50133 "ItemList" extends "Item List"
 
                 trigger OnAction()
                 var
-                    Funciones: Codeunit "ZM Visual code utilities";
+                    Funciones: Codeunit "STH Funciones IVA Recuperacion";
                 begin
                     Funciones.CreateExcelBufferItemBom(Rec."No.");
                 end;
