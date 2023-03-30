@@ -117,6 +117,11 @@ tableextension 50118 "SalesCrMemoLine" extends "Sales Cr.Memo Line"  //115
             ObsoleteState = Removed;
             ObsoleteReason = 'Borrar';
         }
+        field(50019; SinPrecioTarifa; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sin precio tarifa', comment = 'ESP="Sin precio tarifa"';
+        }
         field(50114; selClasVtas_btc; Code[20])
         {
             DataClassification = CustomerContent;

@@ -118,5 +118,10 @@ tableextension 50119 "SalesLineArchive" extends "Sales Line Archive"  //5108
             ObsoleteReason = 'Borrar';
 
         }
+        field(50019; SinPrecioTarifa; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sin precio tarifa', comment = 'ESP="Sin precio tarifa"';
+        }
     }
 }

@@ -63,8 +63,6 @@ pageextension 50001 "ServiceOrder" extends "Service Order"
                 end;
             }
         }
-
-
     }
 
     local procedure DuplicateServiceOrder()

@@ -213,7 +213,9 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
         modify("Country/Region Code") { ShowMandatory = true; }
         modify("Payment Method Code") { ShowMandatory = true; }
         modify("Payment Terms Code") { ShowMandatory = true; }
+        modify("Search Name") { Visible = true; }
         moveafter(Name; "Country/Region Code")
+
 
         modify("Credit Limit (LCY)")
         {

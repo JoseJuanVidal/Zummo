@@ -6393,6 +6393,36 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ancho"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Prod. BOM Line - Field Width - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 983264615 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Items blocked</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueos Productos por Clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 983264615 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 983264615 - Field 1171137197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Customer Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 983264615 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 983264615 - Field 3683672590 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Item Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 983264615 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Item No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2984663216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Order Packing</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ped. Venta Packing"</note>
@@ -7117,6 +7147,16 @@
           <source>The file export has one or more errors.\\For each line to be exported, resolve the errors displayed to the right and then try to export again.</source>
           <note from="Developer" annotates="general" priority="2">ESP="La exportación del archivo tiene uno o más errores. \\ Para cada línea que se va a exportar, resuelva los errores que se muestran a la derecha y luego intente exportar nuevamente."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit RemesaRegCerrada - NamedType HasErrorsErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 2399141473 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El cliente %1 %2 tiene bloqueado la venta del producto %3 %4.\Pongase en contacto con administración</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El cliente %1 %2 tiene bloqueado la venta del producto %3 %4.\Pongase en contacto con administración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method CheckCustomerItemBlocked - NamedType lblError</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 1083323934 - NamedType 1699083917" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El Cliente %1 %2 tiene asignada la lista de precios %3 y el producto %4 %5 no tiene tarifa.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El Cliente %1 %2 tiene asignada la lista de precios %3 y el producto %4 %5 no tiene tarifa."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method CheckCustomerItemSalesPrice - NamedType lblMSG</note>
         </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 2780978930 - NamedType 2863123117" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serial No.:</source>
@@ -9572,6 +9612,11 @@
           <source>CRM Sales Order</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Sales Order btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3397742675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked Products by Customers</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueos Productos por Clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Customer Items blockeds - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2959623305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delegados</source>
@@ -25258,6 +25303,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnReceiptLine - Field NombreCliente_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 291051572 - Field 2010073393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1173465396">
+          <source>Sin precio tarifa</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sin precio tarifa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnReceiptLine - Field SinPrecioTarifa - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 291051572 - Field 12731965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1173465396">
           <source>Stock</source>
           <note from="Developer" annotates="general" priority="2">ESP="Stock"</note>
@@ -25557,6 +25607,11 @@
           <source>Gamma</source>
           <note from="Developer" annotates="general" priority="2">ESP="Gama"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field selGama_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1670910335 - Field 2010073393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
+          <source>Sin precio tarifa</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sin precio tarifa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field SinPrecioTarifa - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1670910335 - Field 12731965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>Stock</source>
@@ -26018,6 +26073,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesLineArchive - Field NombreCliente_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2251993776 - Field 2010073393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2903552224">
+          <source>Sin precio tarifa</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sin precio tarifa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesLineArchive - Field SinPrecioTarifa - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2251993776 - Field 12731965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2903552224">
           <source>Stock</source>
           <note from="Developer" annotates="general" priority="2">ESP="Stock"</note>
@@ -26127,6 +26187,11 @@
           <source>Show Documents Plastic Regulations</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos mostrar Normativa Plástico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Show Doc. Plastic Regulations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2969831894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Show Item alert without tariff</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar alerta producto sin tarifa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Show Item alert without tariff - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 248859325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Ult. email Fact. Vencidas</source>
@@ -26317,6 +26382,11 @@
           <source>Customer Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field NombreCliente_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3333755618 - Field 2010073393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
+          <source>Sin precio tarifa</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sin precio tarifa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field SinPrecioTarifa - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 12731965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>Inventario</source>
@@ -27298,6 +27368,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Gama"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field selGama_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 2010073393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>Sin precio tarifa</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sin precio tarifa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field SinPrecioTarifa - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 12731965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Stock</source>
           <note from="Developer" annotates="general" priority="2">ESP="Stock"</note>
@@ -27357,6 +27432,11 @@
           <source>Quote No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº de oferta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field QuoteNoSalesOrder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 2010073393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>Sin precio tarifa</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sin precio tarifa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field SinPrecioTarifa - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 1817886603 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Source Purch. Order Line</source>

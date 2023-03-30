@@ -5133,6 +5133,21 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 983264615 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 983264615 - Field 3683672590 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Item Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 983264615 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Item No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2958124392 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>createdDateTime</source>
           <note from="Developer" annotates="general" priority="2"/>

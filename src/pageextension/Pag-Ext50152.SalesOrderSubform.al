@@ -3,6 +3,14 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
 
     layout
     {
+        modify("No.")
+        {
+            StyleExpr = txtStyleExprUnitPrice;
+        }
+        modify("Unit Price")
+        {
+            StyleExpr = txtStyleExprUnitPrice;
+        }
         addafter("Line Amount")
         {
             //231219 S19/01434 Mostar iva en compras y ventas
@@ -157,6 +165,7 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
         Disponible: Decimal;
         txtBloqueado: Text;
         StyleExpBloqueado: Text;
+        txtStyleExprUnitPrice: text;
 
     trigger OnAfterGetRecord()
     var
@@ -164,11 +173,16 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
         cduSalesEvents: Codeunit SalesEvents;
     begin
         txtBloqueado := '';
+        txtStyleExprUnitPrice := '';
+        StyleExpBloqueado := '';
 
         if type = Type::Item then begin
             clear(cduSalesEvents);
             txtBloqueado := cduSalesEvents.GetTipoBloqueoProducto("No.", StyleExpBloqueado);
         end;
+
+        if Rec.SinPrecioTarifa then
+            txtStyleExprUnitPrice := 'Unfavorable';
 
         EnStock := 0;
         Disponible := 0;

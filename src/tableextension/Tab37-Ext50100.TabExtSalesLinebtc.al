@@ -134,6 +134,11 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             DataClassification = CustomerContent;
             Caption = 'Order Date', comment = 'ESP="Fecha Alta"';
         }
+        field(50019; SinPrecioTarifa; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sin precio tarifa', comment = 'ESP="Sin precio tarifa"';
+        }
         field(50013; PedidoServicio_btc; Code[20])
         {
             DataClassification = CustomerContent;

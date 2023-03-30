@@ -1425,4 +1425,79 @@ codeunit 50106 "SalesEvents"
     //     SalesOrderPacking.DeleteAll();
     // end;
 
+
+    // =============     OnValidateNoOnBeforeUpdateDates          ====================
+    // ==  
+    // ==  Evento que capturamos al indicar el codigo en una linea de venta de factura,abono, oferta, etc. 
+    // ==  CheckCustomerItemBlocked comprobamos si existe bloqueo
+    // ==  CheckCustomerItemSalesPrice  comprobamos si el cliente tiene tarifa y el producto no tiene esa tarifa
+    // ==  
+    // ======================================================================================================
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnValidateNoOnBeforeUpdateDates', '', true, true)]
+    local procedure SalesLine_OnValidateNoOnBeforeInitRec(var SalesLine: Record "Sales Line"; xSalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header"; CallingFieldNo: Integer)
+    begin
+        case SalesLine.Type of
+            SalesLine.Type::Item:
+                begin
+                    case SalesLine."Document Type" of
+                        SalesLine."Document Type"::Quote, SalesLine."Document Type"::Order, SalesLine."Document Type"::Invoice:
+                            CheckCustomerItemBlocked(SalesLine);
+                    end;
+                    CheckCustomerItemSalesPrice(SalesLine);
+                end;
+
+        end;
+    end;
+
+    local procedure CheckCustomerItemBlocked(SalesLine: Record "Sales Line")
+    var
+        Item: Record Item;
+        Customer: Record Customer;
+        SalesHeader: Record "Sales Header";
+        CustomerItemBlocked: Record "ZM Customer Items blocked";
+        lblError: Label 'El cliente %1 %2 tiene bloqueado la venta del producto %3 %4.\Pongase en contacto con administración', comment = 'ESP="El cliente %1 %2 tiene bloqueado la venta del producto %3 %4.\Pongase en contacto con administración"';
+    begin
+        if not SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then
+            exit;
+        CustomerItemBlocked.Reset();
+        if CustomerItemBlocked.Get(SalesHeader."Sell-to Customer No.", SalesLine."No.") then
+            if CustomerItemBlocked.Blocked then begin
+                if Item.Get(SalesLine."No.") then;
+                if Customer.Get(SalesHeader."Sell-to Customer No.") then;
+                Error(lblError, SalesLine."Sell-to Customer No.", Customer.Name, SalesLine."No.", Item.Description);
+            end;
+    end;
+
+    local procedure CheckCustomerItemSalesPrice(var SalesLine: Record "Sales Line")
+    var
+        Item: Record Item;
+        Customer: Record Customer;
+        SalesHeader: Record "Sales Header";
+        SalesPrice: Record "Sales Price";
+        SalesSetup: Record "Sales & Receivables Setup";
+        lblMSG: Label 'El Cliente %1 %2 tiene asignada la lista de precios %3 y el producto %4 %5 no tiene tarifa.',
+            comment = 'ESP="El Cliente %1 %2 tiene asignada la lista de precios %3 y el producto %4 %5 no tiene tarifa."';
+    begin
+        if not GuiAllowed then
+            exit;
+        SalesSetup.Get();
+
+        if not SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then
+            exit;
+        if not Customer.Get(SalesHeader."Sell-to Customer No.") then
+            exit;
+        if Customer."Customer Price Group" = '' then
+            exit;
+        if Item.Get(SalesLine."No.") then;
+        SalesPrice.Reset();
+        SalesPrice.SetRange("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
+        SalesPrice.SetRange("Sales Code", Customer."Customer Price Group");
+        SalesPrice.SetRange("Item No.", SalesLine."No.");
+        if not SalesPrice.FindFirst() then begin
+            SalesLine.SinPrecioTarifa := true;
+            if SalesSetup."Show Item alert without tariff" then
+                Message(lblMSG, Customer."No.", Customer.Name, Customer."Customer Price Group", Item."No.", Item.Description);
+        end;
+    end;
 }

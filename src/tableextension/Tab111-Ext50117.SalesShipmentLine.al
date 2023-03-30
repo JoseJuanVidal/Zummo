@@ -113,6 +113,11 @@ tableextension 50117 "SalesShipmentLine" extends "Sales Shipment Line" //111
             ObsoleteState = Removed;
             ObsoleteReason = 'Borrar';
         }
+        field(50019; SinPrecioTarifa; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sin precio tarifa', comment = 'ESP="Sin precio tarifa"';
+        }
         field(50157; BaseImponibleLinea; decimal)
         {
             DataClassification = CustomerContent;

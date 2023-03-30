@@ -106,7 +106,11 @@ tableextension 50102 "TabExtSalesInvoiceLine_btc" extends "Sales Invoice Line"  
             ObsoleteState = Removed;
             ObsoleteReason = 'Borrar';
         }
-
+        field(50019; SinPrecioTarifa; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sin precio tarifa', comment = 'ESP="Sin precio tarifa"';
+        }
         field(50018; LineaComentarioSerie; Boolean)
         {
             DataClassification = CustomerContent;

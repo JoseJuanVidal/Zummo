@@ -4,6 +4,10 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
     {
         addafter("Quote Validity Calculation")
         {
+            field("Show Item alert without tariff"; "Show Item alert without tariff")
+            {
+                ApplicationArea = all;
+            }
             field("Show Doc. Plastic Regulations"; "Show Doc. Plastic Regulations")
             {
                 ApplicationArea = all;

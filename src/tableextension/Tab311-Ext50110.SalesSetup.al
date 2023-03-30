@@ -160,5 +160,10 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             FieldClass = FlowField;
             CalcFormula = lookup("Account Translation"."Description" where("G/L Account No." = Const('LegendReg2')));
         }
+        field(50200; "Show Item alert without tariff"; Boolean)
+        {
+            Caption = 'Show Item alert without tariff', Comment = 'ESP="Mostrar alerta producto sin tarifa"';
+            DataClassification = CustomerContent;
+        }
     }
 }
