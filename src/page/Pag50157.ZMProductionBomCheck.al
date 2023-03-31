@@ -69,6 +69,7 @@ page 50157 "ZM Production Bom Check"
         Rec.DeleteAll();
         ProductionBomLine.Reset();
         ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+        ProductionBomLine.SetRange("Version Code", '');
         if ItemNo <> '' then
             ProductionBomLine.SetRange("No.", ItemNo);
         if ProductionBomLine.FindFirst() then

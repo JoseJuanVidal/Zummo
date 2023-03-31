@@ -6678,6 +6678,111 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Item No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1875124401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZM Hist. BOM Cost</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 186803934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BOM Item No.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field BOM Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 4214194213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad en BOM</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Cantidad en BOM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 1607971347 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Categoria</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Categoria - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 291098760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Coste estandar</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Coste estandar - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 590359616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Coste Periodo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Coste Periodo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 804024119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Coste unitario</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Coste unitario - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 1475260075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripción</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Descripcion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 852363289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Familia</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Familia - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 2592223765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe por maquina</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Importe por maquina - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 1853393323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Nº</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Item Nº - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 1976190141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre Proveedor</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Nombre Proveedor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 777291660 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre Ult. Proveedor</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Nombre Ult. Proveedor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 172941894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Periodo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Periodo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 1567443966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proveedor</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Proveedor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 515783967 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SubCategoria</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field SubCategoria - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 3179737168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Método coste</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Tipo coste - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 3443215222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ultima Fecha de compra</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Ultima Fecha de compra - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 107864783 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ultimo pedido</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Ultimo pedido - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 1498400585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ultimo precio de compra</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Ultimo precio de compra - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 3775549984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ultimo proveedor</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Ultimo proveedor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2984663216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Order Packing</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ped. Venta Packing"</note>
@@ -12397,6 +12502,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Hacer"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action TakePicture - Property Caption</note>
           <target>Hacer</target>
+        </trans-unit>
+        <trans-unit id="Page 2641796487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hist. BOM Costs list</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista Hist. BOM Costes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Hist. BOM Costs list - Property Caption</note>
+          <target>Lista Hist. BOM Costes</target>
+        </trans-unit>
+        <trans-unit id="Page 2641796487 - Action 397859648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cargar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Hist. BOM Costs list - Action Cargar - Property Caption</note>
+          <target>Cargar</target>
         </trans-unit>
         <trans-unit id="Page 1671082619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Confirm Changes in L.M. Production</source>
@@ -26984,6 +27101,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tasa RAEE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field TasaRAEE - Property Caption</note>
           <target>Tasa RAEE</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 730961054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Update BI BOM Costs</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar BI BOM Costes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Update BI BOM Costs - Property Caption</note>
+          <target>Actualizar BI BOM Costes</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 696192174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Validated Accounting</source>

@@ -2,6 +2,8 @@ table 17371 "ZM Hist. BOM Costs"
 {
     Caption = 'ZM Hist. BOM Cost';
     DataClassification = CustomerContent;
+    LookupPageId = "ZM Hist. BOM Costs list";
+    DrillDownPageId = "ZM Hist. BOM Costs list";
 
     fields
     {
@@ -9,16 +11,23 @@ table 17371 "ZM Hist. BOM Costs"
         {
             Caption = 'BOM Item No.';
             DataClassification = CustomerContent;
+            TableRelation = Item;
         }
-        field(2; Periodo; Text[10])
+        field(2; Periodo; Text[20])
         {
             Caption = 'Periodo';
+            DataClassification = CustomerContent;
+        }
+        field(3; "End Period"; Date)
+        {
+            Caption = 'Fin Periodo';
             DataClassification = CustomerContent;
         }
         field(5; "Item Nº"; Code[20])
         {
             Caption = 'Item Nº';
             DataClassification = CustomerContent;
+            TableRelation = Item;
         }
         field(6; Descripcion; Text[100])
         {
@@ -109,7 +118,7 @@ table 17371 "ZM Hist. BOM Costs"
     }
     keys
     {
-        key(PK; "BOM Item No.")
+        key(PK; "BOM Item No.", Periodo, "Item Nº")
         {
             Clustered = true;
         }
@@ -122,13 +131,13 @@ table 17371 "ZM Hist. BOM Costs"
     begin
         Window.Open('Cód. producto #1###########################\Fecha #2##########');
 
+        Item.SetRange("Update BI BOM Costs", true);
+        Item.SetFilter("Production BOM No.", '<>%1', '');
         if Item.FindFirst() then
             repeat
                 AddProductionBomLine(Item."Production BOM No.");
             Until Item.next() = 0;
         Window.Close();
-
-
 
 
     end;
@@ -137,47 +146,59 @@ table 17371 "ZM Hist. BOM Costs"
     var
         ItemBOM: Record Item;
         ProductionBomLine: Record "Production BOM Line";
-        Periode: code[10];
+        Fechas: Record Date;
+        Periode: code[20];
+        Window: Dialog;
     begin
-        // TODO Calcular los periodos y poner filtro de productos marcados
-
-        ProductionBomLine.Reset();
-        ProductionBomLine.SetRange("Production BOM No.", ProductionBOMNo);
-        ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
-        if ProductionBomLine.FindFirst() then
+        Window.Open('Fecha #1###############\BOM #2##############\Producto #3########################');
+        Fechas.Reset();
+        Fechas.SetRange("Period Type", Fechas."Period Type"::Month);
+        Fechas.SetFilter("Period Start", '%1..%2', 20210101D, Today());
+        if Fechas.FindFirst() then
             repeat
-                if ItemBOM.Get(ProductionBomLine."No.") then begin
-                    if ItemBOM."Production BOM No." = '' then
-                        ItemBomtoBufferExcel(ProductionBOMNo, ItemBOM, Periode, ProductionBomLine."Quantity per", ProductionBomLine."Production BOM No.")
-                    else
-                        GetBOMProduction(ProductionBOMNo, ItemBOM, Periode, ProductionBomLine."Quantity per");
-                end;
-            Until ProductionBomLine.next() = 0;
+                Periode := StrSubstNo('%1 %2 %3', Date2DMY(Fechas."Period End", 3),
+                    PADSTR('0', 2 - STRLEN(FORMAT(Date2DMY(Fechas."Period End", 2)))) + format(Date2DMY(Fechas."Period End", 2)), Fechas."Period Name");
+                Window.Update(1, Periode);
+                ProductionBomLine.Reset();
+                ProductionBomLine.SetRange("Production BOM No.", ProductionBOMNo);
+                ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+                if ProductionBomLine.FindFirst() then
+                    repeat
+                        Window.Update(2, ProductionBOMNo);
+                        Window.Update(3, ProductionBomLine."No.");
+                        if ItemBOM.Get(ProductionBomLine."No.") then begin
+                            if ItemBOM."Production BOM No." = '' then
+                                ItemBomtoBufferExcel(ProductionBOMNo, ItemBOM, Periode, Fechas."Period End", ProductionBomLine."Quantity per", ProductionBomLine."Production BOM No.")
+                            else
+                                GetBOMProduction(ProductionBOMNo, ItemBOM, Periode, Fechas."Period End", ProductionBomLine."Quantity per");
+                        end;
+                    Until ProductionBomLine.next() = 0;
+            Until Fechas.next() = 0;
     end;
 
-    local procedure GetBOMProduction(BomNo: code[20]; ItemBom: Record Item; Periode: code[10]; QTQPer: Decimal)
+    local procedure GetBOMProduction(BomNo: code[20]; ItemBom: Record Item; Periode: code[20]; EndPeriode: date; QTQPer: Decimal)
     var
         ItemBOMLine: Record Item;
         ProductionBomLine: Record "Production BOM Line";
 
     begin
-        ItemBomtoBufferExcel(BomNo, ItemBOM, Periode, 0, ProductionBomLine."Production BOM No.");
+        ItemBomtoBufferExcel(BomNo, ItemBOM, Periode, EndPeriode, 0, ProductionBomLine."Production BOM No.");
         ProductionBomLine.Reset();
         ProductionBomLine.SetRange("Production BOM No.", ItemBom."Production BOM No.");
         ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
         if ProductionBomLine.FindFirst() then
             repeat
                 if ItemBOM.Get(ProductionBomLine."No.") then begin
-                    if ItemBOM."Production BOM No." = '' then
-                        ItemBomtoBufferExcel(BomNo, ItemBOM, Periode, ProductionBomLine."Quantity per", ProductionBomLine."Production BOM No.")
+                    if (ItemBOM."Production BOM No." = '') or (ItemBom."Replenishment System" in [ItemBom."Replenishment System"::Purchase]) then
+                        ItemBomtoBufferExcel(BomNo, ItemBOM, Periode, EndPeriode, ProductionBomLine."Quantity per", ProductionBomLine."Production BOM No.")
                     else
-                        GetBOMProduction(BomNo, ItemBOM, Periode, ProductionBomLine."Quantity per");
+                        GetBOMProduction(BomNo, ItemBOM, Periode, EndPeriode, QTQPer * ProductionBomLine."Quantity per");
                 end;
             Until ProductionBomLine.next() = 0;
 
     end;
 
-    local procedure ItemBomtoBufferExcel(BomNo: code[20]; ItemBom: Record Item; Periode: code[10]; QTQPer: Decimal; ParentItemNo: code[20])
+    local procedure ItemBomtoBufferExcel(BomNo: code[20]; ItemBom: Record Item; Periode: code[20]; EndPeriode: date; QTQPer: Decimal; ParentItemNo: code[20])
     var
         HistBOMCosts: Record "ZM Hist. BOM Costs";
         AddNEW: Boolean;
@@ -195,28 +216,30 @@ table 17371 "ZM Hist. BOM Costs"
         end;
 
         if not AddNEW then begin
-            AddItemBomtoBufferExcel(BomNo, ItemBOM, Periode, QTQPer);
+            AddItemBomtoBufferExcel(BomNo, ItemBOM, Periode, EndPeriode, QTQPer);
         end;
     end;
 
-    local procedure AddItemBomtoBufferExcel(BomNo: code[20]; ItemBom: Record Item; Periode: code[10]; QTQPer: Decimal)
+    local procedure AddItemBomtoBufferExcel(BomNo: code[20]; ItemBom: Record Item; Periode: code[20]; EndPeriode: date; QTQPer: Decimal)
     var
         Vendor: Record Vendor;
         HistBOMCosts: Record "ZM Hist. BOM Costs";
         ItemLedgerEntry: Record "Item Ledger Entry";
         PurchReceiptHeader: Record "Purch. Rcpt. Header";
+        AvgCostCalcOverview: Codeunit "Get Average Cost Calc Overview";
     begin
         ItemLedgerEntry.SetCurrentKey("Item No.", "Posting Date");
         ItemLedgerEntry.SetRange("Item No.", ItemBom."No.");
         ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Purchase);
         ItemLedgerEntry.SetRange("Document Type", ItemLedgerEntry."Document Type"::"Purchase Receipt");
         if ItemLedgerEntry.FindLast() then;
-        ItemLedgerEntry.CalcFields("Cost Amount (Actual)");
+        ItemLedgerEntry.CalcFields("Cost Amount (Actual)", "Cost Amount (Expected)");
         if PurchReceiptHeader.get(ItemLedgerEntry."Document No.") then;
         HistBOMCosts.Reset();
         HistBOMCosts.Init();
         HistBOMCosts."BOM Item No." := BomNo;
         HistBOMCosts.Periodo := Periode;
+        HistBOMCosts."End Period" := EndPeriode;
         HistBOMCosts."Item Nº" := ItemBom."No.";
         HistBOMCosts.Descripcion := ItemBom.Description;
         HistBOMCosts."Cantidad en BOM" := QTQPer;
@@ -247,12 +270,12 @@ table 17371 "ZM Hist. BOM Costs"
         if ItemLedgerEntry.Quantity = 0 then
             HistBOMCosts."Ultimo precio de compra" := 0
         else
-            HistBOMCosts."Ultimo precio de compra" := Round(ItemLedgerEntry."Cost Amount (Actual)" / ItemLedgerEntry.Quantity, 0.01);
+            HistBOMCosts."Ultimo precio de compra" := Round((ItemLedgerEntry."Cost Amount (Actual)" + ItemLedgerEntry."Cost Amount (Expected)") / ItemLedgerEntry.Quantity, 0.01);
         ItemBom.CalcFields("Desc. Purch. Family", "Desc. Purch. Category", "Desc. Purch. SubCategory");
         HistBOMCosts.Familia := ItemBom."Desc. Purch. Family";
         HistBOMCosts.Categoria := ItemBom."Desc. Purch. Category";
         HistBOMCosts.SubCategoria := ItemBom."Desc. Purch. SubCategory";
-        HistBOMCosts.Modify();
+        HistBOMCosts.Insert();
     end;
 
 }

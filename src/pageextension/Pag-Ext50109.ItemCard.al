@@ -87,6 +87,10 @@ pageextension 50109 "ItemCard" extends "Item Card"
             {
                 ApplicationArea = all;
             }
+            field("Update BI BOM Costs"; "Update BI BOM Costs")
+            {
+                ApplicationArea = all;
+            }
         }
 
         addlast(Planning)

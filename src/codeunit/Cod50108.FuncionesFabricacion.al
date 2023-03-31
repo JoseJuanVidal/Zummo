@@ -1480,7 +1480,7 @@ codeunit 50108 "FuncionesFabricacion"
         Level += 1;
         BOMComponentLine.Reset();
         BOMComponentLine.SetRange("Production BOM No.", BOMComponentHeader."No.");
-        // BOMComponentLine.SetRange("Version Code", '');
+        BOMComponentLine.SetRange("Version Code", '');
         BOMComponentLine.SetRange(Type, BOMComponentLine.Type::Item);
         if BOMComponentLine.findset() then
             repeat

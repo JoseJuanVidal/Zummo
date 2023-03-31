@@ -397,10 +397,10 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         if ProductionBomLine.FindFirst() then
             repeat
                 if ItemBOM.Get(ProductionBomLine."No.") then begin
-                    if ItemBOM."Production BOM No." = '' then
+                    if (ItemBOM."Production BOM No." = '') or (ItemBom."Replenishment System" in [ItemBom."Replenishment System"::Purchase]) then
                         ItemBomtoBufferExcel(BomNo, ItemBOM, ProductionBomLine."Quantity per", ProductionBomLine."Production BOM No.")
                     else
-                        GetBOMProduction(BomNo, ItemBOM, ProductionBomLine."Quantity per");
+                        GetBOMProduction(BomNo, ItemBOM, QTQPer * ProductionBomLine."Quantity per");
                 end;
             Until ProductionBomLine.next() = 0;
 
@@ -486,7 +486,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Purchase);
         ItemLedgerEntry.SetRange("Document Type", ItemLedgerEntry."Document Type"::"Purchase Receipt");
         if ItemLedgerEntry.FindLast() then;
-        ItemLedgerEntry.CalcFields("Cost Amount (Actual)");
+        ItemLedgerEntry.CalcFields("Cost Amount (Actual)", "Cost Amount (Expected)");
         if PurchReceiptHeader.get(ItemLedgerEntry."Document No.") then;
 
         ExcelBuffer.AddColumn(BomNo, false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
@@ -518,7 +518,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         if ItemLedgerEntry.Quantity = 0 then
             ExcelBuffer.AddColumn('', false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number)
         else
-            ExcelBuffer.AddColumn(Round(ItemLedgerEntry."Cost Amount (Actual)" / ItemLedgerEntry.Quantity, 0.01), false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+            ExcelBuffer.AddColumn(Round((ItemLedgerEntry."Cost Amount (Actual)" + ItemLedgerEntry."Cost Amount (Expected)") / ItemLedgerEntry.Quantity, 0.01), false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
         ItemBom.CalcFields("Desc. Purch. Family", "Desc. Purch. Category", "Desc. Purch. SubCategory");
         ExcelBuffer.AddColumn(ItemBom."Desc. Purch. Family", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(ItemBom."Desc. Purch. Category", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);

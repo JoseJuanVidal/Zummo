@@ -353,6 +353,11 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'CRM Updated', comment = 'ESP="Actualizar CRM"';
         }
+        field(50160; "Update BI BOM Costs"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Update BI BOM Costs', comment = 'ESP="Actualizar BI BOM Costes"';
+        }
         //+ 22/11/2022 NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {
