@@ -6463,11 +6463,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Descripcion - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1875124401 - Field 4272676382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fin Periodo</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field End Period - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1875124401 - Field 852363289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Familia</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6492,6 +6487,11 @@
           <source>Nombre Ult. Proveedor</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Nombre Ult. Proveedor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 864109087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inicio Periodo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Period Start - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1875124401 - Field 172941894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Periodo</source>

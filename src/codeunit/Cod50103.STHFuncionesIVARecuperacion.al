@@ -341,6 +341,8 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         ExcelBuffer.AddColumn('Coste unitario', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Proveedor', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Nombre Proveedor', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Plazo de Entrega', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Stock', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Ultimo proveedor', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Nombre Ult. Proveedor', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Ultimo pedido', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
@@ -479,6 +481,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         Vendor: Record Vendor;
         ItemLedgerEntry: Record "Item Ledger Entry";
         PurchReceiptHeader: Record "Purch. Rcpt. Header";
+        Funciones: Codeunit Funciones;
     begin
         ItemLedgerEntry.Reset();
         ItemLedgerEntry.SetCurrentKey("Item No.", "Posting Date");
@@ -510,6 +513,11 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         if Vendor.Get(ItemBom."Vendor No.") then;
         ExcelBuffer.AddColumn(ItemBom."Vendor No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemBom."Lead Time Calculation", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+
+        Funciones.SetFilterLocations(ItemBom);
+        ItemBom.CalcFields(Inventory);
+        ExcelBuffer.AddColumn(itembom.Inventory, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
         ExcelBuffer.AddColumn(ItemLedgerEntry."Source No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         if Vendor.Get(ItemLedgerEntry."Source No.") then;
         ExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);

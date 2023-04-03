@@ -24,7 +24,7 @@ page 17206 "ZM Hist. BOM Costs list"
                 {
                     ApplicationArea = All;
                 }
-                field("End Period"; "End Period")
+                field("Period Start"; "Period Start")
                 {
                     ApplicationArea = all;
                 }

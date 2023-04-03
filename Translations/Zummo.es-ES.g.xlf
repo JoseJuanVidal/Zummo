@@ -6743,6 +6743,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Nombre Ult. Proveedor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 864109087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inicio Periodo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Period Start - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1875124401 - Field 172941894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Periodo</source>
           <note from="Developer" annotates="general" priority="2"/>
