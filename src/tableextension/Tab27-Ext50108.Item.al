@@ -363,13 +363,13 @@ tableextension 50108 "Item" extends Item  //27
         {
             Caption = 'Plastic packing (kg)', comment = 'ESP="Plástico embalaje (kg)"';
             DataClassification = CustomerContent;
-            DecimalPlaces = 5 : 5;
+            DecimalPlaces = 6 : 6;
         }
         Field(50201; "Recycled plastic Qty. (kg)"; decimal)
         {
             Caption = 'Plastic Recycled packing (kg)', comment = 'ESP="Plástico reciclado embalaje(kg)"';
             DataClassification = CustomerContent;
-            DecimalPlaces = 5 : 5;
+            DecimalPlaces = 6 : 6;
         }
         Field(50202; "Recycled plastic %"; decimal)
         {
@@ -381,13 +381,13 @@ tableextension 50108 "Item" extends Item  //27
         {
             Caption = 'Package Plastic (kg)', comment = 'ESP="Plástico Bulto (kg)"';
             DataClassification = CustomerContent;
-            DecimalPlaces = 5 : 5;
+            DecimalPlaces = 6 : 6;
         }
         Field(50204; "Packing Recycled plastic (kg)"; decimal)
         {
             Caption = 'Package Recycled Plastic (kg)', comment = 'ESP="Plástico reciclado Bulto (kg)"';
             DataClassification = CustomerContent;
-            DecimalPlaces = 5 : 5;
+            DecimalPlaces = 6 : 6;
         }
         Field(50205; "Packing Recycled plastic %"; decimal)
         {
@@ -432,7 +432,7 @@ tableextension 50108 "Item" extends Item  //27
         {
             DataClassification = CustomerContent;
             Caption = 'Vendor Plastic packing (kg/ud)', comment = 'ESP="Plástico embalaje proveedor (kg/ud)"';
-            DecimalPlaces = 5 : 5;
+            DecimalPlaces = 6 : 6;
         }
         //-  NORMATIVA MEDIO AMBIENTAL
 

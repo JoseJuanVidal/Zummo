@@ -6423,6 +6423,46 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Item No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 864109087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period Start</source>
+          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Period Start - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº L.M. producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Production BOM No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 3196119024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Quantity per - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 463590211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Routing Link Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. conexión ruta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Routing Link Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 2385270358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. unidad medida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Unit of Measure Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1875124401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ZM Hist. BOM Cost</source>
           <note from="Developer" annotates="general" priority="2"></note>
