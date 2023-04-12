@@ -25,7 +25,15 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
                 ApplicationArea = all;
                 Editable = false;
             }
+            field(AreaManager_btc; AreaManager_btc)
+            {
+                ApplicationArea = all;
+            }
             field(InsideSales_btc; InsideSales_btc)
+            {
+                ApplicationArea = all;
+            }
+            field(ClienteReporting_btc; ClienteReporting_btc)
             {
                 ApplicationArea = all;
             }

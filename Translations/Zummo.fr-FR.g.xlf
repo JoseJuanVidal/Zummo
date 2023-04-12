@@ -10510,6 +10510,16 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field FechaFinValOferta_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 709731099 - Field 3621343342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
+          <source>Cuota Objetivo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Cuota Objetivo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 709731099 - Field 1922042909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
+          <source>Pais ABC</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Pais ABC - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2240314328 - Field 3398170104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2583759525">
           <source>Exportar BI Reclamaciones</source>
           <note from="Developer" annotates="general" priority="2"/>
