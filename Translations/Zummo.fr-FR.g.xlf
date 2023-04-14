@@ -6506,6 +6506,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Shipping Agent Code - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3424626784 - Action 2586174309 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activar Conexión CRM</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Activar Cola - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3424626784 - Action 2928710152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crear Oferta</source>
           <note from="Developer" annotates="general" priority="2"/>

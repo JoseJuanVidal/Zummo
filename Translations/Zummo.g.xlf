@@ -10734,8 +10734,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3424626784 - Control 3568476593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Conexión</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Conexión"</note>
+          <source>Estado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Connected - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3424626784 - Control 636392376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">

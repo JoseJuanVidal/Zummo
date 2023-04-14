@@ -16,7 +16,7 @@ page 50016 "STH Sales Header Aux"
                 field(Connected; CRMConnectionSetup.get())
                 {
                     ApplicationArea = all;
-                    Caption = 'Conexión', comment = 'ESP="Conexión"';
+                    Caption = 'Estado', comment = 'ESP="Estado"';
                     Editable = false;
                 }
             }
