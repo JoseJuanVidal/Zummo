@@ -90,6 +90,11 @@ table 17370 "ZM Hist. Reclamaciones ventas"
             DataClassification = CustomerContent;
             Caption = 'Tipo Reclamaciones', comment = 'ESP="Tipo Reclamaciones"';
         }
+        field(25; "ALERTA CLD"; code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'ALERTA CLD', comment = 'ESP="ALERTA CLD"';
+        }
     }
 
     keys
@@ -238,7 +243,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
             HistReclamacionesventas."Document No." := ServiceItemLine."Document No.";
             HistReclamacionesventas."Line No." := ServiceItemLine."Line No.";
             HistReclamacionesventas."Serial No." := SerialNo;
-            HistReclamacionesventas."Posting Date" := ServiceHeader."Posting Date";
+            HistReclamacionesventas."Posting Date" := ServiceHeader."Order Date";
             HistReclamacionesventas."Item No." := ServiceItemLine."Item No.";
             HistReclamacionesventas."Cod. Categoria" := Item."Item Category Code";
             HistReclamacionesventas.Familia := Item.desFamilia_btc;
