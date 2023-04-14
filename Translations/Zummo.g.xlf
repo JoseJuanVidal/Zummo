@@ -6578,6 +6578,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ped. Venta Packing"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2984663216 - Field 1254467056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ALERTA CLD</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ALERTA CLD"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field ALERTA CLD - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2984663216 - Field 383589261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cantidad Ventas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad Ventas"</note>
@@ -10728,6 +10733,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ofertas SALES"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3424626784 - Control 3568476593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conexión</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conexión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Control Connected - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3424626784 - Control 636392376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Amount field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10897,6 +10907,11 @@
           <source>Sales Quote</source>
           <note from="Developer" annotates="general" priority="2">ESP="Oferta Venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action SalesQuote - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Action 2586174309 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activar Conexión CRM</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Activar Cola - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3424626784 - Action 2928710152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crear Oferta</source>

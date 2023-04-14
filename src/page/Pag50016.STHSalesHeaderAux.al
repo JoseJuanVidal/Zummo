@@ -11,6 +11,15 @@ page 50016 "STH Sales Header Aux"
     {
         area(content)
         {
+            group("Conexión CRM")
+            {
+                field(Connected; CRMConnectionSetup.get())
+                {
+                    ApplicationArea = all;
+                    Caption = 'Conexión', comment = 'ESP="Conexión"';
+                    Editable = false;
+                }
+            }
             repeater(General)
             {
                 field("No."; Rec."No.")
@@ -199,6 +208,20 @@ page 50016 "STH Sales Header Aux"
         {
             group(STHAcciones)
             {
+                action("Activar Cola")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Activar Conexión CRM';
+                    Image = MarketingSetup;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+
+                    trigger OnAction()
+                    begin
+                        testCRMConnection;
+                    end;
+                }
                 action("Crear Oferta")
                 {
                     ApplicationArea = All;
@@ -262,4 +285,30 @@ page 50016 "STH Sales Header Aux"
             }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        CRMConnectionSetup.get();
+    end;
+
+    var
+        CRMConnectionSetup: record "CRM Connection Setup";
+        JobQueueEntry: record "Job Queue Entry";
+
+    local procedure testCRMConnection()
+
+    begin
+        CRMConnectionSetup.get();
+        if not CRMConnectionSetup.IsEnabled() then
+            CRMConnectionSetup.Validate("Is Enabled", true);
+
+        JobQueueEntry.Reset();
+        JobQueueEntry.SetRange("Object ID to Run", 5339);
+        if JobQueueEntry.FindFirst() then
+            repeat
+                if JobQueueEntry.Status <> JobQueueEntry.Status::Ready then begin
+                    JobQueueEntry.SetStatus(JobQueueEntry.Status::Ready);
+                end;
+            Until JobQueueEntry.next() = 0;
+    end;
 }
