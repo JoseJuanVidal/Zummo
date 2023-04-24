@@ -802,6 +802,24 @@ codeunit 50106 "SalesEvents"
                 Message(RecCustomer.AlertaMaquina)
     end;
 
+    // =============       T_5900_OnAfterValidateCustomer Alerta Mensaje productos de servicio        ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Table, Database::"Service Header", 'OnAfterValidateEvent', 'Customer No.', true, true)]
+    local procedure T_5900_OnAfterValidateCustomer(var Rec: Record "Service Header"; var xRec: Record "Service Header"; CurrFieldNo: Integer)
+    var
+        RecCustomer: record Customer;
+        lblMsg: Label 'Customer %1 %2 has an Alert.\%3', comment = 'ESP="El cliente %1 %2 tiene una Alerta.\%3"';
+    begin
+        //Si el cliente tiene marcado "Alerta Maquina" que les salte un aviso
+        IF RecCustomer.GET(rec."Customer No.") then
+            IF RecCustomer.AlertaPedidoServicio <> '' then
+                Message(StrSubstNo(lblMsg, RecCustomer."No.", RecCustomer.Name, RecCustomer.AlertaPedidoServicio));
+    end;
+
+
     local procedure TraspasaCamposVentas(var pSalesHeader: Record "Sales Header"; pCodCliente: Code[20])
     var
         recCustomer: Record Customer;

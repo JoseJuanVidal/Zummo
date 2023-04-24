@@ -200,6 +200,10 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
+            field(AlertaPedidoServicio; AlertaPedidoServicio)
+            {
+                ApplicationArea = all;
+            }
         }
 
         modify(Name) { ShowMandatory = true; }
