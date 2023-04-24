@@ -7740,6 +7740,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method T_5612_OnAfterValidatePostingGroup - NamedType confQst</note>
           <target>El grupo registro tiene configurado un porcentaje de amortización\¿Desea autocompletar el porcentaje en el activo fijo?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 791300745 - NamedType 2654048973" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer %1 %2 has an Alert.\%3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El cliente %1 %2 tiene una Alerta.\%3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method T_5900_OnAfterValidateCustomer - NamedType lblMsg</note>
+          <target>El cliente %1 %2 tiene una Alerta.\%3</target>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 1937497489 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice no.: #1############################</source>
           <note from="Developer" annotates="general" priority="2">ESP="Factura Nº: #1############################"</note>
@@ -25913,6 +25919,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceItemList - Action MtoWarranty - Property Caption</note>
           <target>Mto. Ampl. Garantia</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1476460220 - NamedType 844510016" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1476460220">
+          <source>¿Do you want to check Exclude Warranty on %1 selected records?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar Excluir Garantía en %1 registros seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceLines - NamedType lblExclude</note>
+          <target>¿Desea marcar Excluir Garantía en %1 registros seleccionados?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1476460220 - Action 3760585108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 997019036">
+          <source>Check Exclude Warranty</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marcar Excluir Garantía"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceLines - Action ExcludeWaranty - Property Caption</note>
+          <target>Marcar Excluir Garantía</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1476460220 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 997019036">
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
@@ -29703,6 +29721,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mensaje de Alerta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field AlertaMaquina - Property Caption</note>
           <target>Mensaje de Alerta</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3282989022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Alert Message Service Order</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Alerta Ped. Servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field AlertaPedidoServicio - Property Caption</note>
+          <target>Alerta Ped. Servicio</target>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Area Manager</source>

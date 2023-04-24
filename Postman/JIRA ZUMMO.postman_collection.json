@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "38e01b8b-47a2-434c-8a94-5f3f8ca02157",
+		"name": "JIRA ZUMMO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24517058"
+	},
+	"item": [
+		{
+			"name": "Issues",
+			"item": [
+				{
+					"name": "Get all Issue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{baseurl}}/rest/api/3/search?fields=summary,resolution",
+							"protocol": "https",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"rest",
+								"api",
+								"3",
+								"search"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "summary,resolution"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Issue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{baseurl}}/rest/api/3/issue/TZ-17",
+							"protocol": "https",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"rest",
+								"api",
+								"3",
+								"issue",
+								"TZ-17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get all projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{baseurl}}/rest/api/3/project",
+					"protocol": "https",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"project"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "ATATT3xFfGF07UiHQEtIfIEHEggg73KGMZVN-WaDZPRrbS7bGVfHR7S41s_3JvR9YT4GNyPAa72Wb4-zqeCU3Guk9dIev9NWpe6dKXamd-qpYhzRfkaSYvJegDaI5wXnx7bGRJ2DIDKECaMkfwWupMO_JDVGXLfGb7pXAVtc3CkwITH4qLUzraQ=70711B12",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "jvidal@zummo.es",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "zummo.atlassian.net"
+		}
+	]
+}
