@@ -5318,6 +5318,21 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field webUrl - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4201268802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZM PL Item Setup Approvals </source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4201268802 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 988243340 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field Primary Key - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1490353142 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2"/>
