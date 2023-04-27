@@ -76,6 +76,36 @@ table 17413 "ZM PL Items temporary"
             DataClassification = CustomerContent;
             Caption = 'State Creation', comment = 'ESP="Estado Alta"';
         }
+        field(50820; Department; text[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Department', comment = 'ESP="Departamento"';
+        }
+        field(50821; "Product manager"; text[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Product manager', comment = 'ESP="Responsable"';
+        }
+        field(50822; Reason; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Reason', comment = 'ESP="Motivo"';
+        }
+        field(50823; Activity; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Activity', comment = 'ESP="Actividad"';
+        }
+        field(50824; Prototype; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Prototype', comment = 'ESP="Prototipo"';
+        }
+        field(50825; "Posting Date"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Posting Date', comment = 'ESP="Fecha Registro"';
+        }
         field(99000750; "Routing No."; Code[20])
         {
             Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';

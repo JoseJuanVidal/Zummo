@@ -1139,14 +1139,44 @@ codeunit 50101 "Eventos_btc"
     // ==
     // ======================================================================================================
 
-    [EventSubscriber(ObjectType::Table, database::"Purchase Line", 'OnAfterUpdateDirectUnitCost', '', true, true)]
-    local procedure PurhaseLine_OnAfterUpdateDirectUnitCost(var PurchLine: Record "Purchase Line"; xPurchLine: Record "Purchase Line"; CalledByFieldNo: Integer; CurrFieldNo: Integer)
+    // [EventSubscriber(ObjectType::Table, database::"Purchase Line", 'OnAfterUpdateDirectUnitCost', '', true, true)]
+    // local procedure PurhaseLine_OnAfterUpdateDirectUnitCost(var PurchLine: Record "Purchase Line"; xPurchLine: Record "Purchase Line"; CalledByFieldNo: Integer; CurrFieldNo: Integer)
+    // begin
+    //     if PurchLine.Type in [PurchLine.Type::Item] then
+    //         PurhaseLine_UpdateDirectUnitCost(PurchLine);
+    // end;
+
+    // [EventSubscriber(ObjectType::Codeunit, codeunit::"Purch. Price Calc. Mgt.", 'OnAfterFindPurchLinePrice', '', true, true)]
+    // local procedure PurhaseLine_OnAfterFindPurchLinePrice(VAR PurchaseLine: Record "Purchase Line"; VAR PurchaseHeader: Record "Purchase Header"; VAR PurchasePrice: Record "Purchase Price"; CalledByFieldNo: Integer)
+    // begin
+    //     if PurchaseLine.Type in [PurchaseLine.Type::Item] then
+    //         PurhaseLine_UpdateDirectUnitCost(PurchaseLine);
+    // end;
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterInsertEvent', '', true, true)]
+    local procedure PurhaseLine_OnAfterInsertEvent(var Rec: Record "Purchase Line"; RunTrigger: Boolean)
     begin
-        if PurchLine.Type in [PurchLine.Type::Item] then
-            PurhaseLine_UpdateDirectUnitCost(PurchLine);
+        if Rec.Type in [Rec.Type::Item] then
+            PurhaseLine_UpdateDirectUnitCost(Rec, false);
     end;
 
-    local procedure PurhaseLine_UpdateDirectUnitCost(var PurchLine: Record "Purchase Line")
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterModifyEvent', '', true, true)]
+    local procedure PurhaseLine_OnAfterValidate(var Rec: Record "Purchase Line"; var xRec: Record "Purchase Line")
+    begin
+        if Rec.Type in [Rec.Type::Item] then
+            if Rec.Quantity <> xRec.Quantity then
+                PurhaseLine_UpdateDirectUnitCost(Rec, false);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterDeleteEvent', '', true, true)]
+    local procedure PurhaseLine_OnAfterDeleteEvent(var Rec: Record "Purchase Line")
+    begin
+        if Rec.Type in [Rec.Type::Item] then begin
+            Rec.Quantity := 0;
+            PurhaseLine_UpdateDirectUnitCost(Rec, true);
+        end;
+    end;
+
+    local procedure PurhaseLine_UpdateDirectUnitCost(var PurchLine: Record "Purchase Line"; Delete: Boolean)
     var
         PurchaseLine: Record "Purchase Line";
         DirectCost: Decimal;
@@ -1156,10 +1186,12 @@ codeunit 50101 "Eventos_btc"
         PurchaseLine.SetRange("Document No.", PurchLine."Document No.");
         PurchaseLine.SetRange(Type, PurchLine.Type);
         PurchaseLine.SetRange("No.", PurchLine."No.");
-        if PurchaseLine.count > 1 then begin
-            // si que tenemos que revisar el precio por la suma de cantidades y 
-            DirectCost := GetPuruchaseLineDirectCoste(PurchLine, PurchaseLine);
+        // si que tenemos que revisar el precio por la suma de cantidades y 
+        DirectCost := GetPuruchaseLineDirectCoste(PurchLine, PurchaseLine);
 
+        if not delete then begin
+            PurchLine.Validate("Direct Unit Cost");
+            PurchLine.Modify();
         end;
     end;
 
@@ -1193,8 +1225,7 @@ codeunit 50101 "Eventos_btc"
                         UnitPrice := PurchasePrice."Direct Unit Cost";
                 end;
             Until PurchasePrice.next() = 0;
-        // ahora comparamos con el precio y actualizamos los datos en todas las lineas
-        PurchaseLine.Validate("Direct Unit Cost", UnitPrice);
+        // ahora comparamos con el precio y actualizamos los datos en todas las lineas        
         if AllPurchaseLine.FindFirst() then
             repeat
                 if AllPurchaseLine."Line No." <> PurchaseLine."Line No." then begin
@@ -1204,6 +1235,7 @@ codeunit 50101 "Eventos_btc"
 
                 end;
             Until AllPurchaseLine.next() = 0;
+        PurchaseLine."Direct Unit Cost" := UnitPrice;
 
     end;
 

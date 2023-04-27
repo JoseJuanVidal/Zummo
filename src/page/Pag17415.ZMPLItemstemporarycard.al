@@ -1,17 +1,44 @@
-page 17414 "ZM PL Items temporary list"
+page 17415 "ZM PL Items temporary card"
 {
     ApplicationArea = All;
-    Caption = 'Items temporary list', Comment = 'ESP="Lista Alta de productos"';
-    PageType = List;
+    Caption = 'Items temporary', Comment = 'ESP="Alta de productos"';
+    PageType = card;
     SourceTable = "ZM PL Items temporary";
     UsageCategory = Lists;
-    CardPageId = "ZM PL Items temporary card";
 
     layout
     {
         area(content)
         {
-            repeater(General)
+            group(Applicant)
+            {
+                Caption = 'Applicant', comment = 'ESP="Solicitante"';
+                field(Department; Department)
+                {
+                    ApplicationArea = all;
+                }
+                field("Product manager"; "Product manager")
+                {
+                    ApplicationArea = all;
+                }
+                field(Reason; Reason)
+                {
+                    ApplicationArea = all;
+                }
+                field(Activity; Activity)
+                {
+                    ApplicationArea = all;
+                }
+                field("Posting Date"; "Posting Date")
+                {
+                    ApplicationArea = all;
+                }
+                field(Prototype; Prototype)
+                {
+                    ApplicationArea = all;
+                }
+            }
+            group(General)
             {
                 field("No."; Rec."No.")
                 {
