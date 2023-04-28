@@ -5258,6 +5258,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Ultimo proveedor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field id - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2958124392 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>createdDateTime</source>
           <note from="Developer" annotates="general" priority="2"/>

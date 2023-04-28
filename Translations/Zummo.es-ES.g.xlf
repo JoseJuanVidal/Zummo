@@ -6944,6 +6944,29 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Type - Property Caption</note>
           <target>Tipo</target>
         </trans-unit>
+        <trans-unit id="Table 3147584035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Daily Time Sheet</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Partes Diarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Property Caption</note>
+          <target>Partes Diarios</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Posting Date - Property Caption</note>
+          <target>Fecha registro</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 1546913952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id. Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field User id - Property Caption</note>
+          <target>Id. Usuario</target>
+        </trans-unit>
         <trans-unit id="Table 3916393050 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>OAuth 2.0 Application</source>
           <note from="Developer" annotates="general" priority="2">ESP="Aplicación OAuth 2.0"</note>
@@ -26664,6 +26687,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Purchase Order Statist - Control KgVendorPackagingproduct - Property Caption</note>
           <target>Plástico embalaje proveedor (kg)</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2634977954 - Control 2312800061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1752036392">
+          <source>Daily Time Sheet</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Partes Diario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM IT User Security Activities - Control Daily Time Sheet - Property Caption</note>
+          <target>Partes Diario</target>
+        </trans-unit>
         <trans-unit id="PageExtension 514898145 - Action 1178531242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 225828172">
           <source>Editar Descripción</source>
           <note from="Developer" annotates="general" priority="2">ESP="Editar Descripción"</note>
@@ -30642,6 +30671,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Permite validar productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field PermiteValidarProcutos_bc - Property Caption</note>
           <target>Permite validar productos</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 3961767479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Resource No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Recurso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Resource No. - Property Caption</note>
+          <target>Nº Recurso</target>
         </trans-unit>
         <trans-unit id="TableExtension 1936001480 - Field 2433564271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Vendor Classification</source>

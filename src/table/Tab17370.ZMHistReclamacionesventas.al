@@ -90,6 +90,12 @@ table 17370 "ZM Hist. Reclamaciones ventas"
             DataClassification = CustomerContent;
             Caption = 'Tipo Reclamaciones', comment = 'ESP="Tipo Reclamaciones"';
         }
+        field(24; "Fallo"; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fallo', comment = 'ESP="Fallo"';
+        }
+
         field(25; "ALERTA CLD"; code[10])
         {
             DataClassification = CustomerContent;
@@ -251,6 +257,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
             HistReclamacionesventas.Country := ServiceHeader."Ship-to Country/Region Code";
             HistReclamacionesventas."Grupo Clientes" := Customer.GrupoCliente_btc;
             HistReclamacionesventas."Fallo localizado" := ServiceItemLine."Fallo localizado";
+            HistReclamacionesventas."Fallo" := ServiceItemLine."Fallo";
             HistReclamacionesventas."Tipo Reclamaciones" := ServiceHeader."Service Order Type";
             HistReclamacionesventas.Insert(true)
         end;

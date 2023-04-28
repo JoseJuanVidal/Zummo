@@ -24,5 +24,11 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             DataClassification = CustomerContent;
             Caption = 'Permite exportacion costes BOM', comment = 'ESP="Permite exportacion costes BOM"';
         }
+        field(50105; "Resource No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Resource No.', comment = 'ESP="Nº Recurso"';
+            TableRelation = Resource;
+        }
     }
 }
