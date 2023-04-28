@@ -69,6 +69,10 @@ page 17204 "Hist. Reclamaciones ventas"
                 {
                     ApplicationArea = All;
                 }
+                field(Fallo; Fallo)
+                {
+                    ApplicationArea = all;
+                }
                 field(Incidencia; Rec.Incidencia)
                 {
                     ApplicationArea = All;
