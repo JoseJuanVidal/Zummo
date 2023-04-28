@@ -39,6 +39,12 @@ page 50007 "Posted Sales Invoice Change"
                     tableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("ClienteReporting"), TipoRegistro = const(Tabla));
                     Caption = 'Cliente Reporting', comment = 'ESP="Cliente Reporting"';
                 }
+                field(Delegado_btc; Delegado_btc)
+                {
+                    ApplicationArea = all;
+                    tableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Delegado), TipoRegistro = const(Tabla));
+                    Caption = 'Delegado', comment = 'ESP="Delegado"';
+                }
                 field(Currencychange; Currencychange)
                 {
                     ApplicationArea = all;
@@ -82,12 +88,14 @@ page 50007 "Posted Sales Invoice Change"
         AreaManager_btc: code[20];
         InsideSales: code[20];
         ClienteReporting_btc: Code[20];
+        Delegado_btc: Code[20];
         Currencychange: Decimal;
         TempBlob: Record TempBlob temporary;
         PackageTrackingNo: text[30];
 
 
-    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; var CurChange: Decimal; var vPackageTrackingNo: text[30]; var vInsideSales: code[20])
+    procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; var CurChange: Decimal;
+        var vPackageTrackingNo: text[30]; var vInsideSales: code[20]; var vDelegado_btc: Code[20])
     begin
         ExtDocNo := ExternalDocumentNo;
         WorkDesc := WorkDescription;
@@ -96,7 +104,7 @@ page 50007 "Posted Sales Invoice Change"
         CurChange := Currencychange;
         vPackageTrackingNo := PackageTrackingNo;
         vInsideSales := InsideSales;
-
+        vDelegado_btc := Delegado_btc;
     end;
 
     procedure SetDatos(SalesInvoiceHeader: Record "Sales Invoice Header")
@@ -117,6 +125,7 @@ page 50007 "Posted Sales Invoice Change"
         Currencychange := SalesInvoiceHeader.CurrencyChange;
         PackageTrackingNo := SalesInvoiceHeader."Package Tracking No.";
         InsideSales := SalesInvoiceHeader.InsideSales_btc;
+        Delegado_btc := SalesInvoiceHeader.Delegado_btc;
     end;
 
 }

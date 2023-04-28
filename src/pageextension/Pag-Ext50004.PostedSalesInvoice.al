@@ -21,7 +21,7 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
             field(InsideSales_btc; InsideSales_btc) { }
             field(ClienteReporting_btc; ClienteReporting_btc) { }
             field("ABC Cliente"; "ABC Cliente") { }
-
+            field(Delegado_btc; Delegado_btc) { }
 
         }
         addafter("Pre-Assigned No.")
@@ -80,12 +80,14 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                     ClienteReporting: Code[20];
                     CurrChange: Decimal;
                     PackageTrackingNo: text[30];
+                    Delegado: code[20];
                 begin
                     PediDatos.LookupMode := true;
                     PediDatos.SetDatos(rec);
                     if PediDatos.RunModal() = Action::LookupOK then begin
-                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo, InsideSales);
-                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo, InsideSales);
+                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo, InsideSales, Delegado);
+                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange,
+                            PackageTrackingNo, InsideSales, Delegado);
                     end;
                 end;
 

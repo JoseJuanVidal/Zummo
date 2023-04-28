@@ -4655,7 +4655,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2252767808 - Field 2483678830 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Puesto Trabajo, , , , , ,Historico Puestos,Historico Contratos,Historico Categoria,Categoria, , ,Departamentos,Sección,Empresa ,Area,CategoriaBonificaciones,Ubicación Puesto,Evaluación Riesgos,Sucursal</source>
+          <source>Puesto Trabajo, , , , , ,Historico Puestos,Historico Contratos,Historico Categoria,Categoria, , ,Departamentos,Sección,Empresa ,Area,CategoriaBonificaciones,Ubicación Puesto,Evaluación Riesgos,Sucursal,IT Departamentos</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property OptionCaption</note>
         </trans-unit>
@@ -6884,6 +6884,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Entry No. - Property Caption</note>
           <target>Nº Movimiento"</target>
         </trans-unit>
+        <trans-unit id="Table 2984663216 - Field 3705564108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fallo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fallo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Fallo - Property Caption</note>
+          <target>Fallo</target>
+        </trans-unit>
         <trans-unit id="Table 2984663216 - Field 2536320456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fallo localizado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fallo localizado"</note>
@@ -6950,6 +6956,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Property Caption</note>
           <target>Partes Diarios</target>
         </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Date - Property Caption</note>
+          <target>Fecha</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 1651921640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Department</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Departamento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Department - Property Caption</note>
+          <target>Departamento</target>
+        </trans-unit>
         <trans-unit id="Table 3147584035 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>id</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -6960,6 +6978,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Posting Date - Property Caption</note>
           <target>Fecha registro</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 2902851687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Resource Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Resource Name - Property Caption</note>
+          <target>Nombre</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 3214336023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Resource No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Recurso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Resource no. - Property Caption</note>
+          <target>Cód. Recurso</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 1230148255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Time</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tiempo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Time - Property Caption</note>
+          <target>Tiempo</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Type - Property Caption</note>
+          <target>Tipo</target>
         </trans-unit>
         <trans-unit id="Table 3147584035 - Field 1546913952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>User Id</source>
@@ -11620,6 +11662,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control Currencychange - Property Caption</note>
           <target>Cambio Divisa</target>
         </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 3483029697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delegado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Delegado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control Delegado_btc - Property Caption</note>
+          <target>Delegado</target>
+        </trans-unit>
         <trans-unit id="Page 2287400882 - Control 635070280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inside Sales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
@@ -12856,6 +12904,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cargar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Hist. BOM Costs list - Action Cargar - Property Caption</note>
           <target>Cargar</target>
+        </trans-unit>
+        <trans-unit id="Page 2376143693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Daily Time Sheet List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista partes diarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Property Caption</note>
+          <target>Lista partes diarios</target>
+        </trans-unit>
+        <trans-unit id="Page 2376143693 - Action 2853697946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Edit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Editar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action Editable - Property Caption</note>
+          <target>Editar</target>
         </trans-unit>
         <trans-unit id="Page 1671082619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Confirm Changes in L.M. Production</source>
@@ -26740,6 +26800,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueos Basedatos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action Bloqueos - Property Caption</note>
           <target>Bloqueos Basedatos</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3747018531 - Action 397840741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
+          <source>Daily Time Sheet</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Partes Diarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action DailyTimeSheet - Property Caption</note>
+          <target>Partes Diarios</target>
         </trans-unit>
         <trans-unit id="PageExtension 3747018531 - Action 1821335367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
           <source>Sesiones</source>
