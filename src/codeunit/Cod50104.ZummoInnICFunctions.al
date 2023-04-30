@@ -512,7 +512,203 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
     end;
 
+
+    // =============     Funciones para actualizar JIRA          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    procedure JIRA_SW_REST(urlBase: Text; metodo: Text; metodoREST: Text; parametros: Text; requiereAutenticacion: Boolean; var statusCode: Integer;
+        var ResponseText: text; User: text; PassWebServKey: Text)
+    var
+        Client: HttpClient;
+        ContentHeaders: HttpHeaders;
+        ClientHeaders: HttpHeaders;
+        RequestMessage: HttpRequestMessage;
+        ResponseMessage: HttpResponseMessage;
+        RequestContent: HttpContent;
+        ResultJsonToken: JsonToken;
+
+        TempBlob: Record TempBlob;
+        Url: Text;
+        StringAuthorization: Text;
+        Texto: Text;
+        StringAuth: Text;
+
+    begin
+        //Obtenemos los datos de configuración web
+        // regCon.GET();
+
+        //Creamos una url
+        Url := urlBase + metodo;
+        //Añadimos los headers de petición
+
+        RequestContent.GetHeaders(ContentHeaders);
+
+        //Obtenemos los headers por defecto
+        ClientHeaders := Client.DefaultRequestHeaders();
+
+        //Si la variable indicar empresa es true entonces entra y un header tendrá company y su id
+        /*   if indicarEmpresa then begin
+              ClientHeaders.Add('company', Format('ZUMMO'));
+          end;
+   */
+
+        TempBlob.WriteTextLine(User + ':' + PassWebServKey);
+        StringAuth := TempBlob.ToBase64String();
+
+        //Si se requiere autenticacion(menos para pedir token de acceso siempre será true) entra
+        if requiereAutenticacion then begin
+
+            StringAuthorization := 'Basic ' + StringAuth;
+            //Creamos la cabecera de athorization
+            ClientHeaders.Add('Authorization', StringAuthorization);
+        end;
+
+        //Si el metodo es de tipo Post o Patch entra para configurar los contentheaders
+        if metodoREST in ['POST', 'PATCH'] then begin
+
+            RequestContent.WriteFrom(parametros);
+            ContentHeaders.Remove('Content-Type');
+            ContentHeaders.Add('Content-Type', 'application/json');
+
+        end;
+
+        ClientHeaders.Add('Accept', 'application/json');
+
+        //Asignamos el metodo rest para la petición http
+        RequestMessage.Method(metodoREST);
+        //Asignamos la url para la peticion http 
+        RequestMessage.SetRequestUri(Url);
+        if metodoREST <> 'GET' then
+            RequestMessage.Content := RequestContent;
+
+        //Si se puede enviar los datos
+        if Client.Send(RequestMessage, ResponseMessage) then begin
+            //si esun codigo exitoso(200, 201)
+            if (ResponseMessage.IsSuccessStatusCode()) then begin
+                ResponseMessage.Content.ReadAs(ResponseText);//Leemos el contenido de la respuesta http
+            end
+            else begin
+                ResponseMessage.Content.ReadAs(ResponseText);
+                //Message('%1', ResponseText);
+            end;
+        end
+        else begin
+            ResponseMessage.Content.ReadAs(ResponseText);
+        end;
+
+        //Procesamos el json de la peticion y su status code para posteriormente pasarla por el valor de referencia
+
+        statusCode := ResponseMessage.HttpStatusCode;
+
+    end;
+
+    procedure JIRAGetAllTickets()
+    var
+        JiraTicket: Record "ZM IT JIRA Tickets";
+        metodo: Label 'search?maxResults=100&jql=project = TZ ORDER by ID&fields=key,summary,status&startAt=%1';
+        Body: text;
+        ErrorText: text;
+        FieldValue: text;
+        ResponseText: text;
+        StatusCode: Integer;
+        JsonResponse: JsonObject;
+        JsonTokResponse: JsonToken;
+        JsonIssues: JsonArray;
+        JsonIssue: JsonToken;
+        JsonIssueFields: JsonObject;
+        JsonIssueState: JsonObject;
+        TotalIssues: Integer;
+        IssuesCount: Integer;
+    begin
+        JobsSetup.Get();
+        JobsSetup.TestField("url Base");
+        JobsSetup.TestField(user);
+        JobsSetup.TestField(token);
+        JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
+
+        JsonResponse.ReadFrom(ResponseText);
+
+        if JsonResponse.Get('error', JsonTokResponse) then begin
+            JsonTokResponse.WriteTo(ErrorText);
+            Error(ErrorText);
+        end else begin
+            FieldValue := GetJSONItemFieldCode(JsonResponse.AsToken(), 'total');
+
+            Evaluate(TotalIssues, FieldValue);
+
+            JsonIssues := GetJSONItemFieldArray(JsonResponse.AsToken(), 'issues');
+
+            repeat
+                foreach JsonIssue in JsonIssues do begin
+                    IssuesCount += 1;
+                    FieldValue := GetJSONItemFieldText(JsonIssue, 'key');
+                    JiraTicket.Reset();
+                    if not JiraTicket.Get(FieldValue) then begin
+                        JiraTicket.Init();
+                        JiraTicket."key" := FieldValue;
+                        JiraTicket.id := GetJSONItemFieldInteger(JsonIssue, 'id');
+                    end;
+                    JsonIssueFields := GetJSONItemFieldObject(JsonIssue, 'fields');
+                    JiraTicket.summary := GetJSONItemFieldText(JsonIssueFields.AsToken(), 'summary');
+                    JsonIssueState := GetJSONItemFieldObject(JsonIssueFields.AsToken(), 'status');
+                    JiraTicket.State := GetJSONItemFieldText(JsonIssueState.AsToken(), 'name');
+                    JiraTicket."Description Status" := copystr(GetJSONItemFieldText(JsonIssueState.AsToken(), 'description'), 1, MaxStrLen(JiraTicket."Description Status"));
+                    if not JiraTicket.Insert() then
+                        JiraTicket.Modify();
+                end;
+                if IssuesCount < TotalIssues then begin
+                    JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
+
+                    if JsonResponse.Get('error', JsonTokResponse) then begin
+                        JsonTokResponse.WriteTo(ErrorText);
+                        Error(ErrorText);
+                    end else begin
+                        JsonIssues := GetJSONItemFieldArray(JsonResponse.AsToken(), 'issues');
+                    end;
+                end;
+            until IssuesCount >= TotalIssues;
+        end;
+    end;
+
+    procedure JIRAGetAllProjects()
+    var
+        JiraProjects: Record "ZM IT JIRA Projects";
+        metodo: Label 'project?fields=key,name';
+        Body: text;
+        ErrorText: text;
+        ResponseText: text;
+        FieldValue: Text;
+        StatusCode: Integer;
+        JsonResponse: JsonObject;
+        JsonTokResponse: JsonToken;
+        JsonProjects: JsonArray;
+        JsonProject: JsonToken;
+    begin
+        JobsSetup.Get();
+        JobsSetup.TestField("url Base");
+        JobsSetup.TestField(user);
+        JobsSetup.TestField(token);
+        JIRA_SW_REST(JobsSetup."url Base", metodo, 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
+
+        if JsonProjects.ReadFrom(ResponseText) then begin
+            foreach JsonProject in JsonProjects do begin
+                FieldValue := GetJSONItemFieldText(JsonProject, 'key');
+                JiraProjects.Reset();
+                if not JiraProjects.Get(FieldValue) then begin
+                    JiraProjects.Init();
+                    JiraProjects."key" := FieldValue;
+                    JiraProjects.id := GetJSONItemFieldInteger(JsonProject, 'id');
+                    JiraProjects.name := GetJSONItemFieldText(JsonProject, 'name');
+                    JiraProjects.Insert();
+                end;
+            end;
+        end;
+    end;
+
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
+        JobsSetup: Record "Jobs Setup";
 
 }

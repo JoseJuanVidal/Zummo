@@ -58,6 +58,13 @@ table 17440 "ZM IT Daily Time Sheet"
             DataClassification = CustomerContent;
             Caption = 'Tipo', comment = 'ESP="Tipo"';
         }
+        field(31; "key"; Code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Key', comment = 'ESP="Código"';
+            TableRelation = if (Type = const(Ticket)) "ZM IT JIRA Tickets"."key" else
+            if (Type = const(Proyecto)) "ZM IT JIRA Projects"."key";
+        }
     }
 
     keys

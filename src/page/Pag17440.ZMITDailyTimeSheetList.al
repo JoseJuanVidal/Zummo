@@ -52,6 +52,10 @@ page 17440 "ZM IT Daily Time Sheet List"
                 {
                     ApplicationArea = all;
                 }
+                field("key"; "key")
+                {
+                    ApplicationArea = all;
+                }
                 field("Resource Name"; "Resource Name")
                 {
                     ApplicationArea = all;
