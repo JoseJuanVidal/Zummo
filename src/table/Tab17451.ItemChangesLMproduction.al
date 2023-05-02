@@ -10,7 +10,7 @@ table 17451 "Item Changes L.M. production"
         {
             DataClassification = CustomerContent;
         }
-        field(10; "Item No."; code[10])
+        field(10; "Item No."; code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Item No.', comment = 'ESP="Cód. producto"';

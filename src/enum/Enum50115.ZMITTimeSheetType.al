@@ -2,13 +2,13 @@ enum 50115 "ZM IT Time Sheet Type"
 {
     Extensible = true;
 
-    value(1; " ")
+    value(0; " ")
     {
     }
-    value(2; "Proyecto")
+    value(1; "Proyecto")
     {
     }
-    value(3; "Ticket")
+    value(2; "Ticket")
     {
     }
 }

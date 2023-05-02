@@ -28,10 +28,10 @@ table 17440 "ZM IT Daily Time Sheet"
             DataClassification = CustomerContent;
             Caption = 'Date', comment = 'ESP="Fecha"';
         }
-        field(5; Time; Duration)
+        field(5; TimeDuration; Duration)
         {
             DataClassification = CustomerContent;
-            Caption = 'Time', comment = 'ESP="Tiempo"';
+            Caption = 'Time Duration', comment = 'ESP="Tiempo"';
         }
         field(10; "Resource no."; code[20])
         {
@@ -64,6 +64,22 @@ table 17440 "ZM IT Daily Time Sheet"
             Caption = 'Key', comment = 'ESP="Código"';
             TableRelation = if (Type = const(Ticket)) "ZM IT JIRA Tickets"."key" else
             if (Type = const(Proyecto)) "ZM IT JIRA Projects"."key";
+
+            trigger OnValidate()
+            begin
+                KeyOnValidate();
+            end;
+        }
+        field(32; "Key summary"; text[100])
+        {
+            Caption = 'Key summary', comment = 'ESP="Descripción"';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
+        field(100; Registered; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Registered', comment = 'ESP="Registrado"';
         }
     }
 
@@ -76,7 +92,10 @@ table 17440 "ZM IT Daily Time Sheet"
     }
 
     var
-        myInt: Integer;
+        JobsSetup: Record "Jobs Setup";
+        Resource: Record Resource;
+        JIRATickets: record "ZM IT JIRA Tickets";
+        JIRAProjects: Record "ZM IT JIRA Projects";
 
     trigger OnInsert()
     begin
@@ -84,6 +103,8 @@ table 17440 "ZM IT Daily Time Sheet"
             Rec.id := CreateGuid();
         if Rec."Posting Date" = 0D then
             Rec."Posting Date" := Workdate();
+        if "User id" = '' then
+            "User id" := UserId;
     end;
 
     trigger OnModify()
@@ -117,4 +138,90 @@ table 17440 "ZM IT Daily Time Sheet"
         end;
     end;
 
+    local procedure KeyOnValidate()
+    begin
+        Rec."Key summary" := '';
+        case Rec.Type of
+            Rec.Type::Ticket:
+                begin
+                    JIRATickets.Reset();
+                    if JIRATickets.Get(Rec."key") then
+                        Rec."Key summary" := JIRATickets.summary;
+                end;
+            Rec.Type::Proyecto:
+                begin
+                    JIRAProjects.Reset();
+                    if JIRAProjects.Get(Rec."key") then
+                        Rec."Key summary" := JIRAProjects.name;
+                end;
+
+        end;
+    end;
+
+    procedure PostingJobJournal(var DailyTimeSheet: record "ZM IT Daily Time Sheet")
+    var
+        myInt: Integer;
+    begin
+        JobsSetup.Get();
+        JobsSetup.TestField("Journal Template Name");
+        JobsSetup.TestField("Journal Batch Name");
+        if DailyTimeSheet.FindFirst() then
+            repeat
+                if not DailyTimeSheet.Registered then begin
+                    CreateJobJournalLine(DailyTimeSheet, JobsSetup."Journal Template Name", JobsSetup."Journal Batch Name");
+
+                    DailyTimeSheet.Registered := true;
+                    DailyTimeSheet.Modify();
+                end;
+            Until DailyTimeSheet.next() = 0;
+    end;
+
+    local procedure CreateJobJournalLine(DailyTimeSheet: record "ZM IT Daily Time Sheet"; JournalTemplateName: code[10]; JournalBatchName: code[10])
+    var
+        UserSetup: Record "User Setup";
+        ResJournalLine: record "Res. Journal Line";
+        LineNo: Integer;
+    begin
+        UserSetup.Get(DailyTimeSheet."User id");
+        UserSetup.TestField("Resource No.");
+        ResJournalLine.Reset();
+        ResJournalLine.SetRange("Journal Template Name", JournalTemplateName);
+        ResJournalLine.SetRange("Journal Batch Name", JournalBatchName);
+        if ResJournalLine.FindLast() then
+            LineNo := ResJournalLine."Line No." + 10000
+        else
+            LineNo := 10000;
+
+        ResJournalLine.Reset();
+        ResJournalLine.Init();
+        ResJournalLine."Journal Template Name" := JournalTemplateName;
+        ResJournalLine."Journal Batch Name" := JournalBatchName;
+        ResJournalLine."Line No." := LineNo;
+        ResJournalLine.Validate("Posting Date", DailyTimeSheet.Date);
+        ResJournalLine."Entry Type" := ResJournalLine."Entry Type"::Usage;
+        ResJournalLine."Document No." := CopyStr(StrSubstNo('%1 %2 %3', DailyTimeSheet.Department, DailyTimeSheet.Type, DailyTimeSheet."Key summary"), 1, MaxStrLen(ResJournalLine.Description));
+        ResJournalLine.Validate("Resource No.", UserSetup."Resource No.");
+        ResJournalLine.Validate(Quantity, ConvertDurationtoResourceTime(UserSetup."Resource No.", DailyTimeSheet.TimeDuration));
+        ResJournalLine."External Document No." := CopyStr(DailyTimeSheet."key", 1, MaxStrLen(ResJournalLine."External Document No."));
+        ResJournalLine.Insert();
+    end;
+
+    local procedure ConvertDurationtoResourceTime(ResourceNo: code[20]; TimeDuration: Duration): Decimal
+    begin
+        Resource.Reset();
+        Resource.Get(ResourceNo);
+
+        case UpperCase(Resource."Base Unit of Measure") of
+            'HORAS':
+                exit(GetDuration("ZM IT Time Setup"::Hours, TimeDuration));
+            'MINUTOS':
+                exit(GetDuration("ZM IT Time Setup"::Minutes, TimeDuration));
+            'DAYS':
+                exit(GetDuration("ZM IT Time Setup"::Days, TimeDuration));
+            '100/Hour':
+                exit(GetDuration("ZM IT Time Setup"::"100/Hour", TimeDuration));
+            Else
+                exit(GetDuration("ZM IT Time Setup"::Hours, TimeDuration));
+        end;
+    end;
 }

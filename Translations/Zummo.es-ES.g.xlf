@@ -6979,11 +6979,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field key - Property Caption</note>
           <target>Código</target>
         </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 1773214773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Key summary</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Key summary - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
         <trans-unit id="Table 3147584035 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Posting Date - Property Caption</note>
           <target>Fecha registro</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 856236780 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Registered</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registrado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Registered - Property Caption</note>
+          <target>Registrado</target>
         </trans-unit>
         <trans-unit id="Table 3147584035 - Field 2902851687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Resource Name</source>
@@ -6997,10 +7009,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Resource no. - Property Caption</note>
           <target>Cód. Recurso</target>
         </trans-unit>
-        <trans-unit id="Table 3147584035 - Field 1230148255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Time</source>
+        <trans-unit id="Table 3147584035 - Field 2816048773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Time Duration</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tiempo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Time - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field TimeDuration - Property Caption</note>
           <target>Tiempo</target>
         </trans-unit>
         <trans-unit id="Table 3147584035 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -7014,6 +7026,23 @@
           <note from="Developer" annotates="general" priority="2">ESP="Id. Usuario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field User id - Property Caption</note>
           <target>Id. Usuario</target>
+        </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 3354042457 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Key</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field key - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field name - Property Caption</note>
+          <target>Nombre</target>
         </trans-unit>
         <trans-unit id="Table 1063719647 - Field 86365022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description Status</source>
@@ -8226,6 +8255,11 @@
           <source>&lt;/span&gt;</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType RojoFin</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1828384963 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
+          <source>project?fields=key,name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllProjects - NamedType metodo</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1461479292 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
           <source>search?maxResults=100&amp;jql=project = TZ ORDER by ID&amp;fields=key,summary,status&amp;startAt=%1</source>
@@ -12951,11 +12985,58 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Property Caption</note>
           <target>Lista partes diarios</target>
         </trans-unit>
-        <trans-unit id="Page 2376143693 - Action 2853697946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Edit</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Editar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action Editable - Property Caption</note>
-          <target>Editar</target>
+        <trans-unit id="Page 2376143693 - NamedType 4238003550" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to create the resource journal of pending records?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el diario de recursos de los registros pendientes?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - NamedType lblPost</note>
+          <target>¿Desea crear el diario de recursos de los registros pendientes?</target>
+        </trans-unit>
+        <trans-unit id="Page 2376143693 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Control Options - Property Caption</note>
+          <target>Opciones</target>
+        </trans-unit>
+        <trans-unit id="Page 2376143693 - Action 198223060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>JIRA Refresh</source>
+          <note from="Developer" annotates="general" priority="2">ESP="JIRA Act."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action Jira - Property Caption</note>
+          <target>JIRA Act.</target>
+        </trans-unit>
+        <trans-unit id="Page 2376143693 - Action 859623117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next Day</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dia Siguiente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action NextDay - Property Caption</note>
+          <target>Dia Siguiente</target>
+        </trans-unit>
+        <trans-unit id="Page 2376143693 - Action 2282416948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Post</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registrar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action Post - Property Caption</note>
+          <target>Registrar</target>
+        </trans-unit>
+        <trans-unit id="Page 2376143693 - Action 2123651247 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Previous Day</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dia Anterior"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action PreviousDay - Property Caption</note>
+          <target>Dia Anterior</target>
+        </trans-unit>
+        <trans-unit id="Page 2376143693 - Action 580853590 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show All</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar todos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action ShowAll - Property Caption</note>
+          <target>Mostrar todos</target>
+        </trans-unit>
+        <trans-unit id="Page 2254326384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>JIRA Projects</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2254326384 - Action 1461479292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Action JIRAGetAllTickets - Property Caption</note>
+          <target>Actualizar</target>
         </trans-unit>
         <trans-unit id="Page 1063719647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>JIRA Tickets</source>
@@ -30948,6 +31029,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Recep. alm. cantidad a cero"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Warehouse Setup - Field Recep. alm. cantidad a cero - Property Caption</note>
           <target>Recep. alm. cantidad a cero</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2910060780 - Field 2704330142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
+          <source>Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre sección diario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM IT Ext Jobs Setup - Field Journal Batch Name - Property Caption</note>
+          <target>Nombre sección diario</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2910060780 - Field 3684440170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
+          <source>Journal Template Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre libro diario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM IT Ext Jobs Setup - Field Journal Template Name - Property Caption</note>
+          <target>Nombre libro diario</target>
         </trans-unit>
         <trans-unit id="TableExtension 2910060780 - Field 1178205325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
           <source>token</source>

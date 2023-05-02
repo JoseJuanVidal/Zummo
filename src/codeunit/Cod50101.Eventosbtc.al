@@ -1152,29 +1152,30 @@ codeunit 50101 "Eventos_btc"
     //     if PurchaseLine.Type in [PurchaseLine.Type::Item] then
     //         PurhaseLine_UpdateDirectUnitCost(PurchaseLine);
     // end;
-    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterInsertEvent', '', true, true)]
-    local procedure PurhaseLine_OnAfterInsertEvent(var Rec: Record "Purchase Line"; RunTrigger: Boolean)
-    begin
-        if Rec.Type in [Rec.Type::Item] then
-            PurhaseLine_UpdateDirectUnitCost(Rec, false);
-    end;
+    // TODO
+    // [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterInsertEvent', '', true, true)]
+    // local procedure PurhaseLine_OnAfterInsertEvent(var Rec: Record "Purchase Line"; RunTrigger: Boolean)
+    // begin        
+    //     if Rec.Type in [Rec.Type::Item] then
+    //         PurhaseLine_UpdateDirectUnitCost(Rec, false);
+    // end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterModifyEvent', '', true, true)]
-    local procedure PurhaseLine_OnAfterValidate(var Rec: Record "Purchase Line"; var xRec: Record "Purchase Line")
-    begin
-        if Rec.Type in [Rec.Type::Item] then
-            if Rec.Quantity <> xRec.Quantity then
-                PurhaseLine_UpdateDirectUnitCost(Rec, false);
-    end;
+    // [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterModifyEvent', '', true, true)]
+    // local procedure PurhaseLine_OnAfterValidate(var Rec: Record "Purchase Line"; var xRec: Record "Purchase Line")
+    // begin
+    //     if Rec.Type in [Rec.Type::Item] then
+    //         if Rec.Quantity <> xRec.Quantity then
+    //             PurhaseLine_UpdateDirectUnitCost(Rec, false);
+    // end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterDeleteEvent', '', true, true)]
-    local procedure PurhaseLine_OnAfterDeleteEvent(var Rec: Record "Purchase Line")
-    begin
-        if Rec.Type in [Rec.Type::Item] then begin
-            Rec.Quantity := 0;
-            PurhaseLine_UpdateDirectUnitCost(Rec, true);
-        end;
-    end;
+    // [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterDeleteEvent', '', true, true)]
+    // local procedure PurhaseLine_OnAfterDeleteEvent(var Rec: Record "Purchase Line")
+    // begin
+    //     if Rec.Type in [Rec.Type::Item] then begin
+    //         Rec.Quantity := 0;
+    //         PurhaseLine_UpdateDirectUnitCost(Rec, true);
+    //     end;
+    // end;
 
     local procedure PurhaseLine_UpdateDirectUnitCost(var PurchLine: Record "Purchase Line"; Delete: Boolean)
     var

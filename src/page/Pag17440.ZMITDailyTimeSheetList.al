@@ -5,11 +5,26 @@ page 17440 "ZM IT Daily Time Sheet List"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "ZM IT Daily Time Sheet";
+    //SourceTableView = where(Registered = const(false));
 
     layout
     {
         area(Content)
         {
+            Group(Options)
+            {
+                Caption = 'Options', comment = 'ESP="Opciones"';
+                field(Fecha; Fecha)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+                field(Total; Total)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+            }
             repeater(General)
             {
                 field("Posting Date"; "Posting Date")
@@ -29,7 +44,7 @@ page 17440 "ZM IT Daily Time Sheet List"
                 {
                     ApplicationArea = all;
                 }
-                field(Time; Time)
+                field(TimeDuration; TimeDuration)
                 {
                     ApplicationArea = all;
                 }
@@ -56,9 +71,18 @@ page 17440 "ZM IT Daily Time Sheet List"
                 {
                     ApplicationArea = all;
                 }
+                field("Key summary"; "Key summary")
+                {
+                    ApplicationArea = all;
+                }
                 field("Resource Name"; "Resource Name")
                 {
                     ApplicationArea = all;
+                }
+                field(Registered; Registered)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }
@@ -68,24 +92,113 @@ page 17440 "ZM IT Daily Time Sheet List"
     {
         area(Processing)
         {
-            action(Editable)
+            action(PreviousDay)
             {
-                ApplicationArea = All;
-                Caption = 'Edit', comment = 'ESP="Editar"';
-                Image = Edit;
+                ApplicationArea = all;
+                Caption = 'Previous Day', comment = 'ESP="Dia Anterior"';
+                Image = PreviousRecord;
                 Promoted = true;
                 PromotedCategory = Process;
 
                 trigger OnAction()
                 begin
-                    CurrPage.Editable(true);
+                    ChangeDay(-1);
+                end;
+            }
+            action(NextDay)
+            {
+                ApplicationArea = all;
+                Caption = 'Next Day', comment = 'ESP="Dia Siguiente"';
+                Image = NextRecord;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    ChangeDay(1);
+                end;
+            }
+            action(ShowAll)
+            {
+                ApplicationArea = all;
+                Caption = 'Show All', comment = 'ESP="Mostrar todos"';
+                Image = ExpandAll;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    Rec.Reset();
+                    CurrPage.Update();
+                end;
+            }
+            action(Post)
+            {
+                ApplicationArea = all;
+                Caption = 'Post', comment = 'ESP="Registrar"';
+                Image = Post;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    PostTimeSheet();
+                end;
+            }
+            action(Jira)
+            {
+                ApplicationArea = all;
+                Caption = 'JIRA Refresh', comment = 'ESP="JIRA Act."';
+                Image = Refresh;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    JiraRefresh();
                 end;
             }
         }
     }
 
+    trigger OnInit()
+    begin
+        if Fecha = 0D then
+            Fecha := WorkDate();
+        Rec.SetRange(Date, Fecha);
+
+    end;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        UpdateTimeDailySheet;
+    end;
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        if Rec.GetFilter(Date) <> '' then
+            Rec.Date := Rec.GetRangeMin(Date);
+    end;
+
+    trigger OnModifyRecord(): Boolean
+    begin
+        UpdateTimeDailySheet();
+    end;
+
     var
-        myInt: Integer;
+        DailyTime: Record "ZM IT Daily Time Sheet";
+        Fecha: date;
+        Total: Duration;
+        lblPost: Label 'Do you want to create the resource journal of pending records?', comment = 'ESP="¿Desea crear el diario de recursos de los registros pendientes?"';
+
+    local procedure UpdateTimeDailySheet()
+    begin
+        DailyTime.Reset();
+        DailyTime.SetRange(date, Fecha);
+        DailyTime.SetRange("User id", UserId);
+        DailyTime.CalcSums(TimeDuration);
+        Total := DailyTime.TimeDuration;
+    end;
 
     local procedure ValidateDate();
     begin
@@ -98,4 +211,31 @@ page 17440 "ZM IT Daily Time Sheet List"
         CurrPage.Update();
     end;
 
+    local procedure ChangeDay(Valor: Integer);
+    begin
+        Fecha := Fecha + Valor;
+        Rec.SetRange(Date, Fecha);
+    end;
+
+
+    local procedure PostTimeSheet()
+    var
+        DailyTimeSheet: Record "ZM IT Daily Time Sheet";
+    begin
+        if not Confirm(lblPost) then
+            exit;
+        DailyTimeSheet.Reset();
+        DailyTimeSheet.CopyFilters(Rec);
+        Rec.PostingJobJournal(Rec);
+    end;
+
+
+    local procedure JiraRefresh()
+    var
+        SWFunciones: Codeunit "Zummo Inn. IC Functions";
+    begin
+        SWFunciones.JIRAGetAllTickets();
+        SWFunciones.JIRAGetAllProjects();
+        Message('End/Fin');
+    end;
 }

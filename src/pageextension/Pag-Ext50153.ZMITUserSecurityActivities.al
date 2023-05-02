@@ -22,6 +22,7 @@ pageextension 50153 "ZM IT User Security Activities" extends "User Security Acti
     begin
         //lanzamos la lista de Marcajes de este usario
         DailyTimeSheet.Reset();
+        DailyTimeSheet.SetRange(date, WorkDate());
         DailyTimeSheet.SetRange("User id", UserId);
         page.Run(page::"ZM IT Daily Time Sheet List", DailyTimeSheet);
     end;

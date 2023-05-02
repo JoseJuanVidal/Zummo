@@ -4,8 +4,16 @@ pageextension 50204 "ZM IT Ext Jobs Setup" extends "Jobs Setup"
     {
         addlast(Content)
         {
-            group(JIRA)
+            group("Partes IT")
             {
+                field("Journal Template Name"; "Journal Template Name")
+                {
+                    ApplicationArea = all;
+                }
+                field("Journal Batch Name"; "Journal Batch Name")
+                {
+                    ApplicationArea = all;
+                }
                 field("url Base"; "url Base")
                 {
                     ApplicationArea = All;

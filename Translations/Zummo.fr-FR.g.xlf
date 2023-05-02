@@ -5263,6 +5263,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field id - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field id - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1063719647 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>id</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -5478,6 +5483,11 @@
           <source>&lt;/span&gt;</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetSalesHeaderBodyMail - NamedType RojoFin</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1828384963 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
+          <source>project?fields=key,name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllProjects - NamedType metodo</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1461479292 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
           <source>search?maxResults=100&amp;jql=project = TZ ORDER by ID&amp;fields=key,summary,status&amp;startAt=%1</source>
@@ -6896,6 +6906,11 @@
           <source>Specifies the picture that has been inserted for the item.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Control Picture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2254326384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>JIRA Projects</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1063719647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>JIRA Tickets</source>
