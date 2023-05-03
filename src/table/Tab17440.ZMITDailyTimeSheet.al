@@ -81,6 +81,11 @@ table 17440 "ZM IT Daily Time Sheet"
             DataClassification = CustomerContent;
             Caption = 'Registered', comment = 'ESP="Registrado"';
         }
+        field(110; Notes; text[250])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Notes', comment = 'ESP="Notas"';
+        }
     }
 
     keys

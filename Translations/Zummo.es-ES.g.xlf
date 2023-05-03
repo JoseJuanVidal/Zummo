@@ -6985,6 +6985,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Key summary - Property Caption</note>
           <target>Descripción</target>
         </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 222620933 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Notas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Notes - Property Caption</note>
+          <target>Notas</target>
+        </trans-unit>
         <trans-unit id="Table 3147584035 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha registro"</note>

@@ -79,6 +79,10 @@ page 17440 "ZM IT Daily Time Sheet List"
                 {
                     ApplicationArea = all;
                 }
+                field(Notes; Notes)
+                {
+                    ApplicationArea = all;
+                }
                 field(Registered; Registered)
                 {
                     ApplicationArea = all;
