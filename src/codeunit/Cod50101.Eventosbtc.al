@@ -1159,12 +1159,11 @@ codeunit 50101 "Eventos_btc"
         PurchaseLine.SetRange(Type, PurchLine.Type);
         PurchaseLine.SetRange("No.", PurchLine."No.");
         // si que tenemos que revisar el precio por la suma de cantidades y 
-        DirectCost := GetPuruchaseLineDirectCoste(PurchLine, PurchaseLine);
-
-        PurchLine.Validate("Direct Unit Cost");
+        if GetPuruchaseLineDirectCoste(PurchLine, PurchaseLine, DirectCost) then
+            PurchLine.Validate("Direct Unit Cost");
     end;
 
-    local procedure GetPuruchaseLineDirectCoste(var PurchaseLine: Record "Purchase Line"; var AllPurchaseLine: Record "Purchase Line"): Decimal
+    local procedure GetPuruchaseLineDirectCoste(var PurchaseLine: Record "Purchase Line"; var AllPurchaseLine: Record "Purchase Line"; var DirectCost: Decimal) FindPrice: Boolean
     var
         PurchasePrice: Record "Purchase Price";
         TotalQty: Decimal;
@@ -1187,13 +1186,20 @@ codeunit 50101 "Eventos_btc"
         if PurchasePrice.FindFirst() then
             repeat
                 if PurchasePrice."Minimum Quantity" <= TotalQty then begin
-                    //si el precio es mayo obtenemos este
-                    if UnitPrice = 0 then
+                    //si el precio es mayor obtenemos este
+                    if UnitPrice = 0 then begin
                         UnitPrice := PurchasePrice."Direct Unit Cost";
-                    if UnitPrice > PurchasePrice."Direct Unit Cost" then
+                        FindPrice := true;
+                    end;
+                    if UnitPrice > PurchasePrice."Direct Unit Cost" then begin
                         UnitPrice := PurchasePrice."Direct Unit Cost";
+                        FindPrice := true;
+                    end;
                 end;
             Until PurchasePrice.next() = 0;
+
+        if not FindPrice then
+            exit;
         // ahora comparamos con el precio y actualizamos los datos en todas las lineas        
         if AllPurchaseLine.FindFirst() then
             repeat
@@ -1204,6 +1210,7 @@ codeunit 50101 "Eventos_btc"
 
                 end;
             Until AllPurchaseLine.next() = 0;
+
         PurchaseLine."Direct Unit Cost" := UnitPrice;
 
     end;
