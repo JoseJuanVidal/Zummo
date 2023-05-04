@@ -660,7 +660,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
                 end;
                 if IssuesCount < TotalIssues then begin
                     JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
-
+                    JsonResponse.ReadFrom(ResponseText);
                     if JsonResponse.Get('error', JsonTokResponse) then begin
                         JsonTokResponse.WriteTo(ErrorText);
                         Error(ErrorText);
