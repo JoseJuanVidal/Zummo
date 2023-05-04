@@ -83,6 +83,14 @@ page 17440 "ZM IT Daily Time Sheet List"
                 {
                     ApplicationArea = all;
                 }
+                field("Start Time"; "Start Time")
+                {
+                    ApplicationArea = all;
+                }
+                field("End Time"; "End Time")
+                {
+                    ApplicationArea = all;
+                }
                 field(Registered; Registered)
                 {
                     ApplicationArea = all;
@@ -103,6 +111,7 @@ page 17440 "ZM IT Daily Time Sheet List"
                 Image = PreviousRecord;
                 Promoted = true;
                 PromotedCategory = Process;
+                PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
@@ -116,10 +125,39 @@ page 17440 "ZM IT Daily Time Sheet List"
                 Image = NextRecord;
                 Promoted = true;
                 PromotedCategory = Process;
+                PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
                     ChangeDay(1);
+                end;
+            }
+            action(StartTime)
+            {
+                ApplicationArea = all;
+                Caption = 'Start Time', comment = 'ESP="Inicio"';
+                Image = Completed;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    Rec.StartTime();
+                end;
+            }
+            action(EndTime)
+            {
+                ApplicationArea = all;
+                Caption = 'End Time', comment = 'ESP="Finalizar"';
+                Image = Stop;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    Rec.EndTime();
                 end;
             }
             action(ShowAll)

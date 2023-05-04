@@ -1,5 +1,6 @@
 page 50133 "Lista RRHH_zum"
 {
+    Caption = 'Lista', comment = 'ESP="Lista"';
     PageType = List;
     SourceTable = MultiRRHH_zum;
     layout

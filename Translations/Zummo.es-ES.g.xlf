@@ -6956,6 +6956,42 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Property Caption</note>
           <target>Partes Diarios</target>
         </trans-unit>
+        <trans-unit id="Table 3147584035 - NamedType 537397217" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The time has already expired at %1.\¿Do you want to change the end time?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ya se ha finalizado el tiempo a las %1.\¿Desea cambiar la hora de finalización?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - NamedType lblConfirmEnd</note>
+          <target>Ya se ha finalizado el tiempo a las %1.\¿Desea cambiar la hora de finalización?</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - NamedType 2907267327" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to FINISH the time registration.\START: %1\END: %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea FINALIZAR el fichaje.\INICIO: %1\FIN: %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - NamedType lblEnd</note>
+          <target>¿Desea FINALIZAR el fichaje.\INICIO: %1\FIN: %2?</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The time registration is already done. The end time must be deleted before the end</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El marcaje ya esta realizado. Hay que eliminar el tiempo final antes de finalizar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - NamedType lblError</note>
+          <target>El marcaje ya esta realizado. Hay que eliminar el tiempo final antes de finalizar</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - NamedType 2777243383" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Task has not been started %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se ha iniciado la tarea %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - NamedType lblErrorEnd</note>
+          <target>No se ha iniciado la tarea %1</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - NamedType 2359897886" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Task %1 has already been started at %2 o'clock.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ya se ha iniciado la tarea %1 a las %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - NamedType lblErrorStart</note>
+          <target>Ya se ha iniciado la tarea %1 a las %2.</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - NamedType 319686486" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to START the time registration %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea INICIAR el fichaje %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - NamedType lblStart</note>
+          <target>¿Desea INICIAR el fichaje %1?</target>
+        </trans-unit>
         <trans-unit id="Table 3147584035 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
@@ -6967,6 +7003,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Departamento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Department - Property Caption</note>
           <target>Departamento</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 4240670190 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Time</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hora Fin"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field End Time - Property Caption</note>
+          <target>Hora Fin</target>
         </trans-unit>
         <trans-unit id="Table 3147584035 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>id</source>
@@ -7014,6 +7056,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Recurso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Resource no. - Property Caption</note>
           <target>Cód. Recurso</target>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 2169532623 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Time</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hora Inicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Start Time - Property Caption</note>
+          <target>Hora Inicio</target>
         </trans-unit>
         <trans-unit id="Table 3147584035 - Field 2816048773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Time Duration</source>
@@ -11127,6 +11175,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Lista comentarios predefinidos - Action Ficha - Property Caption</note>
           <target>Ficha</target>
         </trans-unit>
+        <trans-unit id="Page 74601626 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lista</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lista RRHH_zum - Property Caption</note>
+          <target>Lista</target>
+        </trans-unit>
         <trans-unit id="Page 2207170913 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Auxiliary</source>
           <note from="Developer" annotates="general" priority="2">ESP="Valores"</note>
@@ -13003,6 +13057,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Control Options - Property Caption</note>
           <target>Opciones</target>
         </trans-unit>
+        <trans-unit id="Page 2376143693 - Action 3837516702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Time</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Finalizar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action EndTime - Property Caption</note>
+          <target>Finalizar</target>
+        </trans-unit>
         <trans-unit id="Page 2376143693 - Action 198223060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>JIRA Refresh</source>
           <note from="Developer" annotates="general" priority="2">ESP="JIRA Act."</note>
@@ -13032,6 +13092,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mostrar todos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action ShowAll - Property Caption</note>
           <target>Mostrar todos</target>
+        </trans-unit>
+        <trans-unit id="Page 2376143693 - Action 530928583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Time</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action StartTime - Property Caption</note>
+          <target>Inicio</target>
         </trans-unit>
         <trans-unit id="Page 2254326384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>JIRA Projects</source>

@@ -76,6 +76,26 @@ table 17440 "ZM IT Daily Time Sheet"
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(50; "Start Time"; DateTime)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Start Time', comment = 'ESP="Hora Inicio"';
+
+            trigger OnValidate()
+            begin
+                ValidateStarEnd();
+            end;
+        }
+        field(51; "End Time"; DateTime)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'End Time', comment = 'ESP="Hora Fin"';
+
+            trigger OnValidate()
+            begin
+                ValidateStarEnd();
+            end;
+        }
         field(100; Registered; Boolean)
         {
             DataClassification = CustomerContent;
@@ -101,6 +121,13 @@ table 17440 "ZM IT Daily Time Sheet"
         Resource: Record Resource;
         JIRATickets: record "ZM IT JIRA Tickets";
         JIRAProjects: Record "ZM IT JIRA Projects";
+        lblStart: Label '¿Do you want to START the time registration %1?', comment = 'ESP="¿Desea INICIAR el fichaje %1?"';
+        lblEnd: Label '¿Do you want to FINISH the time registration.\START: %1\END: %2?', comment = 'ESP="¿Desea FINALIZAR el fichaje.\INICIO: %1\FIN: %2?"';
+        lblErrorStart: Label 'Task %1 has already been started at %2 o''clock.', comment = 'ESP="Ya se ha iniciado la tarea %1 a las %2."';
+        lblErrorEnd: Label 'Task has not been started %1', comment = 'ESP="No se ha iniciado la tarea %1"';
+        lblConfirmEnd: Label 'The time has already expired at %1.\¿Do you want to change the end time?', comment = 'ESP="Ya se ha finalizado el tiempo a las %1.\¿Desea cambiar la hora de finalización?"';
+        lblError: Label 'The time registration is already done. The end time must be deleted before the end', comment = 'ESP="El marcaje ya esta realizado. Hay que eliminar el tiempo final antes de finalizar"';
+
 
     trigger OnInsert()
     begin
@@ -229,4 +256,32 @@ table 17440 "ZM IT Daily Time Sheet"
                 exit(GetDuration("ZM IT Time Setup"::Hours, TimeDuration));
         end;
     end;
+
+    local procedure ValidateStarEnd()
+    begin
+        Rec.TimeDuration := 0;
+        if Rec."End Time" > Rec."Start Time" then
+            Rec.TimeDuration := Rec."End Time" - Rec."Start Time";
+    end;
+
+
+    procedure StartTime()
+    begin
+        if (Rec."Start Time" <> 0DT) and (Rec."End Time" <> 0DT) then
+            Error(lblError);
+        if Rec."Start Time" <> 0DT then
+            Error(lblErrorStart, Rec."Key summary", Rec."Start Time");
+        Rec.Validate("Start Time", RoundDateTime(CreateDateTime(WorkDate(), Time()), 60000));
+    end;
+
+    procedure EndTime()
+    begin
+        if (Rec."Start Time" = 0DT) then
+            Error(lblErrorEnd);
+        if Rec."End Time" <> 0DT then
+            if not Confirm(lblConfirmEnd, false, Rec."End Time") then
+                exit;
+        Rec.Validate("End Time", RoundDateTime(CreateDateTime(WorkDate(), Time()), 60000));
+    end;
+
 }
