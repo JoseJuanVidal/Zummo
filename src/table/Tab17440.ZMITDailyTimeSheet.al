@@ -62,19 +62,20 @@ table 17440 "ZM IT Daily Time Sheet"
         {
             DataClassification = CustomerContent;
             Caption = 'Key', comment = 'ESP="Código"';
-            TableRelation = if (Type = const(Ticket)) "ZM IT JIRA Tickets"."key" else
-            if (Type = const(Proyecto)) "ZM IT JIRA Projects"."key";
+            TableRelation = if (Type = const("JIRA Ticket")) "ZM IT JIRA Tickets"."key" else
+            if (Type = const("JIRA Proyecto")) "ZM IT JIRA Projects"."key" else
+            if (Type = const(Proyecto)) Job."No.";
+            ValidateTableRelation = false;
 
             trigger OnValidate()
             begin
                 KeyOnValidate();
             end;
         }
-        field(32; "Key summary"; text[100])
+        field(32; "Key summary"; text[250])
         {
             Caption = 'Key summary', comment = 'ESP="Descripción"';
             DataClassification = CustomerContent;
-            Editable = false;
         }
         field(50; "Start Time"; DateTime)
         {
@@ -118,6 +119,7 @@ table 17440 "ZM IT Daily Time Sheet"
 
     var
         JobsSetup: Record "Jobs Setup";
+        Job: Record Job;
         Resource: Record Resource;
         JIRATickets: record "ZM IT JIRA Tickets";
         JIRAProjects: Record "ZM IT JIRA Projects";
@@ -174,19 +176,24 @@ table 17440 "ZM IT Daily Time Sheet"
     begin
         Rec."Key summary" := '';
         case Rec.Type of
-            Rec.Type::Ticket:
+            Rec.Type::"JIRA Ticket":
                 begin
                     JIRATickets.Reset();
                     if JIRATickets.Get(Rec."key") then
                         Rec."Key summary" := JIRATickets.summary;
                 end;
-            Rec.Type::Proyecto:
+            Rec.Type::"JIRA Proyecto":
                 begin
                     JIRAProjects.Reset();
                     if JIRAProjects.Get(Rec."key") then
                         Rec."Key summary" := JIRAProjects.name;
                 end;
-
+            Rec.Type::"Proyecto":
+                begin
+                    Job.Reset();
+                    if Job.Get(Rec."key") then
+                        Rec."Key summary" := Job.Description;
+                end;
         end;
     end;
 

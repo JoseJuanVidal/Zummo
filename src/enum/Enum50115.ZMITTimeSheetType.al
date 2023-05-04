@@ -8,7 +8,10 @@ enum 50115 "ZM IT Time Sheet Type"
     value(1; "Proyecto")
     {
     }
-    value(2; "Ticket")
+    value(2; "JIRA Ticket")
+    {
+    }
+    value(3; "JIRA Proyecto")
     {
     }
 }

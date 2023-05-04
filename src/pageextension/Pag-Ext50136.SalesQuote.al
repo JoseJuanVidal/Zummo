@@ -2,6 +2,11 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
 {
     layout
     {
+        modify("Campaign No.")
+        {
+            Importance = Promoted;
+
+        }
         addafter("Due Date")
         {
             field(FechaRecepcionMail_btc; FechaRecepcionMail_btc)
