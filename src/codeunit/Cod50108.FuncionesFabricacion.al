@@ -1338,6 +1338,7 @@ codeunit 50108 "FuncionesFabricacion"
         if pCrearListaMateriales then begin
             ProductionBOMHeader.RESET();
             ProductionBOMHeader.SETRANGE("No.", recItem."Production BOM No.");
+            ProductionBOMHeader.SETRANGE("Version Nos.", '');
             IF ProductionBOMHeader.FINDFIRST() THEN BEGIN
                 ProductionBOMHeader2.INIT();
                 ProductionBOMHeader2 := ProductionBOMHeader;
@@ -1349,6 +1350,7 @@ codeunit 50108 "FuncionesFabricacion"
 
                 ProductionBOMLine.RESET();
                 ProductionBOMLine.SETRANGE("Production BOM No.", recItem."Production BOM No.");
+                ProductionBOMLine.SETRANGE("Version Code", '');
                 IF ProductionBOMLine.FINDSET() THEN
                     REPEAT
                         ProductionBOMLine2.INIT();
