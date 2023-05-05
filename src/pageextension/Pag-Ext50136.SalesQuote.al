@@ -6,6 +6,20 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
         {
             Importance = Promoted;
 
+            trigger OnAfterValidate()
+            begin
+                UpdateCampaignName();
+            end;
+
+        }
+        addafter("Campaign No.")
+        {
+            field(CampaignName; CampaignName)
+            {
+                ApplicationArea = all;
+                Caption = 'Camping Name', comment = 'ESP="Campaña"';
+                Editable = false;
+            }
         }
         addafter("Due Date")
         {
@@ -184,6 +198,11 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
         }
     }
 
+    trigger OnAfterGetRecord()
+    begin
+        UpdateCampaignName;
+    end;
+
     trigger OnClosePage()
     begin
         if Rec.Find() then
@@ -195,7 +214,9 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
     end;
 
     var
+        Campaign: Record Campaign;
         Funciones: Codeunit Funciones;
+        CampaignName: text;
 
     local procedure UpdateNoComplarPlanificacion()
     var
@@ -204,5 +225,12 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
         Rec."No contemplar planificacion" := not rec."No contemplar planificacion";
         Rec.Modify();
         funciones.UpdateNoContemplarPlanificacion(Rec);
+    end;
+
+    local procedure UpdateCampaignName()
+    begin
+        CampaignName := '';
+        if Campaign.Get(Rec."Campaign No.") then
+            CampaignName := Campaign.Description;
     end;
 }

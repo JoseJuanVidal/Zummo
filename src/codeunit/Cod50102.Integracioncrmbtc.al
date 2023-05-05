@@ -3214,6 +3214,33 @@ codeunit 50102 "Integracion_crm_btc"
         CRMProductName: Codeunit "CRM Product Name";
         CRMSynchHelper: Codeunit "CRM Synch. Helper";
 
+    procedure UpdateCRMCampaign()
+    var
+        Campaign: Record Campaign;
+        CRMCampaign: Record "CRM Campaign";
+        CampaignNo: code[20];
+        Window: Dialog;
+        Pos: Integer;
+    begin
+
+        if not Confirm('¿desea actualizar las campañas del CRM?', false) then
+            exit;
+        Codeunit.Run(Codeunit::"CRM Integration Management");
+        Window.Open('#1#########################################################');
+        //CRMAccount.SetRange(OwnerId, 'a4e5e921-6e7a-ea11-a811-000d3a2c3f51');
+        if CRMCampaign.FindFirst() then
+            repeat
+                Window.Update(1, CRMCampaign.name);
+                if not Campaign.Get(CRMCampaign.codename) then begin
+                    Campaign.Init();
+                    Campaign."No." := CRMCampaign.codename;
+                    Campaign.Description := CRMCampaign.name;
+                    Campaign.Insert();
+                end;
+            until CRMCampaign.next() = 0;
+        Window.Close();
+    end;
+
     procedure UpdateOwneridAreaManager()
     var
         Customer: Record Customer;

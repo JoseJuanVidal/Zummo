@@ -64,9 +64,16 @@ page 17401 "CRM Leads"
             }
         }
     }
+    var
+        CurrentlyCoupledCDS: Record "CRM Delegado_crm_btc"; // "CRM Delegado_btc";
+
     trigger OnInit()
     begin
         Codeunit.Run(Codeunit::"CRM Integration Management");
     end;
 
+    procedure SetCurrentlyCoupledCDSWorker(CDS: Record "CRM Delegado_crm_btc") // "CRM Delegado_btc")
+    begin
+        CurrentlyCoupledCDS := CDS;
+    end;
 }

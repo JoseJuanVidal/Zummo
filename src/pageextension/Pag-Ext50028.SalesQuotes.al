@@ -4,6 +4,12 @@ pageextension 50028 "SalesQuotes" extends "Sales Quotes"
     {
         addlast(Control1)
         {
+            field(CampaignName; CampaignName)
+            {
+                ApplicationArea = all;
+                Caption = 'Camping Name', comment = 'ESP="Campaña"';
+                Visible = false;
+            }
             field(AmountcostLines; AmountcostLines)
             {
                 Caption = 'Importe Coste', comment = 'ESP="Importe Coste"';
@@ -97,8 +103,18 @@ pageextension 50028 "SalesQuotes" extends "Sales Quotes"
     trigger OnAfterGetRecord()
     begin
         AmountcostLines := CalcAmountcostLines();
+        UpdateCampaignName();
     end;
 
     var
+        Campaign: Record Campaign;
+        CampaignName: text;
         AmountcostLines: Decimal;
+
+    local procedure UpdateCampaignName()
+    begin
+        CampaignName := '';
+        if Campaign.Get(Rec."Campaign No.") then
+            CampaignName := Campaign.Description;
+    end;
 }

@@ -1409,6 +1409,66 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM AreaManager_crm_btc - Field zum_Nombre - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2573710038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CRM Leads</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 1279010629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>campaignid</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field campaignid - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 2999697550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field codename - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 3425251533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field CreatedBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 1302697051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field CreatedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 1782641658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By (Delegate)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field CreatedOnBehalfBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 1907234846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field ModifiedBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 2247197532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified On</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field ModifiedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 982954073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By (Delegate)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field ModifiedOnBehalfBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2573710038 - Field 3223187400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Campaign - Field OwnerId - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4029087944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Canal BC</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -10402,6 +10462,23 @@
           <note from="Developer" annotates="general" priority="2">ESP="Crear en Bussiness Central"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Area Managers_crm_btc - Action CreateFromCDS - Property Caption</note>
           <target>Crear en Bussiness Central</target>
+        </trans-unit>
+        <trans-unit id="Page 2573710038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CRM Campaign</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Campaign - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2573710038 - Action 320511829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Campingn CRM.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza campañas del CRM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Campaign - Action CRMSinc - Property ToolTip</note>
+          <target>Actualiza campañas del CRM</target>
+        </trans-unit>
+        <trans-unit id="Page 2573710038 - Action 320511829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sync. CRM Campaign</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sincronizar Campañas CRM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Campaign - Action CRMSinc - Property Caption</note>
+          <target>Sincronizar Campañas CRM</target>
         </trans-unit>
         <trans-unit id="Page 4029087944 - Action 3395221457 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Check Textos auxiliares</source>
@@ -26390,6 +26467,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuote - Action NoPlanificacion - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 647151006 - Control 761917803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 280137910">
+          <source>Camping Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Campaña"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuote - Control CampaignName - Property Caption</note>
+          <target>Campaña</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1149918667 - Action 454322636 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 734185571">
           <source>Impimir Fact.Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>
@@ -26944,6 +27027,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cap. Producto y Centro Trabajo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WorkCenterList - Action WorkCenterCalendar - Property Caption</note>
           <target>Cap. Producto y Centro Trabajo</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2647204350 - Action 320511829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3705678920">
+          <source>Update Campingn CRM.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza campañas del CRM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Campaign List - Action CRMSinc - Property ToolTip</note>
+          <target>Actualiza campañas del CRM</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2647204350 - Action 320511829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3705678920">
+          <source>Sync. CRM Campaign</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sincronizar Campañas CRM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Campaign List - Action CRMSinc - Property Caption</note>
+          <target>Sincronizar Campañas CRM</target>
         </trans-unit>
         <trans-unit id="PageExtension 2491007321 - Control 4063961376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1614820132">
           <source>Vendor Plastic packing (kg)</source>
