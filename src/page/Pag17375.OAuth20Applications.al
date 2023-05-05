@@ -7,7 +7,7 @@ page 17375 "OAuth 2.0 Applications"
     PageType = List;
     RefreshOnActivate = true;
     SourceTable = "ZM OAuth 2.0 Application";
-    UsageCategory = Lists;
+    UsageCategory = Administration;
 
     layout
     {

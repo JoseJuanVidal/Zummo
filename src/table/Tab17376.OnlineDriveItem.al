@@ -74,7 +74,7 @@ table 17376 "Online Drive Item"
         AccessToken := OAuth20AppHelper.GetAccessToken(OAuthApplication.Code);
 
         if not isFile then begin
-            OnlineDriveItems.SetProperties(Rec."Application Code", AccessToken, '', driveId, Id);
+            OnlineDriveItems.SetProperties(Rec."Application Code", AccessToken, '', Id, driveId);
             OnlineDriveItems.Run();
         end else begin
             if OAuth20AppHelper.DownloadFile(AccessToken, driveId, id, Stream) then

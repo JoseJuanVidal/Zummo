@@ -910,4 +910,18 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
             TempFile.Close();
         end;
     end;
+
+    procedure ExtractFileName(FileNameTxt: Text) FileTxt: Text
+    begin
+        FileTxt := FileNameTxt;
+        WHILE STRPOS(FileTxt, '.') <> 0 DO
+            FileTxt := COPYSTR(FileTxt, 1, STRPOS(FileTxt, '.') - 1);
+    end;
+
+    procedure ExtractFileNameFromPath(PathAndFileTxt: Text) FileTxt: Text
+    begin
+        FileTxt := PathAndFileTxt;
+        WHILE STRPOS(FileTxt, '\') <> 0 DO
+            FileTxt := COPYSTR(FileTxt, 1 + STRPOS(FileTxt, '\'));
+    end;
 }

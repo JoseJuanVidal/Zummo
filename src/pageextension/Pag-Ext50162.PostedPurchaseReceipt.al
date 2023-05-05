@@ -6,6 +6,15 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
         {
             Editable = true;
         }
+
+        addlast(FactBoxes)
+        {
+            part(Documents; "ZM SH Record Link Sharepoints")
+            {
+                ApplicationArea = all;
+                UpdatePropagation = Both;
+            }
+        }
     }
 
     actions
@@ -68,6 +77,12 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
 
         }
     }
+
+
+    trigger OnAfterGetRecord()
+    begin
+        CurrPage.Documents.Page.SetRecordIR(Rec.RecordId);
+    end;
 
     local procedure ImprimeSelecionEtiquetas()
     var

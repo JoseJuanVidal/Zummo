@@ -29,6 +29,10 @@ page 17377 "ZM OAuth20Application Folders"
                         Rec.OpenDriveItems(Rec.FolderID)
                     end;
                 }
+                field(FolderName; FolderName)
+                {
+                    ApplicationArea = all;
+                }
                 field(FolderID; FolderID)
                 {
                     ApplicationArea = All;

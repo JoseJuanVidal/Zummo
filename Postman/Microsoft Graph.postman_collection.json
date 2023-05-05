@@ -13351,7 +13351,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://graph.microsoft.com/v1.0/drives/b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ/root/children?$select=id,name,file,folder",
+									"raw": "https://graph.microsoft.com/v1.0/drives/b!{{FolderRootID}}root/children?$select=id,name,file,folder",
 									"protocol": "https",
 									"host": [
 										"graph",
@@ -13361,8 +13361,7 @@
 									"path": [
 										"v1.0",
 										"drives",
-										"b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ",
-										"root",
+										"b!{{FolderRootID}}root",
 										"children"
 									],
 									"query": [
@@ -13407,6 +13406,101 @@
 										{
 											"key": "$select",
 											"value": "id,name,file,folder"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Child drives items (ROOT Folder)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New Folder\",\r\n  \"folder\": {}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ/root/children",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ",
+										"root",
+										"children"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "id,name,file,folder",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Child drives items (Compras) Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Albaranes\",\r\n  \"folder\": {}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ/items/01E2JAJOZZYMWXC6GDYBGYDRSL3EAHU2WF/children",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ",
+										"items",
+										"01E2JAJOZZYMWXC6GDYBGYDRSL3EAHU2WF",
+										"children"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "id,name,file,folder",
+											"disabled": true
 										}
 									]
 								}
@@ -13519,6 +13613,449 @@
 										"b!Cu8nOuEVwkeC04vs82WUBO-FdIVavSVEj1wihPBO4qgAm_JGdqzGQIlTwVXIUMpK",
 										"items",
 										"012ST4ANJPBBRNWHNSIRFYOZWZBDYRYPWT",
+										"children"
+									],
+									"query": [
+										{
+											"key": "&select",
+											"value": ",012ST4ANNMS4GXGEWNMNEKR2R2U6ICTRTL,Documentos",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get drives items Download",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkE2Q2dqNUlOMk5EQWFhYl9YWWhMT2sxOTNWVjV0b1JDUXp3U181ZldkQTAiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDg4NDEyLCJuYmYiOjE2NzUwODg0MTIsImV4cCI6MTY3NTA5MjMxMiwiYWlvIjoiRTJaZ1lQRE4zYmhBZ1ZudXV4R0RsUEU4SFNOdkFBPT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiZkZZbENfZWVSRVNHWTNzeXh1d2JBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.Cx358MDkkTL1uEPOw0ZJS1PRGGFtq2A7NmdN_1IQlbT0Bf6mBcfqoXp2_r6yqc0kJy3EgtumRu7f5sFGelBkrKvpINfWbMrTUA3xEnaGeUbCKPDTvbWKGdBo8GKFarraQ11ZfJBKCM8uVEixGU0QXzfWWMgoHkUzBix4InZmsHmpQGAe6V-NKYleseKhlVR_M4ibIqGLKjxX9N1PphO8Qxu84mSJ6avwf2Wul8uKV6fbFlKRcJD-Uvb7arODUejgmi69VJbMzU_U2-5iMOiYQx9-QDd9SMhoCiiTEMoJHiQttfGzMDLiBqa3gTKdquoQ_iUpAtkc6HqO-HEMDnIZhA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/b!Cu8nOuEVwkeC04vs82WUBO-FdIVavSVEj1wihPBO4qgAm_JGdqzGQIlTwVXIUMpK/items/012ST4ANJPBBRNWHNSIRFYOZWZBDYRYPWT/items/012ST4ANJPBBRNWHNSIRFYOZWZBDYRYPWT/conten",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"b!Cu8nOuEVwkeC04vs82WUBO-FdIVavSVEj1wihPBO4qgAm_JGdqzGQIlTwVXIUMpK",
+										"items",
+										"012ST4ANJPBBRNWHNSIRFYOZWZBDYRYPWT",
+										"items",
+										"012ST4ANJPBBRNWHNSIRFYOZWZBDYRYPWT",
+										"conten"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SharePoint BC (variables)",
+					"item": [
+						{
+							"name": "Get sites",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/sites",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"sites"
+									],
+									"query": [
+										{
+											"key": "$Filter",
+											"value": "displayname eq 'SALES'",
+											"disabled": true
+										},
+										{
+											"key": "$search",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get drives",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/sites/{{DriveId}}/drives?$select=id,name",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"sites",
+										"{{DriveId}}",
+										"drives"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "id,name"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get drives items",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/{{FolderRootID}}/root/children?$select=id,name,file,folder",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"{{FolderRootID}}",
+										"root",
+										"children"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "id,name,file,folder"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Child drives items (Compras)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/{{FolderRootID}}/items/{{IDDrive}}/children?$select=id,name,file,folder",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"{{FolderRootID}}",
+										"items",
+										"{{IDDrive}}",
+										"children"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "id,name,file,folder"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Child drives items (ROOT Folder)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New Folder\",\r\n  \"folder\": {}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ/root/children",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ",
+										"root",
+										"children"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "id,name,file,folder",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Child drives items (Compras) Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Albaranes\",\r\n  \"folder\": {}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ/items/01E2JAJOZZYMWXC6GDYBGYDRSL3EAHU2WF/children",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ",
+										"items",
+										"01E2JAJOZZYMWXC6GDYBGYDRSL3EAHU2WF",
+										"children"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "id,name,file,folder",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT Child drives items Upload",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": "/C:/Zummo/WDSL.txt"
+									}
+								},
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/{{FolderRootID}}/items/root:/COMPRAS/WSDL.txt:/content",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"{{FolderRootID}}",
+										"items",
+										"root:",
+										"COMPRAS",
+										"WSDL.txt:",
+										"content"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "id,name,file,folder",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Child drives items (jpg)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/b!Cu8nOuEVwkeC04vs82WUBO-FdIVavSVEj1wihPBO4qgAm_JGdqzGQIlTwVXIUMpK/items/012ST4ANM4KYRMC5PI6ZA2QYVCXZLYIZMT/children?$filter=name eq '250101 EJE BANDEJA.jpg'",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"b!Cu8nOuEVwkeC04vs82WUBO-FdIVavSVEj1wihPBO4qgAm_JGdqzGQIlTwVXIUMpK",
+										"items",
+										"012ST4ANM4KYRMC5PI6ZA2QYVCXZLYIZMT",
+										"children"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "id,name",
+											"disabled": true
+										},
+										{
+											"key": "$filter",
+											"value": "contains(name , '25010')",
+											"disabled": true
+										},
+										{
+											"key": "$filter",
+											"value": "name eq '250101 EJE BANDEJA.jpg'"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download drives item",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ/items/01E2JAJO4REHBYYFS2MRDIZWAOGRBIDOBI/content",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ",
+										"items",
+										"01E2JAJO4REHBYYFS2MRDIZWAOGRBIDOBI",
+										"content"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get drives items child items",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Iko1WU9aUzhieXI2cGNLSnJybEFzZUJpbmVnTkUzS093NEVqMWV6TEZoX3MiLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc1MDkyMzMzLCJuYmYiOjE2NzUwOTIzMzMsImV4cCI6MTY3NTA5NjIzMywiYWlvIjoiRTJaZ1lHaTd2RTdrdXVUTzV1c1JaODVWUzkyT0FBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwicm9sZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCIsIkZpbGVzLlJlYWRXcml0ZS5BbGwiXSwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiU2wtSEJOU1hHVU85RmNOeFItOFhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.SukE0EGckFSj8QzsV9-KFL54OzVcRQ0_aTYz4xnsnZjrd3J-fBmSICAyGav0uYyHp7a9m4l2QfAaO-ecCiGxGBBAQX4JbQ1JQV22BXb68siA_IxVb93DJCi9VPREKaKK66PWPcCt5PH9GSYqKC-r4H7am_-k8xzMPg5o2llvPQ6aCwNtWGyu9ac1rqQ06p16zXDzI3yJSZz3eOUs4Z3bgurTB3kYRLDn4dQLulYKqnJZkFc1bP2ySI-nuFiMTikk5TwKx9w9yMiU_qRhtle-ePJgH9PavDi5YOSsempjL5Ia0LmvCEx-0zVCOoSSQKeTnX0qjYuox4ORi0pJGovTaA",
+										"type": "text",
+										"description": "token"
+									}
+								],
+								"url": {
+									"raw": "https://graph.microsoft.com/v1.0/drives/{{FolderRootID}}/items/01E2JAJO5D4NPW2KH7XZEK5BZCPBTVHKBP/children",
+									"protocol": "https",
+									"host": [
+										"graph",
+										"microsoft",
+										"com"
+									],
+									"path": [
+										"v1.0",
+										"drives",
+										"{{FolderRootID}}",
+										"items",
+										"01E2JAJO5D4NPW2KH7XZEK5BZCPBTVHKBP",
 										"children"
 									],
 									"query": [
@@ -15501,6 +16038,18 @@
 			"key": "ttoken",
 			"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IldBSjZwWWtxbHBXSjJFYmJfaU5pMDB1VVczUkR4dTU5SUUzcG1rdkozN28iLCJhbGciOiJSUzI1NiIsIng1dCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyIsImtpZCI6Ii1LSTNROW5OUjdiUm9meG1lWm9YcWJIWkdldyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9hY2FjYmJiNi0zMzA1LTRiOTEtYTU4MC1jNTIzYjQ0OGQ2MTIvIiwiaWF0IjoxNjc0ODQ0MjI3LCJuYmYiOjE2NzQ4NDQyMjcsImV4cCI6MTY3NDg0ODEyNywiYWlvIjoiRTJaZ1lOaTcvc21OY3JZSmhuOHFyZSt3dEU3ZkFBQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJCdXNpbmVzcyBDZW50cmFsIFNoYXJlcG9pbnQiLCJhcHBpZCI6ImJiYWViZDEzLTdiNjQtNGE3OS04MDZmLTFjOTI4YzlmNDFjOSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjYWNiYmI2LTMzMDUtNGI5MS1hNTgwLWM1MjNiNDQ4ZDYxMi8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhiNjZlMWJmLTY3MzItNDU1Ni1hMzk1LTM1MmZlYWMzZTc1MiIsInJoIjoiMC5BUzhBdHJ1c3JBVXprVXVsZ01VanRFaldFZ01BQUFBQUFBQUF3QUFBQUFBQUFBQ3dBQUEuIiwic3ViIjoiOGI2NmUxYmYtNjczMi00NTU2LWEzOTUtMzUyZmVhYzNlNzUyIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkIjoiYWNhY2JiYjYtMzMwNS00YjkxLWE1ODAtYzUyM2I0NDhkNjEyIiwidXRpIjoiZk5zS0ZNX1BpVXFvSzAxUThaQWVBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiMDk5N2ExZDAtMGQxZC00YWNiLWI0MDgtZDVjYTczMTIxZTkwIl0sInhtc190Y2R0IjoxNDI2NjA1NTMyLCJ4bXNfdGRiciI6IkVVIn0.Fccr2SbRq4K_Pm1zlHRjJ7sTvd12PioY6BDIVVVYkrlGPm2nEJHtGsl7cZoMbOUVmteQHOpGJKGvMnCOKHP5mWxR8_QII18Yba3Ze_eUyHLMzZqxJEr0ByXys28f-aL8PwxXyrBRqrLwaSTYiob184AC_7RFERmgLq5Qck42uwTm1gtwkrjTY5zpw_RCeZgNhoLK7gzkcq-SRs7A5SwEytaBjdu42RANm2hVI4wwb_vrFufbALnPY40ecReWf-Qo1bgpFgav4NPfMP-YcPflrkFjT1TTbZccZGLYjyu3RL9SmmDTx6LYTEF76z5L4OQ2s7Jbxj6Sgj-6XLpzf2igCg\n",
 			"type": "string"
+		},
+		{
+			"key": "DriveId",
+			"value": "14526b5a-b8ae-49f4-8486-29a42d3c8bf2"
+		},
+		{
+			"key": "FolderRootID",
+			"value": "b!WmtSFK649EmEhimkLTyL8p1shdJ-WgdNqK2p3XVnmsq6YvZ7mE4eSZwAhUt7KeTJ"
+		},
+		{
+			"key": "IDDrive",
+			"value": "01E2JAJOZZYMWXC6GDYBGYDRSL3EAHU2WF"
 		}
 	]
 }

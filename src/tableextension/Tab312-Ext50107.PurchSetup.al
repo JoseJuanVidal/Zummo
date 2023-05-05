@@ -20,6 +20,17 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             Caption = 'Sharepoint Connection', comment = 'ESP="Conexión Sharepoint"';
             TableRelation = "ZM OAuth 2.0 Application".Code;
         }
+        field(50022; "Sharepoint Folder"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sharepoint Folder', comment = 'ESP="Carpeta Sharepoint"';
+            TableRelation = "ZM OAuth20Application Folders".Code where("Application Code" = field("Sharepoint Connection"));
+        }
+        field(50030; driveId; Text[250])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Drive Id', comment = 'ESP="Drive ID"';
+        }
     }
 
     procedure SetTextoEmail(NewTextoEmail: Text)

@@ -5418,6 +5418,21 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Resolution - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1982879740 - Field 2589406539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>driveId</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field driveId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1982879740 - Field 705151325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>fileId</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field fileId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1982879740 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field id - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 4089462097 - NamedType 3941846598" size-unit="char" translate="yes" xml:space="preserve">
           <source>Debe actualizar el pedido de compra orgien, %1, antes de registrar</source>
           <note from="Developer" annotates="general" priority="2"/>

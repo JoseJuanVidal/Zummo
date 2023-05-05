@@ -122,7 +122,7 @@ page 50158 "ZM Item Documents"
     begin
         txtComentario := Rec.GetComentario();
         if Description = '' then
-            Description := copystr(ExtractFileNameFromPath(txtComentario), 1, 100);
+            Description := copystr(Sharepoint.ExtractFileNameFromPath(txtComentario), 1, 100);
         if Description = '' then
             Description := copystr(txtComentario, 1, 100);
     end;
@@ -170,12 +170,7 @@ page 50158 "ZM Item Documents"
         lblDelete: Label '¿Do you want to delete the file attachment?', comment = 'ESP="¿Desea Eliminar el archivo adjunto?"';
 
 
-    local procedure ExtractFileNameFromPath(PathAndFileTxt: Text) FileTxt: Text
-    begin
-        FileTxt := PathAndFileTxt;
-        WHILE STRPOS(FileTxt, '\') <> 0 DO
-            FileTxt := COPYSTR(FileTxt, 1 + STRPOS(FileTxt, '\'));
-    end;
+
 
     local procedure ExtractFileExtFromPath(PathAndFileTxt: Text) FileTxt: Text
     begin
@@ -184,12 +179,7 @@ page 50158 "ZM Item Documents"
             FileTxt := COPYSTR(FileTxt, 1 + STRPOS(FileTxt, '.'));
     end;
 
-    local procedure ExtractFileName(FileNameTxt: Text) FileTxt: Text
-    begin
-        FileTxt := FileNameTxt;
-        WHILE STRPOS(FileTxt, '.') <> 0 DO
-            FileTxt := COPYSTR(FileTxt, 1, STRPOS(FileTxt, '.') - 1);
-    end;
+
 
     local procedure UpdateFileJpg()
     var
@@ -255,8 +245,8 @@ page 50158 "ZM Item Documents"
         Rec.FilterGroup(0);
         if UploadIntoStream(Text000, '', '', FileName, NVInStream) then begin
             FileExtension := ExtractFileExtFromPath(FileName);
-            FileName := ExtractFileNameFromPath(FileName);
-            OnlyFileName := ExtractFileName(FileName);
+            FileName := Sharepoint.ExtractFileNameFromPath(FileName);
+            OnlyFileName := Sharepoint.ExtractFileName(FileName);
             if not Confirm('Subir fichero %1', true, FileName) then
                 exit;
             ComentariosPredefinidos.Init();

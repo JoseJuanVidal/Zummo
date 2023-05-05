@@ -55,7 +55,11 @@ page 17379 "Sharepont Drive Items"
 
                     trigger OnAssistEdit()
                     begin
-                        Hyperlink(Weburl);
+                        if REc.isFile then
+                            Hyperlink(Weburl)
+                        else
+                            Rec.OpenDriveItems();
+
                     end;
                 }
                 // field("Table id"; Rec."Table id")

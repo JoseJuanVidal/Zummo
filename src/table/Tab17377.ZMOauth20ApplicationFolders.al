@@ -25,6 +25,10 @@ table 17377 "ZM OAuth20Application Folders"
         {
             Caption = 'Folder Id', Comment = 'ESP="Id Carpeta"';
         }
+        field(20; FolderName; Text[250])
+        {
+            Caption = 'Folder Name', Comment = 'ESP="Nombre Carpeta"';
+        }
     }
 
     keys
