@@ -52,7 +52,7 @@ page 17380 "ZM SH Record Link Sharepoints"
 
                 trigger OnAction()
                 begin
-                    UploadFile(Record_ID);
+                    UploadFile(Record_ID, PrefixNo);
                     CurrPage.Update();
                 end;
             }
@@ -74,16 +74,18 @@ page 17380 "ZM SH Record Link Sharepoints"
 
     trigger OnOpenPage()
     begin
-        SetRecordIR(Record_ID);
+        SetRecordIR(Record_ID, '');
     end;
 
     var
 
         Record_ID: RecordId;
+        PrefixNo: text;
 
 
-    procedure SetRecordIR(NewRecordID: RecordId)
+    procedure SetRecordIR(NewRecordID: RecordId; PrefixDocNo: text)
     begin
+        PrefixNo := PrefixDocNo;
         Record_ID := NewRecordID;
         Rec.SetRange("Record ID", Record_ID);
         CurrPage.Update();

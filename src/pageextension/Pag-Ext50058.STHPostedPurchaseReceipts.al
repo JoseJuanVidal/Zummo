@@ -39,7 +39,14 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
                 ApplicationArea = all;
                 Visible = false;
             }
-
+        }
+        addlast(FactBoxes)
+        {
+            part(Documents; "ZM SH Record Link Sharepoints")
+            {
+                ApplicationArea = all;
+                UpdatePropagation = Both;
+            }
         }
     }
     actions
@@ -105,4 +112,18 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
         }
     }
 
+    trigger OnAfterGetCurrRecord()
+    begin
+        UpdatedocumentsFilter();
+    end;
+
+    trigger OnAfterGetRecord()
+    begin
+        UpdatedocumentsFilter();
+    end;
+
+    local procedure UpdatedocumentsFilter()
+    begin
+        CurrPage.Documents.Page.SetRecordIR(Rec.RecordId, StrSubstNo('%1 %2', Rec."Buy-from Vendor No.", Rec."No."));
+    end;
 }

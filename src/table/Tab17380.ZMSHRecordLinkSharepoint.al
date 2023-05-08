@@ -84,7 +84,8 @@ table 17380 "ZM SH Record Link Sharepoint"
 
     trigger OnDelete()
     begin
-
+        // tenemos que eliminar el fichero del Sharepoint
+        DeleteSharepointfile();
     end;
 
     trigger OnRename()
@@ -92,7 +93,7 @@ table 17380 "ZM SH Record Link Sharepoint"
 
     end;
 
-    procedure UploadFile(Record_id: RecordId)
+    procedure UploadFile(Record_id: RecordId; prefixFileName: text)
     var
         RecordLinkSharepoint: Record "ZM SH Record Link Sharepoint";
         FromFile: Text;
@@ -106,6 +107,7 @@ table 17380 "ZM SH Record Link Sharepoint"
         AccessToken := SharepointAppHelper.GetAccessToken(PurchaseSetup."Sharepoint Connection");
         if UploadIntoStream(lblSelectFile, '', '', FromFile, Stream) then begin
             FileName := SharepointAppHelper.ExtractFileNameFromPath(FromFile);
+            FileName := StrSubstNo('%1 %2', prefixFileName, FileName);
             if SharepointAppHelper.UploadFile(AccessToken, OAuth20Application.RootFolderID, '', OAuth20ApplicationFolders.FolderName
                         , FileName, Stream, OnlineDriveItem) then begin
                 RecordLinkSharepoint.Init();
@@ -125,12 +127,23 @@ table 17380 "ZM SH Record Link Sharepoint"
 
     procedure DownloadFile()
     var
+        FileName: text;
         Stream: InStream;
+    begin
+        PurchaseSetup.Get();
+        FileName := Rec.name;
+        OAuth20Application.Get(PurchaseSetup."Sharepoint Connection");
+        AccessToken := SharepointAppHelper.GetAccessToken(OAuth20Application.Code);
+        if SharepointAppHelper.DownloadFile(AccessToken, Rec.driveId, Rec.Fileid, Stream) then
+            DownloadFromStream(Stream, '', '', '', FileName);
+    end;
+
+    local procedure DeleteSharepointfile()
     begin
         PurchaseSetup.Get();
         OAuth20Application.Get(PurchaseSetup."Sharepoint Connection");
         AccessToken := SharepointAppHelper.GetAccessToken(OAuth20Application.Code);
-        if SharepointAppHelper.DownloadFile(AccessToken, Rec.driveId, Rec.Fileid, Stream) then
-            DownloadFromStream(Stream, '', '', '', name);
+        SharepointAppHelper.DeleteDriveItem(AccessToken, OAuth20Application.RootFolderID, Rec.fileId);
+
     end;
 }
