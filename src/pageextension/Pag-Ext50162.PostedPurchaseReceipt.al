@@ -81,7 +81,7 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
 
     trigger OnAfterGetRecord()
     begin
-        CurrPage.Documents.Page.SetRecordIR(Rec.RecordId, StrSubstNo('%1 %2', rec."Buy-from Vendor No.", Rec."No."));
+        CurrPage.Documents.Page.SetRecordIR(Rec.RecordId, StrSubstNo('%1 %2', rec."Buy-from Vendor No.", Rec."No."), Rec."Vendor Shipment No.");
     end;
 
     local procedure ImprimeSelecionEtiquetas()
@@ -110,7 +110,6 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
                 recAlbTemp.DescProducto := recLinAlbaran.Description;
                 recAlbTemp.Cantidad := recLinAlbaran.Quantity;
                 recAlbTemp.NumMovimiento := GetEntryNo(recLinAlbaran);
-
                 recAlbTemp.Insert();
             until recLinAlbaran.Next() = 0;
 

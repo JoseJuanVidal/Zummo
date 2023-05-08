@@ -93,7 +93,7 @@ table 17380 "ZM SH Record Link Sharepoint"
 
     end;
 
-    procedure UploadFile(Record_id: RecordId; prefixFileName: text)
+    procedure UploadFile(Record_id: RecordId; prefixFileName: text; ExtDocNo: text)
     var
         RecordLinkSharepoint: Record "ZM SH Record Link Sharepoint";
         FromFile: Text;
@@ -116,7 +116,7 @@ table 17380 "ZM SH Record Link Sharepoint"
                 RecordLinkSharepoint."Record ID" := Record_id;
                 RecordLinkSharepoint.URL := copystr(OnlineDriveItem.webUrl, 1, MaxStrLen(RecordLinkSharepoint.URL));
                 RecordLinkSharepoint.Name := FileName;
-                RecordLinkSharepoint.Description := FileName;
+                RecordLinkSharepoint.Description := ExtDocNo;
                 RecordLinkSharepoint.driveId := OnlineDriveItem.driveId;
                 RecordLinkSharepoint.fileId := OnlineDriveItem.id;
                 RecordLinkSharepoint.Insert(true);
