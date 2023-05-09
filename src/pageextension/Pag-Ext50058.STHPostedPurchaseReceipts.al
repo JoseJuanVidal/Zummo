@@ -47,6 +47,11 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
                 ApplicationArea = all;
                 UpdatePropagation = Both;
             }
+            //     part(PDFViewerFactbox; "PDFV PDF Viewer Factbox")
+            //     {
+            //         ApplicationArea = All;
+            //     }
+            // }
         }
     }
     actions
@@ -115,6 +120,8 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
     trigger OnAfterGetCurrRecord()
     begin
         UpdatedocumentsFilter();
+
+        //CurrPage.PDFViewerFactbox.Page.SetRecord(Rec.RecordId());
     end;
 
     trigger OnAfterGetRecord()
