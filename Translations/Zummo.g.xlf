@@ -6648,6 +6648,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad Ventas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Cantidad Ventas - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2984663216 - Field 3023963707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasif Ventas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasif Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Clasif Ventas - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2984663216 - Field 2362020657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cod. Categoria</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Categoria"</note>

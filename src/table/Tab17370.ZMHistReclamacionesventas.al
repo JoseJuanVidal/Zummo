@@ -101,6 +101,11 @@ table 17370 "ZM Hist. Reclamaciones ventas"
             DataClassification = CustomerContent;
             Caption = 'ALERTA CLD', comment = 'ESP="ALERTA CLD"';
         }
+        field(26; "Clasif Ventas"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Clasif Ventas', comment = 'ESP="Clasif Ventas"';
+        }
     }
 
     keys
@@ -228,6 +233,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
             HistReclamacionesventas.Country := ItemLedgerEntry."Country/Region Code";
             HistReclamacionesventas."Grupo Clientes" := Customer.GrupoCliente_btc;
             HistReclamacionesventas."Cantidad Ventas" := -ItemLedgerEntry.Quantity;
+            HistReclamacionesventas."Clasif Ventas" := item.selClasVtas_btc;
             HistReclamacionesventas.Insert(true)
         end;
     end;
