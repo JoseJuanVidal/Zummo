@@ -45,6 +45,14 @@ page 17204 "Hist. Reclamaciones ventas"
                 {
                     ApplicationArea = All;
                 }
+                field("Clasif Ventas"; "Clasif Ventas")
+                {
+                    ApplicationArea = all;
+                }
+                field("Des Clasif Ventas"; "Des Clasif Ventas")
+                {
+                    ApplicationArea = all;
+                }
                 field(Familia; Rec.Familia)
                 {
                     ApplicationArea = All;

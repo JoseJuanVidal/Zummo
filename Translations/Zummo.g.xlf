@@ -6649,8 +6649,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Cantidad Ventas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Field 3023963707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Clasif Ventas</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Clasif Ventas"</note>
+          <source>Cód. Clasif Ventas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Clasif Ventas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Clasif Ventas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Field 2362020657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -6667,6 +6667,11 @@
           <source>Customer No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2984663216 - Field 141720357 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasif Ventas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasif Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Des Clasif Ventas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>

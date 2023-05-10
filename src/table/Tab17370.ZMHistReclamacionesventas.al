@@ -104,6 +104,11 @@ table 17370 "ZM Hist. Reclamaciones ventas"
         field(26; "Clasif Ventas"; code[20])
         {
             DataClassification = CustomerContent;
+            Caption = 'Cód. Clasif Ventas', comment = 'ESP="Cód. Clasif Ventas"';
+        }
+        field(27; "Des Clasif Ventas"; text[100])
+        {
+            DataClassification = CustomerContent;
             Caption = 'Clasif Ventas', comment = 'ESP="Clasif Ventas"';
         }
     }
@@ -234,6 +239,8 @@ table 17370 "ZM Hist. Reclamaciones ventas"
             HistReclamacionesventas."Grupo Clientes" := Customer.GrupoCliente_btc;
             HistReclamacionesventas."Cantidad Ventas" := -ItemLedgerEntry.Quantity;
             HistReclamacionesventas."Clasif Ventas" := item.selClasVtas_btc;
+            Item.CalcFields(DesClasVtas_btc);
+            HistReclamacionesventas."Des Clasif Ventas" := Item.desClasVtas_btc;
             HistReclamacionesventas.Insert(true)
         end;
     end;
