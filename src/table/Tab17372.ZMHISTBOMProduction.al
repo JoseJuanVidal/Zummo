@@ -24,8 +24,7 @@ table 17372 "ZM HIST BOM Production"
             DataClassification = CustomerContent;
             Caption = 'Description', comment = 'ESP="Descripción"';
         }
-        field(6; "Unit of Measure Code"; code[10]
-        )
+        field(6; "Unit of Measure Code"; code[10])
         {
             DataClassification = CustomerContent;
             Caption = 'Unit of Measure Code', comment = 'ESP="Cód. unidad medida"';
@@ -56,8 +55,10 @@ table 17372 "ZM HIST BOM Production"
     }
 
     var
-        ProdBomHeader: Record "Production BOM Header";
-        ProdBomLine: Record "Production BOM Line";
+        HISTBOMProduction: Record "ZM HIST BOM Production";
+        ItemLdgEntry: Record "Item Ledger Entry";
+        ProdOrderLine: Record "Prod. Order Line";
+        ProdOrderComponent: Record "Prod. Order Component";
         Dates: Record Date;
 
     trigger OnInsert()
@@ -77,6 +78,78 @@ table 17372 "ZM HIST BOM Production"
 
     trigger OnRename()
     begin
+
+    end;
+
+    procedure UpdateBomHist()
+    var
+        Item: Record Item;
+        Window: Dialog;
+    begin
+        Window.Open('Cód. producto #1###########################\Fecha #2##########');
+
+        Item.SetRange("Update BI BOM Costs", true);
+        Item.SetFilter("Production BOM No.", '<>%1', '');
+        if Item.FindFirst() then
+            repeat
+                AddLMProductionBOM(Item."No.", Item."Production BOM No.");
+            Until Item.next() = 0;
+        Window.Close();
+    end;
+
+    local procedure AddLMProductionBOM(ItemNo: code[20]; ProductionBOMNo: code[20])
+    var
+        Fechas: Record Date;
+
+    begin
+        // revisamos por periodos, las ordenes de producción y ponemos los productos y cantidad
+        Fechas.Reset();
+        Fechas.SetRange("Period Type", Fechas."Period Type"::Month);
+        Fechas.SetFilter("Period Start", '%1..%2', 20210101D, Today());
+        if Fechas.FindFirst() then
+            repeat
+                ItemLdgEntry.Reset();
+                ItemLdgEntry.SetRange("Item No.", ItemNo);
+                ItemLdgEntry.SetRange("Posting Date", Fechas."Period Start", Fechas."Period End");
+                ItemLdgEntry.SetRange(Positive, true);
+                if ItemLdgEntry.FindLast() then begin
+                    AddLMProduction(ItemLdgEntry, Fechas."Period End");
+                end else begin
+                    ItemLdgEntry.Reset();
+                    ItemLdgEntry.SetRange("Item No.", ItemNo);
+                    ItemLdgEntry.SetFilter("Posting Date", '..%1', Fechas."Period End");
+                    if ItemLdgEntry.FindLast() then
+                        AddLMProduction(ItemLdgEntry, Fechas."Period End");
+                end;
+            until Fechas.Next() = 0;
+    end;
+
+    local procedure AddLMProduction(ItemLdgEntry: Record "Item Ledger Entry"; EndPeriod: Date)
+    var
+        myInt: Integer;
+    begin
+        ProdOrderLine.Reset();
+        ProdOrderLine.SetRange("Prod. Order No.", ItemLdgEntry."Document No.");
+        ProdOrderLine.SetRange("Line No.", ItemLdgEntry."Order Line No.");
+        if ProdOrderLine.FindFirst() then begin
+            ProdOrderComponent.Reset();
+            ProdOrderComponent.SetRange(Status, ProdOrderLine.Status);
+            ProdOrderComponent.SetRange("Prod. Order No.", ProdOrderLine."Prod. Order No.");
+            ProdOrderComponent.SetRange("Prod. Order Line No.", ProdOrderLine."Line No.");
+            if ProdOrderComponent.FindFirst() then
+                repeat
+                    AddHistBOMLine(ProdOrderLine, ProdOrderComponent, EndPeriod)
+                Until ProdOrderComponent.next() = 0;
+        end;
+    end;
+
+    local procedure AddHistBOMLine(ProdOrderLine: record "Prod. Order Line"; ProdOrderComponent: Record "Prod. Order Component"; EndPeriod: Date)
+    var
+        myInt: Integer;
+    begin
+        HISTBOMProduction.Reset();
+        HISTBOMProduction.SetRange("Production BOM No.", ProdOrderLine."Production BOM No.");
+        HISTBOMProduction.SetRange("Period Start", EndPeriod);
 
     end;
 

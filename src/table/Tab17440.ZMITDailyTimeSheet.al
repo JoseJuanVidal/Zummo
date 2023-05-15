@@ -62,7 +62,7 @@ table 17440 "ZM IT Daily Time Sheet"
         {
             DataClassification = CustomerContent;
             Caption = 'Key', comment = 'ESP="Código"';
-            TableRelation = if (Type = const("JIRA Ticket")) "ZM IT JIRA Tickets"."key" else
+            TableRelation = if (Type = const("JIRA Ticket")) "ZM IT JIRA Tickets"."key" where(Type = const(Ticket)) else
             if (Type = const("JIRA Proyecto")) "ZM IT JIRA Projects"."key" else
             if (Type = const(Proyecto)) Job."No.";
             ValidateTableRelation = false;

@@ -31,6 +31,11 @@ table 17441 "ZM IT JIRA Tickets"
             DataClassification = CustomerContent;
             Caption = 'Description Status', comment = 'ESP="Descripción Estado"';
         }
+        field(15; "Type"; enum "ZM Ext JIRA Ticket Type")
+        {
+            DataClassification = CustomerContent;
+        }
+
     }
 
     keys
