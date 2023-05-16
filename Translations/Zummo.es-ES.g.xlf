@@ -6914,6 +6914,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Cantidad Ventas - Property Caption</note>
           <target>Cantidad Ventas</target>
         </trans-unit>
+        <trans-unit id="Table 2984663216 - Field 3023963707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cód. Clasif Ventas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Clasif Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Clasif Ventas - Property Caption</note>
+          <target>Cód. Clasif Ventas</target>
+        </trans-unit>
         <trans-unit id="Table 2984663216 - Field 2362020657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cod. Categoria</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Categoria"</note>
@@ -6931,6 +6937,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Customer No. - Property Caption</note>
           <target>Cód. Cliente</target>
+        </trans-unit>
+        <trans-unit id="Table 2984663216 - Field 141720357 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasif Ventas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasif Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Des Clasif Ventas - Property Caption</note>
+          <target>Clasif Ventas</target>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
@@ -7158,6 +7170,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field name - Property Caption</note>
           <target>Nombre</target>
         </trans-unit>
+        <trans-unit id="Table 1063719647 - Field 368050251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assignee</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field Assignee - Property Caption</note>
+          <target>Asignado</target>
+        </trans-unit>
         <trans-unit id="Table 1063719647 - Field 86365022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description Status</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción Estado"</note>
@@ -7186,6 +7204,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field summary - Property Caption</note>
           <target>Nombre</target>
+        </trans-unit>
+        <trans-unit id="Table 1063719647 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>OAuth 2.0 Application</source>
@@ -8451,7 +8474,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllProjects - NamedType metodo</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1461479292 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
-          <source>search?maxResults=100&amp;jql=project = TZ ORDER by ID&amp;fields=key,summary,status&amp;startAt=%1</source>
+          <source>search?maxResults=100&amp;jql=project = TZ ORDER by ID&amp;fields=key,summary,status,assignee&amp;startAt=%1</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllTickets - NamedType metodo</note>
         </trans-unit>

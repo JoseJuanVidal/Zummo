@@ -6863,6 +6863,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1063719647 - Field 368050251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assignee</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field Assignee - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1063719647 - Field 86365022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description Status</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción Estado"</note>
@@ -6887,6 +6892,11 @@
           <source>summary</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field summary - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1063719647 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>OAuth 2.0 Application</source>
@@ -7979,7 +7989,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllProjects - NamedType metodo</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1461479292 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
-          <source>search?maxResults=100&amp;jql=project = TZ ORDER by ID&amp;fields=key,summary,status&amp;startAt=%1</source>
+          <source>search?maxResults=100&amp;jql=project = TZ ORDER by ID&amp;fields=key,summary,status,assignee&amp;startAt=%1</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllTickets - NamedType metodo</note>
         </trans-unit>

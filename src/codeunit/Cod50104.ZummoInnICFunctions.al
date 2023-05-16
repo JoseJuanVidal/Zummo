@@ -607,7 +607,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     procedure JIRAGetAllTickets()
     var
         JiraTicket: Record "ZM IT JIRA Tickets";
-        metodo: Label 'search?maxResults=100&jql=project = TZ ORDER by ID&fields=key,summary,status&startAt=%1';
+        metodo: Label 'search?maxResults=100&jql=project = TZ ORDER by ID&fields=key,summary,status,assignee&startAt=%1';
         Body: text;
         ErrorText: text;
         FieldValue: text;
@@ -619,6 +619,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         JsonIssue: JsonToken;
         JsonIssueFields: JsonObject;
         JsonIssueState: JsonObject;
+        JsonIssueassigned: JsonObject;
         TotalIssues: Integer;
         IssuesCount: Integer;
     begin
@@ -655,6 +656,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
                     JsonIssueState := GetJSONItemFieldObject(JsonIssueFields.AsToken(), 'status');
                     JiraTicket.State := GetJSONItemFieldText(JsonIssueState.AsToken(), 'name');
                     JiraTicket."Description Status" := copystr(GetJSONItemFieldText(JsonIssueState.AsToken(), 'description'), 1, MaxStrLen(JiraTicket."Description Status"));
+                    JsonIssueassigned := GetJSONItemFieldObject(JsonIssueFields.AsToken(), 'assignee');
+                    JiraTicket.Assignee := copystr(GetJSONItemFieldText(JsonIssueassigned.AsToken(), 'displayName'), 1, MaxStrLen(JiraTicket.Assignee));
                     if not JiraTicket.Insert() then
                         JiraTicket.Modify();
                 end;

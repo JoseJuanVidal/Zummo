@@ -31,6 +31,10 @@ page 17441 "ZM IT JIRA Tickets"
                 {
                     ApplicationArea = All;
                 }
+                field(Assignee; Assignee)
+                {
+                    ApplicationArea = all;
+                }
                 field("Description Status"; Rec."Description Status")
                 {
                     ApplicationArea = All;

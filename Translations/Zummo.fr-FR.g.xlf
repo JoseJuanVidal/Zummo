@@ -5333,6 +5333,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field id - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1063719647 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2958124392 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>createdDateTime</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -5565,7 +5570,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllProjects - NamedType metodo</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1461479292 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
-          <source>search?maxResults=100&amp;jql=project = TZ ORDER by ID&amp;fields=key,summary,status&amp;startAt=%1</source>
+          <source>search?maxResults=100&amp;jql=project = TZ ORDER by ID&amp;fields=key,summary,status,assignee&amp;startAt=%1</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllTickets - NamedType metodo</note>
         </trans-unit>
