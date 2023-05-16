@@ -6588,6 +6588,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Nombre Ult. Proveedor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1875124401 - Field 4142039437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parent BOM No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Parent BOM No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1875124401 - Field 864109087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inicio Periodo</source>
           <note from="Developer" annotates="general" priority="2"></note>

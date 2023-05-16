@@ -97,6 +97,10 @@ page 17206 "ZM Hist. BOM Costs list"
                 {
                     ApplicationArea = All;
                 }
+                field("Parent BOM No."; "Parent BOM No.")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }
