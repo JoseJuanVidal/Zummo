@@ -375,6 +375,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         ProductionBomLine.Reset();
         ProductionBomLine.SetRange("Production BOM No.", ProductionBOMNo);
         ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+        ProductionBomLine.SetRange("Version Code", '');
         if ProductionBomLine.FindFirst() then
             repeat
                 if ItemBOM.Get(ProductionBomLine."No.") then begin
@@ -396,6 +397,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         ProductionBomLine.Reset();
         ProductionBomLine.SetRange("Production BOM No.", ItemBom."Production BOM No.");
         ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+        ProductionBomLine.SetRange("Version Code", '');
         if ProductionBomLine.FindFirst() then
             repeat
                 if ItemBOM.Get(ProductionBomLine."No.") then begin

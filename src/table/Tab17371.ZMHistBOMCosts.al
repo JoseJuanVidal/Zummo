@@ -262,6 +262,7 @@ table 17371 "ZM Hist. BOM Costs"
         ItemLedgerEntry.SetRange("Item No.", ItemBom."No.");
         ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Purchase);
         ItemLedgerEntry.SetRange("Document Type", ItemLedgerEntry."Document Type"::"Purchase Receipt");
+        ItemLedgerEntry.SetFilter("Posting Date", '..%1', EndPeriode);
         if ItemLedgerEntry.FindLast() then;
         ItemLedgerEntry.CalcFields("Cost Amount (Actual)", "Cost Amount (Expected)");
         if PurchReceiptHeader.get(ItemLedgerEntry."Document No.") then;
