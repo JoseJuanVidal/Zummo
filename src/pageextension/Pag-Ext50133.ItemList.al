@@ -69,6 +69,16 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field(Manufacturer; Manufacturer)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Item No. Manufacturer"; "Item No. Manufacturer")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("Minimum Order Quantity"; Rec."Minimum Order Quantity")
             {
                 ApplicationArea = all;

@@ -1,4 +1,4 @@
-tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //27
+tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //5700
 {
     fields
     {

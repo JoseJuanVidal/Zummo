@@ -81,6 +81,17 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 }
             }
         }
+        addafter("Purchasing Blocked")
+        {
+            field(Manufacturer; Manufacturer)
+            {
+                ApplicationArea = all;
+            }
+            field("Item No. Manufacturer"; "Item No. Manufacturer")
+            {
+                ApplicationArea = all;
+            }
+        }
         addbefore("Routing No.")
         {
             field(Material; Material)

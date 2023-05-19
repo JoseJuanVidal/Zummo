@@ -353,6 +353,20 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'CRM Updated', comment = 'ESP="Actualizar CRM"';
         }
+
+        field(50156; Manufacturer; text[100])
+        {
+            Caption = 'Manufacturer', comment = 'ESP="Fabricante"';
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Fabricante), TipoRegistro = const(Tabla));
+        }
+
+        field(50157; "Item No. Manufacturer"; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Item No. Manufacturer', comment = 'ESP="Cód. Fabricante"';
+
+        }
         field(50160; "Update BI BOM Costs"; Boolean)
         {
             DataClassification = CustomerContent;
