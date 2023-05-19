@@ -116,6 +116,12 @@ table 50152 "ZM Productión Tools"
             Caption = 'Resolution', Comment = 'ESP="Resolución"';
             DataClassification = CustomerContent;
         }
+        field(22; "Resource No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Resource No.', comment = 'ESP="Cód. Recurso"';
+            TableRelation = Resource."No.";
+        }
         field(30; "Direct unit cost."; Decimal)
         {
             Caption = 'Direct unit cost.', Comment = 'ESP="Coste Directo"';

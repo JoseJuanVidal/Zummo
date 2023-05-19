@@ -7493,6 +7493,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Resolución"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Resolution - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1889839597 - Field 3961767479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Resource No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Recurso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Resource No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1889839597 - Field 47037625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serial No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Serie"</note>
@@ -25467,6 +25472,16 @@
           <source>Applied</source>
           <note from="Developer" annotates="general" priority="2">ESP="Liquidado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Liquidado_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Method 2050879893 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3276313895">
+          <source>¿Desea eliminar todos los calculos realizados sobre el producto %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar todos los calculos realizados sobre el producto %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Method Validate_UpdateBIBOMCosts - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Method 2050879893 - NamedType 2907267327" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3276313895">
+          <source>En process</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fin proceso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Method Validate_UpdateBIBOMCosts - NamedType lblEnd</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 4067082012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>ABC</source>

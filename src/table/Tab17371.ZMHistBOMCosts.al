@@ -324,4 +324,13 @@ table 17371 "ZM Hist. BOM Costs"
             end;
         end;
     end;
+
+    procedure DeleteResultsItem(Item: Record Item)
+    var
+        HistCost: Record "ZM Hist. BOM Costs";
+    begin
+        HistCost.Reset();
+        HistCost.SetRange("BOM Item No.", Item."Production BOM No.");
+        HistCost.DeleteAll();
+    end;
 }

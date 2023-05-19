@@ -357,6 +357,11 @@ tableextension 50108 "Item" extends Item  //27
         {
             DataClassification = CustomerContent;
             Caption = 'Update BI BOM Costs', comment = 'ESP="Actualizar BI BOM Costes"';
+
+            trigger OnValidate()
+            begin
+                Validate_UpdateBIBOMCosts();
+            end;
         }
         //+ 22/11/2022 NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)
@@ -437,4 +442,17 @@ tableextension 50108 "Item" extends Item  //27
         //-  NORMATIVA MEDIO AMBIENTAL
 
     }
+
+    local procedure Validate_UpdateBIBOMCosts();
+    var
+        HistCost: Record "ZM Hist. BOM Costs";
+        lblConfirm: Label '¿Desea eliminar todos los calculos realizados sobre el producto %1?', comment = 'ESP="¿Desea eliminar todos los calculos realizados sobre el producto %1?"';
+        lblEnd: Label 'En process', comment = 'ESP="Fin proceso"';
+    begin
+        if not Rec."Update BI BOM Costs" then
+            if Confirm(lblConfirm, false, Rec."No.") then begin
+                HistCost.DeleteResultsItem(Rec);
+                Message(lblEnd);
+            end;
+    end;
 }

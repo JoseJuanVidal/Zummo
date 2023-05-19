@@ -40,7 +40,10 @@ page 50130 "Productions tool"
                 {
                     ApplicationArea = All;
                 }
-
+                field("Resource No."; "Resource No.")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(date)
             {
