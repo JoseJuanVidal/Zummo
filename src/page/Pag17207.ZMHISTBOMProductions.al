@@ -46,6 +46,11 @@ page 17207 "ZM HIST BOM Productions"
                 {
                     ApplicationArea = All;
                 }
+                field("Prod. Order No."; "Prod. Order No.")
+                {
+                    ApplicationArea = all;
+                }
+
             }
         }
     }

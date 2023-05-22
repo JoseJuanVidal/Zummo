@@ -6498,6 +6498,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=""</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Period Start - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 851830778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prod. Order No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Orden producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Prod. Order No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3435315486 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Production BOM No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº L.M. producción"</note>

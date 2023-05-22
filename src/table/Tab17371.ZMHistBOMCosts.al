@@ -132,6 +132,8 @@ table 17371 "ZM Hist. BOM Costs"
             Clustered = true;
         }
     }
+    var
+        HISTBOMProduction: Record "ZM HIST BOM Production";
 
     procedure UpdateTableBOMCosts()
     var
@@ -144,9 +146,43 @@ table 17371 "ZM Hist. BOM Costs"
         Item.SetFilter("Production BOM No.", '<>%1', '');
         if Item.FindFirst() then
             repeat
-                AddProductionBomLine(Item."No.", Item."Production BOM No.");
+                AddHistProductionBomLine(Item."No.", Item."Production BOM No.");
             Until Item.next() = 0;
         Window.Close();
+    end;
+
+    local procedure AddHistProductionBomLine(ItemNo: code[20]; ProductionBOMNo: code[20])
+    var
+        ItemBOM: Record Item;
+        Fechas: Record Date;
+        Periode: code[20];
+        Window: Dialog;
+    begin
+        Window.Open('Fecha #1###############\BOM #2##############\Producto #3########################');
+        Fechas.Reset();
+        Fechas.SetRange("Period Type", Fechas."Period Type"::Month);
+        Fechas.SetFilter("Period Start", '%1..%2', 20210101D, Today());
+        if Fechas.FindFirst() then
+            repeat
+                // comprobamos si ya se ha realizado este producto en esta fecha
+                if ExistProductionItem(ProductionBOMNo, Fechas."Period Start") then begin
+                    Periode := StrSubstNo('%1 %2 %3', Date2DMY(Fechas."Period End", 3),
+                        PADSTR('0', 2 - STRLEN(FORMAT(Date2DMY(Fechas."Period End", 2)))) + format(Date2DMY(Fechas."Period End", 2)), Fechas."Period Name");
+                    Window.Update(1, Periode);
+                    HISTBOMProduction.Reset();
+                    HISTBOMProduction.SetRange("Production BOM No.", ProductionBOMNo);
+                    HISTBOMProduction.SetRange("Period Start", Fechas."Period Start");
+                    if HISTBOMProduction.FindFirst() then
+                        repeat
+                            Window.Update(2, ProductionBOMNo);
+                            Window.Update(3, HISTBOMProduction."No.");
+                            ItemBOM.Get(HISTBOMProduction."No.");
+                            ItemBomtoBufferExcel(ProductionBOMNo, ProductionBOMNo, ItemBOM, Periode, Fechas."Period Start", Fechas."Period End",
+                                HISTBOMProduction."Quantity per", HISTBOMProduction."Production BOM No.");
+
+                        Until HISTBOMProduction.next() = 0;
+                end;
+            Until Fechas.next() = 0;
     end;
 
     local procedure AddProductionBomLine(ItemNo: code[20]; ProductionBOMNo: code[20])
@@ -189,15 +225,13 @@ table 17371 "ZM Hist. BOM Costs"
 
     end;
 
-    local procedure ExistProductionItem(ItemNo: code[10]; EndPeriod: Date): Boolean
+    local procedure ExistProductionItem(ProductionBOMNo: code[10]; PeriodStart: Date): Boolean
     var
-        ItemledgerEntry: Record "Item Ledger Entry";
     begin
-        ItemledgerEntry.Reset();
-        ItemledgerEntry.SetRange("Item No.", ItemNo);
-        ItemledgerEntry.SetRange(Positive, true);
-        ItemledgerEntry.SetFilter("Posting Date", '..%1', EndPeriod);
-        if ItemledgerEntry.FindFirst() then
+        HISTBOMProduction.Reset();
+        HISTBOMProduction.SetRange("Production BOM No.", ProductionBOMNo);
+        HISTBOMProduction.SetRange("Period Start", PeriodStart);
+        if HISTBOMProduction.FindFirst() then
             exit(true);
     end;
 

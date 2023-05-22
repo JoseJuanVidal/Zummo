@@ -10,6 +10,7 @@ table 17372 "ZM HIST BOM Production"
         {
             DataClassification = CustomerContent;
             Caption = 'Production BOM No.', comment = 'ESP="Nº L.M. producción"';
+            TableRelation = "Production BOM Header";
         }
         field(2; "Period Start"; Date)
         {
@@ -20,6 +21,7 @@ table 17372 "ZM HIST BOM Production"
         {
             DataClassification = CustomerContent;
             Caption = 'No.', comment = 'ESP="Nº"';
+            TableRelation = Item;
         }
         field(5; "Description"; text[100])
         {
@@ -45,6 +47,11 @@ table 17372 "ZM HIST BOM Production"
         {
             DataClassification = CustomerContent;
             Caption = 'Description', comment = 'ESP="Descripción"';
+        }
+        field(10; "Prod. Order No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Prod. Order No.', comment = 'ESP="Nº Orden producción"';
         }
     }
 
@@ -94,46 +101,56 @@ table 17372 "ZM HIST BOM Production"
         Item.SetFilter("Production BOM No.", '<>%1', '');
         if Item.FindFirst() then
             repeat
-                AddLMProductionBOM(Item."No.", Item."Production BOM No.");
+                FechasLMProductionBOM(Item."No.", Item."Production BOM No.");
             Until Item.next() = 0;
         Window.Close();
     end;
 
-    local procedure AddLMProductionBOM(ItemNo: code[20]; ProductionBOMNo: code[20])
+
+    local procedure FechasLMProductionBOM(ItemNo: code[20]; ProductionBOMNo: code[20])
     var
         Fechas: Record Date;
+    begin
+        Fechas.Reset();
+        Fechas.SetRange("Period Type", Fechas."Period Type"::Month);
+        Fechas.SetFilter("Period Start", '%1..%2', 20210101D, Today());
+        if Fechas.FindFirst() then
+            repeat
+                AddLMProductionBOM(ItemNo, ProductionBOMNo, Fechas."Period Start", Fechas."Period End");
+            until Fechas.Next() = 0;
+    end;
+
+    local procedure AddLMProductionBOM(ItemNo: code[20]; ProductionBOMNo: code[20]; PeriodStart: Date; PeriodEnd: date)
+    var
+
         Ventana: Dialog;
     begin
         Ventana.Open('Producto: #1###########################\Fecha: #2#############\Orden: #3#################');
         Ventana.Update(1, ProductionBOMNo);
         // revisamos por periodos, las ordenes de producción y ponemos los productos y cantidad        
-        Fechas.Reset();
-        Fechas.SetRange("Period Type", Fechas."Period Type"::Month);
-        Fechas.SetFilter("Period Start", '%1..%2', 20200101D, Today());
-        if Fechas.FindFirst() then
-            repeat
-                Ventana.Update(2, Fechas."Period End");
-                ItemLdgEntry.Reset();
-                ItemLdgEntry.SetRange("Item No.", ItemNo);
-                ItemLdgEntry.SetRange("Entry Type", ItemLdgEntry."Entry Type"::Output);
-                ItemLdgEntry.SetRange("Posting Date", Fechas."Period Start", Fechas."Period End");
-                ItemLdgEntry.SetRange(Positive, true);
-                if ItemLdgEntry.FindLast() then begin
-                    Ventana.Update(3, ItemLdgEntry."Document No.");
-                    AddLMProduction(ItemLdgEntry, Fechas."Period End", ProductionBOMNo);
-                end else begin
-                    ItemLdgEntry.Reset();
-                    ItemLdgEntry.SetRange("Item No.", ItemNo);
-                    ItemLdgEntry.SetFilter("Posting Date", '..%1', Fechas."Period Start");
-                    if ItemLdgEntry.FindLast() then begin
-                        Ventana.Update(3, ItemLdgEntry."Document No.");
-                        AddLMProduction(ItemLdgEntry, Fechas."Period Start", ProductionBOMNo);
-                    end;
-                end;
-            until Fechas.Next() = 0;
+
+        Ventana.Update(2, PeriodStart);
+        ItemLdgEntry.Reset();
+        ItemLdgEntry.SetRange("Item No.", ItemNo);
+        ItemLdgEntry.SetRange("Entry Type", ItemLdgEntry."Entry Type"::Output);
+        ItemLdgEntry.SetRange("Posting Date", PeriodStart, PeriodEnd);
+        ItemLdgEntry.SetRange(Positive, true);
+        if ItemLdgEntry.FindLast() then begin
+            Ventana.Update(3, ItemLdgEntry."Document No.");
+            AddLMProduction(ItemLdgEntry, ProductionBOMNo, PeriodStart, PeriodEnd);
+        end else begin
+            ItemLdgEntry.Reset();
+            ItemLdgEntry.SetRange("Item No.", ItemNo);
+            ItemLdgEntry.SetFilter("Posting Date", '..%1', PeriodEnd);
+            if ItemLdgEntry.FindLast() then begin
+                Ventana.Update(3, ItemLdgEntry."Document No.");
+                AddLMProduction(ItemLdgEntry, ProductionBOMNo, PeriodStart, PeriodEnd);
+            end;
+        end;
+
     end;
 
-    local procedure AddLMProduction(ItemLdgEntry: Record "Item Ledger Entry"; EndPeriod: Date; ProductionBOMNo: code[20])
+    local procedure AddLMProduction(ItemLdgEntry: Record "Item Ledger Entry"; ProductionBOMNo: code[20]; PeriodStart: Date; PeriodEnd: date)
     begin
         ProdOrderLine.Reset();
         ProdOrderLine.SetRange("Prod. Order No.", ItemLdgEntry."Document No.");
@@ -145,18 +162,18 @@ table 17372 "ZM HIST BOM Production"
             ProdOrderComponent.SetRange("Prod. Order Line No.", ProdOrderLine."Line No.");
             if ProdOrderComponent.FindFirst() then
                 repeat
-                    AddHistBOMLine(ProdOrderLine, ProdOrderComponent, EndPeriod, ProductionBOMNo)
+                    AddHistBOMLine(ProdOrderLine, ProdOrderComponent, ProductionBOMNo, PeriodStart, PeriodEnd);
                 Until ProdOrderComponent.next() = 0;
         end;
     end;
 
-    local procedure AddHistBOMLine(ProdOrderLine: record "Prod. Order Line"; ProdOrderComponent: Record "Prod. Order Component"; EndPeriod: Date; ProductionBOMNo: code[20])
+    local procedure AddHistBOMLine(ProdOrderLine: record "Prod. Order Line"; ProdOrderComponent: Record "Prod. Order Component"; ProductionBOMNo: code[20]; PeriodStart: Date; PeriodEnd: date)
     var
         Item: Record Item;
     begin
         HISTBOMProduction.Reset();
         HISTBOMProduction.SetRange("Production BOM No.", ProductionBOMNo);
-        HISTBOMProduction.SetRange("Period Start", EndPeriod);
+        HISTBOMProduction.SetRange("Period Start", PeriodStart);
         HISTBOMProduction.SetRange("No.", ProdOrderComponent."Item No.");
         if HISTBOMProduction.FindFirst() then begin
             HISTBOMProduction.Quantity := ProdOrderComponent.Quantity + ProdOrderComponent."Quantity per";
@@ -166,16 +183,17 @@ table 17372 "ZM HIST BOM Production"
         Item.Get(ProdOrderComponent."Item No.");
         HISTBOMProduction.Init();
         HISTBOMProduction."Production BOM No." := ProductionBOMNo;
-        HISTBOMProduction."Period Start" := EndPeriod;
+        HISTBOMProduction."Period Start" := PeriodStart;
         HISTBOMProduction."No." := ProdOrderComponent."Item No.";
         HISTBOMProduction.Description := ProdOrderComponent.Description;
         HISTBOMProduction."Unit of Measure Code" := ProdOrderComponent."Unit of Measure Code";
         HISTBOMProduction.Quantity := ProdOrderComponent."Quantity per";
         HISTBOMProduction."Routing Link Code" := ProdOrderComponent."Routing Link Code";
         HISTBOMProduction."Quantity per" := ProdOrderComponent."Quantity per";
+        HISTBOMProduction."Prod. Order No." := ProdOrderLine."Prod. Order No.";
         HISTBOMProduction.Insert();
         if (Item."Replenishment System" in [item."Replenishment System"::"Prod. Order"]) and (Item."Production BOM No." <> '') then begin
-            AddLMProductionBOM(ProdOrderComponent."Item No.", ProductionBOMNo)
+            AddLMProductionBOM(ProdOrderComponent."Item No.", ProductionBOMNo, PeriodStart, PeriodEnd);
         end;
     end;
 
