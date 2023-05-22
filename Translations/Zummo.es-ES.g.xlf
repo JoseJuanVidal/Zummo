@@ -13213,6 +13213,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action TakePicture - Property Caption</note>
           <target>Hacer</target>
         </trans-unit>
+        <trans-unit id="Page 1457966411 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>HIST BOM Productions</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. L.M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM HIST BOM Productions - Property Caption</note>
+          <target>Hist. L.M. Producción</target>
+        </trans-unit>
         <trans-unit id="Page 2641796487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hist. BOM Costs list</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Hist. BOM Costes"</note>
