@@ -12,10 +12,15 @@ codeunit 50104 "Zummo Inn. IC Functions"
     var
         JObject: JsonObject;
         jToken: JsonToken;
+        jvalue: JsonValue;
     begin
         JObject := Token.AsObject();
 
-        if JObject.Get(keyname, jToken) then exit(jToken.AsValue().AsText());
+        if JObject.Get(keyname, jToken) then begin
+            jvalue := jToken.AsValue();
+            if not jvalue.IsNull then
+                exit(jToken.AsValue().AsText());
+        end;
 
         exit('');
     end;
@@ -24,10 +29,15 @@ codeunit 50104 "Zummo Inn. IC Functions"
     var
         JObject: JsonObject;
         jToken: JsonToken;
+        jvalue: JsonValue;
     begin
         JObject := Token.AsObject();
 
-        if JObject.Get(keyname, jToken) then exit(jToken.AsValue().AsBoolean());
+        if JObject.Get(keyname, jToken) then begin
+            jvalue := jToken.AsValue();
+            if not jvalue.IsNull then
+                exit(jToken.AsValue().AsBoolean());
+        end;
 
         exit(false);
     end;
@@ -36,10 +46,15 @@ codeunit 50104 "Zummo Inn. IC Functions"
     var
         JObject: JsonObject;
         jToken: JsonToken;
+        jvalue: JsonValue;
     begin
         JObject := Token.AsObject();
 
-        if JObject.Get(keyname, jToken) then exit(jToken.AsValue().AsDecimal());
+        if JObject.Get(keyname, jToken) then begin
+            jvalue := jToken.AsValue();
+            if not jvalue.IsNull then
+                exit(jToken.AsValue().AsDecimal());
+        end;
 
         exit(0);
     end;
@@ -48,10 +63,15 @@ codeunit 50104 "Zummo Inn. IC Functions"
     var
         JObject: JsonObject;
         jToken: JsonToken;
+        jvalue: JsonValue;
     begin
         JObject := Token.AsObject();
 
-        if JObject.Get(keyname, jToken) then exit(jToken.AsValue().AsInteger());
+        if JObject.Get(keyname, jToken) then begin
+            jvalue := jToken.AsValue();
+            if not jvalue.IsNull then
+                exit(jToken.AsValue().AsInteger());
+        end;
 
         exit(0);
     end;
@@ -60,10 +80,15 @@ codeunit 50104 "Zummo Inn. IC Functions"
     var
         JObject: JsonObject;
         jToken: JsonToken;
+        jvalue: JsonValue;
     begin
         JObject := Token.AsObject();
 
-        if JObject.Get(keyname, jToken) then exit(jToken.AsValue().AsCode());
+        if JObject.Get(keyname, jToken) then begin
+            jvalue := jToken.AsValue();
+            if not jvalue.IsNull then
+                exit(jToken.AsValue().AsCode());
+        end;
 
         exit('');
     end;
@@ -72,14 +97,51 @@ codeunit 50104 "Zummo Inn. IC Functions"
     var
         JObject: JsonObject;
         jToken: JsonToken;
+        jvalue: JsonValue;
     begin
         JObject := Token.AsObject();
 
-        if JObject.Get(keyname, jToken) then exit(jToken.AsValue().AsText());
+        if JObject.Get(keyname, jToken) then begin
+            jvalue := jToken.AsValue();
+            if not jvalue.IsNull then
+                exit(jToken.AsValue().AsText());
+        end;
 
         exit('');
     end;
 
+    procedure GetJSONItemFieldDate(Token: JsonToken; keyname: Text): Date
+    var
+        JObject: JsonObject;
+        jToken: JsonToken;
+        jvalue: JsonValue;
+    begin
+        JObject := Token.AsObject();
+
+        if JObject.Get(keyname, jToken) then begin
+            jvalue := jToken.AsValue();
+            if not jvalue.IsNull then
+                exit(jToken.AsValue().AsDate());
+        end;
+        exit(0D);
+    end;
+
+    procedure GetJSONItemFieldDateTime(Token: JsonToken; keyname: Text): DateTime
+    var
+        JObject: JsonObject;
+        jToken: JsonToken;
+        jvalue: JsonValue;
+    begin
+        JObject := Token.AsObject();
+
+        if JObject.Get(keyname, jToken) then begin
+            jvalue := jToken.AsValue();
+            if not jvalue.IsNull then
+                exit(jToken.AsValue().AsDateTime());
+        end;
+
+        exit(0DT);
+    end;
 
     procedure GetJSONItemFieldObject(Token: JsonToken; keyname: Text): JsonObject
     var
@@ -710,8 +772,223 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
     end;
 
+
+    // =============     CONSULTIA TRAVEL           ====================
+    // ==  
+    // ==  Aplicacion de gestion de viajes 
+    // ==  
+    // ==  API REST de acceso  https://documenter.getpostman.com/view/9746760/TzY1hwbE#2bcc1021-1db7-4a03-81fc-eecedad77db6
+    // ==  
+    // ==  server:  https://api-destinux.consultiatravel.es/B2B.Test
+    // ==  
+    // ==  Listar viajeros         GET     {{server}}/api/ListaViajeros
+    // ==  Alta usuarios           POST    {{server}}/api/v1/SincronizarClientes/Procesar
+    // ==  Alta usuarios Simular   POST    {{server}}/api/v1/SincronizarClientes/Simular
+    // ==  Alta usuarios Archivo   POST    {{server}}/api/v1/AltaClientesArchivo/Procesar
+    // ==        crear alta de usuarios desde un archivo excel o XML
+    // ==        Puede encontrar la plantilla en el siguiente link: http://login.consultiatravel.es/recursos/octopus/b2b/Plantilla_Alta_Clientes.xlsx
+    // ==  Consumos                 GET     {{server}}/api/Consumos?FechaIni=01/05/2023&FechaFin=31/05/2023
+    // ==  Facturas por fecha       GET     {{server}}/api/Facturas?FechaIni=01/05/2023&FechaFin=31/05/2023&DetalleConsumos=true
+    // ==  Facturas por numero      GET     {{server}}/api/Facturas?Numero=F1-4/327&DetalleConsumos=true
+    // ==  Facturas PDF por numero  GET     {{server}}/api/Facturas/ObtenerPDF?IdFactura=240877
+    // ==  
+    // ==  
+    // ==  
+
+    procedure REST_GESTALIA(urlBase: Text; metodo: Text; metodoREST: Text; parametros: Text; requiereAutenticacion: Boolean; var statusCode: Integer; var respuestaJSON: JsonObject; indicarEmpresa: Boolean)
+    var
+        Client: HttpClient;
+        ContentHeaders: HttpHeaders;
+        ClientHeaders: HttpHeaders;
+        RequestMessage: HttpRequestMessage;
+        ResponseMessage: HttpResponseMessage;
+        RequestContent: HttpContent;
+        ResultJsonToken: JsonToken;
+
+        TempBlob: Record TempBlob;
+        Url: Text;
+        StringAuthorization: Text;
+        ResponseText: Text;
+        Texto: Text;
+        User: text;
+        PassWebServKey: Text;
+        StringAuth: Text;
+
+    begin
+
+        //Creamos una url
+        Url := urlBase + metodo;
+        //Añadimos los headers de petición
+        RequestContent.GetHeaders(ContentHeaders);
+
+        //Obtenemos los headers por defecto
+        ClientHeaders := Client.DefaultRequestHeaders();
+
+
+        User := 'zummo_test';
+        PassWebServKey := 'zummo_test';
+
+        TempBlob.WriteTextLine(User + ':' + PassWebServKey);
+        StringAuth := TempBlob.ToBase64String();
+
+        //Si se requiere autenticacion(menos para pedir token de acceso siempre será true) entra
+        if requiereAutenticacion then begin
+
+            StringAuthorization := 'Basic ' + StringAuth;
+            //Creamos la cabecera de athorization
+            ClientHeaders.Add('Authorization', StringAuthorization);
+        end;
+
+        //Si el metodo es de tipo Post o Patch entra para configurar los contentheaders
+        if metodoREST in ['POST', 'PATCH'] then begin
+
+            RequestContent.WriteFrom(parametros);
+            ContentHeaders.Remove('Content-Type');
+            ContentHeaders.Add('Content-Type', 'application/json');
+
+        end;
+
+        ClientHeaders.Add('Accept', 'application/json');
+
+        //Asignamos el metodo rest para la petición http
+        RequestMessage.Method(metodoREST);
+        //Asignamos la url para la peticion http 
+        RequestMessage.SetRequestUri(Url);
+        if metodoREST <> 'GET' then
+            RequestMessage.Content := RequestContent;
+
+        //Si se puede enviar los datos
+        if Client.Send(RequestMessage, ResponseMessage) then begin
+            //si esun codigo exitoso(200, 201)
+            if (ResponseMessage.IsSuccessStatusCode()) then begin
+                ResponseMessage.Content.ReadAs(ResponseText);//Leemos el contenido de la respuesta http
+            end
+            else begin
+                ResponseMessage.Content.ReadAs(ResponseText);
+                //Message('%1', ResponseText);
+            end;
+        end
+        else begin
+            ResponseMessage.Content.ReadAs(ResponseText);
+        end;
+
+        //Procesamos el json de la peticion y su status code para posteriormente pasarla por el valor de referencia
+        statusCode := ResponseMessage.HttpStatusCode;
+        if statusCode = 200 then
+            respuestaJSON.ReadFrom(ResponseText)
+        else
+            Error(ResponseText);
+
+
+    end;
+
+    // ======================================================================================================
+    // =============     Get Lista Viajeros          ====================
+    // ==  
+    // ==  Detalle de los empleados de su organización registrados en nuestros sistemas. 
+    // ==  
+    // ======================================================================================================
+    procedure GetListaViajeros()
+    var
+        JsonBody: JsonObject;
+        JsonResponse: JsonObject;
+        JsonTokResponse: JsonToken;
+        ErrorText: Text;
+        StatusCode: Integer;
+    begin
+        REST_GESTALIA(lblurlGestalia, lblListaViajero, 'GET', '', true, StatusCode, JsonResponse, false);
+
+
+        Message(format(JsonResponse));
+
+    end;
+
+    // ======================================================================================================
+    // =============     GetInvoicebyDate          ====================
+    // ==  
+    // ==  Detalle de servicios facturados en un intervalo de fechas.
+    // ==  
+    // ==  PARAMS
+    // ==  FechaIni 01/01/2018
+    // ==  Fecha de inicio de la búsqueda. Formato aceptado (dd/MM/yyyy). Campo obligatorio
+    // ==  
+    // ==  FechaFin 31/01/2018
+    // ==  Fecha fin de la búsqueda. Formato aceptado (dd/MM/yyyy). Campo obligatorio
+    // ==  
+    // ==  DetalleConsumos true
+    // ==  Flag que permite indicar si se desea obtener el detalle de consumos de las facturas
+    // ==  
+    // ==  
+    // ==  
+    // ======================================================================================================
+    procedure GetInvoicebyDate(Startdate: Date; EndDate: date)
+    var
+        JsonBody: JsonObject;
+        JsonResponse: JsonObject;
+        JsonTokResponse: JsonToken;
+        JsonEmisor: JsonObject;
+        JsonReceptor: JsonObject;
+        JsonFacturas: JsonArray;
+        JsonFactura: JsonToken;
+        ErrorText: Text;
+        Metodo: text;
+        ValueText: text;
+        StatusCode: Integer;
+    begin
+        Metodo := lblInvoice + StrSubstNo(lblDate, format(Startdate, 0, '<day,2>/<Month,2>/<Year4>'), format(EndDate, 0, '<day,2>/<Month,2>/<Year4>'));
+
+        REST_GESTALIA(lblurlGestalia, Metodo, 'GET', '', true, StatusCode, JsonResponse, false);
+
+
+        JsonEmisor := GetJSONItemFieldObject(JsonResponse.AsToken(), 'Emisor');
+        JsonReceptor := GetJSONItemFieldObject(JsonResponse.AsToken(), 'Receptor');
+        JsonFacturas := GetJSONItemFieldArray(JsonResponse.AsToken(), 'Facturas');
+
+        // ValueText := GetJSONItemFieldText(JsonEmisor.AsToken(), 'Razon_social');
+        // ValueText := GetJSONItemFieldText(JsonReceptor.AsToken(), 'Razon_social');
+
+        foreach JsonFactura in JsonFacturas do begin
+            AddInvoiceHeader(JsonFactura);
+        end;
+
+    end;
+
+    local procedure AddInvoiceHeader(JsonFactura: JsonToken)
+    var
+        GESTALIAInvoiceHeader: Record "ZM GESTALIA Invoice Header";
+        FieldValue: text;
+        FieldValueInt: Integer;
+    begin
+        FieldValue := GetJSONItemFieldText(JsonFactura, 'ID_Factura');
+        Evaluate(FieldValueInt, FieldValue);
+        if GESTALIAInvoiceHeader.Get(FieldValueInt) then
+            exit;
+        GESTALIAInvoiceHeader.Init();
+        GESTALIAInvoiceHeader.Id := FieldValueInt;
+        GESTALIAInvoiceHeader.N_Factura := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(N_Factura));
+        GESTALIAInvoiceHeader."N_Pedido" := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(N_Pedido));
+        GESTALIAInvoiceHeader."F_Factura" := DT2Date(GetJSONItemFieldDateTime(JsonFactura, GESTALIAInvoiceHeader.FieldName(F_Factura)));
+        GESTALIAInvoiceHeader."Descripcion" := GetJSONItemFieldText(JsonFactura, GESTALIAInvoiceHeader.FieldName(Descripcion));
+        GESTALIAInvoiceHeader."IdCorp_Sol" := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(IdCorp_Sol));
+        GESTALIAInvoiceHeader."Nombre_Sol" := GetJSONItemFieldText(JsonFactura, GESTALIAInvoiceHeader.FieldName(Nombre_Sol));
+        GESTALIAInvoiceHeader."Proyecto" := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(Proyecto));
+        GESTALIAInvoiceHeader."Ref_Ped_Cl" := GetJSONItemFieldText(JsonFactura, GESTALIAInvoiceHeader.FieldName(Ref_Ped_Cl));
+        GESTALIAInvoiceHeader."Responsable_compra" := GetJSONItemFieldText(JsonFactura, GESTALIAInvoiceHeader.FieldName(Responsable_compra));
+        GESTALIAInvoiceHeader."Tipo" := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(Tipo));
+        GESTALIAInvoiceHeader."FacturaRectificada" := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(FacturaRectificada));
+        GESTALIAInvoiceHeader."Total_Base" := GetJSONItemFieldDecimal(JsonFactura, GESTALIAInvoiceHeader.FieldName(Total_Base));
+        GESTALIAInvoiceHeader."Total_Impuesto" := GetJSONItemFieldDecimal(JsonFactura, GESTALIAInvoiceHeader.FieldName(Total_Impuesto));
+        GESTALIAInvoiceHeader."Total_Tasas_Exentas" := GetJSONItemFieldDecimal(JsonFactura, GESTALIAInvoiceHeader.FieldName(Total_Tasas_Exentas));
+        GESTALIAInvoiceHeader."Total" := GetJSONItemFieldDecimal(JsonFactura, GESTALIAInvoiceHeader.FieldName(Total));
+        GESTALIAInvoiceHeader.Insert();
+    end;
+
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
         JobsSetup: Record "Jobs Setup";
+        lblurlGestalia: Label 'https://api-destinux.consultiatravel.es/B2B.Test';
+        lblListaViajero: Label '/api/ListaViajeros';
+        lblInvoice: Label '/api/facturas';
+        lblDate: Label '?FechaIni=%1&FechaFin=%2';
 
 }
