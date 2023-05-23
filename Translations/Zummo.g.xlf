@@ -12178,6 +12178,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Hacer"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM ERPLINK Item Picture - Action TakePicture - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 979087540 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service Item line</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas Pedido Servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Ext Service Item line - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1457966411 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>HIST BOM Productions</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. L.M. Producción"</note>
@@ -27468,6 +27473,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Prod. con fallo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field CodProdFallo_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 2670302339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Description Header</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cab. Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Description Header - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 3705564108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Fallo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fallo"</note>
@@ -27502,6 +27512,21 @@
           <source>Num Ciclos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Num Ciclos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field NumCiclos_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 2015904545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Responsability Center</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Centro de Responsabilidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Responsability Center - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 1981213637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Ship-to City</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Población dirección de envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Ship-to City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 2743501653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Ship-to Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre dirección de envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Ship-to Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1267759397 - Field 2829717791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271291437">
           <source>Assoc. Vendor No.</source>
