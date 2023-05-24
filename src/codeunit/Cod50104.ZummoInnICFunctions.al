@@ -795,7 +795,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     // ==  
     // ==  
 
-    procedure REST_GESTALIA(urlBase: Text; metodo: Text; metodoREST: Text; parametros: Text; requiereAutenticacion: Boolean; var statusCode: Integer; var respuestaJSON: JsonObject; indicarEmpresa: Boolean)
+    procedure REST_CONSULTIA(urlBase: Text; metodo: Text; metodoREST: Text; parametros: Text; requiereAutenticacion: Boolean; var statusCode: Integer; var respuestaJSON: JsonObject; indicarEmpresa: Boolean)
     var
         Client: HttpClient;
         ContentHeaders: HttpHeaders;
@@ -896,7 +896,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         ErrorText: Text;
         StatusCode: Integer;
     begin
-        REST_GESTALIA(lblurlGestalia, lblListaViajero, 'GET', '', true, StatusCode, JsonResponse, false);
+        REST_CONSULTIA(lblurlConsultia, lblListaViajero, 'GET', '', true, StatusCode, JsonResponse, false);
 
 
         Message(format(JsonResponse));
@@ -923,6 +923,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     // ======================================================================================================
     procedure GetInvoicebyDate(Startdate: Date; EndDate: date)
     var
+        CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
         JsonBody: JsonObject;
         JsonResponse: JsonObject;
         JsonTokResponse: JsonToken;
@@ -930,14 +931,19 @@ codeunit 50104 "Zummo Inn. IC Functions"
         JsonReceptor: JsonObject;
         JsonFacturas: JsonArray;
         JsonFactura: JsonToken;
+        JsonFacturaDetails: JsonArray;
+        JsonFacturaDetail: JsonToken;
         ErrorText: Text;
         Metodo: text;
         ValueText: text;
         StatusCode: Integer;
+        Window: Dialog;
+        lblDlg: Label 'Invoice No. #1################', comment = 'ESP="Nº Factura #1################"';
     begin
+        Window.Open(lblDlg);
         Metodo := lblInvoice + StrSubstNo(lblDate, format(Startdate, 0, '<day,2>/<Month,2>/<Year4>'), format(EndDate, 0, '<day,2>/<Month,2>/<Year4>'));
 
-        REST_GESTALIA(lblurlGestalia, Metodo, 'GET', '', true, StatusCode, JsonResponse, false);
+        REST_CONSULTIA(lblurlConsultia, Metodo, 'GET', '', true, StatusCode, JsonResponse, false);
 
 
         JsonEmisor := GetJSONItemFieldObject(JsonResponse.AsToken(), 'Emisor');
@@ -948,47 +954,190 @@ codeunit 50104 "Zummo Inn. IC Functions"
         // ValueText := GetJSONItemFieldText(JsonReceptor.AsToken(), 'Razon_social');
 
         foreach JsonFactura in JsonFacturas do begin
-            AddInvoiceHeader(JsonFactura);
-        end;
+            AddInvoiceHeader(CONSULTIAInvoiceHeader, JsonFactura);
+            Window.Update(1, CONSULTIAInvoiceHeader.N_Factura);
 
+            JsonFacturaDetails := GetJSONItemFieldArray(JsonFactura, 'Detalles');
+
+            foreach JsonFacturaDetail in JsonFacturaDetails do begin
+                AddInvoiceDetails(CONSULTIAInvoiceHeader, JsonFacturaDetail);
+            end;
+
+            CreateRecordLinkPDF(CONSULTIAInvoiceHeader);
+        end;
+        Window.Close();
     end;
 
-    local procedure AddInvoiceHeader(JsonFactura: JsonToken)
+    local procedure CreateRecordLinkPDF(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
     var
-        GESTALIAInvoiceHeader: Record "ZM GESTALIA Invoice Header";
+        DocumentAttachment: Record "Document Attachment";
+        TempBlob: Record TempBlob;
+        FileManagement: Codeunit "File Management";
+        Instr: InStream;
+        FileName: text;
+    begin
+        if CallGetInvoicePdf(CONSULTIAInvoiceHeader.Id, InStr) then begin
+            FileName := CONSULTIAInvoiceHeader.N_Factura + '.pdf';
+            DocumentAttachment.Reset();
+            DocumentAttachment.SetRange("Table ID", Database::"ZM CONSULTIA Invoice Header");
+            DocumentAttachment.SetRange("No.", CONSULTIAInvoiceHeader.N_Factura);
+            if DocumentAttachment.FindFirst() then
+                exit;
+            DocumentAttachment.Init();
+            DocumentAttachment."Table ID" := Database::"ZM CONSULTIA Invoice Header";
+            DocumentAttachment."No." := CONSULTIAInvoiceHeader.N_Factura;
+            DocumentAttachment."Attached Date" := CreateDateTime(Today, time);
+            DocumentAttachment."Attached By" := UserSecurityId();
+            DocumentAttachment.Validate("File Extension", FileManagement.GetExtension(FileName));
+            DocumentAttachment.Validate("File Name", CONSULTIAInvoiceHeader.N_Factura);
+            DocumentAttachment."Document Reference ID".ImportStream(Instr, FileName);
+            DocumentAttachment.Insert(true)
+        end
+    end;
+
+    local procedure AddInvoiceHeader(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; JsonFactura: JsonToken)
+    var
         FieldValue: text;
         FieldValueInt: Integer;
     begin
         FieldValue := GetJSONItemFieldText(JsonFactura, 'ID_Factura');
         Evaluate(FieldValueInt, FieldValue);
-        if GESTALIAInvoiceHeader.Get(FieldValueInt) then
+        if CONSULTIAInvoiceHeader.Get(FieldValueInt) then
             exit;
-        GESTALIAInvoiceHeader.Init();
-        GESTALIAInvoiceHeader.Id := FieldValueInt;
-        GESTALIAInvoiceHeader.N_Factura := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(N_Factura));
-        GESTALIAInvoiceHeader."N_Pedido" := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(N_Pedido));
-        GESTALIAInvoiceHeader."F_Factura" := DT2Date(GetJSONItemFieldDateTime(JsonFactura, GESTALIAInvoiceHeader.FieldName(F_Factura)));
-        GESTALIAInvoiceHeader."Descripcion" := GetJSONItemFieldText(JsonFactura, GESTALIAInvoiceHeader.FieldName(Descripcion));
-        GESTALIAInvoiceHeader."IdCorp_Sol" := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(IdCorp_Sol));
-        GESTALIAInvoiceHeader."Nombre_Sol" := GetJSONItemFieldText(JsonFactura, GESTALIAInvoiceHeader.FieldName(Nombre_Sol));
-        GESTALIAInvoiceHeader."Proyecto" := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(Proyecto));
-        GESTALIAInvoiceHeader."Ref_Ped_Cl" := GetJSONItemFieldText(JsonFactura, GESTALIAInvoiceHeader.FieldName(Ref_Ped_Cl));
-        GESTALIAInvoiceHeader."Responsable_compra" := GetJSONItemFieldText(JsonFactura, GESTALIAInvoiceHeader.FieldName(Responsable_compra));
-        GESTALIAInvoiceHeader."Tipo" := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(Tipo));
-        GESTALIAInvoiceHeader."FacturaRectificada" := GetJSONItemFieldCode(JsonFactura, GESTALIAInvoiceHeader.FieldName(FacturaRectificada));
-        GESTALIAInvoiceHeader."Total_Base" := GetJSONItemFieldDecimal(JsonFactura, GESTALIAInvoiceHeader.FieldName(Total_Base));
-        GESTALIAInvoiceHeader."Total_Impuesto" := GetJSONItemFieldDecimal(JsonFactura, GESTALIAInvoiceHeader.FieldName(Total_Impuesto));
-        GESTALIAInvoiceHeader."Total_Tasas_Exentas" := GetJSONItemFieldDecimal(JsonFactura, GESTALIAInvoiceHeader.FieldName(Total_Tasas_Exentas));
-        GESTALIAInvoiceHeader."Total" := GetJSONItemFieldDecimal(JsonFactura, GESTALIAInvoiceHeader.FieldName(Total));
-        GESTALIAInvoiceHeader.Insert();
+        CONSULTIAInvoiceHeader.Init();
+        CONSULTIAInvoiceHeader.Id := FieldValueInt;
+        CONSULTIAInvoiceHeader.N_Factura := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(N_Factura));
+        CONSULTIAInvoiceHeader."N_Pedido" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(N_Pedido));
+        CONSULTIAInvoiceHeader."F_Factura" := DT2Date(GetJSONItemFieldDateTime(JsonFactura, CONSULTIAInvoiceHeader.FieldName(F_Factura)));
+        CONSULTIAInvoiceHeader."Descripcion" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Descripcion));
+        CONSULTIAInvoiceHeader."IdCorp_Sol" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(IdCorp_Sol));
+        CONSULTIAInvoiceHeader."Nombre_Sol" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Nombre_Sol));
+        CONSULTIAInvoiceHeader."Proyecto" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Proyecto));
+        CONSULTIAInvoiceHeader."Ref_Ped_Cl" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Ref_Ped_Cl));
+        CONSULTIAInvoiceHeader."Responsable_compra" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Responsable_compra));
+        CONSULTIAInvoiceHeader."Tipo" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Tipo));
+        CONSULTIAInvoiceHeader."FacturaRectificada" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(FacturaRectificada));
+        CONSULTIAInvoiceHeader."Total_Base" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Base));
+        CONSULTIAInvoiceHeader."Total_Impuesto" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Impuesto));
+        CONSULTIAInvoiceHeader."Total_Tasas_Exentas" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Tasas_Exentas));
+        CONSULTIAInvoiceHeader."Total" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total));
+        CONSULTIAInvoiceHeader.Insert();
+    end;
+
+    local procedure AddInvoiceDetails(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; JsonFacturaDetail: JsonToken)
+    var
+        CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
+        FieldValue: text;
+        FieldValueInt: Integer;
+    begin
+        FieldValue := GetJSONItemFieldText(JsonFacturaDetail, 'Numero');
+        Evaluate(FieldValueInt, FieldValue);
+        if CONSULTIAInvoiceLine.Get(CONSULTIAInvoiceHeader.id, FieldValueInt) then
+            exit;
+        CONSULTIAInvoiceLine.Init();
+        CONSULTIAInvoiceLine.Id := CONSULTIAInvoiceHeader.Id;
+        CONSULTIAInvoiceLine.N_Factura := CONSULTIAInvoiceHeader.N_Factura;
+        CONSULTIAInvoiceLine.Numero := GetJSONItemFieldInteger(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Numero));
+        CONSULTIAInvoiceLine."Desc_servicio" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Desc_servicio));
+        CONSULTIAInvoiceLine."Proveedor" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Proveedor));
+        CONSULTIAInvoiceLine."F_Ini" := DT2Date(GetJSONItemFieldDateTime(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(F_Ini)));
+        CONSULTIAInvoiceLine."F_Fin" := DT2Date(GetJSONItemFieldDateTime(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(F_Fin)));
+        CONSULTIAInvoiceLine."IdCorp_Usuario" := GetJSONItemFieldcode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdCorp_Usuario));
+        CONSULTIAInvoiceLine."Usuario" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Usuario));
+        CONSULTIAInvoiceLine."Ref_Usuario" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Ref_Usuario));
+        CONSULTIAInvoiceLine."Ref_DPTO" := GetJSONItemFieldText(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Ref_DPTO));
+        CONSULTIAInvoiceLine."Producto" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Producto));
+        CONSULTIAInvoiceLine."Base" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Base));
+        CONSULTIAInvoiceLine."Porc_IVA" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Porc_IVA));
+        CONSULTIAInvoiceLine."Imp_IVA" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Imp_IVA));
+        CONSULTIAInvoiceLine."Tasas" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Tasas));
+        CONSULTIAInvoiceLine."PVP" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(PVP));
+        CONSULTIAInvoiceLine."IdCorp_Sol" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdCorp_Sol));
+        CONSULTIAInvoiceLine."IdServicio" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdServicio));
+        CONSULTIAInvoiceLine."NumeroLineaServicio" := GetJSONItemFieldInteger(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(NumeroLineaServicio));
+        CONSULTIAInvoiceLine."CodigoProducto" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(CodigoProducto));
+        CONSULTIAInvoiceLine.Insert();
+    end;
+
+
+    procedure GetInvoicePdf(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
+    var
+        Instr: InStream;
+        FileName: text;
+        lblConfirm: Label '¿Would you like to download the PDF of invoice %1?', comment = 'ESP="¿Desea descargar el PDF de la factura %1?"';
+    begin
+        if Confirm(lblConfirm, false, CONSULTIAInvoiceHeader.N_Factura) then
+            if CallGetInvoicePdf(CONSULTIAInvoiceHeader.Id, Instr) then begin
+                FileName := CONSULTIAInvoiceHeader.N_Factura + '.pdf';
+                DownloadFromStream(Instr, lblDownload, '', '', FileName);
+            end;
+    end;
+
+    local procedure CallGetInvoicePdf(Id: integer; var Instr: InStream): Boolean
+    var
+        JsonResponse: JsonObject;
+        Metodo: text;
+        FileName: Text;
+        StatusCode: Integer;
+
+    begin
+        Metodo := StrSubstNo(lblGetInvoicePDF, format(Id));
+
+        if GetResponsePDF(lblurlConsultia, Metodo, Instr) then
+            exit(true);
+
+    end;
+
+    local procedure GetResponsePDF(urlBase: Text; metodo: text; var Stream: InStream): Boolean
+    var
+        TempBlob: Record TempBlob;
+        Client: HttpClient;
+        Headers: HttpHeaders;
+        RequestMessage: HttpRequestMessage;
+        ResponseMessage: HttpResponseMessage;
+        RequestContent: HttpContent;
+        Url: text;
+        StringAuthorization: text;
+        User: text;
+        PassWebServKey: text;
+        StringAuth: text;
+        IsSucces: Boolean;
+    begin
+        //Creamos una url
+        Url := urlBase + metodo;
+
+
+        RequestMessage.SetRequestUri(Url);
+        RequestMessage.Method := 'GET';
+
+        User := 'zummo_test';
+        PassWebServKey := 'zummo_test';
+        TempBlob.WriteTextLine(User + ':' + PassWebServKey);
+        StringAuth := TempBlob.ToBase64String();
+        StringAuthorization := 'Basic ' + StringAuth;
+
+        //Creamos la cabecera de athorization
+        Headers := Client.DefaultRequestHeaders();
+        Headers.Add('Authorization', StringAuthorization);
+
+        if Client.Send(RequestMessage, ResponseMessage) then
+            if ResponseMessage.IsSuccessStatusCode() then begin
+                if ResponseMessage.Content.ReadAs(Stream) then
+                    IsSucces := true;
+            end else
+                ResponseMessage.Content.ReadAs(Stream);
+
+        exit(IsSucces);
     end;
 
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
         JobsSetup: Record "Jobs Setup";
-        lblurlGestalia: Label 'https://api-destinux.consultiatravel.es/B2B.Test';
+        lblurlConsultia: Label 'https://api-destinux.consultiatravel.es/B2B.Test';
         lblListaViajero: Label '/api/ListaViajeros';
         lblInvoice: Label '/api/facturas';
         lblDate: Label '?FechaIni=%1&FechaFin=%2';
+        lblGetInvoicePDF: Label '/api/Facturas/ObtenerPDF?IdFactura=%1';
+        lblDownload: Label 'Descarga de fichero', comment = 'ESP="Descarga de fichero"';
 
 }

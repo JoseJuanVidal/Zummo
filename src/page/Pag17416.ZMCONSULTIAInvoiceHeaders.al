@@ -1,10 +1,13 @@
-page 17416 "ZM GESTALIA Invoice Headers"
+page 17416 "ZM CONSULTIA Invoice Headers"
 {
     PageType = List;
-    Caption = 'GESTALIA Invoice Headers', comment = 'ESP="GESTALIA Facturas"';
+    Caption = 'CONSULTIA Invoice Headers', comment = 'ESP="CONSULTIA Facturas"';
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "ZM GESTALIA Invoice Header";
+    SourceTable = "ZM CONSULTIA Invoice Header";
+    CardPageId = "ZM CONSULTIA Invoice Header";
+    Editable = false;
+    InsertAllowed = false;
 
     layout
     {
@@ -78,6 +81,25 @@ page 17416 "ZM GESTALIA Invoice Headers"
                 }
             }
         }
+        area(factboxes)
+        {
+            part("Attachment Document"; "ZM Document Attachment Factbox")
+            {
+                ApplicationArea = all;
+                Caption = 'Attachment Document', comment = 'ESP="Documentos adjuntos"';
+                SubPageLink = "Table ID" = const(17414), "No." = field(N_Factura);
+            }
+            // systempart(Links; Links)
+            // {
+            //     ApplicationArea = RecordLinks;
+            //     Visible = false;
+            // }
+            // systempart(Notes; Notes)
+            // {
+            //     ApplicationArea = Notes;
+            //     Visible = false;
+            // }
+        }
     }
 
     actions
@@ -96,11 +118,28 @@ page 17416 "ZM GESTALIA Invoice Headers"
                 end;
 
             }
+            action(Download)
+            {
+                ApplicationArea = all;
+                Image = Download;
+                Promoted = true;
+
+                trigger OnAction()
+                begin
+                    Rec.DownloadFile();
+                end;
+            }
         }
     }
+    trigger OnAfterGetRecord()
+    begin
+
+        CurrPage."Attachment Document".Page.SetTableNo(17414, Rec.N_Factura, 0);
+
+    end;
 
     var
-        GestaliaFunciones: Codeunit "Zummo Inn. IC Functions";
+        CONSULTIAFunciones: Codeunit "Zummo Inn. IC Functions";
         lblConfirmGet: Label 'Do you want to update invoices from %1 to %2?', comment = 'ESP="¿Desea actualziar las facturas desde %1 a %2?"';
 
     local procedure GetInvoiceByDate()
@@ -108,6 +147,6 @@ page 17416 "ZM GESTALIA Invoice Headers"
         myInt: Integer;
     begin
         if Confirm(lblConfirmGet, true, CalcDate('-1M', WorkDate()), WorkDate()) then
-            GestaliaFunciones.GetInvoicebyDate(CalcDate('-1M', WorkDate()), WorkDate());
+            CONSULTIAFunciones.GetInvoicebyDate(CalcDate('-1M', WorkDate()), WorkDate());
     end;
 }

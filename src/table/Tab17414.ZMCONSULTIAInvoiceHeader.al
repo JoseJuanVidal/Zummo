@@ -1,9 +1,9 @@
-table 17414 "ZM GESTALIA Invoice Header"
+table 17414 "ZM CONSULTIA Invoice Header"
 {
     DataClassification = CustomerContent;
-    Caption = 'GESTALIA Invoice Header', comment = 'ESP="GESTALIA Cab. Facturas"';
-    LookupPageId = "ZM GESTALIA Invoice Headers";
-    DrillDownPageId = "ZM GESTALIA Invoice Headers";
+    Caption = 'CONSULTIA Invoice Header', comment = 'ESP="CONSULTIA Cab. Facturas"';
+    LookupPageId = "ZM CONSULTIA Invoice Headers";
+    DrillDownPageId = "ZM CONSULTIA Invoice Headers";
 
     fields
     {
@@ -19,7 +19,7 @@ table 17414 "ZM GESTALIA Invoice Header"
         field(3; "N_Pedido"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Nº Factura', comment = 'ESP="Nº Factura"';
+            Caption = 'Nº Pedido', comment = 'ESP="Nº Pedido"';
         }
         field(4; "F_Factura"; Date)
         {
@@ -44,7 +44,7 @@ table 17414 "ZM GESTALIA Invoice Header"
         field(8; "Proyecto"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Nº Factura', comment = 'ESP="Nº Factura"';
+            Caption = 'Proyecto', comment = 'ESP="Proyecto"';
         }
         field(9; "Ref_Ped_Cl"; text[50])
         {
@@ -119,4 +119,10 @@ table 17414 "ZM GESTALIA Invoice Header"
 
     end;
 
+    procedure DownloadFile()
+    var
+        CONSULTIAFunctions: Codeunit "Zummo Inn. IC Functions";
+    begin
+        CONSULTIAFunctions.GetInvoicePdf(Rec);
+    end;
 }

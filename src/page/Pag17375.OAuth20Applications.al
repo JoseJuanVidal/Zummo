@@ -52,16 +52,16 @@ page 17375 "OAuth 2.0 Applications"
                 RunPageLink = "Application Code" = field(Code);
 
             }
-            action(GESTALIAVIAJEROS)
+            action(CONSULTIAVIAJEROS)
             {
                 ApplicationArea = all;
                 Promoted = true;
 
                 trigger OnAction()
                 var
-                    GestaliaFunciones: Codeunit "Zummo Inn. IC Functions";
+                    ConsultiaFunciones: Codeunit "Zummo Inn. IC Functions";
                 begin
-                    GestaliaFunciones.GetListaViajeros;
+                    ConsultiaFunciones.GetListaViajeros;
                 end;
 
             }
@@ -72,10 +72,9 @@ page 17375 "OAuth 2.0 Applications"
 
                 trigger OnAction()
                 var
-                    GestaliaFunciones: Codeunit "Zummo Inn. IC Functions";
+                    ConsultiaFunciones: Codeunit "Zummo Inn. IC Functions";
                 begin
-                    GestaliaFunciones.GetInvoicebyDate(20230501D, 20230531D);
-
+                    ConsultiaFunciones.GetInvoicebyDate(20230501D, 20230531D);
                 end;
 
             }

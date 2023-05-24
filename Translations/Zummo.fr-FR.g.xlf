@@ -5193,6 +5193,16 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Sales Line Aux - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 368717912 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Id - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 983264615 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -5207,11 +5217,6 @@
           <source>Item No.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Item No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 219879579 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Id</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM GESTALIA Invoice Header - Field Id - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1875124401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ZM Hist. BOM Cost</source>
@@ -5499,6 +5504,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblDate</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - NamedType 2369243961" size-unit="char" translate="yes" xml:space="preserve">
+          <source>/api/Facturas/ObtenerPDF?IdFactura=%1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblGetInvoicePDF</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - NamedType 3049422029" size-unit="char" translate="yes" xml:space="preserve">
           <source>/api/facturas</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -5509,10 +5519,10 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblListaViajero</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3234355424 - NamedType 273743075" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 3234355424 - NamedType 532289447" size-unit="char" translate="yes" xml:space="preserve">
           <source>https://api-destinux.consultiatravel.es/B2B.Test</source>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblurlGestalia</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblurlConsultia</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 2169472807" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;h3 style="text-align: left; color: #3f7320;"&gt;&lt;span style="border-bottom: 4px solid #c82828;"&gt;%1 No.:&amp;nbsp;&lt;/span&gt;%2&lt;/h3&gt;</source>
