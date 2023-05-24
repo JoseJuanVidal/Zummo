@@ -1061,6 +1061,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         CONSULTIAInvoiceLine."Producto" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Producto));
         CONSULTIAInvoiceLine."Base" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Base));
         CONSULTIAInvoiceLine."Porc_IVA" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Porc_IVA));
+        CONSULTIAInvoiceLine."Porc_IVA" := CONSULTIAInvoiceLine."Porc_IVA" * 100;
         CONSULTIAInvoiceLine."Imp_IVA" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Imp_IVA));
         CONSULTIAInvoiceLine."Tasas" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Tasas));
         CONSULTIAInvoiceLine."PVP" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(PVP));
@@ -1188,8 +1189,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseHeader.Validate("Buy-from Vendor No.", CONSULTIAInvoiceHeader."Vendor No.");
         PurchaseHeader.Validate("Document Date", CONSULTIAInvoiceHeader.F_Factura);
         PurchaseHeader."Vendor Invoice No." := CONSULTIAInvoiceHeader.N_Factura;
-        PurchaseHeader."Vendor Order No." := CONSULTIAInvoiceHeader.N_Pedido;
-
+        PurchaseHeader."Vendor Shipment No." := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Vendor Shipment No."));
+        PurchaseHeader."Your Reference" := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Your Reference"));
         PurchaseHeader.Insert();
     end;
 
@@ -1203,12 +1204,52 @@ codeunit 50104 "Zummo Inn. IC Functions"
         exit(Vendor."No.");
     end;
 
-    local procedure AddPurchaseLinefromCONSULTIA(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; var PurchaseHeader: Record "Purchase Header")
+    local procedure AddPurchaseLinefromCONSULTIA(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; PurchaseHeader: Record "Purchase Header")
+    var
+        CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
+        LineNo: Integer;
+    begin
+        CONSULTIAInvoiceLine.Reset();
+        CONSULTIAInvoiceLine.SetRange(Id, CONSULTIAInvoiceHeader.Id);
+        if CONSULTIAInvoiceLine.FindFirst() then
+            repeat
+                LineNo += 10000;
+                AddPurchaseLine(CONSULTIAInvoiceLine, PurchaseHeader, LineNo);
+            Until CONSULTIAInvoiceLine.next() = 0;
+    end;
+
+    local procedure AddPurchaseLine(CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; PurchaseHeader: Record "Purchase Header"; LineNo: Integer)
     var
         PurchaseLine: Record "Purchase Line";
-        CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
     begin
+        PurchaseLine.Init();
+        PurchaseLine."Document Type" := PurchaseHeader."Document Type";
+        PurchaseLine."Document No." := PurchaseHeader."No.";
+        PurchaseLine."Buy-from Vendor No." := PurchaseHeader."Buy-from Vendor No.";
+        PurchaseLine."Line No." := LineNo;
+        PurchaseLine.Insert();
+        PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
+        PurchaseLine.Validate("No.", CONSULTIAInvoiceLine.Ref_DPTO);
+        PurchaseLine.Description := copystr(CONSULTIAInvoiceLine.Desc_servicio, 1, 100);
+        PurchaseLine."Description 2" := copystr(CONSULTIAInvoiceLine.Desc_servicio, 101, 100);
+        PurchaseLine.Validate(Quantity, 1);
+        PurchaseLine.Validate("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
+        PurchaseLine.Validate("VAT Prod. Posting Group", GetVATProdPostingGroup(CONSULTIAInvoiceLine, PurchaseHeader));
+        PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Base);
+        PurchaseLine.Modify();
+    end;
 
+
+    local procedure GetVATProdPostingGroup(CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; PurchaseHeader: Record "Purchase Header"): code[20]
+    var
+        VATPostingSetup: Record "VAT Posting Setup";
+    begin
+        VATPostingSetup.Reset();
+        VATPostingSetup.SetFilter("VAT Prod. Posting Group", '%1', '*SERV');
+        VATPostingSetup.SetRange("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
+        VATPostingSetup.SetRange("VAT %", CONSULTIAInvoiceLine.Porc_IVA);
+        if VATPostingSetup.FindFirst() then
+            exit(VATPostingSetup."VAT Prod. Posting Group");
     end;
 
     local procedure CopyDocumentAttachment(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; PurchaseHeader: Record "Purchase Header")
@@ -1229,7 +1270,6 @@ codeunit 50104 "Zummo Inn. IC Functions"
                 TargetDocumentAttachment."No." := PurchaseHeader."No.";
                 TargetDocumentAttachment.Insert(true);
             until DocumentAttachment.Next() = 0;
-
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', true, true)]
@@ -1248,6 +1288,20 @@ codeunit 50104 "Zummo Inn. IC Functions"
                     end;
 
                 end;
+        end;
+    end;
+
+    procedure AssingEmployeeIdCorp(var Rec: Record "ZM CONSULTIA Invoice Line")
+    var
+        Employee: Record Employee;
+        EmployeeList: Page "Employee List";
+    begin
+        Rec.TestField(IdCorp_Usuario, '');
+        EmployeeList.LookupMode := true;
+        if EmployeeList.RunModal() = Action::LookupOK then begin
+            EmployeeList.GetRecord(Employee);
+            Rec.IdCorp_Usuario := Employee."No.";
+            Rec.Modify();
         end;
     end;
 

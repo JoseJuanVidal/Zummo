@@ -8704,6 +8704,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblurlConsultia</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1819011714 - NamedType 3049422029" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create la %1 %2.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Creada la %1 %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CreatePurchaseInvoice - NamedType lblInvoice</note>
+          <target>Creada la %1 %2.</target>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1384691716 - NamedType 1738533871" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice No. #1################</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Factura #1################"</note>
@@ -13417,6 +13423,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Líneas de facturas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Property Caption</note>
           <target>CONSULTIA Líneas de facturas</target>
+        </trans-unit>
+        <trans-unit id="Page 3672491321 - Action 1590437402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Action line - Property Caption</note>
+          <target>Líneas</target>
+        </trans-unit>
+        <trans-unit id="Page 3672491321 - Action 2846275509 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assign Employee</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Action AssingEmployee - Property Caption</note>
+          <target>Asignar Empleado</target>
         </trans-unit>
         <trans-unit id="Page 528300531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Change clasification</source>
@@ -27910,6 +27928,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha caducidad Pasaporte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee - Field Fecha caducidad Pasaporte_zum - Property Caption</note>
           <target>Fecha caducidad Pasaporte</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1498446062 - Field 4274826855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>G/L Account</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cuenta Contable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee - Field G/L Account - Property Caption</note>
+          <target>Cuenta Contable</target>
         </trans-unit>
         <trans-unit id="TableExtension 1498446062 - Field 4286822861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Grupo cotizacion</source>

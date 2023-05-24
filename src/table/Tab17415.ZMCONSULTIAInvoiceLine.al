@@ -45,6 +45,7 @@ table 17415 "ZM CONSULTIA Invoice Line"
         {
             DataClassification = CustomerContent;
             Caption = '', comment = 'ESP=""';
+            TableRelation = Employee;
         }
         field(9; "Usuario"; text[100])
         {

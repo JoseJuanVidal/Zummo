@@ -148,6 +148,5 @@ tableextension 50126 "Employee" extends Employee  //5200
             OptionCaption = ',Soltero/a,Casado/a,Divorciado/a,Viudo/a,Pareja de hecho';
             OptionMembers = " ","Soltero/a","Casado/a","Divorciado/a","Viudo/a","Pareja de hecho";
         }
-
     }
 }

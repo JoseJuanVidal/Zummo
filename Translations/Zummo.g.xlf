@@ -12348,6 +12348,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Líneas de facturas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3672491321 - Action 1590437402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Action line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3672491321 - Action 2846275509 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assign Employee</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Action AssingEmployee - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 528300531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Change clasification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clientes cambiar datos clasificación"</note>

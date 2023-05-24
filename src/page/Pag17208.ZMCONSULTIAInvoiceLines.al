@@ -102,4 +102,34 @@ page 17208 "ZM CONSULTIA Invoice Lines"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            group(line)
+            {
+                Caption = 'Line', comment = 'ESP="Líneas"';
+                action(AssingEmployee)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Assign Employee', comment = 'ESP="Asignar Empleado"';
+                    Image = Employee;
+
+                    trigger OnAction()
+                    begin
+                        AssingEmployeeIdCorp();
+                    end;
+                }
+            }
+        }
+    }
+    var
+        CONSULTIAFunciones: Codeunit "Zummo Inn. IC Functions";
+
+    local procedure AssingEmployeeIdCorp()
+    var
+    begin
+        CONSULTIAFunciones.AssingEmployeeIdCorp(Rec);
+        CurrPage.Update();
+    end;
 }
