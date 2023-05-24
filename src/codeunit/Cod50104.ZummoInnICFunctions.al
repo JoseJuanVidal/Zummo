@@ -923,6 +923,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     // ======================================================================================================
     procedure GetInvoicebyDate(Startdate: Date; EndDate: date)
     var
+        Vendor: Record Vendor;
         CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
         JsonBody: JsonObject;
         JsonResponse: JsonObject;
@@ -935,7 +936,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         JsonFacturaDetail: JsonToken;
         ErrorText: Text;
         Metodo: text;
-        ValueText: text;
+        Valuetext: text;
+        VendorName: text;
         StatusCode: Integer;
         Window: Dialog;
         lblDlg: Label 'Invoice No. #1################', comment = 'ESP="Nº Factura #1################"';
@@ -950,11 +952,15 @@ codeunit 50104 "Zummo Inn. IC Functions"
         JsonReceptor := GetJSONItemFieldObject(JsonResponse.AsToken(), 'Receptor');
         JsonFacturas := GetJSONItemFieldArray(JsonResponse.AsToken(), 'Facturas');
 
-        // ValueText := GetJSONItemFieldText(JsonEmisor.AsToken(), 'Razon_social');
+        Valuetext := GetJSONItemFieldText(JsonEmisor.AsToken(), 'CIF');
+        VendorName := GetJSONItemFieldText(JsonEmisor.AsToken(), 'Razon_social');
+        Vendor.Reset();
+        Vendor.SetRange("VAT Registration No.", Valuetext);
+        if vendor.FindFirst() then;
         // ValueText := GetJSONItemFieldText(JsonReceptor.AsToken(), 'Razon_social');
 
         foreach JsonFactura in JsonFacturas do begin
-            AddInvoiceHeader(CONSULTIAInvoiceHeader, JsonFactura);
+            AddInvoiceHeader(CONSULTIAInvoiceHeader, JsonFactura, Vendor."No.", VendorName, Valuetext);
             Window.Update(1, CONSULTIAInvoiceHeader.N_Factura);
 
             JsonFacturaDetails := GetJSONItemFieldArray(JsonFactura, 'Detalles');
@@ -964,6 +970,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
             end;
 
             CreateRecordLinkPDF(CONSULTIAInvoiceHeader);
+
+            Commit();
         end;
         Window.Close();
     end;
@@ -995,7 +1003,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end
     end;
 
-    local procedure AddInvoiceHeader(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; JsonFactura: JsonToken)
+    local procedure AddInvoiceHeader(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; JsonFactura: JsonToken; VendorNo: text;
+        VendorName: Text; VatRegistrationNo: text[20])
     var
         FieldValue: text;
         FieldValueInt: Integer;
@@ -1021,6 +1030,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
         CONSULTIAInvoiceHeader."Total_Impuesto" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Impuesto));
         CONSULTIAInvoiceHeader."Total_Tasas_Exentas" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Tasas_Exentas));
         CONSULTIAInvoiceHeader."Total" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total));
+        CONSULTIAInvoiceHeader."Vendor No." := CopyStr(VendorNo, 1, MaxStrLen(CONSULTIAInvoiceHeader."Vendor No."));
+        CONSULTIAInvoiceHeader."Vendor Name" := CopyStr(VendorName, 1, MaxStrLen(CONSULTIAInvoiceHeader."Vendor Name"));
+        CONSULTIAInvoiceHeader."Vat Registration No." := VatRegistrationNo;
         CONSULTIAInvoiceHeader.Insert();
     end;
 
@@ -1128,6 +1140,115 @@ codeunit 50104 "Zummo Inn. IC Functions"
                 ResponseMessage.Content.ReadAs(Stream);
 
         exit(IsSucces);
+    end;
+
+    procedure CreatePurchaseInvoice(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
+    var
+        PurchaseHeader: Record "Purchase Header";
+        lblInvoice: Label 'Create la %1 %2.', comment = 'ESP="Creada la %1 %2."';
+    begin
+        CONSULTIAInvoiceHeader.TestField("Pre Invoice No.", '');
+        CONSULTIAInvoiceHeader.TestField("Invoice Header No.", '');
+        case true of
+            CONSULTIAInvoiceHeader.Total >= 0:
+                CONSULTIAInvoiceHeader."Document Type" := CONSULTIAInvoiceHeader."Document Type"::Invoice;
+            else
+                CONSULTIAInvoiceHeader."Document Type" := CONSULTIAInvoiceHeader."Document Type"::"Credit Memo";
+        end;
+
+        AddPurchaseHeaderfromCONSULTIA(CONSULTIAInvoiceHeader, PurchaseHeader);
+
+        AddPurchaseLinefromCONSULTIA(CONSULTIAInvoiceHeader, PurchaseHeader);
+
+        CopyDocumentAttachment(CONSULTIAInvoiceHeader, PurchaseHeader);
+
+        CONSULTIAInvoiceHeader."Pre Invoice No." := PurchaseHeader."No.";
+        CONSULTIAInvoiceHeader.Modify();
+
+        Message(lblInvoice, PurchaseHeader."Document Type", PurchaseHeader."No.");
+    end;
+
+    local procedure AddPurchaseHeaderfromCONSULTIA(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; var PurchaseHeader: Record "Purchase Header")
+    var
+        Vendor: Record Vendor;
+    begin
+        if CONSULTIAInvoiceHeader."Vendor No." = '' then begin
+            Vendor.Get(GetVendorNoByVatRegistrationNo(CONSULTIAInvoiceHeader."Vat Registration No."));
+            CONSULTIAInvoiceHeader."Vendor No." := Vendor."No.";
+        end;
+
+        PurchaseHeader.Init();
+        case CONSULTIAInvoiceHeader."Document Type" of
+            CONSULTIAInvoiceHeader."Document Type"::Invoice:
+                PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::Invoice;
+            CONSULTIAInvoiceHeader."Document Type"::"Credit Memo":
+                PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::"Credit Memo";
+        end;
+        PurchaseHeader.InitInsert();
+        PurchaseHeader.Validate("Buy-from Vendor No.", CONSULTIAInvoiceHeader."Vendor No.");
+        PurchaseHeader.Validate("Document Date", CONSULTIAInvoiceHeader.F_Factura);
+        PurchaseHeader."Vendor Invoice No." := CONSULTIAInvoiceHeader.N_Factura;
+        PurchaseHeader."Vendor Order No." := CONSULTIAInvoiceHeader.N_Pedido;
+
+        PurchaseHeader.Insert();
+    end;
+
+    local procedure GetVendorNoByVatRegistrationNo(VatRegistrationNo: Text): code[20]
+    var
+        Vendor: Record Vendor;
+    begin
+        Vendor.Reset();
+        Vendor.SetRange("VAT Registration No.", copystr(VatRegistrationNo, 1, MaxStrLen(Vendor."VAT Registration No.")));
+        Vendor.FindFirst();
+        exit(Vendor."No.");
+    end;
+
+    local procedure AddPurchaseLinefromCONSULTIA(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; var PurchaseHeader: Record "Purchase Header")
+    var
+        PurchaseLine: Record "Purchase Line";
+        CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
+    begin
+
+    end;
+
+    local procedure CopyDocumentAttachment(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; PurchaseHeader: Record "Purchase Header")
+    var
+        DocumentAttachment: Record "Document Attachment";
+        TargetDocumentAttachment: Record "Document Attachment";
+    begin
+        DocumentAttachment.Reset();
+        DocumentAttachment.SetRange("Table ID", Database::"ZM CONSULTIA Invoice Header");
+        DocumentAttachment.SetRange("No.", CONSULTIAInvoiceHeader.N_Factura);
+        if DocumentAttachment.FindFirst() then
+            repeat
+                TargetDocumentAttachment.Init();
+                TargetDocumentAttachment := DocumentAttachment;
+                TargetDocumentAttachment.id := 0;
+                TargetDocumentAttachment."Table ID" := Database::"Purchase Header";
+                TargetDocumentAttachment."Document Type" := PurchaseHeader."Document Type";
+                TargetDocumentAttachment."No." := PurchaseHeader."No.";
+                TargetDocumentAttachment.Insert(true);
+            until DocumentAttachment.Next() = 0;
+
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', true, true)]
+    local procedure PurchaseHeader_OnAfterDeleteEvent(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
+    var
+        CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
+    begin
+        case Rec."Document Type" of
+            Rec."Document Type"::Invoice, Rec."Document Type"::"Credit Memo":
+                begin
+                    CONSULTIAInvoiceHeader.Reset();
+                    CONSULTIAInvoiceHeader.SetRange("Pre Invoice No.", Rec."No.");
+                    if CONSULTIAInvoiceHeader.FindFirst() then begin
+                        CONSULTIAInvoiceHeader."Pre Invoice No." := '';
+                        CONSULTIAInvoiceHeader.Modify();
+                    end;
+
+                end;
+        end;
     end;
 
     var

@@ -86,11 +86,46 @@ table 17414 "ZM CONSULTIA Invoice Header"
             DataClassification = CustomerContent;
             Caption = 'Total', comment = 'ESP="Total"';
         }
+        field(30; "Vendor No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor No.', comment = 'ESP="Cód. proveedor"';
+            TableRelation = Vendor;
+        }
+        field(31; "Vendor Name"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Name', comment = 'ESP="Nombre proveedor"';
+            TableRelation = Vendor;
+        }
+        field(32; "Vat Registration No."; text[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vat Registration No.', comment = 'ESP="CIF/NIF"';
+            TableRelation = Vendor;
+        }
+        field(50; "Document Type"; Option)
+        {
+            Caption = 'Pre Invoice No.', comment = 'ESP="Nª PreFactura"';
+            OptionMembers = Quote,Order,Invoice,"Credit Memo","Blanket Order","Return Order";
+        }
+        field(51; "Pre Invoice No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Pre Invoice No.', comment = 'ESP="Nª PreFactura"';
+            TableRelation = "Purchase Header"."No." where("Document Type" = const(Invoice));
+        }
+        field(52; "Invoice Header No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Invoice Header No.', comment = 'ESP="Nª Factura"';
+            TableRelation = "Purch. Inv. Header";
+        }
     }
 
     keys
     {
-        key(PK; id)
+        key(PK; Id)
         {
             Clustered = true;
         }
@@ -111,7 +146,7 @@ table 17414 "ZM CONSULTIA Invoice Header"
 
     trigger OnDelete()
     begin
-
+        DeleteRelationsTable();
     end;
 
     trigger OnRename()
@@ -119,9 +154,26 @@ table 17414 "ZM CONSULTIA Invoice Header"
 
     end;
 
+    local procedure DeleteRelationsTable()
+    var
+        Lines: Record "ZM CONSULTIA Invoice Line";
+        DocumentAttachment: Record "Document Attachment";
+    begin
+        Rec.TestField("Pre Invoice No.", '');
+        Rec.TestField("Invoice Header No.", '');
+        Lines.Reset();
+        Lines.SetRange(Id, Rec.Id);
+        lines.DeleteAll();
+        DocumentAttachment.Reset();
+        DocumentAttachment.SetRange("Table ID", Database::"ZM CONSULTIA Invoice Header");
+        DocumentAttachment.SetRange("No.", Rec.N_Factura);
+        DocumentAttachment.DeleteAll();
+    end;
+
     procedure DownloadFile()
     var
         CONSULTIAFunctions: Codeunit "Zummo Inn. IC Functions";
+
     begin
         CONSULTIAFunctions.GetInvoicePdf(Rec);
     end;

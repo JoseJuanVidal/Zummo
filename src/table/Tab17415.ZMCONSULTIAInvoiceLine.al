@@ -143,5 +143,4 @@ table 17415 "ZM CONSULTIA Invoice Line"
     begin
 
     end;
-
 }

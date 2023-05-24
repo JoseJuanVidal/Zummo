@@ -116,18 +116,6 @@ page 17416 "ZM CONSULTIA Invoice Headers"
                 begin
                     GetInvoiceByDate
                 end;
-
-            }
-            action(Download)
-            {
-                ApplicationArea = all;
-                Image = Download;
-                Promoted = true;
-
-                trigger OnAction()
-                begin
-                    Rec.DownloadFile();
-                end;
             }
         }
     }

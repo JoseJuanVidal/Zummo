@@ -6717,6 +6717,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Descripcion - Property Caption</note>
           <target>Descripción</target>
         </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pre Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nª PreFactura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Document Type - Property Caption</note>
+          <target>Nª PreFactura</target>
+        </trans-unit>
         <trans-unit id="Table 1677429823 - Field 1990461137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nº Factura Recitificativa</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Factura Recitificativa"</note>
@@ -6740,6 +6746,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field IdCorp_Sol - Property Caption</note>
           <target>ID Corporativo Solicitante</target>
         </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 3135092427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Header No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nª Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Invoice Header No. - Property Caption</note>
+          <target>Nª Factura</target>
+        </trans-unit>
         <trans-unit id="Table 1677429823 - Field 528239306 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nombre Solicitante</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Solicitante"</note>
@@ -6757,6 +6769,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field N_Pedido - Property Caption</note>
           <target>Nº Pedido</target>
+        </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 519641027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pre Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nª PreFactura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Pre Invoice No. - Property Caption</note>
+          <target>Nª PreFactura</target>
         </trans-unit>
         <trans-unit id="Table 1677429823 - Field 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proyecto</source>
@@ -6805,6 +6823,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Total Tasas Exentas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Total_Tasas_Exentas - Property Caption</note>
           <target>Total Tasas Exentas</target>
+        </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 2681495375 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vat Registration No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CIF/NIF"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Vat Registration No. - Property Caption</note>
+          <target>CIF/NIF</target>
+        </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Vendor Name - Property Caption</note>
+          <target>Nombre proveedor</target>
+        </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Vendor No. - Property Caption</note>
+          <target>Cód. proveedor</target>
         </trans-unit>
         <trans-unit id="Table 368717912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CONSULTIA Invoice Line</source>
@@ -8667,6 +8703,12 @@
           <source>https://api-destinux.consultiatravel.es/B2B.Test</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblurlConsultia</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1384691716 - NamedType 1738533871" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice No. #1################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Factura #1################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetInvoicebyDate - NamedType lblDlg</note>
+          <target>Nº Factura #1################</target>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3305872943 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Would you like to download the PDF of invoice %1?</source>
@@ -13316,6 +13358,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Property Caption</note>
           <target>CONSULTIA Facturas</target>
         </trans-unit>
+        <trans-unit id="Page 1677429823 - NamedType 304092072" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to create the pre-invoice %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear la prefactura %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - NamedType lblConfirmCreate</note>
+          <target>¿Desea crear la prefactura %1?</target>
+        </trans-unit>
         <trans-unit id="Page 1677429823 - NamedType 4292973370" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to update invoices from %1 to %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualziar las facturas desde %1 a %2?"</note>
@@ -13327,6 +13375,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Control lines - Property Caption</note>
           <target>Líneas</target>
+        </trans-unit>
+        <trans-unit id="Page 1677429823 - Control 4149417275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Register</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Control Register - Property Caption</note>
+          <target>Registro</target>
+        </trans-unit>
+        <trans-unit id="Page 1677429823 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachment Document</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Control Attachment Document - Property Caption</note>
+          <target>Documentos adjuntos</target>
+        </trans-unit>
+        <trans-unit id="Page 1677429823 - Action 3638771396 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create invoice</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Action CreatingInvoice - Property Caption</note>
+          <target>Crear Factura</target>
         </trans-unit>
         <trans-unit id="Page 2372062954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CONSULTIA Invoice Headers</source>
