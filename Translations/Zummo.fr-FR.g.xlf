@@ -9735,6 +9735,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType lblNDias</note>
           <target>à partir de la confirmation de la commande</target>
         </trans-unit>
+        <trans-unit id="Report 3412186937 - NamedType 3874219377" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead Time: </source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº días: ",FRA="Nº dias: "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType lbNumDias</note>
+          <target>Nº dias: </target>
+        </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2403527776" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT:</source>
           <note from="Developer" annotates="general" priority="2">ESP="NIF:",FRA="Nº TVA Intra."</note>

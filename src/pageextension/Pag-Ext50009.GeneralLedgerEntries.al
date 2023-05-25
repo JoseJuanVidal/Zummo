@@ -24,6 +24,21 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
             {
                 ApplicationArea = ALL;
             }
+            field(PaisClienteProv; PaisClienteProv)
+            {
+                ApplicationArea = all;
+                Caption = 'País', comment = 'ESP="País"';
+            }
+            field("Customer Name"; "Customer Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Customer Country/Region Code"; "Customer Country/Region Code")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("Detalle"; "Global Dimension 3 Code")
             {
                 ApplicationArea = ALL;
@@ -111,15 +126,19 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
         Customer: Record Customer;
     begin
         NombreClienteProv := '';
-        if Vendor.get("Source No.") then
-            NombreClienteProv := Vendor.Name
-        ELSE
-
-            if Customer.get("Source No.") then
+        if Vendor.get("Source No.") then begin
+            NombreClienteProv := Vendor.Name;
+            PaisClienteProv := Vendor."Country/Region Code";
+        end ELSE begin
+            if Customer.get("Source No.") then begin
                 NombreClienteProv := Customer.Name;
+                PaisClienteProv := Customer."Country/Region Code";
+            end;
+        end;
     end;
 
 
     var
         NombreClienteProv: code[100];
+        PaisClienteProv: code[10];
 }
