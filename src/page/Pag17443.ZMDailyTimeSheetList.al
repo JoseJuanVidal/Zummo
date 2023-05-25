@@ -1,9 +1,9 @@
-page 17440 "ZM IT Daily Time Sheet List"
+page 17443 "ZM Daily Time Sheet List"
 {
-    Caption = 'Daily Time Sheet List', comment = 'ESP="Lista partes diarios"';
+    Caption = 'Daily Time Sheet List', comment = 'ESP="Partes Diarios"';
     PageType = List;
-    // ApplicationArea = All;
-    UsageCategory = None;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "ZM IT Daily Time Sheet";
     //SourceTableView = where(Registered = const(false));
 
@@ -35,18 +35,11 @@ page 17440 "ZM IT Daily Time Sheet List"
                 field(Date; Date)
                 {
                     ApplicationArea = all;
+
                     trigger OnValidate()
                     begin
                         ValidateDate();
                     end;
-                }
-                field(Department; Department)
-                {
-                    ApplicationArea = all;
-                }
-                field(TimeDuration; TimeDuration)
-                {
-                    ApplicationArea = all;
                 }
                 field("User id"; "User id")
                 {
@@ -58,24 +51,20 @@ page 17440 "ZM IT Daily Time Sheet List"
                         ValidateUserId();
                     end;
                 }
-                field("Resource no."; "Resource no.")
+                field("Employee No."; "Employee No.")
                 {
                     ApplicationArea = all;
-                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        ValidateUserId();
+                    end;
                 }
-                field(Type; Type)
-                {
-                    ApplicationArea = all;
-                }
-                field("key"; "key")
-                {
-                    ApplicationArea = all;
-                }
-                field("Key summary"; "Key summary")
+                field("Employee Name"; "Employee Name")
                 {
                     ApplicationArea = all;
                 }
-                field("Resource Name"; "Resource Name")
+                field(Task; Task)
                 {
                     ApplicationArea = all;
                 }
@@ -91,10 +80,9 @@ page 17440 "ZM IT Daily Time Sheet List"
                 {
                     ApplicationArea = all;
                 }
-                field(Registered; Registered)
+                field(TimeDuration; TimeDuration)
                 {
                     ApplicationArea = all;
-                    Visible = false;
                 }
             }
         }
@@ -171,33 +159,8 @@ page 17440 "ZM IT Daily Time Sheet List"
                 trigger OnAction()
                 begin
                     Rec.Reset();
+                    SetFilterUserId();
                     CurrPage.Update();
-                end;
-            }
-            action(Post)
-            {
-                ApplicationArea = all;
-                Caption = 'Post', comment = 'ESP="Registrar"';
-                Image = Post;
-                Promoted = true;
-                PromotedCategory = Process;
-
-                trigger OnAction()
-                begin
-                    PostTimeSheet();
-                end;
-            }
-            action(Jira)
-            {
-                ApplicationArea = all;
-                Caption = 'JIRA Refresh', comment = 'ESP="JIRA Act."';
-                Image = Refresh;
-                Promoted = true;
-                PromotedCategory = Process;
-
-                trigger OnAction()
-                begin
-                    JiraRefresh();
                 end;
             }
         }
@@ -215,6 +178,7 @@ page 17440 "ZM IT Daily Time Sheet List"
         if Fecha = 0D then
             Fecha := WorkDate();
         Rec.SetRange(Date, Fecha);
+        SetFilterUserId();
     end;
 
     trigger OnAfterGetCurrRecord()
@@ -242,8 +206,8 @@ page 17440 "ZM IT Daily Time Sheet List"
     local procedure UpdateTimeDailySheet()
     begin
         DailyTime.Reset();
+        SetFilterUserId();
         DailyTime.SetRange(date, Fecha);
-        DailyTime.SetRange("User id", UserId);
         DailyTime.CalcSums(TimeDuration);
         Total := DailyTime.TimeDuration;
     end;
@@ -285,5 +249,14 @@ page 17440 "ZM IT Daily Time Sheet List"
         SWFunciones.JIRAGetAllTickets();
         SWFunciones.JIRAGetAllProjects();
         Message('End/Fin');
+    end;
+
+    local procedure SetFilterUserId()
+    var
+        myInt: Integer;
+    begin
+        Rec.FilterGroup := 2;
+        Rec.SetRange("User id", UserId);
+        Rec.FilterGroup := 0;
     end;
 }

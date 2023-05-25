@@ -4169,7 +4169,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2252767808 - Field 2483678830 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Puesto Trabajo, , , , , ,Historico Puestos,Historico Contratos,Historico Categoria,Categoria, , ,Departamentos,Sección,Empresa ,Area,CategoriaBonificaciones,Ubicación Puesto,Evaluación Riesgos,Sucursal,IT Departamentos</source>
+          <source>Puesto Trabajo, , , , , ,Historico Puestos,Historico Contratos,Historico Categoria,Categoria, , ,Departamentos,Sección,Empresa ,Area,CategoriaBonificaciones,Ubicación Puesto,Evaluación Riesgos,Sucursal,IT Departamentos,Task</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property OptionCaption</note>
         </trans-unit>

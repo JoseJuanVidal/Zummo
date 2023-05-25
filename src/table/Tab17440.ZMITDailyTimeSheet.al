@@ -97,6 +97,25 @@ table 17440 "ZM IT Daily Time Sheet"
                 ValidateStarEnd();
             end;
         }
+        field(60; "Employee No."; code[20])
+        {
+            Caption = 'Employee No.', comment = 'ESP="Cód. Persona"';
+            DataClassification = CustomerContent;
+            TableRelation = Employee where("User Id" = field("User id"));
+        }
+        field(61; "Employee Name"; text[100])
+        {
+            Caption = 'Employee Name', comment = 'ESP="Nombre"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Employee.Name where("No." = field("Employee no.")));
+            Editable = false;
+        }
+        field(62; Task; Code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Task', comment = 'ESP="Tarea"';
+            TableRelation = MultiRRHH_zum.Codigo WHERE(tabla = CONST(Task));
+        }
         field(100; Registered; Boolean)
         {
             DataClassification = CustomerContent;

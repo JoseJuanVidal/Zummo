@@ -148,6 +148,12 @@ tableextension 50126 "Employee" extends Employee  //5200
             OptionCaption = ',Soltero/a,Casado/a,Divorciado/a,Viudo/a,Pareja de hecho';
             OptionMembers = " ","Soltero/a","Casado/a","Divorciado/a","Viudo/a","Pareja de hecho";
         }
+        field(50135; "User Id"; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'User Id', comment = 'ESP="Id. Usuario"';
+            TableRelation = "User Setup";
+        }
 
     }
 }
