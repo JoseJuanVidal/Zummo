@@ -23523,6 +23523,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Dimensiones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDimensiones - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Control 4259797232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>País</source>
+          <note from="Developer" annotates="general" priority="2">ESP="País"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Control PaisClienteProv - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Control 518354779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Bitec</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bitec"</note>

@@ -1237,6 +1237,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseLine.Validate("VAT Prod. Posting Group", GetVATProdPostingGroup(CONSULTIAInvoiceLine, PurchaseHeader));
         PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Base);
         PurchaseLine.Modify();
+        // TODO controlar que si hay tasas, las líneas hay que poner dos
     end;
 
 
