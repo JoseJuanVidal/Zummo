@@ -13155,12 +13155,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemCategory - Property Caption</note>
           <target>Categoria producto</target>
         </trans-unit>
-        <trans-unit id="Page 3113805797 - Control 3524371908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Clasificación Ventas</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemClasVtas - Property Caption</note>
-          <target>Clasificación Ventas</target>
-        </trans-unit>
         <trans-unit id="Page 3113805797 - Control 526744387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Valoración Existencias</source>
           <note from="Developer" annotates="general" priority="2">ESP="Valoración Existencias"</note>
@@ -13172,24 +13166,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemDesc - Property Caption</note>
           <target>Nombre producto</target>
-        </trans-unit>
-        <trans-unit id="Page 3113805797 - Control 3282937166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Familia</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemFamilia - Property Caption</note>
-          <target>Familia</target>
-        </trans-unit>
-        <trans-unit id="Page 3113805797 - Control 1052342790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Gama</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Gama"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemGamma - Property Caption</note>
-          <target>Gama</target>
-        </trans-unit>
-        <trans-unit id="Page 3113805797 - Control 2175363341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Línea Económica</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Línea Económica"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemLineaEco - Property Caption</note>
-          <target>Línea Económica</target>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Control 16404887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Coste Estandar</source>
@@ -25470,6 +25446,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDimensiones - Property Caption</note>
           <target>Cambiar Dimensiones</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Control 4259797232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>País</source>
+          <note from="Developer" annotates="general" priority="2">ESP="País"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Control PaisClienteProv - Property Caption</note>
+          <target>País</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Control 518354779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Bitec</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bitec"</note>
@@ -27928,12 +27910,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha caducidad Pasaporte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee - Field Fecha caducidad Pasaporte_zum - Property Caption</note>
           <target>Fecha caducidad Pasaporte</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1498446062 - Field 4274826855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
-          <source>G/L Account</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cuenta Contable"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee - Field G/L Account - Property Caption</note>
-          <target>Cuenta Contable</target>
         </trans-unit>
         <trans-unit id="TableExtension 1498446062 - Field 4286822861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Grupo cotizacion</source>
@@ -30739,6 +30715,54 @@
           <note from="Developer" annotates="general" priority="2">ESP="Filtro Fecha"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field Date Filter - Property Caption</note>
           <target>Filtro Fecha</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 2163727191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Desc. Sales Classification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Clasificación Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field desClasVtas_btc - Property Caption</note>
+          <target>Desc. Clasificación Ventas</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 304493673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Desc. Familia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field desFamilia_btc - Property Caption</note>
+          <target>Desc. Familia</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 3555758206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Desc. Gamma</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Gama"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field desGama_btc - Property Caption</note>
+          <target>Desc. Gama</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 1382123467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Desc. Linea Economica</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field desLineaEconomica_btc - Property Caption</note>
+          <target>Desc. Linea Economica</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Sales Classification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field selClasVtas_btc - Property Caption</note>
+          <target>Clasificación Ventas</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 2448458993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Family</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field selFamilia_btc - Property Caption</note>
+          <target>Familia</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 1300314486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Gamma</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Gama"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field selGama_btc - Property Caption</note>
+          <target>Gama</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 2853709011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Linea Economica</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Linea Economica"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field selLineaEconomica_btc - Property Caption</note>
+          <target>Linea Economica</target>
         </trans-unit>
         <trans-unit id="TableExtension 2869752476 - Field 4072409575 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
           <source>Vigente</source>

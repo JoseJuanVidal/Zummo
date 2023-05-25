@@ -87,28 +87,48 @@ page 50010 "Tarifas Precios"
                     Caption = 'Bloqueado Ventas', comment = 'ESP="Bloqueado Ventas"';
                     Editable = false;
                 }
-                field(ItemClasVtas; Item.desClasVtas_btc)
+                field(selClasVtas_btc; selClasVtas_btc)
                 {
                     ApplicationArea = all;
-                    Caption = 'Clasificación Ventas', comment = 'ESP="Clasificación Ventas"';
+                    Editable = false;
+                    Visible = false;
+                }
+                field(selFamilia_btc; selFamilia_btc)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    Visible = false;
+                }
+                field(selGama_btc; selGama_btc)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    Visible = false;
+                }
+                field(selLineaEconomica_btc; selLineaEconomica_btc)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    Visible = false;
+                }
+                field(ItemClasVtas; desClasVtas_btc)
+                {
+                    ApplicationArea = all;
                     Editable = false;
                 }
-                field(ItemFamilia; Item.desFamilia_btc)
+                field(ItemFamilia; desFamilia_btc)
                 {
                     ApplicationArea = all;
-                    Caption = 'Familia', comment = 'ESP="Familia"';
                     Editable = false;
                 }
-                field(ItemGamma; Item.desGama_btc)
+                field(ItemGamma; desGama_btc)
                 {
                     ApplicationArea = all;
-                    Caption = 'Gama', comment = 'ESP="Gama"';
                     Editable = false;
                 }
-                field(ItemLineaEco; Item.desLineaEconomica_btc)
+                field(ItemLineaEco; desLineaEconomica_btc)
                 {
                     ApplicationArea = all;
-                    Caption = 'Línea Económica', comment = 'ESP="Línea Económica"';
                     Editable = false;
                 }
                 field(ItemCategory; Item."Item Category Code")
@@ -157,15 +177,9 @@ page 50010 "Tarifas Precios"
     trigger OnAfterGetRecord()
     begin
         if Item.Get("Item No.") then;
-        ItemCalcFields;
     end;
 
     var
         Item: Record Item;
 
-    local procedure ItemCalcFields()
-    begin
-        Item.CalcFields(desClasVtas_btc, desFamilia_btc, desGama_btc, desLineaEconomica_btc)
-
-    end;
 }

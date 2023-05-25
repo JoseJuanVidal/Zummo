@@ -1236,8 +1236,27 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseLine.Validate("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
         PurchaseLine.Validate("VAT Prod. Posting Group", GetVATProdPostingGroup(CONSULTIAInvoiceLine, PurchaseHeader));
         PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Base);
+        PurchaseLine.Validate("Shortcut Dimension 1 Code", CONSULTIAInvoiceLine.Ref_Usuario);
         PurchaseLine.Modify();
-        // TODO controlar que si hay tasas, las líneas hay que poner dos
+        // controlar que si hay tasas, hay que poner dos lineas y una exenta
+        if CONSULTIAInvoiceLine.Tasas <> 0 then begin
+            PurchaseLine.Init();
+            PurchaseLine."Document Type" := PurchaseHeader."Document Type";
+            PurchaseLine."Document No." := PurchaseHeader."No.";
+            PurchaseLine."Buy-from Vendor No." := PurchaseHeader."Buy-from Vendor No.";
+            PurchaseLine."Line No." := LineNo + 5000;
+            PurchaseLine.Insert();
+            PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
+            PurchaseLine.Validate("No.", CONSULTIAInvoiceLine.Ref_DPTO);
+            PurchaseLine.Description := copystr(CONSULTIAInvoiceLine.Desc_servicio, 1, 100);
+            PurchaseLine."Description 2" := copystr(CONSULTIAInvoiceLine.Desc_servicio, 101, 100);
+            PurchaseLine.Validate(Quantity, 1);
+            PurchaseLine.Validate("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
+            PurchaseLine.Validate("VAT Prod. Posting Group", 'EXENTOSERV');
+            PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Tasas);
+            PurchaseLine.Validate("Shortcut Dimension 1 Code", CONSULTIAInvoiceLine.Ref_Usuario);
+            PurchaseLine.Modify();
+        end;
     end;
 
 
@@ -1245,6 +1264,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     var
         VATPostingSetup: Record "VAT Posting Setup";
     begin
+        // TODO, cambiar por configuracion de porcentaje iva
         VATPostingSetup.Reset();
         VATPostingSetup.SetFilter("VAT Prod. Posting Group", '%1', '*SERV');
         VATPostingSetup.SetRange("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");

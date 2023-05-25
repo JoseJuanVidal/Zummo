@@ -52,7 +52,7 @@ table 17415 "ZM CONSULTIA Invoice Line"
             DataClassification = CustomerContent;
             Caption = '', comment = 'ESP=""';
         }
-        field(10; "Ref_Usuario"; text[100])
+        field(10; "Ref_Usuario"; text[100])  // CECO Dimension
         {
             DataClassification = CustomerContent;
             Caption = '', comment = 'ESP=""';
