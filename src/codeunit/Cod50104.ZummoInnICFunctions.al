@@ -710,6 +710,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
     end;
 
+
+
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
         JobsSetup: Record "Jobs Setup";

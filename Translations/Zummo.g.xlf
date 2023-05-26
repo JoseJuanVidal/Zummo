@@ -6483,6 +6483,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Item No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3803506403 - NamedType 3537014988" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must select a person to perform the markings..</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe seleccionar una Persona para realizar los marcajes."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - NamedType lblErrorEmployee</note>
+        </trans-unit>
+        <trans-unit id="Table 3803506403 - Field 1964419135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field Employee No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3803506403 - Field 3975658731 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Server Instance ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field Server Instance ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3803506403 - Field 1829104285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Session ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field Session ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3803506403 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field User ID - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3435315486 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
@@ -12097,6 +12122,11 @@
           <source>Do you want to create the resource journal of pending records?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el diario de recursos de los registros pendientes?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - NamedType lblPost</note>
+        </trans-unit>
+        <trans-unit id="Page 616408914 - Control 3354042457 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - Control key - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 616408914 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>

@@ -84,6 +84,11 @@ page 17443 "ZM Daily Time Sheet List"
                 {
                     ApplicationArea = all;
                 }
+                field("key"; "key")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Proyecto', comment = 'ESP="Proyecto"';
+                }
             }
         }
     }
@@ -171,6 +176,7 @@ page 17443 "ZM Daily Time Sheet List"
         if Fecha = 0D then
             Fecha := WorkDate();
         Rec.SetRange(Date, Fecha);
+        GetEmployee();
     end;
 
     trigger OnOpenPage()
@@ -188,8 +194,12 @@ page 17443 "ZM Daily Time Sheet List"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
+        Rec.Type := REc.Type::Proyecto;
         if Rec.GetFilter(Date) <> '' then
             Rec.Date := Rec.GetRangeMin(Date);
+
+        if Rec."Employee No." = '' then
+            Rec."Employee No." := Employee."No.";
     end;
 
     trigger OnModifyRecord(): Boolean
@@ -198,15 +208,23 @@ page 17443 "ZM Daily Time Sheet List"
     end;
 
     var
+        Employee: Record Employee;
         DailyTime: Record "ZM IT Daily Time Sheet";
+        DailyUserSession: Record "ZM Daily User Session";
         Fecha: date;
         Total: Duration;
         lblPost: Label 'Do you want to create the resource journal of pending records?', comment = 'ESP="¿Desea crear el diario de recursos de los registros pendientes?"';
 
+    local procedure GetEmployee()
+    begin
+        Employee.Get(DailyUserSession.UserSession());
+    end;
+
     local procedure UpdateTimeDailySheet()
     begin
         DailyTime.Reset();
-        SetFilterUserId();
+        DailyTime.SetRange("User id", UserId);
+        DailyTime.SetRange("Employee No.", Employee."No.");
         DailyTime.SetRange(date, Fecha);
         DailyTime.CalcSums(TimeDuration);
         Total := DailyTime.TimeDuration;
@@ -258,5 +276,9 @@ page 17443 "ZM Daily Time Sheet List"
         Rec.FilterGroup := 2;
         Rec.SetRange("User id", UserId);
         Rec.FilterGroup := 0;
+        if Rec.GetFilter("Employee No.") = '' then
+            Rec.SetRange("Employee No.", Employee."No.")
+        else
+            Rec.SetRange("Employee No.");
     end;
 }
