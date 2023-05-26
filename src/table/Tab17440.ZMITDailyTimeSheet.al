@@ -114,7 +114,7 @@ table 17440 "ZM IT Daily Time Sheet"
         {
             DataClassification = CustomerContent;
             Caption = 'Task', comment = 'ESP="Tarea"';
-            TableRelation = MultiRRHH_zum.Codigo WHERE(tabla = CONST(Task));
+            TableRelation = "ZM Daily Task".Code where("User Id" = field("User id"));
         }
         field(100; Registered; Boolean)
         {
@@ -133,6 +133,10 @@ table 17440 "ZM IT Daily Time Sheet"
         key(Key1; id)
         {
             Clustered = true;
+        }
+        key(key2; Date, "User id", "Employee No.")
+        {
+
         }
     }
 

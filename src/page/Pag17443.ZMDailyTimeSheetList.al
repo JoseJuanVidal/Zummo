@@ -3,9 +3,9 @@ page 17443 "ZM Daily Time Sheet List"
     Caption = 'Daily Time Sheet List', comment = 'ESP="Partes Diarios"';
     PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     SourceTable = "ZM IT Daily Time Sheet";
-    //SourceTableView = where(Registered = const(false));
+    SourceTableView = sorting(Date, "User id", "Employee No.");
 
     layout
     {
@@ -153,17 +153,32 @@ page 17443 "ZM Daily Time Sheet List"
                     Rec.EndTime();
                 end;
             }
+            action(ChangeUser)
+            {
+                ApplicationArea = all;
+                Caption = 'Change User', comment = 'ESP="Cambiar usuario"';
+                Image = User;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+
+                    ChangeEmployee();
+                    CurrPage.Update();
+                end;
+            }
+
             action(ShowAll)
             {
                 ApplicationArea = all;
-                Caption = 'Show All', comment = 'ESP="Mostrar todos"';
+                Caption = 'Show/Hide All', comment = 'ESP="Mostrar/Ocultar todos"';
                 Image = ExpandAll;
                 Promoted = true;
                 PromotedCategory = Process;
 
                 trigger OnAction()
                 begin
-                    Rec.Reset();
                     SetFilterUserId();
                     CurrPage.Update();
                 end;
@@ -213,6 +228,7 @@ page 17443 "ZM Daily Time Sheet List"
         DailyUserSession: Record "ZM Daily User Session";
         Fecha: date;
         Total: Duration;
+        Showall: Boolean;
         lblPost: Label 'Do you want to create the resource journal of pending records?', comment = 'ESP="¿Desea crear el diario de recursos de los registros pendientes?"';
 
     local procedure GetEmployee()
@@ -273,12 +289,27 @@ page 17443 "ZM Daily Time Sheet List"
     var
         myInt: Integer;
     begin
+        Rec.Reset();
         Rec.FilterGroup := 2;
         Rec.SetRange("User id", UserId);
         Rec.FilterGroup := 0;
-        if Rec.GetFilter("Employee No.") = '' then
-            Rec.SetRange("Employee No.", Employee."No.")
+        if Showall then
+            Rec.SetRange("Employee No.")
         else
-            Rec.SetRange("Employee No.");
+            Rec.SetRange("Employee No.", Employee."No.");
+        if Showall then
+            Rec.SetRange(Date)
+        else
+            Rec.SetRange(Date, WorkDate());
+        Showall := not Showall;
+
+    end;
+
+    local procedure ChangeEmployee()
+
+    begin
+        if DailyUserSession.ChangeUserSession(Employee) then
+            Rec.SetRange("Employee No.", Employee."No.");
+        CurrPage.Update();
     end;
 }

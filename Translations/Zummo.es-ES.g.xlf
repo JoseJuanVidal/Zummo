@@ -6370,10 +6370,10 @@
           <target>Tipo Registro</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante"</note>
+          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
-          <target>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante</target>
+          <target>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 1397213012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Warranty Date</source>
@@ -6737,6 +6737,23 @@
           <source>Item No.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3345876069 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily Task - Field Code - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 3345876069 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily Task - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 3345876069 - Field 3776794752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily Task - Field User Id - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3803506403 - NamedType 3537014988" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must select a person to perform the markings..</source>
@@ -13157,11 +13174,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - NamedType lblPost</note>
           <target>¿Desea crear el diario de recursos de los registros pendientes?</target>
         </trans-unit>
+        <trans-unit id="Page 616408914 - Control 3354042457 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - Control key - Property Caption</note>
+          <target>Proyecto</target>
+        </trans-unit>
         <trans-unit id="Page 616408914 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>
           <note from="Developer" annotates="general" priority="2">ESP="Opciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - Control Options - Property Caption</note>
           <target>Opciones</target>
+        </trans-unit>
+        <trans-unit id="Page 616408914 - Action 2052529969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change User</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - Action ChangeUser - Property Caption</note>
+          <target>Cambiar usuario</target>
         </trans-unit>
         <trans-unit id="Page 616408914 - Action 3837516702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>End Time</source>
@@ -13182,10 +13211,10 @@
           <target>Dia Anterior</target>
         </trans-unit>
         <trans-unit id="Page 616408914 - Action 580853590 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show All</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Mostrar todos"</note>
+          <source>Show/Hide All</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar/Ocultar todos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - Action ShowAll - Property Caption</note>
-          <target>Mostrar todos</target>
+          <target>Mostrar/Ocultar todos</target>
         </trans-unit>
         <trans-unit id="Page 616408914 - Action 530928583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Start Time</source>

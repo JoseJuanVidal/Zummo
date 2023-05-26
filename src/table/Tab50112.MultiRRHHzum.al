@@ -18,7 +18,7 @@ table 50112 "MultiRRHH_zum"
         {
 
         }
-        field(30; Codigo; Code[20])
+        field(30; Codigo; Code[50])
         {
         }
 

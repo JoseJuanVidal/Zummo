@@ -88,6 +88,32 @@ table 17443 "ZM Daily User Session"
         exit(DailyUserSession."Employee No.");
     end;
 
+    procedure ChangeUserSession(var Employee: Record Employee): Boolean
+    var
+        DailyUserSession: Record "ZM Daily User Session";
+
+    begin
+        if not GetEmployee(Employee) then
+            exit;
+        DailyUserSession.Reset();
+        DailyUserSession.SetRange("Session ID", SessionId());
+        DailyUserSession.SetRange("Server Instance Id", ServiceInstanceId());
+        DailyUserSession.SetRange("User ID", UserId);
+        if not DailyUserSession.FindFirst() then begin
+            DailyUserSession.Reset();
+            DailyUserSession.Init();
+            DailyUserSession."Session ID" := SessionId();
+            DailyUserSession."Server Instance ID" := ServiceInstanceId();
+            DailyUserSession."User ID" := UserId;
+            DailyUserSession.Insert()
+        end;
+
+        DailyUserSession."Employee No." := Employee."No.";
+        DailyUserSession.Modify();
+        // Commit();
+        exit(true);
+    end;
+
     local procedure GetEmployee(var Employee: Record Employee): Boolean
     var
         Employee2: Record Employee;
