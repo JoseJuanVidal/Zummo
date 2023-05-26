@@ -4,6 +4,7 @@ table 17444 "ZM Daily Task"
     LookupPageId = "ZM Daily Task";
     DrillDownPageId = "ZM Daily Task";
 
+
     fields
     {
         field(1; "User Id"; code[50])
@@ -29,7 +30,11 @@ table 17444 "ZM Daily Task"
             Clustered = true;
         }
     }
-
+    fieldgroups
+    {
+        fieldgroup(Brick; code, Description) { }
+        fieldgroup(DropDown; Code, Description) { }
+    }
     var
         myInt: Integer;
 

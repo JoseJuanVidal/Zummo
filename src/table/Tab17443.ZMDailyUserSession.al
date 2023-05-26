@@ -84,7 +84,7 @@ table 17443 "ZM Daily User Session"
 
         DailyUserSession."Employee No." := Employee."No.";
         DailyUserSession.Modify();
-        // Commit();
+        Commit();
         exit(DailyUserSession."Employee No.");
     end;
 

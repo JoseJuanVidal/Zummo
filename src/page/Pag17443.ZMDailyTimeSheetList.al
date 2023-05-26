@@ -7,6 +7,7 @@ page 17443 "ZM Daily Time Sheet List"
     SourceTable = "ZM IT Daily Time Sheet";
     SourceTableView = sorting(Date, "User id", "Employee No.");
 
+
     layout
     {
         area(Content)
