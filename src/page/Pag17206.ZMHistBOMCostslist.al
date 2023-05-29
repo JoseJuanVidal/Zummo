@@ -118,11 +118,37 @@ page 17206 "ZM Hist. BOM Costs list"
 
                 trigger OnAction()
                 begin
-                    REc.UpdateTableBOMCosts();
+                    Rec.UpdateTableBOMCosts();
+                end;
+            }
+            action(CargarLM)
+            {
+                ApplicationArea = All;
+                Caption = 'Cargar L.M. Producción', comment = 'ESP="Cargar L.M. Producción"';
+                Image = UpdateUnitCost;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    HISTBOMProduction: Record "ZM HIST BOM Production";
+                begin
+                    HISTBOMProduction.UpdateBomHist();
                 end;
             }
         }
+        area(Navigation)
+        {
+            action(LMProduction)
+            {
+                ApplicationArea = All;
+                Caption = 'L.M. Producción', comment = 'ESP="L.M. Producción"';
+                Image = BOMLedger;
+                Promoted = true;
+                RunObject = page "ZM HIST BOM Productions";
 
+            }
+        }
 
     }
 }

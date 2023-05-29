@@ -6528,6 +6528,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 1789400218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Level</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Level - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3435315486 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
@@ -7627,6 +7632,11 @@
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1982879740 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field Document No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1982879740 - Field 2589406539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>driveId</source>
@@ -12278,10 +12288,45 @@
           <note from="Developer" annotates="general" priority="2">ESP="Lista Hist. BOM Costes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Hist. BOM Costs list - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2641796487 - Action 4248133198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>L.M. Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Hist. BOM Costs list - Action LMProduction - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2641796487 - Action 397859648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cargar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Hist. BOM Costs list - Action Cargar - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2641796487 - Action 984716247 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar L.M. Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cargar L.M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Hist. BOM Costs list - Action CargarLM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2367316995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import files folders</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar ficheros de carpeta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2367316995 - NamedType 2769762455" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select Folder</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar carpeta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - NamedType lblName</note>
+        </trans-unit>
+        <trans-unit id="Page 2367316995 - Control 494214623 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Files</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ficheros"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Control Files - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2367316995 - Control 3970229063 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Albaranes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albaranes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Control ReceiptNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2367316995 - Action 2026913255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Action Refresh - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2376143693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Daily Time Sheet List</source>

@@ -52,6 +52,11 @@ table 17380 "ZM SH Record Link Sharepoint"
         {
             DataClassification = CustomerContent;
         }
+        field(60; "Document No."; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Document No.', comment = 'ESP="Nº Documento"';
+        }
     }
 
     keys
@@ -93,7 +98,7 @@ table 17380 "ZM SH Record Link Sharepoint"
 
     end;
 
-    procedure UploadFile(Record_id: RecordId; prefixFileName: text; ExtDocNo: text)
+    procedure UploadFile(Record_id: RecordId; prefixFileName: text; ExtDocNo: text; Name: Text)
     var
         RecordLinkSharepoint: Record "ZM SH Record Link Sharepoint";
         FromFile: Text;
@@ -119,6 +124,7 @@ table 17380 "ZM SH Record Link Sharepoint"
                 RecordLinkSharepoint.Description := ExtDocNo;
                 RecordLinkSharepoint.driveId := OnlineDriveItem.driveId;
                 RecordLinkSharepoint.fileId := OnlineDriveItem.id;
+                RecordLinkSharepoint."Document No." := copystr(Name, 1, MaxStrLen(RecordLinkSharepoint."Document No."));
                 RecordLinkSharepoint.Insert(true);
             end else
                 Error(lblError, FileName, OAuth20Application.RootFolderID, OAuth20ApplicationFolders.FolderName);
