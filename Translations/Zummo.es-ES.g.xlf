@@ -6787,6 +6787,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Description - Property Caption</note>
           <target>Descripción</target>
         </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 1789400218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Level</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Level - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 3529501667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No manufacturing</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sin fabricación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field No manufacturing - Property Caption</note>
+          <target>Sin fabricación</target>
+        </trans-unit>
         <trans-unit id="Table 3435315486 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
@@ -13341,10 +13352,10 @@
           <target>Lista Hist. BOM Costes</target>
         </trans-unit>
         <trans-unit id="Page 2641796487 - Action 4248133198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cargar L.M. Producción</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cargar L.M. Producción"</note>
+          <source>L.M. Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. Producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Hist. BOM Costs list - Action LMProduction - Property Caption</note>
-          <target>Cargar L.M. Producción</target>
+          <target>L.M. Producción</target>
         </trans-unit>
         <trans-unit id="Page 2641796487 - Action 397859648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar</source>
@@ -31591,24 +31602,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WhereUsedLine - Field ProductoBloqueado_btc - Property Caption</note>
           <target>Producto bloqueado</target>
         </trans-unit>
-        <trans-unit id="TableExtension 1547325771 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2925931323">
-          <source>Plastic Date Declaration</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha Declaración plástico"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Z; Ext Return Receipt Header - Field Plastic Date Declaration - Property Caption</note>
-          <target>Fecha Declaración plástico</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1547325771 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2925931323">
-          <source>Plastic (kg)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Z; Ext Return Receipt Header - Field Plastic Qty. (kg) - Property Caption</note>
-          <target>Plástico (kg)</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1547325771 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2925931323">
-          <source>Plastic Recycled (kg)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Z; Ext Return Receipt Header - Field Recycled plastic Qty. (kg) - Property Caption</note>
-          <target>Plástico reciclado (kg)</target>
-        </trans-unit>
         <trans-unit id="TableExtension 709731099 - Field 3621343342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
           <source>Cuota Objetivo</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -31618,6 +31611,30 @@
           <source>Pais ABC</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Pais ABC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1622915177 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2925931323">
+          <source>Plastic Date Declaration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Declaración plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Return Receipt Header - Field Plastic Date Declaration - Property Caption</note>
+          <target>Fecha Declaración plástico</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1622915177 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2925931323">
+          <source>Plastic (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Return Receipt Header - Field Plastic Qty. (kg) - Property Caption</note>
+          <target>Plástico (kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1622915177 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2925931323">
+          <source>Plastic Recycled (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Return Receipt Header - Field Recycled plastic Qty. (kg) - Property Caption</note>
+          <target>Plástico reciclado (kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1622915177 - Field 4067276296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2925931323">
+          <source>Requiere acciones correctivas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Requiere acciones correctivas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Return Receipt Header - Field Requiere acciones correctivas - Property Caption</note>
+          <target>Requiere acciones correctivas</target>
         </trans-unit>
         <trans-unit id="TableExtension 3398565291 - Field 1487237962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 467645625">
           <source>Prod. Order State</source>

@@ -50,6 +50,10 @@ page 17207 "ZM HIST BOM Productions"
                 {
                     ApplicationArea = all;
                 }
+                field("No manufacturing"; "No manufacturing")
+                {
+                    ApplicationArea = all;
+                }
                 field(Level; Level)
                 {
                     ApplicationArea = all;

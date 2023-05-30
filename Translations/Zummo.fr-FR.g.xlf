@@ -5233,6 +5233,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field User ID - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 1789400218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Level</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Level - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1875124401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ZM Hist. BOM Cost</source>
           <note from="Developer" annotates="general" priority="2"/>

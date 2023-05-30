@@ -6533,6 +6533,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Level - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 3529501667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No manufacturing</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sin fabricación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field No manufacturing - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3435315486 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
@@ -7623,6 +7628,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="No se ha podido subir el fichero %1, %2, %3"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Method UploadFile - NamedType lblError</note>
         </trans-unit>
+        <trans-unit id="Table 1982879740 - Method 3528172457 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No se ha podido subir el fichero %1, %2, %3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se ha podido subir el fichero %1, %2, %3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Method UploadFilefromStream - NamedType lblError</note>
+        </trans-unit>
         <trans-unit id="Table 1982879740 - Field 266801057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Application Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Aplicación"</note>
@@ -7642,6 +7652,11 @@
           <source>driveId</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field driveId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1982879740 - Field 804481195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field File Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1982879740 - Field 705151325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>fileId</source>
@@ -12323,6 +12338,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Albaranes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Control ReceiptNo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2367316995 - Action 452199915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assign</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Action Assing - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2367316995 - Action 2026913255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
@@ -12832,6 +12852,11 @@
           <source>Total Plastic KG</source>
           <note from="Developer" annotates="general" priority="2">ESP="Total KG Plástico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Purch. Line Plastic - Control Total - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 579655612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sharepoint Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos Sharepoint"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM SH Record Link Sharep. list - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1185518909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sharepoint Documents</source>

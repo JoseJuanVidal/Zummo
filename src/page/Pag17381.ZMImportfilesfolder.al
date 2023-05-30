@@ -7,6 +7,7 @@ page 17381 "ZM Import files folder"
     SourceTable = File;
     SourceTableTemporary = true;
     InsertAllowed = false;
+    ModifyAllowed = false;
 
     layout
     {
@@ -50,6 +51,11 @@ page 17381 "ZM Import files folder"
                 {
                     ApplicationArea = all;
                     Caption = 'Nº Albaranes', comment = 'ESP="Nº Albaranes"';
+
+                    trigger OnAssistEdit()
+                    begin
+                        ShowReceipts();
+                    end;
                 }
             }
         }
@@ -70,6 +76,19 @@ page 17381 "ZM Import files folder"
                 trigger OnAction()
                 begin
                     UpdateFilesPath();
+                end;
+            }
+            action(Assing)
+            {
+                ApplicationArea = all;
+                Caption = 'Assign', comment = 'ESP="Asignar Fichero"';
+                Image = Allocate;
+                Promoted = true;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    AssignFile(Rec);
                 end;
             }
         }
@@ -110,21 +129,48 @@ page 17381 "ZM Import files folder"
         // end;
     end;
 
-    local procedure AssignFile()
+    local procedure AssignFile(AssignFile: Record File)
     var
+        TempBlob: Record TempBlob;
+        FileManagement: Codeunit "File Management";
+        Stream: InStream;
         VendorShipmentNo: text;
+        FileName: text;
+        ServerFileName: text;
     begin
+        Clear(PostedPurchaseReceipts);
+        PostedPurchaseReceipts.LookupMode := true;
         if PostedPurchaseReceipts.RunModal() = Action::LookupOK then begin
+            FileName := StrSubstNo('%1\%2', AssignFile.Path, AssignFile.Name);
+            ServerFileName := FileManagement.ServerTempFileName(FileManagement.GetExtension(Name));
+            FileManagement.UploadFileSilentToServerPath(FileName, ServerFileName);
+            TempBlob.Blob.CreateInStream(Stream);
+            TempBlob.Blob.Import(ServerFileName);
+            // DownloadFromStream(Stream, '', '', '', FileName);
             PostedPurchaseReceipts.GetRecord(PurchaseRcptHeader);
-            RecordLinkSharepoint.UploadFile(PurchaseRcptHeader.RecordId, FileManagement.GetExtension(Rec.Name), VendorShipmentNo, Rec.Name);
+            if PurchaseRcptHeader."Vendor Shipment No." = '' then
+                VendorShipmentNo := PurchaseRcptHeader."No."
+            else
+                VendorShipmentNo := PurchaseRcptHeader."Vendor Shipment No.";
+            RecordLinkSharepoint.UploadFilefromStream(PurchaseRcptHeader.RecordId, PurchaseRcptHeader."Buy-from Vendor Name", VendorShipmentNo, PurchaseRcptHeader."No.",
+                VendorShipmentNo, Rec.Name, Stream);
         end
     end;
 
     local procedure GetReceiptNo(): Integer
-    var
-
     begin
         RecordLinkSharepoint.Reset();
-        // RecordLinkSharepoint.SetRange("Document No.", Rec.);
+        RecordLinkSharepoint.SetRange("File Name", Rec.Name);
+        exit(RecordLinkSharepoint.Count);
+    end;
+
+    local procedure ShowReceipts()
+    var
+        RecordLinkShareplist: page "ZM SH Record Link Sharep. list";
+    begin
+        RecordLinkSharepoint.Reset();
+        RecordLinkSharepoint.SetRange("File Name", Rec.Name);
+        RecordLinkShareplist.SetTableView(RecordLinkSharepoint);
+        RecordLinkShareplist.RunModal();
     end;
 }

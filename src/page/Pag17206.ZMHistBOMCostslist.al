@@ -144,7 +144,6 @@ page 17206 "ZM Hist. BOM Costs list"
                 ApplicationArea = All;
                 Caption = 'L.M. Producción', comment = 'ESP="L.M. Producción"';
                 Image = BOMLedger;
-                Promoted = true;
                 RunObject = page "ZM HIST BOM Productions";
 
             }
