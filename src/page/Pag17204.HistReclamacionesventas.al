@@ -5,7 +5,9 @@ page 17204 "Hist. Reclamaciones ventas"
     PageType = List;
     SourceTable = "ZM Hist. Reclamaciones ventas";
     UsageCategory = Lists;
-    Editable = false;
+    //Editable = false;
+    InsertAllowed = false;
+    ModifyAllowed = false;
 
     layout
     {
