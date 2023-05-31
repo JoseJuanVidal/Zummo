@@ -14,6 +14,7 @@ page 17207 "ZM HIST BOM Productions"
         {
             repeater(General)
             {
+                Editable = false;
                 field("Production BOM No."; Rec."Production BOM No.")
                 {
                     ApplicationArea = All;
@@ -79,6 +80,32 @@ page 17207 "ZM HIST BOM Productions"
                     rec.UpdateBomHist();
                 end;
             }
+            // action(cargarItem)
+            // {
+            //     ApplicationArea = all;
+            //     Image = PeriodEntries;
+            //     Promoted = true;
+
+            //     trigger OnAction()
+            //     begin
+
+            //         Rec.FechasLMProductionBOM(ItemNo, ItemNo);
+            //     end;
+
+            // }
+            // action(cargarItemPeriodo)
+            // {
+            //     ApplicationArea = all;
+            //     Image = PeriodEntries;
+            //     Promoted = true;
+
+            //     trigger OnAction()
+            //     begin
+
+            //         Rec.AddLMProductionBOM(ItemNo, ItemNo, Fechaini, calcdate('PM', Fechaini), 1);
+            //     end;
+
+            // }
         }
     }
 }
