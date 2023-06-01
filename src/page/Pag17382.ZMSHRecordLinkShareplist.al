@@ -30,6 +30,11 @@ page 17382 "ZM SH Record Link Sharep. list"
                 field("Document No."; "Document No.")
                 {
                     ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        ShowDocument();
+                    end;
                 }
                 field(URL; URL)
                 {
@@ -44,4 +49,9 @@ page 17382 "ZM SH Record Link Sharep. list"
             }
         }
     }
+
+    local procedure ShowDocument()
+    begin
+        Rec.DownloadFile();
+    end;
 }

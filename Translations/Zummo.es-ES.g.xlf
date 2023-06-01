@@ -8050,11 +8050,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Property Caption</note>
           <target>Documentos</target>
         </trans-unit>
+        <trans-unit id="Table 1982879740 - NamedType 1338226429" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File not found in Sharepoint.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Archivo no encontrado Sharepoint."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - NamedType lblNofFound</note>
+          <target>Archivo no encontrado Sharepoint.</target>
+        </trans-unit>
         <trans-unit id="Table 1982879740 - NamedType 2483433680" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select a File</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Seleccione Fichero"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccione Archivo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - NamedType lblSelectFile</note>
-          <target>Seleccione Fichero</target>
+          <target>Seleccione Archivo</target>
         </trans-unit>
         <trans-unit id="Table 1982879740 - Method 1139572727 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se ha podido subir el fichero %1, %2, %3</source>
@@ -28779,6 +28785,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Drive ID"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field driveId - Property Caption</note>
           <target>Drive ID</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 403186776 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Path Purchase Documents pending</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ubicación Docs. compra pdtes."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Path Purchase Docs. pending - Property Caption</note>
+          <target>Ubicación Docs. compra pdtes.</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 3208025486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Path Purchase Documents</source>

@@ -51,7 +51,16 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
 
                     trigger OnAssistEdit()
                     begin
-                        SelectPathPurchaseDocuments();
+                        Rec."Path Purchase Documents" := SelectPathPurchaseDocuments();
+                    end;
+                }
+                field("Path Purchase Docs. pending"; "Path Purchase Docs. pending")
+                {
+                    ApplicationArea = all;
+
+                    trigger OnAssistEdit()
+                    begin
+                        rec."Path Purchase Docs. pending" := SelectPathPurchaseDocuments();
                     end;
                 }
             }
@@ -68,11 +77,11 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
         textoEmail: Text;
         lblPath: Label 'Select folder', comment = 'ESP="Seleccionar Carpeta"';
 
-    local procedure SelectPathPurchaseDocuments()
+    local procedure SelectPathPurchaseDocuments(): Text
     var
         PathName: text;
     begin
         if FileManagement.SelectFolderDialog(lblPath, PathName) then
-            Rec."Path Purchase Documents" := PathName
+            Exit(PathName);
     end;
 }

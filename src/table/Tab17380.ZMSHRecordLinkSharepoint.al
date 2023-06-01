@@ -79,7 +79,8 @@ table 17380 "ZM SH Record Link Sharepoint"
         OnlineDriveItem: Record "Online Drive Item" temporary;
         SharepointAppHelper: Codeunit "Sharepoint OAuth App. Helper";
         AccessToken: Text;
-        lblSelectFile: Label 'Select a File', comment = 'ESP="Seleccione Fichero"';
+        lblSelectFile: Label 'Select a File', comment = 'ESP="Seleccione Archivo"';
+        lblNofFound: Label 'File not found in Sharepoint.', comment = 'ESP="Archivo no encontrado Sharepoint."';
 
     trigger OnInsert()
     begin
@@ -146,6 +147,7 @@ table 17380 "ZM SH Record Link Sharepoint"
         lblError: Label 'No se ha podido subir el fichero %1, %2, %3', comment = 'ESP="No se ha podido subir el fichero %1, %2, %3"';
     begin
         PurchaseSetup.Get();
+        OnlineDriveItem.DeleteAll();
         OAuth20Application.Get(PurchaseSetup."Sharepoint Connection");
         OAuth20ApplicationFolders.Get(OAuth20Application.Code, PurchaseSetup."Sharepoint Folder");
         AccessToken := SharepointAppHelper.GetAccessToken(PurchaseSetup."Sharepoint Connection");
@@ -179,7 +181,10 @@ table 17380 "ZM SH Record Link Sharepoint"
         OAuth20Application.Get(PurchaseSetup."Sharepoint Connection");
         AccessToken := SharepointAppHelper.GetAccessToken(OAuth20Application.Code);
         if SharepointAppHelper.DownloadFile(AccessToken, Rec.driveId, Rec.Fileid, Stream) then
-            DownloadFromStream(Stream, '', '', '', FileName);
+            DownloadFromStream(Stream, '', '', '', FileName)
+        else
+            error(lblNofFound);
+
     end;
 
     local procedure DeleteSharepointfile()
@@ -189,5 +194,16 @@ table 17380 "ZM SH Record Link Sharepoint"
         AccessToken := SharepointAppHelper.GetAccessToken(OAuth20Application.Code);
         SharepointAppHelper.DeleteDriveItem(AccessToken, OAuth20Application.RootFolderID, Rec.fileId);
 
+    end;
+
+    procedure ShowDocument()
+    var
+        PurchRcptHeader: Record "Purch. Rcpt. Header";
+        PostedPurchaseReceipts: page "Posted Purchase Receipts";
+    begin
+        PurchRcptHeader.Reset();
+        PurchRcptHeader.SetRange("No.", Rec."Document No.");
+        PostedPurchaseReceipts.SetTableView(PurchRcptHeader);
+        PostedPurchaseReceipts.RunModal();
     end;
 }
