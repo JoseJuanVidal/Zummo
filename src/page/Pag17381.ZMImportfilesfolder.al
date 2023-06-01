@@ -101,6 +101,7 @@ page 17381 "ZM Import files folder"
     end;
 
     var
+        PurchaseSetup: Record "Purchases & Payables Setup";
         PurchaseRcptHeader: Record "Purch. Rcpt. Header";
         FileFolder: Record File;
         RecordLinkSharepoint: record "ZM SH Record Link Sharepoint";
@@ -114,7 +115,9 @@ page 17381 "ZM Import files folder"
         SelectFolder: text;
     begin
         // if FileManagement.SelectFolderDialog('', SelectFolder) then begin
-        SelectFolder := 'C:\Zummo\temp';
+        PurchaseSetup.Get();
+        PurchaseSetup.TestField("Path Purchase Documents");
+        SelectFolder := PurchaseSetup."Path Purchase Documents";
         Rec.DeleteAll();
         FileFolder.Reset();
         FileFolder.SetRange(Path, SelectFolder);
@@ -148,12 +151,11 @@ page 17381 "ZM Import files folder"
             TempBlob.Blob.Import(ServerFileName);
             // DownloadFromStream(Stream, '', '', '', FileName);
             PostedPurchaseReceipts.GetRecord(PurchaseRcptHeader);
-            if PurchaseRcptHeader."Vendor Shipment No." = '' then
-                VendorShipmentNo := PurchaseRcptHeader."No."
-            else
-                VendorShipmentNo := PurchaseRcptHeader."Vendor Shipment No.";
+            VendorShipmentNo := PurchaseRcptHeader."No.";
             RecordLinkSharepoint.UploadFilefromStream(PurchaseRcptHeader.RecordId, PurchaseRcptHeader."Buy-from Vendor Name", VendorShipmentNo, PurchaseRcptHeader."No.",
                 VendorShipmentNo, Rec.Name, Stream);
+            // FileManagement.MoveAndRenameClientFile(StrSubstNo('%1\%2', Rec.Path, Rec.Name), StrSubstNo('%1 %2.%3', PurchaseRcptHeader."Buy-from Vendor Name", VendorShipmentNo, FileManagement.GetExtension(Rec.Name)), Rec.Path);
+            // UpdateFilesPath;
         end
     end;
 

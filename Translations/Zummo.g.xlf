@@ -23643,6 +23643,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Consulta inventario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension LocationList - Action ConsultaInventario - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1164140648 - NamedType 1009704073" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1164140648">
+          <source>Select folder</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar Carpeta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PagExtPurchPaySetup - NamedType lblPath</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1164140648 - Control 518354779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3921990236">
           <source>Bitec</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bitec"</note>
@@ -26372,6 +26377,11 @@
           <source>Drive Id</source>
           <note from="Developer" annotates="general" priority="2">ESP="Drive ID"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field driveId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 3208025486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Path Purchase Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ubicación Docs. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Path Purchase Documents - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 28783585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Sharepoint Connection</source>

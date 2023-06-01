@@ -8062,6 +8062,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Method UploadFile - NamedType lblError</note>
           <target>No se ha podido subir el fichero %1, %2, %3</target>
         </trans-unit>
+        <trans-unit id="Table 1982879740 - Method 3528172457 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No se ha podido subir el fichero %1, %2, %3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se ha podido subir el fichero %1, %2, %3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Method UploadFilefromStream - NamedType lblError</note>
+          <target>No se ha podido subir el fichero %1, %2, %3</target>
+        </trans-unit>
         <trans-unit id="Table 1982879740 - Field 266801057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Application Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Aplicación"</note>
@@ -8084,6 +8090,12 @@
           <source>driveId</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field driveId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1982879740 - Field 804481195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field File Name - Property Caption</note>
+          <target>Nombre Fichero</target>
         </trans-unit>
         <trans-unit id="Table 1982879740 - Field 705151325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>fileId</source>
@@ -13393,6 +13405,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Control ReceiptNo - Property Caption</note>
           <target>Nº Albaranes</target>
         </trans-unit>
+        <trans-unit id="Page 2367316995 - Action 452199915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assign</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Action Assing - Property Caption</note>
+          <target>Asignar Fichero</target>
+        </trans-unit>
         <trans-unit id="Page 2367316995 - Action 2026913255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
@@ -13987,6 +14005,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Total KG Plástico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Purch. Line Plastic - Control Total - Property Caption</note>
           <target>Total KG Plástico</target>
+        </trans-unit>
+        <trans-unit id="Page 579655612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sharepoint Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos Sharepoint"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM SH Record Link Sharep. list - Property Caption</note>
+          <target>Documentos Sharepoint</target>
         </trans-unit>
         <trans-unit id="Page 1185518909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sharepoint Documents</source>
@@ -25566,6 +25590,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension LocationList - Action ConsultaInventario - Property Caption</note>
           <target>Consulta inventario</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1164140648 - NamedType 1009704073" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1164140648">
+          <source>Select folder</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar Carpeta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PagExtPurchPaySetup - NamedType lblPath</note>
+          <target>Seleccionar Carpeta</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1164140648 - Control 518354779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3921990236">
           <source>Bitec</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bitec"</note>
@@ -28749,6 +28779,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Drive ID"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field driveId - Property Caption</note>
           <target>Drive ID</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 3208025486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Path Purchase Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ubicación Docs. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Path Purchase Documents - Property Caption</note>
+          <target>Ubicación Docs. compra</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 28783585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Sharepoint Connection</source>

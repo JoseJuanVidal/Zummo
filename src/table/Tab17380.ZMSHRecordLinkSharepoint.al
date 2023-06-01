@@ -111,6 +111,7 @@ table 17380 "ZM SH Record Link Sharepoint"
         Stream: InStream;
         lblError: Label 'No se ha podido subir el fichero %1, %2, %3', comment = 'ESP="No se ha podido subir el fichero %1, %2, %3"';
     begin
+        OnlineDriveItem.DeleteAll();
         PurchaseSetup.Get();
         OAuth20Application.Get(PurchaseSetup."Sharepoint Connection");
         OAuth20ApplicationFolders.Get(OAuth20Application.Code, PurchaseSetup."Sharepoint Folder");
