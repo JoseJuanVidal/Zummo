@@ -12,5 +12,15 @@ tableextension 50190 "ZM Ext Country/Region" extends "Country/Region"
             Caption = 'Pais ABC';
             DataClassification = ToBeClassified;
         }
+        field(50100; "ID RAES"; Text[100])
+        {
+            Caption = 'ID RAES';
+            DataClassification = ToBeClassified;
+        }
+        field(50101; "ID PILAS"; Text[100])
+        {
+            Caption = 'ID PILAS';
+            DataClassification = ToBeClassified;
+        }
     }
 }

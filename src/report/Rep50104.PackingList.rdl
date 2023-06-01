@@ -2516,7 +2516,7 @@ Cstr(Fields!CustPhoneNo.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>2.12097cm</Top>
+              <Top>2.53372cm</Top>
               <Left>1.88899cm</Left>
               <Height>1.01224cm</Height>
               <Width>14.46857cm</Width>
@@ -2551,7 +2551,7 @@ Cstr(Fields!CustPhoneNo.Value)
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>2.3253cm</Top>
+              <Top>2.73805cm</Top>
               <Left>16.53395cm</Left>
               <Height>0.6cm</Height>
               <Width>3.02917cm</Width>
@@ -2608,7 +2608,7 @@ Cstr(Fields!CustPhoneNo.Value)
               <Value>=First(Fields!logo.Value, "DataSet_Result")</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>2.12097cm</Top>
+              <Top>2.53372cm</Top>
               <Left>0.41474cm</Left>
               <Height>1.12183cm</Height>
               <Width>1.33314cm</Width>
@@ -2631,6 +2631,76 @@ Cstr(Fields!CustPhoneNo.Value)
                 </Border>
               </Style>
             </Line>
+            <Textbox Name="Textbox68">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!lblPILAS.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox5</rd:DefaultName>
+              <Top>2.05832cm</Top>
+              <Left>1.99334cm</Left>
+              <Height>0.49417cm</Height>
+              <Width>4.43146cm</Width>
+              <ZIndex>5</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!EsFrancia.Value, "DataSet_Result"),false,true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox69">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!lblRAEES.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox5</rd:DefaultName>
+              <Top>2.10065cm</Top>
+              <Left>7.73744cm</Left>
+              <Height>0.49417cm</Height>
+              <Width>4.43146cm</Width>
+              <ZIndex>6</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!EsFrancia.Value, "DataSet_Result"), False, True)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -2884,6 +2954,15 @@ ACBJiAQAAABAkhAJAAAAgCQhEgAAAABJQiQAAAAAkoRIAAAAACQJkQAAAABIEiIBAAAAkCREAgAAACBJ
         </Field>
         <Field Name="ZummoInnovaciones_Lbl">
           <DataField>ZummoInnovaciones_Lbl</DataField>
+        </Field>
+        <Field Name="EsFrancia">
+          <DataField>EsFrancia</DataField>
+        </Field>
+        <Field Name="lblRAEES">
+          <DataField>lblRAEES</DataField>
+        </Field>
+        <Field Name="lblPILAS">
+          <DataField>lblPILAS</DataField>
         </Field>
         <Field Name="logo">
           <DataField>logo</DataField>

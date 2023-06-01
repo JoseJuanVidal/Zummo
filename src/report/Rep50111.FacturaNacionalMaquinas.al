@@ -198,6 +198,10 @@ report 50111 "FacturaNacionalMaquinas"
             column(SegunLoDispuesto_Lbl; SegunLoDispuesto_Lbl)
             {
             }
+            column(EsFrancia; EsFrancia) { }
+            column(lblRAEES; lblRAEES) { }
+            column(lblPILAS; lblPILAS) { }
+
             column(TFZummo_Lbl; TFZummo_Lbl)
             {
             }
@@ -1808,6 +1812,9 @@ report 50111 "FacturaNacionalMaquinas"
                     idiomaReport := format(optIdioma);
                 end;
 
+                // miramos si la direccion de envio el pais es FRANCIA
+                EsFrancia := GetCountryShipFR();
+
                 recSalesShptLineTmp.Reset();
                 recSalesShptLineTmp.DeleteAll();
 
@@ -2536,6 +2543,9 @@ report 50111 "FacturaNacionalMaquinas"
         TextRegister: text;
         GrupoRegIva: record "VAT Business Posting Group";
         TextosAuxiliares: Record TextosAuxiliares;
+        EsFrancia: Boolean;
+        lblRAEES: Text;
+        lblPILAS: text;
 
     [Scope('Personalization')]
     procedure InitLogInteraction()
@@ -3091,6 +3101,18 @@ report 50111 "FacturaNacionalMaquinas"
     //             PlasticRecycledBultoKgTotal += SalesShipmentPacking.Quantity * SalesShipmentPacking."Package Recycled plastic (kg)";
     //         Until SalesShipmentPacking.next() = 0;
     // end;
+    local procedure GetCountryShipFR(): Boolean
+    var
+        CountryRegion: Record "Country/Region";
+    begin
+        lblRAEES := '';
+        lblPILAS := '';
+        if CountryRegion.Get("Sales Invoice Header"."Ship-to Country/Region Code") then begin
+            lblRAEES := CountryRegion."ID RAES";
+            lblPILAS := CountryRegion."ID PILAS";
+            exit(true);
+        end;
+    end;
 
     procedure EsExportacion()
     begin

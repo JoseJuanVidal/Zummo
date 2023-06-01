@@ -6551,8 +6551,78 @@ Code.DevolverDec(Code.GetData(50,2)))</Value>
               <Top>8.55131cm</Top>
               <Left>2.06467cm</Left>
               <Height>0.36011cm</Height>
-              <Width>8.32686cm</Width>
+              <Width>4.67561cm</Width>
               <ZIndex>7</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox91">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!lblPILAS.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>8.55131cm</Top>
+              <Left>7.14709cm</Left>
+              <Height>0.36011cm</Height>
+              <Width>4.35811cm</Width>
+              <ZIndex>8</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!EsFrancia.Value, "DataSet_Result"),false,true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox92">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!lblRAEES.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>8.55131cm</Top>
+              <Left>11.82796cm</Left>
+              <Height>0.36011cm</Height>
+              <Width>4.04061cm</Width>
+              <ZIndex>9</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!EsFrancia.Value, "DataSet_Result"), False, True)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -7180,6 +7250,15 @@ SAAAAABEIhIAAAAAkYgEAAAAQCQiAQAAABCJSAAAAABEIhIAAAAAkYgEAAAAQCQiAQAAABCJSAAAAABE
         </Field>
         <Field Name="AgenteCaptionLbl">
           <DataField>AgenteCaptionLbl</DataField>
+        </Field>
+        <Field Name="EsFrancia">
+          <DataField>EsFrancia</DataField>
+        </Field>
+        <Field Name="lblRAEES">
+          <DataField>lblRAEES</DataField>
+        </Field>
+        <Field Name="lblPILAS">
+          <DataField>lblPILAS</DataField>
         </Field>
         <Field Name="Reimpresion">
           <DataField>Reimpresion</DataField>

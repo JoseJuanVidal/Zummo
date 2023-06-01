@@ -364,7 +364,9 @@ report 50124 "AbonoVentaRegistrado"
             {
             }
             //Captions
-
+            column(EsFrancia; EsFrancia) { }
+            column(lblRAEES; lblRAEES) { }
+            column(lblPILAS; lblPILAS) { }
             column(Reimpresion; Reimpresion)
             {
             }
@@ -1587,6 +1589,9 @@ report 50124 "AbonoVentaRegistrado"
                 FormatDocumentFields("Sales Cr.Memo Header");
                 DocumentTotals.CalculatePostedSalesCreditMemoTotals(TotalSalesInvoiceHeader, VATAmount2, TotalSalesInvoiceline);
 
+                // miramos si la direccion de envio el pais es FRANCIA
+                EsFrancia := GetCountryShipFR();
+
                 workdescription := GetWorkDescription();
                 Portes := 0;
                 LineaVentaPortes.Reset();
@@ -2174,6 +2179,9 @@ report 50124 "AbonoVentaRegistrado"
         fechaPedido: date;
         fechaAlbaran: date;
         optIdioma: Option " ","ENU","ESP","FRA";
+        EsFrancia: Boolean;
+        lblRAEES: Text;
+        lblPILAS: text;
 
     [Scope('Personalization')]
     procedure InitLogInteraction()
@@ -2545,6 +2553,19 @@ report 50124 "AbonoVentaRegistrado"
                 END;
 
             UNTIL ValueEntryRelation.NEXT() = 0;
+    end;
+
+    local procedure GetCountryShipFR(): Boolean
+    var
+        CountryRegion: Record "Country/Region";
+    begin
+        lblRAEES := '';
+        lblPILAS := '';
+        if CountryRegion.Get("Sales Cr.Memo Header"."Ship-to Country/Region Code") then begin
+            lblRAEES := CountryRegion."ID RAES";
+            lblPILAS := CountryRegion."ID PILAS";
+            exit(true);
+        end;
     end;
 
     procedure EsExportacion()

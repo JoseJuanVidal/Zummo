@@ -3273,7 +3273,7 @@ Cstr(Fields!VATRegistrationNo.Value), 1)</Hidden>
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>10.01616cm</Height>
+          <Height>10.25428cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -3985,10 +3985,82 @@ Cstr(Fields!VATRegistrationNo.Value), 1)</Hidden>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>8.95552cm</Top>
-              <Left>1.89024cm</Left>
+              <Left>1.92552cm</Left>
               <Height>0.36011cm</Height>
-              <Width>8.32686cm</Width>
+              <Width>6.73936cm</Width>
               <ZIndex>10</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox92">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!lblPILAS.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>8.95552cm</Top>
+              <Left>9.00221cm</Left>
+              <Height>0.36011cm</Height>
+              <Width>3.56436cm</Width>
+              <ZIndex>11</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!EsFrancia.Value, "DataSet_Result"),false,true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox93">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!lblRAEES.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>8.95552cm</Top>
+              <Left>12.8122cm</Left>
+              <Height>0.36011cm</Height>
+              <Width>3.56436cm</Width>
+              <ZIndex>12</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!EsFrancia.Value, "DataSet_Result"), False, True)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -4266,6 +4338,15 @@ RAIAAAAgEpEAAAAAiEQkAAAAACIRCQAAAIBIRAIAAAAgEpEAAAAAiEQkAAAAACIRCQAAAIBIRAIAAAAg
         </Field>
         <Field Name="WorkDescprion">
           <DataField>WorkDescprion</DataField>
+        </Field>
+        <Field Name="EsFrancia">
+          <DataField>EsFrancia</DataField>
+        </Field>
+        <Field Name="lblRAEES">
+          <DataField>lblRAEES</DataField>
+        </Field>
+        <Field Name="lblPILAS">
+          <DataField>lblPILAS</DataField>
         </Field>
         <Field Name="logo">
           <DataField>logo</DataField>

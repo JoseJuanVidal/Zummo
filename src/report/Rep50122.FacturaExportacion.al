@@ -307,6 +307,9 @@ report 50122 "FacturaExportacion"
             column(AgenteCaptionLbl; AgenteCaptionLbl)
             {
             }
+            column(EsFrancia; EsFrancia) { }
+            column(lblRAEES; lblRAEES) { }
+            column(lblPILAS; lblPILAS) { }
             //Captions
 
             column(Reimpresion; Reimpresion)
@@ -1538,6 +1541,9 @@ report 50122 "FacturaExportacion"
                 if optIdioma <> optIdioma::" " then
                     CurrReport.LANGUAGE := Language.GetLanguageID(format(optIdioma));
 
+                // miramos si la direccion de envio el pais es FRANCIA
+                EsFrancia := GetCountryShipFR();
+
                 DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
                 Customer.Get("Sell-to Customer No.");
                 if BankAccountRecord.Get('CUENTA BANC. EMPRESA') then;
@@ -1802,7 +1808,7 @@ report 50122 "FacturaExportacion"
         nRE: array[3] of Decimal;
         nPorcentajeRE: array[3] of Decimal;
         nDescuento: array[3] of Decimal;
-  
+
         nLineaIVAActual: Integer;
         TotalGivenAmount: Decimal;
         [InDataSet]
@@ -1965,6 +1971,9 @@ report 50122 "FacturaExportacion"
         EsEmbalaje: Boolean;
         fechaPedido: date;
         fechaAlbaran: date;
+        EsFrancia: Boolean;
+        lblRAEES: Text;
+        lblPILAS: text;
 
     [Scope('Personalization')]
     procedure InitLogInteraction()
@@ -2195,6 +2204,19 @@ report 50122 "FacturaExportacion"
         exit(CACCaptionLbl);
     end;
 
+    local procedure GetCountryShipFR(): Boolean
+    var
+        CountryRegion: Record "Country/Region";
+    begin
+        lblRAEES := '';
+        lblPILAS := '';
+        if CountryRegion.Get("Sales Invoice Header"."Ship-to Country/Region Code") then begin
+            lblRAEES := CountryRegion."ID RAES";
+            lblPILAS := CountryRegion."ID PILAS";
+            exit(true);
+        end;
+    end;
+
     [Scope('Personalization')]
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewLogInteraction: Boolean; DisplayAsmInfo: Boolean)
     begin
@@ -2419,7 +2441,7 @@ report 50122 "FacturaExportacion"
         ValueEntryRelation.SETCURRENTKEY("Source RowId");
         ValueEntryRelation.SETRANGE("Source RowId", InvoiceRowID);
         IF ValueEntryRelation.FINDFIRST() THEN
-             REPEAT
+            REPEAT
                 ValueEntry.GET(ValueEntryRelation."Value Entry No.");
                 ItemLedgEntry.GET(ValueEntry."Item Ledger Entry No.");
                 ItemLedgEntry.CALCFIELDS("Sales Amount (Actual)");
