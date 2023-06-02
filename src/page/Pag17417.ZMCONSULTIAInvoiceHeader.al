@@ -93,6 +93,7 @@ page 17417 "ZM CONSULTIA Invoice Header"
             {
                 Caption = 'Register', comment = 'ESP="Registro"';
 
+
                 field("Document Type"; "Document Type")
                 {
                     ApplicationArea = all;

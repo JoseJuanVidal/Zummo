@@ -121,6 +121,24 @@ table 17414 "ZM CONSULTIA Invoice Header"
             Caption = 'Invoice Header No.', comment = 'ESP="Nª Factura"';
             TableRelation = "Purch. Inv. Header";
         }
+        field(60; "G/L Account Fair"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'G/L Account Fair', comment = 'ESP="Cuenta contable Feria"';
+            TableRelation = "G/L Account";
+        }
+        field(61; "Global Dimension 1 code Fair"; code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Global Dimension 1 code Fair', comment = 'ESP="Dimension Global 1 Feria"';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
+        }
+        field(62; "Dimension Detalle Fair"; code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Dimension Detalle Fair', comment = 'ESP="Dimensión Detalle Feria"';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(3));
+        }
     }
 
     keys
