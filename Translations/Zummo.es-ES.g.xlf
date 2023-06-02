@@ -13399,6 +13399,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - NamedType lblName</note>
           <target>Seleccionar carpeta</target>
         </trans-unit>
+        <trans-unit id="Page 2367316995 - Method 620449489 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to save the files in a history folder?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea guardar los archivos en carpeta histórico?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Method SaveFile - NamedType lblConfirm</note>
+          <target>¿Desea guardar los archivos en carpeta histórico?</target>
+        </trans-unit>
         <trans-unit id="Page 2367316995 - Control 494214623 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Files</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ficheros"</note>
@@ -13413,9 +13419,15 @@
         </trans-unit>
         <trans-unit id="Page 2367316995 - Action 452199915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assign</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Asignar Fichero"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar archivo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Action Assing - Property Caption</note>
-          <target>Asignar Fichero</target>
+          <target>Asignar archivo</target>
+        </trans-unit>
+        <trans-unit id="Page 2367316995 - Action 730226062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Save files</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Guardar archivos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Action Limpiar - Property Caption</note>
+          <target>Guardar archivos</target>
         </trans-unit>
         <trans-unit id="Page 2367316995 - Action 2026913255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh</source>
@@ -31654,6 +31666,16 @@
           <source>Cuota Objetivo</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Cuota Objetivo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 709731099 - Field 559434470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
+          <source>ID PILAS</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field ID PILAS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 709731099 - Field 102196492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
+          <source>ID RAES</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field ID RAES - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 709731099 - Field 1922042909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
           <source>Pais ABC</source>
