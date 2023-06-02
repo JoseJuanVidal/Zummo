@@ -4169,7 +4169,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2252767808 - Field 2483678830 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Puesto Trabajo, , , , , ,Historico Puestos,Historico Contratos,Historico Categoria,Categoria, , ,Departamentos,Sección,Empresa ,Area,CategoriaBonificaciones,Ubicación Puesto,Evaluación Riesgos,Sucursal,IT Departamentos</source>
+          <source>Puesto Trabajo, , , , , ,Historico Puestos,Historico Contratos,Historico Categoria,Categoria, , ,Departamentos,Sección,Empresa ,Area,CategoriaBonificaciones,Ubicación Puesto,Evaluación Riesgos,Sucursal,IT Departamentos,Task</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table MultiRRHH_zum - Field tabla - Property OptionCaption</note>
         </trans-unit>
@@ -5217,6 +5217,36 @@
           <source>Item No.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Customer Items blocked - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3345876069 - Field 3776794752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Id</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily Task - Field User Id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3803506403 - Field 1964419135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field Employee No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3803506403 - Field 3975658731 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Server Instance ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field Server Instance ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3803506403 - Field 1829104285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Session ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field Session ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3803506403 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field User ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435315486 - Field 1789400218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Level</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM HIST BOM Production - Field Level - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1875124401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ZM Hist. BOM Cost</source>
@@ -9764,6 +9794,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType IVA_Lbl</note>
           <target>Montant TVA</target>
         </trans-unit>
+        <trans-unit id="Report 3412186937 - NamedType 2835330293" size-unit="char" translate="yes" xml:space="preserve">
+          <source>from order confirmation</source>
+          <note from="Developer" annotates="general" priority="2">ESP="desde la confirmación del pedido",FRA="à partir de la confirmation de la commande"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType lblNDias</note>
+          <target>à partir de la confirmation de la commande</target>
+        </trans-unit>
+        <trans-unit id="Report 3412186937 - NamedType 3874219377" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead Time: </source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº días: ",FRA="Nº dias: "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType lbNumDias</note>
+          <target>Nº dias: </target>
+        </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2403527776" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT:</source>
           <note from="Developer" annotates="general" priority="2">ESP="NIF:",FRA="Nº TVA Intra."</note>
@@ -10694,6 +10736,16 @@
           <source>Cuota Objetivo</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Cuota Objetivo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 709731099 - Field 559434470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
+          <source>ID PILAS</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field ID PILAS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 709731099 - Field 102196492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
+          <source>ID RAES</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field ID RAES - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 709731099 - Field 1922042909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
           <source>Pais ABC</source>

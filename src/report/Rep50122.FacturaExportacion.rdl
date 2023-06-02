@@ -7224,6 +7224,15 @@ oD0izZV3qI+dlxMEXRkGJ3B5S3xhedBWS1hYstcjgRcJOLxhRtFPpIFn5kADb+iEEEIsoZn1MyxQg0G7
         <Field Name="AgenteCaptionLbl">
           <DataField>AgenteCaptionLbl</DataField>
         </Field>
+        <Field Name="EsFrancia">
+          <DataField>EsFrancia</DataField>
+        </Field>
+        <Field Name="lblRAEES">
+          <DataField>lblRAEES</DataField>
+        </Field>
+        <Field Name="lblPILAS">
+          <DataField>lblPILAS</DataField>
+        </Field>
         <Field Name="Reimpresion">
           <DataField>Reimpresion</DataField>
         </Field>

@@ -2,8 +2,8 @@ table 17380 "ZM SH Record Link Sharepoint"
 {
     DataClassification = CustomerContent;
     Caption = 'Documents', comment = 'ESP="Documentos"';
-    LookupPageId = "ZM SH Record Link Sharepoints";
-    DrillDownPageId = "ZM SH Record Link Sharepoints";
+    LookupPageId = "ZM SH Record Link Sharep. list";
+    DrillDownPageId = "ZM SH Record Link Sharep. list";
 
     fields
     {
@@ -52,6 +52,16 @@ table 17380 "ZM SH Record Link Sharepoint"
         {
             DataClassification = CustomerContent;
         }
+        field(60; "Document No."; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Document No.', comment = 'ESP="Nº Documento"';
+        }
+        field(70; "File Name"; Text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'File Name', comment = 'ESP="Nombre Fichero"';
+        }
     }
 
     keys
@@ -69,7 +79,8 @@ table 17380 "ZM SH Record Link Sharepoint"
         OnlineDriveItem: Record "Online Drive Item" temporary;
         SharepointAppHelper: Codeunit "Sharepoint OAuth App. Helper";
         AccessToken: Text;
-        lblSelectFile: Label 'Select a File', comment = 'ESP="Seleccione Fichero"';
+        lblSelectFile: Label 'Select a File', comment = 'ESP="Seleccione Archivo"';
+        lblNofFound: Label 'File not found in Sharepoint.', comment = 'ESP="Archivo no encontrado Sharepoint."';
 
     trigger OnInsert()
     begin
@@ -93,7 +104,7 @@ table 17380 "ZM SH Record Link Sharepoint"
 
     end;
 
-    procedure UploadFile(Record_id: RecordId; prefixFileName: text; ExtDocNo: text)
+    procedure UploadFile(Record_id: RecordId; prefixFileName: text; ExtDocNo: text; Name: Text)
     var
         RecordLinkSharepoint: Record "ZM SH Record Link Sharepoint";
         FromFile: Text;
@@ -101,6 +112,7 @@ table 17380 "ZM SH Record Link Sharepoint"
         Stream: InStream;
         lblError: Label 'No se ha podido subir el fichero %1, %2, %3', comment = 'ESP="No se ha podido subir el fichero %1, %2, %3"';
     begin
+        OnlineDriveItem.DeleteAll();
         PurchaseSetup.Get();
         OAuth20Application.Get(PurchaseSetup."Sharepoint Connection");
         OAuth20ApplicationFolders.Get(OAuth20Application.Code, PurchaseSetup."Sharepoint Folder");
@@ -119,10 +131,44 @@ table 17380 "ZM SH Record Link Sharepoint"
                 RecordLinkSharepoint.Description := ExtDocNo;
                 RecordLinkSharepoint.driveId := OnlineDriveItem.driveId;
                 RecordLinkSharepoint.fileId := OnlineDriveItem.id;
+                RecordLinkSharepoint."Document No." := copystr(Name, 1, MaxStrLen(RecordLinkSharepoint."Document No."));
                 RecordLinkSharepoint.Insert(true);
             end else
                 Error(lblError, FileName, OAuth20Application.RootFolderID, OAuth20ApplicationFolders.FolderName);
         end;
+    end;
+
+    procedure UploadFilefromStream(Record_id: RecordId; prefixFileName: text; ExtDocNo: text; Name: Text; DocumentNo: code[20]; idFileName: text; Stream: InStream)
+    var
+        RecordLinkSharepoint: Record "ZM SH Record Link Sharepoint";
+        FileManagement: Codeunit "File Management";
+        FromFile: Text;
+        FileName: text;
+        lblError: Label 'No se ha podido subir el fichero %1, %2, %3', comment = 'ESP="No se ha podido subir el fichero %1, %2, %3"';
+    begin
+        PurchaseSetup.Get();
+        OnlineDriveItem.DeleteAll();
+        OAuth20Application.Get(PurchaseSetup."Sharepoint Connection");
+        OAuth20ApplicationFolders.Get(OAuth20Application.Code, PurchaseSetup."Sharepoint Folder");
+        AccessToken := SharepointAppHelper.GetAccessToken(PurchaseSetup."Sharepoint Connection");
+        FileName := Name;
+        FileName := StrSubstNo('%1 %2.%3', prefixFileName, FileName, FileManagement.GetExtension(idFileName));
+        if SharepointAppHelper.UploadFile(AccessToken, OAuth20Application.RootFolderID, '', OAuth20ApplicationFolders.FolderName
+                    , FileName, Stream, OnlineDriveItem) then begin
+            RecordLinkSharepoint.Init();
+            RecordLinkSharepoint.id := CreateGuid();
+            RecordLinkSharepoint."Application Code" := PurchaseSetup."Sharepoint Connection";
+            RecordLinkSharepoint."Record ID" := Record_id;
+            RecordLinkSharepoint.URL := copystr(OnlineDriveItem.webUrl, 1, MaxStrLen(RecordLinkSharepoint.URL));
+            RecordLinkSharepoint.Name := FileName;
+            RecordLinkSharepoint.Description := ExtDocNo;
+            RecordLinkSharepoint.driveId := OnlineDriveItem.driveId;
+            RecordLinkSharepoint.fileId := OnlineDriveItem.id;
+            RecordLinkSharepoint."Document No." := copystr(Name, 1, MaxStrLen(RecordLinkSharepoint."Document No."));
+            RecordLinkSharepoint."File Name" := idFileName;
+            RecordLinkSharepoint.Insert(true);
+        end else
+            Error(lblError, FileName, OAuth20Application.RootFolderID, OAuth20ApplicationFolders.FolderName);
     end;
 
     procedure DownloadFile()
@@ -135,7 +181,10 @@ table 17380 "ZM SH Record Link Sharepoint"
         OAuth20Application.Get(PurchaseSetup."Sharepoint Connection");
         AccessToken := SharepointAppHelper.GetAccessToken(OAuth20Application.Code);
         if SharepointAppHelper.DownloadFile(AccessToken, Rec.driveId, Rec.Fileid, Stream) then
-            DownloadFromStream(Stream, '', '', '', FileName);
+            DownloadFromStream(Stream, '', '', '', FileName)
+        else
+            error(lblNofFound);
+
     end;
 
     local procedure DeleteSharepointfile()
@@ -145,5 +194,16 @@ table 17380 "ZM SH Record Link Sharepoint"
         AccessToken := SharepointAppHelper.GetAccessToken(OAuth20Application.Code);
         SharepointAppHelper.DeleteDriveItem(AccessToken, OAuth20Application.RootFolderID, Rec.fileId);
 
+    end;
+
+    procedure ShowDocument()
+    var
+        PurchRcptHeader: Record "Purch. Rcpt. Header";
+        PostedPurchaseReceipts: page "Posted Purchase Receipts";
+    begin
+        PurchRcptHeader.Reset();
+        PurchRcptHeader.SetRange("No.", Rec."Document No.");
+        PostedPurchaseReceipts.SetTableView(PurchRcptHeader);
+        PostedPurchaseReceipts.RunModal();
     end;
 }

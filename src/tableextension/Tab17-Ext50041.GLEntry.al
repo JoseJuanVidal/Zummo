@@ -29,5 +29,19 @@ tableextension 50041 "GLEntry" extends "G/L Entry" //17
             FieldClass = FlowField;
             CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('PARTIDA')));
         }
+        field(50112; "Customer Name"; text[100])
+        {
+            Caption = 'Customer Name', comment = 'ESP="Nombre Cliente"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer.Name where("No." = field("Source No.")));
+            Editable = false;
+        }
+        field(50114; "Customer Country/Region Code"; code[10])
+        {
+            Caption = 'Customer Country/Region Code', comment = 'ESP="Cód Pais Cliente"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer."Country/Region Code" where("No." = field("Source No.")));
+            Editable = false;
+        }
     }
 }

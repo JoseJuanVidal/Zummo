@@ -1,7 +1,12 @@
-tableextension 50020 "Z; Ext Return Receipt Header" extends "Return Receipt Header"  //6660
+tableextension 50020 "ZM Ext Return Receipt Header" extends "Return Receipt Header"  //6660
 {
     fields
     {
+        field(65110; "Requiere acciones correctivas"; Boolean)
+        {
+            Caption = 'Requiere acciones correctivas', Comment = 'ESP="Requiere acciones correctivas"';
+            DataClassification = CustomerContent;
+        }
         //+  NORMATIVA MEDIO AMBIENTAL
         Field(50250; "Plastic Qty. (kg)"; decimal)
         {

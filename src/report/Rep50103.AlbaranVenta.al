@@ -128,6 +128,9 @@ report 50103 "AlbaranVenta"
             }
             column(WorkDescprion; WorkDescprion)
             { }
+            column(EsFrancia; EsFrancia) { }
+            column(lblRAEES; lblRAEES) { }
+            column(lblPILAS; lblPILAS) { }
             //SOTHIS EBR 010920 id 159231
             column(logo; CompanyInfo1.LogoCertificacion)
             { }
@@ -725,6 +728,10 @@ report 50103 "AlbaranVenta"
                 commit;
                 WorkDescprion := SalesHeader.GetWorkDescription();
 
+
+                // miramos si la direccion de envio el pais es FRANCIA
+                EsFrancia := GetCountryShipFR();
+
                 if esPackingList then
                     FO01_Txt := FO02_Lbl
                 else
@@ -1003,6 +1010,9 @@ report 50103 "AlbaranVenta"
         CuadroBultos_VolumenLbl: Label 'Volume(m3):', comment = 'ESP="Volumen(m3):",FRA="Volume(m3):"';
         CuadroBultos_PesoNetoLbl: Label 'Gross Weight(kg):', comment = 'ESP="Peso Neto(kg):",FRA="Gross Weight(kg):"';
         volumen: Decimal;
+        EsFrancia: Boolean;
+        lblRAEES: Text;
+        lblPILAS: text;
 
     [Scope('Personalization')]
     procedure InitLogInteraction();
@@ -1050,6 +1060,19 @@ report 50103 "AlbaranVenta"
         IF NOT UnitOfMeasure.GET(UOMCode) THEN
             EXIT(UOMCode);
         EXIT(UnitOfMeasure.Description);
+    end;
+
+    local procedure GetCountryShipFR(): Boolean
+    var
+        CountryRegion: Record "Country/Region";
+    begin
+        lblRAEES := '';
+        lblPILAS := '';
+        if CountryRegion.Get("Sales Shipment Header"."Ship-to Country/Region Code") then begin
+            lblRAEES := CountryRegion."ID RAES";
+            lblPILAS := CountryRegion."ID PILAS";
+            exit(true);
+        end;
     end;
 
     [Scope('Personalization')]

@@ -21,7 +21,9 @@ pageextension 50194 "EmployeeCard_RRHH_zum" extends "Employee Card"
             field("Area"; "Area_zum")
             {
             }
-
+            field("User Id"; "User Id")
+            {
+            }
         }
         //Pestaña ADMIN
         addafter("Salespers./Purch. Code")

@@ -31,6 +31,16 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             DataClassification = CustomerContent;
             Caption = 'Drive Id', comment = 'ESP="Drive ID"';
         }
+        field(50040; "Path Purchase Documents"; Text[250])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Path Purchase Documents', comment = 'ESP="Ubicación Docs. compra"';
+        }
+        field(50050; "Path Purchase Docs. pending"; Text[250])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Path Purchase Documents pending', comment = 'ESP="Ubicación Docs. compra pdtes."';
+        }
     }
 
     procedure SetTextoEmail(NewTextoEmail: Text)

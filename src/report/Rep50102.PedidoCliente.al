@@ -25,12 +25,9 @@ report 50102 "PedidoCliente"
             {
             }
             column(txtOferta; txtOferta) { }
-            column(txtOfertaLbl; txtOfertaLbl) { }
+            column(txtOfertaLbl; lbNumDias) { } //txtOfertaLbl
             column(boolLineasPendientes; boolLineasPendientes) { }
-            column(Portes; Portes)
-            {
-
-            }
+            column(Portes; Portes) { }
             column(InvoiceDiscountAmount; InvoiceDiscountAmount) { }
             column(ImporteBruto; TotalSalesLineF."Line Amount") { }
             column(InvoiceDiscountPct; InvoiceDiscountPct) { }
@@ -271,6 +268,13 @@ report 50102 "PedidoCliente"
             }
             column(TFZummo_Caption; TFZummo_Lbl)
             {
+            }
+            column(lblNDias; lblNDias)
+            {
+            }
+            column(EsOferta; "Sales Header"."Document Type" = "Sales Header"."Document Type"::Order)
+            {
+
             }
             column(Work_Description; workDescription)
             {
@@ -1959,7 +1963,7 @@ report 50102 "PedidoCliente"
         txtOferta: Text;
         cantidadSalesLine: Decimal;
         txtOfertaLbl: Text;
-        lbNumDias: Label 'Lead Time: ', comment = 'ESP="Nº días: "';
+        lbNumDias: Label 'Lead Time: ', comment = 'ESP="Nº días: ",FRA="Nº dias: "';
         TotalAmount2: Decimal;
         agenteNombre: Text;
         TotalAmount1: Decimal;
@@ -2194,6 +2198,7 @@ report 50102 "PedidoCliente"
         TFZummo_Lbl: Label 'T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es'
         , comment = 'ESP="T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es"';
         workDescription_lbl: Label 'Description', comment = 'ESP="Descripción".FRA="Désignation"';
+        lblNDias: Label 'from order confirmation', comment = 'ESP="desde la confirmación del pedido",FRA="à partir de la confirmation de la commande"';
         txtDescLinea: text[100];
         boolLineasPendientes: Boolean;
         sumaPesoBruto: Decimal;

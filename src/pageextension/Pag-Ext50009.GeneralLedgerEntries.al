@@ -29,6 +29,16 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                 ApplicationArea = all;
                 Caption = 'País', comment = 'ESP="País"';
             }
+            field("Customer Name"; "Customer Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Customer Country/Region Code"; "Customer Country/Region Code")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("Detalle"; "Global Dimension 3 Code")
             {
                 ApplicationArea = ALL;

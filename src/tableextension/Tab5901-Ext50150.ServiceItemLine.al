@@ -4,7 +4,6 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
 
     fields
     {
-
         field(50100; CodProdFallo_btc; Code[20])
         {
             DataClassification = CustomerContent;
@@ -71,6 +70,34 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
         {
             Caption = 'Fecha entrega material', comment = 'ESP="Fecha entrega material"';
             DataClassification = CustomerContent;
+        }
+        field(50501; "Description Header"; text[100])
+        {
+            Caption = 'Description Header', comment = 'ESP="Cab. Descripción"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Service Header".Description where("Document Type" = field("Document Type"), "No." = field("Document No.")));
+            Editable = false;
+        }
+        field(50502; "Responsability Center"; code[20])
+        {
+            Caption = 'Responsability Center', comment = 'ESP="Centro de Responsabilidad"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Service Header"."Responsibility Center" where("Document Type" = field("Document Type"), "No." = field("Document No.")));
+            Editable = false;
+        }
+        field(50503; "Ship-to Name"; text[100])
+        {
+            Caption = 'Ship-to Name', comment = 'ESP="Nombre dirección de envío"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Service Header"."Ship-to Name" where("Document Type" = field("Document Type"), "No." = field("Document No.")));
+            Editable = false;
+        }
+        field(50504; "Ship-to City"; text[100])
+        {
+            Caption = 'Ship-to City', comment = 'ESP="Población dirección de envío"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Service Header"."Ship-to City" where("Document Type" = field("Document Type"), "No." = field("Document No.")));
+            Editable = false;
         }
     }
 

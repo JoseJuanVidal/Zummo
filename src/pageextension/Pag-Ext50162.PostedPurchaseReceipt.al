@@ -81,7 +81,7 @@ pageextension 50162 "PostedPurchaseReceipt" extends "Posted Purchase Receipt"
 
     trigger OnAfterGetRecord()
     begin
-        CurrPage.Documents.Page.SetRecordIR(Rec.RecordId, StrSubstNo('%1 %2', rec."Buy-from Vendor No.", Rec."No."), Rec."Vendor Shipment No.");
+        CurrPage.Documents.Page.SetRecordIR(Rec.RecordId, StrSubstNo('%1 %2', rec."Buy-from Vendor No.", Rec."No."), Rec."Vendor Shipment No.", Rec."No.");
     end;
 
     local procedure ImprimeSelecionEtiquetas()

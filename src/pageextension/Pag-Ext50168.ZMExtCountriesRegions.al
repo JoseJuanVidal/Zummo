@@ -13,6 +13,14 @@ pageextension 50168 "ZM Ext Countries/Regions" extends "Countries/Regions"
             {
                 ApplicationArea = all;
             }
+            field("ID RAES"; "ID RAES")
+            {
+                ApplicationArea = all;
+            }
+            field("ID PILAS"; "ID PILAS")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }

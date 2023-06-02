@@ -164,6 +164,7 @@ table 17371 "ZM Hist. BOM Costs"
         Fechas.SetFilter("Period Start", '%1..%2', 20210101D, Today());
         if Fechas.FindFirst() then
             repeat
+                DeleteHistBOMCosts(ProductionBOMNo, Fechas."Period Start");
                 // comprobamos si ya se ha realizado este producto en esta fecha
                 if ExistProductionItem(ProductionBOMNo, Fechas."Period Start") then begin
                     Periode := StrSubstNo('%1 %2 %3', Date2DMY(Fechas."Period End", 3),
@@ -183,6 +184,16 @@ table 17371 "ZM Hist. BOM Costs"
                         Until HISTBOMProduction.next() = 0;
                 end;
             Until Fechas.next() = 0;
+    end;
+
+    local procedure DeleteHistBOMCosts(ProductionBOMNo: code[20]; PeriodStart: date)
+    var
+        HistBOMCosts: Record "ZM Hist. BOM Costs";
+    begin
+        HistBOMCosts.Reset();
+        HistBOMCosts.SetRange("BOM Item No.", ProductionBOMNo);
+        HistBOMCosts.SetRange("Period Start", PeriodStart);
+        HistBOMCosts.DeleteAll();
     end;
 
     local procedure AddProductionBomLine(ItemNo: code[20]; ProductionBOMNo: code[20])
@@ -224,6 +235,7 @@ table 17371 "ZM Hist. BOM Costs"
             Until Fechas.next() = 0;
 
     end;
+
 
     local procedure ExistProductionItem(ProductionBOMNo: code[10]; PeriodStart: Date): Boolean
     var

@@ -4259,7 +4259,6 @@ Cstr(Sum(Fields!Portes.Value))
               </Style>
             </Textbox>
             <Textbox Name="Textbox64">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -4296,11 +4295,27 @@ Cstr(Sum(Fields!Portes.Value))
                     <TextAlign>Left</TextAlign>
                   </Style>
                 </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!lblNDias.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>=First(Fields!TotalAmountInclVAT.Value, "DataSet_Result")</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>6.62324cm</Top>
               <Left>0.7432cm</Left>
-              <Height>0.64471cm</Height>
+              <Height>0.80346cm</Height>
               <Width>7.83018cm</Width>
               <ZIndex>24</ZIndex>
               <Visibility>
@@ -4311,11 +4326,9 @@ Cstr(Sum(Fields!Portes.Value))
                   <Color>LightGrey</Color>
                   <Style>Solid</Style>
                 </Border>
-                <VerticalAlign>Middle</VerticalAlign>
+                <VerticalAlign>Top</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
             <Textbox Name="Textbox69">
@@ -6390,6 +6403,12 @@ AAAASAISAAAAAElAAgAAACAJSAAAAAAkAQkAAACAJCABAAAAkAQkAAAAAJKABAAAAEASkAAAAABIAhIA
         </Field>
         <Field Name="TFZummo_Caption">
           <DataField>TFZummo_Caption</DataField>
+        </Field>
+        <Field Name="lblNDias">
+          <DataField>lblNDias</DataField>
+        </Field>
+        <Field Name="EsOferta">
+          <DataField>EsOferta</DataField>
         </Field>
         <Field Name="Work_Description">
           <DataField>Work_Description</DataField>

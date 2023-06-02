@@ -127,6 +127,10 @@ report 50104 "PackingList"
             column(ZummoInnovaciones_Lbl; ZummoInnovaciones_Lbl)
             {
             }
+            column(EsFrancia; EsFrancia) { }
+            column(lblRAEES; lblRAEES) { }
+            column(lblPILAS; lblPILAS) { }
+
             //SOTHIS EBR 040920 id 159231
             column(logo; CompanyInfo1.LogoCertificacion)
             { }
@@ -821,6 +825,9 @@ report 50104 "PackingList"
                 IF NOT RecShippingAgent.Get("Sales Shipment Header"."Shipping Agent Code") THEN Clear(RecShippingAgent);
                 TransportistaNombre_btc := RecShippingAgent.Name;
 
+                // miramos si la direccion de envio el pais es FRANCIA
+                EsFrancia := GetCountryShipFR();
+
                 decVolumen := 0;
                 decPesoBruto := Peso_btc;
                 numPalets := NumPalets_btc;
@@ -994,8 +1001,6 @@ report 50104 "PackingList"
         ShowGroup: Boolean;
         TotalQty: Decimal;
         [InDataSet]
-
-
         LogInteractionEnable: Boolean;
         DisplayAssemblyInformation: Boolean;
         AsmHeaderExists: Boolean;
@@ -1054,11 +1059,11 @@ report 50104 "PackingList"
         PaisOrigen_Lbl: Label 'COUNTRY PROVENANCE: SPAIN', Comment = 'ESP="PAIS PROCEDENCIA: ESPAÑA",FRA="PROVENANCE PAYS: ESPAGNE"';
         PaisProcedencia_Lbl: Label 'COUNTRY PROVENANCE: SPAIN', Comment = 'ESP="PAIS PROCEDENCIA: ESPAÑA",FRA="PROVENANCE PAYS: ESPAGNE"';
         SegunLoDispuesto_Lbl: Label 'As provided by Regulation (EU) 2016/769 of the European Parliament and of the Council of April 27, 2016 regarding the protection of natural persons, we inform you that your data will be incorporated into the treatment system owned by ZUMMO MECHANICAL INNOVATIONS, SA - in order to be able to send you the corresponding invoice. You may exercise the rights of access, rectification, limitation of treatment, deletion, portability and opposition / revocation, in the terms established by current regulations on data protection, by sending your request to the postal address indicated above, you can also address to the competent Control Authority to submit the claim it deems appropriate.',
-  Comment = 'ESP="Según lo Dispuesto por el Reglamento (UE) 2016/769 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de ZUMMO INNOVACIONES MECÁNICAS, S.A. - con la finalidad de poder remitirle la correspondiente factura. Podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición/revocación, en los términos que establece la normativa vigente en materia de protección de datos, dirigiendo su petición a la dirección postal arriba indicada, asimismo, podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna.",FRA="Conformément au règlement (UE) 2016/769 du Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques, nous vous informons que vos données seront intégrées dans le système de traitement appartenant à ZUMMO MECHANICAL INNOVATIONS, SA - afin de pouvoir vous envoyer la facture correspondante. Vous pouvez exercer les droits d´accès, de rectification, de limitation de traitement, de suppression, de portabilité et d´opposition / révocation, dans les termes établis par la réglementation en vigueur sur la protection des données, en adressant votre demande à l´adresse postale indiquée ci-dessus, vous pouvez également vous adresser au l´autorité de contrôle compétente pour soumettre la réclamation qu´elle juge appropriée."';
+            Comment = 'ESP="Según lo Dispuesto por el Reglamento (UE) 2016/769 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de ZUMMO INNOVACIONES MECÁNICAS, S.A. - con la finalidad de poder remitirle la correspondiente factura. Podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición/revocación, en los términos que establece la normativa vigente en materia de protección de datos, dirigiendo su petición a la dirección postal arriba indicada, asimismo, podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna.",FRA="Conformément au règlement (UE) 2016/769 du Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques, nous vous informons que vos données seront intégrées dans le système de traitement appartenant à ZUMMO MECHANICAL INNOVATIONS, SA - afin de pouvoir vous envoyer la facture correspondante. Vous pouvez exercer les droits d´accès, de rectification, de limitation de traitement, de suppression, de portabilité et d´opposition / révocation, dans les termes établis par la réglementation en vigueur sur la protection des données, en adressant votre demande à l´adresse postale indiquée ci-dessus, vous pouvez également vous adresser au l´autorité de contrôle compétente pour soumettre la réclamation qu´elle juge appropriée."';
         TFZummo_Lbl: Label 'T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es',
-  Comment = 'T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es';
+            Comment = 'T +34 961 301 246| F +34 961 301 250| zummo@zummo.es| Cádiz, 4.46113 Moncada.Valencia.Spain|www.zummo.es';
         ZummoInnovaciones_Lbl: Label 'Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on January 26, 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-96112024 Nº R.I. AEE producer 288',
-  Comment = 'ESP="Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia el 26 de enero de 1999, Tomo 4336, Libro 1648, Sección Gral., Folio 212, hoja Y-22381, Inscripción 1ª CIF A-96112024 Nº R.I. Productor AEE 288",FRA="Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on 26 janvier 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-96112024 Nº R.I. AEE producteur 288"';
+            Comment = 'ESP="Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia el 26 de enero de 1999, Tomo 4336, Libro 1648, Sección Gral., Folio 212, hoja Y-22381, Inscripción 1ª CIF A-96112024 Nº R.I. Productor AEE 288",FRA="Zummo Innovaciones Mecánicas, S.A. Ins.Reg.Merc.Valencia on 26 janvier 1999, Volume 4336, Book 1648, General Section, Folio 212, page Y-22381, Registration 1st CIF A-96112024 Nº R.I. AEE producteur 288"';
         NumHoja_Lbl: Label 'Sheet No.', comment = 'ESP="Nº Hoja",FRA="Fiche n°"';
         recItem: record item;
         decVolumen: Decimal;
@@ -1068,6 +1073,9 @@ report 50104 "PackingList"
         FO01_Lbl: Label 'FO.04_C8.01_V02', Comment = 'ESP="FO.04_C8.01_V02"';
         PRGestion_Lbl: Label 'PR-GESTION DE LOS PEDIDOS DE CLIENTE', Comment = 'ESP="PR-GESTION DE LOS PEDIDOS DE CLIENTE"';
         NoSerie_Lbl: Label 'Serial No.', Comment = 'ESP="Nº de Serie:",FRA="Numéro de série."';
+        EsFrancia: Boolean;
+        lblRAEES: Text;
+        lblPILAS: text;
 
     [Scope('Personalization')]
     procedure InitLogInteraction();
@@ -1098,6 +1106,19 @@ report 50104 "PackingList"
         FormatAddr.GetCompanyAddr(SalesShipmentHeader."Responsibility Center", RespCenter, CompanyInfo, CompanyAddr);
         FormatAddr.SalesShptShipTo(ShipToAddr, SalesShipmentHeader);
         ShowCustAddr := FormatAddr.SalesShptBillTo(CustAddr, ShipToAddr, SalesShipmentHeader);
+    end;
+
+    local procedure GetCountryShipFR(): Boolean
+    var
+        CountryRegion: Record "Country/Region";
+    begin
+        lblRAEES := '';
+        lblPILAS := '';
+        if CountryRegion.Get("Sales Shipment Header"."Ship-to Country/Region Code") then begin
+            lblRAEES := CountryRegion."ID RAES";
+            lblPILAS := CountryRegion."ID PILAS";
+            exit(true);
+        end;
     end;
 
     local procedure FormatDocumentFields(SalesShipmentHeader: Record "Sales Shipment Header");

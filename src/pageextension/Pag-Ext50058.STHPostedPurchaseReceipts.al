@@ -124,6 +124,6 @@ pageextension 50058 "STH PostedPurchaseReceipts" extends "Posted Purchase Receip
 
     local procedure UpdatedocumentsFilter()
     begin
-        CurrPage.Documents.Page.SetRecordIR(Rec.RecordId, StrSubstNo('%1 %2', Rec."Buy-from Vendor No.", Rec."No."), Rec."Vendor Shipment No.");
+        CurrPage.Documents.Page.SetRecordIR(Rec.RecordId, StrSubstNo('%1 %2', Rec."Buy-from Vendor No.", Rec."No."), Rec."Vendor Shipment No.", Rec."No.");
     end;
 }
