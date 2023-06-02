@@ -43,5 +43,12 @@ tableextension 50041 "GLEntry" extends "G/L Entry" //17
             CalcFormula = lookup(Customer."Country/Region Code" where("No." = field("Source No.")));
             Editable = false;
         }
+        field(50115; "Cust. Ledger Currency Factor"; Decimal)
+        {
+            Caption = 'Cust. Ledger Currency Factor', comment = 'ESP="Factor conversión mov. Cliente"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Cust. Ledger Entry"."Adjusted Currency Factor" where("Document Type" = field("Document Type"), "Document No." = field("Document No.")));
+            Editable = false;
+        }
     }
 }

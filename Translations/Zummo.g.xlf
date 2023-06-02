@@ -23368,6 +23368,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Dimensiones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDimensiones - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Control 646444774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Amount (Currency)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe (Divisa)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Control Amount (Currency) - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Control 4259797232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>País</source>
           <note from="Developer" annotates="general" priority="2">ESP="País"</note>
@@ -25657,6 +25662,11 @@
           <source>Saldo Apertura</source>
           <note from="Developer" annotates="general" priority="2">ESP="Saldo Apertura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLAccount - Field SaldoApertura - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4220596153 - Field 2316336532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>Cust. Ledger Currency Factor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factor conversión mov. Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Cust. Ledger Currency Factor - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4220596153 - Field 1533744026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>Customer Country/Region Code</source>

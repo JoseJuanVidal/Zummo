@@ -39,6 +39,17 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Cust. Ledger Currency Factor"; "Cust. Ledger Currency Factor")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Amount (Currency)"; AmountCurrency)
+            {
+                Caption = 'Amount (Currency)', comment = 'ESP="Importe (Divisa)"';
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("Detalle"; "Global Dimension 3 Code")
             {
                 ApplicationArea = ALL;
@@ -125,6 +136,7 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
         Vendor: Record Vendor;
         Customer: Record Customer;
     begin
+        AmountCurrency := Rec.Amount * rec."Cust. Ledger Currency Factor";
         NombreClienteProv := '';
         if Vendor.get("Source No.") then begin
             NombreClienteProv := Vendor.Name;
@@ -141,4 +153,5 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
     var
         NombreClienteProv: code[100];
         PaisClienteProv: code[10];
+        AmountCurrency: Decimal;
 }
