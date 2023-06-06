@@ -1386,6 +1386,14 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
     end;
 
+    procedure UpdateDimensions(var Rec: Record "ZM CONSULTIA Invoice Line")
+    begin
+        GetProjectDimension(Rec);
+        GetEmployeeDimensionsValue(Rec);
+        GetGLAccountDimensionsValue(Rec);
+        Rec.Modify();
+    end;
+
     procedure AssingProject(var Rec: Record "ZM CONSULTIA Invoice Line")
     var
         ProductProject: Record "ZM CONSULTIA Producto-Proyecto";
@@ -1408,6 +1416,19 @@ codeunit 50104 "Zummo Inn. IC Functions"
             ProductProject.Proyecto := DimensionValue.Code;
             ProductProject.Modify();
         end;
+    end;
+
+    local procedure GetProjectDimension(var Rec: Record "ZM CONSULTIA Invoice Line"): Boolean
+    var
+        ProductProject: Record "ZM CONSULTIA Producto-Proyecto";
+    begin
+        if Rec.Proyecto <> '' then
+            exit;
+        ProductProject.Reset();
+        ProductProject.SetRange(CodigoProducto, Rec.CodigoProducto);
+        if ProductProject.FindFirst() then
+            if ProductProject.Proyecto <> '' then
+                Rec.Proyecto := ProductProject.Proyecto;
     end;
 
     local procedure CreateProductoProject(CodigoProducto: code[50]; Producto: text[100])

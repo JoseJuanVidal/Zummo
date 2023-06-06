@@ -12473,6 +12473,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Líneas de facturas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3672491321 - Method 786679134 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar las dimensiones de las líneas seleccionadas?\(%1)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las dimensiones de las líneas seleccionadas?\(%1)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Method UpdateDimensions - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 3672491321 - Action 1590437402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line</source>
           <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
@@ -12487,6 +12492,11 @@
           <source>Assign Project</source>
           <note from="Developer" annotates="general" priority="2">ESP="Asignar Proyecto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Action AssingProyecto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3672491321 - Action 2653363255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualizar dimensiones</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar dimensiones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Action RefreshDimension - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 528300531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Change clasification</source>

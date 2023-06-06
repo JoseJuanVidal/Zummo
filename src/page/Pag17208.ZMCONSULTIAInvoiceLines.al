@@ -172,6 +172,17 @@ page 17208 "ZM CONSULTIA Invoice Lines"
                         AssingProject();
                     end;
                 }
+                action(RefreshDimension)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Actualizar dimensiones', comment = 'ESP="Actualizar dimensiones"';
+                    Image = Refresh;
+
+                    trigger OnAction()
+                    begin
+                        UpdateDimensions();
+                    end;
+                }
             }
         }
     }
@@ -189,6 +200,22 @@ page 17208 "ZM CONSULTIA Invoice Lines"
     local procedure AssingProject()
     begin
         CONSULTIAFunciones.AssingProject(Rec);
+        CurrPage.Update();
+    end;
+
+    local procedure UpdateDimensions()
+    var
+        CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
+        lblConfirm: Label '¿Desea actualizar las dimensiones de las líneas seleccionadas?\(%1)', comment = 'ESP="¿Desea actualizar las dimensiones de las líneas seleccionadas?\(%1)"';
+    begin
+        CurrPage.SetSelectionFilter(CONSULTIAInvoiceLine);
+        if not Confirm(lblConfirm, true, CONSULTIAInvoiceLine.Count) then
+            exit;
+        if CONSULTIAInvoiceLine.FindFirst() then
+            repeat
+                CONSULTIAFunciones.UpdateDimensions(CONSULTIAInvoiceLine);
+            Until CONSULTIAInvoiceLine.next() = 0;
+
         CurrPage.Update();
     end;
 }
