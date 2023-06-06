@@ -1273,11 +1273,11 @@ codeunit 50104 "Zummo Inn. IC Functions"
         if CONSULTIAInvoiceLine.FindFirst() then
             repeat
                 LineNo += 10000;
-                AddPurchaseLine(CONSULTIAInvoiceLine, PurchaseHeader, LineNo);
+                AddPurchaseLine(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseHeader, LineNo);
             Until CONSULTIAInvoiceLine.next() = 0;
     end;
 
-    local procedure AddPurchaseLine(CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; PurchaseHeader: Record "Purchase Header"; LineNo: Integer)
+    local procedure AddPurchaseLine(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; PurchaseHeader: Record "Purchase Header"; LineNo: Integer)
     var
         PurchaseLine: Record "Purchase Line";
     begin
@@ -1288,7 +1288,11 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseLine."Line No." := LineNo;
         PurchaseLine.Insert();
         PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
-        PurchaseLine.Validate("No.", CONSULTIAInvoiceLine.Ref_DPTO);
+        if CONSULTIAInvoiceHeader."G/L Account Fair" = '' then
+            PurchaseLine.Validate("No.", CONSULTIAInvoiceLine.Ref_DPTO)
+        else
+            PurchaseLine.Validate("No.", CONSULTIAInvoiceHeader."G/L Account Fair");
+
         PurchaseLine.Description := copystr(CONSULTIAInvoiceLine.Desc_servicio, 1, 100);
         PurchaseLine."Description 2" := copystr(CONSULTIAInvoiceLine.Desc_servicio, 101, 100);
         PurchaseLine.Validate(Quantity, 1);
@@ -1297,6 +1301,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Base);
         PurchaseLine.Validate("Shortcut Dimension 1 Code", CONSULTIAInvoiceLine.Ref_Usuario);
         PurchaseLine.Modify();
+        SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseLine);
         // controlar que si hay tasas, hay que poner dos lineas y una exenta
         if CONSULTIAInvoiceLine.Tasas <> 0 then begin
             PurchaseLine.Init();
@@ -1306,7 +1311,11 @@ codeunit 50104 "Zummo Inn. IC Functions"
             PurchaseLine."Line No." := LineNo + 5000;
             PurchaseLine.Insert();
             PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
-            PurchaseLine.Validate("No.", CONSULTIAInvoiceLine.Ref_DPTO);
+            if CONSULTIAInvoiceHeader."G/L Account Fair" = '' then
+                PurchaseLine.Validate("No.", CONSULTIAInvoiceLine.Ref_DPTO)
+            else
+                PurchaseLine.Validate("No.", CONSULTIAInvoiceHeader."G/L Account Fair");
+
             PurchaseLine.Description := copystr(CONSULTIAInvoiceLine.Desc_servicio, 1, 100);
             PurchaseLine."Description 2" := copystr(CONSULTIAInvoiceLine.Desc_servicio, 101, 100);
             PurchaseLine.Validate(Quantity, 1);
@@ -1315,9 +1324,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
             PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Tasas);
             PurchaseLine.Validate("Shortcut Dimension 1 Code", CONSULTIAInvoiceLine.Ref_Usuario);
             PurchaseLine.Modify();
+            SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseLine);
         end;
     end;
-
 
     local procedure GetVATProdPostingGroup(CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; PurchaseHeader: Record "Purchase Header"): code[20]
     var
@@ -1330,6 +1339,98 @@ codeunit 50104 "Zummo Inn. IC Functions"
         VATPostingSetup.SetRange("VAT %", CONSULTIAInvoiceLine.Porc_IVA);
         if VATPostingSetup.FindFirst() then
             exit(VATPostingSetup."VAT Prod. Posting Group");
+    end;
+
+    local procedure SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
+                            var PurchaseLine: Record "Purchase Line")
+    var
+        GLSetup: Record "General Ledger Setup";
+        recNewDimSetEntry: record "Dimension Set Entry" temporary;
+        cduDimMgt: Codeunit DimensionManagement;
+        cduCambioDim: Codeunit CambioDimensiones;
+        GlobalDim1: code[20];
+        GlobalDim2: code[20];
+        intDimSetId: Integer;
+    begin
+        GLSetup.Get();
+        // CECO
+        // Empleado y Unico por feria MK (campo proyecto de cabecera)
+        GlobalDim1 := GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
+        recNewDimSetEntry.Init();
+        recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
+        recNewDimSetEntry.Validate("Dimension Value Code", GlobalDim1);
+        recNewDimSetEntry.Insert();
+
+        // PROYECTO
+        CONSULTIAInvoiceLine.CalcFields(Proyecto);
+        if CONSULTIAInvoiceLine."Proyecto Manual" = '' then
+            CONSULTIAInvoiceLine.TestField(Proyecto);
+        recNewDimSetEntry.Init();
+        recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 2 Code";
+        recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
+        recNewDimSetEntry.Insert();
+        // PARTIDA
+        CONSULTIAInvoiceLine.TestField(Partida);
+        recNewDimSetEntry.Init();
+        recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 8 Code";
+        recNewDimSetEntry.Validate("Dimension Value Code", CONSULTIAInvoiceLine.Partida);
+        recNewDimSetEntry.Insert();
+        // DETALLE
+        recNewDimSetEntry.Init();
+        recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 3 Code";
+        recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
+        recNewDimSetEntry.Insert();
+
+        Clear(cduDimMgt);
+        intDimSetId := cduDimMgt.GetDimensionSetID(recNewDimSetEntry);
+        clear(cduCambioDim);
+
+        GlobalDim1 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 1 Code", intDimSetId);
+        GlobalDim2 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 2 Code", intDimSetId);
+
+        PurchaseLine."Dimension Set ID" := intDimSetId;
+        PurchaseLine."Shortcut Dimension 1 Code" := GlobalDim1;
+        PurchaseLine."Shortcut Dimension 2 Code" := GlobalDim2;
+        PurchaseLine.Modify();
+    end;
+
+    local procedure GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
+    begin
+        if CONSULTIAInvoiceHeader."Global Dimension 1 code Fair" = '' then begin
+            CONSULTIAInvoiceLine.TestField(Ref_Usuario);
+            exit(CONSULTIAInvoiceLine.Ref_Usuario);
+        end else begin
+            exit(CONSULTIAInvoiceHeader."Global Dimension 1 code Fair");
+        end;
+    end;
+
+    local procedure GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
+    begin
+        if CONSULTIAInvoiceHeader.Proyecto = '' then begin
+            if CONSULTIAInvoiceLine."Proyecto Manual" <> '' then
+                exit(CONSULTIAInvoiceLine."Proyecto Manual");
+            CONSULTIAInvoiceLine.TestField(Proyecto);
+            exit(CONSULTIAInvoiceLine.Proyecto);
+        end else begin
+            exit(CONSULTIAInvoiceHeader.Proyecto);
+        end;
+    end;
+
+    local procedure Check()
+    var
+        myInt: Integer;
+    begin
+        
+    end;
+
+    local procedure GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
+    begin
+        if CONSULTIAInvoiceHeader."Dimension Detalle Fair" = '' then begin
+            CONSULTIAInvoiceLine.TestField(Detalle);
+            exit(CONSULTIAInvoiceLine.Detalle)
+        end else begin
+            exit(CONSULTIAInvoiceHeader."Dimension Detalle Fair");
+        end;
     end;
 
     local procedure CopyDocumentAttachment(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; PurchaseHeader: Record "Purchase Header")
