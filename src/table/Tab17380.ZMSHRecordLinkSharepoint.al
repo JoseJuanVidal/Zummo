@@ -138,7 +138,7 @@ table 17380 "ZM SH Record Link Sharepoint"
         end;
     end;
 
-    procedure UploadFilefromStream(Record_id: RecordId; prefixFileName: text; ExtDocNo: text; Name: Text; DocumentNo: code[20]; idFileName: text; Stream: InStream)
+    procedure UploadFilefromStream(Record_id: RecordId; prefixFileName: text; ExtDocNo: text; Name: Text; DocumentNo: text; idFileName: text; Stream: InStream)
     var
         RecordLinkSharepoint: Record "ZM SH Record Link Sharepoint";
         FileManagement: Codeunit "File Management";
@@ -151,7 +151,7 @@ table 17380 "ZM SH Record Link Sharepoint"
         OAuth20Application.Get(PurchaseSetup."Sharepoint Connection");
         OAuth20ApplicationFolders.Get(OAuth20Application.Code, PurchaseSetup."Sharepoint Folder");
         AccessToken := SharepointAppHelper.GetAccessToken(PurchaseSetup."Sharepoint Connection");
-        FileName := Name;
+        FileName := StrSubstNo('%1 %2', Name, DocumentNo);
         FileName := StrSubstNo('%1 %2.%3', prefixFileName, FileName, FileManagement.GetExtension(idFileName));
         if SharepointAppHelper.UploadFile(AccessToken, OAuth20Application.RootFolderID, '', OAuth20ApplicationFolders.FolderName
                     , FileName, Stream, OnlineDriveItem) then begin

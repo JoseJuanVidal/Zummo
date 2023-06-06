@@ -59,7 +59,7 @@ page 17381 "ZM Import files folder"
             {
                 ApplicationArea = All;
                 Caption = 'Refresh', comment = 'ESP="Actualizar"';
-                Image = Refresh;
+                Image = RefreshLines;
                 Promoted = true;
                 PromotedIsBig = true;
 
@@ -163,8 +163,8 @@ page 17381 "ZM Import files folder"
                     RecordLinkSharepoint.UploadFilefromStream(PurchaseRcptHeader.RecordId, PurchaseRcptHeader."Buy-from Vendor Name", VendorShipmentNo, PurchaseRcptHeader."No.",
                         VendorShipmentNo, Rec.Name, Stream);
                     Commit();
-                    FileManagement.CopyClientFile(StrSubstNo('%1\%2', Rec.Path, Rec.Name),
-                        StrSubstNo('%1\%2 %3.%4', Rec.Path, PurchaseRcptHeader."Buy-from Vendor Name", VendorShipmentNo, FileManagement.GetExtension(Rec.Name)), true);
+                    // FileManagement.CopyClientFile(StrSubstNo('%1\%2', Rec.Path, Rec.Name),
+                    //     StrSubstNo('%1\%2 %3.%4', Rec.Path, PurchaseRcptHeader."Buy-from Vendor Name", VendorShipmentNo, FileManagement.GetExtension(Rec.Name)), true);
                     // guardar el fichero en la unidad de red de COMPRAS
                     if PurchaseSetup."Path Purchase Docs. pending" <> '' then begin
                         FileManagement.CopyClientFile(StrSubstNo('%1\%2', Rec.Path, Rec.Name),
@@ -187,6 +187,7 @@ page 17381 "ZM Import files folder"
         // movemos el fichero en historial de carpeta local
         FileManagement.CopyClientFile(StrSubstNo('%1\%2', Rec.Path, Rec.Name),
             StrSubstNo('%1\%2\%3', Rec.Path, format(Date2DMY(WorkDate(), 3)), FileName), true);
+        // FileManagement.DeleteClientFile(StrSubstNo('%1\%2', Rec.Path, Rec.Name));
 
     end;
 
