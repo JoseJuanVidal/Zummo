@@ -114,7 +114,7 @@ page 17416 "ZM CONSULTIA Invoice Headers"
 
                 trigger OnAction()
                 begin
-                    GetInvoiceByDate
+                    GetInvoiceByDate();
                 end;
             }
         }

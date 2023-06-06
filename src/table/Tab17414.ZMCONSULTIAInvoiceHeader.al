@@ -130,7 +130,7 @@ table 17414 "ZM CONSULTIA Invoice Header"
         field(61; "Global Dimension 1 code Fair"; code[10])
         {
             DataClassification = CustomerContent;
-            Caption = 'Global Dimension 1 code Fair', comment = 'ESP="Dimension Proyecto Feria"';
+            Caption = 'Global Dimension 1 code Fair', comment = 'ESP="Dimension CECO Feria"';
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
         }
         field(62; "Dimension Detalle Fair"; code[10])

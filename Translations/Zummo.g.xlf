@@ -6490,7 +6490,7 @@
         </trans-unit>
         <trans-unit id="Table 1677429823 - Field 3090361685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Global Dimension 1 code Fair</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Dimension Proyecto Feria"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Dimension CECO Feria"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Global Dimension 1 code Fair - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1677429823 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

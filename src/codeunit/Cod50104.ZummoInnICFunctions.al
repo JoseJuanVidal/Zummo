@@ -1416,13 +1416,6 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
     end;
 
-    local procedure Check()
-    var
-        myInt: Integer;
-    begin
-        
-    end;
-
     local procedure GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
     begin
         if CONSULTIAInvoiceHeader."Dimension Detalle Fair" = '' then begin
