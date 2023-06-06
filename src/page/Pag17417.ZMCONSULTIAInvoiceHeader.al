@@ -7,7 +7,7 @@ page 17417 "ZM CONSULTIA Invoice Header"
     // Editable = false;
     DelayedInsert = True;
     InsertAllowed = false;
-    ModifyAllowed = false;
+    // ModifyAllowed = false;
     DataCaptionFields = N_Factura;
 
     layout
@@ -19,85 +19,116 @@ page 17417 "ZM CONSULTIA Invoice Header"
                 field("Vendor No."; "Vendor No.")
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Vendor Name"; "Vendor Name")
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field(Id; Id)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(N_Factura; N_Factura)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(N_Pedido; N_Pedido)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(F_Factura; F_Factura)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Descripcion; Descripcion)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(IdCorp_Sol; IdCorp_Sol)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Nombre_Sol; Nombre_Sol)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Proyecto; Proyecto)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Ref_Ped_Cl; Ref_Ped_Cl)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Responsable_compra; Responsable_compra)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Tipo; Tipo)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(FacturaRectificada; FacturaRectificada)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Total_Base; Total_Base)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Total_Impuesto; Total_Impuesto)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Total_Tasas_Exentas; Total_Tasas_Exentas)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Total; Total)
                 {
                     ApplicationArea = All;
+                    Editable = false;
+                }
+                field("G/L Account Fair"; "G/L Account Fair")
+                {
+                    ApplicationArea = all;
+                }
+                field("Global Dimension 1 code Fair"; "Global Dimension 1 code Fair")
+                {
+                    ApplicationArea = all;
+                }
+                field("Dimension Detalle Fair"; "Dimension Detalle Fair")
+                {
+                    ApplicationArea = all;
                 }
             }
             group(Register)
             {
                 Caption = 'Register', comment = 'ESP="Registro"';
-
+                Editable = false;
 
                 field("Document Type"; "Document Type")
                 {
                     ApplicationArea = all;
                     Visible = false;
+
                 }
                 field("Pre Invoice No."; "Pre Invoice No.")
                 {

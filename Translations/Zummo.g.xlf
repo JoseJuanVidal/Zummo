@@ -6463,6 +6463,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Descripcion - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 20097087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimension Detalle Fair</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dimensión Detalle Feria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Dimension Detalle Fair - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1677429823 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pre Invoice No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nª PreFactura"</note>
@@ -6477,6 +6482,16 @@
           <source>Fecha Factura</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field F_Factura - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 1566697179 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account Fair</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cuenta contable Feria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field G/L Account Fair - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 3090361685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 1 code Fair</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dimension Proyecto Feria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Global Dimension 1 code Fair - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1677429823 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Id</source>
@@ -6574,28 +6589,33 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 2587701375 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Base"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Base - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 2965000799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>CodigoProducto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CodigoProducto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field CodigoProducto - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 3600645700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Desc_servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc_servicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Desc_servicio - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 368717912 - Field 2705799203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Detalle</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Detalle"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Detalle - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 368717912 - Field 470257252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>F_Fin</source>
+          <note from="Developer" annotates="general" priority="2">ESP="F_Fin"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field F_Fin - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 2435647913 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>F_Ini</source>
+          <note from="Developer" annotates="general" priority="2">ESP="F_Ini"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field F_Ini - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -6604,23 +6624,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Id - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 1512392856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>IdCorp_Sol</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IdCorp_Sol"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field IdCorp_Sol - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 3827685950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>IdCorp_Usuario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IdCorp_Usuario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field IdCorp_Usuario - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 1484224253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>IdServicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IdServicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field IdServicio - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 419529711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Imp_IVA</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imp_IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Imp_IVA - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 1042636322 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -6629,8 +6649,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Numero - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 2310157289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>NumeroLineaServicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="NumeroLineaServicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field NumeroLineaServicio - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 884824481 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -6638,45 +6658,80 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field N_Factura - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 368717912 - Field 3508695893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Partida</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Partida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Partida - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 368717912 - Field 1671513433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Porc_IVA</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Porc_IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Porc_IVA - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 2231268992 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Producto - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 1567443966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Proveedor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Proveedor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 368717912 - Field 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Proyecto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 368717912 - Field 1728115565 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proyecto manual</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyecto manual"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Proyecto Manual - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 368717912 - Field 4141181514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>PVP</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PVP"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field PVP - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 185832555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Ref_DPTO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ref_DPTO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Ref_DPTO - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 1497279436 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Ref_Usuario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ref_Usuario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Ref_Usuario - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 2010560456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Tasas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tasas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Tasas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 368717912 - Field 1546832578 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Usuario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usuario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field Usuario - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2455619205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Producto - Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto - Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Producto-Proyecto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2455619205 - Field 2965000799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cód. producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Producto-Proyecto - Field CodigoProducto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2455619205 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Producto-Proyecto - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2455619205 - Field 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Producto-Proyecto - Field Proyecto - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 983264615 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Items blocked</source>
@@ -8257,6 +8312,11 @@
           <source>https://api-destinux.consultiatravel.es/B2B.Test</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblurlConsultia</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2625357368 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea Cambiar el proyecto %1 del producto %2 a %3?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Cambiar el proyecto %1 del producto %2 a %3?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method AssingProject - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1819011714 - NamedType 3049422029" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create la %1 %2.</source>
@@ -12422,6 +12482,11 @@
           <source>Assign Employee</source>
           <note from="Developer" annotates="general" priority="2">ESP="Asignar Empleado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Action AssingEmployee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3672491321 - Action 3689272924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assign Project</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Lines - Action AssingProyecto - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 528300531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Change clasification</source>

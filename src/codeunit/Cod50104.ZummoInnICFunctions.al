@@ -1066,12 +1066,71 @@ codeunit 50104 "Zummo Inn. IC Functions"
         CONSULTIAInvoiceLine."Tasas" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Tasas));
         CONSULTIAInvoiceLine."PVP" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(PVP));
         CONSULTIAInvoiceLine."IdCorp_Sol" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdCorp_Sol));
+        GetEmployeeDimensionsValue(CONSULTIAInvoiceLine);
         CONSULTIAInvoiceLine."IdServicio" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdServicio));
         CONSULTIAInvoiceLine."NumeroLineaServicio" := GetJSONItemFieldInteger(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(NumeroLineaServicio));
         CONSULTIAInvoiceLine."CodigoProducto" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(CodigoProducto));
         CONSULTIAInvoiceLine.Insert();
     end;
 
+    procedure GetEmployeeDimensionsValue(var CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line")
+    var
+        GLSetup: record "General Ledger Setup";
+        DefaultDimension: Record "Default Dimension";
+        DimSetEntry: Record "Dimension Set Entry" temporary;
+        DimensionMgt: Codeunit DimensionManagement;
+        DimensionSetIDArr: ARRAY[10] OF Integer;
+        TableID: ARRAY[10] OF Integer;
+        No: ARRAY[10] OF Code[20];
+        GlobalDim1Code: code[20];
+        GlobalDim2Code: code[20];
+        DimSetID: Integer;
+    begin
+        // CECO - Partida - Detalle
+        // 1       8           3
+        GLSetup.Get();
+        TableID[1] := Database::Employee;
+        No[1] := CONSULTIAInvoiceLine.IdCorp_Usuario;
+        DimSetID := DimensionMgt.GetDefaultDimID(TableID, No, '', GlobalDim1Code, GlobalDim2Code, DimSetID, 0);
+        DimensionMgt.GetDimensionSet(DimSetEntry, DimSetID);
+        DimSetEntry.Reset();
+        DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
+        if DimSetEntry.FindFirst() then
+            CONSULTIAInvoiceLine.Detalle := DimSetEntry."Dimension Value Code";
+        DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+        if DimSetEntry.FindFirst() then
+            CONSULTIAInvoiceLine.Partida := DimSetEntry."Dimension Value Code";
+    end;
+
+    procedure GetGLAccountDimensionsValue(var CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line")
+    var
+        GLSetup: record "General Ledger Setup";
+        CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
+        DefaultDimension: Record "Default Dimension";
+        DimSetEntry: Record "Dimension Set Entry" temporary;
+        DimensionMgt: Codeunit DimensionManagement;
+        GLAccount: code[20];
+        DimensionSetIDArr: ARRAY[10] OF Integer;
+        TableID: ARRAY[10] OF Integer;
+        No: ARRAY[10] OF Code[20];
+        GlobalDim1Code: code[20];
+        GlobalDim2Code: code[20];
+        DimSetID: Integer;
+    begin
+        GLSetup.Get();
+        if CONSULTIAInvoiceHeader."G/L Account Fair" = '' then
+            GLAccount := CONSULTIAInvoiceLine.Ref_DPTO
+        else
+            GLAccount := CONSULTIAInvoiceHeader."G/L Account Fair";
+        TableID[1] := Database::"G/L Account";
+        No[1] := GLAccount;
+        DimSetID := DimensionMgt.GetDefaultDimID(TableID, No, '', GlobalDim1Code, GlobalDim2Code, DimSetID, 0);
+        DimensionMgt.GetDimensionSet(DimSetEntry, DimSetID);
+        DimSetEntry.Reset();
+        DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+        if DimSetEntry.FindFirst() then
+            CONSULTIAInvoiceLine.Partida := DimSetEntry."Dimension Value Code";
+    end;
 
     procedure GetInvoicePdf(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
     var
@@ -1322,8 +1381,46 @@ codeunit 50104 "Zummo Inn. IC Functions"
         if EmployeeList.RunModal() = Action::LookupOK then begin
             EmployeeList.GetRecord(Employee);
             Rec.IdCorp_Usuario := Employee."No.";
+            GetEmployeeDimensionsValue(Rec);
             Rec.Modify();
         end;
+    end;
+
+    procedure AssingProject(var Rec: Record "ZM CONSULTIA Invoice Line")
+    var
+        ProductProject: Record "ZM CONSULTIA Producto-Proyecto";
+        DimensionValue: Record "Dimension Value";
+        DimensionValues: Page "Dimension Values";
+        lblConfirm: Label '¿Desea Cambiar el proyecto %1 del producto %2 a %3?', comment = 'ESP="¿Desea Cambiar el proyecto %1 del producto %2 a %3?"';
+    begin
+        ProductProject.Reset();
+        CreateProductoProject(Rec.CodigoProducto, Rec.Producto);
+        ProductProject.Get(Rec.CodigoProducto);
+        DimensionValue.Reset();
+        DimensionValue.SetRange("Global Dimension No.", 2);
+        DimensionValues.LookupMode := true;
+        DimensionValues.SetTableView(DimensionValue);
+        if DimensionValues.RunModal() = Action::LookupOK then begin
+            DimensionValues.GetRecord(DimensionValue);
+            if ProductProject.Proyecto <> '' then
+                if not Confirm(lblConfirm, true, ProductProject.Proyecto, ProductProject.Proyecto, DimensionValue.Code) then
+                    exit;
+            ProductProject.Proyecto := DimensionValue.Code;
+            ProductProject.Modify();
+        end;
+    end;
+
+    local procedure CreateProductoProject(CodigoProducto: code[50]; Producto: text[100])
+    var
+        ProductProject: Record "ZM CONSULTIA Producto-Proyecto";
+    begin
+        if ProductProject.Get(CodigoProducto) then
+            exit;
+        ProductProject.Init();
+        ProductProject.CodigoProducto := CodigoProducto;
+        ProductProject.Description := CopyStr(Producto, 1, MaxStrLen(ProductProject.Description));
+        ProductProject.Insert();
+        Commit();
     end;
 
     var

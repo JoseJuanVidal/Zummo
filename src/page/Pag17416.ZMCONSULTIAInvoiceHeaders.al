@@ -134,7 +134,7 @@ page 17416 "ZM CONSULTIA Invoice Headers"
     var
         myInt: Integer;
     begin
-        if Confirm(lblConfirmGet, true, CalcDate('-1M', WorkDate()), WorkDate()) then
-            CONSULTIAFunciones.GetInvoicebyDate(CalcDate('-1M', WorkDate()), WorkDate());
+        if Confirm(lblConfirmGet, true, CalcDate('-30D', WorkDate()), WorkDate()) then
+            CONSULTIAFunciones.GetInvoicebyDate(CalcDate('-30D', WorkDate()), WorkDate());
     end;
 }
