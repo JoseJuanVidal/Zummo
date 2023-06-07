@@ -795,7 +795,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     // ==  
     // ==  
 
-    procedure REST_CONSULTIA(urlBase: Text; metodo: Text; metodoREST: Text; parametros: Text; requiereAutenticacion: Boolean; var statusCode: Integer; var respuestaJSON: JsonObject; indicarEmpresa: Boolean)
+    procedure REST_CONSULTIA(metodo: Text; metodoREST: Text; parametros: Text; requiereAutenticacion: Boolean; var statusCode: Integer; var respuestaJSON: JsonObject; indicarEmpresa: Boolean)
     var
         Client: HttpClient;
         ContentHeaders: HttpHeaders;
@@ -815,9 +815,12 @@ codeunit 50104 "Zummo Inn. IC Functions"
         StringAuth: Text;
 
     begin
-
+        PurchasesPayablesSetup.Get();
+        PurchasesPayablesSetup.TestField("CONSULTIA Url");
+        PurchasesPayablesSetup.TestField("CONSULTIA User");
+        PurchasesPayablesSetup.TestField("CONSULTIA Password");
         //Creamos una url
-        Url := urlBase + metodo;
+        Url := PurchasesPayablesSetup."CONSULTIA Url" + metodo;
         //Añadimos los headers de petición
         RequestContent.GetHeaders(ContentHeaders);
 
@@ -825,8 +828,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         ClientHeaders := Client.DefaultRequestHeaders();
 
 
-        User := 'zummo_test';
-        PassWebServKey := 'zummo_test';
+        User := PurchasesPayablesSetup."CONSULTIA User"; // 'zummo_test';
+        PassWebServKey := PurchasesPayablesSetup."CONSULTIA Password"; // 'zummo_test';
 
         TempBlob.WriteTextLine(User + ':' + PassWebServKey);
         StringAuth := TempBlob.ToBase64String();
@@ -896,9 +899,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         ErrorText: Text;
         StatusCode: Integer;
     begin
-        REST_CONSULTIA(lblurlConsultia, lblListaViajero, 'GET', '', true, StatusCode, JsonResponse, false);
-
-
+        REST_CONSULTIA(lblListaViajero, 'GET', '', true, StatusCode, JsonResponse, false);
         Message(format(JsonResponse));
 
     end;
@@ -945,7 +946,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Window.Open(lblDlg);
         Metodo := lblInvoice + StrSubstNo(lblDate, format(Startdate, 0, '<day,2>/<Month,2>/<Year4>'), format(EndDate, 0, '<day,2>/<Month,2>/<Year4>'));
 
-        REST_CONSULTIA(lblurlConsultia, Metodo, 'GET', '', true, StatusCode, JsonResponse, false);
+        REST_CONSULTIA(Metodo, 'GET', '', true, StatusCode, JsonResponse, false);
 
 
         JsonEmisor := GetJSONItemFieldObject(JsonResponse.AsToken(), 'Emisor');
@@ -1155,12 +1156,12 @@ codeunit 50104 "Zummo Inn. IC Functions"
     begin
         Metodo := StrSubstNo(lblGetInvoicePDF, format(Id));
 
-        if GetResponsePDF(lblurlConsultia, Metodo, Instr) then
+        if GetResponsePDF(Metodo, Instr) then
             exit(true);
 
     end;
 
-    local procedure GetResponsePDF(urlBase: Text; metodo: text; var Stream: InStream): Boolean
+    local procedure GetResponsePDF(metodo: text; var Stream: InStream): Boolean
     var
         TempBlob: Record TempBlob;
         Client: HttpClient;
@@ -1175,15 +1176,19 @@ codeunit 50104 "Zummo Inn. IC Functions"
         StringAuth: text;
         IsSucces: Boolean;
     begin
+        PurchasesPayablesSetup.Get();
+        PurchasesPayablesSetup.TestField("CONSULTIA Url");
+        PurchasesPayablesSetup.TestField("CONSULTIA User");
+        PurchasesPayablesSetup.TestField("CONSULTIA Password");
         //Creamos una url
-        Url := urlBase + metodo;
+        Url := PurchasesPayablesSetup."CONSULTIA Url" + metodo;
 
 
         RequestMessage.SetRequestUri(Url);
         RequestMessage.Method := 'GET';
 
-        User := 'zummo_test';
-        PassWebServKey := 'zummo_test';
+        User := PurchasesPayablesSetup."CONSULTIA User";
+        PassWebServKey := PurchasesPayablesSetup."CONSULTIA Password";
         TempBlob.WriteTextLine(User + ':' + PassWebServKey);
         StringAuth := TempBlob.ToBase64String();
         StringAuthorization := 'Basic ' + StringAuth;
@@ -1538,10 +1543,112 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Commit();
     end;
 
+    // =============     CREAR DIARIO DE APROVISIONAMIENTO          ====================
+    // ==  
+    // ==  funciones para crear diario de aprovisionamiento de facturas de CONSULTIA
+    // ==  
+    // ======================================================================================================
+
+    procedure CreateJNLAprovisionamiento(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
+    var
+        CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
+        BudgetBuffer: record "Budget Buffer" temporary;
+
+    begin
+        PurchasesPayablesSetup.Get();
+        PurchasesPayablesSetup.TestField("CONSULTIA G/L Provide");
+        PurchasesPayablesSetup.TestField("CONSULTIA Gen. Jnl. Template");
+        PurchasesPayablesSetup.TestField("CONSULTIA Gen. Journal Batch");
+        BudgetBuffer.DeleteAll();
+        CONSULTIAInvoiceHeader.TestField("Pre Invoice No.", '');
+        CONSULTIAInvoiceHeader.TestField("Invoice Header No.", '');
+        CONSULTIAInvoiceHeader.TestField(Provisioning, false);
+        CONSULTIAInvoiceLine.Reset();
+        CONSULTIAInvoiceLine.SetRange(id, CONSULTIAInvoiceHeader.Id);
+        if CONSULTIAInvoiceLine.FindFirst() then
+            repeat
+
+                AddAprovisionamientoBuffer(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, BudgetBuffer);
+
+            Until CONSULTIAInvoiceLine.next() = 0;
+
+        CreateJNLLineAprovisionamiento(CONSULTIAInvoiceHeader, BudgetBuffer);
+
+        CONSULTIAInvoiceHeader.Provisioning := true;
+        CONSULTIAInvoiceHeader.Modify();
+
+    end;
+
+
+    local procedure AddAprovisionamientoBuffer(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
+                CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; var BudgetBuffer: record "Budget Buffer")
+    var
+        myInt: Integer;
+    begin
+        BudgetBuffer.Reset();
+        BudgetBuffer.SetRange("G/L Account No.");
+        BudgetBuffer.SetRange("Dimension Value Code 1", GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // CECO
+        BudgetBuffer.SetRange("Dimension Value Code 2", GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // PROYECTO
+        BudgetBuffer.SetRange("Dimension Value Code 3", CONSULTIAInvoiceLine.Partida);  // Partida
+        BudgetBuffer.SetRange("Dimension Value Code 4", GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // DETALLE
+        if not BudgetBuffer.FindFirst() then begin
+            BudgetBuffer.Init();
+            BudgetBuffer."G/L Account No." := CONSULTIAInvoiceLine.Ref_DPTO;
+            BudgetBuffer."Dimension Value Code 1" := GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
+            BudgetBuffer."Dimension Value Code 2" := GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
+            BudgetBuffer."Dimension Value Code 3" := CONSULTIAInvoiceLine.Partida;
+            BudgetBuffer."Dimension Value Code 4" := GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
+            BudgetBuffer.Insert();
+        end;
+        BudgetBuffer.Amount += CONSULTIAInvoiceLine.PVP;
+        BudgetBuffer.Modify();
+    end;
+
+    local procedure CreateJNLLineAprovisionamiento(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; var BudgetBuffer: record "Budget Buffer")
+    var
+        GenJnlLine: Record "Gen. Journal Line";
+        GenJournalBatch: Record "Gen. Journal Batch";
+        LastLine: Integer;
+    begin
+        PurchasesPayablesSetup.Get();
+        GenJournalBatch.Get(PurchasesPayablesSetup."CONSULTIA Gen. Jnl. Template", PurchasesPayablesSetup."CONSULTIA Gen. Journal Batch");
+        // primero miramos si existen líneas y obtenemos la ultima línea
+        GenJnlLine.Reset();
+        GenJnlLine.SetRange("Journal Template Name", GenJournalBatch."Journal Template Name");
+        GenJnlLine.SetRange("Journal Batch Name", GenJournalBatch.Name);
+        if GenJnlLine.FindLast() then
+            LastLine := GenJnlLine."Line No." + 10000
+        else
+            LastLine := 10000;
+        BudgetBuffer.Reset();
+        if BudgetBuffer.FindFirst() then
+            repeat
+                GenJnlLine.Init();
+                GenJnlLine."Journal Template Name" := GenJournalBatch."Journal Template Name";
+                GenJnlLine."Journal Batch Name" := GenJournalBatch.Name;
+                GenJnlLine."Line No." := LastLine;
+                GenJnlLine."Posting Date" := Workdate;
+                GenJnlLine."Document Type" := GenJnlLine."Document Type"::" ";
+                GenJnlLine."Document Date" := CONSULTIAInvoiceHeader.F_Factura;
+                GenJnlLine.Insert();
+                GenJnlLine."Document No." := CopyStr(CONSULTIAInvoiceHeader.N_Factura, 1, MaxStrLen(GenJnlLine."Document No."));
+                GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
+                GenJnlLine.validate("Account No.", BudgetBuffer."G/L Account No.");
+                GenJnlLine.Description := CopyStr(StrSubstNo('%1 %2', CONSULTIAInvoiceHeader.N_Factura, CONSULTIAInvoiceHeader.Descripcion), 1, MaxStrLen(GenJnlLine.Description));
+                GenJnlLine."External Document No." := CopyStr(CONSULTIAInvoiceHeader.N_Factura, 1, MaxStrLen(GenJnlLine."External Document No."));
+                GenJnlLine.Validate(Amount, BudgetBuffer.Amount);
+                GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
+                GenJnlLine.Validate("Bal. Account No.", PurchasesPayablesSetup."CONSULTIA G/L Provide");
+                GenJnlLine.Modify();
+                LastLine += 10000;
+            Until BudgetBuffer.next() = 0;
+    end;
+
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
+        PurchasesPayablesSetup: Record "Purchases & Payables Setup";
         JobsSetup: Record "Jobs Setup";
-        lblurlConsultia: Label 'https://api-destinux.consultiatravel.es/B2B.Test';
+        // lblurlConsultia: Label 'https://api-destinux.consultiatravel.es/B2B.Test';
         lblListaViajero: Label '/api/ListaViajeros';
         lblInvoice: Label '/api/facturas';
         lblDate: Label '?FechaIni=%1&FechaFin=%2';

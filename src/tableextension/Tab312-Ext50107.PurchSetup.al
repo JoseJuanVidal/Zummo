@@ -41,6 +41,39 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             DataClassification = CustomerContent;
             Caption = 'Path Purchase Documents pending', comment = 'ESP="Ubicación Docs. compra pdtes."';
         }
+        field(50100; "CONSULTIA Url"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CONSULTIA Url', comment = 'ESP="CONSULTIA Url"';
+        }
+        field(50101; "CONSULTIA User"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CONSULTIA User', comment = 'ESP="CONSULTIA Usuario"';
+        }
+        field(50102; "CONSULTIA Password"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CONSULTIA Password', comment = 'ESP="CONSULTIA Contraseña"';
+        }
+        field(50103; "CONSULTIA G/L Provide"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CONSULTIA G/L Provide', comment = 'ESP="CONSULTIA Cuenta Contsble aprovisionamiento."';
+            TableRelation = "G/L Account";
+        }
+        field(50104; "CONSULTIA Gen. Jnl. Template"; code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CONSULTIA Gen. Jnl. Template', comment = 'ESP="CONSULTIA Libro Diario"';
+            TableRelation = "Gen. Journal Template" where(Type = const(General), Recurring = const(false));
+        }
+        field(50105; "CONSULTIA Gen. Journal Batch"; code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CONSULTIA Gen. Journal Batch', comment = 'ESP="CONSULTIA Sección Diario"';
+            TableRelation = "Gen. Journal Batch".Name where("Journal Template Name" = field("CONSULTIA Gen. Jnl. Template"));
+        }
     }
 
     procedure SetTextoEmail(NewTextoEmail: Text)

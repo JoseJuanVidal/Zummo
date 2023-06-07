@@ -121,6 +121,12 @@ table 17414 "ZM CONSULTIA Invoice Header"
             Caption = 'Invoice Header No.', comment = 'ESP="Nª Factura"';
             TableRelation = "Purch. Inv. Header";
         }
+        field(53; "Provisioning"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Provision', comment = 'ESP="Aprovisión"';
+            TableRelation = "Purch. Inv. Header";
+        }
         field(60; "G/L Account Fair"; code[20])
         {
             DataClassification = CustomerContent;

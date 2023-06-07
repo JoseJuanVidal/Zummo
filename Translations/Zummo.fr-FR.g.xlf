@@ -5549,11 +5549,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblListaViajero</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3234355424 - NamedType 532289447" size-unit="char" translate="yes" xml:space="preserve">
-          <source>https://api-destinux.consultiatravel.es/B2B.Test</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblurlConsultia</note>
-        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 2169472807" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;h3 style="text-align: left; color: #3f7320;"&gt;&lt;span style="border-bottom: 4px solid #c82828;"&gt;%1 No.:&amp;nbsp;&lt;/span&gt;%2&lt;/h3&gt;</source>
           <note from="Developer" annotates="general" priority="2"/>

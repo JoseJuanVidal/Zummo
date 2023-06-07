@@ -64,6 +64,34 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                     end;
                 }
             }
+            group(CONSULTIA)
+            {
+                field("CONSULTIA Url"; "CONSULTIA Url")
+                {
+                    ApplicationArea = all;
+                }
+                field("CONSULTIA User"; "CONSULTIA User")
+                {
+                    ApplicationArea = all;
+                }
+                field("CONSULTIA Password"; "CONSULTIA Password")
+                {
+                    ApplicationArea = all;
+                    ExtendedDatatype = Masked;
+                }
+                field("CONSULTIA G/L Provide"; "CONSULTIA G/L Provide")
+                {
+                    ApplicationArea = all;
+                }
+                field("CONSULTIA Gen. Jnl. Template"; "CONSULTIA Gen. Jnl. Template")
+                {
+                    ApplicationArea = all;
+                }
+                field("CONSULTIA Gen. Journal Batch"; "CONSULTIA Gen. Journal Batch")
+                {
+                    ApplicationArea = all;
+                }
+            }
         }
     }
 

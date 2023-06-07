@@ -6794,6 +6794,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Pre Invoice No. - Property Caption</note>
           <target>Nª PreFactura</target>
         </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 3940368555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Provision</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprovisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Provisioning - Property Caption</note>
+          <target>Aprovisión</target>
+        </trans-unit>
         <trans-unit id="Table 1677429823 - Field 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proyecto</source>
           <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
@@ -8860,11 +8866,6 @@
           <source>/api/ListaViajeros</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblListaViajero</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3234355424 - NamedType 532289447" size-unit="char" translate="yes" xml:space="preserve">
-          <source>https://api-destinux.consultiatravel.es/B2B.Test</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType lblurlConsultia</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2625357368 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea Cambiar el proyecto %1 del producto %2 a %3?</source>
@@ -13520,6 +13521,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - NamedType lblConfirmGet</note>
           <target>¿Desea actualziar las facturas desde %1 a %2?</target>
         </trans-unit>
+        <trans-unit id="Page 1677429823 - NamedType 1971738435" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to create the pre-invoice %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea provisionar la factura %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - NamedType lblConfirmProvisioning</note>
+          <target>¿Desea provisionar la factura %1?</target>
+        </trans-unit>
         <trans-unit id="Page 1677429823 - Control 3906556071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
@@ -13543,6 +13550,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Crear Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Action CreatingInvoice - Property Caption</note>
           <target>Crear Factura</target>
+        </trans-unit>
+        <trans-unit id="Page 1677429823 - Action 3940368555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aprovisionar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprovisionar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Action Provisioning - Property Caption</note>
+          <target>Aprovisionar</target>
         </trans-unit>
         <trans-unit id="Page 2372062954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CONSULTIA Invoice Headers</source>
@@ -29276,6 +29289,42 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importe Total IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchRcptLine - Field TotalImponibleLinea - Property Caption</note>
           <target>Importe Total IVA</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 3459130581 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>CONSULTIA G/L Provide</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Cuenta Contsble aprovisionamiento."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field CONSULTIA G/L Provide - Property Caption</note>
+          <target>CONSULTIA Cuenta Contsble aprovisionamiento.</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 2541833452 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>CONSULTIA Gen. Jnl. Template</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Libro Diario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field CONSULTIA Gen. Jnl. Template - Property Caption</note>
+          <target>CONSULTIA Libro Diario</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 1322572421 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>CONSULTIA Gen. Journal Batch</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Sección Diario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field CONSULTIA Gen. Journal Batch - Property Caption</note>
+          <target>CONSULTIA Sección Diario</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 4053221101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>CONSULTIA Password</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Contraseña"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field CONSULTIA Password - Property Caption</note>
+          <target>CONSULTIA Contraseña</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 273858385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>CONSULTIA Url</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Url"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field CONSULTIA Url - Property Caption</note>
+          <target>CONSULTIA Url</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 1500355439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>CONSULTIA User</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field CONSULTIA User - Property Caption</note>
+          <target>CONSULTIA Usuario</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 2589406539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Drive Id</source>

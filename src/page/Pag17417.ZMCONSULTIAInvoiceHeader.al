@@ -122,19 +122,22 @@ page 17417 "ZM CONSULTIA Invoice Header"
             group(Register)
             {
                 Caption = 'Register', comment = 'ESP="Registro"';
-                Editable = false;
+                // Editable = false;
 
                 field("Document Type"; "Document Type")
                 {
                     ApplicationArea = all;
                     Visible = false;
-
                 }
                 field("Pre Invoice No."; "Pre Invoice No.")
                 {
                     ApplicationArea = all;
                 }
                 field("Invoice Header No."; "Invoice Header No.")
+                {
+                    ApplicationArea = all;
+                }
+                field(Provisioning; Provisioning)
                 {
                     ApplicationArea = all;
                 }
@@ -184,6 +187,17 @@ page 17417 "ZM CONSULTIA Invoice Header"
                     Createinvoice();
                 end;
             }
+            action(Provisioning)
+            {
+                ApplicationArea = all;
+                Caption = 'Aprovisionar', comment = 'ESP="Aprovisionar"';
+                Image = PrepaymentInvoice;
+                Promoted = true;
+                trigger OnAction()
+                begin
+                    CreateProvisioning();
+                end;
+            }
         }
     }
 
@@ -191,6 +205,7 @@ page 17417 "ZM CONSULTIA Invoice Header"
         CONSULTIAFunciones: Codeunit "Zummo Inn. IC Functions";
         lblConfirmGet: Label 'Do you want to update invoices from %1 to %2?', comment = 'ESP="¿Desea actualziar las facturas desde %1 a %2?"';
         lblConfirmCreate: Label '¿Do you want to create the pre-invoice %1?', comment = 'ESP="¿Desea crear la prefactura %1?"';
+        lblConfirmProvisioning: Label '¿Do you want to create the pre-invoice %1?', comment = 'ESP="¿Desea provisionar la factura %1?"';
 
     local procedure GetInvoiceByDate()
     begin
@@ -202,5 +217,15 @@ page 17417 "ZM CONSULTIA Invoice Header"
     begin
         if Confirm(lblConfirmCreate, true, Rec.N_Factura) then
             CONSULTIAFunciones.CreatePurchaseInvoice(Rec);
+    end;
+
+    local procedure CreateProvisioning()
+    var
+        lblName: Label 'EnglishText', comment = 'ESP="Provisionado "';
+    begin
+        if Confirm(lblConfirmProvisioning, true, Rec.N_Factura) then begin
+            CONSULTIAFunciones.CreateJNLAprovisionamiento(Rec);
+            Message('');
+        end;
     end;
 }
