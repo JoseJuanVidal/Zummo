@@ -836,6 +836,7 @@ codeunit 50106 "SalesEvents"
         psalesheader.Perfil_btc := reccustomer.Perfil_btc;
         psalesheader.SubCliente_btc := reccustomer.SubCliente_btc;
         psalesheader.ClienteReporting_btc := reccustomer.ClienteReporting_btc;
+        pSalesHeader."Sell-to Search Name" := recCustomer."Search Name";
     end;
 
     //Insertar descuentos personalizados al facturar líneas de albarán
@@ -1227,6 +1228,7 @@ codeunit 50106 "SalesEvents"
         ToSalesHeader.ImpresoAlmacen_btc := OldSalesHeader.ImpresoAlmacen_btc;
         ToSalesHeader.MotivoBloqueo_btc := OldSalesHeader.MotivoBloqueo_btc;
         ToSalesHeader.NumDias_btc := OldSalesHeader.NumDias_btc;
+        ToSalesHeader."Sell-to Search Name" := OldSalesHeader."Sell-to Search Name";
 
         ToSalesHeader.Perfil_btc := OldSalesHeader.Perfil_btc;
         ToSalesHeader.SubCliente_btc := OldSalesHeader.SubCliente_btc;

@@ -2,6 +2,14 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
 {
     layout
     {
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         addafter("Location Code")
         {
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }

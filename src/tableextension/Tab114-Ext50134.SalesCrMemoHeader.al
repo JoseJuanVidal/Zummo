@@ -27,8 +27,13 @@ tableextension 50134 "SalesCrMemoHeader" extends "Sales Cr.Memo Header" //114
             DataClassification = CustomerContent;
             Caption = 'Internal Comment', comment = 'ESP="Comentario interno"';
         }
-
         //Guardar Nº asiento y Nº documento
+        field(50105; "Sell-to Search Name"; code[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sell-to Search Name', comment = 'ESP="Venta a-Alias"';
+            Editable = false;
+        }
         field(50113; PedidoServicio_btc; Code[20])
         {
             DataClassification = CustomerContent;

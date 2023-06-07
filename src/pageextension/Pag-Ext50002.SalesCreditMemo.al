@@ -2,6 +2,14 @@ pageextension 50002 "SalesCreditMemo" extends "Sales Credit Memo"
 {
     layout
     {
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         addafter("Work Description")
         {
             field(CurrencyChange; CurrencyChange)

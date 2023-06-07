@@ -5,6 +5,14 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
 
     layout
     {
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         addafter("Salesperson Code")
         {
             field(CurrencyChange; CurrencyChange)

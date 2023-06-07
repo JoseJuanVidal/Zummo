@@ -2,6 +2,14 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
 {
     layout
     {
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         addafter("External Document No.")
         {
             field(CurrencyChange; CurrencyChange)

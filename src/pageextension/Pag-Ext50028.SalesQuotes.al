@@ -2,6 +2,14 @@ pageextension 50028 "SalesQuotes" extends "Sales Quotes"
 {
     layout
     {
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         addlast(Control1)
         {
             field(CampaignName; CampaignName)

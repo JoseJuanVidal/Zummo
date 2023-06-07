@@ -4,6 +4,14 @@ pageextension 50014 "PostedSalesShipment" extends "Posted Sales Shipment"
 
     layout
     {
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         addafter("Salesperson Code")
         {
             field(Peso_btc; Peso_btc)

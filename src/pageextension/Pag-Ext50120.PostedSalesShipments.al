@@ -2,6 +2,14 @@ pageextension 50120 "PostedSalesShipments" extends "Posted Sales Shipments"
 {
     layout
     {
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         modify("Shipping Agent Code")
         {
             Caption = 'Agente', comment = 'ESP="Agente"';

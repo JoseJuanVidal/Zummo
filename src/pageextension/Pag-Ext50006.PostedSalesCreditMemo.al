@@ -4,6 +4,14 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
 
     layout
     {
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         addafter("Corrected Invoice No.")
         {
             field(CurrencyChange; CurrencyChange)

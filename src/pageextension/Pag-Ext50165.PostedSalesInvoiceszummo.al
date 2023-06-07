@@ -2,6 +2,14 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
 {
     layout
     {
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         addafter("Location Code")
         {
             field("Package Tracking No."; "Package Tracking No.") { }

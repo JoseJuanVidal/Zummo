@@ -29,7 +29,12 @@ tableextension 50123 "SalesShipmentHeader" extends "Sales Shipment Header"  //11
             DataClassification = CustomerContent;
             Caption = 'Internal Comment', comment = 'ESP="Comentario interno"';
         }
-
+        field(50105; "Sell-to Search Name"; code[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sell-to Search Name', comment = 'ESP="Venta a-Alias"';
+            Editable = false;
+        }
         field(50110; Peso_btc; Decimal)
         {
             DataClassification = CustomerContent;

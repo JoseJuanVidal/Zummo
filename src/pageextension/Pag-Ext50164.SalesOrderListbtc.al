@@ -3,6 +3,14 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
     layout
     {
 
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         addafter("Location Code")
         {
             // lo quitamos de la lista, porque BITEC lo paso a la extension SGA y ha duplicado el campo

@@ -7,6 +7,12 @@ tableextension 50020 "ZM Ext Return Receipt Header" extends "Return Receipt Head
             Caption = 'Requiere acciones correctivas', Comment = 'ESP="Requiere acciones correctivas"';
             DataClassification = CustomerContent;
         }
+        field(50105; "Sell-to Search Name"; code[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sell-to Search Name', comment = 'ESP="Venta a-Alias"';
+            Editable = false;
+        }
         //+  NORMATIVA MEDIO AMBIENTAL
         Field(50250; "Plastic Qty. (kg)"; decimal)
         {

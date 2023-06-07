@@ -29186,6 +29186,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Recycled plastic Qty. (kg) - Property Caption</note>
           <target>Plástico reciclado (kg)</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 1380499315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Sell-to Search Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Venta a-Alias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Sell-to Search Name - Property Caption</note>
+          <target>Venta a-Alias</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 1475697198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>SubCliente</source>
           <note from="Developer" annotates="general" priority="2">ESP="SubCliente"</note>
@@ -29460,6 +29466,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Recycled plastic Qty. (kg) - Property Caption</note>
           <target>Plástico reciclado (kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 1380499315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Sell-to Search Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Venta a-Alias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Sell-to Search Name - Property Caption</note>
+          <target>Venta a-Alias</target>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 1475697198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>SubCliente</source>
@@ -29755,6 +29767,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Recycled plastic Qty. (kg) - Property Caption</note>
           <target>Plástico reciclado (kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 1380499315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Sell-to Search Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Venta a-Alias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Sell-to Search Name - Property Caption</note>
+          <target>Venta a-Alias</target>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 1475697198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>SubCliente</source>
@@ -30078,6 +30096,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field Recycled plastic Qty. (kg) - Property Caption</note>
           <target>Plástico reciclado (kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 1380499315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Sell-to Search Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Venta a-Alias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field Sell-to Search Name - Property Caption</note>
+          <target>Venta a-Alias</target>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 1475697198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>SubCliente</source>
@@ -31717,6 +31741,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Requiere acciones correctivas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Return Receipt Header - Field Requiere acciones correctivas - Property Caption</note>
           <target>Requiere acciones correctivas</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1622915177 - Field 1380499315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2925931323">
+          <source>Sell-to Search Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Venta a-Alias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Return Receipt Header - Field Sell-to Search Name - Property Caption</note>
+          <target>Venta a-Alias</target>
         </trans-unit>
         <trans-unit id="TableExtension 3398565291 - Field 1487237962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 467645625">
           <source>Prod. Order State</source>

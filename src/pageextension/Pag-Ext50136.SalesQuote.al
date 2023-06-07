@@ -2,6 +2,14 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
 {
     layout
     {
+        addafter("Sell-to Customer Name")
+        {
+            field("Sell-to Search Name"; "Sell-to Search Name")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
         modify("Campaign No.")
         {
             Importance = Promoted;
