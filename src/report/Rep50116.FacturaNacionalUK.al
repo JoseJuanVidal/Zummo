@@ -46,7 +46,6 @@ report 50116 "FacturaNacionalUK"
             }
             column(totalPalets; totalPalets)
             {
-
             }
             column(CuadroBultos_PaletsLbl; CuadroBultos_PaletsLbl)
             {
@@ -55,12 +54,13 @@ report 50116 "FacturaNacionalUK"
             column(volumen; volumen) { }
             column(Shipment_Method_Code; "Shipment Method Code")
             {
-
             }
+            column(EsFrancia; EsFrancia) { }
+            column(lblRAEES; lblRAEES) { }
+            column(lblPILAS; lblPILAS) { }
             //column(Importesb; ) { }
             column(Work_Description; workDescription)
             {
-
             }
             column(ivafactura; ivafactura) { }
             column(ImportePP; PmtDiscAmount) { }
@@ -80,7 +80,6 @@ report 50116 "FacturaNacionalUK"
             column(PortesNacionalLbl; PortesNacionalLbl)
             {
             }
-
             column(Bank_IBAN; BankAccountRecord.IBAN)
             {
             }
@@ -1747,6 +1746,9 @@ report 50116 "FacturaNacionalUK"
                 FormatDocumentFields("Sales Invoice Header");
                 DocumentTotals.CalculatePostedSalesInvoiceTotals(TotalSalesInvoiceHeader, VATAmount2, TotalSalesInvoiceline);
 
+                // miramos si la direccion de envio el pais es FRANCIA
+                EsFrancia := GetCountryShipFR();
+
                 workdescription := GetWorkDescription();
                 Portes := 0;
                 LineaVentaPortes.Reset();
@@ -2400,9 +2402,11 @@ report 50116 "FacturaNacionalUK"
         MostrarFechaOperacion: Boolean;
         lblEORI: Label 'EORI: ', comment = 'ESP="EORI: "';
         lblVat: Label 'VAT: ', comment = 'ESP="VAT: "';
-
         txtVatEORI: Text;
         txtEORI: text;
+        EsFrancia: Boolean;
+        lblRAEES: Text;
+        lblPILAS: text;
 
     [Scope('Personalization')]
     procedure InitLogInteraction()
@@ -2892,6 +2896,19 @@ report 50116 "FacturaNacionalUK"
     begin
         facturaLidl := false;
         facturaExportacion := false;
+    end;
+
+    local procedure GetCountryShipFR(): Boolean
+    var
+        CountryRegion: Record "Country/Region";
+    begin
+        lblRAEES := '';
+        lblPILAS := '';
+        if CountryRegion.Get("Sales Invoice Header"."Ship-to Country/Region Code") then begin
+            lblRAEES := CountryRegion."ID RAES";
+            lblPILAS := CountryRegion."ID PILAS";
+            exit(true);
+        end;
     end;
 }
 

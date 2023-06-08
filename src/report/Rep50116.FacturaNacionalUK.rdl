@@ -4338,9 +4338,9 @@ Cstr(Fields!txtVatEORI.Value)
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
               <Top>8.48072cm</Top>
-              <Left>16.11232cm</Left>
+              <Left>16.90607cm</Left>
               <Height>0.4095cm</Height>
-              <Width>3.02917cm</Width>
+              <Width>2.71167cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -7261,8 +7261,80 @@ Code.DevolverDec(Code.GetData(50,2)))
               <Top>8.34669cm</Top>
               <Left>2.05471cm</Left>
               <Height>0.36011cm</Height>
-              <Width>8.32686cm</Width>
+              <Width>6.29839cm</Width>
               <ZIndex>7</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox103">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!lblPILAS.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>8.3605cm</Top>
+              <Left>8.52949cm</Left>
+              <Height>0.36011cm</Height>
+              <Width>4.25825cm</Width>
+              <ZIndex>8</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!EsFrancia.Value, "DataSet_Result"), False, True)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox104">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!lblRAEES.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>8.34669cm</Top>
+              <Left>12.98176cm</Left>
+              <Height>0.36011cm</Height>
+              <Width>3.822cm</Width>
+              <ZIndex>9</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!EsFrancia.Value, "DataSet_Result"), False, True)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -7489,6 +7561,15 @@ End Function</Code>
         </Field>
         <Field Name="Shipment_Method_Code">
           <DataField>Shipment_Method_Code</DataField>
+        </Field>
+        <Field Name="EsFrancia">
+          <DataField>EsFrancia</DataField>
+        </Field>
+        <Field Name="lblRAEES">
+          <DataField>lblRAEES</DataField>
+        </Field>
+        <Field Name="lblPILAS">
+          <DataField>lblPILAS</DataField>
         </Field>
         <Field Name="Work_Description">
           <DataField>Work_Description</DataField>
