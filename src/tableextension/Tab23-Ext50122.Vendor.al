@@ -21,5 +21,11 @@ tableextension 50122 "Vendor" extends Vendor //23
             Caption = 'Transport Methods', comment = 'ESP="Método de transporte"';
             TableRelation = "Transport Method";
         }
+        field(50105; "Last date ledger Entry"; Date)
+        {
+            Caption = 'Last Entry', comment = 'ESP="Último movimiento"';
+            FieldClass = FlowField;
+            CalcFormula = max("Vendor Ledger Entry"."Document Date" where("Vendor No." = field("No."), "Document Type" = filter(Invoice | "Credit Memo")));
+        }
     }
 }

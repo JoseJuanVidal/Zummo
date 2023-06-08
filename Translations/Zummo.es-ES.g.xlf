@@ -31596,6 +31596,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field CodMotivoBloqueo_btc - Property Caption</note>
           <target>Motivo Bloqueo</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1936001480 - Field 2681099609 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Last Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Último movimiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field Last date ledger Entry - Property Caption</note>
+          <target>Último movimiento</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1936001480 - Field 1583414689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Transport Methods</source>
           <note from="Developer" annotates="general" priority="2">ESP="Método de transporte"</note>

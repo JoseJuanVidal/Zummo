@@ -2,6 +2,13 @@ pageextension 50119 "VendorCard" extends "Vendor Card"
 {
     layout
     {
+        addafter("Balance Due (LCY)")
+        {
+            field("Last date ledger Entry"; "Last date ledger Entry")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter(Blocked)
         {
             field(CodMotivoBloqueo_btc; CodMotivoBloqueo_btc)

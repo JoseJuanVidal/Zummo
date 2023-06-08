@@ -18,6 +18,10 @@ pageextension 50179 "VendorList" extends "Vendor List"
             {
                 ApplicationArea = all;
             }
+            field("Last date ledger Entry"; "Last date ledger Entry")
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions

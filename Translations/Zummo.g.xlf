@@ -25093,6 +25093,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Control Inventory - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3338673798 - Control 2268021548 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3800656503">
+          <source>Se cambia en configuración inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se cambia en configuración inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHReqWkshNames - Control STHUseCalcPersonalizado - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3338673798 - Control 603541938 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3800656503">
+          <source>Se configura en la configuración de cada Almacén</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se configura en la configuración de cada Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHReqWkshNames - Control STHUseLocationGroup - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1080558100 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1435832953">
           <source>Qty. en Stockkeeping Unit</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad en contenido de almacén"</note>
@@ -28827,6 +28837,11 @@
           <source>Blocking Motives</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Bloqueo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field CodMotivoBloqueo_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1936001480 - Field 2681099609 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Last Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Último movimiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field Last date ledger Entry - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1936001480 - Field 1583414689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Transport Methods</source>

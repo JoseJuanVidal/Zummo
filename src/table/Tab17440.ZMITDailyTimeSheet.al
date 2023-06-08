@@ -53,7 +53,7 @@ table 17440 "ZM IT Daily Time Sheet"
             Caption = 'Department', comment = 'ESP="Departamento"';
             TableRelation = MultiRRHH_zum.Codigo WHERE(tabla = CONST("IT Departamentos"));
         }
-        field(30; "Type"; Enum "ZM IT Time Sheet Type")
+        field(30; Type; Enum "ZM IT Time Sheet Type")
         {
             DataClassification = CustomerContent;
             Caption = 'Tipo', comment = 'ESP="Tipo"';
