@@ -6711,6 +6711,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Property Caption</note>
           <target>CONSULTIA Cab. Facturas</target>
         </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 2361390021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Des Provisióning</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desprovisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Des Provisioning - Property Caption</note>
+          <target>Desprovisión</target>
+        </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 1254003153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Des Provisioning Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha desprovisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Des Provisioning Date - Property Caption</note>
+          <target>Fecha desprovisión</target>
+        </trans-unit>
         <trans-unit id="Table 1677429823 - Field 1475260075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Descripción</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
@@ -6795,10 +6807,16 @@
           <target>Nª PreFactura</target>
         </trans-unit>
         <trans-unit id="Table 1677429823 - Field 3940368555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Provision</source>
+          <source>Provisioning</source>
           <note from="Developer" annotates="general" priority="2">ESP="Aprovisión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Provisioning - Property Caption</note>
           <target>Aprovisión</target>
+        </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 1668834535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Provisioning Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Aprovisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Provisioning Date - Property Caption</note>
+          <target>Fecha Aprovisión</target>
         </trans-unit>
         <trans-unit id="Table 1677429823 - Field 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proyecto</source>
@@ -13515,6 +13533,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - NamedType lblConfirmCreate</note>
           <target>¿Desea crear la prefactura %1?</target>
         </trans-unit>
+        <trans-unit id="Page 1677429823 - NamedType 3723554965" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿You wish to desprovision invoice %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea desprovisionar la factura %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - NamedType lblConfirmDesProvisioning</note>
+          <target>¿Desea desprovisionar la factura %1?</target>
+        </trans-unit>
         <trans-unit id="Page 1677429823 - NamedType 4292973370" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to update invoices from %1 to %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualziar las facturas desde %1 a %2?"</note>
@@ -13522,7 +13546,7 @@
           <target>¿Desea actualziar las facturas desde %1 a %2?</target>
         </trans-unit>
         <trans-unit id="Page 1677429823 - NamedType 1971738435" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Do you want to create the pre-invoice %1?</source>
+          <source>¿You wish to provision invoice %1?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea provisionar la factura %1?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - NamedType lblConfirmProvisioning</note>
           <target>¿Desea provisionar la factura %1?</target>
@@ -13550,6 +13574,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Crear Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Action CreatingInvoice - Property Caption</note>
           <target>Crear Factura</target>
+        </trans-unit>
+        <trans-unit id="Page 1677429823 - Action 550378141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desprovisionar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desprovisionar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Action DesProvisioning - Property Caption</note>
+          <target>Desprovisionar</target>
         </trans-unit>
         <trans-unit id="Page 1677429823 - Action 3940368555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aprovisionar</source>

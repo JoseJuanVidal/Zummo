@@ -124,7 +124,37 @@ table 17414 "ZM CONSULTIA Invoice Header"
         field(53; "Provisioning"; Boolean)
         {
             DataClassification = CustomerContent;
-            Caption = 'Provision', comment = 'ESP="Aprovisión"';
+            Caption = 'Provisioning', comment = 'ESP="Aprovisión"';
+            TableRelation = "Purch. Inv. Header";
+
+            trigger OnValidate()
+            begin
+                if xRec.Provisioning and not Rec.Provisioning then
+                    Rec."Provisioning Date" := 0D;
+            end;
+        }
+        field(54; "Provisioning Date"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Provisioning Date', comment = 'ESP="Fecha Aprovisión"';
+            TableRelation = "Purch. Inv. Header";
+        }
+        field(55; "Des Provisioning"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Des Provisióning', comment = 'ESP="Desprovisión"';
+            TableRelation = "Purch. Inv. Header";
+
+            trigger OnValidate()
+            begin
+                if xRec."Des Provisioning" and not Rec."Des Provisioning" then
+                    Rec."Des Provisioning Date" := 0D;
+            end;
+        }
+        field(56; "Des Provisioning Date"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Des Provisioning Date', comment = 'ESP="Fecha desprovisión"';
             TableRelation = "Purch. Inv. Header";
         }
         field(60; "G/L Account Fair"; code[20])

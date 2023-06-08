@@ -1549,39 +1549,60 @@ codeunit 50104 "Zummo Inn. IC Functions"
     // ==  
     // ======================================================================================================
 
-    procedure CreateJNLAprovisionamiento(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
+    procedure CreateJNLAprovisionamiento(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; DesProvisioning: Boolean)
     var
+        GenJournalBatch: Record "Gen. Journal Batch";
         CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
         BudgetBuffer: record "Budget Buffer" temporary;
+        GenJnlManagement: Codeunit GenJnlManagement;
 
     begin
         PurchasesPayablesSetup.Get();
+        GenJournalBatch.Get(PurchasesPayablesSetup."CONSULTIA Gen. Jnl. Template", PurchasesPayablesSetup."CONSULTIA Gen. Journal Batch");
         PurchasesPayablesSetup.TestField("CONSULTIA G/L Provide");
         PurchasesPayablesSetup.TestField("CONSULTIA Gen. Jnl. Template");
         PurchasesPayablesSetup.TestField("CONSULTIA Gen. Journal Batch");
         BudgetBuffer.DeleteAll();
         CONSULTIAInvoiceHeader.TestField("Pre Invoice No.", '');
         CONSULTIAInvoiceHeader.TestField("Invoice Header No.", '');
-        CONSULTIAInvoiceHeader.TestField(Provisioning, false);
+        if DesProvisioning then begin
+            CONSULTIAInvoiceHeader.TestField(Provisioning, true);
+            CONSULTIAInvoiceHeader.TestField("Des Provisioning", false);
+        end else begin
+            CONSULTIAInvoiceHeader.TestField(Provisioning, false);
+        end;
         CONSULTIAInvoiceLine.Reset();
         CONSULTIAInvoiceLine.SetRange(id, CONSULTIAInvoiceHeader.Id);
         if CONSULTIAInvoiceLine.FindFirst() then
             repeat
 
-                AddAprovisionamientoBuffer(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, BudgetBuffer);
+                AddAprovisionamientoBuffer(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, BudgetBuffer, DesProvisioning);
 
             Until CONSULTIAInvoiceLine.next() = 0;
 
         CreateJNLLineAprovisionamiento(CONSULTIAInvoiceHeader, BudgetBuffer);
+        case DesProvisioning of
+            true:
+                begin
+                    CONSULTIAInvoiceHeader."Des Provisioning" := true;
+                    CONSULTIAInvoiceHeader."Des Provisioning Date" := WorkDate();
 
-        CONSULTIAInvoiceHeader.Provisioning := true;
+                end;
+            else begin
+                CONSULTIAInvoiceHeader.Provisioning := true;
+                CONSULTIAInvoiceHeader."Provisioning Date" := WorkDate();
+            end;
+        end;
         CONSULTIAInvoiceHeader.Modify();
+
+        Commit();
+        GenJnlManagement.TemplateSelectionFromBatch(GenJournalBatch)
 
     end;
 
 
     local procedure AddAprovisionamientoBuffer(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
-                CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; var BudgetBuffer: record "Budget Buffer")
+                CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; var BudgetBuffer: record "Budget Buffer"; DesProvisioning: Boolean)
     var
         myInt: Integer;
     begin
@@ -1600,7 +1621,12 @@ codeunit 50104 "Zummo Inn. IC Functions"
             BudgetBuffer."Dimension Value Code 4" := GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
             BudgetBuffer.Insert();
         end;
-        BudgetBuffer.Amount += CONSULTIAInvoiceLine.PVP;
+        case DesProvisioning of
+            true:
+                BudgetBuffer.Amount += CONSULTIAInvoiceLine.PVP;
+            else
+                BudgetBuffer.Amount -= CONSULTIAInvoiceLine.PVP;
+        end;
         BudgetBuffer.Modify();
     end;
 
