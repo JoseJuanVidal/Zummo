@@ -1255,6 +1255,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseHeader."Vendor Invoice No." := CONSULTIAInvoiceHeader.N_Factura;
         PurchaseHeader."Vendor Shipment No." := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Vendor Shipment No."));
         PurchaseHeader."Your Reference" := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Your Reference"));
+        PurchaseHeader."CONSULTIA ID Factura" := CONSULTIAInvoiceHeader.Id;
         PurchaseHeader.Insert();
     end;
 
@@ -1305,6 +1306,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseLine.Validate("VAT Prod. Posting Group", GetVATProdPostingGroup(CONSULTIAInvoiceLine, PurchaseHeader));
         PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Base);
         PurchaseLine.Validate("Shortcut Dimension 1 Code", CONSULTIAInvoiceLine.Ref_Usuario);
+        PurchaseLine.IdCorp_Sol := CONSULTIAInvoiceLine.IdCorp_Sol;
         PurchaseLine.Modify();
         SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseLine);
         // controlar que si hay tasas, hay que poner dos lineas y una exenta
@@ -1328,6 +1330,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
             PurchaseLine.Validate("VAT Prod. Posting Group", 'EXENTOSERV');
             PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Tasas);
             PurchaseLine.Validate("Shortcut Dimension 1 Code", CONSULTIAInvoiceLine.Ref_Usuario);
+            PurchaseLine.IdCorp_Sol := CONSULTIAInvoiceLine.IdCorp_Sol;
             PurchaseLine.Modify();
             SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseLine);
         end;
@@ -1563,8 +1566,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchasesPayablesSetup.TestField("CONSULTIA Gen. Jnl. Template");
         PurchasesPayablesSetup.TestField("CONSULTIA Gen. Journal Batch");
         BudgetBuffer.DeleteAll();
-        CONSULTIAInvoiceHeader.TestField("Pre Invoice No.", '');
-        CONSULTIAInvoiceHeader.TestField("Invoice Header No.", '');
+        if not DesProvisioning then
+            CONSULTIAInvoiceHeader.TestField("Invoice Header No.", '');
         if DesProvisioning then begin
             CONSULTIAInvoiceHeader.TestField(Provisioning, true);
             CONSULTIAInvoiceHeader.TestField("Des Provisioning", false);
@@ -1623,9 +1626,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
         case DesProvisioning of
             true:
-                BudgetBuffer.Amount += CONSULTIAInvoiceLine.PVP;
-            else
                 BudgetBuffer.Amount -= CONSULTIAInvoiceLine.PVP;
+            else
+                BudgetBuffer.Amount += CONSULTIAInvoiceLine.PVP;
         end;
         BudgetBuffer.Modify();
     end;

@@ -35,6 +35,16 @@ pageextension 50023 "PurchInvoiceSubform" extends "Purch. Invoice Subform"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field(IdCorp_Sol; IdCorp_Sol)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Nombre Empleado"; "Nombre Empleado")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 

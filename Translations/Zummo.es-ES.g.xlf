@@ -29153,6 +29153,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field FechaRechazo_btc - Property Caption</note>
           <target>Fecha Rechazo</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 1512392856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>ID Corporativo Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field IdCorp_Sol - Property Caption</note>
+          <target>ID Corporativo Solicitante</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>ID Corporativo Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Nombre Empleado - Property Caption</note>
+          <target>ID Corporativo Solicitante</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1575465679 - Field 1976190141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Nombre Proveedor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Proveedor"</note>
@@ -29200,6 +29212,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLineArchive - Field TextoRechazo - Property Caption</note>
           <target>Motivo Rechazo</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2490879107 - Field 2652812409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271228953">
+          <source>CONSULTIA Id Factura</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Id Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchCrMemoHdr - Field CONSULTIA ID Factura - Property Caption</note>
+          <target>CONSULTIA Id Factura</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2490879107 - Field 3067526176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271228953">
+          <source>CONSULTIA Id Factura</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Id Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchCrMemoHdr - Field CONSULTIA N Factura - Property Caption</note>
+          <target>CONSULTIA Id Factura</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2490879107 - Field 1603699929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271228953">
           <source>Transaction No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº asiento"</note>
@@ -29230,11 +29254,35 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchCrMemoLine - Field FechaRechazo_btc - Property Caption</note>
           <target>Fecha Rechazo</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3839217971 - Field 1512392856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 518488723">
+          <source>ID Corporativo Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchCrMemoLine - Field IdCorp_Sol - Property Caption</note>
+          <target>ID Corporativo Solicitante</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3839217971 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 518488723">
+          <source>ID Corporativo Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchCrMemoLine - Field Nombre Empleado - Property Caption</note>
+          <target>ID Corporativo Solicitante</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3839217971 - Field 2972924318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 518488723">
           <source>Rejected Text</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Rechazo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchCrMemoLine - Field TextoRechazo - Property Caption</note>
           <target>Motivo Rechazo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3135574534 - Field 2652812409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>CONSULTIA Id Factura</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Id Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field CONSULTIA ID Factura - Property Caption</note>
+          <target>CONSULTIA Id Factura</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3135574534 - Field 3067526176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>CONSULTIA Id Factura</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Id Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field CONSULTIA N Factura - Property Caption</note>
+          <target>CONSULTIA Id Factura</target>
         </trans-unit>
         <trans-unit id="TableExtension 3135574534 - Field 1603699929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
           <source>Transaction No.</source>
@@ -29265,6 +29313,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Rechazo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field FechaRechazo_btc - Property Caption</note>
           <target>Fecha Rechazo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1592073549 - Field 1512392856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>ID Corporativo Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field IdCorp_Sol - Property Caption</note>
+          <target>ID Corporativo Solicitante</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1592073549 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>ID Corporativo Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field Nombre Empleado - Property Caption</note>
+          <target>ID Corporativo Solicitante</target>
         </trans-unit>
         <trans-unit id="TableExtension 1592073549 - Field 1017370016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
           <source>Process No.</source>
@@ -31774,6 +31834,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Amount Subcontractor - Property Caption</note>
           <target>Importe subcontratación</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 2652812409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>CONSULTIA Id Factura</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Id Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field CONSULTIA ID Factura - Property Caption</note>
+          <target>CONSULTIA Id Factura</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 3067526176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>CONSULTIA Id Factura</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Id Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field CONSULTIA N Factura - Property Caption</note>
+          <target>CONSULTIA Id Factura</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 348912602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Fecha Mas Temprana</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Mas Temprana"</note>
@@ -31851,6 +31923,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field FechaAlta_btc - Property Caption</note>
           <target>Fecha Alta</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 1512392856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>ID Corporativo Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field IdCorp_Sol - Property Caption</note>
+          <target>ID Corporativo Solicitante</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 2082980072 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>LineaComentarioSerie</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -31861,6 +31939,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Motivo retraso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field MotivoRetraso_btc - Property Caption</note>
           <target>Motivo retraso</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>ID Corporativo Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field Nombre Empleado - Property Caption</note>
+          <target>ID Corporativo Solicitante</target>
         </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 3677264153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Customer Name</source>

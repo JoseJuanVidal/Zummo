@@ -6,6 +6,16 @@ pageextension 50007 "PostedPurchaseInvoice" extends "Posted Purchase Invoice"
     {
         addafter("Vendor Invoice No.")
         {
+            field("CONSULTIA ID Factura"; "CONSULTIA ID Factura")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("CONSULTIA N Factura"; "CONSULTIA N Factura")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field(NumAsiento_btc; NumAsiento_btc)
             {
                 ApplicationArea = All;
