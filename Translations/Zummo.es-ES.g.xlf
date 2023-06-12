@@ -24826,6 +24826,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort SEPA_Reg - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2577929481 - Action 3257411572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
+          <source>Posted Purchase Invoice Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. fact. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Accounting Manager Role Ext - Action PostedPurchaseInvoiceLinesAction - Property Caption</note>
+          <target>Hist. líns. fact. compra</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2577929481 - Action 3242406439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
           <source>Posted Purchase Receipt Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. compra"</note>
@@ -27264,6 +27270,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Control Inventory - Property Caption</note>
           <target>Inventario</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3338673798 - Control 2268021548 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3800656503">
+          <source>Se cambia en configuración inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se cambia en configuración inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHReqWkshNames - Control STHUseCalcPersonalizado - Property ToolTip</note>
+          <target>Se cambia en configuración inventario</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3338673798 - Control 603541938 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3800656503">
+          <source>Se configura en la configuración de cada Almacén</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se configura en la configuración de cada Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHReqWkshNames - Control STHUseLocationGroup - Property ToolTip</note>
+          <target>Se configura en la configuración de cada Almacén</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1080558100 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1435832953">
           <source>Qty. en Stockkeeping Unit</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad en contenido de almacén"</note>
@@ -27401,6 +27419,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WorkCenterList - Action WorkCenterCalendar - Property Caption</note>
           <target>Cap. Producto y Centro Trabajo</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1129497003 - Control 3988378487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3901504402">
+          <source>N. Docs</source>
+          <note from="Developer" annotates="general" priority="2">ESP="N. Docs"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM CDC Purch Inv Match Subp - Control NumDocs - Property Caption</note>
+          <target>N. Docs</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2647204350 - Action 320511829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3705678920">
           <source>Update Campingn CRM.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualiza campañas del CRM"</note>
@@ -27454,6 +27478,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los datos de todas las lineas de venta?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Posted Sales Invoice Lines - Action updateClasifItem - Method OnAction - NamedType lblConfirm</note>
           <target>¿Desea actualizar los datos de todas las lineas de venta?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1118725128 - Action 3257411572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Posted Purchase Invoice Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. fact. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PostedPurchaseInvoiceLinesAction - Property Caption</note>
+          <target>Hist. líns. fact. compra</target>
         </trans-unit>
         <trans-unit id="PageExtension 1118725128 - Action 3242406439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Posted Purchase Receipt Lines</source>

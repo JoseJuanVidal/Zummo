@@ -22,6 +22,13 @@ pageextension 50078 "ZM Purchasing Agent Role" extends "Purchasing Agent Role Ce
                 RunObject = page "Posted Sales Shipment Lines";
                 Image = PostedOrder;
             }
+            action(PostedPurchaseInvoiceLinesAction)
+            {
+                Caption = 'Posted Purchase Invoice Lines', comment = 'ESP="Hist. líns. fact. compra"';
+                RunObject = page "Posted Purchase Invoice Lines";
+                // sRunPageView = where("Qty. Rcd. Not Invoiced" = filter(<> 0));
+                Image = PostedOrder;
+            }
         }
     }
 }

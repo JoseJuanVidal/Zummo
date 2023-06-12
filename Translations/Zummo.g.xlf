@@ -22953,6 +22953,11 @@
           <note from="Developer" annotates="general" priority="2">%1=Field;%2=Value;%3=Value</note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort SEPA_Reg - NamedType NoDataToExportErr</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2577929481 - Action 3257411572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
+          <source>Posted Purchase Invoice Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. fact. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Accounting Manager Role Ext - Action PostedPurchaseInvoiceLinesAction - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2577929481 - Action 3242406439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
           <source>Posted Purchase Receipt Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. compra"</note>
@@ -25277,6 +25282,11 @@
           <source>¿Desea actualizar los datos de todas las lineas de venta?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los datos de todas las lineas de venta?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Posted Sales Invoice Lines - Action updateClasifItem - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1118725128 - Action 3257411572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Posted Purchase Invoice Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. fact. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PostedPurchaseInvoiceLinesAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1118725128 - Action 3242406439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Posted Purchase Receipt Lines</source>
