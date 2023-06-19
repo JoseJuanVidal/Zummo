@@ -24,6 +24,7 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+
             // Validar productos
             field(ValidadoContabiliad_btc; ValidadoContabiliad_btc)
             {
@@ -80,6 +81,10 @@ pageextension 50133 "ItemList" extends "Item List"
                 Visible = false;
             }
             field("Minimum Order Quantity"; Rec."Minimum Order Quantity")
+            {
+                ApplicationArea = all;
+            }
+            field("Inventory to date"; "Inventory to date")
             {
                 ApplicationArea = all;
             }

@@ -27419,12 +27419,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WorkCenterList - Action WorkCenterCalendar - Property Caption</note>
           <target>Cap. Producto y Centro Trabajo</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1129497003 - Control 3988378487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3901504402">
-          <source>N. Docs</source>
-          <note from="Developer" annotates="general" priority="2">ESP="N. Docs"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM CDC Purch Inv Match Subp - Control NumDocs - Property Caption</note>
-          <target>N. Docs</target>
-        </trans-unit>
         <trans-unit id="PageExtension 2647204350 - Action 320511829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3705678920">
           <source>Update Campingn CRM.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualiza campañas del CRM"</note>
