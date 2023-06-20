@@ -1963,7 +1963,7 @@ report 50102 "PedidoCliente"
         txtOferta: Text;
         cantidadSalesLine: Decimal;
         txtOfertaLbl: Text;
-        lbNumDias: Label 'Lead Time: ', comment = 'ESP="Nº días: ",FRA="Nº dias: "';
+        lbNumDias: Label 'Lead Time: ', comment = 'ESP="Nº días: ",FRA="Nº Jours: "';
         TotalAmount2: Decimal;
         agenteNombre: Text;
         TotalAmount1: Decimal;
@@ -2158,12 +2158,12 @@ report 50102 "PedidoCliente"
 
         Fecha_Lbl: Label 'Date', comment = 'ESP="Fecha",FRA="Date"';
         PedidoNo_Lbl: Label 'ORDER Nº', Comment = 'ESP="PEDIDO Nº",FRA="NUMÉRO D ORDRE"';
-        FEntrega_Lbl: Label 'Deliver Date', Comment = 'ESP="F.Entrega"';
+        FEntrega_Lbl: Label 'Deliver Date', Comment = 'ESP="F.Entrega",FRA="D.Livraison"';
         CondicionDePago_Lbl: Label 'Payment Terms/Payment Method', Comment = 'ESP="Condición de Pago/Método de Pago",FRA="Conditions et mode de règlemenent"';
         DestinoFinal_Lbl: Label 'Final Destination', Comment = 'ESP="Destino Final",FRA="Pays de destination"';
         PaisFabricacion_Lbl: Label 'Country Manufacturing', Comment = 'ESP="País Fabricación",FRA="Pays de fabrication"';
         Transportista_Lbl: Label 'Carrier', Comment = 'ESP="Transportista",FRA="Transporteur"';
-        EmitidoPor_Lbl: Label 'Issued by:', Comment = 'ESP="Emitido por:"';
+        EmitidoPor_Lbl: Label 'Issued by:', Comment = 'ESP="Emitido por:",FRA="Fait par"';
         NIF_Lbl: Label 'VAT:', Comment = 'ESP="NIF:",FRA="Nº TVA Intra."';
         TelFax_Lbl: Label 'Tel/Fax:', Comment = 'ESP="Tel/Fax:",FRA="Tel/Fax:"';
         Agente_Lbl: Label 'Agent:', Comment = 'ESP="Agente:",FRA="Vendeur"';

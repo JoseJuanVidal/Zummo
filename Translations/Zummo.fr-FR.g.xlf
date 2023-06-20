@@ -9735,11 +9735,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType Dto_Lbl</note>
           <target>Remise 1</target>
         </trans-unit>
+        <trans-unit id="Report 3412186937 - NamedType 4044920649" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued by:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Emitido por:",FRA="Fait par"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType EmitidoPor_Lbl</note>
+          <target>Fait par</target>
+        </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3629279096" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha",FRA="Date"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType Fecha_Lbl</note>
           <target>Date</target>
+        </trans-unit>
+        <trans-unit id="Report 3412186937 - NamedType 181312167" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deliver Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="F.Entrega",FRA="D.Livraison"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType FEntrega_Lbl</note>
+          <target>D.Livraison</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1400119597" size-unit="char" translate="yes" xml:space="preserve">
           <source>Gross Amount</source>
@@ -9767,9 +9779,9 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3874219377" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lead Time: </source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº días: ",FRA="Nº dias: "</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº días: ",FRA="Nº Jours: "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType lbNumDias</note>
-          <target>Nº dias: </target>
+          <target>Nº Jours: </target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2403527776" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT:</source>
