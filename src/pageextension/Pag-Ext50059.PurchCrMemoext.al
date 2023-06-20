@@ -4,6 +4,16 @@ pageextension 50059 "PurchCrMemoext" extends "Purchase Credit Memo"
     {
         addafter("Vendor Cr. Memo No.")
         {
+            field("CONSULTIA ID Factura"; "CONSULTIA ID Factura")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("CONSULTIA N Factura"; "CONSULTIA N Factura")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("Posting No. Series"; "Posting No. Series")
             {
                 ApplicationArea = All;
@@ -12,6 +22,7 @@ pageextension 50059 "PurchCrMemoext" extends "Purchase Credit Memo"
             {
                 ApplicationArea = all;
             }
+
         }
         addlast(Content)
         {

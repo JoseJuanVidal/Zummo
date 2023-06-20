@@ -6,6 +6,16 @@ pageextension 50187 "PurchaseInvoice" extends "Purchase Invoice"
         movebefore("Document Date"; "Posting Date")
         addafter("Vendor Invoice No.")
         {
+            field("CONSULTIA ID Factura"; "CONSULTIA ID Factura")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("CONSULTIA N Factura"; "CONSULTIA N Factura")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("Posting No. Series"; "Posting No. Series")
             {
                 ApplicationArea = all;

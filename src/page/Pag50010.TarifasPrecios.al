@@ -177,15 +177,9 @@ page 50010 "Tarifas Precios"
     trigger OnAfterGetRecord()
     begin
         if Item.Get("Item No.") then;
-        ItemCalcFields;
     end;
 
     var
         Item: Record Item;
 
-    local procedure ItemCalcFields()
-    begin
-        Item.CalcFields(desClasVtas_btc, desFamilia_btc, desGama_btc, desLineaEconomica_btc)
-
-    end;
 }

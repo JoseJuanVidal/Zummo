@@ -12,6 +12,16 @@ pageextension 50062 "STH Posted PurchCrMemoSubform" extends "Posted Purch. Cr. M
             {
                 ApplicationArea = all;
             }
+            field(IdCorp_Sol; IdCorp_Sol)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Nombre Empleado"; "Nombre Empleado")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 }

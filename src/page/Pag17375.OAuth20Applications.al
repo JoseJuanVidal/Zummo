@@ -52,6 +52,32 @@ page 17375 "OAuth 2.0 Applications"
                 RunPageLink = "Application Code" = field(Code);
 
             }
+            action(CONSULTIAVIAJEROS)
+            {
+                ApplicationArea = all;
+                Promoted = true;
+
+                trigger OnAction()
+                var
+                    ConsultiaFunciones: Codeunit "Zummo Inn. IC Functions";
+                begin
+                    ConsultiaFunciones.GetListaViajeros;
+                end;
+
+            }
+            action(GESTALIFACTURAS)
+            {
+                ApplicationArea = all;
+                Promoted = true;
+
+                trigger OnAction()
+                var
+                    ConsultiaFunciones: Codeunit "Zummo Inn. IC Functions";
+                begin
+                    ConsultiaFunciones.GetInvoicebyDate(20230501D, 20230531D);
+                end;
+
+            }
         }
     }
 }

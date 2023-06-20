@@ -115,7 +115,19 @@ tableextension 50102 "TabExtSalesInvoiceLine_btc" extends "Sales Invoice Line"  
         {
             DataClassification = CustomerContent;
         }
-
+        field(50050; "IdCorp_Sol"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'ID Corporativo Solicitante', comment = 'ESP="ID Corporativo Solicitante"';
+            Editable = false;
+        }
+        field(50051; "Nombre Empleado"; code[250])
+        {
+            Caption = 'ID Corporativo Solicitante', comment = 'ESP="ID Corporativo Solicitante"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Employee."Search Name" where("No." = field(IdCorp_Sol)));
+            Editable = false;
+        }
         field(50110; Peso_btc; Decimal)
         {
             DataClassification = CustomerContent;

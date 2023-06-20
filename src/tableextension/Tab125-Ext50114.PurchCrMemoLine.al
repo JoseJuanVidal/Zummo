@@ -15,5 +15,18 @@ tableextension 50114 "PurchCrMemoLine" extends "Purch. Cr. Memo Line"  //125
             Caption = 'Rejected Text', Comment = 'ESP="Motivo Rechazo"';
             Description = 'Bitec';
         }
+        field(50050; "IdCorp_Sol"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'ID Corporativo Solicitante', comment = 'ESP="ID Corporativo Solicitante"';
+            Editable = false;
+        }
+        field(50051; "Nombre Empleado"; code[250])
+        {
+            Caption = 'ID Corporativo Solicitante', comment = 'ESP="ID Corporativo Solicitante"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Employee."Search Name" where("No." = field(IdCorp_Sol)));
+            Editable = false;
+        }
     }
 }
