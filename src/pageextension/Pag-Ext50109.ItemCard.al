@@ -14,6 +14,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
             {
                 Caption = 'Stock por Almacén', comment = 'ESP="Stock por Almacén"';
                 SubPageLink = "Item No." = field("No.");
+                Editable = false;
             }
             group(Clasificacion)
             {
@@ -525,6 +526,10 @@ pageextension 50109 "ItemCard" extends "Item Card"
             }
         }
     }
+
+
+    var
+        IsITeminventory: Boolean;
 
     procedure CalcularUA()
     var

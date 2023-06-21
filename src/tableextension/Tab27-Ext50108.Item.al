@@ -128,7 +128,6 @@ tableextension 50108 "Item" extends Item  //27
             Editable = true;
             Caption = 'Pedido Maximo', comment = 'ESP="Pedido Maximo"';
         }
-
         field(50012; "ProveedorBloqueado"; Boolean)
         {
             Editable = false;
@@ -341,6 +340,13 @@ tableextension 50108 "Item" extends Item  //27
                                                                   "Serial No." = FIELD("Serial No. Filter")));
 
             DecimalPlaces = 0 : 5;
+            Editable = false;
+        }
+        field(50137; "Vendor Name"; Text[100])
+        {
+            Caption = 'Vendor Name', comment = 'ESP="Nombre proveedor"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Vendor.Name where("No." = field("Vendor No.")));
             Editable = false;
         }
         field(50150; Material; text[100])

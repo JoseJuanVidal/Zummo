@@ -1517,7 +1517,7 @@ codeunit 50106 "SalesEvents"
         if not SalesPrice.FindFirst() then begin
             SalesLine.SinPrecioTarifa := true;
             if SalesSetup."Show Item alert without tariff" then
-                Message(lblMSG, Customer."No.", Customer.Name, Customer."Customer Price Group", Item."No.", Item.Description);
+                Error(lblMSG, Customer."No.", Customer.Name, Customer."Customer Price Group", Item."No.", Item.Description);
         end;
     end;
 }

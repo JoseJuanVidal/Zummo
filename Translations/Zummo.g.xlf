@@ -26463,6 +26463,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Usuario no permitido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ValidadoContabiliad_btc - Method OnValidate - NamedType lbNoConfUsuariosErr</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Vendor Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Vendor Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1075816576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Vendor Plastic packing (kg/ud)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg/ud)"</note>
