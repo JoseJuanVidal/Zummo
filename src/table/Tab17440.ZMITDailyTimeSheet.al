@@ -77,6 +77,20 @@ table 17440 "ZM IT Daily Time Sheet"
             Caption = 'Key summary', comment = 'ESP="Descripción"';
             DataClassification = CustomerContent;
         }
+        field(35; "Subkey"; Code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Ticket', comment = 'ESP="Ticket"';
+            TableRelation = "ZM IT JIRA Tickets"."key" where(Project = field("key"));
+
+
+            ValidateTableRelation = false;
+
+            trigger OnValidate()
+            begin
+                SubKeyOnValidate();
+            end;
+        }
         field(50; "Start Time"; DateTime)
         {
             DataClassification = CustomerContent;
@@ -196,6 +210,8 @@ table 17440 "ZM IT Daily Time Sheet"
     end;
 
     local procedure KeyOnValidate()
+    var
+        SubKey: Guid;
     begin
         Rec."Key summary" := '';
         case Rec.Type of
@@ -216,6 +232,19 @@ table 17440 "ZM IT Daily Time Sheet"
                     Job.Reset();
                     if Job.Get(Rec."key") then
                         Rec."Key summary" := Job.Description;
+                end;
+        end;
+    end;
+
+    local procedure SubKeyOnValidate()
+    begin
+        case Rec.Type of
+
+            Rec.Type::"JIRA Proyecto":
+                begin
+                    JIRATickets.Reset();
+                    if JIRATickets.Get(Rec."key") then
+                        Rec.Notes := JIRATickets.summary;
                 end;
         end;
     end;

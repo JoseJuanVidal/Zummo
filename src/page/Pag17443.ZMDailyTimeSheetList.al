@@ -281,7 +281,7 @@ page 17443 "ZM Daily Time Sheet List"
     var
         SWFunciones: Codeunit "Zummo Inn. IC Functions";
     begin
-        SWFunciones.JIRAGetAllTickets();
+        SWFunciones.JIRAGetAllTickets('TZ', '');
         SWFunciones.JIRAGetAllProjects();
         Message('End/Fin');
     end;

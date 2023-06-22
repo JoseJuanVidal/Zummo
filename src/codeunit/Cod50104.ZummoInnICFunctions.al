@@ -150,7 +150,10 @@ codeunit 50104 "Zummo Inn. IC Functions"
     begin
         JObject := Token.AsObject();
 
-        if JObject.Get(keyname, jToken) then exit(jToken.AsObject());
+        if JObject.Get(keyname, jToken) then begin
+            if jToken.IsObject then
+                exit(jToken.AsObject());
+        end;
     end;
 
     procedure GetJSONItemFieldArray(Token: JsonToken; keyname: Text): JsonArray
@@ -666,10 +669,10 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
     end;
 
-    procedure JIRAGetAllTickets()
+    procedure JIRAGetAllTickets(project: text; subKey: code[50])
     var
         JiraTicket: Record "ZM IT JIRA Tickets";
-        metodo: Label 'search?maxResults=100&jql=project = TZ ORDER by ID&fields=key,summary,status,assignee&startAt=%1';
+        metodo: Label 'search?maxResults=100&jql=project = %1 ORDER by ID&fields=key,summary,status,assignee&startAt=%2';
         Body: text;
         ErrorText: text;
         FieldValue: text;
@@ -684,12 +687,15 @@ codeunit 50104 "Zummo Inn. IC Functions"
         JsonIssueassigned: JsonObject;
         TotalIssues: Integer;
         IssuesCount: Integer;
+        Window: Dialog;
+        lblName: Label 'Ticket #1###################', comment = 'ESP="Ticket #1###################"';
     begin
+        Window.Open(lblName);
         JobsSetup.Get();
         JobsSetup.TestField("url Base");
         JobsSetup.TestField(user);
         JobsSetup.TestField(token);
-        JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
+        JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, project, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
 
         JsonResponse.ReadFrom(ResponseText);
 
@@ -705,16 +711,20 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
             repeat
                 foreach JsonIssue in JsonIssues do begin
+
                     IssuesCount += 1;
                     FieldValue := GetJSONItemFieldText(JsonIssue, 'key');
+                    Window.Update(1, FieldValue);
                     JiraTicket.Reset();
                     if not JiraTicket.Get(FieldValue) then begin
                         JiraTicket.Init();
                         JiraTicket."key" := FieldValue;
                         JiraTicket.id := GetJSONItemFieldInteger(JsonIssue, 'id');
+                        if not (subKey = '') then
+                            JiraTicket.Project := subKey;
                     end;
                     JsonIssueFields := GetJSONItemFieldObject(JsonIssue, 'fields');
-                    JiraTicket.summary := GetJSONItemFieldText(JsonIssueFields.AsToken(), 'summary');
+                    JiraTicket.summary := CopyStr(GetJSONItemFieldText(JsonIssueFields.AsToken(), 'summary'), 1, MaxStrLen(JiraTicket.summary));
                     JsonIssueState := GetJSONItemFieldObject(JsonIssueFields.AsToken(), 'status');
                     JiraTicket.State := GetJSONItemFieldText(JsonIssueState.AsToken(), 'name');
                     JiraTicket."Description Status" := copystr(GetJSONItemFieldText(JsonIssueState.AsToken(), 'description'), 1, MaxStrLen(JiraTicket."Description Status"));
@@ -724,7 +734,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
                         JiraTicket.Modify();
                 end;
                 if IssuesCount < TotalIssues then begin
-                    JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
+                    JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, project, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
                     JsonResponse.ReadFrom(ResponseText);
                     if JsonResponse.Get('error', JsonTokResponse) then begin
                         JsonTokResponse.WriteTo(ErrorText);
@@ -735,6 +745,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
                 end;
             until IssuesCount >= TotalIssues;
         end;
+        Window.Close();
     end;
 
     procedure JIRAGetAllProjects()
@@ -767,7 +778,11 @@ codeunit 50104 "Zummo Inn. IC Functions"
                     JiraProjects.id := GetJSONItemFieldInteger(JsonProject, 'id');
                     JiraProjects.name := GetJSONItemFieldText(JsonProject, 'name');
                     JiraProjects.Insert();
+
                 end;
+                // actualizar sub tickets
+                JIRAGetAllTickets(JiraProjects."key", JiraProjects."key");
+
             end;
         end;
     end;

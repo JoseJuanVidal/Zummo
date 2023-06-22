@@ -79,6 +79,10 @@ page 17440 "ZM IT Daily Time Sheet List"
                 {
                     ApplicationArea = all;
                 }
+                field(Subkey; Subkey)
+                {
+                    ApplicationArea = all;
+                }
                 field(Notes; Notes)
                 {
                     ApplicationArea = all;
@@ -282,7 +286,7 @@ page 17440 "ZM IT Daily Time Sheet List"
     var
         SWFunciones: Codeunit "Zummo Inn. IC Functions";
     begin
-        SWFunciones.JIRAGetAllTickets();
+        SWFunciones.JIRAGetAllTickets('TZ', '');
         SWFunciones.JIRAGetAllProjects();
         Message('End/Fin');
     end;

@@ -21,6 +21,11 @@ table 17441 "ZM IT JIRA Tickets"
         {
             DataClassification = CustomerContent;
         }
+        field(5; Project; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Project', comment = 'ESP="Projecto"';
+        }
         field(10; State; Text[50])
         {
             DataClassification = CustomerContent;

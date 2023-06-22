@@ -21,6 +21,7 @@ table 17442 "ZM IT JIRA Projects"
         {
             DataClassification = CustomerContent;
         }
+
     }
 
     keys

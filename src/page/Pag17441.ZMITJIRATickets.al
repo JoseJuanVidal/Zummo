@@ -57,7 +57,7 @@ page 17441 "ZM IT JIRA Tickets"
                 var
                     SWFunciones: Codeunit "Zummo Inn. IC Functions";
                 begin
-                    SWFunciones.JIRAGetAllTickets();
+                    SWFunciones.JIRAGetAllTickets('TZ', '');
                 end;
             }
         }

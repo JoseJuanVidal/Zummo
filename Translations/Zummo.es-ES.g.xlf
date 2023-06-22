@@ -7570,6 +7570,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Start Time - Property Caption</note>
           <target>Hora Inicio</target>
         </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 757202893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ticket</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ticket"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Subkey - Property Caption</note>
+          <target>Ticket</target>
+        </trans-unit>
         <trans-unit id="Table 3147584035 - Field 3994797191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Task</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tarea"</note>
@@ -7633,6 +7639,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field key - Property Caption</note>
           <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 1063719647 - Field 2328870583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Project</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Projecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field Project - Property Caption</note>
+          <target>Projecto</target>
         </trans-unit>
         <trans-unit id="Table 1063719647 - Field 269761521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>State</source>
@@ -8995,9 +9007,15 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllProjects - NamedType metodo</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1461479292 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
-          <source>search?maxResults=100&amp;jql=project = TZ ORDER by ID&amp;fields=key,summary,status,assignee&amp;startAt=%1</source>
+          <source>search?maxResults=100&amp;jql=project = %1 ORDER by ID&amp;fields=key,summary,status,assignee&amp;startAt=%2</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllTickets - NamedType metodo</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1461479292 - NamedType 2769762455" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ticket #1###################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ticket #1###################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllTickets - NamedType lblName</note>
+          <target>Ticket #1###################</target>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 833899790 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create Quote in Zummo Innovaciones</source>
@@ -28877,6 +28895,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Usuario no permitido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ValidadoContabiliad_btc - Method OnValidate - NamedType lbNoConfUsuariosErr</note>
           <target>Usuario no permitido</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Vendor Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Vendor Name - Property Caption</note>
+          <target>Nombre proveedor</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1075816576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Vendor Plastic packing (kg/ud)</source>
