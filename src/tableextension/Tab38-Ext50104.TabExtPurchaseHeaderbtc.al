@@ -47,14 +47,14 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             FieldClass = FlowField;
             CalcFormula = Sum("Purchase Line".Amount WHERE("Document Type" = FIELD("Document Type"), "Document No." = FIELD("No."), "Order No." = filter(<> '')));
         }
-        field(50025; "CONSULTIA ID Factura"; Integer)
+        field(50125; "CONSULTIA ID Factura"; Integer)
         {
             Caption = 'CONSULTIA Id Factura', Comment = 'ESP="CONSULTIA Id Factura"';
             DataClassification = CustomerContent;
             Editable = false;
             TableRelation = "ZM CONSULTIA Invoice Header";
         }
-        field(50026; "CONSULTIA N Factura"; code[20])
+        field(50126; "CONSULTIA N Factura"; code[20])
         {
             Caption = 'CONSULTIA Id Factura', Comment = 'ESP="CONSULTIA Id Factura"';
             DataClassification = CustomerContent;
