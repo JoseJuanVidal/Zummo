@@ -22936,6 +22936,111 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Make 349 Declaration Zummo - Control TelephoneNumber - Property Caption</note>
           <target>Nº teléfono</target>
         </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 3760169421" size-unit="char" translate="yes" xml:space="preserve">
+          <source>.txt</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType ExtensionArchivoLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 1078639727" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ASC (*.asc)|*.asc|TXT (*.txt)|*.txt|Todos (*.*)|*.*</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType FiltroFicheros</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 3208546421" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Confirming</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType NombreArchivoLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 2136983796" size-unit="char" translate="yes" xml:space="preserve">
+          <source>0101702409</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType NumContratoTxt</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fichero a exportar</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 672599587" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solo puede utilizar las Normas del CSB con Cod. Peseta o Euro.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType Txt001</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 2585689438" size-unit="char" translate="yes" xml:space="preserve">
+          <source>La forma de pago tiene que ser cheque y o transferencia - Documento %1.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType Txt002</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 1947992821" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Falta alguna información sobre el banco del proveedor %1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType Txt003</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 3054477032" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se ha generado el fichero Orden de pago Confirming Caixabank: %1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType Txt004</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - NamedType 1186956685" size-unit="char" translate="yes" xml:space="preserve">
+          <source>4553</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - NamedType ValorOficinaTxt</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - Control 3655135075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archivo externo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - Control ArchExt - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - Control 1308701041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sufijo banco</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - Control BankSufix - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - Control 3457292453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha emisión</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - Control FechaEmision - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - Control 1038673299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Concepto de la orden</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - Control W_ConceptoDeLaOrden - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - Control 1032015480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Detalle del cargo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - Control W_DetalleDelCargo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - Control 45187002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank Sufix</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - Control W_GastosACtaOrdenante - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - Control 1131912971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicador de confirmación (C o en blanco)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - Control W_IndicadorConfirmacion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - Control 1573891564 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Número contra soporte (01NNNNNNDD)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - Control W_NumeroContratoSoporte - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2580800156 - Control 287431405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Número oficina contrato (CAIXA 6202)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report OrdenPago-Confirming CaixaBank - Control W_NumeroOficina - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1755290613 - NamedType 1889045978" size-unit="char" translate="yes" xml:space="preserve">
           <source>Article</source>
           <note from="Developer" annotates="general" priority="2">ESP="Artículo",FRA="Article"</note>
@@ -26195,6 +26300,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PayablesCarteraDocs - Control txtNomb - Property Caption</note>
           <target>Nombre</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4266134665 - Action 1692444235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 360036849">
+          <source>Confirming CAIXABANC</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Confirming CAIXABANC""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PaymentOrders - Action ActionName - Property Caption</note>
+          <target>Confirming CAIXABANC"</target>
         </trans-unit>
         <trans-unit id="PageExtension 4266134665 - Action 2213339728 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 360036849">
           <source>Export a file with the payment information on the lines.</source>

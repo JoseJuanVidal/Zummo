@@ -23,6 +23,26 @@ pageextension 50027 "PaymentOrders" extends "Payment Orders"
     {
         addafter(Export)
         {
+            action(ActionName)
+            {
+                ApplicationArea = All;
+                Caption = 'Confirming CAIXABANC', comment = 'ESP="Confirming CAIXABANC""';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = Confirm;
+
+                trigger OnAction()
+                var
+                    PaymentOrder: Record "Payment Order";
+                    ConfirmingCaixaBanc: Report "OrdenPago-Confirming CaixaBank";
+                begin
+                    PaymentOrder.SetRange("No.", Rec."No.");
+                    Clear(ConfirmingCaixaBanc);
+                    ConfirmingCaixaBanc.SetTableView(PaymentOrder);
+                    ConfirmingCaixaBanc.Run();
+                end;
+            }
             action(ExportZummo)
             {
                 ApplicationArea = Basic, Suite;
