@@ -26301,11 +26301,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PayablesCarteraDocs - Control txtNomb - Property Caption</note>
           <target>Nombre</target>
         </trans-unit>
-        <trans-unit id="PageExtension 4266134665 - Action 1692444235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 360036849">
+        <trans-unit id="PageExtension 4266134665 - Action 3077123496 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 360036849">
           <source>Confirming CAIXABANC</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Confirming CAIXABANC""</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PaymentOrders - Action ActionName - Property Caption</note>
-          <target>Confirming CAIXABANC"</target>
+          <note from="Developer" annotates="general" priority="2">ESP="Confirming CAIXABANC"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PaymentOrders - Action CaixaBanc - Property Caption</note>
+          <target>Confirming CAIXABANC</target>
         </trans-unit>
         <trans-unit id="PageExtension 4266134665 - Action 2213339728 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 360036849">
           <source>Export a file with the payment information on the lines.</source>
@@ -32516,6 +32516,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Producto bloqueado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WhereUsedLine - Field ProductoBloqueado_btc - Property Caption</note>
           <target>Producto bloqueado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4029083579 - Field 1583542828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1682139193">
+          <source>Nº contrato Confirming Caixabanc</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM EXT Bank Account - Field Contrac Confirming Caixabanc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 709731099 - Field 3621343342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
           <source>Cuota Objetivo</source>

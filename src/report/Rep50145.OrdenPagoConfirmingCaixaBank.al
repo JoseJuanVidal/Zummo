@@ -206,6 +206,8 @@ report 50145 "OrdenPago-Confirming CaixaBank"
 
                 CCCNoCta := CtaBanco."CCC Bank Account No.";
                 CCCDigControl := CtaBanco."CCC Control Digits";
+                W_NumeroContratoSoporte := CtaBanco."Contrac Confirming Caixabanc";
+
 
                 IF "Posting Date" = 0D THEN
                     FechaReg := PADSTR('', 6, '0')
@@ -246,8 +248,6 @@ report 50145 "OrdenPago-Confirming CaixaBank"
 
             trigger OnPreDataItem()
             begin
-                IF W_NumeroContratoSoporte = '' THEN
-                    ERROR('Debe proporcionar un Nº de contrato al lanzar el proceso');
 
                 ConfCG.GET;
                 IF TestExport THEN
@@ -332,6 +332,7 @@ report 50145 "OrdenPago-Confirming CaixaBank"
                     field("W_NumeroContratoSoporte"; W_NumeroContratoSoporte)
                     {
                         Caption = 'Número contra soporte (01NNNNNNDD)';
+                        Visible = false;
                         DrillDown = false;
                         Lookup = false;
                         ApplicationArea = All;
@@ -367,6 +368,7 @@ report 50145 "OrdenPago-Confirming CaixaBank"
                     field("W_NumeroOficina"; W_NumeroOficina)
                     {
                         Caption = 'Número oficina contrato (CAIXA 6202)';
+                        Visible = false;
                         DrillDown = false;
                         Lookup = false;
                         ApplicationArea = All;
@@ -383,7 +385,7 @@ report 50145 "OrdenPago-Confirming CaixaBank"
         begin
             //ArchExt := InfoEmpresa."Ruta Descargas" + NombreArchivoLbl + ExtensionArchivoLbl;   //002 TSC 110719 Poner ruta de exportación parametrizada en Info Empresa
             W_NumeroOficina := ValorOficinaTxt;    //003 TSC 110719 Valor de campo Oficina de Request Page por defecto (Text Constant=6202, no 7306)
-            //W_NumeroContratoSoporte := NumContratoTxt;    //004 TSC 120719 Valor de campo Número de Contrato, en RequestPage por defecto
+            // W_NumeroContratoSoporte := NumContratoTxt;    //004 TSC 120719 Valor de campo Número de Contrato, en RequestPage por defecto
 
             IF FechaEmision = 0D THEN
                 FechaEmision := TODAY;
@@ -491,7 +493,7 @@ report 50145 "OrdenPago-Confirming CaixaBank"
         DocExterno: Text[12];
         Count2: Decimal;
         R_HCabFactura: Record "Purch. Inv. Header";
-        W_NumeroContratoSoporte: Text[10];
+        W_NumeroContratoSoporte: Text[14];
         W_DetalleDelCargo: Boolean;
         W_DetalleDelCargo_Text: Text[1];
         W_MonedaSoporte: Text[3];
@@ -618,8 +620,7 @@ report 50145 "OrdenPago-Confirming CaixaBank"
                        PADSTR(FORMAT(FechaEmision, 0, '<Day,2><month,2><year>'), 6, ' ') +
                        PADSTR('', 6, ' ') +
                        PADSTR(CCCNoBanco, 4, ' ') +
-                       PADSTR(CCCNoSucBanco, 4, ' ') +
-                       PADSTR(W_NumeroContratoSoporte, 10, ' ') +
+                       PADSTR(W_NumeroContratoSoporte, 14, ' ') +
                        PADSTR(W_DetalleDelCargo_Text, 1, ' ') +
                        UPPERCASE(PADSTR(W_MonedaSoporte, 3, ' ')) +
                        PADSTR('', 7, ' ') +
