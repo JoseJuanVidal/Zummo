@@ -1251,7 +1251,7 @@ codeunit 50111 "Funciones"
 
     procedure MarcarNoFacturar(PurchRcptHeader: Record "Purch. Rcpt. Header")
     var
-        SalesLine: Record "Sales Line";
+        PurchaseLine: Record "Purchase Line";
         PurchRcptLine: Record "Purch. Rcpt. Line";
         lblConfirm: Label 'Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?', comment = 'ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"';
     begin
@@ -1263,10 +1263,10 @@ codeunit 50111 "Funciones"
                 if PurchRcptLine."Qty. Rcd. Not Invoiced" <> 0 then begin
                     PurchRcptLine."Qty. Rcd. Not Invoiced" := 0;
                     PurchRcptLine.Modify();
-                    if SalesLine.Get(SalesLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.") then begin
-                        SalesLine."Qty. Shipped Not Invd. (Base)" := 0;
-                        SalesLine."Qty. Shipped Not Invoiced" := 0;
-                        SalesLine.Modify();
+                    if PurchaseLine.Get(PurchaseLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.") then begin
+                        PurchaseLine."Qty. Rcd. Not Invoiced (Base)" := 0;
+                        PurchaseLine."Qty. Rcd. Not Invoiced" := 0;
+                        PurchaseLine.Modify();
                     end;
                 end;
             Until PurchRcptLine.next() = 0;

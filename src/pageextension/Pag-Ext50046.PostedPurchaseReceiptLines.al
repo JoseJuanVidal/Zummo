@@ -28,6 +28,10 @@ pageextension 50046 "PostedPurchaseReceiptLines" extends "Posted Purchase Receip
                 ApplicationArea = all;
                 Caption = 'Nº Albarán proveedor', comment = 'ESP="Nº Albarán proveedor"';
             }
+            field("Order No."; "Order No.")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 
