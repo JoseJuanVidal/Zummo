@@ -34,7 +34,6 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
         {
             DataClassification = CustomerContent;
             Caption = 'Venta productos sin tarifa', comment = 'ESP="Venta productos sin tarifa"';
-            TableRelation = Resource;
         }
     }
 }
