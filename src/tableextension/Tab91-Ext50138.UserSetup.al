@@ -30,5 +30,11 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             Caption = 'Resource No.', comment = 'ESP="Nº Recurso"';
             TableRelation = Resource;
         }
+        field(50106; "Venta productos sin tarifa"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Venta productos sin tarifa', comment = 'ESP="Venta productos sin tarifa"';
+            TableRelation = Resource;
+        }
     }
 }

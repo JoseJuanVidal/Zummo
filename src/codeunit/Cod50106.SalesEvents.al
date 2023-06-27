@@ -1493,6 +1493,7 @@ codeunit 50106 "SalesEvents"
     var
         Item: Record Item;
         Customer: Record Customer;
+        UserSetup: Record "User Setup";
         SalesHeader: Record "Sales Header";
         SalesPrice: Record "Sales Price";
         SalesSetup: Record "Sales & Receivables Setup";
@@ -1510,14 +1511,32 @@ codeunit 50106 "SalesEvents"
         if Customer."Customer Price Group" = '' then
             exit;
         if Item.Get(SalesLine."No.") then;
+        if not CheckCustomerPriceGroup(SalesLine) then
+            exit;
         SalesPrice.Reset();
         SalesPrice.SetRange("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
-        SalesPrice.SetRange("Sales Code", Customer."Customer Price Group");
+        SalesPrice.SetRange("Sales Code", SalesLine."Customer Price Group");
         SalesPrice.SetRange("Item No.", SalesLine."No.");
         if not SalesPrice.FindFirst() then begin
             SalesLine.SinPrecioTarifa := true;
-            if SalesSetup."Show Item alert without tariff" then
-                Message(lblMSG, Customer."No.", Customer.Name, Customer."Customer Price Group", Item."No.", Item.Description);
+            if SalesSetup."Show Item alert without tariff" then begin
+                if UserSetup.Get(UserId) then begin
+                    if UserSetup."Permite exportacion costes BOM" then
+                        Message(lblMSG, Customer."No.", Customer.Name, Customer."Customer Price Group", Item."No.", Item.Description)
+                    else
+                        Error(lblMSG, Customer."No.", Customer.Name, Customer."Customer Price Group", Item."No.", Item.Description);
+                end else
+                    Error(lblMSG, Customer."No.", Customer.Name, Customer."Customer Price Group", Item."No.", Item.Description);
+            end;
         end;
+    end;
+
+    procedure CheckCustomerPriceGroup(SalesLine: Record "Sales Line"): Boolean
+    var
+        CustomerPriceGroup: Record "Customer Price Group";
+    begin
+        if CustomerPriceGroup.Get(SalesLine."Customer Price Group") then
+            if CustomerPriceGroup."Block without Sales Items" then
+                exit(true);
     end;
 }

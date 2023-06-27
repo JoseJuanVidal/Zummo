@@ -23,10 +23,10 @@ pageextension 50027 "PaymentOrders" extends "Payment Orders"
     {
         addafter(Export)
         {
-            action(ActionName)
+            action(CaixaBanc)
             {
                 ApplicationArea = All;
-                Caption = 'Confirming CAIXABANC', comment = 'ESP="Confirming CAIXABANC""';
+                Caption = 'Confirming CAIXABANC', comment = 'ESP="Confirming CAIXABANC"';
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;

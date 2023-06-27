@@ -24258,10 +24258,10 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PayablesCarteraDocs - Control txtNomb - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 4266134665 - Action 1692444235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 360036849">
+        <trans-unit id="PageExtension 4266134665 - Action 3077123496 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 360036849">
           <source>Confirming CAIXABANC</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Confirming CAIXABANC""</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PaymentOrders - Action ActionName - Property Caption</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Confirming CAIXABANC"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PaymentOrders - Action CaixaBanc - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4266134665 - Action 2213339728 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 360036849">
           <source>Export a file with the payment information on the lines.</source>
@@ -29513,6 +29513,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Recurso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Resource No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 3988368718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Venta productos sin tarifa</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Venta productos sin tarifa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Venta productos sin tarifa - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1936001480 - Field 2433564271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Vendor Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación proveedor"</note>
@@ -29632,6 +29637,11 @@
           <source>Pais ABC</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Pais ABC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 259848644 - Field 2669540733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2725149570">
+          <source>Block sales of products without tariffs</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueo ventas producto sin tarifa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM EXT Customer Price Group - Field Block without Sales Items - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1622915177 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2925931323">
           <source>Plastic Date Declaration</source>

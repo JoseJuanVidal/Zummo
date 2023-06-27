@@ -21,6 +21,10 @@ pageextension 50003 "UserSetup" extends "User Setup"
             {
                 ApplicationArea = all;
             }
+            field("Venta productos sin tarifa"; "Venta productos sin tarifa")
+            {
+                ApplicationArea = all;
+            }
             field("Resource No."; "Resource No.")
             {
                 ApplicationArea = all;

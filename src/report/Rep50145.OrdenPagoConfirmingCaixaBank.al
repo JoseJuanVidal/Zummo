@@ -128,7 +128,7 @@ report 50145 "OrdenPago-Confirming CaixaBank"
                             //IF NOT BancoProv.ISEMPTY THEN   //TSC 101019 Modifico para Forma Pago=Tipo TRANSFERENCIA, pida este dato sólo si venimos posicionados
                             //IF BancoProv.FINDSET THEN   //TSC 101019 Modifico para Forma Pago=Tipo TRANSFERENCIA, pida este dato sólo si venimos posicionados
                             IF BancoProv.GET("Account No.", ProvCodBanco) THEN
-                                BancoProv.TESTFIELD("Bank Account No.");
+                                BancoProv.TESTFIELD("CCC Bank Account No.");
                         END
                     ELSE
                         IF TipoDoc2 <> '5' THEN
@@ -136,7 +136,7 @@ report 50145 "OrdenPago-Confirming CaixaBank"
                         ELSE BEGIN
                             TipoDoc := '06';
                             IF NOT BancoProv.ISEMPTY THEN   //TSC 101019 Modifico para Forma Pago=Tipo TRANSFERENCIA, pida este dato sólo si venimos posicionados
-                                BancoProv.TESTFIELD("Bank Account No.");
+                                BancoProv.TESTFIELD("CCC Bank Account No.");
                         END;
 
                     // PROVEEDOR - COMPROBAR SI ES RESIDENTE O NO
@@ -418,6 +418,7 @@ report 50145 "OrdenPago-Confirming CaixaBank"
     trigger OnPostReport()
     begin
         tempblob.blob.CreateInStream(inStr);
+        ArchExt := "Payment Order"."No." + '.txt';
         DownloadFromStream(inStr, '', '', '', ArchExt);
         MESSAGE(Txt004, ArchExt);
     end;
