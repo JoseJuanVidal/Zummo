@@ -170,6 +170,18 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 {
                     ApplicationArea = all;
                 }
+                field("Vendor Packaging Carton"; "Vendor Packaging Carton")
+                {
+                    ApplicationArea = all;
+                }
+                field("Vendor Packaging Wood"; "Vendor Packaging Wood")
+                {
+                    ApplicationArea = all;
+                }
+                field("Vendor Packaging Steel"; "Vendor Packaging Steel")
+                {
+                    ApplicationArea = all;
+                }
                 field("Show detailed documents"; "Show detailed documents")
                 {
                     ApplicationArea = all;

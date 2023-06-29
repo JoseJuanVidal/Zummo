@@ -459,6 +459,22 @@ tableextension 50108 "Item" extends Item  //27
             Caption = 'Vendor Plastic packing (kg/ud)', comment = 'ESP="Plástico embalaje proveedor (kg/ud)"';
             DecimalPlaces = 6 : 6;
         }
+        field(50216; "Vendor Packaging Steel"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Steel Packing (kg)', comment = 'ESP="Acero Embalaje proveedor(kg)"';
+            Description = 'Acero que se utiliza para el envío del producto';
+        }
+        field(50217; "Vendor Packaging Carton"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Carton Packing (kg)', comment = 'ESP="Cartón Embalaje proveedor (kg)"';
+        }
+        field(50218; "Vendor Packaging Wood"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Wood Packing (kg)', comment = 'ESP="Madera Embalaje proveedor (kg)"';
+        }
         //-  NORMATIVA MEDIO AMBIENTAL
 
     }

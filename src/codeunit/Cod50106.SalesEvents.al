@@ -1521,7 +1521,7 @@ codeunit 50106 "SalesEvents"
             SalesLine.SinPrecioTarifa := true;
             if SalesSetup."Show Item alert without tariff" then begin
                 if UserSetup.Get(UserId) then begin
-                    if UserSetup."Permite exportacion costes BOM" then
+                    if UserSetup."Venta productos sin tarifa" then
                         Message(lblMSG, Customer."No.", Customer.Name, Customer."Customer Price Group", Item."No.", Item.Description)
                     else
                         Error(lblMSG, Customer."No.", Customer.Name, Customer."Customer Price Group", Item."No.", Item.Description);
