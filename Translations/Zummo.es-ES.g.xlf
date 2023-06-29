@@ -28076,6 +28076,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WorkCenterList - Action WorkCenterCalendar - Property Caption</note>
           <target>Cap. Producto y Centro Trabajo</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2369002940 - Action 397840741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
+          <source>Daily Time Sheet</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Partes Diarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Busin. Man. Role Center - Action DailyTimeSheet - Property Caption</note>
+          <target>Partes Diarios</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2647204350 - Action 320511829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3705678920">
           <source>Update Campingn CRM.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualiza campañas del CRM"</note>
