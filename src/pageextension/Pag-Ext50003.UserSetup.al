@@ -29,6 +29,30 @@ pageextension 50003 "UserSetup" extends "User Setup"
             {
                 ApplicationArea = all;
             }
+            field("Config. Contabilidad"; "Config. Contabilidad")
+            {
+                ApplicationArea = all;
+            }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        CheckUserConfiguration();
+    end;
+
+    local procedure CheckUserConfiguration()
+    var
+        User: Record User;
+        AccessControl: Record "Access Control";
+    begin
+        User.SetRange("User Name", UserID);
+        User.FindFirst();
+        AccessControl.Reset();
+        AccessControl.SetRange("User Security ID", User."User Security ID");
+        AccessControl.SetRange("Role ID", 'D365 FULL ACCESS');
+        if not AccessControl.FindFirst() then
+            ERROR(StrSubstNo('El usuario %1 no tiene permisos para editar estos datos', "User ID"));
+    end;
+
 }

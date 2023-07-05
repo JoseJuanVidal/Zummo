@@ -31,4 +31,14 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
             field(BloqueoVentas; BloqueoVentas) { }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        UserSetup.Get(UserId);
+        if not UserSetup."Config. Contabilidad" then
+            Error(StrSubstNo('El usuario %1 no tiene permisos para la configuración contabilidad', UserId));
+    end;
+
+    var
+        UserSetup: Record "User Setup";
 }

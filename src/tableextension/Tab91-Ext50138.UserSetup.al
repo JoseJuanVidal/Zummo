@@ -35,5 +35,10 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             DataClassification = CustomerContent;
             Caption = 'Venta productos sin tarifa', comment = 'ESP="Venta productos sin tarifa"';
         }
+        field(50110; "Config. Contabilidad"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Config. Contabilidad', comment = 'ESP="Config. Contabilidad"';
+        }
     }
 }
