@@ -2592,6 +2592,29 @@ codeunit 50111 "Funciones"
         else
             exit(10000);
     end;
+    // =============  ItemLdgEntryGetParentSerialNo             ====================
+    // ==  
+    // == Funcion para comprobar el numero de serie de un producto de salida de fabrica y ponemos el numero de serie de consumo si existe
+    // ==  
+    // ======================================================================================================
+
+    procedure ItemLdgEntryGetParentSerialNo(var ItemLedgerEntry: Record "Item Ledger Entry")
+    var
+        ParentItemLdgEntry: Record "Item Ledger Entry";
+    begin
+        if not (ItemLedgerEntry."Entry Type" in [ItemLedgerEntry."Entry Type"::Output]) then
+            exit;
+        ItemLedgerEntry.SerialNoParent := '';
+        ParentItemLdgEntry.Reset();
+        ParentItemLdgEntry.SetRange("Order No.", ItemLedgerEntry."Document No.");
+        ParentItemLdgEntry.SetRange("Order Line No.", ItemLedgerEntry."Order Line No.");
+        ParentItemLdgEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Consumption);
+        ParentItemLdgEntry.SetFilter("Item Tracking", '%1|%2', ParentItemLdgEntry."Item Tracking"::"Serial No.", ParentItemLdgEntry."Item Tracking"::"Lot and Serial No.");
+        if ParentItemLdgEntry.FindFirst() then
+            if ItemLedgerEntry."Item No." <> ParentItemLdgEntry."Item No." then
+                ItemLedgerEntry.SerialNoParent := ParentItemLdgEntry."Serial No.";
+
+    end;
 
 }
 

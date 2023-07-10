@@ -740,6 +740,11 @@ codeunit 50101 "Eventos_btc"
                             end;
                     end
                 end;
+            Rec."Entry Type"::"Output":
+                begin
+                    // llamamos para mirar consumos con numeros de serie y ponemos el primero
+                    Funciones.ItemLdgEntryGetParentSerialNo(Rec);
+                end;
         end;
     end;
 

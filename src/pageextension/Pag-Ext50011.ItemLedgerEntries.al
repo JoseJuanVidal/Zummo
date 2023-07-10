@@ -4,6 +4,12 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
 
     layout
     {
+        addafter("Serial No.")
+        {
+            field(SerialNoParent; SerialNoParent)
+            {
+            }
+        }
         modify("Order No.")
         {
             Visible = true;
@@ -158,6 +164,22 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
     }
     actions
     {
+        addlast(Processing)
+        {
+            action(AssingParentSerialNo)
+            {
+                ApplicationArea = all;
+                Caption = 'Asignar Nº Serie consumo', comment = 'ESP="Asignar Nº Serie consumo"';
+                Image = CalculateConsumption;
+                ;
+
+                trigger OnAction()
+                begin
+                    OnAssingParentSerialNo();
+                end;
+
+            }
+        }
         addfirst(Reporting)
         {
             action("Imprimir Etiqueta")
@@ -266,5 +288,24 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
         OrderLineNo: Integer;
         CodEmpleado: text;
         IdUsuario: code[50];
+
+    local procedure OnAssingParentSerialNo()
+    var
+        ItemLedgerEntry: Record "Item Ledger Entry";
+        Window: Dialog;
+    begin
+        if Rec."Entry Type" in [Rec."Entry Type"::Output] then begin
+            Window.Open('Movimientos #1####################');
+            CurrPage.SetSelectionFilter(ItemLedgerEntry);
+            if ItemLedgerEntry.FindFirst() then
+                repeat
+                    Window.Update(1, ItemLedgerEntry."Entry No.");
+                    Funciones.ItemLdgEntryGetParentSerialNo
+                    (ItemLedgerEntry);
+                    ItemLedgerEntry.Modify();
+                Until ItemLedgerEntry.next() = 0;
+            Window.Close();
+        end;
+    end;
 
 }

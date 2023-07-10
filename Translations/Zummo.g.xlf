@@ -24108,6 +24108,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Normativa Plastico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control NormativaPlastico - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Action 2728787576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Asignar Nº Serie consumo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Nº Serie consumo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Action AssingParentSerialNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2185030199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Imprimir etiqueta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiqueta"</note>
@@ -26717,6 +26722,11 @@
           <source>Posted  Item Service</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Productos de servicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Posted Service Item - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 2861034351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Nº Serie Consumo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Serie Consumo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field SerialNoParent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 53801266 - Field 831439759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 53801266">
           <source>Es Materal</source>
