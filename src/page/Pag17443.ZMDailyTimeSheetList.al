@@ -68,10 +68,24 @@ page 17443 "ZM Daily Time Sheet List"
                 field(Task; Task)
                 {
                     ApplicationArea = all;
+
+                    trigger OnValidate()
+                    begin
+                        OnValidateTask();
+                    end;
+                }
+                field(SubTask; SubTask)
+                {
+                    ApplicationArea = all;
                 }
                 field(Notes; Notes)
                 {
                     ApplicationArea = all;
+
+                    trigger OnValidate()
+                    begin
+                        OnValidateNotes();
+                    end;
                 }
                 field("Start Time"; "Start Time")
                 {
@@ -307,10 +321,39 @@ page 17443 "ZM Daily Time Sheet List"
     end;
 
     local procedure ChangeEmployee()
-
     begin
         if DailyUserSession.ChangeUserSession(Employee) then
             Rec.SetRange("Employee No.", Employee."No.");
         CurrPage.Update();
+    end;
+
+
+    local procedure OnValidateTask()
+    var
+        DailyTask: Record "ZM Daily Task";
+        lblErrorSubTask: Label 'Debe indicar una subtarea de %1', comment = 'ESP="Debe indicar una subtarea de %1"';
+    begin
+        if Rec.Task = '' then
+            exit;
+        DailyTask.Reset();
+        DailyTask.SetRange("User Id", Rec.Task);
+        if DailyTask.FindFirst() then
+            if DailyTask.Count = 1 then
+                Rec.SubTask := DailyTask.Code;
+    end;
+
+    local procedure OnValidateNotes()
+    var
+        DailyTask: Record "ZM Daily Task";
+        lblErrorSubTask: Label 'Debe indicar una subtarea de %1', comment = 'ESP="Debe indicar una subtarea de %1"';
+    begin
+        if Rec.Task = '' then
+            exit;
+        if Rec.SubTask <> '' then
+            exit;
+        DailyTask.Reset();
+        DailyTask.SetRange("User Id", Rec.Task);
+        if DailyTask.Count > 1 then
+            Error(lblErrorSubTask, Rec.Task);
     end;
 }

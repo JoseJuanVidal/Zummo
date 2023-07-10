@@ -1,7 +1,6 @@
 pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
 {
-    //Cantidad pendiente en mov producto
-
+    //Cantidad pendiente en mov producto    
     layout
     {
         addafter("Serial No.")
@@ -292,19 +291,10 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
     local procedure OnAssingParentSerialNo()
     var
         ItemLedgerEntry: Record "Item Ledger Entry";
-        Window: Dialog;
     begin
         if Rec."Entry Type" in [Rec."Entry Type"::Output] then begin
-            Window.Open('Movimientos #1####################');
             CurrPage.SetSelectionFilter(ItemLedgerEntry);
-            if ItemLedgerEntry.FindFirst() then
-                repeat
-                    Window.Update(1, ItemLedgerEntry."Entry No.");
-                    Funciones.ItemLdgEntryGetParentSerialNo
-                    (ItemLedgerEntry);
-                    ItemLedgerEntry.Modify();
-                Until ItemLedgerEntry.next() = 0;
-            Window.Close();
+            Funciones.OnAssingParentSerialNo(ItemLedgerEntry);
         end;
     end;
 

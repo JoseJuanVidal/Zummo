@@ -1,6 +1,6 @@
 codeunit 50111 "Funciones"
 {
-    Permissions = tabledata "Item Ledger Entry" = rm, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
+    Permissions = tabledata "Item Ledger Entry" = rmid, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
         tabledata "Sales Shipment Header" = rmid, tabledata "Sales Cr.Memo Header" = rmid, tabledata "Sales Header Archive" = rmid,
         tabledata "Return Shipment Header" = rmid, tabledata "Purch. Rcpt. Header" = rmid, tabledata "Purch. Rcpt. Line" = rmid,
         tabledata "Sales Cr.Memo Line" = rmid, tabledata "Sales Invoice Line" = rmid, tabledata "Job Ledger Entry" = rmid, tabledata "Service Password" = rmid;
@@ -2614,6 +2614,20 @@ codeunit 50111 "Funciones"
             if ItemLedgerEntry."Item No." <> ParentItemLdgEntry."Item No." then
                 ItemLedgerEntry.SerialNoParent := ParentItemLdgEntry."Serial No.";
 
+    end;
+
+    procedure OnAssingParentSerialNo(var ItemLedgerEntry: Record "Item Ledger Entry")
+    var
+        Window: Dialog;
+    begin
+        Window.Open('Movimientos #1####################');
+        if ItemLedgerEntry.FindFirst() then
+            repeat
+                Window.Update(1, ItemLedgerEntry."Entry No.");
+                ItemLdgEntryGetParentSerialNo(ItemLedgerEntry);
+                ItemLedgerEntry.Modify();
+            Until ItemLedgerEntry.next() = 0;
+        Window.Close();
     end;
 
 }

@@ -130,6 +130,12 @@ table 17440 "ZM IT Daily Time Sheet"
             Caption = 'Task', comment = 'ESP="Tarea"';
             TableRelation = "ZM Daily Task".Code where("User Id" = field("User id"));
         }
+        field(63; SubTask; Code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'SubTask', comment = 'ESP="Sub Tarea"';
+            TableRelation = "ZM Daily Task".Code where("User Id" = field(Task));
+        }
         field(100; Registered; Boolean)
         {
             DataClassification = CustomerContent;
