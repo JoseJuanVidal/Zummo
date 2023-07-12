@@ -22,7 +22,7 @@ table 50158 "ZM CIM Prod. BOM Line"
         field(10; Type; Option)
         {
             Caption = 'Type', Comment = 'ESP="Tipo"';
-            OptionCaption = ' ,Item,Production BOM,ERPLINK Item', Comment = 'ESP=" ,Producto,L.M. producción,ERPLINK Item"';
+            OptionCaption = ' ,Item,Production BOM,ERPLINK Item', Comment = 'ESP=" ,Producto,L.M. producción,ERPLINK Producto"';
             OptionMembers = " ",Item,"Production BOM",ERPLiNKItem;
 
         }
@@ -36,6 +36,11 @@ table 50158 "ZM CIM Prod. BOM Line"
             if (type = const(ERPLiNKItem)) "ZM CIM Items temporary"."No.";
 
             ValidateTableRelation = false;
+
+            trigger OnValidate()
+            begin
+                OnValidate_No();
+            end;
         }
         field(12; Description; Text[100])
         {
@@ -125,17 +130,17 @@ table 50158 "ZM CIM Prod. BOM Line"
         }
     }
 
-    var
-        myInt: Integer;
 
     trigger OnInsert()
     begin
-
+        if Rec."Line No." = 0 then
+            Rec."Line No." := GetLastLineno();
     end;
 
     trigger OnModify()
     begin
-
+        if Rec."Line No." = 0 then
+            Rec."Line No." := GetLastLineno();
     end;
 
     trigger OnDelete()
@@ -148,4 +153,61 @@ table 50158 "ZM CIM Prod. BOM Line"
 
     end;
 
+    local procedure OnValidate_No()
+    var
+        Item: Record Item;
+        CIMItemstemporary: record "ZM CIM Items temporary";
+        CIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";
+    begin
+        case type of
+            Type::" ":
+                Rec.Description := '';
+            Type::Item:
+                begin
+                    CheckBomHeader(Rec."Production BOM No.");
+                    if Item.get("No.") then
+                        Rec.Description := Item.Description;
+                end;
+            Type::"Production BOM":
+                begin
+                    CheckBomHeader(Rec."Production BOM No.");
+                    if CIMProdBOMHeader.get(Rec."No.") then
+                        Rec.Description := CIMProdBOMHeader.Description;
+                end;
+            Type::ERPLiNKItem:
+                begin
+                    CheckBomHeader(Rec."Production BOM No.");
+                    if CIMItemstemporary.get("No.") then
+                        rec.Description := CIMItemstemporary.Description;
+                end;
+
+        end;
+    end;
+
+    local procedure CheckBomHeader(BomLine: code[20])
+    var
+        CIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";
+    begin
+        if BomLine = '' then
+            exit;
+        if not CIMProdBOMHeader.get(BomLine) then begin
+            CIMProdBOMHeader.Init();
+            CIMProdBOMHeader."No." := BomLine;
+            CIMProdBOMHeader.Description := BomLine;
+            CIMProdBOMHeader.Insert();
+        end;
+
+    end;
+
+    local procedure GetLastLineno(): Integer
+    var
+        CIMProdBOMLine: record "ZM CIM Prod. BOM Line";
+    begin
+        CIMProdBOMLine.Reset();
+        CIMProdBOMLine.SetRange("Production BOM No.", Rec."Production BOM No.");
+        if CIMProdBOMLine.FindLast() then
+            exit(CIMProdBOMLine."Line No." + 1)
+        else
+            exit(1)
+    end;
 }

@@ -6445,7 +6445,7 @@
         </trans-unit>
         <trans-unit id="Table 1561647091 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source> ,Item,Production BOM,ERPLINK Item</source>
-          <note from="Developer" annotates="general" priority="2">ESP=" ,Producto,L.M. producción,ERPLINK Item"</note>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Producto,L.M. producción,ERPLINK Producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Prod. BOM Line - Field Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 1561647091 - Field 2385270358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
