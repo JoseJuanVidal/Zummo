@@ -6459,6 +6459,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field No. - Property Caption</note>
           <target>Nº</target>
         </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Order"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Order - Property Caption</note>
+          <target>Order</target>
+        </trans-unit>
         <trans-unit id="Table 1666975959 - Field 1535478001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packaging</source>
           <note from="Developer" annotates="general" priority="2">ESP="Embalaje"</note>
@@ -13760,6 +13766,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el diario de recursos de los registros pendientes?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - NamedType lblPost</note>
           <target>¿Desea crear el diario de recursos de los registros pendientes?</target>
+        </trans-unit>
+        <trans-unit id="Page 616408914 - Method 832147432 - NamedType 1386563181" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Debe indicar una subtarea de %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe indicar una subtarea de %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - Method OnValidateNotes - NamedType lblErrorSubTask</note>
+          <target>Debe indicar una subtarea de %1</target>
+        </trans-unit>
+        <trans-unit id="Page 616408914 - Method 2549587390 - NamedType 1386563181" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Debe indicar una subtarea de %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe indicar una subtarea de %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - Method OnValidateTask - NamedType lblErrorSubTask</note>
+          <target>Debe indicar una subtarea de %1</target>
         </trans-unit>
         <trans-unit id="Page 616408914 - Control 3354042457 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proyecto</source>

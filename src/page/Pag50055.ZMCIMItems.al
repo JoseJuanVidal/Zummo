@@ -4,6 +4,7 @@ page 50055 "ZM CIM Items"
     Caption = 'ERPLINK Items Pending', comment = 'ESP="ERPLINK Productos pendientes"';
     PageType = List;
     SourceTable = "ZM CIM Items temporary";
+
     UsageCategory = Lists;
 
     layout
@@ -12,6 +13,11 @@ page 50055 "ZM CIM Items"
         {
             repeater(General)
             {
+                field(Order; Order)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
                 field(No; "No.")
                 {
                     ApplicationArea = All;
@@ -183,6 +189,11 @@ page 50055 "ZM CIM Items"
             // }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        SetRange(Order, 0);
+    end;
 
     local procedure actionCopyItem()
     begin

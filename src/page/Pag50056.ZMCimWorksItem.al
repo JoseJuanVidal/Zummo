@@ -14,6 +14,15 @@ page 50056 "ZM CimWorks Item"
         {
             repeater(General)
             {
+                field(order; OrderNo)
+                {
+                    ApplicationArea = all;
+
+                    trigger OnValidate()
+                    begin
+                        SetOrderNo();
+                    end;
+                }
                 field(No; "No.")
                 {
                     ApplicationArea = All;
@@ -87,5 +96,29 @@ page 50056 "ZM CimWorks Item"
             }
         }
     }
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+
+    end;
+
+    trigger OnModifyRecord(): Boolean
+    begin
+
+    end;
+
+    local procedure SetOrderNo()
+    begin
+        if OrderNo = 0 then
+            Rec.Order := OrderNo
+        else begin
+            if (Rec.Order = 9999999) then
+                Rec.Order := OrderNo;
+        end;
+        OrderNo := Rec.Order
+    end;
+
+    var
+        OrderNo: Integer;
 
 }

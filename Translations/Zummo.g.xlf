@@ -6248,6 +6248,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Order"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Order - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1666975959 - Field 1535478001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packaging</source>
           <note from="Developer" annotates="general" priority="2">ESP="Embalaje"</note>
