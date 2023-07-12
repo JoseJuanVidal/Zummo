@@ -87,6 +87,10 @@ page 50056 "ZM CimWorks Item"
                 {
                     ApplicationArea = all;
                 }
+                field(UserERPLINK; UserERPLINK)
+                {
+                    ApplicationArea = all;
+                }
                 part(Lines; "ZM Item Documents")
                 {
                     ApplicationArea = All;
@@ -99,12 +103,15 @@ page 50056 "ZM CimWorks Item"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-
+        Rec.CreationOn := CreateDateTime(WorkDate(), time());
+        Rec.ModifyOn := CreateDateTime(WorkDate(), time());
     end;
 
     trigger OnModifyRecord(): Boolean
     begin
-
+        if Rec.CreationOn = 0DT then
+            Rec.CreationOn := CreateDateTime(WorkDate(), time());
+        Rec.ModifyOn := CreateDateTime(WorkDate(), time());
     end;
 
     local procedure SetOrderNo()

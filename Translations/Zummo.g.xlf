@@ -6213,6 +6213,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Color"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Color - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 4102981116 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Creation On</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field CreationOn - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1666975959 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
@@ -6237,6 +6242,11 @@
           <source>Material</source>
           <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Material - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 3976032523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modify On</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field ModifyOn - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 3088522385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Net Weight</source>
@@ -6277,6 +6287,11 @@
           <source>Unit Volume</source>
           <note from="Developer" annotates="general" priority="2">ESP="Volumen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Unit Volume - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 3729148994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>USER ERPLINK</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usuario ERPLINK"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field UserERPLINK - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2066627276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CIM Production BOM List</source>
@@ -6429,8 +6444,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Prod. BOM Line - Field Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1561647091 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Item,Production BOM</source>
-          <note from="Developer" annotates="general" priority="2">ESP=" ,Producto,L.M. producción"</note>
+          <source> ,Item,Production BOM,ERPLINK Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Producto,L.M. producción,ERPLINK Item"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Prod. BOM Line - Field Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 1561647091 - Field 2385270358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

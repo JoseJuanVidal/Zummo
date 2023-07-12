@@ -13,11 +13,6 @@ page 50055 "ZM CIM Items"
         {
             repeater(General)
             {
-                field(Order; Order)
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
                 field(No; "No.")
                 {
                     ApplicationArea = All;
@@ -81,6 +76,26 @@ page 50055 "ZM CIM Items"
                 field(Alto; Alto)
                 {
                     ApplicationArea = all;
+                }
+                field(Order; Order)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field(CreationOn; CreationOn)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field(UserERPLINK; UserERPLINK)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field(ModifyOn; ModifyOn)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
                 }
             }
             part(Header; "ZM Production BOM List")

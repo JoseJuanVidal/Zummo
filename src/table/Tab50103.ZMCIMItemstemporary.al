@@ -77,6 +77,21 @@ table 50103 "ZM CIM Items temporary"
             Caption = 'Order', comment = 'ESP="Order"';
             InitValue = 9999999;
         }
+        field(50809; CreationOn; DateTime)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Creation On', comment = 'ESP="Fecha Creación"';
+        }
+        field(50810; UserERPLINK; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'USER ERPLINK', comment = 'ESP="Usuario ERPLINK"';
+        }
+        field(50811; ModifyOn; DateTime)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Modify On', comment = 'ESP="Fecha Modificación"';
+        }
         field(99000750; "Routing No."; Code[20])
         {
             Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';

@@ -22,14 +22,20 @@ table 50158 "ZM CIM Prod. BOM Line"
         field(10; Type; Option)
         {
             Caption = 'Type', Comment = 'ESP="Tipo"';
-            OptionCaption = ' ,Item,Production BOM', Comment = 'ESP=" ,Producto,L.M. producción"';
-            OptionMembers = " ",Item,"Production BOM";
+            OptionCaption = ' ,Item,Production BOM,ERPLINK Item', Comment = 'ESP=" ,Producto,L.M. producción,ERPLINK Item"';
+            OptionMembers = " ",Item,"Production BOM",ERPLiNKItem;
 
         }
         field(11; "No."; Code[20])
         {
             Caption = 'No.', Comment = 'ESP="Nº"';
+            TableRelation = if (type = const(Item)) Item
+            else
+            if (type = const("Production BOM")) "Production BOM Header"
+            else
+            if (type = const(ERPLiNKItem)) "ZM CIM Items temporary"."No.";
 
+            ValidateTableRelation = false;
         }
         field(12; Description; Text[100])
         {
