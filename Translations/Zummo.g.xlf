@@ -3,6 +3,411 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="Zummo">
     <body>
       <group id="body">
+        <trans-unit id="Table 2253022710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABERTIA GL Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 1136930463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00 - Origen</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field 00 - Origen - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 599409244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C7 - Cuenta1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field C7 - Cuenta1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 1237105861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C7 - Cuenta2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field C7 - Cuenta2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 1874802478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C7 - Cuenta3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field C7 - Cuenta3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 1705893455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C7 - Cuenta4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field C7 - Cuenta4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 1632934027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C8 - Cuenta Cod7</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field C8 - Cuenta Cod7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 549824292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DescCuenta1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field DescCuenta1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 1187520909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DescCuenta2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field DescCuenta2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 1825217526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DescCuenta3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field DescCuenta3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 1656308503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DescCuenta4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field DescCuenta4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 3569398354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DescCuenta7</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field DescCuenta7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2253022710 - Field 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Account - Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3684761290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABERTIA GL Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3684761290 - Field 1136930463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00 - Origen</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field 00 - Origen - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3684761290 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3684761290 - Field 4191198337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Año</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field Año - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3684761290 - Field 1052421340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cuenta</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field Cuenta - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3684761290 - Field 1685003651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>fecha</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field fecha - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3684761290 - Field 1303377601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field Global Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3684761290 - Field 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3684761290 - Field 814966011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field Nombre - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABERTIA GL Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1136930463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00 - Origen</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field 00 - Origen - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2009139649 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Additional-Currency Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Additional-Currency Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2584592271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add_-Currency Credit Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Add_-Currency Credit Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3845475570 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add_-Currency Debit Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Add_-Currency Debit Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2896664617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bal_ Account No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Bal_ Account No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1145887139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bal_ Account Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Bal_ Account Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1494253359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Bill No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3225159479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Unit Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Business Unit Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2738055350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Close Income Statement Dim_ ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Close Income Statement Dim_ ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2556136339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Credit Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2796346326 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Debit Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Debit Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3322554545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimension Set ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Dimension Set ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Document Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3620301315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Document No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Document Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 4203163918 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Entry No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 572837152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External Document No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field External Document No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2569363303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FA Entry No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field FA Entry No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2261900629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FA Entry Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field FA Entry Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2360946193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen_ Bus_ Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Gen_ Bus_ Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2454213917 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen_ Posting Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Gen_ Posting Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2305088670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen_ Prod_ Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Gen_ Prod_ Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1303377601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Global Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1337243520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 2 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Global Dimension 2 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 877485629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G_L Account No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field G_L Account No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1329258699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IC Partner Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field IC Partner Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3973119835 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Job No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2704330142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Journal Batch Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2732087686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified DateTime</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Last Modified DateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1698604521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New G_L Account No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field New G_L Account No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 961922751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No_ Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field No_ Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3946297536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Old G_L Account No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Old G_L Account No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2624360010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period Trans_ No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Period Trans_ No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2187530588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prior-Year Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Prior-Year Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3610848090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prod_ Order No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Prod_ Order No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1908046867 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reason Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Reason Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3744289816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reversed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Reversed - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2002561087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reversed by Entry No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Reversed by Entry No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1412714634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reversed Entry No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Reversed Entry No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2720485332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Source Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1769087053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Source No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1753214751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Source Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2283884360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>System-Created Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field System-Created Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 305562489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Area Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Tax Area Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2552458873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Group Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Tax Group Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 53839102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Liable</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Tax Liable - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3433449790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transaction No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Transaction No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2339977023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Updated</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Updated - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3144071522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Use Tax</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Use Tax - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field User ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1108276017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field VAT Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 3542946937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Bus_ Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field VAT Bus_ Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2995274006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Prod_ Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field VAT Prod_ Posting Group - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3967757774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account Translation</source>
           <note from="Developer" annotates="general" priority="2">ESP="Traducción Cuentas"</note>
@@ -8532,6 +8937,21 @@
           <source>Quantities and tracking for purchase order %1 have been updated from sales order %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType BodyLbl</note>
+        </trans-unit>
+        <trans-unit id="Page 2253022710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABERTIA GL Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA GL Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 808027342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABERTIA GL Budget Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA GL Budget Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1701598921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABERTIA GL Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA GL Entry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2965806569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Accounting Manager</source>
