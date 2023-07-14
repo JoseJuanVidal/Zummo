@@ -141,8 +141,8 @@ report 50102 "PedidoCliente"
             column(PedidoDeCliente_Caption; PedidoDeCliente_Lbl)
             {
             }
-            column(OfertaCliente_Lbl; OfertaCliente_Lbl) { }
-            column(ProformaCliente_Lbl; ProformaCliente_Lbl) { }
+            column(OfertaCliente_Lbl; OfertaCliente_Lbl + txtFRAShiptoAddres) { }
+            column(ProformaCliente_Lbl; ProformaCliente_Lbl + txtFRAShiptoAddres) { }
             column(PRGestionPedidosCliente_Caption; PRGestionPedidosCliente_Lbl)
             {
             }
@@ -319,31 +319,31 @@ report 50102 "PedidoCliente"
                     column(CompanyAddr1; CompanyAddr[1])
                     {
                     }
-                    column(CustAddr2; "Sales Header"."Sell-to Address")
+                    column(CustAddr2; "Sales Header"."Sell-to Customer Name 2")
                     {
                     }
                     column(CompanyAddr2; CompanyAddr[2])
                     {
                     }
-                    column(CustAddr3; "Sales Header"."Sell-to Post Code")
+                    column(CustAddr3; "Sales Header"."Sell-to Address")
                     {
                     }
                     column(CompanyAddr3; CompanyAddr[3])
                     {
                     }
-                    column(CustAddr4; "Sales Header"."Sell-to City")
+                    column(CustAddr4; "Sales Header"."Sell-to Post Code")
                     {
                     }
                     column(CompanyAddr4; CompanyAddr[4])
                     {
                     }
-                    column(CustAddr5; "Sales Header"."Sell-to County")
+                    column(CustAddr5; "Sales Header"."Sell-to City")
                     {
                     }
                     column(CompanyInfoPhoneNo; CompanyInfo."Phone No.")
                     {
                     }
-                    column(CustAddr6; destinofactura)
+                    column(CustAddr6; "Sales Header"."Sell-to County")
                     {
                     }
                     column(CompanyInfoHomePage; CompanyInfo."Home Page")
@@ -394,10 +394,10 @@ report 50102 "PedidoCliente"
                     column(SalesOrderReference_SalesHeader; "Sales Header"."External Document No.")
                     {
                     }
-                    column(CustAddr7; CustAddr[7])
+                    column(CustAddr7; destinofactura)
                     {
                     }
-                    column(CustAddr8; CustAddr[8])
+                    column(CustAddr8; CustAddr[7])
                     {
                     }
                     column(CompanyAddr5; CompanyAddr[5])
@@ -1882,7 +1882,11 @@ report 50102 "PedidoCliente"
                         ApplicationArea = All;
                         Caption = 'Language', comment = 'ESP="Idioma"';
                     }
-
+                    field(FormatFRAShiptoAddresName; FormatFRAShiptoAddresName)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Formato FRANCES', comment = 'ESP="Formato FRANCES"';
+                    }
                     field(boolLineasPendientes; boolLineasPendientes)
                     {
                         ApplicationArea = All;
@@ -2074,6 +2078,7 @@ report 50102 "PedidoCliente"
         LogInteractionEnable: Boolean;
         DisplayAssemblyInformation: Boolean;
         AsmInfoExistsForLine: Boolean;
+        FormatFRAShiptoAddresName: Boolean;
         ivafactura: Decimal;
         //Variables
         NoSerie_Value: Code[20];
@@ -2146,8 +2151,9 @@ report 50102 "PedidoCliente"
         //ZUMMO
 
         PedidoDeCliente_Lbl: Label 'SALES ORDER', comment = 'ESP="PEDIDO DE CLIENTE",FRA="COMMANDE DU CLIENT"';
-        OfertaCliente_Lbl: Label 'PROFORMA INVOICE', comment = 'ESP="FACTURA PROFORMA",FRA="FACTURE PROFORMA"';
-        ProformaCliente_Lbl: Label 'PROFORMA INVOICE', comment = 'ESP="FACTURA PROFORMA",FRA="FACTURE PROFORMA"';
+        OfertaCliente_Lbl: Label 'PROFORMA INVOICE', comment = 'ESP="FACTURA PROFORMA",FRA="DEVIS"';
+        txtFRAShiptoAddres: Text;
+        ProformaCliente_Lbl: Label 'PROFORMA INVOICE', comment = 'ESP="FACTURA PROFORMA",FRA="DEVIS"';
 
         PRGestionPedidosCliente_Lbl: Label 'PR-MANAGEMENT OF CUSTOMER ORDERS', comment = 'ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"';
 
@@ -2248,6 +2254,12 @@ report 50102 "PedidoCliente"
     local procedure FormatAddressFields(var SalesHeader: Record 36)
     begin
         FormatAddr.GetCompanyAddr(SalesHeader."Responsibility Center", RespCenter, CompanyInfo, CompanyAddr);
+        "Sales Header"."Sell-to Customer Name 2" := '';
+        if FormatFRAShiptoAddresName then
+            if SalesHeader."Ship-to Name" <> '' then begin
+                "Sales Header"."Sell-to Customer Name 2" := "Sales Header"."Ship-to Name";
+                txtFRAShiptoAddres := StrSubstNo(': %1', "Sales Header"."Ship-to Name");
+            end;
         FormatAddr.SalesHeaderBillTo(CustAddr, SalesHeader);
         ShowShippingAddr := FormatAddr.SalesHeaderShipTo(ShipToAddr, CustAddr, SalesHeader);
     end;

@@ -20458,6 +20458,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - Control facturaLidl - Property Caption</note>
           <target>Factura Lidl</target>
         </trans-unit>
+        <trans-unit id="Report 1112960350 - Control 4080993503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Formato FRANCES</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Formato FRANCES"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - Control FormatFRAShiptoAddresName - Property Caption</note>
+          <target>Formato FRANCES</target>
+        </trans-unit>
         <trans-unit id="Report 1112960350 - Control 816368762 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies that interactions with the contact are logged.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Especifica si se guardará interacción con el contacto"</note>
@@ -24608,7 +24614,7 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3116022030" size-unit="char" translate="yes" xml:space="preserve">
           <source>PROFORMA INVOICE</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FACTURA PROFORMA",FRA="FACTURE PROFORMA"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="FACTURA PROFORMA",FRA="DEVIS"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType OfertaCliente_Lbl</note>
           <target>FACTURA PROFORMA</target>
         </trans-unit>
@@ -24728,7 +24734,7 @@
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 1464039813" size-unit="char" translate="yes" xml:space="preserve">
           <source>PROFORMA INVOICE</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FACTURA PROFORMA",FRA="FACTURE PROFORMA"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="FACTURA PROFORMA",FRA="DEVIS"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType ProformaCliente_Lbl</note>
           <target>FACTURA PROFORMA</target>
         </trans-unit>
@@ -24919,6 +24925,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mostrar comentarios interno"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control boolShowInterComment - Property Caption</note>
           <target>Mostrar comentarios interno</target>
+        </trans-unit>
+        <trans-unit id="Report 3412186937 - Control 4080993503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Formato FRANCES</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Formato FRANCES"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control FormatFRAShiptoAddresName - Property Caption</note>
+          <target>Formato FRANCES</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - Control 816368762 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies that interactions with the contact are logged.</source>

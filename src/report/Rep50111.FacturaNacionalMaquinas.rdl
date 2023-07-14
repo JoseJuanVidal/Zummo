@@ -4761,6 +4761,27 @@ cstr(Fields!txtVatEORI.Value)
                       </Style>
                     </TextRun>
                     <TextRun>
+                      <Value>=First(Fields!Sell_to_Customer_Name2.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
                       <Value>=Code.GetData(58,2)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
@@ -5076,7 +5097,6 @@ cstr(Fields!txtVatEORI.Value)
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
@@ -8938,6 +8958,9 @@ kBKRAAAAAEiJSAAAAACkRCQAAAAAUiISAAAAACkRCQAAAICUiAQAAABASkQCAAAAICUiAQAAAJASkQAA
         </Field>
         <Field Name="Sell_to_Customer_Name">
           <DataField>Sell_to_Customer_Name</DataField>
+        </Field>
+        <Field Name="Sell_to_Customer_Name2">
+          <DataField>Sell_to_Customer_Name2</DataField>
         </Field>
         <Field Name="lblLeyendPlastic">
           <DataField>lblLeyendPlastic</DataField>

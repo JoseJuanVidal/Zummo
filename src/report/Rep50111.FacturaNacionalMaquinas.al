@@ -387,7 +387,9 @@ report 50111 "FacturaNacionalMaquinas"
             }
             column(Sell_to_Customer_Name; "Sell-to Customer Name")
             {
-
+            }
+            column(Sell_to_Customer_Name2; Sell_to_Customer_Name2)
+            {
             }
             column(lblLeyendPlastic; lblLeyendPlastic)
             { }
@@ -2112,6 +2114,11 @@ report 50111 "FacturaNacionalMaquinas"
                         ApplicationArea = All;
                         Caption = 'Language', comment = 'ESP="Idioma"';
                     }
+                    field(FormatFRAShiptoAddresName; FormatFRAShiptoAddresName)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Formato FRANCES', comment = 'ESP="Formato FRANCES"';
+                    }
                     field(volumen; volumen)
                     {
                         ApplicationArea = All;
@@ -2377,7 +2384,8 @@ report 50111 "FacturaNacionalMaquinas"
         facturaLidl: boolean;
         facturaExportacion: Boolean;
         txtDescLinea: text[100];
-
+        Sell_to_Customer_Name2: text;
+        FormatFRAShiptoAddresName: Boolean;
         PhoneNoCaptionLbl: Label 'Phone No.', Comment = 'ESP="Teléfono."';
         VATRegNoCaptionLbl: Label 'VAT Registration No.', Comment = 'ESP="CIF"';
         GiroNoCaptionLbl: Label 'Giro No.', Comment = 'ESP="Núm. Giro"';
@@ -2805,9 +2813,14 @@ report 50111 "FacturaNacionalMaquinas"
 
     local procedure FormatAddressFields(SalesInvoiceHeader: Record "Sales Invoice Header")
     begin
+        Sell_to_Customer_Name2 := '';
         FormatAddr.GetCompanyAddr(SalesInvoiceHeader."Responsibility Center", RespCenter, CompanyInfo, CompanyAddr);
         FormatAddr.SalesInvBillTo(CustAddr, SalesInvoiceHeader);
         ShowShippingAddr := FormatAddr.SalesInvShipTo(ShipToAddr, CustAddr, SalesInvoiceHeader);
+        if FormatFRAShiptoAddresName then
+            if SalesInvoiceHeader."Ship-to Name" <> '' then begin
+                Sell_to_Customer_Name2 := SalesInvoiceHeader."Ship-to Name";
+            end;
     end;
 
     local procedure CollectAsmInformation()
