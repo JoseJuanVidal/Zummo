@@ -1,9 +1,9 @@
-page 17472 "ABERTIA GL Budget Entry"
+page 17461 "ABERTIA GL Account"
 {
     ApplicationArea = All;
-    Caption = 'ABERTIA GL Budget Entry';
+    Caption = 'ABERTIA GL Account';
     PageType = List;
-    SourceTable = "ABERTIA GL Budget";
+    SourceTable = "ABERTIA GL Account";
     UsageCategory = Lists;
     Editable = false;
 
@@ -13,27 +13,43 @@ page 17472 "ABERTIA GL Budget Entry"
         {
             repeater(General)
             {
-                field(Nombre; Nombre)
-                {
-                    ApplicationArea = all;
-                }
-                field(Cuenta; Cuenta)
+                field("C7 - Cuenta1"; "C7 - Cuenta1")
                 {
                     ApplicationArea = All;
                 }
-                field("Año"; "Año")
+                field("C7 - Cuenta2"; "C7 - Cuenta2")
                 {
                     ApplicationArea = All;
                 }
-                field(fecha; fecha)
+                field("C7 - Cuenta3"; "C7 - Cuenta3")
                 {
                     ApplicationArea = All;
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                field("C7 - Cuenta4"; "C7 - Cuenta4")
                 {
                     ApplicationArea = All;
                 }
-                field(Amount; Amount)
+                field("C8 - Cuenta Cod7"; "C8 - Cuenta Cod7")
+                {
+                    ApplicationArea = All;
+                }
+                field(DescCuenta1; DescCuenta1)
+                {
+                    ApplicationArea = All;
+                }
+                field(DescCuenta2; DescCuenta2)
+                {
+                    ApplicationArea = All;
+                }
+                field(DescCuenta3; DescCuenta3)
+                {
+                    ApplicationArea = All;
+                }
+                field(DescCuenta4; DescCuenta4)
+                {
+                    ApplicationArea = All;
+                }
+                field(DescCuenta7; DescCuenta7)
                 {
                     ApplicationArea = All;
                 }
@@ -61,7 +77,7 @@ page 17472 "ABERTIA GL Budget Entry"
 
                 trigger OnAction()
                 begin
-                    Rec.CreateGLBudget();
+                    Rec.CreateGLAccount();
                 end;
 
             }

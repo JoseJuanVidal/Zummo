@@ -891,7 +891,7 @@ report 50103 "AlbaranVenta"
     var
         dirEnvio: Text;
         RecShipToAddr: Record "Ship-to Address";
-        WorkDescprion: Text[1024];
+        WorkDescprion: Text;
         esPackingList: Boolean;
 
         SalesPurchPerson: Record "Salesperson/Purchaser";

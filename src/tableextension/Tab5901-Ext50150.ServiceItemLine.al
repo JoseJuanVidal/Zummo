@@ -68,7 +68,7 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
         }
         field(50211; Fechaemtregamaterial_sth; DateTime)
         {
-            Caption = 'Fecha entrega material', comment = 'ESP="Fecha entrega material"';
+            Caption = 'Fecha entrega material', comment = 'ESP="Fecha resolución en cliente"';
             DataClassification = CustomerContent;
         }
         field(50501; "Description Header"; text[100])

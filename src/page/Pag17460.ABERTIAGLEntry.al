@@ -1,4 +1,4 @@
-page 17470 "ABERTIA GL Entry"
+page 17460 "ABERTIA GL Entry"
 {
     ApplicationArea = All;
     Caption = 'ABERTIA GL Entry';
