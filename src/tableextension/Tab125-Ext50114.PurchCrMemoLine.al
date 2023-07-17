@@ -28,5 +28,19 @@ tableextension 50114 "PurchCrMemoLine" extends "Purch. Cr. Memo Line"  //125
             CalcFormula = lookup(Employee."Search Name" where("No." = field(IdCorp_Sol)));
             Editable = false;
         }
+        field(50101; "Contracts No."; code[20])
+        {
+            Caption = 'Contracts No.', comment = 'ESP="Nº Contrato"';
+            DataClassification = CustomerContent;
+            TableRelation = "ZM Contracts/Supplies Header";
+            Editable = false;
+        }
+        field(50102; "Contracts Line No."; Integer)
+        {
+            Caption = 'Contracts Line No.', comment = 'ESP="Nº Línea Contrato"';
+            DataClassification = CustomerContent;
+            TableRelation = "ZM Contracts/Supplies Lines"."Line No." where("Document No." = field("Document No."));
+            Editable = false;
+        }
     }
 }

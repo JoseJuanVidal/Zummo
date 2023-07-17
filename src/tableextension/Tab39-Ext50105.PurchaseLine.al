@@ -63,5 +63,19 @@ tableextension 50105 "PurchaseLine" extends "Purchase Line"  //39
             Caption = 'Process No.', Comment = 'ESP="Cód. proceso"';
             DataClassification = CustomerContent;
         }
+        field(50101; "Contracts No."; code[20])
+        {
+            Caption = 'Contracts No.', comment = 'ESP="Nº Contrato"';
+            DataClassification = CustomerContent;
+            TableRelation = "ZM Contracts/Supplies Header";
+            Editable = false;
+        }
+        field(50102; "Contracts Line No."; Integer)
+        {
+            Caption = 'Contracts Line No.', comment = 'ESP="Nº Línea Contrato"';
+            DataClassification = CustomerContent;
+            TableRelation = "ZM Contracts/Supplies Lines"."Line No." where("Document No." = field("Document No."));
+            Editable = false;
+        }
     }
 }

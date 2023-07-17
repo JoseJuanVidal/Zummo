@@ -63,6 +63,10 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                         rec."Path Purchase Docs. pending" := SelectPathPurchaseDocuments();
                     end;
                 }
+                field("ZM Contracts Nos."; "ZM Contracts Nos.")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(CONSULTIA)
             {
