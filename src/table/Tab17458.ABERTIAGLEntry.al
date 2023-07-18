@@ -1,4 +1,4 @@
-table 17460 "ABERTIA GL Entry"
+table 17458 "ABERTIA GL Entry"
 {
     Caption = 'ABERTIA GL Entry';
     Description = 'ABERTIA - actualizacion datos G/L Entry';

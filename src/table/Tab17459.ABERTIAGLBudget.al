@@ -1,4 +1,4 @@
-table 17462 "ABERTIA GL Budget"
+table 17459 "ABERTIA GL Budget"
 {
     Caption = 'ABERTIA GL Account';
     Description = 'ABERTIA - actualizacion datos G/L Account';

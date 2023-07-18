@@ -99,13 +99,30 @@ table 17455 "ZM Contracts/Supplies Header"
             Caption = 'Document Date', Comment = 'ESP="Fecha emisión documento"';
             DataClassification = CustomerContent;
         }
+        field(13; "Payment Method Code"; Code[10])
+        {
+            Caption = 'Payment Method Code', Comment = 'ESP="Cód. Formas pago"';
+            DataClassification = CustomerContent;
+            TableRelation = "Payment Method";
+        }
+        field(14; "Payment Terms Code"; Code[10])
+        {
+            Caption = 'Payment Terms Code', Comment = 'ESP="Cód. términos pago"';
+            DataClassification = CustomerContent;
+            TableRelation = "Payment Terms";
+        }
         field(15; Status; Enum "ZM Contracts Status")
         {
             DataClassification = CustomerContent;
             Caption = 'Status', comment = 'ESP="Estado"';
             Editable = false;
         }
-
+        field(16; "Salesperson/Purchaser"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Salesperson/Purchaser', comment = 'ESP="Cód. Comprador"';
+            TableRelation = "Salesperson/Purchaser";
+        }
         field(17; "No. Series"; Code[20])
         {
             DataClassification = CustomerContent;
@@ -113,7 +130,16 @@ table 17455 "ZM Contracts/Supplies Header"
             Editable = false;
             TableRelation = "No. Series";
         }
-
+        field(18; "ITBID Solicitud No."; Code[50])
+        {
+            Caption = 'ITBID Solicitud No.', Comment = 'ESP="Nº de solicitud ITBID"';
+            DataClassification = CustomerContent;
+        }
+        field(19; "ITBID Negotiation No."; Code[50])
+        {
+            Caption = 'ITBID Negotiation No.', Comment = 'ESP="Nº de negociación ITBID"';
+            DataClassification = CustomerContent;
+        }
         field(20; "Posting Date"; Date)
         {
             Caption = 'Posting Date', Comment = 'ESP="Fecha Registro"';
@@ -140,13 +166,38 @@ table 17455 "ZM Contracts/Supplies Header"
             Caption = 'Date End Validity', Comment = 'ESP="Fecha Fin Vigencia"';
             DataClassification = CustomerContent;
         }
-        // field(100; "Quantity Total"; Decimal)
-        // {
-        //     Caption = 'Quanity Total', comment = 'ESP="Cantidad Total"';
-        //     FieldClass = FlowField;
-        //     CalcFormula = sum("ZM Contracts/Supplies Lines"."Kilos totales" where("Document No." = field("No.")));
-        //     Editable = false;
-        // }
+        field(55; "User Id"; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'User Id', comment = 'ESP="Nº usuario"';
+            TableRelation = User."User Name";
+            ValidateTableRelation = false;
+        }
+        field(56; "Employee No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Employee No.', comment = 'ESP="Cód. empleado"';
+            TableRelation = Employee;
+        }
+        field(57; "Shipment Method Code"; code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Shipment Method Code', comment = 'ESP="Cód. condiciones envío"';
+            TableRelation = "Shipment Method";
+        }
+        field(58; "Currency"; code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Currency', comment = 'ESP="Cód. Divisa"';
+            TableRelation = Currency;
+        }
+        field(100; "Quantity Total"; Decimal)
+        {
+            Caption = 'Quanity Total', comment = 'ESP="Cantidad Total"';
+            FieldClass = FlowField;
+            CalcFormula = sum("ZM Contracts/Supplies Lines".Unidades where("Document No." = field("No.")));
+            Editable = false;
+        }
         field(102; "Expend Quantity"; Decimal)
         {
             Caption = 'Expend Quanity', comment = 'ESP="Cantidad Consumida"';
