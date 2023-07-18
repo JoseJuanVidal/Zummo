@@ -157,13 +157,13 @@ table 17414 "ZM CONSULTIA Invoice Header"
             Caption = 'G/L Account Fair', comment = 'ESP="Cuenta contable Feria"';
             TableRelation = "G/L Account";
         }
-        field(61; "Global Dimension 1 code Fair"; code[10])
+        field(61; "Global Dimension 1 code Fair"; code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Global Dimension 1 code Fair', comment = 'ESP="Dimension CECO Feria"';
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
         }
-        field(62; "Dimension Detalle Fair"; code[10])
+        field(62; "Dimension Detalle Fair"; code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Dimension Detalle Fair', comment = 'ESP="Dimensión Detalle Feria"';
@@ -207,6 +207,7 @@ table 17414 "ZM CONSULTIA Invoice Header"
         Lines: Record "ZM CONSULTIA Invoice Line";
         DocumentAttachment: Record "Document Attachment";
     begin
+        CheckDelete();
         Rec.TestField("Pre Invoice No.", '');
         Rec.TestField("Invoice Header No.", '');
         Lines.Reset();
@@ -224,5 +225,13 @@ table 17414 "ZM CONSULTIA Invoice Header"
 
     begin
         CONSULTIAFunctions.GetInvoicePdf(Rec);
+    end;
+
+    local procedure CheckDelete()
+    begin
+        Rec.TestField(Provisioning, false);
+        Rec.TestField("Des Provisioning", false);
+        Rec.TestField("Pre Invoice No.");
+        Rec.TestField("Invoice Header No.");
     end;
 }
