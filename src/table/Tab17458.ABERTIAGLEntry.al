@@ -41,11 +41,11 @@ table 17458 "ABERTIA GL Entry"
         {
             ExternalName = 'Amount';
         }
-        field(23; "Global Dimension 1 Code"; Code[20])
+        field(23; "Dimension 1 Code"; Code[20])
         {
             ExternalName = 'Global Dimension 1 Code';
         }
-        field(24; "Global Dimension 2 Code"; Code[20])
+        field(24; "Dimension 2 Code"; Code[20])
         {
             ExternalName = 'Global Dimension 2 Code';
         }
@@ -302,8 +302,8 @@ table 17458 "ABERTIA GL Entry"
         ABGLEntry."Description" := GLEntry.Description;
         ABGLEntry."Bal_ Account No_" := GLEntry."Bal. Account No.";
         ABGLEntry."Amount" := GLEntry.Amount;
-        ABGLEntry."Global Dimension 1 Code" := GLEntry."Global Dimension 1 Code";
-        ABGLEntry."Global Dimension 2 Code" := GLEntry."Global Dimension 2 Code";
+        ABGLEntry."Dimension 1 Code" := GLEntry."Global Dimension 1 Code";
+        ABGLEntry."Dimension 2 Code" := GLEntry."Global Dimension 2 Code";
         ABGLEntry."User ID" := GLEntry."User ID";
         ABGLEntry."Source Code" := GLEntry."Source Code";
         case GLEntry."System-Created Entry" of

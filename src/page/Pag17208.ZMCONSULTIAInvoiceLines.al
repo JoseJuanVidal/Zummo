@@ -63,7 +63,6 @@ page 17208 "ZM CONSULTIA Invoice Lines"
                 field(Ref_Usuario; Rec.Ref_Usuario)
                 {
                     ApplicationArea = All;
-                    Editable = false;
                 }
                 field(Ref_DPTO; Rec.Ref_DPTO)
                 {

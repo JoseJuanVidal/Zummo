@@ -93,15 +93,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field Cuenta - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3684761290 - Field 2538533960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field Dimension 1 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3684761290 - Field 1685003651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>fecha</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field fecha - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3684761290 - Field 1303377601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Global Dimension 1 Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Budget - Field Global Dimension 1 Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3684761290 - Field 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ID</source>
@@ -183,6 +183,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 2538533960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1701598921 - Field 1964727017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimension 2 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Dimension 2 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1701598921 - Field 3322554545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dimension Set ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -237,16 +247,6 @@
           <source>Gen_ Prod_ Posting Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Gen_ Prod_ Posting Group - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1701598921 - Field 1303377601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Global Dimension 1 Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Global Dimension 1 Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1701598921 - Field 1337243520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Global Dimension 2 Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA GL Entry - Field Global Dimension 2 Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1701598921 - Field 877485629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>G_L Account No_</source>

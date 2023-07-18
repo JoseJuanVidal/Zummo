@@ -45,11 +45,11 @@ page 17460 "ABERTIA GL Entry"
                 {
                     ApplicationArea = All;
                 }
-                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
+                field("Dimension 1 Code"; Rec."Dimension 1 Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
+                field("Dimension 2 Code"; Rec."Dimension 2 Code")
                 {
                     ApplicationArea = All;
                 }

@@ -29,7 +29,7 @@ page 17462 "ABERTIA GL Budget Entry"
                 {
                     ApplicationArea = All;
                 }
-                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                field("Dimension 1 Code"; "Dimension 1 Code")
                 {
                     ApplicationArea = All;
                 }

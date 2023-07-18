@@ -20,7 +20,7 @@ table 17459 "ABERTIA GL Budget"
         {
             ExternalName = 'fecha';
         }
-        field(4; "Global Dimension 1 Code"; code[20])
+        field(4; "Dimension 1 Code"; code[20])
         {
             ExternalName = 'Global Dimension 1 Code';
         }
@@ -83,7 +83,7 @@ table 17459 "ABERTIA GL Budget"
                         ABGLBudget.SetRange(Nombre, GLBudgetEntry."Budget Name");
                         ABGLBudget.SetRange(Cuenta, Cuenta);
                         ABGLBudget.SetRange(fecha, CreateDateTime(GLBudgetEntry.Date, 0T));
-                        ABGLBudget.SetRange("Global Dimension 1 Code", GLBudgetEntry."Global Dimension 1 Code");
+                        ABGLBudget.SetRange("Dimension 1 Code", GLBudgetEntry."Global Dimension 1 Code");
                         if not ABGLBudget.FindFirst() then begin
                             UpdateABGLBudgetEntry(GLBudgetEntry, ABGLBudget);
                         end;
@@ -104,7 +104,7 @@ table 17459 "ABERTIA GL Budget"
         ABGLBudget.Nombre := GLBudgetEntry."Budget Name";
         ABGLBudget.Cuenta := vDec;
         ABGLBudget.fecha := CreateDateTime(GLBudgetEntry.Date, 0T);
-        ABGLBudget."Global Dimension 1 Code" := GLBudgetEntry."Global Dimension 1 Code";
+        ABGLBudget."Dimension 1 Code" := GLBudgetEntry."Global Dimension 1 Code";
         vint := Date2DMY(GLBudgetEntry.Date, 3);
         ABGLBudget."Año" := vInt;
         ABGLBudget.Amount := GetBudgetAmount(GLBudgetEntry);
