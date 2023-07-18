@@ -96,13 +96,11 @@ table 17414 "ZM CONSULTIA Invoice Header"
         {
             DataClassification = CustomerContent;
             Caption = 'Vendor Name', comment = 'ESP="Nombre proveedor"';
-            TableRelation = Vendor;
         }
         field(32; "Vat Registration No."; text[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Vat Registration No.', comment = 'ESP="CIF/NIF"';
-            TableRelation = Vendor;
         }
         field(50; "Document Type"; Option)
         {
@@ -125,7 +123,6 @@ table 17414 "ZM CONSULTIA Invoice Header"
         {
             DataClassification = CustomerContent;
             Caption = 'Provisioning', comment = 'ESP="Aprovisión"';
-            TableRelation = "Purch. Inv. Header";
 
             trigger OnValidate()
             begin
@@ -137,13 +134,11 @@ table 17414 "ZM CONSULTIA Invoice Header"
         {
             DataClassification = CustomerContent;
             Caption = 'Provisioning Date', comment = 'ESP="Fecha Aprovisión"';
-            TableRelation = "Purch. Inv. Header";
         }
         field(55; "Des Provisioning"; Boolean)
         {
             DataClassification = CustomerContent;
             Caption = 'Des Provisióning', comment = 'ESP="Desprovisión"';
-            TableRelation = "Purch. Inv. Header";
 
             trigger OnValidate()
             begin
@@ -155,7 +150,6 @@ table 17414 "ZM CONSULTIA Invoice Header"
         {
             DataClassification = CustomerContent;
             Caption = 'Des Provisioning Date', comment = 'ESP="Fecha desprovisión"';
-            TableRelation = "Purch. Inv. Header";
         }
         field(60; "G/L Account Fair"; code[20])
         {
