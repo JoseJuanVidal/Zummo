@@ -17,7 +17,7 @@ table 50108 "MemEstadistica_btc"
             Caption = 'MyField';
             DataClassification = ToBeClassified;
         }
-        field(4; NoSerie; Code[20])
+        field(4; NoSerie; Code[100])
         {
             Caption = 'MyField';
             DataClassification = ToBeClassified;

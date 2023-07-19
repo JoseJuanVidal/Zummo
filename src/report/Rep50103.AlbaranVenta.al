@@ -1096,6 +1096,7 @@ report 50103 "AlbaranVenta"
         ValueEntryRelation: Record "Value Entry Relation";
         ValueEntry: Record "Value Entry";
         ItemLedgEntry: Record "Item Ledger Entry";
+        SerialNoParent: text;
         NumMov: Integer;
     begin
         // retrieves a data set of Item Ledger Entries (Posted Invoices)
@@ -1114,8 +1115,24 @@ report 50103 "AlbaranVenta"
                 RecMemEstadisticas.NoLote := ItemLedgEntry."Lot No.";
                 RecMemEstadisticas.NoSerie := ItemLedgEntry."Serial No.";
                 RecMemEstadisticas.Noproducto := ItemLedgEntry."Item No.";
+                SerialNoParent := GetSerialNoParent(ItemLedgEntry);
+                if SerialNoParent <> '' then
+                    RecMemEstadisticas.NoSerie += StrSubstNo('    (Ref: %1)', SerialNoParent);
+
                 RecMemEstadisticas.INSERT();
             until ItemLedgEntry.Next() = 0;
+    end;
+
+    local procedure GetSerialNoParent(ItemLedgEntry: Record "Item Ledger Entry"): Text
+    var
+        ParentItemLedgEntry: Record "Item Ledger Entry";
+    begin
+        ParentItemLedgEntry.Reset();
+        ParentItemLedgEntry.SetRange("Item No.", ItemLedgEntry."Item No.");
+        ParentItemLedgEntry.SetRange("Entry Type", ItemLedgEntry."Entry Type"::Output);
+        ParentItemLedgEntry.SetRange("Serial No.", ItemLedgEntry."Serial No.");
+        if ParentItemLedgEntry.FindFirst() then
+            exit(ParentItemLedgEntry.SerialNoParent);
     end;
 }
 

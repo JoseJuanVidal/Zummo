@@ -1089,7 +1089,7 @@ report 50111 "FacturaNacionalMaquinas"
 
                                         }
 
-                                        column(Serial_No_; "Serial No.")
+                                        column(Serial_No_; StrSubstNo('%1 %2 ', "Serial No.", Referenciaproveedor))
                                         {
 
                                         }
@@ -1098,6 +1098,7 @@ report 50111 "FacturaNacionalMaquinas"
                                     trigger OnAfterGetRecord()
                                     var
                                         SalesShipmentLine: Record "Sales Shipment Line";
+                                        SerialNoParent: text;
                                     begin
                                         // JJV Corregir que cuando deshacen un albaran con el pedido de ensamblado y hacen otro, pone los dos numeros de serie
                                         SalesShipmentLine.SetRange("Document No.", "Assemble-to-Order Link"."Document No.");
@@ -1106,6 +1107,10 @@ report 50111 "FacturaNacionalMaquinas"
                                         SalesShipmentLine.SetFilter(Quantity, '<0');
                                         if SalesShipmentLine.FindSet() then
                                             CurrReport.Skip();
+                                        Referenciaproveedor := '';
+                                        SerialNoParent := GetSerialNoParent(SerieEnsamblado);
+                                        if SerieEnsamblado.SerialNoParent <> '' then
+                                            Referenciaproveedor := StrSubstNo('    (Ref: %1)', SerialNoParent);
                                     end;
 
                                 }
@@ -2262,6 +2267,7 @@ report 50111 "FacturaNacionalMaquinas"
         TotalAdjCostLCY: Decimal;
         AdjProfitLCY: decimal;
         AdjProfitPct: Decimal;
+        Referenciaproveedor: text;
         TotalSalesInvoiceHeader: Record "Sales Invoice Header";
         TotalSalesLineF: Record "Sales Invoice Line";
         TotalSalesLineLCYF: Record "Sales Invoice Line";
@@ -3003,6 +3009,7 @@ report 50111 "FacturaNacionalMaquinas"
         ValueEntryRelation: Record "Value Entry Relation";
         ValueEntry: Record "Value Entry";
         ItemLedgEntry: Record "Item Ledger Entry";
+        SerialNoParent: text;
         NumMov: Integer;
     begin
         // retrieves a data set of Item Ledger Entries (Posted Invoices)
@@ -3025,11 +3032,27 @@ report 50111 "FacturaNacionalMaquinas"
                     NumMov += 1;
                     RecMemEstadisticas.NoLote := ItemLedgEntry."Lot No.";
                     RecMemEstadisticas.NoSerie := ItemLedgEntry."Serial No.";
+                    SerialNoParent := GetSerialNoParent(ItemLedgEntry);
+                    if SerialNoParent <> '' then
+                        RecMemEstadisticas.NoSerie += StrSubstNo('    (Ref: %1)', SerialNoParent);
+
                     RecMemEstadisticas.Noproducto := ItemLedgEntry."Item No.";
                     RecMemEstadisticas.INSERT();
                 END;
 
             UNTIL ValueEntryRelation.NEXT() = 0;
+    end;
+
+    local procedure GetSerialNoParent(ItemLedgEntry: Record "Item Ledger Entry"): Text
+    var
+        ParentItemLedgEntry: Record "Item Ledger Entry";
+    begin
+        ParentItemLedgEntry.Reset();
+        ParentItemLedgEntry.SetRange("Item No.", ItemLedgEntry."Item No.");
+        ParentItemLedgEntry.SetRange("Entry Type", ItemLedgEntry."Entry Type"::Output);
+        ParentItemLedgEntry.SetRange("Serial No.", ItemLedgEntry."Serial No.");
+        if ParentItemLedgEntry.FindFirst() then
+            exit(ParentItemLedgEntry.SerialNoParent);
     end;
 
     local procedure GetlblLeyendPlastic()
