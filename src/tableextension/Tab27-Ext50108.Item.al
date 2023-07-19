@@ -310,7 +310,7 @@ tableextension 50108 "Item" extends Item  //27
         {
             Caption = 'Desc. Purch. Category', comment = 'ESP="Nombre Categoria compra"';
             FieldClass = FlowField;
-            CalcFormula = lookup("STH Purchase Category".Description where("Purch. Familiy code" = field("Purch. Family"), Code = field("Purch. Family")));
+            CalcFormula = lookup("STH Purchase Category".Description where("Purch. Familiy code" = field("Purch. Family"), Code = field("Purch. Category")));
             Editable = false;
         }
         field(50134; "Purch. SubCategory"; Code[20])
@@ -323,7 +323,8 @@ tableextension 50108 "Item" extends Item  //27
         {
             Caption = 'Desc. Purch. SubCategory', comment = 'ESP="Nombre SubCategoria compra"';
             FieldClass = FlowField;
-            CalcFormula = lookup("STH Purchase SubCategory".Description where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category")));
+            CalcFormula = lookup("STH Purchase SubCategory".Description where("Purch. Familiy code" = field("Purch. Family"),
+                "Purch. Category code" = field("Purch. Category"), code = field("Purch. SubCategory")));
             Editable = false;
         }
         field(50136; "Inventory to date"; Decimal)
