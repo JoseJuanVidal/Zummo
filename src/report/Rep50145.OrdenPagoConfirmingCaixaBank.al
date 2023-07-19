@@ -176,13 +176,12 @@ report 50145 "OrdenPago-Confirming CaixaBank"
 
                     //++005 TSC 120719 Buscar e informar abono
                     // BuscarAbonoMovProv("Cartera Doc.");
-
-                    IF NOT MovProvLiqui.ISEMPTY THEN BEGIN
-                        MovProvLiqui.FINDFIRST;
-                        REPEAT
-                            EscribirRegistrosBeneficiarios(TRUE);
-                        UNTIL MovProvLiqui.NEXT = 0;
-                    END;
+                    // IF NOT MovProvLiqui.ISEMPTY THEN BEGIN
+                    //     MovProvLiqui.FINDFIRST;
+                    //     REPEAT
+                    //         EscribirRegistrosBeneficiarios(TRUE);
+                    //     UNTIL MovProvLiqui.NEXT = 0;
+                    // END;
                     //--005 TSC 120719
 
                 end;

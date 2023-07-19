@@ -5,14 +5,25 @@ page 17460 "ABERTIA GL Entry"
     PageType = List;
     SourceTable = "ABERTIA GL Entry";
     UsageCategory = Lists;
-    Editable = false;
+    InsertAllowed = false;
+    DeleteAllowed = false;
 
     layout
     {
         area(content)
         {
+            Group(Opciones)
+            {
+                field(EntryNoIni; EntryNoIni)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Nº Movimiento inicial', comment = 'ESP="Nº Movimiento inicial"';
+
+                }
+            }
             repeater(General)
             {
+                Editable = false;
                 field("Entry No_"; Rec."Entry No_")
                 {
                     ApplicationArea = All;
@@ -257,7 +268,7 @@ page 17460 "ABERTIA GL Entry"
 
                 trigger OnAction()
                 begin
-                    Rec.CreateGLEntry(0D);
+                    Rec.CreateGLEntry(EntryNoIni);
                 end;
 
             }
@@ -267,6 +278,9 @@ page 17460 "ABERTIA GL Entry"
     begin
         OpenTableConnection();
     end;
+
+    var
+        EntryNoIni: Integer;
 
     procedure OpenTableConnection()
     begin

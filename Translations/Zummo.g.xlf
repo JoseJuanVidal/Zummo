@@ -9218,6 +9218,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA GL Entry - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1701598921 - Control 2094405709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Movimiento inicial</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Movimiento inicial"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA GL Entry - Control EntryNoIni - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2965806569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Accounting Manager</source>
           <note from="Developer" annotates="general" priority="2">ESP="Administrador de contabilidad"</note>

@@ -263,7 +263,7 @@ table 17458 "ABERTIA GL Entry"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateGLEntry(DateIni: Date)
+    procedure CreateGLEntry(EntryNoIni: Integer)
     var
         GLEntry: Record "G/L Entry";
         ABGLEntry: Record "ABERTIA GL Entry";
@@ -271,7 +271,7 @@ table 17458 "ABERTIA GL Entry"
     begin
         Window.Open('Nº Movimiento #1################\Fecha #2################');
         GLEntry.Reset();
-        GLEntry.SetRange("Posting Date", DateIni, WorkDate());
+        GLEntry.SetRange("Entry No.", EntryNoIni, 999999999);
         if GLEntry.FindFirst() then
             repeat
                 Window.Update(1, GLEntry."Entry No.");
