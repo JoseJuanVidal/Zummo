@@ -8773,6 +8773,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el credito a %1 de %2 por %3?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method FinAseguradora - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 365355346 - NamedType 1109635473" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sin ubicación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sin ubicación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method GetBinContentItemNo - NamedType lblWhioutBin</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 2665306276 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea actualizar los datos de Personal con los datos de la excel?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los datos de Personal con los datos de la excel?"</note>
@@ -23143,6 +23148,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Precio Neto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control PrecioNeto - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3412186937 - Control 1547528384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Cant. Ubicaciones</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Cant. Ubicaciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control ShowBinContents - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3412186937 - Control 316520822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if you want the printed report to show information that is only for internal use.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -30377,6 +30387,11 @@
           <source>Resource No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Recurso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Resource No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 1817431479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Ubicaciones pedido por defecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ubicaciones pedido por defecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Ubicaciones pedido por defecto - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2852714242 - Field 3988368718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Venta productos sin tarifa</source>

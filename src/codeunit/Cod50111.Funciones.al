@@ -2629,6 +2629,96 @@ codeunit 50111 "Funciones"
             Until ItemLedgerEntry.next() = 0;
         Window.Close();
     end;
+    // =============     Funcion que devuelva la fecha de los movs de Contenido ubicacion     ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
 
+    procedure GetBinContentItemNo(LocationCode: code[10]; ItemNo: code[20]; Quantity: Decimal; SerialNo: code[20];
+            var ListBinContent: List of [code[20]]; var ListQtyBinContent: List of [decimal])
+    var
+        Item: Record Item;
+        BinContent: Record "Bin Content";
+        BinBudgetBuffer: record "Item Budget Buffer" temporary;
+        Qty: Decimal;
+        QtyWithoutBin: Decimal;
+        lblWhioutBin: Label 'Sin ubicación', comment = 'ESP="Sin ubicación"';
+    begin
+        if not item.Get(ItemNo) then
+            exit;
+        if Item.IsAssemblyItem() then
+            exit;
+        BinContent.Reset();
+        BinContent.SetRange("Location Code", LocationCode);
+        BinContent.SetRange("Item No.", ItemNo);
+        if SerialNo <> '' then
+            BinContent.SetRange("Serial No. Filter", SerialNo);
+        BinContent.SetFilter("Quantity (Base)", '>0');
+        if BinContent.FindFirst() then
+            repeat
+                if GetExtensionFieldValueBinNave(BinContent."Location Code", BinContent."Bin Code") = '' then begin
+                    BinContent.CalcFields("Quantity (Base)");
+                    QtyWithoutBin += BinContent."Quantity (Base)"
+                end else begin
+                    BinBudgetBuffer.Init();
+                    BinBudgetBuffer."Item No." := BinContent."Bin Code";
+                    BinBudgetBuffer.Date := GetBinContentLastDate(BinContent."Location Code", BinContent."Bin Code", BinContent."Item No.");
+                    BinContent.CalcFields("Quantity (Base)");
+                    BinBudgetBuffer.Quantity := BinContent."Quantity (Base)";
+                    if BinBudgetBuffer.Quantity > 0 then
+                        BinBudgetBuffer.Insert();
+                end;
+            Until BinContent.next() = 0;
+        BinBudgetBuffer.SetCurrentKey(Date);
+        if BinBudgetBuffer.FindFirst() then
+            repeat
+                ListBinContent.Add(BinBudgetBuffer."Item No.");
+                ListQtyBinContent.Add(BinBudgetBuffer.Quantity);
+                qty += BinBudgetBuffer.Quantity;
+            Until (BinBudgetBuffer.next() = 0) or (Qty >= Quantity);
+        if QtyWithoutBin > 0 then begin
+            ListBinContent.add(lblWhioutBin);
+            ListQtyBinContent.Add(QtyWithoutBin);
+        end;
+    end;
+
+    procedure GetBinContentLastDate(LocationCode: code[10]; BinCode: code[20]; ItemNo: code[20]) LastDate: date
+    var
+        BinContent: Record "Bin Content";
+        WarehouseEntry: Record "Warehouse Entry";
+        Qty: Decimal;
+    begin
+        BinContent.Reset();
+        BinContent.SetRange("Location Code", LocationCode);
+        BinContent.SetRange("Bin Code", BinCode);
+        BinContent.SetRange("Item No.", ItemNo);
+        if not BinContent.FindFirst() then
+            exit;
+        BinContent.CalcFields("Quantity (Base)");
+        WarehouseEntry.Reset();
+        WarehouseEntry.SetCurrentKey("Entry No.");
+        WarehouseEntry.Ascending := true;
+        WarehouseEntry.SetRange("Location Code", LocationCode);
+        WarehouseEntry.SetRange("Bin Code", BinCode);
+        WarehouseEntry.SetRange("Item No.", ItemNo);
+        WarehouseEntry.SetFilter(Quantity, '>0');
+        if WarehouseEntry.FindFirst() then
+            repeat
+                Qty += WarehouseEntry."Qty. (Base)";
+                if Qty >= BinContent."Quantity (Base)" then
+                    LastDate := WarehouseEntry."Registering Date";
+
+            Until (WarehouseEntry.next() = 0) or (LastDate <> 0D);
+    end;
+
+
+    local procedure GetExtensionFieldValueBinNave(LocationCode: code[10]; BinCode: code[20]): text
+    var
+        Bin: Record Bin;
+    begin
+        if Bin.Get(LocationCode, BinCode) then
+            exit(GetExtensionFieldValueText(bin.RecordId, 50604, false));   //  NAVE
+    end;
 }
 

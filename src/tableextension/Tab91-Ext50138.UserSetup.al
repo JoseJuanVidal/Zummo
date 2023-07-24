@@ -40,5 +40,10 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             DataClassification = CustomerContent;
             Caption = 'Config. Contabilidad', comment = 'ESP="Config. Contabilidad"';
         }
+        field(50115; "Ubicaciones pedido por defecto"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Ubicaciones pedido por defecto', comment = 'ESP="Ubicaciones pedido por defecto"';
+        }
     }
 }

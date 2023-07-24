@@ -26,7 +26,7 @@ report 50102 "PedidoCliente"
             }
             column(txtOferta; txtOferta) { }
             column(txtOfertaLbl; lbNumDias) { } //txtOfertaLbl
-            column(boolLineasPendientes; boolLineasPendientes) { }
+            column(ShowBinContents; ShowBinContents) { }
             column(Portes; Portes) { }
             column(InvoiceDiscountAmount; InvoiceDiscountAmount) { }
             column(ImporteBruto; TotalSalesLineF."Line Amount") { }
@@ -531,6 +531,7 @@ report 50102 "PedidoCliente"
                             AutoFormatType = 1;
                         }
                         column(EsEmbalaje; EsEmbalaje) { }
+                        column(ContUbicaciones; ContUbicaciones) { }
                         column(Desc_SalesLine; txtDescLinea)
                         {
                         }
@@ -824,6 +825,8 @@ report 50102 "PedidoCliente"
                                     column(NoSerie_Value; NoSerie_Value)
                                     {
                                     }
+                                    column(AssemblyContUbicaciones; AssemblyContUbicaciones)
+                                    { }
 
                                     dataitem("Reservation Entry"; "Reservation Entry")
                                     {
@@ -834,8 +837,16 @@ report 50102 "PedidoCliente"
                                         //"Source Type"=const(901);
                                         column(Serial_No_; "Serial No.")
                                         {
-
                                         }
+                                        column(SerialContUbicaciones; SerialContUbicaciones)
+                                        {
+                                        }
+                                        trigger OnAfterGetRecord()
+                                        begin
+                                            SerialContUbicaciones := '';
+                                            SerialContUbicaciones := GetBinContentItemNo("Assembly Line"."Location Code", "Assembly Line"."No.", -"Reservation Entry".Quantity, "Reservation Entry"."Serial No.");
+
+                                        end;
                                     }
 
                                     trigger OnAfterGetRecord()
@@ -856,6 +867,11 @@ report 50102 "PedidoCliente"
                                         ReservationEntry.SetRange("Source Subtype", 1);
                                         if ReservationEntry.FindFirst() then
                                             NoSerie_Value := ReservationEntry."Serial No.";
+
+                                        AssemblyContUbicaciones := '';
+                                        if NoSerie_Value = '' then
+                                            AssemblyContUbicaciones := GetBinContentItemNo("Assembly Line"."Location Code", "Assembly Line"."No.", "Assembly Line".Quantity, '');
+
                                     end;
                                 }
                             }
@@ -879,6 +895,7 @@ report 50102 "PedidoCliente"
                             {
 
                             }
+                            column(MemLotesContUbicaciones; MemLotesContUbicaciones) { }
 
                             trigger OnPreDataItem()
                             begin
@@ -894,6 +911,9 @@ report 50102 "PedidoCliente"
                                 end else
                                     if RecMemLotes.Next() = 0 then
                                         CurrReport.Break();
+                                MemLotesContUbicaciones := '';
+                                if RecMemLotes.NoSerie <> '' then
+                                    MemLotesContUbicaciones := GetBinContentItemNo(SalesLine."Location Code", SalesLine."No.", SalesLine."Outstanding Quantity", RecMemLotes.NoSerie);
 
                             end;
                         }
@@ -919,6 +939,9 @@ report 50102 "PedidoCliente"
                             else
                                 cantidadSalesLine := SalesLine.Quantity;
 
+                            // Añadimos las ubicaciones de los productos
+                            ContUbicaciones := '';
+                            ContUbicaciones := GetBinContentItemNo(SalesLine."Location Code", SalesLine."No.", "Sales Line".Quantity, '');
                             if ConfPersonalizationMgt.GetCurrentProfileID() = 'ALMACEN' then begin
                                 if ((SalesLine.Type = SalesLine.Type::Item) and (SalesLine."No." <> '')) then begin
                                     Item.get(SalesLine."No.");
@@ -1837,6 +1860,7 @@ report 50102 "PedidoCliente"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Archive Document';
                         ToolTip = 'Specifies if the document is archived after you print it.';
+                        Visible = false;
 
                         trigger OnValidate()
                         begin
@@ -1850,6 +1874,7 @@ report 50102 "PedidoCliente"
                         Caption = 'Log Interaction';
                         Enabled = LogInteractionEnable;
                         ToolTip = 'Specifies that interactions with the contact are logged.';
+                        Visible = false;
 
                         trigger OnValidate()
                         begin
@@ -1887,6 +1912,11 @@ report 50102 "PedidoCliente"
                         ApplicationArea = all;
                         Caption = 'Formato FRANCES', comment = 'ESP="Formato FRANCES"';
                     }
+                    field(ShowBinContents; ShowBinContents)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Mostrar Cant. Ubicaciones', comment = 'ESP="Mostrar Cant. Ubicaciones"';
+                    }
                     field(boolLineasPendientes; boolLineasPendientes)
                     {
                         ApplicationArea = All;
@@ -1915,6 +1945,8 @@ report 50102 "PedidoCliente"
             if UserSetup.Get(UserId) then
                 if UserSetup.ImprimirPedVentaComentarios then
                     boolShowInterComment := true;
+
+            ShowBinContents := UserSetup."Ubicaciones pedido por defecto";
         end;
     }
 
@@ -1981,7 +2013,6 @@ report 50102 "PedidoCliente"
         codigoDivisa: code[20];
         TotalSalesLineF: Record "Sales Line";
         TotalSalesLineLCYF: Record "Sales Line";
-
         TotalSalesHeader: Record "Sales Header";
         TotalSalesLine: Record "Sales Line";
         recC: Record Customer;
@@ -2051,7 +2082,11 @@ report 50102 "PedidoCliente"
         VALVATAmountLCY: Decimal;
         VALSpecLCYHeader: Text[80];
         EsEmbalaje: Boolean;
-
+        ShowBinContents: Boolean;
+        ContUbicaciones: text;
+        SerialContUbicaciones: text;
+        AssemblyContUbicaciones: text;
+        MemLotesContUbicaciones: text;
         VALExchRate: Text[50];
         PrepmtVATAmount: Decimal;
         PrepmtVATBaseAmount: Decimal;
@@ -2368,6 +2403,30 @@ report 50102 "PedidoCliente"
     procedure SetImpresoAlmacen()
     begin
         impresoalmacen := true;
+    end;
+
+    local procedure GetBinContentItemNo(LocationCode: code[10]; ItemNo: code[20]; Quantity: Decimal; SerialNo: code[50]) BinContens: text
+    var
+        Item: Record Item;
+        Funciones: Codeunit Funciones;
+        ListBinContent: List of [code[20]];
+        ListQtyBinContent: List of [decimal];
+        BinCode: code[20];
+        BinQuantity: Decimal;
+        i: Integer;
+    begin
+        if Item.Get(ItemNo) then
+            if (Item."Item Tracking Code" <> '') and (SerialNo = '') then
+                exit;
+        Funciones.GetBinContentItemNo(LocationCode, ItemNo, Quantity, SerialNo, ListBinContent, ListQtyBinContent);
+
+        foreach BinCode in ListBinContent do begin
+            i += 1;
+            BinQuantity := ListQtyBinContent.Get(i);
+            if BinContens <> '' then
+                BinContens += '-';
+            BinContens += StrSubstNo('%1 (%2)', BinCode, BinQuantity)
+        end;
     end;
 }
 
