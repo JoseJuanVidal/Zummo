@@ -366,7 +366,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.50596cm</Height>
+                                    <Height>0.5cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -424,6 +424,7 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>6</ColSpan>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -668,7 +669,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.6cm</Height>
+                                    <Height>0.5cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -900,7 +901,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.55cm</Height>
+                                    <Height>0.5cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -1673,7 +1674,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>3</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -1877,7 +1877,7 @@ and Fields!ContUbicaciones.Value &lt;&gt;"",false,true)</Hidden>
                                 </Filter>
                               </Filters>
                               <Left>0.31939cm</Left>
-                              <Height>4.96497cm</Height>
+                              <Height>4.80901cm</Height>
                               <Width>18.9982cm</Width>
                               <Style />
                             </Tablix>
