@@ -2,7 +2,8 @@ codeunit 50108 "FuncionesFabricacion"
 {
 
     var
-        ReqExcelBuffer: Record "Excel Buffer";
+        aReqExcelBuffer: Record "Excel Buffer";
+
         lblConfirmExcel: Label '¿Desea exportar los resultado en Excel?', comment = 'ESP="¿Desea exportar los resultado en Excel?"';
 
     procedure CambiaEstadoVariasOrdenesProduccion(var pOrdenProd: Record "Production Order")
@@ -241,118 +242,115 @@ codeunit 50108 "FuncionesFabricacion"
     [EventSubscriber(ObjectType::Codeunit, codeunit::"Inventory Profile Offsetting", 'OnBeforeCommonBalancing', '', true, true)]
     local procedure codeunitInventoryProfileOffsetting_OnBeforeCommonBalancing(var TempSKU: Record "Stockkeeping Unit"; var SupplyInvtProfile: Record "Inventory Profile"; var DemandInvtProfile: Record "Inventory Profile"; ToDate: Date)
     var
-        InventorySetup: Record "Inventory Setup";
+        RequisitionBuffer: record "ZM Requesition Buffer Calc.";
     begin
         // el evento esta MAL, los nombres los han cambiado
-        if InventorySetup.Get() then
-            if InventorySetup."Export Excel Requisition" then
-                AddLastReqExcelBuffer(TempSKU, DemandInvtProfile, SupplyInvtProfile);  // CUIDADO, estan cambiado
+        RequisitionBuffer.Reset();
+        RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
+        if not RequisitionBuffer.FindFirst() then
+            exit;
+
+        AddLastReqExcelBuffer(TempSKU, DemandInvtProfile, SupplyInvtProfile, RequisitionBuffer."Worksheet Template Name", RequisitionBuffer."Journal Batch Name");  // CUIDADO, estan cambiado
     end;
 
-    local procedure AddLastReqExcelBuffer(var TempSKU: Record "Stockkeeping Unit"; var SupplyInventoryProfile: Record "Inventory Profile"; var DemandInventoryProfile: Record "Inventory Profile")
+    local procedure AddLastReqExcelBuffer(var TempSKU: Record "Stockkeeping Unit"; var SupplyInventoryProfile: Record "Inventory Profile";
+        var DemandInventoryProfile: Record "Inventory Profile"; WorksheetTemplateName: code[10]; JournalBatchName: code[10])
     var
         Item: Record Item;
         Vendor: Record Vendor;
-        Quantity: Decimal;
-        nLinea: Integer;
+        RequisitionBuffer: record "ZM Requesition Buffer Calc.";
         i: Integer;
     begin
         DemandInventoryProfile.SetRange("Due Date");
-        // obtenemos la ultima posicion
-        ReqExcelBuffer.Reset();
-        ReqExcelBuffer.SetRange("Column No.", 1);
-        if ReqExcelBuffer.FindLast() then
-            nLinea := ReqExcelBuffer."Row No." + 1
-        else
-            nLinea := 1;
-
         Item.Get(TempSKU."Item No.");
-        ReqExcelBuffer.SetCurrent(nLinea, 0);
-        ReqExcelBuffer.AddColumn(Item."No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-        ReqExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-        ReqExcelBuffer.AddColumn(0, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-        if TempSKU.FindFirst() then begin
-            ReqExcelBuffer.AddColumn(TempSKU."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-            ReqExcelBuffer.AddColumn(TempSKU."Minimum Order Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-        end else begin
-            ReqExcelBuffer.AddColumn(Item."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-            ReqExcelBuffer.AddColumn(Item."Order Multiple", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-        end;
-        for i := 1 to 8 do begin
-            Quantity := 0;
-            if DemandInventoryProfile.findset() then
-                repeat
-                    case i of
-                        // DEMAND
-                        1:  // Sales Line (37)
-                            if DemandInventoryProfile."Source Type" = Database::"Sales Line" then
-                                Quantity += DemandInventoryProfile."Remaining Quantity";
-                        2:  // Service Line (5902)
-                            if DemandInventoryProfile."Source Type" = Database::"Service Line" then
-                                Quantity += SupplyInventoryProfile."Remaining Quantity";
-                        3:  // Job Planning line (1003)
-                            if DemandInventoryProfile."Source Type" = Database::"Job Planning Line" then
-                                Quantity += DemandInventoryProfile."Remaining Quantity";
-                        4:  // Prod Order Component (5407)
-                            if DemandInventoryProfile."Source Type" = Database::"Prod. Order Component" then
-                                Quantity += DemandInventoryProfile."Remaining Quantity";
-                        5:  // Asembly  Line (901)                            
-                            if DemandInventoryProfile."Source Type" = Database::"Assembly Line" then
-                                Quantity += DemandInventoryProfile."Remaining Quantity";
-                        6:  // Planning Component Line (99000829)                            
-                            if DemandInventoryProfile."Source Type" = Database::"Planning Component" then
-                                Quantity += DemandInventoryProfile."Remaining Quantity";
-                        7:  // Trans Requisition Line (246)                            
-                            if DemandInventoryProfile."Source Type" = Database::"Requisition Line" then
-                                Quantity += DemandInventoryProfile."Remaining Quantity";
-                        8:  // shipment Transfer Line (5741)                            
-                            if DemandInventoryProfile."Source Type" = Database::"Transfer Line" then
-                                Quantity += DemandInventoryProfile."Remaining Quantity";
-                    end;
-                Until DemandInventoryProfile.next() = 0;
-            ReqExcelBuffer.AddColumn(Quantity, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-        end;
-        for i := 1 to 7 do begin
-            Quantity := 0;
-            if SupplyInventoryProfile.findset() then
-                repeat
-                    // SUPPLY
-                    case i of
-                        1:  // Item Ledger Entry (32)
-                            if SupplyInventoryProfile."Source Type" = Database::"Item Ledger Entry" then
-                                Quantity += SupplyInventoryProfile."Remaining Quantity";
-                        2:  // Requisition line (246)
-                            if SupplyInventoryProfile."Source Type" = Database::"Requisition Line" then
-                                Quantity += SupplyInventoryProfile."Remaining Quantity";
-                        3:  // Purchase line (39)
-                            if SupplyInventoryProfile."Source Type" = Database::"Purchase Line" then
-                                Quantity += SupplyInventoryProfile."Remaining Quantity";
-                        4:  // Prod Order line (39)
-                            if SupplyInventoryProfile."Source Type" = Database::"Prod. Order Line" then
-                                Quantity += SupplyInventoryProfile."Remaining Quantity";
-                        5:  // Assembly line (901)
-                            if SupplyInventoryProfile."Source Type" = Database::"Assembly Line" then
-                                Quantity += SupplyInventoryProfile."Remaining Quantity";
-                        6:  // receipt Transfer line (5741)
-                            if SupplyInventoryProfile."Source Type" = Database::"Transfer Line" then
-                                Quantity += SupplyInventoryProfile."Remaining Quantity";
-                        7:  //safety Stock                            
-                            if SupplyInventoryProfile."Source Type" = 0 then
-                                Quantity += SupplyInventoryProfile."Remaining Quantity";
-                    end;
-                Until SupplyInventoryProfile.next() = 0;
+        RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
+        RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
+        RequisitionBuffer.SetRange("Item No.", TempSKU."Item No.");
+        if not RequisitionBuffer.FindFirst() then begin
+            RequisitionBuffer.Init();
+            RequisitionBuffer."Session ID" := RequisitionBuffer.GetActiveSession();
+            RequisitionBuffer."Worksheet Template Name" := WorksheetTemplateName;
+            RequisitionBuffer."Journal Batch Name" := JournalBatchName;
+            RequisitionBuffer."Item No." := Item."No.";
+            RequisitionBuffer.Description := Item.Description;
+            RequisitionBuffer."Cantidad Pedir" := 0;
+            if TempSKU.FindFirst() then begin
+                RequisitionBuffer."Stock de seguridad" := TempSKU."Safety Stock Quantity";
+                RequisitionBuffer."Cantidad mínima pedido" := TempSKU."Minimum Order Quantity";
+            end else begin
+                RequisitionBuffer."Stock de seguridad" := Item."Safety Stock Quantity";
+                RequisitionBuffer."Cantidad mínima pedido" := Item."Order Multiple";
+            end;
+            for i := 1 to 8 do begin
+                if DemandInventoryProfile.findset() then
+                    repeat
+                        case i of
+                            // DEMAND
+                            1:  // Sales Line (37)
+                                if DemandInventoryProfile."Source Type" = Database::"Sales Line" then
+                                    RequisitionBuffer."Lín. venta" += DemandInventoryProfile."Remaining Quantity";
+                            2:  // Service Line (5902)
+                                if DemandInventoryProfile."Source Type" = Database::"Service Line" then
+                                    RequisitionBuffer."Línea servicio" += SupplyInventoryProfile."Remaining Quantity";
+                            3:  // Job Planning line (1003)
+                                if DemandInventoryProfile."Source Type" = Database::"Job Planning Line" then
+                                    RequisitionBuffer."Línea planificación proyecto" += DemandInventoryProfile."Remaining Quantity";
+                            4:  // Prod Order Component (5407)
+                                if DemandInventoryProfile."Source Type" = Database::"Prod. Order Component" then
+                                    RequisitionBuffer."Componente orden producción" += DemandInventoryProfile."Remaining Quantity";
+                            5:  // Asembly  Line (901)                            
+                                if DemandInventoryProfile."Source Type" = Database::"Assembly Line" then
+                                    RequisitionBuffer."Demanda Línea de ensamblado" += DemandInventoryProfile."Remaining Quantity";
+                            6:  // Planning Component Line (99000829)                            
+                                if DemandInventoryProfile."Source Type" = Database::"Planning Component" then
+                                    RequisitionBuffer."Planif. componente" += DemandInventoryProfile."Remaining Quantity";
+                            7:  // Trans Requisition Line (246)                            
+                                if DemandInventoryProfile."Source Type" = Database::"Requisition Line" then
+                                    RequisitionBuffer."Demanda Lín. hoja demanda" += DemandInventoryProfile."Remaining Quantity";
+                            8:  // shipment Transfer Line (5741)                            
+                                if DemandInventoryProfile."Source Type" = Database::"Transfer Line" then
+                                    RequisitionBuffer."Demanda Lín. transferencia" += DemandInventoryProfile."Remaining Quantity";
+                        end;
+                    Until DemandInventoryProfile.next() = 0;
+            end;
+            for i := 1 to 7 do begin
+                if SupplyInventoryProfile.findset() then
+                    repeat
+                        // SUPPLY
+                        case i of
+                            1:  // Item Ledger Entry (32)
+                                if SupplyInventoryProfile."Source Type" = Database::"Item Ledger Entry" then
+                                    RequisitionBuffer.Inventario += SupplyInventoryProfile."Remaining Quantity";
+                            2:  // Requisition line (246)
+                                if SupplyInventoryProfile."Source Type" = Database::"Requisition Line" then
+                                    RequisitionBuffer."Aprov. Lín. hoja demanda" += SupplyInventoryProfile."Remaining Quantity";
+                            3:  // Purchase line (39)
+                                if SupplyInventoryProfile."Source Type" = Database::"Purchase Line" then
+                                    RequisitionBuffer."Lín. compra" += SupplyInventoryProfile."Remaining Quantity";
+                            4:  // Prod Order line (39)
+                                if SupplyInventoryProfile."Source Type" = Database::"Prod. Order Line" then
+                                    RequisitionBuffer."Lín. orden prod." += SupplyInventoryProfile."Remaining Quantity";
+                            5:  // Assembly line (901)
+                                if SupplyInventoryProfile."Source Type" = Database::"Assembly Line" then
+                                    RequisitionBuffer."Aprov. Línea de ensamblado" += SupplyInventoryProfile."Remaining Quantity";
+                            6:  // receipt Transfer line (5741)
+                                if SupplyInventoryProfile."Source Type" = Database::"Transfer Line" then
+                                    RequisitionBuffer."Aprov. Lín. transferencia" += SupplyInventoryProfile."Remaining Quantity";
+                            7:  //safety Stock                            
+                                if SupplyInventoryProfile."Source Type" = 0 then
+                                    RequisitionBuffer."Cantidad para stock" += SupplyInventoryProfile."Remaining Quantity";
+                        end;
+                    Until SupplyInventoryProfile.next() = 0;
+            end;
+            RequisitionBuffer."Cód. proveedor" := Item."Vendor No.";
+            if vendor.get(Item."Vendor No.") then;
+            RequisitionBuffer."Nombre proveedor" := Vendor.Name;
+            RequisitionBuffer."Plazo de entrega" := Item."Lead Time Calculation";
+            RequisitionBuffer.Insert();
 
-            ReqExcelBuffer.AddColumn(Quantity, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+
         end;
-        ReqExcelBuffer.AddColumn(Item."Vendor No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-        if vendor.get(Item."Vendor No.") then;
-        ReqExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-        ReqExcelBuffer.AddColumn(Item."Lead Time Calculation", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-
-        ReqExcelBuffer.NewRow();
-
     end;
-
 
     [EventSubscriber(ObjectType::Table, database::"Requisition Line", 'OnAfterInsertEvent', '', true, true)]
     local procedure RequisitionLine_OnAfterInsertEvent(var Rec: Record "Requisition Line"; RunTrigger: Boolean)
@@ -368,45 +366,48 @@ codeunit 50108 "FuncionesFabricacion"
 
     local procedure RequisitionLine_UpdateQuantity(var Rec: Record "Requisition Line")
     var
-        InventorySetup: Record "Inventory Setup";
+        RequisitionBuffer: record "ZM Requesition Buffer Calc.";
     begin
-        if InventorySetup.Get() then
-            if InventorySetup."Export Excel Requisition" then begin
-                ReqExcelBuffer.Reset();
-                ReqExcelBuffer.SetRange("Cell Value as Text", Rec."No.");
-                if ReqExcelBuffer.FindFirst() then begin
-                    ReqExcelBuffer.SetRange("Cell Value as Text");
-                    ReqExcelBuffer.SetRange("Row No.", ReqExcelBuffer."Row No.");
-                    ReqExcelBuffer.SetRange("Column No.", 3);
-                    if ReqExcelBuffer.FindFirst() then begin
-                        ReqExcelBuffer."Cell Value as Text" += format(Rec.Quantity);
-                        ReqExcelBuffer.Modify();
-                    end;
+        if GetRequisitionBufferExist(Rec."Worksheet Template Name", Rec."Journal Batch Name") then begin
+            RequisitionBuffer.Reset();
+            RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
+            RequisitionBuffer.SetRange("Worksheet Template Name", Rec."Worksheet Template Name");
+            RequisitionBuffer.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+            RequisitionBuffer.SetRange("Item No.", Rec."No.");
+            if not RequisitionBuffer.FindFirst() then begin
+                RequisitionBuffer."Cantidad Pedir" += Rec.Quantity;
 
-                end
             end;
-
+        end;
     end;
 
 
     [EventSubscriber(ObjectType::Report, Report::"Calculate Plan - Req. Wksh.", 'OnAfterSkipPlanningForItemOnReqWksh', '', true, true)]
     local procedure CalculatePlanReqWksh_OnAfterSkipPlanningForItemOnReqWksh(Item: Record Item; var SkipPlanning: Boolean)
     var
+        RequisitionBuffer: record "ZM Requesition Buffer Calc.";
+        RequisitionBuffer2: record "ZM Requesition Buffer Calc.";
         nLinea: Integer;
     begin
         if SkipPlanning then begin
-            ReqExcelBuffer.Reset();
-            ReqExcelBuffer.SetRange("Column No.", 1);
-            if ReqExcelBuffer.FindLast() then
-                nLinea := ReqExcelBuffer."Row No." + 1
-            else
-                nLinea := 1;
-
-            ReqExcelBuffer.SetCurrent(nLinea, 0);
-            ReqExcelBuffer.AddColumn(Item."No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-            ReqExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-            ReqExcelBuffer.AddColumn('No planificar', false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-            ReqExcelBuffer.NewRow();
+            RequisitionBuffer.Reset();
+            RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
+            if not RequisitionBuffer.FindFirst() then
+                exit;
+            RequisitionBuffer2.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
+            RequisitionBuffer2.SetRange("Worksheet Template Name", RequisitionBuffer."Worksheet Template Name");
+            RequisitionBuffer2.SetRange("Journal Batch Name", RequisitionBuffer."Journal Batch Name");
+            RequisitionBuffer2.SetRange("Item No.", Item."No.");
+            if not RequisitionBuffer2.FindFirst() then begin
+                RequisitionBuffer2.Init();
+                RequisitionBuffer2."Session ID" := RequisitionBuffer."Session ID";
+                RequisitionBuffer2."Worksheet Template Name" := RequisitionBuffer."Worksheet Template Name";
+                RequisitionBuffer2."Journal Batch Name" := RequisitionBuffer."Journal Batch Name";
+                RequisitionBuffer2."Item No." := Item."No.";
+                RequisitionBuffer2.Description := item.Description;
+                RequisitionBuffer2."Cantidad Pedir" := -1;
+                RequisitionBuffer2.Insert();
+            end;
         end;
     end;
 
@@ -420,13 +421,8 @@ codeunit 50108 "FuncionesFabricacion"
     var
         InventorySetup: Record "Inventory Setup";
     begin
-        if InventorySetup.Get() then begin
-            InventorySetup."Export Excel Requisition" := false;
-            if Confirm(lblConfirmExcel) then begin
-                InventorySetup."Export Excel Requisition" := true;
-                InitReqExcelBuffer(rec."Journal Batch Name");
-            end;
-            InventorySetup.Modify();
+        if Confirm(lblConfirmExcel) then begin
+            InitReqExcelBuffer(Rec."Worksheet Template Name", Rec."Journal Batch Name");
         end;
 
         commit;
@@ -437,14 +433,10 @@ codeunit 50108 "FuncionesFabricacion"
     var
         InventorySetup: Record "Inventory Setup";
     begin
-        if InventorySetup.Get() then begin
-            if InventorySetup."Export Excel Requisition" then begin
-                InventorySetup."Export Excel Requisition" := true;
-                InventorySetup.Modify();
-                ReqWorksheet_CalculatePlanFinish(Rec);
-            end;
-
+        if GetRequisitionBufferExist(Rec."Worksheet Template Name", Rec."Journal Batch Name") then begin
+            ReqWorksheet_CalculatePlanFinish(Rec);
         end;
+
     end;
 
     // =============     ReqWorksheet OnBeforeActionEvent_CalculatePlan MPS Hoja planificacion         ====================
@@ -457,13 +449,10 @@ codeunit 50108 "FuncionesFabricacion"
     var
         InventorySetup: Record "Inventory Setup";
     begin
-        if InventorySetup.Get() then begin
-            InventorySetup."Export Excel Requisition" := false;
+        if GetRequisitionBufferExist(Rec."Worksheet Template Name", Rec."Journal Batch Name") then begin
             if Confirm(lblConfirmExcel) then begin
-                InventorySetup."Export Excel Requisition" := true;
-                InitReqExcelBuffer(rec."Journal Batch Name");
+                InitReqExcelBuffer(Rec."Worksheet Template Name", rec."Journal Batch Name");
             end;
-            InventorySetup.Modify();
         end;
 
         commit;
@@ -474,32 +463,17 @@ codeunit 50108 "FuncionesFabricacion"
     var
         InventorySetup: Record "Inventory Setup";
     begin
-        if InventorySetup.Get() then begin
-            if InventorySetup."Export Excel Requisition" then begin
-                InventorySetup."Export Excel Requisition" := true;
-                InventorySetup.Modify();
-                ReqWorksheet_CalculatePlanFinish(Rec);
-            end;
-
+        if GetRequisitionBufferExist(Rec."Worksheet Template Name", Rec."Journal Batch Name") then begin
+            ReqWorksheet_CalculatePlanFinish(Rec);
         end;
+
     end;
 
     local procedure ReqWorksheet_CalculatePlanFinish(Rec: Record "Requisition Line")
     begin
-        reqExcelBuffer.Reset();
+        ExportRequisitionBuffer(Rec."Worksheet Template Name", Rec."Journal Batch Name", Rec."Worksheet Template Name");
 
-        reqExcelBuffer.CreateNewBook('Planificacion');
-        // Rango Tabla
-        reqExcelBuffer.SetCurrent(4, 1);
-        reqExcelBuffer.StartRange();
-        reqExcelBuffer.SetCurrent(4, 1);
-        reqExcelBuffer.EndRange();
-        reqExcelBuffer.CreateRange('Tabla');
-
-        reqExcelBuffer.WriteSheet('Planif. ' + Rec."Journal Batch Name", COMPANYNAME, USERID);
-        reqExcelBuffer.CloseBook();
-        ReqExcelBuffer.SetFriendlyFilename('Planificación ' + Rec."Journal Batch Name");
-        reqExcelBuffer.DownloadAndOpenExcel;
+        DeleteRequisitionBuffer(Rec."Worksheet Template Name", rec."Journal Batch Name");
     end;
 
     // =============     LanzarPlanificacionDesdePedidos          ====================
@@ -525,9 +499,7 @@ codeunit 50108 "FuncionesFabricacion"
         InventorySetup: Record "Inventory Setup";
         SalesHeaderDocNo: text;
         LastLine: Integer;
-
     begin
-
         Item.reset;
         if Item.FindSet() then begin
             repeat
@@ -583,14 +555,10 @@ codeunit 50108 "FuncionesFabricacion"
 
         end;
 
-        if InventorySetup.Get() then begin
-            InventorySetup."Export Excel Requisition" := false;
-            if Confirm(lblConfirmExcel) then begin
-                InventorySetup."Export Excel Requisition" := true;
-                InitReqExcelBuffer(SalesHeaderDocNo);
-            end;
-            InventorySetup.Modify();
+        if Confirm(lblConfirmExcel) then begin
+            InitReqExcelBuffer(RequisitionWkshName.Name, 'PLANIF.');
         end;
+
 
         commit;
 
@@ -625,39 +593,50 @@ codeunit 50108 "FuncionesFabricacion"
         RefrescarHoja('PLANIF.', RequisitionWkshName."Name");
         RefrescarHoja('APROV.', RequisitionWkshName."Name");
 
-        if InventorySetup."Export Excel Requisition" then begin
-            reqExcelBuffer.SetRange("Column No.", 1);
-            if reqExcelBuffer.FindLast() then
-                LastLine := reqExcelBuffer."Row No.";
-            reqExcelBuffer.Reset();
+        if GetRequisitionBufferExist(RequisitionWkshName.Name, 'PLANIF.') then begin
+            ExportRequisitionBuffer(RequisitionWkshName.Name, 'PLANIF.', SalesHeader."No.");
 
-            reqExcelBuffer.CreateNewBook('Planificacion');
-            // Rango Tabla
-            reqExcelBuffer.SetCurrent(4, 1);
-            reqExcelBuffer.StartRange();
-            reqExcelBuffer.SetCurrent(4, 1);
-            reqExcelBuffer.EndRange();
-            reqExcelBuffer.CreateRange('Tabla');
-
-            reqExcelBuffer.WriteSheet('Planif. ' + SalesHeader."No.", COMPANYNAME, USERID);
-            reqExcelBuffer.CloseBook();
-            ReqExcelBuffer.SetFriendlyFilename('Planificación ' + RequisitionWkshName.Name);
-            reqExcelBuffer.DownloadAndOpenExcel;
+            DeleteRequisitionBuffer(RequisitionWkshName.Name, 'PLANIF.');
         end;
-
-        InventorySetup."Export Excel Requisition" := false;
-        InventorySetup.Modify();
     end;
 
-    local procedure InitReqExcelBuffer(SalesHeaderDocNo: text)
+    local procedure ExportRequisitionBuffer(WorksheetTemplateName: code[10]; JournalBatchName: code[10]; SalesHeaderDocNo: code[20])
+    var
+        RequisitionBuffer: record "ZM Requesition Buffer Calc.";
+        reqExcelBuffer: Record "Excel Buffer" temporary;
+    begin
+        RequisitionBuffer.Reset();
+        RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
+        RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
+        RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
+        if RequisitionBuffer.FindFirst() then
+            repeat
+
+                CreateRequisitionBufferExcel(RequisitionBuffer, reqExcelBuffer, SalesHeaderDocNo);
+
+
+                reqExcelBuffer.CreateNewBook('Planificacion');
+
+                reqExcelBuffer.WriteSheet('Planif. ', COMPANYNAME, USERID);
+                reqExcelBuffer.CloseBook();
+                ReqExcelBuffer.SetFriendlyFilename('Planificación ' + WorksheetTemplateName);
+                ReqExcelBuffer.DownloadAndOpenExcel;
+            Until RequisitionBuffer.next() = 0;
+
+    end;
+
+    local procedure CreateRequisitionBufferExcel(var RequisitionBuffer: record "ZM Requesition Buffer Calc."; var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: code[20])
+    begin
+        CreateHeaderRequisitionBufferExcel(reqExcelBuffer, SalesHeaderDocNo);
+
+        CreateBodyRequisitionBufferExcel(RequisitionBuffer, reqExcelBuffer, SalesHeaderDocNo);
+    end;
+
+    local procedure CreateHeaderRequisitionBufferExcel(var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: code[20])
     var
         Item: Record Item;
-        InvProfile: Record "Inventory Profile";
         RecRef: RecordRef;
     begin
-
-        ReqExcelBuffer.DeleteAll();
-
         ReqExcelBuffer.AddColumn(CompanyName, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         ReqExcelBuffer.NewRow();
         ReqExcelBuffer.AddColumn('Pedidos:', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
@@ -724,6 +703,105 @@ codeunit 50108 "FuncionesFabricacion"
         ReqExcelBuffer.AddColumn('Plazo de entrega', false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
 
         ReqExcelBuffer.NewRow();
+    end;
+
+    local procedure CreateBodyRequisitionBufferExcel(var RequisitionBuffer: record "ZM Requesition Buffer Calc."; var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: code[20])
+    var
+        Item: Record Item;
+        Vendor: Record Vendor;
+        TempSKU: Record "Stockkeeping Unit";
+        i: Integer;
+    begin
+        if RequisitionBuffer.FindFirst() then
+            repeat
+                Item.Get(RequisitionBuffer."Item No.");
+                ReqExcelBuffer.AddColumn(Item."No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+                ReqExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+                ReqExcelBuffer.AddColumn(0, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                TempSKU.SetRange("Location Code", RequisitionBuffer."location Code");
+                TempSKU.SetRange("Item No.", RequisitionBuffer."Item No.");
+                if TempSKU.FindFirst() then begin
+                    ReqExcelBuffer.AddColumn(TempSKU."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(TempSKU."Minimum Order Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                end else begin
+                    ReqExcelBuffer.AddColumn(Item."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(Item."Order Multiple", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                end;
+                // DEMANDS
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Lín. venta", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Línea servicio", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Línea planificación proyecto", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Componente orden producción", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Línea de ensamblado", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Planif. componente", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Lín. hoja demanda", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Lín. transferencia", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                // SUPPLIES
+                ReqExcelBuffer.AddColumn(RequisitionBuffer.Inventario, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Aprov. Lín. hoja demanda", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Lín. compra", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Lín. orden prod.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Aprov. Línea de ensamblado", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Aprov. Lín. transferencia", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                ReqExcelBuffer.AddColumn(RequisitionBuffer."Cantidad para stock", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+
+                ReqExcelBuffer.AddColumn(Item."Vendor No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+                if Vendor.get(Item."Vendor No.") then;
+                ReqExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+                ReqExcelBuffer.AddColumn(Item."Lead Time Calculation", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+
+                ReqExcelBuffer.NewRow();
+
+            Until RequisitionBuffer.next() = 0;
+    end;
+
+    local procedure InitReqExcelBuffer(WorksheetTemplateName: code[10]; JournalBatchName: code[10])
+    var
+        RequisitionBuffer: record "ZM Requesition Buffer Calc.";
+    begin
+
+        RequisitionBuffer.Reset();
+        RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
+        RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
+        RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
+        RequisitionBuffer.DeleteAll();
+
+        RequisitionBuffer.Init();
+        UpdateRequisitionBufferHeader(RequisitionBuffer, WorksheetTemplateName, JournalBatchName);
+        RequisitionBuffer."Item No." := '';
+        RequisitionBuffer.Insert();
+    end;
+
+    local procedure UpdateRequisitionBufferHeader(var RequisitionBuffer: record "ZM Requesition Buffer Calc."; WorksheetTemplateName: code[10]; JournalBatchName: code[10])
+    var
+        myInt: Integer;
+    begin
+        RequisitionBuffer."Session ID" := RequisitionBuffer.GetActiveSession();
+        RequisitionBuffer."Worksheet Template Name" := WorksheetTemplateName;
+        RequisitionBuffer."Journal Batch Name" := JournalBatchName;
+    end;
+
+    local procedure GetRequisitionBufferExist(WorksheetTemplateName: code[10]; JournalBatchName: code[10]): Boolean
+    var
+        RequisitionBuffer: record "ZM Requesition Buffer Calc.";
+    begin
+        RequisitionBuffer.Reset();
+        RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
+        RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
+        RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
+        if RequisitionBuffer.FindFirst() then
+            exit(true);
+    end;
+
+    local procedure DeleteRequisitionBuffer(WorksheetTemplateName: code[10]; JournalBatchName: code[10]): Boolean
+    var
+        RequisitionBuffer: record "ZM Requesition Buffer Calc.";
+    begin
+        RequisitionBuffer.Reset();
+        RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
+        RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
+        RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
+        RequisitionBuffer.DeleteAll();
 
     end;
 

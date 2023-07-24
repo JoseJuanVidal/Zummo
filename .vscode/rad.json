@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":17385,"Kind":10,"Name":"ZM Requesition Buffer Calc.","PackagePath":"/src/src/table/Tab17385.ZMRequesitionBufferCalc.al"},{"Id":50127,"Kind":17,"Name":"STHInventory Setup","PackagePath":"/src/src/tableextension/Tab313-Ext50127.STHInventorySetup.al"},{"Id":50108,"Kind":11,"Name":"FuncionesFabricacion","PackagePath":"/src/src/codeunit/Cod50108.FuncionesFabricacion.al"}],"Removed":[]}
