@@ -96,6 +96,14 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Location Code Credit Memo"; "Location Code Credit Memo")
+                {
+                    ApplicationArea = all;
+                }
+                field("Bin Code Credit Memo"; "Bin Code Credit Memo")
+                {
+                    ApplicationArea = all;
+                }
             }
             group("Zummo IC")
             {

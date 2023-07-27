@@ -28973,6 +28973,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Motivo Retraso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesLineArchive - Field TextoMotivoRetraso_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 1024359529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Bin Code Credit Memo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Ubicación Abonos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Bin Code Credit Memo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 3517168080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Calendario Ofertas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Calendario Ofertas"</note>
@@ -29012,6 +29017,11 @@
           <source>Legend Regulations Plastic 2</source>
           <note from="Developer" annotates="general" priority="2">ESP="Leyenda Normativa Plástico 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Legend Regulations Plastic 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 4097745201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Location Code Credit Memo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Almacén Abonos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Location Code Credit Memo - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 584897431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Nº días fact vencidas</source>

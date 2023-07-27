@@ -1539,4 +1539,48 @@ codeunit 50106 "SalesEvents"
             if CustomerPriceGroup."Block without Sales Items" then
                 exit(true);
     end;
+
+
+    // =============               ====================
+    // ==  
+    // ==  CUANDO SE REALIZA UN ABONO, QUE PONGA AUTOMATICAMENTE EL ALMACEN CONFIGURADO EN VENTAS
+    // ==  
+    // ==  recojer el evento de 
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterInitHeaderDefaults', '', true, true)]
+    local procedure SalesLine_OnAfterInitHeaderDefaults(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header")
+    begin
+        case SalesLine."Document Type" of
+            SalesLine."Document Type"::"Return Order", SalesLine."Document Type"::"Credit Memo":
+                begin
+                    SalesLine_AssignLocationAbono(SalesLine);
+                end;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Copy Document Mgt.", 'OnAfterInsertToSalesLine', '', true, true)]
+    local procedure CopyDocumentMgt_OnAfterInsertToSalesLine(var ToSalesLine: Record "Sales Line"; FromSalesLine: Record "Sales Line")
+    begin
+        case ToSalesLine."Document Type" of
+            ToSalesLine."Document Type"::"Return Order", ToSalesLine."Document Type"::"Credit Memo":
+                begin
+                    SalesLine_AssignLocationAbono(ToSalesLine);
+                end;
+        end;
+    end;
+
+    local procedure SalesLine_AssignLocationAbono(var ToSalesLine: Record "Sales Line")
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        Location: Record Location;
+    begin
+        SalesSetup.Get();
+        if SalesSetup."Location Code Credit Memo" <> '' then
+            if Location.Get(SalesSetup."Location Code Credit Memo") then
+                if not Location."Use As In-Transit" then begin
+                    ToSalesLine."Location Code" := SalesSetup."Location Code Credit Memo";
+                    ToSalesLine."Bin Code" := SalesSetup."Bin Code Credit Memo";
+                end;
+
+    end;
 }

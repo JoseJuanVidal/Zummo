@@ -7164,6 +7164,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Dimension Detalle Fair - Property Caption</note>
           <target>Dimensión Detalle Feria</target>
         </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 2201476993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimension Detalle Fair</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dimensión Detalle Feria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Dimension Partida Fair - Property Caption</note>
+          <target>Dimensión Detalle Feria</target>
+        </trans-unit>
         <trans-unit id="Table 1677429823 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pre Invoice No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nª PreFactura"</note>
@@ -9167,6 +9173,171 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Productión Tools - Field Work Center - Property Caption</note>
           <target>Centro trabajo</target>
         </trans-unit>
+        <trans-unit id="Table 3894755688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requesition Buffer Calc.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calculo Hoja Demanda Buffer"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Property Caption</note>
+          <target>Calculo Hoja Demanda Buffer</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 2244989249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aprov. Lín. hoja demanda</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprov. Lín. hoja demanda"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Aprov. Lín. hoja demanda - Property Caption</note>
+          <target>Aprov. Lín. hoja demanda</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 2261703298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aprov. Lín. transferencia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprov. Lín. transferencia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Aprov. Lín. transferencia - Property Caption</note>
+          <target>Aprov. Lín. transferencia</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 3087201106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aprov. Línea de ensamblado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprov. Línea de ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Aprov. Línea de ensamblado - Property Caption</note>
+          <target>Aprov. Línea de ensamblado</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 2147463260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad mínima pedido</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad mínima pedido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Cantidad mínima pedido - Property Caption</note>
+          <target>Cantidad mínima pedido</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 2458580878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad para stock</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad para stock"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Cantidad para stock - Property Caption</note>
+          <target>Cantidad para stock</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 1686629606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad Pedir</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad Pedir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Cantidad Pedir - Property Caption</note>
+          <target>Cantidad Pedir</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 1966175092 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Componente orden producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Componente orden producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Componente orden producción - Property Caption</note>
+          <target>Componente orden producción</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 2542123572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cód. proveedor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Cód. proveedor - Property Caption</note>
+          <target>Cód. proveedor</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 964517455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demanda Lín. hoja demanda</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Demanda Lín. hoja demanda"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Demanda Lín. hoja demanda - Property Caption</note>
+          <target>Demanda Lín. hoja demanda</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 732660832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demanda Lín. transferencia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Demanda Lín. transferencia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Demanda Lín. transferencia - Property Caption</note>
+          <target>Demanda Lín. transferencia</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 3018622272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Demanda Línea de ensamblado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Demanda Línea de ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Demanda Línea de ensamblado - Property Caption</note>
+          <target>Demanda Línea de ensamblado</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 2006825773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Inventario - Property Caption</note>
+          <target>Inventario</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Item No. - Property Caption</note>
+          <target>Cód. producto</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 2704330142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Journal Batch Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 36507580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field location Code - Property Caption</note>
+          <target>Cód. Almacén</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 2481473917 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lín. compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lín. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Lín. compra - Property Caption</note>
+          <target>Lín. compra</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 1315384472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lín. compra	Lín. orden prod.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lín. compra	Lín. orden prod."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Lín. orden prod. - Property Caption</note>
+          <target>Lín. compra	Lín. orden prod.</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 3125279307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lín. venta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lín. venta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Lín. venta - Property Caption</note>
+          <target>Lín. venta</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 1442230358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Línea planificación proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Línea planificación proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Línea planificación proyecto - Property Caption</note>
+          <target>Línea planificación proyecto</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 1597306791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Línea servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Línea servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Línea servicio - Property Caption</note>
+          <target>Línea servicio</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 1886804381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre proveedor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Nombre proveedor - Property Caption</note>
+          <target>Nombre proveedor</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 437982588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Planif. componente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Planif. componente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Planif. componente - Property Caption</note>
+          <target>Planif. componente</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 1576288273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plazo de entrega</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plazo de entrega"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Plazo de entrega - Property Caption</note>
+          <target>Plazo de entrega</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 1829104285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Session ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Session ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 1518216553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Stock de seguridad</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Stock de seguridad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Stock de seguridad - Property Caption</note>
+          <target>Stock de seguridad</target>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 3384645827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Worksheet Template Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Worksheet Template Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1982879740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos"</note>
@@ -9344,6 +9515,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar el credito a %1 de %2 por %3?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method FinAseguradora - NamedType lblConfirm</note>
           <target>¿Desea eliminar el credito a %1 de %2 por %3?</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 365355346 - NamedType 1109635473" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sin ubicación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sin ubicación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method GetBinContentItemNo - NamedType lblWhioutBin</note>
+          <target>Sin ubicación</target>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 2665306276 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea actualizar los datos de Personal con los datos de la excel?</source>
@@ -31540,6 +31717,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesLineArchive - Field TextoMotivoRetraso_btc - Property Caption</note>
           <target>Desc. Motivo Retraso</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 1024359529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Bin Code Credit Memo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Ubicación Abonos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Bin Code Credit Memo - Property Caption</note>
+          <target>Cód. Ubicación Abonos</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 3517168080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Calendario Ofertas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Calendario Ofertas"</note>
@@ -31587,6 +31770,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Leyenda Normativa Plástico 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Legend Regulations Plastic 2 - Property Caption</note>
           <target>Leyenda Normativa Plástico 2</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 4097745201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Location Code Credit Memo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Almacén Abonos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Location Code Credit Memo - Property Caption</note>
+          <target>Cód. Almacén Abonos</target>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 584897431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Nº días fact vencidas</source>
@@ -32458,11 +32647,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Zum Resource - Field Es Material - Property Caption</note>
           <target>Es Material</target>
         </trans-unit>
-        <trans-unit id="TableExtension 2681093606 - Field 3065517585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
-          <source>Export Excel Requisition</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Export Excel Requisition - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2681093606 - Field 1613777343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>Fecha Diario dentro periodo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Diario dentro periodo"</note>
@@ -33313,6 +33497,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Recurso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Resource No. - Property Caption</note>
           <target>Nº Recurso</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 1817431479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Ubicaciones pedido por defecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ubicaciones pedido por defecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Ubicaciones pedido por defecto - Property Caption</note>
+          <target>Ubicaciones pedido por defecto</target>
         </trans-unit>
         <trans-unit id="TableExtension 2852714242 - Field 3988368718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Venta productos sin tarifa</source>

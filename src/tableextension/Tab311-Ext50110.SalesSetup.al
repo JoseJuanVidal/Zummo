@@ -165,5 +165,17 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             Caption = 'Show Item alert without tariff', Comment = 'ESP="Mostrar alerta producto sin tarifa"';
             DataClassification = CustomerContent;
         }
+        field(50210; "Location Code Credit Memo"; code[10])
+        {
+            Caption = 'Location Code Credit Memo', Comment = 'ESP="Cód. Almacén Abonos"';
+            DataClassification = CustomerContent;
+            TableRelation = Location;
+        }
+        field(50220; "Bin Code Credit Memo"; code[20])
+        {
+            Caption = 'Bin Code Credit Memo', Comment = 'ESP="Cód. Ubicación Abonos"';
+            DataClassification = CustomerContent;
+            TableRelation = Bin where("Location Code" = field("Location Code Credit Memo"));
+        }
     }
 }

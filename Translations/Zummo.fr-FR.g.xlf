@@ -5873,6 +5873,21 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Prod. Tools Ledger Entry - Field Resolution - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 2704330142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Journal Batch Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 1829104285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Session ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Session ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 3384645827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Worksheet Template Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Worksheet Template Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1982879740 - Field 2589406539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>driveId</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -11238,11 +11253,6 @@
           <source>Cód. Texto Factura</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH VAT Business Posting Group - Field Cód. Texto Factura - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2681093606 - Field 3065517585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
-          <source>Export Excel Requisition</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Export Excel Requisition - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>ABC Cliente</source>
