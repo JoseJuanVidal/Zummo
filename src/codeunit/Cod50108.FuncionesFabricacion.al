@@ -450,10 +450,9 @@ codeunit 50108 "FuncionesFabricacion"
     var
         InventorySetup: Record "Inventory Setup";
     begin
-        if GetRequisitionBufferExist(Rec."Worksheet Template Name", Rec."Journal Batch Name") then begin
-            if Confirm(lblConfirmExcel) then begin
-                InitReqExcelBuffer(Rec."Worksheet Template Name", rec."Journal Batch Name");
-            end;
+
+        if Confirm(lblConfirmExcel) then begin
+            InitReqExcelBuffer(Rec."Worksheet Template Name", rec."Journal Batch Name");
         end;
 
         commit;
