@@ -91,12 +91,10 @@ page 17208 "ZM CONSULTIA Invoice Lines"
                 field(Partida; Partida)
                 {
                     ApplicationArea = all;
-                    Editable = false;
                 }
                 field(Detalle; Detalle)
                 {
                     ApplicationArea = all;
-                    Editable = false;
                 }
                 field(Base; Rec.Base)
                 {

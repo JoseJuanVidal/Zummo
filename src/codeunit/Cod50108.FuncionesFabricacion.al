@@ -263,6 +263,7 @@ codeunit 50108 "FuncionesFabricacion"
     begin
         DemandInventoryProfile.SetRange("Due Date");
         Item.Get(TempSKU."Item No.");
+        RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
         RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
         RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
         RequisitionBuffer.SetRange("Item No.", TempSKU."Item No.");
@@ -374,9 +375,9 @@ codeunit 50108 "FuncionesFabricacion"
             RequisitionBuffer.SetRange("Worksheet Template Name", Rec."Worksheet Template Name");
             RequisitionBuffer.SetRange("Journal Batch Name", Rec."Journal Batch Name");
             RequisitionBuffer.SetRange("Item No.", Rec."No.");
-            if not RequisitionBuffer.FindFirst() then begin
-                RequisitionBuffer."Cantidad Pedir" += Rec.Quantity;
-
+            if RequisitionBuffer.FindFirst() then begin
+                RequisitionBuffer."Cantidad Pedir" := Rec.Quantity;
+                RequisitionBuffer.Modify();
             end;
         end;
     end;
@@ -555,11 +556,6 @@ codeunit 50108 "FuncionesFabricacion"
 
         end;
 
-        if Confirm(lblConfirmExcel) then begin
-            InitReqExcelBuffer(RequisitionWkshName.Name, 'PLANIF.');
-        end;
-
-
         commit;
 
         ItemPedido.SetRange("No.");
@@ -574,8 +570,10 @@ codeunit 50108 "FuncionesFabricacion"
         CalcPlan.InitializeRequest(today - 60, TODAY + 60, TRUE);
         CalcPlan.RunModal();
         clear(CalcPlan);
-
         commit;
+        if Confirm(lblConfirmExcel) then begin
+            InitReqExcelBuffer('APROV.', RequisitionWkshName.Name);
+        end;
         ItemCompra.SetRange("No.");
         ItemCompra.SetRange("Location Filter", 'MMPP');
         ItemCompra.SetRange("Replenishment System", ItemCompra."Replenishment System"::Purchase);
@@ -593,10 +591,10 @@ codeunit 50108 "FuncionesFabricacion"
         RefrescarHoja('PLANIF.', RequisitionWkshName."Name");
         RefrescarHoja('APROV.', RequisitionWkshName."Name");
 
-        if GetRequisitionBufferExist(RequisitionWkshName.Name, 'PLANIF.') then begin
-            ExportRequisitionBuffer(RequisitionWkshName.Name, 'PLANIF.', SalesHeader."No.");
+        if GetRequisitionBufferExist('APROV.', RequisitionWkshName.Name) then begin
+            ExportRequisitionBuffer('APROV.', RequisitionWkshName.Name, SalesHeader."No.");
 
-            DeleteRequisitionBuffer(RequisitionWkshName.Name, 'PLANIF.');
+            DeleteRequisitionBuffer('APROV..', RequisitionWkshName.Name);
         end;
     end;
 
@@ -605,29 +603,28 @@ codeunit 50108 "FuncionesFabricacion"
         RequisitionBuffer: record "ZM Requesition Buffer Calc.";
         reqExcelBuffer: Record "Excel Buffer" temporary;
     begin
+        CreateHeaderRequisitionBufferExcel(reqExcelBuffer, SalesHeaderDocNo);
         RequisitionBuffer.Reset();
         RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
-        RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
-        RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
+        // RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
+        // RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
         if RequisitionBuffer.FindFirst() then
             repeat
 
                 CreateRequisitionBufferExcel(RequisitionBuffer, reqExcelBuffer, SalesHeaderDocNo);
 
-
-                reqExcelBuffer.CreateNewBook('Planificacion');
-
-                reqExcelBuffer.WriteSheet('Planif. ', COMPANYNAME, USERID);
-                reqExcelBuffer.CloseBook();
-                ReqExcelBuffer.SetFriendlyFilename('Planificación ' + WorksheetTemplateName);
-                ReqExcelBuffer.DownloadAndOpenExcel;
             Until RequisitionBuffer.next() = 0;
+        reqExcelBuffer.CreateNewBook('Planificacion');
 
+        reqExcelBuffer.WriteSheet('Planif. ', COMPANYNAME, USERID);
+        reqExcelBuffer.CloseBook();
+        ReqExcelBuffer.SetFriendlyFilename('Planificación ' + WorksheetTemplateName);
+        ReqExcelBuffer.DownloadAndOpenExcel;
     end;
 
     local procedure CreateRequisitionBufferExcel(var RequisitionBuffer: record "ZM Requesition Buffer Calc."; var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: code[20])
     begin
-        CreateHeaderRequisitionBufferExcel(reqExcelBuffer, SalesHeaderDocNo);
+
 
         CreateBodyRequisitionBufferExcel(RequisitionBuffer, reqExcelBuffer, SalesHeaderDocNo);
     end;
@@ -714,43 +711,44 @@ codeunit 50108 "FuncionesFabricacion"
     begin
         if RequisitionBuffer.FindFirst() then
             repeat
-                Item.Get(RequisitionBuffer."Item No.");
-                ReqExcelBuffer.AddColumn(Item."No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-                ReqExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-                ReqExcelBuffer.AddColumn(0, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                TempSKU.SetRange("Location Code", RequisitionBuffer."location Code");
-                TempSKU.SetRange("Item No.", RequisitionBuffer."Item No.");
-                if TempSKU.FindFirst() then begin
-                    ReqExcelBuffer.AddColumn(TempSKU."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                    ReqExcelBuffer.AddColumn(TempSKU."Minimum Order Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                end else begin
-                    ReqExcelBuffer.AddColumn(Item."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                    ReqExcelBuffer.AddColumn(Item."Order Multiple", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                if Item.Get(RequisitionBuffer."Item No.") then begin
+                    ReqExcelBuffer.AddColumn(Item."No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+                    ReqExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Cantidad Pedir", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    TempSKU.SetRange("Location Code", RequisitionBuffer."location Code");
+                    TempSKU.SetRange("Item No.", RequisitionBuffer."Item No.");
+                    if TempSKU.FindFirst() then begin
+                        ReqExcelBuffer.AddColumn(TempSKU."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                        ReqExcelBuffer.AddColumn(TempSKU."Minimum Order Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    end else begin
+                        ReqExcelBuffer.AddColumn(Item."Safety Stock Quantity", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                        ReqExcelBuffer.AddColumn(Item."Order Multiple", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    end;
+                    // DEMANDS
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Lín. venta", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Línea servicio", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Línea planificación proyecto", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Componente orden producción", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Línea de ensamblado", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Planif. componente", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Lín. hoja demanda", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Lín. transferencia", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    // SUPPLIES
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer.Inventario, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Aprov. Lín. hoja demanda", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Lín. compra", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Lín. orden prod.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Aprov. Línea de ensamblado", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Aprov. Lín. transferencia", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Cantidad para stock", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+
+                    ReqExcelBuffer.AddColumn(Item."Vendor No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+                    if Vendor.get(Item."Vendor No.") then;
+                    ReqExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+                    ReqExcelBuffer.AddColumn(Item."Lead Time Calculation", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+
+                    ReqExcelBuffer.NewRow();
                 end;
-                // DEMANDS
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Lín. venta", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Línea servicio", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Línea planificación proyecto", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Componente orden producción", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Línea de ensamblado", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Planif. componente", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Lín. hoja demanda", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Lín. transferencia", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                // SUPPLIES
-                ReqExcelBuffer.AddColumn(RequisitionBuffer.Inventario, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Aprov. Lín. hoja demanda", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Lín. compra", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Lín. orden prod.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Aprov. Línea de ensamblado", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Aprov. Lín. transferencia", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-                ReqExcelBuffer.AddColumn(RequisitionBuffer."Cantidad para stock", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
-
-                ReqExcelBuffer.AddColumn(Item."Vendor No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-                if Vendor.get(Item."Vendor No.") then;
-                ReqExcelBuffer.AddColumn(Vendor.Name, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-                ReqExcelBuffer.AddColumn(Item."Lead Time Calculation", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-
-                ReqExcelBuffer.NewRow();
 
             Until RequisitionBuffer.next() = 0;
     end;
@@ -761,9 +759,7 @@ codeunit 50108 "FuncionesFabricacion"
     begin
 
         RequisitionBuffer.Reset();
-        RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
-        RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
-        RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
+        // RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
         RequisitionBuffer.DeleteAll();
 
         RequisitionBuffer.Init();
@@ -787,8 +783,9 @@ codeunit 50108 "FuncionesFabricacion"
     begin
         RequisitionBuffer.Reset();
         RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
-        RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
-        RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
+        RequisitionBuffer.SetRange("Item No.", '');
+        // RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
+        // RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
         if RequisitionBuffer.FindFirst() then
             exit(true);
     end;
@@ -799,8 +796,8 @@ codeunit 50108 "FuncionesFabricacion"
     begin
         RequisitionBuffer.Reset();
         RequisitionBuffer.SetRange("Session ID", RequisitionBuffer.GetActiveSession());
-        RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
-        RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
+        // RequisitionBuffer.SetRange("Worksheet Template Name", WorksheetTemplateName);
+        // RequisitionBuffer.SetRange("Journal Batch Name", JournalBatchName);
         RequisitionBuffer.DeleteAll();
 
     end;

@@ -37,8 +37,10 @@ table 17456 "ZM Contracts/Supplies Lines"
                 Case Type of
                     Type::Item:
                         begin
-                            if Item.Get("No.") then
+                            if Item.Get("No.") then begin
                                 Description := Item.Description;
+                                "Precio negociado" := Item."Last Direct Cost";
+                            end;
                         end;
                     Type::Account:
                         begin

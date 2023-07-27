@@ -1,4 +1,4 @@
-table 17416 "ZM CONSULTIA Producto-Proyecto"
+table 17409 "ZM CONSULTIA Producto-Proyecto"
 {
     DataClassification = CustomerContent;
     Caption = 'Producto - Proyecto', comment = 'ESP="Producto - Proyecto"';

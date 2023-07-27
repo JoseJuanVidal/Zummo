@@ -169,6 +169,12 @@ table 17414 "ZM CONSULTIA Invoice Header"
             Caption = 'Dimension Detalle Fair', comment = 'ESP="Dimensión Detalle Feria"';
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(3));
         }
+        field(63; "Dimension Partida Fair"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Dimension Detalle Fair', comment = 'ESP="Dimensión Detalle Feria"';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(8));
+        }
     }
 
     keys

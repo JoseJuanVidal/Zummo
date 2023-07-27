@@ -1396,7 +1396,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         CONSULTIAInvoiceLine.TestField(Partida);
         recNewDimSetEntry.Init();
         recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 8 Code";
-        recNewDimSetEntry.Validate("Dimension Value Code", CONSULTIAInvoiceLine.Partida);
+        recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
         recNewDimSetEntry.Insert();
         // DETALLE
         recNewDimSetEntry.Init();
@@ -1446,6 +1446,16 @@ codeunit 50104 "Zummo Inn. IC Functions"
             exit(CONSULTIAInvoiceLine.Detalle)
         end else begin
             exit(CONSULTIAInvoiceHeader."Dimension Detalle Fair");
+        end;
+    end;
+
+    local procedure GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
+    begin
+        if CONSULTIAInvoiceHeader."Dimension Partida Fair" = '' then begin
+            CONSULTIAInvoiceLine.TestField(Detalle);
+            exit(CONSULTIAInvoiceLine.Detalle)
+        end else begin
+            exit(CONSULTIAInvoiceHeader."Dimension Partida Fair");
         end;
     end;
 
@@ -1628,14 +1638,14 @@ codeunit 50104 "Zummo Inn. IC Functions"
         BudgetBuffer.SetRange("G/L Account No.");
         BudgetBuffer.SetRange("Dimension Value Code 1", GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // CECO
         BudgetBuffer.SetRange("Dimension Value Code 2", GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // PROYECTO
-        BudgetBuffer.SetRange("Dimension Value Code 3", CONSULTIAInvoiceLine.Partida);  // Partida
+        BudgetBuffer.SetRange("Dimension Value Code 3", GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // Partida
         BudgetBuffer.SetRange("Dimension Value Code 4", GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // DETALLE
         if not BudgetBuffer.FindFirst() then begin
             BudgetBuffer.Init();
             BudgetBuffer."G/L Account No." := CONSULTIAInvoiceLine.Ref_DPTO;
             BudgetBuffer."Dimension Value Code 1" := GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
             BudgetBuffer."Dimension Value Code 2" := GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
-            BudgetBuffer."Dimension Value Code 3" := CONSULTIAInvoiceLine.Partida;
+            BudgetBuffer."Dimension Value Code 3" := GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
             BudgetBuffer."Dimension Value Code 4" := GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
             BudgetBuffer.Insert();
         end;

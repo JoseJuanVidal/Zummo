@@ -19,6 +19,10 @@ page 17467 "ZM Contracts/Supplies Lines"
                 {
                     ApplicationArea = all;
                 }
+                field("No."; "No.")
+                {
+                    ApplicationArea = all;
+                }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = all;

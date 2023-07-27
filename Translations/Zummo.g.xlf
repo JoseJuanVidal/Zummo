@@ -6903,6 +6903,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Dimensión Detalle Feria"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Dimension Detalle Fair - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 2201476993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimension Detalle Fair</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dimensión Detalle Feria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Dimension Partida Fair - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1677429823 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pre Invoice No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nª PreFactura"</note>

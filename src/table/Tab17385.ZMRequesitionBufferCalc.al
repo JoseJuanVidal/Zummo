@@ -22,7 +22,7 @@ table 17385 "ZM Requesition Buffer Calc."
             DataClassification = CustomerContent;
             Caption = 'Item No.', comment = 'ESP="Cód. producto"';
         }
-        field(5; "Description"; Code[20])
+        field(5; "Description"; text[100])
         {
             DataClassification = CustomerContent;
             Caption = 'Descripción', comment = 'ESP="Descripción"';

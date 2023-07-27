@@ -114,6 +114,10 @@ page 17417 "ZM CONSULTIA Invoice Header"
                 {
                     ApplicationArea = all;
                 }
+                field("Dimension Partida Fair"; "Dimension Partida Fair")
+                {
+                    ApplicationArea = all;
+                }
                 field("Dimension Detalle Fair"; "Dimension Detalle Fair")
                 {
                     ApplicationArea = all;
