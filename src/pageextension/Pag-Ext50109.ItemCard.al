@@ -92,6 +92,10 @@ pageextension 50109 "ItemCard" extends "Item Card"
             {
                 ApplicationArea = all;
             }
+            field("Obtener Serie Consumo"; "Obtener Serie Consumo")
+            {
+                ApplicationArea = all;
+            }
         }
         addbefore("Routing No.")
         {

@@ -1294,7 +1294,7 @@ report 50111 "FacturaNacionalMaquinas"
                             //Calculo lotes
                             RecMemLotes.Reset();
                             RecMemLotes.DeleteAll();
-                            RetrieveLotAndExpFromPostedInv("Sales Invoice Line".RowID1(), RecMemLotes);
+                            RetrieveLotAndExpFromPostedInv("Sales Invoice Line".RowID1(), RecMemLotes, recIt."Obtener Serie Consumo");
 
                             if Type = type::" " then
                                 if (StrPos(Description, 'Shipment No.') <> 0) or (StrPos(Description, 'Nº albarán') <> 0) then
@@ -3004,7 +3004,7 @@ report 50111 "FacturaNacionalMaquinas"
                 "Sales Invoice Line"."EC Difference";
     end;
 
-    local procedure RetrieveLotAndExpFromPostedInv(InvoiceRowID: Text[250]; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary)
+    local procedure RetrieveLotAndExpFromPostedInv(InvoiceRowID: Text[250]; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary; SearchSerieParent: Boolean)
     var
         ValueEntryRelation: Record "Value Entry Relation";
         ValueEntry: Record "Value Entry";
@@ -3032,10 +3032,11 @@ report 50111 "FacturaNacionalMaquinas"
                     NumMov += 1;
                     RecMemEstadisticas.NoLote := ItemLedgEntry."Lot No.";
                     RecMemEstadisticas.NoSerie := ItemLedgEntry."Serial No.";
-                    SerialNoParent := GetSerialNoParent(ItemLedgEntry);
-                    if SerialNoParent <> '' then
-                        RecMemEstadisticas.NoSerie += StrSubstNo('    (Ref: %1)', SerialNoParent);
-
+                    if SearchSerieParent then begin
+                        SerialNoParent := GetSerialNoParent(ItemLedgEntry);
+                        if SerialNoParent <> '' then
+                            RecMemEstadisticas.NoSerie += StrSubstNo('    (Ref: %1)', SerialNoParent);
+                    end;
                     RecMemEstadisticas.Noproducto := ItemLedgEntry."Item No.";
                     RecMemEstadisticas.INSERT();
                 END;

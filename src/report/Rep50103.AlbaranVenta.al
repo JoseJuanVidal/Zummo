@@ -530,7 +530,7 @@ report 50103 "AlbaranVenta"
 
                             RecMemLotes.Reset();
                             RecMemLotes.DeleteAll();
-                            RetrieveLotAndExpFromPostedInv("Sales Shipment Line"."Document No.", "Sales Shipment Line"."Line No.", RecMemLotes);
+                            RetrieveLotAndExpFromPostedInv("Sales Shipment Line"."Document No.", "Sales Shipment Line"."Line No.", RecMemLotes, recit."Obtener Serie Consumo");
 
                             if not recProductoPeso.Get("No.") then
                                 clear(recProductoPeso);
@@ -1091,7 +1091,7 @@ report 50103 "AlbaranVenta"
     begin
     end;
 
-    local procedure RetrieveLotAndExpFromPostedInv(pNumDocumento: Code[20]; pNumLinea: Integer; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary)
+    local procedure RetrieveLotAndExpFromPostedInv(pNumDocumento: Code[20]; pNumLinea: Integer; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary; SearchSerieParent: Boolean)
     var
         ValueEntryRelation: Record "Value Entry Relation";
         ValueEntry: Record "Value Entry";
@@ -1115,10 +1115,11 @@ report 50103 "AlbaranVenta"
                 RecMemEstadisticas.NoLote := ItemLedgEntry."Lot No.";
                 RecMemEstadisticas.NoSerie := ItemLedgEntry."Serial No.";
                 RecMemEstadisticas.Noproducto := ItemLedgEntry."Item No.";
-                SerialNoParent := GetSerialNoParent(ItemLedgEntry);
-                if SerialNoParent <> '' then
-                    RecMemEstadisticas.NoSerie += StrSubstNo('    (Ref: %1)', SerialNoParent);
-
+                if SearchSerieParent then begin
+                    SerialNoParent := GetSerialNoParent(ItemLedgEntry);
+                    if SerialNoParent <> '' then
+                        RecMemEstadisticas.NoSerie += StrSubstNo('    (Ref: %1)', SerialNoParent);
+                end;
                 RecMemEstadisticas.INSERT();
             until ItemLedgEntry.Next() = 0;
     end;

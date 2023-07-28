@@ -350,6 +350,11 @@ tableextension 50108 "Item" extends Item  //27
             CalcFormula = lookup(Vendor.Name where("No." = field("Vendor No.")));
             Editable = false;
         }
+        field(50140; "Obtener Serie Consumo"; Boolean)
+        {
+            Caption = 'Obtener Serie Consumo', comment = 'ESP="Obtener Serie Consumo"';
+            DataClassification = CustomerContent;
+        }
         field(50150; Material; text[100])
         {
             DataClassification = CustomerContent;

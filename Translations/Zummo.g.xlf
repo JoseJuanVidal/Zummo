@@ -27348,6 +27348,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Material - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 4019005205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Obtener Serie Consumo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Obtener Serie Consumo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Obtener Serie Consumo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 966569728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Sales Classification List</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Clasificación Ventas"</note>
