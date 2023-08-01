@@ -61,11 +61,6 @@ page 17417 "ZM CONSULTIA Invoice Header"
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Proyecto; Proyecto)
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-                }
                 field(Ref_Ped_Cl; Ref_Ped_Cl)
                 {
                     ApplicationArea = All;
@@ -113,6 +108,10 @@ page 17417 "ZM CONSULTIA Invoice Header"
                 field("Global Dimension 1 code Fair"; "Global Dimension 1 code Fair")
                 {
                     ApplicationArea = all;
+                }
+                field(Proyecto; Proyecto)
+                {
+                    ApplicationArea = All;
                 }
                 field("Dimension Partida Fair"; "Dimension Partida Fair")
                 {

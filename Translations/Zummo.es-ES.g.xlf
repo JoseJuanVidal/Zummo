@@ -7165,10 +7165,10 @@
           <target>Dimensión Detalle Feria</target>
         </trans-unit>
         <trans-unit id="Table 1677429823 - Field 2201476993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Dimension Detalle Fair</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Dimensión Detalle Feria"</note>
+          <source>Dimension Partida Fair</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dimensión Partida Feria"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Dimension Partida Fair - Property Caption</note>
-          <target>Dimensión Detalle Feria</target>
+          <target>Dimensión Partida Feria</target>
         </trans-unit>
         <trans-unit id="Table 1677429823 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pre Invoice No.</source>

@@ -1452,8 +1452,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
     local procedure GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
     begin
         if CONSULTIAInvoiceHeader."Dimension Partida Fair" = '' then begin
-            CONSULTIAInvoiceLine.TestField(Detalle);
-            exit(CONSULTIAInvoiceLine.Detalle)
+            CONSULTIAInvoiceLine.TestField(Partida);
+            exit(CONSULTIAInvoiceLine.Partida)
         end else begin
             exit(CONSULTIAInvoiceHeader."Dimension Partida Fair");
         end;
