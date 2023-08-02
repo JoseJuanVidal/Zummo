@@ -1,11 +1,11 @@
-page 17416 "ZM CONSULTIA Invoice Headers"
+page 17419 "ZM CONSULTIA Posted Inv. Head."
 {
     PageType = List;
-    Caption = 'CONSULTIA Invoice Headers', comment = 'ESP="CONSULTIA Facturas"';
+    Caption = 'CONSULTIA Posted Invoice Headers', comment = 'ESP="CONSULTIA Hist. Facturas"';
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "ZM CONSULTIA Invoice Header";
-    SourceTableView = where(N_Factura = const(''));
+    SourceTableView = where(N_Factura = filter(<> ''));
     CardPageId = "ZM CONSULTIA Invoice Header";
     Editable = false;
     InsertAllowed = false;

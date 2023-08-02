@@ -31,6 +31,14 @@ page 17467 "ZM Contracts/Supplies Lines"
                 {
                     ApplicationArea = all;
                 }
+                field(Unidades; Unidades)
+                {
+                    ApplicationArea = all;
+                }
+                field("Line Amount"; "Line Amount")
+                {
+                    ApplicationArea = all;
+                }
                 field("Unidades compradas"; "Unidades compradas")
                 {
                     ApplicationArea = all;

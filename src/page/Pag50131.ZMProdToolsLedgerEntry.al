@@ -78,8 +78,11 @@ page 50131 "ZM Prod. Tools Ledger Entry"
     }
 
     trigger OnAfterGetRecord()
+    var
+        RefRecord: recordRef;
     begin
-        CurrPage."Attached Documents".Page.SetTableNo(50153, Rec."Prod. Tools code", rec."Entry No.");
+        RefRecord.Get(Rec.RecordId);
+        CurrPage."Attached Documents".Page.SetTableNo(50153, Rec."Prod. Tools code", rec."Entry No.", RefRecord);
         CurrPage."Attached Documents".Page.SetProdToolsLdgEntry_RecordRef(Rec);
     end;
 }

@@ -145,10 +145,13 @@ page 50130 "Productions tool"
     }
 
     trigger OnAfterGetRecord()
+    var
+        RefRecord: recordRef;
     begin
+        RefRecord.Get(Rec.RecordId);
         vComments := GetComments;
 
-        CurrPage."Attached Documents".Page.SetTableNo(50152, Rec.Code, 0);
+        CurrPage."Attached Documents".Page.SetTableNo(50152, Rec.Code, 0, RefRecord);
         CurrPage."Attached Documents".Page.SetProdTools_RecordRef(Rec);
     end;
 

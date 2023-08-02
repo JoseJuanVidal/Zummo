@@ -62,11 +62,12 @@ page 50058 "ZM Document Attachment Factbox"
         DocumentAttachmentDetails.RUNMODAL;
     end;
 
-    procedure SetTableNo(ptableId: Integer; pNo: code[20]; vLineNo: Integer)
+    procedure SetTableNo(ptableId: Integer; pNo: code[20]; vLineNo: Integer; RefRecord: RecordRef)
     begin
         iTableID := ptableId;
         cNo := pNo;
         LineNo := vLineNo;
+        RecRef := RefRecord;
     end;
 
     procedure SetProdTools_RecordRef(ZMProductiónTools: Record "ZM Productión Tools")

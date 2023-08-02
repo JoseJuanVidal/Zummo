@@ -2,8 +2,8 @@ table 17455 "ZM Contracts/Supplies Header"
 {
     Caption = 'Contracts and Supplies Header', Comment = 'ESP="Contratos/Suministros Cabecera"';
     DataClassification = CustomerContent;
-    // LookupPageId = "STH Contracts Suplies List";
-    // DrillDownPageId = "STH Contracts Suplies List";
+    LookupPageId = "ZM Contracts Suplies List";
+    DrillDownPageId = "ZM Contracts Suplies List";
 
     Permissions = tabledata 121 = rmid, tabledata 6651 = rimd;
     fields
@@ -29,23 +29,7 @@ table 17455 "ZM Contracts/Supplies Header"
 
             trigger OnValidate()
             begin
-                if xRec."Buy-from Vendor No." <> '' then
-                    if xRec."Buy-from Vendor No." = rec."Buy-from Vendor No." then
-                        exit;
-
-                GetVend("Buy-from Vendor No.");
-                Vend.CheckBlockedVendOnDocs(Vend, false);
-                "Buy-from Vendor Name" := Vend.Name;
-                "Buy-from Vendor Name 2" := Vend."Name 2";
-                "Buy-from Address" := Vend.Address;
-                "Buy-from Address 2" := Vend."Address 2";
-                "Buy-from City" := Vend.City;
-                "Buy-from Contact" := vend.Contact;
-                "Buy-from County" := Vend.County;
-                "Buy-from Country/Region Code" := Vend."Country/Region Code";
-                "Buy-to Post Code" := Vend."Post Code";
-                // "Payment Method Code" := Vend."Payment Method Code";
-                // "Payment Terms Code" := Vend."Payment Terms Code";
+                OnValidate_BuyFromVendorNo();
 
             end;
         }
@@ -145,7 +129,11 @@ table 17455 "ZM Contracts/Supplies Header"
             Caption = 'Posting Date', Comment = 'ESP="Fecha Registro"';
             DataClassification = CustomerContent;
         }
-
+        field(21; "VAT Registration No."; text[20])
+        {
+            Caption = 'VAT Registration No.', Comment = 'ESP="CIF/NIF"';
+            DataClassification = CustomerContent;
+        }
         field(50; "Contract No. Vendor"; Text[30])
         {
             Caption = 'Contract No. Vendor', Comment = 'ESP="Nº contrato proveedor"';
@@ -198,27 +186,14 @@ table 17455 "ZM Contracts/Supplies Header"
             CalcFormula = sum("ZM Contracts/Supplies Lines".Unidades where("Document No." = field("No.")));
             Editable = false;
         }
-        field(102; "Expend Quantity"; Decimal)
+        field(101; "Total Amount"; Decimal)
         {
-            Caption = 'Expend Quanity', comment = 'ESP="Cantidad Consumida"';
+            Caption = ' Total Amount', comment = 'ESP="Importe"';
             FieldClass = FlowField;
-            CalcFormula = sum("Purch. Rcpt. Line".Quantity where("Contracts No." = field("No.")));
+            CalcFormula = sum("ZM Contracts/Supplies Lines"."Line Amount" where("Document No." = field("No.")));
             Editable = false;
         }
-        field(103; "Return Quantity"; Decimal)
-        {
-            Caption = 'Return Quanity', comment = 'ESP="Cantidad Devolución"';
-            FieldClass = FlowField;
-            CalcFormula = sum("Return Shipment Line".Quantity where("Contracts No." = field("No.")));
-            Editable = false;
-        }
-        field(104; "Quantity in Purch. Order"; Decimal)
-        {
-            Caption = 'Quantity in Purch. Order', comment = 'ESP="Cantidad pdte. Pedidos Compra"';
-            FieldClass = FlowField;
-            CalcFormula = sum("Purchase Line"."Outstanding Quantity" where("Contracts No." = field("No.")));
-            Editable = false;
-        }
+
         field(105; "No. of Purchase Line"; Integer)
         {
             Caption = 'No. of Purchase Order', comment = 'ESP="Nº de Pedidos de Compra"';
@@ -276,9 +251,10 @@ table 17455 "ZM Contracts/Supplies Header"
     local procedure InitRecord()
     begin
         GetPurchSetup();
-        "Posting Date" := WorkDate();
-        "Document Date" := WorkDate();
-        "Date creation" := WorkDate();
+        Rec."Posting Date" := WorkDate();
+        Rec."Document Date" := WorkDate();
+        Rec."Date creation" := WorkDate();
+        Rec."User Id" := UserId;
     end;
 
     local procedure GetVend(VendNo: Code[20])
@@ -308,7 +284,9 @@ table 17455 "ZM Contracts/Supplies Header"
 
     procedure Release()
     begin
-        // TestField(Status, Status::Abierto);
+        TestField(Status, Status::Abierto);
+        TestField("Data Start Validity");
+        TestField("Date End Validity");
         if Confirm(MsgConfirmRelease, true, "No.") then begin
             // Status := Status::lanzado;
             Modify();
@@ -333,4 +311,27 @@ table 17455 "ZM Contracts/Supplies Header"
         ContractLine.DeleteAll(true);
     end;
 
+    local procedure OnValidate_BuyFromVendorNo()
+    var
+        myInt: Integer;
+    begin
+        if xRec."Buy-from Vendor No." <> '' then
+            if xRec."Buy-from Vendor No." = rec."Buy-from Vendor No." then
+                exit;
+
+        GetVend("Buy-from Vendor No.");
+        Vend.CheckBlockedVendOnDocs(Vend, false);
+        "Buy-from Vendor Name" := Vend.Name;
+        "Buy-from Vendor Name 2" := Vend."Name 2";
+        "Buy-from Address" := Vend.Address;
+        "Buy-from Address 2" := Vend."Address 2";
+        "Buy-from City" := Vend.City;
+        "Buy-from Contact" := vend.Contact;
+        "Buy-from County" := Vend.County;
+        "Buy-from Country/Region Code" := Vend."Country/Region Code";
+        "Buy-to Post Code" := Vend."Post Code";
+        "VAT Registration No." := Vend."VAT Registration No.";
+        "Payment Method Code" := Vend."Payment Method Code";
+        "Payment Terms Code" := Vend."Payment Terms Code";
+    end;
 }

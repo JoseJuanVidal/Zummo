@@ -49,28 +49,6 @@ page 17465 "ZM Contracts Suplies List"
                 {
                     ApplicationArea = all;
                 }
-                field("Expend Quantity"; Rec."Expend Quantity")
-                {
-                    ApplicationArea = all;
-                }
-                field("Return Quantity"; Rec."Return Quantity")
-                {
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    var
-                        ReturnShipmentLines: Record "Return Shipment Line";
-                        PostedReturnShipmentLines: Page "Posted Return Shipment Lines";
-                    begin
-                        ReturnShipmentLines.SetRange("Contracts No.", Rec."No.");
-                        PostedReturnShipmentLines.SetTableView(ReturnShipmentLines);
-                        PostedReturnShipmentLines.RunModal();
-                    end;
-                }
-                field("Quantity in Purch. Order"; Rec."Quantity in Purch. Order")
-                {
-                    ApplicationArea = all;
-                }
                 field("No. of Purchase Line"; "No. of Purchase Line")
                 {
                     ApplicationArea = all;
@@ -86,7 +64,24 @@ page 17465 "ZM Contracts Suplies List"
                 }
             }
         }
+        area(factboxes)
+        {
+            part("Attachment Document"; "ZM Document Attachment Factbox")
+            {
+                ApplicationArea = all;
+                Caption = 'Attachment Document', comment = 'ESP="Documentos adjuntos"';
+                SubPageLink = "Table ID" = const(17455), "No." = field("No.");
+            }
+
+        }
     }
+    trigger OnAfterGetRecord()
+    var
+        RefRecord: recordRef;
+    begin
+        RefRecord.Get(Rec.RecordId);
+        CurrPage."Attachment Document".Page.SetTableNo(17455, Rec."No.", 0, RefRecord);
+    end;
 }
 
 

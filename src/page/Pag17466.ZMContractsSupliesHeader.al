@@ -56,6 +56,15 @@ page 17466 "ZM Contracts Suplies Header"
                 {
                     ApplicationArea = all;
                 }
+                field("User Id"; "User Id")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field("Total Amount"; "Total Amount")
+                {
+                    ApplicationArea = all;
+                }
                 field("No. of Purchase Line"; Rec."No. of Purchase Line")
                 {
                     ApplicationArea = all;
@@ -79,6 +88,12 @@ page 17466 "ZM Contracts Suplies Header"
                         Importance = Additional;
                         QuickEntry = false;
                         Visible = false;
+                    }
+                    field("VAT Registration No."; "VAT Registration No.")
+                    {
+                        ApplicationArea = All;
+                        Importance = Additional;
+                        QuickEntry = false;
                     }
                     field("Buy-from Address"; Rec."Buy-from Address")
                     {
@@ -134,25 +149,15 @@ page 17466 "ZM Contracts Suplies Header"
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
             }
-            group(totales)
-            {
-                field("Expend Quantity"; Rec."Expend Quantity")
-                {
-                    ApplicationArea = all;
-                }
-                field("Return Quantity"; Rec."Return Quantity")
-                {
-                    ApplicationArea = all;
-                }
-                field("Quantity in Purch. Order"; Rec."Quantity in Purch. Order")
-                {
-                    ApplicationArea = all;
-                }
-            }
-
         }
         area(FactBoxes)
         {
+            part("Attachment Document"; "ZM Document Attachment Factbox")
+            {
+                ApplicationArea = all;
+                Caption = 'Attachment Document', comment = 'ESP="Documentos adjuntos"';
+                SubPageLink = "Table ID" = const(17455), "No." = field("No.");
+            }
             systempart(Links; Links)
             {
                 ApplicationArea = Recordlinks;
@@ -221,4 +226,12 @@ page 17466 "ZM Contracts Suplies Header"
             }
         }
     }
+
+    trigger OnAfterGetRecord()
+    var
+        RefRecord: recordRef;
+    begin
+        RefRecord.Get(Rec.RecordId);
+        CurrPage."Attachment Document".Page.SetTableNo(17455, Rec."No.", 0, RefRecord);
+    end;
 }

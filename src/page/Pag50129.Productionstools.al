@@ -117,8 +117,11 @@ page 50129 "Productions tools"
     }
 
     trigger OnAfterGetRecord()
+    var
+        RefRecord: recordRef;
     begin
-        CurrPage."Attached Documents".Page.SetTableNo(50152, Rec.Code, 0);
+        RefRecord.Get(Rec.RecordId);
+        CurrPage."Attached Documents".Page.SetTableNo(50152, Rec.Code, 0, RefRecord);
         CurrPage."Attached Documents".Page.SetProdTools_RecordRef(Rec);
 
     end;

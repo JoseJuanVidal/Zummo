@@ -230,6 +230,13 @@ page 17417 "ZM CONSULTIA Invoice Header"
             }
         }
     }
+    trigger OnAfterGetRecord()
+    var
+        RefRecord: recordRef;
+    begin
+        RefRecord.Get(Rec.RecordId);
+        CurrPage."Attachment Document".Page.SetTableNo(17414, Rec.N_Factura, 0, RefRecord);
+    end;
 
     var
         CONSULTIAFunciones: Codeunit "Zummo Inn. IC Functions";

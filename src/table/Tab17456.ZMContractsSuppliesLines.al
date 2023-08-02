@@ -68,11 +68,27 @@ table 17456 "ZM Contracts/Supplies Lines"
             Caption = 'Precio negociado', Comment = 'ESP="Precio negociado"';
             DataClassification = CustomerContent;
             DecimalPlaces = 0 : 5;
+
+            trigger OnValidate()
+            begin
+                CalcLineAmount();
+            end;
         }
         field(11; "Unidades"; Decimal)
         {
             Caption = 'Unidades', Comment = 'ESP="Unidades"';
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            begin
+                CalcLineAmount();
+            end;
+        }
+        field(12; "Line Amount"; Decimal)
+        {
+            Caption = 'Line Amount', Comment = 'ESP="Importe Línea"';
+            DataClassification = CustomerContent;
+            Editable = false;
         }
         field(13; "Unidades compradas"; Decimal)
         {
@@ -145,5 +161,12 @@ table 17456 "ZM Contracts/Supplies Lines"
         CalcFields("Unidades compradas", "Unidades Devolución");
         if ("Unidades compradas" <> 0) or ("Unidades Devolución" <> 0) then
             Error(MsgDelete);
+    end;
+
+    local procedure CalcLineAmount()
+    var
+        myInt: Integer;
+    begin
+        Rec."Line Amount" := Rec."Precio negociado" * Rec.Unidades;
     end;
 }
