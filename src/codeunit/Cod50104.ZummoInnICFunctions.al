@@ -1102,8 +1102,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         GlobalDim2Code: code[20];
         DimSetID: Integer;
     begin
-        // CECO - Partida - Detalle
-        // 1       8           3
+        // CECO - Partida - Detalle - Depart
+        // 1       8           3         4
         GLSetup.Get();
         TableID[1] := Database::Employee;
         No[1] := CONSULTIAInvoiceLine.IdCorp_Usuario;
@@ -1116,6 +1116,10 @@ codeunit 50104 "Zummo Inn. IC Functions"
         DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
         if DimSetEntry.FindFirst() then
             CONSULTIAInvoiceLine.Partida := DimSetEntry."Dimension Value Code";
+        DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
+        if DimSetEntry.FindFirst() then
+            CONSULTIAInvoiceLine.DEPART := DimSetEntry."Dimension Value Code";
+
     end;
 
     procedure GetGLAccountDimensionsValue(var CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line")
@@ -1266,6 +1270,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
         PurchaseHeader.InitInsert();
         PurchaseHeader.Validate("Buy-from Vendor No.", CONSULTIAInvoiceHeader."Vendor No.");
+        PurchaseHeader.Validate("Posting Date", WorkDate());
         PurchaseHeader.Validate("Document Date", CONSULTIAInvoiceHeader.F_Factura);
         PurchaseHeader."Vendor Invoice No." := CONSULTIAInvoiceHeader.N_Factura;
         PurchaseHeader."Vendor Shipment No." := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Vendor Shipment No."));
@@ -1403,7 +1408,13 @@ codeunit 50104 "Zummo Inn. IC Functions"
         recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 3 Code";
         recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
         recNewDimSetEntry.Insert();
-
+        // DEPART CODIGO (APROBACIONES)
+        if CONSULTIAInvoiceLine.DEPART <> '' then begin
+            recNewDimSetEntry.Init();
+            recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 4 Code";
+            recNewDimSetEntry.Validate("Dimension Value Code", CONSULTIAInvoiceLine.DEPART);
+            recNewDimSetEntry.Insert();
+        end;
         Clear(cduDimMgt);
         intDimSetId := cduDimMgt.GetDimensionSetID(recNewDimSetEntry);
         clear(cduCambioDim);

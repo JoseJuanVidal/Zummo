@@ -140,6 +140,12 @@ table 17415 "ZM CONSULTIA Invoice Line"
             DataClassification = CustomerContent;
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(3));
         }
+        field(55; "DEPART"; code[50])
+        {
+            Caption = 'DEPART', comment = 'ESP="DEPART"';
+            DataClassification = CustomerContent;
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(4));
+        }
     }
 
     keys

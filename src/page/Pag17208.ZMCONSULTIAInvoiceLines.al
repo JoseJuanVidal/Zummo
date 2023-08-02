@@ -96,6 +96,10 @@ page 17208 "ZM CONSULTIA Invoice Lines"
                 {
                     ApplicationArea = all;
                 }
+                field(DEPART; DEPART)
+                {
+                    ApplicationArea = all;
+                }
                 field(Base; Rec.Base)
                 {
                     ApplicationArea = All;

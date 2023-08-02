@@ -7337,6 +7337,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field CodigoProducto - Property Caption</note>
           <target>CodigoProducto</target>
         </trans-unit>
+        <trans-unit id="Table 368717912 - Field 946056498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DEPART</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DEPART"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Line - Field DEPART - Property Caption</note>
+          <target>DEPART</target>
+        </trans-unit>
         <trans-unit id="Table 368717912 - Field 3600645700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desc_servicio</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc_servicio"</note>
