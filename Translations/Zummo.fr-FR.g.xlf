@@ -7452,10 +7452,10 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page WS Purchase Line - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1020334120 - Action 2768971232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1020334120 - Action 2950845476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cambiar Estado</source>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Contracts Suplies Header - Action Action13 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Contracts Suplies Header - Action Estado - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 489504416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents Attached</source>

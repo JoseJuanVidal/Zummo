@@ -7540,6 +7540,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - NamedType MsgConfirmReopen</note>
           <target>¿Esta seguro de Volver a Abrir el contrato %1?</target>
         </trans-unit>
+        <trans-unit id="Table 2355618573 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Blocked - Property Caption</note>
+          <target>Bloqueado</target>
+        </trans-unit>
         <trans-unit id="Table 2355618573 - Field 4003957413 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Buy-from Address</source>
           <note from="Developer" annotates="general" priority="2">ESP="Compra a-Dirección"</note>
@@ -7695,6 +7701,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad Total"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Quantity Total - Property Caption</note>
           <target>Cantidad Total</target>
+        </trans-unit>
+        <trans-unit id="Table 2355618573 - Field 1109148460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Salesperson code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Vendedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Salesperson code - Property Caption</note>
+          <target>Cód. Vendedor</target>
         </trans-unit>
         <trans-unit id="Table 2355618573 - Field 3399585325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Salesperson/Purchaser</source>
@@ -14634,6 +14646,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Posted Inv. Head. - Control Attachment Document - Property Caption</note>
           <target>Documentos adjuntos</target>
         </trans-unit>
+        <trans-unit id="Page 1020334120 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Approve,Release,Posting,Prepare,Order,Request Approval,Print/Send,Navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Proceso,Informe,Aprobar,Cambiar Estado,Registro,Preparar,Pedido,Solicitud Aprobación,Imprimir/Enviar,Navegar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Contracts Suplies Header - Property PromotedActionCategories</note>
+          <target>Nuevo,Proceso,Informe,Aprobar,Cambiar Estado,Registro,Preparar,Pedido,Solicitud Aprobación,Imprimir/Enviar,Navegar</target>
+        </trans-unit>
         <trans-unit id="Page 1020334120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contracts Suplies</source>
           <note from="Developer" annotates="general" priority="2">ESP="Contratos/Suministros"</note>
@@ -14646,10 +14664,16 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Contracts Suplies Header - Control Attachment Document - Property Caption</note>
           <target>Documentos adjuntos</target>
         </trans-unit>
-        <trans-unit id="Page 1020334120 - Action 2768971232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1020334120 - Action 3109977918 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Purch. Order</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear Pedido Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Contracts Suplies Header - Action CreateOrder - Property Caption</note>
+          <target>Crear Pedido Compra</target>
+        </trans-unit>
+        <trans-unit id="Page 1020334120 - Action 2950845476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cambiar Estado</source>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Contracts Suplies Header - Action Action13 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Contracts Suplies Header - Action Estado - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3445884387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contracts Suplies List</source>
@@ -33509,6 +33533,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Config. Contabilidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Config. Contabilidad - Property Caption</note>
           <target>Config. Contabilidad</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 1217608366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Contrats/Suppliers</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Contratos/Suministros"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Contrats/Suppliers - Property Caption</note>
+          <target>Contratos/Suministros</target>
         </trans-unit>
         <trans-unit id="TableExtension 2852714242 - Field 1285670092 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Imp. Ped. Venta mostrar comentarios</source>

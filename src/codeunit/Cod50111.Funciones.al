@@ -2720,5 +2720,30 @@ codeunit 50111 "Funciones"
         if Bin.Get(LocationCode, BinCode) then
             exit(GetExtensionFieldValueText(bin.RecordId, 50604, false));   //  NAVE
     end;
+
+
+    // =============     FUNCIONES DE CONTRATOS Y SUMINISTROS          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+
+    procedure ContractsCreatePurchaseOrder(Contracts: record "ZM Contracts/Supplies Header")
+    begin
+        // mostramos page para seleccionar los datos de la linea, cantidad, activo/cuenta/proyecto
+        if not LineDataSelection(Contracts) then
+            exit;
+    end;
+
+    local procedure LineDataSelection(Contracts: record "ZM Contracts/Supplies Header"): Boolean
+    var
+        ContractsLine: Record "ZM Contracts/Supplies Lines";
+        ContractsLines: page "ZM Contracts/Supplies Lines";
+    begin
+        ContractsLine.Reset();
+        ContractsLine.SetRange("Document No.", Contracts."No.");
+        ContractsLines.SetTableView(ContractsLine);
+        ContractsLines.RunModal();
+    end;
 }
 

@@ -1,6 +1,8 @@
 table 17456 "ZM Contracts/Supplies Lines"
 {
     Caption = 'Contracts/Supplies Lines', Comment = 'ESP="Contratos/Suministros Cabecera"';
+    DrillDownPageId = "ZM Contracts/Supplies Lines";
+    LookupPageId = "ZM Contracts/Supplies Lines";
 
     DataClassification = CustomerContent;
 

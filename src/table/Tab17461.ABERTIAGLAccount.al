@@ -102,6 +102,14 @@ table 17461 "ABERTIA GL Account"
             repeat
                 Window.Update(1, GLAccount."No.");
                 ABGLAccount.Reset();
+                case CompanyName of
+                    'ZUMMO':
+                        ABGLAccount.SetRange("00 - Origen", 'ZIM');
+                    'INVESTMENTS':
+                        ABGLAccount.SetRange("00 - Origen", 'ZINV');
+                    else
+                        ABGLAccount.SetRange("00 - Origen", '');
+                end;
                 if StrLen(GLAccount."No.") >= 1 then begin
                     Evaluate(Cuenta, Copystr(GLAccount."No.", 1, 1));
                     ABGLAccount.SetRange("C7 - Cuenta1", Cuenta);

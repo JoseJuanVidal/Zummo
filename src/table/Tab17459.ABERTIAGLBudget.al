@@ -74,6 +74,14 @@ table 17459 "ABERTIA GL Budget"
             repeat
                 Window.Update(1, GLBudget."Name");
                 GLBudgetEntry.Reset();
+                case CompanyName of
+                    'ZUMMO':
+                        ABGLBudget.SetRange("00 - Origen", 'ZIM');
+                    'INVESTMENTS':
+                        ABGLBudget.SetRange("00 - Origen", 'ZINV');
+                    else
+                        ABGLBudget.SetRange("00 - Origen", '');
+                end;
                 GLBudgetEntry.SetRange("Budget Name", GLBudget.Name);
                 if GLBudgetEntry.FindFirst() then
                     repeat

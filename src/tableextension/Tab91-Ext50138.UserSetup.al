@@ -45,5 +45,10 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             DataClassification = CustomerContent;
             Caption = 'Ubicaciones pedido por defecto', comment = 'ESP="Ubicaciones pedido por defecto"';
         }
+        field(50120; "Contrats/Suppliers"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Contrats/Suppliers', comment = 'ESP="Contratos/Suministros"';
+        }
     }
 }

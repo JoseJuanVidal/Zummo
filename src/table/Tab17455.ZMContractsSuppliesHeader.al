@@ -179,6 +179,18 @@ table 17455 "ZM Contracts/Supplies Header"
             Caption = 'Currency', comment = 'ESP="Cód. Divisa"';
             TableRelation = Currency;
         }
+        field(60; "Salesperson code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Salesperson code', comment = 'ESP="Cód. Vendedor"';
+            TableRelation = "Salesperson/Purchaser";
+        }
+        field(61; "Blocked"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Blocked', comment = 'ESP="Bloqueado"';
+            TableRelation = "Salesperson/Purchaser";
+        }
         field(100; "Quantity Total"; Decimal)
         {
             Caption = 'Quanity Total', comment = 'ESP="Cantidad Total"';
@@ -223,6 +235,11 @@ table 17455 "ZM Contracts/Supplies Header"
         InitInsert();
     end;
 
+    trigger OnModify()
+    begin
+        TestOpen();
+    end;
+
     trigger OnDelete()
     begin
         DeleteLines;
@@ -232,6 +249,7 @@ table 17455 "ZM Contracts/Supplies Header"
         Vend: Record Vendor;
         PurchSetup: Record "Purchases & Payables Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        Funciones: Codeunit Funciones;
         MsgConfirmClose: Label '¿Esta seguro de cerrar el contrato %1?', Comment = 'ESP="¿Esta seguro de cerrar el contrato %1?"';
         MsgConfirmRelease: Label '¿Esta seguro de lanzar el contrato %1?', Comment = 'ESP="¿Esta seguro de Lanzar el contrato %1?"';
         MsgConfirmReopen: Label '¿Esta seguro de Volver a Abrir el contrato %1?', Comment = 'ESP="¿Esta seguro de Volver a Abrir el contrato %1?"';
@@ -288,7 +306,7 @@ table 17455 "ZM Contracts/Supplies Header"
         TestField("Data Start Validity");
         TestField("Date End Validity");
         if Confirm(MsgConfirmRelease, true, "No.") then begin
-            // Status := Status::lanzado;
+            Status := Status::lanzado;
             Modify();
         end;
 
@@ -297,10 +315,14 @@ table 17455 "ZM Contracts/Supplies Header"
     procedure VolverAbrir()
     begin
         if Confirm(MsgConfirmReopen, true, "No.") then begin
-            // Status := Status::Abierto;
+            Status := Status::Abierto;
             Modify();
         end;
+    end;
 
+    procedure TestOpen()
+    begin
+        Rec.TestField(Status, Rec.Status::Abierto);
     end;
 
     local procedure DeleteLines()
@@ -333,5 +355,12 @@ table 17455 "ZM Contracts/Supplies Header"
         "VAT Registration No." := Vend."VAT Registration No.";
         "Payment Method Code" := Vend."Payment Method Code";
         "Payment Terms Code" := Vend."Payment Terms Code";
+    end;
+
+    procedure CreatePurchaseOrder()
+    var
+
+    begin
+        Funciones.ContractsCreatePurchaseOrder(Rec);
     end;
 }

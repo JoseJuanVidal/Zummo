@@ -14,7 +14,7 @@ page 50056 "ZM CimWorks Item"
         {
             repeater(General)
             {
-                field(order; OrderNo)
+                field(Lanzamiento; OrderNo)
                 {
                     ApplicationArea = all;
 

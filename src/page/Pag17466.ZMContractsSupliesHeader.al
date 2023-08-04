@@ -5,7 +5,7 @@ page 17466 "ZM Contracts Suplies Header"
     PageType = Document;
     SourceTable = "ZM Contracts/supplies Header";
     PromotedActionCategories = 'New,Process,Report,Approve,Release,Posting,Prepare,Order,Request Approval,Print/Send,Navigate',
-        Comment = 'Nuevo,Proceso,Informe,Aprobar,Cambiar Estado,Registro,Preparar,Pedido,Solicitud Aprobación,Imprimir/Enviar,Navegar';
+        Comment = 'ESP="Nuevo,Proceso,Informe,Aprobar,Cambiar Estado,Registro,Preparar,Pedido,Solicitud Aprobación,Imprimir/Enviar,Navegar"';
     RefreshOnActivate = true;
 
     layout
@@ -52,7 +52,23 @@ page 17466 "ZM Contracts Suplies Header"
                     ApplicationArea = All;
                     Visible = false;
                 }
+                field("Shipment Method Code"; "Shipment Method Code")
+                {
+                    ApplicationArea = all;
+                }
+                field(Currency; Currency)
+                {
+                    ApplicationArea = all;
+                }
+                field("Salesperson code"; "Salesperson code")
+                {
+                    ApplicationArea = all;
+                }
                 field(Status; Rec.Status)
+                {
+                    ApplicationArea = all;
+                }
+                field(Blocked; Blocked)
                 {
                     ApplicationArea = all;
                 }
@@ -173,7 +189,24 @@ page 17466 "ZM Contracts Suplies Header"
     {
         area(Processing)
         {
-            group(Action13)
+            group(creation)
+            {
+                action(CreateOrder)
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Create Purch. Order', comment = 'ESP="Crear Pedido Compra"';
+                    Image = CreateDocument;
+                    Promoted = true;
+                    PromotedCategory = New;
+
+                    trigger OnAction()
+                    begin
+                        ActionCreatePurchaseOrder();
+                    end;
+
+                }
+            }
+            group(Estado)
             {
 
                 Caption = 'Cambiar Estado';
@@ -227,11 +260,27 @@ page 17466 "ZM Contracts Suplies Header"
         }
     }
 
+    trigger OnOpenPage()
+    begin
+        if UserSetup.get(UserId) then
+            if UserSetup."Contrats/Suppliers" then
+                exit;
+        CurrPage.Editable := false;
+    end;
+
     trigger OnAfterGetRecord()
     var
         RefRecord: recordRef;
     begin
         RefRecord.Get(Rec.RecordId);
         CurrPage."Attachment Document".Page.SetTableNo(17455, Rec."No.", 0, RefRecord);
+    end;
+
+    var
+        UserSetup: Record "User Setup";
+
+    local procedure ActionCreatePurchaseOrder()
+    begin
+        Rec.CreatePurchaseOrder();
     end;
 }

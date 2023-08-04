@@ -277,6 +277,14 @@ table 17458 "ABERTIA GL Entry"
                 Window.Update(1, GLEntry."Entry No.");
                 Window.Update(2, GLEntry."Posting Date");
                 ABGLEntry.Reset();
+                case CompanyName of
+                    'ZUMMO':
+                        ABGLEntry.SetRange("00 - Origen", 'ZIM');
+                    'INVESTMENTS':
+                        ABGLEntry.SetRange("00 - Origen", 'ZINV');
+                    else
+                        ABGLEntry.SetRange("00 - Origen", '');
+                end;
                 ABGLEntry.SetRange("Entry No_", GLEntry."Entry No.");
                 if not ABGLEntry.FindFirst() then begin
                     UpdateABGLEntry(GLEntry, ABGLEntry);
