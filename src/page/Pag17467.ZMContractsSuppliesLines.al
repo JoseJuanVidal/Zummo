@@ -82,6 +82,14 @@ page 17467 "ZM Contracts/Supplies Lines"
                         page.RunModal(0, PurchaseLine);
                     end;
                 }
+                field("Dimension 1 code"; "Dimension 1 code")
+                {
+                    ApplicationArea = all;
+                }
+                field("Dimension 2 code"; "Dimension 2 code")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

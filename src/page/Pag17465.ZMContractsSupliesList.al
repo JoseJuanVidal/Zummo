@@ -33,7 +33,7 @@ page 17465 "ZM Contracts Suplies List"
                 {
                     ApplicationArea = All;
                 }
-                field("Data Start Validity"; Rec."Data Start Validity")
+                field("Date Start Validity"; Rec."Date Start Validity")
                 {
                     ApplicationArea = All;
                 }

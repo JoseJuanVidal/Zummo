@@ -63,9 +63,9 @@ table 17455 "ZM Contracts/Supplies Header"
             Caption = 'Buy-from Contact', Comment = 'ESP="Compra a-Contacto"';
             DataClassification = CustomerContent;
         }
-        field(9; "Buy-to Post Code"; Code[20])
+        field(9; "Buy-from Post Code"; Code[20])
         {
-            Caption = 'Buy-to Post Code', Comment = 'ESP="Compra a-C.P."';
+            Caption = 'Buy-from Post Code', Comment = 'ESP="Compra a-C.P."';
             DataClassification = CustomerContent;
         }
         field(10; "Buy-from County"; Text[30])
@@ -144,9 +144,9 @@ table 17455 "ZM Contracts/Supplies Header"
             Caption = 'Date creation', Comment = 'ESP="Fecha Creación"';
             DataClassification = CustomerContent;
         }
-        field(52; "Data Start Validity"; Date)
+        field(52; "Date Start Validity"; Date)
         {
-            Caption = 'Data Start Validity', Comment = 'ESP="Fecha Inicio Vigencia"';
+            Caption = 'Date Start Validity', Comment = 'ESP="Fecha Inicio Vigencia"';
             DataClassification = CustomerContent;
         }
         field(53; "Date End Validity"; Date)
@@ -303,7 +303,7 @@ table 17455 "ZM Contracts/Supplies Header"
     procedure Release()
     begin
         TestField(Status, Status::Abierto);
-        TestField("Data Start Validity");
+        TestField("Date Start Validity");
         TestField("Date End Validity");
         if Confirm(MsgConfirmRelease, true, "No.") then begin
             Status := Status::lanzado;
@@ -351,15 +351,13 @@ table 17455 "ZM Contracts/Supplies Header"
         "Buy-from Contact" := vend.Contact;
         "Buy-from County" := Vend.County;
         "Buy-from Country/Region Code" := Vend."Country/Region Code";
-        "Buy-to Post Code" := Vend."Post Code";
+        "Buy-from Post Code" := Vend."Post Code";
         "VAT Registration No." := Vend."VAT Registration No.";
         "Payment Method Code" := Vend."Payment Method Code";
         "Payment Terms Code" := Vend."Payment Terms Code";
     end;
 
     procedure CreatePurchaseOrder()
-    var
-
     begin
         Funciones.ContractsCreatePurchaseOrder(Rec);
     end;

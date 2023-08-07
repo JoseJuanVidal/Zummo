@@ -2737,13 +2737,142 @@ codeunit 50111 "Funciones"
 
     local procedure LineDataSelection(Contracts: record "ZM Contracts/Supplies Header"): Boolean
     var
+        PurchaseHeader: Record "Purchase Header";
         ContractsLine: Record "ZM Contracts/Supplies Lines";
-        ContractsLines: page "ZM Contracts/Supplies Lines";
+        tmpContractsLine: Record "ZM Contracts/Supplies Lines" temporary;
+        ContractsLines: page "ZM Contracts Creating Lines";
+        lblConfirmShow: Label '¿Do you want to open order %1?', comment = 'ESP="¿Desea abrir el pedido %1?"';
     begin
+
+        CheckContractHeader(Contracts);
+
         ContractsLine.Reset();
         ContractsLine.SetRange("Document No.", Contracts."No.");
-        ContractsLines.SetTableView(ContractsLine);
-        ContractsLines.RunModal();
+        if ContractsLine.FindFirst() then
+            repeat
+                ContractsLines.AddContractLines(ContractsLine);
+            Until ContractsLine.next() = 0;
+
+        ContractsLines.LookupMode := true;
+        ContractsLines.Editable(true);
+        if ContractsLines.RunModal() = Action::LookupOK then begin
+            ContractsLines.GetContractLines(tmpContractsLine);
+
+            CheckContractLines(tmpContractsLine);
+
+            CreateContracPurchaseHeader(Contracts, PurchaseHeader);
+
+            UpdatePurchaseLineVendor(Contracts, PurchaseHeader, tmpContractsLine);
+
+            if Confirm(lblConfirmShow, false, PurchaseHeader."No.") then begin
+                page.Run(page::"Purchase Order", PurchaseHeader);
+            end;
+        end;
+
+    end;
+
+    local procedure CheckContractHeader(Contracts: record "ZM Contracts/Supplies Header")
+    var
+        lblErrorStart: Label '%1 %2 es menor que la fecha %3.', comment = 'ESP="%1 %2 es menor que la fecha %3."';
+        lblErrorEnd: Label '%1 %2 es mayor que la fecha %3.', comment = 'ESP="%1 %2 es mayor que la fecha %3."';
+        lblConfirm: Label '\Debe avisar al departamento de compra.\¿Desea Continuar?', comment = 'ESP="\Debe avisar al departamento de compra.\¿Desea Continuar?"';
+    begin
+        // comprobar estado
+        Contracts.TestField(Status, Contracts.Status::Lanzado);
+
+        // mensaje de vigencia y continuar
+        if Contracts."Date Start Validity" > WorkDate() then
+            Error(lblErrorStart, Contracts.FieldName("Date Start Validity"), Contracts."Date Start Validity", WorkDate());
+        if Contracts."Date End Validity" < WorkDate() then
+            if not Confirm(lblErrorEnd + lblConfirm, false, Contracts.FieldName("Date End Validity"), Contracts."Date End Validity", WorkDate()) then
+                Error(lblErrorEnd, false, Contracts.FieldName("Date End Validity"), Contracts."Date End Validity", WorkDate());
+
+    end;
+
+    local procedure CheckContractLines(var ContractsLine: Record "ZM Contracts/Supplies Lines")
+    var
+        lblErrorType: Label 'A line type must be indicated', comment = 'ESP="Se debe indicar un tipo de línea"';
+    begin
+        if ContractsLine.FindFirst() then
+            repeat
+                if ContractsLine.Unidades > 0 then begin
+                    // comprobar tipo
+                    if ContractsLine.Type in [ContractsLine.type::" "] then
+                        Error(lblErrorType);
+                    // Comprobar No.
+                    ContractsLine.TestField("No.");
+                    // comprobar unidades                   
+                    ContractsLine.TestField("Dimension 1 code");
+                    ContractsLine.TestField("Dimension 2 code");
+                end
+            Until ContractsLine.next() = 0;
+    end;
+
+    local procedure CreateContracPurchaseHeader(Contracts: record "ZM Contracts/Supplies Header"; Var PurchaseHeader: Record "Purchase Header")
+    var
+        lblConfirm: Label 'Do you want to create a purchase order?B', comment = 'ESP="¿Desea crear el pedido de compra?"';
+    begin
+        if not Confirm(lblConfirm) then
+            exit;
+        PurchaseHeader.Init();
+        PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::Order;
+        PurchaseHeader.InitInsert();
+        PurchaseHeader.Validate("Buy-from Vendor No.", Contracts."Buy-from Vendor No.");
+        UpdatePurchaseHeaderVendor(Contracts, PurchaseHeader);
+        if Contracts."Contract No. Vendor" <> '' then
+            PurchaseHeader."Vendor Order No." := Contracts."Contract No. Vendor";
+        if Contracts."Shipment Method Code" <> '' then
+            PurchaseHeader."Shipment Method Code" := Contracts."Shipment Method Code";
+        if Contracts.Currency <> '' then
+            PurchaseHeader.validate("Currency Code", Contracts.Currency);
+        if Contracts."Salesperson code" <> '' then
+            PurchaseHeader."Purchaser Code" := Contracts."Salesperson code";
+        PurchaseHeader.Insert();
+    end;
+
+    local procedure UpdatePurchaseHeaderVendor(Contracts: record "ZM Contracts/Supplies Header"; Var PurchaseHeader: Record "Purchase Header")
+    begin
+        PurchaseHeader."Buy-from Vendor Name" := Contracts."Buy-from Vendor Name";
+        PurchaseHeader."Buy-from Vendor Name 2" := Contracts."Buy-from Vendor Name 2";
+        PurchaseHeader."Buy-from Address" := Contracts."Buy-from Address";
+        PurchaseHeader."Buy-from Address 2" := Contracts."Buy-from Address 2";
+        PurchaseHeader."Buy-from Post Code" := Contracts."Buy-From Post Code";
+        PurchaseHeader."Buy-from City" := Contracts."Buy-from City";
+        PurchaseHeader."Buy-from County" := Contracts."Buy-from County";
+        PurchaseHeader."Buy-from Country/Region Code" := Contracts."Buy-from Country/Region Code";
+    end;
+
+    local procedure UpdatePurchaseLineVendor(Contracts: record "ZM Contracts/Supplies Header"; PurchaseHeader: Record "Purchase Header"; var tmpContractsLine: Record "ZM Contracts/Supplies Lines")
+    var
+        PurchaseLine: Record "Purchase Line";
+    begin
+        if tmpContractsLine.FindFirst() then
+            repeat
+                if tmpContractsLine.Unidades > 0 then begin
+                    PurchaseLine.Init();
+                    PurchaseLine."Document Type" := PurchaseHeader."Document Type";
+                    PurchaseLine."Document No." := PurchaseHeader."No.";
+                    PurchaseLine."Line No." := tmpContractsLine."Line No.";
+                    case tmpContractsLine.Type of
+                        tmpContractsLine.Type::Item:
+                            PurchaseLine.Type := PurchaseLine.Type::Item;
+                        tmpContractsLine.Type::"Fixed Asset":
+                            PurchaseLine.Type := PurchaseLine.Type::"Fixed Asset";
+                        tmpContractsLine.Type::"G/L Account":
+                            PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
+                    end;
+                    PurchaseLine.validate("No.", tmpContractsLine."No.");
+                    PurchaseLine.validate(Quantity, tmpContractsLine.Unidades);
+                    PurchaseLine.validate("Direct Unit Cost", tmpContractsLine."Precio negociado");
+                    PurchaseLine.validate("Shortcut Dimension 1 Code", tmpContractsLine."Dimension 1 code");
+                    PurchaseLine.validate("Shortcut Dimension 2 Code", tmpContractsLine."Dimension 2 code");
+                    // datos contrato
+                    PurchaseLine."Contracts No." := tmpContractsLine."Document No.";
+                    PurchaseLine."Contracts Line No." := tmpContractsLine."Line No.";
+                    PurchaseLine.Insert();
+                end;
+            Until tmpContractsLine.next() = 0;
+
     end;
 }
 

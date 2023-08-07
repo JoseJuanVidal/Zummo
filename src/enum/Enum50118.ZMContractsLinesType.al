@@ -10,9 +10,9 @@ enum 50118 "ZM Contracts Lines Type"
     {
         Caption = 'Item', comment = 'ESP="Producto"';
     }
-    value(2; Account)
+    value(2; "G/L Account")
     {
-        Caption = 'Account', comment = 'ESP="Cuenta"';
+        Caption = 'G/L Account', comment = 'ESP="Cuenta"';
     }
     value(3; "Fixed Asset")
     {

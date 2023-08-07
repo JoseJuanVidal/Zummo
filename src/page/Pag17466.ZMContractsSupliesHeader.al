@@ -38,7 +38,7 @@ page 17466 "ZM Contracts Suplies Header"
                 {
                     ApplicationArea = All;
                 }
-                field("Data Start Validity"; Rec."Data Start Validity")
+                field("Date Start Validity"; Rec."Date Start Validity")
                 {
                     ApplicationArea = All;
                 }
@@ -143,7 +143,7 @@ page 17466 "ZM Contracts Suplies Header"
                         QuickEntry = false;
                     }
 
-                    field("Buy-to Post Code"; Rec."Buy-to Post Code")
+                    field("Buy-from Post Code"; Rec."Buy-from Post Code")
                     {
                         ApplicationArea = All;
                         Importance = Additional;

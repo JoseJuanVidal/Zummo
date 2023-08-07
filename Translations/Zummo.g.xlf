@@ -7253,6 +7253,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Compra a-Provincia"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Buy-from County - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2355618573 - Field 852404356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buy-from Post Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra a-C.P."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Buy-from Post Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2355618573 - Field 3230600482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Buy-from Vendor Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Compra a-Nombre"</note>
@@ -7268,11 +7273,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Compra a-Nº proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Buy-from Vendor No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2355618573 - Field 3120578951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Buy-to Post Code</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Compra a-C.P."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Buy-to Post Code - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 2355618573 - Field 1228140979 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract No. Vendor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº contrato proveedor"</note>
@@ -7283,11 +7283,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Currency - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2355618573 - Field 2399582638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Start Validity</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha Inicio Vigencia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Data Start Validity - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 2355618573 - Field 225184351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date creation</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Creación"</note>
@@ -7297,6 +7292,11 @@
           <source>Date End Validity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin Vigencia"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Date End Validity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2355618573 - Field 1413754602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date Start Validity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Inicio Vigencia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Date Start Validity - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2355618573 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Date</source>
@@ -7412,6 +7412,16 @@
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Lines - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1929614291 - Field 3794201640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CECO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CECO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Lines - Field Dimension 1 code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1929614291 - Field 3220394697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Lines - Field Dimension 2 code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1929614291 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
@@ -8908,10 +8918,35 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method changePostinGroup - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2823273253 - NamedType 2359897886" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2 es menor que la fecha %3.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="%1 %2 es menor que la fecha %3."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckContractHeader - NamedType lblErrorStart</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2823273253 - NamedType 2777243383" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2 es mayor que la fecha %3.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="%1 %2 es mayor que la fecha %3."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckContractHeader - NamedType lblErrorEnd</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2823273253 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>\Debe avisar al departamento de compra.\¿Desea Continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="\Debe avisar al departamento de compra.\¿Desea Continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckContractHeader - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2045573451 - NamedType 1802421694" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A line type must be indicated</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se debe indicar un tipo de línea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckContractLines - NamedType lblErrorType</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 2146014129 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckFilterOneLocation - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 2723067842 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to create a purchase order?B</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el pedido de compra?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CreateContracPurchaseHeader - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 1822228488 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Código #1###################</source>
@@ -8952,6 +8987,11 @@
           <source>Se ha procedido a la actualización de los datos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Se ha procedido a la actualización de los datos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ImportExcelEmployee - NamedType lblFin</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 316230282 - NamedType 1044759461" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to open order %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea abrir el pedido %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method LineDataSelection - NamedType lblConfirmShow</note>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 2605877933 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</source>
@@ -13442,6 +13482,11 @@
           <source>Attachment Document</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Posted Inv. Head. - Control Attachment Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 828288886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crear ´Pedidio Compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear ´Pedidio Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Contracts Creating Lines - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1020334120 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Approve,Release,Posting,Prepare,Order,Request Approval,Print/Send,Navigate</source>
@@ -31063,15 +31108,15 @@
           <note from="Developer" annotates="general" priority="2">ESP="Restar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum ZM Action Changes Items - EnumValue Subtract - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2670036557 - EnumValue 1267408499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Account</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cuenta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum ZM Contracts Lines Type - EnumValue Account - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Enum 2670036557 - EnumValue 372951706 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed Asset</source>
           <note from="Developer" annotates="general" priority="2">ESP="Activo Fijo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum ZM Contracts Lines Type - EnumValue Fixed Asset - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2670036557 - EnumValue 4274826855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cuenta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ZM Contracts Lines Type - EnumValue G/L Account - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2670036557 - EnumValue 3276313895 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item</source>

@@ -29,13 +29,15 @@ table 17456 "ZM Contracts/Supplies Lines"
             DataClassification = CustomerContent;
 
             TableRelation = if (type = const(Item)) Item else
-            if (type = const(Account)) "G/L Account" else
+            if (type = const("G/L Account")) "G/L Account" else
             if (type = const("Fixed Asset")) "Fixed Asset";
 
             ValidateTableRelation = false;
 
             trigger OnValidate()
             begin
+                if Rec.IsTemporary then
+                    exit;
                 Case Type of
                     Type::Item:
                         begin
@@ -44,7 +46,7 @@ table 17456 "ZM Contracts/Supplies Lines"
                                 "Precio negociado" := Item."Last Direct Cost";
                             end;
                         end;
-                    Type::Account:
+                    Type::"G/L Account":
                         begin
                             if GLAccount.Get("No.") then
                                 Description := GLAccount.Name;
@@ -113,6 +115,18 @@ table 17456 "ZM Contracts/Supplies Lines"
             CalcFormula = sum("Purchase Line"."Outstanding Quantity" where("Document Type" = const(Order), "Contracts No." = field("Document No."), "Contracts Line No." = field("Line No.")));
             Editable = false;
         }
+        field(20; "Dimension 1 code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CECO', comment = 'ESP="CECO"';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
+        }
+        field(30; "Dimension 2 code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Proyecto', comment = 'ESP="Proyecto"';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
+        }
     }
     keys
     {
@@ -154,6 +168,8 @@ table 17456 "ZM Contracts/Supplies Lines"
 
     local procedure TestStatusOpen()
     begin
+        if Rec.IsTemporary then
+            exit;
         GetHeader();
         ContractHeader.TestField(Status, ContractHeader.Status::Abierto);
     end;
