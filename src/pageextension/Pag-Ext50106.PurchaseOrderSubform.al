@@ -2,6 +2,10 @@ pageextension 50106 "PurchaseOrderSubform" extends "Purchase Order Subform"
 {
     layout
     {
+        modify("Direct Unit Cost")
+        {
+            Editable = not EditContract;
+        }
         addafter("Line Amount")
         {
             //231219 S19/01434 Mostar iva en compras y ventas
@@ -111,7 +115,30 @@ pageextension 50106 "PurchaseOrderSubform" extends "Purchase Order Subform"
                 end;
             }
         }
+        addafter(OrderTracking)
+        {
+            action(AssignContract)
+            {
+                ApplicationArea = all;
+                Caption = 'Asignar Contrato', comment = 'ESP="Asignar Contrato"';
+                Image = ContractPayment;
+
+                trigger OnAction()
+                begin
+                    OnAction_AssignContract();
+                end;
+            }
+        }
     }
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        EditContract := (Rec."Contracts No." <> '') and ("Contracts Line No." <> 0);
+    end;
+
+    var
+        Funciones: Codeunit Funciones;
+        EditContract: Boolean;
 
     local procedure DuplicateLineAction()
     var
@@ -130,5 +157,11 @@ pageextension 50106 "PurchaseOrderSubform" extends "Purchase Order Subform"
         PurchaseLine."Qty. Received (Base)" := 0;
         PurchaseLine.Validate(Quantity, Rec.Quantity);
         PurchaseLine.Insert()
+    end;
+
+    local procedure OnAction_AssignContract()
+    begin
+        Funciones.OnActionAssignContract(Rec);
+        CurrPage.Update();
     end;
 }

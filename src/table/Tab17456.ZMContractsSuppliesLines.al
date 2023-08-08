@@ -66,7 +66,24 @@ table 17456 "ZM Contracts/Supplies Lines"
             DataClassification = CustomerContent;
 
         }
-
+        field(6; "Buy-from Vendor No."; text[100])
+        {
+            Caption = 'Buy-from Vendor No.', comment = 'ESP="Compra a-Nº proveedor"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM Contracts/Supplies Header"."Buy-from Vendor No." where("No." = field("Document No.")));
+        }
+        field(7; Status; Enum "ZM Contracts Status")
+        {
+            Caption = 'Status', comment = 'ESP="Estado"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM Contracts/Supplies Header".Status where("No." = field("Document No.")));
+        }
+        field(8; "Date End Validity"; Date)
+        {
+            Caption = 'Date End Validity', Comment = 'ESP="Fecha Fin Vigencia"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM Contracts/Supplies Header"."Date End Validity" where("No." = field("Document No.")));
+        }
         field(10; "Precio negociado"; Decimal)
         {
             Caption = 'Precio negociado', Comment = 'ESP="Precio negociado"';

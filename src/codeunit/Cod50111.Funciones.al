@@ -2874,5 +2874,63 @@ codeunit 50111 "Funciones"
             Until tmpContractsLine.next() = 0;
 
     end;
+
+    procedure OnActionAssignContract(var PurchaseLine: Record "Purchase Line")
+    var
+        Contractline: Record "ZM Contracts/Supplies Lines";
+        Contractlines: Page "ZM Contracts Creating Lines";
+        lblDelete: Label 'The line is assigned contract %1.\Do you want to delete it?', comment = 'ESP="La línea tiene asignado el contrato %1.\¿Desea eliminarlo?"';
+        lblError: Label 'There are no contracts for this Order line.', comment = 'ESP="No existen contratos para esta línea de pedido."';
+    begin
+        if (PurchaseLine."Contracts No." <> '') and (PurchaseLine."Contracts Line No." <> 0) then begin
+            if Confirm(lblDelete, false, PurchaseLine."Contracts No.") then begin
+                PurchaseLine."Contracts No." := '';
+                PurchaseLine."Contracts Line No." := 0;
+                PurchaseLine.Modify();
+                exit;
+            end;
+        end;
+
+        Contractline.Reset();
+        Contractline.SetRange("Buy-from Vendor No.", PurchaseLine."Buy-from Vendor No.");
+        Contractline.SetRange(Status, Contractline.Status::Lanzado);
+        Contractline.SetFilter("Date End Validity", '%1..', WorkDate());
+        if Contractline.FindFirst() then
+            repeat
+                case Contractline.Type of
+                    Contractline.Type::Item:
+                        if (PurchaseLine.Type = PurchaseLine.Type::Item) and (PurchaseLine."No." = PurchaseLine."No.") then
+                            Contractlines.AddContractLines(Contractline);
+                    Contractline.Type::"G/L Account":
+                        if (PurchaseLine.Type = PurchaseLine.Type::"G/L Account") and (PurchaseLine."No." = PurchaseLine."No.") then
+                            Contractlines.AddContractLines(Contractline);
+                    Contractline.Type::"Fixed Asset":
+                        if (PurchaseLine.Type = PurchaseLine.Type::"Fixed Asset") and (PurchaseLine."No." = PurchaseLine."No.") then
+                            Contractlines.AddContractLines(Contractline);
+                    else begin
+                        Contractlines.AddContractLines(Contractline);
+                    end;
+                end;
+            Until Contractline.next() = 0;
+        Contractlines.LookupMode := true;
+        if Contractlines.RunModal() = Action::LookupOK then begin
+            Contractlines.GetRecord(Contractline);
+            PurchaseLineAssignContract(PurchaseLine, Contractline);
+        end;
+    end;
+
+    procedure PurchaseLineAssignContract(var PurchaseLine: Record "Purchase Line"; Contractline: Record "ZM Contracts/Supplies Lines")
+    var
+    begin
+        PurchaseLine."Contracts No." := Contractline."Document No.";
+        PurchaseLine."Contracts Line No." := Contractline."Line No.";
+        if Contractline."Precio negociado" <> PurchaseLine."Direct Unit Cost" then
+            PurchaseLine.validate("Direct Unit Cost", Contractline."Precio negociado");
+        if (Contractline."Dimension 1 code" <> '') and (Contractline."Dimension 1 code" <> PurchaseLine."Shortcut Dimension 1 Code") then
+            PurchaseLine.validate("Shortcut Dimension 1 Code", Contractline."Dimension 1 code");
+        if (Contractline."Dimension 1 code" <> '') and (Contractline."Dimension 2 code" <> PurchaseLine."Shortcut Dimension 2 Code") then
+            PurchaseLine.validate("Shortcut Dimension 2 Code", Contractline."Dimension 2 code");
+        PurchaseLine.Modify();
+    end;
 }
 

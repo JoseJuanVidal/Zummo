@@ -7408,6 +7408,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="La categoria elegida para el contrato, debe ser del último nivel"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Lines - NamedType MsgErrorCategoryParent</note>
         </trans-unit>
+        <trans-unit id="Table 1929614291 - Field 3792369418 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buy-from Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra a-Nº proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Lines - Field Buy-from Vendor No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1929614291 - Field 1791478067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date End Validity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin Vigencia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Lines - Field Date End Validity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1929614291 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
@@ -7452,6 +7462,11 @@
           <source>Quantity in Purch. Order</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad pdte. Pedidos Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Lines - Field Quantity in Purch. Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1929614291 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Lines - Field Status - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1929614291 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
@@ -8997,6 +9012,16 @@
           <source>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method MarcarNoFacturar - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 1571063672 - NamedType 2571500589" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The line is assigned contract %1.\Do you want to delete it?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La línea tiene asignado el contrato %1.\¿Desea eliminarlo?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method OnActionAssignContract - NamedType lblDelete</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 1571063672 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There are no contracts for this Order line.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No existen contratos para esta línea de pedido."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method OnActionAssignContract - NamedType lblError</note>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 3924250185 - NamedType 899079631" size-unit="char" translate="yes" xml:space="preserve">
           <source>No documents have been found that can be settled. \</source>
@@ -25912,6 +25937,11 @@
           <source>SeleccionarArticulosProveedor</source>
           <note from="Developer" annotates="general" priority="2">ESP="SeleccionarArticulosProveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderSubform - Action SeleccionarArticulosProveedor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3099940785 - Action 2582397237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
+          <source>Asignar Contrato</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderSubform - Action AssignContract - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 10447370 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
           <source>Normativa Plástico</source>
