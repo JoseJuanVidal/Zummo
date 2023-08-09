@@ -64,7 +64,6 @@ table 17456 "ZM Contracts/Supplies Lines"
         {
             Caption = 'Description', Comment = 'ESP="Descripción"';
             DataClassification = CustomerContent;
-
         }
         field(6; "Buy-from Vendor No."; text[100])
         {
@@ -111,9 +110,9 @@ table 17456 "ZM Contracts/Supplies Lines"
             DataClassification = CustomerContent;
             Editable = false;
         }
-        field(13; "Unidades compradas"; Decimal)
+        field(13; "Unidades Entregadas"; Decimal)
         {
-            Caption = 'Unidades compradas', Comment = 'ESP="Unidades compradas"';
+            Caption = 'Unidades Entregadas', Comment = 'ESP="Unidades Entregadas"';
             FieldClass = FlowField;
             CalcFormula = sum("Purch. Rcpt. Line".Quantity where("Contracts No." = field("Document No."), "Contracts Line No." = field("Line No.")));
             Editable = false;
@@ -143,6 +142,28 @@ table 17456 "ZM Contracts/Supplies Lines"
             DataClassification = CustomerContent;
             Caption = 'Proyecto', comment = 'ESP="Proyecto"';
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
+        }
+        field(35; "Unit of measure"; code[10])
+        {
+            Caption = 'Unit of measure', Comment = 'ESP="Unidad de medida"';
+            DataClassification = CustomerContent;
+            TableRelation = if (type = const(Item)) "Item Unit of Measure".Code where("Item No." = field("No.")) else
+            "Unit of Measure".Code;
+        }
+        field(36; "Lead Time Calculation"; DateFormula)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Lead Time Calculation', comment = 'ESP="Plazo entrega (días)"';
+        }
+        field(40; "Minimum Order Quantity"; Decimal)
+        {
+            Caption = 'Minimum Order Quantity', Comment = 'ESP="Cantidad mínima pedido"';
+            DataClassification = CustomerContent;
+        }
+        field(42; "Order Multiple"; Decimal)
+        {
+            Caption = 'Order Multiple', Comment = 'ESP="Multiplos pedido"';
+            DataClassification = CustomerContent;
         }
     }
     keys
@@ -189,12 +210,13 @@ table 17456 "ZM Contracts/Supplies Lines"
             exit;
         GetHeader();
         ContractHeader.TestField(Status, ContractHeader.Status::Abierto);
+        ContractHeader.TestField(Blocked, false);
     end;
 
     local procedure CheckDeleteLine()
     begin
-        CalcFields("Unidades compradas", "Unidades Devolución");
-        if ("Unidades compradas" <> 0) or ("Unidades Devolución" <> 0) then
+        CalcFields("Unidades Entregadas", "Unidades Devolución");
+        if ("Unidades Entregadas" <> 0) or ("Unidades Devolución" <> 0) then
             Error(MsgDelete);
     end;
 

@@ -351,6 +351,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         Ventana.Open('Nº Documento: #1####################');
         if SalesInvoiceHeader.FindSet() then
             repeat
+
                 IF Selection > 0 THEN begin
                     Ventana.Update(1, SalesInvoiceHeader."No.");
                     SalesInvoiceHeader2.SetRange("No.", SalesInvoiceHeader."No.");
@@ -409,7 +410,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                             end;
                         5:
                             begin
-                                clear(reportFactura);
+                                clear(reportFacturaUK);
                                 reportFacturaUK.EsExportacion();
                                 // reportFacturaUK.SetTableView(SalesInvoiceHeader2);
                                 // reportFacturaUK.SaveAsPdf(FileName);

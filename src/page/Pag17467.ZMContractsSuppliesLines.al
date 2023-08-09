@@ -35,11 +35,27 @@ page 17467 "ZM Contracts/Supplies Lines"
                 {
                     ApplicationArea = all;
                 }
+                field("Unit of measure"; "Unit of measure")
+                {
+                    ApplicationArea = all;
+                }
+                field("Lead Time Calculation"; "Lead Time Calculation")
+                {
+                    ApplicationArea = all;
+                }
                 field("Line Amount"; "Line Amount")
                 {
                     ApplicationArea = all;
                 }
-                field("Unidades compradas"; "Unidades compradas")
+                field("Minimum Order Quantity"; "Minimum Order Quantity")
+                {
+                    ApplicationArea = all;
+                }
+                field("Order Multiple"; "Order Multiple")
+                {
+                    ApplicationArea = all;
+                }
+                field("Unidades Entregadas"; "Unidades Entregadas")
                 {
                     ApplicationArea = all;
 
@@ -89,6 +105,33 @@ page 17467 "ZM Contracts/Supplies Lines"
                 field("Dimension 2 code"; "Dimension 2 code")
                 {
                     ApplicationArea = all;
+                }
+            }
+        }
+    }
+    actions
+    {
+        area(Processing)
+        {
+            group(lines)
+            {
+                Caption = 'Lines', comment = 'ESP="Líneas"';
+                action(SetPrices)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Set Prices', comment = 'ESP="Establecer precios"';
+
+                    RunObject = page "Purchase Prices";
+                    RunPageView = sorting("Item No.");
+                    RunPageLink = "Item No." = field("No.");
+                }
+                action(SetDiscounts)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Set Discounts', comment = 'ESP="Establecer descuentos"';
+
+                    RunObject = page "Purchase Line Discounts";
+                    RunPageLink = "Item No." = field("No.");
                 }
             }
         }

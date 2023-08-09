@@ -30,5 +30,15 @@ pageextension 50078 "ZM Purchasing Agent Role" extends "Purchasing Agent Role Ce
                 Image = PostedOrder;
             }
         }
+        addafter("Blanket Purchase Orders")
+        {
+            action(ContractsSupplies)
+            {
+                Caption = 'Contracts and Supplies', comment = 'ESP="Contratos y Suministros"';
+                RunObject = page "ZM Contracts Suplies List";
+                // sRunPageView = where("Qty. Rcd. Not Invoiced" = filter(<> 0));
+                Image = ContactReference;
+            }
+        }
     }
 }

@@ -101,10 +101,10 @@ table 17455 "ZM Contracts/Supplies Header"
             Caption = 'Status', comment = 'ESP="Estado"';
             Editable = false;
         }
-        field(16; "Salesperson/Purchaser"; code[20])
+        field(16; "Purchaser Code"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Salesperson/Purchaser', comment = 'ESP="Cód. Comprador"';
+            Caption = 'Purchaser Code', comment = 'ESP="Cód. Comprador"';
             TableRelation = "Salesperson/Purchaser";
         }
         field(17; "No. Series"; Code[20])
@@ -179,12 +179,6 @@ table 17455 "ZM Contracts/Supplies Header"
             Caption = 'Currency', comment = 'ESP="Cód. Divisa"';
             TableRelation = Currency;
         }
-        field(60; "Salesperson code"; code[20])
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Salesperson code', comment = 'ESP="Cód. Vendedor"';
-            TableRelation = "Salesperson/Purchaser";
-        }
         field(61; "Blocked"; Boolean)
         {
             DataClassification = CustomerContent;
@@ -250,6 +244,7 @@ table 17455 "ZM Contracts/Supplies Header"
         PurchSetup: Record "Purchases & Payables Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         Funciones: Codeunit Funciones;
+        lblErrorLinesExist: Label 'No se pueden cambiar datos, existen lineas de pedido ya creadas.', comment = 'ESP="No se pueden cambiar datos, existen lineas de pedido ya creadas."';
         MsgConfirmClose: Label '¿Esta seguro de cerrar el contrato %1?', Comment = 'ESP="¿Esta seguro de cerrar el contrato %1?"';
         MsgConfirmRelease: Label '¿Esta seguro de lanzar el contrato %1?', Comment = 'ESP="¿Esta seguro de Lanzar el contrato %1?"';
         MsgConfirmReopen: Label '¿Esta seguro de Volver a Abrir el contrato %1?', Comment = 'ESP="¿Esta seguro de Volver a Abrir el contrato %1?"';
@@ -340,6 +335,8 @@ table 17455 "ZM Contracts/Supplies Header"
         if xRec."Buy-from Vendor No." <> '' then
             if xRec."Buy-from Vendor No." = rec."Buy-from Vendor No." then
                 exit;
+        if CheckExistLine then
+            Error(lblErrorLinesExist);
 
         GetVend("Buy-from Vendor No.");
         Vend.CheckBlockedVendOnDocs(Vend, false);
@@ -355,6 +352,20 @@ table 17455 "ZM Contracts/Supplies Header"
         "VAT Registration No." := Vend."VAT Registration No.";
         "Payment Method Code" := Vend."Payment Method Code";
         "Payment Terms Code" := Vend."Payment Terms Code";
+        Currency := Vend."Currency Code";
+        "Shipment Method Code" := Vend."Shipment Method Code";
+        "Purchaser Code" := Vend."Purchaser Code";
+    end;
+
+    local procedure CheckExistLine(): Boolean
+    var
+        PurchaseLine: Record "Purchase Line";
+    begin
+        PurchaseLine.Reset();
+        PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
+        PurchaseLine.SetRange("Contracts No.", Rec."No.");
+        if PurchaseLine.FindFirst() then
+            exit(true);
     end;
 
     procedure CreatePurchaseOrder()

@@ -61,6 +61,10 @@ page 17468 "ZM Contracts Creating Lines"
                 {
                     ApplicationArea = all;
                 }
+                field("Unit of measure"; "Unit of measure")
+                {
+                    ApplicationArea = all;
+                }
                 field("Line Amount"; "Line Amount")
                 {
                     ApplicationArea = all;
@@ -72,6 +76,16 @@ page 17468 "ZM Contracts Creating Lines"
                 field("Dimension 2 code"; "Dimension 2 code")
                 {
                     ApplicationArea = all;
+                }
+                field("Minimum Order Quantity"; "Minimum Order Quantity")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+                field("Order Multiple"; "Order Multiple")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
                 }
             }
         }

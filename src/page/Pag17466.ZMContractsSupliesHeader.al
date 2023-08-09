@@ -60,7 +60,7 @@ page 17466 "ZM Contracts Suplies Header"
                 {
                     ApplicationArea = all;
                 }
-                field("Salesperson code"; "Salesperson code")
+                field("Purchaser Code"; "Purchaser Code")
                 {
                     ApplicationArea = all;
                 }
@@ -69,6 +69,22 @@ page 17466 "ZM Contracts Suplies Header"
                     ApplicationArea = all;
                 }
                 field(Blocked; Blocked)
+                {
+                    ApplicationArea = all;
+                }
+                field("Payment Method Code"; "Payment Method Code")
+                {
+                    ApplicationArea = all;
+                }
+                field("Payment Terms Code"; "Payment Terms Code")
+                {
+                    ApplicationArea = all;
+                }
+                field("ITBID Solicitud No."; "ITBID Solicitud No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("ITBID Negotiation No."; "ITBID Negotiation No.")
                 {
                     ApplicationArea = all;
                 }

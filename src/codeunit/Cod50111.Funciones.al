@@ -2777,6 +2777,7 @@ codeunit 50111 "Funciones"
         lblErrorEnd: Label '%1 %2 es mayor que la fecha %3.', comment = 'ESP="%1 %2 es mayor que la fecha %3."';
         lblConfirm: Label '\Debe avisar al departamento de compra.\¿Desea Continuar?', comment = 'ESP="\Debe avisar al departamento de compra.\¿Desea Continuar?"';
     begin
+        // TODO quitar el continuar
         // comprobar estado
         Contracts.TestField(Status, Contracts.Status::Lanzado);
 
@@ -2792,6 +2793,8 @@ codeunit 50111 "Funciones"
     local procedure CheckContractLines(var ContractsLine: Record "ZM Contracts/Supplies Lines")
     var
         lblErrorType: Label 'A line type must be indicated', comment = 'ESP="Se debe indicar un tipo de línea"';
+        lblErrorMinQty: Label 'Las unidades de compra no pueden ser menor a %1.', comment = 'ESP="Las unidades de compra no pueden ser menor a %1."';
+        lblErrorOrderMultiple: Label 'El múltiplo de unidades pedido de compra es %1.', comment = 'ESP="El múltiplo de unidades pedido de compra es %1."';
     begin
         if ContractsLine.FindFirst() then
             repeat
@@ -2804,7 +2807,12 @@ codeunit 50111 "Funciones"
                     // comprobar unidades                   
                     ContractsLine.TestField("Dimension 1 code");
                     ContractsLine.TestField("Dimension 2 code");
-                end
+                end;
+                // comprobamos datos de linea, Cantidad minima de compra y multiplos
+                if ContractsLine.Unidades < ContractsLine."Minimum Order Quantity" then
+                    Error(lblErrorMinQty, ContractsLine."Minimum Order Quantity");
+                if (ContractsLine.Unidades div ContractsLine."Order Multiple") = 0 then
+                    Error(lblErrorOrderMultiple, ContractsLine."Order Multiple");
             Until ContractsLine.next() = 0;
     end;
 
@@ -2819,14 +2827,16 @@ codeunit 50111 "Funciones"
         PurchaseHeader.InitInsert();
         PurchaseHeader.Validate("Buy-from Vendor No.", Contracts."Buy-from Vendor No.");
         UpdatePurchaseHeaderVendor(Contracts, PurchaseHeader);
+        PurchaseHeader.Validate("Payment Method Code", Contracts."Payment Method Code");
+        PurchaseHeader.Validate("Payment Terms Code", Contracts."Payment Terms Code");
         if Contracts."Contract No. Vendor" <> '' then
             PurchaseHeader."Vendor Order No." := Contracts."Contract No. Vendor";
         if Contracts."Shipment Method Code" <> '' then
             PurchaseHeader."Shipment Method Code" := Contracts."Shipment Method Code";
         if Contracts.Currency <> '' then
             PurchaseHeader.validate("Currency Code", Contracts.Currency);
-        if Contracts."Salesperson code" <> '' then
-            PurchaseHeader."Purchaser Code" := Contracts."Salesperson code";
+        if Contracts."Purchaser Code" <> '' then
+            PurchaseHeader."Purchaser Code" := Contracts."Purchaser Code";
         PurchaseHeader.Insert();
     end;
 
@@ -2857,9 +2867,15 @@ codeunit 50111 "Funciones"
                         tmpContractsLine.Type::Item:
                             PurchaseLine.Type := PurchaseLine.Type::Item;
                         tmpContractsLine.Type::"Fixed Asset":
-                            PurchaseLine.Type := PurchaseLine.Type::"Fixed Asset";
+                            begin
+                                PurchaseLine.Type := PurchaseLine.Type::"Fixed Asset";
+                                PurchaseLine."Location Code" := '';
+                            end;
                         tmpContractsLine.Type::"G/L Account":
-                            PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
+                            begin
+                                PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
+                                PurchaseLine."Location Code" := '';
+                            end;
                     end;
                     PurchaseLine.validate("No.", tmpContractsLine."No.");
                     PurchaseLine.validate(Quantity, tmpContractsLine.Unidades);
