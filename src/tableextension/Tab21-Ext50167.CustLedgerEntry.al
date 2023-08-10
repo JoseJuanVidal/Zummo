@@ -9,7 +9,12 @@ tableextension 50167 "CustLedgerEntry" extends "Cust. Ledger Entry" //21
             Caption = 'Saldo Acumulado', comment = 'ESP="Saldo Acumulado"';
             Editable = false;
         }
-
+        field(50003; CalculadoSaldoAcumulado; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Calculado Saldo Acumulado', comment = 'ESP="Calculado Saldo Acumulado"';
+            Editable = false;
+        }
         field(50102; AreaManager_btc; Code[20])
         {
             Editable = false;
@@ -23,7 +28,7 @@ tableextension 50167 "CustLedgerEntry" extends "Cust. Ledger Entry" //21
             Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup("Cartera Doc."."Category Code" where("Entry No." = field("Entry No."), Type = const(Receivable)));
-            Caption = 'código clasificación', comment = 'ESP="código clasificación"';
+            Caption = 'Código clasificación', comment = 'ESP="Código clasificación"';
         }
         field(50050; "Cred_ Max_ Aseg. Autorizado Por_btc"; Code[20])
         {

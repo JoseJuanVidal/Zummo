@@ -27138,6 +27138,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field AreaManager_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1512487356 - Field 428686574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source>Calculado Saldo Acumulado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calculado Saldo Acumulado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field CalculadoSaldoAcumulado - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 3538960907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
           <source>Crédito Maximo Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crédito Maximo Aseguradora"</note>
@@ -27149,8 +27154,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field Cred_ Max_ Aseg. Autorizado Por_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 2906867365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
-          <source>código clasificación</source>
-          <note from="Developer" annotates="general" priority="2">ESP="código clasificación"</note>
+          <source>Código clasificación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código clasificación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field código clasificación - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 4213443581 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">

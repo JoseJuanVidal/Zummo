@@ -118,24 +118,36 @@ pageextension 50171 "CustomerLedgerEntries" extends "Customer Ledger Entries"
         CustomerLedgerEntry: Record "Cust. Ledger Entry";
         Saldo: Decimal;
     begin
-
         if GetFilter("Customer No.") <> '' then begin
             saldo := 0;
             CustomerLedgerEntry.reset;
+            CustomerLedgerEntry.SetCurrentKey("Entry No.");
+            // CustomerLedgerEntry.SetAscending("Due Date", true);
             CustomerLedgerEntry.SetRange("Customer No.", GetFilter("Customer No."));
-            CustomerLedgerEntry.SetCurrentKey("Due Date");
-            CustomerLedgerEntry.SetAscending("Due Date", true);
+            CustomerLedgerEntry.SetRange(CalculadoSaldoAcumulado, false);
             if CustomerLedgerEntry.FindSet() then begin
+                saldo := GetSaldoAcumulado(CustomerLedgerEntry."Customer No.", CustomerLedgerEntry."Entry No.");
                 repeat
-                    //Message(GetFilter("Customer No."));
-                    //Message(format(saldo))
-                    CustomerLedgerEntry.CalcFields("Remaining Amount");
-                    saldo := saldo + CustomerLedgerEntry."Remaining Amount";
+                    CustomerLedgerEntry.CalcFields("Amount (LCY)");
+                    saldo := saldo + CustomerLedgerEntry."Amount (LCY)";
                     CustomerLedgerEntry.SaldoAcumulado := saldo;
+                    CustomerLedgerEntry.CalculadoSaldoAcumulado := true;
                     CustomerLedgerEntry.Modify();
                 until CustomerLedgerEntry.Next() = 0;
             end;
             CurrPage.Update(false);
         end;
+    end;
+
+    local procedure GetSaldoAcumulado(CustomerNo: code[20]; EntryNo: Integer): Decimal
+    var
+        DetailCustLedgerEntry: Record "Detailed Cust. Ledg. Entry";
+    begin
+        DetailCustLedgerEntry.Reset();
+        DetailCustLedgerEntry.SetRange("Customer No.", CustomerNo);
+        DetailCustLedgerEntry.SetRange("Ledger Entry Amount", true);
+        DetailCustLedgerEntry.SetFilter("Cust. Ledger Entry No.", '..%1', EntryNo - 1);
+        DetailCustLedgerEntry.CalcSums("Amount (LCY)");
+        exit(DetailCustLedgerEntry."Amount (LCY)");
     end;
 }
