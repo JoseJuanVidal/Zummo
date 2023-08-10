@@ -1564,13 +1564,28 @@ codeunit 50106 "SalesEvents"
         case ToSalesLine."Document Type" of
             ToSalesLine."Document Type"::"Return Order", ToSalesLine."Document Type"::"Credit Memo":
                 begin
-                    SalesLine_AssignLocationAbono(ToSalesLine);
+                    if FromSalesLine.Type in [FromSalesLine.Type::Item] then
+                        SalesLine_AssignLocationAbono(ToSalesLine);
+                end;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Copy Document Mgt.", 'OnAfterCopySalesLineFromSalesLineBuffer', '', true, true)]
+    local procedure CopyDocumentMgt_OnAfterCopySalesLineFromSalesLineBuffer(VAR ToSalesLine: Record "Sales Line"; FromSalesInvLine: Record "Sales Invoice Line";
+        IncludeHeader: Boolean; RecalculateLines: Boolean; VAR TempDocSalesLine: Record "Sales Line"; ToSalesHeader: Record "Sales Header"; FromSalesLineBuf: Record "Sales Line")
+    begin
+        case ToSalesLine."Document Type" of
+            ToSalesLine."Document Type"::"Return Order", ToSalesLine."Document Type"::"Credit Memo":
+                begin
+                    if FromSalesInvLine.Type in [FromSalesInvLine.Type::Item] then
+                        SalesLine_AssignLocationAbono(ToSalesLine);
                 end;
         end;
     end;
 
     local procedure SalesLine_AssignLocationAbono(var ToSalesLine: Record "Sales Line")
     var
+        Item: Record Item;
         SalesSetup: Record "Sales & Receivables Setup";
         Location: Record Location;
     begin
@@ -1578,9 +1593,25 @@ codeunit 50106 "SalesEvents"
         if SalesSetup."Location Code Credit Memo" <> '' then
             if Location.Get(SalesSetup."Location Code Credit Memo") then
                 if not Location."Use As In-Transit" then begin
-                    ToSalesLine."Location Code" := SalesSetup."Location Code Credit Memo";
-                    ToSalesLine."Bin Code" := SalesSetup."Bin Code Credit Memo";
-                end;
+                    Item.Get(ToSalesLine."No.");
+                    if Item.Type in [Item.Type::Inventory] then begin
 
+                        ToSalesLine.Validate("Location Code", SalesSetup."Location Code Credit Memo");
+                        ToSalesLine.Validate("Bin Code", SalesSetup."Bin Code Credit Memo");
+                        ChangeLocationReservationEntry(ToSalesLine);
+                    end;
+                end;
+    end;
+
+    local procedure ChangeLocationReservationEntry(ToSalesLine: Record "Sales Line")
+    var
+        ReservationEntry: Record "Reservation Entry";
+    begin
+        ReservationEntry.Reset();
+        ReservationEntry.SetRange("Source Type", Database::"Sales Line");
+        ReservationEntry.SetRange("Source Subtype", ToSalesLine."Document Type");
+        ReservationEntry.SetRange("Source ID", ToSalesLine."Document No.");
+        ReservationEntry.SetRange("Source Ref. No.", ToSalesLine."Line No.");
+        ReservationEntry.ModifyAll("Location Code", ToSalesLine."Location Code");
     end;
 }
