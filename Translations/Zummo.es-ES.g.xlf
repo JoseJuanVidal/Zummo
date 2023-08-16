@@ -28575,6 +28575,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action RegistrarFran - Property Caption</note>
           <target>R&amp;egistrar</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3617415722 - Action 3871771545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Update Purchase Order Zummo Inc.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Ped. Compra Zummo Inc."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action STH Update Purchase Order Zummo Inc - Property Caption</note>
+          <target>Actualizar Ped. Compra Zummo Inc.</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3617415722 - Control 1320162667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Indicar el cambio para la impresión de los documentos.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Indicar el cambio para la impresión de los documentos."</note>

@@ -262,7 +262,7 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
             }
             action("STH Update Purchase Order Zummo Inc")
             {
-                Caption = 'Update Purchase Order Zummo Inc.', Comment = 'Actualizar Ped. Compra Zummo Inc.';
+                Caption = 'Update Purchase Order Zummo Inc.', Comment = 'ESP="Actualizar Ped. Compra Zummo Inc."';
                 ApplicationArea = All;
                 Promoted = true;
                 PromotedIsBig = true;
@@ -272,7 +272,8 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
                 var
                     ZummoIncICFunctions: Codeunit "Zummo Inn. IC Functions";
                 begin
-                    ZummoIncICFunctions.UpdateReservationPurchaseOrderIC(Rec);
+                    if Rec."Source Purch. Order No" <> '' then
+                        ZummoIncICFunctions.UpdateReservationPurchaseOrderIC(Rec);
                 end;
             }
         }

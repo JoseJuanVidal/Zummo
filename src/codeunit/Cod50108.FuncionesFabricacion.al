@@ -556,7 +556,9 @@ codeunit 50108 "FuncionesFabricacion"
         end;
 
         commit;
-
+        if Confirm(lblConfirmExcel) then begin
+            InitReqExcelBuffer('APROV.', RequisitionWkshName.Name);
+        end;
         ItemPedido.SetRange("No.");
         ItemPedido.SetRange("Location Filter", 'MMPP');
         ItemPedido.SetRange("Replenishment System", ItemCompra."Replenishment System"::"Prod. Order");
@@ -570,9 +572,7 @@ codeunit 50108 "FuncionesFabricacion"
         CalcPlan.RunModal();
         clear(CalcPlan);
         commit;
-        if Confirm(lblConfirmExcel) then begin
-            InitReqExcelBuffer('APROV.', RequisitionWkshName.Name);
-        end;
+
         ItemCompra.SetRange("No.");
         ItemCompra.SetRange("Location Filter", 'MMPP');
         ItemCompra.SetRange("Replenishment System", ItemCompra."Replenishment System"::Purchase);
@@ -591,13 +591,13 @@ codeunit 50108 "FuncionesFabricacion"
         RefrescarHoja('APROV.', RequisitionWkshName."Name");
 
         if GetRequisitionBufferExist('APROV.', RequisitionWkshName.Name) then begin
-            ExportRequisitionBuffer('APROV.', RequisitionWkshName.Name, SalesHeader."No.");
+            ExportRequisitionBuffer('APROV.', RequisitionWkshName.Name, SalesHeader.GetFilter("No."));
 
             DeleteRequisitionBuffer('APROV..', RequisitionWkshName.Name);
         end;
     end;
 
-    local procedure ExportRequisitionBuffer(WorksheetTemplateName: code[10]; JournalBatchName: code[10]; SalesHeaderDocNo: code[20])
+    local procedure ExportRequisitionBuffer(WorksheetTemplateName: code[10]; JournalBatchName: code[10]; SalesHeaderDocNo: text)
     var
         RequisitionBuffer: record "ZM Requesition Buffer Calc.";
         reqExcelBuffer: Record "Excel Buffer" temporary;
@@ -621,14 +621,12 @@ codeunit 50108 "FuncionesFabricacion"
         ReqExcelBuffer.DownloadAndOpenExcel;
     end;
 
-    local procedure CreateRequisitionBufferExcel(var RequisitionBuffer: record "ZM Requesition Buffer Calc."; var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: code[20])
+    local procedure CreateRequisitionBufferExcel(var RequisitionBuffer: record "ZM Requesition Buffer Calc."; var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: Text)
     begin
-
-
         CreateBodyRequisitionBufferExcel(RequisitionBuffer, reqExcelBuffer, SalesHeaderDocNo);
     end;
 
-    local procedure CreateHeaderRequisitionBufferExcel(var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: code[20])
+    local procedure CreateHeaderRequisitionBufferExcel(var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: Text)
     var
         Item: Record Item;
         RecRef: RecordRef;
