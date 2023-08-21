@@ -610,7 +610,7 @@ codeunit 50108 "FuncionesFabricacion"
         if RequisitionBuffer.FindFirst() then
             repeat
 
-                CreateRequisitionBufferExcel(RequisitionBuffer, reqExcelBuffer, SalesHeaderDocNo);
+                CreateRequisitionBufferExcel(RequisitionBuffer, reqExcelBuffer);
 
             Until RequisitionBuffer.next() = 0;
         reqExcelBuffer.CreateNewBook('Planificacion');
@@ -621,9 +621,9 @@ codeunit 50108 "FuncionesFabricacion"
         ReqExcelBuffer.DownloadAndOpenExcel;
     end;
 
-    local procedure CreateRequisitionBufferExcel(var RequisitionBuffer: record "ZM Requesition Buffer Calc."; var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: Text)
+    local procedure CreateRequisitionBufferExcel(var RequisitionBuffer: record "ZM Requesition Buffer Calc."; var reqExcelBuffer: Record "Excel Buffer")
     begin
-        CreateBodyRequisitionBufferExcel(RequisitionBuffer, reqExcelBuffer, SalesHeaderDocNo);
+        CreateBodyRequisitionBufferExcel(RequisitionBuffer, reqExcelBuffer);
     end;
 
     local procedure CreateHeaderRequisitionBufferExcel(var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: Text)
@@ -699,7 +699,7 @@ codeunit 50108 "FuncionesFabricacion"
         ReqExcelBuffer.NewRow();
     end;
 
-    local procedure CreateBodyRequisitionBufferExcel(var RequisitionBuffer: record "ZM Requesition Buffer Calc."; var reqExcelBuffer: Record "Excel Buffer"; SalesHeaderDocNo: code[20])
+    local procedure CreateBodyRequisitionBufferExcel(var RequisitionBuffer: record "ZM Requesition Buffer Calc."; var reqExcelBuffer: Record "Excel Buffer")
     var
         Item: Record Item;
         Vendor: Record Vendor;
