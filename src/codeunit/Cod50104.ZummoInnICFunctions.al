@@ -307,6 +307,14 @@ codeunit 50104 "Zummo Inn. IC Functions"
     end;
 
     procedure UpdateOrderNoPurchaseOrderIC(VAR SalesHeader: Record "Sales Header"; VAR SalesOrderHeader: Record "Sales Header")
+    begin
+        if not TryUpdateOrderNoPurchaseOrderIC(SalesHeader, SalesOrderHeader) then
+            Message(StrSubstNo(GetLastErrorCode, GetLastErrorText()));
+    end;
+
+
+    [TryFunction]
+    procedure TryUpdateOrderNoPurchaseOrderIC(VAR SalesHeader: Record "Sales Header"; VAR SalesOrderHeader: Record "Sales Header")
     var
         Response: HttpResponseMessage;
         JsonBody: JsonObject;

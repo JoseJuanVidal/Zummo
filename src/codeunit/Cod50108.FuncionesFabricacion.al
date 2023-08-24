@@ -711,7 +711,10 @@ codeunit 50108 "FuncionesFabricacion"
                 if Item.Get(RequisitionBuffer."Item No.") then begin
                     ReqExcelBuffer.AddColumn(Item."No.", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
                     ReqExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text);
-                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Cantidad Pedir", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    if RequisitionBuffer."Cantidad Pedir" = -1 then
+                        ReqExcelBuffer.AddColumn('Sin planificar', false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Text)
+                    else
+                        ReqExcelBuffer.AddColumn(RequisitionBuffer."Cantidad Pedir", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
                     TempSKU.SetRange("Location Code", RequisitionBuffer."location Code");
                     TempSKU.SetRange("Item No.", RequisitionBuffer."Item No.");
                     if TempSKU.FindFirst() then begin

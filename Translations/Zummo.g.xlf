@@ -9428,25 +9428,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailOnPostShipment - NamedType BodyLbl</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 407788085" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 3234355424 - Method 16924058 - NamedType 407788085" size-unit="char" translate="yes" xml:space="preserve">
           <source>Se ha actualizado el pedido de compra </source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType MsgLbl</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method TryUpdateOrderNoPurchaseOrderIC - NamedType MsgLbl</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 3234355424 - Method 16924058 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update Purchase Order Zummo Inc.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType SubjectLbl</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method TryUpdateOrderNoPurchaseOrderIC - NamedType SubjectLbl</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3733562477" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 3234355424 - Method 16924058 - NamedType 3733562477" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales order %1 has been deleted</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType BodyLbl1</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method TryUpdateOrderNoPurchaseOrderIC - NamedType BodyLbl1</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3234355424 - Method 1410177315 - NamedType 3095865860" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 3234355424 - Method 16924058 - NamedType 3095865860" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales order %1 has been created from offer %2. Purchase Order %3</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateOrderNoPurchaseOrderIC - NamedType BodyLbl2</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method TryUpdateOrderNoPurchaseOrderIC - NamedType BodyLbl2</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 291269830" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proceso finalizado. Se han actualizado las lineas del pedido %1</source>
