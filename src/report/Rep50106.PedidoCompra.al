@@ -630,6 +630,7 @@ report 50106 "Pedido Compra"
                 column(DuedateLbl; DuedateLbl)
                 {
                 }
+                column(lblObserv; lblObserv) { }
                 column(AmountIncludingVAT; "Amount Including VAT")
                 {
                 }
@@ -1062,7 +1063,7 @@ report 50106 "Pedido Compra"
         CompanyInfoGiroNoCaptionLbl: Label 'Giro No.', Comment = 'ESP="Nº Giro"';
         CompanyInfoBankNameCaptionLbl: Label 'Bank', Comment = 'ESP="Banco"';
         CompanyInfoBankAccNoCaptionLbl: Label 'Account No.', Comment = 'ESP="Nº cuenta"';
-        OrderNoCaptionLbl: Label 'Order No.', Comment = 'ESP="Nº Pedido"';
+        OrderNoCaptionLbl: Label 'PO No.', Comment = 'ESP="Nº Pedido"';
         PageCaptionLbl: Label 'Page', Comment = 'ESP="Página"';
         DocumentDateCaptionLbl: Label 'Document Date', Comment = 'ESP="Fecha emisión"';
         DirectUniCostCaptionLbl: Label 'Unit Price', Comment = 'ESP="Precio"';
@@ -1070,7 +1071,7 @@ report 50106 "Pedido Compra"
         VATDiscountAmountCaptionLbl: Label 'Payment Discount on VAT', Comment = 'ESP="Descuento de pago en IVA"';
         PaymentDetailsCaptionLbl: Label 'Payment Details', Comment = 'ESP="Detalle pago"';
         VendNoCaptionLbl: Label 'Vendor No.', Comment = 'ESP="Nº proveedor"';
-        VendorCaptionLbl: Label 'VENDOR', Comment = 'ESP="PROVEEDOR"';
+        VendorCaptionLbl: Label 'SUPPLIER', Comment = 'ESP="PROVEEDOR"';
         ShiptoAddressCaptionLbl: Label 'Ship-to Address', Comment = 'ESP="Envío-a dirección"';
         PrepmtInvBuDescCaptionLbl: Label 'Description', Comment = 'ESP="Descripción"';
         PrepmtInvBufGLAccNoCaptionLbl: Label 'G/L Account No.', Comment = 'ESP="Nº cuenta"';
@@ -1087,7 +1088,7 @@ report 50106 "Pedido Compra"
         VATAmtLineLineAmtCaptionLbl: Label 'Line Amount', Comment = 'ESP="Importe línea"';
         VALVATBaseLCYCaptionLbl: Label 'VAT Base', Comment = 'ESP="Base IVA"';
         PricesInclVATtxtLbl: Label 'Prices Including VAT', Comment = 'ESP="Precios IVA incluido"';
-        Shipment_Method_Code_lbl: Label 'Shipment Method', Comment = 'ESP="Condiciones envío"';
+        Shipment_Method_Code_lbl: Label 'Delivery condition', Comment = 'ESP="Condiciones envío"';
         TotalCaptionLbl: Label 'Total', Comment = 'ESP="Total"';
         PaymentTermsDescCaptionLbl: Label 'Payment Terms', Comment = 'ESP="Términos pago"';
         ShipmentMethodDescCaptionLbl: Label 'Shipment Method', Comment = 'ESP="Método envío"';
@@ -1167,7 +1168,7 @@ report 50106 "Pedido Compra"
         ToCaptionLbl: Label 'To:', Comment = 'ESP="A:"';
         VendorIDCaptionLbl: Label 'Vendor ID', Comment = 'ESP="Id Proveedor"';
         ConfirmToCaptionLbl: Label 'Confirm To', Comment = 'ESP="Confirmar a"';
-        PurchOrderCaptionLbl: Label 'PURCHASE ORDER', Comment = 'ESP="PEDIDO COMPRA"';
+        PurchOrderCaptionLbl: Label 'PURCHASE ORDER', Comment = 'ESP="PEDIDO DE COMPRA"';
         PurchOrderNumCaptionLbl: Label 'Purchase Order Number:', Comment = 'ESP="Nº pedido compra:"';
         PurchOrderDateCaptionLbl: Label 'Purchase Order Date:', Comment = 'ESP="Fecha pedido compra:"';
         TaxIdentTypeCaptionLbl: Label 'Tax Ident. Type', Comment = 'ESP="Tipo ident. fiscal"';
@@ -1176,6 +1177,7 @@ report 50106 "Pedido Compra"
         GreetingLbl: Label 'Hello', Comment = 'ESP="Hola"';
         ClosingLbl: Label 'Sincerely', Comment = 'ESP="Sinceramente"';
         BodyLbl: Label 'The purchase order is attached to this message.', Comment = 'ESP="El pedido de compra está adjunto a este mensaje."';
+        lblObserv: Label 'Remarks:', comment = 'ESP="Observaciones:"';
         OrderDateLbl: Label 'Order Date', Comment = 'ESP="Fecha pedido"';
         ArchiveDocument: Boolean;
         VendorOrderNoLbl: Label 'Vendor Order No.', Comment = 'ESP="Nº pedido proveedor"';
@@ -1183,12 +1185,12 @@ report 50106 "Pedido Compra"
         UnitPriceLbl: Label 'Unit Price (LCY)', Comment = 'ESP="Precio unitario (DL)"';
         JobNoLbl: Label 'Job No.', Comment = 'ESP="Nº proyecto"';
         JobTaskNoLbl: Label 'Job Task No.', Comment = 'ESP="Nº tarea proyecto"';
-        DuedateLbl: Label 'Due Date', Comment = 'ESP="Fecha entrega"';
-        PediProveeedorLbl: Label 'VENDOR ORDER', Comment = 'ESP="PEDIDO COMPRA"';
+        DuedateLbl: Label 'Delivery Date', Comment = 'ESP="Fecha de entrega"';
+        PediProveeedorLbl: Label 'PURCHASING ORDER', Comment = 'ESP="PEDIDO DE COMPRA"';
         PRCOMPRASLbl: Label 'OR-PURCHASE', Comment = 'ESP="PR-COMPRAS"';
         //ISOLbl: Label 'PO.01.DCP/A1.11', Comment = 'ESP="PO.01.DCP/A1.11"';
         ISOLbl: Label 'FO.04_C4.01_V14', Comment = 'ESP="FO.04_C4.01_V14"';
-        DateLbl: Label 'Date', Comment = 'ESP="Fecha de inicio"';
+        DateLbl: Label 'Start Date', Comment = 'ESP="Fecha de inicio"';
         PhoneFaxLbl: Label 'Phone/Fax:', Comment = 'ESP="Telf/Fax:"';
         AgenciaTransporteLbl: Label 'Transport Agency', Comment = 'ESP="Agencia transporte"';
         VatLbl: Label 'VAT', Comment = 'ESP="IVA"';
@@ -1197,7 +1199,7 @@ report 50106 "Pedido Compra"
         ImporteBrutoLbl: Label 'Amount ', Comment = 'ESP="Importe"';
         Vendor: Record Vendor;
         PortesLbl: Label 'Freight', Comment = 'ESP="Portes"';
-        DireccionEntregaLbl: Label 'ADDRESS DELIVERY IN: ', Comment = 'ESP="DIRECCIÓN DE ENTREGA: "';
+        DireccionEntregaLbl: Label 'DELIVERY ADDRESS: ', Comment = 'ESP="DIRECCIÓN DE ENTREGA: "';
         WorkHours: Text;
 
     [Scope('Personalization')]

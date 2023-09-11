@@ -2948,5 +2948,55 @@ codeunit 50111 "Funciones"
             PurchaseLine.validate("Shortcut Dimension 2 Code", Contractline."Dimension 2 code");
         PurchaseLine.Modify();
     end;
+
+    procedure MarkFacturaenviada(var SalesInvHeader: Record "Sales Invoice Header")
+    begin
+        if SalesInvHeader.findset() then
+            repeat
+                SalesInvHeader.EnvioFactura_zm := not SalesInvHeader.EnvioFactura_zm;
+                SalesInvHeader.Modify();
+            Until SalesInvHeader.next() = 0;
+    end;
+
+    // =============      ExportarPDFPurchaseOrder         ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    procedure ExportarPDFPurchaseOrder(var PurchaseHeader: Record "Purchase Header")
+    var
+        reportPedidocompra: Report "Pedido Compra";
+        FileManagement: Codeunit "File Management";
+        FileName: text;
+        FileNameMerge: text;
+        XmlParameters: text;
+        Content: file;
+        OStream: OutStream;
+        IStream: InStream;
+        RecRef: RecordRef;
+        SothisPDF: DotNet MySothisPDF;
+        files: dotnet Myfiles;
+    begin
+        reportPedidocompra.SetTableView(PurchaseHeader);
+        XmlParameters := reportPedidocompra.RunRequestPage();
+        if XmlParameters = '' then
+            exit;
+        files := files.List();
+        FileName := FileManagement.ServerTempFileName('pdf');
+        FileNameMerge := FileManagement.ServerTempFileName('pdf');
+
+        clear(reportPedidocompra);
+        RecRef.GetTable(PurchaseHeader);
+
+        Content.Create(FileName);  // only supported in Business Central on-premises
+        Content.CreateOutStream(OStream);  // only supported in Business Central on-premises
+        report.SaveAs(report::"Pedido Compra", XmlParameters, ReportFormat::Pdf, OStream, RecRef);
+        Content.Close();
+
+        files.add(FileName);
+        SothisPDF.Merge(files, FileNameMerge, FALSE);
+
+        Download(FileNameMerge, 'PDF Pedidos Compra', '', '', FileName);
+    end;
 }
 

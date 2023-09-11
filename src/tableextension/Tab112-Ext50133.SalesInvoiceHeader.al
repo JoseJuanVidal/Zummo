@@ -80,7 +80,11 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
         {
             DataClassification = CustomerContent;
         }
-
+        field(50118; EnvioFactura_zm; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Factura enviada', comment = 'ESP="Factura enviada"';
+        }
         field(50020; CentralCompras_btc; Code[20])
         {
             DataClassification = CustomerContent;

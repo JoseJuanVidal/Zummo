@@ -23,6 +23,7 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
             field(Peso_btc; Peso_btc) { }
             field(NumPalets_btc; NumPalets_btc) { }
             field(NumBultos_btc; NumBultos_btc) { }
+            field(EnvioFactura_zm; EnvioFactura_zm) { }
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
             field(FacturacionElec_btc; FacturacionElec_btc) { }
             field(AreaManager_btc; AreaManager_btc) { }

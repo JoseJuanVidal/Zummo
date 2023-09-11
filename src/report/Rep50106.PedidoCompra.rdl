@@ -3050,7 +3050,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>Observaciones:</Value>
+                          <Value>=First(Fields!lblObserv.Value, "DataSet_Result")</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>9pt</FontSize>
@@ -3986,6 +3986,9 @@ End Function
         </Field>
         <Field Name="DuedateLbl">
           <DataField>DuedateLbl</DataField>
+        </Field>
+        <Field Name="lblObserv">
+          <DataField>lblObserv</DataField>
         </Field>
         <Field Name="AmountIncludingVAT">
           <DataField>AmountIncludingVAT</DataField>

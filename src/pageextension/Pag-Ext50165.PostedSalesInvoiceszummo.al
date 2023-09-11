@@ -21,12 +21,12 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                             Caption = 'Crédito Maximo Aseguradora Autorizado Por', Comment = 'ESP="Crédito Maximo Aseguradora Autorizado Por"';
                         }*/
             field("Quote No."; "Quote No.") { }
+            field(EnvioFactura_zm; EnvioFactura_zm) { }
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
             field(FacturacionElec_btc; FacturacionElec_btc) { }
             field(AreaManager_btc; AreaManager_btc) { }
             field("ABC Cliente"; "ABC Cliente") { }
             field(Delegado_btc; Delegado_btc) { }
-
             field(NumAbono; NumAbono)
             {
                 ApplicationArea = All;
@@ -237,6 +237,19 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                     MarkComunicate;
                 end;
             }
+            action(MarcarEnviadoFactura)
+            {
+                ApplicationArea = all;
+                Image = MakeOrder;
+                Promoted = true;
+                PromotedCategory = Category6;
+                Caption = 'Marcar/Desmarcar Factura enviada', comment = 'ESP="Marcar/Desmarcar Factura enviada"';
+
+                trigger OnAction()
+                begin
+                    MarkFacturaenviada;
+                end;
+            }
         }
     }
 
@@ -295,6 +308,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         ImpTotalDL: Decimal;
         BaseImpDL: Decimal;
         Text000: Label '¿Desea marcar %1 facturas como enviadas a Aseguradora?', comment = 'ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"';
+        Text001: Label '¿Desea marcar/desmarcar %1 facturas enviada?', comment = 'ESP="¿Desea marcar/desmarcar %1 facturas enviada?"';
 
     local procedure MarkComunicate()
     var
@@ -310,6 +324,18 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                     SalesInvHeader.Fecha_Aseguradora_comunicacion := WorkDate();
                 SalesInvHeader.Modify();
             Until SalesInvHeader.next() = 0;
+
+    end;
+
+    local procedure MarkFacturaenviada()
+    var
+        SalesInvHeader: Record "Sales Invoice Header";
+        funciones: Codeunit Funciones;
+    begin
+        CurrPage.SetSelectionFilter(SalesInvHeader);
+        if not Confirm(Text001, false, SalesInvHeader.Count) then
+            exit;
+        funciones.MarkFacturaenviada(SalesInvHeader);
 
     end;
 

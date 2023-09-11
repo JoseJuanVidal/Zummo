@@ -30,6 +30,23 @@ pageextension 50116 "PurchaseOrderList" extends "Purchase Order List"
             }
         }
     }
+    actions
+    {
+        addafter(Print)
+        {
+            action(ExportPDF)
+            {
+                ApplicationArea = all;
+                Image = SendAsPDF;
+                Promoted = true;
+
+                trigger OnAction()
+                begin
+                    ExportMergePDF();
+                end;
+            }
+        }
+    }
 
     trigger OnAfterGetRecord()
     begin
@@ -45,5 +62,15 @@ pageextension 50116 "PurchaseOrderList" extends "Purchase Order List"
     begin
         Clear(Funciones);
         Funciones.PurchaseOrderShowPlasticVendor(Rec);
+    end;
+
+    local procedure ExportMergePDF()
+    var
+        PurchaseHeader: Record "Purchase Header";
+    begin
+        PurchaseHeader.Reset();
+        PurchaseHeader.SetRange("Document Type", Rec."Document Type");
+        PurchaseHeader.SetRange("No.", Rec."No.");
+        Funciones.ExportarPDFPurchaseOrder(PurchaseHeader);
     end;
 }

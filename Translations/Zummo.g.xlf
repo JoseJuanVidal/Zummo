@@ -22529,12 +22529,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType ConfirmToCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 1542941690" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Date</source>
+          <source>Start Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha de inicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DateLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 1486877514" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ADDRESS DELIVERY IN: </source>
+          <source>DELIVERY ADDRESS: </source>
           <note from="Developer" annotates="general" priority="2">ESP="DIRECCIÓN DE ENTREGA: "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DireccionEntregaLbl</note>
         </trans-unit>
@@ -22554,8 +22554,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DocumentTitleLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 4293168446" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Due Date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha entrega"</note>
+          <source>Delivery Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha de entrega"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DuedateLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 3897674943" size-unit="char" translate="yes" xml:space="preserve">
@@ -22638,6 +22638,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº tarea proyecto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType JobTaskNoLbl</note>
         </trans-unit>
+        <trans-unit id="Report 2651873947 - NamedType 2684298087" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remarks:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Observaciones:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType lblObserv</note>
+        </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 2134599625" size-unit="char" translate="yes" xml:space="preserve">
           <source>Local Currency</source>
           <note from="Developer" annotates="general" priority="2">ESP="Divisa Local"</note>
@@ -22649,7 +22654,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType OrderDateLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 2219219549" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Order No.</source>
+          <source>PO No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType OrderNoCaptionLbl</note>
         </trans-unit>
@@ -22674,8 +22679,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType PaymentTermsDescCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 821750255" size-unit="char" translate="yes" xml:space="preserve">
-          <source>VENDOR ORDER</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PEDIDO COMPRA"</note>
+          <source>PURCHASING ORDER</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PEDIDO DE COMPRA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType PediProveeedorLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 3197449539" size-unit="char" translate="yes" xml:space="preserve">
@@ -22740,7 +22745,7 @@
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 1517777218" size-unit="char" translate="yes" xml:space="preserve">
           <source>PURCHASE ORDER</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PEDIDO COMPRA"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="PEDIDO DE COMPRA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType PurchOrderCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 147899814" size-unit="char" translate="yes" xml:space="preserve">
@@ -22764,7 +22769,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType ShipmentMethodDescCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 3219451673" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Shipment Method</source>
+          <source>Delivery condition</source>
           <note from="Developer" annotates="general" priority="2">ESP="Condiciones envío"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType Shipment_Method_Code_lbl</note>
         </trans-unit>
@@ -22864,7 +22869,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType VendNoCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 1921651732" size-unit="char" translate="yes" xml:space="preserve">
-          <source>VENDOR</source>
+          <source>SUPPLIER</source>
           <note from="Developer" annotates="general" priority="2">ESP="PROVEEDOR"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType VendorCaptionLbl</note>
         </trans-unit>
@@ -25733,6 +25738,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar %1 facturas como enviadas a Aseguradora?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="PageExtension 549456760 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 549456760">
+          <source>¿Desea marcar/desmarcar %1 facturas enviada?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar/desmarcar %1 facturas enviada?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 2913768236 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Imprimir Fact.Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
@@ -25762,6 +25772,11 @@
           <source>Act. Coste Documentos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Act. Coste Documentos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action UppdateCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 40725074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Marcar/Desmarcar Factura enviada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marcar/Desmarcar Factura enviada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action MarcarEnviadoFactura - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 3638857405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Marcar comunicado Aaseguradora</source>
@@ -29007,6 +29022,11 @@
           <source>Delegado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Delegado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Delegado_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 1389571439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Factura enviada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura enviada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field EnvioFactura_zm - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 3237545188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Facturación electrónica</source>

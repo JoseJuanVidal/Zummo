@@ -1328,7 +1328,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
             PurchaseLine.Validate("No.", CONSULTIAInvoiceHeader."G/L Account Fair");
 
         PurchaseLine.Description := copystr(CONSULTIAInvoiceLine.Desc_servicio, 1, 100);
-        PurchaseLine."Description 2" := copystr(CONSULTIAInvoiceLine.Desc_servicio, 101, 100);
+        PurchaseLine."Description 2" := copystr(CONSULTIAInvoiceLine.Desc_servicio, 101, MaxStrLen(PurchaseLine."Description 2"));
         PurchaseLine.Validate(Quantity, 1);
         PurchaseLine.Validate("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
         PurchaseLine.Validate("VAT Prod. Posting Group", GetVATProdPostingGroup(CONSULTIAInvoiceLine, PurchaseHeader));
