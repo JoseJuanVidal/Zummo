@@ -40,6 +40,7 @@ report 50106 "Pedido Compra"
             column(Buy_fromVendorName; "Purchase Header"."Buy-from Vendor Name")
             {
             }
+            COLUMN(Currency_Code; Currency_Code) { }
             column(DirectUniCostCaptionLbl; DirectUniCostCaptionLbl)
             {
             }
@@ -289,12 +290,15 @@ report 50106 "Pedido Compra"
             column(PaymentTermsDesc; PaymentTerms.Description)
             {
             }
+            column(PaymentMethodDesc; PaymentMethod.Description) { }
             column(ShipmentMethodDesc; ShipmentMethod.Description)
             {
             }
             column(PrepmtPaymentTermsDesc; PrepmtPaymentTerms.Description)
             {
             }
+            column(Shipment_Method_Code_lbl; Shipment_Method_Code_lbl) { }
+            column(Shipment_Method_Code; "Shipment Method Code") { }
             column(DimText; DimText)
             {
             }
@@ -352,6 +356,7 @@ report 50106 "Pedido Compra"
             column(VendNo_Lbl; VendNoCaptionLbl)
             {
             }
+            column(VendorCaptionLbl; VendorCaptionLbl) { }
             column(SellToCustNo_PurchHeader; "Sell-to Customer No.")
             {
             }
@@ -915,6 +920,12 @@ report 50106 "Pedido Compra"
                 if optIdioma <> optIdioma::" " then
                     CurrReport.LANGUAGE := Language.GetLanguageID(format(optIdioma));
 
+                // si no tiene codigo divisa ponemos divisa principal
+                Currency_Code := "Purchase Header"."Currency Code";
+                if Currency_Code = '' then
+                    Currency_Code := 'EUR';
+
+
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
                 if Vendor.Get("Purchase Header"."Buy-from Vendor No.") then;
@@ -1059,6 +1070,7 @@ report 50106 "Pedido Compra"
         VATDiscountAmountCaptionLbl: Label 'Payment Discount on VAT', Comment = 'ESP="Descuento de pago en IVA"';
         PaymentDetailsCaptionLbl: Label 'Payment Details', Comment = 'ESP="Detalle pago"';
         VendNoCaptionLbl: Label 'Vendor No.', Comment = 'ESP="Nº proveedor"';
+        VendorCaptionLbl: Label 'VENDOR', Comment = 'ESP="PROVEEDOR"';
         ShiptoAddressCaptionLbl: Label 'Ship-to Address', Comment = 'ESP="Envío-a dirección"';
         PrepmtInvBuDescCaptionLbl: Label 'Description', Comment = 'ESP="Descripción"';
         PrepmtInvBufGLAccNoCaptionLbl: Label 'G/L Account No.', Comment = 'ESP="Nº cuenta"';
@@ -1075,6 +1087,7 @@ report 50106 "Pedido Compra"
         VATAmtLineLineAmtCaptionLbl: Label 'Line Amount', Comment = 'ESP="Importe línea"';
         VALVATBaseLCYCaptionLbl: Label 'VAT Base', Comment = 'ESP="Base IVA"';
         PricesInclVATtxtLbl: Label 'Prices Including VAT', Comment = 'ESP="Precios IVA incluido"';
+        Shipment_Method_Code_lbl: Label 'Shipment Method', Comment = 'ESP="Condiciones envío"';
         TotalCaptionLbl: Label 'Total', Comment = 'ESP="Total"';
         PaymentTermsDescCaptionLbl: Label 'Payment Terms', Comment = 'ESP="Términos pago"';
         ShipmentMethodDescCaptionLbl: Label 'Shipment Method', Comment = 'ESP="Método envío"';
@@ -1086,6 +1099,7 @@ report 50106 "Pedido Compra"
         CompanyInfo: Record "Company Information";
         ShipmentMethod: Record "Shipment Method";
         PaymentTerms: Record "Payment Terms";
+        PaymentMethod: Record "Payment Method";
         PrepmtPaymentTerms: Record "Payment Terms";
         SalespersonPurchaser: Record "Salesperson/Purchaser";
         TempVATAmountLine: Record "VAT Amount Line" temporary;
@@ -1116,6 +1130,7 @@ report 50106 "Pedido Compra"
         FormattedQuanitity: Text;
         FormattedDirectUnitCost: Text;
         workDescription: Text;
+        Currency_Code: text;
         OutputNo: Integer;
         DimText: Text[120];
         LogInteraction: Boolean;
@@ -1168,12 +1183,12 @@ report 50106 "Pedido Compra"
         UnitPriceLbl: Label 'Unit Price (LCY)', Comment = 'ESP="Precio unitario (DL)"';
         JobNoLbl: Label 'Job No.', Comment = 'ESP="Nº proyecto"';
         JobTaskNoLbl: Label 'Job Task No.', Comment = 'ESP="Nº tarea proyecto"';
-        DuedateLbl: Label 'Due Date', Comment = 'ESP="Fecha vencimiento"';
-        PediProveeedorLbl: Label 'VENDOR ORDER', Comment = 'ESP="PEDIDO PROVEEDOR"';
+        DuedateLbl: Label 'Due Date', Comment = 'ESP="Fecha entrega"';
+        PediProveeedorLbl: Label 'VENDOR ORDER', Comment = 'ESP="PEDIDO COMPRA"';
         PRCOMPRASLbl: Label 'OR-PURCHASE', Comment = 'ESP="PR-COMPRAS"';
         //ISOLbl: Label 'PO.01.DCP/A1.11', Comment = 'ESP="PO.01.DCP/A1.11"';
-        ISOLbl: Label 'FO.04_C4.01_V13', Comment = 'ESP="FO.04_C4.01_V13"';
-        DateLbl: Label 'Date', Comment = 'ESP="Fecha"';
+        ISOLbl: Label 'FO.04_C4.01_V14', Comment = 'ESP="FO.04_C4.01_V14"';
+        DateLbl: Label 'Date', Comment = 'ESP="Fecha de inicio"';
         PhoneFaxLbl: Label 'Phone/Fax:', Comment = 'ESP="Telf/Fax:"';
         AgenciaTransporteLbl: Label 'Transport Agency', Comment = 'ESP="Agencia transporte"';
         VatLbl: Label 'VAT', Comment = 'ESP="IVA"';
@@ -1182,7 +1197,7 @@ report 50106 "Pedido Compra"
         ImporteBrutoLbl: Label 'Amount ', Comment = 'ESP="Importe"';
         Vendor: Record Vendor;
         PortesLbl: Label 'Freight', Comment = 'ESP="Portes"';
-        DireccionEntregaLbl: Label 'ADDRESS DELIVERY IN: ', Comment = 'ESP="DIRECCIÓN ENTREGA EN: "';
+        DireccionEntregaLbl: Label 'ADDRESS DELIVERY IN: ', Comment = 'ESP="DIRECCIÓN DE ENTREGA: "';
         WorkHours: Text;
 
     [Scope('Personalization')]
@@ -1214,6 +1229,7 @@ report 50106 "Pedido Compra"
             FormatDocument.SetPurchaser(SalespersonPurchaser, "Purchaser Code", PurchaserText);
             FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
             FormatDocument.SetPaymentTerms(PrepmtPaymentTerms, "Prepmt. Payment Terms Code", "Language Code");
+            FormatDocument.SetPaymentMethod(PaymentMethod, "Payment Method Code", "Language Code");
             FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
 
             ReferenceText := FormatDocument.SetText("Your Reference" <> '', FieldCaption("Your Reference"));

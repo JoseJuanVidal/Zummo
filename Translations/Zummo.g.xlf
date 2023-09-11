@@ -22530,12 +22530,12 @@
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 1542941690" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha de inicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DateLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 1486877514" size-unit="char" translate="yes" xml:space="preserve">
           <source>ADDRESS DELIVERY IN: </source>
-          <note from="Developer" annotates="general" priority="2">ESP="DIRECCIÓN ENTREGA EN: "</note>
+          <note from="Developer" annotates="general" priority="2">ESP="DIRECCIÓN DE ENTREGA: "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DireccionEntregaLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 3801332884" size-unit="char" translate="yes" xml:space="preserve">
@@ -22555,7 +22555,7 @@
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 4293168446" size-unit="char" translate="yes" xml:space="preserve">
           <source>Due Date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha vencimiento"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha entrega"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType DuedateLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 3897674943" size-unit="char" translate="yes" xml:space="preserve">
@@ -22589,8 +22589,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType InvDiscCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 870948665" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.04_C4.01_V13</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.04_C4.01_V13"</note>
+          <source>FO.04_C4.01_V14</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.04_C4.01_V14"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType ISOLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 3392267841" size-unit="char" translate="yes" xml:space="preserve">
@@ -22675,7 +22675,7 @@
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 821750255" size-unit="char" translate="yes" xml:space="preserve">
           <source>VENDOR ORDER</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PEDIDO PROVEEDOR"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="PEDIDO COMPRA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType PediProveeedorLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 3197449539" size-unit="char" translate="yes" xml:space="preserve">
@@ -22762,6 +22762,11 @@
           <source>Shipment Method</source>
           <note from="Developer" annotates="general" priority="2">ESP="Método envío"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType ShipmentMethodDescCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2651873947 - NamedType 3219451673" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment Method</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Condiciones envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType Shipment_Method_Code_lbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 232471621" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ship-to Address</source>
@@ -22857,6 +22862,11 @@
           <source>Vendor No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType VendNoCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2651873947 - NamedType 1921651732" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VENDOR</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PROVEEDOR"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType VendorCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 361562039" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor ID</source>

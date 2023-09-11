@@ -484,7 +484,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -523,7 +523,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -561,7 +561,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -598,7 +598,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>LineAmt_PurchLineFormat</rd:DefaultName>
@@ -865,7 +867,7 @@
       <Width>19.88541cm</Width>
       <Page>
         <PageHeader>
-          <Height>7.36138cm</Height>
+          <Height>8.18159cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -946,6 +948,7 @@
                           <Value>=First(Fields!BuyFromAddr1.Value, "DataSet_Result")</Value>
                           <Style>
                             <FontSize>8pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -953,7 +956,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox24</rd:DefaultName>
-                  <Top>0.59231cm</Top>
+                  <Top>0.55703cm</Top>
                   <Left>0.28712cm</Left>
                   <Height>0.33668cm</Height>
                   <Width>8.80375cm</Width>
@@ -1146,10 +1149,9 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=First(Fields!Buy_fromVendorName.Value, "DataSet_Result")</Value>
+                          <Value>=First(Fields!VendorCaptionLbl.Value, "DataSet_Result")</Value>
                           <Style>
                             <FontSize>8pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -1210,7 +1212,7 @@
             <Rectangle Name="Rectangle6">
               <ReportItems>
                 <Line Name="Line2">
-                  <Top>0.27584in</Top>
+                  <Top>0.28319in</Top>
                   <Height>0in</Height>
                   <Width>7.61065in</Width>
                   <Style>
@@ -1261,6 +1263,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox10</rd:DefaultName>
+                  <Top>0.01868cm</Top>
                   <Left>0.15192cm</Left>
                   <Height>0.70063cm</Height>
                   <Width>2.71828cm</Width>
@@ -1301,6 +1304,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox10</rd:DefaultName>
+                  <Top>0.01868cm</Top>
                   <Left>2.8702cm</Left>
                   <Height>0.70063cm</Height>
                   <Width>2.84373cm</Width>
@@ -1341,6 +1345,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox10</rd:DefaultName>
+                  <Top>0.01868cm</Top>
                   <Left>5.71393cm</Left>
                   <Height>0.70063cm</Height>
                   <Width>2.84373cm</Width>
@@ -1408,6 +1413,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox10</rd:DefaultName>
+                  <Top>0.01868cm</Top>
                   <Left>15.21869cm</Left>
                   <Height>0.70063cm</Height>
                   <Width>4.13756cm</Width>
@@ -1442,7 +1448,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox10</rd:DefaultName>
-                  <Top>0.70841cm</Top>
+                  <Top>0.72709cm</Top>
                   <Left>0.15192cm</Left>
                   <Height>0.70063cm</Height>
                   <Width>2.71828cm</Width>
@@ -1483,7 +1489,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox10</rd:DefaultName>
-                  <Top>0.74369cm</Top>
+                  <Top>0.76237cm</Top>
                   <Left>2.94076cm</Left>
                   <Height>0.70063cm</Height>
                   <Width>2.77317cm</Width>
@@ -1519,7 +1525,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox10</rd:DefaultName>
-                  <Top>0.73591cm</Top>
+                  <Top>0.75459cm</Top>
                   <Left>5.71393cm</Left>
                   <Height>0.70063cm</Height>
                   <Width>2.84373cm</Width>
@@ -1577,7 +1583,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox10</rd:DefaultName>
-                  <Top>0.71723cm</Top>
+                  <Top>0.73591cm</Top>
                   <Left>8.55766cm</Left>
                   <Height>0.70063cm</Height>
                   <Width>6.60055cm</Width>
@@ -1609,7 +1615,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox10</rd:DefaultName>
-                  <Top>0.70841cm</Top>
+                  <Top>0.72709cm</Top>
                   <Left>15.15821cm</Left>
                   <Height>0.70063cm</Height>
                   <Width>4.13756cm</Width>
@@ -1656,7 +1662,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox10</rd:DefaultName>
-                  <Left>8.61814cm</Left>
+                  <Left>8.58639cm</Left>
                   <Height>0.70063cm</Height>
                   <Width>6.60055cm</Width>
                   <ZIndex>10</ZIndex>
@@ -1691,11 +1697,96 @@
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
+                <Textbox Name="Textbox32">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!Shipment_Method_Code_lbl.Value, "DataSet_Result")</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Value>:</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Value>=First(Fields!Shipment_Method_Code.Value, "DataSet_Result")</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox10</rd:DefaultName>
+                  <Top>1.47003cm</Top>
+                  <Left>8.60035cm</Left>
+                  <Height>0.70063cm</Height>
+                  <Width>10.6963cm</Width>
+                  <ZIndex>11</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <LeftBorder>
+                      <Color>LightGrey</Color>
+                      <Style>Solid</Style>
+                      <Width>1pt</Width>
+                    </LeftBorder>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Line Name="Line5">
+                  <Top>0.57729in</Top>
+                  <Left>0.0126cm</Left>
+                  <Height>0in</Height>
+                  <Width>7.61065in</Width>
+                  <ZIndex>12</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>LightGrey</Color>
+                      <Style>Solid</Style>
+                    </Border>
+                    <TopBorder>
+                      <Color>LightGrey</Color>
+                      <Style>Solid</Style>
+                      <Width>1pt</Width>
+                    </TopBorder>
+                    <BottomBorder>
+                      <Color>LightGrey</Color>
+                      <Style>Solid</Style>
+                      <Width>1pt</Width>
+                    </BottomBorder>
+                    <LeftBorder>
+                      <Color>LightGrey</Color>
+                      <Style>Solid</Style>
+                      <Width>1pt</Width>
+                    </LeftBorder>
+                    <RightBorder>
+                      <Color>LightGrey</Color>
+                      <Style>Solid</Style>
+                      <Width>1pt</Width>
+                    </RightBorder>
+                  </Style>
+                </Line>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
-              <Top>4.94554cm</Top>
+              <Top>4.92686cm</Top>
               <Left>0.41882cm</Left>
-              <Height>1.44432cm</Height>
+              <Height>2.20241cm</Height>
               <Width>19.35625cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
@@ -2664,6 +2755,24 @@
                             <Format>n2</Format>
                           </Style>
                         </TextRun>
+                        <TextRun>
+                          <Value xml:space="preserve"> </Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>9pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <Format>n2</Format>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Value>=First(Fields!Currency_Code.Value, "DataSet_Result")</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>9pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <Format>n2</Format>
+                          </Style>
+                        </TextRun>
                       </TextRuns>
                       <Style>
                         <TextAlign>Right</TextAlign>
@@ -2868,6 +2977,20 @@
                   <Paragraphs>
                     <Paragraph>
                       <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!PaymentMethodDesc.Value, "DataSet_Result")</Value>
+                          <Style>
+                            <FontSize>9pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Value> - </Value>
+                          <Style>
+                            <FontSize>9pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
                         <TextRun>
                           <Value>=First(Fields!PaymentTermsDesc.Value, "DataSet_Result")</Value>
                           <Style>
@@ -3249,6 +3372,9 @@ End Function
         <Field Name="Buy_fromVendorName">
           <DataField>Buy_fromVendorName</DataField>
         </Field>
+        <Field Name="Currency_Code">
+          <DataField>Currency_Code</DataField>
+        </Field>
         <Field Name="DirectUniCostCaptionLbl">
           <DataField>DirectUniCostCaptionLbl</DataField>
         </Field>
@@ -3501,11 +3627,20 @@ End Function
         <Field Name="PaymentTermsDesc">
           <DataField>PaymentTermsDesc</DataField>
         </Field>
+        <Field Name="PaymentMethodDesc">
+          <DataField>PaymentMethodDesc</DataField>
+        </Field>
         <Field Name="ShipmentMethodDesc">
           <DataField>ShipmentMethodDesc</DataField>
         </Field>
         <Field Name="PrepmtPaymentTermsDesc">
           <DataField>PrepmtPaymentTermsDesc</DataField>
+        </Field>
+        <Field Name="Shipment_Method_Code_lbl">
+          <DataField>Shipment_Method_Code_lbl</DataField>
+        </Field>
+        <Field Name="Shipment_Method_Code">
+          <DataField>Shipment_Method_Code</DataField>
         </Field>
         <Field Name="DimText">
           <DataField>DimText</DataField>
@@ -3563,6 +3698,9 @@ End Function
         </Field>
         <Field Name="VendNo_Lbl">
           <DataField>VendNo_Lbl</DataField>
+        </Field>
+        <Field Name="VendorCaptionLbl">
+          <DataField>VendorCaptionLbl</DataField>
         </Field>
         <Field Name="SellToCustNo_PurchHeader">
           <DataField>SellToCustNo_PurchHeader</DataField>
