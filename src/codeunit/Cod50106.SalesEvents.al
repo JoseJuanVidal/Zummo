@@ -1589,18 +1589,23 @@ codeunit 50106 "SalesEvents"
         SalesSetup: Record "Sales & Receivables Setup";
         Location: Record Location;
     begin
-        SalesSetup.Get();
-        if SalesSetup."Location Code Credit Memo" <> '' then
-            if Location.Get(SalesSetup."Location Code Credit Memo") then
-                if not Location."Use As In-Transit" then begin
-                    Item.Get(ToSalesLine."No.");
-                    if Item.Type in [Item.Type::Inventory] then begin
+        case ToSalesLine.Type of
+            ToSalesLine.Type::Item:
+                begin
+                    SalesSetup.Get();
+                    if SalesSetup."Location Code Credit Memo" <> '' then
+                        if Location.Get(SalesSetup."Location Code Credit Memo") then
+                            if not Location."Use As In-Transit" then begin
+                                Item.Get(ToSalesLine."No.");
+                                if Item.Type in [Item.Type::Inventory] then begin
 
-                        ToSalesLine.Validate("Location Code", SalesSetup."Location Code Credit Memo");
-                        ToSalesLine.Validate("Bin Code", SalesSetup."Bin Code Credit Memo");
-                        ChangeLocationReservationEntry(ToSalesLine);
-                    end;
+                                    ToSalesLine.Validate("Location Code", SalesSetup."Location Code Credit Memo");
+                                    ToSalesLine.Validate("Bin Code", SalesSetup."Bin Code Credit Memo");
+                                    ChangeLocationReservationEntry(ToSalesLine);
+                                end;
+                            end;
                 end;
+        end;
     end;
 
     local procedure ChangeLocationReservationEntry(ToSalesLine: Record "Sales Line")
