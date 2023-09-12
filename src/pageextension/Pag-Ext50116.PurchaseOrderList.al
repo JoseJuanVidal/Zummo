@@ -71,6 +71,7 @@ pageextension 50116 "PurchaseOrderList" extends "Purchase Order List"
         PurchaseHeader.Reset();
         PurchaseHeader.SetRange("Document Type", Rec."Document Type");
         PurchaseHeader.SetRange("No.", Rec."No.");
+        PurchaseHeader.FindFirst();
         Funciones.ExportarPDFPurchaseOrder(PurchaseHeader);
     end;
 }

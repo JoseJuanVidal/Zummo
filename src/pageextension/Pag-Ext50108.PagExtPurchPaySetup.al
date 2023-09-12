@@ -23,11 +23,33 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                             SetTextoEmail(textoEmail);
                         end;
                     }
-                    field(WarningPlasticReceiptIntra; WarningPlasticReceiptIntra)
-                    {
-                        ApplicationArea = all;
-                    }
+
                 }
+                field(WarningPlasticReceiptIntra; WarningPlasticReceiptIntra)
+                {
+                    ApplicationArea = all;
+                }
+
+                field("General Conditions Purchase"; "General Conditions Purchase")
+                {
+                    ApplicationArea = all;
+
+                    trigger OnAssistEdit()
+                    begin
+                        GeneralConditions();
+                    end;
+                }
+
+                field("General Conditions Pur. (ENG)"; "General Conditions Pur. (ENG)")
+                {
+                    ApplicationArea = all;
+
+                    trigger OnAssistEdit()
+                    begin
+                        GeneralConditionsENG();
+                    end;
+                }
+
             }
             group("Sharepoint")
             {
@@ -106,8 +128,10 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
 
     var
         FileManagement: Codeunit "File Management";
+        Funciones: Codeunit Funciones;
         textoEmail: Text;
         lblPath: Label 'Select folder', comment = 'ESP="Seleccionar Carpeta"';
+        lblExport: Label '¿Do you want to open or download the file?', comment = 'ESP="¿Desea abrir o descargar el fichero?"';
 
     local procedure SelectPathPurchaseDocuments(): Text
     var
@@ -115,5 +139,59 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
     begin
         if FileManagement.SelectFolderDialog(lblPath, PathName) then
             Exit(PathName);
+    end;
+
+    local procedure GeneralConditions()
+    var
+        FileName: text;
+        lblTitle: Label 'Select File (PDF)', comment = 'ESP="Seleccionar Fichero (PDF)"';
+        lblfilter: Label 'PDF (*.pdf)|*.pdf', comment = 'ESP="PDF (*.pdf)|*.pdf"';
+    begin
+        Clear(Funciones);
+        if Rec."General Conditions Purchase" <> '' then begin
+            Funciones.DeleteGeneralConditions(Rec.FieldNo("General Conditions Purchase"));
+            Rec."General Conditions Purchase" := '';
+            Rec.Modify();
+            Commit();
+        end;
+
+        FileName := Funciones.UploadGeneralConditions(Rec.FieldNo("General Conditions Purchase"));
+        if FileName <> '' then begin
+            Rec."General Conditions Purchase" := CopyStr(FileName, 1, MaxStrLen(Rec."General Conditions Purchase"));
+        end;
+        CurrPage.Update();
+    end;
+
+    local procedure GeneralConditionsENG()
+    var
+        FileName: text;
+        lblTitle: Label 'Select File (PDF)', comment = 'ESP="Seleccionar Fichero (PDF)"';
+        lblfilter: Label 'PDF (*.pdf)|*.pdf', comment = 'ESP="PDF (*.pdf)|*.pdf"';
+    begin
+        Clear(Funciones);
+        if Rec."General Conditions Pur. (ENG)" <> '' then begin
+            Funciones.DeleteGeneralConditions(Rec.FieldNo("General Conditions Pur. (ENG)"));
+            Rec."General Conditions Pur. (ENG)" := '';
+            Rec.Modify();
+            Commit();
+        end;
+        FileName := Funciones.UploadGeneralConditions(Rec.FieldNo("General Conditions Pur. (ENG)"));
+        if FileName <> '' then begin
+            Rec."General Conditions Pur. (ENG)" := CopyStr(FileName, 1, MaxStrLen(Rec."General Conditions Purchase"));
+        end;
+
+        CurrPage.Update();
+    end;
+
+    local procedure DownloadGeneralConditions(FiledNo: Integer)
+    var
+        myInt: Integer;
+    begin
+        Clear(Funciones);
+        if Rec."General Conditions Pur. (ENG)" <> '' then begin
+            if not Confirm(lblExport) then
+                exit;
+            Funciones.DowloadGeneralConditions(Rec.FieldNo("General Conditions Pur. (ENG)"));
+        end;
     end;
 }

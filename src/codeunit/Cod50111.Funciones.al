@@ -2965,10 +2965,12 @@ codeunit 50111 "Funciones"
     // ======================================================================================================
     procedure ExportarPDFPurchaseOrder(var PurchaseHeader: Record "Purchase Header")
     var
+        PurchaseSetup: Record "Purchases & Payables Setup";
         reportPedidocompra: Report "Pedido Compra";
         FileManagement: Codeunit "File Management";
         FileName: text;
         FileNameMerge: text;
+        FileNameMerge2: text;
         XmlParameters: text;
         Content: file;
         OStream: OutStream;
@@ -2984,6 +2986,7 @@ codeunit 50111 "Funciones"
         files := files.List();
         FileName := FileManagement.ServerTempFileName('pdf');
         FileNameMerge := FileManagement.ServerTempFileName('pdf');
+        FileNameMerge2 := FileManagement.ServerTempFileName('pdf');
 
         clear(reportPedidocompra);
         RecRef.GetTable(PurchaseHeader);
@@ -2994,9 +2997,98 @@ codeunit 50111 "Funciones"
         Content.Close();
 
         files.add(FileName);
+        if (PurchaseHeader."Currency Code" in ['ENU', 'ENG']) or (StrPos(XmlParameters, 'optIdioma">1') > 0) then
+            FileNameMerge := GetGeneralConditions(PurchaseSetup.FieldNo("General Conditions Pur. (ENG)"), FileNameMerge)
+        else
+            FileNameMerge := GetGeneralConditions(PurchaseSetup.FieldNo("General Conditions Purchase"), FileNameMerge);
+        if FileNameMerge <> '' then begin
+            FileManagement.CopyServerFile(FileNameMerge, FileNameMerge2, true);
+            files.add(FileNameMerge2);
+        end;
+
         SothisPDF.Merge(files, FileNameMerge, FALSE);
+        FileName := StrSubstNo('%1.%2', PurchaseHeader."No.", FileManagement.GetExtension(FileNameMerge2));
 
         Download(FileNameMerge, 'PDF Pedidos Compra', '', '', FileName);
+    end;
+
+    procedure UploadGeneralConditions(fieldNo: Integer): Text;
+    var
+        DocumentAttachment: Record "Document Attachment";
+        TempBlob: Record TempBlob;
+        FileManagement: Codeunit "File Management";
+        DocStream: InStream;
+        FileName: text;
+        DlgCaption: Label 'Select File (PDF)', comment = 'ESP="Seleccionar Fichero (PDF)"';
+        FilterTxt: Label 'Files PDF (*.pdf)|*.pdf|All Files (*.*)|*.*', comment = 'ESP="Archivos PDF (*.pdf)|*.pdf|Todos los archivos (*.*)|*.*"';
+        EmptyFileNameErr: Label 'Please choose a file to attach.', comment = 'ESP="Eliga un fichero para adjuntar"';
+        NoDocumentAttachedErr: Label 'Please attach a document first.', comment = 'ESP="Adjunte primero un documento."';
+    begin
+
+        FileName := FileManagement.BLOBImportWithFilter(TempBlob, DlgCaption, FileName, FilterTxt, FilterTxt);
+        IF FileName = '' THEN
+            ERROR(EmptyFileNameErr);
+        DocumentAttachment.Reset();
+        DocumentAttachment.SetRange("Table ID", Database::"Purchases & Payables Setup");
+        DocumentAttachment.SetRange("No.", format(fieldNo));
+        if not DocumentAttachment.FindFirst() then begin
+            DocumentAttachment.Init();
+            DocumentAttachment.Validate("Table ID", Database::"Purchases & Payables Setup");
+            DocumentAttachment.Validate("No.", Format(fieldNo));
+            DocumentAttachment.Insert();
+        end;
+
+        DocumentAttachment.Validate("File Extension", FileManagement.GetExtension(FileName));
+        DocumentAttachment.Validate("File Name", COPYSTR(FileManagement.GetFileNameWithoutExtension(FileName), 1, MAXSTRLEN(DocumentAttachment."File Name")));
+        DocumentAttachment.Validate("Attached Date", CreateDateTime(WorkDate(), Time));
+        DocumentAttachment."Attached By" := USERSECURITYID;
+        TempBlob.Blob.CREATEINSTREAM(DocStream);
+        DocumentAttachment."Document Reference ID".IMPORTSTREAM(DocStream, '', '', FileName);
+        IF NOT DocumentAttachment."Document Reference ID".HASVALUE THEN
+            ERROR(NoDocumentAttachedErr);
+        DocumentAttachment.Modify();
+
+        exit(FileManagement.GetFileName(FileName));
+    end;
+
+    procedure DowloadGeneralConditions(fieldNo: Integer)
+    var
+        DocumentAttachment: Record "Document Attachment";
+    begin
+        DocumentAttachment.Reset();
+        DocumentAttachment.SetRange("Table ID", Database::"Purchases & Payables Setup");
+        DocumentAttachment.SetRange("No.", format(fieldNo));
+        if DocumentAttachment.FindFirst() then
+            DocumentAttachment.Export(true);
+
+    end;
+
+    procedure DeleteGeneralConditions(fieldNo: Integer)
+    var
+        DocumentAttachment: Record "Document Attachment";
+    begin
+        DocumentAttachment.Reset();
+        DocumentAttachment.SetRange("Table ID", Database::"Purchases & Payables Setup");
+        DocumentAttachment.SetRange("No.", format(fieldNo));
+        if DocumentAttachment.FindFirst() then
+            DocumentAttachment.Delete();
+
+    end;
+
+    procedure GetGeneralConditions(fieldNo: Integer; FileNameMerge: Text): Text
+    var
+        DocumentAttachment: Record "Document Attachment";
+        FileName: text;
+    begin
+        DocumentAttachment.Reset();
+        DocumentAttachment.SetRange("Table ID", Database::"Purchases & Payables Setup");
+        DocumentAttachment.SetRange("No.", format(fieldNo));
+        if DocumentAttachment.FindFirst() then begin
+            if DocumentAttachment."Document Reference ID".ExportFile(FileNameMerge) then begin
+                Clear(DocumentAttachment);
+                exit(FileNameMerge);
+            end;
+        end;
     end;
 }
 
