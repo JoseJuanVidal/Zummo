@@ -39,6 +39,7 @@ pageextension 50116 "PurchaseOrderList" extends "Purchase Order List"
                 ApplicationArea = all;
                 Image = SendAsPDF;
                 Promoted = true;
+                PromotedCategory = Category5;
 
                 trigger OnAction()
                 begin

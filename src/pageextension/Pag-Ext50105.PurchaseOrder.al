@@ -30,4 +30,35 @@ pageextension 50105 "PurchaseOrder" extends "Purchase Order"
             }
         }
     }
+    actions
+    {
+        addafter(Print)
+        {
+            action(ExportPDF)
+            {
+                ApplicationArea = all;
+                Image = SendAsPDF;
+                Promoted = true;
+                PromotedCategory = Category10;
+
+                trigger OnAction()
+                begin
+                    ExportMergePDF();
+                end;
+            }
+        }
+    }
+    var
+        Funciones: Codeunit Funciones;
+
+    local procedure ExportMergePDF()
+    var
+        PurchaseHeader: Record "Purchase Header";
+    begin
+        PurchaseHeader.Reset();
+        PurchaseHeader.SetRange("Document Type", Rec."Document Type");
+        PurchaseHeader.SetRange("No.", Rec."No.");
+        PurchaseHeader.FindFirst();
+        Funciones.ExportarPDFPurchaseOrder(PurchaseHeader);
+    end;
 }
