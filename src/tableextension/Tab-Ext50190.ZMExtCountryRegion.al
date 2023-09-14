@@ -22,5 +22,11 @@ tableextension 50190 "ZM Ext Country/Region" extends "Country/Region"
             Caption = 'ID PILAS';
             DataClassification = ToBeClassified;
         }
+        field(50110; Zona; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Zona', comment = 'ESP="Zona"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Zona), TipoRegistro = const(Tabla));
+        }
     }
 }

@@ -31,6 +31,10 @@ page 50114 "Area Manager List"
                     ApplicationArea = all;
                     Visible = false;
                 }
+                field("Sales Manager"; "Sales Manager")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

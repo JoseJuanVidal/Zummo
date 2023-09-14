@@ -5,6 +5,10 @@ pageextension 50168 "ZM Ext Countries/Regions" extends "Countries/Regions"
     {
         addlast(Control1)
         {
+            field(Zona; Zona)
+            {
+                ApplicationArea = all;
+            }
             field("Cuota Objetivo"; "Cuota Objetivo")
             {
                 ApplicationArea = all;
