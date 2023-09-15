@@ -7,6 +7,7 @@ page 17548 "ZM CIM Items BOM"
     SourceTableTemporary = true;
     InsertAllowed = false;
     DeleteAllowed = false;
+    Editable = false;
 
     layout
     {
@@ -18,13 +19,11 @@ page 17548 "ZM CIM Items BOM"
                 ShowAsTree = true;
                 IndentationColumn = Rec.Indentation;
 
-                field(Indentation; Indentation)
-                {
-                    ApplicationArea = all;
-                }
                 field(Type; Type)
                 {
                     ApplicationArea = All;
+                    Style = Strong;
+                    StyleExpr = IsParentExpr;
                 }
                 field("No."; "No.")
                 {
@@ -74,6 +73,22 @@ page 17548 "ZM CIM Items BOM"
                 {
                     ApplicationArea = All;
                 }
+            }
+        }
+        area(FactBoxes)
+        {
+            part(ItemPicture; "ZM ERPLINK Item Picture")
+            {
+                ApplicationArea = all;
+                Caption = 'Imagen', comment = 'ESP="Imagen"';
+                SubPageLink = "No." = field("No.");
+
+            }
+            part(Documents; "ZM Item Documents")
+            {
+                ApplicationArea = all;
+                Caption = 'Documentos Producto', comment = 'ESP="Documentos Producto"';
+                SubPageLink = CodComentario = field("No.");
             }
         }
     }

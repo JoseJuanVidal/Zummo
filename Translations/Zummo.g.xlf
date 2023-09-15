@@ -13468,6 +13468,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items BOM - Control Lines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3164288714 - Control 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documentos Producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items BOM - Control Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3164288714 - Control 1368373035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imagen</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imagen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items BOM - Control ItemPicture - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ERPLINK Production BOM Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Líneas Prod. BOM Lines "</note>
