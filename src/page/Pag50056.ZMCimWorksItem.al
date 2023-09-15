@@ -14,15 +14,6 @@ page 50056 "ZM CimWorks Item"
         {
             repeater(General)
             {
-                field(Lanzamiento; OrderNo)
-                {
-                    ApplicationArea = all;
-
-                    trigger OnValidate()
-                    begin
-                        SetOrderNo();
-                    end;
-                }
                 field(No; "No.")
                 {
                     ApplicationArea = All;
@@ -113,19 +104,4 @@ page 50056 "ZM CimWorks Item"
             Rec.CreationOn := CreateDateTime(WorkDate(), time());
         Rec.ModifyOn := CreateDateTime(WorkDate(), time());
     end;
-
-    local procedure SetOrderNo()
-    begin
-        if OrderNo = 0 then
-            Rec.Order := OrderNo
-        else begin
-            if (Rec.Order = 9999999) then
-                Rec.Order := OrderNo;
-        end;
-        OrderNo := Rec.Order
-    end;
-
-    var
-        OrderNo: Integer;
-
 }

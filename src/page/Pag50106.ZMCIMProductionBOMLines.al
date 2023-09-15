@@ -87,6 +87,10 @@ page 50106 "ZM CIM Production BOM Lines"
                 {
                     ApplicationArea = All;
                 }
+                field("Prod. BOM No. Components"; "Prod. BOM No. Components")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

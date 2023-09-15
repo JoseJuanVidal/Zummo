@@ -7452,6 +7452,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page WS Purchase Line - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3853294818 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nuevo,Procesar,Informe,Mostrar,Navegar</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Property PromotedActionCategories</note>
+        </trans-unit>
         <trans-unit id="Page 1020334120 - Action 2950845476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cambiar Estado</source>
           <note from="Developer" annotates="general" priority="2"/>

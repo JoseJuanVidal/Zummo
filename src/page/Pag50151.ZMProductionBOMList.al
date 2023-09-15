@@ -1,7 +1,7 @@
 page 50151 "ZM Production BOM List"
 {
     Caption = 'ERPLINK Prod. BOM list', Comment = 'ESP="ERPLINK L.M. de producción"';
-    PageType = ListPart;
+    PageType = Card;
     SourceTable = "ZM CIM Prod. BOM Header";
     UsageCategory = None;
 
@@ -9,7 +9,7 @@ page 50151 "ZM Production BOM List"
     {
         area(content)
         {
-            repeater(General)
+            group(General)
             {
                 field("No."; "No.")
                 {
@@ -54,12 +54,30 @@ page 50151 "ZM Production BOM List"
                     ApplicationArea = all;
                 }
             }
-            // part(Lines; "ZM CIM Production BOM Lines")
-            // {
-            //     ApplicationArea = All;
-            //     SubPageLink = "Production BOM No." = field("No.");
-            //     UpdatePropagation = Both;
-            // }
+            part(Lines; "ZM CIM Production BOM Lines")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Production BOM No." = field("No.");
+                UpdatePropagation = Both;
+            }
+        }
+        area(FactBoxes)
+        {
+            part(ItemPicture; "ZM ERPLINK Item Picture")
+            {
+                ApplicationArea = all;
+                Caption = 'Imagen', comment = 'ESP="Imagen"';
+                SubPageLink = "No." = field("No.");
+                Provider = Lines;
+
+            }
+            part(Documents; "ZM Item Documents")
+            {
+                ApplicationArea = all;
+                Caption = 'Documentos Producto', comment = 'ESP="Documentos Producto"';
+                SubPageLink = CodComentario = field("No.");
+                Provider = Lines;
+            }
         }
     }
 }

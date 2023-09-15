@@ -117,6 +117,13 @@ table 50158 "ZM CIM Prod. BOM Line"
             Caption = 'Quantity per', Comment = 'ESP="Cantidad por"';
             DecimalPlaces = 0 : 5;
         }
+        field(50; "Prod. BOM No. Components"; Code[20])
+        {
+            Caption = 'Production BOM No. Components', Comment = 'ESP="Nº L.M. Componentes producción"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM CIM Items temporary"."Production BOM No." where("No." = field("No.")));
+            Editable = false;
+        }
     }
 
     keys

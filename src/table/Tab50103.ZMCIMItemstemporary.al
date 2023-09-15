@@ -71,11 +71,10 @@ table 50103 "ZM CIM Items temporary"
             DataClassification = CustomerContent;
             Caption = 'Color', comment = 'ESP="Color"';
         }
-        field(50808; Order; Integer)
+        field(50808; Principal; Boolean)
         {
             DataClassification = CustomerContent;
-            Caption = 'Order', comment = 'ESP="Order"';
-            InitValue = 9999999;
+            Caption = 'Principal', comment = 'ESP="Principal"';
         }
         field(50809; CreationOn; DateTime)
         {

@@ -6882,12 +6882,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field No. - Property Caption</note>
           <target>Nº</target>
         </trans-unit>
-        <trans-unit id="Table 1666975959 - Field 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Order</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Order"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Order - Property Caption</note>
-          <target>Order</target>
-        </trans-unit>
         <trans-unit id="Table 1666975959 - Field 1535478001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packaging</source>
           <note from="Developer" annotates="general" priority="2">ESP="Embalaje"</note>
@@ -6899,6 +6893,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Picture"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Picture - Property Caption</note>
           <target>Picture</target>
+        </trans-unit>
+        <trans-unit id="Table 1666975959 - Field 1231848670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Principal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Principal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Items temporary - Field Principal - Property Caption</note>
+          <target>Principal</target>
         </trans-unit>
         <trans-unit id="Table 1666975959 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Production BOM No.</source>
@@ -7067,6 +7067,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Posición 3"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Prod. BOM Line - Field Position 3 - Property Caption</note>
           <target>Posición 3</target>
+        </trans-unit>
+        <trans-unit id="Table 1561647091 - Field 2323002320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM No. Components</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº L.M. Componentes producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Prod. BOM Line - Field Prod. BOM No. Components - Property Caption</note>
+          <target>Nº L.M. Componentes producción</target>
         </trans-unit>
         <trans-unit id="Table 1561647091 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Production BOM No.</source>
@@ -14592,29 +14598,28 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Item Documents - Action UpdatePicture - Property Caption</note>
           <target>Actualzizar imagen</target>
         </trans-unit>
+        <trans-unit id="Page 3853294818 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nuevo,Procesar,Informe,Mostrar,Navegar</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Property PromotedActionCategories</note>
+        </trans-unit>
         <trans-unit id="Page 3853294818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ERPLINK Items Pending</source>
           <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Productos pendientes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Property Caption</note>
           <target>ERPLINK Productos pendientes</target>
         </trans-unit>
+        <trans-unit id="Page 3853294818 - NamedType 1088288870" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea marcar/Desmarcar el producto %1 %2 como Subida principal?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar/Desmarcar el producto %1 %2 como Subida principal?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - NamedType lblConfirmPrincipal</note>
+          <target>¿Desea marcar/Desmarcar el producto %1 %2 como Subida principal?</target>
+        </trans-unit>
         <trans-unit id="Page 3853294818 - Method 3317724022 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you want to update the images of %1 selected records?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las imagenes de %1 registros seleccionados?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Method UpdateFileJpg - NamedType lblConfirm</note>
           <target>¿Desea actualizar las imagenes de %1 registros seleccionados?</target>
-        </trans-unit>
-        <trans-unit id="Page 3853294818 - Control 3448041191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Components Lines</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Lista componentes"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Control BomLines - Property Caption</note>
-          <target>Lista componentes</target>
-        </trans-unit>
-        <trans-unit id="Page 3853294818 - Control 3937403654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Documentos Lista componentes</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Documentos Lista componentes"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Control BomLineDocuments - Property Caption</note>
-          <target>Documentos Lista componentes</target>
         </trans-unit>
         <trans-unit id="Page 3853294818 - Control 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documentos Producto</source>
@@ -14628,11 +14633,47 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Control ItemPicture - Property Caption</note>
           <target>Imagen</target>
         </trans-unit>
+        <trans-unit id="Page 3853294818 - Action 2478625956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BOM L.M.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estructura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action BOM - Property Caption</note>
+          <target>Estructura</target>
+        </trans-unit>
+        <trans-unit id="Page 3853294818 - Action 3215433153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Principal (S/N)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Principal (S/N)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action MarkPrincipal - Property Caption</note>
+          <target>Principal (S/N)</target>
+        </trans-unit>
+        <trans-unit id="Page 3853294818 - Action 580853590 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Todos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar todos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action ShowAll - Property Caption</note>
+          <target>Mostrar todos</target>
+        </trans-unit>
+        <trans-unit id="Page 3853294818 - Action 3606868507 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar subidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar subidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action ShowPrincipal - Property Caption</note>
+          <target>Mostrar subidas</target>
+        </trans-unit>
         <trans-unit id="Page 3853294818 - Action 2427213647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update picture</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualzizar imagen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action UpdatePicture - Property Caption</note>
           <target>Actualzizar imagen</target>
+        </trans-unit>
+        <trans-unit id="Page 3164288714 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Estructura de L.M.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estructura de L.M."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items BOM - Property Caption</note>
+          <target>Estructura de L.M.</target>
+        </trans-unit>
+        <trans-unit id="Page 3164288714 - Control 3471137671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items BOM - Control Lines - Property Caption</note>
+          <target>Líneas</target>
         </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ERPLINK Production BOM Lines</source>
@@ -15579,6 +15620,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="ERPLINK L.M. de producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production BOM List - Property Caption</note>
           <target>ERPLINK L.M. de producción</target>
+        </trans-unit>
+        <trans-unit id="Page 2976538946 - Control 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documentos Producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production BOM List - Control Documents - Property Caption</note>
+          <target>Documentos Producto</target>
+        </trans-unit>
+        <trans-unit id="Page 2976538946 - Control 1368373035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imagen</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imagen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production BOM List - Control ItemPicture - Property Caption</note>
+          <target>Imagen</target>
         </trans-unit>
         <trans-unit id="Page 1493879539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Production BOM Maintenance</source>

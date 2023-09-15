@@ -1590,4 +1590,66 @@ codeunit 50108 "FuncionesFabricacion"
             until BOMComponentLine.next() = 0;
     end;
 
+
+    // =============     CIMWORKS - ERPLINK Bom List funtions          ====================
+    // ==  
+    // ==  Funciones de calculo y explode de las listas BOM de productos ERPLINK 
+    // ==  
+    // ======================================================================================================
+
+    procedure InitBomItem(var BOMBuffer: Record "BOM Buffer"; ItemNo: code[20])
+    var
+        CIMItemstemporary: Record "ZM CIM Items temporary";
+        Levelindentation: Integer;
+        EntryNo: Integer;
+    begin
+        EntryNo := 1;
+        CIMItemstemporary.Get(ItemNo);
+        AddInitBomItem(BOMBuffer, CIMItemstemporary, EntryNo, Levelindentation, CIMItemstemporary."Production BOM No." = '');
+
+        // Llamamos a funcion circular de carga de componentes
+        if CIMItemstemporary."Production BOM No." <> '' then
+            AddBomItemComponents(BOMBuffer, CIMItemstemporary, EntryNo, Levelindentation);
+    end;
+
+    local procedure AddBomItemComponents(var BOMBuffer: Record "BOM Buffer"; CIMItemsParent: Record "ZM CIM Items temporary"; var EntryNo: Integer; var Levelindentation: Integer)
+    var
+        CIMItemstemporary: Record "ZM CIM Items temporary";
+        CIMProdBOMLine: record "ZM CIM Prod. BOM Line";
+    begin
+        Levelindentation += 1;
+        CIMProdBOMLine.Reset();
+        CIMProdBOMLine.SetRange("Production BOM No.", CIMItemsParent."Production BOM No.");
+        if CIMProdBOMLine.FindFirst() then
+            repeat
+                CIMItemstemporary.Get(CIMProdBOMLine."No.");
+                AddInitBomItem(BOMBuffer, CIMItemstemporary, EntryNo, Levelindentation, CIMItemstemporary."Production BOM No." = '');
+
+                if CIMItemstemporary."Production BOM No." <> '' then
+                    AddBomItemComponents(BOMBuffer, CIMItemstemporary, EntryNo, Levelindentation);
+            Until CIMProdBOMLine.next() = 0;
+    end;
+
+    local procedure AddInitBomItem(var BOMBuffer: Record "BOM Buffer"; CIMItemstemporary: Record "ZM CIM Items temporary"; var EntryNo: Integer; var Levelindentation: Integer; ParentItem: Boolean)
+    var
+        Item: Record Item;
+    begin
+        EntryNo += 1;
+        if Item.Get(CIMItemstemporary."No.") then;
+        BOMBuffer.Init();
+        BOMBuffer."Entry No." := EntryNo;
+        BOMBuffer.Indentation := Levelindentation;
+        BOMBuffer."Is Leaf" := ParentItem;
+        BOMBuffer.Type := BOMBuffer.Type::Item;
+        BOMBuffer."No." := CIMItemstemporary."No.";
+        BOMBuffer.Description := CIMItemstemporary.Description;
+        BOMBuffer."Low-Level Code" := Levelindentation;
+        BOMBuffer."Qty. per Parent" := 1;
+        BOMBuffer."Qty. per Top Item" := 1;
+        BOMBuffer."Unit of Measure Code" := CIMItemstemporary."Base Unit of Measure";
+        BOMBuffer."Replenishment System" := Item."Replenishment System";
+        BOMBuffer."Safety Lead Time" := Item."Safety Lead Time";
+        BOMBuffer."Lead Time Calculation" := item."Lead Time Calculation";
+        BOMBuffer.Insert();
+    end;
 }
