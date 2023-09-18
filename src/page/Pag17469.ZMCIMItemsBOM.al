@@ -1,4 +1,4 @@
-page 17548 "ZM CIM Items BOM"
+page 17469 "ZM CIM Items BOM"
 {
     Caption = 'Estructura de L.M.', comment = 'ESP="Estructura de L.M."';
     PageType = Worksheet;

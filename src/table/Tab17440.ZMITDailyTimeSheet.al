@@ -38,7 +38,6 @@ table 17440 "ZM IT Daily Time Sheet"
             Caption = 'Resource No.', comment = 'ESP="Cód. Recurso"';
             FieldClass = FlowField;
             CalcFormula = lookup("User Setup"."Resource No." where("User ID" = field("User id")));
-            Editable = false;
         }
         field(11; "Resource Name"; text[100])
         {

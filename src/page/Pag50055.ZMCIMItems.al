@@ -160,6 +160,7 @@ page 50055 "ZM CIM Items"
             }
             action(BOMLedger)
             {
+                Caption = 'Bom Ledger', comment = 'ESP="L.M. Prod."';
                 ApplicationArea = all;
                 Image = BOMLedger;
                 Promoted = true;

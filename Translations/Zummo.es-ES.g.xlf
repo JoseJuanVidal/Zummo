@@ -14639,6 +14639,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action BOM - Property Caption</note>
           <target>Estructura</target>
         </trans-unit>
+        <trans-unit id="Page 3853294818 - Action 1671218215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bom Ledger</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. Prod."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action BOMLedger - Property Caption</note>
+          <target>L.M. Prod.</target>
+        </trans-unit>
         <trans-unit id="Page 3853294818 - Action 3215433153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Principal (S/N)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Principal (S/N)"</note>

@@ -9439,7 +9439,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllTickets - NamedType lblName</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 833899790 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create Quote in Zummo Innovaciones</source>
+          <source>Create Quote in Zummo Innovaciones - %1 (%2)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailOnCreateQuote - NamedType SubjectLbl</note>
         </trans-unit>
@@ -13437,6 +13437,11 @@
           <source>BOM L.M.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estructura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action BOM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3853294818 - Action 1671218215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bom Ledger</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. Prod."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items - Action BOMLedger - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3853294818 - Action 3215433153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Principal (S/N)</source>

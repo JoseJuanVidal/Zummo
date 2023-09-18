@@ -471,7 +471,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         FileMgt: Codeunit "File Management";
         FileName: Text;
         XmlParameters: text;
-        SubjectLbl: Label 'Create Quote in Zummo Innovaciones';
+        SubjectLbl: Label 'Create Quote in Zummo Innovaciones - %1 (%2)';
         BodyLbl: Label 'Sales Quote %1 generated, from purchase order %2 in Zummo INC.';
     begin
         // primero obtenemos el PDF de la oferta
@@ -486,7 +486,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Quotepdf.SaveAsPdf(FileName);
 
         // enviamos el email 
-        SendMailIC(SubjectLbl, GetSalesHeaderBodyMail(SalesHeader), SalesHeader."No.", FileName);
+        SendMailIC(StrSubstNo(SubjectLbl, SalesHeader."No.", SalesHeader."External Document No."), GetSalesHeaderBodyMail(SalesHeader), SalesHeader."No.", FileName);
     end;
 
     local procedure GetSalesHeaderBodyMail(SalesHeader: Record "Sales Header") BodyMail: text
