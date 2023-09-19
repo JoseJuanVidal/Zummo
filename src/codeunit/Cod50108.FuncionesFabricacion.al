@@ -1591,7 +1591,7 @@ codeunit 50108 "FuncionesFabricacion"
     end;
 
 
-    // =============     CIMWORKS - ERPLINK Bom List funtions          ====================
+    // =============     CIMWORKS - ERPLINK BOM List funtions          ====================
     // ==  
     // ==  Funciones de calculo y explode de las listas BOM de productos ERPLINK 
     // ==  
@@ -1612,7 +1612,7 @@ codeunit 50108 "FuncionesFabricacion"
             AddBomItemComponents(BOMBuffer, CIMItemstemporary, EntryNo, Levelindentation);
     end;
 
-    local procedure AddBomItemComponents(var BOMBuffer: Record "BOM Buffer"; CIMItemsParent: Record "ZM CIM Items temporary"; var EntryNo: Integer; var Levelindentation: Integer)
+    local procedure AddBomItemComponents(var BOMBuffer: Record "BOM Buffer"; CIMItemsParent: Record "ZM CIM Items temporary"; var EntryNo: Integer; Levelindentation: Integer)
     var
         CIMItemstemporary: Record "ZM CIM Items temporary";
         CIMProdBOMLine: record "ZM CIM Prod. BOM Line";

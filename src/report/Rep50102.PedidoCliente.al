@@ -1624,7 +1624,6 @@ report 50102 "PedidoCliente"
                         FO01_txt := FO02_Lbl;
                     "Document Type"::Order:
                         FO01_txt := FO01_Lbl;
-
                 end;
                 if not recC.get("Sell-to Customer No.") then
                     clear(recC);
