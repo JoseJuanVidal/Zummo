@@ -6060,7 +6060,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllTickets - NamedType metodo</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 833899790 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create Quote in Zummo Innovaciones</source>
+          <source>Create Quote in Zummo Innovaciones - %1 (%2)</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailOnCreateQuote - NamedType SubjectLbl</note>
         </trans-unit>

@@ -7,6 +7,16 @@ table 17413 "ZM PL Items temporary"
         field(1; "No."; Code[20])
         {
             Caption = 'No.', Comment = 'ESP="Nº"';
+
+            trigger OnValidate()
+            begin
+                if "No." <> xRec."No." then
+                    if xRec."No." = '' then begin
+                        GetPreItemSetup();
+                        NoSeriesMgt.TestManual(SetupPreItemReg."Temporary Nos.");
+                    end;
+            end;
+
         }
         field(3; Description; Text[100])
         {
@@ -35,6 +45,10 @@ table 17413 "ZM PL Items temporary"
         field(92; Picture; MediaSet)
         {
             Caption = 'Picture', Comment = 'ESP="Picture"';
+        }
+        field(97; "Nos. series"; code[20])
+        {
+            Caption = 'Nos. series', Comment = 'ESP="No. Series"';
         }
         Field(50125; Material; text[100])
         {
@@ -75,18 +89,20 @@ table 17413 "ZM PL Items temporary"
         {
             DataClassification = CustomerContent;
             Caption = 'State Creation', comment = 'ESP="Estado Alta"';
+            Editable = false;
         }
         field(50820; Department; text[50])
         {
             DataClassification = CustomerContent;
             Caption = 'Department', comment = 'ESP="Departamento"';
+            TableRelation = "ZM PL Item Setup Department";
         }
         field(50821; "Product manager"; text[50])
         {
             DataClassification = CustomerContent;
             Caption = 'Product manager', comment = 'ESP="Responsable"';
         }
-        field(50822; Reason; text[100])
+        field(50822; Reason; Blob)
         {
             DataClassification = CustomerContent;
             Caption = 'Reason', comment = 'ESP="Motivo"';
@@ -137,21 +153,41 @@ table 17413 "ZM PL Items temporary"
 
     trigger OnInsert()
     begin
-
+        GetPreItemSetup();
+        SetupPreItemReg.TESTFIELD("Temporary Nos.");
+        if "No." = '' then begin
+            NoSeriesMgt.InitSeries(SetupPreItemReg."Temporary Nos.", xRec."Nos. series", 0D, Rec."No.", Rec."Nos. series");
+        end;
     end;
 
     trigger OnModify()
     begin
-
     end;
 
     trigger OnDelete()
     begin
     end;
 
-
     trigger OnRename()
     begin
     end;
 
+    var
+        SetupPreItemReg: record "ZM PL Setup Item registration";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+
+    local procedure GetPreItemSetup()
+    begin
+        SetupPreItemReg.GET;
+    end;
+
+    procedure AssistEdit(): Boolean
+    begin
+        GetPreItemSetup;
+        SetupPreItemReg.TESTFIELD("Temporary Nos.");
+        if NoSeriesMgt.SelectSeries(SetupPreItemReg."Temporary Nos.", xRec."Nos. Series", "Nos. Series") then begin
+            NoSeriesMgt.SetSeries("No.");
+            EXIT(TRUE);
+        end;
+    end;
 }

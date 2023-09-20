@@ -3,6 +3,7 @@ page 17414 "ZM PL Items temporary list"
     ApplicationArea = All;
     Caption = 'Items temporary list', Comment = 'ESP="Lista Alta de productos"';
     PageType = List;
+    PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     SourceTable = "ZM PL Items temporary";
     UsageCategory = Lists;
     CardPageId = "ZM PL Items temporary card";
@@ -81,6 +82,31 @@ page 17414 "ZM PL Items temporary list"
                     ApplicationArea = All;
                     Visible = false;
                 }
+            }
+        }
+    }
+
+    actions
+    {
+        area(Navigation)
+        {
+            action(ConfAltaProd)
+            {
+                ApplicationArea = all;
+                Caption = 'Conf. Alta Productos', comment = 'ESP="Conf. Alta Productos"';
+                Image = Setup;
+                Promoted = true;
+                PromotedCategory = Category5;
+                RunObject = page "ZM PL Setup Item registration";
+            }
+            action(ConfAprobAltaProd)
+            {
+                ApplicationArea = all;
+                Caption = 'Conf. Departamentos Alta Productos', comment = 'ESP="Conf. Departamentos Alta Productos"';
+                Image = Setup;
+                Promoted = true;
+                PromotedCategory = Category5;
+                RunObject = page "ZM PL Item Setup approvals";
             }
         }
     }

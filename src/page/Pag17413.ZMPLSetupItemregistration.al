@@ -1,9 +1,8 @@
 page 17413 "ZM PL Setup Item registration"
 {
-    Caption = 'Setup Item registration', comment = 'ESP="Conf. Alta productos"';
+    Caption = 'General Setup Item registration', comment = 'ESP="Conf. General Alta productos"';
     PageType = Card;
-    ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = None;
     SourceTable = "ZM PL Setup Item registration";
     InsertAllowed = false;
     DeleteAllowed = false;

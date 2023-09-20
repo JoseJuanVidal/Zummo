@@ -1,10 +1,9 @@
 page 17410 "ZM PL Item Setup approvals"
 {
-    ApplicationArea = All;
-    Caption = 'Item Setup approvals', Comment = 'ESP="Conf. aprobaciones Alta productos"';
+    Caption = 'Item Setup Departments', Comment = 'ESP="Conf. Departamentos Alta productos"';
     PageType = List;
     SourceTable = "ZM PL Item Setup Approval";
-    UsageCategory = Administration;
+    UsageCategory = None;
 
     layout
     {

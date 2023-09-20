@@ -1,20 +1,28 @@
-page 17415 "ZM PL Items temporary card"
+page 17420 "ZM PL Dpto Items temp list"
 {
-    Caption = 'Items registration', Comment = 'ESP="Alta de productos"';
-    PageType = card;
+    Caption = 'Pre-Items registration list', Comment = 'ESP="Lista Pre-Productos"';
+    PageType = list;
     SourceTable = "ZM PL Items temporary";
-    UsageCategory = Tasks;
+    ApplicationArea = all;
+    UsageCategory = Lists;
+    CardPageId = "ZM PL Items temporary card";
+
 
     layout
     {
         area(content)
         {
-
-            group(General)
+            repeater(General)
             {
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+
+                    trigger OnAssistEdit()
+                    begin
+                        IF AssistEdit THEN
+                            CurrPage.UPDATE;
+                    end;
                 }
                 field(Description; Rec.Description)
                 {
@@ -29,6 +37,30 @@ page 17415 "ZM PL Items temporary card"
                     ApplicationArea = All;
                 }
                 field("State Creation"; "State Creation")
+                {
+                    ApplicationArea = all;
+                }
+                field(Department; Department)
+                {
+                    ApplicationArea = all;
+                }
+                field("Product manager"; "Product manager")
+                {
+                    ApplicationArea = all;
+                }
+                field(Reason; Reason)
+                {
+                    ApplicationArea = all;
+                }
+                field(Activity; Activity)
+                {
+                    ApplicationArea = all;
+                }
+                field("Posting Date"; "Posting Date")
+                {
+                    ApplicationArea = all;
+                }
+                field(Prototype; Prototype)
                 {
                     ApplicationArea = all;
                 }
@@ -83,35 +115,6 @@ page 17415 "ZM PL Items temporary card"
                     Visible = false;
                 }
             }
-            group(Applicant)
-            {
-                Caption = 'Applicant', comment = 'ESP="Solicitante"';
-                field(Department; Department)
-                {
-                    ApplicationArea = all;
-                }
-                field("Product manager"; "Product manager")
-                {
-                    ApplicationArea = all;
-                }
-                field(Reason; Reason)
-                {
-                    ApplicationArea = all;
-                    MultiLine = true;
-                }
-                field(Activity; Activity)
-                {
-                    ApplicationArea = all;
-                }
-                field("Posting Date"; "Posting Date")
-                {
-                    ApplicationArea = all;
-                }
-                field(Prototype; Prototype)
-                {
-                    ApplicationArea = all;
-                }
-            }
         }
     }
 
@@ -119,4 +122,5 @@ page 17415 "ZM PL Items temporary card"
     begin
 
     end;
+
 }

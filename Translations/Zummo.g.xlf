@@ -8403,6 +8403,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 1388565689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nos. series</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No. Series"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Nos. series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3329268434 - Field 1535478001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packaging</source>
           <note from="Developer" annotates="general" priority="2">ESP="Embalaje"</note>
@@ -14213,9 +14218,14 @@
           <note from="Developer" annotates="general" priority="2">ESP="URL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Action URL - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1863527760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pre-Items registration list</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista Pre-Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Dpto Items temp list - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2190874319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Setup approvals</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Conf. aprobaciones Alta productos"</note>
+          <source>Item Setup Departments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup approvals - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 202730741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -14229,7 +14239,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup Departments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Items temporary</source>
+          <source>Items registration</source>
           <note from="Developer" annotates="general" priority="2">ESP="Alta de productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Property Caption</note>
         </trans-unit>
@@ -14238,14 +14248,29 @@
           <note from="Developer" annotates="general" priority="2">ESP="Solicitante"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Applicant - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3858912784 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate,Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Property PromotedActionCategories</note>
+        </trans-unit>
         <trans-unit id="Page 3858912784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Items temporary list</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Alta de productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 3981856687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conf. Alta Productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. Alta Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action ConfAltaProd - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 401669501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conf. Departamentos Alta Productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action ConfAprobAltaProd - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 988243340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Setup Item registration</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Conf. Alta productos"</note>
+          <source>General Setup Item registration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. General Alta productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 988243340 - NamedType 4120650972" size-unit="char" translate="yes" xml:space="preserve">
