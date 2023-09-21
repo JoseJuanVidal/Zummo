@@ -74,5 +74,11 @@ tableextension 50156 "Stockkeeping Unit" extends "Stockkeeping Unit"  //5700
 
             DecimalPlaces = 0 : 5;
         }
+        field(50015; PlanningComponent; Decimal)
+        {
+            Caption = 'PlanningComponent', comment = 'ESP="Cant. Hoja Planificación"';
+            FieldClass = FlowField;
+            CalcFormula = sum("Planning Component"."Quantity (Base)" where("Item No." = field("Item No."), "Location Code" = field("Location Code")));
+        }
     }
 }

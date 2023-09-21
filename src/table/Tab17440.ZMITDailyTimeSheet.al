@@ -89,6 +89,7 @@ table 17440 "ZM IT Daily Time Sheet"
             begin
                 SubKeyOnValidate();
             end;
+
         }
         field(50; "Start Time"; DateTime)
         {
@@ -248,7 +249,7 @@ table 17440 "ZM IT Daily Time Sheet"
             Rec.Type::"JIRA Proyecto":
                 begin
                     JIRATickets.Reset();
-                    if JIRATickets.Get(Rec."key") then
+                    if JIRATickets.Get(Rec.Subkey) then
                         Rec.Notes := JIRATickets.summary;
                 end;
         end;
@@ -348,4 +349,10 @@ table 17440 "ZM IT Daily Time Sheet"
         Rec.Validate("End Time", RoundDateTime(CreateDateTime(WorkDate(), Time()), 60000));
     end;
 
+    procedure OpenExternalKeyURL(values: text)
+    var
+        lblURL: Label 'https://zummo.atlassian.net/browse/%1';
+    begin
+        Hyperlink(StrSubstNo(lblURL, values));
+    end;
 }

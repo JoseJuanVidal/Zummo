@@ -6,6 +6,7 @@ page 17420 "ZM PL Dpto Items temp list"
     ApplicationArea = all;
     UsageCategory = Lists;
     CardPageId = "ZM PL Items temporary card";
+    Editable = false;
 
 
     layout
@@ -18,11 +19,7 @@ page 17420 "ZM PL Dpto Items temp list"
                 {
                     ApplicationArea = All;
 
-                    trigger OnAssistEdit()
-                    begin
-                        IF AssistEdit THEN
-                            CurrPage.UPDATE;
-                    end;
+
                 }
                 field(Description; Rec.Description)
                 {
@@ -48,9 +45,15 @@ page 17420 "ZM PL Dpto Items temp list"
                 {
                     ApplicationArea = all;
                 }
-                field(Reason; Reason)
+                field(WorkDescription; WorkDescription)
                 {
                     ApplicationArea = all;
+                    Caption = 'Reason', comment = 'ESP="Motivo"';
+
+                    trigger OnValidate()
+                    begin
+                        SetWorkDescription(WorkDescription);
+                    end;
                 }
                 field(Activity; Activity)
                 {
@@ -122,5 +125,15 @@ page 17420 "ZM PL Dpto Items temp list"
     begin
 
     end;
+
+    trigger OnAfterGetRecord()
+    begin
+        WorkDescription := GetWorkDescription;
+    end;
+
+    var
+        WorkDescription: text;
+
+
 
 }

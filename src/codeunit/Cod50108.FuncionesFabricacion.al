@@ -2,8 +2,6 @@ codeunit 50108 "FuncionesFabricacion"
 {
 
     var
-        aReqExcelBuffer: Record "Excel Buffer";
-
         lblConfirmExcel: Label '¿Desea exportar los resultado en Excel?', comment = 'ESP="¿Desea exportar los resultado en Excel?"';
 
     procedure CambiaEstadoVariasOrdenesProduccion(var pOrdenProd: Record "Production Order")

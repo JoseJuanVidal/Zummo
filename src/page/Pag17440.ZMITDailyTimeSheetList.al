@@ -70,6 +70,11 @@ page 17440 "ZM IT Daily Time Sheet List"
                 field("key"; "key")
                 {
                     ApplicationArea = all;
+
+                    trigger OnAssistEdit()
+                    begin
+                        OpenExternalKeyURL(Rec."Key summary");
+                    end;
                 }
                 field("Key summary"; "Key summary")
                 {
@@ -82,6 +87,11 @@ page 17440 "ZM IT Daily Time Sheet List"
                 field(Subkey; Subkey)
                 {
                     ApplicationArea = all;
+
+                    trigger OnAssistEdit()
+                    begin
+                        OpenExternalKeyURL(Rec.Subkey);
+                    end;
                 }
                 field(Notes; Notes)
                 {

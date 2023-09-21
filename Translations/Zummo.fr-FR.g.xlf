@@ -5858,6 +5858,26 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 430424374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Codigo Empleado</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Codigo Empleado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 2165769856 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FIFO,LIFO,Specific,Average,Standard</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Costing Method - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 825293260 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Never,Optional,Always</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reserve - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 289578952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Serial Nos.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Serial Nos. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 988243340 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
           <note from="Developer" annotates="general" priority="2"/>

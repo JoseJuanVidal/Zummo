@@ -112,12 +112,15 @@ page 50132 "StockPerAlmacen"
                 }
                 field(BalanceSinOfertas; BalanceSinOfertas)
                 {
-                    Caption = '', comment = 'ESP="Cantidad Disponible"';
+                    Caption = 'Cantidad Disponible', comment = 'ESP="Cantidad Disponible"';
+                    Editable = false;
+                }
+                field(PlanningComponent; PlanningComponent)
+                {
                     Editable = false;
                 }
                 field(Ordenacion; Ordenacion)
                 {
-
                 }
             }
         }
@@ -137,6 +140,7 @@ page 50132 "StockPerAlmacen"
         BalanceConOfertas := 0;
         BalanceSinOfertas := 0;
         FuncFabricacion.CalcDisponble(rec, BalanceConOfertas, BalanceSinOfertas);
+
         //BalanceConOfertas := Inventory + "Qty. on Assembly Order" + "Qty. on Prod. Order" + "Qty. on Purch. Order" + "Trans. Ord. Receipt (Qty.)"
         //    - "Qty. on Asm. Component" - "Qty. on Component Lines" - "Qty. on Job Order" - "Qty. on Sales Order" - "Qty. on Service Order"
         //    - "Trans. Ord. Shipment (Qty.)" - QtyonQuotesOrder - "Cant_ componentes Oferta";
