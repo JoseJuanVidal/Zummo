@@ -83,6 +83,7 @@ page 17414 "ZM PL Items temporary list"
                     Visible = false;
                 }
             }
+
         }
     }
 

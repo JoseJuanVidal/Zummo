@@ -281,7 +281,6 @@ page 17466 "ZM Contracts Suplies Header"
         if UserSetup.get(UserId) then
             if UserSetup."Contrats/Suppliers" then
                 exit;
-        CurrPage.Editable := false;
     end;
 
     trigger OnAfterGetRecord()
