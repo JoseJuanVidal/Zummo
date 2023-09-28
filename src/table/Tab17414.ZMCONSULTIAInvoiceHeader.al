@@ -240,4 +240,65 @@ table 17414 "ZM CONSULTIA Invoice Header"
         Rec.TestField("Pre Invoice No.");
         Rec.TestField("Invoice Header No.");
     end;
+
+    procedure GetInvoiceState(): Boolean
+    begin
+        case true of
+            Rec.Total_Base >= 0:
+                exit(InvoiceState());
+            else
+                exit(CRMemmoState());
+        end;
+
+    end;
+
+    local procedure InvoiceState(): Boolean
+
+    var
+        PurchaseHeader: Record "Purchase Header";
+        PurchInvHeader: Record "Purch. Inv. Header";
+    begin
+        PurchInvHeader.Reset();
+        PurchInvHeader.SetRange("Vendor Invoice No.", Rec.N_Factura);
+        if PurchInvHeader.FindFirst() then begin
+            Rec."Invoice Header No." := PurchInvHeader."No.";
+            Rec."Pre Invoice No." := PurchInvHeader."Pre-Assigned No.";
+            Rec.Modify();
+            exit(true);
+        end else begin
+            PurchaseHeader.Reset();
+            PurchaseHeader.SetRange("Document Type", PurchaseHeader."Document Type"::Invoice);
+            PurchaseHeader.SetRange("Vendor Invoice No.", Rec.N_Factura);
+            if PurchaseHeader.FindFirst() then begin
+                Rec."Pre Invoice No." := PurchaseHeader."No.";
+                Rec.Modify();
+                exit(true);
+            end;
+        end;
+    end;
+
+    local procedure CRMemmoState(): Boolean
+
+    var
+        PurchaseHeader: Record "Purchase Header";
+        PurchCRMHeader: Record "Purch. Cr. Memo Hdr.";
+    begin
+        PurchCRMHeader.Reset();
+        PurchCRMHeader.SetRange("Vendor Cr. Memo No.", Rec.N_Factura);
+        if PurchCRMHeader.FindFirst() then begin
+            Rec."Invoice Header No." := PurchCRMHeader."No.";
+            Rec."Pre Invoice No." := PurchCRMHeader."Pre-Assigned No.";
+            Rec.Modify();
+            exit(true);
+        end else begin
+            PurchaseHeader.Reset();
+            PurchaseHeader.SetRange("Document Type", PurchaseHeader."Document Type"::"Credit Memo");
+            PurchaseHeader.SetRange("Vendor Cr. Memo No.", Rec.N_Factura);
+            if PurchaseHeader.FindFirst() then begin
+                Rec."Pre Invoice No." := PurchaseHeader."No.";
+                Rec.Modify();
+                exit(true);
+            end;
+        end;
+    end;
 }

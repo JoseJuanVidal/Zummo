@@ -5,7 +5,7 @@ page 17416 "ZM CONSULTIA Invoice Headers"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "ZM CONSULTIA Invoice Header";
-    SourceTableView = where(N_Factura = const(''));
+    SourceTableView = where("Invoice Header No." = const(''));
     CardPageId = "ZM CONSULTIA Invoice Header";
     Editable = false;
     InsertAllowed = false;
@@ -118,8 +118,28 @@ page 17416 "ZM CONSULTIA Invoice Headers"
                     GetInvoiceByDate();
                 end;
             }
+            action(updateState)
+            {
+                ApplicationArea = all;
+                Promoted = true;
+                Image = Status;
+
+                trigger OnAction()
+                begin
+                    IF GetInvoiceState() then begin
+                        CurrPage.Update();
+                        Message('Actualizado');
+                    end;
+                end;
+            }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        SetRange("Invoice Header No.", '');
+    end;
+
     trigger OnAfterGetRecord()
     var
         RefRecord: recordRef;
@@ -130,11 +150,9 @@ page 17416 "ZM CONSULTIA Invoice Headers"
 
     var
         CONSULTIAFunciones: Codeunit "Zummo Inn. IC Functions";
-        lblConfirmGet: Label 'Do you want to update invoices from %1 to %2?', comment = 'ESP="¿Desea actualziar las facturas desde %1 a %2?"';
+        lblConfirmGet: Label 'Do you want to update invoices from %1 to %2?', comment = 'ESP="¿Desea actualizar las facturas desde %1 a %2?"';
 
     local procedure GetInvoiceByDate()
-    var
-        myInt: Integer;
     begin
         if Confirm(lblConfirmGet, true, CalcDate('-30D', WorkDate()), WorkDate()) then
             CONSULTIAFunciones.GetInvoicebyDate(CalcDate('-30D', WorkDate()), WorkDate());

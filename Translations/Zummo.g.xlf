@@ -13865,7 +13865,7 @@
         </trans-unit>
         <trans-unit id="Page 2372062954 - NamedType 4292973370" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to update invoices from %1 to %2?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualziar las facturas desde %1 a %2?"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las facturas desde %1 a %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Headers - NamedType lblConfirmGet</note>
         </trans-unit>
         <trans-unit id="Page 2372062954 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

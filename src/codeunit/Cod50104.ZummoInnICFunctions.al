@@ -1270,17 +1270,16 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
 
         PurchaseHeader.Init();
-        case CONSULTIAInvoiceHeader."Document Type" of
-            CONSULTIAInvoiceHeader."Document Type"::Invoice:
-                PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::Invoice;
-            CONSULTIAInvoiceHeader."Document Type"::"Credit Memo":
-                PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::"Credit Memo";
-        end;
         PurchaseHeader.InitInsert();
         PurchaseHeader.Validate("Buy-from Vendor No.", CONSULTIAInvoiceHeader."Vendor No.");
         PurchaseHeader.Validate("Posting Date", WorkDate());
         PurchaseHeader.Validate("Document Date", CONSULTIAInvoiceHeader.F_Factura);
-        PurchaseHeader."Vendor Invoice No." := CONSULTIAInvoiceHeader.N_Factura;
+        case CONSULTIAInvoiceHeader."Document Type" of
+            CONSULTIAInvoiceHeader."Document Type"::Invoice:
+                PurchaseHeader."Vendor Invoice No." := CONSULTIAInvoiceHeader.N_Factura;
+            CONSULTIAInvoiceHeader."Document Type"::"Credit Memo":
+                PurchaseHeader."Vendor Cr. Memo No." := CONSULTIAInvoiceHeader.N_Factura;
+        end;
         PurchaseHeader."Vendor Shipment No." := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Vendor Shipment No."));
         PurchaseHeader."Your Reference" := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Your Reference"));
         PurchaseHeader."CONSULTIA ID Factura" := CONSULTIAInvoiceHeader.Id;

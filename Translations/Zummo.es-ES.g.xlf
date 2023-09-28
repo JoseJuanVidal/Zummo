@@ -8324,6 +8324,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - NamedType lblStart</note>
           <target>¿Desea INICIAR el fichaje %1?</target>
         </trans-unit>
+        <trans-unit id="Table 3147584035 - Method 2423814119 - NamedType 3974844515" size-unit="char" translate="yes" xml:space="preserve">
+          <source>https://zummo.atlassian.net/browse/%1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Method OpenExternalKeyURL - NamedType lblURL</note>
+        </trans-unit>
         <trans-unit id="Table 3147584035 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
@@ -15141,9 +15146,9 @@
         </trans-unit>
         <trans-unit id="Page 2372062954 - NamedType 4292973370" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to update invoices from %1 to %2?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualziar las facturas desde %1 a %2?"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las facturas desde %1 a %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Headers - NamedType lblConfirmGet</note>
-          <target>¿Desea actualziar las facturas desde %1 a %2?</target>
+          <target>¿Desea actualizar las facturas desde %1 a %2?</target>
         </trans-unit>
         <trans-unit id="Page 2372062954 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attachment Document</source>
