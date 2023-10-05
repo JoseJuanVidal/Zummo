@@ -10033,6 +10033,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method MarcarNoFacturar - NamedType lblConfirm</note>
           <target>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 94437622 - NamedType 2654048973" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No existe ninguna línea de pedido de servicio con el numero de serie %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No existe ninguna línea de pedido de servicio con el numero de serie %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method ObtenerPedServicioxSerie - NamedType lblMsg</note>
+          <target>No existe ninguna línea de pedido de servicio con el numero de serie %1.</target>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 1571063672 - NamedType 2571500589" size-unit="char" translate="yes" xml:space="preserve">
           <source>The line is assigned contract %1.\Do you want to delete it?</source>
           <note from="Developer" annotates="general" priority="2">ESP="La línea tiene asignado el contrato %1.\¿Desea eliminarlo?"</note>
@@ -29460,18 +29466,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrder - Action Duplicate - Property Caption</note>
           <target>Duplicar</target>
         </trans-unit>
-        <trans-unit id="PageExtension 149574740 - Action 3260459248 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3297607540">
-          <source>Listado NºSerie</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Listado NºSerie"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action Listado NºSerie - Property ToolTip</note>
-          <target>Listado NºSerie</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 149574740 - Action 3260459248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3297607540">
-          <source>Listado NºSerie</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Listado NºSerie"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action Listado NºSerie - Property Caption</note>
-          <target>Listado NºSerie</target>
-        </trans-unit>
         <trans-unit id="PageExtension 149574740 - Action 4127921286 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3297607540">
           <source>Trazabilidad Serie</source>
           <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
@@ -29483,6 +29477,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action Movimientos - Property Caption</note>
           <target>Trazabilidad Serie</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 149574740 - Action 3696930030 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3297607540">
+          <source>Ped. Servicio NºSerie</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ped. Servicio NºSerie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action PS por NºSerie - Property ToolTip</note>
+          <target>Ped. Servicio NºSerie</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 149574740 - Action 3696930030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3297607540">
+          <source>Ped. Servicio NºSerie</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ped. Servicio NºSerie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action PS por NºSerie - Property Caption</note>
+          <target>Ped. Servicio NºSerie</target>
         </trans-unit>
         <trans-unit id="PageExtension 1184478275 - Action 3471137671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2247137235">
           <source>Services All</source>

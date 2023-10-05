@@ -1,3 +1,4 @@
+
 codeunit 50111 "Funciones"
 {
     Permissions = tabledata "Item Ledger Entry" = rmid, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
@@ -300,6 +301,37 @@ codeunit 50111 "Funciones"
         end;
     end;
 
+    procedure ObtenerPedServicioxSerie(Rec: Record "Service Header")
+    var
+        ServiceHeader: Record "Service Header";
+        tmpServiceHeader: Record "Service Header" temporary;
+        ServiceItemLine: Record "Service Item Line";
+        p: Page PedirDatoZummo;
+        NumSerie: code[50];
+        lblMsg: Label 'No existe ninguna línea de pedido de servicio con el numero de serie %1.', comment = 'ESP="No existe ninguna línea de pedido de servicio con el numero de serie %1."';
+    begin
+        p.SetDato(NumSerie);
+        p.RunModal();
+        NumSerie := p.GetDato();
+        if NumSerie = '' then
+            exit;
+        ServiceItemLine.Reset();
+        ServiceItemline.SetRange("Document Type", ServiceItemline."Document Type"::Order);
+        ServiceItemline.SetRange("Serial No.", NumSerie);
+        if ServiceItemLine.FindFirst() then
+            repeat
+                if ServiceHeader.Get(ServiceItemLine."Document Type", ServiceItemLine."Document No.") then begin
+                    tmpServiceHeader.Init();
+                    tmpServiceHeader.TransferFields(ServiceHeader);
+                    tmpServiceHeader.Insert();
+                end;
+            Until ServiceItemLine.next() = 0;
+        if ServiceHeader.FindFirst() then
+            page.Run(9318, tmpServiceHeader)
+        else
+            Message(lblMsg, NumSerie);
+    end;
+
 
     procedure ObtenerMtosVentaSerie(var tempItemLedgerEntry: Record "Item Ledger Entry"; AbrirPage: boolean)
     var
@@ -333,7 +365,7 @@ codeunit 50111 "Funciones"
                         tempItemLedgerEntry."External Document No." := 'NO FACTURADO';
                         if Factura.FindFirst() then begin
                             tempItemLedgerEntry."External Document No." := Factura."No.";
-                            tempItemLedgerEntry."Lot No." := Albaran."Sell-to Customer Name";
+                            tempItemLedgerEntry."Lot No." := copystr(Albaran."Sell-to Customer Name", 1, MaxStrLen(tempItemLedgerEntry."Lot No."));
                         end;
                     end;
                     tempItemLedgerEntry.Insert();
@@ -377,7 +409,7 @@ codeunit 50111 "Funciones"
                                 tempItemLedgerEntry."Order No." := AssembleToOrderLink."Order No."; //Pedido
                                 tempItemLedgerEntry."Order Line No." := AssembleToOrderLink."Order Line No."; //Lin.Pedido
                                 if Albaran.get(AssembleToOrderLink."Document No.") then begin
-                                    tempItemLedgerEntry."Lot No." := Albaran."Sell-to Customer Name";
+                                    tempItemLedgerEntry."Lot No." := CopyStr(Albaran."Sell-to Customer Name", 1, MaxStrLen(tempItemLedgerEntry."Lot No."));
 
                                     Factura.Reset();
                                     //Factura.SetRange("Order No.", Albaran."Order No.");

@@ -78,16 +78,37 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
                 end;
             }
 
-            action("Listado NºSerie")
+            // action("Listado NºSerie")
+            // {
+            //     ApplicationArea = all;
+            //     Caption = 'Listado NºSerie', comment = 'ESP="Listado NºSerie"';
+            //     ToolTip = 'Listado NºSerie',
+            //         comment = 'ESP="Listado NºSerie"';
+            //     Promoted = true;
+            //     PromotedIsBig = true;
+            //     PromotedCategory = Process;
+            //     Image = Report;
+
+            //     trigger OnAction()
+            //     var
+            //         Funciones: Codeunit Funciones;
+            //         tempItemLedgerEntry: Record "Item Ledger Entry" temporary;
+            //     begin
+
+            //         Funciones.ObtenerMtosVentaSerie(tempItemLedgerEntry, true)
+
+            //     end;
+            // }
+            action("PS por NºSerie")
             {
                 ApplicationArea = all;
-                Caption = 'Listado NºSerie', comment = 'ESP="Listado NºSerie"';
-                ToolTip = 'Listado NºSerie',
-                    comment = 'ESP="Listado NºSerie"';
+                Caption = 'Ped. Servicio NºSerie', comment = 'ESP="Ped. Servicio NºSerie"';
+                ToolTip = 'Ped. Servicio NºSerie',
+                    comment = 'ESP="Ped. Servicio NºSerie"';
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedCategory = Process;
-                Image = Report;
+                Image = Navigate;
 
                 trigger OnAction()
                 var
@@ -95,12 +116,10 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
                     tempItemLedgerEntry: Record "Item Ledger Entry" temporary;
                 begin
 
-                    Funciones.ObtenerMtosVentaSerie(tempItemLedgerEntry, true)
+                    Funciones.ObtenerPedServicioxSerie(Rec);
 
                 end;
             }
-
-
         }
     }
 }
