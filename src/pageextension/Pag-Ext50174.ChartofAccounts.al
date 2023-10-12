@@ -42,10 +42,12 @@ pageextension 50174 "ChartofAccounts" extends "Chart of Accounts"
         end;
 
         recGlEntry.SetFilter("Dimension Set ID", rec.GetFilter("Dimension Set ID Filter"));
-        if recGlEntry.FindSet() then
-            repeat
-                saldoAnterior += recGlEntry.Amount;
-            until recGlEntry.Next() = 0;
+        recGlEntry.CalcSums(Amount);
+        saldoAnterior := recGlEntry.Amount;
+        // if recGlEntry.FindSet() then
+        //     repeat
+        //         saldoAnterior += recGlEntry.Amount;
+        //     until recGlEntry.Next() = 0;
     end;
 
     var

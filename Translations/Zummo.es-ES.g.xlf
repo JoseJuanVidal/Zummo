@@ -33469,11 +33469,41 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Vat Entry Ext - Field EU Country/Region Code - Property Caption</note>
           <target>EU Cód. Pais</target>
         </trans-unit>
+        <trans-unit id="TableExtension 301384659 - Field 2948319293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
+          <source>Clasif. Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasif. Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field clasificacion_aseguradora - Property Caption</note>
+          <target>Clasif. Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 301384659 - Field 3538960907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
+          <source>Crédito Maximo Aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crédito Maximo Aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field Credito Maximo Aseguradora_btc - Property Caption</note>
+          <target>Crédito Maximo Aseguradora</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 301384659 - Field 1643371427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
+          <source>Crédito Maximo Aseguradora Autorizado Por</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crédito Maximo Aseguradora Autorizado Por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field Cred_ Max_ Aseg. Autorizado Por_btc - Property Caption</note>
+          <target>Crédito Maximo Aseguradora Autorizado Por</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 301384659 - Field 966740350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
+          <source>Payment Terms Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. términos pago"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field Payment Terms Code - Property Caption</note>
+          <target>Cód. términos pago</target>
+        </trans-unit>
         <trans-unit id="TableExtension 301384659 - Field 2851413280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
           <source>Vendor Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field STH Vendor Name - Property Caption</note>
           <target>Nombre Proveedor</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 301384659 - Field 719008269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
+          <source>Suplemento aseguradora</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Suplemento aseguradora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH ZUM Cartera Doc. - Field Suplemento_aseguradora - Property Caption</note>
+          <target>Suplemento aseguradora</target>
         </trans-unit>
         <trans-unit id="TableExtension 301384659 - Field 283280167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2898919088">
           <source>Ext. Doc No.</source>
