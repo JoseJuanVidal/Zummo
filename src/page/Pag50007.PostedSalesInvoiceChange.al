@@ -1,7 +1,7 @@
 page 50007 "Posted Sales Invoice Change"
 {
     PageType = Card;
-    UsageCategory = Administration;
+    UsageCategory = None;
     Caption = 'Posted Sales Invoice Change', comment = 'ESP="Editar Hist. Venta"';
     //    SourceTable = TableName;
 

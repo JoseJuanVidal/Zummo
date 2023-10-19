@@ -10218,6 +10218,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit RemesaRegCerrada - NamedType HasErrorsErr</note>
           <target>La exportación del archivo tiene uno o más errores. \\ Para cada línea que se va a exportar, resuelva los errores que se muestran a la derecha y luego intente exportar nuevamente.</target>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 3854538545 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>La lista de materiales no se puede desplegar en la línea de ventas porque está asociada al pedido de compra %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La lista de materiales no se puede desplegar en la línea de ventas porque está asociada al pedido de compra %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method Action_ExplodeProdBOM - NamedType Text000</note>
+          <target>La lista de materiales no se puede desplegar en la línea de ventas porque está asociada al pedido de compra %1.</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 3854538545 - NamedType 3650020193" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea desplegar la lista de materiales de producción de %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea desplegar la lista de materiales de producción de %1 %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method Action_ExplodeProdBOM - NamedType lblConfirmExplode</note>
+          <target>¿Desea desplegar la lista de materiales de producción de %1 %2?</target>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 2399141473 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>El cliente %1 %2 tiene bloqueado la venta del producto %3 %4.\Pongase en contacto con administración</source>
           <note from="Developer" annotates="general" priority="2">ESP="El cliente %1 %2 tiene bloqueado la venta del producto %3 %4.\Pongase en contacto con administración"</note>
@@ -10241,6 +10253,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="El Almacén %1, esta configurado para no permitir "Enviar y Facturar completamente", todas las lineas no estan enviadas completamente."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method CU_80_OnBeforePostSalesDoc - NamedType ErrorMsg</note>
           <target>El Almacén %1, esta configurado para no permitir "Enviar y Facturar completamente", todas las lineas no estan enviadas completamente.</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 828994734 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No hay suficiente espacio para desplegar la lista de materiales.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No hay suficiente espacio para desplegar la lista de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ExplodeProdBOMCompLines - NamedType lblError</note>
+          <target>No hay suficiente espacio para desplegar la lista de materiales</target>
         </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 145188275 - NamedType 2109728185" size-unit="char" translate="yes" xml:space="preserve">
           <source>Registration date changed\Do you want to update the lines?</source>
@@ -16305,6 +16323,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importar fichero"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM SH Record Link Sharepoints - Action Upload a File - Property Caption</note>
           <target>Importar fichero</target>
+        </trans-unit>
+        <trans-unit id="Page 869453865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer List Edit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista editar clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - Property Caption</note>
+          <target>Lista editar clientes</target>
+        </trans-unit>
+        <trans-unit id="Page 869453865 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User %1 is not authorised for this page. Notify System Administration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El usuario %1 no está autorizado para está pagina. Avise a Administración del sistema"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - NamedType lblError</note>
+          <target>El usuario %1 no está autorizado para está pagina. Avise a Administración del sistema</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Credit Memo</source>
@@ -29346,6 +29376,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuotes - Control CampaignName - Property Caption</note>
           <target>Campaña</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1876379756 - Action 4141832370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
+          <source>Desplegar Componentes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desplegar Componentes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuoteSubform - Action ExplodeProdBOM - Property Caption</note>
+          <target>Desplegar Componentes</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1876379756 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
@@ -34230,6 +34266,16 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field NombreCliente_btc - Property Caption</note>
           <target>Nombre Cliente</target>
         </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 3384823846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>ParentLine</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ParentLine - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 2326351021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>ParentLineNo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ParentLineNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 2157584327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Quote No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº de oferta"</note>
@@ -34349,6 +34395,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Contratos/Suministros"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Contrats/Suppliers - Property Caption</note>
           <target>Contratos/Suministros</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 1359238950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Edit Customer List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Editar lista clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Edit Customer List - Property Caption</note>
+          <target>Editar lista clientes</target>
         </trans-unit>
         <trans-unit id="TableExtension 2852714242 - Field 1285670092 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Imp. Ped. Venta mostrar comentarios</source>

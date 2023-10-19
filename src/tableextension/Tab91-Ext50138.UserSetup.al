@@ -50,5 +50,10 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             DataClassification = CustomerContent;
             Caption = 'Contrats/Suppliers', comment = 'ESP="Contratos/Suministros"';
         }
+        field(50125; "Edit Customer List"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Edit Customer List', comment = 'ESP="Editar lista clientes"';
+        }
     }
 }

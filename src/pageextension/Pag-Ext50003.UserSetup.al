@@ -37,6 +37,10 @@ pageextension 50003 "UserSetup" extends "User Setup"
             {
                 ApplicationArea = all;
             }
+            field("Edit Customer List"; "Edit Customer List")
+            {
+                ApplicationArea = all;
+            }
             field("Ubicaciones pedido por defecto"; "Ubicaciones pedido por defecto")
             {
                 ApplicationArea = all;

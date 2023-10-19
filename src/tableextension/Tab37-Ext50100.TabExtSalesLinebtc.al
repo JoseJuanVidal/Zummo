@@ -185,7 +185,6 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             FieldClass = FlowField;
             CalcFormula = lookup("Sales Header"."Quote No." where("Document Type" = field("Document Type"), "No." = field("Document No.")));
             editable = false;
-
         }
 
         field(50107; ExternalDocument; Code[50])
@@ -196,6 +195,16 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
                 "Document Type" = field("Document Type"),
                 "No." = field("Document No.")
             ));
+        }
+        field(50200; ParentLine; Boolean)
+        {
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
+        field(50201; ParentLineNo; Integer)
+        {
+            Editable = false;
+            DataClassification = CustomerContent;
         }
         //#region Integracion Intercompany
         field(50300; "Source Purch. Order No"; Code[20])

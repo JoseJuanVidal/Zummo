@@ -11319,6 +11319,16 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field FechaFinValOferta_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 3384823846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>ParentLine</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ParentLine - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 2326351021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>ParentLineNo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ParentLineNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4029083579 - Field 1583542828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1682139193">
           <source>Nº contrato Confirming Caixabanc</source>
           <note from="Developer" annotates="general" priority="2"/>
