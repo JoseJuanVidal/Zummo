@@ -233,11 +233,9 @@ table 17371 "ZM Hist. BOM Costs"
                     Until ProductionBomLine.next() = 0;
             // end;
             Until Fechas.next() = 0;
-
     end;
 
-
-    local procedure ExistProductionItem(ProductionBOMNo: code[10]; PeriodStart: Date): Boolean
+    local procedure ExistProductionItem(ProductionBOMNo: code[20]; PeriodStart: Date): Boolean
     var
     begin
         HISTBOMProduction.Reset();

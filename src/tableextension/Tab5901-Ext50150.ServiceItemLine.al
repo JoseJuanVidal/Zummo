@@ -66,15 +66,16 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
             Caption = 'Fecha Recepción aviso', comment = 'ESP="Fecha recepción aviso"';
             DataClassification = CustomerContent;
 
-            trigger OnValidate()
-            begin
-                OnValidate_Fecharecepaviso();
-            end;
+
         }
         field(50211; Fechaemtregamaterial_sth; DateTime)
         {
             Caption = 'Fecha entrega material', comment = 'ESP="Fecha resolución en cliente"';
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                OnValidate_Fecharresolucion();
+            end;
         }
         field(50501; "Description Header"; text[100])
         {
@@ -123,21 +124,15 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
                     Rec.Fallo := FalloLoc.Fallo;
                 end;
             end;
-
         end;
     end;
 
-    local procedure OnValidate_Fecharecepaviso()
+    local procedure OnValidate_Fecharresolucion()
     begin
         ServiceHeader.Reset();
         ServiceHeader.Get(Rec."Document Type", Rec."Document No.");
-        if ServiceHeader."Order Date" > DT2Date(Rec.Fecharecepaviso_sth) then
-            if not confirm(lblErrorFecha, false, Rec.FieldCaption(Fecharecepaviso_sth), Rec.Fecharecepaviso_sth, ServiceHeader.FieldCaption("Order Date"), ServiceHeader."Order Date") then
+        if ServiceHeader."Order Date" > DT2Date(Rec.Fechaemtregamaterial_sth) then
+            if not confirm(lblErrorFecha, false, Rec.FieldCaption(Fechaemtregamaterial_sth), Rec.Fechaemtregamaterial_sth, ServiceHeader.FieldCaption("Order Date"), ServiceHeader."Order Date") then
                 Error(lblError);
-        if Rec.Fechaemtregamaterial_sth <> 0DT then
-            if Rec.Fechaemtregamaterial_sth < Rec.Fecharecepaviso_sth then
-                if not confirm(lblErrorFecha, false, Rec.FieldCaption(Fechaemtregamaterial_sth), Rec.Fechaemtregamaterial_sth, Rec.FieldCaption(Fecharecepaviso_sth), Rec.Fecharecepaviso_sth) then
-                    Error(lblError);
-
     end;
 }
