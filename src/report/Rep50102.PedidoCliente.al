@@ -14,16 +14,11 @@ report 50102 "PedidoCliente"
             DataItemTableView = SORTING("Document Type", "No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Pedido de Venta';
-            column(Payment_Discount__; "Payment Discount %")
-            {
-
-            }
+            column(Payment_Discount__; "Payment Discount %") { }
             column(telfCleiten; recC."Phone No.") { }
 
             column(codigoDivisa; codigoDivisa) { }
-            column(PesoBruto_SalesLine; sumaPesoBruto)
-            {
-            }
+            column(PesoBruto_SalesLine; sumaPesoBruto) { }
             column(txtOferta; txtOferta) { }
             column(txtOfertaLbl; lbNumDias) { } //txtOfertaLbl
             column(ShowBinContents; ShowBinContents) { }
@@ -36,53 +31,22 @@ report 50102 "PedidoCliente"
             column(Importecab; TotalAmount2) { }
             column(ivafactura; ivafactura) { }
             column(importeDescuentoPP; TotalSalesLineF."Pmt. Discount Amount") { }
-
-
-            column(NNCTotalInclVAT2; NNC_TotalInclVAT2)
-            {
-            }
-            column(ShipToAddr8; DestinoFinalPais)
-            {
-            }
-            column(ShipToAddr7; "Ship-to Country/Region Code")
-            {
-            }
-            column(ShipToAddr6; "Ship-to County")
-            {
-            }
-            column(ShipToAddr5; "Ship-to City")
-            {
-            }
-            column(ShipToAddr4; "Ship-to Post Code")
-            {
-            }
-            column(ShipToAddr3; "Ship-to Address 2")
-            {
-            }
-            column(ShipToAddr2; "Ship-to Address")
-            {
-            }
-            column(ShipToAddr1; "Ship-to Name")
-            {
-            }
-            column(ShiptoAddressCaption; ShiptoAddressCaptionLbl)
-            {
-            }
-            column(CommentInterbCaptionLbl; CommentInterbCaptionLbl)
-            { }
-            column(ComentarioInterno_btc; ComentarioInterno_btc)
-            { }
-            column(PaymentTermsDescription; PaymentTerms.Description)
-            {
-            }
-            column(Valorado; Valorado)
-            {
-
-            }
-            column(PrecioNeto; PrecioNeto)
-            {
-
-            }
+            column(NNCTotalInclVAT2; NNC_TotalInclVAT2) { }
+            column(ShipToAddr8; DestinoFinalPais) { }
+            column(ShipToAddr7; "Ship-to Country/Region Code") { }
+            column(ShipToAddr6; "Ship-to County") { }
+            column(ShipToAddr5; "Ship-to City") { }
+            column(ShipToAddr4; "Ship-to Post Code") { }
+            column(ShipToAddr3; "Ship-to Address 2") { }
+            column(ShipToAddr2; "Ship-to Address") { }
+            column(ShipToAddr1; "Ship-to Name") { }
+            column(ShiptoAddressCaption; ShiptoAddressCaptionLbl) { }
+            column(CommentInterbCaptionLbl; CommentInterbCaptionLbl) { }
+            column(ComentarioInterno_btc; ComentarioInterno_btc) { }
+            column(PaymentTermsDescription; PaymentTerms.Description) { }
+            column(ShowLocation; ShowLocation) { }
+            column(Valorado; Valorado) { }
+            column(PrecioNeto; PrecioNeto) { }
             column(TipoDocumento; TipoDocumento) { }
             column(boolShowInterComment; boolShowInterComment) { }
             column(ShipmentMethodDescription; ShipmentMethod.Description)
@@ -512,18 +476,9 @@ report 50102 "PedidoCliente"
                     dataitem(RoundLoop; Integer)
                     {
                         DataItemTableView = SORTING(Number);
-                        column(Descuento1_SalesLine; SalesLine."DecLine Discount1 %_btc")
-                        {
-
-                        }
-                        column(Descuento2_SalesLine; SalesLine."DecLine Discount2 %_btc")
-                        {
-
-                        }
-                        column(EsPorte; EsPorte)
-                        {
-
-                        }
+                        column(Descuento1_SalesLine; SalesLine."DecLine Discount1 %_btc") { }
+                        column(Descuento2_SalesLine; SalesLine."DecLine Discount2 %_btc") { }
+                        column(EsPorte; EsPorte) { }
                         //column(Portes; Portes) { }
                         column(LineAmt_SalesLine; SalesLine."Line Amount")
                         {
@@ -532,24 +487,14 @@ report 50102 "PedidoCliente"
                         }
                         column(EsEmbalaje; EsEmbalaje) { }
                         column(ContUbicaciones; ContUbicaciones) { }
-                        column(Desc_SalesLine; txtDescLinea)
-                        {
-                        }
-                        column(NNCSalesLineLineAmt; NNC_SalesLineLineAmt)
-                        {
-                        }
-                        column(NNCSalesLineInvDiscAmt; NNC_SalesLineInvDiscAmt)
-                        {
-                        }
-                        column(NNCTotalExclVAT; NNC_TotalExclVAT)
-                        {
-                        }
-                        column(NNCVATAmt; NNC_VATAmt)
-                        {
-                        }
-                        column(NNCPmtDiscOnVAT; NNC_PmtDiscOnVAT)
-                        {
-                        }
+                        column(LocationLine; Salesline."Location Code") { }
+                        column(FechaPrometida; Salesline."Promised Delivery Date") { }
+                        column(Desc_SalesLine; txtDescLinea) { }
+                        column(NNCSalesLineLineAmt; NNC_SalesLineLineAmt) { }
+                        column(NNCSalesLineInvDiscAmt; NNC_SalesLineInvDiscAmt) { }
+                        column(NNCTotalExclVAT; NNC_TotalExclVAT) { }
+                        column(NNCVATAmt; NNC_VATAmt) { }
+                        column(NNCPmtDiscOnVAT; NNC_PmtDiscOnVAT) { }
                         column(NNCVatAmt2; NNC_VatAmt2)
                         {
                         }
@@ -1847,13 +1792,11 @@ report 50102 "PedidoCliente"
                         Caption = 'No. of Copies';
                         ToolTip = 'Specifies how many copies of the document to print.';
                     }
-                    field(ShowInternalInfo; ShowInternalInfo)
+                    field(ShowLocation; ShowLocation)
                     {
                         ApplicationArea = Basic, Suite;
-                        Caption = 'Show Internal Information';
-                        ToolTip = 'Specifies if you want the printed report to show information that is only for internal use.';
+                        Caption = 'Mostrar datos Almacén', comment = 'ESP="Mostrar datos Almacén"';
                     }
-
                     field(ArchiveDocument; ArchiveDocument)
                     {
                         ApplicationArea = Basic, Suite;
@@ -1963,6 +1906,8 @@ report 50102 "PedidoCliente"
         //SOTHIS EBR 010920 id 15923
         CompanyInfo1.CalcFields(LogoCertificacion);
         //fin SOTHIS EBR 010920 id 15923
+        if UserId = 'ALMACEN' then
+            ShowLocation := true;
         OnAfterInitReport();
     end;
 
@@ -2067,6 +2012,7 @@ report 50102 "PedidoCliente"
         OldDimText: Text[75];
         idiomaReport: code[10];
         ShowInternalInfo: Boolean;
+        ShowLocation: Boolean;
         Valorado: Boolean;
         TipoDocumento: Integer;//tipo documento 1 Pedido,2 oferta,3 proforma hacer un option
         PrecioNeto: Boolean;

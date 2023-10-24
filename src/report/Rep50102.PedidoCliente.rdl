@@ -424,7 +424,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>6</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -1178,6 +1177,9 @@
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox87</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>15pt</PaddingLeft>
                                               <PaddingRight>5pt</PaddingRight>
@@ -1213,6 +1215,147 @@
                                               </Paragraph>
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox99</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                    </TablixCells>
+                                  </TablixRow>
+                                  <TablixRow>
+                                    <Height>0.40597cm</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox6">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontStyle>Normal</FontStyle>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox6</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox21">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!LocationLine.Value</Value>
+                                                    <Style>
+                                                      <FontStyle>Normal</FontStyle>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>7pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox21</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>15pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox22">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!FEntrega_Caption.Value</Value>
+                                                    <Style>
+                                                      <FontStyle>Normal</FontStyle>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>7pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                  <TextRun>
+                                                    <Value xml:space="preserve"> </Value>
+                                                    <Style>
+                                                      <FontStyle>Normal</FontStyle>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>7pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                  <TextRun>
+                                                    <Value>=Fields!FechaPrometida.Value</Value>
+                                                    <Style>
+                                                      <FontStyle>Normal</FontStyle>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>7pt</FontSize>
+                                                      <Format>d</Format>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox22</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                            </Style>
+                                          </Textbox>
+                                          <ColSpan>4</ColSpan>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox72">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontStyle>Normal</FontStyle>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox72</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -1782,6 +1925,11 @@ and Fields!ContUbicaciones.Value &lt;&gt;"",false,true)</Hidden>
                                         </Visibility>
                                       </TablixMember>
                                       <TablixMember>
+                                        <Visibility>
+                                          <Hidden>=iif(Fields!ShowLocation.Value, false,true)</Hidden>
+                                        </Visibility>
+                                      </TablixMember>
+                                      <TablixMember>
                                         <Group Name="LineasEnsamblado_Group">
                                           <GroupExpressions>
                                             <GroupExpression>=Fields!AssLink_Document_No_.Value</GroupExpression>
@@ -1877,7 +2025,7 @@ and Fields!ContUbicaciones.Value &lt;&gt;"",false,true)</Hidden>
                                 </Filter>
                               </Filters>
                               <Left>0.31939cm</Left>
-                              <Height>4.80901cm</Height>
+                              <Height>5.21498cm</Height>
                               <Width>18.9982cm</Width>
                               <Style />
                             </Tablix>
@@ -4188,7 +4336,7 @@ Cstr(Sum(Fields!Portes.Value))
               <Top>6.62324cm</Top>
               <Left>0.7432cm</Left>
               <Height>0.80346cm</Height>
-              <Width>7.83018cm</Width>
+              <Width>9.10018cm</Width>
               <ZIndex>24</ZIndex>
               <Visibility>
                 <Hidden>=iif(Fields!TipoDocumento.Value=2, false, true)</Hidden>
@@ -6108,6 +6256,9 @@ AAAASAISAAAAAElAAgAAACAJSAAAAAAkAQkAAACAJCABAAAAkAQkAAAAAJKABAAAAEASkAAAAABIAhIA
         <Field Name="PaymentTermsDescription">
           <DataField>PaymentTermsDescription</DataField>
         </Field>
+        <Field Name="ShowLocation">
+          <DataField>ShowLocation</DataField>
+        </Field>
         <Field Name="Valorado">
           <DataField>Valorado</DataField>
         </Field>
@@ -6518,6 +6669,12 @@ AAAASAISAAAAAElAAgAAACAJSAAAAAAkAQkAAACAJCABAAAAkAQkAAAAAJKABAAAAEASkAAAAABIAhIA
         </Field>
         <Field Name="ContUbicaciones">
           <DataField>ContUbicaciones</DataField>
+        </Field>
+        <Field Name="LocationLine">
+          <DataField>LocationLine</DataField>
+        </Field>
+        <Field Name="FechaPrometida">
+          <DataField>FechaPrometida</DataField>
         </Field>
         <Field Name="Desc_SalesLine">
           <DataField>Desc_SalesLine</DataField>

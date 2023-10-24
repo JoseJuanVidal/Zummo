@@ -23948,15 +23948,10 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mostrar Cant. Ubicaciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control ShowBinContents - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 3412186937 - Control 316520822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies if you want the printed report to show information that is only for internal use.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control ShowInternalInfo - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Report 3412186937 - Control 316520822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show Internal Information</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control ShowInternalInfo - Property Caption</note>
+        <trans-unit id="Report 3412186937 - Control 743293386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar datos Almacén</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar datos Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control ShowLocation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3412186937 - Control 2788153238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Type</source>

@@ -26274,15 +26274,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control ShowBinContents - Property Caption</note>
           <target>Mostrar Cant. Ubicaciones</target>
         </trans-unit>
-        <trans-unit id="Report 3412186937 - Control 316520822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies if you want the printed report to show information that is only for internal use.</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control ShowInternalInfo - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Report 3412186937 - Control 316520822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show Internal Information</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control ShowInternalInfo - Property Caption</note>
+        <trans-unit id="Report 3412186937 - Control 743293386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar datos Almacén</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar datos Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control ShowLocation - Property Caption</note>
+          <target>Mostrar datos Almacén</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - Control 2788153238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Type</source>
@@ -34347,18 +34343,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Peso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Header Zummo - Field Peso_btc - Property Caption</note>
           <target>Peso</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1119791416 - Field 1582893468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 151805736">
-          <source>Transfer-from Bin Code</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Transfer. desde-cód. Ubic."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Header Zummo - Field Transfer-from Bin Code - Property Caption</note>
-          <target>Transfer. desde-cód. Ubic.</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1119791416 - Field 3718707319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 151805736">
-          <source>Transfer-to Bin CodeBin Code</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Transfer. a-cód. Ubic."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Header Zummo - Field Transfer-to Bin Code - Property Caption</note>
-          <target>Transfer. a-cód. Ubic.</target>
         </trans-unit>
         <trans-unit id="TableExtension 3774079742 - Field 129070929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3550754772">
           <source>Number of packages</source>
