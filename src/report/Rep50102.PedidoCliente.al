@@ -487,7 +487,7 @@ report 50102 "PedidoCliente"
                         }
                         column(EsEmbalaje; EsEmbalaje) { }
                         column(ContUbicaciones; ContUbicaciones) { }
-                        column(LocationLine; Salesline."Location Code") { }
+                        column(LocationLine; StrSubstNo('%1-%2', Salesline."Location Code", SalesLine."Bin Code")) { }
                         column(FechaPrometida; Salesline."Promised Delivery Date") { }
                         column(Desc_SalesLine; txtDescLinea) { }
                         column(NNCSalesLineLineAmt; NNC_SalesLineLineAmt) { }

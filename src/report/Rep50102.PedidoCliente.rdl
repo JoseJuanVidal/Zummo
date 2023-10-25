@@ -2087,7 +2087,7 @@ and Fields!ContUbicaciones.Value &lt;&gt;"",false,true)</Hidden>
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox4</rd:DefaultName>
-                              <Top>5.04033cm</Top>
+                              <Top>5.35783cm</Top>
                               <Left>0.35798cm</Left>
                               <Height>0.86525cm</Height>
                               <Width>18.92135cm</Width>
@@ -2463,7 +2463,7 @@ Cstr(Sum(Fields!Portes.Value))
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox4</rd:DefaultName>
-                              <Top>5.98709cm</Top>
+                              <Top>6.30459cm</Top>
                               <Left>11.44915cm</Left>
                               <Height>2.18817cm</Height>
                               <Width>7.83018cm</Width>
