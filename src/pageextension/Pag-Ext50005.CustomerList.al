@@ -407,4 +407,5 @@ pageextension 50005 "CustomerList" extends "Customer List"
         Functions.CustomerChangeClasification(Customer);
 
     end;
+
 }

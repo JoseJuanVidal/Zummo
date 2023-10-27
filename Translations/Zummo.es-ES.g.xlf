@@ -16336,6 +16336,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - NamedType lblError</note>
           <target>El usuario %1 no está autorizado para está pagina. Avise a Administración del sistema</target>
         </trans-unit>
+        <trans-unit id="Page 869453865 - Action 3648746709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change Clasification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar datos clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - Action ChangeClasification - Property Caption</note>
+          <target>Cambiar datos clasificación</target>
+        </trans-unit>
         <trans-unit id="Report 3011595053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Credit Memo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Abono ventas registrado"</note>

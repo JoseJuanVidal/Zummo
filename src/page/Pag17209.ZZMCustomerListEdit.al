@@ -189,7 +189,26 @@ page 17209 "ZZM Customer List Edit"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(ChangeClasification)
+            {
+                ApplicationArea = all;
+                Caption = 'Change Clasification', comment = 'ESP="Cambiar datos clasificación"';
+                Image = ChangeTo;
+                Promoted = true;
+                PromotedCategory = Process;
 
+                trigger OnAction()
+                begin
+                    ActionChangeClasification();
+                end;
+            }
+        }
+
+    }
     trigger OnOpenPage()
     begin
         if UserSetup.Get(UserId) then
@@ -202,4 +221,16 @@ page 17209 "ZZM Customer List Edit"
     var
         UserSetup: Record "User Setup";
         lblError: Label 'User %1 is not authorised for this page. Notify System Administration', comment = 'ESP="El usuario %1 no está autorizado para está pagina. Avise a Administración del sistema"';
+
+    local procedure ActionChangeClasification()
+    var
+        Customer: Record Customer;
+        Functions: Codeunit Funciones;
+    begin
+        // llamamos a función de cambiar datos, con la selección de clientes de la PAGE
+        Customer.Reset();
+        CurrPage.SetSelectionFilter(Customer);
+        Functions.CustomerChangeClasification(Customer);
+
+    end;
 }

@@ -2294,6 +2294,7 @@ codeunit 50111 "Funciones"
     procedure CustomerChangeClasification(var Customer: Record Customer)
     var
         CustomerClasification: page "ZM Customer Change clasif.";
+        Bloqueado: option " ",Enviar,Factura,Todos,Desbloquear;
         CentralCompras_btc: Code[20];
         ClienteCorporativo_btc: Code[20];
         AreaManager_btc: Code[20];
@@ -2311,12 +2312,22 @@ codeunit 50111 "Funciones"
         CustomerClasification.SetNumCustomer(Customer.Count);
         CustomerClasification.LookupMode := true;
         if CustomerClasification.RunModal() = Action::LookupOK then begin
-            CustomerClasification.GetDatos(CentralCompras_btc, ClienteCorporativo_btc, AreaManager_btc, Delegado_btc, GrupoCliente_btc, Perfil_btc,
+            CustomerClasification.GetDatos(Bloqueado, CentralCompras_btc, ClienteCorporativo_btc, AreaManager_btc, Delegado_btc, GrupoCliente_btc, Perfil_btc,
                 SubCliente_btc, ClienteReporting_btc, ClienteActividad_btc, InsideSales_btc, Canal_btc, Mercado_btc);
 
             if Confirm(lblConfirm, false, Customer.Count) then
                 if Customer.FindFirst() then
                     repeat
+                        case Bloqueado of
+                            Bloqueado::Desbloquear:
+                                Customer.Blocked := Customer.Blocked::" ";
+                            Bloqueado::Enviar:
+                                Customer.Blocked := Customer.Blocked::Ship;
+                            Bloqueado::Factura:
+                                Customer.Blocked := Customer.Blocked::Invoice;
+                            Bloqueado::Todos:
+                                Customer.Blocked := Customer.Blocked::All;
+                        end;
                         if CentralCompras_btc <> '' then
                             Customer.CentralCompras_btc := CentralCompras_btc;
                         if ClienteCorporativo_btc <> '' then

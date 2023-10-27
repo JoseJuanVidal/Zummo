@@ -12,6 +12,11 @@ page 50155 "ZM Customer Change clasif."
         {
             group(General)
             {
+                field(Bloqueado; Bloqueado)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Bloqueado', comment = 'ESP="Bloqueado"';
+                }
                 field(CentralCompras_btc; CentralCompras_btc)
                 {
                     ApplicationArea = All;
@@ -97,6 +102,7 @@ page 50155 "ZM Customer Change clasif."
     end;
 
     var
+        Bloqueado: Option " ",Enviar,Factura,Todos,Desbloquear;
         NumCustomer: Integer;
         CentralCompras_btc: Code[20];
         ClienteCorporativo_btc: Code[20];
@@ -114,11 +120,11 @@ page 50155 "ZM Customer Change clasif."
 
 
 
-    procedure GetDatos(var vCentralCompras_btc: Code[20]; var vClienteCorporativo_btc: Code[20]; var vAreaManager_btc: Code[20]; var vDelegado_btc: Code[20]; var vGrupoCliente_btc: Code[20];
+    procedure GetDatos(var vBloqueado: option " ",Enviar,Factura,Todos,Desbloquear; var vCentralCompras_btc: Code[20]; var vClienteCorporativo_btc: Code[20]; var vAreaManager_btc: Code[20]; var vDelegado_btc: Code[20]; var vGrupoCliente_btc: Code[20];
            var vPerfil_btc: Code[20]; var vSubCliente_btc: Code[20]; var vClienteReporting_btc: Code[20]; var vClienteActividad_btc: Code[20]; var vInsideSales_btc: Code[20];
            var vCanal_btc: Code[20]; var vMercado_btc: Code[20])
-    var
     begin
+        vBloqueado := Bloqueado;
         vCentralCompras_btc := CentralCompras_btc;
         vClienteCorporativo_btc := ClienteCorporativo_btc;
         vAreaManager_btc := AreaManager_btc;
