@@ -1657,32 +1657,13 @@ codeunit 50106 "SalesEvents"
         ProdBomHeader.Get(Item."Production BOM No.");
         ProdBomHeader.TestField(Status, ProdBomHeader.Status::Certified);
         if Confirm(lblConfirmExplode, false, Rec."No.", Rec.Description) then begin
-            if Rec."Document Type" IN [Rec."Document Type"::Order, Rec."Document Type"::Invoice] then begin
-                ToSalesLine := Rec;
 
-                FromBOMComp.SetRange("Production BOM No.", Item."Production BOM No.");
-                FromBOMComp.SetRange(Type, FromBOMComp.Type::Item);
-                FromBOMComp.SetFilter("No.", '<>%1', '');
-                IF FromBOMComp.FindFirst() THEN
-                    REPEAT
-                        FromBOMComp.TESTFIELD(Type, FromBOMComp.Type::Item);
-                        Item.GET(FromBOMComp."No.");
-                        ToSalesLine."Line No." := 0;
-                        ToSalesLine."No." := FromBOMComp."No.";
-                        ToSalesLine."Variant Code" := FromBOMComp."Variant Code";
-                        ToSalesLine."Unit of Measure Code" := FromBOMComp."Unit of Measure Code";
-                        ToSalesLine."Qty. per Unit of Measure" := UOMMgt.GetQtyPerUnitOfMeasure(Item, FromBOMComp."Unit of Measure Code");
-                        ToSalesLine."Outstanding Quantity" := ROUND(Rec."Quantity (Base)" * FromBOMComp."Quantity per", 0.00001);
-                        IF ToSalesLine."Outstanding Quantity" > 0 THEN
-                            IF ItemCheckAvail.SalesLineCheck(ToSalesLine) THEN
-                                ItemCheckAvail.RaiseUpdateInterruptedError;
-                    UNTIL FromBOMComp.Next() = 0;
-            end;
             ToSalesLine := Rec;
             ToSalesLine.INIT;
             ToSalesLine.Description := Rec.Description;
             ToSalesLine."Description 2" := Rec."Description 2";
             ToSalesLine.ParentLine := true;
+            ToSalesLine.ParentItemNo := Rec."No.";
             ToSalesLine.MODIFY;
 
             ExplodeProdBOMCompLines(SalesHeader, Rec, Item."Production BOM No.");
@@ -1768,6 +1749,9 @@ codeunit 50106 "SalesEvents"
                     IF SalesHeader."Shipment Date" <> SalesLine."Shipment Date" THEN
                         ToSalesLine.VALIDATE("Shipment Date", SalesLine."Shipment Date");
                 END;
+                ToSalesLine."DecLine Discount1 %_btc" := SalesLine."DecLine Discount1 %_btc";
+                ToSalesLine."DecLine Discount2 %_btc" := SalesLine."DecLine Discount2 %_btc";
+                ToSalesLine.Validate("Line Discount %", SalesLine."Line Discount %");
                 IF SalesHeader."Language Code" = '' THEN
                     ToSalesLine.Description := FromBOMComp.Description
                 ELSE

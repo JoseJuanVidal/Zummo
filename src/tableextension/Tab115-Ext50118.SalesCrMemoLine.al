@@ -156,5 +156,20 @@ tableextension 50118 "SalesCrMemoLine" extends "Sales Cr.Memo Line"  //115
             Caption = 'Desc. Gamma', comment = 'ESP="Desc. Gama"';
             Editable = false;
         }
+        field(50200; ParentLine; Boolean)
+        {
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
+        field(50201; ParentLineNo; Integer)
+        {
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
+        field(50202; ParentItemNo; code[20])
+        {
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
     }
 }

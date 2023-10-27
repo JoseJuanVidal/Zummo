@@ -511,6 +511,13 @@ report 50103 "AlbaranVenta"
                         begin
                             LinNo := "Line No.";
 
+                            // control de componentes para desglose
+                            if "Sales Shipment Line".ParentLineNo <> 0 then
+                                CurrReport.Skip();
+                            if "Sales Shipment Line".ParentLine then
+                                UpdateSalesLineComponentes();
+                            //-
+
                             if (Type = Type::"G/L Account") and ("No." = '7591000') then
                                 CurrReport.Skip();
 
@@ -1134,6 +1141,36 @@ report 50103 "AlbaranVenta"
         ParentItemLedgEntry.SetRange("Serial No.", ItemLedgEntry."Serial No.");
         if ParentItemLedgEntry.FindFirst() then
             exit(ParentItemLedgEntry.SerialNoParent);
+    end;
+
+    local procedure UpdateSalesLineComponentes()
+    var
+        SalesShipmentLine: record "Sales Shipment Line";
+        Quantity: Decimal;
+        UnitPrice: Decimal;
+        Dto: Decimal;
+        Dto1: Decimal;
+        Dto2: Decimal;
+    begin
+        SalesShipmentLine.Reset();
+        SalesShipmentLine.SetRange("Document No.", "Sales Shipment Line"."Document No.");
+        SalesShipmentLine.SetRange(ParentLineNo, "Sales Shipment Line"."Line No.");
+        if SalesShipmentLine.FindFirst() then
+            repeat
+                if Quantity < SalesShipmentLine.Quantity then
+                    Quantity := SalesShipmentLine.Quantity;
+                UnitPrice += SalesShipmentLine."Unit Price";
+                Dto := SalesShipmentLine."Line Discount %";
+                Dto1 := SalesShipmentLine."DecLine Discount1 %_btc";
+                Dto2 := SalesShipmentLine."DecLine Discount2 %_btc";
+            Until SalesShipmentLine.next() = 0;
+        "Sales Shipment Line".Type := SalesShipmentLine.Type::Item;
+        "Sales Shipment Line"."No." := SalesShipmentLine.ParentItemNo;
+        "Sales Shipment Line".Quantity := Quantity;
+        "Sales Shipment Line"."Unit Price" := UnitPrice;
+        "Sales Shipment Line"."Line Discount %" := Dto;
+        "Sales Shipment Line"."DecLine Discount1 %_btc" := Dto1;
+        "Sales Shipment Line"."DecLine Discount2 %_btc" := Dto2;
     end;
 }
 

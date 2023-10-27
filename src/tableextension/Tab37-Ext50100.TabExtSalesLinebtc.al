@@ -206,6 +206,11 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             Editable = false;
             DataClassification = CustomerContent;
         }
+        field(50202; ParentItemNo; code[20])
+        {
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
         //#region Integracion Intercompany
         field(50300; "Source Purch. Order No"; Code[20])
         {

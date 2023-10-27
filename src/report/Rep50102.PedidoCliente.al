@@ -875,6 +875,19 @@ report 50102 "PedidoCliente"
                             ELSE
                                 SalesLine.NEXT();
 
+
+
+                            // control de lineas asociadas a linea descripcion PROD. ORDEN
+                            if SalesLine.ParentLineNo <> 0 then
+                                CurrReport.Skip();
+                            if SalesLine.ParentLine then begin
+                                UpdateSalesLineComponentes();
+                            end;
+
+                            // - control l
+                            "Sales Line" := SalesLine;
+
+
                             sumaPesoBruto += SalesLine."Gross Weight" * SalesLine.Quantity;
 
                             txtDescLinea := SalesLine.Description;
@@ -913,7 +926,7 @@ report 50102 "PedidoCliente"
                                     end;
                             end;
 
-                            "Sales Line" := SalesLine;
+
                             EsEmbalaje := false;
                             EsPorte := false;
                             Clear(Portes);
@@ -2372,6 +2385,41 @@ report 50102 "PedidoCliente"
                 BinContens += '-';
             BinContens += StrSubstNo('%1 (%2)', BinCode, BinQuantity)
         end;
+
+    end;
+
+    local procedure UpdateSalesLineComponentes()
+    var
+        SalesLineComponent: Record "Sales Line";
+        Quantity: Decimal;
+        UnitPrice: Decimal;
+        Dto: Decimal;
+        Dto1: Decimal;
+        Dto2: Decimal;
+        LineAmount: Decimal;
+    begin
+        SalesLineComponent.Reset();
+        SalesLineComponent.SetRange("Document Type", SalesLine."Document Type");
+        SalesLineComponent.SetRange("Document No.", SalesLine."Document No.");
+        SalesLineComponent.SetRange(ParentLineNo, SalesLine."Line No.");
+        if SalesLineComponent.FindFirst() then
+            repeat
+                if Quantity < SalesLineComponent.Quantity then
+                    Quantity := SalesLineComponent.Quantity;
+                UnitPrice += SalesLineComponent."Unit Price";
+                Dto := SalesLineComponent."Line Discount %";
+                Dto1 := SalesLineComponent."DecLine Discount1 %_btc";
+                Dto2 := SalesLineComponent."DecLine Discount2 %_btc";
+                LineAmount += SalesLineComponent."Line Amount";
+            Until SalesLineComponent.next() = 0;
+        SalesLine.Type := SalesLine.Type::Item;
+        SalesLine."No." := SalesLine.ParentItemNo;
+        SalesLine.Quantity := Quantity;
+        SalesLine."Unit Price" := UnitPrice;
+        SalesLine."Line Discount %" := Dto;
+        SalesLine."DecLine Discount1 %_btc" := Dto1;
+        SalesLine."DecLine Discount2 %_btc" := Dto2;
+        SalesLine."Line Amount" := LineAmount;
     end;
 }
 

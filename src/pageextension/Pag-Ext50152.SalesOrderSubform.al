@@ -157,6 +157,19 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
                 end;
             }
         }
+        addafter(ExplodeBOM_Functions)
+        {
+            action(ExplodeProdBOM)
+            {
+                ApplicationArea = all;
+                Caption = 'Desplegar Componentes', comment = 'ESP="Desplegar Componentes"';
+
+                trigger OnAction()
+                begin
+                    Action_ExplodeProdBOM();
+                end;
+            }
+        }
     }
 
     var
@@ -218,6 +231,14 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
 
         Comprometido := (recItem."Qty. on Sales Order" + recItem."Qty. on Asm. Component" + recItem."Qty. on Component Lines" + recItem."Res. Qty. on Outbound Transfer" + recItem."Qty. on Purch. Return");
 
+
+    end;
+
+    local procedure Action_ExplodeProdBOM()
+    var
+        Funciones: Codeunit SalesEvents;
+    begin
+        Funciones.Action_ExplodeProdBOM(Rec);
 
     end;
 

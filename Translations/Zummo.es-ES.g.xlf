@@ -29302,6 +29302,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderSubform - Action CalcItemCost - Property Caption</note>
           <target>Act. Coste Unitario</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1793060472 - Action 4141832370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
+          <source>Desplegar Componentes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desplegar Componentes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderSubform - Action ExplodeProdBOM - Property Caption</note>
+          <target>Desplegar Componentes</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1793060472 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
@@ -31995,6 +32001,21 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field NombreCliente_btc - Property Caption</note>
           <target>Nombre Cliente</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1670910335 - Field 1682838236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
+          <source>ParentItemNo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field ParentItemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1670910335 - Field 3384823846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
+          <source>ParentLine</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field ParentLine - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1670910335 - Field 2326351021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
+          <source>ParentLineNo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field ParentLineNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1670910335 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>Sales Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
@@ -32911,6 +32932,21 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field NombreCliente_btc - Property Caption</note>
           <target>Nombre Cliente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3333755618 - Field 1682838236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
+          <source>ParentItemNo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field ParentItemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3333755618 - Field 3384823846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
+          <source>ParentLine</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field ParentLine - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3333755618 - Field 2326351021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
+          <source>ParentLineNo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field ParentLineNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 2010073393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>Sin precio tarifa</source>
@@ -34180,6 +34216,21 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field NumPalets_btc - Property Caption</note>
           <target>Nº Palets</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 1682838236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>ParentItemNo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field ParentItemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 3384823846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>ParentLine</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field ParentLine - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 2326351021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>ParentLineNo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field ParentLineNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 2309556541 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Weight</source>
           <note from="Developer" annotates="general" priority="2">ESP="Peso"</note>
@@ -34273,6 +34324,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field NombreCliente_btc - Property Caption</note>
           <target>Nombre Cliente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 1682838236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>ParentItemNo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ParentItemNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 3384823846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>ParentLine</source>

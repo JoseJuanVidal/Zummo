@@ -130,5 +130,20 @@ tableextension 50117 "SalesShipmentLine" extends "Sales Shipment Line" //111
             Caption = 'Total Amount Line', comment = 'ESP="Importe Total IVA"';
             editable = false;
         }
+        field(50200; ParentLine; Boolean)
+        {
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
+        field(50201; ParentLineNo; Integer)
+        {
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
+        field(50202; ParentItemNo; code[20])
+        {
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
     }
 }

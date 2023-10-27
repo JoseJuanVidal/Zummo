@@ -1178,6 +1178,13 @@ report 50111 "FacturaNacionalMaquinas"
                             txtAux: Text[100];
                         begin
 
+                            // control de lineas asociadas a linea descripcion PROD. ORDEN
+                            if "Sales Invoice Line".ParentLineNo <> 0 then
+                                CurrReport.Skip();
+                            if "Sales Invoice Line".ParentLine then begin
+                                UpdateSalesLineComponentes();
+                            end;
+                            // - control l
                             if TraduccionProducto.Get("No.",
                                 "Variant Code",
                                  "Sales Invoice Header"."Language Code")
@@ -3172,6 +3179,40 @@ report 50111 "FacturaNacionalMaquinas"
     procedure Pneto(P_precioNeto: Boolean)
     begin
         mostrarNetos := P_precioNeto;
+    end;
+
+
+    local procedure UpdateSalesLineComponentes()
+    var
+        SalesInvoiceLine: record "Sales Invoice Line";
+        Quantity: Decimal;
+        UnitPrice: Decimal;
+        Dto: Decimal;
+        Dto1: Decimal;
+        Dto2: Decimal;
+        LineAmount: Decimal;
+    begin
+        SalesInvoiceLine.Reset();
+        SalesInvoiceLine.SetRange("Document No.", "Sales Invoice Line"."Document No.");
+        SalesInvoiceLine.SetRange(ParentLineNo, "Sales Invoice Line"."Line No.");
+        if SalesInvoiceLine.FindFirst() then
+            repeat
+                if Quantity < SalesInvoiceLine.Quantity then
+                    Quantity := SalesInvoiceLine.Quantity;
+                UnitPrice += SalesInvoiceLine."Unit Price";
+                Dto := SalesInvoiceLine."Line Discount %";
+                Dto1 := SalesInvoiceLine."DecLine Discount1 %_btc";
+                Dto2 := SalesInvoiceLine."DecLine Discount2 %_btc";
+                LineAmount += SalesInvoiceLine."Line Amount";
+            Until SalesInvoiceLine.next() = 0;
+        "Sales Invoice Line".Type := SalesInvoiceLine.Type::Item;
+        "Sales Invoice Line"."No." := SalesInvoiceLine.ParentItemNo;
+        "Sales Invoice Line".Quantity := Quantity;
+        "Sales Invoice Line"."Unit Price" := UnitPrice;
+        "Sales Invoice Line"."Line Discount %" := Dto;
+        "Sales Invoice Line"."DecLine Discount1 %_btc" := Dto1;
+        "Sales Invoice Line"."DecLine Discount2 %_btc" := Dto2;
+        "Sales Invoice Line"."Line Amount" := LineAmount;
     end;
 }
 
