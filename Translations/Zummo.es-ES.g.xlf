@@ -10354,6 +10354,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1856158927 - Method 395651631 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No filter has been indicated\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se ha indicado ningun filtro.\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Ext Excel Export - Method ExportVendorPrice - NamedType lblConfirm</note>
+          <target>No se ha indicado ningun filtro.\¿Desea continuar?</target>
+        </trans-unit>
         <trans-unit id="Codeunit 3770991987 - Method 2226100883 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you want to open the discharge request for item %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Abrir la petición de alta del producto %1 %2?"</note>

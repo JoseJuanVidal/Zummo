@@ -9623,6 +9623,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1856158927 - Method 395651631 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No filter has been indicated\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se ha indicado ningun filtro.\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Ext Excel Export - Method ExportVendorPrice - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3770991987 - Method 2226100883 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you want to open the discharge request for item %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Abrir la petición de alta del producto %1 %2?"</note>
@@ -25663,6 +25668,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Calcular peso plastico Niveles superior"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action CalculatePlasticLevels - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Action 805890551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Exportar Tarifas</source>
+          <note from="Developer" annotates="general" priority="2">NLB="Exportar Tarifas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action Exportar Tarifas - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1394728878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
@@ -25832,6 +25842,11 @@
           <source>Exportar Excel de costes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Exportar Excel de costes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action ExportExcelCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 805890551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Exportar Tarifas</source>
+          <note from="Developer" annotates="general" priority="2">NLB="Exportar Tarifas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action Exportar Tarifas - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Qty. en Stockkeeping Unit</source>
@@ -27402,6 +27417,11 @@
           <source>Pais Envío</source>
           <note from="Developer" annotates="general" priority="2">ESP="Pais Envío"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension VatEntry - Control Paisenvio - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1574261460 - Action 805890551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+          <source>Exportar Tarifas</source>
+          <note from="Developer" annotates="general" priority="2">NLB="Exportar Tarifas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VendorCard - Action Exportar Tarifas - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1574261460 - Action 2232329325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>Imprimir Extracto</source>

@@ -68,6 +68,21 @@ pageextension 50119 "VendorCard" extends "Vendor Card"
                         Report.Run(Report::"Extracto Proveedor", true, false, Proveedor);
                 end;
             }
+            action("Exportar Tarifas")
+            {
+                ApplicationArea = All;
+                Caption = 'Exportar Tarifas', comment = 'NLB="Exportar Tarifas"';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Excel;
+                trigger OnAction()
+                var
+                    ExportExcelPrices: Codeunit "ZM Ext Excel Export";
+                begin
+                    ExportExcelPrices.ExportVendorPrice();
+                end;
+            }
         }
 
 

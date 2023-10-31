@@ -541,6 +541,21 @@ pageextension 50109 "ItemCard" extends "Item Card"
 
             }
         }
+        addafter(PurchPricesandDiscounts)
+        {
+            action("Exportar Tarifas")
+            {
+                ApplicationArea = All;
+                Caption = 'Exportar Tarifas', comment = 'NLB="Exportar Tarifas"';
+                Image = Excel;
+                trigger OnAction()
+                var
+                    ExportExcelPrices: Codeunit "ZM Ext Excel Export";
+                begin
+                    ExportExcelPrices.ExportVendorPrice();
+                end;
+            }
+        }
     }
 
 

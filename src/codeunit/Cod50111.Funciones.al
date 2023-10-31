@@ -1848,6 +1848,7 @@ codeunit 50111 "Funciones"
         Ventana.Open('Nº Factura #1###############\Nº Linea #2###############\Producto #3#############');
         ExcelBuffer.DELETEALL;
         ExcelBuffer.CreateNewBook('Trazabilidad Facturas');
+
         // creamos la cabecera de la excel
         HeaderExcelBuffer(ExcelBuffer, TextoFiltro);
 
