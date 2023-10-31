@@ -5,7 +5,7 @@ page 17419 "ZM CONSULTIA Posted Inv. Head."
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "ZM CONSULTIA Invoice Header";
-    SourceTableView = where("Invoice Header No." = filter(<> ''));
+    SourceTableView = where(Status = const(Cerrado));
     CardPageId = "ZM CONSULTIA Invoice Header";
     Editable = false;
     InsertAllowed = false;
@@ -118,6 +118,17 @@ page 17419 "ZM CONSULTIA Posted Inv. Head."
                     GetInvoiceByDate();
                 end;
             }
+            action(Close)
+            {
+                ApplicationArea = all;
+                Caption = 'Abrir Factura', comment = 'ESP="Abrir Factura"';
+                Image = Close;
+                Promoted = true;
+                trigger OnAction()
+                begin
+                    CloseInvoice();
+                end;
+            }
         }
     }
     trigger OnAfterGetRecord()
@@ -138,5 +149,17 @@ page 17419 "ZM CONSULTIA Posted Inv. Head."
     begin
         if Confirm(lblConfirmGet, true, CalcDate('-30D', WorkDate()), WorkDate()) then
             CONSULTIAFunciones.GetInvoicebyDate(CalcDate('-30D', WorkDate()), WorkDate());
+    end;
+
+    local procedure CloseInvoice()
+    var
+        lblConfirm: Label '¿Do you want to Open the invoice to the history?', comment = 'ESP="¿Desea Abrir la factura al histórico?"';
+    begin
+        Rec.TestField(Status, Status::Cerrado);
+        if Confirm(lblConfirm) then begin
+            Rec.Status := Rec.Status::Abierto;
+            Rec.Modify();
+        end;
+
     end;
 }

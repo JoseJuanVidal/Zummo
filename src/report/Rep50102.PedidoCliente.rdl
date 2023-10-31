@@ -1926,7 +1926,7 @@ and Fields!ContUbicaciones.Value &lt;&gt;"",false,true)</Hidden>
                                       </TablixMember>
                                       <TablixMember>
                                         <Visibility>
-                                          <Hidden>=iif(Fields!ShowLocation.Value, false,true)</Hidden>
+                                          <Hidden>=iif((Fields!TypeNO_SalesLine.Value = "Item") and Fields!ShowLocation.Value, false,true)</Hidden>
                                         </Visibility>
                                       </TablixMember>
                                       <TablixMember>
@@ -6768,6 +6768,9 @@ AAAASAISAAAAAElAAgAAACAJSAAAAAAkAQkAAACAJCABAAAAkAQkAAAAAJKABAAAAEASkAAAAABIAhIA
         </Field>
         <Field Name="Type_SalesLine">
           <DataField>Type_SalesLine</DataField>
+        </Field>
+        <Field Name="TypeNO_SalesLine">
+          <DataField>TypeNO_SalesLine</DataField>
         </Field>
         <Field Name="No1_SalesLine">
           <DataField>No1_SalesLine</DataField>

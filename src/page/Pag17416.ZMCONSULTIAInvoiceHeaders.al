@@ -5,7 +5,7 @@ page 17416 "ZM CONSULTIA Invoice Headers"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "ZM CONSULTIA Invoice Header";
-    SourceTableView = where("Invoice Header No." = const(''));
+    SourceTableView = where(Status = const(Cerrado));
     CardPageId = "ZM CONSULTIA Invoice Header";
     Editable = false;
     InsertAllowed = false;

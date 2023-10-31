@@ -7003,6 +7003,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Responsable_compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Responsable_compra - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1677429823 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Invoice Header - Field Status - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1677429823 - Field 2883740582 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tipo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
@@ -13848,6 +13853,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea provisionar la factura %1?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - NamedType lblConfirmProvisioning</note>
         </trans-unit>
+        <trans-unit id="Page 1677429823 - Method 1027124497 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to Close the invoice to the history?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Cerrar la factura al histórico?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Method CloseInvoice - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 1677429823 - Control 3906556071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
@@ -13862,6 +13872,11 @@
           <source>Attachment Document</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Control Attachment Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1677429823 - Action 2674503554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cerrar Factura</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cerrar Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Invoice Header - Action Close - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1677429823 - Action 3638771396 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create invoice</source>
@@ -13933,10 +13948,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualziar las facturas desde %1 a %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Posted Inv. Head. - NamedType lblConfirmGet</note>
         </trans-unit>
+        <trans-unit id="Page 3455457933 - Method 1027124497 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to Open the invoice to the history?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Abrir la factura al histórico?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Posted Inv. Head. - Method CloseInvoice - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 3455457933 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attachment Document</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Posted Inv. Head. - Control Attachment Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3455457933 - Action 2674503554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Abrir Factura</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Abrir Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CONSULTIA Posted Inv. Head. - Action Close - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 828288886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crear ´Pedidio Compra</source>

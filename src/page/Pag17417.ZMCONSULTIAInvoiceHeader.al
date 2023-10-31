@@ -228,6 +228,17 @@ page 17417 "ZM CONSULTIA Invoice Header"
                     CreateDesProvisioning();
                 end;
             }
+            action(Close)
+            {
+                ApplicationArea = all;
+                Caption = 'Cerrar Factura', comment = 'ESP="Cerrar Factura"';
+                Image = Close;
+                Promoted = true;
+                trigger OnAction()
+                begin
+                    CloseInvoice();
+                end;
+            }
         }
     }
     trigger OnAfterGetRecord()
@@ -269,5 +280,17 @@ page 17417 "ZM CONSULTIA Invoice Header"
         if Confirm(lblConfirmDesProvisioning, true, Rec.N_Factura) then begin
             CONSULTIAFunciones.CreateJNLAprovisionamiento(Rec, true);
         end;
+    end;
+
+    local procedure CloseInvoice()
+    var
+        lblConfirm: Label '¿Do you want to Close the invoice to the history?', comment = 'ESP="¿Desea Cerrar la factura al histórico?"';
+    begin
+        Rec.TestField(Status, Status::Abierto);
+        if Confirm(lblConfirm) then begin
+            Rec.Status := Rec.Status::Cerrado;
+            Rec.Modify();
+        end;
+
     end;
 }

@@ -175,6 +175,11 @@ table 17414 "ZM CONSULTIA Invoice Header"
             Caption = 'Dimension Partida Fair', comment = 'ESP="Dimensión Partida Feria"';
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(8));
         }
+        field(100; Status; Enum "ZM Contracts Status")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Status', comment = 'ESP="Estado"';
+        }
     }
 
     keys

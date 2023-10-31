@@ -538,6 +538,9 @@ report 50102 "PedidoCliente"
                         column(Type_SalesLine; FORMAT("Sales Line".Type))
                         {
                         }
+                        column(TypeNO_SalesLine; "Sales Line".Type)
+                        {
+                        }
                         column(No1_SalesLine; "Sales Line"."Line No.")
                         {
                         }
@@ -876,11 +879,10 @@ report 50102 "PedidoCliente"
                                 SalesLine.NEXT();
 
 
-
                             // control de lineas asociadas a linea descripcion PROD. ORDEN
-                            if SalesLine.ParentLineNo <> 0 then
+                            if not ShowLocation and (SalesLine.ParentLineNo <> 0) then
                                 CurrReport.Skip();
-                            if SalesLine.ParentLine then begin
+                            if not ShowLocation and SalesLine.ParentLine then begin
                                 UpdateSalesLineComponentes();
                             end;
 
