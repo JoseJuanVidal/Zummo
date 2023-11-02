@@ -66,7 +66,10 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
             Caption = 'Fecha Recepción aviso', comment = 'ESP="Fecha recepción aviso"';
             DataClassification = CustomerContent;
 
-
+            trigger OnValidate()
+            begin
+                OnValidate_Fecharecepaviso_sth();
+            end;
         }
         field(50211; Fechaemtregamaterial_sth; DateTime)
         {
@@ -109,7 +112,8 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
 
     var
         ServiceHeader: Record "Service Header";
-        lblErrorFecha: Label 'La fecha %1: %2 no puede ser menor que %3: %4.\¿Desea continuar?', comment = 'ESP="La fecha %1: %2 no puede ser menor que %3: %4.\¿Desea continuar?"';
+        lblErrorFechaMenor: Label 'La fecha %1: %2 no puede ser menor que %3: %4.\¿Desea continuar?', comment = 'ESP="La fecha %1: %2 no puede ser menor que %3: %4.\¿Desea continuar?"';
+        lblErrorFechaMayor: Label 'La fecha %1: %2 no puede ser mayor que %3: %4.\¿Desea continuar?', comment = 'ESP="La fecha %1: %2 no puede ser mayor que %3: %4.\¿Desea continuar?"';
         lblError: Label 'Cancelado por usuario', comment = 'ESP="Cancelado por usuario"';
 
     local procedure FalloLocalizadoValidate()
@@ -132,7 +136,16 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
         ServiceHeader.Reset();
         ServiceHeader.Get(Rec."Document Type", Rec."Document No.");
         if ServiceHeader."Order Date" > DT2Date(Rec.Fechaemtregamaterial_sth) then
-            if not confirm(lblErrorFecha, false, Rec.FieldCaption(Fechaemtregamaterial_sth), Rec.Fechaemtregamaterial_sth, ServiceHeader.FieldCaption("Order Date"), ServiceHeader."Order Date") then
+            if not confirm(lblErrorFechaMenor, false, Rec.FieldCaption(Fechaemtregamaterial_sth), Rec.Fechaemtregamaterial_sth, ServiceHeader.FieldCaption("Order Date"), ServiceHeader."Order Date") then
+                Error(lblError);
+    end;
+
+    local procedure OnValidate_Fecharecepaviso_sth()
+    begin
+        ServiceHeader.Reset();
+        ServiceHeader.Get(Rec."Document Type", Rec."Document No.");
+        if ServiceHeader."Order Date" > DT2Date(Rec.Fechaemtregamaterial_sth) then
+            if not confirm(lblErrorFechaMayor, false, Rec.FieldCaption(Fecharecepaviso_sth), Rec.Fecharecepaviso_sth, ServiceHeader.FieldCaption("Order Date"), ServiceHeader."Order Date") then
                 Error(lblError);
     end;
 }

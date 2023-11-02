@@ -30213,10 +30213,15 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cancelado por usuario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - NamedType lblError</note>
         </trans-unit>
-        <trans-unit id="TableExtension 4165706410 - NamedType 1736712373" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4165706410">
+        <trans-unit id="TableExtension 4165706410 - NamedType 3531865565" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4165706410">
+          <source>La fecha %1: %2 no puede ser mayor que %3: %4.\¿Desea continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La fecha %1: %2 no puede ser mayor que %3: %4.\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - NamedType lblErrorFechaMayor</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - NamedType 422788532" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4165706410">
           <source>La fecha %1: %2 no puede ser menor que %3: %4.\¿Desea continuar?</source>
           <note from="Developer" annotates="general" priority="2">ESP="La fecha %1: %2 no puede ser menor que %3: %4.\¿Desea continuar?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - NamedType lblErrorFecha</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - NamedType lblErrorFechaMenor</note>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 719596632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Ampliacion Garantia</source>
