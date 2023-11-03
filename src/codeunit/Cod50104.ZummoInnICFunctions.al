@@ -1057,6 +1057,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         CONSULTIAInvoiceHeader."Vendor No." := CopyStr(VendorNo, 1, MaxStrLen(CONSULTIAInvoiceHeader."Vendor No."));
         CONSULTIAInvoiceHeader."Vendor Name" := CopyStr(VendorName, 1, MaxStrLen(CONSULTIAInvoiceHeader."Vendor Name"));
         CONSULTIAInvoiceHeader."Vat Registration No." := VatRegistrationNo;
+        CONSULTIAInvoiceHeader.Status := CONSULTIAInvoiceHeader.Status::Abierto;
         CONSULTIAInvoiceHeader.Insert();
     end;
 
@@ -1271,6 +1272,12 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
         PurchaseHeader.Init();
         PurchaseHeader.InitInsert();
+        case CONSULTIAInvoiceHeader."Document Type" of
+            CONSULTIAInvoiceHeader."Document Type"::Invoice:
+                PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::Invoice;
+            CONSULTIAInvoiceHeader."Document Type"::"Credit Memo":
+                PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::"Credit Memo";
+        end;
         PurchaseHeader.Validate("Buy-from Vendor No.", CONSULTIAInvoiceHeader."Vendor No.");
         PurchaseHeader.Validate("Posting Date", WorkDate());
         PurchaseHeader.Validate("Document Date", CONSULTIAInvoiceHeader.F_Factura);

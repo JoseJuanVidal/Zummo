@@ -5,7 +5,6 @@ page 17416 "ZM CONSULTIA Invoice Headers"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "ZM CONSULTIA Invoice Header";
-    SourceTableView = where(Status = const(Cerrado));
     CardPageId = "ZM CONSULTIA Invoice Header";
     Editable = false;
     InsertAllowed = false;
@@ -133,11 +132,12 @@ page 17416 "ZM CONSULTIA Invoice Headers"
                 end;
             }
         }
+
     }
 
     trigger OnOpenPage()
     begin
-        SetRange("Invoice Header No.", '');
+        SetFilter(Status, '%1|%2', Rec.Status::Abierto, Rec.Status::Lanzado);
     end;
 
     trigger OnAfterGetRecord()
