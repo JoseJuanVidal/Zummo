@@ -204,12 +204,13 @@ table 17370 "ZM Hist. Reclamaciones ventas"
                     ServiceItemLine.Reset();
                     ServiceItemLine.SetRange("Document Type", ServiceHeader."Document Type");
                     ServiceItemLine.SetRange("Document No.", ServiceHeader."No.");
-                    if ServiceItemLine.FindFirst() then
-                        repeat
-                            if Item.Get(ServiceItemLine."Item No.") and not item.IsAssemblyItem() then begin
-                                AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceHeader.NumSerie_btc);
-                            end;
-                        Until ServiceItemLine.next() = 0;
+                    if ServiceItemLine.FindFirst() then begin
+                        //repeat
+                        if Item.Get(ServiceItemLine."Item No.") and not item.IsAssemblyItem() then begin
+                            AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceHeader.NumSerie_btc);
+                        end;
+                        // Until ServiceItemLine.next() = 0;
+                    end;
                 end;
             Until ServiceHeader.next() = 0;
 
