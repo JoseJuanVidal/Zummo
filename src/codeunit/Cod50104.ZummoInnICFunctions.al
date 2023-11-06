@@ -1676,9 +1676,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
         case DesProvisioning of
             true:
-                BudgetBuffer.Amount -= CONSULTIAInvoiceLine.PVP;
+                BudgetBuffer.Amount -= CONSULTIAInvoiceLine.Base;
             else
-                BudgetBuffer.Amount += CONSULTIAInvoiceLine.PVP;
+                BudgetBuffer.Amount += CONSULTIAInvoiceLine.Base;
         end;
         BudgetBuffer.Modify();
     end;

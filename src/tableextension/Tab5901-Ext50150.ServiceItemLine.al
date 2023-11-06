@@ -144,7 +144,7 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
     begin
         ServiceHeader.Reset();
         ServiceHeader.Get(Rec."Document Type", Rec."Document No.");
-        if ServiceHeader."Order Date" > DT2Date(Rec.Fechaemtregamaterial_sth) then
+        if DT2Date(Rec.Fechaemtregamaterial_sth) > ServiceHeader."Order Date" then
             if not confirm(lblErrorFechaMayor, false, Rec.FieldCaption(Fecharecepaviso_sth), Rec.Fecharecepaviso_sth, ServiceHeader.FieldCaption("Order Date"), ServiceHeader."Order Date") then
                 Error(lblError);
     end;
