@@ -348,6 +348,23 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             DataClassification = CustomerContent;
             Caption = 'Dto. Repuestos', comment = 'ESP="Dto. Repuestos"';
         }
+        field(50080; "Importe Facturas"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = sum("Detailed Cust. Ledg. Entry"."Amount (LCY)" WHERE("Customer No." = FIELD("No."), "Initial Entry Due Date" = FiELD(UPPERLIMIT("Date Filter")),
+                "Initial Entry Posting Date" = field("Date Filter"), "Document Type" = const(Invoice), "Entry Type" = const("Initial Entry"), "Excluded from calculation" = CONST(false)));
+
+            // trigger OnLookup()
+            // var
+            //     CustLedgerEntry: Record "Cust. Ledger Entry";
+            // begin
+            //     CustLedgerEntry.Reset();
+            //     CustLedgerEntry.SetRange("Customer No.", Rec."No.");
+            //     CustLedgerEntry.SetRange("Document Type", CustLedgerEntry."Document Type"::Invoice);
+            //     CustLedgerEntry.SetRange("Posting Date", Rec."Date Filter");
+            //     Page.RunModal(0, CustLedgerEntry);
+            // end;
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var

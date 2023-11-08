@@ -29,6 +29,10 @@ page 17209 "ZZM Customer List Edit"
                 {
                     ApplicationArea = All;
                 }
+                field("Importe Facturas"; "Importe Facturas")
+                {
+                    ApplicationArea = all;
+                }
                 field(CodMotivoBloqueo_btc; Rec.CodMotivoBloqueo_btc)
                 {
                     ApplicationArea = All;
