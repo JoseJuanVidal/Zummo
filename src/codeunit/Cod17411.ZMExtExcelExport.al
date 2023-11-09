@@ -61,12 +61,10 @@ codeunit 17411 "ZM Ext Excel Export"
             repeat
                 Window.Update(1, Vendor."No.");
                 Item.Reset();
-                Item.SetRange("Vendor No.", Vendor."No.");
                 if Item.FindFirst() then
                     repeat
-                        Window.Update(2, Item."No.");
-                        ExcelBuffer.NewRow();
-                        LinesVendorExcelBuffer(ExcelBuffer, Vendor, Item);
+                        // Window.Update(2, Item."No.");
+
                         PurchasePrice.Reset();
                         PurchasePrice.SetRange("Vendor No.", Vendor."No.");
                         PurchasePrice.SetRange("Item No.", Item."No.");
@@ -77,12 +75,14 @@ codeunit 17411 "ZM Ext Excel Export"
                         //         RangeMax := Vendor.GetRangeMax("Date Filter");
                         // end;
                         // PurchasePrice.SetFilter("Starting Date", '%1..%2', RangeMin, RangeMax);
-                        if PurchasePrice.findset() then begin
-                            repeat
-
-                                LinesVendorPricesExcelBuffer(ExcelBuffer, PurchasePrice);
-
-                            Until PurchasePrice.next() = 0;
+                        if (Item."Vendor No." = Vendor."No.") or (PurchasePrice.FindFirst()) then begin
+                            ExcelBuffer.NewRow();
+                            LinesVendorExcelBuffer(ExcelBuffer, Vendor, Item);
+                            if PurchasePrice.findset() then begin
+                                repeat
+                                    LinesVendorPricesExcelBuffer(ExcelBuffer, PurchasePrice);
+                                Until PurchasePrice.next() = 0;
+                            end;
                         end;
                     Until Item.next() = 0;
             Until Vendor.next() = 0;
@@ -113,9 +113,12 @@ codeunit 17411 "ZM Ext Excel Export"
         ExcelBuffer.AddColumn(Item.FieldCaption("No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Item.FieldCaption(Description), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Item.FieldCaption(Blocked), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Principal', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Item.FieldCaption("Base Unit of Measure"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Item.FieldCaption("Unit Cost"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Item.FieldCaption("Last Direct Cost"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Precio proveedor', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Fecha ultima compra', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Item.FieldCaption("Lead Time Calculation"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(PurchasePrice.FieldCaption("Starting Date"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(PurchasePrice.FieldCaption("Ending Date"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
@@ -124,15 +127,32 @@ codeunit 17411 "ZM Ext Excel Export"
     end;
 
     local procedure LinesVendorExcelBuffer(var ExcelBuffer: Record "Excel Buffer"; Vendor: Record Vendor; Item: Record Item)
+    var
+        ItemLedgerEntry: Record "Item Ledger Entry";
+        Unitcost: Decimal;
     begin
+        ItemLedgerEntry.Reset();
+        ItemLedgerEntry.SetCurrentKey("Item No.", "Posting Date");
+        ItemLedgerEntry.Ascending(false);
+        ItemLedgerEntry.SetRange(Positive, true);
+        ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Purchase);
+        ItemLedgerEntry.SetRange("Item No.", Item."No.");
+        ItemLedgerEntry.SetRange("Source No.", Vendor."No.");
+        if ItemLedgerEntry.FindFirst() then;
         ExcelBuffer.AddColumn(Vendor."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Vendor.Name, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Item."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Item.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(format(Item.Blocked), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(format(Item."Vendor No." = Vendor."No."), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Item."Base Unit of Measure", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(Item."Unit Cost", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
         ExcelBuffer.AddColumn(Item."Last Direct Cost", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ItemLedgerEntry.CalcFields("Cost Amount (Actual)");
+        if ItemLedgerEntry.Quantity <> 0 then
+            Unitcost := ItemLedgerEntry."Cost Amount (Actual)" / ItemLedgerEntry.Quantity;
+        ExcelBuffer.AddColumn(Unitcost, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemLedgerEntry."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
         ExcelBuffer.AddColumn(Item."Lead Time Calculation", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
     end;
 
