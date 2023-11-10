@@ -63,7 +63,7 @@ codeunit 17411 "ZM Ext Excel Export"
                 Item.Reset();
                 if Item.FindFirst() then
                     repeat
-                        // Window.Update(2, Item."No.");
+                        Window.Update(2, Item."No.");
 
                         PurchasePrice.Reset();
                         PurchasePrice.SetRange("Vendor No.", Vendor."No.");
