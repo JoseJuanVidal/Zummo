@@ -28,7 +28,7 @@ codeunit 17411 "ZM Ext Excel Export"
         Item: Record Item;
         Vendor: Record Vendor;
         PurchasePrice: Record "Purchase Price";
-        ExcelBuffer: Record "Excel Buffer";
+        ExcelBuffer: Record "Excel Buffer" temporary;
         RefRecord: RecordRef;
         RefField: FieldRef;
         Filters: text;

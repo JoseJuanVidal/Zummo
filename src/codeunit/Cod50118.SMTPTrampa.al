@@ -249,11 +249,14 @@ codeunit 50118 "SMTP_Trampa"
     // ======================================================================================================
     procedure CreatePurchaseReceiptPlastic()
     var
+        Item: Record Item;
         PurchRcptHeader: Record "Purch. Rcpt. Header";
         PurchRcptLine: Record "Purch. Rcpt. Line";
+        PurchInvoiceHeader: Record "Purch. Inv. Header";
+        PurchInvoiceLine: Record "Purch. Inv. Line";
         Window: Dialog;
     begin
-        PurchRcptHeader.SetFilter("Posting Date", '%1..', 20230101D);
+
         Window.Open('Nº Recepción #1###########################\Fecha #2##########');
         ExcelBuffer.DeleteAll();
         ExcelBuffer.NewRow();
@@ -285,7 +288,7 @@ codeunit 50118 "SMTP_Trampa"
         ExcelBuffer.AddColumn('PLASTICO EMBALAJE PROVEEDOR (KG/UD) UNITARIO', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.NewRow();
 
-
+        PurchRcptHeader.SetFilter("Posting Date", '%1..', 20230101D);
         if PurchRcptHeader.FindFirst() then
             repeat
                 Window.Update(1, PurchRcptHeader."No.");
@@ -302,6 +305,27 @@ codeunit 50118 "SMTP_Trampa"
                     Until PurchRcptLine.next() = 0;
 
             Until PurchRcptHeader.next() = 0;
+
+        // añadirNoinventario RAQUEL
+        PurchInvoiceHeader.SetFilter("Posting Date", '%1..', 20230101D);
+        if PurchInvoiceHeader.FindFirst() then
+            repeat
+                Window.Update(1, PurchInvoiceHeader."No.");
+                Window.Update(2, PurchInvoiceHeader."Posting Date");
+
+                PurchInvoiceLine.Reset();
+                PurchInvoiceLine.SetRange("Document No.", PurchInvoiceHeader."No.");
+                PurchInvoiceLine.SetFilter(Quantity, '>0');
+                if PurchInvoiceLine.FindFirst() then
+                    repeat
+                        if PurchInvoiceLine.Type in [PurchRcptLine.Type::Item] then
+                            if Item.Get(PurchInvoiceLine."No.") then
+                                if Item.IsNonInventoriableType() then
+                                    SetInvoiceLine(PurchInvoiceHeader, PurchInvoiceLine);
+
+                    Until PurchInvoiceLine.next() = 0;
+
+            Until PurchInvoiceHeader.next() = 0;
 
         ExcelBuffer.CreateNewBook('Declaración Plástico');
 
@@ -350,4 +374,41 @@ codeunit 50118 "SMTP_Trampa"
         ExcelBuffer.NewRow();
     end;
 
+    local procedure SetInvoiceLine(PurchInvHeader: Record "Purch. Inv. Header"; PurchInvLine: Record "Purch. Inv. Line")
+    var
+        Item: Record Item;
+        Vendor: Record Vendor;
+        PurchaseHeader: Record "Purchase Header";
+        PurchInvoiceLine: Record "Purch. Inv. Line";
+    begin
+        if Item.Get(PurchInvLine."No.") then;
+        Vendor.Get(PurchInvHeader."Buy-from Vendor No.");
+        if PurchaseHeader.Get(PurchaseHeader."Document Type"::Order, PurchInvHeader."Order No.") then;
+        PurchInvoiceLine.Reset();
+        PurchInvoiceLine.SetRange("Receipt No.", PurchInvLine."Document No.");
+        PurchInvoiceLine.SetRange("Receipt Line No.", PurchInvLine."Line No.");
+        if PurchInvoiceLine.FindFirst() then;
+        ExcelBuffer.AddColumn(PurchInvHeader."No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchInvLine."Line No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(PurchInvoiceLine."Document No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchInvoiceLine."Line No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(PurchInvLine."Order No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchaseHeader."Posting Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);
+        ExcelBuffer.AddColumn(PurchInvHeader."Posting Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);
+        ExcelBuffer.AddColumn(PurchInvHeader."Buy-from Vendor No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchInvHeader."Buy-from Vendor Name", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchInvLine.Type, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchInvLine."No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchInvLine.Description, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchInvLine."Item Category Code", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchInvLine.Quantity, false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(PurchInvoiceLine."Line Amount", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(PurchInvHeader."Buy-from Country/Region Code", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Vendor."Gen. Bus. Posting Group", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item."Net Weight", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(item."Packing Plastic Qty. (kg)", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(item."Packing Recycled plastic (kg)", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(item."Vendor Packaging product KG", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+    end;
 }
