@@ -20,6 +20,21 @@ pageextension 50155 "ServiceItemList" extends "Service Item List"
             {
                 ApplicationArea = all;
             }
+            field(ContratoMantenimiento; ContratoMantenimiento)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(TipoContratoMantenimiento; TipoContratoMantenimiento)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(FechaInicioContrato; FechaInicioContrato)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
         addafter(Status)
         {

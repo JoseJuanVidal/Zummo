@@ -9218,6 +9218,21 @@
           <note from="Developer" annotates="general" priority="2">ESP="URL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field URL - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1284569765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo contrato mantenimiento</source>
+          <note from="Developer" annotates="general" priority="2">ESP=""Tipo contrato Mantenimiento""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Tipo contrato Mantenimiento - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1284569765 - Field 3523366866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Duration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Duración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Tipo contrato Mantenimiento - Field duration - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1284569765 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Tipo contrato Mantenimiento - Field Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
@@ -14932,6 +14947,11 @@
           <source>Upload a file</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importar fichero"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM SH Record Link Sharepoints - Action Upload a File - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1284569765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo contrato mantenimiento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo contrato mantenimiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Tipo contrato Mantenimiento - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 869453865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer List Edit</source>
@@ -30123,6 +30143,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea ampliar la garantia %1?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="TableExtension 521506452 - NamedType 1234227946" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 521506452">
+          <source>Ya se ha iniciado anteriormente el contrato de garantia en %1.\¿Desea actualizar la fecha?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ya se ha iniciado anteriormente el contrato de garantia en %1.\¿Desea actualizar la fecha?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - NamedType lblConfirmContrato</note>
+        </trans-unit>
         <trans-unit id="TableExtension 521506452 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 521506452">
           <source>Primero debe anular la Garantia</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -30143,6 +30168,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº.Serie.Histórico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field CodSerieHistorico_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 521506452 - Field 2130105010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
+          <source>Contrato Mantenimiento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Contrato Mantenimiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field ContratoMantenimiento - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 2555433972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Estado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
@@ -30152,6 +30182,11 @@
           <source>Fecha Inicio periodo de Ampliacion</source>
           <note from="Developer" annotates="general" priority="2">Fecha Inicio periodo de Ampliación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field FechaIniAmpliacion_sth - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 521506452 - Field 4067366280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
+          <source>Fecha inicio Contrato</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha inicio Contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field FechaInicioContrato - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 521506452 - Field 2049232620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
           <source>Fecha próxima revision garantia</source>
@@ -30167,6 +30202,11 @@
           <source>Periodo de Ampliacion Garantia</source>
           <note from="Developer" annotates="general" priority="2">Periodo de Ampliación Garantía"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field PeriodoAmplacionGarantica_sth - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 521506452 - Field 2943568640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 521506452">
+          <source>Tipo Contrato</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - Field TipoContratoMantenimiento - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 969542668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Cerrado en plataforma</source>

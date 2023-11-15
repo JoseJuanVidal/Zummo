@@ -11,6 +11,24 @@ tableextension 50143 "Service Item" extends "Service Item"
         {
             Caption = 'Nº.Serie.Historico', comment = 'ESP="Nº.Serie.Histórico"';
         }
+        field(50120; ContratoMantenimiento; Boolean)
+        {
+            Caption = 'Contrato Mantenimiento', comment = 'ESP="Contrato Mantenimiento"';
+
+            trigger OnValidate()
+            begin
+                ContratoMantenimiento_OnValidate();
+            end;
+        }
+        field(50130; TipoContratoMantenimiento; Code[20])
+        {
+            Caption = 'Tipo Contrato', comment = 'ESP="Tipo Contrato"';
+            TableRelation = "ZM Tipo contrato Mantenimiento";
+        }
+        field(50140; FechaInicioContrato; Date)
+        {
+            Caption = 'Fecha inicio Contrato', comment = 'ESP="Fecha inicio Contrato"';
+        }
         field(50200; PeriodoAmplacionGarantica_sth; DateFormula)
         {
             Caption = 'Periodo de Ampliacion Garantia', comment = 'Periodo de Ampliación Garantía"';
@@ -68,4 +86,18 @@ tableextension 50143 "Service Item" extends "Service Item"
     var
         lblConfirm: Label '¿Desea ampliar la garantia %1?', comment = 'ESP="¿Desea ampliar la garantia %1?"';
         lblError: label 'Primero debe anular la Garantia', Comment = '';
+        lblConfirmContrato: Label 'Ya se ha iniciado anteriormente el contrato de garantia en %1.\¿Desea actualizar la fecha?', comment = 'ESP="Ya se ha iniciado anteriormente el contrato de garantia en %1.\¿Desea actualizar la fecha?"';
+
+    local procedure ContratoMantenimiento_OnValidate()
+    var
+        myInt: Integer;
+    begin
+        if Rec.ContratoMantenimiento <> xRec.ContratoMantenimiento then
+            if Rec.ContratoMantenimiento then begin
+                if Rec.FechaInicioContrato <> 0D then
+                    if not Confirm(lblConfirmContrato, false, Rec.FechaInicioContrato) then
+                        exit;
+                Rec.FechaInicioContrato := WorkDate();
+            end;
+    end;
 }

@@ -31,6 +31,19 @@ pageextension 50154 "ServiceItemCard" extends "Service Item Card"
             {
                 ApplicationArea = all;
             }
+            field(ContratoMantenimiento; ContratoMantenimiento)
+            {
+                ApplicationArea = all;
+            }
+            field(TipoContratoMantenimiento; TipoContratoMantenimiento)
+            {
+                ApplicationArea = all;
+            }
+            field(FechaInicioContrato; FechaInicioContrato)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
         addafter(Status)
         {
