@@ -241,7 +241,7 @@ report 50113 "Ventas Aseguradora - List"
                                                 //if PaymentMethod."Es Contado" or PaymentTerms."Es Contado" then
                                                 if PaymentTerms."Es Contado" then
                                                     CurrReport.Skip();
-                                                if (Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA', 'ORGANISMOS PUBLICO', 'REHUSADO', 'CLIENTE PARTICULAR', 'EXCLUIDOS POLIZA']) and
+                                                if (Customer.clasificacion_aseguradora in ['INTERCOMPANY', 'AUTOFACTURA', 'ORGANISMOS PUBLICO', 'REHUSADO', 'CLIENTE PARTICULAR', 'EXCLUIDOS POLIZA', 'ANONIMO']) and
                                                     not PaymentTerms."Es NO Asegurable (Otros)" then
                                                     CurrReport.Skip();
                                             end;
@@ -324,6 +324,10 @@ report 50113 "Ventas Aseguradora - List"
 
                 trigger OnAfterGetRecord()
                 begin
+                    if Clasif1.Number = 1 then begin
+                        Clasificacion2 := 'Ventas ASEGURABLES';
+                        exit;
+                    end;
                     case Clasif2.Number of
                         1:
                             Clasificacion2 := 'CONTADO O PREPAGO';

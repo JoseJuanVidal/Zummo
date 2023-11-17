@@ -61,6 +61,24 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
         {
             Editable = true;
         }
+        addafter(Closed)
+        {
+            field("Cred_ Max_ Aseg. AutorizadoPor"; "Cred_ Max_ Aseg. AutorizadoPor")
+            {
+                Visible = false;
+                Editable = true;
+            }
+            field("Credito Maximo Aseguradora_btc"; "Credito Maximo Aseguradora_btc")
+            {
+                Visible = false;
+                Editable = true;
+            }
+            field(clasificacion_aseguradora; clasificacion_aseguradora)
+            {
+                Visible = false;
+                Editable = true;
+            }
+        }
     }
     actions
     {

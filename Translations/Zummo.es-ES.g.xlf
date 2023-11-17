@@ -9876,6 +9876,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field URL - Property Caption</note>
           <target>URL</target>
         </trans-unit>
+        <trans-unit id="Table 1284569765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo contrato mantenimiento</source>
+          <note from="Developer" annotates="general" priority="2">ESP=""Tipo contrato Mantenimiento""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Tipo contrato Mantenimiento - Property Caption</note>
+          <target>"Tipo contrato Mantenimiento"</target>
+        </trans-unit>
+        <trans-unit id="Table 1284569765 - Field 3523366866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Duration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Duración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Tipo contrato Mantenimiento - Field duration - Property Caption</note>
+          <target>Duración</target>
+        </trans-unit>
+        <trans-unit id="Table 1284569765 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Tipo contrato Mantenimiento - Field Name - Property Caption</note>
+          <target>Nombre</target>
+        </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
@@ -16371,6 +16389,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importar fichero"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM SH Record Link Sharepoints - Action Upload a File - Property Caption</note>
           <target>Importar fichero</target>
+        </trans-unit>
+        <trans-unit id="Page 1284569765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo contrato mantenimiento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo contrato mantenimiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Tipo contrato Mantenimiento - Property Caption</note>
+          <target>Tipo contrato mantenimiento</target>
         </trans-unit>
         <trans-unit id="Page 869453865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer List Edit</source>
@@ -33037,6 +33061,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea ampliar la garantia %1?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - NamedType lblConfirm</note>
           <target>¿Desea ampliar la garantia %1?</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 521506452 - NamedType 1234227946" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 521506452">
+          <source>Ya se ha iniciado anteriormente el contrato de garantia en %1.\¿Desea actualizar la fecha?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ya se ha iniciado anteriormente el contrato de garantia en %1.\¿Desea actualizar la fecha?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Service Item - NamedType lblConfirmContrato</note>
+          <target>Ya se ha iniciado anteriormente el contrato de garantia en %1.\¿Desea actualizar la fecha?</target>
         </trans-unit>
         <trans-unit id="TableExtension 521506452 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 521506452">
           <source>Primero debe anular la Garantia</source>
