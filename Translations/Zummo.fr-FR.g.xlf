@@ -5773,6 +5773,16 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Method OpenExternalKeyURL - NamedType lblURL</note>
         </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 2411070600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activo Fijo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Activo Fijo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 534506330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AF Nombre</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field AF Nombre - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3147584035 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>id</source>
           <note from="Developer" annotates="general" priority="2"/>

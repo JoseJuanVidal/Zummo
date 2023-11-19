@@ -91,6 +91,17 @@ table 17440 "ZM IT Daily Time Sheet"
             end;
 
         }
+        field(40; "Activo Fijo"; code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = "ZM Daily Time Activo Fjjo";
+        }
+        field(42; "AF Nombre"; text[100])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM Daily Time Activo Fjjo".Description where(Code = field("Activo Fijo")));
+            Editable = false;
+        }
         field(50; "Start Time"; DateTime)
         {
             DataClassification = CustomerContent;

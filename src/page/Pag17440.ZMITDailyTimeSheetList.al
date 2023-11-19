@@ -80,6 +80,23 @@ page 17440 "ZM IT Daily Time Sheet List"
                 {
                     ApplicationArea = all;
                 }
+                field("Activo Fijo"; "Activo Fijo")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field("AF Nombre"; "AF Nombre")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field(Horas; Horas)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Horas', comment = 'ESP="Horas"';
+                    Visible = false;
+                    Editable = false;
+                }
                 field("Resource Name"; "Resource Name")
                 {
                     ApplicationArea = all;
@@ -244,11 +261,14 @@ page 17440 "ZM IT Daily Time Sheet List"
 
     trigger OnModifyRecord(): Boolean
     begin
+        Horas := Rec.GetDuration(TimeType::Hours, Rec.TimeDuration);
         UpdateTimeDailySheet();
     end;
 
     var
         DailyTime: Record "ZM IT Daily Time Sheet";
+        TimeType: enum "ZM IT Time Setup";
+        Horas: Decimal;
         Fecha: date;
         Total: Duration;
         lblPost: Label 'Do you want to create the resource journal of pending records?', comment = 'ESP="¿Desea crear el diario de recursos de los registros pendientes?"';

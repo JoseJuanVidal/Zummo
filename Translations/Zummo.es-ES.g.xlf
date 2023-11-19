@@ -7956,6 +7956,24 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily Task - Field User Id - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 209781312 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AF Partes Diario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="AF Partes Diario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily Time Activo Fjjo - Property Caption</note>
+          <target>AF Partes Diario</target>
+        </trans-unit>
+        <trans-unit id="Table 209781312 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Código</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily Time Activo Fjjo - Field Code - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 209781312 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily Time Activo Fjjo - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
         <trans-unit id="Table 3803506403 - NamedType 3537014988" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must select a person to perform the markings..</source>
           <note from="Developer" annotates="general" priority="2">ESP="Debe seleccionar una Persona para realizar los marcajes."</note>
@@ -8334,6 +8352,16 @@
           <source>https://zummo.atlassian.net/browse/%1</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Method OpenExternalKeyURL - NamedType lblURL</note>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 2411070600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activo Fijo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field Activo Fijo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3147584035 - Field 534506330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AF Nombre</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT Daily Time Sheet - Field AF Nombre - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3147584035 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>
@@ -15455,6 +15483,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control SubCliente_btc - Property Caption</note>
           <target>SubCliente</target>
         </trans-unit>
+        <trans-unit id="Page 4272686488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AF Partes Diario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="AF Partes Diario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time AF - Property Caption</note>
+          <target>AF Partes Diario</target>
+        </trans-unit>
         <trans-unit id="Page 616408914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Daily Time Sheet List</source>
           <note from="Developer" annotates="general" priority="2">ESP="Partes Diarios"</note>
@@ -15716,6 +15750,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el diario de recursos de los registros pendientes?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - NamedType lblPost</note>
           <target>¿Desea crear el diario de recursos de los registros pendientes?</target>
+        </trans-unit>
+        <trans-unit id="Page 2376143693 - Control 3501779713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Horas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Horas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Control Horas - Property Caption</note>
+          <target>Horas</target>
         </trans-unit>
         <trans-unit id="Page 2376143693 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>
