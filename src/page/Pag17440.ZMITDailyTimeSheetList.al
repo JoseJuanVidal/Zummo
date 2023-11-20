@@ -248,9 +248,15 @@ page 17440 "ZM IT Daily Time Sheet List"
         Rec.SetRange(Date, Fecha);
     end;
 
+    trigger OnAfterGetRecord()
+    begin
+        Horas := Rec.GetDuration(TimeType::Hours, Rec.TimeDuration);
+        UpdateTimeDailySheet;
+    end;
+
     trigger OnAfterGetCurrRecord()
     begin
-        UpdateTimeDailySheet;
+
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
@@ -261,7 +267,6 @@ page 17440 "ZM IT Daily Time Sheet List"
 
     trigger OnModifyRecord(): Boolean
     begin
-        Horas := Rec.GetDuration(TimeType::Hours, Rec.TimeDuration);
         UpdateTimeDailySheet();
     end;
 
