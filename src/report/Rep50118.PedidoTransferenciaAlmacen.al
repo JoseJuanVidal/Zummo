@@ -412,7 +412,7 @@ report 50118 "PedidoTransferenciaAlmacen"
 
     requestpage
     {
-        SaveValues = true;
+        SaveValues = false;
 
         layout
         {
@@ -453,11 +453,18 @@ report 50118 "PedidoTransferenciaAlmacen"
                     }
                 }
             }
+
         }
 
         actions
         {
         }
+
+        trigger OnOpenPage()
+        begin
+            if UserId = 'ALMACEN' then
+                ShowBinContents := true;
+        end;
     }
 
     labels
