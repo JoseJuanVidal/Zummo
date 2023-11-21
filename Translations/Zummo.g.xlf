@@ -24183,6 +24183,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Idioma"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control optIdioma - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 4049458315 - Control 1547528384 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want the printed report to show information that is only for internal use.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control ShowBinContents - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 4049458315 - Control 1547528384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Ubicaciones producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Ubicaciones producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control ShowBinContents - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 4049458315 - Control 316520822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if you want the printed report to show information that is only for internal use.</source>
           <note from="Developer" annotates="general" priority="2"></note>

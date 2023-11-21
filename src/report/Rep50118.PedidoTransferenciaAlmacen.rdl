@@ -24,7 +24,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>2.86398cm</Height>
+                  <Height>3.98284cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -298,6 +298,187 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
+                                    <Height>0.16122in</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox1">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox1</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox6">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox6</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="ContUbicaciones">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!ContUbicaciones.Value</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>ContUbicaciones</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                          <ColSpan>4</ColSpan>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox11">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox11</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox12">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox12</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox13">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox13</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                    </TablixCells>
+                                  </TablixRow>
+                                  <TablixRow>
                                     <Height>0.13889in</Height>
                                     <TablixCells>
                                       <TablixCell>
@@ -553,6 +734,136 @@
                                       </TablixCell>
                                     </TablixCells>
                                   </TablixRow>
+                                  <TablixRow>
+                                    <Height>0.17789in</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox7">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox7</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox24">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontStyle>Normal</FontStyle>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox24</rd:DefaultName>
+                                            <Style>
+                                              <Border />
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="SerialContUbicaciones">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!SerialContUbicaciones.Value</Value>
+                                                    <Style>
+                                                      <FontStyle>Normal</FontStyle>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>SerialContUbicaciones</rd:DefaultName>
+                                            <Style>
+                                              <Border />
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                          <ColSpan>6</ColSpan>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox18">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox18</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                    </TablixCells>
+                                  </TablixRow>
                                 </TablixRows>
                               </TablixBody>
                               <TablixColumnHierarchy>
@@ -595,6 +906,12 @@
                                         <KeepTogether>true</KeepTogether>
                                       </TablixMember>
                                       <TablixMember>
+                                        <Visibility>
+                                          <Hidden>=iif(Fields!ShowBinContents.Value and (Fields!ContUbicaciones.Value&lt;&gt;""),false,true)</Hidden>
+                                        </Visibility>
+                                        <KeepWithGroup>After</KeepWithGroup>
+                                      </TablixMember>
+                                      <TablixMember>
                                         <Group Name="Table1_Details_Group">
                                           <DataElementName>Detail</DataElementName>
                                         </Group>
@@ -628,6 +945,14 @@
                                             <Value>=Fields!NoSerie_RecMemLotes.Value</Value>
                                           </SortExpression>
                                         </SortExpressions>
+                                        <TablixMembers>
+                                          <TablixMember />
+                                          <TablixMember>
+                                            <Visibility>
+                                              <Hidden>=iif(Fields!ShowBinContents.Value and (Fields!SerialContUbicaciones.Value&lt;&gt;""),false,true)</Hidden>
+                                            </Visibility>
+                                          </TablixMember>
+                                        </TablixMembers>
                                         <Visibility>
                                           <Hidden>=iif(Fields!NoSerie_RecMemLotes.Value="",true,false)</Hidden>
                                         </Visibility>
@@ -649,7 +974,7 @@
                               </Filters>
                               <Top>0pt</Top>
                               <Left>0.00829cm</Left>
-                              <Height>0.55811in</Height>
+                              <Height>0.89722in</Height>
                               <Width>7.50477in</Width>
                               <Style />
                             </Tablix>
@@ -674,6 +999,7 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox19</rd:DefaultName>
+                                  <Top>0.09525cm</Top>
                                   <Height>0.58236cm</Height>
                                   <Width>2.5cm</Width>
                                   <Style>
@@ -693,7 +1019,7 @@
                                     <Paragraph>
                                       <TextRuns>
                                         <TextRun>
-                                          <Value>=Fields!CuadroBultos_PaletsLbl.Value &amp; " "</Value>
+                                          <Value>º</Value>
                                           <Style>
                                             <FontFamily>Segoe UI</FontFamily>
                                             <FontSize>8pt</FontSize>
@@ -705,7 +1031,7 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox19</rd:DefaultName>
-                                  <Top>0.58236cm</Top>
+                                  <Top>0.67761cm</Top>
                                   <Height>0.58236cm</Height>
                                   <Width>2.5cm</Width>
                                   <ZIndex>1</ZIndex>
@@ -739,6 +1065,7 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox19</rd:DefaultName>
+                                  <Top>0.09525cm</Top>
                                   <Left>2.5cm</Left>
                                   <Height>0.58236cm</Height>
                                   <Width>3.3353cm</Width>
@@ -773,7 +1100,7 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox19</rd:DefaultName>
-                                  <Top>0.58236cm</Top>
+                                  <Top>0.67761cm</Top>
                                   <Left>2.5cm</Left>
                                   <Height>0.58236cm</Height>
                                   <Width>3.3353cm</Width>
@@ -807,6 +1134,7 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox19</rd:DefaultName>
+                                  <Top>0.09525cm</Top>
                                   <Left>5.8353cm</Left>
                                   <Height>0.58236cm</Height>
                                   <Width>2.92333cm</Width>
@@ -840,7 +1168,7 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox19</rd:DefaultName>
-                                  <Top>0.58236cm</Top>
+                                  <Top>0.67761cm</Top>
                                   <Left>5.8353cm</Left>
                                   <Height>0.58236cm</Height>
                                   <Width>2.96421cm</Width>
@@ -875,6 +1203,7 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox19</rd:DefaultName>
+                                  <Top>0.09525cm</Top>
                                   <Left>8.75863cm</Left>
                                   <Height>0.58236cm</Height>
                                   <Width>4.31886cm</Width>
@@ -909,7 +1238,7 @@
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox19</rd:DefaultName>
-                                  <Top>0.58236cm</Top>
+                                  <Top>0.67761cm</Top>
                                   <Left>8.75863cm</Left>
                                   <Height>0.58236cm</Height>
                                   <Width>4.31886cm</Width>
@@ -926,9 +1255,9 @@
                                 </Textbox>
                               </ReportItems>
                               <KeepTogether>true</KeepTogether>
-                              <Top>1.66454cm</Top>
+                              <Top>2.45829cm</Top>
                               <Left>3.11573cm</Left>
-                              <Height>1.16472cm</Height>
+                              <Height>1.25997cm</Height>
                               <Width>13.07749cm</Width>
                               <ZIndex>1</ZIndex>
                               <Style>
@@ -977,7 +1306,7 @@
               <BreakLocation>End</BreakLocation>
             </PageBreak>
             <Left>0.47663cm</Left>
-            <Height>2.86398cm</Height>
+            <Height>3.98284cm</Height>
             <Width>19.14544cm</Width>
             <Style>
               <Border>
@@ -2772,6 +3101,9 @@ ACBJiAQAAABAkhAJAAAAgCQhEgAAAABJQiQAAAAAkoRIAAAAACQJkQAAAABIEiIBAAAAkCREAgAAACBJ
         <Field Name="CuadroBultos_PaletsLbl">
           <DataField>CuadroBultos_PaletsLbl</DataField>
         </Field>
+        <Field Name="ShowBinContents">
+          <DataField>ShowBinContents</DataField>
+        </Field>
         <Field Name="totalPeso">
           <DataField>totalPeso</DataField>
         </Field>
@@ -2937,6 +3269,9 @@ ACBJiAQAAABAkhAJAAAAgCQhEgAAAABJQiQAAAAAkoRIAAAAACQJkQAAAABIEiIBAAAAkCREAgAAACBJ
         <Field Name="LineNo_TransLine">
           <DataField>LineNo_TransLine</DataField>
         </Field>
+        <Field Name="ContUbicaciones">
+          <DataField>ContUbicaciones</DataField>
+        </Field>
         <Field Name="DimText2">
           <DataField>DimText2</DataField>
         </Field>
@@ -2951,6 +3286,9 @@ ACBJiAQAAABAkhAJAAAAgCQhEgAAAABJQiQAAAAAkoRIAAAAACQJkQAAAABIEiIBAAAAkCREAgAAACBJ
         </Field>
         <Field Name="NoSerie_RecMemLotes">
           <DataField>NoSerie_RecMemLotes</DataField>
+        </Field>
+        <Field Name="SerialContUbicaciones">
+          <DataField>SerialContUbicaciones</DataField>
         </Field>
       </Fields>
       <Query>

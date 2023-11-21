@@ -648,6 +648,21 @@ codeunit 50111 "Funciones"
         end;
     end;
 
+    procedure GetExtensionFieldValueboolean(vRecordIf: RecordId; fieldNo: Integer; CalcField: boolean): Boolean
+    var
+        vRecRef: RecordRef;
+        vFieldRef: FieldRef;
+    begin
+        if vRecRef.Get(vRecordIf) then begin
+            if vRecRef.FieldExist(fieldNo) then begin
+                vFieldRef := vRecRef.field(fieldNo);
+                if CalcField then
+                    vFieldRef.CalcField();
+                Exit(vFieldRef.Value);
+            end;
+        end;
+    end;
+
     procedure GetExtensionFieldValueDate(vRecordIf: RecordId; fieldNo: Integer; CalcField: boolean): Date
     var
         vRecRef: RecordRef;
@@ -2683,10 +2698,11 @@ codeunit 50111 "Funciones"
             var ListBinContent: List of [code[20]]; var ListQtyBinContent: List of [decimal])
     var
         Item: Record Item;
+        Bin: Record Bin;
         BinContent: Record "Bin Content";
         BinBudgetBuffer: record "Item Budget Buffer" temporary;
+        UbicSalida: code[20];
         Qty: Decimal;
-        QtyWithoutBin: Decimal;
         lblWhioutBin: Label 'Sin ubicación', comment = 'ESP="Sin ubicación"';
     begin
         if not item.Get(ItemNo) then
@@ -2699,31 +2715,34 @@ codeunit 50111 "Funciones"
         if SerialNo <> '' then
             BinContent.SetRange("Serial No. Filter", SerialNo);
         BinContent.SetFilter("Quantity (Base)", '>0');
+        UbicSalida := GetExtensionFieldValueBinSalida(LocationCode);    // field(50630; "Ubic. Salida SGA"; Code[20])
         if BinContent.FindFirst() then
             repeat
-                if GetExtensionFieldValueBinNave(BinContent."Location Code", BinContent."Bin Code") = '' then begin
-                    BinContent.CalcFields("Quantity (Base)");
-                    QtyWithoutBin += BinContent."Quantity (Base)"
-                end else begin
+                BinContent.CalcFields("Quantity (Base)");
+                if (UbicSalida <> BinContent."Bin Code") or (SerialNo <> '') then begin
+                    Bin.Get(BinContent."Location Code", BinContent."Bin Code");
                     BinBudgetBuffer.Init();
                     BinBudgetBuffer."Item No." := BinContent."Bin Code";
+                    BinBudgetBuffer."Source Type" := Bin."Bin Ranking";
+                    if GetExtensionFieldValueboolean(bin.RecordId, 50605, false) then   // //  field(50605; "Ubic. Generica"; Boolean)
+                        BinBudgetBuffer."Source Type" := 999999;
                     BinBudgetBuffer.Date := GetBinContentLastDate(BinContent."Location Code", BinContent."Bin Code", BinContent."Item No.");
-                    BinContent.CalcFields("Quantity (Base)");
+
                     BinBudgetBuffer.Quantity := BinContent."Quantity (Base)";
                     if BinBudgetBuffer.Quantity > 0 then
                         BinBudgetBuffer.Insert();
                 end;
             Until BinContent.next() = 0;
-        BinBudgetBuffer.SetCurrentKey(Date);
+        BinBudgetBuffer.SetCurrentKey("Source Type", Date);
         if BinBudgetBuffer.FindFirst() then
             repeat
                 ListBinContent.Add(BinBudgetBuffer."Item No.");
                 ListQtyBinContent.Add(BinBudgetBuffer.Quantity);
                 qty += BinBudgetBuffer.Quantity;
             Until (BinBudgetBuffer.next() = 0) or (Qty >= Quantity);
-        if QtyWithoutBin > 0 then begin
+        if Qty < Quantity then begin
             ListBinContent.add(lblWhioutBin);
-            ListQtyBinContent.Add(QtyWithoutBin);
+            ListQtyBinContent.Add(Quantity - Qty);
         end;
     end;
 
@@ -2757,12 +2776,12 @@ codeunit 50111 "Funciones"
     end;
 
 
-    local procedure GetExtensionFieldValueBinNave(LocationCode: code[10]; BinCode: code[20]): text
+    local procedure GetExtensionFieldValueBinSalida(LocationCode: code[10]): code[20]
     var
-        Bin: Record Bin;
+        Location: Record Location;
     begin
-        if Bin.Get(LocationCode, BinCode) then
-            exit(GetExtensionFieldValueText(bin.RecordId, 50604, false));   //  NAVE
+        if Location.Get(LocationCode) then
+            exit(GetExtensionFieldValueText(Location.RecordId, 50630, false));   //  field(50630; "Ubic. Salida SGA"; Code[20])
     end;
 
 
@@ -3134,5 +3153,6 @@ codeunit 50111 "Funciones"
             end;
         end;
     end;
+
 }
 

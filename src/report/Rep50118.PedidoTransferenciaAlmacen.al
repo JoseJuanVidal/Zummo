@@ -27,24 +27,22 @@ report 50118 "PedidoTransferenciaAlmacen"
             column(CuadroBultos_IncotermLbl; CuadroBultos_IncotermLbl) { }
             column(CuadroBultos_PaletsLbl; CuadroBultos_PaletsLbl)
             {
-
+            }
+            column(ShowBinContents; ShowBinContents)
+            {
             }
             column(totalPeso; totalPeso)
             {
-
             }
-
             column(NoSerie_Caption; NumSerieLbl) { }
             column(DesdeLbl; DesdeLbl)
             {
             }
             column(totalPalets; totalPalets)
             {
-
             }
             column(totalBultos; totalBultos)
             {
-
             }
             column(HastaLbl; HastaLbl)
             {
@@ -231,6 +229,9 @@ report 50118 "PedidoTransferenciaAlmacen"
                         column(LineNo_TransLine; "Line No.")
                         {
                         }
+                        column(ContUbicaciones; ContUbicaciones)
+                        {
+                        }
                         dataitem(DimensionLoop2; "Integer")
                         {
                             DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
@@ -291,7 +292,9 @@ report 50118 "PedidoTransferenciaAlmacen"
                             {
 
                             }
-
+                            column(SerialContUbicaciones; SerialContUbicaciones)
+                            {
+                            }
                             trigger OnPreDataItem()
                             begin
                                 RecMemLotes.Reset();
@@ -307,12 +310,19 @@ report 50118 "PedidoTransferenciaAlmacen"
                                     if RecMemLotes.Next() = 0 then
                                         CurrReport.Break();
 
+                                SerialContUbicaciones := '';
+                                SerialContUbicaciones := GetBinContentItemNo("Transfer Line"."Transfer-from Code", "Transfer Line"."Item No.", -1, RecMemLotes.NoSerie);
+
                             end;
                         }
 
                         trigger OnAfterGetRecord()
                         begin
                             DimSetEntry2.SetRange("Dimension Set ID", "Dimension Set ID");
+
+                            // Añadimos las ubicaciones de los productos
+                            ContUbicaciones := '';
+                            ContUbicaciones := GetBinContentItemNo("Transfer Line"."Transfer-from Code", "Transfer Line"."Item No.", "Transfer Line".Quantity, '');
 
                             RecMemLotes.Reset();
                             RecMemLotes.DeleteAll();
@@ -423,7 +433,12 @@ report 50118 "PedidoTransferenciaAlmacen"
                         Caption = 'Show Internal Information';
                         ToolTip = 'Specifies if you want the printed report to show information that is only for internal use.';
                     }
-
+                    field(ShowBinContents; ShowBinContents)
+                    {
+                        ApplicationArea = Location;
+                        Caption = 'Mostrar Ubicaciones producto', comment = 'ESP="Mostrar Ubicaciones producto"';
+                        ToolTip = 'Specifies if you want the printed report to show information that is only for internal use.';
+                    }
                     field(optIdioma; optIdioma)
                     {
                         ApplicationArea = All;
@@ -496,6 +511,9 @@ report 50118 "PedidoTransferenciaAlmacen"
         DimText: Text[120];
         OldDimText: Text[75];
         ShowInternalInfo: Boolean;
+        ShowBinContents: Boolean;
+        ContUbicaciones: text;
+        SerialContUbicaciones: text;
         Continue: Boolean;
         OutputNo: Integer;
         HdrDimensionsCaptionLbl: Label 'Dimensiones Cabecera';
@@ -543,6 +561,31 @@ report 50118 "PedidoTransferenciaAlmacen"
                 RecMemEstadisticas.Noproducto := recReservationEntry."Item No.";
                 RecMemEstadisticas.INSERT();
             until recReservationEntry.Next() = 0;
+    end;
+
+    local procedure GetBinContentItemNo(LocationCode: code[10]; ItemNo: code[20]; Quantity: Decimal; SerialNo: code[50]) BinContens: text
+    var
+        Item: Record Item;
+        Funciones: Codeunit Funciones;
+        ListBinContent: List of [code[20]];
+        ListQtyBinContent: List of [decimal];
+        BinCode: code[20];
+        BinQuantity: Decimal;
+        i: Integer;
+    begin
+        if Item.Get(ItemNo) then
+            if (Item."Item Tracking Code" <> '') and (SerialNo = '') then
+                exit;
+        Funciones.GetBinContentItemNo(LocationCode, ItemNo, Quantity, SerialNo, ListBinContent, ListQtyBinContent);
+
+        foreach BinCode in ListBinContent do begin
+            i += 1;
+            BinQuantity := ListQtyBinContent.Get(i);
+            if BinContens <> '' then
+                BinContens += '-';
+            BinContens += StrSubstNo('%1 (%2)', BinCode, BinQuantity)
+        end;
+
     end;
 }
 

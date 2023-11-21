@@ -1773,6 +1773,5 @@ codeunit 50106 "SalesEvents"
 
 
             Until FromBOMComp.next() = 0;
-
     end;
 }
