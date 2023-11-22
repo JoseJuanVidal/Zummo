@@ -380,6 +380,9 @@ report 50111 "FacturaNacionalMaquinas"
             column(AgenteCaptionLbl; AgenteCaptionLbl)
             {
             }
+            column(ContactoCaptionLbl; ContactoCaptionLbl)
+            {
+            }
             //Captions
 
             column(Reimpresion; Reimpresion)
@@ -654,6 +657,12 @@ report 50111 "FacturaNacionalMaquinas"
                     }
                     //SOTHIS EBR id 163375 160920
                     column(Delegado; Customer.Delegado_btc)
+                    {
+                    }
+                    column(ShiptoAddresContact; ShiptoAddress.Contact)
+                    {
+                    }
+                    column(ShiptoAddresPhone; ShiptoAddress."Phone No.")
                     {
                     }
                     //fin SOTHIS EBR id 163375 160920
@@ -1922,6 +1931,7 @@ report 50111 "FacturaNacionalMaquinas"
 
                 DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
                 Customer.Get("Sell-to Customer No.");
+                if ShiptoAddress.Get("Sell-to Customer No.", "Ship-to Code") then;
                 if (BankAccountRecord.Get("Sell-to Customer No.", Customer."Preferred Bank Account Code")) and (
                     "Payment Method Code" = 'GIRO') then
                     ;
@@ -2236,6 +2246,7 @@ report 50111 "FacturaNacionalMaquinas"
     end;
     //Variables
     var
+        ShiptoAddress: record "Ship-to Address";
         CustAmount: decimal;
         porcentDescuento: Decimal;
         mostrarNetos: Boolean;
@@ -2473,6 +2484,7 @@ report 50111 "FacturaNacionalMaquinas"
         DNICaptionLbl: Label 'DNI:', Comment = 'ESP="DNI:"';
         MatriculasCaptionLbl: Label 'License plates', Comment = 'ESP="Matriculas"';
         AgenteCaptionLbl: Label 'Agent:', Comment = 'ESP="Agente:",FRA="Vendeur:"';
+        ContactoCaptionLbl: Label 'Contact:', Comment = 'ESP="Contacto:",FRA="Contact:"';
         RegistroMercantilCaptionLbl: Label 'Inscrita en el registro mercantil de Murcia, tomo 2028,folio 11, hoja MU-43705 inscripcion 1ª',
             Comment = 'ESP="Inscrita en el registro mercantil de Murcia, tomo 2028,folio 11, hoja MU-43705 inscripcion 1ª"';
         TextoFacturaCaptionLbl: Label 'Esta factura sólo debe pagarse utilizando los datos bancarios reflejados arriba. Cualquier cambio indicado por otros medios debe considerarse válido',

@@ -8783,6 +8783,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType Comentarios_Lbl</note>
           <target>Observations</target>
         </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3296276733" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Contacto:",FRA="Contact:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType ContactoCaptionLbl</note>
+          <target>Contact:</target>
+        </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 36964189" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bulks:</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bultos:",FRA="Bulks:"</note>

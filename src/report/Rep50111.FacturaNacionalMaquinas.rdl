@@ -4157,7 +4157,9 @@ cstr(Fields!ImporteVencimiento4.Value) + Chr(177) +
 cstr(Fields!ImporteVencimiento5.Value) + Chr(177) + 
 cstr(Fields!FechaOperacion.Value) + Chr(177) + 
 cstr(Fields!txtEORI.Value) + Chr(177) + 
-cstr(Fields!txtVatEORI.Value) 
+cstr(Fields!txtVatEORI.Value) + Chr(177) + 
+cstr(Fields!ShiptoAddresContact.Value) + Chr(177) +
+cstr(Fields!ShiptoAddresPhone.Value) 
 ,2)</Hidden>
                               </Visibility>
                               <Style>
@@ -5835,10 +5837,11 @@ cstr(Fields!txtVatEORI.Value)
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Code.GetData(10,2)</Value>
+                              <Value>=First(Fields!ContactoCaptionLbl.Value, "DataSet_Result")</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                             <TextRun>
@@ -5849,7 +5852,7 @@ cstr(Fields!txtVatEORI.Value)
                               </Style>
                             </TextRun>
                             <TextRun>
-                              <Value>=Code.GetData(11,2)</Value>
+                              <Value>=Code.GetData(86,2)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -5895,7 +5898,7 @@ cstr(Fields!txtVatEORI.Value)
                               </Style>
                             </TextRun>
                             <TextRun>
-                              <Value>=Code.GetData(12,2)</Value>
+                              <Value>=Code.GetData(87,2)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -8953,6 +8956,9 @@ kBKRAAAAAEiJSAAAAACkRCQAAAAAUiISAAAAACkRCQAAAICUiAQAAABASkQCAAAAICUiAQAAAJASkQAA
         <Field Name="AgenteCaptionLbl">
           <DataField>AgenteCaptionLbl</DataField>
         </Field>
+        <Field Name="ContactoCaptionLbl">
+          <DataField>ContactoCaptionLbl</DataField>
+        </Field>
         <Field Name="Reimpresion">
           <DataField>Reimpresion</DataField>
         </Field>
@@ -9243,6 +9249,12 @@ kBKRAAAAAEiJSAAAAACkRCQAAAAAUiISAAAAACkRCQAAAICUiAQAAABASkQCAAAAICUiAQAAAJASkQAA
         </Field>
         <Field Name="Delegado">
           <DataField>Delegado</DataField>
+        </Field>
+        <Field Name="ShiptoAddresContact">
+          <DataField>ShiptoAddresContact</DataField>
+        </Field>
+        <Field Name="ShiptoAddresPhone">
+          <DataField>ShiptoAddresPhone</DataField>
         </Field>
         <Field Name="DimText">
           <DataField>DimText</DataField>
