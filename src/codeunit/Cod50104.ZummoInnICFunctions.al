@@ -680,8 +680,11 @@ codeunit 50104 "Zummo Inn. IC Functions"
     procedure JIRAGetAllTickets(project: text; subKey: code[50])
     var
         JiraTicket: Record "ZM IT JIRA Tickets";
-        metodo: Label 'search?maxResults=100&jql=project = %1 ORDER by ID&fields=key,summary,status,assignee&startAt=%2';
+        // %2 2023-10-10 
+        metodo: Label 'search?maxResults=100&jql=project = %1 AND created >= %2 ORDER by ID&fields=key,summary,status,assignee,created&startAt=%3';
         Body: text;
+        fecha: date;
+        txtFecha: text;
         ErrorText: text;
         FieldValue: text;
         ResponseText: text;
@@ -703,7 +706,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
         JobsSetup.TestField("url Base");
         JobsSetup.TestField(user);
         JobsSetup.TestField(token);
-        JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, project, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
+        fecha := CalcDate('-1M', WorkDate());
+        txtfecha := StrSubstNo('%1-%2-%3', Date2DMY(fecha, 3), Date2DMY(fecha, 2), Date2DMY(fecha, 1));
+        JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, project, txtFecha, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
 
         JsonResponse.ReadFrom(ResponseText);
 

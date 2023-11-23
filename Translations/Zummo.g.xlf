@@ -9809,7 +9809,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllProjects - NamedType metodo</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1461479292 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
-          <source>search?maxResults=100&amp;jql=project = %1 ORDER by ID&amp;fields=key,summary,status,assignee&amp;startAt=%2</source>
+          <source>search?maxResults=100&amp;jql=project = %1 AND created &gt;= %2 ORDER by ID&amp;fields=key,summary,status,assignee,created&amp;startAt=%3</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllTickets - NamedType metodo</note>
         </trans-unit>
