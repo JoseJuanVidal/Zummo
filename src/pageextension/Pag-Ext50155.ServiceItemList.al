@@ -8,7 +8,15 @@ pageextension 50155 "ServiceItemList" extends "Service Item List"
             {
                 ApplicationArea = All;
             }
-
+            field(CodSerieHistorico_btc; CodSerieHistorico_btc)
+            {
+                ApplicationArea = all;
+            }
+            field("Sales Date"; "Sales Date")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
         addlast(Control1)
         {
