@@ -136,6 +136,21 @@ page 17206 "ZM Hist. BOM Costs list"
                     HISTBOMProduction.UpdateBomHist();
                 end;
             }
+            action(ActualizarItem)
+            {
+                ApplicationArea = All;
+                Caption = 'Actualizar datos productos', comment = 'ESP="Actualizar datos productos"';
+                Image = UpdateDescription;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    HISTBOMProduction: Record "ZM HIST BOM Production";
+                begin
+                    Rec.UpdateTableBOMCosts();
+                end;
+            }
         }
         area(Navigation)
         {

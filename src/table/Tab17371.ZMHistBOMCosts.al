@@ -344,6 +344,28 @@ table 17371 "ZM Hist. BOM Costs"
         HistBOMCosts.Insert();
     end;
 
+    local procedure UpdateItem()
+    var
+        Item: Record Item;
+        HistBOMCosts: Record "ZM Hist. BOM Costs";
+        Window: Dialog;
+    begin
+        Window.Open('BOM: #1###########################\Producto: #2##################################');
+        if HistBOMCosts.FindFirst() then
+            repeat
+                Window.Update(1, HistBOMCosts."BOM Item No.");
+                Window.Update(2, HistBOMCosts."Item Nº");
+                if Item.Get(HistBOMCosts."Item Nº") then begin
+                    Item.CalcFields("Desc. Purch. Family", "Desc. Purch. Category", "Desc. Purch. SubCategory");
+                    HistBOMCosts.Familia := Item."Desc. Purch. Family";
+                    HistBOMCosts.Categoria := Item."Desc. Purch. Category";
+                    HistBOMCosts.SubCategoria := Item."Desc. Purch. SubCategory";
+                    HistBOMCosts.Modify();
+                end
+            Until HistBOMCosts.next() = 0;
+        Window.Close();
+    end;
+
     local procedure CalcCostItemPeriod(ItemNo: code[20]; EndPerid: date): Decimal
     var
         ItemLedgerEntry: Record "Item Ledger Entry";

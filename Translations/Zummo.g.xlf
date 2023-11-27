@@ -14353,6 +14353,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="L.M. Producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Hist. BOM Costs list - Action LMProduction - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2641796487 - Action 820456485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualizar datos productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar datos productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Hist. BOM Costs list - Action ActualizarItem - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2641796487 - Action 397859648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cargar"</note>
