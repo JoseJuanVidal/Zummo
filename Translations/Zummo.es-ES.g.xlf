@@ -8181,10 +8181,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Ultimo proveedor - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sales Order Packing</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Ped. Venta Packing"</note>
+          <source>Hist. Reclamaciones ventas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Reclamaciones ventas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Property Caption</note>
-          <target>Ped. Venta Packing</target>
+          <target>Hist. Reclamaciones ventas</target>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Field 1254467056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ALERTA CLD</source>
@@ -8287,6 +8287,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Posting Date - Property Caption</note>
           <target>Fecha Registro</target>
+        </trans-unit>
+        <trans-unit id="Table 2984663216 - Field 1407337784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Serial No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Sales Date - Property Caption</note>
+          <target>Nº serie</target>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Field 47037625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serial No.</source>
@@ -10554,7 +10560,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllProjects - NamedType metodo</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1461479292 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
-          <source>search?maxResults=100&amp;jql=project = %1 ORDER by ID&amp;fields=key,summary,status,assignee&amp;startAt=%2</source>
+          <source>search?maxResults=100&amp;jql=project = %1 AND created &gt;= %2 ORDER by ID&amp;fields=key,summary,status,assignee,created&amp;startAt=%3</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllTickets - NamedType metodo</note>
         </trans-unit>

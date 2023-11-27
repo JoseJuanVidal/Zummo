@@ -35,6 +35,10 @@ page 17204 "Hist. Reclamaciones ventas"
                 {
                     ApplicationArea = All;
                 }
+                field("Sales Date"; "Sales Date")
+                {
+                    ApplicationArea = all;
+                }
                 field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = All;

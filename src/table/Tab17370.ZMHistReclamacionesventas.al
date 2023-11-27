@@ -1,7 +1,7 @@
 table 17370 "ZM Hist. Reclamaciones ventas"
 {
     DataClassification = CustomerContent;
-    Caption = 'Sales Order Packing', comment = 'ESP="Ped. Venta Packing"';
+    Caption = 'Hist. Reclamaciones ventas', comment = 'ESP="Hist. Reclamaciones ventas"';
     DrillDownPageId = "Hist. Reclamaciones ventas";
     LookupPageId = "Hist. Reclamaciones ventas";
 
@@ -69,6 +69,11 @@ table 17370 "ZM Hist. Reclamaciones ventas"
         {
             DataClassification = CustomerContent;
             Caption = 'Grupo Clientes', comment = 'ESP="Grupo Clientes"';
+        }
+        field(15; "Sales Date"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Serial No.', comment = 'ESP="Nº serie"';
         }
         field(20; "Fallo localizado"; code[50])
         {
@@ -153,6 +158,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
         ItemLedgerEntry: Record "Item Ledger Entry";
         SalesInvoiceLine: Record "Sales Invoice Line";
         ServiceHeader: Record "Service Header";
+        ServiceItem: Record "Service Item";
         ServiceItemLine: Record "Service Item Line";
         ServiceOrderType: Record "Service Order Type";
         Window: Dialog;
@@ -207,7 +213,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
                     if ServiceItemLine.FindFirst() then begin
                         //repeat
                         if Item.Get(ServiceItemLine."Item No.") and not item.IsAssemblyItem() then begin
-                            AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceHeader.NumSerie_btc);
+                            AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.", ServiceItem."Sales Date");
                         end;
                         // Until ServiceItemLine.next() = 0;
                     end;
@@ -246,7 +252,8 @@ table 17370 "ZM Hist. Reclamaciones ventas"
         end;
     end;
 
-    local procedure AddHistReclamacionesventasService(ServiceHeader: Record "Service Header"; ServiceItemLine: Record "Service Item Line"; Item: Record Item; SerialNo: code[50])
+    local procedure AddHistReclamacionesventasService(ServiceHeader: Record "Service Header"; ServiceItemLine: Record "Service Item Line"; Item: Record Item;
+        SerialNo: code[50]; SalesDate: date)
     var
         Customer: Record Customer;
         HistReclamacionesventas: Record "ZM Hist. Reclamaciones ventas";
@@ -263,6 +270,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
             HistReclamacionesventas."Document No." := ServiceItemLine."Document No.";
             HistReclamacionesventas."Line No." := ServiceItemLine."Line No.";
             HistReclamacionesventas."Serial No." := SerialNo;
+            HistReclamacionesventas."Sales Date" := SalesDate;
             HistReclamacionesventas."Posting Date" := ServiceHeader."Order Date";
             HistReclamacionesventas."Item No." := ServiceItemLine."Item No.";
             HistReclamacionesventas."Cod. Categoria" := Item."Item Category Code";

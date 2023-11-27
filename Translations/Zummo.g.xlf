@@ -7779,8 +7779,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. BOM Costs - Field Ultimo proveedor - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sales Order Packing</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Ped. Venta Packing"</note>
+          <source>Hist. Reclamaciones ventas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Reclamaciones ventas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Field 1254467056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -7867,6 +7867,11 @@
           <source>Posting Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2984663216 - Field 1407337784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Serial No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Sales Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Field 47037625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serial No.</source>
