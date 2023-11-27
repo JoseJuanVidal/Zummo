@@ -99,4 +99,25 @@ page 17204 "Hist. Reclamaciones ventas"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(cargarhojafallos)
+            {
+                ApplicationArea = all;
+                Caption = 'Actualizar Reclamacion BT', comment = 'ESP="Actualizar Reclamacion BT"';
+                Promoted = true;
+                PromotedCategory = Process;
+                Image = Process;
+
+                trigger OnAction()
+                var
+                    HistFallos: Record "ZM Hist. Reclamaciones ventas";
+                begin
+                    HistFallos.CreateHistReclamaciones(0D);
+                end;
+            }
+        }
+    }
 }

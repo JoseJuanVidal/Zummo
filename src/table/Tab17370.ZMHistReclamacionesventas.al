@@ -73,7 +73,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
         field(15; "Sales Date"; Date)
         {
             DataClassification = CustomerContent;
-            Caption = 'Serial No.', comment = 'ESP="Nº serie"';
+            Caption = 'Fecha Venta', comment = 'ESP="Fecha Venta"';
         }
         field(20; "Fallo localizado"; code[50])
         {
@@ -213,6 +213,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
                     if ServiceItemLine.FindFirst() then begin
                         //repeat
                         if Item.Get(ServiceItemLine."Item No.") and not item.IsAssemblyItem() then begin
+                            if ServiceItem.Get(ServiceItemLine."Service Item No.") then;
                             AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.", ServiceItem."Sales Date");
                         end;
                         // Until ServiceItemLine.next() = 0;

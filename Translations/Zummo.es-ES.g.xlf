@@ -8289,10 +8289,10 @@
           <target>Fecha Registro</target>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Field 1407337784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Serial No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº serie"</note>
+          <source>Fecha Venta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Hist. Reclamaciones ventas - Field Sales Date - Property Caption</note>
-          <target>Nº serie</target>
+          <target>Fecha Venta</target>
         </trans-unit>
         <trans-unit id="Table 2984663216 - Field 47037625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serial No.</source>
@@ -13438,6 +13438,12 @@
           <source>Hist. Reclamaciones ventas</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Hist. Reclamaciones ventas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 78285597 - Action 719822597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualizar Reclamacion BT</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Reclamacion BT"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Hist. Reclamaciones ventas - Action cargarhojafallos - Property Caption</note>
+          <target>Actualizar Reclamacion BT</target>
         </trans-unit>
         <trans-unit id="Page 2983211983 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>List of predefined comments</source>
