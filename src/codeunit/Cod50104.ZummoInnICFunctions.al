@@ -747,7 +747,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
                         JiraTicket.Modify();
                 end;
                 if IssuesCount < TotalIssues then begin
-                    JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, project, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
+                    JIRA_SW_REST(JobsSetup."url Base", StrSubstNo(metodo, project, txtFecha, IssuesCount), 'GET', Body, true, StatusCode, ResponseText, JobsSetup.user, JobsSetup.token);
                     JsonResponse.ReadFrom(ResponseText);
                     if JsonResponse.Get('error', JsonTokResponse) then begin
                         JsonTokResponse.WriteTo(ErrorText);

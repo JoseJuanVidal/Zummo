@@ -14409,8 +14409,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Action Refresh - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2376143693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Daily Time Sheet List</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Lista partes diarios"</note>
+          <source>Lista tareas diarias</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista tareas diarias"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2376143693 - NamedType 4238003550" size-unit="char" translate="yes" xml:space="preserve">

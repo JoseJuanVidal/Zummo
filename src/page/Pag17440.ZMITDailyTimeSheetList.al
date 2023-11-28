@@ -1,9 +1,9 @@
 page 17440 "ZM IT Daily Time Sheet List"
 {
-    Caption = 'Daily Time Sheet List', comment = 'ESP="Lista partes diarios"';
+    Caption = 'Lista tareas diarias', comment = 'ESP="Lista tareas diarias"';
     PageType = List;
-    // ApplicationArea = All;
-    UsageCategory = None;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "ZM IT Daily Time Sheet";
     //SourceTableView = where(Registered = const(false));
 
