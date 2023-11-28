@@ -31528,6 +31528,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Imp. Ped. Venta mostrar comentarios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field ImprimirPedVentaComentarios - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 228402170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Informes Almacen</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Informes Almacen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Informes Almacen - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2852714242 - Field 1573176519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Permite cambiar MMPP</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite cambiar MMPP"</note>

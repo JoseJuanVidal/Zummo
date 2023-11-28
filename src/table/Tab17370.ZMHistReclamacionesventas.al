@@ -161,6 +161,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
         ServiceItem: Record "Service Item";
         ServiceItemLine: Record "Service Item Line";
         ServiceOrderType: Record "Service Order Type";
+        SalesDate: date;
         Window: Dialog;
     begin
         // buscamos los movimientos de ventas y abonos de tipo productos y ensamblados
@@ -213,14 +214,25 @@ table 17370 "ZM Hist. Reclamaciones ventas"
                     if ServiceItemLine.FindFirst() then begin
                         //repeat
                         if Item.Get(ServiceItemLine."Item No.") and not item.IsAssemblyItem() then begin
-                            if ServiceItem.Get(ServiceItemLine."Service Item No.") then;
-                            AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.", ServiceItem."Sales Date");
+                            if ServiceItem.Get(ServiceItemLine."Service Item No.") then
+                                SalesDate := ServiceItem."Sales Date"
+                            else
+                                SalesDate := GetFechaSalesOrderServiceHeader(ServiceHeader);
+
+                            AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.", SalesDate);
                         end;
                         // Until ServiceItemLine.next() = 0;
                     end;
                 end;
             Until ServiceHeader.next() = 0;
 
+    end;
+
+    local procedure GetFechaSalesOrderServiceHeader(ServiceHeader: Record "Service Header"): Date
+    var
+        Funciones: Codeunit Funciones;
+    begin
+        exit(Funciones.GetExtensionFieldValueDate(ServiceHeader.RecordId, 50607, false));
     end;
 
     local procedure AddHistReclamacionesventas(ItemLedgerEntry: Record "Item Ledger Entry"; Item: Record Item; Customer: Record Customer)

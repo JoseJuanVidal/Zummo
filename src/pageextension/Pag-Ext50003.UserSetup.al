@@ -45,6 +45,10 @@ pageextension 50003 "UserSetup" extends "User Setup"
             {
                 ApplicationArea = all;
             }
+            field("Informes Almacen"; "Informes Almacen")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

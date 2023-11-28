@@ -462,7 +462,7 @@ report 50118 "PedidoTransferenciaAlmacen"
 
         trigger OnOpenPage()
         begin
-            if UserId = 'ALMACEN' then
+            if (UserId = 'ALMACEN') or UserSetup."Informes Almacen" then
                 ShowBinContents := true;
         end;
     }
@@ -475,6 +475,7 @@ report 50118 "PedidoTransferenciaAlmacen"
     //SOTHIS EBR 070920 id 15923
     trigger OnInitReport();
     begin
+        if UserSetup.Get(UserId) then;
         CompanyInfo.GET();
         SalesSetup.GET();
         FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
@@ -487,6 +488,7 @@ report 50118 "PedidoTransferenciaAlmacen"
     end;
     //fin SOTHIS EBR 070920 id 15923
     var
+        UserSetup: Record "User Setup";
         PedidosTransferencia: Codeunit Funciones;
         //SOTHIS EBR 070920 id 159231        
         FormatDocument: Codeunit "Format Document";
