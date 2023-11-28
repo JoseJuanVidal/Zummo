@@ -212,16 +212,16 @@ table 17370 "ZM Hist. Reclamaciones ventas"
                     ServiceItemLine.SetRange("Document Type", ServiceHeader."Document Type");
                     ServiceItemLine.SetRange("Document No.", ServiceHeader."No.");
                     if ServiceItemLine.FindFirst() then begin
-                        //repeat
-                        if Item.Get(ServiceItemLine."Item No.") and not item.IsAssemblyItem() then begin
-                            if ServiceItem.Get(ServiceItemLine."Service Item No.") then
-                                SalesDate := ServiceItem."Sales Date"
-                            else
-                                SalesDate := GetFechaSalesOrderServiceHeader(ServiceHeader);
+                        repeat
+                            if Item.Get(ServiceItemLine."Item No.") and not item.IsAssemblyItem() then begin
+                                if ServiceItem.Get(ServiceItemLine."Service Item No.") then
+                                    SalesDate := ServiceItem."Sales Date"
+                                else
+                                    SalesDate := GetFechaSalesOrderServiceHeader(ServiceHeader);
 
-                            AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.", SalesDate);
-                        end;
-                        // Until ServiceItemLine.next() = 0;
+                                AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.", SalesDate);
+                            end;
+                        Until ServiceItemLine.next() = 0;
                     end;
                 end;
             Until ServiceHeader.next() = 0;
