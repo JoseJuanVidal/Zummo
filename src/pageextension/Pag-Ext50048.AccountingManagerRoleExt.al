@@ -9,6 +9,12 @@ pageextension 50048 "Accounting Manager Role Ext" extends "Accounting Manager Ro
     {
         addafter("Cartera Setup")
         {
+            action(AnalisisMovContable)
+            {
+                Caption = 'Análisis Movs Contabilidad', comment = 'ESP="Análisis Movs Contabilidad"';
+                RunObject = page "ZM Analisis Movs Contabilidad";
+                Image = GLRegisters;
+            }
             action(PostedPurchaseReceiptLinesAction)
             {
                 Caption = 'Posted Purchase Receipt Lines', comment = 'ESP="Hist. líns. albs. compra"';

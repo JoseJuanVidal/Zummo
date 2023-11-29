@@ -1,4 +1,3 @@
-
 codeunit 50111 "Funciones"
 {
     Permissions = tabledata "Item Ledger Entry" = rmid, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
@@ -3152,6 +3151,109 @@ codeunit 50111 "Funciones"
                 exit(FileNameMerge);
             end;
         end;
+    end;
+
+    // =============     LoadGlEntry          ====================
+    // ==  
+    // ==  Cargar los movimientos contable de una cuenta, con un filtor de fecha y extrayendo las lineas de facturas 
+    // ==  Esther - analisis cuentas de gastos
+    // ==  
+    // ======================================================================================================
+
+    procedure LoadGlEntry(var tmpGLEntry: Record "G/L Entry"; CtaContable: code[20]; FiltroFecha: text)
+    var
+        GLEntry: Record "G/L Entry";
+        Vendor: Record Vendor;
+        EntryNo: Integer;
+        Window: Dialog;
+        lblWindow: Label 'Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############', comment = 'ESP="Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############"';
+    begin
+        Window.Open(lblWindow);
+        GLEntry.Reset();
+        GLEntry.SetRange("G/L Account No.", CtaContable);
+        if FiltroFecha <> '' then
+            GLEntry.SetFilter("Posting Date", FiltroFecha);
+        if GLEntry.FindFirst() then
+            repeat
+                Window.Update(1, GLEntry."G/L Account No.");
+                Window.Update(2, GLEntry."Entry No.");
+                Window.Update(3, GLEntry."Posting Date");
+                case GLEntry."Document Type" of
+                    GLEntry."Document Type"::Invoice:
+                        begin
+                            LoadGlEntryInvoice(tmpGLEntry, EntryNo, GLEntry);
+                        end;
+                    else begin
+                        if GLEntry."Source Type" in [GLEntry."Source Type"::Vendor] then
+                            Vendor.Get(GLEntry."Source No.");
+                        tmpGLEntry.Init();
+                        tmpGLEntry.TransferFields(GLEntry);
+                        tmpGLEntry."Customer Name" := Vendor.Name;
+                        EntryNo += 1;
+                        tmpGLEntry."Entry No." := EntryNo;
+                        tmpGLEntry.Insert();
+                    end;
+                end;
+            Until GLEntry.next() = 0;
+    end;
+
+    procedure LoadGlEntryInvoice(var tmpGLEntry: Record "G/L Entry"; var EntryNo: integer; GLEntry: Record "G/L Entry")
+    var
+        GLSetup: Record "General Ledger Setup";
+        Vendor: Record Vendor;
+        PurchInvLine: Record "Purch. Inv. Line";
+        recDimSetEntry: Record "Dimension Set Entry";
+        PurchLineDimSetEntry: Record "Dimension Set Entry";
+        AddLine: Boolean;
+    begin
+
+        GLSetup.Get();
+        PurchInvLine.Reset();
+        PurchInvLine.SetRange("Document No.", GLEntry."Document No.");
+        PurchInvLine.SetRange("Shortcut Dimension 1 Code", GLEntry."Global Dimension 1 Code");
+        PurchInvLine.SetRange("Shortcut Dimension 2 Code", GLEntry."Global Dimension 2 Code");
+        if PurchInvLine.FindFirst() then
+            repeat
+                AddLine := true;
+                // Dimension 3
+                PurchLineDimSetEntry.Reset();
+                PurchLineDimSetEntry.SetRange("Dimension Set ID", PurchInvLine."Dimension Set ID");
+                PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
+                if not PurchLineDimSetEntry.FindFirst() then
+                    AddLine := false;
+                recDimSetEntry.Reset();
+                recDimSetEntry.SetRange("Dimension Set ID", GLEntry."Dimension Set ID");
+                recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
+                if not recDimSetEntry.FindFirst() then
+                    AddLine := false;
+                if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
+                    AddLine := false;
+                // Dimension 8
+                PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+                if not PurchLineDimSetEntry.FindFirst() then
+                    AddLine := false;
+                recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+                if not recDimSetEntry.FindFirst() then
+                    AddLine := false;
+                if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
+                    AddLine := false;
+                if AddLine then begin
+                    tmpGLEntry.Init();
+                    tmpGLEntry.TransferFields(GLEntry);
+                    if GLEntry."Source Type" in [GLEntry."Source Type"::Vendor] then
+                        Vendor.Get(GLEntry."Source No.");
+                    tmpGLEntry."Customer Name" := Vendor.Name;
+                    tmpGLEntry.Description := PurchInvLine.Description;
+                    tmpGLEntry.Amount := PurchInvLine.Amount;
+                    if tmpGLEntry.Amount > 0 then
+                        tmpGLEntry."Debit Amount" := tmpGLEntry.Amount
+                    else
+                        tmpGLEntry."Credit Amount" := tmpGLEntry.Amount;
+                    EntryNo += 1;
+                    tmpGLEntry."Entry No." := EntryNo;
+                    tmpGLEntry.Insert();
+                end;
+            Until PurchInvLine.next() = 0;
     end;
 
 }

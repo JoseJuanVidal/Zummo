@@ -10085,6 +10085,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method LineDataSelection - NamedType lblConfirmShow</note>
           <target>¿Desea abrir el pedido %1?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3847798035 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method LoadGlEntry - NamedType lblWindow</note>
+          <target>Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############</target>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 2605877933 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Se va a marcar el Albaran cono Facturado completamente. ¿Desea continuar?"</note>
@@ -15028,6 +15034,30 @@
           <source>WS Purchase Line</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page WS Purchase Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2746470758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Análisis Movs. Contabilidad</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Análisis Movs. Contabilidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Analisis Movs Contabilidad - Property Caption</note>
+          <target>Análisis Movs. Contabilidad</target>
+        </trans-unit>
+        <trans-unit id="Page 2746470758 - Control 66478134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº cuenta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº cuenta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Analisis Movs Contabilidad - Control CtaContable - Property Caption</note>
+          <target>Nº cuenta</target>
+        </trans-unit>
+        <trans-unit id="Page 2746470758 - Control 2994248701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtro Fecha</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Analisis Movs Contabilidad - Control FiltroFecha - Property Caption</note>
+          <target>Filtro Fecha</target>
+        </trans-unit>
+        <trans-unit id="Page 2746470758 - Action 397859648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Visualizar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Visualizar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Analisis Movs Contabilidad - Action Cargar - Property Caption</note>
+          <target>Visualizar</target>
         </trans-unit>
         <trans-unit id="Page 711771818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ERPLINK Documentos productos</source>
@@ -27409,6 +27439,12 @@
           <source>SEPA DD pain.008.001.02 REG</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort SEPA_Reg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2577929481 - Action 2418864238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
+          <source>Análisis Movs Contabilidad</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Análisis Movs Contabilidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Accounting Manager Role Ext - Action AnalisisMovContable - Property Caption</note>
+          <target>Análisis Movs Contabilidad</target>
         </trans-unit>
         <trans-unit id="PageExtension 2577929481 - Action 3257411572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
           <source>Posted Purchase Invoice Lines</source>
