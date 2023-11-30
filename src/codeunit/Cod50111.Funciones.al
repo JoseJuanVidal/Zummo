@@ -3237,6 +3237,12 @@ codeunit 50111 "Funciones"
                     AddLine := false;
                 if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
                     AddLine := false;
+                // VAT %
+                if (PurchInvLine."VAT Bus. Posting Group" <> GLEntry."VAT Bus. Posting Group")
+                    or (PurchInvLine."VAT Prod. Posting Group" <> GLEntry."VAT Prod. Posting Group") then
+                    AddLine := false;
+
+
                 if AddLine then begin
                     tmpGLEntry.Init();
                     tmpGLEntry.TransferFields(GLEntry);

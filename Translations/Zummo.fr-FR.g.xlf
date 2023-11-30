@@ -6254,6 +6254,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - NamedType msgVentana</note>
         </trans-unit>
+        <trans-unit id="Page 2309347451 - NamedType 312743634" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Almacén:#1###########\Producto #2##############</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - NamedType msgVentana</note>
+        </trans-unit>
         <trans-unit id="Page 2573710038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Campaign</source>
           <note from="Developer" annotates="general" priority="2"/>

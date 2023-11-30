@@ -12608,6 +12608,71 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Action MovProducto - Property Caption</note>
           <target>Movs. Producto</target>
         </trans-unit>
+        <trans-unit id="Page 2309347451 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consulta de Inventario(Nº Serie)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Consulta de inventario (Nº Serie)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - Property Caption</note>
+          <target>Consulta de inventario (Nº Serie)</target>
+        </trans-unit>
+        <trans-unit id="Page 2309347451 - NamedType 312743634" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Almacén:#1###########\Producto #2##############</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - NamedType msgVentana</note>
+        </trans-unit>
+        <trans-unit id="Page 2309347451 - Control 852363289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Familia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - Control Familia - Property Caption</note>
+          <target>Familia</target>
+        </trans-unit>
+        <trans-unit id="Page 2309347451 - Control 795225908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Area Manager</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - Control NomAreaManager - Property Caption</note>
+          <target>Area Manager</target>
+        </trans-unit>
+        <trans-unit id="Page 2309347451 - Control 4245741204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre Cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - Control NomCliente - Property Caption</note>
+          <target>Nombre Cliente</target>
+        </trans-unit>
+        <trans-unit id="Page 2309347451 - Control 3083556976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - Control Reference No. - Property Caption</note>
+          <target>Cliente</target>
+        </trans-unit>
+        <trans-unit id="Page 2309347451 - Control 3175023199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit cost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste unitario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - Control Unitcost - Property Caption</note>
+          <target>Coste unitario</target>
+        </trans-unit>
+        <trans-unit id="Page 2309347451 - Action 993596263 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>It shows the list of warehouse entries associated with that Product, Serial No., Lot No. ...</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Muestra la lista de movimientos de almacén asociados a ese Producto, Nº serie, Nº Lote..."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - Action MovAlmacen - Property ToolTip</note>
+          <target>Muestra la lista de movimientos de almacén asociados a ese Producto, Nº serie, Nº Lote...</target>
+        </trans-unit>
+        <trans-unit id="Page 2309347451 - Action 993596263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. Almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - Action MovAlmacen - Property Caption</note>
+          <target>Movs. Almacén</target>
+        </trans-unit>
+        <trans-unit id="Page 2309347451 - Action 1536463156 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>It shows the list of item ledger entries associated with that Product, Serial No., Lot No. ...</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Muestra la lista de movimientos de producto asociados a ese Producto, Nº serie, Nº Lote..."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - Action MovProducto - Property ToolTip</note>
+          <target>Muestra la lista de movimientos de producto asociados a ese Producto, Nº serie, Nº Lote...</target>
+        </trans-unit>
+        <trans-unit id="Page 2309347451 - Action 1536463156 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item ledger entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta Inventario/Serie - Action MovProducto - Property Caption</note>
+          <target>Movs. Producto</target>
+        </trans-unit>
         <trans-unit id="Page 3204358881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy Account</source>
           <note from="Developer" annotates="general" priority="2">ESP="Copiar Cuenta"</note>
@@ -30146,6 +30211,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Partes Diario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM IT User Security Activities - Control Daily Time Sheet - Property Caption</note>
           <target>Partes Diario</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1961552039 - Action 1790028186 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4260588318">
+          <source>Lanza una consulta que muestra el inventario del producto, con almacenes, ubicación y numero de serie.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lanza una consulta que muestra el inventario del producto, con almacenes, ubicación y numero de serie."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Item Bin Contents - Action ConsultaInventarioSerie - Property ToolTip</note>
+          <target>Lanza una consulta que muestra el inventario del producto, con almacenes, ubicación y numero de serie.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1961552039 - Action 1790028186 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4260588318">
+          <source>Ubicaciones Nº Serie</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ubicaciones Nº Serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Item Bin Contents - Action ConsultaInventarioSerie - Property Caption</note>
+          <target>Ubicaciones Nº Serie</target>
         </trans-unit>
         <trans-unit id="PageExtension 514898145 - Action 1178531242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 225828172">
           <source>Editar Descripción</source>
