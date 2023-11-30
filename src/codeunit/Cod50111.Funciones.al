@@ -3215,7 +3215,20 @@ codeunit 50111 "Funciones"
         if PurchInvLine.FindFirst() then
             repeat
                 AddLine := true;
-                // Dimension 3
+                // Dimension 2 PROYECTO
+                PurchLineDimSetEntry.Reset();
+                PurchLineDimSetEntry.SetRange("Dimension Set ID", PurchInvLine."Dimension Set ID");
+                PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 2 Code");
+                if not PurchLineDimSetEntry.FindFirst() then
+                    AddLine := false;
+                recDimSetEntry.Reset();
+                recDimSetEntry.SetRange("Dimension Set ID", GLEntry."Dimension Set ID");
+                recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 2 Code");
+                if not recDimSetEntry.FindFirst() then
+                    AddLine := false;
+                if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
+                    AddLine := false;
+                // Dimension 3 DETALLE
                 PurchLineDimSetEntry.Reset();
                 PurchLineDimSetEntry.SetRange("Dimension Set ID", PurchInvLine."Dimension Set ID");
                 PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
@@ -3228,7 +3241,23 @@ codeunit 50111 "Funciones"
                     AddLine := false;
                 if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
                     AddLine := false;
-                // Dimension 8
+                // Dimension 4 DEPART
+                PurchLineDimSetEntry.Reset();
+                PurchLineDimSetEntry.SetRange("Dimension Set ID", PurchInvLine."Dimension Set ID");
+                PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
+                if not PurchLineDimSetEntry.FindFirst() then
+                    AddLine := false;
+                recDimSetEntry.Reset();
+                recDimSetEntry.SetRange("Dimension Set ID", GLEntry."Dimension Set ID");
+                recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
+                if not recDimSetEntry.FindFirst() then
+                    AddLine := false;
+                if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
+                    AddLine := false;
+                // Dimension 5 GRUPO-CLI
+                // Dimension 6 SUB-CLI
+                // Dimension 7 AREA MANAGER
+                // Dimension 8 PARTIDA
                 PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
                 if not PurchLineDimSetEntry.FindFirst() then
                     AddLine := false;
@@ -3237,6 +3266,7 @@ codeunit 50111 "Funciones"
                     AddLine := false;
                 if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
                     AddLine := false;
+
                 // VAT %
                 if (PurchInvLine."VAT Bus. Posting Group" <> GLEntry."VAT Bus. Posting Group")
                     or (PurchInvLine."VAT Prod. Posting Group" <> GLEntry."VAT Prod. Posting Group") then
