@@ -3163,7 +3163,6 @@ codeunit 50111 "Funciones"
     procedure LoadGlEntry(var tmpGLEntry: Record "G/L Entry"; CtaContable: code[20]; FiltroFecha: text)
     var
         GLEntry: Record "G/L Entry";
-        Vendor: Record Vendor;
         EntryNo: Integer;
         Window: Dialog;
         lblWindow: Label 'Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############', comment = 'ESP="Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############"';
@@ -3181,92 +3180,47 @@ codeunit 50111 "Funciones"
                 case GLEntry."Document Type" of
                     GLEntry."Document Type"::Invoice:
                         begin
-                            LoadGlEntryInvoice(tmpGLEntry, EntryNo, GLEntry);
+                            if not LoadGlEntryInvoice(tmpGLEntry, EntryNo, GLEntry) then
+                                CreateGLEntry(tmpGLEntry, EntryNo, GLEntry)
                         end;
                     else begin
-                        if GLEntry."Source Type" in [GLEntry."Source Type"::Vendor] then
-                            Vendor.Get(GLEntry."Source No.");
-                        tmpGLEntry.Init();
-                        tmpGLEntry.TransferFields(GLEntry);
-                        tmpGLEntry."Customer Name" := Vendor.Name;
-                        EntryNo += 1;
-                        tmpGLEntry."Entry No." := EntryNo;
-                        tmpGLEntry.Insert();
+                        CreateGLEntry(tmpGLEntry, EntryNo, GLEntry)
                     end;
                 end;
             Until GLEntry.next() = 0;
     end;
 
-    procedure LoadGlEntryInvoice(var tmpGLEntry: Record "G/L Entry"; var EntryNo: integer; GLEntry: Record "G/L Entry")
+    local procedure CreateGLEntry(var tmpGLEntry: Record "G/L Entry"; var EntryNo: Integer; GLEntry: Record "G/L Entry")
     var
-        GLSetup: Record "General Ledger Setup";
+        Vendor: Record Vendor;
+    begin
+        if GLEntry."Source Type" in [GLEntry."Source Type"::Vendor] then
+            Vendor.Get(GLEntry."Source No.");
+        tmpGLEntry.Init();
+        tmpGLEntry.TransferFields(GLEntry);
+        tmpGLEntry."Customer Name" := Vendor.Name;
+        EntryNo += 1;
+        tmpGLEntry."Entry No." := EntryNo;
+        tmpGLEntry.Insert();
+    end;
+
+    procedure LoadGlEntryInvoice(var tmpGLEntry: Record "G/L Entry"; var EntryNo: integer; GLEntry: Record "G/L Entry") Added: Boolean
+    var
         Vendor: Record Vendor;
         PurchInvLine: Record "Purch. Inv. Line";
-        recDimSetEntry: Record "Dimension Set Entry";
-        PurchLineDimSetEntry: Record "Dimension Set Entry";
         AddLine: Boolean;
     begin
-
-        GLSetup.Get();
         PurchInvLine.Reset();
         PurchInvLine.SetRange("Document No.", GLEntry."Document No.");
-        PurchInvLine.SetRange("Shortcut Dimension 1 Code", GLEntry."Global Dimension 1 Code");
-        PurchInvLine.SetRange("Shortcut Dimension 2 Code", GLEntry."Global Dimension 2 Code");
+        // PurchInvLine.SetRange("Shortcut Dimension 1 Code", GLEntry."Global Dimension 1 Code");
+        // PurchInvLine.SetRange("Shortcut Dimension 2 Code", GLEntry."Global Dimension 2 Code");
         if PurchInvLine.FindFirst() then
             repeat
                 AddLine := true;
-                // Dimension 2 PROYECTO
-                PurchLineDimSetEntry.Reset();
-                PurchLineDimSetEntry.SetRange("Dimension Set ID", PurchInvLine."Dimension Set ID");
-                PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 2 Code");
-                if not PurchLineDimSetEntry.FindFirst() then
-                    AddLine := false;
-                recDimSetEntry.Reset();
-                recDimSetEntry.SetRange("Dimension Set ID", GLEntry."Dimension Set ID");
-                recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 2 Code");
-                if not recDimSetEntry.FindFirst() then
-                    AddLine := false;
-                if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
-                    AddLine := false;
-                // Dimension 3 DETALLE
-                PurchLineDimSetEntry.Reset();
-                PurchLineDimSetEntry.SetRange("Dimension Set ID", PurchInvLine."Dimension Set ID");
-                PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
-                if not PurchLineDimSetEntry.FindFirst() then
-                    AddLine := false;
-                recDimSetEntry.Reset();
-                recDimSetEntry.SetRange("Dimension Set ID", GLEntry."Dimension Set ID");
-                recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
-                if not recDimSetEntry.FindFirst() then
-                    AddLine := false;
-                if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
-                    AddLine := false;
-                // Dimension 4 DEPART
-                PurchLineDimSetEntry.Reset();
-                PurchLineDimSetEntry.SetRange("Dimension Set ID", PurchInvLine."Dimension Set ID");
-                PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
-                if not PurchLineDimSetEntry.FindFirst() then
-                    AddLine := false;
-                recDimSetEntry.Reset();
-                recDimSetEntry.SetRange("Dimension Set ID", GLEntry."Dimension Set ID");
-                recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
-                if not recDimSetEntry.FindFirst() then
-                    AddLine := false;
-                if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
-                    AddLine := false;
-                // Dimension 5 GRUPO-CLI
-                // Dimension 6 SUB-CLI
-                // Dimension 7 AREA MANAGER
-                // Dimension 8 PARTIDA
-                PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
-                if not PurchLineDimSetEntry.FindFirst() then
-                    AddLine := false;
-                recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
-                if not recDimSetEntry.FindFirst() then
-                    AddLine := false;
-                if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
-                    AddLine := false;
-
+                // Dimensiones
+                if PurchInvLine."Dimension Set ID" <> GLEntry."Dimension Set ID" then
+                    if not CheckDimension(GLEntry, PurchInvLine) then
+                        AddLine := false;
                 // VAT %
                 if (PurchInvLine."VAT Bus. Posting Group" <> GLEntry."VAT Bus. Posting Group")
                     or (PurchInvLine."VAT Prod. Posting Group" <> GLEntry."VAT Prod. Posting Group") then
@@ -3288,9 +3242,50 @@ codeunit 50111 "Funciones"
                     EntryNo += 1;
                     tmpGLEntry."Entry No." := EntryNo;
                     tmpGLEntry.Insert();
+                    Added := true;
                 end;
             Until PurchInvLine.next() = 0;
     end;
 
+    local procedure CheckDimension(GLEntry: Record "G/L Entry"; PurchInvLine: Record "Purch. Inv. Line") Addline: Boolean
+    var
+        GLSetup: Record "General Ledger Setup";
+        recDimSetEntry: Record "Dimension Set Entry";
+        PurchLineDimSetEntry: Record "Dimension Set Entry";
+    begin
+        GLSetup.Get();
+        AddLine := true;
+        // Dimension 2 PROYECTO
+        PurchLineDimSetEntry.Reset();
+        PurchLineDimSetEntry.SetRange("Dimension Set ID", PurchInvLine."Dimension Set ID");
+        PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 2 Code");
+        recDimSetEntry.Reset();
+        recDimSetEntry.SetRange("Dimension Set ID", GLEntry."Dimension Set ID");
+        recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 2 Code");
+        if PurchLineDimSetEntry.FindFirst() and recDimSetEntry.FindFirst() then
+            if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
+                AddLine := false;
+        // Dimension 3 DETALLE
+        PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
+        recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
+        if PurchLineDimSetEntry.FindFirst() and recDimSetEntry.FindFirst() then
+            if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
+                AddLine := false;
+        // Dimension 4 DEPART
+        PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
+        recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
+        if PurchLineDimSetEntry.FindFirst() and recDimSetEntry.FindFirst() then
+            if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
+                AddLine := false;
+        // Dimension 5 GRUPO-CLI
+        // Dimension 6 SUB-CLI
+        // Dimension 7 AREA MANAGER
+        // Dimension 8 PARTIDA
+        PurchLineDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+        recDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+        if PurchLineDimSetEntry.FindFirst() and recDimSetEntry.FindFirst() then
+            if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
+                AddLine := false;
+    end;
 }
 
