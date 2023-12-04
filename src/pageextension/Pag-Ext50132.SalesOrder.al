@@ -92,7 +92,10 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
             {
                 ApplicationArea = all;
             }
-
+            field(Canal_btc; Canal_btc)
+            {
+                ApplicationArea = all;
+            }
             field(MotivoBloqueo_btc; MotivoBloqueo_btc)
             {
                 ApplicationArea = All;

@@ -13,6 +13,10 @@ pageextension 50146 "SalesInvoiceList" extends "Sales Invoice List"
             {
                 ApplicationArea = all;
             }
+            field(Canal_btc; Canal_btc)
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions

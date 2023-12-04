@@ -54,6 +54,10 @@ pageextension 50002 "SalesCreditMemo" extends "Sales Credit Memo"
             {
                 ApplicationArea = all;
             }
+            field(Canal_btc; Canal_btc)
+            {
+                ApplicationArea = all;
+            }
             field("Return Receipt No."; "Return Receipt No.")
             {
                 ApplicationArea = all;

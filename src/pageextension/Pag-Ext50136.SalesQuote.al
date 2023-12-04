@@ -64,6 +64,10 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
             {
                 ApplicationArea = all;
             }
+            field(Canal_btc; Canal_btc)
+            {
+                ApplicationArea = all;
+            }
         }
         addbefore("Work Description")
         {

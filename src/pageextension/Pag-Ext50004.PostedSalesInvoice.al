@@ -29,6 +29,7 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
             field(AreaManager_btc; AreaManager_btc) { }
             field(InsideSales_btc; InsideSales_btc) { }
             field(ClienteReporting_btc; ClienteReporting_btc) { }
+            field(Canal_btc; Canal_btc) { }
             field("ABC Cliente"; "ABC Cliente") { }
             field(Delegado_btc; Delegado_btc) { }
 

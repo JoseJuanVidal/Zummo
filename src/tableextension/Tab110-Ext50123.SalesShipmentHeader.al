@@ -87,6 +87,12 @@ tableextension 50123 "SalesShipmentHeader" extends "Sales Shipment Header"  //11
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("AreaManager"), TipoRegistro = const(Tabla));
             Caption = 'Area Manager', comment = 'ESP="Area Manager"';
         }
+        field(50042; Canal_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Canal"), TipoRegistro = const(Tabla));
+            Caption = 'Canal', comment = 'ESP="Canal"';
+        }
         field(50023; Delegado_btc; Code[20])
         {
             DataClassification = CustomerContent;

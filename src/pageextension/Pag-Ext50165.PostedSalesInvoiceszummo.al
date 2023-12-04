@@ -25,6 +25,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
             field(FacturacionElec_btc; FacturacionElec_btc) { }
             field(AreaManager_btc; AreaManager_btc) { }
+            field(Canal_btc; Canal_btc) { }
             field("ABC Cliente"; "ABC Cliente") { }
             field(Delegado_btc; Delegado_btc) { }
             field(NumAbono; NumAbono)

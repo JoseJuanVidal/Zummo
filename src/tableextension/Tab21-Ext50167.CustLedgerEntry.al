@@ -22,6 +22,14 @@ tableextension 50167 "CustLedgerEntry" extends "Cust. Ledger Entry" //21
             CalcFormula = lookup(Customer.AreaManager_btc where("No." = field("Customer No.")));
             Caption = 'Area Manager', comment = 'ESP="Area Manager"';
         }
+        field(50103; Canal_btc; Code[20])
+        {
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer.Canal_btc where("No." = field("Customer No.")));
+            Caption = 'Area Manager', comment = 'ESP="Area Manager"';
+        }
+
 
         field(50002; "código clasificación"; Code[20])
         {

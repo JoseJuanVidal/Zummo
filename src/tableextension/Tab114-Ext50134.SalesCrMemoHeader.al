@@ -126,6 +126,12 @@ tableextension 50134 "SalesCrMemoHeader" extends "Sales Cr.Memo Header" //114
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("InsideSales"), TipoRegistro = const(Tabla));
             Caption = 'Inside Sales', comment = 'ESP="Inside Sales"';
         }
+        field(50042; Canal_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Canal"), TipoRegistro = const(Tabla));
+            Caption = 'Canal', comment = 'ESP="Canal"';
+        }
         field(50050; Suplemento_aseguradora; Code[20])
         {
             Caption = 'Suplemento aseguradora', comment = 'ESP="Suplemento aseguradora"';

@@ -15,6 +15,10 @@ pageextension 50171 "CustomerLedgerEntries" extends "Customer Ledger Entries"
             {
                 ApplicationArea = all;
             }
+            field(Canal_btc; Canal_btc)
+            {
+                ApplicationArea = all;
+            }
             field("Transaction No."; "Transaction No.")
             {
                 ApplicationArea = all;

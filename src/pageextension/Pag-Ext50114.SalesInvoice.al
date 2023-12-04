@@ -58,6 +58,10 @@ pageextension 50114 "SalesInvoice" extends "Sales Invoice"
             {
                 ApplicationArea = all;
             }
+            field(Canal_btc; Canal_btc)
+            {
+                ApplicationArea = all;
+            }
         }
         modify(SalesLines)
         {
