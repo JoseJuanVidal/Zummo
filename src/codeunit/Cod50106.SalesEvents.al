@@ -831,6 +831,7 @@ codeunit 50106 "SalesEvents"
         psalesheader.ClienteCorporativo_btc := reccustomer.ClienteCorporativo_btc;
         psalesheader.AreaManager_btc := reccustomer.AreaManager_btc;
         pSalesHeader.InsideSales_btc := recCustomer.InsideSales_btc;
+        pSalesHeader.Canal_btc := recCustomer.Canal_btc;
         psalesheader.Delegado_btc := reccustomer.Delegado_btc;
         psalesheader.GrupoCliente_btc := reccustomer.GrupoCliente_btc;
         psalesheader.Perfil_btc := reccustomer.Perfil_btc;

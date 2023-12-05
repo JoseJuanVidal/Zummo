@@ -83,6 +83,9 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                     dimGlobal1: Code[20];
                     dimGlobal2: Code[20];
                 begin
+                    GLSetup.Get();
+                    if CheckGLSetupPostingDate(Rec."Posting Date") then
+                        Error(lblGLSetupTest, Rec."Posting Date");
                     Clear(pageDim);
                     pageDim.SetDatos("Dimension Set ID", "Entry No.");
                     pageDim.LookupMode(true);
@@ -102,34 +105,17 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                 PromotedCategory = Category4;
 
                 trigger OnAction()
-                var
-                    pageDim: Page "Change Dim CECO";
-                    GLEntry: Record "G/L Entry";
-                    recDimTemp: Record "Dimension Set Entry" temporary;
-                    funciones: Codeunit Funciones;
-                    intDimSetId: Integer;
-                    dimGlobal1: Code[20];
-                    dimGlobal2: Code[20];
-                    Text000: Label '¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?', comment = 'ESP="¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?"';
                 begin
-                    CurrPage.SetSelectionFilter(GLEntry);
-                    if GLEntry.Count = 0 then
-                        exit;
-                    Clear(pageDim);
-                    pageDim.LookupMode(true);
-
-                    if pageDim.RunModal() = Action::LookupOK then begin
-                        dimGlobal1 := pageDim.GetCECOCOde();
-                        dimGlobal2 := pageDim.GetDim2COde();
-                        if Confirm(Text000, false, GLEntry.Count, dimGlobal1, dimGlobal2) then begin
-                            Funciones.ChangeDimensionCECOGLEntries(GLEntry, dimGlobal1, dimGlobal2);
-                            Message('Proceso finalizado');
-                        end;
-                    end;
+                    ChangeMultiplesDimensiones();
                 end;
             }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        GLSetup.Get();
+    end;
 
     trigger OnAfterGetRecord()
     var
@@ -151,7 +137,58 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
 
 
     var
+        GLSetup: Record "General Ledger Setup";
         NombreClienteProv: code[100];
         PaisClienteProv: code[10];
         AmountCurrency: Decimal;
+        lblGLSetupTest: Label '%1 no está dentro del intervalo de fechas de registro permitidas.', comment = 'ESP="%1 no está dentro del intervalo de fechas de registro permitidas."';
+
+    local procedure ChangeMultiplesDimensiones()
+    var
+        pageDim: Page "Change Dim CECO";
+        GLEntry: Record "G/L Entry";
+        recDimTemp: Record "Dimension Set Entry" temporary;
+        funciones: Codeunit Funciones;
+        intDimSetId: Integer;
+        dimGlobal1: Code[20];
+        dimGlobal2: Code[20];
+        Text000: Label '¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?', comment = 'ESP="¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?"';
+        lblConfirm: Label 'Ha seleccionado %1 movimientos.\¿Esta seguro de continuar?', comment = 'ESP="Ha seleccionado %1 movimientos.\¿Esta seguro de continuar?"';
+    begin
+        CurrPage.SetSelectionFilter(GLEntry);
+        if GLEntry.Count = 0 then
+            exit;
+        // comprobamos que se quieren cambiar movimientos fuera de periodo
+        GLEntry.SetCurrentKey("Posting Date");
+        if GLEntry.FindFirst() then
+            if CheckGLSetupPostingDate(GLEntry."Posting Date") then
+                Error(lblGLSetupTest, Rec."Posting Date");
+        if GLEntry.FindLast() then
+            if CheckGLSetupPostingDate(GLEntry."Posting Date") then
+                Error(lblGLSetupTest, Rec."Posting Date");
+        GLEntry.SetCurrentKey("Entry No.");
+
+        Clear(pageDim);
+        pageDim.LookupMode(true);
+        if pageDim.RunModal() = Action::LookupOK then begin
+            dimGlobal1 := pageDim.GetCECOCOde();
+            dimGlobal2 := pageDim.GetDim2COde();
+            if Confirm(Text000, false, GLEntry.Count, dimGlobal1, dimGlobal2) then begin
+                if GLEntry.Count > 50 then
+                    if not Confirm(lblConfirm, false, GLEntry.Count) then
+                        exit;
+                Funciones.ChangeDimensionCECOGLEntries(GLEntry, dimGlobal1, dimGlobal2);
+                Message('Proceso finalizado');
+            end;
+        end;
+    end;
+
+    local procedure CheckGLSetupPostingDate(PostingDate: Date): Boolean
+    var
+        myInt: Integer;
+    begin
+        GLSetup.Get();
+        if (PostingDate < GLSetup."Allow Posting From") OR (PostingDate > GLSetup."Allow Posting To") then
+            exit(true);
+    end;
 }

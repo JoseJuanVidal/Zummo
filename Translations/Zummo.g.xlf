@@ -25713,6 +25713,21 @@
           <note from="Developer" annotates="general" priority="2">ESP="Dimensiones por Fecha"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension FixedAssetCard - Action DimPorFecha - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - NamedType 3943615076" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
+          <source>%1 no está dentro del intervalo de fechas de registro permitidas.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="%1 no está dentro del intervalo de fechas de registro permitidas."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - NamedType lblGLSetupTest</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Method 148179493 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
+          <source>¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Method ChangeMultiplesDimensiones - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Method 148179493 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
+          <source>Ha seleccionado %1 movimientos.\¿Esta seguro de continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ha seleccionado %1 movimientos.\¿Esta seguro de continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Method ChangeMultiplesDimensiones - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Change the dimensions of the selected entries</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite cambiar la dimensione de los movimientos seleccionados"</note>
@@ -25722,11 +25737,6 @@
           <source>Change Dimensions Multiple</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Dimensiones Multiple"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Method 1377591017 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
-          <source>¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Method OnAction - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 1779445611 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Change the dimensions of the selected entry</source>
