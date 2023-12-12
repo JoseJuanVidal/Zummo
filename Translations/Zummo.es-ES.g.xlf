@@ -27946,6 +27946,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension FixedAssetCard - Action DimPorFecha - Property Caption</note>
           <target>Dimensiones por Fecha</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - NamedType 3943615076" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
+          <source>%1 no está dentro del intervalo de fechas de registro permitidas.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="%1 no está dentro del intervalo de fechas de registro permitidas."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - NamedType lblGLSetupTest</note>
+          <target>%1 no está dentro del intervalo de fechas de registro permitidas.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Method 148179493 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
+          <source>¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Method ChangeMultiplesDimensiones - NamedType Text000</note>
+          <target>¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Method 148179493 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
+          <source>Ha seleccionado %1 movimientos.\¿Esta seguro de continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ha seleccionado %1 movimientos.\¿Esta seguro de continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Method ChangeMultiplesDimensiones - NamedType lblConfirm</note>
+          <target>Ha seleccionado %1 movimientos.\¿Esta seguro de continuar?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Change the dimensions of the selected entries</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite cambiar la dimensione de los movimientos seleccionados"</note>
@@ -27957,12 +27975,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Dimensiones Multiple"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Property Caption</note>
           <target>Cambiar Dimensiones Multiple</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Method 1377591017 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
-          <source>¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Method OnAction - NamedType Text000</note>
-          <target>¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?</target>
         </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 1779445611 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Change the dimensions of the selected entry</source>
@@ -30818,6 +30830,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cambiado Coste"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CambiadoCoste - Property Caption</note>
           <target>Cambiado Coste</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 699648579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Canal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Canal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Canal - Property Caption</note>
+          <target>Canal</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 699648579 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Retail,Food Service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Retail,Food Service"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Canal - Property OptionCaption</note>
+          <target>Retail,Food Service</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1796535343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Cant. componentes Oferta</source>

@@ -240,6 +240,14 @@ tableextension 50108 "Item" extends Item  //27
         {
             Caption = 'Stock de seguridad (Base)', comment = 'ESP="Stock de seguridad (Base)"';
         }
+        field(50030; Canal; Option)
+        {
+            DataClassification = CustomerContent;
+            Description = 'Zummo Canal de venta';
+            Caption = 'Canal', comment = 'ESP="Canal"';
+            OptionMembers = "Food Service","Retail";
+            OptionCaption = 'Retail,Food Service', comment = 'ESP="Retail,Food Service"';
+        }
         field(50100; "STHQuantityWhse"; Decimal)
         {
             Caption = 'Quantity Warehouse', comment = 'ESP="Cantidad Almacén"';

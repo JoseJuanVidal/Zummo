@@ -65,6 +65,10 @@ pageextension 50109 "ItemCard" extends "Item Card"
                     ApplicationArea = All;
                     Editable = false;
                 }
+                field(Canal; Canal)
+                {
+                    ApplicationArea = all;
+                }
                 field(CentroTrabajp_btc; CentroTrabajp_btc)
                 {
                     ApplicationArea = All;

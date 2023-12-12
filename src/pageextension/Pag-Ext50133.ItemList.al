@@ -70,6 +70,11 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field(Canal; Canal)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field(Manufacturer; Manufacturer)
             {
                 ApplicationArea = all;

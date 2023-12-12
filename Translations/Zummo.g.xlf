@@ -28223,6 +28223,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cambiado Coste"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CambiadoCoste - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 699648579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Canal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Canal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Canal - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 699648579 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Retail,Food Service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Retail,Food Service"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Canal - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1796535343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Cant. componentes Oferta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cant. componentes Oferta"</note>
