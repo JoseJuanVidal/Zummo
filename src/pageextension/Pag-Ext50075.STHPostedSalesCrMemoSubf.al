@@ -1,7 +1,24 @@
 pageextension 50075 "STH Posted Sales Cr. Memo Subf" extends "Posted Sales Cr. Memo Subform"
 {
+    layout
+    {
+        addbefore(Quantity)
+        {
+            field("Location Code"; "Location Code")
+            {
+                ApplicationArea = all;
+            }
+            field("Bin Code"; "Bin Code")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
+    }
+
     actions
     {
+
         addafter(DocAttach)
         {
             action(CalcItemCost)
