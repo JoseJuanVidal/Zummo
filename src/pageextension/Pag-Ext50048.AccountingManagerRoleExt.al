@@ -32,8 +32,17 @@ pageextension 50048 "Accounting Manager Role Ext" extends "Accounting Manager Ro
             {
                 Caption = 'Posted Purchase Invoice Lines', comment = 'ESP="Hist. líns. fact. compra"';
                 RunObject = page "Posted Purchase Invoice Lines";
-                // sRunPageView = where("Qty. Rcd. Not Invoiced" = filter(<> 0));
+                // RunPageView = where("Qty. Rcd. Not Invoiced" = filter(<> 0));
                 Image = PostedOrder;
+            }
+        }
+        addafter("P&ost Inventory Cost to G/L")
+        {
+            action(ExportExcelValInventario)
+            {
+                Caption = 'Valoración Inventario', comment = 'ESP="Valoración Inventario"';
+                Image = Excel;
+                RunObject = codeunit "STH Funciones IVA Recuperacion";
             }
         }
     }

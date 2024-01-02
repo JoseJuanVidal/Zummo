@@ -10412,6 +10412,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method CreateJnlIVARecuperacion - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1408414175 - Method 1665861916 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea exportar la valoración de existencia a %1 en Excel?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea exportar la valoración de existencia a %1 en Excel?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method OnRun - NamedType lblConfirm</note>
+          <target>¿Desea exportar la valoración de existencia a %1 en Excel?</target>
+        </trans-unit>
         <trans-unit id="Codeunit 1856158927 - Method 395651631 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>No filter has been indicated\¿Do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se ha indicado ningun filtro.\¿Desea continuar?"</note>
@@ -27528,6 +27534,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Accounting Manager Role Ext - Action PostedSalesShipmentLinesAction - Property Caption</note>
           <target>Hist. líns. albs. venta</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2577929481 - Action 2279943413 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
+          <source>Valoración Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Valoración Inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Accounting Manager Role Ext - Action ExportExcelValInventario - Property Caption</note>
+          <target>Valoración Inventario</target>
         </trans-unit>
         <trans-unit id="PageExtension 332205901 - Control 2726740135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3949561845">
           <source>Customer Name</source>

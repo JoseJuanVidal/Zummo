@@ -1,8 +1,12 @@
 codeunit 50103 "STH Funciones IVA Recuperacion"
 {
     trigger OnRun()
+    var
+        lblConfirm: Label '¿Desea exportar la valoración de existencia a %1 en Excel?', comment = 'ESP="¿Desea exportar la valoración de existencia a %1 en Excel?"';
     begin
-
+        // preguntamos si exportamos la valoracion inventario a fecha 
+        if Confirm(lblConfirm, false, CalcDate('<CM>', workdate)) then
+            ExportExcelValInventario();
     end;
 
     var
@@ -537,4 +541,55 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         ExcelBuffer.NewRow();
     end;
 
+    local procedure ExportExcelValInventario()
+    var
+        Item: Record Item;
+        Location: Record Location;
+        ValueEntry: Record "Value Entry";
+        Window: Dialog;
+    begin
+        Window.Open('#1##################\#2########################');
+        ExcelBuffer.DELETEALL;
+        ExcelBuffer.CreateNewBook('Valoracion');
+
+        ExcelBuffer.AddColumn('Almacen', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Cod. producto', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Descripcion', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Inventario', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Cantidad Mov. valor', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Coste', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow;
+
+        Location.RESET;
+        IF Location.FINDFIRST THEN
+            REPEAT
+                Window.UPDATE(1, Location.Code);
+                Item.RESET;
+                Item.SETRANGE("Location Filter", Location.Code);
+                Item.SETFILTER(Inventory, '>0');
+                IF Item.FINDFIRST THEN
+                    REPEAT
+                        Window.UPDATE(2, Item."No.");
+                        Item.CALCFIELDS(Inventory);
+                        ExcelBuffer.AddColumn(Location.Code, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                        ExcelBuffer.AddColumn(Item."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                        ExcelBuffer.AddColumn(Item.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                        ExcelBuffer.AddColumn(Item.Inventory, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                        ValueEntry.RESET;
+                        ValueEntry.SETRANGE("Item No.", Item."No.");
+                        ValueEntry.SETFILTER("Location Code", Location.Code);
+                        ValueEntry.SETRANGE("Posting Date", 0D, CalcDate('<CM>', workdate));
+                        ValueEntry.CALCSUMS("Item Ledger Entry Quantity", "Cost Amount (Actual)", "Cost Amount (Expected)", "Invoiced Quantity");
+                        ExcelBuffer.AddColumn(ValueEntry."Item Ledger Entry Quantity", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                        ExcelBuffer.AddColumn(ValueEntry."Cost Amount (Actual)" + ValueEntry."Cost Amount (Expected)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                        ExcelBuffer.NewRow;
+                    UNTIL Item.NEXT = 0;
+            UNTIL Location.NEXT = 0;
+
+        ExcelBuffer.WriteSheet('Valoracion', COMPANYNAME, USERID);
+        ExcelBuffer.CloseBook();
+        ExcelBuffer.SetFriendlyFilename('Valoracion');
+        ExcelBuffer.OpenExcel();
+        Window.Close();
+    end;
 }
