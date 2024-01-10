@@ -122,6 +122,13 @@ tableextension 50118 "SalesCrMemoLine" extends "Sales Cr.Memo Line"  //115
             DataClassification = CustomerContent;
             Caption = 'Sin precio tarifa', comment = 'ESP="Sin precio tarifa"';
         }
+        field(50030; Promociones; code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Promociones), TipoRegistro = const(Tabla));
+            Caption = 'Promociones', comment = 'ESP="Promociones"';
+        }
+
         field(50114; selClasVtas_btc; Code[20])
         {
             DataClassification = CustomerContent;

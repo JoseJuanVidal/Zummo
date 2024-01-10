@@ -186,6 +186,12 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             CalcFormula = lookup("Sales Header"."Quote No." where("Document Type" = field("Document Type"), "No." = field("Document No.")));
             editable = false;
         }
+        field(50030; Promociones; code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Promociones), TipoRegistro = const(Tabla));
+            Caption = 'Promociones', comment = 'ESP="Promociones"';
+        }
 
         field(50107; ExternalDocument; Code[50])
         {

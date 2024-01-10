@@ -15,6 +15,10 @@ pageextension 50025 "SalesCrMemoSubform" extends "Sales Cr. Memo Subform"
             {
                 ApplicationArea = All;
             }
+            field(Promociones; Promociones)
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }

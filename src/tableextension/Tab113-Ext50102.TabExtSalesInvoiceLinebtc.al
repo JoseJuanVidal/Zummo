@@ -115,6 +115,14 @@ tableextension 50102 "TabExtSalesInvoiceLine_btc" extends "Sales Invoice Line"  
         {
             DataClassification = CustomerContent;
         }
+        field(50030; Promociones; code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Promociones), TipoRegistro = const(Tabla));
+            Caption = 'Promociones', comment = 'ESP="Promociones"';
+            Editable = false;
+        }
+
         field(50050; "IdCorp_Sol"; code[20])
         {
             DataClassification = CustomerContent;

@@ -99,6 +99,10 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
 
         addafter("Line Amount")
         {
+            field(Promociones; Promociones)
+            {
+                ApplicationArea = all;
+            }
             //111219 S19/01395 Motivos retraso
             field(MotivoRetraso_btc; MotivoRetraso_btc)
             {

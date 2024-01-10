@@ -4,8 +4,9 @@ pageextension 50041 "PostedSalesInvoiceSubform" extends "Posted Sales Invoice Su
     {
         addafter(Quantity)
         {
-            field("VAT Bus. Posting Group"; "VAT Bus. Posting Group") { }
-            field("VAT Prod. Posting Group"; "VAT Prod. Posting Group") { }
+            field("VAT Bus. Posting Group"; "VAT Bus. Posting Group") { Editable = false; }
+            field("VAT Prod. Posting Group"; "VAT Prod. Posting Group") { Editable = false; }
+            field(Promociones; Promociones) { }
         }
         addlast(Control1)
         {
