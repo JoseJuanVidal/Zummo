@@ -4,7 +4,7 @@ page 17415 "ZM PL Items temporary card"
     PageType = card;
     SourceTable = "ZM PL Items temporary";
     SourceTableView = where("State Creation" = filter(" " | Requested | Released));
-    UsageCategory = Tasks;
+    UsageCategory = None;
 
 
     layout

@@ -31,6 +31,14 @@ table 17412 "ZM PL Setup Item registration"
             Caption = 'Last process date', comment = 'ESP="Ultima fecha proceso"';
             Editable = false;
         }
+        field(200; "OAuth Sharepoint"; code[20])
+        {
+            Caption = 'OAuth Sharepoint', comment = 'ESP="OAuth Sharepoint"';
+        }
+        field(210; "OAuth Sharepoint Folder"; code[20])
+        {
+            Caption = 'OAuth Sharepoint Folder', comment = 'ESP="OAuth Sharepoint Folder"';
+        }
     }
 
     keys

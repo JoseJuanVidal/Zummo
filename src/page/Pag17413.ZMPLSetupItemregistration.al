@@ -35,6 +35,17 @@ page 17413 "ZM PL Setup Item registration"
                     ApplicationArea = all;
                 }
             }
+            group(Sharepoint)
+            {
+                field("OAuth Sharepoint"; "OAuth Sharepoint")
+                {
+                    ApplicationArea = all;
+                }
+                field("OAuth Sharepoint Folder"; "OAuth Sharepoint Folder")
+                {
+                    ApplicationArea = all;
+                }
+            }
         }
     }
 

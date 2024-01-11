@@ -9391,6 +9391,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field Last process date - Property Caption</note>
           <target>Ultima fecha proceso</target>
         </trans-unit>
+        <trans-unit id="Table 988243340 - Field 2964897826 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OAuth Sharepoint</source>
+          <note from="Developer" annotates="general" priority="2">ESP="OAuth Sharepoint"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field OAuth Sharepoint - Property Caption</note>
+          <target>OAuth Sharepoint</target>
+        </trans-unit>
+        <trans-unit id="Table 988243340 - Field 601003620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OAuth Sharepoint Folder</source>
+          <note from="Developer" annotates="general" priority="2">ESP="OAuth Sharepoint Folder"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field OAuth Sharepoint Folder - Property Caption</note>
+          <target>OAuth Sharepoint Folder</target>
+        </trans-unit>
         <trans-unit id="Table 988243340 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
           <note from="Developer" annotates="general" priority="2"/>
