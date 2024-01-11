@@ -5,6 +5,7 @@ page 17414 "ZM PL Items temporary list"
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     SourceTable = "ZM PL Items temporary";
+    Editable = false;
     UsageCategory = Lists;
     CardPageId = "ZM PL Items temporary card";
 

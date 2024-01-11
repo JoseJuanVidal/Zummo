@@ -26,6 +26,10 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
             {
                 ApplicationArea = All;
             }
+            field(Promociones; Promociones)
+            {
+                ApplicationArea = all;
+            }
         }
 
         addafter("Line Discount %")
