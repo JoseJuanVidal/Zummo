@@ -7,7 +7,7 @@ pageextension 50199 "PostedPurchaseInvoiceLines" extends "Posted Purchase Invoic
             field(ShortcutDimCode3; ShortcutDimCode[3])
             {
                 CaptionClass = '1,2,3';
-             }
+            }
             field(ShortcutDimCode4; ShortcutDimCode[4])
             {
                 CaptionClass = '1,2,4';
@@ -38,6 +38,8 @@ pageextension 50199 "PostedPurchaseInvoiceLines" extends "Posted Purchase Invoic
 
         }
     }
+
+
     trigger OnAfterGetRecord()
 
     begin
@@ -46,4 +48,5 @@ pageextension 50199 "PostedPurchaseInvoiceLines" extends "Posted Purchase Invoic
 
     var
         ShortcutDimCode: array[8] of Code[20];
+
 }

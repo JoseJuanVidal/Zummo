@@ -3287,5 +3287,153 @@ codeunit 50111 "Funciones"
             if recDimSetEntry."Dimension Value Code" <> PurchLineDimSetEntry."Dimension Value Code" then
                 AddLine := false;
     end;
+
+    // ============= exportar los documentos de facturas de compra (doc. capture y adjuntos)              ====================
+    // ==  
+    // ==  para exportar todas las facturas de compra originales de los proveedores.
+    // ==  
+    // ======================================================================================================
+
+    procedure FixedAssetLineExportPdf(var FALedgerEntry: Record "FA Ledger Entry")
+    var
+        FASetup: record "FA Setup";
+        PurchInvHeader: Record "Purch. Inv. Header";
+        FileMgt: Codeunit "File Management";
+        FolderDialogSelection: Text;
+        FolderTarget: Text;
+        SourceFileName: text;
+        Name: Text;
+        FileName: text;
+        Count: Integer;
+    begin
+        FASetup.Get();
+        FASetup.TestField("Path File Export");
+        FolderDialogSelection := FASetup."Path File Export";
+        if FALedgerEntry.FindFirst() then
+            repeat
+                case FALedgerEntry."Document Type" of
+                    FALedgerEntry."Document Type"::Invoice:
+                        begin
+                            FolderTarget := CheckFolderExist(FALedgerEntry."FA No.", FolderDialogSelection);
+                            PurchInvHeader.Get(FALedgerEntry."Document No.");
+                            GetDocAttachmentFile(PurchInvHeader, FolderTarget);
+                            SourceFileName := GetFilePathPurchaseHeader(PurchInvHeader, Name);
+                            if SourceFileName <> '' then begin
+                                FileName := StrSubstNo('%1\%2 %3', FolderTarget, PurchInvHeader."No.", name);
+                                FileMgt.CopyServerFile(SourceFileName, FileName, true);
+                            end;
+                        end;
+                end;
+            Until FALedgerEntry.next() = 0;
+    end;
+
+    local procedure CheckFolderExist(FixedAssetNo: code[20]; FolderDialogSelection: Text) FolderTarget: Text
+    var
+        FileMgt: Codeunit "File Management";
+    begin
+        FolderTarget := StrSubstNo('%1\%2', FolderDialogSelection, FixedAssetNo);
+        if not FileMgt.ServerDirectoryExists(FolderTarget) then
+            FileMgt.ServerCreateDirectory(FolderTarget);
+    end;
+
+    local procedure GetDocAttachmentFile(PurchInvHeader: Record "Purch. Inv. Header"; filePath: Text)
+    var
+        DocAttachment: Record "Document Attachment";
+        cuFileManagement: Codeunit "File Management";
+        FilePathName: text;
+    begin
+        DocAttachment.Reset();
+        DocAttachment.SetRange("Table ID", 38);
+        DocAttachment.SetRange("Document Type", docAttachment."Document Type"::Invoice);
+        DocAttachment.SetRange("No.", PurchInvHeader."No.");
+        if DocAttachment.FindSet() then begin
+            FilePathName := StrSubstNo('%1\%2 %3.%4', filePath, PurchInvHeader."No.", docAttachment."File Name", docAttachment."File Extension");
+            DocAttachment."Document Reference ID".ExportFile(FilePathName);
+            Message(FilePathName);
+        end;
+    end;
+
+    procedure GetFilePathPurchaseHeader(PurchInvHeader: Record "Purch. Inv. Header"; var Name: text): Text;
+    var
+        Objects: Record Object;
+        RRefCDCDocument: RecordRef;
+        FRefDocNo: FieldRef;
+        FRefSourceType: FieldRef;
+        FRefSourceSubType: FieldRef;
+        FRefSourceNo: FieldRef;
+        FRYear: FieldRef;
+        FRMonth: FieldRef;
+        FRDay: FieldRef;
+        FileName: text;
+        Year: integer;
+        Month: Integer;
+        Day: Integer;
+    begin
+        Objects.SetRange(Type, Objects.type::Table);
+        Objects.SetRange(id, 6085590); // CDC Document
+        if not Objects.FindSet() then
+            exit;
+
+        RRefCDCDocument.Open(6085590);                      // CDC Document
+        FRefDocNo := RRefCDCDocument.FIELD(1);              //1  No.
+        FRefSourceType := RRefCDCDocument.FIELD(13);        //13 Created Doc. Table No.
+        FRefSourceSubType := RRefCDCDocument.FIELD(14);     // 14 Created Doc. Subtype
+        FRefSourceNo := RRefCDCDocument.FIELD(15);          //46 Created Doc. No.
+        FRYear := RRefCDCDocument.FIELD(55);                //55 Import Year
+        FRMonth := RRefCDCDocument.FIELD(54);               //54 Import Month
+        FRDay := RRefCDCDocument.FIELD(53);                 //53 Import Day
+
+        // ponemos los filtros
+        FRefSourceType.SetRange(38);  // 38 Purchase Header
+        FRefSourceSubType.SetRange(2);  // 38 Purchase Header
+        FRefSourceNo.SetRange(PurchInvHeader."Pre-Assigned No.");
+
+        // Buscamos el registro y montamos el path
+        if RRefCDCDocument.FindSet() then begin
+            Year := FRYear.VALUE;
+            Month := FRMonth.VALUE;
+            Day := FRDay.VALUE;
+            FileName := GetSubDir(Year, Month, Day, true, 3); //DCSetup."Disk File Directory Structure"::"Year\Month\Day":
+            FileName += FORMAT(FRefDocNo.VALUE) + '.pdf';
+            Name := FORMAT(FRefDocNo.VALUE) + '.pdf';
+            EXIT(FileName);
+        end
+    end;
+
+    local procedure GetSubDir(DocYear: Integer; DocMonth: Integer; DocDay: Integer; CompanyCodeInArchive: Boolean; Structure: Integer): Text
+    var
+        RecRefCDCSetup: RecordRef;
+        FieldRefPathArchive: FieldRef;
+        Path: text;
+        Month: code[2];
+        Day: code[2];
+    begin
+        RecRefCDCSetup.Open(6085573); // CDC Document Capture Setup
+        RecRefCDCSetup.FindSet();
+        FieldRefPathArchive := RecRefCDCSetup.FIELD(11);        // 11 Archive File Path
+        Path := FieldRefPathArchive.Value;
+
+        IF Docmonth < 10 THEN
+            Month := '0' + FORMAT(Docmonth)
+        ELSE
+            Month := FORMAT(Docmonth);
+
+        IF DocDay < 10 THEN
+            Day := '0' + FORMAT(DocDay)
+        ELSE
+            Day := FORMAT(DocDay);
+
+        IF CompanyCodeInArchive THEN
+            Path += CompanyName + '\';
+
+        CASE Structure OF
+            1: //DCSetup."Disk File Directory Structure"::"One Directory":
+                EXIT(Path);
+            2: //DCSetup."Disk File Directory Structure"::"Year\Month":
+                EXIT(Path + STRSUBSTNO('%1\%2\', DocYear, Month));
+            3: //DCSetup."Disk File Directory Structure"::"Year\Month\Day":
+                EXIT(Path + STRSUBSTNO('%1\%2\%3\', DocYear, Month, Day));
+        END;
+    end;
 }
 

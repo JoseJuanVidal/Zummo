@@ -27718,6 +27718,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Purchase Order Statist - Control KgVendorPackagingproduct - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 622661945 - Action 617807351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 377345500">
+          <source>Exportar en PDF</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar en PDF"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM FA Ledger Entries - Action ExportarPDF - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2634977954 - Control 2312800061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1752036392">
           <source>Daily Time Sheet</source>
           <note from="Developer" annotates="general" priority="2">ESP="Partes Diario"</note>
@@ -31917,6 +31922,16 @@
           <source>Recep. alm. cantidad a cero</source>
           <note from="Developer" annotates="general" priority="2">ESP="Recep. alm. cantidad a cero"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Warehouse Setup - Field Recep. alm. cantidad a cero - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3616270633 - Method 2071093379 - NamedType 2739276994" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3616270633">
+          <source>Select Path</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar ruta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Setup - Method OnAssistEditPathFile - NamedType lbrutaLbl</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3616270633 - Field 2440674873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3400326196">
+          <source>Path File Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Directorio Exportar Ficheros"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Setup - Field Path File Export - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2910060780 - Field 2704330142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
           <source>Journal Batch Name</source>
