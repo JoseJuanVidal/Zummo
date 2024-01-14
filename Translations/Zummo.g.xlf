@@ -27718,6 +27718,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Purchase Order Statist - Control KgVendorPackagingproduct - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 622661945 - Method 1224106127 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 622661945">
+          <source>¿Desea exportar los documentos de %1 Movs. A/F?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea exportar los documentos de %1 Movs. A/F?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM FA Ledger Entries - Method OnAction_ExportarPDF - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 622661945 - Action 617807351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 377345500">
           <source>Exportar en PDF</source>
           <note from="Developer" annotates="general" priority="2">ESP="Exportar en PDF"</note>
