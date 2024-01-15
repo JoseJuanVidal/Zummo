@@ -3298,6 +3298,7 @@ codeunit 50111 "Funciones"
     var
         FASetup: record "FA Setup";
         PurchInvHeader: Record "Purch. Inv. Header";
+        PurchCRMemoHdr: Record "Purch. Cr. Memo Hdr.";
         FileMgt: Codeunit "File Management";
         FolderDialogSelection: Text;
         FolderTarget: Text;
@@ -3311,15 +3312,25 @@ codeunit 50111 "Funciones"
         FolderDialogSelection := FASetup."Path File Export";
         if FALedgerEntry.FindFirst() then
             repeat
+                FolderTarget := CheckFolderExist(FALedgerEntry."FA No.", FolderDialogSelection);
                 case FALedgerEntry."Document Type" of
                     FALedgerEntry."Document Type"::Invoice:
                         begin
-                            FolderTarget := CheckFolderExist(FALedgerEntry."FA No.", FolderDialogSelection);
                             PurchInvHeader.Get(FALedgerEntry."Document No.");
-                            GetDocAttachmentFile(PurchInvHeader, FolderTarget);
-                            SourceFileName := GetFilePathPurchaseHeader(PurchInvHeader, Name);
+                            InvGetDocAttachmentFile(PurchInvHeader, FolderTarget);
+                            SourceFileName := GetFilePathPurchaseHeader(PurchInvHeader."Pre-Assigned No.", Name);
                             if SourceFileName <> '' then begin
                                 FileName := StrSubstNo('%1\%2 %3', FolderTarget, PurchInvHeader."No.", name);
+                                FileMgt.CopyServerFile(SourceFileName, FileName, true);
+                            end;
+                        end;
+                    FALedgerEntry."Document Type"::"Credit Memo":
+                        begin
+                            PurchCRMemoHdr.Get(FALedgerEntry."Document No.");
+                            CRMemoGetDocAttachmentFile(PurchCRMemoHdr, FolderTarget);
+                            SourceFileName := GetFilePathPurchaseHeader(PurchCRMemoHdr."Pre-Assigned No.", Name);
+                            if SourceFileName <> '' then begin
+                                FileName := StrSubstNo('%1\%2 %3', FolderTarget, PurchCRMemoHdr."No.", name);
                                 FileMgt.CopyServerFile(SourceFileName, FileName, true);
                             end;
                         end;
@@ -3336,7 +3347,7 @@ codeunit 50111 "Funciones"
             FileMgt.ServerCreateDirectory(FolderTarget);
     end;
 
-    local procedure GetDocAttachmentFile(PurchInvHeader: Record "Purch. Inv. Header"; filePath: Text)
+    local procedure InvGetDocAttachmentFile(PurchInvHeader: Record "Purch. Inv. Header"; filePath: Text)
     var
         DocAttachment: Record "Document Attachment";
         cuFileManagement: Codeunit "File Management";
@@ -3353,7 +3364,24 @@ codeunit 50111 "Funciones"
         end;
     end;
 
-    procedure GetFilePathPurchaseHeader(PurchInvHeader: Record "Purch. Inv. Header"; var Name: text): Text;
+    local procedure CRMemoGetDocAttachmentFile(PurchCRMemoHdr: Record "Purch. Cr. Memo Hdr."; filePath: Text)
+    var
+        DocAttachment: Record "Document Attachment";
+        cuFileManagement: Codeunit "File Management";
+        FilePathName: text;
+    begin
+        DocAttachment.Reset();
+        DocAttachment.SetRange("Table ID", 38);
+        DocAttachment.SetRange("Document Type", docAttachment."Document Type"::"Credit Memo");
+        DocAttachment.SetRange("No.", PurchCrMemoHdr."No.");
+        if DocAttachment.FindSet() then begin
+            FilePathName := StrSubstNo('%1\%2 %3.%4', filePath, PurchCrMemoHdr."No.", docAttachment."File Name", docAttachment."File Extension");
+            DocAttachment."Document Reference ID".ExportFile(FilePathName);
+            Message(FilePathName);
+        end;
+    end;
+
+    procedure GetFilePathPurchaseHeader(PreAssignedNo: code[20]; var Name: text): Text;
     var
         Objects: Record Object;
         RRefCDCDocument: RecordRef;
@@ -3386,7 +3414,7 @@ codeunit 50111 "Funciones"
         // ponemos los filtros
         FRefSourceType.SetRange(38);  // 38 Purchase Header
         FRefSourceSubType.SetRange(2);  // 38 Purchase Header
-        FRefSourceNo.SetRange(PurchInvHeader."Pre-Assigned No.");
+        FRefSourceNo.SetRange(PreAssignedNo);
 
         // Buscamos el registro y montamos el path
         if RRefCDCDocument.FindSet() then begin
