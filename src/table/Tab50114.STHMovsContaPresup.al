@@ -71,16 +71,35 @@ table 50114 "STH Movs Conta-Presup"
         }
     }
 
-    procedure CargarDatos()
+    procedure CargarDatos(EjercicioActual: Boolean)
     var
         Contador: Integer;
         GLEntry: Record "G/L Entry";
         GLBudgetEntry: Record "G/L Budget Entry";
+        Window: Dialog;
+        lblWindow: Label 'Nª Movimiento: #1#########\Fecha: #2##############\';
     begin
-        DeleteAll();
+        Window.Open(lblWindow);
+        case EjercicioActual of
+            true:
+                begin
+                    Rec.SetRange("Posting Date", CalcDate('-1A+PA+1D', WORKDATE), CalcDate('PA', WORKDATE));
+                    Rec.DeleteAll();
+                    Rec.Reset();
+                    if Rec.FindLast() then
+                        Contador := Rec."Entry No.";
+                    GLEntry.SetRange("Posting Date", CalcDate('-1A+PA+1D', WORKDATE), CalcDate('PA', WORKDATE));
+                    GLBudgetEntry.SetRange(Date, CalcDate('-1A+PA+1D', WORKDATE), CalcDate('PA', WORKDATE));
+                end
+            else begin
+                Rec.DeleteAll();
+            end;
+        end;
 
         IF GLEntry.FINDSET THEN
             REPEAT
+                Window.Update(1, GLEntry."Entry No.");
+                Window.Update(2, GLEntry."Posting Date");
                 Contador += 1;
                 Rec.INIT;
                 Rec."Entry No." := Contador;
@@ -100,6 +119,8 @@ table 50114 "STH Movs Conta-Presup"
 
         IF GLBudgetEntry.FINDSET THEN
             REPEAT
+                Window.Update(1, GLBudgetEntry."Entry No.");
+                Window.Update(2, GLBudgetEntry."Date");
                 Contador += 1;
                 Rec.INIT;
                 Rec."Entry No." := Contador;
@@ -115,5 +136,6 @@ table 50114 "STH Movs Conta-Presup"
                 rec."Budget Name" := GLBudgetEntry."Budget Name";
                 Rec.INSERT;
             UNTIL GLBudgetEntry.NEXT = 0;
+        Window.Close;
     end;
 }

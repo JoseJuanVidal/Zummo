@@ -6193,6 +6193,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Hist. Aseguradora - Field Suplemento - Property Caption</note>
           <target>Suplemento</target>
         </trans-unit>
+        <trans-unit id="Table 369657445 - Method 3689235451 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nª Movimiento: #1#########\Fecha: #2##############\</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Method CargarDatos - NamedType lblWindow</note>
+        </trans-unit>
         <trans-unit id="Table 369657445 - Field 2398714342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Budget Name</source>
           <note from="Developer" annotates="general" priority="2"/>

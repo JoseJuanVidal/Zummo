@@ -39,7 +39,7 @@ codeunit 50110 "CU_Cron"
                 'CalculateVtoAseguradora':
                     CalculateVtoAseguradora();
                 'CargaMovsContaPresup':
-                    MovsContaPresup.CargarDatos();
+                    MovsContaPresup.CargarDatos(false);
                 'AvisosFrasVencidasAreaManager':
                     begin
                         SalesSetup.Get();

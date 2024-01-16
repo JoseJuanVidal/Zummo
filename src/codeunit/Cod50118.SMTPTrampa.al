@@ -390,7 +390,7 @@ codeunit 50118 "SMTP_Trampa"
         if PurchInvoiceLine.FindFirst() then;
         ExcelBuffer.AddColumn(PurchInvHeader."No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(PurchInvLine."Line No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
-        ExcelBuffer.AddColumn(PurchInvoiceLine."Document No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(PurchInvHeader."No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(PurchInvoiceLine."Line No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
         ExcelBuffer.AddColumn(PurchInvLine."Order No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(PurchaseHeader."Posting Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);

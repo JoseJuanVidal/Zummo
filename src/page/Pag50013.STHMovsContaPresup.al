@@ -80,7 +80,10 @@ page 50013 "STH Movs Conta-Presup"
 
                 trigger OnAction()
                 begin
-                    CargarDatos();
+                    if Confirm('¿Desea cargar solo el año %1?', false, Date2DMY(WorkDate(), 3)) then
+                        CargarDatos(true)
+                    else
+                        CargarDatos(false);
                     Message('Carga realizada');
                 end;
             }
