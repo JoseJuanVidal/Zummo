@@ -3742,6 +3742,7 @@ codeunit 50102 "Integracion_crm_btc"
     procedure UpdateSalesPriceGroup(SalesCode: Code[20]; EndDate: Date)
     var
         SalesPrice: Record "Sales Price";
+        CRMProduct: Record "CRM Product";
         Pricelevel: Record "CRM Pricelevel";
         Productpricelevel: record "CRM Productpricelevel";
         CRMIntegrationRecord: Record "CRM Integration Record";
@@ -3752,28 +3753,51 @@ codeunit 50102 "Integracion_crm_btc"
             , comment = 'ESP="Tarifa precio: #1###################\Producto: #2##################"';
     begin
         Window.Open(lblWindow);
-        SalesPrice.SetRange("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
-        SalesPrice.SetRange("Sales Code", SalesCode);
-        SalesPrice.SetRange("Ending Date", EndDate);
-        if SalesPrice.FindFirst() then
-            repeat
-                Window.Update(1, SalesPrice."Sales Code");
-                Window.Update(2, SalesPrice."Item No.");
-                BCIntegrationRecord.SetRange("Table ID", Database::"Sales Price");
-                BCIntegrationRecord.SetRange("Record ID", SalesPrice.RecordId);
-                if BCIntegrationRecord.FindFirst() then
-                    BCIntegrationRecord.Delete();
-                CRMIntegrationRecord.SetRange("Integration ID", BCIntegrationRecord."Integration ID");
-                if CRMIntegrationRecord.FindFirst() then;
-                CRMIntegrationRecord.Delete();
-                // comprobamos la Tarifa si existe en CRM
-                Productpricelevel.SetRange(PriceLevelIdName, SalesPrice."Sales Code");
-                Productpricelevel.SetRange(ProductId, SalesPrice."Item No.");
-                if Productpricelevel.FindFirst() then
-                    Productpricelevel.Delete();
-                //  creamos la tarifa en CRM
-                CRMIntegrationManagement.CreateNewRecordsInCRM(SalesPrice.RecordId);
-            Until SalesPrice.next() = 0;
+        SalesPrice.SETCURRENTKEY("Sales Type", "Sales Code");
+        SalesPrice.SETRANGE("Sales Code", SalesCode);
+        SalesPrice.SETRANGE("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
+        SalesPrice.SETRANGE("Ending Date", EndDate);
+        IF SalesPrice.FINDFIRST() THEN
+            REPEAT
+                Window.UPDATE(1, SalesPrice."Sales Code");
+                Window.UPDATE(2, SalesPrice."Item No.");
+                CRMProduct.SETRANGE(ProductNumber, SalesPrice."Item No.");
+                IF CRMProduct.FINDFIRST THEN BEGIN
+                    // comprobamos la Tarifa si existe en CRM
+                    Productpricelevel.SETRANGE(PriceLevelIdName, SalesPrice."Sales Code");
+                    Productpricelevel.SETRANGE(ProductNumber, SalesPrice."Item No.");
+                    IF Productpricelevel.FINDFIRST() THEN BEGIN
+                        Productpricelevel.Amount := SalesPrice."Unit Price";
+                        Productpricelevel.Amount_Base := SalesPrice."Unit Price";
+                        Productpricelevel.MODIFY;
+                        // si al final no existe, creamos la tarifa en CRM        
+                        BCIntegrationRecord.SETRANGE("Table ID", DATABASE::"Sales Price");
+                        BCIntegrationRecord.SETRANGE("Record ID", SalesPrice.RECORDID);
+                        IF NOT BCIntegrationRecord.FINDFIRST() THEN BEGIN
+                            BCIntegrationRecord.INIT;
+                            BCIntegrationRecord."Record ID" := SalesPrice.RECORDID;
+                            BCIntegrationRecord."Table ID" := DATABASE::"Sales Price";
+                            BCIntegrationRecord."Integration ID" := CREATEGUID;
+                            BCIntegrationRecord."Modified On" := CREATEDATETIME(WORKDATE, TIME);
+                            BCIntegrationRecord.INSERT;
+                        END;
+                        CRMIntegrationRecord.SETRANGE("Integration ID", BCIntegrationRecord."Integration ID");
+                        IF NOT CRMIntegrationRecord.FINDFIRST() THEN BEGIN
+                            CRMIntegrationRecord.INIT;
+                            CRMIntegrationRecord."CRM ID" := Productpricelevel.ProductPriceLevelId;
+                            CRMIntegrationRecord."Integration ID" := BCIntegrationRecord."Integration ID";
+                            CRMIntegrationRecord."Last Synch. Modified On" := CREATEDATETIME(WORKDATE, TIME);
+                            CRMIntegrationRecord."Last Synch. CRM Modified On" := CREATEDATETIME(WORKDATE, TIME);
+                            CRMIntegrationRecord."Table ID" := 36;
+                            //CRMIntegrationRecord."Last Synch. Result" := CRMIntegrationRecord."Last Synch. Result"::Success;
+                            CRMIntegrationRecord."Last Synch. CRM Result" := CRMIntegrationRecord."Last Synch. CRM Result"::Success;
+                            CRMIntegrationRecord.INSERT;
+                        end;
+                        COMMIT;
+                    end;
+                end;
+            until SalesPrice.NEXT() = 0;
+
         Window.Close();
     end;
 }
