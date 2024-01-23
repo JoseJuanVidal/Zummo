@@ -543,7 +543,6 @@ table 17413 "ZM PL Items temporary"
         ProdBOMLine: Record "Production BOM Line";
         ZMCIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";
         ZMCIMProdBOMLine: Record "ZM CIM Prod. BOM Line";
-        ZMCIMProdDocuments: Record "ComentariosPredefinidos";
         lblConfirmBOM: Label 'El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?', comment = 'ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"';
 
     trigger OnInsert()

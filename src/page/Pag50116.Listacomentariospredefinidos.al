@@ -3,6 +3,7 @@ page 50116 "Lista comentarios predefinidos"
 
     PageType = List;
     SourceTable = ComentariosPredefinidos;
+    SourceTableView = where(Tipo = const(" "));
     Caption = 'List of predefined comments', comment = 'ESP="Lista comentarios predefinidos"';
     ApplicationArea = All;
     UsageCategory = Lists;

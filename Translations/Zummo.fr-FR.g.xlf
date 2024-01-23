@@ -7486,6 +7486,41 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Trans. Ord. Shipment (Qty.) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 4044637255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CDS</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action ActionGroupCDS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 3570890871 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create, change, or delete a coupling between the Business Central record and a Common Data Service record.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action Coupling - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 3570890871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Coupling</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action Coupling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 960548364 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete the coupling to a Common Data Service Worker.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action DeleteCDSCoupling - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 960548364 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete Coupling</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action DeleteCDSCoupling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 1130826516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create or modify the coupling to a Common Data Service Worker.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action ManageCDSCoupling - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 1130826516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set Up Coupling</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action ManageCDSCoupling - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4085494530 - Control 3855107400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filtro Cód. Clientes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Filtro Cód. Clientes",FRA="Filtrer Code Client"</note>

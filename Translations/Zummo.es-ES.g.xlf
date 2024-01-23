@@ -15004,6 +15004,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Trans. Ord. Shipment (Qty.) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3113805797 - Method 2278139542 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar toda la lista de precios %1 y fecha final %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar toda la lista de precios %1 y fecha final %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Method Update_CRM - NamedType lblConfirm</note>
+          <target>¿Desea actualizar toda la lista de precios %1 y fecha final %2</target>
+        </trans-unit>
         <trans-unit id="Page 3113805797 - Control 827840431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bloqueado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
@@ -15045,6 +15051,77 @@
           <note from="Developer" annotates="general" priority="2">ESP="Coste Unitario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemUnitCost - Property Caption</note>
           <target>Coste Unitario</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 4044637255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CDS</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action ActionGroupCDS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 2278057804 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send or get updated data to or from Common Data Service.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Enviar/Recibir a/de Common Data Service."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action CDSSynchronizeNow - Property ToolTip</note>
+          <target>Enviar/Recibir a/de Common Data Service.</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 2278057804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Synchronize</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sincronizar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action CDSSynchronizeNow - Property Caption</note>
+          <target>Sincronizar</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 3570890871 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create, change, or delete a coupling between the Business Central record and a Common Data Service record.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action Coupling - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 3570890871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Coupling</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action Coupling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 960548364 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete the coupling to a Common Data Service Worker.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action DeleteCDSCoupling - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 960548364 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete Coupling</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action DeleteCDSCoupling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 1130826516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create or modify the coupling to a Common Data Service Worker.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action ManageCDSCoupling - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 1130826516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set Up Coupling</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action ManageCDSCoupling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 858950785 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View integration synchronization jobs</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ver tareas de sincronización programadas de esta tabla"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action ShowLog - Property ToolTip</note>
+          <target>Ver tareas de sincronización programadas de esta tabla</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 858950785 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Synchronization Log</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Log de Sincronización"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action ShowLog - Property Caption</note>
+          <target>Log de Sincronización</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 1649905847 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update owner of ALL CRM customers by assigning them to their Area Manager.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRM - Property ToolTip</note>
+          <target>Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 1649905847 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sync. Price Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sincronizar Grupo de precio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRM - Property Caption</note>
+          <target>Sincronizar Grupo de precio</target>
         </trans-unit>
         <trans-unit id="Page 4085494530 - Method 2715736974 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>No puede se puede trazar si no indica un filtro</source>
