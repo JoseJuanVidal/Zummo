@@ -161,19 +161,110 @@ page 50010 "Tarifas Precios"
 
     actions
     {
-        area(Processing)
+        area(Navigation)
         {
-            action(ActionName)
+            group(ActionGroupCDS)
             {
-                ApplicationArea = All;
+                Caption = 'CDS';
+                Visible = CDSIntegrationEnabled;
+                action(UpdateCRM)
+                {
+                    Caption = 'Sync. Price Group', comment = 'ESP="Sincronizar Grupo de precio"';
+                    ApplicationArea = All;
+                    Visible = true;
+                    Image = RefreshText;
+                    Enabled = CDSIsCoupledToRecord;
+                    ToolTip = 'Update owner of ALL CRM customers by assigning them to their Area Manager.', comment = 'ESP="Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager"';
+                    trigger OnAction()
+                    var
+                    begin
+                        Update_CRM();
+                    end;
+                }
 
-                trigger OnAction()
-                begin
+                action(CDSSynchronizeNow)
+                {
+                    Caption = 'Synchronize', comment = 'ESP="Sincronizar"';
+                    ApplicationArea = All;
+                    Visible = true;
+                    Image = Refresh;
+                    Enabled = CDSIsCoupledToRecord;
+                    ToolTip = 'Send or get updated data to or from Common Data Service.', comment = 'ESP="Enviar/Recibir a/de Common Data Service."';
+                    trigger OnAction()
+                    var
+                        CRMIntegrationManagement: Codeunit "CRM Integration Management";
+                    begin
+                        CRMIntegrationManagement.UpdateOneNow(RecordId);
+                    end;
+                }
+                action(ShowLog)
+                {
+                    Caption = 'Synchronization Log', comment = 'ESP="Log de Sincronización"';
+                    ApplicationArea = All;
+                    Visible = true;
+                    Image = Log;
+                    ToolTip = 'View integration synchronization jobs', comment = 'ESP="Ver tareas de sincronización programadas de esta tabla"';
 
-                end;
+                    trigger OnAction()
+                    var
+                        CRMIntegrationManagement: Codeunit "CRM Integration Management";
+                    begin
+                        CRMIntegrationManagement.ShowLog(RecordId);
+                    end;
+                }
+                group(Coupling)
+                {
+                    Caption = 'Coupling';
+                    Image = LinkAccount;
+                    ToolTip = 'Create, change, or delete a coupling between the Business Central record and a Common Data Service record.';
+
+                    action(ManageCDSCoupling)
+                    {
+                        Caption = 'Set Up Coupling';
+                        ApplicationArea = All;
+                        Visible = true;
+                        Image = LinkAccount;
+                        ToolTip = 'Create or modify the coupling to a Common Data Service Worker.';
+
+                        trigger OnAction()
+                        var
+                            CRMIntegrationManagement: Codeunit "CRM Integration Management";
+                        begin
+                            CRMIntegrationManagement.DefineCoupling(RecordId);
+                        end;
+                    }
+                    action(DeleteCDSCoupling)
+                    {
+                        Caption = 'Delete Coupling';
+                        ApplicationArea = All;
+                        Visible = true;
+                        Image = UnLinkAccount;
+                        Enabled = CDSIsCoupledToRecord;
+                        ToolTip = 'Delete the coupling to a Common Data Service Worker.';
+
+                        trigger OnAction()
+                        var
+                            CRMCouplingManagement: Codeunit "CRM Coupling Management";
+                        begin
+                            CRMCouplingManagement.RemoveCoupling(RecordId);
+                        end;
+                    }
+                }
+
             }
         }
     }
+    trigger OnOpenPage()
+    begin
+        CDSIntegrationEnabled := CRMIntegrationManagement.IsCRMIntegrationEnabled();
+    end;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        if CDSIntegrationEnabled then
+            CDSIsCoupledToRecord := CRMCouplingManagement.IsRecordCoupledToCRM(RecordId);
+    end;
+
     trigger OnAfterGetRecord()
     begin
         if Item.Get("Item No.") then;
@@ -181,5 +272,21 @@ page 50010 "Tarifas Precios"
 
     var
         Item: Record Item;
+        CRMIntegrationManagement: Codeunit "CRM Integration Management";
+        CRMCouplingManagement: Codeunit "CRM Coupling Management";
+        CDSIntegrationEnabled: Boolean;
+        CDSIsCoupledToRecord: Boolean;
+
+    local procedure Update_CRM()
+    var
+        Integracion_crm: Codeunit "Integracion_crm_btc";
+        lblConfirm: Label '¿Desea actualizar toda la lista de precios %1 y fecha final %2?', comment = 'ESP="¿Desea actualizar toda la lista de precios %1 y fecha final %2"';
+    begin
+        IF Confirm(lblConfirm, false, Rec."Sales Code") then
+            Integracion_crm.UpdateSalesPriceGroup(Rec."Sales Code", Rec."Ending Date");
+    end;
+
+
+
 
 }

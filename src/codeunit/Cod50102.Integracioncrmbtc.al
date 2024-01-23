@@ -541,10 +541,6 @@ codeunit 50102 "Integracion_crm_btc"
 
         DestinationRecordRef.GETTABLE(CRMquote);
 
-
-
-
-
         // DestinationFieldRef := DestinationRecordRef.FIELD(CRMquote.FIELDNO(TransactionCurrencyId));
         // if CRMSynchHelper.UpdateCRMCurrencyIdIfChanged(CRMTransactioncurrency.ISOCurrencyCode, DestinationFieldRef) then
         //     AdditionalFieldsWereModified := true;
@@ -3734,6 +3730,50 @@ codeunit 50102 "Integracion_crm_btc"
                 Window.Update(1, Customer.Name);
                 UpdateDtoAccountCRM(Customer."No.");
             Until Customer.next() = 0;
+        Window.Close();
+    end;
+
+    // =============     Sincronizacion actualizacion y revision de tarifas de precios          ====================
+    // ==  
+    // ==  UpdateTarifasPrecios
+    // ==  
+    // ======================================================================================================
+
+    procedure UpdateSalesPriceGroup(SalesCode: Code[20]; EndDate: Date)
+    var
+        SalesPrice: Record "Sales Price";
+        Pricelevel: Record "CRM Pricelevel";
+        Productpricelevel: record "CRM Productpricelevel";
+        CRMIntegrationRecord: Record "CRM Integration Record";
+        BCIntegrationRecord: Record "Integration Record";
+        CRMIntegrationManagement: Codeunit "CRM Integration Management";
+        Window: Dialog;
+        lblWindow: Label 'Tarifa precio: #1###################\Producto: #2##################'
+            , comment = 'ESP="Tarifa precio: #1###################\Producto: #2##################"';
+    begin
+        Window.Open(lblWindow);
+        SalesPrice.SetRange("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
+        SalesPrice.SetRange("Sales Code", SalesCode);
+        SalesPrice.SetRange("Ending Date", EndDate);
+        if SalesPrice.FindFirst() then
+            repeat
+                Window.Update(1, SalesPrice."Sales Code");
+                Window.Update(2, SalesPrice."Item No.");
+                BCIntegrationRecord.SetRange("Table ID", Database::"Sales Price");
+                BCIntegrationRecord.SetRange("Record ID", SalesPrice.RecordId);
+                if BCIntegrationRecord.FindFirst() then
+                    BCIntegrationRecord.Delete();
+                CRMIntegrationRecord.SetRange("Integration ID", BCIntegrationRecord."Integration ID");
+                if CRMIntegrationRecord.FindFirst() then;
+                CRMIntegrationRecord.Delete();
+                // comprobamos la Tarifa si existe en CRM
+                Productpricelevel.SetRange(PriceLevelIdName, SalesPrice."Sales Code");
+                Productpricelevel.SetRange(ProductId, SalesPrice."Item No.");
+                if Productpricelevel.FindFirst() then
+                    Productpricelevel.Delete();
+                //  creamos la tarifa en CRM
+                CRMIntegrationManagement.CreateNewRecordsInCRM(SalesPrice.RecordId);
+            Until SalesPrice.next() = 0;
         Window.Close();
     end;
 }
