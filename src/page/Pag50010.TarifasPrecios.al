@@ -174,14 +174,27 @@ page 50010 "Tarifas Precios"
                     Visible = true;
                     Image = RefreshText;
                     Enabled = CDSIsCoupledToRecord;
-                    ToolTip = 'Update owner of ALL CRM customers by assigning them to their Area Manager.', comment = 'ESP="Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager"';
+                    ToolTip = 'Updates the selected Tariff on the end date CRM.', comment = 'ESP="Actualiza la Tarifa seleccionada en fecha final."';
                     trigger OnAction()
                     var
                     begin
-                        Update_CRM();
+                        Update_CRM('');
                     end;
                 }
-
+                action(UpdateCRMOne)
+                {
+                    Caption = 'Sync. Price', comment = 'ESP="Sincronizar Precio"';
+                    ApplicationArea = All;
+                    Visible = true;
+                    Image = RefreshText;
+                    Enabled = CDSIsCoupledToRecord;
+                    ToolTip = 'Updates the selected prices in the CRM..', comment = 'ESP="Actualiza el precios seleccionado en el CRM."';
+                    trigger OnAction()
+                    var
+                    begin
+                        Update_CRM(rec."Item No.");
+                    end;
+                }
                 action(CDSSynchronizeNow)
                 {
                     Caption = 'Synchronize', comment = 'ESP="Sincronizar"';
@@ -277,13 +290,13 @@ page 50010 "Tarifas Precios"
         CDSIntegrationEnabled: Boolean;
         CDSIsCoupledToRecord: Boolean;
 
-    local procedure Update_CRM()
+    local procedure Update_CRM(ItemNo: code[20])
     var
         Integracion_crm: Codeunit "Integracion_crm_btc";
         lblConfirm: Label '¿Desea actualizar toda la lista de precios %1 y fecha final %2?', comment = 'ESP="¿Desea actualizar toda la lista de precios %1 y fecha final %2"';
     begin
         IF Confirm(lblConfirm, false, Rec."Sales Code") then
-            Integracion_crm.UpdateSalesPriceGroup(Rec."Sales Code", Rec."Ending Date");
+            Integracion_crm.UpdateSalesPriceGroup(Rec."Sales Code", Rec."Ending Date", ItemNo);
     end;
 
 

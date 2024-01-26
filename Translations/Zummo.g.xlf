@@ -13849,14 +13849,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action ShowLog - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Action 1649905847 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Update owner of ALL CRM customers by assigning them to their Area Manager.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager"</note>
+          <source>Updates the selected Tariff on the end date CRM.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza la Tarifa seleccionada en fecha final."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRM - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Action 1649905847 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sync. Price Group</source>
           <note from="Developer" annotates="general" priority="2">ESP="Sincronizar Grupo de precio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 3037680331 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Updates the selected prices in the CRM..</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza el precios seleccionado en el CRM."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRMOne - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 3037680331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sync. Price</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sincronizar Precio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRMOne - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4085494530 - Method 2715736974 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>No puede se puede trazar si no indica un filtro</source>

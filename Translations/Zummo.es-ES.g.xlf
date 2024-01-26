@@ -10281,6 +10281,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method UpdateDtoAccountsCRM - NamedType lblDialog</note>
           <target>Cliente #1#### - #2########################################</target>
         </trans-unit>
+        <trans-unit id="Codeunit 2573646532 - Method 401224309 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tarifa precio: #1###################\Producto: #2##################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tarifa precio: #1###################\Producto: #2##################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Integracion_crm_btc - Method UpdateSalesPriceGroup - NamedType lblWindow</note>
+          <target>Tarifa precio: #1###################\Producto: #2##################</target>
+        </trans-unit>
         <trans-unit id="Codeunit 3997019009 - NamedType 4134082808" size-unit="char" translate="yes" xml:space="preserve">
           <source>The file export has one or more errors.\\For each line to be exported, resolve the errors displayed to the right and then try to export again.</source>
           <note from="Developer" annotates="general" priority="2">ESP="La exportación del archivo tiene uno o más errores. \\ Para cada línea que se va a exportar, resuelva los errores que se muestran a la derecha y luego intente exportar nuevamente."</note>
@@ -15112,16 +15118,28 @@
           <target>Log de Sincronización</target>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Action 1649905847 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Update owner of ALL CRM customers by assigning them to their Area Manager.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager"</note>
+          <source>Updates the selected Tariff on the end date CRM.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza la Tarifa seleccionada en fecha final."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRM - Property ToolTip</note>
-          <target>Actualiza propietario de TODOS los clientes CRM asignandolos a su Area Manager</target>
+          <target>Actualiza la Tarifa seleccionada en fecha final.</target>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Action 1649905847 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sync. Price Group</source>
           <note from="Developer" annotates="general" priority="2">ESP="Sincronizar Grupo de precio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRM - Property Caption</note>
           <target>Sincronizar Grupo de precio</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 3037680331 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Updates the selected prices in the CRM..</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza el precios seleccionado en el CRM."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRMOne - Property ToolTip</note>
+          <target>Actualiza el precios seleccionado en el CRM.</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 3037680331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sync. Price</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sincronizar Precio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRMOne - Property Caption</note>
+          <target>Sincronizar Precio</target>
         </trans-unit>
         <trans-unit id="Page 4085494530 - Method 2715736974 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>No puede se puede trazar si no indica un filtro</source>

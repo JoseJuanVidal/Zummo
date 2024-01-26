@@ -1100,18 +1100,24 @@ codeunit 50102 "Integracion_crm_btc"
         //         ProductNumber := CRMProductos_btc.ProductNumber;
         //         INSERT;
         //     END;
-        // end;
+        // end;  
 
-        CustomerPriceGroup.Reset();
-        CustomerPriceGroup.SetRange(Code, 'PVP');
-        if CustomerPriceGroup.FindFirst() then begin
-            IF NOT CRMIntegrationRecord.FindIDFromRecordID(CustomerPriceGroup.RECORDID, CustomerPriceGroupId) THEN
-                IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Customer Price Group", CustomerPriceGroup.RECORDID, OutOfMapFilter) THEN;
-            // quitamos errores
-            //ERROR('CRM CustomerPriceGroup: ' + Item."No." + ' Dato: ' + CustomerPriceGroup.Code);
-            CRMProductos_btc.PriceLevelId := CustomerPriceGroupId;
-            AdditionalFieldsWereModified := TRUE;
-        end;
+        // ANTES ponia el id de la de por defecto del CRM
+        // CustomerPriceGroup.Reset();
+        // CustomerPriceGroup.SetRange(Code, 'PVP');
+        // if CustomerPriceGroup.FindFirst() then begin
+        //     IF NOT CRMIntegrationRecord.FindIDFromRecordID(CustomerPriceGroup.RECORDID, CustomerPriceGroupId) THEN
+        //         IF CRMSynchHelper.SynchRecordIfMappingExists(DATABASE::"Customer Price Group", CustomerPriceGroup.RECORDID, OutOfMapFilter) THEN;
+        //     // quitamos errores
+        //     //ERROR('CRM CustomerPriceGroup: ' + Item."No." + ' Dato: ' + CustomerPriceGroup.Code);
+        //     CRMProductos_btc.PriceLevelId := CustomerPriceGroupId;
+        //     AdditionalFieldsWereModified := TRUE;
+        // end;
+        CRMPricelevel.SetRange(Name, 'PVP');
+        if CRMPricelevel.FindFirst() then
+            CRMProductos_btc.PriceLevelId := CRMPricelevel.PriceLevelId
+        else
+            CRMProductos_btc.PriceLevelId := '74657cca-44a7-ea11-a812-000d3a20f014';  // PVP
 
 
         // // Update the Vendor Name
@@ -3739,12 +3745,12 @@ codeunit 50102 "Integracion_crm_btc"
     // ==  
     // ======================================================================================================
 
-    procedure UpdateSalesPriceGroup(SalesCode: Code[20]; EndDate: Date)
+    procedure UpdateSalesPriceGroup(SalesCode: Code[20]; EndDate: Date; ItemNo: code[20])
     var
         SalesPrice: Record "Sales Price";
         CRMProduct: Record "CRM Product";
-        Pricelevel: Record "CRM Pricelevel";
-        Productpricelevel: record "CRM Productpricelevel";
+        CRMPricelevel: Record "CRM Pricelevel";
+        CRMProductpricelevel: record "CRM Productpricelevel";
         CRMIntegrationRecord: Record "CRM Integration Record";
         BCIntegrationRecord: Record "Integration Record";
         CRMIntegrationManagement: Codeunit "CRM Integration Management";
@@ -3757,20 +3763,16 @@ codeunit 50102 "Integracion_crm_btc"
         SalesPrice.SETRANGE("Sales Code", SalesCode);
         SalesPrice.SETRANGE("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
         SalesPrice.SETRANGE("Ending Date", EndDate);
+        if ItemNo <> '' then
+            SalesPrice.SETRANGE("Item No.", ItemNo);
         IF SalesPrice.FINDFIRST() THEN
             REPEAT
                 Window.UPDATE(1, SalesPrice."Sales Code");
                 Window.UPDATE(2, SalesPrice."Item No.");
                 CRMProduct.SETRANGE(ProductNumber, SalesPrice."Item No.");
                 IF CRMProduct.FINDFIRST THEN BEGIN
-                    // comprobamos la Tarifa si existe en CRM
-                    Productpricelevel.SETRANGE(PriceLevelIdName, SalesPrice."Sales Code");
-                    Productpricelevel.SETRANGE(ProductNumber, SalesPrice."Item No.");
-                    IF Productpricelevel.FINDFIRST() THEN BEGIN
-                        Productpricelevel.Amount := SalesPrice."Unit Price";
-                        Productpricelevel.Amount_Base := SalesPrice."Unit Price";
-                        Productpricelevel.MODIFY;
-                        // si al final no existe, creamos la tarifa en CRM        
+                    CRMPricelevel.SETRANGE(Name, SalesPrice."Sales Code");
+                    if CRMPricelevel.FINDFIRST then begin
                         BCIntegrationRecord.SETRANGE("Table ID", DATABASE::"Sales Price");
                         BCIntegrationRecord.SETRANGE("Record ID", SalesPrice.RECORDID);
                         IF NOT BCIntegrationRecord.FINDFIRST() THEN BEGIN
@@ -3781,10 +3783,40 @@ codeunit 50102 "Integracion_crm_btc"
                             BCIntegrationRecord."Modified On" := CREATEDATETIME(WORKDATE, TIME);
                             BCIntegrationRecord.INSERT;
                         END;
+                        // comprobamos la Tarifa si existe en CRM
+                        CRMProductpricelevel.SETRANGE(PriceLevelIdName, SalesPrice."Sales Code");
+                        CRMProductpricelevel.SETRANGE(ProductNumber, SalesPrice."Item No.");
+                        IF NOT CRMProductpricelevel.FINDFIRST() THEN BEGIN
+
+                            CRMProductpricelevel.INIT;
+                            CRMProductpricelevel.ProductPriceLevelId := CREATEGUID();
+                            CRMProductpricelevel.PriceLevelId := CRMPricelevel.PriceLevelId;
+                            CRMProductpricelevel.UoMId := CRMProduct.DefaultUoMId;
+                            CRMProductpricelevel.ProductId := CRMProduct.ProductId;
+                            CRMProductpricelevel.Amount := SalesPrice."Unit Price";
+                            CRMProductpricelevel.Amount_Base := SalesPrice."Unit Price";
+                            CRMProductpricelevel.QuantitySellingCode := CRMProductpricelevel.QuantitySellingCode::NoControl;
+                            CRMProductpricelevel.PricingMethodCode := CRMProductpricelevel.PricingMethodCode::CurrencyAmount;
+                            CRMProductpricelevel.ProductIdName := CRMProduct.Name;
+                            CRMProductpricelevel.ProductNumber := CRMProduct.ProductNumber;
+                            CRMProductpricelevel.TransactionCurrencyId := 'fe897490-c870-ea11-a811-000d3a4b2c6e';
+                            CRMProductpricelevel.TransactionCurrencyIdName := 'EURO';
+                            CRMProductpricelevel.INSERT;
+                        END ELSE BEGIN
+                            CRMProductpricelevel.Amount := SalesPrice."Unit Price";
+                            CRMProductpricelevel.Amount_Base := SalesPrice."Unit Price";
+                            CRMProductpricelevel.MODIFY;
+                        END;
+
                         CRMIntegrationRecord.SETRANGE("Integration ID", BCIntegrationRecord."Integration ID");
-                        IF NOT CRMIntegrationRecord.FINDFIRST() THEN BEGIN
+                        IF CRMIntegrationRecord.FINDFIRST() THEN BEGIN
+                            CRMIntegrationRecord."CRM ID" := CRMProductpricelevel.ProductPriceLevelId;
+                            CRMIntegrationRecord."Last Synch. Modified On" := CREATEDATETIME(WORKDATE, TIME);
+                            CRMIntegrationRecord."Last Synch. CRM Modified On" := CREATEDATETIME(WORKDATE, TIME);
+                            CRMIntegrationRecord.MODIFY;
+                        END ELSE BEGIN
                             CRMIntegrationRecord.INIT;
-                            CRMIntegrationRecord."CRM ID" := Productpricelevel.ProductPriceLevelId;
+                            CRMIntegrationRecord."CRM ID" := CRMProductpricelevel.ProductPriceLevelId;
                             CRMIntegrationRecord."Integration ID" := BCIntegrationRecord."Integration ID";
                             CRMIntegrationRecord."Last Synch. Modified On" := CREATEDATETIME(WORKDATE, TIME);
                             CRMIntegrationRecord."Last Synch. CRM Modified On" := CREATEDATETIME(WORKDATE, TIME);
@@ -3792,10 +3824,10 @@ codeunit 50102 "Integracion_crm_btc"
                             //CRMIntegrationRecord."Last Synch. Result" := CRMIntegrationRecord."Last Synch. Result"::Success;
                             CRMIntegrationRecord."Last Synch. CRM Result" := CRMIntegrationRecord."Last Synch. CRM Result"::Success;
                             CRMIntegrationRecord.INSERT;
-                        end;
+                        END;
                         COMMIT;
                     end;
-                end;
+                END;
             until SalesPrice.NEXT() = 0;
 
         Window.Close();
