@@ -12,6 +12,10 @@ pageextension 50060 "STH Payment Terms" extends "Payment Terms"
             {
                 ApplicationArea = all;
             }
+            field("PayDays Average"; "PayDays Average")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }

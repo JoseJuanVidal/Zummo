@@ -12,5 +12,10 @@ tableextension 50185 "STH Payment Terms" extends "Payment Terms"
             DataClassification = CustomerContent;
             Caption = 'Es NO Asegurable (Otros)', comment = 'ESP="Es NO Asegurable (Otros)"';
         }
+        Field(50100; "PayDays Average"; Integer)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PayDays Average', comment = 'ESP="Media Dias de pago"';
+        }
     }
 }
