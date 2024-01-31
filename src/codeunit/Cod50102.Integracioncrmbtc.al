@@ -68,7 +68,7 @@ codeunit 50102 "Integracion_crm_btc"
             'Customer-CRM Account_btc', 'Customer-CRM Account_crm_btc':
                 AdditionalFieldsWereModified :=
                   ActualizarCamposCliente(SourceRecordRef, DestinationRecordRef);
-            'Item-CRM Productos_btc', 'Item-CRM Productos_crm_btc':
+            'Item-CRM Product', 'Item-CRM Productos_btc', 'Item-CRM Productos_crm_btc':
                 AdditionalFieldsWereModified :=
                       ActualizarCamposProducto(SourceRecordRef, DestinationRecordRef);
             'Customer Price Group-CRM Pricelevel_btc', 'Customer Price Group-CRM Pricelevel_crm_btc':

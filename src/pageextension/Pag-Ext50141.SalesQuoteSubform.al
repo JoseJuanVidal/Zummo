@@ -10,6 +10,13 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
         {
             StyleExpr = StyleExpBloqueado;
         }
+        addafter("Location Code")
+        {
+            field("Bin Code"; "Bin Code")
+            {
+                ApplicationArea = all;
+            }
+        }
 
         addafter("Line Amount")
         {
