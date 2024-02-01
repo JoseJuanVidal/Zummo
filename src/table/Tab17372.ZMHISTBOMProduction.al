@@ -114,7 +114,7 @@ table 17372 "ZM HIST BOM Production"
     begin
         Fechas.Reset();
         Fechas.SetRange("Period Type", Fechas."Period Type"::Month);
-        Fechas.SetFilter("Period Start", '%1..%2', 20210101D, Today());
+        Fechas.SetFilter("Period Start", '%1..%2', 20200101D, Today());
         if Fechas.FindFirst() then
             repeat
                 DeleteItemPeriodBom(ProductionBOMNo, Fechas."Period Start");
