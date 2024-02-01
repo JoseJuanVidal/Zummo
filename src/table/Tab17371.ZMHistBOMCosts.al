@@ -161,7 +161,7 @@ table 17371 "ZM Hist. BOM Costs"
         Window.Open('Fecha #1###############\BOM #2##############\Producto #3########################');
         Fechas.Reset();
         Fechas.SetRange("Period Type", Fechas."Period Type"::Month);
-        Fechas.SetFilter("Period Start", '%1..%2', 20210101D, Today());
+        Fechas.SetFilter("Period Start", '%1..%2', 20200101D, Today());
         if Fechas.FindFirst() then
             repeat
                 DeleteHistBOMCosts(ProductionBOMNo, Fechas."Period Start");
