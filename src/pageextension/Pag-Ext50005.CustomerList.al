@@ -40,6 +40,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 Visible = false;
             }
         }
+
         addlast(Control1)
         {
             field(Delegado_btc; Delegado_btc)
@@ -129,6 +130,49 @@ pageextension 50005 "CustomerList" extends "Customer List"
             {
                 ApplicationArea = all;
                 StyleExpr = StyleExp;
+            }
+            field(ShortcutDimCode1; ShortcutDimCode[1])
+            {
+                CaptionClass = '1,2,1';
+                Visible = false;
+            }
+            field(ShortcutDimCode2; ShortcutDimCode[2])
+            {
+                CaptionClass = '1,2,2';
+                Visible = false;
+            }
+            field(ShortcutDimCode3; ShortcutDimCode[3])
+            {
+                CaptionClass = '1,2,3';
+                Visible = false;
+            }
+            field(ShortcutDimCode4; ShortcutDimCode[4])
+            {
+                CaptionClass = '1,2,4';
+                Visible = false;
+            }
+            field(ShortcutDimCode5; ShortcutDimCode[5])
+            {
+                CaptionClass = '1,2,5';
+                Visible = false;
+            }
+
+            field(ShortcutDimCode6; ShortcutDimCode[6])
+            {
+                CaptionClass = '1,2,6';
+                Visible = false;
+            }
+
+            field(ShortcutDimCode7; ShortcutDimCode[7])
+            {
+                CaptionClass = '1,2,7';
+                Visible = false;
+            }
+
+            field(ShortcutDimCode8; ShortcutDimCode[8])
+            {
+                CaptionClass = '1,2,8';
+                Visible = false;
             }
         }
     }
@@ -349,9 +393,13 @@ pageextension 50005 "CustomerList" extends "Customer List"
     trigger OnAfterGetRecord()
     begin
         CalcVtoAseguradora();
+        ShowShortcutDimCode();
     end;
 
     var
+        GeneralLedgerSetup: Record "General Ledger Setup";
+        DefaulDimension: Record "Default Dimension";
+        ShortcutDimCode: array[8] of Code[20];
         StyleExp: text;
         Text000: Label '¿Desea calcular la fecha de vencimiento Aseguradora?';
 
@@ -411,6 +459,37 @@ pageextension 50005 "CustomerList" extends "Customer List"
         CurrPage.SetSelectionFilter(Customer);
         Functions.CustomerChangeClasification(Customer);
 
+    end;
+
+    local procedure ShowShortcutDimCode()
+    begin
+        GeneralLedgerSetup.Get();
+        Clear(ShortcutDimCode);
+        DefaulDimension.Reset();
+        DefaulDimension.SetRange("Table ID", Database::Customer);
+        DefaulDimension.SetRange("No.", Rec."No.");
+        if DefaulDimension.FindFirst() then
+            repeat
+                case DefaulDimension."Dimension Code" of
+                    GeneralLedgerSetup."Shortcut Dimension 1 Code":
+                        ShortcutDimCode[1] := DefaulDimension."Dimension Value Code";
+                    GeneralLedgerSetup."Shortcut Dimension 2 Code":
+                        ShortcutDimCode[2] := DefaulDimension."Dimension Value Code";
+                    GeneralLedgerSetup."Shortcut Dimension 3 Code":
+                        ShortcutDimCode[3] := DefaulDimension."Dimension Value Code";
+                    GeneralLedgerSetup."Shortcut Dimension 4 Code":
+                        ShortcutDimCode[4] := DefaulDimension."Dimension Value Code";
+                    GeneralLedgerSetup."Shortcut Dimension 5 Code":
+                        ShortcutDimCode[5] := DefaulDimension."Dimension Value Code";
+                    GeneralLedgerSetup."Shortcut Dimension 6 Code":
+                        ShortcutDimCode[6] := DefaulDimension."Dimension Value Code";
+                    GeneralLedgerSetup."Shortcut Dimension 7 Code":
+                        ShortcutDimCode[7] := DefaulDimension."Dimension Value Code";
+                    GeneralLedgerSetup."Shortcut Dimension 8 Code":
+                        ShortcutDimCode[8] := DefaulDimension."Dimension Value Code";
+
+                end;
+            Until DefaulDimension.next() = 0;
     end;
 
 }

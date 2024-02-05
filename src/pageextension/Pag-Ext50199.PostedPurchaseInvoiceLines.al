@@ -32,16 +32,11 @@ pageextension 50199 "PostedPurchaseInvoiceLines" extends "Posted Purchase Invoic
             {
                 CaptionClass = '1,2,8';
             }
-
-
-
-
         }
     }
 
 
     trigger OnAfterGetRecord()
-
     begin
         ShowShortcutDimCode(ShortcutDimCode);
     end;
