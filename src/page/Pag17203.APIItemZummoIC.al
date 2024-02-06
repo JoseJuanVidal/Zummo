@@ -43,12 +43,14 @@ page 17203 "API Item Zummo IC"
         UnitCost := 0;
         EndDate := 0D;
 
+
         CalcSalesPrice();
     end;
 
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
         Customer: Record Customer;
+        ItemTranslation: Record "Item Translation";
         SalesPrice: Record "Sales Price" temporary;
         PriceCalcMgt: Codeunit "Sales Price Calc. Mgt.";
         UnitCost: Decimal;
@@ -58,6 +60,11 @@ page 17203 "API Item Zummo IC"
     begin
         SalesReceivablesSetup.Get;
         if Customer.Get(SalesReceivablesSetup."Customer Quote IC") then begin
+
+            IF ItemTranslation.GET("No.", '', Customer."Language Code") THEN BEGIN
+                Description := ItemTranslation.Description;
+                "Description 2" := ItemTranslation."Description 2";
+            END;
 
             PriceCalcMgt.FindSalesPrice(SalesPrice, SalesReceivablesSetup."Customer Quote IC", '', Customer."Customer Price Group", '', Rec."No.", '',
                     Rec."Base Unit of Measure", Customer."Currency Code", WorkDate(), false);
