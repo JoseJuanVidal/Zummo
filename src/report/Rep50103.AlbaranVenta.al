@@ -1134,13 +1134,17 @@ report 50103 "AlbaranVenta"
     local procedure GetSerialNoParent(ItemLedgEntry: Record "Item Ledger Entry"): Text
     var
         ParentItemLedgEntry: Record "Item Ledger Entry";
+        Funciones: Codeunit Funciones;
     begin
         ParentItemLedgEntry.Reset();
         ParentItemLedgEntry.SetRange("Item No.", ItemLedgEntry."Item No.");
         ParentItemLedgEntry.SetRange("Entry Type", ItemLedgEntry."Entry Type"::Output);
         ParentItemLedgEntry.SetRange("Serial No.", ItemLedgEntry."Serial No.");
-        if ParentItemLedgEntry.FindFirst() then
+        if ParentItemLedgEntry.FindFirst() then begin
+            Funciones.ItemLdgEntryGetParentSerialNo(ParentItemLedgEntry);
+            ParentItemLedgEntry.Modify();
             exit(ParentItemLedgEntry.SerialNoParent);
+        end;
     end;
 
     local procedure UpdateSalesLineComponentes()

@@ -13968,6 +13968,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Actualzizar imagen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Item Documents - Action UpdatePicture - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3915894589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BOM Componente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Componetes ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BOM Assembly List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3915894589 - Control 2378311977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BOM Componente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Componetes ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BOM Assembly List - Control BOM Component - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3853294818 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nuevo,Procesar,Informe,Mostrar,Navegar</source>
           <note from="Developer" annotates="general" priority="2"></note>
