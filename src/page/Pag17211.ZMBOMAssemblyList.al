@@ -46,7 +46,20 @@ page 17211 "ZM BOM Assembly List"
                 {
                     ApplicationArea = all;
                 }
+                field(ParentItemBlocked; Item.Blocked)
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }
+
+    trigger OnAfterGetRecord()
+    begin
+        if Item.Get(Rec."Parent Item No.") then;
+    end;
+
+    var
+
+        Item: Record Item;
 }
