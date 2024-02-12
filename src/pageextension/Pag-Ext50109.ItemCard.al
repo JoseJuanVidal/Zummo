@@ -112,7 +112,6 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 ApplicationArea = all;
             }
         }
-
         addlast(Planning)
         {
             //ContraStockBajoPedido

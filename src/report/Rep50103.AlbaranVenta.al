@@ -6,6 +6,7 @@ report 50103 "AlbaranVenta"
     PreviewMode = PrintLayout;
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
+    Permissions = tabledata "Item Ledger Entry" = rmid;
 
     dataset
     {
@@ -1100,6 +1101,7 @@ report 50103 "AlbaranVenta"
 
     local procedure RetrieveLotAndExpFromPostedInv(pNumDocumento: Code[20]; pNumLinea: Integer; VAR RecMemEstadisticas: Record MemEstadistica_btc temporary; SearchSerieParent: Boolean)
     var
+        IsParentItem: Record Item;
         ValueEntryRelation: Record "Value Entry Relation";
         ValueEntry: Record "Value Entry";
         ItemLedgEntry: Record "Item Ledger Entry";
@@ -1141,8 +1143,10 @@ report 50103 "AlbaranVenta"
         ParentItemLedgEntry.SetRange("Entry Type", ItemLedgEntry."Entry Type"::Output);
         ParentItemLedgEntry.SetRange("Serial No.", ItemLedgEntry."Serial No.");
         if ParentItemLedgEntry.FindFirst() then begin
-            Funciones.ItemLdgEntryGetParentSerialNo(ParentItemLedgEntry);
-            ParentItemLedgEntry.Modify();
+            if ParentItemLedgEntry.SerialNoParent = '' then begin
+                Funciones.ItemLdgEntryGetParentSerialNo(ParentItemLedgEntry);
+                ParentItemLedgEntry.Modify();
+            end;
             exit(ParentItemLedgEntry.SerialNoParent);
         end;
     end;

@@ -60,6 +60,5 @@ page 17211 "ZM BOM Assembly List"
     end;
 
     var
-
         Item: Record Item;
 }
