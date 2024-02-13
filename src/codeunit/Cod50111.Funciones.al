@@ -2032,9 +2032,9 @@ codeunit 50111 "Funciones"
                 if NivelesInferior then
                     PlasticCalculateItem(BomItem);
 
-                Steel += BomItem.Steel;
-                Carton += BomItem.Carton;
-                Wood += BomItem.Wood;
+                Steel += BomItem.Steel * ProductionBomLine."Quantity per";
+                Carton += BomItem.Carton * ProductionBomLine."Quantity per";
+                Wood += BomItem.Wood * ProductionBomLine."Quantity per";
                 QtyPlastic += BomItem."Plastic Qty. (kg)" * ProductionBomLine."Quantity per";
                 if BomItem."Recycled plastic Qty. (kg)" <> 0 then
                     QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)" * ProductionBomLine."Quantity per"
@@ -2077,9 +2077,9 @@ codeunit 50111 "Funciones"
                 if NivelesInferior then
                     PlasticCalculateItem(BomItem);
 
-                Steel += BomItem.Steel;
-                Carton += BomItem.Carton;
-                Wood += BomItem.Wood;
+                Steel += BomItem.Steel * BomComponent."Quantity per";
+                Carton += BomItem.Carton * BomComponent."Quantity per";
+                Wood += BomItem.Wood * BomComponent."Quantity per";
                 QtyPlastic += BomItem."Plastic Qty. (kg)" * BomComponent."Quantity per";
                 if BomItem."Recycled plastic Qty. (kg)" <> 0 then
                     QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)" * BomComponent."Quantity per"

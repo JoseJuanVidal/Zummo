@@ -30908,6 +30908,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Media Dias de pago"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment Terms - Field PayDays Average - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1518785014 - Field 1321055271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2624288207">
+          <source>Carton Packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cartón Embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Production BOM Line - Field Carton - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1518785014 - Field 1842481456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2624288207">
           <source>Description Language</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción Idioma"</note>
@@ -30917,6 +30922,16 @@
           <source>Language Filter</source>
           <note from="Developer" annotates="general" priority="2">ESP="Filtro Idioma"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Production BOM Line - Field Language Filter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1518785014 - Field 3459458485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2624288207">
+          <source>Steel Packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acero Embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Production BOM Line - Field Steel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1518785014 - Field 469769693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2624288207">
+          <source>Wood Packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Madera Embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Production BOM Line - Field Wood - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1703201611 - Field 3454230391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3105979010">
           <source>Process Description</source>

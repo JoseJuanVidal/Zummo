@@ -43,6 +43,24 @@ pageextension 50198 "Production BOM Lines" extends "Production BOM Lines"
                 Editable = false;
             }
         }
+        addafter("Routing Link Code")
+        {
+            field(Steel; Steel)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(Carton; Carton)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(Wood; Wood)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
     }
     var
         SalesRecivablesSetup: record "Sales & Receivables Setup";
