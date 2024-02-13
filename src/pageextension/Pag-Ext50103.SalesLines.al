@@ -32,7 +32,11 @@ pageextension 50103 "SalesLines" extends "Sales Lines"
             {
                 ApplicationArea = all;
             }
-
+            field(ComentarioInterno_btc; ComentarioInterno_btc)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
 
 

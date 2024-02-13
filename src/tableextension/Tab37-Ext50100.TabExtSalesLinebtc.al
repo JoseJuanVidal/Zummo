@@ -186,6 +186,13 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             CalcFormula = lookup("Sales Header"."Quote No." where("Document Type" = field("Document Type"), "No." = field("Document No.")));
             editable = false;
         }
+        field(50020; ComentarioInterno_btc; text[250])
+        {
+            Caption = 'Internal Comment', comment = 'ESP="Comentario interno"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Header".ComentarioInterno_btc where("Document Type" = field("Document Type"), "No." = field("Document No.")));
+            editable = false;
+        }
         field(50030; Promociones; code[20])
         {
             DataClassification = CustomerContent;

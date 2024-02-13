@@ -27908,6 +27908,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mostrar Documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Service Item Lines - Action ShowDocument - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2268077932 - Field 3388543440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
+          <source>Internal Comment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentario interno"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension AssemblyLine - Field ComentarioInterno_btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2268077932 - Field 2152971446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
           <source>Linea Ventas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Linea Ventas"</note>
@@ -31632,6 +31637,11 @@
           <source>Delay Motive Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Motivo Retraso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field TextoMotivoRetraso_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 3388543440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>Internal Comment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentario interno"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ComentarioInterno_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 462513985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Line Discount1 %</source>

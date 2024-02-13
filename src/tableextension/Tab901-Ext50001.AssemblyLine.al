@@ -99,5 +99,12 @@ tableextension 50001 "AssemblyLine" extends "Assembly Line" //901
             Caption = 'No contemplar planificacion';
             DataClassification = CustomerContent;
         }
+        field(50020; ComentarioInterno_btc; text[250])
+        {
+            Caption = 'Internal Comment', comment = 'ESP="Comentario interno"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Header".ComentarioInterno_btc where("Document Type" = field("Document Type_btc"), "No." = field("Document No_btc")));
+            editable = false;
+        }
     }
 }

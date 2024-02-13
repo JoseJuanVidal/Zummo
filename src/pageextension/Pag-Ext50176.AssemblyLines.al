@@ -25,6 +25,10 @@ pageextension 50176 "AssemblyLines" extends "Assembly Lines"
             {
                 ApplicationArea = all;
             }
+            field(ComentarioInterno_btc; ComentarioInterno_btc)
+            {
+                ApplicationArea = all;
+            }
         }
     }
 
