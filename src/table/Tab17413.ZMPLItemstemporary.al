@@ -509,12 +509,26 @@ table 17413 "ZM PL Items temporary"
             DataClassification = CustomerContent;
             Caption = 'Posting Date', comment = 'ESP="Fecha Registro"';
         }
-        field(50826; "Codigo Empleado"; Code[50])
+        field(50826; "User ID"; Code[50])
         {
             DataClassification = CustomerContent;
+            Caption = 'Cód. Usuario', comment = 'ESP="Cód. Usuario"';
             TableRelation = User."User Name";
             ValidateTableRelation = true;
             Editable = false;
+        }
+        field(50827; "Codigo Empleado"; Code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Codigo Empleado', comment = 'ESP="Codigo Empleado"';
+            TableRelation = Employee."No." where("User Id" = field("User ID"));
+            ValidateTableRelation = true;
+            //Editable = false;
+        }
+        field(50828; "Reason Blocked"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Reason Blocked/UnBlock', comment = 'ESP="Motivo Bloqueo/Desbloqueo"';
         }
         field(99000750; "Routing No."; Code[20])
         {
@@ -552,14 +566,12 @@ table 17413 "ZM PL Items temporary"
         if "No." = '' then begin
             NoSeriesMgt.InitSeries(SetupPreItemReg."Temporary Nos.", xRec."Nos. series", 0D, Rec."No.", Rec."Nos. series");
         end;
-        if Rec."Posting Date" = 0D then
-            Rec."Posting Date" := WorkDate();
-        if "Codigo Empleado" = '' then
-            Rec."Codigo Empleado" := GetCodEmpleado();
+        InitRecord()
     end;
 
     trigger OnModify()
     begin
+        InitRecord()
     end;
 
     trigger OnDelete()
@@ -615,6 +627,14 @@ table 17413 "ZM PL Items temporary"
         EXIT(TempBlob.ReadAsText(CR, TEXTENCODING::UTF8));
     end;
 
+    local procedure InitRecord()
+    begin
+        if Rec."Posting Date" = 0D then
+            Rec."Posting Date" := WorkDate();
+        if "User ID" = '' then
+            Rec."User ID" := GetCodEmpleado();
+    end;
+
     local procedure GetCodEmpleado(): code[20]
     begin
         exit(UserId);
@@ -626,4 +646,5 @@ table 17413 "ZM PL Items temporary"
     begin
         Page.RunModal(0, Employee);
     end;
+
 }

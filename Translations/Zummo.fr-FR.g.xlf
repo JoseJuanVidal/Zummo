@@ -5878,11 +5878,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 430424374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Codigo Empleado</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Codigo Empleado - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 3329268434 - Field 2165769856 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>FIFO,LIFO,Specific,Average,Standard</source>
           <note from="Developer" annotates="general" priority="2"/>

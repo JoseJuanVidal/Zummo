@@ -17,6 +17,7 @@ page 17415 "ZM PL Items temporary card"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Nº identificador del producto', comment = 'ESP="Nº identificador del producto"';
 
                     trigger OnAssistEdit()
                     begin
@@ -31,27 +32,45 @@ page 17415 "ZM PL Items temporary card"
                 field(EnglishDescription; Rec.EnglishDescription)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Descripción en Ingles', comment = 'ESP="Descripción en Ingles"';
                 }
                 field("Base Unit of Measure"; Rec."Base Unit of Measure")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas.'
+                        , comment = 'ESP="Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas."';
                 }
                 field(Type; Type)
                 {
                     ApplicationArea = all;
+                    ToolTip = 'Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).'
+                        , comment = 'ESP="Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario)."';
                 }
                 field("State Creation"; "State Creation")
                 {
                     ApplicationArea = all;
+                    ToolTip = 'Indica el estado de la solicitud de datos.', comment = 'ESP="Indica el estado de la solicitud de datos."';
                 }
                 field(Blocked; Blocked)
                 {
                     ApplicationArea = all;
+                    ToolTip = 'Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena.'
+                        , comment = 'ESP="Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena."';
+                }
+                field("Reason Blocked"; "Reason Blocked")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado.'
+                    , comment = 'ESP="Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado."';
                 }
             }
             group(Applicant)
             {
                 Caption = 'Applicant', comment = 'ESP="Solicitante"';
+                field("User ID"; "User ID")
+                {
+                    ApplicationArea = all;
+                }
                 field("Codigo Empleado"; "Codigo Empleado")
                 {
                     ApplicationArea = all;
@@ -64,16 +83,20 @@ page 17415 "ZM PL Items temporary card"
                 {
                     ApplicationArea = all;
                 }
-                field(WorkDescription; WorkDescription)
+                group(Motivo)
                 {
-                    ApplicationArea = all;
-                    Caption = 'Reason', comment = 'ESP="Motivo"';
-                    MultiLine = true;
+                    field(WorkDescription; WorkDescription)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Reason', comment = 'ESP="Motivo"';
+                        ShowCaption = false;
+                        MultiLine = true;
 
-                    trigger OnValidate()
-                    begin
-                        SetWorkDescription(WorkDescription);
-                    end;
+                        trigger OnValidate()
+                        begin
+                            SetWorkDescription(WorkDescription);
+                        end;
+                    }
                 }
                 field(Activity; Activity)
                 {
@@ -134,6 +157,7 @@ page 17415 "ZM PL Items temporary card"
                 }
                 group("Posting Details")
                 {
+                    Caption = 'Posting Details', comment = 'ESP="Detalles del registro"';
                     field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                     {
                         ApplicationArea = all;
@@ -145,6 +169,7 @@ page 17415 "ZM PL Items temporary card"
                 }
                 group(ForeignTrade)
                 {
+                    Caption = 'ForeignTrade', comment = 'ESP="Comercio Exterior"';
                     field("Tariff No."; "Tariff No.")
                     {
                         ApplicationArea = all;
@@ -153,6 +178,7 @@ page 17415 "ZM PL Items temporary card"
             }
             group("Prices & Sales")
             {
+                Caption = 'Prices & Sales', comment = 'ESP="Precios y ventas"';
                 field("Unit Price"; "Unit Price")
                 {
                     ApplicationArea = all;

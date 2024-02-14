@@ -8940,8 +8940,9 @@
         </trans-unit>
         <trans-unit id="Table 3329268434 - Field 430424374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Codigo Empleado</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESP="Codigo Empleado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Codigo Empleado - Property Caption</note>
+          <target>Codigo Empleado</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Field 2827249175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Color</source>
@@ -9347,6 +9348,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Unidades por lote"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Units per Parcel - Property Caption</note>
           <target>Unidades por lote</target>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cód. Usuario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field User ID - Property Caption</note>
+          <target>Cód. Usuario</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Field 1232104226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Bus. Posting Gr. (Price)</source>
@@ -16302,6 +16309,60 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Costs &amp; Posting - Property Caption</note>
           <target>Costes y registro</target>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 3456565236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ForeignTrade</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comercio Exterior"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control ForeignTrade - Property Caption</note>
+          <target>Comercio Exterior</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 816898430 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Details</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Detalles del registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Posting Details - Property Caption</note>
+          <target>Detalles del registro</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 411531942 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Base Unit of Measure - Property ToolTip</note>
+          <target>Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas.</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 3543129988 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Blocked - Property ToolTip</note>
+          <target>Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena.</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 1295952376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripción en Ingles</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción en Ingles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control EnglishDescription - Property ToolTip</note>
+          <target>Descripción en Ingles</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº identificador del producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº identificador del producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control No. - Property ToolTip</note>
+          <target>Nº identificador del producto</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 2378972714 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indica el estado de la solicitud de datos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indica el estado de la solicitud de datos."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control State Creation - Property ToolTip</note>
+          <target>Indica el estado de la solicitud de datos.</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario)."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Type - Property ToolTip</note>
+          <target>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 1795699428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prices &amp; Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precios y ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Prices &amp; Sales - Property Caption</note>
+          <target>Precios y ventas</target>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Action 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open</source>
           <note from="Developer" annotates="general" priority="2">ESP="Abrir"</note>
@@ -16337,6 +16398,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta Productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action ConfAprobAltaProd - Property Caption</note>
           <target>Conf. Departamentos Alta Productos</target>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 1530319778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hist. Alta Productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Alta Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action PostedItemList - Property Caption</note>
+          <target>Hist. Alta Productos</target>
         </trans-unit>
         <trans-unit id="Page 988243340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General Setup Item registration</source>

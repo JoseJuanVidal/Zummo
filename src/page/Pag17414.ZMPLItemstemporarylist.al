@@ -110,6 +110,51 @@ page 17414 "ZM PL Items temporary list"
                 PromotedCategory = Category5;
                 RunObject = page "ZM PL Item Setup approvals";
             }
+            action(PostedItemList)
+            {
+                ApplicationArea = all;
+                Caption = 'Hist. Alta Productos', comment = 'ESP="Hist. Alta Productos"';
+                Image = PostedDeposit;
+                Promoted = true;
+                PromotedCategory = Category4;
+
+                trigger OnAction()
+                begin
+                    OnAction_PostedItemList();
+                end;
+            }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        Rec.FilterGroup := 2;
+        If ShowPosted then
+            SetRange("State Creation", "State Creation"::Finished)
+        else
+            SetFilter("State Creation", '<>%1', Rec."State Creation"::Finished);
+        Rec.FilterGroup := 0;
+    end;
+
+    var
+        ShowPosted: Boolean;
+
+    procedure SetShowPosted(Active: Boolean)
+    begin
+        ShowPosted := Active;
+    end;
+
+    local procedure OnAction_PostedItemList()
+    var
+        Itemstemporary: Record "ZM PL Items temporary";
+        Itemstemporarylist: page "ZM PL Items temporary list";
+    begin
+        Itemstemporary.FilterGroup := 2;
+        Itemstemporary.SetRange("State Creation", Itemstemporary."State Creation"::Finished);
+        Itemstemporary.FilterGroup := 0;
+        Itemstemporarylist.SetShowPosted(true);
+        Itemstemporarylist.SetTableView(Itemstemporary);
+        Itemstemporarylist.Run;
+    end;
+
 }

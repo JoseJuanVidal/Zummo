@@ -41,9 +41,6 @@ table 17412 "ZM PL Setup Item registration"
         }
     }
 
-    var
-        myInt: Integer;
-
     trigger OnInsert()
     begin
 
