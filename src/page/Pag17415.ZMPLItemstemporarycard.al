@@ -5,6 +5,8 @@ page 17415 "ZM PL Items temporary card"
     SourceTable = "ZM PL Items temporary";
     SourceTableView = where("State Creation" = filter(" " | Requested | Released));
     UsageCategory = Tasks;
+    PromotedActionCategories = 'New,Process,Report,Navigate',
+            comment = 'ESP="Nuevo,Procesar,Informe,Navegar"';
 
 
     layout
@@ -24,6 +26,8 @@ page 17415 "ZM PL Items temporary card"
                         IF AssistEdit THEN
                             CurrPage.UPDATE;
                     end;
+
+
                 }
                 field(Description; Rec.Description)
                 {
@@ -72,6 +76,10 @@ page 17415 "ZM PL Items temporary card"
                     ApplicationArea = all;
                 }
                 field("Codigo Empleado"; "Codigo Empleado")
+                {
+                    ApplicationArea = all;
+                }
+                field("Nombre Empleado"; "Nombre Empleado")
                 {
                     ApplicationArea = all;
                 }
@@ -358,6 +366,44 @@ page 17415 "ZM PL Items temporary card"
                 end;
             }
         }
+        area(Navigation)
+        {
+            Group("Lista de materiales")
+            {
+                group(AssemblyML)
+                {
+                    action(ShowLMAssembly)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'L. M. Ensamblado', comment = 'ESP="L. M. Ensamblado"';
+                        Image = BOM;
+                        Promoted = true;
+                        PromotedCategory = Category4;
+                        trigger OnAction()
+                        begin
+                            Navigate_AssemblyML();
+                        end;
+                    }
+                    action(ShowLMProduction)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'L. M. Producción', comment = 'ESP="L. M. Producción"';
+                        Image = BOM;
+                        Promoted = true;
+                        PromotedCategory = Category4;
+                        trigger OnAction()
+                        begin
+                            Navigate_ProductionML();
+                        end;
+                    }
+                }
+                group(LMProducion)
+                {
+
+                }
+
+            }
+        }
     }
 
     trigger OnAfterGetRecord()
@@ -383,5 +429,22 @@ page 17415 "ZM PL Items temporary card"
         Rec.TestField("State Creation", Rec."State Creation"::Requested);
         if ItemsRegisterAprovals.ItemRegistratio_OpenRequested(Rec) then
             CurrPage.Update();
+    end;
+
+    local procedure Navigate_AssemblyML()
+    var
+
+    begin
+
+    end;
+
+    local procedure Navigate_ProductionML()
+    var
+        ZMProdBOM: record "ZM CIM Prod. BOM Header";
+        ZMProductionBOMList: page "ZM CIM Production BOM List";
+    begin
+        ZMProdBOM.SetRange("No.", Rec."Production BOM No.");
+        ZMProductionBOMList.SetTableView(ZMProdBOM);
+        ZMProductionBOMList.Run();
     end;
 }

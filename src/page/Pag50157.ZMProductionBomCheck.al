@@ -60,6 +60,7 @@ page 50157 "ZM Production Bom Check"
         Item: Record Item;
         ProductionBomHeader: Record "Production BOM Header";
         ProductionBomLine: Record "Production BOM Line";
+        SelectionItemTracingBuffer: record "Item Tracing Buffer" temporary;
 
     procedure UpdateBom(ItemNo: code[20])
     var
@@ -67,6 +68,7 @@ page 50157 "ZM Production Bom Check"
     begin
         Rec.Reset();
         Rec.DeleteAll();
+        SelectionItemTracingBuffer.DeleteAll();
         ProductionBomLine.Reset();
         ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
         ProductionBomLine.SetRange("Version Code", '');
@@ -93,6 +95,9 @@ page 50157 "ZM Production Bom Check"
                     if Item.Get(Rec."Item No.") then
                         Rec.Positive := Item.Blocked;
                     Rec.Insert();
+                    SelectionItemTracingBuffer.Init();
+                    SelectionItemTracingBuffer.TransferFields(Rec);
+                    SelectionItemTracingBuffer.Insert();
                 end;
 
             Until ProductionBomLine.next() = 0;
@@ -113,15 +118,7 @@ page 50157 "ZM Production Bom Check"
     end;
 
     procedure GetSelectionRecord(var ItemTracingBuffer: record "Item Tracing Buffer")
-    var
-        SelectionItemTracingBuffer: record "Item Tracing Buffer" temporary;
     begin
-        if Rec.FindFirst() then
-            repeat
-                SelectionItemTracingBuffer.Init();
-                SelectionItemTracingBuffer.TransferFields(Rec);
-                SelectionItemTracingBuffer.Insert();
-            Until Rec.next() = 0;
         CurrPage.SetSelectionFilter(SelectionItemTracingBuffer);
         if SelectionItemTracingBuffer.FindFirst() then
             repeat

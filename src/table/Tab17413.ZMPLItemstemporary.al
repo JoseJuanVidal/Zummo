@@ -7,14 +7,11 @@ table 17413 "ZM PL Items temporary"
         field(1; "No."; Code[20])
         {
             Caption = 'No.', Comment = 'ESP="Nº"';
+            TableRelation = Item;
 
             trigger OnValidate()
             begin
-                if "No." <> xRec."No." then
-                    if xRec."No." = '' then begin
-                        GetPreItemSetup();
-                        NoSeriesMgt.TestManual(SetupPreItemReg."Temporary Nos.");
-                    end;
+                OnValidate_ItemNo()
             end;
 
         }
@@ -524,11 +521,21 @@ table 17413 "ZM PL Items temporary"
             TableRelation = Employee."No." where("User Id" = field("User ID"));
             ValidateTableRelation = true;
             //Editable = false;
+
+            trigger OnValidate()
+            begin
+                OnValidate_CodEmpleado();
+            end;
         }
         field(50828; "Reason Blocked"; text[100])
         {
             DataClassification = CustomerContent;
             Caption = 'Reason Blocked/UnBlock', comment = 'ESP="Motivo Bloqueo/Desbloqueo"';
+        }
+        field(50829; "Nombre Empleado"; text[100])
+        {
+            Caption = 'Nombre Empleado', comment = 'ESP="Nombre Empleado"';
+            Editable = false;
         }
         field(99000750; "Routing No."; Code[20])
         {
@@ -550,14 +557,6 @@ table 17413 "ZM PL Items temporary"
         }
     }
 
-    var
-        Item: Record Item;
-        Vend: Record Vendor;
-        ProdBOMHeader: Record "Production BOM Header";
-        ProdBOMLine: Record "Production BOM Line";
-        ZMCIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";
-        ZMCIMProdBOMLine: Record "ZM CIM Prod. BOM Line";
-        lblConfirmBOM: Label 'El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?', comment = 'ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"';
 
     trigger OnInsert()
     begin
@@ -583,11 +582,21 @@ table 17413 "ZM PL Items temporary"
     end;
 
     var
+        Item: Record Item;
+        Vend: Record Vendor;
+        ProdBOMHeader: Record "Production BOM Header";
+        ProdBOMLine: Record "Production BOM Line";
+        ZMCIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";
+        ZMCIMProdBOMLine: Record "ZM CIM Prod. BOM Line";
+        Employee: Record Employee;
         SetupPreItemReg: record "ZM PL Setup Item registration";
         TempBlob: Record TempBlob;
         NoSeriesMgt: Codeunit NoSeriesManagement;
         Funciones: Codeunit Funciones;
         Text027: Label 'must be greater than 0.', Comment = 'ESP="Debe ser mayor que 0"';
+        lblConfirmBOM: Label 'El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?', comment = 'ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"';
+        lblConfirmUpdateItem: Label 'El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?',
+            comment = 'ESP="El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?"';
 
     local procedure GetPreItemSetup()
     begin
@@ -641,10 +650,61 @@ table 17413 "ZM PL Items temporary"
     end;
 
     local procedure OnLookup_Product_Manager()
-    var
-        Employee: Record Employee;
     begin
         Page.RunModal(0, Employee);
     end;
 
+    local procedure OnValidate_CodEmpleado()
+    var
+    begin
+        "Nombre Empleado" := '';
+        if Employee.Get(Rec."Codigo Empleado") then
+            "Nombre Empleado" := copystr(Employee.FullName(), 1, MaxStrLen(Rec."Nombre Empleado"));
+    end;
+
+    local procedure OnValidate_ItemNo()
+    begin
+        if "No." <> xRec."No." then begin
+
+            if Rec."No." = '' then begin
+                GetPreItemSetup();
+                NoSeriesMgt.TestManual(SetupPreItemReg."Temporary Nos.");
+            end else begin
+                // comprobamos si existe el producto y traemos los datos para su modificación
+                item.Reset();
+                if item.Get(Rec."No.") then begin
+                    if Confirm(lblConfirmUpdateItem, false, Rec."No.", Item.Description) then begin
+                        Rec.TransferFields(Item);
+                    end;
+                    // comprobamos si el producto tiene lista de ensamblado orignal
+                    ProdBOMHeader.Reset();
+                    ProdBOMHeader.SetRange("No.", Rec."Production BOM No.");
+                    if ProdBOMHeader.FindFirst() then
+                        if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
+                            UpdateProductionBom(Item."No.");
+
+                end;
+            end;
+
+        end;
+    end;
+
+    local procedure UpdateProductionBom(ItemNo: code[20])
+    var
+        myInt: Integer;
+    begin
+        Item.Reset();
+        if Item.Get(Rec."No.") then begin
+            ProdBOMHeader.Reset();
+            ProdBOMHeader.SetRange("No.", Item."Production BOM No.");
+            if ProdBOMHeader.FindFirst() then begin
+                ZMCIMProdBOMHeader.Reset();
+                if not ZMCIMProdBOMHeader.Get(ProdBOMHeader."No.") then begin
+                    ZMCIMProdBOMHeader.Init();
+                    ZMCIMProdBOMHeader.TransferFields(ProdBOMHeader);
+                    ZMCIMProdBOMHeader.Insert();
+                end;
+            end;
+        end;
+    end;
 }

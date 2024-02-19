@@ -387,7 +387,6 @@ page 50156 "ZM Production Bom Maintenance"
                     if not Confirm(lblConfirmDelete, false, ItemTracingBuffer.Count, Rec."Item No. to be replaced", Rec."Replaced Item Description") then
                         exit;
                 end;
-
         end;
         Funciones.TaskMProdItem(ItemTracingBuffer, Rec);
     end;

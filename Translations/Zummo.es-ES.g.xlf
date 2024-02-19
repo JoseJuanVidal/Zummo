@@ -8878,6 +8878,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmBOM</note>
           <target>El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?</target>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - NamedType 2604454992" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmUpdateItem</note>
+          <target>El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?</target>
+        </trans-unit>
         <trans-unit id="Table 3329268434 - NamedType 3853762076" size-unit="char" translate="yes" xml:space="preserve">
           <source>must be greater than 0.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Debe ser mayor que 0"</note>
@@ -9129,6 +9135,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field No. - Property Caption</note>
           <target>Nº</target>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre Empleado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Nombre Empleado - Property Caption</note>
+          <target>Nombre Empleado</target>
+        </trans-unit>
         <trans-unit id="Table 3329268434 - Field 1388565689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nos. series</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº. Series"</note>
@@ -9194,6 +9206,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Motivo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reason - Property Caption</note>
           <target>Motivo</target>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 4042672808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reason Blocked/UnBlock</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo Bloqueo/Desbloqueo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reason Blocked - Property Caption</note>
+          <target>Motivo Bloqueo/Desbloqueo</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Field 3345871191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reorder Point</source>
@@ -16344,6 +16362,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº identificador del producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control No. - Property ToolTip</note>
           <target>Nº identificador del producto</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 4042672808 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Reason Blocked - Property ToolTip</note>
+          <target>Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado.</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Control 2378972714 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Indica el estado de la solicitud de datos.</source>

@@ -8378,6 +8378,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmBOM</note>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - NamedType 2604454992" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmUpdateItem</note>
+        </trans-unit>
         <trans-unit id="Table 3329268434 - NamedType 3853762076" size-unit="char" translate="yes" xml:space="preserve">
           <source>must be greater than 0.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Debe ser mayor que 0"</note>
@@ -8587,6 +8592,11 @@
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre Empleado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Nombre Empleado - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Field 1388565689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nos. series</source>
@@ -14863,6 +14873,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup Departments - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Navegar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Property PromotedActionCategories</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Items registration</source>
           <note from="Developer" annotates="general" priority="2">ESP="Alta de productos"</note>
@@ -14942,6 +14957,16 @@
           <source>Prices &amp; Sales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precios y ventas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Prices &amp; Sales - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 1940593200 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>L. M. Ensamblado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L. M. Ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action ShowLMAssembly - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 2310116675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>L. M. Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L. M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action ShowLMProduction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open</source>
