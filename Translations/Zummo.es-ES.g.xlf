@@ -8814,6 +8814,66 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field webUrl - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1378230549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Purchases Prices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precios compra productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Property Caption</note>
+          <target>Precios compra productos</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. divisa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Currency Code - Property Caption</note>
+          <target>Cód. divisa</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 4187992892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direct Unit Cost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste unit. directo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Direct Unit Cost - Property Caption</note>
+          <target>Coste unit. directo</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 458406397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha final"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Ending Date - Property Caption</note>
+          <target>Fecha final</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Item No. - Property Caption</note>
+          <target>Nº producto</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 67248183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Minimum Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad mínima"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Minimum Quantity - Property Caption</note>
+          <target>Cantidad mínima</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 460889064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha inicial"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Starting Date - Property Caption</note>
+          <target>Fecha inicial</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 2385270358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. unidad medida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Unit of Measure Code - Property Caption</note>
+          <target>Cód. unidad medida</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 3450651614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. variante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Variant Code - Property Caption</note>
+          <target>Cód. variante</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Vendor No. - Property Caption</note>
+          <target>Nº proveedor</target>
+        </trans-unit>
         <trans-unit id="Table 4201268802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ZM PL Item Setup Approvals </source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -15393,10 +15453,10 @@
           <target>Imagen</target>
         </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ERPLINK Production BOM Lines</source>
-          <note from="Developer" annotates="general" priority="2">ESP="ERPLINK Líneas Prod. BOM Lines "</note>
+          <source>Production BOM Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas Prod. BOM Lines "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Production BOM Lines - Property Caption</note>
-          <target>ERPLINK Líneas Prod. BOM Lines </target>
+          <target>Líneas Prod. BOM Lines </target>
         </trans-unit>
         <trans-unit id="Page 2427138035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CIM Prod. BOM list</source>
@@ -16273,6 +16333,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Dpto Items temp list - Control WorkDescription - Property Caption</note>
           <target>Motivo</target>
         </trans-unit>
+        <trans-unit id="Page 2211114852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item purchases prices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precios compra productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - Property Caption</note>
+          <target>Precios compra productos</target>
+        </trans-unit>
         <trans-unit id="Page 2190874319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Setup Departments</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta productos"</note>
@@ -16290,6 +16356,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup Departments - Property Caption</note>
           <target>Conf. Departamentos Alta productos</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Navegar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Property PromotedActionCategories</note>
+          <target>Nuevo,Procesar,Informe,Navegar</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Items registration</source>
@@ -16387,6 +16459,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Prices &amp; Sales - Property Caption</note>
           <target>Precios y ventas</target>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 1918953554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action LMProducion - Property Caption</note>
+          <target>Producción</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 2310116675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>L. M. Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L. M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action ShowLMProduction - Property Caption</note>
+          <target>L. M. Producción</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 3712666431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchases prices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precios Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action PurchasePrices - Property Caption</note>
+          <target>Precios Compra</target>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Action 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open</source>
           <note from="Developer" annotates="general" priority="2">ESP="Abrir"</note>
@@ -16411,6 +16501,30 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Property Caption</note>
           <target>Lista Alta de productos</target>
         </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 1918953554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action LMProducion - Property Caption</note>
+          <target>Producción</target>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 2310116675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>L. M. Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L. M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action ShowLMProduction - Property Caption</note>
+          <target>L. M. Producción</target>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 1530319778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hist. Alta Productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Alta Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action PostedItemList - Property Caption</note>
+          <target>Hist. Alta Productos</target>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 3712666431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchases prices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precios Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action PurchasePrices - Property Caption</note>
+          <target>Precios Compra</target>
+        </trans-unit>
         <trans-unit id="Page 3858912784 - Action 3981856687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Conf. Alta Productos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. Alta Productos"</note>
@@ -16422,12 +16536,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta Productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action ConfAprobAltaProd - Property Caption</note>
           <target>Conf. Departamentos Alta Productos</target>
-        </trans-unit>
-        <trans-unit id="Page 3858912784 - Action 1530319778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Hist. Alta Productos</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Hist. Alta Productos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action PostedItemList - Property Caption</note>
-          <target>Hist. Alta Productos</target>
         </trans-unit>
         <trans-unit id="Page 988243340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General Setup Item registration</source>

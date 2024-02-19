@@ -1,6 +1,6 @@
 page 50106 "ZM CIM Production BOM Lines"
 {
-    Caption = 'ERPLINK Production BOM Lines', Comment = 'ESP="ERPLINK Líneas Prod. BOM Lines "';
+    Caption = 'Production BOM Lines', Comment = 'ESP="Líneas Prod. BOM Lines "';
     PageType = ListPart;
     SourceTable = "ZM CIM Prod. BOM Line";
     UsageCategory = None;

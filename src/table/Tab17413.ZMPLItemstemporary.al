@@ -575,6 +575,10 @@ table 17413 "ZM PL Items temporary"
 
     trigger OnDelete()
     begin
+        ZMCIMProdBOMHeader.Reset();
+        if ZMCIMProdBOMHeader.Get(Rec."Production BOM No.") then
+            ZMCIMProdBOMHeader.Delete(true);
+
     end;
 
     trigger OnRename()
@@ -588,6 +592,7 @@ table 17413 "ZM PL Items temporary"
         ProdBOMLine: Record "Production BOM Line";
         ZMCIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";
         ZMCIMProdBOMLine: Record "ZM CIM Prod. BOM Line";
+        ZMItemPurchasePrices: Record "ZM PL Item Purchase Prices";
         Employee: Record Employee;
         SetupPreItemReg: record "ZM PL Setup Item registration";
         TempBlob: Record TempBlob;
@@ -664,47 +669,105 @@ table 17413 "ZM PL Items temporary"
 
     local procedure OnValidate_ItemNo()
     begin
+        GetPreItemSetup();
         if "No." <> xRec."No." then begin
-
+            InitRecord();
             if Rec."No." = '' then begin
-                GetPreItemSetup();
                 NoSeriesMgt.TestManual(SetupPreItemReg."Temporary Nos.");
             end else begin
-                // comprobamos si existe el producto y traemos los datos para su modificación
+                // comprobamos si existe el producto y traemos los datos para su modificación                
                 item.Reset();
                 if item.Get(Rec."No.") then begin
                     if Confirm(lblConfirmUpdateItem, false, Rec."No.", Item.Description) then begin
                         Rec.TransferFields(Item);
                     end;
-                    // comprobamos si el producto tiene lista de ensamblado orignal
+                    // comprobamos si el producto tiene lista de Producción orignal
                     ProdBOMHeader.Reset();
                     ProdBOMHeader.SetRange("No.", Rec."Production BOM No.");
                     if ProdBOMHeader.FindFirst() then
-                        if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
+                        // if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
                             UpdateProductionBom(Item."No.");
-
+                    UpdatePurchasePrice(Rec."No.");
                 end;
             end;
 
         end;
     end;
 
-    local procedure UpdateProductionBom(ItemNo: code[20])
-    var
-        myInt: Integer;
+    procedure UpdateProductionBom(ItemNo: code[20])
     begin
         Item.Reset();
         if Item.Get(Rec."No.") then begin
             ProdBOMHeader.Reset();
-            ProdBOMHeader.SetRange("No.", Item."Production BOM No.");
+            ProdBOMHeader.SetRange("No.", ItemNo);
             if ProdBOMHeader.FindFirst() then begin
                 ZMCIMProdBOMHeader.Reset();
                 if not ZMCIMProdBOMHeader.Get(ProdBOMHeader."No.") then begin
                     ZMCIMProdBOMHeader.Init();
                     ZMCIMProdBOMHeader.TransferFields(ProdBOMHeader);
                     ZMCIMProdBOMHeader.Insert();
+
                 end;
+                UpdateProductionBomLM(ZMCIMProdBOMHeader."No.");
             end;
         end;
+    end;
+
+    local procedure UpdateProductionBomLM(BOMHeaderNo: code[20])
+    var
+        myInt: Integer;
+    begin
+        ProdBOMLine.Reset();
+        ProdBOMLine.SetRange("Production BOM No.", BOMHeaderNo);
+        if ProdBOMLine.FindFirst() then
+            repeat
+                ZMCIMProdBOMLine.Reset();
+                if ZMCIMProdBOMLine.Get(ProdBOMLine."Production BOM No.", ProdBOMLine."Version Code", ProdBOMLine."Line No.") then begin
+                    ZMCIMProdBOMLine."Quantity per" := ProdBOMLine."Quantity per";
+                    ZMCIMProdBOMLine.Quantity := ProdBOMLine.Quantity;
+                    ZMCIMProdBOMLine.Modify();
+                end else begin
+                    ZMCIMProdBOMLine.Init();
+                    ZMCIMProdBOMLine.TransferFields(ProdBOMLine);
+                    ZMCIMProdBOMLine.Insert();
+                end;
+            Until ProdBOMLine.next() = 0;
+    end;
+
+    local procedure UpdatePurchasePrice(ItemNo: code[20])
+    var
+        PurchasePrices: Record "Purchase Price";
+    begin
+        PurchasePrices.Reset();
+        PurchasePrices.SetRange("Item No.", ItemNo);
+        if PurchasePrices.FindFirst() then
+            repeat
+                ZMCIMProdBOMLine.Reset();
+                if not ZMItemPurchasePrices.Get() then begin
+                    ZMItemPurchasePrices.Init();
+                    ZMItemPurchasePrices.TransferFields(PurchasePrices);
+                    ZMItemPurchasePrices.Insert();
+                end;
+            Until PurchasePrices.next() = 0;
+    end;
+
+    procedure Navigate_ProductionML()
+    var
+        ZMProdBOM: record "ZM CIM Prod. BOM Header";
+        ZMProductionBOMList: page "ZM CIM Production BOM List";
+    begin
+        ZMProdBOM.SetRange("No.", Rec."Production BOM No.");
+        ZMProductionBOMList.SetTableView(ZMProdBOM);
+        ZMProductionBOMList.Run();
+    end;
+
+    procedure Navigate_PurchasesPrices()
+    var
+        ZMItemPurchasePrice: record "ZM PL Item Purchase Prices";
+        ZMItemPurchasesPrices: page "ZM PL Item Purchases Prices";
+    begin
+        ZMItemPurchasePrice.SetRange("Item No.", Rec."No.");
+        ZMItemPurchasesPrices.SetTableView(ZMItemPurchasePrice);
+        ZMItemPurchasesPrices.Run();
     end;
 }

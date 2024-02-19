@@ -356,7 +356,7 @@ page 17415 "ZM PL Items temporary card"
             {
                 ApplicationArea = All;
                 Caption = 'Open', comment = 'ESP="Abrir"';
-                Image = ReleaseDoc;
+                Image = ReOpen;
                 Promoted = true;
                 PromotedCategory = Process;
 
@@ -370,20 +370,24 @@ page 17415 "ZM PL Items temporary card"
         {
             Group("Lista de materiales")
             {
-                group(AssemblyML)
+                // group(AssemblyML)
+                // {
+                // action(ShowLMAssembly)
+                // {
+                //     ApplicationArea = all;
+                //     Caption = 'L. M. Ensamblado', comment = 'ESP="L. M. Ensamblado"';
+                //     Image = BOM;
+                //     Promoted = true;
+                //     PromotedCategory = Category4;
+                //     trigger OnAction()
+                //     begin
+                //         Navigate_AssemblyML();
+                //     end;
+                // }
+                // }
+                group(LMProducion)
                 {
-                    action(ShowLMAssembly)
-                    {
-                        ApplicationArea = all;
-                        Caption = 'L. M. Ensamblado', comment = 'ESP="L. M. Ensamblado"';
-                        Image = BOM;
-                        Promoted = true;
-                        PromotedCategory = Category4;
-                        trigger OnAction()
-                        begin
-                            Navigate_AssemblyML();
-                        end;
-                    }
+                    Caption = 'Producción', comment = 'ESP="Producción"';
                     action(ShowLMProduction)
                     {
                         ApplicationArea = all;
@@ -397,11 +401,18 @@ page 17415 "ZM PL Items temporary card"
                         end;
                     }
                 }
-                group(LMProducion)
+                action(PurchasePrices)
                 {
-
+                    ApplicationArea = all;
+                    Caption = 'Purchases prices', comment = 'ESP="Precios Compra"';
+                    Image = Price;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    trigger OnAction()
+                    begin
+                        Navigate_PurchasesPrices();
+                    end;
                 }
-
             }
         }
     }
@@ -431,20 +442,10 @@ page 17415 "ZM PL Items temporary card"
             CurrPage.Update();
     end;
 
-    local procedure Navigate_AssemblyML()
-    var
 
-    begin
-
-    end;
 
     local procedure Navigate_ProductionML()
-    var
-        ZMProdBOM: record "ZM CIM Prod. BOM Header";
-        ZMProductionBOMList: page "ZM CIM Production BOM List";
     begin
-        ZMProdBOM.SetRange("No.", Rec."Production BOM No.");
-        ZMProductionBOMList.SetTableView(ZMProdBOM);
-        ZMProductionBOMList.Run();
+        Rec.Navigate_ProductionML();
     end;
 }

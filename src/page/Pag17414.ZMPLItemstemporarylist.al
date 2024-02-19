@@ -90,7 +90,7 @@ page 17414 "ZM PL Items temporary list"
 
     actions
     {
-        area(Navigation)
+        area(Processing)
         {
             action(ConfAltaProd)
             {
@@ -98,7 +98,7 @@ page 17414 "ZM PL Items temporary list"
                 Caption = 'Conf. Alta Productos', comment = 'ESP="Conf. Alta Productos"';
                 Image = Setup;
                 Promoted = true;
-                PromotedCategory = Category5;
+                PromotedCategory = Process;
                 RunObject = page "ZM PL Setup Item registration";
             }
             action(ConfAprobAltaProd)
@@ -107,21 +107,72 @@ page 17414 "ZM PL Items temporary list"
                 Caption = 'Conf. Departamentos Alta Productos', comment = 'ESP="Conf. Departamentos Alta Productos"';
                 Image = Setup;
                 Promoted = true;
-                PromotedCategory = Category5;
+                PromotedCategory = Process;
                 RunObject = page "ZM PL Item Setup approvals";
             }
-            action(PostedItemList)
-            {
-                ApplicationArea = all;
-                Caption = 'Hist. Alta Productos', comment = 'ESP="Hist. Alta Productos"';
-                Image = PostedDeposit;
-                Promoted = true;
-                PromotedCategory = Category4;
 
-                trigger OnAction()
-                begin
-                    OnAction_PostedItemList();
-                end;
+        }
+        area(Navigation)
+        {
+            Group("Lista de materiales")
+            {
+                // group(AssemblyML)
+                // {
+                // action(ShowLMAssembly)
+                // {
+                //     ApplicationArea = all;
+                //     Caption = 'L. M. Ensamblado', comment = 'ESP="L. M. Ensamblado"';
+                //     Image = BOM;
+                //     Promoted = true;
+                //     PromotedCategory = Category4;
+                //     trigger OnAction()
+                //     begin
+                //         Navigate_AssemblyML();
+                //     end;
+                // }
+                // }
+                group(LMProducion)
+                {
+                    Caption = 'Producción', comment = 'ESP="Producción"';
+                    action(ShowLMProduction)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'L. M. Producción', comment = 'ESP="L. M. Producción"';
+                        Image = BOM;
+                        Promoted = true;
+                        PromotedCategory = Category4;
+                        trigger OnAction()
+                        begin
+                            Navigate_ProductionML();
+                        end;
+                    }
+                }
+                action(PurchasePrices)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Purchases prices', comment = 'ESP="Precios Compra"';
+                    Image = Price;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    trigger OnAction()
+                    begin
+                        Navigate_PurchasesPrices();
+                    end;
+                }
+                action(PostedItemList)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Hist. Alta Productos', comment = 'ESP="Hist. Alta Productos"';
+                    Image = PostedDeposit;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+
+                    trigger OnAction()
+                    begin
+                        OnAction_PostedItemList();
+                    end;
+                }
+
             }
         }
     }

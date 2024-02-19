@@ -1,7 +1,7 @@
 page 50120 "ZM CIM Production BOM List"
 {
     Caption = 'CIM Prod. BOM list', Comment = 'ESP="L.M. de producción"';
-    PageType = List;
+    PageType = Card;
     SourceTable = "ZM CIM Prod. BOM Header";
     UsageCategory = None;
 
@@ -9,7 +9,7 @@ page 50120 "ZM CIM Production BOM List"
     {
         area(content)
         {
-            repeater(General)
+            group(General)
             {
                 field("No."; "No.")
                 {
