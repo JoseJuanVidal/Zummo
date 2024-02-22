@@ -18,6 +18,16 @@ page 50148 "API Sales Quote Header"
                         InsertData();
                     end;
                 }
+                field(SourcePurchOrderComment; SourcePurchOrderComment)
+                {
+                    ApplicationArea = All;
+
+                    trigger OnValidate()
+                    var
+                    begin
+                        InsertDataComment();
+                    end;
+                }
             }
         }
 
@@ -39,7 +49,17 @@ page 50148 "API Sales Quote Header"
         Rec.Modify();
     end;
 
+
+    local procedure InsertDataComment()
+    var
+        myInt: Integer;
+    begin
+        Rec.ComentarioInterno_btc := CopyStr(SourcePurchOrderComment, 1, MaxStrLen(Rec.ComentarioInterno_btc));
+        Rec.Modify();
+    end;
+
     var
         SourcePurchOrder: Code[20];
+        SourcePurchOrderComment: text;
         ZummoINCFunctions: Codeunit "Zummo Inn. IC Functions";
 }
