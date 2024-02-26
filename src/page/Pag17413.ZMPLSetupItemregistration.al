@@ -25,6 +25,10 @@ page 17413 "ZM PL Setup Item registration"
                 {
                     ApplicationArea = all;
                 }
+                field("Enabled Approval Price List"; "Enabled Approval Price List")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(SerieNos)
             {
@@ -62,6 +66,7 @@ page 17413 "ZM PL Setup Item registration"
 
     trigger OnOpenPage()
     begin
+        ItemRegistrationApproval.CheckSUPERUserConfiguration();
         Rec.RESET;
         IF NOT Rec.GET THEN BEGIN
             Rec.INIT;
@@ -71,5 +76,6 @@ page 17413 "ZM PL Setup Item registration"
     end;
 
     var
+        ItemRegistrationApproval: Codeunit "ZM PL Items Regist. aprovals";
         lblConfirmSendEmail: Label 'Do you want to execute the emailing process?', comment = 'ESP="¿Desea ejecutar el proceso de envío por email?"';
 }

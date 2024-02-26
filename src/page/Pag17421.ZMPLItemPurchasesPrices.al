@@ -16,6 +16,7 @@ page 17421 "ZM PL Item Purchases Prices"
                 {
                     ApplicationArea = All;
                     Visible = false;
+                    Editable = false;
                 }
                 field("Vendor No."; "Vendor No.")
                 {
@@ -49,6 +50,11 @@ page 17421 "ZM PL Item Purchases Prices"
                 {
                     ApplicationArea = all;
                     Visible = false;
+                }
+                field("Status Approval"; "Status Approval")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
                 }
             }
         }

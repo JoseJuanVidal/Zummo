@@ -31,6 +31,11 @@ table 17412 "ZM PL Setup Item registration"
             Caption = 'Last process date', comment = 'ESP="Ultima fecha proceso"';
             Editable = false;
         }
+        field(20; "Enabled Approval Price List"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Enabled Approval Price List', comment = 'ESP="Aprobación Lista de precios activada"';
+        }
     }
 
     keys
@@ -66,15 +71,20 @@ table 17412 "ZM PL Setup Item registration"
         SetupItemReg: Record "ZM PL Setup Item registration";
     begin
         // enviar aviso por email de los datos pendientes
-
-
-
         SetupItemReg.Get();
         if CreateDateTime(workdate(), time()) > SetupItemReg."Last process date" then begin
             SetupItemReg."Last process date" := CreateDateTime(workdate(), time());
             SetupItemReg.Modify();
         end;
 
+    end;
+
+    procedure GetSetupRegActiveApproval(): Boolean;
+    var
+        myInt: Integer;
+    begin
+        if Rec.Get() then
+            exit(Rec."Enabled Approval Price List");
     end;
 
 }

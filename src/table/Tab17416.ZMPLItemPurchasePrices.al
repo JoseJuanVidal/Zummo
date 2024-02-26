@@ -12,6 +12,7 @@ table 17416 "ZM PL Item Purchase Prices"
             DataClassification = CustomerContent;
             Caption = 'Item No.', comment = 'ESP="Nº producto"';
             TableRelation = "ZM PL Items temporary";
+            ValidateTableRelation = false;
         }
         field(2; "Vendor No."; code[20])
         {
@@ -55,6 +56,11 @@ table 17416 "ZM PL Item Purchase Prices"
         {
             DataClassification = CustomerContent;
             Caption = 'Variant Code', comment = 'ESP="Cód. variante"';
+        }
+        field(50001; "Status Approval"; Enum "Status Approval")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Status Approval', comment = 'ESP="Estado Aprobación"';
         }
     }
 

@@ -8358,6 +8358,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha inicial"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Starting Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 1563706261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status Approval</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado Aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Status Approval - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1378230549 - Field 2385270358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit of Measure Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. unidad medida"</note>
@@ -8872,6 +8877,11 @@
           <source>Active email queue</source>
           <note from="Developer" annotates="general" priority="2">ESP="Activar cola envío email"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field Active email queue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 988243340 - Field 3831378839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enabled Approval Price List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobación Lista de precios activada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field Enabled Approval Price List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 988243340 - Field 2416239812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Frequency of reminders</source>
@@ -9772,6 +9782,11 @@
           <source>¿Do you want to open the discharge request for item %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Abrir la petición de alta del producto %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method ItemRegistratio_OpenRequested - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3770991987 - Method 4160338607 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>It is not possible to modify the purchase prices. Purchase price approval is enabled.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra. "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method T7012_PurchasePrice_OnEvent_CheckApproval - NamedType lblError</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - NamedType 190679546" size-unit="char" translate="yes" xml:space="preserve">
           <source>?FechaIni=%1&amp;FechaFin=%2</source>
@@ -27718,6 +27733,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Marcar no facturar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseReceipts - Action MarcaNoFacturar - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3704709846 - Action 3047984393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2033306735">
+          <source>New Prices Request</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud Nuevos Precios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Purchase Prices - Action SolicitudPrecios - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 381533085 - Control 827840431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 888136877">
           <source>Bloqueado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
@@ -32497,6 +32517,21 @@
           <source> </source>
           <note from="Developer" annotates="general" priority="2">ESP=" "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum IE Almacen - EnumValue Ninguno - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1563706261 - EnumValue 2913119229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approved</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Status Approval - EnumValue Approved - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1563706261 - EnumValue 3481143665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pending</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Pendientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Status Approval - EnumValue Pending - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1563706261 - EnumValue 113888489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reject</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rechazado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Status Approval - EnumValue Reject - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 266063982 - EnumValue 2318734275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Add</source>

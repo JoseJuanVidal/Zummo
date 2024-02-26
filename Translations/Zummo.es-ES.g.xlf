@@ -9469,6 +9469,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field Active email queue - Property Caption</note>
           <target>Activar cola envío email</target>
         </trans-unit>
+        <trans-unit id="Table 988243340 - Field 3831378839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enabled Approval Price List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobación Lista de precios activada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field Enabled Approval Price List - Property Caption</note>
+          <target>Aprobación Lista de precios activada</target>
+        </trans-unit>
         <trans-unit id="Table 988243340 - Field 2416239812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Frequency of reminders</source>
           <note from="Developer" annotates="general" priority="2">ESP="Periodicidad recordatorios"</note>
@@ -10531,6 +10537,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Abrir la petición de alta del producto %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method ItemRegistratio_OpenRequested - NamedType lblConfirm</note>
           <target>¿Desea Abrir la petición de alta del producto %1 %2?</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 3770991987 - Method 4160338607 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>It is not possible to modify the purchase prices. Purchase price approval is enabled.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra. "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method T7012_PurchasePrice_OnEvent_CheckApproval - NamedType lblError</note>
+          <target>No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra. </target>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - NamedType 190679546" size-unit="char" translate="yes" xml:space="preserve">
           <source>?FechaIni=%1&amp;FechaFin=%2</source>
@@ -30254,6 +30266,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Marcar no facturar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseReceipts - Action MarcaNoFacturar - Property Caption</note>
           <target>Marcar no facturar</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3704709846 - Action 3047984393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2033306735">
+          <source>New Prices Request</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud Nuevos Precios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Purchase Prices - Action SolicitudPrecios - Property Caption</note>
+          <target>Solicitud Nuevos Precios</target>
         </trans-unit>
         <trans-unit id="PageExtension 381533085 - Control 827840431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 888136877">
           <source>Bloqueado</source>
