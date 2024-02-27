@@ -44,7 +44,7 @@ table 17410 "ZM PL Item Setup Approval"
     }
     keys
     {
-        key(PK; "Table No.", "Field No.")
+        key(PK; "Table No.", "Field No.", Department)
         {
             Clustered = true;
         }

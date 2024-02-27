@@ -24,6 +24,10 @@ pageextension 50194 "EmployeeCard_RRHH_zum" extends "Employee Card"
             field("User Id"; "User Id")
             {
             }
+            field("Approval User Id"; "Approval User Id")
+            {
+                ApplicationArea = all;
+            }
         }
         //Pestaña ADMIN
         addafter("Salespers./Purch. Code")

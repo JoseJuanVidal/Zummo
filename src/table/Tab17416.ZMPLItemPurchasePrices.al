@@ -62,6 +62,11 @@ table 17416 "ZM PL Item Purchase Prices"
             DataClassification = CustomerContent;
             Caption = 'Status Approval', comment = 'ESP="Estado Aprobación"';
         }
+        field(50002; "Date Send Approval"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Date Send Approval', comment = 'ESP="Fecha envío Aprobación"';
+        }
     }
 
     keys

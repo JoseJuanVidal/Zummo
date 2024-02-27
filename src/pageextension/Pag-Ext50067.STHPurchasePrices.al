@@ -55,6 +55,7 @@ pageextension 50067 "STH Purchase Prices" extends "Purchase Prices"
     begin
         ItemPurchasePrice.FilterGroup := 2;
         ItemPurchasePrice.SetRange("Item No.", Rec.GetFilter("Item No."));
+        ItemPurchasePrice.SetRange("Status Approval", ItemPurchasePrice."Status Approval"::Pending);
         ItemPurchasePrice.FilterGroup := 0;
         ItemPurchasesPrices.SetTableView(ItemPurchasePrice);
         ItemPurchasesPrices.Run();

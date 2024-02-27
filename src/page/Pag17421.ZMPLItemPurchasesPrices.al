@@ -56,6 +56,11 @@ page 17421 "ZM PL Item Purchases Prices"
                     ApplicationArea = all;
                     Editable = false;
                 }
+                field("Date Send Approval"; "Date Send Approval")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
             }
         }
     }
@@ -64,18 +69,39 @@ page 17421 "ZM PL Item Purchases Prices"
     {
         area(Processing)
         {
-            action(ActionName)
+            action(SendApproval)
             {
                 ApplicationArea = All;
+                Caption = 'Send Approval', comment = 'ESP="Envío aprobación"';
+                Image = Approvals;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+
 
                 trigger OnAction()
                 begin
-
+                    OnAction_SendApproval();
                 end;
             }
         }
     }
 
     var
+        Item: Record Item;
+        ItemsRegistaprovals: Codeunit "ZM PL Items Regist. aprovals";
+        lblConfirm: Label '¿Do you want to send the pending price approval requests for product %1 %2?', comment = 'ESP="¿Desea enviar las solicitudes pendientes de aprobacion de los precios del producto %1 %2?"';
+        lblSending: Label 'Request for approval sent.', comment = 'ESP="Solicitud aprobación enviada."';
+
+    local procedure OnAction_SendApproval()
+    var
         myInt: Integer;
+    begin
+        Item.Reset();
+        if Item.Get(Rec."Item No.") then
+            if Confirm(lblConfirm, false, Item."No.", Item.Description) then begin
+                ItemsRegistaprovals.SendApprovalItemPurchasePrices(Item);
+                Message(lblSending);
+            end;
+    end;
 }

@@ -8333,6 +8333,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Currency Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 649102929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date Send Approval</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha envío Aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Date Send Approval - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1378230549 - Field 4187992892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Direct Unit Cost</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste unit. directo"</note>
@@ -9782,6 +9787,11 @@
           <source>¿Do you want to open the discharge request for item %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Abrir la petición de alta del producto %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method ItemRegistratio_OpenRequested - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3770991987 - Method 4022973641 - NamedType 3098449012" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There are no users configured for approval %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No existen usuarios configurados para aprobación %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method SendEmaiApprobalItemPurchasePrices - NamedType lblSinDestino</note>
         </trans-unit>
         <trans-unit id="Codeunit 3770991987 - Method 4160338607 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>It is not possible to modify the purchase prices. Purchase price approval is enabled.</source>
@@ -14927,6 +14937,21 @@
           <source>Item purchases prices</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precios compra productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2211114852 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to send the pending price approval requests for product %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar las solicitudes pendientes de aprobacion de los precios del producto %1 %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Page 2211114852 - NamedType 1952566418" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Request for approval sent.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud aprobación enviada."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - NamedType lblSending</note>
+        </trans-unit>
+        <trans-unit id="Page 2211114852 - Action 1234931829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send Approval</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Envío aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - Action SendApproval - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2190874319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Setup Departments</source>
@@ -28273,6 +28298,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Alergias"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee - Field Alergias_zum - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1498446062 - Field 1356600781 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>ApprovalUser Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id. Usuario aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee - Field Approval User Id - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1498446062 - Field 1782806158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Area</source>
           <note from="Developer" annotates="general" priority="2">ESP="Area"</note>
@@ -32525,7 +32555,7 @@
         </trans-unit>
         <trans-unit id="Enum 1563706261 - EnumValue 3481143665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pending</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Pendientes"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Pendiente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Status Approval - EnumValue Pending - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1563706261 - EnumValue 113888489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

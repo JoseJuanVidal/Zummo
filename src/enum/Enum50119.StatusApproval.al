@@ -4,7 +4,7 @@ enum 50119 "Status Approval"
 
     value(0; Pending)
     {
-        Caption = 'Pending', comment = 'ESP="Pendientes"';
+        Caption = 'Pending', comment = 'ESP="Pendiente"';
     }
     value(1; Approved)
     {
