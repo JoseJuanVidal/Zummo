@@ -53,11 +53,13 @@ pageextension 50067 "STH Purchase Prices" extends "Purchase Prices"
         ItemPurchasePrice: Record "ZM PL Item Purchase Prices";
         ItemPurchasesPrices: page "ZM PL Item Purchases Prices";
     begin
-        ItemPurchasePrice.FilterGroup := 2;
+        // ItemPurchasePrice.FilterGroup := 2;
         ItemPurchasePrice.SetRange("Item No.", Rec.GetFilter("Item No."));
         ItemPurchasePrice.SetRange("Status Approval", ItemPurchasePrice."Status Approval"::Pending);
         ItemPurchasePrice.FilterGroup := 0;
         ItemPurchasesPrices.SetTableView(ItemPurchasePrice);
+        ItemPurchasesPrices.SetItemApproval(true);
+        ItemPurchasesPrices.SetItemNo(Rec.GetFilter("Item No."));
         ItemPurchasesPrices.Run();
     end;
 }

@@ -57,6 +57,11 @@ table 17416 "ZM PL Item Purchase Prices"
             DataClassification = CustomerContent;
             Caption = 'Variant Code', comment = 'ESP="Cód. variante"';
         }
+        field(50000; "Record ID"; Guid)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Record ID', comment = 'ESP="ID Registro"';
+        }
         field(50001; "Status Approval"; Enum "Status Approval")
         {
             DataClassification = CustomerContent;
@@ -67,15 +72,28 @@ table 17416 "ZM PL Item Purchase Prices"
             DataClassification = CustomerContent;
             Caption = 'Date Send Approval', comment = 'ESP="Fecha envío Aprobación"';
         }
+        field(50005; "Action Approval"; Enum "Action Approval")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Action', comment = 'ESP="Acción"';
+        }
+        field(50010; "Date/Time Creation"; DateTime)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Date/Time Creation', comment = 'ESP="Fecha/Hora Creación"';
+        }
     }
 
     keys
     {
-        key(PK; "Item No.", "Vendor No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity")
+        key(PK; "Record ID")
         {
             Clustered = true;
         }
-        key(Key1; "Vendor No.", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity")
+        key(Key1; "Item No.", "Vendor No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity")
+        {
+        }
+        key(Key2; "Vendor No.", "Item No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity")
         {
 
         }
@@ -87,16 +105,29 @@ table 17416 "ZM PL Item Purchase Prices"
     }
 
     var
-        myInt: Integer;
+        PurchasePrice: Record "Purchase Price";
+        ItemPurchasePrices: Record "ZM PL Item Purchase Prices";
+        ItemsRegistaprovals: Codeunit "ZM PL Items Regist. aprovals";
+        lblErrorDuplicate: Label 'The record already exists in table %1.', comment = 'ESP="Ya existe el registro en la tabla %1."';
 
     trigger OnInsert()
     begin
-
+        if IsNullGuid(Rec."Record ID") then
+            Rec."Record ID" := CreateGuid();
+        if Rec."Date/Time Creation" = 0DT then
+            Rec."Date/Time Creation" := CreateDateTime(Today(), Time());
+        // comprobamos duplicados.
+        CheckRecIsDuplicate();
     end;
 
     trigger OnModify()
     begin
+        if Rec."Date/Time Creation" = 0DT then
+            Rec."Date/Time Creation" := CreateDateTime(Today(), Time());
 
+        // comprobamos duplicados.
+        CheckRecIsDuplicate();
+        CheckActionApproval();
     end;
 
     trigger OnDelete()
@@ -106,7 +137,41 @@ table 17416 "ZM PL Item Purchase Prices"
 
     trigger OnRename()
     begin
-
+        CheckActionApproval();
     end;
 
+    local procedure CheckRecIsDuplicate()
+    var
+        myInt: Integer;
+    begin
+        ItemPurchasePrices.Reset();
+        ItemPurchasePrices.SetFilter("Record ID", '<>%1', Rec."Record ID");
+        ItemPurchasePrices.SetRange("Item No.", Rec."Item No.");
+        ItemPurchasePrices.SetRange("Vendor No.", Rec."Vendor No.");
+        ItemPurchasePrices.SetRange("Starting Date", Rec."Starting Date");
+        ItemPurchasePrices.SetRange("Currency Code", Rec."Currency Code");
+        ItemPurchasePrices.SetRange("Variant Code", Rec."Variant Code");
+        ItemPurchasePrices.SetRange("Unit of Measure Code", Rec."Unit of Measure Code");
+        ItemPurchasePrices.SetRange("Minimum Quantity", Rec."Minimum Quantity");
+        ItemPurchasePrices.SetRange("Status Approval", ItemPurchasePrices."Status Approval"::Pending);
+        if ItemPurchasePrices.FindFirst() then
+            Error(lblErrorDuplicate, Rec.TableCaption);
+    end;
+
+    procedure ItemPurchasePricesApproval(Approve: Boolean)
+    var
+        myInt: Integer;
+    begin
+        ItemsRegistaprovals.ItemPurchasePricesApproval(Rec, Approve);
+    end;
+
+    local procedure CheckActionApproval()
+    var
+        myInt: Integer;
+    begin
+        Rec."Action Approval" := Rec."Action Approval"::New;
+        PurchasePrice.Reset();
+        if PurchasePrice.Get(Rec."Item No.", Rec."Vendor No.", Rec."Starting Date", Rec."Currency Code", Rec."Variant Code", Rec."Unit of Measure Code", Rec."Minimum Quantity") then
+            Rec."Action Approval" := Rec."Action Approval"::Modify;
+    end;
 }

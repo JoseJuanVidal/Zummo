@@ -768,6 +768,7 @@ table 17413 "ZM PL Items temporary"
     begin
         ZMItemPurchasePrice.SetRange("Item No.", Rec."No.");
         ZMItemPurchasesPrices.SetTableView(ZMItemPurchasePrice);
+        ZMItemPurchasesPrices.SetItemNo(Rec."No.");
         ZMItemPurchasesPrices.Run();
     end;
 }

@@ -5,7 +5,6 @@ page 17421 "ZM PL Item Purchases Prices"
     UsageCategory = None;
     SourceTable = "ZM PL Item Purchase Prices";
 
-
     layout
     {
         area(Content)
@@ -51,6 +50,11 @@ page 17421 "ZM PL Item Purchases Prices"
                     ApplicationArea = all;
                     Visible = false;
                 }
+                field("Action Approval"; "Action Approval")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
                 field("Status Approval"; "Status Approval")
                 {
                     ApplicationArea = all;
@@ -77,6 +81,7 @@ page 17421 "ZM PL Item Purchases Prices"
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedCategory = Process;
+                Visible = ItemApproval;
 
 
                 trigger OnAction()
@@ -84,14 +89,89 @@ page 17421 "ZM PL Item Purchases Prices"
                     OnAction_SendApproval();
                 end;
             }
+            action(Approve)
+            {
+                ApplicationArea = All;
+                Caption = 'Approve', comment = 'ESP="Aprobar"';
+                Image = Approve;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Visible = UserApproval;
+
+                trigger OnAction()
+                begin
+                    OnAction_Approve();
+                end;
+            }
+            action(Reject)
+            {
+                ApplicationArea = All;
+                Caption = 'Reject', comment = 'ESP="Rechazar"';
+                Image = Reject;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Visible = UserApproval;
+
+                trigger OnAction()
+                begin
+                    OnAction_Reject();
+                end;
+            }
+            action(RequestDelete)
+            {
+                ApplicationArea = All;
+                Caption = 'Select to delete', comment = 'ESP="Seleccionar para eliminar"';
+                Image = DeleteRow;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    OnAction_RequestDelete();
+                end;
+            }
         }
     }
+
+
+    trigger OnOpenPage()
+    begin
+        UserApproval := ItemsRegistaprovals.CheckUserItemPurchasePriceApproval;
+    end;
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        if Rec."Item No." = '' then
+            Rec."Item No." := ItemNo;
+    end;
+
+    trigger OnModifyRecord(): Boolean
+    begin
+        if Rec."Item No." = '' then
+            Rec."Item No." := ItemNo;
+    end;
 
     var
         Item: Record Item;
         ItemsRegistaprovals: Codeunit "ZM PL Items Regist. aprovals";
+        ItemNo: code[20];
+        ItemApproval: boolean;
+        UserApproval: boolean;
         lblConfirm: Label '¿Do you want to send the pending price approval requests for product %1 %2?', comment = 'ESP="¿Desea enviar las solicitudes pendientes de aprobacion de los precios del producto %1 %2?"';
         lblSending: Label 'Request for approval sent.', comment = 'ESP="Solicitud aprobación enviada."';
+        lblConfirmApprove: Label 'The selected records (%2) go to %1. Do you want to continue?', comment = 'ESP="Se va a %1 los registros seleccionados (%2).\¿Desea continuar?"';
+        lblApprove: Label 'Approve', comment = 'ESP="Aprobar"';
+        lblRejecte: Label 'Rejects', comment = 'ESP="Rechazar"';
+
+    procedure SetItemNo(Value: code[20])
+    var
+        myInt: Integer;
+    begin
+        ItemNo := Value
+    end;
 
     local procedure OnAction_SendApproval()
     var
@@ -103,5 +183,46 @@ page 17421 "ZM PL Item Purchases Prices"
                 ItemsRegistaprovals.SendApprovalItemPurchasePrices(Item);
                 Message(lblSending);
             end;
+    end;
+
+    local procedure OnAction_Approve()
+    begin
+        PurchasePricesApproval(true);
+    end;
+
+    local procedure OnAction_Reject()
+    begin
+        PurchasePricesApproval(false);
+    end;
+
+    local procedure PurchasePricesApproval(Approve: Boolean)
+    var
+        ItemPurchasePrices: Record "ZM PL Item Purchase Prices";
+        Action: text;
+    begin
+        case Approve of
+            true:
+                Action := lblApprove
+            else
+                Action := lblRejecte
+        end;
+        CurrPage.SetSelectionFilter(ItemPurchasePrices);
+        if not Confirm(lblConfirmApprove, false, Action, ItemPurchasePrices.Count) then
+            exit;
+        if ItemPurchasePrices.FindFirst() then
+            repeat
+                Rec.ItemPurchasePricesApproval(Approve);
+            Until ItemPurchasePrices.next() = 0;
+    end;
+
+    procedure SetItemApproval(Value: Boolean)
+    begin
+        ItemApproval := Value;
+    end;
+
+    local procedure OnAction_RequestDelete()
+    begin
+        if Rec.GetFilter("Item No.") <> '' then
+            ItemsRegistaprovals.GetRequestDeleteSelection(Rec.GetFilter("Item No."));
     end;
 }

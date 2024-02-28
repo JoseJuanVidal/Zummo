@@ -12,6 +12,11 @@ tableextension 50006 "STH Purchase Price" extends "Purchase Price"
             Caption = 'Process Description', Comment = 'ESP="Descrip. proceso"';
             DataClassification = CustomerContent;
         }
+        field(50010; "Approval"; Boolean)
+        {
+            Caption = 'Approval', Comment = 'ESP="Aprobación"';
+            DataClassification = CustomerContent;
+        }
 
     }
 }

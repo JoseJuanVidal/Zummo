@@ -1,4 +1,3 @@
-
 codeunit 17410 "ZM PL Items Regist. aprovals"
 {
     trigger OnRun()
@@ -17,7 +16,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
     begin
         if Rec.IsTemporary then
             exit;
-        T7012_PurchasePrice_OnEvent_CheckApproval();
+        T7012_PurchasePrice_OnEvent_CheckApproval(Rec);
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Price", 'OnBeforeInsertEvent', '', true, true)]
@@ -25,7 +24,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
     begin
         if Rec.IsTemporary then
             exit;
-        T7012_PurchasePrice_OnEvent_CheckApproval();
+        T7012_PurchasePrice_OnEvent_CheckApproval(Rec);
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Price", 'OnBeforeDeleteEvent', '', true, true)]
@@ -33,23 +32,29 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
     begin
         if Rec.IsTemporary then
             exit;
-        T7012_PurchasePrice_OnEvent_CheckApproval();
+        T7012_PurchasePrice_OnEvent_CheckApproval(Rec);
     end;
 
-    local procedure T7012_PurchasePrice_OnEvent_CheckApproval()
+    local procedure T7012_PurchasePrice_OnEvent_CheckApproval(var Rec: Record "Purchase Price")
     var
         SetupItemregistration: Record "ZM PL Setup Item registration";
-        lblError: Label 'It is not possible to modify the purchase prices. Purchase price approval is enabled.', comment = 'ESP="No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra. "';
+        lblError: Label 'It is not possible to modify the purchase prices. Purchase price approval is enabled.\You must create an Request.',
+            comment = 'ESP="No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra.\Debe realizar una solicitud."';
     begin
+        if Rec.Approval then begin
+            Rec.Approval := false;
+            exit;
+        end;
         if SetupItemregistration.Get() then
             if SetupItemregistration."Enabled Approval Price List" then
                 Error(lblError);
+
     end;
 
     [EventSubscriber(ObjectType::Page, Page::"Purchase Prices", 'OnBeforeActionEvent', 'CopyPrices', true, true)]
-    local procedure PAGE_PurchasePrices_OnBeforeActionEvent()
+    local procedure PAGE_PurchasePrices_OnBeforeActionEvent(var Rec: Record "Purchase Price")
     begin
-        T7012_PurchasePrice_OnEvent_CheckApproval();
+        T7012_PurchasePrice_OnEvent_CheckApproval(Rec);
     end;
 
     // =============     FUNCIONES DE CONTROL          ====================
@@ -70,6 +75,27 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         AccessControl.SetRange("Role ID", 'D365 FULL ACCESS');
         if not AccessControl.FindFirst() then
             ERROR(StrSubstNo('El usuario %1 no tiene permisos para editar estos datos', UserID));
+    end;
+
+    procedure CheckUserItemPurchasePriceApproval(): Boolean
+    var
+        SetupItemregistration: Record "ZM PL Setup Item registration";
+        ItemSetupApproval: Record "ZM PL Item Setup Approval";
+        ItemSetupDepartment: Record "ZM PL Item Setup Department";
+    begin
+        if SetupItemregistration.Get() then
+            if not SetupItemregistration."Enabled Approval Price List" then
+                exit(false);
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", Database::"Purchase Price");
+        ItemSetupApproval.SetRange("Field No.", 0);  // permisos a la tabla para aprobación
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                if ItemSetupDepartment.Get(ItemSetupApproval.Department) then begin
+                    if ItemSetupDepartment."User Id" = UserId then
+                        exit(true);
+                end;
+            Until ItemSetupApproval.next() = 0;
     end;
 
     procedure ItemRegistrationChangeState(Rec: Record "ZM PL Items temporary")
@@ -221,5 +247,98 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
 
     end;
 
+    procedure ItemPurchasePricesApproval(var ItemPurchasePrices: record "ZM PL Item Purchase Prices"; Approve: Boolean)
+    var
+        PurchasesPrice: Record "Purchase Price";
+    begin
+        case ItemPurchasePrices."Action Approval" of
+            ItemPurchasePrices."Action Approval"::Delete:
+                begin
+                    if PurchasesPrice.Get(ItemPurchasePrices."Item No.", ItemPurchasePrices."Vendor No.", ItemPurchasePrices."Starting Date",
+                            ItemPurchasePrices."Currency Code", ItemPurchasePrices."Variant Code", ItemPurchasePrices."Unit of Measure Code",
+                            ItemPurchasePrices."Minimum Quantity") then begin
+                        PurchasesPrice.Approval := true;
+                        PurchasesPrice.Delete();
+                    end;
+                end;
+            else begin
+                PurchasesPrice.Reset();
+                if not PurchasesPrice.Get(ItemPurchasePrices."Item No.", ItemPurchasePrices."Vendor No.", ItemPurchasePrices."Starting Date",
+                        ItemPurchasePrices."Currency Code", ItemPurchasePrices."Variant Code", ItemPurchasePrices."Unit of Measure Code",
+                        ItemPurchasePrices."Minimum Quantity") then begin
+                    PurchasesPrice.Init();
+                    PurchasesPrice."Item No." := ItemPurchasePrices."Item No.";
+                    PurchasesPrice."Vendor No." := ItemPurchasePrices."Vendor No.";
+                    PurchasesPrice."Starting Date" := ItemPurchasePrices."Starting Date";
+                    PurchasesPrice."Currency Code" := ItemPurchasePrices."Currency Code";
+                    PurchasesPrice."Variant Code" := ItemPurchasePrices."Variant Code";
+                    PurchasesPrice."Unit of Measure Code" := ItemPurchasePrices."Unit of Measure Code";
+                    PurchasesPrice."Minimum Quantity" := ItemPurchasePrices."Minimum Quantity";
+                    PurchasesPrice.Approval := true;
+                    PurchasesPrice.Insert(false);
+                end;
+                PurchasesPrice.Approval := true;
+                PurchasesPrice."Direct Unit Cost" := PurchasesPrice."Direct Unit Cost";
+                PurchasesPrice."Ending Date" := ItemPurchasePrices."Ending Date";
+                PurchasesPrice.Modify(false);
+            end;
+        end;
+        // ponemos el estado 
+        case Approve of
+            true:
+                ItemPurchasePrices."Status Approval" := ItemPurchasePrices."Status Approval"::Approved;
+            else
+                ItemPurchasePrices."Status Approval" := ItemPurchasePrices."Status Approval"::Reject;
+        end;
+        ItemPurchasePrices.Modify();
+    end;
+
+    procedure GetRequestDeleteSelection(ItemNo: code[20])
+    var
+        PurchasePrice: Record "Purchase Price";
+        ItemPurchasePrices: Record "ZM PL Item Purchase Prices";
+        GetPurchasePrices: page "Get Purchase Price";
+    begin
+        PurchasePrice.SetRange("Item No.", ItemNo);
+        GetPurchasePrices.SetTableView(PurchasePrice);
+        GetPurchasePrices.LookupMode(true);
+        if GetPurchasePrices.RunModal() = action::LookupOK then begin
+            GetPurchasePrices.SetSelectionFilter(PurchasePrice);
+            if PurchasePrice.FindFirst() then
+                repeat
+                    ItemPurchasePrices.Reset();
+                    ItemPurchasePrices.SetRange("Item No.", PurchasePrice."Item No.");
+                    ItemPurchasePrices.SetRange("Vendor No.", PurchasePrice."Vendor No.");
+                    ItemPurchasePrices.SetRange("Starting Date", PurchasePrice."Starting Date");
+                    ItemPurchasePrices.SetRange("Currency Code", PurchasePrice."Currency Code");
+                    ItemPurchasePrices.SetRange("Variant Code", PurchasePrice."Variant Code");
+                    ItemPurchasePrices.SetRange("Unit of Measure Code", PurchasePrice."Unit of Measure Code");
+                    ItemPurchasePrices.SetRange("Minimum Quantity", PurchasePrice."Minimum Quantity");
+                    ItemPurchasePrices.SetRange("Status Approval", ItemPurchasePrices."Status Approval"::Pending);
+                    if not ItemPurchasePrices.FindFirst() then begin
+                        ItemPurchasePrices.Reset();
+                        ItemPurchasePrices.Init();
+                        ItemPurchasePrices."Record ID" := CreateGuid();
+                        ItemPurchasePrices."Item No." := PurchasePrice."Item No.";
+                        ItemPurchasePrices."Vendor No." := PurchasePrice."Vendor No.";
+                        ItemPurchasePrices."Starting Date" := PurchasePrice."Starting Date";
+                        ItemPurchasePrices."Currency Code" := PurchasePrice."Currency Code";
+                        ItemPurchasePrices."Variant Code" := PurchasePrice."Variant Code";
+                        ItemPurchasePrices."Unit of Measure Code" := PurchasePrice."Unit of Measure Code";
+                        ItemPurchasePrices."Minimum Quantity" := PurchasePrice."Minimum Quantity";
+                        ItemPurchasePrices."Status Approval" := ItemPurchasePrices."Status Approval"::Pending;
+                        ItemPurchasePrices."Direct Unit Cost" := PurchasePrice."Direct Unit Cost";
+                        ItemPurchasePrices."Ending Date" := PurchasePrice."Ending Date";
+                        ItemPurchasePrices."Action Approval" := ItemPurchasePrices."Action Approval"::Delete;
+                        ItemPurchasePrices.Insert()
+                    end else begin
+                        ItemPurchasePrices."Direct Unit Cost" := PurchasePrice."Direct Unit Cost";
+                        ItemPurchasePrices."Ending Date" := PurchasePrice."Ending Date";
+                        ItemPurchasePrices."Action Approval" := ItemPurchasePrices."Action Approval"::Delete;
+                        ItemPurchasePrices.Modify();
+                    end;
+                Until PurchasePrice.next() = 0;
+        end
+    end;
 
 }

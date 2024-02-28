@@ -8820,6 +8820,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Property Caption</note>
           <target>Precios compra productos</target>
         </trans-unit>
+        <trans-unit id="Table 1378230549 - NamedType 103038079" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The record already exists in table %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ya existe el registro en la tabla %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - NamedType lblErrorDuplicate</note>
+          <target>Ya existe el registro en la tabla %1.</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 3912514995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Action</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Action Approval - Property Caption</note>
+          <target>Acción</target>
+        </trans-unit>
         <trans-unit id="Table 1378230549 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. divisa"</note>
@@ -8855,6 +8867,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad mínima"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Minimum Quantity - Property Caption</note>
           <target>Cantidad mínima</target>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 2897660500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Record ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Record ID - Property Caption</note>
+          <target>ID Registro</target>
         </trans-unit>
         <trans-unit id="Table 1378230549 - Field 460889064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Starting Date</source>
@@ -10557,10 +10575,10 @@
           <target>No existen usuarios configurados para aprobación %1.</target>
         </trans-unit>
         <trans-unit id="Codeunit 3770991987 - Method 4160338607 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
-          <source>It is not possible to modify the purchase prices. Purchase price approval is enabled.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra. "</note>
+          <source>It is not possible to modify the purchase prices. Purchase price approval is enabled.\You must create an Request.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra.\Debe realizar una solicitud."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method T7012_PurchasePrice_OnEvent_CheckApproval - NamedType lblError</note>
-          <target>No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra. </target>
+          <target>No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra.\Debe realizar una solicitud.</target>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - NamedType 190679546" size-unit="char" translate="yes" xml:space="preserve">
           <source>?FechaIni=%1&amp;FechaFin=%2</source>
@@ -16369,17 +16387,53 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - Property Caption</note>
           <target>Precios compra productos</target>
         </trans-unit>
+        <trans-unit id="Page 2211114852 - NamedType 3306701759" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approve</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - NamedType lblApprove</note>
+          <target>Aprobar</target>
+        </trans-unit>
         <trans-unit id="Page 2211114852 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you want to send the pending price approval requests for product %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar las solicitudes pendientes de aprobacion de los precios del producto %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - NamedType lblConfirm</note>
           <target>¿Desea enviar las solicitudes pendientes de aprobacion de los precios del producto %1 %2?</target>
         </trans-unit>
+        <trans-unit id="Page 2211114852 - NamedType 1397021921" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The selected records (%2) go to %1. Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a %1 los registros seleccionados (%2).\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - NamedType lblConfirmApprove</note>
+          <target>Se va a %1 los registros seleccionados (%2).\¿Desea continuar?</target>
+        </trans-unit>
+        <trans-unit id="Page 2211114852 - NamedType 1961537020" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rejects</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rechazar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - NamedType lblRejecte</note>
+          <target>Rechazar</target>
+        </trans-unit>
         <trans-unit id="Page 2211114852 - NamedType 1952566418" size-unit="char" translate="yes" xml:space="preserve">
           <source>Request for approval sent.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solicitud aprobación enviada."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - NamedType lblSending</note>
           <target>Solicitud aprobación enviada.</target>
+        </trans-unit>
+        <trans-unit id="Page 2211114852 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approve</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - Action Approve - Property Caption</note>
+          <target>Aprobar</target>
+        </trans-unit>
+        <trans-unit id="Page 2211114852 - Action 113888489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reject</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rechazar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - Action Reject - Property Caption</note>
+          <target>Rechazar</target>
+        </trans-unit>
+        <trans-unit id="Page 2211114852 - Action 227764524 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select to delete</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar para eliminar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Purchases Prices - Action RequestDelete - Property Caption</note>
+          <target>Seleccionar para eliminar</target>
         </trans-unit>
         <trans-unit id="Page 2211114852 - Action 1234931829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send Approval</source>
@@ -34235,6 +34289,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Production BOM Line - Field Wood - Property Caption</note>
           <target>Madera Embalaje (kg)</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1703201611 - Field 227370865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3105979010">
+          <source>Approval</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Purchase Price - Field Approval - Property Caption</note>
+          <target>Aprobación</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1703201611 - Field 3454230391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3105979010">
           <source>Process Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descrip. proceso"</note>
@@ -35590,6 +35650,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha inicio amortización"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Date Ini. Amort - Property Caption</note>
           <target>Fecha inicio amortización</target>
+        </trans-unit>
+        <trans-unit id="Enum 3912514995 - EnumValue 2477294019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Eliminar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Action Approval - EnumValue Delete - Property Caption</note>
+          <target>Eliminar</target>
+        </trans-unit>
+        <trans-unit id="Enum 3912514995 - EnumValue 3817527484 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modify</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Action Approval - EnumValue Modify - Property Caption</note>
+          <target>Cambio</target>
+        </trans-unit>
+        <trans-unit id="Enum 3912514995 - EnumValue 4137051400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Action Approval - EnumValue New - Property Caption</note>
+          <target>Nuevo</target>
         </trans-unit>
         <trans-unit id="Enum 833534964 - EnumValue 2751250269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Rubber</source>
