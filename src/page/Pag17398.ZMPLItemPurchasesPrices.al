@@ -1,4 +1,4 @@
-page 17421 "ZM PL Item Purchases Prices"
+page 17398 "ZM PL Item Purchases Prices"
 {
     Caption = 'Item purchases prices', comment = 'ESP="Precios compra productos"';
     PageType = List;

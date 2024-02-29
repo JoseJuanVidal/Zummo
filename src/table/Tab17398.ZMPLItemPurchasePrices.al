@@ -1,4 +1,4 @@
-table 17416 "ZM PL Item Purchase Prices"
+table 17398 "ZM PL Item Purchase Prices"
 {
     DataClassification = CustomerContent;
     Caption = 'Item Purchases Prices', comment = 'ESP="Precios compra productos"';

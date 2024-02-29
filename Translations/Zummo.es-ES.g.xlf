@@ -8844,6 +8844,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Date Send Approval - Property Caption</note>
           <target>Fecha envío Aprobación</target>
         </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 3071786633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date/Time Creation</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha/Hora Creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Date/Time Creation - Property Caption</note>
+          <target>Fecha/Hora Creación</target>
+        </trans-unit>
         <trans-unit id="Table 1378230549 - Field 4187992892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Direct Unit Cost</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste unit. directo"</note>

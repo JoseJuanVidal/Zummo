@@ -15,20 +15,6 @@
             "launchBrowser": false,
             "schemaUpdateMode": "Synchronize"
         },
-        // {
-        //     "name": "BC140 Desarrollo 153 TEST",
-        //     "type": "al",
-        //     "request": "launch",
-        //     "server": "http://192.168.1.153:7546/desarrollo",
-        //     "serverInstance": "desarrollo",
-        //     "port": 7549,
-        //     "authentication": "UserPassword",
-        //     //"startupObjectId": 22,
-        //     "breakOnError": true,
-        //     "breakOnRecordWrite": false,
-        //     "launchBrowser": false,
-        //     "schemaUpdateMode": "Synchronize"
-        // },
         {
             "name": "Localhost",
             "type": "al",
@@ -42,7 +28,7 @@
             "breakOnError": true,
             "breakOnRecordWrite": false,
             "launchBrowser": false,
-            "schemaUpdateMode": "Synchronize"
+            "schemaUpdateMode": "ForceSync"
         }
     ]
 }
