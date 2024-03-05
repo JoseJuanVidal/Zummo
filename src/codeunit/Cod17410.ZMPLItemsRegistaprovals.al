@@ -218,7 +218,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         Body += '<td style="width: 57.25px; height: 18px;"><strong>Cantidad M&iacute;nima</strong></td>';
         Body += '<td style="width: 43.9688px; height: 18px;"><strong>Coste Unit. Directo</strong>.&nbsp;</td>';
         Body += '<td style="width: 43.9688px; height: 18px;"><strong>Fecha Final</strong>.&nbsp;</td>';
-        Body += '<td style="width: 64.8125px; height: 18px;"><strong>C&oacute;d. Unidad</strong></td>';
+        Body += '<td style="width: 64.8125px; height: 18px;"><strong>C&oacute;d. Unidad Medida</strong></td>';
         Body += '</tr>';
         Body += '</thead>';
         Body += '<tbody>';
@@ -235,11 +235,10 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                 Body += '<td style="color:' + Color + ';width: 277.078px; height: 10px;">' + Vendor.Name + '</td>';
                 Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Currency Code") + '</td>';
                 Body += '<td style="width: 57.25px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Starting Date") + '</td>';
-                Body += '<td style="width: 43.9688px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Direct Unit Cost") + ' &euro;</td>';
                 Body += '<td style="width: 43.9688px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Minimum Quantity") + '</td>';
+                Body += '<td style="width: 43.9688px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Direct Unit Cost") + ' &euro;</td>';
                 Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Ending Date") + '</td>';
                 Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + ItemPurchasePrices."Unit of Measure Code" + '</td>';
-
             Until ItemPurchasePrices.next() = 0;
         Body += '</tbody>';
         Body += '</table>';

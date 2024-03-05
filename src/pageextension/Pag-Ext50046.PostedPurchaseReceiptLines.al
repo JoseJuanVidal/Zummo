@@ -33,6 +33,17 @@ pageextension 50046 "PostedPurchaseReceiptLines" extends "Posted Purchase Receip
                 ApplicationArea = all;
             }
         }
+        addafter("Shortcut Dimension 2 Code")
+        {
+            field("Global Dimension 3 Code"; "Global Dimension 3 Code")
+            {
+                ApplicationArea = all;
+            }
+            field("Global Dimension 8 Code"; "Global Dimension 8 Code")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     trigger OnAfterGetRecord()

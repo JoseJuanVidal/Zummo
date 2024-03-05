@@ -57,7 +57,20 @@ tableextension 50112 "PurchRcptLine" extends "Purch. Rcpt. Line"  //121
             TableRelation = "ZM Contracts/Supplies Lines"."Line No." where("Document No." = field("Document No."));
             Editable = false;
         }
-
+        field(50110; "Global Dimension 3 Code"; Code[20])
+        {
+            Editable = false;
+            Caption = 'Detalle', comment = 'ESP="Detalle"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('DETALLE')));
+        }
+        field(50111; "Global Dimension 8 Code"; Code[20])
+        {
+            Editable = false;
+            Caption = 'Partida', comment = 'ESP="Partida"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('PARTIDA')));
+        }
         field(50157; BaseImponibleLinea; decimal)
         {
             DataClassification = CustomerContent;
