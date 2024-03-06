@@ -41,6 +41,11 @@ table 17410 "ZM PL Item Setup Approval"
             Caption = 'Department', comment = 'ESP="Departamento"';
             TableRelation = "ZM PL Item Setup Department";
         }
+        field(20; Rol; Enum "Rol Item Approval")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Rol', comment = 'ESP="Perfil"';
+        }
     }
     keys
     {

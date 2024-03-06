@@ -27,6 +27,10 @@ page 17410 "ZM PL Item Setup approvals"
                 {
                     ApplicationArea = All;
                 }
+                field(Rol; Rol)
+                {
+                    ApplicationArea = all;
+                }
                 field(Obligatory; Obligatory)
                 {
                     ApplicationArea = all;

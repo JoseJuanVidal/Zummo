@@ -8938,6 +8938,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Obligatory - Property Caption</note>
           <target>Obligatorio</target>
         </trans-unit>
+        <trans-unit id="Table 4201268802 - Field 3990963403 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rol</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Perfil"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Rol - Property Caption</note>
+          <target>Perfil</target>
+        </trans-unit>
         <trans-unit id="Table 4201268802 - Field 3017471043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tabla"</note>
@@ -10573,6 +10579,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Abrir la petición de alta del producto %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method ItemRegistratio_OpenRequested - NamedType lblConfirm</note>
           <target>¿Desea Abrir la petición de alta del producto %1 %2?</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 3770991987 - Method 2769992486 - NamedType 3098449012" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There are no users configured for approval %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No existen usuarios configurados para aprobación %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method RequestEmaiApprobalItemPurchasePrices - NamedType lblSinDestino</note>
+          <target>No existen usuarios configurados para aprobación %1.</target>
         </trans-unit>
         <trans-unit id="Codeunit 3770991987 - Method 4022973641 - NamedType 3098449012" size-unit="char" translate="yes" xml:space="preserve">
           <source>There are no users configured for approval %1.</source>
@@ -35468,6 +35480,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field Comentario - Property Caption</note>
           <target>Comentario</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4014689059 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Cód. Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field Customer No. - Property Caption</note>
+          <target>Cód. Cliente"</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4014689059 - Field 1291639658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
           <source>Fecha Fin Contrato</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin Contrato"</note>
@@ -35938,6 +35956,24 @@
           <note from="Developer" annotates="general" priority="2">ESP=" "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum IE Almacen - EnumValue Ninguno - Property Caption</note>
           <target> </target>
+        </trans-unit>
+        <trans-unit id="Enum 115707917 - EnumValue 227370865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approval</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobador"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Rol Item Approval - EnumValue Approval - Property Caption</note>
+          <target>Aprobador</target>
+        </trans-unit>
+        <trans-unit id="Enum 115707917 - EnumValue 1562294763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Both</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ambos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Rol Item Approval - EnumValue Both - Property Caption</note>
+          <target>Ambos</target>
+        </trans-unit>
+        <trans-unit id="Enum 115707917 - EnumValue 3552983923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Propietario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Rol Item Approval - EnumValue Owner - Property Caption</note>
+          <target>Propietario</target>
         </trans-unit>
         <trans-unit id="Enum 1563706261 - EnumValue 2913119229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approved</source>

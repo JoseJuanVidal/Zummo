@@ -44,14 +44,15 @@ query 50100 "Consulta Stocks"
             column(Variant_Code; "Variant Code")
             {
             }
-            column(Location_Code; "Location Code")
-            {
-            }
+            // column(Location_Code; "Location Code")
+            // {
+            // }
             column(Cantidad; "Qty. (Base)")
             {
                 ColumnFilter = Cantidad = FILTER(<> 0);
                 Method = Sum;
             }
+
         }
     }
 }

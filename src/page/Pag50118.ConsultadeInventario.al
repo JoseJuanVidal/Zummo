@@ -226,6 +226,8 @@ page 50118 "Consulta de Inventario"
         msgVentana: Label 'Almacén:#1###########\Producto #2##############';
 
     local procedure SetPageData()
+    var
+        WarehouseEntry: Record "Warehouse Entry";
     begin
         if globalAlmacen <> '' then
             LotInventory.SetFilter(LotInventory.FiltroAlmacen, globalAlmacen);
@@ -273,6 +275,16 @@ page 50118 "Consulta de Inventario"
                         if TransferReceiptHeader.FindSet() then
                             CodCliente := Funciones.GetExtensionFieldValuetext(TransferReceiptHeader.RecordId, 50600, false);   // Desc Familia  021        
                     end;
+                else begin
+                    WarehouseEntry.Reset();
+                    WarehouseEntry.SetRange("Location Code", LotInventory.Almacen);
+                    WarehouseEntry.SetRange("Bin Code", LotInventory.Ubicacion);
+                    WarehouseEntry.SetRange("Item No.", LotInventory.Item_No);
+                    WarehouseEntry.SetRange("Serial No.", LotInventory.SerialNo);
+                    if WarehouseEntry.FindSet() then begin
+                        CodCliente := WarehouseEntry."Customer No.";
+                    end;
+                end;
             end;
             "Reference No." := CodCliente;
             IF Quantity <> 0 THEN

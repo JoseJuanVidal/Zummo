@@ -197,6 +197,7 @@ page 17398 "ZM PL Item Purchases Prices"
 
     local procedure PurchasePricesApproval(Approve: Boolean)
     var
+        Item: Record Item;
         ItemPurchasePrices: Record "ZM PL Item Purchase Prices";
         Action: text;
     begin
@@ -209,10 +210,8 @@ page 17398 "ZM PL Item Purchases Prices"
         CurrPage.SetSelectionFilter(ItemPurchasePrices);
         if not Confirm(lblConfirmApprove, false, Action, ItemPurchasePrices.Count) then
             exit;
-        if ItemPurchasePrices.FindFirst() then
-            repeat
-                Rec.ItemPurchasePricesApproval(Approve);
-            Until ItemPurchasePrices.next() = 0;
+        ItemPurchasePrices.ItemPurchasePricesApproval(ItemPurchasePrices, Approve);
+
     end;
 
     procedure SetItemApproval(Value: Boolean)

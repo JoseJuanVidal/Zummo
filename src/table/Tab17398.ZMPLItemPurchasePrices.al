@@ -158,16 +158,34 @@ table 17398 "ZM PL Item Purchase Prices"
             Error(lblErrorDuplicate, Rec.TableCaption);
     end;
 
-    procedure ItemPurchasePricesApproval(Approve: Boolean)
+    procedure ItemPurchasePricesApproval(var SelectItemPurchasePrices: Record "ZM PL Item Purchase Prices"; Approve: Boolean)
     var
-        myInt: Integer;
+        Item: Record Item;
+        ItemPurchasePrices: Record "ZM PL Item Purchase Prices" temporary;
+    begin
+        if SelectItemPurchasePrices.FindFirst() then
+            repeat
+                AddItemPurchasePrice(ItemPurchasePrices, SelectItemPurchasePrices);
+                SelectItemPurchasePrices.ItemPurchasePriceApproval(Approve);
+            Until SelectItemPurchasePrices.next() = 0;
+        // si el usuario es el aprobador, se envia email a los propietarios de table
+        Item.Get(Rec."Item No.");
+        ItemsRegistaprovals.RequestEmaiApprobalItemPurchasePrices(Item, ItemPurchasePrices);
+    end;
+
+    local procedure AddItemPurchasePrice(var ItemPurchasePrices: Record "ZM PL Item Purchase Prices"; SelectItemPurchasePrices: Record "ZM PL Item Purchase Prices")
+    begin
+        ItemPurchasePrices.Init();
+        ItemPurchasePrices.TransferFields(SelectItemPurchasePrices);
+        ItemPurchasePrices.Insert();
+    end;
+
+    procedure ItemPurchasePriceApproval(Approve: Boolean)
     begin
         ItemsRegistaprovals.ItemPurchasePricesApproval(Rec, Approve);
     end;
 
     local procedure CheckActionApproval()
-    var
-        myInt: Integer;
     begin
         Rec."Action Approval" := Rec."Action Approval"::New;
         PurchasePrice.Reset();

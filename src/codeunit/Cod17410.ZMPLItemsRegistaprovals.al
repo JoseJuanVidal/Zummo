@@ -89,6 +89,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", Database::"Purchase Price");
         ItemSetupApproval.SetRange("Field No.", 0);  // permisos a la tabla para aprobación
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
         if ItemSetupApproval.FindFirst() then
             repeat
                 if ItemSetupDepartment.Get(ItemSetupApproval.Department) then begin
@@ -153,6 +154,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", Database::"Purchase Price");
         ItemSetupApproval.SetRange("Field No.", 0);  // permisos a la tabla para aprobación
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
         if ItemSetupApproval.FindFirst() then
             repeat
                 if ItemSetupDepartment.Get(ItemSetupApproval.Department) then begin
@@ -246,6 +248,111 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
 
     end;
 
+    procedure RequestEmaiApprobalItemPurchasePrices(Item: Record Item; var ItemPurchasePrices: record "ZM PL Item Purchase Prices")
+    var
+        UserSetup: Record "User Setup";
+        ItemSetupApproval: Record "ZM PL Item Setup Approval";
+        ItemSetupDepartment: Record "ZM PL Item Setup Department";
+        Employee: Record Employee;
+        recSMTPSetup: Record "SMTP Mail Setup";
+        cduSmtp: Codeunit "SMTP Mail";
+        Destino: Text;
+        body: text;
+        FileName: text;
+        Solitante: Text;
+        filePathPurchaseHeader: text;
+        lblSinDestino: Label 'There are no users configured for approval %1.', comment = 'ESP="No existen usuarios configurados para aprobación %1."';
+    begin
+        // EnviaEmail(txtAsunto, txtCuerpo, recEmployee."Company E-Mail", recPurchaseHeader, recTemp."Item No.");
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", Database::"Purchase Price");
+        ItemSetupApproval.SetRange("Field No.", 0);  // permisos a la tabla para aprobación
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Owner, ItemSetupApproval.Rol::Both);
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                if ItemSetupDepartment.Get(ItemSetupApproval.Department) then begin
+                    AddEmail(Destino, ItemSetupDepartment.Email);
+                    Employee.Reset();
+                    Employee.SetRange("Approval User Id", ItemSetupDepartment."User Id");
+                    if Employee.FindFirst() then
+                        repeat
+                            AddEmail(Destino, Employee."Company E-Mail");
+                        Until Employee.next() = 0;
+                end;
+            Until ItemSetupApproval.next() = 0;
+
+        if Destino = '' then
+            Error(lblSinDestino, Database::"Purchase Price");
+        recSMTPSetup.Get();
+        recSMTPSetup.TestField("SMTP Server");
+        recSMTPSetup.TestField("User ID");
+        Clear(cduSmtp);
+        body := RequestEmailItemPruchasePricesBody(ItemPurchasePrices);
+        cduSmtp.CreateMessage(CompanyName(), recSMTPSetup."User ID", Destino, StrSubstNo('Cambios de precios Producto %1 %2', Item."No.", Item.Description), body, TRUE); //pDireccion, pAsunto, pCuerpo, TRUE);
+        // filePathPurchaseHeader := GetDocAttachment(PurchLinesRequest."Document No.", FileName);
+        // if filePathPurchaseHeader <> '' then
+        //     if Exists(filePathPurchaseHeader) then
+        //         cduSmtp.AddAttachment(filePathPurchaseHeader, FileName);
+        cduSmtp.Send();
+
+    end;
+
+    local procedure RequestEmailItemPruchasePricesBody(var ItemPurchasePrices: record "ZM PL Item Purchase Prices") Body: Text
+    var
+        Companyinfo: Record "Company Information";
+        Item: Record Item;
+        Vendor: Record Vendor;
+        Color: text;
+    begin
+        Companyinfo.Get();
+        ItemPurchasePrices.FindFirst();
+        Item.Get(ItemPurchasePrices."Item No.");
+        Body := '<p>&nbsp;</p>';
+        Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
+        Body += '<h2 style="color: #2e6c80;">Cambios de precios Producto</h2>';
+        Body += '<p><strong>Cód. producto:</strong> ' + ItemPurchasePrices."Item No." + '</p>';
+        Body += '<p><strong>Descripción</strong> ' + Item.Description + '</p>';
+        Body += '<p><strong>Fecha:</strong> ' + format(WorkDate()) + '</p>';
+        // Body += '<p><strong>Solicitante</strong>:&nbsp; &nbsp; &nbsp; ' + Solitante;
+        Body += '<h2 style="color: #2e6c80;">L&iacute;neas:</h2>';
+        Body += '<table class="editorDemoTable" style="width: 980px; height: 18px;">';
+        Body += '<thead>';
+        Body += '<tr style="height: 15px;">';
+        Body += '<td style="width: 115.141px; height: 18px;"><strong>Proveedor</strong></td>';
+        Body += '<td style="width: 277.078px; height: 18px;"><strong>Nombre</strong></td>';
+        Body += '<td style="width: 80.75px; height: 18px;text-align: right;"><strong>C&oacute;d. Divisa</strong></td>';
+        Body += '<td style="width: 57.25px; height: 18px;text-align: right;"><strong>Fecha Inicial</strong></td>';
+        Body += '<td style="width: 57.25px; height: 18px;text-align: right;"><strong>Cantidad M&iacute;nima</strong></td>';
+        Body += '<td style="width: 43.9688px; height: 18pxtext-align: right;;"><strong>Coste Unit. Directo</strong>.&nbsp;</td>';
+        Body += '<td style="width: 43.9688px; height: 18px;text-align: right;"><strong>Fecha Final</strong>.&nbsp;</td>';
+        Body += '<td style="width: 64.8125px; height: 18px;text-align: right;"><strong>C&oacute;d. Unidad Medida</strong></td>';
+        Body += '</tr>';
+        Body += '</thead>';
+        Body += '<tbody>';
+
+        if ItemPurchasePrices.findset() then
+            repeat
+                // if PurchLinesRequest."Line Amount" = PurchLinesRequest."New Line Amount" then
+                //     Color := '#000000'
+                // else
+                //     Color := '#ff0000';
+                Vendor.Get(ItemPurchasePrices."Vendor No.");
+                Body += '<tr style="height: 20px;">';
+                Body += '<td style="color:' + Color + ';width: 115.141px; height: 10px;"><p>' + ItemPurchasePrices."Vendor No." + '</p></td>';
+                Body += '<td style="color:' + Color + ';width: 277.078px; height: 10px;">' + Vendor.Name + '</td>';
+                Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Currency Code") + '</td>';
+                Body += '<td style="width: 57.25px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Starting Date") + '</td>';
+                Body += '<td style="width: 43.9688px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Minimum Quantity") + '</td>';
+                Body += '<td style="width: 43.9688px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Direct Unit Cost") + ' &euro;</td>';
+                Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Ending Date") + '</td>';
+                Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + ItemPurchasePrices."Unit of Measure Code" + '</td>';
+            Until ItemPurchasePrices.next() = 0;
+        Body += '</tbody>';
+        Body += '</table>';
+        Body += '<p><strong>&nbsp;</strong></p>';
+
+    end;
+
     procedure ItemPurchasePricesApproval(var ItemPurchasePrices: record "ZM PL Item Purchase Prices"; Approve: Boolean)
     var
         PurchasesPrice: Record "Purchase Price";
@@ -256,8 +363,9 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                     if PurchasesPrice.Get(ItemPurchasePrices."Item No.", ItemPurchasePrices."Vendor No.", ItemPurchasePrices."Starting Date",
                             ItemPurchasePrices."Currency Code", ItemPurchasePrices."Variant Code", ItemPurchasePrices."Unit of Measure Code",
                             ItemPurchasePrices."Minimum Quantity") then begin
+                        ItemPurchasePrices."Status Approval" := ItemPurchasePrices."Status Approval"::Approved;
                         PurchasesPrice.Approval := true;
-                        PurchasesPrice.Delete();
+                        PurchasesPrice.Delete(false);
                     end;
                 end;
             else begin
@@ -273,6 +381,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                     PurchasesPrice."Variant Code" := ItemPurchasePrices."Variant Code";
                     PurchasesPrice."Unit of Measure Code" := ItemPurchasePrices."Unit of Measure Code";
                     PurchasesPrice."Minimum Quantity" := ItemPurchasePrices."Minimum Quantity";
+                    PurchasesPrice."Direct Unit Cost" := ItemPurchasePrices."Direct Unit Cost";
                     PurchasesPrice.Approval := true;
                     PurchasesPrice.Insert(false);
                 end;
