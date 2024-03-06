@@ -30,6 +30,10 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
         {
             DataClassification = CustomerContent;
         }
+        field(50003; "Solicitado a Técnico"; Boolean)
+        {
+            DataClassification = CustomerContent;
+        }
         field(50101; TipoPedidoNivel3_btc; Code[20])
         {
             DataClassification = CustomerContent;

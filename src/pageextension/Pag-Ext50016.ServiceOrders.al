@@ -44,7 +44,7 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
 
             field("Cerrado en plataforma"; "Cerrado en plataforma") { }
 
-
+            field("Solicitado a Técnico"; "Solicitado a Técnico") { }
 
 
 

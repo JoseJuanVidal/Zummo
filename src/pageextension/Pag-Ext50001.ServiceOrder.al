@@ -14,8 +14,7 @@ pageextension 50001 "ServiceOrder" extends "Service Order"
                 ApplicationArea = All;
             }
             field("Cerrado en plataforma"; "Cerrado en plataforma") { }
-
-
+            field("Solicitado a Técnico"; "Solicitado a Técnico") { }
             field(NumEstanteria_btc; NumEstanteria_btc)
             {
                 ApplicationArea = all;
