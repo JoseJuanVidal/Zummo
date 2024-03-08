@@ -35,6 +35,8 @@ table 17398 "ZM PL Item Purchase Prices"
         {
             DataClassification = CustomerContent;
             Caption = 'Direct Unit Cost', comment = 'ESP="Coste unit. directo"';
+            AutoFormatType = 2;
+            AutoFormatExpression = "Currency Code";
         }
         field(14; "Minimum Quantity"; Decimal)
         {
