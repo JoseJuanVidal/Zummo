@@ -221,6 +221,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         Body += '<td style="width: 43.9688px; height: 18px;"><strong>Coste Unit. Directo</strong>.&nbsp;</td>';
         Body += '<td style="width: 43.9688px; height: 18px;"><strong>Fecha Final</strong>.&nbsp;</td>';
         Body += '<td style="width: 64.8125px; height: 18px;"><strong>C&oacute;d. Unidad Medida</strong></td>';
+        Body += '<td style="width: 64.8125px; height: 18px;"><strong>Acci&oacute;n</strong></td>';
         Body += '</tr>';
         Body += '</thead>';
         Body += '<tbody>';
@@ -241,6 +242,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                 Body += '<td style="width: 43.9688px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Direct Unit Cost") + ' &euro;</td>';
                 Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Ending Date") + '</td>';
                 Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + ItemPurchasePrices."Unit of Measure Code" + '</td>';
+                Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Action Approval") + '</td>';
             Until ItemPurchasePrices.next() = 0;
         Body += '</tbody>';
         Body += '</table>';
@@ -326,6 +328,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         Body += '<td style="width: 43.9688px; height: 18pxtext-align: right;;"><strong>Coste Unit. Directo</strong>.&nbsp;</td>';
         Body += '<td style="width: 43.9688px; height: 18px;text-align: right;"><strong>Fecha Final</strong>.&nbsp;</td>';
         Body += '<td style="width: 64.8125px; height: 18px;text-align: right;"><strong>C&oacute;d. Unidad Medida</strong></td>';
+        Body += '<td style="width: 64.8125px; height: 18px;text-align: right;"><strong>Acci&oacute;n</strong></td>';
         Body += '</tr>';
         Body += '</thead>';
         Body += '<tbody>';
@@ -346,6 +349,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                 Body += '<td style="width: 43.9688px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Direct Unit Cost") + ' &euro;</td>';
                 Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Ending Date") + '</td>';
                 Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + ItemPurchasePrices."Unit of Measure Code" + '</td>';
+                Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Action Approval") + '</td>';
             Until ItemPurchasePrices.next() = 0;
         Body += '</tbody>';
         Body += '</table>';
