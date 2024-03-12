@@ -44,6 +44,7 @@ table 17456 "ZM Contracts/Supplies Lines"
                             if Item.Get("No.") then begin
                                 Description := Item.Description;
                                 "Precio negociado" := Item."Last Direct Cost";
+                                "Unit of measure" := Item."Base Unit of Measure";
                             end;
                         end;
                     Type::"G/L Account":
@@ -101,7 +102,7 @@ table 17456 "ZM Contracts/Supplies Lines"
 
             trigger OnValidate()
             begin
-                CalcLineAmount();
+                Validate_Unidades();
             end;
         }
         field(12; "Line Amount"; Decimal)
@@ -131,16 +132,18 @@ table 17456 "ZM Contracts/Supplies Lines"
             CalcFormula = sum("Purchase Line"."Outstanding Quantity" where("Document Type" = const(Order), "Contracts No." = field("Document No."), "Contracts Line No." = field("Line No.")));
             Editable = false;
         }
-        field(20; "Dimension 1 code"; code[20])
+        field(20; "Global Dimension 1 code"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'CECO', comment = 'ESP="CECO"';
+            Caption = 'Global Dimension 1 code', comment = 'ESP="Global Dimension 1 code"';
+            CaptionClass = '1,2,1';
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
         }
-        field(30; "Dimension 2 code"; code[20])
+        field(30; "Global Dimension 2 code"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Proyecto', comment = 'ESP="Proyecto"';
+            Caption = 'Global Dimension 2 code', comment = 'ESP="Global Dimension 2 code"';
+            CaptionClass = '1,2,2';
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
         }
         field(35; "Unit of measure"; code[10])
@@ -164,6 +167,48 @@ table 17456 "ZM Contracts/Supplies Lines"
         {
             Caption = 'Order Multiple', Comment = 'ESP="Multiplos pedido"';
             DataClassification = CustomerContent;
+        }
+        field(50; "Global Dimension 3 code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Global Dimension 3 code', comment = 'ESP="Global Dimension 3 code"';
+            CaptionClass = '1,2,3';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(3));
+        }
+        field(51; "Global Dimension 4 code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Global Dimension 4 code', comment = 'ESP="Global Dimension 4 code"';
+            CaptionClass = '1,2,4';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(4));
+        }
+        field(52; "Global Dimension 5 code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Global Dimension 5 code', comment = 'ESP="Global Dimension 5 code"';
+            CaptionClass = '1,2,5';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(5));
+        }
+        field(53; "Global Dimension 6 code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Global Dimension 6 code', comment = 'ESP="Global Dimension 6 code"';
+            CaptionClass = '1,2,6';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(6));
+        }
+        field(54; "Global Dimension 7 code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Global Dimension 7 code', comment = 'ESP="Global Dimension 7 code"';
+            CaptionClass = '1,2,7';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(7));
+        }
+        field(60; "Global Dimension 8 code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Global Dimension 8 code', comment = 'ESP="Global Dimension 8 code"';
+            CaptionClass = '1,2,8';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(8));
         }
     }
     keys
@@ -218,6 +263,27 @@ table 17456 "ZM Contracts/Supplies Lines"
         CalcFields("Unidades Entregadas", "Unidades Devolución");
         if ("Unidades Entregadas" <> 0) or ("Unidades Devolución" <> 0) then
             Error(MsgDelete);
+    end;
+
+    local procedure Validate_Unidades()
+    var
+        PurchasePrice: Record "Purchase Price";
+        lblMsg: Label 'The price has been updated to Tariff Lot.', comment = 'ESP="Se ha actualizado el precio a tarifa de lotes."';
+    begin
+        if not (Rec.Type in [Rec.Type::Item]) then
+            exit;
+        PurchasePrice.Reset();
+        PurchasePrice.SetRange("Vendor No.", Rec."Buy-from Vendor No.");
+        PurchasePrice.SetRange("Item No.", Rec."No.");
+        PurchasePrice.SetFilter("Ending Date", '%1..', WorkDate());
+        PurchasePrice.SetFilter("Unit of Measure Code", Rec."Unit of measure");
+        PurchasePrice.SetFilter("Minimum Quantity", '>=%1', Rec.Unidades);
+        if PurchasePrice.FindFirst() then begin
+            Rec."Precio negociado" := PurchasePrice."Direct Unit Cost";
+            Message(lblMsg);
+        end;
+
+        CalcLineAmount();
     end;
 
     local procedure CalcLineAmount()

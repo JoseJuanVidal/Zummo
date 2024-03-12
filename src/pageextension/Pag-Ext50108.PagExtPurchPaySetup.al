@@ -85,7 +85,15 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                         rec."Path Purchase Docs. pending" := SelectPathPurchaseDocuments();
                     end;
                 }
+            }
+            group(Contracts)
+            {
+                Caption = 'Contratos/Suministros', comment = 'ESP="Contratos/Suministros"';
                 field("ZM Contracts Nos."; "ZM Contracts Nos.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Warning Contracts"; "Warning Contracts")
                 {
                     ApplicationArea = all;
                 }

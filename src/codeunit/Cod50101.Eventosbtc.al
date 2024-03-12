@@ -1136,6 +1136,23 @@ codeunit 50101 "Eventos_btc"
         PurchaseHeader."Plastic Date Declaration" := WarehouseReceiptHeader."Plastic Date Declaration";
     end;
 
+    [EventSubscriber(ObjectType::Page, Page::"Purchase Order Subform", 'OnAfterValidateEvent', 'No.', true, true)]
+    local procedure PurchaseLine_OnAfterValidateEvent(var Rec: Record "Purchase Line"; var xRec: Record "Purchase Line")
+    var
+        PurchaseSetup: Record "Purchases & Payables Setup";
+        Funciones: Codeunit Funciones;
+        lblConfirm: Label 'There are active contracts for %1.\¿Do you want to select the contract?',
+            comment = 'ESP="Existen Contratos activos para %1.\¿Desea seleccionar el contrato?"';
+    begin
+        if PurchaseSetup.Get() then
+            if PurchaseSetup."Warning Contracts" then begin
+                if Rec."Contracts No." = '' then
+                    if Funciones.ExistContract(Rec) then begin
+                        if Confirm(lblConfirm, false, Rec.Description) then
+                            Funciones.OnActionAssignContract(Rec, false);
+                    end
+            end;
+    end;
 
     // =============     Purchase Price - Evvento de           ====================
     // ==  

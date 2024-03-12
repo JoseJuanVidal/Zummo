@@ -98,13 +98,49 @@ page 17467 "ZM Contracts/Supplies Lines"
                         page.RunModal(0, PurchaseLine);
                     end;
                 }
-                field("Dimension 1 code"; "Dimension 1 code")
+                field("Global Dimension 1 code"; "Global Dimension 1 code")
                 {
                     ApplicationArea = all;
                 }
-                field("Dimension 2 code"; "Dimension 2 code")
+                field("Global Dimension 2 code"; "Global Dimension 2 code")
                 {
                     ApplicationArea = all;
+                }
+                field("Global Dimension 3 code"; "Global Dimension 3 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,3';
+                }
+                field("Global Dimension 4 code"; "Global Dimension 4 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,4';
+                }
+                field("Global Dimension 5 code"; "Global Dimension 5 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,5';
+                }
+                field("Global Dimension 6 code"; "Global Dimension 6 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,6';
+                }
+                field("Global Dimension 7 code"; "Global Dimension 7 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,7';
+                }
+                field("Global Dimension 8 code"; "Global Dimension 8 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,8';
                 }
             }
         }

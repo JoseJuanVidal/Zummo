@@ -2839,7 +2839,6 @@ codeunit 50111 "Funciones"
         lblErrorEnd: Label '%1 %2 es mayor que la fecha %3.', comment = 'ESP="%1 %2 es mayor que la fecha %3."';
         lblConfirm: Label '\Debe avisar al departamento de compra.\¿Desea Continuar?', comment = 'ESP="\Debe avisar al departamento de compra.\¿Desea Continuar?"';
     begin
-        // TODO quitar el continuar
         // comprobar estado
         Contracts.TestField(Status, Contracts.Status::Lanzado);
 
@@ -2847,8 +2846,8 @@ codeunit 50111 "Funciones"
         if Contracts."Date Start Validity" > WorkDate() then
             Error(lblErrorStart, Contracts.FieldName("Date Start Validity"), Contracts."Date Start Validity", WorkDate());
         if Contracts."Date End Validity" < WorkDate() then
-            if not Confirm(lblErrorEnd + lblConfirm, false, Contracts.FieldName("Date End Validity"), Contracts."Date End Validity", WorkDate()) then
-                Error(lblErrorEnd, false, Contracts.FieldName("Date End Validity"), Contracts."Date End Validity", WorkDate());
+            //   if not Confirm(lblErrorEnd + lblConfirm, false, Contracts.FieldName("Date End Validity"), Contracts."Date End Validity", WorkDate()) then
+            Error(lblErrorEnd, false, Contracts.FieldCaption("Date End Validity"), Contracts."Date End Validity", WorkDate());
 
     end;
 
@@ -2867,14 +2866,18 @@ codeunit 50111 "Funciones"
                     // Comprobar No.
                     ContractsLine.TestField("No.");
                     // comprobar unidades                   
-                    ContractsLine.TestField("Dimension 1 code");
-                    ContractsLine.TestField("Dimension 2 code");
+                    if ContractsLine.Type in [ContractsLine.Type::"Fixed Asset", ContractsLine.Type::"G/L Account"] then begin
+                        ContractsLine.TestField("Global Dimension 1 code");
+                        ContractsLine.TestField("Global Dimension 2 code");
+                    end;
+
+                    // comprobamos datos de linea, Cantidad minima de compra y multiplos
+                    if ContractsLine.Unidades < ContractsLine."Minimum Order Quantity" then
+                        Error(lblErrorMinQty, ContractsLine."Minimum Order Quantity");
+                    if ContractsLine."Order Multiple" <> 0 then
+                        if (ContractsLine.Unidades div ContractsLine."Order Multiple") = 0 then
+                            Error(lblErrorOrderMultiple, ContractsLine."Order Multiple");
                 end;
-                // comprobamos datos de linea, Cantidad minima de compra y multiplos
-                if ContractsLine.Unidades < ContractsLine."Minimum Order Quantity" then
-                    Error(lblErrorMinQty, ContractsLine."Minimum Order Quantity");
-                if (ContractsLine.Unidades div ContractsLine."Order Multiple") = 0 then
-                    Error(lblErrorOrderMultiple, ContractsLine."Order Multiple");
             Until ContractsLine.next() = 0;
     end;
 
@@ -2942,18 +2945,41 @@ codeunit 50111 "Funciones"
                     PurchaseLine.validate("No.", tmpContractsLine."No.");
                     PurchaseLine.validate(Quantity, tmpContractsLine.Unidades);
                     PurchaseLine.validate("Direct Unit Cost", tmpContractsLine."Precio negociado");
-                    PurchaseLine.validate("Shortcut Dimension 1 Code", tmpContractsLine."Dimension 1 code");
-                    PurchaseLine.validate("Shortcut Dimension 2 Code", tmpContractsLine."Dimension 2 code");
+                    PurchaseLine.validate("Shortcut Dimension 1 Code", tmpContractsLine."Global Dimension 1 code");
+                    PurchaseLine.validate("Shortcut Dimension 2 Code", tmpContractsLine."Global Dimension 2 code");
                     // datos contrato
                     PurchaseLine."Contracts No." := tmpContractsLine."Document No.";
                     PurchaseLine."Contracts Line No." := tmpContractsLine."Line No.";
+                    if format(tmpContractsLine."Lead Time Calculation") <> '' then
+                        PurchaseLine."Planned Receipt Date" := CalcDate(tmpContractsLine."Lead Time Calculation", WorkDate());
                     PurchaseLine.Insert();
                 end;
             Until tmpContractsLine.next() = 0;
 
     end;
 
-    procedure OnActionAssignContract(var PurchaseLine: Record "Purchase Line")
+    procedure ExistContract(PurchaseLine: Record "Purchase Line"): Boolean
+    var
+        Contractline: Record "ZM Contracts/Supplies Lines";
+    begin
+        Contractline.Reset();
+        Contractline.SetRange("Buy-from Vendor No.", PurchaseLine."Buy-from Vendor No.");
+        Contractline.SetRange(Status, Contractline.Status::Lanzado);
+        case PurchaseLine.Type of
+            PurchaseLine.Type::Item:
+                Contractline.SetRange(type, Contractline.Type::Item);
+            PurchaseLine.Type::"Fixed Asset":
+                Contractline.SetRange(type, Contractline.Type::"Fixed Asset");
+            PurchaseLine.Type::"G/L Account":
+                Contractline.SetRange(type, Contractline.Type::"G/L Account");
+        end;
+        Contractline.SetRange("No.", PurchaseLine."No.");
+        Contractline.SetFilter("Date End Validity", '%1..', WorkDate());
+        if Contractline.FindFirst() then
+            exit(true);
+    end;
+
+    procedure OnActionAssignContract(var PurchaseLine: Record "Purchase Line"; Modify: Boolean)
     var
         Contractline: Record "ZM Contracts/Supplies Lines";
         Contractlines: Page "ZM Contracts Creating Lines";
@@ -2972,43 +2998,57 @@ codeunit 50111 "Funciones"
         Contractline.Reset();
         Contractline.SetRange("Buy-from Vendor No.", PurchaseLine."Buy-from Vendor No.");
         Contractline.SetRange(Status, Contractline.Status::Lanzado);
+        case PurchaseLine.Type of
+            PurchaseLine.Type::Item:
+                Contractline.SetRange(type, Contractline.Type::Item);
+            PurchaseLine.Type::"Fixed Asset":
+                Contractline.SetRange(type, Contractline.Type::"Fixed Asset");
+            PurchaseLine.Type::"G/L Account":
+                Contractline.SetRange(type, Contractline.Type::"G/L Account");
+        end;
+        Contractline.SetRange("No.", PurchaseLine."No.");
         Contractline.SetFilter("Date End Validity", '%1..', WorkDate());
-        if Contractline.FindFirst() then
-            repeat
-                case Contractline.Type of
-                    Contractline.Type::Item:
-                        if (PurchaseLine.Type = PurchaseLine.Type::Item) and (PurchaseLine."No." = PurchaseLine."No.") then
-                            Contractlines.AddContractLines(Contractline);
-                    Contractline.Type::"G/L Account":
-                        if (PurchaseLine.Type = PurchaseLine.Type::"G/L Account") and (PurchaseLine."No." = PurchaseLine."No.") then
-                            Contractlines.AddContractLines(Contractline);
-                    Contractline.Type::"Fixed Asset":
-                        if (PurchaseLine.Type = PurchaseLine.Type::"Fixed Asset") and (PurchaseLine."No." = PurchaseLine."No.") then
-                            Contractlines.AddContractLines(Contractline);
-                    else begin
+        if not Contractline.FindFirst() then
+            exit;
+        repeat
+            case Contractline.Type of
+                Contractline.Type::Item:
+                    if (PurchaseLine.Type = PurchaseLine.Type::Item) and (PurchaseLine."No." = PurchaseLine."No.") then
                         Contractlines.AddContractLines(Contractline);
-                    end;
+                Contractline.Type::"G/L Account":
+                    if (PurchaseLine.Type = PurchaseLine.Type::"G/L Account") and (PurchaseLine."No." = PurchaseLine."No.") then
+                        Contractlines.AddContractLines(Contractline);
+                Contractline.Type::"Fixed Asset":
+                    if (PurchaseLine.Type = PurchaseLine.Type::"Fixed Asset") and (PurchaseLine."No." = PurchaseLine."No.") then
+                        Contractlines.AddContractLines(Contractline);
+                else begin
+                    Contractlines.AddContractLines(Contractline);
                 end;
-            Until Contractline.next() = 0;
+            end;
+        Until Contractline.next() = 0;
         Contractlines.LookupMode := true;
+        Contractlines.Editable(false);
         if Contractlines.RunModal() = Action::LookupOK then begin
             Contractlines.GetRecord(Contractline);
-            PurchaseLineAssignContract(PurchaseLine, Contractline);
+            PurchaseLineAssignContract(PurchaseLine, Contractline, Modify);
         end;
     end;
 
-    procedure PurchaseLineAssignContract(var PurchaseLine: Record "Purchase Line"; Contractline: Record "ZM Contracts/Supplies Lines")
+    procedure PurchaseLineAssignContract(var PurchaseLine: Record "Purchase Line"; Contractline: Record "ZM Contracts/Supplies Lines"; Modify: boolean)
     var
     begin
         PurchaseLine."Contracts No." := Contractline."Document No.";
         PurchaseLine."Contracts Line No." := Contractline."Line No.";
         if Contractline."Precio negociado" <> PurchaseLine."Direct Unit Cost" then
             PurchaseLine.validate("Direct Unit Cost", Contractline."Precio negociado");
-        if (Contractline."Dimension 1 code" <> '') and (Contractline."Dimension 1 code" <> PurchaseLine."Shortcut Dimension 1 Code") then
-            PurchaseLine.validate("Shortcut Dimension 1 Code", Contractline."Dimension 1 code");
-        if (Contractline."Dimension 1 code" <> '') and (Contractline."Dimension 2 code" <> PurchaseLine."Shortcut Dimension 2 Code") then
-            PurchaseLine.validate("Shortcut Dimension 2 Code", Contractline."Dimension 2 code");
-        PurchaseLine.Modify();
+        if (Contractline."Global Dimension 1 code" <> '') and (Contractline."Global Dimension 1 code" <> PurchaseLine."Shortcut Dimension 1 Code") then
+            PurchaseLine.validate("Shortcut Dimension 1 Code", Contractline."Global Dimension 1 code");
+        if (Contractline."Global Dimension 1 code" <> '') and (Contractline."Global Dimension 2 code" <> PurchaseLine."Shortcut Dimension 2 Code") then
+            PurchaseLine.validate("Shortcut Dimension 2 Code", Contractline."Global Dimension 2 code");
+        if format(Contractline."Lead Time Calculation") <> '' then
+            PurchaseLine."Planned Receipt Date" := CalcDate(Contractline."Lead Time Calculation", WorkDate());
+        if Modify then
+            PurchaseLine.Modify();
     end;
 
     procedure MarkFacturaenviada(var SalesInvHeader: Record "Sales Invoice Header")
@@ -3464,4 +3504,5 @@ codeunit 50111 "Funciones"
         END;
     end;
 }
+
 

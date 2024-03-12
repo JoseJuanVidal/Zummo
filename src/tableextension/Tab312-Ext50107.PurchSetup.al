@@ -47,6 +47,11 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             Caption = 'Contracts Nos.', comment = 'ESP="Nº serie contratos/suministros"';
             TableRelation = "No. Series";
         }
+        field(50061; "Warning Contracts"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Warning Contract Existing.', comment = 'ESP="Aviso Contracto existente."';
+        }
         field(50070; "General Conditions Purchase"; text[100])
         {
             DataClassification = CustomerContent;

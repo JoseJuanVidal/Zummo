@@ -37,6 +37,18 @@ pageextension 50106 "PurchaseOrderSubform" extends "Purchase Order Subform"
                 ApplicationArea = all;
                 Editable = false;
             }
+            field("Contracts No."; "Contracts No.")
+            {
+                ApplicationArea = all;
+                Editable = false;
+                Visible = false;
+
+                trigger OnAssistEdit()
+                begin
+                    OnAssistEdit_ContractsNo();
+                end;
+
+            }
         }
     }
 
@@ -161,7 +173,21 @@ pageextension 50106 "PurchaseOrderSubform" extends "Purchase Order Subform"
 
     local procedure OnAction_AssignContract()
     begin
-        Funciones.OnActionAssignContract(Rec);
+        Funciones.OnActionAssignContract(Rec, true);
         CurrPage.Update();
+    end;
+
+    local procedure OnAssistEdit_ContractsNo()
+    var
+        ContractsSuppliesHeader: record "ZM Contracts/Supplies Header";
+        ContractsSupliesList: page "ZM Contracts Suplies List";
+    begin
+        if "Contracts No." = '' then
+            OnAction_AssignContract()
+        else begin
+            // lista de contrato asignado
+            ContractsSuppliesHeader.SetRange("No.", Rec."Contracts No.");
+            ContractsSupliesList.RunModal();
+        end;
     end;
 }

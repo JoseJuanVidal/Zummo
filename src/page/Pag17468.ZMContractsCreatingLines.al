@@ -1,15 +1,16 @@
 page 17468 "ZM Contracts Creating Lines"
 {
-    PageType = List;
+    PageType = Document;
     SourceTable = "ZM Contracts/supplies Lines";
     SourceTableTemporary = true;
     AutoSplitKey = true;
-    Caption = 'Crear ´Pedidio Compra', Comment = 'ESP="Crear ´Pedidio Compra"';
+    Caption = 'Crear Pedido Compra', Comment = 'ESP="Crear Pedido Compra"';
     DataCaptionFields = "Document No.";
     DelayedInsert = true;
     LinksAllowed = false;
     MultipleNewLines = true;
     RefreshOnActivate = true;
+    DeleteAllowed = false;
 
     layout
     {
@@ -21,18 +22,22 @@ page 17468 "ZM Contracts Creating Lines"
                 field(ContractsNo; Contracts."No.")
                 {
                     ApplicationArea = all;
+                    Caption = 'No.', Comment = 'ESP="Nº"';
                 }
                 field(ContractsVendorNo; Contracts."Buy-from Vendor No.")
                 {
                     ApplicationArea = all;
+                    Caption = 'Buy-from Vendor No.', Comment = 'ESP="Compra a-Nº proveedor"';
                 }
                 field(ContractsVendorName; Contracts."Buy-from Vendor Name")
                 {
                     ApplicationArea = all;
+                    Caption = 'Buy-from Vendor Name', Comment = 'ESP="Compra a-Nombre"';
                 }
                 field(ContractNoVendor; Contracts."Contract No. Vendor")
                 {
                     ApplicationArea = all;
+                    Caption = 'Contract No. Vendor', Comment = 'ESP="Nº contrato proveedor"';
                 }
             }
             repeater(Lines)
@@ -69,11 +74,11 @@ page 17468 "ZM Contracts Creating Lines"
                 {
                     ApplicationArea = all;
                 }
-                field("Dimension 1 code"; "Dimension 1 code")
+                field("Global Dimension 1 code"; "Global Dimension 1 code")
                 {
                     ApplicationArea = all;
                 }
-                field("Dimension 2 code"; "Dimension 2 code")
+                field("Global Dimension 2 code"; "Global Dimension 2 code")
                 {
                     ApplicationArea = all;
                 }
@@ -86,6 +91,42 @@ page 17468 "ZM Contracts Creating Lines"
                 {
                     ApplicationArea = all;
                     Editable = false;
+                }
+                field("Global Dimension 3 code"; "Global Dimension 3 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,3';
+                }
+                field("Global Dimension 4 code"; "Global Dimension 4 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,4';
+                }
+                field("Global Dimension 5 code"; "Global Dimension 5 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,5';
+                }
+                field("Global Dimension 6 code"; "Global Dimension 6 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,6';
+                }
+                field("Global Dimension 7 code"; "Global Dimension 7 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,7';
+                }
+                field("Global Dimension 8 code"; "Global Dimension 8 code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                    CaptionClass = '1,2,8';
                 }
             }
         }
