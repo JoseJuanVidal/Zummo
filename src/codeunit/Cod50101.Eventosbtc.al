@@ -1345,6 +1345,4 @@ codeunit 50101 "Eventos_btc"
     end;
 
     //#endregion Intercompany 
-
-
 }

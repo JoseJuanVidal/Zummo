@@ -30721,6 +30721,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WorkCenterList - Action WorkCenterCalendar - Property Caption</note>
           <target>Cap. Producto y Centro Trabajo</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4207199840 - Control 61007498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1202434405">
+          <source>Classification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Cust. Template Card - Control Classification - Property Caption</note>
+          <target>Clasificación</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4207199840 - Control 3470333905 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1202434405">
+          <source>Shipment Method</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Condiciones envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Cust. Template Card - Control Shipment Method - Property Caption</note>
+          <target>Condiciones envío</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2369002940 - Action 397840741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Daily Time Sheet</source>
           <note from="Developer" annotates="general" priority="2">ESP="Partes Diarios"</note>
@@ -35758,6 +35770,113 @@
           <source>user</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM IT Ext Jobs Setup - Field user - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>ABC Cliente</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field ABC Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 1347559096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source> ,3A,A,B,C,Z</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,3A,A,B,C,Z"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field ABC Cliente - Property OptionCaption</note>
+          <target> ,3A,A,B,C,Z</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Area Manager</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field AreaManager_btc - Property Caption</note>
+          <target>Area Manager</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 1081269253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Canal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Canal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field Canal_btc - Property Caption</note>
+          <target>Canal</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 338312380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Central Compras</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Central Compras"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field CentralCompras_btc - Property Caption</note>
+          <target>Central Compras</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 1424530041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Activity Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Actividad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field ClienteActividad_btc - Property Caption</note>
+          <target>Cliente Actividad</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 854387372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Cliente Corporativo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Corporativo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field ClienteCorporativo_btc - Property Caption</note>
+          <target>Cliente Corporativo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 782583580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Cliente Reporting</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Reporting"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field ClienteReporting_btc - Property Caption</note>
+          <target>Cliente Reporting</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 3483029697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Delegado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Delegado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field Delegado_btc - Property Caption</note>
+          <target>Delegado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 3486487259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Cliente Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field GrupoCliente_btc - Property Caption</note>
+          <target>Cliente Tipo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Inside Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field InsideSales_btc - Property Caption</note>
+          <target>Inside Sales</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 2885447315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Mercado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mercado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field Mercado_btc - Property Caption</note>
+          <target>Mercado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 4170685114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Perfil</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Perfil"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field Perfil_btc - Property Caption</note>
+          <target>Perfil</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 2205104606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Shipment Method Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. condiciones envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field Shipment Method Code - Property Caption</note>
+          <target>Cód. condiciones envío</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 1475697198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>SubCliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubCliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field SubCliente_btc - Property Caption</note>
+          <target>SubCliente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 1267997203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Transaction Specification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especificación transacción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field Transaction Specification - Property Caption</note>
+          <target>Especificación transacción</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 3773776616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Transaction Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Naturaleza transacción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field Transaction Type - Property Caption</note>
+          <target>Naturaleza transacción</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2049336900 - Field 3193866272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
+          <source>Transport Method</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modo transporte"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field Transport Method - Property Caption</note>
+          <target>Modo transporte</target>
         </trans-unit>
         <trans-unit id="TableExtension 2240314328 - Field 3398170104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2583759525">
           <source>Exportar BI Reclamaciones</source>
