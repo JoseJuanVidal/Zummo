@@ -15,6 +15,7 @@ codeunit 50110 "CU_Cron"
     var
         SalesSetup: Record "Sales & Receivables Setup";
         TextosAuxiliares: Record TextosAuxiliares;
+        CRMIntegrationManagement: Codeunit Integracion_crm_btc;
         Param: Text;
         lbNoParametroErr: Label 'Unknown parameter', comment = 'ESP="Parámetro Desconocido"';
         Fecha: date;
@@ -71,6 +72,10 @@ codeunit 50110 "CU_Cron"
                 'UpdateHistReclamacionesBI':
                     begin
                         UpdateHistReclamacionesBI();
+                    end;
+                'UpdateAreaManagerOwner':
+                    begin
+                        CRMIntegrationManagement.UpdateOwneridAreaManager(true);
                     end;
                 else
                     error(lbNoParametroErr);

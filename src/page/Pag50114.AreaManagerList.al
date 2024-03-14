@@ -59,7 +59,7 @@ page 50114 "Area Manager List"
                     var
                         CRMIntegrationManagement: Codeunit Integracion_crm_btc;
                     begin
-                        CRMIntegrationManagement.UpdateOwneridAreaManager;
+                        CRMIntegrationManagement.UpdateOwneridAreaManager(true);
                     end;
                 }
                 action(AreaManagerCustomerUpdate)
@@ -74,7 +74,7 @@ page 50114 "Area Manager List"
                     var
                         CRMIntegrationManagement: Codeunit Integracion_crm_btc;
                     begin
-                        CRMIntegrationManagement.UpdateAccountAreaManager(Rec);
+                        CRMIntegrationManagement.UpdateAccountAreaManager(Rec.NumReg, '');
                     end;
                 }
                 action(CDSSynchronizeNow)

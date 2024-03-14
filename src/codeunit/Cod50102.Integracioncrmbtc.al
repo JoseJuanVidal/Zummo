@@ -3243,7 +3243,7 @@ codeunit 50102 "Integracion_crm_btc"
         Window.Close();
     end;
 
-    procedure UpdateOwneridAreaManager()
+    procedure UpdateOwneridAreaManager(Confirm: Boolean)
     var
         Customer: Record Customer;
         CRMAccount: Record "CRM Account_crm_btc";
@@ -3251,8 +3251,9 @@ codeunit 50102 "Integracion_crm_btc"
         NewUserId: Guid;
         Window: Dialog;
     begin
-        if not Confirm('¿desea actualizar el Owner de los clientes de integracion BC en CRM?', false) then
-            exit;
+        if Confirm then
+            if not Confirm('¿Desea actualizar el Owner de los clientes de integracion BC en CRM?', false) then
+                exit;
         Window.Open('#1###############\#2##########################################\#3####################################');
         //CRMAccount.SetRange(OwnerId, 'a4e5e921-6e7a-ea11-a811-000d3a2c3f51');
         if CRMAccount.FindFirst() then
@@ -3299,7 +3300,7 @@ codeunit 50102 "Integracion_crm_btc"
         end;
     end;
 
-    procedure UpdateAccountAreaManager(AreaManager: Record TextosAuxiliares)
+    procedure UpdateAccountAreaManager(AreaManagerName: code[20]; CustomerNo: code[20])
     var
         SalesPerson: Record "Salesperson/Purchaser";
         AreaManagerSalesPerson: Record TextosAuxiliares;
@@ -3308,10 +3309,12 @@ codeunit 50102 "Integracion_crm_btc"
         CRMAreaManager: Record "CRM AreaManager_crm_btc";
         NewUserId: Guid;
     begin
-        if not Confirm('¿Desea actualizar el Owner de los clientes de %1 en CRM?\%2', false, AreaManager.NumReg, AreaManager."CRM ID") then
+        if not Confirm('¿Desea actualizar el Owner de los clientes de %1 en CRM?\%2', false, AreaManagerName) then
             exit;
         Customer.Reset();
-        Customer.SetRange(AreaManager_btc, AreaManager.NumReg);
+        if CustomerNo <> '' then
+            Customer.SetRange("No.", CustomerNo);
+        Customer.SetRange(AreaManager_btc, AreaManagerName);
         if Customer.FindFirst() then
             repeat
                 if GetUpdateOwnerSales(Customer, NewUserId) then begin

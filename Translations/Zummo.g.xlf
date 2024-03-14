@@ -25898,6 +25898,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Finalizar Credito"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action FinCredito - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1994005900 - Action 1773229643 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Update owner of CRM clients assigned to Integration to their Area Manager.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza propietario de los clientes del Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action AreaManagerCustomerUpdate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1994005900 - Action 1773229643 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Update Account CRM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualiza Propietario Cuentas CRM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCard - Action AreaManagerCustomerUpdate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1994005900 - Action 2962692815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Sincronize Dto SALES</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualiza Dtos. familia"</note>

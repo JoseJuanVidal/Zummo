@@ -390,6 +390,20 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
         }
         addafter(ShowLog)
         {
+            action(AreaManagerCustomerUpdate)
+            {
+                Caption = 'Update Account CRM', comment = 'ESP="Actualiza Propietario Cuentas CRM"';
+                ApplicationArea = All;
+                Visible = true;
+                Image = RefreshText;
+                ToolTip = 'Update owner of CRM clients assigned to Integration to their Area Manager.', comment = 'ESP="Actualiza propietario de los clientes del Area Manager"';
+                trigger OnAction()
+                var
+                    CRMIntegrationManagement: Codeunit Integracion_crm_btc;
+                begin
+                    CRMIntegrationManagement.UpdateAccountAreaManager(Rec.AreaManager_btc, Rec."No.");
+                end;
+            }
             action(UpdateOWnerID)
             {
                 ApplicationArea = all;
