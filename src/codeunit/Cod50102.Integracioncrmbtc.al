@@ -952,6 +952,7 @@ codeunit 50102 "Integracion_crm_btc"
         // CRMProduct: Record "CRM Product";
         CRMIntegrationRecord: Record "CRM Integration Record";
         TextosAuxiliares: Record TextosAuxiliares;
+        SalesPrice: Record "Sales Price";
         Item: Record Item;
         TypeHelper: Codeunit "Type Helper";
         ProductId: GUID;
@@ -1074,6 +1075,15 @@ codeunit 50102 "Integracion_crm_btc"
         IF CRMProductos_btc.QuantityOnHand < 0 THEN
             CRMProductos_btc.QuantityOnHand := 0;
 
+        SalesPrice.SETRANGE("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
+        SalesPrice.SETRANGE("Item No.", CRMProductos_btc.ProductNumber);
+        SalesPrice.SETRANGE("Sales Code", 'PVP');
+        SalesPrice.SETFILTER("Ending Date", '%1..', WORKDATE);
+        if SalesPrice.FINDFIRST then begin
+            CRMProductos_btc.Price := SalesPrice."Unit Price";
+            CRMProductos_btc.Price_Base := SalesPrice."Unit Price";
+        end;
+
         //ZZZ Que no cree Listas de Precio al sincroniazar el Producto
         // // Create or update the default price list
         // IF not (ISNULLGUID(CRMProductos_btc.ProductId)) THEN begin
@@ -1146,8 +1156,8 @@ codeunit 50102 "Integracion_crm_btc"
         //ELSE
         CRMProductos_btc.StateCode := 0;//CRMProductos_btc.StateCode::Active;
         CRMProductos_btc.StatusCode := 1;//CRMProductos_btc.StatusCode::Active;
-        //    end;
-        //end;
+                                         //    end;
+                                         //end;
 
 
 
