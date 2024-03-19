@@ -8,7 +8,6 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             DataClassification = CustomerContent;
             Description = 'Abono';
         }
-
         field(50101; FechaRecepcionMail_btc; Date)
         {
             DataClassification = CustomerContent;

@@ -122,7 +122,11 @@ tableextension 50102 "TabExtSalesInvoiceLine_btc" extends "Sales Invoice Line"  
             Caption = 'Promociones', comment = 'ESP="Promociones"';
             Editable = false;
         }
-
+        field(50040; PricesApprovalStatus; Enum "Status Approval")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Price approval status', comment = 'ESP="Estado aprobación precios"';
+        }
         field(50050; "IdCorp_Sol"; code[20])
         {
             DataClassification = CustomerContent;

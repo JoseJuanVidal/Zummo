@@ -33535,6 +33535,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesLineArchive - Field TextoMotivoRetraso_btc - Property Caption</note>
           <target>Desc. Motivo Retraso</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3116711369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Active Price/Discounts Control</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Activar Control Precios/Dtos."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Active Price/Discounts Control - Property Caption</note>
+          <target>Activar Control Precios/Dtos.</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 1024359529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Bin Code Credit Memo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Ubicación Abonos"</note>
@@ -35352,6 +35358,12 @@
           <source>ParentLineNo</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ParentLineNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 2721691855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>Price approval status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado aprobación precios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field PricesApprovalStatus - Property Caption</note>
+          <target>Estado aprobación precios</target>
         </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 2901261550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Promociones</source>

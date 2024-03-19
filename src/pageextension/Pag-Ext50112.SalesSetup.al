@@ -4,6 +4,10 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
     {
         addafter("Quote Validity Calculation")
         {
+            field("Active Price/Discounts Control"; "Active Price/Discounts Control")
+            {
+                ApplicationArea = all;
+            }
             field("Show Item alert without tariff"; "Show Item alert without tariff")
             {
                 ApplicationArea = all;

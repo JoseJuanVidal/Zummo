@@ -1775,4 +1775,31 @@ codeunit 50106 "SalesEvents"
 
             Until FromBOMComp.next() = 0;
     end;
+
+    // =============     FUNCIONES DE APROBACION PRECIOS Y DESCUENTOS          ====================
+    // ==  
+    // ==  Todo lo relativo al desarrollo de controles para poder editar y cambiar precios de productos 
+    // ==  con tarifas y sin tarifas
+    // ==  
+    // ======================================================================================================
+
+    procedure CheckSalesPriceItemNo(SalesLine: Record "Sales Line"): Boolean
+    var
+        SalesSetup: record "Sales & Receivables Setup";
+        SalesPrice: Record "Sales Price";
+    begin
+        if not SalesSetup.Get() then
+            exit;
+        if not SalesSetup."Active Price/Discounts Control" then
+            exit;
+        SalesPrice.Reset();
+        SalesPrice.SetRange("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
+        SalesPrice.SetRange("Sales Code", SalesLine."Customer Price Group");
+        SalesPrice.SetRange("Item No.", SalesLine."No.");
+        SalesPrice.SetFilter("Unit Price", '>0');
+        SalesPrice.SetFilter("Ending Date", '%1..', WorkDate());
+        if SalesPrice.FindFirst() then
+            exit(true);
+    end;
+
 }

@@ -113,6 +113,11 @@ tableextension 50117 "SalesShipmentLine" extends "Sales Shipment Line" //111
             ObsoleteState = Removed;
             ObsoleteReason = 'Borrar';
         }
+        field(50040; PricesApprovalStatus; Enum "Status Approval")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Price approval status', comment = 'ESP="Estado aprobación precios"';
+        }
         field(50019; SinPrecioTarifa; Boolean)
         {
             DataClassification = CustomerContent;

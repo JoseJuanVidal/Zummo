@@ -164,6 +164,7 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
         {
             Caption = 'Show Item alert without tariff', Comment = 'ESP="Mostrar alerta producto sin tarifa"';
             DataClassification = CustomerContent;
+
         }
         field(50210; "Location Code Credit Memo"; code[10])
         {
@@ -176,6 +177,18 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             Caption = 'Bin Code Credit Memo', Comment = 'ESP="Cód. Ubicación Abonos"';
             DataClassification = CustomerContent;
             TableRelation = Bin where("Location Code" = field("Location Code Credit Memo"));
+        }
+        field(50230; "Active Price/Discounts Control"; Boolean)
+        {
+            Caption = 'Active Price/Discounts Control', Comment = 'ESP="Activar Control Precios/Dtos."';
+            DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            var
+                ItemRegCodeunit: Codeunit "ZM PL Items Regist. aprovals";
+            begin
+                ItemRegCodeunit.CheckSUPERUserConfiguration();
+            end;
         }
     }
 }

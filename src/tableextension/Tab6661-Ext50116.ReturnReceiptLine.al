@@ -118,5 +118,10 @@ tableextension 50116 "ReturnReceiptLine" extends "Return Receipt Line"  //6661
             DataClassification = CustomerContent;
             Caption = 'Sin precio tarifa', comment = 'ESP="Sin precio tarifa"';
         }
+        field(50040; PricesApprovalStatus; Enum "Status Approval")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Price approval status', comment = 'ESP="Estado aprobación precios"';
+        }
     }
 }

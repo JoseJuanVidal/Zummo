@@ -18,8 +18,22 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
             }
         }
 
+        modify("Unit Price")
+        {
+            Enabled = Not ExistSalesPrice;
+            Editable = Not ExistSalesPrice;
+        }
+        modify("Line Amount")
+        {
+            Enabled = Not ExistSalesPrice;
+            Editable = Not ExistSalesPrice;
+        }
         addafter("Line Amount")
         {
+            field(PricesApprovalStatus; PricesApprovalStatus)
+            {
+                ApplicationArea = all;
+            }
             field("Line No."; "Line No.")
             { }
             //231219 S19/01434 Mostar iva en compras y ventas
@@ -27,7 +41,6 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
             {
                 ApplicationArea = All;
             }
-
             //Mostar iva en compras y ventas
             field("VAT Identifier"; "VAT Identifier")
             {
@@ -109,6 +122,8 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
         }
     }
     var
+        Funciones: Codeunit SalesEvents;
+        ExistSalesPrice: Boolean;
         EnStock: Decimal;
         Comprometido: Decimal;
         Disponible: Decimal;
@@ -165,9 +180,15 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
     end;
 
     local procedure Action_ExplodeProdBOM()
-    var
-        Funciones: Codeunit SalesEvents;
     begin
         Funciones.Action_ExplodeProdBOM(Rec);
+    end;
+
+    local procedure GetSalesPrices()
+    begin
+        ExistSalesPrice := false;
+        if not (Rec.Type in [Rec.Type::Item]) then
+            exit;
+        ExistSalesPrice := Funciones.CheckSalesPriceItemNo(Rec);
     end;
 }

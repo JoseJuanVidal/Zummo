@@ -10,6 +10,13 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
         modify("Unit Price")
         {
             StyleExpr = txtStyleExprUnitPrice;
+            Enabled = Not ExistSalesPrice;
+            Editable = Not ExistSalesPrice;
+        }
+        modify("Line Amount")
+        {
+            Enabled = Not ExistSalesPrice;
+            Editable = Not ExistSalesPrice;
         }
         addafter("Line Amount")
         {
@@ -99,6 +106,10 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
 
         addafter("Line Amount")
         {
+            field(PricesApprovalStatus; PricesApprovalStatus)
+            {
+                ApplicationArea = all;
+            }
             field(Promociones; Promociones)
             {
                 ApplicationArea = all;
@@ -118,14 +129,17 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
             field(EnStock; EnStock)
             {
                 ApplicationArea = All;
+                Editable = false;
             }
             field(Comprometido; Comprometido)
             {
                 ApplicationArea = All;
+                Editable = false;
             }
             field(Disponible; Disponible)
             {
                 ApplicationArea = All;
+                Editable = false;
             }
 
         }
@@ -177,6 +191,8 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
     }
 
     var
+        Funciones: Codeunit SalesEvents;
+        ExistSalesPrice: Boolean;
         EnStock: Decimal;
         Comprometido: Decimal;
         Disponible: Decimal;
@@ -235,15 +251,21 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
 
         Comprometido := (recItem."Qty. on Sales Order" + recItem."Qty. on Asm. Component" + recItem."Qty. on Component Lines" + recItem."Res. Qty. on Outbound Transfer" + recItem."Qty. on Purch. Return");
 
+        // miramos si tienes precios y bloqueamos precio
+        GetSalesPrices();
 
     end;
 
     local procedure Action_ExplodeProdBOM()
-    var
-        Funciones: Codeunit SalesEvents;
     begin
         Funciones.Action_ExplodeProdBOM(Rec);
-
     end;
 
+    local procedure GetSalesPrices()
+    begin
+        ExistSalesPrice := false;
+        if not (Rec.Type in [Rec.Type::Item]) then
+            exit;
+        ExistSalesPrice := Funciones.CheckSalesPriceItemNo(Rec);
+    end;
 }

@@ -73,6 +73,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         AccessControl.Reset();
         AccessControl.SetRange("User Security ID", User."User Security ID");
         AccessControl.SetRange("Role ID", 'D365 FULL ACCESS');
+        AccessControl.SetFilter("Company Name", '%1|%2', '', CompanyName);
         if not AccessControl.FindFirst() then
             ERROR(StrSubstNo('El usuario %1 no tiene permisos para editar estos datos', UserID));
     end;
@@ -390,7 +391,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                     PurchasesPrice.Insert(false);
                 end;
                 PurchasesPrice.Approval := true;
-                PurchasesPrice."Direct Unit Cost" := PurchasesPrice."Direct Unit Cost";
+                PurchasesPrice."Direct Unit Cost" := ItemPurchasePrices."Direct Unit Cost";
                 PurchasesPrice."Ending Date" := ItemPurchasePrices."Ending Date";
                 PurchasesPrice.Modify(false);
             end;

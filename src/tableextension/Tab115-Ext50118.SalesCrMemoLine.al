@@ -128,7 +128,11 @@ tableextension 50118 "SalesCrMemoLine" extends "Sales Cr.Memo Line"  //115
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Promociones), TipoRegistro = const(Tabla));
             Caption = 'Promociones', comment = 'ESP="Promociones"';
         }
-
+        field(50040; PricesApprovalStatus; Enum "Status Approval")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Price approval status', comment = 'ESP="Estado aprobación precios"';
+        }
         field(50114; selClasVtas_btc; Code[20])
         {
             DataClassification = CustomerContent;
