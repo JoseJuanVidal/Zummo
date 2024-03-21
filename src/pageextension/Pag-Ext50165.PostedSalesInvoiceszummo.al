@@ -12,6 +12,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         }
         addafter("Location Code")
         {
+            field("Campaign No."; "Campaign No.") { }
             field("Package Tracking No."; "Package Tracking No.") { }
             field("VAT Registration No."; "VAT Registration No.") { }
             /*            field(credMaxAsegAut; credMaxAsegAut)
