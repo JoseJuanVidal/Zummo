@@ -7671,6 +7671,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Document Date - Property Caption</note>
           <target>Fecha emisión documento</target>
         </trans-unit>
+        <trans-unit id="Table 2355618573 - Field 3128874884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employe Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Employe Name - Property Caption</note>
+          <target>Nombre Empleado</target>
+        </trans-unit>
         <trans-unit id="Table 2355618573 - Field 1964419135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. empleado"</note>
@@ -10107,6 +10113,58 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Tipo contrato Mantenimiento - Field Name - Property Caption</note>
           <target>Nombre</target>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Visit log</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro de Visitas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Property Caption</note>
+          <target>Registro de Visitas</target>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 4040565747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Autorizado por</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Autorizado por - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 1116050679 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Empresa</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Empresa - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 2950845476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Estado</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Estado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 2334878037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha/hora entrada</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Fecha/hora entrada - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 1134074804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha/hora salida</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Fecha/hora salida - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 3491847811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Signature</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Firma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Firma - Property Caption</note>
+          <target>Firma</target>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 3502056598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre completo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Nombre completo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 4204617699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trabajo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Trabajo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
@@ -15458,6 +15516,22 @@
           <note from="Developer" annotates="general" priority="2">ESP="Actualzizar imagen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Item Documents - Action UpdatePicture - Property Caption</note>
           <target>Actualzizar imagen</target>
+        </trans-unit>
+        <trans-unit id="Page 579703638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>API Visit log</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2755934817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>API Visit log</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log Actions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2755934817 - NamedType 2315697318" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Succes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Realizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log Actions - NamedType lblSucces</note>
+          <target>Realizado</target>
         </trans-unit>
         <trans-unit id="Page 3915894589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BOM Componente</source>
@@ -32525,6 +32599,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnReceiptLine - Field NombreCliente_btc - Property Caption</note>
           <target>Nombre Cliente</target>
         </trans-unit>
+        <trans-unit id="TableExtension 291051572 - Field 2721691855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1173465396">
+          <source>Price approval status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado aprobación precios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnReceiptLine - Field PricesApprovalStatus - Property Caption</note>
+          <target>Estado aprobación precios</target>
+        </trans-unit>
         <trans-unit id="TableExtension 291051572 - Field 2010073393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1173465396">
           <source>Sin precio tarifa</source>
           <note from="Developer" annotates="general" priority="2">ESP="Sin precio tarifa"</note>
@@ -32916,6 +32996,12 @@
           <source>ParentLineNo</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field ParentLineNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1670910335 - Field 2721691855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
+          <source>Price approval status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado aprobación precios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field PricesApprovalStatus - Property Caption</note>
+          <target>Estado aprobación precios</target>
         </trans-unit>
         <trans-unit id="TableExtension 1670910335 - Field 2901261550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>Promociones</source>
@@ -33884,6 +33970,12 @@
           <source>ParentLineNo</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field ParentLineNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3333755618 - Field 2721691855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
+          <source>Price approval status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado aprobación precios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field PricesApprovalStatus - Property Caption</note>
+          <target>Estado aprobación precios</target>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 2010073393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>Sin precio tarifa</source>
@@ -35243,6 +35335,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Peso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field Peso_btc - Property Caption</note>
           <target>Peso</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 2721691855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>Price approval status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado aprobación precios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field PricesApprovalStatus - Property Caption</note>
+          <target>Estado aprobación precios</target>
         </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 2901261550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Promociones</source>

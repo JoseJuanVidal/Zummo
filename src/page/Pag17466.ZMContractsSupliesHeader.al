@@ -59,8 +59,18 @@ page 17466 "ZM Contracts Suplies Header"
                 field(Currency; Currency)
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Purchaser Code"; "Purchaser Code")
+                {
+                    ApplicationArea = all;
+                }
+                field("Employee No."; "Employee No.")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+                field("Employe Name"; "Employe Name")
                 {
                     ApplicationArea = all;
                 }

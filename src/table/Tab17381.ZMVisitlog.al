@@ -40,6 +40,7 @@ table 17381 "ZM Visit log"
         field(20; Firma; MediaSet)
         {
             DataClassification = CustomerContent;
+            Caption = 'Signature', comment = 'ESP="Firma"';
         }
     }
 

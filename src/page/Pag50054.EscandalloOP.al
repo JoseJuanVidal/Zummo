@@ -130,7 +130,7 @@ page 50054 "Escandallo OP"
         ItemLdgEntry.SetRange("Order Type", ItemLdgEntry."Order Type"::Production);
         ItemLdgEntry.SetRange("Order No.", Rec."Prod. Order No.");
         ItemLdgEntry.SetRange("Order Line No.", Rec."Line No.");
-        ItemLdgEntry.CalcSums("Cost Amount (Expected)", "Cost Amount (Actual)");
+        ItemLdgEntry.CalcFields("Cost Amount (Expected)", "Cost Amount (Actual)");
         DirectCost := ItemLdgEntry."Cost Amount (Actual)" + ItemLdgEntry."Cost Amount (Expected)";
     end;
 }

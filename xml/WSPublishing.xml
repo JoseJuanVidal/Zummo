@@ -9,6 +9,12 @@
         </TenantWebService>
         <TenantWebService>
             <ObjectType>Page</ObjectType>
+            <ServiceName>registrovisitasActions</ServiceName>
+            <ObjectID>17387</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
             <ServiceName>cimworksitem</ServiceName>
             <ObjectID>50056</ObjectID>
             <Published>true</Published>

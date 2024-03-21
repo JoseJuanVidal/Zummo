@@ -19,6 +19,7 @@ table 17455 "ZM Contracts/Supplies Header"
                     TestNoSeries();
                     NoSeriesMgt.TestManual(PurchSetup."ZM Contracts Nos.");
                 end;
+
             end;
         }
         field(2; "Buy-from Vendor No."; Code[20])
@@ -166,6 +167,11 @@ table 17455 "ZM Contracts/Supplies Header"
             DataClassification = CustomerContent;
             Caption = 'Employee No.', comment = 'ESP="Cód. empleado"';
             TableRelation = Employee;
+
+            trigger OnValidate()
+            begin
+                OnValidate_EmployeeNo();
+            end;
         }
         field(57; "Shipment Method Code"; code[10])
         {
@@ -178,6 +184,11 @@ table 17455 "ZM Contracts/Supplies Header"
             DataClassification = CustomerContent;
             Caption = 'Currency', comment = 'ESP="Cód. Divisa"';
             TableRelation = Currency;
+        }
+        field(59; "Employe Name"; text[100])
+        {
+            Caption = 'Employe Name', comment = 'ESP="Nombre Empleado"';
+            Editable = false;
         }
         field(61; "Blocked"; Boolean)
         {
@@ -298,6 +309,7 @@ table 17455 "ZM Contracts/Supplies Header"
     procedure Release()
     begin
         TestField(Status, Status::Abierto);
+        TestField("Shipment Method Code");
         TestField("Date Start Validity");
         TestField("Date End Validity");
         if Confirm(MsgConfirmRelease, true, "No.") then begin
@@ -340,21 +352,25 @@ table 17455 "ZM Contracts/Supplies Header"
 
         GetVend("Buy-from Vendor No.");
         Vend.CheckBlockedVendOnDocs(Vend, false);
-        "Buy-from Vendor Name" := Vend.Name;
-        "Buy-from Vendor Name 2" := Vend."Name 2";
-        "Buy-from Address" := Vend.Address;
-        "Buy-from Address 2" := Vend."Address 2";
-        "Buy-from City" := Vend.City;
-        "Buy-from Contact" := vend.Contact;
-        "Buy-from County" := Vend.County;
-        "Buy-from Country/Region Code" := Vend."Country/Region Code";
-        "Buy-from Post Code" := Vend."Post Code";
-        "VAT Registration No." := Vend."VAT Registration No.";
-        "Payment Method Code" := Vend."Payment Method Code";
-        "Payment Terms Code" := Vend."Payment Terms Code";
-        Currency := Vend."Currency Code";
-        "Shipment Method Code" := Vend."Shipment Method Code";
-        "Purchaser Code" := Vend."Purchaser Code";
+        Rec."Buy-from Vendor Name" := Vend.Name;
+        Rec."Buy-from Vendor Name 2" := Vend."Name 2";
+        Rec."Buy-from Address" := Vend.Address;
+        Rec."Buy-from Address 2" := Vend."Address 2";
+        Rec."Buy-from City" := Vend.City;
+        Rec."Buy-from Contact" := vend.Contact;
+        Rec."Buy-from County" := Vend.County;
+        Rec."Buy-from Country/Region Code" := Vend."Country/Region Code";
+        Rec."Buy-from Post Code" := Vend."Post Code";
+        Rec."VAT Registration No." := Vend."VAT Registration No.";
+        Rec."Payment Method Code" := Vend."Payment Method Code";
+        Rec."Payment Terms Code" := Vend."Payment Terms Code";
+        Rec.Currency := Vend."Currency Code";
+        Rec."Shipment Method Code" := Vend."Shipment Method Code";
+        Rec."Purchaser Code" := Vend."Purchaser Code";
+
+        // ponemos los datos del creador
+        Rec.Validate("Employee No.", GetCodigoEmpleado());
+
     end;
 
     local procedure CheckExistLine(): Boolean
@@ -371,5 +387,27 @@ table 17455 "ZM Contracts/Supplies Header"
     procedure CreatePurchaseOrder()
     begin
         Funciones.ContractsCreatePurchaseOrder(Rec);
+    end;
+
+    local procedure OnValidate_EmployeeNo()
+    var
+        Employee: Record Employee;
+    begin
+        if Employee.Get(Rec."Employee No.") then
+            rec."Employe Name" := Employee.FullName();
+    end;
+
+    local procedure GetCodigoEmpleado(): code[20]
+    var
+        NAVAppObjectMetadata: Record "NAV App Object Metadata";
+        Employee: Record Employee;
+    begin
+        NAVAppObjectMetadata.Reset();
+        NAVAppObjectMetadata.SetRange("Object Type", NAVAppObjectMetadata."Object Type"::Codeunit);
+        NAVAppObjectMetadata.SetRange("Object ID", 50500);
+        if NAVAppObjectMetadata.FindFirst() then begin
+            Codeunit.Run(50500, Employee);
+            exit(Employee."No.");
+        end
     end;
 }

@@ -5938,6 +5938,46 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Field id - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 4040565747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Autorizado por</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Autorizado por - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 1116050679 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Empresa</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Empresa - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 2950845476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Estado</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Estado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 2334878037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha/hora entrada</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Fecha/hora entrada - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 1134074804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha/hora salida</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Fecha/hora salida - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 3502056598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre completo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Nombre completo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1267244062 - Field 4204617699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trabajo</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Trabajo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 4089462097 - NamedType 3941846598" size-unit="char" translate="yes" xml:space="preserve">
           <source>Debe actualizar el pedido de compra orgien, %1, antes de registrar</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -7526,6 +7566,16 @@
           <source>WS Purchase Line</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page WS Purchase Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 579703638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>API Visit log</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2755934817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>API Visit log</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log Actions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3853294818 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nuevo,Procesar,Informe,Mostrar,Navegar</source>

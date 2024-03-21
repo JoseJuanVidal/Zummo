@@ -265,7 +265,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         RequestMessage.Method(metodoREST);
         //Asignamos la url para la peticion http 
         RequestMessage.SetRequestUri(Url);
-        if metodoREST <> 'GET' then
+        if metodoREST <> ' ' then
             RequestMessage.Content := RequestContent;
 
         //Si se puede enviar los datos

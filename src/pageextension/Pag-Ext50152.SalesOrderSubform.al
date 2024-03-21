@@ -6,6 +6,12 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
         modify("No.")
         {
             StyleExpr = txtStyleExprUnitPrice;
+
+            trigger OnAfterValidate()
+            begin
+                GetSalesPrices();
+                CurrPage.Update();
+            end;
         }
         modify("Unit Price")
         {
@@ -251,9 +257,12 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
 
         Comprometido := (recItem."Qty. on Sales Order" + recItem."Qty. on Asm. Component" + recItem."Qty. on Component Lines" + recItem."Res. Qty. on Outbound Transfer" + recItem."Qty. on Purch. Return");
 
+    end;
+
+    trigger OnAfterGetCurrRecord()
+    begin
         // miramos si tienes precios y bloqueamos precio
         GetSalesPrices();
-
     end;
 
     local procedure Action_ExplodeProdBOM()

@@ -15,7 +15,9 @@ codeunit 50110 "CU_Cron"
     var
         SalesSetup: Record "Sales & Receivables Setup";
         TextosAuxiliares: Record TextosAuxiliares;
+        HistBOMCosts: Record "ZM Hist. BOM Costs";
         CRMIntegrationManagement: Codeunit Integracion_crm_btc;
+        HISTBOMProduction: Record "ZM HIST BOM Production";
         Param: Text;
         lbNoParametroErr: Label 'Unknown parameter', comment = 'ESP="Parámetro Desconocido"';
         Fecha: date;
@@ -76,6 +78,11 @@ codeunit 50110 "CU_Cron"
                 'UpdateAreaManagerOwner':
                     begin
                         CRMIntegrationManagement.UpdateOwneridAreaManager(true);
+                    end;
+                'UpdateBomListCOST':
+                    begin
+                        HISTBOMProduction.UpdateBomHist();
+                        HistBOMCosts.UpdateTableBOMCosts();
                     end;
                 else
                     error(lbNoParametroErr);

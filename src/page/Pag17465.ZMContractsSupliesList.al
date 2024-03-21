@@ -62,6 +62,16 @@ page 17465 "ZM Contracts Suplies List"
                         page.RunModal(0, PurchaseLine);
                     end;
                 }
+                field("Employee No."; "Employee No.")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field("Employe Name"; "Employe Name")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
             }
         }
         area(factboxes)

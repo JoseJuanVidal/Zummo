@@ -7328,6 +7328,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha emisión documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Document Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2355618573 - Field 3128874884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employe Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Header - Field Employe Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2355618573 - Field 1964419135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. empleado"</note>
@@ -9449,8 +9454,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Fecha/hora salida - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1267244062 - Field 3491847811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Firma</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Signature</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Firma"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Firma - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1267244062 - Field 3502056598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -14182,6 +14187,21 @@
           <source>Update picture</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualzizar imagen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Item Documents - Action UpdatePicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 579703638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>API Visit log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2755934817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>API Visit log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log Actions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2755934817 - NamedType 2315697318" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Succes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Realizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log Actions - NamedType lblSucces</note>
         </trans-unit>
         <trans-unit id="Page 3915894589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BOM Componente</source>
