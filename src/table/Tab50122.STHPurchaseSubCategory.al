@@ -5,6 +5,7 @@ table 50122 "STH Purchase SubCategory"
     LookupPageId = "STH Purchase SubCategorys";
     DrillDownPageId = "STH Purchase SubCategorys";
 
+
     fields
     {
         field(1; "Purch. Familiy code"; Code[20])
@@ -29,6 +30,11 @@ table 50122 "STH Purchase SubCategory"
             Caption = 'Description', Comment = 'ESP="Descripción"';
             DataClassification = ToBeClassified;
         }
+        field(5; "Description 2"; Text[100])
+        {
+            Caption = 'Description 2', Comment = 'ESP="Descripción 2"';
+            DataClassification = ToBeClassified;
+        }
         field(10; "To Update"; Boolean)
         {
             Caption = 'To update', comment = 'ESP="Act. itbid"';
@@ -37,6 +43,12 @@ table 50122 "STH Purchase SubCategory"
         {
             Caption = 'Last date updated', comment = 'ESP="Ult. Fecha act. itbid"';
         }
+        field(20; "Items No."; integer)
+        {
+            Caption = 'Items No.', comment = 'ESP="Nª productos"';
+            FieldClass = FlowField;
+            CalcFormula = count(Item where("Purch. Family" = field("Purch. Familiy code"), "Purch. Category" = field("Purch. Category code"), "Purch. SubCategory" = field(Code)));
+        }
     }
     keys
     {
@@ -44,6 +56,11 @@ table 50122 "STH Purchase SubCategory"
         {
             Clustered = true;
         }
+    }
+    fieldgroups
+    {
+        fieldgroup(DropDown; code, Description, "Description 2") { }
+        fieldgroup(Brick; code, Description, "Description 2") { }
     }
     trigger OnInsert()
     begin
@@ -58,5 +75,11 @@ table 50122 "STH Purchase SubCategory"
     trigger OnRename()
     begin
         rec."To Update" := true;
+    end;
+
+    trigger OnDelete()
+    begin
+        Rec.CalcFields("Items No.");
+        Rec.TestField("Items No.", 0);
     end;
 }

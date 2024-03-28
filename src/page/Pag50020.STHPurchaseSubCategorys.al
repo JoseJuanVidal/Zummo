@@ -28,6 +28,10 @@ page 50020 "STH Purchase SubCategorys"
                 {
                     ApplicationArea = All;
                 }
+                field("Description 2"; "Description 2")
+                {
+                    ApplicationArea = all;
+                }
                 field("Last date updated"; Rec."Last date updated")
                 {
                     ApplicationArea = All;
@@ -35,6 +39,11 @@ page 50020 "STH Purchase SubCategorys"
                 field("To Update"; Rec."To Update")
                 {
                     ApplicationArea = All;
+                }
+                field("Items No."; "Items No.")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }

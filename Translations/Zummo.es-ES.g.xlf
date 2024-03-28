@@ -6350,6 +6350,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Description - Property Caption</note>
           <target>Descripción</target>
         </trans-unit>
+        <trans-unit id="Table 285631052 - Field 47657272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description 2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción 2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Description 2 - Property Caption</note>
+          <target>Descripción 2</target>
+        </trans-unit>
+        <trans-unit id="Table 285631052 - Field 4248716123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Items No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nª productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Items No. - Property Caption</note>
+          <target>Nª productos</target>
+        </trans-unit>
         <trans-unit id="Table 285631052 - Field 1185888005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last date updated</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ult. Fecha act. itbid"</note>
