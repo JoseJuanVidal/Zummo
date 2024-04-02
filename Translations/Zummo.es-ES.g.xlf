@@ -6296,6 +6296,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Purch. Familiy code - Property Caption</note>
           <target>Cód. Familia</target>
         </trans-unit>
+        <trans-unit id="Table 2101784536 - Field 254262476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase SubCategory No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nª Subcategorias productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase Category - Field Purchase SubCategory No. - Property Caption</note>
+          <target>Nª Subcategorias productos</target>
+        </trans-unit>
         <trans-unit id="Table 2101784536 - Field 3649348102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>To update</source>
           <note from="Developer" annotates="general" priority="2">ESP="Act. itbid"</note>

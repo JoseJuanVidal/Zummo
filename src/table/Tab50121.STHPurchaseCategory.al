@@ -31,6 +31,12 @@ table 50121 "STH Purchase Category"
         {
             Caption = 'Last date updated', comment = 'ESP="Ult. Fecha act. itbid"';
         }
+        field(20; "Purchase SubCategory No."; integer)
+        {
+            Caption = 'Purchase SubCategory No.', comment = 'ESP="Nª Subcategorias productos"';
+            FieldClass = FlowField;
+            CalcFormula = count("STH Purchase SubCategory" where("Purch. Familiy code" = field("Purch. Familiy code"), "Purch. Category code" = field(Code)));
+        }
     }
     keys
     {

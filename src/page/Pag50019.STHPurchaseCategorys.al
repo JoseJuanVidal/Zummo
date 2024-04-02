@@ -33,6 +33,10 @@ page 50019 "STH Purchase Categorys"
                 {
                     ApplicationArea = All;
                 }
+                field("Purchase SubCategory No."; "Purchase SubCategory No.")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }
