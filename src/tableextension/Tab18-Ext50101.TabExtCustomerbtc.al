@@ -365,7 +365,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             //     Page.RunModal(0, CustLedgerEntry);
             // end;
         }
-        field(5090; "Allows change Prices/Dates"; Boolean)
+        field(50090; "Allows change Prices/Dates"; Boolean)
         {
             Caption = 'Allows change Prices/Dates', Comment = 'ESP="Permite cambio Precios/Dtos."';
             DataClassification = CustomerContent;
