@@ -1786,12 +1786,16 @@ codeunit 50106 "SalesEvents"
     procedure CheckSalesPriceItemNo(SalesLine: Record "Sales Line"): Boolean
     var
         SalesSetup: record "Sales & Receivables Setup";
+        Customer: Record Customer;
         SalesPrice: Record "Sales Price";
     begin
         if not SalesSetup.Get() then
             exit;
         if not SalesSetup."Active Price/Discounts Control" then
             exit;
+        if Customer.Get(SalesLine."Sell-to Customer No.") then
+            if Customer."Allows change Prices/Dates" then
+                exit;
         SalesPrice.Reset();
         SalesPrice.SetRange("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
         SalesPrice.SetRange("Sales Code", SalesLine."Customer Price Group");

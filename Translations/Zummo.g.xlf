@@ -31728,6 +31728,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Alerta Ped. Servicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field AlertaPedidoServicio - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 961760734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Allows change Prices/Dates</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Permite cambio Precios/Dtos."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Allows change Prices/Dates - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 2068037226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Area Manager</source>
           <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
