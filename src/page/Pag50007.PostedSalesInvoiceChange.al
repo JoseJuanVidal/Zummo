@@ -51,6 +51,12 @@ page 50007 "Posted Sales Invoice Change"
                     Caption = 'Cambio Divisa', comment = 'ESP="Cambio Divisa"';
                     DecimalPlaces = 0 : 4;
                 }
+                field(CampaignNo; CampaignNo)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Campaign No.', comment = 'ESP="Nº campaña"';
+                    TableRelation = Campaign;
+                }
             }
             Group(Facturacionyenvio)
             {
@@ -89,19 +95,21 @@ page 50007 "Posted Sales Invoice Change"
         InsideSales: code[20];
         ClienteReporting_btc: Code[20];
         Delegado_btc: Code[20];
+        CampaignNo: code[20];
         Currencychange: Decimal;
         TempBlob: Record TempBlob temporary;
         PackageTrackingNo: text[30];
 
 
     procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; var CurChange: Decimal;
-        var vPackageTrackingNo: text[30]; var vInsideSales: code[20]; var vDelegado_btc: Code[20])
+        var vPackageTrackingNo: text[30]; var vInsideSales: code[20]; var vDelegado_btc: Code[20]; vCampaignNo: code[20])
     begin
         ExtDocNo := ExternalDocumentNo;
         WorkDesc := WorkDescription;
         AreaManager := AreaManager_btc;
         ClienteReporting := ClienteReporting_btc;
         CurChange := Currencychange;
+        vCampaignNo := CampaignNo;
         vPackageTrackingNo := PackageTrackingNo;
         vInsideSales := InsideSales;
         vDelegado_btc := Delegado_btc;
@@ -123,6 +131,8 @@ page 50007 "Posted Sales Invoice Change"
         WorkDescription := TempBlob.ReadAsText(CR, TEXTENCODING::UTF8);
         AreaManager_btc := SalesInvoiceHeader.AreaManager_btc;
         Currencychange := SalesInvoiceHeader.CurrencyChange;
+        ClienteReporting_btc := SalesInvoiceHeader.ClienteReporting_btc;
+        CampaignNo := SalesInvoiceHeader."Campaign No.";
         PackageTrackingNo := SalesInvoiceHeader."Package Tracking No.";
         InsideSales := SalesInvoiceHeader.InsideSales_btc;
         Delegado_btc := SalesInvoiceHeader.Delegado_btc;

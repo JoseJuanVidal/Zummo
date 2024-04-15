@@ -14441,6 +14441,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control AreaManager_btc - Property Caption</note>
           <target>Area Manager</target>
         </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 2651175633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Campaign No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº campaña"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control CampaignNo - Property Caption</note>
+          <target>Nº campaña</target>
+        </trans-unit>
         <trans-unit id="Page 2287400882 - Control 782583580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cliente Reporting</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cliente Reporting"</note>

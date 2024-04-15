@@ -13203,6 +13203,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control AreaManager_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2287400882 - Control 2651175633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Campaign No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº campaña"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Sales Invoice Change - Control CampaignNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2287400882 - Control 782583580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cliente Reporting</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cliente Reporting"</note>
@@ -30687,6 +30692,11 @@
           <source>Replacement payment term</source>
           <note from="Developer" annotates="general" priority="2">ESP="Término pago repuesto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field PmtTermsRepuesto_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2532927009 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Recipient Mail  Invoice Summary</source>
+          <note from="Developer" annotates="general" priority="2">Destinatario Resumen Facturas</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Recipient Mail Invoice Summary - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 2930230816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Recipient Mail Notifications</source>

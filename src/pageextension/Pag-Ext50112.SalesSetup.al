@@ -59,6 +59,10 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Recipient Mail Invoice Summary"; "Recipient Mail Invoice Summary")
+                {
+                    ApplicationArea = all;
+                }
                 field("Envío email Fact. Vencidas"; "Envío email Fact. Vencidas")
                 {
                     ApplicationArea = all;

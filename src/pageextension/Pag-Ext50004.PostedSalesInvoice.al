@@ -109,13 +109,14 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                     CurrChange: Decimal;
                     PackageTrackingNo: text[30];
                     Delegado: code[20];
+                    CampaignNo: code[20];
                 begin
                     PediDatos.LookupMode := true;
                     PediDatos.SetDatos(rec);
                     if PediDatos.RunModal() = Action::LookupOK then begin
-                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo, InsideSales, Delegado);
+                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo, InsideSales, Delegado, CampaignNo);
                         Funciones.ChangeExtDocNoPostedSalesInvoice("No.", ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange,
-                            PackageTrackingNo, InsideSales, Delegado);
+                            PackageTrackingNo, InsideSales, Delegado, CampaignNo);
                     end;
                 end;
 

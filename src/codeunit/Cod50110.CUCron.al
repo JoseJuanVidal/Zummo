@@ -472,6 +472,7 @@ codeunit 50110 "CU_Cron"
         recCabHcoAbVta: Record "Sales Cr.Memo Header";
         recCustomer: Record Customer;
         recLogEnvio: Record LogEnvioEmailsClientes;
+        tmpLogEnvio: Record LogEnvioEmailsClientes temporary;
         cduMailManagement: Codeunit "Mail Management";
 
     begin
@@ -504,6 +505,9 @@ codeunit 50110 "CU_Cron"
                     recLogEnvio.NombreCliente_btc := recCustomer.Name;
                     recLogEnvio.clienteFact_btc := recCustomer."No.";
                     recLogEnvio.Insert();
+                    tmpLogEnvio.Init();
+                    tmpLogEnvio.TransferFields(recLogEnvio);
+                    tmpLogEnvio.Insert();
                 end;
 
             until recCabHcoFactVta.Next() = 0;
@@ -534,12 +538,72 @@ codeunit 50110 "CU_Cron"
                     recLogEnvio.NombreCliente_btc := recCustomer.Name;
                     recLogEnvio.clienteFact_btc := recCustomer."No.";
                     recLogEnvio.Insert();
+
+                    tmpLogEnvio.Init();
+                    tmpLogEnvio.TransferFields(recLogEnvio);
+                    tmpLogEnvio.Insert();
                 end;
             until recCabHcoAbVta.Next() = 0;
 
 
         CorreccionErrores();
         EnvioMail();//Se llama al final con todos los registros
+
+        // aqui enviamos el resumen de envios de email.s        
+        SendEnvioEmailResumenFacturasAbonos(tmpLogEnvio);
+    end;
+
+    procedure PruebaEnvioResumenFacturas()
+    var
+        recLogEnvio: Record LogEnvioEmailsClientes;
+    begin
+        recLogEnvio.SetRange(FechaDocumento_btc, 20240216D);
+        SendEnvioEmailResumenFacturasAbonos(recLogEnvio);
+    end;
+
+    local procedure SendEnvioEmailResumenFacturasAbonos(var tmpLogEnvio: Record LogEnvioEmailsClientes)
+    var
+        recSMTPSetup: Record "SMTP Mail Setup";
+        SalesSetup: record "Sales & Receivables Setup";
+        cduSmtp: Codeunit "SMTP Mail";
+        txtAsunto: Text;
+        textoHtml: Text;
+    begin
+        textoHtml := GetHTLMResumen(tmpLogEnvio);
+        txtAsunto := StrSubstNo('Resumen envíos facturas/Abonos %1', WorkDate());
+        recSMTPSetup.Get();
+        SalesSetup.Get();
+        SalesSetup.TestField("Recipient Mail Invoice Summary");
+        Clear(cduSmtp);
+        cduSmtp.CreateMessage(CompanyName, recSMTPSetup."User ID", SalesSetup."Recipient Mail Invoice Summary", txtAsunto, textoHtml, TRUE);
+        cduSmtp.Send();
+    end;
+
+    local procedure GetHTLMResumen(var tmpLogEnvio: Record LogEnvioEmailsClientes) textoHtml: Text;
+    var
+        myInt: Integer;
+    begin
+        textoHtml := '<h2 style="color: #2e6c80;">Resumen envíos facturas/Abonos:</h2><br><br>';
+        textoHtml += '<p>Fecha de Env&iacute;o:' + format(WorkDate()) + '</p>' +
+                     '<p>N&ordm; Facturas enviadas:' + format(tmpLogEnvio.Count) + '</p>';
+        textoHtml += '<table style="width:100%; border-collapse: collapse;">' +
+                '<thead><tr style="border: 1px solid black;">' +
+                    '<td style="border: 1px solid black; text-align: center;"><strong>' + tmpLogEnvio.FieldCaption(clienteFact_btc) + '</strong></td>' +
+                    '<td style="border: 1px solid black; text-align: center;"><strong>' + tmpLogEnvio.FieldCaption(NombreCliente_btc) + '</strong></td>' +
+                    '<td style="border: 1px solid black; text-align: center;"><strong>' + tmpLogEnvio.FieldCaption(NoDoc_btc) + '</strong></td>' +
+                    '<td style="border: 1px solid black; text-align: center;"><strong>' + tmpLogEnvio.FieldCaption(DireccionEmail_btc) + '</strong></td>' +
+                '</tr></thead>';
+        textoHtml += '<tbody>';
+        if tmpLogEnvio.FindFirst() then
+            repeat
+                textoHtml += '<tr style="border: 1px solid black;">';
+                textoHtml += '<td style="border: 1px solid black; text-align: left;">' + tmpLogEnvio.clienteFact_btc + '</td>';
+                textoHtml += '<td style="border: 1px solid black; text-align: left;">' + tmpLogEnvio.NombreCliente_btc + '</td>';
+                textoHtml += '<td style="border: 1px solid black; text-align: left;">' + tmpLogEnvio.NoDoc_btc + '</td>';
+                textoHtml += '<td style="border: 1px solid black; text-align: left;">' + tmpLogEnvio.DireccionEmail_btc + '</td>';
+                textoHtml += '</tr>';
+            Until tmpLogEnvio.next() = 0;
+        textoHtml += '</tbody>';
     end;
 
     local procedure ObtenerRutaFichAdjunto(Fecha: date; NoDoc: code[20]): Text

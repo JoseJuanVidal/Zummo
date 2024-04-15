@@ -532,7 +532,7 @@ codeunit 50111 "Funciones"
     end;
 
     procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20];
-        CurrChange: Decimal; PackageTrackingNo: text[30]; InsideSales: code[20]; Delegado: code[20])
+        CurrChange: Decimal; PackageTrackingNo: text[30]; InsideSales: code[20]; Delegado: code[20]; CampaignNo: code[20])
     var
         SalesInvoiceHeader: Record "Sales Invoice Header";
         TempBlob: Record TempBlob temporary;
@@ -544,6 +544,7 @@ codeunit 50111 "Funciones"
             SalesInvoiceHeader.ClienteReporting_btc := ClienteReporting;
             SalesInvoiceHeader.CurrencyChange := CurrChange;
             SalesInvoiceHeader.Delegado_btc := Delegado;
+            SalesInvoiceHeader."Campaign No." := CampaignNo;
             CLEAR(SalesInvoiceHeader."Work Description");
             if not (NewWorkDescription = '') then begin
                 TempBlob.Blob := SalesInvoiceHeader."Work Description";
