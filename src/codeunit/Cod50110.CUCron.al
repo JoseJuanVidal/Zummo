@@ -553,14 +553,6 @@ codeunit 50110 "CU_Cron"
         SendEnvioEmailResumenFacturasAbonos(tmpLogEnvio);
     end;
 
-    procedure PruebaEnvioResumenFacturas()
-    var
-        recLogEnvio: Record LogEnvioEmailsClientes;
-    begin
-        recLogEnvio.SetRange(FechaDocumento_btc, 20240216D);
-        SendEnvioEmailResumenFacturasAbonos(recLogEnvio);
-    end;
-
     local procedure SendEnvioEmailResumenFacturasAbonos(var tmpLogEnvio: Record LogEnvioEmailsClientes)
     var
         recSMTPSetup: Record "SMTP Mail Setup";

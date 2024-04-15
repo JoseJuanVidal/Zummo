@@ -85,7 +85,6 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
     {
         addfirst(Processing)
         {
-
             action("Cambiar Doc. Externo")
             {
                 ApplicationArea = all;
