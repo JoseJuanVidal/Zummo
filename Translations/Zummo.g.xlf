@@ -13448,6 +13448,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ofertas SALES"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3424626784 - Method 2032060489 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to refresh the CRM offers?\(This process may take a few minutes).</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea refrescar las ofertas del CRM?\(Este proceso puede tardar algunos minutos)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Method RefreshCRMConnection - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Method 2032060489 - NamedType 16537643" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Synchronization completed</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sincronización finalizada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Method RefreshCRMConnection - NamedType lblFinalice</note>
+        </trans-unit>
         <trans-unit id="Page 3424626784 - Control 3568476593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Estado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
@@ -13642,6 +13652,11 @@
           <source>¿Desea crear las ofertas de los registros seleccionados %1?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear las ofertas de los registros seleccionados %1?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Crear Oferta Lotes - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Page 3424626784 - Action 573068567 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refrescar Ofertas</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Action Refrescar Ofertas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 622870132 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Header Aux Card</source>
