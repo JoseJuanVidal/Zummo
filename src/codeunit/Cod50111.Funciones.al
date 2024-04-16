@@ -539,7 +539,7 @@ codeunit 50111 "Funciones"
         TempBlob: Record TempBlob temporary;
     begin
         case CreditMemo of
-            true:
+            false:
                 begin
                     if SalesInvoiceHeader.Get(InvoiceNo) then begin
                         SalesInvoiceHeader."External Document No." := ExtDocNo;
@@ -559,7 +559,7 @@ codeunit 50111 "Funciones"
                         SalesInvoiceHeader.Modify();
                     end;
                 end;
-            false:
+            true:
                 begin
                     if SalesCrMemoHeader.Get(InvoiceNo) then begin
                         SalesCrMemoHeader."External Document No." := ExtDocNo;
