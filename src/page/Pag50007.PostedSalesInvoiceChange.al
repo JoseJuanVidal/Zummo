@@ -138,4 +138,26 @@ page 50007 "Posted Sales Invoice Change"
         Delegado_btc := SalesInvoiceHeader.Delegado_btc;
     end;
 
+    procedure SetDatosCRMemo(SalesCrMemoHeader: Record "Sales Cr.Memo Header")
+    var
+        CR: text[1];
+    begin
+        ExternalDocumentNo := SalesCrMemoHeader."External Document No.";
+        SalesCrMemoHeader.CalcFields("Work Description");
+        if NOT SalesCrMemoHeader."Work Description".HASVALUE then begin
+            WorkDescription := '';
+            exit;
+        end;
+
+        CR[1] := 10;
+        TempBlob.Blob := SalesCrMemoHeader."Work Description";
+        WorkDescription := TempBlob.ReadAsText(CR, TEXTENCODING::UTF8);
+        AreaManager_btc := SalesCrMemoHeader.AreaManager_btc;
+        Currencychange := SalesCrMemoHeader.CurrencyChange;
+        ClienteReporting_btc := SalesCrMemoHeader.ClienteReporting_btc;
+        CampaignNo := SalesCrMemoHeader."Campaign No.";
+        InsideSales := SalesCrMemoHeader.InsideSales_btc;
+        Delegado_btc := SalesCrMemoHeader.Delegado_btc;
+    end;
+
 }

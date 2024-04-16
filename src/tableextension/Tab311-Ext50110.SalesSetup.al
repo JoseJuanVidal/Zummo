@@ -193,9 +193,8 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
 
         field(50240; "Recipient Mail Invoice Summary"; Text[100])
         {
-            Caption = 'Recipient Mail  Invoice Summary', Comment = 'Destinatario Resumen Facturas';
+            Caption = 'Recipient Mail  Invoice Summary', Comment = 'ESP="Destinatario Resumen Facturas"';
             DataClassification = CustomerContent;
-            Description = 'Intercompany Zummo Innc.';
         }
     }
 }

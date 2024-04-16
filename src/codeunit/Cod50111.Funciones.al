@@ -531,36 +531,61 @@ codeunit 50111 "Funciones"
         end;
     end;
 
-    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20];
+    procedure ChangeExtDocNoPostedSalesInvoice(InvoiceNo: code[20]; CreditMemo: Boolean; ExtDocNo: Text[35]; NewWorkDescription: text; AreaManager: Code[20]; ClienteReporting: code[20];
         CurrChange: Decimal; PackageTrackingNo: text[30]; InsideSales: code[20]; Delegado: code[20]; CampaignNo: code[20])
     var
         SalesInvoiceHeader: Record "Sales Invoice Header";
+        SalesCrMemoHeader: Record "Sales Cr.Memo Header";
         TempBlob: Record TempBlob temporary;
     begin
-        if SalesInvoiceHeader.Get(InvoiceNo) then begin
-            SalesInvoiceHeader."External Document No." := ExtDocNo;
-            SalesInvoiceHeader.AreaManager_btc := AreaManager;
-            SalesInvoiceHeader.InsideSales_btc := InsideSales;
-            SalesInvoiceHeader.ClienteReporting_btc := ClienteReporting;
-            SalesInvoiceHeader.CurrencyChange := CurrChange;
-            SalesInvoiceHeader.Delegado_btc := Delegado;
-            SalesInvoiceHeader."Campaign No." := CampaignNo;
-            CLEAR(SalesInvoiceHeader."Work Description");
-            if not (NewWorkDescription = '') then begin
-                TempBlob.Blob := SalesInvoiceHeader."Work Description";
-                TempBlob.WriteAsText(NewWorkDescription, TEXTENCODING::UTF8);
-                SalesInvoiceHeader."Work Description" := TempBlob.Blob;
-            end;
-            SalesInvoiceHeader."Package Tracking No." := PackageTrackingNo;
-            SalesInvoiceHeader.Modify();
+        case CreditMemo of
+            true:
+                begin
+                    if SalesInvoiceHeader.Get(InvoiceNo) then begin
+                        SalesInvoiceHeader."External Document No." := ExtDocNo;
+                        SalesInvoiceHeader.AreaManager_btc := AreaManager;
+                        SalesInvoiceHeader.InsideSales_btc := InsideSales;
+                        SalesInvoiceHeader.ClienteReporting_btc := ClienteReporting;
+                        SalesInvoiceHeader.CurrencyChange := CurrChange;
+                        SalesInvoiceHeader.Delegado_btc := Delegado;
+                        SalesInvoiceHeader."Campaign No." := CampaignNo;
+                        CLEAR(SalesInvoiceHeader."Work Description");
+                        if not (NewWorkDescription = '') then begin
+                            TempBlob.Blob := SalesInvoiceHeader."Work Description";
+                            TempBlob.WriteAsText(NewWorkDescription, TEXTENCODING::UTF8);
+                            SalesInvoiceHeader."Work Description" := TempBlob.Blob;
+                        end;
+                        SalesInvoiceHeader."Package Tracking No." := PackageTrackingNo;
+                        SalesInvoiceHeader.Modify();
+                    end;
+                end;
+            false:
+                begin
+                    if SalesCrMemoHeader.Get(InvoiceNo) then begin
+                        SalesCrMemoHeader."External Document No." := ExtDocNo;
+                        SalesCrMemoHeader.AreaManager_btc := AreaManager;
+                        SalesCrMemoHeader.InsideSales_btc := InsideSales;
+                        SalesCrMemoHeader.ClienteReporting_btc := ClienteReporting;
+                        SalesCrMemoHeader.CurrencyChange := CurrChange;
+                        SalesCrMemoHeader.Delegado_btc := Delegado;
+                        SalesCrMemoHeader."Campaign No." := CampaignNo;
+                        CLEAR(SalesCrMemoHeader."Work Description");
+                        if not (NewWorkDescription = '') then begin
+                            TempBlob.Blob := SalesCrMemoHeader."Work Description";
+                            TempBlob.WriteAsText(NewWorkDescription, TEXTENCODING::UTF8);
+                            SalesCrMemoHeader."Work Description" := TempBlob.Blob;
+                        end;
+                        SalesCrMemoHeader.Modify();
+                    end
+                end;
         end;
     end;
-
 
     procedure CheckFilterOneLocation(var Item: Record Item)
     var
         Location: Record Location;
-        Text000: label 'No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén', Comment = 'ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"';
+        Text000:
+                label 'No se puede realizar planificacicón con Agrupación y multiples filtros de Almacén', Comment = 'ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"';
     begin
         if Item.GetFilter("Location Filter") = '' then
             Error('Debe Seleccionar el Almacén principal');

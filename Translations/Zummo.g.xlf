@@ -26893,6 +26893,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseReceiptLines - Control VendorShipmentNo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3448550954 - Action 1545044866 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
+          <source>Cambiar Doc. Externo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Doc. Externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemo - Action Cambiar Doc. Externo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3448550954 - Action 1545044866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
+          <source>Cambiar Doc. Externo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Doc. Externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemo - Action Cambiar Doc. Externo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3448550954 - Action 2507320066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>&amp;Email</source>
           <note from="Developer" annotates="general" priority="2">ESP="&amp;Correo electrónico"</note>
@@ -30695,7 +30705,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 2532927009 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Recipient Mail  Invoice Summary</source>
-          <note from="Developer" annotates="general" priority="2">Destinatario Resumen Facturas</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Destinatario Resumen Facturas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Recipient Mail Invoice Summary - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 2930230816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">

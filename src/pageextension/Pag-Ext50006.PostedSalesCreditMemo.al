@@ -27,7 +27,44 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
     }
     actions
     {
+        addfirst(Processing)
+        {
+            action("Cambiar Doc. Externo")
+            {
+                ApplicationArea = all;
+                Caption = 'Cambiar Doc. Externo', comment = 'ESP="Cambiar Doc. Externo"';
+                ToolTip = 'Cambiar Doc. Externo',
+                    comment = 'ESP="Cambiar Doc. Externo"';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Balance;
 
+                trigger OnAction()
+                var
+                    PediDatos: Page "Posted Sales Invoice Change";
+                    Funciones: Codeunit Funciones;
+                    ExtDocNo: Text[35];
+                    WorkDescription: text;
+                    AreaManager: Code[20];
+                    InsideSales: Code[20];
+                    ClienteReporting: Code[20];
+                    CurrChange: Decimal;
+                    PackageTrackingNo: text[30];
+                    Delegado: code[20];
+                    CampaignNo: code[20];
+                begin
+                    PediDatos.LookupMode := true;
+                    PediDatos.SetDatosCRMemo(rec);
+                    if PediDatos.RunModal() = Action::LookupOK then begin
+                        PediDatos.GetDatos(ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange, PackageTrackingNo, InsideSales, Delegado, CampaignNo);
+                        Funciones.ChangeExtDocNoPostedSalesInvoice("No.", true, ExtDocNo, WorkDescription, AreaManager, ClienteReporting, CurrChange,
+                            PackageTrackingNo, InsideSales, Delegado, CampaignNo);
+                    end;
+                end;
+
+            }
+        }
         addafter(SendCustom)
         {
             action(Email_btc)
