@@ -102,7 +102,7 @@ page 50007 "Posted Sales Invoice Change"
 
 
     procedure GetDatos(var ExtDocNo: Text[30]; var WorkDesc: Text; var AreaManager: code[20]; var ClienteReporting: code[20]; var CurChange: Decimal;
-        var vPackageTrackingNo: text[30]; var vInsideSales: code[20]; var vDelegado_btc: Code[20]; vCampaignNo: code[20])
+        var vPackageTrackingNo: text[30]; var vInsideSales: code[20]; var vDelegado_btc: Code[20]; var vCampaignNo: code[20])
     begin
         ExtDocNo := ExternalDocumentNo;
         WorkDesc := WorkDescription;

@@ -32,6 +32,7 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
             field(Canal_btc; Canal_btc) { }
             field("ABC Cliente"; "ABC Cliente") { }
             field(Delegado_btc; Delegado_btc) { }
+            field("Campaign No."; "Campaign No.") { }
 
         }
         addafter("Pre-Assigned No.")
