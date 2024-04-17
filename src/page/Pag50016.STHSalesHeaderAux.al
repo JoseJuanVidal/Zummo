@@ -330,18 +330,24 @@ page 50016 "STH Sales Header Aux"
     local procedure RefreshCRMConnection()
     var
         IntegrationTableMapping: Record "Integration Table Mapping";
+        Window: Dialog;
+        lblWindow: Label 'Synchronization: %1', comment = 'ESP="Sincronización: %1"';
         lblConfirm: Label '¿Do you want to refresh the CRM offers?\(This process may take a few minutes).', comment = 'ESP="¿Desea refrescar las ofertas del CRM?\(Este proceso puede tardar algunos minutos)"';
         lblFinalice: Label 'Synchronization completed', comment = 'ESP="Sincronización finalizada"';
     begin
         IntegrationTableMapping.Reset();
         if not Confirm(lblConfirm) then
             exit;
+        Window.Open(lblWindow);
         // OFERTASSALES: trabajo de sincronización de Dynamics 365 for Sales.
+        Window.Update(1, 'OFERTASSALES');
         IntegrationTableMapping.Get('OFERTASSALES');
         IntegrationTableMapping.SynchronizeNow((true));
         // OFERTASSALESLIN: trabajo de sincronización de Dynamics 365 for Sales.
+        Window.Update(1, 'OFERTASSALESLIN');
         IntegrationTableMapping.Get('OFERTASSALESLIN');
         IntegrationTableMapping.SynchronizeNow((true));
+        Window.Close();
         Message(lblFinalice);
     end;
 }

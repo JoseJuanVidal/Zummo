@@ -4,6 +4,7 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
 
     layout
     {
+
         addafter("Sell-to Customer Name")
         {
             field("Sell-to Search Name"; "Sell-to Search Name")
@@ -23,7 +24,18 @@ pageextension 50006 "PostedSalesCreditMemo" extends "Posted Sales Credit Memo"
             field(FacturacionElec_btc; FacturacionElec_btc) { }
             field("ABC Cliente"; "ABC Cliente") { }
         }
-
+        addafter("Salesperson Code")
+        {
+            group(Clasificacion)
+            {
+                field(AreaManager_btc; AreaManager_btc) { }
+                field(InsideSales_btc; InsideSales_btc) { }
+                field(ClienteReporting_btc; ClienteReporting_btc) { }
+                field(Canal_btc; Canal_btc) { }
+                field(Delegado_btc; Delegado_btc) { }
+                field("Campaign No."; "Campaign No.") { }
+            }
+        }
     }
     actions
     {

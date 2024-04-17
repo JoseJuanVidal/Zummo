@@ -14732,6 +14732,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Property Caption</note>
           <target>Ofertas SALES</target>
         </trans-unit>
+        <trans-unit id="Page 3424626784 - Method 2032060489 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Synchronization: %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sincronización: %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Header Aux - Method RefreshCRMConnection - NamedType lblWindow</note>
+          <target>Sincronización: %1</target>
+        </trans-unit>
         <trans-unit id="Page 3424626784 - Method 2032060489 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you want to refresh the CRM offers?\(This process may take a few minutes).</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea refrescar las ofertas del CRM?\(Este proceso puede tardar algunos minutos)"</note>

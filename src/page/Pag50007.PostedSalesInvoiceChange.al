@@ -9,7 +9,7 @@ page 50007 "Posted Sales Invoice Change"
     {
         area(Content)
         {
-            group(GroupName)
+            group(General)
             {
                 field(Name; ExternalDocumentNo)
                 {
