@@ -1825,6 +1825,8 @@ codeunit 50106 "SalesEvents"
     begin
         if SalesHeader.IsTemporary then
             exit;
+        if not GetFileExtensionActiveControlDtos then
+            exit;
         case SalesHeader."Document Type" of
             SalesHeader."Document Type"::Quote, SalesHeader."Document Type"::Order, SalesHeader."Document Type"::Invoice:
                 begin
@@ -1888,14 +1890,153 @@ codeunit 50106 "SalesEvents"
         if not SalesSetup.Get() then
             exit;
         AmountDiscount := SalesLine."Line Discount Amount" + SalesLine."Inv. Discount Amount";
+        if AmountDiscount = 0 then
+            exit;
         GrossAmount := SalesLine.Quantity * SalesLine."Unit Price";
-        DiscountLine := (1 - ((GrossAmount - AmountDiscount) / GrossAmount)) * 100;
+        // evitamos error division por cero
+        if GrossAmount = 0 then
+            exit;
+        DiscountLine := Round((1 - ((GrossAmount - AmountDiscount) / GrossAmount)) * 100, 1, '<');
         if (SalesSetup."Maximun Discounts Approval" > 0) and (DiscountLine > SalesSetup."Maximun Discounts Approval") then
             exit(true); // Pending approval
 
+        // Aqui miramos los campos de Customer (Dtos en familias)
+        if CustomerDiscountFamilia(SalesLine, SalesLine."Line Discount %") then
+            exit(true);
+
         // ahora miramos configuración del producto
         // si la familia tiene configuración de aprobación de producto
+        if ItemPriceDiscount(SalesLine, SalesLine."Line Discount %") then
+            exit(true);
+    end;
 
+    local procedure ItemPriceDiscount(SalesLine: Record "Sales Line"; DiscountLine: Decimal): Boolean
+    var
+        Item: Record Item;
+        Customer: Record Customer;
+        SalesLineDiscount: Record "Sales Line Discount";
+    begin
+        if not Customer.Get(SalesLine."Sell-to Customer No.") then
+            exit;
+        if not Item.Get(SalesLine."No.") then
+            exit;
+        SalesLineDiscount.Reset();
+        SalesLineDiscount.SetFilter("Starting Date", '..%1|%2', WorkDate(), 0D);
+        SalesLineDiscount.SetFilter("Ending Date", '%1..|%2', WorkDate(), 0D);
+        // Articulo en concreto con Cliente en concreto
+        SalesLineDiscount.SetRange(Type, SalesLineDiscount.Type::Item);
+        SalesLineDiscount.SetRange(Code, SalesLine."No.");
+        SalesLineDiscount.SetRange("Sales Type", SalesLineDiscount."Sales Type"::Customer);
+        SalesLineDiscount.SetRange("Sales Code", SalesLine."Sell-to Customer No.");
+        if SalesLineDiscount.FindFirst() then begin
+            if DiscountLine > SalesLineDiscount."Line Discount %" then
+                exit(true); // Pending approval
+            exit(false);
+        end;
+        // Articulo en concreto con grupo descuento de cliente
+        SalesLineDiscount.SetRange("Sales Type", SalesLineDiscount."Sales Type"::"Customer Disc. Group");
+        SalesLineDiscount.SetRange("Sales Code", Customer."Customer Disc. Group");
+        if SalesLineDiscount.FindFirst() then begin
+            if DiscountLine > SalesLineDiscount."Line Discount %" then
+                exit(true); // Pending approval
+            exit(false);
+        end;
+        // Articulo en concreto con Todos los clientes
+        SalesLineDiscount.SetRange("Sales Type", SalesLineDiscount."Sales Type"::"All Customers");
+        SalesLineDiscount.SetRange("Sales Code");
+        if SalesLineDiscount.FindFirst() then begin
+            if DiscountLine > SalesLineDiscount."Line Discount %" then
+                exit(true); // Pending approval
+            exit(false);
+        end;
+        // Grupo descuento de Producto con Cliente
+        SalesLineDiscount.SetRange(Type, SalesLineDiscount.Type::"Item Disc. Group");
+        SalesLineDiscount.SetRange(Code, Item."Item Disc. Group");
+        SalesLineDiscount.SetRange("Sales Type", SalesLineDiscount."Sales Type"::Customer);
+        SalesLineDiscount.SetRange("Sales Code", SalesLine."Sell-to Customer No.");
+        if SalesLineDiscount.FindFirst() then begin
+            if DiscountLine > SalesLineDiscount."Line Discount %" then
+                exit(true); // Pending approval
+            exit(false);
+        end;
+        // Grupo descuento de Producto con grupo descuento de cliente
+        SalesLineDiscount.SetRange("Sales Type", SalesLineDiscount."Sales Type"::"Customer Disc. Group");
+        SalesLineDiscount.SetRange("Sales Code", Customer."Customer Disc. Group");
+        if SalesLineDiscount.FindFirst() then begin
+            if DiscountLine > SalesLineDiscount."Line Discount %" then
+                exit(true); // Pending approval
+            exit(false);
+        end;
+        // Grupo descuento de Producto con Todos los clientes
+        SalesLineDiscount.SetRange("Sales Type", SalesLineDiscount."Sales Type"::"All Customers");
+        SalesLineDiscount.SetRange("Sales Code");
+        if SalesLineDiscount.FindFirst() then begin
+            if DiscountLine > SalesLineDiscount."Line Discount %" then
+                exit(true); // Pending approval
+            exit(false);
+        end;
+    end;
+
+    local procedure CustomerDiscountFamilia(SalesLine: Record "Sales Line"; DiscountLine: Decimal): Boolean
+    var
+        Customer: Record Customer;
+        SalesHeader: Record "Sales Header";
+        Item: Record Item;
+        ItemClasificacion: Record TextosAuxiliares;
+        DtoMaximoFamilia: Decimal;
+    begin
+        if not SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then
+            exit;
+        if not Customer.Get(SalesHeader."Sell-to Customer No.") then
+            exit;
+        if not Item.Get(SalesLine."No.") then
+            exit;
+
+        ItemClasificacion.Reset();
+        ItemClasificacion.SetRange(TipoTabla, ItemClasificacion.TipoTabla::ClasificacionVentas);
+        ItemClasificacion.SetRange(TipoRegistro, ItemClasificacion.TipoRegistro::Tabla);
+        ItemClasificacion.SetRange(NumReg, Item.selClasVtas_btc);
+        if not ItemClasificacion.FindFirst() then begin
+            if (ItemClasificacion."Discount Type" in [ItemClasificacion."Discount Type"::" "]) then begin
+                ItemClasificacion.SetRange(TipoTabla, ItemClasificacion.TipoTabla::Familia);
+                ItemClasificacion.SetRange(TipoRegistro, ItemClasificacion.TipoRegistro::Tabla);
+                ItemClasificacion.SetRange(NumReg, Item.selFamilia_btc);
+                if not ItemClasificacion.FindFirst() then
+                    exit;
+            end;
+        end;
+        if (ItemClasificacion."Discount Type" in [ItemClasificacion."Discount Type"::" "]) then
+            exit;
+
+        case ItemClasificacion."Discount Type" of
+            ItemClasificacion."Discount Type"::"Dto. Exprimidores":
+                begin
+                    if Customer."Dto. Exprimidores" = 0 then
+                        exit;
+                    DtoMaximoFamilia := Customer."Dto. Exprimidores";
+                end;
+            ItemClasificacion."Discount Type"::"Dto. Isla":
+                begin
+                    if Customer."Dto. Isla" = 0 then
+                        exit;
+                    DtoMaximoFamilia := Customer."Dto. Isla";
+                end;
+            ItemClasificacion."Discount Type"::"Dto. Repuestos":
+                begin
+                    if Customer."Dto. Repuestos" = 0 then
+                        exit;
+                    DtoMaximoFamilia := Customer."Dto. Repuestos";
+                end;
+            ItemClasificacion."Discount Type"::"Dto. Viva":
+                begin
+                    if Customer."Dto. Viva" = 0 then
+                        exit;
+                    DtoMaximoFamilia := Customer."Dto. Viva";
+                end;
+        end;
+        // si tenemos familia, tenemos descuento cliente, miramos dtos por familia del cliente
+        if (DiscountLine > DtoMaximoFamilia) then
+            exit(true); // Pending approval
 
     end;
 
@@ -1907,6 +2048,8 @@ codeunit 50106 "SalesEvents"
         vRecRef: RecordRef;
         vFieldRef: FieldRef;
         ExistObject: Boolean;
+        lblMessage: Label 'Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación',
+            comment = 'ESP="Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación"';
     begin
         Objects.Reset();
         Objects.SetRange("Type", Objects.Type::Table);
@@ -1932,7 +2075,7 @@ codeunit 50106 "SalesEvents"
             vFieldRef.Value := Value;
             vRecRef.Modify();
         end;
-        Message('Linea %1 marcada para aprobacion', SalesLine."Line No.");
+        Message(lblMessage, SalesLine."No.", SalesLine.Description, SalesLine.Quantity, SalesLine."Unit Price", SalesLine."Line Discount %");
     end;
 
     procedure GetFileExtensionActiveControlDtos(): Boolean

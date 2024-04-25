@@ -65,6 +65,8 @@ page 50117 "Lista Textos Auxiliares"
             NotRegIVA := true;
         if GetFilter(TipoTabla) = FORMAT(Rec.TipoTabla::Familia) then
             mostrarGarantia := true;
+        if GetFilter(TipoTabla) = FORMAT(Rec.TipoTabla::ClasificacionVentas) then
+            mostrarGarantia := true;
     end;
 
     trigger OnAfterGetRecord()

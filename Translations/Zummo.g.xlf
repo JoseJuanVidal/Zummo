@@ -9838,6 +9838,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="No hay suficiente espacio para desplegar la lista de materiales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ExplodeProdBOMCompLines - NamedType lblError</note>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 2221157011 - NamedType 4159646059" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Producto:%1 %2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto:%1 %2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method MarkDiscountApprovalSalesLine - NamedType lblMessage</note>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 145188275 - NamedType 2109728185" size-unit="char" translate="yes" xml:space="preserve">
           <source>Registration date changed\Do you want to update the lines?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ha cambiado la fecha de registro\¿Desea actualizar las líneas?"</note>
