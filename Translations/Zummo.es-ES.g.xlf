@@ -6749,6 +6749,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Description - Property Caption</note>
           <target>Descripcion ENG</target>
         </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 2390037895 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Discount Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Dto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Discount Type - Property Caption</note>
+          <target>Tipo Dto</target>
+        </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 2390037895 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Dto. Exprimidores,Dto. Isla,Dto. Viva,Dto. Repuestos</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Dto. Exprimidores,Dto. Isla,Dto. Viva,Dto. Repuestos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Discount Type - Property OptionCaption</note>
+          <target> ,Dto. Exprimidores,Dto. Isla,Dto. Viva,Dto. Repuestos</target>
+        </trans-unit>
         <trans-unit id="Table 2244721376 - Field 680012757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Market</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mercado"</note>
@@ -30352,6 +30364,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control RutaPdfPedidos_btc - Method OnAssistEdit - NamedType lbrutaLbl</note>
           <target>Seleccionar ruta</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4090392497 - Control 3946021143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Audit Controls</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Controles Auditoria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control Audit - Property Caption</note>
+          <target>Controles Auditoria</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2379887800 - Action 4127921286 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1399627168">
           <source>Trazabilidad Serie</source>
           <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
@@ -33745,6 +33763,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Almacén Abonos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Location Code Credit Memo - Property Caption</note>
           <target>Cód. Almacén Abonos</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 1063218966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Maximun Discounts Approval</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dtos. Máximo Aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Maximun Discounts Approval - Property Caption</note>
+          <target>Dtos. Máximo Aprobación</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 844377209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Maximun Discounts Usuario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dtos. Máximo Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Maximun Discounts Users - Property Caption</note>
+          <target>Dtos. Máximo Usuario</target>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 584897431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Nº días fact vencidas</source>

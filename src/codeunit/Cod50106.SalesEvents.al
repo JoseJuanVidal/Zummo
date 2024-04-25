@@ -1781,6 +1781,18 @@ codeunit 50106 "SalesEvents"
     // ==  Todo lo relativo al desarrollo de controles para poder editar y cambiar precios de productos 
     // ==  con tarifas y sin tarifas
     // ==  
+    // ==  Maria y JL Lllego, el cliente tiene en condiciones de venta, una configuración de descuento
+    // ==  si existe un cambio de estas condiciones, de ficha de cliente , dto1 y dto2, se tiene que aprobar la ficha de cliente
+    // ==  Se tiene en cuenta y compara el dto maximo configurado en los descuentos:
+    // ==       la lista de descuentos: Tipo de Ventas. : Cliente, Grupo dto Cliente, Todos los clientes
+    // ==       la configuración de descuentos maximos por familias.
+    // ==       si supera esos descuentos, necesitan aprobación 
+    // ==     NOTA - Contemplar envío información a usuarios.
+    // ==  
+    // ==  Tenemos en cuenta los campos de importe lina
+    // ==  
+    // ==  Salesline."Inv. Discount Amount"
+    // ==  SalesLine."Line Discount Amount"
     // ======================================================================================================
 
     procedure CheckSalesPriceItemNo(SalesLine: Record "Sales Line"): Boolean
@@ -1804,6 +1816,155 @@ codeunit 50106 "SalesEvents"
         SalesPrice.SetFilter("Ending Date", '%1..', WorkDate());
         if SalesPrice.FindFirst() then
             exit(true);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales - Calc Discount By Type", 'OnAfterResetRecalculateInvoiceDisc', '', true, true)]
+    local procedure SalesCalcDiscountByType_OnAfterResetRecalculateInvoiceDisct(var SalesHeader: Record "Sales Header")
+    var
+        SalesLine: Record "Sales Line";
+    begin
+        if SalesHeader.IsTemporary then
+            exit;
+        case SalesHeader."Document Type" of
+            SalesHeader."Document Type"::Quote, SalesHeader."Document Type"::Order, SalesHeader."Document Type"::Invoice:
+                begin
+                    // if not (SalesHeader.Type in [SalesHeader.Type::Item]) then
+                    // exit;
+                    SalesLine.Reset();
+                    SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+                    SalesLine.SetRange("Document No.", SalesHeader."No.");
+                    if SalesLine.FindFirst() then
+                        repeat
+                            if SalesLine.Type in [SalesLine.Type::Item] then
+                                CheckDicountsSalesLine(SalesLine);
+                        Until SalesLine.next() = 0;
+
+                end;
+        end;
+    end;
+
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterUpdateAmountsDone', '', true, true)]
+    local procedure SalesLine_OnAfterUpdateAmountsDone(var SalesLine: Record "Sales Line"; var xSalesLine: Record "Sales Line"; CurrentFieldNo: Integer)
+    begin
+        if SalesLine.IsTemporary then
+            exit;
+        if not (SalesLine.Type in [SalesLine.Type::Item]) then
+            exit;
+        case SalesLine."Document Type" of
+            SalesLine."Document Type"::Quote, SalesLine."Document Type"::Order, SalesLine."Document Type"::Invoice:
+                begin
+                    CheckDicountsSalesLine(SalesLine);
+                end;
+        end;
+    end;
+
+    procedure CheckDicountsSalesLine(var SalesLine: Record "Sales Line")
+    var
+        myInt: Integer;
+    begin
+        if not GetFileExtensionActiveControlDtos then
+            exit;
+        // if (SalesLine."Line Discount Amount" <> xSalesLine."Line Discount Amount") and
+        //    (SalesLine."Inv. Discount Amount" <> xSalesLine."Inv. Discount Amount") then begin
+        // hay una diferencia de descuentos. Si hay superior a margenes configurados, marcamos como pdtes aprobar
+        // marcamos para no registrar y pedir aprobación POWERAUTOMATE (en Extension AUT)
+        if IsDiscountApproval(SalesLine) then
+            MarkDiscountApprovalSalesLine(SalesLine, 1);
+
+        // end;
+    end;
+
+    local procedure IsDiscountApproval(var SalesLine: Record "Sales Line"): Boolean
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        Item: Record Item;
+        Familia: Record TextosAuxiliares;
+        AmountDiscount: Decimal;
+        GrossAmount: Decimal;
+        DiscountLine: Decimal;
+    begin
+        // Primer la configuración Maxima de descuento permitido, mas restrictiva
+        if not SalesSetup.Get() then
+            exit;
+        AmountDiscount := SalesLine."Line Discount Amount" + SalesLine."Inv. Discount Amount";
+        GrossAmount := SalesLine.Quantity * SalesLine."Unit Price";
+        DiscountLine := (1 - ((GrossAmount - AmountDiscount) / GrossAmount)) * 100;
+        if (SalesSetup."Maximun Discounts Approval" > 0) and (DiscountLine > SalesSetup."Maximun Discounts Approval") then
+            exit(true); // Pending approval
+
+        // ahora miramos configuración del producto
+        // si la familia tiene configuración de aprobación de producto
+
+
+    end;
+
+    local procedure MarkDiscountApprovalSalesLine(var SalesLine: Record "Sales Line"; Value: Integer)
+    var
+        SalesHeader: Record "Sales Header";
+        Objects: Record Object;
+        NavObjects: Record "NAV App Object Metadata";
+        vRecRef: RecordRef;
+        vFieldRef: FieldRef;
+        ExistObject: Boolean;
+    begin
+        Objects.Reset();
+        Objects.SetRange("Type", Objects.Type::Table);
+        Objects.SetRange("ID", 16752);
+        if Objects.FindFirst() then
+            ExistObject := true;
+        NavObjects.Reset();
+        NavObjects.SetRange("Object Type", navObjects."Object Type"::Table);
+        // Objects.SetRange("Company Name", CompanyName);
+        NavObjects.SetRange("Object ID", 16752);
+        if NavObjects.FindFirst() then
+            ExistObject := true;
+        if not ExistObject then
+            exit;
+
+        SalesLine.DiscountApprovalStatus := SalesLine.DiscountApprovalStatus::Pending;
+        SalesLine.Modify();
+        if SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then begin
+            // field(50510; "Approval Status"; Enum "ZM Approval Status")
+            // value(1; Pending)  value(2; Aproval) value(3; Paused) value(4; Reject)
+            vRecRef.GetTable(SalesHeader);
+            vFieldRef := vRecRef.Field(50510);
+            vFieldRef.Value := Value;
+            vRecRef.Modify();
+        end;
+        Message('Linea %1 marcada para aprobacion', SalesLine."Line No.");
+    end;
+
+    procedure GetFileExtensionActiveControlDtos(): Boolean
+    var
+        Objects: Record Object;
+        NavObjects: Record "NAV App Object Metadata";
+        Funciones: Codeunit Funciones;
+        Result: Boolean;
+        vRecRef: RecordRef;
+        ExistObject: Boolean;
+    begin
+        //AUT Approval permissions Setup (16752)
+        // field 300 Aprobacion control de descuentos
+        // activa la configuracion de control de descuentos
+        Objects.Reset();
+        Objects.SetRange("Type", Objects.Type::Table);
+        Objects.SetRange("ID", 16752);
+        if Objects.FindFirst() then
+            ExistObject := true;
+        NavObjects.Reset();
+        NavObjects.SetRange("Object Type", navObjects."Object Type"::Table);
+        // Objects.SetRange("Company Name", CompanyName);
+        NavObjects.SetRange("Object ID", 16752);
+        if NavObjects.FindFirst() then
+            ExistObject := true;
+        if not ExistObject then
+            exit;
+
+        vRecRef.Open(16752);
+        if vRecRef.FindFirst() then begin
+            exit(Funciones.GetExtensionFieldValueboolean(vRecRef.RecordId, 300, false));
+        end;
     end;
 
 }

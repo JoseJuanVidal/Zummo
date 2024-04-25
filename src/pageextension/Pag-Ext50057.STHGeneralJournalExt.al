@@ -9,6 +9,11 @@ pageextension 50057 "STH General JournalExt" extends "General Journal"
             {
                 ApplicationArea = all;
             }
+            field("Due Date"; "Due Date")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 

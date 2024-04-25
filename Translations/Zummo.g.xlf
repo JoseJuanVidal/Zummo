@@ -6558,6 +6558,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripcion ENG"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 2390037895 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Discount Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Dto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Discount Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 2390037895 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Dto. Exprimidores,Dto. Isla,Dto. Viva,Dto. Repuestos</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Dto. Exprimidores,Dto. Isla,Dto. Viva,Dto. Repuestos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Discount Type - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 2244721376 - Field 680012757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Market</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mercado"</note>
@@ -27788,6 +27798,11 @@
           <note from="Developer" annotates="general" priority="2">Zummo Intercompany</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control Zummo IC - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4090392497 - Control 3946021143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Audit Controls</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Controles Auditoria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control Audit - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2379887800 - Action 4127921286 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1399627168">
           <source>Trazabilidad Serie</source>
           <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
@@ -30693,6 +30708,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Almacén Abonos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Location Code Credit Memo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 1063218966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Maximun Discounts Approval</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dtos. Máximo Aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Maximun Discounts Approval - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 844377209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Maximun Discounts Usuario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dtos. Máximo Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Maximun Discounts Users - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 584897431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Nº días fact vencidas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº días fact vencidas"</note>
@@ -32207,6 +32232,11 @@
           <source>Line Discount2 %</source>
           <note from="Developer" annotates="general" priority="2">ESP="% Descuento línea2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field DecLine Discount2 %_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 1221085146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>Discount approval status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado aprobación Dtos."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field DiscountApprovalStatus - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 1041044262 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>ExternalDocument</source>

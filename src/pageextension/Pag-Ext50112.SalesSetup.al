@@ -4,10 +4,6 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
     {
         addafter("Quote Validity Calculation")
         {
-            field("Active Price/Discounts Control"; "Active Price/Discounts Control")
-            {
-                ApplicationArea = all;
-            }
             field("Show Item alert without tariff"; "Show Item alert without tariff")
             {
                 ApplicationArea = all;
@@ -153,6 +149,25 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                     ExtendedDatatype = EMail;
                 }
 
+            }
+        }
+        addlast(Content)
+        {
+            Group(Audit)
+            {
+                Caption = 'Audit Controls', comment = 'ESP="Controles Auditoria"';
+                field("Active Price/Discounts Control"; "Active Price/Discounts Control")
+                {
+                    ApplicationArea = all;
+                }
+                field("Maximun Discounts Approval"; "Maximun Discounts Approval")
+                {
+                    ApplicationArea = all;
+                }
+                field("Maximun Discounts Users"; "Maximun Discounts Users")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

@@ -81,6 +81,13 @@ table 50105 "TextosAuxiliares"
             Caption = 'Sales Manager', comment = 'ESP="Sales Manager"';
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(SalesManager), TipoRegistro = const(Tabla));
         }
+        field(30; "Discount Type"; Option)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Discount Type', comment = 'ESP="Tipo Dto"';
+            OptionMembers = " ","Dto. Exprimidores","Dto. Isla","Dto. Viva","Dto. Repuestos";
+            OptionCaption = ' ,Dto. Exprimidores,Dto. Isla,Dto. Viva,Dto. Repuestos', comment = 'ESP=" ,Dto. Exprimidores,Dto. Isla,Dto. Viva,Dto. Repuestos"';
+        }
         field(50; "CRM ID"; guid)
         {
             DataClassification = CustomerContent;

@@ -196,5 +196,29 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             Caption = 'Recipient Mail  Invoice Summary', Comment = 'ESP="Destinatario Resumen Facturas"';
             DataClassification = CustomerContent;
         }
+        field(50250; "Maximun Discounts Approval"; Decimal)
+        {
+            Caption = 'Maximun Discounts Approval', Comment = 'ESP="Dtos. Máximo Aprobación"';
+            DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            var
+                ItemRegCodeunit: Codeunit "ZM PL Items Regist. aprovals";
+            begin
+                ItemRegCodeunit.CheckSUPERUserConfiguration();
+            end;
+        }
+        field(50260; "Maximun Discounts Users"; Decimal)
+        {
+            Caption = 'Maximun Discounts Usuario', Comment = 'ESP="Dtos. Máximo Usuario"';
+            DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            var
+                ItemRegCodeunit: Codeunit "ZM PL Items Regist. aprovals";
+            begin
+                ItemRegCodeunit.CheckSUPERUserConfiguration();
+            end;
+        }
     }
 }

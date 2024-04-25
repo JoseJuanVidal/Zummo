@@ -202,6 +202,11 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             DataClassification = CustomerContent;
             Caption = 'Price approval status', comment = 'ESP="Estado aprobación precios"';
         }
+        field(50050; DiscountApprovalStatus; Enum "Status Approval")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Discount approval status', comment = 'ESP="Estado aprobación Dtos."';
+        }
         field(50107; ExternalDocument; Code[50])
         {
             Editable = false;

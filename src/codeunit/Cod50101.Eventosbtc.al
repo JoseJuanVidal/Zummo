@@ -328,8 +328,6 @@ codeunit 50101 "Eventos_btc"
         FuncionesFabricacion.ManagePartitionOP(ProductionOrder, RequisitionLine);
     end;
 
-
-
     [EventSubscriber(ObjectType::Codeunit, 7000, 'OnAfterSalesLineLineDiscExists', '', false, false)]
     local procedure OnAfterSalesLineLineDiscExists(VAR SalesLine: Record "Sales Line"; VAR SalesHeader: Record "Sales Header";
     VAR TempSalesLineDisc: Record "Sales Line Discount"; ShowAll: Boolean);
@@ -342,6 +340,8 @@ codeunit 50101 "Eventos_btc"
         Dto2: Decimal;
         decDtoFinal: Decimal;
     begin
+        if SalesLine.IsTemporary then
+            exit;
         if SalesHeader.Status = SalesHeader.Status::Released then
             exit;
 

@@ -48,6 +48,11 @@ page 50117 "Lista Textos Auxiliares"
                     ApplicationArea = All;
                     Visible = mostrarGarantia;
                 }
+                field("Discount Type"; "Discount Type")
+                {
+                    ApplicationArea = all;
+                    Visible = mostrarGarantia;
+                }
             }
         }
     }
