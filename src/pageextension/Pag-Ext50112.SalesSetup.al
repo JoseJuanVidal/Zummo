@@ -164,10 +164,10 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 {
                     ApplicationArea = all;
                 }
-                field("Maximun Discounts Users"; "Maximun Discounts Users")
-                {
-                    ApplicationArea = all;
-                }
+                // field("Maximun Discounts Users"; "Maximun Discounts Users")
+                // {
+                //     ApplicationArea = all;
+                // }
             }
         }
     }

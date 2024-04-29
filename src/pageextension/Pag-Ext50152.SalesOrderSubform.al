@@ -37,6 +37,10 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
             {
                 ApplicationArea = All;
             }
+            field(DtoPendingApproval; DtoPendingApproval)
+            {
+                ApplicationArea = all;
+            }
         }
 
         addafter("Unit Price")
@@ -44,10 +48,30 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
             field("DecLine Discount1 %_btc"; "DecLine Discount1 %_btc")
             {
                 ApplicationArea = all;
+                Style = Unfavorable;
+                StyleExpr = DtoPendingApproval;
+
+                trigger OnValidate()
+                begin
+                    CurrPage.Update();
+                end;
             }
             field("DecLine Discount2 %_btc"; "DecLine Discount2 %_btc")
             {
                 ApplicationArea = all;
+                Style = Unfavorable;
+                StyleExpr = DtoPendingApproval;
+
+                trigger OnValidate()
+                begin
+                    CurrPage.Update();
+                end;
+            }
+            field(DiscountApprovalStatus; DiscountApprovalStatus)
+            {
+                ApplicationArea = all;
+                Editable = false;
+                Visible = false;
             }
         }
         addafter("Shortcut Dimension 2 Code")
@@ -98,6 +122,8 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
         modify("Line Discount %")
         {
             Enabled = false;
+            Style = Unfavorable;
+            StyleExpr = DtoPendingApproval;
             //Editable = false;
             //Visible = false;
         }
@@ -205,6 +231,7 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
         txtBloqueado: Text;
         StyleExpBloqueado: Text;
         txtStyleExprUnitPrice: text;
+        DtoPendingApproval: Boolean;
 
     trigger OnAfterGetRecord()
     var
@@ -226,6 +253,11 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
         EnStock := 0;
         Disponible := 0;
         Comprometido := 0;
+
+
+        // ponemos en rojo el descuento
+        DtoPendingApproval := Rec.DiscountApprovalStatus in [Rec.DiscountApprovalStatus::Pending, Rec.DiscountApprovalStatus::Reject];
+
 
         IF NOT (Rec.Type = Rec.Type::Item) THEN
             EXIT;
@@ -263,6 +295,7 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
     begin
         // miramos si tienes precios y bloqueamos precio
         GetSalesPrices();
+
     end;
 
     local procedure Action_ExplodeProdBOM()

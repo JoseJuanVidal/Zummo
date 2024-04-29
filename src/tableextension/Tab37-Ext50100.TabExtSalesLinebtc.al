@@ -99,14 +99,16 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
 
             trigger OnValidate()
             begin
-                if "DecLine Discount1 %_btc" = 0 then begin
-                    Validate("Line Discount %", "DecLine Discount2 %_btc");
-                    exit;
-                end;
-                if "DecLine Discount2 %_btc" <> 0 then
-                    Validate("Line Discount %", (1 - ((1 - "DecLine Discount1 %_btc" / 100) * (1 - "DecLine Discount2 %_btc" / 100))) * 100)
-                else
-                    Validate("Line Discount %", "DecLine Discount1 %_btc");
+                ValidateDecLineDiscount();
+
+                // if "DecLine Discount1 %_btc" = 0 then begin
+                //     Validate("Line Discount %", "DecLine Discount2 %_btc");
+                //     exit;
+                // end;
+                // if "DecLine Discount2 %_btc" <> 0 then
+                //     Validate("Line Discount %", (1 - ((1 - "DecLine Discount1 %_btc" / 100) * (1 - "DecLine Discount2 %_btc" / 100))) * 100)
+                // else
+                //     Validate("Line Discount %", "DecLine Discount1 %_btc");
             end;
         }
 
@@ -121,15 +123,7 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
 
             trigger OnValidate()
             begin
-                if "DecLine Discount2 %_btc" = 0 then begin
-                    Validate("Line Discount %", "DecLine Discount1 %_btc");
-                    exit;
-                end;
-
-                if "DecLine Discount1 %_btc" <> 0 then
-                    Validate("Line Discount %", (1 - ((1 - "DecLine Discount1 %_btc" / 100) * (1 - "DecLine Discount2 %_btc" / 100))) * 100)
-                else
-                    Validate("Line Discount %", "DecLine Discount2 %_btc");
+                ValidateDecLineDiscount();
             end;
         }
         field(50013; PedidoServicio_btc; Code[20])
@@ -262,5 +256,37 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
 
         }
     }
+
+    local procedure ValidateDecLineDiscount()
+    var
+        SalesEvent: Codeunit "SalesEvents";
+    begin
+        Validate("Line Discount %", (1 - ((1 - "DecLine Discount1 %_btc" / 100) * (1 - "DecLine Discount2 %_btc" / 100))) * 100);
+
+        if SalesEvent.ControlDiscountSalesLine(Rec) then
+            DiscountApprovalStatus := DiscountApprovalStatus::Pending
+        else
+            DiscountApprovalStatus := DiscountApprovalStatus::" ";
+
+
+        // if "DecLine Discount2 %_btc" = 0 then begin
+        //             Validate("Line Discount %", "DecLine Discount1 %_btc");
+        //             exit;
+        //         end;
+
+        //         if "DecLine Discount1 %_btc" <> 0 then
+        //             Validate("Line Discount %", (1 - ((1 - "DecLine Discount1 %_btc" / 100) * (1 - "DecLine Discount2 %_btc" / 100))) * 100)
+        //         else
+        //             Validate("Line Discount %", "DecLine Discount2 %_btc");
+
+        // if "DecLine Discount1 %_btc" = 0 then begin
+        //     Validate("Line Discount %", "DecLine Discount2 %_btc");
+        //     exit;
+        // end;
+        // if "DecLine Discount2 %_btc" <> 0 then
+        //     Validate("Line Discount %", (1 - ((1 - "DecLine Discount1 %_btc" / 100) * (1 - "DecLine Discount2 %_btc" / 100))) * 100)
+        // else
+        //     Validate("Line Discount %", "DecLine Discount1 %_btc");
+    end;
 }
 

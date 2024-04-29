@@ -9823,6 +9823,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="El Cliente %1 %2 tiene asignada la lista de precios %3 y el producto %4 %5 no tiene tarifa."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method CheckCustomerItemSalesPrice - NamedType lblMSG</note>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 1774075896 - NamedType 4159646059" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ControlDiscountSalesLine - NamedType lblMessage</note>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 2780978930 - NamedType 2863123117" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serial No.:</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº de Serie:",FRA="Numéro de série:"</note>
@@ -9838,15 +9843,15 @@
           <note from="Developer" annotates="general" priority="2">ESP="No hay suficiente espacio para desplegar la lista de materiales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ExplodeProdBOMCompLines - NamedType lblError</note>
         </trans-unit>
-        <trans-unit id="Codeunit 852251969 - Method 2221157011 - NamedType 4159646059" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Producto:%1 %2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Producto:%1 %2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method MarkDiscountApprovalSalesLine - NamedType lblMessage</note>
-        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 145188275 - NamedType 2109728185" size-unit="char" translate="yes" xml:space="preserve">
           <source>Registration date changed\Do you want to update the lines?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ha cambiado la fecha de registro\¿Desea actualizar las líneas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method P_7000009_OnAfterValidatePostingDate - NamedType confirm_Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 2451670281 - NamedType 4159646059" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Existen Líneas con descuentos que necesitan aprobación.\Es necesario la solicitud de aprobación.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Existen Líneas con descuentos que necesitan aprobación.\Es necesario la solicitud de aprobación."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method SalesCalcDiscountByType_OnAfterResetRecalculateInvoiceDisct - NamedType lblMessage</note>
         </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 1340888911 - NamedType 2398248726" size-unit="char" translate="yes" xml:space="preserve">
           <source>The total order amount is 0\Do you want to continue?</source>

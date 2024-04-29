@@ -1,20 +1,20 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "BC140 Produccion TEST",
-            "type": "al",
-            "request": "launch",
-            "server": "http://localhost:8080/BC140",
-            "serverInstance": "BC140PROD",
-            "port": 7549,
-            "authentication": "Windows",
-            //"startupObjectId": 22,
-            "breakOnError": true,
-            "breakOnRecordWrite": false,
-            "launchBrowser": false,
-            "schemaUpdateMode": "Synchronize"
-        },
+        // {
+        //     "name": "BC140 Produccion TEST",
+        //     "type": "al",
+        //     "request": "launch",
+        //     "server": "http://localhost:8080/BC140",
+        //     "serverInstance": "BC140PROD",
+        //     "port": 7549,
+        //     "authentication": "Windows",
+        //     //"startupObjectId": 22,
+        //     "breakOnError": true,
+        //     "breakOnRecordWrite": false,
+        //     "launchBrowser": false,
+        //     "schemaUpdateMode": "Synchronize"
+        // },
         {
             "name": "Localhost",
             "type": "al",

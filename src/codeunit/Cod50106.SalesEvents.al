@@ -757,7 +757,7 @@ codeunit 50106 "SalesEvents"
     end;
 
     [EventSubscriber(ObjectType::Page, page::"Payment Orders", 'OnBeforeActionEvent', 'Export', false, false)]
-    local procedure MyProcedure(var Rec: Record "Payment Order")
+    local procedure PaymentOrders_OnBeforeActionEvent(var Rec: Record "Payment Order")
     var
         CarteraDoc: record "Cartera Doc.";
     begin
@@ -1822,6 +1822,9 @@ codeunit 50106 "SalesEvents"
     local procedure SalesCalcDiscountByType_OnAfterResetRecalculateInvoiceDisct(var SalesHeader: Record "Sales Header")
     var
         SalesLine: Record "Sales Line";
+        IsMark: Boolean;
+        lblMessage: Label 'Existen Líneas con descuentos que necesitan aprobación.\Es necesario la solicitud de aprobación.',
+            Comment = 'ESP="Existen Líneas con descuentos que necesitan aprobación.\Es necesario la solicitud de aprobación."';
     begin
         if SalesHeader.IsTemporary then
             exit;
@@ -1837,17 +1840,29 @@ codeunit 50106 "SalesEvents"
                     SalesLine.SetRange("Document No.", SalesHeader."No.");
                     if SalesLine.FindFirst() then
                         repeat
-                            if SalesLine.Type in [SalesLine.Type::Item] then
-                                CheckDicountsSalesLine(SalesLine);
+                            if SalesLine.Type in [SalesLine.Type::Item] then begin
+                                if CheckDicountsSalesLine(SalesLine, True) then begin
+                                    SalesLine.DiscountApprovalStatus := SalesLine.DiscountApprovalStatus::Pending;
+                                    IsMark := true;
+                                end else
+                                    SalesLine.DiscountApprovalStatus := SalesLine.DiscountApprovalStatus::" ";
+                                SalesLine.Modify();
+                            end;
                         Until SalesLine.next() = 0;
-
+                    if IsMark then
+                        Message(lblMessage);
                 end;
         end;
     end;
 
 
-    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterUpdateAmountsDone', '', true, true)]
-    local procedure SalesLine_OnAfterUpdateAmountsDone(var SalesLine: Record "Sales Line"; var xSalesLine: Record "Sales Line"; CurrentFieldNo: Integer)
+    // [EventSubscriber(ObjectType::Table, Database::"Sales Line",  , '', true, true)]
+    // local procedure SalesLine_OnAfterUpdateAmountsDone(var Rec: Record "Sales Line"; var xRec: Record "Sales Line"; CurrFieldNo: Integer)
+    procedure ControlDiscountSalesLine(var SalesLine: Record "Sales Line"): Boolean
+    var
+        IsMark: Boolean;
+        lblMessage: Label 'Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación',
+            comment = 'ESP="Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación"';
     begin
         if SalesLine.IsTemporary then
             exit;
@@ -1856,14 +1871,15 @@ codeunit 50106 "SalesEvents"
         case SalesLine."Document Type" of
             SalesLine."Document Type"::Quote, SalesLine."Document Type"::Order, SalesLine."Document Type"::Invoice:
                 begin
-                    CheckDicountsSalesLine(SalesLine);
+                    IsMark := CheckDicountsSalesLine(SalesLine, False);
+                    if IsMark then
+                        Message(lblMessage, SalesLine."No.", SalesLine.Description, SalesLine.Quantity, SalesLine."Unit Price", SalesLine."Line Discount %");
+                    exit(IsMark);
                 end;
         end;
     end;
 
-    procedure CheckDicountsSalesLine(var SalesLine: Record "Sales Line")
-    var
-        myInt: Integer;
+    local procedure CheckDicountsSalesLine(var SalesLine: Record "Sales Line"; DiscountInvoice: Boolean) IsMark: Boolean;
     begin
         if not GetFileExtensionActiveControlDtos then
             exit;
@@ -1871,13 +1887,13 @@ codeunit 50106 "SalesEvents"
         //    (SalesLine."Inv. Discount Amount" <> xSalesLine."Inv. Discount Amount") then begin
         // hay una diferencia de descuentos. Si hay superior a margenes configurados, marcamos como pdtes aprobar
         // marcamos para no registrar y pedir aprobación POWERAUTOMATE (en Extension AUT)
-        if IsDiscountApproval(SalesLine) then
-            MarkDiscountApprovalSalesLine(SalesLine, 1);
+        IsMark := IsDiscountApproval(SalesLine);
+        MarkDiscountApprovalSalesLine(SalesLine, IsMark, DiscountInvoice);
 
         // end;
     end;
 
-    local procedure IsDiscountApproval(var SalesLine: Record "Sales Line"): Boolean
+    local procedure IsDiscountApproval(SalesLine: Record "Sales Line"): Boolean
     var
         SalesSetup: Record "Sales & Receivables Setup";
         Item: Record Item;
@@ -2040,17 +2056,18 @@ codeunit 50106 "SalesEvents"
 
     end;
 
-    local procedure MarkDiscountApprovalSalesLine(var SalesLine: Record "Sales Line"; Value: Integer)
+    local procedure MarkDiscountApprovalSalesLine(var SalesLine: Record "Sales Line"; IsMark: Boolean; DiscountInvoice: Boolean)
     var
         SalesHeader: Record "Sales Header";
+        SalesLine2: Record "Sales Line";
         Objects: Record Object;
         NavObjects: Record "NAV App Object Metadata";
         vRecRef: RecordRef;
         vFieldRef: FieldRef;
         ExistObject: Boolean;
-        lblMessage: Label 'Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación',
-            comment = 'ESP="Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación"';
+        Value: Integer;
     begin
+        // por si llega al funciona, comprobamos que existe la tabla, sino no hacemos nada
         Objects.Reset();
         Objects.SetRange("Type", Objects.Type::Table);
         Objects.SetRange("ID", 16752);
@@ -2065,17 +2082,25 @@ codeunit 50106 "SalesEvents"
         if not ExistObject then
             exit;
 
-        SalesLine.DiscountApprovalStatus := SalesLine.DiscountApprovalStatus::Pending;
-        SalesLine.Modify();
-        if SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then begin
-            // field(50510; "Approval Status"; Enum "ZM Approval Status")
-            // value(1; Pending)  value(2; Aproval) value(3; Paused) value(4; Reject)
-            vRecRef.GetTable(SalesHeader);
-            vFieldRef := vRecRef.Field(50510);
-            vFieldRef.Value := Value;
-            vRecRef.Modify();
-        end;
-        Message(lblMessage, SalesLine."No.", SalesLine.Description, SalesLine.Quantity, SalesLine."Unit Price", SalesLine."Line Discount %");
+
+
+        // comprobamos si hay mas lineas pendientes o no, para actualizar la cabecera
+        // SalesLine2.SetRange("Document Type", SalesLine."Document Type");
+        // SalesLine2.SetRange("Document No.", SalesLine."Document No.");
+        // SalesLine2.SetFilter(DiscountApprovalStatus, '%1|%2', SalesLine2.DiscountApprovalStatus::Pending, SalesLine2.DiscountApprovalStatus::Reject);
+        // if SalesLine2.FindFirst() then
+        //     Value := 1
+        // else
+        //     Value := 0;
+        // if SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then begin
+        //     // field(50510; "Approval Status"; Enum "ZM Approval Status")
+        //     // value(1; Pending)  value(2; Aproval) value(3; Paused) value(4; Reject)
+        //     vRecRef.GetTable(SalesHeader);
+        //     vFieldRef := vRecRef.Field(50510);
+        //     vFieldRef.Value := Value;
+        //     if not DiscountInvoice then
+        //         vRecRef.Modify();
+        // end;
     end;
 
     procedure GetFileExtensionActiveControlDtos(): Boolean
