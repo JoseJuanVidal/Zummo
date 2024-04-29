@@ -2083,24 +2083,23 @@ codeunit 50106 "SalesEvents"
             exit;
 
 
-
         // comprobamos si hay mas lineas pendientes o no, para actualizar la cabecera
-        // SalesLine2.SetRange("Document Type", SalesLine."Document Type");
-        // SalesLine2.SetRange("Document No.", SalesLine."Document No.");
-        // SalesLine2.SetFilter(DiscountApprovalStatus, '%1|%2', SalesLine2.DiscountApprovalStatus::Pending, SalesLine2.DiscountApprovalStatus::Reject);
-        // if SalesLine2.FindFirst() then
-        //     Value := 1
-        // else
-        //     Value := 0;
-        // if SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then begin
-        //     // field(50510; "Approval Status"; Enum "ZM Approval Status")
-        //     // value(1; Pending)  value(2; Aproval) value(3; Paused) value(4; Reject)
-        //     vRecRef.GetTable(SalesHeader);
-        //     vFieldRef := vRecRef.Field(50510);
-        //     vFieldRef.Value := Value;
-        //     if not DiscountInvoice then
-        //         vRecRef.Modify();
-        // end;
+        SalesLine2.SetRange("Document Type", SalesLine."Document Type");
+        SalesLine2.SetRange("Document No.", SalesLine."Document No.");
+        SalesLine2.SetFilter(DiscountApprovalStatus, '%1|%2', SalesLine2.DiscountApprovalStatus::Pending, SalesLine2.DiscountApprovalStatus::Reject);
+        if SalesLine2.FindFirst() then
+            Value := 1
+        else
+            Value := 0;
+        if SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then begin
+            // field(50510; "Approval Status"; Enum "ZM Approval Status")
+            // value(1; Pending)  value(2; Aproval) value(3; Paused) value(4; Reject)
+            vRecRef.GetTable(SalesHeader);
+            vFieldRef := vRecRef.Field(50510);
+            vFieldRef.Value := Value;
+            if not DiscountInvoice then
+                vRecRef.Modify();
+        end;
     end;
 
     procedure GetFileExtensionActiveControlDtos(): Boolean
