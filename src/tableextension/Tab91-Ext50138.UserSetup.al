@@ -39,6 +39,13 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
         {
             DataClassification = CustomerContent;
             Caption = 'Config. Contabilidad', comment = 'ESP="Config. Contabilidad"';
+
+            trigger OnValidate()
+            var
+                ItemRegCodeunit: Codeunit "ZM PL Items Regist. aprovals";
+            begin
+                ItemRegCodeunit.CheckSUPERUserConfiguration();
+            end;
         }
         field(50115; "Ubicaciones pedido por defecto"; Boolean)
         {
@@ -59,6 +66,18 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
         {
             DataClassification = CustomerContent;
             Caption = 'Informes Almacen', comment = 'ESP="Informes Almacen"';
+        }
+        field(50140; "Approvals Purch. Request"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Approvals purchase requests', comment = 'ESP="aprobación solicitudes compra"';
+
+            trigger OnValidate()
+            var
+                ItemRegCodeunit: Codeunit "ZM PL Items Regist. aprovals";
+            begin
+                ItemRegCodeunit.CheckSUPERUserConfiguration();
+            end;
         }
     }
 }

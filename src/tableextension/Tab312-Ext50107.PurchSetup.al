@@ -64,6 +64,12 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             Caption = 'General Conditions Purchase (ENG)', comment = 'ESP="Condiciones Generales Compra (ENG)"';
             Editable = false;
         }
+        field(50080; "Purchase Request Nos."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purchase Request less 200 Nos.', comment = 'ESP="Nº serie Solicituds menos 200"';
+            TableRelation = "No. Series";
+        }
         field(50100; "CONSULTIA Url"; text[100])
         {
             DataClassification = CustomerContent;

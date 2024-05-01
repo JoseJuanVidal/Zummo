@@ -47,6 +47,12 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             FieldClass = FlowField;
             CalcFormula = Sum("Purchase Line".Amount WHERE("Document Type" = FIELD("Document Type"), "Document No." = FIELD("No."), "Order No." = filter(<> '')));
         }
+        field(50120; "Purch. Request less 200"; code[20])
+        {
+            Caption = 'Purch. Request less 200', Comment = 'ESP="Solicitud de Compra menos 200"';
+            DataClassification = CustomerContent;
+            TableRelation = "Purchase Requests less 200";
+        }
         field(50125; "CONSULTIA ID Factura"; Integer)
         {
             Caption = 'CONSULTIA Id Factura', Comment = 'ESP="CONSULTIA Id Factura"';

@@ -97,6 +97,10 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Purchase Request Nos."; "Purchase Request Nos.")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(CONSULTIA)
             {

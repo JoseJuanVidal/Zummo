@@ -22,6 +22,12 @@ tableextension 50199 "Purch. Rcpt. Header" extends "Purch. Rcpt. Header"  //120
             FieldClass = FlowField;
             CalcFormula = sum("Purch. Rcpt. Line".TotalImponibleLinea where("Document No." = field("No."), "Prod. Order No." = filter(<> '')));
         }
+        field(50120; "Purch. Request less 200"; code[20])
+        {
+            Caption = 'Purch. Request less 200', Comment = 'ESP="Solicitud de Compra menos 200"';
+            DataClassification = CustomerContent;
+            TableRelation = "Purchase Requests less 200";
+        }
         field(50157; BaseImponibleLinea; decimal)
         {
             Caption = 'Base Amount Line', comment = 'ESP="Importe Base IVA"';

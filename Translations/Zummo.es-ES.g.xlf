@@ -5181,6 +5181,90 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field webUrl - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Requests less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitudes de Compra menos 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Property Caption</note>
+          <target>Solicitudes de Compra menos 200</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 317233110" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor %1 is blocked %2.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El provedoor %1 está bloqueado %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblErrorBlocked</note>
+          <target>El provedoor %1 está bloqueado %2.</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Amount - Property Caption</note>
+          <target>Importe</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field No. - Property Caption</note>
+          <target>Nº</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 1351594800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. Series</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nos. serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field No. Series - Property Caption</note>
+          <target>Nos. serie</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Posting Date - Property Caption</note>
+          <target>Fecha Registro</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quanity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Quantity - Property Caption</note>
+          <target>Cantidad</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Status - Property Caption</note>
+          <target>Usuario</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Price</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precio Unitario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Unit Price - Property Caption</note>
+          <target>Precio Unitario</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 3776794752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field User Id - Property Caption</note>
+          <target>Usuario</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Vendor Name - Property Caption</note>
+          <target>Nombre</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 1319178771 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name 2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre 2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Vendor Name 2 - Property Caption</note>
+          <target>Nombre 2</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Vendor No. - Property Caption</note>
+          <target>Nº proveedor</target>
+        </trans-unit>
         <trans-unit id="Table 3755578035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Quote new</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -10586,6 +10670,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method CheckCustomerItemSalesPrice - NamedType lblMSG</note>
           <target>El Cliente %1 %2 tiene asignada la lista de precios %3 y el producto %4 %5 no tiene tarifa.</target>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 1774075896 - NamedType 4159646059" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ControlDiscountSalesLine - NamedType lblMessage</note>
+          <target>Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación</target>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 2780978930 - NamedType 2863123117" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serial No.:</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº de Serie:",FRA="Numéro de série:"</note>
@@ -10610,11 +10700,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method P_7000009_OnAfterValidatePostingDate - NamedType confirm_Lbl</note>
           <target>Ha cambiado la fecha de registro\¿Desea actualizar las líneas?</target>
         </trans-unit>
-        <trans-unit id="Codeunit 852251969 - Method 2199398470 - NamedType 4159646059" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method SalesLine_OnAfterUpdateAmountsDone - NamedType lblMessage</note>
-          <target>Producto: %1 \%2\Cantidad: %3\Precio: %4\Dto.: %5.\No cumple las condiciones de descuentos, necesita aprobación</target>
+        <trans-unit id="Codeunit 852251969 - Method 2451670281 - NamedType 4159646059" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Existen Líneas con descuentos que necesitan aprobación.\Es necesario la solicitud de aprobación.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Existen Líneas con descuentos que necesitan aprobación.\Es necesario la solicitud de aprobación."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method SalesCalcDiscountByType_OnAfterResetRecalculateInvoiceDisct - NamedType lblMessage</note>
+          <target>Existen Líneas con descuentos que necesitan aprobación.\Es necesario la solicitud de aprobación.</target>
         </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 1340888911 - NamedType 2398248726" size-unit="char" translate="yes" xml:space="preserve">
           <source>The total order amount is 0\Do you want to continue?</source>
@@ -14554,6 +14644,36 @@
           <note from="Developer" annotates="general" priority="2">ESP="Puesto de Trabajo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Puesto Trabajo List_zum - Property Caption</note>
           <target>Puesto de Trabajo</target>
+        </trans-unit>
+        <trans-unit id="Page 2450567067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitudes de Compra menos 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Property Caption</note>
+          <target>Solicitudes de Compra menos 200</target>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menos 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Property Caption</note>
+          <target>Solicitud de Compra menos 200</target>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Control 1936001480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Control Vendor - Property Caption</note>
+          <target>Proveedor</target>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approve</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Action Approve - Property Caption</note>
+          <target>Aprobar</target>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Action 113888489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reject</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rechazar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Action Reject - Property Caption</note>
+          <target>Rechazar</target>
         </trans-unit>
         <trans-unit id="Page 248398536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Weight control</source>
@@ -32593,6 +32713,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Path Purchase Documents - Property Caption</note>
           <target>Ubicación Docs. compra</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 4229639122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Purchase Request less 200 Nos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº serie Solicituds menos 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Purchase Request Nos. - Property Caption</note>
+          <target>Nº serie Solicituds menos 200</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 28783585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Sharepoint Connection</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conexión Sharepoint"</note>
@@ -35689,6 +35815,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Peso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Header Z - Field Peso_btc - Property Caption</note>
           <target>Peso</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 11707313 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Approvals purchase requests</source>
+          <note from="Developer" annotates="general" priority="2">ESP="aprobación solicitudes compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Approvals Purch. Request - Property Caption</note>
+          <target>aprobación solicitudes compra</target>
         </trans-unit>
         <trans-unit id="TableExtension 2852714242 - Field 2443909504 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Config. Contabilidad</source>

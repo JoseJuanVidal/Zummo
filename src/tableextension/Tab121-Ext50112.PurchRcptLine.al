@@ -71,6 +71,7 @@ tableextension 50112 "PurchRcptLine" extends "Purch. Rcpt. Line"  //121
             FieldClass = FlowField;
             CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('PARTIDA')));
         }
+
         field(50157; BaseImponibleLinea; decimal)
         {
             DataClassification = CustomerContent;
