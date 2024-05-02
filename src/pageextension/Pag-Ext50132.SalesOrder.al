@@ -330,8 +330,6 @@ pageextension 50132 "SalesOrder" extends "Sales Order"
                 end;
             }
 
-
-
             action("Impimir Pedido")
             {
                 ApplicationArea = All;

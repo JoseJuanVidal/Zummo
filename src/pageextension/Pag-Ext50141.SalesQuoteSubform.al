@@ -58,13 +58,32 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
             field("DecLine Discount1 %_btc"; "DecLine Discount1 %_btc")
             {
                 ApplicationArea = All;
+                Style = Unfavorable;
+                StyleExpr = DtoPendingApproval;
+
+                trigger OnValidate()
+                begin
+                    CurrPage.Update();
+                end;
             }
 
             field("DecLine Discount2 %_btc"; "DecLine Discount2 %_btc")
             {
                 ApplicationArea = All;
-            }
+                Style = Unfavorable;
+                StyleExpr = DtoPendingApproval;
 
+                trigger OnValidate()
+                begin
+                    CurrPage.Update();
+                end;
+            }
+            field(DiscountApprovalStatus; DiscountApprovalStatus)
+            {
+                ApplicationArea = all;
+                Editable = false;
+                Visible = false;
+            }
             field(EnStock; EnStock)
             {
                 ApplicationArea = All;
@@ -129,6 +148,7 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
         Disponible: Decimal;
         txtBloqueado: Text;
         StyleExpBloqueado: text;
+        DtoPendingApproval: Boolean;
 
     trigger OnAfterGetRecord()
     var
@@ -146,6 +166,9 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
         EnStock := 0;
         Disponible := 0;
         Comprometido := 0;
+
+        // ponemos en rojo el descuento
+        DtoPendingApproval := Rec.DiscountApprovalStatus in [Rec.DiscountApprovalStatus::Pending, Rec.DiscountApprovalStatus::Reject];
 
         IF NOT (Rec.Type = Rec.Type::Item) THEN
             EXIT;

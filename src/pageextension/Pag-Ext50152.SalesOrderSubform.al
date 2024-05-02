@@ -42,7 +42,6 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
                 ApplicationArea = all;
             }
         }
-
         addafter("Unit Price")
         {
             field("DecLine Discount1 %_btc"; "DecLine Discount1 %_btc")
