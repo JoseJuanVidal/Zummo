@@ -101,6 +101,10 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Maximum amount Request"; "Maximum amount Request")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(CONSULTIA)
             {

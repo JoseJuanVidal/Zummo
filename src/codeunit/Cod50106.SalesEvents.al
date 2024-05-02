@@ -2082,7 +2082,6 @@ codeunit 50106 "SalesEvents"
         if not ExistObject then
             exit;
 
-
         // comprobamos si hay mas lineas pendientes o no, para actualizar la cabecera
         SalesLine2.SetRange("Document Type", SalesLine."Document Type");
         SalesLine2.SetRange("Document No.", SalesLine."Document No.");

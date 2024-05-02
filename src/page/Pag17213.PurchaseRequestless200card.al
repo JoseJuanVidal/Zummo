@@ -110,10 +110,8 @@ page 17213 "Purchase Request less 200 Card"
         ShowApprovalButton: Boolean;
 
     local procedure OnAction_SendApproval()
-    var
-        myInt: Integer;
     begin
-        // comprobamos si ya se ha enviado, o se vuelve a enviar
+        Rec.SendApproval();
 
     end;
 

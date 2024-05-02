@@ -118,6 +118,30 @@ table 17200 "Purchase Requests less 200"
         Item: Record Item;
         NoSeriesMgt: Codeunit NoSeriesManagement;
         lblErrorBlocked: Label 'Vendor %1 is blocked %2.', comment = 'ESP="El provedoor %1 está bloqueado %2."';
+        lblMaxAmount: Label 'The amount of the request %1 is greater than the maximum allowed %2.',
+            comment = 'ESP="El importe de la solicitud %1 es mayor que el máximo permitido %2."';
+        lblConfirm: Label '¿Do you wish to send the Approval of Purchase request %1 for an amount of %2?',
+            comment = 'ESP="¿Desea enviar la Aprobación de la solicitud de compra %1 por un importe de %2?"';
+        lblSubject: Label 'Solicitud de Compra mas de 200 € %1'
+            , comment = 'ESP="Solicitud de Compra mas de 200 € %1"';
+        lblTitle: Label '<p><strong>Solicitud de Compra mas de 200&euro; %1</strong></p>'
+            , comment = 'ESP="<p><strong>Solicitud de Compra mas de 200&euro; %1</strong></p>"';
+        lblUser: Label '<p><strong>Usuario:</strong> %1</p>'
+            , comment = 'ESP="<p><strong>Usuario:</strong> %1</p>"';
+        lblDate: Label '<p><strong>Fecha:</strong> %1</p>'
+            , comment = 'ESP="<p"><strong>Fecha:</strong> %1</p>"';
+        lblRequest: Label '<p><strong>N&ordm; Solicitud:</strong> %1</p>'
+            , comment = 'ESP="<p><strong>N&ordm; Solicitud:</strong> %1</p>"';
+        lblVendorNo: Label '<p><strong>C&oacute;d. Proveedor:</strong> %1</p>'
+            , comment = 'ESP="<p><strong>C&oacute;d. Proveedor:</strong> %1</p>"';
+        lblVendorName: Label '<p><strong>Nombre:</strong> %1</p>'
+            , comment = 'ESP="<p><strong>Nombre:</strong> %1</p>"';
+        lblVendorName2: Label '<p>        %1</p>'
+            , comment = 'ESP="<p>        %1</p>"';
+        lblDescription: Label '<p><strong>Descripci&oacute;n:</strong> %1</p>'
+            , comment = 'ESP="<p><strong>Descripci&oacute;n:</strong> %1</p>"';
+        lblAmount: Label '<p><strong>Importe:</strong> %1 &euro;</p>'
+            , Comment = 'ESP="<p><strong>Importe:</strong> %1 &euro;</p>"';
 
     trigger OnInsert()
     begin
@@ -172,6 +196,7 @@ table 17200 "Purchase Requests less 200"
     local procedure OnValidate_CalculateAmount()
     begin
         Rec.Amount := Rec.Quantity * Rec."Unit Price";
+        TestMaximumAmount();
     end;
 
     local procedure OnValidate_Amount()
@@ -180,6 +205,14 @@ table 17200 "Purchase Requests less 200"
             Rec."Unit Price" := 0
         else
             Rec."Unit Price" := Rec.Amount / Rec.Quantity;
+        TestMaximumAmount();
+    end;
+
+    local procedure TestMaximumAmount()
+    begin
+        PurchSetup.Get();
+        if PurchSetup."Maximum amount Request" < Rec.Amount then
+            Error(lblMaxAmount, Rec.Amount, PurchSetup."Maximum amount Request");
     end;
 
     procedure Approve()
@@ -199,5 +232,60 @@ table 17200 "Purchase Requests less 200"
         myInt: Integer;
     begin
         Rec.TestField(Status, Rec.Status::Approved);
+    end;
+
+    procedure SendApproval()
+    var
+        myInt: Integer;
+    begin
+        // comprobamos si ya se ha enviado, o se vuelve a enviar
+        Rec.TestField("Vendor No.");
+        Rec.TestField(Description);
+        Rec.TestField(Amount);
+        if not Confirm(lblConfirm, false, Rec."No.", Rec.Amount) then
+            exit;
+        SendEnvioEmailApproval;
+
+        Message('Enviado');
+    end;
+
+    local procedure SendEnvioEmailApproval()
+    var
+        SMTPSetup: Record "SMTP Mail Setup";
+        cduSmtp: Codeunit "SMTP Mail";
+        txtAsunto: Text;
+        textoHtml: Text;
+    begin
+        textoHtml := GetHTLMResumen();
+        txtAsunto := StrSubstNo(lblSubject, Rec."No.");
+        SMTPSetup.Get();
+        Clear(cduSmtp);
+        cduSmtp.CreateMessage(CompanyName, SMTPSetup."User ID", 'jvidal@zummo.es', txtAsunto, textoHtml, TRUE);
+        cduSmtp.Send();
+
+        //cambiamos el estado pendiente, para saber que se ha enviado la aprobacion
+        Rec.Status := Rec.Status::Pending;
+        Rec.Modify();
+    end;
+
+    local procedure GetHTLMResumen() textoHtml: Text;
+    begin
+        textoHtml := lblTitle;
+        textoHtml += StrSubstNo(lblUser, UserId);
+        textoHtml += StrSubstNo(lblDate, WorkDate());
+        textoHtml += StrSubstNo(lblRequest, Rec."No.");
+        textoHtml += StrSubstNo(lblVendorNo, Rec."Vendor No.");
+        textoHtml += StrSubstNo(lblVendorName, Rec."Vendor Name");
+        textoHtml += StrSubstNo(lblVendorName2, Rec."Vendor Name 2");
+        textoHtml += StrSubstNo(lblDescription, Rec.Description);
+        textoHtml += StrSubstNo(lblAmount, Rec.Amount);
+        textoHtml += '<p>&nbsp;</p>';
+    end;
+
+    local procedure GetRecipientsEmailRequest()
+    var
+        Employee: Record Employee;
+    begin
+        // Employee."Approval User Id"
     end;
 }

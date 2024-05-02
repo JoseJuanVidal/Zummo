@@ -80,5 +80,4 @@ page 17212 "Purchase Request less 200"
                 exit;
         Rec.SetRange("User Id", UserId);
     end;
-
 }

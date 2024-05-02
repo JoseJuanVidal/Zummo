@@ -5187,11 +5187,83 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Property Caption</note>
           <target>Solicitudes de Compra menos 200</target>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 855763010" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Importe:&lt;/strong&gt; %1 &amp;euro;&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Importe:&lt;/strong&gt; %1 &amp;euro;&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblAmount</note>
+          <target>&lt;p&gt;&lt;strong&gt;Importe:&lt;/strong&gt; %1 &amp;euro;&lt;/p&gt;</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you wish to send the Approval of Purchase request %1 for an amount of %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la Aprobación de la solicitud de compra %1 por un importe de %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblConfirm</note>
+          <target>¿Desea enviar la Aprobación de la solicitud de compra %1 por un importe de %2?</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 190679546" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; %1&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p"&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; %1&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblDate</note>
+          <target>&lt;p"&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; %1&lt;/p&gt;</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 2531569296" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Descripci&amp;oacute;n:&lt;/strong&gt; %1&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Descripci&amp;oacute;n:&lt;/strong&gt; %1&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblDescription</note>
+          <target>&lt;p&gt;&lt;strong&gt;Descripci&amp;oacute;n:&lt;/strong&gt; %1&lt;/p&gt;</target>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 317233110" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor %1 is blocked %2.</source>
           <note from="Developer" annotates="general" priority="2">ESP="El provedoor %1 está bloqueado %2."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblErrorBlocked</note>
           <target>El provedoor %1 está bloqueado %2.</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 569802214" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The amount of the request %1 is greater than the maximum allowed %2.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El importe de la solicitud %1 es mayor que el máximo permitido %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblMaxAmount</note>
+          <target>El importe de la solicitud %1 es mayor que el máximo permitido %2.</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 2258654885" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;N&amp;ordm; Solicitud:&lt;/strong&gt; %1&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;N&amp;ordm; Solicitud:&lt;/strong&gt; %1&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblRequest</note>
+          <target>&lt;p&gt;&lt;strong&gt;N&amp;ordm; Solicitud:&lt;/strong&gt; %1&lt;/p&gt;</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 339277786" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solicitud de Compra mas de 200 € %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra mas de 200 € %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblSubject</note>
+          <target>Solicitud de Compra mas de 200 € %1</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 37012126" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Solicitud de Compra mas de 200&amp;euro; %1&lt;/strong&gt;&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Solicitud de Compra mas de 200&amp;euro; %1&lt;/strong&gt;&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblTitle</note>
+          <target>&lt;p&gt;&lt;strong&gt;Solicitud de Compra mas de 200&amp;euro; %1&lt;/strong&gt;&lt;/p&gt;</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 3023661397" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Usuario:&lt;/strong&gt; %1&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Usuario:&lt;/strong&gt; %1&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblUser</note>
+          <target>&lt;p&gt;&lt;strong&gt;Usuario:&lt;/strong&gt; %1&lt;/p&gt;</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 791538659" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Nombre:&lt;/strong&gt; %1&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Nombre:&lt;/strong&gt; %1&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblVendorName</note>
+          <target>&lt;p&gt;&lt;strong&gt;Nombre:&lt;/strong&gt; %1&lt;/p&gt;</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 3622155973" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;        %1&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;        %1&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblVendorName2</note>
+          <target>&lt;p&gt;        %1&lt;/p&gt;</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 774846217" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;C&amp;oacute;d. Proveedor:&lt;/strong&gt; %1&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;C&amp;oacute;d. Proveedor:&lt;/strong&gt; %1&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblVendorNo</note>
+          <target>&lt;p&gt;&lt;strong&gt;C&amp;oacute;d. Proveedor:&lt;/strong&gt; %1&lt;/p&gt;</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
@@ -5230,10 +5302,10 @@
           <target>Cantidad</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>User Id</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Usuario"</note>
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Status - Property Caption</note>
-          <target>Usuario</target>
+          <target>Estado</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit Price</source>
@@ -14674,6 +14746,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Rechazar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Action Reject - Property Caption</note>
           <target>Rechazar</target>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Action 1234931829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send Approval</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Envío Aprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Action SendApproval - Property Caption</note>
+          <target>Envío Aprobación</target>
         </trans-unit>
         <trans-unit id="Page 248398536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Weight control</source>
@@ -31369,7 +31447,7 @@
           <target>Alergias</target>
         </trans-unit>
         <trans-unit id="TableExtension 1498446062 - Field 1356600781 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
-          <source>ApprovalUser Id</source>
+          <source>Approval User Id</source>
           <note from="Developer" annotates="general" priority="2">ESP="Id. Usuario aprobación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee - Field Approval User Id - Property Caption</note>
           <target>Id. Usuario aprobación</target>
@@ -32342,6 +32420,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field Plastic Qty. (kg) - Property Caption</note>
           <target>Plástico (kg)</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1052755578 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
+          <source>Purch. Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menos 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field Purch. Request less 200 - Property Caption</note>
+          <target>Solicitud de Compra menos 200</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1052755578 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
           <source>Plastic Recycled (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado (kg)"</note>
@@ -32700,6 +32784,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Condiciones Generales Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field General Conditions Purchase - Property Caption</note>
           <target>Condiciones Generales Compra</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 2609802439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Maximum amount Request minus 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Máximo solicitud menos 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Maximum amount Request - Property Caption</note>
+          <target>Importe Máximo solicitud menos 200</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 403186776 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Path Purchase Documents pending</source>
@@ -35459,6 +35549,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Plastic Qty. (kg) - Property Caption</note>
           <target>Plástico (kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Purch. Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menos 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Purch. Request less 200 - Property Caption</note>
+          <target>Solicitud de Compra menos 200</target>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Plastic Recycled (kg)</source>
