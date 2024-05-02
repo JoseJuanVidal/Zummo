@@ -55,6 +55,17 @@ page 17213 "Purchase Request less 200 Card"
                 {
                     ApplicationArea = all;
                 }
+                field(Comments; Comments)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Comments', comment = 'ESP="Comentarios"';
+                    MultiLine = true;
+
+                    trigger OnValidate()
+                    begin
+                        OnValidate_Comment();
+                    end;
+                }
             }
         }
     }
@@ -111,7 +122,13 @@ page 17213 "Purchase Request less 200 Card"
         ShowApprovalButton := Rec.IsUserApproval();
     end;
 
+    trigger OnAfterGetCurrRecord()
+    begin
+        Comments := Rec.GetComment().ToText();
+    end;
+
     var
+        Comments: text;
         ShowApprovalButton: Boolean;
 
     local procedure OnAction_SendApproval()
@@ -128,4 +145,10 @@ page 17213 "Purchase Request less 200 Card"
     begin
         Rec.Reject();
     end;
+
+    local procedure OnValidate_Comment()
+    begin
+        Rec.SetComment(Comments);
+    end;
+
 }

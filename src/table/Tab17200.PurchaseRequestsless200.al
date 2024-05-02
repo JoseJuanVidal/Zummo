@@ -97,6 +97,11 @@ table 17200 "Purchase Requests less 200"
             DataClassification = CustomerContent;
             Caption = 'Comment', comment = 'ESP="Comentarios"';
         }
+        field(100; "Purchase Invoice"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purchase Invoice Related', comment = 'ESP="Factura Compra relacionada"';
+        }
         field(107; "No. Series"; code[20])
         {
             DataClassification = CustomerContent;
@@ -148,6 +153,8 @@ table 17200 "Purchase Requests less 200"
             , comment = 'ESP="<p><strong>Descripci&oacute;n:</strong> %1</p>"';
         lblAmount: Label '<p><strong>Importe:</strong> %1 &euro;</p>'
             , Comment = 'ESP="<p><strong>Importe:</strong> %1 &euro;</p>"';
+        lblComments: Label '<p><strong>Commentarios:</strong></p>'
+            , Comment = 'ESP="<p><strong>Comentario:</strong></p>"';
 
     trigger OnInsert()
     begin
@@ -277,6 +284,9 @@ table 17200 "Purchase Requests less 200"
     end;
 
     local procedure GetHTLMResumen() textoHtml: Text;
+    var
+        ListText: list of [text];
+        i: Integer;
     begin
         textoHtml := lblTitle;
         textoHtml += StrSubstNo(lblUser, UserId);
@@ -287,6 +297,10 @@ table 17200 "Purchase Requests less 200"
         textoHtml += StrSubstNo(lblVendorName2, Rec."Vendor Name 2");
         textoHtml += StrSubstNo(lblDescription, Rec.Description);
         textoHtml += StrSubstNo(lblAmount, Rec.Amount);
+        textoHtml += lblComments;
+        Rec.GetListComment(ListText);
+        for i := 1 to ListText.Count do
+            textoHtml += '<p>        ' + ListText.Get(i) + '</p>';
         textoHtml += '<p>&nbsp;</p>';
     end;
 
@@ -321,5 +335,43 @@ table 17200 "Purchase Requests less 200"
             if UserSetup."Approvals Purch. Request" then
                 exit(True);
         end;
+    end;
+
+    procedure GetComment() Coments: TextBuilder
+    var
+        StreamIn: InStream;
+        TextLine: text;
+    begin
+        rec.CalcFields(Comment);
+        Rec.Comment.CreateInStream(StreamIn);
+        while not (StreamIn.EOS) do begin
+            StreamIn.ReadText(TextLine);
+            Coments.AppendLine(TextLine);
+        end;
+    end;
+
+    procedure GetListComment(var Coments: List of [text])
+    var
+        StreamIn: InStream;
+        TextLine: text;
+    begin
+        rec.CalcFields(Comment);
+        Rec.Comment.CreateInStream(StreamIn);
+        while not (StreamIn.EOS) do begin
+            StreamIn.ReadText(TextLine);
+            Coments.add(TextLine);
+        end;
+    end;
+
+    procedure SetComment(Comments: Text)
+    var
+        OutS: OutStream;
+    begin
+        Clear(Rec.Comment);
+        Rec.Comment.CreateOutStream(OutS);
+        OutS.WriteText(Comments);
+
+        if not Rec.Insert() then
+            Rec.Modify();
     end;
 }

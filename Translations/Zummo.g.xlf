@@ -5098,6 +5098,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Importe:&lt;/strong&gt; %1 &amp;euro;&lt;/p&gt;"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblAmount</note>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 3284390502" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Commentarios:&lt;/strong&gt;&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Comentario:&lt;/strong&gt;&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblComments</note>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you wish to send the Approval of Purchase request %1 for an amount of %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la Aprobación de la solicitud de compra %1 por un importe de %2?"</note>
@@ -5192,6 +5197,11 @@
           <source>Posting Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 2437096118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Invoice Related</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura Compra relacionada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Purchase Invoice - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quanity</source>
@@ -13467,6 +13477,11 @@
           <source>Purchase Request less 200</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menos 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Control 503024588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Control Comments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3377437423 - Control 1936001480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor</source>

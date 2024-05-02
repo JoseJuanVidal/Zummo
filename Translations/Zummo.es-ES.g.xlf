@@ -5307,6 +5307,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Posting Date - Property Caption</note>
           <target>Fecha Registro</target>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 2437096118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Invoice Related</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura Compra relacionada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Purchase Invoice - Property Caption</note>
+          <target>Factura Compra relacionada</target>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quanity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad"</note>
@@ -14758,6 +14764,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menos 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Property Caption</note>
           <target>Solicitud de Compra menos 200</target>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Control 503024588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Control Comments - Property Caption</note>
+          <target>Comentarios</target>
         </trans-unit>
         <trans-unit id="Page 3377437423 - Control 1936001480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor</source>

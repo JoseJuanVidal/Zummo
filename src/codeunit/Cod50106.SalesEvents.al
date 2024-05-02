@@ -1872,8 +1872,8 @@ codeunit 50106 "SalesEvents"
             SalesLine."Document Type"::Quote, SalesLine."Document Type"::Order, SalesLine."Document Type"::Invoice:
                 begin
                     IsMark := CheckDicountsSalesLine(SalesLine, False);
-                    if IsMark then
-                        Message(lblMessage, SalesLine."No.", SalesLine.Description, SalesLine.Quantity, SalesLine."Unit Price", SalesLine."Line Discount %");
+                    // if IsMark then
+                    //     Message(lblMessage, SalesLine."No.", SalesLine.Description, SalesLine.Quantity, SalesLine."Unit Price", SalesLine."Line Discount %");
                     exit(IsMark);
                 end;
         end;
@@ -1913,8 +1913,6 @@ codeunit 50106 "SalesEvents"
         if GrossAmount = 0 then
             exit;
         DiscountLine := Round((1 - ((GrossAmount - AmountDiscount) / GrossAmount)) * 100, 1, '<');
-        if (SalesSetup."Maximun Discounts Approval" > 0) and (DiscountLine > SalesSetup."Maximun Discounts Approval") then
-            exit(true); // Pending approval
 
         // Aqui miramos los campos de Customer (Dtos en familias)
         if CustomerDiscountFamilia(SalesLine, SalesLine."Line Discount %") then
@@ -1995,12 +1993,14 @@ codeunit 50106 "SalesEvents"
 
     local procedure CustomerDiscountFamilia(SalesLine: Record "Sales Line"; DiscountLine: Decimal): Boolean
     var
+        SalesSetup: Record "Sales & Receivables Setup";
         Customer: Record Customer;
         SalesHeader: Record "Sales Header";
         Item: Record Item;
         ItemClasificacion: Record TextosAuxiliares;
         DtoMaximoFamilia: Decimal;
     begin
+        SalesSetup.Get();
         if not SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then
             exit;
         if not Customer.Get(SalesHeader."Sell-to Customer No.") then
@@ -2053,6 +2053,9 @@ codeunit 50106 "SalesEvents"
         // si tenemos familia, tenemos descuento cliente, miramos dtos por familia del cliente
         if (DiscountLine > DtoMaximoFamilia) then
             exit(true); // Pending approval
+
+        if (DiscountLine > SalesSetup."Maximun Discounts Approval") and (DtoMaximoFamilia <= SalesSetup."Maximun Discounts Approval") then
+            exit(true);
 
     end;
 

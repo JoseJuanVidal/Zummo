@@ -106,6 +106,7 @@ table 17398 "ZM PL Item Purchase Prices"
         // Add changes to field groups here
     }
 
+
     var
         PurchasePrice: Record "Purchase Price";
         ItemPurchasePrices: Record "ZM PL Item Purchase Prices";
@@ -118,6 +119,8 @@ table 17398 "ZM PL Item Purchase Prices"
             Rec."Record ID" := CreateGuid();
         if Rec."Date/Time Creation" = 0DT then
             Rec."Date/Time Creation" := CreateDateTime(Today(), Time());
+        if "Status Approval" in [Rec."Status Approval"::" "] then
+            Rec."Status Approval" := Rec."Status Approval"::Pending;
         // comprobamos duplicados.
         CheckRecIsDuplicate();
     end;
@@ -190,6 +193,7 @@ table 17398 "ZM PL Item Purchase Prices"
     local procedure CheckActionApproval()
     begin
         Rec."Action Approval" := Rec."Action Approval"::New;
+        ItemPurchasePrices."Status Approval" := ItemPurchasePrices."Status Approval"::Pending;
         PurchasePrice.Reset();
         if PurchasePrice.Get(Rec."Item No.", Rec."Vendor No.", Rec."Starting Date", Rec."Currency Code", Rec."Variant Code", Rec."Unit of Measure Code", Rec."Minimum Quantity") then
             Rec."Action Approval" := Rec."Action Approval"::Modify;

@@ -132,6 +132,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
             if ItemPurchasePrices.FindFirst() then
                 repeat
                     ItemPurchasePrices."Date Send Approval" := WorkDate();
+                    ItemPurchasePrices."Status Approval" := ItemPurchasePrices."Status Approval"::Pending;
                     ItemPurchasePrices.Modify();
                 Until ItemPurchasePrices.next() = 0;
     end;
@@ -439,7 +440,6 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                         ItemPurchasePrices."Variant Code" := PurchasePrice."Variant Code";
                         ItemPurchasePrices."Unit of Measure Code" := PurchasePrice."Unit of Measure Code";
                         ItemPurchasePrices."Minimum Quantity" := PurchasePrice."Minimum Quantity";
-                        ItemPurchasePrices."Status Approval" := ItemPurchasePrices."Status Approval"::Pending;
                         ItemPurchasePrices."Direct Unit Cost" := PurchasePrice."Direct Unit Cost";
                         ItemPurchasePrices."Ending Date" := PurchasePrice."Ending Date";
                         ItemPurchasePrices."Action Approval" := ItemPurchasePrices."Action Approval"::Delete;
