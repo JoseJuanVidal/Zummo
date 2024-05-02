@@ -42,7 +42,10 @@ codeunit 50110 "CU_Cron"
                 'CalculateVtoAseguradora':
                     CalculateVtoAseguradora();
                 'CargaMovsContaPresup':
-                    MovsContaPresup.CargarDatos(false);
+                    begin
+                        MovsContaPresup.CargarDatos(false);
+                        CheckFechaRegistroConfiguracionContabilidad();
+                    end;
                 'AvisosFrasVencidasAreaManager':
                     begin
                         SalesSetup.Get();
@@ -1523,5 +1526,62 @@ codeunit 50110 "CU_Cron"
         HistFallos: Record "ZM Hist. Reclamaciones ventas";
     begin
         HistFallos.CreateHistReclamaciones(0D);
+    end;
+
+    // =============     PROCESO DE COMPROBACION DE FECHAS DE CONFIGURACION CONTABILDAD          ====================
+    // ==  
+    // ==  Clara, se le pasa este control y hay que estar encima de ellas, si no se abre el mes siguiente el dia 1
+    // ==  a las 6 de la mañana empieza produccion y no pueden trabajar
+    // ==  
+    // ==  
+    // ======================================================================================================
+
+    local procedure CheckFechaRegistroConfiguracionContabilidad()
+    var
+        GLSetup: Record "General Ledger Setup";
+        Recipients: Text;
+    begin
+        GLSetup.Get();
+
+        if not (Today < CalcDate('-2D', GLSetup."Allow Posting To")) then
+            exit;
+
+        Recipients := GetRecipientsEmailRequest();
+        if Recipients <> '' then
+            SendEmail(GLSetup, Recipients);
+    end;
+
+    local procedure SendEmail(GLSetup: Record "General Ledger Setup"; Recipients: text)
+    var
+        SMTPSetup: Record "SMTP Mail Setup";
+        cduSmtp: Codeunit "SMTP Mail";
+        txtAsunto: Text;
+    begin
+        txtAsunto := StrSubstNo('Revisar Fechas registros de Configuración Contabilidad.\Desde: %º\Hasta:%2', GLSetup."Allow Posting From", GLSetup."Allow Posting To");
+        SMTPSetup.Get();
+        Clear(cduSmtp);
+        cduSmtp.CreateMessage(CompanyName, SMTPSetup."User ID", Recipients, txtAsunto, txtAsunto, TRUE);
+        cduSmtp.Send();
+    end;
+
+    local procedure GetRecipientsEmailRequest() Recipients: text;
+    var
+        UserSetup: Record "User Setup";
+        Employee: Record Employee;
+    begin
+        UserSetup.Reset();
+        UserSetup.SetRange("Approvals Purch. Request", true);
+        if UserSetup.FindFirst() then
+            repeat
+                Employee.SetRange("Approval User Id", UserSetup."User ID");
+                if Employee.FindFirst() then
+                    repeat
+                        if Employee."Company E-Mail" <> '' then begin
+                            if Recipients <> '' then
+                                Recipients += ';';
+                            Recipients += Employee."Company E-Mail";
+                        end;
+                    Until Employee.next() = 0;
+            Until UserSetup.next() = 0;
     end;
 }

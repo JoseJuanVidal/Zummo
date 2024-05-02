@@ -63,14 +63,64 @@ page 17212 "Purchase Request less 200"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(SendApproval)
+            {
+                ApplicationArea = all;
+                Caption = 'Send Approval', comment = 'ESP="Envío Aprobación"';
+                Image = SendApprovalRequest;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    OnAction_SendApproval();
+                end;
+            }
+            action(Approve)
+            {
+                ApplicationArea = all;
+                Caption = 'Approve', comment = 'ESP="Aprobar"';
+                Image = Approve;
+                Promoted = true;
+                PromotedCategory = Process;
+                Visible = ShowApprovalButton;
+
+                trigger OnAction()
+                begin
+                    OnAction_Approve();
+                end;
+            }
+            action(Reject)
+            {
+                ApplicationArea = all;
+                Caption = 'Reject', comment = 'ESP="Rechazar"';
+                Image = Reject;
+                Promoted = true;
+                PromotedCategory = Process;
+                Visible = ShowApprovalButton;
+
+                trigger OnAction()
+                begin
+                    OnAction_Reject();
+                end;
+            }
+        }
+    }
+
 
     trigger OnOpenPage()
     begin
         FilterUser();
+        ShowApprovalButton := Rec.IsUserApproval();
     end;
 
     var
         UserSetup: Record "User Setup";
+        ShowApprovalButton: Boolean;
 
     local procedure FilterUser()
     begin
@@ -79,5 +129,20 @@ page 17212 "Purchase Request less 200"
             if UserSetup."Approvals Purch. Request" then
                 exit;
         Rec.SetRange("User Id", UserId);
+    end;
+
+    local procedure OnAction_SendApproval()
+    begin
+        Rec.SendApproval();
+    end;
+
+    local procedure OnAction_Approve()
+    begin
+        Rec.Approve();
+    end;
+
+    local procedure OnAction_Reject()
+    begin
+        Rec.Reject();
     end;
 }

@@ -106,13 +106,17 @@ page 17213 "Purchase Request less 200 Card"
         }
     }
 
+    trigger OnOpenPage()
+    begin
+        ShowApprovalButton := Rec.IsUserApproval();
+    end;
+
     var
         ShowApprovalButton: Boolean;
 
     local procedure OnAction_SendApproval()
     begin
         Rec.SendApproval();
-
     end;
 
     local procedure OnAction_Approve()

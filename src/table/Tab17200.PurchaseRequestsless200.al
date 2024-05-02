@@ -92,6 +92,11 @@ table 17200 "Purchase Requests less 200"
             Caption = 'Status', comment = 'ESP="Estado"';
             Editable = false;
         }
+        field(90; Comment; Blob)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Comment', comment = 'ESP="Comentarios"';
+        }
         field(107; "No. Series"; code[20])
         {
             DataClassification = CustomerContent;
@@ -116,6 +121,7 @@ table 17200 "Purchase Requests less 200"
         PurchSetup: Record "Purchases & Payables Setup";
         Vendor: Record Vendor;
         Item: Record Item;
+        UserSetup: Record "User Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         lblErrorBlocked: Label 'Vendor %1 is blocked %2.', comment = 'ESP="El provedoor %1 está bloqueado %2."';
         lblMaxAmount: Label 'The amount of the request %1 is greater than the maximum allowed %2.',
@@ -244,23 +250,25 @@ table 17200 "Purchase Requests less 200"
         Rec.TestField(Amount);
         if not Confirm(lblConfirm, false, Rec."No.", Rec.Amount) then
             exit;
-        SendEnvioEmailApproval;
+        SendEmailApproval;
 
         Message('Enviado');
     end;
 
-    local procedure SendEnvioEmailApproval()
+    local procedure SendEmailApproval()
     var
         SMTPSetup: Record "SMTP Mail Setup";
         cduSmtp: Codeunit "SMTP Mail";
         txtAsunto: Text;
+        Recipients: text;
         textoHtml: Text;
     begin
         textoHtml := GetHTLMResumen();
+        Recipients := GetRecipientsEmailRequest();
         txtAsunto := StrSubstNo(lblSubject, Rec."No.");
         SMTPSetup.Get();
         Clear(cduSmtp);
-        cduSmtp.CreateMessage(CompanyName, SMTPSetup."User ID", 'jvidal@zummo.es', txtAsunto, textoHtml, TRUE);
+        cduSmtp.CreateMessage(CompanyName, SMTPSetup."User ID", Recipients, txtAsunto, textoHtml, TRUE);
         cduSmtp.Send();
 
         //cambiamos el estado pendiente, para saber que se ha enviado la aprobacion
@@ -282,10 +290,36 @@ table 17200 "Purchase Requests less 200"
         textoHtml += '<p>&nbsp;</p>';
     end;
 
-    local procedure GetRecipientsEmailRequest()
+    local procedure GetRecipientsEmailRequest() Recipients: text;
     var
         Employee: Record Employee;
+        lblError: Label 'No existen emplados configurados para aprobacion de Solicitudes de compra.\Hable con Administración del sistemaB',
+            comment = 'ESP="No existen emplados configurados para aprobacion de Solicitudes de compra.\Hable con Administración del sistema"';
     begin
-        // Employee."Approval User Id"
+        UserSetup.Reset();
+        UserSetup.SetRange("Approvals Purch. Request", true);
+        if UserSetup.FindFirst() then
+            repeat
+                Employee.SetRange("Approval User Id", UserSetup."User ID");
+                if Employee.FindFirst() then
+                    repeat
+                        if Employee."Company E-Mail" <> '' then begin
+                            if Recipients <> '' then
+                                Recipients += ';';
+                            Recipients += Employee."Company E-Mail";
+                        end;
+                    Until Employee.next() = 0;
+            Until UserSetup.next() = 0;
+
+        if Recipients = '' then
+            Error(lblError);
+    end;
+
+    procedure IsUserApproval(): Boolean
+    begin
+        if UserSetup.Get(UserId) then begin
+            if UserSetup."Approvals Purch. Request" then
+                exit(True);
+        end;
     end;
 }
