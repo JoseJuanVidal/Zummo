@@ -2,6 +2,7 @@ page 17212 "Purchase Request less 200"
 {
     ApplicationArea = All;
     Caption = 'Purchase Request less 200', Comment = 'ESP="Solicitudes de Compra menos 200"';
+    PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     PageType = List;
     SourceTable = "Purchase Requests less 200";
     UsageCategory = Lists;
@@ -52,6 +53,10 @@ page 17212 "Purchase Request less 200"
                     Visible = false;
                 }
                 field(Status; Status)
+                {
+                    ApplicationArea = all;
+                }
+                field("Purchase Invoice"; "Purchase Invoice")
                 {
                     ApplicationArea = all;
                 }
@@ -109,6 +114,21 @@ page 17212 "Purchase Request less 200"
                 end;
             }
         }
+        area(Navigation)
+        {
+            action(PostedPurchaseRequest)
+            {
+                Caption = 'Posted Purch. Order Request', comment = 'ESP="Hist. Solicitud Ped. Compra"';
+                Image = OrderPromising;
+                Promoted = true;
+                PromotedCategory = Category4;
+
+                trigger OnAction()
+                begin
+                    OnAction_PostedPurchaseRequest();
+                end;
+            }
+        }
     }
 
 
@@ -144,5 +164,18 @@ page 17212 "Purchase Request less 200"
     local procedure OnAction_Reject()
     begin
         Rec.Reject();
+    end;
+
+    local procedure OnAction_PostedPurchaseRequest()
+    var
+        PurchaseRequest: Record "Purchase Requests less 200";
+        PurchaseRequests: page "Purchase Request less 200";
+    begin
+        if not PurchaseRequest.IsUserApproval() then
+            PurchaseRequest.SetRange("User Id", UserId);
+        PurchaseRequest.SetRange(Status, PurchaseRequest.Status::Approved);
+        PurchaseRequest.SetRange(Invoiced, true);
+        PurchaseRequests.SetTableView(PurchaseRequest);
+        PurchaseRequests.RunModal();
     end;
 }

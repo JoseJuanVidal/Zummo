@@ -39,6 +39,13 @@ pageextension 50078 "ZM Purchasing Agent Role" extends "Purchasing Agent Role Ce
                 // sRunPageView = where("Qty. Rcd. Not Invoiced" = filter(<> 0));
                 Image = ContactReference;
             }
+            action(PurchaseRequest)
+            {
+                Caption = 'Purch. Request less 200', comment = 'ESP="Solicitud Compra menos 200"';
+                Image = OrderPromising;
+                RunObject = page "Purchase Request less 200";
+                RunPageView = where(Invoiced = const(false));
+            }
         }
     }
 }

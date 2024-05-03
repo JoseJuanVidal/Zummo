@@ -92,6 +92,13 @@ table 17200 "Purchase Requests less 200"
             Caption = 'Status', comment = 'ESP="Estado"';
             Editable = false;
         }
+        field(81; "Invoiced"; Boolean)
+        {
+            Caption = 'Invoice No.', comment = 'ESP="Nº Factura"';
+            FieldClass = FlowField;
+            CalcFormula = exist("Purch. Inv. Header" where("Purch. Request less 200" = field("No.")));
+            Editable = false;
+        }
         field(90; Comment; Blob)
         {
             DataClassification = CustomerContent;
@@ -99,8 +106,10 @@ table 17200 "Purchase Requests less 200"
         }
         field(100; "Purchase Invoice"; code[20])
         {
-            DataClassification = CustomerContent;
             Caption = 'Purchase Invoice Related', comment = 'ESP="Factura Compra relacionada"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Purch. Inv. Header"."No." where("Purch. Request less 200" = field("No.")));
+            Editable = false;
         }
         field(107; "No. Series"; code[20])
         {
@@ -171,6 +180,7 @@ table 17200 "Purchase Requests less 200"
 
     trigger OnModify()
     begin
+        CheckIsAssigned;
         if Rec.Amount <> xRec.Amount then
             Rec.Status := Rec.Status::" ";
     end;
@@ -231,13 +241,16 @@ table 17200 "Purchase Requests less 200"
     procedure Approve()
     begin
         // control de si existe ya alguna linea indicada
-
+        CheckIsAssigned;
         Rec.Status := Rec.Status::Approved;
+        Rec.Modify();
     end;
 
     procedure Reject()
     begin
+        CheckIsAssigned;
         Rec.Status := Rec.Status::Reject;
+        Rec.Modify();
     end;
 
     procedure TestApproved()
@@ -245,6 +258,20 @@ table 17200 "Purchase Requests less 200"
         myInt: Integer;
     begin
         Rec.TestField(Status, Rec.Status::Approved);
+    end;
+
+    local procedure CheckIsAssigned()
+    var
+        PurchaseHeader: Record "Purchase Header";
+        lblError: Label 'la factura %1 tiene la solicituda asignada', comment = 'ESP="la factura %1 tiene la solicituda asignada"';
+    begin
+        Rec.CalcFields(Invoiced);
+        Rec.TestField(Invoiced, false);
+        PurchaseHeader.Reset();
+        PurchaseHeader.SetRange("Document Type", PurchaseHeader."Document Type"::Invoice);
+        PurchaseHeader.SetRange("Purch. Request less 200", Rec."No.");
+        if PurchaseHeader.FindFirst() then
+            Error(lblError, PurchaseHeader."No.");
     end;
 
     procedure SendApproval()

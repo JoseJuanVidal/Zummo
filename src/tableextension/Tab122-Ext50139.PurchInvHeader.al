@@ -2,6 +2,12 @@ tableextension 50139 "PurchInvHeader" extends "Purch. Inv. Header"  //122
 {
     fields
     {
+        field(50120; "Purch. Request less 200"; code[20])
+        {
+            Caption = 'Purch. Request less 200', Comment = 'ESP="Solicitud de Compra menos 200"';
+            DataClassification = CustomerContent;
+            TableRelation = "Purchase Requests less 200";
+        }
         field(50125; "CONSULTIA ID Factura"; Integer)
         {
             Caption = 'CONSULTIA Id Factura', Comment = 'ESP="CONSULTIA Id Factura"';

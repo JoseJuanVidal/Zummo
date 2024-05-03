@@ -5193,6 +5193,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblAmount</note>
           <target>&lt;p&gt;&lt;strong&gt;Importe:&lt;/strong&gt; %1 &amp;euro;&lt;/p&gt;</target>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 3284390502" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Commentarios:&lt;/strong&gt;&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Comentario:&lt;/strong&gt;&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblComments</note>
+          <target>&lt;p&gt;&lt;strong&gt;Comentario:&lt;/strong&gt;&lt;/p&gt;</target>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you wish to send the Approval of Purchase request %1 for an amount of %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la Aprobación de la solicitud de compra %1 por un importe de %2?"</note>
@@ -5288,6 +5294,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Description - Property Caption</note>
           <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 3015270207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Invoiced - Property Caption</note>
+          <target>Nº Factura</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
@@ -14735,11 +14747,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Puesto Trabajo List_zum - Property Caption</note>
           <target>Puesto de Trabajo</target>
         </trans-unit>
+        <trans-unit id="Page 2450567067 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate,Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Property PromotedActionCategories</note>
+          <target>Nuevo,Procesar,Informe,Información,Configuración</target>
+        </trans-unit>
         <trans-unit id="Page 2450567067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Request less 200</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solicitudes de Compra menos 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Property Caption</note>
           <target>Solicitudes de Compra menos 200</target>
+        </trans-unit>
+        <trans-unit id="Page 2450567067 - Action 3678749205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Purch. Order Request</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Solicitud Ped. Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Action PostedPurchaseRequest - Property Caption</note>
+          <target>Hist. Solicitud Ped. Compra</target>
         </trans-unit>
         <trans-unit id="Page 2450567067 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approve</source>
@@ -14758,6 +14782,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Envío Aprobación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Action SendApproval - Property Caption</note>
           <target>Envío Aprobación</target>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate,Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Property PromotedActionCategories</note>
+          <target>Nuevo,Procesar,Informe,Información,Configuración</target>
         </trans-unit>
         <trans-unit id="Page 3377437423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Request less 200</source>
@@ -31250,6 +31280,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action ContractsSupplies - Property Caption</note>
           <target>Contratos y Suministros</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1118725128 - Action 60984942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Purch. Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud Compra menos 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PurchaseRequest - Property Caption</note>
+          <target>Solicitud Compra menos 200</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3747018531 - Action 3646494304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
           <source>Bloqueos Basedatos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueos Basedatos"</note>
@@ -32670,6 +32706,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field Plastic Qty. (kg) - Property Caption</note>
           <target>Plástico (kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3135574534 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Purch. Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menos 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field Purch. Request less 200 - Property Caption</note>
+          <target>Solicitud de Compra menos 200</target>
         </trans-unit>
         <trans-unit id="TableExtension 3135574534 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
           <source>Plastic Recycled (kg)</source>
@@ -35537,6 +35579,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Modo transporte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Transport Method - Property Caption</note>
           <target>Modo transporte</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Method 1044311127 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
+          <source>La solicitud ya ha sido facturada en el documento %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La solicitud ya ha sido facturada en el documento %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblError</note>
+          <target>La solicitud ya ha sido facturada en el documento %1</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Method 1044311127 - NamedType 2908950305" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
+          <source>El importe %1 supera el máximo permitido por solicitud %2.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El importe %1 supera el máximo permitido por solicitud %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblMaxRequest</note>
+          <target>El importe %1 supera el máximo permitido por solicitud %2.</target>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 2557569786 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Amount Inc. VAT Subcontractor</source>

@@ -6,6 +6,10 @@ pageextension 50187 "PurchaseInvoice" extends "Purchase Invoice"
         movebefore("Document Date"; "Posting Date")
         addafter("Vendor Invoice No.")
         {
+            field("Purch. Request less 200"; "Purch. Request less 200")
+            {
+                ApplicationArea = all;
+            }
             field("CONSULTIA ID Factura"; "CONSULTIA ID Factura")
             {
                 ApplicationArea = all;

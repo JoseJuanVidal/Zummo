@@ -51,7 +51,13 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         {
             Caption = 'Purch. Request less 200', Comment = 'ESP="Solicitud de Compra menos 200"';
             DataClassification = CustomerContent;
-            TableRelation = "Purchase Requests less 200";
+            TableRelation = "Purchase Requests less 200" where("Vendor No." = field("Buy-from Vendor No."), Status = const(Approved), Invoiced = const(false));
+
+            trigger OnValidate()
+            begin
+                OnValidate_PurchRequest();
+            end;
+
         }
         field(50125; "CONSULTIA ID Factura"; Integer)
         {
@@ -88,4 +94,36 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         }
         //-  NORMATIVA MEDIO AMBIENTAL
     }
+
+    local procedure OnValidate_PurchRequest()
+    var
+        PurchaseSetup: Record "Purchases & Payables Setup";
+        PurchaseHeader: Record "Purchase Header";
+        PurchInvHeader: Record "Purch. Inv. Header";
+        ExistInvoiced: Boolean;
+        lblError: Label 'La solicitud ya ha sido facturada en el documento %1', comment = 'ESP="La solicitud ya ha sido facturada en el documento %1"';
+        lblMaxRequest: Label 'El importe %1 supera el máximo permitido por solicitud %2.', comment = 'ESP="El importe %1 supera el máximo permitido por solicitud %2."';
+    begin
+        PurchaseSetup.Get();
+        PurchaseHeader.Reset();
+        PurchaseHeader.SetRange("Document Type", Rec."Document Type");
+        PurchaseHeader.SetRange("Purch. Request less 200", Rec."Purch. Request less 200");
+        if PurchaseHeader.FindFirst() then
+            repeat
+                if PurchaseHeader."No." <> Rec."No." then
+                    Error(lblError, PurchaseHeader."No.");
+            Until PurchaseHeader.next() = 0;
+
+        PurchInvHeader.Reset();
+        PurchInvHeader.SetRange("Purch. Request less 200", Rec."Purch. Request less 200");
+        if PurchInvHeader.FindFirst() then
+            Error(lblError, PurchInvHeader."No.");
+
+        if PurchaseHeader.Get(Rec."Document Type", Rec."No.") then begin
+            PurchaseHeader.CalcFields(Amount);
+            if PurchaseHeader."Amount Including VAT" > PurchaseSetup."Maximum amount Request" then
+                Error(lblMaxRequest, PurchaseHeader."Amount Including VAT", PurchaseSetup."Maximum amount Request");
+        end;
+
+    end;
 }
