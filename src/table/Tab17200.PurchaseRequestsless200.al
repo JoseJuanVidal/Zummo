@@ -262,16 +262,13 @@ table 17200 "Purchase Requests less 200"
 
     local procedure CheckIsAssigned()
     var
-        PurchaseHeader: Record "Purchase Header";
+        PurchInvHeader: Record "Purch. Inv. Header";
         lblError: Label 'la factura %1 tiene la solicituda asignada', comment = 'ESP="la factura %1 tiene la solicituda asignada"';
     begin
-        Rec.CalcFields(Invoiced);
-        Rec.TestField(Invoiced, false);
-        PurchaseHeader.Reset();
-        PurchaseHeader.SetRange("Document Type", PurchaseHeader."Document Type"::Invoice);
-        PurchaseHeader.SetRange("Purch. Request less 200", Rec."No.");
-        if PurchaseHeader.FindFirst() then
-            Error(lblError, PurchaseHeader."No.");
+        PurchInvHeader.Reset();
+        PurchInvHeader.SetRange("Purch. Request less 200", Rec."No.");
+        if PurchInvHeader.FindFirst() then
+            Error(lblError, PurchInvHeader."No.");
     end;
 
     procedure SendApproval()

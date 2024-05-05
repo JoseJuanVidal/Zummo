@@ -104,6 +104,10 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         lblError: Label 'La solicitud ya ha sido facturada en el documento %1', comment = 'ESP="La solicitud ya ha sido facturada en el documento %1"';
         lblMaxRequest: Label 'El importe %1 supera el máximo permitido por solicitud %2.', comment = 'ESP="El importe %1 supera el máximo permitido por solicitud %2."';
     begin
+        if Rec."Purch. Request less 200" = xRec."Purch. Request less 200" then
+            exit;
+        if Rec."Purch. Request less 200" = '' then
+            exit;
         PurchaseSetup.Get();
         PurchaseHeader.Reset();
         PurchaseHeader.SetRange("Document Type", Rec."Document Type");

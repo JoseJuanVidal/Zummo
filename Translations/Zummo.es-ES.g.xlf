@@ -5271,6 +5271,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblVendorNo</note>
           <target>&lt;p&gt;&lt;strong&gt;C&amp;oacute;d. Proveedor:&lt;/strong&gt; %1&lt;/p&gt;</target>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - Method 2594785376 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>la factura %1 tiene la solicituda asignada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="la factura %1 tiene la solicituda asignada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Method CheckIsAssigned - NamedType lblError</note>
+          <target>la factura %1 tiene la solicituda asignada</target>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - Method 3619262949 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>No existen emplados configurados para aprobacion de Solicitudes de compra.\Hable con Administración del sistemaB</source>
           <note from="Developer" annotates="general" priority="2">ESP="No existen emplados configurados para aprobacion de Solicitudes de compra.\Hable con Administración del sistema"</note>
@@ -10387,6 +10393,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CU_Cron - Method OnRun - NamedType lbNoParametroErr</note>
           <target>Parámetro Desconocido</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 684513984 - NamedType 2415064240" size-unit="char" translate="yes" xml:space="preserve">
+          <source>La solicitud de compra %1 tiene un importe de %1 y no coincide.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La solicitud de compra %1 tiene un importe de %1 y no coincide."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method CU_90_OnBeforePostPurchaseDoc - NamedType lblPurchRequestless200</note>
+          <target>La solicitud de compra %1 tiene un importe de %1 y no coincide.</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 684513984 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>La solicitud ya ha sido facturada en el documento %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La solicitud ya ha sido facturada en el documento %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method CU_90_OnBeforePostPurchaseDoc - NamedType lblError</note>
+          <target>La solicitud ya ha sido facturada en el documento %1</target>
         </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 1298797416 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>La fecha de registro es %1, no está dentro del periodo.\¿Desea cambiar por la fecha de hoy y continuar?</source>

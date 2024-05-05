@@ -513,6 +513,10 @@ codeunit 50101 "Eventos_btc"
     local procedure CU_90_OnBeforePostPurchaseDoc(VAR Sender: Codeunit "Purch.-Post"; VAR PurchaseHeader: Record "Purchase Header"; PreviewMode: Boolean; CommitIsSupressed: Boolean)
     var
         GeneralLedgerSetup: Record "General Ledger Setup";
+        PurchInvHeader: Record "Purch. Inv. Header";
+        PurchaseRequestsless200: Record "Purchase Requests less 200";
+        lblPurchRequestless200: Label 'La solicitud de compra %1 tiene un importe de %2 y no coincide.', comment = 'ESP="La solicitud de compra %1 tiene un importe de %2 y no coincide."';
+        lblError: Label 'La solicitud ya ha sido facturada en el documento %1', comment = 'ESP="La solicitud ya ha sido facturada en el documento %1"';
     begin
         if PurchaseHeader.IsTemporary then
             exit;
@@ -533,17 +537,40 @@ codeunit 50101 "Eventos_btc"
                     if PurchaseHeader.Receive then
                         PlasticWarningReceiveIntracomunitaire(PurchaseHeader);
                 end;
-
+            PurchaseHeader."Document Type"::Invoice:
+                begin
+                    // controlamos si tiene asignada una solicitud de compra
+                    // si coincide el importe y si ya está facturada
+                    if PurchaseHeader.Invoice then begin
+                        if PurchaseHeader."Purch. Request less 200" <> '' then begin
+                            PurchaseHeader.CalcFields("Amount Including VAT");
+                            PurchaseRequestsless200.Reset();
+                            if PurchaseRequestsless200.Get(PurchaseHeader."Purch. Request less 200") then begin
+                                PurchaseRequestsless200.TestField(Status, PurchaseRequestsless200.Status::Approved);
+                                if PurchaseHeader."Amount Including VAT" <> PurchaseRequestsless200.Amount then
+                                    Error(lblPurchRequestless200, PurchaseRequestsless200."No.", PurchaseRequestsless200.Amount);
+                            end;
+                            PurchInvHeader.Reset();
+                            PurchInvHeader.SetRange("Purch. Request less 200", PurchaseHeader."Purch. Request less 200");
+                            if PurchInvHeader.FindFirst() then
+                                Error(lblError, PurchInvHeader."No.");
+                        end;
+                    end;
+                end;
         end;
     end;
 
     local procedure PlasticWarningReceiveIntracomunitaire(PurchaseHeader: Record "Purchase Header")
     var
-        PurchSetup: Record "Purchases & Payables Setup";
-        Country: Record "Country/Region";
-        lblConfirm: Label 'The purchase order is %1 of the European Union, no quantity of plastic has been indicated at reception.\¿Do you wish to continue?',
+        PurchSetup:
+            Record "Purchases & Payables Setup";
+        Country:
+                Record "Country/Region";
+        lblConfirm:
+                Label 'The purchase order is %1 of the European Union, no quantity of plastic has been indicated at reception.\¿Do you wish to continue?',
             comment = 'ESP="El Pedido de compra es de %1 de la Union Europea, no se ha indicado cantidad de plastico en la recepción.\¿Desea continuar?"';
-        lblError: Label 'Registration cancelled by the user', comment = 'ESP="Registro anulado por el usuario"';
+        lblError:
+                Label 'Registration cancelled by the user', comment = 'ESP="Registro anulado por el usuario"';
     begin
         // controlamos si existe un Warning por la normativa del plastico, y si es intracomunitario mostramos mensaje
         PurchSetup.Get();
