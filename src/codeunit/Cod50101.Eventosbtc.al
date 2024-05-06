@@ -545,11 +545,13 @@ codeunit 50101 "Eventos_btc"
                         if PurchaseHeader."Purch. Request less 200" <> '' then begin
                             PurchaseHeader.CalcFields("Amount Including VAT");
                             PurchaseRequestsless200.Reset();
-                            if PurchaseRequestsless200.Get(PurchaseHeader."Purch. Request less 200") then begin
-                                PurchaseRequestsless200.TestField(Status, PurchaseRequestsless200.Status::Approved);
-                                if PurchaseHeader."Amount Including VAT" <> PurchaseRequestsless200.Amount then
-                                    Error(lblPurchRequestless200, PurchaseRequestsless200."No.", PurchaseRequestsless200.Amount);
-                            end;
+                            PurchaseRequestsless200.Get(PurchaseHeader."Purch. Request less 200");
+                            PurchaseRequestsless200.TestField(Status, PurchaseRequestsless200.Status::Approved);
+                            if PurchaseRequestsless200."Vendor No." <> '' then
+                                PurchaseRequestsless200.TestField("Vendor No.", PurchaseHeader."Buy-from Vendor No.");
+                            if PurchaseHeader."Amount Including VAT" <> PurchaseRequestsless200.Amount then
+                                Error(lblPurchRequestless200, PurchaseRequestsless200."No.", PurchaseRequestsless200.Amount);
+
                             PurchInvHeader.Reset();
                             PurchInvHeader.SetRange("Purch. Request less 200", PurchaseHeader."Purch. Request less 200");
                             if PurchInvHeader.FindFirst() then

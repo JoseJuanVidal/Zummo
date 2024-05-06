@@ -51,7 +51,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         {
             Caption = 'Purch. Request less 200', Comment = 'ESP="Solicitud de Compra menos 200"';
             DataClassification = CustomerContent;
-            TableRelation = "Purchase Requests less 200" where("Vendor No." = field("Buy-from Vendor No."), Status = const(Approved), Invoiced = const(false));
+            TableRelation = "Purchase Requests less 200" where(Status = const(Approved), Invoiced = const(false));
 
             trigger OnValidate()
             begin
@@ -100,14 +100,20 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         PurchaseSetup: Record "Purchases & Payables Setup";
         PurchaseHeader: Record "Purchase Header";
         PurchInvHeader: Record "Purch. Inv. Header";
+        PurchaseRequest: Record "Purchase Requests less 200";
         ExistInvoiced: Boolean;
         lblError: Label 'La solicitud ya ha sido facturada en el documento %1', comment = 'ESP="La solicitud ya ha sido facturada en el documento %1"';
         lblMaxRequest: Label 'El importe %1 supera el máximo permitido por solicitud %2.', comment = 'ESP="El importe %1 supera el máximo permitido por solicitud %2."';
     begin
+        PurchaseRequest.Get(Rec."Purch. Request less 200");
         if Rec."Purch. Request less 200" = xRec."Purch. Request less 200" then
             exit;
-        if Rec."Purch. Request less 200" = '' then
+        if Rec."Purch. Request less 200" = '' then begin
             exit;
+        end;
+
+        if (PurchaseRequest."Vendor No." <> '') then
+            PurchaseRequest.TestField("Vendor No.", Rec."Buy-from Vendor No.");
         PurchaseSetup.Get();
         PurchaseHeader.Reset();
         PurchaseHeader.SetRange("Document Type", Rec."Document Type");

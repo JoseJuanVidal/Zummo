@@ -128,7 +128,8 @@ table 17200 "Purchase Requests less 200"
 
     fieldgroups
     {
-        // Add changes to field groups here
+        fieldgroup(DropDown; "No.", "Vendor Name", Description, Amount) { }
+        fieldgroup(Brick; "No.", "Vendor Name", Description, Amount) { }
     }
 
     var
@@ -187,7 +188,9 @@ table 17200 "Purchase Requests less 200"
 
     trigger OnDelete()
     begin
-
+        // controlamos que no este invoiced
+        Rec.CalcFields(Invoiced);
+        Rec.TestField(Invoiced, false);
     end;
 
     trigger OnRename()
@@ -206,7 +209,6 @@ table 17200 "Purchase Requests less 200"
 
     local procedure OnValidate_VendorNo()
     begin
-        TestApproved();
         Vendor.Reset();
         Vendor.Get(Rec."Vendor No.");
         if Vendor.Blocked in [Vendor.Blocked::All] then
