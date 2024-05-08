@@ -10395,10 +10395,10 @@
           <target>Parámetro Desconocido</target>
         </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 684513984 - NamedType 2415064240" size-unit="char" translate="yes" xml:space="preserve">
-          <source>La solicitud de compra %1 tiene un importe de %1 y no coincide.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="La solicitud de compra %1 tiene un importe de %1 y no coincide."</note>
+          <source>La solicitud de compra %1 tiene un importe de %2 y no coincide.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La solicitud de compra %1 tiene un importe de %2 y no coincide."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method CU_90_OnBeforePostPurchaseDoc - NamedType lblPurchRequestless200</note>
-          <target>La solicitud de compra %1 tiene un importe de %1 y no coincide.</target>
+          <target>La solicitud de compra %1 tiene un importe de %2 y no coincide.</target>
         </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 684513984 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>La solicitud ya ha sido facturada en el documento %1</source>
@@ -31291,6 +31291,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PostedSalesShipmentLinesAction - Property Caption</note>
           <target>Hist. líns. albs. venta</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1118725128 - Action 1575465679 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Purchase Order Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="líns. Ped. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PurchaseLine - Property Caption</note>
+          <target>líns. Ped. compra</target>
         </trans-unit>
         <trans-unit id="PageExtension 1118725128 - Action 278778952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Contracts and Supplies</source>

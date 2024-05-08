@@ -2012,7 +2012,7 @@ codeunit 50106 "SalesEvents"
         ItemClasificacion.SetRange(TipoTabla, ItemClasificacion.TipoTabla::ClasificacionVentas);
         ItemClasificacion.SetRange(TipoRegistro, ItemClasificacion.TipoRegistro::Tabla);
         ItemClasificacion.SetRange(NumReg, Item.selClasVtas_btc);
-        if not ItemClasificacion.FindFirst() then begin
+        if ItemClasificacion.FindFirst() then
             if (ItemClasificacion."Discount Type" in [ItemClasificacion."Discount Type"::" "]) then begin
                 ItemClasificacion.SetRange(TipoTabla, ItemClasificacion.TipoTabla::Familia);
                 ItemClasificacion.SetRange(TipoRegistro, ItemClasificacion.TipoRegistro::Tabla);
@@ -2020,7 +2020,6 @@ codeunit 50106 "SalesEvents"
                 if not ItemClasificacion.FindFirst() then
                     exit;
             end;
-        end;
         if (ItemClasificacion."Discount Type" in [ItemClasificacion."Discount Type"::" "]) then
             exit;
 

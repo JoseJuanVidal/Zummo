@@ -28618,6 +28618,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. albs. venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PostedSalesShipmentLinesAction - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1118725128 - Action 1575465679 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Purchase Order Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="líns. Ped. compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PurchaseLine - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1118725128 - Action 278778952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Contracts and Supplies</source>
           <note from="Developer" annotates="general" priority="2">ESP="Contratos y Suministros"</note>

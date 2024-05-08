@@ -29,6 +29,13 @@ pageextension 50078 "ZM Purchasing Agent Role" extends "Purchasing Agent Role Ce
                 // sRunPageView = where("Qty. Rcd. Not Invoiced" = filter(<> 0));
                 Image = PostedOrder;
             }
+            action(PurchaseLine)
+            {
+                Caption = 'Purchase Order Lines', comment = 'ESP="líns. Ped. compra"';
+                RunObject = page "Purchase Lines";
+                RunPageView = where("Document Type" = const(Order));
+                Image = OrderList;
+            }
         }
         addafter("Blanket Purchase Orders")
         {
