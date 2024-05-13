@@ -17786,10 +17786,10 @@
           <target>Fecha</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 2570386175" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.02_C8.01_V01</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.02_C8.01_V01"</note>
+          <source>FO.02_C8.01_V02</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.02_C8.01_V02"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType FO01_Lbl</note>
-          <target>FO.02_C8.01_V01</target>
+          <target>FO.02_C8.01_V02</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms</source>
@@ -18697,10 +18697,10 @@
           <target>Fecha</target>
         </trans-unit>
         <trans-unit id="Report 1166120471 - NamedType 2570386175" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.02_C8.01_V01</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.02_C8.01_V01"</note>
+          <source>FO.02_C8.01_V02</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.02_C8.01_V02"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaUKRegistrado - NamedType FO01_Lbl</note>
-          <target>FO.02_C8.01_V01</target>
+          <target>FO.02_C8.01_V02</target>
         </trans-unit>
         <trans-unit id="Report 1166120471 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms</source>
@@ -19674,16 +19674,16 @@
           <target>Fecha</target>
         </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 2570386175" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.03_C8.01_V13</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.03_C8.01_V13"</note>
+          <source>FO.03_C8.01_V14</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.03_C8.01_V14"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType FO01_Lbl</note>
-          <target>FO.03_C8.01_V13</target>
+          <target>FO.03_C8.01_V14</target>
         </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 4193045946" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.04_C8.01_V02</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.04_C8.01_V02"</note>
+          <source>FO.04_C8.01_V03</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.04_C8.01_V03"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType FO02_Lbl</note>
-          <target>FO.04_C8.01_V02</target>
+          <target>FO.04_C8.01_V03</target>
         </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 973567044" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dimensiones cabecera</source>
@@ -22313,10 +22313,10 @@
           <target>Fecha</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 2570386175" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.01_C8.01_V12</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.01_C8.01_V12"</note>
+          <source>FO.01_C8.01_V13</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.01_C8.01_V13"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType FO01_Lbl</note>
-          <target>FO.01_C8.01_V12</target>
+          <target>FO.01_C8.01_V13</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms</source>
@@ -26401,10 +26401,10 @@
           <target>Descuento factura:</target>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 870948665" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.04_C4.01_V14</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.04_C4.01_V14"</note>
+          <source>5O.04_C4.01_V14</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.04_C4.01_V15"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType ISOLbl</note>
-          <target>FO.04_C4.01_V14</target>
+          <target>FO.04_C4.01_V15</target>
         </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 3392267841" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -26970,22 +26970,22 @@
           <target>F.Entrega</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2570386175" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.04_C3.02_V15</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.04_C3.02_V15"</note>
+          <source>FO.04_C3.02_V16</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.04_C3.02_V16"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType FO01_Lbl</note>
-          <target>FO.04_C3.02_V15</target>
+          <target>FO.04_C3.02_V16</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 4193045946" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.03_C3.02_V13</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.03_C3.02_V13"</note>
+          <source>FO.03_C3.02_V14</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.03_C3.02_V14"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType FO02_Lbl</note>
-          <target>FO.03_C3.02_V13</target>
+          <target>FO.03_C3.02_V14</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2224238513" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.03_C3.02_V13</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.03_C3.02_V13"</note>
+          <source>FO.03_C3.02_V14</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.03_C3.02_V14"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType FO03_Lbl</note>
-          <target>FO.03_C3.02_V13</target>
+          <target>FO.03_C3.02_V14</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 13422290" size-unit="char" translate="yes" xml:space="preserve">
           <source>Giro No.</source>
@@ -27505,7 +27505,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType HdrDimensionsCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 4049458315 - NamedType 870948665" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.05_C3.02_V01</source>
+          <source>FO.05_C3.02_V02</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType ISOLbl</note>
         </trans-unit>

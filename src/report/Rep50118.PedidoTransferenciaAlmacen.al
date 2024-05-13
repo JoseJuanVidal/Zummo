@@ -529,7 +529,7 @@ report 50118 "PedidoTransferenciaAlmacen"
         LineDimensionsCaptionLbl: Label 'Dimensiones Línea';
         PurchOrderCaptionLbl: Label 'PEDIDO TRANSFERENCIA';
         PRCOMPRASLbl: Label 'PR-COMPRAS';
-        ISOLbl: Label 'FO.05_C3.02_V01';
+        ISOLbl: Label 'FO.05_C3.02_V02';
         PediProveeedorLbl: Label 'Nota de Entrega';
         DesdeLbl: Label 'Desde';
         HastaLbl: Label 'Hasta';

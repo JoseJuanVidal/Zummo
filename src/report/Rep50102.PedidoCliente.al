@@ -2153,9 +2153,9 @@ report 50102 "PedidoCliente"
         PRGestionPedidosCliente_Lbl: Label 'PR-MANAGEMENT OF CUSTOMER ORDERS', comment = 'ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"';
 
         FO01_txt: Text;
-        FO01_Lbl: Label 'FO.04_C3.02_V15', comment = 'ESP="FO.04_C3.02_V15"';//PEDIDO
-        FO02_Lbl: Label 'FO.03_C3.02_V13', comment = 'ESP="FO.03_C3.02_V13"';//OFERTA
-        FO03_Lbl: Label 'FO.03_C3.02_V13', comment = 'ESP="FO.03_C3.02_V13"'; //PROFORMA
+        FO01_Lbl: Label 'FO.04_C3.02_V16', comment = 'ESP="FO.04_C3.02_V16"';//PEDIDO
+        FO02_Lbl: Label 'FO.03_C3.02_V14', comment = 'ESP="FO.03_C3.02_V14"';//OFERTA
+        FO03_Lbl: Label 'FO.03_C3.02_V14', comment = 'ESP="FO.03_C3.02_V14"'; //PROFORMA
 
         Fecha_Lbl: Label 'Date', comment = 'ESP="Fecha",FRA="Date"';
         PedidoNo_Lbl: Label 'ORDER Nº', Comment = 'ESP="PEDIDO Nº",FRA="NUMÉRO D ORDRE"';

@@ -985,8 +985,8 @@ report 50103 "AlbaranVenta"
         Packing_Lbl: Label 'PACKING LIST', comment = 'ESP="PACKING LIST"';
         PRGestion_Lbl: Label 'PR-GESTION DE LOS PEDIDOS DE CLIENTE', Comment = '';
         FO01_Txt: text;
-        FO01_Lbl: Label 'FO.03_C8.01_V13', Comment = 'ESP="FO.03_C8.01_V13"';  // ALBARAN
-        FO02_Lbl: Label 'FO.04_C8.01_V02', Comment = 'ESP="FO.04_C8.01_V02"';  // PACKING LIST
+        FO01_Lbl: Label 'FO.03_C8.01_V14', Comment = 'ESP="FO.03_C8.01_V14"';  // ALBARAN
+        FO02_Lbl: Label 'FO.04_C8.01_V03', Comment = 'ESP="FO.04_C8.01_V03"';  // PACKING LIST
         pesoHeader: Label 'Weight(kg)', comment = 'ESP="Peso(kg)"';
         Fecha_Lbl: Label 'Date', Comment = 'ESP="Fecha"';
         Numero_Lbl: Label 'Number', Comment = 'ESP="Número"';

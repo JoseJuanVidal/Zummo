@@ -480,7 +480,7 @@ report 50129 "PedidoTransferenciaRegistrado"
         LineDimensionsCaptionLbl: Label 'Dimensiones Línea';
         PurchOrderCaptionLbl: Label 'NOTA ENTREGA';
         PRCOMPRASLbl: Label 'PR-TRANSFER';
-        ISOLbl: Label 'FO.05_C8.01_V01';
+        ISOLbl: Label 'FO.05_C8.01_V02';
         PediProveeedorLbl: Label 'Nota de Entrega';
         DesdeLbl: Label 'Desde';
         HastaLbl: Label 'Hasta';
