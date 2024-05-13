@@ -93,6 +93,11 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
             Caption = 'Es Mto. Garantia', comment = 'ESP="Es Mto. Garantia"';
             Editable = false;
         }
-
+        field(50211; Fechaemtregamaterial_sth; DateTime)
+        {
+            Caption = 'Fecha entrega material', comment = 'ESP="Fecha resolución en cliente"';
+            FieldClass = FlowField;
+            CalcFormula = min("Service Item Line".Fechaemtregamaterial_sth where("Document Type" = field("Document Type"), "Document No." = field("No.")));
+        }
     }
 }

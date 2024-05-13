@@ -34526,6 +34526,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field ComentarioAlmacen_btc - Property Caption</note>
           <target>Comentario almacén</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2479720606 - Field 3181730233 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
+          <source>Fecha entrega material</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha resolución en cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field Fechaemtregamaterial_sth - Property Caption</note>
+          <target>Fecha resolución en cliente</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 2439223842 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Es Mto. Garantia</source>
           <note from="Developer" annotates="general" priority="2">ESP="Es Mto. Garantia"</note>

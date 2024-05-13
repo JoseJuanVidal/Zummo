@@ -45,7 +45,10 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
             field("Cerrado en plataforma"; "Cerrado en plataforma") { }
 
             field("Solicitado a Técnico"; "Solicitado a Técnico") { }
-
+            field(Fechaemtregamaterial_sth; Fechaemtregamaterial_sth)
+            {
+                Visible = false;
+            }
 
 
         }
