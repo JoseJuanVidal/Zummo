@@ -10856,7 +10856,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType HdrDimensionsCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 3170430146 - NamedType 870948665" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.05_C8.01_V01</source>
+          <source>FO.05_C8.01_V02</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType ISOLbl</note>
         </trans-unit>
