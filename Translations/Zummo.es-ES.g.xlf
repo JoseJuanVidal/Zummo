@@ -5183,9 +5183,9 @@
         </trans-unit>
         <trans-unit id="Table 3365585894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Requests less 200</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Solicitudes de Compra menos 200"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Property Caption</note>
-          <target>Solicitudes de Compra menos 200</target>
+          <target>Compra menor 200</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 855763010" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;p&gt;&lt;strong&gt;Importe:&lt;/strong&gt; %1 &amp;euro;&lt;/p&gt;</source>
@@ -14773,9 +14773,9 @@
         </trans-unit>
         <trans-unit id="Page 2450567067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Request less 200</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Solicitudes de Compra menos 200"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Property Caption</note>
-          <target>Solicitudes de Compra menos 200</target>
+          <target>Compra menor 200</target>
         </trans-unit>
         <trans-unit id="Page 2450567067 - Action 3678749205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Purch. Order Request</source>
@@ -14809,9 +14809,9 @@
         </trans-unit>
         <trans-unit id="Page 3377437423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Request less 200</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menos 200"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Property Caption</note>
-          <target>Solicitud de Compra menos 200</target>
+          <target>Compra menor 200</target>
         </trans-unit>
         <trans-unit id="Page 3377437423 - Control 503024588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comments</source>
@@ -31305,10 +31305,10 @@
           <target>Contratos y Suministros</target>
         </trans-unit>
         <trans-unit id="PageExtension 1118725128 - Action 60984942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
-          <source>Purch. Request less 200</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Solicitud Compra menos 200"</note>
+          <source>Purch. less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PurchaseRequest - Property Caption</note>
-          <target>Solicitud Compra menos 200</target>
+          <target>Compra menor 200</target>
         </trans-unit>
         <trans-unit id="PageExtension 3747018531 - Action 3646494304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
           <source>Bloqueos Basedatos</source>
@@ -32524,9 +32524,9 @@
         </trans-unit>
         <trans-unit id="TableExtension 1052755578 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
           <source>Purch. Request less 200</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menos 200"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field Purch. Request less 200 - Property Caption</note>
-          <target>Solicitud de Compra menos 200</target>
+          <target>Compra menor 200</target>
         </trans-unit>
         <trans-unit id="TableExtension 1052755578 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
           <source>Plastic Recycled (kg)</source>
@@ -32733,9 +32733,9 @@
         </trans-unit>
         <trans-unit id="TableExtension 3135574534 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
           <source>Purch. Request less 200</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menos 200"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field Purch. Request less 200 - Property Caption</note>
-          <target>Solicitud de Compra menos 200</target>
+          <target>Compra menor 200</target>
         </trans-unit>
         <trans-unit id="TableExtension 3135574534 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
           <source>Plastic Recycled (kg)</source>
@@ -35678,9 +35678,9 @@
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Purch. Request less 200</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menos 200"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Purch. Request less 200 - Property Caption</note>
-          <target>Solicitud de Compra menos 200</target>
+          <target>Compra menor 200</target>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Plastic Recycled (kg)</source>

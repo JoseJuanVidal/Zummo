@@ -1,7 +1,7 @@
 table 17200 "Purchase Requests less 200"
 {
     DataClassification = CustomerContent;
-    Caption = 'Purchase Requests less 200', comment = 'ESP="Solicitudes de Compra menos 200"';
+    Caption = 'Purchase Requests less 200', comment = 'ESP="Compra menor 200"';
     DrillDownPageId = "Purchase Request less 200";
     LookupPageId = "Purchase Request less 200";
 

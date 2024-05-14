@@ -24,7 +24,7 @@ tableextension 50199 "Purch. Rcpt. Header" extends "Purch. Rcpt. Header"  //120
         }
         field(50120; "Purch. Request less 200"; code[20])
         {
-            Caption = 'Purch. Request less 200', Comment = 'ESP="Solicitud de Compra menos 200"';
+            Caption = 'Purch. Request less 200', Comment = 'ESP="Compra menor 200"';
             DataClassification = CustomerContent;
             TableRelation = "Purchase Requests less 200";
         }

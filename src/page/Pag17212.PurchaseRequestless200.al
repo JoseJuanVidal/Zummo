@@ -1,7 +1,7 @@
 page 17212 "Purchase Request less 200"
 {
     ApplicationArea = All;
-    Caption = 'Purchase Request less 200', Comment = 'ESP="Solicitudes de Compra menos 200"';
+    Caption = 'Purchase Request less 200', Comment = 'ESP="Compra menor 200"';
     PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     PageType = List;
     SourceTable = "Purchase Requests less 200";

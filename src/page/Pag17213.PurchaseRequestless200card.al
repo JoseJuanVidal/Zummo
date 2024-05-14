@@ -1,6 +1,6 @@
 page 17213 "Purchase Request less 200 Card"
 {
-    Caption = 'Purchase Request less 200', Comment = 'ESP="Solicitud de Compra menos 200"';
+    Caption = 'Purchase Request less 200', Comment = 'ESP="Compra menor 200"';
     PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     PageType = Card;
     SourceTable = "Purchase Requests less 200";
