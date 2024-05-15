@@ -528,7 +528,7 @@ report 50118 "PedidoTransferenciaAlmacen"
         HdrDimensionsCaptionLbl: Label 'Dimensiones Cabecera';
         LineDimensionsCaptionLbl: Label 'Dimensiones Línea';
         PurchOrderCaptionLbl: Label 'PEDIDO TRANSFERENCIA';
-        PRCOMPRASLbl: Label 'PR-COMPRAS';
+        PRCOMPRASLbl: Label 'PR-GESTION DE PEDIDOS DE CLIENTES';
         ISOLbl: Label 'FO.05_C3.02_V02';
         PediProveeedorLbl: Label 'Nota de Entrega';
         DesdeLbl: Label 'Desde';

@@ -68,12 +68,18 @@ table 17200 "Purchase Requests less 200"
         field(50; Amount; decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Amount', comment = 'ESP="Importe"';
+            Caption = 'Amount Excluding VAT', comment = 'ESP="Importe SIN IVA"';
 
             trigger OnValidate()
             begin
                 OnValidate_Amount();
             end;
+        }
+        field(55; "Currency Code"; code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Currency Code', comment = 'ESP="Cód. Divisa"';
+            TableRelation = Currency;
         }
         field(60; "Posting Date"; date)
         {
@@ -143,8 +149,8 @@ table 17200 "Purchase Requests less 200"
             comment = 'ESP="El importe de la solicitud %1 es mayor que el máximo permitido %2."';
         lblConfirm: Label '¿Do you wish to send the Approval of Purchase request %1 for an amount of %2?',
             comment = 'ESP="¿Desea enviar la Aprobación de la solicitud de compra %1 por un importe de %2?"';
-        lblSubject: Label 'Solicitud de Compra mas de 200 € %1'
-            , comment = 'ESP="Solicitud de Compra mas de 200 € %1"';
+        lblSubject: Label 'Solicitud de Compra menor de 200 € %1'
+            , comment = 'ESP="Solicitud de Compra menor de 200 € %1"';
         lblTitle: Label '<p><strong>Solicitud de Compra mas de 200&euro; %1</strong></p>'
             , comment = 'ESP="<p><strong>Solicitud de Compra mas de 200&euro; %1</strong></p>"';
         lblUser: Label '<p><strong>Usuario:</strong> %1</p>'
@@ -278,7 +284,7 @@ table 17200 "Purchase Requests less 200"
         myInt: Integer;
     begin
         // comprobamos si ya se ha enviado, o se vuelve a enviar
-        Rec.TestField("Vendor No.");
+        // Rec.TestField("Vendor No.");
         Rec.TestField(Description);
         Rec.TestField(Amount);
         if not Confirm(lblConfirm, false, Rec."No.", Rec.Amount) then
@@ -288,13 +294,16 @@ table 17200 "Purchase Requests less 200"
         Message('Enviado');
     end;
 
-    local procedure SendEmailApproval()
+    procedure SendEmailApproval()
     var
+        DocAttachment: Record "Document Attachment";
+        FileManagement: Codeunit "File Management";
         SMTPSetup: Record "SMTP Mail Setup";
         cduSmtp: Codeunit "SMTP Mail";
         txtAsunto: Text;
         Recipients: text;
         textoHtml: Text;
+        FilePathName: text;
     begin
         textoHtml := GetHTLMResumen();
         Recipients := GetRecipientsEmailRequest();
@@ -302,6 +311,15 @@ table 17200 "Purchase Requests less 200"
         SMTPSetup.Get();
         Clear(cduSmtp);
         cduSmtp.CreateMessage(CompanyName, SMTPSetup."User ID", Recipients, txtAsunto, textoHtml, TRUE);
+        DocAttachment.Reset();
+        DocAttachment.SetRange("Table ID", 17200);
+        if DocAttachment.FindFirst() then
+            repeat
+                FilePathName := FileManagement.ServerTempFileName(DocAttachment."File Extension");
+                DocAttachment."Document Reference ID".ExportFile(FilePathName);
+                cduSmtp.AddAttachment(FilePathName, DocAttachment."File Name");
+            Until DocAttachment.next() = 0;
+
         cduSmtp.Send();
 
         //cambiamos el estado pendiente, para saber que se ha enviado la aprobacion

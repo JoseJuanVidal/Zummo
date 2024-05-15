@@ -1071,7 +1071,7 @@ report 50104 "PackingList"
         numPalets: Decimal;
         numBultos: Decimal;
         FO01_Lbl: Label 'FO.04_C8.01_V03', Comment = 'ESP="FO.04_C8.01_V03"';
-        PRGestion_Lbl: Label 'PR-GESTION DE LOS PEDIDOS DE CLIENTE', Comment = 'ESP="PR-GESTION DE LOS PEDIDOS DE CLIENTE"';
+        PRGestion_Lbl: Label 'PR-ORDER EXPEDITING', Comment = 'ESP="PR-EXPEDICION DE PEDIDOS"';
         NoSerie_Lbl: Label 'Serial No.', Comment = 'ESP="Nº de Serie:",FRA="Numéro de série."';
         EsFrancia: Boolean;
         lblRAEES: Text;

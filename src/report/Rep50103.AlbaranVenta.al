@@ -983,7 +983,7 @@ report 50103 "AlbaranVenta"
         //Captions
         Albaran_Lbl: Label 'SHIPMENT', Comment = 'ESP="ALBARÁN"';
         Packing_Lbl: Label 'PACKING LIST', comment = 'ESP="PACKING LIST"';
-        PRGestion_Lbl: Label 'PR-GESTION DE LOS PEDIDOS DE CLIENTE', Comment = '';
+        PRGestion_Lbl: Label 'PR-ORDER EXPEDITING', Comment = 'ESP="PR-EXPEDICION DE PEDIDOS"';
         FO01_Txt: text;
         FO01_Lbl: Label 'FO.03_C8.01_V14', Comment = 'ESP="FO.03_C8.01_V14"';  // ALBARAN
         FO02_Lbl: Label 'FO.04_C8.01_V03', Comment = 'ESP="FO.04_C8.01_V03"';  // PACKING LIST

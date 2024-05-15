@@ -8189,11 +8189,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType CuadroBultos_VolumenLbl</note>
           <target>Volume(m3):</target>
         </trans-unit>
-        <trans-unit id="Report 1882765205 - NamedType 2894269558" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-GESTION DE LOS PEDIDOS DE CLIENTE</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType PRGestion_Lbl</note>
-        </trans-unit>
         <trans-unit id="Report 2256082958 - Control 1211933382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Opciones</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -10747,7 +10742,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType PediProveeedorLbl</note>
         </trans-unit>
         <trans-unit id="Report 4049458315 - NamedType 1666753347" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-COMPRAS</source>
+          <source>PR-GESTION DE PEDIDOS DE CLIENTES</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType PRCOMPRASLbl</note>
         </trans-unit>
@@ -10869,11 +10864,6 @@
           <source>Nota de Entrega</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType PediProveeedorLbl</note>
-        </trans-unit>
-        <trans-unit id="Report 3170430146 - NamedType 1666753347" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-TRANSFER</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType PRCOMPRASLbl</note>
         </trans-unit>
         <trans-unit id="Report 3170430146 - NamedType 1517777218" size-unit="char" translate="yes" xml:space="preserve">
           <source>NOTA ENTREGA</source>

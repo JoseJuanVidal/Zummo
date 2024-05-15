@@ -479,7 +479,7 @@ report 50129 "PedidoTransferenciaRegistrado"
         HdrDimensionsCaptionLbl: Label 'Dimensiones Cabecera';
         LineDimensionsCaptionLbl: Label 'Dimensiones Línea';
         PurchOrderCaptionLbl: Label 'NOTA ENTREGA';
-        PRCOMPRASLbl: Label 'PR-TRANSFER';
+        PRCOMPRASLbl: Label 'PR-ORDER EXPEDITING', Comment = 'ESP="PR-EXPEDICION DE PEDIDOS"';
         ISOLbl: Label 'FO.05_C8.01_V02';
         PediProveeedorLbl: Label 'Nota de Entrega';
         DesdeLbl: Label 'Desde';

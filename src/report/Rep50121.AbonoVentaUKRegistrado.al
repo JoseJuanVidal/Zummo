@@ -2166,7 +2166,7 @@ report 50121 "AbonoVentaUKRegistrado"
         Articulo_Lbl: Label 'Item', Comment = 'ESP="Artículo",FRA="Article"';
         Cantidad_Lbl: Label 'Quantity', comment = 'ESP="Cantidad",FRA="Quantité"';
         Decripcion_Lbl: Label 'Description', comment = 'ESP="Descripción",FRA="Description"';
-        PRGestionPedidosCliente_Lbl: Label 'PR-MANAGEMENT OF CUSTOMER ORDERS', Comment = 'ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"';
+        PRGestionPedidosCliente_Lbl: Label 'PR-ORDER EXPEDITING', Comment = 'ESP="PR-EXPEDICION DE PEDIDOS"';
         FO01_Lbl: Label 'FO.02_C8.01_V02', Comment = 'ESP="FO.02_C8.01_V02"';
         Comentarios_Lbl: Label 'Remark', Comment = 'ESP="Comentarios",FRA="Commentaires"';
         DireccionDeEnvio_Lbl: Label 'Delivery Address', Comment = 'ESP="Dirección de envío",FRA="Adresse d´expédition"';

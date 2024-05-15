@@ -2537,7 +2537,7 @@ report 50111 "FacturaNacionalMaquinas"
         Articulo_Lbl: Label 'Item', Comment = 'ESP="Artículo",FRA="Article"';
         Cantidad_Lbl: Label 'Quantity', comment = 'ESP="Cantidad",FRA="Quantité"';
         Decripcion_Lbl: Label 'Description', comment = 'ESP="Descripción",FRA="Désignation"';
-        PRGestionPedidosCliente_Lbl: Label 'PR-MANAGEMENT OF CUSTOMER ORDERS', Comment = 'ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"';
+        PRGestionPedidosCliente_Lbl: Label 'PR-ORDER EXPEDITING', Comment = 'ESP="PR-EXPEDICION DE PEDIDOS"';
         FO01_Lbl: Label 'FO.01_C8.01_V13', Comment = 'ESP="FO.01_C8.01_V13"';
         Comentarios_Lbl: Label 'Remark', Comment = 'ESP="Comentarios",FRA="Observations"';
         DireccionDeEnvio_Lbl: Label 'Delivery Address', Comment = 'ESP="Dirección de envío",FRA="Adresse de livraison"';

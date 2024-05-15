@@ -27,25 +27,26 @@ page 17212 "Purchase Request less 200"
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Name 2"; Rec."Vendor Name 2")
-                {
-                    ApplicationArea = All;
-                }
+
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field(Quantity; Rec.Quantity)
-                {
-                    ApplicationArea = All;
-                }
-                field("Unit Price"; "Unit Price")
-                {
-                    ApplicationArea = all;
-                }
+                // field(Quantity; Rec.Quantity)
+                // {
+                //     ApplicationArea = All;
+                // }
+                // field("Unit Price"; "Unit Price")
+                // {
+                //     ApplicationArea = all;
+                // }
                 field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;
+                }
+                field("Currency Code"; "Currency Code")
+                {
+                    ApplicationArea = all;
                 }
                 field("No. Series"; Rec."No. Series")
                 {
@@ -65,6 +66,15 @@ page 17212 "Purchase Request less 200"
                     ApplicationArea = all;
                     Visible = false;
                 }
+            }
+        }
+        area(factboxes)
+        {
+            part("Attachment Document"; "ZM Document Attachment Factbox")
+            {
+                ApplicationArea = all;
+                Caption = 'Attachment Document', comment = 'ESP="Documentos adjuntos"';
+                SubPageLink = "Table ID" = const(17200), "No." = field("No.");
             }
         }
     }
@@ -136,6 +146,14 @@ page 17212 "Purchase Request less 200"
     begin
         FilterUser();
         ShowApprovalButton := Rec.IsUserApproval();
+    end;
+
+    trigger OnAfterGetRecord()
+    var
+        RefRecord: recordRef;
+    begin
+        RefRecord.Get(Rec.RecordId);
+        CurrPage."Attachment Document".Page.SetTableNo(17200, Rec."No.", 0, RefRecord);
     end;
 
     var

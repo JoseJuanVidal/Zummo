@@ -31,26 +31,27 @@ page 17213 "Purchase Request less 200 Card"
                     {
                         ApplicationArea = All;
                     }
-                    field("Vendor Name 2"; Rec."Vendor Name 2")
-                    {
-                        ApplicationArea = All;
-                    }
                 }
                 field(Description; Description)
                 {
                     ApplicationArea = All;
+                    Caption = 'Descripción Factura', comment = 'ESP="Descripción Factura"';
                 }
-                field(Quantity; Rec.Quantity)
-                {
-                    ApplicationArea = All;
-                }
-                field("Unit Price"; "Unit Price")
-                {
-                    ApplicationArea = all;
-                }
+                // field(Quantity; Rec.Quantity)
+                // {
+                //     ApplicationArea = All;
+                // }
+                // field("Unit Price"; "Unit Price")
+                // {
+                //     ApplicationArea = all;
+                // }
                 field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;
+                }
+                field("Currency Code"; "Currency Code")
+                {
+                    ApplicationArea = all;
                 }
                 field(Status; Status)
                 {
@@ -71,6 +72,15 @@ page 17213 "Purchase Request less 200 Card"
                         OnValidate_Comment();
                     end;
                 }
+            }
+        }
+        area(factboxes)
+        {
+            part("Attachment Document"; "ZM Document Attachment Factbox")
+            {
+                ApplicationArea = all;
+                Caption = 'Attachment Document', comment = 'ESP="Documentos adjuntos"';
+                SubPageLink = "Table ID" = const(17200), "No." = field("No.");
             }
         }
     }
@@ -132,9 +142,28 @@ page 17213 "Purchase Request less 200 Card"
         Comments := Rec.GetComment().ToText();
     end;
 
+    trigger OnAfterGetRecord()
+    var
+        RefRecord: recordRef;
+    begin
+        RefRecord.Get(Rec.RecordId);
+        CurrPage."Attachment Document".Page.SetTableNo(17200, Rec."No.", 0, RefRecord);
+    end;
+
+    trigger OnQueryClosePage(CloseAction: Action): Boolean
+    begin
+        // al salir de la pantalla si no ha enviado la aprobación, se lo recordamos 
+        // y enviamos
+        if Rec.Status in [Rec.Status::" "] then
+            if Confirm(lblConfirmSend) then
+                SendEmailApproval();
+
+    end;
+
     var
         Comments: text;
         ShowApprovalButton: Boolean;
+        lblConfirmSend: Label 'El pedido de compra no se ha enviado para la aprobación.\¿Desea enviarlo ahora?', comment = 'ESP="El pedido de compra no se ha enviado para la aprobación.\¿Desea enviarlo ahora?"';
 
     local procedure OnAction_SendApproval()
     begin

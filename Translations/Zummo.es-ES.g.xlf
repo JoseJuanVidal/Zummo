@@ -5236,10 +5236,10 @@
           <target>&lt;p&gt;&lt;strong&gt;N&amp;ordm; Solicitud:&lt;/strong&gt; %1&lt;/p&gt;</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 339277786" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Solicitud de Compra mas de 200 € %1</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra mas de 200 € %1"</note>
+          <source>Solicitud de Compra menor de 200 € %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menor de 200 € %1"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblSubject</note>
-          <target>Solicitud de Compra mas de 200 € %1</target>
+          <target>Solicitud de Compra menor de 200 € %1</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 37012126" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;p&gt;&lt;strong&gt;Solicitud de Compra mas de 200&amp;euro; %1&lt;/strong&gt;&lt;/p&gt;</source>
@@ -5284,16 +5284,22 @@
           <target>No existen emplados configurados para aprobacion de Solicitudes de compra.\Hable con Administración del sistema</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe"</note>
+          <source>Amount Excluding VAT</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe SIN IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Amount - Property Caption</note>
-          <target>Importe</target>
+          <target>Importe SIN IVA</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 2790486453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comment</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Comment - Property Caption</note>
           <target>Comentarios</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Divisa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Currency Code - Property Caption</note>
+          <target>Cód. Divisa</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -14777,6 +14783,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Property Caption</note>
           <target>Compra menor 200</target>
         </trans-unit>
+        <trans-unit id="Page 2450567067 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachment Document</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Control Attachment Document - Property Caption</note>
+          <target>Documentos adjuntos</target>
+        </trans-unit>
         <trans-unit id="Page 2450567067 - Action 3678749205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Purch. Order Request</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Solicitud Ped. Compra"</note>
@@ -14813,17 +14825,35 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Property Caption</note>
           <target>Compra menor 200</target>
         </trans-unit>
+        <trans-unit id="Page 3377437423 - NamedType 1220102072" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El pedido de compra no se ha enviado para la aprobación.\¿Desea enviarlo ahora?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El pedido de compra no se ha enviado para la aprobación.\¿Desea enviarlo ahora?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - NamedType lblConfirmSend</note>
+          <target>El pedido de compra no se ha enviado para la aprobación.\¿Desea enviarlo ahora?</target>
+        </trans-unit>
         <trans-unit id="Page 3377437423 - Control 503024588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comments</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Control Comments - Property Caption</note>
           <target>Comentarios</target>
         </trans-unit>
+        <trans-unit id="Page 3377437423 - Control 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripción Factura</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Control Description - Property Caption</note>
+          <target>Descripción Factura</target>
+        </trans-unit>
         <trans-unit id="Page 3377437423 - Control 1936001480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Control Vendor - Property Caption</note>
           <target>Proveedor</target>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachment Document</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Control Attachment Document - Property Caption</note>
+          <target>Documentos adjuntos</target>
         </trans-unit>
         <trans-unit id="Page 3377437423 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approve</source>
@@ -18056,10 +18086,10 @@
           <target>Precio en Alhama de Murcia</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 1425880810" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-MANAGEMENT OF CUSTOMER ORDERS</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"</note>
+          <source>PR-ORDER EXPEDITING</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PR-EXPEDICION DE PEDIDOS"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaRegistrado - NamedType PRGestionPedidosCliente_Lbl</note>
-          <target>PR-GESTION DE LOS PEDIDOS DEL CLIENTE</target>
+          <target>PR-EXPEDICION DE PEDIDOS</target>
         </trans-unit>
         <trans-unit id="Report 3011595053 - NamedType 1202215679" size-unit="char" translate="yes" xml:space="preserve">
           <source>PERSONAL DATA PROTECTION</source>
@@ -18979,10 +19009,10 @@
           <target>Precio en Alhama de Murcia</target>
         </trans-unit>
         <trans-unit id="Report 1166120471 - NamedType 1425880810" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-MANAGEMENT OF CUSTOMER ORDERS</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"</note>
+          <source>PR-ORDER EXPEDITING</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PR-EXPEDICION DE PEDIDOS"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AbonoVentaUKRegistrado - NamedType PRGestionPedidosCliente_Lbl</note>
-          <target>PR-GESTION DE LOS PEDIDOS DEL CLIENTE</target>
+          <target>PR-EXPEDICION DE PEDIDOS</target>
         </trans-unit>
         <trans-unit id="Report 1166120471 - NamedType 1202215679" size-unit="char" translate="yes" xml:space="preserve">
           <source>PERSONAL DATA PROTECTION</source>
@@ -19764,9 +19794,10 @@
           <target>PORTES</target>
         </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 2894269558" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-GESTION DE LOS PEDIDOS DE CLIENTE</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>PR-ORDER EXPEDITING</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PR-EXPEDICION DE PEDIDOS"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType PRGestion_Lbl</note>
+          <target>PR-EXPEDICION DE PEDIDOS</target>
         </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 3246368361" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cantidad</source>
@@ -21124,6 +21155,12 @@
           <source>VAT Registration No.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaBrasilMaquinas - NamedType VATRegNoCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2053429064 - ReportLabel 3498016081" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PR-ORDER EXPEDITING</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PR-EXPEDICION DE PEDIDOS"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaBrasilMaquinas - ReportLabel FacturaSubtituloIzq</note>
+          <target>PR-EXPEDICION DE PEDIDOS</target>
         </trans-unit>
         <trans-unit id="Report 550184364 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Exportation Invoice</source>
@@ -22625,10 +22662,10 @@
           <target>Precio en Alhama de Murcia</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 1425880810" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-MANAGEMENT OF CUSTOMER ORDERS</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"</note>
+          <source>PR-ORDER EXPEDITING</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PR-EXPEDICION DE PEDIDOS"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType PRGestionPedidosCliente_Lbl</note>
-          <target>PR-GESTION DE LOS PEDIDOS DEL CLIENTE</target>
+          <target>PR-EXPEDICION DE PEDIDOS</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 1202215679" size-unit="char" translate="yes" xml:space="preserve">
           <source>PERSONAL DATA PROTECTION</source>
@@ -23308,10 +23345,10 @@
           <target>Fecha</target>
         </trans-unit>
         <trans-unit id="Report 3517662283 - NamedType 2570386175" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.01_C8.01_V12</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.01_C8.01_V12"</note>
+          <source>FO.01_C8.01_V13</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.01_C8.01_V13"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType FO01_Lbl</note>
-          <target>FO.01_C8.01_V12</target>
+          <target>FO.01_C8.01_V13</target>
         </trans-unit>
         <trans-unit id="Report 3517662283 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms</source>
@@ -23590,10 +23627,10 @@
           <target>Precio en Alhama de Murcia</target>
         </trans-unit>
         <trans-unit id="Report 3517662283 - NamedType 1425880810" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-MANAGEMENT OF CUSTOMER ORDERS</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"</note>
+          <source>PR-ORDER EXPEDITING</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PR-EXPEDICION DE PEDIDOS"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalUK - NamedType PRGestionPedidosCliente_Lbl</note>
-          <target>PR-GESTION DE LOS PEDIDOS DEL CLIENTE</target>
+          <target>PR-EXPEDICION DE PEDIDOS</target>
         </trans-unit>
         <trans-unit id="Report 3517662283 - NamedType 1202215679" size-unit="char" translate="yes" xml:space="preserve">
           <source>PERSONAL DATA PROTECTION</source>
@@ -24327,10 +24364,10 @@
           <target>Fecha</target>
         </trans-unit>
         <trans-unit id="Report 2605446939 - NamedType 2570386175" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FO.01_C8.01_V12</source>
-          <note from="Developer" annotates="general" priority="2">ESP="FO.01_C8.01_V12"</note>
+          <source>FO.01_C8.01_V13</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FO.01_C8.01_V13"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType FO01_Lbl</note>
-          <target>FO.01_C8.01_V12</target>
+          <target>FO.01_C8.01_V13</target>
         </trans-unit>
         <trans-unit id="Report 2605446939 - NamedType 3011678029" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms</source>
@@ -24692,10 +24729,10 @@
           <target>Precio en Alhama de Murcia</target>
         </trans-unit>
         <trans-unit id="Report 2605446939 - NamedType 1425880810" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-MANAGEMENT OF CUSTOMER ORDERS</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PR-GESTION DE LOS PEDIDOS DEL CLIENTE"</note>
+          <source>PR-ORDER EXPEDITING</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PR-EXPEDICION DE PEDIDOS"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType PRGestionPedidosCliente_Lbl</note>
-          <target>PR-GESTION DE LOS PEDIDOS DEL CLIENTE</target>
+          <target>PR-EXPEDICION DE PEDIDOS</target>
         </trans-unit>
         <trans-unit id="Report 2605446939 - NamedType 1202215679" size-unit="char" translate="yes" xml:space="preserve">
           <source>PERSONAL DATA PROTECTION</source>
@@ -26173,10 +26210,10 @@
           <target>Nº teléfono</target>
         </trans-unit>
         <trans-unit id="Report 1755290613 - NamedType 2894269558" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-GESTION DE LOS PEDIDOS DE CLIENTE</source>
-          <note from="Developer" annotates="general" priority="2">ESP="PR-GESTION DE LOS PEDIDOS DE CLIENTE"</note>
+          <source>PR-ORDER EXPEDITING</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PR-EXPEDICION DE PEDIDOS"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PackingList - NamedType PRGestion_Lbl</note>
-          <target>PR-GESTION DE LOS PEDIDOS DE CLIENTE</target>
+          <target>PR-EXPEDICION DE PEDIDOS</target>
         </trans-unit>
         <trans-unit id="Report 1755290613 - NamedType 2777372655" size-unit="char" translate="yes" xml:space="preserve">
           <source>PORT UNEMARK: SANTOS-SSZ-BRAS</source>
@@ -27526,7 +27563,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType PediProveeedorLbl</note>
         </trans-unit>
         <trans-unit id="Report 4049458315 - NamedType 1666753347" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-COMPRAS</source>
+          <source>PR-GESTION DE PEDIDOS DE CLIENTES</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - NamedType PRCOMPRASLbl</note>
         </trans-unit>
@@ -27686,9 +27723,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType PediProveeedorLbl</note>
         </trans-unit>
         <trans-unit id="Report 3170430146 - NamedType 1666753347" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PR-TRANSFER</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>PR-ORDER EXPEDITING</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PR-EXPEDICION DE PEDIDOS"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType PRCOMPRASLbl</note>
+          <target>PR-EXPEDICION DE PEDIDOS</target>
         </trans-unit>
         <trans-unit id="Report 3170430146 - NamedType 1517777218" size-unit="char" translate="yes" xml:space="preserve">
           <source>NOTA ENTREGA</source>

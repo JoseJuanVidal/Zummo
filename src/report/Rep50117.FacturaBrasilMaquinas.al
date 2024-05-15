@@ -1350,8 +1350,8 @@ report 50117 "FacturaBrasilMaquinas"
     labels
     {
         FacturaTitulo = 'FACTURA', Comment = 'INVOICE';
-        FacturaSubtituloIzq = 'PR-GESTION DE LOS PEDIDOS DEL CLIENTE', Comment = 'PR-CUSTOMER ORDER MANAGEMENT';
-        FacturaSubtituloDch = 'FO.01_C8.01_V12', Comment = 'FO.01_C8.01_V12';
+        FacturaSubtituloIzq = 'PR-ORDER EXPEDITING', Comment = 'ESP="PR-EXPEDICION DE PEDIDOS"';
+        FacturaSubtituloDch = 'FO.01_C8.01_V13', Comment = 'FO.01_C8.01_V13';
         FechaEncabezado = 'Fecha', Comment = 'Date';
         CondicionEntregaEncabezado = 'Condición de entrega', Comment = 'Terms of delivery';
         FormaPagoEncabezado = 'Forma de pago', Comment = 'Method of payment';
