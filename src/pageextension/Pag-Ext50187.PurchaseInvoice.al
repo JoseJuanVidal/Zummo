@@ -29,7 +29,19 @@ pageextension 50187 "PurchaseInvoice" extends "Purchase Invoice"
                 ApplicationArea = all;
             }
         }
-
+        addafter("Purchaser Code")
+        {
+            field("Job No."; "Job No.")
+            {
+                ApplicationArea = all;
+                Importance = Additional;
+            }
+            field("Job Task No."; "Job Task No.")
+            {
+                ApplicationArea = all;
+                Importance = Additional;
+            }
+        }
         addlast(Content)
         {
             group(Plastic)

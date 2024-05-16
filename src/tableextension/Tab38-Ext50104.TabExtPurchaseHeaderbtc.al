@@ -47,6 +47,27 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             FieldClass = FlowField;
             CalcFormula = Sum("Purchase Line".Amount WHERE("Document Type" = FIELD("Document Type"), "Document No." = FIELD("No."), "Order No." = filter(<> '')));
         }
+        field(50030; "Job No."; code[20])
+        {
+            Caption = 'Job No.', Comment = 'ESP="Nº Proyecto"';
+            TableRelation = Job;
+
+
+            trigger OnValidate()
+            begin
+                Update_JobTaskNo();
+            end;
+        }
+        field(50032; "Job Task No."; code[20])
+        {
+            Caption = 'Job Task No', Comment = 'ESP="Nº Tarea Proyecto"';
+            TableRelation = "Job Task" where("Job No." = field("Job No."));
+
+            trigger OnValidate()
+            begin
+                Update_JobTaskNo();
+            end;
+        }
         field(50120; "Purch. Request less 200"; code[20])
         {
             Caption = 'Purch. Request less 200', Comment = 'ESP="Compra menor 200"';
@@ -134,6 +155,35 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             if PurchaseHeader."Amount Including VAT" > PurchaseSetup."Maximum amount Request" then
                 Error(lblMaxRequest, PurchaseHeader."Amount Including VAT", PurchaseSetup."Maximum amount Request");
         end;
+
+    end;
+
+    local procedure Update_JobTaskNo()
+    var
+        PruchaseLine: Record "Purchase Line";
+        JobTask: Record "Job Task";
+        lblConfirmUpdate: Label 'Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?',
+            comment = 'ESP="Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?"';
+    begin
+        JobTask.Reset();
+        JobTask.SetRange("Job No.", Rec."Job No.");
+        JobTask.SetRange("Job Task No.", Rec."Job Task No.");
+        if not JobTask.FindFirst() then
+            Rec."Job Task No." := '';
+        if (Rec."Job No." <> xRec."Job No.") or (Rec."Job Task No." <> Rec."Job Task No.") then
+            if confirm(lblConfirmUpdate, false, Rec."Job No.", Rec."Job Task No.") then begin
+                PruchaseLine.Reset();
+                PruchaseLine.SetRange("Document Type", Rec."Document Type");
+                PruchaseLine.SetRange("Document No.", Rec."No.");
+                if PruchaseLine.FindFirst() then
+                    repeat
+                        if PruchaseLine.Type in [PruchaseLine.Type::"Fixed Asset", PruchaseLine.Type::Item, PruchaseLine.Type::"G/L Account"] then begin
+                            PruchaseLine.Validate("Job No.", Rec."Job No.");
+                            PruchaseLine.Validate("Job Task No.", Rec."Job Task No.");
+                            PruchaseLine.Modify();
+                        end;
+                    Until PruchaseLine.next() = 0;
+            end;
 
     end;
 }

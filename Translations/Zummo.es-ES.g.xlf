@@ -5235,6 +5235,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblRequest</note>
           <target>&lt;p&gt;&lt;strong&gt;N&amp;ordm; Solicitud:&lt;/strong&gt; %1&lt;/p&gt;</target>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 1126316626" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Estados:&lt;/strong&gt; %1&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Estado:&lt;/strong&gt; %1;&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblStatus</note>
+          <target>&lt;p&gt;&lt;strong&gt;Estado:&lt;/strong&gt; %1;&lt;/p&gt;</target>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 339277786" size-unit="char" translate="yes" xml:space="preserve">
           <source>Solicitud de Compra menor de 200 € %1</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menor de 200 € %1"</note>
@@ -31312,6 +31318,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Posted Sales Invoice Lines - Action updateClasifItem - Method OnAction - NamedType lblConfirm</note>
           <target>¿Desea actualizar los datos de todas las lineas de venta?</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3619081316 - Action 3996203218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3365016562">
+          <source>Job Journal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Diario pr&amp;oyectos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Produc- Planner Role Center - Action JobJournal - Property Caption</note>
+          <target>Diario pr&amp;oyectos</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1118725128 - Action 3257411572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Posted Purchase Invoice Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. fact. compra"</note>
@@ -35666,6 +35678,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblMaxRequest</note>
           <target>El importe %1 supera el máximo permitido por solicitud %2.</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Method 4151499239 - NamedType 858699819" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
+          <source>Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method Update_JobTaskNo - NamedType lblConfirmUpdate</note>
+          <target>Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 2557569786 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Amount Inc. VAT Subcontractor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe con IVA subcontr."</note>
@@ -35695,6 +35713,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Mas Temprana"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Fecha Mas Temprana - Property Caption</note>
           <target>Fecha Mas Temprana</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 1908272084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Job No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Job No. - Property Caption</note>
+          <target>Nº Proyecto</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 561421623 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Job Task No</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Tarea Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Job Task No. - Property Caption</note>
+          <target>Nº Tarea Proyecto</target>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 2267512986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Motivo rechazo</source>
