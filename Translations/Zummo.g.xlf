@@ -5133,6 +5133,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;N&amp;ordm; Solicitud:&lt;/strong&gt; %1&lt;/p&gt;"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblRequest</note>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 1126316626" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Estados:&lt;/strong&gt; %1&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Estado:&lt;/strong&gt; %1;&lt;/p&gt;"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblStatus</note>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 339277786" size-unit="char" translate="yes" xml:space="preserve">
           <source>Solicitud de Compra menor de 200 € %1</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solicitud de Compra menor de 200 € %1"</note>
@@ -29973,6 +29978,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Drive ID"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field driveId - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 2711932753 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Email reply lower 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Email Respuesta Compras menor 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Email reply lower 200 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 4188936542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>General Conditions Purchase (ENG)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Condiciones Generales Compra (ENG)"</note>
@@ -29984,8 +29994,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field General Conditions Purchase - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 2609802439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
-          <source>Maximum amount Request minus 200</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe Máximo solicitud menos 200"</note>
+          <source>Maximum amount Request lower 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Máximo solicitud menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Maximum amount Request - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 403186776 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
@@ -29999,8 +30009,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Path Purchase Documents - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 4229639122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
-          <source>Purchase Request less 200 Nos.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº serie Solicituds menos 200"</note>
+          <source>Purchase Request Lower 200 Nos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº serie Solicituds menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Purchase Request Nos. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 28783585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">

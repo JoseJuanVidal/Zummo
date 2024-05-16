@@ -105,6 +105,10 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Email reply lower 200"; "Email reply lower 200")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(CONSULTIA)
             {

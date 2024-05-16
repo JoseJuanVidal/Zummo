@@ -169,6 +169,8 @@ table 17200 "Purchase Requests less 200"
             , comment = 'ESP="<p><strong>Descripci&oacute;n:</strong> %1</p>"';
         lblAmount: Label '<p><strong>Importe:</strong> %1 &euro;</p>'
             , Comment = 'ESP="<p><strong>Importe:</strong> %1 &euro;</p>"';
+        lblStatus: Label '<p><strong>Estados:</strong> %1</p>'
+            , Comment = 'ESP="<p><strong>Estado:</strong> %1;</p>"';
         lblComments: Label '<p><strong>Commentarios:</strong></p>'
             , Comment = 'ESP="<p><strong>Comentario:</strong></p>"';
 
@@ -252,6 +254,7 @@ table 17200 "Purchase Requests less 200"
         CheckIsAssigned;
         Rec.Status := Rec.Status::Approved;
         Rec.Modify();
+        SendEmailNotification();
     end;
 
     procedure Reject()
@@ -259,6 +262,7 @@ table 17200 "Purchase Requests less 200"
         CheckIsAssigned;
         Rec.Status := Rec.Status::Reject;
         Rec.Modify();
+        SendEmailNotification();
     end;
 
     procedure TestApproved()
@@ -341,6 +345,7 @@ table 17200 "Purchase Requests less 200"
         textoHtml += StrSubstNo(lblVendorName2, Rec."Vendor Name 2");
         textoHtml += StrSubstNo(lblDescription, Rec.Description);
         textoHtml += StrSubstNo(lblAmount, Rec.Amount);
+        textoHtml += StrSubstNo(lblStatus, Rec.Status);
         textoHtml += lblComments;
         Rec.GetListComment(ListText);
         for i := 1 to ListText.Count do
@@ -417,5 +422,41 @@ table 17200 "Purchase Requests less 200"
 
         if not Rec.Insert() then
             Rec.Modify();
+    end;
+
+    local procedure SendEmailNotification()
+    var
+        PurchasesSetup: Record "Purchases & Payables Setup";
+        DocAttachment: Record "Document Attachment";
+        FileManagement: Codeunit "File Management";
+        SMTPSetup: Record "SMTP Mail Setup";
+        cduSmtp: Codeunit "SMTP Mail";
+        txtAsunto: Text;
+        Recipients: text;
+        textoHtml: Text;
+        FilePathName: text;
+    begin
+        textoHtml := GetHTLMResumen();
+        PurchasesSetup.Get();
+        PurchasesSetup.TestField("Email reply lower 200");
+        Recipients := PurchasesSetup."Email reply lower 200";
+        txtAsunto := StrSubstNo(lblSubject, Rec."No.");
+        SMTPSetup.Get();
+        Clear(cduSmtp);
+        cduSmtp.CreateMessage(CompanyName, SMTPSetup."User ID", Recipients, txtAsunto, textoHtml, TRUE);
+        DocAttachment.Reset();
+        DocAttachment.SetRange("Table ID", 17200);
+        if DocAttachment.FindFirst() then
+            repeat
+                FilePathName := FileManagement.ServerTempFileName(DocAttachment."File Extension");
+                DocAttachment."Document Reference ID".ExportFile(FilePathName);
+                cduSmtp.AddAttachment(FilePathName, DocAttachment."File Name");
+            Until DocAttachment.next() = 0;
+
+        cduSmtp.Send();
+
+        //cambiamos el estado pendiente, para saber que se ha enviado la aprobacion
+        Rec.Status := Rec.Status::Pending;
+        Rec.Modify();
     end;
 }

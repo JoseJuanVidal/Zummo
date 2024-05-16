@@ -67,13 +67,18 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
         field(50080; "Purchase Request Nos."; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Purchase Request less 200 Nos.', comment = 'ESP="Nº serie Solicituds menos 200"';
+            Caption = 'Purchase Request Lower 200 Nos.', comment = 'ESP="Nº serie Solicituds menor 200"';
             TableRelation = "No. Series";
         }
         field(50090; "Maximum amount Request"; decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Maximum amount Request minus 200', comment = 'ESP="Importe Máximo solicitud menos 200"';
+            Caption = 'Maximum amount Request lower 200', comment = 'ESP="Importe Máximo solicitud menor 200"';
+        }
+        field(50092; "Email reply lower 200"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Email reply lower 200', comment = 'ESP="Email Respuesta Compras menor 200"';
         }
         field(50100; "CONSULTIA Url"; text[100])
         {

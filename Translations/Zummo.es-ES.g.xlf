@@ -32919,6 +32919,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field driveId - Property Caption</note>
           <target>Drive ID</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 2711932753 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Email reply lower 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Email Respuesta Compras menor 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Email reply lower 200 - Property Caption</note>
+          <target>Email Respuesta Compras menor 200</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 4188936542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>General Conditions Purchase (ENG)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Condiciones Generales Compra (ENG)"</note>
@@ -32932,10 +32938,10 @@
           <target>Condiciones Generales Compra</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 2609802439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
-          <source>Maximum amount Request minus 200</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe Máximo solicitud menos 200"</note>
+          <source>Maximum amount Request lower 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Máximo solicitud menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Maximum amount Request - Property Caption</note>
-          <target>Importe Máximo solicitud menos 200</target>
+          <target>Importe Máximo solicitud menor 200</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 403186776 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Path Purchase Documents pending</source>
@@ -32950,10 +32956,10 @@
           <target>Ubicación Docs. compra</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 4229639122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
-          <source>Purchase Request less 200 Nos.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº serie Solicituds menos 200"</note>
+          <source>Purchase Request Lower 200 Nos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº serie Solicituds menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Purchase Request Nos. - Property Caption</note>
-          <target>Nº serie Solicituds menos 200</target>
+          <target>Nº serie Solicituds menor 200</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 28783585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Sharepoint Connection</source>
