@@ -16,6 +16,7 @@ table 17200 "Purchase Requests less 200"
             begin
                 OnValidate_No();
             end;
+
         }
         field(10; "Vendor No."; code[20])
         {
@@ -139,7 +140,7 @@ table 17200 "Purchase Requests less 200"
     }
 
     var
-        PurchSetup: Record "Purchases & Payables Setup";
+        PurchasesSetup: Record "Purchases & Payables Setup";
         Vendor: Record Vendor;
         Item: Record Item;
         UserSetup: Record "User Setup";
@@ -151,8 +152,8 @@ table 17200 "Purchase Requests less 200"
             comment = 'ESP="¿Desea enviar la Aprobación de la solicitud de compra %1 por un importe de %2?"';
         lblSubject: Label 'Solicitud de Compra menor de 200 € %1'
             , comment = 'ESP="Solicitud de Compra menor de 200 € %1"';
-        lblTitle: Label '<p><strong>Solicitud de Compra mas de 200&euro; %1</strong></p>'
-            , comment = 'ESP="<p><strong>Solicitud de Compra mas de 200&euro; %1</strong></p>"';
+        lblTitle: Label '<p><strong>Solicitud de Compra menor de 200&euro; %1</strong></p>'
+            , comment = 'ESP="<p><strong>Solicitud de Compra menor de 200&euro; %1</strong></p>"';
         lblUser: Label '<p><strong>Usuario:</strong> %1</p>'
             , comment = 'ESP="<p><strong>Usuario:</strong> %1</p>"';
         lblDate: Label '<p><strong>Fecha:</strong> %1</p>'
@@ -177,9 +178,9 @@ table 17200 "Purchase Requests less 200"
     trigger OnInsert()
     begin
         IF "No." = '' THEN BEGIN
-            PurchSetup.GET;
-            PurchSetup.TESTFIELD("Purchase Request Nos.");
-            NoSeriesMgt.InitSeries(PurchSetup."Purchase Request Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+            PurchasesSetup.GET;
+            PurchasesSetup.TESTFIELD("Purchase Request Nos.");
+            NoSeriesMgt.InitSeries(PurchasesSetup."Purchase Request Nos.", xRec."No. Series", 0D, "No.", "No. Series");
         END;
         if "User Id" = '' then
             "User Id" := UserId;
@@ -209,8 +210,8 @@ table 17200 "Purchase Requests less 200"
     local procedure OnValidate_No()
     begin
         IF "No." <> xRec."No." THEN BEGIN
-            PurchSetup.GET;
-            NoSeriesMgt.TestManual(PurchSetup."Vendor Nos.");
+            PurchasesSetup.GET;
+            NoSeriesMgt.TestManual(PurchasesSetup."Purchase Request Nos.");
             "No. Series" := '';
         END;
     end;
@@ -243,9 +244,9 @@ table 17200 "Purchase Requests less 200"
 
     local procedure TestMaximumAmount()
     begin
-        PurchSetup.Get();
-        if PurchSetup."Maximum amount Request" < Rec.Amount then
-            Error(lblMaxAmount, Rec.Amount, PurchSetup."Maximum amount Request");
+        PurchasesSetup.Get();
+        if PurchasesSetup."Maximum amount Request" < Rec.Amount then
+            Error(lblMaxAmount, Rec.Amount, PurchasesSetup."Maximum amount Request");
     end;
 
     procedure Approve()
@@ -426,7 +427,6 @@ table 17200 "Purchase Requests less 200"
 
     local procedure SendEmailNotification()
     var
-        PurchasesSetup: Record "Purchases & Payables Setup";
         DocAttachment: Record "Document Attachment";
         FileManagement: Codeunit "File Management";
         SMTPSetup: Record "SMTP Mail Setup";
@@ -458,5 +458,19 @@ table 17200 "Purchase Requests less 200"
         //cambiamos el estado pendiente, para saber que se ha enviado la aprobacion
         Rec.Status := Rec.Status::Pending;
         Rec.Modify();
+    end;
+
+    procedure AssistEdit(OldPurchaseRequest: Record "Purchase Requests less 200"): Boolean
+    var
+        PurchaseRequest: Record "Purchase Requests less 200";
+    begin
+        PurchaseRequest := Rec;
+        PurchasesSetup.GET;
+        PurchasesSetup.TESTFIELD("Purchase Request Nos.");
+        IF NoSeriesMgt.SelectSeries(PurchasesSetup."Purchase Request Nos.", OldPurchaseRequest."No. Series", "No. Series") THEN BEGIN
+            NoSeriesMgt.SetSeries("No.");
+            Rec := PurchaseRequest;
+            EXIT(TRUE);
+        END;
     end;
 }

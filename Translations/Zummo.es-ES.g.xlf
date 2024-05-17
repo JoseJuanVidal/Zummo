@@ -5248,10 +5248,10 @@
           <target>Solicitud de Compra menor de 200 € %1</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 37012126" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;p&gt;&lt;strong&gt;Solicitud de Compra mas de 200&amp;euro; %1&lt;/strong&gt;&lt;/p&gt;</source>
-          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Solicitud de Compra mas de 200&amp;euro; %1&lt;/strong&gt;&lt;/p&gt;"</note>
+          <source>&lt;p&gt;&lt;strong&gt;Solicitud de Compra menor de 200&amp;euro; %1&lt;/strong&gt;&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Solicitud de Compra menor de 200&amp;euro; %1&lt;/strong&gt;&lt;/p&gt;"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblTitle</note>
-          <target>&lt;p&gt;&lt;strong&gt;Solicitud de Compra mas de 200&amp;euro; %1&lt;/strong&gt;&lt;/p&gt;</target>
+          <target>&lt;p&gt;&lt;strong&gt;Solicitud de Compra menor de 200&amp;euro; %1&lt;/strong&gt;&lt;/p&gt;</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 3023661397" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;p&gt;&lt;strong&gt;Usuario:&lt;/strong&gt; %1&lt;/p&gt;</source>

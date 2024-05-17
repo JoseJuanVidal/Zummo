@@ -15,6 +15,10 @@ page 17213 "Purchase Request less 200 Card"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    trigger OnAssistEdit()
+                    begin
+                        OnAssistEdit_No();
+                    end;
                 }
                 field("Posting Date"; "Posting Date")
                 {
@@ -183,6 +187,14 @@ page 17213 "Purchase Request less 200 Card"
     local procedure OnValidate_Comment()
     begin
         Rec.SetComment(Comments);
+    end;
+
+    local procedure OnAssistEdit_No()
+    var
+        myInt: Integer;
+    begin
+        IF AssistEdit(xRec) THEN
+            CurrPage.UPDATE;
     end;
 
 }
