@@ -163,6 +163,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
         ServiceOrderType: Record "Service Order Type";
         SalesDate: date;
         Window: Dialog;
+        fichero: file;
     begin
         // buscamos los movimientos de ventas y abonos de tipo productos y ensamblados
         Window.Open('Nº Mov: #1###############\Tipo: #2#####################\Producto: #3#############################\Fecha: #4##############');
@@ -201,19 +202,22 @@ table 17370 "ZM Hist. Reclamaciones ventas"
 
                 end;
             Until ItemLedgerEntry.next() = 0;
+        fichero.Create('C:\Zummo\Temp\servicios.txt');
+        fichero.TextMode := true;
         // recorremos las lineas de servicio para añadir los fallos o reclamaciones
         ServiceHeader.Reset();
         ServiceHeader.SetRange("Document Type", ServiceHeader."Document Type"::Order);
         ServiceHeader.SetFilter("Posting Date", '%1..', InitDate);
         if ServiceHeader.FindFirst() then
             repeat
-
+                fichero.Write(StrSubstNo('%1', ServiceHeader."No."));
                 if ServiceOrderType.Get(ServiceHeader."Service Order Type") and (ServiceOrderType."Exportar BI Reclamaciones") then begin
                     ServiceItemLine.Reset();
                     ServiceItemLine.SetRange("Document Type", ServiceHeader."Document Type");
                     ServiceItemLine.SetRange("Document No.", ServiceHeader."No.");
                     if ServiceItemLine.FindFirst() then begin
                         repeat
+                            fichero.Write(StrSubstNo('%1 %2 %3', ServiceItemLine."Document Type", ServiceItemLine."Document No.", ServiceItemLine."Line No."));
                             Window.Update(1, ServiceHeader."No.");
                             Window.Update(2, ServiceItemLine."Line No.");
                             Window.Update(3, ServiceItemLine."Item No.");
@@ -229,11 +233,18 @@ table 17370 "ZM Hist. Reclamaciones ventas"
                         Until ServiceItemLine.next() = 0;
                     end;
                 end else begin
-                    // si ha cambiado de situación y no deberia estar se elimina
-                    DeleteHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.");
+                    ServiceItemLine.Reset();
+                    ServiceItemLine.SetRange("Document Type", ServiceHeader."Document Type");
+                    ServiceItemLine.SetRange("Document No.", ServiceHeader."No.");
+                    if ServiceItemLine.FindFirst() then
+                        repeat
+                            fichero.Write(StrSubstNo('%1 %2 %3', ServiceItemLine."Document Type", ServiceItemLine."Document No.", ServiceItemLine."Line No."));
+                            // si ha cambiado de situación y no deberia estar se elimina
+                            DeleteHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.");
+                        Until ServiceItemLine.next() = 0;
                 end;
             Until ServiceHeader.next() = 0;
-
+        fichero.Close();
     end;
 
     local procedure GetFechaSalesOrderServiceHeader(ServiceHeader: Record "Service Header"): Date
@@ -305,7 +316,6 @@ table 17370 "ZM Hist. Reclamaciones ventas"
             HistReclamacionesventas.Insert(true)
         end else begin
             HistReclamacionesventas."Posting Date" := ServiceHeader."Order Date";
-            HistReclamacionesventas."Serial No." := SerialNo;
             HistReclamacionesventas."Item No." := ServiceItemLine."Item No.";
             HistReclamacionesventas."Cod. Categoria" := Item."Item Category Code";
             HistReclamacionesventas.Familia := Item.desFamilia_btc;
