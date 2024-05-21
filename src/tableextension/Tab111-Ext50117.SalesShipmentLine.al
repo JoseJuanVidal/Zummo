@@ -150,5 +150,9 @@ tableextension 50117 "SalesShipmentLine" extends "Sales Shipment Line" //111
             Editable = false;
             DataClassification = CustomerContent;
         }
+        field(50203; ContractParent; Boolean)
+        {
+            DataClassification = CustomerContent;
+        }
     }
 }

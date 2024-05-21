@@ -148,7 +148,7 @@ page 17212 "Purchase Request less 200"
         ShowApprovalButton := Rec.IsUserApproval();
     end;
 
-    trigger OnAfterGetRecord()
+    trigger OnAfterGetCurrRecord()
     var
         RefRecord: recordRef;
     begin

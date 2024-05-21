@@ -2406,13 +2406,14 @@ report 50102 "PedidoCliente"
         SalesLineComponent.SetRange(ParentLineNo, SalesLine."Line No.");
         if SalesLineComponent.FindFirst() then
             repeat
+                UnitPrice += SalesLineComponent."Unit Price";
+                LineAmount += SalesLineComponent."Line Amount";
                 if Quantity < SalesLineComponent.Quantity then
                     Quantity := SalesLineComponent.Quantity;
-                UnitPrice += SalesLineComponent."Unit Price";
                 Dto := SalesLineComponent."Line Discount %";
                 Dto1 := SalesLineComponent."DecLine Discount1 %_btc";
                 Dto2 := SalesLineComponent."DecLine Discount2 %_btc";
-                LineAmount += SalesLineComponent."Line Amount";
+
             Until SalesLineComponent.next() = 0;
         SalesLine.Type := SalesLine.Type::Item;
         SalesLine."No." := SalesLine.ParentItemNo;

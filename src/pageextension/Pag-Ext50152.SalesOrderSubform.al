@@ -218,6 +218,16 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
                     Action_ExplodeProdBOM();
                 end;
             }
+            action(ExplodeServiceContractHeader)
+            {
+                ApplicationArea = all;
+                Caption = 'Añadir Contrato Servicio', comment = 'ESP="Añadir Contrato Servicio"';
+
+                trigger OnAction()
+                begin
+                    Action_ExplodeServiceContract();
+                end;
+            }
         }
     }
 
@@ -300,6 +310,13 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
     local procedure Action_ExplodeProdBOM()
     begin
         Funciones.Action_ExplodeProdBOM(Rec);
+    end;
+
+    local procedure Action_ExplodeServiceContract()
+    var
+        myInt: Integer;
+    begin
+        Funciones.AddExplodeServiceContract(Rec);
     end;
 
     local procedure GetSalesPrices()

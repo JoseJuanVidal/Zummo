@@ -1622,6 +1622,90 @@ codeunit 50106 "SalesEvents"
     end;
 
 
+    // =============     Funciones para crear linea de producto y de contrato          ====================
+    // ==  
+    // ==  Se venden una maquina y un SAT juntos, para que no aparezcan en el pedido de venta y factura
+    // ==  se utiliza la opcion de relacionar una linea con la otra
+    // ==  
+    // ======================================================================================================
+    procedure AddExplodeServiceContract(var Rec: Record "Sales Line")
+    var
+        Item: Record Item;
+        ServiceContractHeader: Record "Service Contract Header";
+        ServiceContracts: page "Service Contract List";
+        ItemNo: code[20];
+        lblConfirm: Label '¿Desea añadir la linea de servicio %1 %2\del contrato %3\a la lineas %4 %5?',
+            comment = 'ESP="¿Desea añadir la linea de servicio %1 %2\del contrato %3\a la lineas %4 %5?"';
+    begin
+        Rec.TestField(Type, Rec.Type::Item);
+        ItemNo := GetServiceMgtSetupItemExtension();
+        Item.SetFilter(type, '%1|%2', Item.Type::"Non-Inventory", Item.Type::Service);
+        Item.Get(ItemNo);
+        ServiceContractHeader.SetRange("Contract Type", ServiceContractHeader."Contract Type"::Contract);
+        ServiceContractHeader.SetRange(Status, ServiceContractHeader.Status::Signed);
+        ServiceContracts.SetTableView(ServiceContractHeader);
+        ServiceContracts.LookupMode(true);
+        if ServiceContracts.RunModal() = Action::LookupOK then begin
+            ServiceContracts.GetRecord(ServiceContractHeader);
+            if confirm(lblConfirm, false, Rec."No.", Rec.Description, ServiceContractHeader."Contract No.", Item."No.", Item.Description) then begin
+                AddToSalesLine(Rec, item);
+                Rec.ParentLine := true;
+                Rec.ContractParent := true;
+                Rec.Modify();
+                Message('Creada linea de servicio del contrato %1', ServiceContractHeader."Contract No.");
+            end;
+        end;
+    end;
+
+    local procedure AddToSalesLine(SalesLine: Record "Sales Line"; Item: Record Item)
+    var
+        ToSalesLine: Record "Sales Line";
+        NextLineNo: Integer;
+    begin
+        InsertLinesBetween(SalesLine, NextLineNo);
+
+        ToSalesLine.INIT;
+        ToSalesLine."Line No." := NextLineNo;
+        ToSalesLine.Type := ToSalesLine.Type::Item;
+        ToSalesLine.VALIDATE("No.", Item."No.");
+        ToSalesLine.VALIDATE(Quantity, SalesLine.Quantity);
+        ToSalesLine."DecLine Discount1 %_btc" := SalesLine."DecLine Discount1 %_btc";
+        ToSalesLine."DecLine Discount2 %_btc" := SalesLine."DecLine Discount2 %_btc";
+        ToSalesLine.Validate("Line Discount %", SalesLine."Line Discount %");
+        ToSalesLine.ParentLineNo := SalesLine."Line No.";
+        ToSalesLine.Insert();
+    end;
+
+    local procedure InsertLinesBetween(Rec: Record "Sales Line"; var NextLineNo: Integer)
+    var
+        SalesLine: Record "Sales Line";
+        lblError: Label 'No hay suficiente espacio para inserta una linea de venta, linea %1', comment = 'ESP="No hay suficiente espacio para inserta una linea de venta, linea %1"';
+    begin
+        SalesLine.SetRange("Document Type", Rec."Document Type");
+        SalesLine.SetRange("Document No.", Rec."Document No.");
+        SalesLine.SetFilter("Line No.", '%1..', Rec."Line No." + 1);
+        IF SalesLine.FindFirst() THEN
+            NextLineNo := (SalesLine."Line No." - Rec."Line No.") DIV 2
+        ELSE
+            NextLineNo := SalesLine."Line No." + 10000;
+        if NextLineNo = SalesLine."Line No." then
+            error(LblError, Rec."Line No.");
+    end;
+
+    local procedure GetServiceMgtSetupItemExtension(): code[20]
+    var
+        ServiceMgtSetup: Record "Service Mgt. Setup";
+        RefRecord: RecordRef;
+        RefField: FieldRef;
+    begin
+        ServiceMgtSetup.Get();
+        RefRecord.GetTable(ServiceMgtSetup);
+        if RefRecord.FieldExist(50690) then begin // cod. Producto contrato
+            RefField := RefRecord.Field(50690);
+            RefField.TestField();
+            exit(RefField.Value);
+        end;
+    end;
     // =============     Explode Production BOM SALES LINE          ====================
     // ==  
     // ==  comment 

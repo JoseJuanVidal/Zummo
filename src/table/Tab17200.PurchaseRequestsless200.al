@@ -446,6 +446,7 @@ table 17200 "Purchase Requests less 200"
         cduSmtp.CreateMessage(CompanyName, SMTPSetup."User ID", Recipients, txtAsunto, textoHtml, TRUE);
         DocAttachment.Reset();
         DocAttachment.SetRange("Table ID", 17200);
+        DocAttachment.SetRange("No.", Rec."No.");
         if DocAttachment.FindFirst() then
             repeat
                 FilePathName := FileManagement.ServerTempFileName(DocAttachment."File Extension");

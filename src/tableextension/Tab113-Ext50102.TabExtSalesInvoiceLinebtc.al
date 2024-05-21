@@ -213,6 +213,10 @@ tableextension 50102 "TabExtSalesInvoiceLine_btc" extends "Sales Invoice Line"  
             Editable = false;
             DataClassification = CustomerContent;
         }
+        field(50203; ContractParent; Boolean)
+        {
+            DataClassification = CustomerContent;
+        }
     }
 }
 

@@ -9993,6 +9993,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea desplegar la lista de materiales de producción de %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method Action_ExplodeProdBOM - NamedType lblConfirmExplode</note>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 989802923 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea añadir la linea de servicio %1 %2\del contrato %3\a la lineas %4 %5?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea añadir la linea de servicio %1 %2\del contrato %3\a la lineas %4 %5?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method AddExplodeServiceContract - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 2399141473 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>El cliente %1 %2 tiene bloqueado la venta del producto %3 %4.\Pongase en contacto con administración</source>
           <note from="Developer" annotates="general" priority="2">ESP="El cliente %1 %2 tiene bloqueado la venta del producto %3 %4.\Pongase en contacto con administración"</note>
@@ -10022,6 +10027,11 @@
           <source>No hay suficiente espacio para desplegar la lista de materiales.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No hay suficiente espacio para desplegar la lista de materiales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ExplodeProdBOMCompLines - NamedType lblError</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 3149932036 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No hay suficiente espacio para inserta una linea de venta, linea %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No hay suficiente espacio para inserta una linea de venta, linea %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method InsertLinesBetween - NamedType lblError</note>
         </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 145188275 - NamedType 2109728185" size-unit="char" translate="yes" xml:space="preserve">
           <source>Registration date changed\Do you want to update the lines?</source>
@@ -27973,6 +27983,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desplegar Componentes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderSubform - Action ExplodeProdBOM - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1793060472 - Action 2031736121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
+          <source>Añadir Contrato Servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Añadir Contrato Servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderSubform - Action ExplodeServiceContractHeader - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1793060472 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
@@ -30373,6 +30388,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Suplemento aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Suplemento_aseguradora - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1670910335 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field ContractParent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1670910335 - Field 462513985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>Line Discount1 %</source>
           <note from="Developer" annotates="general" priority="2">ESP="% Descuento línea1"</note>
@@ -31272,6 +31292,11 @@
           <source>Base Amount Line</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe Base IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field BaseImponibleLinea - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3333755618 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field ContractParent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 462513985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>Line Discount1 %</source>
@@ -32438,6 +32463,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field ComentarioAut_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field ContractParent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 462513985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Line Discount1 %</source>
           <note from="Developer" annotates="general" priority="2">ESP="% Descuento línea1"</note>
@@ -32572,6 +32602,11 @@
           <source>Internal Comment</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentario interno"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ComentarioInterno_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ContractParent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 462513985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Line Discount1 %</source>

@@ -182,5 +182,9 @@ tableextension 50118 "SalesCrMemoLine" extends "Sales Cr.Memo Line"  //115
             Editable = false;
             DataClassification = CustomerContent;
         }
+        field(50203; ContractParent; Boolean)
+        {
+            DataClassification = CustomerContent;
+        }
     }
 }

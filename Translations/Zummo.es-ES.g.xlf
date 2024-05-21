@@ -10790,6 +10790,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method Action_ExplodeProdBOM - NamedType lblConfirmExplode</note>
           <target>¿Desea desplegar la lista de materiales de producción de %1 %2?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 989802923 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea añadir la linea de servicio %1 %2\del contrato %3\a la lineas %4 %5?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea añadir la linea de servicio %1 %2\del contrato %3\a la lineas %4 %5?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method AddExplodeServiceContract - NamedType lblConfirm</note>
+          <target>¿Desea añadir la linea de servicio %1 %2\del contrato %3\a la lineas %4 %5?</target>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 2399141473 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>El cliente %1 %2 tiene bloqueado la venta del producto %3 %4.\Pongase en contacto con administración</source>
           <note from="Developer" annotates="general" priority="2">ESP="El cliente %1 %2 tiene bloqueado la venta del producto %3 %4.\Pongase en contacto con administración"</note>
@@ -10825,6 +10831,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="No hay suficiente espacio para desplegar la lista de materiales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ExplodeProdBOMCompLines - NamedType lblError</note>
           <target>No hay suficiente espacio para desplegar la lista de materiales</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 3149932036 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No hay suficiente espacio para inserta una linea de venta, linea %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No hay suficiente espacio para inserta una linea de venta, linea %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method InsertLinesBetween - NamedType lblError</note>
+          <target>No hay suficiente espacio para inserta una linea de venta, linea %1</target>
         </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 145188275 - NamedType 2109728185" size-unit="char" translate="yes" xml:space="preserve">
           <source>Registration date changed\Do you want to update the lines?</source>
@@ -30589,6 +30601,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desplegar Componentes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderSubform - Action ExplodeProdBOM - Property Caption</note>
           <target>Desplegar Componentes</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1793060472 - Action 2031736121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
+          <source>Añadir Contrato Servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Añadir Contrato Servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrderSubform - Action ExplodeServiceContractHeader - Property Caption</note>
+          <target>Añadir Contrato Servicio</target>
         </trans-unit>
         <trans-unit id="PageExtension 1793060472 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>Blocked</source>
