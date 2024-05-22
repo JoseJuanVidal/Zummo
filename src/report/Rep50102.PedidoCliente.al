@@ -2406,15 +2406,34 @@ report 50102 "PedidoCliente"
         SalesLineComponent.SetRange(ParentLineNo, SalesLine."Line No.");
         if SalesLineComponent.FindFirst() then
             repeat
-                UnitPrice += SalesLineComponent."Unit Price";
-                LineAmount += SalesLineComponent."Line Amount";
-                if Quantity < SalesLineComponent.Quantity then
-                    Quantity := SalesLineComponent.Quantity;
-                Dto := SalesLineComponent."Line Discount %";
-                Dto1 := SalesLineComponent."DecLine Discount1 %_btc";
-                Dto2 := SalesLineComponent."DecLine Discount2 %_btc";
-
+                case SalesLine.ContractParent of
+                    false:
+                        begin
+                            UnitPrice += SalesLineComponent."Unit Price";
+                            LineAmount += SalesLineComponent."Line Amount";
+                            if Quantity < SalesLineComponent.Quantity then
+                                Quantity := SalesLineComponent.Quantity;
+                            Dto := SalesLineComponent."Line Discount %";
+                            Dto1 := SalesLineComponent."DecLine Discount1 %_btc";
+                            Dto2 := SalesLineComponent."DecLine Discount2 %_btc";
+                        end;
+                    else begin
+                        UnitPrice += SalesLineComponent."Unit Price";
+                        LineAmount += SalesLineComponent."Line Amount";
+                    end;
+                end;
             Until SalesLineComponent.next() = 0;
+        // linea agrupada con type ITEM
+        if SalesLine.ContractParent then begin
+            UnitPrice += SalesLine."Unit Price";
+            LineAmount += SalesLine."Line Amount";
+            Quantity := SalesLine.Quantity;
+            Dto := SalesLine."Line Discount %";
+            Dto1 := SalesLine."DecLine Discount1 %_btc";
+            Dto2 := SalesLine."DecLine Discount2 %_btc";
+            // ahora calculamos la formula para sacar el unit price base con todo
+            UnitPrice := round((LineAmount / (1 - Dto / 100)) / Quantity, 0.01);
+        end;
         SalesLine.Type := SalesLine.Type::Item;
         SalesLine."No." := SalesLine.ParentItemNo;
         SalesLine.Quantity := Quantity;

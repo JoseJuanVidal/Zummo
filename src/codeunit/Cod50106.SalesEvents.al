@@ -1647,9 +1647,10 @@ codeunit 50106 "SalesEvents"
         ServiceContracts.LookupMode(true);
         if ServiceContracts.RunModal() = Action::LookupOK then begin
             ServiceContracts.GetRecord(ServiceContractHeader);
-            if confirm(lblConfirm, false, Rec."No.", Rec.Description, ServiceContractHeader."Contract No.", Item."No.", Item.Description) then begin
-                AddToSalesLine(Rec, item);
+            if confirm(lblConfirm, false, Item."No.", Item.Description, ServiceContractHeader."Contract No.", Rec."No.", Rec.Description) then begin
+                AddToSalesLine(Rec, Item, ServiceContractHeader."Contract No.");
                 Rec.ParentLine := true;
+                Rec.ParentItemNo := Rec."No.";
                 Rec.ContractParent := true;
                 Rec.Modify();
                 Message('Creada linea de servicio del contrato %1', ServiceContractHeader."Contract No.");
@@ -1657,7 +1658,20 @@ codeunit 50106 "SalesEvents"
         end;
     end;
 
-    local procedure AddToSalesLine(SalesLine: Record "Sales Line"; Item: Record Item)
+    local procedure UpdateContractNoExtension(var Rec: Record "Sales Line"; ContractNo: code[29])
+    var
+        RefRecord: RecordRef;
+        RefField: FieldRef;
+    begin
+        RefRecord.GetTable(Rec);
+        if RefRecord.FieldExist(50651) then begin  // Service Contract No.
+            RefField := RefRecord.Field(50651);
+            RefField.Value := ContractNo;
+            RefRecord.Modify();
+        end
+    end;
+
+    local procedure AddToSalesLine(SalesLine: Record "Sales Line"; Item: Record Item; ContractNo: code[20])
     var
         ToSalesLine: Record "Sales Line";
         NextLineNo: Integer;
@@ -1665,6 +1679,7 @@ codeunit 50106 "SalesEvents"
         InsertLinesBetween(SalesLine, NextLineNo);
 
         ToSalesLine.INIT;
+        ToSalesLine := SalesLine;
         ToSalesLine."Line No." := NextLineNo;
         ToSalesLine.Type := ToSalesLine.Type::Item;
         ToSalesLine.VALIDATE("No.", Item."No.");
@@ -1674,6 +1689,7 @@ codeunit 50106 "SalesEvents"
         ToSalesLine.Validate("Line Discount %", SalesLine."Line Discount %");
         ToSalesLine.ParentLineNo := SalesLine."Line No.";
         ToSalesLine.Insert();
+        UpdateContractNoExtension(ToSalesLine, ContractNo);
     end;
 
     local procedure InsertLinesBetween(Rec: Record "Sales Line"; var NextLineNo: Integer)
@@ -1685,9 +1701,9 @@ codeunit 50106 "SalesEvents"
         SalesLine.SetRange("Document No.", Rec."Document No.");
         SalesLine.SetFilter("Line No.", '%1..', Rec."Line No." + 1);
         IF SalesLine.FindFirst() THEN
-            NextLineNo := (SalesLine."Line No." - Rec."Line No.") DIV 2
+            NextLineNo := Rec."Line No." + (SalesLine."Line No." - Rec."Line No.") DIV 2
         ELSE
-            NextLineNo := SalesLine."Line No." + 10000;
+            NextLineNo := Rec."Line No." + 10000;
         if NextLineNo = SalesLine."Line No." then
             error(LblError, Rec."Line No.");
     end;

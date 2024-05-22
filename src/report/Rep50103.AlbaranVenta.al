@@ -1159,19 +1159,40 @@ report 50103 "AlbaranVenta"
         Dto: Decimal;
         Dto1: Decimal;
         Dto2: Decimal;
+        LineAmount: Decimal;
     begin
         SalesShipmentLine.Reset();
         SalesShipmentLine.SetRange("Document No.", "Sales Shipment Line"."Document No.");
         SalesShipmentLine.SetRange(ParentLineNo, "Sales Shipment Line"."Line No.");
         if SalesShipmentLine.FindFirst() then
             repeat
-                if Quantity < SalesShipmentLine.Quantity then
-                    Quantity := SalesShipmentLine.Quantity;
-                UnitPrice += SalesShipmentLine."Unit Price";
-                Dto := SalesShipmentLine."Line Discount %";
-                Dto1 := SalesShipmentLine."DecLine Discount1 %_btc";
-                Dto2 := SalesShipmentLine."DecLine Discount2 %_btc";
+                case "Sales Shipment Line".ContractParent of
+                    false:
+                        begin
+                            if Quantity < SalesShipmentLine.Quantity then
+                                Quantity := SalesShipmentLine.Quantity;
+                            UnitPrice += SalesShipmentLine."Unit Price";
+                            Dto := SalesShipmentLine."Line Discount %";
+                            Dto1 := SalesShipmentLine."DecLine Discount1 %_btc";
+                            Dto2 := SalesShipmentLine."DecLine Discount2 %_btc";
+                        end;
+                    else begin
+                        UnitPrice += SalesShipmentLine."Unit Price";
+                        LineAmount += SalesShipmentLine."Unit Price" * "Sales Shipment Line"."Unit Price";
+                    end;
+                end;
             Until SalesShipmentLine.next() = 0;
+        // linea agrupada con type ITEM
+        if "Sales Shipment Line".ContractParent then begin
+            UnitPrice += "Sales Shipment Line"."Unit Price";
+            LineAmount += "Sales Shipment Line"."Unit Price" * "Sales Shipment Line".Quantity;
+            Quantity := "Sales Shipment Line".Quantity;
+            Dto := "Sales Shipment Line"."Line Discount %";
+            Dto1 := "Sales Shipment Line"."DecLine Discount1 %_btc";
+            Dto2 := "Sales Shipment Line"."DecLine Discount2 %_btc";
+            // ahora calculamos la formula para sacar el unit price base con todo
+            UnitPrice := round((LineAmount / (1 - Dto / 100)) / Quantity, 0.01);
+        end;
         "Sales Shipment Line".Type := SalesShipmentLine.Type::Item;
         "Sales Shipment Line"."No." := SalesShipmentLine.ParentItemNo;
         "Sales Shipment Line".Quantity := Quantity;

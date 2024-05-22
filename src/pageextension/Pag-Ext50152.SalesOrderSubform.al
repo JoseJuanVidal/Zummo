@@ -317,6 +317,7 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
         myInt: Integer;
     begin
         Funciones.AddExplodeServiceContract(Rec);
+        CurrPage.Update();
     end;
 
     local procedure GetSalesPrices()

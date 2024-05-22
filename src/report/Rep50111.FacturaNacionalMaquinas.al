@@ -3209,14 +3209,34 @@ report 50111 "FacturaNacionalMaquinas"
         SalesInvoiceLine.SetRange(ParentLineNo, "Sales Invoice Line"."Line No.");
         if SalesInvoiceLine.FindFirst() then
             repeat
-                if Quantity < SalesInvoiceLine.Quantity then
-                    Quantity := SalesInvoiceLine.Quantity;
-                UnitPrice += SalesInvoiceLine."Unit Price";
-                Dto := SalesInvoiceLine."Line Discount %";
-                Dto1 := SalesInvoiceLine."DecLine Discount1 %_btc";
-                Dto2 := SalesInvoiceLine."DecLine Discount2 %_btc";
-                LineAmount += SalesInvoiceLine."Line Amount";
+                case "Sales Invoice Line".ContractParent of
+                    false:
+                        begin
+                            if Quantity < SalesInvoiceLine.Quantity then
+                                Quantity := SalesInvoiceLine.Quantity;
+                            UnitPrice += SalesInvoiceLine."Unit Price";
+                            Dto := SalesInvoiceLine."Line Discount %";
+                            Dto1 := SalesInvoiceLine."DecLine Discount1 %_btc";
+                            Dto2 := SalesInvoiceLine."DecLine Discount2 %_btc";
+                            LineAmount += SalesInvoiceLine."Line Amount";
+                        end;
+                    else begin
+                        UnitPrice += SalesInvoiceLine."Unit Price";
+                        LineAmount += SalesInvoiceLine."Line Amount";
+                    end;
+                end;
             Until SalesInvoiceLine.next() = 0;
+        // linea agrupada con type ITEM
+        if "Sales Invoice Line".ContractParent then begin
+            UnitPrice += "Sales Invoice Line"."Unit Price";
+            LineAmount += "Sales Invoice Line"."Line Amount";
+            Quantity := "Sales Invoice Line".Quantity;
+            Dto := "Sales Invoice Line"."Line Discount %";
+            Dto1 := "Sales Invoice Line"."DecLine Discount1 %_btc";
+            Dto2 := "Sales Invoice Line"."DecLine Discount2 %_btc";
+            // ahora calculamos la formula para sacar el unit price base con todo
+            UnitPrice := round((LineAmount / (1 - Dto / 100)) / Quantity, 0.01);
+        end;
         "Sales Invoice Line".Type := SalesInvoiceLine.Type::Item;
         "Sales Invoice Line"."No." := SalesInvoiceLine.ParentItemNo;
         "Sales Invoice Line".Quantity := Quantity;
