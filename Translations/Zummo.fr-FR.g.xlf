@@ -11290,6 +11290,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field ABC Cliente - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1670910335 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field ContractParent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1670910335 - Field 1682838236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>ParentItemNo</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -11370,6 +11375,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field ABC Cliente - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3333755618 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field ContractParent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 1682838236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>ParentItemNo</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -11440,6 +11450,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field ComentarioAut_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field ContractParent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 2082980072 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>LineaComentarioSerie</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -11459,6 +11474,11 @@
           <source>ParentLineNo</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field ParentLineNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ContractParent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 1041044262 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>ExternalDocument</source>

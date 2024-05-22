@@ -138,6 +138,16 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
                     Action_ExplodeProdBOM();
                 end;
             }
+            action(ExplodeServiceContractHeader)
+            {
+                ApplicationArea = all;
+                Caption = 'Añadir Contrato Servicio', comment = 'ESP="Añadir Contrato Servicio"';
+
+                trigger OnAction()
+                begin
+                    Action_ExplodeServiceContract();
+                end;
+            }
         }
     }
     var
@@ -213,5 +223,13 @@ pageextension 50141 "SalesQuoteSubform" extends "Sales Quote Subform"
         if not (Rec.Type in [Rec.Type::Item]) then
             exit;
         ExistSalesPrice := Funciones.CheckSalesPriceItemNo(Rec);
+    end;
+
+    local procedure Action_ExplodeServiceContract()
+    var
+        myInt: Integer;
+    begin
+        Funciones.AddExplodeServiceContract(Rec);
+        CurrPage.Update();
     end;
 }

@@ -33415,6 +33415,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Suplemento_aseguradora - Property Caption</note>
           <target>Suplemento aseguradora</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1670910335 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field ContractParent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1670910335 - Field 462513985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>Line Discount1 %</source>
           <note from="Developer" annotates="general" priority="2">ESP="% Descuento línea1"</note>
@@ -34424,6 +34429,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importe Base IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field BaseImponibleLinea - Property Caption</note>
           <target>Importe Base IVA</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3333755618 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentLine - Field ContractParent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3333755618 - Field 462513985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>Line Discount1 %</source>
@@ -35785,6 +35795,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field ComentarioAut_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field ContractParent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 462513985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Line Discount1 %</source>
           <note from="Developer" annotates="general" priority="2">ESP="% Descuento línea1"</note>
@@ -35942,6 +35957,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Comentario interno"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ComentarioInterno_btc - Property Caption</note>
           <target>Comentario interno</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>ContractParent</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field ContractParent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 462513985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Line Discount1 %</source>

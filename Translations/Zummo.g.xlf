@@ -28053,6 +28053,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desplegar Componentes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuoteSubform - Action ExplodeProdBOM - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1876379756 - Action 2031736121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
+          <source>Añadir Contrato Servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Añadir Contrato Servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesQuoteSubform - Action ExplodeServiceContractHeader - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1876379756 - Control 1597420982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
