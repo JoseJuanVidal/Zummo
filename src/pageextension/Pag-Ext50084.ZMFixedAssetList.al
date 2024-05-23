@@ -12,6 +12,14 @@ pageextension 50084 "ZMFixed Asset List" extends "Fixed Asset List"
             {
                 ApplicationArea = all;
             }
+            field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+            {
+                ApplicationArea = all;
+            }
+            field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }
