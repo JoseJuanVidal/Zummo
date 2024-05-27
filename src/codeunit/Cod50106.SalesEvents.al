@@ -1642,7 +1642,9 @@ codeunit 50106 "SalesEvents"
         Item.SetFilter(type, '%1|%2', Item.Type::"Non-Inventory", Item.Type::Service);
         Item.Get(ItemNo);
         ServiceContractHeader.SetRange("Contract Type", ServiceContractHeader."Contract Type"::Contract);
-        ServiceContractHeader.SetRange(Status, ServiceContractHeader.Status::Signed);
+        // se comenta porque cuando creamos el pedido de venta, todavia no esta creado el producto de servio
+        // por lo que no se puede indicar este
+        // ServiceContractHeader.SetRange(Status, ServiceContractHeader.Status::Signed);
         ServiceContracts.SetTableView(ServiceContractHeader);
         ServiceContracts.LookupMode(true);
         if ServiceContracts.RunModal() = Action::LookupOK then begin
