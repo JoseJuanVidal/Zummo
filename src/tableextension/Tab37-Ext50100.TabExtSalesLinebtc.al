@@ -258,7 +258,7 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
         }
     }
 
-    local procedure ValidateDecLineDiscount()
+    procedure ValidateDecLineDiscount()
     var
         SalesEvent: Codeunit "SalesEvents";
     begin

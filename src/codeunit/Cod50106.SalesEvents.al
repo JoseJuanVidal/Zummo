@@ -2003,6 +2003,7 @@ codeunit 50106 "SalesEvents"
         AmountDiscount: Decimal;
         GrossAmount: Decimal;
         DiscountLine: Decimal;
+        AprobadodtoFicha: Boolean;
     begin
         // Primer la configuración Maxima de descuento permitido, mas restrictiva
         if not SalesSetup.Get() then
@@ -2017,13 +2018,15 @@ codeunit 50106 "SalesEvents"
         DiscountLine := Round((1 - ((GrossAmount - AmountDiscount) / GrossAmount)) * 100, 1, '<');
 
         // Aqui miramos los campos de Customer (Dtos en familias)
-        if CustomerDiscountFamilia(SalesLine, SalesLine."Line Discount %") then
+        if CustomerDiscountFamilia(SalesLine, SalesLine."Line Discount %", AprobadodtoFicha) then
             exit(true);
-
+        if AprobadodtoFicha then
+            exit;
         // ahora miramos configuración del producto
         // si la familia tiene configuración de aprobación de producto
         if ItemPriceDiscount(SalesLine, SalesLine."Line Discount %") then
             exit(true);
+
     end;
 
     local procedure ItemPriceDiscount(SalesLine: Record "Sales Line"; DiscountLine: Decimal): Boolean
@@ -2093,7 +2096,7 @@ codeunit 50106 "SalesEvents"
         end;
     end;
 
-    local procedure CustomerDiscountFamilia(SalesLine: Record "Sales Line"; DiscountLine: Decimal): Boolean
+    local procedure CustomerDiscountFamilia(SalesLine: Record "Sales Line"; DiscountLine: Decimal; var AprobadodtoFicha: Boolean): Boolean
     var
         SalesSetup: Record "Sales & Receivables Setup";
         Customer: Record Customer;
@@ -2157,6 +2160,8 @@ codeunit 50106 "SalesEvents"
 
         if (DiscountLine > SalesSetup."Maximun Discounts Approval") and (DtoMaximoFamilia <= SalesSetup."Maximun Discounts Approval") then
             exit(true);
+        if (DiscountLine <= DtoMaximoFamilia) and (DtoMaximoFamilia > 0) then
+            AprobadodtoFicha := true;
 
     end;
 
