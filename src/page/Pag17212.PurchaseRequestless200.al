@@ -75,6 +75,7 @@ page 17212 "Purchase Request less 200"
                 ApplicationArea = all;
                 Caption = 'Attachment Document', comment = 'ESP="Documentos adjuntos"';
                 SubPageLink = "Table ID" = const(17200), "No." = field("No.");
+
             }
         }
     }

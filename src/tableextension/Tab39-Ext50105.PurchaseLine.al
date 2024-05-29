@@ -78,4 +78,31 @@ tableextension 50105 "PurchaseLine" extends "Purchase Line"  //39
             Editable = false;
         }
     }
+
+    trigger OnAfterInsert()
+    begin
+    end;
+
+    trigger OnAfterModify()
+    begin
+        UpdatePurchaseHeaderJobNo();
+    end;
+
+    local procedure UpdatePurchaseHeaderJobNo()
+    var
+        PurchaseHeader: Record "Purchase Header";
+    begin
+        if not (Rec.Type in [Rec.Type::"G/L Account", Rec.Type::Item]) then
+            exit;
+        if Rec."No." = '' then
+            exit;
+        if PurchaseHeader.Get(Rec."Document Type", Rec."Document No.") then begin
+            if PurchaseHeader."Job No." <> '' then
+                Rec.Validate("Job No.", PurchaseHeader."Job No.");
+            if PurchaseHeader."Job Task No." <> '' then
+                Rec.Validate("Job Task No.", PurchaseHeader."Job Task No.");
+            Rec.Validate("Job Line Amount", 0);
+            Rec.Modify();
+        end;
+    end;
 }

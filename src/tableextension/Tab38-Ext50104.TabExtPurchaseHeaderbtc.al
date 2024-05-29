@@ -61,7 +61,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         field(50032; "Job Task No."; code[20])
         {
             Caption = 'Job Task No', Comment = 'ESP="Nº Tarea Proyecto"';
-            TableRelation = "Job Task" where("Job No." = field("Job No."));
+            TableRelation = "Job Task"."Job Task No." where("Job No." = field("Job No."));
 
             trigger OnValidate()
             begin
@@ -177,7 +177,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
                 PruchaseLine.SetRange("Document No.", Rec."No.");
                 if PruchaseLine.FindFirst() then
                     repeat
-                        if PruchaseLine.Type in [PruchaseLine.Type::"Fixed Asset", PruchaseLine.Type::Item, PruchaseLine.Type::"G/L Account"] then begin
+                        if PruchaseLine.Type in [PruchaseLine.Type::Item, PruchaseLine.Type::"G/L Account"] then begin
                             PruchaseLine.Validate("Job No.", Rec."Job No.");
                             PruchaseLine.Validate("Job Task No.", Rec."Job Task No.");
                             PruchaseLine.Modify();

@@ -15,6 +15,12 @@ page 17213 "Purchase Request less 200 Card"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        UpdateSubform();
+                    end;
+
                     trigger OnAssistEdit()
                     begin
                         OnAssistEdit_No();
@@ -34,6 +40,11 @@ page 17213 "Purchase Request less 200 Card"
                     field("Vendor Name"; Rec."Vendor Name")
                     {
                         ApplicationArea = All;
+
+                        trigger OnValidate()
+                        begin
+                            UpdateSubForm();
+                        end;
                     }
                 }
                 field(Description; Description)
@@ -144,14 +155,7 @@ page 17213 "Purchase Request less 200 Card"
     trigger OnAfterGetCurrRecord()
     begin
         Comments := Rec.GetComment().ToText();
-    end;
-
-    trigger OnAfterGetRecord()
-    var
-        RefRecord: recordRef;
-    begin
-        RefRecord.Get(Rec.RecordId);
-        CurrPage."Attachment Document".Page.SetTableNo(17200, Rec."No.", 0, RefRecord);
+        UpdateSubForm();
     end;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
@@ -195,6 +199,14 @@ page 17213 "Purchase Request less 200 Card"
     begin
         IF AssistEdit(xRec) THEN
             CurrPage.UPDATE;
+    end;
+
+    local procedure UpdateSubForm()
+    var
+        RefRecord: recordRef;
+    begin
+        RefRecord.Get(Rec.RecordId);
+        CurrPage."Attachment Document".Page.SetTableNo(17200, Rec."No.", 0, RefRecord);
     end;
 
 }
