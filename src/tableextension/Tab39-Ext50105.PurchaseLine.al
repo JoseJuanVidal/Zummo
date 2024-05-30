@@ -96,12 +96,16 @@ tableextension 50105 "PurchaseLine" extends "Purchase Line"  //39
             exit;
         if Rec."No." = '' then
             exit;
+
         if PurchaseHeader.Get(Rec."Document Type", Rec."Document No.") then begin
+            if (Rec."Job No." = '') and (Rec."Job Task No." = '') then
+                exit;
             if PurchaseHeader."Job No." <> '' then
                 Rec.Validate("Job No.", PurchaseHeader."Job No.");
             if PurchaseHeader."Job Task No." <> '' then
                 Rec.Validate("Job Task No.", PurchaseHeader."Job Task No.");
-            Rec.Validate("Job Line Amount", 0);
+            if Rec."Receipt No." = '' then
+                Rec."Job Line Amount" := 0;
             Rec.Modify();
         end;
     end;

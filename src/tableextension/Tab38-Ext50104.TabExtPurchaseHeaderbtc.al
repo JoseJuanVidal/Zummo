@@ -178,8 +178,10 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
                 if PruchaseLine.FindFirst() then
                     repeat
                         if PruchaseLine.Type in [PruchaseLine.Type::Item, PruchaseLine.Type::"G/L Account"] then begin
-                            PruchaseLine.Validate("Job No.", Rec."Job No.");
-                            PruchaseLine.Validate("Job Task No.", Rec."Job Task No.");
+                            if Rec."Job No." <> '' then
+                                PruchaseLine.Validate("Job No.", Rec."Job No.");
+                            if Rec."Job Task No." <> '' then
+                                PruchaseLine.Validate("Job Task No.", Rec."Job Task No.");
                             PruchaseLine.Modify();
                         end;
                     Until PruchaseLine.next() = 0;
