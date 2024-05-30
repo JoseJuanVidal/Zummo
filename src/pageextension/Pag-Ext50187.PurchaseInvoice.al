@@ -34,12 +34,12 @@ pageextension 50187 "PurchaseInvoice" extends "Purchase Invoice"
             field("Job No."; "Job No.")
             {
                 ApplicationArea = all;
-                Importance = Additional;
+                Importance = Standard;
             }
             field("Job Task No."; "Job Task No.")
             {
                 ApplicationArea = all;
-                Importance = Additional;
+                Importance = Standard;
             }
         }
         addlast(Content)

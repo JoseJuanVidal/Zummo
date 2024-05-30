@@ -30,5 +30,23 @@ tableextension 50191 "ZM IT Ext Jobs Setup" extends "Jobs Setup"
             Caption = 'Journal Batch Name', comment = 'ESP="Nombre sección diario"';
             TableRelation = "Res. Journal Batch".Name WHERE("Journal Template Name" = FIELD("Journal Template Name"));
         }
+        field(50010; "Resource No. Expenses"; code[20])
+        {
+            Caption = 'Resource No. Expenses', comment = 'ESP="Nª Recurso Gastos"';
+            DataClassification = ToBeClassified;
+            TableRelation = Resource where(Type = const(Machine));
+        }
+        field(50011; "Expenses Job Jnl. Template"; code[10])
+        {
+            Caption = 'Expenses Job Jnl. Template', comment = 'ESP="Nombre libro diario Gastos"';
+            DataClassification = ToBeClassified;
+            TableRelation = "Job Journal Template";
+        }
+        field(50012; "Expenses Journal Batch Name"; code[10])
+        {
+            Caption = 'Expenses Journal Batch Name', comment = 'ESP="Nombre sección diario Gastos"';
+            DataClassification = ToBeClassified;
+            TableRelation = "Job Journal Batch".Name where("Journal Template Name" = field("Expenses Job Jnl. Template"));
+        }
     }
 }

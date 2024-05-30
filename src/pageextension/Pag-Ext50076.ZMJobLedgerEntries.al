@@ -1,5 +1,16 @@
 pageextension 50076 "ZM Job Ledger Entries" extends "Job Ledger Entries"
 {
+
+    layout
+    {
+        addafter("Document No.")
+        {
+            field("External Document No."; "External Document No.")
+            {
+                ApplicationArea = all;
+            }
+        }
+    }
     actions
     {
         addlast(Creation)

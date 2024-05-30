@@ -4,6 +4,22 @@ pageextension 50204 "ZM IT Ext Jobs Setup" extends "Jobs Setup"
     {
         addlast(Content)
         {
+            group(Expenses)
+            {
+                Caption = 'Register expenses', comment = 'ESP="Registro Gastos"';
+                field("Expenses Job Jnl. Template"; "Expenses Job Jnl. Template")
+                {
+                    ApplicationArea = all;
+                }
+                field("Expenses Journal Batch Name"; "Expenses Journal Batch Name")
+                {
+                    ApplicationArea = all;
+                }
+                field("Resource No. Expenses"; "Resource No. Expenses")
+                {
+                    ApplicationArea = all;
+                }
+            }
             group("Partes IT")
             {
                 field("Journal Template Name"; "Journal Template Name")

@@ -1374,4 +1374,83 @@ codeunit 50101 "Eventos_btc"
     end;
 
     //#endregion Intercompany 
+
+    // =============     funciones de proyectoa          ====================
+    // ==  
+    // ==  al registrar una factura de compra, e indicar un proyecto y tarea
+    // ==  registra un diario de proyectos con el producto de GASTOS para las lineas de Activos Fijos
+    // ==  ya que estas no se pueden asignar directamente a proyectos
+    // ==  
+    // ======================================================================================================
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnRunOnBeforeFinalizePosting', '', true, true)]
+    local procedure PurchPost_OnRunOnBeforeFinalizePosting(var PurchaseHeader: Record "Purchase Header"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchInvHeader: Record "Purch. Inv. Header";
+        var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; var ReturnShipmentHeader: Record "Return Shipment Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; CommitIsSuppressed: Boolean)
+    begin
+        // controlamos si se crea factura de compra
+        if not PurchaseHeader.Invoice then
+            exit;
+        case PurchaseHeader."Document Type" of
+            PurchaseHeader."Document Type"::Order, PurchaseHeader."Document Type"::Invoice:
+                begin
+                    // si registramos la factura y una de sus lineas es activo fijo, realizamos el registro
+                    if (PurchaseHeader."Job No." <> '') and (PurchaseHeader."Job Task No." <> '') then
+                        PurchaseLineResourceExpenses(PurchaseHeader);
+                end;
+        end;
+    end;
+
+    local procedure PurchaseLineResourceExpenses(PurchaseHeader: Record "Purchase Header")
+    var
+        PurchaseLine: Record "Purchase Line";
+    begin
+        PurchaseLine.Reset();
+        PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
+        PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
+        PurchaseLine.SetRange(Type, PurchaseLine.Type::"Fixed Asset");
+        if PurchaseLine.FindFirst() then
+            repeat
+                PostingPurchaseLineJournalJob(PurchaseHeader, PurchaseLine);
+            Until PurchaseLine.next() = 0;
+    end;
+
+    local procedure PostingPurchaseLineJournalJob(PurchaseHeader: Record "Purchase Header"; PurchaseLine: Record "Purchase Line")
+    var
+        JobSetup: Record "Jobs Setup";
+        JobJournalLine: Record "Job Journal Line";
+        JobJnlPostBatch: Codeunit "Job Jnl.-Post Batch";
+    begin
+        JobSetup.Get();
+        if JobSetup."Resource No. Expenses" = '' then
+            exit;
+        JobJournalLine.Reset();
+        JobJournalLine.SetRange("Journal Template Name", JobSetup."Expenses Job Jnl. Template");
+        JobJournalLine.SetRange("Journal Batch Name", JobSetup."Expenses Journal Batch Name");
+        JobJournalLine.SetRange("Line No.", 10000);
+        if JobJournalLine.FindFirst() then
+            JobJournalLine.Delete();
+        JobJournalLine.Init();
+        JobJournalLine."Journal Template Name" := JobSetup."Expenses Job Jnl. Template";
+        JobJournalLine."Journal Batch Name" := JobSetup."Expenses Journal Batch Name";
+        JobJournalLine."Line No." := 10000;
+        JobJournalLine.Validate("Posting Date", PurchaseHeader."Posting Date");
+        JobJournalLine.Validate("Document Date", PurchaseHeader."Posting Date");
+        JobJournalLine."Line Type" := JobJournalLine."Line Type"::Budget;
+        JobJournalLine."Document No." := PurchaseLine."Document No.";
+        JobJournalLine."External Document No." := CopyStr(PurchaseHeader."Vendor Invoice No.", 1, MaxStrLen(JobJournalLine."External Document No."));
+        JobJournalLine.Validate("Job No.", PurchaseHeader."Job No.");
+        JobJournalLine.Validate("Job Task No.", PurchaseHeader."Job Task No.");
+        JobJournalLine.Validate("No.", JobSetup."Resource No. Expenses");
+        JobJournalLine.Description := CopyStr(StrSubstNo('%1 %2', PurchaseHeader."Vendor Invoice No.", PurchaseLine.Description), 1, MaxStrLen(JobJournalLine.Description));
+        JobJournalLine.Validate(Quantity, PurchaseLine.Quantity);
+        JobJournalLine.Validate("Unit Cost", PurchaseLine."Unit Cost");
+        JobJournalLine.Validate("Line Discount %", PurchaseLine."Line Discount %");
+        JobJournalLine.Validate("Unit Price", 0);
+        JobJournalLine.Insert();
+
+        JobJnlPostBatch.Run(JobJournalLine)
+
+    end;
+
+    //#end Control registo de proyectos
 }

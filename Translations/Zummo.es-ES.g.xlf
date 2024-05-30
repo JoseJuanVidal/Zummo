@@ -31294,6 +31294,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM FA Ledger Entries - Action ExportarPDF - Property Caption</note>
           <target>Exportar en PDF</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2910060780 - Control 1555821037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2556642749">
+          <source>Register expenses</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro Gastos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM IT Ext Jobs Setup - Control Expenses - Property Caption</note>
+          <target>Registro Gastos</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2634977954 - Control 2312800061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1752036392">
           <source>Daily Time Sheet</source>
           <note from="Developer" annotates="general" priority="2">ESP="Partes Diario"</note>
@@ -36451,6 +36457,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Setup - Field Path File Export - Property Caption</note>
           <target>Directorio Exportar Ficheros</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2910060780 - Field 441089398 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
+          <source>Expenses Job Jnl. Template</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre libro diario Gastos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM IT Ext Jobs Setup - Field Expenses Job Jnl. Template - Property Caption</note>
+          <target>Nombre libro diario Gastos</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2910060780 - Field 1320695075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
+          <source>Expenses Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre sección diario Gastos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM IT Ext Jobs Setup - Field Expenses Journal Batch Name - Property Caption</note>
+          <target>Nombre sección diario Gastos</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2910060780 - Field 2704330142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
           <source>Journal Batch Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre sección diario"</note>
@@ -36462,6 +36480,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre libro diario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM IT Ext Jobs Setup - Field Journal Template Name - Property Caption</note>
           <target>Nombre libro diario</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2910060780 - Field 4148398690 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
+          <source>Resource No. Expenses</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nª Recurso Gastos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM IT Ext Jobs Setup - Field Resource No. Expenses - Property Caption</note>
+          <target>Nª Recurso Gastos</target>
         </trans-unit>
         <trans-unit id="TableExtension 2910060780 - Field 1178205325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
           <source>token</source>
