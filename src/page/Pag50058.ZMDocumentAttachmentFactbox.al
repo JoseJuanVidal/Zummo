@@ -13,7 +13,8 @@ page 50058 "ZM Document Attachment Factbox"
                 field(Documents; COUNT)
                 {
                     ApplicationArea = All;
-                    Caption = 'Documents';
+                    Caption = 'Documents', comment = 'ESP="Nº Documentos"';
+                    ;
                     StyleExpr = TRUE;
                     ToolTip = 'Specifies the number of attachments.';
 

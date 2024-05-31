@@ -145,6 +145,7 @@ table 17200 "Purchase Requests less 200"
         Item: Record Item;
         UserSetup: Record "User Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        lblAction: Label '¿Desea % la solicitud %2?', comment = 'ESP="¿Desea % la solicitud %2?"';
         lblErrorBlocked: Label 'Vendor %1 is blocked %2.', comment = 'ESP="El provedoor %1 está bloqueado %2."';
         lblMaxAmount: Label 'The amount of the request %1 is greater than the maximum allowed %2.',
             comment = 'ESP="El importe de la solicitud %1 es mayor que el máximo permitido %2."';
@@ -252,6 +253,8 @@ table 17200 "Purchase Requests less 200"
     procedure Approve()
     begin
         // control de si existe ya alguna linea indicada
+        if not Confirm(lblAction, false, 'Rechazar', Rec."No.") then
+            exit;
         CheckIsAssigned;
         Rec.Status := Rec.Status::Approved;
         Rec.Modify();
@@ -260,6 +263,8 @@ table 17200 "Purchase Requests less 200"
 
     procedure Reject()
     begin
+        if not Confirm(lblAction, false, 'Rechazar', Rec."No.") then
+            exit;
         CheckIsAssigned;
         Rec.Status := Rec.Status::Reject;
         Rec.Modify();
@@ -456,10 +461,6 @@ table 17200 "Purchase Requests less 200"
             Until DocAttachment.next() = 0;
 
         cduSmtp.Send();
-
-        //cambiamos el estado pendiente, para saber que se ha enviado la aprobacion
-        Rec.Status := Rec.Status::Pending;
-        Rec.Modify();
     end;
 
     procedure AssistEdit(OldPurchaseRequest: Record "Purchase Requests less 200"): Boolean

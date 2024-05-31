@@ -5093,6 +5093,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - NamedType 1873329552" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea % la solicitud %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea % la solicitud %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - NamedType lblAction</note>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - NamedType 855763010" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;p&gt;&lt;strong&gt;Importe:&lt;/strong&gt; %1 &amp;euro;&lt;/p&gt;</source>
           <note from="Developer" annotates="general" priority="2">ESP="&lt;p&gt;&lt;strong&gt;Importe:&lt;/strong&gt; %1 &amp;euro;&lt;/p&gt;"</note>
@@ -15035,7 +15040,7 @@
         </trans-unit>
         <trans-unit id="Page 489504416 - Control 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documentos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1466677331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

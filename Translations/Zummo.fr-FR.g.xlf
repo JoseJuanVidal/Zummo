@@ -7602,11 +7602,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 489504416 - Control 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Documents</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 1466677331 - NamedType 2865259996" size-unit="char" translate="yes" xml:space="preserve">
           <source>Are you sure you want to delete the picture?</source>
           <note from="Developer" annotates="general" priority="2"/>
