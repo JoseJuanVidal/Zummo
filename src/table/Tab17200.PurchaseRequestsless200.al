@@ -476,4 +476,25 @@ table 17200 "Purchase Requests less 200"
             EXIT(TRUE);
         END;
     end;
+
+    procedure Navigate_PostedPurchaseRequest()
+    var
+        PurchaseRequest: Record "Purchase Requests less 200";
+        PurchaseRequests: page "Purchase Request less 200";
+    begin
+        if not PurchaseRequest.IsUserApproval() then
+            PurchaseRequest.SetRange("User Id", UserId);
+        PurchaseRequest.SetRange(Status, PurchaseRequest.Status::Approved);
+        PurchaseRequest.SetRange(Invoiced, true);
+        PurchaseRequests.SetTableView(PurchaseRequest);
+        PurchaseRequests.RunModal();
+    end;
+
+    procedure Navigate()
+    var
+        NavigateForm: page Navigate;
+    begin
+        NavigateForm.SetDoc(rec."Posting Date", "No.");
+        NavigateForm.RUN;
+    end;
 }

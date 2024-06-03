@@ -145,6 +145,33 @@ page 17213 "Purchase Request less 200 Card"
                 end;
             }
         }
+        area(Navigation)
+        {
+            action(PostedPurchaseRequest)
+            {
+                Caption = 'Posted Purch. Order Request', comment = 'ESP="Hist. Solicitud Ped. Compra"';
+                Image = OrderPromising;
+                Promoted = true;
+                PromotedCategory = Category4;
+
+                trigger OnAction()
+                begin
+                    Navigate_PostedPurchaseRequest();
+                end;
+            }
+            action(Navigate)
+            {
+                Caption = '&Navigate', comment = 'ESP="&Navegar"';
+                Image = Navigate;
+                Promoted = true;
+                PromotedCategory = Category4;
+
+                trigger OnAction()
+                begin
+                    Navigate();
+                end;
+            }
+        }
     }
 
     trigger OnOpenPage()
@@ -162,7 +189,7 @@ page 17213 "Purchase Request less 200 Card"
     begin
         // al salir de la pantalla si no ha enviado la aprobación, se lo recordamos 
         // y enviamos
-        if Rec.Status in [Rec.Status::" "] then
+        if (Rec.Status in [Rec.Status::" "]) and (Rec."No." <> '') then
             if Confirm(lblConfirmSend) then
                 SendEmailApproval();
 
@@ -205,7 +232,7 @@ page 17213 "Purchase Request less 200 Card"
     var
         RefRecord: recordRef;
     begin
-        RefRecord.Get(Rec.RecordId);
+        if RefRecord.Get(Rec.RecordId) then;
         CurrPage."Attachment Document".Page.SetTableNo(17200, Rec."No.", 0, RefRecord);
     end;
 

@@ -13513,6 +13513,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Control Attachment Document - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2450567067 - Action 3538210097 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&amp;Navegar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Action Navigate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2450567067 - Action 3678749205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Purch. Order Request</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Solicitud Ped. Compra"</note>
@@ -13567,6 +13572,16 @@
           <source>Attachment Document</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Control Attachment Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Action 3538210097 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="&amp;Navegar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Action Navigate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Action 3678749205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Purch. Order Request</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Solicitud Ped. Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Action PostedPurchaseRequest - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3377437423 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approve</source>

@@ -136,7 +136,19 @@ page 17212 "Purchase Request less 200"
 
                 trigger OnAction()
                 begin
-                    OnAction_PostedPurchaseRequest();
+                    Navigate_PostedPurchaseRequest();
+                end;
+            }
+            action(Navigate)
+            {
+                Caption = '&Navigate', comment = 'ESP="&Navegar"';
+                Image = Navigate;
+                Promoted = true;
+                PromotedCategory = Category4;
+
+                trigger OnAction()
+                begin
+                    Navigate();
                 end;
             }
         }
@@ -153,8 +165,8 @@ page 17212 "Purchase Request less 200"
     var
         RefRecord: recordRef;
     begin
-        RefRecord.Get(Rec.RecordId);
-        CurrPage."Attachment Document".Page.SetTableNo(17200, Rec."No.", 0, RefRecord);
+        if RefRecord.Get(Rec.RecordId) then;
+        CurrPage."Attachment Document".Page.SetTableNo(17200, Rec."No.", 0, RefRecord)
     end;
 
     var
@@ -185,18 +197,5 @@ page 17212 "Purchase Request less 200"
     local procedure OnAction_Reject()
     begin
         Rec.Reject();
-    end;
-
-    local procedure OnAction_PostedPurchaseRequest()
-    var
-        PurchaseRequest: Record "Purchase Requests less 200";
-        PurchaseRequests: page "Purchase Request less 200";
-    begin
-        if not PurchaseRequest.IsUserApproval() then
-            PurchaseRequest.SetRange("User Id", UserId);
-        PurchaseRequest.SetRange(Status, PurchaseRequest.Status::Approved);
-        PurchaseRequest.SetRange(Invoiced, true);
-        PurchaseRequests.SetTableView(PurchaseRequest);
-        PurchaseRequests.RunModal();
     end;
 }
