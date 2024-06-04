@@ -170,7 +170,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         JobTask.SetRange("Job Task No.", Rec."Job Task No.");
         if not JobTask.FindFirst() then
             Rec."Job Task No." := '';
-        if (Rec."Job No." <> xRec."Job No.") or (Rec."Job Task No." <> Rec."Job Task No.") then
+        if (Rec."Job No." <> xRec."Job No.") or (Rec."Job Task No." <> xRec."Job Task No.") then
             if confirm(lblConfirmUpdate, false, Rec."Job No.", Rec."Job Task No.") then begin
                 PruchaseLine.Reset();
                 PruchaseLine.SetRange("Document Type", Rec."Document Type");
