@@ -10776,35 +10776,25 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - ReportLabel ShptMethodDescCaption</note>
         </trans-unit>
-        <trans-unit id="Report 4049458315 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Options</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control Options - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Report 4049458315 - Control 2578066365 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies how many copies of the document to print.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control NoOfCopies - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Report 4049458315 - Control 2578066365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No. of Copies</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control NoOfCopies - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4049458315 - Control 1547528384 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if you want the printed report to show information that is only for internal use.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control ShowBinContents - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Report 4049458315 - Control 2517088868 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want the printed report to show information that is only for internal use.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control ShowComment - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Report 4049458315 - Control 316520822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if you want the printed report to show information that is only for internal use.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control ShowInternalInfo - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Report 4049458315 - Control 316520822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show Internal Information</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control ShowInternalInfo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3170430146 - NamedType 36964189" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bulks:</source>
@@ -10880,11 +10870,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - NamedType Text002</note>
         </trans-unit>
-        <trans-unit id="Report 3170430146 - ReportDataItem 3550754772 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transfer Receipt</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - ReportDataItem Transfer Receipt Header - Property RequestFilterHeading</note>
-        </trans-unit>
         <trans-unit id="Report 3170430146 - ReportLabel 2020178030" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fecha Registro</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -10895,30 +10880,20 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - ReportLabel ShptMethodDescCaption</note>
         </trans-unit>
-        <trans-unit id="Report 3170430146 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Options</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - Control Options - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Report 3170430146 - Control 2578066365 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies how many copies of the document to print.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - Control NoOfCopies - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Report 3170430146 - Control 2578066365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No. of Copies</source>
+        <trans-unit id="Report 3170430146 - Control 2517088868 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want the printed report to show information that is only for internal use.</source>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - Control NoOfCopies - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - Control ShowComment - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 3170430146 - Control 316520822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if you want the printed report to show information that is only for internal use.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - Control ShowInternalInfo - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Report 3170430146 - Control 316520822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show Internal Information</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaRegistrado - Control ShowInternalInfo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2567535569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PO - Export N34.1</source>

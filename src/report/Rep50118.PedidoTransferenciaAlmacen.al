@@ -67,6 +67,7 @@ report 50118 "PedidoTransferenciaAlmacen"
             column(LineaDocumento; LineaDocumento) { }
             column(ProductoProduccion; ProductoProduccion) { }
             column(FechaInicialFab; FechaInicialFab) { }
+            column(comment; GetComment) { }
 
             dataitem(CopyLoop; "Integer")
             {
@@ -420,17 +421,23 @@ report 50118 "PedidoTransferenciaAlmacen"
             {
                 group(Options)
                 {
-                    Caption = 'Options';
+                    Caption = 'Options', Comment = 'ESP="Opciones"';
                     field(NoOfCopies; NoOfCopies)
                     {
                         ApplicationArea = Location;
-                        Caption = 'No. of Copies';
+                        Caption = 'No. of Copies', Comment = 'ESP="Nº Copias"';
                         ToolTip = 'Specifies how many copies of the document to print.';
                     }
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
                         ApplicationArea = Location;
-                        Caption = 'Show Internal Information';
+                        Caption = 'Show Internal Information', Comment = 'ESP="Mostrar Informacion Interna"';
+                        ToolTip = 'Specifies if you want the printed report to show information that is only for internal use.';
+                    }
+                    field(ShowComment; ShowComment)
+                    {
+                        ApplicationArea = Location;
+                        Caption = 'Show Comments', Comment = 'ESP="Mostrar Comentarios"';
                         ToolTip = 'Specifies if you want the printed report to show information that is only for internal use.';
                     }
                     field(ShowBinContents; ShowBinContents)
@@ -462,6 +469,7 @@ report 50118 "PedidoTransferenciaAlmacen"
 
         trigger OnOpenPage()
         begin
+            ShowComment := true;
             if (UserId = 'ALMACEN') or UserSetup."Informes Almacen" then
                 ShowBinContents := true;
         end;
@@ -520,6 +528,7 @@ report 50118 "PedidoTransferenciaAlmacen"
         DimText: Text[120];
         OldDimText: Text[75];
         ShowInternalInfo: Boolean;
+        ShowComment: Boolean;
         ShowBinContents: Boolean;
         ContUbicaciones: text;
         SerialContUbicaciones: text;
@@ -594,7 +603,27 @@ report 50118 "PedidoTransferenciaAlmacen"
                 BinContens += '-';
             BinContens += StrSubstNo('%1 (%2)', BinCode, BinQuantity)
         end;
+    end;
 
+    local procedure GetComment() Comment: text
+    var
+        InventoryCommentLine: Record "Inventory Comment Line";
+        LF: Char;
+        FF: Char;
+    begin
+        if not ShowComment then
+            exit;
+        LF := 10;
+        FF := 13;
+        InventoryCommentLine.Reset();
+        InventoryCommentLine.SetRange("Document Type", InventoryCommentLine."Document Type"::"Transfer Order");
+        InventoryCommentLine.SetRange("No.", "Transfer Header"."No.");
+        if InventoryCommentLine.FindFirst() then
+            repeat
+                if Comment <> '' then
+                    Comment += format(LF) + Format(FF);
+                Comment += InventoryCommentLine.Comment;
+            Until InventoryCommentLine.next() = 0;
     end;
 }
 

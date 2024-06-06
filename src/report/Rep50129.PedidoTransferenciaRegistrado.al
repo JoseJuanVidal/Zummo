@@ -13,7 +13,7 @@ report 50129 "PedidoTransferenciaRegistrado"
         {
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Transfer-from Code", "Transfer-to Code";
-            RequestFilterHeading = 'Transfer Receipt';
+            RequestFilterHeading = 'Transfer Receipt', Comment = 'ESP="Hist. Recepciones transferencia"';
             column(CompanyInfo1picture; CompanyInfo1.Picture)
             { }
             column(NoSerie_Caption; NumSerieLbl) { }
@@ -65,6 +65,7 @@ report 50129 "PedidoTransferenciaRegistrado"
             column(No_TransferHdr; "No.")
             {
             }
+            column(comment; GetComment) { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
@@ -391,20 +392,25 @@ report 50129 "PedidoTransferenciaRegistrado"
             {
                 group(Options)
                 {
-                    Caption = 'Options';
+                    Caption = 'Options', Comment = 'ESP="Nº Copias"';
                     field(NoOfCopies; NoOfCopies)
                     {
                         ApplicationArea = Location;
-                        Caption = 'No. of Copies';
+                        Caption = 'No. of Copies', Comment = 'ESP="Nº de Copias"';
                         ToolTip = 'Specifies how many copies of the document to print.';
                     }
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
                         ApplicationArea = Location;
-                        Caption = 'Show Internal Information';
+                        Caption = 'Show Internal Information', Comment = 'ESP="Mostrar Información Interna"';
                         ToolTip = 'Specifies if you want the printed report to show information that is only for internal use.';
                     }
-
+                    field(ShowComment; ShowComment)
+                    {
+                        ApplicationArea = Location;
+                        Caption = 'Show Comments', Comment = 'ESP="Mostrar Comentarios"';
+                        ToolTip = 'Specifies if you want the printed report to show information that is only for internal use.';
+                    }
                     field(optIdioma; optIdioma)
                     {
                         ApplicationArea = All;
@@ -424,6 +430,11 @@ report 50129 "PedidoTransferenciaRegistrado"
         actions
         {
         }
+
+        trigger OnOpenPage()
+        begin
+            ShowComment := true;
+        end;
     }
 
     labels
@@ -474,6 +485,7 @@ report 50129 "PedidoTransferenciaRegistrado"
         DimText: Text[120];
         OldDimText: Text[75];
         ShowInternalInfo: Boolean;
+        ShowComment: Boolean;
         Continue: Boolean;
         OutputNo: Integer;
         HdrDimensionsCaptionLbl: Label 'Dimensiones Cabecera';
@@ -518,6 +530,27 @@ report 50129 "PedidoTransferenciaRegistrado"
                 RecMemEstadisticas.Noproducto := ItemLedgEntry."Item No.";
                 RecMemEstadisticas.INSERT();
             until ItemLedgEntry.Next() = 0;
+    end;
+
+    local procedure GetComment() Comment: text
+    var
+        InventoryCommentLine: Record "Inventory Comment Line";
+        LF: Char;
+        FF: Char;
+    begin
+        if not ShowComment then
+            exit;
+        LF := 10;
+        FF := 13;
+        InventoryCommentLine.Reset();
+        InventoryCommentLine.SetRange("Document Type", InventoryCommentLine."Document Type"::"Posted Transfer Receipt");
+        InventoryCommentLine.SetRange("No.", "Transfer Receipt Header"."No.");
+        if InventoryCommentLine.FindFirst() then
+            repeat
+                if Comment <> '' then
+                    Comment += format(LF) + Format(FF);
+                Comment += InventoryCommentLine.Comment;
+            Until InventoryCommentLine.next() = 0;
     end;
 }
 
