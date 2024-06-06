@@ -28748,6 +28748,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Sesiones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action Sessions - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1259852724 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1511989657">
+          <source>Attachment Document</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Service Contract - Control Attachment Document - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2946467438 - Action 127686680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3342712847">
           <source>Mostrar Documento</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mostrar Documento"</note>
