@@ -460,7 +460,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
     procedure TaskSendMailOnCreateQuote(var SalesHeader: Record "Sales Header")
     begin
-        TaskScheduler.CreateTask(Codeunit::"Zummo Inn. IC Functions", Codeunit::"Error Zummo Inn. IC Functions", true, CompanyName, CURRENTDATETIME + 1000, SalesHeader.RecordId);
+        //TaskScheduler.CreateTask(Codeunit::"Zummo Inn. IC Functions", Codeunit::"Error Zummo Inn. IC Functions", true, CompanyName, CURRENTDATETIME + 1000, SalesHeader.RecordId);
+        TaskScheduler.CreateTask(Codeunit::"Zummo Inn. IC Functions", Codeunit::"Zummo Inn. IC Functions", true, CompanyName, CURRENTDATETIME + 1000, SalesHeader.RecordId);
     end;
 
     var
