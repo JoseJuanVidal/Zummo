@@ -45,6 +45,11 @@ pageextension 50023 "PurchInvoiceSubform" extends "Purch. Invoice Subform"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Purch. Order No."; "Purch. Order No.")
+            {
+                ApplicationArea = all;
+                Visible = False;
+            }
         }
     }
 

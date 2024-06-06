@@ -53,9 +53,16 @@ tableextension 50105 "PurchaseLine" extends "Purchase Line"  //39
         }
         field(50051; "Nombre Empleado"; code[250])
         {
-            Caption = 'ID Corporativo Solicitante', comment = 'ESP="ID Corporativo Solicitante"';
+            Caption = 'Nombre Solicitante', comment = 'ESP="Nombre Solicitante"';
             FieldClass = FlowField;
             CalcFormula = lookup(Employee."Search Name" where("No." = field(IdCorp_Sol)));
+            Editable = false;
+        }
+        field(50055; "Purch. Order No."; code[20])
+        {
+            Caption = 'Purch. Order No.', comment = 'ESP="Nº Pedido Compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Purch. Rcpt. Header"."Order No." where("No." = field("Receipt No.")));
             Editable = false;
         }
         field(50100; "Process No."; Code[20])

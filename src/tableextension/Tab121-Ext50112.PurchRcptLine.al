@@ -33,6 +33,13 @@ tableextension 50112 "PurchRcptLine" extends "Purch. Rcpt. Line"  //121
             ("No." = FIELD("Document No.")
             ));
         }
+        field(50055; "Purch. Order No."; code[20])
+        {
+            Caption = 'Purch. Order No.', comment = 'ESP="Nº Pedido Compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Purch. Rcpt. Header"."Order No." where("No." = field("Document No.")));
+            Editable = false;
+        }
         field(50099; "Fecha Vencimiento"; Date)
         {
             Caption = 'Fecha Vencimiento', Comment = 'ESP="Fecha Vencimiento"';

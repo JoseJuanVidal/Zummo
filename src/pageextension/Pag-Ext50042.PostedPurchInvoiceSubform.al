@@ -16,7 +16,11 @@ pageextension 50042 "PostedPurchInvoiceSubform" extends "Posted Purch. Invoice S
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Purch. Order No."; "Purch. Order No.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
-
 }

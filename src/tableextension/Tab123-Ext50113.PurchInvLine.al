@@ -28,6 +28,13 @@ tableextension 50113 "PurchInvLine" extends "Purch. Inv. Line"  //123
             CalcFormula = lookup(Employee."Search Name" where("No." = field(IdCorp_Sol)));
             Editable = false;
         }
+        field(50055; "Purch. Order No."; code[20])
+        {
+            Caption = 'Purch. Order No.', comment = 'ESP="Nº Pedido Compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Purch. Rcpt. Header"."Order No." where("No." = field("Receipt No.")));
+            Editable = false;
+        }
         field(50100; "Process No."; Code[20])
         {
             Caption = 'Process No.', Comment = 'ESP="Cód. proceso"';
