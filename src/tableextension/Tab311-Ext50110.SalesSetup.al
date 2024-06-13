@@ -241,7 +241,6 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
         {
             Caption = 'client_id';
             DataClassification = CustomerContent;
-            ExtendedDatatype = Masked;
         }
         field(60006; "STHclient_secret"; Text[250])
         {
@@ -253,19 +252,16 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
         {
             Caption = 'grant_type';
             DataClassification = CustomerContent;
-            ExtendedDatatype = Masked;
         }
         field(60008; "STHredirect_url"; Text[100])
         {
             Caption = 'redirect_url';
             DataClassification = CustomerContent;
-            ExtendedDatatype = Masked;
         }
         field(60009; STHusername; Text[50])
         {
             Caption = 'username';
             DataClassification = CustomerContent;
-            ExtendedDatatype = Masked;
         }
         field(60010; STHpassword; Text[50])
         {

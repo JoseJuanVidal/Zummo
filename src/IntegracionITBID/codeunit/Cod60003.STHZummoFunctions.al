@@ -44,7 +44,47 @@ codeunit 60003 "STH Zummo Functions"
         exit(JsonText);
     end;
 
-    procedure PutBody(body: Text; var productos: Record Item)
+    procedure GetJSON_ItemTemporay(Itemstemporary: Record "ZM PL Items temporary") JsonTextReturn: Text
+    var
+        JsonArrayItem: JsonArray;
+        JsonObjectItem: JsonObject;
+        JsonObjectItem2: JsonObject;
+        JsonText: Text;
+        comments: Record "Comment Line";
+        artobs: Text[255];
+        notasInternas: Text[255];
+    begin
+        comments.SetRange("Table Name", comments."Table Name"::Item);
+        comments.SetRange("No.", Itemstemporary."No.");
+
+        if comments.FindFirst() then
+            repeat
+                if Text.StrLen(artobs) <= Text.MaxStrLen(artobs) - Text.StrLen(comments.Comment) then begin
+                    artobs += comments.Comment;
+                end else
+                    if Text.StrLen(notasInternas) <= Text.MaxStrLen(notasInternas) - Text.StrLen(comments.Comment) then begin
+                        notasInternas += comments.Comment;
+                    end;
+            until comments.Next() = 0;
+
+        JsonObjectItem.Add('artcodigo', Itemstemporary."No.");
+        JsonObjectItem.Add('sapCode', Itemstemporary."No.");
+        JsonObjectItem.Add('artconcepto', Itemstemporary.Description);
+        JsonObjectItem.Add('artobs', artobs);
+        JsonObjectItem.Add('notasInternas', notasInternas);
+        JsonObjectItem.Add('subcategoria', 'Auditoría');//productos."Purch. SubCategory");
+        JsonObjectItem.Add('subcategoriasAdicionales', '');
+        JsonObjectItem.Add('unidad', 1);
+        JsonObjectItem.Add('unidadMedidaDefault', Itemstemporary."Base Unit of Measure");
+        JsonObjectItem.Add('precioReferencia', Itemstemporary."Unit Cost");
+        JsonObjectItem.Add('stock', 0);
+        JsonObjectItem.Add('stockMinimoProveedor', Itemstemporary."Safety Stock Quantity");
+        JsonObjectItem2.Add('producto', JsonObjectItem);
+        JsonObjectItem2.WriteTo(JsonText);
+        exit(JsonText);
+    end;
+
+    procedure PutBody(body: Text; productoNo: code[20]; var ISUpdate: Boolean)
     var
         IsSuccess: Boolean;
         Client: HttpClient;
@@ -111,16 +151,14 @@ codeunit 60003 "STH Zummo Functions"
         ClientHeaders.Add('Content-Type', 'application/json');
 
         ClientRequest.Method := 'PUT';
-        ClientRequest.SetRequestUri(ItbidSetup.STHurlPut + productos."No.");
+        ClientRequest.SetRequestUri(ItbidSetup.STHurlPut + productoNo);
         ClientRequest.Content(ClientContent);
 
         //LLAMADA PUT WEBSERVICE ITBID
         if Client.Send(ClientRequest, ClientResponse) then begin
             if ClientResponse.IsSuccessStatusCode() then begin
                 if ClientResponse.Content.ReadAs(ClientResponseText) then begin
-                    productos."STH To Update" := false;
-                    productos."STH Last Update Date" := Today;
-                    productos.Modify();
+                    ISUpdate := true;
                 end else
                     Error(ClientResponseText);
             end;
@@ -160,13 +198,19 @@ codeunit 60003 "STH Zummo Functions"
     local procedure updateItemsWebService()
     var
         productos: Record Item;
+        IsUpdate: Boolean;
         JsonText: Text;
     begin
         productos.SetRange("STH To Update", true);
         if productos.FindFirst() then begin
             repeat
                 JsonText := GetJSON_Item(productos);
-                PutBody(JsonText, productos);
+                PutBody(JsonText, productos."No.", IsUpdate);
+                if IsUpdate then begin
+                    productos."STH To Update" := false;
+                    productos."STH Last Update Date" := Today;
+                    productos.Modify();
+                end;
             until productos.Next() = 0;
         end;
     end;

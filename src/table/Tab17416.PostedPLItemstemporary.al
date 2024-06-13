@@ -1,6 +1,8 @@
-table 17413 "ZM PL Items temporary"
+table 17416 "Posted PL Items temporary"
 {
     DataClassification = CustomerContent;
+    LookupPageId = "Posted PL Items temporary list";
+    DrillDownPageId = "Posted PL Items temporary list";
 
     fields
     {
@@ -8,12 +10,6 @@ table 17413 "ZM PL Items temporary"
         {
             Caption = 'No.', Comment = 'ESP="Nº"';
             TableRelation = Item;
-
-            trigger OnValidate()
-            begin
-                OnValidate_ItemNo()
-            end;
-
         }
         field(3; Description; Text[100])
         {
@@ -39,12 +35,6 @@ table 17413 "ZM PL Items temporary"
         {
             Caption = 'Inventory Posting Group', Comment = 'ESP="Grupo registro inventario"';
             TableRelation = "Inventory Posting Group";
-
-            trigger OnValidate()
-            begin
-                IF "Inventory Posting Group" <> '' THEN
-                    TESTFIELD(Type, Type::Inventory);
-            end;
         }
         field(14; "Item Disc. Group"; Code[20])
         {
@@ -62,19 +52,6 @@ table 17413 "ZM PL Items temporary"
             Caption = 'Costing Method', Comment = 'ESP="Valoración existencias"';
             OptionCaption = 'FIFO,LIFO,Specific,Average,Standard';
             OptionMembers = FIFO,LIFO,Specific,"Average",Standard;
-
-            trigger OnValidate()
-            begin
-                IF "Costing Method" = xRec."Costing Method" THEN
-                    EXIT;
-
-                IF "Costing Method" <> "Costing Method"::FIFO THEN
-                    TESTFIELD(Type, Type::Inventory);
-
-                IF "Costing Method" = "Costing Method"::Specific THEN BEGIN
-                    TESTFIELD("Item Tracking Code");
-                END;
-            end;
         }
         field(22; "Unit Cost"; Decimal)
         {
@@ -89,15 +66,6 @@ table 17413 "ZM PL Items temporary"
             //This property is currently not supported
             //TestTableRelation = true;
             ValidateTableRelation = true;
-
-            trigger OnValidate()
-            begin
-                IF (xRec."Vendor No." <> "Vendor No.") AND
-                   ("Vendor No." <> '')
-                THEN
-                    IF Vend.GET("Vendor No.") THEN
-                        "Lead Time Calculation" := Vend."Lead Time Calculation";
-            end;
         }
         field(32; "Vendor Item No."; Text[20])
         {
@@ -168,26 +136,6 @@ table 17413 "ZM PL Items temporary"
             Caption = 'Tariff No.', Comment = 'ESP="Cód. arancelario"';
             TableRelation = "Tariff Number";
             ValidateTableRelation = false;
-
-            trigger OnValidate()
-            var
-                TariffNumber: Record "Tariff Number";
-            begin
-                IF "Tariff No." = '' THEN
-                    EXIT;
-
-                IF (NOT TariffNumber.WRITEPERMISSION) OR
-                   (NOT TariffNumber.READPERMISSION)
-                THEN
-                    EXIT;
-
-                IF TariffNumber.GET("Tariff No.") THEN
-                    EXIT;
-
-                TariffNumber.INIT;
-                TariffNumber."No." := "Tariff No.";
-                TariffNumber.INSERT;
-            end;
         }
         field(54; Blocked; Boolean)
         {
@@ -223,12 +171,6 @@ table 17413 "ZM PL Items temporary"
             InitValue = Optional;
             OptionCaption = 'Never,Optional,Always';
             OptionMembers = Never,Optional,Always;
-
-            trigger OnValidate()
-            begin
-                IF Reserve <> Reserve::Never THEN
-                    TESTFIELD(Type, Type::Inventory);
-            end;
         }
         field(910; "Assembly Policy"; Option)
         {
@@ -236,14 +178,6 @@ table 17413 "ZM PL Items temporary"
             Caption = 'Assembly Policy', Comment = 'ESP="Directiva de ensamblado"';
             OptionCaption = 'Assemble-to-Stock,Assemble-to-Order', Comment = 'ESP="Ensamblar para stock,Ensamblar para pedido"';
             OptionMembers = "Assemble-to-Stock","Assemble-to-Order";
-
-            trigger OnValidate()
-            begin
-                IF "Assembly Policy" = "Assembly Policy"::"Assemble-to-Order" THEN
-                    TESTFIELD("Replenishment System", "Replenishment System"::Assembly);
-                IF type in [type::"Non-Inventory", type::Service] THEN
-                    TESTFIELD("Assembly Policy", "Assembly Policy"::"Assemble-to-Stock");
-            end;
         }
         field(1217; GTIN; Code[14])
         {
@@ -254,12 +188,6 @@ table 17413 "ZM PL Items temporary"
         {
             Caption = 'Serial Nos.';
             TableRelation = "No. Series";
-
-            trigger OnValidate()
-            begin
-                IF "Serial Nos." <> '' THEN
-                    TESTFIELD("Item Tracking Code");
-            end;
         }
         field(5411; "Minimum Order Quantity"; Decimal)
         {
@@ -307,14 +235,6 @@ table 17413 "ZM PL Items temporary"
             Caption = 'Replenishment System', Comment = 'ESP="Sistema reposición"';
             OptionCaption = 'Purchase,Prod. Order,,Assembly', Comment = 'ESP="Compra,Prod. Pedido,,Ensamblado"';
             OptionMembers = Purchase,"Prod. Order",,Assembly;
-
-            trigger OnValidate()
-            begin
-                IF "Replenishment System" <> "Replenishment System"::Assembly THEN
-                    TESTFIELD("Assembly Policy", "Assembly Policy"::"Assemble-to-Stock");
-                IF "Replenishment System" <> "Replenishment System"::Purchase THEN
-                    TESTFIELD(Type, Type::Inventory);
-            end;
         }
         field(5422; "Rounding Precision"; Decimal)
         {
@@ -322,12 +242,6 @@ table 17413 "ZM PL Items temporary"
             Caption = 'Rounding Precision', Comment = 'ESP="Precisión redondeo"';
             DecimalPlaces = 0 : 5;
             InitValue = 1;
-
-            trigger OnValidate()
-            begin
-                IF "Rounding Precision" <= 0 THEN
-                    FIELDERROR("Rounding Precision", Text027);
-            end;
         }
         field(5425; "Sales Unit of Measure"; Code[10])
         {
@@ -354,17 +268,6 @@ table 17413 "ZM PL Items temporary"
             Caption = 'Reordering Policy', Comment = 'ESP="Directiva reaprov."';
             OptionCaption = ' ,Fixed Reorder Qty.,Maximum Qty.,Order,Lot-for-Lot', Comment = 'ESP=" ,Cant. fija reaprov.,Cant. máxima,Pedido,Lote a lote"';
             OptionMembers = " ","Fixed Reorder Qty.","Maximum Qty.","Order","Lot-for-Lot";
-
-            trigger OnValidate()
-            begin
-                "Include Inventory" :=
-                  "Reordering Policy" IN ["Reordering Policy"::"Lot-for-Lot",
-                                          "Reordering Policy"::"Maximum Qty.",
-                                          "Reordering Policy"::"Fixed Reorder Qty."];
-
-                IF "Reordering Policy" <> "Reordering Policy"::" " THEN
-                    TESTFIELD(Type, Type::Inventory);
-            end;
         }
         field(5441; "Include Inventory"; Boolean)
         {
@@ -409,11 +312,6 @@ table 17413 "ZM PL Items temporary"
             Caption = 'Lot Nos.', Comment = 'ESP="Nº serie lote"';
             TableRelation = "No. Series";
 
-            trigger OnValidate()
-            begin
-                IF "Lot Nos." <> '' THEN
-                    TESTFIELD("Item Tracking Code");
-            end;
         }
         field(6502; "Expiration Calculation"; DateFormula)
         {
@@ -540,11 +438,6 @@ table 17413 "ZM PL Items temporary"
             TableRelation = Employee."No." where("User Id" = field("User ID"));
             ValidateTableRelation = true;
             //Editable = false;
-
-            trigger OnValidate()
-            begin
-                OnValidate_CodEmpleado();
-            end;
         }
         field(50828; "Reason Blocked"; text[100])
         {
@@ -577,37 +470,6 @@ table 17413 "ZM PL Items temporary"
         }
     }
 
-
-    trigger OnInsert()
-    begin
-        GetPreItemSetup();
-        SetupPreItemReg.TESTFIELD("Temporary Nos.");
-        if "No." = '' then begin
-            NoSeriesMgt.InitSeries(SetupPreItemReg."Temporary Nos.", xRec."Nos. series", 0D, Rec."No.", Rec."Nos. series");
-        end;
-        InitRecord()
-    end;
-
-    trigger OnModify()
-    begin
-        InitRecord()
-    end;
-
-    trigger OnDelete()
-    begin
-        Rec.TestField("ITBID Status", Rec."ITBID Status"::" ");
-        ZMCIMProdBOMHeader.Reset();
-        if ZMCIMProdBOMHeader.Get(Rec."Production BOM No.") then
-            ZMCIMProdBOMHeader.Delete(true);
-        ZMItemPurchasePrices.Reset();
-        ZMItemPurchasePrices.SetRange("Item No.", Rec."No.");
-        ZMItemPurchasePrices.DeleteAll();
-    end;
-
-    trigger OnRename()
-    begin
-    end;
-
     var
         Item: Record Item;
         Vend: Record Vendor;
@@ -631,15 +493,6 @@ table 17413 "ZM PL Items temporary"
         SetupPreItemReg.GET;
     end;
 
-    procedure AssistEdit(): Boolean
-    begin
-        GetPreItemSetup;
-        SetupPreItemReg.TESTFIELD("Temporary Nos.");
-        if NoSeriesMgt.SelectSeries(SetupPreItemReg."Temporary Nos.", xRec."Nos. Series", "Nos. Series") then begin
-            NoSeriesMgt.SetSeries("No.");
-            EXIT(TRUE);
-        end;
-    end;
 
     procedure SetWorkDescription(NewWorkDescription: Text)
     begin
@@ -664,13 +517,6 @@ table 17413 "ZM PL Items temporary"
         EXIT(TempBlob.ReadAsText(CR, TEXTENCODING::UTF8));
     end;
 
-    local procedure InitRecord()
-    begin
-        if Rec."Posting Date" = 0D then
-            Rec."Posting Date" := WorkDate();
-        if "User ID" = '' then
-            Rec."User ID" := GetCodEmpleado();
-    end;
 
     local procedure GetCodEmpleado(): code[20]
     begin
@@ -682,99 +528,7 @@ table 17413 "ZM PL Items temporary"
         Page.RunModal(0, Employee);
     end;
 
-    local procedure OnValidate_CodEmpleado()
-    var
-    begin
-        "Nombre Empleado" := '';
-        if Employee.Get(Rec."Codigo Empleado") then
-            "Nombre Empleado" := copystr(Employee.FullName(), 1, MaxStrLen(Rec."Nombre Empleado"));
-    end;
 
-    local procedure OnValidate_ItemNo()
-    begin
-        GetPreItemSetup();
-        if "No." <> xRec."No." then begin
-            InitRecord();
-            if Rec."No." = '' then begin
-                NoSeriesMgt.TestManual(SetupPreItemReg."Temporary Nos.");
-            end else begin
-                // comprobamos si existe el producto y traemos los datos para su modificación                
-                item.Reset();
-                if item.Get(Rec."No.") then begin
-                    if Confirm(lblConfirmUpdateItem, false, Rec."No.", Item.Description) then begin
-                        Rec.TransferFields(Item);
-                        Rec."ITBID Status" := Rec."ITBID Status"::Created;
-                    end;
-                    // comprobamos si el producto tiene lista de Producción orignal
-                    ProdBOMHeader.Reset();
-                    ProdBOMHeader.SetRange("No.", Rec."Production BOM No.");
-                    if ProdBOMHeader.FindFirst() then
-                        // if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
-                            UpdateProductionBom(Item."No.");
-                    UpdatePurchasePrice(Rec."No.");
-
-                end;
-            end;
-
-        end;
-    end;
-
-    procedure UpdateProductionBom(ItemNo: code[20])
-    begin
-        Item.Reset();
-        if Item.Get(Rec."No.") then begin
-            ProdBOMHeader.Reset();
-            ProdBOMHeader.SetRange("No.", ItemNo);
-            if ProdBOMHeader.FindFirst() then begin
-                ZMCIMProdBOMHeader.Reset();
-                if not ZMCIMProdBOMHeader.Get(ProdBOMHeader."No.") then begin
-                    ZMCIMProdBOMHeader.Init();
-                    ZMCIMProdBOMHeader.TransferFields(ProdBOMHeader);
-                    ZMCIMProdBOMHeader.Insert();
-
-                end;
-                UpdateProductionBomLM(ZMCIMProdBOMHeader."No.");
-            end;
-        end;
-    end;
-
-    local procedure UpdateProductionBomLM(BOMHeaderNo: code[20])
-    var
-        myInt: Integer;
-    begin
-        ProdBOMLine.Reset();
-        ProdBOMLine.SetRange("Production BOM No.", BOMHeaderNo);
-        if ProdBOMLine.FindFirst() then
-            repeat
-                ZMCIMProdBOMLine.Reset();
-                if ZMCIMProdBOMLine.Get(ProdBOMLine."Production BOM No.", ProdBOMLine."Version Code", ProdBOMLine."Line No.") then begin
-                    ZMCIMProdBOMLine."Quantity per" := ProdBOMLine."Quantity per";
-                    ZMCIMProdBOMLine.Quantity := ProdBOMLine.Quantity;
-                    ZMCIMProdBOMLine.Modify();
-                end else begin
-                    ZMCIMProdBOMLine.Init();
-                    ZMCIMProdBOMLine.TransferFields(ProdBOMLine);
-                    ZMCIMProdBOMLine.Insert();
-                end;
-            Until ProdBOMLine.next() = 0;
-    end;
-
-    local procedure UpdatePurchasePrice(ItemNo: code[20])
-    var
-        PurchasePrices: Record "Purchase Price";
-    begin
-        PurchasePrices.Reset();
-        PurchasePrices.SetRange("Item No.", ItemNo);
-        if PurchasePrices.FindFirst() then
-            repeat
-                ZMCIMProdBOMLine.Reset();
-                if not ZMItemPurchasePrices.Get() then begin
-                    ZMItemPurchasePrices.Init();
-                    ZMItemPurchasePrices.TransferFields(PurchasePrices);
-                    ZMItemPurchasePrices.Insert();
-                end;
-            Until PurchasePrices.next() = 0;
-    end;
 
     procedure Navigate_ProductionML()
     var
@@ -797,28 +551,4 @@ table 17413 "ZM PL Items temporary"
         ZMItemPurchasesPrices.Run();
     end;
 
-    procedure ITBIDUpdate()
-    var
-        Item: Record Item;
-        zummoFunctions: Codeunit "STH Zummo Functions";
-        JsonText: Text;
-        IsUpdate: Boolean;
-    begin
-        Rec.TestField("ITBID Create", true);
-        JsonText := zummoFunctions.GetJSON_ItemTemporay(Rec);
-        zummoFunctions.PutBody(JsonText, Rec."No.", IsUpdate);
-        if IsUpdate then begin
-            Rec."STH To Update" := false;
-            Rec."STH Last Update Date" := Today;
-            Rec."ITBID Status" := Rec."ITBID Status"::Created;
-            Rec.Modify();
-        end;
-    end;
-
-    procedure Navigate_PostedItemList()
-    var
-        PostedItemstemporarylist: page "Posted PL Items temporary list";
-    begin
-        PostedItemstemporarylist.Run;
-    end;
 }

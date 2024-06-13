@@ -1,13 +1,13 @@
-page 17414 "ZM PL Items temporary list"
+page 17421 "Posted PL Items temporary list"
 {
     ApplicationArea = All;
-    Caption = 'Items temporary list', Comment = 'ESP="Lista Alta de productos"';
+    UsageCategory = Lists;
+    Caption = 'Posted Items temporary list', Comment = 'ESP="Histórico Alta de productos"';
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
-    SourceTable = "ZM PL Items temporary";
+    SourceTable = "Posted PL Items temporary";
     Editable = false;
-    UsageCategory = Lists;
-    CardPageId = "ZM PL Items temporary card";
+    CardPageId = "Posted PL Items temporary card";
 
     layout
     {
@@ -94,69 +94,10 @@ page 17414 "ZM PL Items temporary list"
 
     actions
     {
-        area(Processing)
-        {
-            action(ConfAltaProd)
-            {
-                ApplicationArea = all;
-                Caption = 'Conf. Alta Productos', comment = 'ESP="Conf. Alta Productos"';
-                Image = Setup;
-                Promoted = true;
-                PromotedCategory = Process;
-                RunObject = page "ZM PL Setup Item registration";
-            }
-            action(ConfAprobAltaProd)
-            {
-                ApplicationArea = all;
-                Caption = 'Conf. Departamentos Alta Productos', comment = 'ESP="Conf. Departamentos Alta Productos"';
-                Image = Setup;
-                Promoted = true;
-                PromotedCategory = Process;
-                RunObject = page "ZM PL Item Setup approvals";
-            }
-            action(UpdateITBID)
-            {
-                ApplicationArea = All;
-                Caption = 'ITBID Update', Comment = 'ESP="Alta/Actualización ITBID"';
-                Image = Purchasing;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-
-                trigger OnAction()
-                var
-                    Itemstemporary: Record "ZM PL Items temporary";
-                begin
-                    if not Confirm(lblConfirmUpdateITBID) then
-                        exit;
-                    CurrPage.SetSelectionFilter(Itemstemporary);
-                    if Itemstemporary.FindFirst() then
-                        repeat
-                            Itemstemporary.ITBIDUpdate();
-                        Until Itemstemporary.next() = 0;
-
-                end;
-            }
-        }
         area(Navigation)
         {
             Group("Lista de materiales")
             {
-                // group(AssemblyML)
-                // {
-                // action(ShowLMAssembly)
-                // {
-                //     ApplicationArea = all;
-                //     Caption = 'L. M. Ensamblado', comment = 'ESP="L. M. Ensamblado"';
-                //     Image = BOM;
-                //     Promoted = true;
-                //     PromotedCategory = Category4;
-                //     trigger OnAction()
-                //     begin
-                //         Navigate_AssemblyML();
-                //     end;
-                // }
-                // }
                 group(LMProducion)
                 {
                     Caption = 'Producción', comment = 'ESP="Producción"';
@@ -185,20 +126,6 @@ page 17414 "ZM PL Items temporary list"
                         Navigate_PurchasesPrices();
                     end;
                 }
-                action(PostedItemList)
-                {
-                    ApplicationArea = all;
-                    Caption = 'Hist. Alta Productos', comment = 'ESP="Hist. Alta Productos"';
-                    Image = PostedDeposit;
-                    Promoted = true;
-                    PromotedCategory = Category4;
-
-                    trigger OnAction()
-                    begin
-                        OnAction_PostedItemList();
-                    end;
-                }
-
             }
         }
     }
@@ -221,10 +148,4 @@ page 17414 "ZM PL Items temporary list"
     begin
         ShowPosted := Active;
     end;
-
-    local procedure OnAction_PostedItemList()
-    begin
-        Navigate_PostedItemList();
-    end;
-
 }

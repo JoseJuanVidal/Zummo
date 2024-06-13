@@ -1,9 +1,9 @@
-page 17415 "ZM PL Items temporary card"
+page 17422 "Posted PL Items temporary card"
 {
-    Caption = 'Items registration', Comment = 'ESP="Alta de productos"';
+    Caption = 'Posted Items registration', Comment = 'ESP="Histórico Alta de productos"';
     PageType = card;
-    SourceTable = "ZM PL Items temporary";
-    SourceTableView = where("State Creation" = filter(" " | Requested | Released));
+    SourceTable = "Posted PL Items temporary";
+    Editable = false;
     UsageCategory = Tasks;
     PromotedActionCategories = 'New,Process,Report,Navigate',
             comment = 'ESP="Nuevo,Procesar,Informe,Navegar"';
@@ -20,14 +20,6 @@ page 17415 "ZM PL Items temporary card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Nº identificador del producto', comment = 'ESP="Nº identificador del producto"';
-
-                    trigger OnAssistEdit()
-                    begin
-                        IF AssistEdit THEN
-                            CurrPage.UPDATE;
-                    end;
-
-
                 }
                 field(Description; Rec.Description)
                 {
@@ -113,11 +105,6 @@ page 17415 "ZM PL Items temporary card"
                         Caption = 'Reason', comment = 'ESP="Motivo"';
                         ShowCaption = false;
                         MultiLine = true;
-
-                        trigger OnValidate()
-                        begin
-                            SetWorkDescription(WorkDescription);
-                        end;
                     }
                 }
                 field(Activity; Activity)
@@ -351,56 +338,6 @@ page 17415 "ZM PL Items temporary card"
 
     actions
     {
-        area(Processing)
-        {
-            action(Release)
-            {
-                ApplicationArea = All;
-                Caption = 'Release', comment = 'ESP="Lanzar"';
-                Image = ReleaseDoc;
-                Promoted = true;
-                PromotedCategory = Process;
-
-                trigger OnAction()
-                begin
-                    OnAction_Release();
-                end;
-            }
-            action(Open)
-            {
-                ApplicationArea = All;
-                Caption = 'Open', comment = 'ESP="Abrir"';
-                Image = ReOpen;
-                Promoted = true;
-                PromotedCategory = Process;
-
-                trigger OnAction()
-                begin
-                    OnAction_Open();
-                end;
-            }
-            action(UpdateITBID)
-            {
-                ApplicationArea = All;
-                Caption = 'ITBID Update', Comment = 'ESP="Alta/Actualización ITBID"';
-                Image = Purchasing;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-
-                trigger OnAction()
-                var
-                    Item: Record Item;
-                    zummoFunctions: Codeunit "STH Zummo Functions";
-                    JsonText: Text;
-                    IsUpdate: Boolean;
-                begin
-                    if not Confirm(lblConfirmUpdateITBID) then
-                        exit;
-                    Rec.ITBIDUpdate();
-                end;
-            }
-        }
         area(Navigation)
         {
             Group("Lista de materiales")
@@ -463,21 +400,6 @@ page 17415 "ZM PL Items temporary card"
         ShowField: array[100] of Integer;
         lblRelease: Label '¿Do you want to send the request for Item Registration %1 %2?', comment = 'ESP="¿Desea enviar la solicitud de Alta del producto %1 %2?"';
         lblConfirmUpdateITBID: Label '¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?', comment = 'ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"';
-
-    local procedure OnAction_Release()
-    begin
-        Rec.TestField("State Creation", Rec."State Creation"::" ");
-        if Confirm(lblRelease, true, Rec."No.", Rec.Description) then
-            ItemsRegisterAprovals.ItemRegistrationChangeState(Rec);
-    end;
-
-    local procedure OnAction_Open()
-    begin
-        Rec.TestField("State Creation", Rec."State Creation"::Requested);
-        if ItemsRegisterAprovals.ItemRegistratio_OpenRequested(Rec) then
-            CurrPage.Update();
-    end;
-
 
 
     local procedure Navigate_ProductionML()

@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "8fe248b9-332d-4279-8b17-ff0ec8dbf77a",
+		"name": "ZUMMO ITBID Platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24517058"
+	},
+	"item": [
+		{
+			"name": "BC Integración",
+			"item": [
+				{
+					"name": "Vendor Bank STHApiPostVendorBankAccount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vendorNo\":\"S00000\",\r\n    \"code\":\"\",\r\n    \"name\":\"PRUEBA\",\r\n     \"iban\":\"ES0401280604190100026082\",\r\n    \"swiftCode\":\"BKBKESMM\",\r\n    \"CCCBankNo\":\"\",\r\n    \"actionHTTP\":\"POST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7048/BC140/ODataV4/Company('ZUMMO')/STHApiVendorBankAccount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7048",
+							"path": [
+								"BC140",
+								"ODataV4",
+								"Company('ZUMMO')",
+								"STHApiVendorBankAccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor Bank STHApiPostVendorBankAccount Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vendorNo\":\"S00000\",\r\n    \"code\":\"\",\r\n    \"name\":\"PRUEBA\",\r\n     \"iban\":\"ES040128 0604190 1000 26082\",\r\n    \"swiftCode\":\"BKBKESMM\",\r\n    \"CCCBankNo\":\"0128 0604190 1000 26082\",\r\n    \"actionHTTP\":\"POST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7048/BC140/ODataV4/Company('ZUMMO')/STHApiPostVendorBankAccount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7048",
+							"path": [
+								"BC140",
+								"ODataV4",
+								"Company('ZUMMO')",
+								"STHApiPostVendorBankAccount"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "ntlm",
+				"ntlm": [
+					{
+						"key": "password",
+						"value": "Bario0524$",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "ZUMMO\\JOSE-VIDAL",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "BC Zummo Desarrollo",
+			"item": [
+				{
+					"name": "Vendor Bank STHApiPostVendorBankAccount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vendorNo\":\"S00000\",\r\n    \"code\":\"\",\r\n    \"name\":\"PRUEBA\",\r\n     \"iban\":\"ES0401280604190100026082\",\r\n    \"swiftCode\":\"BKBKESMM\",\r\n    \"CCCBankNo\":\"\",\r\n    \"actionHTTP\":\"POST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.1.153:7548/DESARROLLO/ODataV4/Company('ZUMMO')/STHApiVendorBankAccount?filter=vendorNo eq 'S00024'",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"153"
+							],
+							"port": "7548",
+							"path": [
+								"DESARROLLO",
+								"ODataV4",
+								"Company('ZUMMO')",
+								"STHApiVendorBankAccount"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "vendorNo eq 'S00024'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor Bank STHApiPostVendorBankAccount Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vendorNo\":\"S00000\",\r\n    \"code\":\"\",\r\n    \"name\":\"PRUEBA\",\r\n     \"iban\":\"ES040128 0604190 1000 26082\",\r\n    \"swiftCode\":\"BKBKESMM\",\r\n    \"CCCBankNo\":\"0128 0604190 1000 26082\",\r\n    \"actionHTTP\":\"POST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.1.153:7548/DESARROLLO/ODataV4/Company('ZUMMO')/STHApiPostVendorBankAccount",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"153"
+							],
+							"port": "7548",
+							"path": [
+								"DESARROLLO",
+								"ODataV4",
+								"Company('ZUMMO')",
+								"STHApiPostVendorBankAccount"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "Bario5622$",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "JJ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "ITBID",
+			"item": [
+				{
+					"name": "Obtener Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "APIintegracion",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "integracionAPI",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "1_1serxem86lj48swco0go0k0koccs8gkko8kg4wwwoc8sgowgc",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "3oeurqfgnvuogcgkcskowcswoskoogccc00sk4o0wwcsoc0s8k",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://zummo.itbid.org/oauth/v2/token",
+							"protocol": "https",
+							"host": [
+								"zummo",
+								"itbid",
+								"org"
+							],
+							"path": [
+								"oauth",
+								"v2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alta producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "NmIwN2IwYWY2NzlmMGVmYjcwOTdlMWZiZmRmZWQwMTAyM2VhYmFiYTZlOGRmYTRlZDgxY2VjZjg3MzEwMDI5ZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"producto\":\r\n    {\r\n        \"artcodigo\":\"0000002\",\r\n        \"sapCode\":\"0000002\",\r\n        \"artconcepto\":\"PRUEBA PROUCTD TEMPORAL\",\r\n        \"artobs\":\"\",\r\n        \"notasInternas\":\"\",\r\n        \"subcategoria\":\"Auditoría\",\r\n        \"subcategoriasAdicionales\":\"\",\r\n        \"unidad\":1,\r\n        \"unidadMedidaDefault\":\"UDS\",\r\n        \"precioReferencia\":0.69197,\r\n        \"stock\":66.0,\r\n        \"stockMinimoProveedor\":0.0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://zummo.itbid.org/api/put/product/0000002",
+							"protocol": "https",
+							"host": [
+								"zummo",
+								"itbid",
+								"org"
+							],
+							"path": [
+								"api",
+								"put",
+								"product",
+								"0000002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

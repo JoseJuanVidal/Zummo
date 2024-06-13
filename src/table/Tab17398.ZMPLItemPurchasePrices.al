@@ -59,27 +59,27 @@ table 17398 "ZM PL Item Purchase Prices"
             DataClassification = CustomerContent;
             Caption = 'Variant Code', comment = 'ESP="Cód. variante"';
         }
-        field(50000; "Record ID"; Guid)
+        field(50020; "Record ID"; Guid)
         {
             DataClassification = CustomerContent;
             Caption = 'Record ID', comment = 'ESP="ID Registro"';
         }
-        field(50001; "Status Approval"; Enum "Status Approval")
+        field(50021; "Status Approval"; Enum "Status Approval")
         {
             DataClassification = CustomerContent;
             Caption = 'Status Approval', comment = 'ESP="Estado Aprobación"';
         }
-        field(50002; "Date Send Approval"; Date)
+        field(50022; "Date Send Approval"; Date)
         {
             DataClassification = CustomerContent;
             Caption = 'Date Send Approval', comment = 'ESP="Fecha envío Aprobación"';
         }
-        field(50005; "Action Approval"; Enum "Action Approval")
+        field(50025; "Action Approval"; Enum "Action Approval")
         {
             DataClassification = CustomerContent;
             Caption = 'Action', comment = 'ESP="Acción"';
         }
-        field(50010; "Date/Time Creation"; DateTime)
+        field(50030; "Date/Time Creation"; DateTime)
         {
             DataClassification = CustomerContent;
             Caption = 'Date/Time Creation', comment = 'ESP="Fecha/Hora Creación"';
