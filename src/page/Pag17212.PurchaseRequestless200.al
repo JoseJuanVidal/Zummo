@@ -180,7 +180,7 @@ page 17212 "Purchase Request less 200"
         if UserSetup.Get(UserId) then
             if UserSetup."Approvals Purch. Request" then
                 exit;
-        Rec.SetRange("User Id", UserId);
+        // Rec.SetRange("User Id", UserId);
 
     end;
 

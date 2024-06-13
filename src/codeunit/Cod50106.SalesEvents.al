@@ -1630,32 +1630,30 @@ codeunit 50106 "SalesEvents"
     // ======================================================================================================
     procedure AddExplodeServiceContract(var Rec: Record "Sales Line")
     var
-        Item: Record Item;
+        GLAccount: Record "G/L Account";
         ServiceContractHeader: Record "Service Contract Header";
         ServiceContracts: page "Service Contract List";
-        ItemNo: code[20];
+        GLAccountNo: code[20];
         lblConfirm: Label '¿Desea añadir la linea de servicio %1 %2\del contrato %3\a la lineas %4 %5?',
             comment = 'ESP="¿Desea añadir la linea de servicio %1 %2\del contrato %3\a la lineas %4 %5?"';
     begin
         Rec.TestField(Type, Rec.Type::Item);
-        ItemNo := GetServiceMgtSetupItemExtension();
-        Item.SetFilter(type, '%1|%2', Item.Type::"Non-Inventory", Item.Type::Service);
-        Item.Get(ItemNo);
+        GLAccountNo := GetServiceMgtSetupItemExtension();
         ServiceContractHeader.SetRange("Contract Type", ServiceContractHeader."Contract Type"::Contract);
         // se comenta porque cuando creamos el pedido de venta, todavia no esta creado el producto de servio
-        // por lo que no se puede indicar este
+        // por lo que no se puede indicar que este firmado
         // ServiceContractHeader.SetRange(Status, ServiceContractHeader.Status::Signed);
         ServiceContracts.SetTableView(ServiceContractHeader);
         ServiceContracts.LookupMode(true);
         if ServiceContracts.RunModal() = Action::LookupOK then begin
             ServiceContracts.GetRecord(ServiceContractHeader);
-            if confirm(lblConfirm, false, Item."No.", Item.Description, ServiceContractHeader."Contract No.", Rec."No.", Rec.Description) then begin
-                AddToSalesLine(Rec, Item, ServiceContractHeader."Contract No.");
+            if confirm(lblConfirm, false, GLAccount."No.", GLAccount.Name, ServiceContractHeader."Contract No.", Rec."No.", Rec.Description) then begin
+                AddToSalesLine(Rec, GLAccount, ServiceContractHeader);
                 Rec.ParentLine := true;
                 Rec.ParentItemNo := Rec."No.";
                 Rec.ContractParent := true;
                 Rec.Modify();
-                Message('Creada linea de servicio del contrato %1', ServiceContractHeader."Contract No.");
+                Message('Creada linea de servicio del contrato %1', ServiceContractHeader);
             end;
         end;
     end;
@@ -1673,7 +1671,7 @@ codeunit 50106 "SalesEvents"
         end
     end;
 
-    local procedure AddToSalesLine(SalesLine: Record "Sales Line"; Item: Record Item; ContractNo: code[20])
+    local procedure AddToSalesLine(SalesLine: Record "Sales Line"; GLAccount: Record "G/L Account"; ServiceContractHeader: Record "Service Contract Header")
     var
         ToSalesLine: Record "Sales Line";
         NextLineNo: Integer;
@@ -1683,15 +1681,16 @@ codeunit 50106 "SalesEvents"
         ToSalesLine.INIT;
         ToSalesLine := SalesLine;
         ToSalesLine."Line No." := NextLineNo;
-        ToSalesLine.Type := ToSalesLine.Type::Item;
-        ToSalesLine.VALIDATE("No.", Item."No.");
+        ToSalesLine.Type := ToSalesLine.Type::"G/L Account";
+        ToSalesLine.VALIDATE("No.", GLAccount."No.");
+        ToSalesLine.Description := CopyStr(ServiceContractHeader.Description, 1, MaxStrLen(ToSalesLine.Description));
         ToSalesLine.VALIDATE(Quantity, SalesLine.Quantity);
         ToSalesLine."DecLine Discount1 %_btc" := SalesLine."DecLine Discount1 %_btc";
         ToSalesLine."DecLine Discount2 %_btc" := SalesLine."DecLine Discount2 %_btc";
         ToSalesLine.Validate("Line Discount %", SalesLine."Line Discount %");
         ToSalesLine.ParentLineNo := SalesLine."Line No.";
         ToSalesLine.Insert();
-        UpdateContractNoExtension(ToSalesLine, ContractNo);
+        UpdateContractNoExtension(ToSalesLine, ServiceContractHeader."Contract No.");
     end;
 
     local procedure InsertLinesBetween(Rec: Record "Sales Line"; var NextLineNo: Integer)
@@ -1716,10 +1715,11 @@ codeunit 50106 "SalesEvents"
         RefRecord: RecordRef;
         RefField: FieldRef;
     begin
+        // cambiamos de producto a cuenta contable, para que no salga en el BI Ventas
         ServiceMgtSetup.Get();
         RefRecord.GetTable(ServiceMgtSetup);
-        if RefRecord.FieldExist(50690) then begin // cod. Producto contrato
-            RefField := RefRecord.Field(50690);
+        if RefRecord.FieldExist(50670) then begin // 50670 - Cuenta Contable a devengar (antes 50690 =>cod. Producto contrato)
+            RefField := RefRecord.Field(50670);
             RefField.TestField();
             exit(RefField.Value);
         end;

@@ -90,7 +90,7 @@ codeunit 50107 "ImportarN43"
 
 
     var
-        DataExchDef: Record "Data Exch.";
+        DataExchDef: Record "Data Exch. Def";
         Codigo: Text;
         CodigoAnt: Text;
         FechaMov: Text;
