@@ -10123,6 +10123,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea exportar la valoración de existencia a %1 en Excel?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Funciones IVA Recuperacion - Method OnRun - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="Codeunit 590486959 - NamedType 213825359" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fallo en intregración de compras</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Task Scheduler Failure - NamedType error_Lbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1856158927 - Method 395651631 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>No filter has been indicated\¿Do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se ha indicado ningun filtro.\¿Desea continuar?"</note>
@@ -13678,6 +13683,981 @@
           <note from="Developer" annotates="general" priority="2">ESP="URL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Sharepont Drive Items - Action HyperlinkURL - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1866513934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Comment Line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Comment Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1866513934 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Comment Line - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1866513934 - Control 2998405077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Comment Line - Control comment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1866513934 - Control 895206272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Comment Line - Control date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1866513934 - Control 1294919425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Comment Line - Control lineNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1866513934 - Control 3179096107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Comment Line - Control no - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1866513934 - Control 1686156363 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Comment Line - Control tableName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 1762530770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 2754366897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control city - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 1408747468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control companyName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 147901250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control companyNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 2977059376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>E-Mail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control eMail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 3819638266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fax No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control faxNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 2025750209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Title</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control jobTitle - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 3179096107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control no - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 2359186199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control phoneNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 2213755927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Post Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control postCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2978833825 - Control 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Contact - Control Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2319968828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Country Region</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Country/Region - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2319968828 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Country/Region - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2319968828 - Control 2278472071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>County Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Country/Region - Control countyName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2319968828 - Control 1181072799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EU Country/Region Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Country/Region - Control euCountryRegionCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2319968828 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Country/Region - Control name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2596680372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Currency - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2596680372 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Currency - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2596680372 - Control 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Currency - Control description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2596680372 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Currency - Control id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Control 2998405077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Control comment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Control 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Control description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Control id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Control 3429668174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Control inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Control 3179096107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Control no - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Control 2269249195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Includes VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Control priceIncludesVAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Control 3175374588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Control type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Control 2570064479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Control unitCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Control 3421409717 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Control unitPrice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2629390990 - Control 1764391503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Item - Control vendorNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 698794543 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Language</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Language - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 698794543 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Language - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 698794543 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Language - Control name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3198345486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Non-Payment Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Non-Payment Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3198345486 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Non-Payment Period - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3198345486 - Control 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Non-Payment Period - Control description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3198345486 - Control 2599324126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>From Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Non-Payment Period - Control fromDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3198345486 - Control 1382082177 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Non-Payment Period - Control toDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 509314267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Payment Day</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Payment Day - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 509314267 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Payment Day - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 509314267 - Control 2528522080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Day of the month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Payment Day - Control dayOfTheMonth - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1690460382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Payment Method</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Payment Method - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1690460382 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Payment Method - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1690460382 - Control 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Payment Method - Control description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3795524060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Payment Terms</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Payment Terms - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3795524060 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Payment Terms - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3795524060 - Control 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Payment Terms - Control description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3816288158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Post Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Post Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3816288158 - Control 2754366897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Post Code - Control city - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3816288158 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Post Code - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2593938318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Comment Line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Comment Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2593938318 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Comment Line - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2593938318 - Control 2998405077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Comment Line - Control comment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2593938318 - Control 895206272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Comment Line - Control date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2593938318 - Control 1294919425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Comment Line - Control lineNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2593938318 - Control 3179096107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Comment Line - Control no - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2593938318 - Control 1686156363 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Comment Line - Control tableName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API POST Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 1762530770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 2754366897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control city - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 2745143010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control companyContactNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 2977059376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>E-Mail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control eMail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 3819638266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fax No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control faxNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 2025750209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Title</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control jobTitle - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 3179096107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control no - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 2359186199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control phoneNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 2213755927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Post Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control postCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3211310881 - Control 1764391503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Contact - Control vendorNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 153083836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API POST Country Region</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Country/Region - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 153083836 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Country/Region - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 153083836 - Control 2278472071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>County Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Country/Region - Control countyName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 153083836 - Control 1181072799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EU Country/Region Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Country/Region - Control euCountryRegionCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 153083836 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Country/Region - Control name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1905369140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API POST Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Currency - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1905369140 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Currency - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1905369140 - Control 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Currency - Control description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1905369140 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Currency - Control id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 103359006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API POST Non-Payment Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Non-PaymentPeriod - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 103359006 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Non-PaymentPeriod - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 103359006 - Control 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Non-PaymentPeriod - Control description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 103359006 - Control 2599324126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>From Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Non-PaymentPeriod - Control fromDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 103359006 - Control 1382082177 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Non-PaymentPeriod - Control toDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2891941467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Payment Day</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Payment Day - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2891941467 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Payment Day - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2891941467 - Control 2528522080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Day of the month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Payment Day - Control dayOfTheMonth - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3390495006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API POST Post Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Post Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3390495006 - Control 2754366897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Post Code - Control city - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3390495006 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Post Code - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2194511220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API POST Provincia</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Provincia - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2194511220 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Provincia - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2194511220 - Control 3819277359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Provincia - Control text - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API POST Purchase Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 1808640270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control currencyCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 3840690540 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direct Unit Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control directUnitCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 2786197837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control endingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 2930473216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control itemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 150016015 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Minimum Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control minimumQuantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 1031646567 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control ProcessDescription - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 1787050118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control ProcessNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 1751904704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control startingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 1092236590 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control unitOfMeasureCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 783251086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control variantCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3831239171 - Control 1764391503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Purchase Price - Control vendorNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3682982345 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API POST Purchase Line Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST PurchaseLineDisc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3682982345 - Control 1808640270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST PurchaseLineDisc - Control currencyCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3682982345 - Control 2786197837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST PurchaseLineDisc - Control endingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3682982345 - Control 2930473216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST PurchaseLineDisc - Control itemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3682982345 - Control 269003981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line Discount %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST PurchaseLineDisc - Control lineDiscount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3682982345 - Control 150016015 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Minimum Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST PurchaseLineDisc - Control minimumQuantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3682982345 - Control 1751904704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST PurchaseLineDisc - Control startingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3682982345 - Control 1092236590 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST PurchaseLineDisc - Control unitOfMeasureCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3682982345 - Control 783251086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST PurchaseLineDisc - Control variantCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3682982345 - Control 1764391503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST PurchaseLineDisc - Control vendorNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 1762530770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 2754366897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control city - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 674479345 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasificación proveedor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control ClasProveedor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 1808640270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control currencyCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 3819638266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fax No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control faxNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 1794991033 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Language Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control languageCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 1713889359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control Name2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 3179096107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control no - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 3528533692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Method Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control paymentMethodCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 3493223734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control paymentTermsCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 2359186199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control phoneNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Control 1402100517 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Control VendorPostingGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4050032736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API POST Vendor Bank Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4050032736 - Control 4260855344 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CCC Bank No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Control CCCBankNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4050032736 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4050032736 - Control 2214516256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IBAN</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Control iban - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4050032736 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Control name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4050032736 - Control 3254752254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SWIFT Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Control swiftCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4050032736 - Control 1764391503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Control vendorNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2620304372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Provincia</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Provincia - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2620304372 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Provincia - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2620304372 - Control 3819277359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Provincia - Control text - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 282023249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Purchase Line Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Line Discount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 282023249 - Control 1808640270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Line Discount - Control currencyCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 282023249 - Control 2786197837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Line Discount - Control endingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 282023249 - Control 2930473216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Line Discount - Control itemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 282023249 - Control 269003981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line Discount %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Line Discount - Control lineDiscount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 282023249 - Control 150016015 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Minimum Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Line Discount - Control minimumQuantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 282023249 - Control 1751904704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Line Discount - Control startingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 282023249 - Control 1092236590 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Line Discount - Control unitOfMeasureCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 282023249 - Control 783251086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Line Discount - Control variantCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 282023249 - Control 1764391503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Line Discount - Control vendorNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Purchase Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 1808640270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control currencyCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 3840690540 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direct Unit Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control directUnitCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 2786197837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control endingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 2930473216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control itemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 150016015 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Minimum Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control minimumQuantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 1031646567 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control ProcessDescription - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 1787050118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control ProcessNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 1751904704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control startingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 1092236590 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control unitOfMeasureCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 783251086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control variantCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1703156867 - Control 1764391503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Purchase Price - Control vendorNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 1762530770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 2754366897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control city - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 674479345 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasificación proveedor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control ClasProveedor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 4201047420 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 1808640270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control currencyCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 3819638266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fax No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control faxNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 1794991033 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Language Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control languageCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 1713889359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control Name2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 3179096107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control no - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 3528533692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Method Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control paymentMethodCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 3493223734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control paymentTermsCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 2359186199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control phoneNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4122594701 - Control 1402100517 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor - Control VendorPostingGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4182454544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>STH API Vendor Bank Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor Bank Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4182454544 - Control 4260855344 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CCC Bank No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor Bank Account - Control CCCBankNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4182454544 - Control 707985127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor Bank Account - Control code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4182454544 - Control 2214516256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IBAN</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor Bank Account - Control iban - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4182454544 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor Bank Account - Control name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4182454544 - Control 3254752254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SWIFT Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor Bank Account - Control swiftCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4182454544 - Control 1764391503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API Vendor Bank Account - Control vendorNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3961029829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fallo Localizado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fallo Localizado"</note>
@@ -13737,6 +14717,61 @@
           <source>Finalizar Credito</source>
           <note from="Developer" annotates="general" priority="2">ESP="Finalizar Credito"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Input Hist Aseguradora - NamedType lblFin</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Itbid Configuration</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Control 2131545549 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requires Client_id field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Control client_id - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Control 1197510652 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requires Client_secret field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Control client_secret - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Control 3163706192 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requires Email field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Control email - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Control 3631304531 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requires Grant_Type field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Control grant_type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Control 2526185377 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requires Password field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Control password - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Control 1245750426 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requires Redirect_URL field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Control redirect_url - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Control 1615763114 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requires Authentication field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Control Requires Authentication - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Control 2181748176 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the url field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Control urlAccessToken - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Control 277757950 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the urlPut field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Control urlPut - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2431959735 - Control 588704890 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Requires Username field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH Itbid Configuration - Control username - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 369657445 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Movs. Conta-Presup</source>
@@ -14222,6 +15257,11 @@
           <source>Specifies the value of the Unit Price field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH Sales Line Aux - Control Unit Price - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3681370016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>APIVendor Posting Group </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STHAPIVendor Posting Group - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 9807146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location Stock</source>
@@ -29438,6 +30478,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Acero Embalaje (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Steel - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 687349316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Last date updated</source>
+          <note from="Developer" annotates="general" priority="2">Ult. Fecha act. itbid</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STH Last Update Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1573910383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>To update</source>
+          <note from="Developer" annotates="general" priority="2">Act. itbid</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STH To Update - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2561412467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Costes Estandar Previo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Costes Estandar Previo"</note>
@@ -31187,6 +32237,56 @@
           <source>Show Item alert without tariff</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mostrar alerta producto sin tarifa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Show Item alert without tariff - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3495999304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>client_id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHclient_id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2897127817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>client_secret</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHclient_secret - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 525958277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHemail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 1739722250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>grant_type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHgrant_type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2789385036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>password</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHpassword - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2657484099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>redirect_url</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHredirect_url - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3107834123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Requires Authenticacion</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHRequires Authentication - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3133646429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>URL Access Token</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHurlAccessToken - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 234003279 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>URL Put</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHurlPut - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 840233795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>username</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHusername - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 248859325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Ult. email Fact. Vencidas</source>
