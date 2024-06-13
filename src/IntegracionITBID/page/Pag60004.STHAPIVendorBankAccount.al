@@ -45,7 +45,7 @@ page 60004 "STH API Vendor Bank Account"
                 {
                     Caption = 'SWIFT Code';
                 }
-                field(CCCBankNo; Rec."CCC Bank No.")
+                field(CCCBankNo; Rec."CCC No.")
                 {
                     Caption = 'CCC Bank No.';
                 }
