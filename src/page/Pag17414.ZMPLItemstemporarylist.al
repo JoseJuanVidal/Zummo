@@ -126,15 +126,19 @@ page 17414 "ZM PL Items temporary list"
                 trigger OnAction()
                 var
                     Itemstemporary: Record "ZM PL Items temporary";
+                    IsUpdate: Boolean;
+                    lblUpdate: Label 'Actualizada la plataforma ITBID', comment = 'ESP="Actualizada la plataforma ITBID"';
                 begin
                     if not Confirm(lblConfirmUpdateITBID) then
                         exit;
                     CurrPage.SetSelectionFilter(Itemstemporary);
                     if Itemstemporary.FindFirst() then
                         repeat
-                            Itemstemporary.ITBIDUpdate();
+                            if Itemstemporary.ITBIDUpdate() then
+                                IsUpdate := true;
                         Until Itemstemporary.next() = 0;
-
+                    if IsUpdate then
+                        Message(lblUpdate);
                 end;
             }
         }

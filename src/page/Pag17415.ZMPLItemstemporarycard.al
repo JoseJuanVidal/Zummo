@@ -394,10 +394,12 @@ page 17415 "ZM PL Items temporary card"
                     zummoFunctions: Codeunit "STH Zummo Functions";
                     JsonText: Text;
                     IsUpdate: Boolean;
+                    lblUpdate: Label 'Actualizada la plataforma ITBID', comment = 'ESP="Actualizada la plataforma ITBID"';
                 begin
                     if not Confirm(lblConfirmUpdateITBID) then
                         exit;
-                    Rec.ITBIDUpdate();
+                    if Rec.ITBIDUpdate() then
+                        Message(lblUpdate);
                 end;
             }
         }

@@ -797,7 +797,7 @@ table 17413 "ZM PL Items temporary"
         ZMItemPurchasesPrices.Run();
     end;
 
-    procedure ITBIDUpdate()
+    procedure ITBIDUpdate(): Boolean
     var
         Item: Record Item;
         zummoFunctions: Codeunit "STH Zummo Functions";
@@ -813,6 +813,7 @@ table 17413 "ZM PL Items temporary"
             Rec."ITBID Status" := Rec."ITBID Status"::Created;
             Rec.Modify();
         end;
+        exit(IsUpdate);
     end;
 
     procedure Navigate_PostedItemList()

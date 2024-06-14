@@ -17318,6 +17318,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Alta/Actualización ITBID"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action UpdateITBID - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 4174935501 - Method 1377591017 - NamedType 1276646205" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualizada la plataforma ITBID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizada la plataforma ITBID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action UpdateITBID - Method OnAction - NamedType lblUpdate</note>
+        </trans-unit>
         <trans-unit id="Page 3858912784 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Navigate,Setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
@@ -17367,6 +17372,11 @@
           <source>ITBID Update</source>
           <note from="Developer" annotates="general" priority="2">ESP="Alta/Actualización ITBID"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action UpdateITBID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 4174935501 - Method 1377591017 - NamedType 1276646205" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualizada la plataforma ITBID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizada la plataforma ITBID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action UpdateITBID - Method OnAction - NamedType lblUpdate</note>
         </trans-unit>
         <trans-unit id="Page 988243340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General Setup Item registration</source>
