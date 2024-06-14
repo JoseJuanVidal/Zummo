@@ -1,4 +1,4 @@
-tableextension 50113 "PurchInvLine" extends "Purch. Inv. Line"  //123
+tableextension 50113 "ZM PurchInvLine" extends "Purch. Inv. Line"  //123
 {
     fields
     {

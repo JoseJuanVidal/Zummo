@@ -1,4 +1,4 @@
-pageextension 50042 "PostedPurchInvoiceSubform" extends "Posted Purch. Invoice Subform"
+pageextension 50042 "ZM PostedPurchInvoiceSubform" extends "Posted Purch. Invoice Subform"
 {
     layout
     {

@@ -52,14 +52,22 @@ page 17213 "Purchase Request less 200 Card"
                     ApplicationArea = All;
                     Caption = 'Descripción Factura', comment = 'ESP="Descripción Factura"';
                 }
-                // field(Quantity; Rec.Quantity)
-                // {
-                //     ApplicationArea = All;
-                // }
-                // field("Unit Price"; "Unit Price")
-                // {
-                //     ApplicationArea = all;
-                // }
+                group(PartidaPresupuestaria)
+                {
+                    Caption = 'Seleccionar Partida presupuestaría', comment = 'ESP="Seleccionar Partida presupuestaría"';
+                    field("G/L Account No."; "G/L Account No.")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Global Dimension 8 Code"; "Global Dimension 8 Code")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Global Dimension 3 Code"; "Global Dimension 3 Code")
+                    {
+                        ApplicationArea = all;
+                    }
+                }
                 field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;

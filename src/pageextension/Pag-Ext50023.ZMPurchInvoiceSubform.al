@@ -1,4 +1,4 @@
-pageextension 50023 "PurchInvoiceSubform" extends "Purch. Invoice Subform"
+pageextension 50023 "ZM PurchInvoiceSubform" extends "Purch. Invoice Subform"
 {
     layout
     {

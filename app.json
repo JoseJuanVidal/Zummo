@@ -10,7 +10,14 @@
   "help": "",
   "url": "",
   "logo": "",
-  "dependencies": [],
+  "dependencies": [
+    {
+      "name": "AddonAUT",
+      "publisher": "Business Intelligence Technology, S.L.",
+      "version": "1.0.0.26",
+      "appId": "b1c3afab-d17a-4882-a484-aa82cdea2829"
+    }
+  ],
   "screenshots": [],
   "platform": "14.0.0.0",
   "application": "14.0.0.0",

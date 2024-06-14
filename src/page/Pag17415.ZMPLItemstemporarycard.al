@@ -19,7 +19,7 @@ page 17415 "ZM PL Items temporary card"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Nº identificador del producto', comment = 'ESP="Nº identificador del producto"';
+                    ToolTip = 'Nº Identificador del producto', comment = 'ESP="Nº Identificador del producto"';
 
                     trigger OnAssistEdit()
                     begin
@@ -61,6 +61,7 @@ page 17415 "ZM PL Items temporary card"
                     field("ITBID Create"; "ITBID Create")
                     {
                         ApplicationArea = all;
+                        Editable = false;
                     }
                     field("ITBID Status"; "ITBID Status")
                     {
@@ -377,6 +378,21 @@ page 17415 "ZM PL Items temporary card"
                 trigger OnAction()
                 begin
                     OnAction_Open();
+                end;
+            }
+            action(SolicitudAlta)
+            {
+                ApplicationArea = All;
+                Caption = 'Solicitud Alta', Comment = 'ESP="Solicitud Alta"';
+                Image = SendApprovalRequest;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+
+                    Message('Envío solicitud');
                 end;
             }
             action(UpdateITBID)

@@ -123,6 +123,24 @@ table 17200 "Purchase Requests less 200"
             DataClassification = CustomerContent;
             Caption = 'No. Series', comment = 'ESP="Nos. serie"';
         }
+        field(120; "G/L Account No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'G/L Account No.', comment = 'ESP="Nº cuenta"';
+            TableRelation = "G/L Account" where(Blocked = const(false), "Account Type" = const(Posting), "Direct Posting" = const(true), "Income Stmt. Bal. Acc." = filter(<> ''));
+        }
+        field(130; "Global Dimension 3 Code"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            CaptionClass = '1,2,3';
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(3), "Value Dimensión Padre" = field("Global Dimension 8 Code"));
+        }
+        field(140; "Global Dimension 8 Code"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            CaptionClass = '1,2,8';
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(8));
+        }
     }
 
     keys
@@ -135,8 +153,8 @@ table 17200 "Purchase Requests less 200"
 
     fieldgroups
     {
-        fieldgroup(DropDown; "No.", "Vendor Name", Description, Amount) { }
-        fieldgroup(Brick; "No.", "Vendor Name", Description, Amount) { }
+        fieldgroup(DropDown; "No.", "Vendor Name", Description, "G/L Account No.", Amount) { }
+        fieldgroup(Brick; "No.", "Vendor Name", Description, "G/L Account No.", Amount) { }
     }
 
     var

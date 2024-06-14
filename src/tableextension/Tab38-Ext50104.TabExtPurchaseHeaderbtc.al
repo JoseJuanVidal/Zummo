@@ -120,11 +120,13 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
     var
         PurchaseSetup: Record "Purchases & Payables Setup";
         PurchaseHeader: Record "Purchase Header";
+        PurchaseLine: Record "Purchase Line";
         PurchInvHeader: Record "Purch. Inv. Header";
         PurchaseRequest: Record "Purchase Requests less 200";
         ExistInvoiced: Boolean;
         lblError: Label 'La solicitud ya ha sido facturada en el documento %1', comment = 'ESP="La solicitud ya ha sido facturada en el documento %1"';
         lblMaxRequest: Label 'El importe %1 supera el máximo permitido por solicitud %2.', comment = 'ESP="El importe %1 supera el máximo permitido por solicitud %2."';
+        lblDimensionPurchLine: Label '¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?', comment = 'ESP="¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?"';
     begin
         PurchaseRequest.Get(Rec."Purch. Request less 200");
         if Rec."Purch. Request less 200" = xRec."Purch. Request less 200" then
@@ -155,7 +157,61 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             if PurchaseHeader."Amount Including VAT" > PurchaseSetup."Maximum amount Request" then
                 Error(lblMaxRequest, PurchaseHeader."Amount Including VAT", PurchaseSetup."Maximum amount Request");
         end;
+        if (PurchaseRequest."Global Dimension 3 Code" <> '') and (PurchaseRequest."Global Dimension 8 Code" = '') then
+            exit;
+        if not Confirm(lblDimensionPurchLine, false, PurchaseRequest."Global Dimension 8 Code", PurchaseRequest."Global Dimension 3 Code") then
+            exit;
+        // Actualizar Dimensiones de partidas presupuestaria
+        PurchaseLine.Reset();
+        PurchaseLine.SetRange("Document Type", Rec."Document Type");
+        PurchaseLine.SetRange("Document No.", Rec."No.");
+        if PurchaseLine.FindFirst() then
+            repeat
+                if PurchaseLine.Type in [PurchaseLine.Type::Item, PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Fixed Asset"] then
+                    SetPurchaseLineDimensiones(PurchaseRequest, PurchaseLine);
+            Until PurchaseLine.next() = 0;
 
+    end;
+
+    local procedure SetPurchaseLineDimensiones(PurchaseRequest: Record "Purchase Requests less 200"; var PurchaseLine: Record "Purchase Line")
+    var
+        GLSetup: Record "General Ledger Setup";
+        DimSetEntry: record "Dimension Set Entry";
+        recNewDimSetEntry: record "Dimension Set Entry" temporary;
+        cduDimMgt: Codeunit DimensionManagement;
+        cduCambioDim: Codeunit CambioDimensiones;
+        GlobalDim1: code[20];
+        GlobalDim2: code[20];
+        intDimSetId: Integer;
+    begin
+        GLSetup.Get();
+        DimSetEntry.SetRange("Dimension Set ID", PurchaseLine."Dimension Set ID");
+        if DimSetEntry.FindFirst() then
+            repeat
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry.TransferFields(DimSetEntry);
+                // PARTIDA
+                if (PurchaseRequest."Global Dimension 8 Code" <> '') and (DimSetEntry."Dimension Code" = GLSetup."Shortcut Dimension 8 Code") then begin
+                    DimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 8 Code");
+                end;
+                // DETALLE
+                if (PurchaseRequest."Global Dimension 3 Code" <> '') and (DimSetEntry."Dimension Code" = GLSetup."Shortcut Dimension 3 Code") then begin
+                    DimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 3 Code");
+                end;
+                recNewDimSetEntry.Insert();
+            Until DimSetEntry.next() = 0;
+
+        Clear(cduDimMgt);
+        intDimSetId := cduDimMgt.GetDimensionSetID(recNewDimSetEntry);
+        clear(cduCambioDim);
+
+        GlobalDim1 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 1 Code", intDimSetId);
+        GlobalDim2 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 2 Code", intDimSetId);
+
+        PurchaseLine."Dimension Set ID" := intDimSetId;
+        PurchaseLine."Shortcut Dimension 1 Code" := GlobalDim1;
+        PurchaseLine."Shortcut Dimension 2 Code" := GlobalDim2;
+        PurchaseLine.Modify();
     end;
 
     local procedure Update_JobTaskNo()

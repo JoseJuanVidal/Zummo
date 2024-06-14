@@ -1,4 +1,4 @@
-pageextension 50105 "PurchaseOrder" extends "Purchase Order"
+pageextension 50105 "ZM PurchaseOrder" extends "Purchase Order"
 {
     layout
     {

@@ -1,4 +1,4 @@
-pageextension 50156 "PurchaseLines" extends "Purchase Lines"
+pageextension 50156 "ZM PurchaseLines" extends "Purchase Lines"
 {
     layout
     {

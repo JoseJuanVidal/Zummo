@@ -1,4 +1,4 @@
-pageextension 50063 "STH PostedPurchaseInvoices" extends "Posted Purchase Invoices"
+pageextension 50063 "ZM STH PostedPurchaseInvoices" extends "Posted Purchase Invoices"
 {
     layout
     {

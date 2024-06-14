@@ -1,4 +1,4 @@
-pageextension 50132 "SalesOrder" extends "Sales Order"
+pageextension 50132 "ZM SalesOrder" extends "Sales Order"
 {
     layout
     {

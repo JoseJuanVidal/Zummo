@@ -51,9 +51,9 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                 }
 
             }
-            group("Sharepoint")
+            group("Sharepoint Documents")
             {
-                Caption = 'Sharepoint', comment = 'ESP="Sharepoint"';
+                Caption = 'Sharepoint Documentos', comment = 'ESP="Sharepoint Documentos"';
 
                 field("Sharepoint Connection"; "Sharepoint Connection")
                 {

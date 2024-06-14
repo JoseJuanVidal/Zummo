@@ -1,4 +1,4 @@
-pageextension 50187 "PurchaseInvoice" extends "Purchase Invoice"
+pageextension 50187 "ZM PurchaseInvoice" extends "Purchase Invoice"
 {
     layout
     {

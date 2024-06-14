@@ -5862,6 +5862,22 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Description - Property Caption</note>
           <target>Descripción</target>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 3852983238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº cuenta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field G/L Account No. - Property Caption</note>
+          <target>Nº cuenta</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 2308462143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 3 Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Global Dimension 3 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 2453785066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 8 Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Global Dimension 8 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - Field 3015270207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Factura"</note>
@@ -15613,6 +15629,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Control Description - Property Caption</note>
           <target>Descripción Factura</target>
         </trans-unit>
+        <trans-unit id="Page 3377437423 - Control 1191207986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Seleccionar Partida presupuestaría</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar Partida presupuestaría"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Control PartidaPresupuestaria - Property Caption</note>
+          <target>Seleccionar Partida presupuestaría</target>
+        </trans-unit>
         <trans-unit id="Page 3377437423 - Control 1936001480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Proveedor"</note>
@@ -18915,10 +18937,10 @@
           <target>Indica si se ha creado el producto en la plataforma ITBID.</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nº identificador del producto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº identificador del producto"</note>
+          <source>Nº Identificador del producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Identificador del producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control No. - Property ToolTip</note>
-          <target>Nº identificador del producto</target>
+          <target>Nº Identificador del producto</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Control 4042672808 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado.</source>
@@ -18973,6 +18995,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Lanzar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Release - Property Caption</note>
           <target>Lanzar</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 3096908298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solicitud Alta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud Alta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action SolicitudAlta - Property Caption</note>
+          <target>Solicitud Alta</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 4174935501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ITBID Update</source>
@@ -31264,11 +31292,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PagExtPurchPaySetup - Control Contracts - Property Caption</note>
           <target>Contratos/Suministros</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1164140648 - Control 2060068491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3921990236">
-          <source>Sharepoint</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Sharepoint"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PagExtPurchPaySetup - Control Sharepoint - Property Caption</note>
-          <target>Sharepoint</target>
+        <trans-unit id="PageExtension 1164140648 - Control 1084473175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3921990236">
+          <source>Sharepoint Documentos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sharepoint Documentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PagExtPurchPaySetup - Control Sharepoint Documents - Property Caption</note>
+          <target>Sharepoint Documentos</target>
         </trans-unit>
         <trans-unit id="PageExtension 3128607420 - Control 749033378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 478700588">
           <source>Name</source>
@@ -31936,58 +31964,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Production BOM Lines - Control Language - Property Caption</note>
           <target>Filtro Idioma</target>
         </trans-unit>
-        <trans-unit id="PageExtension 783370822 - Action 2890590632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
-          <source>Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoice - Action RegistrarFran - Property ToolTip</note>
-          <target>Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa.</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 783370822 - Action 2890590632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
-          <source>P&amp;ost</source>
-          <note from="Developer" annotates="general" priority="2">ESP="R&amp;egistrar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoice - Action RegistrarFran - Property Caption</note>
-          <target>R&amp;egistrar</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 783370822 - Action 2890590632 - Method 1377591017 - NamedType 1946690851" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 783370822">
-          <source>La factura se registró con el número %1 y se movió a la ventana de facturas de compra registradas.\\¿Quiere abrir la factura registrada?</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoice - Action RegistrarFran - Method OnAction - NamedType OpenPostedPurchaseInvQst</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 783370822 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
-          <source>Normativa Plástico</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoice - Control Plastic - Property Caption</note>
-          <target>Normativa Plástico</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 4034672467 - Action 2890590632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4037192291">
-          <source>Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoices - Action RegistrarFran - Property ToolTip</note>
-          <target>Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa.</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 4034672467 - Action 2890590632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4037192291">
-          <source>P&amp;ost</source>
-          <note from="Developer" annotates="general" priority="2">ESP="R&amp;egistrar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseInvoices - Action RegistrarFran - Property Caption</note>
-          <target>R&amp;egistrar</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 1640572759 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
-          <source>Normativa Plástico</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrder - Control Plastic - Property Caption</note>
-          <target>Normativa Plástico</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 487435905 - Control 2267512986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
-          <source>Comentario</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderList - Control Motivo rechazo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 487435905 - Control 4063961376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
-          <source>Vendor Plastic packing (kg)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderList - Control KgVendorPackagingproduct - Property Caption</note>
-          <target>Plástico embalaje proveedor (kg)</target>
-        </trans-unit>
         <trans-unit id="PageExtension 3099940785 - Method 3517220897 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3099940785">
           <source>¿Would you like to duplicate the Line %1 quantity %2 ?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea duplicar la Línea %1 Cantidad %2?"</note>
@@ -32305,96 +32281,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesInvoiceSubform - Control txtBloqueado - Property Caption</note>
           <target>Bloqueado</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 3524292210 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Cambiar el grupo de registro de inventario de las lineas del documento</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cambiar el grupo de registro de inventario de las lineas del documento"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action changePostinGroup - Property ToolTip</note>
-          <target>Cambiar el grupo de registro de inventario de las lineas del documento</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 3524292210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Cambiar Reg, Inventario</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Reg, Inventario"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action changePostinGroup - Property Caption</note>
-          <target>Cambiar Reg, Inventario</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 454322636 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Impimir Fact.Export</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action Impimir Pedido - Property ToolTip</note>
-          <target>Imprimir Pedido Zummo</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 454322636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Imprimir Pedido Zummo</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action Impimir Pedido - Property Caption</note>
-          <target>Imprimir Pedido Zummo</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 4044259790 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Insert the comments in the table of predefined comments as order comments</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Inserta como comentarios de pedido los comentarios que haya en la tabla de comentarios predefinidos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action InsertarComentariosPredefinidos - Property ToolTip</note>
-          <target>Inserta como comentarios de pedido los comentarios que haya en la tabla de comentarios predefinidos</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 4044259790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Insert predefined comments</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Insertar comentarios predefinidos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action InsertarComentariosPredefinidos - Property Caption</note>
-          <target>Insertar comentarios predefinidos</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 4127921286 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Movimientos</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action Movimientos - Property ToolTip</note>
-          <target>Trazabilidad Serie</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 4127921286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Trazabilidad Serie</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action Movimientos - Property Caption</note>
-          <target>Trazabilidad Serie</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 2890590632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action RegistrarFran - Property ToolTip</note>
-          <target>Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa.</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 2890590632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>P&amp;ost</source>
-          <note from="Developer" annotates="general" priority="2">ESP="R&amp;egistrar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action RegistrarFran - Property Caption</note>
-          <target>R&amp;egistrar</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Action 3871771545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Update Purchase Order Zummo Inc.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Ped. Compra Zummo Inc."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Action STH Update Purchase Order Zummo Inc - Property Caption</note>
-          <target>Actualizar Ped. Compra Zummo Inc.</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Control 1320162667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Indicar el cambio para la impresión de los documentos.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Indicar el cambio para la impresión de los documentos."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Control CurrencyChange - Property ToolTip</note>
-          <target>Indicar el cambio para la impresión de los documentos.</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Control 2878857292 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Fecha recepción email del cliente</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha recepción email del cliente"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Control FechaRecepcionMail_btc - Property ToolTip</note>
-          <target>Fecha recepción email del cliente</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Control 2547972622 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Fecha envío</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha envío"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Control FechaEnvio - Property ToolTip</note>
-          <target>Fecha envío</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 3617415722 - Change 2632124822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Order Date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha Alta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Change Order Date - Property Caption</note>
-          <target>Fecha Alta</target>
         </trans-unit>
         <trans-unit id="PageExtension 696572482 - Action 2890590632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3332899200">
           <source>Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.</source>
@@ -32831,12 +32717,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Posted Sales Cr. Memo Subf - Action CalcItemCost - Property Caption</note>
           <target>Act. Coste Unitario</target>
         </trans-unit>
-        <trans-unit id="PageExtension 3206344153 - Action 417321194 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 407220332">
-          <source>Payments Days</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Plazos de pago"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH PostedPurchaseInvoices - Action PaymentsDays - Property Caption</note>
-          <target>Plazos de pago</target>
-        </trans-unit>
         <trans-unit id="PageExtension 811884982 - Action 144949968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1116965951">
           <source>Calcular Importes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Calcular importes"</note>
@@ -33231,6 +33111,58 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Produc- Planner Role Center - Action JobJournal - Property Caption</note>
           <target>Diario pr&amp;oyectos</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2620289535 - Action 2890590632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseInvoice - Action RegistrarFran - Property ToolTip</note>
+          <target>Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2620289535 - Action 2890590632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>P&amp;ost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="R&amp;egistrar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseInvoice - Action RegistrarFran - Property Caption</note>
+          <target>R&amp;egistrar</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2620289535 - Action 2890590632 - Method 1377591017 - NamedType 1946690851" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2620289535">
+          <source>La factura se registró con el número %1 y se movió a la ventana de facturas de compra registradas.\\¿Quiere abrir la factura registrada?</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseInvoice - Action RegistrarFran - Method OnAction - NamedType OpenPostedPurchaseInvQst</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2620289535 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>Normativa Plástico</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseInvoice - Control Plastic - Property Caption</note>
+          <target>Normativa Plástico</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 679329578 - Action 2890590632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4037192291">
+          <source>Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseInvoices - Action RegistrarFran - Property ToolTip</note>
+          <target>Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 679329578 - Action 2890590632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4037192291">
+          <source>P&amp;ost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="R&amp;egistrar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseInvoices - Action RegistrarFran - Property Caption</note>
+          <target>R&amp;egistrar</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Normativa Plástico</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Control Plastic - Property Caption</note>
+          <target>Normativa Plástico</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 148744100 - Control 2267512986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
+          <source>Comentario</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Control Motivo rechazo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 148744100 - Control 4063961376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
+          <source>Vendor Plastic packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Control KgVendorPackagingproduct - Property Caption</note>
+          <target>Plástico embalaje proveedor (kg)</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1118725128 - Action 3257411572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Posted Purchase Invoice Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. líns. fact. compra"</note>
@@ -33267,6 +33199,96 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Purchasing Agent Role - Action PurchaseRequest - Property Caption</note>
           <target>Compra menor 200</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 3524292210 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Cambiar el grupo de registro de inventario de las lineas del documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar el grupo de registro de inventario de las lineas del documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action changePostinGroup - Property ToolTip</note>
+          <target>Cambiar el grupo de registro de inventario de las lineas del documento</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 3524292210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Cambiar Reg, Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Reg, Inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action changePostinGroup - Property Caption</note>
+          <target>Cambiar Reg, Inventario</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 454322636 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Impimir Fact.Export</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action Impimir Pedido - Property ToolTip</note>
+          <target>Imprimir Pedido Zummo</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 454322636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Imprimir Pedido Zummo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imprimir Pedido Zummo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action Impimir Pedido - Property Caption</note>
+          <target>Imprimir Pedido Zummo</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 4044259790 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Insert the comments in the table of predefined comments as order comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inserta como comentarios de pedido los comentarios que haya en la tabla de comentarios predefinidos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action InsertarComentariosPredefinidos - Property ToolTip</note>
+          <target>Inserta como comentarios de pedido los comentarios que haya en la tabla de comentarios predefinidos</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 4044259790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Insert predefined comments</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Insertar comentarios predefinidos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action InsertarComentariosPredefinidos - Property Caption</note>
+          <target>Insertar comentarios predefinidos</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 4127921286 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Movimientos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action Movimientos - Property ToolTip</note>
+          <target>Trazabilidad Serie</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 4127921286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Trazabilidad Serie</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Trazabilidad Serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action Movimientos - Property Caption</note>
+          <target>Trazabilidad Serie</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 2890590632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action RegistrarFran - Property ToolTip</note>
+          <target>Finaliza el documento o el diario registrando los importes y las cantidades en las cuentas relacionadas de los libros de su empresa.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 2890590632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>P&amp;ost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="R&amp;egistrar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action RegistrarFran - Property Caption</note>
+          <target>R&amp;egistrar</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Action 3871771545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Update Purchase Order Zummo Inc.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Ped. Compra Zummo Inc."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Action STH Update Purchase Order Zummo Inc - Property Caption</note>
+          <target>Actualizar Ped. Compra Zummo Inc.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Control 1320162667 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Indicar el cambio para la impresión de los documentos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar el cambio para la impresión de los documentos."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Control CurrencyChange - Property ToolTip</note>
+          <target>Indicar el cambio para la impresión de los documentos.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Control 2878857292 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Fecha recepción email del cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha recepción email del cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Control FechaRecepcionMail_btc - Property ToolTip</note>
+          <target>Fecha recepción email del cliente</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Control 2547972622 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Fecha envío</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Control FechaEnvio - Property ToolTip</note>
+          <target>Fecha envío</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2532584947 - Change 2632124822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Order Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Alta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Change Order Date - Property Caption</note>
+          <target>Fecha Alta</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3747018531 - Action 3646494304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
           <source>Bloqueos Basedatos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueos Basedatos"</note>
@@ -33296,6 +33318,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mostrar Documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Service Item Lines - Action ShowDocument - Property Caption</note>
           <target>Mostrar Documento</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3090383268 - Action 417321194 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 407220332">
+          <source>Payments Days</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plazos de pago"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM STH PostedPurchaseInvoices - Action PaymentsDays - Property Caption</note>
+          <target>Plazos de pago</target>
         </trans-unit>
         <trans-unit id="TableExtension 2268077932 - Field 3388543440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
           <source>Internal Comment</source>
@@ -34711,42 +34739,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field Recycled plastic Qty. (kg) - Property Caption</note>
           <target>Plástico reciclado (kg)</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1592073549 - Field 631869557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
-          <source>Rejected Date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha Rechazo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field FechaRechazo_btc - Property Caption</note>
-          <target>Fecha Rechazo</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1592073549 - Field 1512392856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
-          <source>ID Corporativo Solicitante</source>
-          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field IdCorp_Sol - Property Caption</note>
-          <target>ID Corporativo Solicitante</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1592073549 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
-          <source>ID Corporativo Solicitante</source>
-          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field Nombre Empleado - Property Caption</note>
-          <target>ID Corporativo Solicitante</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1592073549 - Field 1017370016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
-          <source>Process No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cód. proceso"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field Process No. - Property Caption</note>
-          <target>Cód. proceso</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1592073549 - Field 1293037181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
-          <source>Purch. Order No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido Compra"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field Purch. Order No. - Property Caption</note>
-          <target>Nº Pedido Compra</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1592073549 - Field 2972924318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
-          <source>Rejected Text</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo Rechazo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field TextoRechazo - Property Caption</note>
-          <target>Motivo Rechazo</target>
         </trans-unit>
         <trans-unit id="TableExtension 3338551105 - Field 1162430823 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 959319265">
           <source>Base Amount Line</source>
@@ -37669,6 +37661,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblMaxRequest</note>
           <target>El importe %1 supera el máximo permitido por solicitud %2.</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Method 1044311127 - NamedType 3971836044" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
+          <source>¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblDimensionPurchLine</note>
+          <target>¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Method 4151499239 - NamedType 858699819" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
           <source>Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?"</note>
@@ -38559,6 +38557,42 @@
           <note from="Developer" annotates="general" priority="2">ESP="Modo transporte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field Transport Method - Property Caption</note>
           <target>Modo transporte</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3090976848 - Field 631869557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>Rejected Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Rechazo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM PurchInvLine - Field FechaRechazo_btc - Property Caption</note>
+          <target>Fecha Rechazo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3090976848 - Field 1512392856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>ID Corporativo Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM PurchInvLine - Field IdCorp_Sol - Property Caption</note>
+          <target>ID Corporativo Solicitante</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3090976848 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>ID Corporativo Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Corporativo Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM PurchInvLine - Field Nombre Empleado - Property Caption</note>
+          <target>ID Corporativo Solicitante</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3090976848 - Field 1017370016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>Process No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. proceso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM PurchInvLine - Field Process No. - Property Caption</note>
+          <target>Cód. proceso</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3090976848 - Field 1293037181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>Purch. Order No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM PurchInvLine - Field Purch. Order No. - Property Caption</note>
+          <target>Nº Pedido Compra</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3090976848 - Field 2972924318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>Rejected Text</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo Rechazo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM PurchInvLine - Field TextoRechazo - Property Caption</note>
+          <target>Motivo Rechazo</target>
         </trans-unit>
         <trans-unit id="TableExtension 2240314328 - Field 3398170104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2583759525">
           <source>Exportar BI Reclamaciones</source>
