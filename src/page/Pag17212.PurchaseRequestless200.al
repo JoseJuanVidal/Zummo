@@ -66,6 +66,11 @@ page 17212 "Purchase Request less 200"
                     ApplicationArea = all;
                     Visible = false;
                 }
+                field("Codigo Empleado"; "Codigo Empleado")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
             }
         }
         area(factboxes)

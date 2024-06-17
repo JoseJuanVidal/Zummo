@@ -114,10 +114,10 @@ page 17414 "ZM PL Items temporary list"
                 PromotedCategory = Process;
                 RunObject = page "ZM PL Item Setup approvals";
             }
-            action(UpdateITBID)
+            action(SolicitudAlta)
             {
                 ApplicationArea = All;
-                Caption = 'ITBID Update', Comment = 'ESP="Alta/Actualización ITBID"';
+                Caption = 'Solicitud Alta', Comment = 'ESP="Solicitud Alta/Actualización"';
                 Image = Purchasing;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -125,22 +125,40 @@ page 17414 "ZM PL Items temporary list"
 
                 trigger OnAction()
                 var
-                    Itemstemporary: Record "ZM PL Items temporary";
-                    IsUpdate: Boolean;
-                    lblUpdate: Label 'Actualizada la plataforma ITBID', comment = 'ESP="Actualizada la plataforma ITBID"';
+                    lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 (%2)?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 (%2)?"';
                 begin
-                    if not Confirm(lblConfirmUpdateITBID) then
-                        exit;
-                    CurrPage.SetSelectionFilter(Itemstemporary);
-                    if Itemstemporary.FindFirst() then
-                        repeat
-                            if Itemstemporary.ITBIDUpdate() then
-                                IsUpdate := true;
-                        Until Itemstemporary.next() = 0;
-                    if IsUpdate then
-                        Message(lblUpdate);
+                    if Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
+                        Rec.LaunchRegisterItemTemporary();
                 end;
+
             }
+            // action(UpdateITBID)
+            // {
+            //     ApplicationArea = All;
+            //     Caption = 'ITBID Update', Comment = 'ESP="Alta/Actualización ITBID"';
+            //     Image = Purchasing;
+            //     Promoted = true;
+            //     PromotedCategory = Process;
+            //     PromotedIsBig = true;
+
+            //     trigger OnAction()
+            //     var
+            //         Itemstemporary: Record "ZM PL Items temporary";
+            //         IsUpdate: Boolean;
+            //         lblUpdate: Label 'Actualizada la plataforma ITBID', comment = 'ESP="Actualizada la plataforma ITBID"';
+            //     begin
+            //         if not Confirm(lblConfirmUpdateITBID) then
+            //             exit;
+            //         CurrPage.SetSelectionFilter(Itemstemporary);
+            //         if Itemstemporary.FindFirst() then
+            //             repeat
+            //                 if Itemstemporary.ITBIDUpdate() then
+            //                     IsUpdate := true;
+            //             Until Itemstemporary.next() = 0;
+            //         if IsUpdate then
+            //             Message(lblUpdate);
+            //     end;
+            // }
         }
         area(Navigation)
         {

@@ -141,6 +141,24 @@ table 17200 "Purchase Requests less 200"
             CaptionClass = '1,2,8';
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(8));
         }
+        field(50000; "Codigo Empleado"; Code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Codigo Empleado', comment = 'ESP="Codigo Empleado"';
+            TableRelation = Employee;
+            ValidateTableRelation = true;
+            Editable = false;
+
+            trigger OnValidate()
+            begin
+                OnValidate_CodEmpleado();
+            end;
+        }
+        field(50010; "Nombre Empleado"; text[100])
+        {
+            Caption = 'Nombre Empleado', comment = 'ESP="Nombre Empleado"';
+            Editable = false;
+        }
     }
 
     keys
@@ -163,6 +181,7 @@ table 17200 "Purchase Requests less 200"
         Item: Record Item;
         UserSetup: Record "User Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        AutLoginMgt: Codeunit "AUT Login Mgt.";
         lblAction: Label '¿Desea % la solicitud %2?', comment = 'ESP="¿Desea % la solicitud %2?"';
         lblErrorBlocked: Label 'Vendor %1 is blocked %2.', comment = 'ESP="El provedoor %1 está bloqueado %2."';
         lblMaxAmount: Label 'The amount of the request %1 is greater than the maximum allowed %2.',
@@ -212,6 +231,7 @@ table 17200 "Purchase Requests less 200"
         CheckIsAssigned;
         if Rec.Amount <> xRec.Amount then
             Rec.Status := Rec.Status::" ";
+        Rec.validate("Codigo Empleado", AutLoginMgt.GetEmpleado());
     end;
 
     trigger OnDelete()
@@ -233,6 +253,7 @@ table 17200 "Purchase Requests less 200"
             NoSeriesMgt.TestManual(PurchasesSetup."Purchase Request Nos.");
             "No. Series" := '';
         END;
+
     end;
 
     local procedure OnValidate_VendorNo()
@@ -514,5 +535,14 @@ table 17200 "Purchase Requests less 200"
     begin
         NavigateForm.SetDoc(rec."Posting Date", "No.");
         NavigateForm.RUN;
+    end;
+
+    local procedure OnValidate_CodEmpleado()
+    var
+        Employee: Record Employee;
+    begin
+        "Nombre Empleado" := '';
+        if Employee.Get(Rec."Codigo Empleado") then
+            "Nombre Empleado" := copystr(Employee.FullName(), 1, MaxStrLen(Rec."Nombre Empleado"));
     end;
 }

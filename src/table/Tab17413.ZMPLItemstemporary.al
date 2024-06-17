@@ -537,9 +537,9 @@ table 17413 "ZM PL Items temporary"
         {
             DataClassification = CustomerContent;
             Caption = 'Codigo Empleado', comment = 'ESP="Codigo Empleado"';
-            TableRelation = Employee."No." where("User Id" = field("User ID"));
+            TableRelation = Employee;
             ValidateTableRelation = true;
-            //Editable = false;
+            Editable = false;
 
             trigger OnValidate()
             begin
@@ -556,7 +556,14 @@ table 17413 "ZM PL Items temporary"
             Caption = 'Nombre Empleado', comment = 'ESP="Nombre Empleado"';
             Editable = false;
         }
-
+        field(50830; "Modified"; Boolean)
+        {
+            Caption = 'Modified', comment = 'ESP="Modificado"';
+        }
+        field(50840; "E-mail sent"; Boolean)
+        {
+            Caption = 'E-mail sent', comment = 'ESP="Email enviado"';
+        }
         field(99000750; "Routing No."; Code[20])
         {
             Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';
@@ -585,12 +592,12 @@ table 17413 "ZM PL Items temporary"
         if "No." = '' then begin
             NoSeriesMgt.InitSeries(SetupPreItemReg."Temporary Nos.", xRec."Nos. series", 0D, Rec."No.", Rec."Nos. series");
         end;
-        InitRecord()
+        InitRecord();
     end;
 
     trigger OnModify()
     begin
-        InitRecord()
+        InitRecord();
     end;
 
     trigger OnDelete()
@@ -616,10 +623,13 @@ table 17413 "ZM PL Items temporary"
         ZMCIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";
         ZMCIMProdBOMLine: Record "ZM CIM Prod. BOM Line";
         ZMItemPurchasePrices: Record "ZM PL Item Purchase Prices";
+        ItemSetupApproval: Record "ZM PL Item Setup Approval";
+        ItemSetupDepartment: Record "ZM PL Item Setup Department";
         Employee: Record Employee;
         SetupPreItemReg: record "ZM PL Setup Item registration";
         TempBlob: Record TempBlob;
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        AutLoginMgt: Codeunit "AUT Login Mgt.";
         Funciones: Codeunit Funciones;
         Text027: Label 'must be greater than 0.', Comment = 'ESP="Debe ser mayor que 0"';
         lblConfirmBOM: Label 'El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?', comment = 'ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"';
@@ -666,10 +676,13 @@ table 17413 "ZM PL Items temporary"
 
     local procedure InitRecord()
     begin
+        Modified := true;
         if Rec."Posting Date" = 0D then
             Rec."Posting Date" := WorkDate();
         if "User ID" = '' then
             Rec."User ID" := GetCodEmpleado();
+        Rec.validate("Codigo Empleado", AutLoginMgt.GetEmpleado());
+        Rec."E-mail sent" := false;
     end;
 
     local procedure GetCodEmpleado(): code[20]
@@ -821,5 +834,151 @@ table 17413 "ZM PL Items temporary"
         PostedItemstemporarylist: page "Posted PL Items temporary list";
     begin
         PostedItemstemporarylist.Run;
+    end;
+
+    procedure LaunchRegisterItemTemporary()
+    var
+        myInt: Integer;
+    begin
+        // enviamos la solicitud para la alta de los productos.
+        // primero aprobacion planificacion de la alta de producto en ITBID y envio de alta de campos a los departamentos
+        if Rec."ITBID Status" in [Rec."ITBID Status"::" "] then
+            SendItemTemporaryFirstRegister()
+        else
+            SendItemTemporaryRegister();
+
+    end;
+
+    local procedure SendItemTemporaryFirstRegister()
+    var
+        Employee: Record Employee;
+        RefRecord: RecordRef;
+        Recipients: text;
+        lblErrorNotApprovals: Label 'No existen aprobadores configurados para la tabla %1.', comment = 'ESP="No existen aprobadores configurados para la tabla %1."';
+        lblConfirmEmail: Label 'La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?', comment = 'ESP="La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?"';
+    begin
+        RefRecord.GetTable(Rec);
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
+        if not ItemSetupApproval.FindFirst() then
+            Error(lblErrorNotApprovals, Rec.TableCaption);
+        // preparamos la tabla para los aprobadores y enviamos email
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                if ItemSetupDepartment.get(ItemSetupApproval.Department) then begin
+                    if ItemSetupDepartment.Email <> '' then begin
+                        if Recipients <> '' then
+                            Recipients += ';';
+                        Recipients += ItemSetupDepartment.Email;
+                    end;
+                    // miramos los empleados que tienen ese departamento
+                    Employee.Reset();
+                    Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
+                    if Employee.FindFirst() then
+                        repeat
+                            if Recipients <> '' then
+                                Recipients += ';';
+                            Recipients += Employee."Company E-Mail";
+                        Until Employee.next() = 0;
+                end;
+            Until ItemSetupApproval.next() = 0;
+
+        if Recipients = '' then
+            Error(lblErrorNotApprovals, Rec.TableCaption);
+
+        if Rec."E-mail sent" then
+            if not Confirm(lblConfirmEmail) then
+                exit;
+        SendMailItemTemporaryFirstRegister(Recipients);
+        Rec."E-mail sent" := true;
+        Rec.Modify();
+    end;
+
+
+    procedure SendMailItemTemporaryFirstRegister(Recipients: Text)
+    var
+        SalesHeader2: Record "Sales Header";
+        Quotepdf: Report PedidoCliente;
+        SMTPMailSetup: Record "SMTP Mail Setup";
+        SMTPMail: Codeunit "SMTP Mail";
+        Subject: text;
+        Body: text;
+        SubjectLbl: Label 'Solicitud de Alta de producto - %1 (%2)';
+    begin
+        SMTPMailSetup.Get();
+        SMTPMailSetup.TestField("User ID");
+        Subject := StrSubstNo(SubjectLbl, Rec."No.", Rec.Description);
+        Body := EnvioEmailBody;
+        // enviamos el email 
+        SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
+        SMTPMail.Send();
+    end;
+
+    local procedure EnvioEmailBody() Body: Text
+    var
+        Companyinfo: Record "Company Information";
+        Employee: Record Employee;
+        RefRecord: RecordRef;
+        xRefRecord: RecordRef;
+        CodEmpleado: code[20];
+        Color: text;
+    begin
+        Companyinfo.Get();
+        CodEmpleado := AutLoginMgt.GetEmpleado();
+        if Employee.Get(CodEmpleado) then;
+        Body := '<p>&nbsp;</p>';
+        Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
+        Body += '<h2 style="color: #2e6c80;">Solicitud de Alta de Producto No.: ' + Rec."No." + '</h2>';
+        Body += '<h3 style="color: #2e6c80;">Usuario: ' + StrSubstNo('%1 (%2)', Employee.FullName(), CodEmpleado) + '</h3>';
+        Body += '<p><strong>' + Rec.FieldCaption(Description) + '</strong>: ' + Rec.Description + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(EnglishDescription) + '</strong>: ' + Rec.EnglishDescription + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("Base Unit of Measure") + '</strong>:&nbsp; ' + Rec."Base Unit of Measure" + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Type) + '</strong>: ' + format(Rec.Type) + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Blocked) + '</strong>: ' + format(Rec.Blocked) + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("Reason Blocked") + '</strong>: ' + Rec."Reason Blocked" + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("ITBID Status") + '</strong>: ' + format(Rec."ITBID Status") + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("User ID") + '</strong>: ' + Rec."User ID" + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("Codigo Empleado") + '</strong>: ' + Rec."Codigo Empleado" + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Reason) + '</strong>: ' + Rec.GetWorkDescription() + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("Posting Date") + '</strong>: ' + format(Rec."Posting Date") + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Activity) + '</strong>: ' + Rec.Activity + '</p>';
+        if Item.Get(Rec."No.") then begin
+            RefRecord.GetTable(Rec);
+            xRefRecord.GetTable(Item);
+            Body += CheckChangesRec(RefRecord, xRefRecord);
+        end;
+    end;
+
+    local procedure CheckChangesRec(RefRecord: RecordRef; xRefRecord: RecordRef) Changes: Text
+    var
+        RefField: FieldRef;
+        xRefField: FieldRef;
+        FieldCount: Integer;
+        Count: Integer;
+        I: Integer;
+    begin
+        for i := 1 to 60000 do begin
+            if xRefRecord.FieldExist(i) then
+                FieldCount += 1;
+        end;
+        for i := 1 to FieldCount do begin
+            xRefField := xRefRecord.FieldIndex(i);
+            if RefRecord.FieldExist(xRefField.Number) then begin
+                RefField := RefRecord.Field(xRefField.Number);
+                if xRefField.Value <> RefField.Value then
+                    Changes += '<p><strong>' + xRefField.Caption + '</strong>: ' + StrSubstNo('%1 (antes: %2)', xRefField.Value, RefField.Value) + '</p>';
+            end;
+        end;
+        if Changes <> '' then
+            Changes := '<h3 style="color: #2e6c80;">Cambios:</h3>' + Changes;
+
+    end;
+
+    local procedure SendItemTemporaryRegister()
+    var
+        myInt: Integer;
+    begin
+
     end;
 }

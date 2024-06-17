@@ -160,5 +160,11 @@ tableextension 50126 "Employee" extends Employee  //5200
             Caption = 'Approval User Id', comment = 'ESP="Id. Usuario aprobación"';
             TableRelation = "User Setup";
         }
+        field(50142; "Approval Department User Id"; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Approval Department User Id', comment = 'ESP="Usuario aprobación Departamento"';
+            TableRelation = "User Setup";
+        }
     }
 }

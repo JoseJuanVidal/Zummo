@@ -67,7 +67,7 @@ page 17415 "ZM PL Items temporary card"
                     {
                         ApplicationArea = all;
                         ToolTip = 'Indica si se ha creado el producto en la plataforma ITBID.', comment = 'ESP="Indica si se ha creado el producto en la plataforma ITBID."';
-                        Editable = false;
+                        // Editable = false;
                     }
                 }
                 field(Blocked; Blocked)
@@ -383,22 +383,7 @@ page 17415 "ZM PL Items temporary card"
             action(SolicitudAlta)
             {
                 ApplicationArea = All;
-                Caption = 'Solicitud Alta', Comment = 'ESP="Solicitud Alta"';
-                Image = SendApprovalRequest;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-
-                trigger OnAction()
-                begin
-
-                    Message('Envío solicitud');
-                end;
-            }
-            action(UpdateITBID)
-            {
-                ApplicationArea = All;
-                Caption = 'ITBID Update', Comment = 'ESP="Alta/Actualización ITBID"';
+                Caption = 'Solicitud Alta', Comment = 'ESP="Solicitud Alta/Actualización"';
                 Image = Purchasing;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -406,18 +391,36 @@ page 17415 "ZM PL Items temporary card"
 
                 trigger OnAction()
                 var
-                    Item: Record Item;
-                    zummoFunctions: Codeunit "STH Zummo Functions";
-                    JsonText: Text;
-                    IsUpdate: Boolean;
-                    lblUpdate: Label 'Actualizada la plataforma ITBID', comment = 'ESP="Actualizada la plataforma ITBID"';
+                    lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 (%2)?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 (%2)?"';
                 begin
-                    if not Confirm(lblConfirmUpdateITBID) then
-                        exit;
-                    if Rec.ITBIDUpdate() then
-                        Message(lblUpdate);
+                    if Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
+                        Rec.LaunchRegisterItemTemporary();
                 end;
+
             }
+            // action(UpdateITBID)
+            // {
+            //     ApplicationArea = All;
+            //     Caption = 'ITBID Update', Comment = 'ESP="Alta/Actualización ITBID"';
+            //     Image = Purchasing;
+            //     Promoted = true;
+            //     PromotedCategory = Process;
+            //     PromotedIsBig = true;
+
+            //     trigger OnAction()
+            //     var
+            //         Item: Record Item;
+            //         zummoFunctions: Codeunit "STH Zummo Functions";
+            //         JsonText: Text;
+            //         IsUpdate: Boolean;
+            //         lblUpdate: Label 'Actualizada la plataforma ITBID', comment = 'ESP="Actualizada la plataforma ITBID"';
+            //     begin
+            //         if not Confirm(lblConfirmUpdateITBID) then
+            //             exit;
+            //         if Rec.ITBIDUpdate() then
+            //             Message(lblUpdate);
+            //     end;
+            // }
         }
         area(Navigation)
         {

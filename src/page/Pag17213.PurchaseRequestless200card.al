@@ -30,6 +30,14 @@ page 17213 "Purchase Request less 200 Card"
                 {
                     ApplicationArea = all;
                 }
+                field("Codigo Empleado"; "Codigo Empleado")
+                {
+                    ApplicationArea = all;
+                }
+                field("Nombre Empleado"; "Nombre Empleado")
+                {
+                    ApplicationArea = all;
+                }
                 group(Vendor)
                 {
                     Caption = 'Vendor', comment = 'ESP="Proveedor"';
