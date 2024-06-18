@@ -123,11 +123,19 @@ table 17200 "Purchase Requests less 200"
             DataClassification = CustomerContent;
             Caption = 'No. Series', comment = 'ESP="Nos. serie"';
         }
+        field(110; Type; Option)
+        {
+            Caption = 'Type', comment = 'ESP="Tipo"';
+            OptionMembers = " ","G/L Account","Fixed Asset";
+            OptionCaption = ' ,G/L Account,Fixed Asset;', comment = 'ESP=" ,Cuenta,Activo Fijo"';
+        }
         field(120; "G/L Account No."; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'G/L Account No.', comment = 'ESP="Nº cuenta"';
-            TableRelation = "G/L Account" where(Blocked = const(false), "Account Type" = const(Posting), "Direct Posting" = const(true), "Income Stmt. Bal. Acc." = filter(<> ''));
+            Caption = 'No.', comment = 'ESP="Nº"';
+            TableRelation = IF (Type = const("G/L Account")) "G/L Account"
+                    where(Blocked = const(false), "Account Type" = const(Posting), "Direct Posting" = const(true), "Income Stmt. Bal. Acc." = filter(<> ''))
+            ELSE IF (Type = const("Fixed Asset")) "Fixed Asset";
         }
         field(130; "Global Dimension 3 Code"; Code[20])
         {

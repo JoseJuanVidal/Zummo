@@ -63,6 +63,10 @@ page 17213 "Purchase Request less 200 Card"
                 group(PartidaPresupuestaria)
                 {
                     Caption = 'Seleccionar Partida presupuestaría', comment = 'ESP="Seleccionar Partida presupuestaría"';
+                    field(Type; Type)
+                    {
+                        ApplicationArea = all;
+                    }
                     field("G/L Account No."; "G/L Account No.")
                     {
                         ApplicationArea = all;

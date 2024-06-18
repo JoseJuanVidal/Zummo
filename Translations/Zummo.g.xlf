@@ -5674,8 +5674,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 3852983238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>G/L Account No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº cuenta"</note>
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field G/L Account No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 2308462143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -5727,6 +5727,16 @@
           <source>Status</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,G/L Account,Fixed Asset;</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Cuenta,Activo Fijo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit Price</source>
