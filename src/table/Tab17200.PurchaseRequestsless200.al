@@ -224,6 +224,8 @@ table 17200 "Purchase Requests less 200"
             "User Id" := UserId;
         if Rec."Posting Date" = 0D then
             Rec."Posting Date" := WorkDate();
+        if Rec."Codigo Empleado" = '' then
+            Rec.validate("Codigo Empleado", AutLoginMgt.GetEmpleado());
     end;
 
     trigger OnModify()
@@ -231,7 +233,8 @@ table 17200 "Purchase Requests less 200"
         CheckIsAssigned;
         if Rec.Amount <> xRec.Amount then
             Rec.Status := Rec.Status::" ";
-        Rec.validate("Codigo Empleado", AutLoginMgt.GetEmpleado());
+        if Rec."Codigo Empleado" = '' then
+            Rec.validate("Codigo Empleado", AutLoginMgt.GetEmpleado());
     end;
 
     trigger OnDelete()

@@ -25,10 +25,10 @@ page 17420 "ZM PL Dpto Items temp list"
                 {
                     ApplicationArea = All;
                 }
-                field(EnglishDescription; Rec.EnglishDescription)
-                {
-                    ApplicationArea = All;
-                }
+                // field(EnglishDescription; Rec.EnglishDescription)
+                // {
+                //     ApplicationArea = All;
+                // }
                 field("Base Unit of Measure"; Rec."Base Unit of Measure")
                 {
                     ApplicationArea = All;

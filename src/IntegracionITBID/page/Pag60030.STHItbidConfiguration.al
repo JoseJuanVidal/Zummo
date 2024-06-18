@@ -62,6 +62,14 @@ page 60030 "STH Itbid Configuration"
                     ToolTip = 'Specifies the value of the Requires Email field';
                     ApplicationArea = All;
                 }
+                field(emailVendor; emailVendor)
+                {
+                    ApplicationArea = all;
+                }
+                field(emailVendorBank; emailVendorBank)
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

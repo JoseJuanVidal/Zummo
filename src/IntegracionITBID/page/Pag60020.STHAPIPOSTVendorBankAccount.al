@@ -85,8 +85,9 @@ page 60020 "STH API POST VendorBankAccount"
                     vendorBankAccount."CCC No." := copystr(txtCCCNo, 1, MaxStrLen(vendorBankAccount."CCC No."));
                     vendorBankAccount.Validate(IBAN, copystr(txtIBAN, 1, MaxStrLen(vendorBankAccount.IBAN)));
                     createNoVendorBankAccount();
-
                     vendorBankAccount.Insert();
+                    Commit();
+                    SendEmailChangesVendor(false);
                 end;
             'PATCH':
                 begin
@@ -95,6 +96,8 @@ page 60020 "STH API POST VendorBankAccount"
                         vendorBankAccount."CCC No." := copystr(txtCCCNo, 1, MaxStrLen(vendorBankAccount."CCC No."));
                         vendorBankAccount.Validate(IBAN, copystr(txtIBAN, 1, MaxStrLen(vendorBankAccount.IBAN)));
                         vendorBankAccount.Modify();
+                        Commit();
+                        SendEmailChangesVendor(true);
                     end;
                 end;
         end;
@@ -128,5 +131,43 @@ page 60020 "STH API POST VendorBankAccount"
             if copystr(Valor, I, 1) in [' ', '!', '"', '·', '$', '%', '&', '/', '-', '+', '*', '¿', '?', '=', ')', '()'] then
                 TrimString += copystr(Valor, I, 1);
         end;
+    end;
+
+    local procedure SendEmailChangesVendor(Changes: Boolean)
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        SMTPMailSetup: Record "SMTP Mail Setup";
+        SMTPMail: Codeunit "SMTP Mail";
+        Subject: text;
+        Body: text;
+        SubjectLbl: Label 'Alta/Cambio Banco proveedor - %1 (%2)';
+    begin
+        SalesSetup.Get();
+        SMTPMailSetup.Get();
+        SMTPMailSetup.TestField("User ID");
+        Subject := StrSubstNo(SubjectLbl, vendorBankAccount."Vendor No.", vendorBankAccount.Code);
+        Body := EnvioEmailBody;
+        // enviamos el email 
+        if SalesSetup.emailVendorBank = '' then
+            exit;
+        SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", SalesSetup.emailVendorBank, Subject, Body, true);
+        SMTPMail.Send();
+    end;
+
+    local procedure EnvioEmailBody() Body: Text
+    var
+        Companyinfo: Record "Company Information";
+        Vendor: Record Vendor;
+    begin
+        Companyinfo.Get();
+        Body := '<p>&nbsp;</p>';
+        Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
+        Body += '<h2 style="color: #2e6c80;">Alta/Cambio Banco proveedor: ' + strsubstno('%1 %2', vendorBankAccount."Vendor No.", vendorBankAccount.Code) + '</h2>';
+        if Vendor.Get(vendorBankAccount."Vendor No.") then;
+        Body += '<p><strong>' + Rec.FieldCaption("Vendor No.") + '</strong>: ' + StrSubstNo('%1 %2', Vendor."No.", Vendor.Name) + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Name) + '</strong>: ' + vendorBankAccount.Name + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("Bank Account No.") + '</strong>: ' + vendorBankAccount."Bank Account No." + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(IBAN) + '</strong>: ' + vendorBankAccount.IBAN + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("SWIFT Code") + '</strong>: ' + vendorBankAccount."SWIFT Code" + '</p>';
     end;
 }

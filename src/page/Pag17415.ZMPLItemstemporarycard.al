@@ -33,11 +33,11 @@ page 17415 "ZM PL Items temporary card"
                 {
                     ApplicationArea = All;
                 }
-                field(EnglishDescription; Rec.EnglishDescription)
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Descripción en Ingles', comment = 'ESP="Descripción en Ingles"';
-                }
+                // field(EnglishDescription; Rec.EnglishDescription)
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Descripción en Ingles', comment = 'ESP="Descripción en Ingles"';
+                // }
                 field("Base Unit of Measure"; Rec."Base Unit of Measure")
                 {
                     ApplicationArea = All;
@@ -67,7 +67,7 @@ page 17415 "ZM PL Items temporary card"
                     {
                         ApplicationArea = all;
                         ToolTip = 'Indica si se ha creado el producto en la plataforma ITBID.', comment = 'ESP="Indica si se ha creado el producto en la plataforma ITBID."';
-                        // Editable = false;
+                        Editable = false;
                     }
                 }
                 field(Blocked; Blocked)
@@ -424,6 +424,17 @@ page 17415 "ZM PL Items temporary card"
         }
         area(Navigation)
         {
+            action(Translations)
+            {
+                ApplicationArea = all;
+                Caption = 'Traducciones', comment = 'ESP="Traducciones"';
+                Image = Translations;
+                Promoted = true;
+                PromotedCategory = Category4;
+                RunObject = page "ZM Item Translation temporary";
+                RunPageView = sorting("Item No.");
+                RunPageLink = "Item No." = field("No.");
+            }
             Group("Lista de materiales")
             {
                 // group(AssemblyML)

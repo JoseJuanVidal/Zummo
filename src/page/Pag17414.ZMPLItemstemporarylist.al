@@ -23,10 +23,10 @@ page 17414 "ZM PL Items temporary list"
                 {
                     ApplicationArea = All;
                 }
-                field(EnglishDescription; Rec.EnglishDescription)
-                {
-                    ApplicationArea = All;
-                }
+                // field(EnglishDescription; Rec.EnglishDescription)
+                // {
+                //     ApplicationArea = All;
+                // }
                 field("Base Unit of Measure"; Rec."Base Unit of Measure")
                 {
                     ApplicationArea = All;
@@ -220,7 +220,17 @@ page 17414 "ZM PL Items temporary list"
                         OnAction_PostedItemList();
                     end;
                 }
-
+            }
+            action(Translations)
+            {
+                ApplicationArea = all;
+                Caption = 'Traducciones', comment = 'ESP="Traducciones"';
+                Image = Translations;
+                Promoted = true;
+                PromotedCategory = Category4;
+                RunObject = page "ZM Item Translation temporary";
+                RunPageView = sorting("Item No.");
+                RunPageLink = "Item No." = field("No.");
             }
         }
     }

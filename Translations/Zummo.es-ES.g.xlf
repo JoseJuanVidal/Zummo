@@ -5844,6 +5844,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Amount - Property Caption</note>
           <target>Importe SIN IVA</target>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 430424374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Codigo Empleado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Codigo Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Codigo Empleado - Property Caption</note>
+          <target>Codigo Empleado</target>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - Field 2790486453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comment</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios"</note>
@@ -5895,6 +5901,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nos. serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field No. Series - Property Caption</note>
           <target>Nos. serie</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre Empleado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Nombre Empleado - Property Caption</note>
+          <target>Nombre Empleado</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
@@ -9403,6 +9415,42 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3826509382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Tranlation</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Traducciona productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Item Translation temporary - Property Caption</note>
+          <target>Traducciona productos</target>
+        </trans-unit>
+        <trans-unit id="Table 3826509382 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Item Translation temporary - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 3826509382 - Field 47657272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description 2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción 2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Item Translation temporary - Field Description 2 - Property Caption</note>
+          <target>Descripción 2</target>
+        </trans-unit>
+        <trans-unit id="Table 3826509382 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source/>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Item Translation temporary - Field Item No. - Property Caption</note>
+          <target>Nº producto</target>
+        </trans-unit>
+        <trans-unit id="Table 3826509382 - Field 2273653569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source/>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Item Translation temporary - Field Language Code - Property Caption</note>
+          <target>Cód. idioma</target>
+        </trans-unit>
+        <trans-unit id="Table 3826509382 - Field 3450651614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. variante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Item Translation temporary - Field Variant Code - Property Caption</note>
+          <target>Cód. variante</target>
+        </trans-unit>
         <trans-unit id="Table 3916393050 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>OAuth 2.0 Application</source>
           <note from="Developer" annotates="general" priority="2">ESP="Aplicación OAuth 2.0"</note>
@@ -9845,8 +9893,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method SendItemTemporaryFirstRegister - NamedType lblErrorNotApprovals</note>
           <target>No existen aprobadores configurados para la tabla %1.</target>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - Method 3683582491 - NamedType 2933890088" size-unit="char" translate="yes" xml:space="preserve">
+          <source>La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method SendItemTemporaryFirstRegister - NamedType lblConfirmEmail</note>
+          <target>La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?</target>
+        </trans-unit>
         <trans-unit id="Table 3329268434 - Method 2540420188 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Solicitud de Alta de producto - %1 (%2)</source>
+          <source>Solicitud de Alta de Producto - %1 (%2)</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method SendMailItemTemporaryFirstRegister - NamedType SubjectLbl</note>
         </trans-unit>
@@ -9950,12 +10004,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Email enviado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field E-mail sent - Property Caption</note>
           <target>Email enviado</target>
-        </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1295952376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>English Description</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Descripción Ingles"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field EnglishDescription - Property Caption</note>
-          <target>Descripción Ingles</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Field 1152683886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Expiration Calculation</source>
@@ -16424,6 +16472,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3561054989 - Method 523120739 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alta/Cambio proveedor - %1 (%2)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Method SendEmailChangesVendor - NamedType SubjectLbl</note>
+        </trans-unit>
         <trans-unit id="Page 3561054989 - Control 1762530770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Address</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -16498,6 +16551,11 @@
           <source>STH API POST Vendor Bank Account</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4050032736 - Method 523120739 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alta/Cambio Banco proveedor - %1 (%2)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Method SendEmailChangesVendor - NamedType SubjectLbl</note>
         </trans-unit>
         <trans-unit id="Page 4050032736 - Control 4260855344 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CCC Bank No.</source>
@@ -18655,6 +18713,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Documents - Action uploadFile - Property Caption</note>
           <target>Importar fichero</target>
         </trans-unit>
+        <trans-unit id="Page 3826509382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Translations</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Traducciones Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Translation temporary - Property Caption</note>
+          <target>Traducciones Producto</target>
+        </trans-unit>
         <trans-unit id="Page 411716643 - Control 1200201054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Descripción</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción""</note>
@@ -18941,12 +19005,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Blocked - Property ToolTip</note>
           <target>Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena.</target>
         </trans-unit>
-        <trans-unit id="Page 3139896982 - Control 1295952376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Descripción en Ingles</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Descripción en Ingles"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control EnglishDescription - Property ToolTip</note>
-          <target>Descripción en Ingles</target>
-        </trans-unit>
         <trans-unit id="Page 3139896982 - Control 3520847126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Plataforma ITBID</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plataforma ITBID"</note>
@@ -19006,6 +19064,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Precios Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action PurchasePrices - Property Caption</note>
           <target>Precios Compra</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 2653012956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Traducciones</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Translations - Property Caption</note>
+          <target>Traducciones</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open</source>
@@ -19072,6 +19136,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Precios Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action PurchasePrices - Property Caption</note>
           <target>Precios Compra</target>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 2653012956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Traducciones</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action Translations - Property Caption</note>
+          <target>Traducciones</target>
         </trans-unit>
         <trans-unit id="Page 3858912784 - Action 3981856687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Conf. Alta Productos</source>
@@ -36071,6 +36141,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field DiasVtoAseguradora - Property Caption</note>
           <target>Días Vto. Aseguradora</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2958281500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Notify Email Vendor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Notificacion proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field emailVendor - Property Caption</note>
+          <target>Notificacion proveedor</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2078576762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Notify Email Vendor Bank</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Notificación Banco proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field emailVendorBank - Property Caption</note>
+          <target>Notificación Banco proveedor</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 3135379712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Envío email Fact. Vencidas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Envío email Fact. Vencidas"</note>
@@ -36190,7 +36272,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHclient_secret - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 525958277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
-          <source>email</source>
+          <source>Email errores</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHemail - Property Caption</note>
         </trans-unit>

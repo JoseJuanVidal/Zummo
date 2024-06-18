@@ -271,7 +271,17 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
         }
         field(60011; STHemail; Text[100])
         {
-            Caption = 'email';
+            Caption = 'Email errores';
+            DataClassification = CustomerContent;
+        }
+        field(60020; emailVendor; Text[100])
+        {
+            Caption = 'Notify Email Vendor', Comment = 'ESP="Notificacion proveedor"';
+            DataClassification = CustomerContent;
+        }
+        field(60022; emailVendorBank; Text[100])
+        {
+            Caption = 'Notify Email Vendor Bank', Comment = 'ESP="Notificación Banco proveedor"';
             DataClassification = CustomerContent;
         }
         // ITBID 

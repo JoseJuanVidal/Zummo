@@ -468,11 +468,11 @@ table 17413 "ZM PL Items temporary"
             DataClassification = CustomerContent;
             Caption = 'Alto', comment = 'ESP="Alto"';
         }
-        field(50805; EnglishDescription; text[100])
-        {
-            DataClassification = CustomerContent;
-            Caption = 'English Description', comment = 'ESP="Descripción Ingles"';
-        }
+        // field(50805; EnglishDescription; text[100])
+        // {
+        //     DataClassification = CustomerContent;
+        //     Caption = 'English Description', comment = 'ESP="Descripción Ingles"';
+        // }
         field(50806; Packaging; Boolean)
         {
             DataClassification = CustomerContent;
@@ -685,9 +685,9 @@ table 17413 "ZM PL Items temporary"
         Rec."E-mail sent" := false;
     end;
 
-    local procedure GetCodEmpleado(): code[20]
+    local procedure GetCodEmpleado(): code[50]
     begin
-        exit(UserId);
+        exit(copystr(UserId, 1, MaxStrLen(Rec."User ID")));
     end;
 
     local procedure OnLookup_Product_Manager()
@@ -892,9 +892,9 @@ table 17413 "ZM PL Items temporary"
                 exit;
         SendMailItemTemporaryFirstRegister(Recipients);
         Rec."E-mail sent" := true;
+        Rec."State Creation" := Rec."State Creation"::Requested;
         Rec.Modify();
     end;
-
 
     procedure SendMailItemTemporaryFirstRegister(Recipients: Text)
     var
@@ -904,7 +904,7 @@ table 17413 "ZM PL Items temporary"
         SMTPMail: Codeunit "SMTP Mail";
         Subject: text;
         Body: text;
-        SubjectLbl: Label 'Solicitud de Alta de producto - %1 (%2)';
+        SubjectLbl: Label 'Solicitud de Alta de Producto - %1 (%2)';
     begin
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
@@ -932,8 +932,7 @@ table 17413 "ZM PL Items temporary"
         Body += '<h2 style="color: #2e6c80;">Solicitud de Alta de Producto No.: ' + Rec."No." + '</h2>';
         Body += '<h3 style="color: #2e6c80;">Usuario: ' + StrSubstNo('%1 (%2)', Employee.FullName(), CodEmpleado) + '</h3>';
         Body += '<p><strong>' + Rec.FieldCaption(Description) + '</strong>: ' + Rec.Description + '</p>';
-        Body += '<p><strong>' + Rec.FieldCaption(EnglishDescription) + '</strong>: ' + Rec.EnglishDescription + '</p>';
-        Body += '<p><strong>' + Rec.FieldCaption("Base Unit of Measure") + '</strong>:&nbsp; ' + Rec."Base Unit of Measure" + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("Base Unit of Measure") + '</strong>: ' + Rec."Base Unit of Measure" + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Type) + '</strong>: ' + format(Rec.Type) + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Blocked) + '</strong>: ' + format(Rec.Blocked) + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption("Reason Blocked") + '</strong>: ' + Rec."Reason Blocked" + '</p>';
