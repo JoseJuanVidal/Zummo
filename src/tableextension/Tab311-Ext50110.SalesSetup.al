@@ -220,6 +220,12 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
                 ItemRegCodeunit.CheckSUPERUserConfiguration();
             end;
         }
+        field(50270; "GTIN Nos."; code[20])
+        {
+            Caption = 'GTIN Nos.', Comment = 'ESP="Nº Serie GTIN"';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
         // ITBID
         field(60002; STHurlAccessToken; Text[250])
         {

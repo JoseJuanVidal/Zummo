@@ -1,6 +1,9 @@
 table 17413 "ZM PL Items temporary"
 {
     DataClassification = CustomerContent;
+    Caption = '', comment = 'ESP=""';
+    LookupPageId = "ZM PL Items temporary list";
+    DrillDownPageId = "ZM PL Items temporary list";
 
     fields
     {
@@ -975,6 +978,33 @@ table 17413 "ZM PL Items temporary"
     end;
 
     local procedure SendItemTemporaryRegister()
+    var
+        myInt: Integer;
+    begin
+
+    end;
+
+    procedure NavigateItemsReview()
+    var
+        ItemstemporaryReview: Record "ZM PL Items temporary";
+        Itemstemporaryreviewlist: page "ZM Items temporary Review list";
+        Result: Boolean;
+        lblError: Label 'No existe ningun producto pendiente de revision del departamento %1.', comment = 'ESP="No existe ningun producto pendiente de revision del departamento %1."';
+    begin
+        ItemstemporaryReview.reset;
+        if ItemstemporaryReview.FindFirst() then
+            repeat
+                Result := CheckItemsTemporary(Rec);
+                ItemstemporaryReview.Mark(Result)
+            Until ItemstemporaryReview.next() = 0;
+        ItemstemporaryReview.MarkedOnly(true);
+        if ItemstemporaryReview.Count = 0 then
+            Error(lblError, "User ID");
+        Itemstemporaryreviewlist.SetTableView(ItemstemporaryReview);
+        Itemstemporaryreviewlist.RunModal();
+    end;
+
+    local procedure CheckItemsTemporary(ItemstemporaryReview: Record "ZM PL Items temporary"): Boolean
     var
         myInt: Integer;
     begin

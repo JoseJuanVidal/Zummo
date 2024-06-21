@@ -4,6 +4,11 @@ pageextension 50133 "ItemList" extends "Item List"
     {
         addafter(Description)
         {
+            field(GTIN; GTIN)
+            {
+                ApplicationArea = All;
+                Visible = false;
+            }
             field(Ordenacion_btc; Ordenacion_btc)
             {
                 ApplicationArea = All;
@@ -120,6 +125,17 @@ pageextension 50133 "ItemList" extends "Item List"
         }
         addafter(Dimensions)
         {
+            action(AsignarGTIN)
+            {
+                ApplicationArea = all;
+                Caption = 'Asignar GTIN', comment = 'ESP="Asignar GTIN"';
+                Image = BarCode;
+
+                trigger OnAction()
+                begin
+                    OnAction_AsignarGTIN();
+                end;
+            }
             action(importarComentarios)
             {
                 ApplicationArea = all;
@@ -259,6 +275,7 @@ pageextension 50133 "ItemList" extends "Item List"
         ValueEntry: Record "Value Entry";
         ShowExcelCostes: Boolean;
 
+
     local procedure CalculatePlastic()
     var
         Item: Record Item;
@@ -268,5 +285,18 @@ pageextension 50133 "ItemList" extends "Item List"
         CurrPage.SetSelectionFilter(Item);
         if Confirm(lblConfirm, false, Item.Count) then
             Funciones.PlasticCalculateItems(Rec);
+    end;
+
+    local procedure OnAction_AsignarGTIN()
+    var
+        Item: Record Item;
+        Funciones: Codeunit FuncionesFabricacion;
+        BarCodeType: enum "Bar Code Type";
+        lblConfirm: Label '¿Desea Asignar numeros EAN13 a %1 productos seleccionados?', comment = 'ESP="¿Desea Asignar numeros EAN13 a %1 productos seleccionados?"';
+    begin
+        CurrPage.SetSelectionFilter(Item);
+        if not confirm(lblConfirm, false, Item.Count) then
+            exit;
+        Funciones.CreateGTIN(Item, true, BarCodeType::EAN13);
     end;
 }

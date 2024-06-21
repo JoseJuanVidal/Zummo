@@ -221,6 +221,8 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         lblConfirmUpdate: Label 'Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?',
             comment = 'ESP="Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?"';
     begin
+        if (Rec."Job No." = '') and (Rec."Job Task No." = '') then
+            exit;
         JobTask.Reset();
         JobTask.SetRange("Job No.", Rec."Job No.");
         JobTask.SetRange("Job Task No.", Rec."Job Task No.");
@@ -235,9 +237,9 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
                     repeat
                         if PruchaseLine.Type in [PruchaseLine.Type::Item, PruchaseLine.Type::"G/L Account"] then begin
                             if Rec."Job No." <> '' then
-                                PruchaseLine.Validate("Job No.", Rec."Job No.");
+                                PruchaseLine."Job No." := Rec."Job No.";
                             if Rec."Job Task No." <> '' then
-                                PruchaseLine.Validate("Job Task No.", Rec."Job Task No.");
+                                PruchaseLine."Job Task No." := Rec."Job Task No.";
                             PruchaseLine.Modify();
                         end;
                     Until PruchaseLine.next() = 0;

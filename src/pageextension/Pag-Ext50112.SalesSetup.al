@@ -21,6 +21,13 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 ApplicationArea = all;
             }
         }
+        addlast("Number Series")
+        {
+            field("GTIN Nos."; "GTIN Nos.")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter("Dynamics 365 for Sales")
         {
             group(Bitec)

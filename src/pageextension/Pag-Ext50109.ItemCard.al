@@ -2,6 +2,13 @@ pageextension 50109 "ItemCard" extends "Item Card"
 {
     layout
     {
+        modify(GTIN)
+        {
+            trigger OnAssistEdit()
+            begin
+                OnAssistEdit_GTIN();
+            end;
+        }
         addafter("Qty. on Sales Order")
         {
             field(QtyonQuotesOrder; QtyonQuotesOrder) { }
@@ -603,6 +610,32 @@ pageextension 50109 "ItemCard" extends "Item Card"
             Funciones.PlasticCalculateFromItem(Rec);
     end;
 
+    local procedure OnAssistEdit_GTIN()
+    var
+        Item: Record Item;
+        Funciones: Codeunit FuncionesFabricacion;
+        BarCodeType: enum "Bar Code Type";
+        lblConfirmAssing: Label '¿Desea Asignar un nuevo codigo EAN13 a %1 %2?', comment = 'ESP="¿Desea Asignar un nuevo codigo EAN13 a %1 %2?"';
+        lblConfirmUpdate: Label '¿Desea Calcular el codigo EAN13 de a %1?', comment = 'ESP="¿Desea Calcular el codigo EAN13 de %1?"';
+    begin
+        Item.SetRange("No.", Rec."No.");
+        Item.FindFirst();
+        case item.GTIN of
+            '':
+                begin
+                    if not confirm(lblConfirmAssing, false, Item."No.", Item.Description) then
+                        exit;
+                    Funciones.CreateGTIN(Item, true, BarCodeType::EAN13);
+                end;
+            else begin
+                if not confirm(lblConfirmUpdate, false, Item.GTIN) then
+                    exit;
+                Funciones.CreateGTIN(Item, false, BarCodeType::EAN13);
+            end;
+        end;
+
+    end;
+
     /*  trigger OnAfterGetCurrRecord()
       var
           TextosAuxiliares: Record TextosAuxiliares;
@@ -633,6 +666,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
           DescFamilia_btc: Text;
           DescGama_btc: Text;
           DescLineaEconomica: Text;*/
+
 
 
 }

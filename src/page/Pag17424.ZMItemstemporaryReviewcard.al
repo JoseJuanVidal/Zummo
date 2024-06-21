@@ -1,6 +1,6 @@
-page 17415 "ZM PL Items temporary card"
+page 17424 "ZM Items temporary Review card"
 {
-    Caption = 'Items registration', Comment = 'ESP="Alta de productos"';
+    Caption = 'Items registration Review', Comment = 'ESP="Revisión Alta de productos"';
     PageType = card;
     SourceTable = "ZM PL Items temporary";
     SourceTableView = where("State Creation" = filter(" " | Requested | Released));
@@ -424,19 +424,6 @@ page 17415 "ZM PL Items temporary card"
         }
         area(Navigation)
         {
-            action(ItemsReview)
-            {
-                ApplicationArea = all;
-                Caption = 'Review Items temporary', comment = 'ESP="Revisión productos pendientes"';
-                Image = ReviewWorksheet;
-                Promoted = true;
-                PromotedCategory = Category4;
-                trigger OnAction()
-                begin
-                    OnAction_NavigateReview();
-                end;
-
-            }
             action(Translations)
             {
                 ApplicationArea = all;
@@ -528,10 +515,5 @@ page 17415 "ZM PL Items temporary card"
     local procedure Navigate_ProductionML()
     begin
         Rec.Navigate_ProductionML();
-    end;
-
-    local procedure OnAction_NavigateReview()
-    begin
-        Rec.NavigateItemsReview();
     end;
 }

@@ -1,13 +1,13 @@
-page 17414 "ZM PL Items temporary list"
+page 17425 "ZM Items temporary Review list"
 {
     ApplicationArea = All;
-    Caption = 'Items temporary list', Comment = 'ESP="Lista Alta de productos"';
+    Caption = 'Items temporary Review list', Comment = 'ESP="Lista revision Alta de productos"';
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     SourceTable = "ZM PL Items temporary";
     Editable = false;
     UsageCategory = Lists;
-    CardPageId = "ZM PL Items temporary card";
+    CardPageId = "ZM Items temporary Review card";
 
     layout
     {
@@ -96,28 +96,10 @@ page 17414 "ZM PL Items temporary list"
     {
         area(Processing)
         {
-            action(ConfAltaProd)
-            {
-                ApplicationArea = all;
-                Caption = 'Conf. Alta Productos', comment = 'ESP="Conf. Alta Productos"';
-                Image = Setup;
-                Promoted = true;
-                PromotedCategory = Process;
-                RunObject = page "ZM PL Setup Item registration";
-            }
-            action(ConfAprobAltaProd)
-            {
-                ApplicationArea = all;
-                Caption = 'Conf. Departamentos Alta Productos', comment = 'ESP="Conf. Departamentos Alta Productos"';
-                Image = Setup;
-                Promoted = true;
-                PromotedCategory = Process;
-                RunObject = page "ZM PL Item Setup approvals";
-            }
-            action(SolicitudAlta)
+            action(UpdateITBID)
             {
                 ApplicationArea = All;
-                Caption = 'Solicitud Alta', Comment = 'ESP="Solicitud Alta/Actualización"';
+                Caption = 'ITBID Update', Comment = 'ESP="Alta/Actualización ITBID"';
                 Image = Purchasing;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -125,40 +107,22 @@ page 17414 "ZM PL Items temporary list"
 
                 trigger OnAction()
                 var
-                    lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 (%2)?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 (%2)?"';
+                    Itemstemporary: Record "ZM PL Items temporary";
+                    IsUpdate: Boolean;
+                    lblUpdate: Label 'Actualizada la plataforma ITBID', comment = 'ESP="Actualizada la plataforma ITBID"';
                 begin
-                    if Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
-                        Rec.LaunchRegisterItemTemporary();
+                    if not Confirm(lblConfirmUpdateITBID) then
+                        exit;
+                    CurrPage.SetSelectionFilter(Itemstemporary);
+                    if Itemstemporary.FindFirst() then
+                        repeat
+                            if Itemstemporary.ITBIDUpdate() then
+                                IsUpdate := true;
+                        Until Itemstemporary.next() = 0;
+                    if IsUpdate then
+                        Message(lblUpdate);
                 end;
-
             }
-            // action(UpdateITBID)
-            // {
-            //     ApplicationArea = All;
-            //     Caption = 'ITBID Update', Comment = 'ESP="Alta/Actualización ITBID"';
-            //     Image = Purchasing;
-            //     Promoted = true;
-            //     PromotedCategory = Process;
-            //     PromotedIsBig = true;
-
-            //     trigger OnAction()
-            //     var
-            //         Itemstemporary: Record "ZM PL Items temporary";
-            //         IsUpdate: Boolean;
-            //         lblUpdate: Label 'Actualizada la plataforma ITBID', comment = 'ESP="Actualizada la plataforma ITBID"';
-            //     begin
-            //         if not Confirm(lblConfirmUpdateITBID) then
-            //             exit;
-            //         CurrPage.SetSelectionFilter(Itemstemporary);
-            //         if Itemstemporary.FindFirst() then
-            //             repeat
-            //                 if Itemstemporary.ITBIDUpdate() then
-            //                     IsUpdate := true;
-            //             Until Itemstemporary.next() = 0;
-            //         if IsUpdate then
-            //             Message(lblUpdate);
-            //     end;
-            // }
         }
         area(Navigation)
         {
@@ -232,19 +196,6 @@ page 17414 "ZM PL Items temporary list"
                 RunPageView = sorting("Item No.");
                 RunPageLink = "Item No." = field("No.");
             }
-            action(ItemsReview)
-            {
-                ApplicationArea = all;
-                Caption = 'Review Items temporary', comment = 'ESP="Revisión productos pendientes"';
-                Image = ReviewWorksheet;
-                Promoted = true;
-                PromotedCategory = Category4;
-                trigger OnAction()
-                begin
-                    OnAction_NavigateReview();
-                end;
-
-            }
         }
     }
 
@@ -272,9 +223,4 @@ page 17414 "ZM PL Items temporary list"
         Navigate_PostedItemList();
     end;
 
-
-    local procedure OnAction_NavigateReview()
-    begin
-        Rec.NavigateItemsReview();
-    end;
 }

@@ -9881,6 +9881,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Department - Field User Id - Property Caption</note>
           <target>Cód. Usuario</target>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source/>
+          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Property Caption</note>
+          <target/>
+        </trans-unit>
         <trans-unit id="Table 3329268434 - NamedType 3804247692" size-unit="char" translate="yes" xml:space="preserve">
           <source>El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?</source>
           <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"</note>
@@ -9898,6 +9904,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Debe ser mayor que 0"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType Text027</note>
           <target>Debe ser mayor que 0</target>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Method 2564493053 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No existe ningun producto pendiente de revision del departamento %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No existe ningun producto pendiente de revision del departamento %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method NavigateItemsReview - NamedType lblError</note>
+          <target>No existe ningun producto pendiente de revision del departamento %1.</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Method 3683582491 - NamedType 4170617325" size-unit="char" translate="yes" xml:space="preserve">
           <source>No existen aprobadores configurados para la tabla %1.</source>
@@ -18755,6 +18767,228 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Production BOM No. - Property Caption</note>
           <target>L.M. Producción</target>
         </trans-unit>
+        <trans-unit id="Page 2975127552 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Navegar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Property PromotedActionCategories</note>
+          <target>Nuevo,Procesar,Informe,Navegar</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Items registration Review</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Revisión Alta de productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Property Caption</note>
+          <target>Revisión Alta de productos</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - NamedType 743610005" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - NamedType lblConfirmUpdateITBID</note>
+          <target>¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - NamedType 3720102109" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to send the request for Item Registration %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la solicitud de Alta del producto %1 %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - NamedType lblRelease</note>
+          <target>¿Desea enviar la solicitud de Alta del producto %1 %2?</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 4253802235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Additional</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Adicionales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Additional - Property Caption</note>
+          <target>Adicionales</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 4257449176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applicant</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Applicant - Property Caption</note>
+          <target>Solicitante</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 512684737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reason</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control WorkDescription - Property Caption</note>
+          <target>Motivo</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 823844234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Costs &amp; Posting</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Costes y registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Costs &amp; Posting - Property Caption</note>
+          <target>Costes y registro</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 3456565236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ForeignTrade</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comercio Exterior"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control ForeignTrade - Property Caption</note>
+          <target>Comercio Exterior</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 816898430 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Details</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Detalles del registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Posting Details - Property Caption</note>
+          <target>Detalles del registro</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 411531942 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Base Unit of Measure - Property ToolTip</note>
+          <target>Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas.</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 3543129988 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Blocked - Property ToolTip</note>
+          <target>Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena.</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 3520847126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plataforma ITBID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plataforma ITBID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control ITBID - Property Caption</note>
+          <target>Plataforma ITBID</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 2851892642 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indica si se ha creado el producto en la plataforma ITBID.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indica si se ha creado el producto en la plataforma ITBID."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control ITBID Status - Property ToolTip</note>
+          <target>Indica si se ha creado el producto en la plataforma ITBID.</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Identificador del producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Identificador del producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control No. - Property ToolTip</note>
+          <target>Nº Identificador del producto</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 4042672808 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Reason Blocked - Property ToolTip</note>
+          <target>Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado.</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 2378972714 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indica el estado de la solicitud de datos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indica el estado de la solicitud de datos."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control State Creation - Property ToolTip</note>
+          <target>Indica el estado de la solicitud de datos.</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario)."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Type - Property ToolTip</note>
+          <target>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 1795699428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prices &amp; Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precios y ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Prices &amp; Sales - Property Caption</note>
+          <target>Precios y ventas</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Action 1918953554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action LMProducion - Property Caption</note>
+          <target>Producción</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Action 2310116675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>L. M. Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L. M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action ShowLMProduction - Property Caption</note>
+          <target>L. M. Producción</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Action 3712666431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchases prices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precios Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action PurchasePrices - Property Caption</note>
+          <target>Precios Compra</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Action 2653012956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Traducciones</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action Translations - Property Caption</note>
+          <target>Traducciones</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Action 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Abrir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action Open - Property Caption</note>
+          <target>Abrir</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Action 4032263875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Release</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lanzar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action Release - Property Caption</note>
+          <target>Lanzar</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Action 3096908298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solicitud Alta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud Alta/Actualización"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action SolicitudAlta - Property Caption</note>
+          <target>Solicitud Alta/Actualización</target>
+        </trans-unit>
+        <trans-unit id="Page 2975127552 - Action 3096908298 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea Solicitar el alta/modificacion del producto %1 (%2)?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Solicitar el alta/modificacion del producto %1 (%2)?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action SolicitudAlta - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea Solicitar el alta/modificacion del producto %1 (%2)?</target>
+        </trans-unit>
+        <trans-unit id="Page 4102618630 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate,Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Property PromotedActionCategories</note>
+          <target>Nuevo,Procesar,Informe,Información,Configuración</target>
+        </trans-unit>
+        <trans-unit id="Page 4102618630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Items temporary Review list</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista revision Alta de productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Property Caption</note>
+          <target>Lista revision Alta de productos</target>
+        </trans-unit>
+        <trans-unit id="Page 4102618630 - NamedType 743610005" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - NamedType lblConfirmUpdateITBID</note>
+          <target>¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?</target>
+        </trans-unit>
+        <trans-unit id="Page 4102618630 - Action 1918953554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Action LMProducion - Property Caption</note>
+          <target>Producción</target>
+        </trans-unit>
+        <trans-unit id="Page 4102618630 - Action 2310116675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>L. M. Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L. M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Action ShowLMProduction - Property Caption</note>
+          <target>L. M. Producción</target>
+        </trans-unit>
+        <trans-unit id="Page 4102618630 - Action 1530319778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hist. Alta Productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Alta Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Action PostedItemList - Property Caption</note>
+          <target>Hist. Alta Productos</target>
+        </trans-unit>
+        <trans-unit id="Page 4102618630 - Action 3712666431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchases prices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precios Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Action PurchasePrices - Property Caption</note>
+          <target>Precios Compra</target>
+        </trans-unit>
+        <trans-unit id="Page 4102618630 - Action 2653012956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Traducciones</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Action Translations - Property Caption</note>
+          <target>Traducciones</target>
+        </trans-unit>
+        <trans-unit id="Page 4102618630 - Action 4174935501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ITBID Update</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Alta/Actualización ITBID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Action UpdateITBID - Property Caption</note>
+          <target>Alta/Actualización ITBID</target>
+        </trans-unit>
+        <trans-unit id="Page 4102618630 - Action 4174935501 - Method 1377591017 - NamedType 1276646205" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualizada la plataforma ITBID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizada la plataforma ITBID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Action UpdateITBID - Method OnAction - NamedType lblUpdate</note>
+          <target>Actualizada la plataforma ITBID</target>
+        </trans-unit>
         <trans-unit id="Page 373396473 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Entry</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -19059,6 +19293,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Prices &amp; Sales - Property Caption</note>
           <target>Precios y ventas</target>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 695247712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review Items temporary</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Revisión productos pendientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action ItemsReview - Property Caption</note>
+          <target>Revisión productos pendientes</target>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Action 1918953554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Producción</source>
           <note from="Developer" annotates="general" priority="2">ESP="Producción"</note>
@@ -19124,6 +19364,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - NamedType lblConfirmUpdateITBID</note>
           <target>¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?</target>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 695247712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review Items temporary</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Revisión productos pendientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action ItemsReview - Property Caption</note>
+          <target>Revisión productos pendientes</target>
         </trans-unit>
         <trans-unit id="Page 3858912784 - Action 1918953554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Producción</source>
@@ -31074,6 +31320,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension IntrastatJournal - Control factura - Property Caption</note>
           <target>Nº Factura</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Method 2194160043 - NamedType 1349650003" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2876958691">
+          <source>¿Desea Asignar un nuevo codigo EAN13 a %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Asignar un nuevo codigo EAN13 a %1 %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Method OnAssistEdit_GTIN - NamedType lblConfirmAssing</note>
+          <target>¿Desea Asignar un nuevo codigo EAN13 a %1 %2?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Method 2194160043 - NamedType 858699819" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2876958691">
+          <source>¿Desea Calcular el codigo EAN13 de a %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Calcular el codigo EAN13 de %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Method OnAssistEdit_GTIN - NamedType lblConfirmUpdate</note>
+          <target>¿Desea Calcular el codigo EAN13 de %1?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Action 2616719174 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Open a window that allows you to create a new item by copying the data of the current item</source>
           <note from="Developer" annotates="general" priority="2">ESP="Abre una ventana que permite crear un nuevo producto copiando los datos del producto actual"</note>
@@ -31246,6 +31504,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Pedido ensamblado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control OrderNo - Property Caption</note>
           <target>Nº Pedido ensamblado</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Method 737204943 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
+          <source>¿Desea Asignar numeros EAN13 a %1 productos seleccionados?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Asignar numeros EAN13 a %1 productos seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Method OnAction_AsignarGTIN - NamedType lblConfirm</note>
+          <target>¿Desea Asignar numeros EAN13 a %1 productos seleccionados?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 1191440503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Asignar GTIN</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar GTIN"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action AsignarGTIN - Property Caption</note>
+          <target>Asignar GTIN</target>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Action 4240148002 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Importar Comentarios</source>
@@ -36170,6 +36440,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Envío email Fact. Vencidas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Envío email Fact. Vencidas - Property Caption</note>
           <target>Envío email Fact. Vencidas</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 728235740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>GTIN Nos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Serie GTIN"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field GTIN Nos. - Property Caption</note>
+          <target>Nº Serie GTIN</target>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 12263198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Language Filter</source>

@@ -1650,4 +1650,57 @@ codeunit 50108 "FuncionesFabricacion"
         BOMBuffer."Lead Time Calculation" := item."Lead Time Calculation";
         BOMBuffer.Insert();
     end;
+
+    procedure CreateGTIN(var Item: Record Item; SalesSetupSeriesNos: Boolean; Type: enum "Bar Code Type")
+    begin
+        if Item.FindFirst() then
+            repeat
+                if Item.GTIN = '' then
+                    Item.GTIN := CalculateGTIN(SalesSetupSeriesNos, '', Type)
+                else
+                    Item.GTIN := CalculateGTIN(false, Item.GTIN, Type);
+                Item.Modify();
+
+            Until Item.next() = 0;
+    end;
+
+    local procedure CalculateGTIN(SalesSetupSeriesNos: Boolean; Value: code[14]; Type: enum "Bar Code Type") BarCode: code[14]
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+        LastCode: code[20];
+        NewSerie: code[20];
+        digito: Integer;
+        I: Integer;
+        suma: Integer;
+    begin
+        if SalesSetupSeriesNos then begin
+            SalesSetup.Get();
+            SalesSetup.TestField(SalesSetup."GTIN Nos.");
+            NoSeriesMgt.InitSeries(SalesSetup."GTIN Nos.", '', 0D, LastCode, NewSerie)
+        end else
+            LastCode := Value;
+
+        case type of
+            type::EAN13:
+                begin
+                    BarCode := COPYSTR(LastCode, 1, 12);
+                    FOR I := 1 TO 12 DO BEGIN
+                        EVALUATE(digito, COPYSTR(BarCode, I, 1));
+                        IF I MOD 2 = 0 THEN BEGIN
+                            // par
+                            suma += digito * 3;
+                        END ELSE BEGIN
+                            // impar
+                            suma += digito;
+                        END
+                    END;
+                    digito := (10 - (suma MOD 10));
+                    if digito = 10 then
+                        digito := 0;
+                    BarCode += FORMAT(digito);
+                end;
+        end;
+        EXIT(BarCode);
+    end;
 }

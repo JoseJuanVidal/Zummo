@@ -56,7 +56,8 @@ codeunit 50107 "ImportarN43"
             NDocumento := COPYSTR(Line, 43, 10);
             IF NDocumento = '0000000000' THEN
                 NDocumento := COPYSTR(Line, STRLEN(Line) - 10, 10);
-            InfAdicional := '';
+            InfAdicional := DelChr(CopyStr(Line, 53, 28), '<>', ' ');
+            ConceptoMov := DelChr(CopyStr(Line, 53, 28), '<>', ' ');
         END;
 
         IF (Codigo = '2301')
