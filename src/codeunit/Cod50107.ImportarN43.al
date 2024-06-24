@@ -60,11 +60,12 @@ codeunit 50107 "ImportarN43"
             ConceptoMov := DelChr(CopyStr(Line, 53, 28), '<>', ' ');
         END;
 
-        IF (Codigo = '2301')
-          THEN BEGIN
+        IF (Codigo = '2301') THEN BEGIN
             ConceptoMov := DELCHR(COPYSTR(Line, 5, 76), '<>', ' ');
         END;
-
+        IF (Codigo = '2303') THEN BEGIN
+            ConceptoMov += ' ' + DELCHR(COPYSTR(Line, 5, 76), '<>', ' ');
+        END;
         IF ((Codigo = '3301') AND (CodigoAnt <> '1101')) THEN BEGIN
             DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 1, '', FechaMov, DataExchLineDef.Code);
             DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 2, '', ImporteMov, DataExchLineDef.Code);
