@@ -16496,10 +16496,15 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3561054989 - Method 523120739 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Alta/Cambio proveedor - %1 (%2)</source>
+        <trans-unit id="Page 3561054989 - Method 523120739 - NamedType 3386471686" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alta proveedor - %1 (%2)</source>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Method SendEmailChangesVendor - NamedType SubjectLbl</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Method SendEmailChangesVendor - NamedType SubjectNewLbl</note>
+        </trans-unit>
+        <trans-unit id="Page 3561054989 - Method 523120739 - NamedType 1418328077" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cambio proveedor - %1 (%2)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST Vendor - Method SendEmailChangesVendor - NamedType SubjectChangesLbl</note>
         </trans-unit>
         <trans-unit id="Page 3561054989 - Control 1762530770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Address</source>
@@ -16577,9 +16582,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4050032736 - Method 523120739 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Alta/Cambio Banco proveedor - %1 (%2)</source>
+          <source>Alta Banco proveedor - %1 (%2)</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Method SendEmailChangesVendor - NamedType SubjectLbl</note>
+        </trans-unit>
+        <trans-unit id="Page 4050032736 - Method 523120739 - NamedType 1418328077" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cambio Banco proveedor - %1 (%2)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page STH API POST VendorBankAccount - Method SendEmailChangesVendor - NamedType SubjectChangesLbl</note>
         </trans-unit>
         <trans-unit id="Page 4050032736 - Control 4260855344 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CCC Bank No.</source>

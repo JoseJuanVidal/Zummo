@@ -140,13 +140,17 @@ page 60020 "STH API POST VendorBankAccount"
         SMTPMail: Codeunit "SMTP Mail";
         Subject: text;
         Body: text;
-        SubjectLbl: Label 'Alta/Cambio Banco proveedor - %1 (%2)';
+        SubjectLbl: Label 'Alta Banco proveedor - %1 (%2)';
+        SubjectChangesLbl: Label 'Cambio Banco proveedor - %1 (%2)';
     begin
         SalesSetup.Get();
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
-        Subject := StrSubstNo(SubjectLbl, vendorBankAccount."Vendor No.", vendorBankAccount.Code);
-        Body := EnvioEmailBody;
+        if Changes then
+            Subject := StrSubstNo(SubjectChangesLbl, vendorBankAccount."Vendor No.", vendorBankAccount.Code)
+        else
+            Subject := StrSubstNo(SubjectLbl, vendorBankAccount."Vendor No.", vendorBankAccount.Code);
+        Body := EnvioEmailBody(Subject);
         // enviamos el email 
         if SalesSetup.emailVendorBank = '' then
             exit;
@@ -154,7 +158,7 @@ page 60020 "STH API POST VendorBankAccount"
         SMTPMail.Send();
     end;
 
-    local procedure EnvioEmailBody() Body: Text
+    local procedure EnvioEmailBody(Subject: Text) Body: Text
     var
         Companyinfo: Record "Company Information";
         Vendor: Record Vendor;
@@ -162,7 +166,7 @@ page 60020 "STH API POST VendorBankAccount"
         Companyinfo.Get();
         Body := '<p>&nbsp;</p>';
         Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
-        Body += '<h2 style="color: #2e6c80;">Alta/Cambio Banco proveedor: ' + strsubstno('%1 %2', vendorBankAccount."Vendor No.", vendorBankAccount.Code) + '</h2>';
+        Body += '<h2 style="color: #2e6c80;">' + Subject + '</h2>';
         if Vendor.Get(vendorBankAccount."Vendor No.") then;
         Body += '<p><strong>' + Rec.FieldCaption("Vendor No.") + '</strong>: ' + StrSubstNo('%1 %2', Vendor."No.", Vendor.Name) + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Name) + '</strong>: ' + vendorBankAccount.Name + '</p>';

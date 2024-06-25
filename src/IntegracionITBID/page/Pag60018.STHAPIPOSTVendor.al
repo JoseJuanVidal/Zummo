@@ -213,13 +213,18 @@ page 60018 "STH API POST Vendor"
         SMTPMail: Codeunit "SMTP Mail";
         Subject: text;
         Body: text;
-        SubjectLbl: Label 'Alta/Cambio proveedor - %1 (%2)';
+        SubjectNewLbl: Label 'Alta proveedor - %1 (%2)';
+        SubjectChangesLbl: Label 'Cambio proveedor - %1 (%2)';
     begin
         SalesSetup.Get();
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
-        Subject := StrSubstNo(SubjectLbl, Vendor."No.", Vendor.Name);
-        Body := EnvioEmailBody;
+        if Changes then
+            Subject := StrSubstNo(SubjectChangesLbl, Vendor."No.", Vendor.Name)
+        else
+            Subject := StrSubstNo(SubjectNewLbl, Vendor."No.", Vendor.Name);
+
+        Body := EnvioEmailBody(Subject);
         // enviamos el email 
         if SalesSetup.emailVendor = '' then
             exit;
@@ -227,14 +232,14 @@ page 60018 "STH API POST Vendor"
         SMTPMail.Send();
     end;
 
-    local procedure EnvioEmailBody() Body: Text
+    local procedure EnvioEmailBody(Subject: text) Body: Text
     var
         Companyinfo: Record "Company Information";
     begin
         Companyinfo.Get();
         Body := '<p>&nbsp;</p>';
         Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
-        Body += '<h2 style="color: #2e6c80;">Alta/Cambio proveedor: ' + strsubstno('%1 %2', Vendor."No.", vendor.Name) + '</h2>';
+        Body += '<h2 style="color: #2e6c80;">' + Subject + '</h2>';
         Body += '<p><strong>' + Rec.FieldCaption("Name 2") + '</strong>: ' + Vendor.Name + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption("Search Name") + '</strong>: ' + Vendor."Name 2" + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption("VAT Registration No.") + '</strong>: ' + Vendor."VAT Registration No." + '</p>';
