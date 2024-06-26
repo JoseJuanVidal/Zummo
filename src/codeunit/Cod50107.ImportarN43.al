@@ -22,6 +22,7 @@ codeunit 50107 "ImportarN43"
         NDocumento := '';
         CodigoAnt := '';
         InfAdicional := '';
+        InfAdicional2 := '';
         REPEAT
             ReadLen := ReadStream.READTEXT(ReadText);
             IF ReadLen > 0 THEN
@@ -39,9 +40,9 @@ codeunit 50107 "ImportarN43"
         DataExchLineDef.SETRANGE("Data Exch. Def Code", DataExch."Data Exch. Def Code");
         DataExchLineDef.FINDFIRST;
         Codigo := COPYSTR(Line, 1, 4);
-        IF (Codigo = '2201')
+        IF (Codigo = '2201') or (Codigo = '22  ')
           THEN BEGIN
-            IF (CodigoAnt = '2201') OR (CodigoAnt = '2301') OR (CodigoAnt = '2302')
+            IF (CodigoAnt = '2201') OR (CodigoAnt = '2301') OR (CodigoAnt = '2302') OR (CodigoAnt = '22  ') OR (CodigoAnt = '2305')
               THEN BEGIN
                 DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 1, '', FechaMov, DataExchLineDef.Code);
                 DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 2, '', ImporteMov, DataExchLineDef.Code);
@@ -49,6 +50,7 @@ codeunit 50107 "ImportarN43"
                 DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 4, '', SignoMov, DataExchLineDef.Code);
                 DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 5, '', NDocumento, DataExchLineDef.Code);
                 DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 6, '', InfAdicional, DataExchLineDef.Code);
+                DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 7, '', InfAdicional2, DataExchLineDef.Code);
             END;
             FechaMov := COPYSTR(Line, 11, 6);
             ImporteMov := Formateador(COPYSTR(Line, 29, 14));
@@ -63,16 +65,20 @@ codeunit 50107 "ImportarN43"
         IF (Codigo = '2301') THEN BEGIN
             ConceptoMov := DELCHR(COPYSTR(Line, 5, 76), '<>', ' ');
         END;
-        IF (Codigo = '2303') THEN BEGIN
-            ConceptoMov += ' ' + DELCHR(COPYSTR(Line, 5, 76), '<>', ' ');
+        IF (Codigo = '2302') THEN BEGIN
+            InfAdicional := DELCHR(COPYSTR(Line, 5, 76), '<>', ' ');
         END;
-        IF ((Codigo = '3301') AND (CodigoAnt <> '1101')) THEN BEGIN
+        IF (Codigo = '2303') THEN BEGIN
+            InfAdicional2 += ' ' + DELCHR(COPYSTR(Line, 5, 76), '<>', ' ');
+        END;
+        IF ((Codigo = '3301') OR (Codigo = '3321')) AND (CodigoAnt <> '1101') THEN BEGIN
             DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 1, '', FechaMov, DataExchLineDef.Code);
             DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 2, '', ImporteMov, DataExchLineDef.Code);
             DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 3, '', ConceptoMov, DataExchLineDef.Code);
             DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 4, '', SignoMov, DataExchLineDef.Code);
             DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 5, '', NDocumento, DataExchLineDef.Code);
             DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 6, '', InfAdicional, DataExchLineDef.Code);
+            DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 7, '', InfAdicional2, DataExchLineDef.Code);
         END;
 
         CodigoAnt := Codigo;
@@ -102,5 +108,6 @@ codeunit 50107 "ImportarN43"
         SignoMov: Text;
         NDocumento: Text;
         InfAdicional: Text;
+        InfAdicional2: Text;
 
 }
