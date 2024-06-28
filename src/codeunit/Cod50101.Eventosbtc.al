@@ -1451,6 +1451,24 @@ codeunit 50101 "Eventos_btc"
         JobJnlPostBatch.Run(JobJournalLine)
 
     end;
-
     //#end Control registo de proyectos
+
+    // =============  CONCILIACION BANCARIA - CONCEPTO             ====================
+    // ==  
+    // ==  Control de si el diario de cartera viene de Conciliacion
+    // ==  que no se cambie la descripcion, utilizamos el campo COMMENT
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterValidateEvent', 'Account No.', true, true)]
+    local procedure GenJournalLine_OnAfterValidateEvent(var Rec: Record "Gen. Journal Line"; var xRec: Record "Gen. Journal Line"; CurrFieldNo: Integer)
+    begin
+        if Rec.Comment <> '' then
+            Rec.Description := copystr(Rec.Comment, 1, MaxStrLen(Rec.Description));
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterValidateEvent', 'Account Type', true, true)]
+    local procedure GenJournalLine_OnAfterValidateEvent_AccountType(var Rec: Record "Gen. Journal Line"; var xRec: Record "Gen. Journal Line"; CurrFieldNo: Integer)
+    begin
+        if Rec.Comment <> '' then
+            Rec.Description := copystr(Rec.Comment, 1, MaxStrLen(Rec.Description));
+    end;
 }

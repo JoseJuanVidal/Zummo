@@ -15,14 +15,7 @@ codeunit 50107 "ImportarN43"
         "File Content".CREATEINSTREAM(ReadStream);
         DataExchDef.GET("Data Exch. Def Code");
         LineNo := 1;
-        FechaMov := '';
-        ConceptoMov := '';
-        ImporteMov := '';
-        SignoMov := '';
-        NDocumento := '';
-        CodigoAnt := '';
-        InfAdicional := '';
-        InfAdicional2 := '';
+        limpiarVariables();
         REPEAT
             ReadLen := ReadStream.READTEXT(ReadText);
             IF ReadLen > 0 THEN
@@ -63,13 +56,13 @@ codeunit 50107 "ImportarN43"
         END;
 
         IF (Codigo = '2301') THEN BEGIN
-            ConceptoMov := DELCHR(COPYSTR(Line, 5, 76), '<>', ' ');
+            ConceptoMov := DELCHR(COPYSTR(Line, 5, 38), '<>', ' ');
         END;
         IF (Codigo = '2302') THEN BEGIN
-            InfAdicional := DELCHR(COPYSTR(Line, 5, 76), '<>', ' ');
+            InfAdicional := DELCHR(COPYSTR(Line, 5, 38), '<>', ' ');
         END;
         IF (Codigo = '2303') THEN BEGIN
-            InfAdicional2 += ' ' + DELCHR(COPYSTR(Line, 5, 76), '<>', ' ');
+            InfAdicional2 += ' ' + DELCHR(COPYSTR(Line, 5, 38), '<>', ' ');
         END;
         IF ((Codigo = '3301') OR (Codigo = '3321')) AND (CodigoAnt <> '1101') THEN BEGIN
             DataExchField.InsertRecXMLField(DataExch."Entry No.", LineNo, 1, '', FechaMov, DataExchLineDef.Code);
@@ -84,6 +77,20 @@ codeunit 50107 "ImportarN43"
         CodigoAnt := Codigo;
         LineNo += 1;
     END;
+
+    local procedure limpiarVariables()
+    var
+        myInt: Integer;
+    begin
+        FechaMov := '';
+        ConceptoMov := '';
+        ImporteMov := '';
+        SignoMov := '';
+        NDocumento := '';
+        CodigoAnt := '';
+        InfAdicional := '';
+        InfAdicional2 := '';
+    end;
 
     LOCAL PROCEDURE Formateador(CadenaEntrada: Text) CadenaSalida: Text;
     VAR
