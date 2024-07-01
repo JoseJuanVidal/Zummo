@@ -539,6 +539,8 @@ codeunit 50101 "Eventos_btc"
                 end;
             PurchaseHeader."Document Type"::Invoice:
                 begin
+                    // Si tiene Job, comprobamos que tenga tambien task
+                    CheckPurchaseHeaderJobNo(PurchaseHeader, PreviewMode);
                     // controlamos si tiene asignada una solicitud de compra
                     // si coincide el importe y si ya está facturada
                     if PurchaseHeader.Invoice then begin
@@ -1383,43 +1385,46 @@ codeunit 50101 "Eventos_btc"
     // ==  
     // ======================================================================================================
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnRunOnBeforeFinalizePosting', '', true, true)]
-    local procedure PurchPost_OnRunOnBeforeFinalizePosting(var PurchaseHeader: Record "Purchase Header"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchInvHeader: Record "Purch. Inv. Header";
-        var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; var ReturnShipmentHeader: Record "Return Shipment Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; CommitIsSuppressed: Boolean)
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostPurchaseDoc', '', true, true)]
+    local procedure PurchPost_OnAfterPostPurchaseDoc(VAR PurchaseHeader: Record "Purchase Header"; VAR GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; PurchRcpHdrNo: Code[20]; RetShptHdrNo: Code[20]; PurchInvHdrNo: Code[20]; PurchCrMemoHdrNo: Code[20]; CommitIsSupressed: Boolean)
     begin
-        // controlamos si se crea factura de compra
-        if not PurchaseHeader.Invoice then
-            exit;
         case PurchaseHeader."Document Type" of
-            PurchaseHeader."Document Type"::Order, PurchaseHeader."Document Type"::Invoice:
+            PurchaseHeader."Document Type"::Invoice:
                 begin
+                    // controlamos si se crea factura de compra
+                    if not PurchaseHeader.Invoice then
+                        exit;
                     // si registramos la factura y una de sus lineas es activo fijo, realizamos el registro
-                    if (PurchaseHeader."Job No." <> '') and (PurchaseHeader."Job Task No." <> '') then
-                        PurchaseLineResourceExpenses(PurchaseHeader);
+                    if (PurchaseHeader."Job No." = '') then // or (PurchaseHeader."Job Preview Mode")
+                        exit;
+                    PurchaseLineResourceExpenses(PurchaseHeader, PurchInvHdrNo);
                 end;
         end;
     end;
 
-    local procedure PurchaseLineResourceExpenses(PurchaseHeader: Record "Purchase Header")
+    local procedure PurchaseLineResourceExpenses(PurchaseHeader: Record "Purchase Header"; PurchInvHdrNo: code[20])
     var
-        PurchaseLine: Record "Purchase Line";
+        PurchInvHeader: Record "Purch. Inv. Header";
+        PurchInvLine: Record "Purch. Inv. Line";
     begin
-        PurchaseLine.Reset();
-        PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
-        PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
-        PurchaseLine.SetRange(Type, PurchaseLine.Type::"Fixed Asset");
-        if PurchaseLine.FindFirst() then
+
+        PurchInvLine.Reset();
+        PurchInvLine.SetRange("Document No.", PurchInvHdrNo);
+        if PurchInvLine.FindFirst() then
             repeat
-                PostingPurchaseLineJournalJob(PurchaseHeader, PurchaseLine);
-            Until PurchaseLine.next() = 0;
+                if PurchInvLine.Type in [PurchInvLine.Type::Item, PurchInvLine.Type::"Fixed Asset", PurchInvLine.Type::"G/L Account"] then
+                    PostingPurchaseLineJournalJob(PurchaseHeader, PurchInvLine);
+            Until PurchInvLine.next() = 0;
     end;
 
-    local procedure PostingPurchaseLineJournalJob(PurchaseHeader: Record "Purchase Header"; PurchaseLine: Record "Purchase Line")
+    local procedure PostingPurchaseLineJournalJob(PurchaseHeader: Record "Purchase Header"; PurchInvLine: Record "Purch. Inv. Line")
     var
         JobSetup: Record "Jobs Setup";
         JobJournalLine: Record "Job Journal Line";
         JobJnlPostBatch: Codeunit "Job Jnl.-Post Batch";
     begin
+        if PurchInvLine."Line Amount" = 0 then
+            exit;
         JobSetup.Get();
         if JobSetup."Resource No. Expenses" = '' then
             exit;
@@ -1436,20 +1441,34 @@ codeunit 50101 "Eventos_btc"
         JobJournalLine.Validate("Posting Date", PurchaseHeader."Posting Date");
         JobJournalLine.Validate("Document Date", PurchaseHeader."Posting Date");
         JobJournalLine."Line Type" := JobJournalLine."Line Type"::Budget;
-        JobJournalLine."Document No." := PurchaseLine."Document No.";
+        JobJournalLine."Document No." := PurchInvLine."Document No.";
         JobJournalLine."External Document No." := CopyStr(PurchaseHeader."Vendor Invoice No.", 1, MaxStrLen(JobJournalLine."External Document No."));
         JobJournalLine.Validate("Job No.", PurchaseHeader."Job No.");
         JobJournalLine.Validate("Job Task No.", PurchaseHeader."Job Task No.");
         JobJournalLine.Validate("No.", JobSetup."Resource No. Expenses");
-        JobJournalLine.Description := CopyStr(StrSubstNo('%1 %2', PurchaseHeader."Vendor Invoice No.", PurchaseLine.Description), 1, MaxStrLen(JobJournalLine.Description));
-        JobJournalLine.Validate(Quantity, PurchaseLine.Quantity);
-        JobJournalLine.Validate("Unit Cost", PurchaseLine."Unit Cost");
-        JobJournalLine.Validate("Line Discount %", PurchaseLine."Line Discount %");
+        JobJournalLine.Description := CopyStr(StrSubstNo('%1 %2', PurchaseHeader."Vendor Invoice No.", PurchInvLine.Description), 1, MaxStrLen(JobJournalLine.Description));
+        JobJournalLine.Validate(Quantity, PurchInvLine.Quantity);
+        JobJournalLine.Validate("Unit Cost", PurchInvLine."Unit Cost");
+        JobJournalLine.Validate("Line Discount %", PurchInvLine."Line Discount %");
         JobJournalLine.Validate("Unit Price", 0);
         JobJournalLine.Insert();
 
         JobJnlPostBatch.Run(JobJournalLine)
+    end;
 
+    local procedure CheckPurchaseHeaderJobNo(var PurchaseHeader: Record "Purchase Header"; PreviewMode: Boolean)
+    var
+        Job: Record Job;
+        JobTask: Record "Job Task";
+    begin
+
+        if PurchaseHeader."Job No." <> '' then begin
+            PurchaseHeader.TestField("Job Task No.");
+            Job.Get(PurchaseHeader."Job No.");
+            JobTask.Get(PurchaseHeader."Job No.", PurchaseHeader."Job Task No.");
+            PurchaseHeader."Job Preview Mode" := PreviewMode;
+            PurchaseHeader.Modify();
+        end;
     end;
     //#end Control registo de proyectos
 

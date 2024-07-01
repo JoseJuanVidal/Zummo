@@ -34573,11 +34573,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblDimensionPurchLine</note>
         </trans-unit>
-        <trans-unit id="TableExtension 4064840916 - Method 4151499239 - NamedType 858699819" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
-          <source>Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method Update_JobTaskNo - NamedType lblConfirmUpdate</note>
-        </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 2557569786 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Amount Inc. VAT Subcontractor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe con IVA subcontr."</note>
@@ -34607,6 +34602,11 @@
           <source>Job No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Proyecto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Job No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 3199494858 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Job Preview Mode</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro Preview mode"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Job Preview Mode - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 561421623 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Job Task No</source>
