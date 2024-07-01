@@ -30,7 +30,7 @@ page 60020 "STH API POST VendorBankAccount"
                 {
                     Caption = 'Vendor No.';
                 }
-                field("code"; CodeAux)
+                field("code"; Code)
                 {
                     Caption = 'Code';
                 }
@@ -59,11 +59,20 @@ page 60020 "STH API POST VendorBankAccount"
         vendorBankAccount: Record "Vendor Bank Account";
         actionHTTP: Text;
         result: Text;
-        CodeAux: Code[20];
+        // CodeAux: Code[20];
         txtIBAN: text;
         txtCCCNO: text;
 
+
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        HttpAction();
+        exit(false);
+    end;
+
+    local procedure HttpAction()
+    var
+        myInt: Integer;
     begin
         txtCCCNo := LimpiarCaracteres(txtCCCNo);
         txtIBAN := LimpiarCaracteres(txtIBAN);
@@ -78,13 +87,11 @@ page 60020 "STH API POST VendorBankAccount"
             'POST':
                 begin
                     if vendorBankAccount.Get(Rec."Vendor No.", Rec.Code) then
-                        Error('El registro ya existe %º', Rec.Code);
+                        Error('El registro ya existe %1 %2', Rec."Vendor No.", Rec.Code);
 
                     vendorBankAccount.Init();
-                    vendorBankAccount.TransferFields(Rec);
-                    vendorBankAccount."CCC No." := copystr(txtCCCNo, 1, MaxStrLen(vendorBankAccount."CCC No."));
-                    vendorBankAccount.Validate(IBAN, copystr(txtIBAN, 1, MaxStrLen(vendorBankAccount.IBAN)));
                     createNoVendorBankAccount();
+                    UpdateVendorBank();
                     vendorBankAccount.Insert();
                     Commit();
                     SendEmailChangesVendor(false);
@@ -92,24 +99,35 @@ page 60020 "STH API POST VendorBankAccount"
             'PATCH':
                 begin
                     if vendorBankAccount.Get(Rec."Vendor No.", Rec.Code) then begin
-                        vendorBankAccount.TransferFields(Rec);
-                        vendorBankAccount."CCC No." := copystr(txtCCCNo, 1, MaxStrLen(vendorBankAccount."CCC No."));
-                        vendorBankAccount.Validate(IBAN, copystr(txtIBAN, 1, MaxStrLen(vendorBankAccount.IBAN)));
+                        UpdateVendorBank();
                         vendorBankAccount.Modify();
                         Commit();
                         SendEmailChangesVendor(true);
-                    end;
+                    end else
+                        Error('El registro no existe %1 %2', Rec."Vendor No.", Rec.Code);
                 end;
         end;
         result := 'Success';
-        exit(false);
+    end;
+
+    local procedure UpdateVendorBank()
+    begin
+        if Rec.Name <> '' then
+            vendorBankAccount.Name := copystr(Rec.Name, 1, MaxStrLen(vendorBankAccount.Name));
+        if Rec."SWIFT Code" <> '' then
+            vendorBankAccount."SWIFT Code" := copystr(Rec.Name, 1, MaxStrLen(vendorBankAccount."SWIFT Code"));
+        if txtCCCNo <> '' then
+            vendorBankAccount."CCC No." := copystr(txtCCCNo, 1, MaxStrLen(vendorBankAccount."CCC No."));
+        if txtIBAN <> '' then
+            vendorBankAccount.Validate(IBAN, copystr(txtIBAN, 1, MaxStrLen(vendorBankAccount.IBAN)));
+
     end;
 
     local procedure createNoVendorBankAccount()
     var
         vendorBankACC: Record "Vendor Bank Account";
     begin
-        if "Code" = '' then begin
+        if Rec."Code" = '' then begin
             vendorBankACC.Reset();
             vendorBankACC.SetRange("Vendor No.", Rec."Vendor No.");
             if vendorBankACC.FindLast() then begin
@@ -119,7 +137,7 @@ page 60020 "STH API POST VendorBankAccount"
                 //Inicializar Code
                 vendorBankAccount.Code := '1';
             end;
-            CodeAux := vendorBankAccount.Code;
+            Rec.Code := vendorBankAccount.Code;
         end;
     end;
 
@@ -128,7 +146,7 @@ page 60020 "STH API POST VendorBankAccount"
         I: Integer;
     begin
         for I := 1 to StrLen(Valor) do begin
-            if copystr(Valor, I, 1) in [' ', '!', '"', '·', '$', '%', '&', '/', '-', '+', '*', '¿', '?', '=', ')', '()'] then
+            if not (copystr(Valor, I, 1) in [' ', '!', '"', '·', '$', '%', '&', '/', '-', '+', '*', '¿', '?', '=', ')', '()']) then
                 TrimString += copystr(Valor, I, 1);
         end;
     end;
