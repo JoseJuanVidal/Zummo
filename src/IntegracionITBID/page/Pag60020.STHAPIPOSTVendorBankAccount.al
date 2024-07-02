@@ -30,7 +30,7 @@ page 60020 "STH API POST VendorBankAccount"
                 {
                     Caption = 'Vendor No.';
                 }
-                field("code"; Code)
+                field("code"; CodeAux)
                 {
                     Caption = 'Code';
                 }
@@ -59,7 +59,7 @@ page 60020 "STH API POST VendorBankAccount"
         vendorBankAccount: Record "Vendor Bank Account";
         actionHTTP: Text;
         result: Text;
-        // CodeAux: Code[20];
+        CodeAux: Code[20];
         txtIBAN: text;
         txtCCCNO: text;
 
@@ -80,16 +80,17 @@ page 60020 "STH API POST VendorBankAccount"
         case actionHTTP of
             'DELETE':
 
-                if vendorBankAccount.Get(Rec."Vendor No.", Rec.Code) then begin
+                if vendorBankAccount.Get(Rec."Vendor No.", CodeAux) then begin
                     vendorBankAccount.Delete;
                     result := 'Success';
                 end;
             'POST':
                 begin
-                    if vendorBankAccount.Get(Rec."Vendor No.", Rec.Code) then
-                        Error('El registro ya existe %1 %2', Rec."Vendor No.", Rec.Code);
+                    if vendorBankAccount.Get(Rec."Vendor No.", CodeAux) then
+                        Error('El registro ya existe %1 %2', Rec."Vendor No.", CodeAux);
 
                     vendorBankAccount.Init();
+                    vendorBankAccount."Vendor No." := Rec."Vendor No.";
                     createNoVendorBankAccount();
                     UpdateVendorBank();
                     vendorBankAccount.Insert();
@@ -98,13 +99,13 @@ page 60020 "STH API POST VendorBankAccount"
                 end;
             'PATCH':
                 begin
-                    if vendorBankAccount.Get(Rec."Vendor No.", Rec.Code) then begin
+                    if vendorBankAccount.Get(Rec."Vendor No.", CodeAux) then begin
                         UpdateVendorBank();
                         vendorBankAccount.Modify();
                         Commit();
                         SendEmailChangesVendor(true);
                     end else
-                        Error('El registro no existe %1 %2', Rec."Vendor No.", Rec.Code);
+                        Error('El registro no existe %1 %2', Rec."Vendor No.", CodeAux);
                 end;
         end;
         result := 'Success';
@@ -115,7 +116,7 @@ page 60020 "STH API POST VendorBankAccount"
         if Rec.Name <> '' then
             vendorBankAccount.Name := copystr(Rec.Name, 1, MaxStrLen(vendorBankAccount.Name));
         if Rec."SWIFT Code" <> '' then
-            vendorBankAccount."SWIFT Code" := copystr(Rec.Name, 1, MaxStrLen(vendorBankAccount."SWIFT Code"));
+            vendorBankAccount."SWIFT Code" := copystr(Rec."SWIFT Code", 1, MaxStrLen(vendorBankAccount."SWIFT Code"));
         if txtCCCNo <> '' then
             vendorBankAccount."CCC No." := copystr(txtCCCNo, 1, MaxStrLen(vendorBankAccount."CCC No."));
         if txtIBAN <> '' then
@@ -138,6 +139,7 @@ page 60020 "STH API POST VendorBankAccount"
                 vendorBankAccount.Code := '1';
             end;
             Rec.Code := vendorBankAccount.Code;
+            CodeAux := Rec.Code;
         end;
     end;
 
@@ -146,8 +148,10 @@ page 60020 "STH API POST VendorBankAccount"
         I: Integer;
     begin
         for I := 1 to StrLen(Valor) do begin
-            if not (copystr(Valor, I, 1) in [' ', '!', '"', '·', '$', '%', '&', '/', '-', '+', '*', '¿', '?', '=', ')', '()']) then
-                TrimString += copystr(Valor, I, 1);
+            CASE UpperCase(CopyStr(Valor, i, 1)) OF
+                'A' .. 'Z', 'a' .. 'z', '0' .. '9':
+                    TrimString += UpperCase(copystr(Valor, I, 1));
+            end;
         end;
     end;
 
