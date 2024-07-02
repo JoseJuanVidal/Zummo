@@ -190,7 +190,7 @@ table 17200 "Purchase Requests less 200"
         UserSetup: Record "User Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         AutLoginMgt: Codeunit "AUT Login Mgt.";
-        lblAction: Label '¿Desea % la solicitud %2?', comment = 'ESP="¿Desea % la solicitud %2?"';
+        lblAction: Label '¿Desea %1 la solicitud %2?', comment = 'ESP="¿Desea %1 la solicitud %2?"';
         lblErrorBlocked: Label 'Vendor %1 is blocked %2.', comment = 'ESP="El provedoor %1 está bloqueado %2."';
         lblMaxAmount: Label 'The amount of the request %1 is greater than the maximum allowed %2.',
             comment = 'ESP="El importe de la solicitud %1 es mayor que el máximo permitido %2."';
@@ -198,8 +198,8 @@ table 17200 "Purchase Requests less 200"
             comment = 'ESP="¿Desea enviar la Aprobación de la solicitud de compra %1 por un importe de %2?"';
         lblSubject: Label 'Solicitud de Compra menor de 200 € %1'
             , comment = 'ESP="Solicitud de Compra menor de 200 € %1"';
-        lblTitle: Label '<p><strong>Solicitud de Compra menor de 200&euro; %1</strong></p>'
-            , comment = 'ESP="<p><strong>Solicitud de Compra menor de 200&euro; %1</strong></p>"';
+        lblTitle: Label '<p><strong>Solicitud de Compra menor de 200&euro;1</strong></p>'
+            , comment = 'ESP="<p><strong>Solicitud de Compra menor de 200&euro;</strong></p>"';
         lblUser: Label '<p><strong>Usuario:</strong> %1</p>'
             , comment = 'ESP="<p><strong>Usuario:</strong> %1</p>"';
         lblDate: Label '<p><strong>Fecha:</strong> %1</p>'
@@ -378,7 +378,7 @@ table 17200 "Purchase Requests less 200"
             repeat
                 FilePathName := FileManagement.ServerTempFileName(DocAttachment."File Extension");
                 DocAttachment."Document Reference ID".ExportFile(FilePathName);
-                cduSmtp.AddAttachment(FilePathName, DocAttachment."File Name");
+                cduSmtp.AddAttachment(FilePathName, StrSubstNo('%1.%2', DocAttachment."File Name", DocAttachment."File Extension"));
             Until DocAttachment.next() = 0;
 
         cduSmtp.Send();
@@ -394,7 +394,7 @@ table 17200 "Purchase Requests less 200"
         i: Integer;
     begin
         textoHtml := lblTitle;
-        textoHtml += StrSubstNo(lblUser, UserId);
+        textoHtml += StrSubstNo(lblUser, Rec."Nombre Empleado");
         textoHtml += StrSubstNo(lblDate, WorkDate());
         textoHtml += StrSubstNo(lblRequest, Rec."No.");
         textoHtml += StrSubstNo(lblVendorNo, Rec."Vendor No.");
@@ -413,8 +413,8 @@ table 17200 "Purchase Requests less 200"
     local procedure GetRecipientsEmailRequest() Recipients: text;
     var
         Employee: Record Employee;
-        lblError: Label 'No existen emplados configurados para aprobacion de Solicitudes de compra.\Hable con Administración del sistemaB',
-            comment = 'ESP="No existen emplados configurados para aprobacion de Solicitudes de compra.\Hable con Administración del sistema"';
+        lblError: Label 'No existen empleados configurados para aprobacion de Solicitudes de compra.\Hable con Administración del sistemaB',
+            comment = 'ESP="No existen empleados configurados para aprobacion de Solicitudes de compra.\Hable con Administración del sistema"';
     begin
         UserSetup.Reset();
         UserSetup.SetRange("Approvals Purch. Request", true);
