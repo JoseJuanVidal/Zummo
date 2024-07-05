@@ -303,7 +303,7 @@ table 17200 "Purchase Requests less 200"
     procedure Approve()
     begin
         // control de si existe ya alguna linea indicada
-        if not Confirm(lblAction, false, 'Rechazar', Rec."No.") then
+        if not Confirm(lblAction, false, 'Aprobar', Rec."No.") then
             exit;
         CheckIsAssigned;
         Rec.Status := Rec.Status::Approved;

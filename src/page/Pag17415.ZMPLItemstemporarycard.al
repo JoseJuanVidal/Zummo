@@ -523,8 +523,6 @@ page 17415 "ZM PL Items temporary card"
             CurrPage.Update();
     end;
 
-
-
     local procedure Navigate_ProductionML()
     begin
         Rec.Navigate_ProductionML();

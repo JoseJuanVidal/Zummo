@@ -173,6 +173,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             repeat
                 if PurchaseLine.Type in [PurchaseLine.Type::Item, PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Fixed Asset"] then
                     SetPurchaseLineDimensiones(PurchaseRequest, PurchaseLine);
+            // TODO Aprobacion de usuario a las lineas
             Until PurchaseLine.next() = 0;
 
     end;
