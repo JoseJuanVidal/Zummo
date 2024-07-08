@@ -1638,7 +1638,8 @@ codeunit 50106 "SalesEvents"
             comment = 'ESP="¿Desea añadir la linea de servicio %1 %2\del contrato %3\a la lineas %4 %5?"';
     begin
         Rec.TestField(Type, Rec.Type::Item);
-        GLAccountNo := GetServiceMgtSetupItemExtension();
+        GLAccountNo := GetServiceMgtSetupGLACcountExtension();
+        GLAccount.Get(GLAccountNo);
         ServiceContractHeader.SetRange("Contract Type", ServiceContractHeader."Contract Type"::Contract);
         // se comenta porque cuando creamos el pedido de venta, todavia no esta creado el producto de servio
         // por lo que no se puede indicar que este firmado
@@ -1652,8 +1653,9 @@ codeunit 50106 "SalesEvents"
                 Rec.ParentLine := true;
                 Rec.ParentItemNo := Rec."No.";
                 Rec.ContractParent := true;
+                Rec.ParentItemNo := Rec."No.";
                 Rec.Modify();
-                Message('Creada linea de servicio del contrato %1', ServiceContractHeader);
+                Message('Creada linea de servicio del contrato %1', ServiceContractHeader."Contract No.");
             end;
         end;
     end;
@@ -1709,7 +1711,7 @@ codeunit 50106 "SalesEvents"
             error(LblError, Rec."Line No.");
     end;
 
-    local procedure GetServiceMgtSetupItemExtension(): code[20]
+    local procedure GetServiceMgtSetupGLACcountExtension(): code[20]
     var
         ServiceMgtSetup: Record "Service Mgt. Setup";
         RefRecord: RecordRef;
