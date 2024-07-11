@@ -432,6 +432,84 @@ table 17413 "ZM PL Items temporary"
             Caption = 'Purchasing Blockedtco', Comment = 'ESP="Compras bloqueadas"';
             DataClassification = CustomerContent;
         }
+        field(50014; selClasVtas_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Description = 'Bitec';
+            Caption = 'Sales Classification', comment = 'ESP="Clasificación Ventas"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("ClasificacionVentas"), TipoRegistro = const(Tabla));
+
+        }
+
+        field(50015; selFamilia_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Description = 'Bitec';
+            Caption = 'Family', comment = 'ESP="Familia"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Familia"), TipoRegistro = const(Tabla));
+
+        }
+
+        field(50016; selGama_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Description = 'Bitec';
+            Caption = 'Gamma', comment = 'ESP="Gama"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Gamma"), TipoRegistro = const(Tabla));
+
+        }
+        field(50017; selLineaEconomica_btc; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Description = 'Bitec';
+            Caption = 'Linea Economica', comment = 'ESP="Linea Economica"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("LineaEconomica"), TipoRegistro = const(Tabla));
+
+        }
+        field(50018; "ABC"; Option)
+        {
+            Editable = true;
+            Caption = 'ABC', comment = 'ESP="ABC"';
+            OptionMembers = " ",ContraStock,BajoPedido;
+            OptionCaption = ' ,A,B,C,D', comment = 'ESP=" ,A,B,C,D"';
+        }
+        field(50020; desClasVtas_btc; text[100])
+        {
+            Caption = 'Desc. Sales Classification', comment = 'ESP="Desc. Clasificación Ventas"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(ClasificacionVentas), NumReg = field(selClasVtas_btc)));
+        }
+        field(50021; desFamilia_btc; text[100])
+        {
+            Caption = 'Desc. Familia', comment = 'ESP="Desc. Familia"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(Familia), NumReg = field(selFamilia_btc)));
+        }
+        field(50022; desGama_btc; text[100])
+        {
+            Caption = 'Desc. Gamma', comment = 'ESP="Desc. Gama"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(Gamma), NumReg = field(selGama_btc)));
+        }
+        field(50023; desLineaEconomica_btc; text[100])
+        {
+            Caption = 'Desc. Linea Economica', comment = 'ESP="Desc. Linea Economica"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(LineaEconomica), NumReg = field(selLineaEconomica_btc)));
+        }
+        field(50030; Canal; Option)
+        {
+            DataClassification = CustomerContent;
+            Description = 'Zummo Canal de venta';
+            Caption = 'Canal', comment = 'ESP="Canal"';
+            OptionMembers = "Food Service","Retail";
+            OptionCaption = 'Retail,Food Service', comment = 'ESP="Retail,Food Service"';
+        }
+
         field(50125; "STH To Update"; Boolean)
         {
             Caption = 'To update', comment = 'Act. itbid';
@@ -456,6 +534,153 @@ table 17413 "ZM PL Items temporary"
             DataClassification = CustomerContent;
             Caption = 'ITBID Create', comment = 'ESP="Crear para solicitudes"';
         }
+        field(50130; "Purch. Family"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. Family', comment = 'ESP="Familia compra"';
+            TableRelation = "STH Purchase Family".Code;
+        }
+        field(50131; "Desc. Purch. Family"; Text[100])
+        {
+            Caption = 'Desc. Purch. Family', comment = 'ESP="Nombre Familia compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase Family".Description where(Code = field("Purch. Family")));
+            Editable = false;
+        }
+        field(50132; "Purch. Category"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. Category', comment = 'ESP="Categoria compra"';
+            TableRelation = "STH Purchase Category".Code where("Purch. Familiy code" = field("Purch. Family"));
+        }
+        field(50133; "Desc. Purch. Category"; Text[100])
+        {
+            Caption = 'Desc. Purch. Category', comment = 'ESP="Nombre Categoria compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase Category".Description where("Purch. Familiy code" = field("Purch. Family"), Code = field("Purch. Category")));
+            Editable = false;
+        }
+        field(50134; "Purch. SubCategory"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. SubCategory', comment = 'ESP="SubCategoria compra"';
+            TableRelation = "STH Purchase SubCategory".Code where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category"));
+        }
+        field(50135; "Desc. Purch. SubCategory"; Text[100])
+        {
+            Caption = 'Desc. Purch. SubCategory', comment = 'ESP="Nombre SubCategoria compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase SubCategory".Description where("Purch. Familiy code" = field("Purch. Family"),
+                "Purch. Category code" = field("Purch. Category"), code = field("Purch. SubCategory")));
+            Editable = false;
+        }
+        field(50156; Manufacturer; text[100])
+        {
+            Caption = 'Manufacturer', comment = 'ESP="Fabricante"';
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Fabricante), TipoRegistro = const(Tabla));
+        }
+        field(50157; "Item No. Manufacturer"; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Item No. Manufacturer', comment = 'ESP="Cód. Fabricante"';
+
+        }
+        Field(50200; "Plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Plastic packing (kg)', comment = 'ESP="Plástico embalaje (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 6 : 6;
+        }
+        Field(50201; "Recycled plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Plastic Recycled packing (kg)', comment = 'ESP="Plástico reciclado embalaje(kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 6 : 6;
+        }
+        Field(50202; "Recycled plastic %"; decimal)
+        {
+            Caption = 'Plastic Recycled packing %', comment = 'ESP="% Plástico reciclado embalaje"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 2 : 2;
+        }
+        Field(50203; "Packing Plastic Qty. (kg)"; decimal)
+        {
+            Caption = 'Package Plastic (kg)', comment = 'ESP="Plástico Bulto (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 6 : 6;
+        }
+        Field(50204; "Packing Recycled plastic (kg)"; decimal)
+        {
+            Caption = 'Package Recycled Plastic (kg)', comment = 'ESP="Plástico reciclado Bulto (kg)"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 6 : 6;
+        }
+        Field(50205; "Packing Recycled plastic %"; decimal)
+        {
+            Caption = 'Package Plastic %', comment = 'ESP="% Plástico reciclado Bulto"';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 2 : 2;
+        }
+        field(50206; Steel; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Steel Packing (kg)', comment = 'ESP="Acero Embalaje (kg)"';
+            Description = 'Acero que se utiliza para el envío del producto';
+        }
+        field(50207; Carton; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Carton Packing (kg)', comment = 'ESP="Cartón Embalaje (kg)"';
+        }
+        field(50208; Wood; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Wood Packing (kg)', comment = 'ESP="Madera Embalaje (kg)"';
+        }
+        field(50210; "Show detailed documents"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Show detailed documents', comment = 'ESP="Mostrar en detalle documentos"';
+        }
+        field(50211; "Packaging product"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Packaging product', comment = 'ESP="Producto de bulto"';
+        }
+        field(50212; "Vendor Packaging product"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Plastic packing (kg)', comment = 'ESP="Plástico embalaje proveedor (kg)"';
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Sustuido por 50215';
+        }
+        field(50215; "Vendor Packaging product KG"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Plastic packing (kg/ud)', comment = 'ESP="Plástico embalaje proveedor (kg/ud)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50216; "Vendor Packaging Steel"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Steel Packing (kg)', comment = 'ESP="Acero Embalaje proveedor(kg)"';
+            Description = 'Acero que se utiliza para el envío del producto';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50217; "Vendor Packaging Carton"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Carton Packing (kg)', comment = 'ESP="Cartón Embalaje proveedor (kg)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50218; "Vendor Packaging Wood"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Wood Packing (kg)', comment = 'ESP="Madera Embalaje proveedor (kg)"';
+            DecimalPlaces = 6 : 6;
+        }
+
         field(59001; Largo; Decimal)
         {
             DataClassification = CustomerContent;
@@ -841,14 +1066,33 @@ table 17413 "ZM PL Items temporary"
 
     procedure LaunchRegisterItemTemporary()
     var
-        myInt: Integer;
+        lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 "%2"?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2"?"';
+        lblRelease: Label 'La solicitud ya ha sido enviada.\', comment = 'ESP="La solicitud ya ha sido enviada.\"';
+        lblError: Label 'El estado de la solicitud de %1 %2 es %3', comment = 'ESP="El estado de la solicitud de %1 %2 es %3"';
     begin
+        Rec.TestField(Reason);
+        case Rec."State Creation" of
+            Rec."State Creation"::" ":
+                begin
+                    if not Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
+                        exit;
+                end;
+            Rec."State Creation"::Requested, Rec."State Creation"::Released:
+                begin
+                    if not Confirm(lblRelease + lblConfirm, false, Rec."No.", Rec.Description) then
+                        exit;
+                end;
+            Rec."State Creation"::Finished:
+                Error(lblError, Rec."No.", Rec.Description);
+        end;
+
+
         // enviamos la solicitud para la alta de los productos.
         // primero aprobacion planificacion de la alta de producto en ITBID y envio de alta de campos a los departamentos
-        if Rec."ITBID Status" in [Rec."ITBID Status"::" "] then
-            SendItemTemporaryFirstRegister()
-        else
-            SendItemTemporaryRegister();
+        // if Rec."ITBID Status" in [Rec."ITBID Status"::" "] then
+        //     SendItemTemporaryFirstRegister()
+        // else
+        SendItemTemporaryRegister();
 
     end;
 
@@ -945,6 +1189,7 @@ table 17413 "ZM PL Items temporary"
         Body += '<p><strong>' + Rec.FieldCaption(Reason) + '</strong>: ' + Rec.GetWorkDescription() + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption("Posting Date") + '</strong>: ' + format(Rec."Posting Date") + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Activity) + '</strong>: ' + Rec.Activity + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Prototype) + '</strong>: ' + Rec.Prototype + '</p>';
         if Item.Get(Rec."No.") then begin
             RefRecord.GetTable(Rec);
             xRefRecord.GetTable(Item);

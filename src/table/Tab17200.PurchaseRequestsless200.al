@@ -81,6 +81,7 @@ table 17200 "Purchase Requests less 200"
             DataClassification = CustomerContent;
             Caption = 'Currency Code', comment = 'ESP="Cód. Divisa"';
             TableRelation = Currency;
+            InitValue = 'EUR';
         }
         field(60; "Posting Date"; date)
         {

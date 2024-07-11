@@ -78,10 +78,10 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             DataClassification = CustomerContent;
             TableRelation = "Purchase Requests less 200" where(Status = const(Approved), Invoiced = const(false));
 
-            // trigger OnValidate()
-            // begin
-            //     OnValidate_PurchRequest();
-            // end;
+            trigger OnValidate()
+            begin
+                OnValidate_PurchRequest();
+            end;
 
         }
         field(50125; "CONSULTIA ID Factura"; Integer)
@@ -127,6 +127,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         PurchaseLine: Record "Purchase Line";
         PurchInvHeader: Record "Purch. Inv. Header";
         PurchaseRequest: Record "Purchase Requests less 200";
+        AutLoginMgt: Codeunit "AUT Login Mgt.";
         ExistInvoiced: Boolean;
         lblError: Label 'La solicitud ya ha sido facturada en el documento %1', comment = 'ESP="La solicitud ya ha sido facturada en el documento %1"';
         lblMaxRequest: Label 'El importe %1 supera el máximo permitido por solicitud %2.', comment = 'ESP="El importe %1 supera el máximo permitido por solicitud %2."';
@@ -171,12 +172,17 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         PurchaseLine.SetRange("Document No.", Rec."No.");
         if PurchaseLine.FindFirst() then
             repeat
+                //  Aprobacion de usuario a las lineas
+                if PurchaseLine."Codigo Empleado Aprobacion" = AutLoginMgt.GetEmpleado() then begin
+                    PurchaseLine."Estado Aprobacion" := PurchaseLine."Estado Aprobacion"::Aprobada;
+                end;
                 if PurchaseLine.Type in [PurchaseLine.Type::Item, PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Fixed Asset"] then
                     SetPurchaseLineDimensiones(PurchaseRequest, PurchaseLine);
-            // TODO Aprobacion de usuario a las lineas
             Until PurchaseLine.next() = 0;
 
     end;
+
+
 
     local procedure SetPurchaseLineDimensiones(PurchaseRequest: Record "Purchase Requests less 200"; var PurchaseLine: Record "Purchase Line")
     var
@@ -218,6 +224,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         PurchaseLine."Shortcut Dimension 2 Code" := GlobalDim2;
         PurchaseLine.Modify();
     end;
+
 
     // local procedure Update_JobTaskNo()
     // var

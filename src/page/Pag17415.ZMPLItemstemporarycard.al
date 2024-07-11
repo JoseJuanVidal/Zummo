@@ -106,6 +106,19 @@ page 17415 "ZM PL Items temporary card"
                 {
                     ApplicationArea = all;
                 }
+
+                field(Activity; Activity)
+                {
+                    ApplicationArea = all;
+                }
+                field("Posting Date"; "Posting Date")
+                {
+                    ApplicationArea = all;
+                }
+                field(Prototype; Prototype)
+                {
+                    ApplicationArea = all;
+                }
                 group(Motivo)
                 {
                     field(WorkDescription; WorkDescription)
@@ -120,18 +133,6 @@ page 17415 "ZM PL Items temporary card"
                             SetWorkDescription(WorkDescription);
                         end;
                     }
-                }
-                field(Activity; Activity)
-                {
-                    ApplicationArea = all;
-                }
-                field("Posting Date"; "Posting Date")
-                {
-                    ApplicationArea = all;
-                }
-                field(Prototype; Prototype)
-                {
-                    ApplicationArea = all;
                 }
             }
             group(Additional)
@@ -166,6 +167,153 @@ page 17415 "ZM PL Items temporary card"
                     ApplicationArea = All;
                 }
             }
+            group(Clasification)
+            {
+                Caption = 'Clasification', comment = 'ESP="Clasificación"';
+
+                Grid(Clasif)
+                {
+                    Caption = 'Clasificación Ventas', comment = 'ESP="Clasificación Ventas"';
+                    GridLayout = Rows;
+                    group(SelClas)
+                    {
+                        ShowCaption = false;
+                        field(selClasVtas_btc; selClasVtas_btc)
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field(desClasVtas_btc; desClasVtas_btc)
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                    group(SelFam)
+                    {
+                        ShowCaption = false;
+                        field(selFamilia_btc; selFamilia_btc)
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field(desFamilia_btc; desFamilia_btc)
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+
+                    }
+                    group(SelGamma)
+                    {
+                        ShowCaption = false;
+                        field(selGama_btc; selGama_btc)
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field(desGama_btc; desGama_btc)
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                    group(SelLinea)
+                    {
+                        ShowCaption = false;
+                        field(selLineaEconomica_btc; selLineaEconomica_btc)
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field(desLineaEconomica_btc; desLineaEconomica_btc)
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                    group(SelCanal)
+                    {
+                        ShowCaption = false;
+                        field(Canal; Canal)
+                        {
+                            ApplicationArea = all;
+                        }
+                    }
+                }
+
+                Grid(ClasifPurch)
+                {
+                    Caption = 'Clasificación Compras', comment = 'ESP="Clasificación Compras"';
+                    GridLayout = Rows;
+                    // Caption = 'Compras - Plataforma ITBID', comment = 'ESP="Compras - Plataforma ITBID"';
+                    group(PurcFam)
+                    {
+                        ShowCaption = false;
+                        field("Purch. Family"; "Purch. Family")
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field("Desc. Purch. Family"; "Desc. Purch. Family")
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                    group(PurcCat)
+                    {
+                        ShowCaption = false;
+                        field("Purch. Category"; "Purch. Category")
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field("Desc. Purch. Category"; "Desc. Purch. Category")
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                    group(PurcSubCat)
+                    {
+                        ShowCaption = false;
+                        field("Purch. SubCategory"; "Purch. SubCategory")
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field("Desc. Purch. SubCategory"; "Desc. Purch. SubCategory")
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                }
+
+            }
+
             group("Costs & Posting")
             {
                 Caption = 'Costs & Posting', comment = 'ESP="Costes y registro"';
@@ -226,6 +374,14 @@ page 17415 "ZM PL Items temporary card"
             group(Reposición)
             {
                 field("Replenishment System"; "Replenishment System")
+                {
+                    ApplicationArea = all;
+                }
+                field("Vendor No."; "Vendor No.")
+                {
+                    ApplicationArea = all;
+                }
+                field(Manufacturer; Manufacturer)
                 {
                     ApplicationArea = all;
                 }
@@ -390,11 +546,9 @@ page 17415 "ZM PL Items temporary card"
                 PromotedIsBig = true;
 
                 trigger OnAction()
-                var
-                    lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 (%2)?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 (%2)?"';
                 begin
-                    if Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
-                        Rec.LaunchRegisterItemTemporary();
+
+                    Rec.LaunchRegisterItemTemporary();
                 end;
 
             }

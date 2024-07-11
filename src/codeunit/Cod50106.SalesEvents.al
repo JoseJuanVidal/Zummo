@@ -1653,7 +1653,6 @@ codeunit 50106 "SalesEvents"
                 Rec.ParentLine := true;
                 Rec.ParentItemNo := Rec."No.";
                 Rec.ContractParent := true;
-                Rec.ParentItemNo := Rec."No.";
                 Rec.Modify();
                 Message('Creada linea de servicio del contrato %1', ServiceContractHeader."Contract No.");
             end;
