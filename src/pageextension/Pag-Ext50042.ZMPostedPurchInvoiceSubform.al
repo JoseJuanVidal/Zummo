@@ -21,6 +21,16 @@ pageextension 50042 "ZM PostedPurchInvoiceSubform" extends "Posted Purch. Invoic
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("ZM Job No."; "ZM Job No.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("ZM Job Task No."; "ZM Job Task No.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 }

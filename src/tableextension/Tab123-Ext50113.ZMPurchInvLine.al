@@ -40,5 +40,15 @@ tableextension 50113 "ZM PurchInvLine" extends "Purch. Inv. Line"  //123
             Caption = 'Process No.', Comment = 'ESP="Cód. proceso"';
             DataClassification = CustomerContent;
         }
+        field(50110; "ZM Job No."; code[20])
+        {
+            Caption = 'Fixed Asset Job No.', Comment = 'ESP="A/F Nº Proyecto"';
+            TableRelation = Job;
+        }
+        field(50112; "ZM Job Task No."; code[20])
+        {
+            Caption = 'Fixed Asset Job Task No', Comment = 'ESP="A/F Nº Tarea Proyecto"';
+            TableRelation = "Job Task"."Job Task No." where("Job No." = field("ZM Job No."));
+        }
     }
 }

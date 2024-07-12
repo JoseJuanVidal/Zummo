@@ -32113,6 +32113,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field TextoRechazo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 1433880369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Fixed Asset Job No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="A/F Nº Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field ZM Job No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 3472223910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Fixed Asset Job Task No</source>
+          <note from="Developer" annotates="general" priority="2">ESP="A/F Nº Tarea Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field ZM Job Task No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4261530561 - Field 631869557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
           <source>Rejected Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Rechazo"</note>
@@ -34773,6 +34783,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblDimensionPurchLine</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Method 4151499239 - NamedType 858699819" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
+          <source>Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method Update_JobTaskNo - NamedType lblConfirmUpdate</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 2557569786 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Amount Inc. VAT Subcontractor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe con IVA subcontr."</note>
@@ -34842,6 +34857,16 @@
           <source>Plastic Recycled (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Recycled plastic Qty. (kg) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 1433880369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Fixed Asset Job No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="A/F Nº Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field ZM Job No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 3472223910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Fixed Asset Job Task No</source>
+          <note from="Developer" annotates="general" priority="2">ESP="A/F Nº Tarea Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field ZM Job Task No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 138418667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>ComentarioAut_btc</source>
@@ -35582,6 +35607,16 @@
           <source>Rejected Text</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Rechazo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM PurchInvLine - Field TextoRechazo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3090976848 - Field 1433880369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>Fixed Asset Job No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="A/F Nº Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM PurchInvLine - Field ZM Job No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3090976848 - Field 3472223910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
+          <source>Fixed Asset Job Task No</source>
+          <note from="Developer" annotates="general" priority="2">ESP="A/F Nº Tarea Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM PurchInvLine - Field ZM Job Task No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2240314328 - Field 3398170104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2583759525">
           <source>Exportar BI Reclamaciones</source>

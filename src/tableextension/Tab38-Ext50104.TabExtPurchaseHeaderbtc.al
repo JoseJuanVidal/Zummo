@@ -53,24 +53,34 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             TableRelation = Job;
 
 
-            // trigger OnValidate()
-            // begin
-            //     Update_JobTaskNo();
-            // end;
+            trigger OnValidate()
+            begin
+                Update_JobTaskNo();
+            end;
         }
         field(50032; "Job Task No."; code[20])
         {
             Caption = 'Job Task No', Comment = 'ESP="Nº Tarea Proyecto"';
             TableRelation = "Job Task"."Job Task No." where("Job No." = field("Job No."));
 
-            // trigger OnValidate()
-            // begin
-            //     Update_JobTaskNo();
-            // end;
+            trigger OnValidate()
+            begin
+                Update_JobTaskNo();
+            end;
         }
         field(50033; "Job Preview Mode"; Boolean)
         {
             Caption = 'Job Preview Mode', Comment = 'ESP="Registro Preview mode"';
+        }
+        field(50110; "ZM Job No."; code[20])
+        {
+            Caption = 'Fixed Asset Job No.', Comment = 'ESP="A/F Nº Proyecto"';
+            TableRelation = Job;
+        }
+        field(50112; "ZM Job Task No."; code[20])
+        {
+            Caption = 'Fixed Asset Job Task No', Comment = 'ESP="A/F Nº Tarea Proyecto"';
+            TableRelation = "Job Task"."Job Task No." where("Job No." = field("ZM Job No."));
         }
         field(50120; "Purch. Request less 200"; code[20])
         {
@@ -226,38 +236,32 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
     end;
 
 
-    // local procedure Update_JobTaskNo()
-    // var
-    //     PurchaseLine: Record "Purchase Line";
-    //     PurchRcptLine: Record "Purch. Rcpt. Line";
-    //     JobTask: Record "Job Task";
-    //     lblConfirmUpdate: Label 'Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?',
-    //         comment = 'ESP="Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?"';
-    // begin
-    //     JobTask.Reset();
-    //     JobTask.SetRange("Job No.", Rec."Job No.");
-    //     JobTask.SetRange("Job Task No.", Rec."Job Task No.");
-    //     if not JobTask.FindFirst() then
-    //         Rec."Job Task No." := '';
-    //     if (Rec."Job No." <> xRec."Job No.") or (Rec."Job Task No." <> xRec."Job Task No.") then
-    //         if confirm(lblConfirmUpdate, false, Rec."Job No.", Rec."Job Task No.") then begin
-    //             PurchaseLine.Reset();
-    //             PurchaseLine.SetRange("Document Type", Rec."Document Type");
-    //             PurchaseLine.SetRange("Document No.", Rec."No.");
-    //             if PurchaseLine.FindFirst() then
-    //                 repeat
-    //                     if PurchaseLine.Type in [PurchaseLine.Type::Item, PurchaseLine.Type::"G/L Account"] then begin
-    //                         PurchaseLine."Job No." := Rec."Job No.";
-    //                         PurchaseLine."Job Task No." := Rec."Job Task No.";
-    //                         PurchaseLine.Modify();
-    //                         // miramos el albaran y actualizamos tambien los datos.
-    //                         PurchRcptLine.Reset();
-    //                         PurchRcptLine.SetRange("Document No.", PurchaseLine."Receipt No.");
-    //                         PurchRcptLine.SetRange("Line No.", PurchaseLine."Receipt Line No.");
-    //                         PurchRcptLine.ModifyAll("Job No.", PurchaseLine."Job No.");
-    //                         PurchRcptLine.ModifyAll("Job Task No.", PurchaseLine."Job Task No.");
-    //                     end;
-    //                 Until PurchaseLine.next() = 0;
-    //         end;
-    // end;
+    local procedure Update_JobTaskNo()
+    var
+        PurchaseLine: Record "Purchase Line";
+        PurchRcptLine: Record "Purch. Rcpt. Line";
+        JobTask: Record "Job Task";
+        lblConfirmUpdate: Label 'Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?',
+            comment = 'ESP="Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?"';
+    begin
+        JobTask.Reset();
+        JobTask.SetRange("Job No.", Rec."Job No.");
+        JobTask.SetRange("Job Task No.", Rec."Job Task No.");
+        if not JobTask.FindFirst() then
+            Rec."Job Task No." := '';
+        if (Rec."Job No." <> xRec."Job No.") or (Rec."Job Task No." <> xRec."Job Task No.") then
+            if confirm(lblConfirmUpdate, false, Rec."Job No.", Rec."Job Task No.") then begin
+                PurchaseLine.Reset();
+                PurchaseLine.SetRange("Document Type", Rec."Document Type");
+                PurchaseLine.SetRange("Document No.", Rec."No.");
+                if PurchaseLine.FindFirst() then
+                    repeat
+                        if PurchaseLine.Type in [PurchaseLine.Type::"Fixed Asset"] then begin
+                            PurchaseLine."ZM Job No." := Rec."Job No.";
+                            PurchaseLine."ZM Job Task No." := Rec."Job Task No.";
+                            PurchaseLine.Modify();
+                        end;
+                    Until PurchaseLine.next() = 0;
+            end;
+    end;
 }

@@ -1412,7 +1412,7 @@ codeunit 50101 "Eventos_btc"
         PurchInvLine.SetRange("Document No.", PurchInvHdrNo);
         if PurchInvLine.FindFirst() then
             repeat
-                if PurchInvLine.Type in [PurchInvLine.Type::Item, PurchInvLine.Type::"Fixed Asset", PurchInvLine.Type::"G/L Account"] then
+                if PurchInvLine.Type in [PurchInvLine.Type::"Fixed Asset"] then
                     PostingPurchaseLineJournalJob(PurchaseHeader, PurchInvLine);
             Until PurchInvLine.next() = 0;
     end;
@@ -1443,8 +1443,8 @@ codeunit 50101 "Eventos_btc"
         JobJournalLine."Line Type" := JobJournalLine."Line Type"::Budget;
         JobJournalLine."Document No." := PurchInvLine."Document No.";
         JobJournalLine."External Document No." := CopyStr(PurchaseHeader."Vendor Invoice No.", 1, MaxStrLen(JobJournalLine."External Document No."));
-        JobJournalLine.Validate("Job No.", PurchaseHeader."Job No.");
-        JobJournalLine.Validate("Job Task No.", PurchaseHeader."Job Task No.");
+        JobJournalLine.Validate("Job No.", PurchInvLine."ZM Job No.");
+        JobJournalLine.Validate("Job Task No.", PurchInvLine."ZM Job Task No.");
         JobJournalLine.Validate("No.", JobSetup."Resource No. Expenses");
         JobJournalLine.Description := CopyStr(StrSubstNo('%1 %2', PurchaseHeader."Vendor Invoice No.", PurchInvLine.Description), 1, MaxStrLen(JobJournalLine.Description));
         JobJournalLine.Validate(Quantity, PurchInvLine.Quantity);
