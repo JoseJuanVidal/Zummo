@@ -137,6 +137,7 @@ page 60018 "STH API POST Vendor"
                     Rec.Validate("Post Code", PostCode);
                     Rec.Validate(City, varCity);
                     Rec.Validate(County, varCounty);
+                    Rec."Approval Status" := Rec."Approval Status"::Aproval;
                     createNoVendor();
                     AddVendorPostingGroup();
                     addContact();
@@ -153,6 +154,7 @@ page 60018 "STH API POST Vendor"
                         Rec.Validate("Post Code", PostCode);
                         Rec.Validate(City, varCity);
                         Rec.Validate(County, varCounty);
+                        Rec."Approval Status" := Rec."Approval Status"::Aproval;
                         AddVendorPostingGroup();
                         addContact();
                         addPreferredBankAccount();
