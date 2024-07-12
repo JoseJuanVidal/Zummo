@@ -30748,6 +30748,31 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cap. Producto y Centro Trabajo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WorkCenterList - Action WorkCenterCalendar - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2643117465 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2643117465">
+          <source>Do you want to close the entry %1 %2 %3?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cerrar el movimiento %1 %2 %3.?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Apply Bank Acc. Ledger - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2643117465 - Action 3780731539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 496442798">
+          <source>Close Ledger Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cerrar Mov. Banco"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Apply Bank Acc. Ledger - Action CloseLedgerEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2871618330 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2871618330">
+          <source>Do you want to open the entry %1 %2 %3?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea abrir el movimiento %1 %2 %3.?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Bank Account Ledger Entr. - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2871618330 - Action 137971429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2591587468">
+          <source>Open Ledger Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Abrir Mov. Banco"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Bank Account Ledger Entr. - Action OpenLedgerEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2871618330 - Action 66554133 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2591587468">
+          <source>Applies Bank Account Statement</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Liq. Extractos Bancarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Bank Account Ledger Entr. - Action NavigateApplyBankAccLedgerEntries - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4207199840 - Control 61007498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1202434405">
           <source>Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
