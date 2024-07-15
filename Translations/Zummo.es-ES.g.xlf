@@ -18098,6 +18098,30 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log Actions - NamedType lblSucces</note>
           <target>Realizado</target>
         </trans-unit>
+        <trans-unit id="Page 2459089483 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Navegar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bank Account Stat. Lines - Property PromotedActionCategories</note>
+          <target>Nuevo,Procesar,Informe,Navegar</target>
+        </trans-unit>
+        <trans-unit id="Page 2459089483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank Account Stat. Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas de Extracto bancario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bank Account Stat. Lines - Property Caption</note>
+          <target>Líneas de Extracto bancario</target>
+        </trans-unit>
+        <trans-unit id="Page 2459089483 - Control 3471137671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bank Account Stat. Lines - Control Lines - Property Caption</note>
+          <target>Líneas</target>
+        </trans-unit>
+        <trans-unit id="Page 2459089483 - Action 778395640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Document</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Muestra documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bank Account Stat. Lines - Action Showdocument - Property Caption</note>
+          <target>Muestra documento</target>
+        </trans-unit>
         <trans-unit id="Page 3915894589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BOM Componente</source>
           <note from="Developer" annotates="general" priority="2">ESP="Componetes ensamblado"</note>

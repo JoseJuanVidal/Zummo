@@ -56,10 +56,10 @@ pageextension 50214 "ZM Bank Account Ledger Entr." extends "Bank Account Ledger 
     local procedure OnAction_NavigateApplyBankAccLedgerEntries()
     var
         BankAccountStatementLine: Record "Bank Account Statement Line";
-        BankAccountStatementLines: page "Bank Account Statement Lines";
+        BankAccountStatementLines: page "ZM Bank Account Stat. Lines";
     begin
         BankAccountStatementLine.FilterGroup := 2;
-        BankAccountStatementLine.SetRange("Bank Account No.", Rec."Bal. Account No.");
+        BankAccountStatementLine.SetRange("Bank Account No.", Rec."Bank Account No.");
         BankAccountStatementLine.SetRange("Statement No.", Rec."Statement No.");
         BankAccountStatementLine.SetRange("Statement Line No.", Rec."Statement Line No.");
         BankAccountStatementLine.FilterGroup := 0;

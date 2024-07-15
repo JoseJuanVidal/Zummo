@@ -675,6 +675,9 @@ report 50106 "Pedido Compra"
                         "No." := "Cross-Reference No.";
 
                     FormatDocument.SetPurchaseLine("Purchase Line", FormattedQuanitity, FormattedDirectUnitCost);
+
+                    if "Purchase Line"."Expected Receipt Date" = 0D then
+                        "Purchase Line"."Expected Receipt Date" := WorkDate();
                     //CurrReport.NEWPAGE;
                 end;
             }
