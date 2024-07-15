@@ -19,6 +19,10 @@ page 17212 "Purchase Request less 200"
                 {
                     ApplicationArea = All;
                 }
+                field("Posting Date"; "Posting Date")
+                {
+                    ApplicationArea = all;
+                }
                 field("Vendor No."; Rec."Vendor No.")
                 {
                     ApplicationArea = All;
