@@ -24,4 +24,22 @@ page 17411 "ZM PL Item Setup Depart. List"
             }
         }
     }
+    actions
+    {
+        area(Navigation)
+        {
+            action(showEmployee)
+            {
+                ApplicationArea = all;
+                Caption = 'Show Employee', comment = 'ESP="Mostrar empleados"';
+                Image = Employee;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Category4;
+                RunObject = page "Employee List";
+                RunPageLink = "Approval Department User Id" = field("User Id");
+
+            }
+        }
+    }
 }

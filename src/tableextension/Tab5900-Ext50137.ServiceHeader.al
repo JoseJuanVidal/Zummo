@@ -93,6 +93,20 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
             Caption = 'Es Mto. Garantia', comment = 'ESP="Es Mto. Garantia"';
             Editable = false;
         }
+        field(50112; ItemNo_btc; Code[20])
+        {
+            Editable = false;
+            Caption = 'Item No.', comment = 'ESP="Cód. Producto"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Service Item Line"."Item No." where("Document Type" = field("Document Type"), "Document No." = field("No.")));
+        }
+        field(50113; ItemName_btc; text[100])
+        {
+            Editable = false;
+            Caption = 'Item Name', comment = 'ESP="Nombre Producto"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Service Item Line".Description where("Document Type" = field("Document Type"), "Document No." = field("No.")));
+        }
         field(50211; Fechaemtregamaterial_sth; DateTime)
         {
             Caption = 'Fecha entrega material', comment = 'ESP="Fecha resolución en cliente"';

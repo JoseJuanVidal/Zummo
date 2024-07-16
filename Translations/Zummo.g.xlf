@@ -9229,8 +9229,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Department - Field User Id - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2">ESP=""</note>
+          <source>Items temporary</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Alta productos temporales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3329268434 - NamedType 3804247692" size-unit="char" translate="yes" xml:space="preserve">
@@ -9238,10 +9238,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmBOM</note>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - NamedType 2933890088" size-unit="char" translate="yes" xml:space="preserve">
+          <source>La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmEmail</note>
+        </trans-unit>
         <trans-unit id="Table 3329268434 - NamedType 2604454992" size-unit="char" translate="yes" xml:space="preserve">
           <source>El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?</source>
           <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmUpdateItem</note>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - NamedType 4170617325" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No existen aprobadores configurados para la tabla %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No existen aprobadores configurados para la tabla %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblErrorNotApprovals</note>
         </trans-unit>
         <trans-unit id="Table 3329268434 - NamedType 3853762076" size-unit="char" translate="yes" xml:space="preserve">
           <source>must be greater than 0.</source>
@@ -9267,16 +9277,6 @@
           <source>No existe ningun producto pendiente de revision del departamento %1.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No existe ningun producto pendiente de revision del departamento %1."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method NavigateItemsReview - NamedType lblError</note>
-        </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 3683582491 - NamedType 4170617325" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No existen aprobadores configurados para la tabla %1.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="No existen aprobadores configurados para la tabla %1."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method SendItemTemporaryFirstRegister - NamedType lblErrorNotApprovals</note>
-        </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 3683582491 - NamedType 2933890088" size-unit="char" translate="yes" xml:space="preserve">
-          <source>La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method SendItemTemporaryFirstRegister - NamedType lblConfirmEmail</note>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Method 2540420188 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Solicitud de Alta de Producto - %1 (%2)</source>
@@ -17503,6 +17503,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - NamedType lblConfirmUpdateITBID</note>
         </trans-unit>
+        <trans-unit id="Page 4102618630 - Control 1418314703 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Control StatusUser - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4102618630 - Action 1918953554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Producción</source>
           <note from="Developer" annotates="general" priority="2">ESP="Producción"</note>
@@ -17703,10 +17708,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="Lista Conf. Departamentos Alta productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup Depart. List - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 202730741 - Action 4126681763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Employee</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar empleados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup Depart. List - Action showEmployee - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 445217650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Setup Departments</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup Departments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 445217650 - Action 4126681763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Employee</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar empleados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup Departments - Action showEmployee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Navigate</source>
@@ -17872,6 +17887,11 @@
           <source>¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - NamedType lblConfirmUpdateITBID</note>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Control 1418314703 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Control StatusUser - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3858912784 - Action 695247712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Review Items temporary</source>
@@ -33903,6 +33923,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Es Mto. Garantia"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field IsWarranty - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2479720606 - Field 3433893228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
+          <source>Item Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field ItemName_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2479720606 - Field 3869451442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field ItemNo_btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 3442832110 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Service Shelf No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº estantería"</note>
@@ -35918,6 +35948,16 @@
           <note from="Developer" annotates="general" priority="2">ESP=" "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum IE Almacen - EnumValue Ninguno - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 1538080237 - EnumValue 3858371008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comprobado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Item Temporary User Status - EnumValue Comprobado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1538080237 - EnumValue 3481143665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pending</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Pendiente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Item Temporary User Status - EnumValue Pending - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 115707917 - EnumValue 227370865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approval</source>
           <note from="Developer" annotates="general" priority="2">ESP="Aprobador"</note>
@@ -36004,7 +36044,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Enum ZM PL State Creation Item - EnumValue Finished - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1577119860 - EnumValue 4020758431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Releades</source>
+          <source>Released</source>
           <note from="Developer" annotates="general" priority="2">ESP="En curso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum ZM PL State Creation Item - EnumValue Released - Property Caption</note>
         </trans-unit>

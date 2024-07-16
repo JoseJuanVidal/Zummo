@@ -61,7 +61,6 @@ page 17415 "ZM PL Items temporary card"
                     field("ITBID Create"; "ITBID Create")
                     {
                         ApplicationArea = all;
-                        Editable = false;
                     }
                     field("ITBID Status"; "ITBID Status")
                     {

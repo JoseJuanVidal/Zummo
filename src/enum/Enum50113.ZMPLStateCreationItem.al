@@ -11,7 +11,7 @@ enum 50113 "ZM PL State Creation Item"
     }
     value(2; "Released")
     {
-        Caption = 'Releades', comment = 'ESP="En curso"';
+        Caption = 'Released', comment = 'ESP="En curso"';
     }
     value(3; Finished)
     {

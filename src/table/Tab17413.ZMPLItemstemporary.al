@@ -1,7 +1,7 @@
 table 17413 "ZM PL Items temporary"
 {
     DataClassification = CustomerContent;
-    Caption = '', comment = 'ESP=""';
+    Caption = 'Items temporary', comment = 'ESP="Alta productos temporales"';
     LookupPageId = "ZM PL Items temporary list";
     DrillDownPageId = "ZM PL Items temporary list";
 
@@ -533,6 +533,12 @@ table 17413 "ZM PL Items temporary"
         {
             DataClassification = CustomerContent;
             Caption = 'ITBID Create', comment = 'ESP="Crear para solicitudes"';
+
+            trigger OnValidate()
+            begin
+                if xRec."ITBID Create" then
+                    Rec.TestField("ITBID Status", Rec."ITBID Status"::" ");
+            end;
         }
         field(50130; "Purch. Family"; Code[20])
         {
@@ -864,6 +870,9 @@ table 17413 "ZM PL Items temporary"
         lblConfirmUpdateItem: Label 'El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?',
             comment = 'ESP="El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?"';
 
+        lblErrorNotApprovals: Label 'No existen aprobadores configurados para la tabla %1.', comment = 'ESP="No existen aprobadores configurados para la tabla %1."';
+        lblConfirmEmail: Label 'La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?', comment = 'ESP="La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?"';
+
     local procedure GetPreItemSetup()
     begin
         SetupPreItemReg.GET;
@@ -1047,7 +1056,10 @@ table 17413 "ZM PL Items temporary"
     begin
         Rec.TestField("ITBID Create", true);
         JsonText := zummoFunctions.GetJSON_ItemTemporay(Rec);
-        zummoFunctions.PutBody(JsonText, Rec."No.", IsUpdate);
+        // zummoFunctions.PutBody(JsonText, Rec."No.", IsUpdate);
+        // TODO comentamos para que no suba a ITBID
+        Message(StrSubstNo('ITBID Update %1\%2', Rec."No.", JsonText));
+        IsUpdate := true;
         if IsUpdate then begin
             Rec."STH To Update" := false;
             Rec."STH Last Update Date" := Today;
@@ -1076,33 +1088,32 @@ table 17413 "ZM PL Items temporary"
                 begin
                     if not Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
                         exit;
+                    SendItemTemporaryFirstRegister();
                 end;
             Rec."State Creation"::Requested, Rec."State Creation"::Released:
                 begin
                     if not Confirm(lblRelease + lblConfirm, false, Rec."No.", Rec.Description) then
                         exit;
+                    if Rec."ITBID Create" then
+                        Rec.ITBIDUpdate();
+                    SendItemTemporaryRegister();
+                    Rec.UpdateStatusReleased();
                 end;
             Rec."State Creation"::Finished:
                 Error(lblError, Rec."No.", Rec.Description);
         end;
-
-
-        // enviamos la solicitud para la alta de los productos.
-        // primero aprobacion planificacion de la alta de producto en ITBID y envio de alta de campos a los departamentos
-        // if Rec."ITBID Status" in [Rec."ITBID Status"::" "] then
-        //     SendItemTemporaryFirstRegister()
-        // else
-        SendItemTemporaryRegister();
-
     end;
 
+    // =============SendItemTemporaryFirstRegister====================
+    // ==  
+    // ==  solicitud al departamento de planificacion del alta de productos
+    // ==  
+    // ======================================================================================================
     local procedure SendItemTemporaryFirstRegister()
     var
         Employee: Record Employee;
         RefRecord: RecordRef;
         Recipients: text;
-        lblErrorNotApprovals: Label 'No existen aprobadores configurados para la tabla %1.', comment = 'ESP="No existen aprobadores configurados para la tabla %1."';
-        lblConfirmEmail: Label 'La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?', comment = 'ESP="La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?"';
     begin
         RefRecord.GetTable(Rec);
         ItemSetupApproval.Reset();
@@ -1221,12 +1232,59 @@ table 17413 "ZM PL Items temporary"
             Changes := '<h3 style="color: #2e6c80;">Cambios:</h3>' + Changes;
 
     end;
-
+    // =============SendItemTemporaryRegister====================
+    // ==  
+    // ==  Lanzamos el circuito de que los usuarios tengan cosas pendientes de revisar 
+    // ==  
+    // ======================================================================================================
     local procedure SendItemTemporaryRegister()
     var
-        myInt: Integer;
+        tmpEmployee: Record Employee temporary;
+        RefRecord: RecordRef;
+        Recipients: text;
     begin
+        RefRecord.GetTable(Rec);
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
+        if not ItemSetupApproval.FindFirst() then
+            Error(lblErrorNotApprovals, Rec.TableCaption);
+        // preparamos la tabla para los aprobadores y enviamos email
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                if ItemSetupDepartment.get(ItemSetupApproval.Department) then begin
+                    if ItemSetupDepartment.Email <> '' then begin
+                        if Recipients <> '' then
+                            Recipients += ';';
+                        Recipients += ItemSetupDepartment.Email;
+                    end;
+                    // miramos los empleados que tienen ese departamento
+                    Employee.Reset();
+                    Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
+                    if Employee.FindFirst() then
+                        repeat
+                            // comprobamos que no dupliquemos el empleado 
+                            if not tmpEmployee.get(Employee."No.") then begin
+                                if Recipients <> '' then
+                                    Recipients += ';';
+                                Recipients += Employee."Company E-Mail";
+                                tmpEmployee.Init();
+                                tmpEmployee.TransferFields(Employee);
+                                tmpEmployee.Insert();
+                            end;
+                        Until Employee.next() = 0;
+                end;
+            Until ItemSetupApproval.next() = 0;
+        if Recipients = '' then
+            Error(lblErrorNotApprovals, Rec.TableCaption);
 
+        if Rec."E-mail sent" then
+            if not Confirm(lblConfirmEmail) then
+                exit;
+        SendMailItemTemporaryFirstRegister(Recipients);
+        Rec."E-mail sent" := true;
+        Rec."State Creation" := Rec."State Creation"::Requested;
+        Rec.Modify();
     end;
 
     procedure NavigateItemsReview()
@@ -1237,6 +1295,7 @@ table 17413 "ZM PL Items temporary"
         lblError: Label 'No existe ningun producto pendiente de revision del departamento %1.', comment = 'ESP="No existe ningun producto pendiente de revision del departamento %1."';
     begin
         ItemstemporaryReview.reset;
+        ItemstemporaryReview.SetRange("State Creation", ItemstemporaryReview."State Creation"::Released);
         if ItemstemporaryReview.FindFirst() then
             repeat
                 Result := CheckItemsTemporary(Rec);
@@ -1249,10 +1308,28 @@ table 17413 "ZM PL Items temporary"
         Itemstemporaryreviewlist.RunModal();
     end;
 
-    local procedure CheckItemsTemporary(ItemstemporaryReview: Record "ZM PL Items temporary"): Boolean
+    procedure CheckItemsTemporary(ItemstemporaryReview: Record "ZM PL Items temporary"): Boolean
+    var
+        RefRecord: RecordRef;
+    begin
+        RefRecord.GetTable(ItemstemporaryReview);
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                if ItemSetupDepartment.get(ItemSetupApproval.Department) then
+                    if ItemSetupDepartment."User Id" = UserId then
+                        exit(true);
+            until ItemSetupApproval.Next() = 0;
+    end;
+
+    procedure UpdateStatusReleased()
     var
         myInt: Integer;
     begin
-
+        Rec.TestField("State Creation", Rec."State Creation"::Requested);
+        Rec."State Creation" := Rec."State Creation"::Released;
+        Rec.Modify();
     end;
 }

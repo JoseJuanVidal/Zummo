@@ -18,10 +18,12 @@ page 17414 "ZM PL Items temporary list"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleText;
                 }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleText;
                 }
                 // field(EnglishDescription; Rec.EnglishDescription)
                 // {
@@ -30,65 +32,83 @@ page 17414 "ZM PL Items temporary list"
                 field("Base Unit of Measure"; Rec."Base Unit of Measure")
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleText;
                 }
                 field("State Creation"; "State Creation")
                 {
                     ApplicationArea = all;
+                    StyleExpr = StyleText;
                 }
                 field("ITBID Status"; "ITBID Status")
                 {
                     ApplicationArea = all;
+                    StyleExpr = StyleText;
                 }
                 field("Assembly BOM"; Rec."Assembly BOM")
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleText;
                 }
                 field("Production BOM No."; Rec."Production BOM No.")
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleText;
                 }
                 field("Routing No."; Rec."Routing No.")
                 {
                     ApplicationArea = All;
                     Visible = false;
+                    StyleExpr = StyleText;
                 }
                 field(Color; Rec.Color)
                 {
                     ApplicationArea = All;
                     Visible = false;
+                    StyleExpr = StyleText;
                 }
                 field(Alto; Rec.Alto)
                 {
                     ApplicationArea = All;
                     Visible = false;
+                    StyleExpr = StyleText;
                 }
                 field(Ancho; Rec.Ancho)
                 {
                     ApplicationArea = All;
                     Visible = false;
+                    StyleExpr = StyleText;
                 }
                 field(Largo; Rec.Largo)
                 {
                     ApplicationArea = All;
                     Visible = false;
+                    StyleExpr = StyleText;
                 }
                 field("Net Weight"; Rec."Net Weight")
                 {
                     ApplicationArea = All;
                     Visible = false;
+                    StyleExpr = StyleText;
                 }
                 field(Material; Rec.Material)
                 {
                     ApplicationArea = All;
                     Visible = false;
+                    StyleExpr = StyleText;
                 }
                 field(Packaging; Rec.Packaging)
                 {
                     ApplicationArea = All;
                     Visible = false;
+                    StyleExpr = StyleText;
+                }
+                field(StatusUser; StatusUser)
+                {
+                    ApplicationArea = all;
+                    Caption = 'User Status', comment = 'ESP="Estado Usuario"';
+                    StyleExpr = StyleText;
                 }
             }
-
         }
     }
 
@@ -258,7 +278,15 @@ page 17414 "ZM PL Items temporary list"
         Rec.FilterGroup := 0;
     end;
 
+
+    trigger OnAfterGetRecord()
+    begin
+        CheckStatusUser();
+    end;
+
     var
+        StatusUser: Enum "Item Temporary User Status";
+        StyleText: Text;
         ShowPosted: Boolean;
         lblConfirmUpdateITBID: Label '¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?', comment = 'ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"';
 
@@ -272,9 +300,27 @@ page 17414 "ZM PL Items temporary list"
         Navigate_PostedItemList();
     end;
 
-
     local procedure OnAction_NavigateReview()
     begin
         Rec.NavigateItemsReview();
+    end;
+
+    local procedure CheckStatusUser()
+    begin
+        StyleText := '';
+        if Rec."State Creation" in [Rec."State Creation"::" "] then
+            exit;
+        case CheckItemsTemporary(Rec) of
+            true:
+                StatusUser := StatusUser::Pending;
+            else
+                StatusUser := StatusUser::" ";
+        end;
+        case StatusUser of
+            StatusUser::Pending:
+                StyleText := 'Attention';
+            StatusUser::Comprobado:
+                StyleText := 'Favorable';
+        end;
     end;
 }

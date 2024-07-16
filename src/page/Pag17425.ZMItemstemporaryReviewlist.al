@@ -87,6 +87,11 @@ page 17425 "ZM Items temporary Review list"
                     ApplicationArea = All;
                     Visible = false;
                 }
+                field(StatusUser; StatusUser)
+                {
+                    ApplicationArea = all;
+                    Caption = 'User Status', comment = 'ESP="Estado Usuario"';
+                }
             }
 
         }
@@ -209,7 +214,13 @@ page 17425 "ZM Items temporary Review list"
         Rec.FilterGroup := 0;
     end;
 
+    trigger OnAfterGetCurrRecord()
+    begin
+        CheckStatusUser();
+    end;
+
     var
+        StatusUser: Enum "Item Temporary User Status";
         ShowPosted: Boolean;
         lblConfirmUpdateITBID: Label '¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?', comment = 'ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"';
 
@@ -223,4 +234,15 @@ page 17425 "ZM Items temporary Review list"
         Navigate_PostedItemList();
     end;
 
+    local procedure CheckStatusUser()
+    begin
+        if Rec."State Creation" in [Rec."State Creation"::" "] then
+            exit;
+        case CheckItemsTemporary(Rec) of
+            true:
+                StatusUser := StatusUser::Pending;
+            else
+                StatusUser := StatusUser::" ";
+        end;
+    end;
 }
