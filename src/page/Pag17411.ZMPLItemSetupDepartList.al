@@ -21,6 +21,10 @@ page 17411 "ZM PL Item Setup Depart. List"
                 {
                     ApplicationArea = All;
                 }
+                field("User Id"; "User Id")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

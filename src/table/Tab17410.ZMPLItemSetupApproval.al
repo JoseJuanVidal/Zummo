@@ -1,6 +1,6 @@
 table 17410 "ZM PL Item Setup Approval"
 {
-    Caption = 'ZM PL Item Setup Approvals ';
+    Caption = 'ZM PL Item Setup Approvals ', Comment = 'ESP="Conf. Aprobacioni Alta producto"';
     DataClassification = CustomerContent;
     LookupPageId = "ZM PL Item Setup approvals";
     DrillDownPageId = "ZM PL Item Setup approvals";

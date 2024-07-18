@@ -1,6 +1,7 @@
 table 17411 "ZM PL Item Setup Department"
 {
     DataClassification = CustomerContent;
+    Caption = 'Item Setup Department', comment = 'ESP="Config. Departamentos Alta Prod."';
     LookupPageId = "ZM PL Item Setup Depart. List";
     DrillDownPageId = "ZM PL Item Setup Depart. List";
 

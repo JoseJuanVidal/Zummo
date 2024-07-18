@@ -798,6 +798,12 @@ table 17413 "ZM PL Items temporary"
         {
             Caption = 'E-mail sent', comment = 'ESP="Email enviado"';
         }
+        field(50850; "GUID Creation"; Guid)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'State Creation', comment = 'ESP="Estado Alta"';
+            Editable = false;
+        }
         field(99000750; "Routing No."; Code[20])
         {
             Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';
@@ -836,7 +842,15 @@ table 17413 "ZM PL Items temporary"
 
     trigger OnDelete()
     begin
-        Rec.TestField("ITBID Status", Rec."ITBID Status"::" ");
+        // Rec.TestField("ITBID Status", Rec."ITBID Status"::" ");
+        case Rec."State Creation" of
+            Rec."State Creation"::Released, Rec."State Creation"::Requested:
+                begin
+                    if not Confirm('El producto ya se ha enviado para su revisión.\¿Desea eliminarlo igualmente') then
+                        error('Cancelado por usuario')
+                end;
+
+        end;
         ZMCIMProdBOMHeader.Reset();
         if ZMCIMProdBOMHeader.Get(Rec."Production BOM No.") then
             ZMCIMProdBOMHeader.Delete(true);
@@ -913,6 +927,8 @@ table 17413 "ZM PL Items temporary"
 
     local procedure InitRecord()
     begin
+        if IsNullGuid(Rec."GUID Creation") then
+            Rec."GUID Creation" := CreateGuid();
         Modified := true;
         if Rec."Posting Date" = 0D then
             Rec."Posting Date" := WorkDate();
@@ -920,6 +936,7 @@ table 17413 "ZM PL Items temporary"
             Rec."User ID" := GetCodEmpleado();
         Rec.validate("Codigo Empleado", AutLoginMgt.GetEmpleado());
         Rec."E-mail sent" := false;
+        UpdateDepartmentsApprovals();
     end;
 
     local procedure GetCodEmpleado(): code[50]
@@ -948,6 +965,7 @@ table 17413 "ZM PL Items temporary"
             if Rec."No." = '' then begin
                 NoSeriesMgt.TestManual(SetupPreItemReg."Temporary Nos.");
             end else begin
+
                 // comprobamos si existe el producto y traemos los datos para su modificación                
                 item.Reset();
                 if item.Get(Rec."No.") then begin
@@ -1088,6 +1106,7 @@ table 17413 "ZM PL Items temporary"
                 begin
                     if not Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
                         exit;
+
                     SendItemTemporaryFirstRegister();
                 end;
             Rec."State Creation"::Requested, Rec."State Creation"::Released:
@@ -1151,6 +1170,7 @@ table 17413 "ZM PL Items temporary"
         SendMailItemTemporaryFirstRegister(Recipients);
         Rec."E-mail sent" := true;
         Rec."State Creation" := Rec."State Creation"::Requested;
+
         Rec.Modify();
     end;
 
@@ -1291,6 +1311,7 @@ table 17413 "ZM PL Items temporary"
     var
         ItemstemporaryReview: Record "ZM PL Items temporary";
         Itemstemporaryreviewlist: page "ZM Items temporary Review list";
+        Department: code[20];
         Result: Boolean;
         lblError: Label 'No existe ningun producto pendiente de revision del departamento %1.', comment = 'ESP="No existe ningun producto pendiente de revision del departamento %1."';
     begin
@@ -1298,7 +1319,7 @@ table 17413 "ZM PL Items temporary"
         ItemstemporaryReview.SetRange("State Creation", ItemstemporaryReview."State Creation"::Released);
         if ItemstemporaryReview.FindFirst() then
             repeat
-                Result := CheckItemsTemporary(Rec);
+                Result := CheckItemsTemporary(Department);
                 ItemstemporaryReview.Mark(Result)
             Until ItemstemporaryReview.next() = 0;
         ItemstemporaryReview.MarkedOnly(true);
@@ -1308,28 +1329,128 @@ table 17413 "ZM PL Items temporary"
         Itemstemporaryreviewlist.RunModal();
     end;
 
-    procedure CheckItemsTemporary(ItemstemporaryReview: Record "ZM PL Items temporary"): Boolean
+    procedure CheckItemsTemporary(var Department: code[20]): Boolean
     var
         RefRecord: RecordRef;
     begin
-        RefRecord.GetTable(ItemstemporaryReview);
+        RefRecord.GetTable(Rec);
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
         ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
         if ItemSetupApproval.FindFirst() then
             repeat
+
                 if ItemSetupDepartment.get(ItemSetupApproval.Department) then
-                    if ItemSetupDepartment."User Id" = UserId then
+                    if ItemSetupDepartment."User Id" = UserId then begin
+                        Department := ItemSetupDepartment.Code;
                         exit(true);
+                    end;
             until ItemSetupApproval.Next() = 0;
     end;
 
     procedure UpdateStatusReleased()
-    var
-        myInt: Integer;
     begin
         Rec.TestField("State Creation", Rec."State Creation"::Requested);
         Rec."State Creation" := Rec."State Creation"::Released;
         Rec.Modify();
+    end;
+
+    procedure UpdateItemRequest()
+    var
+        ItemApprovalDepartment: Record "ZM Item Approval Department";
+        PermisosAut: Record "AUT Permisos";
+        AutLoging: Codeunit "AUT Login Mgt.";
+        RefRecord: RecordRef;
+        Department: code[20];
+        lblNotUserApproval: Label 'El usuario %1 del departamento %2, no tiene asignada ninguna aprobacion de campos.', comment = 'ESP="El usuario %1 del departamento %2, no tiene asignada ninguna aprobacion de campos."';
+        lblConfirmUpdateRequest: Label '¿Desea confirmar la revisión de los campos asignados a %1 de %2?', comment = 'ESP="¿Desea confirmar la revisión de los campos asignados a %1 de %2?"';
+    begin
+        RefRecord.GetTable(Rec);
+        CheckItemsTemporary(Department);
+        if Department = '' then
+            Error(lblNotUserApproval, UserId, Department);
+        if not confirm(lblConfirmUpdateRequest, false, Userid, Department) then
+            exit;
+        ItemApprovalDepartment.Reset();
+        ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
+        ItemApprovalDepartment.SetRange(Department, Department);
+        if not ItemApprovalDepartment.FindFirst() then begin
+            ItemApprovalDepartment.Init();
+            ItemApprovalDepartment."Table No." := RefRecord.Number;
+            ItemApprovalDepartment.Department := Department;
+            ItemApprovalDepartment."GUID Creation" := Rec."GUID Creation";
+            ItemApprovalDepartment.Insert();
+        end;
+        ItemApprovalDepartment."Request Date" := WorkDate();
+        AutLoging.GetAUTPermisosCodEmpleado(PermisosAut);
+        ItemApprovalDepartment."Codigo Empleado" := PermisosAut."Codigo Empleado";
+        ItemApprovalDepartment.Modify();
+        if not UpdateDepartmentsApprovals() then begin
+            // si no quedan revisiones, marcamos como revisado completamente
+            Rec."State Creation" := Rec."State Creation"::Finished;
+            Rec.modify();
+        end
+    end;
+
+    procedure CheckUserReviewItem(): Boolean
+    var
+        ItemApprovalDepartment: Record "ZM Item Approval Department";
+        RefRecord: RecordRef;
+    begin
+        RefRecord.GetTable(Rec);
+        ItemApprovalDepartment.Reset();
+        ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
+        ItemApprovalDepartment.SetRange(Department, Department);
+        if ItemApprovalDepartment.FindFirst() then
+            if ItemApprovalDepartment."Request Date" <> 0D then
+                exit(true);
+    end;
+
+    procedure UpdateDepartmentsApprovals() Pending: Boolean
+    var
+        ItemApprovalDepartment: Record "ZM Item Approval Department";
+        RefRecord: RecordRef;
+    begin
+        RefRecord.GetTable(Rec);
+        ItemApprovalDepartment.Reset();
+        ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
+        ItemApprovalDepartment.SetRange("GUID Creation", Rec."GUID Creation");
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetFilter("Field No.", '>0');
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                ItemApprovalDepartment.SetRange(Department, ItemSetupApproval.Department);
+                if not ItemApprovalDepartment.FindFirst() then begin
+                    ItemApprovalDepartment.Init();
+                    ItemApprovalDepartment."Table No." := RefRecord.Number;
+                    ItemApprovalDepartment.Department := ItemSetupApproval.Department;
+                    ItemApprovalDepartment."GUID Creation" := Rec."GUID Creation";
+                    ItemApprovalDepartment.Insert();
+                    Pending := true;
+                end else
+                    if ItemApprovalDepartment."Request Date" = 0D then
+                        Pending := true;
+            until ItemSetupApproval.Next() = 0;
+    end;
+
+    procedure SendMailItemTemporaryFinalize(Recipients: Text)
+    var
+        SalesHeader2: Record "Sales Header";
+        Quotepdf: Report PedidoCliente;
+        SMTPMailSetup: Record "SMTP Mail Setup";
+        SMTPMail: Codeunit "SMTP Mail";
+        Subject: text;
+        Body: text;
+        SubjectLbl: Label 'COMPLETADA Solicitud de Alta de Producto - %1 (%2)';
+    begin
+        SMTPMailSetup.Get();
+        SMTPMailSetup.TestField("User ID");
+        Subject := StrSubstNo(SubjectLbl, Rec."No.", Rec.Description);
+        Body := EnvioEmailBody;
+        // enviamos el email 
+        SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
+        SMTPMail.Send();
     end;
 }

@@ -265,19 +265,17 @@ page 17414 "ZM PL Items temporary list"
                 end;
 
             }
+            action(ItemApprovalsDept)
+            {
+                ApplicationArea = all;
+                Caption = 'Approvals', comment = 'ESP="Aprobaciones"';
+                Image = Translations;
+                RunObject = page "Item Approval Departments";
+                RunPageLink = "GUID Creation" = field("GUID Creation");
+            }
+
         }
     }
-
-    trigger OnOpenPage()
-    begin
-        Rec.FilterGroup := 2;
-        If ShowPosted then
-            SetRange("State Creation", "State Creation"::Finished)
-        else
-            SetFilter("State Creation", '<>%1', Rec."State Creation"::Finished);
-        Rec.FilterGroup := 0;
-    end;
-
 
     trigger OnAfterGetRecord()
     begin
@@ -306,13 +304,28 @@ page 17414 "ZM PL Items temporary list"
     end;
 
     local procedure CheckStatusUser()
+    var
+        Department: code[20];
     begin
         StyleText := '';
-        if Rec."State Creation" in [Rec."State Creation"::" "] then
-            exit;
-        case CheckItemsTemporary(Rec) of
+        case Rec."State Creation" of
+            Rec."State Creation"::" ":
+                exit;
+            Rec."State Creation"::Finished:
+                begin
+                    StyleText := 'Favorable';
+                    exit;
+                end;
+        end;
+        case Rec.CheckItemsTemporary(Department) of
             true:
-                StatusUser := StatusUser::Pending;
+                begin
+                    // Comprobar que si tiene todo aceptado, se ponga en Favorable (Verde)                    
+                    if Rec.CheckUserReviewItem then
+                        StatusUser := StatusUser::Pending
+                    else
+                        StatusUser := StatusUser::Comprobado;
+                end;
             else
                 StatusUser := StatusUser::" ";
         end;

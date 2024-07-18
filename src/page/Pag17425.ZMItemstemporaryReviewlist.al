@@ -235,12 +235,17 @@ page 17425 "ZM Items temporary Review list"
     end;
 
     local procedure CheckStatusUser()
+    var
+        Department: code[20];
     begin
         if Rec."State Creation" in [Rec."State Creation"::" "] then
             exit;
-        case CheckItemsTemporary(Rec) of
+        case CheckItemsTemporary(Department) of
             true:
-                StatusUser := StatusUser::Pending;
+                begin
+                    // TODO Comprobar que si tiene todo aceptado, se ponga en Favorable (Verde)
+                    StatusUser := StatusUser::Pending;
+                end;
             else
                 StatusUser := StatusUser::" ";
         end;
