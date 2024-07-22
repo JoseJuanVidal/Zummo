@@ -1474,15 +1474,21 @@ table 17413 "ZM PL Items temporary"
     procedure CreateItemTemporary()
     var
         lblConfirm: Label '¿Desea Crear/Actualizar el producto %1 - %2?', comment = 'ESP="¿Desea Crear/Actualizar el producto %1 - %2?"';
+        lblConfirm1: Label 'El producto no ha pasado por revision de departamentos.\', comment = 'ESP="El producto no ha pasado por revision de departamentos.\"';
     begin
-        Rec.TestField("State Creation", Rec."State Creation"::Finished);
-        if not confirm(lblConfirm, false, Rec."No.", Rec.Description) then
-            exit;
+        if Rec."State Creation" in [Rec."State Creation"::Finished] then begin
+            if not confirm(lblConfirm, false, Rec."No.", Rec.Description) then
+                exit;
+        end else begin
+            if not confirm(lblConfirm1 + lblConfirm, false, Rec."No.", Rec.Description) then
+                exit;
+        end;
         // Vamos creando o actualizando los datos del producto
         UpdateItem();
 
         UpdateItemTranslation();
 
+        UpdateItemLM();
 
     end;
 
@@ -1552,6 +1558,49 @@ table 17413 "ZM PL Items temporary"
                 end;
             Until PurchasePricetemporary.next() = 0;
     end;
+
+    local procedure UpdateItemLM()
+    var
+        ProdBomHeader: Record "Production BOM Header";
+        ProdBomLine: Record "Production BOM Line";
+        CIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";
+        CIMProdBOMLine: Record "ZM CIM Prod. BOM Line";
+        lblConfir: Label 'Ya existe la lista de materiales %1, se elimanarán la lista y se cargará toda la lista.\¿Desea continuar?'
+            , comment = 'ESP="Ya existe la lista de materiales %1, se elimanarán la lista y se cargará toda la lista.\¿Desea continuar?"';
+    begin
+        // Confirmar  que hacemos con las listas de materiales certificadas
+        CIMProdBOMHeader.Reset();
+        if CIMProdBOMHeader.Get(Rec."No.") then
+            if not confirm(lblConfir, false, Rec."No.") then
+                exit;
+        CIMProdBOMHeader.SetRange("No.", Rec."No.");
+        if CIMProdBOMHeader.FindFirst() then
+            repeat
+                ProdBomHeader.Reset();
+                ProdBomHeader.SetRange("No.", CIMProdBomHeader."No.");
+                if not ProdBomHeader.FindFirst() then begin
+                    ProdBomHeader.Init();
+                    ProdBomHeader.TransferFields(CIMProdBomHeader);
+                    ProdBomHeader.Insert();
+                end else begin
+                    ProdBomHeader.TransferFields(CIMProdBomHeader);
+                    ProdBomHeader.Modify();
+                end;
+                // Revisamos las líneas tambien
+                // primero borramos todas las líneas actuales y creamos las nuevas
+                ProdBomLine.SetRange("Production BOM No.", CIMProdBOMHeader."No.");
+                ProdBomLine.DeleteAll();
+                CIMProdBOMLine.Reset();
+                CIMProdBOMLine.SetRange("Production BOM No.", CIMProdBOMHeader."No.");
+                if CIMProdBOMLine.FindFirst() then
+                    repeat
+                        ProdBomLine.Init();
+                        ProdBomLine.TransferFields(CIMProdBomLine);
+                        ProdBomLine.Insert();
+                    Until CIMProdBOMLine.next() = 0;
+            Until CIMProdBOMHeader.next() = 0;
+    end;
+
 
     procedure UploadExcel()
     var

@@ -608,20 +608,20 @@ page 17415 "ZM PL Items temporary card"
                 end;
 
             }
-            action(CheckItem)
-            {
-                ApplicationArea = All;
-                Caption = 'Confirmar Producto', comment = 'ESP="Confirmar Producto"';
-                Image = Confirm;
-                Promoted = true;
-                PromotedCategory = Process;
-                Visible = IsUserApproval;
+            // action(CheckItem)
+            // {
+            //     ApplicationArea = All;
+            //     Caption = 'Confirmar Producto', comment = 'ESP="Confirmar Producto"';
+            //     Image = Confirm;
+            //     Promoted = true;
+            //     PromotedCategory = Process;
+            //     Visible = IsUserApproval;
 
-                trigger OnAction()
-                begin
-                    OnAction_CheckItemRequest();
-                end;
-            }
+            //     trigger OnAction()
+            //     begin
+            //         OnAction_CheckItemRequest();
+            //     end;
+            // }
             action(FinalizeDepartment)
             {
                 ApplicationArea = All;
@@ -1385,7 +1385,7 @@ page 17415 "ZM PL Items temporary card"
         if Rec."State Creation" in [Rec."State Creation"::" "] then
             exit;
         IsUserApproval := Rec.CheckItemsTemporary(Department);
-        IsUserCreateItem := Rec.CheckUserItemsCreate() and (Rec."State Creation" in [Rec."State Creation"::Finished]);
+        IsUserCreateItem := Rec.CheckUserItemsCreate(); // and (Rec."State Creation" in [Rec."State Creation"::Finished]);
     end;
 
     local procedure OnAction_CheckItemRequest()

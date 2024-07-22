@@ -9298,6 +9298,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Crear/Actualizar el producto %1 - %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method CreateItemTemporary - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - Method 514137334 - NamedType 3807794235" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El producto no ha pasado por revision de departamentos.\</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El producto no ha pasado por revision de departamentos.\"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method CreateItemTemporary - NamedType lblConfirm1</note>
+        </trans-unit>
         <trans-unit id="Table 3329268434 - Method 2651007294 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea Solicitar el alta/modificacion del producto %1 "%2"?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2"?"</note>
@@ -9327,6 +9332,11 @@
           <source>Solicitud de Alta de Producto - %1 (%2)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method SendMailItemTemporaryFirstRegister - NamedType SubjectLbl</note>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Method 3869902751 - NamedType 1460755335" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ya existe la lista de materiales %1, se elimanarán la lista y se cargará toda la lista.\¿Desea continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ya existe la lista de materiales %1, se elimanarán la lista y se cargará toda la lista.\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method UpdateItemLM - NamedType lblConfir</note>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Method 725451167 - NamedType 2377318875" size-unit="char" translate="yes" xml:space="preserve">
           <source>El usuario %1 del departamento %2, no tiene asignada ninguna aprobacion de campos.</source>
@@ -17942,11 +17952,6 @@
           <source>Traducciones</source>
           <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Translations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3139896982 - Action 4293701997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Confirmar Producto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Confirmar Producto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action CheckItem - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 502204962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comprobación Departamento</source>
