@@ -152,6 +152,19 @@ page 17414 "ZM PL Items temporary list"
                 end;
 
             }
+            action(UploadExcel)
+            {
+                ApplicationArea = All;
+                Caption = 'Cargar Excel', comment = 'ESP="Cargar Excel"';
+                Image = Excel;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    OnAction_UploadExcel();
+                end;
+            }
             // action(UpdateITBID)
             // {
             //     ApplicationArea = All;
@@ -335,5 +348,12 @@ page 17414 "ZM PL Items temporary list"
             StatusUser::Comprobado:
                 StyleText := 'Favorable';
         end;
+    end;
+
+    local procedure OnAction_UploadExcel()
+    var
+        myInt: Integer;
+    begin
+        Rec.UploadExcel();
     end;
 }

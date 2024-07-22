@@ -1348,6 +1348,23 @@ table 17413 "ZM PL Items temporary"
             until ItemSetupApproval.Next() = 0;
     end;
 
+    procedure CheckUserItemsCreate(): Boolean
+    var
+        RefRecord: RecordRef;
+    begin
+        RefRecord.GetTable(Rec);
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetRange("Field No.", 0);
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Owner, ItemSetupApproval.Rol::Both);
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                if ItemSetupDepartment.get(ItemSetupApproval.Department) then
+                    if ItemSetupDepartment."User Id" = UserId then
+                        exit(true);
+            until ItemSetupApproval.Next() = 0;
+    end;
+
     procedure UpdateStatusReleased()
     begin
         Rec.TestField("State Creation", Rec."State Creation"::Requested);
@@ -1452,5 +1469,118 @@ table 17413 "ZM PL Items temporary"
         // enviamos el email 
         SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
         SMTPMail.Send();
+    end;
+
+    procedure CreateItemTemporary()
+    var
+        lblConfirm: Label '¿Desea Crear/Actualizar el producto %1 - %2?', comment = 'ESP="¿Desea Crear/Actualizar el producto %1 - %2?"';
+    begin
+        Rec.TestField("State Creation", Rec."State Creation"::Finished);
+        if not confirm(lblConfirm, false, Rec."No.", Rec.Description) then
+            exit;
+        // Vamos creando o actualizando los datos del producto
+        UpdateItem();
+
+        UpdateItemTranslation();
+
+
+    end;
+
+    local procedure UpdateItem()
+    var
+        Item: Record Item;
+        PostedItemstemporary: Record "Posted PL Items temporary";
+    begin
+        if not Item.Get(Rec."No.") then begin
+            Item.Init();
+            Item.TransferFields(Rec);
+            Item.Insert();
+        end else begin
+            Item.TransferFields(Rec);
+            Item.Modify();
+        end;
+        // guardamos el historico de alta de producto
+        PostedItemstemporary.Init();
+        PostedItemstemporary.TransferFields(Rec);
+        PostedItemstemporary.Insert();
+        Rec.Delete();
+    end;
+
+    local procedure UpdateItemTranslation()
+    var
+        ItemTranslation: Record "Item Translation";
+        ItemTranslationtemporary: Record "ZM Item Translation temporary";
+    begin
+        ItemTranslationtemporary.Reset();
+        ItemTranslationtemporary.SetRange("Item No.", Rec."No.");
+        if ItemTranslationtemporary.FindFirst() then
+            repeat
+                ItemTranslation.Reset();
+                ItemTranslation.SetRange("Item No.", ItemTranslationtemporary."Item No.");
+                ItemTranslation.SetRange("Language Code", ItemTranslationtemporary."Language Code");
+                ItemTranslation.SetRange("Variant Code", ItemTranslationtemporary."Variant Code");
+                if not ItemTranslation.FindFirst() then begin
+                    ItemTranslation.Init();
+                    ItemTranslation.TransferFields(ItemTranslationtemporary);
+                    ItemTranslation.Insert();
+                end else begin
+                    ItemTranslation.TransferFields(ItemTranslationtemporary);
+                    ItemTranslation.Modify();
+                end;
+            Until ItemTranslationtemporary.next() = 0;
+    end;
+
+
+    local procedure UpdateItemPurchasePrice()
+    var
+        PurchasePrice: Record "Purchase Price";
+        PurchasePricetemporary: Record "ZM PL Item Purchase Prices";
+    begin
+        PurchasePricetemporary.Reset();
+        PurchasePricetemporary.SetRange("Item No.", Rec."No.");
+        if PurchasePricetemporary.FindFirst() then
+            repeat
+                PurchasePrice.Reset();
+                PurchasePrice.SetRange("Item No.", PurchasePricetemporary."Item No.");
+                if not PurchasePrice.FindFirst() then begin
+                    PurchasePrice.Init();
+                    PurchasePrice.TransferFields(PurchasePricetemporary);
+                    PurchasePrice.Insert();
+                end else begin
+                    PurchasePrice.TransferFields(PurchasePricetemporary);
+                    PurchasePrice.Modify();
+                end;
+            Until PurchasePricetemporary.next() = 0;
+    end;
+
+    procedure UploadExcel()
+    var
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        Text000: label 'Cargar Fichero de Excel';
+        NVInStream: InStream;
+        FileName: Text;
+        Sheetname: Text;
+        UploadResult: Boolean;
+        Rows: Integer;
+    begin
+        ExcelBuffer.DeleteAll();
+        UploadResult := UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream);
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        // Commit();
+        // ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 1);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        Message(StrSubstNo('Cargando Excel %1 de %2 filas', Sheetname, Rows));
     end;
 }

@@ -32,6 +32,7 @@ page 17423 "ZM Item Translation temporary"
                 field("Variant Code"; "Variant Code")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }

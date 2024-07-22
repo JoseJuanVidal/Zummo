@@ -579,19 +579,19 @@ page 17415 "ZM PL Items temporary card"
             //         OnAction_Release();
             //     end;
             // }
-            // action(Open)
-            // {
-            //     ApplicationArea = All;
-            //     Caption = 'Open', comment = 'ESP="Abrir"';
-            //     Image = ReOpen;
-            //     Promoted = true;
-            //     PromotedCategory = Process;
+            action(Open)
+            {
+                ApplicationArea = All;
+                Caption = 'Open', comment = 'ESP="Abrir"';
+                Image = ReOpen;
+                Promoted = true;
+                PromotedCategory = Process;
 
-            //     trigger OnAction()
-            //     begin
-            //         OnAction_Open();
-            //     end;
-            // }
+                trigger OnAction()
+                begin
+                    OnAction_Open();
+                end;
+            }
             action(SolicitudAlta)
             {
                 ApplicationArea = All;
@@ -622,10 +622,10 @@ page 17415 "ZM PL Items temporary card"
                     OnAction_CheckItemRequest();
                 end;
             }
-            action(Finalize)
+            action(FinalizeDepartment)
             {
                 ApplicationArea = All;
-                Caption = 'Finalizar Producto', comment = 'ESP="Finalizar Producto"';
+                Caption = 'Comprobación Departamento', comment = 'ESP="Comprobación Departamento"';
                 Image = Confirm;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -634,6 +634,34 @@ page 17415 "ZM PL Items temporary card"
                 trigger OnAction()
                 begin
                     OnAction_CheckItemRequest();
+                end;
+            }
+            action(UpdateItem)
+            {
+                ApplicationArea = All;
+                Caption = 'Crear/Actualizar Producto', comment = 'ESP="Crear/Actualizar Producto"';
+                Image = CreateSKU;
+                Promoted = true;
+                PromotedCategory = Process;
+                Visible = IsUserCreateItem;
+
+                trigger OnAction()
+                begin
+                    OnAction_CreateItemRequest();
+                end;
+            }
+
+            action(UploadExcel)
+            {
+                ApplicationArea = All;
+                Caption = 'Cargar Excel', comment = 'ESP="Cargar Excel"';
+                Image = Excel;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    OnAction_UploadExcel();
                 end;
             }
             // action(UpdateITBID)
@@ -741,6 +769,14 @@ page 17415 "ZM PL Items temporary card"
                     end;
                 }
             }
+            action(PostedItems)
+            {
+                ApplicationArea = all;
+                Caption = 'Hist. de Altas de productos', comment = 'ESP="Hist. de Altas de productos"';
+                Image = PostedReceivableVoucher;
+
+                RunObject = page "Posted PL Items temporary list";
+            }
         }
     }
     trigger OnAfterGetCurrRecord()
@@ -757,6 +793,7 @@ page 17415 "ZM PL Items temporary card"
         WorkDescription: text;
         ShowField: array[100] of Integer;
         IsUserApproval: Boolean;
+        IsUserCreateItem: Boolean;
         boolEditNo: Boolean;
         boolEditDescription: Boolean;
         boolEditAssemblyBOM: Boolean;
@@ -865,12 +902,12 @@ page 17415 "ZM PL Items temporary card"
     //         ItemsRegisterAprovals.ItemRegistrationChangeState(Rec);
     // end;
 
-    // local procedure OnAction_Open()
-    // begin
-    //     Rec.TestField("State Creation", Rec."State Creation"::Requested);
-    //     if ItemsRegisterAprovals.ItemRegistratio_OpenRequested(Rec) then
-    //         CurrPage.Update();
-    // end;
+    local procedure OnAction_Open()
+    begin
+        Rec.TestField("State Creation", Rec."State Creation"::Requested);
+        if ItemsRegisterAprovals.ItemRegistratio_OpenRequested(Rec) then
+            CurrPage.Update();
+    end;
 
     local procedure Navigate_ProductionML()
     begin
@@ -1348,6 +1385,7 @@ page 17415 "ZM PL Items temporary card"
         if Rec."State Creation" in [Rec."State Creation"::" "] then
             exit;
         IsUserApproval := Rec.CheckItemsTemporary(Department);
+        IsUserCreateItem := Rec.CheckUserItemsCreate() and (Rec."State Creation" in [Rec."State Creation"::Finished]);
     end;
 
     local procedure OnAction_CheckItemRequest()
@@ -1355,5 +1393,19 @@ page 17415 "ZM PL Items temporary card"
         myInt: Integer;
     begin
         Rec.UpdateItemRequest();
+    end;
+
+    local procedure OnAction_CreateItemRequest()
+    var
+        myInt: Integer;
+    begin
+        Rec.CreateItemTemporary();
+    end;
+
+    local procedure OnAction_UploadExcel()
+    var
+        myInt: Integer;
+    begin
+        Rec.UploadExcel();
     end;
 }

@@ -38,4 +38,12 @@ page 17410 "ZM PL Item Setup approvals"
             }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        ItemRegistrationApproval.CheckSUPERUserConfiguration();
+    end;
+
+    var
+        ItemRegistrationApproval: Codeunit "ZM PL Items Regist. aprovals";
 }
