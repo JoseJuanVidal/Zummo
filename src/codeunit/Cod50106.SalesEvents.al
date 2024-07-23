@@ -1680,7 +1680,10 @@ codeunit 50106 "SalesEvents"
         InsertLinesBetween(SalesLine, NextLineNo);
 
         ToSalesLine.INIT;
-        ToSalesLine := SalesLine;
+        //ToSalesLine := SalesLine;
+        ToSalesLine."Document Type" := SalesLine."Document Type";
+        ToSalesLine."Document No." := SalesLine."Document No.";
+        ToSalesLine.Validate("Sell-to Customer No.", SalesLine."Sell-to Customer No.");
         ToSalesLine."Line No." := NextLineNo;
         ToSalesLine.Type := ToSalesLine.Type::"G/L Account";
         ToSalesLine.VALIDATE("No.", GLAccount."No.");

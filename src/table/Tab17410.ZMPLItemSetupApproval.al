@@ -30,10 +30,15 @@ table 17410 "ZM PL Item Setup Approval"
             DataClassification = CustomerContent;
             Editable = false;
         }
-        field(5; Obligatory; Blob)
+        field(5; Obligatory; Boolean)
         {
             DataClassification = CustomerContent;
             Caption = 'Obligatory', comment = 'ESP="Obligatorio"';
+        }
+        field(6; "Approval Requester"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Aprobación Solicitante', comment = 'ESP="Aprobación Solicitante"';
         }
         field(10; "Department"; Code[20])
         {

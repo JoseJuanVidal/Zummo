@@ -533,6 +533,7 @@ table 17413 "ZM PL Items temporary"
         {
             DataClassification = CustomerContent;
             Caption = 'ITBID Create', comment = 'ESP="Crear para solicitudes"';
+            InitValue = true;
 
             trigger OnValidate()
             begin
@@ -1104,6 +1105,7 @@ table 17413 "ZM PL Items temporary"
         case Rec."State Creation" of
             Rec."State Creation"::" ":
                 begin
+                    CheckObligatoryFieldsUser(true);
                     if not Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
                         exit;
 
@@ -1111,6 +1113,7 @@ table 17413 "ZM PL Items temporary"
                 end;
             Rec."State Creation"::Requested, Rec."State Creation"::Released:
                 begin
+                    CheckObligatoryFieldsUser(false);
                     if not Confirm(lblRelease + lblConfirm, false, Rec."No.", Rec.Description) then
                         exit;
                     if Rec."ITBID Create" then
@@ -1631,5 +1634,219 @@ table 17413 "ZM PL Items temporary"
             Rows := ExcelBuffer."Row No.";
 
         Message(StrSubstNo('Cargando Excel %1 de %2 filas', Sheetname, Rows));
+    end;
+
+    local procedure CheckObligatoryFieldsUser(Requested: Boolean)
+    var
+        RefRecord: RecordRef;
+    begin
+        RefRecord.GetTable(Rec);
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetRange(Obligatory, true);
+        if Requested then
+            ItemSetupApproval.SetRange("Approval Requester", true);
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                if ItemSetupDepartment.get(ItemSetupApproval.Department) then
+                    if ItemSetupDepartment."User Id" = UserId then begin
+                        CheckObligatoryField(ItemSetupApproval."Field No.");
+                    end;
+            until ItemSetupApproval.Next() = 0;
+    end;
+
+    local procedure CheckObligatoryField(FieldNo: Integer)
+    begin
+        case FieldNo of
+            1: // No.
+                Rec.TestField("No.");
+            3: //Description:
+                Rec.TestField(Description);
+            6: //"Assembly BOM":
+                Rec.TestField("Assembly BOM");
+            8: //"Base Unit of Measure":
+                Rec.TestField("Base Unit of Measure");
+            10: //Type:
+                Rec.TestField(Type);
+            11: //"Inventory Posting Group":
+                Rec.TestField("Inventory Posting Group");
+            14: //"Item Disc. Group"
+                Rec.TestField("Item Disc. Group");
+            18: //"Unit Price"
+                Rec.TestField("Unit Price");
+            21: //"Costing Method"
+                Rec.TestField("Costing Method");
+            22: //"Unit Cost"
+                Rec.TestField("Unit Cost");
+            31: //"Vendor No."
+                Rec.TestField("Vendor No.");
+            32: //"Vendor Item No."
+                Rec.TestField("Vendor Item No.");
+            33: //"Lead Time Calculation"
+                Rec.TestField("Lead Time Calculation");
+            34: //"Reorder Point"
+                Rec.TestField("Reorder Point");
+            35: //"Maximum Inventory"
+                Rec.TestField("Maximum Inventory");
+            36: //"Reorder Quantity"
+                Rec.TestField("Reorder Quantity");
+            37: //"Alternative Item No.": Code[20])
+                Rec.TestField("Alternative Item No.");
+            41: //"Gross Weight": Decimal)
+                Rec.TestField("Gross Weight");
+            42: //"Net Weight": Decimal)
+                Rec.TestField("Net Weight");
+            43: //"Units per Parcel": Decimal)
+                Rec.TestField("Units per Parcel");
+            44: //"Unit Volume": Decimal)
+                Rec.TestField("Unit Volume");
+            45: //Durability: Code[10])
+                Rec.TestField(Durability);
+            46: //"Freight Type": Code[10])
+                Rec.TestField("Freight Type");
+            47: //"Tariff No.": Code[20])
+                Rec.TestField("Tariff No.");
+            54: //Blocked: //Boolean)
+                Rec.TestField(Blocked);
+            90: //"VAT Bus. Posting Gr. (Price)": //Code[20])
+                Rec.TestField("VAT Bus. Posting Gr. (Price)");
+            91: //"Gen. Prod. Posting Group": //Code[20])
+                Rec.TestField("Gen. Prod. Posting Group");
+            92: //Picture: //MediaSet)
+                Rec.TestField(Picture);
+            97: //"Nos. series": //code[20])
+                Rec.TestField("Nos. series");
+            99: //"VAT Prod. Posting Group": //Code[20])
+                Rec.TestField("VAT Prod. Posting Group");
+            100: //Reserve: //Option)
+                Rec.TestField(Reserve);
+            910: //"Assembly Policy": //Option)
+                Rec.TestField("Assembly Policy");
+            1217: //GTIN: //Code[14])
+                Rec.TestField(GTIN);
+            5402: //"Serial Nos.": //Code[20])
+                Rec.TestField("Serial Nos.");
+            5411: //"Minimum Order Quantity": //Decimal)
+                Rec.TestField("Minimum Order Quantity");
+            5412: //"Maximum Order Quantity": //Decimal)
+                Rec.TestField("Maximum Order Quantity");
+            5413: //"Safety Stock Quantity": //Decimal)
+                Rec.TestField("Safety Stock Quantity");
+            5414: //"Order Multiple": //Decimal)
+                Rec.TestField("Order Multiple");
+            5415: //"Safety Lead Time": //DateFormula)
+                Rec.TestField("Safety Lead Time");
+            5417: //"Flushing Method": //Option)
+                Rec.TestField("Flushing Method");
+            5419: //"Replenishment System": //Option)
+                Rec.TestField("Replenishment System");
+            5422: //"Rounding Precision": //Decimal)
+                Rec.TestField("Rounding Precision");
+            5425: //"Sales Unit of Measure": //Code[10])
+                Rec.TestField("Sales Unit of Measure");
+            5426: //"Purch. Unit of Measure": //Code[10])
+                Rec.TestField("Purch. Unit of Measure");
+            5428: //"Time Bucket": //DateFormula)
+                Rec.TestField("Time Bucket");
+            5440: //"Reordering Policy": //Option)
+                Rec.TestField("Reordering Policy");
+            5441: //"Include Inventory": //Boolean)
+                Rec.TestField("Include Inventory");
+            5442: //"Manufacturing Policy": //Option)
+                Rec.TestField("Manufacturing Policy");
+            5443: //"Rescheduling Period": //DateFormula)
+                Rec.TestField("Rescheduling Period");
+            5701: //"Manufacturer Code": //Code[10])
+                Rec.TestField("Manufacturer Code");
+            5702: //"Item Category Code": //Code[20])
+                Rec.TestField("Item Category Code");
+            5900: //"Service Item Group": //Code[10])
+                Rec.TestField("Service Item Group");
+            6500: //"Item Tracking Code": //Code[10])
+                Rec.TestField("Item Tracking Code");
+            6501: //"Lot Nos.": //Code[20])
+                Rec.TestField("Lot Nos.");
+            6502: //"Expiration Calculation": //DateFormula)
+                Rec.TestField("Expiration Calculation");
+            8003: //"Sales Blocked": //Boolean)
+                Rec.TestField("Sales Blocked");
+            8004: //"Purchasing Blocked": //Boolean)
+                Rec.TestField("Purchasing Blocked");
+            50014: //selClasVtas_btc: //Code[20])
+                Rec.TestField(selClasVtas_btc);
+            50015: //selFamilia_btc: //Code[20])
+                Rec.TestField(selFamilia_btc);
+            50016: //selGama_btc: //Code[20])
+                Rec.TestField(selGama_btc);
+            50017: //selLineaEconomica_btc: //Code[20])
+                Rec.TestField(selLineaEconomica_btc);
+            50018: //"ABC": //Option)
+                Rec.TestField(ABC);
+            50030: //Canal: //Option)
+                Rec.TestField(Canal);
+            50127: //Material: //text[100])
+                Rec.TestField(Material);
+            50130: //"Purch. Family": //Code[20])
+                Rec.TestField("Purch. Family");
+            50132: //"Purch. Category": //Code[20])
+                Rec.TestField("Purch. Category");
+            50134: //"Purch. SubCategory": //Code[20])
+                Rec.TestField("Purch. SubCategory");
+            50156: //Manufacturer: //text[100])
+                Rec.TestField(Manufacturer);
+            50157: //"Item No. Manufacturer": //code[50])
+                Rec.TestField("Item No. Manufacturer");
+            50200: //"Plastic Qty. (kg)": //decimal)
+                Rec.TestField("Plastic Qty. (kg)");
+            50201: //"Recycled plastic Qty. (kg)": //decimal)
+                Rec.TestField("Recycled plastic Qty. (kg)");
+            50202: //"Recycled plastic %": //decimal)
+                Rec.TestField("Recycled plastic %");
+            50203: //"Packing Plastic Qty. (kg)": //decimal)
+                Rec.TestField("Packing Plastic Qty. (kg)");
+            50204: //"Packing Recycled plastic (kg)": //decimal)
+                Rec.TestField("Packing Recycled plastic (kg)");
+            50205: //"Packing Recycled plastic %": //decimal)
+                Rec.TestField("Packing Recycled plastic %");
+            50206: //Steel: //Decimal)
+                Rec.TestField(Steel);
+            50207: //Carton: //Decimal)
+                Rec.TestField(Carton);
+            50208: //Wood: //Decimal)
+                Rec.TestField(Wood);
+            50210: //"Show detailed documents": //Boolean)
+                Rec.TestField("Show detailed documents");
+            50211: //"Packaging product": //Boolean)
+                Rec.TestField("Packaging product");
+            50212: //"Vendor Packaging product": //Boolean)
+                Rec.TestField("Vendor Packaging product KG");
+            50215: //"Vendor Packaging product KG": //Decimal)
+                Rec.TestField("Vendor Packaging product KG");
+            50216: //"Vendor Packaging Steel": //Decimal)
+                Rec.TestField("Vendor Packaging Steel");
+            50217: //"Vendor Packaging Carton": //Decimal)
+                Rec.TestField("Vendor Packaging Carton");
+            50218: //"Vendor Packaging Wood": //Decimal)
+                Rec.TestField("Vendor Packaging Wood");
+            59001: //Largo: //Decimal)
+                Rec.TestField(Largo);
+            59002: //Ancho: //Decimal)
+                Rec.TestField(Ancho);
+            59003: //Alto: //Decimal)
+                Rec.TestField(Alto);
+            50806: //Packaging: //Boolean)
+                Rec.TestField(Packaging);
+            50807: //Color: //Boolean)
+                Rec.TestField(Color);
+            50822: //Reason: //Blob)
+                Rec.TestField(Reason);
+            50828: //"Reason Blocked": //text[100])
+                Rec.TestField("Reason Blocked");
+            99000750: //"Routing No.": //Code[20])
+                Rec.TestField("Routing No.");
+            99000751: //"Production BOM No."; Code[20])
+                Rec.TestField("Production BOM No.");
+        end;
     end;
 }

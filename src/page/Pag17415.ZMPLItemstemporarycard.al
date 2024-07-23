@@ -600,13 +600,30 @@ page 17415 "ZM PL Items temporary card"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                Enabled = StateBlank;
 
                 trigger OnAction()
                 begin
 
                     Rec.LaunchRegisterItemTemporary();
                 end;
+            }
+            action(SolicitudDepartamento)
+            {
+                ApplicationArea = All;
+                Caption = 'Revisión Departamentos', Comment = 'ESP="Revisión Departamentos"';
+                Image = StaleCheck;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Enabled = StateRequested;
 
+
+                trigger OnAction()
+                begin
+
+                    Rec.LaunchRegisterItemTemporary();
+                end;
             }
             // action(CheckItem)
             // {
@@ -724,7 +741,7 @@ page 17415 "ZM PL Items temporary card"
             }
             Group("Lista de materiales")
             {
-                Image = Production;
+                Image = BOM;
                 // group(AssemblyML)
                 // {
                 // action(ShowLMAssembly)
@@ -743,6 +760,7 @@ page 17415 "ZM PL Items temporary card"
                 group(LMProducion)
                 {
                     Caption = 'Producción', comment = 'ESP="Producción"';
+                    Image = Production;
                     action(ShowLMProduction)
                     {
                         ApplicationArea = all;
@@ -781,6 +799,8 @@ page 17415 "ZM PL Items temporary card"
     }
     trigger OnAfterGetCurrRecord()
     begin
+        StateBlank := Rec."State Creation" = Rec."State Creation"::" ";
+        StateRequested := Rec."State Creation" = Rec."State Creation"::Requested;
         WorkDescription := GetWorkDescription;
         CheckActivesFields();
         RefreshUserActions();
@@ -794,6 +814,8 @@ page 17415 "ZM PL Items temporary card"
         ShowField: array[100] of Integer;
         IsUserApproval: Boolean;
         IsUserCreateItem: Boolean;
+        StateBlank: Boolean;
+        StateRequested: Boolean;
         boolEditNo: Boolean;
         boolEditDescription: Boolean;
         boolEditAssemblyBOM: Boolean;

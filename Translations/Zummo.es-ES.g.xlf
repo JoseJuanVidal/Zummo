@@ -9858,6 +9858,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Property Caption</note>
           <target>Conf. Aprobacioni Alta producto</target>
         </trans-unit>
+        <trans-unit id="Table 4201268802 - Field 417755123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aprobación Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobación Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Approval Requester - Property Caption</note>
+          <target>Aprobación Solicitante</target>
+        </trans-unit>
         <trans-unit id="Table 4201268802 - Field 1651921640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Department</source>
           <note from="Developer" annotates="general" priority="2">ESP="Departamento"</note>
@@ -19751,6 +19757,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action SolicitudAlta - Property Caption</note>
           <target>Solicitud Alta/Actualización</target>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 451650912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Revisión Departamentos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Revisión Departamentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action SolicitudDepartamento - Property Caption</note>
+          <target>Revisión Departamentos</target>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Action 1205567400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crear/Actualizar Producto</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crear/Actualizar Producto"</note>
@@ -19852,6 +19864,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Solicitar el alta/modificacion del producto %1 (%2)?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action SolicitudAlta - Method OnAction - NamedType lblConfirm</note>
           <target>¿Desea Solicitar el alta/modificacion del producto %1 (%2)?</target>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 451650912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Revisión Departamentos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Revisión Departamentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action SolicitudDepartamento - Property Caption</note>
+          <target>Revisión Departamentos</target>
         </trans-unit>
         <trans-unit id="Page 3858912784 - Action 4257336264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Excel</source>

@@ -35,6 +35,10 @@ page 17410 "ZM PL Item Setup approvals"
                 {
                     ApplicationArea = all;
                 }
+                field("Approval Requester"; "Approval Requester")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

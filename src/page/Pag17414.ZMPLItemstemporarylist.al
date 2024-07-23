@@ -142,6 +142,7 @@ page 17414 "ZM PL Items temporary list"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                Enabled = StateBlank;
 
                 trigger OnAction()
                 var
@@ -150,7 +151,22 @@ page 17414 "ZM PL Items temporary list"
                     if Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
                         Rec.LaunchRegisterItemTemporary();
                 end;
+            }
+            action(SolicitudDepartamento)
+            {
+                ApplicationArea = All;
+                Caption = 'Revisión Departamentos', Comment = 'ESP="Revisión Departamentos"';
+                Image = StaleCheck;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Enabled = StateRequested;
 
+                trigger OnAction()
+                begin
+
+                    Rec.LaunchRegisterItemTemporary();
+                end;
             }
             action(UploadExcel)
             {
@@ -197,24 +213,11 @@ page 17414 "ZM PL Items temporary list"
         {
             Group("Lista de materiales")
             {
-                // group(AssemblyML)
-                // {
-                // action(ShowLMAssembly)
-                // {
-                //     ApplicationArea = all;
-                //     Caption = 'L. M. Ensamblado', comment = 'ESP="L. M. Ensamblado"';
-                //     Image = BOM;
-                //     Promoted = true;
-                //     PromotedCategory = Category4;
-                //     trigger OnAction()
-                //     begin
-                //         Navigate_AssemblyML();
-                //     end;
-                // }
-                // }
+                Image = BOM;
                 group(LMProducion)
                 {
                     Caption = 'Producción', comment = 'ESP="Producción"';
+                    Image = Production;
                     action(ShowLMProduction)
                     {
                         ApplicationArea = all;
@@ -290,6 +293,12 @@ page 17414 "ZM PL Items temporary list"
         }
     }
 
+    trigger OnAfterGetCurrRecord()
+    begin
+        StateBlank := Rec."State Creation" = Rec."State Creation"::" ";
+        StateRequested := Rec."State Creation" = Rec."State Creation"::Requested;
+    end;
+
     trigger OnAfterGetRecord()
     begin
         CheckStatusUser();
@@ -299,6 +308,8 @@ page 17414 "ZM PL Items temporary list"
         StatusUser: Enum "Item Temporary User Status";
         StyleText: Text;
         ShowPosted: Boolean;
+        StateBlank: Boolean;
+        StateRequested: Boolean;
         lblConfirmUpdateITBID: Label '¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?', comment = 'ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"';
 
     procedure SetShowPosted(Active: Boolean)
