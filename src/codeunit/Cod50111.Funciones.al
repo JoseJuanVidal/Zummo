@@ -2,8 +2,9 @@ codeunit 50111 "Funciones"
 {
     Permissions = tabledata "Item Ledger Entry" = rmid, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
         tabledata "Sales Shipment Header" = rmid, tabledata "Sales Cr.Memo Header" = rmid, tabledata "Sales Header Archive" = rmid,
-        tabledata "Return Shipment Header" = rmid, tabledata "Purch. Rcpt. Header" = rmid, tabledata "Purch. Rcpt. Line" = rmid,
+        tabledata "Return Shipment Header" = rmid, tabledata "Purch. Rcpt. Header" = rmid, tabledata "Purch. Rcpt. Line" = rmid, tabledata "Bank Account Ledger Entry" = rmid,
         tabledata "Sales Cr.Memo Line" = rmid, tabledata "Sales Invoice Line" = rmid, tabledata "Job Ledger Entry" = rmid, tabledata "Service Password" = rmid;
+
     TableNo = "Sales Header";
 
 
@@ -3528,6 +3529,16 @@ codeunit 50111 "Funciones"
             3: //DCSetup."Disk File Directory Structure"::"Year\Month\Day":
                 EXIT(Path + STRSUBSTNO('%1\%2\%3\', DocYear, Month, Day));
         END;
+    end;
+
+
+    procedure CloseLedgerEntries(EntryNo: Integer)
+    var
+        BankAccLedgerEntry: Record "Bank Account Ledger Entry";
+    begin
+        BankAccLedgerEntry.Get(EntryNo);
+        BankAccLedgerEntry.Open := false;
+        BankAccLedgerEntry.Modify();
     end;
 }
 

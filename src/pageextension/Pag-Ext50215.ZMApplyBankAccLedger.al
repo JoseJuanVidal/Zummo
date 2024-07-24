@@ -28,11 +28,12 @@ pageextension 50215 "ZM Apply Bank Acc. Ledger" extends "Apply Bank Acc. Ledger 
 
     local procedure OnAction_CloseLedgerEntries()
     var
-        myInt: Integer;
+        Funciones: Codeunit Funciones;
     begin
         if not Confirm(lblConfirm, false, Rec."Entry No.", Rec."Document No.", Rec.Description) then
             exit;
-        Rec.Open := false;
-        Rec.Modify();
+        Funciones.CloseLedgerEntries(Rec."Entry No.");
+        CurrPage.Update();
+
     end;
 }
