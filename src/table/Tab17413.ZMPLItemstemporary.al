@@ -1095,34 +1095,32 @@ table 17413 "ZM PL Items temporary"
         PostedItemstemporarylist.Run;
     end;
 
-    procedure LaunchRegisterItemTemporary()
+    procedure LaunchRegisterItemTemporary(Requested: Boolean)
     var
         lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 "%2"?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2"?"';
-        lblRelease: Label 'La solicitud ya ha sido enviada.\', comment = 'ESP="La solicitud ya ha sido enviada.\"';
+        lblRelease: Label '¿Desea enviar la revisión de los departamentos para %1 %2?', comment = 'ESP="¿Desea enviar la revisión de los departamentos para %1 %2?"';
         lblError: Label 'El estado de la solicitud de %1 %2 es %3', comment = 'ESP="El estado de la solicitud de %1 %2 es %3"';
     begin
         Rec.TestField(Reason);
-        case Rec."State Creation" of
-            Rec."State Creation"::" ":
+        if rec."State Creation" in [Rec."State Creation"::Finished] then
+            Error(lblError, Rec."No.", Rec.Description);
+
+        case Requested of
+            false:
                 begin
                     CheckObligatoryFieldsUser(true);
                     if not Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
                         exit;
-
                     SendItemTemporaryFirstRegister();
                 end;
-            Rec."State Creation"::Requested, Rec."State Creation"::Released:
-                begin
-                    CheckObligatoryFieldsUser(false);
-                    if not Confirm(lblRelease + lblConfirm, false, Rec."No.", Rec.Description) then
-                        exit;
-                    if Rec."ITBID Create" then
-                        Rec.ITBIDUpdate();
-                    SendItemTemporaryRegister();
-                    Rec.UpdateStatusReleased();
-                end;
-            Rec."State Creation"::Finished:
-                Error(lblError, Rec."No.", Rec.Description);
+            else begin
+                if not Confirm(lblRelease, false, Rec."No.", Rec.Description) then
+                    exit;
+                if Rec."ITBID Create" then
+                    Rec.ITBIDUpdate();
+                SendItemTemporaryRegister();
+                Rec.UpdateStatusReleased();
+            end;
         end;
     end;
 
@@ -1412,7 +1410,7 @@ table 17413 "ZM PL Items temporary"
         end
     end;
 
-    procedure CheckUserReviewItem(): Boolean
+    procedure CheckUserReviewItem(Dpto: code[20]): Boolean
     var
         ItemApprovalDepartment: Record "ZM Item Approval Department";
         RefRecord: RecordRef;
@@ -1420,10 +1418,27 @@ table 17413 "ZM PL Items temporary"
         RefRecord.GetTable(Rec);
         ItemApprovalDepartment.Reset();
         ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
-        ItemApprovalDepartment.SetRange(Department, Department);
+        ItemApprovalDepartment.SetRange(Department, Dpto);
         if ItemApprovalDepartment.FindFirst() then
             if ItemApprovalDepartment."Request Date" <> 0D then
                 exit(true);
+    end;
+
+    procedure CheckUserOwneerItem(): Boolean
+    var
+        ItemApprovalDepartment: Record "ZM Item Approval Department";
+        RefRecord: RecordRef;
+    begin
+        RefRecord.GetTable(Rec);
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetRange("Field No.", 0);
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                if ItemSetupDepartment.get(ItemSetupApproval.Department) then
+                    if ItemSetupDepartment."User Id" = UserId then
+                        exit(true);
+            until ItemSetupApproval.Next() = 0;
     end;
 
     procedure UpdateDepartmentsApprovals() Pending: Boolean

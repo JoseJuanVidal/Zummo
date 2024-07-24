@@ -605,7 +605,7 @@ page 17415 "ZM PL Items temporary card"
                 trigger OnAction()
                 begin
 
-                    Rec.LaunchRegisterItemTemporary();
+                    Rec.LaunchRegisterItemTemporary(false);
                 end;
             }
             action(SolicitudDepartamento)
@@ -622,7 +622,7 @@ page 17415 "ZM PL Items temporary card"
                 trigger OnAction()
                 begin
 
-                    Rec.LaunchRegisterItemTemporary();
+                    Rec.LaunchRegisterItemTemporary(true);
                 end;
             }
             // action(CheckItem)

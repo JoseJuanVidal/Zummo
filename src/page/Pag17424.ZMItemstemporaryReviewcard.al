@@ -353,50 +353,35 @@ page 17424 "ZM Items temporary Review card"
     {
         area(Processing)
         {
-            action(Release)
-            {
-                ApplicationArea = All;
-                Caption = 'Release', comment = 'ESP="Lanzar"';
-                Image = ReleaseDoc;
-                Promoted = true;
-                PromotedCategory = Process;
+            // action(Release)
+            // {
+            //     ApplicationArea = All;
+            //     Caption = 'Release', comment = 'ESP="Lanzar"';
+            //     Image = ReleaseDoc;
+            //     Promoted = true;
+            //     PromotedCategory = Process;
 
-                trigger OnAction()
-                begin
-                    OnAction_Release();
-                end;
-            }
-            action(Open)
-            {
-                ApplicationArea = All;
-                Caption = 'Open', comment = 'ESP="Abrir"';
-                Image = ReOpen;
-                Promoted = true;
-                PromotedCategory = Process;
+            //     trigger OnAction()
+            //     begin
+            //         OnAction_Release();
+            //     end;
+            // }
 
-                trigger OnAction()
-                begin
-                    OnAction_Open();
-                end;
-            }
-            action(SolicitudAlta)
-            {
-                ApplicationArea = All;
-                Caption = 'Solicitud Alta', Comment = 'ESP="Solicitud Alta/Actualización"';
-                Image = Purchasing;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+            // action(Open)
+            // {
+            //     ApplicationArea = All;
+            //     Caption = 'Open', comment = 'ESP="Abrir"';
+            //     Image = ReOpen;
+            //     Promoted = true;
+            //     PromotedCategory = Process;
 
-                trigger OnAction()
-                var
-                    lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 (%2)?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 (%2)?"';
-                begin
-                    if Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
-                        Rec.LaunchRegisterItemTemporary();
-                end;
+            //     trigger OnAction()
+            //     begin
+            //         Error('no realizado');
+            //         OnAction_Open();
+            //     end;
+            // }
 
-            }
             // action(UpdateITBID)
             // {
             //     ApplicationArea = All;

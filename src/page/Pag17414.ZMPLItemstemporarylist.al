@@ -149,7 +149,7 @@ page 17414 "ZM PL Items temporary list"
                     lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 (%2)?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 (%2)?"';
                 begin
                     if Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
-                        Rec.LaunchRegisterItemTemporary();
+                        Rec.LaunchRegisterItemTemporary(false);
                 end;
             }
             action(SolicitudDepartamento)
@@ -165,7 +165,7 @@ page 17414 "ZM PL Items temporary list"
                 trigger OnAction()
                 begin
 
-                    Rec.LaunchRegisterItemTemporary();
+                    Rec.LaunchRegisterItemTemporary(true);
                 end;
             }
             action(UploadExcel)
@@ -329,9 +329,10 @@ page 17414 "ZM PL Items temporary list"
 
     local procedure CheckStatusUser()
     var
-        Department: code[20];
+        Dpto: code[20];
     begin
         StyleText := '';
+        StatusUser := StatusUser::" ";
         case Rec."State Creation" of
             Rec."State Creation"::" ":
                 exit;
@@ -340,18 +341,27 @@ page 17414 "ZM PL Items temporary list"
                     StyleText := 'Favorable';
                     exit;
                 end;
-        end;
-        case Rec.CheckItemsTemporary(Department) of
-            true:
+            Rec."State Creation"::Requested:
                 begin
-                    // Comprobar que si tiene todo aceptado, se ponga en Favorable (Verde)                    
-                    if Rec.CheckUserReviewItem then
-                        StatusUser := StatusUser::Pending
-                    else
-                        StatusUser := StatusUser::Comprobado;
+                    // comprobad si soy propietario
+                    if CheckUserOwneerItem then
+                        StyleText := 'StandardAccent';
+
+                    exit;
                 end;
-            else
-                StatusUser := StatusUser::" ";
+            Rec."State Creation"::Released:
+                case Rec.CheckItemsTemporary(Dpto) of
+                    true:
+                        begin
+                            // Comprobar que si tiene todo aceptado, se ponga en Favorable (Verde)                    
+                            if Rec.CheckUserReviewItem(Dpto) then
+                                StatusUser := StatusUser::Pending
+                            else
+                                StatusUser := StatusUser::Comprobado;
+                        end;
+                    else
+                        StatusUser := StatusUser::" ";
+                end;
         end;
         case StatusUser of
             StatusUser::Pending:

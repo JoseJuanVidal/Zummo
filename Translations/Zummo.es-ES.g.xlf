@@ -9984,10 +9984,10 @@
           <target>¿Desea Solicitar el alta/modificacion del producto %1 "%2"?</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Method 2651007294 - NamedType 3720102109" size-unit="char" translate="yes" xml:space="preserve">
-          <source>La solicitud ya ha sido enviada.\</source>
-          <note from="Developer" annotates="general" priority="2">ESP="La solicitud ya ha sido enviada.\"</note>
+          <source>¿Desea enviar la revisión de los departamentos para %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la revisión de los departamentos para %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method LaunchRegisterItemTemporary - NamedType lblRelease</note>
-          <target>La solicitud ya ha sido enviada.\</target>
+          <target>¿Desea enviar la revisión de los departamentos para %1 %2?</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Method 2651007294 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>El estado de la solicitud de %1 %2 es %3</source>
@@ -19272,30 +19272,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action Translations - Property Caption</note>
           <target>Traducciones</target>
-        </trans-unit>
-        <trans-unit id="Page 2975127552 - Action 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Open</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Abrir"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action Open - Property Caption</note>
-          <target>Abrir</target>
-        </trans-unit>
-        <trans-unit id="Page 2975127552 - Action 4032263875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Release</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Lanzar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action Release - Property Caption</note>
-          <target>Lanzar</target>
-        </trans-unit>
-        <trans-unit id="Page 2975127552 - Action 3096908298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Solicitud Alta</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Solicitud Alta/Actualización"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action SolicitudAlta - Property Caption</note>
-          <target>Solicitud Alta/Actualización</target>
-        </trans-unit>
-        <trans-unit id="Page 2975127552 - Action 3096908298 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Desea Solicitar el alta/modificacion del producto %1 (%2)?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Solicitar el alta/modificacion del producto %1 (%2)?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Action SolicitudAlta - Method OnAction - NamedType lblConfirm</note>
-          <target>¿Desea Solicitar el alta/modificacion del producto %1 (%2)?</target>
         </trans-unit>
         <trans-unit id="Page 4102618630 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Navigate,Setup</source>
@@ -37492,6 +37468,12 @@
           <source>Solicitado a Técnico</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field Solicitado a Técnico - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2479720606 - Field 974227354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
+          <source>Tick Mark of survey</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Encuesta Realizada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field TickMarksurvey_zm - Property Caption</note>
+          <target>Encuesta Realizada</target>
         </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 597349203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Type order service level 2</source>

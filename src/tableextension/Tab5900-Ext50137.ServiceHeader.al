@@ -62,8 +62,13 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
             DataClassification = CustomerContent;
             Caption = 'Code Previous', comment = 'ESP="Cód. Anterior"';
         }
+        field(50105; TickMarksurvey_zm; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Tick Mark of survey', comment = 'ESP="Encuesta Realizada"';
 
-        field(50107; NumSerie_btc; Code[20])
+        }
+        field(50107; NumSerie_btc; Code[50])
         {
             Editable = false;
             Caption = 'Serial No.', comment = 'ESP="Nº Serie"';
