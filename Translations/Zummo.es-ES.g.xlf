@@ -11939,7 +11939,7 @@
           <target>¿Desea exportar la valoración de existencia a %1 en Excel?</target>
         </trans-unit>
         <trans-unit id="Codeunit 590486959 - NamedType 213825359" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fallo en intregración de compras</source>
+          <source>Fallo en intregración de compras ITBID</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit STH Task Scheduler Failure - NamedType error_Lbl</note>
         </trans-unit>

@@ -6,7 +6,7 @@ codeunit 60002 "STH Task Scheduler Failure"
         txtAsunto: Text;
         recSMTPSetup: Record "SMTP Mail Setup";
         itbidSetup: Record "Sales & Receivables Setup";
-        error_Lbl: Label 'Fallo en intregración de compras';
+        error_Lbl: Label 'Fallo en intregración de compras ITBID';
 
     trigger OnRun()
     begin

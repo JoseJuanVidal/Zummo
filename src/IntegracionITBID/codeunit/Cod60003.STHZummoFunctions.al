@@ -186,7 +186,7 @@ codeunit 60003 "STH Zummo Functions"
         txtCuerpo += HttpStatusCode + ' ' + ReasonPhrase + '<br>' + ErrorDescription + '<br>' + ResponeText;
         txtCuerpo += '<br><br>Para cualquier consulta contacte con el Departamento de Administración.';
         txtCuerpo += '<br><br>Sin otro particular, reciba un cordial saludo. <br><br>';
-        txtAsunto := 'Fallo en intregración de compras';
+        txtAsunto := 'Fallo en intregración de compras ITBID';
 
         clear(cduSmtp);
         cduSmtp.CreateMessage(recCompanyInfo.Name, recSMTPSetup."User ID", itbidSetup.STHemail, txtAsunto, txtCuerpo, true);
