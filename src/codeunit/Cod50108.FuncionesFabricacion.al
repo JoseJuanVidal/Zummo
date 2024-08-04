@@ -1703,4 +1703,287 @@ codeunit 50108 "FuncionesFabricacion"
         end;
         EXIT(BarCode);
     end;
+
+    // =============     Exportar Excel de analisi de variacion existencia salida de fabricacion          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+
+    procedure ExportExcelItemLedgerCost(ItemLedgerEntry: record "Item Ledger Entry")
+    var
+        Item: Record item;
+        ValueEntry: Record "Value Entry";
+        ConsumoItemLdgEntry: Record "Item Ledger Entry";
+        ExcelBuffer: Record "Excel Buffer" temporary;
+    begin
+        ItemLedgerEntry.TestField("Entry Type", ItemLedgerEntry."Entry Type"::Output);
+        Excel_HeaderCost(ExcelBuffer);
+        IF Item.GET(ItemLedgerEntry."Item No.") THEN
+            IF Item.Type IN [Item.Type::Inventory] THEN BEGIN
+                ItemLedgerEntry.CALCFIELDS("Cost Amount (Expected)", "Cost Amount (Actual)");
+                ValueEntry.SETRANGE("Item Ledger Entry No.", ItemLedgerEntry."Entry No.");
+                IF ValueEntry.FINDFIRST THEN
+                    REPEAT
+                        ExportInsertExcelRow(ExcelBuffer, ItemLedgerEntry."Document No.", ItemLedgerEntry, ValueEntry, ItemLedgerEntry.Quantity, 'Fabricacion');
+                    UNTIL ValueEntry.NEXT = 0;
+                // recorremos los movimientos de valor de movs capacidad M Obra
+                ValueEntry.RESET;
+                ValueEntry.SETRANGE("Item Ledger Entry Type", ValueEntry."Item Ledger Entry Type"::" ");
+                ValueEntry.SETRANGE("Document No.", ItemLedgerEntry."Order No.");
+                ValueEntry.SETRANGE("Document Line No.", ItemLedgerEntry."Order Line No.");
+                IF ValueEntry.FINDFIRST THEN
+                    REPEAT
+                        ExportInsertExcelRow(ExcelBuffer, ItemLedgerEntry."Document No.", ItemLedgerEntry, ValueEntry, ValueEntry."Valued Quantity", 'MO');
+                    UNTIL ValueEntry.NEXT = 0;
+
+                // recorremos los consumos de esta orden de produccion
+                ConsumoItemLdgEntry.RESET;
+                //ConsumoItemLdgEntry.SETRANGE("Document Type", ItemLedgerEntry."Document Type");
+                ConsumoItemLdgEntry.SETRANGE("Order No.", ItemLedgerEntry."Order No.");
+                ConsumoItemLdgEntry.SETRANGE("Order Line No.", ItemLedgerEntry."Order Line No.");
+                ConsumoItemLdgEntry.SETRANGE("Entry Type", ConsumoItemLdgEntry."Entry Type"::Consumption);
+                IF ConsumoItemLdgEntry.FINDFIRST THEN
+                    REPEAT
+                        IF Item.GET(ConsumoItemLdgEntry."Item No.") THEN
+                            IF Item.Type IN [Item.Type::Inventory] THEN BEGIN
+                                ValueEntry.RESET;
+                                ValueEntry.SETRANGE("Item Ledger Entry No.", ConsumoItemLdgEntry."Entry No.");
+                                IF ValueEntry.FINDFIRST THEN
+                                    REPEAT
+                                        ExportInsertExcelRow(ExcelBuffer, ItemLedgerEntry."Document No.", ConsumoItemLdgEntry, ValueEntry, ConsumoItemLdgEntry.Quantity, 'Fabricacion');
+                                        LiquidacionesItemLedger(ExcelBuffer, ItemLedgerEntry."Document No.", ConsumoItemLdgEntry, ConsumoItemLdgEntry.Quantity);
+                                    UNTIL ValueEntry.NEXT = 0;
+                            END;
+                    UNTIL ConsumoItemLdgEntry.NEXT = 0;
+            END;
+        LiqVentasItemLedger(ExcelBuffer, ItemLedgerEntry."Document No.", ItemLedgerEntry, ItemLedgerEntry.Quantity);
+
+        ExcelBuffer.WriteSheet('Valoracion', COMPANYNAME, USERID);
+        ExcelBuffer.CloseBook();
+        ExcelBuffer.SetFriendlyFilename('Valoracion');
+        ExcelBuffer.OpenExcel();
+    end;
+
+    local procedure Excel_HeaderCost(VAR ExcelBuffer: Record "Excel Buffer")
+    var
+        ItemLedgerEntry: record "Item Ledger Entry";
+        ValueEntry: Record "Value Entry";
+        GLEntry: Record "G/L Entry";
+    begin
+        ExcelBuffer.DELETEALL;
+        ExcelBuffer.CreateNewBook('Service Item');
+        ExcelBuffer.AddColumn('Tipo', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('P&L', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Nº Orden', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Nº Documento', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Nº lin Documento', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemLedgerEntry.FIELDCAPTION("Entry Type"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Nº Mov. producto', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Fecha mov. producto', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Codigo', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Producto', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Cantidad', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Cantidad pendiente', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Coste Esperado', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Coste Real', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Coste Unitario', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Entry No Value', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ValueEntry.FIELDCAPTION("Posting Date"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ValueEntry.FIELDCAPTION("Valued Quantity"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ValueEntry.FIELDCAPTION("Cost Amount (Expected)"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ValueEntry.FIELDCAPTION("Cost Amount (Actual)"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ValueEntry.FIELDCAPTION("Cost per Unit"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Entry No G/L Entry', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(GLEntry.FIELDCAPTION("Posting Date"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(GLEntry.FIELDCAPTION("G/L Account No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(GLEntry.FIELDCAPTION(Description), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(GLEntry.FIELDCAPTION(Amount), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+
+        ExcelBuffer.NewRow;
+    end;
+
+    local procedure LiqVentasItemLedger(var ExcelBuffer: Record "Excel Buffer"; DocumentNo: text; LiqLdgEntry: Record "Item Ledger Entry"; Quantity: Decimal)
+    var
+        ItemLdgEntry: Record "Item Ledger Entry";
+        ValueEntry: Record "Value Entry";
+        ItemApplicationEntry: Record "Item Application Entry";
+        ItemApply: Record "Item Application Entry";
+    begin
+        ItemApplicationEntry.RESET;
+        ItemApplicationEntry.SETRANGE("Inbound Item Entry No.", LiqLdgEntry."Entry No.");
+        ItemApplicationEntry.SETFILTER("Outbound Item Entry No.", '<>0');
+        ItemApplicationEntry.SETFILTER(Quantity, '<0');
+        IF ItemApplicationEntry.FINDFIRST THEN
+            REPEAT
+                ItemLdgEntry.GET(ItemApplicationEntry."Outbound Item Entry No.");
+                CASE ItemLdgEntry."Entry Type" OF
+                    ItemLdgEntry."Entry Type"::Transfer:
+                        BEGIN
+                            ItemApply.RESET;
+                            ItemApply.SETRANGE("Outbound Item Entry No.", ItemApplicationEntry."Outbound Item Entry No.");
+                            ItemApply.SETFILTER(Quantity, '>0');
+                            IF ItemApply.FINDFIRST THEN
+                                REPEAT
+                                    ItemLdgEntry.GET(ItemApply."Inbound Item Entry No.");
+                                    LiqVentasItemLedger(ExcelBuffer, DocumentNo, ItemLdgEntry, Quantity);
+                                UNTIL ItemApply.NEXT = 0;
+                        END ELSE BEGIN
+                        ValueEntry.SETRANGE("Item Ledger Entry No.", ItemLdgEntry."Entry No.");
+                        IF ValueEntry.FINDFIRST THEN
+                            REPEAT
+                                ExportInsertExcelRow(ExcelBuffer, DocumentNo, ItemLdgEntry, ValueEntry, Quantity, 'Ventas');
+                            UNTIL ValueEntry.NEXT = 0;
+                    END;
+                END;
+                // creamos el apunte 700
+                ItemLdgEntry.CALCFIELDS("Sales Amount (Actual)");
+                IF ItemLdgEntry."Entry Type" IN [ItemLdgEntry."Entry Type"::Sale, ItemLdgEntry."Entry Type"::"Assembly Consumption", ItemLdgEntry."Entry Type"::"Negative Adjmt."] THEN
+                    ExportAccounttExcelRow(ExcelBuffer, DocumentNo, ItemLdgEntry, Quantity, 'Ventas', '700', -ItemLdgEntry."Sales Amount (Actual)");
+            UNTIL ItemApplicationEntry.NEXT = 0;
+    end;
+
+    local procedure LiquidacionesItemLedger(var ExcelBuffer: Record "Excel Buffer"; DocumentNo: text; LiqLdgEntry: Record "Item Ledger Entry"; Quantity: Decimal)
+    var
+        ItemLdgEntry: Record "Item Ledger Entry";
+        ValueEntry: Record "Value Entry";
+        ItemApplicationEntry: Record "Item Application Entry";
+        ItemApply: Record "Item Application Entry";
+        Amount: Decimal;
+    begin
+        // averiguamos el apunte de compra y fecha en que se hizo
+        ItemApplicationEntry.RESET;
+        ItemApplicationEntry.SETRANGE("Item Ledger Entry No.", LiqLdgEntry."Entry No.");
+        IF ItemApplicationEntry.FINDFIRST THEN
+            REPEAT
+                IF LiqLdgEntry.Quantity > 0 THEN
+                    ItemLdgEntry.GET(ItemApplicationEntry."Outbound Item Entry No.")
+                ELSE
+                    ItemLdgEntry.GET(ItemApplicationEntry."Inbound Item Entry No.");
+                CASE ItemLdgEntry."Entry Type" OF
+                    ItemLdgEntry."Entry Type"::Transfer:
+                        BEGIN
+                            LiquidacionesItemLedger(ExcelBuffer, DocumentNo, ItemLdgEntry, Quantity);
+                        END ELSE BEGIN
+                        ValueEntry.SETRANGE("Item Ledger Entry No.", ItemLdgEntry."Entry No.");
+                        IF ValueEntry.FINDFIRST THEN
+                            REPEAT
+                                ExportInsertExcelRow(ExcelBuffer, DocumentNo, ItemLdgEntry, ValueEntry, Quantity, 'Consumo');
+
+                            UNTIL ValueEntry.NEXT = 0;
+                        ItemLdgEntry.CALCFIELDS("Cost Amount (Actual)", "Cost Amount (Expected)");
+                        Amount := ItemLdgEntry."Cost Amount (Actual)" + ItemLdgEntry."Cost Amount (Expected)";
+                        Amount := Amount / ABS(ValueEntry."Valued Quantity") * ABS(Quantity);
+                        ExportAccounttExcelRow(ExcelBuffer, DocumentNo, ItemLdgEntry, Quantity, 'Compras', '600', Amount);
+                    END;
+                END;
+            UNTIL ItemApplicationEntry.NEXT = 0;
+    end;
+
+    LOCAL procedure ExportInsertExcelRow(var ExcelBuffer: Record "Excel Buffer"; DocumentNo: text; ItemLdgEntry: Record "Item Ledger Entry"; ValueEntry: Record "Value Entry"; Quantity: Decimal; Tipo: Text)
+    var
+        ItemCost: Record Item;
+        GLEntry: Record "G/L Entry";
+        GLItemLedgerRelation: Record "G/L - Item Ledger Relation";
+        Amount: Decimal;
+        i: Integer;
+    begin
+        GLItemLedgerRelation.SETRANGE("Value Entry No.", ValueEntry."Entry No.");
+        i := 1;
+        IF GLItemLedgerRelation.FINDFIRST THEN
+            REPEAT
+                ItemCost.GET(ItemLdgEntry."Item No.");
+                GLEntry.GET(GLItemLedgerRelation."G/L Entry No.");
+                ExcelBuffer.AddColumn(Tipo, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                IF COPYSTR(GLEntry."G/L Account No.", 1, 1) = '3' THEN
+                    ExcelBuffer.AddColumn('inventario', FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number)
+                ELSE
+                    ExcelBuffer.AddColumn('P&L', FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(DocumentNo, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ItemLdgEntry."Document No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ItemLdgEntry."Document Line No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ItemLdgEntry."Entry Type", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ItemLdgEntry."Entry No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ItemLdgEntry."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
+                ExcelBuffer.AddColumn(ItemLdgEntry."Item No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(ItemLdgEntry.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(ItemLdgEntry.Quantity, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ItemLdgEntry."Remaining Quantity", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ItemLdgEntry."Cost Amount (Expected)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ItemLdgEntry."Cost Amount (Actual)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ItemCost."Unit Cost", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ValueEntry."Entry No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ValueEntry."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ValueEntry."Valued Quantity", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ValueEntry."Cost Amount (Expected)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ValueEntry."Cost Amount (Actual)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(ValueEntry."Cost per Unit", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                //ExcelBuffer.AddColumn(GLEntry."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                //ExcelBuffer.AddColumn(GLEntry."Document No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(GLEntry."Entry No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(GLEntry."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
+                ExcelBuffer.AddColumn(GLEntry."G/L Account No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(GLEntry.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                IF (ValueEntry."Cost Amount (Expected)" <> 0) AND (ValueEntry."Cost Amount (Actual)" <> 0) THEN BEGIN
+                    IF i < 3 THEN
+                        Amount := ABS(ValueEntry."Cost Amount (Expected)")
+                    ELSE
+                        Amount := ABS(ValueEntry."Cost Posted to G/L");
+                END ELSE BEGIN
+                    IF ValueEntry."Cost Amount (Expected)" > 0 THEN
+                        Amount := ABS(ValueEntry."Cost Amount (Expected)")
+                    ELSE
+                        Amount := ABS(ValueEntry."Cost Posted to G/L");
+                END;
+                i += 1;
+                IF GLEntry.Amount < 0 THEN
+                    Amount := -Amount;
+                Amount := Amount / ABS(ValueEntry."Valued Quantity") * ABS(Quantity);
+                ExcelBuffer.AddColumn(Amount, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+
+                //ExcelBuffer.AddColumn(GLEntry.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                //ExcelBuffer.AddColumn(GLEntry.Amount, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);                
+                ExcelBuffer.NewRow;
+            UNTIL GLItemLedgerRelation.NEXT = 0;
+    end;
+
+    LOCAL procedure ExportAccounttExcelRow(var ExcelBuffer: Record "Excel Buffer"; DocumentNo: text; ItemLdgEntry: Record "Item Ledger Entry"; Quantity: Decimal; Tipo: Text; Account: Code[20]; Amount: Decimal)
+    var
+        ItemCost: Record Item;
+        ValueEntry: Record "Value Entry";
+    begin
+        ItemCost.GET(ItemLdgEntry."Item No.");
+        ExcelBuffer.AddColumn(Tipo, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn('P&L', FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(DocumentNo, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemLdgEntry."Document No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemLdgEntry."Document Line No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemLdgEntry."Entry Type", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemLdgEntry."Entry No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemLdgEntry."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
+        ExcelBuffer.AddColumn(ItemLdgEntry."Item No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemLdgEntry.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(ItemLdgEntry.Quantity, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemLdgEntry."Remaining Quantity", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemLdgEntry."Cost Amount (Expected)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemLdgEntry."Cost Amount (Actual)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ItemCost."Unit Cost", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ValueEntry."Entry No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ValueEntry."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ValueEntry."Valued Quantity", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ValueEntry."Cost Amount (Expected)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ValueEntry."Cost Amount (Actual)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ValueEntry."Cost per Unit", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        //ExcelBuffer.AddColumn(GLEntry."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        //ExcelBuffer.AddColumn(GLEntry."Document No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn('', FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(ValueEntry."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
+        ExcelBuffer.AddColumn(Account, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(Tipo, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Amount, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+
+        //ExcelBuffer.AddColumn(GLEntry.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+        //ExcelBuffer.AddColumn(GLEntry.Amount, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);                
+        ExcelBuffer.NewRow;
+    end;
 }

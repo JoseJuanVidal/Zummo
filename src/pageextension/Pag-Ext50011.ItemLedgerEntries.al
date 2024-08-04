@@ -170,13 +170,26 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                 ApplicationArea = all;
                 Caption = 'Asignar Nº Serie consumo', comment = 'ESP="Asignar Nº Serie consumo"';
                 Image = CalculateConsumption;
-                ;
 
                 trigger OnAction()
                 begin
                     OnAssingParentSerialNo();
                 end;
 
+            }
+            action(ExportExcelCost)
+            {
+                ApplicationArea = all;
+                Caption = 'Exportar Var. Existencias', comment = 'ESP="Exportar Var. Existencias"';
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                    FunFabricacion: Codeunit FuncionesFabricacion;
+                begin
+                    if Confirm('¿Desea Exportar la excel de costes de fabricación?') then
+                        FunFabricacion.ExportExcelItemLedgerCost(Rec);
+                end;
             }
         }
         addfirst(Reporting)

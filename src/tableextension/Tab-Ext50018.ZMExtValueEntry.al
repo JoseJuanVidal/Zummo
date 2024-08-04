@@ -11,5 +11,9 @@ tableextension 50018 "ZM Ext Value Entry" extends "Value Entry"
             FieldClass = FlowField;
             CalcFormula = lookup("Production Order".Status where("No." = field("Document No.")));
         }
+        field(50010; "Updated Cost Entry"; Boolean)
+        {
+            Caption = 'Updated Cost Entry', comment = 'ESP="Actualizado Mov. Coste"';
+        }
     }
 }

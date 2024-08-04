@@ -11348,6 +11348,425 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Tipo contrato Mantenimiento - Field Name - Property Caption</note>
           <target>Nombre</target>
         </trans-unit>
+        <trans-unit id="Table 2187988607 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value entry - G/L Entry Analysis</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Análisis Mov. Valor - Mov. Contable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Property Caption</note>
+          <target>Análisis Mov. Valor - Mov. Contable</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Method 3021489501 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Movimiento Valor:#1#################\Fecha:#2############</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movimiento Valor:#1#################\Fecha:#2############"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Method UpdateEntries - NamedType lblDialog</note>
+          <target>Movimiento Valor:#1#################\Fecha:#2############</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Amount - Property Caption</note>
+          <target>Importe</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 992172044 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applies-to Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Liq. por nº orden"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Applies-to Entry - Property Caption</note>
+          <target>Liq. por nº orden</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 283636318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Capacity Ledger Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº mov. capacidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Capacity Ledger Entry No. - Property Caption</note>
+          <target>Nº mov. capacidad</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 3409618379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasification Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación Mov."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Clasification Entry - Property Caption</note>
+          <target>Clasificación Mov.</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 3409618379 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase,Sales,Production</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Compras,Ventas,Fabricación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Clasification Entry - Property OptionCaption</note>
+          <target>Compras,Ventas,Fabricación</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 555940972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Actual)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (Real)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Cost Amount (Actual) - Property Caption</note>
+          <target>Importe coste (Real)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 4259561686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Actual) (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (Real) (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Cost Amount (Actual) (ACY) - Property Caption</note>
+          <target>Importe coste (Real) (DA)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1418046212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Expected)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (Esperado)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Cost Amount (Expected) - Property Caption</note>
+          <target>Importe coste (Esperado)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 3845775102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Expected) (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (Esperado) (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Cost Amount (Expected) (ACY) - Property Caption</note>
+          <target>Importe coste (Esperado) (DA)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2077155955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Non-Invtbl.)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (No-invent.)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Cost Amount (Non-Invtbl.) - Property Caption</note>
+          <target>Importe coste (No-invent.)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 4142380189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Non-Invtbl.)(ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (no-invent.)(DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Cost Amount (Non-Invtbl.)(ACY) - Property Caption</note>
+          <target>Importe coste (no-invent.)(DA)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2476180142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost per Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste por ud."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Cost per Unit - Property Caption</note>
+          <target>Coste por ud.</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 893370260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost per Unit (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste por unidad (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Cost per Unit (ACY) - Property Caption</note>
+          <target>Coste por unidad (DA)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2891103215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Posted to G/L</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste regis. en contab."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Cost Posted to G/L - Property Caption</note>
+          <target>Coste regis. en contab.</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 337636441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Posted to G/L (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste regis. en contab. (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Cost Posted to G/L (ACY) - Property Caption</note>
+          <target>Coste regis. en contab. (DA)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2556136339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Haber"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Credit Amount - Property Caption</note>
+          <target>Importe Haber</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2796346326 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Debit Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Debe"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Debit Amount - Property Caption</note>
+          <target>Importe Debe</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1267560475 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Discount Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe dto."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Discount Amount - Property Caption</note>
+          <target>Importe dto.</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha emisión documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Document Date - Property Caption</note>
+          <target>Fecha emisión documento</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2480638018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº lín. documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Document Line No. - Property Caption</note>
+          <target>Nº lín. documento</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Document No. - Property Caption</note>
+          <target>Nº documento</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Document Type - Property Caption</note>
+          <target>Tipo documento</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2363328873 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Sales Shipment,Sales Invoice,Sales Return Receipt,Sales Credit Memo,Purchase Receipt,Purchase Invoice,Purchase Return Shipment,Purchase Credit Memo,Transfer Shipment,Transfer Receipt,Service Shipment,Service Invoice,Service Credit Memo,Posted Assembly</source>
+          <note from="Developer" annotates="general" priority="2">ESP=  ,Albarán venta,Factura venta,Recep. devol. ventas,Abono venta,Albarán compra,Factura compra,Envío devolución compra,Abono compra,Envío transfer.,Recep. transfer.,Servicio regis.,Factura ventas,Abono ventas,Ensamblado registrado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Document Type - Property OptionCaption</note>
+          <target>  ,Albarán venta,Factura venta,Recep. devol. ventas,Abono venta,Albarán compra,Factura compra,Envío devolución compra,Abono compra,Envío transfer.,Recep. transfer.,Servicio regis.,Factura ventas,Abono ventas,Ensamblado registrado"</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 121744499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Drop Shipment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Envío directo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Drop Shipment - Property Caption</note>
+          <target>Envío directo</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 149522872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo movimiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Entry Type - Property Caption</note>
+          <target>Tipo movimiento</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 149522872 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direct Cost,Revaluation,Rounding,Indirect Cost,Variance</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste directo,Revalorización,Redondeo,Coste indirecto,Desviación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Entry Type - Property OptionCaption</note>
+          <target>Coste directo,Revalorización,Redondeo,Coste indirecto,Desviación</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1417535736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exp. Cost Posted to G/L (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste esperado reg. cont. (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Exp. Cost Posted to G/L (ACY) - Property Caption</note>
+          <target>Coste esperado reg. cont. (DA)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 3276221047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expected Cost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste previsto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Expected Cost - Property Caption</note>
+          <target>Coste previsto</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1469869997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expected Cost Posted to G/L</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste esperado reg. en cont."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Expected Cost Posted to G/L - Property Caption</note>
+          <target>Coste esperado reg. en cont.</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1527563463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº documento externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field External Document No. - Property Caption</note>
+          <target>Nº documento externo</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 3852983238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº cuenta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field G/L Account No. - Property Caption</note>
+          <target>Nº cuenta</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1411740825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Mov. contabilidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field G/L Entry No. - Property Caption</note>
+          <target>Nº Mov. contabilidad</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 539540188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro contable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field G/L Posting Date - Property Caption</note>
+          <target>Fecha Registro contable</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen. Bus. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro neg. gen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Gen. Bus. Posting Group - Property Caption</note>
+          <target>Grupo registro neg. gen.</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2139693550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen. Prod. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro prod. gen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Gen. Prod. Posting Group - Property Caption</note>
+          <target>Grupo registro prod. gen.</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 3781582636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventoriable</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventariable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Inventoriable - Property Caption</note>
+          <target>Inventariable</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2037375551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Inventory Posting Group - Property Caption</note>
+          <target>Grupo registro inventario</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 629385458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoiced Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad facturada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Invoiced Quantity - Property Caption</note>
+          <target>Cantidad facturada</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2330706724 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Charge No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº cargo prod."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Item Charge No. - Property Caption</note>
+          <target>Nº cargo prod.</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2684044605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº mov. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Item Ledger Entry No. - Property Caption</note>
+          <target>Nº mov. producto</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1292185049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entry Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad mov. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Item Ledger Entry Quantity - Property Caption</note>
+          <target>Cantidad mov. producto</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1861167488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entry Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo mov. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Item Ledger Entry Type - Property Caption</note>
+          <target>Tipo mov. producto</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1861167488 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase,Sale,Positive Adjmt.,Negative Adjmt.,Transfer,Consumption,Output, ,Assembly Consumption,Assembly Output</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Item Ledger Entry Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Item No. - Property Caption</note>
+          <target>Nº producto</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2704330142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre sección diario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Journal Batch Name - Property Caption</note>
+          <target>Nombre sección diario</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2161572060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Location Code - Property Caption</note>
+          <target>Cód. almacén</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field No. - Property Caption</note>
+          <target>Nº</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 176518433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº línea pedido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Order Line No. - Property Caption</note>
+          <target>Nº línea pedido</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2202932243 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº pedido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Order No. - Property Caption</note>
+          <target>Nº pedido</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1340654506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo orden"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Order Type - Property Caption</note>
+          <target>Tipo orden</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1340654506 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Production,Transfer,Service,Assembly</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Producción,Transferencia,Servicio,Ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Order Type - Property OptionCaption</note>
+          <target> ,Producción,Transferencia,Servicio,Ensamblado</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 154089249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Partial Revaluation</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Revalorización parcial"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Partial Revaluation - Property Caption</note>
+          <target>Revalorización parcial</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Posting Date - Property Caption</note>
+          <target>Fecha registro</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2761848292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Amount (Actual)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe compra (actual)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Purchase Amount (Actual) - Property Caption</note>
+          <target>Importe compra (actual)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 33989820 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Amount (Expected)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe compra (esperado)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Purchase Amount (Expected) - Property Caption</note>
+          <target>Importe compra (esperado)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1908046867 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reason Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. auditoría"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Reason Code - Property Caption</note>
+          <target>Cód. auditoría</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2980152637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Amount (Actual)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe ventas (Real)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Sales Amount (Actual) - Property Caption</note>
+          <target>Importe ventas (Real)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 399423253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Amount (Expected)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe ventas (Esperado)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Sales Amount (Expected) - Property Caption</note>
+          <target>Importe ventas (Esperado)</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 3883264070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Salespers./Purch. Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. vendedor/comprador"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Salespers./Purch. Code - Property Caption</note>
+          <target>Cód. vendedor/comprador</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Type - Property Caption</note>
+          <target>Tipo</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Work Center,Machine Center, ,Resource</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Centro trabajo,Centro máquina, ,Recurso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Type - Property OptionCaption</note>
+          <target>Centro trabajo,Centro máquina, ,Recurso</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 2837979401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valuation Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha valoración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Valuation Date - Property Caption</note>
+          <target>Fecha valoración</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 625374996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº mov. valor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Value Entry No. - Property Caption</note>
+          <target>Nº mov. valor</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 330574856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valued By Average Cost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Valorado a coste medio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Valued By Average Cost - Property Caption</note>
+          <target>Valorado a coste medio</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 3620976728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valued Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cant. valorada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Valued Quantity - Property Caption</note>
+          <target>Cant. valorada</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1380855887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variance Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo desviación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Variance Type - Property Caption</note>
+          <target>Tipo desviación</target>
+        </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 1380855887 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Purchase,Material,Capacity,Capacity Overhead,Manufacturing Overhead,Subcontracted</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Compras,Materiales,Capacidad,Gastos gen. capacidad,Gastos gen. fabr.,Subcontratación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Variance Type - Property OptionCaption</note>
+          <target> ,Compras,Materiales,Capacidad,Gastos gen. capacidad,Gastos gen. fabr.,Subcontratación</target>
+        </trans-unit>
         <trans-unit id="Table 1267244062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Visit log</source>
           <note from="Developer" annotates="general" priority="2">ESP="Registro de Visitas"</note>
@@ -20181,6 +20600,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipo contrato mantenimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Tipo contrato Mantenimiento - Property Caption</note>
           <target>Tipo contrato mantenimiento</target>
+        </trans-unit>
+        <trans-unit id="Page 744342589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value entry - G/L Entries</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Costes Mov. valor - Mov. conta "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Property Caption</note>
+          <target>Costes Mov. valor - Mov. conta </target>
+        </trans-unit>
+        <trans-unit id="Page 744342589 - Action 642782499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Action Update - Property Caption</note>
+          <target>Actualizar</target>
+        </trans-unit>
+        <trans-unit id="Page 744342589 - Action 642782499 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los movimientos de Costes?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Action Update - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea actualizar los movimientos de Costes?</target>
         </trans-unit>
         <trans-unit id="Page 869453865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer List Edit</source>
@@ -31885,6 +32322,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Action AssingParentSerialNo - Property Caption</note>
           <target>Asignar Nº Serie consumo</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Action 2274388292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Exportar Var. Existencias</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar Var. Existencias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Action ExportExcelCost - Property Caption</note>
+          <target>Exportar Var. Existencias</target>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2185030199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Imprimir etiqueta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiqueta"</note>
@@ -34566,6 +35009,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Zapatos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee - Field Zapatos_zum - Property Caption</note>
           <target>Zapatos</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2654808906 - Field 4134490150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2722620801">
+          <source>Updated Cost Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizado Mov. Coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Ext G/L - Item Ledger Relation - Field Updated Cost Entry - Property Caption</note>
+          <target>Actualizado Mov. Coste</target>
         </trans-unit>
         <trans-unit id="TableExtension 735070692 - Field 3570843907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 265035428">
           <source>Depreciation %</source>
@@ -39286,6 +39735,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Estado Ord. Prod."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Value Entry - Field Prod. Order State - Property Caption</note>
           <target>Estado Ord. Prod.</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3398565291 - Field 4134490150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 467645625">
+          <source>Updated Cost Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizado Mov. Coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Value Entry - Field Updated Cost Entry - Property Caption</note>
+          <target>Actualizado Mov. Coste</target>
         </trans-unit>
         <trans-unit id="TableExtension 3009149752 - Field 3953347013 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3213244558">
           <source>Recep. alm. cantidad a cero</source>
