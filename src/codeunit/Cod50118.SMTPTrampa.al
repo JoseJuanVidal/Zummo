@@ -269,6 +269,7 @@ codeunit 50118 "SMTP_Trampa"
         ExcelBuffer.AddColumn(PurchRcptLine.FieldCaption("Line No."), false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Nª Factura Compra', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Línea Factura compra', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Fecha Factura', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Nº Pedido de compra', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Fecha pedido de compra', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Fecha Albarán', false, '', true, false, false, '', ExcelBuffer."Cell Type"::Text);
@@ -354,6 +355,7 @@ codeunit 50118 "SMTP_Trampa"
         ExcelBuffer.AddColumn(PurchRcptLine."Line No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
         ExcelBuffer.AddColumn(PurchInvoiceLine."Document No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(PurchInvoiceLine."Line No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Number);
+        ExcelBuffer.AddColumn(PurchInvoiceLine."Posting Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);
         ExcelBuffer.AddColumn(PurchRcptLine."Order No.", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(PurchaseHeader."Posting Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);
         ExcelBuffer.AddColumn(PurchRcptHeader."Posting Date", false, '', false, false, false, '', ExcelBuffer."Cell Type"::Date);
