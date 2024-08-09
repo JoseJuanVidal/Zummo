@@ -1071,13 +1071,14 @@ table 17413 "ZM PL Items temporary"
         Item: Record Item;
         zummoFunctions: Codeunit "STH Zummo Functions";
         JsonText: Text;
+        ItemNo: code[20];
         IsUpdate: Boolean;
     begin
         Rec.TestField("ITBID Create", true);
-        JsonText := zummoFunctions.GetJSON_ItemTemporay(Rec);
-        // zummoFunctions.PutBody(JsonText, Rec."No.", IsUpdate);
+        JsonText := zummoFunctions.GetJSON_ItemTemporay(Rec, ItemNo);
+        // zummoFunctions.PutBody(JsonText, ItemNo, IsUpdate);
         // TODO comentamos para que no suba a ITBID
-        Message(StrSubstNo('ITBID Update %1\%2', Rec."No.", JsonText));
+        Message(StrSubstNo('ITBID Update %1\%2', ItemNo, JsonText));
         IsUpdate := true;
         if IsUpdate then begin
             Rec."STH To Update" := false;

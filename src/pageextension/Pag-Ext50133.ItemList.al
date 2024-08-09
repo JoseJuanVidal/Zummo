@@ -136,6 +136,35 @@ pageextension 50133 "ItemList" extends "Item List"
                     OnAction_AsignarGTIN();
                 end;
             }
+            action(UpdateITBID)
+            {
+                ApplicationArea = All;
+                Caption = 'Update ITBID', comment = 'ESP="Actualizar ITBID"';
+                Image = UpdateXML;
+
+                trigger OnAction()
+                var
+                    Item: Record Item;
+                    zummoFunctions: Codeunit "STH Zummo Functions";
+                    JsonText: Text;
+                    ItemNo: code[20];
+                    IsUpdate: Boolean;
+                    lblConfirm: Label '¿Desea Actualizar los %1 productos en la plataforma ITBID?', comment = 'ESP="¿Desea Actualizar los %1 productos en la plataforma ITBID?"';
+                begin
+                    CurrPage.SetSelectionFilter(Item);
+                    if not confirm(lblConfirm, false, Item.Count) then
+                        exit;
+                    if Item.FindFirst() then
+                        repeat
+                            JsonText := zummoFunctions.GetJSON_Item(Rec, ItemNo);
+                            if zummoFunctions.PutBody(JsonText, ItemNo) then begin
+                                Item."STH To Update" := false;
+                                Item."STH Last Update Date" := Today;
+                                Item.Modify();
+                            end;
+                        until Item.Next() = 0;
+                end;
+            }
             action(importarComentarios)
             {
                 ApplicationArea = all;
@@ -261,6 +290,7 @@ pageextension 50133 "ItemList" extends "Item List"
                 end;
             }
         }
+
     }
 
     trigger OnOpenPage()

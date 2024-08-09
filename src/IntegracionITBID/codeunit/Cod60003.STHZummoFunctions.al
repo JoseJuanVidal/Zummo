@@ -1,6 +1,6 @@
 codeunit 60003 "STH Zummo Functions"
 {
-    procedure GetJSON_Item(productos: Record Item) JsonTextReturn: Text
+    procedure GetJSON_Item(productos: Record Item; var ItemNo: code[20]) JsonTextReturn: Text
     var
         JsonArrayItem: JsonArray;
         JsonObjectItem: JsonObject;
@@ -24,10 +24,11 @@ codeunit 60003 "STH Zummo Functions"
                         notasInternas += comments.Comment;
                     end;
             until comments.Next() = 0;
+        ItemNo := text.ConvertStr(productos."No.", '/', '-');
 
-        JsonObjectItem.Add('artcodigo', productos."No.");
+        JsonObjectItem.Add('artcodigo', ItemNo);
         JsonObjectItem.Add('sapCode', productos."No.");
-        JsonObjectItem.Add('artconcepto', productos.Description);
+        JsonObjectItem.Add('artconcepto', ConvertStr(productos.Description, '"', ''''));
         JsonObjectItem.Add('artobs', artobs);
         JsonObjectItem.Add('notasInternas', notasInternas);
         JsonObjectItem.Add('subcategoria', 'Auditoría');//productos."Purch. SubCategory");
@@ -40,11 +41,11 @@ codeunit 60003 "STH Zummo Functions"
 
         JsonObjectItem2.Add('producto', JsonObjectItem);
         JsonObjectItem2.WriteTo(JsonText);
-        Message(JsonText);
+        //Message(JsonText);
         exit(JsonText);
     end;
 
-    procedure GetJSON_ItemTemporay(Itemstemporary: Record "ZM PL Items temporary") JsonTextReturn: Text
+    procedure GetJSON_ItemTemporay(Itemstemporary: Record "ZM PL Items temporary"; var ItemNo: code[20]) JsonTextReturn: Text
     var
         JsonArrayItem: JsonArray;
         JsonObjectItem: JsonObject;
@@ -66,10 +67,10 @@ codeunit 60003 "STH Zummo Functions"
                         notasInternas += comments.Comment;
                     end;
             until comments.Next() = 0;
-
-        JsonObjectItem.Add('artcodigo', Itemstemporary."No.");
+        ItemNo := text.ConvertStr(Itemstemporary."No.", '/', '-');
+        JsonObjectItem.Add('artcodigo', ItemNo);
         JsonObjectItem.Add('sapCode', Itemstemporary."No.");
-        JsonObjectItem.Add('artconcepto', Itemstemporary.Description);
+        JsonObjectItem.Add('artconcepto', ConvertStr(Itemstemporary.Description, '"', ''''));
         JsonObjectItem.Add('artobs', artobs);
         JsonObjectItem.Add('notasInternas', notasInternas);
         JsonObjectItem.Add('subcategoria', 'Auditoría');//productos."Purch. SubCategory");
@@ -84,7 +85,7 @@ codeunit 60003 "STH Zummo Functions"
         exit(JsonText);
     end;
 
-    procedure PutBody(body: Text; productoNo: code[20]; var ISUpdate: Boolean)
+    procedure PutBody(body: Text; productoNo: code[20]) ISUpdate: Boolean
     var
         IsSuccess: Boolean;
         Client: HttpClient;
@@ -107,6 +108,7 @@ codeunit 60003 "STH Zummo Functions"
         smtp: Codeunit SMTP_Trampa;
     begin
         ItbidSetup.Get();
+        ISUpdate := false;
 
         ContentText := 'grant_type=' + UriBuilder.EscapeDataString(ItbidSetup.STHgrant_type) +
         '&username=' + UriBuilder.EscapeDataString(ItbidSetup.STHusername) +
@@ -200,13 +202,13 @@ codeunit 60003 "STH Zummo Functions"
         productos: Record Item;
         IsUpdate: Boolean;
         JsonText: Text;
+        ItemNo: code[20];
     begin
         productos.SetRange("STH To Update", true);
         if productos.FindFirst() then begin
             repeat
-                JsonText := GetJSON_Item(productos);
-                PutBody(JsonText, productos."No.", IsUpdate);
-                if IsUpdate then begin
+                JsonText := GetJSON_Item(productos, ItemNo);
+                if PutBody(JsonText, ItemNo) then begin
                     productos."STH To Update" := false;
                     productos."STH Last Update Date" := Today;
                     productos.Modify();

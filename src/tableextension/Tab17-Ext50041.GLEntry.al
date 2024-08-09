@@ -50,5 +50,11 @@ tableextension 50041 "GLEntry" extends "G/L Entry" //17
             CalcFormula = lookup("Cust. Ledger Entry"."Adjusted Currency Factor" where("Document Type" = field("Document Type"), "Document No." = field("Document No.")));
             Editable = false;
         }
+        field(50120; "Purch. Request less 200"; code[20])
+        {
+            Caption = 'Purch. Request less 200', Comment = 'ESP="Compra menor 200"';
+            DataClassification = CustomerContent;
+            TableRelation = "Purchase Requests less 200" where(Status = const(Approved), Invoiced = const(false));
+        }
     }
 }

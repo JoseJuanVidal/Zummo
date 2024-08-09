@@ -8907,10 +8907,10 @@
           <target>Clasificación Mov.</target>
         </trans-unit>
         <trans-unit id="Table 3894493900 - Field 3409618379 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Inventory,Purchase,Sales,Production,Assembly,Adjmt</source>
-          <note from="Developer" annotates="general" priority="2">ESP=" ,Existencias,Compras,Ventas,Fabricación,Ensamblado,Ajustes"</note>
+          <source> ,Inventory,Purchase,Sales,Production,Assembly,Adjmt,Transfer</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Existencias,Compras,Ventas,Fabricación,Ensamblado,Ajustes,Transferencía"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM G/L Register Inventory - Field Clasification Entry - Property OptionCaption</note>
-          <target> ,Existencias,Compras,Ventas,Fabricación,Ensamblado,Ajustes</target>
+          <target> ,Existencias,Compras,Ventas,Fabricación,Ensamblado,Ajustes,Transferencía</target>
         </trans-unit>
         <trans-unit id="Table 3894493900 - Field 2556136339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Credit Amount</source>
@@ -19393,6 +19393,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Registros Inventario Contable"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM G/L Register Inventory - Property Caption</note>
           <target>Registros Inventario Contable</target>
+        </trans-unit>
+        <trans-unit id="Page 3894493900 - Action 2550710665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value entries</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. Valor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM G/L Register Inventory - Action ValueEntry - Property Caption</note>
+          <target>Movs. Valor</target>
         </trans-unit>
         <trans-unit id="Page 3894493900 - Action 642782499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update</source>
@@ -32508,6 +32514,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action importarComentarios - Property Caption</note>
           <target>Importar Comentarios</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 4174935501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Update ITBID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar ITBID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action UpdateITBID - Property Caption</note>
+          <target>Actualizar ITBID</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 4174935501 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
+          <source>¿Desea Actualizar los %1 productos en la plataforma ITBID?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Actualizar los %1 productos en la plataforma ITBID?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action UpdateITBID - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea Actualizar los %1 productos en la plataforma ITBID?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Action 1508348912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Calculate Plastic BOM</source>
           <note from="Developer" annotates="general" priority="2">ESP="Calcular peso plastico L.M."</note>
@@ -35214,6 +35232,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Liquidado_btc - Property Caption</note>
           <target>Liquidado</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4220596153 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>Purch. Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Purch. Request less 200 - Property Caption</note>
+          <target>Compra menor 200</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Method 2050879893 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3276313895">
           <source>¿Desea eliminar todos los calculos realizados sobre el producto %1?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar todos los calculos realizados sobre el producto %1?"</note>
@@ -35525,6 +35549,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Acero Embalaje (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Steel - Property Caption</note>
           <target>Acero Embalaje (kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1573910383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>To update</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. ITBID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field STH To Update - Property Caption</note>
+          <target>Act. ITBID</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2561412467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Costes Estandar Previo</source>
@@ -39801,6 +39831,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueo ventas producto sin tarifa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM EXT Customer Price Group - Field Block without Sales Items - Property Caption</note>
           <target>Bloqueo ventas producto sin tarifa</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3218508141 - Method 1044311127 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3218508141">
+          <source>La solicitud ya ha sido facturada en el documento %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La solicitud ya ha sido facturada en el documento %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Method OnValidate_PurchRequest - NamedType lblError</note>
+          <target>La solicitud ya ha sido facturada en el documento %1</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3218508141 - Method 1044311127 - NamedType 2908950305" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3218508141">
+          <source>El importe %1 es diferente de la solicitud %2.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El importe %1 es diferente de la solicitud %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Method OnValidate_PurchRequest - NamedType lblMaxRequest</note>
+          <target>El importe %1 es diferente de la solicitud %2.</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3218508141 - Method 1044311127 - NamedType 3971836044" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3218508141">
+          <source>¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Method OnValidate_PurchRequest - NamedType lblDimensionPurchLine</note>
+          <target>¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3218508141 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Purch. Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Field Purch. Request less 200 - Property Caption</note>
+          <target>Compra menor 200</target>
         </trans-unit>
         <trans-unit id="TableExtension 2875095946 - Field 657192742 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3630819116">
           <source>Contract/Supplier</source>

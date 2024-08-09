@@ -38,14 +38,15 @@ page 17389 "ZM G/L Register Inventory"
                 {
                     ApplicationArea = all;
                 }
-                field("Credit Amount"; "Credit Amount")
-                {
-                    ApplicationArea = all;
-                }
                 field("Debit Amount"; "Debit Amount")
                 {
                     ApplicationArea = all;
                 }
+                field("Credit Amount"; "Credit Amount")
+                {
+                    ApplicationArea = all;
+                }
+
                 field("Clasification Entry"; "Clasification Entry")
                 {
                     ApplicationArea = all;
@@ -90,8 +91,31 @@ page 17389 "ZM G/L Register Inventory"
                 end;
             }
         }
+        area(Navigation)
+        {
+            action(ValueEntry)
+            {
+                Caption = 'Value entries', comment = 'ESP="Movs. Valor"';
+                Image = ValueLedger;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Category4;
+
+                trigger OnAction()
+                begin
+                    ShowValueEntries();
+                end;
+            }
+        }
     }
 
     var
         myInt: Integer;
+
+    local procedure ShowValueEntries()
+    var
+        myInt: Integer;
+    begin
+        Rec.ShowValueEntries();
+    end;
 }

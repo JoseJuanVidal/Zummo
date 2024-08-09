@@ -5,10 +5,10 @@ codeunit 60001 "STH Create Task Process"
     trigger OnRun()
     var
         IsUpdate: Boolean;
+        ItemNo: code[20];
     begin
-        JsonText := zummoFunctions.GetJSON_Item(Rec);
-        zummoFunctions.PutBody(JsonText, Rec."No.", IsUpdate);
-        if IsUpdate then begin
+        JsonText := zummoFunctions.GetJSON_Item(Rec, ItemNo);
+        if zummoFunctions.PutBody(JsonText, ItemNo) then begin
             Rec."STH To Update" := false;
             Rec."STH Last Update Date" := Today;
             Rec.Modify();

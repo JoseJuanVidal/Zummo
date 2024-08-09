@@ -58,6 +58,11 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
             {
                 ApplicationArea = ALL;
             }
+            field("Purch. Request less 200"; "Purch. Request less 200")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 

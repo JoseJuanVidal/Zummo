@@ -298,7 +298,7 @@ tableextension 50108 "Item" extends Item  //27
         // ITBID Integracion
         field(50125; "STH To Update"; Boolean)
         {
-            Caption = 'To update', comment = 'Act. itbid';
+            Caption = 'To update', comment = 'ESP="Act. ITBID"';
         }
         field(50126; "STH Last Update Date"; Date)
         {

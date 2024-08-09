@@ -9,7 +9,7 @@ table 17383 "ZM G/L Register Inventory"
         {
             DataClassification = CustomerContent;
             Caption = 'G/L Entry No.', comment = 'ESP="Nº mov. contabilidad"';
-            TableRelation = "Value Entry";
+            TableRelation = "G/L Entry";
         }
         field(3; "G/L Register No."; Integer)
         {
@@ -41,8 +41,8 @@ table 17383 "ZM G/L Register Inventory"
         field(15; "Clasification Entry"; Option)
         {
             Caption = 'Clasification Entry', comment = 'ESP="Clasificación Mov."';
-            OptionMembers = " ",Inventory,Purchase,Sales,Production,Assembly,Adjmt;
-            OptionCaption = ' ,Inventory,Purchase,Sales,Production,Assembly,Adjmt', comment = 'ESP=" ,Existencias,Compras,Ventas,Fabricación,Ensamblado,Ajustes"';
+            OptionMembers = " ",Inventory,Purchase,Sales,Production,Assembly,Adjmt,Transfer;
+            OptionCaption = ' ,Inventory,Purchase,Sales,Production,Assembly,Adjmt,Transfer', comment = 'ESP=" ,Existencias,Compras,Ventas,Fabricación,Ensamblado,Ajustes,Transferencía"';
         }
         field(16; "Description"; text[100])
         {
@@ -98,52 +98,52 @@ table 17383 "ZM G/L Register Inventory"
     begin
         if GuiAllowed then
             Window.Open(lblDialog);
-        GLItemLedgerRelation.SetCurrentKey("Value Entry No.");
-        GLItemLedgerRelation.SetFilter("Value Entry No.", '%1..', 4640590);
-        GLItemLedgerRelation.SetRange("Updated Cost Entry", false);
-        if GLItemLedgerRelation.FindFirst() then
+        ValueEntry.Reset();
+        ValueEntry.SetRange("Posting Date", 20240101D, 20240131D);
+        if ValueEntry.FindFirst() then
             repeat
-                if GuiAllowed then begin
-                    Window.Update(1, GLItemLedgerRelation."Value Entry No.");
-                    Window.Update(2, GLItemLedgerRelation."G/L Entry No.");
-                end;
-                if GLEntry.Get(GLItemLedgerRelation."G/L Entry No.") then
-                    if ValueEntry.Get(GLItemLedgerRelation."Value Entry No.") and
-                    not (ValueEntry."Item Ledger Entry Type" in [ValueEntry."Item Ledger Entry Type"::Transfer]) then begin
-                        if GuiAllowed then
-                            Window.Update(3, GLEntry."Posting Date");
-                        if ValueEntryNo <> GLItemLedgerRelation."Value Entry No." then begin
-                            ValueEntryNo := GLItemLedgerRelation."Value Entry No.";
-                            i := 0;
+                i := 0;
+                GLItemLedgerRelation.SetRange("Value Entry No.", ValueEntry."Entry No.");
+                //GLItemLedgerRelation.SetRange("Updated Cost Entry", false);
+                if GLItemLedgerRelation.FindFirst() then
+                    repeat
+                        if GuiAllowed then begin
+                            Window.Update(1, GLItemLedgerRelation."Value Entry No.");
+                            Window.Update(2, GLItemLedgerRelation."G/L Entry No.");
                         end;
-                        i += 1;
-                        Cost := GetCostValueEntry(ValueEntry, I);
-                        GLRegisterInventory.Reset();
-                        GLRegisterInventory.SetRange("G/L Entry No.", GLItemLedgerRelation."G/L Entry No.");
-                        GLRegisterInventory.SetRange("G/L Account No.", GLEntry."G/L Account No.");
-                        GLRegisterInventory.SetRange("Clasification Entry", GetClassification(ValueEntry));
-                        if not GLRegisterInventory.FindFirst() then begin
-                            Clear(GLRegisterInventory);
-                            GLRegisterInventory.Init();
-                            GLRegisterInventory."G/L Entry No." := GLItemLedgerRelation."G/L Entry No.";
-                            GLRegisterInventory."G/L Register No." := GLItemLedgerRelation."G/L Register No.";
-                            GLRegisterInventory."Clasification Entry" := GetClassification(ValueEntry);
-                            GLRegisterInventory."G/L Account No." := GLEntry."G/L Account No.";
-                            GLRegisterInventory."G/L Account Name" := GLEntry.Description;
-                            GLRegisterInventory."G/L Posting Date" := GLEntry."Posting Date";
-                            GLRegisterInventory."Amount Total G/L Entry" := GLEntry.Amount;
-                            GLRegisterInventory.PYL := CopyStr(GLEntry."G/L Account No.", 1, 1) <> '3';
-                            GLRegisterInventory.Insert();
+                        if GLEntry.Get(GLItemLedgerRelation."G/L Entry No.") then begin
+                            // and not (ValueEntry."Item Ledger Entry Type" in [ValueEntry."Item Ledger Entry Type"::Transfer]) then begin
+                            if GuiAllowed then
+                                Window.Update(3, GLEntry."Posting Date");
+                            i += 1;
+                            Cost := GetCostValueEntry(ValueEntry, I);
+                            GLRegisterInventory.Reset();
+                            GLRegisterInventory.SetRange("G/L Entry No.", GLItemLedgerRelation."G/L Entry No.");
+                            GLRegisterInventory.SetRange("G/L Account No.", GLEntry."G/L Account No.");
+                            GLRegisterInventory.SetRange("Clasification Entry", GetClassification(ValueEntry));
+                            if not GLRegisterInventory.FindFirst() then begin
+                                Clear(GLRegisterInventory);
+                                GLRegisterInventory.Init();
+                                GLRegisterInventory."G/L Entry No." := GLItemLedgerRelation."G/L Entry No.";
+                                GLRegisterInventory."G/L Register No." := GLItemLedgerRelation."G/L Register No.";
+                                GLRegisterInventory."Clasification Entry" := GetClassification(ValueEntry);
+                                GLRegisterInventory."G/L Account No." := GLEntry."G/L Account No.";
+                                GLRegisterInventory."G/L Account Name" := GLEntry.Description;
+                                GLRegisterInventory."G/L Posting Date" := GLEntry."Posting Date";
+                                GLRegisterInventory."Amount Total G/L Entry" := GLEntry.Amount;
+                                GLRegisterInventory.PYL := CopyStr(GLEntry."G/L Account No.", 1, 1) <> '3';
+                                GLRegisterInventory.Insert();
+                            end;
+                            GLRegisterInventory.Amount += Cost;
+                            if GLEntry."Debit Amount" > 0 then
+                                GLRegisterInventory."Debit Amount" += abs(Cost);
+                            if GLEntry."Credit Amount" > 0 then
+                                GLRegisterInventory."Credit Amount" += abs(Cost);
+                            GLRegisterInventory.Modify();
+                            Commit();
                         end;
-                        GLRegisterInventory.Amount += Cost;
-                        if GLEntry."Debit Amount" > 0 then
-                            GLRegisterInventory."Debit Amount" += abs(Cost);
-                        if GLEntry."Credit Amount" > 0 then
-                            GLRegisterInventory."Credit Amount" += abs(Cost);
-                        GLRegisterInventory.Modify();
-                        Commit();
-                    end;
-            Until GLItemLedgerRelation.next() = 0;
+                    Until GLItemLedgerRelation.next() = 0;
+            Until ValueEntry.next() = 0;
 
         if GuiAllowed then
             Window.Close();
@@ -179,9 +179,10 @@ table 17383 "ZM G/L Register Inventory"
     begin
         case ValueEntry."Item Ledger Entry Type" of
             ValueEntry."Item Ledger Entry Type"::" ", ValueEntry."Item Ledger Entry Type"::Consumption, ValueEntry."Item Ledger Entry Type"::Output:
-                begin
-                    exit(Rec."Clasification Entry"::Production);
-                end;
+
+                exit(Rec."Clasification Entry"::Production);
+            ValueEntry."Item Ledger Entry Type"::Transfer:
+                exit(Rec."Clasification Entry"::Transfer);
             ValueEntry."Item Ledger Entry Type"::Sale:
                 exit(Rec."Clasification Entry"::Sales);
             ValueEntry."Item Ledger Entry Type"::Purchase:
@@ -191,5 +192,21 @@ table 17383 "ZM G/L Register Inventory"
             ValueEntry."Item Ledger Entry Type"::"Negative Adjmt.", ValueEntry."Item Ledger Entry Type"::"Positive Adjmt.":
                 exit(Rec."Clasification Entry"::Adjmt);
         end;
+    end;
+
+    procedure ShowValueEntries()
+    var
+        ValueEntry: Record "Value Entry";
+        GLItemLedgerRelation: Record "G/L - Item Ledger Relation";
+    begin
+        GLItemLedgerRelation.SetRange("G/L Entry No.", Rec."G/L Entry No.");
+        if GLItemLedgerRelation.FindFirst() then
+            repeat
+                if ValueEntry.Get(GLItemLedgerRelation."Value Entry No.") then
+                    ValueEntry.Mark(true);
+            Until GLItemLedgerRelation.next() = 0;
+
+        ValueEntry.MarkedOnly(true);
+        Page.RunModal(Page::"Value Entries", ValueEntry);
     end;
 }
