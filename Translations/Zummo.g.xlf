@@ -18128,6 +18128,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action Transfer To Planning Lines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3419437274 - Control 378052804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Final</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Final"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Movs. Valor pdtes Registros - Control FechaFin - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3419437274 - Control 2343443465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Inicial</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Inicial"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Movs. Valor pdtes Registros - Control FechaIni - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3419437274 - Control 3037438984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Registro</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Movs. Valor pdtes Registros - Control PostingDate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3911723591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>OAuth20 Application Folders</source>
           <note from="Developer" annotates="general" priority="2">ESP="OAuth20 Application Folders"</note>
@@ -18517,6 +18532,96 @@
           <source>Send Email</source>
           <note from="Developer" annotates="general" priority="2">ESP="Enviar email"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Action Process - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Registrar mov. valor en C/G</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registrar mov. valor en C/G"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 62361868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad mov. producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad mov. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control Cantidadmovproducto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 2929189203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe coste (Real)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (Real)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control CostAmountActual - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 1576803899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe coste (Esperado)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (Esperado)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control CostAmountExpected - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 2029162621 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe coste (No-invent.)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (No-invent.)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control CostAmountNonInvtbl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 2824564214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Coste por ud.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste por ud."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control CostperUnit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Descripción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 3117834186 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control DocumentNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 2398799890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad facturada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad facturada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control InvoicedQuantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 3789748424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cant. valorada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cant. valorada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control ValuedQuantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 1420461197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha registro Mov.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha registro Mov."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control ValueEntryPostingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 2859187561 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control ValueItemNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 845401037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Final</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Final"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control EndDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 2266333754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Inicial</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Inicial"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control InitDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Control 3796884748 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Registro</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Control NewDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Action 3037438984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Procesar cambio fechas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Procesar cambio fechas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Action PostingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4142511017 - Action 1534445347 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deshacer cambio fechas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Deshacer cambio fechas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Post Value Entry to G/L - Action ResetPostingDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3525881470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prod. Tools Ledger Entry</source>
@@ -36117,6 +36222,36 @@
           <source>Sell-to Search Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Venta a-Alias"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Return Receipt Header - Field Sell-to Search Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3398565291 - Method 3153587119 - NamedType 1884598543" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3398565291">
+          <source>Fecha Mov.: #1###############\Nº Mov.: #2###############</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Mov.: #1###############\Nº Mov.: #2###############"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Value Entry - Method ChangeValueEntryPostingDate - NamedType lblWindows</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3398565291 - Method 3153587119 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3398565291">
+          <source>Se va a realizar el cambio de fechas de registros de los movimientos de valor desde %1 a %2, a fecha %3.\Nº Movimientos %4.\¿Desea continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a realizar el cambio de fechas de registros de los movimientos de valor desde %1 a %2, a fecha %3.\Nº Movimientos %4.\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Value Entry - Method ChangeValueEntryPostingDate - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3398565291 - Method 363556754 - NamedType 1884598543" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3398565291">
+          <source>Fecha Mov.: #1###############\Nº Mov.: #2###############</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Mov.: #1###############\Nº Mov.: #2###############"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Value Entry - Method ResetValueEntryPostingDate - NamedType lblWindows</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3398565291 - Method 363556754 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3398565291">
+          <source>Se van a retornar las fecha de los movimientos de valor %1.\¿Desea Continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se van a retornar las fecha de los movimientos de valor %1.\¿Desea Continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Value Entry - Method ResetValueEntryPostingDate - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3398565291 - Field 2976132966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 467645625">
+          <source>Cambiada Fecha Registro</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiada Fecha Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Value Entry - Field ChangePostingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3398565291 - Field 1044668653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 467645625">
+          <source>Posting Date Old</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro Anterior"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Value Entry - Field Posting Date Old - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3398565291 - Field 1487237962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 467645625">
           <source>Prod. Order State</source>
