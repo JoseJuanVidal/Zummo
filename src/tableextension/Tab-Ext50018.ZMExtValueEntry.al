@@ -61,6 +61,7 @@ tableextension 50018 "ZM Ext Value Entry" extends "Value Entry"
     procedure ResetValueEntryPostingDate()
     var
         ValueEntry: Record "Value Entry";
+        PostValueEntrytoGL: Record "Post Value Entry to G/L";
         Window: Dialog;
         Contar: Integer;
         lblWindows: Label 'Fecha Mov.: #1###############\Nº Mov.: #2###############', comment = 'ESP="Fecha Mov.: #1###############\Nº Mov.: #2###############"';
@@ -87,6 +88,11 @@ tableextension 50018 "ZM Ext Value Entry" extends "Value Entry"
                     Window.UPDATE(2, ValueEntry."Entry No.");
                     ValueEntry."Posting Date" := ValueEntry."Valuation Date";
                     ValueEntry.MODIFY;
+                    PostValueEntrytoGL.SetRange("Value Entry No.", ValueEntry."Entry No.");
+                    if PostValueEntrytoGL.FindFirst() then begin
+                        PostValueEntrytoGL."Posting Date" := ValueEntry."Posting Date";
+                        PostValueEntrytoGL.Modify();
+                    end;
                 end;
             UNTIL ValueEntry.NEXT = 0;
         Window.Close();
