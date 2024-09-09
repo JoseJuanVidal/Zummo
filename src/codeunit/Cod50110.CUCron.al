@@ -112,6 +112,7 @@ codeunit 50110 "CU_Cron"
     var
         recReservEntry: Record "Reservation Entry";
         recReservEntry2: Record "Reservation Entry";
+        NotDeleteResv: Boolean;
     begin
         recReservEntry.Reset();
         recReservEntry.SetFilter("Reservation Status", '<>%1', recReservEntry."Reservation Status"::Reservation);
@@ -128,16 +129,22 @@ codeunit 50110 "CU_Cron"
         Commit();
         recReservEntry.Reset();
         recReservEntry.SetRange("Reservation Status", recReservEntry."Reservation Status"::Reservation);
-        recReservEntry.SetFilter("Source Type", '<>%1', 5741);
         //recReservEntry.SetRange("Item Tracking", recReservEntry."Item Tracking"::None);
         recReservEntry.SetRange(Positive, false);
         if recReservEntry.FindSet() then
             repeat
-                recReservEntry2.SetRange(Positive, true);
-                recReservEntry2.SetRange("Entry No.", recReservEntry."Entry No.");
-                if not recReservEntry2.FindFirst() then begin
-                    recReservEntry.Delete();
-                    Commit();
+                NotDeleteResv := false;
+                if recReservEntry."Source Type" = database::"Transfer Line" then
+                    if recReservEntry."Item Tracking" in [recReservEntry."Item Tracking"::"Serial No.", recReservEntry."Item Tracking"::"Lot and Serial No."] then begin
+                        NotDeleteResv := true;
+                    end;
+                if not NotDeleteResv then begin
+                    recReservEntry2.SetRange(Positive, true);
+                    recReservEntry2.SetRange("Entry No.", recReservEntry."Entry No.");
+                    if not recReservEntry2.FindFirst() then begin
+                        recReservEntry.Delete();
+                        Commit();
+                    end;
                 end;
             until recReservEntry.Next() = 0;
 
