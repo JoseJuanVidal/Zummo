@@ -17,6 +17,11 @@ pageextension 50146 "SalesInvoiceList" extends "Sales Invoice List"
             {
                 ApplicationArea = all;
             }
+            field(Rappel; Rappel)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
     actions

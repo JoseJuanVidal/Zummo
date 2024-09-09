@@ -20,6 +20,7 @@ pageextension 50004 "PostedSalesInvoice" extends "Posted Sales Invoice"
                 ApplicationArea = all;
                 ToolTip = 'Indicar el cambio para la impresión de los documentos.', comment = 'ESP="Indicar el cambio para la impresión de los documentos."';
             }
+            field(Rappel; Rappel) { }
             field(Peso_btc; Peso_btc) { }
             field(NumPalets_btc; NumPalets_btc) { }
             field(NumBultos_btc; NumBultos_btc) { }

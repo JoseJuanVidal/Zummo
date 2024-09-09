@@ -35,6 +35,11 @@ tableextension 50123 "SalesShipmentHeader" extends "Sales Shipment Header"  //11
             Caption = 'Sell-to Search Name', comment = 'ESP="Venta a-Alias"';
             Editable = false;
         }
+        field(50107; Rappel; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Rappel', comment = 'ESP="Rappel"';
+        }
         field(50110; Peso_btc; Decimal)
         {
             DataClassification = CustomerContent;

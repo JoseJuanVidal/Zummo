@@ -36,6 +36,11 @@ pageextension 50028 "SalesQuotes" extends "Sales Quotes"
             {
                 ApplicationArea = all;
             }
+            field(Rappel; Rappel)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
     actions

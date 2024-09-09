@@ -22,6 +22,11 @@ tableextension 50135 "SalesHeaderArchive" extends "Sales Header Archive"  //5107
             DataClassification = CustomerContent;
             Caption = 'Internal Comment', comment = 'ESP="Comentario interno"';
         }
+        field(50107; Rappel; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Rappel', comment = 'ESP="Rappel"';
+        }
         field(50113; PedidoServicio_btc; Code[20])
         {
             DataClassification = CustomerContent;

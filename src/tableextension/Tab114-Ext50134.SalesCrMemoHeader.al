@@ -34,6 +34,11 @@ tableextension 50134 "SalesCrMemoHeader" extends "Sales Cr.Memo Header" //114
             Caption = 'Sell-to Search Name', comment = 'ESP="Venta a-Alias"';
             Editable = false;
         }
+        field(50107; Rappel; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Rappel', comment = 'ESP="Rappel"';
+        }
         field(50113; PedidoServicio_btc; Code[20])
         {
             DataClassification = CustomerContent;

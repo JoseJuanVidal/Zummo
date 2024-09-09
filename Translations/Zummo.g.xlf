@@ -33303,6 +33303,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field Plastic Qty. (kg) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 175460751 - Field 1625035222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
+          <source>Rappel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rappel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field Rappel - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 175460751 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
           <source>Plastic Recycled (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado (kg)"</note>
@@ -33457,6 +33462,11 @@
           <source>Plastic (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Plastic Qty. (kg) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 1625035222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Rappel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rappel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Rappel - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Plastic Recycled (kg)</source>
@@ -33733,6 +33743,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Plastic Qty. (kg) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 1625035222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Rappel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rappel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Rappel - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Plastic Recycled (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado (kg)"</note>
@@ -33827,6 +33842,11 @@
           <source>Perfil</source>
           <note from="Developer" annotates="general" priority="2">ESP="Perfil"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field Perfil_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 746889487 - Field 1625035222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
+          <source>Rappel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rappel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field Rappel - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 746889487 - Field 1475697198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
           <source>SubCliente</source>
@@ -34012,6 +34032,11 @@
           <source>Plastic (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Plastic Qty. (kg) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 1625035222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Rappel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rappel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Rappel - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Plastic Recycled (kg)</source>
@@ -34422,6 +34447,11 @@
           <source>Plastic (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field Plastic Qty. (kg) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 1625035222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Rappel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rappel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field Rappel - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Plastic Recycled (kg)</source>

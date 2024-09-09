@@ -105,6 +105,10 @@ pageextension 50132 "ZM SalesOrder" extends "Sales Order"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field(Rappel; Rappel)
+            {
+                ApplicationArea = all;
+            }
 
         }
         addafter("Promised Delivery Date")

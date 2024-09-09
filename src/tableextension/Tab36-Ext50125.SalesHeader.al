@@ -33,6 +33,11 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
             Caption = 'Sell-to Search Name', comment = 'ESP="Venta a-Alias"';
             Editable = false;
         }
+        field(50107; Rappel; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Rappel', comment = 'ESP="Rappel"';
+        }
         field(50113; PedidoServicio_btc; Code[20])
         {
             DataClassification = CustomerContent;

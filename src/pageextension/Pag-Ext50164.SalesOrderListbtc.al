@@ -45,6 +45,11 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field(Rappel; Rappel)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
         addafter("Posting Date")
         {

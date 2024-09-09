@@ -62,6 +62,10 @@ pageextension 50114 "SalesInvoice" extends "Sales Invoice"
             {
                 ApplicationArea = all;
             }
+            field(Rappel; Rappel)
+            {
+                ApplicationArea = all;
+            }
         }
         modify(SalesLines)
         {

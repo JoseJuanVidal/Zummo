@@ -36,6 +36,11 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
             Caption = 'Sell-to Search Name', comment = 'ESP="Venta a-Alias"';
             Editable = false;
         }
+        field(50107; Rappel; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Rappel', comment = 'ESP="Rappel"';
+        }
         field(50110; Peso_btc; Decimal)
         {
             DataClassification = CustomerContent;
