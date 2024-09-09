@@ -2,6 +2,27 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
 {
     layout
     {
+        modify("Document Date")
+        {
+            trigger OnAfterValidate()
+            begin
+                CurrPage.Update();
+            end;
+        }
+        modify("Quote Valid Until Date")
+        {
+            trigger OnAfterValidate()
+            begin
+                CurrPage.Update();
+            end;
+        }
+        modify("Requested Delivery Date")
+        {
+            trigger OnAfterValidate()
+            begin
+                CurrPage.Update();
+            end;
+        }
         addafter("Sell-to Customer Name")
         {
             field("Sell-to Search Name"; "Sell-to Search Name")

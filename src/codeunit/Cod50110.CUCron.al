@@ -128,6 +128,7 @@ codeunit 50110 "CU_Cron"
         Commit();
         recReservEntry.Reset();
         recReservEntry.SetRange("Reservation Status", recReservEntry."Reservation Status"::Reservation);
+        recReservEntry.SetFilter("Source Type", '<>%1', 5741);
         //recReservEntry.SetRange("Item Tracking", recReservEntry."Item Tracking"::None);
         recReservEntry.SetRange(Positive, false);
         if recReservEntry.FindSet() then
@@ -139,19 +140,7 @@ codeunit 50110 "CU_Cron"
                     Commit();
                 end;
             until recReservEntry.Next() = 0;
-        recReservEntry.Reset();
-        recReservEntry.SetRange("Reservation Status", recReservEntry."Reservation Status"::Reservation);
-        //recReservEntry.SetRange("Item Tracking", recReservEntry."Item Tracking"::None);
-        recReservEntry.SetRange(Positive, true);
-        if recReservEntry.FindSet() then
-            repeat
-                recReservEntry2.SetRange(Positive, false);
-                recReservEntry2.SetRange("Entry No.", recReservEntry."Entry No.");
-                if not recReservEntry2.FindFirst() then begin
-                    recReservEntry.Delete();
-                    Commit();
-                end;
-            until recReservEntry.Next() = 0;
+
     end;
 
     local procedure CambiaFechasOferta()
