@@ -7298,6 +7298,281 @@
           <note from="Developer" annotates="general" priority="2">ESP="Años de Garantía"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field WarrantyDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2085434542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZINC Services &amp; Warranty</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 3556068380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Action Taken</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Action Taken - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 3556068380 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Action,Repaired,Replaced</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Action Taken - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1925661151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Closed Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Closed Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2441524459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Incident Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Incident Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1584374253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Incident No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Incident No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1913487444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Item Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Item Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 3039581158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Item Description 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Item Description 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 4067522052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Item No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Item No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2811630219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO New Serial No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO New Serial No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 3504961514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO No_ Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO No_ Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1944275916 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Package Tracking No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Package Tracking No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2016152040 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Purchase Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Purchase Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2452265993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Purchase Invoice No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Purchase Invoice No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 4070673774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Purchase Receipt No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Purchase Receipt No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 435523336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sales Invoice No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sales Invoice No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2469438583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sales Shipment No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sales Shipment No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2793859591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 3981619945 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to Address 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to Address 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2879284800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1365199925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2401836507 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to County</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to County - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2925412596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to Customer Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to Customer Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 775279507 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-To Customer No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-To Customer No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1090572596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to Cust_ Name 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to Cust_ Name 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 3493359964 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to C__R_ Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to C__R_ Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2462728550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to E-Mail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to E-Mail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2920803102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to Fax No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to Fax No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 22465771 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to Phone No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to Phone No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 531025994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Sell-to Post Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Sell-to Post Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 4160585399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Serial No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Serial No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 49794131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Ship-to Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Ship-to Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1038203669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Ship-to Address 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Ship-to Address 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1024814444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Ship-to City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Ship-to City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1416408230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Ship-to Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Ship-to Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 3984242585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Ship-to Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Ship-to Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 905359631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Ship-to County</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Ship-to County - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 605721984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Ship-to C__R_ Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Ship-to C__R_ Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1913426492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Ship-to Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Ship-to Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 3282314542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Ship-to Name 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Ship-to Name 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1975253846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Ship-to Post Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Ship-to Post Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1421362897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Shipment Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Shipment Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 812027203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Shipment Method Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Shipment Method Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 3630503199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Shipping Agent Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Shipping Agent Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2101595121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2101595121 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed,Delayed,Opened,Parts Shipped,Service Scheduled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Status - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 1321885588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Vendor Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Vendor Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 569984083 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Vendor No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Vendor No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2652887081 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Warranty</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Warranty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2085434542 - Field 2426420616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Warranty Expiry Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty - Field LGX ZMO Warranty Expiry Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1500546650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ZINC Services &amp; Warranty Aux</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty Aux - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1500546650 - Field 213071998 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fault</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty Aux - Field Fault - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1500546650 - Field 1584374253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LGX ZMO Incident No_</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty Aux - Field LGX ZMO Incident No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1500546650 - Field 3148211543 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Localized Fault</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty Aux - Field Localized Fault - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1500546650 - Field 2526725569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service &amp; Warranty Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZINC Services &amp; Warranty Aux - Field Service &amp; Warranty Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1666975959 - NamedType 3804247692" size-unit="char" translate="yes" xml:space="preserve">
           <source>El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?</source>
           <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"</note>
@@ -16997,6 +17272,21 @@
           <source>WS Purchase Line</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WS Purchase Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2085434542 - Control 213071998 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fault</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZINC Services &amp; Warranty - Control Fault - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2085434542 - Control 679802727 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Localized Fault</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZINC Services &amp; Warranty - Control LocalizedFault - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2085434542 - Control 3963139423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZINC Services &amp; Warranty - Control ServiceType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2746470758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Análisis Movs. Contabilidad</source>

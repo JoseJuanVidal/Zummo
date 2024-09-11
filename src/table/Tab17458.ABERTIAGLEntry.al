@@ -1,7 +1,7 @@
 table 17458 "ABERTIA GL Entry"
 {
     Caption = 'ABERTIA GL Entry';
-    Description = 'ABERTIA - actualizacion datos G/L Entry';
+    Description = 'ABERTIA - Actualizacion datos G/L Entry';
     ExternalName = 'tBIFinan3Nav';
     ExternalSchema = 'dbo';
     TableType = ExternalSQL;
@@ -259,7 +259,7 @@ table 17458 "ABERTIA GL Entry"
             UNREGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
 
         REGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI',
-            'Data Source=zummo.ddns.net;Initial Catalog=ReportingZummo;User ID=jvidal;Password=Bario5622$');
+            'Data Source=zummo.ddns.net;Initial Catalog=ReportingZummo;User ID=jvidal;Password=Bario5622!');
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
