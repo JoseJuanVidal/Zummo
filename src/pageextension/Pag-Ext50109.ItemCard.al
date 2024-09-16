@@ -146,6 +146,13 @@ pageextension 50109 "ItemCard" extends "Item Card"
             }
 
         }
+        addafter("Lot Size")
+        {
+            field("Renovate Plan"; "Renovate Plan")
+            {
+                ApplicationArea = all;
+            }
+        }
 
         addlast(Content)
         {
@@ -566,6 +573,20 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 end;
             }
         }
+        addlast(Navigation)
+        {
+            action(SerialInformation)
+            {
+                Caption = 'Serial No. information', comment = 'ESP="Información Nº. Serie"';
+                Image = SerialNoProperties;
+
+                trigger OnAction()
+                begin
+                    ShowNavigateSerialNoInfo();
+                end;
+
+            }
+        }
     }
 
 
@@ -634,6 +655,16 @@ pageextension 50109 "ItemCard" extends "Item Card"
             end;
         end;
 
+    end;
+
+    local procedure ShowNavigateSerialNoInfo()
+    var
+        SerialNoInfo: Record "Serial No. Information";
+    begin
+        SerialNoInfo.FilterGroup := 2;
+        SerialNoInfo.SetRange("Item No.", Rec."No.");
+        SerialNoInfo.FilterGroup := 0;
+        Page.Run(0, SerialNoInfo);
     end;
 
     /*  trigger OnAfterGetCurrRecord()

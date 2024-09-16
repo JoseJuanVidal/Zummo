@@ -248,6 +248,28 @@ tableextension 50108 "Item" extends Item  //27
             OptionMembers = "Food Service","Retail";
             OptionCaption = 'Retail,Food Service', comment = 'ESP="Retail,Food Service"';
         }
+        field(50075; "Renovate Plan"; boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Renovate Plan (Cost. Serie)', comment = 'ESP="Plan Renove (Cost. Serie)"';
+
+            trigger OnValidate()
+            var
+                ItemTracking: Record "Item Tracking Code";
+                lblError: Label 'The product must have %1 enabled.', comment = 'ESP="El producto debe tener activado %1."';
+            begin
+                if not Rec."Renovate Plan" then begin
+                    CheckSerialInfo();
+                    exit;
+                end;
+                // comprobamos que tiene seguimiento Serie
+                if ItemTracking.Get(Rec."Item Tracking Code") then
+                    if ItemTracking."SN Specific Tracking" then
+                        exit;
+                Error(lblError, lblError);
+            end;
+
+        }
         field(50100; "STHQuantityWhse"; Decimal)
         {
             Caption = 'Quantity Warehouse', comment = 'ESP="Cantidad Almacén"';
@@ -517,5 +539,15 @@ tableextension 50108 "Item" extends Item  //27
                 HistCost.DeleteResultsItem(Rec);
                 Message(lblEnd);
             end;
+    end;
+
+    local procedure CheckSerialInfo()
+    var
+        SerialNoInfo: Record "Serial No. Information";
+        lblErrorExist: Label 'Existing Serial information No. with costs.', comment = 'ESP="Existen información Nº de series con costes."';
+    begin
+        SerialNoInfo.SetRange("Item No.", Rec."No.");
+        if SerialNoInfo.FindFirst() then
+            Error(lblErrorExist);
     end;
 }

@@ -290,7 +290,27 @@ pageextension 50133 "ItemList" extends "Item List"
                 end;
             }
         }
+        addlast(Navigation)
+        {
+            action(SerialInformation)
+            {
+                Caption = 'Serial No. information', comment = 'ESP="Información Nº. Serie"';
+                Image = SerialNoProperties;
 
+                trigger OnAction()
+                begin
+                    ShowNavigateSerialNoInfo();
+                end;
+
+            }
+            action(AnalisisPlanRenove)
+            {
+                ApplicationArea = all;
+                Caption = 'Análisis Plan Renove', comment = 'ESP="Análisis Plan Renove"';
+                Image = AnalysisView;
+                RunObject = page "Analisis Plan Renove";
+            }
+        }
     }
 
     trigger OnOpenPage()
@@ -328,5 +348,15 @@ pageextension 50133 "ItemList" extends "Item List"
         if not confirm(lblConfirm, false, Item.Count) then
             exit;
         Funciones.CreateGTIN(Item, true, BarCodeType::EAN13);
+    end;
+
+    local procedure ShowNavigateSerialNoInfo()
+    var
+        SerialNoInfo: Record "Serial No. Information";
+    begin
+        SerialNoInfo.FilterGroup := 2;
+        SerialNoInfo.SetRange("Item No.", Rec."No.");
+        SerialNoInfo.FilterGroup := 0;
+        Page.Run(0, SerialNoInfo);
     end;
 }

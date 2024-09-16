@@ -13343,6 +13343,31 @@
           <note from="Developer" annotates="general" priority="2">ESP="Log de Sincronización"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Actividad Cliente List - Action ShowLog - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2700886368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Análisis Plan Renove</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Análisis Plan Renove"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Analisis Plan Renove - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2700886368 - Method 3671000363 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea realizar el seguimientos de %1 productos con Plan Renove?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea realizar el seguimientos de %1 productos con Plan Renove?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Analisis Plan Renove - Method TraceItemsPlanRenove - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Page 2700886368 - Method 3671000363 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.: #1#################\Entry No.: #2##############</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto: #1#################\Nº Mov.: #2##############"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Analisis Plan Renove - Method TraceItemsPlanRenove - NamedType lblDialog</note>
+        </trans-unit>
+        <trans-unit id="Page 2700886368 - Control 1165969121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Línea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Analisis Plan Renove - Control LineNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2700886368 - Action 1297685886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Seguimiento productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seguimiento productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Analisis Plan Renove - Action TraceItemPlanRenove - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3357187777 - Control 845401037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>End Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin"</note>
@@ -14462,61 +14487,6 @@
           <source>Log Sending client emails</source>
           <note from="Developer" annotates="general" priority="2">ESP="Log Envío e-mails clientes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Log Envío e-mails clientes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New,Process,Report,Navigate</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Navegar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Property PromotedActionCategories</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Kill purchase orders remains</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Matar restos pedidos compra"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Control 617062077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Name</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nombre Proveedor"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Control txtNombreProveedor - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Action 3609420016 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show original purchase order</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Muestra el pedido de compra original"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Action MostrarDocOrigen - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Action 3609420016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show order</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Mostrar pedido"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Action MostrarDocOrigen - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Action 1630866928 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Change the original quantity of the order line so that it does not appear as pending</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cambia la cantidad original de la línea del pedido para que no aparezca como pendiente"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Action MatarResto - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Action 1630866928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Kill rest</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Matar resto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Action MatarResto - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Action 1630866928 - Method 1377591017 - NamedType 3466624638" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Are you sure you want to kill the rest?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Está seguro/a de que desea matar el resto?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Action MatarResto - Method OnAction - NamedType lbConfirmQst</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Action 1630866928 - Method 1377591017 - NamedType 1186653645" size-unit="char" translate="yes" xml:space="preserve">
-          <source>If the quantity received is greater than the original quantity, you must do this process from the shipment</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Si la cantidad recibida es mayor a la cantidad original, debe hacer este proceso desde el envío"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Action MatarResto - Method OnAction - NamedType lbErrorCantidadErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Action 1630866928 - Method 1377591017 - NamedType 929819917" size-unit="char" translate="yes" xml:space="preserve">
-          <source>There are warehouse receipt lines associated with this line item. Do you want to delete the receipt lines?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Existen líneas de recepción de almacén asociadas a esta línea de pedido ¿Desea borrar las líneas de recepción?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Action MatarResto - Method OnAction - NamedType lbConfirmLinRecepcionQst</note>
-        </trans-unit>
-        <trans-unit id="Page 3277735082 - Action 1630866928 - Method 1377591017 - NamedType 1624258138" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Process canceled, no warehouse receipt line has been deleted or any quantity has been killed in the purchase order.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Proceso cancelado, no se ha borrado ninguna línea de recepción de almacén ni se ha matado ninguna cantidad en el pedido de compra."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page MatarRestosCompras - Action MatarResto - Method OnAction - NamedType lbErrorCancelarErr</note>
         </trans-unit>
         <trans-unit id="Page 2905503531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Capacity Work Center Matrix</source>
@@ -30003,6 +29973,11 @@
           <note from="Developer" annotates="general" priority="2">NLB="Exportar Tarifas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action Exportar Tarifas - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Action 1683585256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Serial No. information</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Información Nº. Serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action SerialInformation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1394728878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
@@ -30202,6 +30177,16 @@
           <source>Exportar Tarifas</source>
           <note from="Developer" annotates="general" priority="2">NLB="Exportar Tarifas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action Exportar Tarifas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 3043981960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Análisis Plan Renove</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Análisis Plan Renove"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action AnalisisPlanRenove - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 1683585256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Serial No. information</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Información Nº. Serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action SerialInformation - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Qty. en Stockkeeping Unit</source>
@@ -32048,6 +32033,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Sesiones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action Sessions - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 641495058 - Action 3043981960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 671847571">
+          <source>Análisis Plan Renove</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Análisis Plan Renove"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Serial No. Information List - Action AnalisisPlanRenove - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1259852724 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1511989657">
           <source>Attachment Document</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
@@ -32498,6 +32488,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Purch. Request less 200 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Method 331890788 - NamedType 124874091" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3276313895">
+          <source>Existing Serial information No. with costs.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Existen información Nº de series con costes."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Method CheckSerialInfo - NamedType lblErrorExist</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Method 2050879893 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3276313895">
           <source>¿Desea eliminar todos los calculos realizados sobre el producto %1?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar todos los calculos realizados sobre el producto %1?"</note>
@@ -32727,6 +32722,16 @@
           <source>Plastic Recycled packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado embalaje(kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Recycled plastic Qty. (kg) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3985362669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Renovate Plan (Cost. Serie)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plan Renove (Cost. Serie)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Renovate Plan - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3985362669 - Method 2126772001 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3276313895">
+          <source>The product must have %1 enabled.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El producto debe tener activado %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Renovate Plan - Method OnValidate - NamedType lblError</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Sales Classification</source>
@@ -36643,6 +36648,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM IT Ext Jobs Setup - Field user - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2976116842 - Field 3799121678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2440782939">
+          <source>Country/Region Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. país/región"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Item Tracing Buffer - Field Country Region/Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2976116842 - Field 2908670124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2440782939">
+          <source>EU Country/Region Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. país/región EU"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Item Tracing Buffer - Field Country/Region Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2976116842 - Field 3992104214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2440782939">
+          <source>EU Country/Region Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. país/región EU"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Item Tracing Buffer - Field EU Country/Region Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2049336900 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
           <source>ABC Cliente</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -36772,6 +36792,21 @@
           <source>Fixed Asset Job Task No</source>
           <note from="Developer" annotates="general" priority="2">ESP="A/F Nº Tarea Proyecto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM PurchInvLine - Field ZM Job Task No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3311986080 - Method 1948877006 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3311986080">
+          <source>Se a cambiar el coste del numero de serie a partir de la fecha indicada.\¿Desea continuar?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se a cambiar el coste del numero de serie a partir de la fecha indicada.\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Serial No. Information - Method OnValidate_SerialNoCost - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3311986080 - Field 2868794560 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2119038973">
+          <source>Last Date Update Cost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha act. Coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Serial No. Information - Field Last Date Update Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3311986080 - Field 1130878648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2119038973">
+          <source>Serial No. Cost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste Nº de serie"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Serial No. Information - Field Serial No. Cost - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2240314328 - Field 3398170104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2583759525">
           <source>Exportar BI Reclamaciones</source>
