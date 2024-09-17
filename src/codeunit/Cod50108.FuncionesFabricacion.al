@@ -1359,11 +1359,13 @@ codeunit 50108 "FuncionesFabricacion"
         recItem2."No." := pProductoDestino;
         recItem2.Validate(Description, pDescripcionNueva);
         recItem2."Unit Cost" := 0;
+        recItem2.GTIN := '';
 
         if not pCrearListaMateriales then
             recItem2.Validate("Production BOM No.", recItem."Production BOM No.");
 
         recItem2."Last Date Modified" := TODAY();
+
         recItem2.INSERT();
 
         // Variante

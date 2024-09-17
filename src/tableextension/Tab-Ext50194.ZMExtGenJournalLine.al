@@ -41,6 +41,8 @@ tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
         lblMaxRequest: Label 'El importe %1 es diferente de la solicitud %2.', comment = 'ESP="El importe %1 es diferente de la solicitud %2."';
         lblDimensionPurchLine: Label '¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?', comment = 'ESP="¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?"';
     begin
+        if Rec."Purch. Request less 200" = '' then
+            exit;
         PurchaseRequest.Get(Rec."Purch. Request less 200");
         if Rec."Purch. Request less 200" = xRec."Purch. Request less 200" then
             exit;
@@ -68,7 +70,7 @@ tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
             Until GenJnlLine.next() = 0;
 
         // Si el importe es el mismo que el de la solicitud                  
-        if abs(GenJnlLine.Amount) <> abs(PurchaseRequest.Amount) then
+        if abs(Rec.Amount) <> abs(PurchaseRequest.Amount) then
             Error(lblMaxRequest, abs(GenJnlLine.Amount), abs(PurchaseRequest.Amount));
 
     end;
