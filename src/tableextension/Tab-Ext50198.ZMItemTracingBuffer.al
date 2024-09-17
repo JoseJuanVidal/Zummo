@@ -7,18 +7,21 @@ tableextension 50198 "ZM Item Tracing Buffer" extends "Item Tracing Buffer"
             DataClassification = CustomerContent;
             Caption = 'Country/Region Code', comment = 'ESP="Cód. país/región"';
             TableRelation = "Country/Region";
+            Editable = false;
         }
         field(50101; "Country/Region Name"; text[50])
         {
-            Caption = 'EU Country/Region Code', comment = 'ESP="Cód. país/región EU"';
+            Caption = 'EU Country/Region Name', comment = 'ESP="Nombre país/región"';
             FieldClass = FlowField;
             CalcFormula = lookup("Country/Region".name where(Code = field("Country Region/Code")));
+            Editable = false;
         }
         field(50102; "EU Country/Region Code"; code[10])
         {
             Caption = 'EU Country/Region Code', comment = 'ESP="Cód. país/región EU"';
             FieldClass = FlowField;
             CalcFormula = lookup("Country/Region"."EU Country/Region Code" where(Code = field("Country Region/Code")));
+            Editable = false;
         }
     }
 

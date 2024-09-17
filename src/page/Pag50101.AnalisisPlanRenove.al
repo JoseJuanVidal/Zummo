@@ -248,6 +248,7 @@ page 50101 "Analisis Plan Renove"
 
     procedure AddPageRecord(Var ItemTrackingBuffer: Record "Item Tracing Buffer"; ItemLedgEntry: Record "Item Ledger Entry"; Initial: Boolean; LevelNo: Integer)
     var
+        CountryRegion: Record "Country/Region";
         Vendor: Record Vendor;
         Customer: Record Customer;
     begin
@@ -285,7 +286,9 @@ page 50101 "Analisis Plan Renove"
         ItemTrackingBuffer."Remaining Quantity" := ItemLedgEntry."Remaining Quantity";
         ItemTrackingBuffer.Positive := Initial;
         ItemTrackingBuffer."Parent Item Ledger Entry No." := ItemLedgEntry."Entry No.";
-        ItemTrackingBuffer."Variant Code" := ItemLedgEntry."Country/Region Code";
+        ItemTrackingBuffer."Country Region/Code" := ItemLedgEntry."Country/Region Code";
+        if not CountryRegion.Get(ItemLedgEntry."Country/Region Code") then
+            Clear(CountryRegion);
         ItemTrackingBuffer.Insert();
     end;
 
