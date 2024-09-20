@@ -26117,7 +26117,7 @@
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 1059489614" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delivery Note:</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="Bordereau d´expédition:"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Albarán:",FRA="BordeBreau d´expédition:"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType NoAlbaranLidl_Lbl</note>
           <target>Nº Albarán:</target>
         </trans-unit>
@@ -26156,6 +26156,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Núm.",FRA="Nº de Facture"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType NumeroCaptionLbl</note>
           <target>Núm.</target>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3116022030" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proforma Invoice:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Fac. Proforma:",FRA="Numéro Devis:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType OfertaCliente_Lbl</note>
+          <target>Nº Fac. Proforma:</target>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 4038458895" size-unit="char" translate="yes" xml:space="preserve">
           <source>Operation secured in</source>

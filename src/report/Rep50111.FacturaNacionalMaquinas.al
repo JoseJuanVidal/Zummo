@@ -112,6 +112,7 @@ report 50111 "FacturaNacionalMaquinas"
             column(NoPedido_Lbl; NoPedido_Lbl)
             {
             }
+            column(OfertaCliente_Lbl; OfertaCliente_Lbl) { }
             column(facturaLidl; facturaLidl)
             {
 
@@ -727,20 +728,16 @@ report 50111 "FacturaNacionalMaquinas"
                         column(LineaComentarioSerie; LineaComentarioSerie) { }
                         column(numPedido; numPedido)
                         {
-
                         }
-
+                        column(NumOferta; NumOferta) { }
                         column(numPedidoProveedor; numPedidoProveedor)
                         {
-
                         }
                         column(fechaPedido; format(fechaPedido))
                         {
-
                         }
                         column(fechaAlbaran; format(fechaAlbaran))
                         {
-
                         }
                         //Datos lineas cargo
                         column(EsCargo; EsCargo) { }
@@ -1320,6 +1317,7 @@ report 50111 "FacturaNacionalMaquinas"
                                 type := Type::Item;
 
                             numPedido := '';
+                            NumOferta := '';
                             numPedidoProveedor := '';
                             codAlb := '';
 
@@ -1344,6 +1342,7 @@ report 50111 "FacturaNacionalMaquinas"
                             IF codAlb <> '' THEN begin
                                 if recCabAlbaran.Get(codAlb) then begin
                                     numPedido := recCabAlbaran."Order No.";
+                                    NumOferta := recCabAlbaran."Quote No.";
                                     numPedidoProveedor := recCabAlbaran."External Document No.";
                                     fechaPedido := recCabAlbaran."Order Date";
                                     fechaAlbaran := recCabAlbaran."Document Date";
@@ -1390,6 +1389,7 @@ report 50111 "FacturaNacionalMaquinas"
                                     IF codAlb <> '' THEN
                                         if recCabAlbaran.Get(codAlb) then begin
                                             numPedido := recCabAlbaran."Order No.";
+                                            NumOferta := recCabAlbaran."Quote No.";
                                             numPedidoProveedor := recCabAlbaran."External Document No.";
                                             fechaPedido := recCabAlbaran."Order Date";
                                             fechaAlbaran := recCabAlbaran."Document Date";
@@ -2358,6 +2358,7 @@ report 50111 "FacturaNacionalMaquinas"
         NoSerie_Value: Code[50];
         numPedido: Code[20];
         numPedidoProveedor: code[35];
+        NumOferta: code[20];
         NoSerieEnsamblado: code[50];
         MoreLines: Boolean;
         NoOfCopies: Integer;
@@ -2518,7 +2519,8 @@ report 50111 "FacturaNacionalMaquinas"
         PortesNacionalLbl: Label 'NATIONAL PORTES', Comment = 'ESP="PORTES NACIONAL"';
         NoAlbaran_Lbl: Label 'Delivery Note:', Comment = 'ESP="Nº Albarán:",FRA="Bordereau d´expédition:"';
         NoPedido_Lbl: Label 'Order number:', Comment = 'ESP="Nº Pedido:",FRA="Nº commande:"';
-        NoAlbaranLidl_Lbl: Label 'Delivery Note:', Comment = 'ESP="Nº Albarán:",FRA="Bordereau d´expédition:"';
+        OfertaCliente_Lbl: Label 'Proforma Invoice:', comment = 'ESP="Nº Fac. Proforma:",FRA="Numéro Devis:"';
+        NoAlbaranLidl_Lbl: Label 'Delivery Note:', Comment = 'ESP="Nº Albarán:",FRA="BordeBreau d´expédition:"';
         NoPedidoLidl_Lbl: Label 'ProShop Order No.:', Comment = 'ESP="Nº Pedido ProShop:"';
         NoPedidoInternoProveedorLidl_Lbl: label 'Internal vendor order No.', comment = 'ESP="Nº Pedido interno del proveedor"';
         Tel_Lbl: Label 'Phone:', Comment = 'ESP="Tel:",FRA="Tél:"';

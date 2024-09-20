@@ -9006,6 +9006,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType NumeroCaptionLbl</note>
           <target>Nº de Facture</target>
         </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3116022030" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proforma Invoice:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Fac. Proforma:",FRA="Numéro Devis:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType OfertaCliente_Lbl</note>
+          <target>Numéro Devis:</target>
+        </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 2906319183" size-unit="char" translate="yes" xml:space="preserve">
           <source>Page %1 of %2</source>
           <note from="Developer" annotates="general" priority="2">ESP="Página %1 de %2",FRA="Pag. %1 de %2"</note>
