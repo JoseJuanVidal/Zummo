@@ -2,7 +2,7 @@ codeunit 50106 "SalesEvents"
 {
     Permissions = tabledata "Sales Shipment Header" = rm, tabledata "G/L Entry" = m, tabledata "Sales Invoice Header" = m, tabledata "Sales Cr.Memo Header" = m,
         tabledata "Sales Invoice Line" = m, tabledata "Sales Cr.Memo Line" = m, tabledata "Item Ledger Entry" = m, tabledata "Sales Shipment Line" = rmid,
-        tabledata "Purch. Rcpt. Line" = rmid, tabledata "Value Entry" = rmid;
+        tabledata "Purch. Rcpt. Line" = rmid, tabledata "Value Entry" = rmid, tabledata "Post Value Entry to G/L" = rmid;
 
     [EventSubscriber(ObjectType::Page, Page::"Posted Purchase Receipt", 'OnAfterValidateEvent', 'Vendor Shipment No.', true, true)]
     local procedure P_136_OnAfterValidateEvent(var Rec: Record "Purch. Rcpt. Header"; var xRec: Record "Purch. Rcpt. Header")
