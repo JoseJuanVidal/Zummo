@@ -159,6 +159,7 @@ page 17214 "ZM Post Value Entry to G/L"
 
     var
         ValueEntry: Record "Value Entry";
+        SalesEvents: Codeunit "SalesEvents";
         InitDate: Date;
         EndDate: Date;
         NewDate: date;
@@ -175,11 +176,13 @@ page 17214 "ZM Post Value Entry to G/L"
 
     local procedure ChangeValueEntryPostingDate()
     begin
-        ValueEntry.ChangeValueEntryPostingDate(InitDate, EndDate, NewDate);
+        Clear(SalesEvents);
+        SalesEvents.ChangeValueEntryPostingDate(InitDate, EndDate, NewDate);
     end;
 
     local procedure ReverseValueEntryPostingDate()
     begin
-        ValueEntry.ResetValueEntryPostingDate();
+        Clear(SalesEvents);
+        SalesEvents.ResetValueEntryPostingDate();
     end;
 }
