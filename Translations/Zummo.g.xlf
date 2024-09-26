@@ -36428,6 +36428,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Pedidos de compra esperados hasta hoy"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseBasicCue - Field Exp. Purch. Orders Until Today 2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4014689059 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
+          <source>Blocked</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Bloqueado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field Blocked - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4014689059 - Field 1240338501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
           <source>Comentario</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>

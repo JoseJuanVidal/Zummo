@@ -35,6 +35,11 @@ page 50118 "Consulta de Inventario"
                     ApplicationArea = All;
                     Editable = false;
                 }
+                field(Blocked; Blocked)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
                 field(Familia; recItem.desFamilia_btc)
                 {
                     ApplicationArea = All;
@@ -227,6 +232,7 @@ page 50118 "Consulta de Inventario"
 
     local procedure SetPageData()
     var
+        Item: Record Item;
         WarehouseEntry: Record "Warehouse Entry";
     begin
         if globalAlmacen <> '' then
@@ -240,6 +246,8 @@ page 50118 "Consulta de Inventario"
 
         LotInventory.OPEN;
         WHILE LotInventory.READ DO BEGIN
+            if not item.Get(LotInventory.Item_No) then
+                clear(item);
             Cont += 1;
             "Entry No." := Cont;  //LotInventory.Entry_No_;
             "Item No." := LotInventory.Item_No;
@@ -266,6 +274,7 @@ page 50118 "Consulta de Inventario"
             "Source Type" := WhseEntry."Source Type";
             "Source Subtype" := WhseEntry."Source Subtype";
             "Source Line No." := WhseEntry."Source Line No.";
+            Blocked := item.Blocked;
             // Cod. Cliente que esta en la cabecera de recepcion  
             CodCliente := '';
             case "Source Type" of

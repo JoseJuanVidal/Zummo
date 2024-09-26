@@ -29,5 +29,9 @@ tableextension 50144 "WarehouseEntry" extends "Warehouse Entry"  //7312
         {
             Caption = 'Customer No.', comment = 'ESP=Cód. Cliente"';
         }
+        field(50112; Blocked; Boolean)
+        {
+            Caption = 'Blocked', comment = 'ESP=Bloqueado"';
+        }
     }
 }
