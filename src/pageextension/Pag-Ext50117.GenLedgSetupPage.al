@@ -21,6 +21,26 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                     ApplicationArea = all;
                 }
             }
+            group(ABERTIA)
+            {
+                Caption = 'Conexión SQL ABERTIA', comment = 'ESP="Conexión SQL ABERTIA"';
+                field("Data Source"; "Data Source")
+                {
+                    ApplicationArea = all;
+                }
+                field("Initial Catalog"; "Initial Catalog")
+                {
+                    ApplicationArea = all;
+                }
+                field("User ID"; "User ID")
+                {
+                    ApplicationArea = all;
+                }
+                field(Password; Password)
+                {
+                    ApplicationArea = all;
+                }
+            }
         }
         addafter("Allow Posting To")
         {

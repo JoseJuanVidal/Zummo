@@ -32649,6 +32649,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Control PaisClienteProv - Property Caption</note>
           <target>País</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Control 1639326268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Conexión SQL ABERTIA</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conexión SQL ABERTIA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Control ABERTIA - Property Caption</note>
+          <target>Conexión SQL ABERTIA</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Control 518354779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Bitec</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bitec"</note>
@@ -35588,6 +35594,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension FinanceCue - Field ProdPdteValidar_btc - Property Caption</note>
           <target>Productos pdtes validar</target>
         </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Method 2662807180 - NamedType 3649616787" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 820300810">
+          <source>Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Method AbertiaTABLECONNECTION - NamedType lblConnectionString</note>
+        </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 246739618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>BloqueoCompras</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueo Compras"</note>
@@ -35606,6 +35617,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Cta. Contable IVA Recuperacion - Property Caption</note>
           <target>Cta. Contable IVA Recuperación</target>
         </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 188337343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Data Source</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Data Source"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Data Source - Property Caption</note>
+          <target>Data Source</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 2061800247 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Initial Catalog</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Initial Catalog"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Initial Catalog - Property Caption</note>
+          <target>Initial Catalog</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 2575460289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Password</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Password"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Password - Property Caption</note>
+          <target>Password</target>
+        </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 2624616620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Proveedor varios IVA Recuperación</source>
           <note from="Developer" annotates="general" priority="2">ESP="Proveedor varios IVA Recuperación"</note>
@@ -35617,6 +35646,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Calcular el tipo de cambio por fecha de emisión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field TipoCambioPorFechaEmision_btc - Property Caption</note>
           <target>Calcular el tipo de cambio por fecha de emisión</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>User ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="User ID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field User ID - Property Caption</note>
+          <target>User ID</target>
         </trans-unit>
         <trans-unit id="TableExtension 1065034950 - Field 942837643 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4274826855">
           <source>Saldo Apertura</source>

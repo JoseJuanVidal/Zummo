@@ -50,13 +50,16 @@ table 17459 "ABERTIA GL Budget"
             Rec.ID := CreateGuid();
     end;
 
+    var
+        GenLedgerSetup: Record "General Ledger Setup";
+
     procedure CreateTableConnection()
     begin
+        GenLedgerSetup.Get();
         IF HASTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI') THEN
             UNREGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
 
-        REGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI',
-            'Data Source=zummo.ddns.net;Initial Catalog=ReportingZummo;User ID=jvidal;Password=Bario5622!');
+        REGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI', GenLedgerSetup.AbertiaTABLECONNECTION());
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
