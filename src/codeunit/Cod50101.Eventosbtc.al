@@ -545,13 +545,14 @@ codeunit 50101 "Eventos_btc"
                     // si coincide el importe y si ya está facturada
                     if PurchaseHeader.Invoice then begin
                         if PurchaseHeader."Purch. Request less 200" <> '' then begin
-                            PurchaseHeader.CalcFields("Amount Including VAT");
+                            PurchaseHeader.CalcFields(Amount, "Amount Including VAT");
                             PurchaseRequestsless200.Reset();
                             PurchaseRequestsless200.Get(PurchaseHeader."Purch. Request less 200");
                             PurchaseRequestsless200.TestField(Status, PurchaseRequestsless200.Status::Approved);
                             if PurchaseRequestsless200."Vendor No." <> '' then
                                 PurchaseRequestsless200.TestField("Vendor No.", PurchaseHeader."Buy-from Vendor No.");
-                            if PurchaseHeader."Amount Including VAT" <> PurchaseRequestsless200.Amount then
+                            if (PurchaseHeader."Amount Including VAT" <> PurchaseRequestsless200.Amount) and
+                                (PurchaseHeader.Amount <> PurchaseRequestsless200.Amount) then
                                 Error(lblPurchRequestless200, PurchaseRequestsless200."No.", PurchaseRequestsless200.Amount);
 
                             PurchInvHeader.Reset();
