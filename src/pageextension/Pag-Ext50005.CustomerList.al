@@ -260,25 +260,27 @@ pageextension 50005 "CustomerList" extends "Customer List"
 
                         // Confirmamos Cerrar el credito
                         Input.GetDatos(Aseguradora, Importe, FechaIni, Suplemento);
-                        if Customer.Get(rec."No.") then begin
-                            // si tiene credito lo finalizamos
-                            if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '' then begin
-                                if not Confirm(lblConfirm, false, Customer."Cred_ Max_ Aseg. Autorizado Por_btc", customer."Credito Maximo Aseguradora_btc") then
-                                    Exit;
-                                Funciones.FinCustomerCredit(Customer, CalcDate('-1D', FechaIni));
-                                Customer.Get(rec."No.");
-                            end;
+                        CurrPage.SetSelectionFilter(Customer);
+                        if Customer.FindFirst() then
+                            repeat
+                                // si tiene credito lo finalizamos
+                                if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '' then begin
+                                    if not Confirm(lblConfirm, false, Customer."Cred_ Max_ Aseg. Autorizado Por_btc", customer."Credito Maximo Aseguradora_btc") then
+                                        Exit;
+                                    Funciones.FinCustomerCredit(Customer, CalcDate('-1D', FechaIni));
+                                    Customer.Get(rec."No.");
+                                end;
 
-                            Funciones.AsigCreditoAeguradora(Customer."No.", Customer.Name, Aseguradora, Importe, Suplemento, FechaIni);
+                                Funciones.AsigCreditoAeguradora(Customer."No.", Customer.Name, Aseguradora, Importe, Suplemento, FechaIni);
 
-                            Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := Aseguradora;
-                            Customer."Credito Maximo Aseguradora_btc" := Importe;
-                            Customer.Suplemento_aseguradora := Suplemento;
-                            Customer.validate("Credit Limit (LCY)", Customer."Credito Maximo Aseguradora_btc" + Customer."Credito Maximo Interno_btc");
-                            Customer.Modify();
-                            CurrPage.Update();
-                        end;
-                    end
+                                Customer."Cred_ Max_ Aseg. Autorizado Por_btc" := Aseguradora;
+                                Customer."Credito Maximo Aseguradora_btc" := Importe;
+                                Customer.Suplemento_aseguradora := Suplemento;
+                                Customer.validate("Credit Limit (LCY)", Customer."Credito Maximo Aseguradora_btc" + Customer."Credito Maximo Interno_btc");
+                                Customer.Modify();
+                            until Customer.Next() = 0;
+                        CurrPage.Update();
+                    end;
                 end;
             }
             action(FinCredito)
