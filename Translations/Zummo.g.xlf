@@ -29393,6 +29393,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action DarCredito - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 875530423 - Method 1377591017 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 363045002">
+          <source>Cód. Cliente: #1#################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente: #1#################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action DarCredito - Method OnAction - NamedType lblDialog</note>
+        </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 2554152333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Finalizar Credito</source>
           <note from="Developer" annotates="general" priority="2">ESP="Finalizar Credito"</note>

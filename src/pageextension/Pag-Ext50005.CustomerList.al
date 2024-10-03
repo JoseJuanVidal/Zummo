@@ -250,7 +250,10 @@ pageextension 50005 "CustomerList" extends "Customer List"
                     Aseguradora: code[20];
                     Suplemento: code[20];
                     Importe: Decimal;
+                    FinCredit: Boolean;
+                    Window: Dialog;
                     lblConfirm: Label 'Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?', Comment = 'ESP="Se tiene que finalizar el crédito actual, %1 %2\¿Desea Continuar?"';
+                    lblDialog: Label 'Cód. Cliente: #1#################', comment = 'ESP="Cód. Cliente: #1#################"';
                 begin
                     // pedimos los datos de Fecha Ini
                     Input.SetShowIni();
@@ -261,14 +264,18 @@ pageextension 50005 "CustomerList" extends "Customer List"
                         // Confirmamos Cerrar el credito
                         Input.GetDatos(Aseguradora, Importe, FechaIni, Suplemento);
                         CurrPage.SetSelectionFilter(Customer);
+                        Window.Open(lblDialog);
                         if Customer.FindFirst() then
                             repeat
+                                Window.Update(1, Customer."No.");
                                 // si tiene credito lo finalizamos
                                 if Customer."Cred_ Max_ Aseg. Autorizado Por_btc" <> '' then begin
-                                    if not Confirm(lblConfirm, false, Customer."Cred_ Max_ Aseg. Autorizado Por_btc", customer."Credito Maximo Aseguradora_btc") then
-                                        Exit;
+                                    if not FinCredit then
+                                        if not Confirm(lblConfirm, false, Customer."Cred_ Max_ Aseg. Autorizado Por_btc", customer."Credito Maximo Aseguradora_btc") then
+                                            Exit;
+                                    FinCredit := true;
                                     Funciones.FinCustomerCredit(Customer, CalcDate('-1D', FechaIni));
-                                    Customer.Get(rec."No.");
+
                                 end;
 
                                 Funciones.AsigCreditoAeguradora(Customer."No.", Customer.Name, Aseguradora, Importe, Suplemento, FechaIni);
@@ -279,6 +286,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
                                 Customer.validate("Credit Limit (LCY)", Customer."Credito Maximo Aseguradora_btc" + Customer."Credito Maximo Interno_btc");
                                 Customer.Modify();
                             until Customer.Next() = 0;
+                        Window.Close();
                         CurrPage.Update();
                     end;
                 end;

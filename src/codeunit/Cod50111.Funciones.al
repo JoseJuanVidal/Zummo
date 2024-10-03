@@ -1072,7 +1072,7 @@ codeunit 50111 "Funciones"
         end
     end;
 
-    procedure FinCustomerCredit(Customer: Record Customer; DateFin: date)
+    procedure FinCustomerCredit(VAR Customer: Record Customer; DateFin: date)
     var
         HistAseguradora: Record "STH Hist. Aseguradora";
     begin
