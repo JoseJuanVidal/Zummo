@@ -10,6 +10,13 @@ pageextension 50076 "ZM Job Ledger Entries" extends "Job Ledger Entries"
                 ApplicationArea = all;
             }
         }
+        addafter("Work Type Code")
+        {
+            field("Job Category"; "Job Category")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
     actions
     {

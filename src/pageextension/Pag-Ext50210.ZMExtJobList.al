@@ -2,7 +2,14 @@ pageextension 50210 "ZM Ext Job List" extends "Job List"
 {
     layout
     {
-        // Add changes to page layout here
+        addafter(Status)
+        {
+            field("Ending Date"; "Ending Date")
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+        }
     }
 
     actions

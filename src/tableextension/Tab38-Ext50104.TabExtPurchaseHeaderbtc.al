@@ -72,6 +72,13 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         {
             Caption = 'Job Preview Mode', Comment = 'ESP="Registro Preview mode"';
         }
+
+        field(50035; "Job Category"; code[20])
+        {
+            Caption = 'Job Category', Comment = 'ESP="Categoría proyecto"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(tabla), TipoTabla = const("Job Clasification"));
+
+        }
         field(50110; "ZM Job No."; code[20])
         {
             Caption = 'Fixed Asset Job No.', Comment = 'ESP="A/F Nº Proyecto"';

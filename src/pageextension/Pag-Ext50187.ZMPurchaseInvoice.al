@@ -41,6 +41,11 @@ pageextension 50187 "ZM PurchaseInvoice" extends "Purchase Invoice"
                 ApplicationArea = all;
                 Importance = Standard;
             }
+            field("Job Category"; "Job Category")
+            {
+                ApplicationArea = all;
+                Importance = Additional;
+            }
         }
         addlast(Content)
         {

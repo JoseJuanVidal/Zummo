@@ -1429,6 +1429,10 @@ codeunit 50101 "Eventos_btc"
         JobSetup.Get();
         if JobSetup."Resource No. Expenses" = '' then
             exit;
+        if PurchInvLine."ZM Job No." = '' then
+            exit;
+        if PurchInvLine."ZM Job Task No." = '' then
+            exit;
         JobJournalLine.Reset();
         JobJournalLine.SetRange("Journal Template Name", JobSetup."Expenses Job Jnl. Template");
         JobJournalLine.SetRange("Journal Batch Name", JobSetup."Expenses Journal Batch Name");
@@ -1452,9 +1456,16 @@ codeunit 50101 "Eventos_btc"
         JobJournalLine.Validate("Unit Cost", PurchInvLine."Unit Cost");
         JobJournalLine.Validate("Line Discount %", PurchInvLine."Line Discount %");
         JobJournalLine.Validate("Unit Price", 0);
+        JobJournalLine.Validate("Job Category", PurchaseHeader."Job Category");
         JobJournalLine.Insert();
 
         JobJnlPostBatch.Run(JobJournalLine)
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Job Jnl.-Post Line", 'OnBeforeJobLedgEntryInsert', '', true, true)]
+    local procedure JobJnlPostLine_OnBeforeJobLedgEntryInsert(JobJournalLine: Record "Job Journal Line"; var JobLedgerEntry: Record "Job Ledger Entry")
+    begin
+        JobLedgerEntry."Job Category" := JobJournalLine."Job Category";
     end;
 
     local procedure CheckPurchaseHeaderJobNo(var PurchaseHeader: Record "Purchase Header"; PreviewMode: Boolean)

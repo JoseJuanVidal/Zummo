@@ -7289,8 +7289,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones"</note>
+          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 1397213012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -32728,6 +32728,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Es Material"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Job Ledger Entry - Field Es Material - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 53801266 - Field 4186134217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 53801266">
+          <source>Job Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Categoría proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Job Ledger Entry - Field Job Category - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3891454143 - Field 832272023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Almacén IE</source>
           <note from="Developer" annotates="general" priority="2">ESP="Almacén IE"</note>
@@ -33027,6 +33032,26 @@
           <source>CONSULTIA Id Factura</source>
           <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Id Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field CONSULTIA N Factura - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3135574534 - Field 4186134217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Job Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Categoría proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field Job Category - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3135574534 - Field 1908272084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Job No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field Job No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3135574534 - Field 3199494858 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Job Preview Mode</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro Preview mode"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field Job Preview Mode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3135574534 - Field 561421623 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Job Task No</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Tarea Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field Job Task No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3135574534 - Field 1603699929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
           <source>Transaction No.</source>
@@ -35683,6 +35708,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Mas Temprana"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Fecha Mas Temprana - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 4186134217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Job Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Categoría proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Job Category - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 1908272084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Job No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Proyecto"</note>
@@ -36412,6 +36442,11 @@
           <source>EU Country/Region Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. país/región EU"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Item Tracing Buffer - Field EU Country/Region Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1488885674 - Field 4186134217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 938095748">
+          <source>Job Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Categoría proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Job Journal Line Ext - Field Job Category - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2049336900 - Field 1347559096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3940826073">
           <source>ABC Cliente</source>
