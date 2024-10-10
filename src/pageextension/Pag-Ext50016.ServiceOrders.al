@@ -68,8 +68,6 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
     {
         addfirst(Processing)
         {
-
-
             action(Movimientos)
             {
                 ApplicationArea = all;
@@ -129,9 +127,23 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
                     Funciones: Codeunit Funciones;
                     tempItemLedgerEntry: Record "Item Ledger Entry" temporary;
                 begin
-
                     Funciones.ObtenerPedServicioxSerie(Rec);
+                end;
+            }
+            action(UpdateHistReclamacionesVenta)
+            {
+                ApplicationArea = all;
+                Caption = 'Act. Hist. Reclamaciones', comment = 'ESP="Act. Hist. Reclamaciones"';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = AddToHome;
 
+                trigger OnAction()
+                var
+                    HistReclamacion: Record "ZM Hist. Reclamaciones ventas";
+                begin
+                    HistReclamacion.UpdateServiceOrder(Rec);
                 end;
             }
         }

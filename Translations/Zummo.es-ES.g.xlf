@@ -613,6 +613,586 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesCustomer - Field Transport Method - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2663694671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABERTIA SalesFacturas</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3315188350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Allow Invoice Disc_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Allow Invoice Disc_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 4135453479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Allow Line Disc_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Allow Line Disc_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1650118938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount Including VAT</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Amount Including VAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 4126558324 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Appl_-from Item Entry</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Appl_-from Item Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3157988239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Appl_-to Item Entry</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Appl_-to Item Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3532935625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Area</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Area - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3179077320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AREAMANAGER</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field AREAMANAGER - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 977097763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attached to Line No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Attached to Line No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2851216481 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bill-to Customer No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Bill-to Customer No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2814799924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bin Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Bin Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1717994695 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blanket Order Line No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Blanket Order Line No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 4254194165 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blanket Order No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Blanket Order No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1424530041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ClienteActividad_btc</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field ClienteActividad_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 897919964 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>clientereporting_btc</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field clientereporting_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3857047654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country_Region Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Country_Region Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 499448942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>County</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field County - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1213946354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cross-Reference No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Cross-Reference No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 606076036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cross-Reference Type</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Cross-Reference Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1987204162 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cross-Reference Type No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Cross-Reference Type No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2570520907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Disc_ Group</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Customer Disc_ Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2725149570 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Price Group</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Customer Price Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 866715734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deferral Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Deferral Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3483029697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delegado_btc</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Delegado_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2223214263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Depreciation Book Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Depreciation Book Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3547881639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Depr_ until FA Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Depr_ until FA Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 47657272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description 2</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Description 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3322554545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimension Set ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Dimension Set ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3620301315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Document No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 121744499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Drop Shipment</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Drop Shipment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2385065524 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Duplicate in Depreciation Book</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Duplicate in Depreciation Book - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 4240675827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EC Difference</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field EC Difference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1793777259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EC _</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field EC _ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2923940816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exit Point</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Exit Point - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3942279885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FA Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field FA Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2360946193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen_ Bus_ Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Gen_ Bus_ Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2305088670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen_ Prod_ Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Gen_ Prod_ Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 4239513174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weight</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Gross Weight - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 4202924699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>grupocliente_btc</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field grupocliente_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1329258699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IC Partner Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field IC Partner Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1303275385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IC Partner Reference</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field IC Partner Reference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1839302094 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IC Partner Ref_ Type</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field IC Partner Ref_ Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>InsideSales_btc</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field InsideSales_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2911956465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inv_ Discount Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Inv_ Discount Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1037119892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Category Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Item Category Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2183106724 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Disc_ Group</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Item Disc_ Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2775566937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Contract Entry No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Job Contract Entry No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3973119835 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Job No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2791541168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Task No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Job Task No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3582421358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Line Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1206454073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line Discount Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Line Discount Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3054224238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line Discount Calculation</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Line Discount Calculation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2758089280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line Discount _</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Line Discount _ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1255976204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Line No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2161572060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Location Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3088522385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Net Weight</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Net Weight - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3612309607 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre Cliente</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Nombre Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1986218713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nonstock</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Nonstock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1066792394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 269548506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Line No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Order Line No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 138084492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Order No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2364745213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pais</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Pais - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1924383468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Discount _</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Payment Discount _ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 294558801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pmt_ Discount Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Pmt_ Discount Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1875954183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pmt_ Disc_ Given Amount (Old)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Pmt_ Disc_ Given Amount (Old) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3660300303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Post Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Post Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1915851633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 156963205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prepayment Line</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Prepayment Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3697858709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price description</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Price description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 231643163 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product Group Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Product Group Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1161320773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchasing Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Purchasing Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1742226573 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Qty_ per Unit of Measure</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Qty_ per Unit of Measure - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3179217921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity (Base)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Quantity (Base) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2247850105 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Responsibility Center</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Responsibility Center - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1576505637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Return Reason Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Return Reason Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2020136844 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>salesperson code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field salesperson code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 270551758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sell-to Customer No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Sell-to Customer No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 4112852368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment Date</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Shipment Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3734283772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment Line No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Shipment Line No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2295089978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment No_</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Shipment No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1577567912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shortcut Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Shortcut Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1003760969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shortcut Dimension 2 Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Shortcut Dimension 2 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 349881582 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>subcliente_btc</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field subcliente_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2283884360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>System-Created Entry</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field System-Created Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 305562489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Area Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Tax Area Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 495755103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Category</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Tax Category - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2552458873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Group Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Tax Group Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 53839102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Liable</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Tax Liable - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1267997203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transaction Specification</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Transaction Specification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3773776616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transaction Type</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Transaction Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3193866272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transport Method</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Transport Method - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 381961415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Cost</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Unit Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 68186622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Cost (LCY)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Unit Cost (LCY) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1920046521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Unit of Measure - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2490178170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure (Cross Ref_)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Unit of Measure (Cross Ref_) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2385270358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Unit of Measure Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Price</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Unit Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 4034345114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Volume</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Unit Volume - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1631894181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Units per Parcel</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Units per Parcel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 607461957 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Use Duplication List</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Use Duplication List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3450651614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Variant Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 904390814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Base Amount</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field VAT Base Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3542946937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Bus_ Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field VAT Bus_ Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2971014054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Calculation Type</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field VAT Calculation Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2162283589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Clause Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field VAT Clause Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2992823416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Difference</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field VAT Difference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2534656220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Identifier</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field VAT Identifier - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2995274006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Prod_ Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field VAT Prod_ Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 4003712056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT _</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field VAT _ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 3618073952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Work Type Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Work Type Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2930499543 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ABERTIA Productos</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -732,6 +1312,176 @@
           <source>ValidadoContabiliad_btc</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesItem - Field ValidadoContabiliad_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABERTIA SalesPedidos</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1253774827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. AÑO</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. AÑO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3797044822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. AÑO MES</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. AÑO MES - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 4151066185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. FECHA</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. FECHA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 973166384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. FECHA ALTA PEDIDO</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. FECHA ALTA PEDIDO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 4114027216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. FECHA PROMETIDA ENTREGA</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. FECHA PROMETIDA ENTREGA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3604293939 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. FECHA REQUERIDA ENTREGA</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. FECHA REQUERIDA ENTREGA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2269184887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. MES</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. MES - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 646778981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. SEMANA</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. SEMANA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 336179611 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. TRIMESTRE</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. TRIMESTRE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 723191529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C6. CLIENTE COD</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field C6. CLIENTE COD - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3472657698 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C6. CLIENTE NOMBRE</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field C6. CLIENTE NOMBRE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 992855616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>D3. AGENTE NOMBRE</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field D3. AGENTE NOMBRE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2327947930 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>E6. ARTICULO COD</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field E6. ARTICULO COD - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 275649649 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>E6. ARTICULO DESC</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field E6. ARTICULO DESC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3620744897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G3. PEDIDO NUM</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field G3. PEDIDO NUM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2778298579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G4. PEDIDO LINEA</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field G4. PEDIDO LINEA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1169613986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G8. DOCUMENT TYPE</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field G8. DOCUMENT TYPE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 4236780518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD A ENVIAR</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD A ENVIAR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 736062227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD A FACTURAR</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD A FACTURAR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 219654184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD ENVIADA</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD ENVIADA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 4016822090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD ENVIADA NO FACTURADA</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD ENVIADA NO FACTURADA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2315827953 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD FACTURADA</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD FACTURADA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2452470252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD PENDIENTE</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD PENDIENTE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3591530927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD TOTAL PEDIDO</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD TOTAL PEDIDO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1269712065 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. UNIDAD MEDIDA</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. UNIDAD MEDIDA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2993218531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K2. PVP</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K2. PVP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1236995381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K4. DESC CLIENTE (D2)</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K4. DESC CLIENTE (D2) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3113500260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K4. DESC TOTAL OPERACION</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K4. DESC TOTAL OPERACION - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1151291763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K5. VENTA NETA CLIENTES</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K5. VENTA NETA CLIENTES - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1740254367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K6. COSTE</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K6. COSTE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1416376563 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>X1. CUSTOMER DISCOUNT GROUP</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field X1. CUSTOMER DISCOUNT GROUP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2535539339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>X1. CUSTOMER PRICE GROUP</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field X1. CUSTOMER PRICE GROUP - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3967757774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account Translation</source>
@@ -13105,11 +13855,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control SalesCustomer - Property Caption</note>
           <target>Nº Clientes</target>
         </trans-unit>
+        <trans-unit id="Page 2822793219 - Control 1829282799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Facturas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Facturas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control SalesFacturas - Property Caption</note>
+          <target>Nº Facturas</target>
+        </trans-unit>
         <trans-unit id="Page 2822793219 - Control 873949815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nº Productos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control SalesItem - Property Caption</note>
           <target>Nº Productos</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Control 2712171076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Ofertas/Pedidos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Ofertas/Pedidos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control SalesPedidos - Property Caption</note>
+          <target>Nº Ofertas/Pedidos</target>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Control 198641044 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>
@@ -13175,6 +13937,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateGLAccount - Method OnAction - NamedType lblConfirm</note>
           <target>¿Desea actualizar las cuentas contables?</target>
         </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 3019364733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update GL Budget Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. Movs. presup. contabiladad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateGLBudgetEntry - Property Caption</note>
+          <target>Act. Movs. presup. contabiladad</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 3019364733 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los movs. de presupuestos contabilidad?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movs. de presupuestos contabilidad?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateGLBudgetEntry - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea actualizar los movs. de presupuestos contabilidad?</target>
+        </trans-unit>
         <trans-unit id="Page 2822793219 - Action 2035599090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update GL Entry</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar movs. contabiladad"</note>
@@ -13210,6 +13984,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los Clientes?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesCustomer - Method OnAction - NamedType lblConfirm</note>
           <target>¿Desea actualizar los Clientes?</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 994691048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Facturas Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesFacturas - Property Caption</note>
+          <target>Actualizar Facturas Ventas</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 994691048 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los Facturas Ventas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los Facturas Ventas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesFacturas - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea actualizar los Facturas Ventas?</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 901992307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Sales Quote/Order</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Ofertas/Pedidos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesPedidos - Property Caption</note>
+          <target>Actualizar Ofertas/Pedidos</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 901992307 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar las Ofertas/Pedidos Ventas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las Ofertas/Pedidos Ventas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesPedidos - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea actualizar las Ofertas/Pedidos Ventas?</target>
         </trans-unit>
         <trans-unit id="Page 2965806569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Accounting Manager</source>

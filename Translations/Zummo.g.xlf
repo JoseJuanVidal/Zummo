@@ -1013,10 +1013,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Return Reason Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2663694671 - Field 3917063247 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>salesperson code]</source>
+        <trans-unit id="Table 2663694671 - Field 2020136844 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>salesperson code</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field salesperson code] - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field salesperson code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2663694671 - Field 270551758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sell-to Customer No_</source>
@@ -1312,6 +1312,176 @@
           <source>ValidadoContabiliad_btc</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesItem - Field ValidadoContabiliad_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABERTIA SalesPedidos</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1253774827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. AÑO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. AÑO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3797044822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. AÑO MES</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. AÑO MES - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 4151066185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. FECHA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. FECHA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 973166384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. FECHA ALTA PEDIDO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. FECHA ALTA PEDIDO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 4114027216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. FECHA PROMETIDA ENTREGA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. FECHA PROMETIDA ENTREGA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3604293939 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. FECHA REQUERIDA ENTREGA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. FECHA REQUERIDA ENTREGA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2269184887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. MES</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. MES - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 646778981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. SEMANA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. SEMANA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 336179611 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00. TRIMESTRE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00. TRIMESTRE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 723191529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C6. CLIENTE COD</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field C6. CLIENTE COD - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3472657698 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C6. CLIENTE NOMBRE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field C6. CLIENTE NOMBRE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 992855616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>D3. AGENTE NOMBRE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field D3. AGENTE NOMBRE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2327947930 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>E6. ARTICULO COD</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field E6. ARTICULO COD - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 275649649 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>E6. ARTICULO DESC</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field E6. ARTICULO DESC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3620744897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G3. PEDIDO NUM</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field G3. PEDIDO NUM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2778298579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G4. PEDIDO LINEA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field G4. PEDIDO LINEA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1169613986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G8. DOCUMENT TYPE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field G8. DOCUMENT TYPE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 4236780518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD A ENVIAR</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD A ENVIAR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 736062227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD A FACTURAR</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD A FACTURAR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 219654184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD ENVIADA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD ENVIADA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 4016822090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD ENVIADA NO FACTURADA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD ENVIADA NO FACTURADA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2315827953 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD FACTURADA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD FACTURADA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2452470252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD PENDIENTE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD PENDIENTE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3591530927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. CANTIDAD TOTAL PEDIDO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. CANTIDAD TOTAL PEDIDO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1269712065 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K1. UNIDAD MEDIDA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K1. UNIDAD MEDIDA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2993218531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K2. PVP</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K2. PVP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1236995381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K4. DESC CLIENTE (D2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K4. DESC CLIENTE (D2) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 3113500260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K4. DESC TOTAL OPERACION</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K4. DESC TOTAL OPERACION - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1151291763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K5. VENTA NETA CLIENTES</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K5. VENTA NETA CLIENTES - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1740254367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K6. COSTE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field K6. COSTE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1416376563 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>X1. CUSTOMER DISCOUNT GROUP</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field X1. CUSTOMER DISCOUNT GROUP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 2535539339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>X1. CUSTOMER PRICE GROUP</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field X1. CUSTOMER PRICE GROUP - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3967757774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account Translation</source>
@@ -12618,10 +12788,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Clientes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control SalesCustomer - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2822793219 - Control 1829282799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Facturas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Facturas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control SalesFacturas - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2822793219 - Control 873949815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nº Productos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control SalesItem - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Control 2712171076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Ofertas/Pedidos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Ofertas/Pedidos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control SalesPedidos - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Control 198641044 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>
@@ -12678,6 +12858,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las cuentas contables?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateGLAccount - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 3019364733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update GL Budget Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. Movs. presup. contabiladad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateGLBudgetEntry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 3019364733 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los movs. de presupuestos contabilidad?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movs. de presupuestos contabilidad?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateGLBudgetEntry - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 2822793219 - Action 2035599090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update GL Entry</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar movs. contabiladad"</note>
@@ -12707,6 +12897,26 @@
           <source>¿Desea actualizar los Clientes?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los Clientes?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesCustomer - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 994691048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Facturas Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesFacturas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 994691048 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los Facturas Ventas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los Facturas Ventas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesFacturas - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 901992307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Sales Quote/Order</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Ofertas/Pedidos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesPedidos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 901992307 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar las Ofertas/Pedidos Ventas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las Ofertas/Pedidos Ventas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesPedidos - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Page 2965806569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Accounting Manager</source>
@@ -15224,9 +15434,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Hist. Reclamaciones ventas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 78285597 - Action 719822597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Actualizar Reclamacion BT</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Reclamacion BT"</note>
+          <source>Actualizar Reclamacion BI</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Reclamacion BI"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Hist. Reclamaciones ventas - Action cargarhojafallos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 78285597 - Action 4037301202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualizar Documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Hist. Reclamaciones ventas - Action UpdateDocument - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1711112215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Approval Departments</source>
@@ -32152,6 +32367,11 @@
           <source>Ped. Servicio NºSerie</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ped. Servicio NºSerie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action PS por NºSerie - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 149574740 - Action 2881942025 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3297607540">
+          <source>Act. Hist. Reclamaciones</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. Hist. Reclamaciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action UpdateHistReclamacionesVenta - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1184478275 - Action 3471137671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2247137235">
           <source>Services All</source>

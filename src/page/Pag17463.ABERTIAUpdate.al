@@ -62,6 +62,18 @@ page 17463 "ABERTIA Update"
                     AutoFormatType = 2;
                     AutoFormatExpression = CurrencyCode;
                 }
+                field(SalesFacturas; SalesFacturas)
+                {
+                    Caption = 'Nº Facturas', comment = 'ESP="Nº Facturas"';
+                    AutoFormatType = 2;
+                    AutoFormatExpression = CurrencyCode;
+                }
+                field(SalesPedidos; SalesPedidos)
+                {
+                    Caption = 'Nº Ofertas/Pedidos', comment = 'ESP="Nº Ofertas/Pedidos"';
+                    AutoFormatType = 2;
+                    AutoFormatExpression = CurrencyCode;
+                }
             }
         }
     }
@@ -117,6 +129,24 @@ page 17463 "ABERTIA Update"
                     UpdateEntryNos();
                 end;
             }
+            action(UpdateGLBudgetEntry)
+            {
+                ApplicationArea = all;
+                Caption = 'Update GL Budget Entry', comment = 'ESP="Act. Movs. presup. contabiladad"';
+                Image = LedgerBudget;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    lblConfirm: Label '¿Desea actualizar los movs. de presupuestos contabilidad?', comment = 'ESP="¿Desea actualizar los movs. de presupuestos contabilidad?"';
+                begin
+                    if Confirm(lblConfirm) then
+                        AbertiaGLEntryBudget.CreateGLBudget();
+
+                    UpdateEntryNos();
+                end;
+            }
             action(UpdateSalesCustomer)
             {
                 ApplicationArea = all;
@@ -148,6 +178,40 @@ page 17463 "ABERTIA Update"
                 begin
                     if Confirm(lblConfirm) then
                         ABERTIASalesItem.CreateSalesItem();
+                    UpdateEntryNos();
+                end;
+            }
+            action(UpdateSalesFacturas)
+            {
+                ApplicationArea = all;
+                Caption = 'Update Sales Invoice', comment = 'ESP="Actualizar Facturas Ventas"';
+                Image = SalesInvoice;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    lblConfirm: Label '¿Desea actualizar los Facturas Ventas?', comment = 'ESP="¿Desea actualizar los Facturas Ventas?"';
+                begin
+                    if Confirm(lblConfirm) then
+                        ABERTIASalesFacturas.CreateSalesFacturas(TypeUpdate);
+                    UpdateEntryNos();
+                end;
+            }
+            action(UpdateSalesPedidos)
+            {
+                ApplicationArea = all;
+                Caption = 'Update Sales Quote/Order', comment = 'ESP="Actualizar Ofertas/Pedidos"';
+                Image = OrderList;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    lblConfirm: Label '¿Desea actualizar las Ofertas/Pedidos Ventas?', comment = 'ESP="¿Desea actualizar las Ofertas/Pedidos Ventas?"';
+                begin
+                    if Confirm(lblConfirm) then
+                        AbertiaSalesPedidos.CreateSalesPedidos(TypeUpdate);
                     UpdateEntryNos();
                 end;
             }
@@ -194,12 +258,16 @@ page 17463 "ABERTIA Update"
         AbertiaGLEntryBudget: Record "ABERTIA GL Budget";
         AbertiaSalesCustomer: Record "ABERTIA SalesCustomer";
         ABERTIASalesItem: Record "ABERTIA SalesItem";
+        ABERTIASalesFacturas: Record "ABERTIA SalesFacturas";
+        AbertiaSalesPedidos: Record "ABERTIA SalesPedidos";
         CurrencyCode: Code[10];
         GLEntryNo: Integer;
         GLBudgetNo: Integer;
         GLAccountNo: Integer;
         SalesCustomer: Integer;
         SalesItem: Integer;
+        SalesFacturas: Integer;
+        SalesPedidos: Integer;
         TypeUpdate: Option Nuevo,Periodo,Todo;
         EntryNoIni: Integer;
 
@@ -223,10 +291,14 @@ page 17463 "ABERTIA Update"
         AbertiaGLEntryBudget.Reset();
         AbertiaSalesCustomer.Reset();
         ABERTIASalesItem.Reset();
+        ABERTIASalesFacturas.Reset();
+        AbertiaSalesPedidos.Reset();
         GLAccountNo := AbertiaGLAccount.Count;
         GLEntryNo := AbertiaGLEntry.Count;
         GLBudgetNo := AbertiaGLEntryBudget.Count;
         SalesCustomer := AbertiaSalesCustomer.Count;
         SalesItem := ABERTIASalesItem.Count;
+        SalesFacturas := ABERTIASalesFacturas.Count;
+        SalesPedidos := AbertiaSalesPedidos.Count;
     end;
 }

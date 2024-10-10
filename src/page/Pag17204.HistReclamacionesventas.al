@@ -106,7 +106,7 @@ page 17204 "Hist. Reclamaciones ventas"
             action(cargarhojafallos)
             {
                 ApplicationArea = all;
-                Caption = 'Actualizar Reclamacion BT', comment = 'ESP="Actualizar Reclamacion BT"';
+                Caption = 'Actualizar Reclamacion BI', comment = 'ESP="Actualizar Reclamacion BI"';
                 Promoted = true;
                 PromotedCategory = Process;
                 Image = Process;
@@ -116,6 +116,29 @@ page 17204 "Hist. Reclamaciones ventas"
                     HistFallos: Record "ZM Hist. Reclamaciones ventas";
                 begin
                     HistFallos.CreateHistReclamaciones(0D);
+                end;
+            }
+            action(UpdateDocument)
+            {
+                ApplicationArea = all;
+                Caption = 'Actualizar Documento', comment = 'ESP="Actualizar Documento"';
+                Promoted = true;
+                PromotedCategory = Process;
+                Image = Process;
+
+                trigger OnAction()
+                var
+                    HistFallos: Record "ZM Hist. Reclamaciones ventas";
+                    ServiceHeader: Record "Service Header";
+                begin
+                    case HistFallos.Type of
+                        HistFallos.Type::"Pedidos Servicio":
+                            begin
+                                if ServiceHeader.Get(ServiceHeader."Document Type"::Order, HistFallos."Document No.") then
+                                    HistFallos.UpdateServiceOrder(ServiceHeader);
+                            end;
+
+                    end;
                 end;
             }
         }

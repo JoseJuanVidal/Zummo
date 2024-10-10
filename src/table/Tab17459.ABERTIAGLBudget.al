@@ -95,22 +95,25 @@ table 17459 "ABERTIA GL Budget"
                         ABGLBudget.SetRange(Cuenta, Cuenta);
                         ABGLBudget.SetRange(fecha, CreateDateTime(GLBudgetEntry.Date, 0T));
                         ABGLBudget.SetRange("Dimension 1 Code", GLBudgetEntry."Global Dimension 1 Code");
-                        if not ABGLBudget.FindFirst() then begin
-                            UpdateABGLBudgetEntry(GLBudgetEntry, ABGLBudget);
-                        end;
+                        if not ABGLBudget.FindFirst() then
+                            UpdateABGLBudgetEntry(GLBudgetEntry, ABGLBudget, false)
+                        else
+                            UpdateABGLBudgetEntry(GLBudgetEntry, ABGLBudget, true);
                     Until GLBudgetEntry.next() = 0;
             Until GLBudget.next() = 0;
         Window.Close();
 
     end;
 
-    local procedure UpdateABGLBudgetEntry(GLBudgetEntry: Record "G/L Budget Entry"; var ABGLBudget: Record "ABERTIA GL Budget")
+    local procedure UpdateABGLBudgetEntry(GLBudgetEntry: Record "G/L Budget Entry"; var ABGLBudget: Record "ABERTIA GL Budget"; Modify: Boolean)
     var
         vDec: Decimal;
         vInt: Integer;
     begin
-        ABGLBudget.Init();
-        ABGLBudget.ID := CreateGuid();
+        if not Modify then begin
+            ABGLBudget.Init();
+            ABGLBudget.ID := CreateGuid();
+        end;
         Evaluate(vDec, GLBudgetEntry."G/L Account No.");
         ABGLBudget.Nombre := GLBudgetEntry."Budget Name";
         ABGLBudget.Cuenta := vDec;
@@ -125,7 +128,8 @@ table 17459 "ABERTIA GL Budget"
             'INVESTMENTS':
                 ABGLBudget."00 - Origen" := 'ZINV';
         end;
-        ABGLBudget.Insert();
+        if not ABGLBudget.Insert() then
+            ABGLBudget.Modify();
     end;
 
     local procedure GetBudgetAmount(GLBudgetEntry: Record "G/L Budget Entry"): Decimal

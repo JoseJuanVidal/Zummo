@@ -158,10 +158,7 @@ table 17370 "ZM Hist. Reclamaciones ventas"
         ItemLedgerEntry: Record "Item Ledger Entry";
         SalesInvoiceLine: Record "Sales Invoice Line";
         ServiceHeader: Record "Service Header";
-        ServiceItem: Record "Service Item";
-        ServiceItemLine: Record "Service Item Line";
-        ServiceOrderType: Record "Service Order Type";
-        SalesDate: date;
+
         Window: Dialog;
     begin
         // buscamos los movimientos de ventas y abonos de tipo productos y ensamblados
@@ -208,37 +205,45 @@ table 17370 "ZM Hist. Reclamaciones ventas"
         ServiceHeader.SetFilter("Posting Date", '%1..', InitDate);
         if ServiceHeader.FindFirst() then
             repeat
-                if ServiceOrderType.Get(ServiceHeader."Service Order Type") and (ServiceOrderType."Exportar BI Reclamaciones") then begin
-                    ServiceItemLine.Reset();
-                    ServiceItemLine.SetRange("Document Type", ServiceHeader."Document Type");
-                    ServiceItemLine.SetRange("Document No.", ServiceHeader."No.");
-                    if ServiceItemLine.FindFirst() then begin
-                        repeat
-                            Window.Update(1, ServiceHeader."No.");
-                            Window.Update(2, ServiceItemLine."Line No.");
-                            Window.Update(3, ServiceItemLine."Item No.");
-                            Window.Update(4, ServiceHeader."Posting Date");
-                            if Item.Get(ServiceItemLine."Item No.") and not item.IsAssemblyItem() then begin
-                                if ServiceItem.Get(ServiceItemLine."Service Item No.") then
-                                    SalesDate := ServiceItem."Sales Date"
-                                else
-                                    SalesDate := GetFechaSalesOrderServiceHeader(ServiceHeader);
-
-                                AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.", SalesDate);
-                            end;
-                        Until ServiceItemLine.next() = 0;
-                    end;
-                end else begin
-                    ServiceItemLine.Reset();
-                    ServiceItemLine.SetRange("Document Type", ServiceHeader."Document Type");
-                    ServiceItemLine.SetRange("Document No.", ServiceHeader."No.");
-                    if ServiceItemLine.FindFirst() then
-                        repeat
-                            // si ha cambiado de situación y no deberia estar se elimina
-                            DeleteHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.");
-                        Until ServiceItemLine.next() = 0;
-                end;
+                Window.Update(1, ServiceHeader."No.");
+                Window.Update(4, ServiceHeader."Posting Date");
+                UpdateServiceOrder(ServiceHeader);
             Until ServiceHeader.next() = 0;
+    end;
+
+    procedure UpdateServiceOrder(ServiceHeader: Record "Service Header")
+    var
+        ServiceItem: Record "Service Item";
+        ServiceItemLine: Record "Service Item Line";
+        ServiceOrderType: Record "Service Order Type";
+        SalesDate: date;
+    begin
+        if ServiceOrderType.Get(ServiceHeader."Service Order Type") and (ServiceOrderType."Exportar BI Reclamaciones") then begin
+            ServiceItemLine.Reset();
+            ServiceItemLine.SetRange("Document Type", ServiceHeader."Document Type");
+            ServiceItemLine.SetRange("Document No.", ServiceHeader."No.");
+            if ServiceItemLine.FindFirst() then begin
+                repeat
+                    if Item.Get(ServiceItemLine."Item No.") and not item.IsAssemblyItem() then begin
+                        if ServiceItem.Get(ServiceItemLine."Service Item No.") then
+                            SalesDate := ServiceItem."Sales Date"
+                        else
+                            SalesDate := GetFechaSalesOrderServiceHeader(ServiceHeader);
+
+                        AddHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.", SalesDate);
+                    end;
+                Until ServiceItemLine.next() = 0;
+            end;
+        end else begin
+            ServiceItemLine.Reset();
+            ServiceItemLine.SetRange("Document Type", ServiceHeader."Document Type");
+            ServiceItemLine.SetRange("Document No.", ServiceHeader."No.");
+            if ServiceItemLine.FindFirst() then
+                repeat
+                    // si ha cambiado de situación y no deberia estar se elimina
+                    DeleteHistReclamacionesventasService(ServiceHeader, ServiceItemLine, Item, ServiceItem."Serial No.");
+                Until ServiceItemLine.next() = 0;
+        end;
     end;
 
     local procedure GetFechaSalesOrderServiceHeader(ServiceHeader: Record "Service Header"): Date
