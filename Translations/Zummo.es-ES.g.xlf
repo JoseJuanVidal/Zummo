@@ -16898,10 +16898,16 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Hist. Reclamaciones ventas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 78285597 - Action 719822597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Actualizar Reclamacion BT</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Reclamacion BT"</note>
+          <source>Actualizar Reclamacion BI</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Reclamacion BI"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Hist. Reclamaciones ventas - Action cargarhojafallos - Property Caption</note>
-          <target>Actualizar Reclamacion BT</target>
+          <target>Actualizar Reclamacion BI</target>
+        </trans-unit>
+        <trans-unit id="Page 78285597 - Action 4037301202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualizar Documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Hist. Reclamaciones ventas - Action UpdateDocument - Property Caption</note>
+          <target>Actualizar Documento</target>
         </trans-unit>
         <trans-unit id="Page 1711112215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Approval Departments</source>
@@ -35393,6 +35399,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ped. Servicio NºSerie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action PS por NºSerie - Property Caption</note>
           <target>Ped. Servicio NºSerie</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 149574740 - Action 4037301202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3297607540">
+          <source>Actualizar Documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action UpdateDocument - Property Caption</note>
+          <target>Actualizar Documento</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 149574740 - Action 2881942025 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3297607540">
+          <source>Act. Hist. Reclamaciones</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. Hist. Reclamaciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrders - Action UpdateHistReclamacionesVenta - Property Caption</note>
+          <target>Act. Hist. Reclamaciones</target>
         </trans-unit>
         <trans-unit id="PageExtension 1184478275 - Action 3471137671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2247137235">
           <source>Services All</source>

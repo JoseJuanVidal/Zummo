@@ -292,8 +292,6 @@ table 17370 "ZM Hist. Reclamaciones ventas"
         HistReclamacionesventas.Reset();
         HistReclamacionesventas.SetRange("Document No.", ServiceItemLine."Document No.");
         HistReclamacionesventas.SetRange("Line No.", ServiceItemLine."Line No.");
-        if SerialNo <> '' then
-            HistReclamacionesventas.SetRange("Serial No.", SerialNo);
         if not HistReclamacionesventas.FindFirst() then begin
             if Customer.Get(ServiceHeader."Customer No.") then;
             HistReclamacionesventas.Init();
@@ -314,10 +312,23 @@ table 17370 "ZM Hist. Reclamaciones ventas"
             HistReclamacionesventas."Tipo Reclamaciones" := ServiceHeader."Service Order Type";
             HistReclamacionesventas.Insert(true)
         end else begin
+            if HistReclamacionesventas."Serial No." <> SerialNo then begin
+                HistReclamacionesventas.Delete();
+                HistReclamacionesventas.Init();
+                HistReclamacionesventas.Type := HistReclamacionesventas.Type::"Pedidos Servicio";
+                HistReclamacionesventas."Document No." := ServiceItemLine."Document No.";
+                HistReclamacionesventas."Line No." := ServiceItemLine."Line No.";
+                HistReclamacionesventas."Serial No." := SerialNo;
+                HistReclamacionesventas."Sales Date" := SalesDate;
+                HistReclamacionesventas.insert;
+            end;
             HistReclamacionesventas."Posting Date" := ServiceHeader."Order Date";
             HistReclamacionesventas."Item No." := ServiceItemLine."Item No.";
             HistReclamacionesventas."Cod. Categoria" := Item."Item Category Code";
             HistReclamacionesventas.Familia := Item.desFamilia_btc;
+            HistReclamacionesventas."Customer No." := ServiceHeader."Customer No.";
+            HistReclamacionesventas.Country := ServiceHeader."Ship-to Country/Region Code";
+            HistReclamacionesventas."Grupo Clientes" := Customer.GrupoCliente_btc;
             HistReclamacionesventas."Fallo localizado" := ServiceItemLine."Fallo localizado";
             HistReclamacionesventas."Fallo" := ServiceItemLine."Fallo";
             HistReclamacionesventas."Tipo Reclamaciones" := ServiceHeader."Service Order Type";
@@ -333,11 +344,8 @@ table 17370 "ZM Hist. Reclamaciones ventas"
     begin
         HistReclamacionesventas.Reset();
         HistReclamacionesventas.SetRange("Document No.", ServiceItemLine."Document No.");
-        HistReclamacionesventas.SetRange("Line No.", ServiceItemLine."Line No.");
-        if SerialNo <> '' then
-            HistReclamacionesventas.SetRange("Serial No.", SerialNo);
-        if HistReclamacionesventas.FindFirst() then
-            HistReclamacionesventas.Delete();
+        // HistReclamacionesventas.SetRange("Line No.", ServiceItemLine."Line No.");
+        HistReclamacionesventas.DeleteAll();
 
     end;
 }

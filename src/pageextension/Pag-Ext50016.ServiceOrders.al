@@ -89,6 +89,19 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
 
                 end;
             }
+            action(UpdateDocument)
+            {
+                ApplicationArea = all;
+                Caption = 'Actualizar Documento', comment = 'ESP="Actualizar Documento"';
+                Image = Process;
+
+                trigger OnAction()
+                var
+                    HistFallos: Record "ZM Hist. Reclamaciones ventas";
+                begin
+                    HistFallos.UpdateServiceOrder(Rec);
+                end;
+            }
 
             // action("Listado NºSerie")
             // {

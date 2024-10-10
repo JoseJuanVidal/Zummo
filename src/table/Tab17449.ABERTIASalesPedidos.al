@@ -24,8 +24,8 @@ table 17449 "ABERTIA SalesPedidos"
         field(14; "K1. CANTIDAD ENVIADA NO FACTURADA"; Decimal) { ExternalName = 'K1. CANTIDAD ENVIADA NO FACTURADA'; }
         field(15; "K1. CANTIDAD ENVIADA"; Decimal) { ExternalName = 'K1. CANTIDAD ENVIADA'; }
         field(16; "K1. CANTIDAD FACTURADA"; Decimal) { ExternalName = 'K1. CANTIDAD FACTURADA'; }
-        field(17; "K2. PVP"; integer) { ExternalName = 'K2. PVP'; }
-        field(18; "K6. COSTE"; integer) { ExternalName = 'K6. COSTE'; }
+        field(17; "K2. PVP"; Decimal) { ExternalName = 'K2. PVP'; }
+        field(18; "K6. COSTE"; Decimal) { ExternalName = 'K6. COSTE'; }
         field(19; "K4. DESC CLIENTE (D2)"; Decimal) { ExternalName = 'K4. DESC CLIENTE (D2)'; }
         field(20; "K4. DESC TOTAL OPERACION"; Decimal) { ExternalName = 'K4. DESC TOTAL OPERACION'; }
         field(21; "K5. VENTA NETA CLIENTES"; Decimal) { ExternalName = 'K5. VENTA NETA CLIENTES'; }
@@ -137,13 +137,13 @@ table 17449 "ABERTIA SalesPedidos"
                         ABERTIASalesPedidos."X1. CUSTOMER PRICE GROUP" := SalesLine."Customer Price Group";
                         if SalesPerson.Get(SalesHeader."Salesperson Code") then
                             ABERTIASalesPedidos."D3. AGENTE NOMBRE" := SalesPerson.Name;
-                        ABERTIASalesPedidos."00. FECHA" := SalesLine."Posting Date";
-                        ABERTIASalesPedidos."00. AÑO" := Date2DMY(SalesLine."Posting Date", 3);
-                        ABERTIASalesPedidos."00. MES" := Date2DMY(SalesLine."Posting Date", 2);
-                        ABERTIASalesPedidos."00. TRIMESTRE" := GetQuarterOfDate(SalesLine."Posting Date");
+                        ABERTIASalesPedidos."00. FECHA" := SalesHeader."Document Date";
+                        ABERTIASalesPedidos."00. AÑO" := Date2DMY(SalesHeader."Document Date", 3);
+                        ABERTIASalesPedidos."00. MES" := Date2DMY(SalesHeader."Document Date", 2);
+                        ABERTIASalesPedidos."00. TRIMESTRE" := GetQuarterOfDate(SalesHeader."Document Date");
                         ABERTIASalesPedidos."00. AÑO MES" := format(ABERTIASalesPedidos."00. AÑO") +
-                                            PadStr('', 2 - StrLen(format(ABERTIASalesPedidos."00. MES")), '0') + format(Date2DMY(SalesLine."Posting Date", 2));
-                        ABERTIASalesPedidos."00. SEMANA" := Date2DWY(SalesLine."Posting Date", 2);
+                                            PadStr('', 2 - StrLen(format(ABERTIASalesPedidos."00. MES")), '0') + format(ABERTIASalesPedidos."00. MES");
+                        ABERTIASalesPedidos."00. SEMANA" := Date2DWY(SalesHeader."Document Date", 2);
                         ABERTIASalesPedidos."00. FECHA PROMETIDA ENTREGA" := SalesLine."Promised Delivery Date";
                         ABERTIASalesPedidos."00. FECHA ALTA PEDIDO" := SalesHeader."Order Date";
                         ABERTIASalesPedidos."00. FECHA REQUERIDA ENTREGA" := SalesLine."Requested Delivery Date";
