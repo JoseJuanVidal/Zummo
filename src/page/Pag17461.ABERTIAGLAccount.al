@@ -1,10 +1,10 @@
 page 17461 "ABERTIA GL Account"
 {
-    ApplicationArea = All;
+    //    ApplicationArea = All;
     Caption = 'ABERTIA GL Account';
     PageType = List;
     SourceTable = "ABERTIA GL Account";
-    UsageCategory = Lists;
+    UsageCategory = None;
     Editable = false;
 
     layout

@@ -1,10 +1,10 @@
 page 17462 "ABERTIA GL Budget Entry"
 {
-    ApplicationArea = All;
+    // ApplicationArea = All;
     Caption = 'ABERTIA GL Budget Entry';
     PageType = List;
     SourceTable = "ABERTIA GL Budget";
-    UsageCategory = Lists;
+    UsageCategory = None;
     Editable = false;
 
     layout

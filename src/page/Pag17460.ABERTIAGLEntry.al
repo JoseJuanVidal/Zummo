@@ -1,10 +1,10 @@
 page 17460 "ABERTIA GL Entry"
 {
-    ApplicationArea = All;
+    //    ApplicationArea = All;
     Caption = 'ABERTIA GL Entry';
     PageType = List;
     SourceTable = "ABERTIA GL Entry";
-    UsageCategory = Lists;
+    UsageCategory = None;
     InsertAllowed = false;
     DeleteAllowed = false;
 
@@ -14,11 +14,17 @@ page 17460 "ABERTIA GL Entry"
         {
             Group(Opciones)
             {
+                field(TypeUpdate; TypeUpdate)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Tipo Actualización', comment = 'ESP="Tipo Actualizacion"';
+                    ToolTip = 'Seleccionamos el tipo de actualización';
+                }
                 field(EntryNoIni; EntryNoIni)
                 {
                     ApplicationArea = all;
                     Caption = 'Nº Movimiento inicial', comment = 'ESP="Nº Movimiento inicial"';
-
+                    ToolTip = 'Si indicamos un numero, siempre se parte desde ese Movimiento';
                 }
             }
             repeater(General)
@@ -268,7 +274,7 @@ page 17460 "ABERTIA GL Entry"
 
                 trigger OnAction()
                 begin
-                    Rec.CreateGLEntry(EntryNoIni);
+                    Rec.CreateGLEntry(EntryNoIni, TypeUpdate);
                 end;
 
             }
@@ -281,6 +287,7 @@ page 17460 "ABERTIA GL Entry"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
+        TypeUpdate: Option Nuevo,Periodo,Todo;
         EntryNoIni: Integer;
 
     procedure OpenTableConnection()
