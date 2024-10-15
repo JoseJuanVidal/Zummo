@@ -3,7 +3,7 @@ page 17463 "ABERTIA Update"
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    Caption = 'ABERTIA update', comment = 'ESP="ABERTIA Actualizaciones"';
+    Caption = 'ABERTIA Update', comment = 'ESP="ABERTIA Actualizaciones"';
 
     layout
     {
@@ -95,6 +95,19 @@ page 17463 "ABERTIA Update"
                     UpdateEntryNos();
                 end;
             }
+            action(UpdateAll)
+            {
+                ApplicationArea = all;
+                Caption = 'Update All', comment = 'ESP="Actualizar Todo"';
+                Image = AllLines;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    ABERTIAUpdateALL();
+                end;
+            }
             action(UpdateGLAccount)
             {
                 ApplicationArea = all;
@@ -105,11 +118,15 @@ page 17463 "ABERTIA Update"
 
                 trigger OnAction()
                 var
+                    RecorNo: Integer;
                     lblConfirm: Label '¿Desea actualizar las cuentas contables?', comment = 'ESP="¿Desea actualizar las cuentas contables?"';
                 begin
-                    if Confirm(lblConfirm) then
-                        AbertiaGLAccount.CreateGLAccount();
-                    UpdateEntryNos();
+                    if Confirm(lblConfirm) then begin
+                        RecorNo := AbertiaGLAccount.CreateGLAccount();
+                        cuCron.ABERTIAUpdateSendEmail(StrSubstNo('Nº cuentas contables: %1', RecorNo), 0, 0, 0, 0, 0, 0, 0);
+
+                        UpdateEntryNos();
+                    end;
                 end;
             }
             action(UpdateGLEntry)
@@ -132,7 +149,7 @@ page 17463 "ABERTIA Update"
             action(UpdateGLBudgetEntry)
             {
                 ApplicationArea = all;
-                Caption = 'Update GL Budget Entry', comment = 'ESP="Act. Movs. presup. contabiladad"';
+                Caption = 'Update GL Budget Entry', comment = 'ESP="Act. Movs. presup. contabilidad"';
                 Image = LedgerBudget;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -142,7 +159,7 @@ page 17463 "ABERTIA Update"
                     lblConfirm: Label '¿Desea actualizar los movs. de presupuestos contabilidad?', comment = 'ESP="¿Desea actualizar los movs. de presupuestos contabilidad?"';
                 begin
                     if Confirm(lblConfirm) then
-                        AbertiaGLEntryBudget.CreateGLBudget();
+                        AbertiaGLEntryBudget.CreateGLBudget(TypeUpdate);
 
                     UpdateEntryNos();
                 end;
@@ -260,6 +277,7 @@ page 17463 "ABERTIA Update"
         ABERTIASalesItem: Record "ABERTIA SalesItem";
         ABERTIASalesFacturas: Record "ABERTIA SalesFacturas";
         AbertiaSalesPedidos: Record "ABERTIA SalesPedidos";
+        cuCron: Codeunit CU_Cron;
         CurrencyCode: Code[10];
         GLEntryNo: Integer;
         GLBudgetNo: Integer;
@@ -300,5 +318,14 @@ page 17463 "ABERTIA Update"
         SalesItem := ABERTIASalesItem.Count;
         SalesFacturas := ABERTIASalesFacturas.Count;
         SalesPedidos := AbertiaSalesPedidos.Count;
+    end;
+
+    local procedure ABERTIAUpdateALL()
+    var
+        cuCron: Codeunit CU_Cron;
+        lblConfirm: Label '¿Desea actualizar todos los registros?', comment = 'ESP="¿Desea actualizar todos los registros?"';
+    begin
+        if Confirm(lblConfirm) then
+            cuCron.ABERTIAUpdateALL(TypeUpdate);
     end;
 }

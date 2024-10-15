@@ -11,6 +11,15 @@ page 17462 "ABERTIA GL Budget Entry"
     {
         area(content)
         {
+            Group(Opciones)
+            {
+                field(TypeUpdate; TypeUpdate)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Tipo Actualización', comment = 'ESP="Tipo Actualizacion"';
+                    ToolTip = 'Seleccionamos el tipo de actualización';
+                }
+            }
             repeater(General)
             {
                 field(Nombre; Nombre)
@@ -61,7 +70,7 @@ page 17462 "ABERTIA GL Budget Entry"
 
                 trigger OnAction()
                 begin
-                    Rec.CreateGLBudget();
+                    Rec.CreateGLBudget(TypeUpdate);
                 end;
 
             }
@@ -74,6 +83,7 @@ page 17462 "ABERTIA GL Budget Entry"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
+        TypeUpdate: Option Nuevo,Periodo,Todo;
 
     procedure OpenTableConnection()
     begin

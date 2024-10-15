@@ -63,7 +63,7 @@ table 17459 "ABERTIA GL Budget"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateGLBudget()
+    procedure CreateGLBudget(TypeUpdate: Option Nuevo,Periodo,Todo) RecordNo: Integer;
     var
         GLBudget: Record "G/L Budget Name";
         GLBudgetEntry: Record "G/L Budget Entry";
@@ -73,6 +73,7 @@ table 17459 "ABERTIA GL Budget"
     begin
         Window.Open('Presupuesto: #1####################\Nº Movimiento #2################');
         GLBudget.Reset();
+        GenLedgerSetup.Get();
         if GLBudget.FindFirst() then
             repeat
                 Window.Update(1, GLBudget."Name");
@@ -86,6 +87,12 @@ table 17459 "ABERTIA GL Budget"
                         ABGLBudget.SetRange("00 - Origen", '');
                 end;
                 GLBudgetEntry.SetRange("Budget Name", GLBudget.Name);
+                case TypeUpdate of
+                    TypeUpdate::Nuevo, TypeUpdate::Periodo:
+                        begin
+                            GLBudgetEntry.SetRange(date, GenLedgerSetup."Allow Posting From", GenLedgerSetup."Allow Posting To");
+                        end;
+                end;
                 if GLBudgetEntry.FindFirst() then
                     repeat
                         Window.Update(2, GLBudgetEntry."Entry No.");
@@ -99,6 +106,7 @@ table 17459 "ABERTIA GL Budget"
                             UpdateABGLBudgetEntry(GLBudgetEntry, ABGLBudget, false)
                         else
                             UpdateABGLBudgetEntry(GLBudgetEntry, ABGLBudget, true);
+                        RecordNo += 1;
                     Until GLBudgetEntry.next() = 0;
             Until GLBudget.next() = 0;
         Window.Close();
@@ -130,6 +138,7 @@ table 17459 "ABERTIA GL Budget"
         end;
         if not ABGLBudget.Insert() then
             ABGLBudget.Modify();
+        Commit();
     end;
 
     local procedure GetBudgetAmount(GLBudgetEntry: Record "G/L Budget Entry"): Decimal

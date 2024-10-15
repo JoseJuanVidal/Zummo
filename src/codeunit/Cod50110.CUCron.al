@@ -9,6 +9,7 @@ codeunit 50110 "CU_Cron"
         ResultEnvioMailTxt: Text;
         TotalExcelBuffer: Record "Excel Buffer" temporary;
         IntegracionCRM: codeunit Integracion_crm_btc;
+        AbertiaTypeUpdate: Option Nuevo,Periodo,Todo;
         Ejecucioncola: Boolean;
 
     trigger OnRun()
@@ -86,6 +87,10 @@ codeunit 50110 "CU_Cron"
                     begin
                         HISTBOMProduction.UpdateBomHist();
                         HistBOMCosts.UpdateTableBOMCosts();
+                    end;
+                'ABERTIAUpdate':
+                    begin
+                        ABERTIAUpdateALL(AbertiaTypeUpdate::Periodo);
                     end;
                 else
                     error(lbNoParametroErr);
@@ -1579,5 +1584,68 @@ codeunit 50110 "CU_Cron"
                         end;
                     Until Employee.next() = 0;
             Until UserSetup.next() = 0;
+    end;
+
+    procedure ABERTIAUpdateALL(TypeUpdate: Option Nuevo,Periodo,Todo)
+    var
+        AbertiaGLAccount: Record "ABERTIA GL Account";
+        AbertiaGLEntry: Record "ABERTIA GL Entry";
+        AbertiaGLEntryBudget: Record "ABERTIA GL Budget";
+        AbertiaSalesCustomer: Record "ABERTIA SalesCustomer";
+        ABERTIASalesItem: Record "ABERTIA SalesItem";
+        ABERTIASalesFacturas: Record "ABERTIA SalesFacturas";
+        AbertiaSalesPedidos: Record "ABERTIA SalesPedidos";
+        Body: text;
+        GLAccountRecordNo: Integer;
+        GLEntryRecordNo: Integer;
+        GLBudgetEntryRecordNo: Integer;
+        CustomerRecordNo: Integer;
+        ItemRecordNo: Integer;
+        FacturasRecordNo: Integer;
+        PedidosRecordNo: Integer;
+    begin
+        GLAccountRecordNo := AbertiaGLAccount.CreateGLAccount();
+        GLEntryRecordNo := AbertiaGLEntry.CreateGLEntry(0, TypeUpdate);
+        GLBudgetEntryRecordNo := AbertiaGLEntryBudget.CreateGLBudget(TypeUpdate);
+        CustomerRecordNo := AbertiaSalesCustomer.CreateSalesCustomer();
+        ItemRecordNo := ABERTIASalesItem.CreateSalesItem();
+        FacturasRecordNo := ABERTIASalesFacturas.CreateSalesFacturas(TypeUpdate);
+        PedidosRecordNo := AbertiaSalesPedidos.CreateSalesPedidos(TypeUpdate);
+        ABERTIAUpdateSendEmail(Body, GLAccountRecordNo, GLEntryRecordNo, GLBudgetEntryRecordNo, CustomerRecordNo, ItemRecordNo, FacturasRecordNo, PedidosRecordNo);
+    end;
+
+    procedure ABERTIAUpdateSendEmail(Body: Text; GLAccountRecordNo: Integer; GLEntryRecordNo: Integer; GLBudgetEntryRecordNo: Integer;
+        CustomerRecordNo: Integer; ItemRecordNo: Integer; FacturasRecordNo: Integer; PedidosRecordNo: Integer)
+    var
+        recSMTPSetup: Record "SMTP Mail Setup";
+        cduSmtp: Codeunit "SMTP Mail";
+        txtAsunto: text;
+    begin
+        if Body = '' then
+            Body := ABERTIACuerpoCorreo(GLAccountRecordNo, GLEntryRecordNo, GLBudgetEntryRecordNo, CustomerRecordNo, ItemRecordNo, FacturasRecordNo, PedidosRecordNo);
+        txtAsunto := StrSubstNo('Actualización BBDD ABERTIA BI %1', WorkDate());
+        recSMTPSetup.Get();
+        Clear(cduSmtp);
+        cduSmtp.CreateMessage(CompanyName, recSMTPSetup."User ID", 'jvidal@zummo.es', txtAsunto, Body, false);
+        cduSmtp.Send();
+    end;
+
+    local procedure ABERTIACuerpoCorreo(GLAccountRecordNo: Integer; GLEntryRecordNo: Integer; GLBudgetEntryRecordNo: Integer;
+        CustomerRecordNo: Integer; ItemRecordNo: Integer; FacturasRecordNo: Integer; PedidosRecordNo: Integer) Body: Text;
+    var
+        LF: Char;
+        CR: Char;
+    begin
+        LF := 10;
+        CR := 13;
+        Body := 'Actualización BBDD ABERTIA BI' + Format(CR) + FORMAT(LF) + Format(CR) + FORMAT(LF);
+        Body += 'Acciones realizadas.' + Format(CR) + FORMAT(LF) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('Nº Cuentas contables: %1', GLAccountRecordNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('Nº mov. contabilidad: %1', GLEntryRecordNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('Nº mov. presupuesto: %1', GLBudgetEntryRecordNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('Nº Clientes: %1', CustomerRecordNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('Nº Productos: %1', ItemRecordNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('Nº Líneas Facturas: %1', FacturasRecordNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('Nº Líneas Pedidos: %1', PedidosRecordNo) + Format(CR) + FORMAT(LF);
     end;
 }

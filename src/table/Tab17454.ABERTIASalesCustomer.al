@@ -11,15 +11,15 @@ table 17454 "ABERTIA SalesCustomer"
         field(1; "No_"; code[50]) { ExternalName = 'No_'; }
         field(2; "Credito Maximo Interno_btc"; integer) { ExternalName = 'Credito Maximo Interno_btc'; }
         field(3; "Cred_ Max_ Int_ Autorizado Por_btc"; code[20]) { ExternalName = 'Cred_ Max_ Int_ Autorizado Por_btc'; }
-        field(4; "Credito Maximo Aseguradora_btc"; Decimal) { ExternalName = 'Credito Maximo Aseguradora_btc'; }
+        field(4; "Credito Maximo Aseguradora_btc"; Integer) { ExternalName = 'Credito Maximo Aseguradora_btc'; }
         field(5; "Cred_ Max_ Aseg_ Autorizado Por_btc"; text[100]) { ExternalName = 'Cred_ Max_ Aseg_ Autorizado Por_btc'; }
         field(6; "Descuento1_btc"; Decimal) { ExternalName = 'Descuento1_btc'; }
         field(7; "Descuento2_btc"; Decimal) { ExternalName = 'Descuento2_btc'; }
         field(8; "CodMotivoBloqueo_btc"; code[20]) { ExternalName = 'CodMotivoBloqueo_btc'; }
-        field(9; "Transaction Specification"; code[20]) { ExternalName = 'Transaction Specification'; }
-        field(10; "Transaction Type"; code[20]) { ExternalName = 'Transaction Type'; }
-        field(11; "Transport Method"; code[20]) { ExternalName = 'Transport Method'; }
-        field(12; "Exit Point"; code[20]) { ExternalName = 'Exit Point'; }
+        field(9; "Transaction Specification"; Integer) { ExternalName = 'Transaction Specification'; }
+        field(10; "Transaction Type"; Integer) { ExternalName = 'Transaction Type'; }
+        field(11; "Transport Method"; Integer) { ExternalName = 'Transport Method'; }
+        field(12; "Exit Point"; Integer) { ExternalName = 'Exit Point'; }
         field(13; "Suplemento_aseguradora"; Integer) { ExternalName = 'Suplemento_aseguradora'; }
         field(14; "CentralCompras_btc"; code[20]) { ExternalName = 'CentralCompras_btc'; }
         field(15; "ClienteCorporativo_btc"; code[20]) { ExternalName = 'ClienteCorporativo_btc'; }
@@ -29,7 +29,7 @@ table 17454 "ABERTIA SalesCustomer"
         field(19; "Perfil_btc"; code[20]) { ExternalName = 'Perfil_btc'; }
         field(20; "SubCliente_btc"; code[20]) { ExternalName = 'SubCliente_btc'; }
         field(21; "ClienteReporting_btc"; code[20]) { ExternalName = 'ClienteReporting_btc'; }
-        field(22; "PermiteEnvioMail_btc"; Boolean) { ExternalName = 'PermiteEnvioMail_btc'; }
+        field(22; "PermiteEnvioMail_btc"; Integer) { ExternalName = 'PermiteEnvioMail_btc'; }
         field(23; "CorreoFactElec_btc"; text[80]) { ExternalName = 'CorreoFactElec_btc'; }
         field(24; "TipoFormarto_btc"; integer) { ExternalName = 'TipoFormarto_btc'; }
         field(25; "ClienteActividad_btc_"; code[20]) { ExternalName = 'ClienteActividad_btc_'; }
@@ -45,7 +45,7 @@ table 17454 "ABERTIA SalesCustomer"
         field(35; "NOMBRE PAIS"; text[100]) { ExternalName = 'NOMBRE PAIS'; }
         field(36; "Post Code"; code[20]) { ExternalName = 'Post Code'; }
         field(37; "Name 2"; text[50]) { ExternalName = 'Name 2'; }
-        field(38; "Expr1"; integer) { ExternalName = 'Expr1'; }
+        field(38; "Expr1"; text[50]) { ExternalName = 'Expr1'; }
         field(39; "CodigoPais"; code[20]) { ExternalName = 'CodigoPais'; }
         field(50999; ID; Guid)
         {
@@ -81,7 +81,7 @@ table 17454 "ABERTIA SalesCustomer"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateSalesCustomer()
+    procedure CreateSalesCustomer() RecordNo: Integer;
     var
         Customer: Record customer;
         Country: Record "Country/Region";
@@ -109,10 +109,10 @@ table 17454 "ABERTIA SalesCustomer"
                 ABERTIASalesCustomer."Descuento1_btc" := customer.Descuento1_btc;
                 ABERTIASalesCustomer."Descuento2_btc" := customer.Descuento2_btc;
                 ABERTIASalesCustomer."CodMotivoBloqueo_btc" := customer.CodMotivoBloqueo_btc;
-                ABERTIASalesCustomer."Transaction Specification" := customer."Transaction Specification";
-                ABERTIASalesCustomer."Transaction Type" := customer."Transaction Type";
-                ABERTIASalesCustomer."Transport Method" := customer."Transport Method";
-                ABERTIASalesCustomer."Exit Point" := customer."Exit Point";
+                // ABERTIASalesCustomer."Transaction Specification" := Customer."Transaction Specification";
+                // ABERTIASalesCustomer."Transaction Type" := customer."Transaction Type";
+                // ABERTIASalesCustomer."Transport Method" := customer."Transport Method";
+                // ABERTIASalesCustomer."Exit Point" := customer."Exit Point";
                 if Evaluate(Suplemento, customer.Suplemento_aseguradora) then
                     ABERTIASalesCustomer."Suplemento_aseguradora" := Suplemento;
                 ABERTIASalesCustomer."CentralCompras_btc" := customer.CentralCompras_btc;
@@ -123,7 +123,12 @@ table 17454 "ABERTIA SalesCustomer"
                 ABERTIASalesCustomer."Perfil_btc" := customer.Perfil_btc;
                 ABERTIASalesCustomer."SubCliente_btc" := customer.SubCliente_btc;
                 ABERTIASalesCustomer."ClienteReporting_btc" := customer.ClienteReporting_btc;
-                ABERTIASalesCustomer."PermiteEnvioMail_btc" := customer.PermiteEnvioMail_btc;
+                case customer.PermiteEnvioMail_btc of
+                    false:
+                        ABERTIASalesCustomer."PermiteEnvioMail_btc" := 0;
+                    else
+                        ABERTIASalesCustomer."PermiteEnvioMail_btc" := 1;
+                end;
                 ABERTIASalesCustomer."CorreoFactElec_btc" := customer.CorreoFactElec_btc;
                 ABERTIASalesCustomer."TipoFormarto_btc" := customer.TipoFormarto_btc;
                 ABERTIASalesCustomer."ClienteActividad_btc_" := customer.ClienteActividad_btc;
@@ -144,6 +149,8 @@ table 17454 "ABERTIA SalesCustomer"
                 ABERTIASalesCustomer."CodigoPais" := customer."Country/Region Code";
                 if not ABERTIASalesCustomer.Insert() then
                     ABERTIASalesCustomer.Modify();
+                Commit();
+                RecordNo += 1;
             Until Customer.next() = 0;
         Window.Close();
     end;

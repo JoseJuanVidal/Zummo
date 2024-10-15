@@ -266,13 +266,13 @@ table 17458 "ABERTIA GL Entry"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateGLEntry(EntryNoIni: Integer; TypeUpdate: Option Nuevo,Periodo,Todo)
+    procedure CreateGLEntry(EntryNoIni: Integer; TypeUpdate: Option Nuevo,Periodo,Todo) RecordNo: Integer;
     var
         GLEntry: Record "G/L Entry";
         ABGLEntry: Record "ABERTIA GL Entry";
         Window: Dialog;
     begin
-        Window.Open('Nº Movimiento #1################\Fecha #2################');
+        Window.Open('Nº Movimiento contable #1################\Fecha #2################');
         GenLedgerSetup.Get();
         GLEntry.Reset();
         if EntryNoIni <> 0 then
@@ -309,6 +309,7 @@ table 17458 "ABERTIA GL Entry"
                 ABGLEntry.SetRange("Entry No_", GLEntry."Entry No.");
                 if not ABGLEntry.FindFirst() then begin
                     UpdateABGLEntry(GLEntry, ABGLEntry);
+                    RecordNo += 1;
                 end;
             Until GLEntry.next() = 0;
         Window.Close();

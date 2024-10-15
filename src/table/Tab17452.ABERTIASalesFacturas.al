@@ -27,7 +27,7 @@ table 17452 "ABERTIA SalesFacturas"
         field(17; "Line Discount Amount"; Decimal) { ExternalName = 'Line Discount Amount'; }
         field(18; "Amount"; Decimal) { ExternalName = 'Amount'; }
         field(19; "Amount Including VAT"; Decimal) { ExternalName = 'Amount Including VAT'; }
-        field(20; "Allow Invoice Disc_"; Boolean) { ExternalName = 'Allow Invoice Disc_'; }
+        field(20; "Allow Invoice Disc_"; Integer) { ExternalName = 'Allow Invoice Disc_'; }
         field(21; "Gross Weight"; Decimal) { ExternalName = 'Gross Weight'; }
         field(22; "Net Weight"; Decimal) { ExternalName = 'Net Weight'; }
         field(23; "Units per Parcel"; Decimal) { ExternalName = 'Units per Parcel'; }
@@ -44,19 +44,19 @@ table 17452 "ABERTIA SalesFacturas"
         field(34; "Order Line No_"; Integer) { ExternalName = 'Order Line No_'; }
         field(35; "Bill-to Customer No_"; code[20]) { ExternalName = 'Bill-to Customer No_'; }
         field(36; "Inv_ Discount Amount"; Decimal) { ExternalName = 'Inv_ Discount Amount'; }
-        field(37; "Drop Shipment"; Boolean) { ExternalName = 'Drop Shipment'; }
+        field(37; "Drop Shipment"; Integer) { ExternalName = 'Drop Shipment'; }
         field(38; "Gen_ Bus_ Posting Group"; code[20]) { ExternalName = 'Gen_ Bus_ Posting Group'; }
         field(39; "Gen_ Prod_ Posting Group"; code[20]) { ExternalName = 'Gen_ Prod_ Posting Group'; }
         field(40; "VAT Calculation Type"; Integer) { ExternalName = 'VAT Calculation Type'; }
-        field(41; "Transaction Type"; code[10]) { ExternalName = 'Transaction Type'; }
-        field(42; "Transport Method"; code[10]) { ExternalName = 'Transport Method'; }
+        field(41; "Transaction Type"; Integer) { ExternalName = 'Transaction Type'; }
+        field(42; "Transport Method"; Integer) { ExternalName = 'Transport Method'; }
         field(43; "Attached to Line No_"; Integer) { ExternalName = 'Attached to Line No_'; }
-        field(44; "Exit Point"; code[10]) { ExternalName = 'Exit Point'; }
+        field(44; "Exit Point"; Integer) { ExternalName = 'Exit Point'; }
         field(45; "Area"; code[10]) { ExternalName = 'Area'; }
-        field(46; "Transaction Specification"; code[10]) { ExternalName = 'Transaction Specification'; }
+        field(46; "Transaction Specification"; Integer) { ExternalName = 'Transaction Specification'; }
         field(47; "Tax Category"; code[10]) { ExternalName = 'Tax Category'; }
         field(48; "Tax Area Code"; code[20]) { ExternalName = 'Tax Area Code'; }
-        field(49; "Tax Liable"; Boolean) { ExternalName = 'Tax Liable'; }
+        field(49; "Tax Liable"; Integer) { ExternalName = 'Tax Liable'; }
         field(50; "Tax Group Code"; code[20]) { ExternalName = 'Tax Group Code'; }
         field(51; "VAT Clause Code"; code[20]) { ExternalName = 'VAT Clause Code'; }
         field(52; "VAT Bus_ Posting Group"; code[20]) { ExternalName = 'VAT Bus_ Posting Group'; }
@@ -65,13 +65,13 @@ table 17452 "ABERTIA SalesFacturas"
         field(55; "Blanket Order Line No_"; Integer) { ExternalName = 'Blanket Order Line No_'; }
         field(56; "VAT Base Amount"; Decimal) { ExternalName = 'VAT Base Amount'; }
         field(57; "Unit Cost"; Decimal) { ExternalName = 'Unit Cost'; }
-        field(58; "System-Created Entry"; Boolean) { ExternalName = 'System-Created Entry'; }
+        field(58; "System-Created Entry"; Integer) { ExternalName = 'System-Created Entry'; }
         field(59; "Line Amount"; Decimal) { ExternalName = 'Line Amount'; }
         field(60; "VAT Difference"; Decimal) { ExternalName = 'VAT Difference'; }
         field(61; "VAT Identifier"; code[20]) { ExternalName = 'VAT Identifier'; }
         field(62; "IC Partner Ref_ Type"; Integer) { ExternalName = 'IC Partner Ref_ Type'; }
         field(63; "IC Partner Reference"; code[20]) { ExternalName = 'IC Partner Reference'; }
-        field(64; "Prepayment Line"; Boolean) { ExternalName = 'Prepayment Line'; }
+        field(64; "Prepayment Line"; Integer) { ExternalName = 'Prepayment Line'; }
         field(65; "IC Partner Code"; code[20]) { ExternalName = 'IC Partner Code'; }
         field(66; "Posting Date"; date) { ExternalName = 'Posting Date'; }
         field(67; "Pmt_ Discount Amount"; Decimal) { ExternalName = 'Pmt_ Discount Amount'; }
@@ -87,21 +87,21 @@ table 17452 "ABERTIA SalesFacturas"
         field(77; "Quantity (Base)"; Decimal) { ExternalName = 'Quantity (Base)'; }
         field(78; "FA Posting Date"; date) { ExternalName = 'FA Posting Date'; }
         field(79; "Depreciation Book Code"; code[10]) { ExternalName = 'Depreciation Book Code'; }
-        field(80; "Depr_ until FA Posting Date"; Boolean) { ExternalName = 'Depr_ until FA Posting Date'; }
+        field(80; "Depr_ until FA Posting Date"; Integer) { ExternalName = 'Depr_ until FA Posting Date'; }
         field(81; "Duplicate in Depreciation Book"; code[10]) { ExternalName = 'Duplicate in Depreciation Book'; }
-        field(82; "Use Duplication List"; Boolean) { ExternalName = 'Use Duplication List'; }
+        field(82; "Use Duplication List"; Integer) { ExternalName = 'Use Duplication List'; }
         field(83; "Responsibility Center"; code[10]) { ExternalName = 'Responsibility Center'; }
         field(84; "Cross-Reference No_"; code[20]) { ExternalName = 'Cross-Reference No_'; }
         field(85; "Unit of Measure (Cross Ref_)"; code[10]) { ExternalName = 'Unit of Measure (Cross Ref_)'; }
         field(86; "Cross-Reference Type"; Integer) { ExternalName = 'Cross-Reference Type'; }
         field(87; "Cross-Reference Type No_"; code[20]) { ExternalName = 'Cross-Reference Type No_'; }
         field(88; "Item Category Code"; code[20]) { ExternalName = 'Item Category Code'; }
-        field(89; "Nonstock"; Boolean) { ExternalName = 'Nonstock'; }
+        field(89; "Nonstock"; Integer) { ExternalName = 'Nonstock'; }
         field(90; "Purchasing Code"; code[20]) { ExternalName = 'Purchasing Code'; }
         field(91; "Product Group Code"; code[20]) { ExternalName = 'Product Group Code'; }
         field(92; "Appl_-from Item Entry"; Integer) { ExternalName = 'Appl_-from Item Entry'; }
         field(93; "Return Reason Code"; code[20]) { ExternalName = 'Return Reason Code'; }
-        field(94; "Allow Line Disc_"; Boolean) { ExternalName = 'Allow Line Disc_'; }
+        field(94; "Allow Line Disc_"; Integer) { ExternalName = 'Allow Line Disc_'; }
         field(95; "Customer Disc_ Group"; code[20]) { ExternalName = 'Customer Disc_ Group'; }
         field(96; "Price description"; code[20]) { ExternalName = 'Price description'; }
         field(97; "Pmt_ Disc_ Given Amount (Old)"; Decimal) { ExternalName = 'Pmt_ Disc_ Given Amount (Old)'; }
@@ -157,7 +157,7 @@ table 17452 "ABERTIA SalesFacturas"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateSalesFacturas(TypeUpdate: Option Nuevo,Periodo,Todo)
+    procedure CreateSalesFacturas(TypeUpdate: Option Nuevo,Periodo,Todo) RecordNo: Integer;
     var
         Customer: Record Customer;
         SalesInvoiceHeader: Record "Sales Invoice Header";
@@ -167,7 +167,7 @@ table 17452 "ABERTIA SalesFacturas"
         Suplemento: Integer;
         Window: Dialog;
     begin
-        Window.Open('Nº Producto #1################');
+        Window.Open('Nº Factura #1################');
         GenLedgerSetup.Get();
         SalesInvoiceHeader.Reset();
         ABERTIASalesFacturas.Reset();
@@ -212,7 +212,12 @@ table 17452 "ABERTIA SalesFacturas"
                         ABERTIASalesFacturas."Line Discount Amount" := SalesInvoiceLine."Line Discount Amount";
                         ABERTIASalesFacturas."Amount" := SalesInvoiceLine.Amount;
                         ABERTIASalesFacturas."Amount Including VAT" := SalesInvoiceLine."Amount Including VAT";
-                        ABERTIASalesFacturas."Allow Invoice Disc_" := SalesInvoiceLine."Allow Invoice Disc.";
+                        case SalesInvoiceLine."Allow Invoice Disc." of
+                            true:
+                                ABERTIASalesFacturas."Allow Invoice Disc_" := 1;
+                            else
+                                ABERTIASalesFacturas."Allow Invoice Disc_" := 0;
+                        end;
                         ABERTIASalesFacturas."Gross Weight" := SalesInvoiceLine."Gross Weight";
                         ABERTIASalesFacturas."Net Weight" := SalesInvoiceLine."Net Weight";
                         ABERTIASalesFacturas."Units per Parcel" := SalesInvoiceLine."Units per Parcel";
@@ -229,19 +234,29 @@ table 17452 "ABERTIA SalesFacturas"
                         ABERTIASalesFacturas."Order Line No_" := SalesInvoiceLine."Order Line No.";
                         ABERTIASalesFacturas."Bill-to Customer No_" := SalesInvoiceLine."Bill-to Customer No.";
                         ABERTIASalesFacturas."Inv_ Discount Amount" := SalesInvoiceLine."Inv. Discount Amount";
-                        ABERTIASalesFacturas."Drop Shipment" := SalesInvoiceLine."Drop Shipment";
+                        case SalesInvoiceLine."Drop Shipment" of
+                            true:
+                                ABERTIASalesFacturas."Drop Shipment" := 1;
+                            else
+                                ABERTIASalesFacturas."Drop Shipment" := 0;
+                        end;
                         ABERTIASalesFacturas."Gen_ Bus_ Posting Group" := SalesInvoiceLine."Gen. Bus. Posting Group";
                         ABERTIASalesFacturas."Gen_ Prod_ Posting Group" := SalesInvoiceLine."Gen. Prod. Posting Group";
                         ABERTIASalesFacturas."VAT Calculation Type" := SalesInvoiceLine."VAT Calculation Type";
-                        ABERTIASalesFacturas."Transaction Type" := SalesInvoiceLine."Transaction Type";
-                        ABERTIASalesFacturas."Transport Method" := SalesInvoiceLine."Transport Method";
+                        // ABERTIASalesFacturas."Transaction Type" := SalesInvoiceLine."Transaction Type";
+                        // ABERTIASalesFacturas."Transport Method" := SalesInvoiceLine."Transport Method";
                         ABERTIASalesFacturas."Attached to Line No_" := SalesInvoiceLine."Attached to Line No.";
-                        ABERTIASalesFacturas."Exit Point" := SalesInvoiceLine."Exit Point";
+                        // ABERTIASalesFacturas."Exit Point" := SalesInvoiceLine."Exit Point";
                         ABERTIASalesFacturas."Area" := SalesInvoiceLine."Area";
-                        ABERTIASalesFacturas."Transaction Specification" := SalesInvoiceLine."Transaction Specification";
+                        // ABERTIASalesFacturas."Transaction Specification" := SalesInvoiceLine."Transaction Specification";
                         ABERTIASalesFacturas."Tax Category" := SalesInvoiceLine."Tax Category";
                         ABERTIASalesFacturas."Tax Area Code" := SalesInvoiceLine."Tax Area Code";
-                        ABERTIASalesFacturas."Tax Liable" := SalesInvoiceLine."Tax Liable";
+                        case SalesInvoiceLine."Tax Liable" of
+                            true:
+                                ABERTIASalesFacturas."Tax Liable" := 1;
+                            else
+                                ABERTIASalesFacturas."Tax Liable" := 0;
+                        end;
                         ABERTIASalesFacturas."Tax Group Code" := SalesInvoiceLine."Tax Group Code";
                         ABERTIASalesFacturas."VAT Clause Code" := SalesInvoiceLine."VAT Clause Code";
                         ABERTIASalesFacturas."VAT Bus_ Posting Group" := SalesInvoiceLine."VAT Bus. Posting Group";
@@ -250,13 +265,23 @@ table 17452 "ABERTIA SalesFacturas"
                         ABERTIASalesFacturas."Blanket Order Line No_" := SalesInvoiceLine."Blanket Order Line No.";
                         ABERTIASalesFacturas."VAT Base Amount" := SalesInvoiceLine."VAT Base Amount";
                         ABERTIASalesFacturas."Unit Cost" := SalesInvoiceLine."Unit Cost";
-                        ABERTIASalesFacturas."System-Created Entry" := SalesInvoiceLine."System-Created Entry";
+                        case SalesInvoiceLine."System-Created Entry" of
+                            true:
+                                ABERTIASalesFacturas."System-Created Entry" := 1;
+                            else
+                                ABERTIASalesFacturas."System-Created Entry" := 0;
+                        end;
                         ABERTIASalesFacturas."Line Amount" := SalesInvoiceLine."Line Amount";
                         ABERTIASalesFacturas."VAT Difference" := SalesInvoiceLine."VAT Difference";
                         ABERTIASalesFacturas."VAT Identifier" := SalesInvoiceLine."VAT Identifier";
                         ABERTIASalesFacturas."IC Partner Ref_ Type" := SalesInvoiceLine."IC Partner Ref. Type";
                         ABERTIASalesFacturas."IC Partner Reference" := SalesInvoiceLine."IC Partner Reference";
-                        ABERTIASalesFacturas."Prepayment Line" := SalesInvoiceLine."Prepayment Line";
+                        case SalesInvoiceLine."Prepayment Line" of
+                            true:
+                                ABERTIASalesFacturas."Prepayment Line" := 1;
+                            else
+                                ABERTIASalesFacturas."Prepayment Line" := 0;
+                        end;
                         ABERTIASalesFacturas."IC Partner Code" := SalesInvoiceLine."IC Partner Code";
                         ABERTIASalesFacturas."Posting Date" := SalesInvoiceLine."Posting Date";
                         ABERTIASalesFacturas."Pmt_ Discount Amount" := SalesInvoiceLine."Pmt. Discount Amount";
@@ -272,21 +297,41 @@ table 17452 "ABERTIA SalesFacturas"
                         ABERTIASalesFacturas."Quantity (Base)" := SalesInvoiceLine."Quantity (Base)";
                         ABERTIASalesFacturas."FA Posting Date" := SalesInvoiceLine."FA Posting Date";
                         ABERTIASalesFacturas."Depreciation Book Code" := SalesInvoiceLine."Depreciation Book Code";
-                        ABERTIASalesFacturas."Depr_ until FA Posting Date" := SalesInvoiceLine."Depr. until FA Posting Date";
+                        case SalesInvoiceLine."Depr. until FA Posting Date" of
+                            true:
+                                ABERTIASalesFacturas."Depr_ until FA Posting Date" := 1;
+                            else
+                                ABERTIASalesFacturas."Depr_ until FA Posting Date" := 0;
+                        end;
                         ABERTIASalesFacturas."Duplicate in Depreciation Book" := SalesInvoiceLine."Duplicate in Depreciation Book";
-                        ABERTIASalesFacturas."Use Duplication List" := SalesInvoiceLine."Use Duplication List";
+                        case SalesInvoiceLine."Use Duplication List" of
+                            true:
+                                ABERTIASalesFacturas."Use Duplication List" := 0;
+                            else
+                                ABERTIASalesFacturas."Use Duplication List" := 1;
+                        end;
                         ABERTIASalesFacturas."Responsibility Center" := SalesInvoiceLine."Responsibility Center";
                         ABERTIASalesFacturas."Cross-Reference No_" := SalesInvoiceLine."Cross-Reference No.";
                         ABERTIASalesFacturas."Unit of Measure (Cross Ref_)" := SalesInvoiceLine."Unit of Measure (Cross Ref.)";
                         ABERTIASalesFacturas."Cross-Reference Type" := SalesInvoiceLine."Cross-Reference Type";
                         ABERTIASalesFacturas."Cross-Reference Type No_" := SalesInvoiceLine."Cross-Reference Type No.";
                         ABERTIASalesFacturas."Item Category Code" := SalesInvoiceLine."Item Category Code";
-                        ABERTIASalesFacturas."Nonstock" := SalesInvoiceLine.Nonstock;
+                        case SalesInvoiceLine.Nonstock of
+                            true:
+                                ABERTIASalesFacturas."Nonstock" := 0;
+                            else
+                                ABERTIASalesFacturas."Nonstock" := 1;
+                        end;
                         ABERTIASalesFacturas."Purchasing Code" := SalesInvoiceLine."Purchasing Code";
                         // ABERTIASalesFacturas."Product Group Code" := SalesInvoiceHeader.
                         ABERTIASalesFacturas."Appl_-from Item Entry" := SalesInvoiceLine."Appl.-from Item Entry";
                         ABERTIASalesFacturas."Return Reason Code" := SalesInvoiceLine."Return Reason Code";
-                        ABERTIASalesFacturas."Allow Line Disc_" := SalesInvoiceLine."Allow Line Disc.";
+                        case SalesInvoiceLine."Allow Line Disc." of
+                            true:
+                                ABERTIASalesFacturas."Allow Line Disc_" := 1;
+                            else
+                                ABERTIASalesFacturas."Allow Line Disc_" := 0;
+                        end;
                         ABERTIASalesFacturas."Customer Disc_ Group" := SalesInvoiceLine."Customer Disc. Group";
                         ABERTIASalesFacturas."Price description" := SalesInvoiceLine."Price description";
                         // ABERTIASalesFacturas."Pmt_ Disc_ Given Amount (Old)" := SalesInvoiceHeader.pmt
@@ -311,6 +356,8 @@ table 17452 "ABERTIA SalesFacturas"
                         ABERTIASalesFacturas."salesperson code" := SalesInvoiceHeader."Salesperson Code";
                         if not ABERTIASalesFacturas.Insert() then
                             ABERTIASalesFacturas.Modify();
+                        Commit();
+                        RecordNo += 1;
                     Until SalesInvoiceLine.next() = 0;
             Until SalesInvoiceHeader.next() = 0;
         Window.Close();

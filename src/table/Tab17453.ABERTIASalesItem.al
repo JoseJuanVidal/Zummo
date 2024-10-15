@@ -13,23 +13,23 @@ table 17453 "ABERTIA SalesItem"
         field(3; Familia_btc; Integer) { ExternalName = 'Familia_btc'; }
         field(4; Gama_btc; Integer) { ExternalName = 'Gama_btc'; }
         field(5; Ordenacion_btc; Integer) { ExternalName = 'Ordenacion_btc'; }
-        field(6; ValidadoContabiliad_btc; Boolean) { ExternalName = 'ValidadoContabiliad_btc'; }
+        field(6; ValidadoContabiliad_btc; Integer) { ExternalName = 'ValidadoContabiliad_btc'; }
         field(7; OptClasVtas_btc; Integer) { ExternalName = 'OptClasVtas_btc'; }
         field(8; OptFamilia_btc; Integer) { ExternalName = 'OptFamilia_btc'; }
         field(9; OptGama_btc; Integer) { ExternalName = 'OptGama_btc'; }
         field(10; ContraStock_BajoPedido; Integer) { ExternalName = 'ContraStock_BajoPedido'; }
-        field(11; PedidoMaximo; Integer) { ExternalName = 'PedidoMaximo'; }
-        field(12; selClasVtas_btc; code[20]) { ExternalName = 'selClasVtas_btc'; }
-        field(13; selFamilia_btc; code[20]) { ExternalName = 'selFamilia_btc'; }
+        field(11; PedidoMaximo; Decimal) { ExternalName = 'PedidoMaximo'; }
+        field(12; selClasVtas_btc; Integer) { ExternalName = 'selClasVtas_btc'; }
+        field(13; selFamilia_btc; Integer) { ExternalName = 'selFamilia_btc'; }
         field(14; selGama_btc; code[20]) { ExternalName = 'selGama_btc'; }
-        field(15; selLineaEconomica_btc; code[20]) { ExternalName = 'selLineaEconomica_btc'; }
+        field(15; selLineaEconomica_btc; Integer) { ExternalName = 'selLineaEconomica_btc'; }
         field(16; ABC; Integer) { ExternalName = 'ABC'; }
         field(17; TasaRAEE; Decimal) { ExternalName = 'TasaRAEE'; }
         field(18; ClasifVentas; code[20]) { ExternalName = 'ClasifVentas'; }
         field(19; Familia; code[20]) { ExternalName = 'Familia'; }
         field(20; GAMA; code[20]) { ExternalName = 'GAMA'; }
         field(21; LineaEconomica; code[20]) { ExternalName = 'LineaEconomica'; }
-        field(22; Canal; Integer) { ExternalName = 'Canal'; }
+        field(22; Canal; code[20]) { ExternalName = 'Canal'; }
 
         field(50999; ID; Guid)
         {
@@ -65,7 +65,7 @@ table 17453 "ABERTIA SalesItem"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateSalesItem()
+    procedure CreateSalesItem() RecordNo: Integer;
     var
         Item: record Item;
         ABERTIASalesItem: Record "ABERTIA SalesItem";
@@ -90,26 +90,30 @@ table 17453 "ABERTIA SalesItem"
                 ABERTIASalesItem.Familia_btc := Item.optFamilia_btc;
                 ABERTIASalesItem.Gama_btc := Item.optGama_btc;
                 ABERTIASalesItem.Ordenacion_btc := Item.Ordenacion_btc;
-                ABERTIASalesItem.ValidadoContabiliad_btc := Item.ValidadoContabiliad_btc;
+                // ABERTIASalesItem.ValidadoContabiliad_btc := Item.ValidadoContabiliad_btc;
                 ABERTIASalesItem.OptClasVtas_btc := Item.OptClasVtas_btc;
                 ABERTIASalesItem.OptFamilia_btc := Item.OptFamilia_btc;
                 ABERTIASalesItem.OptGama_btc := Item.OptGama_btc;
                 ABERTIASalesItem.ContraStock_BajoPedido := Item."ContraStock/BajoPedido";
                 ABERTIASalesItem.PedidoMaximo := Item.PedidoMaximo;
-                ABERTIASalesItem.selClasVtas_btc := Item.selClasVtas_btc;
-                ABERTIASalesItem.selFamilia_btc := Item.selFamilia_btc;
+                if Evaluate(Suplemento, Item.selClasVtas_btc) then
+                    ABERTIASalesItem.selClasVtas_btc := Suplemento;
+                if Evaluate(Suplemento, Item.selFamilia_btc) then
+                    ABERTIASalesItem.selFamilia_btc := Suplemento;
                 ABERTIASalesItem.selGama_btc := Item.selGama_btc;
-                ABERTIASalesItem.selLineaEconomica_btc := Item.selLineaEconomica_btc;
+                if Evaluate(Suplemento, Item.selLineaEconomica_btc) then
+                    ABERTIASalesItem.selLineaEconomica_btc := Suplemento;
                 ABERTIASalesItem.ABC := Item.ABC;
                 ABERTIASalesItem.TasaRAEE := Item.TasaRAEE;
                 ABERTIASalesItem.ClasifVentas := Item.desClasVtas_btc;
                 ABERTIASalesItem.Familia := Item.desFamilia_btc;
                 ABERTIASalesItem.GAMA := Item.desGama_btc;
                 ABERTIASalesItem.LineaEconomica := Item.desLineaEconomica_btc;
-                ABERTIASalesItem.Canal := Item.Canal;
+                ABERTIASalesItem.Canal := format(Item.Canal);
                 if not ABERTIASalesItem.Insert() then
                     ABERTIASalesItem.Modify();
-
+                Commit();
+                RecordNo += 1;
             Until Item.next() = 0;
         Window.Close();
     end;

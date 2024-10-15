@@ -92,14 +92,14 @@ table 17457 "ABERTIA GL Account"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateGLAccount()
+    procedure CreateGLAccount() RecordNo: Integer;
     var
         GLAccount: Record "G/L Account";
         ABGLAccount: Record "ABERTIA GL Account";
         Cuenta: Integer;
         Window: Dialog;
     begin
-        Window.Open('Nº Cuenta #1################');
+        Window.Open('Nº Cuenta contable #1################');
         GLAccount.Reset();
         // GLAccount.SetRange("Account Type", GLAccount."Account Type"::Posting);
         if GLAccount.FindFirst() then
@@ -141,6 +141,7 @@ table 17457 "ABERTIA GL Account"
                 if not ABGLAccount.FindFirst() then begin
                     UpdateABGLAccount(GLAccount, ABGLAccount);
                 end;
+                RecordNo += 1;
             Until GLAccount.next() = 0;
         Window.Close();
 

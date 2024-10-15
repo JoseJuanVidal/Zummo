@@ -51,6 +51,12 @@ tableextension 50121 "GenLedgerSetup" extends "General Ledger Setup"  //98
             Caption = 'Password', comment = 'ESP="Password"';
             ExtendedDatatype = Masked;
         }
+        field(50205; "GL Entry No."; Integer)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Password', comment = 'ESP="Password"';
+            ExtendedDatatype = Masked;
+        }
         //- ABERTIA configuracion de acceso a SQL SERVER
     }
 

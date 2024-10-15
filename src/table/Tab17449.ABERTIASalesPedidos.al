@@ -75,7 +75,7 @@ table 17449 "ABERTIA SalesPedidos"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateSalesPedidos(TypeUpdate: Option Nuevo,Periodo,Todo)
+    procedure CreateSalesPedidos(TypeUpdate: Option Nuevo,Periodo,Todo) RecordNo: Integer;
     var
         SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
@@ -87,15 +87,11 @@ table 17449 "ABERTIA SalesPedidos"
         Window: Dialog;
     begin
         Window.Open('Tipo: #1#############\Nº Documento #2################');
+        GenLedgerSetup.Get();
         SalesHeader.Reset();
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
         case TypeUpdate of
-            TypeUpdate::Nuevo:
-                begin
-                    if SalesHeader.FindLast() then
-                        SalesHeader.SetFilter("No.", '%1..', ABERTIASalesPedidos."G3. PEDIDO NUM");
-                end;
-            TypeUpdate::Periodo:
+            TypeUpdate::Nuevo, TypeUpdate::Periodo:
                 begin
                     SalesHeader.SetRange("Posting Date", GenLedgerSetup."Allow Posting From", GenLedgerSetup."Allow Posting To");
                 end;
@@ -150,6 +146,8 @@ table 17449 "ABERTIA SalesPedidos"
 
                         if not ABERTIASalesPedidos.Insert() then
                             ABERTIASalesPedidos.Modify();
+                        Commit();
+                        RecordNo += 1;
                     Until SalesLine.next() = 0;
             Until SalesHeader.next() = 0;
         Window.Close();
