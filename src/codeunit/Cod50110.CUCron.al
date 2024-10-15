@@ -1565,7 +1565,6 @@ codeunit 50110 "CU_Cron"
         cduSmtp.Send();
     end;
 
-
     procedure ABERTIAUpdateALL(TypeUpdate: Option Nuevo,Periodo,Todo)
     var
         AbertiaGLAccount: Record "ABERTIA GL Account";
@@ -1584,6 +1583,7 @@ codeunit 50110 "CU_Cron"
         FacturasRecordNo: Integer;
         PedidosRecordNo: Integer;
     begin
+        CreateTableConnection();
         GLAccountRecordNo := AbertiaGLAccount.CreateGLAccount();
         GLEntryRecordNo := AbertiaGLEntry.CreateGLEntry(0, TypeUpdate);
         GLBudgetEntryRecordNo := AbertiaGLEntryBudget.CreateGLBudget(TypeUpdate);
@@ -1592,6 +1592,19 @@ codeunit 50110 "CU_Cron"
         FacturasRecordNo := ABERTIASalesFacturas.CreateSalesFacturas(TypeUpdate);
         PedidosRecordNo := AbertiaSalesPedidos.CreateSalesPedidos(TypeUpdate);
         ABERTIAUpdateSendEmail(Body, GLAccountRecordNo, GLEntryRecordNo, GLBudgetEntryRecordNo, CustomerRecordNo, ItemRecordNo, FacturasRecordNo, PedidosRecordNo);
+    end;
+
+    local procedure CreateTableConnection()
+    var
+        GenLedgerSetup: Record "General Ledger Setup";
+    begin
+        GenLedgerSetup.Get();
+        IF HASTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI') THEN
+            UNREGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
+
+        REGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI', GenLedgerSetup.AbertiaTABLECONNECTION());
+
+        SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
     procedure ABERTIAUpdateSendEmail(Body: Text; GLAccountRecordNo: Integer; GLEntryRecordNo: Integer; GLBudgetEntryRecordNo: Integer;
@@ -1618,9 +1631,11 @@ codeunit 50110 "CU_Cron"
         UserSetup.SetRange("Config. Contabilidad", true);
         if UserSetup.FindFirst() then
             repeat
-                if Recipient <> '' then
-                    Recipient := ';';
-                Recipient += UserSetup."E-Mail";
+                if UserSetup."E-Mail" <> '' then begin
+                    if Recipient <> '' then
+                        Recipient += ';';
+                    Recipient += UserSetup."E-Mail";
+                end;
             Until UserSetup.next() = 0;
         if Recipient = '' then
             Recipient := 'jvidal@zummo.es'
