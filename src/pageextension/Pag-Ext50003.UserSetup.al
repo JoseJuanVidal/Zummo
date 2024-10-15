@@ -56,6 +56,26 @@ pageextension 50003 "UserSetup" extends "User Setup"
         }
     }
 
+    actions
+    {
+        addlast(Processing)
+        {
+            action(CheckGLSetupPeriode)
+            {
+                ApplicationArea = all;
+                Caption = 'Aviso periodo contable', comment = 'ESP="Aviso periodo contable"';
+                Image = CheckLedger;
+
+                trigger OnAction()
+                var
+                    CUCRON: Codeunit CU_Cron;
+                begin
+                    CUCRON.CheckFechaRegistroConfiguracionContabilidad();
+                end;
+            }
+        }
+    }
+
     trigger OnOpenPage()
     begin
         CheckUserConfiguration();

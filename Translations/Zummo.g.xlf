@@ -32678,6 +32678,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Selección Etiquetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TransferOrder_btc - Action Imprimir Selec Etiquetas - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2852714242 - Action 1119140686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 337631938">
+          <source>Aviso periodo contable</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso periodo contable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension UserSetup - Action CheckGLSetupPeriode - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 568510665 - Action 2273767209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2248515987">
           <source>Actualiza País</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualiza País"</note>

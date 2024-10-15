@@ -1537,7 +1537,7 @@ codeunit 50110 "CU_Cron"
     // ==  
     // ======================================================================================================
 
-    local procedure CheckFechaRegistroConfiguracionContabilidad()
+    procedure CheckFechaRegistroConfiguracionContabilidad()
     var
         GLSetup: Record "General Ledger Setup";
         Recipients: Text;
@@ -1547,7 +1547,7 @@ codeunit 50110 "CU_Cron"
         if not (Today < CalcDate('-2D', GLSetup."Allow Posting To")) then
             exit;
 
-        Recipients := GetRecipientsEmailRequest();
+        Recipients := GetRecipientsGLSetup();
         if Recipients <> '' then
             SendEmail(GLSetup, Recipients);
     end;
@@ -1565,26 +1565,6 @@ codeunit 50110 "CU_Cron"
         cduSmtp.Send();
     end;
 
-    local procedure GetRecipientsEmailRequest() Recipients: text;
-    var
-        UserSetup: Record "User Setup";
-        Employee: Record Employee;
-    begin
-        UserSetup.Reset();
-        UserSetup.SetRange("Approvals Purch. Request", true);
-        if UserSetup.FindFirst() then
-            repeat
-                Employee.SetRange("Approval User Id", UserSetup."User ID");
-                if Employee.FindFirst() then
-                    repeat
-                        if Employee."Company E-Mail" <> '' then begin
-                            if Recipients <> '' then
-                                Recipients += ';';
-                            Recipients += Employee."Company E-Mail";
-                        end;
-                    Until Employee.next() = 0;
-            Until UserSetup.next() = 0;
-    end;
 
     procedure ABERTIAUpdateALL(TypeUpdate: Option Nuevo,Periodo,Todo)
     var
@@ -1626,8 +1606,24 @@ codeunit 50110 "CU_Cron"
         txtAsunto := StrSubstNo('Actualización BBDD ABERTIA BI %1', WorkDate());
         recSMTPSetup.Get();
         Clear(cduSmtp);
-        cduSmtp.CreateMessage(CompanyName, recSMTPSetup."User ID", 'jvidal@zummo.es', txtAsunto, Body, false);
+        cduSmtp.CreateMessage(CompanyName, recSMTPSetup."User ID", GetRecipientsGLSetup(), txtAsunto, Body, false);
         cduSmtp.Send();
+    end;
+
+    local procedure GetRecipientsGLSetup() Recipient: Text
+    var
+        UserSetup: Record "User Setup";
+    begin
+        UserSetup.Reset();
+        UserSetup.SetRange("Config. Contabilidad", true);
+        if UserSetup.FindFirst() then
+            repeat
+                if Recipient <> '' then
+                    Recipient := ';';
+                Recipient += UserSetup."E-Mail";
+            Until UserSetup.next() = 0;
+        if Recipient = '' then
+            Recipient := 'jvidal@zummo.es'
     end;
 
     local procedure ABERTIACuerpoCorreo(GLAccountRecordNo: Integer; GLEntryRecordNo: Integer; GLBudgetEntryRecordNo: Integer;
