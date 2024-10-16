@@ -52,6 +52,7 @@ table 17459 "ABERTIA GL Budget"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
+        CUCron: Codeunit CU_Cron;
 
     procedure CreateTableConnection()
     begin
@@ -102,17 +103,22 @@ table 17459 "ABERTIA GL Budget"
                         ABGLBudget.SetRange(Cuenta, Cuenta);
                         ABGLBudget.SetRange(fecha, CreateDateTime(GLBudgetEntry.Date, 0T));
                         ABGLBudget.SetRange("Dimension 1 Code", GLBudgetEntry."Global Dimension 1 Code");
-                        if not ABGLBudget.FindFirst() then
-                            UpdateABGLBudgetEntry(GLBudgetEntry, ABGLBudget, false)
-                        else
-                            UpdateABGLBudgetEntry(GLBudgetEntry, ABGLBudget, true);
+                        if not ABGLBudget.FindFirst() then begin
+                            if not UpdateABGLBudgetEntry(GLBudgetEntry, ABGLBudget, false) then
+                                CUCron.ABERTIALOGUPDATE('GL Budget Entry', GetLastErrorText());
+                        end else begin
+                            if not UpdateABGLBudgetEntry(GLBudgetEntry, ABGLBudget, true) then
+                                CUCron.ABERTIALOGUPDATE('GL Budget Entry', StrSubstNo('Entry: %1', RecordNo));
+                        end;
                         RecordNo += 1;
+                        Commit();
                     Until GLBudgetEntry.next() = 0;
             Until GLBudget.next() = 0;
         Window.Close();
 
     end;
 
+    [TryFunction]
     local procedure UpdateABGLBudgetEntry(GLBudgetEntry: Record "G/L Budget Entry"; var ABGLBudget: Record "ABERTIA GL Budget"; Modify: Boolean)
     var
         vDec: Decimal;
@@ -138,7 +144,7 @@ table 17459 "ABERTIA GL Budget"
         end;
         if not ABGLBudget.Insert() then
             ABGLBudget.Modify();
-        Commit();
+
     end;
 
     local procedure GetBudgetAmount(GLBudgetEntry: Record "G/L Budget Entry"): Decimal

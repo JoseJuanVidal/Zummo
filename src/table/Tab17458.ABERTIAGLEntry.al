@@ -255,6 +255,7 @@ table 17458 "ABERTIA GL Entry"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
+        CUCron: Codeunit CU_Cron;
 
     procedure CreateTableConnection()
     begin
@@ -301,14 +302,18 @@ table 17458 "ABERTIA GL Entry"
                 end;
                 ABGLEntry.SetRange("Entry No_", GLEntry."Entry No.");
                 if not ABGLEntry.FindFirst() then begin
-                    UpdateABGLEntry(GLEntry, ABGLEntry);
+                    if not UpdateABGLEntry(GLEntry, ABGLEntry) then
+                        CUCron.ABERTIALOGUPDATE('GL Entry', GetLastErrorText());
                     RecordNo += 1;
+                    Commit();
                 end;
             Until GLEntry.next() = 0;
+        CUCron.ABERTIALOGUPDATE('GL Entry', StrSubstNo('Entry: %1', RecordNo));
         Window.Close();
 
     end;
 
+    [TryFunction]
     local procedure UpdateABGLEntry(GLEntry: Record "G/L Entry"; var ABGLEntry: Record "ABERTIA GL Entry")
     var
         vDec: Decimal;
@@ -406,6 +411,5 @@ table 17458 "ABERTIA GL Entry"
                 ABGLEntry."00 - Origen" := 'ZINV';
         end;
         ABGLEntry.Insert();
-        Commit();
     end;
 }

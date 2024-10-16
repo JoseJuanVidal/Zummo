@@ -53,6 +53,7 @@ table 17453 "ABERTIA SalesItem"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
+        CUCron: Codeunit CU_Cron;
 
     procedure CreateTableConnection()
     begin
@@ -68,53 +69,62 @@ table 17453 "ABERTIA SalesItem"
     procedure CreateSalesItem() RecordNo: Integer;
     var
         Item: record Item;
-        ABERTIASalesItem: Record "ABERTIA SalesItem";
-        Suplemento: Integer;
         Window: Dialog;
     begin
         Window.Open('Nº Producto #1################');
         Item.Reset();
-        ABERTIASalesItem.Reset();
         // GLAccount.SetRange("Account Type", GLAccount."Account Type"::Posting);
         if Item.FindFirst() then
             repeat
                 Window.Update(1, Item."No.");
                 item.CalcFields(desClasVtas_btc, desFamilia_btc, desGama_btc, desLineaEconomica_btc);
-                if not ABERTIASalesItem.Get(Item."No.") then begin
-
-                    ABERTIASalesItem.Init();
-                    ABERTIASalesItem.ID := CreateGuid();
-                end;
-                ABERTIASalesItem."No_" := Item."No.";
-                ABERTIASalesItem.ClasVtas_btc := Item.optClasVtas_btc;
-                ABERTIASalesItem.Familia_btc := Item.optFamilia_btc;
-                ABERTIASalesItem.Gama_btc := Item.optGama_btc;
-                ABERTIASalesItem.Ordenacion_btc := Item.Ordenacion_btc;
-                // ABERTIASalesItem.ValidadoContabiliad_btc := Item.ValidadoContabiliad_btc;
-                ABERTIASalesItem.OptClasVtas_btc := Item.OptClasVtas_btc;
-                ABERTIASalesItem.OptFamilia_btc := Item.OptFamilia_btc;
-                ABERTIASalesItem.OptGama_btc := Item.OptGama_btc;
-                ABERTIASalesItem.ContraStock_BajoPedido := Item."ContraStock/BajoPedido";
-                ABERTIASalesItem.PedidoMaximo := Item.PedidoMaximo;
-                if Evaluate(Suplemento, Item.selClasVtas_btc) then
-                    ABERTIASalesItem.selClasVtas_btc := Suplemento;
-                if Evaluate(Suplemento, Item.selFamilia_btc) then
-                    ABERTIASalesItem.selFamilia_btc := Suplemento;
-                ABERTIASalesItem.selGama_btc := Item.selGama_btc;
-                if Evaluate(Suplemento, Item.selLineaEconomica_btc) then
-                    ABERTIASalesItem.selLineaEconomica_btc := Suplemento;
-                ABERTIASalesItem.ABC := Item.ABC;
-                ABERTIASalesItem.TasaRAEE := Item.TasaRAEE;
-                ABERTIASalesItem.ClasifVentas := Item.desClasVtas_btc;
-                ABERTIASalesItem.Familia := Item.desFamilia_btc;
-                ABERTIASalesItem.GAMA := Item.desGama_btc;
-                ABERTIASalesItem.LineaEconomica := Item.desLineaEconomica_btc;
-                ABERTIASalesItem.Canal := format(Item.Canal);
-                if not ABERTIASalesItem.Insert() then
-                    ABERTIASalesItem.Modify();
-                Commit();
+                if not ABERTIAItems(Item) then
+                    CUCron.ABERTIALOGUPDATE('Item', GetLastErrorText());
                 RecordNo += 1;
+                Commit();
             Until Item.next() = 0;
+        CUCron.ABERTIALOGUPDATE('Items', StrSubstNo('Record No: %1', RecordNo));
         Window.Close();
+    end;
+
+    [TryFunction]
+    local procedure ABERTIAItems(Item: record Item)
+    var
+        ABERTIASalesItem: Record "ABERTIA SalesItem";
+        Suplemento: Integer;
+    begin
+        ABERTIASalesItem.Reset();
+        if not ABERTIASalesItem.Get(Item."No.") then begin
+            ABERTIASalesItem.Init();
+            ABERTIASalesItem.ID := CreateGuid();
+        end;
+        ABERTIASalesItem."No_" := Item."No.";
+        ABERTIASalesItem.ClasVtas_btc := Item.optClasVtas_btc;
+        ABERTIASalesItem.Familia_btc := Item.optFamilia_btc;
+        ABERTIASalesItem.Gama_btc := Item.optGama_btc;
+        ABERTIASalesItem.Ordenacion_btc := Item.Ordenacion_btc;
+        // ABERTIASalesItem.ValidadoContabiliad_btc := Item.ValidadoContabiliad_btc;
+        ABERTIASalesItem.OptClasVtas_btc := Item.OptClasVtas_btc;
+        ABERTIASalesItem.OptFamilia_btc := Item.OptFamilia_btc;
+        ABERTIASalesItem.OptGama_btc := Item.OptGama_btc;
+        ABERTIASalesItem.ContraStock_BajoPedido := Item."ContraStock/BajoPedido";
+        ABERTIASalesItem.PedidoMaximo := Item.PedidoMaximo;
+        if Evaluate(Suplemento, Item.selClasVtas_btc) then
+            ABERTIASalesItem.selClasVtas_btc := Suplemento;
+        if Evaluate(Suplemento, Item.selFamilia_btc) then
+            ABERTIASalesItem.selFamilia_btc := Suplemento;
+        ABERTIASalesItem.selGama_btc := Item.selGama_btc;
+        if Evaluate(Suplemento, Item.selLineaEconomica_btc) then
+            ABERTIASalesItem.selLineaEconomica_btc := Suplemento;
+        ABERTIASalesItem.ABC := Item.ABC;
+        ABERTIASalesItem.TasaRAEE := Item.TasaRAEE;
+        ABERTIASalesItem.ClasifVentas := Item.desClasVtas_btc;
+        ABERTIASalesItem.Familia := Item.desFamilia_btc;
+        ABERTIASalesItem.GAMA := Item.desGama_btc;
+        ABERTIASalesItem.LineaEconomica := Item.desLineaEconomica_btc;
+        ABERTIASalesItem.Canal := format(Item.Canal);
+        if not ABERTIASalesItem.Insert() then
+            ABERTIASalesItem.Modify();
+
     end;
 }

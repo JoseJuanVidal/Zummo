@@ -69,6 +69,7 @@ table 17454 "ABERTIA SalesCustomer"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
+        CUCron: Codeunit CU_Cron;
 
     procedure CreateTableConnection()
     begin
@@ -84,74 +85,86 @@ table 17454 "ABERTIA SalesCustomer"
     procedure CreateSalesCustomer() RecordNo: Integer;
     var
         Customer: Record customer;
-        Country: Record "Country/Region";
-        ABERTIASalesCustomer: Record "ABERTIA SalesCustomer";
-        Suplemento: Integer;
         Window: Dialog;
     begin
         Window.Open('Nº Cliente #1################');
         Customer.Reset();
-        ABERTIASalesCustomer.Reset();
         // GLAccount.SetRange("Account Type", GLAccount."Account Type"::Posting);
         if Customer.FindFirst() then
             repeat
                 Window.Update(1, Customer."No.");
-                if not ABERTIASalesCustomer.Get(Customer."No.") then begin
 
-                    ABERTIASalesCustomer.Init();
-                    ABERTIASalesCustomer.ID := CreateGuid();
-                end;
-                ABERTIASalesCustomer."No_" := customer."No.";
-                ABERTIASalesCustomer."Credito Maximo Interno_btc" := customer."Credito Maximo Interno_btc";
-                ABERTIASalesCustomer."Cred_ Max_ Int_ Autorizado Por_btc" := customer."Cred_ Max_ Int_ Autorizado Por_btc";
-                ABERTIASalesCustomer."Credito Maximo Aseguradora_btc" := customer."Credito Maximo Aseguradora_btc";
-                ABERTIASalesCustomer."Cred_ Max_ Aseg_ Autorizado Por_btc" := customer."Cred_ Max_ Aseg. Autorizado Por_btc";
-                ABERTIASalesCustomer."Descuento1_btc" := customer.Descuento1_btc;
-                ABERTIASalesCustomer."Descuento2_btc" := customer.Descuento2_btc;
-                ABERTIASalesCustomer."CodMotivoBloqueo_btc" := customer.CodMotivoBloqueo_btc;
-                // ABERTIASalesCustomer."Transaction Specification" := Customer."Transaction Specification";
-                // ABERTIASalesCustomer."Transaction Type" := customer."Transaction Type";
-                // ABERTIASalesCustomer."Transport Method" := customer."Transport Method";
-                // ABERTIASalesCustomer."Exit Point" := customer."Exit Point";
-                if Evaluate(Suplemento, customer.Suplemento_aseguradora) then
-                    ABERTIASalesCustomer."Suplemento_aseguradora" := Suplemento;
-                ABERTIASalesCustomer."CentralCompras_btc" := customer.CentralCompras_btc;
-                ABERTIASalesCustomer."ClienteCorporativo_btc" := customer.ClienteCorporativo_btc;
-                ABERTIASalesCustomer."AreaManager_btc" := customer.AreaManager_btc;
-                ABERTIASalesCustomer."Delegado_btc" := customer.Delegado_btc;
-                ABERTIASalesCustomer."GrupoCliente" := customer.GrupoCliente_btc;
-                ABERTIASalesCustomer."Perfil_btc" := customer.Perfil_btc;
-                ABERTIASalesCustomer."SubCliente_btc" := customer.SubCliente_btc;
-                ABERTIASalesCustomer."ClienteReporting_btc" := customer.ClienteReporting_btc;
-                case customer.PermiteEnvioMail_btc of
-                    false:
-                        ABERTIASalesCustomer."PermiteEnvioMail_btc" := 0;
-                    else
-                        ABERTIASalesCustomer."PermiteEnvioMail_btc" := 1;
-                end;
-                ABERTIASalesCustomer."CorreoFactElec_btc" := customer.CorreoFactElec_btc;
-                ABERTIASalesCustomer."TipoFormarto_btc" := customer.TipoFormarto_btc;
-                ABERTIASalesCustomer."ClienteActividad_btc_" := customer.ClienteActividad_btc;
-                ABERTIASalesCustomer."CondicionesEspeciales" := customer.CondicionesEspeciales;
-                ABERTIASalesCustomer."Rappel" := customer.Rappel;
-                ABERTIASalesCustomer."Formadepagosolicitada" := customer.Formadepagosolicitada;
-                ABERTIASalesCustomer."AlertaMaquina" := customer.AlertaMaquina;
-                ABERTIASalesCustomer."C4 CENTRAL DE COMPRAS" := customer.CentralCompras_btc;
-                ABERTIASalesCustomer."C4 CLIENTE REPORTING" := customer.ClienteReporting_btc;
-                ABERTIASalesCustomer."Name" := customer.Name;
-                ABERTIASalesCustomer."City" := customer.City;
-                ABERTIASalesCustomer."Country_Region Code" := customer."Country/Region Code";
-                if Country.Get(Customer."Country/Region Code") then;
-                ABERTIASalesCustomer."NOMBRE PAIS" := Country.Name;
-                ABERTIASalesCustomer."Post Code" := customer."Post Code";
-                ABERTIASalesCustomer."Name 2" := customer."Name 2";
-                // ABERTIASalesCustomer."Expr1" := customer.e
-                ABERTIASalesCustomer."CodigoPais" := customer."Country/Region Code";
-                if not ABERTIASalesCustomer.Insert() then
-                    ABERTIASalesCustomer.Modify();
-                Commit();
+                if not UpdateABERTIACustomer(Customer) then
+                    CUCron.ABERTIALOGUPDATE('Customer', GetLastErrorText());
+
                 RecordNo += 1;
+                Commit();
             Until Customer.next() = 0;
+        CUCron.ABERTIALOGUPDATE('Customer', StrSubstNo('Record No: %1', RecordNo));
         Window.Close();
+    end;
+
+    [TryFunction]
+    local procedure UpdateABERTIACustomer(Customer: Record customer)
+    var
+
+        Country: Record "Country/Region";
+        ABERTIASalesCustomer: Record "ABERTIA SalesCustomer";
+        Suplemento: Integer;
+    begin
+        ABERTIASalesCustomer.Reset();
+        if not ABERTIASalesCustomer.Get(Customer."No.") then begin
+            ABERTIASalesCustomer.Init();
+            ABERTIASalesCustomer.ID := CreateGuid();
+        end;
+        ABERTIASalesCustomer."No_" := customer."No.";
+        ABERTIASalesCustomer."Credito Maximo Interno_btc" := customer."Credito Maximo Interno_btc";
+        ABERTIASalesCustomer."Cred_ Max_ Int_ Autorizado Por_btc" := customer."Cred_ Max_ Int_ Autorizado Por_btc";
+        ABERTIASalesCustomer."Credito Maximo Aseguradora_btc" := customer."Credito Maximo Aseguradora_btc";
+        ABERTIASalesCustomer."Cred_ Max_ Aseg_ Autorizado Por_btc" := customer."Cred_ Max_ Aseg. Autorizado Por_btc";
+        ABERTIASalesCustomer."Descuento1_btc" := customer.Descuento1_btc;
+        ABERTIASalesCustomer."Descuento2_btc" := customer.Descuento2_btc;
+        ABERTIASalesCustomer."CodMotivoBloqueo_btc" := customer.CodMotivoBloqueo_btc;
+        // ABERTIASalesCustomer."Transaction Specification" := Customer."Transaction Specification";
+        // ABERTIASalesCustomer."Transaction Type" := customer."Transaction Type";
+        // ABERTIASalesCustomer."Transport Method" := customer."Transport Method";
+        // ABERTIASalesCustomer."Exit Point" := customer."Exit Point";
+        if Evaluate(Suplemento, customer.Suplemento_aseguradora) then
+            ABERTIASalesCustomer."Suplemento_aseguradora" := Suplemento;
+        ABERTIASalesCustomer."CentralCompras_btc" := customer.CentralCompras_btc;
+        ABERTIASalesCustomer."ClienteCorporativo_btc" := customer.ClienteCorporativo_btc;
+        ABERTIASalesCustomer."AreaManager_btc" := customer.AreaManager_btc;
+        ABERTIASalesCustomer."Delegado_btc" := customer.Delegado_btc;
+        ABERTIASalesCustomer."GrupoCliente" := customer.GrupoCliente_btc;
+        ABERTIASalesCustomer."Perfil_btc" := customer.Perfil_btc;
+        ABERTIASalesCustomer."SubCliente_btc" := customer.SubCliente_btc;
+        ABERTIASalesCustomer."ClienteReporting_btc" := customer.ClienteReporting_btc;
+        case customer.PermiteEnvioMail_btc of
+            false:
+                ABERTIASalesCustomer."PermiteEnvioMail_btc" := 0;
+            else
+                ABERTIASalesCustomer."PermiteEnvioMail_btc" := 1;
+        end;
+        ABERTIASalesCustomer."CorreoFactElec_btc" := customer.CorreoFactElec_btc;
+        ABERTIASalesCustomer."TipoFormarto_btc" := customer.TipoFormarto_btc;
+        ABERTIASalesCustomer."ClienteActividad_btc_" := customer.ClienteActividad_btc;
+        ABERTIASalesCustomer."CondicionesEspeciales" := customer.CondicionesEspeciales;
+        ABERTIASalesCustomer."Rappel" := customer.Rappel;
+        ABERTIASalesCustomer."Formadepagosolicitada" := customer.Formadepagosolicitada;
+        ABERTIASalesCustomer."AlertaMaquina" := customer.AlertaMaquina;
+        ABERTIASalesCustomer."C4 CENTRAL DE COMPRAS" := customer.CentralCompras_btc;
+        ABERTIASalesCustomer."C4 CLIENTE REPORTING" := customer.ClienteReporting_btc;
+        ABERTIASalesCustomer."Name" := customer.Name;
+        ABERTIASalesCustomer."City" := customer.City;
+        ABERTIASalesCustomer."Country_Region Code" := customer."Country/Region Code";
+        if Country.Get(Customer."Country/Region Code") then;
+        ABERTIASalesCustomer."NOMBRE PAIS" := Country.Name;
+        ABERTIASalesCustomer."Post Code" := customer."Post Code";
+        ABERTIASalesCustomer."Name 2" := customer."Name 2";
+        // ABERTIASalesCustomer."Expr1" := customer.e
+        ABERTIASalesCustomer."CodigoPais" := customer."Country/Region Code";
+        if not ABERTIASalesCustomer.Insert() then
+            ABERTIASalesCustomer.Modify();
+
     end;
 }

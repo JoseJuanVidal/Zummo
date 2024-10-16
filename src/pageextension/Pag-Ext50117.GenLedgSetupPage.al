@@ -40,6 +40,15 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Path LOG"; "Path LOG")
+                {
+                    ApplicationArea = all;
+
+                    trigger OnAssistEdit()
+                    begin
+                        Rec."Path LOG" := SelectPathPurchaseDocuments();
+                    end;
+                }
             }
         }
         addafter("Allow Posting To")

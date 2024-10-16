@@ -57,8 +57,17 @@ tableextension 50121 "GenLedgerSetup" extends "General Ledger Setup"  //98
             Caption = 'Password', comment = 'ESP="Password"';
             ExtendedDatatype = Masked;
         }
+        field(50206; "Path LOG"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Path LOG', comment = 'ESP="PATH LOG"';
+
+
+        }
         //- ABERTIA configuracion de acceso a SQL SERVER
     }
+    var
+        lblPath: Label 'Select folder', comment = 'ESP="Seleccionar Carpeta"';
 
     procedure AbertiaTABLECONNECTION(): Text
     var
@@ -71,5 +80,14 @@ tableextension 50121 "GenLedgerSetup" extends "General Ledger Setup"  //98
         GenLedgerSetup.TestField(Password);
         exit(StrSubstNo(lblConnectionString, GenLedgerSetup."Data Source", GenLedgerSetup."Initial Catalog", GenLedgerSetup."User ID", GenLedgerSetup.Password));
 
+    end;
+
+    procedure SelectPathPurchaseDocuments(): Text
+    var
+        FileManagement: Codeunit "File Management";
+        PathName: text;
+    begin
+        if FileManagement.SelectFolderDialog(lblPath, PathName) then
+            Exit(PathName);
     end;
 }

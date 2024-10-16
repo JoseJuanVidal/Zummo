@@ -12023,6 +12023,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Trabajo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Codeunit 4289582467 - Method 3807208071 - NamedType 2397595163" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1\AbertiaUpdate.LOG</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CU_Cron - Method ABERTIALOGUPDATE - NamedType lblLOGName</note>
+        </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 1665861916 - NamedType 1341006243" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown parameter</source>
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
@@ -33448,6 +33453,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Productos pdtes validar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension FinanceCue - Field ProdPdteValidar_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 820300810 - NamedType 1009704073" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 820300810">
+          <source>Select folder</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar Carpeta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - NamedType lblPath</note>
+        </trans-unit>
         <trans-unit id="TableExtension 820300810 - Method 2662807180 - NamedType 3649616787" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 820300810">
           <source>Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -33487,6 +33497,11 @@
           <source>Password</source>
           <note from="Developer" annotates="general" priority="2">ESP="Password"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Password - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 3675849051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Path LOG</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PATH LOG"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Path LOG - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 2624616620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Proveedor varios IVA Recuperación</source>

@@ -63,6 +63,7 @@ table 17449 "ABERTIA SalesPedidos"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
+        CUCron: Codeunit CU_Cron;
 
     procedure CreateTableConnection()
     begin
@@ -105,52 +106,66 @@ table 17449 "ABERTIA SalesPedidos"
                 SalesLine.SetRange("Document No.", SalesHeader."No.");
                 if SalesLine.FindFirst() then
                     repeat
-                        if not ABERTIASalesPedidos.Get(SalesLine."Document Type", SalesLine."Document No.", SalesLine."Line No.") then begin
-                            ABERTIASalesPedidos.Init();
-                            ABERTIASalesPedidos.ID := CreateGuid();
-                        end;
-                        ABERTIASalesPedidos."G8. DOCUMENT TYPE" := SalesLine."Document Type";
-                        ABERTIASalesPedidos."G3. PEDIDO NUM" := SalesLine."Document No.";
-                        ABERTIASalesPedidos."G4. PEDIDO LINEA" := SalesLine."Line No.";
-                        ABERTIASalesPedidos."C6. CLIENTE COD" := SalesLine."Sell-to Customer No.";
-                        ABERTIASalesPedidos."C6. CLIENTE NOMBRE" := SalesHeader."Sell-to Customer Name";
-                        ABERTIASalesPedidos."E6. ARTICULO COD" := SalesLine."No.";
-                        ABERTIASalesPedidos."E6. ARTICULO DESC" := SalesLine.Description;
-                        ABERTIASalesPedidos."X1. CUSTOMER DISCOUNT GROUP" := SalesLine."Customer Disc. Group";
-                        ABERTIASalesPedidos."K1. UNIDAD MEDIDA" := SalesLine."Unit of Measure Code";
-                        ABERTIASalesPedidos."K1. CANTIDAD TOTAL PEDIDO" := SalesLine.Quantity;
-                        ABERTIASalesPedidos."K1. CANTIDAD PENDIENTE" := SalesLine."Outstanding Quantity";
-                        ABERTIASalesPedidos."K1. CANTIDAD A FACTURAR" := SalesLine."Qty. to Invoice";
-                        ABERTIASalesPedidos."K1. CANTIDAD A ENVIAR" := SalesLine."Qty. to Ship";
-                        ABERTIASalesPedidos."K1. CANTIDAD ENVIADA NO FACTURADA" := SalesLine."Qty. Shipped Not Invoiced";
-                        ABERTIASalesPedidos."K1. CANTIDAD ENVIADA" := SalesLine."Quantity Shipped";
-                        ABERTIASalesPedidos."K1. CANTIDAD FACTURADA" := SalesLine."Quantity Invoiced";
-                        ABERTIASalesPedidos."K2. PVP" := SalesLine."Unit Price";
-                        ABERTIASalesPedidos."K6. COSTE" := SalesLine."Unit Cost";
-                        ABERTIASalesPedidos."K4. DESC CLIENTE (D2)" := SalesLine."Line Discount %";
-                        ABERTIASalesPedidos."K4. DESC TOTAL OPERACION" := SalesLine."Line Discount Amount";
-                        ABERTIASalesPedidos."K5. VENTA NETA CLIENTES" := SalesLine."Line Amount";
-                        ABERTIASalesPedidos."X1. CUSTOMER PRICE GROUP" := SalesLine."Customer Price Group";
-                        if SalesPerson.Get(SalesHeader."Salesperson Code") then
-                            ABERTIASalesPedidos."D3. AGENTE NOMBRE" := SalesPerson.Name;
-                        ABERTIASalesPedidos."00. FECHA" := SalesHeader."Document Date";
-                        ABERTIASalesPedidos."00. AÑO" := Date2DMY(SalesHeader."Document Date", 3);
-                        ABERTIASalesPedidos."00. MES" := Date2DMY(SalesHeader."Document Date", 2);
-                        ABERTIASalesPedidos."00. TRIMESTRE" := GetQuarterOfDate(SalesHeader."Document Date");
-                        ABERTIASalesPedidos."00. AÑO MES" := format(ABERTIASalesPedidos."00. AÑO") +
-                                            PadStr('', 2 - StrLen(format(ABERTIASalesPedidos."00. MES")), '0') + format(ABERTIASalesPedidos."00. MES");
-                        ABERTIASalesPedidos."00. SEMANA" := Date2DWY(SalesHeader."Document Date", 2);
-                        ABERTIASalesPedidos."00. FECHA PROMETIDA ENTREGA" := SalesLine."Promised Delivery Date";
-                        ABERTIASalesPedidos."00. FECHA ALTA PEDIDO" := SalesHeader."Order Date";
-                        ABERTIASalesPedidos."00. FECHA REQUERIDA ENTREGA" := SalesLine."Requested Delivery Date";
+                        if not UpdateSalesPedido(SalesHeader, SalesLine) then
+                            CUCron.ABERTIALOGUPDATE('Orders', GetLastErrorText());
 
-                        if not ABERTIASalesPedidos.Insert() then
-                            ABERTIASalesPedidos.Modify();
-                        Commit();
                         RecordNo += 1;
+                        Commit();
                     Until SalesLine.next() = 0;
+                CUCron.ABERTIALOGUPDATE('Orders', StrSubstNo('Record No: %1', RecordNo));
             Until SalesHeader.next() = 0;
         Window.Close();
+    end;
+
+    [TryFunction]
+    local procedure UpdateSalesPedido(SalesHeader: Record "Sales Header"; SalesLine: Record "Sales Line")
+    var
+
+        CountryRegion: Record "Country/Region";
+        SalesPerson: Record "Salesperson/Purchaser";
+        ABERTIASalesPedidos: Record "ABERTIA SalesPedidos";
+    begin
+        if not ABERTIASalesPedidos.Get(SalesLine."Document Type", SalesLine."Document No.", SalesLine."Line No.") then begin
+            ABERTIASalesPedidos.Init();
+            ABERTIASalesPedidos.ID := CreateGuid();
+        end;
+        ABERTIASalesPedidos."G8. DOCUMENT TYPE" := SalesLine."Document Type";
+        ABERTIASalesPedidos."G3. PEDIDO NUM" := SalesLine."Document No.";
+        ABERTIASalesPedidos."G4. PEDIDO LINEA" := SalesLine."Line No.";
+        ABERTIASalesPedidos."C6. CLIENTE COD" := SalesLine."Sell-to Customer No.";
+        ABERTIASalesPedidos."C6. CLIENTE NOMBRE" := SalesHeader."Sell-to Customer Name";
+        ABERTIASalesPedidos."E6. ARTICULO COD" := SalesLine."No.";
+        ABERTIASalesPedidos."E6. ARTICULO DESC" := SalesLine.Description;
+        ABERTIASalesPedidos."X1. CUSTOMER DISCOUNT GROUP" := SalesLine."Customer Disc. Group";
+        ABERTIASalesPedidos."K1. UNIDAD MEDIDA" := SalesLine."Unit of Measure Code";
+        ABERTIASalesPedidos."K1. CANTIDAD TOTAL PEDIDO" := SalesLine.Quantity;
+        ABERTIASalesPedidos."K1. CANTIDAD PENDIENTE" := SalesLine."Outstanding Quantity";
+        ABERTIASalesPedidos."K1. CANTIDAD A FACTURAR" := SalesLine."Qty. to Invoice";
+        ABERTIASalesPedidos."K1. CANTIDAD A ENVIAR" := SalesLine."Qty. to Ship";
+        ABERTIASalesPedidos."K1. CANTIDAD ENVIADA NO FACTURADA" := SalesLine."Qty. Shipped Not Invoiced";
+        ABERTIASalesPedidos."K1. CANTIDAD ENVIADA" := SalesLine."Quantity Shipped";
+        ABERTIASalesPedidos."K1. CANTIDAD FACTURADA" := SalesLine."Quantity Invoiced";
+        ABERTIASalesPedidos."K2. PVP" := SalesLine."Unit Price";
+        ABERTIASalesPedidos."K6. COSTE" := SalesLine."Unit Cost";
+        ABERTIASalesPedidos."K4. DESC CLIENTE (D2)" := SalesLine."Line Discount %";
+        ABERTIASalesPedidos."K4. DESC TOTAL OPERACION" := SalesLine."Line Discount Amount";
+        ABERTIASalesPedidos."K5. VENTA NETA CLIENTES" := SalesLine."Line Amount";
+        ABERTIASalesPedidos."X1. CUSTOMER PRICE GROUP" := SalesLine."Customer Price Group";
+        if SalesPerson.Get(SalesHeader."Salesperson Code") then
+            ABERTIASalesPedidos."D3. AGENTE NOMBRE" := SalesPerson.Name;
+        ABERTIASalesPedidos."00. FECHA" := SalesHeader."Document Date";
+        ABERTIASalesPedidos."00. AÑO" := Date2DMY(SalesHeader."Document Date", 3);
+        ABERTIASalesPedidos."00. MES" := Date2DMY(SalesHeader."Document Date", 2);
+        ABERTIASalesPedidos."00. TRIMESTRE" := GetQuarterOfDate(SalesHeader."Document Date");
+        ABERTIASalesPedidos."00. AÑO MES" := format(ABERTIASalesPedidos."00. AÑO") +
+                            PadStr('', 2 - StrLen(format(ABERTIASalesPedidos."00. MES")), '0') + format(ABERTIASalesPedidos."00. MES");
+        ABERTIASalesPedidos."00. SEMANA" := Date2DWY(SalesHeader."Document Date", 2);
+        ABERTIASalesPedidos."00. FECHA PROMETIDA ENTREGA" := SalesLine."Promised Delivery Date";
+        ABERTIASalesPedidos."00. FECHA ALTA PEDIDO" := SalesHeader."Order Date";
+        ABERTIASalesPedidos."00. FECHA REQUERIDA ENTREGA" := SalesLine."Requested Delivery Date";
+
+        if not ABERTIASalesPedidos.Insert() then
+            ABERTIASalesPedidos.Modify();
     end;
 
     procedure GetQuarterOfDate(DateToCheck: Date) Quarter: Integer;

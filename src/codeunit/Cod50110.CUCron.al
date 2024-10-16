@@ -1659,4 +1659,27 @@ codeunit 50110 "CU_Cron"
         Body += StrSubstNo('Nº Líneas Facturas: %1', FacturasRecordNo) + Format(CR) + FORMAT(LF);
         Body += StrSubstNo('Nº Líneas Pedidos: %1', PedidosRecordNo) + Format(CR) + FORMAT(LF);
     end;
+
+    procedure ABERTIALOGUPDATE(Type: Text; texto: Text)
+    var
+        GLSetup: Record "General Ledger Setup";
+        lblLOGName: Label '%1\AbertiaUpdate.LOG';
+        TestFile: File;
+        FileName: Text;
+    begin
+        if not GLSetup.Get() then
+            exit;
+        if GLSetup."Path LOG" = '' then
+            exit;
+        FileName := StrSubstNo(lblLOGName, GLSetup."Path LOG");
+        TestFile.TextMode := true;
+        TestFile.WriteMode(true);
+        if Exists(FileName) then begin
+            TestFile.Open(FileName);
+            TestFile.Seek(TestFile.Len);
+        end else
+            TestFile.Create(FileName);
+        TestFile.Write(StrSubstNo('%1 - %2 %3', CreateDateTime(Today, Time), type, texto));
+        TestFile.Close;
+    end;
 }

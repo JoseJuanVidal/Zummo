@@ -80,6 +80,7 @@ table 17457 "ABERTIA GL Account"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
+        CUCron: Codeunit CU_Cron;
 
     procedure CreateTableConnection()
     begin
@@ -139,14 +140,18 @@ table 17457 "ABERTIA GL Account"
                 end else
                     ABGLAccount.SetRange("C8 - Cuenta Cod7", 0);
                 if not ABGLAccount.FindFirst() then begin
-                    UpdateABGLAccount(GLAccount, ABGLAccount);
+                    if not UpdateABGLAccount(GLAccount, ABGLAccount) then
+                        CUCron.ABERTIALOGUPDATE('GL Account', GetLastErrorText());
                 end;
                 RecordNo += 1;
+                Commit();
             Until GLAccount.next() = 0;
+        CUCron.ABERTIALOGUPDATE('GL Account', StrSubstNo('Records: %1', RecordNo));
         Window.Close();
 
     end;
 
+    [TryFunction]
     local procedure UpdateABGLAccount(GLAccount: Record "G/L Account"; var ABGLAccount: Record "ABERTIA GL Account")
     var
         vInt: Integer;

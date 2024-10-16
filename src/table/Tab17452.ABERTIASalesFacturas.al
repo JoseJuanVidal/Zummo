@@ -145,6 +145,7 @@ table 17452 "ABERTIA SalesFacturas"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
+        CUCron: Codeunit CU_Cron;
 
     procedure CreateTableConnection()
     begin
@@ -159,18 +160,14 @@ table 17452 "ABERTIA SalesFacturas"
 
     procedure CreateSalesFacturas(TypeUpdate: Option Periodo,Todo) RecordNo: Integer;
     var
-        Customer: Record Customer;
         SalesInvoiceHeader: Record "Sales Invoice Header";
         SalesInvoiceLine: Record "Sales Invoice Line";
-        CountryRegion: Record "Country/Region";
-        ABERTIASalesFacturas: Record "ABERTIA SalesFacturas";
-        Suplemento: Integer;
         Window: Dialog;
     begin
         Window.Open('Nº Factura #1################');
         GenLedgerSetup.Get();
         SalesInvoiceHeader.Reset();
-        ABERTIASalesFacturas.Reset();
+
         case TypeUpdate of
             TypeUpdate::Periodo:
                 begin
@@ -184,177 +181,192 @@ table 17452 "ABERTIA SalesFacturas"
                 SalesInvoiceLine.SetRange("Document No.", SalesInvoiceHeader."No.");
                 if SalesInvoiceLine.FindFirst() then
                     repeat
-                        if not ABERTIASalesFacturas.Get(SalesInvoiceLine."Document No.", SalesInvoiceLine."Line No.") then begin
-                            ABERTIASalesFacturas.Init();
-                            ABERTIASalesFacturas.ID := CreateGuid();
-                        end;
-                        ABERTIASalesFacturas."Document No_" := SalesInvoiceLine."Document No.";
-                        ABERTIASalesFacturas."Line No_" := SalesInvoiceLine."Line No.";
-                        ABERTIASalesFacturas."Sell-to Customer No_" := SalesInvoiceLine."Sell-to Customer No.";
-                        ABERTIASalesFacturas."Type" := SalesInvoiceLine.Type;
-                        ABERTIASalesFacturas."No_" := SalesInvoiceLine."No.";
-                        ABERTIASalesFacturas."Location Code" := SalesInvoiceLine."Location Code";
-                        ABERTIASalesFacturas."Posting Group" := SalesInvoiceLine."Posting Group";
-                        ABERTIASalesFacturas."Shipment Date" := SalesInvoiceLine."Shipment Date";
-                        ABERTIASalesFacturas."Description" := SalesInvoiceLine.Description;
-                        ABERTIASalesFacturas."Description 2" := SalesInvoiceLine."Description 2";
-                        ABERTIASalesFacturas."Unit of Measure" := SalesInvoiceLine."Unit of Measure";
-                        ABERTIASalesFacturas."Quantity" := SalesInvoiceLine.Quantity;
-                        ABERTIASalesFacturas."Unit Price" := SalesInvoiceLine."Unit Price";
-                        ABERTIASalesFacturas."Unit Cost (LCY)" := SalesInvoiceLine."Unit Cost (LCY)";
-                        ABERTIASalesFacturas."VAT _" := SalesInvoiceLine."VAT %";
-                        ABERTIASalesFacturas."Line Discount _" := SalesInvoiceLine."Line Discount %";
-                        ABERTIASalesFacturas."Line Discount Amount" := SalesInvoiceLine."Line Discount Amount";
-                        ABERTIASalesFacturas."Amount" := SalesInvoiceLine.Amount;
-                        ABERTIASalesFacturas."Amount Including VAT" := SalesInvoiceLine."Amount Including VAT";
-                        case SalesInvoiceLine."Allow Invoice Disc." of
-                            true:
-                                ABERTIASalesFacturas."Allow Invoice Disc_" := 1;
-                            else
-                                ABERTIASalesFacturas."Allow Invoice Disc_" := 0;
-                        end;
-                        ABERTIASalesFacturas."Gross Weight" := SalesInvoiceLine."Gross Weight";
-                        ABERTIASalesFacturas."Net Weight" := SalesInvoiceLine."Net Weight";
-                        ABERTIASalesFacturas."Units per Parcel" := SalesInvoiceLine."Units per Parcel";
-                        ABERTIASalesFacturas."Unit Volume" := SalesInvoiceLine."Unit Volume";
-                        ABERTIASalesFacturas."Appl_-to Item Entry" := SalesInvoiceLine."Appl.-to Item Entry";
-                        ABERTIASalesFacturas."Shortcut Dimension 1 Code" := SalesInvoiceLine."Shortcut Dimension 1 Code";
-                        ABERTIASalesFacturas."Shortcut Dimension 2 Code" := SalesInvoiceLine."Shortcut Dimension 2 Code";
-                        ABERTIASalesFacturas."Customer Price Group" := SalesInvoiceLine."Customer Price Group";
-                        ABERTIASalesFacturas."Job No_" := SalesInvoiceLine."Job No.";
-                        ABERTIASalesFacturas."Work Type Code" := SalesInvoiceLine."Work Type Code";
-                        ABERTIASalesFacturas."Shipment No_" := SalesInvoiceLine."Shipment No.";
-                        ABERTIASalesFacturas."Shipment Line No_" := SalesInvoiceLine."Shipment Line No.";
-                        ABERTIASalesFacturas."Order No_" := SalesInvoiceLine."Order No.";
-                        ABERTIASalesFacturas."Order Line No_" := SalesInvoiceLine."Order Line No.";
-                        ABERTIASalesFacturas."Bill-to Customer No_" := SalesInvoiceLine."Bill-to Customer No.";
-                        ABERTIASalesFacturas."Inv_ Discount Amount" := SalesInvoiceLine."Inv. Discount Amount";
-                        case SalesInvoiceLine."Drop Shipment" of
-                            true:
-                                ABERTIASalesFacturas."Drop Shipment" := 1;
-                            else
-                                ABERTIASalesFacturas."Drop Shipment" := 0;
-                        end;
-                        ABERTIASalesFacturas."Gen_ Bus_ Posting Group" := SalesInvoiceLine."Gen. Bus. Posting Group";
-                        ABERTIASalesFacturas."Gen_ Prod_ Posting Group" := SalesInvoiceLine."Gen. Prod. Posting Group";
-                        ABERTIASalesFacturas."VAT Calculation Type" := SalesInvoiceLine."VAT Calculation Type";
-                        // ABERTIASalesFacturas."Transaction Type" := SalesInvoiceLine."Transaction Type";
-                        // ABERTIASalesFacturas."Transport Method" := SalesInvoiceLine."Transport Method";
-                        ABERTIASalesFacturas."Attached to Line No_" := SalesInvoiceLine."Attached to Line No.";
-                        // ABERTIASalesFacturas."Exit Point" := SalesInvoiceLine."Exit Point";
-                        ABERTIASalesFacturas."Area" := SalesInvoiceLine."Area";
-                        // ABERTIASalesFacturas."Transaction Specification" := SalesInvoiceLine."Transaction Specification";
-                        ABERTIASalesFacturas."Tax Category" := SalesInvoiceLine."Tax Category";
-                        ABERTIASalesFacturas."Tax Area Code" := SalesInvoiceLine."Tax Area Code";
-                        case SalesInvoiceLine."Tax Liable" of
-                            true:
-                                ABERTIASalesFacturas."Tax Liable" := 1;
-                            else
-                                ABERTIASalesFacturas."Tax Liable" := 0;
-                        end;
-                        ABERTIASalesFacturas."Tax Group Code" := SalesInvoiceLine."Tax Group Code";
-                        ABERTIASalesFacturas."VAT Clause Code" := SalesInvoiceLine."VAT Clause Code";
-                        ABERTIASalesFacturas."VAT Bus_ Posting Group" := SalesInvoiceLine."VAT Bus. Posting Group";
-                        ABERTIASalesFacturas."VAT Prod_ Posting Group" := SalesInvoiceLine."VAT Prod. Posting Group";
-                        ABERTIASalesFacturas."Blanket Order No_" := SalesInvoiceLine."Blanket Order No.";
-                        ABERTIASalesFacturas."Blanket Order Line No_" := SalesInvoiceLine."Blanket Order Line No.";
-                        ABERTIASalesFacturas."VAT Base Amount" := SalesInvoiceLine."VAT Base Amount";
-                        ABERTIASalesFacturas."Unit Cost" := SalesInvoiceLine."Unit Cost";
-                        case SalesInvoiceLine."System-Created Entry" of
-                            true:
-                                ABERTIASalesFacturas."System-Created Entry" := 1;
-                            else
-                                ABERTIASalesFacturas."System-Created Entry" := 0;
-                        end;
-                        ABERTIASalesFacturas."Line Amount" := SalesInvoiceLine."Line Amount";
-                        ABERTIASalesFacturas."VAT Difference" := SalesInvoiceLine."VAT Difference";
-                        ABERTIASalesFacturas."VAT Identifier" := SalesInvoiceLine."VAT Identifier";
-                        ABERTIASalesFacturas."IC Partner Ref_ Type" := SalesInvoiceLine."IC Partner Ref. Type";
-                        ABERTIASalesFacturas."IC Partner Reference" := SalesInvoiceLine."IC Partner Reference";
-                        case SalesInvoiceLine."Prepayment Line" of
-                            true:
-                                ABERTIASalesFacturas."Prepayment Line" := 1;
-                            else
-                                ABERTIASalesFacturas."Prepayment Line" := 0;
-                        end;
-                        ABERTIASalesFacturas."IC Partner Code" := SalesInvoiceLine."IC Partner Code";
-                        ABERTIASalesFacturas."Posting Date" := SalesInvoiceLine."Posting Date";
-                        ABERTIASalesFacturas."Pmt_ Discount Amount" := SalesInvoiceLine."Pmt. Discount Amount";
-                        ABERTIASalesFacturas."Line Discount Calculation" := SalesInvoiceLine."Line Discount Calculation";
-                        ABERTIASalesFacturas."Dimension Set ID" := SalesInvoiceLine."Dimension Set ID";
-                        ABERTIASalesFacturas."Job Task No_" := SalesInvoiceLine."Job Task No.";
-                        ABERTIASalesFacturas."Job Contract Entry No_" := SalesInvoiceLine."Job Contract Entry No.";
-                        ABERTIASalesFacturas."Deferral Code" := SalesInvoiceLine."Deferral Code";
-                        ABERTIASalesFacturas."Variant Code" := SalesInvoiceLine."Variant Code";
-                        ABERTIASalesFacturas."Bin Code" := SalesInvoiceLine."Bin Code";
-                        ABERTIASalesFacturas."Qty_ per Unit of Measure" := SalesInvoiceLine."Qty. per Unit of Measure";
-                        ABERTIASalesFacturas."Unit of Measure Code" := SalesInvoiceLine."Unit of Measure Code";
-                        ABERTIASalesFacturas."Quantity (Base)" := SalesInvoiceLine."Quantity (Base)";
-                        ABERTIASalesFacturas."FA Posting Date" := SalesInvoiceLine."FA Posting Date";
-                        ABERTIASalesFacturas."Depreciation Book Code" := SalesInvoiceLine."Depreciation Book Code";
-                        case SalesInvoiceLine."Depr. until FA Posting Date" of
-                            true:
-                                ABERTIASalesFacturas."Depr_ until FA Posting Date" := 1;
-                            else
-                                ABERTIASalesFacturas."Depr_ until FA Posting Date" := 0;
-                        end;
-                        ABERTIASalesFacturas."Duplicate in Depreciation Book" := SalesInvoiceLine."Duplicate in Depreciation Book";
-                        case SalesInvoiceLine."Use Duplication List" of
-                            true:
-                                ABERTIASalesFacturas."Use Duplication List" := 0;
-                            else
-                                ABERTIASalesFacturas."Use Duplication List" := 1;
-                        end;
-                        ABERTIASalesFacturas."Responsibility Center" := SalesInvoiceLine."Responsibility Center";
-                        ABERTIASalesFacturas."Cross-Reference No_" := SalesInvoiceLine."Cross-Reference No.";
-                        ABERTIASalesFacturas."Unit of Measure (Cross Ref_)" := SalesInvoiceLine."Unit of Measure (Cross Ref.)";
-                        ABERTIASalesFacturas."Cross-Reference Type" := SalesInvoiceLine."Cross-Reference Type";
-                        ABERTIASalesFacturas."Cross-Reference Type No_" := SalesInvoiceLine."Cross-Reference Type No.";
-                        ABERTIASalesFacturas."Item Category Code" := SalesInvoiceLine."Item Category Code";
-                        case SalesInvoiceLine.Nonstock of
-                            true:
-                                ABERTIASalesFacturas."Nonstock" := 0;
-                            else
-                                ABERTIASalesFacturas."Nonstock" := 1;
-                        end;
-                        ABERTIASalesFacturas."Purchasing Code" := SalesInvoiceLine."Purchasing Code";
-                        // ABERTIASalesFacturas."Product Group Code" := SalesInvoiceHeader.
-                        ABERTIASalesFacturas."Appl_-from Item Entry" := SalesInvoiceLine."Appl.-from Item Entry";
-                        ABERTIASalesFacturas."Return Reason Code" := SalesInvoiceLine."Return Reason Code";
-                        case SalesInvoiceLine."Allow Line Disc." of
-                            true:
-                                ABERTIASalesFacturas."Allow Line Disc_" := 1;
-                            else
-                                ABERTIASalesFacturas."Allow Line Disc_" := 0;
-                        end;
-                        ABERTIASalesFacturas."Customer Disc_ Group" := SalesInvoiceLine."Customer Disc. Group";
-                        ABERTIASalesFacturas."Price description" := SalesInvoiceLine."Price description";
-                        // ABERTIASalesFacturas."Pmt_ Disc_ Given Amount (Old)" := SalesInvoiceHeader.pmt
-                        ABERTIASalesFacturas."EC _" := SalesInvoiceLine."EC %";
-                        ABERTIASalesFacturas."EC Difference" := SalesInvoiceLine."EC Difference";
-                        ABERTIASalesFacturas."Nombre Cliente" := SalesInvoiceHeader."Sell-to Customer Name";
-                        ABERTIASalesFacturas."Payment Discount _" := SalesInvoiceHeader."Payment Discount %";
-                        ABERTIASalesFacturas."AREAMANAGER" := SalesInvoiceHeader.AreaManager_btc;
-                        ABERTIASalesFacturas."Post Code" := SalesInvoiceHeader."Sell-to Post Code";
-                        ABERTIASalesFacturas."County" := SalesInvoiceHeader."Sell-to County";
-                        ABERTIASalesFacturas."grupocliente_btc" := SalesInvoiceHeader.GrupoCliente_btc;
-                        ABERTIASalesFacturas."Delegado_btc" := SalesInvoiceHeader.Delegado_btc;
-                        ABERTIASalesFacturas."Country_Region Code" := SalesInvoiceHeader."Sell-to Country/Region Code";
-                        if CountryRegion.get(SalesInvoiceHeader."Sell-to Country/Region Code") then
-                            ABERTIASalesFacturas."Pais" := CountryRegion.Name;
-                        // ABERTIASalesFacturas."Item Disc_ Group" := SalesInvoiceHeader.item
-                        Customer.Get(SalesInvoiceHeader."Sell-to Customer No.");
-                        ABERTIASalesFacturas."ClienteActividad_btc" := Customer.ClienteActividad_btc;
-                        ABERTIASalesFacturas."subcliente_btc" := SalesInvoiceHeader.SubCliente_btc;
-                        ABERTIASalesFacturas."clientereporting_btc" := SalesInvoiceHeader.ClienteReporting_btc;
-                        ABERTIASalesFacturas."InsideSales_btc" := SalesInvoiceHeader.InsideSales_btc;
-                        ABERTIASalesFacturas."salesperson code" := SalesInvoiceHeader."Salesperson Code";
-                        if not ABERTIASalesFacturas.Insert() then
-                            ABERTIASalesFacturas.Modify();
-                        Commit();
+                        if not SalesFacturas(SalesInvoiceHeader, SalesInvoiceLine) then
+                            CUCron.ABERTIALOGUPDATE('Invoices', GetLastErrorText());
                         RecordNo += 1;
+                        Commit();
                     Until SalesInvoiceLine.next() = 0;
+                CUCron.ABERTIALOGUPDATE('Invoices', StrSubstNo('Record No: %1', RecordNo));
             Until SalesInvoiceHeader.next() = 0;
         Window.Close();
+    end;
+
+    [TryFunction]
+    local procedure SalesFacturas(SalesInvoiceHeader: Record "Sales Invoice Header"; SalesInvoiceLine: Record "Sales Invoice Line")
+    var
+        ABERTIASalesFacturas: Record "ABERTIA SalesFacturas";
+        Customer: Record Customer;
+        CountryRegion: Record "Country/Region";
+        Suplemento: Integer;
+    begin
+        ABERTIASalesFacturas.Reset();
+        if not ABERTIASalesFacturas.Get(SalesInvoiceLine."Document No.", SalesInvoiceLine."Line No.") then begin
+            ABERTIASalesFacturas.Init();
+            ABERTIASalesFacturas.ID := CreateGuid();
+        end;
+        ABERTIASalesFacturas."Document No_" := SalesInvoiceLine."Document No.";
+        ABERTIASalesFacturas."Line No_" := SalesInvoiceLine."Line No.";
+        ABERTIASalesFacturas."Sell-to Customer No_" := SalesInvoiceLine."Sell-to Customer No.";
+        ABERTIASalesFacturas."Type" := SalesInvoiceLine.Type;
+        ABERTIASalesFacturas."No_" := SalesInvoiceLine."No.";
+        ABERTIASalesFacturas."Location Code" := SalesInvoiceLine."Location Code";
+        ABERTIASalesFacturas."Posting Group" := SalesInvoiceLine."Posting Group";
+        ABERTIASalesFacturas."Shipment Date" := SalesInvoiceLine."Shipment Date";
+        ABERTIASalesFacturas."Description" := SalesInvoiceLine.Description;
+        ABERTIASalesFacturas."Description 2" := SalesInvoiceLine."Description 2";
+        ABERTIASalesFacturas."Unit of Measure" := SalesInvoiceLine."Unit of Measure";
+        ABERTIASalesFacturas."Quantity" := SalesInvoiceLine.Quantity;
+        ABERTIASalesFacturas."Unit Price" := SalesInvoiceLine."Unit Price";
+        ABERTIASalesFacturas."Unit Cost (LCY)" := SalesInvoiceLine."Unit Cost (LCY)";
+        ABERTIASalesFacturas."VAT _" := SalesInvoiceLine."VAT %";
+        ABERTIASalesFacturas."Line Discount _" := SalesInvoiceLine."Line Discount %";
+        ABERTIASalesFacturas."Line Discount Amount" := SalesInvoiceLine."Line Discount Amount";
+        ABERTIASalesFacturas."Amount" := SalesInvoiceLine.Amount;
+        ABERTIASalesFacturas."Amount Including VAT" := SalesInvoiceLine."Amount Including VAT";
+        case SalesInvoiceLine."Allow Invoice Disc." of
+            true:
+                ABERTIASalesFacturas."Allow Invoice Disc_" := 1;
+            else
+                ABERTIASalesFacturas."Allow Invoice Disc_" := 0;
+        end;
+        ABERTIASalesFacturas."Gross Weight" := SalesInvoiceLine."Gross Weight";
+        ABERTIASalesFacturas."Net Weight" := SalesInvoiceLine."Net Weight";
+        ABERTIASalesFacturas."Units per Parcel" := SalesInvoiceLine."Units per Parcel";
+        ABERTIASalesFacturas."Unit Volume" := SalesInvoiceLine."Unit Volume";
+        ABERTIASalesFacturas."Appl_-to Item Entry" := SalesInvoiceLine."Appl.-to Item Entry";
+        ABERTIASalesFacturas."Shortcut Dimension 1 Code" := SalesInvoiceLine."Shortcut Dimension 1 Code";
+        ABERTIASalesFacturas."Shortcut Dimension 2 Code" := SalesInvoiceLine."Shortcut Dimension 2 Code";
+        ABERTIASalesFacturas."Customer Price Group" := SalesInvoiceLine."Customer Price Group";
+        ABERTIASalesFacturas."Job No_" := SalesInvoiceLine."Job No.";
+        ABERTIASalesFacturas."Work Type Code" := SalesInvoiceLine."Work Type Code";
+        ABERTIASalesFacturas."Shipment No_" := SalesInvoiceLine."Shipment No.";
+        ABERTIASalesFacturas."Shipment Line No_" := SalesInvoiceLine."Shipment Line No.";
+        ABERTIASalesFacturas."Order No_" := SalesInvoiceLine."Order No.";
+        ABERTIASalesFacturas."Order Line No_" := SalesInvoiceLine."Order Line No.";
+        ABERTIASalesFacturas."Bill-to Customer No_" := SalesInvoiceLine."Bill-to Customer No.";
+        ABERTIASalesFacturas."Inv_ Discount Amount" := SalesInvoiceLine."Inv. Discount Amount";
+        case SalesInvoiceLine."Drop Shipment" of
+            true:
+                ABERTIASalesFacturas."Drop Shipment" := 1;
+            else
+                ABERTIASalesFacturas."Drop Shipment" := 0;
+        end;
+        ABERTIASalesFacturas."Gen_ Bus_ Posting Group" := SalesInvoiceLine."Gen. Bus. Posting Group";
+        ABERTIASalesFacturas."Gen_ Prod_ Posting Group" := SalesInvoiceLine."Gen. Prod. Posting Group";
+        ABERTIASalesFacturas."VAT Calculation Type" := SalesInvoiceLine."VAT Calculation Type";
+        // ABERTIASalesFacturas."Transaction Type" := SalesInvoiceLine."Transaction Type";
+        // ABERTIASalesFacturas."Transport Method" := SalesInvoiceLine."Transport Method";
+        ABERTIASalesFacturas."Attached to Line No_" := SalesInvoiceLine."Attached to Line No.";
+        // ABERTIASalesFacturas."Exit Point" := SalesInvoiceLine."Exit Point";
+        ABERTIASalesFacturas."Area" := SalesInvoiceLine."Area";
+        // ABERTIASalesFacturas."Transaction Specification" := SalesInvoiceLine."Transaction Specification";
+        ABERTIASalesFacturas."Tax Category" := SalesInvoiceLine."Tax Category";
+        ABERTIASalesFacturas."Tax Area Code" := SalesInvoiceLine."Tax Area Code";
+        case SalesInvoiceLine."Tax Liable" of
+            true:
+                ABERTIASalesFacturas."Tax Liable" := 1;
+            else
+                ABERTIASalesFacturas."Tax Liable" := 0;
+        end;
+        ABERTIASalesFacturas."Tax Group Code" := SalesInvoiceLine."Tax Group Code";
+        ABERTIASalesFacturas."VAT Clause Code" := SalesInvoiceLine."VAT Clause Code";
+        ABERTIASalesFacturas."VAT Bus_ Posting Group" := SalesInvoiceLine."VAT Bus. Posting Group";
+        ABERTIASalesFacturas."VAT Prod_ Posting Group" := SalesInvoiceLine."VAT Prod. Posting Group";
+        ABERTIASalesFacturas."Blanket Order No_" := SalesInvoiceLine."Blanket Order No.";
+        ABERTIASalesFacturas."Blanket Order Line No_" := SalesInvoiceLine."Blanket Order Line No.";
+        ABERTIASalesFacturas."VAT Base Amount" := SalesInvoiceLine."VAT Base Amount";
+        ABERTIASalesFacturas."Unit Cost" := SalesInvoiceLine."Unit Cost";
+        case SalesInvoiceLine."System-Created Entry" of
+            true:
+                ABERTIASalesFacturas."System-Created Entry" := 1;
+            else
+                ABERTIASalesFacturas."System-Created Entry" := 0;
+        end;
+        ABERTIASalesFacturas."Line Amount" := SalesInvoiceLine."Line Amount";
+        ABERTIASalesFacturas."VAT Difference" := SalesInvoiceLine."VAT Difference";
+        ABERTIASalesFacturas."VAT Identifier" := SalesInvoiceLine."VAT Identifier";
+        ABERTIASalesFacturas."IC Partner Ref_ Type" := SalesInvoiceLine."IC Partner Ref. Type";
+        ABERTIASalesFacturas."IC Partner Reference" := SalesInvoiceLine."IC Partner Reference";
+        case SalesInvoiceLine."Prepayment Line" of
+            true:
+                ABERTIASalesFacturas."Prepayment Line" := 1;
+            else
+                ABERTIASalesFacturas."Prepayment Line" := 0;
+        end;
+        ABERTIASalesFacturas."IC Partner Code" := SalesInvoiceLine."IC Partner Code";
+        ABERTIASalesFacturas."Posting Date" := SalesInvoiceLine."Posting Date";
+        ABERTIASalesFacturas."Pmt_ Discount Amount" := SalesInvoiceLine."Pmt. Discount Amount";
+        ABERTIASalesFacturas."Line Discount Calculation" := SalesInvoiceLine."Line Discount Calculation";
+        ABERTIASalesFacturas."Dimension Set ID" := SalesInvoiceLine."Dimension Set ID";
+        ABERTIASalesFacturas."Job Task No_" := SalesInvoiceLine."Job Task No.";
+        ABERTIASalesFacturas."Job Contract Entry No_" := SalesInvoiceLine."Job Contract Entry No.";
+        ABERTIASalesFacturas."Deferral Code" := SalesInvoiceLine."Deferral Code";
+        ABERTIASalesFacturas."Variant Code" := SalesInvoiceLine."Variant Code";
+        ABERTIASalesFacturas."Bin Code" := SalesInvoiceLine."Bin Code";
+        ABERTIASalesFacturas."Qty_ per Unit of Measure" := SalesInvoiceLine."Qty. per Unit of Measure";
+        ABERTIASalesFacturas."Unit of Measure Code" := SalesInvoiceLine."Unit of Measure Code";
+        ABERTIASalesFacturas."Quantity (Base)" := SalesInvoiceLine."Quantity (Base)";
+        ABERTIASalesFacturas."FA Posting Date" := SalesInvoiceLine."FA Posting Date";
+        ABERTIASalesFacturas."Depreciation Book Code" := SalesInvoiceLine."Depreciation Book Code";
+        case SalesInvoiceLine."Depr. until FA Posting Date" of
+            true:
+                ABERTIASalesFacturas."Depr_ until FA Posting Date" := 1;
+            else
+                ABERTIASalesFacturas."Depr_ until FA Posting Date" := 0;
+        end;
+        ABERTIASalesFacturas."Duplicate in Depreciation Book" := SalesInvoiceLine."Duplicate in Depreciation Book";
+        case SalesInvoiceLine."Use Duplication List" of
+            true:
+                ABERTIASalesFacturas."Use Duplication List" := 0;
+            else
+                ABERTIASalesFacturas."Use Duplication List" := 1;
+        end;
+        ABERTIASalesFacturas."Responsibility Center" := SalesInvoiceLine."Responsibility Center";
+        ABERTIASalesFacturas."Cross-Reference No_" := SalesInvoiceLine."Cross-Reference No.";
+        ABERTIASalesFacturas."Unit of Measure (Cross Ref_)" := SalesInvoiceLine."Unit of Measure (Cross Ref.)";
+        ABERTIASalesFacturas."Cross-Reference Type" := SalesInvoiceLine."Cross-Reference Type";
+        ABERTIASalesFacturas."Cross-Reference Type No_" := SalesInvoiceLine."Cross-Reference Type No.";
+        ABERTIASalesFacturas."Item Category Code" := SalesInvoiceLine."Item Category Code";
+        case SalesInvoiceLine.Nonstock of
+            true:
+                ABERTIASalesFacturas."Nonstock" := 0;
+            else
+                ABERTIASalesFacturas."Nonstock" := 1;
+        end;
+        ABERTIASalesFacturas."Purchasing Code" := SalesInvoiceLine."Purchasing Code";
+        // ABERTIASalesFacturas."Product Group Code" := SalesInvoiceHeader.
+        ABERTIASalesFacturas."Appl_-from Item Entry" := SalesInvoiceLine."Appl.-from Item Entry";
+        ABERTIASalesFacturas."Return Reason Code" := SalesInvoiceLine."Return Reason Code";
+        case SalesInvoiceLine."Allow Line Disc." of
+            true:
+                ABERTIASalesFacturas."Allow Line Disc_" := 1;
+            else
+                ABERTIASalesFacturas."Allow Line Disc_" := 0;
+        end;
+        ABERTIASalesFacturas."Customer Disc_ Group" := SalesInvoiceLine."Customer Disc. Group";
+        ABERTIASalesFacturas."Price description" := SalesInvoiceLine."Price description";
+        // ABERTIASalesFacturas."Pmt_ Disc_ Given Amount (Old)" := SalesInvoiceHeader.pmt
+        ABERTIASalesFacturas."EC _" := SalesInvoiceLine."EC %";
+        ABERTIASalesFacturas."EC Difference" := SalesInvoiceLine."EC Difference";
+        ABERTIASalesFacturas."Nombre Cliente" := SalesInvoiceHeader."Sell-to Customer Name";
+        ABERTIASalesFacturas."Payment Discount _" := SalesInvoiceHeader."Payment Discount %";
+        ABERTIASalesFacturas."AREAMANAGER" := SalesInvoiceHeader.AreaManager_btc;
+        ABERTIASalesFacturas."Post Code" := SalesInvoiceHeader."Sell-to Post Code";
+        ABERTIASalesFacturas."County" := SalesInvoiceHeader."Sell-to County";
+        ABERTIASalesFacturas."grupocliente_btc" := SalesInvoiceHeader.GrupoCliente_btc;
+        ABERTIASalesFacturas."Delegado_btc" := SalesInvoiceHeader.Delegado_btc;
+        ABERTIASalesFacturas."Country_Region Code" := SalesInvoiceHeader."Sell-to Country/Region Code";
+        if CountryRegion.get(SalesInvoiceHeader."Sell-to Country/Region Code") then
+            ABERTIASalesFacturas."Pais" := CountryRegion.Name;
+        // ABERTIASalesFacturas."Item Disc_ Group" := SalesInvoiceHeader.item
+        Customer.Get(SalesInvoiceHeader."Sell-to Customer No.");
+        ABERTIASalesFacturas."ClienteActividad_btc" := Customer.ClienteActividad_btc;
+        ABERTIASalesFacturas."subcliente_btc" := SalesInvoiceHeader.SubCliente_btc;
+        ABERTIASalesFacturas."clientereporting_btc" := SalesInvoiceHeader.ClienteReporting_btc;
+        ABERTIASalesFacturas."InsideSales_btc" := SalesInvoiceHeader.InsideSales_btc;
+        ABERTIASalesFacturas."salesperson code" := SalesInvoiceHeader."Salesperson Code";
+        if not ABERTIASalesFacturas.Insert() then
+            ABERTIASalesFacturas.Modify();
+
     end;
 }
