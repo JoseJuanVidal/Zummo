@@ -82,7 +82,6 @@ page 17463 "ABERTIA Update"
     {
         area(Processing)
         {
-
             action(Refresh)
             {
                 ApplicationArea = all;
@@ -108,129 +107,130 @@ page 17463 "ABERTIA Update"
                     ABERTIAUpdateALL();
                 end;
             }
-            action(UpdateGLAccount)
+            Group("Zummo Innovaciones Mecanicas")
             {
-                ApplicationArea = all;
-                Caption = 'Update GL Account', comment = 'ESP="Actualizar cuentas contables"';
-                Image = Accounts;
-                Promoted = true;
-                PromotedCategory = Process;
+                action(UpdateGLAccount)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Update GL Account', comment = 'ESP="Actualizar cuentas contables"';
+                    Image = Accounts;
+                    Promoted = true;
+                    PromotedCategory = Process;
 
-                trigger OnAction()
-                var
-                    RecorNo: Integer;
-                    lblConfirm: Label '¿Desea actualizar las cuentas contables?', comment = 'ESP="¿Desea actualizar las cuentas contables?"';
-                begin
-                    if Confirm(lblConfirm) then begin
-                        RecorNo := AbertiaGLAccount.CreateGLAccount();
-                        cuCron.ABERTIAUpdateSendEmail(StrSubstNo('Nº cuentas contables: %1', RecorNo), 0, 0, 0, 0, 0, 0, 0);
+                    trigger OnAction()
+                    var
+                        RecorNo: Integer;
+                        lblConfirm: Label '¿Desea actualizar las cuentas contables?', comment = 'ESP="¿Desea actualizar las cuentas contables?"';
+                    begin
+                        if Confirm(lblConfirm) then begin
+                            RecorNo := AbertiaGLAccount.CreateGLAccount();
+                            UpdateEntryNos();
+                        end;
+                    end;
+                }
+                action(UpdateGLEntry)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Update GL Entry', comment = 'ESP="Actualizar movs. contabiladad"';
+                    Image = PostingEntries;
+                    Promoted = true;
+                    PromotedCategory = Process;
+
+                    trigger OnAction()
+                    var
+                        lblConfirm: Label '¿Desea actualizar los movimientos contabilidad?', comment = 'ESP="¿Desea actualizar los movimientos contabilidad?"';
+                    begin
+                        if Confirm(lblConfirm) then
+                            AbertiaGLEntry.CreateGLEntry(TypeUpdate);
+                        UpdateEntryNos();
+                    end;
+                }
+                action(UpdateGLBudgetEntry)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Update GL Budget Entry', comment = 'ESP="Act. Movs. presup. contabilidad"';
+                    Image = LedgerBudget;
+                    Promoted = true;
+                    PromotedCategory = Process;
+
+                    trigger OnAction()
+                    var
+                        lblConfirm: Label '¿Desea actualizar los movs. de presupuestos contabilidad?', comment = 'ESP="¿Desea actualizar los movs. de presupuestos contabilidad?"';
+                    begin
+                        if Confirm(lblConfirm) then
+                            AbertiaGLEntryBudget.CreateGLBudget(TypeUpdate);
 
                         UpdateEntryNos();
                     end;
-                end;
-            }
-            action(UpdateGLEntry)
-            {
-                ApplicationArea = all;
-                Caption = 'Update GL Entry', comment = 'ESP="Actualizar movs. contabiladad"';
-                Image = PostingEntries;
-                Promoted = true;
-                PromotedCategory = Process;
+                }
+                action(UpdateSalesCustomer)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Update Customer', comment = 'ESP="Actualizar Clientes"';
+                    Image = CustomerList;
+                    Promoted = true;
+                    PromotedCategory = Process;
 
-                trigger OnAction()
-                var
-                    lblConfirm: Label '¿Desea actualizar los movimientos contabilidad?', comment = 'ESP="¿Desea actualizar los movimientos contabilidad?"';
-                begin
-                    if Confirm(lblConfirm) then
-                        AbertiaGLEntry.CreateGLEntry(EntryNoIni, TypeUpdate);
-                    UpdateEntryNos();
-                end;
-            }
-            action(UpdateGLBudgetEntry)
-            {
-                ApplicationArea = all;
-                Caption = 'Update GL Budget Entry', comment = 'ESP="Act. Movs. presup. contabilidad"';
-                Image = LedgerBudget;
-                Promoted = true;
-                PromotedCategory = Process;
+                    trigger OnAction()
+                    var
+                        lblConfirm: Label '¿Desea actualizar los Clientes?', comment = 'ESP="¿Desea actualizar los Clientes?"';
+                    begin
+                        if Confirm(lblConfirm) then
+                            AbertiaSalesCustomer.CreateSalesCustomer();
+                        UpdateEntryNos();
+                    end;
+                }
+                action(UpdateItems)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Update Items', comment = 'ESP="Actualizar Productos"';
+                    Image = Item;
+                    Promoted = true;
+                    PromotedCategory = Process;
 
-                trigger OnAction()
-                var
-                    lblConfirm: Label '¿Desea actualizar los movs. de presupuestos contabilidad?', comment = 'ESP="¿Desea actualizar los movs. de presupuestos contabilidad?"';
-                begin
-                    if Confirm(lblConfirm) then
-                        AbertiaGLEntryBudget.CreateGLBudget(TypeUpdate);
+                    trigger OnAction()
+                    var
+                        lblConfirm: Label '¿Desea actualizar los Productos?', comment = 'ESP="¿Desea actualizar los Productos?"';
+                    begin
+                        if Confirm(lblConfirm) then
+                            ABERTIASalesItem.CreateSalesItem();
+                        UpdateEntryNos();
+                    end;
+                }
+                action(UpdateSalesFacturas)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Update Sales Invoice', comment = 'ESP="Actualizar Facturas Ventas"';
+                    Image = SalesInvoice;
+                    Promoted = true;
+                    PromotedCategory = Process;
 
-                    UpdateEntryNos();
-                end;
-            }
-            action(UpdateSalesCustomer)
-            {
-                ApplicationArea = all;
-                Caption = 'Update Customer', comment = 'ESP="Actualizar Clientes"';
-                Image = CustomerList;
-                Promoted = true;
-                PromotedCategory = Process;
+                    trigger OnAction()
+                    var
+                        lblConfirm: Label '¿Desea actualizar los Facturas Ventas?', comment = 'ESP="¿Desea actualizar los Facturas Ventas?"';
+                    begin
+                        if Confirm(lblConfirm) then
+                            ABERTIASalesFacturas.CreateSalesFacturas(TypeUpdate);
+                        UpdateEntryNos();
+                    end;
+                }
+                action(UpdateSalesPedidos)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Update Sales Quote/Order', comment = 'ESP="Actualizar Ofertas/Pedidos"';
+                    Image = OrderList;
+                    Promoted = true;
+                    PromotedCategory = Process;
 
-                trigger OnAction()
-                var
-                    lblConfirm: Label '¿Desea actualizar los Clientes?', comment = 'ESP="¿Desea actualizar los Clientes?"';
-                begin
-                    if Confirm(lblConfirm) then
-                        AbertiaSalesCustomer.CreateSalesCustomer();
-                    UpdateEntryNos();
-                end;
-            }
-            action(UpdateItems)
-            {
-                ApplicationArea = all;
-                Caption = 'Update Items', comment = 'ESP="Actualizar Productos"';
-                Image = Item;
-                Promoted = true;
-                PromotedCategory = Process;
-
-                trigger OnAction()
-                var
-                    lblConfirm: Label '¿Desea actualizar los Productos?', comment = 'ESP="¿Desea actualizar los Productos?"';
-                begin
-                    if Confirm(lblConfirm) then
-                        ABERTIASalesItem.CreateSalesItem();
-                    UpdateEntryNos();
-                end;
-            }
-            action(UpdateSalesFacturas)
-            {
-                ApplicationArea = all;
-                Caption = 'Update Sales Invoice', comment = 'ESP="Actualizar Facturas Ventas"';
-                Image = SalesInvoice;
-                Promoted = true;
-                PromotedCategory = Process;
-
-                trigger OnAction()
-                var
-                    lblConfirm: Label '¿Desea actualizar los Facturas Ventas?', comment = 'ESP="¿Desea actualizar los Facturas Ventas?"';
-                begin
-                    if Confirm(lblConfirm) then
-                        ABERTIASalesFacturas.CreateSalesFacturas(TypeUpdate);
-                    UpdateEntryNos();
-                end;
-            }
-            action(UpdateSalesPedidos)
-            {
-                ApplicationArea = all;
-                Caption = 'Update Sales Quote/Order', comment = 'ESP="Actualizar Ofertas/Pedidos"';
-                Image = OrderList;
-                Promoted = true;
-                PromotedCategory = Process;
-
-                trigger OnAction()
-                var
-                    lblConfirm: Label '¿Desea actualizar las Ofertas/Pedidos Ventas?', comment = 'ESP="¿Desea actualizar las Ofertas/Pedidos Ventas?"';
-                begin
-                    if Confirm(lblConfirm) then
-                        AbertiaSalesPedidos.CreateSalesPedidos(TypeUpdate);
-                    UpdateEntryNos();
-                end;
+                    trigger OnAction()
+                    var
+                        lblConfirm: Label '¿Desea actualizar las Ofertas/Pedidos Ventas?', comment = 'ESP="¿Desea actualizar las Ofertas/Pedidos Ventas?"';
+                    begin
+                        if Confirm(lblConfirm) then
+                            AbertiaSalesPedidos.CreateSalesPedidos(TypeUpdate);
+                        UpdateEntryNos();
+                    end;
+                }
             }
         }
         area(Navigation)
@@ -270,6 +270,7 @@ page 17463 "ABERTIA Update"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
+        ServiceMgtSetup: Record "Service Mgt. Setup";
         AbertiaGLAccount: Record "ABERTIA GL Account";
         AbertiaGLEntry: Record "ABERTIA GL Entry";
         AbertiaGLEntryBudget: Record "ABERTIA GL Budget";
@@ -286,7 +287,7 @@ page 17463 "ABERTIA Update"
         SalesItem: Integer;
         SalesFacturas: Integer;
         SalesPedidos: Integer;
-        TypeUpdate: Option Nuevo,Periodo,Todo;
+        TypeUpdate: Option Periodo,Todo;
         EntryNoIni: Integer;
 
     procedure OpenTableConnection()

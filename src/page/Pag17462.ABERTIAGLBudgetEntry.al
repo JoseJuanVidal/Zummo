@@ -83,7 +83,7 @@ page 17462 "ABERTIA GL Budget Entry"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
-        TypeUpdate: Option Nuevo,Periodo,Todo;
+        TypeUpdate: Option Periodo,Todo;
 
     procedure OpenTableConnection()
     begin

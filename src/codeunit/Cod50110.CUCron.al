@@ -9,7 +9,7 @@ codeunit 50110 "CU_Cron"
         ResultEnvioMailTxt: Text;
         TotalExcelBuffer: Record "Excel Buffer" temporary;
         IntegracionCRM: codeunit Integracion_crm_btc;
-        AbertiaTypeUpdate: Option Nuevo,Periodo,Todo;
+        AbertiaTypeUpdate: Option Periodo,Todo;
         Ejecucioncola: Boolean;
 
     trigger OnRun()
@@ -1565,7 +1565,7 @@ codeunit 50110 "CU_Cron"
         cduSmtp.Send();
     end;
 
-    procedure ABERTIAUpdateALL(TypeUpdate: Option Nuevo,Periodo,Todo)
+    procedure ABERTIAUpdateALL(TypeUpdate: Option Periodo,Todo)
     var
         AbertiaGLAccount: Record "ABERTIA GL Account";
         AbertiaGLEntry: Record "ABERTIA GL Entry";
@@ -1585,7 +1585,7 @@ codeunit 50110 "CU_Cron"
     begin
         CreateTableConnection();
         GLAccountRecordNo := AbertiaGLAccount.CreateGLAccount();
-        GLEntryRecordNo := AbertiaGLEntry.CreateGLEntry(0, TypeUpdate);
+        GLEntryRecordNo := AbertiaGLEntry.CreateGLEntry(TypeUpdate);
         GLBudgetEntryRecordNo := AbertiaGLEntryBudget.CreateGLBudget(TypeUpdate);
         CustomerRecordNo := AbertiaSalesCustomer.CreateSalesCustomer();
         ItemRecordNo := ABERTIASalesItem.CreateSalesItem();

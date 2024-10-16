@@ -75,7 +75,7 @@ table 17449 "ABERTIA SalesPedidos"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateSalesPedidos(TypeUpdate: Option Nuevo,Periodo,Todo) RecordNo: Integer;
+    procedure CreateSalesPedidos(TypeUpdate: Option Periodo,Todo) RecordNo: Integer;
     var
         SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
@@ -91,7 +91,7 @@ table 17449 "ABERTIA SalesPedidos"
         SalesHeader.Reset();
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
         case TypeUpdate of
-            TypeUpdate::Nuevo, TypeUpdate::Periodo:
+            TypeUpdate::Periodo:
                 begin
                     SalesHeader.SetRange("Posting Date", GenLedgerSetup."Allow Posting From", GenLedgerSetup."Allow Posting To");
                 end;

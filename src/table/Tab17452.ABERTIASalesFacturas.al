@@ -157,7 +157,7 @@ table 17452 "ABERTIA SalesFacturas"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateSalesFacturas(TypeUpdate: Option Nuevo,Periodo,Todo) RecordNo: Integer;
+    procedure CreateSalesFacturas(TypeUpdate: Option Periodo,Todo) RecordNo: Integer;
     var
         Customer: Record Customer;
         SalesInvoiceHeader: Record "Sales Invoice Header";
@@ -172,11 +172,6 @@ table 17452 "ABERTIA SalesFacturas"
         SalesInvoiceHeader.Reset();
         ABERTIASalesFacturas.Reset();
         case TypeUpdate of
-            TypeUpdate::Nuevo:
-                begin
-                    if ABERTIASalesFacturas.FindLast() then
-                        SalesInvoiceHeader.SetFilter("No.", '%1..', ABERTIASalesFacturas."Document No_");
-                end;
             TypeUpdate::Periodo:
                 begin
                     SalesInvoiceHeader.SetRange("Posting Date", GenLedgerSetup."Allow Posting From", GenLedgerSetup."Allow Posting To");

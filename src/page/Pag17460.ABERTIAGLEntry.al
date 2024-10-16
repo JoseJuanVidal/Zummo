@@ -274,7 +274,7 @@ page 17460 "ABERTIA GL Entry"
 
                 trigger OnAction()
                 begin
-                    Rec.CreateGLEntry(EntryNoIni, TypeUpdate);
+                    Rec.CreateGLEntry(TypeUpdate);
                 end;
 
             }
@@ -287,7 +287,7 @@ page 17460 "ABERTIA GL Entry"
 
     var
         GenLedgerSetup: Record "General Ledger Setup";
-        TypeUpdate: Option Nuevo,Periodo,Todo;
+        TypeUpdate: Option Periodo,Todo;
         EntryNoIni: Integer;
 
     procedure OpenTableConnection()
