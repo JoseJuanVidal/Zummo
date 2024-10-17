@@ -75,7 +75,7 @@ table 17459 "ABERTIA GL Budget"
         Window.Open('Presupuesto: #1####################\Nº Movimiento #2################');
         GLBudget.Reset();
         GenLedgerSetup.Get();
-        if GLBudget.FindFirst() then
+        if GLBudget.FindSet() then
             repeat
                 Window.Update(1, GLBudget."Name");
                 GLBudgetEntry.Reset();
@@ -94,7 +94,7 @@ table 17459 "ABERTIA GL Budget"
                             GLBudgetEntry.SetRange(date, GenLedgerSetup."Allow Posting From", GenLedgerSetup."Allow Posting To");
                         end;
                 end;
-                if GLBudgetEntry.FindFirst() then
+                if GLBudgetEntry.FindSet() then
                     repeat
                         Window.Update(2, GLBudgetEntry."Entry No.");
                         ABGLBudget.Reset();

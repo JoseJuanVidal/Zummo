@@ -74,7 +74,7 @@ table 17453 "ABERTIA SalesItem"
         Window.Open('Nº Producto #1################');
         Item.Reset();
         // GLAccount.SetRange("Account Type", GLAccount."Account Type"::Posting);
-        if Item.FindFirst() then
+        if Item.FindSet() then
             repeat
                 Window.Update(1, Item."No.");
                 item.CalcFields(desClasVtas_btc, desFamilia_btc, desGama_btc, desLineaEconomica_btc);

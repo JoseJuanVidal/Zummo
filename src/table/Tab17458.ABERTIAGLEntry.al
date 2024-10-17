@@ -287,7 +287,7 @@ table 17458 "ABERTIA GL Entry"
 
                 end;
         end;
-        if GLEntry.FindFirst() then
+        if GLEntry.FindSet() then
             repeat
                 Window.Update(1, GLEntry."Entry No.");
                 Window.Update(2, GLEntry."Posting Date");

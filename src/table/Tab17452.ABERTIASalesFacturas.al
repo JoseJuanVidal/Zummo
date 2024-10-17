@@ -174,12 +174,12 @@ table 17452 "ABERTIA SalesFacturas"
                     SalesInvoiceHeader.SetRange("Posting Date", GenLedgerSetup."Allow Posting From", GenLedgerSetup."Allow Posting To");
                 end;
         end;
-        if SalesInvoiceHeader.FindFirst() then
+        if SalesInvoiceHeader.FindSet() then
             repeat
                 Window.Update(1, SalesInvoiceHeader."No.");
                 SalesInvoiceLine.Reset();
                 SalesInvoiceLine.SetRange("Document No.", SalesInvoiceHeader."No.");
-                if SalesInvoiceLine.FindFirst() then
+                if SalesInvoiceLine.FindSet() then
                     repeat
                         if not SalesFacturas(SalesInvoiceHeader, SalesInvoiceLine) then
                             CUCron.ABERTIALOGUPDATE('Invoices', GetLastErrorText());

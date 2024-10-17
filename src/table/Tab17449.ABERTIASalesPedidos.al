@@ -97,14 +97,14 @@ table 17449 "ABERTIA SalesPedidos"
                     SalesHeader.SetRange("Posting Date", GenLedgerSetup."Allow Posting From", GenLedgerSetup."Allow Posting To");
                 end;
         end;
-        if SalesHeader.FindFirst() then
+        if SalesHeader.FindSet() then
             repeat
                 Window.Update(1, SalesHeader."Document Type");
                 Window.Update(2, SalesHeader."No.");
                 SalesLine.Reset();
                 SalesLine.SetRange("Document Type", SalesHeader."Document Type");
                 SalesLine.SetRange("Document No.", SalesHeader."No.");
-                if SalesLine.FindFirst() then
+                if SalesLine.FindSet() then
                     repeat
                         if not UpdateSalesPedido(SalesHeader, SalesLine) then
                             CUCron.ABERTIALOGUPDATE('Orders', GetLastErrorText());

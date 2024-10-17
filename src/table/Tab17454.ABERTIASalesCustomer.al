@@ -90,7 +90,7 @@ table 17454 "ABERTIA SalesCustomer"
         Window.Open('Nº Cliente #1################');
         Customer.Reset();
         // GLAccount.SetRange("Account Type", GLAccount."Account Type"::Posting);
-        if Customer.FindFirst() then
+        if Customer.FindSet() then
             repeat
                 Window.Update(1, Customer."No.");
 
