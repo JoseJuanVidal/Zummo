@@ -32878,6 +32878,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Editar Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Job Ledger Entries - Action EditarDescripcion - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 115180823 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1615782862">
+          <source>Attachment Document</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Misc. Article Information - Control Attachment Document - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2762074950 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3432864151">
           <source>New,Process,Report,Navigate,Setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>

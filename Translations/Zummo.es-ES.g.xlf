@@ -35954,17 +35954,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Job Ledger Entries - Action EditarDescripcion - Property Caption</note>
           <target>Editar Descripción</target>
         </trans-unit>
+        <trans-unit id="PageExtension 115180823 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1615782862">
+          <source>Attachment Document</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Misc. Article Information - Control Attachment Document - Property Caption</note>
+          <target>Documentos adjuntos</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2762074950 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3432864151">
           <source>New,Process,Report,Navigate,Setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Misc. Articles - Property PromotedActionCategories</note>
           <target>Nuevo,Procesar,Informe,Información,Configuración</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 2762074950 - Action 2846275509 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3432864151">
-          <source>Assing Employee</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Asignar Empleados"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Misc. Articles - Action AssingEmployee - Property Caption</note>
-          <target>Asignar Empleados</target>
         </trans-unit>
         <trans-unit id="PageExtension 2762074950 - Action 1633458222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3432864151">
           <source>Employee</source>
