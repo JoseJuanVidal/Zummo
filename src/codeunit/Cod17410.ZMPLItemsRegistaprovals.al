@@ -443,11 +443,14 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                         ItemPurchasePrices."Direct Unit Cost" := PurchasePrice."Direct Unit Cost";
                         ItemPurchasePrices."Ending Date" := PurchasePrice."Ending Date";
                         ItemPurchasePrices."Action Approval" := ItemPurchasePrices."Action Approval"::Delete;
+                        ItemPurchasePrices."Date/Time Creation" := CreateDateTime(Today(), Time());
                         ItemPurchasePrices.Insert()
                     end else begin
                         ItemPurchasePrices."Direct Unit Cost" := PurchasePrice."Direct Unit Cost";
                         ItemPurchasePrices."Ending Date" := PurchasePrice."Ending Date";
                         ItemPurchasePrices."Action Approval" := ItemPurchasePrices."Action Approval"::Delete;
+                        if ItemPurchasePrices."Date/Time Creation" = 0DT then
+                            ItemPurchasePrices."Date/Time Creation" := CreateDateTime(Today(), Time());
                         ItemPurchasePrices.Modify();
                     end;
                 Until PurchasePrice.next() = 0;

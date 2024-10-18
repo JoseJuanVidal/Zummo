@@ -38,6 +38,14 @@ table 17398 "ZM PL Item Purchase Prices"
             AutoFormatType = 2;
             AutoFormatExpression = "Currency Code";
         }
+        field(6; "Item Name"; text[100])
+        {
+            Caption = 'Item Name', comment = 'ESP="Nombre producto"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(item.Description where("No." = field("Item No.")));
+            Editable = false;
+
+        }
         field(14; "Minimum Quantity"; Decimal)
         {
             DataClassification = CustomerContent;
@@ -135,6 +143,8 @@ table 17398 "ZM PL Item Purchase Prices"
         CheckActionApproval();
     end;
 
+
+
     trigger OnDelete()
     begin
 
@@ -182,6 +192,8 @@ table 17398 "ZM PL Item Purchase Prices"
     begin
         ItemPurchasePrices.Init();
         ItemPurchasePrices.TransferFields(SelectItemPurchasePrices);
+        if ItemPurchasePrices."Date/Time Creation" = 0DT then
+            ItemPurchasePrices."Date/Time Creation" := CreateDateTime(Today(), Time());
         ItemPurchasePrices.Insert();
     end;
 
