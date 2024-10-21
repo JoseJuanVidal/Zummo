@@ -267,7 +267,7 @@ table 17458 "ABERTIA GL Entry"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateGLEntry(TypeUpdate: Option Periodo,Todo) RecordNo: Integer;
+    procedure CreateGLEntry(TypeUpdate: Option Periodo,Todo,Nuevo) RecordNo: Integer;
     var
         GLEntry: Record "G/L Entry";
         ABGLEntry: Record "ABERTIA GL Entry";
@@ -276,7 +276,22 @@ table 17458 "ABERTIA GL Entry"
         Window.Open('Nº Movimiento contable #1################\Fecha #2################');
         GenLedgerSetup.Get();
         GLEntry.Reset();
+        ABGLEntry.Reset();
+        ABGLEntry.SetCurrentKey("00 - Origen", "Entry No_");
         case TypeUpdate of
+            TypeUpdate::Nuevo:
+                begin
+                    case CompanyName of
+                        'ZUMMO':
+                            ABGLEntry.SetRange("00 - Origen", 'ZIM');
+                        'INVESTMENTS':
+                            ABGLEntry.SetRange("00 - Origen", 'ZINV');
+                        else
+                            ABGLEntry.SetRange("00 - Origen", '');
+                    end;
+                    if ABGLEntry.FindLast() then
+                        GLEntry.SetRange("Entry No.", ABGLEntry."Entry No_");
+                end;
             TypeUpdate::Periodo:
                 begin
                     // buscamos el mes de fecha de trabajo y ponermos los filtros

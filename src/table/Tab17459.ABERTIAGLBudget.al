@@ -64,7 +64,7 @@ table 17459 "ABERTIA GL Budget"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateGLBudget(TypeUpdate: Option Periodo,Todo) RecordNo: Integer;
+    procedure CreateGLBudget(TypeUpdate: Option Periodo,Todo,Nuevo) RecordNo: Integer;
     var
         GLBudget: Record "G/L Budget Name";
         GLBudgetEntry: Record "G/L Budget Entry";
@@ -89,7 +89,7 @@ table 17459 "ABERTIA GL Budget"
                 end;
                 GLBudgetEntry.SetRange("Budget Name", GLBudget.Name);
                 case TypeUpdate of
-                    TypeUpdate::Periodo:
+                    TypeUpdate::Nuevo, TypeUpdate::Periodo:
                         begin
                             GLBudgetEntry.SetRange(date, GenLedgerSetup."Allow Posting From", GenLedgerSetup."Allow Posting To");
                         end;

@@ -1566,7 +1566,7 @@ codeunit 50110 "CU_Cron"
         cduSmtp.Send();
     end;
 
-    procedure ABERTIAUpdateALL(TypeUpdate: Option Periodo,Todo)
+    procedure ABERTIAUpdateALL(TypeUpdate: Option Periodo,Todo,Nuevo)
     var
         AbertiaGLAccount: Record "ABERTIA GL Account";
         AbertiaGLEntry: Record "ABERTIA GL Entry";
