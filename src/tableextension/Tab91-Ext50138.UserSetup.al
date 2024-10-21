@@ -47,6 +47,18 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
                 ItemRegCodeunit.CheckSUPERUserConfiguration();
             end;
         }
+        field(50111; "Aviso Final fecha"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Aviso fecha Final', comment = 'ESP="Aviso fecha Final"';
+
+        }
+        field(50112; "Aviso Act. ABERTIA"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Aviso Act. ABERTIA', comment = 'ESP="Aviso Act. ABERTIA"';
+
+        }
         field(50115; "Ubicaciones pedido por defecto"; Boolean)
         {
             DataClassification = CustomerContent;

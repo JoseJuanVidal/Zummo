@@ -33,6 +33,14 @@ pageextension 50003 "UserSetup" extends "User Setup"
             {
                 ApplicationArea = all;
             }
+            field("Aviso Final fecha"; "Aviso Final fecha")
+            {
+                ApplicationArea = all;
+            }
+            field("Aviso Act. ABERTIA"; "Aviso Act. ABERTIA")
+            {
+                ApplicationArea = all;
+            }
             field("Contrats/Suppliers"; "Contrats/Suppliers")
             {
                 ApplicationArea = all;

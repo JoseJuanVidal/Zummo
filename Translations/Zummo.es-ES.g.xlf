@@ -41307,6 +41307,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Approvals Purch. Request - Property Caption</note>
           <target>aprobación solicitudes compra</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 1266163726 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Aviso Act. ABERTIA</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso Act. ABERTIA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Aviso Act. ABERTIA - Property Caption</note>
+          <target>Aviso Act. ABERTIA</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 965242257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Aviso fecha Final</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso fecha Final"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Aviso Final fecha - Property Caption</note>
+          <target>Aviso fecha Final</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2852714242 - Field 2443909504 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Config. Contabilidad</source>
           <note from="Developer" annotates="general" priority="2">ESP="Config. Contabilidad"</note>

@@ -10,6 +10,7 @@ codeunit 50110 "CU_Cron"
         TotalExcelBuffer: Record "Excel Buffer" temporary;
         IntegracionCRM: codeunit Integracion_crm_btc;
         AbertiaTypeUpdate: Option Periodo,Todo;
+        GLSetupOnly: Option GLSetup,ABETIA;
         Ejecucioncola: Boolean;
 
     trigger OnRun()
@@ -1547,7 +1548,7 @@ codeunit 50110 "CU_Cron"
         if not (Today < CalcDate('-2D', GLSetup."Allow Posting To")) then
             exit;
 
-        Recipients := GetRecipientsGLSetup();
+        Recipients := GetRecipientsGLSetup(GLSetupOnly::GLSetup);
         if Recipients <> '' then
             SendEmail(GLSetup, Recipients);
     end;
@@ -1619,16 +1620,27 @@ codeunit 50110 "CU_Cron"
         txtAsunto := StrSubstNo('Actualización BBDD ABERTIA BI %1', WorkDate());
         recSMTPSetup.Get();
         Clear(cduSmtp);
-        cduSmtp.CreateMessage(CompanyName, recSMTPSetup."User ID", GetRecipientsGLSetup(), txtAsunto, Body, false);
+        cduSmtp.CreateMessage(CompanyName, recSMTPSetup."User ID", GetRecipientsGLSetup(GLSetupOnly::ABETIA), txtAsunto, Body, false);
         cduSmtp.Send();
     end;
 
-    local procedure GetRecipientsGLSetup() Recipient: Text
+    local procedure GetRecipientsGLSetup(GLSetupOnly: Option GLSetup,ABETIA) Recipient: Text
     var
         UserSetup: Record "User Setup";
     begin
         UserSetup.Reset();
         UserSetup.SetRange("Config. Contabilidad", true);
+        case GLSetupOnly of
+            GLSetupOnly::GLSetup:
+                begin
+
+                end;
+            GLSetupOnly::ABETIA:
+                begin
+
+                end;
+
+        end;
         if UserSetup.FindFirst() then
             repeat
                 if UserSetup."E-Mail" <> '' then begin
