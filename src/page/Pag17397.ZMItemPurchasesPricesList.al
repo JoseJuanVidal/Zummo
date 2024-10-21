@@ -80,68 +80,26 @@ page 17397 "ZM Item Purchases Prices List"
 
     actions
     {
-        area(Processing)
+        area(Navigation)
         {
-            action(SendApproval)
+            action(ListUsed)
             {
                 ApplicationArea = All;
-                Caption = 'Send Approval', comment = 'ESP="Envío aprobación"';
-                Image = Approvals;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-                Visible = ItemApproval;
-
+                Caption = 'Puntos de uso (Nivel superior)', comment = 'ESP="Puntos de uso (Nivel superior)"';
+                Image = "Where-Used";
 
                 trigger OnAction()
+                var
+                    Item: Record Item;
+                    ProdBOMWhereUsed: Page "Prod. BOM Where-Used";
                 begin
-                    OnAction_SendApproval();
+                    if not Item.Get(Rec."Item No.") then
+                        exit;
+                    ProdBOMWhereUsed.SetItem(Item, WORKDATE);
+                    ProdBOMWhereUsed.RUNMODAL();
                 end;
             }
-            action(Approve)
-            {
-                ApplicationArea = All;
-                Caption = 'Approve', comment = 'ESP="Aprobar"';
-                Image = Approve;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-                Visible = UserApproval;
 
-                trigger OnAction()
-                begin
-                    OnAction_Approve();
-                end;
-            }
-            action(Reject)
-            {
-                ApplicationArea = All;
-                Caption = 'Reject', comment = 'ESP="Rechazar"';
-                Image = Reject;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-                Visible = UserApproval;
-
-                trigger OnAction()
-                begin
-                    OnAction_Reject();
-                end;
-            }
-            action(RequestDelete)
-            {
-                ApplicationArea = All;
-                Caption = 'Select to delete', comment = 'ESP="Seleccionar para eliminar"';
-                Image = DeleteRow;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-
-                trigger OnAction()
-                begin
-                    OnAction_RequestDelete();
-                end;
-            }
         }
     }
 

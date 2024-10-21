@@ -20977,29 +20977,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - NamedType lblSending</note>
           <target>Solicitud aprobación enviada.</target>
         </trans-unit>
-        <trans-unit id="Page 894273850 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Approve</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Aprobar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action Approve - Property Caption</note>
-          <target>Aprobar</target>
-        </trans-unit>
-        <trans-unit id="Page 894273850 - Action 113888489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reject</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Rechazar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action Reject - Property Caption</note>
-          <target>Rechazar</target>
-        </trans-unit>
-        <trans-unit id="Page 894273850 - Action 227764524 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select to delete</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar para eliminar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action RequestDelete - Property Caption</note>
-          <target>Seleccionar para eliminar</target>
-        </trans-unit>
-        <trans-unit id="Page 894273850 - Action 1234931829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Send Approval</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Envío aprobación"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action SendApproval - Property Caption</note>
-          <target>Envío aprobación</target>
+        <trans-unit id="Page 894273850 - Action 3709470655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Puntos de uso (Nivel superior)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Puntos de uso (Nivel superior)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action ListUsed - Property Caption</note>
+          <target>Puntos de uso (Nivel superior)</target>
         </trans-unit>
         <trans-unit id="Page 3826509382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Translations</source>

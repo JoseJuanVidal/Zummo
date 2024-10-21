@@ -287,7 +287,7 @@ page 17463 "ABERTIA Update"
         SalesItem: Integer;
         SalesFacturas: Integer;
         SalesPedidos: Integer;
-        TypeUpdate: Option Periodo,Todo;
+        TypeUpdate: Option Periodo,Todo,Nuevo;
         EntryNoIni: Integer;
 
     procedure OpenTableConnection()

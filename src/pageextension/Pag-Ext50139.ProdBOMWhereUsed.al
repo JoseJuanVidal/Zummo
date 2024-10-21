@@ -5,6 +5,7 @@ pageextension 50139 "ProdBOMWhereUsed" extends "Prod. BOM Where-Used"
     {
         addafter(ShowLevel)
         {
+
             field(ShowBlocked; ShowBlocked)
             {
                 ApplicationArea = all;
@@ -23,6 +24,10 @@ pageextension 50139 "ProdBOMWhereUsed" extends "Prod. BOM Where-Used"
         }
         addafter("Quantity Needed")
         {
+            field("Level Code"; "Level Code")
+            {
+                ApplicationArea = all;
+            }
             field(ProductoBloqueado_btc; ProductoBloqueado_btc)
             {
                 ApplicationArea = All;
