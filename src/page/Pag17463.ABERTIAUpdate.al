@@ -119,6 +119,7 @@ page 17463 "ABERTIA Update"
 
                     trigger OnAction()
                     var
+                        AbertiaGLAccount: Record "ABERTIA GL Account";
                         RecorNo: Integer;
                         lblConfirm: Label '¿Desea actualizar las cuentas contables?', comment = 'ESP="¿Desea actualizar las cuentas contables?"';
                     begin
@@ -138,6 +139,7 @@ page 17463 "ABERTIA Update"
 
                     trigger OnAction()
                     var
+                        AbertiaGLEntry: Record "ABERTIA GL Entry";
                         lblConfirm: Label '¿Desea actualizar los movimientos contabilidad?', comment = 'ESP="¿Desea actualizar los movimientos contabilidad?"';
                     begin
                         if Confirm(lblConfirm) then
@@ -155,6 +157,7 @@ page 17463 "ABERTIA Update"
 
                     trigger OnAction()
                     var
+                        AbertiaGLEntryBudget: Record "ABERTIA GL Budget";
                         lblConfirm: Label '¿Desea actualizar los movs. de presupuestos contabilidad?', comment = 'ESP="¿Desea actualizar los movs. de presupuestos contabilidad?"';
                     begin
                         if Confirm(lblConfirm) then
@@ -173,6 +176,7 @@ page 17463 "ABERTIA Update"
 
                     trigger OnAction()
                     var
+                        AbertiaSalesCustomer: Record "ABERTIA SalesCustomer";
                         lblConfirm: Label '¿Desea actualizar los Clientes?', comment = 'ESP="¿Desea actualizar los Clientes?"';
                     begin
                         if Confirm(lblConfirm) then
@@ -190,6 +194,7 @@ page 17463 "ABERTIA Update"
 
                     trigger OnAction()
                     var
+                        ABERTIASalesItem: Record "ABERTIA SalesItem";
                         lblConfirm: Label '¿Desea actualizar los Productos?', comment = 'ESP="¿Desea actualizar los Productos?"';
                     begin
                         if Confirm(lblConfirm) then
@@ -207,6 +212,7 @@ page 17463 "ABERTIA Update"
 
                     trigger OnAction()
                     var
+                        ABERTIASalesFacturas: Record "ABERTIA SalesFacturas";
                         lblConfirm: Label '¿Desea actualizar los Facturas Ventas?', comment = 'ESP="¿Desea actualizar los Facturas Ventas?"';
                     begin
                         if Confirm(lblConfirm) then
@@ -224,6 +230,7 @@ page 17463 "ABERTIA Update"
 
                     trigger OnAction()
                     var
+                        AbertiaSalesPedidos: Record "ABERTIA SalesPedidos";
                         lblConfirm: Label '¿Desea actualizar las Ofertas/Pedidos Ventas?', comment = 'ESP="¿Desea actualizar las Ofertas/Pedidos Ventas?"';
                     begin
                         if Confirm(lblConfirm) then
@@ -271,14 +278,8 @@ page 17463 "ABERTIA Update"
     var
         GenLedgerSetup: Record "General Ledger Setup";
         ServiceMgtSetup: Record "Service Mgt. Setup";
-        AbertiaGLAccount: Record "ABERTIA GL Account";
-        AbertiaGLEntry: Record "ABERTIA GL Entry";
-        AbertiaGLEntryBudget: Record "ABERTIA GL Budget";
-        AbertiaSalesCustomer: Record "ABERTIA SalesCustomer";
-        ABERTIASalesItem: Record "ABERTIA SalesItem";
-        ABERTIASalesFacturas: Record "ABERTIA SalesFacturas";
-        AbertiaSalesPedidos: Record "ABERTIA SalesPedidos";
         cuCron: Codeunit CU_Cron;
+        SQLFuntions: Codeunit "Zummo Inn. IC Functions";
         CurrencyCode: Code[10];
         GLEntryNo: Integer;
         GLBudgetNo: Integer;
@@ -305,21 +306,16 @@ page 17463 "ABERTIA Update"
     var
         myInt: Integer;
     begin
-        AbertiaGLAccount.Reset();
-        AbertiaGLEntry.Reset();
-        AbertiaGLEntryBudget.Reset();
-        AbertiaSalesCustomer.Reset();
-        ABERTIASalesItem.Reset();
-        ABERTIASalesFacturas.Reset();
-        AbertiaSalesPedidos.Reset();
-        GLAccountNo := AbertiaGLAccount.Count;
-        GLEntryNo := AbertiaGLEntry.Count;
-        GLBudgetNo := AbertiaGLEntryBudget.Count;
-        SalesCustomer := AbertiaSalesCustomer.Count;
-        SalesItem := ABERTIASalesItem.Count;
-        SalesFacturas := ABERTIASalesFacturas.Count;
-        SalesPedidos := AbertiaSalesPedidos.Count;
+        SQLFuntions.GetRecordsNoGLAccount(GLAccountNo);
+        SQLFuntions.GetRecordsNoGLEntry(GLEntryNo);
+        SQLFuntions.GetRecordsNoBudgetGLEntry(GLBudgetNo);
+        SQLFuntions.GetRecordsNoSalesCustomer(SalesCustomer);
+        SQLFuntions.GetRecordsNoItemCompleto(SalesItem);
+        SQLFuntions.GetRecordsNoSalesFacturas(SalesFacturas);
+        SQLFuntions.GetRecordsNoSalesPedidos(SalesPedidos);
     end;
+
+
 
     local procedure ABERTIAUpdateALL()
     var

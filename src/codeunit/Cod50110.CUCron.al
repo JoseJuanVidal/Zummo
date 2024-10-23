@@ -1624,7 +1624,7 @@ codeunit 50110 "CU_Cron"
         cduSmtp.Send();
     end;
 
-    local procedure GetRecipientsGLSetup(GLSetupOnly: Option GLSetup,ABETIA) Recipient: Text
+    procedure GetRecipientsGLSetup(GLSetupOnly: Option GLSetup,ABETIA) Recipient: Text
     var
         UserSetup: Record "User Setup";
     begin
@@ -1633,11 +1633,11 @@ codeunit 50110 "CU_Cron"
         case GLSetupOnly of
             GLSetupOnly::GLSetup:
                 begin
-
+                    UserSetup.SetRange("Aviso Final fecha", true);
                 end;
             GLSetupOnly::ABETIA:
                 begin
-
+                    UserSetup.SetRange("Aviso Act. ABERTIA", true);
                 end;
 
         end;

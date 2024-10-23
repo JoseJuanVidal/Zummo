@@ -11,6 +11,25 @@ dotnet
         type("System.Net.Mail.MailAddress"; MyMailAddress) { }
         type("System.Net.NetworkCredential"; MyNetworkCredential) { }
     }
+    assembly(System.Data)
+    {
+        Version = '4.0.0.0';
+        Culture = 'neutral';
+        PublicKeyToken = 'b77a5c561934e089';
+        type(System.Data.SqlClient.SqlConnection; SqlConnection) { }
+        type(System.Data.SqlClient.SqlCommand; SqlCommand) { }
+        type(System.Data.SqlClient.SqlDataReader; SqlDataReader) { }
+        //     type(System.Data.DataTable; DataTable) { }
+        //     type(System.Data.DataRow; DataRow) { }
+        //     type(System.Data.DataColumn; DataColumn) { }
+        //     type(System.Data.DataColumnCollection; DataColumnCollection) { }
+        //     type(System.Data.DataRowCollection; DataRowCollection) { }
+        //     type(System.Data.SqlClient.SqlParameter; SqlParameter) { }
+        //     type(System.Data.SqlClient.SqlParameterCollection; SqlParameterCollection) { }
+        //     type(System.Data.SqlClient.SqlConnectionStringBuilder; SqlConnectionStringBuilder) { }
+        //     type(System.Data.SqlDbType; SqlDbType) { }
+    }
+
     // assembly(System.Xml)
     // {
     //     //Version='4.0.0.0';

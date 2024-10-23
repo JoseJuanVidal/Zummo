@@ -13648,6 +13648,41 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetInvoicePdf - NamedType lblConfirm</note>
           <target>¿Desea descargar el PDF de la factura %1?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3674950453 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT count(*) FROM tBIFinan_PresupuestoFinanzas WHERE [00 - Origen] ='%1'</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetRecordsNoBudgetGLEntry - NamedType lblSQLCount</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 644972917 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT count(*) FROM tBIFinan_Cuentas WHERE [00 - Origen] ='%1'</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetRecordsNoGLAccount - NamedType lblSQLCount</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3258461850 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT count(*) FROM tBIFinan3Nav WHERE [00 - Origen] ='%1'</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetRecordsNoGLEntry - NamedType lblSQLCount</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2492411337 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT count(*) FROM ItemCompleto</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetRecordsNoItemCompleto - NamedType lblSQLCount</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2841471807 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT count(*) FROM SalesCustomer</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetRecordsNoSalesCustomer - NamedType lblSQLCount</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 543564240 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT count(*) FROM SalesFacturas</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetRecordsNoSalesFacturas - NamedType lblSQLCount</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 765634459 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT count(*) FROM SalesPedidos</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetRecordsNoSalesPedidos - NamedType lblSQLCount</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2302773044 - NamedType 2169472807" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;h3 style="text-align: left; color: #3f7320;"&gt;&lt;span style="border-bottom: 4px solid #c82828;"&gt;%1 No.:&amp;nbsp;&lt;/span&gt;%2&lt;/h3&gt;</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -13744,6 +13779,16 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method JIRAGetAllTickets - NamedType lblName</note>
           <target>Ticket #1###################</target>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 905352481 - NamedType 339277786" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update BI %1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailBIUpdate - NamedType lblSubject</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 905352481 - NamedType 1260614062" size-unit="char" translate="yes" xml:space="preserve">
+          <source/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailBIUpdate - NamedType lblBody</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 833899790 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create Quote in Zummo Innovaciones - %1 (%2)</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -13764,6 +13809,26 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailOnPostShipment - NamedType BodyLbl</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2484604108 - NamedType 3210847871" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Source=%1;Initial Catalog=%2;User Id=%3;Password=%4;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SQLConnect - NamedType DataSourceTok</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3368332798 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELETE FROM tBIFinan_Cuentas WHERE [00 - Origen] ='%1'</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SQLDeleteRecordsNoGLAccount - NamedType lblSQLDelete</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3821755537 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELETE FROM tBIFinan3Nav WHERE [00 - Origen] ='%1' and [Posting Date]&gt;=%2</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SQLDeleteRecordsNoGLEntry - NamedType lblSQLDelete</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3821755537 - NamedType 3001406744" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELETE FROM tBIFinan3Nav WHERE [00 - Origen] ='%1'</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SQLDeleteRecordsNoGLEntry - NamedType lblSQLDeleteAll</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 16924058 - NamedType 407788085" size-unit="char" translate="yes" xml:space="preserve">
           <source>Se ha actualizado el pedido de compra </source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -13783,6 +13848,31 @@
           <source>Sales order %1 has been created from offer %2. Purchase Order %3</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method TryUpdateOrderNoPurchaseOrderIC - NamedType BodyLbl2</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 484028685 - NamedType 2075791351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>INSERT INTO tBIFinan_Cuentas</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateGLAccount - NamedType lblSQLinsertTable</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 484028685 - NamedType 3704095038" size-unit="char" translate="yes" xml:space="preserve">
+          <source>([C7 - Cuenta1] ,[C7 - Cuenta2],[C7 - Cuenta3] ,[C7 - Cuenta4],[C8 - Cuenta Cod7],[00 - Origen],[DescCuenta1],[DescCuenta2],[DescCuenta3],[DescCuenta4],[DescCuenta7])</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateGLAccount - NamedType lblSQLInsertFields</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 484028685 - NamedType 2776188541" size-unit="char" translate="yes" xml:space="preserve">
+          <source>values( %1,%2,%3,%4,%5,'%6','%7','%8','%9','%10','%11')</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateGLAccount - NamedType lblSQLInsertValues</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2035599090 - NamedType 2075791351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>INSERT INTO tBIFinan3Nav</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateGLEntry - NamedType lblSQLinsertTable</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2035599090 - NamedType 2776188541" size-unit="char" translate="yes" xml:space="preserve">
+          <source>values(</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateGLEntry - NamedType lblSQLInsertValues</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 291269830" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proceso finalizado. Se han actualizado las lineas del pedido %1</source>

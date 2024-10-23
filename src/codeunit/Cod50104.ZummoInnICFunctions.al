@@ -1740,4 +1740,591 @@ codeunit 50104 "Zummo Inn. IC Functions"
         lblGetInvoicePDF: Label '/api/Facturas/ObtenerPDF?IdFactura=%1';
         lblDownload: Label 'Descarga de fichero', comment = 'ESP="Descarga de fichero"';
 
+    // =============     ABERTI BI UPDATE FUNCTIONS ADO SQL SERVER          ====================
+    // ==  
+    // ==  todas las funciones para actualizar SQL Server con ADO
+    // ==  
+    // ======================================================================================================
+    var
+        BISQLConnection: DotNet SqlConnection;
+
+    procedure SQLUpdateALL(DeleteAll: Boolean)
+    var
+        GLAccountNo: Integer;
+        GLEntryNo: Integer;
+    begin
+        GLAccountNo := SQLGLAccountsUpdate();
+        GLEntryNo := SQLGLGLEntrysUpdate(DeleteAll);
+        SendMailBIUpdate(GLAccountNo, GLEntryNo);
+    end;
+
+    procedure SQLBIGetRecordsNo(var GLRecordsNo: Integer; var GLEntryRecordsNo: Integer; var GLBudgetRecordsNo: Integer; var ItemsRecordsNo: Integer;
+            var CustomerRecordsNo: Integer; var FacturasRecordsNo: Integer; var PedidosRecordsNo: Integer)
+    begin
+        GetRecordsNoGLAccount(GLRecordsNo);
+        GetRecordsNoGLEntry(GLEntryRecordsNo);
+        GetRecordsNoBudgetGLEntry(GLBudgetRecordsNo);
+        GetRecordsNoItemCompleto(ItemsRecordsNo);
+        GetRecordsNoSalesCustomer(CustomerRecordsNo);
+        GetRecordsNoSalesFacturas(FacturasRecordsNo);
+        GetRecordsNoSalesPedidos(PedidosRecordsNo);
+    end;
+
+    procedure GetRecordsNoGLAccount(var RecordsNo: Integer)
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtCommand: text;
+        lblSQLCount: Label 'SELECT count(*) FROM tBIFinan_Cuentas WHERE [00 - Origen] =''%1''';
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        case CompanyName of
+            'ZUMMO':
+                txtCommand := StrSubstNo(lblSQLCount, 'ZIM');
+            'INVESTMENTS':
+                txtCommand := StrSubstNo(lblSQLCount, 'ZINV');
+            else
+                txtCommand := StrSubstNo(lblSQLCount, '');
+        end;
+        SQLCommand.CommandText := txtCommand;
+        // ** EXEC READER **
+        //SQLReader := SQLCommand.ExecuteReader;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            if SQLReader.Read() then
+                RecordsNo := SQLReader.GetInt32(0);
+
+    end;
+
+    procedure GetRecordsNoGLEntry(var RecordsNo: Integer)
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtCommand: Text;
+        lblSQLCount: Label 'SELECT count(*) FROM tBIFinan3Nav WHERE [00 - Origen] =''%1''';
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        case CompanyName of
+            'ZUMMO':
+                txtCommand := StrSubstNo(lblSQLCount, 'ZIM');
+            'INVESTMENTS':
+                txtCommand := StrSubstNo(lblSQLCount, 'ZINV');
+            else
+                txtCommand := StrSubstNo(lblSQLCount, '');
+        end;
+        SQLCommand.CommandText := txtCommand;
+        // ** EXEC READER **
+        //SQLReader := SQLCommand.ExecuteReader;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            if SQLReader.Read() then
+                RecordsNo := SQLReader.GetInt32(0);
+    end;
+
+    procedure GetRecordsNoBudgetGLEntry(var RecordsNo: Integer)
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtCommand: Text;
+        lblSQLCount: Label 'SELECT count(*) FROM tBIFinan_PresupuestoFinanzas WHERE [00 - Origen] =''%1''';
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        case CompanyName of
+            'ZUMMO':
+                txtCommand := StrSubstNo(lblSQLCount, 'ZIM');
+            'INVESTMENTS':
+                txtCommand := StrSubstNo(lblSQLCount, 'ZINV');
+            else
+                txtCommand := StrSubstNo(lblSQLCount, '');
+        end;
+        SQLCommand.CommandText := txtCommand;
+        // ** EXEC READER **
+        //SQLReader := SQLCommand.ExecuteReader;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            if SQLReader.Read() then
+                RecordsNo := SQLReader.GetInt32(0);
+
+    end;
+
+    procedure GetRecordsNoItemCompleto(var RecordsNo: Integer)
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtCommand: Text;
+        lblSQLCount: Label 'SELECT count(*) FROM ItemCompleto';
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := lblSQLCount;
+        // ** EXEC READER **
+        //SQLReader := SQLCommand.ExecuteReader;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            if SQLReader.Read() then
+                RecordsNo := SQLReader.GetInt32(0);
+
+    end;
+
+    procedure GetRecordsNoSalesCustomer(var RecordsNo: Integer)
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtCommand: Text;
+        lblSQLCount: Label 'SELECT count(*) FROM SalesCustomer';
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := lblSQLCount;
+        // ** EXEC READER **
+        //SQLReader := SQLCommand.ExecuteReader;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            if SQLReader.Read() then
+                RecordsNo := SQLReader.GetInt32(0);
+
+    end;
+
+    procedure GetRecordsNoSalesFacturas(var RecordsNo: Integer)
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtCommand: Text;
+        lblSQLCount: Label 'SELECT count(*) FROM SalesFacturas';
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := lblSQLCount;
+        // ** EXEC READER **
+        //SQLReader := SQLCommand.ExecuteReader;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            if SQLReader.Read() then
+                RecordsNo := SQLReader.GetInt32(0);
+
+    end;
+
+    procedure GetRecordsNoSalesPedidos(var RecordsNo: Integer)
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtCommand: Text;
+        lblSQLCount: Label 'SELECT count(*) FROM SalesPedidos';
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := lblSQLCount;
+        // ** EXEC READER **
+        //SQLReader := SQLCommand.ExecuteReader;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            if SQLReader.Read() then
+                RecordsNo := SQLReader.GetInt32(0);
+
+    end;
+
+    procedure SQLGLAccountsUpdate() RecordNo: Integer
+    var
+        GLAccount: Record "G/L Account";
+        Level: Integer;
+        Account1: Integer;
+        Account2: Integer;
+        Account3: Integer;
+        Account4: Integer;
+        Desc1: Text;
+        Desc2: text;
+        Desc3: text;
+        Desc4: text;
+        AccountNo: Integer;
+
+        windows: Dialog;
+    begin
+        windows.Open('#1###################################\#2##############################');
+        windows.Update(1, 'Updating G L Account.....');
+        if not SQLDeleteRecordsNoGLAccount() then
+            exit;
+        GLAccount.Reset();
+        // GLAccount.SetRange("Account Type", GLAccount."Account Type"::Posting);
+        if GLAccount.FindFirst() then
+            repeat
+                windows.Update(2, GLAccount."No.");
+                if Evaluate(AccountNo, GLAccount."No.") then begin
+                    // case GLAccount."Account Type" of
+                    //     GLAccount."Account Type"::"Begin-Total", GLAccount."Account Type"::Heading:
+                    //         Level += 1;
+                    //     GLAccount."Account Type"::"End-Total", GLAccount."Account Type"::Total:
+                    //         Level -= 1;
+                    // end;
+                    case Level of
+                        1:
+                            begin
+                                if Evaluate(Account1, GLAccount."No.") then
+                                    Desc1 := GLAccount.Name;
+                                Account2 := 0;
+                                Desc2 := '';
+                                Account3 := 0;
+                                Desc3 := '';
+                                Account4 := 0;
+                                Desc4 := '';
+                            end;
+                        2:
+                            begin
+                                if Evaluate(Account2, GLAccount."No.") then
+                                    Desc2 := GLAccount.Name;
+                                Account3 := 0;
+                                Desc3 := '';
+                                Account4 := 0;
+                                Desc4 := '';
+
+                            end;
+                        3:
+                            begin
+                                if Evaluate(Account3, GLAccount."No.") then
+                                    Desc3 := GLAccount.Name;
+                                Account4 := 0;
+                                Desc4 := '';
+                            end;
+                        4:
+                            begin
+                                if Evaluate(Account4, GLAccount."No.") then
+                                    Desc4 := GLAccount.Name;
+                            end;
+                    end;
+                    // añadimos cada una de las opcioens de subcunentas mayor
+                    // 4 digitos y 5 digitos
+                    UpdateGLAccount(GLAccount, AccountNo, Account1, Account2, Account3, Account4, Desc1, Desc2, Desc3, Desc4);
+                    RecordNo += 1;
+                end;
+            until GLAccount.Next() = 0;
+        windows.Close();
+    end;
+
+    local procedure UpdateGLAccount(GLAccount: Record "G/L Account"; AccountNo: Integer; Account1: Integer; Account2: Integer; Account3: Integer; Account4: Integer;
+                Desc1: Text; Desc2: text; Desc3: text; Desc4: text): Boolean
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtSQLCommandText: Text;
+        txtSQLCommandValues: Text;
+        GLAccountNo: Integer;
+        lblSQLinsertTable: Label 'INSERT INTO tBIFinan_Cuentas';
+        lblSQLInsertFields: Label '([C7 - Cuenta1] ,[C7 - Cuenta2],[C7 - Cuenta3] ,[C7 - Cuenta4],[C8 - Cuenta Cod7],[00 - Origen],[DescCuenta1],[DescCuenta2],[DescCuenta3],[DescCuenta4],[DescCuenta7])';
+        lblSQLInsertValues: Label 'values( %1,%2,%3,%4,%5,''%6'',''%7'',''%8'',''%9'',''%10'',''%11'')';
+
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        txtSQLCommandValues := StrSubstNo(lblSQLInsertValues, Account1, Account2, Account3, Account4, AccountNo, 'ZINC', Desc1, Desc2, Desc3, Desc4, GLAccount.Name);
+        txtSQLCommandText := StrSubstNo('%1 %2 %3', lblSQLinsertTable, lblSQLInsertFields, txtSQLCommandValues);
+        SQLCommand.CommandText := txtSQLCommandText;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            exit(true);
+
+    end;
+
+    Local procedure SQLDeleteRecordsNoGLAccount(): Boolean
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        Windows: Dialog;
+        lblSQLDelete: Label 'DELETE FROM tBIFinan_Cuentas WHERE [00 - Origen] =''%1''';
+    begin
+        windows.Open('#1###################################\#2##############################');
+        windows.Update(1, 'Updating.....');
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := StrSubstNo(lblSQLDelete, 'ZINC');
+        // ** EXEC READER **
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            exit(false);
+        windows.close;
+        exit(true);
+    end;
+
+
+
+    local procedure SQLGLGLEntrysUpdate(DeleteAll: Boolean) RecordNo: Integer
+    var
+        GLSetup: Record "General Ledger Setup";
+        GLEntry: Record "G/L Entry";
+        Level: Integer;
+        Account1: Integer;
+        Account2: Integer;
+        Account3: Integer;
+        Account4: Integer;
+        Desc1: Text;
+        Desc2: text;
+        Desc3: text;
+        Desc4: text;
+        AccountNo: Integer;
+        windows: Dialog;
+    begin
+        windows.Open('#1###################################\#2##############################\#3##############################');
+        windows.Update(1, 'Updating G L Entry.....');
+        if not SQLDeleteRecordsNoGLEntry(DeleteAll) then
+            exit;
+        GLSetup.Get();
+        GLEntry.Reset();
+        if not DeleteAll then
+            GLEntry.SetRange("Posting Date", GLSetup."Allow Posting From", GLSetup."Allow Posting To");
+        if GLEntry.FindFirst() then
+            repeat
+                windows.Update(2, GLEntry."Entry No.");
+                windows.Update(3, GLEntry."Posting Date");
+                UpdateGLEntry(GLEntry);
+                RecordNo += 1;
+            until GLEntry.Next() = 0;
+        windows.Close();
+    end;
+
+    local procedure UpdateGLEntry(GLEntry: Record "G/L Entry"): Boolean
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtSQLCommandText: Text;
+        txtSQLCommandValues: Text;
+        txtSQLInsertFields: text;
+        GLAccountNo: Integer;
+
+        lblSQLinsertTable: Label 'INSERT INTO tBIFinan3Nav';
+        lblSQLInsertValues: Label 'values(';
+
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        txtSQLInsertFields := '([Entry No_],[G_L Account No_],[Posting Date],[Document Type],[Document No_],[Description],[Bal_ Account No_],[Amount],[Global Dimension 1 Code],[Global Dimension 2 Code]' +
+                    ',[User ID],[Source Code],[System-Created Entry],[Quantity],[VAT Amount],[Business Unit Code]' +
+                    ',[Reason Code],[Gen_ Bus_ Posting Group],[Gen_ Prod_ Posting Group],[Transaction No_],[Debit Amount]' +
+                    ',[Credit Amount],[Document Date],[External Document No_],[Source No_],[Tax Area Code],[Tax Group Code]' +
+                    ',[VAT Bus_ Posting Group],[VAT Prod_ Posting Group],[Additional-Currency Amount],[Add_-Currency Debit Amount],[Add_-Currency Credit Amount]' +
+                    ',[FA Entry No_],[Last Modified DateTime],[00 - Origen])';
+
+        txtSQLCommandValues := lblSQLInsertValues + format(GLEntry."Entry No.");
+        txtSQLCommandValues += ',''' + GLEntry."G/L Account No." + '''';
+        txtSQLCommandValues += ',''' + StrSubstNo('%1-%2-%3', Date2DMY(GLEntry."Posting Date", 3), Date2DMY(GLEntry."Posting Date", 1), Date2DMY(GLEntry."Posting Date", 2)) + '''';
+        case GLEntry."Document Type" of
+            GLEntry."Document Type"::" ":
+                txtSQLCommandValues += ',' + format(0);
+            GLEntry."Document Type"::"Credit Memo":
+                txtSQLCommandValues += ',' + format(3);
+            GLEntry."Document Type"::"Finance Charge Memo":
+                txtSQLCommandValues += ',' + format(4);
+            GLEntry."Document Type"::Invoice:
+                txtSQLCommandValues += ',' + format(2);
+            GLEntry."Document Type"::Payment:
+                txtSQLCommandValues += ',' + format(1);
+            GLEntry."Document Type"::Refund:
+                txtSQLCommandValues += ',' + format(6);
+            GLEntry."Document Type"::Reminder:
+                txtSQLCommandValues += ',' + format(5);
+            else
+                txtSQLCommandValues += ',' + format(0);
+        end;
+        txtSQLCommandValues += ',''' + FormatText(GLEntry."Document No.") + '''';
+        txtSQLCommandValues += ',''' + FormatText(GLEntry.Description) + '''';
+        txtSQLCommandValues += ',''' + GLEntry."Bal. Account No." + '''';
+        txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry.Amount);
+        txtSQLCommandValues += ',''' + GLEntry."Global Dimension 1 Code" + '''';
+        txtSQLCommandValues += ',''' + GLEntry."Global Dimension 2 Code" + '''';
+        txtSQLCommandValues += ',''' + GLEntry."User ID" + '''';
+        txtSQLCommandValues += ',''' + GLEntry."Source Code" + '''';
+        case GLEntry."System-Created Entry" of
+            true:
+                txtSQLCommandValues += ',0';
+            else
+                txtSQLCommandValues += ',1';
+        end;
+        txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry.Quantity);
+        txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."VAT Amount");
+        txtSQLCommandValues += ',''' + GLEntry."Business Unit Code" + '''';
+        txtSQLCommandValues += ',''' + FormatText(GLEntry."Reason Code") + '''';
+        txtSQLCommandValues += ',''' + GLEntry."Gen. Bus. Posting Group" + '''';
+        txtSQLCommandValues += ',''' + GLEntry."Gen. Prod. Posting Group" + '''';
+        txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Transaction No.");
+        txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Debit Amount");
+        txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Credit Amount");
+        txtSQLCommandValues += ',''' + StrSubstNo('%1-%2-%3', Date2DMY(GLEntry."Document Date", 3), Date2DMY(GLEntry."Document Date", 1), Date2DMY(GLEntry."Document Date", 2)) + '''';
+        txtSQLCommandValues += ',''' + FormatText(GLEntry."External Document No.") + '''';
+        txtSQLCommandValues += ',''' + GLEntry."Source No." + '''';
+        txtSQLCommandValues += ',''' + GLEntry."Tax Area Code" + '''';
+        txtSQLCommandValues += ',''' + GLEntry."Tax Group Code" + '''';
+        txtSQLCommandValues += ',''' + GLEntry."VAT Bus. Posting Group" + '''';
+        txtSQLCommandValues += ',''' + GLEntry."VAT Prod. Posting Group" + '''';
+        txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Additional-Currency Amount");
+        txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Add.-Currency Debit Amount");
+        txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Add.-Currency Credit Amount");
+        txtSQLCommandValues += ',' + format(GLEntry."FA Entry No.");
+        txtSQLCommandValues += ',''' + StrSubstNo('%1-%2-%3', Date2DMY(DT2Date(GLEntry."Last Modified DateTime"), 3), Date2DMY(DT2Date(GLEntry."Last Modified DateTime"), 1)
+                                                , Date2DMY(DT2Date(GLEntry."Last Modified DateTime"), 2)) + '''';
+        txtSQLCommandValues += ',''ZINC''';
+        txtSQLCommandValues += ')';
+        txtSQLCommandText := StrSubstNo('%1 %2 %3', lblSQLinsertTable, txtSQLInsertFields, txtSQLCommandValues);
+        SQLCommand.CommandText := txtSQLCommandText;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            exit(true);
+
+    end;
+
+    local procedure FormatDecimaNumber(Value: Decimal) Result: text
+    begin
+        // convertimos el decimal en texto, sustituyendo la COMMA por un punto por el Idioma ENG
+        Result := format(Value, 0, 1);
+        Result := ConvertStr(Result, ',', '.');
+    end;
+
+    local procedure FormatText(Value: text) Result: text
+    var
+        myInt: Integer;
+    begin
+        Result := ConvertStr(Result, '''', '´');
+    end;
+
+    Local procedure SQLDeleteRecordsNoGLEntry(DeleteAll: Boolean): Boolean
+    var
+        GLSetup: Record "General Ledger Setup";
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        FechaIni: text;
+        Windows: Dialog;
+        lblSQLDelete: Label 'DELETE FROM tBIFinan3Nav WHERE [00 - Origen] =''%1'' and [Posting Date]>=%2';
+        lblSQLDeleteAll: Label 'DELETE FROM tBIFinan3Nav WHERE [00 - Origen] =''%1''';
+    begin
+        GLSetup.Get();
+
+        windows.Open('#1###################################\#2##############################');
+        windows.Update(1, 'Updating.....');
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        case DeleteAll of
+            true:
+                begin
+                    SQLCommand.CommandText := StrSubstNo(lblSQLDeleteAll, 'ZINC');
+                end;
+            else begin
+                FechaIni := StrSubstNo('%1-%2-%3 0:00', Date2DMY(GLSetup."Allow Posting From", 3), Date2DMY(GLSetup."Allow Posting From", 2), Date2DMY(GLSetup."Allow Posting From", 1));
+                SQLCommand.CommandText := StrSubstNo(lblSQLDelete, 'ZINC', FechaIni);
+            end;
+        end;
+        // ** EXEC READER **
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            exit(false);
+        windows.close;
+        exit(true);
+    end;
+
+    procedure SendMailBIUpdate(GLAccountNo: Integer; GLEntryNo: Integer)
+    var
+        CuCron: Codeunit CU_Cron;
+        SMTPMailSetup: Record "SMTP Mail Setup";
+        SMTPMail: Codeunit "SMTP Mail";
+        Recipients: Text;
+        Subject: Text;
+        Body: Text;
+        GLSetupOnly: Option GLSetup,ABETIA;
+        InStrReport: InStream;
+        OutStrReport: OutStream;
+        lblSubject: Label 'Update BI %1';
+        lblBody: Label '';
+    begin
+        Recipients := CuCron.GetRecipientsGLSetup(GLSetupOnly::ABETIA);
+        if Recipients <> '' then begin
+            Clear(SMTPMail);
+            SMTPMailSetup.Get();
+            Subject := StrSubstNo(lblSubject, CompanyName);
+            body := StrSubstNo(lblBody, GLAccountNo, GLEntryNo);
+            SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, false);
+            SMTPMail.Send();
+        end;
+    end;
+
+    local procedure SQLConnect(var SQLConnection: dotnet SQLConnection)
+    var
+        GLSetup: Record "General Ledger Setup";
+        ConnStr: text;
+        DataSourceTok: label 'Data Source=%1;Initial Catalog=%2;User Id=%3;Password=%4;';
+    begin
+        GLSetup.Get();
+        GLSetup.TestField("Data Source");
+        GLSetup.TestField("Initial Catalog");
+        GLSetup.TestField("User Id");
+        GLSetup.TestField("Password");
+        // ConnStr := StrSubstNo(DataSourceTok, 'zummo.ddns.net', 'ReportingZummo', 'zummo', '@b3rti@');
+        ConnStr := StrSubstNo(DataSourceTok, GLSetup."Data Source", GLSetup."Initial Catalog", GLSetup."User Id", GLSetup."Password");
+        SQLConnection := SQLConnection.SQLConnection(ConnStr);
+        SQLConnection.Open();
+    end;
+
+
+    procedure SQLDataReaderDemo()
+    var
+        SQLConnection: dotnet SQLConnection;
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        ItemNo: code[20];
+        IdItem: Integer;
+        windows: Dialog;
+    begin
+        windows.Open('#1###################################\#2##############################');
+        windows.Update(1, 'Empezamos');
+        if IsNull(SQLConnection) then
+            SQLConnect(SQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := SQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := 'INSERT into ItemCompleto (No_,ClasVtas_btc) values (''Prueba'',2)';
+        // ** EXEC READER **
+        //SQLReader := SQLCommand.ExecuteReader;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+        BEGIN
+            WHILE SQLReader.Read() DO BEGIN
+                ItemNo := SQLReader.GetString(1);
+                IdItem := SQLReader.GetInt32(2);
+            END;
+            windows.Update(1, ItemNo);
+            windows.Update(2, IdItem);
+        END;
+        windows.close;
+    end;
+
+
 }
