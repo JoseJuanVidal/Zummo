@@ -2,6 +2,13 @@ tableextension 50123 "SalesShipmentHeader" extends "Sales Shipment Header"  //11
 {
     fields
     {
+        field(50002; "Is comment"; Boolean)
+        {
+            Caption = 'Is Comment', comment = 'ESP="Comentarios"';
+            FieldClass = FlowField;
+            CalcFormula = exist("Sales Comment Line" where("Document Type" = const(Shipment), "No." = field("No.")));
+            Editable = false;
+        }
         field(50056; "ABC Cliente"; option)
         {
             OptionMembers = " ","3A","A","B","C","Z";

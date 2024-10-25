@@ -306,13 +306,7 @@ page 17463 "ABERTIA Update"
     var
         myInt: Integer;
     begin
-        SQLFuntions.GetRecordsNoGLAccount(GLAccountNo);
-        SQLFuntions.GetRecordsNoGLEntry(GLEntryNo);
-        SQLFuntions.GetRecordsNoBudgetGLEntry(GLBudgetNo);
-        SQLFuntions.GetRecordsNoSalesCustomer(SalesCustomer);
-        SQLFuntions.GetRecordsNoItemCompleto(SalesItem);
-        SQLFuntions.GetRecordsNoSalesFacturas(SalesFacturas);
-        SQLFuntions.GetRecordsNoSalesPedidos(SalesPedidos);
+        SQLFuntions.SQLBIGetRecordsNo(GLAccountNo, GLEntryNo, GLBudgetNo, SalesCustomer, SalesItem, SalesFacturas, SalesPedidos);
     end;
 
 

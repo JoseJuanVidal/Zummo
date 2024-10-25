@@ -31,6 +31,14 @@ pageextension 50063 "ZM STH PostedPurchaseInvoices" extends "Posted Purchase Inv
                 Visible = false;
             }
         }
+        addlast(Control1)
+        {
+            field("Purch. Request less 200"; "Purch. Request less 200")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
     }
 
     actions
@@ -55,6 +63,26 @@ pageextension 50063 "ZM STH PostedPurchaseInvoices" extends "Posted Purchase Inv
                     Funciones.CreateSalesInvoicePaymentTerms(PurchInvoiceHeader);
                 end;
 
+
+            }
+        }
+        addafter(Vendor)
+        {
+            action(PurchRequestless200)
+            {
+                ApplicationArea = all;
+                Caption = 'Purch. Request less 200', comment = 'ESP="Seleccionar Compra Menor 200 €"';
+                Image = Purchasing;
+                Promoted = true;
+                PromotedCategory = Category8;
+
+                trigger OnAction()
+                var
+                    PurchRequestless200: record "Purchase Requests less 200";
+                begin
+                    PurchRequestless200.UpdatePurchaseInvoice(Rec);
+                    CurrPage.Update();
+                end;
 
             }
         }

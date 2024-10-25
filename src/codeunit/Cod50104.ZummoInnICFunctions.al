@@ -1760,7 +1760,10 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
     procedure SQLBIGetRecordsNo(var GLRecordsNo: Integer; var GLEntryRecordsNo: Integer; var GLBudgetRecordsNo: Integer; var ItemsRecordsNo: Integer;
             var CustomerRecordsNo: Integer; var FacturasRecordsNo: Integer; var PedidosRecordsNo: Integer)
+    var
+        Windows: Dialog;
     begin
+        Windows.Open('Acutalizando.....');
         GetRecordsNoGLAccount(GLRecordsNo);
         GetRecordsNoGLEntry(GLEntryRecordsNo);
         GetRecordsNoBudgetGLEntry(GLBudgetRecordsNo);
@@ -1768,6 +1771,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         GetRecordsNoSalesCustomer(CustomerRecordsNo);
         GetRecordsNoSalesFacturas(FacturasRecordsNo);
         GetRecordsNoSalesPedidos(PedidosRecordsNo);
+        Windows.Close();
     end;
 
     procedure GetRecordsNoGLAccount(var RecordsNo: Integer)
@@ -2293,7 +2297,6 @@ codeunit 50104 "Zummo Inn. IC Functions"
         SQLConnection.Open();
     end;
 
-
     procedure SQLDataReaderDemo()
     var
         SQLConnection: dotnet SQLConnection;
@@ -2314,8 +2317,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         // ** EXEC READER **
         //SQLReader := SQLCommand.ExecuteReader;
         SQLReader := SQLCommand.ExecuteReader;
-        IF SQLReader.HasRows then
-        BEGIN
+        IF SQLReader.HasRows then BEGIN
             WHILE SQLReader.Read() DO BEGIN
                 ItemNo := SQLReader.GetString(1);
                 IdItem := SQLReader.GetInt32(2);

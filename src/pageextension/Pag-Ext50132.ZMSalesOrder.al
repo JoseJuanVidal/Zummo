@@ -125,6 +125,10 @@ pageextension 50132 "ZM SalesOrder" extends "Sales Order"
             {
                 ApplicationArea = All;
             }
+            field("Is comment"; "Is comment")
+            {
+                ApplicationArea = all;
+            }
         }
         addbefore("Work Description")
         {

@@ -47,6 +47,29 @@ pageextension 50007 "PostedPurchaseInvoice" extends "Posted Purchase Invoice"
                 }
             }
         }
-
     }
+    actions
+    {
+        addafter(Vendor)
+        {
+            action(PurchRequestless200)
+            {
+                ApplicationArea = all;
+                Caption = 'Purch. Request less 200', comment = 'ESP="Seleccionar Compra Menor 200 €"';
+                Image = Purchasing;
+                Promoted = true;
+                PromotedCategory = Category7;
+
+                trigger OnAction()
+                var
+                    PurchRequestless200: record "Purchase Requests less 200";
+                begin
+                    PurchRequestless200.UpdatePurchaseInvoice(Rec);
+                    CurrPage.Update();
+                end;
+
+            }
+        }
+    }
+
 }

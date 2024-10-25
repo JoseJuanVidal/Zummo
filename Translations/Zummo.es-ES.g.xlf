@@ -17894,6 +17894,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Property Caption</note>
           <target>Compra menor 200</target>
         </trans-unit>
+        <trans-unit id="Page 2450567067 - Method 1667981039 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to update the status of Request under 200 €?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los estados de las Solicitudes menor 200 €?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Method OnAction_UpdateStatus - NamedType lblConfirm</note>
+          <target>¿Desea actualizar los estados de las Solicitudes menor 200 €?</target>
+        </trans-unit>
         <trans-unit id="Page 2450567067 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attachment Document</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
@@ -17923,6 +17929,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="Rechazar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Action Reject - Property Caption</note>
           <target>Rechazar</target>
+        </trans-unit>
+        <trans-unit id="Page 2450567067 - Action 3048766263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Relations</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Relaciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Action Relations - Property Caption</note>
+          <target>Relaciones</target>
+        </trans-unit>
+        <trans-unit id="Page 2450567067 - Action 1105245267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assign movs. contabiliddad</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar movs. contabiliddad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Action GLEntries - Property Caption</note>
+          <target>Asignar movs. contabiliddad</target>
+        </trans-unit>
+        <trans-unit id="Page 2450567067 - Action 939013167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assign Posted Purch. Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Hist. Facturas compras"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Action RelatePurchInvoices - Property Caption</note>
+          <target>Asignar Hist. Facturas compras</target>
+        </trans-unit>
+        <trans-unit id="Page 2450567067 - Action 2421935703 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Updagte Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. estados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Action UpdateStatus - Property Caption</note>
+          <target>Act. estados</target>
         </trans-unit>
         <trans-unit id="Page 2450567067 - Action 1234931829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send Approval</source>
@@ -17995,6 +18025,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Aprobar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Action Approve - Property Caption</note>
           <target>Aprobar</target>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Action 2674503554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Close Request</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cerrar Solicitud"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Action Close - Property Caption</note>
+          <target>Cerrar Solicitud</target>
+        </trans-unit>
+        <trans-unit id="Page 3377437423 - Action 2674503554 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿You want to change the Status of %1 to $2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar el Estado de %1 como $2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Action Close - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea cambiar el Estado de %1 como $2?</target>
         </trans-unit>
         <trans-unit id="Page 3377437423 - Action 113888489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reject</source>
@@ -33800,6 +33842,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDimensiones - Property Caption</note>
           <target>Cambiar Dimensiones</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Action 1487318378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Purch. Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar Compra Menor 200 €"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action PurchRequestless200 - Property Caption</note>
+          <target>Seleccionar Compra Menor 200 €</target>
+        </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Control 646444774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Amount (Currency)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe (Divisa)"</note>
@@ -34488,6 +34536,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Errores de exportación de archivo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedBillGroups - Control Errors - Property Caption</note>
           <target>Errores de exportación de archivo</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 356349885 - Action 1487318378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>Purch. Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar Compra Menor 200 €"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedPurchaseInvoice - Action PurchRequestless200 - Property Caption</note>
+          <target>Seleccionar Compra Menor 200 €</target>
         </trans-unit>
         <trans-unit id="PageExtension 356349885 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
           <source>Normativa Plástico</source>
@@ -36359,6 +36413,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plazos de pago"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM STH PostedPurchaseInvoices - Action PaymentsDays - Property Caption</note>
           <target>Plazos de pago</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3090383268 - Action 1487318378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 407220332">
+          <source>Purch. Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar Compra Menor 200 €"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM STH PostedPurchaseInvoices - Action PurchRequestless200 - Property Caption</note>
+          <target>Seleccionar Compra Menor 200 €</target>
         </trans-unit>
         <trans-unit id="TableExtension 2268077932 - Field 3388543440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
           <source>Internal Comment</source>
@@ -38740,6 +38800,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field InsideSales_btc - Property Caption</note>
           <target>Inside Sales</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 3568502347 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Is Sales Comment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios venta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Is comment - Property Caption</note>
+          <target>Comentarios venta</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Block Reason</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Bloqueo"</note>
@@ -39514,6 +39580,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field InsideSales_btc - Property Caption</note>
           <target>Inside Sales</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 3568502347 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Is Comment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field Is comment - Property Caption</note>
+          <target>Comentarios</target>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Block Reason</source>
@@ -42310,6 +42382,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Pendiente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Status Approval - EnumValue Pending - Property Caption</note>
           <target>Pendiente</target>
+        </trans-unit>
+        <trans-unit id="Enum 1563706261 - EnumValue 35450067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Contabilizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Status Approval - EnumValue Posted - Property Caption</note>
+          <target>Contabilizado</target>
         </trans-unit>
         <trans-unit id="Enum 1563706261 - EnumValue 113888489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reject</source>

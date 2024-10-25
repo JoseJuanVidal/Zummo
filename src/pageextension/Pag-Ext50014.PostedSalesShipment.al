@@ -44,6 +44,13 @@ pageextension 50014 "PostedSalesShipment" extends "Posted Sales Shipment"
                 ApplicationArea = all;
             }
         }
+        addlast(General)
+        {
+            field("Is comment"; "Is comment")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
     actions
     {

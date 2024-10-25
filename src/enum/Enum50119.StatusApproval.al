@@ -16,4 +16,8 @@ enum 50119 "Status Approval"
     {
         Caption = 'Reject', comment = 'ESP="Rechazado"';
     }
+    value(4; Posted)
+    {
+        Caption = 'Posted', comment = 'ESP="Contabilizado"';
+    }
 }

@@ -138,6 +138,48 @@ page 17212 "Purchase Request less 200"
                     OnAction_Reject();
                 end;
             }
+            group(Relations)
+            {
+                Caption = 'Relations', comment = 'ESP="Relaciones"';
+                action(UpdateStatus)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Updagte Status', comment = 'ESP="Act. estados"';
+                    Image = Status;
+                    Promoted = true;
+                    PromotedIsBig = true;
+                    PromotedCategory = Process;
+
+                    trigger OnAction()
+                    Begin
+                        OnAction_UpdateStatus();
+                    End;
+                }
+                action(GLEntries)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Assign movs. contabiliddad', comment = 'ESP="Asignar movs. contabiliddad"';
+                    Image = GeneralLedger;
+
+                    trigger OnAction()
+                    Begin
+                        OnAction_RelateGLEntries();
+                    End;
+                }
+
+                action(RelatePurchInvoices)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Assign Posted Purch. Invoices', comment = 'ESP="Asignar Hist. Facturas compras"';
+                    Image = PurchaseInvoice;
+
+                    trigger OnAction()
+                    Begin
+                        OnAction_RelatePurchInvoices();
+                    End;
+                }
+
+            }
         }
         area(Navigation)
         {
@@ -189,7 +231,7 @@ page 17212 "Purchase Request less 200"
 
     local procedure FilterUser()
     begin
-        Rec.SetRange(Invoiced, false);
+        Rec.SetFilter(Status, '<>%1', Rec.Status::Posted);
         UserSetup.Reset();
         if UserSetup.Get(UserId) then
             if UserSetup."Approvals Purch. Request" then
@@ -211,5 +253,50 @@ page 17212 "Purchase Request less 200"
     local procedure OnAction_Reject()
     begin
         Rec.Reject();
+    end;
+
+    local procedure OnAction_UpdateStatus()
+    var
+        PurReqLess200: Record "Purchase Requests less 200";
+        lblConfirm: Label '¿Do you want to update the status of Request under 200 €?', comment = 'ESP="¿Desea actualizar los estados de las Solicitudes menor 200 €?"';
+    begin
+        if not Confirm(lblConfirm) then
+            exit;
+        PurReqLess200.SetRange(Status, PurReqLess200.Status::Approved);
+        if PurReqLess200.FindFirst() then
+            repeat
+                PurReqLess200.UpdateStatus();
+            Until PurReqLess200.next() = 0;
+    end;
+
+    local procedure OnAction_RelateGLEntries()
+    var
+        GLEntry: Record "G/L Entry";
+        GLEntries: page "General Ledger Entries";
+    begin
+        GLEntry.SetRange("Posting Date", CalcDate('<-CY>', Rec."Posting Date"), CalcDate('<CY>', Rec."Posting Date"));
+        GLEntry.SetRange(Amount, Rec.Amount);
+        GLEntries.SetTableView(GLEntry);
+        GLEntries.LookupMode := true;
+        if GLEntries.RunModal() = action::LookupOK then begin
+            GLEntries.GetRecord(GLEntry);
+            GLEntry.TestField("Purch. Request less 200", '');
+            Rec.AssingGLEntry(GLEntry);
+        end;
+    end;
+
+    local procedure OnAction_RelatePurchInvoices()
+    var
+        PurchInvHeader: Record "Purch. Inv. Header";
+        PostedPurchaseInvoices: page "Posted Purchase Invoices";
+    begin
+        PurchInvHeader.SetRange("Posting Date", CalcDate('<-CY>', Rec."Posting Date"), CalcDate('<CY>', Rec."Posting Date"));
+        PurchInvHeader.SetRange(Amount, Rec.Amount);
+        PostedPurchaseInvoices.SetTableView(PurchInvHeader);
+        PostedPurchaseInvoices.LookupMode := true;
+        if PostedPurchaseInvoices.RunModal() = action::LookupOK then begin
+            PostedPurchaseInvoices.GetRecord(PurchInvHeader);
+            Rec.AssingPurchInvoice(PurchInvHeader);
+        end;
     end;
 }

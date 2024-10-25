@@ -115,6 +115,24 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                 end;
             }
         }
+        addafter(SetPeriodTransNos)
+        {
+            action(PurchRequestless200)
+            {
+                ApplicationArea = all;
+                Caption = 'Purch. Request less 200', comment = 'ESP="Seleccionar Compra Menor 200 €"';
+                Image = Purchasing;
+
+                trigger OnAction()
+                var
+                    PurchRequestless200: record "Purchase Requests less 200";
+                begin
+                    PurchRequestless200.UpdateGLEntry(Rec);
+                    CurrPage.Update();
+                end;
+
+            }
+        }
     }
 
     trigger OnOpenPage()

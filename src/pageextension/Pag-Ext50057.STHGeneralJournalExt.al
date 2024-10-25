@@ -15,6 +15,13 @@ pageextension 50057 "STH General JournalExt" extends "General Journal"
                 Visible = false;
             }
         }
+        addbefore("Bal. Gen. Posting Type")
+        {
+            field("Purch. Request less 200"; "Purch. Request less 200")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     actions

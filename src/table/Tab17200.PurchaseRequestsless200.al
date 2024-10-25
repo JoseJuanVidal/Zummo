@@ -535,8 +535,7 @@ table 17200 "Purchase Requests less 200"
     begin
         // if not PurchaseRequest.IsUserApproval() then
         //     PurchaseRequest.SetRange("User Id", UserId);
-        PurchaseRequest.SetRange(Status, PurchaseRequest.Status::Approved);
-        PurchaseRequest.SetRange(Invoiced, true);
+        PurchaseRequest.SetRange(Status, PurchaseRequest.Status::Posted);
         PurchaseRequests.SetTableView(PurchaseRequest);
         PurchaseRequests.RunModal();
     end;
@@ -557,4 +556,80 @@ table 17200 "Purchase Requests less 200"
         if Employee.Get(Rec."Codigo Empleado") then
             "Nombre Empleado" := copystr(Employee.FullName(), 1, MaxStrLen(Rec."Nombre Empleado"));
     end;
+
+    procedure UpdateStatus()
+    var
+        GLEntry: Record "G/L Entry";
+        PurchInvHeader: Record "Purch. Inv. Header";
+    begin
+        if Rec.Status in [Rec.Status::Posted] then
+            exit;
+        // buscamos si existe movimiento de contabilidad relacionado
+        GLEntry.Reset();
+        GLEntry.SetRange("Purch. Request less 200", Rec."No.");
+        if GLEntry.FindFirst() then begin
+            Rec.Status := Rec.Status::Posted;
+            Rec.Invoiced := true;
+            Rec.Modify();
+        end;
+        // miramos el historico de facturas de compras
+        PurchInvHeader.Reset();
+        PurchInvHeader.SetRange("Purch. Request less 200", Rec."No.");
+        if PurchInvHeader.FindFirst() then begin
+            Rec.Status := Rec.Status::Posted;
+            Rec.Invoiced := true;
+            Rec.Modify();
+        end;
+    end;
+
+    procedure UpdatePurchaseInvoice(PurchInvHeader: Record "Purch. Inv. Header")
+    var
+        PurchRequestsless200: record "Purchase Requests less 200";
+        PurchRequestsless200s: page "Purchase Request less 200";
+    begin
+        PurchInvHeader.TestField("Purch. Request less 200", '');
+        PurchRequestsless200.SetRange(Status, PurchRequestsless200.Status::Approved);
+        PurchRequestsless200s.SetTableView(PurchRequestsless200);
+        PurchRequestsless200s.LookupMode := true;
+        if PurchRequestsless200s.RunModal() = Action::LookupOK then begin
+            PurchRequestsless200s.GetRecord(PurchRequestsless200);
+            PurchRequestsless200.TestField(Status, PurchRequestsless200.Status::Approved);
+            PurchRequestsless200.AssingPurchInvoice(PurchInvHeader);
+        end
+    end;
+
+    procedure AssingPurchInvoice(PurchInvHeader: Record "Purch. Inv. Header")
+    var
+        myInt: Integer;
+    begin
+        PurchInvHeader."Purch. Request less 200" := Rec."No.";
+        PurchInvHeader.Modify();
+        Rec.UpdateStatus();
+    end;
+
+    procedure UpdateGLEntry(GLEntry: Record "G/L Entry")
+    var
+        PurchRequestsless200: record "Purchase Requests less 200";
+        PurchRequestsless200s: page "Purchase Request less 200";
+    begin
+        GLEntry.TestField("Purch. Request less 200", '');
+        PurchRequestsless200.SetRange(Status, PurchRequestsless200.Status::Approved);
+        PurchRequestsless200s.SetTableView(PurchRequestsless200);
+        PurchRequestsless200s.LookupMode := true;
+        if PurchRequestsless200s.RunModal() = Action::LookupOK then begin
+            PurchRequestsless200s.GetRecord(PurchRequestsless200);
+            PurchRequestsless200.TestField(Status, PurchRequestsless200.Status::Approved);
+            PurchRequestsless200.AssingGLEntry(GLEntry);
+        end
+    end;
+
+    procedure AssingGLEntry(GLEntry: Record "G/L Entry")
+    var
+        myInt: Integer;
+    begin
+        GLEntry."Purch. Request less 200" := Rec."No.";
+        GLEntry.Modify();
+        Rec.UpdateStatus();
+    end;
+
 }

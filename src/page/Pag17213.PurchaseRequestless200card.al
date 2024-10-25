@@ -123,6 +123,27 @@ page 17213 "Purchase Request less 200 Card"
     {
         area(Processing)
         {
+            action(Close)
+            {
+                ApplicationArea = all;
+                Caption = 'Close Request', comment = 'ESP="Cerrar Solicitud"';
+                Image = CloseDocument;
+                Promoted = true;
+                PromotedCategory = Process;
+                Visible = ShowApprovalButton;
+
+                trigger OnAction()
+                var
+                    lblConfirm: Label '¿You want to change the Status of %1 to $2', comment = 'ESP="¿Desea cambiar el Estado de %1 como $2?"';
+                begin
+                    // comprobamos que el usuario puede realizar el cambio
+                    CheckIsUserApproval();
+                    if not Confirm(lblConfirm, true, Rec.TableCaption, Rec.Status::Posted) then
+                        exit;
+                    Rec.Status := Rec.Status::Posted;
+                    Rec.Modify();
+                end;
+            }
             action(SendApproval)
             {
                 ApplicationArea = all;
@@ -256,4 +277,12 @@ page 17213 "Purchase Request less 200 Card"
         CurrPage."Attachment Document".Page.SetTableNo(17200, Rec."No.", 0, RefRecord);
     end;
 
+    local procedure CheckIsUserApproval()
+    var
+        UserSetup: Record "User Setup";
+    begin
+        UserSetup.Reset();
+        if UserSetup.Get(UserId) then
+            UserSetup.TestField("Approvals Purch. Request", true);
+    end;
 }
