@@ -142,24 +142,25 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         PurchaseSetup: Record "Purchases & Payables Setup";
         PurchaseHeader: Record "Purchase Header";
         PurchaseLine: Record "Purchase Line";
-        PurchInvHeader: Record "Purch. Inv. Header";
         PurchaseRequest: Record "Purchase Requests less 200";
         AutLoginMgt: Codeunit "AUT Login Mgt.";
+        DocumentNo: code[20];
         ExistInvoiced: Boolean;
         lblError: Label 'La solicitud ya ha sido facturada en el documento %1', comment = 'ESP="La solicitud ya ha sido facturada en el documento %1"';
-        lblMaxRequest: Label 'El importe %1 supera el máximo permitido por solicitud %2.', comment = 'ESP="El importe %1 supera el máximo permitido por solicitud %2."';
-        lblDimensionPurchLine: Label '¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?', comment = 'ESP="¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?"';
+        lblCreateLine: Label '%1 %2 tiene líneas.\¿Se van a eliminar y crear las líneas de %3 %4?', comment = 'ESP="%1 %2 tiene líneas.\¿Se van a eliminar y crear las líneas de %3 %4?"';
+        lblTxtLineDesc: Label '%1 %2 de %3', comment = 'ESP="%1 %2 de %3"';
     begin
-        PurchaseRequest.Get(Rec."Purch. Request less 200");
+        if Rec."Purch. Request less 200" = '' then
+            exit;
         if Rec."Purch. Request less 200" = xRec."Purch. Request less 200" then
             exit;
-        if Rec."Purch. Request less 200" = '' then begin
-            exit;
-        end;
+        PurchaseRequest.Get(Rec."Purch. Request less 200");
+        PurchaseSetup.Get();
+
 
         if (PurchaseRequest."Vendor No." <> '') then
             PurchaseRequest.TestField("Vendor No.", Rec."Buy-from Vendor No.");
-        PurchaseSetup.Get();
+
         PurchaseHeader.Reset();
         PurchaseHeader.SetRange("Document Type", Rec."Document Type");
         PurchaseHeader.SetRange("Purch. Request less 200", Rec."Purch. Request less 200");
@@ -168,48 +169,65 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
                 if PurchaseHeader."No." <> Rec."No." then
                     Error(lblError, PurchaseHeader."No.");
             Until PurchaseHeader.next() = 0;
+        DocumentNo := PurchaseRequest.CheckDocumentNo();
+        if DocumentNo <> '' then
+            Error(lblError, DocumentNo);
 
-        PurchInvHeader.Reset();
-        PurchInvHeader.SetRange("Purch. Request less 200", Rec."Purch. Request less 200");
-        if PurchInvHeader.FindFirst() then
-            Error(lblError, PurchInvHeader."No.");
+        // se revisa si tiene lineas creadas, avisamos, eliminamos y creamos lineas con el importe y concepto de la compra menor 200
 
-        if PurchaseHeader.Get(Rec."Document Type", Rec."No.") then begin
-            PurchaseHeader.CalcFields(Amount);
-            if PurchaseHeader."Amount Including VAT" > PurchaseSetup."Maximum amount Request" then
-                Error(lblMaxRequest, PurchaseHeader."Amount Including VAT", PurchaseSetup."Maximum amount Request");
-        end;
-        if (PurchaseRequest."Global Dimension 3 Code" <> '') and (PurchaseRequest."Global Dimension 8 Code" = '') then
-            exit;
-        if not Confirm(lblDimensionPurchLine, false, PurchaseRequest."Global Dimension 8 Code", PurchaseRequest."Global Dimension 3 Code") then
-            exit;
-        // Actualizar Dimensiones de partidas presupuestaria
         PurchaseLine.Reset();
         PurchaseLine.SetRange("Document Type", Rec."Document Type");
         PurchaseLine.SetRange("Document No.", Rec."No.");
         if PurchaseLine.FindFirst() then
-            repeat
-                //  Aprobacion de usuario a las lineas
-                if PurchaseLine."Codigo Empleado Aprobacion" = AutLoginMgt.GetEmpleado() then begin
-                    PurchaseLine."Estado Aprobacion" := PurchaseLine."Estado Aprobacion"::Aprobada;
-                end;
-                if PurchaseLine.Type in [PurchaseLine.Type::Item, PurchaseLine.Type::"G/L Account", PurchaseLine.Type::"Fixed Asset"] then
-                    SetPurchaseLineDimensiones(PurchaseRequest, PurchaseLine);
-            Until PurchaseLine.next() = 0;
+            if not confirm(lblCreateLine, false, PurchaseHeader."Document Type", PurchaseHeader."No.", PurchaseRequest.TableCaption, PurchaseRequest."No.") then
+                exit;
+
+        // Actualizar Dimensiones de partidas presupuestaria
+        PurchaseLine.DeleteAll();
+        PurchaseLine.Init();
+        PurchaseLine."Document Type" := Rec."Document Type";
+        PurchaseLine."Document No." := Rec."No.";
+        PurchaseLine."Buy-from Vendor No." := Rec."Buy-from Vendor No.";
+        PurchaseLine."Line No." := 10000;
+        PurchaseLine.Validate(Type, PurchaseLine.Type::" ");
+        PurchaseLine.Description := copystr(StrSubstNo(lblTxtLineDesc, PurchaseRequest.TableCaption, PurchaseRequest."No.", PurchaseRequest."Vendor Name"), 1, MaxStrLen(PurchaseLine.Description));
+        PurchaseLine.Insert(true);
+        PurchaseLine."Line No." += PurchaseLine."Line No.";
+        case PurchaseRequest.Type of
+            PurchaseRequest.Type::"Fixed Asset":
+                PurchaseLine.Validate(Type, PurchaseLine.Type::"Fixed Asset");
+            PurchaseRequest.Type::"G/L Account":
+                PurchaseLine.Validate(Type, PurchaseLine.Type::"G/L Account");
+            PurchaseRequest.Type::Item:
+                PurchaseLine.Validate(Type, PurchaseLine.Type::Item);
+        end;
+        PurchaseLine.Validate("No.", PurchaseRequest."G/L Account No.");
+        PurchaseLine.Description := PurchaseRequest.Description;
+        PurchaseLine.Quantity := 1;
+        PurchaseLine.Validate("Direct Unit Cost", PurchaseRequest.Amount);
+
+        //  Aprobacion de usuario a las lineas
+        if PurchaseLine."Codigo Empleado Aprobacion" = AutLoginMgt.GetEmpleado() then
+            PurchaseLine."Estado Aprobacion" := PurchaseLine."Estado Aprobacion"::Aprobada;
+
+        SetPurchaseLineDimensiones(PurchaseRequest, PurchaseLine);
+        PurchaseLine.Insert(true);
 
     end;
-
-
 
     local procedure SetPurchaseLineDimensiones(PurchaseRequest: Record "Purchase Requests less 200"; var PurchaseLine: Record "Purchase Line")
     var
         GLSetup: Record "General Ledger Setup";
         DimSetEntry: record "Dimension Set Entry";
+        DimensionValue: Record "Dimension Value";
         recNewDimSetEntry: record "Dimension Set Entry" temporary;
         cduDimMgt: Codeunit DimensionManagement;
         cduCambioDim: Codeunit CambioDimensiones;
         GlobalDim1: code[20];
         GlobalDim2: code[20];
+        bGlobalDim1: Boolean;
+        bGlobalDim3: Boolean;
+        bGlobalDim8: Boolean;
         intDimSetId: Integer;
     begin
         GLSetup.Get();
@@ -218,16 +236,45 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             repeat
                 recNewDimSetEntry.Init();
                 recNewDimSetEntry.TransferFields(DimSetEntry);
+                // CECO
+                if (PurchaseRequest."Global Dimension 1 Code" <> '') and (DimSetEntry."Dimension Code" = GLSetup."Shortcut Dimension 1 Code") then begin
+                    recNewDimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 1 Code");
+                    bGlobalDim1 := true;
+                end;
                 // PARTIDA
                 if (PurchaseRequest."Global Dimension 8 Code" <> '') and (DimSetEntry."Dimension Code" = GLSetup."Shortcut Dimension 8 Code") then begin
-                    DimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 8 Code");
+                    recNewDimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 8 Code");
+                    bGlobalDim8 := true;
                 end;
                 // DETALLE
                 if (PurchaseRequest."Global Dimension 3 Code" <> '') and (DimSetEntry."Dimension Code" = GLSetup."Shortcut Dimension 3 Code") then begin
-                    DimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 3 Code");
+                    recNewDimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 3 Code");
+                    bGlobalDim3 := true;
                 end;
                 recNewDimSetEntry.Insert();
             Until DimSetEntry.next() = 0;
+        // si no existen CECO, PARTIDA y DETALLE los creamos
+        if not bGlobalDim1 and (PurchaseRequest."Global Dimension 1 Code" <> '') then begin
+            recNewDimSetEntry.Init();
+            recNewDimSetEntry."Dimension Set ID" := PurchaseLine."Dimension Set ID";
+            recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 1 Code";
+            recNewDimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 3 Code");
+            recNewDimSetEntry.Insert();
+        end;
+        if not bGlobalDim3 and (PurchaseRequest."Global Dimension 3 Code" <> '') then begin
+            recNewDimSetEntry.Init();
+            recNewDimSetEntry."Dimension Set ID" := PurchaseLine."Dimension Set ID";
+            recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 3 Code";
+            recNewDimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 3 Code");
+            recNewDimSetEntry.Insert();
+        end;
+        if not bGlobalDim8 and (PurchaseRequest."Global Dimension 8 Code" <> '') then begin
+            recNewDimSetEntry.Init();
+            recNewDimSetEntry."Dimension Set ID" := PurchaseLine."Dimension Set ID";
+            recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 8 Code";
+            recNewDimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 8 Code");
+            recNewDimSetEntry.Insert();
+        end;
 
         Clear(cduDimMgt);
         intDimSetId := cduDimMgt.GetDimensionSetID(recNewDimSetEntry);
@@ -239,7 +286,6 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         PurchaseLine."Dimension Set ID" := intDimSetId;
         PurchaseLine."Shortcut Dimension 1 Code" := GlobalDim1;
         PurchaseLine."Shortcut Dimension 2 Code" := GlobalDim2;
-        PurchaseLine.Modify();
     end;
 
 

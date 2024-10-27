@@ -2,14 +2,14 @@ table 17200 "Purchase Requests less 200"
 {
     DataClassification = CustomerContent;
     Caption = 'Purchase Requests less 200', comment = 'ESP="Compra menor 200"';
-    DrillDownPageId = "Purchase Request less 200";
-    LookupPageId = "Purchase Request less 200";
+    DrillDownPageId = "Purchase Request less 200 List";
+    LookupPageId = "Purchase Request less 200 List";
 
     fields
     {
         field(1; "No."; code[20])
         {
-            Caption = 'No.', comment = 'ESP="Nº"';
+            Caption = 'Request No.', comment = 'ESP="Nº Solicitud"';
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -119,6 +119,13 @@ table 17200 "Purchase Requests less 200"
             CalcFormula = lookup("Purch. Inv. Header"."No." where("Purch. Request less 200" = field("No.")));
             Editable = false;
         }
+        field(102; "G/L Entry"; Integer)
+        {
+            Caption = 'G/L Entry', comment = 'ESP="Mov. Contabilidad"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("G/L Entry"."Entry No." where("Purch. Request less 200" = field("No.")));
+            Editable = false;
+        }
         field(107; "No. Series"; code[20])
         {
             DataClassification = CustomerContent;
@@ -127,8 +134,8 @@ table 17200 "Purchase Requests less 200"
         field(110; Type; Option)
         {
             Caption = 'Type', comment = 'ESP="Tipo"';
-            OptionMembers = " ","G/L Account","Fixed Asset";
-            OptionCaption = ' ,G/L Account,Fixed Asset;', comment = 'ESP=" ,Cuenta,Activo Fijo"';
+            OptionMembers = " ","G/L Account","Fixed Asset",Item;
+            OptionCaption = ' ,G/L Account,Fixed Asset,Item', comment = 'ESP=" ,Cuenta,Activo Fijo,Producto"';
         }
         field(120; "G/L Account No."; code[20])
         {
@@ -136,19 +143,26 @@ table 17200 "Purchase Requests less 200"
             Caption = 'No.', comment = 'ESP="Nº"';
             TableRelation = IF (Type = const("G/L Account")) "G/L Account"
                     where(Blocked = const(false), "Account Type" = const(Posting), "Direct Posting" = const(true), "Income Stmt. Bal. Acc." = filter(<> ''))
-            ELSE IF (Type = const("Fixed Asset")) "Fixed Asset";
+            ELSE IF (Type = const("Fixed Asset")) "Fixed Asset"
+            ELSE IF (Type = const(Item)) Item where("Purch. Request minor 200" = const(true));
         }
         field(130; "Global Dimension 3 Code"; Code[20])
         {
             DataClassification = CustomerContent;
             CaptionClass = '1,2,3';
-            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(3), "Value Dimensión Padre" = field("Global Dimension 8 Code"));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(3), "Value Dimensión Padre" = field("Global Dimension 8 Code"), Blocked = const(false));
         }
         field(140; "Global Dimension 8 Code"; Code[20])
         {
             DataClassification = CustomerContent;
             CaptionClass = '1,2,8';
-            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(8));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(8), Blocked = const(false));
+        }
+        field(150; "Global Dimension 1 Code"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            CaptionClass = '1,2,1';
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1), Blocked = const(false));
         }
         field(50000; "Codigo Empleado"; Code[50])
         {
@@ -176,6 +190,8 @@ table 17200 "Purchase Requests less 200"
         {
             Clustered = true;
         }
+        key(Key2; Status)
+        { }
     }
 
     fieldgroups
@@ -346,8 +362,18 @@ table 17200 "Purchase Requests less 200"
     begin
         // comprobamos si ya se ha enviado, o se vuelve a enviar
         // Rec.TestField("Vendor No.");
+        Rec.TestField(Type);
+        Rec.TestField("G/L Account No.");
         Rec.TestField(Description);
         Rec.TestField(Amount);
+        case Rec.Type of
+            Rec.Type::"G/L Account":
+                begin
+                    Rec.TestField("Global Dimension 1 Code");
+                    Rec.TestField("Global Dimension 3 Code");
+                    Rec.TestField("Global Dimension 8 Code");
+                end;
+        end;
         if not Confirm(lblConfirm, false, Rec."No.", Rec.Amount) then
             exit;
         SendEmailApproval;
@@ -580,6 +606,24 @@ table 17200 "Purchase Requests less 200"
             Rec.Invoiced := true;
             Rec.Modify();
         end;
+    end;
+
+    procedure CheckDocumentNo(): code[20]
+    var
+        GLEntry: Record "G/L Entry";
+        PurchInvHeader: Record "Purch. Inv. Header";
+    begin
+        // buscamos si existe movimiento de contabilidad relacionado
+        GLEntry.Reset();
+        GLEntry.SetRange("Purch. Request less 200", Rec."No.");
+        if GLEntry.FindFirst() then
+            exit(GLEntry."Document No.");
+        // miramos el historico de facturas de compras
+        PurchInvHeader.Reset();
+        PurchInvHeader.SetRange("Purch. Request less 200", Rec."No.");
+        if PurchInvHeader.FindFirst() then
+            exit(PurchInvHeader."No.");
+        exit('');
     end;
 
     procedure UpdatePurchaseInvoice(PurchInvHeader: Record "Purch. Inv. Header")

@@ -95,6 +95,10 @@ pageextension 50109 "ItemCard" extends "Item Card"
         }
         addafter("Purchasing Blocked")
         {
+            field("Purch. Request minor 200"; "Purch. Request minor 200")
+            {
+                ApplicationArea = all;
+            }
             field(Manufacturer; Manufacturer)
             {
                 ApplicationArea = all;

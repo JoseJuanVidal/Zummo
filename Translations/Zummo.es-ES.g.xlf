@@ -6949,6 +6949,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field G/L Account No. - Property Caption</note>
           <target>Nº</target>
         </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 2825951060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mov. Contabilidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field G/L Entry - Property Caption</note>
+          <target>Mov. Contabilidad</target>
+        </trans-unit>
+        <trans-unit id="Table 3365585894 - Field 1303377601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Global Dimension 1 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3365585894 - Field 2308462143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Global Dimension 3 Code</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -6966,10 +6977,10 @@
           <target>Nº Factura</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
+          <source>Request No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Solicitud"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field No. - Property Caption</note>
-          <target>Nº</target>
+          <target>Nº Solicitud</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 1351594800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No. Series</source>
@@ -7014,10 +7025,10 @@
           <target>Tipo</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,G/L Account,Fixed Asset;</source>
-          <note from="Developer" annotates="general" priority="2">ESP=" ,Cuenta,Activo Fijo"</note>
+          <source> ,G/L Account,Fixed Asset,Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Cuenta,Activo Fijo,Producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Type - Property OptionCaption</note>
-          <target> ,Cuenta,Activo Fijo</target>
+          <target> ,Cuenta,Activo Fijo,Producto</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit Price</source>
@@ -17900,12 +17911,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Method OnAction_UpdateStatus - NamedType lblConfirm</note>
           <target>¿Desea actualizar los estados de las Solicitudes menor 200 €?</target>
         </trans-unit>
-        <trans-unit id="Page 2450567067 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Attachment Document</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Documentos adjuntos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 - Control Attachment Document - Property Caption</note>
-          <target>Documentos adjuntos</target>
-        </trans-unit>
         <trans-unit id="Page 2450567067 - Action 3538210097 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>&amp;Navigate</source>
           <note from="Developer" annotates="general" priority="2">ESP="&amp;Navegar"</note>
@@ -18049,6 +18054,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Envío Aprobación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 Card - Action SendApproval - Property Caption</note>
           <target>Envío Aprobación</target>
+        </trans-unit>
+        <trans-unit id="Page 522834309 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate,Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 List - Property PromotedActionCategories</note>
+          <target>Nuevo,Procesar,Informe,Información,Configuración</target>
+        </trans-unit>
+        <trans-unit id="Page 522834309 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Request less 200 List - Property Caption</note>
+          <target>Compra menor 200</target>
         </trans-unit>
         <trans-unit id="Page 248398536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Weight control</source>
@@ -37236,6 +37253,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Purch. Family - Property Caption</note>
           <target>Familia compra</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1814698106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Purch. Request minor 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud compras menor 200€"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Purch. Request minor 200 - Property Caption</note>
+          <target>Solicitud compras menor 200€</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 4086937370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Purch. SubCategory</source>
           <note from="Developer" annotates="general" priority="2">ESP="SubCategoria compra"</note>
@@ -40965,17 +40988,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblError</note>
           <target>La solicitud ya ha sido facturada en el documento %1</target>
         </trans-unit>
-        <trans-unit id="TableExtension 4064840916 - Method 1044311127 - NamedType 2908950305" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
-          <source>El importe %1 supera el máximo permitido por solicitud %2.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="El importe %1 supera el máximo permitido por solicitud %2."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblMaxRequest</note>
-          <target>El importe %1 supera el máximo permitido por solicitud %2.</target>
+        <trans-unit id="TableExtension 4064840916 - Method 1044311127 - NamedType 2290109732" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
+          <source>%1 %2 tiene líneas.\¿Se van a eliminar y crear las líneas de %3 %4?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="%1 %2 tiene líneas.\¿Se van a eliminar y crear las líneas de %3 %4?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblCreateLine</note>
+          <target>%1 %2 tiene líneas.\¿Se van a eliminar y crear las líneas de %3 %4?</target>
         </trans-unit>
-        <trans-unit id="TableExtension 4064840916 - Method 1044311127 - NamedType 3971836044" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
-          <source>¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblDimensionPurchLine</note>
-          <target>¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?</target>
+        <trans-unit id="TableExtension 4064840916 - Method 1044311127 - NamedType 2272105775" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
+          <source>%1 %2 de %3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="%1 %2 de %3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Method OnValidate_PurchRequest - NamedType lblTxtLineDesc</note>
+          <target>%1 %2 de %3</target>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Method 4151499239 - NamedType 858699819" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
           <source>Se va a actualizar las líneas del pedido de compra con el proyecto %1 y tarea %2.\¿Desea Continuar?</source>
@@ -41704,17 +41727,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Method OnValidate_PurchRequest - NamedType lblError</note>
           <target>La solicitud ya ha sido facturada en el documento %1</target>
         </trans-unit>
-        <trans-unit id="TableExtension 3218508141 - Method 1044311127 - NamedType 2908950305" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3218508141">
-          <source>El importe %1 es diferente de la solicitud %2.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="El importe %1 es diferente de la solicitud %2."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Method OnValidate_PurchRequest - NamedType lblMaxRequest</note>
-          <target>El importe %1 es diferente de la solicitud %2.</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 3218508141 - Method 1044311127 - NamedType 3971836044" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3218508141">
-          <source>¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Method OnValidate_PurchRequest - NamedType lblDimensionPurchLine</note>
-          <target>¿Desea actualizar las dimensiones partida %1 y detalle %2 de las líneas?</target>
+        <trans-unit id="TableExtension 3218508141 - Method 1044311127 - NamedType 3958536323" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3218508141">
+          <source>La solicitud %1 debe ser un %2 o %.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La solicitud %1 debe ser un %2 o %3."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Method OnValidate_PurchRequest - NamedType lblErroAccountType</note>
+          <target>La solicitud %1 debe ser un %2 o %3.</target>
         </trans-unit>
         <trans-unit id="TableExtension 3218508141 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Purch. Request less 200</source>
@@ -41787,6 +41804,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Recep. alm. cantidad a cero"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Warehouse Setup - Field Recep. alm. cantidad a cero - Property Caption</note>
           <target>Recep. alm. cantidad a cero</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2451929409 - Method 1044311127 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2451929409">
+          <source>La solicitud ya ha sido facturada en el documento %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La solicitud ya ha sido facturada en el documento %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Journal Line - Method OnValidate_PurchRequest - NamedType lblError</note>
+          <target>La solicitud ya ha sido facturada en el documento %1</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2451929409 - Method 1044311127 - NamedType 3958536323" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2451929409">
+          <source>La solicitud %1 debe ser un %2 o %.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La solicitud %1 debe ser un %2 o %3."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Journal Line - Method OnValidate_PurchRequest - NamedType lblErroAccountType</note>
+          <target>La solicitud %1 debe ser un %2 o %3.</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2451929409 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3539501460">
+          <source>Purch. Request less 200</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Journal Line - Field Purch. Request less 200 - Property Caption</note>
+          <target>Compra menor 200</target>
         </trans-unit>
         <trans-unit id="TableExtension 3616270633 - Method 2071093379 - NamedType 2739276994" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3616270633">
           <source>Select Path</source>

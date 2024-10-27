@@ -71,6 +71,10 @@ page 17213 "Purchase Request less 200 Card"
                     {
                         ApplicationArea = all;
                     }
+                    field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                    {
+                        ApplicationArea = all;
+                    }
                     field("Global Dimension 8 Code"; "Global Dimension 8 Code")
                     {
                         ApplicationArea = all;
@@ -93,6 +97,10 @@ page 17213 "Purchase Request less 200 Card"
                     ApplicationArea = all;
                 }
                 field("Purchase Invoice"; "Purchase Invoice")
+                {
+                    ApplicationArea = all;
+                }
+                field("G/L Entry"; "G/L Entry")
                 {
                     ApplicationArea = all;
                 }

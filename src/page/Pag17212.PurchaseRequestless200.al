@@ -65,6 +65,10 @@ page 17212 "Purchase Request less 200"
                 {
                     ApplicationArea = all;
                 }
+                field("G/L Entry"; "G/L Entry")
+                {
+                    ApplicationArea = all;
+                }
                 field("User Id"; "User Id")
                 {
                     ApplicationArea = all;
@@ -82,16 +86,16 @@ page 17212 "Purchase Request less 200"
                 }
             }
         }
-        area(factboxes)
-        {
-            part("Attachment Document"; "ZM Document Attachment Factbox")
-            {
-                ApplicationArea = all;
-                Caption = 'Attachment Document', comment = 'ESP="Documentos adjuntos"';
-                SubPageLink = "Table ID" = const(17200), "No." = field("No.");
+        // area(factboxes)
+        // {
+        //     part("Attachment Document"; "ZM Document Attachment Factbox")
+        //     {
+        //         ApplicationArea = all;
+        //         Caption = 'Attachment Document', comment = 'ESP="Documentos adjuntos"';
+        //         SubPageLink = "Table ID" = const(17200), "No." = field("No.");
 
-            }
-        }
+        //     }
+        // }
     }
     actions
     {
@@ -217,13 +221,13 @@ page 17212 "Purchase Request less 200"
         ShowApprovalButton := Rec.IsUserApproval();
     end;
 
-    trigger OnAfterGetCurrRecord()
-    var
-        RefRecord: recordRef;
-    begin
-        if RefRecord.Get(Rec.RecordId) then;
-        CurrPage."Attachment Document".Page.SetTableNo(17200, Rec."No.", 0, RefRecord)
-    end;
+    // trigger OnAfterGetCurrRecord()
+    // var
+    //     RefRecord: recordRef;
+    // begin
+    //     if RefRecord.Get(Rec.RecordId) then;
+    //     CurrPage."Attachment Document".Page.SetTableNo(17200, Rec."No.", 0, RefRecord)
+    // end;
 
     var
         UserSetup: Record "User Setup";

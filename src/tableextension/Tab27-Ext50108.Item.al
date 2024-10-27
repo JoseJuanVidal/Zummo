@@ -429,6 +429,16 @@ tableextension 50108 "Item" extends Item  //27
                 Validate_UpdateBIBOMCosts();
             end;
         }
+        field(50170; "Purch. Request minor 200"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. Request minor 200', comment = 'ESP="Solicitud compras menor 200€"';
+
+            trigger OnValidate()
+            begin
+                Validate_UpdateBIBOMCosts();
+            end;
+        }
         //+ 22/11/2022 NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {

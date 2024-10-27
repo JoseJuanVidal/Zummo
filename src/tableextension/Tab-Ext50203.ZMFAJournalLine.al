@@ -1,4 +1,4 @@
-tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
+tableextension 50203 "ZM FA Journal Line" extends "FA Journal Line"
 {
     fields
     {
@@ -61,18 +61,12 @@ tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
             Error(lblError, PurchaseHeader."No.");
 
         case PurchaseRequest.Type of
-            PurchaseRequest.Type::"G/L Account":
+            PurchaseRequest.Type::"Fixed Asset":
                 begin
-                    if Rec."Account Type" <> Rec."Account Type"::"G/L Account" then
-                        Rec."Account Type" := Rec."Account Type"::"G/L Account";
-                    Rec.validate("Account No.", PurchaseRequest."G/L Account No.");
+                    if Rec."FA Posting Type" <> Rec."FA Posting Type"::"Acquisition Cost" then
+                        Rec."FA Posting Type" := Rec."FA Posting Type"::"Acquisition Cost";
+                    Rec.validate("FA No.", PurchaseRequest."G/L Account No.");
                 end;
-            // PurchaseRequest.Type::"Fixed Asset":
-            //     begin
-            //         if Rec."Account Type" <> Rec."Account Type"::"Fixed Asset" then
-            //             Rec."Account Type" := Rec."Account Type"::"Fixed Asset";
-            //         Rec.validate("Account No.", PurchaseRequest."G/L Account No.");
-            //     end;
             else
                 Error(lblErroAccountType, PurchaseRequest."No.", PurchaseRequest.Type::"G/L Account", PurchaseRequest.Type::"Fixed Asset");
         end;
@@ -83,11 +77,11 @@ tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
             Rec.Modify();
     end;
 
-    local procedure SetGenJnlLineDimensiones(PurchaseRequest: Record "Purchase Requests less 200"; var GenJnlLine: Record "Gen. Journal Line")
+    local procedure SetGenJnlLineDimensiones(PurchaseRequest: Record "Purchase Requests less 200"; var FAJnlLine: Record "FA Journal Line")
     var
     begin
-        GenJnlLine.ValidateShortcutDimCode(1, PurchaseRequest."Global Dimension 1 Code");
-        GenJnlLine.ValidateShortcutDimCode(3, PurchaseRequest."Global Dimension 3 Code");
-        GenJnlLine.ValidateShortcutDimCode(8, PurchaseRequest."Global Dimension 8 Code");
+        FAJnlLine.ValidateShortcutDimCode(1, PurchaseRequest."Global Dimension 1 Code");
+        FAJnlLine.ValidateShortcutDimCode(3, PurchaseRequest."Global Dimension 3 Code");
+        FAJnlLine.ValidateShortcutDimCode(8, PurchaseRequest."Global Dimension 8 Code");
     end;
 }
