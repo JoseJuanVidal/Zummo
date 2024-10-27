@@ -557,7 +557,7 @@ table 17200 "Purchase Requests less 200"
     procedure Navigate_PostedPurchaseRequest()
     var
         PurchaseRequest: Record "Purchase Requests less 200";
-        PurchaseRequests: page "Purchase Request less 200";
+        PurchaseRequests: page "Purchase Request less 200 List";
     begin
         // if not PurchaseRequest.IsUserApproval() then
         //     PurchaseRequest.SetRange("User Id", UserId);
