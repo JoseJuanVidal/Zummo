@@ -4,6 +4,7 @@ table 17200 "Purchase Requests less 200"
     Caption = 'Purchase Requests less 200', comment = 'ESP="Compra menor 200"';
     DrillDownPageId = "Purchase Request less 200 List";
     LookupPageId = "Purchase Request less 200 List";
+    Permissions = tabledata "Purch. Inv. Header" = rmid, tabledata "G/L Entry" = rmid;
 
     fields
     {

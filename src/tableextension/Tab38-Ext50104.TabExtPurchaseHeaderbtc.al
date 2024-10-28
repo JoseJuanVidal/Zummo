@@ -203,7 +203,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         end;
         PurchaseLine.Validate("No.", PurchaseRequest."G/L Account No.");
         PurchaseLine.Description := PurchaseRequest.Description;
-        PurchaseLine.Quantity := 1;
+        PurchaseLine.validate(Quantity, 1);
         PurchaseLine.Validate("Direct Unit Cost", PurchaseRequest.Amount);
 
         //  Aprobacion de usuario a las lineas
