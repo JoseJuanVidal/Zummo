@@ -19153,6 +19153,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Import files folder - Action Refresh - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 825930751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Introducir Fecha</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Introducir Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Input Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 825930751 - Control 1991915875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Input Date - Control Fecha - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2376143693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lista tareas diarias</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista tareas diarias"</note>
@@ -31028,16 +31038,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ha seleccionado %1 movimientos.\¿Esta seguro de continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Method ChangeMultiplesDimensiones - NamedType lblConfirm</note>
         </trans-unit>
-        <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
-          <source>Change the dimensions of the selected entries</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Permite cambiar la dimensione de los movimientos seleccionados"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 4089118995 - Action 4134265994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
-          <source>Change Dimensions Multiple</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Dimensiones Multiple"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDelectDimensiones - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 1779445611 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Change the dimensions of the selected entry</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite cambiar las dimensiones del movimiento seleccionado"</note>
@@ -31047,6 +31047,21 @@
           <source>Change Dimensions</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Dimensiones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarDimensiones - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Action 1738926963 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Change the dimensions of the selected entries</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Permite cambiar la dimensione de los movimientos seleccionados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarSelectDimensiones - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Action 1738926963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Change Dimensions Multiple</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Dimensiones Multiple"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action CambiarSelectDimensiones - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4089118995 - Action 3942693523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Cambiar Fecha para revertir</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Fecha para revertir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Action ChangeDateForReverse - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4089118995 - Action 1487318378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Purch. Request less 200</source>
@@ -33733,6 +33748,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Saldo Apertura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLAccount - Field SaldoApertura - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4220596153 - Method 3820423055 - NamedType 822108546" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4220596153">
+          <source>¿Desea cambiar %1 movimientos de contabilidad a Fecha %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar %1 movimientos de contabilidad a Fecha %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Method ChangeDateforReverseEntry - NamedType lblConfirmChange</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4220596153 - Method 2913610919 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4220596153">
+          <source>There are %1 with document number %2.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Existen %1 con el numero de documento %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Method CheckDateforReverseEntry - NamedType lblError</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4220596153 - Field 2316336532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>Cust. Ledger Currency Factor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Factor conversión mov. Cliente"</note>
@@ -33767,6 +33792,11 @@
           <source>Applied</source>
           <note from="Developer" annotates="general" priority="2">ESP="Liquidado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Liquidado_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4220596153 - Field 939906055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>Original Date Reverse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Field Original Date Reverse - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4220596153 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>Purch. Request less 200</source>

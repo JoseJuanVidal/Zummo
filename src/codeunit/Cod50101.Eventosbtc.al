@@ -1502,4 +1502,15 @@ codeunit 50101 "Eventos_btc"
         if Rec.Comment <> '' then
             Rec.Description := copystr(Rec.Comment, 1, MaxStrLen(Rec.Description));
     end;
+
+    // =============     EVENTO REVERTIR CAMBIO de FECHA EN REVERTIR PREVISION           ====================
+    // ==  
+    // ==  Cuando revertimos aprovisionamiento, si se ha cambiado la fecha, que se cambie
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Page, Page::"General Ledger Entries", 'OnAfterActionEvent', 'ReverseTransaction', true, true)]
+    local procedure GeneralLedgerEntries_ReverseTransaction(var Rec: Record "G/L Entry")
+    begin
+        Rec.ReverseChangeDateforReverseEntry();
+    end;
 }

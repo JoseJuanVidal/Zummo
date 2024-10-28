@@ -99,7 +99,7 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                         CurrPage.Update();
                 end;
             }
-            action("CambiarDelectDimensiones")
+            action("CambiarSelectDimensiones")
             {
                 ApplicationArea = All;
                 Image = ChangeDimensions;
@@ -112,6 +112,21 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                 trigger OnAction()
                 begin
                     ChangeMultiplesDimensiones();
+                end;
+            }
+        }
+        addafter(ReverseTransaction)
+        {
+            action(ChangeDateForReverse)
+            {
+                ApplicationArea = all;
+                Caption = 'Cambiar Fecha para revertir', comment = 'ESP="Cambiar Fecha para revertir"';
+                Image = ChangeDates;
+
+                trigger OnAction()
+                begin
+                    Rec.ChangeDateforReverseEntry();
+
                 end;
             }
         }
@@ -214,4 +229,5 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
         if (PostingDate < GLSetup."Allow Posting From") OR (PostingDate > GLSetup."Allow Posting To") then
             exit(true);
     end;
+
 }
