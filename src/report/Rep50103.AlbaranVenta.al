@@ -1,3 +1,4 @@
+
 report 50103 "AlbaranVenta"
 {
     DefaultLayout = RDLC;
@@ -679,6 +680,16 @@ report 50103 "AlbaranVenta"
                         end;
                     }
 
+                    dataitem("Sales Comment Line"; "Sales Comment Line")
+                    {
+                        DataItemLinkReference = "Sales Shipment Header";
+                        DataItemLink = "No." = FIELD("No.");
+                        DataItemTableView = SORTING("Document Type", "No.", "Document Line No.", "Line No.")
+                                where("Document Type" = const(Shipment), "Document Line No." = const(0));
+                        column(Comment_Line_No_; "Line No.") { }
+                        column(lblComment; lblComment) { }
+                        column(Comment; Comment) { }
+                    }
                     trigger OnPreDataItem();
                     begin
                         // Item Tracking:
@@ -987,6 +998,7 @@ report 50103 "AlbaranVenta"
         FO01_Txt: text;
         FO01_Lbl: Label 'FO.03_C8.01_V14', Comment = 'ESP="FO.03_C8.01_V14"';  // ALBARAN
         FO02_Lbl: Label 'FO.04_C8.01_V03', Comment = 'ESP="FO.04_C8.01_V03"';  // PACKING LIST
+        lblComment: Label 'Comments on Delivery:', comment = 'ESP="Comentarios Entrega:"';
         pesoHeader: Label 'Weight(kg)', comment = 'ESP="Peso(kg)"';
         Fecha_Lbl: Label 'Date', Comment = 'ESP="Fecha"';
         Numero_Lbl: Label 'Number', Comment = 'ESP="Número"';

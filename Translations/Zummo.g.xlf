@@ -22213,6 +22213,11 @@
           <note from="Developer" annotates="general" priority="2">Item Tracking - Appendix</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType ItemTrackingAppendixCaptionLbl</note>
         </trans-unit>
+        <trans-unit id="Report 1882765205 - NamedType 562441275" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comments on Delivery:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios Entrega:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - NamedType lblComment</note>
+        </trans-unit>
         <trans-unit id="Report 1882765205 - NamedType 3701122699" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dimensiones línea</source>
           <note from="Developer" annotates="general" priority="2">ESP="Line Dimensions"</note>
