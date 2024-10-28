@@ -24693,9 +24693,9 @@
         </trans-unit>
         <trans-unit id="Report 1882765205 - ReportDataItem 3118382297 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
           <source>Histórico albaranes venta</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Posted Sales Shipment"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Histórico albaranes venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AlbaranVenta - ReportDataItem Sales Shipment Header - Property RequestFilterHeading</note>
-          <target>Posted Sales Shipment</target>
+          <target>Histórico albaranes venta</target>
         </trans-unit>
         <trans-unit id="Report 1882765205 - Control 1131638071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packing List</source>

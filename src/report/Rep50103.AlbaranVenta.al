@@ -15,7 +15,7 @@ report 50103 "AlbaranVenta"
         {
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
-            RequestFilterHeading = 'Histórico albaranes venta', Comment = 'ESP="Posted Sales Shipment"';
+            RequestFilterHeading = 'Histórico albaranes venta', Comment = 'ESP="Histórico albaranes venta"';
             column(No_SalesShptHeader; "No.")
             {
 
