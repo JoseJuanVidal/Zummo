@@ -12,6 +12,10 @@ pageextension 50219 "ZM Misc. Article Information" extends "Misc. Article Inform
         }
         addbefore("Serial No.")
         {
+            field("Device Type"; "Device Type")
+            {
+                ApplicationArea = all;
+            }
             field(Model; Model)
             {
                 ApplicationArea = all;

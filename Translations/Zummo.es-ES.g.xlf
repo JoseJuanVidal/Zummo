@@ -8695,10 +8695,10 @@
           <target>Tipo Registro</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification"</note>
+          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
-          <target>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification</target>
+          <target>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 1397213012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Warranty Date</source>
@@ -10673,6 +10673,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. variante"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Item Translation temporary - Field Variant Code - Property Caption</note>
           <target>Cód. variante</target>
+        </trans-unit>
+        <trans-unit id="Table 1441039187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Device Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Dispositivo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Misc. Article Device Type - Property Caption</note>
+          <target>Tipo Dispositivo</target>
+        </trans-unit>
+        <trans-unit id="Table 1441039187 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Misc. Article Device Type - Field Code - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 1441039187 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Misc. Article Device Type - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 1441039187 - Field 944315501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Misc. Article Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. recurso diverso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Misc. Article Device Type - Field Misc. Article Code - Property Caption</note>
+          <target>Cód. recurso diverso</target>
         </trans-unit>
         <trans-unit id="Table 3916393050 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>OAuth 2.0 Application</source>
@@ -21448,6 +21472,12 @@
           <source>Transfer To Planning Lines</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Ledger Entries Modify - Action Transfer To Planning Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1441039187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Device Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Dispositivos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Misc. Article Device Type - Property Caption</note>
+          <target>Tipo Dispositivos</target>
         </trans-unit>
         <trans-unit id="Page 3419437274 - Control 378052804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fecha Final</source>
@@ -42051,6 +42081,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Modo transporte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Mini Customer Template - Field Transport Method - Property Caption</note>
           <target>Modo transporte</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 115180823 - Field 1619575956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1615782862">
+          <source>Device Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo dispositivo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Misc. Article Information - Field Device Type - Property Caption</note>
+          <target>Tipo dispositivo</target>
         </trans-unit>
         <trans-unit id="TableExtension 115180823 - Field 1480804031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1615782862">
           <source>Employee Name</source>

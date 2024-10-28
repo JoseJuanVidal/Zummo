@@ -13,6 +13,12 @@ tableextension 50202 "ZM Misc. Article Information" extends "Misc. Article Infor
             DataClassification = CustomerContent;
             Caption = 'Employee Name', comment = 'ESP="Nombre empleado"';
         }
+        field(50120; "Device Type"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Device Type', comment = 'ESP="Tipo dispositivo"';
+            TableRelation = "ZM Misc. Article Device Type".Code where("Misc. Article Code" = field("Misc. Article Code"));
+        }
     }
 
     keys
