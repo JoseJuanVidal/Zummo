@@ -104,8 +104,8 @@ table 17200 "Purchase Requests less 200"
         field(81; "Invoiced"; Boolean)
         {
             Caption = 'Invoice No.', comment = 'ESP="Nº Factura"';
-            FieldClass = FlowField;
-            CalcFormula = exist("Purch. Inv. Header" where("Purch. Request less 200" = field("No.")));
+            // FieldClass = FlowField;
+            // CalcFormula = exist("Purch. Inv. Header" where("Purch. Request less 200" = field("No.")));
             Editable = false;
         }
         field(90; Comment; Blob)
@@ -192,6 +192,8 @@ table 17200 "Purchase Requests less 200"
             Clustered = true;
         }
         key(Key2; Status)
+        { }
+        key(Key3; Invoiced)
         { }
     }
 

@@ -5,6 +5,7 @@ page 17212 "Purchase Request less 200"
     PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     PageType = List;
     SourceTable = "Purchase Requests less 200";
+    SourceTableView = where(Status = filter(" " | Pending | Approved | Reject));
     UsageCategory = Lists;
     CardPageId = "Purchase Request less 200 Card";
     Editable = false;
@@ -51,6 +52,7 @@ page 17212 "Purchase Request less 200"
                 field("Currency Code"; "Currency Code")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("No. Series"; Rec."No. Series")
                 {
@@ -64,15 +66,16 @@ page 17212 "Purchase Request less 200"
                 field("Purchase Invoice"; "Purchase Invoice")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("G/L Entry"; "G/L Entry")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("User Id"; "User Id")
                 {
                     ApplicationArea = all;
-                    Visible = false;
                 }
                 field("Codigo Empleado"; "Codigo Empleado")
                 {
@@ -217,7 +220,7 @@ page 17212 "Purchase Request less 200"
 
     trigger OnOpenPage()
     begin
-        FilterUser();
+        // FilterUser();
         ShowApprovalButton := Rec.IsUserApproval();
     end;
 
