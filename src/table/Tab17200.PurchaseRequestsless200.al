@@ -268,7 +268,6 @@ table 17200 "Purchase Requests less 200"
     trigger OnDelete()
     begin
         // controlamos que no este invoiced
-        Rec.CalcFields(Invoiced);
         Rec.TestField(Invoiced, false);
     end;
 

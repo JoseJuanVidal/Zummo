@@ -1,6 +1,6 @@
 codeunit 50101 "Eventos_btc"
 {
-    Permissions = tabledata "Item Ledger Entry" = m;
+    Permissions = tabledata "Item Ledger Entry" = rmid, tabledata "G/L Entry" = rmid;
 
     [EventSubscriber(ObjectType::Table, 37, 'OnAfterCopyFromItem', '', false, false)]
     local procedure OnAfterCopyFromItem_FillTariffNo_(VAR SalesLine: Record "Sales Line"; Item: Record Item)
@@ -1511,6 +1511,73 @@ codeunit 50101 "Eventos_btc"
     [EventSubscriber(ObjectType::Page, Page::"General Ledger Entries", 'OnAfterActionEvent', 'ReverseTransaction', true, true)]
     local procedure GeneralLedgerEntries_ReverseTransaction(var Rec: Record "G/L Entry")
     begin
-        Rec.ReverseChangeDateforReverseEntry();
+        ReverseChangeDateforReverseEntry(Rec);
+    end;
+
+    procedure ReverseChangeDateforReverseEntry(var Rec: Record "G/L Entry")
+    var
+        GLEntry: Record "G/L Entry";
+    begin
+        // "Original Date Reverse" guardaremos la fecha inicial del movimiento en este campo para despues devolverlo
+        GLEntry.Reset();
+        GLEntry.SetRange("Transaction No.", Rec."Transaction No.");
+        if GLEntry.FindFirst() then
+            repeat
+                if GLEntry."Original Date Reverse" <> 0D then
+                    if GLEntry."Posting Date" <> GLEntry."Original Date Reverse" then begin
+                        GLEntry."Posting Date" := GLEntry."Original Date Reverse";
+                        GLEntry.Modify();
+                    end
+            Until GLEntry.next() = 0;
+    end;
+
+    procedure ChangeDateforReverseEntry(TransactionNo: Integer; PostingDate: date)
+    var
+        GLEntry: Record "G/L Entry";
+        InputDate: page "ZM Input Date";
+        ChangeDate: Date;
+        lblConfirmChange: Label '¿Desea cambiar %1 movimientos de contabilidad a Fecha %2?', comment = 'ESP="¿Desea cambiar %1 movimientos de contabilidad a Fecha %2?"';
+    begin
+        // comprobamos que con ese numero de documento, no existan otros movimientos
+        InputDate.LookupMode := true;
+        if InputDate.RunModal() = Action::LookupOK then begin
+            ChangeDate := InputDate.GetFecha();
+            if ChangeDate = 0D then
+                exit;
+            GLEntry.Reset();
+            GLEntry.SetRange("Transaction No.", TransactionNo);
+            if not Confirm(lblConfirmChange, false, GLEntry.Count, ChangeDate) then
+                exit;
+            GLEntry.FindFirst();
+            CheckDateforReverseEntry(GLEntry);
+            GLEntry.ModifyAll("Original Date Reverse", PostingDate);
+            GLEntry.ModifyAll("Posting Date", ChangeDate);
+        end
+    end;
+
+    procedure CheckDateforReverseEntry(GLEntry: Record "G/L Entry")
+    var
+        CustLedgerEntry: Record "Cust. Ledger Entry";
+        VendorLedgerEntry: Record "Vendor Ledger Entry";
+        BankAccountLedgerEntry: Record "Bank Account Ledger Entry";
+        FAEntryEntry: Record "FA Ledger Entry";
+        lblError: Label 'There are %1 with document number %2.', comment = 'ESP="Existen %1 con el numero de documento %2."';
+    begin
+        CustLedgerEntry.Reset();
+        CustLedgerEntry.SetRange("Document No.", GLEntry."Document No.");
+        if CustLedgerEntry.FindFirst() then
+            Error(lblError, CustLedgerEntry.TableCaption, GLEntry."Document No.");
+        VendorLedgerEntry.Reset();
+        VendorLedgerEntry.SetRange("Document No.", GLEntry."Document No.");
+        if VendorLedgerEntry.FindFirst() then
+            Error(lblError, VendorLedgerEntry.TableCaption, GLEntry."Document No.");
+        BankAccountLedgerEntry.Reset();
+        BankAccountLedgerEntry.SetRange("Document No.", GLEntry."Document No.");
+        if BankAccountLedgerEntry.FindFirst() then
+            Error(lblError, BankAccountLedgerEntry.TableCaption, GLEntry."Document No.");
+        FAEntryEntry.Reset();
+        FAEntryEntry.SetRange("Document No.", GLEntry."Document No.");
+        if FAEntryEntry.FindFirst() then
+            Error(lblError, FAEntryEntry.TableCaption, GLEntry."Document No.");
     end;
 }

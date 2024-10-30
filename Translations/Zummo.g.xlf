@@ -12068,6 +12068,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Parámetro Desconocido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CU_Cron - Method OnRun - NamedType lbNoParametroErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 3820423055 - NamedType 822108546" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea cambiar %1 movimientos de contabilidad a Fecha %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar %1 movimientos de contabilidad a Fecha %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method ChangeDateforReverseEntry - NamedType lblConfirmChange</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 2913610919 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There are %1 with document number %2.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Existen %1 con el numero de documento %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method CheckDateforReverseEntry - NamedType lblError</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 684513984 - NamedType 2415064240" size-unit="char" translate="yes" xml:space="preserve">
           <source>La solicitud de compra %1 tiene un importe de %2 y no coincide.</source>
           <note from="Developer" annotates="general" priority="2">ESP="La solicitud de compra %1 tiene un importe de %2 y no coincide."</note>
@@ -33777,16 +33787,6 @@
           <source>Saldo Apertura</source>
           <note from="Developer" annotates="general" priority="2">ESP="Saldo Apertura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLAccount - Field SaldoApertura - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 4220596153 - Method 3820423055 - NamedType 822108546" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4220596153">
-          <source>¿Desea cambiar %1 movimientos de contabilidad a Fecha %2?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar %1 movimientos de contabilidad a Fecha %2?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Method ChangeDateforReverseEntry - NamedType lblConfirmChange</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 4220596153 - Method 2913610919 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4220596153">
-          <source>There are %1 with document number %2.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Existen %1 con el numero de documento %2."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntry - Method CheckDateforReverseEntry - NamedType lblError</note>
         </trans-unit>
         <trans-unit id="TableExtension 4220596153 - Field 2316336532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>Cust. Ledger Currency Factor</source>

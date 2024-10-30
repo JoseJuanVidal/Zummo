@@ -124,8 +124,10 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                 Image = ChangeDates;
 
                 trigger OnAction()
+                var
+                    Eventos: Codeunit Eventos_btc;
                 begin
-                    Rec.ChangeDateforReverseEntry();
+                    Eventos.ChangeDateforReverseEntry(rec."Transaction No.", Rec."Posting Date");
 
                 end;
             }
