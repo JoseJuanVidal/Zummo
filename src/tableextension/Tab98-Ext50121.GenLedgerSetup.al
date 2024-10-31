@@ -65,6 +65,11 @@ tableextension 50121 "GenLedgerSetup" extends "General Ledger Setup"  //98
 
         }
         //- ABERTIA configuracion de acceso a SQL SERVER
+        field(50210; "Add Document Type Payments"; Boolean)
+        {
+            Caption = 'Add Type Payments when applying', Comment = 'ESP="Indicar Pagos en liquidaciones"';
+            DataClassification = CustomerContent;
+        }
     }
     var
         lblPath: Label 'Select folder', comment = 'ESP="Seleccionar Carpeta"';

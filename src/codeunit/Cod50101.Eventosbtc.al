@@ -1580,4 +1580,50 @@ codeunit 50101 "Eventos_btc"
         if FAEntryEntry.FindFirst() then
             Error(lblError, FAEntryEntry.TableCaption, GLEntry."Document No.");
     end;
+    // =============     CONTROL DE DOCUMENTO DE PAGO          ====================
+    // ==  
+    // ==  Ponemos en el diario, si el documento a liquidar es factura o efecto, tipo pago 
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnLookUpAppliesToDocCustOnAfterUpdateDocumentTypeAndAppliesTo', '', true, true)]
+    local procedure GenJournalLine_OnLookUpAppliesToDocCustOnAfterUpdateDocumentTypeAndAppliesTo(var GenJournalLine: Record "Gen. Journal Line"; CustLedgerEntry: Record "Cust. Ledger Entry")
+    var
+        GLSetup: record "General Ledger Setup";
+    begin
+        if not GLSetup.Get() then
+            exit;
+        if not GLSetup."Add Document Type Payments" then
+            exit;
+        // si el tipo de movimiento cliente es factura o efecto, ponemos tipo PAYMENT
+        if GenJournalLine.IsTemporary then
+            exit;
+        if CustLedgerEntry."Document Type" in [CustLedgerEntry."Document Type"::Bill, CustLedgerEntry."Document Type"::Invoice] then
+            if GenJournalLine."Document Type" in [GenJournalLine."Document Type"::" "] then
+                GenJournalLine.Validate("Document Type", GenJournalLine."Document Type"::Payment);
+
+        if CustLedgerEntry."Document Type" in [CustLedgerEntry."Document Type"::"Credit Memo"] then
+            if GenJournalLine."Document Type" in [GenJournalLine."Document Type"::" "] then
+                GenJournalLine.Validate("Document Type", GenJournalLine."Document Type"::Refund);
+
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnLookUpAppliesToDocVendOnAfterUpdateDocumentTypeAndAppliesTo', '', true, true)]
+    local procedure GenJournalLine_OnLookUpAppliesToDocVendOnAfterUpdateDocumentTypeAndAppliesTo(var GenJournalLine: Record "Gen. Journal Line"; VendorLedgerEntry: Record "Vendor Ledger Entry")
+    var
+        GLSetup: record "General Ledger Setup";
+    begin
+        if not GLSetup.Get() then
+            exit;
+        if not GLSetup."Add Document Type Payments" then
+            exit;
+        // si el tipo de movimiento cliente es factura o efecto, ponemos tipo PAYMENT
+        if GenJournalLine.IsTemporary then
+            exit;
+        if VendorLedgerEntry."Document Type" in [VendorLedgerEntry."Document Type"::Bill, VendorLedgerEntry."Document Type"::Invoice] then
+            if GenJournalLine."Document Type" in [GenJournalLine."Document Type"::" "] then
+                GenJournalLine.Validate("Document Type", GenJournalLine."Document Type"::Payment);
+        if VendorLedgerEntry."Document Type" in [VendorLedgerEntry."Document Type"::"Credit Memo"] then
+            if GenJournalLine."Document Type" in [GenJournalLine."Document Type"::" "] then
+                GenJournalLine.Validate("Document Type", GenJournalLine."Document Type"::Refund);
+    end;
 }

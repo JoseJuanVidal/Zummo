@@ -59,6 +59,13 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
             }
             field(BloqueoVentas; BloqueoVentas) { }
         }
+        addlast(General)
+        {
+            field("Add Document Type Payments"; "Add Document Type Payments")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     trigger OnOpenPage()

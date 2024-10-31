@@ -33728,6 +33728,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Method AbertiaTABLECONNECTION - NamedType lblConnectionString</note>
         </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 1185055465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Add Type Payments when applying</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar Pagos en liquidaciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Add Document Type Payments - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 246739618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>BloqueoCompras</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueo Compras"</note>
