@@ -1,7 +1,15 @@
-pageextension 50216 "ZM Fixed Asset G/L Journal" extends "Fixed Asset G/L Journal"
+pageextension 50118 "PaymentJournal" extends "Payment Journal"
 {
     layout
     {
+        addafter("Credit Amount")
+        {
+            field("Currency Factor"; "Currency Factor")
+            {
+                ApplicationArea = All;
+                Editable = false;
+            }
+        }
         addafter(Amount)
         {
             field("Purch. Request less 200"; "Purch. Request less 200")
@@ -16,11 +24,4 @@ pageextension 50216 "ZM Fixed Asset G/L Journal" extends "Fixed Asset G/L Journa
         }
     }
 
-    actions
-    {
-        // Add changes to page actions here
-    }
-
-    var
-        myInt: Integer;
 }

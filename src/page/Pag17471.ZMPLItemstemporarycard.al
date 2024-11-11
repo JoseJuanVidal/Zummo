@@ -1,4 +1,4 @@
-page 17415 "ZM PL Items temporary card"
+page 17471 "ZM PL Items temporary card"
 {
     Caption = 'Items registration', Comment = 'ESP="Alta de productos"';
     PageType = card;

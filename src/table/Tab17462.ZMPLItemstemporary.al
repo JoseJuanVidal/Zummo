@@ -1,4 +1,4 @@
-table 17413 "ZM PL Items temporary"
+table 17462 "ZM PL Items temporary"
 {
     DataClassification = CustomerContent;
     Caption = 'Items temporary', comment = 'ESP="Alta productos temporales"';

@@ -512,6 +512,7 @@ table 17200 "Purchase Requests less 200"
 
     local procedure SendEmailNotification()
     var
+        Employee: Record Employee;
         DocAttachment: Record "Document Attachment";
         FileManagement: Codeunit "File Management";
         SMTPSetup: Record "SMTP Mail Setup";
@@ -524,7 +525,16 @@ table 17200 "Purchase Requests less 200"
         textoHtml := GetHTLMResumen();
         PurchasesSetup.Get();
         PurchasesSetup.TestField("Email reply lower 200");
-        Recipients := PurchasesSetup."Email reply lower 200";
+        case Rec.Status of
+            Rec.Status::Approved:
+                Recipients := PurchasesSetup."Email reply lower 200";
+            else begin
+                if Employee.Get(Rec."Codigo Empleado") then
+                    Recipients := Employee."Company E-Mail";
+                if Recipients = '' then
+                    Recipients := PurchasesSetup."Email reply lower 200";
+            end;
+        end;
         txtAsunto := StrSubstNo(lblSubject, Rec."No.");
         SMTPSetup.Get();
         Clear(cduSmtp);

@@ -1,11 +1,11 @@
-page 17414 "ZM PL Items temporary list"
+page 17458 "ZM PL Items temporary list"
 {
     ApplicationArea = All;
     Caption = 'Items temporary list', Comment = 'ESP="Lista Alta de productos"';
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     SourceTable = "ZM PL Items temporary";
-    Editable = false;
+    // Editable = false;
     UsageCategory = Lists;
     CardPageId = "ZM PL Items temporary card";
 
@@ -107,6 +107,14 @@ page 17414 "ZM PL Items temporary list"
                     ApplicationArea = all;
                     Caption = 'User Status', comment = 'ESP="Estado Usuario"';
                     StyleExpr = StyleText;
+                }
+                field("User ID"; "User ID")
+                {
+                    ApplicationArea = all;
+                }
+                field(Department; Department)
+                {
+                    ApplicationArea = all;
                 }
             }
         }

@@ -67,17 +67,17 @@ tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
                         Rec."Account Type" := Rec."Account Type"::"G/L Account";
                     Rec.validate("Account No.", PurchaseRequest."G/L Account No.");
                 end;
-            // PurchaseRequest.Type::"Fixed Asset":
-            //     begin
-            //         if Rec."Account Type" <> Rec."Account Type"::"Fixed Asset" then
-            //             Rec."Account Type" := Rec."Account Type"::"Fixed Asset";
-            //         Rec.validate("Account No.", PurchaseRequest."G/L Account No.");
-            //     end;
+            PurchaseRequest.Type::Item:
+                begin
+                    // buscamos el numero de cuenta contable del ITEM
+                    Rec.Validate("Account No.", GetGenProdPostingGroup(Rec."Account No."));
+                end;
             else
                 Error(lblErroAccountType, PurchaseRequest."No.", PurchaseRequest.Type::"G/L Account", PurchaseRequest.Type::"Fixed Asset");
         end;
         Rec.Description := PurchaseRequest.Description;
         Rec.validate(Amount, PurchaseRequest.Amount);
+        Rec."Shortcut Dimension 1 Code" := PurchaseRequest."Global Dimension 1 Code";
         SetGenJnlLineDimensiones(PurchaseRequest, Rec);
         if not Rec.Insert() then
             Rec.Modify();
@@ -89,5 +89,20 @@ tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
         GenJnlLine.ValidateShortcutDimCode(1, PurchaseRequest."Global Dimension 1 Code");
         GenJnlLine.ValidateShortcutDimCode(3, PurchaseRequest."Global Dimension 3 Code");
         GenJnlLine.ValidateShortcutDimCode(8, PurchaseRequest."Global Dimension 8 Code");
+    end;
+
+    local procedure GetGenProdPostingGroup(ItemNo: code[20]): code[20]
+    var
+        Item: Record Item;
+        GeneralPostingSetup: Record "General Posting Setup";
+    begin
+        if not Item.Get(ItemNo) then
+            exit;
+        GeneralPostingSetup.Reset();
+        GeneralPostingSetup.SetRange("Gen. Bus. Posting Group", Rec."Gen. Bus. Posting Group");
+        GeneralPostingSetup.SetRange("Gen. Prod. Posting Group", Item."Gen. Prod. Posting Group");
+        if GeneralPostingSetup.FindFirst() then
+            exit(GeneralPostingSetup."Purch. Account");
+
     end;
 }
