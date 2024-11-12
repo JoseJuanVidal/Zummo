@@ -33413,6 +33413,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Pago"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ClosedPaymentOrder - Field DueDate_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1413385559 - Field 1607410299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1427373479">
+          <source>Sales warning</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CommentLine - Field AvisoVentas - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1413385559 - Field 3987999983 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1427373479">
           <source>Customer Comment</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentario Cliente"</note>

@@ -2320,4 +2320,43 @@ codeunit 50106 "SalesEvents"
             UNTIL ValueEntry.NEXT = 0;
         Window.Close();
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', 'No.', true, true)]
+    local procedure SalesLine_OnAfterValidateEvent_No(var Rec: Record "Sales Line"; var xRec: Record "Sales Line"; CurrFieldNo: Integer)
+    begin
+        case Rec."Document Type" of
+            Rec."Document Type"::Quote, Rec."Document Type"::Order:
+                begin
+                    if Rec.Type in [Rec.Type::Item] then
+                        if Rec."No." <> xRec."No." then
+                            MessageItemCommentLineAvisoVentas(Rec);
+                end;
+
+        end;
+    end;
+    // =============               ====================
+    // ==  
+    // ==  Comentarios en la ficha de producto que si tienen la marca de Aviso ventas, se muestran al seleccionarlo en documentos de ventas
+    // ==  
+    // ======================================================================================================
+    local procedure MessageItemCommentLineAvisoVentas(SalesLine: Record "Sales Line")
+    var
+        Commentline: Record "Comment Line";
+        MessageComment: text;
+    begin
+        Commentline.Reset();
+        Commentline.SetRange("Table Name", Commentline."Table Name"::Item);
+        Commentline.SetRange("No.", SalesLine."No.");
+        Commentline.SetRange(AvisoVentas, true);
+        if not Commentline.FindFirst() then
+            exit;
+        if Commentline.FindFirst() then
+            repeat
+                if MessageComment <> '' then
+                    MessageComment += '\';
+                MessageComment += Commentline.Comment;
+            Until Commentline.next() = 0;
+        if MessageComment <> '' then
+            Message(MessageComment);
+    end;
 }

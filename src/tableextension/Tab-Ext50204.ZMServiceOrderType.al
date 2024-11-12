@@ -1,4 +1,4 @@
-tableextension 17201 "ZM Service Order Type" extends "Service Order Type"
+tableextension 50204 "ZM Service Order Type" extends "Service Order Type"
 {
     fields
     {

@@ -20,6 +20,11 @@ tableextension 50145 "CommentLine" extends "Comment Line" //97
             DataClassification = CustomerContent;
             Caption = 'Date', comment = 'ESP="Fecha"';
         }
+        field(50105; AvisoVentas; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Sales warning', comment = 'ESP="Aviso Ventas"';
+        }
     }
 
     trigger OnInsert()

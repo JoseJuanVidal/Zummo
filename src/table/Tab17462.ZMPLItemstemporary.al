@@ -11,6 +11,7 @@ table 17462 "ZM PL Items temporary"
         {
             Caption = 'No.', Comment = 'ESP="Nº"';
             TableRelation = Item;
+            ValidateTableRelation = false;
 
             trigger OnValidate()
             begin
