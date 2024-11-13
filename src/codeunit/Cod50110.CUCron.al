@@ -1591,6 +1591,7 @@ codeunit 50110 "CU_Cron"
         CustomerRecordNo := AbertiaSalesCustomer.CreateSalesCustomer();
         ItemRecordNo := ABERTIASalesItem.CreateSalesItem();
         FacturasRecordNo := ABERTIASalesFacturas.CreateSalesFacturas(TypeUpdate);
+        FacturasRecordNo := ABERTIASalesFacturas.CreateSalesAbonos(TypeUpdate);
         PedidosRecordNo := AbertiaSalesPedidos.CreateSalesPedidos(TypeUpdate);
         ABERTIAUpdateSendEmail(Body, GLAccountRecordNo, GLEntryRecordNo, GLBudgetEntryRecordNo, CustomerRecordNo, ItemRecordNo, FacturasRecordNo, PedidosRecordNo);
     end;

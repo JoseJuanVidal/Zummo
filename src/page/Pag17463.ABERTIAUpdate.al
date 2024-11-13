@@ -220,6 +220,24 @@ page 17463 "ABERTIA Update"
                         UpdateEntryNos();
                     end;
                 }
+                action(UpdateSalesAbonos)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Update Sales CR. Memo', comment = 'ESP="Actualizar Abonos Ventas"';
+                    Image = CreditMemo;
+                    Promoted = true;
+                    PromotedCategory = Process;
+
+                    trigger OnAction()
+                    var
+                        ABERTIASalesFacturas: Record "ABERTIA SalesFacturas";
+                        lblConfirm: Label '¿Desea actualizar los Abonos Ventas?', comment = 'ESP="¿Desea actualizar los Abonos Ventas?"';
+                    begin
+                        if Confirm(lblConfirm) then
+                            ABERTIASalesFacturas.CreateSalesAbonos(TypeUpdate);
+                        UpdateEntryNos();
+                    end;
+                }
                 action(UpdateSalesPedidos)
                 {
                     ApplicationArea = all;

@@ -413,6 +413,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesCustomer - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 143622832 - Field 1136930463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00 - Origen</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesCustomer - Field 00 - Origen - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 143622832 - Field 978621307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AlertaMaquina</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -618,6 +623,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 1136930463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00 - Origen</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field 00 - Origen - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2663694671 - Field 3315188350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Allow Invoice Disc_</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -767,6 +777,11 @@
           <source>Document No_</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Document No_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2663694671 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Type</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesFacturas - Field Document Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2663694671 - Field 121744499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Drop Shipment</source>
@@ -1198,6 +1213,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesItem - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2930499543 - Field 1136930463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00 - Origen</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesItem - Field 00 - Origen - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2930499543 - Field 4067082012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ABC</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -1317,6 +1337,11 @@
           <source>ABERTIA SalesPedidos</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2804996324 - Field 1136930463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>00 - Origen</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ABERTIA SalesPedidos - Field 00 - Origen - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2804996324 - Field 1253774827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>00. AÑO</source>
@@ -14143,6 +14168,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los Productos?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateItems - Method OnAction - NamedType lblConfirm</note>
           <target>¿Desea actualizar los Productos?</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 2780145529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Sales CR. Memo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Abonos Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesAbonos - Property Caption</note>
+          <target>Actualizar Abonos Ventas</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 2780145529 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los Abonos Ventas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los Abonos Ventas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateSalesAbonos - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea actualizar los Abonos Ventas?</target>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Action 662136695 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update Customer</source>

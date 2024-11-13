@@ -40,7 +40,10 @@ table 17449 "ABERTIA SalesPedidos"
         field(30; "00. FECHA PROMETIDA ENTREGA"; Date) { ExternalName = '00. FECHA PROMETIDA ENTREGA'; }
         field(31; "00. FECHA ALTA PEDIDO"; Date) { ExternalName = '00. FECHA ALTA PEDIDO'; }
         field(32; "00. FECHA REQUERIDA ENTREGA"; Date) { ExternalName = '00. FECHA REQUERIDA ENTREGA'; }
-
+        field(50998; "00 - Origen"; code[10])
+        {
+            ExternalName = '00 - Origen';
+        }
         field(50999; ID; Guid)
         {
             Caption = 'ID';
@@ -163,7 +166,12 @@ table 17449 "ABERTIA SalesPedidos"
         ABERTIASalesPedidos."00. FECHA PROMETIDA ENTREGA" := SalesLine."Promised Delivery Date";
         ABERTIASalesPedidos."00. FECHA ALTA PEDIDO" := SalesHeader."Order Date";
         ABERTIASalesPedidos."00. FECHA REQUERIDA ENTREGA" := SalesLine."Requested Delivery Date";
-
+        Case CompanyName of
+            'ZUMMO':
+                ABERTIASalesPedidos."00 - Origen" := 'ZIM';
+            'INVESTMENTS':
+                ABERTIASalesPedidos."00 - Origen" := 'ZINV';
+        end;
         if not ABERTIASalesPedidos.Insert() then
             ABERTIASalesPedidos.Modify();
     end;

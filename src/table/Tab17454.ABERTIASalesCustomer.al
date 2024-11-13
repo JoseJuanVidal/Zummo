@@ -47,6 +47,10 @@ table 17454 "ABERTIA SalesCustomer"
         field(37; "Name 2"; text[50]) { ExternalName = 'Name 2'; }
         field(38; "Expr1"; text[50]) { ExternalName = 'Expr1'; }
         field(39; "CodigoPais"; code[20]) { ExternalName = 'CodigoPais'; }
+        field(50998; "00 - Origen"; code[10])
+        {
+            ExternalName = '00 - Origen';
+        }
         field(50999; ID; Guid)
         {
             Caption = 'ID';
@@ -163,6 +167,12 @@ table 17454 "ABERTIA SalesCustomer"
         ABERTIASalesCustomer."Name 2" := customer."Name 2";
         // ABERTIASalesCustomer."Expr1" := customer.e
         ABERTIASalesCustomer."CodigoPais" := customer."Country/Region Code";
+        Case CompanyName of
+            'ZUMMO':
+                ABERTIASalesCustomer."00 - Origen" := 'ZIM';
+            'INVESTMENTS':
+                ABERTIASalesCustomer."00 - Origen" := 'ZINV';
+        end;
         if not ABERTIASalesCustomer.Insert() then
             ABERTIASalesCustomer.Modify();
 

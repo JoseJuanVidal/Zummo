@@ -30,7 +30,10 @@ table 17453 "ABERTIA SalesItem"
         field(20; GAMA; code[20]) { ExternalName = 'GAMA'; }
         field(21; LineaEconomica; code[20]) { ExternalName = 'LineaEconomica'; }
         field(22; Canal; code[20]) { ExternalName = 'Canal'; }
-
+        field(50998; "00 - Origen"; code[10])
+        {
+            ExternalName = '00 - Origen';
+        }
         field(50999; ID; Guid)
         {
             Caption = 'ID';
@@ -123,6 +126,12 @@ table 17453 "ABERTIA SalesItem"
         ABERTIASalesItem.GAMA := Item.desGama_btc;
         ABERTIASalesItem.LineaEconomica := Item.desLineaEconomica_btc;
         ABERTIASalesItem.Canal := format(Item.Canal);
+        Case CompanyName of
+            'ZUMMO':
+                ABERTIASalesItem."00 - Origen" := 'ZIM';
+            'INVESTMENTS':
+                ABERTIASalesItem."00 - Origen" := 'ZINV';
+        end;
         if not ABERTIASalesItem.Insert() then
             ABERTIASalesItem.Modify();
 
