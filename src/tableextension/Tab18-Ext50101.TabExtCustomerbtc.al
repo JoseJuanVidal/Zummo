@@ -370,6 +370,11 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             Caption = 'Allows change Prices/Dates', Comment = 'ESP="Permite cambio Precios/Dtos."';
             DataClassification = CustomerContent;
         }
+        field(50100; FechaAlta; date)
+        {
+            Caption = 'Date of Registering', comment = 'ESP="Fecha Alta"';
+            Editable = False;
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var
@@ -383,4 +388,9 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             FiltroFechaAseg := 0D;
         end;
     end;*/
+    trigger OnInsert()
+    begin
+        if Rec.FechaAlta = 0D then
+            Rec.FechaAlta := Today();
+    end;
 }

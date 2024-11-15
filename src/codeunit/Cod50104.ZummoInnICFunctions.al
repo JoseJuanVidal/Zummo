@@ -1763,7 +1763,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     var
         Windows: Dialog;
     begin
-        Windows.Open('Acutalizando.....');
+        Windows.Open('Actualizando contador registros.....');
         GetRecordsNoGLAccount(GLRecordsNo);
         GetRecordsNoGLEntry(GLEntryRecordsNo);
         GetRecordsNoBudgetGLEntry(GLBudgetRecordsNo);

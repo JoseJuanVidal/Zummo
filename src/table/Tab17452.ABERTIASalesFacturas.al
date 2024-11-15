@@ -209,7 +209,7 @@ table 17452 "ABERTIA SalesFacturas"
             ABERTIASalesFacturas.Init();
             ABERTIASalesFacturas.ID := CreateGuid();
         end;
-        ABERTIASalesFacturas."Document Type" := format(SalesHeader."Document Type"::Invoice);
+        ABERTIASalesFacturas."Document Type" := 'FACTURA';
         ABERTIASalesFacturas."Document No_" := SalesInvoiceLine."Document No.";
         ABERTIASalesFacturas."Line No_" := SalesInvoiceLine."Line No.";
         ABERTIASalesFacturas."Sell-to Customer No_" := SalesInvoiceLine."Sell-to Customer No.";
@@ -431,7 +431,7 @@ table 17452 "ABERTIA SalesFacturas"
             ABERTIASalesFacturas.Init();
             ABERTIASalesFacturas.ID := CreateGuid();
         end;
-        ABERTIASalesFacturas."Document Type" := format(SalesHeader."Document Type"::Invoice);
+        ABERTIASalesFacturas."Document Type" := 'ABONO';
         ABERTIASalesFacturas."Document No_" := SalesCrMemoLine."Document No.";
         ABERTIASalesFacturas."Line No_" := SalesCrMemoLine."Line No.";
         ABERTIASalesFacturas."Sell-to Customer No_" := SalesCrMemoLine."Sell-to Customer No.";

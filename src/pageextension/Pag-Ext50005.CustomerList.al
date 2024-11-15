@@ -174,6 +174,11 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 CaptionClass = '1,2,8';
                 Visible = false;
             }
+            field(FechaAlta; FechaAlta)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 
