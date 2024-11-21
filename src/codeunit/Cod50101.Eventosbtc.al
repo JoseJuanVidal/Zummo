@@ -1626,4 +1626,40 @@ codeunit 50101 "Eventos_btc"
             if GenJournalLine."Document Type" in [GenJournalLine."Document Type"::" "] then
                 GenJournalLine.Validate("Document Type", GenJournalLine."Document Type"::Refund);
     end;
+
+    // =============     REGISTRO DE DIARIOS GENERALES Y DIARIOS DE A/F - COMPRA MENOR A 200          ====================
+    // ==  
+    // ==  Cuando se registra un diario con compra menor 200, cambiamos el estado de las compras 
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Batch", 'OnBeforeCode', '', true, true)]
+    local procedure GenJnlPostBatch_OnBeforeCode(var GenJournalLine: Record "Gen. Journal Line"; PreviewMode: Boolean; CommitIsSuppressed: Boolean)
+    begin
+        if PreviewMode then
+            exit;
+        // Si tiene COMPRAS MENOR 200 €, lo marcamos como registrado
+        if GenJournalLine."Purch. Request less 200" <> '' then
+            PurchaseRequestsless200_UpdateState(GenJournalLine."Purch. Request less 200");
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeCode', '', true, true)]
+    local procedure GenJnlPostLine_OnBeforeCode(var GenJnlLine: Record "Gen. Journal Line"; CheckLine: Boolean; var IsPosted: Boolean; var GLReg: Record "G/L Register")
+    begin
+        if GenJnlLine.IsTemporary then
+            exit;
+        // Si tiene COMPRAS MENOR 200 €, lo marcamos como registrado
+        if GenJnlLine."Purch. Request less 200" <> '' then
+            PurchaseRequestsless200_UpdateState(GenJnlLine."Purch. Request less 200");
+    end;
+
+
+    local procedure PurchaseRequestsless200_UpdateState(PurchaseRequestNo: code[20])
+    var
+        PurchaseRequestsless200: Record "Purchase Requests less 200";
+    begin
+        if not PurchaseRequestsless200.Get(PurchaseRequestNo) then
+            exit;
+        PurchaseRequestsless200.Status := PurchaseRequestsless200.Status::Posted;
+        PurchaseRequestsless200.Modify();
+    end;
 }

@@ -1,4 +1,4 @@
-table 17417 "ZM Item Translation temporary"
+table 17420 "ZM Item Translation temporary"
 {
     DataClassification = CustomerContent;
     Caption = 'Item Tranlation', comment = 'ESP="Traducciona productos"';

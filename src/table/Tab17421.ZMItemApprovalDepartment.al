@@ -1,4 +1,4 @@
-table 17418 "ZM Item Approval Department"
+table 17421 "ZM Item Approval Department"
 {
     Caption = 'Item Approval Department';
     DataClassification = CustomerContent;

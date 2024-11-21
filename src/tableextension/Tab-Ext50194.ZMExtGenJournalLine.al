@@ -6,7 +6,7 @@ tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
         {
             Caption = 'Purch. Request less 200', Comment = 'ESP="Compra menor 200"';
             DataClassification = CustomerContent;
-            TableRelation = "Purchase Requests less 200" where(Status = const(Approved), Invoiced = const(false));
+            TableRelation = "Purchase Requests less 200" where(Status = const(Approved), Type = filter("Fixed Asset" | "G/L Account"));
 
             trigger OnValidate()
             begin
@@ -65,7 +65,13 @@ tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
                 begin
                     if Rec."Account Type" <> Rec."Account Type"::"G/L Account" then
                         Rec."Account Type" := Rec."Account Type"::"G/L Account";
+                    Rec."Account Type" := Rec."Account Type"::"G/L Account";
                     Rec.validate("Account No.", PurchaseRequest."G/L Account No.");
+                end;
+            PurchaseRequest.Type::"Fixed Asset":
+                begin
+                    Rec."Account Type" := Rec."Account Type"::"Fixed Asset";
+                    Rec.Validate("Account No.", PurchaseRequest."G/L Account No.");
                 end;
             PurchaseRequest.Type::Item:
                 begin
