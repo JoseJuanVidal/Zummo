@@ -140,6 +140,8 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
     local procedure OnValidate_PurchRequest()
     var
         PurchaseSetup: Record "Purchases & Payables Setup";
+        Item: Record Item;
+        GLAccount: Record "G/L Account";
         PurchaseHeader: Record "Purchase Header";
         PurchaseLine: Record "Purchase Line";
         PurchaseRequest: Record "Purchase Requests less 200";
@@ -193,6 +195,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         PurchaseLine.Description := copystr(StrSubstNo(lblTxtLineDesc, PurchaseRequest.TableCaption, PurchaseRequest."No.", PurchaseRequest."Vendor Name"), 1, MaxStrLen(PurchaseLine.Description));
         PurchaseLine.Insert(true);
         PurchaseLine."Line No." += PurchaseLine."Line No.";
+        PurchaseLine.Validate(Type, PurchaseLine.Type::"G/L Account");
         case PurchaseRequest.Type of
             PurchaseRequest.Type::"Fixed Asset":
                 PurchaseLine.Validate(Type, PurchaseLine.Type::"Fixed Asset");
@@ -200,6 +203,12 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
                 PurchaseLine.Validate(Type, PurchaseLine.Type::"G/L Account");
             PurchaseRequest.Type::Item:
                 PurchaseLine.Validate(Type, PurchaseLine.Type::Item);
+            else begin
+                if GLAccount.Get(PurchaseRequest."No.") then
+                    PurchaseLine.Validate(Type, PurchaseLine.Type::"G/L Account")
+                else if Item.Get(PurchaseRequest."No.") then
+                    PurchaseLine.Validate(Type, PurchaseLine.Type::Item);
+            end;
         end;
         PurchaseLine.Validate("No.", PurchaseRequest."G/L Account No.");
         PurchaseLine.Description := PurchaseRequest.Description;
