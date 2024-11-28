@@ -67,12 +67,10 @@ pageextension 50163 "PostedPurchaseRcptSubform" extends "Posted Purchase Rcpt. S
     var
         PurchaseInvoiceLine: Record "Purch. Inv. Line";
     begin
-        IF Type = Type::Item THEN BEGIN
-            PurchaseInvoiceLine.Reset();
-            PurchaseInvoiceLine.SetRange("Receipt No.", Rec."Document No.");
-            PurchaseInvoiceLine.SetRange("Receipt Line No.", rec."Line No.");
-            PAGE.RUNMODAL(PAGE::"Posted Purchase Invoice Lines", PurchaseInvoiceLine);
-        END;
+        PurchaseInvoiceLine.Reset();
+        PurchaseInvoiceLine.SetRange("Receipt No.", Rec."Document No.");
+        PurchaseInvoiceLine.SetRange("Receipt Line No.", rec."Line No.");
+        PAGE.RUNMODAL(PAGE::"Posted Purchase Invoice Lines", PurchaseInvoiceLine);
     end;
 
 }
