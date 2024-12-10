@@ -102,7 +102,7 @@ table 17457 "ABERTIA GL Account"
     begin
         Window.Open('Nº Cuenta contable #1################');
         GLAccount.Reset();
-        // GLAccount.SetRange("Account Type", GLAccount."Account Type"::Posting);
+        GLAccount.SetRange("Account Type", GLAccount."Account Type"::Posting);
         if GLAccount.FindSet() then
             repeat
                 Window.Update(1, GLAccount."No.");
