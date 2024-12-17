@@ -45,7 +45,7 @@ page 17410 "ZM PL Item Setup approvals"
 
     trigger OnOpenPage()
     begin
-        ItemRegistrationApproval.CheckSUPERUserConfiguration();
+        ItemRegistrationApproval.CheckSUPERUserConfiguration(true);
     end;
 
     var

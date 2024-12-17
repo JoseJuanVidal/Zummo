@@ -187,7 +187,7 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             var
                 ItemRegCodeunit: Codeunit "ZM PL Items Regist. aprovals";
             begin
-                ItemRegCodeunit.CheckSUPERUserConfiguration();
+                ItemRegCodeunit.CheckSUPERUserConfiguration(true);
             end;
         }
 
@@ -205,7 +205,7 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             var
                 ItemRegCodeunit: Codeunit "ZM PL Items Regist. aprovals";
             begin
-                ItemRegCodeunit.CheckSUPERUserConfiguration();
+                ItemRegCodeunit.CheckSUPERUserConfiguration(true);
             end;
         }
         field(50260; "Maximun Discounts Users"; Decimal)
@@ -217,7 +217,7 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             var
                 ItemRegCodeunit: Codeunit "ZM PL Items Regist. aprovals";
             begin
-                ItemRegCodeunit.CheckSUPERUserConfiguration();
+                ItemRegCodeunit.CheckSUPERUserConfiguration(true);
             end;
         }
         field(50270; "GTIN Nos."; code[20])

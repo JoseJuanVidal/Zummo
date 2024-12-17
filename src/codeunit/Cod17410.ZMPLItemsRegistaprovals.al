@@ -63,7 +63,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
     // ==  
     // ======================================================================================================
 
-    procedure CheckSUPERUserConfiguration()
+    procedure CheckSUPERUserConfiguration(ShowError: Boolean): Boolean
     var
         User: Record User;
         AccessControl: Record "Access Control";
@@ -74,8 +74,12 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         AccessControl.SetRange("User Security ID", User."User Security ID");
         AccessControl.SetRange("Role ID", 'D365 FULL ACCESS');
         AccessControl.SetFilter("Company Name", '%1|%2', '', CompanyName);
-        if not AccessControl.FindFirst() then
-            ERROR(StrSubstNo('El usuario %1 no tiene permisos para editar estos datos', UserID));
+        if not AccessControl.FindFirst() then begin
+            if ShowError then
+                ERROR(StrSubstNo('El usuario %1 no tiene permisos para editar estos datos', UserID));
+            exit(false);
+        end;
+        exit(true);
     end;
 
     procedure CheckUserItemPurchasePriceApproval(): Boolean

@@ -66,7 +66,7 @@ page 17413 "ZM PL Setup Item registration"
 
     trigger OnOpenPage()
     begin
-        ItemRegistrationApproval.CheckSUPERUserConfiguration();
+        ItemRegistrationApproval.CheckSUPERUserConfiguration(true);
         Rec.RESET;
         IF NOT Rec.GET THEN BEGIN
             Rec.INIT;

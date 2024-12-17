@@ -44,7 +44,7 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             var
                 ItemRegCodeunit: Codeunit "ZM PL Items Regist. aprovals";
             begin
-                ItemRegCodeunit.CheckSUPERUserConfiguration();
+                ItemRegCodeunit.CheckSUPERUserConfiguration(true);
             end;
         }
         field(50111; "Aviso Final fecha"; Boolean)
@@ -88,7 +88,7 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
             var
                 ItemRegCodeunit: Codeunit "ZM PL Items Regist. aprovals";
             begin
-                ItemRegCodeunit.CheckSUPERUserConfiguration();
+                ItemRegCodeunit.CheckSUPERUserConfiguration(true);
             end;
         }
     }

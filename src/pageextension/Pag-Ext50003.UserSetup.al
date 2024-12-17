@@ -84,7 +84,17 @@ pageextension 50003 "UserSetup" extends "User Setup"
         }
     }
 
-    trigger OnOpenPage()
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        CheckUserConfiguration();
+    end;
+
+    trigger OnModifyRecord(): Boolean
+    begin
+        CheckUserConfiguration();
+    end;
+
+    trigger OnDeleteRecord(): Boolean
     begin
         CheckUserConfiguration();
     end;
@@ -93,7 +103,7 @@ pageextension 50003 "UserSetup" extends "User Setup"
     var
         ItemRegistrationCodes: Codeunit "ZM PL Items Regist. aprovals";
     begin
-        ItemRegistrationCodes.CheckSUPERUserConfiguration();
+        ItemRegistrationCodes.CheckSUPERUserConfiguration(true);
     end;
 
 }
