@@ -10,16 +10,6 @@ pageextension 50187 "ZM PurchaseInvoice" extends "Purchase Invoice"
             {
                 ApplicationArea = all;
             }
-            field("CONSULTIA ID Factura"; "CONSULTIA ID Factura")
-            {
-                ApplicationArea = all;
-                Visible = false;
-            }
-            field("CONSULTIA N Factura"; "CONSULTIA N Factura")
-            {
-                ApplicationArea = all;
-                Visible = false;
-            }
             field("Posting No. Series"; "Posting No. Series")
             {
                 ApplicationArea = all;

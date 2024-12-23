@@ -2,20 +2,14 @@ tableextension 50140 "PurchCrMemoHdr" extends "Purch. Cr. Memo Hdr."  //124
 {
     fields
     {
-        field(50125; "CONSULTIA ID Factura"; Integer)
+        field(50125; "CONSULTIA ID Factura"; code[20])
         {
             Caption = 'CONSULTIA Id Factura', Comment = 'ESP="CONSULTIA Id Factura"';
             DataClassification = CustomerContent;
             Editable = false;
-            TableRelation = "ZM CONSULTIA Invoice Header";
+            TableRelation = "ZM BCD Travel Invoice Header";
         }
-        field(50126; "CONSULTIA N Factura"; code[20])
-        {
-            Caption = 'CONSULTIA Id Factura', Comment = 'ESP="CONSULTIA Id Factura"';
-            DataClassification = CustomerContent;
-            Editable = false;
-            TableRelation = "ZM CONSULTIA Invoice Header".N_Factura where(Id = field("CONSULTIA ID Factura"));
-        }
+
         //Guardar Nº asiento y Nº documento
         field(50100; NumAsiento_btc; Integer)
         {

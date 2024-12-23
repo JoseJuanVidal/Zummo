@@ -101,20 +101,6 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             end;
 
         }
-        field(50125; "CONSULTIA ID Factura"; Integer)
-        {
-            Caption = 'CONSULTIA Id Factura', Comment = 'ESP="CONSULTIA Id Factura"';
-            DataClassification = CustomerContent;
-            Editable = false;
-            TableRelation = "ZM CONSULTIA Invoice Header";
-        }
-        field(50126; "CONSULTIA N Factura"; code[20])
-        {
-            Caption = 'CONSULTIA Id Factura', Comment = 'ESP="CONSULTIA Id Factura"';
-            DataClassification = CustomerContent;
-            Editable = false;
-            TableRelation = "ZM CONSULTIA Invoice Header".N_Factura where(Id = field("CONSULTIA ID Factura"));
-        }
         //+  NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {

@@ -800,8 +800,206 @@ codeunit 50104 "Zummo Inn. IC Functions"
             end;
         end;
     end;
+    // =============     BCD Travel          ====================
+    // ==  
+    // ==  importar de Excel del portal de BCD Travel de los albaranes de viajes.
+    // ==  
+    // ======================================================================================================
 
+    procedure ImportExcelBCDTravelCon07()
+    var
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        FileName: text;
+        Sheetname: text;
+        NroAlbaran: code[20];
+        OldAlbaran: code[20];
+        LineNo: Integer;
+        NVInStream: InStream;
+        UploadResult: Boolean;
+        Rows: Integer;
+        i: Integer;
+        Text000: label 'Cargar Fichero de Excel';
+    begin
+        ExcelBuffer.DeleteAll();
+        UploadResult := UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream);
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
 
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 1);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+        // primero miramos si existen líneas y obtenemos la ultima línea
+
+        for i := 4 to rows do begin  //rows
+            NroAlbaran := '';
+            ExcelBuffer.SetRange("Row No.", i);
+            ExcelBuffer.SetRange("Column No.", 9);
+            if ExcelBuffer.FindSet() then
+                NroAlbaran := ExcelBuffer."Cell Value as Text";
+            if NroAlbaran <> '' then begin
+                if OldAlbaran <> NroAlbaran then begin
+                    OldAlbaran := NroAlbaran;
+                    LineNo := 0;
+                end;
+                LineNo += 10000;
+                UpdateBCDTravelHdr(ExcelBuffer, NroAlbaran, i, LineNo);
+            end;
+        end;
+    end;
+
+    local procedure UpdateBCDTravelHdr(var ExcelBuffer: Record "Excel Buffer" temporary; NroAlbaran: code[20]; RowNo: Integer; LineNo: Integer)
+    var
+        BCDTravelHdr: record "ZM BCD Travel Invoice Header";
+    begin
+        if not BCDTravelHdr.Get(NroAlbaran) then
+            CreateBCDTravelHdr(ExcelBuffer, NroAlbaran, RowNo);
+        CreateBCDTravelLine(ExcelBuffer, NroAlbaran, RowNo, LineNo);
+    end;
+
+    local procedure CreateBCDTravelHdr(var ExcelBuffer: Record "Excel Buffer" temporary; NroAlbaran: code[20]; RowNo: Integer)
+    var
+        BCDTravelHdr: record "ZM BCD Travel Invoice Header";
+        BCDTravelLine: record "ZM BCD Travel Invoice line";
+        ValueText: Text;
+        Day: Integer;
+        Month: Integer;
+        Year: Integer;
+    begin
+        ExcelBuffer.SetRange("Row No.", RowNo);
+        BCDTravelHdr.Init();
+        BCDTravelHdr."Nro_Albarán" := NroAlbaran;
+        ExcelBuffer.SetRange("Column No.", 10);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        Evaluate(Day, copystr(ValueText, 1, 2));
+        Evaluate(Month, copystr(ValueText, 4, 2));
+        Evaluate(Year, copystr(ValueText, 7, 4));
+        BCDTravelHdr."Fecha Albarán" := DMY2Date(Day, Month, Year);
+        ExcelBuffer.SetRange("Column No.", 27);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelHdr."Descripcion" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 5);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelHdr."Cod. Centro Coste" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 12);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        Evaluate(Day, copystr(ValueText, 1, 2));
+        Evaluate(Month, copystr(ValueText, 4, 2));
+        Evaluate(Year, copystr(ValueText, 7, 4));
+        BCDTravelHdr."Fec Inicio Srv" := DMY2Date(Day, Month, Year);
+        ExcelBuffer.SetRange("Column No.", 13);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        Evaluate(Day, copystr(ValueText, 1, 2));
+        Evaluate(Month, copystr(ValueText, 4, 2));
+        Evaluate(Year, copystr(ValueText, 7, 4));
+        BCDTravelHdr."Fec Fin Srv" := DMY2Date(Day, Month, Year);
+        ExcelBuffer.SetRange("Column No.", 15);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelHdr."Ciudad Destino" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 29);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelHdr."Cod Empleado" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 30);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelHdr."Nombre Empleado" := ValueText;
+        BCDTravelHdr.Insert()
+    end;
+
+    local procedure CreateBCDTravelLine(var ExcelBuffer: Record "Excel Buffer" temporary; NroAlbaran: code[20]; RowNo: Integer; LineNo: Integer)
+    var
+        BCDTravelLine: record "ZM BCD Travel Invoice line";
+        ValueText: Text;
+        Day: Integer;
+        Month: Integer;
+        Year: Integer;
+    begin
+        ExcelBuffer.SetRange("Row No.", RowNo);
+        BCDTravelLine.Init();
+        BCDTravelLine."Nro_Albarán" := NroAlbaran;
+        BCDTravelLine."Line No." := LineNo;
+        ExcelBuffer.SetRange("Column No.", 10);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        Evaluate(Day, copystr(ValueText, 1, 2));
+        Evaluate(Month, copystr(ValueText, 4, 2));
+        Evaluate(Year, copystr(ValueText, 7, 4));
+        BCDTravelLine."Fecha Albarán" := DMY2Date(Day, Month, Year);
+        ExcelBuffer.SetRange("Column No.", 27);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelLine."Descripcion" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 5);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelLine."Cod. Centro Coste" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 12);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        Evaluate(Day, copystr(ValueText, 1, 2));
+        Evaluate(Month, copystr(ValueText, 4, 2));
+        Evaluate(Year, copystr(ValueText, 7, 4));
+        BCDTravelLine."Fec Inicio Srv" := DMY2Date(Day, Month, Year);
+        ExcelBuffer.SetRange("Column No.", 13);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        Evaluate(Day, copystr(ValueText, 1, 2));
+        Evaluate(Month, copystr(ValueText, 4, 2));
+        Evaluate(Year, copystr(ValueText, 7, 4));
+        BCDTravelLine."Fec Fin Srv" := DMY2Date(Day, Month, Year);
+        ExcelBuffer.SetRange("Column No.", 15);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelLine."Ciudad Destino" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 29);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelLine."Cod Empleado" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 30);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelLine."Nombre Empleado" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 16);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelLine."Tipo Servicio" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 17);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelLine."Nº Billete o Bono" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 20);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        Evaluate(BCDTravelLine."%Impuesto", ValueText);
+        ExcelBuffer.SetRange("Column No.", 21);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        Evaluate(BCDTravelLine."Imp Base Imponible", ValueText);
+        ExcelBuffer.SetRange("Column No.", 22);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        Evaluate(BCDTravelLine."Imp Cuota Impuesto", ValueText);
+        ExcelBuffer.SetRange("Column No.", 23);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        Evaluate(BCDTravelLine."Imp Total", ValueText);
+        BCDTravelLine.Insert()
+    end;
     // =============     CONSULTIA TRAVEL           ====================
     // ==  
     // ==  Aplicacion de gestion de viajes 
@@ -824,95 +1022,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     // ==  
     // ==  
 
-    procedure REST_CONSULTIA(metodo: Text; metodoREST: Text; parametros: Text; requiereAutenticacion: Boolean; var statusCode: Integer; var respuestaJSON: JsonObject; indicarEmpresa: Boolean)
-    var
-        Client: HttpClient;
-        ContentHeaders: HttpHeaders;
-        ClientHeaders: HttpHeaders;
-        RequestMessage: HttpRequestMessage;
-        ResponseMessage: HttpResponseMessage;
-        RequestContent: HttpContent;
-        ResultJsonToken: JsonToken;
-
-        TempBlob: Record TempBlob;
-        Url: Text;
-        StringAuthorization: Text;
-        ResponseText: Text;
-        Texto: Text;
-        User: text;
-        PassWebServKey: Text;
-        StringAuth: Text;
-
-    begin
-        PurchasesPayablesSetup.Get();
-        PurchasesPayablesSetup.TestField("CONSULTIA Url");
-        PurchasesPayablesSetup.TestField("CONSULTIA User");
-        PurchasesPayablesSetup.TestField("CONSULTIA Password");
-        //Creamos una url
-        Url := PurchasesPayablesSetup."CONSULTIA Url" + metodo;
-        //Añadimos los headers de petición
-        RequestContent.GetHeaders(ContentHeaders);
-
-        //Obtenemos los headers por defecto
-        ClientHeaders := Client.DefaultRequestHeaders();
-
-
-        User := PurchasesPayablesSetup."CONSULTIA User"; // 'zummo_test';
-        PassWebServKey := PurchasesPayablesSetup."CONSULTIA Password"; // 'zummo_test';
-
-        TempBlob.WriteTextLine(User + ':' + PassWebServKey);
-        StringAuth := TempBlob.ToBase64String();
-
-        //Si se requiere autenticacion(menos para pedir token de acceso siempre será true) entra
-        if requiereAutenticacion then begin
-
-            StringAuthorization := 'Basic ' + StringAuth;
-            //Creamos la cabecera de athorization
-            ClientHeaders.Add('Authorization', StringAuthorization);
-        end;
-
-        //Si el metodo es de tipo Post o Patch entra para configurar los contentheaders
-        if metodoREST in ['POST', 'PATCH'] then begin
-
-            RequestContent.WriteFrom(parametros);
-            ContentHeaders.Remove('Content-Type');
-            ContentHeaders.Add('Content-Type', 'application/json');
-
-        end;
-
-        ClientHeaders.Add('Accept', 'application/json');
-
-        //Asignamos el metodo rest para la petición http
-        RequestMessage.Method(metodoREST);
-        //Asignamos la url para la peticion http 
-        RequestMessage.SetRequestUri(Url);
-        if metodoREST <> 'GET' then
-            RequestMessage.Content := RequestContent;
-
-        //Si se puede enviar los datos
-        if Client.Send(RequestMessage, ResponseMessage) then begin
-            //si esun codigo exitoso(200, 201)
-            if (ResponseMessage.IsSuccessStatusCode()) then begin
-                ResponseMessage.Content.ReadAs(ResponseText);//Leemos el contenido de la respuesta http
-            end
-            else begin
-                ResponseMessage.Content.ReadAs(ResponseText);
-                //Message('%1', ResponseText);
-            end;
-        end
-        else begin
-            ResponseMessage.Content.ReadAs(ResponseText);
-        end;
-
-        //Procesamos el json de la peticion y su status code para posteriormente pasarla por el valor de referencia
-        statusCode := ResponseMessage.HttpStatusCode;
-        if statusCode = 200 then
-            respuestaJSON.ReadFrom(ResponseText)
-        else
-            Error(ResponseText);
-
-
-    end;
+    // 
 
     // ======================================================================================================
     // =============     Get Lista Viajeros          ====================
@@ -920,18 +1030,18 @@ codeunit 50104 "Zummo Inn. IC Functions"
     // ==  Detalle de los empleados de su organización registrados en nuestros sistemas. 
     // ==  
     // ======================================================================================================
-    procedure GetListaViajeros()
-    var
-        JsonBody: JsonObject;
-        JsonResponse: JsonObject;
-        JsonTokResponse: JsonToken;
-        ErrorText: Text;
-        StatusCode: Integer;
-    begin
-        REST_CONSULTIA(lblListaViajero, 'GET', '', true, StatusCode, JsonResponse, false);
-        Message(format(JsonResponse));
+    // procedure GetListaViajeros()
+    // var
+    //     JsonBody: JsonObject;
+    //     JsonResponse: JsonObject;
+    //     JsonTokResponse: JsonToken;
+    //     ErrorText: Text;
+    //     StatusCode: Integer;
+    // begin
+    //     REST_CONSULTIA(lblListaViajero, 'GET', '', true, StatusCode, JsonResponse, false);
+    //     Message(format(JsonResponse));
 
-    end;
+    // end;
 
     // ======================================================================================================
     // =============     GetInvoicebyDate          ====================
@@ -951,794 +1061,794 @@ codeunit 50104 "Zummo Inn. IC Functions"
     // ==  
     // ==  
     // ======================================================================================================
-    procedure GetInvoicebyDate(Startdate: Date; EndDate: date)
-    var
-        Vendor: Record Vendor;
-        CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
-        JsonBody: JsonObject;
-        JsonResponse: JsonObject;
-        JsonTokResponse: JsonToken;
-        JsonEmisor: JsonObject;
-        JsonReceptor: JsonObject;
-        JsonFacturas: JsonArray;
-        JsonFactura: JsonToken;
-        JsonFacturaDetails: JsonArray;
-        JsonFacturaDetail: JsonToken;
-        ErrorText: Text;
-        Metodo: text;
-        Valuetext: text;
-        VendorName: text;
-        StatusCode: Integer;
-        Window: Dialog;
-        lblDlg: Label 'Invoice No. #1################', comment = 'ESP="Nº Factura #1################"';
-    begin
-        Window.Open(lblDlg);
-        Metodo := lblInvoice + StrSubstNo(lblDate, format(Startdate, 0, '<day,2>/<Month,2>/<Year4>'), format(EndDate, 0, '<day,2>/<Month,2>/<Year4>'));
-
-        REST_CONSULTIA(Metodo, 'GET', '', true, StatusCode, JsonResponse, false);
-
-
-        JsonEmisor := GetJSONItemFieldObject(JsonResponse.AsToken(), 'Emisor');
-        JsonReceptor := GetJSONItemFieldObject(JsonResponse.AsToken(), 'Receptor');
-        JsonFacturas := GetJSONItemFieldArray(JsonResponse.AsToken(), 'Facturas');
-
-        Valuetext := GetJSONItemFieldText(JsonEmisor.AsToken(), 'CIF');
-        VendorName := GetJSONItemFieldText(JsonEmisor.AsToken(), 'Razon_social');
-        Vendor.Reset();
-        Vendor.SetRange("VAT Registration No.", Valuetext);
-        if vendor.FindFirst() then;
-        // ValueText := GetJSONItemFieldText(JsonReceptor.AsToken(), 'Razon_social');
-
-        foreach JsonFactura in JsonFacturas do begin
-            AddInvoiceHeader(CONSULTIAInvoiceHeader, JsonFactura, Vendor."No.", VendorName, Valuetext);
-            Window.Update(1, CONSULTIAInvoiceHeader.N_Factura);
-
-            JsonFacturaDetails := GetJSONItemFieldArray(JsonFactura, 'Detalles');
-
-            foreach JsonFacturaDetail in JsonFacturaDetails do begin
-                AddInvoiceDetails(CONSULTIAInvoiceHeader, JsonFacturaDetail);
-            end;
-
-            CreateRecordLinkPDF(CONSULTIAInvoiceHeader);
-
-            Commit();
-        end;
-        Window.Close();
-    end;
-
-    local procedure CreateRecordLinkPDF(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
-    var
-        DocumentAttachment: Record "Document Attachment";
-        TempBlob: Record TempBlob;
-        FileManagement: Codeunit "File Management";
-        Instr: InStream;
-        FileName: text;
-    begin
-        if CallGetInvoicePdf(CONSULTIAInvoiceHeader.Id, InStr) then begin
-            FileName := CONSULTIAInvoiceHeader.N_Factura + '.pdf';
-            DocumentAttachment.Reset();
-            DocumentAttachment.SetRange("Table ID", Database::"ZM CONSULTIA Invoice Header");
-            DocumentAttachment.SetRange("No.", CONSULTIAInvoiceHeader.N_Factura);
-            if DocumentAttachment.FindFirst() then
-                exit;
-            DocumentAttachment.Init();
-            DocumentAttachment."Table ID" := Database::"ZM CONSULTIA Invoice Header";
-            DocumentAttachment."No." := CONSULTIAInvoiceHeader.N_Factura;
-            DocumentAttachment."Attached Date" := CreateDateTime(Today, time);
-            DocumentAttachment."Attached By" := UserSecurityId();
-            DocumentAttachment.Validate("File Extension", FileManagement.GetExtension(FileName));
-            DocumentAttachment.Validate("File Name", CONSULTIAInvoiceHeader.N_Factura);
-            DocumentAttachment."Document Reference ID".ImportStream(Instr, FileName);
-            DocumentAttachment.Insert(true)
-        end
-    end;
-
-    local procedure AddInvoiceHeader(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; JsonFactura: JsonToken; VendorNo: text;
-        VendorName: Text; VatRegistrationNo: text[20])
-    var
-        FieldValue: text;
-        FieldValueInt: Integer;
-    begin
-        FieldValue := GetJSONItemFieldText(JsonFactura, 'ID_Factura');
-        Evaluate(FieldValueInt, FieldValue);
-        if CONSULTIAInvoiceHeader.Get(FieldValueInt) then
-            exit;
-        CONSULTIAInvoiceHeader.Init();
-        CONSULTIAInvoiceHeader.Id := FieldValueInt;
-        CONSULTIAInvoiceHeader.N_Factura := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(N_Factura));
-        CONSULTIAInvoiceHeader."N_Pedido" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(N_Pedido));
-        CONSULTIAInvoiceHeader."F_Factura" := DT2Date(GetJSONItemFieldDateTime(JsonFactura, CONSULTIAInvoiceHeader.FieldName(F_Factura)));
-        CONSULTIAInvoiceHeader."Descripcion" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Descripcion));
-        CONSULTIAInvoiceHeader."IdCorp_Sol" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(IdCorp_Sol));
-        CONSULTIAInvoiceHeader."Nombre_Sol" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Nombre_Sol));
-        CONSULTIAInvoiceHeader."Proyecto" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Proyecto));
-        CONSULTIAInvoiceHeader."Ref_Ped_Cl" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Ref_Ped_Cl));
-        CONSULTIAInvoiceHeader."Responsable_compra" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Responsable_compra));
-        CONSULTIAInvoiceHeader."Tipo" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Tipo));
-        CONSULTIAInvoiceHeader."FacturaRectificada" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(FacturaRectificada));
-        CONSULTIAInvoiceHeader."Total_Base" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Base));
-        CONSULTIAInvoiceHeader."Total_Impuesto" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Impuesto));
-        CONSULTIAInvoiceHeader."Total_Tasas_Exentas" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Tasas_Exentas));
-        CONSULTIAInvoiceHeader."Total" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total));
-        CONSULTIAInvoiceHeader."Vendor No." := CopyStr(VendorNo, 1, MaxStrLen(CONSULTIAInvoiceHeader."Vendor No."));
-        CONSULTIAInvoiceHeader."Vendor Name" := CopyStr(VendorName, 1, MaxStrLen(CONSULTIAInvoiceHeader."Vendor Name"));
-        CONSULTIAInvoiceHeader."Vat Registration No." := VatRegistrationNo;
-        CONSULTIAInvoiceHeader.Status := CONSULTIAInvoiceHeader.Status::Abierto;
-        CONSULTIAInvoiceHeader.Insert();
-    end;
-
-    local procedure AddInvoiceDetails(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; JsonFacturaDetail: JsonToken)
-    var
-        CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
-        FieldValue: text;
-        FieldValueInt: Integer;
-    begin
-        FieldValue := GetJSONItemFieldText(JsonFacturaDetail, 'Numero');
-        Evaluate(FieldValueInt, FieldValue);
-        if CONSULTIAInvoiceLine.Get(CONSULTIAInvoiceHeader.id, FieldValueInt) then
-            exit;
-        CONSULTIAInvoiceLine.Init();
-        CONSULTIAInvoiceLine.Id := CONSULTIAInvoiceHeader.Id;
-        CONSULTIAInvoiceLine.N_Factura := CONSULTIAInvoiceHeader.N_Factura;
-        CONSULTIAInvoiceLine.Numero := GetJSONItemFieldInteger(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Numero));
-        CONSULTIAInvoiceLine."Desc_servicio" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Desc_servicio));
-        CONSULTIAInvoiceLine."Proveedor" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Proveedor));
-        CONSULTIAInvoiceLine."F_Ini" := DT2Date(GetJSONItemFieldDateTime(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(F_Ini)));
-        CONSULTIAInvoiceLine."F_Fin" := DT2Date(GetJSONItemFieldDateTime(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(F_Fin)));
-        CONSULTIAInvoiceLine."IdCorp_Usuario" := GetJSONItemFieldcode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdCorp_Usuario));
-        CONSULTIAInvoiceLine."Usuario" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Usuario));
-        CONSULTIAInvoiceLine."Ref_Usuario" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Ref_Usuario));
-        CONSULTIAInvoiceLine."Ref_DPTO" := GetJSONItemFieldText(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Ref_DPTO));
-        CONSULTIAInvoiceLine."Producto" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Producto));
-        CONSULTIAInvoiceLine."Base" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Base));
-        CONSULTIAInvoiceLine."Porc_IVA" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Porc_IVA));
-        CONSULTIAInvoiceLine."Porc_IVA" := CONSULTIAInvoiceLine."Porc_IVA" * 100;
-        CONSULTIAInvoiceLine."Imp_IVA" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Imp_IVA));
-        CONSULTIAInvoiceLine."Tasas" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Tasas));
-        CONSULTIAInvoiceLine."PVP" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(PVP));
-        CONSULTIAInvoiceLine."IdCorp_Sol" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdCorp_Sol));
-        GetEmployeeDimensionsValue(CONSULTIAInvoiceLine);
-        CONSULTIAInvoiceLine."IdServicio" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdServicio));
-        CONSULTIAInvoiceLine."NumeroLineaServicio" := GetJSONItemFieldInteger(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(NumeroLineaServicio));
-        CONSULTIAInvoiceLine."CodigoProducto" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(CodigoProducto));
-        CONSULTIAInvoiceLine.Insert();
-    end;
-
-    procedure GetEmployeeDimensionsValue(var CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line")
-    var
-        GLSetup: record "General Ledger Setup";
-        DefaultDimension: Record "Default Dimension";
-        DimSetEntry: Record "Dimension Set Entry" temporary;
-        DimensionMgt: Codeunit DimensionManagement;
-        DimensionSetIDArr: ARRAY[10] OF Integer;
-        TableID: ARRAY[10] OF Integer;
-        No: ARRAY[10] OF Code[20];
-        GlobalDim1Code: code[20];
-        GlobalDim2Code: code[20];
-        DimSetID: Integer;
-    begin
-        // CECO - Partida - Detalle - Depart
-        // 1       8           3         4
-        GLSetup.Get();
-        TableID[1] := Database::Employee;
-        No[1] := CONSULTIAInvoiceLine.IdCorp_Usuario;
-        DimSetID := DimensionMgt.GetDefaultDimID(TableID, No, '', GlobalDim1Code, GlobalDim2Code, DimSetID, 0);
-        DimensionMgt.GetDimensionSet(DimSetEntry, DimSetID);
-        DimSetEntry.Reset();
-        DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
-        if DimSetEntry.FindFirst() then
-            CONSULTIAInvoiceLine.Detalle := DimSetEntry."Dimension Value Code";
-        DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
-        if DimSetEntry.FindFirst() then
-            CONSULTIAInvoiceLine.Partida := DimSetEntry."Dimension Value Code";
-        DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
-        if DimSetEntry.FindFirst() then
-            CONSULTIAInvoiceLine.DEPART := DimSetEntry."Dimension Value Code";
-
-    end;
-
-    procedure GetGLAccountDimensionsValue(var CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line")
-    var
-        GLSetup: record "General Ledger Setup";
-        CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
-        DefaultDimension: Record "Default Dimension";
-        DimSetEntry: Record "Dimension Set Entry" temporary;
-        DimensionMgt: Codeunit DimensionManagement;
-        GLAccount: code[20];
-        DimensionSetIDArr: ARRAY[10] OF Integer;
-        TableID: ARRAY[10] OF Integer;
-        No: ARRAY[10] OF Code[20];
-        GlobalDim1Code: code[20];
-        GlobalDim2Code: code[20];
-        DimSetID: Integer;
-    begin
-        GLSetup.Get();
-        if CONSULTIAInvoiceHeader."G/L Account Fair" = '' then
-            GLAccount := CONSULTIAInvoiceLine.Ref_DPTO
-        else
-            GLAccount := CONSULTIAInvoiceHeader."G/L Account Fair";
-        TableID[1] := Database::"G/L Account";
-        No[1] := GLAccount;
-        DimSetID := DimensionMgt.GetDefaultDimID(TableID, No, '', GlobalDim1Code, GlobalDim2Code, DimSetID, 0);
-        DimensionMgt.GetDimensionSet(DimSetEntry, DimSetID);
-        DimSetEntry.Reset();
-        DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
-        if DimSetEntry.FindFirst() then
-            CONSULTIAInvoiceLine.Partida := DimSetEntry."Dimension Value Code";
-    end;
-
-    procedure GetInvoicePdf(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
-    var
-        Instr: InStream;
-        FileName: text;
-        lblConfirm: Label '¿Would you like to download the PDF of invoice %1?', comment = 'ESP="¿Desea descargar el PDF de la factura %1?"';
-    begin
-        if Confirm(lblConfirm, false, CONSULTIAInvoiceHeader.N_Factura) then
-            if CallGetInvoicePdf(CONSULTIAInvoiceHeader.Id, Instr) then begin
-                FileName := CONSULTIAInvoiceHeader.N_Factura + '.pdf';
-                DownloadFromStream(Instr, lblDownload, '', '', FileName);
-            end;
-    end;
-
-    local procedure CallGetInvoicePdf(Id: integer; var Instr: InStream): Boolean
-    var
-        JsonResponse: JsonObject;
-        Metodo: text;
-        FileName: Text;
-        StatusCode: Integer;
-
-    begin
-        Metodo := StrSubstNo(lblGetInvoicePDF, format(Id));
-
-        if GetResponsePDF(Metodo, Instr) then
-            exit(true);
-
-    end;
-
-    local procedure GetResponsePDF(metodo: text; var Stream: InStream): Boolean
-    var
-        TempBlob: Record TempBlob;
-        Client: HttpClient;
-        Headers: HttpHeaders;
-        RequestMessage: HttpRequestMessage;
-        ResponseMessage: HttpResponseMessage;
-        RequestContent: HttpContent;
-        Url: text;
-        StringAuthorization: text;
-        User: text;
-        PassWebServKey: text;
-        StringAuth: text;
-        IsSucces: Boolean;
-    begin
-        PurchasesPayablesSetup.Get();
-        PurchasesPayablesSetup.TestField("CONSULTIA Url");
-        PurchasesPayablesSetup.TestField("CONSULTIA User");
-        PurchasesPayablesSetup.TestField("CONSULTIA Password");
-        //Creamos una url
-        Url := PurchasesPayablesSetup."CONSULTIA Url" + metodo;
-
-
-        RequestMessage.SetRequestUri(Url);
-        RequestMessage.Method := 'GET';
-
-        User := PurchasesPayablesSetup."CONSULTIA User";
-        PassWebServKey := PurchasesPayablesSetup."CONSULTIA Password";
-        TempBlob.WriteTextLine(User + ':' + PassWebServKey);
-        StringAuth := TempBlob.ToBase64String();
-        StringAuthorization := 'Basic ' + StringAuth;
-
-        //Creamos la cabecera de athorization
-        Headers := Client.DefaultRequestHeaders();
-        Headers.Add('Authorization', StringAuthorization);
-
-        if Client.Send(RequestMessage, ResponseMessage) then
-            if ResponseMessage.IsSuccessStatusCode() then begin
-                if ResponseMessage.Content.ReadAs(Stream) then
-                    IsSucces := true;
-            end else
-                ResponseMessage.Content.ReadAs(Stream);
-
-        exit(IsSucces);
-    end;
-
-    procedure CreatePurchaseInvoice(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
-    var
-        PurchaseHeader: Record "Purchase Header";
-        lblInvoice: Label 'Create la %1 %2.', comment = 'ESP="Creada la %1 %2."';
-    begin
-        CONSULTIAInvoiceHeader.TestField("Pre Invoice No.", '');
-        CONSULTIAInvoiceHeader.TestField("Invoice Header No.", '');
-        case true of
-            CONSULTIAInvoiceHeader.Total >= 0:
-                CONSULTIAInvoiceHeader."Document Type" := CONSULTIAInvoiceHeader."Document Type"::Invoice;
-            else
-                CONSULTIAInvoiceHeader."Document Type" := CONSULTIAInvoiceHeader."Document Type"::"Credit Memo";
-        end;
-
-        AddPurchaseHeaderfromCONSULTIA(CONSULTIAInvoiceHeader, PurchaseHeader);
-
-        AddPurchaseLinefromCONSULTIA(CONSULTIAInvoiceHeader, PurchaseHeader);
-
-        CopyDocumentAttachment(CONSULTIAInvoiceHeader, PurchaseHeader);
-
-        CONSULTIAInvoiceHeader."Pre Invoice No." := PurchaseHeader."No.";
-        CONSULTIAInvoiceHeader.Modify();
-
-        Message(lblInvoice, PurchaseHeader."Document Type", PurchaseHeader."No.");
-    end;
-
-    local procedure AddPurchaseHeaderfromCONSULTIA(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; var PurchaseHeader: Record "Purchase Header")
-    var
-        Vendor: Record Vendor;
-    begin
-        if CONSULTIAInvoiceHeader."Vendor No." = '' then begin
-            Vendor.Get(GetVendorNoByVatRegistrationNo(CONSULTIAInvoiceHeader."Vat Registration No."));
-            CONSULTIAInvoiceHeader."Vendor No." := Vendor."No.";
-        end;
-
-        PurchaseHeader.Init();
-        PurchaseHeader.InitInsert();
-        case CONSULTIAInvoiceHeader."Document Type" of
-            CONSULTIAInvoiceHeader."Document Type"::Invoice:
-                PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::Invoice;
-            CONSULTIAInvoiceHeader."Document Type"::"Credit Memo":
-                PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::"Credit Memo";
-        end;
-        PurchaseHeader.Validate("Buy-from Vendor No.", CONSULTIAInvoiceHeader."Vendor No.");
-        PurchaseHeader.Validate("Posting Date", WorkDate());
-        PurchaseHeader.Validate("Document Date", CONSULTIAInvoiceHeader.F_Factura);
-        case CONSULTIAInvoiceHeader."Document Type" of
-            CONSULTIAInvoiceHeader."Document Type"::Invoice:
-                PurchaseHeader."Vendor Invoice No." := CONSULTIAInvoiceHeader.N_Factura;
-            CONSULTIAInvoiceHeader."Document Type"::"Credit Memo":
-                PurchaseHeader."Vendor Cr. Memo No." := CONSULTIAInvoiceHeader.N_Factura;
-        end;
-        PurchaseHeader."Vendor Shipment No." := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Vendor Shipment No."));
-        PurchaseHeader."Your Reference" := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Your Reference"));
-        PurchaseHeader."CONSULTIA ID Factura" := CONSULTIAInvoiceHeader.Id;
-        PurchaseHeader.Insert();
-    end;
-
-    local procedure GetVendorNoByVatRegistrationNo(VatRegistrationNo: Text): code[20]
-    var
-        Vendor: Record Vendor;
-    begin
-        Vendor.Reset();
-        Vendor.SetRange("VAT Registration No.", copystr(VatRegistrationNo, 1, MaxStrLen(Vendor."VAT Registration No.")));
-        Vendor.FindFirst();
-        exit(Vendor."No.");
-    end;
-
-    local procedure AddPurchaseLinefromCONSULTIA(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; PurchaseHeader: Record "Purchase Header")
-    var
-        CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
-        LineNo: Integer;
-    begin
-        CONSULTIAInvoiceLine.Reset();
-        CONSULTIAInvoiceLine.SetRange(Id, CONSULTIAInvoiceHeader.Id);
-        if CONSULTIAInvoiceLine.FindFirst() then
-            repeat
-                LineNo += 10000;
-                AddPurchaseLine(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseHeader, LineNo);
-            Until CONSULTIAInvoiceLine.next() = 0;
-    end;
-
-    local procedure AddPurchaseLine(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; PurchaseHeader: Record "Purchase Header"; LineNo: Integer)
-    var
-        PurchaseLine: Record "Purchase Line";
-    begin
-        PurchaseLine.Init();
-        PurchaseLine."Document Type" := PurchaseHeader."Document Type";
-        PurchaseLine."Document No." := PurchaseHeader."No.";
-        PurchaseLine."Buy-from Vendor No." := PurchaseHeader."Buy-from Vendor No.";
-        PurchaseLine."Line No." := LineNo;
-        PurchaseLine.Insert();
-        PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
-        if CONSULTIAInvoiceHeader."G/L Account Fair" = '' then
-            PurchaseLine.Validate("No.", CONSULTIAInvoiceLine.Ref_DPTO)
-        else
-            PurchaseLine.Validate("No.", CONSULTIAInvoiceHeader."G/L Account Fair");
-
-        PurchaseLine.Description := copystr(CONSULTIAInvoiceLine.Desc_servicio, 1, 100);
-        PurchaseLine."Description 2" := copystr(CONSULTIAInvoiceLine.Desc_servicio, 101, MaxStrLen(PurchaseLine."Description 2"));
-        PurchaseLine.Validate(Quantity, 1);
-        PurchaseLine.Validate("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
-        PurchaseLine.Validate("VAT Prod. Posting Group", GetVATProdPostingGroup(CONSULTIAInvoiceLine, PurchaseHeader));
-        PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Base);
-        PurchaseLine.Validate("Shortcut Dimension 1 Code", CONSULTIAInvoiceLine.Ref_Usuario);
-        PurchaseLine.IdCorp_Sol := CONSULTIAInvoiceLine.IdCorp_Sol;
-        PurchaseLine.Modify();
-        SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseLine);
-        // controlar que si hay tasas, hay que poner dos lineas y una exenta
-        if CONSULTIAInvoiceLine.Tasas <> 0 then begin
-            PurchaseLine.Init();
-            PurchaseLine."Document Type" := PurchaseHeader."Document Type";
-            PurchaseLine."Document No." := PurchaseHeader."No.";
-            PurchaseLine."Buy-from Vendor No." := PurchaseHeader."Buy-from Vendor No.";
-            PurchaseLine."Line No." := LineNo + 5000;
-            PurchaseLine.Insert();
-            PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
-            if CONSULTIAInvoiceHeader."G/L Account Fair" = '' then
-                PurchaseLine.Validate("No.", CONSULTIAInvoiceLine.Ref_DPTO)
-            else
-                PurchaseLine.Validate("No.", CONSULTIAInvoiceHeader."G/L Account Fair");
-
-            PurchaseLine.Description := copystr(CONSULTIAInvoiceLine.Desc_servicio, 1, 100);
-            PurchaseLine."Description 2" := copystr(CONSULTIAInvoiceLine.Desc_servicio, 101, 100);
-            PurchaseLine.Validate(Quantity, 1);
-            PurchaseLine.Validate("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
-            PurchaseLine.Validate("VAT Prod. Posting Group", 'EXENTOSERV');
-            PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Tasas);
-            PurchaseLine.Validate("Shortcut Dimension 1 Code", CONSULTIAInvoiceLine.Ref_Usuario);
-            PurchaseLine.IdCorp_Sol := CONSULTIAInvoiceLine.IdCorp_Sol;
-            PurchaseLine.Modify();
-            SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseLine);
-        end;
-    end;
-
-    local procedure GetVATProdPostingGroup(CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; PurchaseHeader: Record "Purchase Header"): code[20]
-    var
-        VATPostingSetup: Record "VAT Posting Setup";
-    begin
-        // TODO, cambiar por configuracion de porcentaje iva
-        VATPostingSetup.Reset();
-        VATPostingSetup.SetFilter("VAT Prod. Posting Group", '%1', '*SERV');
-        VATPostingSetup.SetRange("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
-        VATPostingSetup.SetRange("VAT %", CONSULTIAInvoiceLine.Porc_IVA);
-        if VATPostingSetup.FindFirst() then
-            exit(VATPostingSetup."VAT Prod. Posting Group");
-    end;
-
-    local procedure SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
-                            var PurchaseLine: Record "Purchase Line")
-    var
-        GLSetup: Record "General Ledger Setup";
-        recNewDimSetEntry: record "Dimension Set Entry" temporary;
-        cduDimMgt: Codeunit DimensionManagement;
-        cduCambioDim: Codeunit CambioDimensiones;
-        GlobalDim1: code[20];
-        GlobalDim2: code[20];
-        intDimSetId: Integer;
-    begin
-        GLSetup.Get();
-        // CECO
-        // Empleado y Unico por feria MK (campo proyecto de cabecera)
-        GlobalDim1 := GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
-        recNewDimSetEntry.Init();
-        recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
-        recNewDimSetEntry.Validate("Dimension Value Code", GlobalDim1);
-        recNewDimSetEntry.Insert();
-
-        // PROYECTO
-        CONSULTIAInvoiceLine.CalcFields(Proyecto);
-        if CONSULTIAInvoiceLine."Proyecto Manual" = '' then
-            CONSULTIAInvoiceLine.TestField(Proyecto);
-        recNewDimSetEntry.Init();
-        recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 2 Code";
-        recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
-        recNewDimSetEntry.Insert();
-        // PARTIDA
-        CONSULTIAInvoiceLine.TestField(Partida);
-        recNewDimSetEntry.Init();
-        recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 8 Code";
-        recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
-        recNewDimSetEntry.Insert();
-        // DETALLE
-        recNewDimSetEntry.Init();
-        recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 3 Code";
-        recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
-        recNewDimSetEntry.Insert();
-        // DEPART CODIGO (APROBACIONES)
-        if CONSULTIAInvoiceLine.DEPART <> '' then begin
-            recNewDimSetEntry.Init();
-            recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 4 Code";
-            recNewDimSetEntry.Validate("Dimension Value Code", CONSULTIAInvoiceLine.DEPART);
-            recNewDimSetEntry.Insert();
-        end;
-        Clear(cduDimMgt);
-        intDimSetId := cduDimMgt.GetDimensionSetID(recNewDimSetEntry);
-        clear(cduCambioDim);
-
-        GlobalDim1 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 1 Code", intDimSetId);
-        GlobalDim2 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 2 Code", intDimSetId);
-
-        PurchaseLine."Dimension Set ID" := intDimSetId;
-        PurchaseLine."Shortcut Dimension 1 Code" := GlobalDim1;
-        PurchaseLine."Shortcut Dimension 2 Code" := GlobalDim2;
-        PurchaseLine.Modify();
-    end;
-
-    local procedure GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
-    begin
-        if CONSULTIAInvoiceHeader."Global Dimension 1 code Fair" = '' then begin
-            CONSULTIAInvoiceLine.TestField(Ref_Usuario);
-            exit(CONSULTIAInvoiceLine.Ref_Usuario);
-        end else begin
-            exit(CONSULTIAInvoiceHeader."Global Dimension 1 code Fair");
-        end;
-    end;
-
-    local procedure GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
-    begin
-        if CONSULTIAInvoiceHeader.Proyecto = '' then begin
-            if CONSULTIAInvoiceLine."Proyecto Manual" <> '' then
-                exit(CONSULTIAInvoiceLine."Proyecto Manual");
-            CONSULTIAInvoiceLine.TestField(Proyecto);
-            exit(CONSULTIAInvoiceLine.Proyecto);
-        end else begin
-            exit(CONSULTIAInvoiceHeader.Proyecto);
-        end;
-    end;
-
-    local procedure GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
-    begin
-        if CONSULTIAInvoiceHeader."Dimension Detalle Fair" = '' then begin
-            CONSULTIAInvoiceLine.TestField(Detalle);
-            exit(CONSULTIAInvoiceLine.Detalle)
-        end else begin
-            exit(CONSULTIAInvoiceHeader."Dimension Detalle Fair");
-        end;
-    end;
-
-    local procedure GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
-    begin
-        if CONSULTIAInvoiceHeader."Dimension Partida Fair" = '' then begin
-            CONSULTIAInvoiceLine.TestField(Partida);
-            exit(CONSULTIAInvoiceLine.Partida)
-        end else begin
-            exit(CONSULTIAInvoiceHeader."Dimension Partida Fair");
-        end;
-    end;
-
-    local procedure CopyDocumentAttachment(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; PurchaseHeader: Record "Purchase Header")
-    var
-        DocumentAttachment: Record "Document Attachment";
-        TargetDocumentAttachment: Record "Document Attachment";
-    begin
-        DocumentAttachment.Reset();
-        DocumentAttachment.SetRange("Table ID", Database::"ZM CONSULTIA Invoice Header");
-        DocumentAttachment.SetRange("No.", CONSULTIAInvoiceHeader.N_Factura);
-        if DocumentAttachment.FindFirst() then
-            repeat
-                TargetDocumentAttachment.Init();
-                TargetDocumentAttachment := DocumentAttachment;
-                TargetDocumentAttachment.id := 0;
-                TargetDocumentAttachment."Table ID" := Database::"Purchase Header";
-                TargetDocumentAttachment."Document Type" := PurchaseHeader."Document Type";
-                TargetDocumentAttachment."No." := PurchaseHeader."No.";
-                TargetDocumentAttachment.Insert(true);
-            until DocumentAttachment.Next() = 0;
-    end;
-
-    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', true, true)]
-    local procedure PurchaseHeader_OnAfterDeleteEvent(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
-    var
-        CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
-    begin
-        case Rec."Document Type" of
-            Rec."Document Type"::Invoice, Rec."Document Type"::"Credit Memo":
-                begin
-                    CONSULTIAInvoiceHeader.Reset();
-                    CONSULTIAInvoiceHeader.SetRange("Pre Invoice No.", Rec."No.");
-                    if CONSULTIAInvoiceHeader.FindFirst() then begin
-                        CONSULTIAInvoiceHeader."Pre Invoice No." := '';
-                        CONSULTIAInvoiceHeader.Modify();
-                    end;
-
-                end;
-        end;
-    end;
-
-    procedure AssingEmployeeIdCorp(var Rec: Record "ZM CONSULTIA Invoice Line")
-    var
-        Employee: Record Employee;
-        EmployeeList: Page "Employee List";
-    begin
-        Rec.TestField(IdCorp_Usuario, '');
-        EmployeeList.LookupMode := true;
-        if EmployeeList.RunModal() = Action::LookupOK then begin
-            EmployeeList.GetRecord(Employee);
-            Rec.IdCorp_Usuario := Employee."No.";
-            GetEmployeeDimensionsValue(Rec);
-            Rec.Modify();
-        end;
-    end;
-
-    procedure UpdateDimensions(var Rec: Record "ZM CONSULTIA Invoice Line")
-    begin
-        GetProjectDimension(Rec);
-        GetEmployeeDimensionsValue(Rec);
-        GetGLAccountDimensionsValue(Rec);
-        Rec.Modify();
-    end;
-
-    procedure AssingProject(var Rec: Record "ZM CONSULTIA Invoice Line")
-    var
-        ProductProject: Record "ZM CONSULTIA Producto-Proyecto";
-        DimensionValue: Record "Dimension Value";
-        DimensionValues: Page "Dimension Values";
-        lblConfirm: Label '¿Desea Cambiar el proyecto %1 del producto %2 a %3?', comment = 'ESP="¿Desea Cambiar el proyecto %1 del producto %2 a %3?"';
-    begin
-        ProductProject.Reset();
-        CreateProductoProject(Rec.CodigoProducto, Rec.Producto);
-        ProductProject.Get(Rec.CodigoProducto);
-        DimensionValue.Reset();
-        DimensionValue.SetRange("Global Dimension No.", 2);
-        DimensionValues.LookupMode := true;
-        DimensionValues.SetTableView(DimensionValue);
-        if DimensionValues.RunModal() = Action::LookupOK then begin
-            DimensionValues.GetRecord(DimensionValue);
-            if ProductProject.Proyecto <> '' then
-                if not Confirm(lblConfirm, true, ProductProject.Proyecto, ProductProject.Proyecto, DimensionValue.Code) then
-                    exit;
-            ProductProject.Proyecto := DimensionValue.Code;
-            ProductProject.Modify();
-        end;
-    end;
-
-    local procedure GetProjectDimension(var Rec: Record "ZM CONSULTIA Invoice Line"): Boolean
-    var
-        ProductProject: Record "ZM CONSULTIA Producto-Proyecto";
-    begin
-        if Rec.Proyecto <> '' then
-            exit;
-        ProductProject.Reset();
-        ProductProject.SetRange(CodigoProducto, Rec.CodigoProducto);
-        if ProductProject.FindFirst() then
-            if ProductProject.Proyecto <> '' then
-                Rec.Proyecto := ProductProject.Proyecto;
-    end;
-
-    local procedure CreateProductoProject(CodigoProducto: code[50]; Producto: text[100])
-    var
-        ProductProject: Record "ZM CONSULTIA Producto-Proyecto";
-    begin
-        if ProductProject.Get(CodigoProducto) then
-            exit;
-        ProductProject.Init();
-        ProductProject.CodigoProducto := CodigoProducto;
-        ProductProject.Description := CopyStr(Producto, 1, MaxStrLen(ProductProject.Description));
-        ProductProject.Insert();
-        Commit();
-    end;
-
-    // =============     CREAR DIARIO DE APROVISIONAMIENTO          ====================
-    // ==  
-    // ==  funciones para crear diario de aprovisionamiento de facturas de CONSULTIA
-    // ==  
-    // ======================================================================================================
-
-    procedure CreateJNLAprovisionamiento(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; DesProvisioning: Boolean)
-    var
-        GenJournalBatch: Record "Gen. Journal Batch";
-        CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
-        BudgetBuffer: record "Budget Buffer" temporary;
-        GenJnlManagement: Codeunit GenJnlManagement;
-
-    begin
-        PurchasesPayablesSetup.Get();
-        GenJournalBatch.Get(PurchasesPayablesSetup."CONSULTIA Gen. Jnl. Template", PurchasesPayablesSetup."CONSULTIA Gen. Journal Batch");
-        PurchasesPayablesSetup.TestField("CONSULTIA G/L Provide");
-        PurchasesPayablesSetup.TestField("CONSULTIA Gen. Jnl. Template");
-        PurchasesPayablesSetup.TestField("CONSULTIA Gen. Journal Batch");
-        BudgetBuffer.DeleteAll();
-        if not DesProvisioning then
-            CONSULTIAInvoiceHeader.TestField("Invoice Header No.", '');
-        if DesProvisioning then begin
-            CONSULTIAInvoiceHeader.TestField(Provisioning, true);
-            CONSULTIAInvoiceHeader.TestField("Des Provisioning", false);
-        end else begin
-            CONSULTIAInvoiceHeader.TestField(Provisioning, false);
-        end;
-        CONSULTIAInvoiceLine.Reset();
-        CONSULTIAInvoiceLine.SetRange(id, CONSULTIAInvoiceHeader.Id);
-        if CONSULTIAInvoiceLine.FindFirst() then
-            repeat
-
-                AddAprovisionamientoBuffer(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, BudgetBuffer, DesProvisioning);
-
-            Until CONSULTIAInvoiceLine.next() = 0;
-
-        CreateJNLLineAprovisionamiento(CONSULTIAInvoiceHeader, BudgetBuffer);
-        case DesProvisioning of
-            true:
-                begin
-                    CONSULTIAInvoiceHeader."Des Provisioning" := true;
-                    CONSULTIAInvoiceHeader."Des Provisioning Date" := WorkDate();
-
-                end;
-            else begin
-                CONSULTIAInvoiceHeader.Provisioning := true;
-                CONSULTIAInvoiceHeader."Provisioning Date" := WorkDate();
-            end;
-        end;
-        CONSULTIAInvoiceHeader.Modify();
-
-        Commit();
-        GenJnlManagement.TemplateSelectionFromBatch(GenJournalBatch)
-
-    end;
-
-
-    local procedure AddAprovisionamientoBuffer(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
-                CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; var BudgetBuffer: record "Budget Buffer"; DesProvisioning: Boolean)
-    var
-        myInt: Integer;
-    begin
-        BudgetBuffer.Reset();
-        BudgetBuffer.SetRange("G/L Account No.");
-        BudgetBuffer.SetRange("Dimension Value Code 1", GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // CECO
-        BudgetBuffer.SetRange("Dimension Value Code 2", GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // PROYECTO
-        BudgetBuffer.SetRange("Dimension Value Code 3", GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // Partida
-        BudgetBuffer.SetRange("Dimension Value Code 4", GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // DETALLE
-        if not BudgetBuffer.FindFirst() then begin
-            BudgetBuffer.Init();
-            BudgetBuffer."G/L Account No." := CONSULTIAInvoiceLine.Ref_DPTO;
-            BudgetBuffer."Dimension Value Code 1" := GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
-            BudgetBuffer."Dimension Value Code 2" := GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
-            BudgetBuffer."Dimension Value Code 3" := GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
-            BudgetBuffer."Dimension Value Code 4" := GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
-            BudgetBuffer.Insert();
-        end;
-        case DesProvisioning of
-            true:
-                BudgetBuffer.Amount -= CONSULTIAInvoiceLine.Base;
-            else
-                BudgetBuffer.Amount += CONSULTIAInvoiceLine.Base;
-        end;
-        BudgetBuffer.Modify();
-    end;
-
-    local procedure CreateJNLLineAprovisionamiento(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; var BudgetBuffer: record "Budget Buffer")
-    var
-        GenJnlLine: Record "Gen. Journal Line";
-        GenJournalBatch: Record "Gen. Journal Batch";
-        LastLine: Integer;
-    begin
-        PurchasesPayablesSetup.Get();
-        GenJournalBatch.Get(PurchasesPayablesSetup."CONSULTIA Gen. Jnl. Template", PurchasesPayablesSetup."CONSULTIA Gen. Journal Batch");
-        // primero miramos si existen líneas y obtenemos la ultima línea
-        GenJnlLine.Reset();
-        GenJnlLine.SetRange("Journal Template Name", GenJournalBatch."Journal Template Name");
-        GenJnlLine.SetRange("Journal Batch Name", GenJournalBatch.Name);
-        if GenJnlLine.FindLast() then
-            LastLine := GenJnlLine."Line No." + 10000
-        else
-            LastLine := 10000;
-        BudgetBuffer.Reset();
-        if BudgetBuffer.FindFirst() then
-            repeat
-                GenJnlLine.Init();
-                GenJnlLine."Journal Template Name" := GenJournalBatch."Journal Template Name";
-                GenJnlLine."Journal Batch Name" := GenJournalBatch.Name;
-                GenJnlLine."Line No." := LastLine;
-                GenJnlLine."Posting Date" := Workdate;
-                GenJnlLine."Document Type" := GenJnlLine."Document Type"::" ";
-                GenJnlLine."Document Date" := CONSULTIAInvoiceHeader.F_Factura;
-                GenJnlLine.Insert();
-                GenJnlLine."Document No." := CopyStr(CONSULTIAInvoiceHeader.N_Factura, 1, MaxStrLen(GenJnlLine."Document No."));
-                GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
-                GenJnlLine.validate("Account No.", BudgetBuffer."G/L Account No.");
-                GenJnlLine.Description := CopyStr(StrSubstNo('%1 %2', CONSULTIAInvoiceHeader.N_Factura, CONSULTIAInvoiceHeader.Descripcion), 1, MaxStrLen(GenJnlLine.Description));
-                GenJnlLine."External Document No." := CopyStr(CONSULTIAInvoiceHeader.N_Factura, 1, MaxStrLen(GenJnlLine."External Document No."));
-                GenJnlLine.Validate(Amount, BudgetBuffer.Amount);
-                GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
-                GenJnlLine.Validate("Bal. Account No.", PurchasesPayablesSetup."CONSULTIA G/L Provide");
-                GenJnlLine.Modify();
-                LastLine += 10000;
-            Until BudgetBuffer.next() = 0;
-    end;
+    // procedure GetInvoicebyDate(Startdate: Date; EndDate: date)
+    // var
+    //     Vendor: Record Vendor;
+    //     CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
+    //     JsonBody: JsonObject;
+    //     JsonResponse: JsonObject;
+    //     JsonTokResponse: JsonToken;
+    //     JsonEmisor: JsonObject;
+    //     JsonReceptor: JsonObject;
+    //     JsonFacturas: JsonArray;
+    //     JsonFactura: JsonToken;
+    //     JsonFacturaDetails: JsonArray;
+    //     JsonFacturaDetail: JsonToken;
+    //     ErrorText: Text;
+    //     Metodo: text;
+    //     Valuetext: text;
+    //     VendorName: text;
+    //     StatusCode: Integer;
+    //     Window: Dialog;
+    //     lblDlg: Label 'Invoice No. #1################', comment = 'ESP="Nº Factura #1################"';
+    // begin
+    //     Window.Open(lblDlg);
+    //     Metodo := lblInvoice + StrSubstNo(lblDate, format(Startdate, 0, '<day,2>/<Month,2>/<Year4>'), format(EndDate, 0, '<day,2>/<Month,2>/<Year4>'));
+
+    //     REST_CONSULTIA(Metodo, 'GET', '', true, StatusCode, JsonResponse, false);
+
+
+    //     JsonEmisor := GetJSONItemFieldObject(JsonResponse.AsToken(), 'Emisor');
+    //     JsonReceptor := GetJSONItemFieldObject(JsonResponse.AsToken(), 'Receptor');
+    //     JsonFacturas := GetJSONItemFieldArray(JsonResponse.AsToken(), 'Facturas');
+
+    //     Valuetext := GetJSONItemFieldText(JsonEmisor.AsToken(), 'CIF');
+    //     VendorName := GetJSONItemFieldText(JsonEmisor.AsToken(), 'Razon_social');
+    //     Vendor.Reset();
+    //     Vendor.SetRange("VAT Registration No.", Valuetext);
+    //     if vendor.FindFirst() then;
+    //     // ValueText := GetJSONItemFieldText(JsonReceptor.AsToken(), 'Razon_social');
+
+    //     foreach JsonFactura in JsonFacturas do begin
+    //         AddInvoiceHeader(CONSULTIAInvoiceHeader, JsonFactura, Vendor."No.", VendorName, Valuetext);
+    //         Window.Update(1, CONSULTIAInvoiceHeader.N_Factura);
+
+    //         JsonFacturaDetails := GetJSONItemFieldArray(JsonFactura, 'Detalles');
+
+    //         foreach JsonFacturaDetail in JsonFacturaDetails do begin
+    //             AddInvoiceDetails(CONSULTIAInvoiceHeader, JsonFacturaDetail);
+    //         end;
+
+    //         CreateRecordLinkPDF(CONSULTIAInvoiceHeader);
+
+    //         Commit();
+    //     end;
+    //     Window.Close();
+    // end;
+
+    // local procedure CreateRecordLinkPDF(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
+    // var
+    //     DocumentAttachment: Record "Document Attachment";
+    //     TempBlob: Record TempBlob;
+    //     FileManagement: Codeunit "File Management";
+    //     Instr: InStream;
+    //     FileName: text;
+    // begin
+    //     if CallGetInvoicePdf(CONSULTIAInvoiceHeader.Id, InStr) then begin
+    //         FileName := CONSULTIAInvoiceHeader.N_Factura + '.pdf';
+    //         DocumentAttachment.Reset();
+    //         DocumentAttachment.SetRange("Table ID", Database::"ZM CONSULTIA Invoice Header");
+    //         DocumentAttachment.SetRange("No.", CONSULTIAInvoiceHeader.N_Factura);
+    //         if DocumentAttachment.FindFirst() then
+    //             exit;
+    //         DocumentAttachment.Init();
+    //         DocumentAttachment."Table ID" := Database::"ZM CONSULTIA Invoice Header";
+    //         DocumentAttachment."No." := CONSULTIAInvoiceHeader.N_Factura;
+    //         DocumentAttachment."Attached Date" := CreateDateTime(Today, time);
+    //         DocumentAttachment."Attached By" := UserSecurityId();
+    //         DocumentAttachment.Validate("File Extension", FileManagement.GetExtension(FileName));
+    //         DocumentAttachment.Validate("File Name", CONSULTIAInvoiceHeader.N_Factura);
+    //         DocumentAttachment."Document Reference ID".ImportStream(Instr, FileName);
+    //         DocumentAttachment.Insert(true)
+    //     end
+    // end;
+
+    // local procedure AddInvoiceHeader(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; JsonFactura: JsonToken; VendorNo: text;
+    //     VendorName: Text; VatRegistrationNo: text[20])
+    // var
+    //     FieldValue: text;
+    //     FieldValueInt: Integer;
+    // begin
+    //     FieldValue := GetJSONItemFieldText(JsonFactura, 'ID_Factura');
+    //     Evaluate(FieldValueInt, FieldValue);
+    //     if CONSULTIAInvoiceHeader.Get(FieldValueInt) then
+    //         exit;
+    //     CONSULTIAInvoiceHeader.Init();
+    //     CONSULTIAInvoiceHeader.Id := FieldValueInt;
+    //     CONSULTIAInvoiceHeader.N_Factura := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(N_Factura));
+    //     CONSULTIAInvoiceHeader."N_Pedido" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(N_Pedido));
+    //     CONSULTIAInvoiceHeader."F_Factura" := DT2Date(GetJSONItemFieldDateTime(JsonFactura, CONSULTIAInvoiceHeader.FieldName(F_Factura)));
+    //     CONSULTIAInvoiceHeader."Descripcion" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Descripcion));
+    //     CONSULTIAInvoiceHeader."IdCorp_Sol" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(IdCorp_Sol));
+    //     CONSULTIAInvoiceHeader."Nombre_Sol" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Nombre_Sol));
+    //     CONSULTIAInvoiceHeader."Proyecto" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Proyecto));
+    //     CONSULTIAInvoiceHeader."Ref_Ped_Cl" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Ref_Ped_Cl));
+    //     CONSULTIAInvoiceHeader."Responsable_compra" := GetJSONItemFieldText(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Responsable_compra));
+    //     CONSULTIAInvoiceHeader."Tipo" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Tipo));
+    //     CONSULTIAInvoiceHeader."FacturaRectificada" := GetJSONItemFieldCode(JsonFactura, CONSULTIAInvoiceHeader.FieldName(FacturaRectificada));
+    //     CONSULTIAInvoiceHeader."Total_Base" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Base));
+    //     CONSULTIAInvoiceHeader."Total_Impuesto" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Impuesto));
+    //     CONSULTIAInvoiceHeader."Total_Tasas_Exentas" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total_Tasas_Exentas));
+    //     CONSULTIAInvoiceHeader."Total" := GetJSONItemFieldDecimal(JsonFactura, CONSULTIAInvoiceHeader.FieldName(Total));
+    //     CONSULTIAInvoiceHeader."Vendor No." := CopyStr(VendorNo, 1, MaxStrLen(CONSULTIAInvoiceHeader."Vendor No."));
+    //     CONSULTIAInvoiceHeader."Vendor Name" := CopyStr(VendorName, 1, MaxStrLen(CONSULTIAInvoiceHeader."Vendor Name"));
+    //     CONSULTIAInvoiceHeader."Vat Registration No." := VatRegistrationNo;
+    //     CONSULTIAInvoiceHeader.Status := CONSULTIAInvoiceHeader.Status::Abierto;
+    //     CONSULTIAInvoiceHeader.Insert();
+    // end;
+
+    // local procedure AddInvoiceDetails(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; JsonFacturaDetail: JsonToken)
+    // var
+    //     CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
+    //     FieldValue: text;
+    //     FieldValueInt: Integer;
+    // begin
+    //     FieldValue := GetJSONItemFieldText(JsonFacturaDetail, 'Numero');
+    //     Evaluate(FieldValueInt, FieldValue);
+    //     if CONSULTIAInvoiceLine.Get(CONSULTIAInvoiceHeader.id, FieldValueInt) then
+    //         exit;
+    //     CONSULTIAInvoiceLine.Init();
+    //     CONSULTIAInvoiceLine.Id := CONSULTIAInvoiceHeader.Id;
+    //     CONSULTIAInvoiceLine.N_Factura := CONSULTIAInvoiceHeader.N_Factura;
+    //     CONSULTIAInvoiceLine.Numero := GetJSONItemFieldInteger(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Numero));
+    //     CONSULTIAInvoiceLine."Desc_servicio" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Desc_servicio));
+    //     CONSULTIAInvoiceLine."Proveedor" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Proveedor));
+    //     CONSULTIAInvoiceLine."F_Ini" := DT2Date(GetJSONItemFieldDateTime(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(F_Ini)));
+    //     CONSULTIAInvoiceLine."F_Fin" := DT2Date(GetJSONItemFieldDateTime(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(F_Fin)));
+    //     CONSULTIAInvoiceLine."IdCorp_Usuario" := GetJSONItemFieldcode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdCorp_Usuario));
+    //     CONSULTIAInvoiceLine."Usuario" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Usuario));
+    //     CONSULTIAInvoiceLine."Ref_Usuario" := GetJSONItemFieldtext(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Ref_Usuario));
+    //     CONSULTIAInvoiceLine."Ref_DPTO" := GetJSONItemFieldText(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Ref_DPTO));
+    //     CONSULTIAInvoiceLine."Producto" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Producto));
+    //     CONSULTIAInvoiceLine."Base" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Base));
+    //     CONSULTIAInvoiceLine."Porc_IVA" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Porc_IVA));
+    //     CONSULTIAInvoiceLine."Porc_IVA" := CONSULTIAInvoiceLine."Porc_IVA" * 100;
+    //     CONSULTIAInvoiceLine."Imp_IVA" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Imp_IVA));
+    //     CONSULTIAInvoiceLine."Tasas" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(Tasas));
+    //     CONSULTIAInvoiceLine."PVP" := GetJSONItemFielddecimal(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(PVP));
+    //     CONSULTIAInvoiceLine."IdCorp_Sol" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdCorp_Sol));
+    //     GetEmployeeDimensionsValue(CONSULTIAInvoiceLine);
+    //     CONSULTIAInvoiceLine."IdServicio" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(IdServicio));
+    //     CONSULTIAInvoiceLine."NumeroLineaServicio" := GetJSONItemFieldInteger(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(NumeroLineaServicio));
+    //     CONSULTIAInvoiceLine."CodigoProducto" := GetJSONItemFieldCode(JsonFacturaDetail, CONSULTIAInvoiceLine.FieldName(CodigoProducto));
+    //     CONSULTIAInvoiceLine.Insert();
+    // end;
+
+    // procedure GetEmployeeDimensionsValue(var CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line")
+    // var
+    //     GLSetup: record "General Ledger Setup";
+    //     DefaultDimension: Record "Default Dimension";
+    //     DimSetEntry: Record "Dimension Set Entry" temporary;
+    //     DimensionMgt: Codeunit DimensionManagement;
+    //     DimensionSetIDArr: ARRAY[10] OF Integer;
+    //     TableID: ARRAY[10] OF Integer;
+    //     No: ARRAY[10] OF Code[20];
+    //     GlobalDim1Code: code[20];
+    //     GlobalDim2Code: code[20];
+    //     DimSetID: Integer;
+    // begin
+    //     // CECO - Partida - Detalle - Depart
+    //     // 1       8           3         4
+    //     GLSetup.Get();
+    //     TableID[1] := Database::Employee;
+    //     No[1] := CONSULTIAInvoiceLine.IdCorp_Usuario;
+    //     DimSetID := DimensionMgt.GetDefaultDimID(TableID, No, '', GlobalDim1Code, GlobalDim2Code, DimSetID, 0);
+    //     DimensionMgt.GetDimensionSet(DimSetEntry, DimSetID);
+    //     DimSetEntry.Reset();
+    //     DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
+    //     if DimSetEntry.FindFirst() then
+    //         CONSULTIAInvoiceLine.Detalle := DimSetEntry."Dimension Value Code";
+    //     DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+    //     if DimSetEntry.FindFirst() then
+    //         CONSULTIAInvoiceLine.Partida := DimSetEntry."Dimension Value Code";
+    //     DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
+    //     if DimSetEntry.FindFirst() then
+    //         CONSULTIAInvoiceLine.DEPART := DimSetEntry."Dimension Value Code";
+
+    // end;
+
+    // procedure GetGLAccountDimensionsValue(var CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line")
+    // var
+    //     GLSetup: record "General Ledger Setup";
+    //     CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
+    //     DefaultDimension: Record "Default Dimension";
+    //     DimSetEntry: Record "Dimension Set Entry" temporary;
+    //     DimensionMgt: Codeunit DimensionManagement;
+    //     GLAccount: code[20];
+    //     DimensionSetIDArr: ARRAY[10] OF Integer;
+    //     TableID: ARRAY[10] OF Integer;
+    //     No: ARRAY[10] OF Code[20];
+    //     GlobalDim1Code: code[20];
+    //     GlobalDim2Code: code[20];
+    //     DimSetID: Integer;
+    // begin
+    //     GLSetup.Get();
+    //     if CONSULTIAInvoiceHeader."G/L Account Fair" = '' then
+    //         GLAccount := CONSULTIAInvoiceLine.Ref_DPTO
+    //     else
+    //         GLAccount := CONSULTIAInvoiceHeader."G/L Account Fair";
+    //     TableID[1] := Database::"G/L Account";
+    //     No[1] := GLAccount;
+    //     DimSetID := DimensionMgt.GetDefaultDimID(TableID, No, '', GlobalDim1Code, GlobalDim2Code, DimSetID, 0);
+    //     DimensionMgt.GetDimensionSet(DimSetEntry, DimSetID);
+    //     DimSetEntry.Reset();
+    //     DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+    //     if DimSetEntry.FindFirst() then
+    //         CONSULTIAInvoiceLine.Partida := DimSetEntry."Dimension Value Code";
+    // end;
+
+    // procedure GetInvoicePdf(CONSULTIAInvoiceHeader: Record "ZM BCD Travel Invoice Header")
+    // var
+    //     Instr: InStream;
+    //     FileName: text;
+    //     lblConfirm: Label '¿Would you like to download the PDF of invoice %1?', comment = 'ESP="¿Desea descargar el PDF de la factura %1?"';
+    // begin
+    //     if Confirm(lblConfirm, false, CONSULTIAInvoiceHeader.N_Factura) then
+    //         if CallGetInvoicePdf(CONSULTIAInvoiceHeader.Id, Instr) then begin
+    //             FileName := CONSULTIAInvoiceHeader.N_Factura + '.pdf';
+    //             DownloadFromStream(Instr, lblDownload, '', '', FileName);
+    //         end;
+    // end;
+
+    // local procedure CallGetInvoicePdf(Id: integer; var Instr: InStream): Boolean
+    // var
+    //     JsonResponse: JsonObject;
+    //     Metodo: text;
+    //     FileName: Text;
+    //     StatusCode: Integer;
+
+    // begin
+    //     Metodo := StrSubstNo(lblGetInvoicePDF, format(Id));
+
+    //     if GetResponsePDF(Metodo, Instr) then
+    //         exit(true);
+
+    // end;
+
+    // local procedure GetResponsePDF(metodo: text; var Stream: InStream): Boolean
+    // var
+    //     TempBlob: Record TempBlob;
+    //     Client: HttpClient;
+    //     Headers: HttpHeaders;
+    //     RequestMessage: HttpRequestMessage;
+    //     ResponseMessage: HttpResponseMessage;
+    //     RequestContent: HttpContent;
+    //     Url: text;
+    //     StringAuthorization: text;
+    //     User: text;
+    //     PassWebServKey: text;
+    //     StringAuth: text;
+    //     IsSucces: Boolean;
+    // begin
+    //     PurchasesPayablesSetup.Get();
+    //     PurchasesPayablesSetup.TestField("CONSULTIA Url");
+    //     PurchasesPayablesSetup.TestField("CONSULTIA User");
+    //     PurchasesPayablesSetup.TestField("CONSULTIA Password");
+    //     //Creamos una url
+    //     Url := PurchasesPayablesSetup."CONSULTIA Url" + metodo;
+
+
+    //     RequestMessage.SetRequestUri(Url);
+    //     RequestMessage.Method := 'GET';
+
+    //     User := PurchasesPayablesSetup."CONSULTIA User";
+    //     PassWebServKey := PurchasesPayablesSetup."CONSULTIA Password";
+    //     TempBlob.WriteTextLine(User + ':' + PassWebServKey);
+    //     StringAuth := TempBlob.ToBase64String();
+    //     StringAuthorization := 'Basic ' + StringAuth;
+
+    //     //Creamos la cabecera de athorization
+    //     Headers := Client.DefaultRequestHeaders();
+    //     Headers.Add('Authorization', StringAuthorization);
+
+    //     if Client.Send(RequestMessage, ResponseMessage) then
+    //         if ResponseMessage.IsSuccessStatusCode() then begin
+    //             if ResponseMessage.Content.ReadAs(Stream) then
+    //                 IsSucces := true;
+    //         end else
+    //             ResponseMessage.Content.ReadAs(Stream);
+
+    //     exit(IsSucces);
+    // end;
+
+    // procedure CreatePurchaseInvoice(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header")
+    // var
+    //     PurchaseHeader: Record "Purchase Header";
+    //     lblInvoice: Label 'Create la %1 %2.', comment = 'ESP="Creada la %1 %2."';
+    // begin
+    //     CONSULTIAInvoiceHeader.TestField("Pre Invoice No.", '');
+    //     CONSULTIAInvoiceHeader.TestField("Invoice Header No.", '');
+    //     case true of
+    //         CONSULTIAInvoiceHeader.Total >= 0:
+    //             CONSULTIAInvoiceHeader."Document Type" := CONSULTIAInvoiceHeader."Document Type"::Invoice;
+    //         else
+    //             CONSULTIAInvoiceHeader."Document Type" := CONSULTIAInvoiceHeader."Document Type"::"Credit Memo";
+    //     end;
+
+    //     AddPurchaseHeaderfromCONSULTIA(CONSULTIAInvoiceHeader, PurchaseHeader);
+
+    //     AddPurchaseLinefromCONSULTIA(CONSULTIAInvoiceHeader, PurchaseHeader);
+
+    //     CopyDocumentAttachment(CONSULTIAInvoiceHeader, PurchaseHeader);
+
+    //     CONSULTIAInvoiceHeader."Pre Invoice No." := PurchaseHeader."No.";
+    //     CONSULTIAInvoiceHeader.Modify();
+
+    //     Message(lblInvoice, PurchaseHeader."Document Type", PurchaseHeader."No.");
+    // end;
+
+    // local procedure AddPurchaseHeaderfromCONSULTIA(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; var PurchaseHeader: Record "Purchase Header")
+    // var
+    //     Vendor: Record Vendor;
+    // begin
+    //     if CONSULTIAInvoiceHeader."Vendor No." = '' then begin
+    //         Vendor.Get(GetVendorNoByVatRegistrationNo(CONSULTIAInvoiceHeader."Vat Registration No."));
+    //         CONSULTIAInvoiceHeader."Vendor No." := Vendor."No.";
+    //     end;
+
+    //     PurchaseHeader.Init();
+    //     PurchaseHeader.InitInsert();
+    //     case CONSULTIAInvoiceHeader."Document Type" of
+    //         CONSULTIAInvoiceHeader."Document Type"::Invoice:
+    //             PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::Invoice;
+    //         CONSULTIAInvoiceHeader."Document Type"::"Credit Memo":
+    //             PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::"Credit Memo";
+    //     end;
+    //     PurchaseHeader.Validate("Buy-from Vendor No.", CONSULTIAInvoiceHeader."Vendor No.");
+    //     PurchaseHeader.Validate("Posting Date", WorkDate());
+    //     PurchaseHeader.Validate("Document Date", CONSULTIAInvoiceHeader.F_Factura);
+    //     case CONSULTIAInvoiceHeader."Document Type" of
+    //         CONSULTIAInvoiceHeader."Document Type"::Invoice:
+    //             PurchaseHeader."Vendor Invoice No." := CONSULTIAInvoiceHeader.N_Factura;
+    //         CONSULTIAInvoiceHeader."Document Type"::"Credit Memo":
+    //             PurchaseHeader."Vendor Cr. Memo No." := CONSULTIAInvoiceHeader.N_Factura;
+    //     end;
+    //     PurchaseHeader."Vendor Shipment No." := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Vendor Shipment No."));
+    //     PurchaseHeader."Your Reference" := CopyStr(CONSULTIAInvoiceHeader.N_Pedido, 1, MaxStrLen(PurchaseHeader."Your Reference"));
+    //     PurchaseHeader."CONSULTIA ID Factura" := CONSULTIAInvoiceHeader.Id;
+    //     PurchaseHeader.Insert();
+    // end;
+
+    // local procedure GetVendorNoByVatRegistrationNo(VatRegistrationNo: Text): code[20]
+    // var
+    //     Vendor: Record Vendor;
+    // begin
+    //     Vendor.Reset();
+    //     Vendor.SetRange("VAT Registration No.", copystr(VatRegistrationNo, 1, MaxStrLen(Vendor."VAT Registration No.")));
+    //     Vendor.FindFirst();
+    //     exit(Vendor."No.");
+    // end;
+
+    // local procedure AddPurchaseLinefromCONSULTIA(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; PurchaseHeader: Record "Purchase Header")
+    // var
+    //     CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
+    //     LineNo: Integer;
+    // begin
+    //     CONSULTIAInvoiceLine.Reset();
+    //     CONSULTIAInvoiceLine.SetRange(Id, CONSULTIAInvoiceHeader.Id);
+    //     if CONSULTIAInvoiceLine.FindFirst() then
+    //         repeat
+    //             LineNo += 10000;
+    //             AddPurchaseLine(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseHeader, LineNo);
+    //         Until CONSULTIAInvoiceLine.next() = 0;
+    // end;
+
+    // local procedure AddPurchaseLine(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; PurchaseHeader: Record "Purchase Header"; LineNo: Integer)
+    // var
+    //     PurchaseLine: Record "Purchase Line";
+    // begin
+    //     PurchaseLine.Init();
+    //     PurchaseLine."Document Type" := PurchaseHeader."Document Type";
+    //     PurchaseLine."Document No." := PurchaseHeader."No.";
+    //     PurchaseLine."Buy-from Vendor No." := PurchaseHeader."Buy-from Vendor No.";
+    //     PurchaseLine."Line No." := LineNo;
+    //     PurchaseLine.Insert();
+    //     PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
+    //     if CONSULTIAInvoiceHeader."G/L Account Fair" = '' then
+    //         PurchaseLine.Validate("No.", CONSULTIAInvoiceLine.Ref_DPTO)
+    //     else
+    //         PurchaseLine.Validate("No.", CONSULTIAInvoiceHeader."G/L Account Fair");
+
+    //     PurchaseLine.Description := copystr(CONSULTIAInvoiceLine.Desc_servicio, 1, 100);
+    //     PurchaseLine."Description 2" := copystr(CONSULTIAInvoiceLine.Desc_servicio, 101, MaxStrLen(PurchaseLine."Description 2"));
+    //     PurchaseLine.Validate(Quantity, 1);
+    //     PurchaseLine.Validate("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
+    //     PurchaseLine.Validate("VAT Prod. Posting Group", GetVATProdPostingGroup(CONSULTIAInvoiceLine, PurchaseHeader));
+    //     PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Base);
+    //     PurchaseLine.Validate("Shortcut Dimension 1 Code", CONSULTIAInvoiceLine.Ref_Usuario);
+    //     PurchaseLine.IdCorp_Sol := CONSULTIAInvoiceLine.IdCorp_Sol;
+    //     PurchaseLine.Modify();
+    //     SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseLine);
+    //     // controlar que si hay tasas, hay que poner dos lineas y una exenta
+    //     if CONSULTIAInvoiceLine.Tasas <> 0 then begin
+    //         PurchaseLine.Init();
+    //         PurchaseLine."Document Type" := PurchaseHeader."Document Type";
+    //         PurchaseLine."Document No." := PurchaseHeader."No.";
+    //         PurchaseLine."Buy-from Vendor No." := PurchaseHeader."Buy-from Vendor No.";
+    //         PurchaseLine."Line No." := LineNo + 5000;
+    //         PurchaseLine.Insert();
+    //         PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
+    //         if CONSULTIAInvoiceHeader."G/L Account Fair" = '' then
+    //             PurchaseLine.Validate("No.", CONSULTIAInvoiceLine.Ref_DPTO)
+    //         else
+    //             PurchaseLine.Validate("No.", CONSULTIAInvoiceHeader."G/L Account Fair");
+
+    //         PurchaseLine.Description := copystr(CONSULTIAInvoiceLine.Desc_servicio, 1, 100);
+    //         PurchaseLine."Description 2" := copystr(CONSULTIAInvoiceLine.Desc_servicio, 101, 100);
+    //         PurchaseLine.Validate(Quantity, 1);
+    //         PurchaseLine.Validate("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
+    //         PurchaseLine.Validate("VAT Prod. Posting Group", 'EXENTOSERV');
+    //         PurchaseLine.Validate("Direct Unit Cost", CONSULTIAInvoiceLine.Tasas);
+    //         PurchaseLine.Validate("Shortcut Dimension 1 Code", CONSULTIAInvoiceLine.Ref_Usuario);
+    //         PurchaseLine.IdCorp_Sol := CONSULTIAInvoiceLine.IdCorp_Sol;
+    //         PurchaseLine.Modify();
+    //         SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, PurchaseLine);
+    //     end;
+    // end;
+
+    // local procedure GetVATProdPostingGroup(CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; PurchaseHeader: Record "Purchase Header"): code[20]
+    // var
+    //     VATPostingSetup: Record "VAT Posting Setup";
+    // begin
+    //     // TODO, cambiar por configuracion de porcentaje iva
+    //     VATPostingSetup.Reset();
+    //     VATPostingSetup.SetFilter("VAT Prod. Posting Group", '%1', '*SERV');
+    //     VATPostingSetup.SetRange("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
+    //     VATPostingSetup.SetRange("VAT %", CONSULTIAInvoiceLine.Porc_IVA);
+    //     if VATPostingSetup.FindFirst() then
+    //         exit(VATPostingSetup."VAT Prod. Posting Group");
+    // end;
+
+    // local procedure SetPurchaseLineDimensiones(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
+    //                         var PurchaseLine: Record "Purchase Line")
+    // var
+    //     GLSetup: Record "General Ledger Setup";
+    //     recNewDimSetEntry: record "Dimension Set Entry" temporary;
+    //     cduDimMgt: Codeunit DimensionManagement;
+    //     cduCambioDim: Codeunit CambioDimensiones;
+    //     GlobalDim1: code[20];
+    //     GlobalDim2: code[20];
+    //     intDimSetId: Integer;
+    // begin
+    //     GLSetup.Get();
+    //     // CECO
+    //     // Empleado y Unico por feria MK (campo proyecto de cabecera)
+    //     GlobalDim1 := GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
+    //     recNewDimSetEntry.Init();
+    //     recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
+    //     recNewDimSetEntry.Validate("Dimension Value Code", GlobalDim1);
+    //     recNewDimSetEntry.Insert();
+
+    //     // PROYECTO
+    //     CONSULTIAInvoiceLine.CalcFields(Proyecto);
+    //     if CONSULTIAInvoiceLine."Proyecto Manual" = '' then
+    //         CONSULTIAInvoiceLine.TestField(Proyecto);
+    //     recNewDimSetEntry.Init();
+    //     recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 2 Code";
+    //     recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
+    //     recNewDimSetEntry.Insert();
+    //     // PARTIDA
+    //     CONSULTIAInvoiceLine.TestField(Partida);
+    //     recNewDimSetEntry.Init();
+    //     recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 8 Code";
+    //     recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
+    //     recNewDimSetEntry.Insert();
+    //     // DETALLE
+    //     recNewDimSetEntry.Init();
+    //     recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 3 Code";
+    //     recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
+    //     recNewDimSetEntry.Insert();
+    //     // DEPART CODIGO (APROBACIONES)
+    //     if CONSULTIAInvoiceLine.DEPART <> '' then begin
+    //         recNewDimSetEntry.Init();
+    //         recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 4 Code";
+    //         recNewDimSetEntry.Validate("Dimension Value Code", CONSULTIAInvoiceLine.DEPART);
+    //         recNewDimSetEntry.Insert();
+    //     end;
+    //     Clear(cduDimMgt);
+    //     intDimSetId := cduDimMgt.GetDimensionSetID(recNewDimSetEntry);
+    //     clear(cduCambioDim);
+
+    //     GlobalDim1 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 1 Code", intDimSetId);
+    //     GlobalDim2 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 2 Code", intDimSetId);
+
+    //     PurchaseLine."Dimension Set ID" := intDimSetId;
+    //     PurchaseLine."Shortcut Dimension 1 Code" := GlobalDim1;
+    //     PurchaseLine."Shortcut Dimension 2 Code" := GlobalDim2;
+    //     PurchaseLine.Modify();
+    // end;
+
+    // local procedure GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
+    // begin
+    //     if CONSULTIAInvoiceHeader."Global Dimension 1 code Fair" = '' then begin
+    //         CONSULTIAInvoiceLine.TestField(Ref_Usuario);
+    //         exit(CONSULTIAInvoiceLine.Ref_Usuario);
+    //     end else begin
+    //         exit(CONSULTIAInvoiceHeader."Global Dimension 1 code Fair");
+    //     end;
+    // end;
+
+    // local procedure GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
+    // begin
+    //     if CONSULTIAInvoiceHeader.Proyecto = '' then begin
+    //         if CONSULTIAInvoiceLine."Proyecto Manual" <> '' then
+    //             exit(CONSULTIAInvoiceLine."Proyecto Manual");
+    //         CONSULTIAInvoiceLine.TestField(Proyecto);
+    //         exit(CONSULTIAInvoiceLine.Proyecto);
+    //     end else begin
+    //         exit(CONSULTIAInvoiceHeader.Proyecto);
+    //     end;
+    // end;
+
+    // local procedure GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
+    // begin
+    //     if CONSULTIAInvoiceHeader."Dimension Detalle Fair" = '' then begin
+    //         CONSULTIAInvoiceLine.TestField(Detalle);
+    //         exit(CONSULTIAInvoiceLine.Detalle)
+    //     end else begin
+    //         exit(CONSULTIAInvoiceHeader."Dimension Detalle Fair");
+    //     end;
+    // end;
+
+    // local procedure GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"): code[50]
+    // begin
+    //     if CONSULTIAInvoiceHeader."Dimension Partida Fair" = '' then begin
+    //         CONSULTIAInvoiceLine.TestField(Partida);
+    //         exit(CONSULTIAInvoiceLine.Partida)
+    //     end else begin
+    //         exit(CONSULTIAInvoiceHeader."Dimension Partida Fair");
+    //     end;
+    // end;
+
+    // local procedure CopyDocumentAttachment(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; PurchaseHeader: Record "Purchase Header")
+    // var
+    //     DocumentAttachment: Record "Document Attachment";
+    //     TargetDocumentAttachment: Record "Document Attachment";
+    // begin
+    //     DocumentAttachment.Reset();
+    //     DocumentAttachment.SetRange("Table ID", Database::"ZM CONSULTIA Invoice Header");
+    //     DocumentAttachment.SetRange("No.", CONSULTIAInvoiceHeader.N_Factura);
+    //     if DocumentAttachment.FindFirst() then
+    //         repeat
+    //             TargetDocumentAttachment.Init();
+    //             TargetDocumentAttachment := DocumentAttachment;
+    //             TargetDocumentAttachment.id := 0;
+    //             TargetDocumentAttachment."Table ID" := Database::"Purchase Header";
+    //             TargetDocumentAttachment."Document Type" := PurchaseHeader."Document Type";
+    //             TargetDocumentAttachment."No." := PurchaseHeader."No.";
+    //             TargetDocumentAttachment.Insert(true);
+    //         until DocumentAttachment.Next() = 0;
+    // end;
+
+    // [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', true, true)]
+    // local procedure PurchaseHeader_OnAfterDeleteEvent(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
+    // var
+    //     CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
+    // begin
+    //     case Rec."Document Type" of
+    //         Rec."Document Type"::Invoice, Rec."Document Type"::"Credit Memo":
+    //             begin
+    //                 CONSULTIAInvoiceHeader.Reset();
+    //                 CONSULTIAInvoiceHeader.SetRange("Pre Invoice No.", Rec."No.");
+    //                 if CONSULTIAInvoiceHeader.FindFirst() then begin
+    //                     CONSULTIAInvoiceHeader."Pre Invoice No." := '';
+    //                     CONSULTIAInvoiceHeader.Modify();
+    //                 end;
+
+    //             end;
+    //     end;
+    // end;
+
+    // procedure AssingEmployeeIdCorp(var Rec: Record "ZM CONSULTIA Invoice Line")
+    // var
+    //     Employee: Record Employee;
+    //     EmployeeList: Page "Employee List";
+    // begin
+    //     Rec.TestField(IdCorp_Usuario, '');
+    //     EmployeeList.LookupMode := true;
+    //     if EmployeeList.RunModal() = Action::LookupOK then begin
+    //         EmployeeList.GetRecord(Employee);
+    //         Rec.IdCorp_Usuario := Employee."No.";
+    //         GetEmployeeDimensionsValue(Rec);
+    //         Rec.Modify();
+    //     end;
+    // end;
+
+    // procedure UpdateDimensions(var Rec: Record "ZM CONSULTIA Invoice Line")
+    // begin
+    //     GetProjectDimension(Rec);
+    //     GetEmployeeDimensionsValue(Rec);
+    //     GetGLAccountDimensionsValue(Rec);
+    //     Rec.Modify();
+    // end;
+
+    // procedure AssingProject(var Rec: Record "ZM CONSULTIA Invoice Line")
+    // var
+    //     ProductProject: Record "ZM CONSULTIA Producto-Proyecto";
+    //     DimensionValue: Record "Dimension Value";
+    //     DimensionValues: Page "Dimension Values";
+    //     lblConfirm: Label '¿Desea Cambiar el proyecto %1 del producto %2 a %3?', comment = 'ESP="¿Desea Cambiar el proyecto %1 del producto %2 a %3?"';
+    // begin
+    //     ProductProject.Reset();
+    //     CreateProductoProject(Rec.CodigoProducto, Rec.Producto);
+    //     ProductProject.Get(Rec.CodigoProducto);
+    //     DimensionValue.Reset();
+    //     DimensionValue.SetRange("Global Dimension No.", 2);
+    //     DimensionValues.LookupMode := true;
+    //     DimensionValues.SetTableView(DimensionValue);
+    //     if DimensionValues.RunModal() = Action::LookupOK then begin
+    //         DimensionValues.GetRecord(DimensionValue);
+    //         if ProductProject.Proyecto <> '' then
+    //             if not Confirm(lblConfirm, true, ProductProject.Proyecto, ProductProject.Proyecto, DimensionValue.Code) then
+    //                 exit;
+    //         ProductProject.Proyecto := DimensionValue.Code;
+    //         ProductProject.Modify();
+    //     end;
+    // end;
+
+    // local procedure GetProjectDimension(var Rec: Record "ZM CONSULTIA Invoice Line"): Boolean
+    // var
+    //     ProductProject: Record "ZM CONSULTIA Producto-Proyecto";
+    // begin
+    //     if Rec.Proyecto <> '' then
+    //         exit;
+    //     ProductProject.Reset();
+    //     ProductProject.SetRange(CodigoProducto, Rec.CodigoProducto);
+    //     if ProductProject.FindFirst() then
+    //         if ProductProject.Proyecto <> '' then
+    //             Rec.Proyecto := ProductProject.Proyecto;
+    // end;
+
+    // local procedure CreateProductoProject(CodigoProducto: code[50]; Producto: text[100])
+    // var
+    //     ProductProject: Record "ZM CONSULTIA Producto-Proyecto";
+    // begin
+    //     if ProductProject.Get(CodigoProducto) then
+    //         exit;
+    //     ProductProject.Init();
+    //     ProductProject.CodigoProducto := CodigoProducto;
+    //     ProductProject.Description := CopyStr(Producto, 1, MaxStrLen(ProductProject.Description));
+    //     ProductProject.Insert();
+    //     Commit();
+    // end;
+
+    // // =============     CREAR DIARIO DE APROVISIONAMIENTO          ====================
+    // // ==  
+    // // ==  funciones para crear diario de aprovisionamiento de facturas de CONSULTIA
+    // // ==  
+    // // ======================================================================================================
+
+    // procedure CreateJNLAprovisionamiento(var CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; DesProvisioning: Boolean)
+    // var
+    //     GenJournalBatch: Record "Gen. Journal Batch";
+    //     CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line";
+    //     BudgetBuffer: record "Budget Buffer" temporary;
+    //     GenJnlManagement: Codeunit GenJnlManagement;
+
+    // begin
+    //     PurchasesPayablesSetup.Get();
+    //     GenJournalBatch.Get(PurchasesPayablesSetup."CONSULTIA Gen. Jnl. Template", PurchasesPayablesSetup."CONSULTIA Gen. Journal Batch");
+    //     PurchasesPayablesSetup.TestField("CONSULTIA G/L Provide");
+    //     PurchasesPayablesSetup.TestField("CONSULTIA Gen. Jnl. Template");
+    //     PurchasesPayablesSetup.TestField("CONSULTIA Gen. Journal Batch");
+    //     BudgetBuffer.DeleteAll();
+    //     if not DesProvisioning then
+    //         CONSULTIAInvoiceHeader.TestField("Invoice Header No.", '');
+    //     if DesProvisioning then begin
+    //         CONSULTIAInvoiceHeader.TestField(Provisioning, true);
+    //         CONSULTIAInvoiceHeader.TestField("Des Provisioning", false);
+    //     end else begin
+    //         CONSULTIAInvoiceHeader.TestField(Provisioning, false);
+    //     end;
+    //     CONSULTIAInvoiceLine.Reset();
+    //     CONSULTIAInvoiceLine.SetRange(id, CONSULTIAInvoiceHeader.Id);
+    //     if CONSULTIAInvoiceLine.FindFirst() then
+    //         repeat
+
+    //             AddAprovisionamientoBuffer(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine, BudgetBuffer, DesProvisioning);
+
+    //         Until CONSULTIAInvoiceLine.next() = 0;
+
+    //     CreateJNLLineAprovisionamiento(CONSULTIAInvoiceHeader, BudgetBuffer);
+    //     case DesProvisioning of
+    //         true:
+    //             begin
+    //                 CONSULTIAInvoiceHeader."Des Provisioning" := true;
+    //                 CONSULTIAInvoiceHeader."Des Provisioning Date" := WorkDate();
+
+    //             end;
+    //         else begin
+    //             CONSULTIAInvoiceHeader.Provisioning := true;
+    //             CONSULTIAInvoiceHeader."Provisioning Date" := WorkDate();
+    //         end;
+    //     end;
+    //     CONSULTIAInvoiceHeader.Modify();
+
+    //     Commit();
+    //     GenJnlManagement.TemplateSelectionFromBatch(GenJournalBatch)
+
+    // end;
+
+
+    // local procedure AddAprovisionamientoBuffer(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header";
+    //             CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line"; var BudgetBuffer: record "Budget Buffer"; DesProvisioning: Boolean)
+    // var
+    //     myInt: Integer;
+    // begin
+    //     BudgetBuffer.Reset();
+    //     BudgetBuffer.SetRange("G/L Account No.");
+    //     BudgetBuffer.SetRange("Dimension Value Code 1", GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // CECO
+    //     BudgetBuffer.SetRange("Dimension Value Code 2", GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // PROYECTO
+    //     BudgetBuffer.SetRange("Dimension Value Code 3", GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // Partida
+    //     BudgetBuffer.SetRange("Dimension Value Code 4", GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));  // DETALLE
+    //     if not BudgetBuffer.FindFirst() then begin
+    //         BudgetBuffer.Init();
+    //         BudgetBuffer."G/L Account No." := CONSULTIAInvoiceLine.Ref_DPTO;
+    //         BudgetBuffer."Dimension Value Code 1" := GetCONSULTIAInvoiceLineCECO(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
+    //         BudgetBuffer."Dimension Value Code 2" := GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
+    //         BudgetBuffer."Dimension Value Code 3" := GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
+    //         BudgetBuffer."Dimension Value Code 4" := GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine);
+    //         BudgetBuffer.Insert();
+    //     end;
+    //     case DesProvisioning of
+    //         true:
+    //             BudgetBuffer.Amount -= CONSULTIAInvoiceLine.Base;
+    //         else
+    //             BudgetBuffer.Amount += CONSULTIAInvoiceLine.Base;
+    //     end;
+    //     BudgetBuffer.Modify();
+    // end;
+
+    // local procedure CreateJNLLineAprovisionamiento(CONSULTIAInvoiceHeader: Record "ZM CONSULTIA Invoice Header"; var BudgetBuffer: record "Budget Buffer")
+    // var
+    //     GenJnlLine: Record "Gen. Journal Line";
+    //     GenJournalBatch: Record "Gen. Journal Batch";
+    //     LastLine: Integer;
+    // begin
+    //     PurchasesPayablesSetup.Get();
+    //     GenJournalBatch.Get(PurchasesPayablesSetup."CONSULTIA Gen. Jnl. Template", PurchasesPayablesSetup."CONSULTIA Gen. Journal Batch");
+    //     // primero miramos si existen líneas y obtenemos la ultima línea
+    //     GenJnlLine.Reset();
+    //     GenJnlLine.SetRange("Journal Template Name", GenJournalBatch."Journal Template Name");
+    //     GenJnlLine.SetRange("Journal Batch Name", GenJournalBatch.Name);
+    //     if GenJnlLine.FindLast() then
+    //         LastLine := GenJnlLine."Line No." + 10000
+    //     else
+    //         LastLine := 10000;
+    //     BudgetBuffer.Reset();
+    //     if BudgetBuffer.FindFirst() then
+    //         repeat
+    //             GenJnlLine.Init();
+    //             GenJnlLine."Journal Template Name" := GenJournalBatch."Journal Template Name";
+    //             GenJnlLine."Journal Batch Name" := GenJournalBatch.Name;
+    //             GenJnlLine."Line No." := LastLine;
+    //             GenJnlLine."Posting Date" := Workdate;
+    //             GenJnlLine."Document Type" := GenJnlLine."Document Type"::" ";
+    //             GenJnlLine."Document Date" := CONSULTIAInvoiceHeader.F_Factura;
+    //             GenJnlLine.Insert();
+    //             GenJnlLine."Document No." := CopyStr(CONSULTIAInvoiceHeader.N_Factura, 1, MaxStrLen(GenJnlLine."Document No."));
+    //             GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
+    //             GenJnlLine.validate("Account No.", BudgetBuffer."G/L Account No.");
+    //             GenJnlLine.Description := CopyStr(StrSubstNo('%1 %2', CONSULTIAInvoiceHeader.N_Factura, CONSULTIAInvoiceHeader.Descripcion), 1, MaxStrLen(GenJnlLine.Description));
+    //             GenJnlLine."External Document No." := CopyStr(CONSULTIAInvoiceHeader.N_Factura, 1, MaxStrLen(GenJnlLine."External Document No."));
+    //             GenJnlLine.Validate(Amount, BudgetBuffer.Amount);
+    //             GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
+    //             GenJnlLine.Validate("Bal. Account No.", PurchasesPayablesSetup."CONSULTIA G/L Provide");
+    //             GenJnlLine.Modify();
+    //             LastLine += 10000;
+    //         Until BudgetBuffer.next() = 0;
+    // end;
 
     var
         SalesReceivablesSetup: Record "Sales & Receivables Setup";
         PurchasesPayablesSetup: Record "Purchases & Payables Setup";
         JobsSetup: Record "Jobs Setup";
-        // lblurlConsultia: Label 'https://api-destinux.consultiatravel.es/B2B.Test';
-        lblListaViajero: Label '/api/ListaViajeros';
-        lblInvoice: Label '/api/facturas';
-        lblDate: Label '?FechaIni=%1&FechaFin=%2';
-        lblGetInvoicePDF: Label '/api/Facturas/ObtenerPDF?IdFactura=%1';
-        lblDownload: Label 'Descarga de fichero', comment = 'ESP="Descarga de fichero"';
+    // lblurlConsultia: Label 'https://api-destinux.consultiatravel.es/B2B.Test';
+    // lblListaViajero: Label '/api/ListaViajeros';
+    // lblInvoice: Label '/api/facturas';
+    // lblDate: Label '?FechaIni=%1&FechaFin=%2';
+    // lblGetInvoicePDF: Label '/api/Facturas/ObtenerPDF?IdFactura=%1';
+    // lblDownload: Label 'Descarga de fichero', comment = 'ESP="Descarga de fichero"';
 
     // =============     ABERTI BI UPDATE FUNCTIONS ADO SQL SERVER          ====================
     // ==  
