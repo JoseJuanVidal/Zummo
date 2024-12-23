@@ -6500,6 +6500,7 @@ cstr(Fields!ShiptoAddresPhone.Value)
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>7pt</FontSize>
+                            <Format>n4</Format>
                           </Style>
                         </TextRun>
                       </TextRuns>
