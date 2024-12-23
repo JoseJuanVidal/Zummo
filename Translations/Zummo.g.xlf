@@ -23683,6 +23683,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaBrasilMaquinas - NamedType Text010Txt</note>
         </trans-unit>
+        <trans-unit id="Report 2053429064 - NamedType 3193352179" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SCRAP contribution</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Contribución SCRAP",FRA="Contribution SCRAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaBrasilMaquinas - NamedType txtSCRAPContribuitor</note>
+        </trans-unit>
         <trans-unit id="Report 2053429064 - NamedType 1823946834" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Base</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24608,6 +24613,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType txtcomentaires</note>
         </trans-unit>
+        <trans-unit id="Report 550184364 - NamedType 3193352179" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SCRAP contribution</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Contribución SCRAP",FRA="Contribution SCRAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaExportacion - NamedType txtSCRAPContribuitor</note>
+        </trans-unit>
         <trans-unit id="Report 550184364 - NamedType 3659909257" size-unit="char" translate="yes" xml:space="preserve">
           <source>Price/unit</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precio U.",FRA="Prix/un"</note>
@@ -25412,6 +25422,11 @@
           <source>Comments</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Observations"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType txtcomentaires</note>
+        </trans-unit>
+        <trans-unit id="Report 1112960350 - NamedType 3193352179" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SCRAP contribution</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Contribución SCRAP",FRA="Contribution SCRAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - NamedType txtSCRAPContribuitor</note>
         </trans-unit>
         <trans-unit id="Report 1112960350 - NamedType 3659909257" size-unit="char" translate="yes" xml:space="preserve">
           <source>Price/unit</source>
@@ -27147,6 +27162,11 @@
           <source>Comments</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios",FRA="Commentaires"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType txtcomentaires</note>
+        </trans-unit>
+        <trans-unit id="Report 2605446939 - NamedType 3193352179" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SCRAP contribution</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Contribución SCRAP",FRA="Contribution SCRAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - NamedType txtSCRAPContribuitor</note>
         </trans-unit>
         <trans-unit id="Report 2605446939 - NamedType 3659909257" size-unit="char" translate="yes" xml:space="preserve">
           <source>Price/unit</source>
@@ -31953,6 +31973,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Exportar PDF Facturas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Exportar PDF Facturas - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 1237019123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Export SCRAP</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar SCRAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action ExportExcelSalesInvoices - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 1237019123 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 549456760">
+          <source>¿Do you want to Export Excel with the detail of the SCRAP Calculation of the %1 invoices selected?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Exportar Excel con el detalle del Cálculo SCRAP de las %1 facturas seleccionadas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action ExportExcelSalesInvoices - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 252035029 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Imprimir Fact.Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Impimir Fact.Export"</note>
@@ -32557,6 +32587,11 @@
           <source>Open a page where predefined comments can be inserted</source>
           <note from="Developer" annotates="general" priority="2">ESP="Abre una página donde pueden insertarse los comentarios predefinidos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Action ComentariosPredefinidos - Property tooltip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4090392497 - Control 4278553707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>SCRAP Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SCRAP Facturas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control SCRAP Invoices - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4090392497 - Control 518354779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
           <source>Bitec</source>
@@ -35827,6 +35862,26 @@
           <source>Active Price/Discounts Control</source>
           <note from="Developer" annotates="general" priority="2">ESP="Activar Control Precios/Dtos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Active Price/Discounts Control - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 905680462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>"Amount SCRAP Carton (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe SCRAP Cartón (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Amount SCRAP Carton - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3902006625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>"Amount SCRAP Plastic (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe SCRAP Plastic (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Amount SCRAP Plastic - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3077132552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Amount SCRAP Steel (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe SCRAP Acero (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Amount SCRAP Steel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 871896712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>"Amount SCRAP Wood (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe SCRAP Madera (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Amount SCRAP Wood - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 1024359529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Bin Code Credit Memo</source>

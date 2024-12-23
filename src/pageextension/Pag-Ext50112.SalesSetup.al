@@ -28,6 +28,29 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 ApplicationArea = all;
             }
         }
+        addafter(Dimensions)
+        {
+            group("SCRAP Invoices")
+            {
+                Caption = 'SCRAP Invoices', comment = 'ESP="SCRAP Facturas"';
+                field("Amount SCRAP Steel"; "Amount SCRAP Steel")
+                {
+                    ApplicationArea = all;
+                }
+                field("Amount SCRAP Wood"; "Amount SCRAP Wood")
+                {
+                    ApplicationArea = all;
+                }
+                field("Amount SCRAP Carton"; "Amount SCRAP Carton")
+                {
+                    ApplicationArea = all;
+                }
+                field("Amount SCRAP Plastic"; "Amount SCRAP Plastic")
+                {
+                    ApplicationArea = all;
+                }
+            }
+        }
         addafter("Dynamics 365 for Sales")
         {
             group(Bitec)

@@ -53,7 +53,8 @@ report 50117 "FacturaBrasilMaquinas"
             column(DisplayAdditionalFeeNote; DisplayAdditionalFeeNote)
             {
             }
-
+            column(txtSCRAPContribuitor; txtSCRAPContribuitor) { }
+            column(SCRAPContribuitor; SCRAPContribuitor) { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = sorting(Number);
@@ -1242,6 +1243,7 @@ report 50117 "FacturaBrasilMaquinas"
                 if not Cust.Get("Bill-to Customer No.") then
                     Clear(Cust);
 
+                SCRAPContribuitor := FuncionesIvaRec.GetTotalSalesInvoice("Sales Invoice Header");
                 DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
                 Customer.Get("Sell-to Customer No.");
                 if BankAccountRecord.Get('CUENTA BANC. EMPRESA') then;
@@ -1465,6 +1467,7 @@ report 50117 "FacturaBrasilMaquinas"
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
+        FuncionesIvaRec: Codeunit "STH Funciones IVA Recuperacion";
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];
@@ -1519,6 +1522,8 @@ report 50117 "FacturaBrasilMaquinas"
         [InDataSet]
         LogInteractionEnable: Boolean;
         DisplayAssemblyInformation: Boolean;
+        SCRAPContribuitor: Decimal;
+        txtSCRAPContribuitor: label 'SCRAP contribution', comment = 'ESP="Contribución SCRAP",FRA="Contribution SCRAP"';
         PhoneNoCaptionLbl: Label 'Phone No.';
         VATRegNoCaptionLbl: Label 'VAT Registration No.';
         GiroNoCaptionLbl: Label 'Giro No.';

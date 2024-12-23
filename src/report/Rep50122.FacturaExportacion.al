@@ -311,7 +311,8 @@ report 50122 "FacturaExportacion"
             column(lblRAEES; lblRAEES) { }
             column(lblPILAS; lblPILAS) { }
             //Captions
-
+            column(txtSCRAPContribuitor; txtSCRAPContribuitor) { }
+            column(SCRAPContribuitor; SCRAPContribuitor) { }
             column(Reimpresion; Reimpresion)
             {
             }
@@ -1541,6 +1542,7 @@ report 50122 "FacturaExportacion"
                 if optIdioma <> optIdioma::" " then
                     CurrReport.LANGUAGE := Language.GetLanguageID(format(optIdioma));
 
+                SCRAPContribuitor := FuncionesIvaRec.GetTotalSalesInvoice("Sales Invoice Header");
                 // miramos si la direccion de envio el pais es FRANCIA
                 EsFrancia := GetCountryShipFR();
 
@@ -1750,6 +1752,7 @@ report 50122 "FacturaExportacion"
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
+        FuncionesIvaRec: Codeunit "STH Funciones IVA Recuperacion";
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];
@@ -1816,6 +1819,8 @@ report 50122 "FacturaExportacion"
         DisplayAssemblyInformation: Boolean;
         Reimpresion: Boolean;
         facturaLidl: boolean;
+        SCRAPContribuitor: Decimal;
+        txtSCRAPContribuitor: label 'SCRAP contribution', comment = 'ESP="Contribución SCRAP",FRA="Contribution SCRAP"';
         PhoneNoCaptionLbl: Label 'Phone No.', Comment = 'ESP="Teléfono."';
         VATRegNoCaptionLbl: Label 'VAT Registration No.', Comment = 'ESP="CIF"';
         GiroNoCaptionLbl: Label 'Giro No.', Comment = 'ESP="Núm. Giro"';

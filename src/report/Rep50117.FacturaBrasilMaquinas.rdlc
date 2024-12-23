@@ -5721,6 +5721,15 @@ End Function</Code>
         <Field Name="DisplayAdditionalFeeNote">
           <DataField>DisplayAdditionalFeeNote</DataField>
         </Field>
+        <Field Name="txtSCRAPContribuitor">
+          <DataField>txtSCRAPContribuitor</DataField>
+        </Field>
+        <Field Name="SCRAPContribuitor">
+          <DataField>SCRAPContribuitor</DataField>
+        </Field>
+        <Field Name="SCRAPContribuitorFormat">
+          <DataField>SCRAPContribuitorFormat</DataField>
+        </Field>
         <Field Name="CompanyInfo2Picture">
           <DataField>CompanyInfo2Picture</DataField>
         </Field>

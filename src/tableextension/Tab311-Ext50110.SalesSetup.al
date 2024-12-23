@@ -226,6 +226,33 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             DataClassification = CustomerContent;
             TableRelation = "No. Series";
         }
+        // SCRAP CONFIGURACION PRECIOS
+        field(50300; "Amount SCRAP Steel"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Amount SCRAP Steel (€/kg)', comment = 'ESP="Importe SCRAP Acero (€/kg)"';
+            Description = 'Importe SCRAP Acero que se utiliza para el envío del producto';
+            DecimalPlaces = 0 : 5;
+        }
+        field(50301; "Amount SCRAP Carton"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = '"Amount SCRAP Carton (€/kg)', comment = 'ESP="Importe SCRAP Cartón (€/kg)"';
+            DecimalPlaces = 0 : 5;
+        }
+        field(50302; "Amount SCRAP Wood"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = '"Amount SCRAP Wood (€/kg)', comment = 'ESP="Importe SCRAP Madera (€/kg)"';
+            DecimalPlaces = 0 : 5;
+        }
+        field(50303; "Amount SCRAP Plastic"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = '"Amount SCRAP Plastic (€/kg)', comment = 'ESP="Importe SCRAP Plastic (€/kg)"';
+            DecimalPlaces = 0 : 5;
+        }
+        //- SCRAP CONFIGURACION PRECIOS    
         // ITBID
         field(60002; STHurlAccessToken; Text[250])
         {

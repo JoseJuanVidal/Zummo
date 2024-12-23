@@ -7233,6 +7233,15 @@ oD0izZV3qI+dlxMEXRkGJ3B5S3xhedBWS1hYstcjgRcJOLxhRtFPpIFn5kADb+iEEEIsoZn1MyxQg0G7
         <Field Name="lblPILAS">
           <DataField>lblPILAS</DataField>
         </Field>
+        <Field Name="txtSCRAPContribuitor">
+          <DataField>txtSCRAPContribuitor</DataField>
+        </Field>
+        <Field Name="SCRAPContribuitor">
+          <DataField>SCRAPContribuitor</DataField>
+        </Field>
+        <Field Name="SCRAPContribuitorFormat">
+          <DataField>SCRAPContribuitorFormat</DataField>
+        </Field>
         <Field Name="Reimpresion">
           <DataField>Reimpresion</DataField>
         </Field>

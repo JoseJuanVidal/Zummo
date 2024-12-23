@@ -1419,7 +1419,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>5</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -6181,7 +6180,7 @@ cstr(Fields!ShiptoAddresPhone.Value)
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=First(Fields!txtcomentaires.Value, "DataSet_Result")</Value>
+                          <Value>= First(Fields!txtSCRAPContribuitor.Value, "DataSet_Result")</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>7pt</FontSize>
@@ -6497,10 +6496,10 @@ cstr(Fields!ShiptoAddresPhone.Value)
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value />
+                          <Value>=First(Fields!SCRAPAportacion.Value, "DataSet_Result")</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
-                            <FontSize>8pt</FontSize>
+                            <FontSize>7pt</FontSize>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -8868,6 +8867,15 @@ kBKRAAAAAEiJSAAAAACkRCQAAAAAUiISAAAAACkRCQAAAICUiAQAAABASkQCAAAAICUiAQAAAJASkQAA
         </Field>
         <Field Name="TextRegister">
           <DataField>TextRegister</DataField>
+        </Field>
+        <Field Name="SCRAPAportacion">
+          <DataField>SCRAPAportacion</DataField>
+        </Field>
+        <Field Name="SCRAPAportacionFormat">
+          <DataField>SCRAPAportacionFormat</DataField>
+        </Field>
+        <Field Name="txtSCRAPContribuitor">
+          <DataField>txtSCRAPContribuitor</DataField>
         </Field>
         <Field Name="CompanyInfo2Picture">
           <DataField>CompanyInfo2Picture</DataField>

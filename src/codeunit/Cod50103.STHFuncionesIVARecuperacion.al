@@ -592,4 +592,117 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         ExcelBuffer.OpenExcel();
         Window.Close();
     end;
+
+
+    // =============     SCRAP Exportar DETALLE de FACTURAS          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    procedure GetTotalSalesInvoice(SalesInvHeader: Record "Sales Invoice Header") Total: Decimal
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        Item: Record Item;
+        SalesInvLine: Record "Sales Invoice Line";
+    begin
+        SalesSetup.Get();
+        SalesInvLine.RESET;
+        SalesInvLine.SETRANGE("Document No.", SalesInvHeader."No.");
+        SalesInvLine.SetRange(Type, SalesInvLine.Type::Item);
+        if SalesInvLine.FINDFIRST then
+            repeat
+                if item.Get(SalesInvLine."No.") then
+                    Total += (SalesInvLine.Quantity * Item.Carton * SalesSetup."Amount SCRAP Carton") +
+                             (SalesInvLine.Quantity * Item.Steel * SalesSetup."Amount SCRAP Steel") +
+                             (SalesInvLine.Quantity * Item.Wood * SalesSetup."Amount SCRAP Wood") +
+                             (SalesInvLine.Quantity * Item."Plastic Qty. (kg)" * SalesSetup."Amount SCRAP Plastic");
+
+            until SalesInvLine.Next() = 0;
+    end;
+
+    procedure ExportExcelSalesInvoices(var SalesInvHeader: Record "Sales Invoice Header")
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        Item: Record Item;
+        SalesInvLine: Record "Sales Invoice Line";
+        Window: Dialog;
+    begin
+        SalesSetup.Get();
+        SalesSetup.TestField("Amount SCRAP Carton");
+        SalesSetup.TestField("Amount SCRAP Steel");
+        SalesSetup.TestField("Amount SCRAP Wood");
+        SalesSetup.TestField("Amount SCRAP Plastic");
+        Window.Open('#1##################\#2########################');
+        ExcelBuffer.DELETEALL;
+        ExcelBuffer.CreateNewBook('SCRAP Facturas de VENTA');
+
+        ExcelBuffer.AddColumn('SCRAP Facturas de VENTA', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow;
+        ExcelBuffer.AddColumn(CompanyName, FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow;
+        ExcelBuffer.AddColumn(StrSubstNo('Fecha: %1', WorkDate()), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow;
+        ExcelBuffer.NewRow;
+
+        ExcelBuffer.AddColumn(SalesInvHeader.FieldCaption("No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvHeader.FieldCaption("Posting Date"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvHeader.FieldCaption("Sell-to Customer No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvHeader.FieldCaption("Sell-to Customer Name"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+
+        ExcelBuffer.AddColumn(SalesInvLine.FieldCaption("No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvLine.FieldCaption(Description), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesInvLine.FieldCaption(Quantity), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("Plastic Qty. (kg)"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("Recycled plastic Qty. (kg)"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("Recycled plastic %"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesSetup.FieldCaption("Amount SCRAP Carton"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesSetup.FieldCaption("Amount SCRAP Steel"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesSetup.FieldCaption("Amount SCRAP Wood"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SalesSetup.FieldCaption("Amount SCRAP Plastic"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Importe', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+
+        ExcelBuffer.NewRow;
+
+
+        IF SalesInvHeader.FINDFIRST THEN
+            REPEAT
+                Window.UPDATE(1, SalesInvHeader."No.");
+                SalesInvLine.RESET;
+                SalesInvLine.SETRANGE("Document No.", SalesInvHeader."No.");
+                SalesInvLine.SetRange(Type, SalesInvLine.Type::Item);
+                IF SalesInvLine.FINDFIRST THEN
+                    REPEAT
+                        Window.UPDATE(2, Item."No.");
+                        if item.Get(SalesInvLine."No.") and ((Item.Wood <> 0) or (Item.Steel <> 0) or (Item.Carton <> 0)) then begin
+                            ExcelBuffer.AddColumn(SalesInvHeader."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvHeader."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvHeader."Sell-to Customer No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvHeader."Sell-to Customer Name", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+
+                            ExcelBuffer.AddColumn(SalesInvLine."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(Item."Plastic Qty. (kg)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                            ExcelBuffer.AddColumn(Item."Recycled plastic Qty. (kg)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                            ExcelBuffer.AddColumn(Item."Recycled plastic %", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.Carton * SalesSetup."Amount SCRAP Carton", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.Steel * SalesSetup."Amount SCRAP Steel", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.Wood * SalesSetup."Amount SCRAP Wood", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item."Plastic Qty. (kg)" * SalesSetup."Amount SCRAP Plastic", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                            ExcelBuffer.AddColumn((SalesInvLine.Quantity * Item.Carton * SalesSetup."Amount SCRAP Carton") +
+                                        (SalesInvLine.Quantity * Item.Steel * SalesSetup."Amount SCRAP Steel") +
+                                        (SalesInvLine.Quantity * Item.Wood * SalesSetup."Amount SCRAP Wood") +
+                                        (SalesInvLine.Quantity * Item."Plastic Qty. (kg)" * SalesSetup."Amount SCRAP Plastic")
+                                        , FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                            ExcelBuffer.NewRow;
+                        end;
+                    UNTIL SalesInvLine.NEXT = 0;
+            UNTIL SalesInvHeader.NEXT = 0;
+
+        ExcelBuffer.WriteSheet('SCRAP Facturas de Venta', COMPANYNAME, USERID);
+        ExcelBuffer.CloseBook();
+        ExcelBuffer.SetFriendlyFilename('SCRAP Facturas de Ventas');
+        ExcelBuffer.OpenExcel();
+        Window.Close();
+    end;
 }

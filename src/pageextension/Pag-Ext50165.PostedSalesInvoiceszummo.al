@@ -182,6 +182,28 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                     ExportarPDF();
                 end;
             }
+            action(ExportExcelSalesInvoices)
+            {
+                ApplicationArea = all;
+                Caption = 'Export SCRAP', comment = 'ESP="Exportar SCRAP"';
+                Image = Excel;
+                Promoted = true;
+                PromotedCategory = Report;
+
+                trigger OnAction()
+                var
+                    SalesInvHeader: Record "Sales Invoice Header";
+                    FuncionesExcel: Codeunit "STH Funciones IVA Recuperacion";
+                    lblConfirm: Label '¿Do you want to Export Excel with the detail of the SCRAP Calculation of the %1 invoices selected?',
+                        comment = 'ESP="¿Desea Exportar Excel con el detalle del Cálculo SCRAP de las %1 facturas seleccionadas?"';
+                begin
+                    CurrPage.SetSelectionFilter(SalesInvHeader);
+                    if not Confirm(lblConfirm, false, SalesInvHeader.Count) then
+                        exit;
+                    FuncionesExcel.ExportExcelSalesInvoices(SalesInvHeader);
+                end;
+
+            }
         }
         // S20/00375
         addafter(Email)

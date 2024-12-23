@@ -406,6 +406,8 @@ report 50111 "FacturaNacionalMaquinas"
             column(Productordeproducto; CompanyInfo1."Productor de producto") { }
             column(ProductordeproductoCaption; CompanyInfo1.FieldCaption("Productor de producto")) { }
             column(TextRegister; TextRegister) { }
+            column(SCRAPAportacion; SCRAPAportacion) { }
+            column(txtSCRAPContribuitor; txtSCRAPContribuitor) { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
@@ -1838,6 +1840,8 @@ report 50111 "FacturaNacionalMaquinas"
                 // miramos si la direccion de envio el pais es FRANCIA
                 EsFrancia := GetCountryShipFR();
 
+                SCRAPAportacion := FuncionesIvaRec.GetTotalSalesInvoice("Sales Invoice Header");
+
                 recSalesShptLineTmp.Reset();
                 recSalesShptLineTmp.DeleteAll();
 
@@ -2257,6 +2261,7 @@ report 50111 "FacturaNacionalMaquinas"
         PlasticRecycledKgTotal: Decimal;
         PlasticBultoKgTotal: Decimal;
         PlasticRecycledBultoKgTotal: Decimal;
+        SCRAPAportacion: Decimal;
         lblLeyendPlastic: text;
         lblLeyendPlastic2: text;
         lblPlastic: Label 'Plastic packing (kg)', comment = 'ESP="Plástico embalaje (kg)"';
@@ -2340,6 +2345,7 @@ report 50111 "FacturaNacionalMaquinas"
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
+        FuncionesIvaRec: Codeunit "STH Funciones IVA Recuperacion";
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];
@@ -2526,6 +2532,7 @@ report 50111 "FacturaNacionalMaquinas"
         Tel_Lbl: Label 'Phone:', Comment = 'ESP="Tel:",FRA="Tél:"';
         BaseImponible_Lbl: Label 'Tax base', Comment = 'ESP="Base imponible",FRA="Montant Fiscale"';
         txtcomentaires: label 'Comments', comment = 'ESP="Comentarios",FRA="Observations"';
+        txtSCRAPContribuitor: label 'SCRAP contribution', comment = 'ESP="Contribución SCRAP",FRA="Contribution SCRAP"';
         Base_Lbl: Label 'Tax Base', Comment = 'ESP="Base",FRA="Montant HT"';
         IVA_Lbl: Label 'VAT', Comment = 'ESP="IVA",FRA="Montant TVA"';
         Porcentaje_Lbl: Label '%', Comment = 'ESP="%",FRA="%"';

@@ -29,6 +29,8 @@ report 50123 "FacturaRegBrasil"
             column(puertoDesc; recPuerto.Description) { }
 
             column(paisban; recPaisBanco.Name) { }
+            column(txtSCRAPContribuitor; txtSCRAPContribuitor) { }
+            column(SCRAPContribuitor; SCRAPContribuitor) { }
             column(billToAddress; billToAddress) { }
             column(billToAddress2; billToAddress2) { }
             column(billToCity; billToCity) { }
@@ -1633,6 +1635,7 @@ report 50123 "FacturaRegBrasil"
                 else
                     CurrReport.Language := Language.GetLanguageID(Cust."Language Code");
 
+                SCRAPContribuitor := FuncionesIvaRec.GetTotalSalesInvoice("Sales Invoice Header");
                 if optIdioma <> optIdioma::" " then
                     CurrReport.LANGUAGE := Language.GetLanguageID(format(optIdioma));
 
@@ -1990,6 +1993,7 @@ report 50123 "FacturaRegBrasil"
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
+        FuncionesIvaRec: Codeunit "STH Funciones IVA Recuperacion";
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];
@@ -2028,6 +2032,8 @@ report 50123 "FacturaRegBrasil"
         VALVATAmountLCY: Decimal;
         volumen: Decimal;
         VALSpecLCYHeader: Text[80];
+        SCRAPContribuitor: Decimal;
+        txtSCRAPContribuitor: label 'SCRAP contribution', comment = 'ESP="Contribución SCRAP",FRA="Contribution SCRAP"';
         Text007Txt: Label 'VAT Amount Specification in ', Comment = 'ESP="Especificación del importe del IVA en"';
         Text008Txt: Label 'Local Currency', Comment = 'ESP="Divisa Local"';
         VALExchRate: Text[50];
