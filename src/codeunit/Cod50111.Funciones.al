@@ -2047,6 +2047,15 @@ codeunit 50111 "Funciones"
         Steel: decimal;
         Wood: Decimal;
         Carton: Decimal;
+        Aluminium: Decimal;
+        PaperCarton: Decimal;
+        PlasticsEPSFlexibles: Decimal;
+        PlasticsOTROS: Decimal;
+        PlasticsPETFLEXIBLES: Decimal;
+        PlasticsPETResto: Decimal;
+        PlasticsPPFlexibles: Decimal;
+        PlasticsPVCFlexibles: Decimal;
+        PlasticsPVCResto: Decimal;
     begin
         PlasticItemInitValues(Item);
         ProductionBomLine.Reset();
@@ -2063,6 +2072,16 @@ codeunit 50111 "Funciones"
                 Carton += BomItem.Carton * ProductionBomLine."Quantity per";
                 Wood += BomItem.Wood * ProductionBomLine."Quantity per";
                 QtyPlastic += BomItem."Plastic Qty. (kg)" * ProductionBomLine."Quantity per";
+                Aluminium += BomItem.Aluminium * ProductionBomLine."Quantity per";
+                PaperCarton += BomItem."PAPER & CARTON (With plastic)" * ProductionBomLine."Quantity per";
+                PlasticsEPSFlexibles += BomItem."PLASTICS EPS Flexible" * ProductionBomLine."Quantity per";
+                PlasticsOTROS += BomItem."PLASTICS OTHERS" * ProductionBomLine."Quantity per";
+                PlasticsPETFLEXIBLES += BomItem."PLASTICS PET FLEXIBLE" * ProductionBomLine."Quantity per";
+                PlasticsPETResto += BomItem."PLASTICS PET OTHER" * ProductionBomLine."Quantity per";
+                PlasticsPPFlexibles += BomItem."PLASTICS PP FLEXIBLE" * ProductionBomLine."Quantity per";
+                PlasticsPVCFlexibles += BomItem."PLASTICS PVC FLEXIBLE" * ProductionBomLine."Quantity per";
+                PlasticsPVCResto += BomItem."PLASTICS PVC OTHER" * ProductionBomLine."Quantity per";
+
                 if BomItem."Recycled plastic Qty. (kg)" <> 0 then
                     QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)" * ProductionBomLine."Quantity per"
                 else
@@ -2072,6 +2091,7 @@ codeunit 50111 "Funciones"
                     QtyPlasticRecycledPacking += BomItem."Packing Recycled plastic (kg)" * ProductionBomLine."Quantity per"
                 else
                     QtyPlasticRecycledPacking += ((BomItem."Packing Recycled plastic %" * BomItem."Packing Plastic Qty. (kg)") / 100 * ProductionBomLine."Quantity per");
+
             Until ProductionBomLine.next() = 0;
         Item."Plastic Qty. (kg)" := QtyPlastic;
         Item."Recycled plastic Qty. (kg)" := QtyPlasticRecycled;
@@ -2082,6 +2102,17 @@ codeunit 50111 "Funciones"
         Item.Steel := Steel;
         Item.Carton := Carton;
         Item.Wood := Wood;
+
+        Item.Aluminium := Aluminium;
+        Item."PAPER & CARTON (With plastic)" := PaperCarton;
+        Item."PLASTICS EPS Flexible" := PlasticsEPSFlexibles;
+        Item."PLASTICS OTHERS" := PlasticsOTROS;
+        Item."PLASTICS PET FLEXIBLE" := PlasticsPETFLEXIBLES;
+        Item."PLASTICS PET OTHER" := PlasticsPETResto;
+        Item."PLASTICS PP FLEXIBLE" := PlasticsPPFlexibles;
+        Item."PLASTICS PVC FLEXIBLE" := PlasticsPVCFlexibles;
+        Item."PLASTICS PVC OTHER" := PlasticsPVCResto;
+
         Item.Modify();
     end;
 
@@ -2095,6 +2126,15 @@ codeunit 50111 "Funciones"
         Steel: decimal;
         Wood: Decimal;
         Carton: Decimal;
+        Aluminium: Decimal;
+        PaperCarton: Decimal;
+        PlasticsEPSFlexibles: Decimal;
+        PlasticsOTROS: Decimal;
+        PlasticsPETFLEXIBLES: Decimal;
+        PlasticsPETResto: Decimal;
+        PlasticsPPFlexibles: Decimal;
+        PlasticsPVCFlexibles: Decimal;
+        PlasticsPVCResto: Decimal;
     begin
         PlasticItemInitValues(Item);
         if BomComponent.FindFirst() then
@@ -2108,6 +2148,15 @@ codeunit 50111 "Funciones"
                 Carton += BomItem.Carton * BomComponent."Quantity per";
                 Wood += BomItem.Wood * BomComponent."Quantity per";
                 QtyPlastic += BomItem."Plastic Qty. (kg)" * BomComponent."Quantity per";
+                Aluminium += BomItem.Aluminium * BomComponent."Quantity per";
+                PaperCarton += BomItem."PAPER & CARTON (With plastic)" * BomComponent."Quantity per";
+                PlasticsEPSFlexibles += BomItem."PLASTICS EPS Flexible" * BomComponent."Quantity per";
+                PlasticsOTROS += BomItem."PLASTICS OTHERS" * BomComponent."Quantity per";
+                PlasticsPETFLEXIBLES += BomItem."PLASTICS PET FLEXIBLE" * BomComponent."Quantity per";
+                PlasticsPETResto += BomItem."PLASTICS PET OTHER" * BomComponent."Quantity per";
+                PlasticsPPFlexibles += BomItem."PLASTICS PP FLEXIBLE" * BomComponent."Quantity per";
+                PlasticsPVCFlexibles += BomItem."PLASTICS PVC FLEXIBLE" * BomComponent."Quantity per";
+                PlasticsPVCResto += BomItem."PLASTICS PVC OTHER" * BomComponent."Quantity per";
                 if BomItem."Recycled plastic Qty. (kg)" <> 0 then
                     QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)" * BomComponent."Quantity per"
                 else
@@ -2127,6 +2176,17 @@ codeunit 50111 "Funciones"
         Item.Steel := Steel;
         Item.Carton := Carton;
         Item.Wood := Wood;
+
+        Item.Aluminium := Aluminium;
+        Item."PAPER & CARTON (With plastic)" := PaperCarton;
+        Item."PLASTICS EPS Flexible" := PlasticsEPSFlexibles;
+        Item."PLASTICS OTHERS" := PlasticsOTROS;
+        Item."PLASTICS PET FLEXIBLE" := PlasticsPETFLEXIBLES;
+        Item."PLASTICS PET OTHER" := PlasticsPETResto;
+        Item."PLASTICS PP FLEXIBLE" := PlasticsPPFlexibles;
+        Item."PLASTICS PVC FLEXIBLE" := PlasticsPVCFlexibles;
+        Item."PLASTICS PVC OTHER" := PlasticsPVCResto;
+
         Item.Modify();
     end;
 
@@ -2141,6 +2201,15 @@ codeunit 50111 "Funciones"
         Item.Steel := 0;
         Item.Carton := 0;
         Item.Wood := 0;
+        Item.Aluminium := 0;
+        Item."PAPER & CARTON (With plastic)" := 0;
+        Item."PLASTICS EPS Flexible" := 0;
+        Item."PLASTICS OTHERS" := 0;
+        Item."PLASTICS PET FLEXIBLE" := 0;
+        Item."PLASTICS PET OTHER" := 0;
+        Item."PLASTICS PP FLEXIBLE" := 0;
+        Item."PLASTICS PVC FLEXIBLE" := 0;
+        Item."PLASTICS PVC OTHER" := 0;
     end;
 
     procedure PlasticCalculateFromItem(Item: Record Item)

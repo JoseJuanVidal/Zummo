@@ -64,6 +64,10 @@ page 17416 "ZM BCD Travel Invoice Headers"
                 {
                     ApplicationArea = All;
                 }
+                field("Receipt created"; "Receipt created")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
 
@@ -79,11 +83,26 @@ page 17416 "ZM BCD Travel Invoice Headers"
                 ApplicationArea = all;
                 Promoted = true;
                 Image = GetSourceDoc;
+                PromotedCategory = Process;
 
                 trigger OnAction()
                 begin
                     ImportExcelBCDTravelCon07();
                 end;
+            }
+            action(CreatePurchaseHeaderReceipt)
+            {
+                Caption = 'Crear Recepciones Compra', comment = 'ESP="Crear Recepciones Compra"';
+                ApplicationArea = all;
+                Image = Purchasing;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    OnCreatePurchaseHeaderReceipt();
+                end;
+
             }
         }
 
@@ -92,11 +111,24 @@ page 17416 "ZM BCD Travel Invoice Headers"
 
     var
         CONSULTIAFunciones: Codeunit "Zummo Inn. IC Functions";
-        lblConfirmGet: Label 'Do you want to update Shipments?', comment = 'ESP="¿Desea importar los albaranes?"';
+
 
     local procedure ImportExcelBCDTravelCon07()
+    var
+        lblConfirmGet: Label '¿Do you want to update Shipments?', comment = 'ESP="¿Desea importar los albaranes?"';
     begin
+        Clear(CONSULTIAFunciones);
         if Confirm(lblConfirmGet) then
             CONSULTIAFunciones.ImportExcelBCDTravelCon07();
+    end;
+
+    local procedure OnCreatePurchaseHeaderReceipt()
+    var
+        lblConfirm: Label '¿Do you want to create the purchase order and delivery notes for the pending lines?',
+            comment = 'ESP="¿Desea crear el pedido de compra y albaranes de las líneas pendientes?"';
+    begin
+        Clear(CONSULTIAFunciones);
+        if Confirm(lblConfirm) then
+            CONSULTIAFunciones.CrearPedidoCompraDesdeBCDTravel();
     end;
 }

@@ -1,9 +1,9 @@
-page 17418 "ZM CONSULTIA Producto-Proyecto"
+page 17418 "ZM BCD Travel Empleado"
 {
     PageType = List;
     // ApplicationArea = All;
     UsageCategory = None;
-    SourceTable = "ZM CONSULTIA Producto-Proyecto";
+    SourceTable = "ZM BCD Travel Empleado";
 
     layout
     {
@@ -11,15 +11,20 @@ page 17418 "ZM CONSULTIA Producto-Proyecto"
         {
             repeater(General)
             {
-                field(CodigoProducto; CodigoProducto)
+                field(Codigo; Codigo)
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
+                field(Nombre; Nombre)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+                field(Proyecto; Proyecto)
                 {
                     ApplicationArea = all;
                 }
-                field(Proyecto; Proyecto)
+                field("G/L Account"; "G/L Account")
                 {
                     ApplicationArea = all;
                 }

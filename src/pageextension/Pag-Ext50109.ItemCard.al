@@ -160,14 +160,22 @@ pageextension 50109 "ItemCard" extends "Item Card"
 
         addlast(Content)
         {
-            group(NormativaPlastico)
+            group("Packaging Weight data")
             {
-                Caption = 'Plastic Regulations', comment = 'ESP="Normativa Plastico"';
+                Caption = 'Packaging Weight data', comment = 'ESP="Datos pesos embalajes"';
                 field(Steel; Steel)
                 {
                     ApplicationArea = all;
                 }
+                field(Aluminium; Aluminium)
+                {
+                    ApplicationArea = all;
+                }
                 field(Carton; Carton)
+                {
+                    ApplicationArea = all;
+                }
+                field("PAPER & CARTON (With plastic)"; "PAPER & CARTON (With plastic)")
                 {
                     ApplicationArea = all;
                 }
@@ -214,6 +222,39 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 field("Packaging product"; "Packaging product")
                 {
                     ApplicationArea = all;
+                }
+                group(detail)
+                {
+                    Caption = 'Plastic Detail', comment = 'ESP="Detalle Plasticos"';
+
+                    field("PLASTICS EPS Flexible"; "PLASTICS EPS Flexible")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("PLASTICS OTHERS"; "PLASTICS OTHERS")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("PLASTICS PET FLEXIBLE"; "PLASTICS PET FLEXIBLE")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("PLASTICS PET OTHER"; "PLASTICS PET OTHER")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("PLASTICS PP FLEXIBLE"; "PLASTICS PP FLEXIBLE")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("PLASTICS PVC FLEXIBLE"; "PLASTICS PVC FLEXIBLE")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("PLASTICS PVC OTHER"; "PLASTICS PVC OTHER")
+                    {
+                        ApplicationArea = all;
+                    }
                 }
             }
         }

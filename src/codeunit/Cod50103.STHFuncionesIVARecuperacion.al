@@ -628,10 +628,17 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         Window: Dialog;
     begin
         SalesSetup.Get();
-        SalesSetup.TestField("Amount SCRAP Carton");
-        SalesSetup.TestField("Amount SCRAP Steel");
-        SalesSetup.TestField("Amount SCRAP Wood");
-        SalesSetup.TestField("Amount SCRAP Plastic");
+        SalesSetup.TestField("Taxes Steel");
+        SalesSetup.TestField("Taxes Aluminium");
+        SalesSetup.TestField("Taxes Carton");
+        SalesSetup.TestField("Taxes Wood");
+        SalesSetup.TestField("Taxes PLASTICS EPS Flexible");
+        SalesSetup.TestField("Taxes PLASTICS OTHERS");
+        SalesSetup.TestField("Taxes PLASTICS PET FLEXIBLE");
+        SalesSetup.TestField("Taxes PLASTICS PET OTHER");
+        SalesSetup.TestField("Taxes PLASTICS PP FLEXIBLE");
+        SalesSetup.TestField("Taxes PLASTICS PVC FLEXIBLE");
+        SalesSetup.TestField("Taxes PLASTICS PVC OTHER");
         Window.Open('#1##################\#2########################');
         ExcelBuffer.DELETEALL;
         ExcelBuffer.CreateNewBook('SCRAP Facturas de VENTA');
@@ -652,13 +659,18 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         ExcelBuffer.AddColumn(SalesInvLine.FieldCaption("No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(SalesInvLine.FieldCaption(Description), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(SalesInvLine.FieldCaption(Quantity), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("Plastic Qty. (kg)"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("Recycled plastic Qty. (kg)"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("Recycled plastic %"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(SalesSetup.FieldCaption("Amount SCRAP Carton"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(SalesSetup.FieldCaption("Amount SCRAP Steel"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(SalesSetup.FieldCaption("Amount SCRAP Wood"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(SalesSetup.FieldCaption("Amount SCRAP Plastic"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption(Steel), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption(Aluminium), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption(Carton), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("PAPER & CARTON (With plastic)"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption(Wood), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS EPS Flexible"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS OTHERS"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS PET FLEXIBLE"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS PET OTHER"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS PP FLEXIBLE"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS PVC FLEXIBLE"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS PVC OTHER"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Importe', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
 
         ExcelBuffer.NewRow;
@@ -682,6 +694,19 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
                             ExcelBuffer.AddColumn(SalesInvLine."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
                             ExcelBuffer.AddColumn(SalesInvLine.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
                             ExcelBuffer.AddColumn(SalesInvLine.Quantity, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Steel), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Aluminium), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Carton), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * "PAPER & CARTON (With plastic)"), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Wood), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * "PLASTICS EPS Flexible"), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * "PLASTICS OTHERS"), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * "PLASTICS PET FLEXIBLE"), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * "PLASTICS PET OTHER"), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * "PLASTICS PP FLEXIBLE"), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * "PLASTICS PVC FLEXIBLE"), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * "PLASTICS PVC OTHER"), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+
                             ExcelBuffer.AddColumn(Item."Plastic Qty. (kg)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
                             ExcelBuffer.AddColumn(Item."Recycled plastic Qty. (kg)", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
                             ExcelBuffer.AddColumn(Item."Recycled plastic %", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);

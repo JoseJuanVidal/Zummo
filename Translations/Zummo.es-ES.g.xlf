@@ -8731,6 +8731,36 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field WarrantyDate - Property Caption</note>
           <target>Años de Garantía</target>
         </trans-unit>
+        <trans-unit id="Table 1090032195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BCD Travel Empleado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BCD Travel Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Empleado - Property Caption</note>
+          <target>BCD Travel Empleado</target>
+        </trans-unit>
+        <trans-unit id="Table 1090032195 - Field 4092165491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Código</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Empleado - Field Codigo - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 1090032195 - Field 4274826855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cuenta contableW"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Empleado - Field G/L Account - Property Caption</note>
+          <target>Cuenta contableW</target>
+        </trans-unit>
+        <trans-unit id="Table 1090032195 - Field 814966011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Empleado - Field Nombre - Property Caption</note>
+          <target>Nombre</target>
+        </trans-unit>
+        <trans-unit id="Table 1090032195 - Field 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Empleado - Field Proyecto - Property Caption</note>
+          <target>Proyecto</target>
+        </trans-unit>
         <trans-unit id="Table 3289452320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CONSULTIA Invoice Header</source>
           <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Cab. Facturas"</note>
@@ -8815,6 +8845,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Invoice Header - Field Nro_Albarán - Property Caption</note>
           <target>Nro Albarán</target>
         </trans-unit>
+        <trans-unit id="Table 3289452320 - Field 2606132848 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Receipt created</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Albarán creado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Invoice Header - Field Receipt created - Property Caption</note>
+          <target>Albarán creado</target>
+        </trans-unit>
         <trans-unit id="Table 3289452320 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Status</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
@@ -8838,12 +8874,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Total Impuesto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Invoice Header - Field Total_Impuesto - Property Caption</note>
           <target>Total Impuesto</target>
-        </trans-unit>
-        <trans-unit id="Table 3289452320 - Field 1674500962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Total Tasas Exentas</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Total Tasas Exentas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Invoice Header - Field Total_Tasas_Exentas - Property Caption</note>
-          <target>Total Tasas Exentas</target>
         </trans-unit>
         <trans-unit id="Table 967210055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BCD Travel Invoice Line</source>
@@ -9330,30 +9360,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ancho"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM CIM Prod. BOM Line - Field Width - Property Caption</note>
           <target>Ancho</target>
-        </trans-unit>
-        <trans-unit id="Table 2455619205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Producto - Proyecto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Producto - Proyecto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Producto-Proyecto - Property Caption</note>
-          <target>Producto - Proyecto</target>
-        </trans-unit>
-        <trans-unit id="Table 2455619205 - Field 2965000799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cód. producto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Producto-Proyecto - Field CodigoProducto - Property Caption</note>
-          <target>Cód. producto</target>
-        </trans-unit>
-        <trans-unit id="Table 2455619205 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Producto-Proyecto - Field Description - Property Caption</note>
-          <target>Descripción</target>
-        </trans-unit>
-        <trans-unit id="Table 2455619205 - Field 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Proyecto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM CONSULTIA Producto-Proyecto - Field Proyecto - Property Caption</note>
-          <target>Proyecto</target>
         </trans-unit>
         <trans-unit id="Table 2355618573 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contracts and Supplies Header</source>
@@ -13564,6 +13570,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method T7012_PurchasePrice_OnEvent_CheckApproval - NamedType lblError</note>
           <target>No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra.\Debe realizar una solicitud.</target>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3038898336 - NamedType 2531569296" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EnglishText</source>
+          <note from="Developer" annotates="general" priority="2">ESP="%1 %2 %3 %4 %5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method BCDTravelCreatePurchaseLine - NamedType lblDescription</note>
+          <target>%1 %2 %3 %4 %5</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1420331764 - NamedType 1426404922" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order %1 and Receipt %2 have been created.\¿Do you want to open the Receipt?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CrearPedidoCompraDesdeBCDTravel - NamedType lblCreate</note>
+          <target>Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?</target>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3674950453 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
           <source>SELECT count(*) FROM tBIFinan_PresupuestoFinanzas WHERE [00 - Origen] ='%1'</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -13729,6 +13747,12 @@
           <source>Sales shipment %1 generated from sales order %2, from purchase order %3 in Zummo INC.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SendMailOnPostShipment - NamedType BodyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1639607744 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea abrir el %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea abrir el %1 %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method ShowPurchRcptOrder - NamedType lblConfirm</note>
+          <target>¿Desea abrir el %1 %2?</target>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2484604108 - NamedType 3210847871" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Source=%1;Initial Catalog=%2;User Id=%3;Password=%4;</source>
@@ -20159,11 +20183,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Property Caption</note>
           <target>BCD Travel Facturas</target>
         </trans-unit>
-        <trans-unit id="Page 3606076577 - NamedType 4292973370" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Do you want to update Shipments?</source>
+        <trans-unit id="Page 3606076577 - Method 1632511326 - NamedType 4292973370" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to update Shipments?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea importar los albaranes?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - NamedType lblConfirmGet</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Method ImportExcelBCDTravelCon07 - NamedType lblConfirmGet</note>
           <target>¿Desea importar los albaranes?</target>
+        </trans-unit>
+        <trans-unit id="Page 3606076577 - Method 1305109951 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to create the purchase order and delivery notes for the pending lines?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el pedido de compra y albaranes de las líneas pendientes?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Method OnCreatePurchaseHeaderReceipt - NamedType lblConfirm</note>
+          <target>¿Desea crear el pedido de compra y albaranes de las líneas pendientes?</target>
+        </trans-unit>
+        <trans-unit id="Page 3606076577 - Action 4162479768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crear Recepciones Compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear Recepciones Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action CreatePurchaseHeaderReceipt - Property Caption</note>
+          <target>Crear Recepciones Compra</target>
         </trans-unit>
         <trans-unit id="Page 3606076577 - Action 695499029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Importar Albaranes</source>
@@ -34002,11 +34038,17 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Bajo pedido / Contra stock - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Control 1285666006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Plastic Regulations</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Normativa Plastico"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control NormativaPlastico - Property Caption</note>
-          <target>Normativa Plastico</target>
+        <trans-unit id="PageExtension 2876958691 - Control 97815521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Packaging Weight data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Datos pesos embalajes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Packaging Weight data - Property Caption</note>
+          <target>Datos pesos embalajes</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 1110367523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Plastic Detail</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Detalle Plasticos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control detail - Property Caption</note>
+          <target>Detalle Plasticos</target>
         </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2728787576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Asignar Nº Serie consumo</source>
@@ -34229,6 +34271,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="PDF (*.pdf)|*.pdf"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PagExtPurchPaySetup - Method GeneralConditionsENG - NamedType lblfilter</note>
           <target>PDF (*.pdf)|*.pdf</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1164140648 - Control 404263369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3921990236">
+          <source>BCD Travel Config</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. BCD Travel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PagExtPurchPaySetup - Control BCD Travel Config - Property Caption</note>
+          <target>Conf. BCD Travel</target>
         </trans-unit>
         <trans-unit id="PageExtension 1164140648 - Control 518354779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3921990236">
           <source>Bitec</source>
@@ -36994,6 +37042,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ABC - Property OptionCaption</note>
           <target> ,A,B,C,D</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 541720533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Aluminium</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aluminio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Aluminium - Property Caption</note>
+          <target>Aluminio</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2721162252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Cambiado Coste</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiado Coste"</note>
@@ -37186,6 +37240,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Packing Recycled plastic (kg) - Property Caption</note>
           <target>Plástico reciclado Bulto (kg)</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2188953530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>PAPER &amp; CARTON (With plastic)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PAPEL Y CARTON (Con plástico)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field PAPER &amp; CARTON (With plastic) - Property Caption</note>
+          <target>PAPEL Y CARTON (Con plástico)</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 3981802280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Pedido Maximo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Pedido Maximo"</note>
@@ -37197,6 +37257,48 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Plastic Qty. (kg) - Property Caption</note>
           <target>Plástico embalaje (kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3243665668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>PLASTICS EPS Flexible</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS EPS Flexibles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field PLASTICS EPS Flexible - Property Caption</note>
+          <target>PLASTICOS EPS Flexibles</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2594681416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>PLASTICS OTHERS</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS OTROS"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field PLASTICS OTHERS - Property Caption</note>
+          <target>PLASTICOS OTROS</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3433455801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>PLASTICS PET FLEXIBLE</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PET FLEXIBLES"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field PLASTICS PET FLEXIBLE - Property Caption</note>
+          <target>PLASTICOS PET FLEXIBLES</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1392516002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>PLASTICS PET OTHERS</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PET Resto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field PLASTICS PET OTHER - Property Caption</note>
+          <target>PLASTICOS PET Resto</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3816488386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>PLASTICS PP FLEXIBLE</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PP Flexibles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field PLASTICS PP FLEXIBLE - Property Caption</note>
+          <target>PLASTICOS PP Flexibles</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1081735077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>PLASTICS PVC FLEXIBLE</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PVC Flexibles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field PLASTICS PVC FLEXIBLE - Property Caption</note>
+          <target>PLASTICOS PVC Flexibles</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3478264558 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>PLASTICS PVC OTHER</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PVC Resto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field PLASTICS PVC OTHER - Property Caption</note>
+          <target>PLASTICOS PVC Resto</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1339870956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>ProveedorBloqueado</source>
@@ -38005,6 +38107,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importe Total IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchRcptLine - Field TotalImponibleLinea - Property Caption</note>
           <target>Importe Total IVA</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 3772400946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>BCD Travel Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BCD Travel Cód. proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field BCD Travel Vendor No. - Property Caption</note>
+          <target>BCD Travel Cód. proveedor</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 3459130581 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>CONSULTIA G/L Provide</source>

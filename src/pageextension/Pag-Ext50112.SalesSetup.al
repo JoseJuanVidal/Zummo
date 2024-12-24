@@ -30,22 +30,50 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
         }
         addafter(Dimensions)
         {
-            group("SCRAP Invoices")
+            group("Taxes SCRAP")
             {
-                Caption = 'SCRAP Invoices', comment = 'ESP="SCRAP Facturas"';
-                field("Amount SCRAP Steel"; "Amount SCRAP Steel")
+                Caption = 'Taxes SCRAP Invoices', comment = 'ESP="Tasas SCRAP Facturas"';
+                field("Taxes Steel"; "Taxes Steel")
                 {
                     ApplicationArea = all;
                 }
-                field("Amount SCRAP Wood"; "Amount SCRAP Wood")
+                field("Taxes Aluminium"; "Taxes Aluminium")
                 {
                     ApplicationArea = all;
                 }
-                field("Amount SCRAP Carton"; "Amount SCRAP Carton")
+                field("Taxes Carton"; "Taxes Carton")
                 {
                     ApplicationArea = all;
                 }
-                field("Amount SCRAP Plastic"; "Amount SCRAP Plastic")
+                field("Taxes Wood"; "Taxes Wood")
+                {
+                    ApplicationArea = all;
+                }
+                field("Taxes PLASTICS EPS Flexible"; "Taxes PLASTICS EPS Flexible")
+                {
+                    ApplicationArea = all;
+                }
+                field("Taxes PLASTICS OTHERS"; "Taxes PLASTICS OTHERS")
+                {
+                    ApplicationArea = all;
+                }
+                field("Taxes PLASTICS PET FLEXIBLE"; "Taxes PLASTICS PET FLEXIBLE")
+                {
+                    ApplicationArea = all;
+                }
+                field("Taxes PLASTICS PET OTHER"; "Taxes PLASTICS PET OTHER")
+                {
+                    ApplicationArea = all;
+                }
+                field("Taxes PLASTICS PP FLEXIBLE"; "Taxes PLASTICS PP FLEXIBLE")
+                {
+                    ApplicationArea = all;
+                }
+                field("Taxes PLASTICS PVC FLEXIBLE"; "Taxes PLASTICS PVC FLEXIBLE")
+                {
+                    ApplicationArea = all;
+                }
+                field("Taxes PLASTICS PVC OTHER"; "Taxes PLASTICS PVC OTHER")
                 {
                     ApplicationArea = all;
                 }

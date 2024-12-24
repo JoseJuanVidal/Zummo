@@ -102,6 +102,12 @@ table 17414 "ZM BCD Travel Invoice Header"
             DataClassification = CustomerContent;
             Caption = 'Status', comment = 'ESP="Estado"';
         }
+        field(105; "Receipt created"; boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Receipt created', comment = 'ESP="Albarán creado"';
+            Editable = false;
+        }
     }
 
     keys

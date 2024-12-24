@@ -110,34 +110,44 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                     ApplicationArea = all;
                 }
             }
-            group(CONSULTIA)
+            group("BCD Travel Config")
             {
-                field("CONSULTIA Url"; "CONSULTIA Url")
-                {
-                    ApplicationArea = all;
-                }
-                field("CONSULTIA User"; "CONSULTIA User")
-                {
-                    ApplicationArea = all;
-                }
-                field("CONSULTIA Password"; "CONSULTIA Password")
-                {
-                    ApplicationArea = all;
-                    ExtendedDatatype = Masked;
-                }
-                field("CONSULTIA G/L Provide"; "CONSULTIA G/L Provide")
-                {
-                    ApplicationArea = all;
-                }
-                field("CONSULTIA Gen. Jnl. Template"; "CONSULTIA Gen. Jnl. Template")
-                {
-                    ApplicationArea = all;
-                }
-                field("CONSULTIA Gen. Journal Batch"; "CONSULTIA Gen. Journal Batch")
+                Caption = 'BCD Travel Config', comment = 'ESP="Conf. BCD Travel"';
+
+                field("BCD Travel Vendor No."; "BCD Travel Vendor No.")
                 {
                     ApplicationArea = all;
                 }
             }
+            // group(CONSULTIA)
+            // {
+            //     Visible = false;
+            //     field("CONSULTIA Url"; "CONSULTIA Url")
+            //     {
+            //         ApplicationArea = all;
+            //     }
+            //     field("CONSULTIA User"; "CONSULTIA User")
+            //     {
+            //         ApplicationArea = all;
+            //     }
+            //     field("CONSULTIA Password"; "CONSULTIA Password")
+            //     {
+            //         ApplicationArea = all;
+            //         ExtendedDatatype = Masked;
+            //     }
+            //     field("CONSULTIA G/L Provide"; "CONSULTIA G/L Provide")
+            //     {
+            //         ApplicationArea = all;
+            //     }
+            //     field("CONSULTIA Gen. Jnl. Template"; "CONSULTIA Gen. Jnl. Template")
+            //     {
+            //         ApplicationArea = all;
+            //     }
+            //     field("CONSULTIA Gen. Journal Batch"; "CONSULTIA Gen. Journal Batch")
+            //     {
+            //         ApplicationArea = all;
+            //     }
+            // }
         }
     }
 

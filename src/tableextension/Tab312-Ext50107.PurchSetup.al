@@ -113,6 +113,12 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             Caption = 'CONSULTIA Gen. Journal Batch', comment = 'ESP="CONSULTIA Sección Diario"';
             TableRelation = "Gen. Journal Batch".Name where("Journal Template Name" = field("CONSULTIA Gen. Jnl. Template"));
         }
+        field(50110; "BCD Travel Vendor No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'BCD Travel Vendor No.', comment = 'ESP="BCD Travel Cód. proveedor"';
+            TableRelation = Vendor;
+        }
     }
 
     procedure SetTextoEmail(NewTextoEmail: Text)

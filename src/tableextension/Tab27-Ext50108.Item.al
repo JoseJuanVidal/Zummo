@@ -529,9 +529,65 @@ tableextension 50108 "Item" extends Item  //27
             Caption = 'Vendor Wood Packing (kg)', comment = 'ESP="Madera Embalaje proveedor (kg)"';
             DecimalPlaces = 6 : 6;
         }
+        field(50220; Aluminium; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Aluminium', comment = 'ESP="Aluminio"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50221; "PAPER & CARTON (With plastic)"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PAPER & CARTON (With plastic)', comment = 'ESP="PAPEL Y CARTON (Con plástico)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50222; "PLASTICS EPS Flexible"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS EPS Flexible', comment = 'ESP="PLASTICOS EPS Flexibles"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50223; "PLASTICS OTHERS"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS OTHERS', comment = 'ESP="PLASTICOS OTROS"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50224; "PLASTICS PET FLEXIBLE"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS PET FLEXIBLE', comment = 'ESP="PLASTICOS PET FLEXIBLES"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50225; "PLASTICS PET OTHER"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS PET OTHERS', comment = 'ESP="PLASTICOS PET Resto"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50226; "PLASTICS PP FLEXIBLE"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS PP FLEXIBLE', comment = 'ESP="PLASTICOS PP Flexibles"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50227; "PLASTICS PVC FLEXIBLE"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS PVC FLEXIBLE', comment = 'ESP="PLASTICOS PVC Flexibles"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50228; "PLASTICS PVC OTHER"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS PVC OTHER', comment = 'ESP="PLASTICOS PVC Resto"';
+            DecimalPlaces = 6 : 6;
+        }
         //-  NORMATIVA MEDIO AMBIENTAL
 
     }
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
 
     local procedure Validate_UpdateBIBOMCosts();
     var
@@ -554,5 +610,72 @@ tableextension 50108 "Item" extends Item  //27
         SerialNoInfo.SetRange("Item No.", Rec."No.");
         if SerialNoInfo.FindFirst() then
             Error(lblErrorExist);
+    end;
+
+    procedure GetTaxesSteel(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+    end;
+
+
+    procedure GetTaxesAluminium(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+    end;
+
+    procedure GetTaxesCarton(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+    end;
+
+    procedure GetTaxesWood(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+    end;
+
+    procedure GetTaxesPLASTICSEPSFlexible(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+    end;
+
+    procedure GetTaxesPLASTICSOTHERS(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+    end;
+
+    procedure GetTaxesPLASTICSPETFLEXIBLE(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+    end;
+
+    procedure GetTaxesPLASTICSPETOTHER(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+    end;
+
+    procedure GetTaxesPLASTICSPPFLEXIBLE(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+    end;
+
+    procedure GetTaxesPLASTICSPVCFLEXIBLE(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+    end;
+
+    procedure GetTaxesPLASTICSPVCOTHER(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec.Steel);
     end;
 }

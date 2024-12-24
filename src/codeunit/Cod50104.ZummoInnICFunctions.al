@@ -1000,6 +1000,175 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Evaluate(BCDTravelLine."Imp Total", ValueText);
         BCDTravelLine.Insert()
     end;
+
+    procedure CrearPedidoCompraDesdeBCDTravel()
+    var
+        PurchaseSetup: record "Purchases & Payables Setup";
+        BCDTravelHeader: record "ZM BCD Travel Invoice Header";
+        BCDTravelLine: record "ZM BCD Travel Invoice Line";
+        PurchaseHeader: record "Purchase Header";
+        PurchRcptHeader: record "Purch. Rcpt. Header";
+        LineNo: Integer;
+        lblCreate: Label 'Order %1 and Receipt %2 have been created.\¿Do you want to open the Receipt?', comment = 'ESP="Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?"';
+    begin
+        PurchaseSetup.Get();
+        PurchaseSetup.TestField("BCD Travel Vendor No.");
+        BCDTravelHeader.Reset();
+        BCDTravelHeader.SetRange("Receipt created", false);
+        if not BCDTravelHeader.FindFirst() then
+            exit;
+        BCDTravelCreatePurchaseHeader(PurchaseHeader, PurchaseSetup."BCD Travel Vendor No.");
+        if BCDTravelHeader.FindFirst() then
+            repeat
+                BCDTravelLine.Reset();
+                BCDTravelLine.SetRange("Nro_Albarán", BCDTravelHeader."Nro_Albarán");
+                if BCDTravelLine.FindFirst() then
+                    repeat
+                        LineNo += 10000;
+                        BCDTravelCreatePurchaseLine(PurchaseHeader, BCDTravelLine, LineNo);
+                    Until BCDTravelLine.next() = 0;
+
+            Until BCDTravelHeader.next() = 0;
+
+        // PostPurchaseOrder(recPurchaseHeader, ServiceHeader);
+
+        PurchRcptHeader.Reset();
+        PurchRcptHeader.SetRange("Order No.", PurchaseHeader."No.");
+        if PurchRcptHeader.FindLast() then
+            if confirm(lblCreate, false, PurchaseHeader."No.", PurchRcptHeader) then
+                ShowPurchRcptOrder(PurchRcptHeader."No.");
+
+    end;
+
+    local procedure BCDTravelCreatePurchaseHeader(var PurchaseHeader: record "Purchase Header"; VendorNo: code[20])
+    var
+        myInt: Integer;
+    begin
+        // Crear la cabecera del pedido de compra
+        PurchaseHeader.Init();
+        PurchaseHeader.InitInsert();
+        PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::Order;
+        PurchaseHeader.Validate("Buy-from Vendor No.", VendorNo);
+        PurchaseHeader.Validate("Posting Date", WorkDate());
+        PurchaseHeader.Insert();
+
+    end;
+
+    local procedure BCDTravelCreatePurchaseLine(PurchaseHeader: Record "Purchase Header"; BCDTravelLine: record "ZM BCD Travel Invoice Line"; LineNo: Integer)
+    var
+        PurchaseLine: Record "Purchase Line";
+        BCDTravelHeader: record "ZM BCD Travel Invoice Header";
+        BCDTravelEmpleado: record "ZM BCD Travel Empleado";
+        txtDescription: text;
+        lblDescription: Label 'EnglishText', comment = 'ESP="%1 %2 %3 %4 %5"';
+    begin
+        BCDTravelHeader.Get(BCDTravelLine."Nro_Albarán");
+        PurchaseLine.Init();
+        PurchaseLine."Document Type" := PurchaseHeader."Document Type";
+        PurchaseLine."Document No." := PurchaseHeader."No.";
+        PurchaseLine."Buy-from Vendor No." := PurchaseHeader."Buy-from Vendor No.";
+        PurchaseLine."Line No." := LineNo;
+        PurchaseLine.Insert();
+        PurchaseLine.Type := PurchaseLine.Type::"G/L Account";
+        if BCDTravelHeader."G/L Account Fair" = '' then
+            PurchaseLine.Validate("No.", BCDTravelEmpleado."G/L Account")
+        else
+            PurchaseLine.Validate("No.", BCDTravelHeader."G/L Account Fair");
+        txtDescription := StrSubstNo(lblDescription, BCDTravelLine."Tipo Servicio", BCDTravelLine."Trayecto Servicio", BCDTravelLine."Nombre Empleado",
+                BCDTravelLine."Fec Inicio Srv", BCDTravelLine."Fec Fin Srv");
+        PurchaseLine.Description := copystr(txtDescription, 1, 100);
+        PurchaseLine."Description 2" := copystr(txtDescription, 101, MaxStrLen(PurchaseLine."Description 2"));
+        PurchaseLine.Validate(Quantity, 1);
+        PurchaseLine.Validate("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
+        PurchaseLine.Validate("VAT Prod. Posting Group", GetVATProdPostingGroup(BCDTravelLine, PurchaseHeader));
+        PurchaseLine.Validate("Direct Unit Cost", BCDTravelLine."Imp Base Imponible");
+        PurchaseLine.Validate("Shortcut Dimension 1 Code", BCDTravelLine."Cod. Centro Coste");
+        // PurchaseLine.IdCorp_Sol := CONSULTIAInvoiceLine.IdCorp_Sol;
+        PurchaseLine.Modify();
+        BCDTravelSetPurchaseLineDimensiones(BCDTravelLine, PurchaseLine);
+    end;
+
+    local procedure GetVATProdPostingGroup(BCDTravelLine: record "ZM BCD Travel Invoice Line"; PurchaseHeader: Record "Purchase Header"): code[20]
+    var
+        VATPostingSetup: Record "VAT Posting Setup";
+    begin
+        VATPostingSetup.Reset();
+        VATPostingSetup.SetFilter("VAT Prod. Posting Group", '%1', '*SERV');
+        VATPostingSetup.SetRange("VAT Bus. Posting Group", PurchaseHeader."VAT Bus. Posting Group");
+        VATPostingSetup.SetRange("VAT %", BCDTravelLine."%Impuesto");
+        if VATPostingSetup.FindFirst() then
+            exit(VATPostingSetup."VAT Prod. Posting Group");
+    end;
+
+    local procedure BCDTravelSetPurchaseLineDimensiones(BCDTravelLine: record "ZM BCD Travel Invoice Line"; var PurchaseLine: Record "Purchase Line")
+    var
+        GLSetup: Record "General Ledger Setup";
+        recNewDimSetEntry: record "Dimension Set Entry" temporary;
+        cduDimMgt: Codeunit DimensionManagement;
+        cduCambioDim: Codeunit CambioDimensiones;
+        GlobalDim1: code[20];
+        GlobalDim2: code[20];
+        intDimSetId: Integer;
+    begin
+        GLSetup.Get();
+        // CECO
+        // Empleado y Unico por feria MK (campo proyecto de cabecera)
+        GlobalDim1 := BCDTravelLine."Cod. Centro Coste";
+        recNewDimSetEntry.Init();
+        recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
+        recNewDimSetEntry.Validate("Dimension Value Code", GlobalDim1);
+        recNewDimSetEntry.Insert();
+
+        // // PROYECTO
+        // CONSULTIAInvoiceLine.CalcFields(Proyecto);
+        // if CONSULTIAInvoiceLine."Proyecto Manual" = '' then
+        //     CONSULTIAInvoiceLine.TestField(Proyecto);
+        // recNewDimSetEntry.Init();
+        // recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 2 Code";
+        // recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
+        // recNewDimSetEntry.Insert();
+        // // PARTIDA
+        // CONSULTIAInvoiceLine.TestField(Partida);
+        // recNewDimSetEntry.Init();
+        // recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 8 Code";
+        // recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
+        // recNewDimSetEntry.Insert();
+        // // DETALLE
+        // recNewDimSetEntry.Init();
+        // recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 3 Code";
+        // recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
+        // recNewDimSetEntry.Insert();
+        // // DEPART CODIGO (APROBACIONES)
+        // if CONSULTIAInvoiceLine.DEPART <> '' then begin
+        //     recNewDimSetEntry.Init();
+        //     recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 4 Code";
+        //     recNewDimSetEntry.Validate("Dimension Value Code", CONSULTIAInvoiceLine.DEPART);
+        //     recNewDimSetEntry.Insert();
+        // end;
+        Clear(cduDimMgt);
+        intDimSetId := cduDimMgt.GetDimensionSetID(recNewDimSetEntry);
+        clear(cduCambioDim);
+
+        GlobalDim1 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 1 Code", intDimSetId);
+        GlobalDim2 := cduCambioDim.GetDimValueFromDimSetID(GLSetup."Global Dimension 2 Code", intDimSetId);
+
+        PurchaseLine."Dimension Set ID" := intDimSetId;
+        PurchaseLine."Shortcut Dimension 1 Code" := GlobalDim1;
+        PurchaseLine."Shortcut Dimension 2 Code" := GlobalDim2;
+        PurchaseLine.Modify();
+    end;
+
+    local procedure ShowPurchRcptOrder(PurchRcptHeaderNo: code[20])
+    var
+        PurchRcptHeader: record "Purch. Rcpt. Header";
+        PostedPurchReceipt: page "Posted Purchase Receipt";
+        lblConfirm: Label '¿Desea abrir el %1 %2?', comment = 'ESP="¿Desea abrir el %1 %2?"';
+    begin
+
+        PurchRcptHeader.SetRange("No.", PurchRcptHeaderNo);
+        PostedPurchReceipt.SetTableView(PurchRcptHeader);
+        PostedPurchReceipt.Run();
+    end;
     // =============     CONSULTIA TRAVEL           ====================
     // ==  
     // ==  Aplicacion de gestion de viajes 

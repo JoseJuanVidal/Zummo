@@ -227,32 +227,81 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             TableRelation = "No. Series";
         }
         // SCRAP CONFIGURACION PRECIOS
-        field(50300; "Amount SCRAP Steel"; Decimal)
+        field(50300; "Taxes Steel"; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Amount SCRAP Steel (€/kg)', comment = 'ESP="Importe SCRAP Acero (€/kg)"';
+            Caption = 'Taxes Steel (€/kg)', comment = 'ESP="Tasa Acero (€/kg)"';
             Description = 'Importe SCRAP Acero que se utiliza para el envío del producto';
             DecimalPlaces = 0 : 5;
         }
-        field(50301; "Amount SCRAP Carton"; Decimal)
+        field(50301; "Taxes Carton"; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = '"Amount SCRAP Carton (€/kg)', comment = 'ESP="Importe SCRAP Cartón (€/kg)"';
+            Caption = '"Taxes Carton (€/kg)', comment = 'ESP="Importe SCRAP Cartón (€/kg)"';
             DecimalPlaces = 0 : 5;
         }
-        field(50302; "Amount SCRAP Wood"; Decimal)
+        field(50302; "Taxes Wood"; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = '"Amount SCRAP Wood (€/kg)', comment = 'ESP="Importe SCRAP Madera (€/kg)"';
+            Caption = '"Taxes Wood (€/kg)', comment = 'ESP="Importe SCRAP Madera (€/kg)"';
             DecimalPlaces = 0 : 5;
         }
-        field(50303; "Amount SCRAP Plastic"; Decimal)
+        field(50310; "Taxes Aluminium"; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = '"Amount SCRAP Plastic (€/kg)', comment = 'ESP="Importe SCRAP Plastic (€/kg)"';
-            DecimalPlaces = 0 : 5;
+            Caption = 'Taxes Aluminium (€/kg)', comment = 'ESP="Tasas Aluminio (€/kg)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50311; "Taxes PAPER & CARTON (With plastic)"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PAPER & CARTON (With plastic)  (€/kg)', comment = 'ESP="PAPEL Y CARTON (Con plástico)  (€/kg)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50312; "Taxes PLASTICS EPS Flexible"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS EPS Flexible (€/kg)', comment = 'ESP="PLASTICOS EPS Flexibles (€/kg)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50313; "Taxes PLASTICS OTHERS"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS OTHERS (€/kg)', comment = 'ESP="PLASTICOS OTROS (€/kg)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50314; "Taxes PLASTICS PET FLEXIBLE"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS PET FLEXIBLE (€/kg)', comment = 'ESP="PLASTICOS PET FLEXIBLES (€/kg)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50315; "Taxes PLASTICS PET OTHER"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS PET OTHERS (€/kg)', comment = 'ESP="PLASTICOS PET Resto (€/kg)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50316; "Taxes PLASTICS PP FLEXIBLE"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS PP FLEXIBLE (€/kg)', comment = 'ESP="PLASTICOS PP Flexibles (€/kg)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50317; "Taxes PLASTICS PVC FLEXIBLE"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS PVC FLEXIBLE (€/kg)', comment = 'ESP="PLASTICOS PVC Flexibles (€/kg)"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50318; "Taxes PLASTICS PVC OTHER"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PLASTICS PVC OTHER (€/kg)', comment = 'ESP="PLASTICOS PVC Resto (€/kg)"';
+            DecimalPlaces = 6 : 6;
         }
         //- SCRAP CONFIGURACION PRECIOS    
+
         // ITBID
         field(60002; STHurlAccessToken; Text[250])
         {
