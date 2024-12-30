@@ -253,7 +253,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
             recNewDimSetEntry.Init();
             recNewDimSetEntry."Dimension Set ID" := PurchaseLine."Dimension Set ID";
             recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 1 Code";
-            recNewDimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 3 Code");
+            recNewDimSetEntry.Validate("Dimension Value Code", PurchaseRequest."Global Dimension 1 Code");
             recNewDimSetEntry.Insert();
         end;
         if not bGlobalDim3 and (PurchaseRequest."Global Dimension 3 Code" <> '') then begin

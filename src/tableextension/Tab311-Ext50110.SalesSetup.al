@@ -232,19 +232,19 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             DataClassification = CustomerContent;
             Caption = 'Taxes Steel (€/kg)', comment = 'ESP="Tasa Acero (€/kg)"';
             Description = 'Importe SCRAP Acero que se utiliza para el envío del producto';
-            DecimalPlaces = 0 : 5;
+            DecimalPlaces = 6 : 6;
         }
         field(50301; "Taxes Carton"; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = '"Taxes Carton (€/kg)', comment = 'ESP="Importe SCRAP Cartón (€/kg)"';
-            DecimalPlaces = 0 : 5;
+            DecimalPlaces = 6 : 6;
         }
         field(50302; "Taxes Wood"; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = '"Taxes Wood (€/kg)', comment = 'ESP="Importe SCRAP Madera (€/kg)"';
-            DecimalPlaces = 0 : 5;
+            DecimalPlaces = 6 : 6;
         }
         field(50310; "Taxes Aluminium"; Decimal)
         {

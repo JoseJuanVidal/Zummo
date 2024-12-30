@@ -31844,8 +31844,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Exportar PDF Facturas - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 1237019123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Export SCRAP</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Exportar SCRAP"</note>
+          <source>Export Data Weights</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar Datos Pesos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action ExportExcelSalesInvoices - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 1237019123 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 549456760">

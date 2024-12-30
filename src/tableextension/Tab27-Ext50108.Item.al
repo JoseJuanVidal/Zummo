@@ -622,60 +622,66 @@ tableextension 50108 "Item" extends Item  //27
     procedure GetTaxesAluminium(): decimal
     begin
         SalesSetup.Get();
-        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+        exit(SalesSetup."Taxes Steel" * Rec.Aluminium);
     end;
 
     procedure GetTaxesCarton(): decimal
     begin
         SalesSetup.Get();
-        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+        exit(SalesSetup."Taxes Steel" * Rec.Carton);
     end;
 
     procedure GetTaxesWood(): decimal
     begin
         SalesSetup.Get();
-        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+        exit(SalesSetup."Taxes Steel" * Rec.Wood);
+    end;
+
+    procedure GetTaxesPaperCartoon(): decimal
+    begin
+        SalesSetup.Get();
+        exit(SalesSetup."Taxes Steel" * Rec."PAPER & CARTON (With plastic)");
     end;
 
     procedure GetTaxesPLASTICSEPSFlexible(): decimal
     begin
         SalesSetup.Get();
-        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+        exit(SalesSetup."Taxes Steel" * Rec."PLASTICS EPS Flexible");
     end;
 
     procedure GetTaxesPLASTICSOTHERS(): decimal
     begin
         SalesSetup.Get();
-        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+        exit(SalesSetup."Taxes Steel" * Rec."PLASTICS OTHERS");
     end;
 
     procedure GetTaxesPLASTICSPETFLEXIBLE(): decimal
     begin
         SalesSetup.Get();
-        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+        exit(SalesSetup."Taxes Steel" * Rec."PLASTICS PET FLEXIBLE");
     end;
 
     procedure GetTaxesPLASTICSPETOTHER(): decimal
     begin
         SalesSetup.Get();
-        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+        exit(SalesSetup."Taxes Steel" * Rec."PLASTICS PET OTHER");
     end;
 
     procedure GetTaxesPLASTICSPPFLEXIBLE(): decimal
     begin
         SalesSetup.Get();
-        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+        exit(SalesSetup."Taxes Steel" * Rec."PLASTICS PP FLEXIBLE");
     end;
 
     procedure GetTaxesPLASTICSPVCFLEXIBLE(): decimal
     begin
         SalesSetup.Get();
-        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+        exit(SalesSetup."Taxes Steel" * Rec."PLASTICS PVC FLEXIBLE");
     end;
 
     procedure GetTaxesPLASTICSPVCOTHER(): decimal
     begin
         SalesSetup.Get();
-        exit(SalesSetup."Taxes Steel" * Rec.Steel);
+        exit(SalesSetup."Taxes Steel" * Rec."PLASTICS PVC OTHER");
     end;
 }

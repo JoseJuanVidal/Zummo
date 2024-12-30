@@ -34765,10 +34765,10 @@
           <target>Exportar PDF Facturas</target>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 1237019123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Export SCRAP</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Exportar SCRAP"</note>
+          <source>Export Data Weights</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Exportar Datos Pesos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action ExportExcelSalesInvoices - Property Caption</note>
-          <target>Exportar SCRAP</target>
+          <target>Exportar Datos Pesos</target>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 1237019123 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 549456760">
           <source>¿Do you want to Export Excel with the detail of the SCRAP Calculation of the %1 invoices selected?</source>
@@ -35493,11 +35493,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Action ComentariosPredefinidos - Property tooltip</note>
           <target>Abre una página donde pueden insertarse los comentarios predefinidos</target>
         </trans-unit>
-        <trans-unit id="PageExtension 4090392497 - Control 4278553707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
-          <source>SCRAP Invoices</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SCRAP Facturas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control SCRAP Invoices - Property Caption</note>
-          <target>SCRAP Facturas</target>
+        <trans-unit id="PageExtension 4090392497 - Control 2032258132 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Taxes SCRAP Invoices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tasas SCRAP Facturas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Control Taxes SCRAP - Property Caption</note>
+          <target>Tasas SCRAP Facturas</target>
         </trans-unit>
         <trans-unit id="PageExtension 4090392497 - Control 518354779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
           <source>Bitec</source>
@@ -39356,30 +39356,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Active Price/Discounts Control - Property Caption</note>
           <target>Activar Control Precios/Dtos.</target>
         </trans-unit>
-        <trans-unit id="TableExtension 4090392497 - Field 905680462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
-          <source>"Amount SCRAP Carton (€/kg)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe SCRAP Cartón (€/kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Amount SCRAP Carton - Property Caption</note>
-          <target>Importe SCRAP Cartón (€/kg)</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 4090392497 - Field 3902006625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
-          <source>"Amount SCRAP Plastic (€/kg)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe SCRAP Plastic (€/kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Amount SCRAP Plastic - Property Caption</note>
-          <target>Importe SCRAP Plastic (€/kg)</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 4090392497 - Field 3077132552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
-          <source>Amount SCRAP Steel (€/kg)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe SCRAP Acero (€/kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Amount SCRAP Steel - Property Caption</note>
-          <target>Importe SCRAP Acero (€/kg)</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 4090392497 - Field 871896712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
-          <source>"Amount SCRAP Wood (€/kg)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importe SCRAP Madera (€/kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Amount SCRAP Wood - Property Caption</note>
-          <target>Importe SCRAP Madera (€/kg)</target>
-        </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 1024359529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Bin Code Credit Memo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Ubicación Abonos"</note>
@@ -39585,6 +39561,78 @@
           <source>username</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field STHusername - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 567724212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Taxes Aluminium (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tasas Aluminio (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes Aluminium - Property Caption</note>
+          <target>Tasas Aluminio (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3019919154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>"Taxes Carton (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe SCRAP Cartón (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes Carton - Property Caption</note>
+          <target>Importe SCRAP Cartón (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2553163575 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>PAPER &amp; CARTON (With plastic)  (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PAPEL Y CARTON (Con plástico)  (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes PAPER &amp; CARTON (With plastic) - Property Caption</note>
+          <target>PAPEL Y CARTON (Con plástico)  (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 96657429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>PLASTICS EPS Flexible (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS EPS Flexibles (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes PLASTICS EPS Flexible - Property Caption</note>
+          <target>PLASTICOS EPS Flexibles (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2495527737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>PLASTICS OTHERS (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS OTROS (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes PLASTICS OTHERS - Property Caption</note>
+          <target>PLASTICOS OTROS (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 1598967160 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>PLASTICS PET FLEXIBLE (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PET FLEXIBLES (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes PLASTICS PET FLEXIBLE - Property Caption</note>
+          <target>PLASTICOS PET FLEXIBLES (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 755102151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>PLASTICS PET OTHERS (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PET Resto (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes PLASTICS PET OTHER - Property Caption</note>
+          <target>PLASTICOS PET Resto (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 3384577719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>PLASTICS PP FLEXIBLE (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PP Flexibles (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes PLASTICS PP FLEXIBLE - Property Caption</note>
+          <target>PLASTICOS PP Flexibles (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 4219741332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>PLASTICS PVC FLEXIBLE (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PVC Flexibles (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes PLASTICS PVC FLEXIBLE - Property Caption</note>
+          <target>PLASTICOS PVC Flexibles (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 602746851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>PLASTICS PVC OTHER (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PVC Resto (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes PLASTICS PVC OTHER - Property Caption</note>
+          <target>PLASTICOS PVC Resto (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 2741459748 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Taxes Steel (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tasa Acero (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes Steel - Property Caption</note>
+          <target>Tasa Acero (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 236604372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>"Taxes Wood (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe SCRAP Madera (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes Wood - Property Caption</note>
+          <target>Importe SCRAP Madera (€/kg)</target>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 248859325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Ult. email Fact. Vencidas</source>

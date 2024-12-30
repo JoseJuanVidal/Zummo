@@ -185,7 +185,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
             action(ExportExcelSalesInvoices)
             {
                 ApplicationArea = all;
-                Caption = 'Export SCRAP', comment = 'ESP="Exportar SCRAP"';
+                Caption = 'Export Data Weights', comment = 'ESP="Exportar Datos Pesos"';
                 Image = Excel;
                 Promoted = true;
                 PromotedCategory = Report;
