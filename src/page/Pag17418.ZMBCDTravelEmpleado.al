@@ -1,8 +1,8 @@
 page 17418 "ZM BCD Travel Empleado"
 {
     PageType = List;
-    // ApplicationArea = All;
-    UsageCategory = None;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = "ZM BCD Travel Empleado";
 
     layout
@@ -18,36 +18,16 @@ page 17418 "ZM BCD Travel Empleado"
                 field(Nombre; Nombre)
                 {
                     ApplicationArea = all;
-                    Editable = false;
-                }
-                field(Proyecto; Proyecto)
-                {
-                    ApplicationArea = all;
                 }
                 field("G/L Account"; "G/L Account")
                 {
                     ApplicationArea = all;
                 }
+                field("Employee Code"; "Employee Code")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
-    var
-        myInt: Integer;
 }

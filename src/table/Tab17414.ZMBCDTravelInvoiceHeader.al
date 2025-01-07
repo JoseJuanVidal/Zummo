@@ -27,6 +27,7 @@ table 17414 "ZM BCD Travel Invoice Header"
         {
             DataClassification = CustomerContent;
             Caption = 'Cod. Centro Coste', comment = 'ESP="Cod. Centro Coste"';
+            TableRelation = "Dimension Value" where("Global Dimension No." = const(1));
         }
         field(14; "Fec Inicio Srv"; date)
         {
@@ -48,6 +49,7 @@ table 17414 "ZM BCD Travel Invoice Header"
         {
             DataClassification = CustomerContent;
             Caption = 'Cod Empleado', comment = 'ESP="Cod Empleado"';
+            TableRelation = "ZM BCD Travel Empleado";
         }
         field(26; "Nombre Empleado"; text[100])
         {

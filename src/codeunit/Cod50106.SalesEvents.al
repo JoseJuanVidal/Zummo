@@ -1731,7 +1731,12 @@ codeunit 50106 "SalesEvents"
     end;
     // =============     Explode Production BOM SALES LINE          ====================
     // ==  
-    // ==  comment 
+    // ==  Para productos con Lista de Materiales, se desplegan
+    // ==  en el informe de factura, se muestra solo la linea principal e importe total de las lineas relacionadas
+    // ==  
+    // ==  07/01/2025 añadimos funcionalidad para que si la lista de precio esta marcada
+    // ==  aplica el precio del producto teniendo en cuenta el precio del producto y el precio del Servicio (Item type <> inventory)
+    // ==  
     // ==  
     // ======================================================================================================
     procedure Action_ExplodeProdBOM(var Rec: Record "Sales Line")
@@ -1806,7 +1811,6 @@ codeunit 50106 "SalesEvents"
                 InsertLinesBetween := ToSalesLine.FIND('>');
             end else
                 InsertLinesBetween := TRUE;
-
         FromBOMComp.SetRange("Production BOM No.", ProductionBOMNo);
         FromBOMComp.SetRange(Type, FromBOMComp.Type::Item);
         FromBOMComp.SetFilter("No.", '<>%1', '');
@@ -1819,7 +1823,6 @@ codeunit 50106 "SalesEvents"
 
         IF LineSpacing = 0 THEN
             ERROR(lblError);
-
 
         if FromBOMComp.FindFirst() then
             repeat
@@ -1856,6 +1859,8 @@ codeunit 50106 "SalesEvents"
 
                     IF SalesHeader."Shipment Date" <> SalesLine."Shipment Date" THEN
                         ToSalesLine.VALIDATE("Shipment Date", SalesLine."Shipment Date");
+
+
                 END;
                 ToSalesLine."DecLine Discount1 %_btc" := SalesLine."DecLine Discount1 %_btc";
                 ToSalesLine."DecLine Discount2 %_btc" := SalesLine."DecLine Discount2 %_btc";
@@ -1874,6 +1879,8 @@ codeunit 50106 "SalesEvents"
                 IF (ToSalesLine.Type = ToSalesLine.Type::Item) AND (ToSalesLine.Reserve = ToSalesLine.Reserve::Always) THEN
                     ToSalesLine.AutoReserve;
 
+
+
                 ToSalesLine."Shortcut Dimension 1 Code" := SalesLine."Shortcut Dimension 1 Code";
                 ToSalesLine."Shortcut Dimension 2 Code" := SalesLine."Shortcut Dimension 2 Code";
                 ToSalesLine."Dimension Set ID" := SalesLine."Dimension Set ID";
@@ -1881,6 +1888,53 @@ codeunit 50106 "SalesEvents"
 
 
             Until FromBOMComp.next() = 0;
+        // añadimos funcionalidad, para verificar si cambiamos algún precio
+        UpdateUnitPricePriceGroup(SalesLine);
+
+    end;
+
+    local procedure UpdateUnitPricePriceGroup(var SalesLine: Record "Sales Line")
+    var
+        Item: Record Item;
+        ToSalesLine: Record "Sales Line";
+        CustPriceGroup: Record "Customer Price Group";
+        ItemListPrice: Dictionary of [code[20], Decimal];
+        ItemNo: code[20];
+        PriceAcum: Decimal;
+        UnitPrice: Decimal;
+        Count: Integer;
+    begin
+        if not CustPriceGroup.Get(SalesLine."Customer Price Group") then
+            exit;
+        if not CustPriceGroup."Aplicar Precio Total Servicio" then
+            exit;
+        ToSalesLine.SetRange("Document Type", SalesLine."Document Type");
+        ToSalesLine.SetRange("Document No.", SalesLine."Document No.");
+        ToSalesLine.SetRange(ParentLineNo, SalesLine."Line No.");
+        if ToSalesLine.FindFirst() then
+            repeat
+                if Item.Get(ToSalesLine."No.") then
+                    if Item.Type in [Item.Type::Inventory] then begin
+                        ItemListPrice.Set(ToSalesLine."No.", 0);
+                        Count += 1;
+                    end else begin
+                        PriceAcum := ToSalesLine."Unit Price";
+                        ItemListPrice.Set(ToSalesLine."No.", ToSalesLine."Unit Price");
+
+                    end;
+
+
+
+            Until ToSalesLine.next() = 0;
+        if ToSalesLine.FindFirst() then
+            repeat
+                UnitPrice := ItemListPrice.Get(ToSalesLine."No.");
+                if UnitPrice = 0 then begin
+                    ToSalesLine.Validate("Unit Price", Round(SalesLine."Unit Price" - PriceAcum / Count, 0.01));
+                    ToSalesLine.Modify();
+                end;
+            Until ToSalesLine.next() = 0;
+
     end;
 
     // =============     FUNCIONES DE APROBACION PRECIOS Y DESCUENTOS          ====================

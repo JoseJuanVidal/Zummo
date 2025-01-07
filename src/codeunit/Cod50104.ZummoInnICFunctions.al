@@ -819,6 +819,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Rows: Integer;
         i: Integer;
         Text000: label 'Cargar Fichero de Excel';
+        lblDialog: Label 'Nro. albarán: #1######################\Fecha:#2########################', comment = 'ESP="Nro. albarán: #1######################\Fecha:#2########################"';
+        Window: Dialog;
     begin
         ExcelBuffer.DeleteAll();
         UploadResult := UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream);
@@ -838,13 +840,14 @@ codeunit 50104 "Zummo Inn. IC Functions"
         If ExcelBuffer.FindLast() then
             Rows := ExcelBuffer."Row No.";
         // primero miramos si existen líneas y obtenemos la ultima línea
-
+        Window.Open(lblDialog);
         for i := 4 to rows do begin  //rows
             NroAlbaran := '';
             ExcelBuffer.SetRange("Row No.", i);
             ExcelBuffer.SetRange("Column No.", 9);
             if ExcelBuffer.FindSet() then
                 NroAlbaran := ExcelBuffer."Cell Value as Text";
+            Window.Update(1, NroAlbaran);
             if NroAlbaran <> '' then begin
                 if OldAlbaran <> NroAlbaran then begin
                     OldAlbaran := NroAlbaran;
@@ -854,6 +857,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
                 UpdateBCDTravelHdr(ExcelBuffer, NroAlbaran, i, LineNo);
             end;
         end;
+        Window.Close();
     end;
 
     local procedure UpdateBCDTravelHdr(var ExcelBuffer: Record "Excel Buffer" temporary; NroAlbaran: code[20]; RowNo: Integer; LineNo: Integer)
@@ -944,6 +948,10 @@ codeunit 50104 "Zummo Inn. IC Functions"
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
         BCDTravelLine."Descripcion" := ValueText;
+        ExcelBuffer.SetRange("Column No.", 28);
+        if ExcelBuffer.FindSet() then
+            ValueText := ExcelBuffer."Cell Value as Text";
+        BCDTravelLine."Trayecto Servicio" := ValueText;
         ExcelBuffer.SetRange("Column No.", 5);
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
@@ -1051,7 +1059,6 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseHeader.Validate("Buy-from Vendor No.", VendorNo);
         PurchaseHeader.Validate("Posting Date", WorkDate());
         PurchaseHeader.Insert();
-
     end;
 
     local procedure BCDTravelCreatePurchaseLine(PurchaseHeader: Record "Purchase Header"; BCDTravelLine: record "ZM BCD Travel Invoice Line"; LineNo: Integer)

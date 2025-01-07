@@ -33,6 +33,7 @@ table 17415 "ZM BCD Travel Invoice Line"
         {
             DataClassification = CustomerContent;
             Caption = 'Cod. Centro Coste', comment = 'ESP="Cod. Centro Coste"';
+            TableRelation = "Dimension Value" where("Global Dimension No." = const(1));
         }
         field(14; "Fec Inicio Srv"; date)
         {
@@ -49,10 +50,11 @@ table 17415 "ZM BCD Travel Invoice Line"
             DataClassification = CustomerContent;
             Caption = 'Ciudad Destino', comment = 'ESP="Ciudad Destino"';
         }
-        field(17; "Tipo Servicio"; text[50])
+        field(17; "Tipo Servicio"; code[50])
         {
             DataClassification = CustomerContent;
             Caption = 'Tipo Servicio', comment = 'ESP="Tipo Servicio"';
+            TableRelation = "ZM BCD Travel Proyecto";
         }
         field(18; "Nº Billete o Bono"; code[50])
         {
@@ -88,6 +90,7 @@ table 17415 "ZM BCD Travel Invoice Line"
         {
             DataClassification = CustomerContent;
             Caption = 'Cod. Empleado', comment = 'ESP="Cod. Empleado"';
+            TableRelation = "ZM BCD Travel Empleado";
         }
         field(26; "Nombre Empleado"; text[100])
         {
@@ -95,12 +98,13 @@ table 17415 "ZM BCD Travel Invoice Line"
             Caption = 'Nombre Empleado', comment = 'ESP="Nombre Empleado"';
         }
 
-        // field(50; "Proyecto"; code[50])
-        // {
-        //     Caption = 'Proyecto', comment = 'ESP="Proyecto"';
-        //     FieldClass = FlowField;
-        //     CalcFormula = lookup("ZM CONSULTIA Producto-Proyecto".Proyecto where(CodigoProducto = field(CodigoProducto)));
-        // }
+        field(50; "Proyecto"; code[50])
+        {
+            Caption = 'Proyecto', comment = 'ESP="Proyecto"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM BCD Travel Proyecto".Proyecto where(Codigo = field("Tipo Servicio")));
+            Editable = false;
+        }
         field(51; "Proyecto Manual"; code[50])
         {
             Caption = 'Proyecto manual', comment = 'ESP="Proyecto manual"';

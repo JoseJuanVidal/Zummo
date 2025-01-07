@@ -8743,23 +8743,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Empleado - Field Codigo - Property Caption</note>
           <target>Código</target>
         </trans-unit>
+        <trans-unit id="Table 1090032195 - Field 387747209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Empleado - Field Employee Code - Property Caption</note>
+          <target>Cód. Empleado</target>
+        </trans-unit>
         <trans-unit id="Table 1090032195 - Field 4274826855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>G/L Account</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cuenta contableW"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Cuenta contable"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Empleado - Field G/L Account - Property Caption</note>
-          <target>Cuenta contableW</target>
+          <target>Cuenta contable</target>
         </trans-unit>
         <trans-unit id="Table 1090032195 - Field 814966011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nombre</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Empleado - Field Nombre - Property Caption</note>
           <target>Nombre</target>
-        </trans-unit>
-        <trans-unit id="Table 1090032195 - Field 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Proyecto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Empleado - Field Proyecto - Property Caption</note>
-          <target>Proyecto</target>
         </trans-unit>
         <trans-unit id="Table 3289452320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CONSULTIA Invoice Header</source>
@@ -9006,6 +9006,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Trayecto Servicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Invoice Line - Field Trayecto Servicio - Property Caption</note>
           <target>Trayecto Servicio</target>
+        </trans-unit>
+        <trans-unit id="Table 1437620789 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BCD Travel Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BCD Travel Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Proyecto - Property Caption</note>
+          <target>BCD Travel Proyecto</target>
+        </trans-unit>
+        <trans-unit id="Table 1437620789 - Field 4092165491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Código</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Proyecto - Field Codigo - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 1437620789 - Field 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Proyecto - Field Proyecto - Property Caption</note>
+          <target>Proyecto</target>
         </trans-unit>
         <trans-unit id="Table 1666975959 - NamedType 3804247692" size-unit="char" translate="yes" xml:space="preserve">
           <source>El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?</source>

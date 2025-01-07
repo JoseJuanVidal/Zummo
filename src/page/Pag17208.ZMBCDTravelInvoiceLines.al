@@ -46,6 +46,10 @@ page 17208 "ZM BCD Travel Invoice Lines"
                 {
                     ApplicationArea = all;
                 }
+                field(Proyecto; Proyecto)
+                {
+                    ApplicationArea = all;
+                }
                 field("Nº Billete o Bono"; "Nº Billete o Bono")
                 {
                     ApplicationArea = all;

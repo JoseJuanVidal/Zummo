@@ -8,6 +8,10 @@ pageextension 50087 "ZM EXT Customer Price Groups" extends "Customer Price Group
             {
                 ApplicationArea = all;
             }
+            field("Aplicar Precio Total Servicio"; "Aplicar Precio Total Servicio")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }
