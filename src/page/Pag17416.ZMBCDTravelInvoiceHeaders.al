@@ -8,6 +8,7 @@ page 17416 "ZM BCD Travel Invoice Headers"
     CardPageId = "ZM BCD Travel Invoice Header";
     Editable = false;
     InsertAllowed = false;
+    PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
 
     layout
     {
@@ -68,6 +69,16 @@ page 17416 "ZM BCD Travel Invoice Headers"
                 {
                     ApplicationArea = all;
                 }
+                field("Purchase Order"; "Purchase Order")
+                {
+                    ApplicationArea = all;
+                    Visible = False;
+                }
+                field("Purch. Rcpt. Order"; "Purch. Rcpt. Order")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
             }
         }
 
@@ -90,22 +101,60 @@ page 17416 "ZM BCD Travel Invoice Headers"
                     ImportExcelBCDTravelCon07();
                 end;
             }
-            action(CreatePurchaseHeaderReceipt)
+            action(CheckDimensionsValue)
             {
-                Caption = 'Crear Recepciones Compra', comment = 'ESP="Crear Recepciones Compra"';
                 ApplicationArea = all;
-                Image = Purchasing;
+                Caption = 'Check Dimensions', comment = 'ESP="Comprobar Dimensiones"';
+                Image = CheckLedger;
                 Promoted = true;
                 PromotedCategory = Process;
-
                 trigger OnAction()
                 begin
-                    OnCreatePurchaseHeaderReceipt();
+                    CheckRegisterReceive();
                 end;
+            }
+            group(Related)
+            {
+                Caption = 'Related', comment = 'ESP="Relacionado"';
+                action(CreatePurchaseHeaderReceipt)
+                {
+                    Caption = 'Crear Recepciones Compra', comment = 'ESP="Crear Recepciones Compra"';
+                    ApplicationArea = all;
+                    Image = Purchasing;
+                    Promoted = true;
+                    PromotedCategory = Category4;
 
+                    trigger OnAction()
+                    begin
+                        OnCreatePurchaseHeaderReceipt();
+                    end;
+
+                }
+                action(Employee)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Employee', comment = 'ESP="Empleado"';
+                    Image = Employee;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+
+                    trigger OnAction()
+                    var
+                        Employee: Record Employee;
+                        BCDTravelEmpleado: Record "ZM BCD Travel Empleado";
+                        EmployeeCard: page "Employee Card";
+                    begin
+                        BCDTravelEmpleado.SetRange(Codigo, Rec."Cod Empleado");
+                        if BCDTravelEmpleado.FindFirst() then begin
+                            Employee.SetRange("No.", BCDTravelEmpleado."Employee Code");
+                            EmployeeCard.SetTableView(Employee);
+                            EmployeeCard.Run();
+                        end else
+                            Page.Run(page::"ZM BCD Travel Empleado");
+                    end;
+                }
             }
         }
-
     }
 
 
@@ -124,11 +173,30 @@ page 17416 "ZM BCD Travel Invoice Headers"
 
     local procedure OnCreatePurchaseHeaderReceipt()
     var
-        lblConfirm: Label '¿Do you want to create the purchase order and delivery notes for the pending lines?',
-            comment = 'ESP="¿Desea crear el pedido de compra y albaranes de las líneas pendientes?"';
+        BCDTravelInvoiceHeader: record "ZM BCD Travel Invoice Header";
+        lblConfirm: Label '¿Do you want to create the purchase order and delivery notes for %1 selected lines?',
+            comment = 'ESP="¿Desea crear el pedido de compra y albaranes de %1 líneas seleccionadas?"';
     begin
+        CurrPage.SetSelectionFilter(BCDTravelInvoiceHeader);
         Clear(CONSULTIAFunciones);
-        if Confirm(lblConfirm) then
-            CONSULTIAFunciones.CrearPedidoCompraDesdeBCDTravel();
+        if Confirm(lblConfirm, false, BCDTravelInvoiceHeader.Count) then
+            CONSULTIAFunciones.CrearPedidoCompraDesdeBCDTravel(BCDTravelInvoiceHeader);
+    end;
+
+    local procedure CheckRegisterReceive()
+    var
+        BCDTravelHeader: record "ZM BCD Travel Invoice Header";
+        lblConfirm: Label '¿Desea revisar y asignar las dimensiones a %1 albaranes seleccionados?', comment = 'ESP="¿Desea revisar y asignar las dimensiones a %1 albaranes seleccionados?"';
+    begin
+        CurrPage.SetSelectionFilter(BCDTravelHeader);
+        if not Confirm(lblConfirm, false, BCDTravelHeader.Count) then
+            exit;
+        Clear(CONSULTIAFunciones);
+        if BCDTravelHeader.FindFirst() then
+            repeat
+                if not BCDTravelHeader."Receipt created" then
+                    CONSULTIAFunciones.CheckBCDTravelHeaderDimensions(BCDTravelHeader);
+            Until BCDTravelHeader.next() = 0;
+
     end;
 }

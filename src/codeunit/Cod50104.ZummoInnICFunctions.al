@@ -1006,58 +1006,145 @@ codeunit 50104 "Zummo Inn. IC Functions"
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
         Evaluate(BCDTravelLine."Imp Total", ValueText);
-        BCDTravelLine.Insert()
+        BCDTravelLine.Insert();
+        GetEmployeeDimensionsValue(BCDTravelLine);
     end;
 
-    procedure CrearPedidoCompraDesdeBCDTravel()
+    procedure CrearPedidoCompraDesdeBCDTravel(var BCDTravelInvoiceHeader: record "ZM BCD Travel Invoice Header")
     var
         PurchaseSetup: record "Purchases & Payables Setup";
-        BCDTravelHeader: record "ZM BCD Travel Invoice Header";
         BCDTravelLine: record "ZM BCD Travel Invoice Line";
         PurchaseHeader: record "Purchase Header";
         PurchRcptHeader: record "Purch. Rcpt. Header";
+        PurchPost: Codeunit "Purch.-Post";
         LineNo: Integer;
         lblCreate: Label 'Order %1 and Receipt %2 have been created.\¿Do you want to open the Receipt?', comment = 'ESP="Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?"';
     begin
         PurchaseSetup.Get();
         PurchaseSetup.TestField("BCD Travel Vendor No.");
-        BCDTravelHeader.Reset();
-        BCDTravelHeader.SetRange("Receipt created", false);
-        if not BCDTravelHeader.FindFirst() then
+        BCDTravelInvoiceHeader.SetRange("Receipt created", false);
+        BCDTravelDimension(BCDTravelInvoiceHeader);
+
+        if not BCDTravelInvoiceHeader.FindFirst() then
             exit;
-        BCDTravelCreatePurchaseHeader(PurchaseHeader, PurchaseSetup."BCD Travel Vendor No.");
-        if BCDTravelHeader.FindFirst() then
+        BCDTravelCreatePurchaseHeader(PurchaseHeader, PurchaseSetup."BCD Travel Vendor No.", BCDTravelInvoiceHeader);
+        // primero chequeamos los datos de empleados y dimensiones
+
+        if BCDTravelInvoiceHeader.FindFirst() then
             repeat
                 BCDTravelLine.Reset();
-                BCDTravelLine.SetRange("Nro_Albarán", BCDTravelHeader."Nro_Albarán");
+                BCDTravelLine.SetRange("Nro_Albarán", BCDTravelInvoiceHeader."Nro_Albarán");
                 if BCDTravelLine.FindFirst() then
                     repeat
                         LineNo += 10000;
                         BCDTravelCreatePurchaseLine(PurchaseHeader, BCDTravelLine, LineNo);
                     Until BCDTravelLine.next() = 0;
+                BCDTravelInvoiceHeader."Receipt created" := true;
+                BCDTravelInvoiceHeader."Purchase Order" := PurchaseHeader."No.";
+                BCDTravelInvoiceHeader.Modify();
+            Until BCDTravelInvoiceHeader.next() = 0;
 
-            Until BCDTravelHeader.next() = 0;
-
-        // PostPurchaseOrder(recPurchaseHeader, ServiceHeader);
-
-        PurchRcptHeader.Reset();
+        PurchaseHeader.Receive := true;
+        PurchaseHeader.Invoice := false;
+        PurchPost.Run(PurchaseHeader);
         PurchRcptHeader.SetRange("Order No.", PurchaseHeader."No.");
-        if PurchRcptHeader.FindLast() then
-            if confirm(lblCreate, false, PurchaseHeader."No.", PurchRcptHeader) then
-                ShowPurchRcptOrder(PurchRcptHeader."No.");
+        if PurchRcptHeader.FindFirst() then begin
+            BCDTravelInvoiceHeader.SetRange("Purchase Order", PurchaseHeader."No.");
+            BCDTravelInvoiceHeader.ModifyAll("Purch. Rcpt. Order", PurchRcptHeader."No.");
+        end;
+        page.Run(Page::"Purchase Order", PurchaseHeader);
 
     end;
 
-    local procedure BCDTravelCreatePurchaseHeader(var PurchaseHeader: record "Purchase Header"; VendorNo: code[20])
+    procedure BCDTravelCreatePurchaseOrderFromNroAlbaran(var BCDTravelHeader: record "ZM BCD Travel Invoice Header")
+    var
+        PurchaseSetup: record "Purchases & Payables Setup";
+        BCDTravelLine: record "ZM BCD Travel Invoice Line";
+        PurchaseHeader: record "Purchase Header";
+        PurchRcptHeader: record "Purch. Rcpt. Header";
+        PurchPost: Codeunit "Purch.-Post";
+        LineNo: Integer;
+        lblCreate: Label 'Order %1 and Receipt %2 have been created.\¿Do you want to open the Receipt?', comment = 'ESP="Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?"';
+    begin
+        PurchaseSetup.Get();
+        PurchaseSetup.TestField("BCD Travel Vendor No.");
+        BCDTravelCreatePurchaseHeader(PurchaseHeader, PurchaseSetup."BCD Travel Vendor No.", BCDTravelHeader);
+        BCDTravelLine.Reset();
+        BCDTravelLine.SetRange("Nro_Albarán", BCDTravelHeader."Nro_Albarán");
+        if BCDTravelLine.FindFirst() then
+            repeat
+                LineNo += 10000;
+                BCDTravelCreatePurchaseLine(PurchaseHeader, BCDTravelLine, LineNo);
+            Until BCDTravelLine.next() = 0;
+
+        BCDTravelHeader."Receipt created" := true;
+        BCDTravelHeader."Purchase Order" := PurchaseHeader."No.";
+        PurchaseHeader.Receive := true;
+        PurchaseHeader.Invoice := false;
+        BCDTravelHeader.Modify();
+        PurchPost.Run(PurchaseHeader);
+        PurchRcptHeader.SetRange("Order No.", PurchaseHeader."No.");
+        if PurchRcptHeader.FindFirst() then begin
+            BCDTravelHeader."Purch. Rcpt. Order" := PurchRcptHeader."No.";
+            BCDTravelHeader.Modify();
+        end;
+        page.Run(Page::"Purchase Order", PurchaseHeader);
+        // PurchRcptHeader.Reset();
+        // PurchRcptHeader.SetRange("Order No.", PurchaseHeader."No.");
+        // if PurchRcptHeader.FindLast() then
+        //     if confirm(lblCreate, false, PurchaseHeader."No.", PurchRcptHeader) then
+        //         ShowPurchRcptOrder(PurchRcptHeader."No.");
+    end;
+
+    procedure BCDTravelDimension(var BCDTravelInvoiceHeader: record "ZM BCD Travel Invoice Header")
+    var
+        PurchaseSetup: record "Purchases & Payables Setup";
+    begin
+        PurchaseSetup.Get();
+        PurchaseSetup.TestField("BCD Travel Vendor No.");
+        // primero chequeamos los datos de empleados y dimensiones
+        if BCDTravelInvoiceHeader.FindFirst() then
+            repeat
+                if not BCDTravelInvoiceHeader."Receipt created" then
+                    CheckBCDTravelHeaderDimensions(BCDTravelInvoiceHeader);
+            Until BCDTravelInvoiceHeader.next() = 0;
+
+    end;
+
+    procedure CheckBCDTravelHeaderDimensions(BCDTravelHeader: record "ZM BCD Travel Invoice Header")
+    var
+        BCDTravelLine: record "ZM BCD Travel Invoice Line";
+        DimensionValue: text;
+        lblError: Label 'Debe tener valor la dimension %1 del empleado %2.', comment = 'ESP="Debe tener valor la dimension %1 del empleado %2."';
+    begin
+        BCDTravelLine.SetRange("Nro_Albarán", BCDTravelHeader."Nro_Albarán");
+        if BCDTravelLine.FindFirst() then
+            repeat
+                GetEmployeeDimensionsValue(BCDTravelLine);
+
+                DimensionValue := GetBCDTravelLineCECO(BCDTravelHeader, BCDTravelLine);
+                // PROYECTO
+                DimensionValue := GetBCDTravelLineProyecto(BCDTravelHeader, BCDTravelLine);
+                // PARTIDA
+                DimensionValue := GetBCDTravelLinePartida(BCDTravelHeader, BCDTravelLine);
+                // DETALLE
+                DimensionValue := GetBCDTravelLineDetalle(BCDTravelHeader, BCDTravelLine);
+                // DEPART CODIGO (APROBACIONES)
+                BCDTravelLine.TestField(DEPART);
+            Until BCDTravelLine.next() = 0;
+    end;
+
+    local procedure BCDTravelCreatePurchaseHeader(var PurchaseHeader: record "Purchase Header"; VendorNo: code[20]; BCDTravelInvoiceHeader: Record "ZM BCD Travel Invoice Header")
     var
         myInt: Integer;
     begin
         // Crear la cabecera del pedido de compra
         PurchaseHeader.Init();
-        PurchaseHeader.InitInsert();
         PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::Order;
+        PurchaseHeader.InitInsert();
         PurchaseHeader.Validate("Buy-from Vendor No.", VendorNo);
         PurchaseHeader.Validate("Posting Date", WorkDate());
+        PurchaseHeader."Vendor Shipment No." := BCDTravelInvoiceHeader."Nro_Albarán";
         PurchaseHeader.Insert();
     end;
 
@@ -1070,6 +1157,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         lblDescription: Label 'EnglishText', comment = 'ESP="%1 %2 %3 %4 %5"';
     begin
         BCDTravelHeader.Get(BCDTravelLine."Nro_Albarán");
+        BCDTravelEmpleado.Get(BCDTravelLine."Cod Empleado");
         PurchaseLine.Init();
         PurchaseLine."Document Type" := PurchaseHeader."Document Type";
         PurchaseLine."Document No." := PurchaseHeader."No.";
@@ -1091,6 +1179,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseLine.Validate("Direct Unit Cost", BCDTravelLine."Imp Base Imponible");
         PurchaseLine.Validate("Shortcut Dimension 1 Code", BCDTravelLine."Cod. Centro Coste");
         // PurchaseLine.IdCorp_Sol := CONSULTIAInvoiceLine.IdCorp_Sol;
+        PurchaseLine.Validate("Qty. to Receive", PurchaseLine.Quantity);
         PurchaseLine.Modify();
         BCDTravelSetPurchaseLineDimensiones(BCDTravelLine, PurchaseLine);
     end;
@@ -1110,6 +1199,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     local procedure BCDTravelSetPurchaseLineDimensiones(BCDTravelLine: record "ZM BCD Travel Invoice Line"; var PurchaseLine: Record "Purchase Line")
     var
         GLSetup: Record "General Ledger Setup";
+        BCDTravelHeader: record "ZM BCD Travel Invoice Header";
         recNewDimSetEntry: record "Dimension Set Entry" temporary;
         cduDimMgt: Codeunit DimensionManagement;
         cduCambioDim: Codeunit CambioDimensiones;
@@ -1118,40 +1208,37 @@ codeunit 50104 "Zummo Inn. IC Functions"
         intDimSetId: Integer;
     begin
         GLSetup.Get();
+        BCDTravelHeader.Get(BCDTravelLine."Nro_Albarán");
         // CECO
         // Empleado y Unico por feria MK (campo proyecto de cabecera)
-        GlobalDim1 := BCDTravelLine."Cod. Centro Coste";
+        GlobalDim1 := GetBCDTravelLineCECO(BCDTravelHeader, BCDTravelLine);
         recNewDimSetEntry.Init();
         recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
         recNewDimSetEntry.Validate("Dimension Value Code", GlobalDim1);
         recNewDimSetEntry.Insert();
 
-        // // PROYECTO
-        // CONSULTIAInvoiceLine.CalcFields(Proyecto);
-        // if CONSULTIAInvoiceLine."Proyecto Manual" = '' then
-        //     CONSULTIAInvoiceLine.TestField(Proyecto);
-        // recNewDimSetEntry.Init();
-        // recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 2 Code";
-        // recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineProyecto(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
-        // recNewDimSetEntry.Insert();
-        // // PARTIDA
-        // CONSULTIAInvoiceLine.TestField(Partida);
-        // recNewDimSetEntry.Init();
-        // recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 8 Code";
-        // recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLinePARTIDA(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
-        // recNewDimSetEntry.Insert();
-        // // DETALLE
-        // recNewDimSetEntry.Init();
-        // recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 3 Code";
-        // recNewDimSetEntry.Validate("Dimension Value Code", GetCONSULTIAInvoiceLineDETALLE(CONSULTIAInvoiceHeader, CONSULTIAInvoiceLine));
-        // recNewDimSetEntry.Insert();
-        // // DEPART CODIGO (APROBACIONES)
-        // if CONSULTIAInvoiceLine.DEPART <> '' then begin
-        //     recNewDimSetEntry.Init();
-        //     recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 4 Code";
-        //     recNewDimSetEntry.Validate("Dimension Value Code", CONSULTIAInvoiceLine.DEPART);
-        //     recNewDimSetEntry.Insert();
-        // end;
+        // PROYECTO
+        recNewDimSetEntry.Init();
+        recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 2 Code";
+        recNewDimSetEntry.Validate("Dimension Value Code", GetBCDTravelLineProyecto(BCDTravelHeader, BCDTravelLine));
+        recNewDimSetEntry.Insert();
+        // PARTIDA
+        recNewDimSetEntry.Init();
+        recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 8 Code";
+        recNewDimSetEntry.Validate("Dimension Value Code", GetBCDTravelLinePartida(BCDTravelHeader, BCDTravelLine));
+        recNewDimSetEntry.Insert();
+        // DETALLE
+        recNewDimSetEntry.Init();
+        recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 3 Code";
+        recNewDimSetEntry.Validate("Dimension Value Code", GetBCDTravelLineDetalle(BCDTravelHeader, BCDTravelLine));
+        recNewDimSetEntry.Insert();
+        // DEPART CODIGO (APROBACIONES)
+        if BCDTravelLine.DEPART <> '' then begin
+            recNewDimSetEntry.Init();
+            recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 4 Code";
+            recNewDimSetEntry.Validate("Dimension Value Code", BCDTravelLine.DEPART);
+            recNewDimSetEntry.Insert();
+        end;
         Clear(cduDimMgt);
         intDimSetId := cduDimMgt.GetDimensionSetID(recNewDimSetEntry);
         clear(cduCambioDim);
@@ -1163,6 +1250,125 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseLine."Shortcut Dimension 1 Code" := GlobalDim1;
         PurchaseLine."Shortcut Dimension 2 Code" := GlobalDim2;
         PurchaseLine.Modify();
+    end;
+
+    local procedure GetBCDTravelLineCECO(BCDTravelHeader: record "ZM BCD Travel Invoice Header"; BCDTravelLine: record "ZM BCD Travel Invoice Line"): code[50]
+    begin
+        if BCDTravelHeader."Global Dimension 1 code Fair" <> '' then
+            exit(BCDTravelHeader."Global Dimension 1 code Fair");
+        BCDTravelLine.TestField("Cod. Centro Coste");
+        exit(BCDTravelLine."Cod. Centro Coste");
+    end;
+
+    local procedure GetBCDTravelLineProyecto(BCDTravelHeader: record "ZM BCD Travel Invoice Header"; BCDTravelLine: record "ZM BCD Travel Invoice Line"): code[50]
+    begin
+        BCDTravelLine.CalcFields(Proyecto);
+        BCDTravelLine.TestField(Proyecto);
+        exit(BCDTravelLine.Proyecto);
+    end;
+
+    local procedure GetBCDTravelLinePartida(BCDTravelHeader: record "ZM BCD Travel Invoice Header"; BCDTravelLine: record "ZM BCD Travel Invoice Line"): code[50]
+    begin
+        if BCDTravelHeader."Dimension Partida Fair" <> '' then
+            exit(BCDTravelHeader."Dimension Partida Fair");
+        BCDTravelLine.TestField(Partida);
+        exit(BCDTravelLine.Partida);
+    end;
+
+    local procedure GetBCDTravelLineDetalle(BCDTravelHeader: record "ZM BCD Travel Invoice Header"; BCDTravelLine: record "ZM BCD Travel Invoice Line"): code[50]
+    begin
+        if BCDTravelHeader."Dimension Detalle Fair" <> '' then
+            exit(BCDTravelHeader."Dimension Detalle Fair");
+        BCDTravelLine.TestField(Detalle);
+        exit(BCDTravelLine.Detalle);
+    end;
+
+    procedure BCDTravelAssingEmployee(var BCDTravelLine: record "ZM BCD Travel Invoice Line")
+    var
+        Employee: Record Employee;
+        EmployeeList: Page "Employee List";
+        BCDTravelEmpleado: record "ZM BCD Travel Empleado";
+        BCDTravelEmpleados: page "ZM BCD Travel Empleado";
+    begin
+        BCDTravelLine.TestField("Cod Empleado");
+        if not BCDTravelEmpleado.Get(BCDTravelLine."Cod Empleado") then begin
+            BCDTravelEmpleado.Init();
+            BCDTravelEmpleado.Codigo := BCDTravelLine."Cod Empleado";
+            BCDTravelEmpleado.Nombre := BCDTravelLine."Nombre Empleado";
+            BCDTravelEmpleado.Insert();
+            Commit();
+            BCDTravelEmpleado.SetRange(Codigo, BCDTravelLine."Cod Empleado");
+            BCDTravelEmpleados.LookupMode := true;
+            BCDTravelEmpleados.SetTableView(BCDTravelEmpleado);
+            if not (BCDTravelEmpleados.RunModal() = Action::LookupOK) then
+                exit;
+            BCDTravelEmpleados.GetRecord(BCDTravelEmpleado);
+        end;
+
+        BCDTravelEmpleado.TestField("Employee Code");
+        GetEmployeeDimensionsValue(BCDTravelLine);
+
+    end;
+
+    procedure GetEmployeeDimensionsValue(var BCDTravelLine: record "ZM BCD Travel Invoice Line")
+    var
+        GLSetup: record "General Ledger Setup";
+        DimensionValue: record "Dimension Value";
+        DefaultDimension: Record "Default Dimension";
+        DimSetEntry: Record "Dimension Set Entry" temporary;
+        Employee: Record Employee;
+        BCDTravelEmpleado: record "ZM BCD Travel Empleado";
+        DimensionMgt: Codeunit DimensionManagement;
+        DimensionSetIDArr: ARRAY[10] OF Integer;
+        TableID: ARRAY[10] OF Integer;
+        No: ARRAY[10] OF Code[20];
+        GlobalDim1Code: code[20];
+        GlobalDim2Code: code[20];
+        DimSetID: Integer;
+    begin
+        BCDTravelEmpleado.Get(BCDTravelLine."Cod Empleado");
+        if Employee.Get(BCDTravelEmpleado."Employee Code") then begin
+            // CECO - Partida - Detalle - Depart
+            // 1       8           3         4
+            GLSetup.Get();
+            TableID[1] := Database::Employee;
+            No[1] := Employee."No.";
+            DimSetID := DimensionMgt.GetDefaultDimID(TableID, No, '', GlobalDim1Code, GlobalDim2Code, DimSetID, 0);
+            DimensionMgt.GetDimensionSet(DimSetEntry, DimSetID);
+            DimSetEntry.Reset();
+            if BCDTravelLine.Detalle = '' then begin
+                DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
+                if DimSetEntry.FindFirst() then begin
+                    BCDTravelLine.Detalle := DimSetEntry."Dimension Value Code";
+                    DimensionValueBlocked(DimSetEntry);
+                end;
+            end;
+            if BCDTravelLine.Partida = '' then begin
+                DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+                if DimSetEntry.FindFirst() then begin
+                    BCDTravelLine.Partida := DimSetEntry."Dimension Value Code";
+                    DimensionValueBlocked(DimSetEntry);
+                end;
+            end;
+            if BCDTravelLine.DEPART = '' then begin
+                DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
+                if DimSetEntry.FindFirst() then begin
+                    BCDTravelLine.DEPART := DimSetEntry."Dimension Value Code";
+                    DimensionValueBlocked(DimSetEntry);
+                end;
+            end;
+            BCDTravelLine.Modify();
+        end;
+    end;
+
+    local procedure DimensionValueBlocked(DimSetEntry: Record "Dimension Set Entry")
+    var
+        DimensionValue: Record "Dimension Value";
+    begin
+        DimensionValue.SetRange("Dimension Code", DimSetEntry."Dimension Code");
+        DimensionValue.SetRange(Code, DimSetEntry."Dimension Value Code");
+        DimensionValue.FindFirst();
+        DimensionValue.TestField(Blocked, false);
     end;
 
     local procedure ShowPurchRcptOrder(PurchRcptHeaderNo: code[20])
@@ -1390,38 +1596,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     //     CONSULTIAInvoiceLine.Insert();
     // end;
 
-    // procedure GetEmployeeDimensionsValue(var CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line")
-    // var
-    //     GLSetup: record "General Ledger Setup";
-    //     DefaultDimension: Record "Default Dimension";
-    //     DimSetEntry: Record "Dimension Set Entry" temporary;
-    //     DimensionMgt: Codeunit DimensionManagement;
-    //     DimensionSetIDArr: ARRAY[10] OF Integer;
-    //     TableID: ARRAY[10] OF Integer;
-    //     No: ARRAY[10] OF Code[20];
-    //     GlobalDim1Code: code[20];
-    //     GlobalDim2Code: code[20];
-    //     DimSetID: Integer;
-    // begin
-    //     // CECO - Partida - Detalle - Depart
-    //     // 1       8           3         4
-    //     GLSetup.Get();
-    //     TableID[1] := Database::Employee;
-    //     No[1] := CONSULTIAInvoiceLine.IdCorp_Usuario;
-    //     DimSetID := DimensionMgt.GetDefaultDimID(TableID, No, '', GlobalDim1Code, GlobalDim2Code, DimSetID, 0);
-    //     DimensionMgt.GetDimensionSet(DimSetEntry, DimSetID);
-    //     DimSetEntry.Reset();
-    //     DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
-    //     if DimSetEntry.FindFirst() then
-    //         CONSULTIAInvoiceLine.Detalle := DimSetEntry."Dimension Value Code";
-    //     DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
-    //     if DimSetEntry.FindFirst() then
-    //         CONSULTIAInvoiceLine.Partida := DimSetEntry."Dimension Value Code";
-    //     DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
-    //     if DimSetEntry.FindFirst() then
-    //         CONSULTIAInvoiceLine.DEPART := DimSetEntry."Dimension Value Code";
 
-    // end;
 
     // procedure GetGLAccountDimensionsValue(var CONSULTIAInvoiceLine: Record "ZM CONSULTIA Invoice Line")
     // var

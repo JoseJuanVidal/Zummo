@@ -2,6 +2,10 @@ pageextension 50001 "ServiceOrder" extends "Service Order"
 {
     layout
     {
+        modify("Response Date")
+        {
+            Editable = true;
+        }
         addafter("Service Order Type")
         {
             field(TipoPedidoNivel2_btc; TipoPedidoNivel2_btc)

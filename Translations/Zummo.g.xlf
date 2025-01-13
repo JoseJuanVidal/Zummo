@@ -8503,6 +8503,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nro Albarán"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Invoice Header - Field Nro_Albarán - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3289452320 - Field 2866075705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Rcpt. Order</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Recepción Pedido Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Invoice Header - Field Purch. Rcpt. Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289452320 - Field 387971303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Order</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Pedido Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Invoice Header - Field Purchase Order - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3289452320 - Field 2606132848 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Receipt created</source>
           <note from="Developer" annotates="general" priority="2">ESP="Albarán creado"</note>
@@ -8627,11 +8637,6 @@
           <source>Proyecto</source>
           <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Invoice Line - Field Proyecto - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 967210055 - Field 1728115565 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Proyecto manual</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Proyecto manual"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM BCD Travel Invoice Line - Field Proyecto Manual - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 967210055 - Field 3831690408 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tipo Servicio</source>
@@ -12547,6 +12552,16 @@
           <source>EnglishText</source>
           <note from="Developer" annotates="general" priority="2">ESP="%1 %2 %3 %4 %5"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method BCDTravelCreatePurchaseLine - NamedType lblDescription</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 882677302 - NamedType 1426404922" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order %1 and Receipt %2 have been created.\¿Do you want to open the Receipt?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method BCDTravelCreatePurchaseOrderFromNroAlbaran - NamedType lblCreate</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1060617977 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Debe tener valor la dimension %1 del empleado %2.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe tener valor la dimension %1 del empleado %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CheckBCDTravelHeaderDimensions - NamedType lblError</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1420331764 - NamedType 1426404922" size-unit="char" translate="yes" xml:space="preserve">
           <source>Order %1 and Receipt %2 have been created.\¿Do you want to open the Receipt?</source>
@@ -18468,6 +18483,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Muestra documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bank Account Stat. Lines - Action Showdocument - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1090032195 - Action 1498446062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Empleado - Action Employee - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3289452320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CONSULTIA Invoice Header</source>
           <note from="Developer" annotates="general" priority="2">ESP="CONSULTIA Facturas"</note>
@@ -18498,15 +18518,40 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Cerrar la factura al histórico?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Header - Method CloseInvoice - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="Page 3289452320 - Method 1762698314 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to create a Purchase Order and receiving?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el Pedido de Compra y recepción?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Header - Method CreateRegisterReceive - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 3289452320 - Control 3906556071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Header - Control lines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3289452320 - Action 3546827530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check Dimensions</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comprobar Dimensiones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Header - Action CheckDimensionsValue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3289452320 - Action 1886986190 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Register Receive</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registrar Recepción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Header - Action RegisterReceive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3606076577 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate,Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Property PromotedActionCategories</note>
+        </trans-unit>
         <trans-unit id="Page 3606076577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BCD Travel Invoice Headers</source>
           <note from="Developer" annotates="general" priority="2">ESP="BCD Travel Facturas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3606076577 - Method 32176504 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea revisar y asignar las dimensiones a %1 albaranes seleccionados?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea revisar y asignar las dimensiones a %1 albaranes seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Method CheckRegisterReceive - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Page 3606076577 - Method 1632511326 - NamedType 4292973370" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you want to update Shipments?</source>
@@ -18514,19 +18559,34 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Method ImportExcelBCDTravelCon07 - NamedType lblConfirmGet</note>
         </trans-unit>
         <trans-unit id="Page 3606076577 - Method 1305109951 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Do you want to create the purchase order and delivery notes for the pending lines?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el pedido de compra y albaranes de las líneas pendientes?"</note>
+          <source>¿Do you want to create the purchase order and delivery notes for %1 selected lines?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el pedido de compra y albaranes de %1 líneas seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Method OnCreatePurchaseHeaderReceipt - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Page 3606076577 - Action 3546827530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check Dimensions</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comprobar Dimensiones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action CheckDimensionsValue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3606076577 - Action 695499029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importar Albaranes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Albaranes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action ImportarAlbaranes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3606076577 - Action 1620533921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Related</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Relacionado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action Related - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3606076577 - Action 4162479768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crear Recepciones Compra</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crear Recepciones Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action CreatePurchaseHeaderReceipt - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3606076577 - Action 695499029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Importar Albaranes</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importar Albaranes"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action ImportarAlbaranes - Property Caption</note>
+        <trans-unit id="Page 3606076577 - Action 1498446062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action Employee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2736769586 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CONSULTIA BCD Travel Lines</source>
@@ -18547,11 +18607,6 @@
           <source>Assign Project</source>
           <note from="Developer" annotates="general" priority="2">ESP="Asignar Proyecto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Lines - Action AssingProyecto - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2736769586 - Action 2653363255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Actualizar dimensiones</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualizar dimensiones"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Lines - Action RefreshDimension - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 914321568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BCD Travel Posted Invoice Headers</source>
@@ -34447,6 +34502,11 @@
           <source>Base Amount Line</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe Base IVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field BaseImponibleLinea - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1052755578 - Field 1862089854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
+          <source>BCT Travel Nro Albaran</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BCT Travel Nro Albaran"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Rcpt. Header - Field BCD Travel No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1052755578 - Field 472358400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1052755578">
           <source>Pdt. Facturar</source>

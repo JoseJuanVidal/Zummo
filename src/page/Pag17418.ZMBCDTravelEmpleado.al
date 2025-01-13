@@ -30,4 +30,21 @@ page 17418 "ZM BCD Travel Empleado"
             }
         }
     }
+    actions
+    {
+        area(Navigation)
+        {
+            action(Employee)
+            {
+                ApplicationArea = all;
+                Caption = 'Employee', comment = 'ESP="Empleado"';
+                Image = Employee;
+                Promoted = true;
+                PromotedCategory = Process;
+                RunPageMode = View;
+                RunObject = page "Employee Card";
+                RunPageLink = "No." = field("Employee Code");
+            }
+        }
+    }
 }

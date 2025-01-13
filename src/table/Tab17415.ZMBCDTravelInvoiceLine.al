@@ -11,6 +11,7 @@ table 17415 "ZM BCD Travel Invoice Line"
         {
             DataClassification = CustomerContent;
             Caption = 'Nro Albarán', comment = 'ESP="Nro Albarán"';
+            TableRelation = "ZM BCD Travel Invoice Header";
         }
         field(2; "Line No."; Integer)
         {
@@ -105,12 +106,12 @@ table 17415 "ZM BCD Travel Invoice Line"
             CalcFormula = lookup("ZM BCD Travel Proyecto".Proyecto where(Codigo = field("Tipo Servicio")));
             Editable = false;
         }
-        field(51; "Proyecto Manual"; code[50])
-        {
-            Caption = 'Proyecto manual', comment = 'ESP="Proyecto manual"';
-            DataClassification = CustomerContent;
-            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
-        }
+        // field(51; "Proyecto Manual"; code[50])
+        // {
+        //     Caption = 'Proyecto manual', comment = 'ESP="Proyecto manual"';
+        //     DataClassification = CustomerContent;
+        //     TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
+        // }
         field(53; "Partida"; code[50])
         {
             Caption = 'Partida', comment = 'ESP="Partida"';

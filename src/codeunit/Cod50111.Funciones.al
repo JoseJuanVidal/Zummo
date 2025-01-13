@@ -2345,6 +2345,7 @@ codeunit 50111 "Funciones"
                 ServiceHeader2.Init();
                 ServiceHeader2.TransferFields(ServiceHeader);
                 ServiceHeader2."No." := '';
+                ServiceHeader2.Status := ServiceHeader2.Status::"In Process";
                 ServiceHeader2.Insert(true);
 
                 DuplicateServiceItemLineOrder(ServiceHeader, ServiceHeader2, ServiceItem)

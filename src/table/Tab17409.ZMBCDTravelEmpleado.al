@@ -5,6 +5,7 @@ table 17409 "ZM BCD Travel Empleado"
     LookupPageId = "ZM BCD Travel Empleado";
     DrillDownPageId = "ZM BCD Travel Empleado";
 
+
     fields
     {
         field(1; "Codigo"; code[20])
@@ -42,6 +43,15 @@ table 17409 "ZM BCD Travel Empleado"
         key(PK; Codigo)
         {
             Clustered = true;
+        }
+    }
+    fieldgroups
+    {
+        fieldgroup(Brick; Codigo, Nombre)
+        {
+        }
+        fieldgroup(DropDown; Codigo, Nombre)
+        {
         }
     }
 

@@ -88,11 +88,7 @@ page 17208 "ZM BCD Travel Invoice Lines"
                 //     Caption = 'Proyecto', comment = 'ESP="Proyecto"';
                 //     FieldClass = FlowField;
                 //     CalcFormula = lookup("ZM CONSULTIA Producto-Proyecto".Proyecto where(CodigoProducto = field(CodigoProducto)));
-                // }  
-                field("Proyecto Manual"; "Proyecto Manual")
-                {
-                    ApplicationArea = all;
-                }
+                // }              
                 field(Partida; Partida)
                 {
                     ApplicationArea = all;
@@ -137,17 +133,6 @@ page 17208 "ZM BCD Travel Invoice Lines"
                         AssingProject();
                     end;
                 }
-                action(RefreshDimension)
-                {
-                    ApplicationArea = all;
-                    Caption = 'Actualizar dimensiones', comment = 'ESP="Actualizar dimensiones"';
-                    Image = Refresh;
-
-                    trigger OnAction()
-                    begin
-                        // UpdateDimensions();
-                    end;
-                }
             }
         }
     }
@@ -157,7 +142,7 @@ page 17208 "ZM BCD Travel Invoice Lines"
     local procedure AssingEmployeeIdCorp()
     var
     begin
-        // CONSULTIAFunciones.AssingEmployeeIdCorp(Rec);
+        CONSULTIAFunciones.BCDTravelAssingEmployee(Rec);
 
         CurrPage.Update();
     end;

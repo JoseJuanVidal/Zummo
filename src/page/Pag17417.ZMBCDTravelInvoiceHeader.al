@@ -88,6 +88,21 @@ page 17417 "ZM BCD Travel Invoice Header"
                 {
                     ApplicationArea = all;
                 }
+                group(Register)
+                {
+                    field("Receipt created"; "Receipt created")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Purchase Order"; "Purchase Order")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Purch. Rcpt. Order"; "Purch. Rcpt. Order")
+                    {
+                        ApplicationArea = all;
+                    }
+                }
             }
 
             part(lines; "ZM BCD Travel Invoice Lines")
@@ -99,7 +114,33 @@ page 17417 "ZM BCD Travel Invoice Header"
     }
     actions
     {
-
+        area(Processing)
+        {
+            action(CheckDimensionsValue)
+            {
+                ApplicationArea = all;
+                Caption = 'Check Dimensions', comment = 'ESP="Comprobar Dimensiones"';
+                Image = CheckLedger;
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                begin
+                    CheckRegisterReceive();
+                end;
+            }
+            action(RegisterReceive)
+            {
+                ApplicationArea = all;
+                Caption = 'Register Receive', comment = 'ESP="Registrar Recepción"';
+                Image = ReceiptLines;
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                begin
+                    CreateRegisterReceive();
+                end;
+            }
+        }
     }
 
     var
@@ -120,5 +161,25 @@ page 17417 "ZM BCD Travel Invoice Header"
             Rec.Modify();
         end;
 
+    end;
+
+    local procedure CreateRegisterReceive()
+    var
+        lblConfirm: Label '¿Do you want to create a Purchase Order and receiving?', comment = 'ESP="¿Desea crear el Pedido de Compra y recepción?"';
+    begin
+        Rec.TestField("Receipt created", false);
+        if not Confirm(lblConfirm) then
+            exit;
+        Clear(CONSULTIAFunciones);
+        CONSULTIAFunciones.CheckBCDTravelHeaderDimensions(Rec);
+        CONSULTIAFunciones.BCDTravelCreatePurchaseOrderFromNroAlbaran(Rec)
+
+    end;
+
+    local procedure CheckRegisterReceive()
+    var
+    begin
+        Clear(CONSULTIAFunciones);
+        CONSULTIAFunciones.CheckBCDTravelHeaderDimensions(Rec);
     end;
 }

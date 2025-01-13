@@ -110,6 +110,20 @@ table 17414 "ZM BCD Travel Invoice Header"
             Caption = 'Receipt created', comment = 'ESP="Albarán creado"';
             Editable = false;
         }
+        field(110; "Purchase Order"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purchase Order', comment = 'ESP="Pedido Compra"';
+            Editable = false;
+            TableRelation = "Purchase Header"."No." where("Document Type" = const(Order));
+        }
+        field(120; "Purch. Rcpt. Order"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. Rcpt. Order', comment = 'ESP="Recepción Pedido Compra"';
+            Editable = false;
+            TableRelation = "Purch. Rcpt. Header"."No.";
+        }
     }
 
     keys

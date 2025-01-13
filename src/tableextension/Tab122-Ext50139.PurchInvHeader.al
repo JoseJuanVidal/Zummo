@@ -22,18 +22,17 @@ tableextension 50139 "PurchInvHeader" extends "Purch. Inv. Header"  //122
             Caption = 'Job Category', Comment = 'ESP="Categoría proyecto"';
             TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(tabla), TipoTabla = const("Job Clasification"));
         }
-        field(50120; "Purch. Request less 200"; code[20])
-        {
-            Caption = 'Purch. Request less 200', Comment = 'ESP="Compra menor 200"';
-            DataClassification = CustomerContent;
-            TableRelation = "Purchase Requests less 200";
-        }
-
         //Guardar Nº asiento y Nº documento
         field(50100; NumAsiento_btc; Integer)
         {
             DataClassification = CustomerContent;
             Caption = 'Transaction No.', comment = 'ESP="Nº asiento"';
+        }
+        field(50120; "Purch. Request less 200"; code[20])
+        {
+            Caption = 'Purch. Request less 200', Comment = 'ESP="Compra menor 200"';
+            DataClassification = CustomerContent;
+            TableRelation = "Purchase Requests less 200";
         }
         //+  NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)

@@ -28,6 +28,12 @@ tableextension 50199 "Purch. Rcpt. Header" extends "Purch. Rcpt. Header"  //120
             DataClassification = CustomerContent;
             TableRelation = "Purchase Requests less 200";
         }
+        field(50150; "BCD Travel No."; code[20])
+        {
+            Caption = 'BCT Travel Nro Albaran', Comment = 'ESP="BCT Travel Nro Albaran"';
+            DataClassification = CustomerContent;
+            TableRelation = "ZM BCD Travel Invoice Header";
+        }
         field(50157; BaseImponibleLinea; decimal)
         {
             Caption = 'Base Amount Line', comment = 'ESP="Importe Base IVA"';
