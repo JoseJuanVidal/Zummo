@@ -37462,6 +37462,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Renovate Plan - Method OnValidate - NamedType lblError</note>
           <target>El producto debe tener activado %1.</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3795951024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>RUBBER/SILICON Flexibles</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CAUCHO/SILICONAS Flexibles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field RUBBER/SILICON Flexibles - Property Caption</note>
+          <target>CAUCHO/SILICONAS Flexibles</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Sales Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
@@ -39723,6 +39729,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PVC Resto (€/kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes PLASTICS PVC OTHER - Property Caption</note>
           <target>PLASTICOS PVC Resto (€/kg)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4090392497 - Field 743433897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>RUBBER/SILICON Flexibles (€/kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CAUCHO/SILICONAS Flexibles (€/kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesSetup - Field Taxes RUBBER/SILICON Flexibles - Property Caption</note>
+          <target>CAUCHO/SILICONAS Flexibles (€/kg)</target>
         </trans-unit>
         <trans-unit id="TableExtension 4090392497 - Field 2741459748 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Taxes Steel (€/kg)</source>
