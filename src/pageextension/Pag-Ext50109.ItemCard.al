@@ -255,6 +255,10 @@ pageextension 50109 "ItemCard" extends "Item Card"
                     {
                         ApplicationArea = all;
                     }
+                    field("RUBBER/SILICON Flexibles"; "RUBBER/SILICON Flexibles")
+                    {
+                        ApplicationArea = all;
+                    }
                 }
             }
         }

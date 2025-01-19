@@ -77,6 +77,10 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Taxes RUBBER/SILICON Flexibles"; "Taxes RUBBER/SILICON Flexibles")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
         addafter("Dynamics 365 for Sales")

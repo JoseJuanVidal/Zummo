@@ -2056,6 +2056,7 @@ codeunit 50111 "Funciones"
         PlasticsPPFlexibles: Decimal;
         PlasticsPVCFlexibles: Decimal;
         PlasticsPVCResto: Decimal;
+        RUBBERSILICONFlexibles: Decimal;
     begin
         PlasticItemInitValues(Item);
         ProductionBomLine.Reset();
@@ -2081,6 +2082,7 @@ codeunit 50111 "Funciones"
                 PlasticsPPFlexibles += BomItem."PLASTICS PP FLEXIBLE" * ProductionBomLine."Quantity per";
                 PlasticsPVCFlexibles += BomItem."PLASTICS PVC FLEXIBLE" * ProductionBomLine."Quantity per";
                 PlasticsPVCResto += BomItem."PLASTICS PVC OTHER" * ProductionBomLine."Quantity per";
+                RUBBERSILICONFlexibles += BomItem."RUBBER/SILICON Flexibles" * ProductionBomLine."Quantity per";
 
                 if BomItem."Recycled plastic Qty. (kg)" <> 0 then
                     QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)" * ProductionBomLine."Quantity per"
@@ -2112,7 +2114,7 @@ codeunit 50111 "Funciones"
         Item."PLASTICS PP FLEXIBLE" := PlasticsPPFlexibles;
         Item."PLASTICS PVC FLEXIBLE" := PlasticsPVCFlexibles;
         Item."PLASTICS PVC OTHER" := PlasticsPVCResto;
-
+        Item."RUBBER/SILICON Flexibles" := RUBBERSILICONFlexibles;
         Item.Modify();
     end;
 
@@ -2135,6 +2137,7 @@ codeunit 50111 "Funciones"
         PlasticsPPFlexibles: Decimal;
         PlasticsPVCFlexibles: Decimal;
         PlasticsPVCResto: Decimal;
+        RUBBERSILICONFlexibles: Decimal;
     begin
         PlasticItemInitValues(Item);
         if BomComponent.FindFirst() then
@@ -2157,6 +2160,7 @@ codeunit 50111 "Funciones"
                 PlasticsPPFlexibles += BomItem."PLASTICS PP FLEXIBLE" * BomComponent."Quantity per";
                 PlasticsPVCFlexibles += BomItem."PLASTICS PVC FLEXIBLE" * BomComponent."Quantity per";
                 PlasticsPVCResto += BomItem."PLASTICS PVC OTHER" * BomComponent."Quantity per";
+                RUBBERSILICONFlexibles += BomItem."RUBBER/SILICON Flexibles" * BomComponent."Quantity per";
                 if BomItem."Recycled plastic Qty. (kg)" <> 0 then
                     QtyPlasticRecycled += BomItem."Recycled plastic Qty. (kg)" * BomComponent."Quantity per"
                 else
@@ -2186,6 +2190,7 @@ codeunit 50111 "Funciones"
         Item."PLASTICS PP FLEXIBLE" := PlasticsPPFlexibles;
         Item."PLASTICS PVC FLEXIBLE" := PlasticsPVCFlexibles;
         Item."PLASTICS PVC OTHER" := PlasticsPVCResto;
+        Item."RUBBER/SILICON Flexibles" := RUBBERSILICONFlexibles;
 
         Item.Modify();
     end;
@@ -2210,6 +2215,7 @@ codeunit 50111 "Funciones"
         Item."PLASTICS PP FLEXIBLE" := 0;
         Item."PLASTICS PVC FLEXIBLE" := 0;
         Item."PLASTICS PVC OTHER" := 0;
+        ITem."RUBBER/SILICON Flexibles" := 0;
     end;
 
     procedure PlasticCalculateFromItem(Item: Record Item)

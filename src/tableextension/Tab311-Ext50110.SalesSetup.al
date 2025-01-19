@@ -300,6 +300,12 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             Caption = 'PLASTICS PVC OTHER (€/kg)', comment = 'ESP="PLASTICOS PVC Resto (€/kg)"';
             DecimalPlaces = 6 : 6;
         }
+        field(50319; "Taxes RUBBER/SILICON Flexibles"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'RUBBER/SILICON Flexibles (€/kg)', comment = 'ESP="CAUCHO/SILICONAS Flexibles (€/kg)"';
+            DecimalPlaces = 6 : 6;
+        }
         //- SCRAP CONFIGURACION PRECIOS    
 
         // ITBID

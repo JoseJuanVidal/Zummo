@@ -469,23 +469,26 @@ tableextension 50108 "Item" extends Item  //27
         {
             Caption = 'Package Plastic %', comment = 'ESP="% Plástico reciclado Bulto"';
             DataClassification = CustomerContent;
-            DecimalPlaces = 2 : 2;
+            DecimalPlaces = 6 : 6;
         }
         field(50206; Steel; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Steel Packing (kg)', comment = 'ESP="Acero Embalaje (kg)"';
             Description = 'Acero que se utiliza para el envío del producto';
+            DecimalPlaces = 6 : 6;
         }
         field(50207; Carton; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Carton Packing (kg)', comment = 'ESP="Cartón Embalaje (kg)"';
+            DecimalPlaces = 6 : 6;
         }
         field(50208; Wood; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Wood Packing (kg)', comment = 'ESP="Madera Embalaje (kg)"';
+            DecimalPlaces = 6 : 6;
         }
         field(50210; "Show detailed documents"; Boolean)
         {
@@ -581,6 +584,12 @@ tableextension 50108 "Item" extends Item  //27
         {
             DataClassification = CustomerContent;
             Caption = 'PLASTICS PVC OTHER', comment = 'ESP="PLASTICOS PVC Resto"';
+            DecimalPlaces = 6 : 6;
+        }
+        field(50229; "RUBBER/SILICON Flexibles"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'RUBBER/SILICON Flexibles', comment = 'ESP="CAUCHO/SILICONAS Flexibles"';
             DecimalPlaces = 6 : 6;
         }
         //-  NORMATIVA MEDIO AMBIENTAL
