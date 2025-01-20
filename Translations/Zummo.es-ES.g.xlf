@@ -20189,6 +20189,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bank Account Stat. Lines - Action Showdocument - Property Caption</note>
           <target>Muestra documento</target>
         </trans-unit>
+        <trans-unit id="Page 1090032195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BCD Travel Empleado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BCD Travel Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Empleado - Property Caption</note>
+          <target>BCD Travel Empleado</target>
+        </trans-unit>
         <trans-unit id="Page 1090032195 - Action 1498446062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee</source>
           <note from="Developer" annotates="general" priority="2">ESP="Empleado"</note>

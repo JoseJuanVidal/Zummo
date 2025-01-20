@@ -1326,7 +1326,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         GlobalDim2Code: code[20];
         DimSetID: Integer;
     begin
-        BCDTravelEmpleado.Get(BCDTravelLine."Cod Empleado");
+        if not BCDTravelEmpleado.Get(BCDTravelLine."Cod Empleado") then
+            exit;
         if Employee.Get(BCDTravelEmpleado."Employee Code") then begin
             // CECO - Partida - Detalle - Depart
             // 1       8           3         4

@@ -1,5 +1,6 @@
 page 17418 "ZM BCD Travel Empleado"
 {
+    Caption = 'BCD Travel Empleado', comment = 'ESP="BCD Travel Empleado"';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
