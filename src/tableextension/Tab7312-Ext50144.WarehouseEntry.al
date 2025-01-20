@@ -33,5 +33,16 @@ tableextension 50144 "WarehouseEntry" extends "Warehouse Entry"  //7312
         {
             Caption = 'Blocked', comment = 'ESP=Bloqueado"';
         }
+        field(50120; "Language Code"; code[10])
+        {
+            Caption = 'Language Code', comment = 'ESP=Cód. Idioma"';
+            TableRelation = Language;
+        }
+        field(50122; "Description Language"; text[100])
+        {
+            Caption = 'Description Language', comment = 'ESP="Descripción Idioma"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Item Translation".Description where("Item No." = field("Item No."), "Language Code" = field("Language Code")));
+        }
     }
 }

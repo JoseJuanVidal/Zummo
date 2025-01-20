@@ -16,6 +16,20 @@ page 50118 "Consulta de Inventario"
     {
         area(content)
         {
+            group(Language)
+            {
+                field(LanguageCode; LanguageCode)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Language Code', comment = 'ESP="Cód. Idioma"';
+                    TableRelation = Language;
+                    trigger OnValidate()
+                    begin
+                        REc.ModifyAll("Language Code", LanguageCode);
+                    end;
+
+                }
+            }
             repeater(Group)
             {
                 field("Item No."; "Item No.")
@@ -33,6 +47,11 @@ page 50118 "Consulta de Inventario"
                 field(ItemDesc2_btc; ItemDesc2_btc)
                 {
                     ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Description Language"; "Description Language")
+                {
+                    ApplicationArea = all;
                     Editable = false;
                 }
                 field(Blocked; Blocked)
@@ -225,6 +244,8 @@ page 50118 "Consulta de Inventario"
         globalProducto: Code[20];
         globalSerie: Code[20];
         CodCliente: code[20];
+        LanguageCode: code[20];
+        LanguageDescription: text[100];
         NomCliente: text;
         NomAreaManager: text;
         Ventana: Dialog;

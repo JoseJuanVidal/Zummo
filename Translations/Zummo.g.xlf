@@ -14693,6 +14693,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Coste unitario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Control Unitcost - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2864266009 - Control 1859002777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Language Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Consulta de Inventario - Control LanguageCode - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2864266009 - Action 993596263 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>It shows the list of warehouse entries associated with that Product, Serial No., Lot No. ...</source>
           <note from="Developer" annotates="general" priority="2">ESP="Muestra la lista de movimientos de almacén asociados a ese Producto, Nº serie, Nº Lote..."</note>
@@ -37953,6 +37958,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=Cód. Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field Customer No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4014689059 - Field 1842481456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
+          <source>Description Language</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field Description Language - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4014689059 - Field 1291639658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
           <source>Fecha Fin Contrato</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin Contrato"</note>
@@ -37967,6 +37977,11 @@
           <source>Description 2</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field ItemDesc2_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4014689059 - Field 2273653569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
+          <source>Language Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Cód. Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field Language Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2621885105 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1003430490">
           <source>Plastic Date Declaration</source>
