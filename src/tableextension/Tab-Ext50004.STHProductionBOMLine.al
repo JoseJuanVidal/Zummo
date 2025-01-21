@@ -14,7 +14,12 @@ tableextension 50004 "STH Production BOM Line" extends "Production BOM Line"
             Caption = 'Language Filter', comment = 'ESP="Filtro Idioma"';
             FieldClass = FlowFilter;
         }
-
+        field(50005; Blocked; Boolean)
+        {
+            Caption = 'Item Blocked', comment = 'ESP="Bloque producto"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item.Blocked where("No." = field("No.")));
+        }
         field(50006; Steel; Decimal)
         {
             Caption = 'Steel Packing (kg)', comment = 'ESP="Acero Embalaje (kg)"';

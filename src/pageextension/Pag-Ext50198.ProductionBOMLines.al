@@ -20,6 +20,14 @@ pageextension 50198 "Production BOM Lines" extends "Production BOM Lines"
         }
         modify("No.")
         {
+            trigger OnAfterValidate()
+            var
+                Item: Record Item;
+            begin
+                if Item.Get("No.") then
+                    Item.TestField(Blocked, false);
+            end;
+
             trigger OnDrillDown()
             var
                 Item: Record Item;
@@ -45,6 +53,10 @@ pageextension 50198 "Production BOM Lines" extends "Production BOM Lines"
         }
         addafter("Routing Link Code")
         {
+            field(Blocked; Blocked)
+            {
+                ApplicationArea = all;
+            }
             field(Steel; Steel)
             {
                 ApplicationArea = all;
