@@ -20967,16 +20967,22 @@
           <target>Actualizar</target>
         </trans-unit>
         <trans-unit id="Page 825930751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Introducir Fecha</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Introducir Fecha"</note>
+          <source>Introducir Valor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Introducir Valor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Input Date - Property Caption</note>
-          <target>Introducir Fecha</target>
+          <target>Introducir Valor</target>
         </trans-unit>
         <trans-unit id="Page 825930751 - Control 1991915875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fecha</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Input Date - Control Fecha - Property Caption</note>
           <target>Fecha</target>
+        </trans-unit>
+        <trans-unit id="Page 825930751 - Control 3514686166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Texto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Texto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Input Date - Control Texto - Property Caption</note>
+          <target>Texto</target>
         </trans-unit>
         <trans-unit id="Page 2376143693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lista tareas diarias</source>
@@ -35709,11 +35715,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceLines - Control txtBloqueado - Property Caption</note>
           <target>Bloqueado</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4258502013 - Method 1269248796 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4258502013">
+          <source>¿Do you want to update %1 with "%2"?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar la %1 con "%2"?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrder - Method OnAction_AlertaPedServicio - NamedType lblConfirm</note>
+          <target>¿Desea actualizar la %1 con "%2"?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 4258502013 - Action 3862320497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
           <source>Duplicar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Duplicar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrder - Action Duplicate - Property Caption</note>
           <target>Duplicar</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4258502013 - Action 2380325860 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2145436509">
+          <source>Alerta Ped. Servicios</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Alerta Ped. Servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrder - Action AlertaPedServicio - Property Caption</note>
+          <target>Alerta Ped. Servicio</target>
         </trans-unit>
         <trans-unit id="PageExtension 149574740 - Action 4127921286 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3297607540">
           <source>Trazabilidad Serie</source>
@@ -40553,6 +40571,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Media Dias de pago"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Payment Terms - Field PayDays Average - Property Caption</note>
           <target>Media Dias de pago</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1518785014 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2624288207">
+          <source>Item Blocked</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bloque producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Production BOM Line - Field Blocked - Property Caption</note>
+          <target>Bloque producto</target>
         </trans-unit>
         <trans-unit id="TableExtension 1518785014 - Field 1321055271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2624288207">
           <source>Carton Packing (kg)</source>
