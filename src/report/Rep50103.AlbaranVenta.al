@@ -520,7 +520,7 @@ report 50103 "AlbaranVenta"
                                 UpdateSalesLineComponentes();
                             //-
 
-                            if (Type = Type::"G/L Account") and ("No." = '7591000') then
+                            if (Type = Type::"G/L Account") and (copystr("No.", 1, 4) = '7591') then
                                 CurrReport.Skip();
 
                             if (Type = Type::Item) and (recit.Get("No.")) and (recIt."Item Category Code" = 'EMBALAJES') then

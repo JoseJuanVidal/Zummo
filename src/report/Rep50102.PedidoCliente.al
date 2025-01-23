@@ -138,7 +138,7 @@ report 50102 "PedidoCliente"
             column(PaisFabricacion_Caption; PaisFabricacion_Lbl)
             {
             }
-            column(Transportista_Caption; Transportista_Lbl)
+            column(Transportista_Caption; lblTransportista)
             {
             }
             column(EmitidoPor_Caption; EmitidoPor_Lbl)
@@ -939,7 +939,7 @@ report 50102 "PedidoCliente"
                                     Clear(RecCuenta);
 
 
-                            if "Sales Line"."No." = '7591000' then begin
+                            if copystr("Sales Line"."No.", 1, 4) = '7591' then begin
                                 EsPorte := true;
                                 CurrReport.Skip();
                             end;
@@ -1623,8 +1623,10 @@ report 50102 "PedidoCliente"
 
                 txtOferta := '';
                 txtOfertaLbl := '';
+                lblTransportista := Transportista_Lbl;
 
                 if "Document Type" = "Document Type"::Quote then begin
+                    lblTransportista := StrSubstNo('%1:', "Sales Header".FieldCaption("Quote Valid Until Date"));
                     txtOfertaLbl := lbNumDias;
 
                     if optIdioma = optIdioma::ENU then
@@ -1657,7 +1659,7 @@ report 50102 "PedidoCliente"
 
                 Portes := 0;
                 PortesSalesLine.Reset;
-                PortesSalesLine.SetRange("No.", '7591000');
+                PortesSalesLine.SetFilter("No.", '7591*');
                 PortesSalesLine.SetRange("Document No.", "No.");
                 if PortesSalesLine.FindSet then
                     repeat
@@ -1693,11 +1695,18 @@ report 50102 "PedidoCliente"
 
                 //Sacar el nombre del transportista
                 TransportistaNombre_btc := '';
-
-                IF NOT RecShippingAgent.Get("Sales Header"."Shipping Agent Code") THEN
-                    Clear(RecShippingAgent)
-                else
-                    TransportistaNombre_btc := RecShippingAgent.Name;
+                case "Sales Header"."Document Type" of
+                    "Sales Header"."Document Type"::Quote:
+                        begin
+                            TransportistaNombre_btc := StrSubstNo('%1', "Sales Header"."Quote Valid Until Date");
+                        end;
+                    else begin
+                        IF NOT RecShippingAgent.Get("Sales Header"."Shipping Agent Code") THEN
+                            Clear(RecShippingAgent)
+                        else
+                            TransportistaNombre_btc := RecShippingAgent.Name;
+                    end;
+                end;
 
                 // Comercial
                 agenteNombre := CompanyInfo.Name;
@@ -2091,6 +2100,7 @@ report 50102 "PedidoCliente"
         DestinoFinalPais: Text[50];
         destinofactura: Text[50];
         workDescription: Text;
+        lblTransportista: text;
         optIdioma: Option " ","ENU","ESP","FRA";
         //************************* LABELS *************************************************************
 

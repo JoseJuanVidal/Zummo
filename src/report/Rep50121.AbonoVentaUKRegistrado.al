@@ -1110,7 +1110,7 @@ report 50121 "AbonoVentaUKRegistrado"
                             then
                                 Description := TraduccionProducto.Description;
 
-                            if (Type = Type::"G/L Account") and ("No." = '7591000') then
+                            if (Type = Type::"G/L Account") and (copystr("No.", 1, 4) = '7591') then
                                 CurrReport.Skip();
 
                             if (Type = Type::Item) and (recit.Get("No.")) and (recIt."Item Category Code" = 'EMBALAJE') then
@@ -1603,7 +1603,7 @@ report 50121 "AbonoVentaUKRegistrado"
                 Portes := 0;
                 LineaVentaPortes.Reset();
                 LineaVentaPortes.SetRange("Document No.", "No.");
-                LineaVentaPortes.SetRange("No.", '7591000');
+                LineaVentaPortes.SetFilter("No.", '7591*');
                 if LineaVentaPortes.FindSet then
                     repeat
                         Portes := Portes + LineaVentaPortes."Line Amount";
