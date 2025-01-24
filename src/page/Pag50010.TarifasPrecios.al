@@ -161,6 +161,27 @@ page 50010 "Tarifas Precios"
 
     actions
     {
+        area(Processing)
+        {
+            action(UpdateSalesPriceCRM)
+            {
+                ApplicationArea = all;
+                Caption = 'Update Sales Price CRM', comment = 'ESP="Act. TODOS Precio Venta CRM"';
+                Image = SalesPrices;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                // Enabled = CDSIsCoupledToRecord;
+                trigger OnAction()
+                var
+                    IntegracionCR: codeunit Integracion_crm_btc;
+                    lblConfirm: Label '¿Do you want to update all sales prices in the CRM?', comment = 'ESP="¿Desea Actualizar todos los precios de venta en el CRM?"';
+                begin
+                    if Confirm(lblConfirm) then
+                        IntegracionCR.UpdateSalesPrice();
+                end;
+            }
+        }
         area(Navigation)
         {
             group(ActionGroupCDS)
@@ -173,7 +194,7 @@ page 50010 "Tarifas Precios"
                     ApplicationArea = All;
                     Visible = true;
                     Image = RefreshText;
-                    Enabled = CDSIsCoupledToRecord;
+                    // Enabled = CDSIsCoupledToRecord;
                     ToolTip = 'Updates the selected Tariff on the end date CRM.', comment = 'ESP="Actualiza la Tarifa seleccionada en fecha final."';
                     trigger OnAction()
                     var

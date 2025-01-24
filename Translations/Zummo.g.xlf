@@ -18353,6 +18353,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Sincronizar Precio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRMOne - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 2738761028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Sales Price CRM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. TODOS Precio Venta CRM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateSalesPriceCRM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 2738761028 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Do you want to update all sales prices in the CRM?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Actualizar todos los precios de venta en el CRM?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateSalesPriceCRM - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 4085494530 - Method 2715736974 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>No puede se puede trazar si no indica un filtro</source>
           <note from="Developer" annotates="general" priority="2">ESP="No puede se puede trazar si no indica un filtro"</note>

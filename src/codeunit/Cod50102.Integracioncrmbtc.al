@@ -3845,4 +3845,14 @@ codeunit 50102 "Integracion_crm_btc"
 
         Window.Close();
     end;
+
+    procedure UpdateSalesPrice()
+    var
+        CustomerPriceGroup: Record "Customer Price Group";
+    begin
+        if CustomerPriceGroup.FindFirst() then
+            repeat
+                UpdateSalesPriceGroup(CustomerPriceGroup.Code, DMY2Date(31, 12, Date2DMY(WorkDate(), 3)), '');
+            Until CustomerPriceGroup.next() = 0;
+    end;
 }
