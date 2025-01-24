@@ -3868,7 +3868,7 @@ Cstr(Sum(Fields!Portes.Value))
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!Transportista_Caption.Value</Value>
+                      <Value>=iif(First(Fields!EsOferta.Value, "DataSet_Result"), First(Fields!FechaValidez_Lbl.Value, "DataSet_Result"), Fields!Transportista_Caption.Value)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -6372,6 +6372,9 @@ AAAASAISAAAAAElAAgAAACAJSAAAAAAkAQkAAACAJCABAAAAkAQkAAAAAJKABAAAAEASkAAAAABIAhIA
         </Field>
         <Field Name="Transportista_Caption">
           <DataField>Transportista_Caption</DataField>
+        </Field>
+        <Field Name="FechaValidez_Lbl">
+          <DataField>FechaValidez_Lbl</DataField>
         </Field>
         <Field Name="EmitidoPor_Caption">
           <DataField>EmitidoPor_Caption</DataField>

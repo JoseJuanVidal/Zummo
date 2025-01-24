@@ -29063,6 +29063,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Emitido por:",FRA="Fait par"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType EmitidoPor_Lbl</note>
         </trans-unit>
+        <trans-unit id="Report 3412186937 - NamedType 27870895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote Valid To Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha final válida de oferta",FRA="Date Fin validité Uffre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType FechaValidez_Lbl</note>
+        </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 3629279096" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha",FRA="Date"</note>

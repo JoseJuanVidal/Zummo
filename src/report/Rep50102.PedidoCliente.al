@@ -138,9 +138,10 @@ report 50102 "PedidoCliente"
             column(PaisFabricacion_Caption; PaisFabricacion_Lbl)
             {
             }
-            column(Transportista_Caption; lblTransportista)
+            column(Transportista_Caption; Transportista_Lbl)
             {
             }
+            column(FechaValidez_Lbl; FechaValidez_Lbl) { }
             column(EmitidoPor_Caption; EmitidoPor_Lbl)
             {
             }
@@ -236,7 +237,7 @@ report 50102 "PedidoCliente"
             column(lblNDias; lblNDias)
             {
             }
-            column(EsOferta; "Sales Header"."Document Type" = "Sales Header"."Document Type"::Order)
+            column(EsOferta; "Sales Header"."Document Type" = "Sales Header"."Document Type"::Quote)
             {
 
             }
@@ -1623,10 +1624,9 @@ report 50102 "PedidoCliente"
 
                 txtOferta := '';
                 txtOfertaLbl := '';
-                lblTransportista := Transportista_Lbl;
 
                 if "Document Type" = "Document Type"::Quote then begin
-                    lblTransportista := StrSubstNo('%1:', "Sales Header".FieldCaption("Quote Valid Until Date"));
+
                     txtOfertaLbl := lbNumDias;
 
                     if optIdioma = optIdioma::ENU then
@@ -2100,7 +2100,6 @@ report 50102 "PedidoCliente"
         DestinoFinalPais: Text[50];
         destinofactura: Text[50];
         workDescription: Text;
-        lblTransportista: text;
         optIdioma: Option " ","ENU","ESP","FRA";
         //************************* LABELS *************************************************************
 
@@ -2174,6 +2173,7 @@ report 50102 "PedidoCliente"
         DestinoFinal_Lbl: Label 'Final Destination', Comment = 'ESP="Destino Final",FRA="Pays de destination"';
         PaisFabricacion_Lbl: Label 'Country Manufacturing', Comment = 'ESP="País Fabricación",FRA="Pays de fabrication"';
         Transportista_Lbl: Label 'Carrier', Comment = 'ESP="Transportista",FRA="Transporteur"';
+        FechaValidez_Lbl: Label 'Quote Valid To Date', Comment = 'ESP="Fecha final válida de oferta",FRA="Date Fin validité Uffre"';
         EmitidoPor_Lbl: Label 'Issued by:', Comment = 'ESP="Emitido por:",FRA="Fait par"';
         NIF_Lbl: Label 'VAT:', Comment = 'ESP="NIF:",FRA="Nº TVA Intra."';
         TelFax_Lbl: Label 'Tel/Fax:', Comment = 'ESP="Tel/Fax:",FRA="Tel/Fax:"';
