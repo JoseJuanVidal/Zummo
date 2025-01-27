@@ -2413,4 +2413,32 @@ codeunit 50106 "SalesEvents"
         if MessageComment <> '' then
             Message(MessageComment);
     end;
+
+    // =============     RESTAURAR OFERTAS DE ARCHIVO          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::ArchiveManagement, 'OnBeforeRestoreSalesDocument', '', true, true)]
+    local procedure ArchiveManagement_OnBeforeRestoreSalesDocument(var SalesHeaderArchive: Record "Sales Header Archive"; var IsHandled: Boolean)
+    begin
+        case SalesHeaderArchive."Document Type" of
+            SalesHeaderArchive."Document Type"::Quote:
+                CheckIsQuoteCreate(SalesHeaderArchive)
+        end;
+    end;
+
+    local procedure CheckIsQuoteCreate(var SalesHeaderArchive: Record "Sales Header Archive")
+    var
+        SalesHeader: Record "Sales Header";
+        lblConfirm: Label 'The %1 %2 does not exist.\¿Do you want to restore it anyway?', comment = 'ESP="La %1 %2 no existe.\¿Desea Restaurarla de todas maneras?"';
+    begin
+        if not SalesHeader.Get(SalesHeaderArchive."Document Type", SalesHeaderArchive."No.") then begin
+            if not Confirm(lblConfirm, false, SalesHeaderArchive."Document Type", SalesHeaderArchive."No.") then
+                exit;
+            SalesHeader.Init();
+            SalesHeader.TransferFields(SalesHeaderArchive);
+            SalesHeader.Insert();
+        end
+    end;
 }

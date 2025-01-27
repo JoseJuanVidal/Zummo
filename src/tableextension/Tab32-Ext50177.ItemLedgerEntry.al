@@ -114,5 +114,43 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
             CalcFormula = Lookup("Ship-to Address"."Country/Region Code" WHERE("Customer No." = FIELD("Customer No. Item Service"), Code = FIELD("Cust. Ship-to Code Item Serv.")));
             Editable = false;
         }
+        field(50215; "Family Code"; code[20])
+        {
+            Caption = 'SubCategory Code', comment = 'ESP="Cód. Subcategoria"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Purch. Family" where("No." = field("Item No.")));
+        }
+        field(50216; "Category Code"; code[20])
+        {
+            Caption = 'Category Code', comment = 'ESP="Cód. Categoria"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Purch. Category" where("No." = field("Item No.")));
+        }
+        field(50217; "SubCategory Code"; code[20])
+        {
+            Caption = 'SubCategory Code', comment = 'ESP="Cód. Subcategoria"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Purch. SubCategory" where("No." = field("Item No.")));
+        }
+
+        field(50221; "Desc. Purch. Category"; Text[100])
+        {
+            Caption = 'Desc. Purch. Category', comment = 'ESP="Nombre Categoria compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase SubCategory".Description where("Purch. Familiy code" = field("Family Code"),
+                "Purch. Category code" = field("Category Code"), code = field("SubCategory Code")));
+            Editable = false;
+        }
+        field(50222; "Desc. Purch. SubCategory"; Text[100])
+        {
+            Caption = 'Desc. Purch. SubCategory', comment = 'ESP="Nombre SubCategoria compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase SubCategory".Description where("Purch. Familiy code" = field("Family Code"),
+                "Purch. Category code" = field("Category Code"), code = field("SubCategory Code")));
+            Editable = false;
+        }
     }
 }

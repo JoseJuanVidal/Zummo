@@ -68,6 +68,30 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Costing Method"; "Costing Method")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Item Unit Cost"; "Item Unit Cost")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Standar Cost"; "Standar Cost")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Average cost last year"; "Average cost last year")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("SubCategory Code"; "SubCategory Code")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

@@ -1662,4 +1662,48 @@ codeunit 50101 "Eventos_btc"
         PurchaseRequestsless200.Status := PurchaseRequestsless200.Status::Posted;
         PurchaseRequestsless200.Modify();
     end;
+
+    // =============     ESTRUCTURA de PRODUCTOS          ====================
+    // ==  
+    // ==  Añadir precios de compra, media del ultimo año,
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Table, Database::"BOM Buffer", 'OnTransferFromItemCopyFields', '', true, true)]
+    local procedure BOMBuffer_OnTransferFromItemCopyFields(var BOMBuffer: Record "BOM Buffer"; Item: Record Item)
+    begin
+        //CalcAverageCostlastYear(BOMBuffer, Item."No.");
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"BOM Buffer", 'OnTransferFromProdCompCopyFields', '', true, true)]
+    local procedure BOMBuffer_OnTransferFromProdCompCopyFields(var BOMBuffer: Record "BOM Buffer"; ProductionBOMLine: Record "Production BOM Line")
+    begin
+        //CalcAverageCostlastYear(BOMBuffer, ProductionBOMLine."No.");
+    end;
+
+
+    local procedure CalcAverageCostlastYear(var BOMBuffer: Record "BOM Buffer"; ItemNo: code[20])
+    var
+        ItemLedgerEntry: Record "Item Ledger Entry";
+        Qty: Decimal;
+        Costs: Decimal;
+        AvgCost: Decimal;
+        Window: Dialog;
+    begin
+        Window.Open('Producto #1################################\Fecha #2############');
+        Window.Update(1, ItemNo);
+        ItemLedgerEntry.SetRange("Item No.", ItemNo);
+        ItemLedgerEntry.SetRange("Posting Date", CalcDate('<-1Y>', WorkDate()), WorkDate());
+        ItemLedgerEntry.SetFilter("Entry Type", '', ItemLedgerEntry."Entry Type"::Purchase, ItemLedgerEntry."Entry Type"::Output);
+        if ItemLedgerEntry.FindFirst() then
+            repeat
+                Window.Update(2, ItemLedgerEntry."Posting Date");
+                qty += ItemLedgerEntry.Quantity;
+                ItemLedgerEntry.CalcFields("Cost Amount (Actual)", "Cost Amount (Expected)");
+                Costs += ItemLedgerEntry."Cost Amount (Actual)" + ItemLedgerEntry."Cost Amount (Expected)";
+            Until ItemLedgerEntry.next() = 0;
+        if Qty > 0 then
+            AvgCost += Costs / Qty;
+        BOMBuffer."Average cost last year" := AvgCost;
+        Window.Close();
+    end;
 }

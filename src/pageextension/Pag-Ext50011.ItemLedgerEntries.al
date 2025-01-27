@@ -41,6 +41,15 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
             {
                 ApplicationArea = all;
             }
+            field("Desc. Purch. Category"; "Desc. Purch. Category")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Desc. Purch. SubCategory"; "Desc. Purch. SubCategory")
+            {
+                ApplicationArea = all;
+            }
         }
         addafter(Description)
         {
