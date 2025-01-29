@@ -122,17 +122,7 @@ page 17208 "ZM BCD Travel Invoice Lines"
                         AssingEmployeeIdCorp();
                     end;
                 }
-                action(AssingProyecto)
-                {
-                    ApplicationArea = all;
-                    Caption = 'Assign Project', comment = 'ESP="Asignar Proyecto"';
-                    Image = Employee;
 
-                    trigger OnAction()
-                    begin
-                        AssingProject();
-                    end;
-                }
             }
         }
     }
@@ -149,7 +139,7 @@ page 17208 "ZM BCD Travel Invoice Lines"
 
     local procedure AssingProject()
     begin
-        // CONSULTIAFunciones.AssingProject(Rec);
+        CONSULTIAFunciones.UpdateProyectoNroalbaran(Rec."Nro_Albarán");
         CurrPage.Update();
     end;
 

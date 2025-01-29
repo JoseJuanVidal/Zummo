@@ -102,9 +102,10 @@ table 17415 "ZM BCD Travel Invoice Line"
         field(50; "Proyecto"; code[50])
         {
             Caption = 'Proyecto', comment = 'ESP="Proyecto"';
-            FieldClass = FlowField;
-            CalcFormula = lookup("ZM BCD Travel Proyecto".Proyecto where(Codigo = field("Tipo Servicio")));
-            Editable = false;
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
+            // FieldClass = FlowField;
+            // CalcFormula = lookup("ZM BCD Travel Proyecto".Proyecto where(Codigo = field("Tipo Servicio")));
+            // Editable = false;
         }
         // field(51; "Proyecto Manual"; code[50])
         // {
@@ -161,5 +162,13 @@ table 17415 "ZM BCD Travel Invoice Line"
     trigger OnRename()
     begin
 
+    end;
+
+    procedure UpdateProyecto()
+    var
+        BCDTravelProyecto: record "ZM BCD Travel Proyecto";
+    begin
+        if BCDTravelProyecto.Get(Rec."Tipo Servicio") then
+            Rec.Validate(Proyecto, BCDTravelProyecto.Proyecto);
     end;
 }

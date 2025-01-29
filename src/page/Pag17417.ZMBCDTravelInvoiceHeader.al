@@ -128,6 +128,17 @@ page 17417 "ZM BCD Travel Invoice Header"
                     CheckRegisterReceive();
                 end;
             }
+            action(AssingProyecto)
+            {
+                ApplicationArea = all;
+                Caption = 'Assign Project', comment = 'ESP="Asignar Proyecto"';
+                Image = Employee;
+
+                trigger OnAction()
+                begin
+                    AssingProject();
+                end;
+            }
             action(RegisterReceive)
             {
                 ApplicationArea = all;
@@ -181,5 +192,12 @@ page 17417 "ZM BCD Travel Invoice Header"
     begin
         Clear(CONSULTIAFunciones);
         CONSULTIAFunciones.CheckBCDTravelHeaderDimensions(Rec);
+    end;
+
+    local procedure AssingProject()
+    begin
+        Clear(CONSULTIAFunciones);
+        CONSULTIAFunciones.UpdateProyectoNroalbaran(Rec."Nro_Albarán");
+        CurrPage.Update();
     end;
 }

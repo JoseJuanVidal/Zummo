@@ -18553,6 +18553,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Líneas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Header - Control lines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3289452320 - Action 3689272924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assign Project</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Header - Action AssingProyecto - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3289452320 - Action 3546827530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Check Dimensions</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comprobar Dimensiones"</note>
@@ -18627,11 +18632,6 @@
           <source>Assign Employee</source>
           <note from="Developer" annotates="general" priority="2">ESP="Asignar Empleado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Lines - Action AssingEmployee - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2736769586 - Action 3689272924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Assign Project</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Asignar Proyecto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Lines - Action AssingProyecto - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 914321568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BCD Travel Posted Invoice Headers</source>

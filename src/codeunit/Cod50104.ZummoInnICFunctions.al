@@ -850,6 +850,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
             Window.Update(1, NroAlbaran);
             if NroAlbaran <> '' then begin
                 if OldAlbaran <> NroAlbaran then begin
+                    // cerramos el albaran y Dimension proyecto los ponemos igual que el servicio
+                    UpdateProyectoNroalbaran(OldAlbaran);
+
                     OldAlbaran := NroAlbaran;
                     LineNo := 0;
                 end;
@@ -858,6 +861,29 @@ codeunit 50104 "Zummo Inn. IC Functions"
             end;
         end;
         Window.Close();
+    end;
+
+    procedure UpdateProyectoNroalbaran(Nroalbaran: code[20])
+    var
+        BCDTravelLine: record "ZM BCD Travel Invoice line";
+        BCDTravelLine2: record "ZM BCD Travel Invoice line";
+        BCDTravelProyecto: record "ZM BCD Travel Proyecto";
+    begin
+        BCDTravelLine.SetRange("Nro_Albarán", Nroalbaran);
+        if BCDTravelLine.FindFirst() then
+            repeat
+                if not BCDTravelProyecto.Get(BCDTravelLine."Tipo Servicio") then begin
+                    BCDTravelLine2.SetRange("Nro_Albarán", Nroalbaran);
+                    BCDTravelLine2.SetRange("Nº Billete o Bono", BCDTravelLine."Nº Billete o Bono");
+                    if BCDTravelLine2.FindFirst() then
+                        repeat
+                            if BCDTravelLine2.Proyecto <> '' then begin
+                                BCDTravelLine.Proyecto := BCDTravelLine2.Proyecto;
+                                BCDTravelLine.Modify();
+                            end;
+                        Until BCDTravelLine2.next() = 0;
+                end;
+            Until BCDTravelLine.next() = 0;
     end;
 
     local procedure UpdateBCDTravelHdr(var ExcelBuffer: Record "Excel Buffer" temporary; NroAlbaran: code[20]; RowNo: Integer; LineNo: Integer)
@@ -1006,6 +1032,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
         Evaluate(BCDTravelLine."Imp Total", ValueText);
+        BCDTravelLine.UpdateProyecto();
         BCDTravelLine.Insert();
         GetEmployeeDimensionsValue(BCDTravelLine);
     end;
