@@ -200,6 +200,20 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                         FunFabricacion.ExportExcelItemLedgerCost(Rec);
                 end;
             }
+            action(ExportExcelPurchase)
+            {
+                ApplicationArea = all;
+                Caption = 'Acumulado Compras', comment = 'ESP="Acumulado Compras"';
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                    Funciones: Codeunit "Vigilantes colas";
+                begin
+                    if Confirm('¿Desea Exportar la excel de Acumulados Compras de %1?', false, Date2DMY(WorkDate(), 3)) then
+                        Funciones.ExportMovsProductos();
+                end;
+            }
         }
         addfirst(Reporting)
         {

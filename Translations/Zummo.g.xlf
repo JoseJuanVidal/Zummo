@@ -31348,6 +31348,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Exportar Var. Existencias"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Action ExportExcelCost - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Action 902916924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Acumulado Compras</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acumulado Compras"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Action ExportExcelPurchase - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2185030199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Imprimir etiqueta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiqueta"</note>
