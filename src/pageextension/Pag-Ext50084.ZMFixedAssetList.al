@@ -20,6 +20,21 @@ pageextension 50084 "ZMFixed Asset List" extends "Fixed Asset List"
             {
                 ApplicationArea = all;
             }
+            field(Active; "Status Use")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Previous AF changes"; "Previous AF changes")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Item No."; "Item No.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 }

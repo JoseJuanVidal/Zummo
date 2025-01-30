@@ -1,5 +1,23 @@
 pageextension 50191 "FixedAssetCard" extends "Fixed Asset Card"
 {
+    layout
+    {
+        addafter(Acquired)
+        {
+            field("Status Use"; "Status Use")
+            {
+                ApplicationArea = all;
+            }
+            field("Previous AF changes"; "Previous AF changes")
+            {
+                ApplicationArea = all;
+            }
+            field("Item No."; "Item No.")
+            {
+                ApplicationArea = all;
+            }
+        }
+    }
     actions
     {
         addbefore(Details)

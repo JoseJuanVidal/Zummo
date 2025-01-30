@@ -16,5 +16,23 @@ tableextension 50017 "ZMFixedAsset" extends "Fixed Asset"
             CalcFormula = lookup("FA Depreciation Book"."Depreciation Ending Date" where("FA No." = field("No.")));
             Editable = false;
         }
+        field(50010; "Status Use"; Option)
+        {
+            Caption = 'Status Use', comment = 'ESP="Estado Uso"';
+            OptionMembers = Operativo,"No Operativo";
+            OptionCaption = 'Operativo,No Operativo', Comment = 'ESP="Operativo,No Operativo"';
+        }
+        field(50011; "Previous AF changes"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Previous AF changes', comment = 'ESP="AF que modifica"';
+            TableRelation = "Fixed Asset";
+        }
+        field(50012; "Item No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Item No.', comment = 'ESP="Cód. Producto"';
+            TableRelation = Item;
+        }
     }
 }

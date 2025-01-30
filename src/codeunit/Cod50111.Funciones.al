@@ -2352,11 +2352,48 @@ codeunit 50111 "Funciones"
                 ServiceHeader2.TransferFields(ServiceHeader);
                 ServiceHeader2."No." := '';
                 ServiceHeader2.Status := ServiceHeader2.Status::"In Process";
+                DuplicateServiceOrder_ClearFields(ServiceHeader);
                 ServiceHeader2.Insert(true);
 
                 DuplicateServiceItemLineOrder(ServiceHeader, ServiceHeader2, ServiceItem)
 
             end;
+        end;
+    end;
+
+    local procedure DuplicateServiceOrder_ClearFields(var ServiceHeader: Record "Service Header")
+    var
+        RefTabla: RecordRef;
+        RefCampo: FieldRef;
+    begin
+        RefTabla.GetTable(ServiceHeader);
+        if RefTabla.FieldExist(50640) then begin
+            RefCampo := RefTabla.field(50640); // Cód, proveedor
+            RefCampo.Value := '';
+        end;
+        if RefTabla.FieldExist(50641) then begin
+            RefCampo := RefTabla.field(50641); // Nombre proveedor
+            RefCampo.Value := '';
+        end;
+        if RefTabla.FieldExist(50618) then begin
+            RefCampo := RefTabla.field(50618); // Nº albaran
+            RefCampo.Value := '';
+        end;
+        if RefTabla.FieldExist(50622) then begin
+            RefCampo := RefTabla.field(50622); // Incidencia Factura
+            RefCampo.Value := false;
+        end;
+        if RefTabla.FieldExist(50617) then begin
+            RefCampo := RefTabla.field(50617); // Numero factura proveedor
+            RefCampo.Value := '';
+        end;
+        if RefTabla.FieldExist(50619) then begin
+            RefCampo := RefTabla.field(50619); // Fecha factura proveedor
+            RefCampo.Value := 0D;
+        end;
+        if RefTabla.FieldExist(50620) then begin
+            RefCampo := RefTabla.field(50620); // Importe factura proveedor
+            RefCampo.Value := 0;
         end;
     end;
 

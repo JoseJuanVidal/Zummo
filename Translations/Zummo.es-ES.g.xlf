@@ -36265,6 +36265,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Campaign List - Action CRMSinc - Property Caption</note>
           <target>Sincronizar Campañas CRM</target>
         </trans-unit>
+        <trans-unit id="PageExtension 275678197 - Action 1464838095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2273701615">
+          <source>Fixed Assets</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Activos Fijos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Job List - Action FixedAssets - Property Caption</note>
+          <target>Activos Fijos</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2491007321 - Control 4063961376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1614820132">
           <source>Vendor Plastic packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
@@ -36306,6 +36312,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ubicaciones Nº Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Item Bin Contents - Action ConsultaInventarioSerie - Property Caption</note>
           <target>Ubicaciones Nº Serie</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1442948040 - Action 1464838095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4010542053">
+          <source>Fixed Assets</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Activos Fijos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM JOb Card - Action FixedAssets - Property Caption</note>
+          <target>Activos Fijos</target>
         </trans-unit>
         <trans-unit id="PageExtension 514898145 - Action 1178531242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 225828172">
           <source>Editar Descripción</source>
@@ -42506,6 +42518,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha inicio amortización"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Date Ini. Amort - Property Caption</note>
           <target>Fecha inicio amortización</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3602268299 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Item No. - Property Caption</note>
+          <target>Cód. Producto</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3602268299 - Field 895284309 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
+          <source>Previous AF changes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="AF que modifica"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Previous AF changes - Property Caption</note>
+          <target>AF que modifica</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3602268299 - Field 2218325609 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
+          <source>Status Use</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado Uso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Status Use - Property Caption</note>
+          <target>Estado Uso</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3602268299 - Field 2218325609 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
+          <source>Operativo,No Operativo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Operativo,No Operativo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Status Use - Property OptionCaption</note>
+          <target>Operativo,No Operativo</target>
         </trans-unit>
         <trans-unit id="Enum 3912514995 - EnumValue 2477294019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delete</source>

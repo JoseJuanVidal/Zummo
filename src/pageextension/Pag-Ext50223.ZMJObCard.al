@@ -1,15 +1,8 @@
-pageextension 50210 "ZM Ext Job List" extends "Job List"
+pageextension 50223 "ZM JOb Card" extends "Job Card"
 {
     layout
     {
-        addafter(Status)
-        {
-            field("Ending Date"; "Ending Date")
-            {
-                ApplicationArea = all;
-                Editable = false;
-            }
-        }
+        // Add changes to page layout here
     }
 
     actions
@@ -22,15 +15,13 @@ pageextension 50210 "ZM Ext Job List" extends "Job List"
                 Caption = 'Fixed Assets', comment = 'ESP="Activos Fijos"';
                 Image = FixedAssets;
                 Promoted = true;
-                PromotedCategory = Category5;
+                PromotedCategory = Category7;
                 RunObject = page "Fixed Asset List";
                 RunPageLink = "Global Dimension 2 Code" = field("No.");
             }
         }
     }
-    trigger OnOpenPage()
-    begin
-        Rec.SetFilter(Status, '<>%1', Rec.Status::Completed);
-    end;
 
+    var
+        myInt: Integer;
 }
