@@ -2,6 +2,17 @@ pageextension 50069 "STH JobTaskLinesSubform" extends "Job Task Lines Subform"
 {
     layout
     {
+        addbefore("Start Date")
+        {
+            field("Job Task Group"; "Job Task Group")
+            {
+                ApplicationArea = all;
+            }
+            field("Percentage progress"; "Percentage progress")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter("Start Date")
         {
             field("Fecha inicial planificada"; "Fecha inicial planificada")

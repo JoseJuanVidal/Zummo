@@ -4,10 +4,39 @@ pageextension 50210 "ZM Ext Job List" extends "Job List"
     {
         addafter(Status)
         {
+            field(Cancelled; Cancelled)
+            {
+                ApplicationArea = all;
+            }
             field("Ending Date"; "Ending Date")
             {
                 ApplicationArea = all;
                 Editable = false;
+            }
+            field(Machine; Machine)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(Typology; Typology)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(Criticality; Criticality)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(Laboratory; Laboratory)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Country/Region code"; "Country/Region code")
+            {
+                ApplicationArea = all;
+                Visible = false;
             }
         }
     }

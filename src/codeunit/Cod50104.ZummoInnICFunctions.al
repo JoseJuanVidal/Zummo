@@ -917,7 +917,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         ExcelBuffer.SetRange("Column No.", 27);
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
-        BCDTravelHdr."Descripcion" := ValueText;
+        BCDTravelHdr."Descripcion" := copystr(ValueText, 1, MaxStrLen(BCDTravelHdr.Descripcion));
         ExcelBuffer.SetRange("Column No.", 5);
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
@@ -939,7 +939,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         ExcelBuffer.SetRange("Column No.", 15);
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
-        BCDTravelHdr."Ciudad Destino" := ValueText;
+        BCDTravelHdr."Ciudad Destino" := copystr(ValueText, 1, MaxStrLen(BCDTravelHdr."Ciudad Destino"));
         ExcelBuffer.SetRange("Column No.", 29);
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
@@ -947,7 +947,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         ExcelBuffer.SetRange("Column No.", 30);
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
-        BCDTravelHdr."Nombre Empleado" := ValueText;
+        BCDTravelHdr."Nombre Empleado" := copystr(ValueText, 1, MaxStrLen(BCDTravelHdr."Nombre Empleado"));
         BCDTravelHdr.Insert()
     end;
 

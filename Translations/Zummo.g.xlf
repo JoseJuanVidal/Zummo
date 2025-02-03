@@ -10023,6 +10023,51 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. variante"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Item Translation temporary - Field Variant Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 438262656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Lista de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Amount BOM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 438262656 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Amount BOM - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 438262656 - Field 2790486453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comment</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Amount BOM - Field Comment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 438262656 - Field 1908272084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Amount BOM - Field Job No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 438262656 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Línea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Amount BOM - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 438262656 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Amount BOM - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1627136839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>JOB Clasification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM JOB Clasification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1627136839 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM JOB Clasification - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1627136839 - Field 3531868071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Campo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM JOB Clasification - Field Field No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1441039187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Device Type</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo Dispositivo"</note>
@@ -11972,56 +12017,6 @@
           <source> ,Purchase,Material,Capacity,Capacity Overhead,Manufacturing Overhead,Subcontracted</source>
           <note from="Developer" annotates="general" priority="2">ESP=" ,Compras,Materiales,Capacidad,Gastos gen. capacidad,Gastos gen. fabr.,Subcontratación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Variance Type - Property OptionCaption</note>
-        </trans-unit>
-        <trans-unit id="Table 1267244062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Visit log</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Registro de Visitas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1267244062 - Field 4040565747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Autorizado por</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Autorizado por - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1267244062 - Field 1116050679 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Empresa</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Empresa - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1267244062 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Entry No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Entry No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1267244062 - Field 2950845476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Estado</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Estado - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1267244062 - Field 2334878037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fecha/hora entrada</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Fecha/hora entrada - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1267244062 - Field 1134074804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fecha/hora salida</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Fecha/hora salida - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1267244062 - Field 3491847811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Signature</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Firma"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Firma - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1267244062 - Field 3502056598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nombre completo</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Nombre completo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1267244062 - Field 4204617699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Trabajo</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Visit log - Field Trabajo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 4289582467 - Method 3807208071 - NamedType 2397595163" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1\AbertiaUpdate.LOG</source>
@@ -18468,21 +18463,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Actualzizar imagen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Item Documents - Action UpdatePicture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 579703638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>API Visit log</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2755934817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>API Visit log</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log Actions - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2755934817 - NamedType 2315697318" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Succes</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Realizado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM API Visit log Actions - NamedType lblSucces</note>
-        </trans-unit>
         <trans-unit id="Page 2459089483 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Navigate</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Navegar"</note>
@@ -19547,6 +19527,21 @@
           <source>Actualizada la plataforma ITBID</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizada la plataforma ITBID"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review list - Action UpdateITBID - Method OnAction - NamedType lblUpdate</note>
+        </trans-unit>
+        <trans-unit id="Page 438262656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Amount BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP=""Importe Lista de Materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Amount BOM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4136324073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Clasification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Clafication - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4136324073 - NamedType 2442943016" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Clafication - NamedType lblCaption</note>
         </trans-unit>
         <trans-unit id="Page 373396473 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Entry</source>
@@ -33193,10 +33188,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ubicaciones Nº Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Item Bin Contents - Action ConsultaInventarioSerie - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1442948040 - Action 4046317368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4010542053">
+          <source>Amount BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe lista materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM JOb Card - Action AmountBOM - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1442948040 - Action 1464838095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4010542053">
           <source>Fixed Assets</source>
           <note from="Developer" annotates="general" priority="2">ESP="Activos Fijos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM JOb Card - Action FixedAssets - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1442948040 - Control 3188276999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4010542053">
+          <source>Clasification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM JOb Card - Control Clasification - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 514898145 - Action 1178531242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 225828172">
           <source>Editar Descripción</source>
@@ -36883,10 +36888,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha inicio real"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Fecha inicio real - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 3754713415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Job Task Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Tarea Agrupación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Job Task Group - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 629365744 - Field 3263963055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
           <source>Nombre Responsable</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Responsable"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Nombre Responsable - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 2123814799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>% progress</source>
+          <note from="Developer" annotates="general" priority="2">ESP="% avance"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Percentage progress - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 629365744 - Field 2986351572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
           <source>Presupuesto Coste Horas</source>
@@ -38337,6 +38352,41 @@
           <source>EU Country/Region Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. país/región EU"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Item Tracing Buffer - Field EU Country/Region Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 595800028 - Field 4069904181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2818324089">
+          <source>Cancelled</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cancelado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Job - Field Cancelled - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 595800028 - Field 429834166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2818324089">
+          <source>Country/Region Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. País"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Job - Field Country/Region code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 595800028 - Field 1098250129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2818324089">
+          <source>Criticality</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Criticidad "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Job - Field Criticality - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 595800028 - Field 3765923997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2818324089">
+          <source>Laboratory</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Laboratorio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Job - Field Laboratory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 595800028 - Field 1341331079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2818324089">
+          <source>Machine</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Máquina"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Job - Field Machine - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 595800028 - Field 2123814799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2818324089">
+          <source>% Progress</source>
+          <note from="Developer" annotates="general" priority="2">ESP="% Avance"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Job - Field Percentage progress - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 595800028 - Field 573063577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2818324089">
+          <source>Typology</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipología"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Job - Field Typology - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1488885674 - Field 4186134217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 938095748">
           <source>Job Category</source>

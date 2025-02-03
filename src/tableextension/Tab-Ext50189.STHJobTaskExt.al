@@ -74,6 +74,15 @@ tableextension 50189 "STH JobTask Ext" extends "Job Task"
                  "Es Material" = const(true), "Entry Type" = CONST(Usage), "Posting Date" = FIELD("Posting Date Filter")));
             Editable = false;
         }
+        field(50020; "Job Task Group"; code[20])
+        {
+            Caption = 'Job Task Group', comment = 'ESP="Nº Tarea Agrupación"';
+            TableRelation = "Job Task"."Job Task No." where("Job No." = field("Job No."));
+        }
+        field(50030; "Percentage progress"; Decimal)
+        {
+            Caption = '% progress', comment = 'ESP="% avance"';
+        }
     }
 
     var
