@@ -1,6 +1,6 @@
 page 17218 "ZM Job Amount BOM"
 {
-    Caption = 'Job Amount BOM', Comment = 'ESP=""Importe Lista de Materiales"';
+    Caption = 'Job Amount BOM', Comment = 'ESP="Importe Lista de Materiales"';
     PageType = List;
     SourceTable = "ZM Job Amount BOM";
     UsageCategory = None;

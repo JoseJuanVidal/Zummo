@@ -21408,9 +21408,9 @@
         </trans-unit>
         <trans-unit id="Page 438262656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Job Amount BOM</source>
-          <note from="Developer" annotates="general" priority="2">ESP=""Importe Lista de Materiales"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe Lista de Materiales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Job Amount BOM - Property Caption</note>
-          <target>"Importe Lista de Materiales</target>
+          <target>Importe Lista de Materiales</target>
         </trans-unit>
         <trans-unit id="Page 4136324073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Job Clasification</source>
