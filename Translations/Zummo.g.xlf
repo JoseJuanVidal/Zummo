@@ -9478,6 +9478,291 @@
           <note from="Developer" annotates="general" priority="2">ESP="PYL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM G/L Register Inventory - Field PYL - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 188244866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Ledger Mapeo SEB</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. Contabilidad Mapeo SEB"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Method 2255100440 - NamedType 1699083917" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The sum of Distribution %1 is %2 divisible by 1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La suma del Reparto %1 %2 es divisible entre 1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Method DistributionCheck - NamedType lblMSG</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Method 2255100440 - NamedType 3487885377" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NOT</source>
+          <note from="Developer" annotates="general" priority="2">ESP="NO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Method DistributionCheck - NamedType lblNOT</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 2649683917 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account Number (4d)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Account Number (4d) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 2157994804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account Number (7d)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Account Number (7d) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 1949666302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CECO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field CECO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 4133217794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chart of accounts by function (Lvl.1)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Chart of accounts 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 2220127943 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chart of accounts by function (Lvl.2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Chart of accounts 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 3133801257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Company - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 2671169072 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company or.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Company or. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 269244973 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CONCILIACIÓN</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field CONCILIACIÓN - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 725891738 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conso item code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Conso item code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 492907711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conso item description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Conso item description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 2714162063 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EBITDA-UNDER EBITDA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field EBITDA-UNDER EBITDA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 1175799272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LEVEL 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field LEVEL 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 2749836488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nature code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Nature code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 3385162849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nature description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Nature description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 814966011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Nombre - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 2088219769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reparto</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Reparto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 831279654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reporting Zummo C1 - Clasif1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Reporting Zummo C1 - Clasif1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 3723101942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reporting Zummo C2 - Clasif2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Reporting Zummo C2 - Clasif2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 4122611878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reporting Zummo C3 - Clasif3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Reporting Zummo C3 - Clasif3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 1507165655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ROPA-UNDER ROPA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field ROPA-UNDER ROPA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Ledger Mapeo Zummo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. Contabilidad Mapeo Zummo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 726877352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ajuste</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ajuste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Ajuste - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 373159582 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="C1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field C1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 2755037027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="C2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field C2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 3392733644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="C3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field C3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 1479643793 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C4</source>
+          <note from="Developer" annotates="general" priority="2">ESP="C4"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field C4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 2117340410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C5</source>
+          <note from="Developer" annotates="general" priority="2">ESP="C5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field C5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 204250559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C6</source>
+          <note from="Developer" annotates="general" priority="2">ESP="C6"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field C6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 943480289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cuenta Americana</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cuenta Americana"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field CuentaAmericana - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 231848584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desc Cuenta Español</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc Cuenta Español"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field DescCuentaEspañol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 1116050679 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Empresa</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Empresa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Empresa - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 4274826855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field G/L Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 2081248643 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>H1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="H1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field H1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 3994338494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>H2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="H2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field H2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 3356641877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>H3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="H3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field H3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 168158792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>H4</source>
+          <note from="Developer" annotates="general" priority="2">ESP="H4"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field H4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 3825429471 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>H5</source>
+          <note from="Developer" annotates="general" priority="2">ESP="H5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field H5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 1443552026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>H6</source>
+          <note from="Developer" annotates="general" priority="2">ESP="H6"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field H6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 2956772197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IC1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IC1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IC1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 2319075580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IC2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IC2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IC2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 1681378963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IC3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IC3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IC3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 1043682346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IC4</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IC4"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IC4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 405985729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IC5</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IC5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IC5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 4063256408 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IC6</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IC6"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IC6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 2321220220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IH1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IH1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IH1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 2958916837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IH2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IH2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IH2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 3596613454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IH3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IH3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IH3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 3427704431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IH4</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IH4"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IH4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 4065401048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IH5</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IH5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IH5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 408130369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IH6</source>
+          <note from="Developer" annotates="general" priority="2">ESP="IH6"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field IH6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 4217411560 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Informe</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Informe"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Informe - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 2883740582 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Tipo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3435315486 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
@@ -19092,6 +19377,21 @@
           <source>¿Desea actualizar los movimientos de Costes?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM G/L Register Inventory - Action Update - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Page 188244866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mapeo SEB</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM General Ledger Mapeo SEB - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 188244866 - Action 2255100440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Distribution Check</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comprobación Reparto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM General Ledger Mapeo SEB - Action DistributionCheck - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3722154030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mapeo ZUMMO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mapeo ZUMMO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM General Ledger Mapeo ZUMMO - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1457966411 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>HIST BOM Productions</source>
@@ -31142,6 +31442,16 @@
           <source>País</source>
           <note from="Developer" annotates="general" priority="2">ESP="País"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Control PaisClienteProv - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 1485340654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Mapeo SEB</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mapeo SEB"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action MapeoSEB - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 4141913938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Mapeo ZUMMO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mapeo ZUMMO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action MapeoZummo - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Control 1639326268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Conexión SQL ABERTIA</source>

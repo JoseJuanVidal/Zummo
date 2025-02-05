@@ -68,6 +68,32 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
         }
     }
 
+    actions
+    {
+        addafter("Bank Export/Import Setup")
+        {
+            action(MapeoZummo)
+            {
+                ApplicationArea = all;
+                Caption = 'Mapeo ZUMMO', comment = 'ESP="Mapeo ZUMMO"';
+                Image = MapAccounts;
+                Promoted = true;
+                PromotedCategory = Category4;
+                RunObject = page "ZM General Ledger Mapeo ZUMMO";
+                RunPageMode = Edit;
+            }
+            action(MapeoSEB)
+            {
+                ApplicationArea = all;
+                Caption = 'Mapeo SEB', comment = 'ESP="Mapeo SEB"';
+                Image = MapAccounts;
+                Promoted = true;
+                PromotedCategory = Category4;
+                RunObject = page "ZM General Ledger Mapeo SEB";
+                RunPageMode = Edit;
+            }
+        }
+    }
     trigger OnOpenPage()
     begin
         UserSetup.Get(UserId);
