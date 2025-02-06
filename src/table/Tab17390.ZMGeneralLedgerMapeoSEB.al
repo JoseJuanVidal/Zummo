@@ -1,4 +1,4 @@
-table 17387 "ZM General Ledger Mapeo SEB"
+table 17390 "ZM General Ledger Mapeo SEB"
 {
     DataClassification = CustomerContent;
     Caption = 'General Ledger Mapeo SEB', comment = 'ESP="Conf. Contabilidad Mapeo SEB"';

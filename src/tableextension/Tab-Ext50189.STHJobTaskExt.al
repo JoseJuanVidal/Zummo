@@ -84,7 +84,11 @@ tableextension 50189 "STH JobTask Ext" extends "Job Task"
             Caption = '% progress', comment = 'ESP="% avance"';
         }
     }
-
+    fieldgroups
+    {
+        addlast(DropDown; "Status Task")
+        { }
+    }
     var
         Resource: Record Resource;
 
