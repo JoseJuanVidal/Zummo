@@ -5,6 +5,7 @@ page 17416 "ZM BCD Travel Invoice Headers"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "ZM BCD Travel Invoice Header";
+    SourceTableView = sorting("Fecha Albarán", "Nro_Albarán");
     CardPageId = "ZM BCD Travel Invoice Header";
     Editable = false;
     InsertAllowed = false;
@@ -130,29 +131,39 @@ page 17416 "ZM BCD Travel Invoice Headers"
                     end;
 
                 }
-                action(Employee)
-                {
-                    ApplicationArea = all;
-                    Caption = 'Employee', comment = 'ESP="Empleado"';
-                    Image = Employee;
-                    Promoted = true;
-                    PromotedCategory = Category4;
+            }
+        }
+        area(Navigation)
+        {
+            action(Employee)
+            {
+                ApplicationArea = all;
+                Caption = 'Employee', comment = 'ESP="Empleado"';
+                Image = Employee;
+                Promoted = true;
+                PromotedCategory = Category4;
 
-                    trigger OnAction()
-                    var
-                        Employee: Record Employee;
-                        BCDTravelEmpleado: Record "ZM BCD Travel Empleado";
-                        EmployeeCard: page "Employee Card";
-                    begin
-                        BCDTravelEmpleado.SetRange(Codigo, Rec."Cod Empleado");
-                        if BCDTravelEmpleado.FindFirst() then begin
-                            Employee.SetRange("No.", BCDTravelEmpleado."Employee Code");
-                            EmployeeCard.SetTableView(Employee);
-                            EmployeeCard.Run();
-                        end else
-                            Page.Run(page::"ZM BCD Travel Empleado");
-                    end;
-                }
+                trigger OnAction()
+                var
+                    Employee: Record Employee;
+                    BCDTravelEmpleado: Record "ZM BCD Travel Empleado";
+                    EmployeeCard: page "Employee Card";
+                begin
+                    BCDTravelEmpleado.SetRange(Codigo, Rec."Cod Empleado");
+                    if BCDTravelEmpleado.FindFirst() then begin
+                        Employee.SetRange("No.", BCDTravelEmpleado."Employee Code");
+                        EmployeeCard.SetTableView(Employee);
+                        EmployeeCard.Run();
+                    end else
+                        Page.Run(page::"ZM BCD Travel Empleado");
+                end;
+            }
+            action(TipoServicio)
+            {
+                ApplicationArea = all;
+                Caption = 'Tipo Servicio Proyecto', comment = 'ESP="Tipo Servicio Proyecto"';
+                Image = JobResponsibility;
+                RunObject = page "ZM BCD Travel Proyecto";
             }
         }
     }

@@ -847,6 +847,13 @@ codeunit 50104 "Zummo Inn. IC Functions"
             ExcelBuffer.SetRange("Column No.", 9);
             if ExcelBuffer.FindSet() then
                 NroAlbaran := ExcelBuffer."Cell Value as Text";
+            // controlamos si la linea no tiene numero de albaran, cogemos la columna numero de billete
+            if NroAlbaran = '?' then begin
+                ExcelBuffer.SetRange("Row No.", i);
+                ExcelBuffer.SetRange("Column No.", 17);
+                if ExcelBuffer.FindSet() then
+                    NroAlbaran := ExcelBuffer."Cell Value as Text";
+            end;
             Window.Update(1, NroAlbaran);
             if NroAlbaran <> '' then begin
                 if OldAlbaran <> NroAlbaran then begin
@@ -907,6 +914,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         ExcelBuffer.SetRange("Row No.", RowNo);
         BCDTravelHdr.Init();
         BCDTravelHdr."Nro_Albarán" := NroAlbaran;
+
         ExcelBuffer.SetRange("Column No.", 10);
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
@@ -914,7 +922,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Evaluate(Month, copystr(ValueText, 4, 2));
         Evaluate(Year, copystr(ValueText, 7, 4));
         BCDTravelHdr."Fecha Albarán" := DMY2Date(Day, Month, Year);
-        ExcelBuffer.SetRange("Column No.", 27);
+        ExcelBuffer.SetRange("Column No.", 19);
         if ExcelBuffer.FindSet() then
             ValueText := ExcelBuffer."Cell Value as Text";
         BCDTravelHdr."Descripcion" := copystr(ValueText, 1, MaxStrLen(BCDTravelHdr.Descripcion));
@@ -1147,6 +1155,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         BCDTravelLine.SetRange("Nro_Albarán", BCDTravelHeader."Nro_Albarán");
         if BCDTravelLine.FindFirst() then
             repeat
+                GetProyectoNroAlbaran(BCDTravelLine);
+
                 GetEmployeeDimensionsValue(BCDTravelLine);
 
                 DimensionValue := GetBCDTravelLineCECO(BCDTravelHeader, BCDTravelLine);
@@ -1280,33 +1290,44 @@ codeunit 50104 "Zummo Inn. IC Functions"
     end;
 
     local procedure GetBCDTravelLineCECO(BCDTravelHeader: record "ZM BCD Travel Invoice Header"; BCDTravelLine: record "ZM BCD Travel Invoice Line"): code[50]
+    var
+        lblEmpty: Label 'Albarán Nº %1 la Dimensión %2 debe tener asignado un valor', comment = 'ESP="Albarán Nº %1 la Dimensión %2 debe tener asignado un valor"';
     begin
         if BCDTravelHeader."Global Dimension 1 code Fair" <> '' then
             exit(BCDTravelHeader."Global Dimension 1 code Fair");
-        BCDTravelLine.TestField("Cod. Centro Coste");
+        if BCDTravelLine."Cod. Centro Coste" = '' then
+            Message(lblEmpty, BCDTravelLine."Nro_Albarán", BCDTravelLine.FieldCaption("Cod. Centro Coste"));
         exit(BCDTravelLine."Cod. Centro Coste");
     end;
 
     local procedure GetBCDTravelLineProyecto(BCDTravelHeader: record "ZM BCD Travel Invoice Header"; BCDTravelLine: record "ZM BCD Travel Invoice Line"): code[50]
+    var
+        lblEmpty: Label 'Albarán Nº %1 la Dimensión %2 debe tener asignado un valor', comment = 'ESP="Albarán Nº %1 la Dimensión %2 debe tener asignado un valor"';
     begin
-        BCDTravelLine.CalcFields(Proyecto);
-        BCDTravelLine.TestField(Proyecto);
+        if BCDTravelLine.Proyecto = '' then
+            Message(lblEmpty, BCDTravelLine."Nro_Albarán", BCDTravelLine.FieldCaption(Proyecto));
         exit(BCDTravelLine.Proyecto);
     end;
 
     local procedure GetBCDTravelLinePartida(BCDTravelHeader: record "ZM BCD Travel Invoice Header"; BCDTravelLine: record "ZM BCD Travel Invoice Line"): code[50]
+    var
+        lblEmpty: Label 'Albarán Nº %1 la Dimensión %2 debe tener asignado un valor', comment = 'ESP="Albarán Nº %1 la Dimensión %2 debe tener asignado un valor"';
     begin
         if BCDTravelHeader."Dimension Partida Fair" <> '' then
             exit(BCDTravelHeader."Dimension Partida Fair");
-        BCDTravelLine.TestField(Partida);
+        if BCDTravelLine.Partida = '' then
+            Message(lblEmpty, BCDTravelLine."Nro_Albarán", BCDTravelLine.FieldCaption(Partida));
         exit(BCDTravelLine.Partida);
     end;
 
     local procedure GetBCDTravelLineDetalle(BCDTravelHeader: record "ZM BCD Travel Invoice Header"; BCDTravelLine: record "ZM BCD Travel Invoice Line"): code[50]
+    var
+        lblEmpty: Label 'Albarán Nº %1 la Dimensión %2 debe tener asignado un valor', comment = 'ESP="Albarán Nº %1 la Dimensión %2 debe tener asignado un valor"';
     begin
         if BCDTravelHeader."Dimension Detalle Fair" <> '' then
             exit(BCDTravelHeader."Dimension Detalle Fair");
-        BCDTravelLine.TestField(Detalle);
+        if BCDTravelLine.Detalle = '' then
+            Message(lblEmpty, BCDTravelLine."Nro_Albarán", BCDTravelLine.FieldCaption(Detalle));
         exit(BCDTravelLine.Detalle);
     end;
 
@@ -1335,6 +1356,37 @@ codeunit 50104 "Zummo Inn. IC Functions"
         BCDTravelEmpleado.TestField("Employee Code");
         GetEmployeeDimensionsValue(BCDTravelLine);
 
+    end;
+
+    local procedure GetProyectoNroAlbaran(var BCDTravelLine: record "ZM BCD Travel Invoice Line")
+    var
+        BCDTravelProyecto: record "ZM BCD Travel Proyecto";
+        BCDTravelLine2: record "ZM BCD Travel Invoice Line";
+        CodProyecto: code[20];
+    begin
+        BCDTravelLine2.SetRange("Nro_Albarán", BCDTravelLine."Nro_Albarán");
+        BCDTravelLine2.SetRange("Nº Billete o Bono", BCDTravelLine."Nº Billete o Bono");
+        if BCDTravelLine2.FindFirst() then
+            repeat
+                if BCDTravelProyecto.Get(BCDTravelLine2."Tipo Servicio") then
+                    CodProyecto := BCDTravelProyecto.Proyecto;
+            Until BCDTravelLine2.next() = 0;
+        if CodProyecto <> '' then begin
+            BCDTravelLine2.SetRange("Nro_Albarán", BCDTravelLine."Nro_Albarán");
+            BCDTravelLine2.SetRange("Nº Billete o Bono", BCDTravelLine."Nº Billete o Bono");
+            if BCDTravelLine2.FindFirst() then
+                repeat
+                    if (BCDTravelLine2."Nro_Albarán" <> BCDTravelLine."Nro_Albarán") and
+                        (BCDTravelLine2."Line No." <> BCDTravelLine."Line No.") then begin
+                        BCDTravelLine2.Proyecto := CodProyecto;
+                        BCDTravelLine2.Modify();
+                    end;
+                Until BCDTravelLine2.next() = 0;
+            if BCDTravelLine.Proyecto = '' then begin
+                BCDTravelLine.Proyecto := CodProyecto;
+                BCDTravelLine.Modify();
+            end;
+        end;
     end;
 
     procedure GetEmployeeDimensionsValue(var BCDTravelLine: record "ZM BCD Travel Invoice Line")

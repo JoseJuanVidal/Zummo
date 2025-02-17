@@ -132,6 +132,9 @@ table 17414 "ZM BCD Travel Invoice Header"
         {
             Clustered = true;
         }
+        key(Key1; "Fecha Albarán", "Nro_Albarán")
+        {
+        }
     }
 
     var

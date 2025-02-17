@@ -13951,6 +13951,30 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CrearPedidoCompraDesdeBCDTravel - NamedType lblCreate</note>
           <target>Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 1451124401 - NamedType 1583360673" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Albarán Nº %1 la Dimensión %2 debe tener asignado un valor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetBCDTravelLineCECO - NamedType lblEmpty</note>
+          <target>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2649217344 - NamedType 1583360673" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Albarán Nº %1 la Dimensión %2 debe tener asignado un valor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetBCDTravelLineDetalle - NamedType lblEmpty</note>
+          <target>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2006615234 - NamedType 1583360673" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Albarán Nº %1 la Dimensión %2 debe tener asignado un valor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetBCDTravelLinePartida - NamedType lblEmpty</note>
+          <target>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 827405608 - NamedType 1583360673" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Albarán Nº %1 la Dimensión %2 debe tener asignado un valor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetBCDTravelLineProyecto - NamedType lblEmpty</note>
+          <target>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</target>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3674950453 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
           <source>SELECT count(*) FROM tBIFinan_PresupuestoFinanzas WHERE [00 - Origen] ='%1'</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -20620,6 +20644,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Method OnCreatePurchaseHeaderReceipt - NamedType lblConfirm</note>
           <target>¿Desea crear el pedido de compra y albaranes de %1 líneas seleccionadas?</target>
         </trans-unit>
+        <trans-unit id="Page 3606076577 - Action 1498446062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action Employee - Property Caption</note>
+          <target>Empleado</target>
+        </trans-unit>
+        <trans-unit id="Page 3606076577 - Action 43369312 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo Servicio - Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Servicio - Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action TipoServicio - Property Caption</note>
+          <target>Tipo Servicio - Proyecto</target>
+        </trans-unit>
         <trans-unit id="Page 3606076577 - Action 3546827530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Check Dimensions</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comprobar Dimensiones"</note>
@@ -20643,12 +20679,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Crear Recepciones Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action CreatePurchaseHeaderReceipt - Property Caption</note>
           <target>Crear Recepciones Compra</target>
-        </trans-unit>
-        <trans-unit id="Page 3606076577 - Action 1498446062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Employee</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Empleado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action Employee - Property Caption</note>
-          <target>Empleado</target>
         </trans-unit>
         <trans-unit id="Page 2736769586 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CONSULTIA BCD Travel Lines</source>
@@ -20691,6 +20721,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Abrir Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Posted Inv Head. - Action Close - Property Caption</note>
           <target>Abrir Factura</target>
+        </trans-unit>
+        <trans-unit id="Page 1437620789 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BCD Travel Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BCD Travel Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Proyecto - Property Caption</note>
+          <target>BCD Travel Proyecto</target>
         </trans-unit>
         <trans-unit id="Page 3915894589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BOM Componente</source>
