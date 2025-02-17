@@ -22,29 +22,29 @@ report 50119 "Service Mgt. Warranty"
                 // si se elige un mes, ponemos el filtro del mes del año actual                
                 case Mes of
                     Mes::Enero:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 01, Date2DMY(workdate, 3)), DMY2Date(31, 01, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 01)), CALCDATE('<CM>', DMY2DATE(01, 01)));
                     Mes::Febrero:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 02, Date2DMY(workdate, 3)), DMY2Date(30, 02, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 02)), CALCDATE('<CM>', DMY2DATE(01, 02)));
                     Mes::Marzo:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 03, Date2DMY(workdate, 3)), DMY2Date(31, 03, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 03)), CALCDATE('<CM>', DMY2DATE(01, 03)));
                     Mes::Abril:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 04, Date2DMY(workdate, 3)), DMY2Date(30, 04, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 04)), CALCDATE('<CM>', DMY2DATE(01, 04)));
                     Mes::Mayo:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 05, Date2DMY(workdate, 3)), DMY2Date(31, 05, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 05)), CALCDATE('<CM>', DMY2DATE(01, 05)));
                     Mes::Junio:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 06, Date2DMY(workdate, 3)), DMY2Date(30, 06, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 06)), CALCDATE('<CM>', DMY2DATE(01, 06)));
                     Mes::Julio:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 07, Date2DMY(workdate, 3)), DMY2Date(31, 07, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 07)), CALCDATE('<CM>', DMY2DATE(01, 07)));
                     Mes::Agosto:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 08, Date2DMY(workdate, 3)), DMY2Date(31, 08, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 08)), CALCDATE('<CM>', DMY2DATE(01, 08)));
                     Mes::Septiembre:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 09, Date2DMY(workdate, 3)), DMY2Date(30, 09, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 09)), CALCDATE('<CM>', DMY2DATE(01, 09)));
                     Mes::Octubre:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 10, Date2DMY(workdate, 3)), DMY2Date(31, 10, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 10)), CALCDATE('<CM>', DMY2DATE(01, 10)));
                     Mes::Noviembre:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 11, Date2DMY(workdate, 3)), DMY2Date(30, 11, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 11)), CALCDATE('<CM>', DMY2DATE(01, 11)));
                     Mes::Diciembre:
-                        SetRange(FechaMantGarantia_sth, DMY2Date(01, 12, Date2DMY(workdate, 3)), DMY2Date(31, 12, Date2DMY(workdate, 3)));
+                        SetRange(FechaMantGarantia_sth, CALCDATE('<-CM>', DMY2DATE(01, 12)), CALCDATE('<CM>', DMY2DATE(01, 12)));
 
                 end
             end;
@@ -53,7 +53,6 @@ report 50119 "Service Mgt. Warranty"
             begin
                 CreateServiceOrder("Service Item");
             end;
-
         }
     }
 
@@ -95,12 +94,12 @@ report 50119 "Service Mgt. Warranty"
 
     trigger OnPostReport()
     begin
-        if NoService > 0 then
-            Message(Text001, NoService, ServiceNo);
+        Message(Text001, NoService, ServiceNo);
     end;
 
     var
         ServiceSetup: record "Service Mgt. Setup";
+        ServiceOrdersCreate: Integer;
         NoService: Integer;
         ServiceNo: code[20];
         Mes: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre;
@@ -121,6 +120,7 @@ report 50119 "Service Mgt. Warranty"
         ServiceHeader."Operation Description" := lblWarranty;
         ServiceHeader.IsWarranty := true;
         ServiceHeader.Modify(true);
+        UpdateExtensionField(ServiceHeader);
         ServiceItemLine.Init();
         ServiceItemLine."Document Type" := ServiceHeader."Document Type";
         ServiceItemLine."Document No." := ServiceHeader."No.";
@@ -132,5 +132,18 @@ report 50119 "Service Mgt. Warranty"
         NoService += 1;
         if ServiceNo = '' then
             ServiceNo := ServiceHeader."No.";
+    end;
+
+    local procedure UpdateExtensionField(ServiceHeader: Record "Service Header")
+    var
+        RefRecord: RecordRef;
+        RefField: FieldRef;
+    begin
+        RefRecord.GetTable(ServiceHeader);
+        if RefRecord.FieldExist(50680) then begin
+            RefField := RefRecord.field(50680); // Servicio proveedor
+            RefField.Value := False;
+            RefRecord.Modify();
+        end;
     end;
 }
