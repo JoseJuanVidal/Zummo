@@ -857,11 +857,13 @@ codeunit 50104 "Zummo Inn. IC Functions"
             Window.Update(1, NroAlbaran);
             if NroAlbaran <> '' then begin
                 if OldAlbaran <> NroAlbaran then begin
-                    // cerramos el albaran y Dimension proyecto los ponemos igual que el servicio
-                    UpdateProyectoNroalbaran(OldAlbaran);
+                    if OldAlbaran <> '' then
+                        // cerramos el albaran y Dimension proyecto los ponemos igual que el servicio
+                        UpdateProyectoNroalbaran(OldAlbaran);
 
                     OldAlbaran := NroAlbaran;
                     LineNo := 0;
+
                 end;
                 LineNo += 10000;
                 UpdateBCDTravelHdr(ExcelBuffer, NroAlbaran, i, LineNo);
@@ -896,10 +898,13 @@ codeunit 50104 "Zummo Inn. IC Functions"
     local procedure UpdateBCDTravelHdr(var ExcelBuffer: Record "Excel Buffer" temporary; NroAlbaran: code[20]; RowNo: Integer; LineNo: Integer)
     var
         BCDTravelHdr: record "ZM BCD Travel Invoice Header";
+        BCDTravelLine: record "ZM BCD Travel Invoice Line";
     begin
         if not BCDTravelHdr.Get(NroAlbaran) then
             CreateBCDTravelHdr(ExcelBuffer, NroAlbaran, RowNo);
-        CreateBCDTravelLine(ExcelBuffer, NroAlbaran, RowNo, LineNo);
+        if not BCDTravelLine.Get(NroAlbaran, lineNo) then
+            CreateBCDTravelLine(ExcelBuffer, NroAlbaran, RowNo, LineNo);
+
     end;
 
     local procedure CreateBCDTravelHdr(var ExcelBuffer: Record "Excel Buffer" temporary; NroAlbaran: code[20]; RowNo: Integer)
@@ -1050,6 +1055,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseSetup: record "Purchases & Payables Setup";
         BCDTravelLine: record "ZM BCD Travel Invoice Line";
         PurchaseHeader: record "Purchase Header";
+        PurchaseLine: Record "Purchase Line";
         PurchRcptHeader: record "Purch. Rcpt. Header";
         PurchPost: Codeunit "Purch.-Post";
         LineNo: Integer;
@@ -1081,7 +1087,20 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
         PurchaseHeader.Receive := true;
         PurchaseHeader.Invoice := false;
-        PurchPost.Run(PurchaseHeader);
+        // aqui registramos albaran a albaran, para que asi podamos poner numero de albaran proveedor en cada linea de servicio
+        if BCDTravelInvoiceHeader.FindFirst() then
+            repeat
+                PurchaseHeader."Vendor Shipment No." := BCDTravelInvoiceHeader."Nro_Albarán";
+                PurchaseHeader.Modify();
+                PurchaseLine.Reset();
+                PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
+                PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
+                PurchaseLine.ModifyAll("Qty. to Receive", 0);
+                PurchaseLine.SetRange(IdCorp_Sol, BCDTravelInvoiceHeader."Nro_Albarán");
+                PurchaseLine.ModifyAll("Qty. to Receive", 1);
+                PurchPost.Run(PurchaseHeader);
+            Until BCDTravelInvoiceHeader.next() = 0;
+        // - registro por numero de albaran
         PurchRcptHeader.SetRange("Order No.", PurchaseHeader."No.");
         if PurchRcptHeader.FindFirst() then begin
             BCDTravelInvoiceHeader.SetRange("Purchase Order", PurchaseHeader."No.");
@@ -1215,7 +1234,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseLine.Validate("VAT Prod. Posting Group", GetVATProdPostingGroup(BCDTravelLine, PurchaseHeader));
         PurchaseLine.Validate("Direct Unit Cost", BCDTravelLine."Imp Base Imponible");
         PurchaseLine.Validate("Shortcut Dimension 1 Code", BCDTravelLine."Cod. Centro Coste");
-        // PurchaseLine.IdCorp_Sol := CONSULTIAInvoiceLine.IdCorp_Sol;
+        PurchaseLine.IdCorp_Sol := BCDTravelLine."Nro_Albarán";
         PurchaseLine.Validate("Qty. to Receive", PurchaseLine.Quantity);
         PurchaseLine.Modify();
         BCDTravelSetPurchaseLineDimensiones(BCDTravelLine, PurchaseLine);

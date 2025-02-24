@@ -1540,6 +1540,7 @@ codeunit 50101 "Eventos_btc"
     begin
         // comprobamos que con ese numero de documento, no existan otros movimientos
         InputDate.LookupMode := true;
+        InputDate.SetNotWorkdate();
         if InputDate.RunModal() = Action::LookupOK then begin
             ChangeDate := InputDate.GetFecha();
             if ChangeDate = 0D then

@@ -152,6 +152,7 @@ table 17414 "ZM BCD Travel Invoice Header"
 
     trigger OnDelete()
     begin
+        Rec.TestField("Receipt created", false);
         DeleteRelationsTable();
     end;
 
