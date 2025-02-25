@@ -289,7 +289,8 @@ table 17200 "Purchase Requests less 200"
     local procedure OnValidate_VendorNo()
     begin
         Vendor.Reset();
-        Vendor.Get(Rec."Vendor No.");
+        if not Vendor.Get(Rec."Vendor No.") then
+            exit;
         if Vendor.Blocked in [Vendor.Blocked::All] then
             Error(lblErrorBlocked, Rec."Vendor No.", Vendor.Blocked);
         // actualizamos datos
