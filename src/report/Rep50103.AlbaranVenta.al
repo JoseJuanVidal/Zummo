@@ -743,7 +743,7 @@ report 50103 "AlbaranVenta"
 
                 SalesHeader.reset;
                 SalesHeader.SetRange("No.", "Sales Shipment Header"."Order No.");
-                SalesHeader.FindFirst();
+                if SalesHeader.FindFirst() then;
                 commit;
                 WorkDescprion := SalesHeader.GetWorkDescription();
 
