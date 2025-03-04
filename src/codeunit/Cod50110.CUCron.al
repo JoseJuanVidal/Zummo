@@ -1545,7 +1545,7 @@ codeunit 50110 "CU_Cron"
     begin
         GLSetup.Get();
 
-        if not (Today < CalcDate('-2D', GLSetup."Allow Posting To")) then
+        if (Today < CalcDate('-2D', GLSetup."Allow Posting To")) then
             exit;
 
         Recipients := GetRecipientsGLSetup(GLSetupOnly::GLSetup);
