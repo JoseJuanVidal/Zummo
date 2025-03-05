@@ -77,5 +77,25 @@ tableextension 50002 "STH Sales prices Ext" extends "Sales price"  //7002
             FieldClass = FlowField;
             CalcFormula = lookup(TextosAuxiliares.Descripcion where(TipoRegistro = const(Tabla), TipoTabla = const(LineaEconomica), NumReg = field(selLineaEconomica_btc)));
         }
+        field(50030; DescriptionLanguage; text[100])
+        {
+            Caption = 'Desc. Idioma', comment = 'ESP="Desc. Idiom"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Item Translation".Description where("Item No." = field("Item No."), "Language Code" = field(FilterLanguage)));
+        }
+        field(50040; ItemDescription; text[100])
+        {
+            Caption = 'Desc. Producto', comment = 'ESP="Desc. Producto"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item.Description where("No." = field("Item No.")));
+        }
+        field(50050; FilterLanguage; code[10])
+        {
+            Caption = 'Filtro Idioma', comment = 'ESP="Filtro. Idioma"';
+            TableRelation = Language;
+            FieldClass = FlowFilter;
+        }
     }
 }

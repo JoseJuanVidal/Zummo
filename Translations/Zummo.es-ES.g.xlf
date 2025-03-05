@@ -20280,12 +20280,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemCostingMethod - Property Caption</note>
           <target>Valoración Existencias</target>
         </trans-unit>
-        <trans-unit id="Page 3113805797 - Control 1458141688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nombre producto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nombre producto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemDesc - Property Caption</note>
-          <target>Nombre producto</target>
-        </trans-unit>
         <trans-unit id="Page 3113805797 - Control 16404887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Coste Estandar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste Estandar"</note>
@@ -20297,6 +20291,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Coste Unitario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemUnitCost - Property Caption</note>
           <target>Coste Unitario</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 4093990710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Language</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control Language - Property Caption</note>
+          <target>Idioma</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 621861288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Language Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control Laguage - Property Caption</note>
+          <target>Cód. Idioma</target>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Action 4044637255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CDS</source>
@@ -20651,10 +20657,10 @@
           <target>Empleado</target>
         </trans-unit>
         <trans-unit id="Page 3606076577 - Action 43369312 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tipo Servicio - Proyecto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo Servicio - Proyecto"</note>
+          <source>Tipo Servicio Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Servicio Proyecto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BCD Travel Invoice Headers - Action TipoServicio - Property Caption</note>
-          <target>Tipo Servicio - Proyecto</target>
+          <target>Tipo Servicio Proyecto</target>
         </trans-unit>
         <trans-unit id="Page 3606076577 - Action 3546827530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Check Dimensions</source>
@@ -41170,6 +41176,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field desClasVtas_btc - Property Caption</note>
           <target>Desc. Clasificación Ventas</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 1143883000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Desc. Idioma</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Idiom"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field DescriptionLanguage - Property Caption</note>
+          <target>Desc. Idiom</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2869752476 - Field 304493673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
           <source>Desc. Familia</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Familia"</note>
@@ -41187,6 +41199,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field desLineaEconomica_btc - Property Caption</note>
           <target>Desc. Linea Economica</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 2464504062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Filtro Idioma</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro. Idioma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field FilterLanguage - Property Caption</note>
+          <target>Filtro. Idioma</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2869752476 - Field 4112877437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
+          <source>Desc. Producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Sales prices Ext - Field ItemDescription - Property Caption</note>
+          <target>Desc. Producto</target>
         </trans-unit>
         <trans-unit id="TableExtension 2869752476 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
           <source>Sales Classification</source>

@@ -1,6 +1,6 @@
 page 50010 "Tarifas Precios"
 {
-    PageType = List;
+    PageType = Worksheet;
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Sales Price";
@@ -9,16 +9,34 @@ page 50010 "Tarifas Precios"
     {
         area(Content)
         {
+            group(Language)
+            {
+                Caption = 'Language', comment = 'ESP="Idioma"';
+                field(Laguage; Laguage)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Language Code', comment = 'ESP="Cód. Idioma"';
+                    TableRelation = Language;
+                    trigger OnValidate()
+                    begin
+                        Rec.SetRange(FilterLanguage, Laguage);
+                    end;
+                }
+            }
             repeater(General)
             {
                 field("Item No."; Rec."Item No.")
                 {
                     ApplicationArea = All;
                 }
-                field(ItemDesc; Item.Description)
+                field(ItemDescription; ItemDescription)
                 {
                     ApplicationArea = all;
-                    Caption = 'Nombre producto', comment = 'ESP="Nombre producto"';
+                }
+                field(DescriptionLanguage; DescriptionLanguage)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Sales Type"; "Sales Type")
                 {
@@ -308,6 +326,7 @@ page 50010 "Tarifas Precios"
         Item: Record Item;
         CRMIntegrationManagement: Codeunit "CRM Integration Management";
         CRMCouplingManagement: Codeunit "CRM Coupling Management";
+        Laguage: code[10];
         CDSIntegrationEnabled: Boolean;
         CDSIsCoupledToRecord: Boolean;
 
