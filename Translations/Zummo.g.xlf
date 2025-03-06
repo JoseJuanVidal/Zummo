@@ -19308,6 +19308,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 489504416 - Method 701511701 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El registro anterior no está correctamente grabado.\Rellene primero los datos obligados</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El registro anterior no está correctamente grabado.\Rellene primero los datos obligados."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Method DocNo_DrillDown - NamedType lblError</note>
+        </trans-unit>
         <trans-unit id="Page 489504416 - Control 3324780168 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the number of attachments.</source>
           <note from="Developer" annotates="general" priority="2"></note>

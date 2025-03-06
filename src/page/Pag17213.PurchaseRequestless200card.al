@@ -29,6 +29,11 @@ page 17213 "Purchase Request less 200 Card"
                 field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = all;
+
+                    trigger OnValidate()
+                    begin
+                        UpdateSubform();
+                    end;
                 }
                 field("Codigo Empleado"; "Codigo Empleado")
                 {
@@ -71,7 +76,7 @@ page 17213 "Purchase Request less 200 Card"
                     {
                         ApplicationArea = all;
                     }
-                    field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                    field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                     {
                         ApplicationArea = all;
                     }
@@ -223,6 +228,16 @@ page 17213 "Purchase Request less 200 Card"
         }
     }
 
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        UpdateSubForm();
+    end;
+
+    trigger OnModifyRecord(): Boolean
+    begin
+        UpdateSubForm();
+    end;
+
     trigger OnOpenPage()
     begin
         ShowApprovalButton := Rec.IsUserApproval();
@@ -238,9 +253,12 @@ page 17213 "Purchase Request less 200 Card"
     begin
         // al salir de la pantalla si no ha enviado la aprobación, se lo recordamos 
         // y enviamos
+        if (Rec.Amount = 0) or (Rec."G/L Account No." = '') or
+            (Rec.Description = '') or (Rec."Vendor Name" = '') then
+            exit;
         if (Rec.Status in [Rec.Status::" "]) and (Rec."No." <> '') then
             if Confirm(lblConfirmSend) then
-                SendEmailApproval();
+                Rec.SendEmailApproval();
 
     end;
 

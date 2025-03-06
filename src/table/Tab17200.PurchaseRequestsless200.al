@@ -368,6 +368,7 @@ table 17200 "Purchase Requests less 200"
         Rec.TestField(Type);
         Rec.TestField("G/L Account No.");
         Rec.TestField(Description);
+        Rec.TestField("Vendor Name");
         Rec.TestField(Amount);
         case Rec.Type of
             Rec.Type::"G/L Account":

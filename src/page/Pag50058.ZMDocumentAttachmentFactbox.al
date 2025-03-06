@@ -42,7 +42,10 @@ page 50058 "ZM Document Attachment Factbox"
     var
         DocumentAttachment: Record "Document Attachment";
         DocumentAttachmentDetails: Page "Document Attachment Details";
+        lblError: Label 'El registro anterior no está correctamente grabado.\Rellene primero los datos obligados', comment = 'ESP="El registro anterior no está correctamente grabado.\Rellene primero los datos obligados."';
     begin
+        if (cNo = '') or (iTableID = 0) then
+            Error(lblError);
         DocumentAttachment.SetRange("Table ID", iTableID);
         DocumentAttachment.SetRange("No.", cNo);
         DocumentAttachment.SetRange("Line No.", LineNo);
@@ -69,6 +72,10 @@ page 50058 "ZM Document Attachment Factbox"
         cNo := pNo;
         LineNo := vLineNo;
         RecRef := RefRecord;
+        Rec.SetRange("Table ID", iTableID);
+        Rec.SetRange("No.", cNo);
+        Rec.SetRange("Line No.", LineNo);
+        CurrPage.Update();
     end;
 
     procedure SetProdTools_RecordRef(ZMProductiónTools: Record "ZM Productión Tools")
