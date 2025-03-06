@@ -81,37 +81,37 @@ report 50129 "PedidoTransferenciaRegistrado"
                     column(TransferFromAddr1; "Transfer Receipt Header"."Transfer-from Name")
                     {
                     }
-                    column(TransferToAddr2; "Transfer Receipt Header"."Transfer-to Code")
+                    column(TransferToAddr2; TransferToAddr[2]) // "Transfer Receipt Header"."Transfer-to Code")
                     {
                     }
                     column(TransferFromAddr2; "Transfer Receipt Header"."Transfer-from Code")
                     {
                     }
-                    column(TransferToAddr3; "Transfer Receipt Header"."Transfer-to Address")
+                    column(TransferToAddr3; TransferToAddr[3]) // "Transfer Receipt Header"."Transfer-to Address")
                     {
                     }
                     column(TransferFromAddr3; "Transfer Receipt Header"."Transfer-from Address")
                     {
                     }
-                    column(TransferToAddr4; "Transfer Receipt Header"."Transfer-to City")
+                    column(TransferToAddr4; TransferToAddr[4]) // "Transfer Receipt Header"."Transfer-to City")
                     {
                     }
                     column(TransferFromAddr4; "Transfer Receipt Header"."Transfer-from City")
                     {
                     }
-                    column(TransferToAddr5; "Transfer Receipt Header"."Transfer-to County")
+                    column(TransferToAddr5; TransferToAddr[5]) // "Transfer Receipt Header"."Transfer-to County")
                     {
                     }
                     column(TransferFromAddr5; "Transfer Receipt Header"."Transfer-from County")
                     {
                     }
-                    column(TransferToAddr6; "Transfer Receipt Header"."Trsf.-to Country/Region Code")
+                    column(TransferToAddr6; TransferToAddr[6]) // "Transfer Receipt Header"."Trsf.-to Country/Region Code")
                     {
                     }
                     column(TransferfromAddr6; "Transfer Receipt Header"."Trsf.-from Country/Region Code")
                     {
                     }
-                    column(TransferToAddr9; "Transfer Receipt Header"."Transfer-to Post Code")
+                    column(TransferToAddr9; TransferToAddr[8]) // "Transfer Receipt Header"."Transfer-to Post Code")
                     {
                     }
                     column(TransferfromAddr9; "Transfer Receipt Header"."Transfer-from Post Code")
@@ -366,6 +366,9 @@ report 50129 "PedidoTransferenciaRegistrado"
 
                 if optIdioma <> optIdioma::" " then
                     CurrReport.LANGUAGE := Language.GetLanguageID(format(optIdioma));
+
+                FormatAddr.TransferRcptTransferFrom(TransferFromAddr, "Transfer Receipt Header");
+                FormatAddr.TransferRcptTransferTo(TransferToAddr, "Transfer Receipt Header");
 
                 CodCliente := '';
 
