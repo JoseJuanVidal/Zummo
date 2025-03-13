@@ -6,7 +6,7 @@ tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
         {
             Caption = 'Purch. Request less 200', Comment = 'ESP="Compra menor 200"';
             DataClassification = CustomerContent;
-            TableRelation = "Purchase Requests less 200" where(Status = const(Approved), Type = filter("Fixed Asset" | "G/L Account"));
+            TableRelation = "Purchase Requests less 200" where(Status = const(Approved));
 
             trigger OnValidate()
             begin
