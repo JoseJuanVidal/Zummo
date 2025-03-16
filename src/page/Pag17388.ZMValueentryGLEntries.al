@@ -5,6 +5,7 @@ page 17388 "ZM Value entry - G/L Entries"
     PageType = List;
     SourceTable = "ZM Value entry - G/L Entry";
     UsageCategory = Lists;
+    Editable = false;
 
     layout
     {
@@ -264,23 +265,41 @@ page 17388 "ZM Value entry - G/L Entries"
                 {
                     ApplicationArea = all;
                 }
-                field("G/L Account No."; "G/L Account No.")
+                field("Account Type"; "Account Type")
                 {
                     ApplicationArea = all;
                 }
-                field("G/L Posting Date"; "G/L Posting Date")
+                field("Amount G/L"; "Amount G/L")
                 {
                     ApplicationArea = all;
                 }
-                field(Amount; Amount)
+                field("Amount G/L (ACY)"; "Amount G/L (ACY)")
                 {
                     ApplicationArea = all;
                 }
-                field("Debit Amount"; "Debit Amount")
+                field("Interim Account"; "Interim Account")
                 {
                     ApplicationArea = all;
                 }
-                field("Credit Amount"; "Credit Amount")
+                field("Account No."; "Account No.")
+                {
+                    ApplicationArea = all;
+                }
+                field(postingDate; "Posting Date")
+
+                {
+                    ApplicationArea = all;
+                }
+                field(Negative; "Negative")
+                {
+                    ApplicationArea = all;
+                }
+                field("Bal. Account Type"; "Bal. Account Type")
+
+                {
+                    ApplicationArea = all;
+                }
+                field("Job No."; "Job No.")
                 {
                     ApplicationArea = all;
                 }
@@ -304,7 +323,7 @@ page 17388 "ZM Value entry - G/L Entries"
                     lblConfirm: Label '¿Desea actualizar los movimientos de Costes?', comment = 'ESP="¿Desea actualizar los movimientos de Costes?"';
                 begin
                     if Confirm(lblConfirm) then
-                        Rec.UpdateEntries();
+                        Rec.UpdateEntries(0, Rec.GetFilter("Posting Date"));
                 end;
             }
         }

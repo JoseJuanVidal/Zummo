@@ -10,4 +10,22 @@ pageextension 50085 "ZM Ext Value Entries" extends "Value Entries"
             }
         }
     }
+    actions
+    {
+        addafter("&Navigate")
+        {
+
+            action(CostesGL)
+            {
+                ApplicationArea = all;
+                trigger OnAction()
+                var
+                    ValueEntryCoste: record "ZM Value entry - G/L Entry";
+                begin
+                    ValueEntryCoste.UpdateEntries(Rec."Entry No.", '');
+                    page.Run(page::"ZM Value entry - G/L Entries");
+                end;
+            }
+        }
+    }
 }

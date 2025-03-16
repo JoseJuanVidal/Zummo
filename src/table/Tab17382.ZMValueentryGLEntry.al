@@ -21,7 +21,8 @@ table 17382 "ZM Value entry - G/L Entry"
         field(4; "Item Ledger Entry Type"; Option)
         {
             Caption = 'Item Ledger Entry Type', Comment = 'ESP="Tipo mov. producto"';
-            OptionCaption = 'Purchase,Sale,Positive Adjmt.,Negative Adjmt.,Transfer,Consumption,Output, ,Assembly Consumption,Assembly Output';
+            OptionCaption = 'Purchase,Sale,Positive Adjmt.,Negative Adjmt.,Transfer,Consumption,Output, ,Assembly Consumption,Assembly Output',
+            Comment = 'ESP="Compra,Venta,Ajuste positivo,Ajuste negativo,Transferencia,Consumo,Salida desde fab., ,Consumo ensamblado,Salida ensamblado"';
             OptionMembers = Purchase,Sale,"Positive Adjmt.","Negative Adjmt.",Transfer,Consumption,Output," ","Assembly Consumption","Assembly Output";
         }
         field(6; "Document No."; Code[20])
@@ -286,42 +287,62 @@ table 17382 "ZM Value entry - G/L Entry"
             ELSE IF (Type = CONST("Work Center")) "Work Center"
             ELSE IF (Type = CONST(Resource)) Resource;
         }
-        field(50000; "G/L Entry No."; Integer)
+        field(50104; "Account Type"; Option)
         {
-            Caption = 'G/L Entry No.', comment = 'ESP="Nº Mov. contabilidad"';
+            Caption = 'Account Type', comment = 'ESP="Tipo mov."';
+            OptionCaption = 'Inventory (Interim),Invt. Accrual (Interim),Inventory,WIP Inventory,Inventory Adjmt.,Direct Cost Applied,Overhead Applied,Purchase Variance,COGS,COGS (Interim),Material Variance,Capacity Variance,Subcontracted Variance,Cap. Overhead Variance,Mfg. Overhead Variance'
+                , comment = 'ESP="Inventario (provisional),Crecimiento inventario (provisional),Inventario,Inventario WIP,Ajuste inventario,Coste directo aplicado,Coste general aplicado,Desviación de compras,Coste ventas,Coste ventas (provisional),Desviación material,Desviación capacidad,Desviación subcontratada,Cap. Desv. coste gen.,Desv. coste gen."';
+            OptionMembers = "Inventory (Interim)","Invt. Accrual (Interim)",Inventory,"WIP Inventory","Inventory Adjmt.","Direct Cost Applied","Overhead Applied","Purchase Variance",COGS,"COGS (Interim)","Material Variance","Capacity Variance","Subcontracted Variance","Cap. Overhead Variance","Mfg. Overhead Variance";
         }
 
-        field(50001; "Clasification Entry"; Option)
+        field(50105; "Amount G/L"; Decimal)
         {
-            Caption = 'Clasification Entry', comment = 'ESP="Clasificación Mov."';
-            OptionMembers = " ",Inventory,Purchase,Sales,Production,Assembly,Adjmt;
-            OptionCaption = ' ,Inventory,Purchase,Sales,Production,Assembly,Adjmt', comment = 'ESP=" ,Existencias,Compras,Ventas,Fabricación,Ensamblado,Ajustes"';
+            Caption = 'Amount', Comment = 'ESP="Importe"';
         }
-        field(50002; "G/L Account No."; code[20])
+        field(50106; "Amount G/L (ACY)"; Decimal)
         {
-            Caption = 'G/L Account No.', comment = 'ESP="Nº cuenta"';
+            Caption = 'Amount (ACY)', Comment = 'ESP="Importe (DA)"';
         }
-        field(50003; "G/L Posting Date"; date)
+        field(50107; "Interim Account"; Boolean)
         {
-            Caption = 'G/L Posting Date', comment = 'ESP="Fecha Registro contable"';
+            Caption = 'Interim Account', Comment = 'ESP="Cuenta provisional"';
         }
-        field(50004; Amount; Decimal)
+        field(50108; "Account No."; code[20])
         {
-            Caption = 'Amount', comment = 'ESP="Importe"';
+            Caption = 'Account No.', Comment = 'ESP="Nº cuenta"';
         }
-        field(50005; "Debit Amount"; Decimal)
+        field(50109; "G/L Posting Date"; date)
         {
-            Caption = 'Debit Amount', comment = 'ESP="Importe Debe"';
+            Caption = 'G/L Posting Date', Comment = 'ESP="Fecha registro Contable"';
         }
-        field(50006; "Credit Amount"; Decimal)
+        field(50112; Negative; Boolean)
         {
-            Caption = 'Credit Amount', comment = 'ESP="Importe Haber"';
+            Caption = 'Negative', Comment = 'ESP="Negativo"';
         }
+        field(50113; "G/L Entry No."; Integer)
+        {
+            Caption = 'G/L Entry No.', Comment = 'ESP="Nº mov. contable"';
+        }
+        field(50114; "Bal. Account Type"; Option)
+        {
+            Caption = 'Bal. Account Type', Comment = 'ESP="Tipo contrapartida"';
+            OptionCaption = 'Inventory (Interim),Invt. Accrual (Interim),Inventory,WIP Inventory,Inventory Adjmt.,Direct Cost Applied,Overhead Applied,Purchase Variance,COGS,COGS (Interim),Material Variance,Capacity Variance,Subcontracted Variance,Cap. Overhead Variance,Mfg. Overhead Variance'
+                , comment = 'ESP="Inventario (provisional),Crecimiento inventario (provisional),Inventario,Inventario WIP,Ajuste inventario,Coste directo aplicado,Coste general aplicado,Desviación de compras,Coste ventas,Coste ventas (provisional),Desviación material,Desviación capacidad,Desviación subcontratada,Cap. Desv. coste gen.,Desv. coste gen."';
+            OptionMembers = "Inventory (Interim)","Invt. Accrual (Interim)",Inventory,"WIP Inventory","Inventory Adjmt.","Direct Cost Applied","Overhead Applied","Purchase Variance",COGS,"COGS (Interim)","Material Variance","Capacity Variance","Subcontracted Variance","Cap. Overhead Variance","Mfg. Overhead Variance";
+
+        }
+        field(50115; "Job No."; Code[20])
+        {
+            Caption = 'Job No.', Comment = 'ESP="Nº proyecto"';
+        }
+
+
+
     }
 
     keys
     {
-        key(PK; "Value Entry No.", "G/L Entry No.", "Clasification Entry")
+        key(PK; "Value Entry No.", "G/L Entry No.", "Account No.")
         {
             Clustered = true;
         }
@@ -334,7 +355,6 @@ table 17382 "ZM Value entry - G/L Entry"
 
     var
         GLSetup: Record "General Ledger Setup";
-        GLEntry: Record "G/L Entry";
         ValueEntryGLEntry: Record "ZM Value entry - G/L Entry";
         GLSetupRead: Boolean;
 
@@ -348,10 +368,9 @@ table 17382 "ZM Value entry - G/L Entry"
     end;
 
 
-    procedure UpdateEntries()
+    procedure UpdateEntries(EntryNo: Integer; DateFilter: Text)
     var
         ValueEntry: Record "Value Entry";
-        tmpValueEntry: Record "Value Entry" temporary;
         GLItemLedgerRelation: Record "G/L - Item Ledger Relation";
         Window: Dialog;
         lblDialog: Label 'Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############', comment = 'ESP="Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############"';
@@ -360,192 +379,79 @@ table 17382 "ZM Value entry - G/L Entry"
             Window.Open(lblDialog);
         // primero mirarmos todos los movimientos de valor y si ya tienen el registro contable
         ValueEntry.Reset();
-        ValueEntry.SetRange("Updated Cost Entry", false);
+        if EntryNo <> 0 then
+            ValueEntry.SetRange("Entry No.", EntryNo);
+        // ValueEntry.SetRange("Updated Cost Entry", false);
+        if DateFilter <> '' then
+            ValueEntry.SetFilter("Posting Date", DateFilter);
         if ValueEntry.FindFirst() then
             repeat
-                if GuiAllowed then
-                    Window.Update(1, ValueEntry.TableCaption);
-                if GuiAllowed then
-                    Window.Update(2, ValueEntry."Entry No.");
-                if GuiAllowed then
-                    Window.Update(3, ValueEntry."Posting Date");
-
-                // segun el tipo y si tiene cantidad facturada, registramos apunte 600 o 700
-                if ValueEntry."Valued Quantity" <> 0 then begin
-                    case ValueEntry."Item Ledger Entry Type" of
-                        ValueEntry."Item Ledger Entry Type"::Purchase:
-                            begin
-                                // creamos el apunte en la cuenta 600
-                                InitialValueEntryGLRelation(ValueEntry, false);
-                            end;
-                        ValueEntry."Item Ledger Entry Type"::Sale:
-                            begin
-                                // creamos el apunte en la cuenta 700
-                                InitialValueEntryGLRelation(ValueEntry, true);
-                            end;
-                    end;
+                if (ValueEntry."Cost Posted to G/L" <> 0) or (ValueEntry."Expected Cost Posted to G/L" <> 0) then begin
+                    if GuiAllowed then
+                        Window.Update(1, ValueEntry.TableCaption);
+                    if GuiAllowed then
+                        Window.Update(2, ValueEntry."Entry No.");
+                    if CreateValueGLEntry(ValueEntry) then
+                        if GuiAllowed then
+                            Window.Update(3, ValueEntry."Posting Date");
                 end;
-                CreateValueGLEntry(ValueEntry);
-                Commit();
-            Until ValueEntry.next() = 0;
-        // despues miramos el registro de variacion de existencias en contabilidad
-        GLItemLedgerRelation.Reset();
-        GLItemLedgerRelation.SetRange("Updated Cost Entry", false);
-        if GLItemLedgerRelation.FindFirst() then
-            repeat
-                if GuiAllowed then
-                    Window.Update(1, GLItemLedgerRelation.TableCaption);
-                if GuiAllowed then
-                    Window.Update(2, GLItemLedgerRelation."Value Entry No.");
-                if GuiAllowed then
-                    Window.Update(3, '');
-                tmpValueEntry.Init();
-                tmpValueEntry."Entry No." := GLItemLedgerRelation."Value Entry No.";
-                tmpValueEntry.Insert();
-            Until GLItemLedgerRelation.next() = 0;
-        ValueEntry.Reset();
-        if tmpValueEntry.FindFirst() then
-            repeat
-                if GuiAllowed then
-                    Window.Update(1, ValueEntry.TableCaption);
-                if GuiAllowed then
-                    Window.Update(2, ValueEntry."Entry No.");
-                if GuiAllowed then
-                    Window.Update(3, ValueEntry."Posting Date");
-                ValueEntry.Get(tmpValueEntry."Entry No.");
+            until ValueEntry.Next() = 0;
 
-                CreateValueGLEntry(ValueEntry);
-            Until tmpValueEntry.next() = 0;
         if GuiAllowed then
             Window.Close();
     end;
 
-    local procedure InitialValueEntryGLRelation(ValueEntry: Record "Value Entry"; Sales: Boolean)
+    local procedure CreateValueGLEntry(ValueEntry: Record "Value Entry"): Boolean
     var
-        Cost: Decimal;
-    begin
-        ValueEntryGLEntry.Reset();
-        ValueEntryGLEntry.SetRange("Value Entry No.", ValueEntry."Entry No.");
-        ValueEntryGLEntry.SetRange("G/L Entry No.", ValueEntry."Entry No.");
-        if Sales then
-            ValueEntryGLEntry.SetRange("Clasification Entry", ValueEntryGLEntry."Clasification Entry"::Sales)
-        else
-            ValueEntryGLEntry.SetRange("Clasification Entry", ValueEntryGLEntry."Clasification Entry"::Purchase);
-
-        if ValueEntryGLEntry.FindFirst() then
-            exit;
-
-        ValueEntryGLEntry.Init();
-        ValueEntryGLEntry.TransferFields(ValueEntry);
-        ValueEntryGLEntry."G/L Entry No." := ValueEntry."Entry No.";
-        if sales then
-            ValueEntryGLEntry."G/L Account No." := '700'
-        else
-            ValueEntryGLEntry."G/L Account No." := '600';
-        ValueEntryGLEntry."G/L Posting Date" := ValueEntry."Posting Date";
-        if Sales then
-            cost := ValueEntry."Sales Amount (Actual)"
-        else
-            Cost := ValueEntry."Cost Amount (Actual)";
-        ValueEntryGLEntry.Amount := Cost;
-        if Cost > 0 then
-            ValueEntryGLEntry."Debit Amount" := abs(Cost)
-        else
-            ValueEntryGLEntry."Credit Amount" := abs(Cost);
-        Rec."Clasification Entry" := GetClassification(ValueEntry);
-        ValueEntryGLEntry.Insert();
-    end;
-
-    local procedure CreateValueGLEntry(ValueEntry: Record "Value Entry")
-    var
-        GLItemLedgerRelation: Record "G/L - Item Ledger Relation";
         Cost: Decimal;
         i: Integer;
     begin
-        GLItemLedgerRelation.Reset();
-        GLItemLedgerRelation.SetRange("Value Entry No.", ValueEntry."Entry No.");
-        if not GLItemLedgerRelation.FindFirst() then begin
-            // no esta registrada contablemente la variacion de existencia
-            // creamos solo value entry con G/L Entry No. = CERO
-            CreateItemLedgerGLWithoutGLRegister(ValueEntry)
-        end else
+        // GLItemLedgerRelation.SetRange("Value Entry No.", ValueEntry."Entry No.");
+        // if GLItemLedgerRelation.FindFirst() then
+        //     repeat
+        // comprobamos si tiene 
+        DeleteTempValueEntryGLEntry(ValueEntry);
+        if CreateItemLedgerGlEntry(ValueEntry, Cost) then
+            exit(true);
+        // Until GLItemLedgerRelation.next() = 0;
+    end;
+
+    local procedure CreateItemLedgerGlEntry(ValueEntry: record "Value Entry"; Cost: Decimal): Boolean
+    var
+        tmpInvtPostBuf: Record "Invt. Posting Buffer" temporary;
+        InvPosting: Codeunit "Inventory Posting To G/L";
+    begin
+        ValueEntry."Cost Posted to G/L" := 0;
+        ValueEntry."Expected Cost Posted to G/L" := 0;
+        Clear(InvPosting);
+        if not InvPosting.BufferInvtPosting(ValueEntry) then
+            exit;
+        // Message(StrSubstNo('No se encuentran datos buffer %1', ValueEntry."Entry No."));
+        InvPosting.GetInvtPostBuf(tmpInvtPostBuf);
+
+        if tmpInvtPostBuf.FindFirst() then
             repeat
-                if (ValueEntry."Cost Amount (Actual)" <> 0) and (ValueEntry."Cost Amount (Expected)" <> 0) then begin
-                    // segun el bucle de cuentas, las asignamos
-                    // 1º Real 2º provi 3º provi 4 real
-                    i += 1;
-                    case i of
-                        1:  // Real
-                            cost := ValueEntry."Cost Amount (Actual)";
-                        2:  // provision
-                            cost := ValueEntry."Cost Amount (Expected)";
-                        3:  // Provision
-                            cost := ValueEntry."Cost Amount (Expected)";
-                        else  // Real
-                            cost := ValueEntry."Cost Amount (Actual)";
-                    end;
-                end else begin
-                    if ValueEntry."Cost Amount (Actual)" <> 0 then
-                        Cost := ValueEntry."Cost Amount (Actual)"
-                    else
-                        cost := ValueEntry."Cost Amount (Expected)";
-                end;
-                CreateItemLedgerGlEntry(GLItemLedgerRelation, Cost);
-            Until GLItemLedgerRelation.next() = 0;
-    end;
-
-    local procedure CreateItemLedgerGLWithoutGLRegister(ValueEntry: Record "Value Entry")
-    var
-        myInt: Integer;
-    begin
-        ValueEntryGLEntry.Reset();
-        if not ValueEntryGLEntry.Get(ValueEntry."Entry No.", 0, GetClassification(ValueEntry)) then begin
-            DeleteTempValueEntryGLEntry(ValueEntry);
-            if not (ValueEntry."Item Ledger Entry Type" in [ValueEntry."Item Ledger Entry Type"::Transfer]) then begin
-                ValueEntryGLEntry.Init();
-                Clear(ValueEntryGLEntry);
-                ValueEntryGLEntry.TransferFields(ValueEntry);
-                ValueEntryGLEntry."G/L Entry No." := 0;
-                ValueEntryGLEntry."Clasification Entry" := GetClassification(ValueEntry);
-                ValueEntryGLEntry.Insert();
-                ValueEntry."Updated Cost Entry" := true;
-                ValueEntry.Modify();
-            end;
-        end;
-    end;
-
-    local procedure CreateItemLedgerGlEntry(var GLItemLedgerRelation: Record "G/L - Item Ledger Relation"; Cost: Decimal)
-    var
-        ValueEntry: Record "Value Entry";
-    begin
-        ValueEntry.Reset();
-        GLEntry.Reset();
-        ValueEntryGLEntry.Reset();
-        ValueEntry.Get(GLItemLedgerRelation."Value Entry No.");
-        if not ValueEntryGLEntry.Get(GLItemLedgerRelation."Value Entry No.", GLEntry."Entry No.", GetClassification(ValueEntry)) then begin
-
-            DeleteTempValueEntryGLEntry(ValueEntry);
-            if not (ValueEntry."Item Ledger Entry Type" in [ValueEntry."Item Ledger Entry Type"::Transfer]) then begin
-                GLEntry.Get(GLItemLedgerRelation."G/L Entry No.");
                 ValueEntryGLEntry.Init();
                 ValueEntryGLEntry.TransferFields(ValueEntry);
-                ValueEntryGLEntry."G/L Entry No." := GLItemLedgerRelation."G/L Entry No.";
-                ValueEntryGLEntry."G/L Account No." := GLEntry."G/L Account No.";
-                ValueEntryGLEntry."G/L Posting Date" := GLEntry."Posting Date";
-
-                ValueEntryGLEntry.Amount := Cost;
-                if GLEntry."Debit Amount" > 0 then
-                    ValueEntryGLEntry."Debit Amount" := abs(Cost);
-                if GLEntry."Credit Amount" > 0 then
-                    ValueEntryGLEntry."Credit Amount" := abs(Cost);
-                Rec."Clasification Entry" := GetClassification(ValueEntry);
+                ValueEntryGLEntry."G/L Entry No." := tmpInvtPostBuf."Entry No.";
+                ValueEntryGLEntry."Account No." := tmpInvtPostBuf."Account No.";
+                ValueEntryGLEntry."G/L Posting Date" := tmpInvtPostBuf."Posting Date";
+                ValueEntryGLEntry."Account Type" := tmpInvtPostBuf."Account Type";
+                ValueEntryGLEntry."Amount G/L" := tmpInvtPostBuf.Amount;
+                ValueEntryGLEntry."Amount G/L (ACY)" := tmpInvtPostBuf."Amount (ACY)";
+                ValueEntryGLEntry."Interim Account" := tmpInvtPostBuf."Interim Account";
+                ValueEntryGLEntry."Account No." := tmpInvtPostBuf."Account No.";
+                ValueEntryGLEntry."G/L Posting Date" := tmpInvtPostBuf."Posting Date";
+                ValueEntryGLEntry.Negative := tmpInvtPostBuf.Negative;
+                ValueEntryGLEntry."Bal. Account Type" := tmpInvtPostBuf."Bal. Account Type";
+                ValueEntryGLEntry."Job No." := tmpInvtPostBuf."Job No.";
                 ValueEntryGLEntry.Insert();
-                ValueEntry."Updated Cost Entry" := true;
-                ValueEntry.Modify();
-            end;
-        end;
-        GLItemLedgerRelation."Updated Cost Entry" := true;
-        GLItemLedgerRelation.Modify();
+            // ValueEntry."Updated Cost Entry" := true;
+            // ValueEntry.Modify();
+            Until tmpInvtPostBuf.next() = 0;
+        // GLItemLedgerRelation."Updated Cost Entry" := true;
+        // GLItemLedgerRelation.Modify();
+        exit(true);
     end;
 
     local procedure DeleteTempValueEntryGLEntry(ValueEntry: Record "Value Entry")
@@ -554,27 +460,6 @@ table 17382 "ZM Value entry - G/L Entry"
     begin
         ValueEntryGLEntry.Reset();
         ValueEntryGLEntry.SetRange("Value Entry No.", ValueEntry."Entry No.");
-        ValueEntryGLEntry.SetRange("G/L Entry No.", 0);
         ValueEntryGLEntry.DeleteAll();
-    end;
-
-    local procedure GetClassification(ValueEntry: Record "Value Entry"): Integer
-    var
-        myInt: Integer;
-    begin
-        case ValueEntry."Item Ledger Entry Type" of
-            ValueEntry."Item Ledger Entry Type"::" ", ValueEntry."Item Ledger Entry Type"::Consumption, ValueEntry."Item Ledger Entry Type"::Output:
-                begin
-                    exit(Rec."Clasification Entry"::Production);
-                end;
-            ValueEntry."Item Ledger Entry Type"::Sale:
-                exit(Rec."Clasification Entry"::Sales);
-            ValueEntry."Item Ledger Entry Type"::Purchase:
-                exit(Rec."Clasification Entry"::Inventory);
-            ValueEntry."Item Ledger Entry Type"::"Assembly Consumption", ValueEntry."Item Ledger Entry Type"::"Assembly Output":
-                exit(Rec."Clasification Entry"::Assembly);
-            ValueEntry."Item Ledger Entry Type"::"Negative Adjmt.", ValueEntry."Item Ledger Entry Type"::"Positive Adjmt.":
-                exit(Rec."Clasification Entry"::Adjmt);
-        end;
     end;
 }
