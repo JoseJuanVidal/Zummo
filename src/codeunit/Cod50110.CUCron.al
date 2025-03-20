@@ -93,6 +93,10 @@ codeunit 50110 "CU_Cron"
                     begin
                         ABERTIAUpdateALL(AbertiaTypeUpdate::Periodo);
                     end;
+                'CosteMovValorGLEntry':
+                    begin
+                        CosteMovValorGLEntry();
+                    end;
                 else
                     error(lbNoParametroErr);
 
@@ -1694,5 +1698,12 @@ codeunit 50110 "CU_Cron"
             TestFile.Create(FileName);
         TestFile.Write(StrSubstNo('%1 - %2 %3', CreateDateTime(Today, Time), type, texto));
         TestFile.Close;
+    end;
+
+    local procedure CosteMovValorGLEntry()
+    var
+        ValueentryGLEntry: record "ZM Value entry - G/L Entry";
+    begin
+        ValueentryGLEntry.UpdateEntries(0, StrSubstNo('%1..', CalcDate('<-CM>', Today())));
     end;
 }
