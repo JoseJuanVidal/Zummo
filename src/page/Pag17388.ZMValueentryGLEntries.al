@@ -2,8 +2,10 @@ page 17388 "ZM Value entry - G/L Entries"
 {
     ApplicationArea = All;
     Caption = 'Value entry - G/L Entries', Comment = 'ESP="Costes Mov. valor - Mov. conta "';
+    PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     PageType = List;
     SourceTable = "ZM Value entry - G/L Entry";
+    SourceTableView = sorting("Entry No.");
     UsageCategory = Lists;
     Editable = false;
 
@@ -303,6 +305,14 @@ page 17388 "ZM Value entry - G/L Entries"
                 {
                     ApplicationArea = all;
                 }
+                field("Account Heading"; "Account Heading")
+                {
+                    ApplicationArea = all;
+                }
+                field("Entry No."; "Entry No.")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }
@@ -326,7 +336,57 @@ page 17388 "ZM Value entry - G/L Entries"
                         Rec.UpdateEntries(0, Rec.GetFilter("Posting Date"));
                 end;
             }
+            // action(heading)
+            // {
+            //     ApplicationArea = All;
+            //     Caption = 'Heading';
+            //     Promoted = true;
+            //     PromotedIsBig = true;
+            //     PromotedCategory = Process;
+
+            //     trigger OnAction()
+            //     begin
+            //         UpdateMayorAccount();
+            //     end;
+            // }
+        }
+        area(Navigation)
+        {
+            action(ItemLedgerEntry)
+            {
+                Caption = 'Item Ledger Entrie', comment = 'ESP="Movs. Productos"';
+                Image = ItemLedger;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Category4;
+                trigger OnAction()
+                var
+                    ItemLedgerEntry: Record "Item Ledger Entry";
+                begin
+                    ItemLedgerEntry.SetRange("Entry No.", Rec."Item Ledger Entry No.");
+                    page.Run(Page::"Item Ledger Entries", ItemLedgerEntry);
+                end;
+            }
+            action(BOMExplode)
+            {
+                Caption = 'BOM Explode', comment = 'ESP="Costes L. Materiales"';
+                Image = ExplodeBOM;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Category4;
+                trigger OnAction()
+                begin
+                    BomExplode_CostesGLEntry();
+                end;
+            }
         }
     }
+
+    local procedure BomExplode_CostesGLEntry()
+    var
+        myInt: Integer;
+    begin
+        BomExplode_CostesGLEntry
+    end;
 
 }

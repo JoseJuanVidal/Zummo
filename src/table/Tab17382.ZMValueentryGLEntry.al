@@ -8,6 +8,7 @@ table 17382 "ZM Value entry - G/L Entry"
         field(1; "Value Entry No."; Integer)
         {
             Caption = 'Value Entry No.', Comment = 'ESP="Nº mov. valor"';
+            TableRelation = "Value Entry";
         }
         field(2; "Item No."; Code[20])
         {
@@ -310,6 +311,7 @@ table 17382 "ZM Value entry - G/L Entry"
         field(50108; "Account No."; code[20])
         {
             Caption = 'Account No.', Comment = 'ESP="Nº cuenta"';
+            TableRelation = "G/L Account";
         }
         field(50109; "G/L Posting Date"; date)
         {
@@ -322,6 +324,7 @@ table 17382 "ZM Value entry - G/L Entry"
         field(50113; "G/L Entry No."; Integer)
         {
             Caption = 'G/L Entry No.', Comment = 'ESP="Nº mov. contable"';
+            TableRelation = "G/L Entry";
         }
         field(50114; "Bal. Account Type"; Option)
         {
@@ -335,9 +338,14 @@ table 17382 "ZM Value entry - G/L Entry"
         {
             Caption = 'Job No.', Comment = 'ESP="Nº proyecto"';
         }
-
-
-
+        field(50116; "Account Heading"; Code[1])
+        {
+            Caption = 'Account Heading', Comment = 'ESP="Cuenta Mayor"';
+        }
+        field(50117; "Entry No."; Integer)
+        {
+            Caption = 'Entry No.', comment = 'ESP="Nº Mov."';
+        }
     }
 
     keys
@@ -346,6 +354,12 @@ table 17382 "ZM Value entry - G/L Entry"
         {
             Clustered = true;
         }
+        key(Key1; "Item Ledger Entry No.", "Item Ledger Entry Type")
+        { }
+        key(Key2; "Entry No.")
+        { }
+        key(Key3; "Posting Date", "Item No.", "Item Ledger Entry Type")
+        { }
     }
 
     fieldgroups
@@ -435,6 +449,7 @@ table 17382 "ZM Value entry - G/L Entry"
                 ValueEntryGLEntry.TransferFields(ValueEntry);
                 ValueEntryGLEntry."G/L Entry No." := tmpInvtPostBuf."Entry No.";
                 ValueEntryGLEntry."Account No." := tmpInvtPostBuf."Account No.";
+                ValueEntryGLEntry."Account Heading" := CopyStr(ValueEntryGLEntry."Account No.", 1, MaxStrLen(ValueEntryGLEntry."Account Heading"));
                 ValueEntryGLEntry."G/L Posting Date" := tmpInvtPostBuf."Posting Date";
                 ValueEntryGLEntry."Account Type" := tmpInvtPostBuf."Account Type";
                 ValueEntryGLEntry."Amount G/L" := tmpInvtPostBuf.Amount;
@@ -455,11 +470,126 @@ table 17382 "ZM Value entry - G/L Entry"
     end;
 
     local procedure DeleteTempValueEntryGLEntry(ValueEntry: Record "Value Entry")
-    var
-        myInt: Integer;
     begin
         ValueEntryGLEntry.Reset();
         ValueEntryGLEntry.SetRange("Value Entry No.", ValueEntry."Entry No.");
         ValueEntryGLEntry.DeleteAll();
+    end;
+
+    procedure BomExplode_CostesGLEntry()
+    var
+        Item: Record Item;
+        BOMCosts: Record "ZM Value entry - G/L Entry" temporary;
+    begin
+        Rec.TestField("Item Ledger Entry Type", Rec."Item Ledger Entry Type"::Output);
+        ValueEntryGLEntry.Reset();
+        ValueEntryGLEntry.SetRange("Item Ledger Entry No.", Rec."Item Ledger Entry No.");
+        UpdateValueEntryTemporary(BOMCosts, ValueEntryGLEntry, Rec."Valued Quantity");
+        // Explode BOM
+        Item.Get(Rec."Item No.");
+        if Item.HasBOM() then
+            ExplodeProductionConsumption(BOMCosts, Rec."Document No.");
+        Page.Run(Page::"ZM Value entry - G/L Entries", BOMCosts);
+    end;
+
+    local procedure UpdateValueEntryTemporary(var BOMCosts: Record "ZM Value entry - G/L Entry"; var ValueEntryGLEntry: Record "ZM Value entry - G/L Entry";
+            Quantity: Decimal)
+    var
+        EntryNo: Integer;
+    begin
+        if ValueEntryGLEntry.FindFirst() then
+            repeat
+                EntryNo := BOMCosts."Entry No.";
+                BOMCosts.Init();
+                BOMCosts.TransferFields(ValueEntryGLEntry);
+                BOMCosts."Entry No." := EntryNo + 1;
+                BOMCosts.Insert();
+                if Quantity <> BOMCosts."Valued Quantity" then begin
+                    // TODO                    Multiplicar por cantidad
+
+                end;
+            Until ValueEntryGLEntry.next() = 0;
+    end;
+
+    local procedure ExplodeProductionConsumption(var BOMCosts: Record "ZM Value entry - G/L Entry"; ProdOrderNo: code[20])
+    var
+        ItemLedgerEntry: Record "Item Ledger Entry";
+    begin
+        ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Consumption);
+        ItemLedgerEntry.SetRange("Document No.", ProdOrderNo);
+        if ItemLedgerEntry.FindFirst() then
+            repeat
+                ValueEntryGLEntry.Reset();
+                ValueEntryGLEntry.SetRange("Item Ledger Entry No.", ItemLedgerEntry."Entry No.");
+                UpdateValueEntryTemporary(BOMCosts, ValueEntryGLEntry, ItemLedgerEntry."Quantity");
+
+                GetItemApplicationEntry(BOMCosts, ItemLedgerEntry);
+
+            until ItemLedgerEntry.Next() = 0;
+    end;
+
+    local procedure GetItemApplicationEntry(var BOMCosts: Record "ZM Value entry - G/L Entry"; ItemledgerEntry: record "Item Ledger Entry")
+    var
+        ItemApplnEntry: record "Item Application Entry";
+        ItemLedgEntry: record "Item Ledger Entry";
+    begin
+        IF ItemledgerEntry.Positive THEN BEGIN
+            ItemApplnEntry.RESET;
+            ItemApplnEntry.SETCURRENTKEY("Inbound Item Entry No.", "Outbound Item Entry No.", "Cost Application");
+            ItemApplnEntry.SETRANGE("Inbound Item Entry No.", ItemledgerEntry."Entry No.");
+            ItemApplnEntry.SETFILTER("Outbound Item Entry No.", '<>%1', 0);
+            ItemApplnEntry.SETRANGE("Cost Application", TRUE);
+            IF ItemApplnEntry.FIND('-') THEN
+                REPEAT
+                    ValueEntryGLEntry.Reset();
+                    ValueEntryGLEntry.SetRange("Item Ledger Entry No.", ItemApplnEntry."Outbound Item Entry No.");
+                    UpdateValueEntryTemporary(BOMCosts, ValueEntryGLEntry, ItemApplnEntry.Quantity);
+                UNTIL ItemApplnEntry.NEXT = 0;
+        END ELSE BEGIN
+            ItemApplnEntry.RESET;
+            ItemApplnEntry.SETCURRENTKEY("Outbound Item Entry No.", "Item Ledger Entry No.", "Cost Application");
+            ItemApplnEntry.SETRANGE("Outbound Item Entry No.", ItemledgerEntry."Entry No.");
+            ItemApplnEntry.SETRANGE("Item Ledger Entry No.", ItemledgerEntry."Entry No.");
+            ItemApplnEntry.SETRANGE("Cost Application", TRUE);
+            IF ItemApplnEntry.FIND('-') THEN
+                REPEAT
+                    // Si no es compra o transferencia, seguimos explorando
+                    // InsertTempEntry(ItemApplnEntry."Inbound Item Entry No.", -ItemApplnEntry.Quantity);
+                    ItemLedgEntry.Get(ItemApplnEntry."Inbound Item Entry No.");
+                    case ItemLedgEntry."Entry Type" of
+                        ItemLedgEntry."Entry Type"::Transfer:
+                            begin
+
+                            end;
+                    end;
+                UNTIL ItemApplnEntry.NEXT = 0;
+        END;
+    end;
+
+    local procedure InsertTempEntry(var BOMCosts: Record "ZM Value entry - G/L Entry"; EntryNo: Integer; AppliedQty: Decimal)
+    var
+        ItemLedgEntry: record "Item Ledger Entry";
+    begin
+        ItemLedgEntry.GET(EntryNo);
+        IF AppliedQty * ItemLedgEntry.Quantity < 0 THEN
+            EXIT;
+        ValueEntryGLEntry.Reset();
+        ValueEntryGLEntry.SetRange("Item Ledger Entry No.", EntryNo);
+        UpdateValueEntryTemporary(BOMCosts, ValueEntryGLEntry, AppliedQty);
+    end;
+
+    procedure UpdateMayorAccount()
+    var
+        Window: Dialog;
+    begin
+        Window.Open('Actualizando cuentas mayores #1####################');
+        ValueEntryGLEntry.Reset();
+        if ValueEntryGLEntry.FindFirst() then
+            repeat
+                Window.Update(1, ValueEntryGLEntry."Value Entry No.");
+                ValueEntryGLEntry."Account Heading" := CopyStr(ValueEntryGLEntry."Account No.", 1, MaxStrLen(ValueEntryGLEntry."Account Heading"));
+                ValueEntryGLEntry.Modify();
+            Until ValueEntryGLEntry.next() = 0;
+        Window.Close();
     end;
 }

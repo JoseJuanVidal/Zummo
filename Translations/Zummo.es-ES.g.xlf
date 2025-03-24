@@ -12894,6 +12894,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Method UpdateEntries - NamedType lblDialog</note>
           <target>Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############</target>
         </trans-unit>
+        <trans-unit id="Table 2187988607 - Field 969941267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account Heading</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cuenta Mayor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Field Account Heading - Property Caption</note>
+          <target>Cuenta Mayor</target>
+        </trans-unit>
         <trans-unit id="Table 2187988607 - Field 1622979514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº cuenta"</note>
@@ -22808,11 +22814,29 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Tipo contrato Mantenimiento - Property Caption</note>
           <target>Tipo contrato mantenimiento</target>
         </trans-unit>
+        <trans-unit id="Page 744342589 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate,Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Property PromotedActionCategories</note>
+          <target>Nuevo,Procesar,Informe,Información,Configuración</target>
+        </trans-unit>
         <trans-unit id="Page 744342589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Value entry - G/L Entries</source>
           <note from="Developer" annotates="general" priority="2">ESP="Costes Mov. valor - Mov. conta "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Property Caption</note>
           <target>Costes Mov. valor - Mov. conta </target>
+        </trans-unit>
+        <trans-unit id="Page 744342589 - Action 2122723113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BOM Explode</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Costes L. Materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Action BOMExplode - Property Caption</note>
+          <target>Costes L. Materiales</target>
+        </trans-unit>
+        <trans-unit id="Page 744342589 - Action 1719057576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entrie</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Action ItemLedgerEntry - Property Caption</note>
+          <target>Movs. Productos</target>
         </trans-unit>
         <trans-unit id="Page 744342589 - Action 642782499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update</source>

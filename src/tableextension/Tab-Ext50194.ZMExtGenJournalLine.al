@@ -105,7 +105,8 @@ tableextension 50194 "ZM Ext Gen. Journal Line" extends "Gen. Journal Line"
         if not Item.Get(ItemNo) then
             exit;
         GeneralPostingSetup.Reset();
-        GeneralPostingSetup.SetRange("Gen. Bus. Posting Group", Rec."Gen. Bus. Posting Group");
+        if Rec."Gen. Bus. Posting Group" <> '' then
+            GeneralPostingSetup.SetRange("Gen. Bus. Posting Group", Rec."Gen. Bus. Posting Group");
         GeneralPostingSetup.SetRange("Gen. Prod. Posting Group", Item."Gen. Prod. Posting Group");
         if GeneralPostingSetup.FindFirst() then
             exit(GeneralPostingSetup."Purch. Account");
