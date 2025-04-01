@@ -20748,6 +20748,31 @@
           <note from="Developer" annotates="general" priority="2">ESP="Costes Mov. valor - Mov. conta "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 744342589 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 744342589 - Control 3858021007 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filter date for update Data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro fecha para actualización Datos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Control DateFilterFin - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 744342589 - Control 3858021007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Control DateFilterFin - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 744342589 - Control 3843938382 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filter date for update Data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro fecha para actualización Datos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Control DateFilterIni - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 744342589 - Control 3843938382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Daet</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Inicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Control DateFilterIni - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 744342589 - Action 2122723113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BOM Explode</source>
           <note from="Developer" annotates="general" priority="2">ESP="Costes L. Materiales"</note>
@@ -20763,9 +20788,14 @@
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Action Update - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 744342589 - Action 642782499 - Method 1377591017 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You have to indicate a Date filter.\%1 to %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe indicar un filtro de Fecha.\%1 a %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Action Update - Method OnAction - NamedType lblError</note>
+        </trans-unit>
         <trans-unit id="Page 744342589 - Action 642782499 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Desea actualizar los movimientos de Costes?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes?"</note>
+          <source>¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Action Update - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Page 869453865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

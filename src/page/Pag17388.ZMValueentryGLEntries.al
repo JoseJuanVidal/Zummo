@@ -7,14 +7,32 @@ page 17388 "ZM Value entry - G/L Entries"
     SourceTable = "ZM Value entry - G/L Entry";
     SourceTableView = sorting("Entry No.");
     UsageCategory = Lists;
-    Editable = false;
+
 
     layout
     {
         area(Content)
         {
+
+            group(Options)
+            {
+                Caption = 'Options', comment = 'ESP="Opciones"';
+                field(DateFilterIni; DateFilterIni)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Start Daet', comment = 'ESP="Fecha Inicio"';
+                    ToolTip = 'Filter date for update Data', comment = 'ESP="Filtro fecha para actualización Datos"';
+                }
+                field(DateFilterFin; DateFilterFin)
+                {
+                    ApplicationArea = all;
+                    Caption = 'End Date', comment = 'ESP="Fecha Fin"';
+                    ToolTip = 'Filter date for update Data', comment = 'ESP="Filtro fecha para actualización Datos"';
+                }
+            }
             repeater(General)
             {
+                Editable = false;
                 field("Value Entry No."; "Value Entry No.")
                 {
                     ApplicationArea = all;
@@ -330,10 +348,15 @@ page 17388 "ZM Value entry - G/L Entries"
 
                 trigger OnAction()
                 var
-                    lblConfirm: Label '¿Desea actualizar los movimientos de Costes?', comment = 'ESP="¿Desea actualizar los movimientos de Costes?"';
+                    Customer: Record Customer;
+                    lblError: Label 'You have to indicate a Date filter.\%1 to %2', comment = 'ESP="Debe indicar un filtro de Fecha.\%1 a %2"';
+                    lblConfirm: Label '¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?', comment = 'ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"';
                 begin
-                    if Confirm(lblConfirm) then
-                        Rec.UpdateEntries(0, Rec.GetFilter("Posting Date"));
+                    if (DateFilterIni = 0D) or (DateFilterFin = 0D) then
+                        error(lblError, DateFilterIni, DateFilterFin);
+                    Customer.SetRange("Date Filter", DateFilterIni, DateFilterFin);
+                    if Confirm(lblConfirm, false, Customer.GetFilter("Date Filter")) then
+                        Rec.UpdateEntries(0, Customer.GetFilter("Date Filter"));
                 end;
             }
             // action(heading)
@@ -381,6 +404,10 @@ page 17388 "ZM Value entry - G/L Entries"
             }
         }
     }
+
+    var
+        DateFilterIni: date;
+        DateFilterFin: Date;
 
     local procedure BomExplode_CostesGLEntry()
     var

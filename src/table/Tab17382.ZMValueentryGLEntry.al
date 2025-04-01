@@ -499,14 +499,17 @@ table 17382 "ZM Value entry - G/L Entry"
     begin
         if ValueEntryGLEntry.FindFirst() then
             repeat
-                EntryNo := BOMCosts."Entry No.";
-                BOMCosts.Init();
-                BOMCosts.TransferFields(ValueEntryGLEntry);
-                BOMCosts."Entry No." := EntryNo + 1;
-                BOMCosts.Insert();
-                if Quantity <> BOMCosts."Valued Quantity" then begin
-                    // TODO                    Multiplicar por cantidad
+                if not BOMCosts.Get(ValueEntryGLEntry."Value Entry No.", ValueEntryGLEntry."G/L Entry No.", ValueEntryGLEntry."Account No.") then begin
+                    EntryNo := BOMCosts."Entry No.";
+                    BOMCosts.Init();
+                    BOMCosts.TransferFields(ValueEntryGLEntry);
+                    BOMCosts."Entry No." := EntryNo + 1;
+                    BOMCosts.Insert();
+                end else begin
+                    if Quantity <> BOMCosts."Valued Quantity" then begin
+                        // TODO                    Multiplicar por cantidad
 
+                    end;
                 end;
             Until ValueEntryGLEntry.next() = 0;
     end;
@@ -534,17 +537,31 @@ table 17382 "ZM Value entry - G/L Entry"
         ItemLedgEntry: record "Item Ledger Entry";
     begin
         IF ItemledgerEntry.Positive THEN BEGIN
-            ItemApplnEntry.RESET;
-            ItemApplnEntry.SETCURRENTKEY("Inbound Item Entry No.", "Outbound Item Entry No.", "Cost Application");
-            ItemApplnEntry.SETRANGE("Inbound Item Entry No.", ItemledgerEntry."Entry No.");
-            ItemApplnEntry.SETFILTER("Outbound Item Entry No.", '<>%1', 0);
-            ItemApplnEntry.SETRANGE("Cost Application", TRUE);
-            IF ItemApplnEntry.FIND('-') THEN
-                REPEAT
+            case ItemledgerEntry."Entry Type" of
+                ItemledgerEntry."Entry Type"::Transfer:
+                    begin
+                        ItemApplnEntry.RESET;
+                        ItemApplnEntry.SETCURRENTKEY("Inbound Item Entry No.", "Outbound Item Entry No.", "Cost Application");
+                        ItemApplnEntry.SETRANGE("Inbound Item Entry No.", ItemledgerEntry."Entry No.");
+                        ItemApplnEntry.SETFILTER("Transferred-from Entry No.", '<>%1', 0);
+                        ItemApplnEntry.SETRANGE("Cost Application", TRUE);
+                        IF ItemApplnEntry.FIND('-') THEN
+                            REPEAT
+                                ItemLedgEntry.Get(ItemApplnEntry."Inbound Item Entry No.");
+                                case ItemLedgEntry."Entry Type" of
+                                    ItemLedgEntry."Entry Type"::Transfer:
+                                        begin
+                                            ItemLedgEntry.Get(ItemApplnEntry."Transferred-from Entry No.");
+                                            GetItemApplicationEntry(BOMCosts, ItemLedgEntry);
+                                        end;
+                                end;
+                            UNTIL ItemApplnEntry.NEXT = 0;
+                    end;
+                else
                     ValueEntryGLEntry.Reset();
-                    ValueEntryGLEntry.SetRange("Item Ledger Entry No.", ItemApplnEntry."Outbound Item Entry No.");
-                    UpdateValueEntryTemporary(BOMCosts, ValueEntryGLEntry, ItemApplnEntry.Quantity);
-                UNTIL ItemApplnEntry.NEXT = 0;
+                    ValueEntryGLEntry.SetRange("Item Ledger Entry No.", ItemledgerEntry."Entry No.");
+                    UpdateValueEntryTemporary(BOMCosts, ValueEntryGLEntry, ItemledgerEntry.Quantity);
+            end;
         END ELSE BEGIN
             ItemApplnEntry.RESET;
             ItemApplnEntry.SETCURRENTKEY("Outbound Item Entry No.", "Item Ledger Entry No.", "Cost Application");
@@ -559,7 +576,7 @@ table 17382 "ZM Value entry - G/L Entry"
                     case ItemLedgEntry."Entry Type" of
                         ItemLedgEntry."Entry Type"::Transfer:
                             begin
-
+                                GetItemApplicationEntry(BOMCosts, ItemLedgEntry);
                             end;
                     end;
                 UNTIL ItemApplnEntry.NEXT = 0;
