@@ -17,7 +17,7 @@ table 17458 "ABERTIA GL Entry"
         {
             ExternalName = 'G_L Account No_';
         }
-        field(4; "Posting Date"; DateTime)
+        field(4; "Posting Date"; Date)
         {
             ExternalName = 'Posting Date';
         }
@@ -118,7 +118,7 @@ table 17458 "ABERTIA GL Entry"
         {
             ExternalName = 'Credit Amount';
         }
-        field(55; "Document Date"; DateTime)
+        field(55; "Document Date"; Date)
         {
             ExternalName = 'Document Date';
         }
@@ -302,6 +302,7 @@ table 17458 "ABERTIA GL Entry"
 
                 end;
         end;
+
         if GLEntry.FindSet() then
             repeat
                 Window.Update(1, GLEntry."Entry No.");
@@ -339,7 +340,7 @@ table 17458 "ABERTIA GL Entry"
         ABGLEntry."Entry No_" := GLEntry."Entry No.";
         if Evaluate(vDec, GLEntry."G/L Account No.") then
             ABGLEntry."G_L Account No_" := vDec;
-        ABGLEntry."Posting Date" := CreateDateTime(GLEntry."Posting Date", 0T);
+        ABGLEntry."Posting Date" := GLEntry."Posting Date";
         ABGLEntry."Document Type" := GLEntry."Document Type";
         ABGLEntry."Document No_" := GLEntry."Document No.";
         ABGLEntry."Description" := GLEntry.Description;
@@ -374,7 +375,7 @@ table 17458 "ABERTIA GL Entry"
         ABGLEntry."Transaction No_" := GLEntry."Transaction No.";
         ABGLEntry."Debit Amount" := GLEntry."Debit Amount";
         ABGLEntry."Credit Amount" := GLEntry."Credit Amount";
-        ABGLEntry."Document Date" := CreateDateTime(GLEntry."Document Date", 0T);
+        ABGLEntry."Document Date" := GLEntry."Document Date"; // CreateDateTime(GLEntry." Document Date ", 0T);
         ABGLEntry."External Document No_" := GLEntry."External Document No.";
         ABGLEntry."Source Type" := GLEntry."Source Type";
         ABGLEntry."Source No_" := GLEntry."Source No.";
