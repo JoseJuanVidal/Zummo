@@ -404,6 +404,10 @@ page 17388 "ZM Value entry - G/L Entries"
             }
         }
     }
+    trigger OnInit()
+    begin
+        OpenTableConnection();
+    end;
 
     var
         DateFilterIni: date;
@@ -416,4 +420,25 @@ page 17388 "ZM Value entry - G/L Entries"
         BomExplode_CostesGLEntry
     end;
 
+    procedure OpenTableConnection()
+    begin
+        IF HASTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes') THEN
+            UNREGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes');
+
+        REGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes', ZMCostesTABLECONNECTION());
+        SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes');
+    end;
+
+    procedure ZMCostesTABLECONNECTION(): Text
+    var
+        GenLedgerSetup: Record "General Ledger Setup";
+        lblConnectionString: Label 'Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4';
+    begin
+        GenLedgerSetup.Get();
+        GenLedgerSetup.TestField("Data Source");
+        GenLedgerSetup.TestField("User ID");
+        GenLedgerSetup.TestField(Password);
+        // exit(StrSubstNo(lblConnectionString, GenLedgerSetup."Data Source", GenLedgerSetup."Initial Catalog", GenLedgerSetup."User ID", GenLedgerSetup.Password));
+        exit(StrSubstNo(lblConnectionString, '192.168.1.252\bc', 'ZUMMO Inventario', 'jjvidal', 'Bario5622$'));
+    end;
 }

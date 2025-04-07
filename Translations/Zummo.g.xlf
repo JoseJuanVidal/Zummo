@@ -20748,6 +20748,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Costes Mov. valor - Mov. conta "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 744342589 - Method 3606769622 - NamedType 3649616787" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Method ZMCostesTABLECONNECTION - NamedType lblConnectionString</note>
+        </trans-unit>
         <trans-unit id="Page 744342589 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>
           <note from="Developer" annotates="general" priority="2">ESP="Opciones"</note>

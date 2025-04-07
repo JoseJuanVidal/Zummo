@@ -2,22 +2,27 @@ table 17382 "ZM Value entry - G/L Entry"
 {
     DataClassification = CustomerContent;
     Caption = 'Value entry - G/L Entry Analysis', comment = 'ESP="Análisis Mov. Valor - Mov. Contable"';
-
+    ExternalName = 'ZUMMO$ZM Value entry - G_L Entry';
+    ExternalSchema = 'dbo';
+    TableType = ExternalSQL;
     fields
     {
         field(1; "Value Entry No."; Integer)
         {
             Caption = 'Value Entry No.', Comment = 'ESP="Nº mov. valor"';
             TableRelation = "Value Entry";
+            ExternalName = 'Value Entry No_';
         }
         field(2; "Item No."; Code[20])
         {
             Caption = 'Item No.', Comment = 'ESP="Nº producto"';
             TableRelation = Item;
+            ExternalName = 'Item No_';
         }
         field(3; "Posting Date"; Date)
         {
             Caption = 'Posting Date', Comment = 'ESP="Fecha registro"';
+            ExternalName = 'Posting Date';
         }
         field(4; "Item Ledger Entry Type"; Option)
         {
@@ -25,118 +30,140 @@ table 17382 "ZM Value entry - G/L Entry"
             OptionCaption = 'Purchase,Sale,Positive Adjmt.,Negative Adjmt.,Transfer,Consumption,Output, ,Assembly Consumption,Assembly Output',
             Comment = 'ESP="Compra,Venta,Ajuste positivo,Ajuste negativo,Transferencia,Consumo,Salida desde fab., ,Consumo ensamblado,Salida ensamblado"';
             OptionMembers = Purchase,Sale,"Positive Adjmt.","Negative Adjmt.",Transfer,Consumption,Output," ","Assembly Consumption","Assembly Output";
+            ExternalName = 'Item Ledger Entry Type';
         }
         field(6; "Document No."; Code[20])
         {
             Caption = 'Document No.', Comment = 'ESP="Nº documento"';
+            ExternalName = 'Document No_';
         }
         field(7; Description; Text[100])
         {
             Caption = 'Description', Comment = 'ESP="Descripción"';
+            ExternalName = 'Description';
         }
         field(8; "Location Code"; Code[10])
         {
             Caption = 'Location Code', Comment = 'ESP="Cód. almacén"';
             TableRelation = Location;
+            ExternalName = 'Location Code';
         }
         field(9; "Inventory Posting Group"; Code[20])
         {
             Caption = 'Inventory Posting Group', Comment = 'ESP="Grupo registro inventario"';
             TableRelation = "Inventory Posting Group";
+            ExternalName = 'Inventory Posting Group';
         }
         field(11; "Item Ledger Entry No."; Integer)
         {
             Caption = 'Item Ledger Entry No.', Comment = 'ESP="Nº mov. producto"';
             TableRelation = "Item Ledger Entry";
+            ExternalName = 'Item Ledger Entry No_';
         }
         field(12; "Valued Quantity"; Decimal)
         {
             Caption = 'Valued Quantity', Comment = 'ESP="Cant. valorada"';
             DecimalPlaces = 0 : 5;
+            ExternalName = 'Valued Quantity';
         }
         field(13; "Item Ledger Entry Quantity"; Decimal)
         {
             Caption = 'Item Ledger Entry Quantity', Comment = 'ESP="Cantidad mov. producto"';
             DecimalPlaces = 0 : 5;
+            ExternalName = 'Item Ledger Entry Quantity';
         }
         field(14; "Invoiced Quantity"; Decimal)
         {
             Caption = 'Invoiced Quantity', Comment = 'ESP="Cantidad facturada"';
             DecimalPlaces = 0 : 5;
+            ExternalName = 'Invoiced Quantity';
         }
         field(15; "Cost per Unit"; Decimal)
         {
             AutoFormatType = 2;
             Caption = 'Cost per Unit', Comment = 'ESP="Coste por ud."';
+            ExternalName = 'Cost per Unit';
         }
         field(17; "Sales Amount (Actual)"; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Sales Amount (Actual)', Comment = 'ESP="Importe ventas (Real)"';
+            ExternalName = 'Sales Amount (Actual)';
         }
         field(22; "Salespers./Purch. Code"; Code[20])
         {
             Caption = 'Salespers./Purch. Code', Comment = 'ESP="Cód. vendedor/comprador"';
             TableRelation = "Salesperson/Purchaser";
+            ExternalName = 'Salespers__Purch_ Code';
         }
         field(23; "Discount Amount"; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Discount Amount', Comment = 'ESP="Importe dto."';
+            ExternalName = 'Discount Amount';
         }
         field(28; "Applies-to Entry"; Integer)
         {
             Caption = 'Applies-to Entry', Comment = 'ESP="Liq. por nº orden"';
+            ExternalName = 'Applies-to Entry';
         }
         field(43; "Cost Amount (Actual)"; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Cost Amount (Actual)', Comment = 'ESP="Importe coste (Real)"';
+            ExternalName = 'Cost Amount (Actual)';
         }
         field(45; "Cost Posted to G/L"; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Cost Posted to G/L', Comment = 'ESP="Coste regis. en contab."';
+            ExternalName = 'Cost Posted to G_L';
         }
         field(46; "Reason Code"; Code[10])
         {
             AccessByPermission = TableData 223 = R;
             Caption = 'Reason Code', Comment = 'ESP="Cód. auditoría"';
             TableRelation = "Reason Code";
+            ExternalName = 'Reason Code';
         }
         field(47; "Drop Shipment"; Boolean)
         {
             Caption = 'Drop Shipment', Comment = 'ESP="Envío directo"';
+            ExternalName = 'Drop Shipment';
         }
         field(48; "Journal Batch Name"; Code[10])
         {
             Caption = 'Journal Batch Name', Comment = 'ESP="Nombre sección diario"';
-            //This property is currently not supported
-            //TestTableRelation = false;
+            ExternalName = 'Journal Batch Name';
         }
         field(57; "Gen. Bus. Posting Group"; Code[20])
         {
             Caption = 'Gen. Bus. Posting Group', Comment = 'ESP="Grupo registro neg. gen."';
             TableRelation = "Gen. Business Posting Group";
+            ExternalName = 'Gen_ Bus_ Posting Group';
         }
         field(58; "Gen. Prod. Posting Group"; Code[20])
         {
             Caption = 'Gen. Prod. Posting Group', Comment = 'ESP="Grupo registro prod. gen."';
             TableRelation = "Gen. Product Posting Group";
+            ExternalName = 'Gen_ Prod_ Posting Group';
         }
         field(60; "Document Date"; Date)
         {
             Caption = 'Document Date', Comment = 'ESP="Fecha emisión documento"';
+            ExternalName = 'Document Date';
         }
         field(61; "External Document No."; Code[35])
         {
             Caption = 'External Document No.', Comment = 'ESP="Nº documento externo"';
+            ExternalName = 'External Document No_';
         }
         field(68; "Cost Amount (Actual) (ACY)"; Decimal)
         {
             AutoFormatExpression = GetCurrencyCode;
             AutoFormatType = 1;
             Caption = 'Cost Amount (Actual) (ACY)', Comment = 'ESP="Importe coste (Real) (DA)"';
+            ExternalName = 'Cost Amount (Actual) (ACY)';
         }
         field(70; "Cost Posted to G/L (ACY)"; Decimal)
         {
@@ -144,6 +171,7 @@ table 17382 "ZM Value entry - G/L Entry"
             AutoFormatExpression = GetCurrencyCode;
             AutoFormatType = 1;
             Caption = 'Cost Posted to G/L (ACY)', Comment = 'ESP="Coste regis. en contab. (DA)"';
+            ExternalName = 'Cost Posted to G_L (ACY)';
         }
         field(72; "Cost per Unit (ACY)"; Decimal)
         {
@@ -151,6 +179,7 @@ table 17382 "ZM Value entry - G/L Entry"
             AutoFormatExpression = GetCurrencyCode;
             AutoFormatType = 2;
             Caption = 'Cost per Unit (ACY)', Comment = 'ESP="Coste por unidad (DA)"';
+            ExternalName = 'Cost per Unit (ACY)';
         }
         field(79; "Document Type"; Option)
         {
@@ -158,10 +187,12 @@ table 17382 "ZM Value entry - G/L Entry"
             OptionCaption = ' ,Sales Shipment,Sales Invoice,Sales Return Receipt,Sales Credit Memo,Purchase Receipt,Purchase Invoice,Purchase Return Shipment,Purchase Credit Memo,Transfer Shipment,Transfer Receipt,Service Shipment,Service Invoice,Service Credit Memo,Posted Assembly'
                 , Comment = 'ESP=  ,Albarán venta,Factura venta,Recep. devol. ventas,Abono venta,Albarán compra,Factura compra,Envío devolución compra,Abono compra,Envío transfer.,Recep. transfer.,Servicio regis.,Factura ventas,Abono ventas,Ensamblado registrado"';
             OptionMembers = " ","Sales Shipment","Sales Invoice","Sales Return Receipt","Sales Credit Memo","Purchase Receipt","Purchase Invoice","Purchase Return Shipment","Purchase Credit Memo","Transfer Shipment","Transfer Receipt","Service Shipment","Service Invoice","Service Credit Memo","Posted Assembly";
+            ExternalName = 'Document Type';
         }
         field(80; "Document Line No."; Integer)
         {
             Caption = 'Document Line No.', Comment = 'ESP="Nº lín. documento"';
+            ExternalName = 'Document Line No_';
         }
         field(90; "Order Type"; Option)
         {
@@ -169,41 +200,50 @@ table 17382 "ZM Value entry - G/L Entry"
             Editable = false;
             OptionCaption = ' ,Production,Transfer,Service,Assembly', Comment = 'ESP=" ,Producción,Transferencia,Servicio,Ensamblado"';
             OptionMembers = " ",Production,Transfer,Service,Assembly;
+            ExternalName = 'Order Type';
         }
         field(91; "Order No."; Code[20])
         {
             Caption = 'Order No.', Comment = 'ESP="Nº pedido"';
             Editable = false;
+            ExternalName = 'Order No_';
         }
         field(92; "Order Line No."; Integer)
         {
             Caption = 'Order Line No.', Comment = 'ESP="Nº línea pedido"';
             Editable = false;
+            ExternalName = 'Order Line No_';
         }
         field(98; "Expected Cost"; Boolean)
         {
             Caption = 'Expected Cost', Comment = 'ESP="Coste previsto"';
+            ExternalName = 'Expected Cost';
         }
         field(99; "Item Charge No."; Code[20])
         {
             Caption = 'Item Charge No.', Comment = 'ESP="Nº cargo prod."';
             TableRelation = "Item Charge";
+            ExternalName = 'Item Charge No_';
         }
         field(100; "Valued By Average Cost"; Boolean)
         {
             Caption = 'Valued By Average Cost', Comment = 'ESP="Valorado a coste medio"';
+            ExternalName = 'Valued By Average Cost';
         }
         field(102; "Partial Revaluation"; Boolean)
         {
             Caption = 'Partial Revaluation', Comment = 'ESP="Revalorización parcial"';
+            ExternalName = 'Partial Revaluation';
         }
         field(103; Inventoriable; Boolean)
         {
             Caption = 'Inventoriable', Comment = 'ESP="Inventariable"';
+            ExternalName = 'Inventoriable';
         }
         field(104; "Valuation Date"; Date)
         {
             Caption = 'Valuation Date', Comment = 'ESP="Fecha valoración"';
+            ExternalName = 'Valuation Date';
         }
         field(105; "Entry Type"; Option)
         {
@@ -211,6 +251,7 @@ table 17382 "ZM Value entry - G/L Entry"
             Editable = false;
             OptionCaption = 'Direct Cost,Revaluation,Rounding,Indirect Cost,Variance', Comment = 'ESP="Coste directo,Revalorización,Redondeo,Coste indirecto,Desviación"';
             OptionMembers = "Direct Cost",Revaluation,Rounding,"Indirect Cost",Variance;
+            ExternalName = 'Entry Type';
         }
         field(106; "Variance Type"; Option)
         {
@@ -218,40 +259,47 @@ table 17382 "ZM Value entry - G/L Entry"
             Editable = false;
             OptionCaption = ' ,Purchase,Material,Capacity,Capacity Overhead,Manufacturing Overhead,Subcontracted', Comment = 'ESP=" ,Compras,Materiales,Capacidad,Gastos gen. capacidad,Gastos gen. fabr.,Subcontratación"';
             OptionMembers = " ",Purchase,Material,Capacity,"Capacity Overhead","Manufacturing Overhead",Subcontracted;
+            ExternalName = 'Variance Type';
         }
         field(148; "Purchase Amount (Actual)"; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Purchase Amount (Actual)', Comment = 'ESP="Importe compra (actual)"';
+            ExternalName = 'Purchase Amount (Actual)';
         }
         field(149; "Purchase Amount (Expected)"; Decimal)
         {
             AccessByPermission = TableData 120 = R;
             AutoFormatType = 1;
             Caption = 'Purchase Amount (Expected)', Comment = 'ESP="Importe compra (esperado)"';
+            ExternalName = 'Purchase Amount (Expected)';
         }
         field(150; "Sales Amount (Expected)"; Decimal)
         {
             AccessByPermission = TableData 110 = R;
             AutoFormatType = 1;
             Caption = 'Sales Amount (Expected)', Comment = 'ESP="Importe ventas (Esperado)"';
+            ExternalName = 'Sales Amount (Expected)';
         }
         field(151; "Cost Amount (Expected)"; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Cost Amount (Expected)', Comment = 'ESP="Importe coste (Esperado)"';
+            ExternalName = 'Cost Amount (Expected)';
         }
         field(152; "Cost Amount (Non-Invtbl.)"; Decimal)
         {
             AccessByPermission = TableData 5800 = R;
             AutoFormatType = 1;
             Caption = 'Cost Amount (Non-Invtbl.)', Comment = 'ESP="Importe coste (No-invent.)"';
+            ExternalName = 'Cost Amount (Non-Invtbl_)';
         }
         field(156; "Cost Amount (Expected) (ACY)"; Decimal)
         {
             AutoFormatExpression = GetCurrencyCode;
             AutoFormatType = 1;
             Caption = 'Cost Amount (Expected) (ACY)', Comment = 'ESP="Importe coste (Esperado) (DA)"';
+            ExternalName = 'Cost Amount (Expected) (ACY)';
         }
         field(157; "Cost Amount (Non-Invtbl.)(ACY)"; Decimal)
         {
@@ -259,27 +307,32 @@ table 17382 "ZM Value entry - G/L Entry"
             AutoFormatExpression = GetCurrencyCode;
             AutoFormatType = 1;
             Caption = 'Cost Amount (Non-Invtbl.)(ACY)', Comment = 'ESP="Importe coste (no-invent.)(DA)"';
+            ExternalName = 'Cost Amount (Non-Invtbl_)(ACY)';
         }
         field(158; "Expected Cost Posted to G/L"; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Expected Cost Posted to G/L', Comment = 'ESP="Coste esperado reg. en cont."';
+            ExternalName = 'Expected Cost Posted to G_L';
         }
         field(159; "Exp. Cost Posted to G/L (ACY)"; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Exp. Cost Posted to G/L (ACY)', Comment = 'ESP="Coste esperado reg. cont. (DA)"';
+            ExternalName = 'Exp_ Cost Posted to G_L (ACY)';
         }
         field(5831; "Capacity Ledger Entry No."; Integer)
         {
             Caption = 'Capacity Ledger Entry No.', Comment = 'ESP="Nº mov. capacidad"';
             TableRelation = "Capacity Ledger Entry";
+            ExternalName = 'Capacity Ledger Entry No_';
         }
         field(5832; Type; Option)
         {
             Caption = 'Type', Comment = 'ESP="Tipo"';
             OptionCaption = 'Work Center,Machine Center, ,Resource', Comment = 'ESP="Centro trabajo,Centro máquina, ,Recurso"';
             OptionMembers = "Work Center","Machine Center"," ",Resource;
+            ExternalName = 'Type';
         }
         field(5834; "No."; Code[20])
         {
@@ -287,6 +340,7 @@ table 17382 "ZM Value entry - G/L Entry"
             TableRelation = IF (Type = CONST("Machine Center")) "Machine Center"
             ELSE IF (Type = CONST("Work Center")) "Work Center"
             ELSE IF (Type = CONST(Resource)) Resource;
+            ExternalName = 'No_';
         }
         field(50104; "Account Type"; Option)
         {
@@ -294,37 +348,45 @@ table 17382 "ZM Value entry - G/L Entry"
             OptionCaption = 'Inventory (Interim),Invt. Accrual (Interim),Inventory,WIP Inventory,Inventory Adjmt.,Direct Cost Applied,Overhead Applied,Purchase Variance,COGS,COGS (Interim),Material Variance,Capacity Variance,Subcontracted Variance,Cap. Overhead Variance,Mfg. Overhead Variance'
                 , comment = 'ESP="Inventario (provisional),Crecimiento inventario (provisional),Inventario,Inventario WIP,Ajuste inventario,Coste directo aplicado,Coste general aplicado,Desviación de compras,Coste ventas,Coste ventas (provisional),Desviación material,Desviación capacidad,Desviación subcontratada,Cap. Desv. coste gen.,Desv. coste gen."';
             OptionMembers = "Inventory (Interim)","Invt. Accrual (Interim)",Inventory,"WIP Inventory","Inventory Adjmt.","Direct Cost Applied","Overhead Applied","Purchase Variance",COGS,"COGS (Interim)","Material Variance","Capacity Variance","Subcontracted Variance","Cap. Overhead Variance","Mfg. Overhead Variance";
+            ExternalName = 'Account Type';
         }
 
         field(50105; "Amount G/L"; Decimal)
         {
             Caption = 'Amount', Comment = 'ESP="Importe"';
+            ExternalName = 'Amount G_L';
         }
         field(50106; "Amount G/L (ACY)"; Decimal)
         {
             Caption = 'Amount (ACY)', Comment = 'ESP="Importe (DA)"';
+            ExternalName = 'Amount G_L (ACY)';
         }
         field(50107; "Interim Account"; Boolean)
         {
             Caption = 'Interim Account', Comment = 'ESP="Cuenta provisional"';
+            ExternalName = 'Interim Account';
         }
         field(50108; "Account No."; code[20])
         {
             Caption = 'Account No.', Comment = 'ESP="Nº cuenta"';
             TableRelation = "G/L Account";
+            ExternalName = 'Account No_';
         }
         field(50109; "G/L Posting Date"; date)
         {
             Caption = 'G/L Posting Date', Comment = 'ESP="Fecha registro Contable"';
+            ExternalName = 'G_L Posting Date';
         }
         field(50112; Negative; Boolean)
         {
             Caption = 'Negative', Comment = 'ESP="Negativo"';
+            ExternalName = 'Negative';
         }
         field(50113; "G/L Entry No."; Integer)
         {
             Caption = 'G/L Entry No.', Comment = 'ESP="Nº mov. contable"';
             TableRelation = "G/L Entry";
+            ExternalName = 'G_L Entry No_';
         }
         field(50114; "Bal. Account Type"; Option)
         {
@@ -332,19 +394,23 @@ table 17382 "ZM Value entry - G/L Entry"
             OptionCaption = 'Inventory (Interim),Invt. Accrual (Interim),Inventory,WIP Inventory,Inventory Adjmt.,Direct Cost Applied,Overhead Applied,Purchase Variance,COGS,COGS (Interim),Material Variance,Capacity Variance,Subcontracted Variance,Cap. Overhead Variance,Mfg. Overhead Variance'
                 , comment = 'ESP="Inventario (provisional),Crecimiento inventario (provisional),Inventario,Inventario WIP,Ajuste inventario,Coste directo aplicado,Coste general aplicado,Desviación de compras,Coste ventas,Coste ventas (provisional),Desviación material,Desviación capacidad,Desviación subcontratada,Cap. Desv. coste gen.,Desv. coste gen."';
             OptionMembers = "Inventory (Interim)","Invt. Accrual (Interim)",Inventory,"WIP Inventory","Inventory Adjmt.","Direct Cost Applied","Overhead Applied","Purchase Variance",COGS,"COGS (Interim)","Material Variance","Capacity Variance","Subcontracted Variance","Cap. Overhead Variance","Mfg. Overhead Variance";
+            ExternalName = 'Bal_ Account Type';
 
         }
         field(50115; "Job No."; Code[20])
         {
             Caption = 'Job No.', Comment = 'ESP="Nº proyecto"';
+            ExternalName = 'Job No_';
         }
         field(50116; "Account Heading"; Code[1])
         {
             Caption = 'Account Heading', Comment = 'ESP="Cuenta Mayor"';
+            ExternalName = 'Account Heading';
         }
         field(50117; "Entry No."; Integer)
         {
             Caption = 'Entry No.', comment = 'ESP="Nº Mov."';
+            ExternalName = 'Entry No_';
         }
     }
 
@@ -371,6 +437,8 @@ table 17382 "ZM Value entry - G/L Entry"
         GLSetup: Record "General Ledger Setup";
         ValueEntryGLEntry: Record "ZM Value entry - G/L Entry";
         GLSetupRead: Boolean;
+
+
 
     local procedure GetCurrencyCode(): Code[10]
     begin
@@ -466,6 +534,7 @@ table 17382 "ZM Value entry - G/L Entry"
             Until tmpInvtPostBuf.next() = 0;
         // GLItemLedgerRelation."Updated Cost Entry" := true;
         // GLItemLedgerRelation.Modify();
+        Commit();
         exit(true);
     end;
 
