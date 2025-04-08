@@ -267,7 +267,7 @@ table 17458 "ABERTIA GL Entry"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateGLEntry(TypeUpdate: Option Periodo,Todo,Nuevo) RecordNo: Integer;
+    procedure CreateGLEntry(TypeUpdate: Option Periodo,Todo,Nuevo; EntryNo: Integer) RecordNo: Integer;
     var
         GLEntry: Record "G/L Entry";
         ABGLEntry: Record "ABERTIA GL Entry";
@@ -302,7 +302,7 @@ table 17458 "ABERTIA GL Entry"
 
                 end;
         end;
-
+        GLEntry.SetFilter("Entry No.", '%1..', EntryNo);
         if GLEntry.FindSet() then
             repeat
                 Window.Update(1, GLEntry."Entry No.");

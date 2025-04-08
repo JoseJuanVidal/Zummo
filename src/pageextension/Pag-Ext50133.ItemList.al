@@ -113,7 +113,11 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
-
+            field("Sales Blocked"; "Sales Blocked")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
     actions

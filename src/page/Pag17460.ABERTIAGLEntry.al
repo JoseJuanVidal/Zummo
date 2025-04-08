@@ -274,7 +274,7 @@ page 17460 "ABERTIA GL Entry"
 
                 trigger OnAction()
                 begin
-                    Rec.CreateGLEntry(TypeUpdate);
+                    Rec.CreateGLEntry(TypeUpdate, EntryNoIni);
                 end;
 
             }

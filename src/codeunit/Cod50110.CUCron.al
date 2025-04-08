@@ -1590,7 +1590,7 @@ codeunit 50110 "CU_Cron"
     begin
         CreateTableConnection();
         GLAccountRecordNo := AbertiaGLAccount.CreateGLAccount();
-        GLEntryRecordNo := AbertiaGLEntry.CreateGLEntry(TypeUpdate);
+        GLEntryRecordNo := AbertiaGLEntry.CreateGLEntry(TypeUpdate, 0);
         GLBudgetEntryRecordNo := AbertiaGLEntryBudget.CreateGLBudget(TypeUpdate);
         CustomerRecordNo := AbertiaSalesCustomer.CreateSalesCustomer();
         ItemRecordNo := ABERTIASalesItem.CreateSalesItem();

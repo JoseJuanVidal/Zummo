@@ -143,7 +143,7 @@ page 17463 "ABERTIA Update"
                         lblConfirm: Label '¿Desea actualizar los movimientos contabilidad?', comment = 'ESP="¿Desea actualizar los movimientos contabilidad?"';
                     begin
                         if Confirm(lblConfirm) then
-                            AbertiaGLEntry.CreateGLEntry(TypeUpdate);
+                            AbertiaGLEntry.CreateGLEntry(TypeUpdate, 0);
                         UpdateEntryNos();
                     end;
                 }
