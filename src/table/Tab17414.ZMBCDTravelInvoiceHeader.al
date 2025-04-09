@@ -108,7 +108,7 @@ table 17414 "ZM BCD Travel Invoice Header"
         {
             DataClassification = CustomerContent;
             Caption = 'Receipt created', comment = 'ESP="Albarán creado"';
-            Editable = false;
+            // Editable = false;
         }
         field(110; "Purchase Order"; code[20])
         {

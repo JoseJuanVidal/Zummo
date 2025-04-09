@@ -1057,6 +1057,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         PurchaseHeader: record "Purchase Header";
         PurchaseLine: Record "Purchase Line";
         PurchRcptHeader: record "Purch. Rcpt. Header";
+        ReleasePurchDoc: Codeunit "Release Purchase Document";
         PurchPost: Codeunit "Purch.-Post";
         LineNo: Integer;
         lblCreate: Label 'Order %1 and Receipt %2 have been created.\¿Do you want to open the Receipt?', comment = 'ESP="Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?"';
@@ -1073,6 +1074,10 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
         if BCDTravelInvoiceHeader.FindFirst() then
             repeat
+                ReleasePurchDoc.PerformManualReopen(PurchaseHeader);
+                // tmpBCDTravelInvHeader.Init();
+                // tmpBCDTravelInvHeader.TransferFields(BCDTravelInvoiceHeader);
+                // tmpBCDTravelInvHeader.Insert();
                 BCDTravelLine.Reset();
                 BCDTravelLine.SetRange("Nro_Albarán", BCDTravelInvoiceHeader."Nro_Albarán");
                 if BCDTravelLine.FindFirst() then
@@ -1083,23 +1088,26 @@ codeunit 50104 "Zummo Inn. IC Functions"
                 BCDTravelInvoiceHeader."Receipt created" := true;
                 BCDTravelInvoiceHeader."Purchase Order" := PurchaseHeader."No.";
                 BCDTravelInvoiceHeader.Modify();
-            Until BCDTravelInvoiceHeader.next() = 0;
-
-        PurchaseHeader.Receive := true;
-        PurchaseHeader.Invoice := false;
-        // aqui registramos albaran a albaran, para que asi podamos poner numero de albaran proveedor en cada linea de servicio
-        if BCDTravelInvoiceHeader.FindFirst() then
-            repeat
+                PurchaseHeader.Receive := true;
+                PurchaseHeader.Invoice := false;
                 PurchaseHeader."Vendor Shipment No." := BCDTravelInvoiceHeader."Nro_Albarán";
                 PurchaseHeader.Modify();
-                PurchaseLine.Reset();
-                PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
-                PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
-                PurchaseLine.ModifyAll("Qty. to Receive", 0);
-                PurchaseLine.SetRange(IdCorp_Sol, BCDTravelInvoiceHeader."Nro_Albarán");
-                PurchaseLine.ModifyAll("Qty. to Receive", 1);
                 PurchPost.Run(PurchaseHeader);
             Until BCDTravelInvoiceHeader.next() = 0;
+
+        // aqui registramos albaran a albaran, para que asi podamos poner numero de albaran proveedor en cada linea de servicio
+        // if tmpBCDTravelInvHeader.FindFirst() then
+        //     repeat
+        //         PurchaseHeader."Vendor Shipment No." := tmpBCDTravelInvHeader."Nro_Albarán";
+        //         PurchaseHeader.Modify();
+        //         PurchaseLine.Reset();
+        //         PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
+        //         PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
+        //         PurchaseLine.ModifyAll("Qty. to Receive", 0);
+        //         PurchaseLine.SetRange(IdCorp_Sol, tmpBCDTravelInvHeader."Nro_Albarán");
+        //         PurchaseLine.ModifyAll("Qty. to Receive", 1);
+        //         PurchPost.Run(PurchaseHeader);
+        //     Until BCDTravelInvoiceHeader.next() = 0;
         // - registro por numero de albaran
         PurchRcptHeader.SetRange("Order No.", PurchaseHeader."No.");
         if PurchRcptHeader.FindFirst() then begin

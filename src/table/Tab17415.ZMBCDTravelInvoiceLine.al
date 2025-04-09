@@ -34,7 +34,7 @@ table 17415 "ZM BCD Travel Invoice Line"
         {
             DataClassification = CustomerContent;
             Caption = 'Cod. Centro Coste', comment = 'ESP="Cod. Centro Coste"';
-            TableRelation = "Dimension Value" where("Global Dimension No." = const(1));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1));
         }
         field(14; "Fec Inicio Srv"; date)
         {
