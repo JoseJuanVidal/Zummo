@@ -1,11 +1,11 @@
-page 17388 "ZM Value entry - G/L Entries"
+page 17390 "Value entry - G/L Entry Sales"
 {
     ApplicationArea = All;
-    Caption = 'Value entry - G/L Entries', Comment = 'ESP="Costes Mov. valor - Mov. conta "';
+    Caption = 'Value entry - G/L Entries Sales', Comment = 'ESP="Costes Ventas Mov. valor - Mov. conta "';
     PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
-    PageType = List;
-    SourceTable = "ZM Value entry - G/L Entry";
-    SourceTableView = sorting("Entry No.");
+    PageType = list;
+    SourceTable = "ZM Cost Value entry Sales";
+    SourceTableView = sorting("Parent Value Entry No.", "Value Entry No.", "G/L Entry No.", "Account No.");
     UsageCategory = Lists;
 
 
@@ -17,11 +17,21 @@ page 17388 "ZM Value entry - G/L Entries"
             group(Options)
             {
                 Caption = 'Options', comment = 'ESP="Opciones"';
+                field(EntryNoFilterIni; EntryNoFilterIni)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Start Entry No.', comment = 'ESP="Nº Mov. Inicio"';
+                }
                 field(DateFilterIni; DateFilterIni)
                 {
                     ApplicationArea = all;
-                    Caption = 'Start Daet', comment = 'ESP="Fecha Inicio"';
+                    Caption = 'Start Date', comment = 'ESP="Fecha Inicio"';
                     ToolTip = 'Filter date for update Data', comment = 'ESP="Filtro fecha para actualización Datos"';
+                }
+                field(EntryNoFilterFin; EntryNoFilterFin)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Start Entry No.', comment = 'ESP="Nº Mov. Fin"';
                 }
                 field(DateFilterFin; DateFilterFin)
                 {
@@ -33,6 +43,26 @@ page 17388 "ZM Value entry - G/L Entries"
             repeater(General)
             {
                 Editable = false;
+                field("Parent Value Entry No."; "Parent Value Entry No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Parent Item No."; "Parent Item No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Parent Description"; "Parent Description")
+                {
+                    ApplicationArea = all;
+                }
+                field("Parent Posting Date"; "Parent Posting Date")
+                {
+                    ApplicationArea = all;
+                }
+                field("Parent Valued Quantity"; "Parent Valued Quantity")
+                {
+                    ApplicationArea = all;
+                }
                 field("Value Entry No."; "Value Entry No.")
                 {
                     ApplicationArea = all;
@@ -78,33 +108,6 @@ page 17388 "ZM Value entry - G/L Entries"
                 {
                     ApplicationArea = all;
                 }
-                field("Invoiced Quantity"; "Invoiced Quantity")
-                {
-                    ApplicationArea = all;
-                }
-                field("Cost per Unit"; "Cost per Unit")
-                {
-                    ApplicationArea = all;
-                }
-                field("Sales Amount (Actual)"; "Sales Amount (Actual)")
-                {
-                    ApplicationArea = all;
-                }
-                field("Salespers./Purch. Code"; "Salespers./Purch. Code")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Discount Amount"; "Discount Amount")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Applies-to Entry"; "Applies-to Entry")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
                 field("Cost Amount (Actual)"; "Cost Amount (Actual)")
                 {
                     ApplicationArea = all;
@@ -113,31 +116,7 @@ page 17388 "ZM Value entry - G/L Entries"
                 {
                     ApplicationArea = all;
                 }
-                field("Reason Code"; "Reason Code")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Drop Shipment"; "Drop Shipment")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Journal Batch Name"; "Journal Batch Name")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
+
                 field("Document Date"; "Document Date")
                 {
                     ApplicationArea = all;
@@ -173,59 +152,13 @@ page 17388 "ZM Value entry - G/L Entries"
                     ApplicationArea = all;
                     Visible = false;
                 }
-                field("Order Type"; "Order Type")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Order No."; "Order No.")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Order Line No."; "Order Line No.")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Expected Cost"; "Expected Cost")
-                {
-                    ApplicationArea = all;
-                }
-                field("Item Charge No."; "Item Charge No.")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Valued By Average Cost"; "Valued By Average Cost")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Partial Revaluation"; "Partial Revaluation")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field(Inventoriable; Inventoriable)
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
+
                 field("Valuation Date"; "Valuation Date")
                 {
                     ApplicationArea = all;
                     Visible = false;
                 }
-                field("Entry Type"; "Entry Type")
-                {
-                    ApplicationArea = all;
-                }
-                field("Variance Type"; "Variance Type")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
+
                 field("Purchase Amount (Actual)"; "Purchase Amount (Actual)")
                 {
                     ApplicationArea = all;
@@ -348,15 +281,25 @@ page 17388 "ZM Value entry - G/L Entries"
 
                 trigger OnAction()
                 var
+                    ValueEntry: Record "Value Entry";
                     Customer: Record Customer;
-                    lblError: Label 'You have to indicate a Date filter.\%1 to %2', comment = 'ESP="Debe indicar un filtro de Fecha.\%1 a %2"';
-                    lblConfirm: Label '¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?', comment = 'ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"';
+                    DateFilter: text;
+                    EntrynoFilter: text;
+                    lblError: Label 'You have to indicate a filter.', comment = 'ESP="Debe indicar un filtro."';
+                    lblConfirm: Label '¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1\Filtro Mov: %2?', comment = 'ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1\Filtro Mov: %2?"';
                 begin
-                    if (DateFilterIni = 0D) or (DateFilterFin = 0D) then
+                    if (DateFilterIni = 0D) and (DateFilterFin = 0D) and (EntryNoFilterIni = 0) and (EntryNoFilterFin = 0) then
                         error(lblError, DateFilterIni, DateFilterFin);
-                    Customer.SetRange("Date Filter", DateFilterIni, DateFilterFin);
-                    if Confirm(lblConfirm, false, Customer.GetFilter("Date Filter")) then
-                        Rec.UpdateEntries(0, Customer.GetFilter("Date Filter"));
+                    if (DateFilterIni <> 0D) and (DateFilterFin <> 0D) then begin
+                        Customer.SetRange("Date Filter", DateFilterIni, DateFilterFin);
+                        DateFilter := Customer.GetFilter("Date Filter");
+                    end;
+                    if (EntryNoFilterIni <> 0) and (EntryNoFilterFin <> 0) then begin
+                        ValueEntry.SetRange("Entry No.", EntryNoFilterIni, EntryNoFilterFin);
+                        EntrynoFilter := ValueEntry.GetFilter("Entry No.");
+                    end;
+                    if Confirm(lblConfirm, false, DateFilter, EntrynoFilter) then
+                        Rec.UpdateEntries(DateFilter, EntrynoFilter);
                 end;
             }
             // action(heading)
@@ -410,6 +353,8 @@ page 17388 "ZM Value entry - G/L Entries"
     end;
 
     var
+        EntryNoFilterIni: Integer;
+        EntryNoFilterFin: Integer;
         DateFilterIni: date;
         DateFilterFin: Date;
 

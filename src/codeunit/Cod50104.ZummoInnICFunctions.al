@@ -3,6 +3,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
     TableNo = "Sales Header";
 
+    var
+        DataSourceTok: label 'Data Source=%1;Initial Catalog=%2;User Id=%3;Password=%4;';
+
     trigger OnRun()
     begin
         SendMailOnCreateQuote(Rec)
@@ -2315,6 +2318,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     // ======================================================================================================
     var
         BISQLConnection: DotNet SqlConnection;
+        InventarioSQLConnection: DotNet SqlConnection;
 
     procedure SQLUpdateALL(DeleteAll: Boolean)
     var
@@ -2852,7 +2856,6 @@ codeunit 50104 "Zummo Inn. IC Functions"
     var
         GLSetup: Record "General Ledger Setup";
         ConnStr: text;
-        DataSourceTok: label 'Data Source=%1;Initial Catalog=%2;User Id=%3;Password=%4;';
     begin
         GLSetup.Get();
         GLSetup.TestField("Data Source");
@@ -2894,6 +2897,187 @@ codeunit 50104 "Zummo Inn. IC Functions"
             windows.Update(2, IdItem);
         END;
         windows.close;
+    end;
+    // =============     CONEXION A BBDD DE INVENTARIO - COSTES CUENTAS CONTABLES          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    procedure BBDDInv_SQLConnect(var SQLConnection: dotnet SQLConnection)
+    var
+        ConnStr: text;
+    begin
+        // ConnStr := StrSubstNo(DataSourceTok, 'zummo.ddns.net', 'ReportingZummo', 'zummo', '@b3rti@');
+        ConnStr := StrSubstNo(DataSourceTok, 'localhost', '', 'sa', 'Bario5622$');
+        SQLConnection := SQLConnection.SQLConnection(ConnStr);
+        SQLConnection.Open();
+    end;
+
+    procedure UpdateParentValueEntry(ParentValueEntry: record "Value Entry"; ValueEntry: record "Value Entry"; tmpInvtPostBuf: Record "Invt. Posting Buffer"): Boolean
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtSQLCommandText: Text;
+        txtSQLCommandFields: Text;
+        txtSQLCommandValues: Text;
+        GLAccountNo: Integer;
+        lblSQLinsertTable: Label 'INSERT INTO [ZUMMO$Cost Value Entry Sales]';
+        lblSQLInsertFields1: Label '([Parent Value Entry No_],[Parent Item No_],[Parent Posting Date],[Parent Description],[Parent Valued Quantity],[Value Entry No_]';
+        lblSQLInsertFields2: Label ',[G_L Entry No_],[Account No_],[Item No_],[Posting Date],[Item Ledger Entry Type],[Document No_],[Description],[Location Code],[Inventory Posting Group]';
+        lblSQLInsertFields3: Label ',[Item Ledger Entry No_],[Valued Quantity],[Item Ledger Entry Quantity],[Cost Amount (Actual)],[Cost Posted to G_L],[Document Date]';
+        lblSQLInsertFields4: Label ',[External Document No_],[Cost Amount (Actual) (ACY)],[Cost Posted to G_L (ACY)],[Cost per Unit (ACY)],[Document Type],[Document Line No_]';
+        lblSQLInsertFields5: Label ',[Valuation Date],[Capacity Ledger Entry No_],[Purchase Amount (Actual)],[Purchase Amount (Expected)],[Sales Amount (Expected)],[Cost Amount (Expected)]';
+        lblSQLInsertFields6: Label ',[Cost Amount (Non-Invtbl_)],[Cost Amount (Expected) (ACY)],[Cost Amount (Non-Invtbl_)(ACY)],[Expected Cost Posted to G_L],[Exp_ Cost Posted to G_L (ACY)]';
+        lblSQLInsertFields7: Label ',[Type],[No_],[Account Type],[Amount G_L],[Amount G_L (ACY)],[Interim Account],[G_L Posting Date],[Negative],[Bal_ Account Type],[Job No_],[Account Heading],[Entry No_])';
+        lblSQLInsertValues1: Label 'values(%1,''%2'',''%3'',''%4'',%5,%6,%7,''%8'',''%9'',''%10'',''%11'',''%12'',''%13'',''%14'',';
+        lblSQLInsertValues2: Label '''%15'',%16,%17,%18,%19,%20,''%21'',''%22'',%23,%24,%25,''%26'',%27,''%28'',%29,%30,%31,%32,%33,%34,%35,%36,%37,''%38'',''%39'',';
+        lblSQLInsertValues3: Label '''%40'',''%41'',%42,%43,''%44'',''%45'',''%46'',''%47'',''%48'',''%49'',%50)';
+    begin
+        if IsNull(InventarioSQLConnection) then
+            SQLConnect(InventarioSQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := InventarioSQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        txtSQLCommandFields := lblSQLInsertFields1 + lblSQLInsertFields2 + lblSQLInsertFields3 + lblSQLInsertFields4 + lblSQLInsertFields5 + lblSQLInsertFields6 + lblSQLInsertFields7;
+        txtSQLCommandValues := StrSubstNo(lblSQLInsertValues1 + lblSQLInsertValues2 + lblSQLInsertValues3,
+            ParentValueEntry."Entry No.",
+            ParentValueEntry."Item No.",
+            StrSubstNo('%1-%2-%3', Date2DMY(ParentValueEntry."Posting Date", 3), Date2DMY(ParentValueEntry."Posting Date", 1), Date2DMY(ParentValueEntry."Posting Date", 2)),
+            ParentValueEntry.Description,
+            FormatDecimaNumber(ParentValueEntry."Valued Quantity"),
+            ValueEntry."Entry No.",
+            tmpInvtPostBuf."Entry No.",
+            tmpInvtPostBuf."Account No.",
+            ValueEntry."Item No.",
+            StrSubstNo('%1-%2-%3', Date2DMY(ValueEntry."Posting Date", 3), Date2DMY(ValueEntry."Posting Date", 1), Date2DMY(ValueEntry."Posting Date", 2)),  //10
+            ValueEntry."Item Ledger Entry Type",
+            ValueEntry."Document No.",
+            ValueEntry.Description,
+            ValueEntry."Location Code",
+            ValueEntry."Inventory Posting Group",   //15
+            ValueEntry."Item Ledger Entry No.",
+            FormatDecimaNumber(ValueEntry."Valued Quantity"),
+            FormatDecimaNumber(ValueEntry."Item Ledger Entry Quantity"),
+            FormatDecimaNumber(ValueEntry."Cost Amount (Actual)"),
+            FormatDecimaNumber(ValueEntry."Cost Posted to G/L"),   //20
+            ValueEntry."Document Date",
+            ValueEntry."External Document No.",
+            FormatDecimaNumber(ValueEntry."Cost Amount (Actual) (ACY)"), //23
+            FormatDecimaNumber(ValueEntry."Cost Posted to G/L (ACY)"),  //24
+            FormatDecimaNumber(ValueEntry."Cost per Unit (ACY)"),
+            ValueEntry."Document Type",
+            ValueEntry."Document Line No.",
+            StrSubstNo('%1-%2-%3', Date2DMY(ValueEntry."Valuation Date", 3), Date2DMY(ValueEntry."Valuation Date", 1), Date2DMY(ValueEntry."Valuation Date", 2)),
+            ValueEntry."Capacity Ledger Entry No.",
+            FormatDecimaNumber(ValueEntry."Purchase Amount (Actual)"), //30
+            FormatDecimaNumber(ValueEntry."Purchase Amount (Expected)"),
+            FormatDecimaNumber(ValueEntry."Sales Amount (Expected)"),
+            FormatDecimaNumber(ValueEntry."Cost Amount (Expected)"),
+            FormatDecimaNumber(ValueEntry."Cost Amount (Non-Invtbl.)"),
+            FormatDecimaNumber(ValueEntry."Cost Amount (Non-Invtbl.)(ACY)"), //35
+            FormatDecimaNumber(ValueEntry."Expected Cost Posted to G/L"),
+            FormatDecimaNumber(ValueEntry."Exp. Cost Posted to G/L (ACY)"),
+            tmpInvtPostBuf."Account Type",
+            tmpInvtPostBuf."Account No.", // 39
+            tmpInvtPostBuf."Account Type", //42
+            FormatDecimaNumber(tmpInvtPostBuf.Amount),  //43
+            FormatDecimaNumber(tmpInvtPostBuf."Amount (ACY)"), //44
+            tmpInvtPostBuf."Interim Account",
+            tmpInvtPostBuf."Posting Date", //46
+            tmpInvtPostBuf.Negative,
+            tmpInvtPostBuf."Bal. Account Type",
+            tmpInvtPostBuf."Job No.",
+            copystr(tmpInvtPostBuf."Account No.", 1, 1), 0); //50
+        txtSQLCommandText := StrSubstNo('%1 %2 %3', lblSQLinsertTable, txtSQLCommandFields, txtSQLCommandValues);
+        SQLCommand.CommandText := txtSQLCommandText;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            exit(true);
+
+    end;
+
+    procedure UpdateEntries(DateFilter: Text; EntriesFilter: text)
+    var
+        ValueEntry: Record "Value Entry";
+        GLItemLedgerRelation: Record "G/L - Item Ledger Relation";
+        Window: Dialog;
+        lblDialog: Label 'Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############', comment = 'ESP="Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############"';
+    begin
+        if GuiAllowed then
+            Window.Open(lblDialog);
+        // primero mirarmos todos los movimientos de valor y si ya tienen el registro contable
+        ValueEntry.Reset();
+        if EntriesFilter <> '' then
+            ValueEntry.SetFilter("Entry No.", EntriesFilter);
+        // ValueEntry.SetRange("Updated Cost Entry", false);
+        if DateFilter <> '' then
+            ValueEntry.SetFilter("Posting Date", DateFilter);
+
+        ValueEntry.SetFilter("Item Ledger Entry Type", '%1', ValueEntry."Item Ledger Entry Type"::Sale, ValueEntry."Item Ledger Entry Type"::"Negative Adjmt.");
+        if ValueEntry.FindFirst() then
+            repeat
+                if (ValueEntry."Cost Posted to G/L" <> 0) or (ValueEntry."Expected Cost Posted to G/L" <> 0) then begin
+                    if GuiAllowed then
+                        Window.Update(1, ValueEntry.TableCaption);
+                    if GuiAllowed then
+                        Window.Update(2, ValueEntry."Entry No.");
+                    if CreateValueGLEntry(ValueEntry) then
+                        if GuiAllowed then
+                            Window.Update(3, ValueEntry."Posting Date");
+                end;
+            until ValueEntry.Next() = 0;
+
+        if GuiAllowed then
+            Window.Close();
+    end;
+
+    local procedure CreateValueGLEntry(ValueEntry: Record "Value Entry"): Boolean
+    var
+        Cost: Decimal;
+        i: Integer;
+    begin
+        // GLItemLedgerRelation.SetRange("Value Entry No.", ValueEntry."Entry No.");
+        // if GLItemLedgerRelation.FindFirst() then
+        //     repeat
+        // comprobamos si tiene 
+        DeleteTempValueEntryGLEntry(ValueEntry);
+        if CreateItemLedgerGlEntry(ValueEntry, ValueEntry, Cost) then
+            exit(true);
+
+        // Until GLItemLedgerRelation.next() = 0;
+    end;
+
+    local procedure CreateItemLedgerGlEntry(ParentValueEntry: record "Value Entry"; ValueEntry: record "Value Entry"; Cost: Decimal): Boolean
+    var
+        tmpInvtPostBuf: Record "Invt. Posting Buffer" temporary;
+        InvPosting: Codeunit "Inventory Posting To G/L";
+        Functions: Codeunit "Zummo Inn. IC Functions";
+    begin
+        ValueEntry."Cost Posted to G/L" := 0;
+        ValueEntry."Expected Cost Posted to G/L" := 0;
+        Clear(InvPosting);
+        if not InvPosting.BufferInvtPosting(ValueEntry) then
+            exit;
+        // Message(StrSubstNo('No se encuentran datos buffer %1', ValueEntry."Entry No."));
+        InvPosting.GetInvtPostBuf(tmpInvtPostBuf);
+
+        if tmpInvtPostBuf.FindFirst() then
+            repeat
+                Functions.UpdateParentValueEntry(ValueEntry, ValueEntry, tmpInvtPostBuf);
+            // ValueEntry."Updated Cost Entry" := true;
+            // ValueEntry.Modify();
+            Until tmpInvtPostBuf.next() = 0;
+        // GLItemLedgerRelation."Updated Cost Entry" := true;
+        // GLItemLedgerRelation.Modify();
+        Commit();
+        exit(true);
+    end;
+
+    local procedure DeleteTempValueEntryGLEntry(ValueEntry: Record "Value Entry")
+    begin
+        // ValueEntryGLEntry.Reset();
+        // ValueEntryGLEntry.SetRange("Parent Value Entry No.", ValueEntry."Entry No.");
+        // ValueEntryGLEntry.DeleteAll();
     end;
 
 

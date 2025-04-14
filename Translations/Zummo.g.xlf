@@ -9318,6 +9318,291 @@
           <note from="Developer" annotates="general" priority="2">ESP="Unidad de medida"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Contracts/Supplies Lines - Field Unit of measure - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 73186213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value entry - G/L Entry Sales Analysis</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Análisis Ventas Mov. Valor - Mov. Contable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Method 3021489501 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Method UpdateEntries - NamedType lblDialog</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 969941267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account Heading</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cuenta Mayor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Account Heading - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1622979514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº cuenta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 3699788827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo mov."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Account Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 3699788827 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory (Interim),Invt. Accrual (Interim),Inventory,WIP Inventory,Inventory Adjmt.,Direct Cost Applied,Overhead Applied,Purchase Variance,COGS,COGS (Interim),Material Variance,Capacity Variance,Subcontracted Variance,Cap. Overhead Variance,Mfg. Overhead Variance</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario (provisional),Crecimiento inventario (provisional),Inventario,Inventario WIP,Ajuste inventario,Coste directo aplicado,Coste general aplicado,Desviación de compras,Coste ventas,Coste ventas (provisional),Desviación material,Desviación capacidad,Desviación subcontratada,Cap. Desv. coste gen.,Desv. coste gen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Account Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 4201175444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Amount G/L - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2863549486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Amount G/L (ACY) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 824028820 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bal. Account Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo contrapartida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Bal. Account Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 824028820 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory (Interim),Invt. Accrual (Interim),Inventory,WIP Inventory,Inventory Adjmt.,Direct Cost Applied,Overhead Applied,Purchase Variance,COGS,COGS (Interim),Material Variance,Capacity Variance,Subcontracted Variance,Cap. Overhead Variance,Mfg. Overhead Variance</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Inventario (provisional),Crecimiento inventario (provisional),Inventario,Inventario WIP,Ajuste inventario,Coste directo aplicado,Coste general aplicado,Desviación de compras,Coste ventas,Coste ventas (provisional),Desviación material,Desviación capacidad,Desviación subcontratada,Cap. Desv. coste gen.,Desv. coste gen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Bal. Account Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 283636318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Capacity Ledger Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº mov. capacidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Capacity Ledger Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 555940972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Actual)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (Real)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Cost Amount (Actual) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 4259561686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Actual) (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (Real) (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Cost Amount (Actual) (ACY) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1418046212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Expected)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (Esperado)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Cost Amount (Expected) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 3845775102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Expected) (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (Esperado) (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Cost Amount (Expected) (ACY) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2077155955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Non-Invtbl.)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (No-invent.)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Cost Amount (Non-Invtbl.) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 4142380189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Amount (Non-Invtbl.)(ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe coste (no-invent.)(DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Cost Amount (Non-Invtbl.)(ACY) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 893370260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost per Unit (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste por unidad (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Cost per Unit (ACY) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2891103215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Posted to G/L</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste regis. en contab."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Cost Posted to G/L - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 337636441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Posted to G/L (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste regis. en contab. (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Cost Posted to G/L (ACY) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha emisión documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Document Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2480638018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº lín. documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Document Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Document Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2363328873 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Sales Shipment,Sales Invoice,Sales Return Receipt,Sales Credit Memo,Purchase Receipt,Purchase Invoice,Purchase Return Shipment,Purchase Credit Memo,Transfer Shipment,Transfer Receipt,Service Shipment,Service Invoice,Service Credit Memo,Posted Assembly</source>
+          <note from="Developer" annotates="general" priority="2">ESP=  ,Albarán venta,Factura venta,Recep. devol. ventas,Abono venta,Albarán compra,Factura compra,Envío devolución compra,Abono compra,Envío transfer.,Recep. transfer.,Servicio regis.,Factura ventas,Abono ventas,Ensamblado registrado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Document Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Mov."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1417535736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exp. Cost Posted to G/L (ACY)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste esperado reg. cont. (DA)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Exp. Cost Posted to G/L (ACY) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1469869997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expected Cost Posted to G/L</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste esperado reg. en cont."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Expected Cost Posted to G/L - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1527563463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº documento externo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field External Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1411740825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº mov. contable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field G/L Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 539540188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha registro Contable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field G/L Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1665642275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interim Account</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cuenta provisional"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Interim Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2037375551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Inventory Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2684044605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº mov. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Item Ledger Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1292185049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entry Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad mov. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Item Ledger Entry Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1861167488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entry Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo mov. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Item Ledger Entry Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1861167488 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase,Sale,Positive Adjmt.,Negative Adjmt.,Transfer,Consumption,Output, ,Assembly Consumption,Assembly Output</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Compra,Venta,Ajuste positivo,Ajuste negativo,Transferencia,Consumo,Salida desde fab., ,Consumo ensamblado,Salida ensamblado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Item Ledger Entry Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1908272084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Job No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2161572060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. almacén"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Location Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2274978501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Negative</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Negativo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Negative - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 95452462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parent Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción principal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Parent Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 3016667202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parent Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº producto principal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Parent Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 3512376628 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parent Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha registro principal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Parent Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 973177136 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parent Value Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Principal mov. valor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Parent Value Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 4111224508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parent Valued Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cant. valorada principal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Parent Valued Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2761848292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Amount (Actual)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe compra (actual)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Purchase Amount (Actual) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 33989820 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Amount (Expected)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe compra (esperado)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Purchase Amount (Expected) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 399423253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Amount (Expected)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importe ventas (Esperado)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Sales Amount (Expected) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Work Center,Machine Center, ,Resource</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Centro trabajo,Centro máquina, ,Recurso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 2837979401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valuation Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha valoración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Valuation Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 625374996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº mov. valor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Value Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 73186213 - Field 3620976728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valued Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cant. valorada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Field Valued Quantity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 983264615 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Items blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueos Productos por Clientes"</note>
@@ -12863,6 +13148,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="No se puede modificar los precios de compra. Esta activada la aprobación de precios de compra.\Debe realizar una solicitud."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method T7012_PurchasePrice_OnEvent_CheckApproval - NamedType lblError</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - NamedType 3210847871" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Source=%1;Initial Catalog=%2;User Id=%3;Password=%4;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - NamedType DataSourceTok</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3038898336 - NamedType 2531569296" size-unit="char" translate="yes" xml:space="preserve">
           <source>EnglishText</source>
           <note from="Developer" annotates="general" priority="2">ESP="%1 %2 %3 %4 %5"</note>
@@ -13078,11 +13368,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea abrir el %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method ShowPurchRcptOrder - NamedType lblConfirm</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3234355424 - Method 2484604108 - NamedType 3210847871" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Source=%1;Initial Catalog=%2;User Id=%3;Password=%4;</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SQLConnect - NamedType DataSourceTok</note>
-        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3368332798 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
           <source>DELETE FROM tBIFinan_Cuentas WHERE [00 - Origen] ='%1'</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13118,6 +13403,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method TryUpdateOrderNoPurchaseOrderIC - NamedType BodyLbl2</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3021489501 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateEntries - NamedType lblDialog</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 484028685 - NamedType 2075791351" size-unit="char" translate="yes" xml:space="preserve">
           <source>INSERT INTO tBIFinan_Cuentas</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13142,6 +13432,61 @@
           <source>values(</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateGLEntry - NamedType lblSQLInsertValues</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 2075791351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>INSERT INTO [ZUMMO$Cost Value Entry Sales]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLinsertTable</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 4104460989" size-unit="char" translate="yes" xml:space="preserve">
+          <source>([Parent Value Entry No_],[Parent Item No_],[Parent Posting Date],[Parent Description],[Parent Valued Quantity],[Value Entry No_]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertFields1</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 3466764372" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[G_L Entry No_],[Account No_],[Item No_],[Posting Date],[Item Ledger Entry Type],[Document No_],[Description],[Location Code],[Inventory Posting Group]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertFields2</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 2829067755" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[Item Ledger Entry No_],[Valued Quantity],[Item Ledger Entry Quantity],[Cost Amount (Actual)],[Cost Posted to G_L],[Document Date]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertFields3</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 2191371138" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[External Document No_],[Cost Amount (Actual) (ACY)],[Cost Posted to G_L (ACY)],[Cost per Unit (ACY)],[Document Type],[Document Line No_]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertFields4</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 1553674521" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[Valuation Date],[Capacity Ledger Entry No_],[Purchase Amount (Actual)],[Purchase Amount (Expected)],[Sales Amount (Expected)],[Cost Amount (Expected)]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertFields5</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 915977904" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[Cost Amount (Non-Invtbl_)],[Cost Amount (Expected) (ACY)],[Cost Amount (Non-Invtbl_)(ACY)],[Expected Cost Posted to G_L],[Exp_ Cost Posted to G_L (ACY)]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertFields6</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 278281287" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[Type],[No_],[Account Type],[Amount G_L],[Amount G_L (ACY)],[Interim Account],[G_L Posting Date],[Negative],[Bal_ Account Type],[Job No_],[Account Heading],[Entry No_])</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertFields7</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 4041047142" size-unit="char" translate="yes" xml:space="preserve">
+          <source>values(%1,'%2','%3','%4',%5,%6,%7,'%8','%9','%10','%11','%12','%13','%14',</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertValues1</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 2127957291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>'%15',%16,%17,%18,%19,%20,'%21','%22',%23,%24,%25,'%26',%27,'%28',%29,%30,%31,%32,%33,%34,%35,%36,%37,'%38','%39',</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertValues2</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 2765653908" size-unit="char" translate="yes" xml:space="preserve">
+          <source>'%40','%41',%42,%43,'%44','%45','%46','%47','%48','%49',%50)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertValues3</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3887908498 - NamedType 291269830" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proceso finalizado. Se han actualizado las lineas del pedido %1</source>
@@ -18752,6 +19097,81 @@
           <source>Nº Serie</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Trazabilidad Facturas - Control Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate,Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Property PromotedActionCategories</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value entry - G/L Entries Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Costes Ventas Mov. valor - Mov. conta "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Method 3606769622 - NamedType 3649616787" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Method ZMCostesTABLECONNECTION - NamedType lblConnectionString</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Control 3858021007 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filter date for update Data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro fecha para actualización Datos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Control DateFilterFin - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Control 3858021007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Fin"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Control DateFilterFin - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Control 3843938382 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filter date for update Data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro fecha para actualización Datos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Control DateFilterIni - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Control 3843938382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Inicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Control DateFilterIni - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Control 1771361080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Mov. Fin"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Control EntryNoFilterFin - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Control 3708884661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Mov. Inicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Control EntryNoFilterIni - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Action 2122723113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BOM Explode</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Costes L. Materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Action BOMExplode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Action 1719057576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entrie</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Action ItemLedgerEntry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Action 642782499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Action Update - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Action 642782499 - Method 1377591017 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You have to indicate a filter.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe indicar un filtro."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Action Update - Method OnAction - NamedType lblError</note>
+        </trans-unit>
+        <trans-unit id="Page 1601545982 - Action 642782499 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1\Filtro Mov: %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1\Filtro Mov: %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Value entry - G/L Entry Sales - Action Update - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Page 3345661731 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WS Purchase Line</source>

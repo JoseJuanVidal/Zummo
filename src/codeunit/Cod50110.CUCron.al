@@ -82,7 +82,7 @@ codeunit 50110 "CU_Cron"
                     end;
                 'UpdateAreaManagerOwner':
                     begin
-                        CRMIntegrationManagement.UpdateOwneridAreaManager(true);
+                        CRMIntegrationManagement.UpdateOwneridAreaManager(false);
                     end;
                 'UpdateBomListCOST':
                     begin
