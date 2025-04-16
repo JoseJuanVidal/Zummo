@@ -357,40 +357,44 @@ table 17387 "ZM Cost Value entry Sales"
 
     procedure UpdateEntries(DateFilter: Text; EntriesFilter: text)
     var
+        ItemledgerEntry: Record "Item Ledger Entry";
         ValueEntry: Record "Value Entry";
         GLItemLedgerRelation: Record "G/L - Item Ledger Relation";
         Window: Dialog;
-        lblDialog: Label 'Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############', comment = 'ESP="Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############"';
+        lblDialog: Label 'Tipo #1#########################\Mov. Prod: #2###################\Movimiento Valor:#3#################\Fecha:#4############',
+            comment = 'ESP="Tipo #1#########################\Mov. Prod: #2###################\Movimiento Valor:#3#################\Fecha:#4############"';
     begin
         if GuiAllowed then
             Window.Open(lblDialog);
         // primero mirarmos todos los movimientos de valor y si ya tienen el registro contable
-        ValueEntry.Reset();
         if EntriesFilter <> '' then
-            ValueEntry.SetFilter("Entry No.", EntriesFilter);
+            ItemledgerEntry.SetFilter("Entry No.", EntriesFilter);
         // ValueEntry.SetRange("Updated Cost Entry", false);
         if DateFilter <> '' then
-            ValueEntry.SetFilter("Posting Date", DateFilter);
-
-        ValueEntry.SetFilter("Item Ledger Entry Type", '%1', ValueEntry."Item Ledger Entry Type"::Sale, ValueEntry."Item Ledger Entry Type"::"Negative Adjmt.");
-        if ValueEntry.FindFirst() then
+            ItemledgerEntry.SetFilter("Posting Date", DateFilter);
+        ItemledgerEntry.SetFilter("Entry Type", '%1', ItemledgerEntry."Entry Type"::Sale, ItemledgerEntry."Entry Type"::"Negative Adjmt.");
+        if ItemledgerEntry.FindFirst() then
             repeat
-                if (ValueEntry."Cost Posted to G/L" <> 0) or (ValueEntry."Expected Cost Posted to G/L" <> 0) then begin
-                    if GuiAllowed then
-                        Window.Update(1, ValueEntry.TableCaption);
-                    if GuiAllowed then
-                        Window.Update(2, ValueEntry."Entry No.");
-                    if CreateValueGLEntry(ValueEntry) then
-                        if GuiAllowed then
-                            Window.Update(3, ValueEntry."Posting Date");
-                end;
-            until ValueEntry.Next() = 0;
-
+                Window.Update(1, ItemledgerEntry."Entry Type");
+                Window.Update(2, ItemledgerEntry."Entry No.");
+                // DeleteTempValueEntryGLEntry(ItemledgerEntry);
+                ValueEntry.SetRange("Item Ledger Entry No.", ItemledgerEntry."Entry No.");
+                if ValueEntry.FindFirst() then
+                    repeat
+                        if (ValueEntry."Cost Posted to G/L" <> 0) or (ValueEntry."Expected Cost Posted to G/L" <> 0) then begin
+                            if GuiAllowed then
+                                Window.Update(3, ValueEntry."Entry No.");
+                            if CreateValueGLEntry(ItemledgerEntry."Entry No.", ValueEntry) then
+                                if GuiAllowed then
+                                    Window.Update(4, ValueEntry."Posting Date");
+                        end;
+                    until ValueEntry.Next() = 0;
+            Until ItemledgerEntry.next() = 0;
         if GuiAllowed then
             Window.Close();
     end;
 
-    local procedure CreateValueGLEntry(ValueEntry: Record "Value Entry"): Boolean
+    local procedure CreateValueGLEntry(ItemLedgerEntryno: Integer; ValueEntry: Record "Value Entry"): Boolean
     var
         Cost: Decimal;
         i: Integer;
@@ -399,7 +403,7 @@ table 17387 "ZM Cost Value entry Sales"
         // if GLItemLedgerRelation.FindFirst() then
         //     repeat
         // comprobamos si tiene 
-        DeleteTempValueEntryGLEntry(ValueEntry);
+
         if CreateItemLedgerGlEntry(ValueEntry, ValueEntry, Cost) then
             exit(true);
 
@@ -422,7 +426,7 @@ table 17387 "ZM Cost Value entry Sales"
 
         if tmpInvtPostBuf.FindFirst() then
             repeat
-                Functions.UpdateParentValueEntry(ValueEntry, ValueEntry, tmpInvtPostBuf);
+            // Functions.UpdateParentValueEntry(ValueEntry, ValueEntry, tmpInvtPostBuf);
             // ValueEntry."Updated Cost Entry" := true;
             // ValueEntry.Modify();
             Until tmpInvtPostBuf.next() = 0;

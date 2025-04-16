@@ -2908,13 +2908,14 @@ codeunit 50104 "Zummo Inn. IC Functions"
         ConnStr: text;
     begin
         // ConnStr := StrSubstNo(DataSourceTok, 'zummo.ddns.net', 'ReportingZummo', 'zummo', '@b3rti@');
-        ConnStr := StrSubstNo(DataSourceTok, 'localhost', '', 'sa', 'Bario5622$');
+        ConnStr := StrSubstNo(DataSourceTok, 'localhost', 'ZUMMO Inventario', 'sa', 'Bario5622$');
         SQLConnection := SQLConnection.SQLConnection(ConnStr);
         SQLConnection.Open();
     end;
 
-    procedure UpdateParentValueEntry(ParentValueEntry: record "Value Entry"; ValueEntry: record "Value Entry"; tmpInvtPostBuf: Record "Invt. Posting Buffer"): Boolean
+    procedure UpdateParentValueEntry(ParentItemLdgNo: Integer; ItemLedgerEntry: Record "Item Ledger Entry"; ValueEntry: record "Value Entry"; GLEntry: Record "G/L Entry"): Boolean
     var
+        GLAccount: Record "G/L Account";
         SQLCommand: DotNet SqlCommand;
         SQLReader: DotNet SqlDataReader;
         txtSQLCommandText: Text;
@@ -2930,24 +2931,25 @@ codeunit 50104 "Zummo Inn. IC Functions"
         lblSQLInsertFields6: Label ',[Cost Amount (Non-Invtbl_)],[Cost Amount (Expected) (ACY)],[Cost Amount (Non-Invtbl_)(ACY)],[Expected Cost Posted to G_L],[Exp_ Cost Posted to G_L (ACY)]';
         lblSQLInsertFields7: Label ',[Type],[No_],[Account Type],[Amount G_L],[Amount G_L (ACY)],[Interim Account],[G_L Posting Date],[Negative],[Bal_ Account Type],[Job No_],[Account Heading],[Entry No_])';
         lblSQLInsertValues1: Label 'values(%1,''%2'',''%3'',''%4'',%5,%6,%7,''%8'',''%9'',''%10'',''%11'',''%12'',''%13'',''%14'',';
-        lblSQLInsertValues2: Label '''%15'',%16,%17,%18,%19,%20,''%21'',''%22'',%23,%24,%25,''%26'',%27,''%28'',%29,%30,%31,%32,%33,%34,%35,%36,%37,''%38'',''%39'',';
-        lblSQLInsertValues3: Label '''%40'',''%41'',%42,%43,''%44'',''%45'',''%46'',''%47'',''%48'',''%49'',%50)';
+        lblSQLInsertValues2: Label '''%15'',%16,%17,%18,%19,%20,''%21'',''%22'',%23,%24,%25,''%26'',%27,''%28'',%29,%30,%31,%32,%33,%34,%35,%36,%37,%38,''%39'',';
+        lblSQLInsertValues3: Label '%40,''%41'',%42,%43,''%44'',''%45'',''%46'',''%47'',''%48'',''%49'',%50)';
     begin
+        GLAccount.get(GLEntry."G/L Account No.");
         if IsNull(InventarioSQLConnection) then
-            SQLConnect(InventarioSQLConnection);
+            BBDDInv_SQLConnect(InventarioSQLConnection);
         Clear(SQLCommand);
         SQLCommand := InventarioSQLConnection.CreateCommand();
         // SQLCommand.CommandText := 'select * From ItemCompleto';
         txtSQLCommandFields := lblSQLInsertFields1 + lblSQLInsertFields2 + lblSQLInsertFields3 + lblSQLInsertFields4 + lblSQLInsertFields5 + lblSQLInsertFields6 + lblSQLInsertFields7;
         txtSQLCommandValues := StrSubstNo(lblSQLInsertValues1 + lblSQLInsertValues2 + lblSQLInsertValues3,
-            ParentValueEntry."Entry No.",
-            ParentValueEntry."Item No.",
-            StrSubstNo('%1-%2-%3', Date2DMY(ParentValueEntry."Posting Date", 3), Date2DMY(ParentValueEntry."Posting Date", 1), Date2DMY(ParentValueEntry."Posting Date", 2)),
-            ParentValueEntry.Description,
-            FormatDecimaNumber(ParentValueEntry."Valued Quantity"),
+            ParentItemLdgNo, //ItemLedgerEntry."Entry No.",
+            ItemLedgerEntry."Item No.",
+            StrSubstNo('%1-%2-%3', Date2DMY(ItemLedgerEntry."Posting Date", 3), Date2DMY(ItemLedgerEntry."Posting Date", 1), Date2DMY(ItemLedgerEntry."Posting Date", 2)),
+            ItemLedgerEntry.Description,
+            FormatDecimaNumber(ItemLedgerEntry.Quantity),
             ValueEntry."Entry No.",
-            tmpInvtPostBuf."Entry No.",
-            tmpInvtPostBuf."Account No.",
+            GLEntry."Entry No.",
+            GLEntry."G/L Account No.",
             ValueEntry."Item No.",
             StrSubstNo('%1-%2-%3', Date2DMY(ValueEntry."Posting Date", 3), Date2DMY(ValueEntry."Posting Date", 1), Date2DMY(ValueEntry."Posting Date", 2)),  //10
             ValueEntry."Item Ledger Entry Type",
@@ -2974,20 +2976,21 @@ codeunit 50104 "Zummo Inn. IC Functions"
             FormatDecimaNumber(ValueEntry."Sales Amount (Expected)"),
             FormatDecimaNumber(ValueEntry."Cost Amount (Expected)"),
             FormatDecimaNumber(ValueEntry."Cost Amount (Non-Invtbl.)"),
-            FormatDecimaNumber(ValueEntry."Cost Amount (Non-Invtbl.)(ACY)"), //35
+            FormatDecimaNumber(ValueEntry."Cost Amount (Expected) (ACY)"), //35
+            FormatDecimaNumber(ValueEntry."Cost Amount (Non-Invtbl.)(ACY)"),
             FormatDecimaNumber(ValueEntry."Expected Cost Posted to G/L"),
             FormatDecimaNumber(ValueEntry."Exp. Cost Posted to G/L (ACY)"),
-            tmpInvtPostBuf."Account Type",
-            tmpInvtPostBuf."Account No.", // 39
-            tmpInvtPostBuf."Account Type", //42
-            FormatDecimaNumber(tmpInvtPostBuf.Amount),  //43
-            FormatDecimaNumber(tmpInvtPostBuf."Amount (ACY)"), //44
-            tmpInvtPostBuf."Interim Account",
-            tmpInvtPostBuf."Posting Date", //46
-            tmpInvtPostBuf.Negative,
-            tmpInvtPostBuf."Bal. Account Type",
-            tmpInvtPostBuf."Job No.",
-            copystr(tmpInvtPostBuf."Account No.", 1, 1), 0); //50
+            GLAccount."Account Type",
+            GLEntry."G/L Account No.", // 41
+            GLAccount."Account Type", //42
+            FormatDecimaNumber(ValueEntry."Cost Posted to G/L" + ValueEntry."Expected Cost Posted to G/L"),  //43
+            FormatDecimaNumber(ValueEntry."Cost Posted to G/L" + ValueEntry."Expected Cost Posted to G/L"), //44
+            0, //GLAccount."Interim Account",
+            GLEntry."Posting Date", //46
+            0, //tmpInvtPostBuf.Negative,
+            GLEntry."Bal. Account Type",
+            GLEntry."Job No.",
+            copystr(GLEntry."G/L Account No.", 1, 1), 0); //50
         txtSQLCommandText := StrSubstNo('%1 %2 %3', lblSQLinsertTable, txtSQLCommandFields, txtSQLCommandValues);
         SQLCommand.CommandText := txtSQLCommandText;
         SQLReader := SQLCommand.ExecuteReader;
@@ -2998,87 +3001,157 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
     procedure UpdateEntries(DateFilter: Text; EntriesFilter: text)
     var
+        Item: Record "Item";
+        ItemledgerEntry: Record "Item Ledger Entry";
         ValueEntry: Record "Value Entry";
         GLItemLedgerRelation: Record "G/L - Item Ledger Relation";
         Window: Dialog;
-        lblDialog: Label 'Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############', comment = 'ESP="Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############"';
+        lblDialog: Label 'Tipo #1#########################\Mov. Prod: #2###################\Movimiento Valor:#3#################\Fecha:#4############',
+            comment = 'ESP="Tipo #1#########################\Mov. Prod: #2###################\Movimiento Valor:#3#################\Fecha:#4############"';
     begin
         if GuiAllowed then
             Window.Open(lblDialog);
         // primero mirarmos todos los movimientos de valor y si ya tienen el registro contable
-        ValueEntry.Reset();
-        if EntriesFilter <> '' then
-            ValueEntry.SetFilter("Entry No.", EntriesFilter);
+        if (EntriesFilter <> '') and (DateFilter = '') then
+            ItemledgerEntry.SetFilter("Entry No.", EntriesFilter);
         // ValueEntry.SetRange("Updated Cost Entry", false);
         if DateFilter <> '' then
-            ValueEntry.SetFilter("Posting Date", DateFilter);
-
-        ValueEntry.SetFilter("Item Ledger Entry Type", '%1', ValueEntry."Item Ledger Entry Type"::Sale, ValueEntry."Item Ledger Entry Type"::"Negative Adjmt.");
-        if ValueEntry.FindFirst() then
+            ItemledgerEntry.SetFilter("Posting Date", DateFilter);
+        ItemledgerEntry.SetFilter("Entry Type", '%1', ItemledgerEntry."Entry Type"::Sale, ItemledgerEntry."Entry Type"::"Negative Adjmt.");
+        if ItemledgerEntry.FindFirst() then
             repeat
-                if (ValueEntry."Cost Posted to G/L" <> 0) or (ValueEntry."Expected Cost Posted to G/L" <> 0) then begin
-                    if GuiAllowed then
-                        Window.Update(1, ValueEntry.TableCaption);
-                    if GuiAllowed then
-                        Window.Update(2, ValueEntry."Entry No.");
-                    if CreateValueGLEntry(ValueEntry) then
-                        if GuiAllowed then
-                            Window.Update(3, ValueEntry."Posting Date");
-                end;
-            until ValueEntry.Next() = 0;
+                Window.Update(1, ItemledgerEntry."Entry Type");
+                Window.Update(2, ItemledgerEntry."Entry No.");
+                DeleteTempValueEntryGLEntry(ItemledgerEntry."Entry No.");
+                item.Get(ItemledgerEntry."Item No.");
+                if Item.HasBOM() then begin
 
+                    ValueEntry_ItemLedgerEntry(ItemledgerEntry."Entry No.", ItemledgerEntry);
+
+                    // ahora ponemos los movimientos liquidados
+                    GetItemApplicationEntry(ItemledgerEntry."Entry No.", ItemledgerEntry);
+                end;
+            Until ItemledgerEntry.next() = 0;
         if GuiAllowed then
             Window.Close();
     end;
 
-    local procedure CreateValueGLEntry(ValueEntry: Record "Value Entry"): Boolean
+    local procedure ValueEntry_ItemLedgerEntry(ParentItemLdgNo: Integer; ItemledgerEntry: Record "Item Ledger Entry")
     var
-        Cost: Decimal;
-        i: Integer;
+        ValueEntry: Record "Value Entry";
     begin
-        // GLItemLedgerRelation.SetRange("Value Entry No.", ValueEntry."Entry No.");
-        // if GLItemLedgerRelation.FindFirst() then
-        //     repeat
-        // comprobamos si tiene 
-        DeleteTempValueEntryGLEntry(ValueEntry);
-        if CreateItemLedgerGlEntry(ValueEntry, ValueEntry, Cost) then
-            exit(true);
-
-        // Until GLItemLedgerRelation.next() = 0;
+        ValueEntry.SetRange("Item Ledger Entry No.", ItemledgerEntry."Entry No.");
+        if ValueEntry.FindFirst() then
+            repeat
+                if (ValueEntry."Cost Posted to G/L" <> 0) or (ValueEntry."Expected Cost Posted to G/L" <> 0) then begin
+                    CreateItemLedgerGlEntry(ParentItemLdgNo, ItemledgerEntry, ValueEntry);
+                end;
+            until ValueEntry.Next() = 0;
     end;
 
-    local procedure CreateItemLedgerGlEntry(ParentValueEntry: record "Value Entry"; ValueEntry: record "Value Entry"; Cost: Decimal): Boolean
+    local procedure CreateItemLedgerGlEntry(ParentItemLdgNo: Integer; ItemLedgerEntry: Record "Item Ledger Entry"; ValueEntry: record "Value Entry"): Boolean
     var
-        tmpInvtPostBuf: Record "Invt. Posting Buffer" temporary;
-        InvPosting: Codeunit "Inventory Posting To G/L";
-        Functions: Codeunit "Zummo Inn. IC Functions";
+        GLEntry: Record "G/L Entry";
+        GLItemLedgRelation: Record "G/L - Item Ledger Relation";
     begin
-        ValueEntry."Cost Posted to G/L" := 0;
-        ValueEntry."Expected Cost Posted to G/L" := 0;
-        Clear(InvPosting);
-        if not InvPosting.BufferInvtPosting(ValueEntry) then
-            exit;
-        // Message(StrSubstNo('No se encuentran datos buffer %1', ValueEntry."Entry No."));
-        InvPosting.GetInvtPostBuf(tmpInvtPostBuf);
-
-        if tmpInvtPostBuf.FindFirst() then
+        GLItemLedgRelation.SetRange("Value Entry No.", ValueEntry."Entry No.");
+        if GLItemLedgRelation.FindFirst() then
             repeat
-                Functions.UpdateParentValueEntry(ValueEntry, ValueEntry, tmpInvtPostBuf);
+                GLEntry.GET(GLItemLedgRelation."G/L Entry No.");
+                UpdateParentValueEntry(ParentItemLdgNo, ItemLedgerEntry, ValueEntry, GLEntry);
             // ValueEntry."Updated Cost Entry" := true;
             // ValueEntry.Modify();
-            Until tmpInvtPostBuf.next() = 0;
+            Until GLItemLedgRelation.next() = 0;
         // GLItemLedgerRelation."Updated Cost Entry" := true;
         // GLItemLedgerRelation.Modify();
-        Commit();
         exit(true);
     end;
 
-    local procedure DeleteTempValueEntryGLEntry(ValueEntry: Record "Value Entry")
+    local procedure DeleteTempValueEntryGLEntry(ItemLedgerEntryNo: Integer)
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        // Windows: Dialog;
+        lblSQLDelete: Label 'DELETE FROM [ZUMMO$Cost Value Entry Sales] WHERE [Parent Value Entry No_] =%1';
     begin
-        // ValueEntryGLEntry.Reset();
-        // ValueEntryGLEntry.SetRange("Parent Value Entry No.", ValueEntry."Entry No.");
-        // ValueEntryGLEntry.DeleteAll();
+        // windows.Open('#1###################################\#2##############################');
+        // windows.Update(1, 'Updating.....');
+        if IsNull(InventarioSQLConnection) then
+            BBDDInv_SQLConnect(InventarioSQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := InventarioSQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := StrSubstNo(lblSQLDelete, ItemLedgerEntryNo);
+        // ** EXEC READER **
+        SQLReader := SQLCommand.ExecuteReader;
+        // IF SQLReader.HasRows then
+        //     exit(false);
+        // windows.close;
+        // exit(true);
     end;
 
-
+    local procedure GetItemApplicationEntry(ParentItemLdgNo: Integer; ItemledgerEntry: record "Item Ledger Entry")
+    var
+        ItemApplnEntry: record "Item Application Entry";
+        ItemLedgEntry: record "Item Ledger Entry";
+        EntryNo: Integer;
+    begin
+        EntryNo := ItemledgerEntry."Entry No.";
+        case ItemledgerEntry."Entry Type" of
+            ItemledgerEntry."Entry Type"::Transfer:
+                begin
+                    ItemApplnEntry.RESET;
+                    ItemApplnEntry.SETCURRENTKEY("Inbound Item Entry No.", "Outbound Item Entry No.", "Cost Application");
+                    ItemApplnEntry.SETRANGE("Inbound Item Entry No.", ItemledgerEntry."Entry No.");
+                    ItemApplnEntry.SETFILTER("Transferred-from Entry No.", '<>%1', 0);
+                    ItemApplnEntry.SETRANGE("Cost Application", TRUE);
+                    IF ItemApplnEntry.FIND('-') THEN
+                        REPEAT
+                            ItemLedgEntry.Get(ItemApplnEntry."Inbound Item Entry No.");
+                            case ItemLedgEntry."Entry Type" of
+                                ItemLedgEntry."Entry Type"::Transfer:
+                                    begin
+                                        ItemLedgEntry.Get(ItemApplnEntry."Transferred-from Entry No.");
+                                        GetItemApplicationEntry(ParentItemLdgNo, ItemLedgEntry);
+                                    end;
+                            end;
+                        UNTIL ItemApplnEntry.NEXT = 0;
+                end;
+            ItemledgerEntry."Entry Type"::Output:
+                begin
+                    ItemLedgEntry.SetRange("Entry Type", ItemLedgEntry."Entry Type"::Consumption);
+                    ItemLedgEntry.SetRange("Order No.", ItemledgerEntry."Order No.");
+                    ItemLedgEntry.SetRange("Order Line No.", ItemledgerEntry."Order Line No.");
+                    if ItemLedgEntry.FindFirst() then
+                        repeat
+                            ValueEntry_ItemLedgerEntry(ParentItemLdgNo, ItemLedgEntry);
+                        Until ItemLedgEntry.next() = 0;
+                end;
+            ItemledgerEntry."Entry Type"::"Assembly Output":
+                begin
+                    ItemLedgEntry.SetRange("Entry Type", ItemLedgEntry."Entry Type"::"Assembly Consumption");
+                    ItemLedgEntry.SetRange("Order No.", ItemledgerEntry."Order No.");
+                    if ItemLedgEntry.FindFirst() then
+                        repeat
+                            ValueEntry_ItemLedgerEntry(ParentItemLdgNo, ItemLedgEntry);
+                            GetItemApplicationEntry(ParentItemLdgNo, ItemLedgEntry);
+                        Until ItemLedgEntry.next() = 0;
+                end;
+            ELSE BEGIN
+                ItemApplnEntry.RESET;
+                ItemApplnEntry.SETCURRENTKEY("Outbound Item Entry No.", "Item Ledger Entry No.", "Cost Application");
+                ItemApplnEntry.SETRANGE("Outbound Item Entry No.", ItemledgerEntry."Entry No.");
+                ItemApplnEntry.SETRANGE("Item Ledger Entry No.", ItemledgerEntry."Entry No.");
+                ItemApplnEntry.SETRANGE("Cost Application", TRUE);
+                IF ItemApplnEntry.FIND('-') THEN
+                    REPEAT
+                        // Si no es compra o transferencia, seguimos explorando
+                        // InsertTempEntry(ItemApplnEntry."Inbound Item Entry No.", -ItemApplnEntry.Quantity);
+                        ItemLedgEntry.Get(ItemApplnEntry."Inbound Item Entry No.");
+                        ValueEntry_ItemLedgerEntry(ParentItemLdgNo, ItemLedgEntry);
+                        GetItemApplicationEntry(ParentItemLdgNo, ItemLedgEntry);
+                    UNTIL ItemApplnEntry.NEXT = 0;
+            END;
+        end;
+    end;
 }

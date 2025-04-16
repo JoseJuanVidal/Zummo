@@ -9324,8 +9324,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 73186213 - Method 3021489501 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############"</note>
+          <source>Tipo #1#########################\Mov. Prod: #2###################\Movimiento Valor:#3#################\Fecha:#4############</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo #1#########################\Mov. Prod: #2###################\Movimiento Valor:#3#################\Fecha:#4############"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Cost Value entry Sales - Method UpdateEntries - NamedType lblDialog</note>
         </trans-unit>
         <trans-unit id="Table 73186213 - Field 969941267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -13173,6 +13173,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CrearPedidoCompraDesdeBCDTravel - NamedType lblCreate</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3740096671 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELETE FROM [ZUMMO$Cost Value Entry Sales] WHERE [Parent Value Entry No_] =%1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method DeleteTempValueEntryGLEntry - NamedType lblSQLDelete</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1451124401 - NamedType 1583360673" size-unit="char" translate="yes" xml:space="preserve">
           <source>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Albarán Nº %1 la Dimensión %2 debe tener asignado un valor"</note>
@@ -13404,8 +13409,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method TryUpdateOrderNoPurchaseOrderIC - NamedType BodyLbl2</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3021489501 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############"</note>
+          <source>Tipo #1#########################\Mov. Prod: #2###################\Movimiento Valor:#3#################\Fecha:#4############</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo #1#########################\Mov. Prod: #2###################\Movimiento Valor:#3#################\Fecha:#4############"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateEntries - NamedType lblDialog</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 484028685 - NamedType 2075791351" size-unit="char" translate="yes" xml:space="preserve">
@@ -13479,12 +13484,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertValues1</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 2127957291" size-unit="char" translate="yes" xml:space="preserve">
-          <source>'%15',%16,%17,%18,%19,%20,'%21','%22',%23,%24,%25,'%26',%27,'%28',%29,%30,%31,%32,%33,%34,%35,%36,%37,'%38','%39',</source>
+          <source>'%15',%16,%17,%18,%19,%20,'%21','%22',%23,%24,%25,'%26',%27,'%28',%29,%30,%31,%32,%33,%34,%35,%36,%37,%38,'%39',</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertValues2</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 2836528966 - NamedType 2765653908" size-unit="char" translate="yes" xml:space="preserve">
-          <source>'%40','%41',%42,%43,'%44','%45','%46','%47','%48','%49',%50)</source>
+          <source>%40,'%41',%42,%43,'%44','%45','%46','%47','%48','%49',%50)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateParentValueEntry - NamedType lblSQLInsertValues3</note>
         </trans-unit>
@@ -21197,6 +21202,11 @@
           <source>Start Daet</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Inicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Control DateFilterIni - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 744342589 - Control 2129631010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value Entry No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mov. Valor No."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Value entry - G/L Entries - Control ValueentryNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 744342589 - Action 2122723113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BOM Explode</source>

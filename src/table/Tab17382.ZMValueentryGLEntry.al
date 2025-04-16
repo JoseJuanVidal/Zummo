@@ -462,7 +462,7 @@ table 17382 "ZM Value entry - G/L Entry"
         // primero mirarmos todos los movimientos de valor y si ya tienen el registro contable
         ValueEntry.Reset();
         if EntryNo <> 0 then
-            ValueEntry.SetRange("Entry No.", EntryNo);
+            ValueEntry.SetFilter("Entry No.", '%1..', EntryNo);
         // ValueEntry.SetRange("Updated Cost Entry", false);
         if DateFilter <> '' then
             ValueEntry.SetFilter("Posting Date", DateFilter);

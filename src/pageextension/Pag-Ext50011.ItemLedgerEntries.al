@@ -214,6 +214,21 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                         Funciones.ExportMovsProductos();
                 end;
             }
+            action(CostesGL)
+            {
+                ApplicationArea = all;
+                trigger OnAction()
+                var
+                    ItemledgerEntry: Record "Item Ledger Entry";
+                    Functions: Codeunit "Zummo Inn. IC Functions";
+                    DateFilter: text;
+                begin
+                    CurrPage.SetSelectionFilter(ItemledgerEntry);
+                    DateFilter := Rec.GetFilter("Posting Date");
+                    if Confirm('actualizar %1', true, ItemledgerEntry.GetFilter("Entry No.")) then
+                        Functions.UpdateEntries(DateFilter, ItemledgerEntry.GetFilter("Entry No."));
+                end;
+            }
         }
         addfirst(Reporting)
         {

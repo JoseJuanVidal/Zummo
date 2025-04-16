@@ -29,6 +29,11 @@ page 17388 "ZM Value entry - G/L Entries"
                     Caption = 'End Date', comment = 'ESP="Fecha Fin"';
                     ToolTip = 'Filter date for update Data', comment = 'ESP="Filtro fecha para actualización Datos"';
                 }
+                field(ValueentryNo; ValueentryNo)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Value Entry No.', comment = 'ESP="Mov. Valor No."';
+                }
             }
             repeater(General)
             {
@@ -352,11 +357,12 @@ page 17388 "ZM Value entry - G/L Entries"
                     lblError: Label 'You have to indicate a Date filter.\%1 to %2', comment = 'ESP="Debe indicar un filtro de Fecha.\%1 a %2"';
                     lblConfirm: Label '¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?', comment = 'ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"';
                 begin
-                    if (DateFilterIni = 0D) or (DateFilterFin = 0D) then
+                    if (ValueentryNo = 0) and ((DateFilterIni = 0D) or (DateFilterFin = 0D)) then
                         error(lblError, DateFilterIni, DateFilterFin);
-                    Customer.SetRange("Date Filter", DateFilterIni, DateFilterFin);
+                    if DateFilterIni <> 0D then
+                        Customer.SetRange("Date Filter", DateFilterIni, DateFilterFin);
                     if Confirm(lblConfirm, false, Customer.GetFilter("Date Filter")) then
-                        Rec.UpdateEntries(0, Customer.GetFilter("Date Filter"));
+                        Rec.UpdateEntries(ValueentryNo, Customer.GetFilter("Date Filter"));
                 end;
             }
             // action(heading)
@@ -412,6 +418,7 @@ page 17388 "ZM Value entry - G/L Entries"
     var
         DateFilterIni: date;
         DateFilterFin: Date;
+        ValueentryNo: Integer;
 
     local procedure BomExplode_CostesGLEntry()
     var
