@@ -3498,7 +3498,7 @@ codeunit 50111 "Funciones"
                         begin
                             PurchInvHeader.Get(FALedgerEntry."Document No.");
                             InvGetDocAttachmentFile(PurchInvHeader, FolderTarget);
-                            SourceFileName := GetFilePathPurchaseHeader(PurchInvHeader."Pre-Assigned No.", Name);
+                            SourceFileName := GetFilePathPurchaseHeader(PurchInvHeader."Pre-Assigned No.", Name, false);
                             if SourceFileName <> '' then begin
                                 FileName := StrSubstNo('%1\%2 %3', FolderTarget, PurchInvHeader."No.", name);
                                 FileMgt.CopyServerFile(SourceFileName, FileName, true);
@@ -3508,7 +3508,7 @@ codeunit 50111 "Funciones"
                         begin
                             PurchCRMemoHdr.Get(FALedgerEntry."Document No.");
                             CRMemoGetDocAttachmentFile(PurchCRMemoHdr, FolderTarget);
-                            SourceFileName := GetFilePathPurchaseHeader(PurchCRMemoHdr."Pre-Assigned No.", Name);
+                            SourceFileName := GetFilePathPurchaseHeader(PurchCRMemoHdr."Pre-Assigned No.", Name, true);
                             if SourceFileName <> '' then begin
                                 FileName := StrSubstNo('%1\%2 %3', FolderTarget, PurchCRMemoHdr."No.", name);
                                 FileMgt.CopyServerFile(SourceFileName, FileName, true);
@@ -3518,7 +3518,113 @@ codeunit 50111 "Funciones"
             Until FALedgerEntry.next() = 0;
     end;
 
-    local procedure CheckFolderExist(FixedAssetNo: code[20]; FolderDialogSelection: Text) FolderTarget: Text
+    procedure PurchInvoiceExportPdf(var PurchInvHeader: Record "Purch. Inv. Header")
+    var
+        PurchSetup: record "Purchases & Payables Setup";
+        FileMgt: Codeunit "File Management";
+        FolderDialogSelection: Text;
+        FolderTarget: Text;
+        SourceFileName: text;
+        Name: Text;
+        FileName: text;
+        Count: Integer;
+    begin
+        PurchSetup.Get();
+        PurchSetup.TestField("Path File Export");
+        FolderDialogSelection := PurchSetup."Path File Export";
+        if PurchInvHeader.FindFirst() then
+            repeat
+                FolderTarget := CheckFolderExist(PurchInvHeader."Buy-from Vendor No.", FolderDialogSelection);
+
+                // InvGetDocAttachmentFile(PurchInvHeader, FolderTarget);
+                SourceFileName := GetFilePathPurchaseHeader(PurchInvHeader."Pre-Assigned No.", Name, false);
+                if SourceFileName <> '' then begin
+                    FileName := StrSubstNo('%1\%2 %3', FolderTarget, PurchInvHeader."No.", name);
+                    FileMgt.CopyServerFile(SourceFileName, FileName, true);
+                end;
+            until PurchInvHeader.next() = 0;
+    end;
+
+    procedure PurchCRMemoExportPdf(var PurchCRMemoHeader: Record "Purch. Cr. Memo Hdr.")
+    var
+        PurchSetup: record "Purchases & Payables Setup";
+        FileMgt: Codeunit "File Management";
+        FolderDialogSelection: Text;
+        FolderTarget: Text;
+        SourceFileName: text;
+        Name: Text;
+        FileName: text;
+        Count: Integer;
+    begin
+        PurchSetup.Get();
+        PurchSetup.TestField("Path File Export");
+        FolderDialogSelection := PurchSetup."Path File Export";
+        if PurchCRMemoHeader.FindFirst() then
+            repeat
+                FolderTarget := CheckFolderExist(PurchCRMemoHeader."Buy-from Vendor No.", FolderDialogSelection);
+
+                // InvGetDocAttachmentFile(PurchInvHeader, FolderTarget);
+                SourceFileName := GetFilePathPurchaseHeader(PurchCRMemoHeader."Pre-Assigned No.", Name, true);
+                if SourceFileName <> '' then begin
+                    FileName := StrSubstNo('%1\%2 %3', FolderTarget, PurchCRMemoHeader."No.", name);
+                    FileMgt.CopyServerFile(SourceFileName, FileName, true);
+                end;
+            until PurchCRMemoHeader.next() = 0;
+    end;
+
+    // local procedure GetServerFilePath(PurchInvHeader: Record "Purch. Inv. Header"; var Name: text) FullFilename: Text
+    // var
+    //     DCSetup: Record "CDC Document Capture Setup";
+    //     Document: Record "CDC Document";
+    // begin
+    //     IF NOT DCSetup.Get() THEN
+    //         EXIT;
+    //     Document.SetRange("Created Doc. Table No.", Database::"Purch. Inv. Header");
+    //     Document.SetRange("Created Doc. No.", PurchInvHeader."Pre-Assigned No.");
+    //     if not Document.FindFirst() then
+    //         exit('');
+    //     Name := Document.Filename;
+    //     FullFilename := STRSUBSTNO('%1%2%3.%4', DCSetup."Archive File Path", GetDocSubDir(Document), '', Document."File Extension");
+    // end;
+
+    // local procedure GetDocSubDir(Document: Record "CDC Document"): Text
+    // var
+    //     DCSetup: Record "CDC Document Capture Setup";
+    //     Month: Text[2];
+    //     Day: Text[2];
+    //     Path: Text;
+    // begin
+    //     IF NOT DCSetup.Get() THEN
+    //         EXIT;
+    //     IF Document."Import Month" < 10 THEN
+    //         Month := '0' + FORMAT(Document."Import Month")
+    //     ELSE
+    //         Month := FORMAT(Document."Import Month");
+
+    //     IF Document."Import Day" < 10 THEN
+    //         Day := '0' + FORMAT(Document."Import Day")
+    //     ELSE
+    //         Day := FORMAT(Document."Import Day");
+
+    //     IF DCSetup."Company Code in Archive" AND (CompanyName <> '') THEN
+    //         Path := CompanyName + '\';
+
+    //     // IF DocCatCodeInArchive AND (Document."Document Category Code" <> '') THEN
+    //     //     Path := Path + Document."Document Category Code" + '\';
+
+    //     CASE DCSetup."Disk File Directory Structure" OF
+    //         DCSetup."Disk File Directory Structure"::"One Directory":
+    //             EXIT(Path);
+    //         DCSetup."Disk File Directory Structure"::"Year\Month":
+    //             EXIT(Path + STRSUBSTNO('%1\%2\', Document."Import Year", Month));
+    //         DCSetup."Disk File Directory Structure"::"Year\Month\Day":
+    //             EXIT(Path + STRSUBSTNO('%1\%2\%3\', Document."Import Year", Month, Day));
+    //     END;
+    // end;
+
+    local procedure CheckFolderExist(FixedAssetNo: code[20];
+    FolderDialogSelection:
+        Text) FolderTarget: Text
     var
         FileMgt: Codeunit "File Management";
     begin
@@ -3527,7 +3633,8 @@ codeunit 50111 "Funciones"
             FileMgt.ServerCreateDirectory(FolderTarget);
     end;
 
-    local procedure InvGetDocAttachmentFile(PurchInvHeader: Record "Purch. Inv. Header"; filePath: Text)
+    local procedure InvGetDocAttachmentFile(PurchInvHeader: Record "Purch. Inv. Header";
+filePath: Text)
     var
         DocAttachment: Record "Document Attachment";
         cuFileManagement: Codeunit "File Management";
@@ -3561,7 +3668,7 @@ codeunit 50111 "Funciones"
         end;
     end;
 
-    procedure GetFilePathPurchaseHeader(PreAssignedNo: code[20]; var Name: text): Text;
+    procedure GetFilePathPurchaseHeader(PreAssignedNo: code[20]; var Name: text; CreditMemo: Boolean): Text;
     var
         Objects: Record Object;
         RRefCDCDocument: RecordRef;
@@ -3593,7 +3700,10 @@ codeunit 50111 "Funciones"
 
         // ponemos los filtros
         FRefSourceType.SetRange(38);  // 38 Purchase Header
-        FRefSourceSubType.SetRange(2);  // 38 Purchase Header
+        if CreditMemo then
+            FRefSourceSubType.SetRange(3)  // 38 Abono
+        else
+            FRefSourceSubType.SetRange(2);  // 38 Factura
         FRefSourceNo.SetRange(PreAssignedNo);
 
         // Buscamos el registro y montamos el path

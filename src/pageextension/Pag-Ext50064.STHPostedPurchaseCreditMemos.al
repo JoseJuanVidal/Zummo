@@ -35,7 +35,34 @@ pageextension 50064 "STH PostedPurchaseCreditMemos" extends "Posted Purchase Cre
 
     actions
     {
-        // Add changes to page actions here
+        addafter("Co&mments")
+        {
+            action(ExportPDFPath)
+            {
+                ApplicationArea = all;
+                Caption = 'Export PDF', comment = 'ESP="Exportar PDF"';
+                Image = ExportFile;
+                Promoted = true;
+                PromotedCategory = Category8;
+
+                trigger OnAction()
+                var
+                    PurchSetup: record "Purchases & Payables Setup";
+                    PurchCRMemoHeader: Record "Purch. Cr. Memo Hdr.";
+                    Funciones: Codeunit Funciones;
+                    lblConfirm: Label '¿Do you want to Export %1 selected documents to PDF in %2?', comment = 'ESP="¿Desea Exportar %1 documentos seleccionados a PDF en %2?"';
+                    lblMessage: Label 'The process of exporting documents to PDF has been completed.', comment = 'ESP="Finalizado el proceso de exportación de documentos a PDF.';
+                begin
+                    PurchSetup.Get();
+                    PurchSetup.TestField("Path File Export");
+                    CurrPage.SetSelectionFilter(PurchCRMemoHeader);
+                    if not Confirm(lblConfirm, false, PurchCRMemoHeader.Count, PurchSetup."Path File Export") then
+                        exit;
+                    Funciones.PurchCRMemoExportPdf(PurchCRMemoHeader);
+                    Message(lblMessage);
+                end;
+            }
+        }
     }
 
     trigger OnAfterGetRecord()

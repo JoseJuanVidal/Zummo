@@ -49,7 +49,15 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                         GeneralConditionsENG();
                     end;
                 }
+                field("Path File Export"; "Path File Export")
+                {
+                    ApplicationArea = all;
 
+                    trigger OnAssistEdit()
+                    begin
+                        OnAssistEditPathFile();
+                    end;
+                }
             }
             group("Sharepoint Documents")
             {

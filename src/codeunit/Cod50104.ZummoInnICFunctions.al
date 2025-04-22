@@ -2922,6 +2922,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         txtSQLCommandFields: Text;
         txtSQLCommandValues: Text;
         GLAccountNo: Integer;
+        CostPosted: decimal;
+        ExpectedCostPosted: decimal;
         lblSQLinsertTable: Label 'INSERT INTO [ZUMMO$Cost Value Entry Sales]';
         lblSQLInsertFields1: Label '([Parent Value Entry No_],[Parent Item No_],[Parent Posting Date],[Parent Description],[Parent Valued Quantity],[Value Entry No_]';
         lblSQLInsertFields2: Label ',[G_L Entry No_],[Account No_],[Item No_],[Posting Date],[Item Ledger Entry Type],[Document No_],[Description],[Location Code],[Inventory Posting Group]';
@@ -2934,6 +2936,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
         lblSQLInsertValues2: Label '''%15'',%16,%17,%18,%19,%20,''%21'',''%22'',%23,%24,%25,''%26'',%27,''%28'',%29,%30,%31,%32,%33,%34,%35,%36,%37,%38,''%39'',';
         lblSQLInsertValues3: Label '%40,''%41'',%42,%43,''%44'',''%45'',''%46'',''%47'',''%48'',''%49'',%50)';
     begin
+        CostPosted := abs(ValueEntry."Cost Posted to G/L" + ValueEntry."Expected Cost Posted to G/L");
+        if GLEntry.Amount < 0 then
+            CostPosted := -CostPosted;
         GLAccount.get(GLEntry."G/L Account No.");
         if IsNull(InventarioSQLConnection) then
             BBDDInv_SQLConnect(InventarioSQLConnection);
@@ -2983,8 +2988,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
             GLAccount."Account Type",
             GLEntry."G/L Account No.", // 41
             GLAccount."Account Type", //42
-            FormatDecimaNumber(ValueEntry."Cost Posted to G/L" + ValueEntry."Expected Cost Posted to G/L"),  //43
-            FormatDecimaNumber(ValueEntry."Cost Posted to G/L" + ValueEntry."Expected Cost Posted to G/L"), //44
+            FormatDecimaNumber(CostPosted),  //43
+            FormatDecimaNumber(CostPosted), //44
             0, //GLAccount."Interim Account",
             GLEntry."Posting Date", //46
             0, //tmpInvtPostBuf.Negative,
@@ -3022,9 +3027,10 @@ codeunit 50104 "Zummo Inn. IC Functions"
             repeat
                 Window.Update(1, ItemledgerEntry."Entry Type");
                 Window.Update(2, ItemledgerEntry."Entry No.");
+                Window.Update(4, ItemledgerEntry."Posting Date");
                 DeleteTempValueEntryGLEntry(ItemledgerEntry."Entry No.");
                 item.Get(ItemledgerEntry."Item No.");
-                if Item.HasBOM() then begin
+                if Item.HasBOM() and (Item."Replenishment System" in [Item."Replenishment System"::Assembly, Item."Replenishment System"::"Prod. Order"]) then begin
 
                     ValueEntry_ItemLedgerEntry(ItemledgerEntry."Entry No.", ItemledgerEntry);
 
@@ -3154,4 +3160,5 @@ codeunit 50104 "Zummo Inn. IC Functions"
             END;
         end;
     end;
+
 }
