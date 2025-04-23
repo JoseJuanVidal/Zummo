@@ -311,7 +311,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         field(50045; CorreoElec_Financiero; Text[80])
         {
             DataClassification = CustomerContent;
-            Caption = 'Correo electrónico (Contabilidad)', comment = 'ESP="Correo electrónico (Contabilidad)"';
+            Caption = 'Correo electrónico (Contacto Contabilidad)', comment = 'ESP="Correo electrónico (Contacto Contabilidad)"';
             ExtendedDatatype = Email;
         }
         field(50050; "EnviarCRM"; Boolean)

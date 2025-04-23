@@ -38274,8 +38274,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field CondicionesEspeciales - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 701663654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Correo electrónico (Contabilidad)</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Correo electrónico (Contabilidad)"</note>
+          <source>Correo electrónico (Contacto Contabilidad)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Correo electrónico (Contacto Contabilidad)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field CorreoElec_Financiero - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 2481871373 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
