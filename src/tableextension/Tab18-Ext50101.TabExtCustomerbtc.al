@@ -175,7 +175,8 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         field(50022; CorreoFactElec_btc; Text[80])
         {
             DataClassification = CustomerContent;
-            Caption = 'Correo electrónico', comment = 'ESP="Correo electrónico"';
+            Caption = 'Correo electrónico (Facturación)', comment = 'ESP="Correo electrónico (Facturación)"';
+            ExtendedDatatype = Email;
         }
         field(50023; TipoFormarto_btc; Option)
         {
@@ -183,7 +184,6 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             Caption = 'SinFormato,Exportación,Nacional,Lidl,Brasil', Comment = 'ESP="SinFormato,Exportación,Nacional,Lidl,Brasil"';
 
         }
-
         field(50024; ClienteActividad_btc; Code[20])
         {
             DataClassification = CustomerContent;
@@ -307,6 +307,12 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         field(50041; "EORI"; code[20])
         {
             Caption = 'EORI', comment = 'ESP="EORI"';
+        }
+        field(50045; CorreoElec_Financiero; Text[80])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Correo electrónico (Contabilidad)', comment = 'ESP="Correo electrónico (Contabilidad)"';
+            ExtendedDatatype = Email;
         }
         field(50050; "EnviarCRM"; Boolean)
         {

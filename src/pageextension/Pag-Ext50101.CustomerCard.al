@@ -160,6 +160,11 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
+            field(CorreoElec_Financiero; CorreoElec_Financiero)
+            {
+                ApplicationArea = all;
+            }
+
             field(TipoFormarto_btc; TipoFormarto_btc)
             {
                 ApplicationArea = all;
