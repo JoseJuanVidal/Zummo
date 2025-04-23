@@ -55,4 +55,9 @@ tableextension 50139 "PurchInvHeader" extends "Purch. Inv. Header"  //122
         }
         //-  NORMATIVA MEDIO AMBIENTAL
     }
+    keys
+    {
+        key(Less200; "Purch. Request less 200")
+        { }
+    }
 }

@@ -61,4 +61,9 @@ tableextension 50041 "GLEntry" extends "G/L Entry" //17
             TableRelation = "Purchase Requests less 200" where(Status = const(Approved), Invoiced = const(false));
         }
     }
+    keys
+    {
+        key(Less200; "Purch. Request less 200")
+        { }
+    }
 }
