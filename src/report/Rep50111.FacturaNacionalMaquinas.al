@@ -1185,19 +1185,13 @@ report 50111 "FacturaNacionalMaquinas"
                             cduFunciones: Codeunit Funciones;
                             txtAux: Text[100];
                         begin
-
                             // control de lineas asociadas a linea descripcion PROD. ORDEN
                             if "Sales Invoice Line".ParentLineNo <> 0 then
                                 CurrReport.Skip();
                             if "Sales Invoice Line".ParentLine then begin
                                 UpdateSalesLineComponentes();
                             end;
-                            // - control l
-                            if TraduccionProducto.Get("No.",
-                                "Variant Code",
-                                 "Sales Invoice Header"."Language Code")
-                            then
-                                Description := TraduccionProducto.Description;
+                            // - control l                        
 
                             if (Type = Type::"G/L Account") and (copystr("No.", 1, 4) = '7591') then
                                 CurrReport.Skip();
@@ -1211,7 +1205,22 @@ report 50111 "FacturaNacionalMaquinas"
                             if (Type = Type::Resource) and (quantity = 0) then
                                 CurrReport.Skip();
 
-                            txtDescLinea := Description;
+                            // controlamos si no se ha puesto ninguna descripción manual
+                            txtDescLinea := "Sales Invoice Line".Description;
+                            if (Type in [type::Item]) and (idiomaReport <> '') then
+                                if TraduccionProducto.Get("No.", "Variant Code", idiomaReport) then
+                                    txtDescLinea := TraduccionProducto.Description;
+
+                            // si es cuenta contable, ponemos la traducción de la cuenta
+                            if ("Sales Invoice Header"."Language Code" <> '') and (Type = Type::"G/L Account") then begin
+                                if "Sales Invoice Header"."Language Code" <> 'ESP' then begin
+                                    clear(cduFunciones);
+                                    txtAux := cduFunciones.GetTradDescCuenta("No.", "Sales Invoice Header"."Language Code");
+
+                                    if txtAux <> '' then
+                                        txtDescLinea := txtaux;
+                                end;
+                            end;
 
                             // Normativa Plastico - mostramos el detalle de plastico del producto configurado show
                             ShowPlasticItem := False;
@@ -1229,15 +1238,7 @@ report 50111 "FacturaNacionalMaquinas"
                                 end;
                             end;
 
-                            if (idiomaReport <> '') and (Type = Type::"G/L Account") then begin
-                                if idiomaReport <> 'ESP' then begin
-                                    clear(cduFunciones);
-                                    txtAux := cduFunciones.GetTradDescCuenta("No.", idiomaReport);
 
-                                    if txtAux <> '' then
-                                        txtDescLinea := txtaux;
-                                end;
-                            end;
 
                             InitializeShipmentBuffer();
                             if (Type = Type::"G/L Account") and (not ShowInternalInfo) then
@@ -1829,7 +1830,7 @@ report 50111 "FacturaNacionalMaquinas"
                     Clear(Cust)
                 else begin
                     CurrReport.Language := Language.GetLanguageID(Cust."Language Code");
-                    idiomaReport := Cust."Language Code";
+                    //idiomaReport := Cust."Language Code";
                 end;
 
                 if optIdioma <> optIdioma::" " then begin
