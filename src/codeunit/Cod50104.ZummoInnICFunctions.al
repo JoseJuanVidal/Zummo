@@ -3161,4 +3161,38 @@ codeunit 50104 "Zummo Inn. IC Functions"
         end;
     end;
 
+    procedure Inventario_UpdateEntries(var ValueEntry: Record "Value Entry")
+    var
+        Costes: Record "ZM Value entry - G/L Entry";
+        DateFilter: text;
+        lblError: Label 'You have to indicate a Date filter.\%1 to %2', comment = 'ESP="Debe indicar un filtro de Fecha.\%1 a %2"';
+        lblConfirm: Label '¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?', comment = 'ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"';
+    begin
+        if ValueEntry.FindFirst() then;
+        DateFilter := ValueEntry.GetFilter("Posting Date");
+        Inventario_OpenTableConnection();
+        Costes.UpdateEntries(ValueEntry."Entry No.", ValueEntry.GetFilter("Posting Date"));
+    end;
+
+    procedure Inventario_OpenTableConnection()
+    begin
+        IF HASTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes') THEN
+            UNREGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes');
+
+        REGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes', ZMCostesTABLECONNECTION());
+        SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes');
+    end;
+
+    local procedure ZMCostesTABLECONNECTION(): Text
+    var
+        GenLedgerSetup: Record "General Ledger Setup";
+        lblConnectionString: Label 'Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4';
+    begin
+        GenLedgerSetup.Get();
+        GenLedgerSetup.TestField("Data Source");
+        GenLedgerSetup.TestField("User ID");
+        GenLedgerSetup.TestField(Password);
+        // exit(StrSubstNo(lblConnectionString, GenLedgerSetup."Data Source", GenLedgerSetup."Initial Catalog", GenLedgerSetup."User ID", GenLedgerSetup.Password));
+        exit(StrSubstNo(lblConnectionString, 'localhost', 'ZUMMO Inventario', 'sa', 'Bario5622$'));
+    end;
 }

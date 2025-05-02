@@ -214,7 +214,7 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                         Funciones.ExportMovsProductos();
                 end;
             }
-            action(CostesGL)
+            action(CostesGLVentas)
             {
                 ApplicationArea = all;
                 trigger OnAction()
@@ -227,6 +227,23 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                     DateFilter := Rec.GetFilter("Posting Date");
                     if Confirm('actualizar %1', true, ItemledgerEntry.GetFilter("Entry No.")) then
                         Functions.UpdateEntries(DateFilter, ItemledgerEntry.GetFilter("Entry No."));
+                end;
+            }
+            action(CostesGL)
+            {
+                ApplicationArea = all;
+                trigger OnAction()
+                var
+                    ValueGLEntry: record "ZM Value entry - G/L Entry";
+                    lblError: Label 'You have to indicate a Date filter.\%1 to %2', comment = 'ESP="Debe indicar un filtro de Fecha.\%1 a %2"';
+                    lblConfirm: Label '¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?', comment = 'ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"';
+                    DateFilter: text;
+                begin
+                    OpenTableConnection();
+                    DateFilter := Rec.GetFilter("Posting Date");
+                    if Confirm(lblConfirm, false, DateFilter) then
+                        ValueGLEntry.UpdateEntries(0, DateFilter);
+
                 end;
             }
         }
@@ -349,4 +366,25 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
         end;
     end;
 
+    procedure OpenTableConnection()
+    begin
+        IF HASTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes') THEN
+            UNREGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes');
+
+        REGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes', ZMCostesTABLECONNECTION());
+        SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes');
+    end;
+
+    local procedure ZMCostesTABLECONNECTION(): Text
+    var
+        GenLedgerSetup: Record "General Ledger Setup";
+        lblConnectionString: Label 'Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4';
+    begin
+        GenLedgerSetup.Get();
+        GenLedgerSetup.TestField("Data Source");
+        GenLedgerSetup.TestField("User ID");
+        GenLedgerSetup.TestField(Password);
+        // exit(StrSubstNo(lblConnectionString, GenLedgerSetup."Data Source", GenLedgerSetup."Initial Catalog", GenLedgerSetup."User ID", GenLedgerSetup.Password));
+        exit(StrSubstNo(lblConnectionString, 'localhost', 'ZUMMO Inventario', 'sa', 'Bario5622$'));
+    end;
 }

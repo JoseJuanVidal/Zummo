@@ -466,7 +466,7 @@ table 17382 "ZM Value entry - G/L Entry"
         // ValueEntry.SetRange("Updated Cost Entry", false);
         if DateFilter <> '' then
             ValueEntry.SetFilter("Posting Date", DateFilter);
-        if ValueEntry.FindFirst() then
+        if ValueEntry.FindSet() then
             repeat
                 if (ValueEntry."Cost Posted to G/L" <> 0) or (ValueEntry."Expected Cost Posted to G/L" <> 0) then begin
                     if GuiAllowed then
@@ -476,6 +476,7 @@ table 17382 "ZM Value entry - G/L Entry"
                     if CreateValueGLEntry(ValueEntry) then
                         if GuiAllowed then
                             Window.Update(3, ValueEntry."Posting Date");
+                    Commit();
                 end;
             until ValueEntry.Next() = 0;
 
@@ -493,14 +494,57 @@ table 17382 "ZM Value entry - G/L Entry"
         //     repeat
         // comprobamos si tiene 
         DeleteTempValueEntryGLEntry(ValueEntry);
-        if CreateItemLedgerGlEntry(ValueEntry, Cost) then
+        if CreateItemLedgerGlEntry(ValueEntry) then
             exit(true);
         // Until GLItemLedgerRelation.next() = 0;
     end;
 
-    local procedure CreateItemLedgerGlEntry(ValueEntry: record "Value Entry"; Cost: Decimal): Boolean
+    local procedure CreateItemLedgerGlEntry(ValueEntry: record "Value Entry"): Boolean
+    var
+        GLAccount: Record "G/L Account";
+        GLEntry: Record "G/L Entry";
+        GLItemLedgRelation: Record "G/L - Item Ledger Relation";
+        tmpInvtPostBuf: Record "Invt. Posting Buffer" temporary;
+        InvPosting: Codeunit "Inventory Posting To G/L";
+        AmountValue: Decimal;
+    begin
+        ValueEntry."Cost Posted to G/L" := 0;
+        ValueEntry."Expected Cost Posted to G/L" := 0;
+        Clear(InvPosting);
+        InvPosting.BufferInvtPosting(ValueEntry);
+        InvPosting.GetInvtPostBuf(tmpInvtPostBuf);
+        GLItemLedgRelation.SetRange("Value Entry No.", ValueEntry."Entry No.");
+        if GLItemLedgRelation.FindFirst() then
+            repeat
+                AmountValue := abs(ValueEntry."Cost Posted to G/L" + ValueEntry."Expected Cost Posted to G/L");
+                if GLEntry.Amount <= 0 then
+                    AmountValue := -AmountValue;
+                GLEntry.GET(GLItemLedgRelation."G/L Entry No.");
+                GLAccount.Get(GLEntry."G/L Account No.");
+                ValueEntryGLEntry.Init();
+                ValueEntryGLEntry.TransferFields(ValueEntry);
+                ValueEntryGLEntry."G/L Entry No." := GLEntry."Entry No.";
+                ValueEntryGLEntry."Account No." := GLEntry."G/L Account No.";
+                ValueEntryGLEntry."Account Heading" := CopyStr(ValueEntryGLEntry."Account No.", 1, MaxStrLen(ValueEntryGLEntry."Account Heading"));
+                ValueEntryGLEntry."G/L Posting Date" := GLEntry."Posting Date";
+                ValueEntryGLEntry."Account Type" := tmpInvtPostBuf."Account Type";
+                ValueEntryGLEntry."Amount G/L" := AmountValue;
+                ValueEntryGLEntry."Amount G/L (ACY)" := AmountValue;
+                ValueEntryGLEntry."Interim Account" := tmpInvtPostBuf."Interim Account";
+                ValueEntryGLEntry."Account No." := GLEntry."G/L Account No.";
+                ValueEntryGLEntry."G/L Posting Date" := GLEntry."Posting Date";
+                ValueEntryGLEntry.Negative := tmpInvtPostBuf.Negative;
+                ValueEntryGLEntry."Bal. Account Type" := tmpInvtPostBuf."Bal. Account Type";
+                ValueEntryGLEntry."Job No." := GLEntry."Job No.";
+                ValueEntryGLEntry.Insert();
+            Until GLItemLedgRelation.next() = 0;
+        exit(true);
+    end;
+
+    local procedure OLDCreateItemLedgerGlEntry(ValueEntry: record "Value Entry"; Cost: Decimal): Boolean
     var
         tmpInvtPostBuf: Record "Invt. Posting Buffer" temporary;
+        // GLItemLedgRelation: Record "G/L - Item Ledger Relation";
         InvPosting: Codeunit "Inventory Posting To G/L";
     begin
         ValueEntry."Cost Posted to G/L" := 0;
@@ -510,8 +554,7 @@ table 17382 "ZM Value entry - G/L Entry"
             exit;
         // Message(StrSubstNo('No se encuentran datos buffer %1', ValueEntry."Entry No."));
         InvPosting.GetInvtPostBuf(tmpInvtPostBuf);
-
-        if tmpInvtPostBuf.FindFirst() then
+        if tmpInvtPostBuf.FindSet() then
             repeat
                 ValueEntryGLEntry.Init();
                 ValueEntryGLEntry.TransferFields(ValueEntry);
@@ -677,5 +720,27 @@ table 17382 "ZM Value entry - G/L Entry"
                 ValueEntryGLEntry.Modify();
             Until ValueEntryGLEntry.next() = 0;
         Window.Close();
+    end;
+
+    procedure OpenTableConnection()
+    begin
+        IF HASTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes') THEN
+            UNREGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes');
+
+        REGISTERTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes', ZMCostesTABLECONNECTION());
+        SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ZUMMOCostes');
+    end;
+
+    local procedure ZMCostesTABLECONNECTION(): Text
+    var
+        GenLedgerSetup: Record "General Ledger Setup";
+        lblConnectionString: Label 'Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4';
+    begin
+        GenLedgerSetup.Get();
+        GenLedgerSetup.TestField("Data Source");
+        GenLedgerSetup.TestField("User ID");
+        GenLedgerSetup.TestField(Password);
+        // exit(StrSubstNo(lblConnectionString, GenLedgerSetup."Data Source", GenLedgerSetup."Initial Catalog", GenLedgerSetup."User ID", GenLedgerSetup.Password));
+        exit(StrSubstNo(lblConnectionString, 'localhost', 'ZUMMO Inventario', 'sa', 'Bario5622$'));
     end;
 }

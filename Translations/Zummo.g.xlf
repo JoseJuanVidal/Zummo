@@ -12248,6 +12248,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipo #1#########################\Movimiento Valor:#2#################\Fecha:#3############"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Method UpdateEntries - NamedType lblDialog</note>
         </trans-unit>
+        <trans-unit id="Table 2187988607 - Method 3606769622 - NamedType 3649616787" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Value entry - G/L Entry - Method ZMCostesTABLECONNECTION - NamedType lblConnectionString</note>
+        </trans-unit>
         <trans-unit id="Table 2187988607 - Field 969941267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account Heading</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cuenta Mayor"</note>
@@ -13323,6 +13328,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nro. albarán: #1######################\Fecha:#2########################"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method ImportExcelBCDTravelCon07 - NamedType lblDialog</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 501152209 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You have to indicate a Date filter.\%1 to %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe indicar un filtro de Fecha.\%1 a %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Inventario_UpdateEntries - NamedType lblError</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 501152209 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Inventario_UpdateEntries - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 1828384963 - NamedType 1129775284" size-unit="char" translate="yes" xml:space="preserve">
           <source>project?fields=key,name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13507,6 +13522,11 @@
           <source>Quantities and tracking for purchase order %1 have been updated from sales order %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType BodyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3606769622 - NamedType 3649616787" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method ZMCostesTABLECONNECTION - NamedType lblConnectionString</note>
         </trans-unit>
         <trans-unit id="Page 2253022710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ABERTIA GL Account</source>
@@ -32193,10 +32213,25 @@
           <note from="Developer" annotates="general" priority="2">ESP="Detalle Plasticos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control detail - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Method 3606769622 - NamedType 3649616787" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3505869542">
+          <source>Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Method ZMCostesTABLECONNECTION - NamedType lblConnectionString</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2728787576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Asignar Nº Serie consumo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Asignar Nº Serie consumo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Action AssingParentSerialNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Action 615070242 - Method 1377591017 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3505869542">
+          <source>You have to indicate a Date filter.\%1 to %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe indicar un filtro de Fecha.\%1 a %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Action CostesGL - Method OnAction - NamedType lblError</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3505869542 - Action 615070242 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3505869542">
+          <source>¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Action CostesGL - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Action 2274388292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Exportar Var. Existencias</source>
@@ -34032,6 +34067,21 @@
           <source>Vendor Plastic packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Purchase Order Statist - Control KgVendorPackagingproduct - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1546246465 - Action 642782499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2513602899">
+          <source>Update Costs</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar costes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Value Entries - Action Update - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1546246465 - Action 642782499 - Method 1377591017 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1546246465">
+          <source>You have to indicate a Date filter.\%1 to %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe indicar un filtro de Fecha.\%1 a %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Value Entries - Action Update - Method OnAction - NamedType lblError</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1546246465 - Action 642782499 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1546246465">
+          <source>¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Value Entries - Action Update - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 622661945 - Method 1224106127 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 622661945">
           <source>¿Desea exportar los documentos de %1 Movs. A/F?</source>
