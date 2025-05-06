@@ -8,6 +8,10 @@ pageextension 50049 "STH Employee List" extends "Employee List"
             {
                 ApplicationArea = all;
             }
+            field(Sucursal_zum; Sucursal_zum)
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

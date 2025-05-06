@@ -2,6 +2,11 @@ tableextension 50202 "ZM Misc. Article Information" extends "Misc. Article Infor
 {
     fields
     {
+        field(50105; "Marca"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Brand', comment = 'ESP="Marca"';
+        }
 
         field(50100; Model; text[100])
         {
@@ -18,6 +23,26 @@ tableextension 50202 "ZM Misc. Article Information" extends "Misc. Article Infor
             DataClassification = CustomerContent;
             Caption = 'Device Type', comment = 'ESP="Tipo dispositivo"';
             TableRelation = "ZM Misc. Article Device Type".Code where("Misc. Article Code" = field("Misc. Article Code"));
+        }
+        field(50130; "Sistema Operativo"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Operation System', comment = 'ESP="Sistema Operativo"';
+        }
+        field(50135; "Procesador"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Processor', comment = 'ESP="Procesador"';
+        }
+        field(50140; "HDD"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'HDD', comment = 'ESP="HDD"';
+        }
+        field(50145; "RAM"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'RAM', comment = 'ESP="Memoria RAM"';
         }
     }
 

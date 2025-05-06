@@ -39468,10 +39468,35 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre empleado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Misc. Article Information - Field Employee Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 115180823 - Field 2555631620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1615782862">
+          <source>HDD</source>
+          <note from="Developer" annotates="general" priority="2">ESP="HDD"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Misc. Article Information - Field HDD - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 115180823 - Field 4038991296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1615782862">
+          <source>Brand</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marca"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Misc. Article Information - Field Marca - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 115180823 - Field 1695122201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1615782862">
           <source>Model</source>
           <note from="Developer" annotates="general" priority="2">ESP="Modelo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Misc. Article Information - Field Model - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 115180823 - Field 3892283732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1615782862">
+          <source>Processor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Procesador"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Misc. Article Information - Field Procesador - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 115180823 - Field 705632458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1615782862">
+          <source>RAM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Memoria RAM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Misc. Article Information - Field RAM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 115180823 - Field 2223722779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1615782862">
+          <source>Operation System</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sistema Operativo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Misc. Article Information - Field Sistema Operativo - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3090976848 - Field 631869557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
           <source>Rejected Date</source>

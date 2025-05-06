@@ -1290,6 +1290,9 @@ codeunit 50111 "Funciones"
                             Employee.Status := Employee.Status::Terminated;
                         end;
                     end;
+                    ExcelBuffer.SetRange("Column No.", 12);  // Compañia
+                    if ExcelBuffer.FindSet() then
+                        Employee.Sucursal_zum := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Employee.Sucursal_zum));
                     if not Employee.Insert() then
                         Employee.Modify();
                 end;

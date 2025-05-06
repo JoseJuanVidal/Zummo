@@ -16,9 +16,33 @@ pageextension 50219 "ZM Misc. Article Information" extends "Misc. Article Inform
             {
                 ApplicationArea = all;
             }
+            field("Marca"; "Marca")
+            {
+                ApplicationArea = all;
+            }
             field(Model; Model)
             {
                 ApplicationArea = all;
+            }
+            field("Sistema Operativo"; "Sistema Operativo")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Procesador"; "Procesador")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("HDD"; "HDD")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("RAM"; "RAM")
+            {
+                ApplicationArea = all;
+                Visible = false;
             }
         }
         addlast(FactBoxes)

@@ -7,6 +7,8 @@ pageextension 50194 "EmployeeCard_RRHH_zum" extends "Employee Card"
             Caption = 'Skype Contact', comment = 'ESP="Contacto Skype"';
             ToolTip = 'Addres Contact Skype', Comment = 'Direccion de contacto Skype';
         }
+        moveafter("Phone No."; Extension)
+
         //Pestaña GENERAL
         addafter("Privacy Blocked")
         {
