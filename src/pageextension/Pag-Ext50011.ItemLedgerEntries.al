@@ -234,15 +234,15 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                 ApplicationArea = all;
                 trigger OnAction()
                 var
-                    ValueGLEntry: record "ZM Value entry - G/L Entry";
+                    // ValueGLEntry: record "ZM Value entry - G/L Entry";
                     lblError: Label 'You have to indicate a Date filter.\%1 to %2', comment = 'ESP="Debe indicar un filtro de Fecha.\%1 a %2"';
                     lblConfirm: Label '¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?', comment = 'ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"';
                     DateFilter: text;
                 begin
                     OpenTableConnection();
                     DateFilter := Rec.GetFilter("Posting Date");
-                    if Confirm(lblConfirm, false, DateFilter) then
-                        ValueGLEntry.UpdateEntries(0, DateFilter);
+                    if Confirm(lblConfirm, false, DateFilter) then;
+                    // TODO ValueGLEntry.UpdateEntries(0, DateFilter);
 
                 end;
             }

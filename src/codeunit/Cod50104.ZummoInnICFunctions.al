@@ -3163,7 +3163,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
     procedure Inventario_UpdateEntries(var ValueEntry: Record "Value Entry")
     var
-        Costes: Record "ZM Value entry - G/L Entry";
+        // Costes: Record "ZM Value entry - G/L Entry";
         DateFilter: text;
         lblError: Label 'You have to indicate a Date filter.\%1 to %2', comment = 'ESP="Debe indicar un filtro de Fecha.\%1 a %2"';
         lblConfirm: Label '¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?', comment = 'ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"';
@@ -3171,7 +3171,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         if ValueEntry.FindFirst() then;
         DateFilter := ValueEntry.GetFilter("Posting Date");
         Inventario_OpenTableConnection();
-        Costes.UpdateEntries(ValueEntry."Entry No.", ValueEntry.GetFilter("Posting Date"));
+        // TODO Costes.UpdateEntries(ValueEntry."Entry No.", ValueEntry.GetFilter("Posting Date"));
     end;
 
     procedure Inventario_OpenTableConnection()

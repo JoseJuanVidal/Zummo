@@ -95,7 +95,7 @@ codeunit 50110 "CU_Cron"
                     end;
                 'CosteMovValorGLEntry':
                     begin
-                        CosteMovValorGLEntry();
+                        // CosteMovValorGLEntry();
                     end;
                 else
                     error(lbNoParametroErr);
@@ -1700,10 +1700,10 @@ codeunit 50110 "CU_Cron"
         TestFile.Close;
     end;
 
-    local procedure CosteMovValorGLEntry()
-    var
-        ValueentryGLEntry: record "ZM Value entry - G/L Entry";
-    begin
-        ValueentryGLEntry.UpdateEntries(0, StrSubstNo('%1..', CalcDate('<-CM>', Today())));
-    end;
+    // local procedure CosteMovValorGLEntry()
+    // var
+    //     ValueentryGLEntry: record "ZM Value entry - G/L Entry";
+    // begin
+    //     ValueentryGLEntry.UpdateEntries(0, StrSubstNo('%1..', CalcDate('<-CM>', Today())));
+    // end;
 }
