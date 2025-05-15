@@ -37843,6 +37843,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field CodCliente_btc - Property Caption</note>
           <target>Cód. Cliente</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 4231403024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Costing Method</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Valoración existencias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field CostingMethod - Property Caption</note>
+          <target>Valoración existencias</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 4231403024 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>FIFO,LIFO,Especial,Medio,Estándar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FIFO,LIFO,Especial,Medio,Estándar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field CostingMethod - Property OptionCaption</note>
+          <target>FIFO,LIFO,Especial,Medio,Estándar</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1719057576 - Field 3202460639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
           <source>Customer Ship-to Address 2 Item service</source>
           <note from="Developer" annotates="general" priority="2">ESP="Direccion 2 Cliente envío Prod. servicio"</note>

@@ -31,6 +31,15 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
             OptionMembers = Inventory,Service,"Non-Inventory";
             OptionCaption = 'Inventario,Servicio,Fuera de inventario', Comment = 'ESP="Inventario,Servicio,Fuera de inventario"';
         }
+        field(50104; CostingMethod; Option)
+        {
+            Caption = 'Costing Method', comment = 'ESP="Valoración existencias"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Costing Method" where("No." = field("Item No.")));
+
+            OptionMembers = FIFO,LIFO,Specific,Average,Standard;
+            OptionCaption = 'FIFO,LIFO,Especial,Medio,Estándar', Comment = 'ESP="FIFO,LIFO,Especial,Medio,Estándar"';
+        }
         field(50105; SerialNoParent; code[50])
         {
             Caption = 'Nº Serie Consumo', comment = 'ESP="Nº Serie Consumo"';

@@ -23,6 +23,11 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
             {
                 Editable = false;
             }
+            field(CostingMethod; CostingMethod)
+            {
+                Editable = false;
+                Visible = false;
+            }
         }
         addafter("Document No.")
         {
