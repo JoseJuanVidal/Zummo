@@ -14,13 +14,34 @@ pageextension 50085 "ZM Ext Value Entries" extends "Value Entries"
     {
         addlast(Processing)
         {
+            action(UpdateGLentryValues)
+            {
+                Caption = 'Update GL Entry Costs', comment = 'ESP="Actualizar Cuentas contables costes"';
+                Image = GLRegisters;
+                // Promoted = true;
+                // PromotedIsBig = true;
+                // PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    ValueEntry: Record "Value Entry";
+                    FuncionesIC: Codeunit "Zummo Inn. IC Functions";
+                    lblConfirm: Label '¿Desea actualizar los movimientos de Costes de %1?', comment = 'ESP="¿Desea actualizar los movimientos de Costes de %1?"';
+                begin
+                    CurrPage.SetSelectionFilter(ValueEntry);
+                    if not Confirm(lblConfirm, false, ValueEntry.Count) then
+                        exit;
+                    FuncionesIC.GLEntry_ValueEntry(ValueEntry);
+                    Message('Fin');
+                end;
+            }
             action(Update)
             {
                 Caption = 'Update Costs', comment = 'ESP="Actualizar costes"';
                 Image = UpdateUnitCost;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
+                // Promoted = true;
+                // PromotedIsBig = true;
+                // PromotedCategory = Process;
 
                 trigger OnAction()
                 var
@@ -37,6 +58,7 @@ pageextension 50085 "ZM Ext Value Entries" extends "Value Entries"
                     if not Confirm(lblConfirm, false, Customer.GetFilter("Date Filter")) then
                         exit;
                     FuncionesIC.Inventario_UpdateEntries(ValueEntry);
+                    Message('Fin');
                 end;
             }
         }

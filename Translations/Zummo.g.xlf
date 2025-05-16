@@ -12508,6 +12508,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CrearPedidoCompraDesdeBCDTravel - NamedType lblCreate</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 352375554 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELETE FROM [ZUMMO Inventario].[dbo].[ZUMMO$ZM Value entry - G_L Entry] WHERE [Value Entry No_] = %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method DeleteGLEntry_ValueEntry - NamedType lblSQLDelete</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3740096671 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
           <source>DELETE FROM [ZUMMO$Cost Value Entry Sales] WHERE [Parent Value Entry No_] =%1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12852,6 +12857,56 @@
           <source>Quantities and tracking for purchase order %1 have been updated from sales order %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method UpdateReservationPurchaseOrderIC - NamedType BodyLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3769631699 - NamedType 2075791351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>INSERT INTO [ZUMMO$ZM Value entry - G_L Entry]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Update_GLEntry_ValueEntry - NamedType lblSQLinsertTable</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3769631699 - NamedType 4104460989" size-unit="char" translate="yes" xml:space="preserve">
+          <source>([Value Entry No_],[G_L Entry No_],[Account No_],[Item No_],[Posting Date],[Item Ledger Entry Type],[Document No_],[Description],[Location Code],[Inventory Posting Group]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Update_GLEntry_ValueEntry - NamedType lblSQLInsertFields1</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3769631699 - NamedType 3466764372" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[Item Ledger Entry No_],[Valued Quantity],[Item Ledger Entry Quantity],[Cost Amount (Actual)],[Cost Posted to G_L],[Document Date]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Update_GLEntry_ValueEntry - NamedType lblSQLInsertFields2</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3769631699 - NamedType 2829067755" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[External Document No_],[Cost Amount (Actual) (ACY)],[Cost Posted to G_L (ACY)],[Cost per Unit (ACY)],[Document Type],[Document Line No_]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Update_GLEntry_ValueEntry - NamedType lblSQLInsertFields3</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3769631699 - NamedType 2191371138" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[Valuation Date],[Capacity Ledger Entry No_],[Purchase Amount (Actual)],[Purchase Amount (Expected)],[Sales Amount (Expected)],[Cost Amount (Expected)]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Update_GLEntry_ValueEntry - NamedType lblSQLInsertFields4</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3769631699 - NamedType 1553674521" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[Cost Amount (Non-Invtbl_)],[Cost Amount (Expected) (ACY)],[Cost Amount (Non-Invtbl_)(ACY)],[Expected Cost Posted to G_L],[Exp_ Cost Posted to G_L (ACY)]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Update_GLEntry_ValueEntry - NamedType lblSQLInsertFields5</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3769631699 - NamedType 915977904" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,[Type],[No_],[Account Type],[Amount G_L],[Amount G_L (ACY)],[Interim Account],[G_L Posting Date],[Negative],[Bal_ Account Type],[Job No_],[Account Heading],[Entry No_],[Tipo Movimiento],[Tipo Cuenta],[Bal tipo Cuenta])</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Update_GLEntry_ValueEntry - NamedType lblSQLInsertFields6</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3769631699 - NamedType 4041047142" size-unit="char" translate="yes" xml:space="preserve">
+          <source>values(%1,%2,'%3','%4','%5','%6','%7','%8','%9',</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Update_GLEntry_ValueEntry - NamedType lblSQLInsertValues1</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3769631699 - NamedType 2127957291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>'%10',%11,%12,%13,%14,%15,'%16','%17',%18,%19,%20,'%21',%22,'%23',%24,%25,%26,%27,%28,%29,%30,%31,%32,%33,'%34',</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Update_GLEntry_ValueEntry - NamedType lblSQLInsertValues2</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3769631699 - NamedType 2765653908" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%35,'%36',%37,%38,'%39','%40','%41','%42','%43','%44',%45,'%46','%47','%48')</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method Update_GLEntry_ValueEntry - NamedType lblSQLInsertValues3</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3606769622 - NamedType 3649616787" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4</source>
@@ -33267,6 +33322,16 @@
           <source>¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Value Entries - Action Update - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1546246465 - Action 1426479106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2513602899">
+          <source>Update GL Entry Costs</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Cuentas contables costes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Value Entries - Action UpdateGLentryValues - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1546246465 - Action 1426479106 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1546246465">
+          <source>¿Desea actualizar los movimientos de Costes de %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes de %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Value Entries - Action UpdateGLentryValues - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 622661945 - Method 1224106127 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 622661945">
           <source>¿Desea exportar los documentos de %1 Movs. A/F?</source>

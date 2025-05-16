@@ -3170,8 +3170,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
     begin
         if ValueEntry.FindFirst() then;
         DateFilter := ValueEntry.GetFilter("Posting Date");
-        Inventario_OpenTableConnection();
+        // Inventario_OpenTableConnection();
         // TODO Costes.UpdateEntries(ValueEntry."Entry No.", ValueEntry.GetFilter("Posting Date"));
+
     end;
 
     procedure Inventario_OpenTableConnection()
@@ -3194,5 +3195,150 @@ codeunit 50104 "Zummo Inn. IC Functions"
         GenLedgerSetup.TestField(Password);
         // exit(StrSubstNo(lblConnectionString, GenLedgerSetup."Data Source", GenLedgerSetup."Initial Catalog", GenLedgerSetup."User ID", GenLedgerSetup.Password));
         exit(StrSubstNo(lblConnectionString, 'localhost', 'ZUMMO Inventario', 'sa', 'Bario5622$'));
+    end;
+
+    procedure ItemldgEntry_GLEntry_ValueEntry(var ItemLedgerEntry: Record "Item Ledger Entry")
+    var
+        ValueEntry: record "Value Entry";
+    begin
+        if ItemLedgerEntry.FindFirst() then
+            repeat
+                GLEntry_ValueEntry(ValueEntry);
+            Until ItemLedgerEntry.next() = 0;
+    end;
+
+    procedure GLEntry_ValueEntry(var ValueEntry: record "Value Entry")
+    var
+        GLEntry: Record "G/L Entry";
+        GLItemLedgRelation: Record "G/L - Item Ledger Relation";
+        Windows: Dialog;
+    begin
+        Windows.Open('#1###################################\#2##############################\#3##############');
+        if ValueEntry.FindFirst() then
+            repeat
+                Windows.Update(1, ValueEntry."Entry No.");
+                Windows.Update(3, ValueEntry."Posting Date");
+                DeleteGLEntry_ValueEntry(ValueEntry."Entry No.");
+                GLItemLedgRelation.SetRange("Value Entry No.", ValueEntry."Entry No.");
+                if GLItemLedgRelation.FindFirst() then
+                    repeat
+                        Windows.Update(2, GLItemLedgRelation."G/L Entry No.");
+                        GLEntry.GET(GLItemLedgRelation."G/L Entry No.");
+                        Update_GLEntry_ValueEntry(ValueEntry, GLEntry)
+                Until GLItemLedgRelation.next() = 0;
+            Until ValueEntry.next() = 0;
+        Windows.Close();
+    end;
+
+    local procedure Update_GLEntry_ValueEntry(ValueEntry: record "Value Entry"; GLEntry: Record "G/L Entry"): Boolean
+    var
+        GLAccount: Record "G/L Account";
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtSQLCommandText: Text;
+        txtSQLCommandFields: Text;
+        txtSQLCommandValues: Text;
+        GLAccountNo: Integer;
+        CostPosted: decimal;
+        ExpectedCostPosted: decimal;
+        lblSQLinsertTable: Label 'INSERT INTO [ZUMMO$ZM Value entry - G_L Entry]';
+        lblSQLInsertFields1: Label '([Value Entry No_],[G_L Entry No_],[Account No_],[Item No_],[Posting Date],[Item Ledger Entry Type],[Document No_],[Description],[Location Code],[Inventory Posting Group]';
+        lblSQLInsertFields2: Label ',[Item Ledger Entry No_],[Valued Quantity],[Item Ledger Entry Quantity],[Cost Amount (Actual)],[Cost Posted to G_L],[Document Date]';
+        lblSQLInsertFields3: Label ',[External Document No_],[Cost Amount (Actual) (ACY)],[Cost Posted to G_L (ACY)],[Cost per Unit (ACY)],[Document Type],[Document Line No_]';
+        lblSQLInsertFields4: Label ',[Valuation Date],[Capacity Ledger Entry No_],[Purchase Amount (Actual)],[Purchase Amount (Expected)],[Sales Amount (Expected)],[Cost Amount (Expected)]';
+        lblSQLInsertFields5: Label ',[Cost Amount (Non-Invtbl_)],[Cost Amount (Expected) (ACY)],[Cost Amount (Non-Invtbl_)(ACY)],[Expected Cost Posted to G_L],[Exp_ Cost Posted to G_L (ACY)]';
+        lblSQLInsertFields6: Label ',[Type],[No_],[Account Type],[Amount G_L],[Amount G_L (ACY)],[Interim Account],[G_L Posting Date],[Negative],[Bal_ Account Type],[Job No_],[Account Heading],[Entry No_],[Tipo Movimiento],[Tipo Cuenta],[Bal tipo Cuenta])';
+        lblSQLInsertValues1: Label 'values(%1,%2,''%3'',''%4'',''%5'',''%6'',''%7'',''%8'',''%9'',';
+        lblSQLInsertValues2: Label '''%10'',%11,%12,%13,%14,%15,''%16'',''%17'',%18,%19,%20,''%21'',%22,''%23'',%24,%25,%26,%27,%28,%29,%30,%31,%32,%33,''%34'',';
+        lblSQLInsertValues3: Label '%35,''%36'',%37,%38,''%39'',''%40'',''%41'',''%42'',''%43'',''%44'',%45,''%46'',''%47'',''%48'')';
+    begin
+        CostPosted := abs(ValueEntry."Cost Posted to G/L" + ValueEntry."Expected Cost Posted to G/L");
+        if GLEntry.Amount < 0 then
+            CostPosted := -CostPosted;
+        GLAccount.Get(GLEntry."G/L Account No.");
+        if IsNull(InventarioSQLConnection) then
+            BBDDInv_SQLConnect(InventarioSQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := InventarioSQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        txtSQLCommandFields := lblSQLInsertFields1 + lblSQLInsertFields2 + lblSQLInsertFields3 + lblSQLInsertFields4 + lblSQLInsertFields5 + lblSQLInsertFields6;
+        txtSQLCommandValues := StrSubstNo(lblSQLInsertValues1 + lblSQLInsertValues2 + lblSQLInsertValues3,
+            ValueEntry."Entry No.",
+            GLEntry."Entry No.",
+            GLEntry."G/L Account No.",
+            ValueEntry."Item No.",
+            StrSubstNo('%1-%2-%3', Date2DMY(ValueEntry."Posting Date", 3), Date2DMY(ValueEntry."Posting Date", 1), Date2DMY(ValueEntry."Posting Date", 2)),  //10
+            0,
+            ValueEntry."Document No.",
+            ValueEntry.Description,
+            ValueEntry."Location Code",
+            ValueEntry."Inventory Posting Group",   //15
+            ValueEntry."Item Ledger Entry No.",
+            FormatDecimaNumber(ValueEntry."Valued Quantity"),
+            FormatDecimaNumber(ValueEntry."Item Ledger Entry Quantity"),
+            FormatDecimaNumber(ValueEntry."Cost Amount (Actual)"),
+            FormatDecimaNumber(ValueEntry."Cost Posted to G/L"),   //20
+            ValueEntry."Document Date",
+            ValueEntry."External Document No.",
+            FormatDecimaNumber(ValueEntry."Cost Amount (Actual) (ACY)"), //23
+            FormatDecimaNumber(ValueEntry."Cost Posted to G/L (ACY)"),  //24
+            FormatDecimaNumber(ValueEntry."Cost per Unit (ACY)"),
+            ValueEntry."Document Type",
+            ValueEntry."Document Line No.",
+            StrSubstNo('%1-%2-%3', Date2DMY(ValueEntry."Valuation Date", 3), Date2DMY(ValueEntry."Valuation Date", 1), Date2DMY(ValueEntry."Valuation Date", 2)),
+            ValueEntry."Capacity Ledger Entry No.",
+            FormatDecimaNumber(ValueEntry."Purchase Amount (Actual)"), //30
+            FormatDecimaNumber(ValueEntry."Purchase Amount (Expected)"),
+            FormatDecimaNumber(ValueEntry."Sales Amount (Expected)"),
+            FormatDecimaNumber(ValueEntry."Cost Amount (Expected)"),
+            FormatDecimaNumber(ValueEntry."Cost Amount (Non-Invtbl.)"),
+            FormatDecimaNumber(ValueEntry."Cost Amount (Expected) (ACY)"), //35
+            FormatDecimaNumber(ValueEntry."Cost Amount (Non-Invtbl.)(ACY)"),
+            FormatDecimaNumber(ValueEntry."Expected Cost Posted to G/L"),
+            FormatDecimaNumber(ValueEntry."Exp. Cost Posted to G/L (ACY)"),
+            0,
+            GLEntry."G/L Account No.", // 41
+            0, //42
+            FormatDecimaNumber(CostPosted),  //43
+            FormatDecimaNumber(CostPosted), //44
+            0, //GLAccount."Interim Account",
+            GLEntry."Posting Date", //46
+            0, //tmpInvtPostBuf.Negative,
+            0,
+            GLEntry."Job No.",
+            copystr(GLEntry."G/L Account No.", 1, 1), 0,
+            ValueEntry."Item Ledger Entry Type",
+            GLAccount."Account Type",
+            GLEntry."Bal. Account Type"
+            ); //50
+        txtSQLCommandText := StrSubstNo('%1 %2 %3', lblSQLinsertTable, txtSQLCommandFields, txtSQLCommandValues);
+        SQLCommand.CommandText := txtSQLCommandText;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            exit(true);
+
+    end;
+
+    local procedure DeleteGLEntry_ValueEntry(ValueEntryNo: Integer)
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        // Windows: Dialog;
+        lblSQLDelete: Label 'DELETE FROM [ZUMMO Inventario].[dbo].[ZUMMO$ZM Value entry - G_L Entry] WHERE [Value Entry No_] = %1';
+    begin
+        // windows.Open('#1###################################\#2##############################');
+        // windows.Update(1, 'Updating.....');
+        if IsNull(InventarioSQLConnection) then
+            BBDDInv_SQLConnect(InventarioSQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := InventarioSQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := StrSubstNo(lblSQLDelete, ValueEntryNo);
+        // ** EXEC READER **
+        SQLReader := SQLCommand.ExecuteReader;
+        // IF SQLReader.HasRows then
+        //     exit(false);
+        // windows.close;
+        // exit(true);
     end;
 }
