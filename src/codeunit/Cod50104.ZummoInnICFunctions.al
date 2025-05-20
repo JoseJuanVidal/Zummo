@@ -2320,14 +2320,14 @@ codeunit 50104 "Zummo Inn. IC Functions"
         BISQLConnection: DotNet SqlConnection;
         InventarioSQLConnection: DotNet SqlConnection;
 
-    procedure SQLUpdateALL(DeleteAll: Boolean)
+    procedure SQLUpdateALL(DeleteAll: Boolean; EntryNoIni: Integer)
     var
         GLAccountNo: Integer;
-        GLEntryNo: Integer;
+        LastGLEntryNo: Integer;
     begin
-        GLAccountNo := SQLGLAccountsUpdate();
-        GLEntryNo := SQLGLGLEntrysUpdate(DeleteAll);
-        SendMailBIUpdate(GLAccountNo, GLEntryNo);
+        //GLAccountNo := SQLGLAccountsUpdate();
+        LastGLEntryNo := SQLGLGLEntrysUpdate(DeleteAll, EntryNoIni);
+        SendMailBIUpdate(GLAccountNo, LastGLEntryNo);
     end;
 
     procedure SQLBIGetRecordsNo(var GLRecordsNo: Integer; var GLEntryRecordsNo: Integer; var GLBudgetRecordsNo: Integer; var ItemsRecordsNo: Integer;
@@ -2559,7 +2559,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
                         1:
                             begin
                                 if Evaluate(Account1, GLAccount."No.") then
-                                    Desc1 := GLAccount.Name;
+                                    Desc1 := FormatText(GLAccount.Name);
                                 Account2 := 0;
                                 Desc2 := '';
                                 Account3 := 0;
@@ -2570,7 +2570,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
                         2:
                             begin
                                 if Evaluate(Account2, GLAccount."No.") then
-                                    Desc2 := GLAccount.Name;
+                                    Desc2 := FormatText(GLAccount.Name);
                                 Account3 := 0;
                                 Desc3 := '';
                                 Account4 := 0;
@@ -2580,14 +2580,14 @@ codeunit 50104 "Zummo Inn. IC Functions"
                         3:
                             begin
                                 if Evaluate(Account3, GLAccount."No.") then
-                                    Desc3 := GLAccount.Name;
+                                    Desc3 := FormatText(GLAccount.Name);
                                 Account4 := 0;
                                 Desc4 := '';
                             end;
                         4:
                             begin
                                 if Evaluate(Account4, GLAccount."No.") then
-                                    Desc4 := GLAccount.Name;
+                                    Desc4 := FormatText(GLAccount.Name);
                             end;
                     end;
                     // añadimos cada una de las opcioens de subcunentas mayor
@@ -2617,7 +2617,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Clear(SQLCommand);
         SQLCommand := BISQLConnection.CreateCommand();
         // SQLCommand.CommandText := 'select * From ItemCompleto';
-        txtSQLCommandValues := StrSubstNo(lblSQLInsertValues, Account1, Account2, Account3, Account4, AccountNo, 'ZINC', Desc1, Desc2, Desc3, Desc4, GLAccount.Name);
+        txtSQLCommandValues := StrSubstNo(lblSQLInsertValues, Account1, Account2, Account3, Account4, AccountNo, 'ZINC', Desc1, Desc2, Desc3, Desc4, FormatText(GLAccount.Name));
         txtSQLCommandText := StrSubstNo('%1 %2 %3', lblSQLinsertTable, lblSQLInsertFields, txtSQLCommandValues);
         SQLCommand.CommandText := txtSQLCommandText;
         SQLReader := SQLCommand.ExecuteReader;
@@ -2651,10 +2651,11 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
 
 
-    local procedure SQLGLGLEntrysUpdate(DeleteAll: Boolean) RecordNo: Integer
+    local procedure SQLGLGLEntrysUpdate(DeleteAll: Boolean; EntryNoIni: Integer) RecordNo: Integer
     var
         GLSetup: Record "General Ledger Setup";
         GLEntry: Record "G/L Entry";
+        LastEntryNo: Integer;
         Level: Integer;
         Account1: Integer;
         Account2: Integer;
@@ -2669,18 +2670,24 @@ codeunit 50104 "Zummo Inn. IC Functions"
     begin
         windows.Open('#1###################################\#2##############################\#3##############################');
         windows.Update(1, 'Updating G L Entry.....');
-        if not SQLDeleteRecordsNoGLEntry(DeleteAll) then
-            exit;
+        // if not SQLDeleteRecordsNoGLEntry(DeleteAll) then
+        //     exit;
         GLSetup.Get();
         GLEntry.Reset();
+        LastEntryNo := GetLAstGLEntry_ValueEntry();
         if not DeleteAll then
-            GLEntry.SetRange("Posting Date", GLSetup."Allow Posting From", GLSetup."Allow Posting To");
-        if GLEntry.FindFirst() then
+            if (EntryNoIni = 0) then
+                GLEntry.SetFilter("Entry No.", '%1..', LastEntryNo)
+            else
+                GLEntry.SetFilter("Entry No.", '%1..', EntryNoIni);
+        if GLEntry.FindSet() then
             repeat
                 windows.Update(2, GLEntry."Entry No.");
                 windows.Update(3, GLEntry."Posting Date");
-                UpdateGLEntry(GLEntry);
-                RecordNo += 1;
+                if abs(GLEntry.Amount) < 490000000 then begin
+                    UpdateGLEntry(GLEntry);
+                    RecordNo += 1;
+                end;
             until GLEntry.Next() = 0;
         windows.Close();
     end;
@@ -2702,6 +2709,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
             SQLConnect(BISQLConnection);
         Clear(SQLCommand);
         SQLCommand := BISQLConnection.CreateCommand();
+
+        SQLDeleteRecordsNoGLEntry(GLEntry."Entry No.");
         txtSQLInsertFields := '([Entry No_],[G_L Account No_],[Posting Date],[Document Type],[Document No_],[Description],[Bal_ Account No_],[Amount],[Global Dimension 1 Code],[Global Dimension 2 Code]' +
                     ',[User ID],[Source Code],[System-Created Entry],[Quantity],[VAT Amount],[Business Unit Code]' +
                     ',[Reason Code],[Gen_ Bus_ Posting Group],[Gen_ Prod_ Posting Group],[Transaction No_],[Debit Amount]' +
@@ -2711,7 +2720,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
         txtSQLCommandValues := lblSQLInsertValues + format(GLEntry."Entry No.");
         txtSQLCommandValues += ',''' + GLEntry."G/L Account No." + '''';
-        txtSQLCommandValues += ',''' + StrSubstNo('%1-%2-%3', Date2DMY(GLEntry."Posting Date", 3), Date2DMY(GLEntry."Posting Date", 1), Date2DMY(GLEntry."Posting Date", 2)) + '''';
+        txtSQLCommandValues += ',''' + StrSubstNo('%1-%2-%3', Date2DMY(GLEntry."Posting Date", 3), Date2DMY(GLEntry."Posting Date", 2), Date2DMY(GLEntry."Posting Date", 1)) + '''';
         case GLEntry."Document Type" of
             GLEntry."Document Type"::" ":
                 txtSQLCommandValues += ',' + format(0);
@@ -2753,7 +2762,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Transaction No.");
         txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Debit Amount");
         txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Credit Amount");
-        txtSQLCommandValues += ',''' + StrSubstNo('%1-%2-%3', Date2DMY(GLEntry."Document Date", 3), Date2DMY(GLEntry."Document Date", 1), Date2DMY(GLEntry."Document Date", 2)) + '''';
+        txtSQLCommandValues += ',''' + StrSubstNo('%1-%2-%3', Date2DMY(GLEntry."Document Date", 3), Date2DMY(GLEntry."Document Date", 2), Date2DMY(GLEntry."Document Date", 1)) + '''';
         txtSQLCommandValues += ',''' + FormatText(GLEntry."External Document No.") + '''';
         txtSQLCommandValues += ',''' + GLEntry."Source No." + '''';
         txtSQLCommandValues += ',''' + GLEntry."Tax Area Code" + '''';
@@ -2764,9 +2773,9 @@ codeunit 50104 "Zummo Inn. IC Functions"
         txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Add.-Currency Debit Amount");
         txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."Add.-Currency Credit Amount");
         txtSQLCommandValues += ',' + format(GLEntry."FA Entry No.");
-        txtSQLCommandValues += ',''' + StrSubstNo('%1-%2-%3', Date2DMY(DT2Date(GLEntry."Last Modified DateTime"), 3), Date2DMY(DT2Date(GLEntry."Last Modified DateTime"), 1)
+        txtSQLCommandValues += ',''' + StrSubstNo('%1-%2-%3', Date2DMY(DT2Date(GLEntry."Last Modified DateTime"), 3), Date2DMY(DT2Date(GLEntry."Last Modified DateTime"), 2)
                                                 , Date2DMY(DT2Date(GLEntry."Last Modified DateTime"), 2)) + '''';
-        txtSQLCommandValues += ',''ZINC''';
+        txtSQLCommandValues += ',''' + Get00Origen() + '''';
         txtSQLCommandValues += ')';
         txtSQLCommandText := StrSubstNo('%1 %2 %3', lblSQLinsertTable, txtSQLInsertFields, txtSQLCommandValues);
         SQLCommand.CommandText := txtSQLCommandText;
@@ -2790,40 +2799,33 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Result := ConvertStr(Result, '''', '´');
     end;
 
-    Local procedure SQLDeleteRecordsNoGLEntry(DeleteAll: Boolean): Boolean
+    Local procedure SQLDeleteRecordsNoGLEntry(EntryNo: Integer): Boolean
     var
         GLSetup: Record "General Ledger Setup";
         SQLCommand: DotNet SqlCommand;
         SQLReader: DotNet SqlDataReader;
         FechaIni: text;
-        Windows: Dialog;
-        lblSQLDelete: Label 'DELETE FROM tBIFinan3Nav WHERE [00 - Origen] =''%1'' and [Posting Date]>=%2';
-        lblSQLDeleteAll: Label 'DELETE FROM tBIFinan3Nav WHERE [00 - Origen] =''%1''';
+        // Windows: Dialog;
+        lblSQLDelete: Label 'DELETE FROM tBIFinan3Nav WHERE [00 - Origen] =''%1'' and [Entry No_] = %2';
+    // lblSQLDeleteAll: Label 'DELETE FROM tBIFinan3Nav WHERE [00 - Origen] =''%1''';
     begin
         GLSetup.Get();
 
-        windows.Open('#1###################################\#2##############################');
-        windows.Update(1, 'Updating.....');
+        // windows.Open('#1###################################\#2##############################');
+        // windows.Update(1, 'Updating.....');
         if IsNull(BISQLConnection) then
             SQLConnect(BISQLConnection);
         Clear(SQLCommand);
         SQLCommand := BISQLConnection.CreateCommand();
         // SQLCommand.CommandText := 'select * From ItemCompleto';
-        case DeleteAll of
-            true:
-                begin
-                    SQLCommand.CommandText := StrSubstNo(lblSQLDeleteAll, 'ZINC');
-                end;
-            else begin
-                FechaIni := StrSubstNo('%1-%2-%3 0:00', Date2DMY(GLSetup."Allow Posting From", 3), Date2DMY(GLSetup."Allow Posting From", 2), Date2DMY(GLSetup."Allow Posting From", 1));
-                SQLCommand.CommandText := StrSubstNo(lblSQLDelete, 'ZINC', FechaIni);
-            end;
-        end;
+
+        // FechaIni := StrSubstNo('%1-%2-%3 0:00', Date2DMY(GLSetup."Allow Posting From", 3), Date2DMY(GLSetup."Allow Posting From", 2), Date2DMY(GLSetup."Allow Posting From", 1));
+        SQLCommand.CommandText := StrSubstNo(lblSQLDelete, Get00Origen(), EntryNo);
         // ** EXEC READER **
         SQLReader := SQLCommand.ExecuteReader;
         IF SQLReader.HasRows then
             exit(false);
-        windows.close;
+        // windows.close;
         exit(true);
     end;
 
@@ -3270,7 +3272,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
             StrSubstNo('%1-%2-%3', Date2DMY(ValueEntry."Posting Date", 3), Date2DMY(ValueEntry."Posting Date", 1), Date2DMY(ValueEntry."Posting Date", 2)),  //10
             0,
             ValueEntry."Document No.",
-            ValueEntry.Description,
+            FormatText(ValueEntry.Description),
             ValueEntry."Location Code",
             ValueEntry."Inventory Posting Group",   //15
             ValueEntry."Item Ledger Entry No.",
@@ -3279,7 +3281,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
             FormatDecimaNumber(ValueEntry."Cost Amount (Actual)"),
             FormatDecimaNumber(ValueEntry."Cost Posted to G/L"),   //20
             ValueEntry."Document Date",
-            ValueEntry."External Document No.",
+            FormatText(ValueEntry."External Document No."),
             FormatDecimaNumber(ValueEntry."Cost Amount (Actual) (ACY)"), //23
             FormatDecimaNumber(ValueEntry."Cost Posted to G/L (ACY)"),  //24
             FormatDecimaNumber(ValueEntry."Cost per Unit (ACY)"),
@@ -3324,7 +3326,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         SQLCommand: DotNet SqlCommand;
         SQLReader: DotNet SqlDataReader;
         // Windows: Dialog;
-        lblSQLDelete: Label 'DELETE FROM [ZUMMO Inventario].[dbo].[ZUMMO$ZM Value entry - G_L Entry] WHERE [Value Entry No_] = %1';
+        lblSQLDelete: Label 'DELETE FROM [ZUMMO Inventario].[dbo].[ZUMMO$ZM Value entry - G_L Entry] WHERE  [Value Entry No_] = %1';
     begin
         // windows.Open('#1###################################\#2##############################');
         // windows.Update(1, 'Updating.....');
@@ -3341,4 +3343,46 @@ codeunit 50104 "Zummo Inn. IC Functions"
         // windows.close;
         // exit(true);
     end;
+
+    local procedure GetLAstGLEntry_ValueEntry() GLEntryNo: Integer
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        texto: text;
+        // Windows: Dialog;
+        lblSQLDelete: Label 'select top 1 [Entry No_]  FROM [ReportingZummo].[dbo].[tBIFinan3Nav]  where  [00 - Origen] = ''%1'' order by [Entry No_] desc ';
+    begin
+        // windows.Open('#1###################################\#2##############################');
+        // windows.Update(1, 'Updating.....');
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := StrSubstNo(lblSQLDelete, Get00Origen());
+        // ** EXEC READER **
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            if SQLReader.Read() then
+                GLEntryNo := SQLReader.GetInt64(0);
+        //     exit(false);
+        // windows.close;
+        // exit(true);
+    end;
+
+
+    local procedure Get00Origen(): Text
+    var
+        myInt: Integer;
+    begin
+        case CompanyName of
+            'ZUMMO':
+                exit('ZIM');
+            'INVESTMENTS':
+                exit('ZINV');
+            else
+                exit('');
+        end;
+    end;
+
 }

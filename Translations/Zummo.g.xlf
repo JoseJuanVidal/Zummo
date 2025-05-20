@@ -12509,7 +12509,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CrearPedidoCompraDesdeBCDTravel - NamedType lblCreate</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 352375554 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DELETE FROM [ZUMMO Inventario].[dbo].[ZUMMO$ZM Value entry - G_L Entry] WHERE [Value Entry No_] = %1</source>
+          <source>DELETE FROM [ZUMMO Inventario].[dbo].[ZUMMO$ZM Value entry - G_L Entry] WHERE  [Value Entry No_] = %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method DeleteGLEntry_ValueEntry - NamedType lblSQLDelete</note>
         </trans-unit>
@@ -12537,6 +12537,11 @@
           <source>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Albarán Nº %1 la Dimensión %2 debe tener asignado un valor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetBCDTravelLineProyecto - NamedType lblEmpty</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 35146741 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>select top 1 [Entry No_]  FROM [ReportingZummo].[dbo].[tBIFinan3Nav]  where  [00 - Origen] = '%1' order by [Entry No_] desc </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetLAstGLEntry_ValueEntry - NamedType lblSQLDelete</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3674950453 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
           <source>SELECT count(*) FROM tBIFinan_PresupuestoFinanzas WHERE [00 - Origen] ='%1'</source>
@@ -12729,14 +12734,9 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SQLDeleteRecordsNoGLAccount - NamedType lblSQLDelete</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3821755537 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DELETE FROM tBIFinan3Nav WHERE [00 - Origen] ='%1' and [Posting Date]&gt;=%2</source>
+          <source>DELETE FROM tBIFinan3Nav WHERE [00 - Origen] ='%1' and [Entry No_] = %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SQLDeleteRecordsNoGLEntry - NamedType lblSQLDelete</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3234355424 - Method 3821755537 - NamedType 3001406744" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DELETE FROM tBIFinan3Nav WHERE [00 - Origen] ='%1'</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method SQLDeleteRecordsNoGLEntry - NamedType lblSQLDeleteAll</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 16924058 - NamedType 407788085" size-unit="char" translate="yes" xml:space="preserve">
           <source>Se ha actualizado el pedido de compra </source>
@@ -13053,6 +13053,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar Todo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateAll - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 1334923488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NUEVO Mov. Contabilidad</source>
+          <note from="Developer" annotates="general" priority="2">ESP="NUEVO Mov. Contabilidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action NUEVO Mov. contabilaidad - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 1334923488 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿NUEVO\Desea subir los movimientos contabilidad?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿NUEVO\Desea subir los movimientos contabilidad?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action NUEVO Mov. contabilaidad - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 2822793219 - Action 484028685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update GL Account</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar cuentas contables"</note>
@@ -13072,16 +13082,6 @@
           <source>¿Desea actualizar los movs. de presupuestos contabilidad?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movs. de presupuestos contabilidad?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateGLBudgetEntry - Method OnAction - NamedType lblConfirm</note>
-        </trans-unit>
-        <trans-unit id="Page 2822793219 - Action 2035599090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Update GL Entry</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualizar movs. contabiladad"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateGLEntry - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2822793219 - Action 2035599090 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Desea actualizar los movimientos contabilidad?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos contabilidad?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateGLEntry - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Action 1873368169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update Items</source>

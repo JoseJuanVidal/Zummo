@@ -129,22 +129,49 @@ page 17463 "ABERTIA Update"
                         end;
                     end;
                 }
-                action(UpdateGLEntry)
+                // action(UpdateGLEntry)
+                // {
+                //     ApplicationArea = all;
+                //     Caption = 'Update GL Entry', comment = 'ESP="Actualizar movs. contabiladad"';
+                //     Image = PostingEntries;
+                //     Promoted = true;
+                //     PromotedCategory = Process;
+
+                //     trigger OnAction()
+                //     var
+                //         AbertiaGLEntry: Record "ABERTIA GL Entry";
+                //         lblConfirm: Label '¿Desea actualizar los movimientos contabilidad?', comment = 'ESP="¿Desea actualizar los movimientos contabilidad?"';
+                //     begin
+                //         if Confirm(lblConfirm) then
+                //             AbertiaGLEntry.CreateGLEntry(TypeUpdate, 0);
+                //         UpdateEntryNos();
+                //     end;
+                // }
+                action("NUEVO Mov. contabilaidad")
                 {
                     ApplicationArea = all;
-                    Caption = 'Update GL Entry', comment = 'ESP="Actualizar movs. contabiladad"';
-                    Image = PostingEntries;
-                    Promoted = true;
-                    PromotedCategory = Process;
-
+                    Caption = 'NUEVO Mov. Contabilidad', comment = 'ESP="NUEVO Mov. Contabilidad"';
+                    Image = NewRow;
                     trigger OnAction()
                     var
-                        AbertiaGLEntry: Record "ABERTIA GL Entry";
-                        lblConfirm: Label '¿Desea actualizar los movimientos contabilidad?', comment = 'ESP="¿Desea actualizar los movimientos contabilidad?"';
+                        Funciones: Codeunit "Zummo Inn. IC Functions";
+                        lblConfirm: Label '¿NUEVO\Desea subir los movimientos contabilidad?', comment = 'ESP="¿NUEVO\Desea subir los movimientos contabilidad?"';
                     begin
                         if Confirm(lblConfirm) then
-                            AbertiaGLEntry.CreateGLEntry(TypeUpdate, 0);
+                            case TypeUpdate of
+                                typeUpdate::Todo:
+                                    Funciones.SQLUpdateALL(true, 0);
+                                typeUpdate::Nuevo:
+                                    Funciones.SQLUpdateALL(false, 0);
+                                TypeUpdate::"Nº Mov":
+                                    begin
+                                        if EntryNoIni > 0 then
+                                            Funciones.SQLUpdateALL(false, EntryNoIni);
+                                    end;
+                            end;
                         UpdateEntryNos();
+
+
                     end;
                 }
                 action(UpdateGLBudgetEntry)
@@ -166,6 +193,7 @@ page 17463 "ABERTIA Update"
                         UpdateEntryNos();
                     end;
                 }
+
                 action(UpdateSalesCustomer)
                 {
                     ApplicationArea = all;
@@ -306,7 +334,7 @@ page 17463 "ABERTIA Update"
         SalesItem: Integer;
         SalesFacturas: Integer;
         SalesPedidos: Integer;
-        TypeUpdate: Option Periodo,Todo,Nuevo;
+        TypeUpdate: Option Nuevo,"Nº Mov",Todo;
         EntryNoIni: Integer;
 
     procedure OpenTableConnection()
