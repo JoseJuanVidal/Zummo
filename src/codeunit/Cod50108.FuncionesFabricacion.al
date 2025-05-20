@@ -258,6 +258,7 @@ codeunit 50108 "FuncionesFabricacion"
         Vendor: Record Vendor;
         RequisitionBuffer: record "ZM Requesition Buffer Calc.";
         i: Integer;
+        valor: text;
     begin
         DemandInventoryProfile.SetRange("Due Date");
         Item.Get(TempSKU."Item No.");
@@ -280,75 +281,81 @@ codeunit 50108 "FuncionesFabricacion"
                 RequisitionBuffer."Stock de seguridad" := Item."Safety Stock Quantity";
                 RequisitionBuffer."Cantidad mínima pedido" := Item."Order Multiple";
             end;
-            for i := 1 to 8 do begin
-                if DemandInventoryProfile.findset() then
-                    repeat
-                        case i of
-                            // DEMAND
-                            1:  // Sales Line (37)
-                                if DemandInventoryProfile."Source Type" = Database::"Sales Line" then
-                                    RequisitionBuffer."Lín. venta" += DemandInventoryProfile."Remaining Quantity";
-                            2:  // Service Line (5902)
-                                if DemandInventoryProfile."Source Type" = Database::"Service Line" then
-                                    RequisitionBuffer."Línea servicio" += SupplyInventoryProfile."Remaining Quantity";
-                            3:  // Job Planning line (1003)
-                                if DemandInventoryProfile."Source Type" = Database::"Job Planning Line" then
-                                    RequisitionBuffer."Línea planificación proyecto" += DemandInventoryProfile."Remaining Quantity";
-                            4:  // Prod Order Component (5407)
-                                if DemandInventoryProfile."Source Type" = Database::"Prod. Order Component" then
-                                    RequisitionBuffer."Componente orden producción" += DemandInventoryProfile."Remaining Quantity";
-                            5:  // Asembly  Line (901)                            
-                                if DemandInventoryProfile."Source Type" = Database::"Assembly Line" then
-                                    RequisitionBuffer."Demanda Línea de ensamblado" += DemandInventoryProfile."Remaining Quantity";
-                            6:  // Planning Component Line (99000829)                            
-                                if DemandInventoryProfile."Source Type" = Database::"Planning Component" then
-                                    RequisitionBuffer."Planif. componente" += DemandInventoryProfile."Remaining Quantity";
-                            7:  // Trans Requisition Line (246)                            
-                                if DemandInventoryProfile."Source Type" = Database::"Requisition Line" then
-                                    RequisitionBuffer."Demanda Lín. hoja demanda" += DemandInventoryProfile."Remaining Quantity";
-                            8:  // shipment Transfer Line (5741)                            
-                                if DemandInventoryProfile."Source Type" = Database::"Transfer Line" then
-                                    RequisitionBuffer."Demanda Lín. transferencia" += DemandInventoryProfile."Remaining Quantity";
-                        end;
-                    Until DemandInventoryProfile.next() = 0;
-            end;
-            for i := 1 to 7 do begin
-                if SupplyInventoryProfile.findset() then
-                    repeat
-                        // SUPPLY
-                        case i of
-                            1:  // Item Ledger Entry (32)
-                                if SupplyInventoryProfile."Source Type" = Database::"Item Ledger Entry" then
-                                    RequisitionBuffer.Inventario += SupplyInventoryProfile."Remaining Quantity";
-                            2:  // Requisition line (246)
-                                if SupplyInventoryProfile."Source Type" = Database::"Requisition Line" then
-                                    RequisitionBuffer."Aprov. Lín. hoja demanda" += SupplyInventoryProfile."Remaining Quantity";
-                            3:  // Purchase line (39)
-                                if SupplyInventoryProfile."Source Type" = Database::"Purchase Line" then
-                                    RequisitionBuffer."Lín. compra" += SupplyInventoryProfile."Remaining Quantity";
-                            4:  // Prod Order line (39)
-                                if SupplyInventoryProfile."Source Type" = Database::"Prod. Order Line" then
-                                    RequisitionBuffer."Lín. orden prod." += SupplyInventoryProfile."Remaining Quantity";
-                            5:  // Assembly line (901)
-                                if SupplyInventoryProfile."Source Type" = Database::"Assembly Line" then
-                                    RequisitionBuffer."Aprov. Línea de ensamblado" += SupplyInventoryProfile."Remaining Quantity";
-                            6:  // receipt Transfer line (5741)
-                                if SupplyInventoryProfile."Source Type" = Database::"Transfer Line" then
-                                    RequisitionBuffer."Aprov. Lín. transferencia" += SupplyInventoryProfile."Remaining Quantity";
-                            7:  //safety Stock                            
-                                if SupplyInventoryProfile."Source Type" = 0 then
-                                    RequisitionBuffer."Cantidad para stock" += SupplyInventoryProfile."Remaining Quantity";
-                        end;
-                    Until SupplyInventoryProfile.next() = 0;
-            end;
-            RequisitionBuffer."Cód. proveedor" := Item."Vendor No.";
-            if vendor.get(Item."Vendor No.") then;
-            RequisitionBuffer."Nombre proveedor" := Vendor.Name;
-            RequisitionBuffer."Plazo de entrega" := Item."Lead Time Calculation";
             RequisitionBuffer.Insert();
-
-
         end;
+        for i := 1 to 9 do begin
+            valor := format(i);
+            if DemandInventoryProfile.findset() then
+                repeat
+                    valor := format(DemandInventoryProfile."Source Type");
+                    case i of
+                        // DEMAND
+                        1:  // Sales Line (37)
+                            if DemandInventoryProfile."Source Type" = Database::"Sales Line" then
+                                RequisitionBuffer."Lín. venta" += DemandInventoryProfile."Remaining Quantity";
+                        2:  // Service Line (5902)
+                            if DemandInventoryProfile."Source Type" = Database::"Service Line" then
+                                RequisitionBuffer."Línea servicio" += SupplyInventoryProfile."Remaining Quantity";
+                        3:  // Job Planning line (1003)
+                            if DemandInventoryProfile."Source Type" = Database::"Job Planning Line" then
+                                RequisitionBuffer."Línea planificación proyecto" += DemandInventoryProfile."Remaining Quantity";
+                        4:  // Prod Order Component (5407)
+                            if DemandInventoryProfile."Source Type" = Database::"Prod. Order Component" then
+                                RequisitionBuffer."Componente orden producción" += DemandInventoryProfile."Remaining Quantity";
+                        5:  // Asembly  Line (901)                            
+                            if DemandInventoryProfile."Source Type" = Database::"Assembly Line" then
+                                RequisitionBuffer."Demanda Línea de ensamblado" += DemandInventoryProfile."Remaining Quantity";
+                        6:  // Planning Component Line (99000829)                            
+                            if DemandInventoryProfile."Source Type" = Database::"Planning Component" then
+                                RequisitionBuffer."Planif. componente" += DemandInventoryProfile."Remaining Quantity";
+                        7:  // Trans Requisition Line (246)                            
+                            if DemandInventoryProfile."Source Type" = Database::"Requisition Line" then
+                                RequisitionBuffer."Demanda Lín. hoja demanda" += DemandInventoryProfile."Remaining Quantity";
+                        8:  // shipment Transfer Line (5741)                            
+                            if DemandInventoryProfile."Source Type" = Database::"Transfer Line" then
+                                RequisitionBuffer."Demanda Lín. transferencia" += DemandInventoryProfile."Remaining Quantity";
+                        9:  // shipment Transfer Line (5741)                            
+                            if DemandInventoryProfile."Source Type" in [Database::"Production Forecast Entry"] then
+                                RequisitionBuffer."Forecast Requisition" += DemandInventoryProfile."Remaining Quantity (Base)";
+                    end;
+                Until DemandInventoryProfile.next() = 0;
+        end;
+        for i := 1 to 7 do begin
+            if SupplyInventoryProfile.findset() then
+                repeat
+                    // SUPPLY
+                    case i of
+                        1:  // Item Ledger Entry (32)
+                            if SupplyInventoryProfile."Source Type" = Database::"Item Ledger Entry" then
+                                RequisitionBuffer.Inventario += SupplyInventoryProfile."Remaining Quantity";
+                        2:  // Requisition line (246)
+                            if SupplyInventoryProfile."Source Type" = Database::"Requisition Line" then
+                                RequisitionBuffer."Aprov. Lín. hoja demanda" += SupplyInventoryProfile."Remaining Quantity";
+                        3:  // Purchase line (39)
+                            if SupplyInventoryProfile."Source Type" = Database::"Purchase Line" then
+                                RequisitionBuffer."Lín. compra" += SupplyInventoryProfile."Remaining Quantity";
+                        4:  // Prod Order line (39)
+                            if SupplyInventoryProfile."Source Type" = Database::"Prod. Order Line" then
+                                RequisitionBuffer."Lín. orden prod." += SupplyInventoryProfile."Remaining Quantity";
+                        5:  // Assembly line (901)
+                            if SupplyInventoryProfile."Source Type" = Database::"Assembly Line" then
+                                RequisitionBuffer."Aprov. Línea de ensamblado" += SupplyInventoryProfile."Remaining Quantity";
+                        6:  // receipt Transfer line (5741)
+                            if SupplyInventoryProfile."Source Type" = Database::"Transfer Line" then
+                                RequisitionBuffer."Aprov. Lín. transferencia" += SupplyInventoryProfile."Remaining Quantity";
+                        7:  //safety Stock                            
+                            if SupplyInventoryProfile."Source Type" = 0 then
+                                RequisitionBuffer."Cantidad para stock" += SupplyInventoryProfile."Remaining Quantity";
+                    end;
+                Until SupplyInventoryProfile.next() = 0;
+        end;
+        RequisitionBuffer."Cód. proveedor" := Item."Vendor No.";
+        if vendor.get(Item."Vendor No.") then;
+        RequisitionBuffer."Nombre proveedor" := Vendor.Name;
+        RequisitionBuffer."Plazo de entrega" := Item."Lead Time Calculation";
+        RequisitionBuffer.Modify();
+
+
     end;
 
     [EventSubscriber(ObjectType::Table, database::"Requisition Line", 'OnAfterInsertEvent', '', true, true)]
@@ -636,7 +643,7 @@ codeunit 50108 "FuncionesFabricacion"
         ReqExcelBuffer.NewRow();
         ReqExcelBuffer.NewRow();
         ReqExcelBuffer.EnterCell(ReqExcelBuffer, 4, 6, 'Demandas', true, true, false);
-        ReqExcelBuffer.EnterCell(ReqExcelBuffer, 4, 14, 'Aprovisionamientos', true, true, false);
+        ReqExcelBuffer.EnterCell(ReqExcelBuffer, 4, 15, 'Aprovisionamientos', true, true, false);
         ReqExcelBuffer.NewRow();
 
         ReqExcelBuffer.AddColumn(Item.FieldCaption("No."), false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
@@ -667,6 +674,9 @@ codeunit 50108 "FuncionesFabricacion"
         ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         RecRef.Close();
         RecRef.Open(Database::"Transfer Line");
+        ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
+        RecRef.Close();
+        RecRef.Open(Database::"Production Forecast Entry");
         ReqExcelBuffer.AddColumn(RecRef.Caption, false, '', true, false, false, '', ReqExcelBuffer."Cell Type"::Text);
         RecRef.Close();
         // SUPPLY
@@ -731,6 +741,7 @@ codeunit 50108 "FuncionesFabricacion"
                     ReqExcelBuffer.AddColumn(RequisitionBuffer."Planif. componente", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
                     ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Lín. hoja demanda", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
                     ReqExcelBuffer.AddColumn(RequisitionBuffer."Demanda Lín. transferencia", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
+                    ReqExcelBuffer.AddColumn(RequisitionBuffer."Forecast Requisition", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
                     // SUPPLIES
                     ReqExcelBuffer.AddColumn(RequisitionBuffer.Inventario, false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);
                     ReqExcelBuffer.AddColumn(RequisitionBuffer."Aprov. Lín. hoja demanda", false, '', false, false, false, '', ReqExcelBuffer."Cell Type"::Number);

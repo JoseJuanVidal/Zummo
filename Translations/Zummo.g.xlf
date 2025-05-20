@@ -11783,6 +11783,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3894755688 - Field 3478657353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forecast Requisition</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Previsión de demanda"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Forecast Requisition - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3894755688 - Field 2006825773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inventario</source>
           <note from="Developer" annotates="general" priority="2">ESP="Inventario"</note>
@@ -33282,6 +33287,11 @@
           <source>Shipment Method</source>
           <note from="Developer" annotates="general" priority="2">ESP="Condiciones envío"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Cust. Template Card - Control Shipment Method - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1770336369 - Action 3348017751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2390594980">
+          <source>Movs. prevision</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. prevision"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Demand Forecast Names - Action NavigateEntries - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2369002940 - Action 397840741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Daily Time Sheet</source>

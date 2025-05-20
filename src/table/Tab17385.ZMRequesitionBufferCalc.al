@@ -137,7 +137,11 @@ table 17385 "ZM Requesition Buffer Calc."
             DataClassification = CustomerContent;
             Caption = 'Plazo de entrega', comment = 'ESP="Plazo de entrega"';
         }
-
+        field(33; "Forecast Requisition"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Forecast Requisition', comment = 'ESP="Previsión de demanda"';
+        }
     }
 
     keys
