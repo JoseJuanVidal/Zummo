@@ -3221,18 +3221,44 @@ codeunit 50104 "Zummo Inn. IC Functions"
                 Windows.Update(1, ValueEntry."Entry No.");
                 Windows.Update(3, ValueEntry."Posting Date");
                 DeleteGLEntry_ValueEntry(ValueEntry."Entry No.");
-                GLItemLedgRelation.SetRange("Value Entry No.", ValueEntry."Entry No.");
-                if GLItemLedgRelation.FindFirst() then
-                    repeat
-                        Windows.Update(2, GLItemLedgRelation."G/L Entry No.");
-                        GLEntry.GET(GLItemLedgRelation."G/L Entry No.");
-                        Update_GLEntry_ValueEntry(ValueEntry, GLEntry)
-                Until GLItemLedgRelation.next() = 0;
+                // GLItemLedgRelation.SetRange("Value Entry No.", ValueEntry."Entry No.");
+                // if GLItemLedgRelation.FindFirst() then
+                //     repeat
+                //         Windows.Update(2, GLItemLedgRelation."G/L Entry No.");
+                //         GLEntry.GET(GLItemLedgRelation."G/L Entry No.");
+                //         Update_GLEntry_ValueEntry(ValueEntry, GLEntry)
+                // Until GLItemLedgRelation.next() = 0;
+                CreateItemLedgerGlEntry(ValueEntry);
             Until ValueEntry.next() = 0;
         Windows.Close();
     end;
 
-    local procedure Update_GLEntry_ValueEntry(ValueEntry: record "Value Entry"; GLEntry: Record "G/L Entry"): Boolean
+    local procedure CreateItemLedgerGlEntry(ValueEntry: record "Value Entry"): Boolean
+    var
+        tmpInvtPostBuf: Record "Invt. Posting Buffer" temporary;
+        InvPosting: Codeunit "Inventory Posting To G/L";
+        Functions: Codeunit "Zummo Inn. IC Functions";
+    begin
+        ValueEntry."Cost Posted to G/L" := 0;
+        ValueEntry."Expected Cost Posted to G/L" := 0;
+        Clear(InvPosting);
+        if not InvPosting.BufferInvtPosting(ValueEntry) then
+            exit;
+        // Message(StrSubstNo('No se encuentran datos buffer %1', ValueEntry."Entry No."));
+        InvPosting.GetInvtPostBuf(tmpInvtPostBuf);
+
+        if tmpInvtPostBuf.FindFirst() then
+            repeat
+                Update_GLEntry_ValueEntry(ValueEntry, tmpInvtPostBuf)
+            // Functions.UpdateParentValueEntry(ValueEntry, ValueEntry, tmpInvtPostBuf);
+            // ValueEntry."Updated Cost Entry" := true;
+            // ValueEntry.Modify();
+            Until tmpInvtPostBuf.next() = 0;
+        Commit();
+        exit(true);
+    end;
+
+    local procedure Update_GLEntry_ValueEntry(ValueEntry: record "Value Entry"; tmpInvtPostBuf: Record "Invt. Posting Buffer"): Boolean
     var
         GLAccount: Record "G/L Account";
         SQLCommand: DotNet SqlCommand;
@@ -3241,7 +3267,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         txtSQLCommandFields: Text;
         txtSQLCommandValues: Text;
         GLAccountNo: Integer;
-        CostPosted: decimal;
+        // CostPosted: decimal;
         ExpectedCostPosted: decimal;
         lblSQLinsertTable: Label 'INSERT INTO [ZUMMO$ZM Value entry - G_L Entry]';
         lblSQLInsertFields1: Label '([Value Entry No_],[G_L Entry No_],[Account No_],[Item No_],[Posting Date],[Item Ledger Entry Type],[Document No_],[Description],[Location Code],[Inventory Posting Group]';
@@ -3254,10 +3280,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         lblSQLInsertValues2: Label '''%10'',%11,%12,%13,%14,%15,''%16'',''%17'',%18,%19,%20,''%21'',%22,''%23'',%24,%25,%26,%27,%28,%29,%30,%31,%32,%33,''%34'',';
         lblSQLInsertValues3: Label '%35,''%36'',%37,%38,''%39'',''%40'',''%41'',''%42'',''%43'',''%44'',%45,''%46'',''%47'',''%48'')';
     begin
-        CostPosted := abs(ValueEntry."Cost Posted to G/L" + ValueEntry."Expected Cost Posted to G/L");
-        if GLEntry.Amount < 0 then
-            CostPosted := -CostPosted;
-        GLAccount.Get(GLEntry."G/L Account No.");
+        GLAccount.Get(tmpInvtPostBuf."Account No.");
         if IsNull(InventarioSQLConnection) then
             BBDDInv_SQLConnect(InventarioSQLConnection);
         Clear(SQLCommand);
@@ -3266,8 +3289,8 @@ codeunit 50104 "Zummo Inn. IC Functions"
         txtSQLCommandFields := lblSQLInsertFields1 + lblSQLInsertFields2 + lblSQLInsertFields3 + lblSQLInsertFields4 + lblSQLInsertFields5 + lblSQLInsertFields6;
         txtSQLCommandValues := StrSubstNo(lblSQLInsertValues1 + lblSQLInsertValues2 + lblSQLInsertValues3,
             ValueEntry."Entry No.",
-            GLEntry."Entry No.",
-            GLEntry."G/L Account No.",
+            0,
+            tmpInvtPostBuf."Account No.",
             ValueEntry."Item No.",
             StrSubstNo('%1-%2-%3', Date2DMY(ValueEntry."Posting Date", 3), Date2DMY(ValueEntry."Posting Date", 1), Date2DMY(ValueEntry."Posting Date", 2)),  //10
             0,
@@ -3299,19 +3322,19 @@ codeunit 50104 "Zummo Inn. IC Functions"
             FormatDecimaNumber(ValueEntry."Expected Cost Posted to G/L"),
             FormatDecimaNumber(ValueEntry."Exp. Cost Posted to G/L (ACY)"),
             0,
-            GLEntry."G/L Account No.", // 41
+            tmpInvtPostBuf."Account No.", // 41
             0, //42
-            FormatDecimaNumber(CostPosted),  //43
-            FormatDecimaNumber(CostPosted), //44
+            FormatDecimaNumber(tmpInvtPostBuf.Amount),  //43
+            FormatDecimaNumber(tmpInvtPostBuf."Amount (ACY)"), //44
             0, //GLAccount."Interim Account",
-            GLEntry."Posting Date", //46
+            ValueEntry."Posting Date", //46
             0, //tmpInvtPostBuf.Negative,
             0,
-            GLEntry."Job No.",
-            copystr(GLEntry."G/L Account No.", 1, 1), 0,
+            '',
+            copystr(tmpInvtPostBuf."Account No.", 1, 1), 0,
             ValueEntry."Item Ledger Entry Type",
-            GLAccount."Account Type",
-            GLEntry."Bal. Account Type"
+            tmpInvtPostBuf."Account Type",
+            tmpInvtPostBuf."Bal. Account Type"
             ); //50
         txtSQLCommandText := StrSubstNo('%1 %2 %3', lblSQLinsertTable, txtSQLCommandFields, txtSQLCommandValues);
         SQLCommand.CommandText := txtSQLCommandText;

@@ -33308,21 +33308,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Purchase Order Statist - Control KgVendorPackagingproduct - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1546246465 - Action 642782499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2513602899">
-          <source>Update Costs</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualizar costes"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Value Entries - Action Update - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1546246465 - Action 642782499 - Method 1377591017 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1546246465">
-          <source>You have to indicate a Date filter.\%1 to %2</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Debe indicar un filtro de Fecha.\%1 a %2"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Value Entries - Action Update - Method OnAction - NamedType lblError</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1546246465 - Action 642782499 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1546246465">
-          <source>¿Desea actualizar los movimientos de Costes.\Filtro Fecha: %1?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes.\Filtro Fecha %1?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Value Entries - Action Update - Method OnAction - NamedType lblConfirm</note>
-        </trans-unit>
         <trans-unit id="PageExtension 1546246465 - Action 1426479106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2513602899">
           <source>Update GL Entry Costs</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar Cuentas contables costes"</note>
