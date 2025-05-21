@@ -50,6 +50,26 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                     end;
                 }
             }
+            group(BBDDZummoINV)
+            {
+                Caption = 'Conexión SQL BBDD Inventario', comment = 'ESP="Conexión SQL BBDD Inventario"';
+                field("BBDD INV Data Source"; "BBDD INV Data Source")
+                {
+                    ApplicationArea = all;
+                }
+                field("BBDD INV Initial Catalog"; "BBDD INV Initial Catalog")
+                {
+                    ApplicationArea = all;
+                }
+                field("BBDD INV User ID"; "BBDD INV User ID")
+                {
+                    ApplicationArea = all;
+                }
+                field("BBDD INV Password"; "BBDD INV Password")
+                {
+                    ApplicationArea = all;
+                }
+            }
         }
         addafter("Allow Posting To")
         {

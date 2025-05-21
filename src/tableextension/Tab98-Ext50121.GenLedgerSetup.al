@@ -70,6 +70,28 @@ tableextension 50121 "GenLedgerSetup" extends "General Ledger Setup"  //98
             Caption = 'Add Type Payments when applying', Comment = 'ESP="Indicar Pagos en liquidaciones"';
             DataClassification = CustomerContent;
         }
+        // ZUMMO Inventario configuracion de acceso a SQL SERVER
+        field(50220; "BBDD INV Data Source"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'BBDD INV Data Source', comment = 'ESP="BBDD INV Data Source"';
+        }
+        field(50221; "BBDD INV Initial Catalog"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'BBDD INV Initial Catalog', comment = 'ESP="BBDD INV Initial Catalog"';
+        }
+        field(50222; "BBDD INV User ID"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'BBDD INV User ID', comment = 'ESP="BBDD INV User ID"';
+        }
+        field(50223; "BBDD INV Password"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'BBDD INV Password', comment = 'ESP="BBDD INV Password"';
+            ExtendedDatatype = Masked;
+        }
     }
     var
         lblPath: Label 'Select folder', comment = 'ESP="Seleccionar Carpeta"';

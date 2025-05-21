@@ -31273,6 +31273,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Conexión SQL ABERTIA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Control ABERTIA - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Control 3503604635 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Conexión SQL BBDD Inventario</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conexión SQL BBDD Inventario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Control BBDDZummoINV - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Control 518354779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Bitec</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bitec"</note>
@@ -34007,6 +34012,26 @@
           <source>Add Type Payments when applying</source>
           <note from="Developer" annotates="general" priority="2">ESP="Indicar Pagos en liquidaciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Add Document Type Payments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 3393527696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>BBDD INV Data Source</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BBDD INV Data Source"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field BBDD INV Data Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 2286039864 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>BBDD INV Initial Catalog</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BBDD INV Initial Catalog"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field BBDD INV Initial Catalog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 2179077034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>BBDD INV Password</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BBDD INV Password"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field BBDD INV Password - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 1267423231 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>BBDD INV User ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="BBDD INV User ID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field BBDD INV User ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 246739618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>BloqueoCompras</source>

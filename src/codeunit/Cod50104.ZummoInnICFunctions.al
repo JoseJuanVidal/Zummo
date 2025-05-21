@@ -2907,10 +2907,16 @@ codeunit 50104 "Zummo Inn. IC Functions"
     // ======================================================================================================
     procedure BBDDInv_SQLConnect(var SQLConnection: dotnet SQLConnection)
     var
+        GLSetup: Record "General Ledger Setup";
         ConnStr: text;
     begin
+        GLSetup.Get();
+        GLSetup.TestField("BBDD INV Data Source");
+        GLSetup.TestField("BBDD INV Initial Catalog");
+        GLSetup.TestField("BBDD INV User Id");
+        GLSetup.TestField("BBDD INV Password");
         // ConnStr := StrSubstNo(DataSourceTok, 'zummo.ddns.net', 'ReportingZummo', 'zummo', '@b3rti@');
-        ConnStr := StrSubstNo(DataSourceTok, 'localhost', 'ZUMMO Inventario', 'sa', 'Bario5622$');
+        ConnStr := StrSubstNo(DataSourceTok, GLSetup."BBDD INV Data Source", GLSetup."BBDD INV Initial Catalog", GLSetup."BBDD INV User ID", GLSetup."BBDD INV Password");
         SQLConnection := SQLConnection.SQLConnection(ConnStr);
         SQLConnection.Open();
     end;
