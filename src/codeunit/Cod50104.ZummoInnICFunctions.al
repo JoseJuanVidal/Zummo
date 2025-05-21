@@ -2674,7 +2674,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         //     exit;
         GLSetup.Get();
         GLEntry.Reset();
-        LastEntryNo := GetLAstGLEntry_ValueEntry();
+        LastEntryNo := GetLAstGLEntryABERTIA();
         if not DeleteAll then
             if (EntryNoIni = 0) then
                 GLEntry.SetFilter("Entry No.", '%1..', LastEntryNo)
@@ -3205,22 +3205,28 @@ codeunit 50104 "Zummo Inn. IC Functions"
         exit(StrSubstNo(lblConnectionString, 'localhost', 'ZUMMO Inventario', 'sa', 'Bario5622$'));
     end;
 
-    procedure ItemldgEntry_GLEntry_ValueEntry(var ItemLedgerEntry: Record "Item Ledger Entry")
-    var
-        ValueEntry: record "Value Entry";
-    begin
-        if ItemLedgerEntry.FindFirst() then
-            repeat
-                GLEntry_ValueEntry(ValueEntry);
-            Until ItemLedgerEntry.next() = 0;
-    end;
+    // procedure ItemldgEntry_GLEntry_ValueEntry(var ItemLedgerEntry: Record "Item Ledger Entry")
+    // var
+    //     ValueEntry: record "Value Entry";
+    // begin
+    //     if ItemLedgerEntry.FindFirst() then
+    //         repeat
+    //             GLEntry_ValueEntry(ValueEntry);
+    //         Until ItemLedgerEntry.next() = 0;
+    // end;
 
     procedure GLEntry_ValueEntry(var ValueEntry: record "Value Entry")
     var
         GLEntry: Record "G/L Entry";
         GLItemLedgRelation: Record "G/L - Item Ledger Relation";
+        LastValueEntry: Integer;
         Windows: Dialog;
     begin
+        if ValueEntry.Count < 2 then begin
+            LastValueEntry := GetLAstGLEntry_ValueEntry();
+            if LastValueEntry <> 0 then
+                ValueEntry.SetFilter("Entry No.", '%1..', LastValueEntry);
+        end;
         Windows.Open('#1###################################\#2##############################\#3##############');
         if ValueEntry.FindFirst() then
             repeat
@@ -3374,6 +3380,27 @@ codeunit 50104 "Zummo Inn. IC Functions"
     end;
 
     local procedure GetLAstGLEntry_ValueEntry() GLEntryNo: Integer
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        texto: text;
+        lblSQLDelete: Label 'select top 1 [Value Entry No_]  FROM [dbo].[ZUMMO$ZM Value entry - G_L Entry] order by [Value Entry No_] desc ';
+    begin
+        if IsNull(InventarioSQLConnection) then
+            BBDDInv_SQLConnect(InventarioSQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := InventarioSQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := StrSubstNo(lblSQLDelete, Get00Origen());
+        // ** EXEC READER **
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            if SQLReader.Read() then
+                GLEntryNo := SQLReader.GetInt32(0);
+        //     exit(false);
+    end;
+
+    local procedure GetLAstGLEntryABERTIA() GLEntryNo: Integer
     var
         SQLCommand: DotNet SqlCommand;
         SQLReader: DotNet SqlDataReader;

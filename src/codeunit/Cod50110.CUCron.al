@@ -95,7 +95,8 @@ codeunit 50110 "CU_Cron"
                     end;
                 'CosteMovValorGLEntry':
                     begin
-                        // CosteMovValorGLEntry();
+                        CosteMovValorGLEntry();
+
                     end;
                 else
                     error(lbNoParametroErr);
@@ -104,6 +105,13 @@ codeunit 50110 "CU_Cron"
         end;
     end;
 
+    local procedure CosteMovValorGLEntry()
+    var
+        ValueEntry: Record "Value Entry";
+        ZummoINNIC: Codeunit "Zummo Inn. IC Functions";
+    begin
+        zummoINNIC.GLEntry_ValueEntry(ValueEntry);
+    end;
 
     local procedure CambiaDimensionesAF()
     var

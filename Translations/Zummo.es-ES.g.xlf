@@ -13577,8 +13577,13 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetBCDTravelLineProyecto - NamedType lblEmpty</note>
           <target>Albarán Nº %1 la Dimensión %2 debe tener asignado un valor</target>
         </trans-unit>
-        <trans-unit id="Codeunit 3234355424 - Method 35146741 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 3234355424 - Method 1719613933 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
           <source>select top 1 [Entry No_]  FROM [ReportingZummo].[dbo].[tBIFinan3Nav]  where  [00 - Origen] = '%1' order by [Entry No_] desc </source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetLAstGLEntryABERTIA - NamedType lblSQLDelete</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 35146741 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>select top 1 [Value Entry No_]  FROM [dbo].[ZUMMO$ZM Value entry - G_L Entry] order by [Value Entry No_] desc </source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetLAstGLEntry_ValueEntry - NamedType lblSQLDelete</note>
         </trans-unit>

@@ -12,6 +12,16 @@ page 50122 "ClassPedServicio3"
         {
             repeater(General)
             {
+                field(TipoPedidoNivel1_btc; TipoPedidoNivel1_btc)
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field(TipoPedidoNivel2_btc; TipoPedidoNivel2_btc)
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
                 field(TipoPedidoNivel3_btc; TipoPedidoNivel3_btc)
                 {
                     ApplicationArea = All;
