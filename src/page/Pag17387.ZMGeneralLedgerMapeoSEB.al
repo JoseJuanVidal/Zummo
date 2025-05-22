@@ -94,6 +94,57 @@ page 17387 "ZM General Ledger Mapeo SEB"
                 {
                     ApplicationArea = All;
                 }
+                field(Columna1; Columna1)
+                {
+                    ApplicationArea = All;
+                    CaptionClass = '3,' + MATRIX_CaptionSet[1];
+                }
+                field(Columna2; Columna2)
+                {
+                    ApplicationArea = All;
+                    CaptionClass = '3,' + MATRIX_CaptionSet[2];
+                }
+                field(Columna3; Columna3)
+                {
+                    ApplicationArea = All;
+                    CaptionClass = '3,' + MATRIX_CaptionSet[3];
+                }
+
+                field(Columna4; Columna4)
+                {
+                    ApplicationArea = All;
+                    CaptionClass = '3,' + MATRIX_CaptionSet[4];
+                }
+                field(Columna5; Columna5)
+                {
+                    ApplicationArea = All;
+                    CaptionClass = '3,' + MATRIX_CaptionSet[5];
+                }
+                field(Columna6; Columna6)
+                {
+                    ApplicationArea = All;
+                    CaptionClass = '3,' + MATRIX_CaptionSet[6];
+                }
+                field(Columna7; Columna7)
+                {
+                    ApplicationArea = All;
+                    CaptionClass = '3,' + MATRIX_CaptionSet[7];
+                }
+                field(Columna8; Columna8)
+                {
+                    ApplicationArea = All;
+                    CaptionClass = '3,' + MATRIX_CaptionSet[8];
+                }
+                field(Columna9; Columna9)
+                {
+                    ApplicationArea = All;
+                    CaptionClass = '3,' + MATRIX_CaptionSet[9];
+                }
+                field(Columna10; Columna10)
+                {
+                    ApplicationArea = All;
+                    CaptionClass = '3,' + MATRIX_CaptionSet[10];
+                }
                 field("Entry No."; Rec."Entry No.")
                 {
                     ApplicationArea = All;
@@ -124,4 +175,22 @@ page 17387 "ZM General Ledger Mapeo SEB"
         }
 
     }
+    trigger OnOpenPage()
+    begin
+        GLSetup.Get();
+        MATRIX_CaptionSet[1] := GLSetup."SEB Column Name 1";
+        MATRIX_CaptionSet[2] := GLSetup."SEB Column Name 2";
+        MATRIX_CaptionSet[3] := GLSetup."SEB Column Name 3";
+        MATRIX_CaptionSet[4] := GLSetup."SEB Column Name 5";
+        MATRIX_CaptionSet[5] := GLSetup."SEB Column Name 5";
+        MATRIX_CaptionSet[6] := GLSetup."SEB Column Name 6";
+        MATRIX_CaptionSet[7] := GLSetup."SEB Column Name 7";
+        MATRIX_CaptionSet[8] := GLSetup."SEB Column Name 8";
+        MATRIX_CaptionSet[9] := GLSetup."SEB Column Name 9";
+        MATRIX_CaptionSet[10] := GLSetup."SEB Column Name 10";
+    end;
+
+    var
+        GLSetup: record "General Ledger Setup";
+        MATRIX_CaptionSet: array[10] of text;
 }

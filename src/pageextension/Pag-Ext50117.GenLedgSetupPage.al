@@ -70,6 +70,99 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                     ApplicationArea = all;
                 }
             }
+            group(MAPEOS)
+            {
+                Caption = 'Conf. MAPEOS', comment = 'ESP="Conf. MAPEOS"';
+                group(ZUMMO)
+                {
+                    Caption = 'MAPEOS ZUMMO', comment = 'ESP="MAPEOS ZUMMO"';
+                    field("Column Name 1"; "Column Name 1")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Column Name 2"; "Column Name 2")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Column Name 3"; "Column Name 3")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Column Name 4"; "Column Name 4")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Column Name 5"; "Column Name 5")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Column Name 6"; "Column Name 6")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Column Name 7"; "Column Name 7")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Column Name 8"; "Column Name 8")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Column Name 9"; "Column Name 9")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Column Name 10"; "Column Name 10")
+                    {
+                        ApplicationArea = all;
+                    }
+                }
+                group(SEB)
+                {
+                    Caption = 'MAPEOS SEB', comment = 'ESP="MAPEOS SEB"';
+                    field("SEB Column Name 1"; "SEB Column Name 1")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB Column Name 2"; "SEB Column Name 2")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB Column Name 3"; "SEB Column Name 3")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB Column Name 4"; "SEB Column Name 4")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB Column Name 5"; "SEB Column Name 5")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB Column Name 6"; "SEB Column Name 6")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB Column Name 7"; "SEB Column Name 7")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB Column Name 8"; "SEB Column Name 8")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB Column Name 9"; "SEB Column Name 9")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB Column Name 10"; "SEB Column Name 10")
+                    {
+                        ApplicationArea = all;
+                    }
+                }
+
+            }
         }
         addafter("Allow Posting To")
         {

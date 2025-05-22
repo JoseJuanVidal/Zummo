@@ -92,6 +92,107 @@ tableextension 50121 "GenLedgerSetup" extends "General Ledger Setup"  //98
             Caption = 'BBDD INV Password', comment = 'ESP="BBDD INV Password"';
             ExtendedDatatype = Masked;
         }
+
+        field(50230; "Column Name 1"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 1', comment = 'ESP="Nombre Columna 1"';
+        }
+        field(50231; "Column Name 2"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 2', comment = 'ESP="Nombre Columna 2"';
+        }
+        field(50232; "Column Name 3"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 3', comment = 'ESP="Nombre Columna 3"';
+        }
+        field(50233; "Column Name 4"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 4', comment = 'ESP="Nombre Columna 4"';
+        }
+        field(50234; "Column Name 5"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 5', comment = 'ESP="Nombre Columna 5"';
+        }
+        field(50235; "Column Name 6"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 6', comment = 'ESP="Nombre Columna 6"';
+        }
+        field(50236; "Column Name 7"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 7', comment = 'ESP="Nombre Columna 7"';
+        }
+        field(50237; "Column Name 8"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 8', comment = 'ESP="Nombre Columna 8"';
+        }
+        field(50238; "Column Name 9"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 9', comment = 'ESP="Nombre Columna 9"';
+        }
+        field(50239; "Column Name 10"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 10', comment = 'ESP="Nombre Columna 10"';
+        }
+        field(50250; "SEB Column Name 1"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 1', comment = 'ESP="Nombre Columna 1"';
+        }
+        field(50251; "SEB Column Name 2"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 2', comment = 'ESP="Nombre Columna 2"';
+        }
+        field(50252; "SEB Column Name 3"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 3', comment = 'ESP="Nombre Columna 3"';
+        }
+        field(50253; "SEB Column Name 4"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 4', comment = 'ESP="Nombre Columna 4"';
+        }
+        field(50254; "SEB Column Name 5"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 5', comment = 'ESP="Nombre Columna 5"';
+        }
+        field(50255; "SEB Column Name 6"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 6', comment = 'ESP="Nombre Columna 6"';
+        }
+        field(50256; "SEB Column Name 7"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 7', comment = 'ESP="Nombre Columna 7"';
+        }
+        field(50257; "SEB Column Name 8"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 8', comment = 'ESP="Nombre Columna 8"';
+        }
+        field(50258; "SEB Column Name 9"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 9', comment = 'ESP="Nombre Columna 9"';
+        }
+        field(50259; "SEB Column Name 10"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Column Name 10', comment = 'ESP="Nombre Columna 10"';
+        }
     }
     var
         lblPath: Label 'Select folder', comment = 'ESP="Seleccionar Carpeta"';

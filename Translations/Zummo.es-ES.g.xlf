@@ -10050,6 +10050,56 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Chart of accounts 2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 188244866 - Field 2415239274 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Columna1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 3705676626 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna10</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Columna10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 502149423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna2</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Columna2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 1139846040 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna3</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Columna3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 33361829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna4</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Columna4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 671058446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna5</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Columna5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 3052935891 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna6</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Columna6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 3690632508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna7</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Columna7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 2584148297 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna8</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Columna8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 188244866 - Field 3221844914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna9</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo SEB - Field Columna9 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 188244866 - Field 3133801257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Company</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -10177,6 +10227,66 @@
           <note from="Developer" annotates="general" priority="2">ESP="C6"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field C6 - Property Caption</note>
           <target>C6</target>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 2415239274 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Columna1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Columna1 - Property Caption</note>
+          <target>Columna1</target>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 3705676626 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna10</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Columna10"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Columna10 - Property Caption</note>
+          <target>Columna10</target>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 502149423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Columna2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Columna2 - Property Caption</note>
+          <target>Columna2</target>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 1139846040 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Columna3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Columna3 - Property Caption</note>
+          <target>Columna3</target>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 33361829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna4</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Columna1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Columna4 - Property Caption</note>
+          <target>Columna1</target>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 671058446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna5</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Columna5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Columna5 - Property Caption</note>
+          <target>Columna5</target>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 3052935891 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna6</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Columna6"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Columna6 - Property Caption</note>
+          <target>Columna6</target>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 3690632508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna7</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Columna7"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Columna7 - Property Caption</note>
+          <target>Columna7</target>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 2584148297 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna8</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Columna8"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Columna8 - Property Caption</note>
+          <target>Columna8</target>
+        </trans-unit>
+        <trans-unit id="Table 1149307438 - Field 3221844914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Columna9</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Columna9"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM General Ledger Mapeo Zummo - Field Columna9 - Property Caption</note>
+          <target>Columna9</target>
         </trans-unit>
         <trans-unit id="Table 1149307438 - Field 943480289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cuenta Americana</source>
@@ -34109,6 +34219,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Control Bitec - Property Caption</note>
           <target>Bitec</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Control 1656215367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Conf. MAPEOS</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. MAPEOS"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Control MAPEOS - Property Caption</note>
+          <target>Conf. MAPEOS</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Control 4187388128 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>MAPEOS SEB</source>
+          <note from="Developer" annotates="general" priority="2">ESP="MAPEOS SEB"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Control SEB - Property Caption</note>
+          <target>MAPEOS SEB</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Control 3997527980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>MAPEOS ZUMMO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="MAPEOS ZUMMO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Control ZUMMO - Property Caption</note>
+          <target>MAPEOS ZUMMO</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2009136746 - Action 4278313474 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4219821699">
           <source>Generate a new account with the data of this</source>
           <note from="Developer" annotates="general" priority="2">ESP="Genera una nueva cuenta con los datos de esta"</note>
@@ -37292,6 +37420,66 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field BloqueoVentas - Property Caption</note>
           <target>Bloqueo Ventas</target>
         </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 2669674724 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Column Name 1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Column Name 1 - Property Caption</note>
+          <target>Nombre Columna 1</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 607115612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Column Name 10</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 10"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Column Name 10 - Property Caption</note>
+          <target>Nombre Columna 10</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 3307371341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Column Name 2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Column Name 2 - Property Caption</note>
+          <target>Nombre Columna 2</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 3945067958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Column Name 3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Column Name 3 - Property Caption</note>
+          <target>Nombre Columna 3</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 3776158935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Column Name 4</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 4"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Column Name 4 - Property Caption</note>
+          <target>Nombre Columna 4</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 118888256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Column Name 5</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Column Name 5 - Property Caption</note>
+          <target>Nombre Columna 5</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 756584873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Column Name 6</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 6"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Column Name 6 - Property Caption</note>
+          <target>Nombre Columna 6</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 1394281490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Column Name 7</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 7"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Column Name 7 - Property Caption</note>
+          <target>Nombre Columna 7</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 1225372467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Column Name 8</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 8"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Column Name 8 - Property Caption</note>
+          <target>Nombre Columna 8</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 1863069084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Column Name 9</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 9"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Column Name 9 - Property Caption</note>
+          <target>Nombre Columna 9</target>
+        </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 24856906 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Cta. Contable IVA Recuperación</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cta. Contable IVA Recuperación"</note>
@@ -37333,6 +37521,66 @@
           <note from="Developer" annotates="general" priority="2">ESP="Proveedor varios IVA Recuperación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field Proveedor IVA Recuperacion - Property Caption</note>
           <target>Proveedor varios IVA Recuperación</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 1621137960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>SEB Column Name 1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 1 - Property Caption</note>
+          <target>SEB Nombre Columna 1</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 360783424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>SEB Column Name 10</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 10"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 10 - Property Caption</note>
+          <target>SEB Nombre Columna 10</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 2258834577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>SEB Column Name 2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 2 - Property Caption</note>
+          <target>SEB Nombre Columna 2</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 2896531194 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>SEB Column Name 3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 3 - Property Caption</note>
+          <target>SEB Nombre Columna 3</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 3534227811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>SEB Column Name 4</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 4"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 4 - Property Caption</note>
+          <target>SEB Nombre Columna 4</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 4171924428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>SEB Column Name 5</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 5 - Property Caption</note>
+          <target>SEB Nombre Columna 5</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 514653749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>SEB Column Name 6</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 6"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 6 - Property Caption</note>
+          <target>SEB Nombre Columna 6</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 1152350366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>SEB Column Name 7</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 7"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 7 - Property Caption</note>
+          <target>SEB Nombre Columna 7</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 1790046983 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>SEB Column Name 8</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 8"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 8 - Property Caption</note>
+          <target>SEB Nombre Columna 8</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 820300810 - Field 2427743600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>SEB Column Name 9</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 9"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 9 - Property Caption</note>
+          <target>SEB Nombre Columna 9</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 1699745519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Calculate the exchange rate by document date</source>

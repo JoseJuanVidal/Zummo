@@ -138,6 +138,46 @@ table 17386 "ZM General Ledger Mapeo Zummo"
         {
             Caption = 'IH6', comment = 'ESP="IH6"';
         }
+        field(50; Columna1; text[100])
+        {
+            Caption = 'Columna1', comment = 'ESP="Columna1"';
+        }
+        field(51; Columna2; text[100])
+        {
+            Caption = 'Columna2', comment = 'ESP="Columna2"';
+        }
+        field(52; Columna3; text[100])
+        {
+            Caption = 'Columna3', comment = 'ESP="Columna3"';
+        }
+        field(53; Columna4; text[100])
+        {
+            Caption = 'Columna4', comment = 'ESP="Columna1"';
+        }
+        field(54; Columna5; text[100])
+        {
+            Caption = 'Columna5', comment = 'ESP="Columna5"';
+        }
+        field(55; Columna6; text[100])
+        {
+            Caption = 'Columna6', comment = 'ESP="Columna6"';
+        }
+        field(56; Columna7; text[100])
+        {
+            Caption = 'Columna7', comment = 'ESP="Columna7"';
+        }
+        field(57; Columna8; text[100])
+        {
+            Caption = 'Columna8', comment = 'ESP="Columna8"';
+        }
+        field(58; Columna9; text[100])
+        {
+            Caption = 'Columna9', comment = 'ESP="Columna9"';
+        }
+        field(59; Columna10; text[100])
+        {
+            Caption = 'Columna10', comment = 'ESP="Columna10"';
+        }
 
     }
 

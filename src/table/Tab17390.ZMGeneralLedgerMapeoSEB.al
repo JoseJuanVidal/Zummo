@@ -96,7 +96,47 @@ table 17390 "ZM General Ledger Mapeo SEB"
         {
             DataClassification = CustomerContent;
         }
+        field(51; Columna1; code[50])
+        {
+            DataClassification = CustomerContent;
+        }
 
+        field(52; Columna2; code[50])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(53; Columna3; code[50])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(54; Columna4; code[50])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(55; Columna5; code[50])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(56; Columna6; code[50])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(57; Columna7; code[50])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(58; Columna8; code[50])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(59; Columna9; code[50])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(60; Columna10; code[50])
+        {
+            DataClassification = CustomerContent;
+        }
     }
 
     keys
