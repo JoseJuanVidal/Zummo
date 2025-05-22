@@ -2712,7 +2712,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
 
         SQLDeleteRecordsNoGLEntry(GLEntry."Entry No.");
         txtSQLInsertFields := '([Entry No_],[G_L Account No_],[Posting Date],[Document Type],[Document No_],[Description],[Bal_ Account No_],[Amount],[Global Dimension 1 Code],[Global Dimension 2 Code]' +
-                    ',[User ID],[Source Code],[System-Created Entry],[Quantity],[VAT Amount],[Business Unit Code]' +
+                    ',[User ID],[Source Code],[System-Created Entry],[Quantity],[VAT Amount],[Business Unit Code],[Journal Batch Name]' +
                     ',[Reason Code],[Gen_ Bus_ Posting Group],[Gen_ Prod_ Posting Group],[Transaction No_],[Debit Amount]' +
                     ',[Credit Amount],[Document Date],[External Document No_],[Source No_],[Tax Area Code],[Tax Group Code]' +
                     ',[VAT Bus_ Posting Group],[VAT Prod_ Posting Group],[Additional-Currency Amount],[Add_-Currency Debit Amount],[Add_-Currency Credit Amount]' +
@@ -2756,6 +2756,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry.Quantity);
         txtSQLCommandValues += ',' + FormatDecimaNumber(GLEntry."VAT Amount");
         txtSQLCommandValues += ',''' + GLEntry."Business Unit Code" + '''';
+        txtSQLCommandValues += ',''' + GLEntry."Journal Batch Name" + '''';
         txtSQLCommandValues += ',''' + FormatText(GLEntry."Reason Code") + '''';
         txtSQLCommandValues += ',''' + GLEntry."Gen. Bus. Posting Group" + '''';
         txtSQLCommandValues += ',''' + GLEntry."Gen. Prod. Posting Group" + '''';

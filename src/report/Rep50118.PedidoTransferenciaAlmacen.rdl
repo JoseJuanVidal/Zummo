@@ -2800,7 +2800,7 @@
               <Top>1.49501cm</Top>
               <Left>1.86477cm</Left>
               <Height>1.01224cm</Height>
-              <Width>16.27716cm</Width>
+              <Width>12.84816cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -2829,6 +2829,39 @@
                 </Border>
               </Style>
             </Image>
+            <Textbox Name="PrinterDateTime">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=now()</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>6pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>57.69995pt</Top>
+              <Left>15.32977cm</Left>
+              <Height>10pt</Height>
+              <Width>3.86332cm</Width>
+              <ZIndex>4</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!ShowLocation.Value, "DataSet_Result"),false,true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border />
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
