@@ -2854,9 +2854,6 @@
               <Height>10pt</Height>
               <Width>3.86332cm</Width>
               <ZIndex>4</ZIndex>
-              <Visibility>
-                <Hidden>=iif(First(Fields!ShowLocation.Value, "DataSet_Result"),false,true)</Hidden>
-              </Visibility>
               <Style>
                 <Border />
                 <VerticalAlign>Middle</VerticalAlign>
