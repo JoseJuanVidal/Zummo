@@ -36719,6 +36719,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseInvoices - Action RegistrarFran - Property Caption</note>
           <target>R&amp;egistrar</target>
         </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Method 3579360106 - NamedType 4159646059" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 67345182">
+          <source>No order lines have been received. You can change the data from the Currency Code field.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se han recibido líneas de pedidos. Puede cambiar el dato desde el campo Cód. Divisa."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Method ChangeCurrencyPurchaseOder - NamedType lblMessage</note>
+          <target>No se han recibido líneas de pedidos. Puede cambiar el dato desde el campo Cód. Divisa.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Method 3579360106 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 67345182">
+          <source>¿Do you want to change the currency of the order to %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar la divisa del pedido a %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Method ChangeCurrencyPurchaseOder - NamedType lblConfirm</note>
+          <target>¿Desea cambiar la divisa del pedido a %1?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Action 3516934256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Change Currenci</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Divisa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Action ChangeCurrencyCode - Property Caption</note>
+          <target>Cambiar Divisa</target>
+        </trans-unit>
         <trans-unit id="PageExtension 67345182 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
           <source>Normativa Plástico</source>
           <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
@@ -37523,64 +37541,64 @@
           <target>Proveedor varios IVA Recuperación</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 1621137960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>SEB Column Name 1</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 1"</note>
+          <source>Column Name 1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 1"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 1 - Property Caption</note>
-          <target>SEB Nombre Columna 1</target>
+          <target>Nombre Columna 1</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 360783424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>SEB Column Name 10</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 10"</note>
+          <source>Column Name 10</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 10"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 10 - Property Caption</note>
-          <target>SEB Nombre Columna 10</target>
+          <target>Nombre Columna 10</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 2258834577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>SEB Column Name 2</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 2"</note>
+          <source>Column Name 2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 2 - Property Caption</note>
-          <target>SEB Nombre Columna 2</target>
+          <target>Nombre Columna 2</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 2896531194 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>SEB Column Name 3</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 3"</note>
+          <source>Column Name 3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 3"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 3 - Property Caption</note>
-          <target>SEB Nombre Columna 3</target>
+          <target>Nombre Columna 3</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 3534227811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>SEB Column Name 4</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 4"</note>
+          <source>Column Name 4</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 4"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 4 - Property Caption</note>
-          <target>SEB Nombre Columna 4</target>
+          <target>Nombre Columna 4</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 4171924428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>SEB Column Name 5</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 5"</note>
+          <source>Column Name 5</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 5"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 5 - Property Caption</note>
-          <target>SEB Nombre Columna 5</target>
+          <target>Nombre Columna 5</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 514653749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>SEB Column Name 6</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 6"</note>
+          <source>Column Name 6</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 6"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 6 - Property Caption</note>
-          <target>SEB Nombre Columna 6</target>
+          <target>Nombre Columna 6</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 1152350366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>SEB Column Name 7</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 7"</note>
+          <source>Column Name 7</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 7"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 7 - Property Caption</note>
-          <target>SEB Nombre Columna 7</target>
+          <target>Nombre Columna 7</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 1790046983 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>SEB Column Name 8</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 8"</note>
+          <source>Column Name 8</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 8"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 8 - Property Caption</note>
-          <target>SEB Nombre Columna 8</target>
+          <target>Nombre Columna 8</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 2427743600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>SEB Column Name 9</source>
-          <note from="Developer" annotates="general" priority="2">ESP="SEB Nombre Columna 9"</note>
+          <source>Column Name 9</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Columna 9"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field SEB Column Name 9 - Property Caption</note>
-          <target>SEB Nombre Columna 9</target>
+          <target>Nombre Columna 9</target>
         </trans-unit>
         <trans-unit id="TableExtension 820300810 - Field 1699745519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Calculate the exchange rate by document date</source>

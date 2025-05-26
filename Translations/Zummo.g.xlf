@@ -33573,6 +33573,21 @@
           <note from="Developer" annotates="general" priority="2">ESP="R&amp;egistrar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseInvoices - Action RegistrarFran - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Method 3579360106 - NamedType 4159646059" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 67345182">
+          <source>No order lines have been received. You can change the data from the Currency Code field.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se han recibido líneas de pedidos. Puede cambiar el dato desde el campo Cód. Divisa."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Method ChangeCurrencyPurchaseOder - NamedType lblMessage</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Method 3579360106 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 67345182">
+          <source>¿Do you want to change the currency of the order to %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar la divisa del pedido a %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Method ChangeCurrencyPurchaseOder - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Action 3516934256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Change Currenci</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar Divisa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Action ChangeCurrencyCode - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 67345182 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
           <source>Normativa Plástico</source>
           <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
