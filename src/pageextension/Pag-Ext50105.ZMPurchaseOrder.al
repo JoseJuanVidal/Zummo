@@ -86,6 +86,7 @@ pageextension 50105 "ZM PurchaseOrder" extends "Purchase Order"
         CurrencyExcRate: Record "Currency Exchange Rate";
         lblMessage: Label 'No order lines have been received. You can change the data from the Currency Code field.', comment = 'ESP="No se han recibido líneas de pedidos. Puede cambiar el dato desde el campo Cód. Divisa."';
         lblConfirm: Label '¿Do you want to change the currency of the order to %1?', comment = 'ESP="¿Desea cambiar la divisa del pedido a %1?"';
+        lblError: Label 'There are already invoiced lines. Currency cannot be changed.', comment = 'ESP="Existen líneas ya facturadas. No se puede cambiar la divisa."';
     begin
         PurchaseLine.Reset();
         PurchaseLine.SetRange("Document Type", Rec."Document Type");
@@ -95,6 +96,10 @@ pageextension 50105 "ZM PurchaseOrder" extends "Purchase Order"
             Message(lblMessage);
             exit;
         end;
+        PurchaseLine.SetRange("Qty. Received (Base)");
+        PurchaseLine.SetFilter("Qty. Invoiced (Base)", '>0');
+        if PurchaseLine.FindFirst() then
+            Error(lblError);
         Currencies.Editable(false);
         Currencies.LookupMode(true);
         if Currencies.RunModal() = Action::LookupOK then begin

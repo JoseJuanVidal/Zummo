@@ -33583,6 +33583,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar la divisa del pedido a %1?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Method ChangeCurrencyPurchaseOder - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Method 3579360106 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 67345182">
+          <source>There are already invoiced lines. Currency cannot be changed.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Existen líneas ya facturadas. No se puede cambiar la divisa."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Method ChangeCurrencyPurchaseOder - NamedType lblError</note>
+        </trans-unit>
         <trans-unit id="PageExtension 67345182 - Action 3516934256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
           <source>Change Currenci</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Divisa"</note>
