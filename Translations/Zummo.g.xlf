@@ -32983,6 +32983,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Todos los servicios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServiceOrderSubform - Action Lines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1399283133 - NamedType 3650020193" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1399283133">
+          <source>¿Do you want to break down the selected items %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea desglosar los artículos seleccionados %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - NamedType lblConfirmExplode</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1399283133 - Action 2690633686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2215187514">
+          <source>Explode Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desglosar Artículo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - Action ExplodeItem - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1058035448 - Action 2159066594 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2043225920">
           <source>It allows you to delete several production orders at once by selecting the ones you wish to delete</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite borrar varias ordenes de producción a la vez seleccionando las que se deseen borrar"</note>
