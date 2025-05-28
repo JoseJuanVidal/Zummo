@@ -87,8 +87,8 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
         ProdForecastEntry2.Reset();
         ProdForecastEntry2.SetRange("Production Forecast Name", Rec."Production Forecast Name");
         ProdForecastEntry2.SetRange("Item No.", ItemNo);
+        ProdForecastEntry2.SetRange("Forecast Date", ProdForecastEntry."Forecast Date");
         if not ProdForecastEntry2.FindFirst() then begin
-
             ProdForecastEntry2.Init();
             ProdForecastEntry2."Production Forecast Name" := Rec."Production Forecast Name";
             ProdForecastEntry2."Entry No." := EntryNo;
