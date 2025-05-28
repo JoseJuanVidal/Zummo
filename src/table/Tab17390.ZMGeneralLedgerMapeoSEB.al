@@ -2,6 +2,8 @@ table 17390 "ZM General Ledger Mapeo SEB"
 {
     DataClassification = CustomerContent;
     Caption = 'General Ledger Mapeo SEB', comment = 'ESP="Conf. Contabilidad Mapeo SEB"';
+    LookupPageId = "ZM General Ledger Mapeo SEB";
+    DrillDownPageId = "ZM General Ledger Mapeo SEB";
 
     fields
     {

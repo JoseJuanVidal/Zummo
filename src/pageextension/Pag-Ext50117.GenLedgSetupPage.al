@@ -205,6 +205,16 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                 RunObject = page "ZM General Ledger Mapeo SEB";
                 RunPageMode = Edit;
             }
+            action(CurrencyChangeSEB)
+            {
+                ApplicationArea = all;
+                Caption = 'SEB Currency Exchange Rate', comment = 'ESP="SEB tipo cambio divisa"';
+                Image = CurrencyExchangeRates;
+                Promoted = true;
+                PromotedCategory = Category4;
+                RunObject = page "ZM SEB Currency Exchange Rate";
+                RunPageMode = Edit;
+            }
         }
     }
     trigger OnOpenPage()

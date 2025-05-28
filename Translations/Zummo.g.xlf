@@ -11963,6 +11963,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Requesition Buffer Calc. - Field Worksheet Template Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1264536967 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Exchange Rate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Tipo cambio divisa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SEB Currency Exchange Rate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1264536967 - Field 3521145799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exchange Rate Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Valor tipo cambio divisa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SEB Currency Exchange Rate - Field Exchange Rate Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1264536967 - Field 1677734864 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Budget Exchange Rate Amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Valor tipo cambio divisa presupuesto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SEB Currency Exchange Rate - Field G/L Budget Exchange Rate Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1264536967 - Field 460889064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha inicial"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SEB Currency Exchange Rate - Field Starting Date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1982879740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos"</note>
@@ -31362,6 +31382,11 @@
           <source>País</source>
           <note from="Developer" annotates="general" priority="2">ESP="País"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntries - Control PaisClienteProv - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 387900575 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>SEB Currency Exchange Rate</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB tipo cambio divisa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CurrencyChangeSEB - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 1485340654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Mapeo SEB</source>
