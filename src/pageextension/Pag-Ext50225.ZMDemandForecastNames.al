@@ -20,9 +20,11 @@ pageextension 50225 "ZM Demand Forecast Names" extends "Demand Forecast Names"
                 trigger OnAction()
                 var
                     ProductionForecastEntry: Record "Production Forecast Entry";
+                    DemandForecastEntries: page "Demand Forecast Entries";
                 begin
                     ProductionForecastEntry.SetRange("Production Forecast Name", Rec.Name);
-                    Page.Run(0, ProductionForecastEntry);
+                    DemandForecastEntries.SetTableView(ProductionForecastEntry);
+                    DemandForecastEntries.Run();
                 end;
             }
         }

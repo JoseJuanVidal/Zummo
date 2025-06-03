@@ -36104,11 +36104,35 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - NamedType lblConfirmExplode</note>
           <target>¿Desea desglosar los artículos seleccionados %1?</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1399283133 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1399283133">
+          <source>Item No.: #1####################################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Producto: #1####################################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - NamedType lblWindow</note>
+          <target>Cód. Producto: #1####################################</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1399283133 - Method 1147532894 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1399283133">
+          <source>Page must be filtered %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La pagina debe estar filtrada %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - Method ImportExcel - NamedType lblError</note>
+          <target>La pagina debe estar filtrada %1</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1399283133 - Method 1147532894 - NamedType 553645563" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1399283133">
+          <source>The %1 has data, ¿do you want to delete this data?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La %1 tiene datos. ¿Desea eliminar estos?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - Method ImportExcel - NamedType lblConfirmDelete</note>
+          <target>La %1 tiene datos. ¿Desea eliminar estos?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1399283133 - Action 2690633686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2215187514">
           <source>Explode Item</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desglosar Artículo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - Action ExplodeItem - Property Caption</note>
           <target>Desglosar Artículo</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1399283133 - Action 1147532894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2215187514">
+          <source>Import Excel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Excel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - Action ImportExcel - Property Caption</note>
+          <target>Importar Excel</target>
         </trans-unit>
         <trans-unit id="PageExtension 1058035448 - Action 2159066594 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2043225920">
           <source>It allows you to delete several production orders at once by selecting the ones you wish to delete</source>

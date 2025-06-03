@@ -32,7 +32,7 @@ pageextension 50075 "STH Posted Sales Cr. Memo Subf" extends "Posted Sales Cr. M
                     Funciones: Codeunit Funciones;
                 begin
                     funciones.SalesCRMemoLineUpdatecost(Rec);
-                    CurrPage.Update();
+                    // CurrPage.Update();
                 end;
             }
         }
