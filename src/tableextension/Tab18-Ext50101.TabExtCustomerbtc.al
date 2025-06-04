@@ -354,6 +354,19 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             DataClassification = CustomerContent;
             Caption = 'Dto. Repuestos', comment = 'ESP="Dto. Repuestos"';
         }
+        field(50075; "Descuento2_btc_repuestos"; Decimal)
+        {
+            Caption = 'Descuento2 Repuestos', comment = 'ESP="Descuento2 Repuestos"';
+            DecimalPlaces = 2 : 5;
+            trigger OnValidate()
+            begin
+                if Descuento2_btc > 100 then
+                    Error('No puede ser mayor de 100');
+
+                if Descuento1_btc + Descuento2_btc > 100 then
+                    Error('La suma de los descuentos no puede ser mayor de 100');
+            end;
+        }
         field(50080; "Importe Facturas"; Decimal)
         {
             FieldClass = FlowField;

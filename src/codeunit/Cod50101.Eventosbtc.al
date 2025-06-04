@@ -359,23 +359,21 @@ codeunit 50101 "Eventos_btc"
         Dto1 := 0;
         Dto2 := 0;
         decDtoFinal := 0;
-
-        if (item.OptClasVtas_btc = item.OptClasVtas_btc::"Bloque Máquina") or (item.OptClasVtas_btc = item.OptClasVtas_btc::"Conjunto Máquina") then begin
+        Dto1 := TempSalesLineDisc."Line Discount %";
+        if item.OptClasVtas_btc in [item.OptClasVtas_btc::"Bloque Máquina", item.OptClasVtas_btc::"Conjunto Máquina"] then begin
             AplicarDto1 := true;
             AplicarDto2 := true;
-        end else
-            if (item.OptClasVtas_btc = item.OptClasVtas_btc::Repuestos) then begin
-                AplicarDto1 := true;
-                AplicarDto2 := false;
-            end;
-
-
-        Dto1 := TempSalesLineDisc."Line Discount %";
-        Dto2 := 0;
+        end else if item.OptClasVtas_btc in [item.OptClasVtas_btc::Repuestos, item.OptClasVtas_btc::Accesorios] then begin
+            AplicarDto1 := true;
+            AplicarDto2 := true;
+        end;
         if (AplicarDto1 and (Customer.Descuento1_btc > 0)) then
             Dto1 := customer.Descuento1_btc;
-        if (AplicarDto2 and (Customer.Descuento2_btc > 0)) then
-            Dto2 := customer.Descuento2_btc;
+        if AplicarDto2 then
+            if item.OptClasVtas_btc in [item.OptClasVtas_btc::"Bloque Máquina", item.OptClasVtas_btc::"Conjunto Máquina"] then
+                Dto2 := customer.Descuento2_btc
+            else
+                Dto2 := customer.Descuento2_btc_repuestos;
 
         decDtoFinal := (1 - ((1 - Dto1 / 100) * (1 - Dto2 / 100))) * 100;
 

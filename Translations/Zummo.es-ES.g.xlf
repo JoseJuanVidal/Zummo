@@ -41835,6 +41835,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Descuento2_btc - Property Caption</note>
           <target>Descuento2</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3241810153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Descuento2 Repuestos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descuento2 Repuestos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Descuento2_btc_repuestos - Property Caption</note>
+          <target>Descuento2 Repuestos</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 4235483272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Dto. Exprimidores</source>
           <note from="Developer" annotates="general" priority="2">ESP="Dto. Exprimidores"</note>

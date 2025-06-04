@@ -145,6 +145,11 @@ page 17209 "ZZM Customer List Edit"
                     ApplicationArea = All;
                     Visible = false;
                 }
+                field(Descuento2_btc_repuestos; Descuento2_btc_repuestos)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
                 field("Dto. Exprimidores"; Rec."Dto. Exprimidores")
                 {
                     ApplicationArea = All;

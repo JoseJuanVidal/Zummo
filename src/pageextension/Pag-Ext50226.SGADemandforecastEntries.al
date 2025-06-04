@@ -162,9 +162,8 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
         ProdForecastEntry2.SetRange("Production Forecast Name", Rec.GetFilter("Production Forecast Name"));
         if ProdForecastEntry2.FindFirst() then
             if Confirm(lblConfirmDelete, false, Rec.TableCaption) then
-                Rec.DeleteAll()
-            else
-                EntryNo := GetLastEntryNo(ProdForecastEntry2."Production Forecast Name");
+                Rec.DeleteAll();
+        EntryNo := GetLastEntryNo(ProdForecastEntry2."Production Forecast Name");
 
         ExcelBuffer.DELETEALL;
         UploadIntoStream('Excel', '', '', ServerFileName, IStream);

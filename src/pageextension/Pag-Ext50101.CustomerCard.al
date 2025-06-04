@@ -45,6 +45,10 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
+            field(Descuento2_btc_repuestos; Descuento2_btc_repuestos)
+            {
+                ApplicationArea = all;
+            }
         }
         addlast(Invoicing)
         {
