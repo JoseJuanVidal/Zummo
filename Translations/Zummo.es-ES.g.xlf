@@ -31665,6 +31665,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType JobTaskNoLbl</note>
           <target>Nº tarea proyecto</target>
         </trans-unit>
+        <trans-unit id="Report 2651873947 - NamedType 2218900611" size-unit="char" translate="yes" xml:space="preserve">
+          <source>We require that the invoice or delivery note specify the amount (in kilograms) of non-recycled plastic included in the packaging and containers of the requested goods. This is in accordance with Law 7/2022 of April 8th on waste and contaminated soil for a circular economy, and the entry into force of the special tax on non-reusable plastic packaging in Spain, effective from January 1, 2023</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Requerimos que indiquen en la factura o albarán la cantidad (en kilogramos) de plástico no reciclado incluido en los envases y embalajes de la mercancía solicitada. Según Ley 7/2022 de 8 de abril de residuos y suelos contaminados para una economía circular y entrada en vigor del Impuesto especial sobre envases de plástico no reutilizables en España a fecha 01/01/2023"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Pedido Compra - NamedType lblImpuestoPlastico</note>
+          <target>Requerimos que indiquen en la factura o albarán la cantidad (en kilogramos) de plástico no reciclado incluido en los envases y embalajes de la mercancía solicitada. Según Ley 7/2022 de 8 de abril de residuos y suelos contaminados para una economía circular y entrada en vigor del Impuesto especial sobre envases de plástico no reutilizables en España a fecha 01/01/2023</target>
+        </trans-unit>
         <trans-unit id="Report 2651873947 - NamedType 2684298087" size-unit="char" translate="yes" xml:space="preserve">
           <source>Remarks:</source>
           <note from="Developer" annotates="general" priority="2">ESP="Observaciones:"</note>

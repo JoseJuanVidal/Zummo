@@ -857,7 +857,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.00824cm</Height>
+        <Height>2.12345cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3292,6 +3292,49 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="lblImpuestoPlastico3">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!lblImpuestoPlastico.Value</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>#333333</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>lblImpuestoPlastico</rd:DefaultName>
+              <Top>0.15124cm</Top>
+              <Left>0.62629cm</Left>
+              <Height>0.25075cm</Height>
+              <Width>19.07733cm</Width>
+              <ZIndex>7</ZIndex>
+              <Visibility>
+                <Hidden>=IIF(Globals!PageNumber = Globals!TotalPages and First(Fields!NotCountryEU.Value, "DataSet_Result")
+,false,true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Color>Red</Color>
+                  <Style>Solid</Style>
+                </Border>
+                <BackgroundColor>White</BackgroundColor>
+                <PaddingLeft>5pt</PaddingLeft>
+                <PaddingRight>5pt</PaddingRight>
+                <PaddingTop>5pt</PaddingTop>
+                <PaddingBottom>5pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -3348,6 +3391,12 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
+        <Field Name="NotCountryEU">
+          <DataField>NotCountryEU</DataField>
+        </Field>
+        <Field Name="lblImpuestoPlastico">
+          <DataField>lblImpuestoPlastico</DataField>
+        </Field>
         <Field Name="PortesLbl">
           <DataField>PortesLbl</DataField>
         </Field>

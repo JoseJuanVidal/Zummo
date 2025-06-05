@@ -15,6 +15,10 @@ report 50106 "Pedido Compra"
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
             RequestFilterHeading = 'Standard Purchase - Order';
+            column(NotCountryEU; NotCountryEU)
+            { }
+            column(lblImpuestoPlastico; lblImpuestoPlastico)
+            { }
             column(PortesLbl; PortesLbl)
             {
             }
@@ -929,6 +933,10 @@ report 50106 "Pedido Compra"
                 if Currency_Code = '' then
                     Currency_Code := 'EUR';
 
+                if CountryRegion.Get("Purchase Header"."Buy-from Country/Region Code") then
+                    NotCountryEU := CountryRegion."EU Country/Region Code" = ''
+                else
+                    NotCountryEU := false;
 
                 FormatAddressFields("Purchase Header");
                 FormatDocumentFields("Purchase Header");
@@ -1057,6 +1065,8 @@ report 50106 "Pedido Compra"
     end;
 
     var
+        CountryRegion: record "Country/Region";
+        NotCountryEU: Boolean;
         optIdioma: Option " ","ENU","ESP","FRA";
         PageLbl: Label 'Page %1', Comment = '%1 = Page No.';
         VATAmountSpecificationLbl: Label 'VAT Amount Specification in ', Comment = 'ESP="Especificación importe IVA en "';
@@ -1204,6 +1214,8 @@ report 50106 "Pedido Compra"
         PortesLbl: Label 'Freight', Comment = 'ESP="Portes"';
         DireccionEntregaLbl: Label 'DELIVERY ADDRESS: ', Comment = 'ESP="DIRECCIÓN DE ENTREGA: "';
         WorkHours: Text;
+        lblImpuestoPlastico: Label 'We require that the invoice or delivery note specify the amount (in kilograms) of non-recycled plastic included in the packaging and containers of the requested goods. This is in accordance with Law 7/2022 of April 8th on waste and contaminated soil for a circular economy, and the entry into force of the special tax on non-reusable plastic packaging in Spain, effective from January 1, 2023'
+            , comment = 'ESP="Requerimos que indiquen en la factura o albarán la cantidad (en kilogramos) de plástico no reciclado incluido en los envases y embalajes de la mercancía solicitada. Según Ley 7/2022 de 8 de abril de residuos y suelos contaminados para una economía circular y entrada en vigor del Impuesto especial sobre envases de plástico no reutilizables en España a fecha 01/01/2023"';
 
     [Scope('Personalization')]
     procedure InitializeRequest(LogInteractionParam: Boolean)
