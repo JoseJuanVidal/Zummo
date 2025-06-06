@@ -3064,9 +3064,9 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox2</rd:DefaultName>
-                  <Top>0.15362cm</Top>
+                  <Top>0.12187cm</Top>
                   <Left>0.17646cm</Left>
-                  <Height>0.6cm</Height>
+                  <Height>0.473cm</Height>
                   <Width>2.71828cm</Width>
                   <ZIndex>14</ZIndex>
                   <Style>
@@ -3100,9 +3100,9 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox2</rd:DefaultName>
-                  <Top>0.1889cm</Top>
+                  <Top>0.15715cm</Top>
                   <Left>2.99897cm</Left>
-                  <Height>0.6cm</Height>
+                  <Height>0.473cm</Height>
                   <Width>16.18017cm</Width>
                   <ZIndex>15</ZIndex>
                   <Style>
@@ -3116,10 +3116,52 @@
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
+                <Textbox Name="lblImpuestoPlastico4">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Fields!lblImpuestoPlastico.Value</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>9pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <Color>#333333</Color>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>lblImpuestoPlastico</rd:DefaultName>
+                  <Top>0.6925cm</Top>
+                  <Left>0.11363cm</Left>
+                  <Height>0.092cm</Height>
+                  <Width>19.07733cm</Width>
+                  <ZIndex>16</ZIndex>
+                  <Visibility>
+                    <Hidden>=IIF(Globals!PageNumber = Globals!TotalPages And First(Fields!NotCountryEU.Value, "DataSet_Result"), False, True)</Hidden>
+                  </Visibility>
+                  <Style>
+                    <Border>
+                      <Color>Red</Color>
+                      <Style>Solid</Style>
+                    </Border>
+                    <BackgroundColor>White</BackgroundColor>
+                    <PaddingLeft>5pt</PaddingLeft>
+                    <PaddingRight>5pt</PaddingRight>
+                    <PaddingTop>5pt</PaddingTop>
+                    <PaddingBottom>5pt</PaddingBottom>
+                  </Style>
+                </Textbox>
               </ReportItems>
-              <Top>0.5052cm</Top>
+              <Top>0.1242cm</Top>
               <Left>0.50012cm</Left>
-              <Height>3.15976cm</Height>
+              <Height>3.47726cm</Height>
               <Width>19.30458cm</Width>
               <Visibility>
                 <Hidden>=IIf( Globals!PageNumber=Globals!TotalPages,false,true)</Hidden>
@@ -3152,7 +3194,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>4.01773cm</Top>
+              <Top>3.89073cm</Top>
               <Left>0.93286cm</Left>
               <Height>1.38796cm</Height>
               <Width>18.82709cm</Width>
@@ -3168,7 +3210,7 @@
               </Style>
             </Textbox>
             <Line Name="Line3">
-              <Top>1.51234in</Top>
+              <Top>1.46234in</Top>
               <Left>0.22867in</Left>
               <Height>0in</Height>
               <Width>7.60023in</Width>
@@ -3184,7 +3226,7 @@
               <Value>=First(Fields!logo.Value, "DataSet_Result")</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>5.51152cm</Top>
+              <Top>5.38452cm</Top>
               <Left>0.97113cm</Left>
               <Height>1.12183cm</Height>
               <Width>1.33314cm</Width>
@@ -3216,7 +3258,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>5.62111cm</Top>
+              <Top>5.49411cm</Top>
               <Left>2.46691cm</Left>
               <Height>1.01224cm</Height>
               <Width>14.04207cm</Width>
@@ -3277,7 +3319,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>6.03335cm</Top>
+              <Top>5.90635cm</Top>
               <Left>16.65009cm</Left>
               <Height>0.6cm</Height>
               <Width>3.02917cm</Width>
@@ -3290,49 +3332,6 @@
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="lblImpuestoPlastico3">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!lblImpuestoPlastico.Value</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <Color>#333333</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>lblImpuestoPlastico</rd:DefaultName>
-              <Top>0.15124cm</Top>
-              <Left>0.62629cm</Left>
-              <Height>0.25075cm</Height>
-              <Width>19.07733cm</Width>
-              <ZIndex>7</ZIndex>
-              <Visibility>
-                <Hidden>=IIF(Globals!PageNumber = Globals!TotalPages and First(Fields!NotCountryEU.Value, "DataSet_Result")
-,false,true)</Hidden>
-              </Visibility>
-              <Style>
-                <Border>
-                  <Color>Red</Color>
-                  <Style>Solid</Style>
-                </Border>
-                <BackgroundColor>White</BackgroundColor>
-                <PaddingLeft>5pt</PaddingLeft>
-                <PaddingRight>5pt</PaddingRight>
-                <PaddingTop>5pt</PaddingTop>
-                <PaddingBottom>5pt</PaddingBottom>
               </Style>
             </Textbox>
           </ReportItems>
