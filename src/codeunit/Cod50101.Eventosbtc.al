@@ -1705,4 +1705,97 @@ codeunit 50101 "Eventos_btc"
         BOMBuffer."Average cost last year" := AvgCost;
         Window.Close();
     end;
+
+    // =============     MAQUINAS DE RECOMPRAS - PROCESO DE COSTES Y REVALORIZACION          ====================
+    // ==  
+    // ==  Aqui controlamos el movimimiento de producto de tipo Salida de fabricacion con el cruce con informacion Nº de serie
+    // ==  revisamos los info serie que tengan coste y los movimientos de productos de tipo Salida de fabricacion que no tengan el mismo coste
+    // ==  entonces creamos una diarios de revalorizacion de costes, para que se actualicen los costes de los productos
+    // ==  
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Report, Report::"Adjust Cost - Item Entries", 'OnAfterPreReport', '', true, true)]
+    local procedure AdjustCostItemEntries_OnAfterPreReport()
+    var
+        SerialNoInfo: Record "Serial No. Information";
+        textoHtml: Text;
+    begin
+        SerialNoInfo.Reset();
+        SerialNoInfo.SetFilter("Serial No. Cost", '<> 0');
+        if SerialNoInfo.FindFirst() then
+            repeat
+                AdjustCostItemEntries(SerialNoInfo, textoHtml);
+            Until SerialNoInfo.next() = 0;
+        if textoHtml <> '' then
+            SendEnvioEmailSerialNoCost(textoHtml);
+    end;
+
+    procedure AdjustCostItemEntries(SerialNoInfo: Record "Serial No. Information"; var textoHtml: Text)
+    var
+        ItemLedgerEntry: Record "Item Ledger Entry";
+
+    begin
+        ItemLedgerEntry.Reset();
+        ItemLedgerEntry.SetRange("Item No.", SerialNoInfo."Item No.");
+        ItemLedgerEntry.SetRange("Serial No.", SerialNoInfo."Serial No.");
+        ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Output);
+        ItemLedgerEntry.SetRange("Completely Invoiced", true);
+        if ItemLedgerEntry.FindFirst() then
+            repeat
+                // si el coste del movimiento es diferente al del info serie, creamos un diario de revalorizacion
+                ItemLedgerEntry.CalcFields("Cost Amount (Actual)");
+                if ItemLedgerEntry."Cost Amount (Actual)" <> SerialNoInfo."Serial No. Cost" then begin
+                    // aqui creamos el diario de revalorizacion de costes
+                    CreateItemJnlLineRevaluated(ItemLedgerEntry, SerialNoInfo);
+                    SerialNoInfo."Update Cost" := true;
+                    SerialNoInfo.Modify();
+                    textoHtml += '<p>' + StrSubstNo('Cód. Producto: %1 %2 Coste: %3 Nº Mov.: %4', SerialNoInfo."Item No.", SerialNoInfo."Serial No.", SerialNoInfo."Serial No. Cost", ItemLedgerEntry."Entry No.") + '</p>';
+                end;
+            Until ItemLedgerEntry.next() = 0;
+
+    end;
+
+    local procedure SendEnvioEmailSerialNoCost(textoHtml: text)
+    var
+        recSMTPSetup: Record "SMTP Mail Setup";
+        cduSmtp: Codeunit "SMTP Mail";
+        txtAsunto: Text;
+    begin
+        txtAsunto := StrSubstNo('Revaloracion Coste Nº Series %1', WorkDate());
+        recSMTPSetup.Get();
+        Clear(cduSmtp);
+        cduSmtp.CreateMessage(CompanyName, recSMTPSetup."User ID", 'jvidal@zummo.es;egonzalez@zummo.es', txtAsunto, textoHtml, TRUE);
+        cduSmtp.Send();
+    end;
+
+    local procedure CreateItemJnlLineRevaluated(ItemLedgerEntry: Record "Item Ledger Entry"; SerialNoInfo: Record "Serial No. Information")
+    var
+        ItemJnlLine: Record "Item Journal Line";
+        ItemJnlBatch: Record "Item Journal Batch";
+        ItemJnlMgt: Codeunit ItemJnlManagement;
+        ItemJnlPostBatch: Codeunit "Item Jnl.-Post Batch";
+    begin
+        // ItemJnlTemplate.Reset();
+        // ItemJnlTemplate.SetRange(Type, ItemJnlTemplate.Type::"Revaluation");
+        // if not ItemJnlTemplate.FindFirst() then
+        //     exit;
+
+        ItemJnlBatch.Reset();
+        ItemJnlBatch.SetRange("Template Type", ItemJnlBatch."Template Type"::Revaluation);
+        // ItemJnlBatch.SetRange("Journal Template Name", ItemJnlTemplate.Name);
+        ItemJnlMgt.OpenJnlBatch(ItemJnlBatch);
+        ItemJnlLine.Init();
+        ItemJnlLine."Journal Template Name" := ItemJnlBatch."Journal Template Name";
+        ItemJnlLine."Journal Batch Name" := ItemJnlBatch.Name;
+        ItemJnlLine."Line No." := 0;
+        ItemJnlLine."Document No." := ItemLedgerEntry."Document No.";
+        ItemJnlLine.Validate("Value Entry Type", ItemJnlLine."Value Entry Type"::Revaluation);
+        ItemJnlLine.Validate("Item No.", SerialNoInfo."Item No.");
+        ItemJnlLine.Validate("Applies-to Entry", ItemLedgerEntry."Entry No.");
+        ItemJnlLine.Validate("Unit Cost (Revalued)", SerialNoInfo."Serial No. Cost");
+        if ItemJnlLine.Insert() then
+            ItemJnlLine.Modify();
+        ItemJnlPostBatch.Run(ItemJnlLine);
+
+
+    end;
 }

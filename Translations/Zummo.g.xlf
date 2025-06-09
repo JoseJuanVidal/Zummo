@@ -10433,6 +10433,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Línea"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Amount BOM - Field Line No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 438262656 - Field 957872088 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Planned</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Previsto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Amount BOM - Field Planned - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 438262656 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
@@ -33788,6 +33793,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Sesiones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action Sessions - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2599525812 - Action 1291632506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1886573825">
+          <source>Update Cost Production Output</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar Coste Producción Salida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Serial No. Information Card - Action Update Cost Production Output - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 641495058 - Action 3043981960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 671847571">
           <source>Análisis Plan Renove</source>
           <note from="Developer" annotates="general" priority="2">ESP="Análisis Plan Renove"</note>
@@ -39128,6 +39138,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Se a cambiar el coste del numero de serie a partir de la fecha indicada.\¿Desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Serial No. Information - Method OnValidate_SerialNoCost - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3311986080 - Method 374832927 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3311986080">
+          <source>¿Desea actualizar el coste %1 al numero de serie %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar el coste %1 al numero de serie %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Serial No. Information - Method UpdateItemLedgerEntry - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3311986080 - Field 2868794560 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2119038973">
           <source>Last Date Update Cost</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha act. Coste"</note>
@@ -39137,6 +39152,11 @@
           <source>Serial No. Cost</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste Nº de serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Serial No. Information - Field Serial No. Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3311986080 - Field 4153242694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2119038973">
+          <source>Update Cost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Costes Actualizados</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Serial No. Information - Field Update Cost - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2240314328 - Field 3398170104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2583759525">
           <source>Exportar BI Reclamaciones</source>

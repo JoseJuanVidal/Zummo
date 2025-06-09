@@ -129,7 +129,7 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
     local procedure GetLastEntryNo(ProdForecastName: code[20]): Integer
     begin
         ProdForecastEntry2.Reset();
-        ProdForecastEntry2.SetRange("Production Forecast Name", ProdForecastName);
+        // ProdForecastEntry2.SetRange("Production Forecast Name", ProdForecastName);
         if ProdForecastEntry2.FindLast() then
             exit(ProdForecastEntry2."Entry No.")
         else

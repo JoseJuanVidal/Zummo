@@ -17,6 +17,11 @@ tableextension 50197 "ZM Serial No. Information" extends "Serial No. Information
             DataClassification = CustomerContent;
             Caption = 'Last Date Update Cost', comment = 'ESP="Fecha act. Coste"';
         }
+        field(50102; "Update Cost"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Update Cost', comment = 'ESP="Costes Actualizados';
+        }
     }
 
     keys
@@ -41,5 +46,17 @@ tableextension 50197 "ZM Serial No. Information" extends "Serial No. Information
                 exit;
             Rec."Last Date Update Cost" := WorkDate();
         end;
+    end;
+
+    procedure UpdateItemLedgerEntry()
+    var
+        EventosBTC: Codeunit Eventos_btc;
+        textoEmail: text;
+        lblConfirm: Label '¿Desea actualizar el coste %1 al numero de serie %2?', comment = 'ESP="¿Desea actualizar el coste %1 al numero de serie %2?"';
+    begin
+        Rec.TestField("Serial No. Cost");
+        if Confirm(lblConfirm, false, rec."Serial No.", Rec."Serial No. Cost") then
+            EventosBTC.AdjustCostItemEntries(Rec, textoEmail);
+
     end;
 }

@@ -34,6 +34,11 @@ table 17202 "ZM Job Amount BOM"
             DataClassification = CustomerContent;
             Caption = 'Amount', comment = 'ESP="Importe"';
         }
+        field(40; Planned; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Planned', comment = 'ESP="Previsto"';
+        }
     }
 
     keys

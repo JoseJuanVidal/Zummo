@@ -24,6 +24,10 @@ page 17218 "ZM Job Amount BOM"
                 {
                     ApplicationArea = All;
                 }
+                field(Planned; Planned)
+                {
+                    ApplicationArea = All;
+                }
                 field("Job No."; Rec."Job No.")
                 {
                     ApplicationArea = All;
