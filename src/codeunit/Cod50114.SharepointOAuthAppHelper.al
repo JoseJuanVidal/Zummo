@@ -11,6 +11,8 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         DeleteUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/items/%2', Comment = '%1 = Drive ID, %2 = Item ID', Locked = true;
         CreateFolderUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/items/%2/children', Comment = '%1 = Drive ID, %2 = Item ID', Locked = true;
         CreateRootFolderUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/root/children', Comment = '%1 = Drive ID', Locked = true;
+        ListsUrl: Label 'https://graph.microsoft.com/v1.0%1/sites', Locked = true;
+        ListsItemsUrl: Label 'https://graph.microsoft.com/v1.0/sites/%1/list/%2/items', Comment = '%1 = Drive ID', Locked = true;
 
     procedure GetAccessToken(AppCode: Code[20]): Text
     var
@@ -330,6 +332,27 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
     //         exit(true);
     //     end;
     // end;
+    procedure FetchListItems(ApplicationCode: code[20]; AccessToken: Text; DriveID: Text; var DriveItem: Record "Online Drive Item"): Boolean
+    var
+        JsonResponse: JsonObject;
+        JToken: JsonToken;
+        IsSucces: Boolean;
+    begin
+        if HttpGet(AccessToken, StrSubstNo(ListsItemsUrl, DriveID), JsonResponse) then begin
+            if JsonResponse.Get('value', JToken) then
+                ReadDriveItems(ApplicationCode, JToken.AsArray(), DriveID, '', DriveItem);
+
+            exit(true);
+        end;
+    end;
+
+    local procedure ReadListItems(ApplicationCode: code[20]; JDriveItems: JsonArray; DriveID: Text; ParentID: Text; var DriveItem: Record "Online Drive Item")
+    var
+        JToken: JsonToken;
+    begin
+        foreach JToken in JDriveItems do
+            ReadDriveItem(ApplicationCode, JToken.AsObject(), DriveID, ParentID, DriveItem);
+    end;
 
     procedure FetchDrivesItems(ApplicationCode: code[20]; AccessToken: Text; DriveID: Text; var DriveItem: Record "Online Drive Item"): Boolean
     var

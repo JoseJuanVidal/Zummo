@@ -47,13 +47,14 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
         Item: Record Item;
         ProdBOMLine: Record "Production BOM Line";
         BOMComponent: Record "BOM Component";
-        ProdForecastEntry: Record "Production Forecast Entry";
         ProdForecastEntry2: Record "Production Forecast Entry";
+        tmpProdForecastEntry: Record "Production Forecast Entry" temporary;
         lblConfirmExplode: Label '¿Do you want to break down the selected items %1?', comment = 'ESP="¿Desea desglosar los artículos seleccionados %1?"';
-        lblWindow: Label 'Item No.: #1####################################', comment = 'ESP="Cód. Producto: #1####################################"';
+        lblWindow: Label 'Setp: #1##########\Item No.: #2####################################', comment = 'ESP="Pasp: #1#####\Cód. Producto: #2####################################"';
 
     local procedure Action_ExplodeItem()
     var
+        ProdForecastEntry: Record "Production Forecast Entry";
         EntryNo: Integer;
         Window: Dialog;
     begin
@@ -63,13 +64,20 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
         if not Confirm(lblConfirmExplode, false, ProdForecastEntry.Count()) then
             exit;
         EntryNo := GetLastEntryNo(Rec."Production Forecast Name");
+        tmpProdForecastEntry.DeleteAll();
         if ProdForecastEntry.FindFirst() then
             repeat
-                Window.Update(1, ProdForecastEntry."Item No.");
+                Window.Update(1, 1);
+                tmpProdForecastEntry := ProdForecastEntry;
+                tmpProdForecastEntry.Insert();
+            until ProdForecastEntry.next() = 0;
+        if tmpProdForecastEntry.FindFirst() then
+            repeat
+                Window.Update(1, 2);
+                Window.Update(2, tmpProdForecastEntry."Item No.");
                 EntryNo += 1;
                 ExplodeBomItem(EntryNo);
-
-            Until ProdForecastEntry.next() = 0;
+            Until tmpProdForecastEntry.next() = 0;
         Window.Close();
     end;
 
@@ -77,7 +85,7 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
     var
         myInt: Integer;
     begin
-        Item.Get(ProdForecastEntry."Item No.");
+        Item.Get(tmpProdForecastEntry."Item No.");
         case Item."Replenishment System" of
             Item."Replenishment System"::Assembly:
                 begin
@@ -86,7 +94,7 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
                     BOMComponent.SetRange(Type, BOMComponent.Type::Item);
                     if BOMComponent.FindFirst() then
                         repeat
-                            AddLastProdForecastEntry(BOMComponent."No.", EntryNo, BOMComponent."Quantity per" * ProdForecastEntry."Forecast Quantity (Base)");
+                            AddLastProdForecastEntry(BOMComponent."No.", EntryNo, BOMComponent."Quantity per" * tmpProdForecastEntry."Forecast Quantity (Base)");
                             EntryNo += 1;
                         Until BOMComponent.next() = 0;
                 end;
@@ -97,7 +105,7 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
                     ProdBOMLine.SetRange(Type, ProdBOMLine.Type::Item);
                     if ProdBOMLine.FindFirst() then
                         repeat
-                            AddLastProdForecastEntry(ProdBOMLine."No.", EntryNo, ProdBOMLine."Quantity per" * ProdForecastEntry."Forecast Quantity (Base)");
+                            AddLastProdForecastEntry(ProdBOMLine."No.", EntryNo, ProdBOMLine."Quantity per" * tmpProdForecastEntry."Forecast Quantity (Base)");
                             EntryNo += 1;
                         Until ProdBOMLine.next() = 0;
                 end;
@@ -109,7 +117,7 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
         ProdForecastEntry2.Reset();
         ProdForecastEntry2.SetRange("Production Forecast Name", Rec."Production Forecast Name");
         ProdForecastEntry2.SetRange("Item No.", ItemNo);
-        ProdForecastEntry2.SetRange("Forecast Date", ProdForecastEntry."Forecast Date");
+        ProdForecastEntry2.SetRange("Forecast Date", tmpProdForecastEntry."Forecast Date");
         if not ProdForecastEntry2.FindFirst() then begin
             Item.Get(ItemNo);
             ProdForecastEntry2.Init();
@@ -117,12 +125,12 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
             ProdForecastEntry2."Entry No." := EntryNo;
             ProdForecastEntry2.Validate("Item No.", ItemNo);
             ProdForecastEntry2."Component Forecast" := true;
-            ProdForecastEntry2."Forecast Date" := ProdForecastEntry."Forecast Date";
+            ProdForecastEntry2."Forecast Date" := tmpProdForecastEntry."Forecast Date";
             ProdForecastEntry2."Unit of Measure Code" := Item."Base Unit of Measure";
-            ProdForecastEntry2."Location Code" := ProdForecastEntry."Location Code";
+            ProdForecastEntry2."Location Code" := tmpProdForecastEntry."Location Code";
             ProdForecastEntry2.Insert();
         end;
-        ProdForecastEntry2.Validate("Forecast Quantity (Base)", ProdForecastEntry2."Forecast Quantity (Base)" + Quantity);
+        ProdForecastEntry2.Validate("Forecast Quantity (Base)", tmpProdForecastEntry."Forecast Quantity (Base)" + Quantity);
         ProdForecastEntry2.Modify();
     end;
 

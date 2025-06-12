@@ -10643,6 +10643,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Carpeta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth20Application Folders - Field FolderName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3911723591 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM OAuth20Application Folders - Field Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2958124392 - Field 1363911307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>createdDateTime</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -16088,6 +16093,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Config. Carpetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action Folders - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2169462155 - Action 1606682606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh the access and refresh tokens.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action List - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2169462155 - Action 1606682606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Listas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Application - Action List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2169462155 - Action 2619586918 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh the access and refresh tokens.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -16122,6 +16137,16 @@
           <source>Folders Setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Config. Carpetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Applications - Action Folders - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1918309270 - Action 1606682606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh the access and refresh tokens.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Applications - Action List - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1918309270 - Action 1606682606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Listas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page OAuth 2.0 Applications - Action List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3903387604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Opciones</source>
@@ -19907,6 +19932,11 @@
           <source>Folders</source>
           <note from="Developer" annotates="general" priority="2">ESP="Carpetas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Action Folders - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3911723591 - Action 3930027771 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Listas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Action Lists - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3911723591 - Action 3003898253 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open the URL</source>
@@ -33024,8 +33054,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - NamedType lblConfirmExplode</note>
         </trans-unit>
         <trans-unit id="PageExtension 1399283133 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1399283133">
-          <source>Item No.: #1####################################</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cód. Producto: #1####################################"</note>
+          <source>Setp: #1##########\Item No.: #2####################################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Pasp: #1#####\Cód. Producto: #2####################################"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - NamedType lblWindow</note>
         </trans-unit>
         <trans-unit id="PageExtension 1399283133 - Method 1147532894 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1399283133">

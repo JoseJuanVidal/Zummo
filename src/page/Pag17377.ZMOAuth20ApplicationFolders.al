@@ -37,6 +37,10 @@ page 17377 "ZM OAuth20Application Folders"
                 {
                     ApplicationArea = All;
                 }
+                field(Type; Type)
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }
@@ -53,6 +57,20 @@ page 17377 "ZM OAuth20Application Folders"
                 PromotedCategory = Category4;
                 PromotedOnly = true;
                 ToolTip = 'Refresh the access and refresh tokens.';
+
+                trigger OnAction()
+                begin
+                    Rec.OpenDriveItems(REc.FolderID);
+                end;
+            }
+            action(Lists)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'List', Comment = 'ESP="Listas"';
+                Image = SelectField;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedOnly = true;
 
                 trigger OnAction()
                 begin

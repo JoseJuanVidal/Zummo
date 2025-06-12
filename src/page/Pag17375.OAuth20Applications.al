@@ -50,6 +50,21 @@ page 17375 "OAuth 2.0 Applications"
 
                 RunObject = page "ZM OAuth20Application Folders";
                 RunPageLink = "Application Code" = field(Code);
+                RunPageView = where("Type" = const(Folder));
+            }
+            action(List)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'List', Comment = 'ESP="Listas"';
+                Image = SelectField;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedOnly = true;
+                ToolTip = 'Refresh the access and refresh tokens.';
+
+                RunObject = page "ZM OAuth20Application Folders";
+                RunPageLink = "Application Code" = field(Code);
+                RunPageView = where("Type" = const(list));
 
             }
         }

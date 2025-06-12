@@ -29,6 +29,11 @@ table 17377 "ZM OAuth20Application Folders"
         {
             Caption = 'Folder Name', Comment = 'ESP="Nombre Carpeta"';
         }
+        field(30; Type; Option)
+        {
+            Caption = 'Type', comment = 'ESP="Tipo"';
+            OptionMembers = Folder,List;
+        }
     }
 
     keys
@@ -63,6 +68,20 @@ table 17377 "ZM OAuth20Application Folders"
     end;
 
     procedure OpenDriveItems(FolderID: Text)
+    var
+        OAuthApplication: Record "ZM OAuth 2.0 Application";
+        OnlineDriveItems: page "Sharepont Drive Items";
+        AccessToken: text;
+    begin
+        OAuthApplication.Get(Rec."Application Code");
+
+        AccessToken := OAuth20AppHelper.GetAccessToken(OAuthApplication.Code);
+
+        OnlineDriveItems.SetProperties(rec."Application Code", AccessToken, '', FolderID, OAuthApplication.RootFolderID);
+        OnlineDriveItems.RunModal();
+    end;
+
+    procedure OpenListsItems(FolderID: Text)
     var
         OAuthApplication: Record "ZM OAuth 2.0 Application";
         OnlineDriveItems: page "Sharepont Drive Items";

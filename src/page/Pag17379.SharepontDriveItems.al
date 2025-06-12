@@ -182,7 +182,18 @@ page 17379 "Sharepont Drive Items"
         Rec.Copy(TempOnlineDriveItem, true);
     end;
 
+    procedure SetPropertiesList(NewApplicationCode: code[20]; NewAccessToken: Text; NewFolderPath: Text; DriveID: Text; ParentID: Text)
+    var
+        TempOnlineDriveItem: Record "Online Drive Item" temporary;
+    begin
+        AccessToken := NewAccessToken;
+        FolderPath := NewFolderPath;
+        ApplicationCode := NewApplicationCode;
 
+        SharepointAppHelper.FetchDrivesItems(ApplicationCode, AccessToken, DriveID, TempOnlineDriveItem);
+
+        Rec.Copy(TempOnlineDriveItem, true);
+    end;
 
     local procedure DeleteItem()
     begin
