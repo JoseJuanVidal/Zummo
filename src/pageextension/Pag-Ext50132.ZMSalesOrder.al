@@ -26,6 +26,14 @@ pageextension 50132 "ZM SalesOrder" extends "Sales Order"
                 ToolTip = 'Fecha recepción email del cliente', comment = 'ESP="Fecha recepción email del cliente"';
                 Enabled = true;
             }
+            field(FechaConfirmacion; FechaConfirmacion)
+            {
+                ApplicationArea = all;
+            }
+            field("Motivo Confirmación"; "Motivo Confirmación")
+            {
+                ApplicationArea = all;
+            }
             field(Abono; Abono)
             {
                 ApplicationArea = all;

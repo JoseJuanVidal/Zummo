@@ -41,6 +41,17 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
             DataClassification = CustomerContent;
             Caption = 'Rappel', comment = 'ESP="Rappel"';
         }
+        field(50108; FechaConfirmacion; Date)
+        {
+            DataClassification = CustomerContent;
+            Description = 'Bitec';
+            Caption = 'Fecha confirmación', comment = 'ESP="Fecha confirmación"';
+        }
+        field(50109; "Motivo Confirmación"; code[20])
+        {
+            Caption = 'Motivo Confirmación', comment = 'ESP="Motivo Confirmación"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Motivo ConFirmación"), TipoRegistro = const(Tabla));
+        }
         field(50110; Peso_btc; Decimal)
         {
             DataClassification = CustomerContent;

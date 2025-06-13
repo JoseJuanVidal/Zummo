@@ -6,6 +6,13 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
         {
             Visible = true;
         }
+        addbefore("Entry No.")
+        {
+            field("Lead Time Calculation"; "Lead Time Calculation")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     actions
@@ -49,19 +56,23 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
         BOMComponent: Record "BOM Component";
         ProdForecastEntry2: Record "Production Forecast Entry";
         tmpProdForecastEntry: Record "Production Forecast Entry" temporary;
-        lblConfirmExplode: Label '¿Do you want to break down the selected items %1?', comment = 'ESP="¿Desea desglosar los artículos seleccionados %1?"';
+        lblConfirmExplode: Label '¿Do you want to break down the selected items %1?\First Date: %2', comment = 'ESP="¿Desea desglosar los artículos seleccionados %1?\Fecha inicial %2"';
         lblWindow: Label 'Setp: #1##########\Item No.: #2####################################', comment = 'ESP="Pasp: #1#####\Cód. Producto: #2####################################"';
 
     local procedure Action_ExplodeItem()
     var
         ProdForecastEntry: Record "Production Forecast Entry";
+        FirstDate: date;
         EntryNo: Integer;
         Window: Dialog;
     begin
         Window.Open(lblWindow);
         ProdForecastEntry.Reset();
         CurrPage.SetSelectionFilter(ProdForecastEntry);
-        if not Confirm(lblConfirmExplode, false, ProdForecastEntry.Count()) then
+        ProdForecastEntry.SetCurrentKey("Forecast Date");
+        if ProdForecastEntry.FindFirst() then
+            FirstDate := ProdForecastEntry."Forecast Date";
+        if not Confirm(lblConfirmExplode, false, ProdForecastEntry.Count(), FirstDate) then
             exit;
         EntryNo := GetLastEntryNo(Rec."Production Forecast Name");
         tmpProdForecastEntry.DeleteAll();
@@ -76,16 +87,17 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
                 Window.Update(1, 2);
                 Window.Update(2, tmpProdForecastEntry."Item No.");
                 EntryNo += 1;
-                ExplodeBomItem(EntryNo);
+                ExplodeBomItem(tmpProdForecastEntry."Item No.", EntryNo, FirstDate, tmpProdForecastEntry."Forecast Quantity");
             Until tmpProdForecastEntry.next() = 0;
         Window.Close();
     end;
 
-    local procedure ExplodeBomItem(var EntryNo: Integer)
+    local procedure ExplodeBomItem(ItemNo: code[20]; var EntryNo: Integer; FirstDate: date; Quantity: Decimal)
     var
-        myInt: Integer;
+        ItemDate: Date;
     begin
-        Item.Get(tmpProdForecastEntry."Item No.");
+        Item.Get(ItemNo);
+
         case Item."Replenishment System" of
             Item."Replenishment System"::Assembly:
                 begin
@@ -94,8 +106,15 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
                     BOMComponent.SetRange(Type, BOMComponent.Type::Item);
                     if BOMComponent.FindFirst() then
                         repeat
-                            AddLastProdForecastEntry(BOMComponent."No.", EntryNo, BOMComponent."Quantity per" * tmpProdForecastEntry."Forecast Quantity (Base)");
-                            EntryNo += 1;
+                            Item.Get(BOMComponent."No.");
+                            // comprobamos si el plazo de entrega del producto es menor que la fecha de necesidad        
+                            ItemDate := CalcDate(Item."Lead Time Calculation", FirstDate);
+                            ItemDate := CalcDate('+15D', ItemDate);
+                            if tmpProdForecastEntry."Forecast Date" >= ItemDate then begin
+                                AddLastProdForecastEntry(BOMComponent."No.", FirstDate, EntryNo, BOMComponent."Quantity per" * Quantity);
+                                EntryNo += 1;
+                                ExplodeBomItem(BOMComponent."No.", EntryNo, FirstDate, BOMComponent."Quantity per" * Quantity);
+                            end;
                         Until BOMComponent.next() = 0;
                 end;
             Item."Replenishment System"::"Prod. Order":
@@ -105,14 +124,21 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
                     ProdBOMLine.SetRange(Type, ProdBOMLine.Type::Item);
                     if ProdBOMLine.FindFirst() then
                         repeat
-                            AddLastProdForecastEntry(ProdBOMLine."No.", EntryNo, ProdBOMLine."Quantity per" * tmpProdForecastEntry."Forecast Quantity (Base)");
-                            EntryNo += 1;
+                            Item.Get(ProdBOMLine."No.");
+                            // comprobamos si el plazo de entrega del producto es menor que la fecha de necesidad        
+                            ItemDate := CalcDate(Item."Lead Time Calculation", FirstDate);
+                            ItemDate := CalcDate('+15D', ItemDate);
+                            if tmpProdForecastEntry."Forecast Date" >= ItemDate then begin
+                                AddLastProdForecastEntry(ProdBOMLine."No.", FirstDate, EntryNo, ProdBOMLine."Quantity per" * Quantity);
+                                EntryNo += 1;
+                                ExplodeBomItem(ProdBOMLine."No.", EntryNo, FirstDate, ProdBOMLine."Quantity per" * Quantity);
+                            end;
                         Until ProdBOMLine.next() = 0;
                 end;
         end;
     end;
 
-    local procedure AddLastProdForecastEntry(ItemNo: Code[20]; EntryNo: Integer; Quantity: Decimal)
+    local procedure AddLastProdForecastEntry(ItemNo: Code[20]; FirstDate: date; EntryNo: Integer; Quantity: Decimal)
     begin
         ProdForecastEntry2.Reset();
         ProdForecastEntry2.SetRange("Production Forecast Name", Rec."Production Forecast Name");
@@ -120,6 +146,7 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
         ProdForecastEntry2.SetRange("Forecast Date", tmpProdForecastEntry."Forecast Date");
         if not ProdForecastEntry2.FindFirst() then begin
             Item.Get(ItemNo);
+
             ProdForecastEntry2.Init();
             ProdForecastEntry2."Production Forecast Name" := Rec."Production Forecast Name";
             ProdForecastEntry2."Entry No." := EntryNo;

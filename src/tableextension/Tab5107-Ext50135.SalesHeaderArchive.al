@@ -27,6 +27,17 @@ tableextension 50135 "SalesHeaderArchive" extends "Sales Header Archive"  //5107
             DataClassification = CustomerContent;
             Caption = 'Rappel', comment = 'ESP="Rappel"';
         }
+        field(50108; FechaConfirmacion; Date)
+        {
+            DataClassification = CustomerContent;
+            Description = 'Bitec';
+            Caption = 'Fecha confirmación', comment = 'ESP="Fecha confirmación"';
+        }
+        field(50109; "Motivo Confirmación"; code[20])
+        {
+            Caption = 'Motivo Confirmación', comment = 'ESP="Motivo Confirmación"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Motivo ConFirmación"), TipoRegistro = const(Tabla));
+        }
         field(50113; PedidoServicio_btc; Code[20])
         {
             DataClassification = CustomerContent;

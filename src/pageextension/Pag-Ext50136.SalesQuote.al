@@ -56,6 +56,14 @@ pageextension 50136 "SalesQuote" extends "Sales Quote"
             {
                 ApplicationArea = All;
             }
+            field(FechaConfirmacion; FechaConfirmacion)
+            {
+                ApplicationArea = all;
+            }
+            field("Motivo Confirmación"; "Motivo Confirmación")
+            {
+                ApplicationArea = all;
+            }
             field(NumDias_btc; NumDias_btc)
             {
                 ApplicationArea = All;

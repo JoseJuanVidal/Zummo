@@ -30,7 +30,6 @@ tableextension 50123 "SalesShipmentHeader" extends "Sales Shipment Header"  //11
             Description = 'Bitec';
             Caption = 'Fecha.Rec.Mail', comment = 'ESP="Fecha.Rec.Mail"';
         }
-
         field(50103; ComentarioInterno_btc; Text[250])
         {
             DataClassification = CustomerContent;
@@ -46,6 +45,17 @@ tableextension 50123 "SalesShipmentHeader" extends "Sales Shipment Header"  //11
         {
             DataClassification = CustomerContent;
             Caption = 'Rappel', comment = 'ESP="Rappel"';
+        }
+        field(50108; FechaConfirmacion; Date)
+        {
+            DataClassification = CustomerContent;
+            Description = 'Bitec';
+            Caption = 'Fecha confirmación', comment = 'ESP="Fecha confirmación"';
+        }
+        field(50109; "Motivo Confirmación"; code[20])
+        {
+            Caption = 'Motivo Confirmación', comment = 'ESP="Motivo Confirmación"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Motivo ConFirmación"), TipoRegistro = const(Tabla));
         }
         field(50110; Peso_btc; Decimal)
         {

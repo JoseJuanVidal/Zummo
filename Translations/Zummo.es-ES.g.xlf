@@ -8720,10 +8720,10 @@
           <target>Tipo Registro</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos"</note>
+          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
-          <target>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos</target>
+          <target>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 1397213012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Warranty Date</source>
@@ -36145,10 +36145,10 @@
           <target>Todos los servicios</target>
         </trans-unit>
         <trans-unit id="PageExtension 1399283133 - NamedType 3650020193" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1399283133">
-          <source>¿Do you want to break down the selected items %1?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea desglosar los artículos seleccionados %1?"</note>
+          <source>¿Do you want to break down the selected items %1?\First Date: %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea desglosar los artículos seleccionados %1?\Fecha inicial %2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SGA Demand forecast Entries - NamedType lblConfirmExplode</note>
-          <target>¿Desea desglosar los artículos seleccionados %1?</target>
+          <target>¿Desea desglosar los artículos seleccionados %1?\Fecha inicial %2</target>
         </trans-unit>
         <trans-unit id="PageExtension 1399283133 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1399283133">
           <source>Setp: #1##########\Item No.: #2####################################</source>
@@ -39208,6 +39208,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field Delegado_btc - Property Caption</note>
           <target>Delegado</target>
         </trans-unit>
+        <trans-unit id="TableExtension 175460751 - Field 1926444323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
+          <source>Fecha confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field FechaConfirmacion - Property Caption</note>
+          <target>Fecha confirmación</target>
+        </trans-unit>
         <trans-unit id="TableExtension 175460751 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
           <source>Fecha.Rec.Mail</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha.Rec.Mail"</note>
@@ -39231,6 +39237,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field InsideSales_btc - Property Caption</note>
           <target>Inside Sales</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 175460751 - Field 2550377966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
+          <source>Motivo Confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo Confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field Motivo Confirmación - Property Caption</note>
+          <target>Motivo Confirmación</target>
         </trans-unit>
         <trans-unit id="TableExtension 175460751 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
           <source>Block Reason</source>
@@ -39393,6 +39405,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field FacturacionElec_btc - Property Caption</note>
           <target>Facturación electrónica</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 1926444323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Fecha confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field FechaConfirmacion - Property Caption</note>
+          <target>Fecha confirmación</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Fecha.Rec.Mail</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha.Rec.Mail"</note>
@@ -39416,6 +39434,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field InsideSales_btc - Property Caption</note>
           <target>Inside Sales</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3566220088 - Field 2550377966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Motivo Confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo Confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Motivo Confirmación - Property Caption</note>
+          <target>Motivo Confirmación</target>
         </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Block Reason</source>
@@ -39696,6 +39720,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field FechaAltaPedido - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 1926444323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Fecha confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field FechaConfirmacion - Property Caption</note>
+          <target>Fecha confirmación</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Fecha.Rec.Mail</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha.Rec.Mail"</note>
@@ -39730,6 +39760,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Is comment - Property Caption</note>
           <target>Comentarios venta</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2156531793 - Field 2550377966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Motivo Confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo Confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field Motivo Confirmación - Property Caption</note>
+          <target>Motivo Confirmación</target>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Block Reason</source>
@@ -39850,6 +39886,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field Delegado_btc - Property Caption</note>
           <target>Delegado</target>
         </trans-unit>
+        <trans-unit id="TableExtension 746889487 - Field 1926444323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
+          <source>Fecha confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field FechaConfirmacion - Property Caption</note>
+          <target>Fecha confirmación</target>
+        </trans-unit>
         <trans-unit id="TableExtension 746889487 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
           <source>Fecha.Rec.Mail</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha.Rec.Mail"</note>
@@ -39873,6 +39915,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field InsideSales_btc - Property Caption</note>
           <target>Inside Sales</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 746889487 - Field 2550377966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
+          <source>Motivo Confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo Confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field Motivo Confirmación - Property Caption</note>
+          <target>Motivo Confirmación</target>
         </trans-unit>
         <trans-unit id="TableExtension 746889487 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
           <source>Block Reason</source>
@@ -40015,6 +40063,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field FacturacionElec_btc - Property Caption</note>
           <target>Facturación electrónica</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 1926444323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Fecha confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field FechaConfirmacion - Property Caption</note>
+          <target>Fecha confirmación</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Fecha.Rec.Mail</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha.Rec.Mail"</note>
@@ -40054,6 +40108,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field InsideSales_btc - Property Caption</note>
           <target>Inside Sales</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 2550377966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Motivo Confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo Confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Motivo Confirmación - Property Caption</note>
+          <target>Motivo Confirmación</target>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Block Reason</source>
@@ -40560,6 +40620,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field Fecha Entrega en destino - Property Caption</note>
           <target>Fecha Entrega en destino</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 1926444323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Fecha confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field FechaConfirmacion - Property Caption</note>
+          <target>Fecha confirmación</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 2878857292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Fecha.Rec.Mail</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha.Rec.Mail"</note>
@@ -40589,6 +40655,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field Is comment - Property Caption</note>
           <target>Comentarios</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4208835177 - Field 2550377966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Motivo Confirmación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo Confirmación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field Motivo Confirmación - Property Caption</note>
+          <target>Motivo Confirmación</target>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 2682280453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Block Reason</source>
@@ -43194,6 +43266,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Sistema Operativo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Misc. Article Information - Field Sistema Operativo - Property Caption</note>
           <target>Sistema Operativo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 869832869 - Field 1009775796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2619354592">
+          <source>Lead Time Calculation</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plazo entrega (días)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Production Forecast Entry - Field Lead Time Calculation - Property Caption</note>
+          <target>Plazo entrega (días)</target>
         </trans-unit>
         <trans-unit id="TableExtension 3090976848 - Field 631869557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
           <source>Rejected Date</source>
