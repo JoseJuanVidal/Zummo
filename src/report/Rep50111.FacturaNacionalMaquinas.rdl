@@ -24,7 +24,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>8.92892cm</Height>
+                  <Height>8.93614cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2197,11 +2197,11 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Len(Fields!Assembly_Item_No.Value)</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>Segoe UI</FontFamily>
-                                                      <FontSize>8pt</FontSize>
+                                                      <Color>White</Color>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -2210,6 +2210,9 @@
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox1</rd:DefaultName>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
                                               <VerticalAlign>Top</VerticalAlign>
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
@@ -2254,7 +2257,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.35278cm</Height>
+                                    <Height>0.36cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -3735,7 +3738,7 @@
                                                     <TablixMembers>
                                                       <TablixMember>
                                                         <Visibility>
-                                                          <Hidden>=IIf(Fields!Assembly_Item_No.Value = "", true, false)</Hidden>
+                                                          <Hidden>=iif(Fields!Serial_No_.Value = "", true, false)</Hidden>
                                                         </Visibility>
                                                       </TablixMember>
                                                       <TablixMember>
@@ -3806,7 +3809,7 @@
                                 </Filter>
                               </Filters>
                               <Top>0.07938cm</Top>
-                              <Height>8.84954cm</Height>
+                              <Height>8.85676cm</Height>
                               <Width>19.24607cm</Width>
                               <Style />
                             </Tablix>
@@ -4392,7 +4395,7 @@ cstr(Fields!ShiptoAddresPhone.Value)
                                   </TablixMember>
                                 </TablixMembers>
                               </TablixRowHierarchy>
-                              <Top>5.26127cm</Top>
+                              <Top>7.16627cm</Top>
                               <Left>0.43272cm</Left>
                               <Height>1.00597cm</Height>
                               <Width>18.56505cm</Width>
@@ -4450,14 +4453,14 @@ cstr(Fields!ShiptoAddresPhone.Value)
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.16933cm</Top>
             <Left>0.46122cm</Left>
-            <Height>8.92892cm</Height>
+            <Height>8.93614cm</Height>
             <Width>19.24607cm</Width>
             <Style>
               <FontSize>9pt</FontSize>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>9.09825cm</Height>
+        <Height>9.10547cm</Height>
         <Style>
           <Border>
             <Style>None</Style>

@@ -74,7 +74,7 @@ page 17377 "ZM OAuth20Application Folders"
 
                 trigger OnAction()
                 begin
-                    Rec.OpenDriveItems(REc.FolderID);
+                    Rec.OpenDriveItems(Rec.FolderID);
                 end;
             }
             action(URL)
