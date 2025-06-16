@@ -13507,6 +13507,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method InsertLinesBetween - NamedType lblError</note>
           <target>No hay suficiente espacio para inserta una linea de venta, linea %1</target>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 1417362724 - NamedType 4159646059" size-unit="char" translate="yes" xml:space="preserve">
+          <source>La ficha de Cliente %1 debe terner indicado el valor de dimension de %2.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La ficha de Cliente %1 debe terner indicado el valor de dimension de %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method MessageValueDimensionsGlobal - NamedType lblMessage</note>
+          <target>La ficha de Cliente %1 debe terner indicado el valor de dimension de %2.</target>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 145188275 - NamedType 2109728185" size-unit="char" translate="yes" xml:space="preserve">
           <source>Registration date changed\Do you want to update the lines?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ha cambiado la fecha de registro\¿Desea actualizar las líneas?"</note>

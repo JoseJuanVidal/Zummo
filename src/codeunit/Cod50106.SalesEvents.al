@@ -800,9 +800,35 @@ codeunit 50106 "SalesEvents"
         //Si el cliente tiene marcado "Alerta Maquina" que les salte un aviso
         IF RecCustomer.GET(rec."Sell-to Customer No.") then
             IF RecCustomer.AlertaMaquina <> '' then
-                Message(RecCustomer.AlertaMaquina)
+                Message(RecCustomer.AlertaMaquina);
+        // Comprobamos que el cliente tiene indicadas las dimensiones globales
+        MessageValueDimensionsGlobal(Rec."Bill-to Customer No.");
     end;
 
+    local procedure MessageValueDimensionsGlobal(CustomerNo: code[20])
+    var
+        GLSetup: Record "General Ledger Setup";
+        DefaultDimension: Record "Default Dimension";
+        lblMessage: Label 'La ficha de Cliente %1 debe terner indicado el valor de dimension de %2.', comment = 'ESP="La ficha de Cliente %1 debe terner indicado el valor de dimension de %2."';
+    begin
+        if not GLSetup.Get() then
+            exit;
+        if GLSetup."Global Dimension 1 Code" <> '' then begin
+            DefaultDimension.SetRange("Table ID", Database::Customer);
+            DefaultDimension.SetRange("No.", CustomerNo);
+            DefaultDimension.SetRange("Dimension Code", GLSetup."Global Dimension 1 Code");
+            if not DefaultDimension.FindFirst() then
+                Message(lblMessage, CustomerNo, GLSetup."Global Dimension 1 Code");
+        end;
+        if GLSetup."Global Dimension 2 Code" <> '' then begin
+            DefaultDimension.SetRange("Table ID", Database::Customer);
+            DefaultDimension.SetRange("No.", CustomerNo);
+            DefaultDimension.SetRange("Dimension Code", GLSetup."Global Dimension 2 Code");
+            if not DefaultDimension.FindFirst() then
+                Message(lblMessage, CustomerNo, GLSetup."Global Dimension 2 Code");
+        end;
+
+    end;
     // =============       T_5900_OnAfterValidateCustomer Alerta Mensaje productos de servicio        ====================
     // ==  
     // ==  comment 
@@ -818,6 +844,8 @@ codeunit 50106 "SalesEvents"
         IF RecCustomer.GET(rec."Customer No.") then
             IF RecCustomer.AlertaPedidoServicio <> '' then
                 Message(StrSubstNo(lblMsg, RecCustomer."No.", RecCustomer.Name, RecCustomer.AlertaPedidoServicio));
+
+
     end;
 
 
