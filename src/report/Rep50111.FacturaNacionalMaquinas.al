@@ -1288,7 +1288,7 @@ report 50111 "FacturaNacionalMaquinas"
                                 Clear(CargosTipoIVA);
                                 Clear(CargosRE);
                                 Clear(CargosREPer);
-                                if "Sales Invoice Line"."Item Category Code" = 'EMBALAJES' then
+                                if ("Sales Invoice Line"."Item Category Code" = 'EMBALAJES') and not MostrarEmbalaje then
                                     EsEmbalaje := true;
                                 //Sacar datos para lineas tipo cargo.
                                 If type = type::"G/L Account" then
@@ -2178,6 +2178,11 @@ report 50111 "FacturaNacionalMaquinas"
                         Caption = 'Show Operation Date', comment = 'ESP="Mostrar Fecha Operacion"';
                         ToolTip = 'If the invoice is national, it is possible to show the net amounts', comment = 'ESP="Si la factura es nacional, se da la posibilidad de mostrar los importes netos"';
                     }
+                    field(MostrarEmbalaje; MostrarEmbalaje)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Mostrar Embalajes', comment = 'ESP="Mostrar Embalajes"';
+                    }
                 }
             }
         }
@@ -2573,6 +2578,7 @@ report 50111 "FacturaNacionalMaquinas"
         CargosIVAPorcent: Decimal;
         EsCargo: Boolean;
         EsEmbalaje: Boolean;
+        MostrarEmbalaje: Boolean;
         fechaPedido: date;
         fechaAlbaran: date;
         optIdioma: Option " ","ENU","ESP","FRA";

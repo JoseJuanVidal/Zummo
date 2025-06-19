@@ -933,7 +933,8 @@ report 50102 "PedidoCliente"
                             EsEmbalaje := false;
                             EsPorte := false;
                             Clear(Portes);
-                            if (SalesLine."Item Category Code" = 'EMBALAJES') or (SalesLine."Item Category Code" = 'EMBALAJE') then
+                            if ((SalesLine."Item Category Code" = 'EMBALAJES') or (SalesLine."Item Category Code" = 'EMBALAJE'))
+                                        and not MostrarEmbalaje then
                                 EsEmbalaje := true;
                             if SalesLine.Type = SalesLine.Type::"G/L Account" then
                                 if not RecCuenta.Get(SalesLine."No.") then
@@ -1888,6 +1889,11 @@ report 50102 "PedidoCliente"
                         ApplicationArea = All;
                         Caption = 'Only pending lines', comment = 'ESP="Solo líneas pendientes"';
                     }
+                    field(MostrarEmbalaje; MostrarEmbalaje)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Mostrar Embalajes', comment = 'ESP="Mostrar Embalajes"';
+                    }
                 }
             }
         }
@@ -2051,6 +2057,7 @@ report 50102 "PedidoCliente"
         VALVATAmountLCY: Decimal;
         VALSpecLCYHeader: Text[80];
         EsEmbalaje: Boolean;
+        MostrarEmbalaje: Boolean;
         ShowBinContents: Boolean;
         ContUbicaciones: text;
         SerialContUbicaciones: text;

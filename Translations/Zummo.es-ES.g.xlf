@@ -28180,6 +28180,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - Control LogInteraction - Property Caption</note>
           <target>Log Interacción</target>
         </trans-unit>
+        <trans-unit id="Report 1112960350 - Control 2437505167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Embalajes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Embalajes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report FacturaNacionalMaquinas - Control MostrarEmbalaje - Property Caption</note>
+          <target>Mostrar Embalajes</target>
+        </trans-unit>
         <trans-unit id="Report 1112960350 - Control 839610921 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>If the invoice is national, it is possible to show the net amounts</source>
           <note from="Developer" annotates="general" priority="2">ESP="Si la factura es nacional, se da la posibilidad de mostrar los importes netos"</note>
@@ -32681,6 +32687,12 @@
           <source>Log Interaction</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control LogInteraction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3412186937 - Control 2437505167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Embalajes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Embalajes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - Control MostrarEmbalaje - Property Caption</note>
+          <target>Mostrar Embalajes</target>
         </trans-unit>
         <trans-unit id="Report 3412186937 - Control 2578066365 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies how many copies of the document to print.</source>
