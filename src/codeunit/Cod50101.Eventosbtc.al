@@ -1719,14 +1719,14 @@ codeunit 50101 "Eventos_btc"
         SerialNoInfo: Record "Serial No. Information";
         textoHtml: Text;
     begin
-        SerialNoInfo.Reset();
-        SerialNoInfo.SetFilter("Serial No. Cost", '<> 0');
-        if SerialNoInfo.FindFirst() then
-            repeat
-                AdjustCostItemEntries(SerialNoInfo, textoHtml);
-            Until SerialNoInfo.next() = 0;
-        if textoHtml <> '' then
-            SendEnvioEmailSerialNoCost(textoHtml);
+        // SerialNoInfo.Reset();
+        // SerialNoInfo.SetFilter("Serial No. Cost", '<> 0');
+        // if SerialNoInfo.FindFirst() then
+        //     repeat
+        //         AdjustCostItemEntries(SerialNoInfo, textoHtml);
+        //     Until SerialNoInfo.next() = 0;
+        // if textoHtml <> '' then
+        //     SendEnvioEmailSerialNoCost(textoHtml);
     end;
 
     procedure AdjustCostItemEntries(SerialNoInfo: Record "Serial No. Information"; var textoHtml: Text)
