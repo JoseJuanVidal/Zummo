@@ -128,7 +128,7 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
                             // comprobamos si el plazo de entrega del producto es menor que la fecha de necesidad        
                             ItemDate := CalcDate(Item."Lead Time Calculation", FirstDate);
                             ItemDate := CalcDate('+20D', ItemDate);
-                            if tmpProdForecastEntry."Forecast Date" = ItemDate then begin
+                            if tmpProdForecastEntry."Forecast Date" <= ItemDate then begin
                                 AddLastProdForecastEntry(ProdBOMLine."No.", FirstDate, EntryNo, ProdBOMLine."Quantity per" * Quantity);
                                 EntryNo += 1;
                                 ExplodeBomItem(ProdBOMLine."No.", EntryNo, FirstDate, ProdBOMLine."Quantity per" * Quantity);
