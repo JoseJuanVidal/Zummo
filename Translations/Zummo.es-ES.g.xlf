@@ -8049,6 +8049,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Fallo Localizado - Field InformeMejora - Property Caption</note>
           <target>Informe Mejora</target>
         </trans-unit>
+        <trans-unit id="Table 3961029829 - Field 2883740582 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Fallo Localizado - Field Tipo - Property Caption</note>
+          <target>Tipo</target>
+        </trans-unit>
         <trans-unit id="Table 10975779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hist. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Aseguradora"</note>
@@ -40986,6 +40992,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field NumSerie_btc - Property Caption</note>
           <target>Nº Serie</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2479720606 - Field 583333795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
+          <source>Resolución</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Resolución"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field Resolution Name - Property Caption</note>
+          <target>Resolución</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 2000555875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Solicitado a Técnico</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -41110,6 +41122,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre dirección de envío"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Ship-to Name - Property Caption</note>
           <target>Nombre dirección de envío</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 909111954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Fallo localizado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fallo localizado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Tipo Fallo localizado - Property Caption</note>
+          <target>Fallo localizado</target>
         </trans-unit>
         <trans-unit id="TableExtension 1267759397 - Field 2829717791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271291437">
           <source>Assoc. Vendor No.</source>
@@ -41324,6 +41342,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Es Material"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Job Planning line - Field Es Material - Property Caption</note>
           <target>Es Material</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 629365744 - Field 1174339774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
+          <source>Fecha fin planificada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha fin planificada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH JobTask Ext - Field Fecha fin planificada - Property Caption</note>
+          <target>Fecha fin planificada</target>
         </trans-unit>
         <trans-unit id="TableExtension 629365744 - Field 1901646862 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2014770230">
           <source>Fecha fin real</source>
@@ -43679,6 +43703,12 @@
           <note from="Developer" annotates="general" priority="2">ESP=" "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum IE Almacen - EnumValue Ninguno - Property Caption</note>
           <target> </target>
+        </trans-unit>
+        <trans-unit id="Enum 2803759935 - EnumValue 124933732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Item Serv. Line Tipo Fallo - EnumValue Manufacturing - Property Caption</note>
+          <target>Producción</target>
         </trans-unit>
         <trans-unit id="Enum 1538080237 - EnumValue 3858371008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Check</source>

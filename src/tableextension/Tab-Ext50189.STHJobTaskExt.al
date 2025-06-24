@@ -42,6 +42,11 @@ tableextension 50189 "STH JobTask Ext" extends "Job Task"
             DataClassification = CustomerContent;
             Caption = 'Fecha inicial planificada', comment = 'ESP="Fecha inicial planificada"';
         }
+        field(50006; "Fecha fin planificada"; date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fecha fin planificada', comment = 'ESP="Fecha fin planificada"';
+        }
         field(50010; "Presupuesto Coste Horas"; decimal)
         {
             Caption = 'Presupuesto Coste Horas', comment = 'ESP="Presupuesto Coste Horas"';

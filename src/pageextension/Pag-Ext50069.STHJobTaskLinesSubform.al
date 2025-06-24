@@ -19,6 +19,10 @@ pageextension 50069 "STH JobTaskLinesSubform" extends "Job Task Lines Subform"
             {
                 ApplicationArea = all;
             }
+            field("Fecha fin planificada"; "Fecha fin planificada")
+            {
+                ApplicationArea = all;
+            }
         }
         addafter("Amt. Rcd. Not Invoiced")
         {

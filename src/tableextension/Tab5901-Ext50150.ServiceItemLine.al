@@ -61,6 +61,26 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
             FieldClass = FlowField;
             CalcFormula = lookup("STH Fallo Localizado".InformeMejora where(FalloLocalizado = field("Fallo localizado")));
         }
+        field(50205; "Tipo Fallo localizado"; Enum "Item Serv. Line Tipo Fallo")
+        {
+            Caption = 'Fallo localizado', comment = 'ESP="Fallo localizado"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Fallo Localizado".Tipo where(FalloLocalizado = field("Fallo localizado")));
+        }
+        field(50206; "N. Empleado Fallo"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Cód. Empleado Fallo', comment = 'ESP="Cód. Empleado Fallo"';
+            TableRelation = Employee;
+
+        }
+        field(50207; "Nombre Empleado Fallo"; text[250])
+        {
+            Caption = 'Nombre Empleado Fallo', comment = 'ESP="Nombre Empleado Fallo"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Employee."Search Name" where("No." = field("N. Empleado Fallo")));
+            Editable = false;
+        }
         field(50210; Fecharecepaviso_sth; DateTime)
         {
             Caption = 'Fecha Recepción aviso', comment = 'ESP="Fecha recepción aviso"';

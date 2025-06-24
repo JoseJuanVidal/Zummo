@@ -63,6 +63,7 @@ page 50134 "Salidas Fabricacion"
 
     local procedure UpdateProductión()
     var
+        RoutingHeader: Record "Routing Header";
         vRecRef: RecordRef;
     begin
         Item.Reset();
@@ -77,8 +78,11 @@ page 50134 "Salidas Fabricacion"
         if ProdOrderLine.FindSet() then begin
             RoutingNo := ProdOrderLine."Routing No.";
             // 50400; "Salidas Fabricas"; Boolean)
-            vRecRef.GetTable(Rec);
-            RoutingProduction := Funciones.GetExtensionFieldValueboolean(vRecRef.RecordId, 50400, false);
+
+            if RoutingHeader.Get(ProdOrderLine."Routing No.") then begin
+                vRecRef.GetTable(RoutingHeader);
+                RoutingProduction := Funciones.GetExtensionFieldValueboolean(vRecRef.RecordId, 50400, false);
+            end
         end;
 
     end;

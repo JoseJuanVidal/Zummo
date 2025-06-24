@@ -26,6 +26,10 @@ page 50009 "STH Fallo Localizado Card"
                     ApplicationArea = All;
                     MultiLine = true;
                 }
+                field(Tipo; Tipo)
+                {
+                    ApplicationArea = all;
+                }
                 field(InformeMejora; Rec.InformeMejora)
                 {
                     ToolTip = 'Specifies the value of the Informe Mejora field.', Comment = 'ESP="Informe Mejora"';

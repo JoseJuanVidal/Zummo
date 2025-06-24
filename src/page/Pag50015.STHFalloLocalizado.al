@@ -29,6 +29,10 @@ page 50015 "STH Fallo Localizado"
                 {
                     ApplicationArea = all;
                 }
+                field(Tipo; Tipo)
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

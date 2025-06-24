@@ -14,6 +14,10 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
             {
                 ApplicationArea = All;
             }
+            field("Resolution Name"; "Resolution Name")
+            {
+                ApplicationArea = all;
+            }
             field(ItemNo_btc; ItemNo_btc)
             {
                 ApplicationArea = all;

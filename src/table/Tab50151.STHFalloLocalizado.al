@@ -21,6 +21,11 @@ table 50151 "STH Fallo Localizado"
             DataClassification = CustomerContent;
             Caption = 'Descripción', comment = 'ESP="Descripción"';
         }
+        field(4; "Tipo"; Enum "Item Serv. Line Tipo Fallo")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Tipo', comment = 'ESP="Tipo"';
+        }
         field(10; Fallo; code[20])
         {
             Caption = 'Fallo', comment = 'ESP="Fallo"';
