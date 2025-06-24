@@ -2,8 +2,8 @@ page 17470 "ZM Service Item Lines Prod."
 {
     Caption = 'Líneas Ped. Servicios (Prod.)', comment = 'ESP="Líneas Ped. Servicios (Prod.)"';
     PageType = List;
-    ApplicationArea = All;
-    UsageCategory = Administration;
+    // ApplicationArea = All;
+    UsageCategory = None;
     SourceTable = "Service Item Line";
     SourceTableView = where("Document Type" = const(order), "Tipo Fallo localizado" = const(Manufacturing));
     InsertAllowed = false;
