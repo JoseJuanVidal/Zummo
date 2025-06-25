@@ -26,6 +26,10 @@ page 17470 "ZM Service Item Lines Prod."
                     ApplicationArea = all;
                     Editable = false;
                 }
+                field("Posting Date"; "Posting Date")
+                {
+                    ApplicationArea = all;
+                }
                 field("Line No."; "Line No.")
                 {
                     ApplicationArea = all;
@@ -119,11 +123,22 @@ page 17470 "ZM Service Item Lines Prod."
     {
         area(Processing)
         {
-            action(ActionName)
+            action(Ficha)
             {
-
+                ApplicationArea = all;
+                Caption = 'Ficha', comment = 'ESP="Ficha"';
+                Image = EditLines;
+                Promoted = true;
+                PromotedCategory = Process;
+                ShortcutKey = 'Mayús+F7';
                 trigger OnAction()
+                var
+                    ServiceOrder: page "Service Order";
                 begin
+                    ServiceHeader.SetRange("Document Type", Rec."Document Type");
+                    ServiceHeader.SetRange("No.", Rec."Document No.");
+                    ServiceOrder.SetTableView(ServiceHeader);
+                    ServiceOrder.RunModal();
 
                 end;
             }
@@ -131,5 +146,5 @@ page 17470 "ZM Service Item Lines Prod."
     }
 
     var
-        myInt: Integer;
+        ServiceHeader: Record "Service Header";
 }

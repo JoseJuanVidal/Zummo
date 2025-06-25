@@ -20653,6 +20653,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Líneas Ped. Servicios (Prod.)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Service Item Lines Prod. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3560357407 - Action 4259828871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ficha</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ficha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Service Item Lines Prod. - Action Ficha - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 579655612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sharepoint Documents</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos Sharepoint"</note>
@@ -37342,6 +37347,11 @@
           <source>Num Ciclos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Num Ciclos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field NumCiclos_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Posting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 2015904545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Responsability Center</source>

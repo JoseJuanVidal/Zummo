@@ -22675,6 +22675,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Purch. Line Plastic - Control Total - Property Caption</note>
           <target>Total KG Plástico</target>
         </trans-unit>
+        <trans-unit id="Page 3560357407 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Líneas Ped. Servicios (Prod.)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas Ped. Servicios (Prod.)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Service Item Lines Prod. - Property Caption</note>
+          <target>Líneas Ped. Servicios (Prod.)</target>
+        </trans-unit>
+        <trans-unit id="Page 3560357407 - Action 4259828871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ficha</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ficha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Service Item Lines Prod. - Action Ficha - Property Caption</note>
+          <target>Ficha</target>
+        </trans-unit>
         <trans-unit id="Page 579655612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sharepoint Documents</source>
           <note from="Developer" annotates="general" priority="2">ESP="Documentos Sharepoint"</note>
@@ -41099,11 +41111,29 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Informe Mejora - Property Caption</note>
           <target>Informe Mejora</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 3312432541 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Cód. Empleado Fallo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Empleado Fallo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field N. Empleado Fallo - Property Caption</note>
+          <target>Cód. Empleado Fallo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 1776851486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Nombre Empleado Fallo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Empleado Fallo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Nombre Empleado Fallo - Property Caption</note>
+          <target>Nombre Empleado Fallo</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 1911659303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Num Ciclos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Num Ciclos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field NumCiclos_btc - Property Caption</note>
           <target>Num Ciclos</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4165706410 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Posting Date - Property Caption</note>
+          <target>Fecha Registro</target>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 2015904545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
           <source>Responsability Center</source>

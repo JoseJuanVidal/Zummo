@@ -100,6 +100,14 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
                 OnValidate_Fecharresolucion();
             end;
         }
+        field(50220; "Posting Date"; date)
+        {
+            Caption = 'Posting Date', comment = 'ESP="Fecha Registro"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Service Header"."Posting Date" where("Document Type" = field("Document Type"), "No." = field("Document No.")));
+            Editable = false;
+
+        }
         field(50501; "Description Header"; text[100])
         {
             Caption = 'Description Header', comment = 'ESP="Cab. Descripción"';
