@@ -110,7 +110,7 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
                             // comprobamos si el plazo de entrega del producto es menor que la fecha de necesidad        
                             ItemDate := CalcDate(Item."Lead Time Calculation", FirstDate);
                             ItemDate := CalcDate('+20D', ItemDate);
-                            if tmpProdForecastEntry."Forecast Date" <= ItemDate then begin
+                            if (Item."Production BOM No." <> '') or (tmpProdForecastEntry."Forecast Date" <= ItemDate) then begin
                                 AddLastProdForecastEntry(BOMComponent."No.", FirstDate, EntryNo, BOMComponent."Quantity per" * Quantity);
                                 EntryNo += 1;
                                 ExplodeBomItem(BOMComponent."No.", EntryNo, FirstDate, BOMComponent."Quantity per" * Quantity);
@@ -128,7 +128,8 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
                             // comprobamos si el plazo de entrega del producto es menor que la fecha de necesidad        
                             ItemDate := CalcDate(Item."Lead Time Calculation", FirstDate);
                             ItemDate := CalcDate('+20D', ItemDate);
-                            if tmpProdForecastEntry."Forecast Date" <= ItemDate then begin
+                            if (Item."Production BOM No." <> '') or (tmpProdForecastEntry."Forecast Date" <= ItemDate) then begin
+
                                 AddLastProdForecastEntry(ProdBOMLine."No.", FirstDate, EntryNo, ProdBOMLine."Quantity per" * Quantity);
                                 EntryNo += 1;
                                 ExplodeBomItem(ProdBOMLine."No.", EntryNo, FirstDate, ProdBOMLine."Quantity per" * Quantity);
@@ -157,7 +158,7 @@ pageextension 50226 "SGA Demand forecast Entries" extends "Demand Forecast Entri
             ProdForecastEntry2."Location Code" := tmpProdForecastEntry."Location Code";
             ProdForecastEntry2.Insert();
         end;
-        ProdForecastEntry2.Validate("Forecast Quantity (Base)", tmpProdForecastEntry."Forecast Quantity (Base)" + Quantity);
+        ProdForecastEntry2.Validate("Forecast Quantity (Base)", ProdForecastEntry2."Forecast Quantity (Base)" + Quantity);
         ProdForecastEntry2.Modify();
     end;
 
