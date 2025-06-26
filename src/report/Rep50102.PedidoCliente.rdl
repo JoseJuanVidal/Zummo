@@ -2198,7 +2198,8 @@ Cstr(Fields!txtOferta.Value) + Chr(177) +
 Cstr(Fields!txtOfertaLbl.Value) + Chr(177) + 
 Cstr(Fields!telfCleiten.Value)+ Chr(177) + 
 Cstr(Fields!CommentInterbCaptionLbl.Value)+ Chr(177) + 
-Cstr(Fields!ComentarioInterno_btc.Value), 1)</Hidden>
+Cstr(Fields!ComentarioInterno_btc.Value) + Chr(177) + 
+Cstr(Fields!EstadoCalidad.Value), 1)</Hidden>
                                             </Visibility>
                                             <Style>
                                               <VerticalAlign>Middle</VerticalAlign>
@@ -4333,7 +4334,7 @@ Cstr(Sum(Fields!Portes.Value))
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>6.62324cm</Top>
+              <Top>6.60295cm</Top>
               <Left>0.7432cm</Left>
               <Height>0.80346cm</Height>
               <Width>9.10018cm</Width>
@@ -4444,6 +4445,63 @@ Cstr(Sum(Fields!Portes.Value))
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox71">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!lblEstadoCalidad.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>=First(Fields!TotalAmountInclVAT.Value, "DataSet_Result")</Format>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>=First(Fields!TotalAmountInclVAT.Value, "DataSet_Result")</Format>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Code.GetData(65,1)</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <Format>=First(Fields!TotalAmountInclVAT.Value, "DataSet_Result")</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>6.65193cm</Top>
+              <Left>0.77007cm</Left>
+              <Height>0.35367cm</Height>
+              <Width>10.37018cm</Width>
+              <ZIndex>27</ZIndex>
+              <Visibility>
+                <Hidden>=iif(First(Fields!ShowLocation.Value, "DataSet_Result") and Fields!TipoDocumento.Value=2, false,true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Color>LightGrey</Color>
+                  <Style>Solid</Style>
+                </Border>
+                <VerticalAlign>Top</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
               </Style>
             </Textbox>
           </ReportItems>
@@ -6175,6 +6233,9 @@ AAAASAISAAAAAElAAgAAACAJSAAAAAAkAQkAAACAJCABAAAAkAQkAAAAAJKABAAAAEASkAAAAABIAhIA
         <Field Name="telfCleiten">
           <DataField>telfCleiten</DataField>
         </Field>
+        <Field Name="EstadoCalidad">
+          <DataField>EstadoCalidad</DataField>
+        </Field>
         <Field Name="codigoDivisa">
           <DataField>codigoDivisa</DataField>
         </Field>
@@ -6633,6 +6694,9 @@ AAAASAISAAAAAElAAgAAACAJSAAAAAAkAQkAAACAJCABAAAAkAQkAAAAAJKABAAAAEASkAAAAABIAhIA
         </Field>
         <Field Name="PageCaption">
           <DataField>PageCaption</DataField>
+        </Field>
+        <Field Name="lblEstadoCalidad">
+          <DataField>lblEstadoCalidad</DataField>
         </Field>
         <Field Name="OutputNo">
           <DataField>OutputNo</DataField>

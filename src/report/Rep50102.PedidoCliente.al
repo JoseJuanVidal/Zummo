@@ -16,7 +16,7 @@ report 50102 "PedidoCliente"
             RequestFilterHeading = 'Pedido de Venta';
             column(Payment_Discount__; "Payment Discount %") { }
             column(telfCleiten; recC."Phone No.") { }
-
+            column(EstadoCalidad; EstadoCalidad) { }
             column(codigoDivisa; codigoDivisa) { }
             column(PesoBruto_SalesLine; sumaPesoBruto) { }
             column(txtOferta; txtOferta) { }
@@ -377,6 +377,7 @@ report 50102 "PedidoCliente"
                     column(PageCaption; PageCaptionCap_Lbl)
                     {
                     }
+                    column(lblEstadoCalidad; lblEstadoCalidad) { }
                     column(OutputNo; OutputNo)
                     {
                     }
@@ -1590,6 +1591,10 @@ report 50102 "PedidoCliente"
                 if not recC.get("Sell-to Customer No.") then
                     clear(recC);
 
+                // recogemos el campo de la Extension SGA, campo sd ESTADO CALIDAD
+                //   field(50660; "Quality status"; Enum "Quality Status")
+                EstadoCalidad := GetExtensionFieldEstadoCalidad();
+
                 if recSalesStp.Get() and (recSalesStp.RutaPdfPedidos_btc <> '') then
                     if (TipoDocumento = 1) and (not GuardadoPdf_btc) then begin // Pedido
                         "Sales Header".GuardadoPdf_btc := true;
@@ -2025,6 +2030,8 @@ report 50102 "PedidoCliente"
         FormatDocument: Codeunit "Format Document";
         SalesPostPrepmt: Codeunit "Sales-Post Prepayments";
         DimMgt: Codeunit "DimensionManagement";
+        Funciones: Codeunit Funciones;
+        EstadoCalidad: text;
         CustAddr: array[8] of Text[100];
         ShipToAddr: array[8] of Text[100];
         CompanyAddr: array[8] of Text[100];
@@ -2109,7 +2116,7 @@ report 50102 "PedidoCliente"
         workDescription: Text;
         optIdioma: Option " ","ENU","ESP","FRA";
         //************************* LABELS *************************************************************
-
+        lblEstadoCalidad: Label 'Quality State', Comment = 'ESP="Estado Calidad"';
         Text007_Lbl: Label 'VAT Amount Specification in ', comment = 'ESP=""';
         Text008_Lbl: Label 'Local Currency', comment = 'ESP=""';
         Text009_Lbl: Label 'Exchange rate: %1/%2', comment = 'ESP=""';
@@ -2385,7 +2392,6 @@ report 50102 "PedidoCliente"
     local procedure GetBinContentItemNo(LocationCode: code[10]; ItemNo: code[20]; Quantity: Decimal; SerialNo: code[50]) BinContens: text
     var
         Item: Record Item;
-        Funciones: Codeunit Funciones;
         ListBinContent: List of [code[20]];
         ListQtyBinContent: List of [decimal];
         BinCode: code[20];
@@ -2459,6 +2465,13 @@ report 50102 "PedidoCliente"
         SalesLine."DecLine Discount1 %_btc" := Dto1;
         SalesLine."DecLine Discount2 %_btc" := Dto2;
         SalesLine."Line Amount" := LineAmount;
+    end;
+
+    local procedure GetExtensionFieldEstadoCalidad() Estado: Text;
+    begin
+        // recogemos el campo de la Extension SGA, campo sd ESTADO CALIDAD
+        //   field(50660; "Quality status"; Enum "Quality Status")
+        Estado := Funciones.GetExtensionFieldValuetext("Sales Header".RecordId, 50660, false);
     end;
 }
 

@@ -29448,6 +29448,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="IVA",FRA="Montant TVA"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType IVA_Lbl</note>
         </trans-unit>
+        <trans-unit id="Report 3412186937 - NamedType 161182968" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality State</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado Calidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoCliente - NamedType lblEstadoCalidad</note>
+        </trans-unit>
         <trans-unit id="Report 3412186937 - NamedType 2835330293" size-unit="char" translate="yes" xml:space="preserve">
           <source>from order confirmation</source>
           <note from="Developer" annotates="general" priority="2">ESP="desde la confirmación del pedido",FRA="à partir de la confirmation de la commande"</note>
