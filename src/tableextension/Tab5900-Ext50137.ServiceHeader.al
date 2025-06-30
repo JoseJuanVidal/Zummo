@@ -8,7 +8,7 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
             begin
                 if "Service Order Type" <> xRec."Service Order Type" then begin
                     TipoPedidoNivel2_btc := '';
-                    TipoPedidoNivel3_btc := '';
+                    // TipoPedidoNivel3_btc := '';
                 end;
             end;
         }
@@ -19,11 +19,11 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
             Caption = 'Type order service level 2', comment = 'ESP="Tipo pedido servicio nivel 2"';
             TableRelation = ClassPedServicio.TipoPedidoNivel2_btc where(TipoPedidoNivel1_btc = field("Service Order Type"));
 
-            trigger OnValidate()
-            begin
-                if TipoPedidoNivel2_btc <> xRec.TipoPedidoNivel2_btc then
-                    TipoPedidoNivel3_btc := '';
-            end;
+            // trigger OnValidate()
+            // begin
+            //     if TipoPedidoNivel2_btc <> xRec.TipoPedidoNivel2_btc then
+            //         TipoPedidoNivel3_btc := '';
+            // end;
         }
 
         field(50002; "Cerrado en plataforma"; Boolean)
@@ -34,15 +34,15 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
         {
             DataClassification = CustomerContent;
         }
-        field(50101; TipoPedidoNivel3_btc; Code[20])
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Type order service level 3', comment = 'ESP="Tipo pedido servicio nivel 3"';
-            TableRelation = ClassPedServicioNivel3.TipoPedidoNivel3_btc where(
-                TipoPedidoNivel1_btc = field("Service Order Type"),
-                TipoPedidoNivel2_btc = field(TipoPedidoNivel2_btc)
-            );
-        }
+        // field(50101; TipoPedidoNivel3_btc; Code[20])
+        // {
+        //     DataClassification = CustomerContent;
+        //     Caption = 'Type order service level 3', comment = 'ESP="Tipo pedido servicio nivel 3"';
+        //     TableRelation = ClassPedServicioNivel3.TipoPedidoNivel3_btc where(
+        //         TipoPedidoNivel1_btc = field("Service Order Type"),
+        //         TipoPedidoNivel2_btc = field(TipoPedidoNivel2_btc)
+        //     );
+        // }
 
         field(50102; NumEstanteria_btc; Code[10])
         {

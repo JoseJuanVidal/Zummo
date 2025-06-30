@@ -17,10 +17,10 @@ pageextension 50015 "ServiceQuote" extends "Service Quote"
                 ApplicationArea = All;
             }
 
-            field(TipoPedidoNivel3_btc; TipoPedidoNivel3_btc)
-            {
-                ApplicationArea = All;
-            }
+            // field(TipoPedidoNivel3_btc; TipoPedidoNivel3_btc)
+            // {
+            //     ApplicationArea = All;
+            // }
 
             field(NumEstanteria_btc; NumEstanteria_btc)
             {
@@ -31,7 +31,7 @@ pageextension 50015 "ServiceQuote" extends "Service Quote"
             {
                 ApplicationArea = all;
             }
-  
+
         }
     }
 

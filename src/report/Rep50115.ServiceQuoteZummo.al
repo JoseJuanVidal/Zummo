@@ -33,10 +33,10 @@ report 50115 "Service Quote Zummo"
             {
 
             }
-            column(TipoPedidoNivel3_btc; TipoPedidoNivel3_btc)
-            {
+            // column(TipoPedidoNivel3_btc; TipoPedidoNivel3_btc)
+            // {
 
-            }
+            // }
 
             column(Service_Order_Type_Caption; "Service Header".FieldCaption("Service Order Type"))
             {
@@ -47,10 +47,10 @@ report 50115 "Service Quote Zummo"
             {
 
             }
-            column(TipoPedidoNivel3_btc_Caption; "Service Header".FieldCaption(TipoPedidoNivel3_btc))
-            {
+            // column(TipoPedidoNivel3_btc_Caption; "Service Header".FieldCaption(TipoPedidoNivel3_btc))
+            // {
 
-            }
+            // }
 
             column(CodAnterior_btc; CodAnterior_btc)
             {

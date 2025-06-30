@@ -1604,36 +1604,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicio - Field TipoPedidoNivel2_btc - Property Caption</note>
           <target>Tipo pedido servicio nivel 2</target>
         </trans-unit>
-        <trans-unit id="Table 837493494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Order service classification</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Clasificación pedidos servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicioNivel3 - Property Caption</note>
-          <target>Clasificación pedidos servicio</target>
-        </trans-unit>
-        <trans-unit id="Table 837493494 - Field 629426123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description order service level 3</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Descripción pedido servicio nivel 3"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicioNivel3 - Field DescTipoPedidoNivel3_btc - Property Caption</note>
-          <target>Descripción pedido servicio nivel 3</target>
-        </trans-unit>
-        <trans-unit id="Table 837493494 - Field 4002540526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Type order service level 1</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 1"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicioNivel3 - Field TipoPedidoNivel1_btc - Property Caption</note>
-          <target>Tipo pedido servicio nivel 1</target>
-        </trans-unit>
-        <trans-unit id="Table 837493494 - Field 597349203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Type order service level 2</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 2"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicioNivel3 - Field TipoPedidoNivel2_btc - Property Caption</note>
-          <target>Tipo pedido servicio nivel 2</target>
-        </trans-unit>
-        <trans-unit id="Table 837493494 - Field 3258116284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Type order service level 3</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 3"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicioNivel3 - Field TipoPedidoNivel3_btc - Property Caption</note>
-          <target>Tipo pedido servicio nivel 3</target>
-        </trans-unit>
         <trans-unit id="Table 4166419010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Predefined Comments</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentarios predefinidos"</note>
@@ -16263,11 +16233,6 @@
           <source>Clasificación pedido servicio</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Clasificación pedido servicio - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 87955054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Clasificación pedido servicio</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ClassPedServicio3 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3206609304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Comments</source>
@@ -41032,12 +40997,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field TipoPedidoNivel2_btc - Property Caption</note>
           <target>Tipo pedido servicio nivel 2</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 2479720606 - Field 3258116284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
-          <source>Type order service level 3</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 3"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field TipoPedidoNivel3_btc - Property Caption</note>
-          <target>Tipo pedido servicio nivel 3</target>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4165706410">
           <source>Cancelado por usuario</source>

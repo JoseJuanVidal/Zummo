@@ -4416,17 +4416,11 @@ End Function
         <Field Name="TipoPedidoNivel2_btc">
           <DataField>TipoPedidoNivel2_btc</DataField>
         </Field>
-        <Field Name="TipoPedidoNivel3_btc">
-          <DataField>TipoPedidoNivel3_btc</DataField>
-        </Field>
         <Field Name="Service_Order_Type_Caption">
           <DataField>Service_Order_Type_Caption</DataField>
         </Field>
         <Field Name="TipoPedidoNivel2_btc_Caption">
           <DataField>TipoPedidoNivel2_btc_Caption</DataField>
-        </Field>
-        <Field Name="TipoPedidoNivel3_btc_Caption">
-          <DataField>TipoPedidoNivel3_btc_Caption</DataField>
         </Field>
         <Field Name="CodAnterior_btc">
           <DataField>CodAnterior_btc</DataField>
