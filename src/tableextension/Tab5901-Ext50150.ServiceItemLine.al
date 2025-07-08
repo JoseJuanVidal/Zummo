@@ -63,7 +63,7 @@ tableextension 50150 "ServiceItemLine" extends "Service Item Line"  //5901
         }
         field(50205; "Tipo Fallo localizado"; Enum "Item Serv. Line Tipo Fallo")
         {
-            Caption = 'Fallo localizado', comment = 'ESP="Fallo localizado"';
+            Caption = 'Tipo Fallo localizado', comment = 'ESP="Tipo Fallo localizado"';
             FieldClass = FlowField;
             CalcFormula = lookup("STH Fallo Localizado".Tipo where(FalloLocalizado = field("Fallo localizado")));
         }

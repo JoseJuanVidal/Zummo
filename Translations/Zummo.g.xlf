@@ -37339,8 +37339,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Ship-to Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4165706410 - Field 909111954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3770883554">
-          <source>Fallo localizado</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fallo localizado"</note>
+          <source>Tipo Fallo localizado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Fallo localizado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceItemLine - Field Tipo Fallo localizado - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1267759397 - Field 2829717791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271291437">

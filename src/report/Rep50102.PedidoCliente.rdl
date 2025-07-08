@@ -4492,7 +4492,7 @@ Cstr(Sum(Fields!Portes.Value))
               <Width>10.37018cm</Width>
               <ZIndex>27</ZIndex>
               <Visibility>
-                <Hidden>=iif(First(Fields!ShowLocation.Value, "DataSet_Result") and Fields!TipoDocumento.Value=2, false,true)</Hidden>
+                <Hidden>=iif(First(Fields!ShowLocation.Value, "DataSet_Result") and Fields!TipoDocumento.Value=1, false,true)</Hidden>
               </Visibility>
               <Style>
                 <Border>
