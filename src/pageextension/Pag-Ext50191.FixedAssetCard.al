@@ -12,7 +12,7 @@ pageextension 50191 "FixedAssetCard" extends "Fixed Asset Card"
             {
                 ApplicationArea = all;
             }
-            field("Item No."; "Item No.")
+            field("Item Nos."; "Item Nos.")
             {
                 ApplicationArea = all;
             }
@@ -57,6 +57,27 @@ pageextension 50191 "FixedAssetCard" extends "Fixed Asset Card"
                     if recActivoFijo.FindFirst() then
                         recDimFecha.CambiaDimensiones(Today(), recActivoFijo);
                 end;
+            }
+        }
+        addbefore("Main&tenance Ledger Entries")
+        {
+            action(Items)
+            {
+                ApplicationArea = all;
+                Caption = 'Items', comment = 'ESP="Productos"';
+                Image = ItemLines;
+                RunObject = page "Item List";
+                RunPageLink = "Fixed Asset" = field("No.");
+
+            }
+            action(ItemsDependents)
+            {
+                ApplicationArea = all;
+                Caption = 'Items Dependents', comment = 'ESP="Productos depeandientes"';
+                Image = ItemLines;
+                RunObject = page "Item List";
+                RunPageLink = "Fixed Asset dependent" = field("No.");
+
             }
         }
     }

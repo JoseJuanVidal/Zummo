@@ -34200,6 +34200,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension FixedAssetCard - Action DimPorFecha - Property Caption</note>
           <target>Dimensiones por Fecha</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3709824974 - Action 1554554962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Items</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension FixedAssetCard - Action Items - Property Caption</note>
+          <target>Productos</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3709824974 - Action 529595688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
+          <source>Items Dependents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Productos depeandientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension FixedAssetCard - Action ItemsDependents - Property Caption</note>
+          <target>Productos depeandientes</target>
+        </trans-unit>
         <trans-unit id="PageExtension 4089118995 - NamedType 3943615076" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4089118995">
           <source>%1 no está dentro del intervalo de fechas de registro permitidas.</source>
           <note from="Developer" annotates="general" priority="2">ESP="%1 no está dentro del intervalo de fechas de registro permitidas."</note>
@@ -34600,6 +34612,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control OrderNo - Property Caption</note>
           <target>Nº Pedido ensamblado</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Method 3080716670 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
+          <source>¿Do you want to remove the relation %1 with the selected products %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea eliminar la relación %1 con los productos seleccionados %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Method Delete_AssignFixedAssets - NamedType lblConfirm</note>
+          <target>¿Desea eliminar la relación %1 con los productos seleccionados %2?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Method 737204943 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
           <source>¿Desea Asignar numeros EAN13 a %1 productos seleccionados?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Asignar numeros EAN13 a %1 productos seleccionados?"</note>
@@ -34641,6 +34659,36 @@
           <note from="Developer" annotates="general" priority="2">ESP="Calcular peso plastico L.M."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action CalculatePlastic - Property Caption</note>
           <target>Calcular peso plastico L.M.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 1464838095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Fixed Assets</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Activos Fijos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action FixedAssets - Property Caption</note>
+          <target>Activos Fijos</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 389149592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Assign Products</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action AssignFixedAssets - Property Caption</note>
+          <target>Asignar Productos</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 713626087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Assign Products Dependent</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar dependencia Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action AssignFixedAssetsDependent - Property Caption</note>
+          <target>Asignar dependencia Productos</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 2086644888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Delete Products</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Eliminar Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action DeleteFixedAssets - Property Caption</note>
+          <target>Eliminar Productos</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 577647335 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Delete Products Dependent</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Eliminar dependencia Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action DeleteFixedAssetsDependent - Property Caption</note>
+          <target>Eliminar dependencia Productos</target>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Action 2678150292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Dyn 365 Sales Sync State</source>
@@ -37077,6 +37125,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM STH PostedPurchaseInvoices - Action PurchRequestless200 - Property Caption</note>
           <target>Seleccionar Compra Menor 200 €</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1149940085 - Action 1554554962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 949348664">
+          <source>Items</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZMFixed Asset List - Action Items - Property Caption</note>
+          <target>Productos</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2268077932 - Field 3388543440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3568381428">
           <source>Internal Comment</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentario interno"</note>
@@ -37933,6 +37987,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desLineaEconomica_btc - Property Caption</note>
           <target>Desc. Linea Economica</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 372951706 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Fixed Asset</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Activo Fijo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Fixed Asset - Property Caption</note>
+          <target>Activo Fijo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2356472977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Fixed Asset Dependent</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Activo Fijo Dependent"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Fixed Asset Dependent - Property Caption</note>
+          <target>Activo Fijo Dependent</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1880579903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Inventory to date</source>
@@ -43405,11 +43471,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Date Ini. Amort - Property Caption</note>
           <target>Fecha inicio amortización</target>
         </trans-unit>
-        <trans-unit id="TableExtension 3602268299 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
-          <source>Item No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cód. Producto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Item No. - Property Caption</note>
-          <target>Cód. Producto</target>
+        <trans-unit id="TableExtension 3602268299 - Field 2049298020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
+          <source>Dependent Item Nos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Referencias Productos dependientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Dependent Item Nos. - Property Caption</note>
+          <target>Referencias Productos dependientes</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3602268299 - Field 2200336523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
+          <source>Item Nos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nos. Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Item Nos. - Property Caption</note>
+          <target>Nos. Producto</target>
         </trans-unit>
         <trans-unit id="TableExtension 3602268299 - Field 895284309 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
           <source>Previous AF changes</source>

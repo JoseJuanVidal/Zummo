@@ -45,12 +45,11 @@ pageextension 50214 "ZM Bank Account Ledger Entr." extends "Bank Account Ledger 
 
     local procedure OnAction_OpenLedgerEntries()
     var
-        myInt: Integer;
+        Funciones: Codeunit Funciones;
     begin
         if not Confirm(lblConfirm, false, Rec."Entry No.", Rec."Document No.", Rec.Description) then
             exit;
-        Rec.Open := false;
-        Rec.Modify();
+        Funciones.OpenBankLedgerEntries(Rec."Entry No.");
     end;
 
     local procedure OnAction_NavigateApplyBankAccLedgerEntries()

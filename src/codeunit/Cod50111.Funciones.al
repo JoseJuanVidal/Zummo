@@ -3766,6 +3766,15 @@ filePath: Text)
         BankAccLedgerEntry.Open := false;
         BankAccLedgerEntry.Modify();
     end;
+
+    procedure OpenBankLedgerEntries(EntryNo: Integer)
+    var
+        BankAccLedgerEntry: Record "Bank Account Ledger Entry";
+    begin
+        BankAccLedgerEntry.Get(EntryNo);
+        BankAccLedgerEntry.Open := true;
+        BankAccLedgerEntry.Modify();
+    end;
 }
 
 

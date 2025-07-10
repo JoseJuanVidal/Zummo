@@ -205,6 +205,58 @@ pageextension 50133 "ItemList" extends "Item List"
 
             }
         }
+        addlast(Processing)
+        {
+            group(FixedAssets)
+            {
+                Caption = 'Fixed Assets', comment = 'ESP="Activos Fijos"';
+                Visible = FixedAssets <> '';
+                action(AssignFixedAssets)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Assign Products', comment = 'ESP="Asignar Productos"';
+                    Image = FixedAssets;
+
+                    trigger OnAction()
+                    begin
+                        Action_AssignFixedAssets(False);
+                    end;
+                }
+                action(AssignFixedAssetsDependent)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Assign Products Dependent', comment = 'ESP="Asignar dependencia Productos"';
+                    Image = CopyFixedAssets;
+
+                    trigger OnAction()
+                    begin
+                        Action_AssignFixedAssets(true);
+                    end;
+                }
+                action(DeleteFixedAssets)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Delete Products', comment = 'ESP="Eliminar Productos"';
+                    Image = DeleteRow;
+
+                    trigger OnAction()
+                    begin
+                        Delete_AssignFixedAssets(false);
+                    end;
+                }
+                action(DeleteFixedAssetsDependent)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Delete Products Dependent', comment = 'ESP="Eliminar dependencia Productos"';
+                    Image = Delete;
+
+                    trigger OnAction()
+                    begin
+                        Delete_AssignFixedAssets(true);
+                    end;
+                }
+            }
+        }
         addafter(ShowLog)
         {
             action(UpdateBloqueados)
@@ -327,8 +379,14 @@ pageextension 50133 "ItemList" extends "Item List"
         UserSetup: Record "User Setup";
         WarehouseEntry: Record "Warehouse Entry";
         ValueEntry: Record "Value Entry";
+        FixedAssets: code[20];
         ShowExcelCostes: Boolean;
+        AssignFixedAssets: Boolean;
 
+    procedure SetAssignFixedAssets()
+    begin
+        AssignFixedAssets := true;
+    end;
 
     local procedure CalculatePlastic()
     var
@@ -362,5 +420,59 @@ pageextension 50133 "ItemList" extends "Item List"
         SerialNoInfo.SetRange("Item No.", Rec."No.");
         SerialNoInfo.FilterGroup := 0;
         Page.Run(0, SerialNoInfo);
+    end;
+
+    local procedure Action_AssignFixedAssets(Dependent: Boolean)
+    var
+        Item: Record Item;
+        ItemList: Page "Item List";
+    begin
+        ItemList.LookupMode(True);
+        if ItemList.RunModal() <> Action::LookupOK then
+            exit;
+        ItemList.GetRecord(Item);
+        case Dependent of
+            false:
+                begin
+                    Item.TestField("Fixed Asset", '');
+                    Item.validate("Fixed Asset", FixedAssets);
+                end;
+            else begin
+                Item.TestField("Fixed Asset dependent", '');
+                item.validate("Fixed Asset Dependent", FixedAssets);
+            end;
+        end;
+        Item.Modify();
+    end;
+
+    local procedure Delete_AssignFixedAssets(Dependent: Boolean);
+    var
+        Item: Record Item;
+        lblConfirm: Label '¿Do you want to remove the relation %1 with the selected products %2?', comment = 'ESP="¿Desea eliminar la relación %1 con los productos seleccionados %2?"';
+    begin
+        CurrPage.SetSelectionFilter(Item);
+        case Dependent of
+            false:
+                if not Confirm(lblConfirm, false, item."Fixed Asset", Item.Count) then
+                    exit;
+            else
+                if not Confirm(lblConfirm, false, item."Fixed Asset Dependent", Item.Count) then
+                    exit;
+        end;
+        if Item.FindFirst() then
+            repeat
+                case Dependent of
+                    false:
+                        Item.validate("Fixed Asset", '');
+                    else
+                        item.validate("Fixed Asset Dependent", '');
+                end;
+                Item.Modify();
+            Until Item.next() = 0;
+    end;
+
+    procedure SetFixedAssets(AssignFixedAssets: code[20])
+    begin
+        FixedAssets := AssignFixedAssets;
     end;
 }

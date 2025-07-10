@@ -248,6 +248,18 @@ tableextension 50108 "Item" extends Item  //27
             OptionMembers = "Food Service","Retail";
             OptionCaption = 'Retail,Food Service', comment = 'ESP="Retail,Food Service"';
         }
+        field(50040; "Fixed Asset"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fixed Asset', comment = 'ESP="Activo Fijo"';
+            TableRelation = "Fixed Asset";
+        }
+        field(50041; "Fixed Asset Dependent"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fixed Asset Dependent', comment = 'ESP="Activo Fijo Dependent"';
+            TableRelation = "Fixed Asset";
+        }
         field(50075; "Renovate Plan"; boolean)
         {
             DataClassification = CustomerContent;
