@@ -211,7 +211,7 @@ table 17458 "ABERTIA GL Entry"
         {
             ExternalName = 'FA Entry No_';
         }
-        field(8005; "Last Modified DateTime"; DateTime)
+        field(8005; "Last Modified DateTime"; text[30])
         {
             ExternalName = 'Last Modified DateTime';
         }
@@ -413,7 +413,7 @@ table 17458 "ABERTIA GL Entry"
         ABGLEntry."Prod_ Order No_" := GLEntry."Prod. Order No.";
         ABGLEntry."FA Entry Type" := GLEntry."FA Entry Type";
         ABGLEntry."FA Entry No_" := GLEntry."FA Entry No.";
-        ABGLEntry."Last Modified DateTime" := GLEntry."Last Modified DateTime";
+        ABGLEntry."Last Modified DateTime" := format(GLEntry."Last Modified DateTime");
         // ABGLEntry."New G_L Account No_" := GLEntry.ne;
         // ABGLEntry."Old G_L Account No_" := GLEntry.old;
         // ABGLEntry."Updated" := GLEntry.up;
