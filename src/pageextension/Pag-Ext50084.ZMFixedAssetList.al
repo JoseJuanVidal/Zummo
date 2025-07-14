@@ -51,8 +51,23 @@ pageextension 50084 "ZMFixed Asset List" extends "Fixed Asset List"
                 ApplicationArea = all;
                 Caption = 'Items', comment = 'ESP="Productos"';
                 Image = ItemLines;
-                RunObject = page "Item List";
-                RunPageLink = "Fixed Asset" = field("No.");
+                RunObject = page "ZM Fixed Assets Products";
+                RunPageLink = "FA No." = field("No.");
+
+            }
+            action(AnalysisLdgFixedAssets)
+            {
+                ApplicationArea = all;
+                Caption = 'Analysis Ldg. Fixed Assets', comment = 'ESP="Análisis Act Fijos"';
+                Image = FixedAssetLedger;
+
+                trigger OnAction()
+                var
+                    AnalysisLdgFixedAssets: page "ZM Analysis Ldg. Fixed Assets";
+                begin
+                    AnalysisLdgFixedAssets.SetFixedAsset(Rec."No.");
+                    AnalysisLdgFixedAssets.RunModal();
+                end;
 
             }
         }

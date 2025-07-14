@@ -3335,7 +3335,63 @@ codeunit 50111 "Funciones"
             end;
         end;
     end;
+    // =============     LoadGlEntry          ====================
+    // ==  
+    // ==  Cargar los movimientos contable de una cuenta, con un filtor de fecha y extrayendo las lineas de facturas 
+    // ==  Esther - analisis cuentas de gastos
+    // ==  
+    // ======================================================================================================
 
+    procedure LoadFixedAssetLedgerEntry(var tmpFALedgerEntry: Record "FA Ledger Entry"; FixedAsset: code[20]; FiltroFecha: text)
+    var
+        FALedgerEntry: Record "FA Ledger Entry";
+        EntryNo: Integer;
+        Window: Dialog;
+        lblWindow: Label 'Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############', comment = 'ESP="Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############"';
+    begin
+        Window.Open(lblWindow);
+        FALedgerEntry.Reset();
+        FALedgerEntry.SetFilter("FA No.", FixedAsset);
+        if FiltroFecha <> '' then
+            FALedgerEntry.SetFilter("Posting Date", FiltroFecha);
+        if FALedgerEntry.FindFirst() then
+            repeat
+                Window.Update(1, FALedgerEntry."FA No.");
+                Window.Update(2, FALedgerEntry."Entry No.");
+                Window.Update(3, FALedgerEntry."Posting Date");
+
+                CreateFALedgerEntry(tmpFALedgerEntry, EntryNo, FALedgerEntry)
+            until FALedgerEntry.Next() = 0;
+    end;
+
+    local procedure CreateFALedgerEntry(var tmpFALedgerEntry: Record "FA Ledger Entry"; var EntryNo: Integer; FALedgerEntry: Record "FA Ledger Entry")
+    var
+        PurchInvoiceLine: Record "Purch. Inv. Line";
+    begin
+        case FALedgerEntry."Document Type" of
+            FALedgerEntry."Document Type"::Invoice:
+                begin
+                    PurchInvoiceLine.SetRange("Document No.", FALedgerEntry."Document No.");
+                    PurchInvoiceLine.SetRange("No.", FALedgerEntry."FA No.");
+                    if PurchInvoiceLine.FindFirst() then
+                        repeat
+                            tmpFALedgerEntry.Init();
+                            tmpFALedgerEntry.TransferFields(FALedgerEntry);
+                            tmpFALedgerEntry.Description := PurchInvoiceLine.Description;
+                            EntryNo += 1;
+                            tmpFALedgerEntry."Entry No." := EntryNo;
+                            tmpFALedgerEntry.Insert();
+                        Until PurchInvoiceLine.next() = 0;
+                end;
+            else begin
+                tmpFALedgerEntry.Init();
+                tmpFALedgerEntry.TransferFields(FALedgerEntry);
+                EntryNo += 1;
+                tmpFALedgerEntry."Entry No." := EntryNo;
+                tmpFALedgerEntry.Insert();
+            end;
+        end;
+    end;
     // =============     LoadGlEntry          ====================
     // ==  
     // ==  Cargar los movimientos contable de una cuenta, con un filtor de fecha y extrayendo las lineas de facturas 

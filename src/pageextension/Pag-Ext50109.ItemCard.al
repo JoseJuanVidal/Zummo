@@ -122,17 +122,6 @@ pageextension 50109 "ItemCard" extends "Item Card"
             {
                 ApplicationArea = all;
             }
-            field("Fixed Asset"; "Fixed Asset")
-            {
-                ApplicationArea = all;
-                Importance = Additional;
-            }
-            field("Fixed Asset Dependent"; "Fixed Asset Dependent")
-            {
-                ApplicationArea = all;
-                Importance = Additional;
-
-            }
         }
         addlast(Planning)
         {

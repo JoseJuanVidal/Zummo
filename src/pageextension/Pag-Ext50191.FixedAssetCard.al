@@ -66,8 +66,8 @@ pageextension 50191 "FixedAssetCard" extends "Fixed Asset Card"
                 ApplicationArea = all;
                 Caption = 'Items', comment = 'ESP="Productos"';
                 Image = ItemLines;
-                RunObject = page "Item List";
-                RunPageLink = "Fixed Asset" = field("No.");
+                RunObject = page "ZM Fixed Assets Products";
+                RunPageLink = "FA No." = field("No."), Dependent = const(false);
 
             }
             action(ItemsDependents)
@@ -75,8 +75,8 @@ pageextension 50191 "FixedAssetCard" extends "Fixed Asset Card"
                 ApplicationArea = all;
                 Caption = 'Items Dependents', comment = 'ESP="Productos depeandientes"';
                 Image = ItemLines;
-                RunObject = page "Item List";
-                RunPageLink = "Fixed Asset dependent" = field("No.");
+                RunObject = page "ZM Fixed Assets Products";
+                RunPageLink = "FA No." = field("No."), Dependent = const(true);
 
             }
         }

@@ -32,41 +32,15 @@ tableextension 50017 "ZMFixedAsset" extends "Fixed Asset"
         {
             Caption = 'Item Nos.', comment = 'ESP="Nos. Producto"';
             FieldClass = FlowField;
-            CalcFormula = count(Item where("Fixed Asset" = field("No.")));
+            CalcFormula = count("ZM Fixed Assets Products" where("FA No." = field("No."), Dependent = const(false)));
             Editable = false;
-
-            trigger OnLookup()
-            begin
-                ShowFixedAssets(false);
-            end;
         }
         field(50013; "Dependent Item Nos."; Integer)
         {
             Caption = 'Dependent Item Nos.', comment = 'ESP="Referencias Productos dependientes"';
             FieldClass = FlowField;
-            CalcFormula = count(Item where("Fixed Asset dependent" = field("No.")));
+            CalcFormula = count("ZM Fixed Assets Products" where("FA No." = field("No."), Dependent = const(false)));
             Editable = false;
-
-            trigger OnLookup()
-            begin
-                ShowFixedAssets(true);
-            end;
         }
     }
-
-    local procedure ShowFixedAssets(Dependent: Boolean)
-    var
-        Item: Record Item;
-        ItemList: page "Item List";
-    begin
-        case Dependent of
-            false:
-                Item.SetRange("Fixed Asset", Rec."No.");
-            else
-                Item.SetRange("Fixed Asset Dependent", Rec."No.");
-        end;
-        ItemList.SetFixedAssets(Rec."No.");
-        ItemList.SetTableView(Item);
-        ItemList.RunModal();
-    end;
 }
