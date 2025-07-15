@@ -18613,6 +18613,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Filtro Fecha"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Analysis Ldg. Fixed Assets - Control FiltroFecha - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 701449819 - Control 1325298589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtro Proyecto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Analysis Ldg. Fixed Assets - Control FiltroProyecto - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 701449819 - Control 1716211490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nº Fixed Asset</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Activo Fijo"</note>

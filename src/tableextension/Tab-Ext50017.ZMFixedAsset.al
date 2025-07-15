@@ -39,7 +39,7 @@ tableextension 50017 "ZMFixedAsset" extends "Fixed Asset"
         {
             Caption = 'Dependent Item Nos.', comment = 'ESP="Referencias Productos dependientes"';
             FieldClass = FlowField;
-            CalcFormula = count("ZM Fixed Assets Products" where("FA No." = field("No."), Dependent = const(false)));
+            CalcFormula = count("ZM Fixed Assets Products" where("FA No." = field("No."), Dependent = const(true)));
             Editable = false;
         }
     }

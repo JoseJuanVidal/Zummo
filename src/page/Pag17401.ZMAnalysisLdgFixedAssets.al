@@ -19,6 +19,12 @@ page 17401 "ZM Analysis Ldg. Fixed Assets"
                     Caption = 'Nº Fixed Asset', comment = 'ESP="Nº Activo Fijo"';
                     TableRelation = "Fixed Asset";
                 }
+                field(FiltroProyecto; FiltroProyecto)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Filtro Proyecto', comment = 'ESP="Filtro Proyecto"';
+                    TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2)); // Codigo proyecto
+                }
                 field(FiltroFecha; FiltroFecha)
                 {
                     ApplicationArea = all;
@@ -233,12 +239,13 @@ page 17401 "ZM Analysis Ldg. Fixed Assets"
         Funciones: Codeunit Funciones;
         FixedAsset: code[20];
         FiltroFecha: text;
+        FiltroProyecto: text;
 
     local procedure LoadGlEntry()
     begin
         Rec.DeleteAll();
         CurrPage.Update();
-        Funciones.LoadFixedAssetLedgerEntry(Rec, FixedAsset, FiltroFecha);
+        Funciones.LoadFixedAssetLedgerEntry(Rec, FixedAsset, FiltroFecha, FiltroProyecto);
     end;
 
     procedure SetFixedAsset(FixedAssetNo: code[20])

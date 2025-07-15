@@ -3342,7 +3342,7 @@ codeunit 50111 "Funciones"
     // ==  
     // ======================================================================================================
 
-    procedure LoadFixedAssetLedgerEntry(var tmpFALedgerEntry: Record "FA Ledger Entry"; FixedAsset: code[20]; FiltroFecha: text)
+    procedure LoadFixedAssetLedgerEntry(var tmpFALedgerEntry: Record "FA Ledger Entry"; FixedAsset: code[20]; FiltroFecha: text; FiltroProyecto: text)
     var
         FALedgerEntry: Record "FA Ledger Entry";
         EntryNo: Integer;
@@ -3354,6 +3354,8 @@ codeunit 50111 "Funciones"
         FALedgerEntry.SetFilter("FA No.", FixedAsset);
         if FiltroFecha <> '' then
             FALedgerEntry.SetFilter("Posting Date", FiltroFecha);
+        if FiltroProyecto <> '' then
+            FALedgerEntry.SetFilter("Global Dimension 2 Code", FiltroProyecto);
         if FALedgerEntry.FindFirst() then
             repeat
                 Window.Update(1, FALedgerEntry."FA No.");
@@ -3829,6 +3831,9 @@ filePath: Text)
     begin
         BankAccLedgerEntry.Get(EntryNo);
         BankAccLedgerEntry.Open := true;
+        BankAccLedgerEntry."Statement Status" := BankAccLedgerEntry."Statement Status"::Open;
+        BankAccLedgerEntry."Statement No." := '';
+        BankAccLedgerEntry."Statement Line No." := 0;
         BankAccLedgerEntry.Modify();
     end;
 }
