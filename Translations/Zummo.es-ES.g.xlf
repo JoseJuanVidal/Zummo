@@ -14162,6 +14162,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control EntryNoIni - Property Caption</note>
           <target>Nº Movimiento inicial</target>
         </trans-unit>
+        <trans-unit id="Page 2822793219 - Control 3980592331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control PeriodSelectd - Property Caption</note>
+          <target>Mes</target>
+        </trans-unit>
         <trans-unit id="Page 2822793219 - Control 302805691 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Seleccionamos el tipo de actualización</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -14204,16 +14210,16 @@
           <target>Actualizar Todo</target>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Action 1334923488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>NUEVO Mov. Contabilidad</source>
-          <note from="Developer" annotates="general" priority="2">ESP="NUEVO Mov. Contabilidad"</note>
+          <source> Mov. Contabilidad</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mov. Contabilidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action NUEVO Mov. contabilaidad - Property Caption</note>
-          <target>NUEVO Mov. Contabilidad</target>
+          <target>Mov. Contabilidad</target>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Action 1334923488 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿NUEVO\Desea subir los movimientos contabilidad?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿NUEVO\Desea subir los movimientos contabilidad?"</note>
+          <source>¿Desea subir los movimientos contabilidad?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea subir los movimientos contabilidad?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action NUEVO Mov. contabilaidad - Method OnAction - NamedType lblConfirm</note>
-          <target>¿NUEVO\Desea subir los movimientos contabilidad?</target>
+          <target>¿Desea subir los movimientos contabilidad?</target>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Action 484028685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update GL Account</source>
@@ -22652,6 +22658,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipo contrato mantenimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Tipo contrato Mantenimiento - Property Caption</note>
           <target>Tipo contrato mantenimiento</target>
+        </trans-unit>
+        <trans-unit id="Page 3465029715 - Control 2702102796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fixed Assets Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Act. Fijo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM WS Movs Fixed Assets - Control FAName - Property Caption</note>
+          <target>Nombre Act. Fijo</target>
         </trans-unit>
         <trans-unit id="Page 869453865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer List Edit</source>

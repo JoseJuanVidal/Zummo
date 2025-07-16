@@ -91,6 +91,12 @@
             <ServiceName>ServiceItemLineFallo</ServiceName>
             <Published>true</Published>
         </TenantWebService>
+          <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ObjectID>17403</ObjectID>
+            <ServiceName>AFMovimienstos</ServiceName>
+            <Published>true</Published>
+        </TenantWebService>
         <TenantWebService>
             <ObjectType>Page</ObjectType>
             <ObjectID>60001</ObjectID>

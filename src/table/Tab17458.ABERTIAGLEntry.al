@@ -267,7 +267,8 @@ table 17458 "ABERTIA GL Entry"
         SETDEFAULTTABLECONNECTION(TABLECONNECTIONTYPE::ExternalSQL, 'ABERTIABI');
     end;
 
-    procedure CreateGLEntry(TypeUpdate: Option Periodo,Todo,Nuevo; EntryNo: Integer) RecordNo: Integer;
+    procedure CreateGLEntry(TypeUpdate: Option Nuevo,Periodo,Todo,Mes; EntryNo: Integer;
+            PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre) RecordNo: Integer;
     var
         GLEntry: Record "G/L Entry";
         ABGLEntry: Record "ABERTIA GL Entry";
@@ -301,6 +302,8 @@ table 17458 "ABERTIA GL Entry"
                 begin
 
                 end;
+            TypeUpdate::Mes:
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 02), CALCDATE('<CM>', DMY2DATE(01, 02)));
         end;
         GLEntry.SetFilter("Entry No.", '%1..', EntryNo);
         if GLEntry.FindSet() then

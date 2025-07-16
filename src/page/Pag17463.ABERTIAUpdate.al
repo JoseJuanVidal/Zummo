@@ -19,6 +19,11 @@ page 17463 "ABERTIA Update"
                     Caption = 'Tipo Actualización', comment = 'ESP="Tipo Actualizacion"';
                     ToolTip = 'Seleccionamos el tipo de actualización';
                 }
+                field(PeriodSelectd; PeriodSelectd)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Mes', comment = 'ESP="Mes"';
+                }
                 field(EntryNoIni; EntryNoIni)
                 {
                     ApplicationArea = all;
@@ -147,30 +152,71 @@ page 17463 "ABERTIA Update"
                 //         UpdateEntryNos();
                 //     end;
                 // }
-                action("NUEVO Mov. contabilaidad")
+                action("Mov. contabilaidad")
                 {
                     ApplicationArea = all;
-                    Caption = 'NUEVO Mov. Contabilidad', comment = 'ESP="NUEVO Mov. Contabilidad"';
+                    Caption = ' Mov. Contabilidad', comment = 'ESP="Mov. Contabilidad"';
                     Image = NewRow;
+                    Promoted = true;
+                    PromotedCategory = Process;
                     trigger OnAction()
                     var
+                        AbertiaGLEntry: Record "ABERTIA GL Entry";
                         Funciones: Codeunit "Zummo Inn. IC Functions";
-                        lblConfirm: Label '¿NUEVO\Desea subir los movimientos contabilidad?', comment = 'ESP="¿NUEVO\Desea subir los movimientos contabilidad?"';
+
+                        lblConfirm: Label '¿Desea subir los movimientos contabilidad?', comment = 'ESP="¿Desea subir los movimientos contabilidad?"';
                     begin
                         if Confirm(lblConfirm) then
                             case TypeUpdate of
                                 typeUpdate::Todo:
-                                    Funciones.SQLUpdateALL(true, 0);
+                                    Funciones.SQLUpdateALL(true, 0, PeriodSelectd);
                                 typeUpdate::Nuevo:
-                                    Funciones.SQLUpdateALL(false, 0);
+                                    Funciones.SQLUpdateALL(false, 0, PeriodSelectd);
                                 TypeUpdate::"Nº Mov":
                                     begin
                                         if EntryNoIni > 0 then
-                                            Funciones.SQLUpdateALL(false, EntryNoIni);
+                                            Funciones.SQLUpdateALL(false, EntryNoIni, PeriodSelectd);
+                                    end;
+                                TypeUpdate::Periodo:
+                                    begin
+                                        if PeriodSelectd in [PeriodSelectd::" "] then
+                                            Error('Debe Seleccionar un mes del año %1', WorkDate());
+                                        AbertiaGLEntry.CreateGLEntry(TypeUpdate, 0, PeriodSelectd);
                                     end;
                             end;
                         UpdateEntryNos();
 
+                    end;
+                }
+                action("NUEVO Mov. contabilidad")
+                {
+                    ApplicationArea = all;
+                    Caption = 'SQL  Mov. Contabilidad', comment = 'ESP="SQL Mov. Contabilidad"';
+                    Image = NewRow;
+                    trigger OnAction()
+                    var
+                        Funciones: Codeunit "Zummo Inn. IC Functions";
+                        lblConfirm: Label '¿Desea subir los movimientos contabilidad?', comment = 'ESP="¿Desea subir los movimientos contabilidad?"';
+                    begin
+                        if Confirm(lblConfirm) then
+                            case TypeUpdate of
+                                typeUpdate::Todo:
+                                    Funciones.SQLUpdateALL(true, 0, PeriodSelectd);
+                                typeUpdate::Nuevo:
+                                    Funciones.SQLUpdateALL(false, 0, PeriodSelectd);
+                                TypeUpdate::"Nº Mov":
+                                    begin
+                                        if EntryNoIni > 0 then
+                                            Funciones.SQLUpdateALL(false, EntryNoIni, PeriodSelectd);
+                                    end;
+                                TypeUpdate::Periodo:
+                                    begin
+                                        if PeriodSelectd in [PeriodSelectd::" "] then
+                                            Error('Debe Seleccionar un mes del año %2', WorkDate());
+                                        Funciones.SQLUpdateALL(false, EntryNoIni, PeriodSelectd);
+                                    end;
+                            end;
+                        UpdateEntryNos();
 
                     end;
                 }
@@ -334,7 +380,8 @@ page 17463 "ABERTIA Update"
         SalesItem: Integer;
         SalesFacturas: Integer;
         SalesPedidos: Integer;
-        TypeUpdate: Option Nuevo,"Nº Mov",Todo;
+        TypeUpdate: Option Nuevo,"Nº Mov",Todo,Periodo;
+        PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre;
         EntryNoIni: Integer;
 
     procedure OpenTableConnection()

@@ -3349,9 +3349,12 @@ codeunit 50111 "Funciones"
         Window: Dialog;
         lblWindow: Label 'Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############', comment = 'ESP="Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############"';
     begin
+        if not tmpFALedgerEntry.IsTemporary then
+            Error('Deberia ser una tabla temporal');
         Window.Open(lblWindow);
         FALedgerEntry.Reset();
-        FALedgerEntry.SetFilter("FA No.", FixedAsset);
+        if FixedAsset <> '' then
+            FALedgerEntry.SetFilter("FA No.", FixedAsset);
         if FiltroFecha <> '' then
             FALedgerEntry.SetFilter("Posting Date", FiltroFecha);
         if FiltroProyecto <> '' then
@@ -3380,6 +3383,7 @@ codeunit 50111 "Funciones"
                             tmpFALedgerEntry.Init();
                             tmpFALedgerEntry.TransferFields(FALedgerEntry);
                             tmpFALedgerEntry.Description := PurchInvoiceLine.Description;
+                            tmpFALedgerEntry.Amount := PurchInvoiceLine."Line Amount";
                             EntryNo += 1;
                             tmpFALedgerEntry."Entry No." := EntryNo;
                             tmpFALedgerEntry.Insert();

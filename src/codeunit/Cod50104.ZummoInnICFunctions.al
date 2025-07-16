@@ -2320,13 +2320,13 @@ codeunit 50104 "Zummo Inn. IC Functions"
         BISQLConnection: DotNet SqlConnection;
         InventarioSQLConnection: DotNet SqlConnection;
 
-    procedure SQLUpdateALL(DeleteAll: Boolean; EntryNoIni: Integer)
+    procedure SQLUpdateALL(DeleteAll: Boolean; EntryNoIni: Integer; PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre)
     var
         GLAccountNo: Integer;
         LastGLEntryNo: Integer;
     begin
         //GLAccountNo := SQLGLAccountsUpdate();
-        LastGLEntryNo := SQLGLGLEntrysUpdate(DeleteAll, EntryNoIni);
+        LastGLEntryNo := SQLGLGLEntrysUpdate(DeleteAll, EntryNoIni, PeriodSelectd);
         SendMailBIUpdate(GLAccountNo, LastGLEntryNo);
     end;
 
@@ -2649,9 +2649,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         exit(true);
     end;
 
-
-
-    local procedure SQLGLGLEntrysUpdate(DeleteAll: Boolean; EntryNoIni: Integer) RecordNo: Integer
+    local procedure SQLGLGLEntrysUpdate(DeleteAll: Boolean; EntryNoIni: Integer; PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre) RecordNo: Integer
     var
         GLSetup: Record "General Ledger Setup";
         GLEntry: Record "G/L Entry";
@@ -2680,6 +2678,11 @@ codeunit 50104 "Zummo Inn. IC Functions"
                 GLEntry.SetFilter("Entry No.", '%1..', LastEntryNo)
             else
                 GLEntry.SetFilter("Entry No.", '%1..', EntryNoIni);
+        //miramos si es tipo periodo o fecha
+        case PeriodSelectd of
+            PeriodSelectd::Enero:
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 02), CALCDATE('<CM>', DMY2DATE(01, 02)));
+        end;
         if GLEntry.FindSet() then
             repeat
                 windows.Update(2, GLEntry."Entry No.");
