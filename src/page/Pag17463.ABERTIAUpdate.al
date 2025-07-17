@@ -181,7 +181,7 @@ page 17463 "ABERTIA Update"
                                     begin
                                         if PeriodSelectd in [PeriodSelectd::" "] then
                                             Error('Debe Seleccionar un mes del año %1', WorkDate());
-                                        AbertiaGLEntry.CreateGLEntry(TypeUpdate, 0, PeriodSelectd);
+                                        Funciones.SQLUpdateALL(true, 0, PeriodSelectd);
                                     end;
                             end;
                         UpdateEntryNos();

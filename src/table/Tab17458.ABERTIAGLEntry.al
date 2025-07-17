@@ -268,10 +268,12 @@ table 17458 "ABERTIA GL Entry"
     end;
 
     procedure CreateGLEntry(TypeUpdate: Option Nuevo,Periodo,Todo,Mes; EntryNo: Integer;
-            PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre) RecordNo: Integer;
+            PeriodSelected: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre) RecordNo: Integer;
     var
         GLEntry: Record "G/L Entry";
         ABGLEntry: Record "ABERTIA GL Entry";
+        Funciones: Codeunit "Zummo Inn. IC Functions";
+        Update: Boolean;
         Window: Dialog;
     begin
         Window.Open('Nº Movimiento contable #1################\Fecha #2################');
@@ -297,14 +299,44 @@ table 17458 "ABERTIA GL Entry"
                 begin
                     // buscamos el mes de fecha de trabajo y ponermos los filtros
                     GLEntry.SetRange("Posting Date", GenLedgerSetup."Allow Posting From", GenLedgerSetup."Allow Posting To");
+                    Update := true;
                 end;
             TypeUpdate::Todo:
                 begin
 
                 end;
             TypeUpdate::Mes:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 02), CALCDATE('<CM>', DMY2DATE(01, 02)));
+                begin
+                    Update := true;
+                    case PeriodSelected of
+                        PeriodSelected::Enero:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 01), CALCDATE('<CM>', DMY2DATE(01, 01)));
+                        PeriodSelected::Febrero:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 02), CALCDATE('<CM>', DMY2DATE(01, 02)));
+                        PeriodSelected::Marzo:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 03), CALCDATE('<CM>', DMY2DATE(01, 03)));
+                        PeriodSelected::Abril:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 04), CALCDATE('<CM>', DMY2DATE(01, 04)));
+                        PeriodSelected::Mayo:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 05), CALCDATE('<CM>', DMY2DATE(01, 05)));
+                        PeriodSelected::Junio:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 06), CALCDATE('<CM>', DMY2DATE(01, 06)));
+                        PeriodSelected::Julio:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 07), CALCDATE('<CM>', DMY2DATE(01, 07)));
+                        PeriodSelected::Agosto:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 08), CALCDATE('<CM>', DMY2DATE(01, 08)));
+                        PeriodSelected::Septiembre:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 09), CALCDATE('<CM>', DMY2DATE(01, 09)));
+                        PeriodSelected::Octubre:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 10), CALCDATE('<CM>', DMY2DATE(01, 10)));
+                        PeriodSelected::Noviembre:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 11), CALCDATE('<CM>', DMY2DATE(01, 11)));
+                        PeriodSelected::Diciembre:
+                            GLEntry.SetRange("Posting Date", DMY2DATE(01, 12), CALCDATE('<CM>', DMY2DATE(01, 12)));
+                    end;
+                end;
         end;
+
         GLEntry.SetFilter("Entry No.", '%1..', EntryNo);
         if GLEntry.FindSet() then
             repeat
@@ -319,13 +351,17 @@ table 17458 "ABERTIA GL Entry"
                     else
                         ABGLEntry.SetRange("00 - Origen", '');
                 end;
-                ABGLEntry.SetRange("Entry No_", GLEntry."Entry No.");
-                if not ABGLEntry.FindFirst() then begin
-                    if not UpdateABGLEntry(GLEntry, ABGLEntry) then
-                        CUCron.ABERTIALOGUPDATE('GL Entry', GetLastErrorText());
-                    RecordNo += 1;
-                    Commit();
-                end;
+                // ABGLEntry.SetRange("Entry No_", GLEntry."Entry No.");
+                // if not ABGLEntry.FindFirst() or Update then begin
+                //     if ABGLEntry.FindFirst() then
+                //         ABGLEntry.Delete();
+                //     if not UpdateABGLEntry(GLEntry, ABGLEntry) then
+                //         CUCron.ABERTIALOGUPDATE('GL Entry', GetLastErrorText());
+
+                //     RecordNo += 1;
+                //     Commit();
+                // end;
+                Funciones.UpdateGLEntry(GLEntry);
             Until GLEntry.next() = 0;
         CUCron.ABERTIALOGUPDATE('GL Entry', StrSubstNo('Entry: %1', RecordNo));
         Window.Close();
