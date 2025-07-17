@@ -34,6 +34,16 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
         {
             DataClassification = CustomerContent;
         }
+        field(50004; "Solucionado primera Visita"; Boolean)
+        {
+            DataClassification = CustomerContent;
+        }
+        field(50005; "N. Visitas"; integer)
+        {
+            Caption = 'Nº Visita', comment = 'ESP="Nº Visita"';
+            FieldClass = FlowField;
+            CalcFormula = count("Service Header" where(Description = field(Description)));
+        }
         // field(50101; TipoPedidoNivel3_btc; Code[20])
         // {
         //     DataClassification = CustomerContent;

@@ -14209,16 +14209,28 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateAll - Property Caption</note>
           <target>Actualizar Todo</target>
         </trans-unit>
-        <trans-unit id="Page 2822793219 - Action 1334923488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2822793219 - Action 3186299885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source> Mov. Contabilidad</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mov. Contabilidad"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action NUEVO Mov. contabilaidad - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action Mov. contabilaidad - Property Caption</note>
           <target>Mov. Contabilidad</target>
         </trans-unit>
-        <trans-unit id="Page 2822793219 - Action 1334923488 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2822793219 - Action 3186299885 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea subir los movimientos contabilidad?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea subir los movimientos contabilidad?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action NUEVO Mov. contabilaidad - Method OnAction - NamedType lblConfirm</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action Mov. contabilaidad - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea subir los movimientos contabilidad?</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 2600226023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SQL  Mov. Contabilidad</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SQL Mov. Contabilidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action NUEVO Mov. contabilidad - Property Caption</note>
+          <target>SQL Mov. Contabilidad</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 2600226023 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea subir los movimientos contabilidad?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea subir los movimientos contabilidad?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action NUEVO Mov. contabilidad - Method OnAction - NamedType lblConfirm</note>
           <target>¿Desea subir los movimientos contabilidad?</target>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Action 484028685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -40988,6 +41000,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field ItemNo_btc - Property Caption</note>
           <target>Cód. Producto</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2479720606 - Field 1476921845 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
+          <source>Nº Visita</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Visita"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field N. Visitas - Property Caption</note>
+          <target>Nº Visita</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 3442832110 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Service Shelf No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº estantería"</note>
@@ -41010,6 +41028,11 @@
           <source>Solicitado a Técnico</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field Solicitado a Técnico - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2479720606 - Field 870461288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
+          <source>Solucionado primera Visita</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field Solucionado primera Visita - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 974227354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Tick Mark of survey</source>

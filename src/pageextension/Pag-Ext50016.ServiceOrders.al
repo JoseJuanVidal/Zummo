@@ -58,6 +58,16 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
             field("Cerrado en plataforma"; "Cerrado en plataforma") { }
 
             field("Solicitado a Técnico"; "Solicitado a Técnico") { }
+            field("Solucionado primera Visita"; "Solucionado primera Visita")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("N. Visitas"; "N. Visitas")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field(Fechaemtregamaterial_sth; Fechaemtregamaterial_sth)
             {
                 Visible = false;
