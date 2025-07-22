@@ -20,7 +20,6 @@ pageextension 50001 "ServiceOrder" extends "Service Order"
             field("Cerrado en plataforma"; "Cerrado en plataforma") { }
             field("Solicitado a Técnico"; "Solicitado a Técnico") { }
             field("Solucionado primera Visita"; "Solucionado primera Visita") { }
-            field(TickMarksurvey_zm; TickMarksurvey_zm) { }
             field(NumEstanteria_btc; NumEstanteria_btc)
             {
                 ApplicationArea = all;

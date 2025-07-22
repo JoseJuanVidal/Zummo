@@ -37253,11 +37253,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field Solucionado primera Visita - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2479720606 - Field 974227354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
-          <source>Tick Mark of survey</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Encuesta Realizada"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field TickMarksurvey_zm - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 597349203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Type order service level 2</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 2"</note>

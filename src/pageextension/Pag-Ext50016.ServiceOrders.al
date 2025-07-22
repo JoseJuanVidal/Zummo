@@ -72,10 +72,6 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
             {
                 Visible = false;
             }
-            field(TickMarksurvey_zm; TickMarksurvey_zm)
-            {
-                Visible = false;
-            }
         }
     }
     actions
