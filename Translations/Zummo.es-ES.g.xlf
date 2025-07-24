@@ -6965,6 +6965,98 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Requests less 200 - Field Vendor No. - Property Caption</note>
           <target>Nº proveedor</target>
         </trans-unit>
+        <trans-unit id="Table 67895750 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo de Envase productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo de Envase productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Item - Tipo de Envase - Property Caption</note>
+          <target>Tipo de Envase productos</target>
+        </trans-unit>
+        <trans-unit id="Table 67895750 - Field 2953951767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Flexible</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Item - Tipo de Envase - Field Flexible - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 67895750 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Item - Tipo de Envase - Field Item No. - Property Caption</note>
+          <target>Cód. producto</target>
+        </trans-unit>
+        <trans-unit id="Table 67895750 - Field 1750488289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SUBMATERIAL</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Item - Tipo de Envase - Field SUBMATERIAL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 67895750 - Field 107576691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tarifa</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Item - Tipo de Envase - Field Tarifa - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 67895750 - Field 2157484315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo de Envase</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Item - Tipo de Envase - Field Tipo de Envase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4239522392 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SUBMATERIAL</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SUBMATERIAL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP SUBMATERIAL - Property Caption</note>
+          <target>SUBMATERIAL</target>
+        </trans-unit>
+        <trans-unit id="Table 4239522392 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Código</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP SUBMATERIAL - Field Code - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 2513670961 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Submaterial - Tipo de Envase</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Submaterial - Tipo de Envase"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP SubMaterial Tipo Envases - Property Caption</note>
+          <target>Submaterial - Tipo de Envase</target>
+        </trans-unit>
+        <trans-unit id="Table 2513670961 - Field 2122814810 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rigidez</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP SubMaterial Tipo Envases - Field Rigidez - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2513670961 - Field 1750488289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SUBMATERIAL</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP SubMaterial Tipo Envases - Field SUBMATERIAL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2513670961 - Field 107576691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tarifa</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP SubMaterial Tipo Envases - Field Tarifa - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2513670961 - Field 2157484315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo de Envase</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP SubMaterial Tipo Envases - Field Tipo de Envase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2513670961 - Field 535755803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo Mercado</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP SubMaterial Tipo Envases - Field Tipo Mercado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 430025819 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Tipo de Envases - Field Code - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
+        <trans-unit id="Table 430025819 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Tipo de Envases - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 430025819 - Field 2122814810 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rigidez</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Tipo de Envases - Field Rigidez - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3755578035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Quote new</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -13623,10 +13715,30 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CrearPedidoCompraDesdeBCDTravel - NamedType lblCreate</note>
           <target>Se ha creado el pedido %1 y albarán %2.\¿Desea Abrir el albarán?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3029977924 - NamedType 2075791351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>INSERT INTO [RecordLinkNotas]</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CreateJobNotes - NamedType lblSQLinsertTable</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3029977924 - NamedType 3704095038" size-unit="char" translate="yes" xml:space="preserve">
+          <source>([ProjectId],[TextoNota],[FechaCarga])</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CreateJobNotes - NamedType lblSQLInsertFields</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 3029977924 - NamedType 2776188541" size-unit="char" translate="yes" xml:space="preserve">
+          <source>values('%1','%2','%3')</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method CreateJobNotes - NamedType lblSQLInsertValues</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 352375554 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
           <source>DELETE FROM [ZUMMO Inventario].[dbo].[ZUMMO$ZM Value entry - G_L Entry] WHERE  [Value Entry No_] = %1</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method DeleteGLEntry_ValueEntry - NamedType lblSQLDelete</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 422587263 - NamedType 2075791351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DELETE RecordLinkNotas WHERE ProjectId ='%1'</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method DeleteJobNotes - NamedType lblSQLinsertTable</note>
         </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3740096671 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
           <source>DELETE FROM [ZUMMO$Cost Value Entry Sales] WHERE [Parent Value Entry No_] =%1</source>
@@ -14103,6 +14215,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Method ABERTIAUpdateALL - NamedType lblConfirm</note>
           <target>¿Desea actualizar todos los registros?</target>
         </trans-unit>
+        <trans-unit id="Page 2822793219 - Method 1677329495 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los comentarios de proyectos?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los comentarios de proyectos?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Method ABERTIAUpdateJobNotes - NamedType lblConfirm</note>
+          <target>¿Desea actualizar los comentarios de proyectos?</target>
+        </trans-unit>
         <trans-unit id="Page 2822793219 - Control 1260824717 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nº cuentas contables</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº cuentas contables"</note>
@@ -14208,6 +14326,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar Todo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateAll - Property Caption</note>
           <target>Actualizar Todo</target>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Action 1558750399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Job Notes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comentarios Proyectos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Action UpdateJobnotes - Property Caption</note>
+          <target>Comentarios Proyectos</target>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Action 3186299885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source> Mov. Contabilidad</source>
@@ -18281,6 +18405,30 @@
           <note from="Developer" annotates="general" priority="2">ESP="Lista Pedidos Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page SalesOrderList - Property Caption</note>
           <target>Lista Pedidos Almacén</target>
+        </trans-unit>
+        <trans-unit id="Page 488930003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo de Envase producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo de Envase producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page SCRAP Item - Tipo de Envases - Property Caption</note>
+          <target>Tipo de Envase producto</target>
+        </trans-unit>
+        <trans-unit id="Page 1119654516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lista de Envases</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista de Envases"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page SCRAP Lista de Envases - Property Caption</note>
+          <target>Lista de Envases</target>
+        </trans-unit>
+        <trans-unit id="Page 2775408970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SubMaterial</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubMaterial"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page SCRAP SUBMATERIAL List - Property Caption</note>
+          <target>SubMaterial</target>
+        </trans-unit>
+        <trans-unit id="Page 3952445137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Submaterial - Tipo de envases</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Submaterial - Tipo de envases"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page SCRAP Submaterial Tipo Envases - Property Caption</note>
+          <target>Submaterial - Tipo de envases</target>
         </trans-unit>
         <trans-unit id="Page 3018944416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Selección Etiquetas</source>
@@ -34441,6 +34589,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action CalculatePlasticLevels - Property Caption</note>
           <target>Calcular peso plastico Niveles superior</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Action 1870838804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Declaracion SCRAP</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Declaracion SCRAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action PlasticDeclaration - Property Caption</note>
+          <target>Declaracion SCRAP</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Action 1683585256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Serial No. information</source>
           <note from="Developer" annotates="general" priority="2">ESP="Información Nº. Serie"</note>
@@ -34714,6 +34868,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Análisis Plan Renove"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action AnalisisPlanRenove - Property Caption</note>
           <target>Análisis Plan Renove</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 1870838804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Declaracion SCRAP</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Declaracion SCRAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action PlasticDeclaration - Property Caption</note>
+          <target>Declaracion SCRAP</target>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Action 1683585256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Serial No. information</source>

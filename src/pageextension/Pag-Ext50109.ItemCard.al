@@ -635,6 +635,14 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 end;
 
             }
+            action(PlasticDeclaration)
+            {
+                Caption = 'Declaracion SCRAP', comment = 'ESP="Declaracion SCRAP"';
+                Image = PutawayLines;
+                RunObject = page "SCRAP Item - Tipo de Envases";
+                RunPageLink = "Item No." = field("No.");
+
+            }
         }
     }
 

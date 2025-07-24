@@ -1587,6 +1587,7 @@ codeunit 50110 "CU_Cron"
         ABERTIASalesItem: Record "ABERTIA SalesItem";
         ABERTIASalesFacturas: Record "ABERTIA SalesFacturas";
         AbertiaSalesPedidos: Record "ABERTIA SalesPedidos";
+        Funciones: Codeunit "Zummo Inn. IC Functions";
         Body: text;
         GLAccountRecordNo: Integer;
         GLEntryRecordNo: Integer;
@@ -1606,6 +1607,8 @@ codeunit 50110 "CU_Cron"
         FacturasRecordNo := ABERTIASalesFacturas.CreateSalesAbonos(TypeUpdate);
         PedidosRecordNo := AbertiaSalesPedidos.CreateSalesPedidos(TypeUpdate);
         ABERTIAUpdateSendEmail(Body, GLAccountRecordNo, GLEntryRecordNo, GLBudgetEntryRecordNo, CustomerRecordNo, ItemRecordNo, FacturasRecordNo, PedidosRecordNo);
+
+        Funciones.ABERTIAUpdateJobNotes()
     end;
 
     local procedure CreateTableConnection()

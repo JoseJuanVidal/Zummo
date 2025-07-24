@@ -2718,6 +2718,77 @@ codeunit 50104 "Zummo Inn. IC Functions"
         windows.Close();
     end;
 
+    procedure ABERTIAUpdateJobNotes()
+    var
+        Job: Record Job;
+        RecordLink: Record "Record Link";
+    begin
+        if Job.FindFirst() then
+            repeat
+                DeleteJobNotes(Job."No.");
+                RecordLink.Reset();
+                RecordLink.SetRange(Type, RecordLink.Type::Note);
+                RecordLink.SetRange("Record ID", Job.RecordId);
+                if RecordLink.FindFirst() then
+                    repeat
+                        CreateJobNotes(Job, RecordLink);
+                    Until RecordLink.next() = 0;
+
+            Until Job.next() = 0;
+
+    end;
+
+    local procedure DeleteJobNotes(JobNo: code[20])
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtSQLCommandText: Text;
+        txtSQLCommandValues: Text;
+        txtSQLInsertFields: text;
+        GLAccountNo: Integer;
+        lblSQLinsertTable: Label 'DELETE RecordLinkNotas WHERE ProjectId =''%1''';
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        txtSQLCommandText := StrSubstNo(lblSQLinsertTable, JobNo);
+        SQLCommand.CommandText := txtSQLCommandText;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then;
+
+    end;
+
+    local procedure CreateJobNotes(Job: Record Job; RecordLink: Record "Record Link")
+    var
+        TypeHelper: Codeunit "Type Helper";
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtSQLCommandText: Text;
+        txtSQLCommandValues: Text;
+        Note: text;
+
+        lblSQLinsertTable: Label 'INSERT INTO [RecordLinkNotas]';
+        lblSQLInsertFields: Label '([ProjectId],[TextoNota],[FechaCarga])';
+        lblSQLInsertValues: Label 'values(''%1'',''%2'',''%3'')';
+
+    begin
+        RecordLink.CalcFields(Note);
+        Note := TypeHelper.ReadRecordLinkNote(RecordLink);
+        txtSQLCommandValues := StrSubstNo(lblSQLInsertValues, Job."No.", Note,
+                  StrSubstNo('%1-%2-%3', Date2DMY(DT2Date(RecordLink.Created), 3), Date2DMY(DT2Date(RecordLink.Created), 2),
+                    Date2DMY(DT2Date(RecordLink.Created), 1)));
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        txtSQLCommandText := StrSubstNo('%1 %2 %3', lblSQLinsertTable, lblSQLInsertFields, txtSQLCommandValues);
+        SQLCommand.CommandText := txtSQLCommandText;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then;
+
+    end;
+
     procedure UpdateGLEntry(GLEntry: Record "G/L Entry"): Boolean
     var
         SQLCommand: DotNet SqlCommand;

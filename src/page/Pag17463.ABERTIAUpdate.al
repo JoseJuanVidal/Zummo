@@ -112,6 +112,19 @@ page 17463 "ABERTIA Update"
                     ABERTIAUpdateALL();
                 end;
             }
+            action(UpdateJobnotes)
+            {
+                ApplicationArea = all;
+                Caption = 'Update Job Notes', comment = 'ESP="Comentarios Proyectos"';
+                Image = AllLines;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    ABERTIAUpdateJobNotes();
+                end;
+            }
             Group("Zummo Innovaciones Mecanicas")
             {
                 action(UpdateGLAccount)
@@ -411,5 +424,14 @@ page 17463 "ABERTIA Update"
     begin
         if Confirm(lblConfirm) then
             cuCron.ABERTIAUpdateALL(TypeUpdate);
+    end;
+
+    local procedure ABERTIAUpdateJobNotes()
+    var
+        Funciones: Codeunit "Zummo Inn. IC Functions";
+        lblConfirm: Label '¿Desea actualizar los comentarios de proyectos?', comment = 'ESP="¿Desea actualizar los comentarios de proyectos?"';
+    begin
+        if Confirm(lblConfirm) then
+            Funciones.ABERTIAUpdateJobNotes();
     end;
 }
