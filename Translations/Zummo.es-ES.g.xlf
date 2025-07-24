@@ -41034,12 +41034,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field Solucionado primera Visita - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2479720606 - Field 974227354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
-          <source>Tick Mark of survey</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Encuesta Realizada"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field TickMarksurvey_zm - Property Caption</note>
-          <target>Encuesta Realizada</target>
-        </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 597349203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Type order service level 2</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 2"</note>
@@ -43440,6 +43434,11 @@
           <source>Exportar BI Reclamaciones</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Service Order Type - Field Exportar BI Reclamaciones - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2240314328 - Field 3014804625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2583759525">
+          <source>Solucionado primera visista</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Service Order Type - Field Solucionado primera visista - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3602268299 - Field 3298499930 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
           <source>Date Fin. Amort</source>

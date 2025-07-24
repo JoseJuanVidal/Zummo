@@ -1948,11 +1948,7 @@ codeunit 50106 "SalesEvents"
                     end else begin
                         PriceAcum := ToSalesLine."Unit Price";
                         ItemListPrice.Set(ToSalesLine."No.", ToSalesLine."Unit Price");
-
                     end;
-
-
-
             Until ToSalesLine.next() = 0;
         if ToSalesLine.FindFirst() then
             repeat

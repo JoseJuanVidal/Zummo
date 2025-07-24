@@ -5,9 +5,14 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
         modify("Service Order Type")
         {
             trigger OnAfterValidate()
+            var
+                ServiceOrderType: Record "Service Order Type";
             begin
                 if "Service Order Type" <> xRec."Service Order Type" then begin
                     TipoPedidoNivel2_btc := '';
+                    if ServiceOrderType.Get(Rec."Service Order Type") then
+                        if ServiceOrderType."Solucionado primera visista" then
+                            Rec."Solucionado primera Visita" := true;
                     // TipoPedidoNivel3_btc := '';
                 end;
             end;

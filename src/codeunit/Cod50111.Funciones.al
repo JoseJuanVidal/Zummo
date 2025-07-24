@@ -3838,6 +3838,7 @@ filePath: Text)
         BankAccLedgerEntry."Statement Status" := BankAccLedgerEntry."Statement Status"::Open;
         BankAccLedgerEntry."Statement No." := '';
         BankAccLedgerEntry."Statement Line No." := 0;
+        BankAccLedgerEntry."Remaining Amount" := BankAccLedgerEntry.Amount;
         BankAccLedgerEntry.Modify();
     end;
 }

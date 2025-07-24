@@ -8,6 +8,10 @@ pageextension 50203 "ZM Service Order Types" extends "Service Order Types"
             {
                 ApplicationArea = all;
             }
+            field("Solucionado primera visista"; "Solucionado primera visista")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }

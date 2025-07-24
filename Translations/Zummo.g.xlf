@@ -39308,6 +39308,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Service Order Type - Field Exportar BI Reclamaciones - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2240314328 - Field 3014804625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2583759525">
+          <source>Solucionado primera visista</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Service Order Type - Field Solucionado primera visista - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3602268299 - Field 3298499930 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
           <source>Date Fin. Amort</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha final amortización"</note>
