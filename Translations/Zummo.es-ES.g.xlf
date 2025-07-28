@@ -6982,15 +6982,15 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Item - Tipo de Envase - Field Item No. - Property Caption</note>
           <target>Cód. producto</target>
         </trans-unit>
+        <trans-unit id="Table 67895750 - Field 3577638795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Peso</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Item - Tipo de Envase - Field Peso - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 67895750 - Field 1750488289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>SUBMATERIAL</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Item - Tipo de Envase - Field SUBMATERIAL - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 67895750 - Field 107576691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tarifa</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table SCRAP Item - Tipo de Envase - Field Tarifa - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 67895750 - Field 2157484315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tipo de Envase</source>
@@ -13304,6 +13304,12 @@
           <source>Item No.: #1########################</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. producto: #1########################"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method PlasticCalculateItems - NamedType lblWindow</note>
+          <target>Cód. producto: #1########################</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 3041267182 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.: #1########################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto: #1########################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method PlasticCalculateItemsTipoEnvase - NamedType lblWindow</note>
           <target>Cód. producto: #1########################</target>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 1735652657 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
@@ -34589,6 +34595,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action CalculatePlasticLevels - Property Caption</note>
           <target>Calcular peso plastico Niveles superior</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Action 1464838095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Fixed Assets</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Activos Fijos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action FixedAssets - Property Caption</note>
+          <target>Activos Fijos</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Action 1870838804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Declaracion SCRAP</source>
           <note from="Developer" annotates="general" priority="2">ESP="Declaracion SCRAP"</note>
@@ -38142,6 +38154,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Fabricante"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Item No. Manufacturer - Property Caption</note>
           <target>Cód. Fabricante</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 4267552510 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Fecha Ulm. Calculo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Ulm. Calculo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Last Calculate Date - Property Caption</note>
+          <target>Fecha Ulm. Calculo</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 3647128553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Manufacturer</source>

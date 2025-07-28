@@ -226,6 +226,11 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 group(detail)
                 {
                     Caption = 'Plastic Detail', comment = 'ESP="Detalle Plasticos"';
+                    field("Last Calculate Date"; "Last Calculate Date")
+                    {
+                        ApplicationArea = all;
+                        Editable = false;
+                    }
 
                     field("PLASTICS EPS Flexible"; "PLASTICS EPS Flexible")
                     {

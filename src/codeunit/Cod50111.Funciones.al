@@ -2003,12 +2003,138 @@ codeunit 50111 "Funciones"
         if Item.FindFirst() then
             repeat
                 Window.Update(1, Item."No.");
-            // PlasticCalculateItemTipoEnvase(Item);
+
+                PlasticCalculateItemTipoEnvase(Item);
+                Commit();
+
             Until Item.next() = 0;
         Window.Close();
 
     end;
 
+    procedure PlasticCalculateItemTipoEnvase(Item: Record Item)
+    var
+        BomComponent: Record "BOM Component";
+    begin
+        // primero elimnamos todos los datos de calculos
+        DeletePlasticItemTipoEnvase(Item."No.");
+
+        case Item."Replenishment System" of
+            Item."Replenishment System"::Assembly:
+                begin
+                    DeletePlasticItemTipoEnvase(Item."No.");
+                    BomComponent.Reset();
+                    BomComponent.SetRange("Parent Item No.", Item."No.");
+                    BomComponent.SetRange(Type, BomComponent.Type::Item);
+                    if BomComponent.FindFirst() then begin
+                        PlasticItemTipoEnvaseCalculateAssemblyBOMItem(Item, BomComponent, true);
+                    end;
+                end;
+            Item."Replenishment System"::"Prod. Order":
+                begin
+                    DeletePlasticItemTipoEnvase(Item."No.");
+                    if Item."Production BOM No." <> '' then begin
+                        PlasticItemTipoEnvaseCalculateProductionBOM(Item, true);
+                    end;
+                end;
+            item."Replenishment System"::Purchase:
+                begin
+                    // estos productos los ponemos para las subcontrataciones, son productos de compras alguno, pero que se llevan a ensamblar al proveedor 
+                    if Item."Production BOM No." <> '' then begin
+                        DeletePlasticItemTipoEnvase(Item."No.");
+                        PlasticCalculateProductionBOMItem(Item, true);
+                    end;
+                end;
+        end;
+    end;
+
+    local procedure DeletePlasticItemTipoEnvase(ItemNo: code[20])
+    var
+        ItemTipodeEnvase: Record "SCRAP Item - Tipo de Envase";
+    begin
+        ItemTipodeEnvase.Reset();
+        ItemTipodeEnvase.SetRange("Item No.", ItemNo);
+        ItemTipodeEnvase.DeleteAll();
+    end;
+
+    local procedure PlasticItemTipoEnvaseCalculateAssemblyBOMItem(var Item: Record Item; var BomComponent: Record "BOM Component"; NivelesInferior: Boolean)
+    var
+        BomItem: Record Item;
+        NewItemTipodeEnvase: Record "SCRAP Item - Tipo de Envase";
+        ItemTipodeEnvase: Record "SCRAP Item - Tipo de Envase";
+    begin
+        if BomComponent.FindFirst() then
+            repeat
+                BomItem.Get(BomComponent."No.");
+                // lanzamos el proceso ciclico de calculo de BOM Component
+                if BomItem."Last Calculate Date" < WorkDate() then
+                    PlasticCalculateItemTipoEnvase(BomItem);
+                // añadimos datos a registro de tipo envases
+                ItemTipodeEnvase.Reset();
+                ItemTipodeEnvase.SetRange("Item No.", BomItem."No.");
+                if ItemTipodeEnvase.FindFirst() then
+                    repeat
+                        NewItemTipodeEnvase.Reset();
+                        NewItemTipodeEnvase.SetRange("Item No.", ItemTipodeEnvase."Item No.");
+                        NewItemTipodeEnvase.SetRange(SUBMATERIAL, ItemTipodeEnvase.SUBMATERIAL);
+                        NewItemTipodeEnvase.SetRange("Tipo de Envase", ItemTipodeEnvase."Tipo de Envase");
+                        if not NewItemTipodeEnvase.FindFirst() then begin
+                            NewItemTipodeEnvase.Init();
+                            NewItemTipodeEnvase."Item No." := ItemTipodeEnvase."Item No.";
+                            NewItemTipodeEnvase.SUBMATERIAL := ItemTipodeEnvase.SUBMATERIAL;
+                            NewItemTipodeEnvase."Tipo de Envase" := ItemTipodeEnvase."Tipo de Envase";
+                            NewItemTipodeEnvase.Insert();
+                        end;
+                        NewItemTipodeEnvase.Peso += ItemTipodeEnvase.Peso;
+                        NewItemTipodeEnvase.Modify();
+                    Until ItemTipodeEnvase.next() = 0;
+            Until BomComponent.next() = 0;
+        Item."Last Calculate Date" := WorkDate();
+        Item.Modify();
+    end;
+
+    local procedure PlasticItemTipoEnvaseCalculateProductionBOM(var Item: Record Item; NivelesInferior: Boolean);
+    var
+        ProductionBomLine: Record "Production BOM Line";
+        BomItem: Record Item;
+        NewItemTipodeEnvase: Record "SCRAP Item - Tipo de Envase";
+        ItemTipodeEnvase: Record "SCRAP Item - Tipo de Envase";
+    begin
+        ProductionBomLine.Reset();
+        ProductionBomLine.SetRange("Production BOM No.", Item."Production BOM No.");
+        ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+        if ProductionBomLine.FindFirst() then
+            repeat
+                BomItem.Get(ProductionBomLine."No.");
+                // lanzamos el proceso ciclico de calculo de BOM Component
+                if BomItem."Last Calculate Date" < WorkDate() then
+                    PlasticCalculateItem(BomItem);
+
+                ItemTipodeEnvase.Reset();
+                ItemTipodeEnvase.SetRange("Item No.", BomItem."No.");
+                if ItemTipodeEnvase.FindFirst() then
+                    repeat
+                        NewItemTipodeEnvase.Reset();
+                        NewItemTipodeEnvase.SetRange("Item No.", ItemTipodeEnvase."Item No.");
+                        NewItemTipodeEnvase.SetRange(SUBMATERIAL, ItemTipodeEnvase.SUBMATERIAL);
+                        NewItemTipodeEnvase.SetRange("Tipo de Envase", ItemTipodeEnvase."Tipo de Envase");
+                        if not NewItemTipodeEnvase.FindFirst() then begin
+                            NewItemTipodeEnvase.Init();
+                            NewItemTipodeEnvase."Item No." := ItemTipodeEnvase."Item No.";
+                            NewItemTipodeEnvase.SUBMATERIAL := ItemTipodeEnvase.SUBMATERIAL;
+                            NewItemTipodeEnvase."Tipo de Envase" := ItemTipodeEnvase."Tipo de Envase";
+                            NewItemTipodeEnvase.Insert();
+                        end;
+                        NewItemTipodeEnvase.Peso += ItemTipodeEnvase.Peso;
+                        NewItemTipodeEnvase.Modify();
+                    Until ItemTipodeEnvase.next() = 0;
+
+            Until ProductionBomLine.next() = 0;
+        Item."Last Calculate Date" := WorkDate();
+        Item.Modify();
+    end;
+
+    // NOTA - ATENCION Calculo Antiguo de datos de plastico en Ficha de producto 28/07/2025
     procedure PlasticCalculateItems(var Item: Record Item)
     var
         Window: Dialog;
