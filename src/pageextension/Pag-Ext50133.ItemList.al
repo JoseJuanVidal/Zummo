@@ -352,6 +352,16 @@ pageextension 50133 "ItemList" extends "Item List"
         ValueEntry: Record "Value Entry";
         ShowExcelCostes: Boolean;
 
+    local procedure CalculateItemTipoEnvasePlastic()
+    var
+        Item: Record Item;
+        Funciones: Codeunit Funciones;
+        lblConfirm: Label '¿Desea calcular la cantidad del plastico de la L.M. de %1 producto/s?', comment = '¿Desea calcular la cantidad del plastico de la L.M. de %1 producto/s?';
+    begin
+        CurrPage.SetSelectionFilter(Item);
+        if Confirm(lblConfirm, false, Item.Count) then
+            Funciones.PlasticCalculateItemsTipoEnvase(Rec);
+    end;
 
     local procedure CalculatePlastic()
     var

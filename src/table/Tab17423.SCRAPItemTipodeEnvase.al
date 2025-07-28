@@ -27,7 +27,7 @@ table 17423 "SCRAP Item - Tipo de Envase"
         {
             DataClassification = CustomerContent;
         }
-        field(10; Tarifa; Decimal)
+        field(10; Peso; Decimal)
         {
             DataClassification = CustomerContent;
             DecimalPlaces = 5 : 5;
@@ -44,9 +44,9 @@ table 17423 "SCRAP Item - Tipo de Envase"
 
     fieldgroups
     {
-        fieldgroup(DropDown; SUBMATERIAL, "Tipo de Envase", Flexible, Tarifa)
+        fieldgroup(DropDown; SUBMATERIAL, "Tipo de Envase", Flexible, Peso)
         { }
-        fieldgroup(Brick; SUBMATERIAL, "Tipo de Envase", Flexible, Tarifa)
+        fieldgroup(Brick; SUBMATERIAL, "Tipo de Envase", Flexible, Peso)
         { }
     }
 

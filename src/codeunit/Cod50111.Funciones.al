@@ -1994,6 +1994,20 @@ codeunit 50111 "Funciones"
     // ==  
     // ======================================================================================================
 
+    procedure PlasticCalculateItemsTipoEnvase(var Item: Record Item)
+    var
+        Window: Dialog;
+        lblWindow: Label 'Item No.: #1########################', comment = 'ESP="Cód. producto: #1########################"';
+    begin
+        Window.Open(lblWindow);
+        if Item.FindFirst() then
+            repeat
+                Window.Update(1, Item."No.");
+            // PlasticCalculateItemTipoEnvase(Item);
+            Until Item.next() = 0;
+        Window.Close();
+
+    end;
 
     procedure PlasticCalculateItems(var Item: Record Item)
     var

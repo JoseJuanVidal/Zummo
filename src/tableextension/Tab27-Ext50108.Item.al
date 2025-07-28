@@ -592,6 +592,11 @@ tableextension 50108 "Item" extends Item  //27
             Caption = 'RUBBER/SILICON Flexibles', comment = 'ESP="CAUCHO/SILICONAS Flexibles"';
             DecimalPlaces = 6 : 6;
         }
+        field(50230; "Last Calculate Date"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fecha Ulm. Calculo', comment = 'ESP="Fecha Ulm. Calculo"';
+        }
         //-  NORMATIVA MEDIO AMBIENTAL
 
     }

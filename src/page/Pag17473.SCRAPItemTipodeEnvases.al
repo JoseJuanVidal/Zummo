@@ -28,7 +28,7 @@ page 17473 "SCRAP Item - Tipo de Envases"
                 {
                     ApplicationArea = all;
                 }
-                field(Tarifa; Tarifa)
+                field(Peso; Peso)
                 {
                     ApplicationArea = all;
                 }
