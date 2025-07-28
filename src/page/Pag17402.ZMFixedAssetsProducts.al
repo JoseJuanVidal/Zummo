@@ -15,7 +15,6 @@ page 17402 "ZM Fixed Assets Products"
                 field("FA No."; "FA No.")
                 {
                     ApplicationArea = all;
-                    Visible = false;
                 }
                 field("FA Name"; "FA Name")
                 {

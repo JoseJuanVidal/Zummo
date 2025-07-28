@@ -643,6 +643,13 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 RunPageLink = "Item No." = field("No.");
 
             }
+            action(FixedAssets)
+            {
+                Caption = 'Fixed Assets', comment = 'ESP="Activos Fijos"';
+                Image = PutawayLines;
+                RunObject = page "ZM Fixed Assets Products";
+                RunPageLink = "Item No." = field("No.");
+            }
         }
     }
 
