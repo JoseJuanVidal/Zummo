@@ -41,6 +41,13 @@ pageextension 50079 "ZM Security Admin Role Center" extends "Security Admin Role
 
                     RunObject = page "ZM IT Daily Time Sheet List";
                 }
+                action(SerialCost)
+                {
+                    ApplicationArea = CostAccounting;
+                    Caption = 'Cost Accounting Analysis', Comment = 'ESP="Análisis de contabilidad de costes"';
+                    Image = SerialNo;
+                    RunObject = page "Serial No. Information List";
+                }
             }
         }
     }

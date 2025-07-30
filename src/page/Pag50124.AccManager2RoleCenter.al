@@ -301,6 +301,13 @@ page 50124 "Acc Manager 2 Role Center"
                 RunObject = Report "Cost Acctg. Analysis";
                 ToolTip = 'View balances per cost type with columns for seven fields for cost centers and cost objects. It is used as the cost distribution sheet in Cost accounting. The structure of the lines is based on the chart of cost types. You define up to seven cost centers and cost objects that appear as columns in the report.', Comment = 'ESP="Permite ver saldos por tipo de coste con columnas de siete campos para centros de coste y objetos de coste. Se utiliza como hoja de distribución de costes en Contabilidad de costes. La estructura de las líneas se basa en el plan de tipos coste. Debe definir hasta siete centros de coste y objetos de coste que se muestran como columnas en el informe."';
             }
+            action(SerialCost)
+            {
+                ApplicationArea = CostAccounting;
+                Caption = 'Cost Accounting Analysis', Comment = 'ESP="Análisis de contabilidad de costes"';
+                Image = SerialNo;
+                RunObject = page "Serial No. Information List";
+            }
         }
         area(embedding)
         {

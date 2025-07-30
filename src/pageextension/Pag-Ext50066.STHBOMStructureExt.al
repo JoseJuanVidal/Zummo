@@ -99,6 +99,20 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
     {
         addafter("Show Warnings")
         {
+            action(ExportExcel)
+            {
+                ApplicationArea = all;
+                Caption = 'Exportar EXCEL', comment = 'ESP="Exportar EXCEL"';
+                Image = Excel;
+                // Promoted = true;
+                // PromotedCategory = New;
+
+                trigger OnAction()
+                begin
+                    ExportExcel;
+                end;
+
+            }
             action(CalculatePlastic)
             {
                 ApplicationArea = all;
@@ -116,6 +130,7 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
         }
     }
     var
+        xlBuf: Record "Excel Buffer" temporary;
         LanguageFilter: code[10];
 
     local procedure CalculatePlastic()
@@ -128,5 +143,72 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
             if Item.Get(Rec."No.") then
                 if Confirm(lblConfirm, false, Rec."No.") then
                     Funciones.PlasticCalculateItem(Item);
+    end;
+
+    local procedure ExportExcel()
+    var
+        Bold: Boolean;
+        Space: text;
+        CosteEstandar: Decimal;
+        Costeavg: Decimal;
+        CosteUnit: Decimal;
+        CosteLM: Decimal;
+    begin
+        Rec.FindFirst();
+        xlBuf.AddColumn('Estructura de productos', FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.NewRow;
+        xlBuf.AddColumn(COMPANYNAME, FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.NewRow;
+
+        xlBuf.AddColumn(Rec.FIELDCAPTION(Indentation), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION(Type), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION("No."), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION(Description), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION("Qty. per Top Item"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION("Unit of Measure Code"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION("Replenishment System"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION("Standar Cost"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION("Average cost last year"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION("Unit Cost"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn('Coste de LM', FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.NewRow;
+        IF Rec.FINDFIRST THEN
+            REPEAT
+                rec.CalcFields("Standar Cost", "Unit Cost");
+                CosteEstandar := 0;
+                Costeavg := 0;
+                CosteUnit := 0;
+                CosteLM := 0;
+                case Rec."Replenishment System" of
+                    Rec."Replenishment System"::Purchase, Rec."Replenishment System"::Transfer:
+                        begin
+                            CosteEstandar := Rec."Standar Cost";
+                            Costeavg := Rec."Average cost last year";
+                            CosteUnit := Rec."Unit Cost";
+                            Bold := false;
+                        end;
+                    else begin
+                        CosteLM := Rec."Standar Cost";
+                        Bold := true;
+                    end;
+                end;
+                Space := PadStr(' ', Rec.Indentation * 4);
+                xlBuf.AddColumn(Rec.Indentation, FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Number);
+                xlBuf.AddColumn(StrSubstNo('%1%2', Space, Rec.Type), FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+                xlBuf.AddColumn(StrSubstNo('%1%2', Space, Rec."No."), FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+                xlBuf.AddColumn(Rec.Description, FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+                xlBuf.AddColumn(Rec."Qty. per Top Item", FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Number);
+                xlBuf.AddColumn(Rec."Unit of Measure Code", FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+                xlBuf.AddColumn(Rec."Replenishment System", FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+                xlBuf.AddColumn(CosteEstandar, FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Number);
+                xlBuf.AddColumn(Costeavg, FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Number);
+                xlBuf.AddColumn(CosteUnit, FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Number);
+                xlBuf.AddColumn(CosteLM, FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Number);
+                xlBuf.NewRow;
+            UNTIL Rec.NEXT = 0;
+        xlBuf.CreateBook('', 'Estructura');
+        xlBuf.WriteSheet('', '', '');
+        xlBuf.CloseBook;
+        xlBuf.DownloadAndOpenExcel;
     end;
 }

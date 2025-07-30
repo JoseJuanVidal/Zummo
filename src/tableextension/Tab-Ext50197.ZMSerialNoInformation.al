@@ -20,7 +20,19 @@ tableextension 50197 "ZM Serial No. Information" extends "Serial No. Information
         field(50102; "Update Cost"; Boolean)
         {
             DataClassification = CustomerContent;
-            Caption = 'Update Cost', comment = 'ESP="Costes Actualizados';
+            Caption = 'Update Cost', comment = 'ESP="Costes Actualizados"';
+        }
+        field(50105; "Last Item ldg Entry"; Integer)
+        {
+            Caption = 'Last Item ledger Entry', comment = 'ESP="Ultimo Mov. producto"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Item Ledger Entry"."Entry No." where("Entry Type" = const(Output), "Item No." = field("Item No."), "Serial No." = field("Serial No.")));
+        }
+        field(50106; "Last Cost"; Decimal)
+        {
+            Caption = 'Last Cost', comment = 'ESP="Ultimo Coste"';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Value Entry"."Cost Amount (Actual)" WHERE("Item Ledger Entry No." = FIELD("Last Item ldg Entry")));
         }
     }
 

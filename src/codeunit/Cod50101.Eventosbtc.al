@@ -1732,7 +1732,6 @@ codeunit 50101 "Eventos_btc"
     procedure AdjustCostItemEntries(SerialNoInfo: Record "Serial No. Information"; var textoHtml: Text)
     var
         ItemLedgerEntry: Record "Item Ledger Entry";
-
     begin
         ItemLedgerEntry.Reset();
         ItemLedgerEntry.SetRange("Item No.", SerialNoInfo."Item No.");
@@ -1747,6 +1746,7 @@ codeunit 50101 "Eventos_btc"
                     // aqui creamos el diario de revalorizacion de costes
                     CreateItemJnlLineRevaluated(ItemLedgerEntry, SerialNoInfo);
                     SerialNoInfo."Update Cost" := true;
+                    SerialNoInfo."Last Date Update Cost" := WorkDate();
                     SerialNoInfo.Modify();
                     textoHtml += '<p>' + StrSubstNo('Cód. Producto: %1 %2 Coste: %3 Nº Mov.: %4', SerialNoInfo."Item No.", SerialNoInfo."Serial No.", SerialNoInfo."Serial No. Cost", ItemLedgerEntry."Entry No.") + '</p>';
                 end;
@@ -1794,8 +1794,7 @@ codeunit 50101 "Eventos_btc"
         ItemJnlLine.Validate("Unit Cost (Revalued)", SerialNoInfo."Serial No. Cost");
         if ItemJnlLine.Insert() then
             ItemJnlLine.Modify();
-        ItemJnlPostBatch.Run(ItemJnlLine);
-
+        // ItemJnlPostBatch.Run(ItemJnlLine);
 
     end;
 }
