@@ -13970,7 +13970,7 @@
         </trans-unit>
         <trans-unit id="Page 2965806569 - Action 3344279125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Accounting Analysis</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Análisis de contabilidad de costes"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista informacion Nº Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Acc Manager 2 Role Center - Action SerialCost - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2965806569 - Action 70593372 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -34000,7 +34000,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 3747018531 - Action 3344279125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
           <source>Cost Accounting Analysis</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Análisis de contabilidad de costes"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista informacion Nº Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action SerialCost - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3747018531 - Action 1821335367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">

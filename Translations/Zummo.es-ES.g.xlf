@@ -15205,9 +15205,9 @@
         </trans-unit>
         <trans-unit id="Page 2965806569 - Action 3344279125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Accounting Analysis</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Análisis de contabilidad de costes"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista informacion Nº Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Acc Manager 2 Role Center - Action SerialCost - Property Caption</note>
-          <target>Análisis de contabilidad de costes</target>
+          <target>Lista informacion Nº Serie</target>
         </trans-unit>
         <trans-unit id="Page 2965806569 - Action 70593372 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>View a trial balance in comparison to a budget. You can choose to see a trial balance for selected dimensions. You can use the report at the close of an accounting period or fiscal year.</source>
@@ -37228,9 +37228,9 @@
         </trans-unit>
         <trans-unit id="PageExtension 3747018531 - Action 3344279125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
           <source>Cost Accounting Analysis</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Análisis de contabilidad de costes"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista informacion Nº Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action SerialCost - Property Caption</note>
-          <target>Análisis de contabilidad de costes</target>
+          <target>Lista informacion Nº Serie</target>
         </trans-unit>
         <trans-unit id="PageExtension 3747018531 - Action 1821335367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
           <source>Sesiones</source>
@@ -37249,6 +37249,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Análisis Plan Renove"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Serial No. Information List - Action AnalisisPlanRenove - Property Caption</note>
           <target>Análisis Plan Renove</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 641495058 - Action 3523965937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 671847571">
+          <source>Diario Revalorización</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Diario Revalorización"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Serial No. Information List - Action CrearDiario - Property Caption</note>
+          <target>Diario Revalorización</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 641495058 - Action 3523965937 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 641495058">
+          <source>¿Desea crear el diario de revalorizacion por el importe de coste indicado?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el diario de revalorizacion por el importe de coste indicado?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Serial No. Information List - Action CrearDiario - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea crear el diario de revalorizacion por el importe de coste indicado?</target>
         </trans-unit>
         <trans-unit id="PageExtension 1259852724 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1511989657">
           <source>Attachment Document</source>

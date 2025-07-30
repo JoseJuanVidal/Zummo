@@ -304,7 +304,7 @@ page 50124 "Acc Manager 2 Role Center"
             action(SerialCost)
             {
                 ApplicationArea = CostAccounting;
-                Caption = 'Cost Accounting Analysis', Comment = 'ESP="Análisis de contabilidad de costes"';
+                Caption = 'Cost Accounting Analysis', Comment = 'ESP="Lista informacion Nº Serie"';
                 Image = SerialNo;
                 RunObject = page "Serial No. Information List";
             }

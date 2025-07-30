@@ -55,6 +55,7 @@ pageextension 50218 "ZM Serial No. Information List" extends "Serial No. Informa
                         exit;
                     FuntionEvents.AdjustCostItemEntries(Rec, texto);
                     RevaluationJournal.Run();
+                    CurrPage.Update(true);
                 end;
             }
         }

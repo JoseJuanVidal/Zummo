@@ -44,7 +44,7 @@ pageextension 50079 "ZM Security Admin Role Center" extends "Security Admin Role
                 action(SerialCost)
                 {
                     ApplicationArea = CostAccounting;
-                    Caption = 'Cost Accounting Analysis', Comment = 'ESP="Análisis de contabilidad de costes"';
+                    Caption = 'Cost Accounting Analysis', Comment = 'ESP="Lista informacion Nº Serie"';
                     Image = SerialNo;
                     RunObject = page "Serial No. Information List";
                 }
