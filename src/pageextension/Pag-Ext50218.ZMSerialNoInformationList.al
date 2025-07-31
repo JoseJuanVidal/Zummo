@@ -58,14 +58,19 @@ pageextension 50218 "ZM Serial No. Information List" extends "Serial No. Informa
 
                 trigger OnAction()
                 var
+                    SeriaNoInfo: Record "Serial No. Information";
                     RevaluationJournal: page "Revaluation Journal";
                     FuntionEvents: Codeunit Eventos_btc;
                     Texto: Text;
-                    lblConfirm: Label '¿Desea crear el diario de revalorizacion por el importe de coste indicado?', comment = 'ESP="¿Desea crear el diario de revalorizacion por el importe de coste indicado?"';
+                    lblConfirm: Label '¿Desea crear el diario de revalorizacion de %1 registros por el importe de coste indicado?', comment = 'ESP="¿Desea crear el diario de revalorizacion de %1 registros por el importe de coste indicado?"';
                 begin
-                    if not Confirm(lblConfirm) then
+                    CurrPage.SetSelectionFilter(SeriaNoInfo);
+                    if not Confirm(lblConfirm, false, SeriaNoInfo.Count) then
                         exit;
-                    FuntionEvents.AdjustCostItemEntries(Rec, texto);
+                    if SeriaNoInfo.FindFirst() then
+                        repeat
+                            FuntionEvents.AdjustCostItemEntries(SeriaNoInfo, texto);
+                        Until SeriaNoInfo.next() = 0;
                     RevaluationJournal.Run();
                     CurrPage.Update(true);
                 end;

@@ -1786,7 +1786,7 @@ codeunit 50101 "Eventos_btc"
         ItemJnlLine.Init();
         ItemJnlLine."Journal Template Name" := ItemJnlBatch."Journal Template Name";
         ItemJnlLine."Journal Batch Name" := ItemJnlBatch.Name;
-        ItemJnlLine."Line No." := 0;
+        ItemJnlLine."Line No." := GetLastLineItemJnlLine(ItemJnlLine."Journal Template Name", ItemJnlLine."Journal Batch Name") + 10000;
         ItemJnlLine."Document No." := ItemLedgerEntry."Document No.";
         ItemJnlLine.Validate("Value Entry Type", ItemJnlLine."Value Entry Type"::Revaluation);
         ItemJnlLine.Validate("Item No.", SerialNoInfo."Item No.");
@@ -1796,5 +1796,15 @@ codeunit 50101 "Eventos_btc"
             ItemJnlLine.Modify();
         // ItemJnlPostBatch.Run(ItemJnlLine);
 
+    end;
+
+    local procedure GetLastLineItemJnlLine(JnlTemplateName: code[10]; JnlBatchName: code[10]): Integer
+    var
+        ItemJnlLine: Record "Item Journal Line";
+    begin
+        ItemJnlLine.SetRange("Journal Template Name", JnlTemplateName);
+        ItemJnlLine.SetRange("Journal Batch Name", JnlBatchName);
+        if ItemJnlLine.FindLast() then
+            exit(ItemJnlLine."Line No.");
     end;
 }

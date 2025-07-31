@@ -48,6 +48,14 @@ pageextension 50079 "ZM Security Admin Role Center" extends "Security Admin Role
                     Image = SerialNo;
                     RunObject = page "Serial No. Information List";
                 }
+                action(CambioTipoPedServicio)
+                {
+                    ApplicationArea = CostAccounting;
+                    Caption = 'Cambio tipo pedido de servicio', Comment = 'ESP="Cambio tipo pedido de servicio"';
+                    Image = SerialNo;
+                    RunObject = page "Temporal Cambio nivel 2";
+                    RunPageMode = Edit;
+                }
             }
         }
     }

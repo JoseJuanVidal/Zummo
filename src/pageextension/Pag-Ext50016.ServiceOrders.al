@@ -72,6 +72,10 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
             {
                 Visible = false;
             }
+            field(TipoPedidoNivel2_btc; TipoPedidoNivel2_btc)
+            {
+                Visible = false;
+            }
         }
     }
     actions

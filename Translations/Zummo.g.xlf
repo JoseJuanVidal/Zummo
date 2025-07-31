@@ -18688,6 +18688,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Actualizar todos los precios de venta en el CRM?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateSalesPriceCRM - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="Page 3137768455 - Control 526061651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo pedido servicio nivel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Temporal Cambio nivel 2 - Control DestTipoPedidoServicio - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3137768455 - Control 2264290773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo pedido servicio nivel 2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Temporal Cambio nivel 2 - Control DestTipoPedidoServicio2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4085494530 - Method 2715736974 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>No puede se puede trazar si no indica un filtro</source>
           <note from="Developer" annotates="general" priority="2">ESP="No puede se puede trazar si no indica un filtro"</note>
@@ -33993,6 +34003,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueos Basedatos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action Bloqueos - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3747018531 - Action 498342122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
+          <source>Cambio tipo pedido de servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambio tipo pedido de servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Security Admin Role Center - Action CambioTipoPedServicio - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3747018531 - Action 397840741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1267036282">
           <source>Daily Time Sheet</source>
           <note from="Developer" annotates="general" priority="2">ESP="Partes Diarios"</note>
@@ -34024,8 +34039,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Serial No. Information List - Action CrearDiario - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 641495058 - Action 3523965937 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 641495058">
-          <source>¿Desea crear el diario de revalorizacion por el importe de coste indicado?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el diario de revalorizacion por el importe de coste indicado?"</note>
+          <source>¿Desea crear el diario de revalorizacion de %1 registros por el importe de coste indicado?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el diario de revalorizacion de %1 registros por el importe de coste indicado?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Serial No. Information List - Action CrearDiario - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 1259852724 - Control 3616856554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1511989657">
