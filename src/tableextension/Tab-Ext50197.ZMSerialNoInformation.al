@@ -34,6 +34,12 @@ tableextension 50197 "ZM Serial No. Information" extends "Serial No. Information
             FieldClass = FlowField;
             CalcFormula = Sum("Value Entry"."Cost Amount (Actual)" WHERE("Item Ledger Entry No." = FIELD("Last Item ldg Entry")));
         }
+        field(50110; Open; Boolean)
+        {
+            Caption = 'Open', comment = 'ESP="Pendiente"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Item Ledger Entry".Open where("Entry No." = field("Last Item ldg Entry")));
+        }
     }
 
     keys

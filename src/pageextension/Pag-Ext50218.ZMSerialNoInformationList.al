@@ -7,6 +7,8 @@ pageextension 50218 "ZM Serial No. Information List" extends "Serial No. Informa
             field("Serial No. Cost"; "Serial No. Cost")
             {
                 ApplicationArea = all;
+                Style = Unfavorable;
+                StyleExpr = ApplyStyleExpr;
             }
             field("Last Date Update Cost"; "Last Date Update Cost")
             {
@@ -20,6 +22,16 @@ pageextension 50218 "ZM Serial No. Information List" extends "Serial No. Informa
             {
                 ApplicationArea = all;
                 Visible = false;
+            }
+            field("Diferencia"; "Serial No. Cost" - "Last Cost")
+            {
+                ApplicationArea = all;
+                Style = Unfavorable;
+                StyleExpr = ApplyStyleExpr;
+            }
+            field(Open; Open)
+            {
+                ApplicationArea = all;
             }
         }
     }
@@ -61,4 +73,12 @@ pageextension 50218 "ZM Serial No. Information List" extends "Serial No. Informa
         }
 
     }
+
+    trigger OnAfterGetRecord()
+    begin
+        ApplyStyleExpr := (Rec."Last Cost" <> Rec."Serial No. Cost");
+    end;
+
+    var
+        ApplyStyleExpr: Boolean;
 }

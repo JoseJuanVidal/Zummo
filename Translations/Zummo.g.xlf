@@ -39493,6 +39493,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ultimo Mov. producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Serial No. Information - Field Last Item ldg Entry - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3311986080 - Field 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2119038973">
+          <source>Open</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Pendiente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Serial No. Information - Field Open - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3311986080 - Field 1130878648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2119038973">
           <source>Serial No. Cost</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste Nº de serie"</note>
