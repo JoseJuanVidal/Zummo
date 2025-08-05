@@ -18768,6 +18768,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Filtro Fecha"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Analisis Movs Contabilidad - Control FiltroFecha - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2746470758 - Control 2529155117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtro Nº Documento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Nº Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Analisis Movs Contabilidad - Control FiltroNoDocumento - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2746470758 - Action 397859648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Visualizar</source>
           <note from="Developer" annotates="general" priority="2">ESP="Visualizar"</note>

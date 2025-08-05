@@ -3545,7 +3545,7 @@ codeunit 50111 "Funciones"
     // ==  
     // ======================================================================================================
 
-    procedure LoadGlEntry(var tmpGLEntry: Record "G/L Entry"; CtaContable: code[20]; FiltroFecha: text)
+    procedure LoadGlEntry(var tmpGLEntry: Record "G/L Entry"; CtaContable: code[20]; FiltroFecha: text; FiltroNoDocumento: text)
     var
         GLEntry: Record "G/L Entry";
         EntryNo: Integer;
@@ -3557,6 +3557,8 @@ codeunit 50111 "Funciones"
         GLEntry.SetRange("G/L Account No.", CtaContable);
         if FiltroFecha <> '' then
             GLEntry.SetFilter("Posting Date", FiltroFecha);
+        if FiltroNoDocumento <> '' then
+            GLEntry.SetFilter("Document No.", FiltroNoDocumento);
         if GLEntry.FindFirst() then
             repeat
                 Window.Update(1, GLEntry."G/L Account No.");
@@ -3607,8 +3609,11 @@ codeunit 50111 "Funciones"
                     if not CheckDimension(GLEntry, PurchInvLine) then
                         AddLine := false;
                 // VAT %
-                if (PurchInvLine."VAT Bus. Posting Group" <> GLEntry."VAT Bus. Posting Group")
-                    or (PurchInvLine."VAT Prod. Posting Group" <> GLEntry."VAT Prod. Posting Group") then
+                if (PurchInvLine."Gen. Bus. Posting Group" <> GLEntry."Gen. Bus. Posting Group")
+                    or (PurchInvLine."Gen. Prod. Posting Group" <> GLEntry."Gen. Prod. Posting Group") then
+                    AddLine := false;
+
+                if (PurchInvLine.Type in [PurchInvLine.Type::"G/L Account"]) and (PurchInvLine."No." <> GLEntry."G/L Account No.") then
                     AddLine := false;
 
 
@@ -3620,6 +3625,8 @@ codeunit 50111 "Funciones"
                     tmpGLEntry."Customer Name" := Vendor.Name;
                     tmpGLEntry.Description := PurchInvLine.Description;
                     tmpGLEntry.Amount := PurchInvLine.Amount;
+                    tmpGLEntry."Debit Amount" := 0;
+                    tmpGLEntry."Credit Amount" := 0;
                     if tmpGLEntry.Amount > 0 then
                         tmpGLEntry."Debit Amount" := tmpGLEntry.Amount
                     else

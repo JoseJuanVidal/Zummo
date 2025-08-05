@@ -24,6 +24,11 @@ page 17385 "ZM Analisis Movs Contabilidad"
                     ApplicationArea = all;
                     Caption = 'Filtro Fecha', comment = 'ESP="Filtro Fecha"';
                 }
+                field(FiltroNoDocumento; FiltroNoDocumento)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Filtro Nº Documento', comment = 'ESP="Filtro Nº Documento"';
+                }
             }
             repeater(GLEntry)
             {
@@ -263,6 +268,7 @@ page 17385 "ZM Analisis Movs Contabilidad"
         Funciones: Codeunit Funciones;
         CtaContable: code[20];
         FiltroFecha: text;
+        FiltroNoDocumento: text;
 
     local procedure LoadGlEntry()
     var
@@ -270,6 +276,6 @@ page 17385 "ZM Analisis Movs Contabilidad"
     begin
         Rec.DeleteAll();
         CurrPage.Update();
-        Funciones.LoadGlEntry(Rec, CtaContable, FiltroFecha);
+        Funciones.LoadGlEntry(Rec, CtaContable, FiltroFecha, FiltroNoDocumento);
     end;
 }
