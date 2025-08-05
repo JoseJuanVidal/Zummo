@@ -46,6 +46,14 @@ pageextension 50218 "ZM Serial No. Information List" extends "Serial No. Informa
                 Image = AnalysisView;
                 RunObject = page "Analisis Plan Renove";
             }
+            action(SalesItemLdgEntry)
+            {
+                ApplicationArea = all;
+                Caption = 'Sales Item Ledger Entry', comment = 'ESP="Movs. producto Venta"';
+                Image = ItemLedger;
+                RunObject = page "Item Ledger Entries";
+                RunPageLink = Positive = const(false), "Item No." = field("Item No."), "Serial No." = field("Serial No.");
+            }
         }
         addlast(Processing)
         {

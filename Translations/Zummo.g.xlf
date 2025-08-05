@@ -34033,6 +34033,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Análisis Plan Renove"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Serial No. Information List - Action AnalisisPlanRenove - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 641495058 - Action 3553445362 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 671847571">
+          <source>Sales Item Ledger Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Movs. producto Venta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Serial No. Information List - Action SalesItemLdgEntry - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 641495058 - Action 3523965937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 671847571">
           <source>Diario Revalorización</source>
           <note from="Developer" annotates="general" priority="2">ESP="Diario Revalorización"</note>
