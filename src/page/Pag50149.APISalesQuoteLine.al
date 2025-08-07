@@ -92,7 +92,7 @@ page 50149 "API Sales Quote Line"
             Rec.Validate(Description, ItemDescription);
         end else begin
             // Aqui controlamos si el producto está bloqueado
-            if Item.Blocked then begin
+            if Item.Blocked and Item."Sales Blocked" then begin
                 Rec.Validate(Type, Rec.Type::Item);
                 Rec."No." := ItemNo;
                 Rec.Description := Item.Description;
