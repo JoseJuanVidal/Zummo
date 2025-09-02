@@ -1597,18 +1597,19 @@ codeunit 50110 "CU_Cron"
         FacturasRecordNo: Integer;
         PedidosRecordNo: Integer;
     begin
+        Funciones.ABERTIAUpdateJobNotes();
         CreateTableConnection();
         GLAccountRecordNo := AbertiaGLAccount.CreateGLAccount();
         GLEntryRecordNo := AbertiaGLEntry.CreateGLEntry(TypeUpdate, 0, 0);
         GLBudgetEntryRecordNo := AbertiaGLEntryBudget.CreateGLBudget(TypeUpdate);
-        CustomerRecordNo := AbertiaSalesCustomer.CreateSalesCustomer();
-        ItemRecordNo := ABERTIASalesItem.CreateSalesItem();
-        FacturasRecordNo := ABERTIASalesFacturas.CreateSalesFacturas(TypeUpdate);
-        FacturasRecordNo := ABERTIASalesFacturas.CreateSalesAbonos(TypeUpdate);
-        PedidosRecordNo := AbertiaSalesPedidos.CreateSalesPedidos(TypeUpdate);
+        // CustomerRecordNo := AbertiaSalesCustomer.CreateSalesCustomer();
+        // ItemRecordNo := ABERTIASalesItem.CreateSalesItem();
+        // FacturasRecordNo := ABERTIASalesFacturas.CreateSalesFacturas(TypeUpdate);
+        // FacturasRecordNo := ABERTIASalesFacturas.CreateSalesAbonos(TypeUpdate);
+        // PedidosRecordNo := AbertiaSalesPedidos.CreateSalesPedidos(TypeUpdate);
         ABERTIAUpdateSendEmail(Body, GLAccountRecordNo, GLEntryRecordNo, GLBudgetEntryRecordNo, CustomerRecordNo, ItemRecordNo, FacturasRecordNo, PedidosRecordNo);
 
-        Funciones.ABERTIAUpdateJobNotes()
+
     end;
 
     local procedure CreateTableConnection()
