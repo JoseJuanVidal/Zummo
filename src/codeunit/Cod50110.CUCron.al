@@ -91,7 +91,7 @@ codeunit 50110 "CU_Cron"
                     end;
                 'ABERTIAUpdate':
                     begin
-                        ABERTIAUpdateALL(AbertiaTypeUpdate::Periodo);
+                        ABERTIAUpdateALL(AbertiaTypeUpdate::Nuevo);
                     end;
                 'CosteMovValorGLEntry':
                     begin
