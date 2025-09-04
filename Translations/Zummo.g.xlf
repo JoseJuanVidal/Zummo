@@ -12723,6 +12723,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetLAstGLEntry_ValueEntry - NamedType lblSQLDelete</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3234355424 - Method 2287475418 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT max([Entry No_]) FROM tBIFinan3Nav WHERE [00 - Origen] ='%1'</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Zummo Inn. IC Functions - Method GetLastRecordGLEntry - NamedType lblSQLCount</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3234355424 - Method 3674950453 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
           <source>SELECT count(*) FROM tBIFinan_PresupuestoFinanzas WHERE [00 - Origen] ='%1'</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13165,7 +13170,7 @@
         </trans-unit>
         <trans-unit id="Page 2822793219 - Control 945847154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nº mov. contables</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº mov. "</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº mov. contable"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control GLEntryNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Control 35007312 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -13187,6 +13192,16 @@
           <source>Nº Ofertas/Pedidos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Ofertas/Pedidos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control SalesPedidos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Control 3077913767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ult. mov. contable</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. mov. contable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control LastGLEntry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2822793219 - Control 302368608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ult. mov. contable (Abertia)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ult. mov. contable (Abertia)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control LastGLEntryNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Control 198641044 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>

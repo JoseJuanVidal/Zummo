@@ -2330,7 +2330,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         SendMailBIUpdate(GLAccountNo, LastGLEntryNo);
     end;
 
-    procedure SQLBIGetRecordsNo(var GLRecordsNo: Integer; var GLEntryRecordsNo: Integer; var GLBudgetRecordsNo: Integer; var ItemsRecordsNo: Integer;
+    procedure SQLBIGetRecordsNo(var GLRecordsNo: Integer; var GLEntryRecordsNo: Integer; var LastGLEntryNo: Integer; var GLBudgetRecordsNo: Integer; var ItemsRecordsNo: Integer;
             var CustomerRecordsNo: Integer; var FacturasRecordsNo: Integer; var PedidosRecordsNo: Integer)
     var
         Windows: Dialog;
@@ -2338,6 +2338,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         Windows.Open('Actualizando contador registros.....');
         GetRecordsNoGLAccount(GLRecordsNo);
         GetRecordsNoGLEntry(GLEntryRecordsNo);
+        GetLastRecordGLEntry(LastGLEntryNo);
         GetRecordsNoBudgetGLEntry(GLBudgetRecordsNo);
         GetRecordsNoItemCompleto(ItemsRecordsNo);
         GetRecordsNoSalesCustomer(CustomerRecordsNo);
@@ -2403,6 +2404,35 @@ codeunit 50104 "Zummo Inn. IC Functions"
         IF SQLReader.HasRows then
             if SQLReader.Read() then
                 RecordsNo := SQLReader.GetInt32(0);
+    end;
+
+    procedure GetLastRecordGLEntry(var RecordsNo: Integer)
+    var
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        txtCommand: Text;
+        lblSQLCount: Label 'SELECT max([Entry No_]) FROM tBIFinan3Nav WHERE [00 - Origen] =''%1''';
+    begin
+        if IsNull(BISQLConnection) then
+            SQLConnect(BISQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := BISQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        case CompanyName of
+            'ZUMMO':
+                txtCommand := StrSubstNo(lblSQLCount, 'ZIM');
+            'INVESTMENTS':
+                txtCommand := StrSubstNo(lblSQLCount, 'ZINV');
+            else
+                txtCommand := StrSubstNo(lblSQLCount, '');
+        end;
+        SQLCommand.CommandText := txtCommand;
+        // ** EXEC READER **
+        //SQLReader := SQLCommand.ExecuteReader;
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            if SQLReader.Read() then
+                RecordsNo := SQLReader.GetInt64(0);
     end;
 
     procedure GetRecordsNoBudgetGLEntry(var RecordsNo: Integer)

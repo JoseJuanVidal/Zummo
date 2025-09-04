@@ -45,10 +45,11 @@ page 17463 "ABERTIA Update"
                 }
                 field(GLEntryNo; GLEntryNo)
                 {
-                    Caption = 'Nº mov. contables', comment = 'ESP="Nº mov. "';
+                    Caption = 'Nº mov. contables', comment = 'ESP="Nº mov. contable"';
                     AutoFormatType = 2;
                     AutoFormatExpression = CurrencyCode;
                 }
+
                 field(GLBudgetNo; GLBudgetNo)
                 {
                     Caption = 'Nº mov. Presupuesto', comment = 'ESP="Nº mov. Presupuesto"';
@@ -76,6 +77,22 @@ page 17463 "ABERTIA Update"
                 field(SalesPedidos; SalesPedidos)
                 {
                     Caption = 'Nº Ofertas/Pedidos', comment = 'ESP="Nº Ofertas/Pedidos"';
+                    AutoFormatType = 2;
+                    AutoFormatExpression = CurrencyCode;
+                }
+            }
+            group(Movimientos)
+            {
+                Editable = false;
+                field(LastGLEntryNo; LastGLEntryNo)
+                {
+                    Caption = 'Ult. mov. contable (Abertia)', comment = 'ESP="Ult. mov. contable (Abertia)"';
+                    AutoFormatType = 2;
+                    AutoFormatExpression = CurrencyCode;
+                }
+                field(LastGLEntry; LastGLEntry)
+                {
+                    Caption = 'Ult. mov. contable', comment = 'ESP="Ult. mov. contable"';
                     AutoFormatType = 2;
                     AutoFormatExpression = CurrencyCode;
                 }
@@ -383,10 +400,13 @@ page 17463 "ABERTIA Update"
     var
         GenLedgerSetup: Record "General Ledger Setup";
         ServiceMgtSetup: Record "Service Mgt. Setup";
+        GLEntry: Record "G/L Entry";
         cuCron: Codeunit CU_Cron;
         SQLFuntions: Codeunit "Zummo Inn. IC Functions";
         CurrencyCode: Code[10];
         GLEntryNo: Integer;
+        LastGLEntryNo: Integer;
+        LastGLEntry: Integer;
         GLBudgetNo: Integer;
         GLAccountNo: Integer;
         SalesCustomer: Integer;
@@ -412,7 +432,10 @@ page 17463 "ABERTIA Update"
     var
         myInt: Integer;
     begin
-        SQLFuntions.SQLBIGetRecordsNo(GLAccountNo, GLEntryNo, GLBudgetNo, SalesCustomer, SalesItem, SalesFacturas, SalesPedidos);
+        SQLFuntions.SQLBIGetRecordsNo(GLAccountNo, GLEntryNo, LastGLEntryNo, GLBudgetNo, SalesCustomer, SalesItem, SalesFacturas, SalesPedidos);
+        LastGLEntry := 0;
+        if GLEntry.FindLast() then
+            LastGLEntry := GLEntry."Entry No.";
     end;
 
 
