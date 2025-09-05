@@ -118,6 +118,16 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Net Weight"; "Net Weight")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Gross Weight"; "Gross Weight")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
     actions
