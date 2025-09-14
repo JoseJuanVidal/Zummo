@@ -39123,11 +39123,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Zona"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Zona - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 259848644 - Field 21420574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2725149570">
-          <source>Aplicar Precio Total Servicio</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Aplicar Precio Total Servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM EXT Customer Price Group - Field Aplicar Precio Total Servicio - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 259848644 - Field 2669540733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2725149570">
           <source>Block sales of products without tariffs</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueo ventas producto sin tarifa"</note>

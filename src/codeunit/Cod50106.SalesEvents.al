@@ -1929,13 +1929,14 @@ codeunit 50106 "SalesEvents"
         ItemListPrice: Dictionary of [code[20], Decimal];
         ItemNo: code[20];
         PriceAcum: Decimal;
+        PriceService: Decimal;
         UnitPrice: Decimal;
         Count: Integer;
     begin
-        if not CustPriceGroup.Get(SalesLine."Customer Price Group") then
-            exit;
-        if not CustPriceGroup."Aplicar Precio Total Servicio" then
-            exit;
+        // if not CustPriceGroup.Get(SalesLine."Customer Price Group") then
+        //     exit;
+        // if not CustPriceGroup."Aplicar Precio Total Servicio" then
+        //     exit;
         ToSalesLine.SetRange("Document Type", SalesLine."Document Type");
         ToSalesLine.SetRange("Document No.", SalesLine."Document No.");
         ToSalesLine.SetRange(ParentLineNo, SalesLine."Line No.");
@@ -1944,19 +1945,21 @@ codeunit 50106 "SalesEvents"
                 if Item.Get(ToSalesLine."No.") then
                     if Item.Type in [Item.Type::Inventory] then begin
                         ItemListPrice.Set(ToSalesLine."No.", 0);
+                        PriceAcum += ToSalesLine."Unit Price";
                         Count += 1;
                     end else begin
-                        PriceAcum := ToSalesLine."Unit Price";
+                        PriceService += ToSalesLine."Unit Price";
                         ItemListPrice.Set(ToSalesLine."No.", ToSalesLine."Unit Price");
                     end;
             Until ToSalesLine.next() = 0;
         if ToSalesLine.FindFirst() then
             repeat
-                UnitPrice := ItemListPrice.Get(ToSalesLine."No.");
-                if UnitPrice = 0 then begin
-                    ToSalesLine.Validate("Unit Price", Round(SalesLine."Unit Price" - PriceAcum / Count, 0.01));
-                    ToSalesLine.Modify();
-                end;
+                if Item.Get(ToSalesLine."No.") then
+                    if Item.Type in [Item.Type::Inventory] then begin
+                        UnitPrice := (SalesLine."Unit Price" - PriceService) * ToSalesLine."Unit Price" / PriceAcum;
+                        ToSalesLine.Validate("Unit Price", Round(UnitPrice / Count, 0.01));
+                        ToSalesLine.Modify();
+                    end;
             Until ToSalesLine.next() = 0;
 
     end;
