@@ -270,6 +270,11 @@ tableextension 50108 "Item" extends Item  //27
             end;
 
         }
+        field(50080; "CMMF Code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CMMF Code', comment = 'ESP="CMMF Code"';
+        }
         field(50100; "STHQuantityWhse"; Decimal)
         {
             Caption = 'Quantity Warehouse', comment = 'ESP="Cantidad Almacén"';

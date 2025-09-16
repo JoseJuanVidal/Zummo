@@ -34654,6 +34654,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action SerialInformation - Property Caption</note>
           <target>Información Nº. Serie</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 97815521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Packaging Weight data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Datos pesos embalajes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Packaging Weight data - Property Caption</note>
+          <target>Datos pesos embalajes</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 1110367523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Plastic Detail</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Detalle Plasticos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control detail - Property Caption</note>
+          <target>Detalle Plasticos</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1394728878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
@@ -34724,18 +34736,6 @@
           <source>Bajo pedido/Contra stock</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Bajo pedido / Contra stock - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Control 97815521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Packaging Weight data</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Datos pesos embalajes"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Packaging Weight data - Property Caption</note>
-          <target>Datos pesos embalajes</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Control 1110367523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Plastic Detail</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Detalle Plasticos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control detail - Property Caption</note>
-          <target>Detalle Plasticos</target>
         </trans-unit>
         <trans-unit id="PageExtension 3505869542 - Method 3606769622 - NamedType 3649616787" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3505869542">
           <source>Data Source=%1;Initial Catalog=%2;User ID=%3;Password=%4</source>
@@ -38159,6 +38159,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Centro Trabajo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CentroTrabajp_btc - Property Caption</note>
           <target>Centro Trabajo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>CMMF code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF code"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CMMF Code - Property Caption</note>
+          <target>CMMF code</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 583941985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>ContraStock/BajoPedido</source>

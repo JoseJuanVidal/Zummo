@@ -9,6 +9,14 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 OnAssistEdit_GTIN();
             end;
         }
+        addafter(GTIN)
+        {
+            field("CMMF Code"; "CMMF Code")
+            {
+                ApplicationArea = all;
+                ToolTip = 'Coded Multisource Media Format';
+            }
+        }
         addafter("Qty. on Sales Order")
         {
             field(QtyonQuotesOrder; QtyonQuotesOrder) { }

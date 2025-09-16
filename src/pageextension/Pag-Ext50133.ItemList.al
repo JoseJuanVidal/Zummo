@@ -7,6 +7,12 @@ pageextension 50133 "ItemList" extends "Item List"
             field(GTIN; GTIN)
             {
                 ApplicationArea = All;
+                ToolTip = 'Coded Multisource Media Format';
+                Visible = false;
+            }
+            field("CMMF Code"; "CMMF Code")
+            {
+                ApplicationArea = all;
                 Visible = false;
             }
             field(Ordenacion_btc; Ordenacion_btc)
