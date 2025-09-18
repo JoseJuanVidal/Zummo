@@ -14320,6 +14320,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control TypeUpdate - Property Caption</note>
           <target>Tipo Actualizacion</target>
         </trans-unit>
+        <trans-unit id="Page 2822793219 - Control 2688738546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control YearPeriodSelectd - Property Caption</note>
+          <target>Mes</target>
+        </trans-unit>
         <trans-unit id="Page 2822793219 - Action 1065034950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>GL Account</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cuentas contables"</note>
@@ -34654,6 +34660,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action SerialInformation - Property Caption</note>
           <target>Información Nº. Serie</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 643379284 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Coded Multisource Media Format</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control CMMF Code - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 97815521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Packaging Weight data</source>
           <note from="Developer" annotates="general" priority="2">ESP="Datos pesos embalajes"</note>
@@ -34933,6 +34944,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Información Nº. Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action SerialInformation - Property Caption</note>
           <target>Información Nº. Serie</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Control 1405402048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Coded Multisource Media Format</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Control GTIN - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Control 1624951095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Qty. en Stockkeeping Unit</source>
@@ -38161,10 +38177,10 @@
           <target>Centro Trabajo</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>CMMF code</source>
-          <note from="Developer" annotates="general" priority="2">ESP="CMMF code"</note>
+          <source>CMMF Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CMMF Code - Property Caption</note>
-          <target>CMMF code</target>
+          <target>CMMF Code</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 583941985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>ContraStock/BajoPedido</source>

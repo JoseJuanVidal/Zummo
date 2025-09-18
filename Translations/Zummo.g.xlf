@@ -13233,6 +13233,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipo Actualizacion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control TypeUpdate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2822793219 - Control 2688738546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control YearPeriodSelectd - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2822793219 - Action 1065034950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>GL Account</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cuentas contables"</note>

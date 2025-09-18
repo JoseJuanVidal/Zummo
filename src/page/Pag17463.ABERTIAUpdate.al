@@ -19,6 +19,11 @@ page 17463 "ABERTIA Update"
                     Caption = 'Tipo Actualización', comment = 'ESP="Tipo Actualizacion"';
                     ToolTip = 'Seleccionamos el tipo de actualización';
                 }
+                field(YearPeriodSelectd; YearPeriodSelectd)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Mes', comment = 'ESP="Mes"';
+                }
                 field(PeriodSelectd; PeriodSelectd)
                 {
                     ApplicationArea = all;
@@ -199,19 +204,21 @@ page 17463 "ABERTIA Update"
                         if Confirm(lblConfirm) then
                             case TypeUpdate of
                                 typeUpdate::Todo:
-                                    Funciones.SQLUpdateALL(true, 0, PeriodSelectd);
+                                    Funciones.SQLUpdateALL(true, 0, YearPeriodSelectd, PeriodSelectd);
                                 typeUpdate::Nuevo:
-                                    Funciones.SQLUpdateALL(false, 0, PeriodSelectd);
+                                    Funciones.SQLUpdateALL(false, 0, YearPeriodSelectd, PeriodSelectd);
                                 TypeUpdate::"Nº Mov":
                                     begin
                                         if EntryNoIni > 0 then
-                                            Funciones.SQLUpdateALL(false, EntryNoIni, PeriodSelectd);
+                                            Funciones.SQLUpdateALL(false, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
                                     end;
                                 TypeUpdate::Periodo:
                                     begin
+                                        if (YearPeriodSelectd < 2019) or (YearPeriodSelectd > 2999) then
+                                            Error('Debe seleccionar un Año');
                                         if PeriodSelectd in [PeriodSelectd::" "] then
-                                            Error('Debe Seleccionar un mes del año %1', WorkDate());
-                                        Funciones.SQLUpdateALL(true, 0, PeriodSelectd);
+                                            Error('Debe Seleccionar un mes del año %2', WorkDate());
+                                        Funciones.SQLGLGLEntrysUpdate(false, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
                                     end;
                             end;
                         UpdateEntryNos();
@@ -231,19 +238,21 @@ page 17463 "ABERTIA Update"
                         if Confirm(lblConfirm) then
                             case TypeUpdate of
                                 typeUpdate::Todo:
-                                    Funciones.SQLUpdateALL(true, 0, PeriodSelectd);
+                                    Funciones.SQLUpdateALL(true, 0, YearPeriodSelectd, PeriodSelectd);
                                 typeUpdate::Nuevo:
-                                    Funciones.SQLUpdateALL(false, 0, PeriodSelectd);
+                                    Funciones.SQLUpdateALL(false, 0, YearPeriodSelectd, PeriodSelectd);
                                 TypeUpdate::"Nº Mov":
                                     begin
                                         if EntryNoIni > 0 then
-                                            Funciones.SQLUpdateALL(false, EntryNoIni, PeriodSelectd);
+                                            Funciones.SQLGLGLEntrysUpdate(false, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
                                     end;
                                 TypeUpdate::Periodo:
                                     begin
+                                        if (YearPeriodSelectd < 2019) or (YearPeriodSelectd < 2999) then
+                                            Error('Debe seleccionar un Año');
                                         if PeriodSelectd in [PeriodSelectd::" "] then
                                             Error('Debe Seleccionar un mes del año %2', WorkDate());
-                                        Funciones.SQLUpdateALL(false, EntryNoIni, PeriodSelectd);
+                                        Funciones.SQLGLGLEntrysUpdate(false, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
                                     end;
                             end;
                         UpdateEntryNos();
@@ -415,6 +424,7 @@ page 17463 "ABERTIA Update"
         SalesPedidos: Integer;
         TypeUpdate: Option Nuevo,"Nº Mov",Todo,Periodo;
         PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre;
+        YearPeriodSelectd: Integer;
         EntryNoIni: Integer;
 
     procedure OpenTableConnection()

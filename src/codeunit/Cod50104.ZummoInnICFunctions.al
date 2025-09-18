@@ -2320,13 +2320,13 @@ codeunit 50104 "Zummo Inn. IC Functions"
         BISQLConnection: DotNet SqlConnection;
         InventarioSQLConnection: DotNet SqlConnection;
 
-    procedure SQLUpdateALL(DeleteAll: Boolean; EntryNoIni: Integer; PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre)
+    procedure SQLUpdateALL(DeleteAll: Boolean; EntryNoIni: Integer; YearPeriodSelectd: integer; PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre)
     var
         GLAccountNo: Integer;
         LastGLEntryNo: Integer;
     begin
-        //GLAccountNo := SQLGLAccountsUpdate();
-        LastGLEntryNo := SQLGLGLEntrysUpdate(DeleteAll, EntryNoIni, PeriodSelectd);
+        GLAccountNo := SQLGLAccountsUpdate();
+        LastGLEntryNo := SQLGLGLEntrysUpdate(DeleteAll, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
         SendMailBIUpdate(GLAccountNo, LastGLEntryNo);
     end;
 
@@ -2679,7 +2679,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         exit(true);
     end;
 
-    local procedure SQLGLGLEntrysUpdate(DeleteAll: Boolean; EntryNoIni: Integer; PeriodSelected: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre) RecordNo: Integer
+    procedure SQLGLGLEntrysUpdate(DeleteAll: Boolean; EntryNoIni: Integer; YearPeriodSelectd: integer; PeriodSelected: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre) RecordNo: Integer
     var
         GLSetup: Record "General Ledger Setup";
         GLEntry: Record "G/L Entry";
@@ -2703,7 +2703,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         GLSetup.Get();
         GLEntry.Reset();
         LastEntryNo := GetLAstGLEntryABERTIA();
-        if not DeleteAll then
+        if PeriodSelected in [PeriodSelected::" "] then
             if (EntryNoIni = 0) then
                 GLEntry.SetFilter("Entry No.", '%1..', LastEntryNo)
             else
@@ -2711,29 +2711,29 @@ codeunit 50104 "Zummo Inn. IC Functions"
         //miramos si es tipo periodo o fecha
         case PeriodSelected of
             PeriodSelected::Enero:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 01), CALCDATE('<CM>', DMY2DATE(01, 01)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 01, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 01, YearPeriodSelectd)));
             PeriodSelected::Febrero:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 02), CALCDATE('<CM>', DMY2DATE(01, 02)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 02, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 02, YearPeriodSelectd)));
             PeriodSelected::Marzo:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 03), CALCDATE('<CM>', DMY2DATE(01, 03)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 03, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 03, YearPeriodSelectd)));
             PeriodSelected::Abril:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 04), CALCDATE('<CM>', DMY2DATE(01, 04)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 04, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 04, YearPeriodSelectd)));
             PeriodSelected::Mayo:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 05), CALCDATE('<CM>', DMY2DATE(01, 05)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 05, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 05, YearPeriodSelectd)));
             PeriodSelected::Junio:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 06), CALCDATE('<CM>', DMY2DATE(01, 06)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 06, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 06, YearPeriodSelectd)));
             PeriodSelected::Julio:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 07), CALCDATE('<CM>', DMY2DATE(01, 07)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 07, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 07, YearPeriodSelectd)));
             PeriodSelected::Agosto:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 08), CALCDATE('<CM>', DMY2DATE(01, 08)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 08, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 08, YearPeriodSelectd)));
             PeriodSelected::Septiembre:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 09), CALCDATE('<CM>', DMY2DATE(01, 09)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 09, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 09, YearPeriodSelectd)));
             PeriodSelected::Octubre:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 10), CALCDATE('<CM>', DMY2DATE(01, 10)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 10, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 10, YearPeriodSelectd)));
             PeriodSelected::Noviembre:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 11), CALCDATE('<CM>', DMY2DATE(01, 11)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 11, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 11, YearPeriodSelectd)));
             PeriodSelected::Diciembre:
-                GLEntry.SetRange("Posting Date", DMY2DATE(01, 12), CALCDATE('<CM>', DMY2DATE(01, 12)));
+                GLEntry.SetRange("Posting Date", DMY2DATE(01, 12, YearPeriodSelectd), CALCDATE('<CM>', DMY2DATE(01, 12, YearPeriodSelectd)));
         end;
 
         if GLEntry.FindSet() then
