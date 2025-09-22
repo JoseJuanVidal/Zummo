@@ -293,7 +293,7 @@ table 17458 "ABERTIA GL Entry"
                             ABGLEntry.SetRange("00 - Origen", '');
                     end;
                     if ABGLEntry.FindLast() then
-                        GLEntry.SetRange("Entry No.", ABGLEntry."Entry No_");
+                        GLEntry.SetFilter("Entry No.", '%1..', ABGLEntry."Entry No_");
                 end;
             TypeUpdate::Periodo:
                 begin
@@ -337,7 +337,6 @@ table 17458 "ABERTIA GL Entry"
                 end;
         end;
 
-        GLEntry.SetFilter("Entry No.", '%1..', EntryNo);
         if GLEntry.FindSet() then
             repeat
                 Window.Update(1, GLEntry."Entry No.");
