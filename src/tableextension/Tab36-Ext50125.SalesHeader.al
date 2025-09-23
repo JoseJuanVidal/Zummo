@@ -122,7 +122,7 @@ tableextension 50125 "SalesHeader" extends "Sales Header"  //36
         {
             DataClassification = CustomerContent;
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("GrupoCliente"), TipoRegistro = const(Tabla));
-            Caption = 'GrupoCliente', comment = 'ESP="GrupoCliente"';
+            Caption = 'Cliente Tipo', comment = 'ESP="Cliente Tipo"';
         }
 
         field(50025; Perfil_btc; Code[20])

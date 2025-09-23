@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50125,"Kind":17,"Name":"SalesHeader","Namespace":""},{"Id":50136,"Kind":17,"Name":"ReturnShipmentHeader","Namespace":""},{"Id":50135,"Kind":17,"Name":"SalesHeaderArchive","Namespace":""},{"Id":50123,"Kind":17,"Name":"SalesShipmentHeader","Namespace":""},{"Id":50134,"Kind":17,"Name":"SalesCrMemoHeader","Namespace":""},{"Id":50133,"Kind":17,"Name":"SalesInvoiceHeader","Namespace":""}],"Removed":[]}

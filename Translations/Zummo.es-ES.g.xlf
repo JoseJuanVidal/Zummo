@@ -39542,10 +39542,10 @@
           <target>Fecha.Rec.Mail</target>
         </trans-unit>
         <trans-unit id="TableExtension 175460751 - Field 3486487259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
-          <source>GrupoCliente</source>
-          <note from="Developer" annotates="general" priority="2">ESP="GrupoCliente"</note>
+          <source>Cliente Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ReturnShipmentHeader - Field GrupoCliente_btc - Property Caption</note>
-          <target>GrupoCliente</target>
+          <target>Cliente Tipo</target>
         </trans-unit>
         <trans-unit id="TableExtension 175460751 - Field 1510862209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1721347679">
           <source>PDF Saved</source>
@@ -39739,10 +39739,10 @@
           <target>Fecha.Rec.Mail</target>
         </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 3486487259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>GrupoCliente</source>
-          <note from="Developer" annotates="general" priority="2">ESP="GrupoCliente"</note>
+          <source>Cliente Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field GrupoCliente_btc - Property Caption</note>
-          <target>GrupoCliente</target>
+          <target>Cliente Tipo</target>
         </trans-unit>
         <trans-unit id="TableExtension 3566220088 - Field 1510862209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>PDF Saved</source>
@@ -40054,10 +40054,10 @@
           <target>Fecha.Rec.Mail</target>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 3486487259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
-          <source>GrupoCliente</source>
-          <note from="Developer" annotates="general" priority="2">ESP="GrupoCliente"</note>
+          <source>Cliente Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeader - Field GrupoCliente_btc - Property Caption</note>
-          <target>GrupoCliente</target>
+          <target>Cliente Tipo</target>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 1510862209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>PDF Saved</source>
@@ -40220,10 +40220,10 @@
           <target>Fecha.Rec.Mail</target>
         </trans-unit>
         <trans-unit id="TableExtension 746889487 - Field 3486487259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
-          <source>GrupoCliente</source>
-          <note from="Developer" annotates="general" priority="2">ESP="GrupoCliente"</note>
+          <source>Cliente Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesHeaderArchive - Field GrupoCliente_btc - Property Caption</note>
-          <target>GrupoCliente</target>
+          <target>Cliente Tipo</target>
         </trans-unit>
         <trans-unit id="TableExtension 746889487 - Field 1510862209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
           <source>PDF Saved</source>
@@ -40403,10 +40403,10 @@
           <target>Fecha Aseguradora</target>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 3486487259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
-          <source>GrupoCliente</source>
-          <note from="Developer" annotates="general" priority="2">ESP="GrupoCliente"</note>
+          <source>Cliente Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field GrupoCliente_btc - Property Caption</note>
-          <target>GrupoCliente</target>
+          <target>Cliente Tipo</target>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 1510862209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>PDF Saved</source>
@@ -40954,10 +40954,10 @@
           <target>Fecha.Rec.Mail</target>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 3486487259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
-          <source>GrupoCliente</source>
-          <note from="Developer" annotates="general" priority="2">ESP="GrupoCliente"</note>
+          <source>Cliente Tipo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesShipmentHeader - Field GrupoCliente_btc - Property Caption</note>
-          <target>GrupoCliente</target>
+          <target>Cliente Tipo</target>
         </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 1510862209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>PDF Saved</source>

@@ -95,7 +95,7 @@ tableextension 50134 "SalesCrMemoHeader" extends "Sales Cr.Memo Header" //114
         {
             DataClassification = CustomerContent;
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("GrupoCliente"), TipoRegistro = const(Tabla));
-            Caption = 'GrupoCliente', comment = 'ESP="GrupoCliente"';
+            Caption = 'Cliente Tipo', comment = 'ESP="Cliente Tipo"';
         }
 
         field(50025; Perfil_btc; Code[20])
