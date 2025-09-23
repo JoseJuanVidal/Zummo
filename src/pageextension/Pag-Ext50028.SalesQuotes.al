@@ -41,6 +41,31 @@ pageextension 50028 "SalesQuotes" extends "Sales Quotes"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field(AreaManager_btc; AreaManager_btc)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(Canal_btc; Canal_btc)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(CentralCompras_btc; CentralCompras_btc)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(GrupoCliente_btc; GrupoCliente_btc)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(SubCliente_btc; SubCliente_btc)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
     actions
