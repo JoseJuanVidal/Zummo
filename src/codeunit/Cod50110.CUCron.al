@@ -1630,10 +1630,16 @@ codeunit 50110 "CU_Cron"
     var
         recSMTPSetup: Record "SMTP Mail Setup";
         cduSmtp: Codeunit "SMTP Mail";
+        ZummoInnFun: Codeunit "Zummo Inn. IC Functions";
         txtAsunto: text;
+        LastGLEntryNo: Integer;
+        RemoteLastGLEntryNo: Integer;
     begin
+        ZummoInnFun.GetLastRecordGLEntry(RemoteLastGLEntryNo);
+        LastGLEntryNo := ZummoInnFun.GetLastEntryNoGLEntry();
         if Body = '' then
-            Body := ABERTIACuerpoCorreo(GLAccountRecordNo, GLEntryRecordNo, GLBudgetEntryRecordNo, CustomerRecordNo, ItemRecordNo, FacturasRecordNo, PedidosRecordNo);
+            Body := ABERTIACuerpoCorreo(GLAccountRecordNo, GLEntryRecordNo, GLBudgetEntryRecordNo, CustomerRecordNo, ItemRecordNo, FacturasRecordNo, PedidosRecordNo,
+                    LastGLEntryNo, RemoteLastGLEntryNo);
         txtAsunto := StrSubstNo('Actualización BBDD ABERTIA BI %1', WorkDate());
         recSMTPSetup.Get();
         Clear(cduSmtp);
@@ -1671,7 +1677,7 @@ codeunit 50110 "CU_Cron"
     end;
 
     local procedure ABERTIACuerpoCorreo(GLAccountRecordNo: Integer; GLEntryRecordNo: Integer; GLBudgetEntryRecordNo: Integer;
-        CustomerRecordNo: Integer; ItemRecordNo: Integer; FacturasRecordNo: Integer; PedidosRecordNo: Integer) Body: Text;
+        CustomerRecordNo: Integer; ItemRecordNo: Integer; FacturasRecordNo: Integer; PedidosRecordNo: Integer; LastGLEntryNo: Integer; RemoteLastGLEntryNo: Integer) Body: Text;
     var
         LF: Char;
         CR: Char;
@@ -1687,6 +1693,11 @@ codeunit 50110 "CU_Cron"
         Body += StrSubstNo('Nº Productos: %1', ItemRecordNo) + Format(CR) + FORMAT(LF);
         Body += StrSubstNo('Nº Líneas Facturas: %1', FacturasRecordNo) + Format(CR) + FORMAT(LF);
         Body += StrSubstNo('Nº Líneas Pedidos: %1', PedidosRecordNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('', PedidosRecordNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('', PedidosRecordNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('', PedidosRecordNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('Nº Ult. Mov Contabilidad: %1', LastGLEntryNo) + Format(CR) + FORMAT(LF);
+        Body += StrSubstNo('Nº Ult. Mov Contabilidad (Remoto): %1', RemoteLastGLEntryNo) + Format(CR) + FORMAT(LF);
     end;
 
     procedure ABERTIALOGUPDATE(Type: Text; texto: Text)

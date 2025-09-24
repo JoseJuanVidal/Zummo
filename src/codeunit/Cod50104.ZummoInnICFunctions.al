@@ -2435,6 +2435,14 @@ codeunit 50104 "Zummo Inn. IC Functions"
                 RecordsNo := SQLReader.GetInt64(0);
     end;
 
+    procedure GetLastEntryNoGLEntry() LastGLEntry: Integer
+    var
+        GLEntry: Record "G/L Entry";
+    begin
+        if GLEntry.FindLast() then
+            LastGLEntry := GLEntry."Entry No.";
+    end;
+
     procedure GetRecordsNoBudgetGLEntry(var RecordsNo: Integer)
     var
         SQLCommand: DotNet SqlCommand;
