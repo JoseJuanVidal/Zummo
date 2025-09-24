@@ -204,13 +204,15 @@ page 17463 "ABERTIA Update"
                         if Confirm(lblConfirm) then
                             case TypeUpdate of
                                 typeUpdate::Todo:
-                                    Funciones.SQLUpdateALL(true, 0, YearPeriodSelectd, PeriodSelectd);
+                                    // Funciones.SQLUpdateALL(true, 0, YearPeriodSelectd, PeriodSelectd);
+                                    Funciones.SQLGLGLEntrysUpdate(true, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
                                 typeUpdate::Nuevo:
-                                    Funciones.SQLUpdateALL(false, 0, YearPeriodSelectd, PeriodSelectd);
+                                    // Funciones.SQLUpdateALL(false, 0, YearPeriodSelectd, PeriodSelectd);
+                                    Funciones.SQLGLGLEntrysUpdate(false, 0, YearPeriodSelectd, PeriodSelectd);
                                 TypeUpdate::"Nº Mov":
                                     begin
                                         if EntryNoIni > 0 then
-                                            Funciones.SQLUpdateALL(false, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
+                                            Funciones.SQLGLGLEntrysUpdate(false, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
                                     end;
                                 TypeUpdate::Periodo:
                                     begin
