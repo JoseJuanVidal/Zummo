@@ -14293,15 +14293,15 @@
           <target>Opciones</target>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Control 2094405709 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Si indicamos un numero, siempre se parte desde ese Movimiento</source>
+          <source>Si indicamos El filtro por numero Movimiento</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control EntryNoIni - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Control 2094405709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nº Movimiento inicial</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº Movimiento inicial"</note>
+          <source>Filtro Nº Movimiento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Nº Movimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ABERTIA Update - Control EntryNoIni - Property Caption</note>
-          <target>Nº Movimiento inicial</target>
+          <target>Filtro Nº Movimiento</target>
         </trans-unit>
         <trans-unit id="Page 2822793219 - Control 3980592331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Mes</source>

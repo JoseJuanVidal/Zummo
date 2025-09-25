@@ -32,8 +32,8 @@ page 17463 "ABERTIA Update"
                 field(EntryNoIni; EntryNoIni)
                 {
                     ApplicationArea = all;
-                    Caption = 'Nº Movimiento inicial', comment = 'ESP="Nº Movimiento inicial"';
-                    ToolTip = 'Si indicamos un numero, siempre se parte desde ese Movimiento';
+                    Caption = 'Filtro Nº Movimiento', comment = 'ESP="Filtro Nº Movimiento"';
+                    ToolTip = 'Si indicamos El filtro por numero Movimiento';
                 }
             }
             group(Estado)
@@ -208,10 +208,10 @@ page 17463 "ABERTIA Update"
                                     Funciones.SQLGLGLEntrysUpdate(true, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
                                 typeUpdate::Nuevo:
                                     // Funciones.SQLUpdateALL(false, 0, YearPeriodSelectd, PeriodSelectd);
-                                    Funciones.SQLGLGLEntrysUpdate(false, 0, YearPeriodSelectd, PeriodSelectd);
+                                    Funciones.SQLGLGLEntrysUpdate(false, '', YearPeriodSelectd, PeriodSelectd);
                                 TypeUpdate::"Nº Mov":
                                     begin
-                                        if EntryNoIni > 0 then
+                                        if EntryNoIni <> '' then
                                             Funciones.SQLGLGLEntrysUpdate(false, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
                                     end;
                                 TypeUpdate::Periodo:
@@ -240,12 +240,12 @@ page 17463 "ABERTIA Update"
                         if Confirm(lblConfirm) then
                             case TypeUpdate of
                                 typeUpdate::Todo:
-                                    Funciones.SQLUpdateALL(true, 0, YearPeriodSelectd, PeriodSelectd);
+                                    Funciones.SQLUpdateALL(true, '', YearPeriodSelectd, PeriodSelectd);
                                 typeUpdate::Nuevo:
-                                    Funciones.SQLUpdateALL(false, 0, YearPeriodSelectd, PeriodSelectd);
+                                    Funciones.SQLUpdateALL(false, '', YearPeriodSelectd, PeriodSelectd);
                                 TypeUpdate::"Nº Mov":
                                     begin
-                                        if EntryNoIni > 0 then
+                                        if EntryNoIni <> '' then
                                             Funciones.SQLGLGLEntrysUpdate(false, EntryNoIni, YearPeriodSelectd, PeriodSelectd);
                                     end;
                                 TypeUpdate::Periodo:
@@ -427,7 +427,7 @@ page 17463 "ABERTIA Update"
         TypeUpdate: Option Nuevo,"Nº Mov",Todo,Periodo;
         PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre;
         YearPeriodSelectd: Integer;
-        EntryNoIni: Integer;
+        EntryNoIni: Text;
 
     procedure OpenTableConnection()
     begin

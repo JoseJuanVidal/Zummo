@@ -2320,7 +2320,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         BISQLConnection: DotNet SqlConnection;
         InventarioSQLConnection: DotNet SqlConnection;
 
-    procedure SQLUpdateALL(DeleteAll: Boolean; EntryNoIni: Integer; YearPeriodSelectd: integer; PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre)
+    procedure SQLUpdateALL(DeleteAll: Boolean; EntryNoIni: Text; YearPeriodSelectd: integer; PeriodSelectd: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre)
     var
         GLAccountNo: Integer;
         LastGLEntryNo: Integer;
@@ -2687,7 +2687,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
         exit(true);
     end;
 
-    procedure SQLGLGLEntrysUpdate(DeleteAll: Boolean; EntryNoIni: Integer; YearPeriodSelectd: integer; PeriodSelected: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre) RecordNo: Integer
+    procedure SQLGLGLEntrysUpdate(DeleteAll: Boolean; EntryNoIni: text; YearPeriodSelectd: integer; PeriodSelected: Option " ",Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre) RecordNo: Integer
     var
         GLSetup: Record "General Ledger Setup";
         GLEntry: Record "G/L Entry";
@@ -2712,10 +2712,10 @@ codeunit 50104 "Zummo Inn. IC Functions"
         GLEntry.Reset();
         LastEntryNo := GetLAstGLEntryABERTIA();
         if PeriodSelected in [PeriodSelected::" "] then
-            if (EntryNoIni = 0) then
+            if (EntryNoIni = '') then
                 GLEntry.SetFilter("Entry No.", '%1..', LastEntryNo)
             else
-                GLEntry.SetFilter("Entry No.", '%1..', EntryNoIni);
+                GLEntry.SetFilter("Entry No.", EntryNoIni);
         //miramos si es tipo periodo o fecha
         case PeriodSelected of
             PeriodSelected::Enero:
@@ -2748,10 +2748,10 @@ codeunit 50104 "Zummo Inn. IC Functions"
             repeat
                 windows.Update(2, GLEntry."Entry No.");
                 windows.Update(3, GLEntry."Posting Date");
-                if abs(GLEntry.Amount) < 490000000 then begin
-                    UpdateGLEntry(GLEntry);
-                    RecordNo += 1;
-                end;
+                // if abs(GLEntry.Amount) < 490000000 then begin
+                UpdateGLEntry(GLEntry);
+                RecordNo += 1;
+            // end;
             until GLEntry.Next() = 0;
         windows.Close();
     end;
@@ -2924,6 +2924,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
     local procedure FormatDecimaNumber(Value: Decimal) Result: text
     begin
         // convertimos el decimal en texto, sustituyendo la COMMA por un punto por el Idioma ENG
+        Value := Round(Value, 0.01);
         Result := format(Value, 0, 1);
         Result := ConvertStr(Result, ',', '.');
     end;
