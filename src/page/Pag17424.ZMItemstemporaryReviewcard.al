@@ -44,7 +44,7 @@ page 17424 "ZM Items temporary Review card"
                     ToolTip = 'Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas.'
                         , comment = 'ESP="Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas."';
                 }
-                field(Type; Type)
+                field("Clasification Type"; "Clasification Type")
                 {
                     ApplicationArea = all;
                     ToolTip = 'Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).'

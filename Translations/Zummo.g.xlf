@@ -11023,6 +11023,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cartón Embalaje (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Carton - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 2028197887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasification Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Clasification Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 2028197887 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Raw Material,Service,Item Out of stock</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Materia Prima,Servicio,Productos sin Stock"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Clasification Type - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 3329268434 - Field 430424374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Codigo Empleado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Codigo Empleado"</note>
@@ -19843,6 +19853,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Blocked - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 2975127552 - Control 2028197887 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario)."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Clasification Type - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2975127552 - Control 3520847126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Plataforma ITBID</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plataforma ITBID"</note>
@@ -19867,11 +19882,6 @@
           <source>Indica el estado de la solicitud de datos.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Indica el estado de la solicitud de datos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control State Creation - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2975127552 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario)."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items temporary Review card - Control Type - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2975127552 - Control 1795699428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prices &amp; Sales</source>
@@ -20179,8 +20189,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Property PromotedActionCategories</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Items registration</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Alta de productos"</note>
+          <source>Product Registration Request</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud Alta de productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - NamedType 743610005" size-unit="char" translate="yes" xml:space="preserve">
@@ -20248,6 +20258,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Blocked - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 2028197887 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario)."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Clasification Type - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Control 3520847126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Plataforma ITBID</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plataforma ITBID"</note>
@@ -20272,11 +20287,6 @@
           <source>Indica el estado de la solicitud de datos.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Indica el estado de la solicitud de datos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control State Creation - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3139896982 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario)."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Type - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Control 1795699428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prices &amp; Sales</source>
@@ -20354,8 +20364,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Property PromotedActionCategories</note>
         </trans-unit>
         <trans-unit id="Page 3858912784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Items temporary list</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Lista Alta de productos"</note>
+          <source>Product Registration Request</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud Alta de productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3858912784 - NamedType 743610005" size-unit="char" translate="yes" xml:space="preserve">
@@ -20818,15 +20828,35 @@
           <note from="Developer" annotates="general" priority="2">ESP="Lista editar clientes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 869453865 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to update the Dimensions of the selected clients?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Actualizar las Dimensiones de los clientes seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 869453865 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>User %1 is not authorised for this page. Notify System Administration</source>
           <note from="Developer" annotates="general" priority="2">ESP="El usuario %1 no está autorizado para está pagina. Avise a Administración del sistema"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - NamedType lblError</note>
         </trans-unit>
+        <trans-unit id="Page 869453865 - Method 532870303 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer #1##################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente #1##################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - Method UpdateDimensionAreaManager - NamedType lblWindow</note>
+        </trans-unit>
+        <trans-unit id="Page 869453865 - Action 391316011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensions</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dimensiones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - Action DimensionsSingle - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 869453865 - Action 3648746709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Change Clasification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar datos clasificación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - Action ChangeClasification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 869453865 - Action 1042026828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Area Manager dimension</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Act. dimension Area Manager"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZZM Customer List Edit - Action UpdateDimeAreaManager - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3011595053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Credit Memo</source>

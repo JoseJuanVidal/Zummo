@@ -1,6 +1,6 @@
 page 17471 "ZM PL Items temporary card"
 {
-    Caption = 'Items registration', Comment = 'ESP="Alta de productos"';
+    Caption = 'Product Registration Request', Comment = 'ESP="Solicitud Alta de productos"';
     PageType = card;
     SourceTable = "ZM PL Items temporary";
     UsageCategory = Tasks;
@@ -46,7 +46,7 @@ page 17471 "ZM PL Items temporary card"
                         , comment = 'ESP="Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas."';
                     Editable = boolEditBaseUnit;
                 }
-                field(Type; Type)
+                field("Clasification Type"; "Clasification Type")
                 {
                     ApplicationArea = all;
                     ToolTip = 'Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).'

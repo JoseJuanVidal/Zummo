@@ -215,8 +215,33 @@ page 17209 "ZZM Customer List Edit"
                     ActionChangeClasification();
                 end;
             }
-        }
+            action(UpdateDimeAreaManager)
+            {
+                ApplicationArea = all;
+                Caption = 'Update Area Manager dimension', comment = 'ESP="Act. dimension Area Manager"';
+                Image = UpdateUnitCost;
+                Promoted = true;
+                PromotedCategory = Process;
 
+                trigger OnAction()
+                begin
+                    UpdateDimensionAreaManager();
+                end;
+            }
+        }
+        area(Navigation)
+        {
+            action(DimensionsSingle)
+            {
+                ApplicationArea = all;
+                Caption = 'Dimensions', comment = 'ESP="Dimensiones"';
+                Image = Dimensions;
+                Promoted = true;
+                PromotedCategory = Category4;
+                RunObject = page "Default Dimensions";
+                RunPageLink = "Table ID" = const(18), "No." = field("No.");
+            }
+        }
     }
     trigger OnOpenPage()
     begin
@@ -229,6 +254,8 @@ page 17209 "ZZM Customer List Edit"
 
     var
         UserSetup: Record "User Setup";
+        Customer: Record Customer;
+        lblConfirm: Label 'Do you want to update the Dimensions of the selected clients?', comment = 'ESP="¿Desea Actualizar las Dimensiones de los clientes seleccionados?"';
         lblError: Label 'User %1 is not authorised for this page. Notify System Administration', comment = 'ESP="El usuario %1 no está autorizado para está pagina. Avise a Administración del sistema"';
 
     local procedure ActionChangeClasification()
@@ -241,5 +268,65 @@ page 17209 "ZZM Customer List Edit"
         CurrPage.SetSelectionFilter(Customer);
         Functions.CustomerChangeClasification(Customer);
 
+    end;
+
+    local procedure UpdateDimensionAreaManager()
+    var
+        Window: Dialog;
+        lblWindow: Label 'Customer #1##################', comment = 'ESP="Cliente #1##################"';
+    begin
+        Customer.Reset();
+        CurrPage.SetSelectionFilter(Customer);
+        if not Confirm(lblConfirm) then
+            exit;
+        Window.Open(lblWindow);
+        if Customer.FindFirst() then
+            repeat
+                Window.Update(1, Customer."No.");
+                if Customer.AreaManager_btc <> '' then
+                    UpdateCustomerDimAreaManager();
+            Until Customer.next() = 0;
+        Window.Close();
+    end;
+
+    local procedure UpdateCustomerDimAreaManager()
+    var
+        GLSetup: Record "General Ledger Setup";
+        DefaultDimension: Record "Default Dimension";
+    begin
+        GLSetup.Get();
+        GLSetup.TestField("Shortcut Dimension 7 Code");   // Area Manager
+        DefaultDimension.Reset();
+        DefaultDimension.SetRange("Table ID", Database::Customer);
+        DefaultDimension.SetRange("No.", Customer."No.");
+        DefaultDimension.SetRange("Dimension Code", GLSetup."Shortcut Dimension 7 Code");
+        if not DefaultDimension.FindFirst() then begin
+            DefaultDimension.Init();
+            DefaultDimension.Validate("Table ID", Database::Customer);
+            DefaultDimension.Validate("No.", Customer."No.");
+            DefaultDimension.Validate("Dimension Code", GLSetup."Shortcut Dimension 7 Code");
+            DefaultDimension.Insert();
+        end else
+            if DefaultDimension."Dimension Value Code" = Customer.AreaManager_btc then
+                exit;
+        CheckDimensionValue(DefaultDimension."Dimension Code", Customer.AreaManager_btc);
+        DefaultDimension.Validate("Dimension Value Code", Customer.AreaManager_btc);
+        DefaultDimension.Modify();
+    end;
+
+    local procedure CheckDimensionValue(DimensionCode: code[20]; Value: code[20])
+    var
+        DimensionValue: Record "Dimension Value";
+    begin
+        DimensionValue.Reset();
+        DimensionValue.SetRange("Dimension Code", DimensionCode);
+        DimensionValue.SetRange(Code, Value);
+        if DimensionValue.FindFirst() then
+            exit;
+        DimensionValue.Init();
+        DimensionValue.Validate("Dimension Code", DimensionCode);
+        DimensionValue.Validate(Code, Value);
+        DimensionValue.Name := Value;
+        DimensionValue.Insert();
     end;
 }

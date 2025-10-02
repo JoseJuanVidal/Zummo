@@ -1,7 +1,7 @@
 page 17458 "ZM PL Items temporary list"
 {
     ApplicationArea = All;
-    Caption = 'Items temporary list', Comment = 'ESP="Lista Alta de productos"';
+    Caption = 'Product Registration Request', Comment = 'ESP="Solicitud Alta de productos"';
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     SourceTable = "ZM PL Items temporary";

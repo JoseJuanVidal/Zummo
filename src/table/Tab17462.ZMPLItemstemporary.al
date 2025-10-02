@@ -38,6 +38,7 @@ table 17462 "ZM PL Items temporary"
             Caption = 'Type', comment = 'ESP="Tipo"';
             OptionCaption = 'Inventory,Service,Non-Inventory', comment = 'ESP="Inventario,Servicio,Fuera de inventario"';
             OptionMembers = Inventory,Service,"Non-Inventory";
+            Editable = false;
         }
         field(11; "Inventory Posting Group"; Code[20])
         {
@@ -688,7 +689,26 @@ table 17462 "ZM PL Items temporary"
             Caption = 'Vendor Wood Packing (kg)', comment = 'ESP="Madera Embalaje proveedor (kg)"';
             DecimalPlaces = 6 : 6;
         }
+        field(50800; "Clasification Type"; Option)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Clasification Type', comment = 'ESP="Clasificación"';
+            OptionCaption = ' ,Raw Material,Service,Item Out of stock', comment = 'ESP=" ,Materia Prima,Servicio,Productos sin Stock"';
+            OptionMembers = " ",Inventory,Service,"Non-Inventory";
+            Editable = false;
 
+            trigger OnValidate()
+            begin
+                case Rec."Clasification Type" of
+                    Rec."Clasification Type"::Inventory:
+                        Rec.Type := Rec.Type::Inventory;
+                    Rec."Clasification Type"::"Non-Inventory":
+                        Rec.Type := Rec.Type::"Non-Inventory";
+                    Rec."Clasification Type"::Service:
+                        Rec.Type := Rec.Type::Service;
+                end;
+            end;
+        }
         field(59001; Largo; Decimal)
         {
             DataClassification = CustomerContent;
