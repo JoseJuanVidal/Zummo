@@ -218,6 +218,8 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
                     if not Confirm(lblConfirm, false, GLEntry.Count) then
                         exit;
                 Funciones.ChangeDimensionCECOGLEntries(GLEntry, dimGlobal1, dimGlobal2);
+                // Añadimos opcion de cambiar tambien los Activos Fijos
+                Funciones.ChangeDimSetEntryFixedAssetsEntry(GlEntry);
                 Message('Proceso finalizado');
             end;
         end;
@@ -228,8 +230,12 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
         myInt: Integer;
     begin
         GLSetup.Get();
-        if (PostingDate < GLSetup."Allow Posting From") OR (PostingDate > GLSetup."Allow Posting To") then
-            exit(true);
+        if GLSetup."Allow Posting From" <> 0D then
+            if (PostingDate < GLSetup."Allow Posting From") then
+                exit(true);
+        if GLSetup."Allow Posting to" <> 0D then
+            if (PostingDate > GLSetup."Allow Posting To") then
+                exit(true);
     end;
 
 }

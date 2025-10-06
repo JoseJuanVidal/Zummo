@@ -76,7 +76,11 @@ page 50145 "CambioDimensionesMovConta"
                     recGlEntry."Global Dimension 1 Code" := GlobalDim1;
                     recGlEntry."Global Dimension 2 Code" := GlobalDim2;
                     recGlEntry.Modify();
+                    // Añadimos opcion de cambiar tambien los Activos Fijos
+                    Funciones.ChangeDimSetEntryFixedAssetsEntry(recGlEntry);
                 end;
+
+
             end;
         end;
     end;
@@ -97,6 +101,7 @@ page 50145 "CambioDimensionesMovConta"
     var
         recDimSetEntry: Record "Dimension Set Entry";
         recNewDimSetEntry: record "Dimension Set Entry" temporary;
+        Funciones: Codeunit Funciones;
         intDimSetId: Integer;
         intNumMovConta: integer;
         GlobalDim1: code[20];

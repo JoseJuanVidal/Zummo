@@ -1016,6 +1016,49 @@ codeunit 50111 "Funciones"
 
     end;
 
+    procedure ChangeDimSetEntryFixedAssetsEntry(GlEntry: Record "G/L Entry")
+    var
+        GLSetup: Record "General Ledger Setup";
+        FALedgerEntry: Record "FA Ledger Entry";
+        DimensionSetEntry: Record "Dimension Set Entry";
+        tmpDimensionSetEntry: Record "Dimension Set Entry" temporary;
+        DimensionManagement: Codeunit DimensionManagement;
+    begin
+        GLSetup.Get();
+        FALedgerEntry.SetRange("G/L Entry No.", GlEntry."Entry No.");
+        if FALedgerEntry.FindFirst() then
+            repeat
+                tmpDimensionSetEntry.DELETEALL;
+                DimensionSetEntry.SETRANGE("Dimension Set ID", FALedgerEntry."Dimension Set ID");
+                IF DimensionSetEntry.FINDFIRST THEN
+                    REPEAT
+                        tmpDimensionSetEntry.INIT;
+                        tmpDimensionSetEntry.TRANSFERFIELDS(DimensionSetEntry);
+                        IF DimensionSetEntry."Dimension Code" = GLSetup."Global Dimension 1 Code" THEN begin
+                            tmpDimensionSetEntry.VALIDATE("Dimension Value Code", GLEntry."Global Dimension 1 Code");
+                            FALedgerEntry.VALIDATE("Global Dimension 1 Code", GLEntry."Global Dimension 1 Code");
+                        end;
+                        IF DimensionSetEntry."Dimension Code" = GLSetup."Global Dimension 2 Code" THEN begin
+                            tmpDimensionSetEntry.VALIDATE("Dimension Value Code", GLEntry."Global Dimension 2 Code");
+                            FALedgerEntry.VALIDATE("Global Dimension 2 Code", GLEntry."Global Dimension 2 Code");
+                        end;
+                        tmpDimensionSetEntry.INSERT;
+                    UNTIL DimensionSetEntry.NEXT = 0;
+                FALedgerEntry."Dimension Set ID" := DimensionManagement.GetDimensionSetID(tmpDimensionSetEntry);
+                FALedgerEntry.MODIFY;
+            Until FALedgerEntry.next() = 0;
+    end;
+
+    local procedure MyProcedure()
+    var
+        myInt: Integer;
+    begin
+
+        //IF GLEntry."Global Dimension 2 Code" <> FALedgerEntry."Global Dimension 2 Code" then BEGIN 
+
+
+    end;
+
     procedure ChangeSalesHeader()
     var
         Customer: Record Customer;
