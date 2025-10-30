@@ -74,6 +74,20 @@ tableextension 50167 "CustLedgerEntry" extends "Cust. Ledger Entry" //21
             FieldClass = FlowField;
             CalcFormula = lookup(Customer."ABC Cliente" where("No." = field("Customer No.")));
         }
+        field(50060; "Invoice Ship-to Name"; text[100])
+        {
+            Caption = 'Invoice Ship-to Name', comment = 'ESP="Factura Nommbre Dir. Envío"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Invoice Header"."Ship-to Name" where("No." = field("Document No.")));
+            Editable = false;
+        }
+        field(50061; "CR Memo Ship-to Name"; text[100])
+        {
+            Caption = 'CR Memo Ship-to Name', comment = 'ESP="Factura Nommbre Dir. Envío"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Cr.Memo Header"."Ship-to Name" where("No." = field("Document No.")));
+            Editable = false;
+        }
     }
 
 }

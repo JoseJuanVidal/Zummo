@@ -1381,6 +1381,28 @@ codeunit 50111 "Funciones"
             Until PurchRcptLine.next() = 0;
     end;
 
+    procedure MarcarNoFacturarLine(PagePurchRcptLine: Record "Purch. Rcpt. Line")
+    var
+        PurchaseLine: Record "Purchase Line";
+        PurchRcptLine: Record "Purch. Rcpt. Line";
+        lblConfirm: Label 'Se va a marcar la línea Albaran %1 cono Facturado completamente. ¿Desea continuar?', comment = 'ESP="Se va a marcar línea Albaran %1 cono Facturado completamente. ¿Desea continuar?"';
+    begin
+        if not Confirm(lblConfirm, false, PagePurchRcptLine.Description) then
+            exit;
+        if PurchRcptLine.Get(PagePurchRcptLine."Document No.", PagePurchRcptLine."Line No.") then
+            repeat
+                if PurchRcptLine."Qty. Rcd. Not Invoiced" <> 0 then begin
+                    PurchRcptLine."Qty. Rcd. Not Invoiced" := 0;
+                    PurchRcptLine.Modify();
+                    if PurchaseLine.Get(PurchaseLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.") then begin
+                        PurchaseLine."Qty. Rcd. Not Invoiced (Base)" := 0;
+                        PurchaseLine."Qty. Rcd. Not Invoiced" := 0;
+                        PurchaseLine.Modify();
+                    end;
+                end;
+            Until PurchRcptLine.next() = 0;
+    end;
+
     procedure CheckEsBajoPedido(Rec: Record "Sales Header")
     var
         SalesLine: Record "Sales Line";

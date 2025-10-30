@@ -5,7 +5,22 @@ pageextension 50163 "PostedPurchaseRcptSubform" extends "Posted Purchase Rcpt. S
     {
         addfirst("F&unctions")
         {
+            action(MarcaNoFacturar)
+            {
+                ApplicationArea = all;
+                Caption = 'Marcar no facturar', comment = 'ESP="Marcar no facturar"';
+                Image = Check;
 
+                trigger OnAction()
+                var
+                    Funciones: Codeunit Funciones;
+
+                begin
+                    Funciones.MarcarNoFacturarLine(Rec);
+
+                end;
+
+            }
             action("Imprimir Etiquetas")
             {
                 ApplicationArea = all;
