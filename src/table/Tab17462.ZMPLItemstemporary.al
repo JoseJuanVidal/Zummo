@@ -9,9 +9,14 @@ table 17462 "ZM PL Items temporary"
     {
         field(1; "No."; Code[20])
         {
+            Caption = 'Request No.', Comment = 'ESP="Nº Solicitud"';
+
+
+        }
+        field(2; "Item No."; Code[20])
+        {
             Caption = 'No.', Comment = 'ESP="Nº"';
             TableRelation = Item;
-            ValidateTableRelation = false;
 
             trigger OnValidate()
             begin
@@ -19,6 +24,7 @@ table 17462 "ZM PL Items temporary"
             end;
 
         }
+
         field(3; Description; Text[100])
         {
             Caption = 'Description', Comment = 'ESP="Descripción"';
@@ -709,21 +715,6 @@ table 17462 "ZM PL Items temporary"
                 end;
             end;
         }
-        field(59001; Largo; Decimal)
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Largo', comment = 'ESP="Largo"';
-        }
-        field(59002; Ancho; Decimal)
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Ancho', comment = 'ESP="Ancho"';
-        }
-        field(59003; Alto; Decimal)
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Alto', comment = 'ESP="Alto"';
-        }
         // field(50805; EnglishDescription; text[100])
         // {
         //     DataClassification = CustomerContent;
@@ -825,6 +816,27 @@ table 17462 "ZM PL Items temporary"
             DataClassification = CustomerContent;
             Caption = 'State Creation', comment = 'ESP="Estado Alta"';
             Editable = false;
+        }
+        field(50860; "Request Type"; Option)
+        {
+            Caption = 'Request Type', comment = 'ESP="Tipo Solicitud"';
+            OptionMembers = New,Change,Blokced,Unlocking,Delete;
+            OptionCaption = 'New,Change,Blokced,Unlocking,Delete', Comment = 'ESP="Nuevo,Cambio,Bloqueo,Desbloqueo,Eliminación"';
+        }
+        field(59001; Largo; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Largo', comment = 'ESP="Largo"';
+        }
+        field(59002; Ancho; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Ancho', comment = 'ESP="Ancho"';
+        }
+        field(59003; Alto; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Alto', comment = 'ESP="Alto"';
         }
         field(99000750; "Routing No."; Code[20])
         {

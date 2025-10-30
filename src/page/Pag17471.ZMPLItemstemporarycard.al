@@ -29,6 +29,20 @@ page 17471 "ZM PL Items temporary card"
 
 
                 }
+                field("Request Type"; "Request Type")
+                {
+                    ApplicationArea = all;
+                    trigger OnValidate()
+                    begin
+                        ValidateRequestType();
+                        CurrPage.update();
+                    end;
+                }
+                field("Item No."; "Item No.")
+                {
+                    ApplicationArea = all;
+                    Editable = IsItemNew;
+                }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
@@ -801,12 +815,14 @@ page 17471 "ZM PL Items temporary card"
     begin
         StateBlank := Rec."State Creation" = Rec."State Creation"::" ";
         StateRequested := Rec."State Creation" = Rec."State Creation"::Requested;
+        IsItemNew := Rec."Request Type" in [Rec."Request Type"::New];
         WorkDescription := GetWorkDescription;
         CheckActivesFields();
         RefreshUserActions();
     end;
 
     var
+        Item: Record Item;
         ItemSetupApproval: Record "ZM PL Item Setup Approval";
         ItemSetupDepartment: Record "ZM PL Item Setup Department";
         ItemsRegisterAprovals: Codeunit "ZM PL Items Regist. aprovals";
@@ -814,6 +830,7 @@ page 17471 "ZM PL Items temporary card"
         ShowField: array[100] of Integer;
         IsUserApproval: Boolean;
         IsUserCreateItem: Boolean;
+        IsItemNew: Boolean;
         StateBlank: Boolean;
         StateRequested: Boolean;
         boolEditNo: Boolean;
@@ -1430,4 +1447,27 @@ page 17471 "ZM PL Items temporary card"
     begin
         Rec.UploadExcel();
     end;
+
+    local procedure ValidateRequestType()
+    begin
+        Item.Reset();
+        case Rec."Request Type" of
+            Rec."Request Type"::Blokced, Rec."Request Type"::Change, Rec."Request Type"::Delete:
+                begin
+                    // buscamos el producto que es y lo actualizamos
+                    if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
+                        exit;
+                    Rec.Validate("Item No.", Item."No.");
+
+                end;
+            Rec."Request Type"::Unlocking:
+                begin
+                    Item.SetRange(Blocked, true);
+                    if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
+                        exit;
+                    Rec.Validate("Item No.", Item."No.");
+                end;
+        end;
+    end;
+
 }

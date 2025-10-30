@@ -1049,16 +1049,6 @@ codeunit 50111 "Funciones"
             Until FALedgerEntry.next() = 0;
     end;
 
-    local procedure MyProcedure()
-    var
-        myInt: Integer;
-    begin
-
-        //IF GLEntry."Global Dimension 2 Code" <> FALedgerEntry."Global Dimension 2 Code" then BEGIN 
-
-
-    end;
-
     procedure ChangeSalesHeader()
     var
         Customer: Record Customer;
@@ -3388,7 +3378,7 @@ codeunit 50111 "Funciones"
 
     // =============      ExportarPDFPurchaseOrder         ====================
     // ==  
-    // ==  comment 
+    // ==   
     // ==  
     // ======================================================================================================
     procedure ExportarPDFPurchaseOrder(var PurchaseHeader: Record "Purchase Header")

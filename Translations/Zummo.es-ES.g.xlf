@@ -11979,6 +11979,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Item Disc. Group - Property Caption</note>
           <target>Grupo dto. producto</target>
         </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Item No. - Property Caption</note>
+          <target>Nº</target>
+        </trans-unit>
         <trans-unit id="Table 3329268434 - Field 3205592447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No. Manufacturer</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Fabricante"</note>
@@ -12070,10 +12076,10 @@
           <target>Peso neto</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
+          <source>Request No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Solicitud"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field No. - Property Caption</note>
-          <target>Nº</target>
+          <target>Nº Solicitud</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nombre Empleado</source>
@@ -12248,6 +12254,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Compra,Prod. Pedido,,Ensamblado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Replenishment System - Property OptionCaption</note>
           <target>Compra,Prod. Pedido,,Ensamblado</target>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 1093055731 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Request Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Solicitud"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Request Type - Property Caption</note>
+          <target>Tipo Solicitud</target>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - Field 1093055731 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Change,Blokced,Unlocking,Delete</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Cambio,Bloqueo,Desbloqueo,Eliminación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Request Type - Property OptionCaption</note>
+          <target>Nuevo,Cambio,Bloqueo,Desbloqueo,Eliminación</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - Field 483786246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Rescheduling Period</source>
@@ -38817,6 +38835,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Subcategoria"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field SubCategory Code - Property Caption</note>
           <target>Cód. Subcategoria</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 642782499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Update</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualización"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Update - Property Caption</note>
+          <target>Actualización</target>
         </trans-unit>
         <trans-unit id="TableExtension 53801266 - Field 831439759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 53801266">
           <source>Es Materal</source>

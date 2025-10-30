@@ -46,6 +46,11 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
             DataClassification = CustomerContent;
 
         }
+        field(50106; Update; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Update', comment = 'ESP="Actualización"';
+        }
         field(50107; "Posted Service Item"; Boolean)
         {
             Caption = 'Posted  Item Service', comment = 'ESP="Hist. Productos de servicio"';
@@ -162,4 +167,36 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
             Editable = false;
         }
     }
+
+    trigger OnAfterInsert()
+    begin
+        UpdateField();
+    end;
+
+    trigger OnAfterModify()
+    begin
+        UpdateField();
+    end;
+
+    var
+        ItemLedgerEntry2: Record "Item Ledger Entry";
+
+    procedure UpdateField()
+    begin
+        if Rec.Update then
+            exit;
+        if Rec."Entry Type" in [Rec."Entry Type"::Sale] then begin
+            ItemLedgerEntry2.RESET;
+            ItemLedgerEntry2.SETRANGE("Item No.", Rec."Item No.");
+            ItemLedgerEntry2.SETRANGE("Serial No.", Rec."Serial No.");
+            ItemLedgerEntry2.SETRANGE("Entry Type", Rec."Entry Type"::Output);
+            if ItemLedgerEntry2.FINDLAST then begin
+                ItemLedgerEntry2.SETRANGE("Document No.", ItemLedgerEntry2."Document No.");
+                ItemLedgerEntry2.SETRANGE("Entry Type", ItemLedgerEntry2."Entry Type"::Consumption);
+                ItemLedgerEntry2.SETFILTER("Serial No.", '<>%1', '');
+                if ItemLedgerEntry2.FINDFIRST then
+                    Rec."Job Purchase" := TRUE;
+            end;
+        end;
+    end;
 }

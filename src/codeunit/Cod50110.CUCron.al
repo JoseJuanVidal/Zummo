@@ -895,14 +895,45 @@ codeunit 50110 "CU_Cron"
                 else
                     ingles := false;
                 //fin SOTHIS EBR 030920 id159644
-                if not ingles then begin
-                    txtAsunto := 'Recordatorio facturas vencidas';
-                    txtCuerpo := 'Estimado cliente:';
-                    txtCuerpo += '<br><br>Adjuntamos relación de facturas que, salvo error, figuran como pendientes de cobro:<br>';
-                end else begin
-                    txtAsunto := 'Automated reminder of overdue invoices';
-                    txtCuerpo := 'Dear Customer,';
-                    txtCuerpo += '<br><br>We would like to notify you that the following payments are still due.<br>';
+                //if not ingles then begin
+                case recCustomer."Language Code" of
+                    '', 'ESP':
+                        begin
+                            txtAsunto := 'Recordatorio facturas vencidas';
+                            txtCuerpo := 'Estimado cliente:';
+                            txtCuerpo += '<br><br>Adjuntamos relación de facturas que, salvo error, figuran como pendientes de cobro:<br>';
+                        end;
+                    'FRA':
+                        begin
+                            txtAsunto := 'Rappel des factures échues';
+                            txtCuerpo := 'Cher Client:';
+                            txtCuerpo += '<br><br>Veuillez trouver ci-joint la liste des factures qui, sauf erreur de notre part, apparaissent comme restant impayées:<br>';
+                        end;
+                    'ENG', 'ENU':
+                        begin
+                            txtAsunto := 'Automated reminder of overdue invoices';
+                            txtCuerpo := 'Dear Customer,';
+                            txtCuerpo += '<br><br>We would like to notify you that the following payments are still due.<br>';
+                        end else begin
+                        case recCustomer."Country/Region Code" of
+                            'ES':
+                                begin
+                                    txtAsunto := 'Recordatorio facturas vencidas';
+                                    txtCuerpo := 'Estimado cliente:';
+                                    txtCuerpo += '<br><br>Adjuntamos relación de facturas que, salvo error, figuran como pendientes de cobro:<br>';
+                                end;
+                            'FR':
+                                begin
+                                    txtAsunto := 'Rappel des factures échues';
+                                    txtCuerpo := 'Cher Client:';
+                                    txtCuerpo += '<br><br>Veuillez trouver ci-joint la liste des factures qui, sauf erreur de notre part, apparaissent comme restant impayées:<br>';
+                                end else begin
+                                txtAsunto := 'Automated reminder of overdue invoices';
+                                txtCuerpo := 'Dear Customer,';
+                                txtCuerpo += '<br><br>We would like to notify you that the following payments are still due.<br>';
+                            end;
+                        end;
+                    end;
                 end;
 
 
