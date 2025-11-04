@@ -2936,8 +2936,8 @@ Cstr(Sum(Fields!Portes.Value))
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>0.61264cm</Top>
-                  <Height>0.6cm</Height>
+                  <Top>0.51739cm</Top>
+                  <Height>0.44125cm</Height>
                   <Width>7.83018cm</Width>
                   <Style>
                     <Border>
@@ -2992,7 +2992,7 @@ Cstr(Sum(Fields!Portes.Value))
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Height>0.6cm</Height>
+                  <Height>0.473cm</Height>
                   <Width>7.83018cm</Width>
                   <ZIndex>1</ZIndex>
                   <Style>
@@ -3009,7 +3009,7 @@ Cstr(Sum(Fields!Portes.Value))
               <KeepTogether>true</KeepTogether>
               <Top>3.51134cm</Top>
               <Left>0.7432cm</Left>
-              <Height>1.21736cm</Height>
+              <Height>0.96336cm</Height>
               <Width>7.83018cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
@@ -3062,8 +3062,8 @@ Cstr(Sum(Fields!Portes.Value))
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>0.64796cm</Top>
-                  <Height>0.6cm</Height>
+                  <Top>0.61621cm</Top>
+                  <Height>0.473cm</Height>
                   <Width>4.05298cm</Width>
                   <Style>
                     <Border>
@@ -3118,7 +3118,7 @@ Cstr(Sum(Fields!Portes.Value))
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
                   <Top>0.03532cm</Top>
-                  <Height>0.6cm</Height>
+                  <Height>0.5365cm</Height>
                   <Width>4.05298cm</Width>
                   <ZIndex>1</ZIndex>
                   <Style>
@@ -3138,9 +3138,9 @@ Cstr(Sum(Fields!Portes.Value))
                 </Textbox>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
-              <Top>4.72398cm</Top>
+              <Top>4.50173cm</Top>
               <Left>0.7432cm</Left>
-              <Height>1.24796cm</Height>
+              <Height>1.12096cm</Height>
               <Width>4.05298cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
@@ -3193,7 +3193,7 @@ Cstr(Sum(Fields!Portes.Value))
                   <rd:DefaultName>Textbox4</rd:DefaultName>
                   <Top>0.65268cm</Top>
                   <Left>0.03528cm</Left>
-                  <Height>0.59528cm</Height>
+                  <Height>0.46828cm</Height>
                   <Width>3.74192cm</Width>
                   <Style>
                     <Border>
@@ -3226,8 +3226,8 @@ Cstr(Sum(Fields!Portes.Value))
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>0.04004cm</Top>
-                  <Height>0.59528cm</Height>
+                  <Top>0.03175cm</Top>
+                  <Height>0.56353cm</Height>
                   <Width>3.7772cm</Width>
                   <ZIndex>1</ZIndex>
                   <Style>
@@ -3247,9 +3247,9 @@ Cstr(Sum(Fields!Portes.Value))
                 </Textbox>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
-              <Top>4.72398cm</Top>
+              <Top>4.50173cm</Top>
               <Left>4.79618cm</Left>
-              <Height>1.24796cm</Height>
+              <Height>1.12096cm</Height>
               <Width>3.7772cm</Width>
               <ZIndex>6</ZIndex>
               <Style>
@@ -3902,9 +3902,9 @@ Cstr(Sum(Fields!Portes.Value))
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>5.97194cm</Top>
+              <Top>5.62269cm</Top>
               <Left>0.7432cm</Left>
-              <Height>0.64471cm</Height>
+              <Height>0.51771cm</Height>
               <Width>7.83018cm</Width>
               <ZIndex>13</ZIndex>
               <Style>
@@ -4334,7 +4334,7 @@ Cstr(Sum(Fields!Portes.Value))
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>6.60295cm</Top>
+              <Top>6.15845cm</Top>
               <Left>0.7432cm</Left>
               <Height>0.80346cm</Height>
               <Width>9.10018cm</Width>
@@ -4486,13 +4486,13 @@ Cstr(Sum(Fields!Portes.Value))
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>6.65193cm</Top>
-              <Left>0.77007cm</Left>
+              <Top>7.00072cm</Top>
+              <Left>0.7432cm</Left>
               <Height>0.35367cm</Height>
-              <Width>10.37018cm</Width>
+              <Width>7.86845cm</Width>
               <ZIndex>27</ZIndex>
               <Visibility>
-                <Hidden>=iif(First(Fields!ShowLocation.Value, "DataSet_Result") and Fields!TipoDocumento.Value=1, false,true)</Hidden>
+                <Hidden>=iif(First(Fields!ShowEstadoCalidad.Value, "DataSet_Result"), false,true)</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -6235,6 +6235,9 @@ AAAASAISAAAAAElAAgAAACAJSAAAAAAkAQkAAACAJCABAAAAkAQkAAAAAJKABAAAAEASkAAAAABIAhIA
         </Field>
         <Field Name="EstadoCalidad">
           <DataField>EstadoCalidad</DataField>
+        </Field>
+        <Field Name="ShowEstadoCalidad">
+          <DataField>ShowEstadoCalidad</DataField>
         </Field>
         <Field Name="codigoDivisa">
           <DataField>codigoDivisa</DataField>
