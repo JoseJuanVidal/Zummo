@@ -35,6 +35,10 @@ table 50122 "STH Purchase SubCategory"
             Caption = 'Description 2', Comment = 'ESP="Descripción 2"';
             DataClassification = ToBeClassified;
         }
+        field(7; Group; code[50])
+        {
+            Caption = 'Group', comment = 'ESP="Agrupación"';
+        }
         field(10; "To Update"; Boolean)
         {
             Caption = 'To update', comment = 'ESP="Act. itbid"';

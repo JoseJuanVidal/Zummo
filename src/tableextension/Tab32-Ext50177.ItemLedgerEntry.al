@@ -166,6 +166,18 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
                 "Purch. Category code" = field("Category Code"), code = field("SubCategory Code")));
             Editable = false;
         }
+        field(50224; "Group Purch. SubCategory"; Text[100])
+        {
+            Caption = 'Group Purch. SubCategory', comment = 'ESP="Agrupación SubCategoria compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase SubCategory".Group where("Purch. Familiy code" = field("Family Code"),
+                "Purch. Category code" = field("Category Code"), code = field("SubCategory Code")));
+            Editable = false;
+        }
+        field(50230; "Year"; Integer)
+        {
+            Caption = 'Year', comment = 'ESP="Año"';
+        }
     }
 
     trigger OnAfterInsert()
@@ -183,6 +195,8 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
 
     procedure UpdateField()
     begin
+        if Rec."Posting Date" <> 0D then
+            Rec.Year := Date2DMY(Rec."Posting Date", 3);
         if Rec.Update then
             exit;
         if Rec."Entry Type" in [Rec."Entry Type"::Sale] then begin

@@ -32,6 +32,10 @@ page 50020 "STH Purchase SubCategorys"
                 {
                     ApplicationArea = all;
                 }
+                field(Group; Group)
+                {
+                    ApplicationArea = all;
+                }
                 field("Last date updated"; Rec."Last date updated")
                 {
                     ApplicationArea = All;

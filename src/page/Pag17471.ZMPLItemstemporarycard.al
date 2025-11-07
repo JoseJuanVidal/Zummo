@@ -34,7 +34,7 @@ page 17471 "ZM PL Items temporary card"
                     ApplicationArea = all;
                     trigger OnValidate()
                     begin
-                        ValidateRequestType();
+                        Rec.ValidateRequestType();
                         CurrPage.update();
                     end;
                 }
@@ -1448,26 +1448,6 @@ page 17471 "ZM PL Items temporary card"
         Rec.UploadExcel();
     end;
 
-    local procedure ValidateRequestType()
-    begin
-        Item.Reset();
-        case Rec."Request Type" of
-            Rec."Request Type"::Blokced, Rec."Request Type"::Change, Rec."Request Type"::Delete:
-                begin
-                    // buscamos el producto que es y lo actualizamos
-                    if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
-                        exit;
-                    Rec.Validate("Item No.", Item."No.");
 
-                end;
-            Rec."Request Type"::Unlocking:
-                begin
-                    Item.SetRange(Blocked, true);
-                    if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
-                        exit;
-                    Rec.Validate("Item No.", Item."No.");
-                end;
-        end;
-    end;
 
 }

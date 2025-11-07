@@ -11,12 +11,16 @@ table 17462 "ZM PL Items temporary"
         {
             Caption = 'Request No.', Comment = 'ESP="Nº Solicitud"';
 
-
+            trigger OnValidate()
+            begin
+                OnValidate_No()
+            end;
         }
         field(2; "Item No."; Code[20])
         {
             Caption = 'No.', Comment = 'ESP="Nº"';
             TableRelation = Item;
+            ValidateTableRelation = false;
 
             trigger OnValidate()
             begin
@@ -914,6 +918,7 @@ table 17462 "ZM PL Items temporary"
         AutLoginMgt: Codeunit "AUT Login Mgt.";
         Funciones: Codeunit Funciones;
         Text027: Label 'must be greater than 0.', Comment = 'ESP="Debe ser mayor que 0"';
+        lblItemExist: Label 'El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3', comment = 'ESP="El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3"';
         lblConfirmBOM: Label 'El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?', comment = 'ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"';
         lblConfirmUpdateItem: Label 'El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?',
             comment = 'ESP="El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?"';
@@ -991,18 +996,33 @@ table 17462 "ZM PL Items temporary"
             "Nombre Empleado" := copystr(Employee.FullName(), 1, MaxStrLen(Rec."Nombre Empleado"));
     end;
 
-    local procedure OnValidate_ItemNo()
+    local procedure OnValidate_No()
+    var
+        myInt: Integer;
     begin
         GetPreItemSetup();
         if "No." <> xRec."No." then begin
             InitRecord();
             if Rec."No." = '' then begin
                 NoSeriesMgt.TestManual(SetupPreItemReg."Temporary Nos.");
-            end else begin
+            end;
+        end;
+    end;
 
-                // comprobamos si existe el producto y traemos los datos para su modificación                
-                item.Reset();
-                if item.Get(Rec."No.") then begin
+    local procedure OnValidate_ItemNo()
+    begin
+        case Rec."Request Type" of
+            Rec."Request Type"::New:
+                Begin
+                    // comprobamos que si existe el producto de un error
+                    if Item.Get(Rec."Item No.") then
+                        Error(lblItemExist, Rec."Item No.", Item.Description, Rec."Request Type");
+                End;
+            Rec."Request Type"::Blokced, Rec."Request Type"::Change, Rec."Request Type"::Delete, Rec."Request Type"::Unlocking:
+                begin
+                    // comprobamos si existe el producto y traemos los datos para su modificación                
+                    item.Reset();
+                    item.Get(Rec."No.");
                     if Confirm(lblConfirmUpdateItem, false, Rec."No.", Item.Description) then begin
                         Rec.TransferFields(Item);
                         Rec."ITBID Status" := Rec."ITBID Status"::Created;
@@ -1012,12 +1032,9 @@ table 17462 "ZM PL Items temporary"
                     ProdBOMHeader.SetRange("No.", Rec."Production BOM No.");
                     if ProdBOMHeader.FindFirst() then
                         // if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
-                            UpdateProductionBom(Item."No.");
+                        UpdateProductionBom(Item."No.");
                     UpdatePurchasePrice(Rec."No.");
-
                 end;
-            end;
-
         end;
     end;
 
@@ -1896,6 +1913,28 @@ table 17462 "ZM PL Items temporary"
                 Rec.TestField("Routing No.");
             99000751: //"Production BOM No."; Code[20])
                 Rec.TestField("Production BOM No.");
+        end;
+    end;
+
+    procedure ValidateRequestType()
+    begin
+        Item.Reset();
+        case Rec."Request Type" of
+            Rec."Request Type"::Blokced, Rec."Request Type"::Change, Rec."Request Type"::Delete:
+                begin
+                    // buscamos el producto que es y lo actualizamos
+                    if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
+                        exit;
+                    Rec.Validate("Item No.", Item."No.");
+
+                end;
+            Rec."Request Type"::Unlocking:
+                begin
+                    Item.SetRange(Blocked, true);
+                    if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
+                        exit;
+                    Rec.Validate("Item No.", Item."No.");
+                end;
         end;
     end;
 }

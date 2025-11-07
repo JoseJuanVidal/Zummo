@@ -8244,6 +8244,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Description 2 - Property Caption</note>
           <target>Descripción 2</target>
         </trans-unit>
+        <trans-unit id="Table 285631052 - Field 739346273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Agrupación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Purchase SubCategory - Field Group - Property Caption</note>
+          <target>Agrupación</target>
+        </trans-unit>
         <trans-unit id="Table 285631052 - Field 4248716123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Items No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nª productos"</note>
@@ -11628,6 +11634,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="No existen aprobadores configurados para la tabla %1."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblErrorNotApprovals</note>
           <target>No existen aprobadores configurados para la tabla %1.</target>
+        </trans-unit>
+        <trans-unit id="Table 3329268434 - NamedType 626802256" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblItemExist</note>
+          <target>El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3</target>
         </trans-unit>
         <trans-unit id="Table 3329268434 - NamedType 3853762076" size-unit="char" translate="yes" xml:space="preserve">
           <source>must be greater than 0.</source>
@@ -33992,6 +34004,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Ventas CESCE - List - Control ShowPayments - Property Caption</note>
           <target>Mostrar Pagos</target>
         </trans-unit>
+        <trans-unit id="Query 25096833 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.: #1#############\Posting Date: #2###############</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Mov.: #1#############\Fecha: #2###############"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Query ZM Items - Purchase Category - NamedType lblWindow</note>
+          <target>Nº Mov.: #1#############\Fecha: #2###############</target>
+        </trans-unit>
         <trans-unit id="XmlPort 27130196 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>SEPA DD pain.008.001.02 REG</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -38824,6 +38842,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Family Code - Property Caption</note>
           <target>Cód. Subcategoria</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 2896561755 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Group Purch. SubCategory</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Agrupación SubCategoria compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Group Purch. SubCategory - Property Caption</note>
+          <target>Agrupación SubCategoria compra</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1719057576 - Field 2682699455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
           <source>Tipo producto</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo producto"</note>
@@ -38865,6 +38889,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Actualización"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Update - Property Caption</note>
           <target>Actualización</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 2832340769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Year</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Año"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Year - Property Caption</note>
+          <target>Año</target>
         </trans-unit>
         <trans-unit id="TableExtension 53801266 - Field 831439759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 53801266">
           <source>Es Materal</source>

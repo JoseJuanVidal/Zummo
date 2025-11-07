@@ -439,6 +439,14 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Purch. Request minor 200', comment = 'ESP="Solicitud compras menor 200€"';
         }
+        field(50175; "Group Purch. SubCategory"; Text[100])
+        {
+            Caption = 'Desc. Purch. SubCategory', comment = 'ESP="Nombre SubCategoria compra"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("STH Purchase SubCategory".Group where("Purch. Familiy code" = field("Purch. Family"),
+                "Purch. Category code" = field("Purch. Category"), code = field("Purch. SubCategory")));
+            Editable = false;
+        }
         //+ 22/11/2022 NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {

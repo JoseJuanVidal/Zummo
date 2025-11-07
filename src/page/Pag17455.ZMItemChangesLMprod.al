@@ -36,10 +36,12 @@ page 17455 "ZM Item Changes L.M. prod."
                 field("Original Quantity"; Rec."Original Quantity")
                 {
                     ApplicationArea = All;
+                    DecimalPlaces = 2 : 5;
                 }
                 field("Quantity per"; Rec."Quantity per")
                 {
                     ApplicationArea = All;
+                    DecimalPlaces = 2 : 5;
                 }
                 field("New Item No."; Rec."New Item No.")
                 {
