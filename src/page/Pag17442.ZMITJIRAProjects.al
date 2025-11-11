@@ -5,9 +5,9 @@ page 17442 "ZM IT JIRA Projects"
     PageType = List;
     SourceTable = "ZM IT JIRA Projects";
     UsageCategory = Administration;
-    //Editable = false;
-    InsertAllowed = false;
-    ModifyAllowed = false;
+    // Editable = false;
+    // InsertAllowed = false;
+    // ModifyAllowed = false;
 
     layout
     {
@@ -26,6 +26,10 @@ page 17442 "ZM IT JIRA Projects"
                 field(id; Rec.id)
                 {
                     ApplicationArea = All;
+                }
+                field(Type; Type)
+                {
+                    ApplicationArea = all;
                 }
             }
         }
@@ -47,6 +51,18 @@ page 17442 "ZM IT JIRA Projects"
                 begin
                     SWFunciones.JIRAGetAllProjects();
                 end;
+            }
+        }
+        area(Navigation)
+        {
+            action(Tareas)
+            {
+                Caption = 'Task', comment = 'ESP="Tareas"';
+                Image = Task;
+                Promoted = true;
+                PromotedCategory = Process;
+                RunObject = page "ZM IT JIRA Tickets";
+                RunPageLink = Project = field("key");
             }
         }
     }

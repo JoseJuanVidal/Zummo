@@ -63,7 +63,8 @@ table 17440 "ZM IT Daily Time Sheet"
             Caption = 'Key', comment = 'ESP="Código"';
             TableRelation = if (Type = const("JIRA Ticket")) "ZM IT JIRA Tickets"."key" where(Type = const(Ticket)) else
             if (Type = const("JIRA Proyecto")) "ZM IT JIRA Projects"."key" else
-            if (Type = const(Proyecto)) Job."No.";
+            if (Type = const(Proyecto)) Job."No." else
+            if (type = const(TIC)) "ZM IT JIRA Projects"."key" where(type = const(Intern));
             ValidateTableRelation = false;
 
             trigger OnValidate()
@@ -249,6 +250,12 @@ table 17440 "ZM IT Daily Time Sheet"
                     Job.Reset();
                     if Job.Get(Rec."key") then
                         Rec."Key summary" := Job.Description;
+                end;
+            Rec.Type::TIC:
+                begin
+                    JIRAProjects.Reset();
+                    if JIRAProjects.get(Rec."key") then
+                        Rec."Key summary" := JIRAProjects.name;
                 end;
         end;
     end;

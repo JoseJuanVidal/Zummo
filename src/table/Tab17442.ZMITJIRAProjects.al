@@ -21,6 +21,11 @@ table 17442 "ZM IT JIRA Projects"
         {
             DataClassification = CustomerContent;
         }
+        field(5; Type; Option)
+        {
+            Caption = 'Type', comment = 'ESP="Tipo"';
+            OptionMembers = " ",Intern;
+        }
 
     }
 

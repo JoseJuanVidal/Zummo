@@ -10961,6 +10961,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field name - Property Caption</note>
           <target>Nombre</target>
         </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field Type - Property Caption</note>
+          <target>Tipo</target>
+        </trans-unit>
         <trans-unit id="Table 1063719647 - Field 368050251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assignee</source>
           <note from="Developer" annotates="general" priority="2">ESP="Asignado"</note>
@@ -37063,6 +37069,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM IT User Security Activities - Control Daily Time Sheet - Property Caption</note>
           <target>Partes Diario</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2634977954 - Control 2412331534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1752036392">
+          <source>Projects Daily Time</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyectos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM IT User Security Activities - Control Projects Daily Time - Property Caption</note>
+          <target>Proyectos</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1961552039 - Action 1790028186 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4260588318">
           <source>Lanza una consulta que muestra el inventario del producto, con almacenes, ubicación y numero de serie.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lanza una consulta que muestra el inventario del producto, con almacenes, ubicación y numero de serie."</note>
@@ -38337,6 +38349,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desLineaEconomica_btc - Property Caption</note>
           <target>Desc. Linea Economica</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2896561755 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Desc. Purch. SubCategory</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre SubCategoria compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Group Purch. SubCategory - Property Caption</note>
+          <target>Nombre SubCategoria compra</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1880579903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Inventory to date</source>

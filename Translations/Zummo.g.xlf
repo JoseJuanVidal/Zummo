@@ -10318,6 +10318,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1063719647 - Field 368050251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assignee</source>
           <note from="Developer" annotates="general" priority="2">ESP="Asignado"</note>
@@ -19702,6 +19707,11 @@
           <source>JIRA Projects</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2254326384 - Action 2843956220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Task</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tareas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Action Tareas - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2254326384 - Action 1461479292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh</source>
@@ -33863,6 +33873,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Partes Diario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM IT User Security Activities - Control Daily Time Sheet - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2634977954 - Control 2412331534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1752036392">
+          <source>Projects Daily Time</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyectos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM IT User Security Activities - Control Projects Daily Time - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1961552039 - Action 1790028186 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4260588318">
           <source>Lanza una consulta que muestra el inventario del producto, con almacenes, ubicación y numero de serie.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lanza una consulta que muestra el inventario del producto, con almacenes, ubicación y numero de serie."</note>
@@ -37778,6 +37793,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Categoria"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Category Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>CMMF Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field CMMF Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4172986522 - Field 2165769856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
           <source>Costing Method</source>
           <note from="Developer" annotates="general" priority="2">ESP="Métdodo Coste"</note>
@@ -37797,6 +37817,11 @@
           <source>SubCategory Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Subcategoria"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Family Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4172986522 - Field 1405402048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>GTIN</source>
+          <note from="Developer" annotates="general" priority="2">ESP="GTIN"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field GTIN - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4172986522 - Field 537798300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
           <source>Item Unit Cost</source>

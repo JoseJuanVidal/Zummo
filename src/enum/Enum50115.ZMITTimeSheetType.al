@@ -14,4 +14,6 @@ enum 50115 "ZM IT Time Sheet Type"
     value(3; "JIRA Proyecto")
     {
     }
+    value(4; TIC)
+    { }
 }

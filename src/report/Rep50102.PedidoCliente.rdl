@@ -2199,7 +2199,8 @@ Cstr(Fields!txtOfertaLbl.Value) + Chr(177) +
 Cstr(Fields!telfCleiten.Value)+ Chr(177) + 
 Cstr(Fields!CommentInterbCaptionLbl.Value)+ Chr(177) + 
 Cstr(Fields!ComentarioInterno_btc.Value) + Chr(177) + 
-Cstr(Fields!EstadoCalidad.Value), 1)</Hidden>
+Cstr(Fields!EstadoCalidad.Value) + Chr(177) + 
+Cstr(Fields!CommentsCalidad.Value), 1)</Hidden>
                                             </Visibility>
                                             <Style>
                                               <VerticalAlign>Middle</VerticalAlign>
@@ -4448,6 +4449,7 @@ Cstr(Sum(Fields!Portes.Value))
               </Style>
             </Textbox>
             <Textbox Name="Textbox71">
+              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -4479,6 +4481,24 @@ Cstr(Sum(Fields!Portes.Value))
                         <Format>=First(Fields!TotalAmountInclVAT.Value, "DataSet_Result")</Format>
                       </Style>
                     </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve">  </Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <Format>=First(Fields!TotalAmountInclVAT.Value, "DataSet_Result")</Format>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Code.GetData(66,1)</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <Format>=First(Fields!TotalAmountInclVAT.Value, "DataSet_Result")</Format>
+                      </Style>
+                    </TextRun>
                   </TextRuns>
                   <Style>
                     <TextAlign>Left</TextAlign>
@@ -4488,11 +4508,11 @@ Cstr(Sum(Fields!Portes.Value))
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>7.00072cm</Top>
               <Left>0.7432cm</Left>
-              <Height>0.35367cm</Height>
-              <Width>7.86845cm</Width>
+              <Height>0.44892cm</Height>
+              <Width>10.62846cm</Width>
               <ZIndex>27</ZIndex>
               <Visibility>
-                <Hidden>=iif(First(Fields!ShowEstadoCalidad.Value, "DataSet_Result"), false,true)</Hidden>
+                <Hidden>=iif(First(Fields!ShowEstadoCalidad.Value, "DataSet_Result") and First(Fields!ShowLocation.Value, "DataSet_Result") , false,true)</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -6238,6 +6258,9 @@ AAAASAISAAAAAElAAgAAACAJSAAAAAAkAQkAAACAJCABAAAAkAQkAAAAAJKABAAAAEASkAAAAABIAhIA
         </Field>
         <Field Name="ShowEstadoCalidad">
           <DataField>ShowEstadoCalidad</DataField>
+        </Field>
+        <Field Name="CommentsCalidad">
+          <DataField>CommentsCalidad</DataField>
         </Field>
         <Field Name="codigoDivisa">
           <DataField>codigoDivisa</DataField>

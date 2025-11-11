@@ -6,8 +6,8 @@ page 17441 "ZM IT JIRA Tickets"
     SourceTable = "ZM IT JIRA Tickets";
     UsageCategory = Administration;
     //Editable = false;
-    InsertAllowed = false;
-    ModifyAllowed = false;
+    // InsertAllowed = false;
+    // ModifyAllowed = false;
 
     layout
     {

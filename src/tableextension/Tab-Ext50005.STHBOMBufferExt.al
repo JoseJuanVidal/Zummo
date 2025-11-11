@@ -14,6 +14,20 @@ tableextension 50005 "STH BOM BufferExt" extends "BOM Buffer"
             Caption = 'Language Filter', comment = 'ESP="Filtro Idioma"';
             FieldClass = FlowFilter;
         }
+        Field(50010; "GTIN"; code[14])
+        {
+            Caption = 'GTIN', comment = 'ESP="GTIN"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item.GTIN where("No." = field("No.")));
+            editable = false;
+        }
+        Field(50011; "CMMF Code"; code[20])
+        {
+            Caption = 'CMMF Code', comment = 'ESP="CMMF Code"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."CMMF Code" where("No." = field("No.")));
+            editable = false;
+        }
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {
             Caption = 'Plastic Qty. (kg)', comment = 'ESP="Cdad. plástico (kg)"';

@@ -21,7 +21,7 @@ table 17423 "SCRAP Item - Tipo de Envase"
         field(3; "Tipo de Envase"; text[50])
         {
             DataClassification = CustomerContent;
-            TableRelation = "SCRAP SubMaterial Tipo Envases" where(SUBMATERIAL = field(SUBMATERIAL));
+            TableRelation = "SCRAP SubMaterial Tipo Envases"."Tipo de Envase" where(SUBMATERIAL = field(SUBMATERIAL));
         }
         field(5; Flexible; Boolean)
         {

@@ -1,4 +1,4 @@
-query 50101 "ZM Items - Purchase Category"
+query 50011 "ZM Items - Purchase Category"
 {
     QueryCategory = 'Productos - Compras por categorias';
 

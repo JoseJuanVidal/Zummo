@@ -22,6 +22,16 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
             {
                 ApplicationArea = all;
             }
+            field(GTIN; GTIN)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("CMMF Code"; "CMMF Code")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("Plastic Qty. (kg)"; "Plastic Qty. (kg)")
             {
                 ApplicationArea = all;
@@ -171,10 +181,13 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
         xlBuf.AddColumn(Rec.FIELDCAPTION("Average cost last year"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
         xlBuf.AddColumn(Rec.FIELDCAPTION("Unit Cost"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
         xlBuf.AddColumn('Coste de LM', FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION(GTIN), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION("CMMF Code"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+
         xlBuf.NewRow;
         IF Rec.FINDFIRST THEN
             REPEAT
-                rec.CalcFields("Standar Cost", "Unit Cost");
+                Rec.CalcFields("Standar Cost", "Item Unit Cost");
                 CosteEstandar := 0;
                 Costeavg := 0;
                 CosteUnit := 0;
@@ -184,7 +197,7 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
                         begin
                             CosteEstandar := Rec."Standar Cost";
                             Costeavg := Rec."Average cost last year";
-                            CosteUnit := Rec."Unit Cost";
+                            CosteUnit := Rec."Item Unit Cost";
                             Bold := false;
                         end;
                     else begin
@@ -204,6 +217,8 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
                 xlBuf.AddColumn(Costeavg, FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Number);
                 xlBuf.AddColumn(CosteUnit, FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Number);
                 xlBuf.AddColumn(CosteLM, FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Number);
+                xlBuf.AddColumn(Rec.GTIN, FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+                xlBuf.AddColumn(Rec."CMMF Code", FALSE, '', Bold, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
                 xlBuf.NewRow;
             UNTIL Rec.NEXT = 0;
         xlBuf.CreateBook('', 'Estructura');

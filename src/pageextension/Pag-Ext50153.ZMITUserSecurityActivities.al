@@ -14,10 +14,21 @@ pageextension 50153 "ZM IT User Security Activities" extends "User Security Acti
                     DrillDownDailyTimeSheet();
                 end;
             }
+            field("Projects Daily Time"; GetDailyTimeProjects)
+            {
+                ApplicationArea = all;
+                Caption = 'Projects Daily Time', comment = 'ESP="Proyectos"';
+
+                trigger OnDrillDown()
+                begin
+                    DrillDownDailyTimeProject();
+                end;
+            }
         }
     }
     var
         DailyTimeSheet: record "ZM IT Daily Time Sheet";
+        DailyProjects: record "ZM IT JIRA Projects";
 
     local procedure DrillDownDailyTimeSheet()
     begin
@@ -35,5 +46,21 @@ pageextension 50153 "ZM IT User Security Activities" extends "User Security Acti
         DailyTimeSheet.SetRange(date, WorkDate());
         exit(DailyTimeSheet.Count);
     end;
+
+    local procedure GetDailyTimeProjects(): Integer
+    begin
+        DailyProjects.Reset();
+        DailyProjects.SetRange(Type, DailyProjects.Type::Intern);
+        exit(DailyProjects.Count);
+    end;
+
+    local procedure DrillDownDailyTimeProject()
+    begin
+        //lanzamos la lista de Marcajes de este usario
+        DailyProjects.Reset();
+        DailyProjects.SetRange(Type, DailyProjects.Type::Intern);
+        page.Run(page::"ZM IT JIRA Projects", DailyProjects);
+    end;
+
 
 }

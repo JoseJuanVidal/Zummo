@@ -18,6 +18,7 @@ report 50102 "PedidoCliente"
             column(telfCleiten; recC."Phone No.") { }
             column(EstadoCalidad; EstadoCalidad) { }
             column(ShowEstadoCalidad; ShowEstadoCalidad) { }
+            column(CommentsCalidad; CommentsCalidad) { }
             column(codigoDivisa; codigoDivisa) { }
             column(PesoBruto_SalesLine; sumaPesoBruto) { }
             column(txtOferta; txtOferta) { }
@@ -2033,6 +2034,7 @@ report 50102 "PedidoCliente"
         DimMgt: Codeunit "DimensionManagement";
         Funciones: Codeunit Funciones;
         EstadoCalidad: text;
+        CommentsCalidad: text;
         ShowEstadoCalidad: boolean;
         CustAddr: array[8] of Text[100];
         ShipToAddr: array[8] of Text[100];
@@ -2474,7 +2476,9 @@ report 50102 "PedidoCliente"
         // recogemos el campo de la Extension SGA, campo sd ESTADO CALIDAD
         //   field(50660; "Quality status"; Enum "Quality Status")
         Estado := Funciones.GetExtensionFieldValuetext("Sales Header".RecordId, 50660, false);
+        CommentsCalidad := Funciones.GetExtensionFieldValuetext("Sales Header".RecordId, 50666, false);
         ShowEstadoCalidad := strlen(estado) > 1;
+
     end;
 }
 
