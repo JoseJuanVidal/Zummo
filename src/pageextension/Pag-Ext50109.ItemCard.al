@@ -171,6 +171,10 @@ pageextension 50109 "ItemCard" extends "Item Card"
             group("Packaging Weight data")
             {
                 Caption = 'Packaging Weight data', comment = 'ESP="Datos pesos embalajes"';
+                field("Material Embalaje Excluido"; "Material Embalaje Excluido")
+                {
+                    ApplicationArea = all;
+                }
                 field(Steel; Steel)
                 {
                     ApplicationArea = all;
@@ -650,7 +654,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
             }
             action(PlasticDeclaration)
             {
-                Caption = 'Declaracion SCRAP', comment = 'ESP="Declaracion SCRAP"';
+                Caption = 'Material Embalaje', comment = 'ESP="Material Embalaje"';
                 Image = PutawayLines;
                 RunObject = page "SCRAP Item - Tipo de Envases";
                 RunPageLink = "Item No." = field("No.");

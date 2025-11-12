@@ -248,6 +248,11 @@ tableextension 50108 "Item" extends Item  //27
             OptionMembers = "Food Service","Retail";
             OptionCaption = 'Retail,Food Service', comment = 'ESP="Retail,Food Service"';
         }
+        field(50040; "Material Embalaje Excluido"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Material Embalaje Excluido', comment = 'ESP="Material Embalaje Excluido"';
+        }
         field(50075; "Renovate Plan"; boolean)
         {
             DataClassification = CustomerContent;

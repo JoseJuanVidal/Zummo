@@ -15,9 +15,11 @@ query 50011 "ZM Items - Purchase Category"
             { }
             column(Purch__Category; "Purch. Category")
             { }
+            column(Purch__SubCategory; "Purch. SubCategory")
+            { }
             column(Desc__Purch__Category; "Desc. Purch. Category")
             { }
-            column(Purch__SubCategory; "Purch. SubCategory")
+            column(Desc__Purch__SubCategory; "Desc. Purch. SubCategory")
             { }
             column(Group_Purch__SubCategory; "Group Purch. SubCategory")
             { }

@@ -28,6 +28,27 @@ tableextension 50005 "STH BOM BufferExt" extends "BOM Buffer"
             CalcFormula = lookup(Item."CMMF Code" where("No." = field("No.")));
             editable = false;
         }
+        Field(50020; "SCRAP No."; Integer)
+        {
+            Caption = 'Mat. Embalaje No.', comment = 'ESP="Nos. Mat. Embalaje"';
+            FieldClass = FlowField;
+            CalcFormula = count("SCRAP Item - Tipo de Envase" where("Item No." = field("No.")));
+            editable = false;
+        }
+        Field(50021; "Weight Material Packaging"; Decimal)
+        {
+            Caption = 'Peso Mat. Embalaje', comment = 'ESP="Peso Mat. Embalaje"';
+            FieldClass = FlowField;
+            CalcFormula = sum("SCRAP Item - Tipo de Envase".Peso where("Item No." = field("No.")));
+            editable = false;
+        }
+        field(50022; "Item Excluded Packaging"; Boolean)
+        {
+            Caption = 'Prod. excludido Mat. Embalaje', comment = 'ESP="Prod. excludido Mat. Embalaje"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Material Embalaje Excluido" where("No." = field("No.")));
+            editable = false;
+        }
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {
             Caption = 'Plastic Qty. (kg)', comment = 'ESP="Cdad. plástico (kg)"';

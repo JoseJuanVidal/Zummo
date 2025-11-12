@@ -2234,6 +2234,98 @@ codeunit 50111 "Funciones"
         end;
     end;
 
+    procedure CalculateSCRAPTipoEnvase(var Item: Record Item)
+    var
+        Window: Dialog;
+        lblWindow: Label 'Producto: #1#############################\Nivel: #2#############################\Componente: #3#############################',
+                comment = 'ESP="Producto: #1#############################\Nivel: #2#############################\Componente: #3#############################"';
+    begin
+        Window.Open(lblWindow);
+        if Item.FindFirst() then
+            repeat
+                Window.Update(1, Item."No.");
+                case Item."Replenishment System" of
+                    Item."Replenishment System"::Assembly, Item."Replenishment System"::"Prod. Order":
+                        CalculateSCRAPTipoEnvaseItem(Item."No.", Item, Window, 1, 1);
+                end;
+            Until Item.next() = 0;
+        Window.Close();
+    end;
+
+    local procedure CalculateSCRAPTipoEnvaseItem(ParentItemNo: code[20]; Item: Record Item; var Window: dialog; level: Integer; QuantityPer: decimal)
+    var
+        ProductionBomLine: Record "Production BOM Line";
+        BomItem: Record Item;
+        BomComponentItem: Record Item;
+        BomComponent: Record "BOM Component";
+    begin
+        InitScrapItem(Item);
+
+        ProductionBomLine.Reset();
+        ProductionBomLine.SetRange("Production BOM No.", Item."Production BOM No.");
+        ProductionBomLine.SetRange(Type, ProductionBomLine.Type::Item);
+        if ProductionBomLine.FindFirst() then
+            repeat
+                Window.Update(2, level);
+                Window.Update(3, ProductionBomLine."No.");
+                BomItem.Get(ProductionBomLine."No.");
+                if not BomItem."Material Embalaje Excluido" then begin
+                    // segun el tipo producto calculamos el nivel inferior
+                    case BomItem."Replenishment System" of
+                        BomItem."Replenishment System"::Assembly:
+                            begin
+                                BomComponent.Reset();
+                                BomComponent.SetRange("Parent Item No.", Item."No.");
+                                BomComponent.SetRange(Type, BomComponent.Type::Item);
+                                if BomComponent.FindFirst() then begin
+                                    if BomComponentItem.Get(BomComponent."No.") then
+                                        CalculateSCRAPTipoEnvaseItem(ParentItemNo, BomComponentItem, Window, level + 1, QuantityPer * BomComponent."Quantity per");
+                                end;
+                            end;
+                        BomItem."Replenishment System"::"Prod. Order":
+                            begin
+                                if Item."Production BOM No." <> '' then begin
+                                    CalculateSCRAPTipoEnvaseItem(ParentItemNo, BomItem, Window, level + 1, QuantityPer * ProductionBomLine."Quantity per");
+                                end;
+                            end;
+                    end;
+
+                    // añadimos los datos del control al principal
+                    AddScrapItem(ParentItemNo, BomItem, QuantityPer * ProductionBomLine."Quantity per");
+                end;
+
+            Until ProductionBomLine.next() = 0;
+    end;
+
+    local procedure InitScrapItem(Item: Record Item)
+    var
+        ScraptItem: Record "SCRAP Item - Tipo de Envase";
+    begin
+        ScraptItem.SetRange("Item No.", Item."No.");
+        ScraptItem.DeleteAll();
+    end;
+
+    local procedure AddScrapItem(ItemNo: code[20]; BomItem: Record Item; QuantityPer: decimal)
+    var
+        ScraptItem: Record "SCRAP Item - Tipo de Envase";
+        AddScraptItem: Record "SCRAP Item - Tipo de Envase";
+    begin
+        ScraptItem.SetRange("Item No.", BomItem."No.");
+        if ScraptItem.FindFirst() then
+            repeat
+                if not AddScraptItem.Get(ItemNo, ScraptItem.SUBMATERIAL, ScraptItem."Tipo de Envase") then begin
+                    AddScraptItem.Init();
+                    AddScraptItem."Item No." := ItemNo;
+                    AddScraptItem.SUBMATERIAL := ScraptItem.SUBMATERIAL;
+                    AddScraptItem."Tipo de Envase" := ScraptItem."Tipo de Envase";
+                    AddScraptItem.Insert();
+                end;
+                AddScraptItem.Peso += ScraptItem.Peso * QuantityPer;
+                AddScraptItem.Modify();
+
+            Until ScraptItem.next() = 0;
+    end;
+
     local procedure PlasticCalculateProductionBOMItem(var Item: Record Item; NivelesInferior: Boolean);
     var
         ProductionBomLine: Record "Production BOM Line";

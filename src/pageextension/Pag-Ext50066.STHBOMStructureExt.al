@@ -32,6 +32,27 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("SCRAP No."; "SCRAP No.")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Weight Material Packaging"; "Weight Material Packaging")
+            {
+                ApplicationArea = all;
+                Visible = False;
+            }
+            field("Item Excluded Packaging"; "Item Excluded Packaging")
+            {
+                ApplicationArea = all;
+                Visible = False;
+            }
+            field(WeightMaterialPackaging; "Weight Material Packaging" * Rec."Qty. per Parent")
+            {
+                Caption = 'Peso Embalaje por', comment = 'ESP="Peso Embalaje por"';
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("Plastic Qty. (kg)"; "Plastic Qty. (kg)")
             {
                 ApplicationArea = all;

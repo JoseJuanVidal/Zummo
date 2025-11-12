@@ -218,8 +218,21 @@ pageextension 50133 "ItemList" extends "Item List"
                 begin
                     CalculatePlastic;
                 end;
-
             }
+            action(CalculateSCRAPTipoEnvases)
+            {
+                ApplicationArea = all;
+                Caption = 'Calcular Mat. Embalaje L.M.', comment = 'ESP="Calcular Mat. Embalaje L.M."';
+                Image = CalculateConsumption;
+                // Promoted = true;
+                // PromotedCategory = New;
+
+                trigger OnAction()
+                begin
+                    CalculateSCRAPTipoEnvase();
+                end;
+            }
+
         }
         addlast(Processing)
         {
@@ -340,7 +353,7 @@ pageextension 50133 "ItemList" extends "Item List"
             }
             action(PlasticDeclaration)
             {
-                Caption = 'Declaracion SCRAP', comment = 'ESP="Declaracion SCRAP"';
+                Caption = 'Material Embalaje', comment = 'ESP="Material Embalaje"';
                 Image = PutawayLines;
                 RunObject = page "SCRAP Item - Tipo de Envases";
                 RunPageLink = "Item No." = field("No.");
@@ -388,6 +401,18 @@ pageextension 50133 "ItemList" extends "Item List"
         CurrPage.SetSelectionFilter(Item);
         if Confirm(lblConfirm, false, Item.Count) then
             Funciones.PlasticCalculateItems(Rec);
+    end;
+
+    local procedure CalculateSCRAPTipoEnvase()
+    var
+        Item: Record Item;
+        Funciones: Codeunit Funciones;
+        lblConfirm: Label '¿Desea calcular SCRAP de la L.M. de %1 producto/s?', comment = '¿Desea calcular SCRAP de la L.M. de %1 producto/s?';
+    begin
+        CurrPage.SetSelectionFilter(Item);
+        if Confirm(lblConfirm, false, Item.Count) then
+            Funciones.CalculateSCRAPTipoEnvase(Item);
+
     end;
 
     local procedure OnAction_AsignarGTIN()
