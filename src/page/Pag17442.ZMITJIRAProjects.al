@@ -26,8 +26,13 @@ page 17442 "ZM IT JIRA Projects"
                 field(id; Rec.id)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field(Type; Type)
+                {
+                    ApplicationArea = all;
+                }
+                field(Tasks; Tasks)
                 {
                     ApplicationArea = all;
                 }
@@ -66,4 +71,11 @@ page 17442 "ZM IT JIRA Projects"
             }
         }
     }
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        if Rec.GetFilter(Type) <> '' then
+            Rec.Type := Rec.Type::Intern;
+
+    end;
 }

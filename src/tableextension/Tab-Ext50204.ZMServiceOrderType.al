@@ -5,12 +5,12 @@ tableextension 50204 "ZM Service Order Type" extends "Service Order Type"
         field(50100; "Exportar BI Reclamaciones"; Boolean)
         {
             Caption = 'Exportar BI Reclamaciones';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(50110; "Solucionado primera visista"; Boolean)
         {
             Caption = 'Solucionado primera visista';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
     }
 }

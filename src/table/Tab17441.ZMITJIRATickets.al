@@ -50,7 +50,7 @@ table 17441 "ZM IT JIRA Tickets"
 
     keys
     {
-        key(PK; "key")
+        key(PK; Project, "key")
         {
             Clustered = true;
         }

@@ -10318,6 +10318,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 2973329650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Task</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tareas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field Tasks - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2254326384 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
@@ -12173,6 +12178,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fechas fuera del periodo contable mensual"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method ItemJnlPostBatch_TestPostingDate - NamedType lblError</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 3998599243 - NamedType 37012126" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;Solicitud de Compra menor de 200&amp;euro;1&lt;/strong&gt;&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method MyProcedure - NamedType lblTitle</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 3998599243 - NamedType 3139146508" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;p&gt;&lt;strong&gt;%1: &lt;/strong&gt;%2&lt;/p&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method MyProcedure - NamedType lblField</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 4089462097 - NamedType 3941846598" size-unit="char" translate="yes" xml:space="preserve">
           <source>Debe actualizar el pedido de compra orgien, %1, antes de registrar</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12197,6 +12212,11 @@
           <source>No exchange rate is found for currency: %1 and date: %2 %3: %4</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se encuentra tipo de cambio para divisa: %1 y fecha: %2 %3: %4"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method TestTipoCambioDocumentoCompra - NamedType lbErrorDivisaErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 1559137054 - NamedType 3385912007" size-unit="char" translate="yes" xml:space="preserve">
+          <source>#</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method UpdateTableFieldName - NamedType lblControl</note>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 2780101169 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
           <source>Producto: #1#############################\Nivel: #2#############################\Componente: #3#############################</source>

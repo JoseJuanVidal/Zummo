@@ -26,7 +26,13 @@ table 17442 "ZM IT JIRA Projects"
             Caption = 'Type', comment = 'ESP="Tipo"';
             OptionMembers = " ",Intern;
         }
-
+        field(10; Tasks; Integer)
+        {
+            Caption = 'Task', comment = 'ESP="Tareas"';
+            FieldClass = FlowField;
+            CalcFormula = count("ZM IT JIRA Tickets" where(Project = field("key")));
+            Editable = false;
+        }
     }
 
     keys

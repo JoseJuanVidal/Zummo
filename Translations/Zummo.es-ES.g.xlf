@@ -10961,6 +10961,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field name - Property Caption</note>
           <target>Nombre</target>
         </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 2973329650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Task</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tareas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field Tasks - Property Caption</note>
+          <target>Tareas</target>
+        </trans-unit>
         <trans-unit id="Table 2254326384 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>

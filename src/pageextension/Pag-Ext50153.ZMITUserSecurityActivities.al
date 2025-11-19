@@ -55,11 +55,16 @@ pageextension 50153 "ZM IT User Security Activities" extends "User Security Acti
     end;
 
     local procedure DrillDownDailyTimeProject()
+    var
+        ITProjects: page "ZM IT JIRA Projects";
     begin
         //lanzamos la lista de Marcajes de este usario
         DailyProjects.Reset();
         DailyProjects.SetRange(Type, DailyProjects.Type::Intern);
-        page.Run(page::"ZM IT JIRA Projects", DailyProjects);
+        ITProjects.SetTableView(DailyProjects);
+        ITProjects.Run();
+        // page.Run(page::"ZM IT JIRA Projects", DailyProjects);
+
     end;
 
 

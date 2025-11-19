@@ -268,52 +268,52 @@ codeunit 50101 "Eventos_btc"
         CreatestockkepingUnit.Run();*/
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Mailing", 'OnBeforeSendEmail', '', true, true)]
-    local procedure CDU_260_OnBeforeSendemail(VAR TempEmailItem: Record "Email Item" temporary; VAR IsFromPostedDoc: Boolean; VAR PostedDocNo: Code[20]; VAR HideDialog: Boolean; VAR ReportUsage: Integer)
-    var
-        recPurchSetup: Record "Purchases & Payables Setup";
-        recPurchHeader: Record "Purchase Header";
-        recContBusRelation: Record "Contact Business Relation";
-        recContact: Record Contact;
-        txtDirecciones: Text;
-    begin
-        if not IsFromPostedDoc or not recPurchHeader.Get(recPurchHeader."Document Type"::Order, PostedDocNo) then
-            exit;
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Mailing", 'OnBeforeSendEmail', '', true, true)]
+    // local procedure CDU_260_OnBeforeSendemail(VAR TempEmailItem: Record "Email Item" temporary; VAR IsFromPostedDoc: Boolean; VAR PostedDocNo: Code[20]; VAR HideDialog: Boolean; VAR ReportUsage: Integer)
+    // var
+    //     recPurchSetup: Record "Purchases & Payables Setup";
+    //     recPurchHeader: Record "Purchase Header";
+    //     recContBusRelation: Record "Contact Business Relation";
+    //     recContact: Record Contact;
+    //     txtDirecciones: Text;
+    // begin
+    //     if not IsFromPostedDoc or not recPurchHeader.Get(recPurchHeader."Document Type"::Order, PostedDocNo) then
+    //         exit;
 
-        recPurchSetup.Get();
+    //     recPurchSetup.Get();
 
-        txtDirecciones := '';
+    //     txtDirecciones := '';
 
-        recContBusRelation.Reset();
-        recContBusRelation.SetRange("Link to Table", recContBusRelation."Link to Table"::Vendor);
-        recContBusRelation.SetRange("No.", recPurchHeader."Buy-from Vendor No.");
-        if recContBusRelation.FindFirst() then begin
-            recContact.Reset();
-            recContact.SetRange("Company No.", recContBusRelation."Contact No.");
-            recContact.SetRange(EnviarEmailPedCompra2_btc, true);
-            if recContact.FindSet() then
-                repeat
-                    txtDirecciones += recContact."E-Mail" + ';';
-                until recContact.Next() = 0;
+    //     recContBusRelation.Reset();
+    //     recContBusRelation.SetRange("Link to Table", recContBusRelation."Link to Table"::Vendor);
+    //     recContBusRelation.SetRange("No.", recPurchHeader."Buy-from Vendor No.");
+    //     if recContBusRelation.FindFirst() then begin
+    //         recContact.Reset();
+    //         recContact.SetRange("Company No.", recContBusRelation."Contact No.");
+    //         recContact.SetRange(EnviarEmailPedCompra2_btc, true);
+    //         if recContact.FindSet() then
+    //             repeat
+    //                 txtDirecciones += recContact."E-Mail" + ';';
+    //             until recContact.Next() = 0;
 
-            if StrLen(txtDirecciones) > 0 then
-                if txtDirecciones[StrLen(txtDirecciones)] = ';' then
-                    txtDirecciones := copystr(txtDirecciones, 1, StrLen(txtDirecciones) - 1);
-        end;
+    //         if StrLen(txtDirecciones) > 0 then
+    //             if txtDirecciones[StrLen(txtDirecciones)] = ';' then
+    //                 txtDirecciones := copystr(txtDirecciones, 1, StrLen(txtDirecciones) - 1);
+    //     end;
 
-        if (txtDirecciones <> '') and (StrLen(txtDirecciones) <= MaxStrLen(TempEmailItem."Send to")) then
-            TempEmailItem."Send to" := copystr(txtDirecciones, 1, MaxStrlen(tempemailitem."Send To"));
+    //     if (txtDirecciones <> '') and (StrLen(txtDirecciones) <= MaxStrLen(TempEmailItem."Send to")) then
+    //         TempEmailItem."Send to" := copystr(txtDirecciones, 1, MaxStrlen(tempemailitem."Send To"));
 
-        recPurchSetup.CALCFIELDS(TextoEmailPedCompra_btc);
+    //     recPurchSetup.CALCFIELDS(TextoEmailPedCompra_btc);
 
-        IF recPurchSetup.TextoEmailPedCompra_btc.HASVALUE() THEN begin
-            TempEmailItem."Plaintext Formatted" := true;
-            TempEmailItem."Message Type" := TempEmailItem."Message Type"::"Custom Message";
-            TempEmailItem.Body := recPurchSetup.TextoEmailPedCompra_btc;
-        end;
+    //     IF recPurchSetup.TextoEmailPedCompra_btc.HASVALUE() THEN begin
+    //         TempEmailItem."Plaintext Formatted" := true;
+    //         TempEmailItem."Message Type" := TempEmailItem."Message Type"::"Custom Message";
+    //         TempEmailItem.Body := recPurchSetup.TextoEmailPedCompra_btc;
+    //     end;
 
-        if TempEmailItem.Modify() then;
-    end;
+    //     if TempEmailItem.Modify() then;
+    // end;
 
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Carry Out Action", 'OnInsertProdOrderWithReqLine', '', false, false)]
@@ -1806,5 +1806,88 @@ codeunit 50101 "Eventos_btc"
         ItemJnlLine.SetRange("Journal Batch Name", JnlBatchName);
         if ItemJnlLine.FindLast() then
             exit(ItemJnlLine."Line No.");
+    end;
+    //OnAfterSendEmailDirectly(ReportUsage,RecordVariant,AllEmailsWereSuccessful);
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Mailing", 'OnBeforeSendEmail', '', true, true)]
+    local procedure DocumentMailing_OnBeforeSendEmail(var TempEmailItem: Record "Email Item" temporary; var IsFromPostedDoc: Boolean; var PostedDocNo: Code[20];
+        var HideDialog: Boolean; var ReportUsage: Integer)
+    var
+        PurchaseSetup: Record "Purchases & Payables Setup";
+        PurchaseHeader: Record "Purchase Header";
+        DocSending: Record "Document Sending Profile";
+        TempBlob: Record TempBlob;
+        DocMailing: Codeunit "Document-Mailing";
+        FileManagement: Codeunit "File Management";
+        Funciones: Codeunit Funciones;
+        BodyText: Text;
+        FilePath: text;
+        FileName: text;
+        FileNameMerge: text;
+        FileTxt: File;
+        TextInStr: InStream;
+        TextOutSream: OutStream;
+    begin
+
+        PurchaseSetup.Get();
+        if PurchaseHeader.get(PurchaseHeader."Document Type"::Order, PostedDocNo) then
+            TempEmailItem.Validate(Subject, StrSubstNo('%1 - %2', PostedDocNo, PurchaseHeader."Buy-from Vendor Name"));
+        FilePath := FileManagement.ServerTempFileName('html');
+        PurchaseSetup.CalcFields(TextoEmailPedCompra_btc);
+        if PurchaseSetup.TextoEmailPedCompra_btc.HASVALUE() then begin
+            Clear(FileTxt);
+            FileTxt.WriteMode(true);
+            FileTxt.Create(FilePath);
+            FileTxt.CreateOutStream(TextOutSream);
+            PurchaseSetup.TextoEmailPedCompra_btc.CreateInStream(TextInStr, TEXTENCODING::UTF8);
+            TextInStr.Read(BodyText);
+            BodyText := UpdateTableFieldName(PurchaseHeader, BodyText);
+            // BodyText.Write(TextOutSream);
+            TextOutSream.WriteText(BodyText);
+            FileTxt.Close();
+
+            TempEmailItem.Validate("Plaintext Formatted", false);
+            TempEmailItem.Validate("Message Type", TempEmailItem."Message Type"::"From Email Body Template");
+            TempEmailItem.Validate("Body File Path", FilePath);
+
+        end;
+        Funciones.CrearDFPurchaseOrder(PurchaseHeader, FileNameMerge, FileName);
+        if FileName <> '' then begin
+            TempEmailItem."Attachment Name" := FileNameMerge;
+            TempEmailItem."Attachment File Path" := FileName;
+        end
+    end;
+
+    local procedure UpdateTableFieldName(PurchaseHeader: Record "Purchase Header"; BodyText: text): Text
+    var
+        TablaRecordRef: RecordRef;
+        CampoFieldRef: FieldRef;
+        FieldCount: Integer;
+        i: Integer;
+        FieldName: text;
+        lblControl: Label '#';
+        TextB: TextBuilder;
+    begin
+        TextB.Append(BodyText);
+        TablaRecordRef.GetTable(PurchaseHeader);
+        FieldCount := 1;
+        while FieldCount < TablaRecordRef.FieldCount do begin
+            i += 1;
+            if TablaRecordRef.FieldExist(i) then begin
+                FieldCount += 1;
+                CampoFieldRef := TablaRecordRef.Field(i);
+                FieldName := StrSubstNo('%1%2%1', lblControl, CampoFieldRef.Name);
+                TextB.Replace(FieldName, CampoFieldRef.Value);
+            end;
+        end;
+        exit(TextB.ToText());
+    end;
+
+    local procedure MyProcedure()
+    var
+        lblTitle: Label '<p><strong>Solicitud de Compra menor de 200&euro;1</strong></p>';
+        lblField: Label '<p><strong>%1: </strong>%2</p>';
+    begin
+
     end;
 }

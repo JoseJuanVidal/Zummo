@@ -1375,6 +1375,8 @@ codeunit 50111 "Funciones"
                     if PurchaseLine.Get(PurchaseLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.") then begin
                         PurchaseLine."Qty. Rcd. Not Invoiced (Base)" := 0;
                         PurchaseLine."Qty. Rcd. Not Invoiced" := 0;
+                        PurchaseLine."Quantity Received" := 0;
+                        PurchaseLine."Qty. Received (Base)" := 0;
                         PurchaseLine.Modify();
                     end;
                 end;
@@ -1397,6 +1399,8 @@ codeunit 50111 "Funciones"
                     if PurchaseLine.Get(PurchaseLine."Document Type"::Order, PurchRcptLine."Order No.", PurchRcptLine."Order Line No.") then begin
                         PurchaseLine."Qty. Rcd. Not Invoiced (Base)" := 0;
                         PurchaseLine."Qty. Rcd. Not Invoiced" := 0;
+                        PurchaseLine."Quantity Received" := 0;
+                        PurchaseLine."Qty. Received (Base)" := 0;
                         PurchaseLine.Modify();
                     end;
                 end;
@@ -3525,7 +3529,7 @@ codeunit 50111 "Funciones"
 
         Content.Create(FileName);  // only supported in Business Central on-premises
         Content.CreateOutStream(OStream);  // only supported in Business Central on-premises
-        report.SaveAs(report::"Pedido Compra", XmlParameters, ReportFormat::Pdf, OStream, RecRef);
+        report.SaveAs(Report::"Pedido Compra", XmlParameters, ReportFormat::Pdf, OStream, RecRef);
         Content.Close();
 
         files.add(FileName);
@@ -3542,6 +3546,13 @@ codeunit 50111 "Funciones"
         FileName := StrSubstNo('%1.%2', PurchaseHeader."No.", FileManagement.GetExtension(FileNameMerge2));
 
         Download(FileNameMerge, 'PDF Pedidos Compra', '', '', FileName);
+    end;
+
+    local procedure MyProcedure()
+    var
+        myInt: Integer;
+    begin
+
     end;
 
     procedure UploadGeneralConditions(fieldNo: Integer): Text;
