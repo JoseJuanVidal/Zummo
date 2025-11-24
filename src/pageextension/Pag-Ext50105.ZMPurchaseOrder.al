@@ -68,6 +68,17 @@ pageextension 50105 "ZM PurchaseOrder" extends "Purchase Order"
                 end;
             }
         }
+        addlast(Navigation)
+        {
+            action(RegisterSendEmail)
+            {
+                ApplicationArea = all;
+                Caption = 'Register Send', comment = 'ESP="Registro Envío"';
+                Image = SendElectronicDocument;
+                RunObject = page "ZM Order mail Registers";
+                RunPageLink = "Order No." = field("No.");
+            }
+        }
     }
     var
         Funciones: Codeunit Funciones;

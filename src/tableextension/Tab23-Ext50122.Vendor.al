@@ -2,6 +2,11 @@ tableextension 50122 "Vendor" extends Vendor //23
 {
     fields
     {
+        field(50000; "Purch. Order email"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Purch. Order email', comment = 'ESP="Email pedido compra"';
+        }
         field(50100; CodMotivoBloqueo_btc; Code[20])
         {
             DataClassification = CustomerContent;

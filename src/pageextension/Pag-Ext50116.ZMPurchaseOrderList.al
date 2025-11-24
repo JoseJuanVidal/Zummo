@@ -8,6 +8,14 @@ pageextension 50116 "ZM PurchaseOrderList" extends "Purchase Order List"
             {
                 ApplicationArea = All;
             }
+            field(Emailsent; Emailsent)
+            {
+                ApplicationArea = all;
+            }
+            field(EmailsentPending; EmailsentPending)
+            {
+                ApplicationArea = all;
+            }
             field("Motivo rechazo"; "Motivo rechazo")
             {
                 Caption = 'Comentario';
@@ -45,6 +53,17 @@ pageextension 50116 "ZM PurchaseOrderList" extends "Purchase Order List"
                 begin
                     ExportMergePDF();
                 end;
+            }
+        }
+        addlast(Navigation)
+        {
+            action(RegisterSendEmail)
+            {
+                ApplicationArea = all;
+                Caption = 'Register Send', comment = 'ESP="Registro Envío"';
+                Image = SendElectronicDocument;
+                RunObject = page "ZM Order mail Registers";
+                RunPageLink = "Order No." = field("No.");
             }
         }
     }

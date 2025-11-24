@@ -14,6 +14,11 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             Caption = 'Standard Text Code', comment = 'ESP="Texto estandard"';
             TableRelation = "Standard Text";
         }
+        field(50002; "Email Order CC"; text[250])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Email Order CC', comment = 'ESP="Email Pedido CC"';
+        }
         field(50010; WarningPlasticReceiptIntra; Boolean)
         {
             DataClassification = CustomerContent;

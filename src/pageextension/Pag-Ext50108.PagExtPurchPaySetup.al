@@ -27,7 +27,10 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                     {
                         ApplicationArea = all;
                     }
-
+                    field("Email Order CC"; "Email Order CC")
+                    {
+                        ApplicationArea = all;
+                    }
                 }
                 field(WarningPlasticReceiptIntra; WarningPlasticReceiptIntra)
                 {

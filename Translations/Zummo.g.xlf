@@ -10728,6 +10728,51 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Online Drive - Field webUrl - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1867986299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order mail Register</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro envío Pedido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Order mail Register - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1867986299 - Field 2535914804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date-Time Sent</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha-Hora envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Order mail Register - Field Date-Time Sent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1867986299 - Field 1964419135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Order mail Register - Field Employee No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1867986299 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Línea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Order mail Register - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1867986299 - Field 2202932243 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nª Pedido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Order mail Register - Field Order No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1867986299 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Order mail Register - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1867986299 - Field 966610113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Receipts</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Para"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Order mail Register - Field Receipts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1867986299 - Field 1234124704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Subject</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asunto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Order mail Register - Field Subject - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1867986299 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Order mail Register - Field User ID - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1378230549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Purchases Prices</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precios compra productos"</note>
@@ -20157,6 +20202,11 @@
           <source>URL</source>
           <note from="Developer" annotates="general" priority="2">ESP="URL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM OAuth20Application Folders - Action URL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3727419686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order mail Register</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro envío Pedido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Order mail Registers - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1863527760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pre-Items registration list</source>
@@ -34033,10 +34083,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Action ChangeCurrencyCode - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Action 4166219763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Register Send</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro Envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Action RegisterSendEmail - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 67345182 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
           <source>Normativa Plástico</source>
           <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Control Plastic - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 148744100 - Action 4166219763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
+          <source>Register Send</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro Envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action RegisterSendEmail - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 148744100 - Control 2267512986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
           <source>Comentario</source>
@@ -35912,6 +35972,11 @@
           <source>Drive Id</source>
           <note from="Developer" annotates="general" priority="2">ESP="Drive ID"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field driveId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 3754106070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Email Order CC</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Email Pedido CC"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Email Order CC - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 2711932753 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Email reply lower 200</source>
@@ -38713,6 +38778,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importe subcontratación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Amount Subcontractor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 1478460228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Email sent</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Enviado Email"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Emailsent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 2005627633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Email sent pending</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Pendiente Enviado Email"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field EmailsentPending - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 348912602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Fecha Mas Temprana</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Mas Temprana"</note>
@@ -39187,6 +39262,11 @@
           <source>Last Entry</source>
           <note from="Developer" annotates="general" priority="2">ESP="Último movimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field Last date ledger Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1936001480 - Field 2669281276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Purch. Order email</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Email pedido compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field Purch. Order email - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1936001480 - Field 1583414689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Transport Methods</source>

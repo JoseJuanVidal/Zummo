@@ -25,7 +25,13 @@ pageextension 50119 "VendorCard" extends "Vendor Card"
                 ApplicationArea = all;
             }
         }
-
+        addafter("E-Mail")
+        {
+            field("Purch. Order email"; "Purch. Order email")
+            {
+                ApplicationArea = all;
+            }
+        }
 
         //101219 S19/01393 Clasificación proveedor
         addafter(Name)

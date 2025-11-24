@@ -1809,11 +1809,33 @@ codeunit 50101 "Eventos_btc"
     end;
     //OnAfterSendEmailDirectly(ReportUsage,RecordVariant,AllEmailsWereSuccessful);
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Mailing", 'OnAfterEmailSentSuccesfully', '', true, true)]
+    local procedure DocumentMailing_OnAfterEmailSentSuccesfully(var TempEmailItem: Record "Email Item"; PostedDocNo: Code[20]; ReportUsage: Integer)
+    var
+        PurchaseHeader: Record "Purchase Header";
+        OrderEmailRegister: Record "ZM Order mail Register";
+    begin
+        if PurchaseHeader.get(PurchaseHeader."Document Type"::Order, PostedDocNo) then begin
+            OrderEmailRegister.AddSentRegister(PurchaseHeader, TempEmailItem."Send to", TempEmailItem.Subject);
+            PurchaseHeader.SetEmailsent();
+        end;
+    end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Mailing", 'OnBeforeSendEmail', '', true, true)]
     local procedure DocumentMailing_OnBeforeSendEmail(var TempEmailItem: Record "Email Item" temporary; var IsFromPostedDoc: Boolean; var PostedDocNo: Code[20];
         var HideDialog: Boolean; var ReportUsage: Integer)
     var
         PurchaseHeader: Record "Purchase Header";
+        OrderEmailRegister: Record "ZM Order mail Register";
+    begin
+        if PurchaseHeader.get(PurchaseHeader."Document Type"::Order, PostedDocNo) then begin
+            TempEmailItem.Validate(Subject, StrSubstNo('%1 - %2', PostedDocNo, PurchaseHeader."Buy-from Vendor Name"));
+            PurchaseOrderSendEmail(TempEmailItem, PurchaseHeader);
+        end;
+    end;
+
+    local procedure PurchaseOrderSendEmail(var TempEmailItem: Record "Email Item" temporary; PurchaseHeader: Record "Purchase Header")
+    var
         DocSending: Record "Document Sending Profile";
         TempBlob: Record TempBlob;
         DocMailing: Codeunit "Document-Mailing";
@@ -1827,12 +1849,10 @@ codeunit 50101 "Eventos_btc"
         TextInStr: InStream;
         TextOutSream: OutStream;
     begin
-
-
-        if PurchaseHeader.get(PurchaseHeader."Document Type"::Order, PostedDocNo) then
-            TempEmailItem.Validate(Subject, StrSubstNo('%1 - %2', PostedDocNo, PurchaseHeader."Buy-from Vendor Name"));
         FilePath := FileManagement.ServerTempFileName('html');
         // PurchaseSetup.CalcFields(TextoEmailPedCompra_btc);
+        SetEmailSenders(TempEmailItem);
+        GetVendorEmail(TempEmailItem, PurchaseHeader);
         if getTextoEmailCompra(PurchaseHeader, BodyText) then begin
             Clear(FileTxt);
             FileTxt.WriteMode(true);
@@ -1852,12 +1872,32 @@ codeunit 50101 "Eventos_btc"
         Commit();
     end;
 
+    local procedure GetVendorEmail(var TempEmailItem: Record "Email Item" temporary; PurchaseHeader: Record "Purchase Header")
+    var
+        Vendor: Record Vendor;
+    begin
+        if Vendor.Get(PurchaseHeader."Buy-from Vendor No.") then
+            if Vendor."Purch. Order email" <> '' then
+                TempEmailItem."Send to" := Vendor."Purch. Order email";
+    end;
+
+    local procedure SetEmailSenders(var TempEmailItem: Record "Email Item" temporary)
+    var
+        PurchaseSetup: Record "Purchases & Payables Setup";
+    begin
+        PurchaseSetup.Get();
+        if PurchaseSetup."Email Order CC" <> '' then
+            TempEmailItem."Send CC" := PurchaseSetup."Email Order CC";
+        // Buscamos el campo de proveedor nuevo, a ver que dato tiene
+    end;
+
     local procedure getTextoEmailCompra(PurchaseHeader: Record "Purchase Header"; var BodyText: Text): Boolean
     var
         PurchaseSetup: Record "Purchases & Payables Setup";
         StandarTextLine: Record "Extended Text Line";
     begin
         PurchaseSetup.Get();
+
         if PurchaseSetup."Standard Text Code" <> '' then begin
             StandarTextLine.SetRange("No.", PurchaseSetup."Standard Text Code");
             StandarTextLine.SetRange("Language Code", PurchaseHeader."Language Code");
@@ -1903,4 +1943,24 @@ codeunit 50101 "Eventos_btc"
         exit(TextB.ToText());
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterModifyEvent', '', true, true)]
+    local procedure PurchaseLine_OnAfterModifyEvent(var Rec: Record "Purchase Line"; var xRec: Record "Purchase Line"; RunTrigger: Boolean)
+    var
+        PurchaseHeader: Record "Purchase Header";
+    begin
+        if Rec.IsTemporary then
+            exit;
+        if Rec."Outstanding Quantity" = 0 then
+            exit;
+        if not PurchaseHeader.get(Rec."Document Type", Rec."Document No.") then
+            exit;
+        if not PurchaseHeader.Emailsent then
+            exit;
+        if (Rec."Line Amount" <> xRec."Line Amount") then
+            PurchaseHeader.EnableEmailsentPending();
+        if GuiAllowed then
+            if (Rec.Quantity <> xRec.Quantity) then
+                PurchaseHeader.EnableEmailsentPending();
+
+    end;
 }
