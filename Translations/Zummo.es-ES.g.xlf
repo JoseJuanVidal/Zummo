@@ -13178,6 +13178,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method TestTipoCambioDocumentoCompra - NamedType lbErrorDivisaErr</note>
           <target>No se encuentra tipo de cambio para divisa: %1 y fecha: %2 %3: %4</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 1559137054 - NamedType 3385912007" size-unit="char" translate="yes" xml:space="preserve">
+          <source>#</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method UpdateTableFieldName - NamedType lblControl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 2780101169 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
           <source>Producto: #1#############################\Nivel: #2#############################\Componente: #3#############################</source>
           <note from="Developer" annotates="general" priority="2">ESP="Producto: #1#############################\Nivel: #2#############################\Componente: #3#############################"</note>
@@ -13240,6 +13245,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="No se puede realizar planificación con Agrupación y multiples filtros de Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CheckFilterOneLocation - NamedType Text000</note>
           <target>No se puede realizar planificación con Agrupación y multiples filtros de Almacén</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 1986021836 - Method 1918494188 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Procesando"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Funciones - Method CrearPDFPurchaseOrder - NamedType lblWindow</note>
+          <target>Procesando</target>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 2723067842 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to create a purchase order?B</source>
@@ -39547,6 +39558,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Carpeta Sharepoint"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Sharepoint Folder - Property Caption</note>
           <target>Carpeta Sharepoint</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 3152332661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Standard Text Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Texto estandard"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Standard Text Code - Property Caption</note>
+          <target>Texto estandard</target>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 943801273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Text e-mail purchase order</source>

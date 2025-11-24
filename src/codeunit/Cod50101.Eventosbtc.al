@@ -1813,7 +1813,6 @@ codeunit 50101 "Eventos_btc"
     local procedure DocumentMailing_OnBeforeSendEmail(var TempEmailItem: Record "Email Item" temporary; var IsFromPostedDoc: Boolean; var PostedDocNo: Code[20];
         var HideDialog: Boolean; var ReportUsage: Integer)
     var
-        PurchaseSetup: Record "Purchases & Payables Setup";
         PurchaseHeader: Record "Purchase Header";
         DocSending: Record "Document Sending Profile";
         TempBlob: Record TempBlob;
@@ -1822,27 +1821,24 @@ codeunit 50101 "Eventos_btc"
         Funciones: Codeunit Funciones;
         BodyText: Text;
         FilePath: text;
-        FileName: text;
+        FileNamePath: text;
         FileNameMerge: text;
         FileTxt: File;
         TextInStr: InStream;
         TextOutSream: OutStream;
     begin
 
-        PurchaseSetup.Get();
+
         if PurchaseHeader.get(PurchaseHeader."Document Type"::Order, PostedDocNo) then
             TempEmailItem.Validate(Subject, StrSubstNo('%1 - %2', PostedDocNo, PurchaseHeader."Buy-from Vendor Name"));
         FilePath := FileManagement.ServerTempFileName('html');
-        PurchaseSetup.CalcFields(TextoEmailPedCompra_btc);
-        if PurchaseSetup.TextoEmailPedCompra_btc.HASVALUE() then begin
+        // PurchaseSetup.CalcFields(TextoEmailPedCompra_btc);
+        if getTextoEmailCompra(PurchaseHeader, BodyText) then begin
             Clear(FileTxt);
             FileTxt.WriteMode(true);
             FileTxt.Create(FilePath);
             FileTxt.CreateOutStream(TextOutSream);
-            PurchaseSetup.TextoEmailPedCompra_btc.CreateInStream(TextInStr, TEXTENCODING::UTF8);
-            TextInStr.Read(BodyText);
             BodyText := UpdateTableFieldName(PurchaseHeader, BodyText);
-            // BodyText.Write(TextOutSream);
             TextOutSream.WriteText(BodyText);
             FileTxt.Close();
 
@@ -1851,11 +1847,35 @@ codeunit 50101 "Eventos_btc"
             TempEmailItem.Validate("Body File Path", FilePath);
 
         end;
-        Funciones.CrearDFPurchaseOrder(PurchaseHeader, FileNameMerge, FileName);
-        if FileName <> '' then begin
-            TempEmailItem."Attachment Name" := FileNameMerge;
-            TempEmailItem."Attachment File Path" := FileName;
-        end
+        FileNameMerge := TempEmailItem."Attachment File Path";
+        Funciones.CrearPDFPurchaseOrder(PurchaseHeader, FileNameMerge);
+        Commit();
+    end;
+
+    local procedure getTextoEmailCompra(PurchaseHeader: Record "Purchase Header"; var BodyText: Text): Boolean
+    var
+        PurchaseSetup: Record "Purchases & Payables Setup";
+        StandarTextLine: Record "Extended Text Line";
+    begin
+        PurchaseSetup.Get();
+        if PurchaseSetup."Standard Text Code" <> '' then begin
+            StandarTextLine.SetRange("No.", PurchaseSetup."Standard Text Code");
+            StandarTextLine.SetRange("Language Code", PurchaseHeader."Language Code");
+            if StandarTextLine.FindSet() then begin
+                repeat
+                    BodyText += StandarTextLine.Text;
+                until StandarTextLine.Next() = 0;
+                exit(true);
+            end else begin
+                StandarTextLine.SetRange("Language Code", '');
+                if StandarTextLine.FindSet() then begin
+                    repeat
+                        BodyText += StandarTextLine.Text;
+                    until StandarTextLine.Next() = 0;
+                    exit(true);
+                end;
+            end;
+        end;
     end;
 
     local procedure UpdateTableFieldName(PurchaseHeader: Record "Purchase Header"; BodyText: text): Text
@@ -1883,11 +1903,4 @@ codeunit 50101 "Eventos_btc"
         exit(TextB.ToText());
     end;
 
-    local procedure MyProcedure()
-    var
-        lblTitle: Label '<p><strong>Solicitud de Compra menor de 200&euro;1</strong></p>';
-        lblField: Label '<p><strong>%1: </strong>%2</p>';
-    begin
-
-    end;
 }

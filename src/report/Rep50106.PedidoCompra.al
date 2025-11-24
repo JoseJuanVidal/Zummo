@@ -925,6 +925,11 @@ report 50106 "Pedido Compra"
                 if recVendor.Get("Purchase Header"."Buy-from Vendor No.") then
                     CurrReport.Language := Language.GetLanguageID(recVendor."Language Code");
 
+                if "Purchase Header"."Language Code" in ['ENG'] then
+                    "Purchase Header"."Language Code" := 'ENU';
+                if "Purchase Header"."Language Code" <> '' then
+                    CurrReport.Language := Language.GetLanguageID("Purchase Header"."Language Code");
+
                 if optIdioma <> optIdioma::" " then
                     CurrReport.LANGUAGE := Language.GetLanguageID(format(optIdioma));
 

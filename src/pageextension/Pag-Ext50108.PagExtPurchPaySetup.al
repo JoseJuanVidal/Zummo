@@ -12,16 +12,20 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                 {
                     Caption = 'Text e-mail purchase order', comment = 'ESP="Texto e-mail pedido compra"';
 
-                    field(textoEmail; textoEmail)
-                    {
-                        ApplicationArea = All;
-                        ShowCaption = false;
-                        MultiLine = true;
+                    // field(textoEmail; textoEmail)
+                    // {
+                    //     ApplicationArea = All;
+                    //     ShowCaption = false;
+                    //     MultiLine = true;
 
-                        trigger OnValidate()
-                        begin
-                            SetTextoEmail(textoEmail);
-                        end;
+                    //     trigger OnValidate()
+                    //     begin
+                    //         SetTextoEmail(textoEmail);
+                    //     end;
+                    // }
+                    field("Standard Text Code"; "Standard Text Code")
+                    {
+                        ApplicationArea = all;
                     }
 
                 }
@@ -161,7 +165,7 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
 
     trigger OnAfterGetRecord()
     begin
-        textoEmail := GetTextoEmail();
+        // textoEmail := GetTextoEmail();
     end;
 
     var

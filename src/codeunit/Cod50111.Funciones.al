@@ -3533,7 +3533,7 @@ codeunit 50111 "Funciones"
         Content.Close();
 
         files.add(FileName);
-        if (PurchaseHeader."Currency Code" in ['ENU', 'ENG']) or (StrPos(XmlParameters, 'optIdioma">1') > 0) then
+        if (PurchaseHeader."Language Code" in ['ENU', 'ENG']) or (StrPos(XmlParameters, 'optIdioma">1') > 0) then
             FileNameMerge := GetGeneralConditions(PurchaseSetup.FieldNo("General Conditions Pur. (ENG)"), FileNameMerge)
         else
             FileNameMerge := GetGeneralConditions(PurchaseSetup.FieldNo("General Conditions Purchase"), FileNameMerge);
@@ -3548,11 +3548,45 @@ codeunit 50111 "Funciones"
         Download(FileNameMerge, 'PDF Pedidos Compra', '', '', FileName);
     end;
 
-    local procedure MyProcedure()
+    procedure CrearPDFPurchaseOrder(PurchaseHeader: Record "Purchase Header"; FileNamePath: text): Boolean
     var
-        myInt: Integer;
+        PurchaseSetup: Record "Purchases & Payables Setup";
+        ReportPurchaseHeader: Record "Purchase Header";
+        FileManagement: Codeunit "File Management";
+        ReportPedidoCompra: Report "Pedido Compra";
+        SothisPDF: DotNet MySothisPDF;
+        files: dotnet Myfiles;
+        FileName: text;
+        FileNameMerge: text;
+        FileNameMerge2: text;
+        Window: Dialog;
+        lblWindow: Label 'Process', comment = 'ESP="Procesando"';
     begin
+        PurchaseSetup.Get();
+        FileName := FileManagement.ServerTempFileName('pdf');
+        FileNameMerge := FileManagement.ServerTempFileName('pdf');
+        FileNameMerge2 := FileManagement.ServerTempFileName('pdf');
 
+        ReportPurchaseHeader.SetRange("Document Type", PurchaseHeader."Document Type");
+        ReportPurchaseHeader.SetRange("No.", PurchaseHeader."No.");
+        ReportPedidoCompra.SetTableView(ReportPurchaseHeader);
+        ReportPedidoCompra.SaveAsPdf(FileName);
+
+        files := files.List();
+        files.add(FileName);
+
+        if (PurchaseHeader."Language Code" in ['ENU', 'ENG']) then
+            FileNameMerge := GetGeneralConditions(PurchaseSetup.FieldNo("General Conditions Pur. (ENG)"), FileNameMerge)
+        else
+            FileNameMerge := GetGeneralConditions(PurchaseSetup.FieldNo("General Conditions Purchase"), FileNameMerge);
+        if FileNameMerge <> '' then begin
+            FileManagement.CopyServerFile(FileNameMerge, FileNameMerge2, true);
+            files.add(FileNameMerge2);
+        end;
+
+        SothisPDF.Merge(files, FileNameMerge, FALSE);
+        FileManagement.CopyServerFile(FileNameMerge, FileNamePath, true);
+        // FileName := StrSubstNo('%1.%2', PurchaseHeader."No.", FileManagement.GetExtension(FileNameMerge2));
     end;
 
     procedure UploadGeneralConditions(fieldNo: Integer): Text;

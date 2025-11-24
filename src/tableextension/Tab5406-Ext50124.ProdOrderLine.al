@@ -30,10 +30,10 @@ tableextension 50124 "ProdOrderLine" extends "Prod. Order Line"  //5406
             Caption = 'Amount followed', comment = 'ESP="Cantidad seguida"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = sum ("Reservation Entry".Quantity where (
-                "Item No." = field ("Item No."),
-                "Source ID" = field ("Prod. Order No."),
-                "Source Prod. Order Line" = field ("Line No.")
+            CalcFormula = sum("Reservation Entry".Quantity where(
+                "Item No." = field("Item No."),
+                "Source ID" = field("Prod. Order No."),
+                "Source Prod. Order Line" = field("Line No.")
             ));
         }
 
@@ -42,7 +42,7 @@ tableextension 50124 "ProdOrderLine" extends "Prod. Order Line"  //5406
             Editable = false;
             Caption = 'Work Center', comment = 'ESP="Centro Trabajo"';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Prod. Order Routing Line"."Work Center No." where ("Routing No." = field ("Routing No."), "Work Center No." = filter (<> '')));
+            CalcFormula = lookup("Prod. Order Routing Line"."Work Center No." where("Routing No." = field("Routing No."), "Work Center No." = filter(<> '')));
             TableRelation = "Work Center";
         }
         modify("Routing No.")

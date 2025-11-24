@@ -9,6 +9,13 @@ pageextension 50105 "ZM PurchaseOrder" extends "Purchase Order"
                 ApplicationArea = All;
             }
         }
+        addafter("Currency Code")
+        {
+            field("Language Code"; "Language Code")
+            {
+                ApplicationArea = all;
+            }
+        }
         addlast(Content)
         {
             group(Plastic)
