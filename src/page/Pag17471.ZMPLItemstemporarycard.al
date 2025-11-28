@@ -3,7 +3,7 @@ page 17471 "ZM PL Items temporary card"
     Caption = 'Product Registration Request', Comment = 'ESP="Solicitud Alta de productos"';
     PageType = card;
     SourceTable = "ZM PL Items temporary";
-    UsageCategory = Tasks;
+    UsageCategory = None;
     PromotedActionCategories = 'New,Process,Report,Navigate',
             comment = 'ESP="Nuevo,Procesar,Informe,Navegar"';
 
@@ -101,9 +101,9 @@ page 17471 "ZM PL Items temporary card"
                     Editable = boolEditReasonBlocked;
                 }
             }
-            group(Applicant)
+            group(Requester)
             {
-                Caption = 'Applicant', comment = 'ESP="Solicitante"';
+                Caption = 'Requester', comment = 'ESP="Solicitante"';
                 Editable = boolEditUserCreate;
                 field("User ID"; "User ID")
                 {
@@ -147,6 +147,7 @@ page 17471 "ZM PL Items temporary card"
                         ShowCaption = false;
                         MultiLine = true;
 
+
                         trigger OnValidate()
                         begin
                             SetWorkDescription(WorkDescription);
@@ -154,9 +155,24 @@ page 17471 "ZM PL Items temporary card"
                     }
                 }
             }
+            group(Quality)
+            {
+                Caption = 'Quality', comment = 'ESP="Calidad"';
+                Visible = ShowSections;
+
+                field("Sujeto a Control de Calidad"; "Sujeto a Control de Calidad")
+                {
+                    ApplicationArea = all;
+                }
+                field("Control Certificado proveedor"; "Control Certificado proveedor")
+                {
+                    ApplicationArea = all;
+                }
+            }
             group(Additional)
             {
                 Caption = 'Additional', comment = 'ESP="Adicionales"';
+                Visible = ShowSections;
                 field(Color; Rec.Color)
                 {
                     ApplicationArea = All;
@@ -181,6 +197,10 @@ page 17471 "ZM PL Items temporary card"
                 {
                     ApplicationArea = All;
                 }
+                field("Gross Weight"; "Gross Weight")
+                {
+                    ApplicationArea = all;
+                }
                 field(Material; Rec.Material)
                 {
                     ApplicationArea = All;
@@ -195,6 +215,7 @@ page 17471 "ZM PL Items temporary card"
             group(Clasification)
             {
                 Caption = 'Clasification', comment = 'ESP="Clasificación"';
+                Visible = ShowSections;
 
                 Grid(Clasif)
                 {
@@ -350,6 +371,7 @@ page 17471 "ZM PL Items temporary card"
             group("Costs & Posting")
             {
                 Caption = 'Costs & Posting', comment = 'ESP="Costes y registro"';
+                Visible = ShowSections;
 
                 field("Costing Method"; "Costing Method")
                 {
@@ -388,6 +410,7 @@ page 17471 "ZM PL Items temporary card"
             group("Prices & Sales")
             {
                 Caption = 'Prices & Sales', comment = 'ESP="Precios y ventas"';
+                Visible = ShowSections;
                 field("Unit Price"; "Unit Price")
                 {
                     ApplicationArea = all;
@@ -416,6 +439,7 @@ page 17471 "ZM PL Items temporary card"
             }
             group(Reposición)
             {
+                Visible = ShowSections;
                 field("Replenishment System"; "Replenishment System")
                 {
                     ApplicationArea = all;
@@ -480,6 +504,7 @@ page 17471 "ZM PL Items temporary card"
             }
             group(Planificacion)
             {
+                Visible = ShowSections;
                 field("Reordering Policy"; "Reordering Policy")
                 {
                     ApplicationArea = all;
@@ -813,6 +838,10 @@ page 17471 "ZM PL Items temporary card"
     }
     trigger OnAfterGetCurrRecord()
     begin
+        if Rec."Request Type" in [Rec."Request Type"::" "] then
+            ShowSections := false
+        else
+            ShowSections := true;
         StateBlank := Rec."State Creation" = Rec."State Creation"::" ";
         StateRequested := Rec."State Creation" = Rec."State Creation"::Requested;
         IsItemNew := Rec."Request Type" in [Rec."Request Type"::New];
@@ -828,6 +857,7 @@ page 17471 "ZM PL Items temporary card"
         ItemsRegisterAprovals: Codeunit "ZM PL Items Regist. aprovals";
         WorkDescription: text;
         ShowField: array[100] of Integer;
+        ShowSections: Boolean;
         IsUserApproval: Boolean;
         IsUserCreateItem: Boolean;
         IsItemNew: Boolean;

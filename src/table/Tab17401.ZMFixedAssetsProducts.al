@@ -19,13 +19,18 @@ table 17401 "ZM Fixed Assets Products"
             Caption = 'Item No.', comment = 'ESP="Cód. producto"';
             TableRelation = Item;
             ValidateTableRelation = false;
+
+            trigger OnValidate()
+            begin
+                UpdateItem();
+            end;
         }
         field(3; Description; text[100])
         {
             Caption = 'Description', comment = 'ESP="Descripción"';
-            FieldClass = FlowField;
-            CalcFormula = lookup(Item.Description where("No." = field("Item No.")));
-            Editable = false;
+            // FieldClass = FlowField;
+            // CalcFormula = lookup(Item.Description where("No." = field("Item No.")));
+            // Editable = false;
         }
         field(5; "Dependent"; Boolean)
         {
@@ -46,4 +51,13 @@ table 17401 "ZM Fixed Assets Products"
             Clustered = true;
         }
     }
+
+    var
+        Item: Record Item;
+
+    local procedure UpdateItem()
+    begin
+        IF Item.gET("Item No.") then
+            Rec.Description := Item.Description;
+    end;
 }

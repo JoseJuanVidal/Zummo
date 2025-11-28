@@ -11,10 +11,24 @@ pageextension 50109 "ItemCard" extends "Item Card"
         }
         addafter(GTIN)
         {
-            field("CMMF Code"; "CMMF Code")
+            group(SEBCodes)
             {
-                ApplicationArea = all;
-                ToolTip = 'Coded Multisource Media Format';
+                Caption = 'SEB Codes', comment = 'ESP="Códigos SEB"';
+                field("CMMF Code"; "CMMF Code")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Coded Multisource Media Format';
+                }
+                field("SEB PI2 Code"; "SEB PI2 Code")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'PI2 Code';
+                }
+                field("SEB PI2 Description"; "SEB PI2 Description")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'PI2 Description';
+                }
             }
         }
         addafter("Qty. on Sales Order")

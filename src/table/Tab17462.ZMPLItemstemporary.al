@@ -27,6 +27,7 @@ table 17462 "ZM PL Items temporary"
                 OnValidate_ItemNo()
             end;
 
+
         }
 
         field(3; Description; Text[100])
@@ -521,6 +522,21 @@ table 17462 "ZM PL Items temporary"
             OptionMembers = "Food Service","Retail";
             OptionCaption = 'Retail,Food Service', comment = 'ESP="Retail,Food Service"';
         }
+        field(50080; "CMMF Code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CMMF Code', comment = 'ESP="CMMF Code"';
+        }
+        field(50081; "SEB PI2 Code"; code[15])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PI2 Code', comment = 'ESP="PI2 Code"';
+        }
+        field(50082; "SEB PI2 Description"; Text[40])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PI2 Description', comment = 'ESP="PI2 Description"';
+        }
 
         field(50125; "STH To Update"; Boolean)
         {
@@ -703,7 +719,7 @@ table 17462 "ZM PL Items temporary"
         {
             DataClassification = CustomerContent;
             Caption = 'Clasification Type', comment = 'ESP="Clasificación"';
-            OptionCaption = ' ,Raw Material,Service,Item Out of stock', comment = 'ESP=" ,Materia Prima,Servicio,Productos sin Stock"';
+            OptionCaption = ' ,Raw Material/Item,Service,Item Out of stock', comment = 'ESP=" ,Materia Prima/Productos,Servicio,Productos sin Stock"';
             OptionMembers = " ",Inventory,Service,"Non-Inventory";
             Editable = false;
 
@@ -824,9 +840,18 @@ table 17462 "ZM PL Items temporary"
         field(50860; "Request Type"; Option)
         {
             Caption = 'Request Type', comment = 'ESP="Tipo Solicitud"';
-            OptionMembers = New,Change,Blokced,Unlocking,Delete;
-            OptionCaption = 'New,Change,Blokced,Unlocking,Delete', Comment = 'ESP="Nuevo,Cambio,Bloqueo,Desbloqueo,Eliminación"';
+            OptionMembers = " ",New,Change,Blocked,Unlocking,Delete;
+            OptionCaption = ' ,New,Change,Blocked,Unlocking,Delete', Comment = 'ESP=" ,Nuevo,Cambio,Bloqueo,Desbloqueo,Eliminación"';
         }
+        field(65100; "Sujeto a Control de Calidad"; Boolean)
+        {
+            Caption = 'Sujeto a Control de Calidad', comment = 'ESP="Sujeto a Control de Calidad"';  // 65100
+        }
+        field(50871; "Control Certificado proveedor"; Boolean)
+        {
+            Caption = 'Control Certificado proveedor', comment = 'ESP="Control Certificado proveedor"';  // 65110
+        }
+
         field(59001; Largo; Decimal)
         {
             DataClassification = CustomerContent;
@@ -918,6 +943,7 @@ table 17462 "ZM PL Items temporary"
         AutLoginMgt: Codeunit "AUT Login Mgt.";
         Funciones: Codeunit Funciones;
         Text027: Label 'must be greater than 0.', Comment = 'ESP="Debe ser mayor que 0"';
+        lblConfirmNewCopy: Label '¿Do you want to create a new product with the data from %1 %2?', comment = 'ESP="¿Desea crear nuevo Producto con los datos de %1 %2?"';
         lblItemExist: Label 'El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3', comment = 'ESP="El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3"';
         lblConfirmBOM: Label 'El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?', comment = 'ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"';
         lblConfirmUpdateItem: Label 'El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?',
@@ -1010,15 +1036,31 @@ table 17462 "ZM PL Items temporary"
     end;
 
     local procedure OnValidate_ItemNo()
+    var
+        OldRequestNo: code[20];
     begin
         case Rec."Request Type" of
             Rec."Request Type"::New:
                 Begin
                     // comprobamos que si existe el producto de un error
                     if Item.Get(Rec."Item No.") then
-                        Error(lblItemExist, Rec."Item No.", Item.Description, Rec."Request Type");
+                        if not confirm(lblConfirmNewCopy) then
+                            Error(lblItemExist, Rec."Item No.", Item.Description, Rec."Request Type");
+                    OldRequestNo := Rec."No.";
+                    Rec.TransferFields(Item);
+                    Rec."No." := OldRequestNo;
+                    Rec."Item No." := '';
+                    Rec."ITBID Status" := Rec."ITBID Status"::Created;
+                    UpdateItemExtendedFields(Item);
+                    // comprobamos si el producto tiene lista de Producción orignal
+                    ProdBOMHeader.Reset();
+                    ProdBOMHeader.SetRange("No.", Rec."Production BOM No.");
+                    if ProdBOMHeader.FindFirst() then
+                        // if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
+                        UpdateProductionBom(Item."No.");
+                    UpdatePurchasePrice(Rec."No.");
                 End;
-            Rec."Request Type"::Blokced, Rec."Request Type"::Change, Rec."Request Type"::Delete, Rec."Request Type"::Unlocking:
+            Rec."Request Type"::Blocked, Rec."Request Type"::Change, Rec."Request Type"::Delete, Rec."Request Type"::Unlocking:
                 begin
                     // comprobamos si existe el producto y traemos los datos para su modificación                
                     item.Reset();
@@ -1026,6 +1068,7 @@ table 17462 "ZM PL Items temporary"
                     if Confirm(lblConfirmUpdateItem, false, Rec."No.", Item.Description) then begin
                         Rec.TransferFields(Item);
                         Rec."ITBID Status" := Rec."ITBID Status"::Created;
+                        UpdateItemExtendedFields(Item);
                     end;
                     // comprobamos si el producto tiene lista de Producción orignal
                     ProdBOMHeader.Reset();
@@ -1920,7 +1963,7 @@ table 17462 "ZM PL Items temporary"
     begin
         Item.Reset();
         case Rec."Request Type" of
-            Rec."Request Type"::Blokced, Rec."Request Type"::Change, Rec."Request Type"::Delete:
+            Rec."Request Type"::Blocked, Rec."Request Type"::Change, Rec."Request Type"::Delete:
                 begin
                     // buscamos el producto que es y lo actualizamos
                     if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
@@ -1935,6 +1978,20 @@ table 17462 "ZM PL Items temporary"
                         exit;
                     Rec.Validate("Item No.", Item."No.");
                 end;
+        end;
+    end;
+
+    procedure UpdateItemExtendedFields(Item: Record Item)
+    var
+        ItemUnitofMeasure: Record "Item Unit of Measure";
+    begin
+        ItemUnitofMeasure.Reset();
+        ItemUnitofMeasure.SetRange("Item No.", Item."No.");
+        ItemUnitofMeasure.SetRange(Code, Item."Base Unit of Measure");
+        if ItemUnitofMeasure.FindSet() then begin
+            Rec.Largo := ItemUnitofMeasure.Length;
+            Rec.Ancho := ItemUnitofMeasure.Weight;
+            Rec.Alto := ItemUnitofMeasure.Height;
         end;
     end;
 }

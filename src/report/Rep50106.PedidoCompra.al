@@ -680,6 +680,11 @@ report 50106 "Pedido Compra"
 
                     FormatDocument.SetPurchaseLine("Purchase Line", FormattedQuanitity, FormattedDirectUnitCost);
 
+                    // segun el idioma del pedido, utilizar la descripcion de los productos en el idioma si existe
+                    if "Purchase Line".type in ["Purchase Line".type::Item] then
+                        if "Purchase Header"."Language Code" <> '' then
+                            If ItemTranslation.Get("Purchase Line"."No.", "Purchase Line"."Variant Code", "Purchase Header"."Language Code") then
+                                "Purchase Line".Description := ItemTranslation.Description;
                     if "Purchase Line"."Expected Receipt Date" = 0D then
                         "Purchase Line"."Expected Receipt Date" := WorkDate();
                     //CurrReport.NEWPAGE;
@@ -1071,6 +1076,7 @@ report 50106 "Pedido Compra"
 
     var
         CountryRegion: record "Country/Region";
+        ItemTranslation: Record "Item Translation";
         NotCountryEU: Boolean;
         optIdioma: Option " ","ENU","ESP","FRA";
         PageLbl: Label 'Page %1', Comment = '%1 = Page No.';

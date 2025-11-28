@@ -275,10 +275,21 @@ tableextension 50108 "Item" extends Item  //27
             end;
 
         }
+        // ITEM SEB CODES PI2
         field(50080; "CMMF Code"; code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'CMMF Code', comment = 'ESP="CMMF Code"';
+        }
+        field(50081; "SEB PI2 Code"; code[15])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PI2 Code', comment = 'ESP="PI2 Code"';
+        }
+        field(50082; "SEB PI2 Description"; Text[40])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PI2 Description', comment = 'ESP="PI2 Description"';
         }
         field(50100; "STHQuantityWhse"; Decimal)
         {
@@ -452,6 +463,7 @@ tableextension 50108 "Item" extends Item  //27
                 "Purch. Category code" = field("Purch. Category"), code = field("Purch. SubCategory")));
             Editable = false;
         }
+
         //+ 22/11/2022 NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {

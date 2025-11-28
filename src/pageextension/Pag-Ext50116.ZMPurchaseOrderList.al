@@ -37,6 +37,14 @@ pageextension 50116 "ZM PurchaseOrderList" extends "Purchase Order List"
                 end;
             }
         }
+        addlast(FactBoxes)
+        {
+            part("ZM Order mail Register Factbox"; "ZM Order mail Register Factbox")
+            {
+                Caption = 'Registro Envíos', comment = 'ESP="Registro Envíos"';
+                SubPageLink = "Order No." = field("No.");
+            }
+        }
     }
     actions
     {

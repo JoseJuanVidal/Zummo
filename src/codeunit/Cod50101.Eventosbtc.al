@@ -1848,7 +1848,12 @@ codeunit 50101 "Eventos_btc"
         FileTxt: File;
         TextInStr: InStream;
         TextOutSream: OutStream;
+        window: Dialog;
+        lblWindow: Label 'Process.....', comment = 'ESP="Procesando...."';
     begin
+        window.Open(lblWindow);
+        TempEmailItem."Order No" := PurchaseHeader."No.";
+        TempEmailItem."Language Code" := PurchaseHeader."Language Code";
         FilePath := FileManagement.ServerTempFileName('html');
         // PurchaseSetup.CalcFields(TextoEmailPedCompra_btc);
         SetEmailSenders(TempEmailItem);
@@ -1891,7 +1896,7 @@ codeunit 50101 "Eventos_btc"
         // Buscamos el campo de proveedor nuevo, a ver que dato tiene
     end;
 
-    local procedure getTextoEmailCompra(PurchaseHeader: Record "Purchase Header"; var BodyText: Text): Boolean
+    procedure getTextoEmailCompra(PurchaseHeader: Record "Purchase Header"; var BodyText: Text): Boolean
     var
         PurchaseSetup: Record "Purchases & Payables Setup";
         StandarTextLine: Record "Extended Text Line";
@@ -1961,6 +1966,5 @@ codeunit 50101 "Eventos_btc"
         if GuiAllowed then
             if (Rec.Quantity <> xRec.Quantity) then
                 PurchaseHeader.EnableEmailsentPending();
-
     end;
 }
