@@ -20,6 +20,16 @@ page 17458 "ZM PL Items temporary list"
                     ApplicationArea = All;
                     StyleExpr = StyleText;
                 }
+                field("Request Type"; "Request Type")
+                {
+                    ApplicationArea = all;
+                    StyleExpr = StyleText;
+                }
+                field("Item No."; "Item No.")
+                {
+                    ApplicationArea = all;
+                    StyleExpr = StyleText;
+                }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
@@ -301,10 +311,20 @@ page 17458 "ZM PL Items temporary list"
         }
     }
 
+    trigger OnInit()
+    begin
+        // miramos si es nuestra solicitud o nuestros requested
+        Rec.FilterGroup(2);
+        Rec.SetRange("User ID", UserId);
+        Rec.SetRange("State Creation", Rec."State Creation"::" ", Rec."State Creation"::Released);
+        Rec.FilterGroup(0);
+    end;
+
     trigger OnAfterGetCurrRecord()
     begin
         StateBlank := Rec."State Creation" = Rec."State Creation"::" ";
         StateRequested := Rec."State Creation" = Rec."State Creation"::Requested;
+
     end;
 
     trigger OnAfterGetRecord()

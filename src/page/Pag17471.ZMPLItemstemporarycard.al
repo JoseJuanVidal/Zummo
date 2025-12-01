@@ -173,6 +173,37 @@ page 17471 "ZM PL Items temporary card"
             {
                 Caption = 'Additional', comment = 'ESP="Adicionales"';
                 Visible = ShowSections;
+                Group(SEBCodes)
+                {
+                    Caption = 'SEB Codes', comment = 'ESP="SEB Codes"';
+                    Visible = ShowSEBCodes;
+                    field(GTIN; GTIN)
+                    {
+                        ApplicationArea = all;
+
+                        trigger OnAssistEdit()
+                        begin
+                            OnAssistEdit_GTIN();
+                        end;
+                    }
+                    field("CMMF Code"; "CMMF Code")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB PI2 Code"; "SEB PI2 Code")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB PI2 Description"; "SEB PI2 Description")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB PI2 Description English"; "SEB PI2 Description English")
+                    {
+                        ApplicationArea = all;
+                    }
+
+                }
                 field(Color; Rec.Color)
                 {
                     ApplicationArea = All;
@@ -706,20 +737,6 @@ page 17471 "ZM PL Items temporary card"
                     OnAction_CreateItemRequest();
                 end;
             }
-
-            action(UploadExcel)
-            {
-                ApplicationArea = All;
-                Caption = 'Cargar Excel', comment = 'ESP="Cargar Excel"';
-                Image = Excel;
-                Promoted = true;
-                PromotedCategory = Process;
-
-                trigger OnAction()
-                begin
-                    OnAction_UploadExcel();
-                end;
-            }
             // action(UpdateITBID)
             // {
             //     ApplicationArea = All;
@@ -836,12 +853,21 @@ page 17471 "ZM PL Items temporary card"
             }
         }
     }
+
     trigger OnAfterGetCurrRecord()
     begin
         if Rec."Request Type" in [Rec."Request Type"::" "] then
             ShowSections := false
         else
             ShowSections := true;
+        case Rec."State Creation" of
+            Rec."State Creation"::" ":
+                begin
+                    CurrPage.Editable := true;
+                end else begin
+                CurrPage.Editable := false;
+            end;
+        end;
         StateBlank := Rec."State Creation" = Rec."State Creation"::" ";
         StateRequested := Rec."State Creation" = Rec."State Creation"::Requested;
         IsItemNew := Rec."Request Type" in [Rec."Request Type"::New];
@@ -857,6 +883,7 @@ page 17471 "ZM PL Items temporary card"
         ItemsRegisterAprovals: Codeunit "ZM PL Items Regist. aprovals";
         WorkDescription: text;
         ShowField: array[100] of Integer;
+        ShowSEBCodes: Boolean;
         ShowSections: Boolean;
         IsUserApproval: Boolean;
         IsUserCreateItem: Boolean;
@@ -1019,8 +1046,10 @@ page 17471 "ZM PL Items temporary card"
     var
         RefRecord: RecordRef;
     begin
-        if Rec."User ID" = UserId then
-            boolEditUserCreate := true;
+        //  primero miramos si deberia estar en editable user
+        if Rec."State Creation" in [Rec."State Creation"::" "] then
+            if Rec."User ID" = UserId then
+                boolEditUserCreate := true;
         ItemSetupDepartment.Reset();
         ItemSetupDepartment.SetRange("User Id", UserId);
         if not ItemSetupDepartment.FindFirst() then
@@ -1478,6 +1507,31 @@ page 17471 "ZM PL Items temporary card"
         Rec.UploadExcel();
     end;
 
+    local procedure OnAssistEdit_GTIN()
+    var
+        Item: Record Item;
+        Funciones: Codeunit FuncionesFabricacion;
+        BarCodeType: enum "Bar Code Type";
+        lblConfirmAssing: Label '¿Desea Asignar un nuevo codigo EAN13 a %1 %2?', comment = 'ESP="¿Desea Asignar un nuevo codigo EAN13 a %1 %2?"';
+        lblConfirmUpdate: Label '¿Desea Calcular el codigo EAN13 de a %1?', comment = 'ESP="¿Desea Calcular el codigo EAN13 de %1?"';
+    begin
+        Item.SetRange("No.", Rec."No.");
+        Item.FindFirst();
+        case item.GTIN of
+            '':
+                begin
+                    if not confirm(lblConfirmAssing, false, Item."No.", Item.Description) then
+                        exit;
+                    Funciones.CreateGTIN(Item, true, BarCodeType::EAN13);
+                end;
+            else begin
+                if not confirm(lblConfirmUpdate, false, Item.GTIN) then
+                    exit;
+                Funciones.CreateGTIN(Item, false, BarCodeType::EAN13);
+            end;
+        end;
+
+    end;
 
 
 }

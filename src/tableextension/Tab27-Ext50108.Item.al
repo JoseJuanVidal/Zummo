@@ -291,6 +291,34 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'PI2 Description', comment = 'ESP="PI2 Description"';
         }
+        field(50083; "SEB PI2 English Description"; Text[40])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PI2 English Description', comment = 'ESP="PI2 English Description"';
+
+            trigger OnValidate()
+            var
+                ItemTranslation: Record "Item Translation";
+            begin
+                if Rec."SEB PI2 English Description" <> xRec."SEB PI2 English Description" then begin
+                    ItemTranslation.SetRange("Item No.", Rec."No.");
+                    ItemTranslation.SetRange("Language Code", 'PI2');
+                    if not ItemTranslation.FindFirst() then begin
+                        ItemTranslation.Init();
+                        ItemTranslation."Item No." := Rec."No.";
+                        ItemTranslation."Language Code" := 'PI2';
+                        ItemTranslation.Insert();
+                    end;
+                    ItemTranslation.Description := Rec."SEB PI2 English Description";
+                    ItemTranslation.Modify();
+                end;
+            end;
+        }
+        field(50084; "SEB Model"; code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Model', comment = 'ESP="Model"';
+        }
         field(50100; "STHQuantityWhse"; Decimal)
         {
             Caption = 'Quantity Warehouse', comment = 'ESP="Cantidad Almacén"';

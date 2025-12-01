@@ -72,6 +72,18 @@ table 50134 "ZM CIM Prod. BOM Header"
         {
         }
     }
+
+    trigger OnRename()
+    begin
+        ZMCIMProdBOMLine.Reset();
+        ZMCIMProdBOMLine.SetRange("Production BOM No.", xRec."No.");
+        if ZMCIMProdBOMLine.FindFirst() then
+            repeat
+                ZMCIMProdBOMLine.Rename(Rec."No.", ZMCIMProdBOMLine."Version Code", ZMCIMProdBOMLine."Line No.");
+            Until ZMCIMProdBOMLine.next() = 0;
+
+    end;
+
     trigger OnDelete()
     begin
         ZMCIMProdBOMLine.Reset();

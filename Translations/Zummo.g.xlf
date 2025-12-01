@@ -10898,6 +10898,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tabla"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Table No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4201268802 - Field 3776794752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field User Id - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2836394759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Setup Department</source>
           <note from="Developer" annotates="general" priority="2">ESP="Config. Departamentos Alta Prod."</note>
@@ -10923,790 +10928,815 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Usuario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Department - Field User Id - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Items temporary</source>
           <note from="Developer" annotates="general" priority="2">ESP="Alta productos temporales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - NamedType 3804247692" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - NamedType 3804247692" size-unit="char" translate="yes" xml:space="preserve">
           <source>El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?</source>
           <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmBOM</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - NamedType lblConfirmBOM</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - NamedType 2933890088" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - NamedType 2933890088" size-unit="char" translate="yes" xml:space="preserve">
           <source>La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?</source>
           <note from="Developer" annotates="general" priority="2">ESP="La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmEmail</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - NamedType lblConfirmEmail</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - NamedType 2605805091" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - NamedType 2605805091" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you want to create a new product with the data from %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear nuevo Producto con los datos de %1 %2?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmNewCopy</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - NamedType lblConfirmNewCopy</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - NamedType 2604454992" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - NamedType 2604454992" size-unit="char" translate="yes" xml:space="preserve">
           <source>El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?</source>
           <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblConfirmUpdateItem</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - NamedType lblConfirmUpdateItem</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - NamedType 4170617325" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - NamedType 4170617325" size-unit="char" translate="yes" xml:space="preserve">
           <source>No existen aprobadores configurados para la tabla %1.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No existen aprobadores configurados para la tabla %1."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblErrorNotApprovals</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - NamedType lblErrorNotApprovals</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - NamedType 626802256" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - NamedType 626802256" size-unit="char" translate="yes" xml:space="preserve">
           <source>El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3</source>
           <note from="Developer" annotates="general" priority="2">ESP="El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType lblItemExist</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - NamedType lblItemExist</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - NamedType 3853762076" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - NamedType 3853762076" size-unit="char" translate="yes" xml:space="preserve">
           <source>must be greater than 0.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Debe ser mayor que 0"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - NamedType Text027</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - NamedType Text027</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 514137334 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 514137334 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea Crear/Actualizar el producto %1 - %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Crear/Actualizar el producto %1 - %2?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method CreateItemTemporary - NamedType lblConfirm</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method CreateItemTemporary - NamedType lblConfirm</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 514137334 - NamedType 3807794235" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 514137334 - NamedType 3807794235" size-unit="char" translate="yes" xml:space="preserve">
           <source>El producto no ha pasado por revision de departamentos.\</source>
           <note from="Developer" annotates="general" priority="2">ESP="El producto no ha pasado por revision de departamentos.\"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method CreateItemTemporary - NamedType lblConfirm1</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method CreateItemTemporary - NamedType lblConfirm1</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 2651007294 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 2651007294 - NamedType 962692565" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must select a value in %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Debe seleccionar un valor en %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method LaunchRegisterItemTemporary - NamedType lblRequestError</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Method 2651007294 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea Solicitar el alta/modificacion del producto %1 "%2"?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2"?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method LaunchRegisterItemTemporary - NamedType lblConfirm</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method LaunchRegisterItemTemporary - NamedType lblConfirm</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 2651007294 - NamedType 3720102109" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 2651007294 - NamedType 3720102109" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea enviar la revisión de los departamentos para %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la revisión de los departamentos para %1 %2?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method LaunchRegisterItemTemporary - NamedType lblRelease</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method LaunchRegisterItemTemporary - NamedType lblRelease</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 2651007294 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 2651007294 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>El estado de la solicitud de %1 %2 es %3</source>
           <note from="Developer" annotates="general" priority="2">ESP="El estado de la solicitud de %1 %2 es %3"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method LaunchRegisterItemTemporary - NamedType lblError</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method LaunchRegisterItemTemporary - NamedType lblError</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 2564493053 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 2564493053 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>No existe ningun producto pendiente de revision del departamento %1.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No existe ningun producto pendiente de revision del departamento %1."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method NavigateItemsReview - NamedType lblError</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method NavigateItemsReview - NamedType lblError</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 1462704819 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 1994270134 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea renombrar la lista de materiales a %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea renombrar la lista de materiales a %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method OnValidate_ProductionBOMNo - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Method 1462704819 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
           <source>COMPLETADA Solicitud de Alta de Producto - %1 (%2)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method SendMailItemTemporaryFinalize - NamedType SubjectLbl</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method SendMailItemTemporaryFinalize - NamedType SubjectLbl</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 2540420188 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Solicitud de Alta de Producto - %1 (%2)</source>
+        <trans-unit id="Table 4269697522 - Method 2540420188 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solicitud de Alta de Producto - %1 (%2 - %3)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method SendMailItemTemporaryFirstRegister - NamedType SubjectLbl</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method SendMailItemTemporaryFirstRegister - NamedType SubjectLbl</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 3869902751 - NamedType 1460755335" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 3869902751 - NamedType 1460755335" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ya existe la lista de materiales %1, se elimanarán la lista y se cargará toda la lista.\¿Desea continuar?</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ya existe la lista de materiales %1, se elimanarán la lista y se cargará toda la lista.\¿Desea continuar?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method UpdateItemLM - NamedType lblConfir</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method UpdateItemLM - NamedType lblConfir</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 725451167 - NamedType 2377318875" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 725451167 - NamedType 2377318875" size-unit="char" translate="yes" xml:space="preserve">
           <source>El usuario %1 del departamento %2, no tiene asignada ninguna aprobacion de campos.</source>
           <note from="Developer" annotates="general" priority="2">ESP="El usuario %1 del departamento %2, no tiene asignada ninguna aprobacion de campos."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method UpdateItemRequest - NamedType lblNotUserApproval</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method UpdateItemRequest - NamedType lblNotUserApproval</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 725451167 - NamedType 1282213772" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 725451167 - NamedType 1282213772" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea confirmar la revisión de los campos asignados a %1 de %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea confirmar la revisión de los campos asignados a %1 de %2?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method UpdateItemRequest - NamedType lblConfirmUpdateRequest</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method UpdateItemRequest - NamedType lblConfirmUpdateRequest</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Method 4257336264 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Method 4257336264 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Method UploadExcel - NamedType Text000</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method UploadExcel - NamedType Text000</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4067082012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4067082012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ABC</source>
           <note from="Developer" annotates="general" priority="2">ESP="ABC"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field ABC - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field ABC - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4067082012 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4067082012 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source> ,A,B,C,D</source>
           <note from="Developer" annotates="general" priority="2">ESP=" ,A,B,C,D"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field ABC - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field ABC - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 659317815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 659317815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Activity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actividad"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Activity - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Activity - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 316003039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 316003039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Alternative Item No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº producto alternativo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Alternative Item No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Alternative Item No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 535175658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 535175658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Alto</source>
           <note from="Developer" annotates="general" priority="2">ESP="Alto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Alto - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Alto - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3127722509 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3127722509 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ancho</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ancho"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Ancho - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Ancho - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3967890522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3967890522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assembly BOM</source>
           <note from="Developer" annotates="general" priority="2">ESP="L.M. de Ensamblado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Assembly BOM - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Assembly BOM - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1980194946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1980194946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assembly Policy</source>
           <note from="Developer" annotates="general" priority="2">ESP="Directiva de ensamblado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Assembly Policy - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Assembly Policy - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1980194946 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1980194946 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assemble-to-Stock,Assemble-to-Order</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ensamblar para stock,Ensamblar para pedido"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Assembly Policy - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Assembly Policy - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 411531942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 411531942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Base Unit of Measure</source>
           <note from="Developer" annotates="general" priority="2">ESP="Unidad medida base"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Base Unit of Measure - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Base Unit of Measure - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Blocked - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Blocked - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 699648579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 699648579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Canal</source>
           <note from="Developer" annotates="general" priority="2">ESP="Canal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Canal - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Canal - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 699648579 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 699648579 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retail,Food Service</source>
           <note from="Developer" annotates="general" priority="2">ESP="Retail,Food Service"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Canal - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Canal - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1321055271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1321055271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Carton Packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cartón Embalaje (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Carton - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Carton - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2028197887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2028197887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Clasification Type</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Clasification Type - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Clasification Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2028197887 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2028197887 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source> ,Raw Material/Item,Service,Item Out of stock</source>
           <note from="Developer" annotates="general" priority="2">ESP=" ,Materia Prima/Productos,Servicio,Productos sin Stock"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Clasification Type - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Clasification Type - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CMMF Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="CMMF Code"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field CMMF Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field CMMF Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 430424374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 430424374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Codigo Empleado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Codigo Empleado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Codigo Empleado - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Codigo Empleado - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2827249175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2827249175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Color</source>
           <note from="Developer" annotates="general" priority="2">ESP="Color"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Color - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Color - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1918002278 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1918002278 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Control Certificado proveedor</source>
           <note from="Developer" annotates="general" priority="2">ESP="Control Certificado proveedor"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Control Certificado proveedor - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Control Certificado proveedor - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2165769856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2165769856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Costing Method</source>
           <note from="Developer" annotates="general" priority="2">ESP="Valoración existencias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Costing Method - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Costing Method - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2165769856 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2165769856 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>FIFO,LIFO,Specific,Average,Standard</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Costing Method - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Costing Method - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1651921640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1651921640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Department</source>
           <note from="Developer" annotates="general" priority="2">ESP="Departamento"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Department - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Department - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3810656663 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3810656663 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desc. Purch. Category</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Categoria compra"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Desc. Purch. Category - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Desc. Purch. Category - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4149251189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4149251189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desc. Purch. Family</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Familia compra"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Desc. Purch. Family - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Desc. Purch. Family - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3948819587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3948819587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desc. Purch. SubCategory</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre SubCategoria compra"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Desc. Purch. SubCategory - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Desc. Purch. SubCategory - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2163727191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2163727191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desc. Sales Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Clasificación Ventas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field desClasVtas_btc - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field desClasVtas_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Description - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 304493673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 304493673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desc. Familia</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Familia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field desFamilia_btc - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field desFamilia_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3555758206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3555758206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desc. Gamma</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Gama"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field desGama_btc - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field desGama_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1382123467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1382123467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Desc. Linea Economica</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field desLineaEconomica_btc - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field desLineaEconomica_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3811440715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3811440715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Durability</source>
           <note from="Developer" annotates="general" priority="2">ESP="Duración"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Durability - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Durability - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1149908991 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1149908991 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>E-mail sent</source>
           <note from="Developer" annotates="general" priority="2">ESP="Email enviado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field E-mail sent - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field E-mail sent - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1152683886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1152683886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Expiration Calculation</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cálculo caducidad"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Expiration Calculation - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Expiration Calculation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2338193685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2338193685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Flushing Method</source>
           <note from="Developer" annotates="general" priority="2">ESP="Método de baja"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Flushing Method - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Flushing Method - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2338193685 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2338193685 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manual,Forward,Backward,Pick + Forward,Pick + Backward</source>
           <note from="Developer" annotates="general" priority="2">ESP="Manual,Adelante,Atrás,Pick + Adelante,Pick + Atrás"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Flushing Method - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Flushing Method - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1104357397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1104357397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Freight Type</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo flete"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Freight Type - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Freight Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2139693550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2139693550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Gen. Prod. Posting Group</source>
           <note from="Developer" annotates="general" priority="2">ESP="Grupo registro prod. gen."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Gen. Prod. Posting Group - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Gen. Prod. Posting Group - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4239513174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4239513174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Gross Weight</source>
           <note from="Developer" annotates="general" priority="2">ESP="Peso bruto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Gross Weight - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Gross Weight - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1405402048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1405402048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>GTIN</source>
           <note from="Developer" annotates="general" priority="2">ESP="GTIN"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field GTIN - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field GTIN - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2694584394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2694584394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>State Creation</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado Alta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field GUID Creation - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field GUID Creation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1859219762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1859219762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Include Inventory</source>
           <note from="Developer" annotates="general" priority="2">ESP="Incluir inventario"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Include Inventory - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Include Inventory - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2037375551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2037375551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inventory Posting Group</source>
           <note from="Developer" annotates="general" priority="2">ESP="Grupo registro inventario"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Inventory Posting Group - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Inventory Posting Group - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 192543146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2036694150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IS Requested</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field IS Requested - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 192543146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ITBID Create</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crear para solicitudes"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field ITBID Create - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field ITBID Create - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2851892642 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2851892642 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ITBID Status</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado ITBID"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field ITBID Status - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field ITBID Status - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2851892642 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2851892642 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source> ,Created</source>
           <note from="Developer" annotates="general" priority="2">ESP=" ,Creado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field ITBID Status - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field ITBID Status - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1037119892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1037119892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Category Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. categoría producto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Item Category Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Item Category Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3154493835 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3154493835 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Disc. Group</source>
           <note from="Developer" annotates="general" priority="2">ESP="Grupo dto. producto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Item Disc. Group - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Item Disc. Group - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Item No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Item No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3205592447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3205592447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No. Manufacturer</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Fabricante"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Item No. Manufacturer - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Item No. Manufacturer - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 65514489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 65514489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Tracking Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. seguim. prod."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Item Tracking Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Item Tracking Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1989324353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1989324353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Largo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Largo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Largo - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Largo - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1009775796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1009775796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lead Time Calculation</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plazo entrega (días)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Lead Time Calculation - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Lead Time Calculation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2142060253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2142060253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lot Nos.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº serie lote"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Lot Nos. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Lot Nos. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3647128553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3647128553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manufacturer</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fabricante"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Manufacturer - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Manufacturer - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2585418950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2585418950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manufacturer Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. fabricante"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Manufacturer Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Manufacturer Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3831175908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3831175908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manufacturing Policy</source>
           <note from="Developer" annotates="general" priority="2">ESP="Directiva fabricación"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Manufacturing Policy - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Manufacturing Policy - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3831175908 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3831175908 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Make-to-Stock,Make-to-Order</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fab-contra-stock,Fab-contra-pedido"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Manufacturing Policy - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Manufacturing Policy - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3965678037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3965678037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Material</source>
           <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Material - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Material - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1356249118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1356249118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Maximum Inventory</source>
           <note from="Developer" annotates="general" priority="2">ESP="Stock máximo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Maximum Inventory - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Maximum Inventory - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 44885455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 44885455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Maximum Order Quantity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad máxima pedido"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Maximum Order Quantity - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Maximum Order Quantity - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3392414557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3392414557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Minimum Order Quantity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad mínima pedido"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Minimum Order Quantity - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Minimum Order Quantity - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 541974475 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 541974475 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Modified</source>
           <note from="Developer" annotates="general" priority="2">ESP="Modificado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Modified - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Modified - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3088522385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3088522385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Net Weight</source>
           <note from="Developer" annotates="general" priority="2">ESP="Peso neto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Net Weight - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Net Weight - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Request No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Solicitud"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 929976910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nombre Empleado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Empleado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Nombre Empleado - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Nombre Empleado - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1388565689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1388565689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nos. series</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº. Series"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Nos. series - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Nos. series - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3674469202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3674469202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Order Multiple</source>
           <note from="Developer" annotates="general" priority="2">ESP="Múltiplos de pedido"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Order Multiple - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Order Multiple - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1535478001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1535478001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packaging</source>
           <note from="Developer" annotates="general" priority="2">ESP="Embalaje"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Packaging - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Packaging - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2021783656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2021783656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Packaging product</source>
           <note from="Developer" annotates="general" priority="2">ESP="Producto de bulto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Packaging product - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Packaging product - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2055232018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2055232018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Package Plastic (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico Bulto (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Packing Plastic Qty. (kg) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Packing Plastic Qty. (kg) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2491103169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2491103169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Package Plastic %</source>
           <note from="Developer" annotates="general" priority="2">ESP="% Plástico reciclado Bulto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Packing Recycled plastic % - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Packing Recycled plastic % - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 167378473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 167378473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Package Recycled Plastic (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado Bulto (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Packing Recycled plastic (kg) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Packing Recycled plastic (kg) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Picture</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imagen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Picture - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Picture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Plastic packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Plastic Qty. (kg) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Plastic Qty. (kg) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Posting Date - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Posting Date - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2745080548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2745080548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product manager</source>
           <note from="Developer" annotates="general" priority="2">ESP="Responsable"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Product manager - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Product manager - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Production BOM No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº L.M. producción"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Production BOM No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Production BOM No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1616788466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1616788466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prototype</source>
           <note from="Developer" annotates="general" priority="2">ESP="Prototipo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Prototype - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Prototype - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2267820446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2267820446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Category</source>
           <note from="Developer" annotates="general" priority="2">ESP="Categoria compra"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Purch. Category - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Purch. Category - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3319401488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3319401488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Family</source>
           <note from="Developer" annotates="general" priority="2">ESP="Familia compra"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Purch. Family - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Purch. Family - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4086937370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4086937370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. SubCategory</source>
           <note from="Developer" annotates="general" priority="2">ESP="SubCategoria compra"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Purch. SubCategory - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Purch. SubCategory - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1660815199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1660815199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Unit of Measure</source>
           <note from="Developer" annotates="general" priority="2">ESP="Unidad medida compra"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Purch. Unit of Measure - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Purch. Unit of Measure - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 67398474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 67398474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchasing Blockedtco</source>
           <note from="Developer" annotates="general" priority="2">ESP="Compras bloqueadas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Purchasing Blocked - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Purchasing Blocked - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reason</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reason - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Reason - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4042672808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4042672808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reason Blocked/UnBlock</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Bloqueo/Desbloqueo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reason Blocked - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Reason Blocked - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 898817722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 898817722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Plastic Recycled packing %</source>
           <note from="Developer" annotates="general" priority="2">ESP="% Plástico reciclado embalaje"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Recycled plastic % - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Recycled plastic % - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Plastic Recycled packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado embalaje(kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Recycled plastic Qty. (kg) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Recycled plastic Qty. (kg) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3345871191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3345871191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reorder Point</source>
           <note from="Developer" annotates="general" priority="2">ESP="Punto pedido"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reorder Point - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Reorder Point - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1141850366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1141850366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reorder Quantity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad a pedir"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reorder Quantity - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Reorder Quantity - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3041858163 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3041858163 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reordering Policy</source>
           <note from="Developer" annotates="general" priority="2">ESP="Directiva reaprov."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reordering Policy - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Reordering Policy - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3041858163 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3041858163 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source> ,Fixed Reorder Qty.,Maximum Qty.,Order,Lot-for-Lot</source>
           <note from="Developer" annotates="general" priority="2">ESP=" ,Cant. fija reaprov.,Cant. máxima,Pedido,Lote a lote"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reordering Policy - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Reordering Policy - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3500504311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3500504311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Replenishment System</source>
           <note from="Developer" annotates="general" priority="2">ESP="Sistema reposición"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Replenishment System - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Replenishment System - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3500504311 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3500504311 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase,Prod. Order,,Assembly</source>
           <note from="Developer" annotates="general" priority="2">ESP="Compra,Prod. Pedido,,Ensamblado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Replenishment System - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Replenishment System - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1093055731 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1093055731 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Request Type</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo Solicitud"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Request Type - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Request Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1093055731 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1093055731 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source> ,New,Change,Blocked,Unlocking,Delete</source>
           <note from="Developer" annotates="general" priority="2">ESP=" ,Nuevo,Cambio,Bloqueo,Desbloqueo,Eliminación"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Request Type - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Request Type - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 483786246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 483786246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Rescheduling Period</source>
           <note from="Developer" annotates="general" priority="2">ESP="Periodo de reprogramación"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Rescheduling Period - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Rescheduling Period - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 825293260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 825293260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reserve</source>
           <note from="Developer" annotates="general" priority="2">ESP="Reserva"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reserve - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Reserve - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 825293260 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 825293260 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Never,Optional,Always</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Reserve - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Reserve - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2556434784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2556434784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Rounding Precision</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precisión redondeo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Rounding Precision - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Rounding Precision - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3123169861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3123169861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Routing No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº ruta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Routing No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Routing No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3802096367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3802096367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Safety Lead Time</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plazo de seguridad"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Safety Lead Time - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Safety Lead Time - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2639399489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2639399489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Safety Stock Quantity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Stock de seguridad"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Safety Stock Quantity - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Safety Stock Quantity - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3593451084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3593451084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Blocked</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ventas bloqueadas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Sales Blocked - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Sales Blocked - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1556375121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1556375121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Unit of Measure</source>
           <note from="Developer" annotates="general" priority="2">ESP="Unidad medida venta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Sales Unit of Measure - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Sales Unit of Measure - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 582183558 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 582183558 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PI2 Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="PI2 Code"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field SEB PI2 Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field SEB PI2 Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2233502939 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2233502939 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PI2 Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="PI2 Description"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field SEB PI2 Description - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field SEB PI2 Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 758668661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PI2 Description English</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PI2 Description English"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field SEB PI2 Description English - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field selClasVtas_btc - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field selClasVtas_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2448458993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2448458993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Family</source>
           <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field selFamilia_btc - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field selFamilia_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1300314486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1300314486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Gamma</source>
           <note from="Developer" annotates="general" priority="2">ESP="Gama"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field selGama_btc - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field selGama_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2853709011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2853709011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Linea Economica</source>
           <note from="Developer" annotates="general" priority="2">ESP="Linea Economica"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field selLineaEconomica_btc - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field selLineaEconomica_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 289578952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 289578952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serial Nos.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Serial Nos. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Serial Nos. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4174128553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4174128553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Service Item Group</source>
           <note from="Developer" annotates="general" priority="2">ESP="Grupo prod. servicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Service Item Group - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Service Item Group - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4172308441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4172308441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Show detailed documents</source>
           <note from="Developer" annotates="general" priority="2">ESP="Mostrar en detalle documentos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Show detailed documents - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Show detailed documents - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2378972714 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2378972714 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>State Creation</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado Alta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field State Creation - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field State Creation - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3459458485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3459458485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Steel Packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Acero Embalaje (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Steel - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Steel - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 687349316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 687349316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last date updated</source>
           <note from="Developer" annotates="general" priority="2">Ult. Fecha act. itbid</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field STH Last Update Date - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field STH Last Update Date - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1573910383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1573910383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>To update</source>
           <note from="Developer" annotates="general" priority="2">Act. itbid</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field STH To Update - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field STH To Update - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 223923525 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 223923525 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sujeto a Control de Calidad</source>
           <note from="Developer" annotates="general" priority="2">ESP="Sujeto a Control de Calidad"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Sujeto a Control de Calidad - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Sujeto a Control de Calidad - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3701472611 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3701472611 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tariff No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. arancelario"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Tariff No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Tariff No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1459161437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1459161437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Time Bucket</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ciclo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Time Bucket - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Time Bucket - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Type - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inventory,Service,Non-Inventory</source>
           <note from="Developer" annotates="general" priority="2">ESP="Inventario,Servicio,Fuera de inventario"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Type - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Type - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 381961415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 381961415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit Cost</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste unitario"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Unit Cost - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Unit Cost - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit Price</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precio venta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Unit Price - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Unit Price - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4034345114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4034345114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit Volume</source>
           <note from="Developer" annotates="general" priority="2">ESP="Volumen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Unit Volume - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Unit Volume - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1631894181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1631894181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Units per Parcel</source>
           <note from="Developer" annotates="general" priority="2">ESP="Unidades por lote"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Units per Parcel - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Units per Parcel - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cód. Usuario</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Usuario"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field User ID - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field User ID - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1232104226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 143592048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User ID Filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field User ID Filter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 1232104226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Bus. Posting Gr. (Price)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Gr.regis. IVA negocio (precio)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field VAT Bus. Posting Gr. (Price) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field VAT Bus. Posting Gr. (Price) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 236064653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 236064653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Prod. Posting Group</source>
           <note from="Developer" annotates="general" priority="2">ESP="Grupo registro IVA prod."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field VAT Prod. Posting Group - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field VAT Prod. Posting Group - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 2903269170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 2903269170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Item No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. producto proveedor</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Vendor Item No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Vendor Item No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº proveedor"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Vendor No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Vendor No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 4177096042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 4177096042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Carton Packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cartón Embalaje proveedor (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Vendor Packaging Carton - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Vendor Packaging Carton - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1075816576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1075816576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Plastic packing (kg/ud)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg/ud)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Vendor Packaging product KG - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Vendor Packaging product KG - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 3741809292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 3741809292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Steel Packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Acero Embalaje proveedor(kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Vendor Packaging Steel - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Vendor Packaging Steel - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 1917189804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 1917189804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Wood Packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Madera Embalaje proveedor (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Vendor Packaging Wood - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Vendor Packaging Wood - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3329268434 - Field 469769693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4269697522 - Field 469769693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wood Packing (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Madera Embalaje (kg)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items temporary - Field Wood - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Wood - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 988243340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product registration Setup</source>
@@ -18728,6 +18758,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar toda la lista de precios %1 y fecha final %2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Method Update_CRM - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 1405402048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GTIN</source>
+          <note from="Developer" annotates="general" priority="2">ESP="GTIN"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control GTIN - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3113805797 - Control 827840431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bloqueado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Bloqueado"</note>
@@ -18757,6 +18792,26 @@
           <source>Coste Unitario</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste Unitario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemUnitCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 4115941482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PI2 Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PI2 Code"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control Pi2Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 1747115206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PI2 Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PI2 Description"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control Pi2Desc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 1663878132 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PI2 English Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PI2 English Description"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control Pi2DescEnglish - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 2298810128 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PI2 Model</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PI2 Model"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control PI2Model - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Control 4093990710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Language</source>
@@ -20313,6 +20368,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup approvals - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2190874319 - Action 183296051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Campos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Campos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup approvals - Action Fields - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 202730741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Setup Departments List</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Conf. Departamentos Alta productos"</note>
@@ -20353,10 +20413,25 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la solicitud de Alta del producto %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - NamedType lblRelease</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Method 2194160043 - NamedType 1349650003" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea Asignar un nuevo codigo EAN13 a %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Asignar un nuevo codigo EAN13 a %1 %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Method OnAssistEdit_GTIN - NamedType lblConfirmAssing</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Method 2194160043 - NamedType 858699819" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea Calcular el codigo EAN13 de a %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Calcular el codigo EAN13 de %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Method OnAssistEdit_GTIN - NamedType lblConfirmUpdate</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Control 4253802235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Additional</source>
           <note from="Developer" annotates="general" priority="2">ESP="Adicionales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Additional - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 1791073462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SEB Codes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Codes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control SEBCodes - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Control 3188276999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Clasification</source>
@@ -20507,11 +20582,6 @@
           <source>Crear/Actualizar Producto</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crear/Actualizar Producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action UpdateItem - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3139896982 - Action 4257336264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cargar Excel</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Cargar Excel"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action UploadExcel - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3858912784 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Navigate,Setup</source>
@@ -31978,6 +32048,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control SEB PI2 Description - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 692169557 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>PI2 English Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control SEB PI2 English Description - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 97815521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Packaging Weight data</source>
           <note from="Developer" annotates="general" priority="2">ESP="Datos pesos embalajes"</note>
@@ -35323,6 +35398,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="CAUCHO/SILICONAS Flexibles"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field RUBBER/SILICON Flexibles - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 318786325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Model</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Model"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field SEB Model - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 582183558 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>PI2 Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="PI2 Code"</note>
@@ -35332,6 +35412,11 @@
           <source>PI2 Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="PI2 Description"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field SEB PI2 Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 692169557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>PI2 English Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PI2 English Description"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field SEB PI2 English Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Sales Classification</source>

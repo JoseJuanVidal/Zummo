@@ -29,6 +29,15 @@ pageextension 50109 "ItemCard" extends "Item Card"
                     ApplicationArea = all;
                     ToolTip = 'PI2 Description';
                 }
+                field("SEB PI2 English Description"; "SEB PI2 English Description")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'PI2 English Description';
+                }
+                field("SEB Model"; "SEB Model")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
         addafter("Qty. on Sales Order")

@@ -173,6 +173,36 @@ page 50010 "Tarifas Precios"
                     Caption = 'Coste Estandar', comment = 'ESP="Coste Estandar"';
                     Editable = false;
                 }
+                field(GTIN; Item.GTIN)
+                {
+                    ApplicationArea = all;
+                    Caption = 'GTIN', comment = 'ESP="GTIN"';
+                    Editable = false;
+                }
+                field(Pi2Code; item."SEB PI2 Code")
+                {
+                    ApplicationArea = all;
+                    Caption = 'PI2 Code', comment = 'ESP="PI2 Code"';
+                    Editable = false;
+                }
+                field(Pi2Desc; Item."SEB PI2 Description")
+                {
+                    ApplicationArea = all;
+                    Caption = 'PI2 Description', comment = 'ESP="PI2 Description"';
+                    Editable = false;
+                }
+                field(Pi2DescEnglish; Item."SEB PI2 English Description")
+                {
+                    ApplicationArea = all;
+                    Caption = 'PI2 English Description', comment = 'ESP="PI2 English Description"';
+                    Editable = false;
+                }
+                field(PI2Model; Item."SEB Model")
+                {
+                    ApplicationArea = all;
+                    Caption = 'PI2 Model', comment = 'ESP="PI2 Model"';
+                    Editable = false;
+                }
             }
         }
     }

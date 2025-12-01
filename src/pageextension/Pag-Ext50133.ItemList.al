@@ -15,6 +15,26 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("SEB PI2 Code"; "SEB PI2 Code")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("SEB PI2 Description"; "SEB PI2 Description")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("SEB PI2 English Description"; "SEB PI2 English Description")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("SEB Model"; "SEB Model")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field(Ordenacion_btc; Ordenacion_btc)
             {
                 ApplicationArea = All;

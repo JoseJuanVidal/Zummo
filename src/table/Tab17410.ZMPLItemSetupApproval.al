@@ -51,6 +51,13 @@ table 17410 "ZM PL Item Setup Approval"
             DataClassification = CustomerContent;
             Caption = 'Rol', comment = 'ESP="Perfil"';
         }
+        field(30; "User Id"; code[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'User Id', comment = 'ESP="Cód. Usuario"';
+            TableRelation = User."User Name";
+            ValidateTableRelation = false;
+        }
     }
     keys
     {

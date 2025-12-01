@@ -1,4 +1,4 @@
-table 17462 "ZM PL Items temporary"
+table 17462 "ZM PL Items Temporary"
 {
     DataClassification = CustomerContent;
     Caption = 'Items temporary', comment = 'ESP="Alta productos temporales"';
@@ -265,6 +265,7 @@ table 17462 "ZM PL Items temporary"
         {
             Caption = 'GTIN', Comment = 'ESP="GTIN"';
             Numeric = true;
+
         }
         field(5402; "Serial Nos."; Code[20])
         {
@@ -537,7 +538,11 @@ table 17462 "ZM PL Items temporary"
             DataClassification = CustomerContent;
             Caption = 'PI2 Description', comment = 'ESP="PI2 Description"';
         }
-
+        field(50083; "SEB PI2 Description English"; Text[40])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PI2 Description English', comment = 'ESP="PI2 Description English"';
+        }
         field(50125; "STH To Update"; Boolean)
         {
             Caption = 'To update', comment = 'Act. itbid';
@@ -867,6 +872,15 @@ table 17462 "ZM PL Items temporary"
             DataClassification = CustomerContent;
             Caption = 'Alto', comment = 'ESP="Alto"';
         }
+        field(59010; "IS Requested"; Boolean)
+        {
+            FieldClass = FlowField;
+            CalcFormula = exist("ZM PL Item Setup Approval" where("Table No." = const(17462), "Field No." = const(0), "User Id" = field("User ID Filter")));
+        }
+        field(59020; "User ID Filter"; code[50])
+        {
+            FieldClass = FlowFilter;
+        }
         field(99000750; "Routing No."; Code[20])
         {
             Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';
@@ -876,6 +890,11 @@ table 17462 "ZM PL Items temporary"
             Caption = 'Production BOM No.', Comment = 'ESP="Nº L.M. producción"';
             TableRelation = "ZM CIM Prod. BOM Header";
             ValidateTableRelation = false;
+
+            trigger OnValidate()
+            begin
+                OnValidate_ProductionBOMNo();
+            end;
         }
     }
 
@@ -1039,25 +1058,31 @@ table 17462 "ZM PL Items temporary"
     var
         OldRequestNo: code[20];
     begin
+        OldRequestNo := Rec."No.";
         case Rec."Request Type" of
             Rec."Request Type"::New:
                 Begin
                     // comprobamos que si existe el producto de un error
-                    if Item.Get(Rec."Item No.") then
-                        if not confirm(lblConfirmNewCopy) then
-                            Error(lblItemExist, Rec."Item No.", Item.Description, Rec."Request Type");
-                    OldRequestNo := Rec."No.";
+                    if not Item.Get(Rec."Item No.") then
+                        exit;
+                    if not confirm(lblConfirmNewCopy, false, Item."No.", item.Description) then begin
+                        Rec."Item No." := '';
+                        exit;
+                    end;
                     Rec.TransferFields(Item);
                     Rec."No." := OldRequestNo;
                     Rec."Item No." := '';
-                    Rec."ITBID Status" := Rec."ITBID Status"::Created;
+                    Rec."ITBID Status" := Rec."ITBID Status"::" ";
+                    Rec.CalcFields(Reason);
+                    Clear(Rec.Reason);
+                    Rec.Blocked := false;
                     UpdateItemExtendedFields(Item);
                     // comprobamos si el producto tiene lista de Producción orignal
                     ProdBOMHeader.Reset();
-                    ProdBOMHeader.SetRange("No.", Rec."Production BOM No.");
+                    ProdBOMHeader.SetRange("No.", Item."Production BOM No.");
                     if ProdBOMHeader.FindFirst() then
                         // if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
-                        UpdateProductionBom(Item."No.");
+                        UpdateProductionBom(Item."Production BOM No.");
                     UpdatePurchasePrice(Rec."No.");
                 End;
             Rec."Request Type"::Blocked, Rec."Request Type"::Change, Rec."Request Type"::Delete, Rec."Request Type"::Unlocking:
@@ -1067,6 +1092,7 @@ table 17462 "ZM PL Items temporary"
                     item.Get(Rec."No.");
                     if Confirm(lblConfirmUpdateItem, false, Rec."No.", Item.Description) then begin
                         Rec.TransferFields(Item);
+                        Rec."No." := OldRequestNo;
                         Rec."ITBID Status" := Rec."ITBID Status"::Created;
                         UpdateItemExtendedFields(Item);
                     end;
@@ -1083,42 +1109,51 @@ table 17462 "ZM PL Items temporary"
 
     procedure UpdateProductionBom(ItemNo: code[20])
     begin
-        Item.Reset();
-        if Item.Get(Rec."No.") then begin
-            ProdBOMHeader.Reset();
-            ProdBOMHeader.SetRange("No.", ItemNo);
-            if ProdBOMHeader.FindFirst() then begin
-                ZMCIMProdBOMHeader.Reset();
-                if not ZMCIMProdBOMHeader.Get(ProdBOMHeader."No.") then begin
-                    ZMCIMProdBOMHeader.Init();
-                    ZMCIMProdBOMHeader.TransferFields(ProdBOMHeader);
-                    ZMCIMProdBOMHeader.Insert();
-
-                end;
-                UpdateProductionBomLM(ZMCIMProdBOMHeader."No.");
-            end;
+        ZMCIMProdBOMHeader.Reset();
+        if not ZMCIMProdBOMHeader.Get(ProdBOMHeader."No.") then begin
+            ZMCIMProdBOMHeader.Init();
+            ZMCIMProdBOMHeader.TransferFields(ProdBOMHeader);
+            ZMCIMProdBOMHeader."No." := Rec."No.";
+            ZMCIMProdBOMHeader.Insert();
         end;
+        UpdateProductionBomLM(ZMCIMProdBOMHeader."No.", ProdBOMHeader);
+        Rec."Production BOM No." := Rec."No.";
     end;
 
-    local procedure UpdateProductionBomLM(BOMHeaderNo: code[20])
-    var
-        myInt: Integer;
+    local procedure UpdateProductionBomLM(BOMHeaderNo: code[20]; ProdBOMHeader: Record "Production BOM Header")
     begin
         ProdBOMLine.Reset();
-        ProdBOMLine.SetRange("Production BOM No.", BOMHeaderNo);
+        ProdBOMLine.SetRange("Production BOM No.", ProdBOMHeader."No.");
         if ProdBOMLine.FindFirst() then
             repeat
                 ZMCIMProdBOMLine.Reset();
-                if ZMCIMProdBOMLine.Get(ProdBOMLine."Production BOM No.", ProdBOMLine."Version Code", ProdBOMLine."Line No.") then begin
+                if ZMCIMProdBOMLine.Get(BOMHeaderNo, ProdBOMLine."Version Code", ProdBOMLine."Line No.") then begin
                     ZMCIMProdBOMLine."Quantity per" := ProdBOMLine."Quantity per";
                     ZMCIMProdBOMLine.Quantity := ProdBOMLine.Quantity;
                     ZMCIMProdBOMLine.Modify();
                 end else begin
                     ZMCIMProdBOMLine.Init();
                     ZMCIMProdBOMLine.TransferFields(ProdBOMLine);
+                    ZMCIMProdBOMLine."Production BOM No." := BOMHeaderNo;
                     ZMCIMProdBOMLine.Insert();
                 end;
             Until ProdBOMLine.next() = 0;
+    end;
+
+    local procedure OnValidate_ProductionBOMNo()
+    var
+        lblConfirm: Label '¿Desea renombrar la lista de materiales a %1?', comment = 'ESP="¿Desea renombrar la lista de materiales a %1?"';
+    begin
+        if Rec."Production BOM No." <> xRec."Production BOM No." then
+            if not Confirm(lblConfirm, false, Rec."Production BOM No.") then begin
+                Rec."Production BOM No." := xRec."Production BOM No.";
+                exit;
+            end;
+        if Rec."Production BOM No." = xRec."Production BOM No." then
+            exit;
+        if not ZMCIMProdBOMHeader.Get(xRec."Production BOM No.") then
+            exit;
+        ZMCIMProdBOMHeader.Rename(Rec."Production BOM No.");
     end;
 
     local procedure UpdatePurchasePrice(ItemNo: code[20])
@@ -1153,9 +1188,9 @@ table 17462 "ZM PL Items temporary"
         ZMItemPurchasePrice: record "ZM PL Item Purchase Prices";
         ZMItemPurchasesPrices: page "ZM PL Item Purchases Prices";
     begin
-        ZMItemPurchasePrice.SetRange("Item No.", Rec."No.");
+        ZMItemPurchasePrice.SetRange("Item No.", Rec."Item No.");
         ZMItemPurchasesPrices.SetTableView(ZMItemPurchasePrice);
-        ZMItemPurchasesPrices.SetItemNo(Rec."No.");
+        ZMItemPurchasesPrices.SetItemNo(Rec."Item No.");
         ZMItemPurchasesPrices.Run();
     end;
 
@@ -1191,16 +1226,20 @@ table 17462 "ZM PL Items temporary"
 
     procedure LaunchRegisterItemTemporary(Requested: Boolean)
     var
+        lblRequestError: Label 'You must select a value in %1.', comment = 'ESP="Debe seleccionar un valor en %1."';
         lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 "%2"?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2"?"';
         lblRelease: Label '¿Desea enviar la revisión de los departamentos para %1 %2?', comment = 'ESP="¿Desea enviar la revisión de los departamentos para %1 %2?"';
         lblError: Label 'El estado de la solicitud de %1 %2 es %3', comment = 'ESP="El estado de la solicitud de %1 %2 es %3"';
     begin
         Rec.TestField(Reason);
+        // Check Request Type
+        if Rec."Request Type" in [Rec."Request Type"::" "] then
+            Error(lblRequestError, Rec.FieldCaption("Request Type"));
         if rec."State Creation" in [Rec."State Creation"::Finished] then
             Error(lblError, Rec."No.", Rec.Description);
 
         case Requested of
-            false:
+            false:  // lanzamiento por el primer usuario que lo crea
                 begin
                     CheckObligatoryFieldsUser(true);
                     if not Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
@@ -1277,11 +1316,11 @@ table 17462 "ZM PL Items temporary"
         SMTPMail: Codeunit "SMTP Mail";
         Subject: text;
         Body: text;
-        SubjectLbl: Label 'Solicitud de Alta de Producto - %1 (%2)';
+        SubjectLbl: Label 'Solicitud de Alta de Producto - %1 (%2 - %3)';
     begin
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
-        Subject := StrSubstNo(SubjectLbl, Rec."No.", Rec.Description);
+        Subject := StrSubstNo(SubjectLbl, Rec."No.", rec."Item No.", Rec.Description);
         Body := EnvioEmailBody;
         // enviamos el email 
         SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
@@ -1304,6 +1343,7 @@ table 17462 "ZM PL Items temporary"
         Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
         Body += '<h2 style="color: #2e6c80;">Solicitud de Alta de Producto No.: ' + Rec."No." + '</h2>';
         Body += '<h3 style="color: #2e6c80;">Usuario: ' + StrSubstNo('%1 (%2)', Employee.FullName(), CodEmpleado) + '</h3>';
+        Body += '<p><strong>' + Rec.FieldCaption("Item No.") + '</strong>: ' + Rec."Item No." + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Description) + '</strong>: ' + Rec.Description + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption("Base Unit of Measure") + '</strong>: ' + Rec."Base Unit of Measure" + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Type) + '</strong>: ' + format(Rec.Type) + '</p>';
@@ -1748,215 +1788,65 @@ table 17462 "ZM PL Items temporary"
     local procedure CheckObligatoryFieldsUser(Requested: Boolean)
     var
         RefRecord: RecordRef;
+        CIMProdBOMHeader: record "ZM CIM Prod. BOM Header"; // (50134)
+        CIMProdBOMLine: record "ZM CIM Prod. BOM Line"; //  (50158)
+        PLItemPurchasePrices: record "ZM PL Item Purchase Prices"; //  (17398)
+        ItemTranslationtemporary: record "ZM Item Translation temporary"; // (17420)
     begin
         RefRecord.GetTable(Rec);
+        CheckObligatoryRecord(RefRecord);
+        RefRecord.Close();
+        // temporal Lista de materiales, header y lines
+        if CIMProdBOMHeader.Get(Rec."Production BOM No.") then begin
+            RefRecord.GetTable(CIMProdBOMHeader);
+            CheckObligatoryRecord(RefRecord);
+            RefRecord.Close();
+            CIMProdBOMLine.SetRange("Production BOM No.", CIMProdBOMHeader."No.");
+            if CIMProdBOMLine.FindFirst() then
+                repeat
+                    RefRecord.GetTable(CIMProdBOMLine);
+                    CheckObligatoryRecord(RefRecord);
+                    RefRecord.Close();
+                Until CIMProdBOMLine.next() = 0;
+        end;
+        // temporal lista de precios de compras
+        PLItemPurchasePrices.SetRange("Item No.", Rec."Item No.");
+        if PLItemPurchasePrices.FindSet() then
+            repeat
+                RefRecord.GetTable(PLItemPurchasePrices);
+                CheckObligatoryRecord(RefRecord);
+                RefRecord.Close();
+            Until PLItemPurchasePrices.next() = 0;
+        //
+    end;
+
+    local procedure CheckObligatoryRecord(RefRecord: RecordRef)
+    var
+        myInt: Integer;
+    begin
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetFilter("Field No.", '<>%1', 0);
         ItemSetupApproval.SetRange(Obligatory, true);
-        if Requested then
-            ItemSetupApproval.SetRange("Approval Requester", true);
+        // if Requested then
+        //     ItemSetupApproval.SetRange("Approval Requester", true);
         ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
         if ItemSetupApproval.FindFirst() then
             repeat
                 if ItemSetupDepartment.get(ItemSetupApproval.Department) then
                     if ItemSetupDepartment."User Id" = UserId then begin
-                        CheckObligatoryField(ItemSetupApproval."Field No.");
+                        CheckObligatoryField(RefRecord, ItemSetupApproval."Field No.");
                     end;
             until ItemSetupApproval.Next() = 0;
+
     end;
 
-    local procedure CheckObligatoryField(FieldNo: Integer)
+    local procedure CheckObligatoryField(RefRecord: RecordRef; FieldNo: Integer)
+    var
+        RefField: FieldRef;
     begin
-        case FieldNo of
-            1: // No.
-                Rec.TestField("No.");
-            3: //Description:
-                Rec.TestField(Description);
-            6: //"Assembly BOM":
-                Rec.TestField("Assembly BOM");
-            8: //"Base Unit of Measure":
-                Rec.TestField("Base Unit of Measure");
-            10: //Type:
-                Rec.TestField(Type);
-            11: //"Inventory Posting Group":
-                Rec.TestField("Inventory Posting Group");
-            14: //"Item Disc. Group"
-                Rec.TestField("Item Disc. Group");
-            18: //"Unit Price"
-                Rec.TestField("Unit Price");
-            21: //"Costing Method"
-                Rec.TestField("Costing Method");
-            22: //"Unit Cost"
-                Rec.TestField("Unit Cost");
-            31: //"Vendor No."
-                Rec.TestField("Vendor No.");
-            32: //"Vendor Item No."
-                Rec.TestField("Vendor Item No.");
-            33: //"Lead Time Calculation"
-                Rec.TestField("Lead Time Calculation");
-            34: //"Reorder Point"
-                Rec.TestField("Reorder Point");
-            35: //"Maximum Inventory"
-                Rec.TestField("Maximum Inventory");
-            36: //"Reorder Quantity"
-                Rec.TestField("Reorder Quantity");
-            37: //"Alternative Item No.": Code[20])
-                Rec.TestField("Alternative Item No.");
-            41: //"Gross Weight": Decimal)
-                Rec.TestField("Gross Weight");
-            42: //"Net Weight": Decimal)
-                Rec.TestField("Net Weight");
-            43: //"Units per Parcel": Decimal)
-                Rec.TestField("Units per Parcel");
-            44: //"Unit Volume": Decimal)
-                Rec.TestField("Unit Volume");
-            45: //Durability: Code[10])
-                Rec.TestField(Durability);
-            46: //"Freight Type": Code[10])
-                Rec.TestField("Freight Type");
-            47: //"Tariff No.": Code[20])
-                Rec.TestField("Tariff No.");
-            54: //Blocked: //Boolean)
-                Rec.TestField(Blocked);
-            90: //"VAT Bus. Posting Gr. (Price)": //Code[20])
-                Rec.TestField("VAT Bus. Posting Gr. (Price)");
-            91: //"Gen. Prod. Posting Group": //Code[20])
-                Rec.TestField("Gen. Prod. Posting Group");
-            92: //Picture: //MediaSet)
-                Rec.TestField(Picture);
-            97: //"Nos. series": //code[20])
-                Rec.TestField("Nos. series");
-            99: //"VAT Prod. Posting Group": //Code[20])
-                Rec.TestField("VAT Prod. Posting Group");
-            100: //Reserve: //Option)
-                Rec.TestField(Reserve);
-            910: //"Assembly Policy": //Option)
-                Rec.TestField("Assembly Policy");
-            1217: //GTIN: //Code[14])
-                Rec.TestField(GTIN);
-            5402: //"Serial Nos.": //Code[20])
-                Rec.TestField("Serial Nos.");
-            5411: //"Minimum Order Quantity": //Decimal)
-                Rec.TestField("Minimum Order Quantity");
-            5412: //"Maximum Order Quantity": //Decimal)
-                Rec.TestField("Maximum Order Quantity");
-            5413: //"Safety Stock Quantity": //Decimal)
-                Rec.TestField("Safety Stock Quantity");
-            5414: //"Order Multiple": //Decimal)
-                Rec.TestField("Order Multiple");
-            5415: //"Safety Lead Time": //DateFormula)
-                Rec.TestField("Safety Lead Time");
-            5417: //"Flushing Method": //Option)
-                Rec.TestField("Flushing Method");
-            5419: //"Replenishment System": //Option)
-                Rec.TestField("Replenishment System");
-            5422: //"Rounding Precision": //Decimal)
-                Rec.TestField("Rounding Precision");
-            5425: //"Sales Unit of Measure": //Code[10])
-                Rec.TestField("Sales Unit of Measure");
-            5426: //"Purch. Unit of Measure": //Code[10])
-                Rec.TestField("Purch. Unit of Measure");
-            5428: //"Time Bucket": //DateFormula)
-                Rec.TestField("Time Bucket");
-            5440: //"Reordering Policy": //Option)
-                Rec.TestField("Reordering Policy");
-            5441: //"Include Inventory": //Boolean)
-                Rec.TestField("Include Inventory");
-            5442: //"Manufacturing Policy": //Option)
-                Rec.TestField("Manufacturing Policy");
-            5443: //"Rescheduling Period": //DateFormula)
-                Rec.TestField("Rescheduling Period");
-            5701: //"Manufacturer Code": //Code[10])
-                Rec.TestField("Manufacturer Code");
-            5702: //"Item Category Code": //Code[20])
-                Rec.TestField("Item Category Code");
-            5900: //"Service Item Group": //Code[10])
-                Rec.TestField("Service Item Group");
-            6500: //"Item Tracking Code": //Code[10])
-                Rec.TestField("Item Tracking Code");
-            6501: //"Lot Nos.": //Code[20])
-                Rec.TestField("Lot Nos.");
-            6502: //"Expiration Calculation": //DateFormula)
-                Rec.TestField("Expiration Calculation");
-            8003: //"Sales Blocked": //Boolean)
-                Rec.TestField("Sales Blocked");
-            8004: //"Purchasing Blocked": //Boolean)
-                Rec.TestField("Purchasing Blocked");
-            50014: //selClasVtas_btc: //Code[20])
-                Rec.TestField(selClasVtas_btc);
-            50015: //selFamilia_btc: //Code[20])
-                Rec.TestField(selFamilia_btc);
-            50016: //selGama_btc: //Code[20])
-                Rec.TestField(selGama_btc);
-            50017: //selLineaEconomica_btc: //Code[20])
-                Rec.TestField(selLineaEconomica_btc);
-            50018: //"ABC": //Option)
-                Rec.TestField(ABC);
-            50030: //Canal: //Option)
-                Rec.TestField(Canal);
-            50127: //Material: //text[100])
-                Rec.TestField(Material);
-            50130: //"Purch. Family": //Code[20])
-                Rec.TestField("Purch. Family");
-            50132: //"Purch. Category": //Code[20])
-                Rec.TestField("Purch. Category");
-            50134: //"Purch. SubCategory": //Code[20])
-                Rec.TestField("Purch. SubCategory");
-            50156: //Manufacturer: //text[100])
-                Rec.TestField(Manufacturer);
-            50157: //"Item No. Manufacturer": //code[50])
-                Rec.TestField("Item No. Manufacturer");
-            50200: //"Plastic Qty. (kg)": //decimal)
-                Rec.TestField("Plastic Qty. (kg)");
-            50201: //"Recycled plastic Qty. (kg)": //decimal)
-                Rec.TestField("Recycled plastic Qty. (kg)");
-            50202: //"Recycled plastic %": //decimal)
-                Rec.TestField("Recycled plastic %");
-            50203: //"Packing Plastic Qty. (kg)": //decimal)
-                Rec.TestField("Packing Plastic Qty. (kg)");
-            50204: //"Packing Recycled plastic (kg)": //decimal)
-                Rec.TestField("Packing Recycled plastic (kg)");
-            50205: //"Packing Recycled plastic %": //decimal)
-                Rec.TestField("Packing Recycled plastic %");
-            50206: //Steel: //Decimal)
-                Rec.TestField(Steel);
-            50207: //Carton: //Decimal)
-                Rec.TestField(Carton);
-            50208: //Wood: //Decimal)
-                Rec.TestField(Wood);
-            50210: //"Show detailed documents": //Boolean)
-                Rec.TestField("Show detailed documents");
-            50211: //"Packaging product": //Boolean)
-                Rec.TestField("Packaging product");
-            50212: //"Vendor Packaging product": //Boolean)
-                Rec.TestField("Vendor Packaging product KG");
-            50215: //"Vendor Packaging product KG": //Decimal)
-                Rec.TestField("Vendor Packaging product KG");
-            50216: //"Vendor Packaging Steel": //Decimal)
-                Rec.TestField("Vendor Packaging Steel");
-            50217: //"Vendor Packaging Carton": //Decimal)
-                Rec.TestField("Vendor Packaging Carton");
-            50218: //"Vendor Packaging Wood": //Decimal)
-                Rec.TestField("Vendor Packaging Wood");
-            59001: //Largo: //Decimal)
-                Rec.TestField(Largo);
-            59002: //Ancho: //Decimal)
-                Rec.TestField(Ancho);
-            59003: //Alto: //Decimal)
-                Rec.TestField(Alto);
-            50806: //Packaging: //Boolean)
-                Rec.TestField(Packaging);
-            50807: //Color: //Boolean)
-                Rec.TestField(Color);
-            50822: //Reason: //Blob)
-                Rec.TestField(Reason);
-            50828: //"Reason Blocked": //text[100])
-                Rec.TestField("Reason Blocked");
-            99000750: //"Routing No.": //Code[20])
-                Rec.TestField("Routing No.");
-            99000751: //"Production BOM No."; Code[20])
-                Rec.TestField("Production BOM No.");
-        end;
+        RefField := RefRecord.Field(FieldNo);
+        RefField.TestField();
     end;
 
     procedure ValidateRequestType()
@@ -1994,4 +1884,6 @@ table 17462 "ZM PL Items temporary"
             Rec.Alto := ItemUnitofMeasure.Height;
         end;
     end;
+
+
 }
