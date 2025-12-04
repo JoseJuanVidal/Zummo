@@ -29,6 +29,27 @@ page 17413 "ZM PL Setup Item registration"
                 {
                     ApplicationArea = all;
                 }
+                field("Max. Digits Item No."; "Max. Digits Item No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Max. Digits Item Desc."; "Max. Digits Item Desc.")
+                {
+                    ApplicationArea = all;
+                }
+            }
+            group(Sequence)
+            {
+                Caption = 'Sequence', comment = 'ESP="Secuencia"';
+
+                field("First Department"; "First Department")
+                {
+                    ApplicationArea = all;
+                }
+                field("Last Department"; "Last Department")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(SerieNos)
             {

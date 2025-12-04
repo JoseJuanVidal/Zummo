@@ -173,6 +173,12 @@ page 50010 "Tarifas Precios"
                     Caption = 'Coste Estandar', comment = 'ESP="Coste Estandar"';
                     Editable = false;
                 }
+                field(ItemReplenishmentSystem; Item."Replenishment System")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Sistema Reposición', comment = 'ESP="Sistema Reposición"';
+                    Editable = false;
+                }
                 field(GTIN; Item.GTIN)
                 {
                     ApplicationArea = all;
@@ -201,6 +207,12 @@ page 50010 "Tarifas Precios"
                 {
                     ApplicationArea = all;
                     Caption = 'PI2 Model', comment = 'ESP="PI2 Model"';
+                    Editable = false;
+                }
+                field(CMMFType; Item."CMMF Type")
+                {
+                    ApplicationArea = all;
+                    Caption = 'CMMF Type', comment = 'ESP="CMMF Type"';
                     Editable = false;
                 }
             }

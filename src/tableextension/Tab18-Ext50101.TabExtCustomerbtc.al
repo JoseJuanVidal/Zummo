@@ -143,6 +143,24 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             DataClassification = CustomerContent;
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("GrupoCliente"), TipoRegistro = const(Tabla));
             Caption = 'Cliente Tipo', comment = 'ESP="Cliente Tipo"';
+
+            trigger OnValidate()
+            var
+                TextosAuxiliares: Record TextosAuxiliares;
+                lblConfirm: Label 'El %1 %2 está configurado como %3.\Se deberia marcar la opcion de Crear Prod. Servicio a %4.',
+                        comment = 'ESP="El %1 %2 está configurado como %3.\Se deberia marcar la opcion de Crear Prod. Servicio a %4."';
+            begin
+                // preguntar si hay que marcar la opcion de crear productos de servicio
+                TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::"GrupoCliente");
+                TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+                TextosAuxiliares.SetRange(NumReg, Rec.GrupoCliente_btc);
+                if TextosAuxiliares.FindSet() then begin
+                    if TextosAuxiliares.AvisoProductoServicio then
+                        Message(lblConfirm, Rec.FieldCaption(GrupoCliente_btc), Rec.GrupoCliente_btc, TextosAuxiliares.FieldCaption(AvisoProductoServicio),
+                                Rec.FieldCaption(ClienteReporting_btc));
+
+                end
+            end;
         }
 
         field(50018; Perfil_btc; Code[20])

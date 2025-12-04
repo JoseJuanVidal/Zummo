@@ -661,10 +661,28 @@ codeunit 50106 "SalesEvents"
         if ServiceItem.Get(Rec."Service Item No.") then begin
             if ServiceItem."Mostrar aviso pedido servicio" then
                 Message(ServiceItem."Aviso pedido servicio");
+            // si esta caducado la garantia del producto de servicio (Fecha fin garantia (Comp)
+            CheckServiceItemINContract(ServiceItem);
         end;
     end;
 
-
+    local procedure CheckServiceItemINContract(ServiceItem: Record "Service Item")
+    var
+        ServContractHeader: Record "Service Contract Header";
+        ServContractLine: Record "Service Contract Line";
+        lblMessageContract: Label 'El producto %1 esta incluido en el Contracto %2 con fecha final %3.\%4\%5: %6', comment = 'ESP="El producto %1 esta incluido en el Contracto %2 con fecha final %3.\%4\%5: %6"';
+    begin
+        ServContractLine.SetRange("Service Item No.", ServiceItem."No.");
+        if ServContractLine.FindFirst() then
+            repeat
+                if ServContractLine."Contract Expiration Date" >= WorkDate() then begin
+                    if ServContractHeader.get(ServContractLine."Contract Type", ServContractLine."Contract No.") then;
+                    Message(lblMessageContract, ServiceItem."No.", ServContractLine."Contract No.", ServContractLine."Contract Expiration Date",
+                        ServContractHeader.Description, ServContractLine.FieldCaption("Next Planned Service Date"), ServContractLine."Next Planned Service Date");
+                    exit;
+                end;
+            Until ServContractLine.next() = 0;
+    end;
 
     //Comentarios lotes hist factura venta
     procedure CreaComentariosLoteHistFaVenta(var pSalesInvoiceHeader: Record "Sales Invoice Header")

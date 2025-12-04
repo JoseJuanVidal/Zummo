@@ -75,6 +75,11 @@ table 50105 "TextosAuxiliares"
             DataClassification = CustomerContent;
             Caption = 'Warranty Date', comment = 'ESP="Años de Garantía"';
         }
+        field(15; AvisoProductoServicio; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Aviso Producto Servicio por cliente', comment = 'ESP="Aviso Producto Servicio por cliente"';
+        }
         field(20; "Sales Manager"; code[20])
         {
             DataClassification = CustomerContent;

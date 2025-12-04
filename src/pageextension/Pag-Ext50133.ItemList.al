@@ -35,6 +35,11 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("CMMF Type"; "CMMF Type")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field(Ordenacion_btc; Ordenacion_btc)
             {
                 ApplicationArea = All;

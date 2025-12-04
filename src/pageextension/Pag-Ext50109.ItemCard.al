@@ -38,6 +38,10 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 {
                     ApplicationArea = all;
                 }
+                field("CMMF Type"; "CMMF Type")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
         addafter("Qty. on Sales Order")

@@ -461,4 +461,31 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         end
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::Item, 'OnAfterValidateEvent', 'No.', true, true)]
+    local procedure EventSubscriber_Item_OnAfterValidateEventNo(var Rec: Record Item; var xRec: Record Item; CurrFieldNo: Integer)
+    begin
+        EventSubscriber_Item_OnAfterValidateEvent(Rec, xRec, CurrFieldNo);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::Item, 'OnAfterValidateEvent', 'Description', true, true)]
+    local procedure EventSubscriber_Item_OnAfterValidateEventDescription(var Rec: Record Item; var xRec: Record Item; CurrFieldNo: Integer)
+    begin
+        EventSubscriber_Item_OnAfterValidateEvent(Rec, xRec, CurrFieldNo);
+    end;
+
+    local procedure EventSubscriber_Item_OnAfterValidateEvent(var Rec: Record Item; var xRec: Record Item; CurrFieldNo: Integer)
+    var
+        SetupPreItemReg: record "ZM PL Setup Item registration";
+    begin
+        case CurrFieldNo of
+            Rec.FieldNo(Rec."No."):
+                begin
+                    SetupPreItemReg.CheckMaxLengthItemNo(Rec."No.");
+                end;
+            Rec.FieldNo(Rec.Description):
+                begin
+                    SetupPreItemReg.CheckMaxLengthItemNo(Rec.Description);
+                end;
+        end;
+    end;
 }

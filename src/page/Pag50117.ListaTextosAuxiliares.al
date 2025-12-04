@@ -43,6 +43,11 @@ page 50117 "Lista Textos Auxiliares"
                     ApplicationArea = all;
                     Visible = NotRegIVA;
                 }
+                field(AvisoProductoServicio; AvisoProductoServicio)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
                 field(WarrantyDate; WarrantyDate)
                 {
                     ApplicationArea = All;

@@ -36,6 +36,28 @@ table 17412 "ZM PL Setup Item registration"
             DataClassification = CustomerContent;
             Caption = 'Enabled Approval Price List', comment = 'ESP="Aprobación Lista de precios activada"';
         }
+        field(30; "Max. Digits Item No."; Integer)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Max. Digits Item No.', comment = 'ESP="Max. Digitos Cód. producto"';
+        }
+        field(40; "Max. Digits Item Desc."; Integer)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Max. Digits Item Desc.', comment = 'ESP="Max. Digitos Desc. producto"';
+        }
+        field(100; "First Department"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Primer Departamento lanzamiento', comment = 'ESP="Primer Departamento lanzamiento"';
+            TableRelation = "ZM PL Item Setup Department".Code;
+        }
+        field(110; "Last Department"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Primer Departamento lanzamiento', comment = 'ESP="Primer Departamento lanzamiento"';
+            TableRelation = "ZM PL Item Setup Department".Code;
+        }
     }
 
     keys
@@ -66,6 +88,10 @@ table 17412 "ZM PL Setup Item registration"
 
     end;
 
+    var
+        Item: Record Item;
+        lblMaxLength: Label 'Custom settings do not allow more than %1 characters.', comment = 'ESP="Por Configuración personalizada no está permitido mas de %1 Caracteres."';
+
     procedure ProcessSendNoticeEmailPendingdata()
     var
         SetupItemReg: Record "ZM PL Setup Item registration";
@@ -87,4 +113,24 @@ table 17412 "ZM PL Setup Item registration"
             exit(Rec."Enabled Approval Price List");
     end;
 
+
+    procedure CheckMaxLengthItemNo(ItemNo: Code[20])
+    begin
+        if not Rec.Get() then
+            exit;
+        if Rec."Max. Digits Item No." = 0 then
+            exit;
+        if StrLen(ItemNo) > Rec."Max. Digits Item No." then
+            Error(lblMaxLength, Rec."Max. Digits Item No.");
+    end;
+
+    procedure CheckMaxLengthItemDescription(ItemDesc: text)
+    begin
+        if not Rec.Get() then
+            exit;
+        if Rec."Max. Digits Item Desc." = 0 then
+            exit;
+        if StrLen(ItemDesc) > Rec."Max. Digits Item Desc." then
+            Error(lblMaxLength, Rec."Max. Digits Item Desc.");
+    end;
 }

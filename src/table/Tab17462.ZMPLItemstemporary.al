@@ -33,6 +33,11 @@ table 17462 "ZM PL Items Temporary"
         field(3; Description; Text[100])
         {
             Caption = 'Description', Comment = 'ESP="Descripción"';
+
+            trigger OnValidate()
+            begin
+                OnValidate_Description();
+            end;
         }
         field(6; "Assembly BOM"; Boolean)
         {
@@ -970,6 +975,7 @@ table 17462 "ZM PL Items Temporary"
 
         lblErrorNotApprovals: Label 'No existen aprobadores configurados para la tabla %1.', comment = 'ESP="No existen aprobadores configurados para la tabla %1."';
         lblConfirmEmail: Label 'La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?', comment = 'ESP="La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?"';
+        lblErrorItemExitst: Label 'Product %1 already exists %2', comment = 'ESP="El producto %1 ya exites %2"';
 
     local procedure GetPreItemSetup()
     begin
@@ -1058,39 +1064,22 @@ table 17462 "ZM PL Items Temporary"
     var
         OldRequestNo: code[20];
     begin
-        OldRequestNo := Rec."No.";
+        if Rec."Request Type" in [Rec."Request Type"::New, Rec."Request Type"::Change] then
+            SetupPreItemReg.CheckMaxLengthItemNo(Rec."Item No.");
+        OldRequestNo := Rec."Item No.";
         case Rec."Request Type" of
             Rec."Request Type"::New:
                 Begin
                     // comprobamos que si existe el producto de un error
-                    if not Item.Get(Rec."Item No.") then
-                        exit;
-                    if not confirm(lblConfirmNewCopy, false, Item."No.", item.Description) then begin
-                        Rec."Item No." := '';
-                        exit;
-                    end;
-                    Rec.TransferFields(Item);
-                    Rec."No." := OldRequestNo;
-                    Rec."Item No." := '';
-                    Rec."ITBID Status" := Rec."ITBID Status"::" ";
-                    Rec.CalcFields(Reason);
-                    Clear(Rec.Reason);
-                    Rec.Blocked := false;
-                    UpdateItemExtendedFields(Item);
-                    // comprobamos si el producto tiene lista de Producción orignal
-                    ProdBOMHeader.Reset();
-                    ProdBOMHeader.SetRange("No.", Item."Production BOM No.");
-                    if ProdBOMHeader.FindFirst() then
-                        // if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
-                        UpdateProductionBom(Item."Production BOM No.");
-                    UpdatePurchasePrice(Rec."No.");
+                    if Item.Get(Rec."Item No.") then
+                        Error(lblErrorItemExitst, Rec."Item No.", Item.Description);
                 End;
             Rec."Request Type"::Blocked, Rec."Request Type"::Change, Rec."Request Type"::Delete, Rec."Request Type"::Unlocking:
                 begin
                     // comprobamos si existe el producto y traemos los datos para su modificación                
                     item.Reset();
-                    item.Get(Rec."No.");
-                    if Confirm(lblConfirmUpdateItem, false, Rec."No.", Item.Description) then begin
+                    item.Get(Rec."Item No.");
+                    if Confirm(lblConfirmUpdateItem, false, Rec."Item No.", Item.Description) then begin
                         Rec.TransferFields(Item);
                         Rec."No." := OldRequestNo;
                         Rec."ITBID Status" := Rec."ITBID Status"::Created;
@@ -1107,17 +1096,50 @@ table 17462 "ZM PL Items Temporary"
         end;
     end;
 
+    local procedure OnValidate_Description()
+    var
+        myInt: Integer;
+    begin
+        if Rec."Request Type" in [Rec."Request Type"::New, Rec."Request Type"::Change] then
+            SetupPreItemReg.CheckMaxLengthItemNo(Rec.Description);
+    end;
+
+    procedure CopyItem()
+    var
+        OldRequestNo: code[20];
+    begin
+        Rec.TestField("Item No.");
+        Rec.TestField("Request Type", Rec."Request Type"::New);
+        OldRequestNo := Rec."Item No.";
+        if not confirm(lblConfirmNewCopy, false, Item."No.", item.Description) then
+            exit;
+        Rec.TransferFields(Item);
+        Rec."No." := OldRequestNo;
+        Rec."ITBID Status" := Rec."ITBID Status"::" ";
+        Rec.CalcFields(Reason);
+        Clear(Rec.Reason);
+        Rec.Blocked := false;
+        UpdateItemExtendedFields(Item);
+        // comprobamos si el producto tiene lista de Producción orignal
+        ProdBOMHeader.Reset();
+        ProdBOMHeader.SetRange("No.", Item."Production BOM No.");
+        if ProdBOMHeader.FindFirst() then
+            // if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
+            UpdateProductionBom(Item."Production BOM No.");
+        UpdatePurchasePrice(Rec."No.");
+    end;
+
     procedure UpdateProductionBom(ItemNo: code[20])
     begin
         ZMCIMProdBOMHeader.Reset();
         if not ZMCIMProdBOMHeader.Get(ProdBOMHeader."No.") then begin
             ZMCIMProdBOMHeader.Init();
             ZMCIMProdBOMHeader.TransferFields(ProdBOMHeader);
-            ZMCIMProdBOMHeader."No." := Rec."No.";
+            ZMCIMProdBOMHeader."No." := Rec."Item No.";
             ZMCIMProdBOMHeader.Insert();
         end;
         UpdateProductionBomLM(ZMCIMProdBOMHeader."No.", ProdBOMHeader);
-        Rec."Production BOM No." := Rec."No.";
+        Rec."Production BOM No." := Rec."Item No.";
     end;
 
     local procedure UpdateProductionBomLM(BOMHeaderNo: code[20]; ProdBOMHeader: Record "Production BOM Header")
@@ -1265,36 +1287,26 @@ table 17462 "ZM PL Items Temporary"
     local procedure SendItemTemporaryFirstRegister()
     var
         Employee: Record Employee;
-        RefRecord: RecordRef;
         Recipients: text;
     begin
-        RefRecord.GetTable(Rec);
-        ItemSetupApproval.Reset();
-        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
-        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
-        if not ItemSetupApproval.FindFirst() then
-            Error(lblErrorNotApprovals, Rec.TableCaption);
-        // preparamos la tabla para los aprobadores y enviamos email
-        if ItemSetupApproval.FindFirst() then
-            repeat
-                if ItemSetupDepartment.get(ItemSetupApproval.Department) then begin
-                    if ItemSetupDepartment.Email <> '' then begin
-                        if Recipients <> '' then
-                            Recipients += ';';
-                        Recipients += ItemSetupDepartment.Email;
-                    end;
-                    // miramos los empleados que tienen ese departamento
-                    Employee.Reset();
-                    Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
-                    if Employee.FindFirst() then
-                        repeat
-                            if Recipients <> '' then
-                                Recipients += ';';
-                            Recipients += Employee."Company E-Mail";
-                        Until Employee.next() = 0;
-                end;
-            Until ItemSetupApproval.next() = 0;
-
+        SetupPreItemReg.Get();
+        SetupPreItemReg.TestField("First Department");
+        if ItemSetupDepartment.get(SetupPreItemReg."First Department") then begin
+            if ItemSetupDepartment.Email <> '' then begin
+                if Recipients <> '' then
+                    Recipients += ';';
+                Recipients += ItemSetupDepartment.Email;
+            end;
+            // miramos los empleados que tienen ese departamento
+            Employee.Reset();
+            Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
+            if Employee.FindFirst() then
+                repeat
+                    if Recipients <> '' then
+                        Recipients += ';';
+                    Recipients += Employee."Company E-Mail";
+                Until Employee.next() = 0;
+        end;
         if Recipients = '' then
             Error(lblErrorNotApprovals, Rec.TableCaption);
 
@@ -1304,7 +1316,6 @@ table 17462 "ZM PL Items Temporary"
         SendMailItemTemporaryFirstRegister(Recipients);
         Rec."E-mail sent" := true;
         Rec."State Creation" := Rec."State Creation"::Requested;
-
         Rec.Modify();
     end;
 
@@ -1436,10 +1447,29 @@ table 17462 "ZM PL Items Temporary"
         if Rec."E-mail sent" then
             if not Confirm(lblConfirmEmail) then
                 exit;
-        SendMailItemTemporaryFirstRegister(Recipients);
+        SendMailItemTemporaryRegister(Recipients);
         Rec."E-mail sent" := true;
         Rec."State Creation" := Rec."State Creation"::Requested;
         Rec.Modify();
+    end;
+
+    procedure SendMailItemTemporaryRegister(Recipients: Text)
+    var
+        SalesHeader2: Record "Sales Header";
+        Quotepdf: Report PedidoCliente;
+        SMTPMailSetup: Record "SMTP Mail Setup";
+        SMTPMail: Codeunit "SMTP Mail";
+        Subject: text;
+        Body: text;
+        SubjectLbl: Label 'Solicitud de Alta de Producto para revision- %1 (%2 - %3)';
+    begin
+        SMTPMailSetup.Get();
+        SMTPMailSetup.TestField("User ID");
+        Subject := StrSubstNo(SubjectLbl, Rec."No.", rec."Item No.", Rec.Description);
+        Body := EnvioEmailBody;
+        // enviamos el email 
+        SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
+        SMTPMail.Send();
     end;
 
     procedure NavigateItemsReview()
