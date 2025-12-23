@@ -114,7 +114,7 @@ table 17412 "ZM PL Setup Item registration"
     end;
 
 
-    procedure CheckMaxLengthItemNo(ItemNo: Code[20])
+    procedure CheckMaxLengthItemNo(ItemNo: code[20])
     begin
         if not Rec.Get() then
             exit;

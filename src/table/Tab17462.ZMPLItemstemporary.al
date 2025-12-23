@@ -24,6 +24,8 @@ table 17462 "ZM PL Items Temporary"
 
             trigger OnValidate()
             begin
+                if Rec."Request Type" in [Rec."Request Type"::New, Rec."Request Type"::Change] then
+                    SetupPreItemReg.CheckMaxLengthItemNo(Rec."Item No.");
                 OnValidate_ItemNo()
             end;
 
@@ -920,11 +922,15 @@ table 17462 "ZM PL Items Temporary"
             NoSeriesMgt.InitSeries(SetupPreItemReg."Temporary Nos.", xRec."Nos. series", 0D, Rec."No.", Rec."Nos. series");
         end;
         InitRecord();
+
+        // ItemsRegistration.LogInsertion(Rec);
     end;
 
     trigger OnModify()
     begin
         InitRecord();
+
+        ItemsRegistration.LogModification(Rec);
     end;
 
     trigger OnDelete()
@@ -966,6 +972,7 @@ table 17462 "ZM PL Items Temporary"
         NoSeriesMgt: Codeunit NoSeriesManagement;
         AutLoginMgt: Codeunit "AUT Login Mgt.";
         Funciones: Codeunit Funciones;
+        ItemsRegistration: Codeunit "ZM PL Items Regist. aprovals";
         Text027: Label 'must be greater than 0.', Comment = 'ESP="Debe ser mayor que 0"';
         lblConfirmNewCopy: Label '¿Do you want to create a new product with the data from %1 %2?', comment = 'ESP="¿Desea crear nuevo Producto con los datos de %1 %2?"';
         lblItemExist: Label 'El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3', comment = 'ESP="El producto %1 ya existe %2, no se puede indicar Tipo solicitud %3"';
@@ -1061,12 +1068,7 @@ table 17462 "ZM PL Items Temporary"
     end;
 
     local procedure OnValidate_ItemNo()
-    var
-        OldRequestNo: code[20];
     begin
-        if Rec."Request Type" in [Rec."Request Type"::New, Rec."Request Type"::Change] then
-            SetupPreItemReg.CheckMaxLengthItemNo(Rec."Item No.");
-        OldRequestNo := Rec."Item No.";
         case Rec."Request Type" of
             Rec."Request Type"::New:
                 Begin
@@ -1076,22 +1078,8 @@ table 17462 "ZM PL Items Temporary"
                 End;
             Rec."Request Type"::Blocked, Rec."Request Type"::Change, Rec."Request Type"::Delete, Rec."Request Type"::Unlocking:
                 begin
-                    // comprobamos si existe el producto y traemos los datos para su modificación                
-                    item.Reset();
-                    item.Get(Rec."Item No.");
-                    if Confirm(lblConfirmUpdateItem, false, Rec."Item No.", Item.Description) then begin
-                        Rec.TransferFields(Item);
-                        Rec."No." := OldRequestNo;
-                        Rec."ITBID Status" := Rec."ITBID Status"::Created;
-                        UpdateItemExtendedFields(Item);
-                    end;
-                    // comprobamos si el producto tiene lista de Producción orignal
-                    ProdBOMHeader.Reset();
-                    ProdBOMHeader.SetRange("No.", Rec."Production BOM No.");
-                    if ProdBOMHeader.FindFirst() then
-                        // if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
-                        UpdateProductionBom(Item."No.");
-                    UpdatePurchasePrice(Rec."No.");
+                    // comprobamos si existe el producto y traemos los datos para su modificación     
+                    UpdateItem();
                 end;
         end;
     end;
@@ -1119,6 +1107,14 @@ table 17462 "ZM PL Items Temporary"
         Rec.CalcFields(Reason);
         Clear(Rec.Reason);
         Rec.Blocked := false;
+        case Item.type of
+            Item.type::Inventory:
+                Rec.Type := Rec.Type::Inventory;
+            Item.type::"Non-Inventory":
+                Rec.Type := Rec.Type::"Non-Inventory";
+            Item.type::Service:
+                Rec.Type := Rec.Type::Service;
+        end;
         UpdateItemExtendedFields(Item);
         // comprobamos si el producto tiene lista de Producción orignal
         ProdBOMHeader.Reset();
@@ -1332,13 +1328,13 @@ table 17462 "ZM PL Items Temporary"
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
         Subject := StrSubstNo(SubjectLbl, Rec."No.", rec."Item No.", Rec.Description);
-        Body := EnvioEmailBody;
+        Body := EnvioEmailBody(Subject);
         // enviamos el email 
         SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
         SMTPMail.Send();
     end;
 
-    local procedure EnvioEmailBody() Body: Text
+    local procedure EnvioEmailBody(Subject: text) Body: Text
     var
         Companyinfo: Record "Company Information";
         Employee: Record Employee;
@@ -1352,7 +1348,8 @@ table 17462 "ZM PL Items Temporary"
         if Employee.Get(CodEmpleado) then;
         Body := '<p>&nbsp;</p>';
         Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
-        Body += '<h2 style="color: #2e6c80;">Solicitud de Alta de Producto No.: ' + Rec."No." + '</h2>';
+        Body += '<h2 style="color: #2e6c80;">' + Subject + '</h2>';
+        Body += '<h3 style="color: #2e6c80;">ROL: ' + UserId + '</h3>';
         Body += '<h3 style="color: #2e6c80;">Usuario: ' + StrSubstNo('%1 (%2)', Employee.FullName(), CodEmpleado) + '</h3>';
         Body += '<p><strong>' + Rec.FieldCaption("Item No.") + '</strong>: ' + Rec."Item No." + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Description) + '</strong>: ' + Rec.Description + '</p>';
@@ -1367,7 +1364,7 @@ table 17462 "ZM PL Items Temporary"
         Body += '<p><strong>' + Rec.FieldCaption("Posting Date") + '</strong>: ' + format(Rec."Posting Date") + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Activity) + '</strong>: ' + Rec.Activity + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Prototype) + '</strong>: ' + Rec.Prototype + '</p>';
-        if Item.Get(Rec."No.") then begin
+        if Item.Get(Rec."Item No.") then begin
             RefRecord.GetTable(Rec);
             xRefRecord.GetTable(Item);
             Body += CheckChangesRec(RefRecord, xRefRecord);
@@ -1382,10 +1379,6 @@ table 17462 "ZM PL Items Temporary"
         Count: Integer;
         I: Integer;
     begin
-        for i := 1 to 60000 do begin
-            if xRefRecord.FieldExist(i) then
-                FieldCount += 1;
-        end;
         for i := 1 to FieldCount do begin
             xRefField := xRefRecord.FieldIndex(i);
             if RefRecord.FieldExist(xRefField.Number) then begin
@@ -1461,12 +1454,12 @@ table 17462 "ZM PL Items Temporary"
         SMTPMail: Codeunit "SMTP Mail";
         Subject: text;
         Body: text;
-        SubjectLbl: Label 'Solicitud de Alta de Producto para revision- %1 (%2 - %3)';
+        SubjectLbl: Label 'Solicitud REVISION Alta de Producto para revision- %1 (%2 - %3)';
     begin
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
         Subject := StrSubstNo(SubjectLbl, Rec."No.", rec."Item No.", Rec.Description);
-        Body := EnvioEmailBody;
+        Body := EnvioEmailBody(Subject);
         // enviamos el email 
         SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
         SMTPMail.Send();
@@ -1647,10 +1640,33 @@ table 17462 "ZM PL Items Temporary"
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
         Subject := StrSubstNo(SubjectLbl, Rec."No.", Rec.Description);
-        Body := EnvioEmailBody;
+        Body := EnvioEmailBody(Subject);
         // enviamos el email 
         SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
         SMTPMail.Send();
+    end;
+
+    local procedure UpdateItem()
+    var
+        OldRequestNo: code[20];
+    begin
+        OldRequestNo := Rec."No.";
+        Item.Reset();
+        Item.Get(Rec."Item No.");
+        // if Confirm(lblConfirmUpdateItem, false, Rec."Item No.", Item.Description) then begin
+        Rec.TransferFields(Item);
+        Rec."No." := OldRequestNo;
+        Rec."Item No." := Item."No.";
+        Rec."ITBID Status" := Rec."ITBID Status"::Created;
+        UpdateItemExtendedFields(Item);
+
+        // comprobamos si el producto tiene lista de Producción orignal
+        ProdBOMHeader.Reset();
+        ProdBOMHeader.SetRange("No.", Rec."Production BOM No.");
+        if ProdBOMHeader.FindFirst() then
+            // if Confirm(lblConfirmBOM, false, Rec."No.", Rec.Description) then
+            UpdateProductionBom(Item."No.");
+        UpdatePurchasePrice(Rec."No.");
     end;
 
     procedure CreateItemTemporary()
@@ -1666,7 +1682,7 @@ table 17462 "ZM PL Items Temporary"
                 exit;
         end;
         // Vamos creando o actualizando los datos del producto
-        UpdateItem();
+        CreateUpdateItem();
 
         UpdateItemTranslation();
 
@@ -1674,7 +1690,7 @@ table 17462 "ZM PL Items Temporary"
 
     end;
 
-    local procedure UpdateItem()
+    local procedure CreateUpdateItem()
     var
         Item: Record Item;
         PostedItemstemporary: Record "Posted PL Items temporary";
@@ -1883,22 +1899,15 @@ table 17462 "ZM PL Items Temporary"
     begin
         Item.Reset();
         case Rec."Request Type" of
-            Rec."Request Type"::Blocked, Rec."Request Type"::Change, Rec."Request Type"::Delete:
-                begin
-                    // buscamos el producto que es y lo actualizamos
-                    if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
-                        exit;
-                    Rec.Validate("Item No.", Item."No.");
-
-                end;
+            Rec."Request Type"::Blocked, Rec."Request Type"::Change:
+                Item.SetRange(Blocked, false);
             Rec."Request Type"::Unlocking:
-                begin
-                    Item.SetRange(Blocked, true);
-                    if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
-                        exit;
-                    Rec.Validate("Item No.", Item."No.");
-                end;
+                Item.SetRange(Blocked, true);
         end;
+        if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
+            exit;
+        Rec.Validate("Item No.", Item."No.");
+
     end;
 
     procedure UpdateItemExtendedFields(Item: Record Item)
@@ -1914,6 +1923,7 @@ table 17462 "ZM PL Items Temporary"
             Rec.Alto := ItemUnitofMeasure.Height;
         end;
     end;
+
 
 
 }

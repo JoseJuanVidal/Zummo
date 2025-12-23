@@ -11029,7 +11029,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method SendMailItemTemporaryFirstRegister - NamedType SubjectLbl</note>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Method 3966164454 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Solicitud de Alta de Producto para revision- %1 (%2 - %3)</source>
+          <source>Solicitud REVISION Alta de Producto para revision- %1 (%2 - %3)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method SendMailItemTemporaryRegister - NamedType SubjectLbl</note>
         </trans-unit>
@@ -20468,6 +20468,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la solicitud de Alta del producto %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - NamedType lblRelease</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Method 3343818720 - NamedType 2700377285" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El %1 no puede ser %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El %1 no puede ser %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Method OnAction_UpdateItem - NamedType lblErrorRequestType</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Method 2194160043 - NamedType 1349650003" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea Asignar un nuevo codigo EAN13 a %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Asignar un nuevo codigo EAN13 a %1 %2?"</note>
@@ -20623,6 +20628,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Abrir"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Open - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 677328574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Procesar Producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Procesar Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action ProcessRequest - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Action 3096908298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Solicitud Alta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solicitud Alta/Actualización"</note>
@@ -20634,8 +20644,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action SolicitudDepartamento - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 1205567400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Crear/Actualizar Producto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Crear/Actualizar Producto"</note>
+          <source>Seleccionar producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action UpdateItem - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3858912784 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
@@ -32123,6 +32133,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Detalle Plasticos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control detail - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 4000935069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Purchase Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Categorías de Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control PurchaseCategory - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1394728878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
@@ -32172,11 +32187,6 @@
           <source>Stock por Almacén</source>
           <note from="Developer" annotates="general" priority="2">ESP="Stock por Almacén"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control StockPerAlmacen - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Control 4000935069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Purchase Category</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Categorías de Compra"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control PurchaseCategory - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1158365185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Bajo pedido/Contra stock</source>
@@ -34668,11 +34678,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Area Manager"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field Canal_btc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1512487356 - Field 2091946700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
-          <source>CR Memo Ship-to Name</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Factura Nommbre Dir. Envío"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field CR Memo Ship-to Name - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 3538960907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
           <source>Crédito Maximo Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crédito Maximo Aseguradora"</note>
@@ -34692,6 +34697,16 @@
           <source>Fecha Vto. Aseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto. Aseguradora"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field FechaVtoAsegurador - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1512487356 - Field 2682263469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source>Invoice Ship-to Address</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura Dirección Envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field Invoice Ship-to Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1512487356 - Field 2913503446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source>Invoice Ship-to City</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura Población Envío"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustLedgerEntry - Field Invoice Ship-to City - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1512487356 - Field 2878382182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
           <source>Invoice Ship-to Name</source>
@@ -35402,6 +35417,11 @@
           <source>PLASTICS PVC OTHER</source>
           <note from="Developer" annotates="general" priority="2">ESP="PLASTICOS PVC Resto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field PLASTICS PVC OTHER - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 730569223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Price Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Precio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Price Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1339870956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>ProveedorBloqueado</source>
@@ -40372,6 +40392,16 @@
           <source>Pending</source>
           <note from="Developer" annotates="general" priority="2">ESP="Pendiente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Item Temporary User Status - EnumValue Pending - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 730569223 - EnumValue 329124594 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Machines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Maquinas &amp; CO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Price Type - EnumValue Machines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 730569223 - EnumValue 1001425163 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Spare parts</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Repuestos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Price Type - EnumValue Spare parts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 115707917 - EnumValue 227370865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approval</source>

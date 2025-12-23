@@ -324,6 +324,11 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'CMMF Type', comment = 'ESP="CMMF Type"';
         }
+        field(50090; "Price Type"; Enum "Price Type")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Price Type', comment = 'ESP="Tipo Precio"';
+        }
         field(50100; "STHQuantityWhse"; Decimal)
         {
             Caption = 'Quantity Warehouse', comment = 'ESP="Cantidad Almacén"';

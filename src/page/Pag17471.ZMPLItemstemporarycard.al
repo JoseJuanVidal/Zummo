@@ -723,10 +723,10 @@ page 17471 "ZM PL Items temporary card"
                     OnAction_CheckItemRequest();
                 end;
             }
-            action(UpdateItem)
+            action(ProcessRequest)
             {
                 ApplicationArea = All;
-                Caption = 'Crear/Actualizar Producto', comment = 'ESP="Crear/Actualizar Producto"';
+                Caption = 'Procesar Producto', comment = 'ESP="Procesar Producto"';
                 Image = CreateSKU;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -735,6 +735,19 @@ page 17471 "ZM PL Items temporary card"
                 trigger OnAction()
                 begin
                     OnAction_CreateItemRequest();
+                end;
+            }
+            action(UpdateItem)
+            {
+                ApplicationArea = All;
+                Caption = 'Seleccionar producto', comment = 'ESP="Seleccionar producto"';
+                Image = CreateWorkflow;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    OnAction_UpdateItem();
                 end;
             }
             // action(UpdateITBID)
@@ -1498,6 +1511,17 @@ page 17471 "ZM PL Items temporary card"
         myInt: Integer;
     begin
         Rec.CreateItemTemporary();
+    end;
+
+    local procedure OnAction_UpdateItem()
+    var
+        lblErrorRequestType: Label 'El %1 no puede ser %2', comment = 'ESP="El %1 no puede ser %2"';
+    begin
+        Rec.TestField("State Creation", Rec."State Creation"::" ");
+        if Rec."Request Type" in [Rec."Request Type"::" ", Rec."Request Type"::New] then
+            Error(lblErrorRequestType, Rec.FieldCaption("Request Type"), Rec."Request Type");
+        Rec.ValidateRequestType();
+        CurrPage.Update();
     end;
 
     local procedure OnAction_UploadExcel()

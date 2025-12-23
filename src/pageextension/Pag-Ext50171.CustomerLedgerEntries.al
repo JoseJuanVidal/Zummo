@@ -41,7 +41,12 @@ pageextension 50171 "CustomerLedgerEntries" extends "Customer Ledger Entries"
                 ApplicationArea = all;
                 Visible = false;
             }
-            field("CR Memo Ship-to Name"; "CR Memo Ship-to Name")
+            field("Invoice Ship-to Address"; "Invoice Ship-to Address")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Invoice Ship-to City"; "Invoice Ship-to City")
             {
                 ApplicationArea = all;
                 Visible = false;

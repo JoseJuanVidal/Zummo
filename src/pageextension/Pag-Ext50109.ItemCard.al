@@ -44,6 +44,13 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 }
             }
         }
+        addafter("Sales Blocked")
+        {
+            field("Price Type"; "Price Type")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter("Qty. on Sales Order")
         {
             field(QtyonQuotesOrder; QtyonQuotesOrder) { }

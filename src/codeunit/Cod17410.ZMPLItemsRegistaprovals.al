@@ -484,8 +484,190 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                 end;
             Rec.FieldNo(Rec.Description):
                 begin
-                    SetupPreItemReg.CheckMaxLengthItemNo(Rec.Description);
+                    SetupPreItemReg.CheckMaxLengthItemDescription(Rec.Description);
                 end;
         end;
+    end;
+
+
+    // =============     cambios de valores en los campos          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+
+
+    procedure LogInsertion(var ItemTemporary: Record "ZM PL Items Temporary")
+    var
+        RecRef: RecordRef;
+        FldRef: FieldRef;
+        i: Integer;
+    begin
+        if not (ItemTemporary."Request Type" in [ItemTemporary."Request Type"::Change]) then
+            exit;
+        RecRef.GetTable(ItemTemporary);
+        IF RecRef.ISTEMPORARY THEN
+            EXIT;
+
+        FOR i := 1 TO RecRef.FIELDCOUNT DO BEGIN
+            FldRef := RecRef.FIELDINDEX(i);
+            IF HasValue(FldRef) THEN
+                IF IsNormalField(FldRef) THEN
+                    IF ItemTemporary_IsLogActive(RecRef.NUMBER, FldRef.NUMBER) THEN
+                        InsertLogEntry(FldRef, FldRef, RecRef, true);
+        END;
+    end;
+
+    procedure LogModification(var ItemTemporary: Record "ZM PL Items Temporary")
+    var
+        RecRef: RecordRef;
+        xRecRef: RecordRef;
+        FldRef: FieldRef;
+        xFldRef: FieldRef;
+        i: Integer;
+    begin
+        if not (ItemTemporary."Request Type" in [ItemTemporary."Request Type"::Change]) then
+            exit;
+        RecRef.GetTable(ItemTemporary);
+        IF RecRef.ISTEMPORARY THEN
+            EXIT;
+        xRecRef.OPEN(RecRef.NUMBER);
+        xRecRef."SECURITYFILTERING" := SECURITYFILTER::Filtered;
+        IF xRecRef.READPERMISSION THEN BEGIN
+            IF NOT xRecRef.GET(RecRef.RECORDID) THEN
+                EXIT;
+        END;
+
+        FOR i := 1 TO RecRef.FIELDCOUNT DO BEGIN
+            FldRef := RecRef.FIELDINDEX(i);
+            xFldRef := xRecRef.FIELDINDEX(i);
+            IF HasValue(FldRef) and HasValue(xFldRef) THEN
+                IF IsNormalField(FldRef) THEN
+                    IF ItemTemporary_IsLogActive(RecRef.NUMBER, FldRef.NUMBER) THEN
+                        InsertLogEntry(FldRef, xFldRef, RecRef, false);
+        END;
+    end;
+
+    local procedure IsNormalField(FieldRef: FieldRef): Boolean
+    begin
+        EXIT(FORMAT(FieldRef.CLASS) = 'Normal')
+    end;
+
+    local procedure HasValue(FldRef: FieldRef): Boolean
+    var
+        Field: Record Field;
+        HasValue: Boolean;
+        Int: Integer;
+        Dec: Decimal;
+        D: Date;
+        T: Time;
+    begin
+        EVALUATE(Field.Type, FORMAT(FldRef.TYPE));
+
+        CASE Field.Type OF
+            Field.Type::Boolean:
+                HasValue := FldRef.VALUE;
+            Field.Type::Option:
+                HasValue := TRUE;
+            Field.Type::Integer:
+                BEGIN
+                    Int := FldRef.VALUE;
+                    HasValue := Int <> 0;
+                END;
+            Field.Type::Decimal:
+                BEGIN
+                    Dec := FldRef.VALUE;
+                    HasValue := Dec <> 0;
+                END;
+            Field.Type::Date:
+                BEGIN
+                    D := FldRef.VALUE;
+                    HasValue := D <> 0D;
+                END;
+            Field.Type::Time:
+                BEGIN
+                    T := FldRef.VALUE;
+                    HasValue := T <> 0T;
+                END;
+            Field.Type::BLOB:
+                HasValue := FALSE;
+            ELSE
+                HasValue := FORMAT(FldRef.VALUE) <> '';
+        END;
+
+        EXIT(HasValue);
+    end;
+
+    local procedure ItemTemporary_IsLogActive(TableNumber: Integer; FieldNumber: Integer): Boolean
+    var
+        myInt: Integer;
+    begin
+        case TableNumber of
+            database::"ZM PL Items Temporary":
+                begin
+                    exit(true);
+                end;
+
+        end;
+    end;
+
+    local procedure InsertLogEntry(VAR FldRef: FieldRef; VAR xFldRef: FieldRef; VAR RecRef: RecordRef; New: Boolean)
+    //'Insertion,Modification,Deletion'
+    var
+        ChangeLogEntry: Record "Change Log Entry";
+        KeyFldRef: FieldRef;
+        KeyRef1: KeyRef;
+        i: Integer;
+    begin
+        IF RecRef.CURRENTCOMPANY <> ChangeLogEntry.CURRENTCOMPANY THEN
+            ChangeLogEntry.CHANGECOMPANY(RecRef.CURRENTCOMPANY);
+        ChangeLogEntry.INIT;
+        ChangeLogEntry."Date and Time" := CURRENTDATETIME;
+        ChangeLogEntry.Time := DT2TIME(ChangeLogEntry."Date and Time");
+
+        ChangeLogEntry."User ID" := USERID;
+        ChangeLogEntry."Table No." := RecRef.NUMBER;
+        ChangeLogEntry."Field No." := FldRef.NUMBER;
+        case New of
+            true:
+                begin
+                    ChangeLogEntry."Type of Change" := ChangeLogEntry."Type of Change"::Insertion;
+                    ChangeLogEntry."Old Value" := '';
+                end;
+            else begin
+                ChangeLogEntry."Type of Change" := ChangeLogEntry."Type of Change"::Modification;
+                ChangeLogEntry."Old Value" := FORMAT(xFldRef.VALUE, 0, 9);
+            end;
+        END;
+        ChangeLogEntry."New Value" := FORMAT(FldRef.VALUE, 0, 9);
+        ChangeLogEntry."Record ID" := RecRef.RECORDID;
+        ChangeLogEntry."Primary Key" := COPYSTR(RecRef.GETPOSITION(FALSE), 1, MAXSTRLEN(ChangeLogEntry."Primary Key"));
+
+        KeyRef1 := RecRef.KEYINDEX(1);
+        FOR i := 1 TO KeyRef1.FIELDCOUNT DO BEGIN
+            KeyFldRef := KeyRef1.FIELDINDEX(i);
+
+            CASE i OF
+                1:
+                    BEGIN
+                        ChangeLogEntry."Primary Key Field 1 No." := KeyFldRef.NUMBER;
+                        ChangeLogEntry."Primary Key Field 1 Value" :=
+                          COPYSTR(FORMAT(KeyFldRef.VALUE, 0, 9), 1, MAXSTRLEN(ChangeLogEntry."Primary Key Field 1 Value"));
+                    END;
+                2:
+                    BEGIN
+                        ChangeLogEntry."Primary Key Field 2 No." := KeyFldRef.NUMBER;
+                        ChangeLogEntry."Primary Key Field 2 Value" :=
+                          COPYSTR(FORMAT(KeyFldRef.VALUE, 0, 9), 1, MAXSTRLEN(ChangeLogEntry."Primary Key Field 2 Value"));
+                    END;
+                3:
+                    BEGIN
+                        ChangeLogEntry."Primary Key Field 3 No." := KeyFldRef.NUMBER;
+                        ChangeLogEntry."Primary Key Field 3 Value" :=
+                          COPYSTR(FORMAT(KeyFldRef.VALUE, 0, 9), 1, MAXSTRLEN(ChangeLogEntry."Primary Key Field 3 Value"));
+                    END;
+            END;
+        END;
+        ChangeLogEntry.INSERT;
     end;
 }

@@ -81,11 +81,25 @@ tableextension 50167 "CustLedgerEntry" extends "Cust. Ledger Entry" //21
             CalcFormula = lookup("Sales Invoice Header"."Ship-to Name" where("No." = field("Document No.")));
             Editable = false;
         }
-        field(50061; "CR Memo Ship-to Name"; text[100])
+        // field(50061; "CR Memo Ship-to Name"; text[100])
+        // {
+        //     Caption = 'CR Memo Ship-to Name', comment = 'ESP="Abono Nommbre Dir. Envío"';
+        //     FieldClass = FlowField;
+        //     CalcFormula = lookup("Sales Cr.Memo Header"."Ship-to Name" where("No." = field("Document No.")));
+        //     Editable = false;
+        // }
+        field(50062; "Invoice Ship-to Address"; text[100])
         {
-            Caption = 'CR Memo Ship-to Name', comment = 'ESP="Factura Nommbre Dir. Envío"';
+            Caption = 'Invoice Ship-to Address', comment = 'ESP="Factura Dirección Envío"';
             FieldClass = FlowField;
-            CalcFormula = lookup("Sales Cr.Memo Header"."Ship-to Name" where("No." = field("Document No.")));
+            CalcFormula = lookup("Sales Invoice Header"."Ship-to Address" where("No." = field("Document No.")));
+            Editable = false;
+        }
+        field(50063; "Invoice Ship-to City"; text[100])
+        {
+            Caption = 'Invoice Ship-to City', comment = 'ESP="Factura Población Envío"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Invoice Header"."Ship-to City" where("No." = field("Document No.")));
             Editable = false;
         }
     }
