@@ -492,7 +492,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
 
     // =============     cambios de valores en los campos          ====================
     // ==  
-    // ==  comment 
+    // ==   
     // ==  
     // ======================================================================================================
 
@@ -518,13 +518,15 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         END;
     end;
 
-    procedure LogModification(var ItemTemporary: Record "ZM PL Items Temporary")
+    procedure LogModification(var ItemTemporary: Record "ZM PL Items Temporary"; fieldNumber: integer)
     var
         RecRef: RecordRef;
         xRecRef: RecordRef;
         FldRef: FieldRef;
         xFldRef: FieldRef;
         i: Integer;
+        Number: Integer;
+
     begin
         if not (ItemTemporary."Request Type" in [ItemTemporary."Request Type"::Change]) then
             exit;
@@ -533,19 +535,22 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
             EXIT;
         xRecRef.OPEN(RecRef.NUMBER);
         xRecRef."SECURITYFILTERING" := SECURITYFILTER::Filtered;
-        IF xRecRef.READPERMISSION THEN BEGIN
-            IF NOT xRecRef.GET(RecRef.RECORDID) THEN
-                EXIT;
-        END;
-
-        FOR i := 1 TO RecRef.FIELDCOUNT DO BEGIN
-            FldRef := RecRef.FIELDINDEX(i);
-            xFldRef := xRecRef.FIELDINDEX(i);
-            IF HasValue(FldRef) and HasValue(xFldRef) THEN
-                IF IsNormalField(FldRef) THEN
+        IF xRecRef.READPERMISSION THEN
+            IF NOT xRecRef.GET(RecRef.RECORDID) THEN;
+        number := RecRef.FieldCount;
+        //        FOR i := 1 TO RecRef.FIELDCOUNT DO BEGIN
+        // FldRef := RecRef.FIELDINDEX(i);
+        // xFldRef := xRecRef.FIELDINDEX(i);
+        FldRef := RecRef.FIELD(fieldNumber);
+        xFldRef := xRecRef.FIELD(fieldNumber);
+        if HasValue(FldRef) or HasValue(xFldRef) then begin
+            IF IsNormalField(FldRef) THEN
+                if FldRef.Value <> xFldRef.Value then
                     IF ItemTemporary_IsLogActive(RecRef.NUMBER, FldRef.NUMBER) THEN
                         InsertLogEntry(FldRef, xFldRef, RecRef, false);
-        END;
+        end;
+        //      END;
+
     end;
 
     local procedure IsNormalField(FieldRef: FieldRef): Boolean
@@ -621,24 +626,34 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
     begin
         IF RecRef.CURRENTCOMPANY <> ChangeLogEntry.CURRENTCOMPANY THEN
             ChangeLogEntry.CHANGECOMPANY(RecRef.CURRENTCOMPANY);
-        ChangeLogEntry.INIT;
-        ChangeLogEntry."Date and Time" := CURRENTDATETIME;
-        ChangeLogEntry.Time := DT2TIME(ChangeLogEntry."Date and Time");
+        // primero comprobamos si ya existe y modificamos valores
+        // User if , recref 
+        ChangeLogEntry.SetRange("Record ID", RecRef.RecordId);
+        ChangeLogEntry.SetRange("User ID", UserId);
+        ChangeLogEntry.SetRange("Table No.", RecRef.Number);
+        ChangeLogEntry.SetRange("Field No.", FldRef.Number);
+        if not ChangeLogEntry.FindFirst() then begin
+            ChangeLogEntry.Reset();
+            ChangeLogEntry.INIT;
+            ChangeLogEntry."Date and Time" := CURRENTDATETIME;
+            ChangeLogEntry.Time := DT2TIME(ChangeLogEntry."Date and Time");
 
-        ChangeLogEntry."User ID" := USERID;
-        ChangeLogEntry."Table No." := RecRef.NUMBER;
-        ChangeLogEntry."Field No." := FldRef.NUMBER;
-        case New of
-            true:
-                begin
-                    ChangeLogEntry."Type of Change" := ChangeLogEntry."Type of Change"::Insertion;
-                    ChangeLogEntry."Old Value" := '';
+            ChangeLogEntry."User ID" := USERID;
+            ChangeLogEntry."Table No." := RecRef.NUMBER;
+            ChangeLogEntry."Field No." := FldRef.NUMBER;
+            case New of
+                true:
+                    begin
+                        ChangeLogEntry."Type of Change" := ChangeLogEntry."Type of Change"::Insertion;
+                        ChangeLogEntry."Old Value" := '';
+                    end;
+                else begin
+                    ChangeLogEntry."Type of Change" := ChangeLogEntry."Type of Change"::Modification;
+                    ChangeLogEntry."Old Value" := FORMAT(xFldRef.VALUE, 0, 9);
                 end;
-            else begin
-                ChangeLogEntry."Type of Change" := ChangeLogEntry."Type of Change"::Modification;
-                ChangeLogEntry."Old Value" := FORMAT(xFldRef.VALUE, 0, 9);
-            end;
-        END;
+            END;
+            ChangeLogEntry.Insert();
+        end;
         ChangeLogEntry."New Value" := FORMAT(FldRef.VALUE, 0, 9);
         ChangeLogEntry."Record ID" := RecRef.RECORDID;
         ChangeLogEntry."Primary Key" := COPYSTR(RecRef.GETPOSITION(FALSE), 1, MAXSTRLEN(ChangeLogEntry."Primary Key"));
@@ -668,6 +683,6 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                     END;
             END;
         END;
-        ChangeLogEntry.INSERT;
+        ChangeLogEntry.Modify();
     end;
 }

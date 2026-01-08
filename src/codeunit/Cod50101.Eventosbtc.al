@@ -1329,6 +1329,16 @@ codeunit 50101 "Eventos_btc"
         end;
     end;
 
+    //Natalia - control de que se indique el Motivo de Confirmacion de Oferta
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnBeforeOnRun', '', true, true)]
+    local procedure SalesQuotetoOrder_OnBeforeOnRun(VAR SalesHeader: Record "Sales Header")
+    begin
+        if SalesHeader."Document Type" in [SalesHeader."Document Type"::Quote] then begin
+            SalesHeader.TestField(FechaConfirmacion);
+            SalesHeader.TestField("Motivo Confirmación");
+        end;
+    end;
+
     //#region Intercompany 
     //ACV - 16/02/22 - Evento para actualizar pedido de compra IC (Zummo INC) al crear PV desde OV
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnAfterOnRun', '', true, true)]

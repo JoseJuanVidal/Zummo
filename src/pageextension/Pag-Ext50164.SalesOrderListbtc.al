@@ -50,6 +50,16 @@ pageextension 50164 "SalesOrderList_btc" extends "Sales Order List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field(FechaConfirmacion; FechaConfirmacion)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Motivo Confirmación"; "Motivo Confirmación")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
         addafter("Posting Date")
         {

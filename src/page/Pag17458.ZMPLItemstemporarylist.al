@@ -134,24 +134,24 @@ page 17458 "ZM PL Items temporary list"
     {
         area(Processing)
         {
-            action(ConfAltaProd)
-            {
-                ApplicationArea = all;
-                Caption = 'Conf. Alta Productos', comment = 'ESP="Conf. Alta Productos"';
-                Image = Setup;
-                Promoted = true;
-                PromotedCategory = Process;
-                RunObject = page "ZM PL Setup Item registration";
-            }
-            action(ConfAprobAltaProd)
-            {
-                ApplicationArea = all;
-                Caption = 'Conf. Departamentos Alta Productos', comment = 'ESP="Conf. Departamentos Alta Productos"';
-                Image = Setup;
-                Promoted = true;
-                PromotedCategory = Process;
-                RunObject = page "ZM PL Item Setup approvals";
-            }
+            // action(ConfAltaProd)
+            // {
+            //     ApplicationArea = all;
+            //     Caption = 'Conf. Alta Productos', comment = 'ESP="Conf. Alta Productos"';
+            //     Image = Setup;
+            //     Promoted = true;
+            //     PromotedCategory = Process;
+            //     RunObject = page "ZM PL Setup Item registration";
+            // }
+            // action(ConfAprobAltaProd)
+            // {
+            //     ApplicationArea = all;
+            //     Caption = 'Conf. Departamentos Alta Productos', comment = 'ESP="Conf. Departamentos Alta Productos"';
+            //     Image = Setup;
+            //     Promoted = true;
+            //     PromotedCategory = Process;
+            //     RunObject = page "ZM PL Item Setup approvals";
+            // }
             action(SolicitudAlta)
             {
                 ApplicationArea = All;
@@ -307,7 +307,23 @@ page 17458 "ZM PL Items temporary list"
                 RunObject = page "Item Approval Departments";
                 RunPageLink = "GUID Creation" = field("GUID Creation");
             }
+        }
+        area(Reporting)
+        {
+            action(Print)
+            {
+                ApplicationArea = all;
+                Caption = 'Print', comment = 'ESP="Print"';
+                Image = Print;
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
 
+                trigger OnAction()
+                begin
+                    Rec.RunReport();
+                end;
+            }
         }
     }
 

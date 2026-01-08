@@ -865,6 +865,23 @@ page 17471 "ZM PL Items temporary card"
                 RunObject = page "Posted PL Items temporary list";
             }
         }
+        area(Reporting)
+        {
+            action(Print)
+            {
+                ApplicationArea = all;
+                Caption = 'Print', comment = 'ESP="Print"';
+                Image = Print;
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    Rec.RunReport();
+                end;
+            }
+        }
     }
 
     trigger OnAfterGetCurrRecord()

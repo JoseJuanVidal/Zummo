@@ -22677,6 +22677,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action UpdateItem - Property Caption</note>
           <target>Seleccionar producto</target>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Print"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Print - Property Caption</note>
+          <target>Print</target>
+        </trans-unit>
         <trans-unit id="Page 3858912784 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Navigate,Setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
@@ -22779,11 +22785,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action UploadExcel - Property Caption</note>
           <target>Cargar Excel</target>
         </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Print"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action Print - Property Caption</note>
+          <target>Print</target>
+        </trans-unit>
         <trans-unit id="Page 988243340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General Setup Item registration</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Conf. General Alta productos"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. Solicitud Alta productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Property Caption</note>
-          <target>Conf. General Alta productos</target>
+          <target>Conf. Solicitud Alta productos</target>
         </trans-unit>
         <trans-unit id="Page 988243340 - NamedType 4120650972" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to execute the emailing process?</source>
@@ -22802,6 +22814,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Serie numérica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Control SerieNos - Property Caption</note>
           <target>Serie numérica</target>
+        </trans-unit>
+        <trans-unit id="Page 988243340 - Action 401669501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conf. Departamentos Alta Productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Action ConfAprobAltaProd - Property Caption</note>
+          <target>Conf. Departamentos Alta Productos</target>
         </trans-unit>
         <trans-unit id="Page 988243340 - Action 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send Email</source>
@@ -30877,6 +30895,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Volumen(m3)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FacturaRegBrasil - Control volumen - Property Caption</note>
           <target>Volumen(m3)</target>
+        </trans-unit>
+        <trans-unit id="Report 2484413937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Items Request</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitud Alta productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Items Request - Property Caption</note>
+          <target>Solicitud Alta productos</target>
         </trans-unit>
         <trans-unit id="Report 1289209491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Launch sending due emails (process)</source>

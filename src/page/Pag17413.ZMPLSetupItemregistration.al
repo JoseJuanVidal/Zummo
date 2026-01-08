@@ -1,8 +1,9 @@
 page 17413 "ZM PL Setup Item registration"
 {
-    Caption = 'General Setup Item registration', comment = 'ESP="Conf. General Alta productos"';
+    Caption = 'General Setup Item registration', comment = 'ESP="Conf. Solicitud Alta productos"';
     PageType = Card;
-    UsageCategory = None;
+    ApplicationArea = all;
+    UsageCategory = Administration;
     SourceTable = "ZM PL Setup Item registration";
     InsertAllowed = false;
     DeleteAllowed = false;
@@ -81,6 +82,15 @@ page 17413 "ZM PL Setup Item registration"
                         Rec.ProcessSendNoticeEmailPendingdata();
                 end;
 
+            }
+            action(ConfAprobAltaProd)
+            {
+                ApplicationArea = all;
+                Caption = 'Conf. Departamentos Alta Productos', comment = 'ESP="Conf. Departamentos Alta Productos"';
+                Image = Setup;
+                Promoted = true;
+                PromotedCategory = Process;
+                RunObject = page "ZM PL Item Setup approvals";
             }
         }
     }

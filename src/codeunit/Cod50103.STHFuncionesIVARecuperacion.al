@@ -596,7 +596,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
 
     // =============     SCRAP Exportar DETALLE de FACTURAS          ====================
     // ==  
-    // ==  comment 
+    // ==  funcion que calcula y devuelve  
     // ==  
     // ======================================================================================================
     procedure GetTotalSalesInvoice(SalesInvHeader: Record "Sales Invoice Header") Total: Decimal
@@ -616,40 +616,38 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
 
     local procedure GetTotalSalesInvoiceLine(SalesInvLine: Record "Sales Invoice Line"): Decimal
     var
-        Item: Record Item;
+        SCRAPItemEnvase: record "SCRAP Item - Tipo de Envase";
+        SCRAPSubMaterialEnvase: Record "SCRAP SubMaterial Tipo Envases";
+        Importe: Decimal;
     begin
-        if Item.Get(SalesInvLine."No.") then
-            exit(SalesInvLine.Quantity * Item.GetTaxesSteel() +
-                            SalesInvLine.Quantity * Item.GetTaxesAluminium() + SalesInvLine.Quantity * Item.GetTaxesCarton() +
-                            SalesInvLine.Quantity * Item.GetTaxesWood() + SalesInvLine.Quantity * Item.GetTaxesPaperCartoon() +
-                            SalesInvLine.Quantity * Item.GetTaxesPLASTICSEPSFlexible() +
-                            SalesInvLine.Quantity * Item.GetTaxesPLASTICSOTHERS() + SalesInvLine.Quantity * Item.GetTaxesPLASTICSPETFLEXIBLE() +
-                            SalesInvLine.Quantity * Item.GetTaxesPLASTICSPETOTHER() + SalesInvLine.Quantity * Item.GetTaxesPLASTICSPPFLEXIBLE() +
-                            SalesInvLine.Quantity * Item.GetTaxesPLASTICSPVCFLEXIBLE() + SalesInvLine.Quantity * Item.GetTaxesPLASTICSPVCOTHER());
+        SCRAPItemEnvase.SetRange("Item No.", SalesInvLine."No.");
+        if SCRAPItemEnvase.FindFirst() then
+            repeat
+                SCRAPSubMaterialEnvase.SetRange(SUBMATERIAL, SCRAPItemEnvase.SUBMATERIAL);
+                SCRAPSubMaterialEnvase.SetRange("Tipo de Envase", SCRAPItemEnvase."Tipo de Envase");
+                if SCRAPSubMaterialEnvase.FindSet() then
+                    Importe += SCRAPItemEnvase.Peso * SCRAPSubMaterialEnvase.Tarifa;
+            Until SCRAPItemEnvase.next() = 0;
+        exit(Importe * SalesInvLine.Quantity);
+        // exit(SalesInvLine.Quantity * Item.GetTaxesSteel() +
+        //                 SalesInvLine.Quantity * Item.GetTaxesAluminium() + SalesInvLine.Quantity * Item.GetTaxesCarton() +
+        //                 SalesInvLine.Quantity * Item.GetTaxesWood() + SalesInvLine.Quantity * Item.GetTaxesPaperCartoon() +
+        //                 SalesInvLine.Quantity * Item.GetTaxesPLASTICSEPSFlexible() +
+        //                 SalesInvLine.Quantity * Item.GetTaxesPLASTICSOTHERS() + SalesInvLine.Quantity * Item.GetTaxesPLASTICSPETFLEXIBLE() +
+        //                 SalesInvLine.Quantity * Item.GetTaxesPLASTICSPETOTHER() + SalesInvLine.Quantity * Item.GetTaxesPLASTICSPPFLEXIBLE() +
+        //                 SalesInvLine.Quantity * Item.GetTaxesPLASTICSPVCFLEXIBLE() + SalesInvLine.Quantity * Item.GetTaxesPLASTICSPVCOTHER());
     end;
 
     procedure ExportExcelSalesInvoices(var SalesInvHeader: Record "Sales Invoice Header")
     var
-        SalesSetup: Record "Sales & Receivables Setup";
-        Item: Record Item;
         SalesInvLine: Record "Sales Invoice Line";
+        SCRAPItemEnvase: record "SCRAP Item - Tipo de Envase";
+        SCRAPSubMaterialEnvase: Record "SCRAP SubMaterial Tipo Envases";
         Window: Dialog;
     begin
-        SalesSetup.Get();
-        SalesSetup.TestField("Taxes Steel");
-        SalesSetup.TestField("Taxes Aluminium");
-        SalesSetup.TestField("Taxes Carton");
-        SalesSetup.TestField("Taxes Wood");
-        SalesSetup.TestField("Taxes PLASTICS EPS Flexible");
-        SalesSetup.TestField("Taxes PLASTICS OTHERS");
-        SalesSetup.TestField("Taxes PLASTICS PET FLEXIBLE");
-        SalesSetup.TestField("Taxes PLASTICS PET OTHER");
-        SalesSetup.TestField("Taxes PLASTICS PP FLEXIBLE");
-        SalesSetup.TestField("Taxes PLASTICS PVC FLEXIBLE");
-        SalesSetup.TestField("Taxes PLASTICS PVC OTHER");
         Window.Open('#1##################\#2########################');
         ExcelBuffer.DELETEALL;
-        ExcelBuffer.CreateNewBook('Facturas de VENTA');
+        ExcelBuffer.CreateNewBook('Factura de VENTA');
 
         ExcelBuffer.AddColumn('Datos Pesos y Tasas Facturas de VENTA', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.NewRow;
@@ -663,24 +661,16 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
         ExcelBuffer.AddColumn(SalesInvHeader.FieldCaption("Posting Date"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(SalesInvHeader.FieldCaption("Sell-to Customer No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(SalesInvHeader.FieldCaption("Sell-to Customer Name"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-
         ExcelBuffer.AddColumn(SalesInvLine.FieldCaption("No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(SalesInvLine.FieldCaption(Description), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn(SalesInvLine.FieldCaption(Quantity), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption(Steel), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption(Aluminium), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption(Carton), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("PAPER & CARTON (With plastic)"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption(Wood), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS EPS Flexible"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS OTHERS"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS PET FLEXIBLE"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS PET OTHER"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS PP FLEXIBLE"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS PVC FLEXIBLE"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(Item.FieldCaption("PLASTICS PVC OTHER"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-        ExcelBuffer.AddColumn(SalesInvHeader.FieldCaption(Amount), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-
+        ExcelBuffer.AddColumn(SCRAPItemEnvase.FieldCaption("Tipo de Envase"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SCRAPItemEnvase.FieldCaption(SUBMATERIAL), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SCRAPSubMaterialEnvase.FieldCaption("Tipo Mercado"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SCRAPSubMaterialEnvase.FieldCaption(Rigidez), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(SCRAPSubMaterialEnvase.FieldCaption(Tarifa), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Peso Producto', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn('Total', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.NewRow;
 
         IF SalesInvHeader.FINDFIRST THEN
@@ -691,39 +681,39 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
                 SalesInvLine.SetRange(Type, SalesInvLine.Type::Item);
                 IF SalesInvLine.FINDFIRST THEN
                     REPEAT
-                        Window.UPDATE(2, Item."No.");
-                        if item.Get(SalesInvLine."No.") and ((Item.Wood <> 0) or (Item.Steel <> 0) or (Item.Carton <> 0)) then begin
-                            ExcelBuffer.AddColumn(SalesInvHeader."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvHeader."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvHeader."Sell-to Customer No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvHeader."Sell-to Customer Name", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                        Window.UPDATE(2, SalesInvLine."No.");
+                        if SalesInvLine.Quantity <> 0 then begin
+                            SCRAPItemEnvase.SetRange("Item No.", SalesInvLine."No.");
+                            if SCRAPItemEnvase.FindFirst() then
+                                repeat
+                                    if SCRAPSubMaterialEnvase.get(SCRAPItemEnvase.SUBMATERIAL, SCRAPItemEnvase."Tipo de Envase") then begin
+                                        SCRAPSubMaterialEnvase.CalcFields(Rigidez);
+                                        ExcelBuffer.AddColumn(SalesInvHeader."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                                        ExcelBuffer.AddColumn(SalesInvHeader."Posting Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                                        ExcelBuffer.AddColumn(SalesInvHeader."Sell-to Customer No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                                        ExcelBuffer.AddColumn(SalesInvHeader."Sell-to Customer Name", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
 
-                            ExcelBuffer.AddColumn(SalesInvLine."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesSteel(), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesAluminium, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesCarton, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesPaperCartoon(), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesWood(), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesPLASTICSEPSFlexible(), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesPLASTICSOTHERS(), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesPLASTICSPETFLEXIBLE(), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesPLASTICSPETOTHER(), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesPLASTICSPPFLEXIBLE(), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesPLASTICSPVCFLEXIBLE(), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
-                            ExcelBuffer.AddColumn(SalesInvLine.Quantity * Item.GetTaxesPLASTICSPVCOTHER(), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                                        ExcelBuffer.AddColumn(SalesInvLine."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                                        ExcelBuffer.AddColumn(SalesInvLine.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                                        ExcelBuffer.AddColumn(SalesInvLine.Quantity, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                                        ExcelBuffer.AddColumn(SCRAPItemEnvase."Tipo de Envase", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                                        ExcelBuffer.AddColumn(SCRAPItemEnvase.SUBMATERIAL, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                                        ExcelBuffer.AddColumn(SCRAPSubMaterialEnvase."Tipo Mercado", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                                        ExcelBuffer.AddColumn(SCRAPSubMaterialEnvase.Rigidez, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                                        ExcelBuffer.AddColumn(SCRAPSubMaterialEnvase.Tarifa, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                                        ExcelBuffer.AddColumn(SCRAPItemEnvase.Peso, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                                        ExcelBuffer.AddColumn(SalesInvLine.Quantity * SCRAPSubMaterialEnvase.Tarifa * SCRAPItemEnvase.Peso, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
 
-                            ExcelBuffer.AddColumn(GetTotalSalesInvoiceLine(SalesInvLine), FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
-
-                            ExcelBuffer.NewRow;
-                        end;
+                                        ExcelBuffer.NewRow;
+                                    end;
+                                Until SCRAPItemEnvase.next() = 0;
+                        end
                     UNTIL SalesInvLine.NEXT = 0;
             UNTIL SalesInvHeader.NEXT = 0;
 
-        ExcelBuffer.WriteSheet('Facturas de Venta', COMPANYNAME, USERID);
+        ExcelBuffer.WriteSheet('Factura de Venta', COMPANYNAME, USERID);
         ExcelBuffer.CloseBook();
-        ExcelBuffer.SetFriendlyFilename('Facturas de Ventas');
+        ExcelBuffer.SetFriendlyFilename('Factura de Ventas');
         ExcelBuffer.OpenExcel();
         Window.Close();
     end;

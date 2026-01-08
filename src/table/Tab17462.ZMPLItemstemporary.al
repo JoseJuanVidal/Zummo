@@ -13,7 +13,9 @@ table 17462 "ZM PL Items Temporary"
 
             trigger OnValidate()
             begin
-                OnValidate_No()
+                OnValidate_No();
+
+                ChangeFieldNo(Rec.FieldNo("No."));
             end;
         }
         field(2; "Item No."; Code[20])
@@ -26,7 +28,9 @@ table 17462 "ZM PL Items Temporary"
             begin
                 if Rec."Request Type" in [Rec."Request Type"::New, Rec."Request Type"::Change] then
                     SetupPreItemReg.CheckMaxLengthItemNo(Rec."Item No.");
-                OnValidate_ItemNo()
+                OnValidate_ItemNo();
+
+                ChangeFieldNo(Rec.FieldNo("Item No."));
             end;
 
 
@@ -39,16 +43,27 @@ table 17462 "ZM PL Items Temporary"
             trigger OnValidate()
             begin
                 OnValidate_Description();
+
+                ChangeFieldNo(Rec.FieldNo(Description));
             end;
         }
         field(6; "Assembly BOM"; Boolean)
         {
             Caption = 'Assembly BOM', Comment = 'ESP="L.M. de Ensamblado"';
+
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Assembly BOM"));
+            end;
         }
         field(8; "Base Unit of Measure"; Code[10])
         {
             Caption = 'Base Unit of Measure', Comment = 'ESP="Unidad medida base"';
             TableRelation = "Unit of Measure";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Base Unit of Measure"));
+            end;
         }
         field(10; Type; Option)
         {
@@ -57,6 +72,11 @@ table 17462 "ZM PL Items Temporary"
             OptionCaption = 'Inventory,Service,Non-Inventory', comment = 'ESP="Inventario,Servicio,Fuera de inventario"';
             OptionMembers = Inventory,Service,"Non-Inventory";
             Editable = false;
+
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Type));
+            end;
         }
         field(11; "Inventory Posting Group"; Code[20])
         {
@@ -67,18 +87,29 @@ table 17462 "ZM PL Items Temporary"
             begin
                 IF "Inventory Posting Group" <> '' THEN
                     TESTFIELD(Type, Type::Inventory);
+
+                ChangeFieldNo(Rec.FieldNo("Inventory Posting Group"));
+
             end;
         }
         field(14; "Item Disc. Group"; Code[20])
         {
             Caption = 'Item Disc. Group', Comment = 'ESP="Grupo dto. producto"';
             TableRelation = "Item Discount Group";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Item Disc. Group"));
+            end;
         }
         field(18; "Unit Price"; Decimal)
         {
             AutoFormatType = 2;
             Caption = 'Unit Price', Comment = 'ESP="Precio venta"';
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Unit Price"));
+            end;
         }
         field(21; "Costing Method"; Option)
         {
@@ -97,6 +128,9 @@ table 17462 "ZM PL Items Temporary"
                 IF "Costing Method" = "Costing Method"::Specific THEN BEGIN
                     TESTFIELD("Item Tracking Code");
                 END;
+
+                ChangeFieldNo(Rec.FieldNo("Costing Method"));
+
             end;
         }
         field(22; "Unit Cost"; Decimal)
@@ -104,6 +138,10 @@ table 17462 "ZM PL Items Temporary"
             AutoFormatType = 2;
             Caption = 'Unit Cost', Comment = 'ESP="Coste unitario"';
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Unit Cost"));
+            end;
         }
         field(31; "Vendor No."; Code[20])
         {
@@ -120,71 +158,122 @@ table 17462 "ZM PL Items Temporary"
                 THEN
                     IF Vend.GET("Vendor No.") THEN
                         "Lead Time Calculation" := Vend."Lead Time Calculation";
+
+                ChangeFieldNo(Rec.FieldNo("Vendor No."));
+
             end;
         }
         field(32; "Vendor Item No."; Text[20])
         {
             Caption = 'Vendor Item No.', Comment = 'ESP="Cód. producto proveedor';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Vendor Item No."));
+            end;
         }
         field(33; "Lead Time Calculation"; DateFormula)
         {
             AccessByPermission = TableData 120 = R;
             Caption = 'Lead Time Calculation', Comment = 'ESP="Plazo entrega (días)"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Lead Time Calculation"));
+            end;
         }
         field(34; "Reorder Point"; Decimal)
         {
             AccessByPermission = TableData 244 = R;
             Caption = 'Reorder Point', Comment = 'ESP="Punto pedido"';
             DecimalPlaces = 0 : 5;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Reorder Point"));
+            end;
         }
         field(35; "Maximum Inventory"; Decimal)
         {
             AccessByPermission = TableData 244 = R;
             Caption = 'Maximum Inventory', Comment = 'ESP="Stock máximo"';
             DecimalPlaces = 0 : 5;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Maximum Inventory"));
+            end;
         }
         field(36; "Reorder Quantity"; Decimal)
         {
             AccessByPermission = TableData 244 = R;
             Caption = 'Reorder Quantity', Comment = 'ESP="Cantidad a pedir"';
             DecimalPlaces = 0 : 5;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Reorder Quantity"));
+            end;
         }
         field(37; "Alternative Item No."; Code[20])
         {
             Caption = 'Alternative Item No.', Comment = 'ESP="Nº producto alternativo"';
             TableRelation = Item;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Alternative Item No."));
+            end;
         }
         field(41; "Gross Weight"; Decimal)
         {
             Caption = 'Gross Weight', Comment = 'ESP="Peso bruto"';
             DecimalPlaces = 0 : 5;
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Gross Weight"));
+            end;
         }
         field(42; "Net Weight"; Decimal)
         {
             Caption = 'Net Weight', Comment = 'ESP="Peso neto"';
             DecimalPlaces = 0 : 5;
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Net Weight"));
+            end;
         }
         field(43; "Units per Parcel"; Decimal)
         {
             Caption = 'Units per Parcel', Comment = 'ESP="Unidades por lote"';
             DecimalPlaces = 0 : 5;
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Units per Parcel"));
+            end;
         }
         field(44; "Unit Volume"; Decimal)
         {
             Caption = 'Unit Volume', Comment = 'ESP="Volumen"';
             DecimalPlaces = 0 : 5;
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Unit Volume"));
+            end;
         }
         field(45; Durability; Code[10])
         {
             Caption = 'Durability', Comment = 'ESP="Duración"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Durability));
+            end;
         }
         field(46; "Freight Type"; Code[10])
         {
             Caption = 'Freight Type', Comment = 'ESP="Tipo flete"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Freight Type"));
+            end;
         }
         field(47; "Tariff No."; Code[20])
         {
@@ -204,6 +293,8 @@ table 17462 "ZM PL Items Temporary"
                 THEN
                     EXIT;
 
+                ChangeFieldNo(Rec.FieldNo("Tariff No."));
+
                 IF TariffNumber.GET("Tariff No.") THEN
                     EXIT;
 
@@ -215,29 +306,53 @@ table 17462 "ZM PL Items Temporary"
         field(54; Blocked; Boolean)
         {
             Caption = 'Blocked', Comment = 'ESP="Bloqueado"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Blocked));
+            end;
         }
         field(90; "VAT Bus. Posting Gr. (Price)"; Code[20])
         {
             Caption = 'VAT Bus. Posting Gr. (Price)', Comment = 'ESP="Gr.regis. IVA negocio (precio)"';
             TableRelation = "VAT Business Posting Group";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("VAT Bus. Posting Gr. (Price)"));
+            end;
         }
         field(91; "Gen. Prod. Posting Group"; Code[20])
         {
             Caption = 'Gen. Prod. Posting Group', Comment = 'ESP="Grupo registro prod. gen."';
             TableRelation = "Gen. Product Posting Group";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Gen. Prod. Posting Group"));
+            end;
         }
         field(92; Picture; MediaSet)
         {
             Caption = 'Picture', Comment = 'ESP="Imagen"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Picture));
+            end;
         }
         field(97; "Nos. series"; code[20])
         {
             Caption = 'Nos. series', Comment = 'ESP="Nº. Series"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Nos. series"));
+            end;
         }
         field(99; "VAT Prod. Posting Group"; Code[20])
         {
             Caption = 'VAT Prod. Posting Group', Comment = 'ESP="Grupo registro IVA prod."';
             TableRelation = "VAT Product Posting Group";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("VAT Prod. Posting Group"));
+            end;
         }
         field(100; Reserve; Option)
         {
@@ -251,6 +366,9 @@ table 17462 "ZM PL Items Temporary"
             begin
                 IF Reserve <> Reserve::Never THEN
                     TESTFIELD(Type, Type::Inventory);
+
+                ChangeFieldNo(Rec.FieldNo(Reserve));
+
             end;
         }
         field(910; "Assembly Policy"; Option)
@@ -266,13 +384,19 @@ table 17462 "ZM PL Items Temporary"
                     TESTFIELD("Replenishment System", "Replenishment System"::Assembly);
                 IF type in [type::"Non-Inventory", type::Service] THEN
                     TESTFIELD("Assembly Policy", "Assembly Policy"::"Assemble-to-Stock");
+
+                ChangeFieldNo(Rec.FieldNo("Assembly Policy"));
+
             end;
         }
         field(1217; GTIN; Code[14])
         {
             Caption = 'GTIN', Comment = 'ESP="GTIN"';
             Numeric = true;
-
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(GTIN));
+            end;
         }
         field(5402; "Serial Nos."; Code[20])
         {
@@ -283,6 +407,9 @@ table 17462 "ZM PL Items Temporary"
             begin
                 IF "Serial Nos." <> '' THEN
                     TESTFIELD("Item Tracking Code");
+
+                ChangeFieldNo(Rec.FieldNo("Serial Nos."));
+
             end;
         }
         field(5411; "Minimum Order Quantity"; Decimal)
@@ -291,6 +418,10 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Minimum Order Quantity', Comment = 'ESP="Cantidad mínima pedido"';
             DecimalPlaces = 0 : 5;
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Minimum Order Quantity"));
+            end;
         }
         field(5412; "Maximum Order Quantity"; Decimal)
         {
@@ -298,6 +429,10 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Maximum Order Quantity', Comment = 'ESP="Cantidad máxima pedido"';
             DecimalPlaces = 0 : 5;
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Maximum Order Quantity"));
+            end;
         }
         field(5413; "Safety Stock Quantity"; Decimal)
         {
@@ -305,6 +440,10 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Safety Stock Quantity', Comment = 'ESP="Stock de seguridad"';
             DecimalPlaces = 0 : 5;
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Safety Stock Quantity"));
+            end;
         }
         field(5414; "Order Multiple"; Decimal)
         {
@@ -312,11 +451,19 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Order Multiple', Comment = 'ESP="Múltiplos de pedido"';
             DecimalPlaces = 0 : 5;
             MinValue = 0;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Order Multiple"));
+            end;
         }
         field(5415; "Safety Lead Time"; DateFormula)
         {
             AccessByPermission = TableData 244 = R;
             Caption = 'Safety Lead Time', Comment = 'ESP="Plazo de seguridad"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Safety Lead Time"));
+            end;
         }
         field(5417; "Flushing Method"; Option)
         {
@@ -324,6 +471,11 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Flushing Method', Comment = 'ESP="Método de baja"';
             OptionCaption = 'Manual,Forward,Backward,Pick + Forward,Pick + Backward', Comment = 'ESP="Manual,Adelante,Atrás,Pick + Adelante,Pick + Atrás"';
             OptionMembers = Manual,Forward,Backward,"Pick + Forward","Pick + Backward";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Flushing Method"));
+            end;
+
         }
         field(5419; "Replenishment System"; Option)
         {
@@ -338,6 +490,9 @@ table 17462 "ZM PL Items Temporary"
                     TESTFIELD("Assembly Policy", "Assembly Policy"::"Assemble-to-Stock");
                 IF "Replenishment System" <> "Replenishment System"::Purchase THEN
                     TESTFIELD(Type, Type::Inventory);
+
+                ChangeFieldNo(Rec.FieldNo("Replenishment System"));
+
             end;
         }
         field(5422; "Rounding Precision"; Decimal)
@@ -351,6 +506,9 @@ table 17462 "ZM PL Items Temporary"
             begin
                 IF "Rounding Precision" <= 0 THEN
                     FIELDERROR("Rounding Precision", Text027);
+
+                ChangeFieldNo(Rec.FieldNo("Rounding Precision"));
+
             end;
         }
         field(5425; "Sales Unit of Measure"; Code[10])
@@ -359,6 +517,10 @@ table 17462 "ZM PL Items Temporary"
             TableRelation = IF ("No." = FILTER(<> '')) "Item Unit of Measure".Code WHERE("Item No." = FIELD("No."))
             ELSE
             "Unit of Measure";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Sales Unit of Measure"));
+            end;
         }
         field(5426; "Purch. Unit of Measure"; Code[10])
         {
@@ -366,11 +528,19 @@ table 17462 "ZM PL Items Temporary"
             TableRelation = IF ("No." = FILTER(<> '')) "Item Unit of Measure".Code WHERE("Item No." = FIELD("No."))
             ELSE
             "Unit of Measure";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Purch. Unit of Measure"));
+            end;
         }
         field(5428; "Time Bucket"; DateFormula)
         {
             AccessByPermission = TableData 244 = R;
             Caption = 'Time Bucket', Comment = 'ESP="Ciclo"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Time Bucket"));
+            end;
         }
         field(5440; "Reordering Policy"; Option)
         {
@@ -388,12 +558,19 @@ table 17462 "ZM PL Items Temporary"
 
                 IF "Reordering Policy" <> "Reordering Policy"::" " THEN
                     TESTFIELD(Type, Type::Inventory);
+
+                ChangeFieldNo(Rec.FieldNo("Reordering Policy"));
+
             end;
         }
         field(5441; "Include Inventory"; Boolean)
         {
             AccessByPermission = TableData 244 = R;
             Caption = 'Include Inventory', Comment = 'ESP="Incluir inventario"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Include Inventory"));
+            end;
         }
         field(5442; "Manufacturing Policy"; Option)
         {
@@ -401,32 +578,56 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Manufacturing Policy', Comment = 'ESP="Directiva fabricación"';
             OptionCaption = 'Make-to-Stock,Make-to-Order', Comment = 'ESP="Fab-contra-stock,Fab-contra-pedido"';
             OptionMembers = "Make-to-Stock","Make-to-Order";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Manufacturing Policy"));
+            end;
         }
         field(5443; "Rescheduling Period"; DateFormula)
         {
             AccessByPermission = TableData 244 = R;
             Caption = 'Rescheduling Period', Comment = 'ESP="Periodo de reprogramación"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Rescheduling Period"));
+            end;
 
         }
         field(5701; "Manufacturer Code"; Code[10])
         {
             Caption = 'Manufacturer Code', Comment = 'ESP="Cód. fabricante"';
             TableRelation = Manufacturer;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Manufacturer Code"));
+            end;
         }
         field(5702; "Item Category Code"; Code[20])
         {
             Caption = 'Item Category Code', Comment = 'ESP="Cód. categoría producto"';
             TableRelation = "Item Category";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Item Category Code"));
+            end;
         }
         field(5900; "Service Item Group"; Code[10])
         {
             Caption = 'Service Item Group', Comment = 'ESP="Grupo prod. servicio"';
             TableRelation = "Service Item Group".Code;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Service Item Group"));
+            end;
         }
         field(6500; "Item Tracking Code"; Code[10])
         {
             Caption = 'Item Tracking Code', Comment = 'ESP="Cód. seguim. prod."';
             TableRelation = "Item Tracking Code";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Item Tracking Code"));
+            end;
         }
         field(6501; "Lot Nos."; Code[20])
         {
@@ -437,21 +638,36 @@ table 17462 "ZM PL Items Temporary"
             begin
                 IF "Lot Nos." <> '' THEN
                     TESTFIELD("Item Tracking Code");
+
+                ChangeFieldNo(Rec.FieldNo("Lot Nos."));
+
             end;
         }
         field(6502; "Expiration Calculation"; DateFormula)
         {
             Caption = 'Expiration Calculation', Comment = 'ESP="Cálculo caducidad"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Expiration Calculation"));
+            end;
         }
         field(8003; "Sales Blocked"; Boolean)
         {
             Caption = 'Sales Blocked', Comment = 'ESP="Ventas bloqueadas"';
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Sales Blocked"));
+            end;
         }
         field(8004; "Purchasing Blocked"; Boolean)
         {
             Caption = 'Purchasing Blockedtco', Comment = 'ESP="Compras bloqueadas"';
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Purchasing Blocked"));
+            end;
         }
         field(50014; selClasVtas_btc; Code[20])
         {
@@ -459,6 +675,10 @@ table 17462 "ZM PL Items Temporary"
             Description = 'Bitec';
             Caption = 'Sales Classification', comment = 'ESP="Clasificación Ventas"';
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("ClasificacionVentas"), TipoRegistro = const(Tabla));
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(selClasVtas_btc));
+            end;
 
         }
 
@@ -468,6 +688,10 @@ table 17462 "ZM PL Items Temporary"
             Description = 'Bitec';
             Caption = 'Family', comment = 'ESP="Familia"';
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Familia"), TipoRegistro = const(Tabla));
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(selFamilia_btc));
+            end;
 
         }
 
@@ -477,7 +701,10 @@ table 17462 "ZM PL Items Temporary"
             Description = 'Bitec';
             Caption = 'Gamma', comment = 'ESP="Gama"';
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("Gamma"), TipoRegistro = const(Tabla));
-
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(selGama_btc));
+            end;
         }
         field(50017; selLineaEconomica_btc; Code[20])
         {
@@ -485,7 +712,10 @@ table 17462 "ZM PL Items Temporary"
             Description = 'Bitec';
             Caption = 'Linea Economica', comment = 'ESP="Linea Economica"';
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("LineaEconomica"), TipoRegistro = const(Tabla));
-
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(selLineaEconomica_btc));
+            end;
         }
         field(50018; "ABC"; Option)
         {
@@ -493,6 +723,10 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'ABC', comment = 'ESP="ABC"';
             OptionMembers = " ",ContraStock,BajoPedido;
             OptionCaption = ' ,A,B,C,D', comment = 'ESP=" ,A,B,C,D"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(ABC));
+            end;
         }
         field(50020; desClasVtas_btc; text[100])
         {
@@ -529,26 +763,46 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Canal', comment = 'ESP="Canal"';
             OptionMembers = "Food Service","Retail";
             OptionCaption = 'Retail,Food Service', comment = 'ESP="Retail,Food Service"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Canal));
+            end;
         }
         field(50080; "CMMF Code"; code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'CMMF Code', comment = 'ESP="CMMF Code"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("CMMF Code"));
+            end;
         }
         field(50081; "SEB PI2 Code"; code[15])
         {
             DataClassification = CustomerContent;
             Caption = 'PI2 Code', comment = 'ESP="PI2 Code"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("SEB PI2 Code"));
+            end;
         }
         field(50082; "SEB PI2 Description"; Text[40])
         {
             DataClassification = CustomerContent;
             Caption = 'PI2 Description', comment = 'ESP="PI2 Description"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("SEB PI2 Description"));
+            end;
         }
         field(50083; "SEB PI2 Description English"; Text[40])
         {
             DataClassification = CustomerContent;
             Caption = 'PI2 Description English', comment = 'ESP="PI2 Description English"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("SEB PI2 Description English"));
+            end;
         }
         field(50125; "STH To Update"; Boolean)
         {
@@ -562,6 +816,10 @@ table 17462 "ZM PL Items Temporary"
         {
             DataClassification = CustomerContent;
             Caption = 'Material', comment = 'ESP="Material"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Material));
+            end;
         }
         Field(50128; "ITBID Status"; Option)
         {
@@ -586,6 +844,10 @@ table 17462 "ZM PL Items Temporary"
             DataClassification = CustomerContent;
             Caption = 'Purch. Family', comment = 'ESP="Familia compra"';
             TableRelation = "STH Purchase Family".Code;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Purch. Family"));
+            end;
         }
         field(50131; "Desc. Purch. Family"; Text[100])
         {
@@ -599,6 +861,10 @@ table 17462 "ZM PL Items Temporary"
             DataClassification = CustomerContent;
             Caption = 'Purch. Category', comment = 'ESP="Categoria compra"';
             TableRelation = "STH Purchase Category".Code where("Purch. Familiy code" = field("Purch. Family"));
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Purch. Category"));
+            end;
         }
         field(50133; "Desc. Purch. Category"; Text[100])
         {
@@ -612,6 +878,10 @@ table 17462 "ZM PL Items Temporary"
             DataClassification = CustomerContent;
             Caption = 'Purch. SubCategory', comment = 'ESP="SubCategoria compra"';
             TableRelation = "STH Purchase SubCategory".Code where("Purch. Familiy code" = field("Purch. Family"), "Purch. Category code" = field("Purch. Category"));
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Purch. SubCategory"));
+            end;
         }
         field(50135; "Desc. Purch. SubCategory"; Text[100])
         {
@@ -626,11 +896,19 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Manufacturer', comment = 'ESP="Fabricante"';
             DataClassification = CustomerContent;
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Fabricante), TipoRegistro = const(Tabla));
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Manufacturer));
+            end;
         }
         field(50157; "Item No. Manufacturer"; code[50])
         {
             DataClassification = CustomerContent;
             Caption = 'Item No. Manufacturer', comment = 'ESP="Cód. Fabricante"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Item No. Manufacturer"));
+            end;
 
         }
         Field(50200; "Plastic Qty. (kg)"; decimal)
@@ -638,75 +916,116 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Plastic packing (kg)', comment = 'ESP="Plástico embalaje (kg)"';
             DataClassification = CustomerContent;
             DecimalPlaces = 6 : 6;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Plastic Qty. (kg)"));
+            end;
         }
         Field(50201; "Recycled plastic Qty. (kg)"; decimal)
         {
             Caption = 'Plastic Recycled packing (kg)', comment = 'ESP="Plástico reciclado embalaje(kg)"';
             DataClassification = CustomerContent;
             DecimalPlaces = 6 : 6;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Recycled plastic Qty. (kg)"));
+            end;
         }
         Field(50202; "Recycled plastic %"; decimal)
         {
             Caption = 'Plastic Recycled packing %', comment = 'ESP="% Plástico reciclado embalaje"';
             DataClassification = CustomerContent;
             DecimalPlaces = 2 : 2;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Recycled plastic %"));
+            end;
         }
         Field(50203; "Packing Plastic Qty. (kg)"; decimal)
         {
             Caption = 'Package Plastic (kg)', comment = 'ESP="Plástico Bulto (kg)"';
             DataClassification = CustomerContent;
             DecimalPlaces = 6 : 6;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Packing Plastic Qty. (kg)"));
+            end;
         }
         Field(50204; "Packing Recycled plastic (kg)"; decimal)
         {
             Caption = 'Package Recycled Plastic (kg)', comment = 'ESP="Plástico reciclado Bulto (kg)"';
             DataClassification = CustomerContent;
             DecimalPlaces = 6 : 6;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Packing Recycled plastic (kg)"));
+            end;
         }
         Field(50205; "Packing Recycled plastic %"; decimal)
         {
             Caption = 'Package Plastic %', comment = 'ESP="% Plástico reciclado Bulto"';
             DataClassification = CustomerContent;
             DecimalPlaces = 2 : 2;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Packing Recycled plastic %"));
+            end;
         }
         field(50206; Steel; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Steel Packing (kg)', comment = 'ESP="Acero Embalaje (kg)"';
             Description = 'Acero que se utiliza para el envío del producto';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Steel));
+            end;
         }
         field(50207; Carton; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Carton Packing (kg)', comment = 'ESP="Cartón Embalaje (kg)"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Carton));
+            end;
         }
         field(50208; Wood; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Wood Packing (kg)', comment = 'ESP="Madera Embalaje (kg)"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Wood));
+            end;
         }
         field(50210; "Show detailed documents"; Boolean)
         {
             DataClassification = CustomerContent;
             Caption = 'Show detailed documents', comment = 'ESP="Mostrar en detalle documentos"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Show detailed documents"));
+            end;
         }
         field(50211; "Packaging product"; Boolean)
         {
             DataClassification = CustomerContent;
             Caption = 'Packaging product', comment = 'ESP="Producto de bulto"';
-        }
-        field(50212; "Vendor Packaging product"; Boolean)
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Vendor Plastic packing (kg)', comment = 'ESP="Plástico embalaje proveedor (kg)"';
-            ObsoleteState = Removed;
-            ObsoleteReason = 'Sustuido por 50215';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Packaging product"));
+            end;
         }
         field(50215; "Vendor Packaging product KG"; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Vendor Plastic packing (kg/ud)', comment = 'ESP="Plástico embalaje proveedor (kg/ud)"';
             DecimalPlaces = 6 : 6;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Vendor Packaging product KG"));
+            end;
         }
         field(50216; "Vendor Packaging Steel"; Decimal)
         {
@@ -714,18 +1033,30 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Vendor Steel Packing (kg)', comment = 'ESP="Acero Embalaje proveedor(kg)"';
             Description = 'Acero que se utiliza para el envío del producto';
             DecimalPlaces = 6 : 6;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Vendor Packaging Steel"));
+            end;
         }
         field(50217; "Vendor Packaging Carton"; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Vendor Carton Packing (kg)', comment = 'ESP="Cartón Embalaje proveedor (kg)"';
             DecimalPlaces = 6 : 6;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Vendor Packaging Carton"));
+            end;
         }
         field(50218; "Vendor Packaging Wood"; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Vendor Wood Packing (kg)', comment = 'ESP="Madera Embalaje proveedor (kg)"';
             DecimalPlaces = 6 : 6;
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Vendor Packaging Wood"));
+            end;
         }
         field(50800; "Clasification Type"; Option)
         {
@@ -745,6 +1076,7 @@ table 17462 "ZM PL Items Temporary"
                     Rec."Clasification Type"::Service:
                         Rec.Type := Rec.Type::Service;
                 end;
+                ChangeFieldNo(Rec.FieldNo("Clasification Type"));
             end;
         }
         // field(50805; EnglishDescription; text[100])
@@ -756,11 +1088,19 @@ table 17462 "ZM PL Items Temporary"
         {
             DataClassification = CustomerContent;
             Caption = 'Packaging', comment = 'ESP="Embalaje"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Packaging));
+            end;
         }
         field(50807; Color; Boolean)
         {
             DataClassification = CustomerContent;
             Caption = 'Color', comment = 'ESP="Color"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Color));
+            end;
         }
         field(50810; "State Creation"; Enum "ZM PL State Creation Item")
         {
@@ -773,6 +1113,10 @@ table 17462 "ZM PL Items Temporary"
             DataClassification = CustomerContent;
             Caption = 'Department', comment = 'ESP="Departamento"';
             TableRelation = "ZM PL Item Setup Department";
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Department));
+            end;
         }
         field(50821; "Product manager"; text[50])
         {
@@ -782,22 +1126,37 @@ table 17462 "ZM PL Items Temporary"
             trigger OnLookup()
             begin
                 OnLookup_Product_Manager();
+
+                ChangeFieldNo(Rec.FieldNo("Product manager"));
+
             end;
         }
         field(50822; Reason; Blob)
         {
             DataClassification = CustomerContent;
             Caption = 'Reason', comment = 'ESP="Motivo"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Reason));
+            end;
         }
         field(50823; Activity; code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Activity', comment = 'ESP="Actividad"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Activity));
+            end;
         }
         field(50824; Prototype; code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Prototype', comment = 'ESP="Prototipo"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Prototype));
+            end;
         }
         field(50825; "Posting Date"; Date)
         {
@@ -829,6 +1188,10 @@ table 17462 "ZM PL Items Temporary"
         {
             DataClassification = CustomerContent;
             Caption = 'Reason Blocked/UnBlock', comment = 'ESP="Motivo Bloqueo/Desbloqueo"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Reason Blocked"));
+            end;
         }
         field(50829; "Nombre Empleado"; text[100])
         {
@@ -858,26 +1221,46 @@ table 17462 "ZM PL Items Temporary"
         field(65100; "Sujeto a Control de Calidad"; Boolean)
         {
             Caption = 'Sujeto a Control de Calidad', comment = 'ESP="Sujeto a Control de Calidad"';  // 65100
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Sujeto a Control de Calidad"));
+            end;
         }
         field(50871; "Control Certificado proveedor"; Boolean)
         {
             Caption = 'Control Certificado proveedor', comment = 'ESP="Control Certificado proveedor"';  // 65110
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Control Certificado proveedor"));
+            end;
         }
 
         field(59001; Largo; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Largo', comment = 'ESP="Largo"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Largo));
+            end;
         }
         field(59002; Ancho; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Ancho', comment = 'ESP="Ancho"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Ancho));
+            end;
         }
         field(59003; Alto; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Alto', comment = 'ESP="Alto"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo(Alto));
+            end;
         }
         field(59010; "IS Requested"; Boolean)
         {
@@ -891,6 +1274,10 @@ table 17462 "ZM PL Items Temporary"
         field(99000750; "Routing No."; Code[20])
         {
             Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Routing No."));
+            end;
         }
         field(99000751; "Production BOM No."; Code[20])
         {
@@ -901,6 +1288,9 @@ table 17462 "ZM PL Items Temporary"
             trigger OnValidate()
             begin
                 OnValidate_ProductionBOMNo();
+
+                ChangeFieldNo(Rec.FieldNo("Production BOM No."));
+
             end;
         }
     }
@@ -929,8 +1319,6 @@ table 17462 "ZM PL Items Temporary"
     trigger OnModify()
     begin
         InitRecord();
-
-        ItemsRegistration.LogModification(Rec);
     end;
 
     trigger OnDelete()
@@ -983,6 +1371,14 @@ table 17462 "ZM PL Items Temporary"
         lblErrorNotApprovals: Label 'No existen aprobadores configurados para la tabla %1.', comment = 'ESP="No existen aprobadores configurados para la tabla %1."';
         lblConfirmEmail: Label 'La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?', comment = 'ESP="La solicitud del alta ya ha sido enviada.\¿Desea volver a enviarla?"';
         lblErrorItemExitst: Label 'Product %1 already exists %2', comment = 'ESP="El producto %1 ya exites %2"';
+
+
+    local procedure ChangeFieldNo(FieldNo: Integer)
+    var
+
+    begin
+        ItemsRegistration.LogModification(Rec, FieldNo);
+    end;
 
     local procedure GetPreItemSetup()
     begin
@@ -1089,7 +1485,7 @@ table 17462 "ZM PL Items Temporary"
         myInt: Integer;
     begin
         if Rec."Request Type" in [Rec."Request Type"::New, Rec."Request Type"::Change] then
-            SetupPreItemReg.CheckMaxLengthItemNo(Rec.Description);
+            SetupPreItemReg.CheckMaxLengthItemDescription(Rec.Description);
     end;
 
     procedure CopyItem()
@@ -1924,6 +2320,13 @@ table 17462 "ZM PL Items Temporary"
         end;
     end;
 
-
-
+    procedure RunReport()
+    var
+        ItemRequest: Record "ZM PL Items Temporary";
+        reportItemRequest: Report "Items Request";
+    begin
+        ItemRequest.SetRange("No.", Rec."No.");
+        reportItemRequest.SetTableView(ItemRequest);
+        reportItemRequest.Run();
+    end;
 }
