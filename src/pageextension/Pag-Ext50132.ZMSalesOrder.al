@@ -51,15 +51,19 @@ pageextension 50132 "ZM SalesOrder" extends "Sales Order"
                 ApplicationArea = all;
             }
         }
-        addafter("Due Date")
+        modify("Posting Date")
         {
-            field(FechaEnvio; "Shipment Date")
-            {
-                ApplicationArea = All;
-                ToolTip = 'Fecha envío', comment = 'ESP="Fecha envío"';
-                Enabled = true;
-            }
+            Visible = false;
         }
+        // addafter("Due Date")
+        // {
+        //     field(FechaEnvio; "Shipment Date")
+        //     {
+        //         ApplicationArea = All;
+        //         ToolTip = 'Fecha envío', comment = 'ESP="Fecha envío"';
+        //         Enabled = true;
+        //     }
+        // }
         addbefore("Work Description")
         {
 

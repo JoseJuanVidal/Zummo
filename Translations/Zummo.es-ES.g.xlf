@@ -22749,18 +22749,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action Translations - Property Caption</note>
           <target>Traducciones</target>
         </trans-unit>
-        <trans-unit id="Page 3858912784 - Action 3981856687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Conf. Alta Productos</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Conf. Alta Productos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action ConfAltaProd - Property Caption</note>
-          <target>Conf. Alta Productos</target>
-        </trans-unit>
-        <trans-unit id="Page 3858912784 - Action 401669501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Conf. Departamentos Alta Productos</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta Productos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action ConfAprobAltaProd - Property Caption</note>
-          <target>Conf. Departamentos Alta Productos</target>
-        </trans-unit>
         <trans-unit id="Page 3858912784 - Action 3096908298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Solicitud Alta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solicitud Alta/Actualización"</note>
@@ -37743,12 +37731,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Fecha recepción email del cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Control FechaRecepcionMail_btc - Property ToolTip</note>
           <target>Fecha recepción email del cliente</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 2532584947 - Control 2547972622 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Fecha envío</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fecha envío"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM SalesOrder - Control FechaEnvio - Property ToolTip</note>
-          <target>Fecha envío</target>
         </trans-unit>
         <trans-unit id="PageExtension 2532584947 - Change 2632124822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Order Date</source>
