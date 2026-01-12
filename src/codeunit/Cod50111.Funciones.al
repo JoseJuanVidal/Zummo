@@ -3740,6 +3740,7 @@ codeunit 50111 "Funciones"
     procedure LoadGlEntry(var tmpGLEntry: Record "G/L Entry"; CtaContable: code[20]; FiltroFecha: text; FiltroNoDocumento: text)
     var
         GLEntry: Record "G/L Entry";
+        tmpPurchInvLine: Record "Purch. Inv. Line" temporary;
         EntryNo: Integer;
         Window: Dialog;
         lblWindow: Label 'Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############', comment = 'ESP="Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############"';
@@ -3759,7 +3760,7 @@ codeunit 50111 "Funciones"
                 case GLEntry."Document Type" of
                     GLEntry."Document Type"::Invoice:
                         begin
-                            if not LoadGlEntryInvoice(tmpGLEntry, EntryNo, GLEntry) then
+                            if not LoadGlEntryInvoice(tmpGLEntry, tmpPurchInvLine, EntryNo, GLEntry) then
                                 CreateGLEntry(tmpGLEntry, EntryNo, GLEntry)
                         end;
                     else begin
@@ -3783,7 +3784,7 @@ codeunit 50111 "Funciones"
         tmpGLEntry.Insert();
     end;
 
-    procedure LoadGlEntryInvoice(var tmpGLEntry: Record "G/L Entry"; var EntryNo: integer; GLEntry: Record "G/L Entry") Added: Boolean
+    procedure LoadGlEntryInvoice(var tmpGLEntry: Record "G/L Entry"; tmpPurchInvLine: Record "Purch. Inv. Line"; var EntryNo: integer; GLEntry: Record "G/L Entry") Added: Boolean
     var
         Vendor: Record Vendor;
         PurchInvLine: Record "Purch. Inv. Line";
@@ -3796,37 +3797,42 @@ codeunit 50111 "Funciones"
         if PurchInvLine.FindFirst() then
             repeat
                 AddLine := true;
-                // Dimensiones
-                if PurchInvLine."Dimension Set ID" <> GLEntry."Dimension Set ID" then
-                    if not CheckDimension(GLEntry, PurchInvLine) then
+                if not tmpPurchInvLine.get(PurchInvLine."Document No.", PurchInvLine."Line No.") then begin
+                    // Dimensiones
+                    if PurchInvLine."Dimension Set ID" <> GLEntry."Dimension Set ID" then
+                        if not CheckDimension(GLEntry, PurchInvLine) then
+                            AddLine := false;
+                    // VAT %
+                    if (PurchInvLine."Gen. Bus. Posting Group" <> GLEntry."Gen. Bus. Posting Group")
+                        or (PurchInvLine."Gen. Prod. Posting Group" <> GLEntry."Gen. Prod. Posting Group") then
                         AddLine := false;
-                // VAT %
-                if (PurchInvLine."Gen. Bus. Posting Group" <> GLEntry."Gen. Bus. Posting Group")
-                    or (PurchInvLine."Gen. Prod. Posting Group" <> GLEntry."Gen. Prod. Posting Group") then
-                    AddLine := false;
 
-                if (PurchInvLine.Type in [PurchInvLine.Type::"G/L Account"]) and (PurchInvLine."No." <> GLEntry."G/L Account No.") then
-                    AddLine := false;
+                    if (PurchInvLine.Type in [PurchInvLine.Type::"G/L Account"]) and (PurchInvLine."No." <> GLEntry."G/L Account No.") then
+                        AddLine := false;
 
 
-                if AddLine then begin
-                    tmpGLEntry.Init();
-                    tmpGLEntry.TransferFields(GLEntry);
-                    if GLEntry."Source Type" in [GLEntry."Source Type"::Vendor] then
-                        Vendor.Get(GLEntry."Source No.");
-                    tmpGLEntry."Customer Name" := Vendor.Name;
-                    tmpGLEntry.Description := PurchInvLine.Description;
-                    tmpGLEntry.Amount := PurchInvLine.Amount;
-                    tmpGLEntry."Debit Amount" := 0;
-                    tmpGLEntry."Credit Amount" := 0;
-                    if tmpGLEntry.Amount > 0 then
-                        tmpGLEntry."Debit Amount" := tmpGLEntry.Amount
-                    else
-                        tmpGLEntry."Credit Amount" := tmpGLEntry.Amount;
-                    EntryNo += 1;
-                    tmpGLEntry."Entry No." := EntryNo;
-                    tmpGLEntry.Insert();
-                    Added := true;
+                    if AddLine then begin
+                        tmpGLEntry.Init();
+                        tmpGLEntry.TransferFields(GLEntry);
+                        if GLEntry."Source Type" in [GLEntry."Source Type"::Vendor] then
+                            Vendor.Get(GLEntry."Source No.");
+                        tmpGLEntry."Customer Name" := Vendor.Name;
+                        tmpGLEntry.Description := PurchInvLine.Description;
+                        tmpGLEntry.Amount := PurchInvLine.Amount;
+                        tmpGLEntry."Debit Amount" := 0;
+                        tmpGLEntry."Credit Amount" := 0;
+                        if tmpGLEntry.Amount > 0 then
+                            tmpGLEntry."Debit Amount" := tmpGLEntry.Amount
+                        else
+                            tmpGLEntry."Credit Amount" := tmpGLEntry.Amount;
+                        EntryNo += 1;
+                        tmpGLEntry."Entry No." := EntryNo;
+                        tmpGLEntry.Insert();
+                        Added := true;
+                    end;
+                    tmpPurchInvLine.Init();
+                    tmpPurchInvLine.TransferFields(PurchInvLine);
+                    tmpPurchInvLine.Modify();
                 end;
             Until PurchInvLine.next() = 0;
     end;
