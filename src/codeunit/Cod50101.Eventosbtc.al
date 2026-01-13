@@ -1935,11 +1935,13 @@ codeunit 50101 "Eventos_btc"
 
     local procedure UpdateTableFieldName(PurchaseHeader: Record "Purchase Header"; BodyText: text): Text
     var
+        TypeHelper: Codeunit "Type Helper";
         TablaRecordRef: RecordRef;
         CampoFieldRef: FieldRef;
         FieldCount: Integer;
         i: Integer;
         FieldName: text;
+        FieldValue: text;
         lblControl: Label '#';
         TextB: TextBuilder;
     begin
@@ -1952,7 +1954,9 @@ codeunit 50101 "Eventos_btc"
                 FieldCount += 1;
                 CampoFieldRef := TablaRecordRef.Field(i);
                 FieldName := StrSubstNo('%1%2%1', lblControl, CampoFieldRef.Name);
-                TextB.Replace(FieldName, CampoFieldRef.Value);
+                FieldValue := CampoFieldRef.Value;
+                FieldValue := TypeHelper.HtmlEncode(FieldValue);
+                TextB.Replace(FieldName, FieldValue);
             end;
         end;
         exit(TextB.ToText());

@@ -215,6 +215,49 @@ page 50010 "Tarifas Precios"
                     Caption = 'CMMF Type', comment = 'ESP="CMMF Type"';
                     Editable = false;
                 }
+                field(ItemNetWeitgh; Item."Net Weight")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Net Weight', comment = 'ESP="Peso Neto"';
+                    Editable = false;
+                }
+                field(ItemGrossWeigh; Item."Gross Weight")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Gross Weigh', comment = 'ESP="Peso Bruto"';
+                    Editable = false;
+                }
+                field(Height; ItemUnitOfMeasure.Height)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Height Base', comment = 'ESP="Altura Base"';
+                    Editable = false;
+                    trigger OnDrillDown()
+                    begin
+                        DrillDrown_ItemUnitofMeasure();
+                    end;
+                }
+                field(Width; ItemUnitOfMeasure.Width)
+                {
+                    ApplicationArea = all;
+                    Caption = ' Width Base', comment = 'ESP="Ancho Base"';
+                    Editable = false;
+                    trigger OnDrillDown()
+                    begin
+                        DrillDrown_ItemUnitofMeasure();
+                    end;
+                }
+                field(Length; ItemUnitOfMeasure.Length)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Length Base', comment = 'ESP="Largo Base"';
+                    Editable = false;
+                    trigger OnDrillDown()
+                    begin
+                        DrillDrown_ItemUnitofMeasure();
+
+                    end;
+                }
             }
         }
     }
@@ -239,6 +282,17 @@ page 50010 "Tarifas Precios"
                 begin
                     if Confirm(lblConfirm) then
                         IntegracionCR.UpdateSalesPrice();
+                end;
+            }
+            action(ImportUnitOfMeasure)
+            {
+                ApplicationArea = all;
+                Caption = 'Importar Pesos y medidas', comment = 'ESP="Importar Pesos y Medidas"';
+                Image = UnitOfMeasure;
+
+                trigger OnAction()
+                begin
+                    ImportItemUnitoMeasure();
                 end;
             }
         }
@@ -343,6 +397,7 @@ page 50010 "Tarifas Precios"
                             CRMCouplingManagement.RemoveCoupling(RecordId);
                         end;
                     }
+
                 }
 
             }
@@ -362,10 +417,13 @@ page 50010 "Tarifas Precios"
     trigger OnAfterGetRecord()
     begin
         if Item.Get("Item No.") then;
+        if ItemUnitOfMeasure.get(Rec."Item No.", Item."Base Unit of Measure") then;
     end;
 
     var
         Item: Record Item;
+        ItemUnitOfMeasure: Record "Item Unit of Measure";
+        ExcelBuffer: Record "Excel Buffer" temporary;
         CRMIntegrationManagement: Codeunit "CRM Integration Management";
         CRMCouplingManagement: Codeunit "CRM Coupling Management";
         Laguage: code[10];
@@ -381,7 +439,96 @@ page 50010 "Tarifas Precios"
             Integracion_crm.UpdateSalesPriceGroup(Rec."Sales Code", Rec."Ending Date", ItemNo);
     end;
 
+    local procedure DrillDrown_ItemUnitofMeasure()
+    begin
+        ItemUnitOfMeasure.Reset();
+        ItemUnitOfMeasure.SetRange("Item No.", Rec."Item No.");
+        ItemUnitOfMeasure.SetRange(Code, Item."Base Unit of Measure");
+        page.RunModal(0, ItemUnitOfMeasure);
+        ItemUnitOfMeasure.Reset();
+    end;
 
 
+    local procedure ImportItemUnitoMeasure()
+    var
+        Sheetname: Text;
+        ToFileName: text;
+        NVInStream: InStream;
+        lblDialog: Label 'Select file', comment = 'ESP="Seleccione fichero"';
+        Text001: Label '¿Desea importar el fichero Excel?', comment = 'ESP="¿Desea importar el fichero Excel?"';
+    begin
+        ExcelBuffer.LockTable();
 
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(lblDialog, '', 'Excel Files (*.xlsx)|*.*', ToFileName, NVInStream) then
+            exit;
+        If ToFileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream);
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+        if Confirm(Text001, false) then
+            CargarItemUnitofMeasure();
+    end;
+
+    local procedure CargarItemUnitofMeasure()
+    var
+        ContarRow: Integer;
+        TotalRown: Integer;
+        RecordAdd: Integer;
+        Valor: Decimal;
+    begin
+        ItemUnitOfMeasure.Reset();
+        ExcelBuffer.SetRange("Column No.", 1);
+        if ExcelBuffer.FindLast() then
+            TotalRown := ExcelBuffer."Row No.";
+        for ContarRow := 2 to TotalRown do begin  //TotalRown
+            ExcelBuffer.Reset();
+            ExcelBuffer.SetRange("Row No.", ContarRow);
+            ExcelBuffer.SetRange("Column No.", 1);
+            if ExcelBuffer.FindSet() then begin
+                Item.get(ExcelBuffer."Cell Value as Text");
+                ItemUnitOfMeasure.SetRange("Item No.", ExcelBuffer."Cell Value as Text");
+                ItemUnitOfMeasure.SetRange(Code, Item."Base Unit of Measure");
+                ItemUnitOfMeasure.FindFirst();
+                RecordAdd += 1;
+                ExcelBuffer.SetRange("Column No.", 3);
+                if ExcelBuffer.FindSet() then begin
+                    Evaluate(Valor, ExcelBuffer."Cell Value as Text");
+                    if Valor <> 0 then
+                        Item."Net Weight" := Valor;
+                end;
+                ExcelBuffer.SetRange("Column No.", 4);
+                if ExcelBuffer.FindSet() then begin
+                    Evaluate(Valor, ExcelBuffer."Cell Value as Text");
+                    if Valor <> 0 then
+                        Item."Gross Weight" := Valor;
+                end;
+                Item.Modify();
+                ExcelBuffer.SetRange("Column No.", 5); // alto
+                if ExcelBuffer.FindSet() then begin
+                    Evaluate(Valor, ExcelBuffer."Cell Value as Text");
+                    if Valor <> 0 then
+                        ItemUnitOfMeasure.validate(Height, Valor);
+                end;
+                ExcelBuffer.SetRange("Column No.", 6);  // ancho
+                if ExcelBuffer.FindSet() then begin
+                    Evaluate(Valor, ExcelBuffer."Cell Value as Text");
+                    if Valor <> 0 then
+                        ItemUnitOfMeasure.validate(Width, Valor);
+                end;
+                ExcelBuffer.SetRange("Column No.", 7); // largo
+                if ExcelBuffer.FindSet() then begin
+                    Evaluate(Valor, ExcelBuffer."Cell Value as Text");
+                    if Valor <> 0 then
+                        ItemUnitOfMeasure.validate(Length, Valor);
+                end;
+                ItemUnitOfMeasure.validate(Weight, Item."Net Weight");
+                ItemUnitOfMeasure.Modify();
+            end;
+        end;
+        Message(StrSubstNo('Actualizados %1 registros', RecordAdd));
+    end;
 }

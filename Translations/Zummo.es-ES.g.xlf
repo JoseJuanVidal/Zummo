@@ -20521,6 +20521,18 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page StockPerAlmacen - Control Trans. Ord. Shipment (Qty.) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3113805797 - Method 3725062195 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select file</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccione fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Method ImportItemUnitoMeasure - NamedType lblDialog</note>
+          <target>Seleccione fichero</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Method 3725062195 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea importar el fichero Excel?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea importar el fichero Excel?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Method ImportItemUnitoMeasure - NamedType Text001</note>
+          <target>¿Desea importar el fichero Excel?</target>
+        </trans-unit>
         <trans-unit id="Page 3113805797 - Method 2278139542 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea actualizar toda la lista de precios %1 y fecha final %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar toda la lista de precios %1 y fecha final %2"</note>
@@ -20538,6 +20550,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="GTIN"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control GTIN - Property Caption</note>
           <target>GTIN</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 3581037481 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Height Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Altura Base"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control Height - Property Caption</note>
+          <target>Altura Base</target>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Control 827840431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bloqueado</source>
@@ -20563,6 +20581,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemCostingMethod - Property Caption</note>
           <target>Valoración Existencias</target>
         </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 913287085 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Weigh</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Bruto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemGrossWeigh - Property Caption</note>
+          <target>Peso Bruto</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 561122526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Net Weight</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Peso Neto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemNetWeitgh - Property Caption</note>
+          <target>Peso Neto</target>
+        </trans-unit>
         <trans-unit id="Page 3113805797 - Control 15740660 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sistema Reposición</source>
           <note from="Developer" annotates="general" priority="2">ESP="Sistema Reposición"</note>
@@ -20580,6 +20610,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Coste Unitario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control ItemUnitCost - Property Caption</note>
           <target>Coste Unitario</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 1881551368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Length Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Largo Base"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control Length - Property Caption</note>
+          <target>Largo Base</target>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Control 4115941482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PI2 Code</source>
@@ -20604,6 +20640,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="PI2 Model"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control PI2Model - Property Caption</note>
           <target>PI2 Model</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 613790498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> Width Base</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ancho Base"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control Width - Property Caption</note>
+          <target>Ancho Base</target>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Control 4093990710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Language</source>
@@ -20699,6 +20741,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Sincronizar Precio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action UpdateCRMOne - Property Caption</note>
           <target>Sincronizar Precio</target>
+        </trans-unit>
+        <trans-unit id="Page 3113805797 - Action 2882974566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importar Pesos y medidas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Pesos y Medidas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Action ImportUnitOfMeasure - Property Caption</note>
+          <target>Importar Pesos y Medidas</target>
         </trans-unit>
         <trans-unit id="Page 3113805797 - Action 2738761028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update Sales Price CRM</source>

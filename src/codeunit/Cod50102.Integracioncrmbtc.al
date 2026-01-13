@@ -405,7 +405,6 @@ codeunit 50102 "Integracion_crm_btc"
             DestinationFieldRef := DestinationRecordRef.FIELD(CRMquote.FIELDNO(Description));
             TypeHelper.WriteTextToBlobIfChanged(DestinationFieldRef, ShipmentMethod.Description, TEXTENCODING::UTF16);
         END;
-
         DestinationRecordRef.SETTABLE(CRMquote);
 
         //Calculo Portes
