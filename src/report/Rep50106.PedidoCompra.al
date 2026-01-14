@@ -547,6 +547,7 @@ report 50106 "Pedido Compra"
             {
                 DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
                 DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
+                column(lblPie; lblPie) { }
                 column(AmountCaptionLbl; AmountCaptionLbl)
                 {
                 }
@@ -682,9 +683,14 @@ report 50106 "Pedido Compra"
 
                     // segun el idioma del pedido, utilizar la descripcion de los productos en el idioma si existe
                     if "Purchase Line".type in ["Purchase Line".type::Item] then
-                        if "Purchase Header"."Language Code" <> '' then
-                            If ItemTranslation.Get("Purchase Line"."No.", "Purchase Line"."Variant Code", "Purchase Header"."Language Code") then
-                                "Purchase Line".Description := ItemTranslation.Description;
+                        case true of
+                            "Purchase Header"."Language Code" <> '':
+                                If ItemTranslation.Get("Purchase Line"."No.", "Purchase Line"."Variant Code", "Purchase Header"."Language Code") then
+                                    "Purchase Line".Description := ItemTranslation.Description;
+                            optIdioma <> optIdioma::" ":
+                                If ItemTranslation.Get("Purchase Line"."No.", "Purchase Line"."Variant Code", format(optIdioma)) then
+                                    "Purchase Line".Description := ItemTranslation.Description;
+                        end;
                     if "Purchase Line"."Expected Receipt Date" = 0D then
                         "Purchase Line"."Expected Receipt Date" := WorkDate();
                     //CurrReport.NEWPAGE;
@@ -1120,6 +1126,8 @@ report 50106 "Pedido Compra"
         HomePageCaptionLbl: Label 'Home Page', Comment = 'ESP="Página web"';
         EmailIDCaptionLbl: Label 'Email', Comment = 'ESP="Email"';
         AllowInvoiceDiscCaptionLbl: Label 'Allow Invoice Discount', Comment = 'ESP="Permite descuento factura"';
+        lblPie: Label 'In accordance with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons, we inform you that your data will be incorporated into the processing system owned by ZUMMO INNOVACIONES MECÁNICAS, S.A. for the purpose of sending you the corresponding invoice. You may exercise your rights of access, rectification, restriction of processing, erasure, portability, and objection/revocation under the terms established by the current data protection regulations by sending your request to the postal address indicated above. Likewise, you may contact the competent Supervisory Authority to lodge any complaint you deem appropriate.'
+            , comment = 'ESP="Según lo Dispuesto por el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de ZUMMO INNOVACIONES MECÁNICAS, S.A. - con la finalidad de poder remitirle la correspondiente factura. Podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición/revocación, en los términos que establece la normativa vigente en materia de protección de datos, dirigiendo su petición a la dirección postal arriba indicada, asimismo, podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna."';
         GLSetup: Record "General Ledger Setup";
         CompanyInfo: Record "Company Information";
         ShipmentMethod: Record "Shipment Method";
