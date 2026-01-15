@@ -682,15 +682,18 @@ report 50106 "Pedido Compra"
                     FormatDocument.SetPurchaseLine("Purchase Line", FormattedQuanitity, FormattedDirectUnitCost);
 
                     // segun el idioma del pedido, utilizar la descripcion de los productos en el idioma si existe
-                    if "Purchase Line".type in ["Purchase Line".type::Item] then
-                        case true of
-                            "Purchase Header"."Language Code" <> '':
-                                If ItemTranslation.Get("Purchase Line"."No.", "Purchase Line"."Variant Code", "Purchase Header"."Language Code") then
-                                    "Purchase Line".Description := ItemTranslation.Description;
-                            optIdioma <> optIdioma::" ":
+                    if "Purchase Line".type in ["Purchase Line".type::Item] then begin
+                        case optIdioma of
+                            optIdioma::" ":
+                                if "Purchase Header"."Language Code" <> '' then begin
+                                    If ItemTranslation.Get("Purchase Line"."No.", "Purchase Line"."Variant Code", "Purchase Header"."Language Code") then
+                                        "Purchase Line".Description := ItemTranslation.Description;
+                                end;
+                            else
                                 If ItemTranslation.Get("Purchase Line"."No.", "Purchase Line"."Variant Code", format(optIdioma)) then
                                     "Purchase Line".Description := ItemTranslation.Description;
                         end;
+                    end;
                     if "Purchase Line"."Expected Receipt Date" = 0D then
                         "Purchase Line"."Expected Receipt Date" := WorkDate();
                     //CurrReport.NEWPAGE;
