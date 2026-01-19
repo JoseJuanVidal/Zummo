@@ -32,7 +32,19 @@ page 17442 "ZM IT JIRA Projects"
                 {
                     ApplicationArea = all;
                 }
+                field(User; User)
+                {
+                    ApplicationArea = all;
+                }
                 field(Tasks; Tasks)
+                {
+                    ApplicationArea = all;
+                }
+                field(Status; Status)
+                {
+                    ApplicationArea = all;
+                }
+                field(Progression; Progression)
                 {
                     ApplicationArea = all;
                 }

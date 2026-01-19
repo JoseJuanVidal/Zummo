@@ -6,9 +6,17 @@ pageextension 50172 "VendorLedgerEntries" extends "Vendor Ledger Entries"
         {
             field(SaldoAcumulado; SaldoAcumulado)
             {
-
+                ApplicationArea = all;
             }
             field(FechaEmision; FechaEmision)
+            {
+                ApplicationArea = all;
+            }
+        }
+        addafter("Document Situation")
+        {
+
+            field("Bill Gr./Pmt. Order No."; "Bill Gr./Pmt. Order No.")
             {
                 ApplicationArea = all;
             }

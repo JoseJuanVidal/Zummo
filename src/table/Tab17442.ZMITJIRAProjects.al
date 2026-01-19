@@ -33,6 +33,19 @@ table 17442 "ZM IT JIRA Projects"
             CalcFormula = count("ZM IT JIRA Tickets" where(Project = field("key")));
             Editable = false;
         }
+        field(20; Status; Enum "ZM Contracts Status")
+        {
+            Caption = 'Status', comment = 'ESP="Estado"';
+        }
+        field(30; Progression; Enum "ZM Project Progression")
+        {
+            Caption = 'Progression', comment = 'ESP="Progresión"';
+        }
+        field(40; User; code[50])
+        {
+            Caption = 'User', comment = 'ESP="Usuario"';
+            TableRelation = "User Personalization"."User ID";
+        }
     }
 
     keys

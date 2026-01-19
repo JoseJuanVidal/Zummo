@@ -1238,7 +1238,7 @@ table 17462 "ZM PL Items Temporary"
         field(59001; Largo; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Largo', comment = 'ESP="Largo"';
+            Caption = 'Largo (mm)', comment = 'ESP="Largo (mm)"';
             trigger OnValidate()
             begin
                 ChangeFieldNo(Rec.FieldNo(Largo));
@@ -1247,7 +1247,7 @@ table 17462 "ZM PL Items Temporary"
         field(59002; Ancho; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Ancho', comment = 'ESP="Ancho"';
+            Caption = 'Ancho (mm)', comment = 'ESP="Ancho (mm)"';
             trigger OnValidate()
             begin
                 ChangeFieldNo(Rec.FieldNo(Ancho));
@@ -1256,7 +1256,7 @@ table 17462 "ZM PL Items Temporary"
         field(59003; Alto; Decimal)
         {
             DataClassification = CustomerContent;
-            Caption = 'Alto', comment = 'ESP="Alto"';
+            Caption = 'Alto (mm)', comment = 'ESP="Alto (mm)"';
             trigger OnValidate()
             begin
                 ChangeFieldNo(Rec.FieldNo(Alto));
@@ -1734,8 +1734,6 @@ table 17462 "ZM PL Items Temporary"
     var
         Companyinfo: Record "Company Information";
         Employee: Record Employee;
-        RefRecord: RecordRef;
-        xRefRecord: RecordRef;
         CodEmpleado: code[20];
         Color: text;
     begin
@@ -1760,29 +1758,27 @@ table 17462 "ZM PL Items Temporary"
         Body += '<p><strong>' + Rec.FieldCaption("Posting Date") + '</strong>: ' + format(Rec."Posting Date") + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Activity) + '</strong>: ' + Rec.Activity + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Prototype) + '</strong>: ' + Rec.Prototype + '</p>';
-        if Item.Get(Rec."Item No.") then begin
-            RefRecord.GetTable(Rec);
-            xRefRecord.GetTable(Item);
-            Body += CheckChangesRec(RefRecord, xRefRecord);
-        end;
+        if Rec."Request Type" in [Rec."Request Type"::Change] then
+            Body += CheckChangesRec();
     end;
 
-    local procedure CheckChangesRec(RefRecord: RecordRef; xRefRecord: RecordRef) Changes: Text
+    local procedure CheckChangesRec() Changes: Text
     var
-        RefField: FieldRef;
-        xRefField: FieldRef;
-        FieldCount: Integer;
-        Count: Integer;
-        I: Integer;
+        ChangeLogEntry: Record "Change Log Entry";
+        RefRecord: RecordRef;
     begin
-        for i := 1 to FieldCount do begin
-            xRefField := xRefRecord.FieldIndex(i);
-            if RefRecord.FieldExist(xRefField.Number) then begin
-                RefField := RefRecord.Field(xRefField.Number);
-                if xRefField.Value <> RefField.Value then
-                    Changes += '<p><strong>' + xRefField.Caption + '</strong>: ' + StrSubstNo('%1 (antes: %2)', xRefField.Value, RefField.Value) + '</p>';
-            end;
-        end;
+        RefRecord.Open(Database::Item);
+        ChangeLogEntry.Reset();
+        ChangeLogEntry.SetRange("Table No.", Database::"ZM PL Items Temporary");
+        ChangeLogEntry.SetRange("Primary Key Field 1 Value", Rec."No.");
+        if ChangeLogEntry.FindFirst() then
+            repeat
+                if ChangeLogEntry."Field No." > 2 then
+                    if RefRecord.FieldExist(ChangeLogEntry."Field No.") then begin
+                        ChangeLogEntry.CalcFields("Field Caption");
+                        Changes += '<p><strong>' + ChangeLogEntry."Field Caption" + '</strong>: ' + StrSubstNo('%1 (<span style="color: #ff0000;">antes: %2</span>)', ChangeLogEntry."New Value", ChangeLogEntry."Old Value") + '</p>';
+                    end;
+            Until ChangeLogEntry.next() = 0;
         if Changes <> '' then
             Changes := '<h3 style="color: #2e6c80;">Cambios:</h3>' + Changes;
 
@@ -2054,6 +2050,14 @@ table 17462 "ZM PL Items Temporary"
         Rec."No." := OldRequestNo;
         Rec."Item No." := Item."No.";
         Rec."ITBID Status" := Rec."ITBID Status"::Created;
+        case Item.Type of
+            Item.Type::Inventory:
+                Rec."Clasification Type" := Rec."Clasification Type"::Inventory;
+            Item.Type::"Non-Inventory":
+                Rec."Clasification Type" := Rec."Clasification Type"::"Non-Inventory";
+            Item.Type::Service:
+                Rec."Clasification Type" := Rec."Clasification Type"::Service;
+        end;
         UpdateItemExtendedFields(Item);
 
         // comprobamos si el producto tiene lista de Producción orignal
@@ -2275,10 +2279,10 @@ table 17462 "ZM PL Items Temporary"
         ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
         if ItemSetupApproval.FindFirst() then
             repeat
-                if ItemSetupDepartment.get(ItemSetupApproval.Department) then
-                    if ItemSetupDepartment."User Id" = UserId then begin
-                        CheckObligatoryField(RefRecord, ItemSetupApproval."Field No.");
-                    end;
+                // if ItemSetupDepartment.get(ItemSetupApproval.Department) then
+                //     if ItemSetupDepartment."User Id" = UserId then begin
+                CheckObligatoryField(RefRecord, ItemSetupApproval."Field No.");
+            // end;
             until ItemSetupApproval.Next() = 0;
 
     end;
@@ -2295,15 +2299,16 @@ table 17462 "ZM PL Items Temporary"
     begin
         Item.Reset();
         case Rec."Request Type" of
-            Rec."Request Type"::Blocked, Rec."Request Type"::Change:
+            Rec."Request Type"::Blocked:
                 Item.SetRange(Blocked, false);
             Rec."Request Type"::Unlocking:
                 Item.SetRange(Blocked, true);
-        end;
-        if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
-            exit;
-        Rec.Validate("Item No.", Item."No.");
+            Rec."Request Type"::Change:
+                if not (Page.RunModal(page::"Item Lookup", Item) = Action::LookupOK) then
+                    exit;
 
+        end;
+        Rec.Validate("Item No.", Item."No.");
     end;
 
     procedure UpdateItemExtendedFields(Item: Record Item)

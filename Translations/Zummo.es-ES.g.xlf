@@ -10967,6 +10967,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field name - Property Caption</note>
           <target>Nombre</target>
         </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 697166063 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Progression</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Progresión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field Progression - Property Caption</note>
+          <target>Progresión</target>
+        </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field Status - Property Caption</note>
+          <target>Estado</target>
+        </trans-unit>
         <trans-unit id="Table 2254326384 - Field 2973329650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Task</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tareas"</note>
@@ -10978,6 +10990,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field Type - Property Caption</note>
           <target>Tipo</target>
+        </trans-unit>
+        <trans-unit id="Table 2254326384 - Field 1814464443 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Projects - Field User - Property Caption</note>
+          <target>Usuario</target>
         </trans-unit>
         <trans-unit id="Table 1063719647 - Field 368050251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assignee</source>
@@ -11848,16 +11866,16 @@
           <target>Nº producto alternativo</target>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 535175658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Alto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Alto"</note>
+          <source>Alto (mm)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Alto (mm)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Alto - Property Caption</note>
-          <target>Alto</target>
+          <target>Alto (mm)</target>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 3127722509 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ancho</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Ancho"</note>
+          <source>Ancho (mm)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ancho (mm)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Ancho - Property Caption</note>
-          <target>Ancho</target>
+          <target>Ancho (mm)</target>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 3967890522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assembly BOM</source>
@@ -12134,10 +12152,10 @@
           <target>Cód. seguim. prod.</target>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 1989324353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Largo</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Largo"</note>
+          <source>Largo (mm)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Largo (mm)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Largo - Property Caption</note>
-          <target>Largo</target>
+          <target>Largo (mm)</target>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 1009775796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lead Time Calculation</source>
@@ -22823,9 +22841,9 @@
         </trans-unit>
         <trans-unit id="Page 3858912784 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Print"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Imprimir"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action Print - Property Caption</note>
-          <target>Print</target>
+          <target>Imprimir</target>
         </trans-unit>
         <trans-unit id="Page 988243340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General Setup Item registration</source>
@@ -41900,6 +41918,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field N. Visitas - Property Caption</note>
           <target>Nº Visita</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2479720606 - Field 1911659303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
+          <source>Num Ciclos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Num Ciclos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ServiceHeader - Field NumCiclos_btc - Property Caption</note>
+          <target>Num Ciclos</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2479720606 - Field 3442832110 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3610197182">
           <source>Service Shelf No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº estantería"</note>
@@ -43750,6 +43774,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Grupo registro negocio gen."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor Posting Group - Field Gen. Business Posting Group - Property Caption</note>
           <target>Grupo registro negocio gen.</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4104438143 - Field 2349939403 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 406314583">
+          <source>Bill Gr./Pmt. Order No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº remesa/ord. pago"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorLedgerEntry - Field Bill Gr./Pmt. Order No. - Property Caption</note>
+          <target>Nº remesa/ord. pago</target>
         </trans-unit>
         <trans-unit id="TableExtension 4104438143 - Field 2906867365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 406314583">
           <source>código clasificación</source>

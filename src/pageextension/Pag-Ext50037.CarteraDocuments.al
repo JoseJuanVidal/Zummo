@@ -4,6 +4,10 @@ pageextension 50037 "CarteraDocuments" extends "Cartera Documents"
     {
         addafter("Account No.")
         {
+            field("Bill Gr./Pmt. Order No."; "Bill Gr./Pmt. Order No.")
+            {
+                ApplicationArea = all;
+            }
             field(txtNomb; txtNombre)
             {
                 ApplicationArea = All;

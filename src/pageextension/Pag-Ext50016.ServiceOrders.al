@@ -31,6 +31,10 @@ pageextension 50016 "ServiceOrders" extends "Service Orders"
             {
                 ApplicationArea = All;
             }
+            field(NumCiclos_btc; NumCiclos_btc)
+            {
+                ApplicationArea = all;
+            }
             field(CodAnterior_btc; CodAnterior_btc)
             {
                 ApplicationArea = All;

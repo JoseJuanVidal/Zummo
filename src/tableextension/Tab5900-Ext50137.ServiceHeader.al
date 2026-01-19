@@ -135,5 +135,12 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
             FieldClass = FlowField;
             CalcFormula = min("Service Item Line".Fechaemtregamaterial_sth where("Document Type" = field("Document Type"), "Document No." = field("No.")));
         }
+        field(50220; NumCiclos_btc; Integer)
+        {
+            Editable = false;
+            Caption = 'Num Ciclos', comment = 'ESP="Num Ciclos"';
+            FieldClass = FlowField;
+            CalcFormula = sum("Service Item Line".NumCiclos_btc where("Document Type" = field("Document Type"), "Document No." = field("No.")));
+        }
     }
 }

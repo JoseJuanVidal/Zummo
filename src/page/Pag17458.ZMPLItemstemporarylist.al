@@ -5,7 +5,7 @@ page 17458 "ZM PL Items temporary list"
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
     SourceTable = "ZM PL Items temporary";
-    // Editable = false;
+    Editable = false;
     UsageCategory = Lists;
     CardPageId = "ZM PL Items temporary card";
 
@@ -138,7 +138,7 @@ page 17458 "ZM PL Items temporary list"
             // {
             //     ApplicationArea = all;
             //     Caption = 'Conf. Alta Productos', comment = 'ESP="Conf. Alta Productos"';
-            //     Image = Setup;
+            //     Image = Setup;s
             //     Promoted = true;
             //     PromotedCategory = Process;
             //     RunObject = page "ZM PL Setup Item registration";
@@ -166,8 +166,7 @@ page 17458 "ZM PL Items temporary list"
                 var
                     lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 (%2)?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 (%2)?"';
                 begin
-                    if Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
-                        Rec.LaunchRegisterItemTemporary(false);
+                    Rec.LaunchRegisterItemTemporary(false);
                 end;
             }
             action(SolicitudDepartamento)
@@ -313,7 +312,7 @@ page 17458 "ZM PL Items temporary list"
             action(Print)
             {
                 ApplicationArea = all;
-                Caption = 'Print', comment = 'ESP="Print"';
+                Caption = 'Print', comment = 'ESP="Imprimir"';
                 Image = Print;
                 Promoted = true;
                 PromotedCategory = Report;

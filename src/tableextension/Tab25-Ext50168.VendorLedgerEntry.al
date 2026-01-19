@@ -8,21 +8,28 @@ tableextension 50168 "VendorLedgerEntry" extends "Vendor Ledger Entry" //25
             DataClassification = CustomerContent;
             Caption = 'Saldo Acumulado', comment = 'ESP="Saldo Acumulado"';
             Editable = false;
-       }
+        }
 
         field(50002; NombreProveedor; Text[100])
         {
             Editable = false;
             Caption = 'Vendor Name', comment = 'ESP="Nombre Proveedor"';
             FieldClass = FlowField;
-            CalcFormula = lookup (Vendor.Name where("No." = field("Vendor No.")));
+            CalcFormula = lookup(Vendor.Name where("No." = field("Vendor No.")));
         }
         field(50003; "código clasificación"; Code[20])
         {
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("Cartera Doc."."Category Code" where("Entry No." = field("Entry No."), Type = const(Payable)));
+            CalcFormula = lookup("Cartera Doc."."Category Code" where("Entry No." = field("Entry No."), Type = const(Payable)));
             Caption = 'código clasificación', comment = 'ESP="código clasificación"';
+        }
+        field(50004; "Bill Gr./Pmt. Order No."; Code[20])
+        {
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Cartera Doc."."Bill Gr./Pmt. Order No." where("Entry No." = field("Entry No."), Type = const(Payable)));
+            Caption = 'Bill Gr./Pmt. Order No.', comment = 'ESP="Nº remesa/ord. pago"';
         }
     }
 

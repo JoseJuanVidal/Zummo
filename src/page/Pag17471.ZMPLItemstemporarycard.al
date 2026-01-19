@@ -911,8 +911,9 @@ page 17471 "ZM PL Items temporary card"
         ItemSetupApproval: Record "ZM PL Item Setup Approval";
         ItemSetupDepartment: Record "ZM PL Item Setup Department";
         ItemsRegisterAprovals: Codeunit "ZM PL Items Regist. aprovals";
+
         WorkDescription: text;
-        ShowField: array[100] of Integer;
+        ChangeField: array[100] of Boolean;
         ShowSEBCodes: Boolean;
         ShowSections: Boolean;
         IsUserApproval: Boolean;
