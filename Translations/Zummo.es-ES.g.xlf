@@ -37428,18 +37428,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Demand Forecast Names - Action NavigateEntries - Property Caption</note>
           <target>Movs. prevision</target>
         </trans-unit>
-        <trans-unit id="PageExtension 2239949309 - NamedType 4218430689" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2239949309">
-          <source>¿Desea Añadir %1 como contacto del %3?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Añadir %1 como contacto del %3?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Email Dialog - NamedType lblConfirmEstandarText</note>
-          <target>¿Desea Añadir %1 como contacto del %3?</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 2239949309 - Action 1568017960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3999168608">
-          <source>Select Estandar Text</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Texto Estandar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Email Dialog - Action changeLanguage - Property Caption</note>
-          <target>Texto Estandar</target>
-        </trans-unit>
         <trans-unit id="PageExtension 2369002940 - Action 397840741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Daily Time Sheet</source>
           <note from="Developer" annotates="general" priority="2">ESP="Partes Diarios"</note>
@@ -37481,6 +37469,42 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los movimientos de Costes de %1?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Ext Value Entries - Action UpdateGLentryValues - Method OnAction - NamedType lblConfirm</note>
           <target>¿Desea actualizar los movimientos de Costes de %1?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3593776199 - NamedType 1968152428" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3593776199">
+          <source>Seleccionar Fichero</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar Fichero"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Extended Text - NamedType DialogTitle</note>
+          <target>Seleccionar Fichero</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3593776199 - NamedType 2832635170" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3593776199">
+          <source>All Files (*.*)|*.*</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Todos Ficheros (*.*)|*.*"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Extended Text - NamedType FromFilter</note>
+          <target>Todos Ficheros (*.*)|*.*</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3593776199 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3593776199">
+          <source>¿Desea eliminar la Firma?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea elimiinar la firma?="</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Extended Text - NamedType lblConfirm</note>
+          <target>"¿Desea elimiinar la firma?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3593776199 - Action 2197966359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1997869518">
+          <source>Delete Signature</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Borrar Firma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Extended Text - Action DeleteSignature - Property Caption</note>
+          <target>Borrar Firma</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3593776199 - Action 1139572727 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1997869518">
+          <source>Upload Signature</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cargar Firma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Extended Text - Action UploadFile - Property Caption</note>
+          <target>Cargar Firma</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3593776199 - Control 3765202864 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1997869518">
+          <source>Signature</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Firma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Extended Text - Control Signature - Property Caption</note>
+          <target>Firma</target>
         </trans-unit>
         <trans-unit id="PageExtension 622661945 - Method 1224106127 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 622661945">
           <source>¿Desea exportar los documentos de %1 Movs. A/F?</source>
@@ -44027,6 +44051,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Recep. alm. cantidad a cero"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Warehouse Setup - Field Recep. alm. cantidad a cero - Property Caption</note>
           <target>Recep. alm. cantidad a cero</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 444717694 - Field 3765202864 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2981049439">
+          <source>Signature</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Firma"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Extended Text Header - Field Signature - Property Caption</note>
+          <target>Firma</target>
         </trans-unit>
         <trans-unit id="TableExtension 2451929409 - Method 1044311127 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2451929409">
           <source>La solicitud ya ha sido facturada en el documento %1</source>

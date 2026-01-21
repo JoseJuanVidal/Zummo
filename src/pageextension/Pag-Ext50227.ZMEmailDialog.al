@@ -1,4 +1,4 @@
-pageextension 50227 "ZM Email Dialog" extends "Email Dialog"
+/*pageextension 50227 "ZM Email Dialog" extends "Email Dialog"
 {
     layout
     {
@@ -48,6 +48,7 @@ pageextension 50227 "ZM Email Dialog" extends "Email Dialog"
         PurchaseSetup: Record "Purchases & Payables Setup";
         PurchaseHeader: Record "Purchase Header";
         ExtendedTextHeader: Record "Extended Text Header";
+        TempBlob: Record TempBlob;
         ExtendedTextList: page "Extended Text List";
         Eventosbtc: Codeunit Eventos_btc;
         lblConfirmEstandarText: Label '¿Desea Añadir %1 como contacto del %3?', comment = 'ESP="¿Desea Añadir %1 como contacto del %3?"';
@@ -71,9 +72,10 @@ pageextension 50227 "ZM Email Dialog" extends "Email Dialog"
         if ExtendedTextList.RunModal() = Action::LookupOK then begin
             ExtendedTextList.GetRecord(ExtendedTextHeader);
             PurchaseHeader."Language Code" := ExtendedTextHeader."Language Code";
-            Eventosbtc.getTextoEmailCompra(PurchaseHeader, BodyText);
-            // CurrPage.BodyHTMLMessage.SetContent(BodyText);
+            Eventosbtc.getTextoEmailCompra(PurchaseHeader, TempBlob);
+            //CurrPage.BodyHTMLMessage.SetContent(BodyText);
         end;
     end;
 }
 
+*/

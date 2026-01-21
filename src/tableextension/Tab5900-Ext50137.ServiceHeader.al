@@ -140,7 +140,7 @@ tableextension 50137 "ServiceHeader" extends "Service Header"  //5900
             Editable = false;
             Caption = 'Num Ciclos', comment = 'ESP="Num Ciclos"';
             FieldClass = FlowField;
-            CalcFormula = sum("Service Item Line".NumCiclos_btc where("Document Type" = field("Document Type"), "Document No." = field("No.")));
+            CalcFormula = lookup("Service Item Line".NumCiclos_btc where("Document Type" = field("Document Type"), "Document No." = field("No.")));
         }
     }
 }

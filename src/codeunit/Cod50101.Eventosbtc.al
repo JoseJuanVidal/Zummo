@@ -1868,19 +1868,19 @@ codeunit 50101 "Eventos_btc"
         // PurchaseSetup.CalcFields(TextoEmailPedCompra_btc);
         SetEmailSenders(TempEmailItem);
         GetVendorEmail(TempEmailItem, PurchaseHeader);
-        if getTextoEmailCompra(PurchaseHeader, BodyText) then begin
-            Clear(FileTxt);
-            FileTxt.WriteMode(true);
-            FileTxt.Create(FilePath);
-            FileTxt.CreateOutStream(TextOutSream);
-            BodyText := UpdateTableFieldName(PurchaseHeader, BodyText);
-            TextOutSream.WriteText(BodyText);
-            FileTxt.Close();
-
+        if getTextoEmailCompra(PurchaseHeader, TempBlob) then begin
+            TempBlob.Blob.Export(FilePath);
+            // Clear(FileTxt);
+            // FileTxt.WriteMode(true);
+            // FileTxt.Create(FilePath);
+            // FileTxt.CreateOutStream(TextOutSream);
+            // BodyText := UpdateTableFieldName(PurchaseHeader, BodyText);
+            // TextOutSream.WriteText(BodyText);
+            // FileTxt.Close();
+            // FilePath := 'C:\ZUMMO\TEMP\Signature.html';
             TempEmailItem.Validate("Plaintext Formatted", false);
             TempEmailItem.Validate("Message Type", TempEmailItem."Message Type"::"From Email Body Template");
             TempEmailItem.Validate("Body File Path", FilePath);
-
         end;
         FileNameMerge := TempEmailItem."Attachment File Path";
         Funciones.CrearPDFPurchaseOrder(PurchaseHeader, FileNameMerge);
@@ -1906,35 +1906,63 @@ codeunit 50101 "Eventos_btc"
         // Buscamos el campo de proveedor nuevo, a ver que dato tiene
     end;
 
-    procedure getTextoEmailCompra(PurchaseHeader: Record "Purchase Header"; var BodyText: Text): Boolean
+    procedure getTextoEmailCompra(PurchaseHeader: Record "Purchase Header"; var TempBlob: Record TempBlob) HasBody: Boolean
     var
         PurchaseSetup: Record "Purchases & Payables Setup";
+        StandarTextHeader: Record "Extended Text Header";
         StandarTextLine: Record "Extended Text Line";
+        BodyText: TextBuilder;
+        InStr: InStream;
+        OutStr: OutStream;
+        LineText: text;
     begin
         PurchaseSetup.Get();
-
+        TempBlob.Blob.CreateOutStream(OutStr);
         if PurchaseSetup."Standard Text Code" <> '' then begin
             StandarTextLine.SetRange("No.", PurchaseSetup."Standard Text Code");
             StandarTextLine.SetRange("Language Code", PurchaseHeader."Language Code");
             if StandarTextLine.FindSet() then begin
-                repeat
-                    BodyText += StandarTextLine.Text;
-                until StandarTextLine.Next() = 0;
-                exit(true);
+                // buscamos si tiene signature
+                if StandarTextHeader.Get(StandarTextLine."Table Name", StandarTextLine."No.", StandarTextLine."Language Code", StandarTextLine."Text No.") then;
+                StandarTextHeader.CalcFields(Signature);
+                if StandarTextHeader.Signature.HasValue then begin
+                    StandarTextHeader.Signature.CreateInStream(InStr);
+                    while not InStr.EOS do begin
+                        InStr.ReadText(LineText);
+                        BodyText.AppendLine(LineText);
+                    end;
+                end else begin
+                    repeat
+                        BodyText.AppendLine(StandarTextLine.Text);
+                    until StandarTextLine.Next() = 0;
+                end;
+                HasBody := true;
             end else begin
                 StandarTextLine.SetRange("Language Code", '');
                 if StandarTextLine.FindSet() then begin
-                    repeat
-                        BodyText += StandarTextLine.Text;
-                    until StandarTextLine.Next() = 0;
-                    exit(true);
+                    // buscamos si tiene signature
+                    if StandarTextHeader.Get(StandarTextLine."Table Name", StandarTextLine."No.", StandarTextLine."Language Code", StandarTextLine."Text No.") then;
+                    StandarTextHeader.CalcFields(Signature);
+                    if StandarTextHeader.Signature.HasValue then begin
+                        StandarTextHeader.Signature.CreateInStream(InStr);
+                    end else begin
+                        repeat
+                            BodyText.AppendLine(StandarTextLine.Text);
+                        until StandarTextLine.Next() = 0;
+                    end;
+                    HasBody := true;
                 end;
             end;
         end;
+        UpdateTableFieldName(PurchaseHeader, BodyText);
+        OutStr.WriteText(BodyText.ToText());
+        exit(HasBody);
     end;
 
-    local procedure UpdateTableFieldName(PurchaseHeader: Record "Purchase Header"; BodyText: text): Text
+    local procedure UpdateTableFieldName(PurchaseHeader: Record "Purchase Header"; var BodyText: TextBuilder)
     var
+        Employee: Record Employee;
+        AutLoginMgt: Codeunit "AUT Login Mgt.";
         TypeHelper: Codeunit "Type Helper";
         TablaRecordRef: RecordRef;
         CampoFieldRef: FieldRef;
@@ -1943,9 +1971,23 @@ codeunit 50101 "Eventos_btc"
         FieldName: text;
         FieldValue: text;
         lblControl: Label '#';
-        TextB: TextBuilder;
     begin
-        TextB.Append(BodyText);
+        if Employee.get(AutLoginMgt.GetEmpleado()) then;
+        // actualizamos los datos del usuario (Nombre, email, Cargo y telefono
+        // #username# #cargo# #mobile#  #email#
+        FieldName := StrSubstNo('%1%2%1', lblControl, 'username');
+        FieldValue := Employee.FullName();
+        BodyText.Replace(FieldName, FieldValue);
+        FieldName := StrSubstNo('%1%2%1', lblControl, 'cargo');
+        FieldValue := Employee."Job Title";
+        BodyText.Replace(FieldName, FieldValue);
+        FieldName := StrSubstNo('%1%2%1', lblControl, 'mobile');
+        FieldValue := Employee."Phone No.";
+        BodyText.Replace(FieldName, FieldValue);
+        FieldName := StrSubstNo('%1%2%1', lblControl, 'email');
+        FieldValue := Employee."Company E-Mail";
+        BodyText.Replace(FieldName, FieldValue);
+        // actualizamos los datos de la tabla PuchaseHeader
         TablaRecordRef.GetTable(PurchaseHeader);
         FieldCount := 1;
         while FieldCount < TablaRecordRef.FieldCount do begin
@@ -1956,10 +1998,9 @@ codeunit 50101 "Eventos_btc"
                 FieldName := StrSubstNo('%1%2%1', lblControl, CampoFieldRef.Name);
                 FieldValue := CampoFieldRef.Value;
                 FieldValue := TypeHelper.HtmlEncode(FieldValue);
-                TextB.Replace(FieldName, FieldValue);
+                BodyText.Replace(FieldName, FieldValue);
             end;
         end;
-        exit(TextB.ToText());
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterModifyEvent', '', true, true)]

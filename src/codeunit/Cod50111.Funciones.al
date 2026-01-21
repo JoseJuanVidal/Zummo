@@ -3579,12 +3579,15 @@ codeunit 50111 "Funciones"
             FileNameMerge := GetGeneralConditions(PurchaseSetup.FieldNo("General Conditions Pur. (ENG)"), FileNameMerge)
         else
             FileNameMerge := GetGeneralConditions(PurchaseSetup.FieldNo("General Conditions Purchase"), FileNameMerge);
-        if FileNameMerge <> '' then begin
+
+        if FileNameMerge = '' then begin
+            FileNameMerge := FileName;
+        end else begin
             FileManagement.CopyServerFile(FileNameMerge, FileNameMerge2, true);
             files.add(FileNameMerge2);
+            SothisPDF.Merge(files, FileNameMerge, FALSE);
         end;
 
-        SothisPDF.Merge(files, FileNameMerge, FALSE);
         FileManagement.CopyServerFile(FileNameMerge, FileNamePath, true);
         // FileName := StrSubstNo('%1.%2', PurchaseHeader."No.", FileManagement.GetExtension(FileNameMerge2));
     end;
