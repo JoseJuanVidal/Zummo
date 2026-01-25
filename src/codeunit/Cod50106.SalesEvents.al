@@ -569,53 +569,39 @@ codeunit 50106 "SalesEvents"
         ZummoInnICFunctions: Codeunit "Zummo Inn. IC Functions";
     begin
         //Si tiene Pedido de Servicio Asociado cambio estado a Finalizado y anoto numero de Albaran
-
         //Guardar Nº asiento/factura
+        // JJ 23/01/2026 no tiene lugar de ser este codigo, NO HACE NADA
+        /* if (SalesInvHdrNo <> '') or (SalesCrMemoHdrNo <> '') then
+             if SalesInvHdrNo <> '' then begin
+                 recSalesInvHeader.Get(SalesInvHdrNo);
 
+                 recGlEntry.Reset();
+                 recGlEntry.SetRange("Posting Date", recSalesInvHeader."Posting Date");
+                 recGlEntry.SetRange("Document No.", recSalesInvHeader."No.");
+             end else begin
+                 recSalesCrMemHeader.Get(SalesCrMemoHdrNo);
+
+                 recGlEntry.Reset();
+                 recGlEntry.SetRange("Posting Date", recSalesCrMemHeader."Posting Date");
+             end;*/
         if (SalesInvHdrNo <> '') or (SalesCrMemoHdrNo <> '') then
             if SalesInvHdrNo <> '' then begin
-                recSalesInvHeader.Get(SalesInvHdrNo);
-
-                recGlEntry.Reset();
-                recGlEntry.SetRange("Posting Date", recSalesInvHeader."Posting Date");
-                recGlEntry.SetRange("Document No.", recSalesInvHeader."No.");
+                if recSalesInvHeader.Get(SalesInvHdrNo) then
+                    if Customer.Get(recSalesInvHeader."Bill-to Customer No.") then
+                        if Customer.PermiteEnvioMail_btc then begin
+                            recSalesInvHeader.CorreoEnviado_btc := false;
+                            recSalesInvHeader.FacturacionElec_btc := true;
+                            recSalesInvHeader.Modify();
+                        end;
             end else begin
-                recSalesCrMemHeader.Get(SalesCrMemoHdrNo);
-
-                recGlEntry.Reset();
-                recGlEntry.SetRange("Posting Date", recSalesCrMemHeader."Posting Date");
-            end;
-        if (SalesInvHdrNo <> '') or (SalesCrMemoHdrNo <> '') then
-            if SalesInvHdrNo <> '' then begin
-
-                recSalesInvHeader.Reset();
-                recSalesInvHeader.SetRange("No.", SalesInvHdrNo);
-                if not recSalesInvHeader.FindFirst() then
-                    exit;
-
-                Customer.get(recSalesInvHeader."Bill-to Customer No.");
-                if not Customer.PermiteEnvioMail_btc then
-                    exit;
-
-                recSalesInvHeader.CorreoEnviado_btc := false;
-                recSalesInvHeader.FacturacionElec_btc := true;
-                recSalesInvHeader.Modify();
-            end else begin
-
-                recSalesCrMemHeader.Reset();
-                recSalesCrMemHeader.SetRange("No.", SalesCrMemoHdrNo);
-                if not recSalesCrMemHeader.FindFirst() then
-                    exit;
-
-                Customer.get(recSalesCrMemHeader."Bill-to Customer No.");
-                if not Customer.PermiteEnvioMail_btc then
-                    exit;
-
-                recSalesCrMemHeader.get(SalesCrMemoHdrNo);
-                recSalesCrMemHeader.CorreoEnviado_btc := false;
-                recSalesCrMemHeader.FacturacionElec_btc := true;
-                recSalesCrMemHeader.Modify();
-
+                if recSalesCrMemHeader.Get(SalesCrMemoHdrNo) then
+                    if Customer.get(recSalesCrMemHeader."Bill-to Customer No.") then
+                        if Customer.PermiteEnvioMail_btc then begin
+                            recSalesCrMemHeader.get(SalesCrMemoHdrNo);
+                            recSalesCrMemHeader.CorreoEnviado_btc := false;
+                            recSalesCrMemHeader.FacturacionElec_btc := true;
+                            recSalesCrMemHeader.Modify();
+                        end;
             end;
 
         //ACV 27/06/22 Zummo IC - Enviar notificacion por correo al registrar albaran

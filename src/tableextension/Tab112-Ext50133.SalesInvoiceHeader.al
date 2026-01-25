@@ -100,6 +100,7 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
         {
             DataClassification = CustomerContent;
             Caption = 'Factura enviada', comment = 'ESP="Factura enviada"';
+            ObsoleteState = Removed;
         }
         field(50020; CentralCompras_btc; Code[20])
         {

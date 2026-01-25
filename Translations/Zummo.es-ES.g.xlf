@@ -17686,6 +17686,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Log Envío e-mails clientes - Property Caption</note>
           <target>Log Envío e-mails clientes</target>
         </trans-unit>
+        <trans-unit id="Page 250020937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Envio Emails Facturas/Abonos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Log Envio Emails Facturas/Abonos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LogEnvioEmailsClientes - Property Caption</note>
+          <target>Log Envio Emails Facturas/Abonos</target>
+        </trans-unit>
         <trans-unit id="Page 2905503531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Capacity Work Center Matrix</source>
           <note from="Developer" annotates="general" priority="2">ESP="Matriz Capacidad centro trabajo"</note>
@@ -36046,6 +36052,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="&amp;Correo electrónico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Email_btc - Property Caption</note>
           <target>&amp;Correo electrónico</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 2874684627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Marca No enviado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marca No enviado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action MarcarNoEnviado - Property Caption</note>
+          <target>Marca No enviado</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 2874684627 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 549456760">
+          <source>¿Desea marcar repetir envío?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar repetir envío?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action MarcarNoEnviado - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea marcar repetir envío?</target>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 3810131670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Act. Coste Documentos</source>

@@ -401,6 +401,21 @@ pageextension 50005 "CustomerList" extends "Customer List"
             }
 
         }
+        addlast(Processing)
+        {
+            action(EnvioMasivoMail)
+            {
+                ApplicationArea = all;
+
+                trigger OnAction()
+                var
+                    CUCron: Codeunit CU_Cron;
+                begin
+                    if confirm('¿Envio de Facturacion electronica?') then
+                        CUCron.EnvioMasivoMail();
+                end;
+            }
+        }
     }
 
 

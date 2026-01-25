@@ -3485,14 +3485,14 @@ codeunit 50111 "Funciones"
             PurchaseLine.Modify();
     end;
 
-    procedure MarkFacturaenviada(var SalesInvHeader: Record "Sales Invoice Header")
-    begin
-        if SalesInvHeader.findset() then
-            repeat
-                SalesInvHeader.EnvioFactura_zm := not SalesInvHeader.EnvioFactura_zm;
-                SalesInvHeader.Modify();
-            Until SalesInvHeader.next() = 0;
-    end;
+    // procedure MarkFacturaenviada(var SalesInvHeader: Record "Sales Invoice Header")
+    // begin
+    //     if SalesInvHeader.findset() then
+    //         repeat
+    //             SalesInvHeader.EnvioFactura_zm := not SalesInvHeader.EnvioFactura_zm;
+    //             SalesInvHeader.Modify();
+    //         Until SalesInvHeader.next() = 0;
+    // end;
 
     // =============      ExportarPDFPurchaseOrder         ====================
     // ==  

@@ -79,7 +79,23 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
                     cduCron.EnvioPersonalizado(Rec);
                 end;
             }
+            action(MarcarNoEnviado)
+            {
+                ApplicationArea = All;
+                Image = MakeOrder;
+                Caption = 'Marca No enviado', comment = 'ESP="Marca No enviado"';
+                trigger onAction()
+                var
+                    lblConfirm: Label '¿Desea marcar repetir envío?', comment = 'ESP="¿Desea marcar repetir envío?"';
+                begin
+                    if not confirm(lblConfirm) then
+                        exit;
+                    Rec.FacturacionElec_btc := true;
+                    Rec.CorreoEnviado_btc := not Rec.CorreoEnviado_btc;
+                    REc.Modify();
 
+                end;
+            }
         }
         modify("Send by &Email")
         {

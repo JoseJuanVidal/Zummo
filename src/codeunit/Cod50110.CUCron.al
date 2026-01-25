@@ -483,7 +483,7 @@ codeunit 50110 "CU_Cron"
         end;
     end;
 
-    local procedure EnvioMasivoMail()
+    procedure EnvioMasivoMail()
     var
         recCabHcoFactVta: Record "Sales Invoice Header";
         recCabHcoAbVta: Record "Sales Cr.Memo Header";
@@ -491,7 +491,6 @@ codeunit 50110 "CU_Cron"
         recLogEnvio: Record LogEnvioEmailsClientes;
         tmpLogEnvio: Record LogEnvioEmailsClientes temporary;
         cduMailManagement: Codeunit "Mail Management";
-
     begin
         recCabHcoFactVta.Reset();
         recCabHcoFactVta.SetRange(FacturacionElec_btc, true);
@@ -521,6 +520,7 @@ codeunit 50110 "CU_Cron"
 
                     recLogEnvio.NombreCliente_btc := recCustomer.Name;
                     recLogEnvio.clienteFact_btc := recCustomer."No.";
+                    recLogEnvio.DireccionEmail_btc := 'jvidal@zummo.es';  // TODO quitarpara envio
                     recLogEnvio.Insert();
                     tmpLogEnvio.Init();
                     tmpLogEnvio.TransferFields(recLogEnvio);

@@ -182,12 +182,18 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
 
     trigger OnAfterInsert()
     begin
-        UpdateField();
+        if Rec."Posting Date" <> 0D then
+            if Rec.Year = 0 then
+                Rec.Year := Date2DMY(Rec."Posting Date", 3);
+        // UpdateField();
     end;
 
     trigger OnAfterModify()
     begin
-        UpdateField();
+        if Rec."Posting Date" <> 0D then
+            if Rec.Year = 0 then
+                Rec.Year := Date2DMY(Rec."Posting Date", 3);
+        // UpdateField();
     end;
 
     var
@@ -195,22 +201,20 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
 
     procedure UpdateField()
     begin
-        if Rec."Posting Date" <> 0D then
-            Rec.Year := Date2DMY(Rec."Posting Date", 3);
-        if Rec.Update then
-            exit;
-        if Rec."Entry Type" in [Rec."Entry Type"::Sale] then begin
-            ItemLedgerEntry2.RESET;
-            ItemLedgerEntry2.SETRANGE("Item No.", Rec."Item No.");
-            ItemLedgerEntry2.SETRANGE("Serial No.", Rec."Serial No.");
-            ItemLedgerEntry2.SETRANGE("Entry Type", Rec."Entry Type"::Output);
-            if ItemLedgerEntry2.FINDLAST then begin
-                ItemLedgerEntry2.SETRANGE("Document No.", ItemLedgerEntry2."Document No.");
-                ItemLedgerEntry2.SETRANGE("Entry Type", ItemLedgerEntry2."Entry Type"::Consumption);
-                ItemLedgerEntry2.SETFILTER("Serial No.", '<>%1', '');
-                if ItemLedgerEntry2.FINDFIRST then
-                    Rec."Job Purchase" := TRUE;
-            end;
-        end;
+        //    if Rec.Update then
+        //         exit;
+        //     if Rec."Entry Type" in [Rec."Entry Type"::Sale] then begin
+        //         ItemLedgerEntry2.RESET;
+        //         ItemLedgerEntry2.SETRANGE("Item No.", Rec."Item No.");
+        //         ItemLedgerEntry2.SETRANGE("Serial No.", Rec."Serial No.");
+        //         ItemLedgerEntry2.SETRANGE("Entry Type", Rec."Entry Type"::Output);
+        //         if ItemLedgerEntry2.FINDLAST then begin
+        //             ItemLedgerEntry2.SETRANGE("Document No.", ItemLedgerEntry2."Document No.");
+        //             ItemLedgerEntry2.SETRANGE("Entry Type", ItemLedgerEntry2."Entry Type"::Consumption);
+        //             ItemLedgerEntry2.SETFILTER("Serial No.", '<>%1', '');
+        //             if ItemLedgerEntry2.FINDFIRST then
+        //                 Rec."Job Purchase" := TRUE;
+        //         end;
+        //     end;
     end;
 }

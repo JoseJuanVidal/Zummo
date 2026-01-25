@@ -16148,6 +16148,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Log Envío e-mails clientes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Log Envío e-mails clientes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 250020937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Envio Emails Facturas/Abonos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Log Envio Emails Facturas/Abonos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LogEnvioEmailsClientes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2905503531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Capacity Work Center Matrix</source>
           <note from="Developer" annotates="general" priority="2">ESP="Matriz Capacidad centro trabajo"</note>
@@ -32838,6 +32843,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="&amp;Correo electrónico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos_zummo - Action Email_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3744063830 - Action 2874684627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
+          <source>Marca No enviado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marca No enviado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos_zummo - Action MarcarNoEnviado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3744063830 - Action 2874684627 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3744063830">
+          <source>¿Desea marcar repetir envío?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar repetir envío?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos_zummo - Action MarcarNoEnviado - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3744063830 - Action 272626109 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Imprimir Abonos Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Impimir Abonos Export"</note>
@@ -32968,15 +32983,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="&amp;Correo electrónico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action Email_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 2874684627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Marca No enviado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marca No enviado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action MarcarNoEnviado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 2874684627 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 549456760">
+          <source>¿Desea marcar repetir envío?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea marcar repetir envío?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action MarcarNoEnviado - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 3810131670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Act. Coste Documentos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Act. Coste Documentos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action UppdateCost - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 549456760 - Action 40725074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
-          <source>Marcar/Desmarcar Factura enviada</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Marcar/Desmarcar Factura enviada"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action MarcarEnviadoFactura - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 3638857405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Marcar comunicado Aaseguradora</source>
@@ -37217,11 +37237,6 @@
           <source>Delegado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Delegado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Delegado_btc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1335712434 - Field 1389571439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
-          <source>Factura enviada</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Factura enviada"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field EnvioFactura_zm - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 3237545188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Facturación electrónica</source>
