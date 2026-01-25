@@ -86,14 +86,14 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
                 Caption = 'Marca No enviado', comment = 'ESP="Marca No enviado"';
                 trigger onAction()
                 var
-                    lblConfirm: Label '¿Desea marcar repetir envío?', comment = 'ESP="¿Desea marcar repetir envío?"';
+                    SalesCRMemoHeader: Record "Sales Cr.Memo Header";
+                    funciones: Codeunit Funciones;
+                    lblConfirm: Label '¿Desea marcar envío?', comment = 'ESP="¿Desea marcar envío?"';
                 begin
+                    CurrPage.SetSelectionFilter(SalesCRMemoHeader);
                     if not confirm(lblConfirm) then
                         exit;
-                    Rec.FacturacionElec_btc := true;
-                    Rec.CorreoEnviado_btc := not Rec.CorreoEnviado_btc;
-                    REc.Modify();
-
+                    funciones.MarkAbonoenviada(SalesCRMemoHeader);
                 end;
             }
         }
@@ -154,6 +154,20 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
                     ExportarPDF();
                 end;
             }
+        }
+        addlast(Navigation)
+        {
+            action(EnvioFacElectronica)
+            {
+                ApplicationArea = all;
+                Caption = 'Envio Factura Electrónica', comment = 'ESP="Envio Factura Electrónica"';
+                Image = ItemInvoice;
+                Promoted = true;
+                PromotedCategory = Category4;
+                RunObject = page "LogEnvioEmailsClientes";
+                RunPageLink = NoDoc_btc = field("No."), clienteFact_btc = field("Sell-to Customer No.");
+            }
+
         }
     }
 

@@ -520,7 +520,6 @@ codeunit 50110 "CU_Cron"
 
                     recLogEnvio.NombreCliente_btc := recCustomer.Name;
                     recLogEnvio.clienteFact_btc := recCustomer."No.";
-                    recLogEnvio.DireccionEmail_btc := 'jvidal@zummo.es';  // TODO quitarpara envio
                     recLogEnvio.Insert();
                     tmpLogEnvio.Init();
                     tmpLogEnvio.TransferFields(recLogEnvio);
