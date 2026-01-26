@@ -301,7 +301,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                 Image = ItemInvoice;
                 Promoted = true;
                 PromotedCategory = Category4;
-                RunObject = page "LogEnvioEmailsClientes";
+                RunObject = page LogEnvioEmailsClientesFacAbo;
                 RunPageLink = NoDoc_btc = field("No."), clienteFact_btc = field("Sell-to Customer No.");
             }
 

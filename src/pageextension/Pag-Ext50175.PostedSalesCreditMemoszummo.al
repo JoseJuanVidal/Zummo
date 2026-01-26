@@ -164,7 +164,7 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
                 Image = ItemInvoice;
                 Promoted = true;
                 PromotedCategory = Category4;
-                RunObject = page "LogEnvioEmailsClientes";
+                RunObject = page "LogEnvioEmailsClientesFacAbo";
                 RunPageLink = NoDoc_btc = field("No."), clienteFact_btc = field("Sell-to Customer No.");
             }
 

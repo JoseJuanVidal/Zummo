@@ -2,6 +2,14 @@ tableextension 50108 "Item" extends Item  //27
 {
     fields
     {
+
+        modify("Net Weight")
+        {
+            trigger OnAfterValidate()
+            begin
+                UpdateItemUnitofMeasuereWeight();
+            end;
+        }
         field(50000; ClasVtas_btc; enum ClasVtas)
         {
             DataClassification = CustomerContent;
@@ -765,5 +773,15 @@ tableextension 50108 "Item" extends Item  //27
     begin
         SalesSetup.Get();
         exit(SalesSetup."Taxes Steel" * Rec."PLASTICS PVC OTHER");
+    end;
+
+    local procedure UpdateItemUnitofMeasuereWeight()
+    var
+        ItemUnitOfMeasure: Record "Item Unit of Measure";
+    begin
+        if ItemUnitOfMeasure.get(Rec."No.", Rec."Base Unit of Measure") then begin
+            ItemUnitOfMeasure.Weight := Rec."Net Weight";
+            ItemUnitOfMeasure.Modify();
+        end;
     end;
 }

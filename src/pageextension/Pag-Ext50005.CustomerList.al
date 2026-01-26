@@ -416,6 +416,25 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 end;
             }
         }
+        addlast(Navigation)
+        {
+            action(AvisosEmailCliente)
+            {
+                ApplicationArea = all;
+                Caption = 'Hist. Envíos Cliente', comment = 'ESP="Hist. Envíos Cliente"';
+                Image = Reminder;
+                RunObject = page "Log Envío e-mails clientes";
+                RunPageLink = CodCliente_btc = field("No.");
+            }
+            action(FacturasEmailCliente)
+            {
+                ApplicationArea = all;
+                Caption = 'Hist. Envíos Fact./Abon. Cliente', comment = 'ESP="Hist. Envíos Fact./Abon. Cliente"';
+                Image = Reminder;
+                RunObject = page LogEnvioEmailsClientesFacAbo;
+                RunPageLink = clienteFact_btc = field("No.");
+            }
+        }
     }
 
 

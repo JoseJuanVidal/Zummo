@@ -17686,10 +17686,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Log Envío e-mails clientes - Property Caption</note>
           <target>Log Envío e-mails clientes</target>
         </trans-unit>
-        <trans-unit id="Page 250020937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3535919065 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log Envio Emails Facturas/Abonos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Log Envio Emails Facturas/Abonos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page LogEnvioEmailsClientes - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page LogEnvioEmailsClientesFacAbo - Property Caption</note>
           <target>Log Envio Emails Facturas/Abonos</target>
         </trans-unit>
         <trans-unit id="Page 2905503531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -34752,6 +34752,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar datos clasificación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action ChangeClasification - Property Caption</note>
           <target>Cambiar datos clasificación</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 3110267515 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Hist. Envíos Cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Envíos Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action AvisosEmailCliente - Property Caption</note>
+          <target>Hist. Envíos Cliente</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 2616116823 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Hist. Envíos Fact./Abon. Cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Hist. Envíos Fact./Abon. Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action FacturasEmailCliente - Property Caption</note>
+          <target>Hist. Envíos Fact./Abon. Cliente</target>
         </trans-unit>
         <trans-unit id="PageExtension 363045002 - Control 3809540912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Due Date</source>

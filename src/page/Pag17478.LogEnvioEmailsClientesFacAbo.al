@@ -1,4 +1,4 @@
-page 17478 "LogEnvioEmailsClientes"
+page 17478 "LogEnvioEmailsClientesFacAbo"
 {
     Caption = 'Log Envio Emails Facturas/Abonos', comment = 'ESP="Log Envio Emails Facturas/Abonos"';
     PageType = List;

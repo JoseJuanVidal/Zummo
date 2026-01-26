@@ -1069,7 +1069,7 @@ codeunit 50110 "CU_Cron"
         if recLogEnvio.FindSet() then
             repeat
                 recCustomer.Get(recLogEnvio.CodCliente_btc);
-                if recCustomer."Language Code" <> 'ESP' then
+                if (recCustomer."Language Code" = '') or (recCustomer."Language Code" = 'ESP') then
                     ingles := false
                 else
                     ingles := true;

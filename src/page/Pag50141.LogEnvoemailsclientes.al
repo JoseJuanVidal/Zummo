@@ -1,7 +1,7 @@
 page 50141 "Log Envío e-mails clientes"
 {
 
-    PageType = ListPart;
+    PageType = List;
     SourceTable = LogMailManagement;
     Caption = 'Log Sending client emails', Comment = 'ESP="Log Envío e-mails clientes"';
     ApplicationArea = All;
@@ -17,6 +17,11 @@ page 50141 "Log Envío e-mails clientes"
         {
             repeater(General)
             {
+                field(FechaEnvio_btc; FechaEnvio_btc)
+                {
+                    ApplicationArea = All;
+                }
+
                 field(FechaDocumento_btc; FechaDocumento_btc)
                 {
                     ApplicationArea = All;
@@ -29,11 +34,11 @@ page 50141 "Log Envío e-mails clientes"
                 {
                     ApplicationArea = All;
                 }
-                field(Enviado_btc; Enviado_btc)
+                field(Tipo; Tipo)
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
                 }
-                field(FechaEnvio_btc; FechaEnvio_btc)
+                field(Enviado_btc; Enviado_btc)
                 {
                     ApplicationArea = All;
                 }
