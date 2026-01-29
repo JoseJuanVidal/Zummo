@@ -15373,16 +15373,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Clientes CRM"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Activities_crm_btc - Control CLientes CRM - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 189067158 - Action 1702811970 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Generate the entity from the coupled Common Data Service data.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Generar la entidad desde el dato emparejado del Common Data Service"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Area Managers_crm_btc - Action CreateFromCDS - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 189067158 - Action 1702811970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create in Business Central</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Crear en Bussiness Central"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Area Managers_crm_btc - Action CreateFromCDS - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 4029087944 - Action 3395221457 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Check Textos auxiliares</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comprobar Textos auxiliare"</note>
@@ -20102,6 +20092,41 @@
           <source>L.M. Producción</source>
           <note from="Developer" annotates="general" priority="2">ESP="L.M. Producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Where Used detail - Control Production BOM No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4214904108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Items PI2 details</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Productos PI2 Detalles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4214904108 - Control 1036476177 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Differences</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Diferencias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Control NotEgual - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4214904108 - Action 3599785199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Shares</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Partes costes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Action Cost Shares - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4214904108 - Action 1211261581 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="L.M. producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Action Production BOM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4214904108 - Action 3114594945 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Puntos-de-uso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Action Where-Used - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4214904108 - Action 3986136216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calcular Costes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular Costes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Action CalculateRollUp - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4214904108 - Action 3986136216 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los costes?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los costes?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Action CalculateRollUp - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Page 2975127552 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Navigate</source>
