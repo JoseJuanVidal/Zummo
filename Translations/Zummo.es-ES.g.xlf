@@ -36131,6 +36131,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action UppdateCost - Property Caption</note>
           <target>Act. Coste Documentos</target>
         </trans-unit>
+        <trans-unit id="PageExtension 549456760 - Action 40725074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Marcar/Desmarcar Factura enviada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marcar/Desmarcar Factura enviada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices_zummo - Action MarcarEnviadoFactura - Property Caption</note>
+          <target>Marcar/Desmarcar Factura enviada</target>
+        </trans-unit>
         <trans-unit id="PageExtension 549456760 - Action 3638857405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Marcar comunicado Aaseguradora</source>
           <note from="Developer" annotates="general" priority="2">ESP="Marcar comunicado Aaseguradora"</note>
@@ -41108,6 +41114,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Delegado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Delegado_btc - Property Caption</note>
           <target>Delegado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 1389571439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Factura enviada</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Factura enviada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field EnvioFactura_zm - Property Caption</note>
+          <target>Factura enviada</target>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 3237545188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Facturación electrónica</source>

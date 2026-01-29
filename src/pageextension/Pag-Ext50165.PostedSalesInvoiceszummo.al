@@ -22,7 +22,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                             Caption = 'Crédito Maximo Aseguradora Autorizado Por', Comment = 'ESP="Crédito Maximo Aseguradora Autorizado Por"';
                         }*/
             field("Quote No."; "Quote No.") { }
-            // field(EnvioFactura_zm; EnvioFactura_zm) { }
+            field(EnvioFactura_zm; EnvioFactura_zm) { }
             field(CorreoEnviado_btc; CorreoEnviado_btc) { }
             field(FacturacionElec_btc; FacturacionElec_btc) { }
             field(AreaManager_btc; AreaManager_btc) { }
@@ -278,19 +278,19 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
                     MarkComunicate;
                 end;
             }
-            // action(MarcarEnviadoFactura)
-            // {
-            //     ApplicationArea = all;
-            //     Image = MakeOrder;
-            //     Promoted = true;
-            //     PromotedCategory = Category6;
-            //     Caption = 'Marcar/Desmarcar Factura enviada', comment = 'ESP="Marcar/Desmarcar Factura enviada"';
+            action(MarcarEnviadoFactura)
+            {
+                ApplicationArea = all;
+                Image = MakeOrder;
+                Promoted = true;
+                PromotedCategory = Category6;
+                Caption = 'Marcar/Desmarcar Factura enviada', comment = 'ESP="Marcar/Desmarcar Factura enviada"';
 
-            //     trigger OnAction()
-            //     begin
-            //         MarkFacturaenviada;
-            //     end;
-            // }
+                trigger OnAction()
+                begin
+                    MarkFacturaenviada;
+                end;
+            }
         }
         addlast(Navigation)
         {
@@ -382,17 +382,17 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
 
     end;
 
-    // local procedure MarkFacturaenviada()
-    // var
-    //     SalesInvHeader: Record "Sales Invoice Header";
-    //     funciones: Codeunit Funciones;
-    // begin
-    //     CurrPage.SetSelectionFilter(SalesInvHeader);
-    //     if not Confirm(Text001, false, SalesInvHeader.Count) then
-    //         exit;
-    //     funciones.MarkFacturaenviada(SalesInvHeader);
+    local procedure MarkFacturaenviada()
+    var
+        SalesInvHeader: Record "Sales Invoice Header";
+        funciones: Codeunit Funciones;
+    begin
+        CurrPage.SetSelectionFilter(SalesInvHeader);
+        if not Confirm(Text001, false, SalesInvHeader.Count) then
+            exit;
+        funciones.MarkFacturaenviada(SalesInvHeader);
 
-    // end;
+    end;
 
     local procedure ExportarPDF()
     var
