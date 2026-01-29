@@ -91,5 +91,10 @@ tableextension 50138 "UserSetup" extends "User Setup"  // 91
                 ItemRegCodeunit.CheckSUPERUserConfiguration(true);
             end;
         }
+        field(50150; "Allow Price List"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Allow Price List', comment = 'ESP="Permite Tarifas de Precios"';
+        }
     }
 }

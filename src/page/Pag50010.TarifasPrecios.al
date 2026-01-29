@@ -405,6 +405,7 @@ page 50010 "Tarifas Precios"
     }
     trigger OnOpenPage()
     begin
+        CurrPage.Editable := GetUSerPermissions();
         CDSIntegrationEnabled := CRMIntegrationManagement.IsCRMIntegrationEnabled();
     end;
 
@@ -530,5 +531,13 @@ page 50010 "Tarifas Precios"
             end;
         end;
         Message(StrSubstNo('Actualizados %1 registros', RecordAdd));
+    end;
+
+    local procedure GetUSerPermissions(): Boolean
+    var
+        UserSetup: Record "User Setup";
+    begin
+        if UserSetup.Get(UserId) then
+            exit(UserSetup."Allow Price List");
     end;
 }

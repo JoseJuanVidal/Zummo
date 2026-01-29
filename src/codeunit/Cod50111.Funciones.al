@@ -3,7 +3,8 @@ codeunit 50111 "Funciones"
     Permissions = tabledata "Item Ledger Entry" = rmid, tabledata "Sales Invoice Header" = rmid, tabledata "G/L Entry" = rmid,
         tabledata "Sales Shipment Header" = rmid, tabledata "Sales Cr.Memo Header" = rmid, tabledata "Sales Header Archive" = rmid,
         tabledata "Return Shipment Header" = rmid, tabledata "Purch. Rcpt. Header" = rmid, tabledata "Purch. Rcpt. Line" = rmid, tabledata "Bank Account Ledger Entry" = rmid,
-        tabledata "Sales Cr.Memo Line" = rmid, tabledata "Sales Invoice Line" = rmid, tabledata "Job Ledger Entry" = rmid, tabledata "Service Password" = rmid;
+        tabledata "Sales Cr.Memo Line" = rmid, tabledata "Sales Invoice Line" = rmid, tabledata "Job Ledger Entry" = rmid, tabledata "Service Password" = rmid,
+        tabledata "FA Ledger Entry" = rmid;
 
     TableNo = "Sales Header";
 

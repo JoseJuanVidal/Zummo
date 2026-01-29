@@ -22037,12 +22037,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Control NotEgual - Property Caption</note>
           <target>Diferencias</target>
         </trans-unit>
-        <trans-unit id="Page 4214904108 - Action 3540372295 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Calc. Stan&amp;dard Cost</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Calcular coste están&amp;dar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Action Calc. Stan&amp;dard Cost - Property Caption</note>
-          <target>Calcular coste están&amp;dar</target>
-        </trans-unit>
         <trans-unit id="Page 4214904108 - Action 3599785199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Shares</source>
           <note from="Developer" annotates="general" priority="2">ESP="Partes costes"</note>
@@ -22060,6 +22054,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Puntos-de-uso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Action Where-Used - Property Caption</note>
           <target>Puntos-de-uso</target>
+        </trans-unit>
+        <trans-unit id="Page 4214904108 - Action 3986136216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calcular Costes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calcular Costes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Action CalculateRollUp - Property Caption</note>
+          <target>Calcular Costes</target>
+        </trans-unit>
+        <trans-unit id="Page 4214904108 - Action 3986136216 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los costes?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los costes?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Items PI2 details - Action CalculateRollUp - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea actualizar los costes?</target>
         </trans-unit>
         <trans-unit id="Page 2975127552 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Navigate</source>
@@ -43744,6 +43750,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Peso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Header Z - Field Peso_btc - Property Caption</note>
           <target>Peso</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 3213602778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Allow Price List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Permite Tarifas de Precios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Allow Price List - Property Caption</note>
+          <target>Permite Tarifas de Precios</target>
         </trans-unit>
         <trans-unit id="TableExtension 2852714242 - Field 11707313 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Approvals purchase requests</source>

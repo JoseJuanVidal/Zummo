@@ -39588,6 +39588,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Peso"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Header Z - Field Peso_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2852714242 - Field 3213602778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Allow Price List</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Permite Tarifas de Precios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension UserSetup - Field Allow Price List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2852714242 - Field 11707313 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Approvals purchase requests</source>
           <note from="Developer" annotates="general" priority="2">ESP="aprobación solicitudes compra"</note>
