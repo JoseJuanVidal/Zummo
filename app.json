@@ -4,7 +4,7 @@
   "publisher": "Business Intelligence Technology, S.L.",
   "brief": "",
   "description": "",
-  "version": "1.0.0.885",
+  "version": "1.0.0.887",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
@@ -23,7 +23,7 @@
   "application": "14.0.0.0",
   "idRanges": [
     {
-      "from": 17200,
+      "from": 17000,
       "to": 60900 
     }
   ],

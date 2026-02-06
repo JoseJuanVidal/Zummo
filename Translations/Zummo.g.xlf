@@ -21213,6 +21213,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipo contrato mantenimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Tipo contrato Mantenimiento - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2184259686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ventas Maquina KPI OOB</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ventas Maquina KPI OOB"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Ventas Maquina KPI OOB - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3465029715 - Control 2702102796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed Assets Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nombre Act. Fijo"</note>

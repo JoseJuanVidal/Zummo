@@ -21888,6 +21888,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Action Tareas - Property Caption</note>
           <target>Tareas</target>
         </trans-unit>
+        <trans-unit id="Page 2254326384 - Action 1526651931 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Project Task</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tareas Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Action TareasProyecto - Property Caption</note>
+          <target>Tareas Proyecto</target>
+        </trans-unit>
         <trans-unit id="Page 2254326384 - Action 1461479292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
@@ -23347,6 +23353,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipo contrato mantenimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Tipo contrato Mantenimiento - Property Caption</note>
           <target>Tipo contrato mantenimiento</target>
+        </trans-unit>
+        <trans-unit id="Page 2184259686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ventas Maquina KPI OOB</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ventas Maquina KPI OOB"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Ventas Maquina KPI OOB - Property Caption</note>
+          <target>Ventas Maquina KPI OOB</target>
         </trans-unit>
         <trans-unit id="Page 3465029715 - Control 2702102796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed Assets Name</source>

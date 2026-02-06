@@ -3,6 +3,12 @@
     <TenantWebServiceCollection>
       <TenantWebService>
             <ObjectType>Page</ObjectType>
+            <ServiceName>VentasKPIOOB</ServiceName>
+            <ObjectID>17090</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+      <TenantWebService>
+            <ObjectType>Page</ObjectType>
             <ServiceName>registrovisitas</ServiceName>
             <ObjectID>17386</ObjectID>
             <Published>true</Published>
