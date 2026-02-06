@@ -21876,6 +21876,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2254326384 - Control 2843956220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Task</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tareas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Control Tareas - Property Caption</note>
+          <target>Tareas</target>
+        </trans-unit>
         <trans-unit id="Page 2254326384 - Action 2843956220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Task</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tareas"</note>

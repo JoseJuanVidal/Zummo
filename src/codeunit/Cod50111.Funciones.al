@@ -3490,6 +3490,15 @@ codeunit 50111 "Funciones"
     begin
         if SalesInvHeader.findset() then
             repeat
+                SalesInvHeader.EnvioFactura_zm := not SalesInvHeader.EnvioFactura_zm;
+                SalesInvHeader.Modify();
+            Until SalesInvHeader.next() = 0;
+    end;
+
+    procedure MarkFacturaNoenvio(var SalesInvHeader: Record "Sales Invoice Header")
+    begin
+        if SalesInvHeader.findset() then
+            repeat
                 SalesInvHeader.FacturacionElec_btc := true;
                 SalesInvHeader.CorreoEnviado_btc := not SalesInvHeader.CorreoEnviado_btc;
                 SalesInvHeader.Modify();
@@ -3760,6 +3769,7 @@ codeunit 50111 "Funciones"
         lblWindow: Label 'Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############', comment = 'ESP="Nº Cuenta: #1###############\Nº Mov.: #2##############\Fecha: #3##############"';
     begin
         Window.Open(lblWindow);
+        tmpPurchInvLine.DeleteAll();
         GLEntry.Reset();
         GLEntry.SetRange("G/L Account No.", CtaContable);
         if FiltroFecha <> '' then
@@ -3798,7 +3808,7 @@ codeunit 50111 "Funciones"
         tmpGLEntry.Insert();
     end;
 
-    procedure LoadGlEntryInvoice(var tmpGLEntry: Record "G/L Entry"; tmpPurchInvLine: Record "Purch. Inv. Line"; var EntryNo: integer; GLEntry: Record "G/L Entry") Added: Boolean
+    procedure LoadGlEntryInvoice(var tmpGLEntry: Record "G/L Entry"; var tmpPurchInvLine: Record "Purch. Inv. Line"; var EntryNo: integer; GLEntry: Record "G/L Entry") Added: Boolean
     var
         Vendor: Record Vendor;
         PurchInvLine: Record "Purch. Inv. Line";
@@ -3843,10 +3853,11 @@ codeunit 50111 "Funciones"
                         tmpGLEntry."Entry No." := EntryNo;
                         tmpGLEntry.Insert();
                         Added := true;
+
+                        tmpPurchInvLine.Init();
+                        tmpPurchInvLine.TransferFields(PurchInvLine);
+                        tmpPurchInvLine.Insert();
                     end;
-                    tmpPurchInvLine.Init();
-                    tmpPurchInvLine.TransferFields(PurchInvLine);
-                    tmpPurchInvLine.Modify();
                 end;
             Until PurchInvLine.next() = 0;
     end;

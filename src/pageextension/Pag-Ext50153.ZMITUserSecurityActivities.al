@@ -51,6 +51,7 @@ pageextension 50153 "ZM IT User Security Activities" extends "User Security Acti
     begin
         DailyProjects.Reset();
         DailyProjects.SetRange(Type, DailyProjects.Type::Intern);
+        DailyProjects.SetFilter(Status, '<>1', DailyProjects.Status::Cerrado);
         exit(DailyProjects.Count);
     end;
 
@@ -61,6 +62,7 @@ pageextension 50153 "ZM IT User Security Activities" extends "User Security Acti
         //lanzamos la lista de Marcajes de este usario
         DailyProjects.Reset();
         DailyProjects.SetRange(Type, DailyProjects.Type::Intern);
+        DailyProjects.SetFilter(Status, '<>1', DailyProjects.Status::Cerrado);
         ITProjects.SetTableView(DailyProjects);
         ITProjects.Run();
         // page.Run(page::"ZM IT JIRA Projects", DailyProjects);

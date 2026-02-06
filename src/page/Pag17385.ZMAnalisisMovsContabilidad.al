@@ -23,6 +23,12 @@ page 17385 "ZM Analisis Movs Contabilidad"
                 {
                     ApplicationArea = all;
                     Caption = 'Filtro Fecha', comment = 'ESP="Filtro Fecha"';
+
+                    trigger OnValidate()
+                    begin
+                        Item.Setfilter("Date Filter", FiltroFecha);
+                        FiltroFecha := Item.GetFilter("Date Filter");
+                    end;
                 }
                 field(FiltroNoDocumento; FiltroNoDocumento)
                 {
@@ -264,6 +270,7 @@ page 17385 "ZM Analisis Movs Contabilidad"
     end;
 
     var
+        Item: Record Item temporary;
         Vendor: Record Vendor;
         Funciones: Codeunit Funciones;
         CtaContable: code[20];

@@ -743,7 +743,7 @@ codeunit 50104 "Zummo Inn. IC Functions"
                     JsonIssueFields := GetJSONItemFieldObject(JsonIssue, 'fields');
                     JiraTicket.summary := CopyStr(GetJSONItemFieldText(JsonIssueFields.AsToken(), 'summary'), 1, MaxStrLen(JiraTicket.summary));
                     JsonIssueState := GetJSONItemFieldObject(JsonIssueFields.AsToken(), 'status');
-                    JiraTicket.State := GetJSONItemFieldText(JsonIssueState.AsToken(), 'name');
+                    // JiraTicket.State := GetJSONItemFieldText(JsonIssueState.AsToken(), 'name');
                     JiraTicket."Description Status" := copystr(GetJSONItemFieldText(JsonIssueState.AsToken(), 'description'), 1, MaxStrLen(JiraTicket."Description Status"));
                     JsonIssueassigned := GetJSONItemFieldObject(JsonIssueFields.AsToken(), 'assignee');
                     JiraTicket.Assignee := copystr(GetJSONItemFieldText(JsonIssueassigned.AsToken(), 'displayName'), 1, MaxStrLen(JiraTicket.Assignee));

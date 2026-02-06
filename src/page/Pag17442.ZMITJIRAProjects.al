@@ -49,6 +49,15 @@ page 17442 "ZM IT JIRA Projects"
                     ApplicationArea = all;
                 }
             }
+
+        }
+        area(FactBoxes)
+        {
+            part(Tareas; "ZM IT JIRA Tickets")
+            {
+                Caption = 'Task', comment = 'ESP="Tareas"';
+                SubPageLink = Project = field("key");
+            }
         }
     }
     actions
@@ -75,6 +84,16 @@ page 17442 "ZM IT JIRA Projects"
             action(Tareas)
             {
                 Caption = 'Task', comment = 'ESP="Tareas"';
+                Image = Task;
+                Promoted = true;
+                PromotedCategory = Process;
+                RunObject = page "ZM IT JIRA Tickets";
+                RunPageLink = Project = const('');
+                RunPageView = where(State = filter(<> Cerrado));
+            }
+            action(TareasProyecto)
+            {
+                Caption = 'Project Task', comment = 'ESP="Tareas Proyecto"';
                 Image = Task;
                 Promoted = true;
                 PromotedCategory = Process;
