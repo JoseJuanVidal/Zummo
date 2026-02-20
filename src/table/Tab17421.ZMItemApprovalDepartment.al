@@ -13,11 +13,12 @@ table 17421 "ZM Item Approval Department"
             DataClassification = CustomerContent;
             TableRelation = "Table Metadata";
         }
-        field(2; "GUID Creation"; Guid)
+        field(2; "Request No."; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'State Creation', comment = 'ESP="Estado Alta"';
+            Caption = 'Request No.', Comment = 'ESP="Nº Solicitud"';
             Editable = false;
+            TableRelation = "ZM PL Items Temporary";
         }
 
         field(3; "Request Date"; Date)
@@ -37,12 +38,59 @@ table 17421 "ZM Item Approval Department"
             DataClassification = CustomerContent;
             Caption = 'Codigo Empleado', comment = 'ESP="Codigo Empleado"';
         }
+        field(30; Name; text[250])
+        {
+            Caption = 'Name', comment = 'ESP="Nombre"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Employee."Search Name" where("No." = field("Codigo Empleado")));
+            Editable = false;
+        }
     }
     keys
     {
-        key(PK; "Table No.", Department, "GUID Creation")
+        key(PK; "Table No.", Department, "Request No.")
         {
             Clustered = true;
         }
     }
+    var
+        ItemApprovalDepartment: Record "ZM Item Approval Department";
+        ItemSetupApproval: Record "ZM PL Item Setup Approval";
+
+    procedure CreateRequestDepartment(ItemsTemporary: Record "ZM PL Items Temporary")
+    var
+        RefRecord: RecordRef;
+    begin
+        RefRecord.GetTable(ItemsTemporary);
+        DeleteAllItemApprovalDepartment(ItemsTemporary, RefRecord);
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetRange(Requester, false);
+        // ItemSetupApproval.SetRange("Field No.", 0);
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                ItemApprovalDepartment.Reset();
+                ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
+                ItemApprovalDepartment.SetRange(Department, ItemSetupApproval.Department);
+                ItemApprovalDepartment.SetRange("Request No.", ItemsTemporary."No.");
+                if not ItemApprovalDepartment.FindFirst() then begin
+                    ItemApprovalDepartment.Init();
+                    ItemApprovalDepartment."Table No." := RefRecord.Number;
+                    ItemApprovalDepartment.Department := ItemSetupApproval.Department;
+                    ItemApprovalDepartment."Request No." := ItemsTemporary."No.";
+                    ItemApprovalDepartment.Insert();
+                end;
+            until ItemSetupApproval.Next() = 0;
+    end;
+
+    local procedure DeleteAllItemApprovalDepartment(ItemsTemporary: Record "ZM PL Items Temporary"; RefRecord: RecordRef)
+    var
+        myInt: Integer;
+    begin
+        ItemApprovalDepartment.Reset();
+        ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
+        ItemApprovalDepartment.SetRange("Request No.", ItemsTemporary."No.");
+        ItemApprovalDepartment.DeleteAll();
+    end;
 }

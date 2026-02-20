@@ -51,10 +51,7 @@ pageextension 50132 "ZM SalesOrder" extends "Sales Order"
                 ApplicationArea = all;
             }
         }
-        modify("Posting Date")
-        {
-            Visible = false;
-        }
+        movebefore("Currency Code"; "Posting Date")
         // addafter("Due Date")
         // {
         //     field(FechaEnvio; "Shipment Date")

@@ -1202,6 +1202,10 @@ table 17462 "ZM PL Items Temporary"
         {
             Caption = 'Modified', comment = 'ESP="Modificado"';
         }
+        field(50831; "Requires Final Artwork"; Boolean)
+        {
+            Caption = 'Requires Final Artwork', comment = 'ESP="Requiere Arte Final"';
+        }
         field(50840; "E-mail sent"; Boolean)
         {
             Caption = 'E-mail sent', comment = 'ESP="Email enviado"';
@@ -1640,10 +1644,12 @@ table 17462 "ZM PL Items Temporary"
 
     procedure LaunchRegisterItemTemporary(Requested: Boolean)
     var
+        ItemApprovalDepartment: Record "ZM Item Approval Department";
         lblRequestError: Label 'You must select a value in %1.', comment = 'ESP="Debe seleccionar un valor en %1."';
         lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 "%2"?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2"?"';
         lblRelease: Label '¿Desea enviar la revisión de los departamentos para %1 %2?', comment = 'ESP="¿Desea enviar la revisión de los departamentos para %1 %2?"';
         lblError: Label 'El estado de la solicitud de %1 %2 es %3', comment = 'ESP="El estado de la solicitud de %1 %2 es %3"';
+        lblItBID: Label 'Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?', comment = 'ESP="Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?"';
     begin
         Rec.TestField(Reason);
         // Check Request Type
@@ -1664,9 +1670,11 @@ table 17462 "ZM PL Items Temporary"
                 if not Confirm(lblRelease, false, Rec."No.", Rec.Description) then
                     exit;
                 if Rec."ITBID Create" then
-                    Rec.ITBIDUpdate();
+                    if confirm(lblItBID) then
+                        Rec.ITBIDUpdate();
                 SendItemTemporaryRegister();
                 Rec.UpdateStatusReleased();
+                ItemApprovalDepartment.CreateRequestDepartment(Rec);
             end;
         end;
     end;
@@ -1690,14 +1698,16 @@ table 17462 "ZM PL Items Temporary"
                 Recipients += ItemSetupDepartment.Email;
             end;
             // miramos los empleados que tienen ese departamento
-            Employee.Reset();
-            Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
-            if Employee.FindFirst() then
-                repeat
-                    if Recipients <> '' then
-                        Recipients += ';';
-                    Recipients += Employee."Company E-Mail";
-                Until Employee.next() = 0;
+            if ItemSetupDepartment."User Id" <> '' then begin
+                Employee.Reset();
+                Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
+                if Employee.FindFirst() then
+                    repeat
+                        if Recipients <> '' then
+                            Recipients += ';';
+                        Recipients += Employee."Company E-Mail";
+                    Until Employee.next() = 0;
+            end;
         end;
         if Recipients = '' then
             Error(lblErrorNotApprovals, Rec.TableCaption);
@@ -1705,13 +1715,13 @@ table 17462 "ZM PL Items Temporary"
         if Rec."E-mail sent" then
             if not Confirm(lblConfirmEmail) then
                 exit;
-        SendMailItemTemporaryFirstRegister(Recipients);
+        SendMailItemTemporaryFirstRegister(Recipients, ItemSetupDepartment.Code);
         Rec."E-mail sent" := true;
         Rec."State Creation" := Rec."State Creation"::Requested;
         Rec.Modify();
     end;
 
-    procedure SendMailItemTemporaryFirstRegister(Recipients: Text)
+    procedure SendMailItemTemporaryFirstRegister(Recipients: Text; Department: code[20])
     var
         SalesHeader2: Record "Sales Header";
         Quotepdf: Report PedidoCliente;
@@ -1724,13 +1734,13 @@ table 17462 "ZM PL Items Temporary"
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
         Subject := StrSubstNo(SubjectLbl, Rec."No.", rec."Item No.", Rec.Description);
-        Body := EnvioEmailBody(Subject);
+        Body := EnvioEmailBody(Subject, Department);
         // enviamos el email 
         SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
         SMTPMail.Send();
     end;
 
-    local procedure EnvioEmailBody(Subject: text) Body: Text
+    local procedure EnvioEmailBody(Subject: text; Department: code[20]) Body: Text
     var
         Companyinfo: Record "Company Information";
         Employee: Record Employee;
@@ -1743,8 +1753,10 @@ table 17462 "ZM PL Items Temporary"
         Body := '<p>&nbsp;</p>';
         Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
         Body += '<h2 style="color: #2e6c80;">' + Subject + '</h2>';
-        Body += '<h3 style="color: #2e6c80;">ROL: ' + UserId + '</h3>';
+        Body += '<h3 style="color: #2e6c80;">ROL: ' + Rec."Product manager" + '</h3>';
+        Body += '<h3 style="color: #2e6c80;">ROL: ' + Rec."User ID" + '</h3>';
         Body += '<h3 style="color: #2e6c80;">Usuario: ' + StrSubstNo('%1 (%2)', Employee.FullName(), CodEmpleado) + '</h3>';
+        Body += '<h4 style="color: #2e6c80;">Departamento Revision: ' + Department + '</h4>';
         Body += '<p><strong>' + Rec.FieldCaption("Item No.") + '</strong>: ' + Rec."Item No." + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption(Description) + '</strong>: ' + Rec.Description + '</p>';
         Body += '<p><strong>' + Rec.FieldCaption("Base Unit of Measure") + '</strong>: ' + Rec."Base Unit of Measure" + '</p>';
@@ -1791,27 +1803,39 @@ table 17462 "ZM PL Items Temporary"
     local procedure SendItemTemporaryRegister()
     var
         tmpEmployee: Record Employee temporary;
+        tmpItemDepartment: Record "ZM PL Item Setup Department" temporary;
         RefRecord: RecordRef;
         Recipients: text;
     begin
+        if Rec."E-mail sent" then
+            if not Confirm(lblConfirmEmail) then
+                exit;
         RefRecord.GetTable(Rec);
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetRange(Requester, false);
         ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
         if not ItemSetupApproval.FindFirst() then
             Error(lblErrorNotApprovals, Rec.TableCaption);
         // preparamos la tabla para los aprobadores y enviamos email
         if ItemSetupApproval.FindFirst() then
             repeat
-                if ItemSetupDepartment.get(ItemSetupApproval.Department) then begin
-                    if ItemSetupDepartment.Email <> '' then begin
-                        if Recipients <> '' then
-                            Recipients += ';';
-                        Recipients += ItemSetupDepartment.Email;
+                if not tmpItemDepartment.get(ItemSetupApproval.Department) then
+                    if ItemSetupDepartment.Get(ItemSetupApproval.Department) then begin
+                        tmpItemDepartment.Init();
+                        tmpItemDepartment.TransferFields(ItemSetupDepartment);
+                        tmpItemDepartment.Insert();
                     end;
-                    // miramos los empleados que tienen ese departamento
+            until ItemSetupApproval.Next() = 0;
+        if tmpItemDepartment.Find() then
+            repeat
+                if tmpItemDepartment.Email <> '' then
+                    Recipients := tmpItemDepartment.Email;
+
+                // miramos los empleados que tienen ese departamento
+                if tmpItemDepartment."User Id" <> '' then begin
                     Employee.Reset();
-                    Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
+                    Employee.SetRange("Approval Department User Id", tmpItemDepartment."User Id");
                     if Employee.FindFirst() then
                         repeat
                             // comprobamos que no dupliquemos el empleado 
@@ -1825,20 +1849,17 @@ table 17462 "ZM PL Items Temporary"
                             end;
                         Until Employee.next() = 0;
                 end;
-            Until ItemSetupApproval.next() = 0;
-        if Recipients = '' then
-            Error(lblErrorNotApprovals, Rec.TableCaption);
+                if Recipients <> '' then begin
+                    SendMailItemTemporaryRegister(ItemSetupApproval, Recipients);
+                    Rec."E-mail sent" := true;
+                    Rec."State Creation" := Rec."State Creation"::Requested;
+                    Rec.Modify();
+                end;
+            Until tmpItemDepartment.next() = 0;
 
-        if Rec."E-mail sent" then
-            if not Confirm(lblConfirmEmail) then
-                exit;
-        SendMailItemTemporaryRegister(Recipients);
-        Rec."E-mail sent" := true;
-        Rec."State Creation" := Rec."State Creation"::Requested;
-        Rec.Modify();
     end;
 
-    procedure SendMailItemTemporaryRegister(Recipients: Text)
+    procedure SendMailItemTemporaryRegister(SetupApproval: Record "ZM PL Item Setup Approval"; Recipients: Text)
     var
         SalesHeader2: Record "Sales Header";
         Quotepdf: Report PedidoCliente;
@@ -1851,7 +1872,7 @@ table 17462 "ZM PL Items Temporary"
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
         Subject := StrSubstNo(SubjectLbl, Rec."No.", rec."Item No.", Rec.Description);
-        Body := EnvioEmailBody(Subject);
+        Body := EnvioEmailBody(Subject, SetupApproval.Department);
         // enviamos el email 
         SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
         SMTPMail.Send();
@@ -1886,6 +1907,7 @@ table 17462 "ZM PL Items Temporary"
         RefRecord.GetTable(Rec);
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetRange(Requester, false);
         ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
         if ItemSetupApproval.FindFirst() then
             repeat
@@ -1941,11 +1963,12 @@ table 17462 "ZM PL Items Temporary"
         ItemApprovalDepartment.Reset();
         ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
         ItemApprovalDepartment.SetRange(Department, Department);
+        ItemApprovalDepartment.SetRange("Request No.", Rec."No.");
         if not ItemApprovalDepartment.FindFirst() then begin
             ItemApprovalDepartment.Init();
             ItemApprovalDepartment."Table No." := RefRecord.Number;
             ItemApprovalDepartment.Department := Department;
-            ItemApprovalDepartment."GUID Creation" := Rec."GUID Creation";
+            ItemApprovalDepartment."Request No." := Rec."No.";
             ItemApprovalDepartment.Insert();
         end;
         ItemApprovalDepartment."Request Date" := WorkDate();
@@ -1954,7 +1977,7 @@ table 17462 "ZM PL Items Temporary"
         ItemApprovalDepartment.Modify();
         if not UpdateDepartmentsApprovals() then begin
             // si no quedan revisiones, marcamos como revisado completamente
-            Rec."State Creation" := Rec."State Creation"::Finished;
+            Rec."State Creation" := Rec."State Creation"::"Create Pendindg";
             Rec.modify();
         end
     end;
@@ -1976,11 +1999,9 @@ table 17462 "ZM PL Items Temporary"
     procedure CheckUserOwneerItem(): Boolean
     var
         ItemApprovalDepartment: Record "ZM Item Approval Department";
-        RefRecord: RecordRef;
     begin
-        RefRecord.GetTable(Rec);
         ItemSetupApproval.Reset();
-        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetRange("Table No.", Rec.RecordId.TableNo);
         ItemSetupApproval.SetRange("Field No.", 0);
         if ItemSetupApproval.FindFirst() then
             repeat
@@ -1998,10 +2019,11 @@ table 17462 "ZM PL Items Temporary"
         RefRecord.GetTable(Rec);
         ItemApprovalDepartment.Reset();
         ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
-        ItemApprovalDepartment.SetRange("GUID Creation", Rec."GUID Creation");
+        ItemApprovalDepartment.SetRange("Request No.", Rec."No.");
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
         ItemSetupApproval.SetFilter("Field No.", '>0');
+        ItemSetupApproval.SetRange(Requester, false);
         ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
         if ItemSetupApproval.FindFirst() then
             repeat
@@ -2010,7 +2032,7 @@ table 17462 "ZM PL Items Temporary"
                     ItemApprovalDepartment.Init();
                     ItemApprovalDepartment."Table No." := RefRecord.Number;
                     ItemApprovalDepartment.Department := ItemSetupApproval.Department;
-                    ItemApprovalDepartment."GUID Creation" := Rec."GUID Creation";
+                    ItemApprovalDepartment."Request No." := Rec."No.";
                     ItemApprovalDepartment.Insert();
                     Pending := true;
                 end else
@@ -2019,7 +2041,7 @@ table 17462 "ZM PL Items Temporary"
             until ItemSetupApproval.Next() = 0;
     end;
 
-    procedure SendMailItemTemporaryFinalize(Recipients: Text)
+    procedure SendMailItemTemporaryFinalize(Recipients: Text; Department: code[20])
     var
         SalesHeader2: Record "Sales Header";
         Quotepdf: Report PedidoCliente;
@@ -2032,7 +2054,7 @@ table 17462 "ZM PL Items Temporary"
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
         Subject := StrSubstNo(SubjectLbl, Rec."No.", Rec.Description);
-        Body := EnvioEmailBody(Subject);
+        Body := EnvioEmailBody(Subject, Department);
         // enviamos el email 
         SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
         SMTPMail.Send();
@@ -2273,15 +2295,16 @@ table 17462 "ZM PL Items Temporary"
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
         ItemSetupApproval.SetFilter("Field No.", '<>%1', 0);
-        ItemSetupApproval.SetRange(Obligatory, true);
+        ItemSetupApproval.SetRange(Mandatory, true);
         // if Requested then
-        //     ItemSetupApproval.SetRange("Approval Requester", true);
-        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
+        //   ItemSetupApproval.SetRange("Approval Requester", true);
+        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Owner, ItemSetupApproval.Rol::Both);
         if ItemSetupApproval.FindFirst() then
             repeat
                 // if ItemSetupDepartment.get(ItemSetupApproval.Department) then
                 //     if ItemSetupDepartment."User Id" = UserId then begin
-                CheckObligatoryField(RefRecord, ItemSetupApproval."Field No.");
+                if ItemSetupApproval."Field No." > 0 then
+                    CheckObligatoryField(RefRecord, ItemSetupApproval."Field No.");
             // end;
             until ItemSetupApproval.Next() = 0;
 
@@ -2333,5 +2356,13 @@ table 17462 "ZM PL Items Temporary"
         ItemRequest.SetRange("No.", Rec."No.");
         reportItemRequest.SetTableView(ItemRequest);
         reportItemRequest.Run();
+    end;
+
+    procedure CheckUserOwner() IsOwner: Boolean;
+    begin
+        SetupPreItemReg.Get();
+        if not CheckUserOwneerItem() then
+            exit;
+        IsOwner := Rec."State Creation" = Rec."State Creation"::Requested;
     end;
 }

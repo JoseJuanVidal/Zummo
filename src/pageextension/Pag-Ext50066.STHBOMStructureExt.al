@@ -42,6 +42,26 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
                 ApplicationArea = all;
                 Visible = False;
             }
+            field("First SUBMATERIAL"; "First SUBMATERIAL")
+            {
+                ApplicationArea = all;
+                Visible = False;
+            }
+            field("First Tipo de Envase"; "First Tipo de Envase")
+            {
+                ApplicationArea = all;
+                Visible = False;
+            }
+            field("First Value Flexible"; "First Value Flexible")
+            {
+                ApplicationArea = all;
+                Visible = False;
+            }
+            field("Nos. line Tipo Envases"; "Nos. line Tipo Envases")
+            {
+                ApplicationArea = all;
+                Visible = False;
+            }
             field("Item Excluded Packaging"; "Item Excluded Packaging")
             {
                 ApplicationArea = all;

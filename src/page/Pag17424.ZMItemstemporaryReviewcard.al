@@ -480,22 +480,6 @@ page 17424 "ZM Items temporary Review card"
         lblRelease: Label '¿Do you want to send the request for Item Registration %1 %2?', comment = 'ESP="¿Desea enviar la solicitud de Alta del producto %1 %2?"';
         lblConfirmUpdateITBID: Label '¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?', comment = 'ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"';
 
-    local procedure OnAction_Release()
-    begin
-        Rec.TestField("State Creation", Rec."State Creation"::" ");
-        if Confirm(lblRelease, true, Rec."No.", Rec.Description) then
-            ItemsRegisterAprovals.ItemRegistrationChangeState(Rec);
-    end;
-
-    local procedure OnAction_Open()
-    begin
-        Rec.TestField("State Creation", Rec."State Creation"::Requested);
-        if ItemsRegisterAprovals.ItemRegistratio_OpenRequested(Rec) then
-            CurrPage.Update();
-    end;
-
-
-
     local procedure Navigate_ProductionML()
     begin
         Rec.Navigate_ProductionML();

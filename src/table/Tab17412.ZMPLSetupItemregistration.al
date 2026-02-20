@@ -55,7 +55,7 @@ table 17412 "ZM PL Setup Item registration"
         field(110; "Last Department"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Primer Departamento lanzamiento', comment = 'ESP="Primer Departamento lanzamiento"';
+            Caption = 'Ultimo Departamento lanzamiento', comment = 'ESP="Ultimo Departamento lanzamiento"';
             TableRelation = "ZM PL Item Setup Department".Code;
         }
     }

@@ -13,7 +13,11 @@ enum 50113 "ZM PL State Creation Item"
     {
         Caption = 'Released', comment = 'ESP="En curso"';
     }
-    value(3; Finished)
+    value(3; "Create Pendindg")
+    {
+        Caption = 'Create Pendindg', comment = 'ESP="Pdte. Alta"';
+    }
+    value(4; Finished)
     {
         Caption = 'Finished', comment = 'ESP="Finalizado"';
     }

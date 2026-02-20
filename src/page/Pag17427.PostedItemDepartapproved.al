@@ -31,7 +31,7 @@ page 17427 "Posted Item Depart. approved"
                 {
                     ApplicationArea = all;
                 }
-                field(Obligatory; Obligatory)
+                field(Mandatory; Mandatory)
                 {
                     ApplicationArea = all;
                 }

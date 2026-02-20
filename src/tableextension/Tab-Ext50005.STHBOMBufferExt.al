@@ -49,6 +49,34 @@ tableextension 50005 "STH BOM BufferExt" extends "BOM Buffer"
             CalcFormula = lookup(Item."Material Embalaje Excluido" where("No." = field("No.")));
             editable = false;
         }
+        Field(50030; "First SUBMATERIAL"; code[50])
+        {
+            Caption = 'First value SUBMATERIAL', comment = 'ESP="Primer  valor SUBMATERIAL"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("SCRAP Item - Tipo de Envase".SUBMATERIAL where("Item No." = field("No.")));
+            editable = false;
+        }
+        Field(50031; "First Tipo de Envase"; code[50])
+        {
+            Caption = 'First value Tipo de Envase', comment = 'ESP="Primer valor Tipo de Envase"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("SCRAP Item - Tipo de Envase"."Tipo de Envase" where("Item No." = field("No.")));
+            editable = false;
+        }
+        Field(50032; "First Value Flexible"; Boolean)
+        {
+            Caption = 'First Value Flexible', comment = 'ESP="Primer valor Flexible"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("SCRAP Item - Tipo de Envase".Flexible where("Item No." = field("No.")));
+            editable = false;
+        }
+        Field(50033; "Nos. line Tipo Envases"; Integer)
+        {
+            Caption = 'Nos. line Tipo Envases', comment = 'ESP="Tipo Envases lineas"';
+            FieldClass = FlowField;
+            CalcFormula = count("SCRAP Item - Tipo de Envase" where("Item No." = field("No.")));
+            editable = false;
+        }
         Field(50200; "Plastic Qty. (kg)"; decimal)
         {
             Caption = 'Plastic Qty. (kg)', comment = 'ESP="Cdad. plástico (kg)"';

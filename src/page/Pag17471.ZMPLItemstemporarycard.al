@@ -97,8 +97,14 @@ page 17471 "ZM PL Items temporary card"
                 {
                     ApplicationArea = all;
                     ToolTip = 'Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado.'
-                    , comment = 'ESP="Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado."';
+                        , comment = 'ESP="Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado."';
                     Editable = boolEditReasonBlocked;
+                }
+                field("Requires Final Artwork"; "Requires Final Artwork")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Indica que se realizará seguimiento y aviso por parte de Marketing'
+                        , comment = 'ESP="Indica que se realizará seguimiento y aviso por parte de Marketing"';
                 }
             }
             group(Requester)
@@ -806,7 +812,7 @@ page 17471 "ZM PL Items temporary card"
                 Caption = 'Approvals', comment = 'ESP="Aprobaciones"';
                 Image = Translations;
                 RunObject = page "Item Approval Departments";
-                RunPageLink = "GUID Creation" = field("GUID Creation");
+                RunPageLink = "Request No." = field("No.");
             }
             Group("Lista de materiales")
             {
@@ -899,7 +905,7 @@ page 17471 "ZM PL Items temporary card"
             end;
         end;
         StateBlank := Rec."State Creation" = Rec."State Creation"::" ";
-        StateRequested := Rec."State Creation" = Rec."State Creation"::Requested;
+        StateRequested := Rec.CheckUserOwner();
         IsItemNew := Rec."Request Type" in [Rec."Request Type"::New];
         WorkDescription := GetWorkDescription;
         CheckActivesFields();
@@ -1031,7 +1037,7 @@ page 17471 "ZM PL Items temporary card"
 
     local procedure OnAction_Open()
     begin
-        Rec.TestField("State Creation", Rec."State Creation"::Requested);
+        // Rec.TestField("State Creation", Rec."State Creation"::Requested);
         if ItemsRegisterAprovals.ItemRegistratio_OpenRequested(Rec) then
             CurrPage.Update();
     end;
@@ -1064,9 +1070,9 @@ page 17471 "ZM PL Items temporary card"
                     ActiveAllFields();
                     exit;
                 end;
-            Rec."State Creation"::Requested:
-                if Rec."User ID" = UserId then
-                    ActiveAllFields();
+        // Rec."State Creation"::Requested:
+        //     if (Rec."User ID" = UserId) and Rec. then  // TODO quitar ITBID
+        //         ActiveAllFields();
         end;
 
         // como no es el mismo usuario que la comienza hay que ver si tiene permiso en que campos
@@ -1107,8 +1113,6 @@ page 17471 "ZM PL Items temporary card"
     end;
 
     local procedure AssingFieldActive(FieldNumber: Integer)
-    var
-        myInt: Integer;
     begin
         case FieldNumber of
             1: // No.

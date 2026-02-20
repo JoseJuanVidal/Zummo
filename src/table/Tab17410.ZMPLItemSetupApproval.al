@@ -30,15 +30,22 @@ table 17410 "ZM PL Item Setup Approval"
             DataClassification = CustomerContent;
             Editable = false;
         }
-        field(5; Obligatory; Boolean)
+        field(5; Mandatory; Boolean)
         {
             DataClassification = CustomerContent;
-            Caption = 'Obligatory', comment = 'ESP="Obligatorio"';
+            Caption = 'Mandatory', comment = 'ESP="Obligatorio"';
         }
-        field(6; "Approval Requester"; Boolean)
+        field(6; "Requester"; Boolean)
         {
             DataClassification = CustomerContent;
-            Caption = 'Aprobación Solicitante', comment = 'ESP="Aprobación Solicitante"';
+            Caption = 'Solicitante', comment = 'ESP="Solicitante"';
+        }
+        field(7; "Table Name"; text[100])
+        {
+            Caption = 'Table Name', comment = 'ESP="Nombre Tabla"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Table Metadata".Name where(ID = field("Table No.")));
+            Editable = false;
         }
         field(10; "Department"; Code[20])
         {

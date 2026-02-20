@@ -15,6 +15,10 @@ page 17410 "ZM PL Item Setup approvals"
                 {
                     ApplicationArea = All;
                 }
+                field("Table Name"; "Table Name")
+                {
+                    ApplicationArea = all;
+                }
                 field("Field No."; Rec."Field No.")
                 {
                     ApplicationArea = All;
@@ -37,12 +41,12 @@ page 17410 "ZM PL Item Setup approvals"
                 {
                     ApplicationArea = all;
                 }
-                field(Obligatory; Obligatory)
+                field(Mandatory; Mandatory)
                 {
                     ApplicationArea = all;
                     Visible = Mandatory;
                 }
-                field("Approval Requester"; "Approval Requester")
+                field(Requester; Requester)
                 {
                     ApplicationArea = all;
                     Visible = Mandatory;

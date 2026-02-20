@@ -28,6 +28,10 @@ page 17428 "Item Approval Departments"
                 {
                     ApplicationArea = all;
                 }
+                field(Name; Name)
+                {
+                    ApplicationArea = all;
+                }
                 field("Table No."; "Table No.")
                 {
                     ApplicationArea = all;
@@ -35,7 +39,7 @@ page 17428 "Item Approval Departments"
                     Style = Attention;
                     StyleExpr = ApplyStyle;
                 }
-                field("GUID Creation"; "GUID Creation")
+                field("Request No."; "Request No.")
                 {
                     ApplicationArea = all;
                     Visible = false;

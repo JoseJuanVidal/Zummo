@@ -30,6 +30,19 @@ page 17411 "ZM PL Item Setup Depart. List"
     }
     actions
     {
+        area(Processing)
+        {
+            action(Setup)
+            {
+                Caption = 'Setup', comment = 'ESP="Configuración"';
+                ApplicationArea = all;
+                Image = Setup;
+                Promoted = true;
+                PromotedCategory = Process;
+                RunObject = page "ZM PL Setup Item registration";
+
+            }
+        }
         area(Navigation)
         {
             action(showEmployee)

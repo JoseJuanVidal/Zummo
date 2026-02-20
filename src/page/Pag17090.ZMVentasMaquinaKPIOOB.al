@@ -26,6 +26,8 @@ page 17090 "ZM Ventas Maquina KPI OOB"
                 { }
                 field(desClasVtas_btc; desClasVtas_btc)
                 { }
+                field("Sell-to Customer No."; "Sell-to Customer No.")
+                { }
             }
         }
     }
@@ -45,7 +47,7 @@ page 17090 "ZM Ventas Maquina KPI OOB"
     begin
         Windows.Open('Nº documento #1#################\Linea #2##############');
         SalesInvLine.SetRange(Type, SalesInvLine.Type::Item);
-        SalesInvLine.SetFilter(selClasVtas_btc, '10|15|50');
+        SalesInvLine.SetFilter(selClasVtas_btc, '10|15|40|50');
         if SalesInvLine.FindFirst() then
             repeat
                 Windows.Update(1, SalesInvLine."Document No.");
@@ -55,7 +57,7 @@ page 17090 "ZM Ventas Maquina KPI OOB"
                 Rec.Insert();
             Until SalesInvLine.next() = 0;
         SalesCRMemoLine.SetRange(Type, SalesInvLine.Type::Item);
-        SalesCRMemoLine.SetFilter(selClasVtas_btc, '10|15|50');
+        SalesCRMemoLine.SetFilter(selClasVtas_btc, '10|15|40|50');
         if SalesCRMemoLine.FindFirst() then
             repeat
                 Windows.Update(1, SalesCRMemoLine."Document No.");

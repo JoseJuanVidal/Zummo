@@ -304,7 +304,7 @@ page 17458 "ZM PL Items temporary list"
                 Caption = 'Approvals', comment = 'ESP="Aprobaciones"';
                 Image = Translations;
                 RunObject = page "Item Approval Departments";
-                RunPageLink = "GUID Creation" = field("GUID Creation");
+                RunPageLink = "Request No." = field("No.");
             }
         }
         area(Reporting)
@@ -329,6 +329,8 @@ page 17458 "ZM PL Items temporary list"
     trigger OnInit()
     begin
         // miramos si es nuestra solicitud o nuestros requested
+        if Rec.CheckUserOwner() then
+            exit;
         Rec.FilterGroup(2);
         Rec.SetRange("User ID", UserId);
         Rec.SetRange("State Creation", Rec."State Creation"::" ", Rec."State Creation"::Released);
@@ -338,7 +340,7 @@ page 17458 "ZM PL Items temporary list"
     trigger OnAfterGetCurrRecord()
     begin
         StateBlank := Rec."State Creation" = Rec."State Creation"::" ";
-        StateRequested := Rec."State Creation" = Rec."State Creation"::Requested;
+        StateRequested := Rec.CheckUserOwner();
 
     end;
 

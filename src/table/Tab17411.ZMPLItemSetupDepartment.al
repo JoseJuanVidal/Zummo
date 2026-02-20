@@ -31,6 +31,8 @@ table 17411 "ZM PL Item Setup Department"
 
             trigger OnValidate()
             begin
+                if Rec."User Id" = '' then
+                    exit;
                 User.SetRange("User Name", Rec."User Id");
                 User.FindFirst();
             end;
