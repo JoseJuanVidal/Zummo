@@ -11630,12 +11630,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Property Caption</note>
           <target>Conf. Aprobacioni Alta producto</target>
         </trans-unit>
-        <trans-unit id="Table 4201268802 - Field 417755123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Aprobación Solicitante</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Aprobación Solicitante"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Approval Requester - Property Caption</note>
-          <target>Aprobación Solicitante</target>
-        </trans-unit>
         <trans-unit id="Table 4201268802 - Field 1651921640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Department</source>
           <note from="Developer" annotates="general" priority="2">ESP="Departamento"</note>
@@ -11653,11 +11647,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Field No. - Property Caption</note>
           <target>Campo</target>
         </trans-unit>
-        <trans-unit id="Table 4201268802 - Field 556093882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Obligatory</source>
+        <trans-unit id="Table 4201268802 - Field 1461151337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mandatory</source>
           <note from="Developer" annotates="general" priority="2">ESP="Obligatorio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Obligatory - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Mandatory - Property Caption</note>
           <target>Obligatorio</target>
+        </trans-unit>
+        <trans-unit id="Table 4201268802 - Field 4078940458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solicitante</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Requester - Property Caption</note>
+          <target>Solicitante</target>
         </trans-unit>
         <trans-unit id="Table 4201268802 - Field 3990963403 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Rol</source>
@@ -39614,6 +39614,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Productos de servicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Posted Service Item - Property Caption</note>
           <target>Hist. Productos de servicio</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 1908046867 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Reason Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Auditoría"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Reason Code - Property Caption</note>
+          <target>Cód. Auditoría</target>
         </trans-unit>
         <trans-unit id="TableExtension 1719057576 - Field 2861034351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
           <source>Nº Serie Consumo</source>

@@ -8,6 +8,10 @@ pageextension 50085 "ZM Ext Value Entries" extends "Value Entries"
             {
                 ApplicationArea = all;
             }
+            field("Reason Code"; "Reason Code")
+            {
+                ApplicationArea = all;
+            }
         }
     }
     actions

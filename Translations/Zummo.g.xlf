@@ -36013,6 +36013,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Productos de servicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Posted Service Item - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1719057576 - Field 1908046867 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>Reason Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Auditoría"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Reason Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1719057576 - Field 2861034351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
           <source>Nº Serie Consumo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Serie Consumo"</note>

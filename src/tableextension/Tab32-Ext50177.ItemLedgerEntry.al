@@ -174,6 +174,13 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
                 "Purch. Category code" = field("Category Code"), code = field("SubCategory Code")));
             Editable = false;
         }
+        field(50225; "Reason Code"; code[20])
+        {
+            Caption = 'Reason Code', comment = 'ESP="Cód. Auditoría"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Value Entry"."Reason Code" where("Item Ledger Entry No." = field("Entry No."), "Reason Code" = filter(<> '')));
+            Editable = false;
+        }
         field(50230; "Year"; Integer)
         {
             Caption = 'Year', comment = 'ESP="Año"';

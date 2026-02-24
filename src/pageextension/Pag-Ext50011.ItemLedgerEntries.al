@@ -32,6 +32,7 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
         addafter("Document No.")
         {
             field("External Document No."; "External Document No.") { }
+            field("Reason Code"; "Reason Code") { }
         }
         addafter("Reserved Quantity")
         {
