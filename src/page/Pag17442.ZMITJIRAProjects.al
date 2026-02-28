@@ -53,6 +53,11 @@ page 17442 "ZM IT JIRA Projects"
         }
         area(FactBoxes)
         {
+            part(Avisos; "ZM IT JIRA Tickets")
+            {
+                Caption = 'Avisos', comment = 'ESP="Avisos"';
+                SubPageLink = Project = const(''), State = filter(<> Cerrado);
+            }
             part(Tareas; "ZM IT JIRA Tickets")
             {
                 Caption = 'Task', comment = 'ESP="Tareas"';
@@ -94,7 +99,7 @@ page 17442 "ZM IT JIRA Projects"
             action(TareasProyecto)
             {
                 Caption = 'Project Task', comment = 'ESP="Tareas Proyecto"';
-                Image = Task;
+                Image = TaskPage;
                 Promoted = true;
                 PromotedCategory = Process;
                 RunObject = page "ZM IT JIRA Tickets";

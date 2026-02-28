@@ -26,6 +26,11 @@ table 17441 "ZM IT JIRA Tickets"
             DataClassification = CustomerContent;
             Caption = 'Project', comment = 'ESP="Projecto"';
         }
+        field(6; User; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'User', comment = 'ESP="Usuario"';
+        }
         field(10; State; enum "ZM Contracts Status")
         {
             DataClassification = CustomerContent;

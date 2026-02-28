@@ -435,8 +435,23 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 RunPageLink = clienteFact_btc = field("No.");
             }
         }
-    }
+        addlast(Navigation)
+        {
+            group(PlatformPRL)
+            {
+                Caption = 'Platforms PRL', comment = 'ESP=Plataformas PRL"';
 
+                action(PstedDocuments)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Posted Documents', comment = 'ESP="Documentos Registrados"';
+                    Image = DocumentsMaturity;
+                    RunObject = page "ZM Document Register Platforms";
+                    RunPageLink = "Customer No." = field("No.");
+                }
+            }
+        }
+    }
 
 
     trigger OnAfterGetRecord()

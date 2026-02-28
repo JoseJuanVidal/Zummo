@@ -44,5 +44,21 @@ pageextension 50049 "STH Employee List" extends "Employee List"
                 end;
             }
         }
+        addlast(Navigation)
+        {
+            group(PlatformPRL)
+            {
+                Caption = 'Platforms PRL', comment = 'ESP=Plataformas PRL"';
+
+                action(PostedDocuments)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Posted Documents', comment = 'ESP="Documentos Registrados"';
+                    Image = DocumentsMaturity;
+                    RunObject = page "ZM Document Register Platforms";
+                    RunPageLink = "Employee No." = field("No.");
+                }
+            }
+        }
     }
 }

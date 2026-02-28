@@ -6,6 +6,8 @@ page 17478 "LogEnvioEmailsClientesFacAbo"
     UsageCategory = Administration;
     SourceTable = "LogEnvioEmailsClientes";
     // Editable = false;
+    ModifyAllowed = false;
+    InsertAllowed = false;
 
     layout
     {

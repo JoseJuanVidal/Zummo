@@ -7,6 +7,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         DrivesChildItemsUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/items/%2/children', Comment = '%1 = Drive ID, %2 = Item ID', Locked = true;
         DrivesChildItemsNameUrl: Label '?$filter=name eq ''%1''', Comment = '%1 = name file', Locked = true;
         UploadUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/items/root:/%2:/content', Comment = '%1 = Drive ID, %2 = File Name', Locked = true;
+        UploadFolderUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/items/%2:/%3:/content', Comment = '%1 = Drive ID, %2 = Folder ID, %3 = File Name', Locked = true;
         DownloadUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/items/%2/content', Comment = '%1 = Drive ID, %2 = Item ID', Locked = true;
         DeleteUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/items/%2', Comment = '%1 = Drive ID, %2 = Item ID', Locked = true;
         CreateFolderUrl: Label 'https://graph.microsoft.com/v1.0/drives/%1/items/%2/children', Comment = '%1 = Drive ID, %2 = Item ID', Locked = true;
@@ -122,14 +123,8 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         //DownloadFromStream(Stream, '', '', '', name);   
     end;
 
-    procedure UploadFile(
-        AccessToken: Text;
-        DriveID: Text;
-        ParentID: Text;
-        FolderPath: Text;
-        FileName: Text;
-        var Stream: InStream;
-        var OnlineDriveItem: Record "Online Drive Item"): Boolean
+    procedure UploadFile(AccessToken: Text; DriveID: Text; ParentID: Text; FolderPath: Text; FileName: Text;
+        var Stream: InStream; var OnlineDriveItem: Record "Online Drive Item"): Boolean
     var
         HttpClient: HttpClient;
         Headers: HttpHeaders;
@@ -139,15 +134,12 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         JsonResponse: JsonObject;
         IsSucces: Boolean;
         ResponseText: Text;
+
     begin
         Headers := HttpClient.DefaultRequestHeaders();
         Headers.Add('Authorization', StrSubstNo('Bearer %1', AccessToken));
 
-        RequestMessage.SetRequestUri(
-            StrSubstNo(
-                UploadUrl,
-                DriveID,
-                StrSubstNo('%1/%2', FolderPath, FileName)));
+        RequestMessage.SetRequestUri(StrSubstNo(UploadUrl, DriveID, StrSubstNo('%1/%2', FolderPath, FileName)));
         RequestMessage.Method := 'PUT';
 
         RequestContent.WriteFrom(Stream);
@@ -167,6 +159,41 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         exit(IsSucces);
     end;
 
+    procedure UploadFolderFile(AccessToken: Text; DriveID: Text; ParentID: Text; FolderID: Text; FileName: Text;
+           var Stream: InStream; var OnlineDriveItem: Record "Online Drive Item"): Boolean
+    var
+        HttpClient: HttpClient;
+        Headers: HttpHeaders;
+        RequestMessage: HttpRequestMessage;
+        RequestContent: HttpContent;
+        ResponseMessage: HttpResponseMessage;
+        JsonResponse: JsonObject;
+        IsSucces: Boolean;
+        ResponseText: Text;
+
+    begin
+        Headers := HttpClient.DefaultRequestHeaders();
+        Headers.Add('Authorization', StrSubstNo('Bearer %1', AccessToken));
+
+        RequestMessage.SetRequestUri(StrSubstNo(UploadFolderUrl, DriveID, FolderID, FileName));
+        RequestMessage.Method := 'PUT';
+
+        RequestContent.WriteFrom(Stream);
+        RequestMessage.Content := RequestContent;
+
+        if HttpClient.Send(RequestMessage, ResponseMessage) then
+            if ResponseMessage.IsSuccessStatusCode() then begin
+                if ResponseMessage.Content.ReadAs(ResponseText) then begin
+                    IsSucces := true;
+                    if JsonResponse.ReadFrom(ResponseText) then
+                        ReadDriveItem('', JsonResponse, DriveID, ParentID, OnlineDriveItem);
+                end;
+            end else
+                if ResponseMessage.Content.ReadAs(ResponseText) then
+                    JsonResponse.ReadFrom(ResponseText);
+
+        exit(IsSucces);
+    end;
 
     procedure DownloadFileName(name: text; var Stream: InStream; FileExt: text): Boolean
     var
@@ -382,6 +409,21 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         end;
     end;
 
+    procedure SearchFetchDrivesChildItems(ApplicationCode: code[20]; AccessToken: Text; DriveID: Text; ItemID: Text; SearchName: text; var DriveItem: Record "Online Drive Item"): Boolean
+    var
+        JsonResponse: JsonObject;
+        JToken: JsonToken;
+        IsSucces: Boolean;
+    begin
+        if HttpGet(AccessToken, StrSubstNo(DrivesChildItemsUrl, DriveID, ItemID), JsonResponse) then begin
+            if JsonResponse.Get('value', JToken) then
+                ReadDriveItems(ApplicationCode, JToken.AsArray(), DriveID, ItemID, DriveItem);
+
+
+            exit(true);
+        end;
+    end;
+
     procedure FetchDrivesChildItemsName(ApplicationCode: code[20]; AccessToken: Text; DriveID: Text; ItemID: Text; var DriveItem: Record "Online Drive Item"; Name: text): Boolean
     var
         JsonResponse: JsonObject;
@@ -486,7 +528,7 @@ codeunit 50114 "Sharepoint OAuth App. Helper"
         if JDriveItem.Get('createdDateTime', JToken) then
             DriveItem.createdDateTime := JToken.AsValue().AsDateTime();
         if JDriveItem.Get('webUrl', JToken) then
-            DriveItem.webUrl := JToken.AsValue().AsText();
+            DriveItem.webUrl := CopyStr(JToken.AsValue().AsText(), 1, MaxStrLen(DriveItem.webUrl));
         DriveItem.Insert();
     end;
 

@@ -1828,6 +1828,8 @@ codeunit 50101 "Eventos_btc"
         if PurchaseHeader.get(PurchaseHeader."Document Type"::Order, PostedDocNo) then begin
             OrderEmailRegister.AddSentRegister(PurchaseHeader, TempEmailItem."Send to", TempEmailItem.Subject);
             PurchaseHeader.SetEmailsent();
+            // archivamos el fichero
+            CreateandUploadPurchOrderArchivePDF(PurchaseHeader);
         end;
     end;
 
@@ -1885,6 +1887,51 @@ codeunit 50101 "Eventos_btc"
         FileNameMerge := TempEmailItem."Attachment File Path";
         Funciones.CrearPDFPurchaseOrder(PurchaseHeader, FileNameMerge);
         Commit();
+        // guardar el archivo de PDF
+    end;
+
+    procedure CreateandUploadPurchOrderArchivePDF(PurchaseHeader: Record "Purchase Header"): Boolean
+    var
+        FileMGT: Codeunit "File Management";
+        Funciones: Codeunit Funciones;
+        FileName: text;
+        FileNamePath: text;
+        Window: Dialog;
+        lblFileName: Label '%1 %2.pdf';
+        lblWindow: Label 'Process #1##################', comment = 'ESP="Procesando #1##################"';
+    begin
+        FileName := StrSubstNo(lblFileName, PurchaseHeader."No.", PurchaseHeader."Buy-from Vendor Name");
+        FileNamePath := FileMGT.ServerTempFileName('pdf');
+        Window.Open(lblWindow);
+        Window.Update(1, PurchaseHeader."No.");
+        Funciones.CrearPDFPurchaseOrder(PurchaseHeader, FileNamePath);
+        Window.Close();
+        UploadPurchOrderArchivePDF(PurchaseHeader, FileName, FileNamePath)
+    end;
+
+    procedure UploadPurchOrderArchivePDF(PurchaseHeader: Record "Purchase Header"; FileName: text; FilePath: text)
+    var
+        PurchaseSetup: Record "Purchases & Payables Setup";
+        FileManagement: Codeunit "File Management";
+        RecordLinkSharepoint: Record "ZM SH Record Link Sharepoint";
+        TempBlob: Record TempBlob;
+        INStream: InStream;
+    begin
+        PurchaseSetup.Get();
+        if (PurchaseSetup."OAuth Purchase Order Archive" = '') or (PurchaseSetup."OAuth Purc. Order Arch. Folder" = '') then
+            exit;
+        if (FileName = '') or (FilePath = '') then
+            exit;
+        // guardamos el fichero en el SharePoint
+        TempBlob.Blob.CreateInStream(INStream);
+        TempBlob.Blob.Import(FilePath);
+        if not RecordLinkSharepoint.UPloadFetchDrivesOAut(PurchaseHeader, PurchaseSetup."OAuth Purchase Order Archive",
+            PurchaseSetup."OAuth Purc. Order Arch. Folder", FileName, INStream) then begin
+            // enviamos correo de que no se ha podido guardar el arhivo
+            Message('No se ha podido subir %1', PurchaseHeader."No.");
+
+        end
+
     end;
 
     local procedure GetVendorEmail(var TempEmailItem: Record "Email Item" temporary; PurchaseHeader: Record "Purchase Header")

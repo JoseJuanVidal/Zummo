@@ -62,6 +62,26 @@ pageextension 50116 "ZM PurchaseOrderList" extends "Purchase Order List"
                     ExportMergePDF();
                 end;
             }
+            action(ArchivarPedido)
+            {
+                ApplicationArea = all;
+                Image = SendEmailPDF;
+                Caption = 'Archivar PDF', comment = 'ESP="Archivar PDF"';
+
+                trigger OnAction()
+                var
+                    PurchHeader: Record "Purchase Header";
+                    Eventosbtc: Codeunit Eventos_btc;
+                    lblConfirm: Label '¿Would you like to archive %1 PDF of the purchase order?', comment = 'ESP="¿Desea Archivar %1 PDF del pedidos de compra?"';
+                begin
+                    CurrPage.SetSelectionFilter(PurchHeader);
+                    if Confirm(lblConfirm, false, PurchHeader.Count) then
+                        if PurchHeader.FindFirst() then
+                            repeat
+                                Eventosbtc.CreateandUploadPurchOrderArchivePDF(PurchHeader);
+                            Until PurchHeader.next() = 0;
+                end;
+            }
         }
         addlast(Navigation)
         {

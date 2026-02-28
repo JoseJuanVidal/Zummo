@@ -9388,6 +9388,136 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field User ID - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2247182463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Registration Platforms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro Documentos Plataformas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 1171137197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field Customer Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 633265502 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Codigo Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field Document Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 1480804031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field Employee Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 1964419135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field Employee No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 1330031619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiration Warning</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso Caducidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field Expiration Warning - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 2116961990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>First Due Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Primera fecha Vencimiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field First Due Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 2626717425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha ult. actulización"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field Last Modified Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 2815484115 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Platform PRL</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plataforma PRL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field Platform PRL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2247182463 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Registro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Document Register Platforms - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents for Platforms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos para Plataformas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 1651921640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Department</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Departamento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Department - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 3500962882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Nos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Empleados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Employee Nos. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 1977848501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expired Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos Caducados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Expired Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 1461151337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mandatory</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Obligatorio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Mandatory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 2588654952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Origin</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Origen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Origin - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 3552983923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Propietario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Owner - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 174279730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Response time</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tiempo respuesta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Response time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 174279730 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Annual, Half-yearly,Quarter, Monthly</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Anual,Semestral,Trimestre,Mensual"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Response time - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 1352849644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Response time Duration</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tiempo respuesta Duration"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Response time Duration - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 269761521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field State - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1147459096 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Documents for Platforms - Field Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2296368950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed Assets Products</source>
           <note from="Developer" annotates="general" priority="2">ESP="Productos de Activos Fijos"</note>
@@ -10387,6 +10517,11 @@
           <source>Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1063719647 - Field 1814464443 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Usuario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM IT JIRA Tickets - Field User - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3737271571 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Approval Department</source>
@@ -12303,6 +12438,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="No se ha podido subir el fichero %1, %2, %3"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Method UploadFilefromStream - NamedType lblError</note>
         </trans-unit>
+        <trans-unit id="Table 1982879740 - Method 1104862428 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No se ha podido subir el fichero %1, %2, %3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se ha podido subir el fichero %1, %2, %3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM SH Record Link Sharepoint - Method UploadFilefromStreamOAut - NamedType lblError</note>
+        </trans-unit>
         <trans-unit id="Table 1982879740 - Field 266801057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Application Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. Aplicación"</note>
@@ -12392,6 +12532,16 @@
           <source>There are %1 with document number %2.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Existen %1 con el numero de documento %2."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method CheckDateforReverseEntry - NamedType lblError</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 2653753962 - NamedType 2331022765" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2.pdf</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method CreateandUploadPurchOrderArchivePDF - NamedType lblFileName</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 2653753962 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process #1##################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Procesando #1##################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method CreateandUploadPurchOrderArchivePDF - NamedType lblWindow</note>
         </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 684513984 - NamedType 2415064240" size-unit="char" translate="yes" xml:space="preserve">
           <source>La solicitud de compra %1 tiene un importe de %2 y no coincide.</source>
@@ -19783,6 +19933,26 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Documentos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Attachment Factbox - Control Documents - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2247182463 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Navigate,Setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Register Platforms - Property PromotedActionCategories</note>
+        </trans-unit>
+        <trans-unit id="Page 2247182463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Register Platforms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Registro Documentos plataformas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Register Platforms - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2247182463 - Action 1994964448 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Document Register Platforms - Action Customer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1147459096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents for Platforms</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos para plataformas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Documents for Platforms - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1466677331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Picture</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imagen producto"</note>
@@ -20043,6 +20213,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2254326384 - Control 1932627619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Avisos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Avisos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Control Avisos - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2254326384 - Control 2843956220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Task</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tareas"</note>
@@ -20067,11 +20242,6 @@
           <source>JIRA Tickets</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Tickets - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1063719647 - Action 1461479292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Refresh</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Tickets - Action JIRAGetAllTickets - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1671082619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Confirm Changes in L.M. Production</source>
@@ -31958,6 +32128,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Envíos Fact./Abon. Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action FacturasEmailCliente - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 970994659 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Platforms PRL</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Plataformas PRL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action PlatformPRL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 3524811222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Posted Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos Registrados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action PstedDocuments - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 363045002 - Control 3809540912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Due Date</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Vto."</note>
@@ -33963,6 +34143,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importar Excel"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Employee List - Action ImportExcel - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3260528537 - Action 970994659 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Platforms PRL</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Plataformas PRL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Employee List - Action PlatformPRL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3260528537 - Action 3053737007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Posted Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos Registrados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STH Employee List - Action PostedDocuments - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1397039910 - Action 719822597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 297536702">
           <source>Actualizar Reclamacion BT</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar Reclamacion BT"</note>
@@ -34558,6 +34748,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cambiar Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Action ChangeCurrencyCode - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Action 1911994537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Archivar PDF</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Archivar PDF"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Action ArchivarPedido - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 67345182 - Action 1911994537 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 67345182">
+          <source>¿Would you like to archive the PDF of the purchase order?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Archivar el PDF del pedido de compra?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Action ArchivarPedido - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 67345182 - Action 4166219763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
           <source>Register Send</source>
           <note from="Developer" annotates="general" priority="2">ESP="Registro Envío"</note>
@@ -34567,6 +34767,16 @@
           <source>Normativa Plástico</source>
           <note from="Developer" annotates="general" priority="2">ESP="Normativa Plástico"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrder - Control Plastic - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 148744100 - Action 1911994537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
+          <source>Archivar PDF</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Archivar PDF"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action ArchivarPedido - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 148744100 - Action 1911994537 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 148744100">
+          <source>¿Would you like to archive %1 PDF of the purchase order?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Archivar %1 PDF del pedidos de compra?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action ArchivarPedido - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 148744100 - Action 4166219763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
           <source>Register Send</source>
@@ -36512,6 +36722,16 @@
           <source>Maximum amount Request lower 200</source>
           <note from="Developer" annotates="general" priority="2">ESP="Importe Máximo solicitud menor 200"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field Maximum amount Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 1058286269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>OAuth Purchase Order Archive Folder</source>
+          <note from="Developer" annotates="general" priority="2">ESP="OAuth Carpeta Archivo Pedido Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field OAuth Purc. Order Arch. Folder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1199146597 - Field 3802881332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>OAuth Purchase Order Archive</source>
+          <note from="Developer" annotates="general" priority="2">ESP="OAuth Archivo Pedido Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchSetup - Field OAuth Purchase Order Archive - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1199146597 - Field 2440674873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Path File Export</source>
@@ -40737,6 +40957,26 @@
           <source>Reject</source>
           <note from="Developer" annotates="general" priority="2">ESP="Rechazado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Status Approval - EnumValue Reject - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3150855680 - EnumValue 1498446062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Obsolete</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Obsoleto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Status Documents Platforms - EnumValue Employee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3150855680 - EnumValue 2035247194 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valid</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Vigente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Status Documents Platforms - EnumValue Valid - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2934081092 - EnumValue 3133801257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Empresa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type Documents Platforms - EnumValue Company - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2934081092 - EnumValue 1498446062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Empleado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type Documents Platforms - EnumValue Employee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 266063982 - EnumValue 2318734275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Add</source>

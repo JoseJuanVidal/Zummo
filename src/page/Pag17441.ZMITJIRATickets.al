@@ -23,9 +23,14 @@ page 17441 "ZM IT JIRA Tickets"
                 {
                     ApplicationArea = All;
                 }
+                field(User; User)
+                {
+                    ApplicationArea = all;
+                }
                 field(id; Rec.id)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field(State; Rec.State)
                 {
@@ -42,24 +47,24 @@ page 17441 "ZM IT JIRA Tickets"
             }
         }
     }
-    actions
-    {
-        area(Processing)
-        {
-            action(JIRAGetAllTickets)
-            {
-                Caption = 'Refresh', comment = 'ESP="Actualizar"';
-                Image = UpdateDescription;
-                Promoted = true;
-                PromotedCategory = Process;
+    // actions
+    // {
+    //     area(Processing)
+    //     {
+    //         action(JIRAGetAllTickets)
+    //         {
+    //             Caption = 'Refresh', comment = 'ESP="Actualizar"';
+    //             Image = UpdateDescription;
+    //             Promoted = true;
+    //             PromotedCategory = Process;
 
-                trigger OnAction()
-                var
-                    SWFunciones: Codeunit "Zummo Inn. IC Functions";
-                begin
-                    SWFunciones.JIRAGetAllTickets('TZ', '');
-                end;
-            }
-        }
-    }
+    //             trigger OnAction()
+    //             var
+    //                 SWFunciones: Codeunit "Zummo Inn. IC Functions";
+    //             begin
+    //                 SWFunciones.JIRAGetAllTickets('TZ', '');
+    //             end;
+    //         }
+    //     }
+    // }
 }

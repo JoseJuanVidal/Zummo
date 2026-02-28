@@ -171,6 +171,96 @@ table 17380 "ZM SH Record Link Sharepoint"
             Error(lblError, FileName, OAuth20Application.RootFolderID, OAuth20ApplicationFolders.FolderName);
     end;
 
+    procedure UploadFilefromStreamOAut(Record_id: RecordId; SharepointConnection: text; RootFolderID: text; FolderID: text; FileName: Text;
+        INStream: InStream; var FileURL: text): Boolean
+    var
+        RecordLinkSharepoint: Record "ZM SH Record Link Sharepoint";
+        FileManagement: Codeunit "File Management";
+        lblError: Label 'No se ha podido subir el fichero %1, %2, %3', comment = 'ESP="No se ha podido subir el fichero %1, %2, %3"';
+    begin
+        OnlineDriveItem.DeleteAll();
+        OAuth20Application.Get(SharepointConnection);
+        AccessToken := SharepointAppHelper.GetAccessToken(SharepointConnection);
+        if SharepointAppHelper.UploadFolderFile(AccessToken, OAuth20Application.RootFolderID, '', FolderID, FileName, INStream, OnlineDriveItem) then begin
+            // RecordLinkSharepoint.Init();
+            // RecordLinkSharepoint.id := CreateGuid();
+            // RecordLinkSharepoint."Application Code" := SharepointConnection;
+            // RecordLinkSharepoint."Record ID" := Record_id;
+            // RecordLinkSharepoint.URL := copystr(OnlineDriveItem.webUrl, 1, MaxStrLen(RecordLinkSharepoint.URL));
+            // RecordLinkSharepoint.Name := FileName;
+            // RecordLinkSharepoint.Description := FileName;
+            // RecordLinkSharepoint.driveId := OnlineDriveItem.driveId;
+            // RecordLinkSharepoint.fileId := OnlineDriveItem.id;
+            // RecordLinkSharepoint."Document No." := copystr(Name, 1, MaxStrLen(RecordLinkSharepoint."Document No."));
+            // RecordLinkSharepoint."File Name" := FileName;
+            // RecordLinkSharepoint.Insert(true);
+            FileURL := OnlineDriveItem.webUrl;
+        end;
+    end;
+
+    procedure UPloadFetchDrivesOAut(PurchaseHeader: Record "Purchase Header"; SharepointConnection: code[20]; SharepointFolder: code[20]; FileName: Text; INStream: InStream): Boolean
+    var
+        TempOnlineDriveItem: Record "Online Drive Item" temporary;
+        YearFolderDriveId: Text;
+        VendorFolderDriveId: Text;
+        YearFolder: text;
+        VendorFolder: text;
+        FileURL: Text;
+    begin
+        OAuth20Application.Get(SharepointConnection);
+        OAuth20ApplicationFolders.Get(OAuth20Application.Code, SharepointFolder);
+        AccessToken := SharepointAppHelper.GetAccessToken(SharepointConnection);
+        // YEAR
+        TempOnlineDriveItem.DeleteAll();
+        YearFolder := format(Date2DMY(PurchaseHeader."Document Date", 3));
+        YearFolderDriveId := '';
+        if SharepointAppHelper.FetchDrivesChildItems(SharepointConnection, AccessToken, OAuth20Application.RootFolderID, OAuth20ApplicationFolders.FolderID, TempOnlineDriveItem) then
+            if TempOnlineDriveItem.FindFirst() then
+                repeat
+                    if TempOnlineDriveItem.name = YearFolder then
+                        YearFolderDriveId := TempOnlineDriveItem.id;
+                Until TempOnlineDriveItem.next() = 0;
+        if YearFolderDriveId = '' then begin
+            if not SharepointAppHelper.CreateDriveFolder(SharepointConnection, AccessToken, OAuth20Application.RootFolderID, OAuth20ApplicationFolders.FolderID,
+                    YearFolder, TempOnlineDriveItem) then
+                exit;
+            YearFolderDriveId := TempOnlineDriveItem.id;
+        end;
+        // Vendor code + Name
+        TempOnlineDriveItem.DeleteAll();
+        VendorFolder := StrSubstNo('%1 %2', PurchaseHeader."Buy-from Vendor No.", DelChr(PurchaseHeader."Buy-from Vendor Name", '=', '\/.'));
+        VendorFolderDriveId := '';
+        if SharepointAppHelper.FetchDrivesChildItems(SharepointConnection, AccessToken, OAuth20Application.RootFolderID, YearFolderDriveId, TempOnlineDriveItem) then
+            if TempOnlineDriveItem.FindFirst() then
+                repeat
+                    if TempOnlineDriveItem.name = VendorFolder then
+                        VendorFolderDriveId := TempOnlineDriveItem.id;
+                Until TempOnlineDriveItem.next() = 0;
+        if VendorFolderDriveId = '' then begin
+            if not SharepointAppHelper.CreateDriveFolder(SharepointConnection, AccessToken, OAuth20Application.RootFolderID, YearFolderDriveId,
+                    VendorFolder, TempOnlineDriveItem) then
+                exit;
+            VendorFolderDriveId := TempOnlineDriveItem.id;
+        end;
+        TempOnlineDriveItem.DeleteAll();
+        if not UploadFilefromStreamOAut(PurchaseHeader.RecordId, SharepointConnection, OAuth20Application.RootFolderID, VendorFolderDriveId, FileName, INStream, FileURL) then begin
+            UpdateRecordLinkPurchaseHeader(PurchaseHeader, FileURL, Filename);
+            exit(true);
+        end;
+    end;
+
+    local procedure UpdateRecordLinkPurchaseHeader(PurchaseHeader: Record "Purchase Header"; WebUrl: Text; Filename: Text)
+    var
+        RecordLink: Record "Record Link";
+    begin
+        RecordLink.Reset();
+        RecordLink.SetRange("Record ID", PurchaseHeader.RecordId);
+        RecordLink.SetRange(Description, Filename);
+        if RecordLink.FindFirst() then
+            RecordLink.Delete();
+        PurchaseHeader.AddLink(WebUrl, Filename);
+    end;
+
     procedure DownloadFile()
     var
         FileName: text;

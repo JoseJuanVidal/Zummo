@@ -19,6 +19,18 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             DataClassification = CustomerContent;
             Caption = 'Email Order CC', comment = 'ESP="Email Pedido CC"';
         }
+        field(50003; "OAuth Purchase Order Archive"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'OAuth Purchase Order Archive', comment = 'ESP="OAuth Archivo Pedido Compra"';
+            TableRelation = "ZM OAuth 2.0 Application".Code;
+        }
+        field(50004; "OAuth Purc. Order Arch. Folder"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'OAuth Purchase Order Archive Folder', comment = 'ESP="OAuth Carpeta Archivo Pedido Compra"';
+            TableRelation = "ZM OAuth20Application Folders".Code where("Application Code" = field("OAuth Purchase Order Archive"));
+        }
         field(50010; WarningPlasticReceiptIntra; Boolean)
         {
             DataClassification = CustomerContent;

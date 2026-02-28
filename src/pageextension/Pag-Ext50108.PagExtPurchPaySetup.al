@@ -31,6 +31,14 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
                     {
                         ApplicationArea = all;
                     }
+                    field("Oauth Purchase Order Archive"; "Oauth Purchase Order Archive")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Oauth Purc. Order Arch. Folder"; "Oauth Purc. Order Arch. Folder")
+                    {
+                        ApplicationArea = all;
+                    }
                 }
                 field(WarningPlasticReceiptIntra; WarningPlasticReceiptIntra)
                 {
