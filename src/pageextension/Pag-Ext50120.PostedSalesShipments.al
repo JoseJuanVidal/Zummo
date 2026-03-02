@@ -82,21 +82,11 @@ pageextension 50120 "PostedSalesShipments" extends "Posted Sales Shipments"
 
                 trigger OnAction()
                 var
-                    ItemLedgerEntry: Record "Item Ledger Entry";
-                    itemledgerEntry2: Record "Item Ledger Entry";
+                    funciones: Codeunit Funciones;
+                    lblConfirm: Label '¿Desea Imprimir las etiquetas expedición?', comment = 'ESP="¿Desea Imprimir las etiquetas expedición?"';
                 begin
-                    ItemLedgerEntry.Reset();
-                    ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Sale);
-                    ItemLedgerEntry.SetRange("Document Type", ItemLedgerEntry."Document Type"::"Sales Shipment");
-                    ItemLedgerEntry.SetRange("Document No.", Rec."No.");
-                    if ItemLedgerEntry.FindFirst() then begin
-                        repeat
-                            itemledgerEntry2.reset;
-                            itemledgerEntry2.SetRange("Entry No.", ItemLedgerEntry."Entry No.");
-                            itemledgerEntry2.FindFirst();
-                            Report.Run(Report::EtiquetaDeExpedicion, false, false, ItemLedgerEntry2);
-                        until ItemLedgerEntry.Next() = 0;
-                    end;
+                    if Confirm(lblConfirm) then
+                        funciones.ImprimirEtiquetaExpedicion(Rec);
                 end;
             }
 

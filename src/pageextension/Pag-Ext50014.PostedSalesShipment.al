@@ -74,33 +74,11 @@ pageextension 50014 "PostedSalesShipment" extends "Posted Sales Shipment"
 
                     trigger OnAction()
                     var
-                        ItemLedgerEntry: Record "Item Ledger Entry";
-                        ItemledgerEntry2: Record "Item Ledger Entry";
-                        SalesShipmentLine: Record "Sales Shipment Line";
+                        funciones: Codeunit Funciones;
+                        lblConfirm: Label '¿Desea Imprimir las etiquetas expedición?', comment = 'ESP="¿Desea Imprimir las etiquetas expedición?"';
                     begin
-                        SalesShipmentLine.reset;
-                        SalesShipmentLine.SetRange("Document No.", Rec."No.");
-                        SalesShipmentLine.SetFilter(Quantity, '>0');
-                        if SalesShipmentLine.FindFirst() then begin
-
-                            ItemLedgerEntry.Reset();
-                            ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Sale);
-                            ItemLedgerEntry.SetRange("Document Type", ItemLedgerEntry."Document Type"::"Sales Shipment");
-                            ItemLedgerEntry.SetRange("Document No.", Rec."No.");
-                            ItemLedgerEntry.SetRange("Document Line No.", SalesShipmentLine."Line No.");
-                            // 220188 no imprime si no son productos
-                            if ItemLedgerEntry.FindFirst() then begin
-                                itemledgerEntry2.reset;
-                                itemledgerEntry2.SetRange("Entry No.", ItemLedgerEntry."Entry No.");
-                                itemledgerEntry2.FindFirst();
-                                Report.Run(Report::EtiquetaDeExpedicion, false, false, ItemLedgerEntry2);
-                            end else begin
-                                // si no tiene movimientos, imprimir una en blanco por producto                               
-                                Report.Run(Report::"EtiquetaDeExpedicionShipment", false, false, SalesShipmentLine);
-
-                            end;
-
-                        end;
+                        if Confirm(lblConfirm) then
+                            funciones.ImprimirEtiquetaExpedicion(Rec);
                     end;
                 }
                 action("Imprimir Selec Etiquetas")

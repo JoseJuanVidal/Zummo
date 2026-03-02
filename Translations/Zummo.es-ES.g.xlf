@@ -26211,6 +26211,86 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion - Control RPNoOfCopies - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 248053610" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Albarán / Delivery note:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Albarán / Delivery note:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType Albaran_Lbl</note>
+          <target>Albarán / Delivery note:</target>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 2057872364" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FO.04_C7.03_V04</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType CodDocumento</note>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 3517632600" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consignatario / Consignee:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Consignatario / Consignee:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType Consignatario_Lbl</note>
+          <target>Consignatario / Consignee:</target>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 1083092752" size-unit="char" translate="yes" xml:space="preserve">
+          <source> de </source>
+          <note from="Developer" annotates="general" priority="2">ESP=" de "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType de_Lbl</note>
+          <target> de </target>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 4155350022" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Domicilio / Address:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Domicilio / Address:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType Domicilio_Lbl</note>
+          <target>Domicilio / Address:</target>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 3629279096" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha / Date:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha / Date:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType Fecha_Lbl</note>
+          <target>Fecha / Date:</target>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 1581257925" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mercancias / Goods:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mercancias / Goods:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType Mercancias_Lbl</note>
+          <target>Mercancias / Goods:</target>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 2450936972" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Bultos / Bulks:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Bultos / Bulks:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType NBultos_Lbl</note>
+          <target>Nº Bultos / Bulks:</target>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 3154177954" size-unit="char" translate="yes" xml:space="preserve">
+          <source>País / Country:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="País / Country:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType Pais_Lbl</note>
+          <target>País / Country:</target>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 1099343050" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Población / City:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Población / City:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType Poblacion_Lbl</note>
+          <target>Población / City:</target>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - NamedType 9498102" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Provincia / State:</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia / State:"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - NamedType Provincia_Lbl</note>
+          <target>Provincia / State:</target>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - Control 1331080395 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies how many copies of the document to print.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - Control RPNoOfCopies - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 862015602 - Control 1331080395 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº de Copias</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Report EtiquetaDeExpedicion PedTransf - Control RPNoOfCopies - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 501531045 - NamedType 248053610" size-unit="char" translate="yes" xml:space="preserve">
           <source>Albarán / Delivery note:</source>
           <note from="Developer" annotates="general" priority="2">ESP="Albarán / Delivery note:"</note>
@@ -36112,6 +36192,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Transfer Receipt Z - Action Pesos y Bultos - Property Caption</note>
           <target>Pesos y Bultos</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2952777112 - Action 3945015181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2714855698">
+          <source>Imprimir etiquetas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiquetas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Transfer Receipt Z - Action Imprimir Etiqueta Expedicion - Property ToolTip</note>
+          <target>Imprimir etiquetas</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2952777112 - Action 3945015181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2714855698">
+          <source>Etiquetas Expedicion</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Etiqueta Expedicion"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Transfer Receipt Z - Action Imprimir Etiqueta Expedicion - Property Caption</note>
+          <target>Etiqueta Expedicion</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2952777112 - Action 636081118 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2714855698">
           <source>Imprimir etiquetas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiquetas"</note>
@@ -36532,6 +36624,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesShipment - Action Imprimir Etiqueta Expedicion - Property Caption</note>
           <target>Etiqueta Expedicion</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2079742947 - Action 3945015181 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2079742947">
+          <source>¿Desea Imprimir las etiquetas expedición?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Imprimir las etiquetas expedición?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesShipment - Action Imprimir Etiqueta Expedicion - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea Imprimir las etiquetas expedición?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2079742947 - Action 636081118 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
           <source>Imprimir etiquetas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiquetas"</note>
@@ -36586,6 +36684,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesShipments - Action Imprimir Etiquetas - Property Caption</note>
           <target>Etiquetas</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1625261806 - Action 1765398210 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1625261806">
+          <source>¿Desea Imprimir las etiquetas expedición?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Imprimir las etiquetas expedición?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesShipments - Action Imprimir Etiquetas - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea Imprimir las etiquetas expedición?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1625261806 - Action 636081118 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
           <source>Imprimir etiquetas</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiquetas"</note>
@@ -36627,6 +36731,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Agente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesShipments - Change Shipping Agent Code - Property Caption</note>
           <target>Agente</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 944561194 - Action 3945015181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1037826143">
+          <source>Imprimir etiquetas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Imprimir etiquetas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedTransferReceipt - Action Imprimir Etiqueta Expedicion - Property ToolTip</note>
+          <target>Imprimir etiquetas</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 944561194 - Action 3945015181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1037826143">
+          <source>Etiquetas Expedicion</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Etiqueta Expedicion"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedTransferReceipt - Action Imprimir Etiqueta Expedicion - Property Caption</note>
+          <target>Etiqueta Expedicion</target>
         </trans-unit>
         <trans-unit id="PageExtension 944561194 - Action 2990382772 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1037826143">
           <source>Pesos y Bultos</source>

@@ -52,6 +52,27 @@ pageextension 50167 "PostedTransferReceipt" extends "Posted Transfer Receipts"
                     end;
                 end;
             }
+            action("Imprimir Etiqueta Expedicion")
+            {
+                ApplicationArea = all;
+                Caption = 'Etiquetas Expedicion', comment = 'ESP="Etiqueta Expedicion"';
+                ToolTip = 'Imprimir etiquetas',
+                    comment = 'ESP="Imprimir etiquetas"';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Report;
+                Image = PrintReport;
+
+                trigger OnAction()
+                var
+                    TransferRcpHeader: Record "Transfer Receipt Header";
+                    EtiquetExp: report "EtiquetaDeExpedicion PedTransf";
+                begin
+                    TransferRcpHeader.SetRange("No.", Rec."No.");
+                    EtiquetExp.SetTableView(TransferRcpHeader);
+                    EtiquetExp.Run();
+                end;
+            }
         }
     }
 }

@@ -133,6 +133,31 @@ codeunit 50111 "Funciones"
         exit('');
     end;
 
+    procedure ImprimirEtiquetaExpedicion(Rec: Record "Sales Shipment Header")
+    var
+        ItemLedgerEntry: Record "Item Ledger Entry";
+        itemledgerEntry2: Record "Item Ledger Entry";
+        SalesShipmentLine: Record "Sales Shipment Line";
+    begin
+        ItemLedgerEntry.Reset();
+        SalesShipmentLine.reset;
+        SalesShipmentLine.SetRange("Document No.", Rec."No.");
+        SalesShipmentLine.SetFilter(Quantity, '>0');
+        if SalesShipmentLine.FindFirst() then begin
+            ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Sale);
+            ItemLedgerEntry.SetRange("Document Type", ItemLedgerEntry."Document Type"::"Sales Shipment");
+            ItemLedgerEntry.SetRange("Document No.", Rec."No.");
+            if ItemLedgerEntry.FindFirst() then begin
+                itemledgerEntry2.reset;
+                itemledgerEntry2.SetRange("Entry No.", ItemLedgerEntry."Entry No.");
+                itemledgerEntry2.FindFirst();
+                Report.Run(Report::EtiquetaDeExpedicion, false, false, ItemLedgerEntry2);
+            end else begin
+                // si no tiene movimientos, imprimir una en blanco por producto                               
+                Report.Run(Report::"EtiquetaDeExpedicionShipment", false, false, SalesShipmentLine);
+            end;
+        end;
+    end;
 
     procedure BorrarSeguimientos(tabla: Integer; DocumentNo: Code[20]; LinDocumento: integer)
     var
