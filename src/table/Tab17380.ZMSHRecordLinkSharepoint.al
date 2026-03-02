@@ -228,7 +228,7 @@ table 17380 "ZM SH Record Link Sharepoint"
         end;
         // Vendor code + Name
         TempOnlineDriveItem.DeleteAll();
-        VendorFolder := StrSubstNo('%2', DelChr(PurchaseHeader."Buy-from Vendor Name", '=', '\/.'));
+        VendorFolder := StrSubstNo('%1', DelChr(PurchaseHeader."Buy-from Vendor Name", '=', '\/.'));
         VendorFolderDriveId := '';
         if SharepointAppHelper.FetchDrivesChildItems(SharepointConnection, AccessToken, OAuth20Application.RootFolderID, YearFolderDriveId, TempOnlineDriveItem) then
             if TempOnlineDriveItem.FindFirst() then
