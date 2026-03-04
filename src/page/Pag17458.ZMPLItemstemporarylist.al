@@ -331,10 +331,10 @@ page 17458 "ZM PL Items temporary list"
         // miramos si es nuestra solicitud o nuestros requested
         if Rec.CheckUserOwner() then
             exit;
-        Rec.FilterGroup(2);
-        Rec.SetRange("User ID", UserId);
+        // Rec.FilterGroup(2);
+        Rec.SetFilter("User ID", '%1|%2', UserId, '');
         Rec.SetRange("State Creation", Rec."State Creation"::" ", Rec."State Creation"::Released);
-        Rec.FilterGroup(0);
+        // Rec.FilterGroup(0);
     end;
 
     trigger OnAfterGetCurrRecord()

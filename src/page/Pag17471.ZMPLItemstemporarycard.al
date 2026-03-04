@@ -19,7 +19,7 @@ page 17471 "ZM PL Items temporary card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Nº Identificador del producto', comment = 'ESP="Nº Identificador del producto"';
-                    Editable = boolEditNo;
+                    Editable = boolEditUserCreate;
 
                     trigger OnAssistEdit()
                     begin
@@ -32,6 +32,7 @@ page 17471 "ZM PL Items temporary card"
                 field("Request Type"; "Request Type")
                 {
                     ApplicationArea = all;
+                    Editable = boolEditUserCreate;
                     trigger OnValidate()
                     begin
                         Rec.ValidateRequestType();
@@ -41,12 +42,14 @@ page 17471 "ZM PL Items temporary card"
                 field("Item No."; "Item No.")
                 {
                     ApplicationArea = all;
-                    Editable = IsItemNew;
+                    // Editable = IsItemNew;
+                    Editable = boolEditUserCreate;
                 }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
-                    Editable = boolEditDescription;
+                    // Editable = boolEditDescription;
+                    Editable = boolEditUserCreate;
                 }
                 // field(EnglishDescription; Rec.EnglishDescription)
                 // {
@@ -67,6 +70,12 @@ page 17471 "ZM PL Items temporary card"
                         , comment = 'ESP="Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario)."';
                     Editable = boolEditType;
                 }
+                field(UserName; UserName)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Comprobador', comment = 'ESP="Comprobador"';
+                    Editable = false;
+                }
                 field("State Creation"; "State Creation")
                 {
                     ApplicationArea = all;
@@ -75,6 +84,7 @@ page 17471 "ZM PL Items temporary card"
                 group(ITBID)
                 {
                     Caption = 'Plataforma ITBID', comment = 'ESP="Plataforma ITBID"';
+                    Editable = boolITBID;
                     field("ITBID Create"; "ITBID Create")
                     {
                         ApplicationArea = all;
@@ -164,7 +174,7 @@ page 17471 "ZM PL Items temporary card"
             group(Quality)
             {
                 Caption = 'Quality', comment = 'ESP="Calidad"';
-                Visible = ShowSections;
+                // Visible = ShowSections;
 
                 field("Sujeto a Control de Calidad"; "Sujeto a Control de Calidad")
                 {
@@ -252,7 +262,7 @@ page 17471 "ZM PL Items temporary card"
             group(Clasification)
             {
                 Caption = 'Clasification', comment = 'ESP="Clasificación"';
-                Visible = ShowSections;
+                // Visible = ShowSections;
 
                 Grid(Clasif)
                 {
@@ -892,18 +902,6 @@ page 17471 "ZM PL Items temporary card"
 
     trigger OnAfterGetCurrRecord()
     begin
-        if Rec."Request Type" in [Rec."Request Type"::" "] then
-            ShowSections := false
-        else
-            ShowSections := true;
-        case Rec."State Creation" of
-            Rec."State Creation"::" ":
-                begin
-                    CurrPage.Editable := true;
-                end else begin
-                CurrPage.Editable := false;
-            end;
-        end;
         StateBlank := Rec."State Creation" = Rec."State Creation"::" ";
         StateRequested := Rec.CheckUserOwner();
         IsItemNew := Rec."Request Type" in [Rec."Request Type"::New];
@@ -917,7 +915,7 @@ page 17471 "ZM PL Items temporary card"
         ItemSetupApproval: Record "ZM PL Item Setup Approval";
         ItemSetupDepartment: Record "ZM PL Item Setup Department";
         ItemsRegisterAprovals: Codeunit "ZM PL Items Regist. aprovals";
-
+        UserName: Code[50];
         WorkDescription: text;
         ChangeField: array[100] of Boolean;
         ShowSEBCodes: Boolean;
@@ -927,6 +925,7 @@ page 17471 "ZM PL Items temporary card"
         IsItemNew: Boolean;
         StateBlank: Boolean;
         StateRequested: Boolean;
+        boolITBID: Boolean;
         boolEditNo: Boolean;
         boolEditDescription: Boolean;
         boolEditAssemblyBOM: Boolean;
@@ -1063,36 +1062,60 @@ page 17471 "ZM PL Items temporary card"
     var
         myInt: Integer;
     begin
+        ShowSections := false;
+        boolEditUserCreate := false;
+        CurrPage.Editable := false;
         DissableAllFields();
         case Rec."State Creation" of
             Rec."State Creation"::" ":
                 begin
-                    ActiveAllFields();
-                    exit;
-                end;
-        // Rec."State Creation"::Requested:
-        //     if (Rec."User ID" = UserId) and Rec. then  // TODO quitar ITBID
-        //         ActiveAllFields();
+                    If Rec."User ID" = "User ID" then begin
+                        boolEditUserCreate := true;
+                        CurrPage.Editable := true;
+                        UserFieldsCreation();
+                        exit;
+                    end;
+                end
+            else begin
+                UserFieldsActive();
+                ShowSections := true;
+            end;
         end;
-
         // como no es el mismo usuario que la comienza hay que ver si tiene permiso en que campos
-        UserFieldsActive();
+    end;
+
+    local procedure UserFieldsCreation()
+    begin
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", Database::"ZM PL Items Temporary");
+        ItemSetupApproval.SetFilter("Field No.", '<>%1', 0);
+        ItemSetupApproval.SetRange(Requester, true);
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                AssingFieldActive(ItemSetupApproval."Field No.");
+            Until ItemSetupApproval.next() = 0;
     end;
 
     local procedure UserFieldsActive()
     var
         RefRecord: RecordRef;
     begin
+        UserName := '';
+        DissableAllFields();
         //  primero miramos si deberia estar en editable user
-        if Rec."State Creation" in [Rec."State Creation"::" "] then
-            if Rec."User ID" = UserId then
+        if Rec."User ID" = UserId then begin
+            if Rec."State Creation" in [Rec."State Creation"::Requested] then begin
                 boolEditUserCreate := true;
+                UserFieldsCreation();
+            end;
+            exit;
+        end;
         ItemSetupDepartment.Reset();
         ItemSetupDepartment.SetRange("User Id", UserId);
         if not ItemSetupDepartment.FindFirst() then
             exit;
+        UserName := ItemSetupDepartment.Code;
         RefRecord.GetTable(Rec);
-
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
         ItemSetupApproval.SetRange(Department, ItemSetupDepartment.Code);
@@ -1101,6 +1124,7 @@ page 17471 "ZM PL Items temporary card"
         // aprobacion completa a la tabla de items por departamento
         if ItemSetupApproval.FindFirst() then begin
             ActiveAllFields();
+            CurrPage.Editable := true;
             exit;
         end;
         ItemSetupApproval.SetRange("Field No.");
@@ -1243,6 +1267,8 @@ page 17471 "ZM PL Items temporary card"
                 boolEditCanal := true;
             50127: //Material: //text[100])
                 boolEditMaterial := true;
+            50128:  // ITBID Create
+                boolITBID := true;
             50130: //"Purch. Family": //Code[20])
                 boolEditPurchFamily := true;
             50132: //"Purch. Category": //Code[20])
@@ -1313,6 +1339,7 @@ page 17471 "ZM PL Items temporary card"
         boolEditAssemblyBOM := true;
         boolEditBaseUnit := true;
         boolEditType := true;
+        boolITBID := true;
         boolEditInventoryPostingGroup := true;
         boolEditItemDiscGroup := true;
         boolEditUnitPrice := true;
@@ -1410,11 +1437,12 @@ page 17471 "ZM PL Items temporary card"
 
     local procedure DissableAllFields()
     begin
-        boolEditNo := false;
-        boolEditDescription := false;
+        boolEditNo := true;
+        boolEditDescription := true;
         boolEditAssemblyBOM := false;
-        boolEditBaseUnit := false;
-        boolEditType := false;
+        boolEditBaseUnit := true;
+        boolEditType := true;
+        boolITBID := false;
         boolEditInventoryPostingGroup := false;
         boolEditItemDiscGroup := false;
         boolEditUnitPrice := false;
@@ -1434,7 +1462,7 @@ page 17471 "ZM PL Items temporary card"
         boolEditDurability := false;
         boolEditFreightType := false;
         boolEditTariffNo := false;
-        boolEditBlocked := false;
+        boolEditBlocked := true;
         boolEditVATBusPostingGrPrice := false;
         boolEditGenProdPostingGroup := false;
         boolEditPicture := false;
@@ -1473,7 +1501,7 @@ page 17471 "ZM PL Items temporary card"
         boolEditselLineaEconomica_btc := false;
         boolEditABC := false;
         boolEditCanal := false;
-        boolEditMaterial := false;
+        boolEditMaterial := true;
         boolEditPurchFamily := false;
         boolEditDescPurchFamily := false;
         boolEditPurchCategory := false;
@@ -1498,11 +1526,11 @@ page 17471 "ZM PL Items temporary card"
         boolEditVendorPackagingSteel := false;
         boolEditVendorPackagingCarton := false;
         boolEditVendorPackagingWood := false;
-        boolEditLargo := false;
-        boolEditAncho := false;
-        boolEditAlto := false;
+        boolEditLargo := true;
+        boolEditAncho := true;
+        boolEditAlto := true;
         boolEditPackaging := false;
-        boolEditColor := false;
+        boolEditColor := true;
         boolEditReason := false;
         boolEditReasonBlocked := false;
         boolEditRoutingNo := false;

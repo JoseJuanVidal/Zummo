@@ -92,6 +92,15 @@ page 17413 "ZM PL Setup Item registration"
                 PromotedCategory = Process;
                 RunObject = page "ZM PL Item Setup approvals";
             }
+            action(configDepartment)
+            {
+                ApplicationArea = all;
+                Caption = 'Conf. Departamentos', comment = 'ESP="Conf. Departamentos"';
+                Image = Departments;
+                Promoted = true;
+                PromotedCategory = Process;
+                RunObject = page "ZM PL Item Setup Depart. List";
+            }
         }
     }
 

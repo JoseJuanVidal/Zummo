@@ -20913,6 +20913,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Indica el estado de la solicitud de datos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control State Creation - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 3549826426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comprobador</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comprobador"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control UserName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Control 1795699428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prices &amp; Sales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precios y ventas"</note>
@@ -21107,6 +21112,11 @@
           <source>Conf. Departamentos Alta Productos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos Alta Productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Action ConfAprobAltaProd - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 988243340 - Action 955223778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conf. Departamentos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Action configDepartment - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 988243340 - Action 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send Email</source>

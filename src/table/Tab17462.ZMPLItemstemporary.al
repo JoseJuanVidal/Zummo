@@ -831,7 +831,6 @@ table 17462 "ZM PL Items Temporary"
         {
             DataClassification = CustomerContent;
             Caption = 'ITBID Create', comment = 'ESP="Crear para solicitudes"';
-            InitValue = true;
 
             trigger OnValidate()
             begin
@@ -1168,8 +1167,8 @@ table 17462 "ZM PL Items Temporary"
             DataClassification = CustomerContent;
             Caption = 'Cód. Usuario', comment = 'ESP="Cód. Usuario"';
             TableRelation = User."User Name";
-            ValidateTableRelation = true;
-            Editable = false;
+            ValidateTableRelation = false;
+            // Editable = false;
         }
         field(50827; "Codigo Empleado"; Code[50])
         {
@@ -1322,7 +1321,7 @@ table 17462 "ZM PL Items Temporary"
 
     trigger OnModify()
     begin
-        InitRecord();
+        // InitRecord();
     end;
 
     trigger OnDelete()
@@ -1753,8 +1752,8 @@ table 17462 "ZM PL Items Temporary"
         Body := '<p>&nbsp;</p>';
         Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
         Body += '<h2 style="color: #2e6c80;">' + Subject + '</h2>';
-        Body += '<h3 style="color: #2e6c80;">ROL: ' + Rec."Product manager" + '</h3>';
-        Body += '<h3 style="color: #2e6c80;">ROL: ' + Rec."User ID" + '</h3>';
+        Body += '<h3 style="color: #2e6c80;">Product Manager: ' + Rec."Product manager" + '</h3>';
+        Body += '<h3 style="color: #2e6c80;">USER: ' + Rec."User ID" + '</h3>';
         Body += '<h3 style="color: #2e6c80;">Usuario: ' + StrSubstNo('%1 (%2)', Employee.FullName(), CodEmpleado) + '</h3>';
         Body += '<h4 style="color: #2e6c80;">Departamento Revision: ' + Department + '</h4>';
         Body += '<p><strong>' + Rec.FieldCaption("Item No.") + '</strong>: ' + Rec."Item No." + '</p>';
@@ -1850,7 +1849,7 @@ table 17462 "ZM PL Items Temporary"
                         Until Employee.next() = 0;
                 end;
                 if Recipients <> '' then begin
-                    SendMailItemTemporaryRegister(ItemSetupApproval, Recipients);
+                    SendMailItemTemporaryRegister(tmpItemDepartment, Recipients);
                     Rec."E-mail sent" := true;
                     Rec."State Creation" := Rec."State Creation"::Requested;
                     Rec.Modify();
@@ -1859,7 +1858,7 @@ table 17462 "ZM PL Items Temporary"
 
     end;
 
-    procedure SendMailItemTemporaryRegister(SetupApproval: Record "ZM PL Item Setup Approval"; Recipients: Text)
+    procedure SendMailItemTemporaryRegister(tmpItemDepartment: Record "ZM PL Item Setup Department"; Recipients: Text)
     var
         SalesHeader2: Record "Sales Header";
         Quotepdf: Report PedidoCliente;
@@ -1872,7 +1871,7 @@ table 17462 "ZM PL Items Temporary"
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
         Subject := StrSubstNo(SubjectLbl, Rec."No.", rec."Item No.", Rec.Description);
-        Body := EnvioEmailBody(Subject, SetupApproval.Department);
+        Body := EnvioEmailBody(Subject, tmpItemDepartment.Code);
         // enviamos el email 
         SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
         SMTPMail.Send();

@@ -22,12 +22,12 @@ page 17410 "ZM PL Item Setup approvals"
                 field("Field No."; Rec."Field No.")
                 {
                     ApplicationArea = All;
-                    Visible = Mandatory;
+                    Visible = ShowMandatory;
                 }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
-                    Visible = Mandatory;
+                    Visible = ShowMandatory;
                 }
                 field(Department; Rec.Department)
                 {
@@ -44,12 +44,12 @@ page 17410 "ZM PL Item Setup approvals"
                 field(Mandatory; Mandatory)
                 {
                     ApplicationArea = all;
-                    Visible = Mandatory;
+                    Visible = ShowMandatory;
                 }
                 field(Requester; Requester)
                 {
                     ApplicationArea = all;
-                    Visible = Mandatory;
+                    Visible = ShowMandatory;
                 }
             }
         }
@@ -67,6 +67,7 @@ page 17410 "ZM PL Item Setup approvals"
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedCategory = Process;
+                Visible = not ShowMandatory;
 
                 trigger OnAction()
                 var
@@ -84,7 +85,7 @@ page 17410 "ZM PL Item Setup approvals"
     }
     trigger OnOpenPage()
     begin
-        if Mandatory then
+        if ShowMandatory then
             Rec.SetFilter("Field No.", '<>0')
         else
             Rec.SetRange("Field No.", 0);
@@ -92,13 +93,11 @@ page 17410 "ZM PL Item Setup approvals"
     end;
 
     var
-        Mandatory: Boolean;
+        ShowMandatory: Boolean;
         ItemRegistrationApproval: Codeunit "ZM PL Items Regist. aprovals";
 
     procedure SetFieldmandatory()
-    var
-        myInt: Integer;
     begin
-        Mandatory := true;
+        ShowMandatory := true;
     end;
 }

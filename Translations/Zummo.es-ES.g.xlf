@@ -23228,6 +23228,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Action ConfAprobAltaProd - Property Caption</note>
           <target>Conf. Departamentos Alta Productos</target>
         </trans-unit>
+        <trans-unit id="Page 988243340 - Action 955223778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conf. Departamentos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Conf. Departamentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Action configDepartment - Property Caption</note>
+          <target>Conf. Departamentos</target>
+        </trans-unit>
         <trans-unit id="Page 988243340 - Action 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send Email</source>
           <note from="Developer" annotates="general" priority="2">ESP="Enviar email"</note>
