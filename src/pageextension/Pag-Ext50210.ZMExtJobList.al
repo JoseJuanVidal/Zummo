@@ -56,6 +56,20 @@ pageextension 50210 "ZM Ext Job List" extends "Job List"
                 RunPageLink = "Global Dimension 2 Code" = field("No.");
             }
         }
+        addlast(Navigation)
+        {
+            action(RequirementsCompliances)
+            {
+                ApplicationArea = all;
+                Caption = 'Requirements Compliance', comment = 'ESP="Cumplimiento Requisitos"';
+                Image = CompleteLine;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Category4;
+                RunObject = page "ZM Job Requirement Compliances";
+                RunPageLink = "Job No." = field("No.");
+            }
+        }
     }
     trigger OnOpenPage()
     begin

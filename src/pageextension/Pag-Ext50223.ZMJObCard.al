@@ -67,6 +67,20 @@ pageextension 50223 "ZM JOb Card" extends "Job Card"
                 RunPageLink = "Global Dimension 2 Code" = field("No.");
             }
         }
+        addlast(Navigation)
+        {
+            action(RequirementsCompliances)
+            {
+                ApplicationArea = all;
+                Caption = 'Requirements Compliance', comment = 'ESP="Cumplimiento Requisitos"';
+                Image = CompleteLine;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Category6;
+                RunObject = page "ZM Job Requirement Compliances";
+                RunPageLink = "Job No." = field("No.");
+            }
+        }
     }
 
     var
