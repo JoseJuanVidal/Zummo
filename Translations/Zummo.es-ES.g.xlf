@@ -11815,6 +11815,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Mandatory - Property Caption</note>
           <target>Obligatorio</target>
         </trans-unit>
+        <trans-unit id="Table 4201268802 - Field 3117773135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Registration Information</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Información Alta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Registration Information - Property Caption</note>
+          <target>Información Alta</target>
+        </trans-unit>
         <trans-unit id="Table 4201268802 - Field 4078940458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Solicitante</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solicitante"</note>
@@ -22165,7 +22171,7 @@
           <target>Inicio</target>
         </trans-unit>
         <trans-unit id="Page 2254326384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>JIRA Projects</source>
+          <source>IT Projects</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Property Caption</note>
         </trans-unit>
@@ -22993,6 +22999,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Indica el estado de la solicitud de datos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control State Creation - Property ToolTip</note>
           <target>Indica el estado de la solicitud de datos.</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 3549826426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comprobador</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comprobador"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control UserName - Property Caption</note>
+          <target>Comprobador</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Control 1795699428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prices &amp; Sales</source>
@@ -38085,9 +38097,9 @@
         </trans-unit>
         <trans-unit id="PageExtension 2634977954 - Control 2412331534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1752036392">
           <source>Projects Daily Time</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Proyectos"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyectos IT"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM IT User Security Activities - Control Projects Daily Time - Property Caption</note>
-          <target>Proyectos</target>
+          <target>Proyectos IT</target>
         </trans-unit>
         <trans-unit id="PageExtension 1961552039 - Action 1790028186 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4260588318">
           <source>Lanza una consulta que muestra el inventario del producto, con almacenes, ubicación y numero de serie.</source>

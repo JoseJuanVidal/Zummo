@@ -1644,6 +1644,8 @@ table 17462 "ZM PL Items Temporary"
     procedure LaunchRegisterItemTemporary(Requested: Boolean)
     var
         ItemApprovalDepartment: Record "ZM Item Approval Department";
+        Dpto: code[20];
+        RField: fieldRef;
         lblRequestError: Label 'You must select a value in %1.', comment = 'ESP="Debe seleccionar un valor en %1."';
         lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 "%2"?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2"?"';
         lblRelease: Label '¿Desea enviar la revisión de los departamentos para %1 %2?', comment = 'ESP="¿Desea enviar la revisión de los departamentos para %1 %2?"';
@@ -1656,7 +1658,7 @@ table 17462 "ZM PL Items Temporary"
             Error(lblRequestError, Rec.FieldCaption("Request Type"));
         if rec."State Creation" in [Rec."State Creation"::Finished] then
             Error(lblError, Rec."No.", Rec.Description);
-
+        CheckItemsTemporary(Dpto);
         case Requested of
             false:  // lanzamiento por el primer usuario que lo crea
                 begin
@@ -1668,9 +1670,10 @@ table 17462 "ZM PL Items Temporary"
             else begin
                 if not Confirm(lblRelease, false, Rec."No.", Rec.Description) then
                     exit;
-                if Rec."ITBID Create" then
-                    if confirm(lblItBID) then
-                        Rec.ITBIDUpdate();
+                if CheckUserReviewItemFieldNo(Dpto, Rec.FieldNo(Rec."ITBID Create")) then
+                    if Rec."ITBID Create" then
+                        if confirm(lblItBID) then
+                            Rec.ITBIDUpdate();
                 SendItemTemporaryRegister();
                 Rec.UpdateStatusReleased();
                 ItemApprovalDepartment.CreateRequestDepartment(Rec);
@@ -1993,6 +1996,21 @@ table 17462 "ZM PL Items Temporary"
         if ItemApprovalDepartment.FindFirst() then
             if ItemApprovalDepartment."Request Date" <> 0D then
                 exit(true);
+    end;
+
+    procedure CheckUserReviewItemFieldNo(Dpto: code[20]; fieldNo: Integer): Boolean
+    var
+        // ItemApprovalDepartment: Record "ZM Item Approval Department";
+        RefRecord: RecordRef;
+    begin
+        // Vemos si tiene permiso aprobador de un campo en concreto, por ejemplo ITBID
+        RefRecord.GetTable(Rec);
+        ItemSetupApproval.Reset();
+        ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
+        ItemSetupApproval.SetRange("Field No.", fieldNo);
+        ItemSetupApproval.SetRange(Department, Dpto);
+        if ItemSetupApproval.FindFirst() then
+            exit(true);
     end;
 
     procedure CheckUserOwneerItem(): Boolean

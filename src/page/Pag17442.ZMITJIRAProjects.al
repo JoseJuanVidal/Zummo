@@ -1,7 +1,7 @@
 page 17442 "ZM IT JIRA Projects"
 {
     ApplicationArea = All;
-    Caption = 'JIRA Projects';
+    Caption = 'IT Projects';
     PageType = List;
     SourceTable = "ZM IT JIRA Projects";
     UsageCategory = Administration;

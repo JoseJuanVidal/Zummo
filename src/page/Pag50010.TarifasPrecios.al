@@ -209,6 +209,11 @@ page 50010 "Tarifas Precios"
                     Caption = 'PI2 Model', comment = 'ESP="PI2 Model"';
                     Editable = false;
                 }
+                field(CMMFCode; Item."CMMF Code")
+                {
+                    ApplicationArea = all;
+                    Caption = 'CMMF Code', comment = 'ESP="CMMF Code"';
+                }
                 field(CMMFType; Item."CMMF Type")
                 {
                     ApplicationArea = all;

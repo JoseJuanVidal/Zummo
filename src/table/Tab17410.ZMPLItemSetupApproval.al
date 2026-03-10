@@ -65,6 +65,11 @@ table 17410 "ZM PL Item Setup Approval"
             TableRelation = User."User Name";
             ValidateTableRelation = false;
         }
+        field(40; "Registration Information"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Registration Information', comment = 'ESP="Información Alta"';
+        }
     }
     keys
     {

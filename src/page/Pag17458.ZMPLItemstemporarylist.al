@@ -376,6 +376,7 @@ page 17458 "ZM PL Items temporary list"
     var
         Dpto: code[20];
     begin
+
         StyleText := '';
         StatusUser := StatusUser::" ";
         case Rec."State Creation" of

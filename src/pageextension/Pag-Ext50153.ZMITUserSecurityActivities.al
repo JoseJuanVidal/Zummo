@@ -17,7 +17,7 @@ pageextension 50153 "ZM IT User Security Activities" extends "User Security Acti
             field("Projects Daily Time"; GetDailyTimeProjects)
             {
                 ApplicationArea = all;
-                Caption = 'Projects Daily Time', comment = 'ESP="Proyectos"';
+                Caption = 'Projects Daily Time', comment = 'ESP="Proyectos IT"';
 
                 trigger OnDrillDown()
                 begin

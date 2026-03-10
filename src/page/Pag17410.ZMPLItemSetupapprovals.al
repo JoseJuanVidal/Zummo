@@ -41,6 +41,10 @@ page 17410 "ZM PL Item Setup approvals"
                 {
                     ApplicationArea = all;
                 }
+                field("Registration Information"; "Registration Information")
+                {
+                    ApplicationArea = all;
+                }
                 field(Mandatory; Mandatory)
                 {
                     ApplicationArea = all;

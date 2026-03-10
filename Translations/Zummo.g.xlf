@@ -11043,6 +11043,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Obligatorio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Mandatory - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4201268802 - Field 3117773135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Registration Information</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Información Alta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Approval - Field Registration Information - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4201268802 - Field 4078940458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Solicitante</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solicitante"</note>
@@ -19048,6 +19053,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar toda la lista de precios %1 y fecha final %2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Method Update_CRM - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="Page 3113805797 - Control 2297198836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CMMF Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Tarifas Precios - Control CMMFCode - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3113805797 - Control 2772242751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CMMF Type</source>
           <note from="Developer" annotates="general" priority="2">ESP="CMMF Type"</note>
@@ -20209,7 +20219,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT Daily Time Sheet List - Action StartTime - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2254326384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>JIRA Projects</source>
+          <source>IT Projects</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Property Caption</note>
         </trans-unit>
@@ -34740,7 +34750,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 2634977954 - Control 2412331534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1752036392">
           <source>Projects Daily Time</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Proyectos"</note>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyectos IT"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM IT User Security Activities - Control Projects Daily Time - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1961552039 - Action 1790028186 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4260588318">
