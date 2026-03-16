@@ -39,6 +39,8 @@ codeunit 50110 "CU_Cron"
                     EnvioMasivoMail();
                 'DimensAF':
                     CambiaDimensionesAF();
+                'AvisosClientesNuevos':
+                    AvisosClientesNuevos();
                 'AvisosFrasVencidas':
                     AvisosFacturasVencidas();
                 'CalculateVtoAseguradora':
@@ -111,6 +113,67 @@ codeunit 50110 "CU_Cron"
         ZummoINNIC: Codeunit "Zummo Inn. IC Functions";
     begin
         zummoINNIC.GLEntry_ValueEntry(ValueEntry);
+    end;
+
+    procedure AvisosClientesNuevos()
+    var
+        Customer: Record Customer;
+        SMTPSetup: Record "SMTP Mail Setup";
+        SalesSetup: Record "Sales & Receivables Setup";
+        cduTrampa: Codeunit SMTP_Trampa;
+        txtAsunto: Text;
+        txtCuerpo: text;
+    begin
+        SalesSetup.Get();
+        if SalesSetup."Email warning new customers" = '' then
+            exit;
+        SMTPSetup.Get();
+        Customer.Reset();
+        Customer.SetRange("Warning New Customers", true);
+        if not Customer.FindFirst() then
+            exit;
+        txtAsunto := StrSubstNo('Clientes NUEVOS con pedidos', WorkDate());
+        txtCuerpo := 'Resumen de Clientes Nuevos con pedidos<br><br>';
+        txtCuerpo += StrSubstNo('<pre>%1 %2 %3 %4<br>',
+            PadStrCharNumber(Customer.FieldCaption("No."), 10),
+            PadStrCharNumber(Customer.FieldCaption(Name), 60),
+            PadStrCharNumber(Customer.FieldCaption(City), 35), 'Pedido Venta');
+        txtCuerpo += PadStr('', 20 + 100 + 50 + 20, '_') + '<br>';
+        if Customer.FindFirst() then
+            repeat
+                if Customer.CheckFirstCustOnOrders() then begin
+                    txtCuerpo += StrSubstNo('%1 %2 %3 %4<br>',
+                        PadStrCharNumber(Customer."No.", 10),
+                        PadStrCharNumber(Customer.Name, 60),
+                        PadStrCharNumber(Customer.City, 35),
+                        GetFirstOrderCustomer(Customer."No."));
+                end else begin
+                    Customer."Warning New Cust. Date" := 0D;
+                end;
+                Customer."Warning New Customers" := false;
+                Customer.Modify();
+            Until Customer.next() = 0;
+
+        clear(cduTrampa);
+        cduTrampa.CreateMessage(CompanyName, SMTPSetup."User ID", SalesSetup."Email warning new customers", txtAsunto, txtCuerpo, CompanyName, SMTPSetup."User ID");
+        cduTrampa.SendSmtpMail();
+    end;
+
+    local procedure PadStrCharNumber(Texto: text; largo: Integer): Text
+    begin
+        exit(PadStr(Texto, largo));
+    end;
+
+    local procedure GetFirstOrderCustomer(CustomerNo: code[20]): Code[20]
+    var
+        SalesHeader: Record "Sales Header";
+    begin
+        SalesHeader.Reset();
+        SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
+        SalesHeader.SetRange("Sell-to Customer No.", CustomerNo);
+        if SalesHeader.FindSet() then
+            exit(SalesHeader."No.");
+
     end;
 
     local procedure CambiaDimensionesAF()

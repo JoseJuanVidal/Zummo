@@ -13696,6 +13696,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method PurchaseOrderSendEmail - NamedType lblWindow</note>
           <target>Procesando....</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 247052143 - NamedType 2331022765" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2.pdf</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method PurchaseOrderSendEmail - NamedType lblFileName</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1358165814 - Method 1864777223 - NamedType 2016233549" size-unit="char" translate="yes" xml:space="preserve">
           <source>No exchange rate is found for currency: %1 and date: %2 %3: %4</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se encuentra tipo de cambio para divisa: %1 y fecha: %2 %3: %4"</note>
@@ -37365,6 +37370,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Action ComentariosPredefinidos - Property tooltip</note>
           <target>Abre una página donde pueden insertarse los comentarios predefinidos</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4090392497 - Action 2649944435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Avisos Clientes Nuevos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Avisos Clientes Nuevos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Action AvisosClienteNuevos - Property Caption</note>
+          <target>Avisos Clientes Nuevos</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4090392497 - Action 2649944435 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4090392497">
+          <source>¿Desea Enviar los avisos de Clientes Nuevos?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Enviar los avisos de Clientes Nuevos?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesSetup - Action AvisosClienteNuevos - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea Enviar los avisos de Clientes Nuevos?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 4090392497 - Control 2032258132 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
           <source>Taxes SCRAP Invoices</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tasas SCRAP Facturas"</note>
@@ -43901,6 +43918,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Modo transporte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Transport Method - Property Caption</note>
           <target>Modo transporte</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 1849245647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Warning New Customers Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Aviso Nuevos Clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Warning New Cust. Date - Property Caption</note>
+          <target>Fecha Aviso Nuevos Clientes</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3629628787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Warning New Customers</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso Nuevos Clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Warning New Customers - Property Caption</note>
+          <target>Aviso Nuevos Clientes</target>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Method 1044311127 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4064840916">
           <source>La solicitud ya ha sido facturada en el documento %1</source>

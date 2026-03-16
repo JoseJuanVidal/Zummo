@@ -366,8 +366,21 @@ codeunit 50106 "SalesEvents"
         SalesHeader."Transport Method" := SellToCustomer."Transport Method";
         SalesHeader."Exit Point" := SellToCustomer."Exit Point";
         SalesHeader."Shipment Method Code" := SellToCustomer."Shipment Method Code";
+
+        // control de si es el primer envio o pedido de un cliente, marcamos el cliente con la fecha del primer aviso
+        if SalesHeader."Document Type" in [SalesHeader."Document Type"::Order] then
+            SellToCustomer.CheckFirstCustOnOrders();
     end;
 
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Quote to Order", 'OnBeforeCreateSalesHeader', '', true, true)]
+    local procedure SalesQuotetoOrder_OnBeforeInsertSalesOrderHeader(var SalesHeader: Record "Sales Header")
+    var
+        SellToCustomer: record Customer;
+    begin
+        if SellToCustomer.Get(SalesHeader."Sell-to Customer No.") then
+            SellToCustomer.CheckFirstCustOnOrders();
+    end;
     //Precio personalizado en líneas de venta estándar
     [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnBeforeApplyStdCodesToSalesLines', '', true, true)]
     local procedure T_172_OnBeforeApplyStdCodesToSalesLines(var SalesLine: Record "Sales Line"; StdSalesLine: Record "Standard Sales Line")

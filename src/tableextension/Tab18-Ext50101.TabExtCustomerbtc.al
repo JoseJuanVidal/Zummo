@@ -412,6 +412,16 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             Caption = 'Date of Registering', comment = 'ESP="Fecha Alta"';
             Editable = False;
         }
+        field(50110; "Warning New Customers"; Boolean)
+        {
+            Caption = 'Warning New Customers', comment = 'ESP="Aviso Nuevos Clientes"';
+            // Codeunit   86 Sales-Quote to Order    OnBeforeInsertSalesOrderHeader
+        }
+        field(50112; "Warning New Cust. Date"; Date)
+        {
+            Caption = 'Warning New Customers Date', comment = 'ESP="Fecha Aviso Nuevos Clientes"';
+            // Codeunit   86 Sales-Quote to Order    OnBeforeInsertSalesOrderHeader
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var
@@ -425,9 +435,27 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             FiltroFechaAseg := 0D;
         end;
     end;*/
+    var
+        SalesHeader: Record "Sales Header";
+
     trigger OnInsert()
     begin
         if Rec.FechaAlta = 0D then
             Rec.FechaAlta := Today();
+    end;
+
+    procedure CheckFirstCustOnOrders(): Boolean;
+    var
+        myInt: Integer;
+    begin
+        SalesHeader.Reset();
+        SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
+        SalesHeader.SetRange("Sell-to Customer No.", Rec."No.");
+        if not SalesHeader.FindSet() then begin
+            Rec."Warning New Customers" := true;
+            Rec."Warning New Cust. Date" := WorkDate();
+            Rec.Modify();
+            exit(true);
+        end
     end;
 }

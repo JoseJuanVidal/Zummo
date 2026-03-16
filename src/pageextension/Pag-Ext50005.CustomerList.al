@@ -179,6 +179,11 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Warning New Cust. Date"; "Warning New Cust. Date")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 

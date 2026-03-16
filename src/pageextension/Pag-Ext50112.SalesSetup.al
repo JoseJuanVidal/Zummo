@@ -170,6 +170,10 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Email warning new customers"; "Email warning new customers")
+                {
+                    ApplicationArea = all;
+                }
             }
             group("Zummo IC")
             {
@@ -210,7 +214,6 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                     ApplicationArea = All;
                     ExtendedDatatype = EMail;
                 }
-
             }
         }
         addlast(Content)
@@ -260,6 +263,24 @@ pageextension 50112 "SalesSetup" extends "Sales & Receivables Setup"
                     Funciones: Codeunit Funciones;
                 begin
                     Funciones.ChangeSalesHeader;
+                end;
+            }
+        }
+        addlast(Processing)
+        {
+            action(AvisosClienteNuevos)
+            {
+                ApplicationArea = all;
+                Caption = 'Avisos Clientes Nuevos', comment = 'ESP="Avisos Clientes Nuevos"';
+                Image = NewCustomer;
+
+                trigger OnAction()
+                var
+                    CUCron: Codeunit CU_Cron;
+                    lblConfirm: Label '¿Desea Enviar los avisos de Clientes Nuevos?', comment = 'ESP="¿Desea Enviar los avisos de Clientes Nuevos?"';
+                begin
+                    if confirm(lblConfirm) then
+                        CUCron.AvisosClientesNuevos();
                 end;
             }
         }

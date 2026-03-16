@@ -62,6 +62,7 @@ pageextension 50113 "SalesInvoiceSubform" extends "Sales Invoice Subform"
 
     begin
         txtBloqueado := '';
+        StyleExpBloqueado := '';
 
         if type = Type::Item then begin
             clear(cduSalesEvents);

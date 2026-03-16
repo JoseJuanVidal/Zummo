@@ -1862,6 +1862,7 @@ codeunit 50101 "Eventos_btc"
         TextOutSream: OutStream;
         window: Dialog;
         lblWindow: Label 'Process.....', comment = 'ESP="Procesando...."';
+        lblFileName: Label '%1 %2.pdf';
     begin
         window.Open(lblWindow);
         TempEmailItem."Order No" := PurchaseHeader."No.";
@@ -1885,6 +1886,7 @@ codeunit 50101 "Eventos_btc"
             TempEmailItem.Validate("Body File Path", FilePath);
         end;
         FileNameMerge := TempEmailItem."Attachment File Path";
+        TempEmailItem."Attachment Name" := StrSubstNo(lblFileName, PurchaseHeader."No.", PurchaseHeader."Buy-from Vendor Name");
         Funciones.CrearPDFPurchaseOrder(PurchaseHeader, FileNameMerge);
         Commit();
         // guardar el archivo de PDF

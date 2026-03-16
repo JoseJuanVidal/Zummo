@@ -113,13 +113,18 @@ tableextension 50110 "SalesSetup" extends "Sales & Receivables Setup"  // 311
             Description = 'Intercompany Zummo Innc.';
         }
 
-
         field(50120; LanguageFilter; Code[10])
         {
             DataClassification = CustomerContent;
             Caption = 'Language Filter', comment = 'ESP="Filtro Idioma L. M."';
             TableRelation = Language;
 
+        }
+        field(50122; "Email warning new customers"; Text[150])
+        {
+            Caption = 'Email notifications new customers', Comment = 'Email Avisos clientes nuevos';
+            DataClassification = CustomerContent;
+            Description = 'Avisos cuando se hace pedido nuevos clientes';
         }
         field(50130; "Ruta exportar pdf facturas"; text[100])
         {
