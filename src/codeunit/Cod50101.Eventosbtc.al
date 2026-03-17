@@ -1994,6 +1994,10 @@ codeunit 50101 "Eventos_btc"
                     StandarTextHeader.CalcFields(Signature);
                     if StandarTextHeader.Signature.HasValue then begin
                         StandarTextHeader.Signature.CreateInStream(InStr);
+                        while not InStr.EOS do begin
+                            InStr.ReadText(LineText);
+                            BodyText.AppendLine(LineText);
+                        end;
                     end else begin
                         repeat
                             BodyText.AppendLine(StandarTextLine.Text);
@@ -2026,15 +2030,19 @@ codeunit 50101 "Eventos_btc"
         // #username# #cargo# #mobile#  #email#
         FieldName := StrSubstNo('%1%2%1', lblControl, 'username');
         FieldValue := Employee.FullName();
+        FieldValue := TypeHelper.HtmlEncode(FieldValue);
         BodyText.Replace(FieldName, FieldValue);
         FieldName := StrSubstNo('%1%2%1', lblControl, 'cargo');
         FieldValue := Employee."Job Title";
+        FieldValue := TypeHelper.HtmlEncode(FieldValue);
         BodyText.Replace(FieldName, FieldValue);
         FieldName := StrSubstNo('%1%2%1', lblControl, 'mobile');
         FieldValue := Employee."Phone No.";
+        FieldValue := TypeHelper.HtmlEncode(FieldValue);
         BodyText.Replace(FieldName, FieldValue);
         FieldName := StrSubstNo('%1%2%1', lblControl, 'email');
         FieldValue := Employee."Company E-Mail";
+        FieldValue := TypeHelper.HtmlEncode(FieldValue);
         BodyText.Replace(FieldName, FieldValue);
         // actualizamos los datos de la tabla PuchaseHeader
         TablaRecordRef.GetTable(PurchaseHeader);
