@@ -120,9 +120,10 @@ codeunit 50110 "CU_Cron"
         Customer: Record Customer;
         SMTPSetup: Record "SMTP Mail Setup";
         SalesSetup: Record "Sales & Receivables Setup";
-        cduTrampa: Codeunit SMTP_Trampa;
+        cduSMTP: Codeunit "SMTP Mail";
         txtAsunto: Text;
         txtCuerpo: text;
+        Enviar: Boolean;
     begin
         SalesSetup.Get();
         if SalesSetup."Email warning new customers" = '' then
@@ -141,22 +142,21 @@ codeunit 50110 "CU_Cron"
         txtCuerpo += PadStr('', 20 + 100 + 50 + 20, '_') + '<br>';
         if Customer.FindFirst() then
             repeat
-                if Customer.CheckFirstCustOnOrders() then begin
-                    txtCuerpo += StrSubstNo('%1 %2 %3 %4<br>',
-                        PadStrCharNumber(Customer."No.", 10),
-                        PadStrCharNumber(Customer.Name, 60),
-                        PadStrCharNumber(Customer.City, 35),
-                        GetFirstOrderCustomer(Customer."No."));
-                end else begin
-                    Customer."Warning New Cust. Date" := 0D;
-                end;
+                Enviar := true;
+                txtCuerpo += StrSubstNo('%1 %2 %3 %4<br>',
+                    PadStrCharNumber(Customer."No.", 10),
+                    PadStrCharNumber(Customer.Name, 60),
+                    PadStrCharNumber(Customer.City, 35),
+                    GetFirstOrderCustomer(Customer."No."));
                 Customer."Warning New Customers" := false;
+                Customer."Warning New Cust. Date" := WorkDate();
                 Customer.Modify();
             Until Customer.next() = 0;
-
-        clear(cduTrampa);
-        cduTrampa.CreateMessage(CompanyName, SMTPSetup."User ID", SalesSetup."Email warning new customers", txtAsunto, txtCuerpo, CompanyName, SMTPSetup."User ID");
-        cduTrampa.SendSmtpMail();
+        if Enviar then begin
+            clear(cduSMTP);
+            cduSMTP.CreateMessage(CompanyName, SMTPSetup."User ID", SalesSetup."Email warning new customers", txtAsunto, txtCuerpo, true);
+            cduSMTP.Send();
+        end;
     end;
 
     local procedure PadStrCharNumber(Texto: text; largo: Integer): Text
