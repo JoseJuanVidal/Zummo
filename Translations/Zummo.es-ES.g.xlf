@@ -12008,16 +12008,16 @@
           <target>Debe seleccionar un valor en %1.</target>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Method 2651007294 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Desea Solicitar el alta/modificacion del producto %1 "%2"?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2"?"</note>
+          <source>¿Desea Solicitar el alta/modificacion del producto %1 "% %32"?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2 %4"?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method LaunchRegisterItemTemporary - NamedType lblConfirm</note>
-          <target>¿Desea Solicitar el alta/modificacion del producto %1 "%2"?</target>
+          <target>¿Desea Solicitar el alta/modificacion del producto %1 "%2 %4"?</target>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Method 2651007294 - NamedType 3720102109" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Desea enviar la revisión de los departamentos para %1 %2?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la revisión de los departamentos para %1 %2?"</note>
+          <source>¿Desea enviar la revisión de los departamentos para %1\ %2 %3?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la revisión de los departamentos para %1\ %2 %3?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method LaunchRegisterItemTemporary - NamedType lblRelease</note>
-          <target>¿Desea enviar la revisión de los departamentos para %1 %2?</target>
+          <target>¿Desea enviar la revisión de los departamentos para %1\ %2 %3?</target>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Method 2651007294 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>El estado de la solicitud de %1 %2 es %3</source>
@@ -22928,10 +22928,10 @@
           <target>Mostrar empleados</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New,Process,Report,Navigate</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Navegar"</note>
+          <source>New,Process,Report,Navigate,Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Navegar,Producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Property PromotedActionCategories</note>
-          <target>Nuevo,Procesar,Informe,Navegar</target>
+          <target>Nuevo,Procesar,Informe,Navegar,Producto</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product Registration Request</source>
@@ -22950,6 +22950,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la solicitud de Alta del producto %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - NamedType lblRelease</note>
           <target>¿Desea enviar la solicitud de Alta del producto %1 %2?</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Method 2309435118 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea copiar valores por defecto de producto similar\ %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea copiar valores por defecto de producto similar\ %1 %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Method OnAction_CopySameItem - NamedType lblConfirm</note>
+          <target>¿Desea copiar valores por defecto de producto similar\ %1 %2?</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Method 3343818720 - NamedType 2700377285" size-unit="char" translate="yes" xml:space="preserve">
           <source>El %1 no puede ser %2</source>
@@ -23148,6 +23154,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Comprobación Departamento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action FinalizeDepartment - Property Caption</note>
           <target>Comprobación Departamento</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 390296700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copiar datos productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Copiar datos productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action CopySameItemSame - Property Caption</note>
+          <target>Copiar datos productos</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open</source>

@@ -4,8 +4,8 @@ page 17471 "ZM PL Items temporary card"
     PageType = card;
     SourceTable = "ZM PL Items temporary";
     UsageCategory = None;
-    PromotedActionCategories = 'New,Process,Report,Navigate',
-            comment = 'ESP="Nuevo,Procesar,Informe,Navegar"';
+    PromotedActionCategories = 'New,Process,Report,Navigate,Item',
+            comment = 'ESP="Nuevo,Procesar,Informe,Navegar,Producto"';
 
 
     layout
@@ -759,7 +759,7 @@ page 17471 "ZM PL Items temporary card"
                 Caption = 'Seleccionar producto', comment = 'ESP="Seleccionar producto"';
                 Image = CreateWorkflow;
                 Promoted = true;
-                PromotedCategory = Process;
+                PromotedCategory = Category5;
 
                 trigger OnAction()
                 begin
@@ -789,6 +789,23 @@ page 17471 "ZM PL Items temporary card"
             //             Message(lblUpdate);
             //     end;
             // }
+            group(ItemSelect)
+            {
+                action(CopySameItemSame)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Copiar datos productos', comment = 'ESP="Copiar datos productos"';
+                    Image = CopyItem;
+                    Promoted = true;
+                    PromotedCategory = Category5;
+                    Visible = FirstUserApproval;
+
+                    trigger OnAction()
+                    begin
+                        OnAction_CopySameItem();
+                    end;
+                }
+            }
         }
         area(Navigation)
         {
@@ -1024,6 +1041,7 @@ page 17471 "ZM PL Items temporary card"
         boolEditRoutingNo: Boolean;
         boolEditProductionBOMNo: Boolean;
         boolEditUserCreate: Boolean;
+        FirstUserApproval: Boolean;
         lblRelease: Label '¿Do you want to send the request for Item Registration %1 %2?', comment = 'ESP="¿Desea enviar la solicitud de Alta del producto %1 %2?"';
         lblConfirmUpdateITBID: Label '¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?', comment = 'ESP="¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?"';
 
@@ -1064,6 +1082,7 @@ page 17471 "ZM PL Items temporary card"
     begin
         ShowSections := false;
         boolEditUserCreate := false;
+        FirstUserApproval := false;
         CurrPage.Editable := false;
         DissableAllFields();
         case Rec."State Creation" of
@@ -1077,6 +1096,8 @@ page 17471 "ZM PL Items temporary card"
                     end;
                 end
             else begin
+                if Rec."State Creation" in [Rec."State Creation"::Requested] then
+                    FirstUserApproval := true;
                 UserFieldsActive();
                 ShowSections := true;
             end;
@@ -1572,6 +1593,17 @@ page 17471 "ZM PL Items temporary card"
             Error(lblErrorRequestType, Rec.FieldCaption("Request Type"), Rec."Request Type");
         Rec.ValidateRequestType();
         CurrPage.Update();
+    end;
+
+    local procedure OnAction_CopySameItem()
+    var
+        lblConfirm: Label '¿Desea copiar valores por defecto de producto similar\ %1 %2?', comment = 'ESP="¿Desea copiar valores por defecto de producto similar\ %1 %2?"';
+    begin
+        if page.RunModal(0, Item) = Action::LookupOK then
+            if not Confirm(lblConfirm, true, Item."No.", Item.Description) then
+                exit;
+        Rec.CopySameItem(Item);
+
     end;
 
     local procedure OnAction_UploadExcel()

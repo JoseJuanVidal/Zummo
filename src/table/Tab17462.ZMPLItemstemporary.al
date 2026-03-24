@@ -1514,7 +1514,7 @@ table 17462 "ZM PL Items Temporary"
             Item.type::Service:
                 Rec.Type := Rec.Type::Service;
         end;
-        UpdateItemExtendedFields(Item);
+        UpdateItemExtendedFields(Item."No.");
         // comprobamos si el producto tiene lista de Producción orignal
         ProdBOMHeader.Reset();
         ProdBOMHeader.SetRange("No.", Item."Production BOM No.");
@@ -1647,8 +1647,8 @@ table 17462 "ZM PL Items Temporary"
         Dpto: code[20];
         RField: fieldRef;
         lblRequestError: Label 'You must select a value in %1.', comment = 'ESP="Debe seleccionar un valor en %1."';
-        lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 "%2"?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2"?"';
-        lblRelease: Label '¿Desea enviar la revisión de los departamentos para %1 %2?', comment = 'ESP="¿Desea enviar la revisión de los departamentos para %1 %2?"';
+        lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 "% %32"?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2 %4"?"';
+        lblRelease: Label '¿Desea enviar la revisión de los departamentos para %1\ %2 %3?', comment = 'ESP="¿Desea enviar la revisión de los departamentos para %1\ %2 %3?"';
         lblError: Label 'El estado de la solicitud de %1 %2 es %3', comment = 'ESP="El estado de la solicitud de %1 %2 es %3"';
         lblItBID: Label 'Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?', comment = 'ESP="Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?"';
     begin
@@ -1663,12 +1663,12 @@ table 17462 "ZM PL Items Temporary"
             false:  // lanzamiento por el primer usuario que lo crea
                 begin
                     CheckObligatoryFieldsUser(true);
-                    if not Confirm(lblConfirm, false, Rec."No.", Rec.Description) then
+                    if not Confirm(lblConfirm, false, Rec."No.", Rec."Item No.", Rec.Description) then
                         exit;
                     SendItemTemporaryFirstRegister();
                 end;
             else begin
-                if not Confirm(lblRelease, false, Rec."No.", Rec.Description) then
+                if not Confirm(lblRelease, false, Rec."No.", rec."Item No.", Rec.Description) then
                     exit;
                 if CheckUserReviewItemFieldNo(Dpto, Rec.FieldNo(Rec."ITBID Create")) then
                     if Rec."ITBID Create" then
@@ -1808,10 +1808,9 @@ table 17462 "ZM PL Items Temporary"
         tmpItemDepartment: Record "ZM PL Item Setup Department" temporary;
         RefRecord: RecordRef;
         Recipients: text;
+        Sending: Boolean;
+        Numreg: Integer;
     begin
-        if Rec."E-mail sent" then
-            if not Confirm(lblConfirmEmail) then
-                exit;
         RefRecord.GetTable(Rec);
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
@@ -1829,7 +1828,7 @@ table 17462 "ZM PL Items Temporary"
                         tmpItemDepartment.Insert();
                     end;
             until ItemSetupApproval.Next() = 0;
-        if tmpItemDepartment.Find() then
+        if tmpItemDepartment.FindFirst() then
             repeat
                 if tmpItemDepartment.Email <> '' then
                     Recipients := tmpItemDepartment.Email;
@@ -1853,12 +1852,14 @@ table 17462 "ZM PL Items Temporary"
                 end;
                 if Recipients <> '' then begin
                     SendMailItemTemporaryRegister(tmpItemDepartment, Recipients);
-                    Rec."E-mail sent" := true;
-                    Rec."State Creation" := Rec."State Creation"::Requested;
-                    Rec.Modify();
+                    Sending := true;
                 end;
             Until tmpItemDepartment.next() = 0;
+        if Sending then begin
+            Rec."State Creation" := Rec."State Creation"::Requested;
+            Rec.Modify();
 
+        end;
     end;
 
     procedure SendMailItemTemporaryRegister(tmpItemDepartment: Record "ZM PL Item Setup Department"; Recipients: Text)
@@ -2097,7 +2098,7 @@ table 17462 "ZM PL Items Temporary"
             Item.Type::Service:
                 Rec."Clasification Type" := Rec."Clasification Type"::Service;
         end;
-        UpdateItemExtendedFields(Item);
+        UpdateItemExtendedFields(Item."No.");
 
         // comprobamos si el producto tiene lista de Producción orignal
         ProdBOMHeader.Reset();
@@ -2131,9 +2132,9 @@ table 17462 "ZM PL Items Temporary"
 
     local procedure CreateUpdateItem()
     var
-        Item: Record Item;
         PostedItemstemporary: Record "Posted PL Items temporary";
     begin
+        Item.Reset();
         if not Item.Get(Rec."No.") then begin
             Item.Init();
             Item.TransferFields(Rec);
@@ -2351,12 +2352,12 @@ table 17462 "ZM PL Items Temporary"
         Rec.Validate("Item No.", Item."No.");
     end;
 
-    procedure UpdateItemExtendedFields(Item: Record Item)
+    procedure UpdateItemExtendedFields(ItemNo: code[20])
     var
         ItemUnitofMeasure: Record "Item Unit of Measure";
     begin
         ItemUnitofMeasure.Reset();
-        ItemUnitofMeasure.SetRange("Item No.", Item."No.");
+        ItemUnitofMeasure.SetRange("Item No.", ItemNo);
         ItemUnitofMeasure.SetRange(Code, Item."Base Unit of Measure");
         if ItemUnitofMeasure.FindSet() then begin
             Rec.Largo := ItemUnitofMeasure.Length;
@@ -2381,5 +2382,25 @@ table 17462 "ZM PL Items Temporary"
         if not CheckUserOwneerItem() then
             exit;
         IsOwner := Rec."State Creation" = Rec."State Creation"::Requested;
+    end;
+
+    procedure CopySameItem(Item: Record Item)
+    var
+        tmpItemRequested: Record "ZM PL Items Temporary" temporary;
+    begin
+        tmpItemRequested := Rec;
+        Rec."Request Type" := Rec."Request Type"::Change;
+        Rec.TransferFields(Item);
+        Rec."Request Type" := tmpItemRequested."Request Type";
+        Rec.Description := tmpItemRequested.Description;
+        Rec.Validate("Clasification Type", tmpItemRequested."Clasification Type");
+        Rec.Department := tmpItemRequested.Department;
+        Rec."Product manager" := tmpItemRequested."Product manager";
+        Rec.Activity := tmpItemRequested.Activity;
+        Rec."Posting Date" := tmpItemRequested."Posting Date";
+        Rec.Prototype := tmpItemRequested.Prototype;
+        Rec."Purch. Family" := tmpItemRequested."Purch. Family";
+        Rec."Purch. Category" := tmpItemRequested."Purch. Category";
+        Rec."Purch. SubCategory" := tmpItemRequested."Purch. SubCategory";
     end;
 }
