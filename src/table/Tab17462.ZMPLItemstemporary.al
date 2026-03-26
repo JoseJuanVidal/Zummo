@@ -1914,7 +1914,6 @@ table 17462 "ZM PL Items Temporary"
         ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Approval, ItemSetupApproval.Rol::Both);
         if ItemSetupApproval.FindFirst() then
             repeat
-
                 if ItemSetupDepartment.get(ItemSetupApproval.Department) then
                     if ItemSetupDepartment."User Id" = UserId then begin
                         Department := ItemSetupDepartment.Code;
@@ -1938,6 +1937,18 @@ table 17462 "ZM PL Items Temporary"
                     if ItemSetupDepartment."User Id" = UserId then
                         exit(true);
             until ItemSetupApproval.Next() = 0;
+    end;
+
+    procedure CheckIsOwnerUser(): Boolean
+    begin
+        GetPreItemSetup();
+        ItemSetupDepartment.Reset();
+        ItemSetupDepartment.SetRange("User Id", UserId);
+        if ItemSetupDepartment.FindFirst() then
+            repeat
+                if SetupPreItemReg."Last Department" = ItemSetupDepartment.Code then
+                    exit(True);
+            Until ItemSetupDepartment.next() = 0;
     end;
 
     procedure UpdateStatusReleased()
@@ -1978,6 +1989,7 @@ table 17462 "ZM PL Items Temporary"
         AutLoging.GetAUTPermisosCodEmpleado(PermisosAut);
         ItemApprovalDepartment."Codigo Empleado" := PermisosAut."Codigo Empleado";
         ItemApprovalDepartment.Modify();
+
         if not UpdateDepartmentsApprovals() then begin
             // si no quedan revisiones, marcamos como revisado completamente
             Rec."State Creation" := Rec."State Creation"::"Create Pendindg";
@@ -1993,6 +2005,7 @@ table 17462 "ZM PL Items Temporary"
         RefRecord.GetTable(Rec);
         ItemApprovalDepartment.Reset();
         ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
+        ItemApprovalDepartment.SetRange("Request No.", Rec."No.");
         ItemApprovalDepartment.SetRange(Department, Dpto);
         if ItemApprovalDepartment.FindFirst() then
             if ItemApprovalDepartment."Request Date" <> 0D then
@@ -2114,40 +2127,60 @@ table 17462 "ZM PL Items Temporary"
         lblConfirm: Label '¿Desea Crear/Actualizar el producto %1 - %2?', comment = 'ESP="¿Desea Crear/Actualizar el producto %1 - %2?"';
         lblConfirm1: Label 'El producto no ha pasado por revision de departamentos.\', comment = 'ESP="El producto no ha pasado por revision de departamentos.\"';
     begin
-        if Rec."State Creation" in [Rec."State Creation"::Finished] then begin
+        if Rec."State Creation" in [Rec."State Creation"::"Create Pendindg"] then begin
             if not confirm(lblConfirm, false, Rec."No.", Rec.Description) then
                 exit;
         end else begin
-            if not confirm(lblConfirm1 + lblConfirm, false, Rec."No.", Rec.Description) then
-                exit;
+            if not Rec.UpdateDepartmentsApprovals() then
+                if not confirm(lblConfirm1 + lblConfirm, false, Rec."No.", Rec.Description) then
+                    exit;
         end;
-        // Vamos creando o actualizando los datos del producto
-        CreateUpdateItem();
+        case Rec."Request Type" of
+            Rec."Request Type"::New:
+                CreateNewItem();
 
+        end;
         UpdateItemTranslation();
 
         UpdateItemLM();
 
     end;
 
-    local procedure CreateUpdateItem()
+    local procedure CreateNewItem()
     var
         PostedItemstemporary: Record "Posted PL Items temporary";
     begin
+        // aqui creamos el nuevo producto
         Item.Reset();
-        if not Item.Get(Rec."No.") then begin
-            Item.Init();
-            Item.TransferFields(Rec);
-            Item.Insert();
-        end else begin
-            Item.TransferFields(Rec);
-            Item.Modify();
-        end;
+        Item.Init();
+        Item.TransferFields(Rec);
+        Item.validate("No.", Rec."Item No.");
+        Item.Insert();
         // guardamos el historico de alta de producto
         PostedItemstemporary.Init();
         PostedItemstemporary.TransferFields(Rec);
         PostedItemstemporary.Insert();
         Rec.Delete();
+        // actualizamos datos auxiliares,
+        ItemUnitofMeasure();
+    end;
+
+    local procedure ItemUnitofMeasure()
+    var
+        ItemUnitofMeasure: Record "Item Unit of Measure";
+    begin
+        // comprobamos si existe la unidad de medida y se crea, con los datos de medidas
+        if not ItemUnitofMeasure.Get(Rec."Item No.", Rec."Base Unit of Measure") then begin
+            ItemUnitofMeasure.Init();
+            ItemUnitofMeasure."Item No." := Rec."Item No.";
+            ItemUnitofMeasure.Code := Rec."Base Unit of Measure";
+            ItemUnitofMeasure.Insert();
+        end;
+        ItemUnitofMeasure.Height := Rec.Alto;
+        ItemUnitofMeasure.Weight := Rec.Ancho;
+        ItemUnitofMeasure.Length := Rec.Largo;
+        ItemUnitofMeasure.Cubage := Rec."Unit Volume";
+        ItemUnitofMeasure.Modify();
     end;
 
     local procedure UpdateItemTranslation()
@@ -2402,5 +2435,21 @@ table 17462 "ZM PL Items Temporary"
         Rec."Purch. Family" := tmpItemRequested."Purch. Family";
         Rec."Purch. Category" := tmpItemRequested."Purch. Category";
         Rec."Purch. SubCategory" := tmpItemRequested."Purch. SubCategory";
+    end;
+
+    procedure CheckIsApproved(DepartmentNo: code[20]): Boolean
+    var
+        ApprovalDepartment: Record "ZM Item Approval Department";
+        RefRecord: RecordRef;
+    begin
+        RefRecord.GetTable(Rec);
+        ApprovalDepartment.Reset();
+        ApprovalDepartment.SetRange("Table No.", RefRecord.Number);
+        ApprovalDepartment.SetRange("Request No.", Rec."No.");
+        ApprovalDepartment.SetRange(Department, DepartmentNo);
+        if ApprovalDepartment.FindFirst() then begin
+            if ApprovalDepartment."Request Date" <> 0D then
+                exit(true);
+        end;
     end;
 }

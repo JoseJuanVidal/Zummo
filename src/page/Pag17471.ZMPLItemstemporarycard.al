@@ -188,7 +188,7 @@ page 17471 "ZM PL Items temporary card"
             group(Additional)
             {
                 Caption = 'Additional', comment = 'ESP="Adicionales"';
-                Visible = ShowSections;
+                // Visible = ShowSections;
                 Group(SEBCodes)
                 {
                     Caption = 'SEB Codes', comment = 'ESP="SEB Codes"';
@@ -939,6 +939,7 @@ page 17471 "ZM PL Items temporary card"
         ShowSections: Boolean;
         IsUserApproval: Boolean;
         IsUserCreateItem: Boolean;
+        IsOwnerUser: Boolean;
         IsItemNew: Boolean;
         StateBlank: Boolean;
         StateRequested: Boolean;
@@ -1120,6 +1121,7 @@ page 17471 "ZM PL Items temporary card"
     local procedure UserFieldsActive()
     var
         RefRecord: RecordRef;
+        lblApproved: Label 'Comprobado', comment = 'ESP="Comprobado"';
     begin
         UserName := '';
         DissableAllFields();
@@ -1136,6 +1138,8 @@ page 17471 "ZM PL Items temporary card"
         if not ItemSetupDepartment.FindFirst() then
             exit;
         UserName := ItemSetupDepartment.Code;
+        if Rec.CheckIsApproved(ItemSetupDepartment.Code) then
+            UserName := StrSubstNo('%1 - %2', UserName, lblApproved);
         RefRecord.GetTable(Rec);
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", RefRecord.Number);
@@ -1568,6 +1572,7 @@ page 17471 "ZM PL Items temporary card"
             exit;
         IsUserApproval := Rec.CheckItemsTemporary(Department);
         IsUserCreateItem := Rec.CheckUserItemsCreate(); // and (Rec."State Creation" in [Rec."State Creation"::Finished]);
+        IsOwnerUser := Rec.CheckIsOwnerUser();
     end;
 
     local procedure OnAction_CheckItemRequest()

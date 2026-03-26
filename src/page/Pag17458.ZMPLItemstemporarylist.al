@@ -408,6 +408,8 @@ page 17458 "ZM PL Items temporary list"
                     else
                         StatusUser := StatusUser::" ";
                 end;
+            Rec."State Creation"::"Create Pendindg":
+                StyleText := 'Strong';
         end;
         case StatusUser of
             StatusUser::Pending:

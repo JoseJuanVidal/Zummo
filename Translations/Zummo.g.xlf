@@ -20898,6 +20898,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Calcular el codigo EAN13 de %1?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Method OnAssistEdit_GTIN - NamedType lblConfirmUpdate</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Method 2335713912 - NamedType 1182262851" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comprobado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Comprobado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Method UserFieldsActive - NamedType lblApproved</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Control 4253802235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Additional</source>
           <note from="Developer" annotates="general" priority="2">ESP="Adicionales"</note>

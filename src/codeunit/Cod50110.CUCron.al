@@ -135,19 +135,30 @@ codeunit 50110 "CU_Cron"
             exit;
         txtAsunto := StrSubstNo('Clientes NUEVOS con pedidos', WorkDate());
         txtCuerpo := 'Resumen de Clientes Nuevos con pedidos<br><br>';
-        txtCuerpo += StrSubstNo('<pre>%1 %2 %3 %4<br>',
+        txtCuerpo += StrSubstNo('<pre>%1 %2 %3 %4 %5 %6 %7 %8<br>',
             PadStrCharNumber(Customer.FieldCaption("No."), 10),
             PadStrCharNumber(Customer.FieldCaption(Name), 60),
-            PadStrCharNumber(Customer.FieldCaption(City), 35), 'Pedido Venta');
-        txtCuerpo += PadStr('', 20 + 100 + 50 + 20, '_') + '<br>';
+            PadStrCharNumber(Customer.FieldCaption(Address), 60),
+            PadStrCharNumber(Customer.FieldCaption(City), 35),
+            PadStrCharNumber(Customer.FieldCaption("Country/Region Code"), 10),
+            PadStrCharNumber(Customer.FieldCaption("VAT Registration No."), 15),
+            PadStrCharNumber(Customer.FieldCaption("Phone No."), 15),
+            PadStrCharNumber(Customer.FieldCaption("E-Mail"), 30),
+            PadStrCharNumber(Customer.FieldCaption("Home Page"), 30));
+        txtCuerpo += PadStr('', 20 + 100 + 50 + 50, '_') + '<br>';
         if Customer.FindFirst() then
             repeat
                 Enviar := true;
-                txtCuerpo += StrSubstNo('%1 %2 %3 %4<br>',
+                txtCuerpo += StrSubstNo('<pre>%1 %2 %3 %4 %5 %6 %7 %8<br>',
                     PadStrCharNumber(Customer."No.", 10),
                     PadStrCharNumber(Customer.Name, 60),
-                    PadStrCharNumber(Customer.City, 35),
-                    GetFirstOrderCustomer(Customer."No."));
+                    PadStrCharNumber(Customer.Address, 60),
+                    PadStrCharNumber(StrSubstNo('%1 - %2', Customer."Post Code", Customer.City), 35),
+                    PadStrCharNumber(Customer."Country/Region Code", 10),
+                    PadStrCharNumber(Customer."VAT Registration No.", 15),
+                    PadStrCharNumber(Customer."Phone No.", 15),
+                    PadStrCharNumber(Customer."E-Mail", 30),
+                    PadStrCharNumber(Customer."Home Page", 30));
                 Customer."Warning New Customers" := false;
                 Customer."Warning New Cust. Date" := WorkDate();
                 Customer.Modify();
