@@ -6088,6 +6088,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Debe ser mayor que 0"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - NamedType Text027</note>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Method 1462704819 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
+          <source>COMPLETADA Solicitud de Alta de Producto (Pdte. alta producto)- %1 (%2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Method SendMailItemTemporaryFinalize - NamedType SubjectLbl</note>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 659317815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Activity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actividad"</note>
@@ -6143,6 +6148,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Color"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Color - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1918002278 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Control Certificado proveedor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Control Certificado proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Control Certificado proveedor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 2165769856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Costing Method</source>
           <note from="Developer" annotates="general" priority="2">ESP="Valoración existencias"</note>
@@ -6167,6 +6177,11 @@
           <source>Durability</source>
           <note from="Developer" annotates="general" priority="2">ESP="Duración"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Durability - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1149908991 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>E-mail sent</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Email enviado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field E-mail sent - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 1295952376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>English Description</source>
@@ -6208,6 +6223,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="GTIN"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field GTIN - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2694584394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>State Creation</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado Alta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field GUID Creation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 1859219762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Include Inventory</source>
           <note from="Developer" annotates="general" priority="2">ESP="Incluir inventario"</note>
@@ -6242,6 +6262,11 @@
           <source>Item Disc. Group</source>
           <note from="Developer" annotates="general" priority="2">ESP="Grupo dto. producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Item Disc. Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Item No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 65514489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Tracking Code</source>
@@ -6297,6 +6322,11 @@
           <source>Minimum Order Quantity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad mínima pedido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Minimum Order Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 541974475 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modificado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Modified - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 3088522385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Net Weight</source>
@@ -6403,6 +6433,21 @@
           <note from="Developer" annotates="general" priority="2">ESP="Compra,Prod. Pedido,,Ensamblado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Replenishment System - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1093055731 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Request Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Solicitud"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Request Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1093055731 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,New,Change,Blocked,Unlocking,Delete</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Nuevo,Cambio,Bloqueo,Desbloqueo,Eliminación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Request Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 549843888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requires Final Artwork</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Requiere Arte Final"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Requires Final Artwork - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 483786246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Rescheduling Period</source>
           <note from="Developer" annotates="general" priority="2">ESP="Periodo de reprogramación"</note>
@@ -6472,6 +6517,11 @@
           <source>To update</source>
           <note from="Developer" annotates="general" priority="2">Act. itbid</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field STH To Update - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 223923525 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sujeto a Control de Calidad</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sujeto a Control de Calidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Sujeto a Control de Calidad - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 3701472611 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tariff No.</source>
@@ -10669,18 +10719,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Requirements Compliance - Field RP0 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2767345219 - Field 3655225813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>RP0</source>
-          <note from="Developer" annotates="general" priority="2">ESP="RP0"</note>
+          <source>RP1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="RP1"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Requirements Compliance - Field RP1 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2767345219 - Field 3017529196 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>RP0</source>
-          <note from="Developer" annotates="general" priority="2">ESP="RP0"</note>
+          <source>RP2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="RP2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Requirements Compliance - Field RP2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2767345219 - Field 1742135962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>RP0</source>
-          <note from="Developer" annotates="general" priority="2">ESP="RP0"</note>
+          <source>RP4</source>
+          <note from="Developer" annotates="general" priority="2">ESP="RP4"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Job Requirements Compliance - Field RP4 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1441039187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10988,6 +11038,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ya existe el registro en la tabla %1."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - NamedType lblErrorDuplicate</note>
         </trans-unit>
+        <trans-unit id="Table 1378230549 - Method 1147532894 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Method ImportExcel - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Table 1378230549 - Field 3912514995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Action</source>
           <note from="Developer" annotates="general" priority="2">ESP="Acción"</note>
@@ -11198,6 +11253,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="El producto no ha pasado por revision de departamentos.\"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method CreateItemTemporary - NamedType lblConfirm1</note>
         </trans-unit>
+        <trans-unit id="Table 4269697522 - Method 514137334 - NamedType 141319104" size-unit="char" translate="yes" xml:space="preserve">
+          <source>El producto %1 no existe y el estado es %2.\</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El producto %1 no existe y el estado es %2.\"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method CreateItemTemporary - NamedType lblConfirmNew</note>
+        </trans-unit>
         <trans-unit id="Table 4269697522 - Method 2651007294 - NamedType 962692565" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must select a value in %1.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Debe seleccionar un valor en %1."</note>
@@ -11218,11 +11278,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="El estado de la solicitud de %1 %2 es %3"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method LaunchRegisterItemTemporary - NamedType lblError</note>
         </trans-unit>
-        <trans-unit id="Table 4269697522 - Method 2651007294 - NamedType 994322876" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method LaunchRegisterItemTemporary - NamedType lblItBID</note>
-        </trans-unit>
         <trans-unit id="Table 4269697522 - Method 2564493053 - NamedType 2026798726" size-unit="char" translate="yes" xml:space="preserve">
           <source>No existe ningun producto pendiente de revision del departamento %1.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No existe ningun producto pendiente de revision del departamento %1."</note>
@@ -11234,7 +11289,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method OnValidate_ProductionBOMNo - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Method 1462704819 - NamedType 3871721722" size-unit="char" translate="yes" xml:space="preserve">
-          <source>COMPLETADA Solicitud de Alta de Producto - %1 (%2)</source>
+          <source>COMPLETADA Solicitud de Alta de Producto (Pdte. alta producto)- %1 (%2)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method SendMailItemTemporaryFinalize - NamedType SubjectLbl</note>
         </trans-unit>
@@ -11262,6 +11317,11 @@
           <source>¿Desea confirmar la revisión de los campos asignados a %1 de %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea confirmar la revisión de los campos asignados a %1 de %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method UpdateItemRequest - NamedType lblConfirmUpdateRequest</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Method 725451167 - NamedType 994322876" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Method UpdateItemRequest - NamedType lblItBID</note>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Method 4257336264 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Fichero de Excel</source>
@@ -11657,6 +11717,11 @@
           <source>Product manager</source>
           <note from="Developer" annotates="general" priority="2">ESP="Responsable"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Product manager - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 2070474202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas L.M. producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Production BOM Lines - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Production BOM No.</source>
@@ -17038,6 +17103,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Precios Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary list - Action PurchasePrices - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 531307422 - Action 774810596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Confirmación Alta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Confirmación Alta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary list - Action SendAltaproducto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 531307422 - Action 774810596 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea Volver a enviar el email Confirmación Alta?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Volver a enviar el email Confirmación Alta?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary list - Action SendAltaproducto - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Page 2287400882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Sales Invoice Change</source>
           <note from="Developer" annotates="general" priority="2">ESP="Editar Hist. Venta"</note>
@@ -19713,6 +19788,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Imagen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Items BOM - Control ItemPicture - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1880029919 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas Prod. BOM Lines "</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM CIM Production BOM Line - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3769947210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Production BOM Lines</source>
           <note from="Developer" annotates="general" priority="2">ESP="Líneas Prod. BOM Lines "</note>
@@ -20383,6 +20463,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de uso (Nivel superior)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action ListUsed - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 894273850 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approve</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action Approve - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 894273850 - Action 1147532894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Excel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Excel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action ImportExcel - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3826509382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Translations</source>
           <note from="Developer" annotates="general" priority="2">ESP="Traducciones Producto"</note>
@@ -21013,6 +21103,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Motivo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control WorkDescription - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 296798300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change Log Entries</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mov. registro cambios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action ChangeLogEntries - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Action 2549125872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approvals</source>
           <note from="Developer" annotates="general" priority="2">ESP="Aprobaciones"</note>
@@ -21052,6 +21147,16 @@
           <source>Comprobación Departamento</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comprobación Departamento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action FinalizeDepartment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 2219381778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crear ITBID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear ITBID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action ITBIDCreate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 2219381778 - Method 1377591017 - NamedType 994322876" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea crear el producto en la plataforma ITBID?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea crear el producto en la plataforma ITBID?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action ITBIDCreate - Method OnAction - NamedType lblItBID</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 390296700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copiar datos productos</source>
@@ -21107,6 +21212,11 @@
           <source>User Status</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado Usuario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Control StatusUser - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 296798300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change Log Entries</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mov. registro cambios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action ChangeLogEntries - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3858912784 - Action 2549125872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approvals</source>
@@ -41162,6 +41272,11 @@
           <source>Both</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ambos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Rol Item Approval - EnumValue Both - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 115707917 - EnumValue 2909947573 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Confirm Creation</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Confirmacion Alta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Rol Item Approval - EnumValue Confirm creation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 115707917 - EnumValue 3552983923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Owner</source>

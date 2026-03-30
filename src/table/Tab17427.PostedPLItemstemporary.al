@@ -1,4 +1,4 @@
-table 17416 "Posted PL Items temporary"
+table 17427 "Posted PL Items temporary"
 {
     DataClassification = CustomerContent;
     LookupPageId = "Posted PL Items temporary list";
@@ -10,6 +10,12 @@ table 17416 "Posted PL Items temporary"
         {
             Caption = 'No.', Comment = 'ESP="Nº"';
             TableRelation = Item;
+        }
+        field(2; "Item No."; Code[20])
+        {
+            Caption = 'No.', Comment = 'ESP="Nº"';
+            TableRelation = Item;
+            ValidateTableRelation = false;
         }
         field(3; Description; Text[100])
         {
@@ -449,6 +455,38 @@ table 17416 "Posted PL Items temporary"
             Caption = 'Nombre Empleado', comment = 'ESP="Nombre Empleado"';
             Editable = false;
         }
+        field(50830; "Modified"; Boolean)
+        {
+            Caption = 'Modified', comment = 'ESP="Modificado"';
+        }
+        field(50831; "Requires Final Artwork"; Boolean)
+        {
+            Caption = 'Requires Final Artwork', comment = 'ESP="Requiere Arte Final"';
+        }
+        field(50840; "E-mail sent"; Boolean)
+        {
+            Caption = 'E-mail sent', comment = 'ESP="Email enviado"';
+        }
+        field(50850; "GUID Creation"; Guid)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'State Creation', comment = 'ESP="Estado Alta"';
+            Editable = false;
+        }
+        field(50860; "Request Type"; Option)
+        {
+            Caption = 'Request Type', comment = 'ESP="Tipo Solicitud"';
+            OptionMembers = " ",New,Change,Blocked,Unlocking,Delete;
+            OptionCaption = ' ,New,Change,Blocked,Unlocking,Delete', Comment = 'ESP=" ,Nuevo,Cambio,Bloqueo,Desbloqueo,Eliminación"';
+        }
+        field(65100; "Sujeto a Control de Calidad"; Boolean)
+        {
+            Caption = 'Sujeto a Control de Calidad', comment = 'ESP="Sujeto a Control de Calidad"';  // 65100          
+        }
+        field(50871; "Control Certificado proveedor"; Boolean)
+        {
+            Caption = 'Control Certificado proveedor', comment = 'ESP="Control Certificado proveedor"';  // 65110
+        }
 
         field(99000750; "Routing No."; Code[20])
         {
@@ -471,6 +509,8 @@ table 17416 "Posted PL Items temporary"
     }
 
     var
+        ItemSetupApproval: Record "ZM PL Item Setup Approval";
+        ItemSetupDepartment: Record "ZM PL Item Setup Department";
         Item: Record Item;
         Vend: Record Vendor;
         ProdBOMHeader: Record "Production BOM Header";
@@ -483,6 +523,7 @@ table 17416 "Posted PL Items temporary"
         TempBlob: Record TempBlob;
         NoSeriesMgt: Codeunit NoSeriesManagement;
         Funciones: Codeunit Funciones;
+        AutLoginMgt: Codeunit "AUT Login Mgt.";
         Text027: Label 'must be greater than 0.', Comment = 'ESP="Debe ser mayor que 0"';
         lblConfirmBOM: Label 'El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?', comment = 'ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"';
         lblConfirmUpdateItem: Label 'El producto %1 %2 ya existe, si actualiza se perderan los datos temporales actuales.\¿Desea actualizar los datos?',
@@ -551,4 +592,109 @@ table 17416 "Posted PL Items temporary"
         ZMItemPurchasesPrices.Run();
     end;
 
+    procedure SendMailItemTemporaryFinalize()
+    var
+        SetupItemregistration: Record "ZM PL Setup Item registration";
+        SMTPMailSetup: Record "SMTP Mail Setup";
+        SMTPMail: Codeunit "SMTP Mail";
+        Subject: text;
+        Body: text;
+        Recipients: text;
+        SubjectLbl: Label 'COMPLETADA Solicitud de Alta de Producto (Pdte. alta producto)- %1 (%2)';
+    begin
+        SetupItemregistration.Get();
+        if ItemSetupDepartment.get(SetupPreItemReg."Last Department") then begin
+            if ItemSetupDepartment.Email <> '' then begin
+                if Recipients <> '' then
+                    Recipients += ';';
+                Recipients += ItemSetupDepartment.Email;
+            end;
+            // miramos los empleados que tienen ese departamento
+            if ItemSetupDepartment."User Id" <> '' then begin
+                Employee.Reset();
+                Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
+                if Employee.FindFirst() then
+                    repeat
+                        if Recipients <> '' then
+                            Recipients += ';';
+                        Recipients += Employee."Company E-Mail";
+                    Until Employee.next() = 0;
+            end;
+        end;
+        // otros usuarios como mejora y quique
+        GetDepartmentNewItemRecipients(Recipients);
+
+        if Recipients = '' then
+            Recipients := 'jvidal@zummo.es';
+
+        // recogemos los usuarios finales configurados
+        SMTPMailSetup.Get();
+        SMTPMailSetup.TestField("User ID");
+        Subject := StrSubstNo(SubjectLbl, Rec."No.", Rec.Description);
+        Body := EnvioEmailBody(Subject, Department);
+        // enviamos el email 
+        SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
+        SMTPMail.Send();
+    end;
+
+    local procedure GetDepartmentNewItemRecipients(var Recipients: text)
+    var
+        myInt: Integer;
+    begin
+        ItemSetupApproval.reset();
+        ItemSetupApproval.SetRange(Rol, ItemSetupApproval.rol::"Confirm creation");
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                if ItemSetupDepartment.get(ItemSetupApproval.Department) then begin
+                    if Recipients <> '' then
+                        Recipients += ';';
+                    Recipients += ItemSetupDepartment.Email;
+                    // miramos los empleados que tienen ese departamento
+                    if ItemSetupDepartment."User Id" <> '' then begin
+                        Employee.Reset();
+                        Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
+                        if Employee.FindFirst() then
+                            repeat
+                                if Recipients <> '' then
+                                    Recipients += ';';
+                                Recipients += Employee."Company E-Mail";
+                            Until Employee.next() = 0;
+                    end;
+                end;
+            Until ItemSetupApproval.next() = 0;
+    end;
+
+    local procedure EnvioEmailBody(Subject: text; Department: code[20]) Body: Text
+    var
+        Companyinfo: Record "Company Information";
+        Employee: Record Employee;
+        CodEmpleado: code[20];
+        Color: text;
+    begin
+        Companyinfo.Get();
+        CodEmpleado := AutLoginMgt.GetEmpleado();
+        if Employee.Get(CodEmpleado) then;
+        Body := '<p>&nbsp;</p>';
+        Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
+        Body += '<h2 style="color: #2e6c80;">' + Subject + '</h2>';
+        Body += '<h3 style="color: #2e6c80;">Product Manager: ' + Rec."Product manager" + '</h3>';
+        Body += '<h3 style="color: #2e6c80;">USER: ' + Rec."User ID" + '</h3>';
+        Body += '<h3 style="color: #2e6c80;">Usuario: ' + StrSubstNo('%1 (%2)', Employee.FullName(), CodEmpleado) + '</h3>';
+        Body += '<h4 style="color: #2e6c80;">Departamento Revision: ' + Department + '</h4>';
+        Body += '<p><strong>' + Rec.FieldCaption("Item No.") + '</strong>: ' + Rec."Item No." + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Description) + '</strong>: ' + Rec.Description + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("Base Unit of Measure") + '</strong>: ' + Rec."Base Unit of Measure" + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Type) + '</strong>: ' + format(Rec.Type) + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Blocked) + '</strong>: ' + format(Rec.Blocked) + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("Reason Blocked") + '</strong>: ' + Rec."Reason Blocked" + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("ITBID Status") + '</strong>: ' + format(Rec."ITBID Status") + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("User ID") + '</strong>: ' + Rec."User ID" + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("Codigo Empleado") + '</strong>: ' + Rec."Codigo Empleado" + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Reason) + '</strong>: ' + Rec.GetWorkDescription() + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption("Posting Date") + '</strong>: ' + format(Rec."Posting Date") + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Activity) + '</strong>: ' + Rec.Activity + '</p>';
+        Body += '<p><strong>' + Rec.FieldCaption(Prototype) + '</strong>: ' + Rec.Prototype + '</p>';
+        // if Rec."Request Type" in [Rec."Request Type"::Change] then
+        // Body += CheckChangesRec();
+    end;
 }

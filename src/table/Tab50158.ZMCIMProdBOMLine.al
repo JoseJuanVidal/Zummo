@@ -1,8 +1,8 @@
 table 50158 "ZM CIM Prod. BOM Line"
 {
     Caption = 'Production BOM Line', Comment = 'ESP="Línea L.M. producción"';
-    LookupPageId = "ZM CIM Production BOM Lines";
-    DrillDownPageId = "ZM CIM Production BOM Lines";
+    LookupPageId = "ZM CIM Production BOM Line";
+    DrillDownPageId = "ZM CIM Production BOM Line";
 
     fields
     {

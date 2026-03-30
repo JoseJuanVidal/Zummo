@@ -24,7 +24,7 @@ codeunit 50103 "STH Funciones IVA Recuperacion"
     procedure CreateJnlIVARecuperacion(GenJournalBatch: Record "Gen. Journal Batch")
     var
         GenJnlLine: Record "Gen. Journal Line";
-        ExcelBuffer: Record "Excel Buffer";
+        ExcelBuffer: Record "Excel Buffer" temporary;
         SeriesMGt: codeunit NoSeriesManagement;
         NVInStream: InStream;
         DocNo: text;

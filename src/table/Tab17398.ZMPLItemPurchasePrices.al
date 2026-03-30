@@ -180,8 +180,10 @@ table 17398 "ZM PL Item Purchase Prices"
     begin
         if SelectItemPurchasePrices.FindFirst() then
             repeat
-                AddItemPurchasePrice(ItemPurchasePrices, SelectItemPurchasePrices);
-                SelectItemPurchasePrices.ItemPurchasePriceApproval(Approve);
+                if Item.Get(SelectItemPurchasePrices."Item No.") then begin
+                    AddItemPurchasePrice(ItemPurchasePrices, SelectItemPurchasePrices);
+                    SelectItemPurchasePrices.ItemPurchasePriceApproval(Approve);
+                end;
             Until SelectItemPurchasePrices.next() = 0;
         // si el usuario es el aprobador, se envia email a los propietarios de table
         Item.Get(Rec."Item No.");
@@ -209,5 +211,89 @@ table 17398 "ZM PL Item Purchase Prices"
         PurchasePrice.Reset();
         if PurchasePrice.Get(Rec."Item No.", Rec."Vendor No.", Rec."Starting Date", Rec."Currency Code", Rec."Variant Code", Rec."Unit of Measure Code", Rec."Minimum Quantity") then
             Rec."Action Approval" := Rec."Action Approval"::Modify;
+    end;
+
+    procedure ImportExcel()
+    var
+        Item: Record Item;
+        Vendor: Record Vendor;
+        tempPurchasePrice: Record "ZM PL Item Purchase Prices";
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        TempNameValueBufferOut: Record "Name/Value Buffer" temporary;
+        FileManagement: Codeunit "File Management";
+        Text000: label 'Cargar Fichero de Excel';
+        FileName: text;
+        Sheetname: text;
+        txtFechaFra: text;
+        Fecha: date;
+        Cantidad: Decimal;
+        Lote: Decimal;
+        Precio: Decimal;
+        i: Integer;
+        Rows: Integer;
+        NVInStream: InStream;
+    begin
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            exit;
+        // if ExcelBuffer.GetSheetsNameListFromStream(NVInStream, TempNameValueBufferOut) then
+        // if TempNameValueBufferOut.Count > 1 then begin
+        Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream);
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        ExcelBuffer.SetRange("Column No.", 1);
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+        ExcelBuffer.Reset();
+
+        for i := 2 to Rows do begin
+            ExcelBuffer.SetRange("Row No.", i);
+            ExcelBuffer.SetRange("Column No.", 2); // Nº proveedor
+            if ExcelBuffer.FindSet() then begin
+                if Vendor.Get(ExcelBuffer."Cell Value as Text") then begin
+                    ExcelBuffer.SetRange("Column No.", 3); // Cod. producto
+                    if ExcelBuffer.FindSet() then
+                        if Item.Get(ExcelBuffer."Cell Value as Text") then begin
+                            ExcelBuffer.SetRange("Column No.", 5); // Cantidad
+                            if ExcelBuffer.FindSet() then
+                                if not Evaluate(Cantidad, ExcelBuffer."Cell Value as Text") then
+                                    Cantidad := 0;
+                            ExcelBuffer.SetRange("Column No.", 6); // Precio
+                            if ExcelBuffer.FindSet() then
+                                if not Evaluate(Precio, ExcelBuffer."Cell Value as Text") then
+                                    Precio := 0;
+                            ExcelBuffer.SetRange("Column No.", 7); // Fecha inicial
+                            if ExcelBuffer.FindSet() then
+                                txtFechaFra := ExcelBuffer."Cell Value as Text";
+                            Evaluate(Fecha, txtFechaFra);
+                            ExcelBuffer.SetRange("Column No.", 9); // Lote
+                            if ExcelBuffer.FindSet() then
+                                if not Evaluate(Lote, ExcelBuffer."Cell Value as Text") then
+                                    Lote := 0;
+
+                            tempPurchasePrice.SetRange("Vendor No.", Vendor."No.");
+                            tempPurchasePrice.SetRange("Item No.", Item."No.");
+                            tempPurchasePrice.SetFilter("Starting Date", '%1..', Fecha);
+                            if tempPurchasePrice.FindFirst() then
+                                repeat
+                                    if tempPurchasePrice."Status Approval" in [tempPurchasePrice."Status Approval"::" ", tempPurchasePrice."Status Approval"::Pending] then
+                                        tempPurchasePrice.Delete();
+                                Until tempPurchasePrice.next() = 0;
+                            tempPurchasePrice.Init();
+                            tempPurchasePrice."Record ID" := CreateGuid();
+                            tempPurchasePrice."Vendor No." := Vendor."No.";
+                            tempPurchasePrice.Validate("Item No.", Item."No.");
+                            tempPurchasePrice."Date/Time Creation" := CreateDateTime(WorkDate(), time());
+                            tempPurchasePrice."Starting Date" := Fecha;
+                            tempPurchasePrice."Minimum Quantity" := Lote;
+                            tempPurchasePrice."Unit of Measure Code" := Item."Base Unit of Measure";
+                            tempPurchasePrice."Action Approval" := tempPurchasePrice."Action Approval"::New;
+                            tempPurchasePrice."Status Approval" := tempPurchasePrice."Status Approval"::Pending;
+                            tempPurchasePrice.Insert();
+                        end;
+                end;
+            end;
+        end;
     end;
 }

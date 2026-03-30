@@ -4,6 +4,7 @@ table 17462 "ZM PL Items Temporary"
     Caption = 'Items temporary', comment = 'ESP="Alta productos temporales"';
     LookupPageId = "ZM PL Items temporary list";
     DrillDownPageId = "ZM PL Items temporary list";
+    Permissions = tabledata "Change Log Entry" = rmid;
 
     fields
     {
@@ -32,8 +33,6 @@ table 17462 "ZM PL Items Temporary"
 
                 ChangeFieldNo(Rec.FieldNo("Item No."));
             end;
-
-
         }
 
         field(3; Description; Text[100])
@@ -1274,6 +1273,13 @@ table 17462 "ZM PL Items Temporary"
         {
             FieldClass = FlowFilter;
         }
+        field(50930; "Production BOM Lines"; integer)
+        {
+            Caption = 'Production BOM Lines', Comment = 'ESP="Líneas L.M. producción"';
+            FieldClass = FlowField;
+            CalcFormula = count("ZM CIM Prod. BOM Line" where("Production BOM No." = field("Production BOM No.")));
+            Editable = false;
+        }
         field(99000750; "Routing No."; Code[20])
         {
             Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';
@@ -1595,6 +1601,17 @@ table 17462 "ZM PL Items Temporary"
         ZMProdBOM: record "ZM CIM Prod. BOM Header";
         ZMProductionBOMList: page "ZM CIM Production BOM List";
     begin
+        if Rec."Production BOM No." = '' then begin
+            Rec."Production BOM No." := Rec."Item No.";
+            Rec.Modify();
+        end;
+        if not ZMProdBOM.Get(Rec."Production BOM No.") then begin
+            ZMProdBOM.Init();
+            ZMProdBOM."No." := Rec."Production BOM No.";
+            ZMProdBOM.Description := Rec.Description;
+            ZMProdBOM."Unit of Measure Code" := Rec."Base Unit of Measure";
+            ZMProdBOM.Insert();
+        end;
         ZMProdBOM.SetRange("No.", Rec."Production BOM No.");
         ZMProductionBOMList.SetTableView(ZMProdBOM);
         ZMProductionBOMList.Run();
@@ -1650,7 +1667,6 @@ table 17462 "ZM PL Items Temporary"
         lblConfirm: Label '¿Desea Solicitar el alta/modificacion del producto %1 "% %32"?', comment = 'ESP="¿Desea Solicitar el alta/modificacion del producto %1 "%2 %4"?"';
         lblRelease: Label '¿Desea enviar la revisión de los departamentos para %1\ %2 %3?', comment = 'ESP="¿Desea enviar la revisión de los departamentos para %1\ %2 %3?"';
         lblError: Label 'El estado de la solicitud de %1 %2 es %3', comment = 'ESP="El estado de la solicitud de %1 %2 es %3"';
-        lblItBID: Label 'Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?', comment = 'ESP="Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?"';
     begin
         Rec.TestField(Reason);
         // Check Request Type
@@ -1670,10 +1686,6 @@ table 17462 "ZM PL Items Temporary"
             else begin
                 if not Confirm(lblRelease, false, Rec."No.", rec."Item No.", Rec.Description) then
                     exit;
-                if CheckUserReviewItemFieldNo(Dpto, Rec.FieldNo(Rec."ITBID Create")) then
-                    if Rec."ITBID Create" then
-                        if confirm(lblItBID) then
-                            Rec.ITBIDUpdate();
                 SendItemTemporaryRegister();
                 Rec.UpdateStatusReleased();
                 ItemApprovalDepartment.CreateRequestDepartment(Rec);
@@ -1690,7 +1702,9 @@ table 17462 "ZM PL Items Temporary"
     var
         Employee: Record Employee;
         Recipients: text;
+        CodEmpleado: code[20];
     begin
+        CodEmpleado := AutLoginMgt.GetEmpleado();
         SetupPreItemReg.Get();
         SetupPreItemReg.TestField("First Department");
         if ItemSetupDepartment.get(SetupPreItemReg."First Department") then begin
@@ -1713,6 +1727,22 @@ table 17462 "ZM PL Items Temporary"
         end;
         if Recipients = '' then
             Error(lblErrorNotApprovals, Rec.TableCaption);
+
+        // añadimos los usuarios del departamento que crea
+        Employee.Reset();
+        Employee.SetRange("User Id", UserId);
+        if Employee.FindFirst() then
+            repeat
+                if Recipients <> '' then
+                    Recipients += ';';
+                Recipients += Employee."Company E-Mail";
+            Until Employee.next() = 0;
+        Employee.Reset();
+        if Employee.get(CodEmpleado) then begin
+            if Recipients <> '' then
+                Recipients += ';';
+            Recipients += Employee."Company E-Mail";
+        end;
 
         if Rec."E-mail sent" then
             if not Confirm(lblConfirmEmail) then
@@ -1903,6 +1933,16 @@ table 17462 "ZM PL Items Temporary"
         Itemstemporaryreviewlist.RunModal();
     end;
 
+    local procedure GetDepartmentUser(): Code[20]
+    var
+        myInt: Integer;
+    begin
+        ItemSetupDepartment.Reset();
+        ItemSetupDepartment.SetRange("User Id", UserId);
+        if ItemSetupDepartment.FindSet() then
+            exit(ItemSetupDepartment.Code);
+    end;
+
     procedure CheckItemsTemporary(var Department: code[20]): Boolean
     var
         RefRecord: RecordRef;
@@ -1967,6 +2007,7 @@ table 17462 "ZM PL Items Temporary"
         Department: code[20];
         lblNotUserApproval: Label 'El usuario %1 del departamento %2, no tiene asignada ninguna aprobacion de campos.', comment = 'ESP="El usuario %1 del departamento %2, no tiene asignada ninguna aprobacion de campos."';
         lblConfirmUpdateRequest: Label '¿Desea confirmar la revisión de los campos asignados a %1 de %2?', comment = 'ESP="¿Desea confirmar la revisión de los campos asignados a %1 de %2?"';
+        lblItBID: Label 'Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?', comment = 'ESP="Se ha marcado la opcion de Crear ITBID.\¿Desea Crearlo?"';
     begin
         RefRecord.GetTable(Rec);
         CheckItemsTemporary(Department);
@@ -1974,6 +2015,10 @@ table 17462 "ZM PL Items Temporary"
             Error(lblNotUserApproval, UserId, Department);
         if not confirm(lblConfirmUpdateRequest, false, Userid, Department) then
             exit;
+        if CheckUserReviewItemFieldNo(Department, Rec.FieldNo(Rec."ITBID Create")) then
+            if Rec."ITBID Create" then
+                if confirm(lblItBID) then
+                    Rec.ITBIDUpdate();
         ItemApprovalDepartment.Reset();
         ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
         ItemApprovalDepartment.SetRange(Department, Department);
@@ -2072,16 +2117,42 @@ table 17462 "ZM PL Items Temporary"
             until ItemSetupApproval.Next() = 0;
     end;
 
-    procedure SendMailItemTemporaryFinalize(Recipients: Text; Department: code[20])
+    procedure SendMailItemTemporaryFinalize()
     var
-        SalesHeader2: Record "Sales Header";
-        Quotepdf: Report PedidoCliente;
+        SetupItemregistration: Record "ZM PL Setup Item registration";
         SMTPMailSetup: Record "SMTP Mail Setup";
         SMTPMail: Codeunit "SMTP Mail";
         Subject: text;
         Body: text;
-        SubjectLbl: Label 'COMPLETADA Solicitud de Alta de Producto - %1 (%2)';
+        Recipients: text;
+        SubjectLbl: Label 'COMPLETADA Solicitud de Alta de Producto (Pdte. alta producto)- %1 (%2)';
     begin
+        SetupItemregistration.Get();
+        if ItemSetupDepartment.get(SetupPreItemReg."Last Department") then begin
+            if ItemSetupDepartment.Email <> '' then begin
+                if Recipients <> '' then
+                    Recipients += ';';
+                Recipients += ItemSetupDepartment.Email;
+            end;
+            // miramos los empleados que tienen ese departamento
+            if ItemSetupDepartment."User Id" <> '' then begin
+                Employee.Reset();
+                Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
+                if Employee.FindFirst() then
+                    repeat
+                        if Recipients <> '' then
+                            Recipients += ';';
+                        Recipients += Employee."Company E-Mail";
+                    Until Employee.next() = 0;
+            end;
+        end;
+        // otros usuarios como mejora y quique
+        GetDepartmentNewItemRecipients(Recipients);
+
+        if Recipients = '' then
+            Recipients := 'jvidal@zummo.es';
+
+        // recogemos los usuarios finales configurados
         SMTPMailSetup.Get();
         SMTPMailSetup.TestField("User ID");
         Subject := StrSubstNo(SubjectLbl, Rec."No.", Rec.Description);
@@ -2089,6 +2160,33 @@ table 17462 "ZM PL Items Temporary"
         // enviamos el email 
         SMTPMail.CreateMessage(CompanyName, SMTPMailSetup."User ID", Recipients, Subject, Body, true);
         SMTPMail.Send();
+    end;
+
+    local procedure GetDepartmentNewItemRecipients(var Recipients: text)
+    var
+        myInt: Integer;
+    begin
+        ItemSetupApproval.reset();
+        ItemSetupApproval.SetRange(Rol, ItemSetupApproval.rol::"Confirm creation");
+        if ItemSetupApproval.FindFirst() then
+            repeat
+                if ItemSetupDepartment.get(ItemSetupApproval.Department) then begin
+                    if Recipients <> '' then
+                        Recipients += ';';
+                    Recipients += ItemSetupDepartment.Email;
+                    // miramos los empleados que tienen ese departamento
+                    if ItemSetupDepartment."User Id" <> '' then begin
+                        Employee.Reset();
+                        Employee.SetRange("Approval Department User Id", ItemSetupDepartment."User Id");
+                        if Employee.FindFirst() then
+                            repeat
+                                if Recipients <> '' then
+                                    Recipients += ';';
+                                Recipients += Employee."Company E-Mail";
+                            Until Employee.next() = 0;
+                    end;
+                end;
+            Until ItemSetupApproval.next() = 0;
     end;
 
     local procedure UpdateItem()
@@ -2124,9 +2222,12 @@ table 17462 "ZM PL Items Temporary"
 
     procedure CreateItemTemporary()
     var
+        PostedItemstemporary: Record "Posted PL Items temporary";
         lblConfirm: Label '¿Desea Crear/Actualizar el producto %1 - %2?', comment = 'ESP="¿Desea Crear/Actualizar el producto %1 - %2?"';
         lblConfirm1: Label 'El producto no ha pasado por revision de departamentos.\', comment = 'ESP="El producto no ha pasado por revision de departamentos.\"';
+        lblConfirmNew: Label 'El producto %1 no existe y el estado es %2.\', comment = 'ESP="El producto %1 no existe y el estado es %2.\"';
     begin
+        Item.Reset();
         if Rec."State Creation" in [Rec."State Creation"::"Create Pendindg"] then begin
             if not confirm(lblConfirm, false, Rec."No.", Rec.Description) then
                 exit;
@@ -2138,29 +2239,41 @@ table 17462 "ZM PL Items Temporary"
         case Rec."Request Type" of
             Rec."Request Type"::New:
                 CreateNewItem();
-
+            else
+                if not Item.Get(Rec."Item No.") then
+                    if confirm(lblConfirmNew + lblConfirm, false, Rec."Item No.", Rec."State Creation") then
+                        CreateNewItem();
         end;
+
         UpdateItemTranslation();
 
         UpdateItemLM();
 
-    end;
+        // update Precios de compra TODO
 
-    local procedure CreateNewItem()
-    var
-        PostedItemstemporary: Record "Posted PL Items temporary";
-    begin
-        // aqui creamos el nuevo producto
-        Item.Reset();
-        Item.Init();
-        Item.TransferFields(Rec);
-        Item.validate("No.", Rec."Item No.");
-        Item.Insert();
-        // guardamos el historico de alta de producto
+
         PostedItemstemporary.Init();
         PostedItemstemporary.TransferFields(Rec);
         PostedItemstemporary.Insert();
         Rec.Delete();
+        // enviamos email de alta pendiente
+        SendMailItemTemporaryFinalize();
+    end;
+
+    local procedure CreateNewItem()
+    var
+
+    begin
+        if not Item.Get(Rec."Item No.") then begin
+            // aqui creamos el nuevo producto
+            Item.Reset();
+            Item.Init();
+            Item.TransferFields(Rec);
+            Item.validate("No.", Rec."Item No.");
+            Item.Insert();
+        end;
+        // guardamos el historico de alta de producto
+
         // actualizamos datos auxiliares,
         ItemUnitofMeasure();
     end;

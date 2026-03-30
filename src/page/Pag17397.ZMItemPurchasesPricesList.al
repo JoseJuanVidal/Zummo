@@ -5,8 +5,9 @@ page 17397 "ZM Item Purchases Prices List"
     UsageCategory = Lists;
     ApplicationArea = all;
     SourceTable = "ZM PL Item Purchase Prices";
-    Editable = false;
-    DeleteAllowed = false;
+    // Editable = false;
+    InsertAllowed = false;
+    ModifyAllowed = false;
 
     layout
     {
@@ -80,6 +81,39 @@ page 17397 "ZM Item Purchases Prices List"
 
     actions
     {
+        area(Processing)
+        {
+            action(ImportExcel)
+            {
+                ApplicationArea = all;
+                Caption = 'Import Excel', comment = 'ESP="Importar Excel"';
+                Image = ImportExcel;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Visible = UserApproval;
+
+                trigger OnAction()
+                begin
+                    Rec.ImportExcel();
+                end;
+            }
+            action(Approve)
+            {
+                ApplicationArea = All;
+                Caption = 'Approve', comment = 'ESP="Aprobar"';
+                Image = Approve;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Visible = UserApproval;
+
+                trigger OnAction()
+                begin
+                    OnAction_Approve();
+                end;
+            }
+        }
         area(Navigation)
         {
             action(ListUsed)
@@ -178,6 +212,7 @@ page 17397 "ZM Item Purchases Prices List"
                 Action := lblRejecte
         end;
         CurrPage.SetSelectionFilter(ItemPurchasePrices);
+        ItemPurchasePrices.SetRange("Status Approval", ItemPurchasePrices."Status Approval"::Pending);
         if not Confirm(lblConfirmApprove, false, Action, ItemPurchasePrices.Count) then
             exit;
         ItemPurchasePrices.ItemPurchasePricesApproval(ItemPurchasePrices, Approve);

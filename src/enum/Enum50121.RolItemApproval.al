@@ -18,4 +18,8 @@ enum 50121 "Rol Item Approval"
     {
         Caption = 'Both', comment = 'ESP="Ambos"';
     }
+    value(4; "Confirm creation")
+    {
+        Caption = 'Confirm Creation', comment = 'ESP="Confirmacion Alta"';
+    }
 }

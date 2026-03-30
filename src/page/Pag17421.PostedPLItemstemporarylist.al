@@ -94,6 +94,24 @@ page 17421 "Posted PL Items temporary list"
 
     actions
     {
+        area(Processing)
+        {
+            action(SendAltaproducto)
+            {
+                ApplicationArea = all;
+                Caption = 'Confirmación Alta', comment = 'ESP="Confirmación Alta"';
+                Image = SendConfirmation;
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    lblConfirm: Label '¿Desea Volver a enviar el email Confirmación Alta?', comment = 'ESP="¿Desea Volver a enviar el email Confirmación Alta?"';
+                begin
+                    if Confirm(lblConfirm) then
+                        Rec.SendMailItemTemporaryFinalize();
+                end;
+            }
+        }
         area(Navigation)
         {
             Group("Lista de materiales")
@@ -132,12 +150,12 @@ page 17421 "Posted PL Items temporary list"
 
     trigger OnOpenPage()
     begin
-        Rec.FilterGroup := 2;
-        If ShowPosted then
-            SetRange("State Creation", "State Creation"::Finished)
-        else
-            SetFilter("State Creation", '<>%1', Rec."State Creation"::Finished);
-        Rec.FilterGroup := 0;
+        // Rec.FilterGroup := 2;
+        // If ShowPosted then
+        //     SetRange("State Creation", "State Creation"::Finished)
+        // else
+        //     SetFilter("State Creation", '<>%1', Rec."State Creation"::Finished);
+        // Rec.FilterGroup := 0;
     end;
 
     var

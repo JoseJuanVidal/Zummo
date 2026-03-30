@@ -524,6 +524,11 @@ page 17471 "ZM PL Items temporary card"
                         ApplicationArea = all;
                         Editable = boolEditProductionBOMNo;
                     }
+                    field("Production BOM Lines"; "Production BOM Lines")
+                    {
+                        ApplicationArea = all;
+                        Editable = false;
+                    }
                     field("Rounding Precision"; "Rounding Precision")
                     {
                         ApplicationArea = all;
@@ -753,6 +758,22 @@ page 17471 "ZM PL Items temporary card"
                     OnAction_CreateItemRequest();
                 end;
             }
+            action(ITBIDCreate)
+            {
+                ApplicationArea = All;
+                Caption = 'Crear ITBID', comment = 'ESP="Crear ITBID"';
+                Image = ItemInvoice;
+                Promoted = true;
+                PromotedCategory = Process;
+                Visible = IsUserCreateITBID;
+                trigger OnAction()
+                var
+                    lblItBID: Label '¿Desea crear el producto en la plataforma ITBID?', comment = 'ESP="¿Desea crear el producto en la plataforma ITBID?"';
+                begin
+                    if confirm(lblItBID) then
+                        Rec.ITBIDUpdate();
+                end;
+            }
             action(UpdateItem)
             {
                 ApplicationArea = All;
@@ -897,6 +918,23 @@ page 17471 "ZM PL Items temporary card"
 
                 RunObject = page "Posted PL Items temporary list";
             }
+            action(ChangeLogEntries)
+            {
+                ApplicationArea = all;
+                Caption = 'Change Log Entries', comment = 'ESP="Mov. registro cambios"';
+                Image = ChangeLog;
+
+                trigger OnAction()
+                var
+                    ChangeLogEntry: Record "Change Log Entry";
+                    ChangeLogEntries: page "Change Log Entries";
+                begin
+                    ChangeLogEntry.SetRange("Record ID", Rec.RecordId);
+                    ChangeLogEntries.SetTableView(ChangeLogEntry);
+                    ChangeLogEntries.Run();
+                end;
+
+            }
         }
         area(Reporting)
         {
@@ -939,6 +977,7 @@ page 17471 "ZM PL Items temporary card"
         ShowSections: Boolean;
         IsUserApproval: Boolean;
         IsUserCreateItem: Boolean;
+        IsUserCreateITBID: Boolean;
         IsOwnerUser: Boolean;
         IsItemNew: Boolean;
         StateBlank: Boolean;
@@ -1572,6 +1611,7 @@ page 17471 "ZM PL Items temporary card"
             exit;
         IsUserApproval := Rec.CheckItemsTemporary(Department);
         IsUserCreateItem := Rec.CheckUserItemsCreate(); // and (Rec."State Creation" in [Rec."State Creation"::Finished]);
+        IsUserCreateITBID := Rec.CheckUserReviewItemFieldNo(Department, Rec.FieldNo(Rec."ITBID Create"));
         IsOwnerUser := Rec.CheckIsOwnerUser();
     end;
 

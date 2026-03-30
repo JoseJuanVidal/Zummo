@@ -35,15 +35,15 @@ table 17203 "ZM Job Requirements Compliance"
         }
         field(40; RP1; Boolean)
         {
-            Caption = 'RP0', comment = 'ESP="RP0"';
+            Caption = 'RP1', comment = 'ESP="RP1"';
         }
         field(50; RP2; Boolean)
         {
-            Caption = 'RP0', comment = 'ESP="RP0"';
+            Caption = 'RP2', comment = 'ESP="RP2"';
         }
         field(60; RP4; Boolean)
         {
-            Caption = 'RP0', comment = 'ESP="RP0"';
+            Caption = 'RP4', comment = 'ESP="RP4"';
         }
     }
 

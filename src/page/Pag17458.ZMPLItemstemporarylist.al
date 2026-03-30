@@ -134,24 +134,6 @@ page 17458 "ZM PL Items temporary list"
     {
         area(Processing)
         {
-            // action(ConfAltaProd)
-            // {
-            //     ApplicationArea = all;
-            //     Caption = 'Conf. Alta Productos', comment = 'ESP="Conf. Alta Productos"';
-            //     Image = Setup;s
-            //     Promoted = true;
-            //     PromotedCategory = Process;
-            //     RunObject = page "ZM PL Setup Item registration";
-            // }
-            // action(ConfAprobAltaProd)
-            // {
-            //     ApplicationArea = all;
-            //     Caption = 'Conf. Departamentos Alta Productos', comment = 'ESP="Conf. Departamentos Alta Productos"';
-            //     Image = Setup;
-            //     Promoted = true;
-            //     PromotedCategory = Process;
-            //     RunObject = page "ZM PL Item Setup approvals";
-            // }
             action(SolicitudAlta)
             {
                 ApplicationArea = All;
@@ -305,6 +287,23 @@ page 17458 "ZM PL Items temporary list"
                 Image = Translations;
                 RunObject = page "Item Approval Departments";
                 RunPageLink = "Request No." = field("No.");
+            }
+            action(ChangeLogEntries)
+            {
+                ApplicationArea = all;
+                Caption = 'Change Log Entries', comment = 'ESP="Mov. registro cambios"';
+                Image = ChangeLog;
+
+                trigger OnAction()
+                var
+                    ChangeLogEntry: Record "Change Log Entry";
+                    ChangeLogEntries: page "Change Log Entries";
+                begin
+                    ChangeLogEntry.SetRange("Record ID", Rec.RecordId);
+                    ChangeLogEntries.SetTableView(ChangeLogEntry);
+                    ChangeLogEntries.Run();
+                end;
+
             }
         }
         area(Reporting)

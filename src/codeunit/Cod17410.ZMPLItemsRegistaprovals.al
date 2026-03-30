@@ -1,5 +1,6 @@
 codeunit 17410 "ZM PL Items Regist. aprovals"
 {
+    Permissions = tabledata "Change Log Entry" = rmid;
     trigger OnRun()
     begin
 
@@ -328,6 +329,8 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         Body += '<tr style="height: 15px;">';
         Body += '<td style="width: 115.141px; height: 18px;"><strong>Proveedor</strong></td>';
         Body += '<td style="width: 277.078px; height: 18px;"><strong>Nombre</strong></td>';
+        Body += '<td style="width: 115.078px; height: 18px;"><strong>Código</strong></td>';
+        Body += '<td style="width: 277.078px; height: 18px;"><strong>Descripción</strong></td>';
         Body += '<td style="width: 80.75px; height: 18px;text-align: right;"><strong>C&oacute;d. Divisa</strong></td>';
         Body += '<td style="width: 57.25px; height: 18px;text-align: right;"><strong>Fecha Inicial</strong></td>';
         Body += '<td style="width: 57.25px; height: 18px;text-align: right;"><strong>Cantidad M&iacute;nima</strong></td>';
@@ -346,9 +349,12 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                 // else
                 //     Color := '#ff0000';
                 Vendor.Get(ItemPurchasePrices."Vendor No.");
+                ItemPurchasePrices.CalcFields("Item Name");
                 Body += '<tr style="height: 20px;">';
                 Body += '<td style="color:' + Color + ';width: 115.141px; height: 10px;"><p>' + ItemPurchasePrices."Vendor No." + '</p></td>';
                 Body += '<td style="color:' + Color + ';width: 277.078px; height: 10px;">' + Vendor.Name + '</td>';
+                Body += '<td style="color:' + Color + ';width: 115.078px; height: 10px;">' + ItemPurchasePrices."Item No." + '</td>';
+                Body += '<td style="color:' + Color + ';width: 277.078px; height: 10px;">' + ItemPurchasePrices."Item Name" + '</td>';
                 Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Currency Code") + '</td>';
                 Body += '<td style="width: 57.25px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Starting Date") + '</td>';
                 Body += '<td style="width: 43.9688px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Minimum Quantity") + '</td>';
