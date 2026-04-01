@@ -2537,6 +2537,7 @@ table 17462 "ZM PL Items Temporary"
         tmpItemRequested := Rec;
         Rec."Request Type" := Rec."Request Type"::Change;
         Rec.TransferFields(Item);
+        Rec."No." := tmpItemRequested."No.";
         Rec."Request Type" := tmpItemRequested."Request Type";
         Rec.Description := tmpItemRequested.Description;
         Rec.Validate("Clasification Type", tmpItemRequested."Clasification Type");
@@ -2548,6 +2549,7 @@ table 17462 "ZM PL Items Temporary"
         Rec."Purch. Family" := tmpItemRequested."Purch. Family";
         Rec."Purch. Category" := tmpItemRequested."Purch. Category";
         Rec."Purch. SubCategory" := tmpItemRequested."Purch. SubCategory";
+        rec.Modify();
     end;
 
     procedure CheckIsApproved(DepartmentNo: code[20]): Boolean
