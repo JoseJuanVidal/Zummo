@@ -2782,13 +2782,14 @@ codeunit 50111 "Funciones"
         InsideSales_btc: Code[20];
         Canal_btc: Code[20];
         Mercado_btc: Code[20];
+        GrupoPrecio: code[20];
         lblConfirm: Label '¿You want to update the classification data of %1 selected customers?', comment = 'ESP="¿Desea actualizar los datos de clasificación de %1 clientes seleccionado?"';
     begin
         CustomerClasification.SetNumCustomer(Customer.Count);
         CustomerClasification.LookupMode := true;
         if CustomerClasification.RunModal() = Action::LookupOK then begin
             CustomerClasification.GetDatos(Bloqueado, CentralCompras_btc, ClienteCorporativo_btc, AreaManager_btc, Delegado_btc, GrupoCliente_btc, Perfil_btc,
-                SubCliente_btc, ClienteReporting_btc, ClienteActividad_btc, InsideSales_btc, Canal_btc, Mercado_btc);
+                SubCliente_btc, ClienteReporting_btc, ClienteActividad_btc, InsideSales_btc, Canal_btc, Mercado_btc, GrupoPrecio);
 
             if Confirm(lblConfirm, false, Customer.Count) then
                 if Customer.FindFirst() then
@@ -2827,6 +2828,8 @@ codeunit 50111 "Funciones"
                             Customer.Canal_btc := Canal_btc;
                         if Mercado_btc <> '' then
                             Customer.Mercado_btc := Mercado_btc;
+                        if GrupoPrecio <> '' then
+                            Customer.validate("Customer Price Group", GrupoPrecio);
                         Customer.Modify();
                     Until Customer.next() = 0;
         end;

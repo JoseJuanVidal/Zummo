@@ -92,6 +92,11 @@ page 50155 "ZM Customer Change clasif."
                     TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Mercados), TipoRegistro = const(Tabla));
                     Caption = 'Mercado', comment = 'ESP="Mercado"';
                 }
+                field(GrupoPrecio; GrupoPrecio)
+                {
+                    Caption = 'Grupo precio cliente', comment = 'ESP="Grupo precio cliente"';
+                    TableRelation = "Customer Price Group";
+                }
             }
         }
     }
@@ -116,13 +121,14 @@ page 50155 "ZM Customer Change clasif."
         InsideSales_btc: Code[20];
         Canal_btc: Code[20];
         Mercado_btc: Code[20];
+        GrupoPrecio: code[20];
         lblTitol: Label '%1 customers have been selected', comment = 'ESP="Se han seleccionado %1 clientes"';
 
 
 
     procedure GetDatos(var vBloqueado: option " ",Enviar,Factura,Todos,Desbloquear; var vCentralCompras_btc: Code[20]; var vClienteCorporativo_btc: Code[20]; var vAreaManager_btc: Code[20]; var vDelegado_btc: Code[20]; var vGrupoCliente_btc: Code[20];
            var vPerfil_btc: Code[20]; var vSubCliente_btc: Code[20]; var vClienteReporting_btc: Code[20]; var vClienteActividad_btc: Code[20]; var vInsideSales_btc: Code[20];
-           var vCanal_btc: Code[20]; var vMercado_btc: Code[20])
+           var vCanal_btc: Code[20]; var vMercado_btc: Code[20]; var vGrupoPrecio: code[20])
     begin
         vBloqueado := Bloqueado;
         vCentralCompras_btc := CentralCompras_btc;
@@ -137,6 +143,7 @@ page 50155 "ZM Customer Change clasif."
         vInsideSales_btc := InsideSales_btc;
         vCanal_btc := Canal_btc;
         vMercado_btc := Mercado_btc;
+        vGrupoPrecio := GrupoPrecio;
     end;
 
     procedure SetNumCustomer(CountCustomer: Integer)

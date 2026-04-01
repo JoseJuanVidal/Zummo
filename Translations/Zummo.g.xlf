@@ -19968,6 +19968,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cliente Tipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control GrupoCliente_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 528300531 - Control 2544651223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Grupo precio cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo precio cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control GrupoPrecio - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 528300531 - Control 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inside Sales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
