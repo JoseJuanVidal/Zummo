@@ -32763,6 +32763,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Información Nº. Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action SerialInformation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Action 3096908298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Solicitudes Alta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitudes Alta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action SolicitudAlta - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1791073462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>SEB Codes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Códigos SEB"</note>
@@ -33052,6 +33057,11 @@
           <source>Serial No. information</source>
           <note from="Developer" annotates="general" priority="2">ESP="Información Nº. Serie"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action SerialInformation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 3096908298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Solicitudes Alta</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitudes Alta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action SolicitudAlta - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Control 1405402048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Coded Multisource Media Format</source>

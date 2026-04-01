@@ -287,13 +287,42 @@ table 17398 "ZM PL Item Purchase Prices"
                             tempPurchasePrice."Date/Time Creation" := CreateDateTime(WorkDate(), time());
                             tempPurchasePrice."Starting Date" := Fecha;
                             tempPurchasePrice."Minimum Quantity" := Lote;
+                            tempPurchasePrice."Direct Unit Cost" := Precio;
                             tempPurchasePrice."Unit of Measure Code" := Item."Base Unit of Measure";
                             tempPurchasePrice."Action Approval" := tempPurchasePrice."Action Approval"::New;
                             tempPurchasePrice."Status Approval" := tempPurchasePrice."Status Approval"::Pending;
                             tempPurchasePrice.Insert();
+
+                            // buscamos si existe el movimiento pendiente y actual con unidad 1
+                            CheckandAddPurchasePriceBase(tempPurchasePrice);
                         end;
                 end;
             end;
         end;
+    end;
+
+    local procedure CheckandAddPurchasePriceBase(tempPurchasePrice: Record "ZM PL Item Purchase Prices")
+    var
+        ItemPurchasePrice: Record "ZM PL Item Purchase Prices";
+    begin
+        ItemPurchasePrice.SetRange("Vendor No.", tempPurchasePrice."Vendor No.");
+        ItemPurchasePrice.SetRange("Item No.", tempPurchasePrice."Item No.");
+        ItemPurchasePrice.setRange("Starting Date", tempPurchasePrice."Starting Date");
+        ItemPurchasePrice.SetRange("Status Approval", tempPurchasePrice."Status Approval"::Pending);
+        ItemPurchasePrice.SetRange("Minimum Quantity", 1);
+        if not ItemPurchasePrice.FindFirst() then begin
+            ItemPurchasePrice.Init();
+            ItemPurchasePrice."Record ID" := CreateGuid();
+            ItemPurchasePrice."Vendor No." := tempPurchasePrice."Vendor No.";
+            ItemPurchasePrice.Validate("Item No.", tempPurchasePrice."Item No.");
+            ItemPurchasePrice."Date/Time Creation" := CreateDateTime(WorkDate(), time());
+            ItemPurchasePrice."Starting Date" := tempPurchasePrice."Starting Date";
+            ItemPurchasePrice."Minimum Quantity" := 1;
+            ItemPurchasePrice."Direct Unit Cost" := tempPurchasePrice."Direct Unit Cost";
+            ItemPurchasePrice."Unit of Measure Code" := tempPurchasePrice."Unit of Measure Code";
+            ItemPurchasePrice."Action Approval" := ItemPurchasePrice."Action Approval"::New;
+            ItemPurchasePrice."Status Approval" := ItemPurchasePrice."Status Approval"::Pending;
+            ItemPurchasePrice.Insert()
+        end
     end;
 }

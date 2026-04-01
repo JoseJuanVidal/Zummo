@@ -391,6 +391,15 @@ pageextension 50133 "ItemList" extends "Item List"
                 Image = AnalysisView;
                 RunObject = page "Analisis Plan Renove";
             }
+            action(SolicitudAlta)
+            {
+                ApplicationArea = all;
+                Caption = 'Solicitudes Alta', comment = 'ESP="Solicitudes Alta"';
+                Image = PostDocument;
+                RunObject = page "Posted PL Items temporary list";
+                RunPageLink = "Item No." = field("No.");
+            }
+
         }
     }
 

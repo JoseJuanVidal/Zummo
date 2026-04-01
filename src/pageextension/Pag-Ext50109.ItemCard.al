@@ -701,6 +701,14 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 RunObject = page "ZM Fixed Assets Products";
                 RunPageLink = "Item No." = field("No.");
             }
+            action(SolicitudAlta)
+            {
+                ApplicationArea = all;
+                Caption = 'Solicitudes Alta', comment = 'ESP="Solicitudes Alta"';
+                Image = PostDocument;
+                RunObject = page "Posted PL Items temporary list";
+                RunPageLink = "Item No." = field("No.");
+            }
         }
     }
 
