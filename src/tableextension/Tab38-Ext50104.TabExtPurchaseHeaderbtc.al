@@ -42,6 +42,7 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         {
             Caption = 'Email sent pending', comment = 'ESP="Pendiente Enviado Email"';
             Editable = false;
+            obsoleteState = Removed;
         }
         field(50023; "Amount Subcontractor"; Decimal)
         {
@@ -328,15 +329,15 @@ tableextension 50104 "TabExtPurchaseHeader_btc" extends "Purchase Header"  //38
         myInt: Integer;
     begin
         Rec.Emailsent := true;
-        Rec.EmailsentPending := false;
+        // Rec.EmailsentPending := false;
         Rec.Modify();
     end;
 
-    procedure EnableEmailsentPending()
-    begin
-        Rec.EmailsentPending := true;
-        Rec.Emailsent := false;
-        Rec.Modify();
-    end;
+    // procedure EnableEmailsentPending()
+    // begin
+    //     Rec.EmailsentPending := true;
+    //     Rec.Emailsent := false;
+    //     Rec.Modify();
+    // end;
 }
 

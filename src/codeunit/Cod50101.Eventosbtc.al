@@ -2060,23 +2060,23 @@ codeunit 50101 "Eventos_btc"
         end;
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterModifyEvent', '', true, true)]
-    local procedure PurchaseLine_OnAfterModifyEvent(var Rec: Record "Purchase Line"; var xRec: Record "Purchase Line"; RunTrigger: Boolean)
-    var
-        PurchaseHeader: Record "Purchase Header";
-    begin
-        if Rec.IsTemporary then
-            exit;
-        if Rec."Outstanding Quantity" = 0 then
-            exit;
-        if not PurchaseHeader.get(Rec."Document Type", Rec."Document No.") then
-            exit;
-        if not PurchaseHeader.Emailsent then
-            exit;
-        if (Rec."Line Amount" <> xRec."Line Amount") then
-            PurchaseHeader.EnableEmailsentPending();
-        if GuiAllowed then
-            if (Rec.Quantity <> xRec.Quantity) then
-                PurchaseHeader.EnableEmailsentPending();
-    end;
+    // [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterModifyEvent', '', true, true)]
+    // local procedure PurchaseLine_OnAfterModifyEvent(var Rec: Record "Purchase Line"; var xRec: Record "Purchase Line"; RunTrigger: Boolean)
+    // var
+    //     PurchaseHeader: Record "Purchase Header";
+    // begin
+    //     if Rec.IsTemporary then
+    //         exit;
+    //     if Rec."Outstanding Quantity" = 0 then
+    //         exit;
+    //     if not PurchaseHeader.get(Rec."Document Type", Rec."Document No.") then
+    //         exit;
+    //     if not PurchaseHeader.Emailsent then
+    //         exit;
+    //     if (Rec."Line Amount" <> xRec."Line Amount") then
+    //         PurchaseHeader.EnableEmailsentPending();
+    //     if GuiAllowed then
+    //         if (Rec.Quantity <> xRec.Quantity) then
+    //             PurchaseHeader.EnableEmailsentPending();
+    // end;
 }

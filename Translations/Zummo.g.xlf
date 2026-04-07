@@ -20355,7 +20355,7 @@
         </trans-unit>
         <trans-unit id="Page 2254326384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IT Projects</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyectos IT"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2254326384 - Control 1932627619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -35118,6 +35118,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Archivar %1 PDF del pedidos de compra?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action ArchivarPedido - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="PageExtension 148744100 - Action 625130532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
+          <source>Marcar Enviado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marcar Enviado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action MarcarEnviado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 148744100 - Action 625130532 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 148744100">
+          <source>¿Desea Marcar/Desmarcar como enviado?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Marcar/Desmarcar como enviado?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action MarcarEnviado - Method OnAction - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 148744100 - Action 4166219763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
           <source>Register Send</source>
           <note from="Developer" annotates="general" priority="2">ESP="Registro Envío"</note>
@@ -39902,11 +39912,6 @@
           <source>Email sent</source>
           <note from="Developer" annotates="general" priority="2">ESP="Enviado Email"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Emailsent - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 4064840916 - Field 2005627633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
-          <source>Email sent pending</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Pendiente Enviado Email"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field EmailsentPending - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 348912602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Fecha Mas Temprana</source>

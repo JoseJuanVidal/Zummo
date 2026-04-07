@@ -21881,6 +21881,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control GrupoCliente_btc - Property Caption</note>
           <target>Cliente Tipo</target>
         </trans-unit>
+        <trans-unit id="Page 528300531 - Control 2544651223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Grupo precio cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo precio cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Customer Change clasif. - Control GrupoPrecio - Property Caption</note>
+          <target>Grupo precio cliente</target>
+        </trans-unit>
         <trans-unit id="Page 528300531 - Control 2786305098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inside Sales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Inside Sales"</note>
@@ -22331,8 +22337,9 @@
         </trans-unit>
         <trans-unit id="Page 2254326384 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IT Projects</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESP="Proyectos IT"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM IT JIRA Projects - Property Caption</note>
+          <target>Proyectos IT</target>
         </trans-unit>
         <trans-unit id="Page 2254326384 - Control 1932627619 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Avisos</source>

@@ -12,10 +12,10 @@ pageextension 50116 "ZM PurchaseOrderList" extends "Purchase Order List"
             {
                 ApplicationArea = all;
             }
-            field(EmailsentPending; EmailsentPending)
-            {
-                ApplicationArea = all;
-            }
+            // field(EmailsentPending; EmailsentPending)
+            // {
+            //     ApplicationArea = all;
+            // }
             field("Motivo rechazo"; "Motivo rechazo")
             {
                 Caption = 'Comentario';
@@ -80,6 +80,25 @@ pageextension 50116 "ZM PurchaseOrderList" extends "Purchase Order List"
                             repeat
                                 Eventosbtc.CreateandUploadPurchOrderArchivePDF(PurchHeader);
                             Until PurchHeader.next() = 0;
+                end;
+            }
+            action(MarcarEnviado)
+            {
+                ApplicationArea = all;
+                Caption = 'Marcar Enviado', comment = 'ESP="Marcar Enviado"';
+                Image = SendConfirmation;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    lblConfirm: Label '¿Desea Marcar/Desmarcar como enviado?', comment = 'ESP="¿Desea Marcar/Desmarcar como enviado?"';
+                begin
+                    if confirm(lblConfirm) then begin
+                        Rec.Emailsent := not Rec.Emailsent;
+                        Rec.Modify();
+                        CurrPage.Update();
+                    end;
                 end;
             }
         }
