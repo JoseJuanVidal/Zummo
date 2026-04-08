@@ -20973,6 +20973,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea enviar la solicitud de Alta del producto %1 %2?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - NamedType lblRelease</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Method 4102746362 - NamedType 4091999560" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea pasar al histórico la Solicitud %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea pasar al histórico la Solicitud %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Method OnAction_Close - NamedType lblClose</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Method 2309435118 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea copiar valores por defecto de producto similar\ %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea copiar valores por defecto de producto similar\ %1 %2?"</note>
@@ -21147,6 +21152,11 @@
           <source>Traducciones</source>
           <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Translations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 2674503554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cerrar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cerrar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Close - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 502204962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comprobación Departamento</source>

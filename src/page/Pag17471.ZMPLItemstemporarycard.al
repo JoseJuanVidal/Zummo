@@ -683,6 +683,20 @@ page 17471 "ZM PL Items temporary card"
                     OnAction_Open();
                 end;
             }
+            action(Close)
+            {
+                ApplicationArea = All;
+                Caption = 'Cerrar', comment = 'ESP="Cerrar"';
+                Image = ReleaseDoc;
+                Promoted = true;
+                PromotedCategory = Process;
+                Visible = IsUserCreateItem;
+
+                trigger OnAction()
+                begin
+                    OnAction_Close();
+                end;
+            }
             action(SolicitudAlta)
             {
                 ApplicationArea = All;
@@ -1097,6 +1111,19 @@ page 17471 "ZM PL Items temporary card"
         // Rec.TestField("State Creation", Rec."State Creation"::Requested);
         if ItemsRegisterAprovals.ItemRegistratio_OpenRequested(Rec) then
             CurrPage.Update();
+    end;
+
+    local procedure OnAction_Close()
+    var
+        PostedItemstemporary: Record "Posted PL Items temporary";
+        lblClose: Label '¿Desea pasar al histórico la Solicitud %1?', comment = 'ESP="¿Desea pasar al histórico la Solicitud %1?"';
+    begin
+        if Confirm(lblClose, false, Rec."No.") then begin
+            PostedItemstemporary.Init();
+            PostedItemstemporary.TransferFields(Rec);
+            PostedItemstemporary.Insert();
+            Rec.Delete();
+        end
     end;
 
     local procedure Navigate_ProductionML()

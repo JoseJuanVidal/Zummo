@@ -23064,6 +23064,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - NamedType lblRelease</note>
           <target>¿Desea enviar la solicitud de Alta del producto %1 %2?</target>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Method 4102746362 - NamedType 4091999560" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea pasar al histórico la Solicitud %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea pasar al histórico la Solicitud %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Method OnAction_Close - NamedType lblClose</note>
+          <target>¿Desea pasar al histórico la Solicitud %1?</target>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Method 2309435118 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea copiar valores por defecto de producto similar\ %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea copiar valores por defecto de producto similar\ %1 %2?"</note>
@@ -23273,6 +23279,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Translations - Property Caption</note>
           <target>Traducciones</target>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 2674503554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cerrar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cerrar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Close - Property Caption</note>
+          <target>Cerrar</target>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 502204962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comprobación Departamento</source>
@@ -38542,6 +38554,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action ArchivarPedido - Method OnAction - NamedType lblConfirm</note>
           <target>¿Desea Archivar %1 PDF del pedidos de compra?</target>
         </trans-unit>
+        <trans-unit id="PageExtension 148744100 - Action 625130532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
+          <source>Marcar Enviado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Marcar Enviado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action MarcarEnviado - Property Caption</note>
+          <target>Marcar Enviado</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 148744100 - Action 625130532 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 148744100">
+          <source>¿Desea Marcar/Desmarcar como enviado?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Marcar/Desmarcar como enviado?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action MarcarEnviado - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea Marcar/Desmarcar como enviado?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 148744100 - Action 4166219763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
           <source>Register Send</source>
           <note from="Developer" annotates="general" priority="2">ESP="Registro Envío"</note>
@@ -44139,12 +44163,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Enviado Email"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Emailsent - Property Caption</note>
           <target>Enviado Email</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 4064840916 - Field 2005627633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
-          <source>Email sent pending</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Pendiente Enviado Email"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field EmailsentPending - Property Caption</note>
-          <target>Pendiente Enviado Email</target>
         </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 348912602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Fecha Mas Temprana</source>
