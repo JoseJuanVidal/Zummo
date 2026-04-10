@@ -19,6 +19,10 @@ page 17421 "Posted PL Items temporary list"
                 {
                     ApplicationArea = All;
                 }
+                field("Item No."; "Item No.")
+                {
+                    ApplicationArea = all;
+                }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;

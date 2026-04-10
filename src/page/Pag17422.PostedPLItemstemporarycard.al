@@ -21,6 +21,10 @@ page 17422 "Posted PL Items temporary card"
                     ApplicationArea = All;
                     ToolTip = 'Nº identificador del producto', comment = 'ESP="Nº identificador del producto"';
                 }
+                field("Item No."; "Item No.")
+                {
+                    ApplicationArea = all;
+                }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;

@@ -13,7 +13,7 @@ table 17427 "Posted PL Items temporary"
         }
         field(2; "Item No."; Code[20])
         {
-            Caption = 'No.', Comment = 'ESP="Nº"';
+            Caption = 'Item No.', Comment = 'ESP="Cód. producto"';
             TableRelation = Item;
             ValidateTableRelation = false;
         }

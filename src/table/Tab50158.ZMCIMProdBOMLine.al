@@ -74,6 +74,7 @@ table 50158 "ZM CIM Prod. BOM Line"
         field(19; "Routing Link Code"; Code[10])
         {
             Caption = 'Routing Link Code', Comment = 'ESP="Cód. conexión ruta"';
+            InitValue = '1';
         }
         field(20; "Scrap %"; Decimal)
         {

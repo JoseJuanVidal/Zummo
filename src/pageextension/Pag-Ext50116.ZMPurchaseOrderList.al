@@ -92,13 +92,17 @@ pageextension 50116 "ZM PurchaseOrderList" extends "Purchase Order List"
 
                 trigger OnAction()
                 var
-                    lblConfirm: Label '¿Desea Marcar/Desmarcar como enviado?', comment = 'ESP="¿Desea Marcar/Desmarcar como enviado?"';
+                    PurchaseHeader: record "Purchase Header";
+                    lblConfirm: Label '¿Desea Marcar/Desmarcar %1 pedidos como enviado?', comment = 'ESP="¿Desea Marcar/Desmarcar %1 pedidos como enviado?"';
                 begin
-                    if confirm(lblConfirm) then begin
-                        Rec.Emailsent := not Rec.Emailsent;
-                        Rec.Modify();
-                        CurrPage.Update();
-                    end;
+                    CurrPage.SetSelectionFilter(PurchaseHeader);
+                    if confirm(lblConfirm, false, PurchaseHeader.Count) then
+                        if PurchaseHeader.FindFirst() then
+                            repeat
+                                PurchaseHeader.Emailsent := not PurchaseHeader.Emailsent;
+                                PurchaseHeader.Modify();
+                                CurrPage.Update();
+                            until PurchaseHeader.Next() = 0;
                 end;
             }
         }

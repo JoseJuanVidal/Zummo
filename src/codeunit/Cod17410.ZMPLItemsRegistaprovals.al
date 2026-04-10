@@ -509,19 +509,21 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         FldRef: FieldRef;
         i: Integer;
     begin
-        if not (ItemTemporary."Request Type" in [ItemTemporary."Request Type"::Change]) then
-            exit;
-        RecRef.GetTable(ItemTemporary);
-        IF RecRef.ISTEMPORARY THEN
-            EXIT;
+        if (ItemTemporary."Request Type" in [ItemTemporary."Request Type"::Change]) or
+            (ItemTemporary."State Creation" in [ItemTemporary."State Creation"::Released, ItemTemporary."State Creation"::"Create Pendindg"]) then begin
 
-        FOR i := 1 TO RecRef.FIELDCOUNT DO BEGIN
-            FldRef := RecRef.FIELDINDEX(i);
-            IF HasValue(FldRef) THEN
-                IF IsNormalField(FldRef) THEN
-                    IF ItemTemporary_IsLogActive(RecRef.NUMBER, FldRef.NUMBER) THEN
-                        InsertLogEntry(FldRef, FldRef, RecRef, true);
-        END;
+            RecRef.GetTable(ItemTemporary);
+            IF RecRef.ISTEMPORARY THEN
+                EXIT;
+
+            FOR i := 1 TO RecRef.FIELDCOUNT do begin
+                FldRef := RecRef.FIELDINDEX(i);
+                IF HasValue(FldRef) THEN
+                    IF IsNormalField(FldRef) THEN
+                        IF ItemTemporary_IsLogActive(RecRef.NUMBER, FldRef.NUMBER) THEN
+                            InsertLogEntry(FldRef, FldRef, RecRef, true);
+            end;
+        end;
     end;
 
     procedure LogModification(var ItemTemporary: Record "ZM PL Items Temporary"; fieldNumber: integer)

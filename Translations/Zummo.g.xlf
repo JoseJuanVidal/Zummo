@@ -6264,8 +6264,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Item Disc. Group - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº"</note>
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Item No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 65514489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -35134,8 +35134,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action MarcarEnviado - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 148744100 - Action 625130532 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 148744100">
-          <source>¿Desea Marcar/Desmarcar como enviado?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Marcar/Desmarcar como enviado?"</note>
+          <source>¿Desea Marcar/Desmarcar %1 pedidos como enviado?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Marcar/Desmarcar %1 pedidos como enviado?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM PurchaseOrderList - Action MarcarEnviado - Method OnAction - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="PageExtension 148744100 - Action 4166219763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">

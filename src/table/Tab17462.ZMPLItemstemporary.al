@@ -2092,6 +2092,7 @@ table 17462 "ZM PL Items Temporary"
         ItemApprovalDepartment: Record "ZM Item Approval Department";
         RefRecord: RecordRef;
     begin
+        SetupPreItemReg.Get();
         RefRecord.GetTable(Rec);
         ItemApprovalDepartment.Reset();
         ItemApprovalDepartment.SetRange("Table No.", RefRecord.Number);
@@ -2112,8 +2113,9 @@ table 17462 "ZM PL Items Temporary"
                     ItemApprovalDepartment.Insert();
                     Pending := true;
                 end else
-                    if ItemApprovalDepartment."Request Date" = 0D then
-                        Pending := true;
+                    if not (ItemApprovalDepartment.Department <> SetupPreItemReg."Last Department") then
+                        if ItemApprovalDepartment."Request Date" = 0D then
+                            Pending := true;
             until ItemSetupApproval.Next() = 0;
     end;
 
@@ -2551,7 +2553,16 @@ table 17462 "ZM PL Items Temporary"
         Rec."Purch. Category" := tmpItemRequested."Purch. Category";
         Rec."Purch. SubCategory" := tmpItemRequested."Purch. SubCategory";
         Rec."Production BOM No." := tmpItemRequested."Production BOM No.";
-        rec.Modify();
+        Rec."Vendor Item No." := tmpItemRequested."Vendor Item No.";
+        Rec."Vendor No." := tmpItemRequested."Vendor No.";
+        Rec.Manufacturer := tmpItemRequested.Manufacturer;
+        Rec."Lead Time Calculation" := tmpItemRequested."Lead Time Calculation";
+        Rec."Manufacturing Policy" := tmpItemRequested."Manufacturing Policy";
+        Rec."Routing No." := tmpItemRequested."Routing No.";
+        Rec."Flushing Method" := tmpItemRequested."Flushing Method";
+        Rec."Assembly Policy" := tmpItemRequested."Assembly Policy";
+        Rec."Assembly BOM" := tmpItemRequested."Assembly BOM";
+        Rec.Modify();
     end;
 
     procedure CheckIsApproved(DepartmentNo: code[20]): Boolean
