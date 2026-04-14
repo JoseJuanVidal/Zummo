@@ -170,6 +170,26 @@ page 17471 "ZM PL Items temporary card"
                         end;
                     }
                 }
+                field("Tipo de Cambio"; "Tipo de Cambio")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Indicar si existe un cambio o sustitución en las Listas de Materiales.'
+                        , comment = 'ESP="Indicar si existe un cambio o sustitución en las Listas de Materiales."';
+
+                    trigger OnValidate()
+                    begin
+                        SustituirLM();
+                    end;
+                }
+            }
+            group(changesLMItems)
+            {
+                Caption = 'Sustituye a productos', comment = 'ESP="Sustituye a productos"';
+                Visible = ShowChangesLM;
+                part("PL Item Change LM"; "PL Item Change LM")
+                {
+                    SubPageLink = "Request No." = field("No.");
+                }
             }
             group(Quality)
             {
@@ -989,6 +1009,7 @@ page 17471 "ZM PL Items temporary card"
         ChangeField: array[100] of Boolean;
         ShowSEBCodes: Boolean;
         ShowSections: Boolean;
+        ShowChangesLM: Boolean;
         IsUserApproval: Boolean;
         IsUserCreateItem: Boolean;
         IsUserCreateITBID: Boolean;
@@ -1711,5 +1732,16 @@ page 17471 "ZM PL Items temporary card"
 
     end;
 
+    local procedure SustituirLM()
+    var
+        myInt: Integer;
+    begin
+        case Rec."Tipo de Cambio" of
+            Rec."Tipo de Cambio"::" ":
+                ShowChangesLM := false;
+            else
+                ShowChangesLM := true;
 
+        end;
+    end;
 }

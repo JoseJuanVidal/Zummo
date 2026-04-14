@@ -6073,6 +6073,41 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Online Drive Item - Field webUrl - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4029039226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sustitución en Lista Materiales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustitución en Lista Materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PL Item Change LM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029039226 - Field 2279323338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Action</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PL Item Change LM - Field Action - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029039226 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PL Item Change LM - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029039226 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PL Item Change LM - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029039226 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Línea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PL Item Change LM - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029039226 - Field 3196119024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad por</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PL Item Change LM - Field Quantity per - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029039226 - Field 3959455890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Request No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Solicitud"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PL Item Change LM - Field Request No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - NamedType 3804247692" size-unit="char" translate="yes" xml:space="preserve">
           <source>El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?</source>
           <note from="Developer" annotates="general" priority="2">ESP="El producto %1 %2 tiene una lista de ensamblado o producción,¿Desea insertar esta también?"</note>
@@ -11953,6 +11988,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ciclo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Time Bucket - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 2102708812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo de Cambio L.M.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo de Cambio L.M."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Tipo de Cambio - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4269697522 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo"</note>
@@ -16953,6 +16993,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Dato"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page PedirDatoZummo - Control varDato - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4029039226 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sustitución en Lista Materiales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustitución en Lista Materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PL Item Change LM - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2494729169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Item Department approved</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. Aprobaciones Departamento"</note>
@@ -21013,6 +21058,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="SEB Codes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control SEBCodes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 3485227430 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sustituye a productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustituye a productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control changesLMItems - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Control 3188276999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Clasification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
@@ -21112,6 +21162,11 @@
           <source>Reason</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control WorkDescription - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 2102708812 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicar si existe un cambio o sustitución en las Listas de Materiales.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar si existe un cambio o sustitución en las Listas de Materiales."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control Tipo de Cambio - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 296798300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Change Log Entries</source>

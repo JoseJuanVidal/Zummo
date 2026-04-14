@@ -1280,6 +1280,10 @@ table 17462 "ZM PL Items Temporary"
             CalcFormula = count("ZM CIM Prod. BOM Line" where("Production BOM No." = field("Production BOM No.")));
             Editable = false;
         }
+        field(50950; "Tipo de Cambio"; Enum "Control de Cambios Item")
+        {
+            Caption = 'Tipo de Cambio L.M.', comment = 'ESP="Tipo de Cambio L.M."';
+        }
         field(99000750; "Routing No."; Code[20])
         {
             Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';
@@ -2247,6 +2251,8 @@ table 17462 "ZM PL Items Temporary"
                         CreateNewItem();
         end;
 
+        // UpdateItemUnitofMeasure();
+
         UpdateItemTranslation();
 
         UpdateItemLM();
@@ -2278,6 +2284,11 @@ table 17462 "ZM PL Items Temporary"
 
         // actualizamos datos auxiliares,
         ItemUnitofMeasure();
+        if Item."Purch. Unit of Measure" = '' then
+            Item."Purch. Unit of Measure" := Item."Base Unit of Measure";
+        if Item."Sales Unit of Measure" = '' then
+            Item."Sales Unit of Measure" := Item."Base Unit of Measure";
+        Item.Modify();
     end;
 
     local procedure ItemUnitofMeasure()
