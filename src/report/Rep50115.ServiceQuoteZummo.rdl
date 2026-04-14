@@ -965,7 +965,6 @@
                                             </Style>
                                           </Textbox>
                                           <ColSpan>8</ColSpan>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -1314,38 +1313,45 @@
                                             <ZIndex>8</ZIndex>
                                             <Visibility>
                                               <Hidden>=Code.SetData(Cstr(Fields!CustAddr1.Value) + Chr(177) + 
-Cstr(Fields!CustAddr2.Value) + Chr(177) + 
-Cstr(Fields!CustAddr3.Value) + Chr(177) + 
-Cstr(Fields!CustAddr4.Value) + Chr(177) + 
-Cstr(Fields!CustAddr5.Value) + Chr(177) + 
-Cstr(Fields!CustAddr6.Value) + Chr(177) + 
-Cstr(Fields!CompanyAddr1.Value) + Chr(177) + 
-Cstr(Fields!CompanyAddr2.Value) + Chr(177) + 
-Cstr(Fields!CompanyAddr3.Value) + Chr(177) + 
-Cstr(Fields!CompanyAddr4.Value) + Chr(177) + 
-Cstr(Fields!CompanyAddr5.Value) + Chr(177) + 
-Cstr(Fields!CompanyAddr6.Value) + Chr(177) + 
-Cstr(Fields!PhoneNo_ServHeader.Value) + Chr(177) + 
-Cstr(Fields!EMail_ServHeader.Value) + Chr(177) + 
-Cstr(Fields!BilltoName_ServHeader.Value) + Chr(177) + 
-Cstr(Fields!No1_ServHeader.Value) + Chr(177) + 
-Cstr(Fields!Status_ServHeader.Value) + Chr(177) + 
-Cstr(Fields!OrderDate_ServHeader.Value) + Chr(177) + 
-Cstr(Fields!OrderConfirmationCopyText.Value) + Chr(177) + 
-Cstr(Fields!CompanyInfoPhoneNo.Value) + Chr(177) + 
-Cstr(Fields!HomePage.Value) + Chr(177) + 
-Cstr(Fields!Email.Value) + Chr(177) + 
-Cstr(Format(Fields!OrderTime_ServHeader.Value,"T")) + Chr(177) + 
-Cstr(Fields!EmailCaption.Value) + Chr(177) + 
-Cstr(Fields!CompanyInfoPhoneNoCaption.Value) + Chr(177) + 
-Cstr(Fields!InvoicetoCaption.Value) + Chr(177) + 
-Cstr(Fields!No1_ServHeaderCaption.Value) + Chr(177) + 
-Cstr(Fields!Status_ServHeaderCaption.Value) + Chr(177) + 
-Cstr(Fields!OrderTime_ServHeaderCaption.Value) + Chr(177) + 
-Cstr(Fields!SerHdrOrderDateCaption.Value) + Chr(177) + 
-Cstr(Fields!PageCaption.Value) + Chr(177) + 
-Cstr(Fields!HomePageCaption.Value) + Chr(177) + Cstr(Fields!Service_Order_Type.Value) + Chr(177) + Cstr(Fields!TipoPedidoNivel2_btc.Value) + Chr(177) + Cstr(Fields!TipoPedidoNivel3_btc.Value) + Chr(177) + Cstr(Fields!Service_Order_Type_Caption.Value) + Chr(177) + Cstr(Fields!TipoPedidoNivel2_btc_Caption.Value) + Chr(177) + Cstr(Fields!TipoPedidoNivel3_btc_Caption.Value) + Chr(177) + Cstr(Fields!CodAnterior_btc.Value) + Chr(177) + Cstr(Fields!CodAnterior_btc_Caption.Value)
-, 1)</Hidden>
+                                                Cstr(Fields!CustAddr2.Value) + Chr(177) + 
+                                                Cstr(Fields!CustAddr3.Value) + Chr(177) + 
+                                                Cstr(Fields!CustAddr4.Value) + Chr(177) + 
+                                                Cstr(Fields!CustAddr5.Value) + Chr(177) + 
+                                                Cstr(Fields!CustAddr6.Value) + Chr(177) + 
+                                                Cstr(Fields!CompanyAddr1.Value) + Chr(177) + 
+                                                Cstr(Fields!CompanyAddr2.Value) + Chr(177) + 
+                                                Cstr(Fields!CompanyAddr3.Value) + Chr(177) + 
+                                                Cstr(Fields!CompanyAddr4.Value) + Chr(177) + 
+                                                Cstr(Fields!CompanyAddr5.Value) + Chr(177) + 
+                                                Cstr(Fields!CompanyAddr6.Value) + Chr(177) + 
+                                                Cstr(Fields!PhoneNo_ServHeader.Value) + Chr(177) + 
+                                                Cstr(Fields!EMail_ServHeader.Value) + Chr(177) + 
+                                                Cstr(Fields!BilltoName_ServHeader.Value) + Chr(177) + 
+                                                Cstr(Fields!No1_ServHeader.Value) + Chr(177) + 
+                                                Cstr(Fields!Status_ServHeader.Value) + Chr(177) + 
+                                                Cstr(Fields!OrderDate_ServHeader.Value) + Chr(177) + 
+                                                Cstr(Fields!OrderConfirmationCopyText.Value) + Chr(177) + 
+                                                Cstr(Fields!CompanyInfoPhoneNo.Value) + Chr(177) + 
+                                                Cstr(Fields!HomePage.Value) + Chr(177) + 
+                                                Cstr(Fields!Email.Value) + Chr(177) + 
+                                                Cstr(Format(Fields!OrderTime_ServHeader.Value,"T")) + Chr(177) + 
+                                                Cstr(Fields!EmailCaption.Value) + Chr(177) + 
+                                                Cstr(Fields!CompanyInfoPhoneNoCaption.Value) + Chr(177) + 
+                                                Cstr(Fields!InvoicetoCaption.Value) + Chr(177) + 
+                                                Cstr(Fields!No1_ServHeaderCaption.Value) + Chr(177) + 
+                                                Cstr(Fields!Status_ServHeaderCaption.Value) + Chr(177) + 
+                                                Cstr(Fields!OrderTime_ServHeaderCaption.Value) + Chr(177) + 
+                                                Cstr(Fields!SerHdrOrderDateCaption.Value) + Chr(177) + 
+                                                Cstr(Fields!PageCaption.Value) + Chr(177) + 
+                                                Cstr(Fields!HomePageCaption.Value) + Chr(177) + Cstr(Fields!Service_Order_Type.Value) + Chr(177) + 
+                                                Cstr(Fields!TipoPedidoNivel2_btc.Value) + Chr(177) + 
+                                                Cstr(Fields!TipoPedidoNivel2_btc.Value) + Chr(177) + 
+                                                Cstr(Fields!Service_Order_Type_Caption.Value) + Chr(177) + 
+                                                Cstr(Fields!TipoPedidoNivel2_btc_Caption.Value) + Chr(177) + 
+                                                Cstr(Fields!TipoPedidoNivel2_btc_Caption.Value) + Chr(177) + 
+                                                Cstr(Fields!CodAnterior_btc.Value) + Chr(177) + 
+                                                Cstr(Fields!CodAnterior_btc_Caption.Value)
+                                              , 1)</Hidden>
                                             </Visibility>
                                             <Style>
                                               <VerticalAlign>Middle</VerticalAlign>
@@ -4167,7 +4173,13 @@ Cstr(Fields!HomePageCaption.Value) + Chr(177) + Cstr(Fields!Service_Order_Type.V
               <Height>11pt</Height>
               <Width>3.63591cm</Width>
               <ZIndex>39</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
@@ -4249,7 +4261,13 @@ Cstr(Fields!HomePageCaption.Value) + Chr(177) + Cstr(Fields!Service_Order_Type.V
               <Height>11pt</Height>
               <Width>2.70365cm</Width>
               <ZIndex>42</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
