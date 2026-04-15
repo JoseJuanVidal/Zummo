@@ -1284,6 +1284,10 @@ table 17462 "ZM PL Items Temporary"
         {
             Caption = 'Tipo de Cambio L.M.', comment = 'ESP="Tipo de Cambio L.M."';
         }
+        field(50951; "Tipo aprovisionamiento"; Enum "Tipo de Aprovisionamiento")
+        {
+            Caption = 'Tipo aprovisionamiento', comment = 'ESP="Tipo aprovisionamiento"';
+        }
         field(99000750; "Routing No."; Code[20])
         {
             Caption = 'Routing No.', Comment = 'ESP="Nº ruta"';
@@ -2573,6 +2577,8 @@ table 17462 "ZM PL Items Temporary"
         Rec."Flushing Method" := tmpItemRequested."Flushing Method";
         Rec."Assembly Policy" := tmpItemRequested."Assembly Policy";
         Rec."Assembly BOM" := tmpItemRequested."Assembly BOM";
+        Rec."Net Weight" := tmpItemRequested."Net Weight";
+        Rec."Gross Weight" := tmpItemRequested."Gross Weight";
         Rec.Modify();
     end;
 

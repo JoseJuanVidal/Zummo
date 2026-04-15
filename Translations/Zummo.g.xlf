@@ -6098,6 +6098,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Línea"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table PL Item Change LM - Field Line No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4029039226 - Field 1109529240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre L.M."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PL Item Change LM - Field Production BOM Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4029039226 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. L.M. Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PL Item Change LM - Field Production BOM No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4029039226 - Field 3196119024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cantidad por</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad por"</note>
@@ -11987,6 +11997,11 @@
           <source>Time Bucket</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ciclo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Time Bucket - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 932762057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo aprovisionamiento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo aprovisionamiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Tipo aprovisionamiento - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 2102708812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tipo de Cambio L.M.</source>

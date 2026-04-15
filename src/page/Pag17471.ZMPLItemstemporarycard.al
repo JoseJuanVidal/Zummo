@@ -154,6 +154,22 @@ page 17471 "ZM PL Items temporary card"
                 {
                     ApplicationArea = all;
                 }
+                field("Tipo de Cambio"; "Tipo de Cambio")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Indicar si existe un cambio o sustitución en las Listas de Materiales.'
+                        , comment = 'ESP="Indicar si existe un cambio o sustitución en las Listas de Materiales."';
+
+                    trigger OnValidate()
+                    begin
+                        SustituirLM();
+                        CurrPage.Update();
+                    end;
+                }
+                field("Tipo aprovisionamiento"; "Tipo aprovisionamiento")
+                {
+                    ApplicationArea = all;
+                }
                 group(Motivo)
                 {
                     field(WorkDescription; WorkDescription)
@@ -170,21 +186,12 @@ page 17471 "ZM PL Items temporary card"
                         end;
                     }
                 }
-                field("Tipo de Cambio"; "Tipo de Cambio")
-                {
-                    ApplicationArea = all;
-                    ToolTip = 'Indicar si existe un cambio o sustitución en las Listas de Materiales.'
-                        , comment = 'ESP="Indicar si existe un cambio o sustitución en las Listas de Materiales."';
 
-                    trigger OnValidate()
-                    begin
-                        SustituirLM();
-                    end;
-                }
             }
             group(changesLMItems)
             {
                 Caption = 'Sustituye a productos', comment = 'ESP="Sustituye a productos"';
+                ShowCaption = false;
                 Visible = ShowChangesLM;
                 part("PL Item Change LM"; "PL Item Change LM")
                 {
@@ -997,6 +1004,7 @@ page 17471 "ZM PL Items temporary card"
         WorkDescription := GetWorkDescription;
         CheckActivesFields();
         RefreshUserActions();
+        SustituirLM();
     end;
 
     var
@@ -1741,7 +1749,6 @@ page 17471 "ZM PL Items temporary card"
                 ShowChangesLM := false;
             else
                 ShowChangesLM := true;
-
         end;
     end;
 }

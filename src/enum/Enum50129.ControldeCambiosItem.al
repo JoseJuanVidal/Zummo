@@ -4,4 +4,6 @@ enum 50129 "Control de Cambios Item"
 
     value(0; " ") { }
     value(1; "Sustituir a") { }
+    value(2; "Añadir a") { }
+    value(3; "Eliminar de") { }
 }

@@ -25,6 +25,19 @@ page 17480 "PL Item Change LM"
                     Visible = false;
                     Editable = false;
                 }
+                field("Production BOM No."; "Production BOM No.")
+                {
+                    ApplicationArea = all;
+
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update();
+                    end;
+                }
+                field("Production BOM Name"; "Production BOM Name")
+                {
+                    ApplicationArea = all;
+                }
                 field("Item No."; "Item No.")
                 {
                     ApplicationArea = all;

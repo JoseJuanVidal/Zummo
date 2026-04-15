@@ -16,7 +16,13 @@ table 17463 "PL Item Change LM"
             DataClassification = CustomerContent;
             Caption = 'Line No.', comment = 'ESP="Nº Línea"';
         }
-        field(3; "Item No."; code[20])
+        field(3; "Production BOM No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Production BOM No.', comment = 'ESP="Cód. L.M. Producción"';
+            TableRelation = "Production BOM Header";
+        }
+        field(4; "Item No."; code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Item No.', comment = 'ESP="Cód. producto"';
@@ -27,12 +33,19 @@ table 17463 "PL Item Change LM"
                 Validate_ItemNo();
             end;
         }
-        field(4; Description; Text[100])
+        field(5; Description; Text[100])
         {
             Caption = 'Description', comment = 'ESP="Descripción"';
             Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup(item.Description where("No." = field("Item No.")));
+        }
+        field(6; "Production BOM Name"; text[100])
+        {
+            Caption = 'Production BOM Name', comment = 'ESP="Nombre L.M."';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Production BOM Header".Description where("No." = field("Production BOM No.")));
+            Editable = false;
         }
         field(10; Action; Enum "Cambio LM Accion linea")
         {

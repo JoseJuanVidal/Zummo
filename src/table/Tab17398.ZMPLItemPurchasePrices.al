@@ -129,6 +129,8 @@ table 17398 "ZM PL Item Purchase Prices"
             Rec."Date/Time Creation" := CreateDateTime(Today(), Time());
         if "Status Approval" in [Rec."Status Approval"::" "] then
             Rec."Status Approval" := Rec."Status Approval"::Pending;
+        if Rec."Unit of Measure Code" = '' then
+            UpdateUnitOfMeasure();
         // comprobamos duplicados.
         CheckRecIsDuplicate();
     end;
@@ -324,5 +326,19 @@ table 17398 "ZM PL Item Purchase Prices"
             ItemPurchasePrice."Status Approval" := ItemPurchasePrice."Status Approval"::Pending;
             ItemPurchasePrice.Insert()
         end
+    end;
+
+    local procedure UpdateUnitOfMeasure()
+    var
+        Item: Record Item;
+        ItemsTemporary: Record "ZM PL Items Temporary";
+    begin
+        if Item.Get(Rec."Item No.") then begin
+            Rec."Unit of Measure Code" := Item."Base Unit of Measure";
+        end else begin
+            ItemsTemporary.SetRange("Item No.", Rec."Item No.");
+            if ItemsTemporary.FindLast() then
+                Rec."Unit of Measure Code" := ItemsTemporary."Base Unit of Measure";
+        end;
     end;
 }
