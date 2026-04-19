@@ -14,6 +14,16 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                 StyleExpr = StyleExp;
                 Editable = false;
             }
+            field("Unit Cost"; "Unit Cost")
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+            field("Costing Method"; "Costing Method")
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
             field(Inventory; Inventory)
             {
                 Caption = 'Inventario', comment = 'ESP="Inventario"';

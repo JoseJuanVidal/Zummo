@@ -43617,11 +43617,29 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field Blocked - Property Caption</note>
           <target>Bloqueado</target>
         </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 2165769856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source>Costing Method</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Valoración existencias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field Costing Method - Property Caption</note>
+          <target>Valoración existencias</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 2165769856 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source>FIFO,LIFO,Specific,Average,Standard</source>
+          <note from="Developer" annotates="general" priority="2">ESP="FIFO,LIFO,Especial,Medio,Estándar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field Costing Method - Property OptionCaption</note>
+          <target>FIFO,LIFO,Especial,Medio,Estándar</target>
+        </trans-unit>
         <trans-unit id="TableExtension 429385547 - Field 2751547137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
           <source>Ultimo coste directo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ultimo coste directo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastUnitCost - Property Caption</note>
           <target>Ultimo coste directo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 381961415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source>Unit Cost</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste unitario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field Unit Cost - Property Caption</note>
+          <target>Coste unitario</target>
         </trans-unit>
         <trans-unit id="TableExtension 3520316455 - Field 3592576802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2430374758">
           <source>Cód. Texto Factura</source>

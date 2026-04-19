@@ -1607,22 +1607,34 @@ table 17462 "ZM PL Items Temporary"
     procedure Navigate_ProductionML()
     var
         ZMProdBOM: record "ZM CIM Prod. BOM Header";
+        ZMProdBOMLine: record "ZM CIM Prod. BOM Line";
         ZMProductionBOMList: page "ZM CIM Production BOM List";
     begin
-        if Rec."Production BOM No." = '' then begin
-            Rec."Production BOM No." := Rec."Item No.";
-            Rec.Modify();
-        end;
+
         if not ZMProdBOM.Get(Rec."Production BOM No.") then begin
             ZMProdBOM.Init();
-            ZMProdBOM."No." := Rec."Production BOM No.";
+            ZMProdBOM."No." := Rec."Item No.";
             ZMProdBOM.Description := Rec.Description;
             ZMProdBOM."Unit of Measure Code" := Rec."Base Unit of Measure";
             ZMProdBOM.Insert();
         end;
-        ZMProdBOM.SetRange("No.", Rec."Production BOM No.");
+        ZMProdBOM.SetRange("No.", Rec."Item No.");
         ZMProductionBOMList.SetTableView(ZMProdBOM);
-        ZMProductionBOMList.Run();
+        ZMProductionBOMList.RunModal();
+        if Rec."Production BOM No." = '' then begin
+            ZMProdBOMLine.SetRange("Production BOM No.", Rec."Item No.");
+            if ZMProdBOMLine.FindFirst() then begin
+                Rec."Production BOM No." := Rec."Item No.";
+                Rec.Modify();
+            end else begin
+                // eliminamos la cabecera y el valor de la línea
+                if ZMProdBOM.Get(Rec."Production BOM No.") then
+                    ZMProdBOM.Delete();
+                Rec."Production BOM No." := '';
+                Rec.Modify();
+            end;
+        end;
+
     end;
 
     procedure Navigate_PurchasesPrices()

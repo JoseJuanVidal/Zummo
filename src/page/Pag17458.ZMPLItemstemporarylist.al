@@ -128,6 +128,17 @@ page 17458 "ZM PL Items temporary list"
                 }
             }
         }
+        area(factboxes)
+        {
+            systempart(Links; Links)
+            {
+                ApplicationArea = RecordLinks;
+            }
+            systempart(Notes; Notes)
+            {
+                ApplicationArea = Notes;
+            }
+        }
     }
 
     actions

@@ -678,6 +678,17 @@ page 17471 "ZM PL Items temporary card"
                 }
             }
         }
+        area(factboxes)
+        {
+            systempart(Links; Links)
+            {
+                ApplicationArea = RecordLinks;
+            }
+            systempart(Notes; Notes)
+            {
+                ApplicationArea = Notes;
+            }
+        }
     }
 
     actions
