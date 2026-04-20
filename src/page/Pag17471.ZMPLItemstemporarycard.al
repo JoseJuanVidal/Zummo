@@ -680,10 +680,14 @@ page 17471 "ZM PL Items temporary card"
         }
         area(factboxes)
         {
-            systempart(Links; Links)
+            part("ZM SH Record Link Sharep. list"; "ZM SH Record Link Sharep. list")
             {
-                ApplicationArea = RecordLinks;
+                SubPageLink = "Document No." = field("No.");
             }
+            // systempart(Links; Links)
+            // {
+            //     ApplicationArea = RecordLinks;
+            // }
             systempart(Notes; Notes)
             {
                 ApplicationArea = Notes;
@@ -879,6 +883,25 @@ page 17471 "ZM PL Items temporary card"
                     end;
                 }
             }
+            group(Documents)
+            {
+                Caption = 'Documents', comment = 'ESP="Documentos"';
+                action(UploadFile)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Upload File', comment = 'ESP="Cargar Documento"';
+                    Image = MoveUp;
+                    Promoted = true;
+                    PromotedCategory = Category5;
+
+                    trigger OnAction()
+                    begin
+                        clear(cduEventosBTC);
+                        cduEventosBTC.UploadSolicitudaltaArchivePDF(Rec);
+                    end;
+
+                }
+            }
         }
         area(Navigation)
         {
@@ -1019,6 +1042,7 @@ page 17471 "ZM PL Items temporary card"
     end;
 
     var
+        cduEventosBTC: Codeunit Eventos_btc;
         Item: Record Item;
         ItemSetupApproval: Record "ZM PL Item Setup Approval";
         ItemSetupDepartment: Record "ZM PL Item Setup Department";

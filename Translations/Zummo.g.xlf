@@ -12143,6 +12143,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Max. Digitos Cód. producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field Max. Digits Item No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 988243340 - Field 280465882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OAuth Request Archive Folder</source>
+          <note from="Developer" annotates="general" priority="2">ESP="OAuth Carpeta Archivo Solicitud"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field OAuth Request Arch. Folder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 988243340 - Field 385197896 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>OAuth Request Archive</source>
+          <note from="Developer" annotates="general" priority="2">ESP="OAuth Archivo Solicitud"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Setup Item registration - Field OAuth Request Archive - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 988243340 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12772,6 +12782,11 @@
           <source>#</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method UpdateTableFieldName - NamedType lblControl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1358165814 - Method 2183788983 - NamedType 2275064652" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Eventos_btc - Method UploadSolicitudaltaArchivePDF - NamedType Dialogtitle</note>
         </trans-unit>
         <trans-unit id="Codeunit 1986021836 - Method 2780101169 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
           <source>Producto: #1#############################\Nivel: #2#############################\Componente: #3#############################</source>
@@ -21228,6 +21243,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cerrar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Close - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 1139572727 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Upload File</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cargar Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action UploadFile - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Action 502204962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comprobación Departamento</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comprobación Departamento"</note>
@@ -21279,8 +21304,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Print - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3858912784 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New,Process,Report,Navigate,Setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Configuración"</note>
+          <source>New,Process,Report,Navigate,Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Información,Documentos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Property PromotedActionCategories</note>
         </trans-unit>
         <trans-unit id="Page 3858912784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -21338,6 +21363,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action Translations - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Documentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3858912784 - Action 1139572727 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Upload File</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cargar Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary list - Action UploadFile - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3858912784 - Action 3096908298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Solicitud Alta</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solicitud Alta/Actualización"</note>
@@ -21382,6 +21417,11 @@
           <source>Number Series</source>
           <note from="Developer" annotates="general" priority="2">ESP="Serie numérica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Control SerieNos - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 988243340 - Control 2060068491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sharepoint</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sharepoint"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Setup Item registration - Control Sharepoint - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 988243340 - Action 401669501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Conf. Departamentos Alta Productos</source>

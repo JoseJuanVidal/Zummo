@@ -58,6 +58,18 @@ table 17412 "ZM PL Setup Item registration"
             Caption = 'Ultimo Departamento lanzamiento', comment = 'ESP="Ultimo Departamento lanzamiento"';
             TableRelation = "ZM PL Item Setup Department".Code;
         }
+        field(200; "OAuth Request Archive"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'OAuth Request Archive', comment = 'ESP="OAuth Archivo Solicitud"';
+            TableRelation = "ZM OAuth 2.0 Application".Code;
+        }
+        field(210; "OAuth Request Arch. Folder"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'OAuth Request Archive Folder', comment = 'ESP="OAuth Carpeta Archivo Solicitud"';
+            TableRelation = "ZM OAuth20Application Folders".Code where("Application Code" = field("OAuth Request Archive"));
+        }
     }
 
     keys

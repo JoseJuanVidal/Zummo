@@ -61,6 +61,18 @@ page 17413 "ZM PL Setup Item registration"
                     ApplicationArea = all;
                 }
             }
+            group(Sharepoint)
+            {
+                Caption = 'Sharepoint', comment = 'ESP="Sharepoint"';
+                field("OAuth Request Archive"; "OAuth Request Archive")
+                {
+                    ApplicationArea = all;
+                }
+                field("OAuth Request Arch. Folder"; "OAuth Request Arch. Folder")
+                {
+                    ApplicationArea = all;
+                }
+            }
         }
     }
 

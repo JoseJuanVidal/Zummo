@@ -1,12 +1,13 @@
 page 17382 "ZM SH Record Link Sharep. list"
 {
     Caption = 'Sharepoint Documents', comment = 'ESP="Documentos Sharepoint"';
-    PageType = List;
+    PageType = ListPart;
     UsageCategory = None;
     SourceTable = "ZM SH Record Link Sharepoint";
     InsertAllowed = false;
     ModifyAllowed = false;
-    Editable = false;
+    DeleteAllowed = true;
+    // Editable = false;
 
     layout
     {
@@ -26,10 +27,12 @@ page 17382 "ZM SH Record Link Sharep. list"
                 field(Description; Description)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("Document No."; "Document No.")
                 {
                     ApplicationArea = all;
+                    Visible = false;
 
                     trigger OnDrillDown()
                     begin

@@ -171,8 +171,8 @@ table 17380 "ZM SH Record Link Sharepoint"
             Error(lblError, FileName, OAuth20Application.RootFolderID, OAuth20ApplicationFolders.FolderName);
     end;
 
-    procedure UploadFilefromStreamOAut(Record_id: RecordId; SharepointConnection: text; RootFolderID: text; FolderID: text; FileName: Text;
-        INStream: InStream; var FileURL: text): Boolean
+    procedure UploadFilefromStreamOAut(Record_id: RecordId; SharepointConnection: text; RootFolderID: text; FolderID: text; FileName: Text; DocumentoNo: code[50];
+        INStream: InStream; var TempOnlineDriveItem: Record "Online Drive Item"): Boolean
     var
         RecordLinkSharepoint: Record "ZM SH Record Link Sharepoint";
         FileManagement: Codeunit "File Management";
@@ -182,19 +182,19 @@ table 17380 "ZM SH Record Link Sharepoint"
         OAuth20Application.Get(SharepointConnection);
         AccessToken := SharepointAppHelper.GetAccessToken(SharepointConnection);
         if SharepointAppHelper.UploadFolderFile(AccessToken, OAuth20Application.RootFolderID, '', FolderID, FileName, INStream, OnlineDriveItem) then begin
-            // RecordLinkSharepoint.Init();
-            // RecordLinkSharepoint.id := CreateGuid();
-            // RecordLinkSharepoint."Application Code" := SharepointConnection;
-            // RecordLinkSharepoint."Record ID" := Record_id;
-            // RecordLinkSharepoint.URL := copystr(OnlineDriveItem.webUrl, 1, MaxStrLen(RecordLinkSharepoint.URL));
-            // RecordLinkSharepoint.Name := FileName;
-            // RecordLinkSharepoint.Description := FileName;
-            // RecordLinkSharepoint.driveId := OnlineDriveItem.driveId;
-            // RecordLinkSharepoint.fileId := OnlineDriveItem.id;
-            // RecordLinkSharepoint."Document No." := copystr(Name, 1, MaxStrLen(RecordLinkSharepoint."Document No."));
-            // RecordLinkSharepoint."File Name" := FileName;
-            // RecordLinkSharepoint.Insert(true);
-            FileURL := OnlineDriveItem.webUrl;
+            RecordLinkSharepoint.Init();
+            RecordLinkSharepoint.id := CreateGuid();
+            RecordLinkSharepoint."Application Code" := SharepointConnection;
+            RecordLinkSharepoint."Record ID" := Record_id;
+            RecordLinkSharepoint.URL := copystr(OnlineDriveItem.webUrl, 1, MaxStrLen(RecordLinkSharepoint.URL));
+            RecordLinkSharepoint.Name := FileName;
+            RecordLinkSharepoint.Description := FileName;
+            RecordLinkSharepoint.driveId := OnlineDriveItem.driveId;
+            RecordLinkSharepoint.fileId := OnlineDriveItem.id;
+            RecordLinkSharepoint."Document No." := copystr(DocumentoNo, 1, MaxStrLen(RecordLinkSharepoint."Document No."));
+            RecordLinkSharepoint."File Name" := FileName;
+            RecordLinkSharepoint.Insert(true);
+            // FileURL := OnlineDriveItem.webUrl;
         end;
     end;
 
@@ -243,7 +243,7 @@ table 17380 "ZM SH Record Link Sharepoint"
             VendorFolderDriveId := TempOnlineDriveItem.id;
         end;
         TempOnlineDriveItem.DeleteAll();
-        if not UploadFilefromStreamOAut(PurchaseHeader.RecordId, SharepointConnection, OAuth20Application.RootFolderID, VendorFolderDriveId, FileName, INStream, FileURL) then begin
+        if not UploadFilefromStreamOAut(PurchaseHeader.RecordId, SharepointConnection, OAuth20Application.RootFolderID, VendorFolderDriveId, FileName, PurchaseHeader."No.", INStream, TempOnlineDriveItem) then begin
             UpdateRecordLinkPurchaseHeader(PurchaseHeader, FileURL, Filename);
             exit(true);
         end;
@@ -259,6 +259,52 @@ table 17380 "ZM SH Record Link Sharepoint"
         if RecordLink.FindFirst() then
             RecordLink.Delete();
         PurchaseHeader.AddLink(WebUrl, Filename);
+    end;
+
+
+    procedure UPloadFetchDrivesOAutwithFolder(var DocumentRecordRef: RecordRef; DocumentNo: code[20]; SharepointConnection: code[20]; SharepointFolder: code[20]; FileName: Text; INStream: InStream; var TempOnlineDriveItem: Record "Online Drive Item"): Boolean
+    var
+        FolderDriveId: Text;
+        YearFolder: text;
+        Folder: text;
+    begin
+        OAuth20Application.Get(SharepointConnection);
+        OAuth20ApplicationFolders.Get(OAuth20Application.Code, SharepointFolder);
+        AccessToken := SharepointAppHelper.GetAccessToken(SharepointConnection);
+        // YEAR
+        TempOnlineDriveItem.DeleteAll();
+        // Vendor code + Name
+        TempOnlineDriveItem.DeleteAll();
+        Folder := StrSubstNo('%1', DelChr(DocumentNo, '=', '\/.'));
+        FolderDriveId := '';
+        if SharepointAppHelper.FetchDrivesChildItems(SharepointConnection, AccessToken, OAuth20Application.RootFolderID, OAuth20ApplicationFolders.FolderID, TempOnlineDriveItem) then
+            if TempOnlineDriveItem.FindFirst() then
+                repeat
+                    if TempOnlineDriveItem.name = Folder then
+                        FolderDriveId := TempOnlineDriveItem.id;
+                Until TempOnlineDriveItem.next() = 0;
+        if FolderDriveId = '' then begin
+            if not SharepointAppHelper.CreateDriveFolder(SharepointConnection, AccessToken, OAuth20Application.RootFolderID, OAuth20ApplicationFolders.FolderID, Folder, TempOnlineDriveItem) then
+                exit;
+            FolderDriveId := TempOnlineDriveItem.id;
+        end;
+        TempOnlineDriveItem.DeleteAll();
+        if not UploadFilefromStreamOAut(DocumentRecordRef.RecordId, SharepointConnection, OAuth20Application.RootFolderID, FolderDriveId, FileName, DocumentNo, INStream, TempOnlineDriveItem) then begin
+            // UpdateRecordLinkDocument(DocumentRecordRef, FileURL, Filename);
+            exit(true);
+        end;
+    end;
+
+    local procedure UpdateRecordLinkDocument(var DocumentRecordRef: RecordRef; WebUrl: Text; Filename: Text)
+    var
+        RecordLink: Record "Record Link";
+    begin
+        RecordLink.Reset();
+        RecordLink.SetRange("Record ID", DocumentRecordRef.RecordId);
+        RecordLink.SetRange(Description, Filename);
+        if RecordLink.FindFirst() then
+            RecordLink.Delete();
+        DocumentRecordRef.AddLink(WebUrl, Filename);
     end;
 
     procedure DownloadFile()

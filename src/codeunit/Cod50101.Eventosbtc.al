@@ -2059,6 +2059,44 @@ codeunit 50101 "Eventos_btc"
             end;
         end;
     end;
+    // =============     Sharepoint Solicitud de ALTAS de productos           ====================
+    // ==  
+    // ==  Documentos Adjuntos
+    // ==  
+    // ======================================================================================================
+
+    procedure UploadSolicitudaltaArchivePDF(ItemsTemporary: Record "ZM PL Items Temporary")
+    var
+        SetupItemregistration: Record "ZM PL Setup Item registration";
+        FileManagement: Codeunit "File Management";
+        RecordLinkSharepoint: Record "ZM SH Record Link Sharepoint";
+        TempOnlineDriveItem: Record "Online Drive Item" temporary;
+        TempBlob: Record TempBlob;
+        NVInStream: InStream;
+        FileName: text;
+        Dialogtitle: label 'Cargar Fichero';
+        DocumentRecordRef: RecordRef;
+    begin
+        SetupItemregistration.Get();
+        if (SetupItemregistration."OAuth Request Archive" = '') or (SetupItemregistration."OAuth Request Arch. Folder" = '') then
+            exit;
+        // solicitamos la carga del archivo
+        if not UploadIntoStream(Dialogtitle, '', 'Todos (*.*)|*.*', FileName, NVInStream) then
+            exit;
+
+        if (FileName = '') then
+            exit;
+
+        FileName := FileManagement.GetFileName(FileName);
+
+        DocumentRecordRef.GetTable(ItemsTemporary);
+        // guardamos el fichero en el SharePoint
+        if not RecordLinkSharepoint.UPloadFetchDrivesOAutwithFolder(DocumentRecordRef, ItemsTemporary."No.", SetupItemregistration."OAuth Request Archive",
+                SetupItemregistration."OAuth Request Arch. Folder", FileName, NVInStream, TempOnlineDriveItem) then begin
+            // enviamos correo de que no se ha podido guardar el arhivo
+            Message('No se ha podido subir %1', ItemsTemporary."No.");
+        end;
+    end;
 
     // [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterModifyEvent', '', true, true)]
     // local procedure PurchaseLine_OnAfterModifyEvent(var Rec: Record "Purchase Line"; var xRec: Record "Purchase Line"; RunTrigger: Boolean)

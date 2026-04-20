@@ -3,7 +3,7 @@ page 17458 "ZM PL Items temporary list"
     ApplicationArea = All;
     Caption = 'Product Registration Request', Comment = 'ESP="Solicitud Alta de productos"';
     PageType = List;
-    PromotedActionCategories = 'New,Process,Report,Navigate,Setup', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Configuración"';
+    PromotedActionCategories = 'New,Process,Report,Navigate,Documents', Comment = 'ESP="Nuevo,Procesar,Informe,Información,Documentos"';
     SourceTable = "ZM PL Items temporary";
     Editable = false;
     UsageCategory = Lists;
@@ -130,10 +130,14 @@ page 17458 "ZM PL Items temporary list"
         }
         area(factboxes)
         {
-            systempart(Links; Links)
+            part("ZM SH Record Link Sharep. list"; "ZM SH Record Link Sharep. list")
             {
-                ApplicationArea = RecordLinks;
+                SubPageLink = "Document No." = field("No.");
             }
+            // systempart(Links; Links)
+            // {
+            //     ApplicationArea = RecordLinks;
+            // }
             systempart(Notes; Notes)
             {
                 ApplicationArea = Notes;
@@ -218,6 +222,25 @@ page 17458 "ZM PL Items temporary list"
             //             Message(lblUpdate);
             //     end;
             // }
+            group(Documents)
+            {
+                Caption = 'Documents', comment = 'ESP="Documentos"';
+                action(UploadFile)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Upload File', comment = 'ESP="Cargar Documento"';
+                    Image = MoveUp;
+                    Promoted = true;
+                    PromotedCategory = Category5;
+
+                    trigger OnAction()
+                    begin
+                        clear(cduEventosBTC);
+                        cduEventosBTC.UploadSolicitudaltaArchivePDF(Rec);
+                    end;
+
+                }
+            }
         }
         area(Navigation)
         {
@@ -360,6 +383,7 @@ page 17458 "ZM PL Items temporary list"
     end;
 
     var
+        cduEventosBTC: Codeunit Eventos_btc;
         StatusUser: Enum "Item Temporary User Status";
         StyleText: Text;
         ShowPosted: Boolean;
