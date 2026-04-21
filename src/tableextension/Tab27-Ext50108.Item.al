@@ -261,6 +261,19 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Material Embalaje Excluido', comment = 'ESP="Material Embalaje Excluido"';
         }
+        field(50050; "Replaces No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Replaces', comment = 'ESP="Sustituye a"';
+            TableRelation = Item;
+        }
+        field(50051; "Replaces Name"; text[100])
+        {
+            Caption = 'Replaces Name', comment = 'ESP="Sustituye a nombre"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item.Description where("No." = field("Replaces No.")));
+            Editable = false;
+        }
         field(50075; "Renovate Plan"; boolean)
         {
             DataClassification = CustomerContent;

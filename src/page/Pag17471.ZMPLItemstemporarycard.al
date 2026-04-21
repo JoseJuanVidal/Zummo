@@ -166,6 +166,20 @@ page 17471 "ZM PL Items temporary card"
                         CurrPage.Update();
                     end;
                 }
+                field("Replaces Item No."; "Replaces Item No.")
+                {
+                    ApplicationArea = all;
+                    // Visible = ShowChangesLM;
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update();
+                    end;
+                }
+                field("Replaces Name"; "Replaces Name")
+                {
+                    ApplicationArea = all;
+                    // Visible = ShowChangesLM;
+                }
                 field("Tipo aprovisionamiento"; "Tipo aprovisionamiento")
                 {
                     ApplicationArea = all;

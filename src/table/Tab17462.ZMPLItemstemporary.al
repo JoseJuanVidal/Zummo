@@ -767,6 +767,24 @@ table 17462 "ZM PL Items Temporary"
                 ChangeFieldNo(Rec.FieldNo(Canal));
             end;
         }
+        field(50040; "Material Embalaje Excluido"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Material Embalaje Excluido', comment = 'ESP="Material Embalaje Excluido"';
+        }
+        field(50050; "Replaces Item No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Replaces Item No.', comment = 'ESP="Sustituye a cód."';
+            TableRelation = Item;
+        }
+        field(50051; "Replaces Name"; text[100])
+        {
+            Caption = 'Replaces Name', comment = 'ESP="Sustituye a nombre"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item.Description where("No." = field("Replaces Item No.")));
+            Editable = false;
+        }
         field(50080; "CMMF Code"; code[20])
         {
             DataClassification = CustomerContent;
@@ -1613,10 +1631,11 @@ table 17462 "ZM PL Items Temporary"
 
         if not ZMProdBOM.Get(Rec."Production BOM No.") then begin
             ZMProdBOM.Init();
-            ZMProdBOM."No." := Rec."Item No.";
+            ZMProdBOM."No." := Rec."Production BOM No.";
             ZMProdBOM.Description := Rec.Description;
             ZMProdBOM."Unit of Measure Code" := Rec."Base Unit of Measure";
             ZMProdBOM.Insert();
+            Commit();
         end;
         ZMProdBOM.SetRange("No.", Rec."Item No.");
         ZMProductionBOMList.SetTableView(ZMProdBOM);

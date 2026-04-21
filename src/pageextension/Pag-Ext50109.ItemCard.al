@@ -156,6 +156,18 @@ pageextension 50109 "ItemCard" extends "Item Card"
         }
         addbefore("Routing No.")
         {
+            field("Replaces No."; "Replaces No.")
+            {
+                ApplicationArea = all;
+                trigger OnValidate()
+                begin
+                    CurrPage.Update();
+                end;
+            }
+            field("Replaces Name"; "Replaces Name")
+            {
+                ApplicationArea = all;
+            }
             field(Material; Material)
             {
                 ApplicationArea = all;

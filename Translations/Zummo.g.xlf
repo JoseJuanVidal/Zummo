@@ -11673,6 +11673,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Material - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 2621064865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Material Embalaje Excluido</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Material Embalaje Excluido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Material Embalaje Excluido - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4269697522 - Field 1356249118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Maximum Inventory</source>
           <note from="Developer" annotates="general" priority="2">ESP="Stock máximo"</note>
@@ -11842,6 +11847,16 @@
           <source> ,Fixed Reorder Qty.,Maximum Qty.,Order,Lot-for-Lot</source>
           <note from="Developer" annotates="general" priority="2">ESP=" ,Cant. fija reaprov.,Cant. máxima,Pedido,Lote a lote"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Reordering Policy - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 480286868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Replaces Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustituye a nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Replaces Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 319206988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Replaces</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustituye a"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Replaces No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 3500504311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Replenishment System</source>
@@ -36412,6 +36427,16 @@
           <source>The product must have %1 enabled.</source>
           <note from="Developer" annotates="general" priority="2">ESP="El producto debe tener activado %1."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Renovate Plan - Method OnValidate - NamedType lblError</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 480286868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Replaces Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustituye a nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Replaces Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 319206988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Replaces</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustituye a"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Replaces No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 3795951024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>RUBBER/SILICON Flexibles</source>
