@@ -12773,17 +12773,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Reordering Policy - Property OptionCaption</note>
           <target> ,Cant. fija reaprov.,Cant. máxima,Pedido,Lote a lote</target>
         </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 120033807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Replaces Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustituye a cód."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Replaces Item No. - Property Caption</note>
+          <target>Sustituye a cód.</target>
+        </trans-unit>
         <trans-unit id="Table 4269697522 - Field 480286868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Replaces Name</source>
           <note from="Developer" annotates="general" priority="2">ESP="Sustituye a nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Replaces Name - Property Caption</note>
           <target>Sustituye a nombre</target>
-        </trans-unit>
-        <trans-unit id="Table 4269697522 - Field 319206988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Replaces</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Sustituye a"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Replaces No. - Property Caption</note>
-          <target>Sustituye a</target>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 3500504311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Replenishment System</source>

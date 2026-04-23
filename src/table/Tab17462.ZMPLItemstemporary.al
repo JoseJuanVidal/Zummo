@@ -498,7 +498,7 @@ table 17462 "ZM PL Items Temporary"
         {
             AccessByPermission = TableData 5405 = R;
             Caption = 'Rounding Precision', Comment = 'ESP="Precisión redondeo"';
-            DecimalPlaces = 0 : 5;
+            DecimalPlaces = 5 : 5;
             InitValue = 1;
 
             trigger OnValidate()
@@ -1628,10 +1628,10 @@ table 17462 "ZM PL Items Temporary"
         ZMProdBOMLine: record "ZM CIM Prod. BOM Line";
         ZMProductionBOMList: page "ZM CIM Production BOM List";
     begin
-
-        if not ZMProdBOM.Get(Rec."Production BOM No.") then begin
+        Rec.TestField("Item No.");
+        if not ZMProdBOM.Get(Rec."Item No.") then begin
             ZMProdBOM.Init();
-            ZMProdBOM."No." := Rec."Production BOM No.";
+            ZMProdBOM."No." := Rec."Item No.";
             ZMProdBOM.Description := Rec.Description;
             ZMProdBOM."Unit of Measure Code" := Rec."Base Unit of Measure";
             ZMProdBOM.Insert();
@@ -1640,18 +1640,18 @@ table 17462 "ZM PL Items Temporary"
         ZMProdBOM.SetRange("No.", Rec."Item No.");
         ZMProductionBOMList.SetTableView(ZMProdBOM);
         ZMProductionBOMList.RunModal();
-        if Rec."Production BOM No." = '' then begin
-            ZMProdBOMLine.SetRange("Production BOM No.", Rec."Item No.");
-            if ZMProdBOMLine.FindFirst() then begin
-                Rec."Production BOM No." := Rec."Item No.";
-                Rec.Modify();
-            end else begin
-                // eliminamos la cabecera y el valor de la línea
-                if ZMProdBOM.Get(Rec."Production BOM No.") then
-                    ZMProdBOM.Delete();
-                Rec."Production BOM No." := '';
-                Rec.Modify();
-            end;
+
+        ZMProdBOMLine.SetRange("Production BOM No.", Rec."Item No.");
+        if ZMProdBOMLine.FindFirst() then begin
+            Rec."Production BOM No." := Rec."Item No.";
+            Rec.Modify();
+        end else begin
+            // eliminamos la cabecera y el valor de la línea
+            if ZMProdBOM.Get(Rec."Production BOM No.") then
+                ZMProdBOM.Delete();
+            Rec."Production BOM No." := '';
+            Rec.Modify();
+            if ZMProdBOM.delete() then;
         end;
 
     end;

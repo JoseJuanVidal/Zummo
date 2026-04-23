@@ -39,6 +39,13 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                 field(Password; Password)
                 {
                     ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        UserSetup.Get(UserId);
+                        if UserSetup."Config. Contabilidad" then
+                            Message(Rec.Password);
+                    end;
                 }
                 field("Path LOG"; "Path LOG")
                 {
