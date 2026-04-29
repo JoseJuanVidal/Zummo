@@ -38386,6 +38386,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM Bank Account Ledger Entr. - Action NavigateApplyBankAccLedgerEntries - Property Caption</note>
           <target>Liq. Extractos Bancarios</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3765937582 - NamedType 553645563" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3765937582">
+          <source>La seccion de Hoja de coste %1 tiene ya registros.\¿Desea Elimnarlos?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La seccion de Hoja de coste %1 tiene ya registros.\¿Desea Elimnarlos?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM BOM Cost Shares - NamedType lblConfirmDelete</note>
+          <target>La seccion de Hoja de coste %1 tiene ya registros.\¿Desea Elimnarlos?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3765937582 - Action 526984387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 290918519">
+          <source>Crear Hoja Coste</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear Hoja Coste"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM BOM Cost Shares - Action CreateCostWorksheet - Property Caption</note>
+          <target>Crear Hoja Coste</target>
+        </trans-unit>
         <trans-unit id="PageExtension 4207199840 - Control 61007498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1202434405">
           <source>Classification</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>

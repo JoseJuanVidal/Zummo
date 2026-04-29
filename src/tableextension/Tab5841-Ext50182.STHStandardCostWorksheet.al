@@ -7,6 +7,7 @@ tableextension 50182 "STH StandardCostWorksheet" extends "Standard Cost Workshee
             Caption = 'Ultimo coste directo', comment = 'ESP="Ultimo coste directo"';
             FieldClass = FlowField;
             CalcFormula = lookup(Item."Last Direct Cost" where("No." = field("No.")));
+            DecimalPlaces = 0 : 5;
         }
         Field(50101; Blocked; Boolean)
         {
@@ -20,6 +21,7 @@ tableextension 50182 "STH StandardCostWorksheet" extends "Standard Cost Workshee
             Caption = 'Unit Cost', comment = 'ESP="Coste unitario"';
             FieldClass = FlowField;
             CalcFormula = lookup(Item."Unit Cost" where("No." = field("No.")));
+            DecimalPlaces = 0 : 5;
         }
         Field(50103; "Costing Method"; Option)
         {
