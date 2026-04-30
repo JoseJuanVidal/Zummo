@@ -2455,7 +2455,7 @@ codeunit 50106 "SalesEvents"
                 MessageComment += Commentline.Comment;
             Until Commentline.next() = 0;
         if MessageComment <> '' then
-            Message(MessageComment);
+            Message(StrSubstNo('%1 %2\\%3', SalesLine."No.", SalesLine.Description, MessageComment));
     end;
 
     // =============     RESTAURAR OFERTAS DE ARCHIVO          ====================
