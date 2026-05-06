@@ -422,6 +422,10 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
             Caption = 'Warning New Customers Date', comment = 'ESP="Fecha Aviso Nuevos Clientes"';
             // Codeunit   86 Sales-Quote to Order    OnBeforeInsertSalesOrderHeader
         }
+        field(50120; "Codigo Anterior"; code[20])
+        {
+            Caption = 'Codigo Anterior', comment = 'ESP="Codigo Anterior"';
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var

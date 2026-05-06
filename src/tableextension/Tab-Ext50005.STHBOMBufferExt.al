@@ -161,12 +161,20 @@ tableextension 50005 "STH BOM BufferExt" extends "BOM Buffer"
             CalcFormula = lookup(Item."Unit Cost" where("No." = field("No.")));
             Editable = false;
         }
-        field(50212; "Standar Cost"; Decimal)
+        field(50212; "Standard Cost"; Decimal)
         {
-            Caption = 'Standar Cost', comment = 'ESP="Coste Estandar"';
+            Caption = 'Standard Cost', comment = 'ESP="Coste Estandar"';
             FieldClass = FlowField;
             CalcFormula = lookup(Item."Standard Cost" where("No." = field("No.")));
             Editable = false;
+
+            trigger OnLookup()
+            var
+                Item: Record item;
+            begin
+                Item.SetRange("No.", Rec."No.");
+                page.Run(page::"Item Card", Item);
+            end;
         }
         field(50213; "Average cost last year"; Decimal)
         {

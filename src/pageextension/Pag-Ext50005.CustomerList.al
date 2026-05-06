@@ -212,6 +212,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
                         Report.Run(Report::"Extracto Cliente", true, false, Cliente);
                 end;
             }
+
         }
         addbefore("Co&mments")
         {

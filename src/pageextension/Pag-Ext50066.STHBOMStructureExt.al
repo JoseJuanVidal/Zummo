@@ -129,7 +129,7 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
                 ApplicationArea = all;
                 Visible = false;
             }
-            field("Standar Cost"; "Standar Cost")
+            field("Standard Cost"; "Standard Cost")
             {
                 ApplicationArea = all;
                 Visible = false;
@@ -218,7 +218,7 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
         xlBuf.AddColumn(Rec.FIELDCAPTION("Qty. per Top Item"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
         xlBuf.AddColumn(Rec.FIELDCAPTION("Unit of Measure Code"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
         xlBuf.AddColumn(Rec.FIELDCAPTION("Replenishment System"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
-        xlBuf.AddColumn(Rec.FIELDCAPTION("Standar Cost"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
+        xlBuf.AddColumn(Rec.FIELDCAPTION("Standard Cost"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
         xlBuf.AddColumn(Rec.FIELDCAPTION("Average cost last year"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
         xlBuf.AddColumn(Rec.FIELDCAPTION("Unit Cost"), FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
         xlBuf.AddColumn('Coste de LM', FALSE, '', TRUE, FALSE, FALSE, '', xlBuf."Cell Type"::Text);
@@ -228,7 +228,7 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
         xlBuf.NewRow;
         IF Rec.FINDFIRST THEN
             REPEAT
-                Rec.CalcFields("Standar Cost", "Item Unit Cost");
+                Rec.CalcFields("Standard Cost", "Item Unit Cost");
                 CosteEstandar := 0;
                 Costeavg := 0;
                 CosteUnit := 0;
@@ -236,13 +236,13 @@ pageextension 50066 "STH BOM StructureExt" extends "BOM Structure"
                 case Rec."Replenishment System" of
                     Rec."Replenishment System"::Purchase, Rec."Replenishment System"::Transfer:
                         begin
-                            CosteEstandar := Rec."Standar Cost";
+                            CosteEstandar := Rec."Standard Cost";
                             Costeavg := Rec."Average cost last year";
                             CosteUnit := Rec."Item Unit Cost";
                             Bold := false;
                         end;
                     else begin
-                        CosteLM := Rec."Standar Cost";
+                        CosteLM := Rec."Standard Cost";
                         Bold := true;
                     end;
                 end;

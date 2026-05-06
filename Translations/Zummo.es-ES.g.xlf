@@ -14412,6 +14412,22 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method ValidaFechaRequeridaLinPedido - NamedType lbConfirmQst</note>
           <target>Ha cambiado la fecha de entrega requerida\¿Desea cambiar la fecha de entrega requerida también en las líneas?</target>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - NamedType 3210847871" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Source=%1;Initial Catalog=%2;User Id=%3;Password=%4;</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - NamedType DataSourceTok</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 4075147288 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>select TOP 100 *  FROM [CLIENTS$]</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClients - NamedType lblSQLDelete</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 4075147288 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Cliente #1##########\Registro #2#########</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Cliente #1##########\Registro #2#########"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClients - NamedType lblWindow</note>
+          <target>Nº Cliente #1##########\Registro #2#########</target>
+        </trans-unit>
         <trans-unit id="Codeunit 267050289 - Method 3222099277 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select file</source>
           <note from="Developer" annotates="general" priority="2">ESP="Seleccione fichero"</note>
@@ -35507,6 +35523,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Method FinMultiSelectAseguradora - NamedType lblConfirm</note>
           <target>¿Desea eliminar el credito a %1 %2 seleccionados?</target>
         </trans-unit>
+        <trans-unit id="PageExtension 363045002 - Action 3041128825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Clientes SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clientes SEB PRO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action clientes - Property Caption</note>
+          <target>Clientes SEB PRO</target>
+        </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 3024434233 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>View or add comments for the record</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite ver o agregar comentarios para el registro."</note>
@@ -38166,6 +38188,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateLastUnitCost - NamedType Text000</note>
           <target>¿Desea actualizar como coste estandar el valor de Ulltimo coste de las líneas seleccionadas?</target>
         </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Method 1716152703 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
+          <source>¿Desea actualizar como coste estandar el valor de Ulltimo coste Compra/Fabricación de las líneas seleccionadas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar como coste estandar el valor de Ulltimo coste Compra/Fabricación de las líneas seleccionadas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateLastUnitCostPruchase - NamedType Text000</note>
+          <target>¿Desea actualizar como coste estandar el valor de Ulltimo coste Compra/Fabricación de las líneas seleccionadas?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Method 1489276173 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
           <source>¿Desea realizar el cálculo de coste estandar de los registros seleccionados?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea realizar el cálculo de coste estandar de los registros seleccionados?"</note>
@@ -38178,10 +38206,16 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Method UpdateMfgCoste - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Action 1467983106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
-          <source>Actualizar ultimo coste</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualizar ultimo coste"</note>
+          <source>Actualizar ultimo coste directo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar ultimo coste directo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action ActualizarUltimoCoste - Property Caption</note>
-          <target>Actualizar ultimo coste</target>
+          <target>Actualizar ultimo coste directo</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 4092476146 - Action 1132393648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
+          <source>Actualizar ultimo coste Compra/Fabricación</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar ultimo coste Compra/Fabricación</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHPagStandardCostWorksheetExt - Action ActualizarUltimoCosteCompra - Property Caption</note>
+          <target>"Actualizar ultimo coste Compra/Fabricación</target>
         </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Action 142764972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2630330130">
           <source>Calcular Coste estandar Fabricación</source>
@@ -38391,6 +38425,17 @@
           <note from="Developer" annotates="general" priority="2">ESP="La seccion de Hoja de coste %1 tiene ya registros.\¿Desea Elimnarlos?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM BOM Cost Shares - NamedType lblConfirmDelete</note>
           <target>La seccion de Hoja de coste %1 tiene ya registros.\¿Desea Elimnarlos?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3765937582 - Method 526984387 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3765937582">
+          <source>Nº Mov: #1############\Cód. producto #2################</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Mov: #1############\Cód. producto #2################"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM BOM Cost Shares - Method CreateCostWorksheet - NamedType lblWindow</note>
+          <target>Nº Mov: #1############\Cód. producto #2################</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3765937582 - Method 526984387 - NamedType 1650578640" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3765937582">
+          <source>REVISION</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ZM BOM Cost Shares - Method CreateCostWorksheet - NamedType lblSeccion</note>
         </trans-unit>
         <trans-unit id="PageExtension 3765937582 - Action 526984387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 290918519">
           <source>Crear Hoja Coste</source>
@@ -43372,10 +43417,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field SCRAP No. - Property Caption</note>
           <target>Nos. Mat. Embalaje</target>
         </trans-unit>
-        <trans-unit id="TableExtension 4172986522 - Field 3163433328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
-          <source>Standar Cost</source>
+        <trans-unit id="TableExtension 4172986522 - Field 2838254244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
+          <source>Standard Cost</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste Estandar"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Standar Cost - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH BOM BufferExt - Field Standard Cost - Property Caption</note>
           <target>Coste Estandar</target>
         </trans-unit>
         <trans-unit id="TableExtension 4172986522 - Field 3459458485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3589646212">
@@ -43718,6 +43763,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field Costing Method - Property OptionCaption</note>
           <target>FIFO,LIFO,Especial,Medio,Estándar</target>
         </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 4280428191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source>% Desv. coste compra/producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="% Desv. coste compra/producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field DesvLastPurchase - Property Caption</note>
+          <target>% Desv. coste compra/producción</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 3147554871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source>Ultima Fecha Compra/Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ultimo Fecha Compra/Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastPurchaseDate - Property Caption</note>
+          <target>Ultimo Fecha Compra/Producción</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 2906604184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source>Ultimo coste Compra/Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ultimo coste Compra/Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastPurchaseUnitCost - Property Caption</note>
+          <target>Ultimo coste Compra/Producción</target>
+        </trans-unit>
         <trans-unit id="TableExtension 429385547 - Field 2751547137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
           <source>Ultimo coste directo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Ultimo coste directo"</note>
@@ -44051,6 +44114,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Cliente Reporting"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field ClienteReporting_btc - Property Caption</note>
           <target>Cliente Reporting</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2853044828 - Field 3680762443 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Codigo Anterior</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Codigo Anterior"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtCustomer_btc - Field Codigo Anterior - Property Caption</note>
+          <target>Codigo Anterior</target>
         </trans-unit>
         <trans-unit id="TableExtension 2853044828 - Field 3035610829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Blocking Motives</source>
@@ -45061,6 +45130,18 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Cuota Objetivo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 709731099 - Field 410940989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
+          <source>Customer Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Customer Posting Group - Property Caption</note>
+          <target>Grupo registro cliente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 709731099 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
+          <source>Gen. Bus. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro neg. gen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Gen. Bus. Posting Group - Property Caption</note>
+          <target>Grupo registro neg. gen.</target>
+        </trans-unit>
         <trans-unit id="TableExtension 709731099 - Field 559434470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
           <source>ID PILAS</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -45075,6 +45156,12 @@
           <source>Pais ABC</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Pais ABC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 709731099 - Field 1844012642 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
+          <source>VAT Bus. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro IVA neg."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field VAT Bus. Posting Group - Property Caption</note>
+          <target>Grupo registro IVA neg.</target>
         </trans-unit>
         <trans-unit id="TableExtension 709731099 - Field 467010782 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
           <source>Zona</source>

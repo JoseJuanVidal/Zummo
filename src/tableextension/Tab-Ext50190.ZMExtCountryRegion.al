@@ -28,5 +28,24 @@ tableextension 50190 "ZM Ext Country/Region" extends "Country/Region"
             Caption = 'Zona', comment = 'ESP="Zona"';
             TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(Zona), TipoRegistro = const(Tabla));
         }
+
+        field(50112; "Gen. Bus. Posting Group"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Gen. Bus. Posting Group', comment = 'ESP="Grupo registro neg. gen."';
+            TableRelation = "Gen. Business Posting Group";
+        }
+        field(50114; "VAT Bus. Posting Group"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'VAT Bus. Posting Group', comment = 'ESP="Grupo registro IVA neg."';
+            TableRelation = "VAT Business Posting Group";
+        }
+        field(50115; "Customer Posting Group"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Customer Posting Group', comment = 'ESP="Grupo registro cliente"';
+            TableRelation = "Customer Posting Group";
+        }
     }
 }

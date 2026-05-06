@@ -6,6 +6,39 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
         {
             StyleExpr = StyleExp;
         }
+        addafter("New Standard Cost")
+        {
+            field(LastPurchaseUnitCost; LastPurchaseUnitCost)
+            {
+                ApplicationArea = all;
+                Editable = false;
+
+                trigger OnDrillDown()
+                begin
+                    DrillDown_Lastpurchase();
+                end;
+            }
+            field(DesvLastPurchase; DesvLastPurchase)
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+            field(LastPurchaseDate; LastPurchaseDate)
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+            field(LastPurchaseDocumentNo; LastPurchaseDocumentNo)
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+            field(LastPurchaseDocumentType; LastPurchaseDocumentType)
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+        }
         addlast(Control1)
         {
             field(LastUnitCost; LastUnitCost)
@@ -43,7 +76,7 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
             action(ActualizarUltimoCoste)
             {
                 ApplicationArea = all;
-                Caption = 'Actualizar ultimo coste', comment = 'ESP="Actualizar ultimo coste"';
+                Caption = 'Actualizar ultimo coste directo', comment = 'ESP="Actualizar ultimo coste directo"';
                 Image = UpdateUnitCost;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -51,6 +84,20 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                 trigger OnAction()
                 begin
                     UpdateLastUnitCost;
+                end;
+
+            }
+            action(ActualizarUltimoCosteCompra)
+            {
+                ApplicationArea = all;
+                Caption = 'Actualizar ultimo coste Compra/Fabricación', comment = 'ESP="Actualizar ultimo coste Compra/Fabricación';
+                Image = UpdateDescription;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    UpdateLastUnitCostPruchase;
                 end;
 
             }
@@ -125,6 +172,23 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                 repeat
                     StandardCostWorksheet.CalcFields(LastUnitCost);
                     StandardCostWorksheet."New Standard Cost" := StandardCostWorksheet.LastUnitCost;
+                    StandardCostWorksheet.Modify();
+                Until StandardCostWorksheet.next() = 0;
+            CurrPage.Update();
+        end;
+    end;
+
+    local procedure UpdateLastUnitCostPruchase()
+    var
+        Text000: Label '¿Desea actualizar como coste estandar el valor de Ulltimo coste Compra/Fabricación de las líneas seleccionadas?', comment = 'ESP="¿Desea actualizar como coste estandar el valor de Ulltimo coste Compra/Fabricación de las líneas seleccionadas?"';
+        StandardCostWorksheet: Record "Standard Cost Worksheet";
+    begin
+        if Confirm(text000) then begin
+            CurrPage.SetSelectionFilter(StandardCostWorksheet);
+            if StandardCostWorksheet.findset() then
+                repeat
+                    ;
+                    StandardCostWorksheet."New Standard Cost" := StandardCostWorksheet.LastPurchaseUnitCost;
                     StandardCostWorksheet.Modify();
                 Until StandardCostWorksheet.next() = 0;
             CurrPage.Update();
@@ -226,6 +290,5 @@ pageextension 50056 "STHPagStandardCostWorksheetExt" extends "Standard Cost Work
                     StdCostWhse.Insert()
                 end;
             until WhereUsedMgt.NextRecord(1, WhereUsedLine) = 0;
-
     end;
 }

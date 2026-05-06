@@ -223,6 +223,25 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                 RunPageMode = Edit;
             }
         }
+        addafter("Change Payment &Tolerance")
+        {
+            action(clientes)
+            {
+                Caption = 'Clientes SEB PRO', comment = 'ESP="Clientes SEB PRO"';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = CustomerContact;
+
+                trigger OnAction()
+                var
+                    SEBPRO: Codeunit "SEB PRO Iberia";
+                begin
+                    if Confirm(('Desea Crear clientes SEB PRO?')) then
+                        SEBPRO.GetClients();
+                end;
+            }
+        }
     }
     trigger OnOpenPage()
     begin
